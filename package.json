@@ -7,9 +7,8 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "react": "pnpm --filter=@atlas/react"
   },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
@@ -23,10 +22,6 @@
     "turbo": "1.6.1",
     "typescript": "4.8.4"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@7.13.5",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -36,5 +31,9 @@
     "**/*.{js,jsx,ts,tsx,json}": [
       "prettier --write"
     ]
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@7.13.5"
 }

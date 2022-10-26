@@ -4,6 +4,25 @@ import { AccordionButton } from './accordion-button'
 import { AccordionItem } from './accordion-item'
 import { AccordionPanel } from './accordion-panel'
 
+test('has the proper aria attributes', async () => {
+  render(
+    <Accordion>
+      <AccordionItem value="panel-1">
+        <h2>
+          <AccordionButton>Section 1 title</AccordionButton>
+        </h2>
+        <AccordionPanel>Panel 1</AccordionPanel>
+      </AccordionItem>
+    </Accordion>,
+  )
+  const button = screen.getByText('Section 1 title')
+  const panel = screen.getByText('Panel 1')
+
+  expect(button).toHaveAttribute('aria-controls')
+  expect(button).toHaveAttribute('aria-expanded')
+  expect(panel).toHaveAttribute('aria-labelledby')
+})
+
 test('aria-controls for button is same as id for panel', async () => {
   render(
     <Accordion>

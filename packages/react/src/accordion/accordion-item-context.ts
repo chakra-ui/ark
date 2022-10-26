@@ -6,6 +6,6 @@ export const [AccordionItemProvider, useAccordionItemContext] = createContext<Ac
   {
     name: 'AccordionItemContext',
     hookName: 'useAccordionItemContext',
-    providerName: '<AccordionItem />',
+    providerName: '<AccordionItemProvider />',
   },
 )
