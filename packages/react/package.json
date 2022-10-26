@@ -11,5 +11,11 @@
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
     "@zag-js/react": "0.1.18"
+  },
+  "devDependencies": {
+    "react": "18.2.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
   }
 }
