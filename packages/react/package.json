@@ -1,10 +1,10 @@
 {
-  "name": "@atlast/react",
+  "name": "@atlas/react",
   "version": "0.1.0",
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [],
   "license": "MIT",
@@ -13,9 +13,20 @@
     "@zag-js/react": "0.1.18"
   },
   "devDependencies": {
-    "react": "18.2.0"
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@types/react": "18.0.23",
+    "@types/react-dom": "18.0.7",
+    "@types/testing-library__jest-dom": "5.14.5",
+    "@vitejs/plugin-react": "2.2.0",
+    "jsdom": "20.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "vite": "3.2.0",
+    "vitest": "0.24.3"
   },
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }
