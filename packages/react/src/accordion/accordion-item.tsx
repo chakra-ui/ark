@@ -5,12 +5,12 @@ import { AccordionItemProvider } from './accordion-item-context'
 export type AccordionItemProps = HTMLProps<HTMLDivElement> & { value: string }
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const { value, ...htmlProps } = props
+  const { value, disabled, ...htmlProps } = props
   const { api } = useAccordionContext()
 
   return (
-    <AccordionItemProvider value={{ value }}>
-      <div {...api.getItemProps({ value })} {...htmlProps} />
+    <AccordionItemProvider value={{ value, disabled }}>
+      <div {...api.getItemProps({ value, disabled })} {...htmlProps} />
     </AccordionItemProvider>
   )
 }
