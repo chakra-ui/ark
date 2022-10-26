@@ -95,6 +95,14 @@ importers:
     devDependencies:
       typescript: 4.8.4
 
+  packages/react:
+    specifiers:
+      '@zag-js/accordion': 0.1.15
+      '@zag-js/react': 0.1.18
+    dependencies:
+      '@zag-js/accordion': 0.1.15
+      '@zag-js/react': 0.1.18
+
   packages/tsconfig:
     specifiers: {}
 
@@ -844,6 +852,43 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: false
 
+  /@zag-js/accordion/0.1.15:
+    resolution: {integrity: sha512-JqvQFRvc8fXU6Z86Y2tt4z8oiJaMWh3nCYCfjmEotMqoHAOTM3cX6snwaYrNsEkv5cF7ZkZgQJQJ1pKngx4+rg==}
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/types': 0.2.7
+    dev: false
+
+  /@zag-js/core/0.1.12:
+    resolution: {integrity: sha512-92QVG6O0Txr28PCAIk1FhWrB4BoYc4MJOWxpazqB7PoLz93+sNytCI0cMOEJnLdu0Qy/WvATYiqifuH92Qa1AA==}
+    dependencies:
+      '@zag-js/store': 0.1.4
+      klona: 2.0.5
+    dev: false
+
+  /@zag-js/react/0.1.18:
+    resolution: {integrity: sha512-twH4a0QmbzACXPOj2CUaSB7X8nn3czYwrqMupI5XegeqywoOBBYk+qzQEwbbuaY6sZdRqTtNpeh70POLCZWUCw==}
+    peerDependencies:
+      react: '>=18.0.0'
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/store': 0.1.4
+      '@zag-js/types': 0.2.7
+      proxy-compare: 2.3.0
+    dev: false
+
+  /@zag-js/store/0.1.4:
+    resolution: {integrity: sha512-Mq3IwpPvoOzbNqWGcH/t0u7M3IpXTHmU+YeyYmZy8aD+kUrMx8s4IY8fZvnrIgOZrL7Rb45GRrRNpEJfGmTGFg==}
+    dependencies:
+      proxy-compare: 2.3.0
+    dev: false
+
+  /@zag-js/types/0.2.7:
+    resolution: {integrity: sha512-UZn+n6XjPMC9NjZZcXKTDeBJ8ere1xWmKn/JjodIRe5L8xCPw8d288JF3EmXBeZQokmQyQDL5hBXYxpA4tKfRQ==}
+    dependencies:
+      csstype: 3.1.0
+    dev: false
+
   /JSONStream/1.3.5:
     resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}
     hasBin: true
@@ -1231,6 +1276,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  /csstype/3.1.0:
+    resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
+    dev: false
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
@@ -2271,6 +2320,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /klona/2.0.5:
+    resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
+    engines: {node: '>= 8'}
+    dev: false
+
   /language-subtag-registry/0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: false
@@ -2787,6 +2841,10 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+    dev: false
+
+  /proxy-compare/2.3.0:
+    resolution: {integrity: sha512-c3L2CcAi7f7pvlD0D7xsF+2CQIW8C3HaYx2Pfgq8eA4HAl3GAH6/dVYsyBbYF/0XJs2ziGLrzmz5fmzPm6A0pQ==}
     dev: false
 
   /punycode/2.1.1:
