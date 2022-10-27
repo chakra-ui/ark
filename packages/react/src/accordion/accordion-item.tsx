@@ -1,16 +1,17 @@
-import { HTMLProps } from 'react'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
+import { atlas, HTMLAtlasProps } from '../factory'
+import { forwardRef } from '../forwardRef'
 
-export type AccordionItemProps = HTMLProps<HTMLDivElement> & { value: string }
+export type AccordionItemProps = HTMLAtlasProps<'div'> & { disabled?: boolean; value: string }
 
-export const AccordionItem = (props: AccordionItemProps) => {
+export const AccordionItem = forwardRef<'div', AccordionItemProps>((props, ref) => {
   const { value, disabled, ...htmlProps } = props
   const { api } = useAccordionContext()
 
   return (
     <AccordionItemProvider value={{ value, disabled }}>
-      <div {...api.getItemProps({ value, disabled })} {...htmlProps} />
+      <atlas.div {...api.getItemProps({ value, disabled })} {...htmlProps} ref={ref} />
     </AccordionItemProvider>
   )
-}
+})
