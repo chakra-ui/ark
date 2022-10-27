@@ -1,14 +1,15 @@
-import { ButtonHTMLAttributes } from 'react'
+import { atlas, HTMLAtlasProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
+import { forwardRef } from '../forwardRef'
 
-export type AccordionButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+export type AccordionButtonProps = HTMLAtlasProps<'button'>
 
-export const AccordionButton = (props: AccordionButtonProps) => {
+export const AccordionButton = forwardRef<'button'>((props) => {
   const { api } = useAccordionContext()
   const { value, disabled } = useAccordionItemContext()
   return (
-    <button
+    <atlas.button
       {...api.getTriggerProps({
         value,
         disabled,
@@ -16,4 +17,4 @@ export const AccordionButton = (props: AccordionButtonProps) => {
       {...props}
     />
   )
-}
+})

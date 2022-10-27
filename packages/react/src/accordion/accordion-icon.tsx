@@ -1,7 +1,8 @@
-import { HTMLProps } from 'react'
+import { atlas, HTMLAtlasProps } from '../factory'
+import { forwardRef } from '../forwardRef'
 
-export type AccordionIconProps = HTMLProps<HTMLDivElement>
+export type AccordionIconProps = HTMLAtlasProps<'div'>
 
-export const AccordionIcon = (props: AccordionIconProps) => {
-  return <div {...props} />
-}
+export const AccordionIcon = forwardRef<'div'>((props, ref) => {
+  return <atlas.div {...props} ref={ref} />
+})
