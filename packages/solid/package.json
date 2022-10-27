@@ -2,15 +2,29 @@
   "name": "@atlas/solid",
   "version": "0.1.0",
   "description": "",
-  "main": "src/index.ts",
-  "scripts": {
-    "lint": "concurrently pnpm:lint:*",
-    "lint:eslint": "echo \"Warning: eslint not implemented - skipping\"",
-    "lint:types": "tsc --noEmit",
-    "test": "echo \"Warning: no test specified - skipping\""
-  },
   "keywords": [],
+  "homepage": "https://github.com/chakra-ui/atlas#readme",
   "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/atlas.git",
+    "directory": "packages/solid"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/atlas/issues"
+  },
+  "scripts": {
+    "lint": "",
+    "test": ""
+  },
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
     "@zag-js/solid": "0.1.17"
