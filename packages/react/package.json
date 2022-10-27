@@ -25,7 +25,8 @@
     "lint": "eslint --ext .ts,.tsx src",
     "storybook": "start-storybook -p 6006",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ci": "vitest --run"
   },
   "dependencies": {
     "@testing-library/user-event": "14.4.3",

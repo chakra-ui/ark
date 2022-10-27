@@ -4,6 +4,9 @@
     "lint": {
       "outputs": []
     },
+    "test:ci": {
+      "outputs": []
+    },
     "typecheck": {
       "outputs": []
     }
