@@ -1,7 +1,7 @@
-import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider } from './accordion-item-context'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import { useAccordionContext } from './accordion-context'
+import { AccordionItemProvider } from './accordion-item-context'
 
 export type AccordionItemProps = HTMLAtlasProps<'div'> & { disabled?: boolean; value: string }
 
