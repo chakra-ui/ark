@@ -1,14 +1,10 @@
-import { createContext, useContext } from 'solid-js'
+import { createContext } from '../createContext'
 
-const AccordionItemContext = createContext(
-  {} as {
-    value: string
-    disabled: boolean
+export type AccordionItemContext = { value: string; disabled?: boolean }
+
+export const [AccordionItemProvider, useAccordionItemContext] = createContext<AccordionItemContext>(
+  {
+    hookName: 'useAccordionItemContext',
+    providerName: '<AccordionItemProvider />',
   },
 )
-
-export const AccordionItemContextProvider = AccordionItemContext.Provider
-
-export function useAccordionItemContext() {
-  return useContext(AccordionItemContext)
-}

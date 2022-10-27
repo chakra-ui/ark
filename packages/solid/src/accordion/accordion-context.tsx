@@ -1,8 +1,9 @@
-import { createContext, useContext } from 'solid-js'
 import { UseAccordionReturn } from './use-accordion'
+import { createContext } from '../createContext'
 
-export const AccordionContext = createContext<UseAccordionReturn>()
+export type AccordionContext = UseAccordionReturn
 
-export function useAccordionContext() {
-  return useContext(AccordionContext)
-}
+export const [AccordionProvider, useAccordionContext] = createContext<AccordionContext>({
+  hookName: 'useAccordionContext',
+  providerName: '<AccordionProvider />',
+})

@@ -1,6 +1,6 @@
 import { ParentProps } from 'solid-js'
 import { useAccordionContext } from './accordion-context'
-import { AccordionItemContextProvider } from './accordion-item-context'
+import { AccordionItemProvider } from './accordion-item-context'
 
 export type AccordionItemProps = ParentProps<{
   value: string
@@ -13,10 +13,10 @@ export function AccordionItem(props: AccordionItemProps) {
   const api = useAccordionContext()
   const contextValue = { value, disabled: Boolean(disabled) }
   return (
-    <AccordionItemContextProvider value={contextValue}>
+    <AccordionItemProvider value={contextValue}>
       <div {...api?.().getItemProps({ value })} class={props.class}>
         {props.children}
       </div>
-    </AccordionItemContextProvider>
+    </AccordionItemProvider>
   )
 }

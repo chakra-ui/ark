@@ -1,7 +1,7 @@
 import { ParentProps } from 'solid-js'
 import type { Context as ZagContext } from '@zag-js/accordion'
 import { useAccordion } from './use-accordion'
-import { AccordionContext } from './accordion-context'
+import { AccordionProvider } from './accordion-context'
 
 type ClassNameProps = {
   class?: string
@@ -14,10 +14,10 @@ export function Accordion(props: AccordionProps) {
   // @see https://github.com/solidjs/solid/discussions/713#discussioncomment-1598197
   const api = useAccordion({ value: props.value, onChange: props.onChange })
   return (
-    <AccordionContext.Provider value={api}>
+    <AccordionProvider value={api}>
       <div {...api?.().rootProps} class={props.class}>
         {props.children}
       </div>
-    </AccordionContext.Provider>
+    </AccordionProvider>
   )
 }
