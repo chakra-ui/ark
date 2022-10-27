@@ -24,14 +24,16 @@
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
-    "test": ""
+    "test": "vitest"
   },
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
     "@zag-js/solid": "0.1.17"
   },
   "devDependencies": {
-    "solid-js": "1.6.0"
+    "solid-js": "1.6.0",
+    "solid-testing-library": "0.3.0",
+    "vite-plugin-solid": "2.3.10"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
