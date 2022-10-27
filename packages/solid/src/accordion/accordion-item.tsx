@@ -1,22 +1,18 @@
-import { ParentProps } from 'solid-js'
+import { JSX, splitProps } from 'solid-js'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
-export type AccordionItemProps = ParentProps<{
+export type AccordionItemProps = JSX.HTMLAttributes<HTMLDivElement> & {
   value: string
   disabled?: boolean
-  class?: string
-}>
+}
 
 export function AccordionItem(props: AccordionItemProps) {
-  const { value, disabled } = props
+  const [itemProps, htmlProps] = splitProps(props, ['value', 'disabled'])
   const api = useAccordionContext()
-  const contextValue = { value, disabled: Boolean(disabled) }
   return (
-    <AccordionItemProvider value={contextValue}>
-      <div {...api?.().getItemProps({ value })} class={props.class}>
-        {props.children}
-      </div>
+    <AccordionItemProvider value={itemProps}>
+      <div {...api?.().getItemProps({ value: itemProps.value })} {...htmlProps} />
     </AccordionItemProvider>
   )
 }

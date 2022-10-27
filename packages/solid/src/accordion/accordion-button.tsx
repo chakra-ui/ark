@@ -1,10 +1,8 @@
-import { ParentProps } from 'solid-js'
+import { JSX } from 'solid-js'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionButtonProps = ParentProps<{
-  class?: string
-}>
+export type AccordionButtonProps = JSX.HTMLAttributes<HTMLButtonElement>
 
 export function AccordionButton(props: AccordionButtonProps) {
   const api = useAccordionContext()

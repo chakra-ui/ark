@@ -2,11 +2,11 @@ import * as accordion from '@zag-js/accordion'
 import { useMachine, normalizeProps } from '@zag-js/solid'
 import { createMemo, createUniqueId } from 'solid-js'
 
-export type UseAccordionContext = Omit<accordion.Context, 'id'> & {
+export type UseAccordionProps = Omit<accordion.Context, 'id'> & {
   defaultValue?: accordion.Context['value']
 }
 
-export function useAccordion(context: UseAccordionContext) {
+export function useAccordion(context: UseAccordionProps) {
   const [state, send] = useMachine(
     accordion.machine({
       id: createUniqueId(),
