@@ -1,8 +1,8 @@
 import type { Context } from '@zag-js/accordion'
+import { atlas } from '../factory'
+import { forwardRef } from '../forwardRef'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion } from './use-accordion'
-import { forwardRef } from '../forwardRef'
-import { atlas } from '../factory'
 
 export type AccordionProps = Omit<Context, 'id'>
 
