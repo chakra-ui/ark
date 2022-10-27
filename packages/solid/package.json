@@ -22,7 +22,7 @@
     "url": "https://github.com/chakra-ui/atlas/issues"
   },
   "scripts": {
-    "lint": "",
+    "lint": "eslint --ext .ts,.tsx src",
     "test": ""
   },
   "dependencies": {
