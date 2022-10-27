@@ -9,7 +9,6 @@ export interface CreateContextOptions<T> {
   hookName?: string
   providerName?: string
   errorMessage?: string
-  name?: string
   defaultValue?: T
 }
 
