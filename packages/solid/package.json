@@ -23,21 +23,15 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
     "@zag-js/solid": "0.1.17"
   },
   "devDependencies": {
-    "jsdom": "20.0.1",
     "solid-js": "1.6.0",
-    "solid-testing-library": "0.3.0",
-    "typescript": "4.8.4",
-    "vite": "3.2.0",
-    "vite-plugin-solid": "2.3.10",
-    "vitest": "0.24.3"
+    "typescript": "4.8.4"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
