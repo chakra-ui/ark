@@ -8,7 +8,8 @@
   "scripts": {
     "prepare": "husky install",
     "lint": "turbo run lint",
-    "react": "pnpm --filter=@atlas/react"
+    "react": "pnpm --filter=@atlas/react",
+    "solid": "pnpm --filter=@atlas/solid"
   },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
