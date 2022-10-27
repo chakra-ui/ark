@@ -1,7 +1,7 @@
 import { createContext } from '../createContext'
 import { UsePinInputReturn } from './use-pin-input'
 
-export type PinInputContext = Omit<UsePinInputReturn, 'htmlProps'>
+export type PinInputContext = UsePinInputReturn['api']
 
 export const [PinInputProvider, usePinInputContext] = createContext<PinInputContext>({
   name: 'PinInputContext',

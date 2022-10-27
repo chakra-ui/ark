@@ -1,9 +1,11 @@
+import { atlas, HTMLAtlasProps } from '../factory'
+import { forwardRef } from '../forwardRef'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputField = { index: number }
+export type PinInputFieldProps = { index: number } & HTMLAtlasProps<'input'>
 
-export const PinInputField = (props: PinInputField) => {
-  const { index } = props
-  const { api } = usePinInputContext()
-  return <input {...api.getInputProps({ index })} />
-}
+export const PinInputField = forwardRef<'input', PinInputFieldProps>((props, ref) => {
+  const { index, ...rest } = props
+  const { getInputProps } = usePinInputContext()
+  return <atlas.input ref={ref} {...getInputProps({ index })} {...rest} />
+})
