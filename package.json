@@ -8,6 +8,7 @@
   "scripts": {
     "prepare": "husky install",
     "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "react": "pnpm --filter=@atlas/react",
     "solid": "pnpm --filter=@atlas/solid"
   },

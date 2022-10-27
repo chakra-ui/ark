@@ -3,6 +3,9 @@
   "pipeline": {
     "lint": {
       "outputs": []
+    },
+    "typecheck": {
+      "outputs": []
     }
   }
 }
