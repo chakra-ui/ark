@@ -39,11 +39,13 @@ importers:
       '@storybook/react': 6.5.13
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
+      '@testing-library/user-event': 14.4.3
       '@types/react': 18.0.23
       '@types/react-dom': 18.0.7
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 2.2.0
       '@zag-js/accordion': 0.1.15
+      '@zag-js/pin-input': 0.1.17
       '@zag-js/react': 0.1.18
       jsdom: 20.0.1
       react: 18.2.0
@@ -52,7 +54,9 @@ importers:
       vite: 3.2.0
       vitest: 0.24.3
     dependencies:
+      '@testing-library/user-event': 14.4.3
       '@zag-js/accordion': 0.1.15
+      '@zag-js/pin-input': 0.1.17
       '@zag-js/react': 0.1.18_react@18.2.0
     devDependencies:
       '@babel/core': 7.19.6
@@ -3468,6 +3472,13 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
+  /@testing-library/user-event/14.4.3:
+    resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
+    engines: {node: '>=12', npm: '>=6'}
+    peerDependencies:
+      '@testing-library/dom': '>=7.21.4'
+    dev: false
+
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
@@ -4135,6 +4146,13 @@ packages:
     dependencies:
       '@zag-js/store': 0.1.4
       klona: 2.0.5
+    dev: false
+
+  /@zag-js/pin-input/0.1.17:
+    resolution: {integrity: sha512-gsdnrWVgrHkgOJ5sQQdIc7OUmEhc0aLmAs1nyW5xFOOUnGjpyQ86aM0h/+ghNXqaRd5TX8JGVWl6ab8mCc3Riw==}
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/types': 0.2.7
     dev: false
 
   /@zag-js/react/0.1.18_react@18.2.0:

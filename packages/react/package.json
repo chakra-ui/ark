@@ -28,7 +28,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@testing-library/user-event": "14.4.3",
     "@zag-js/accordion": "0.1.15",
+    "@zag-js/pin-input": "0.1.17",
     "@zag-js/react": "0.1.18"
   },
   "devDependencies": {
