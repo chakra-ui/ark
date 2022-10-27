@@ -23,6 +23,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
+    "typecheck": "tsc --noEmit",
     "test": ""
   },
   "dependencies": {

@@ -24,6 +24,7 @@
   "scripts": {
     "lint": "eslint --ext .ts,.tsx src",
     "storybook": "start-storybook -p 6006",
+    "typecheck": "tsc --noEmit",
     "test": "vitest"
   },
   "dependencies": {
