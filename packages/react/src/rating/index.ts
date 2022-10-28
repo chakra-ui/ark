@@ -1,6 +1,5 @@
 export * from './rating'
 export * from './use-rating'
 export * from './rating-label'
-export * from './rating-item-group'
+export * from './rating-group'
 export * from './rating-item'
-export * from './rating-icon'

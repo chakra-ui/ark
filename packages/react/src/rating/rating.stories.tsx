@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/react'
 import { Rating } from './rating'
 import { RatingLabel } from './rating-label'
-import { RatingItemGroup } from './rating-item-group'
+import { RatingGroup } from './rating-group'
+import { RatingItem } from './rating-item'
 
 export default {
   title: 'React/Rating',
@@ -10,40 +11,23 @@ export default {
 export const basic = () => (
   <Rating max={5} defaultValue={3} allowHalf>
     <RatingLabel>Rating label</RatingLabel>
-    <RatingItemGroup
-      style={{ fontSize: '2em' }}
-      iconFull={iconFull}
-      iconEmpty={iconEmpty}
-      iconHalf={iconHalf}
-    />
+    <RatingGroup style={{ fontSize: '2em' }}>
+      {({ sizeArray }) =>
+        sizeArray.map((index) => (
+          <RatingItem key={index} index={index}>
+            {({ isHalf, isHighlighted }) => {
+              if (isHalf) return <IconHalf />
+              if (isHighlighted) return <IconFull />
+              return <IconEmpty />
+            }}
+          </RatingItem>
+        ))
+      }
+    </RatingGroup>
   </Rating>
 )
 
-export const detailed = () => (
-  <Rating max={5} defaultValue={3} allowHalf>
-    <RatingLabel>Rating label</RatingLabel>
-    <RatingItemGroup
-      style={{ fontSize: '2em' }}
-      renderIcon={({ isHighlighted, isHalf }) => (
-        <svg
-          viewBox="0 0 273 260"
-          data-part="star"
-          style={{
-            width: '1em',
-            color: isHalf ? '#ffe94f' : isHighlighted ? '#ffb400' : '#bdbdbd',
-          }}
-        >
-          <path
-            d="M136.5 0L177.83 86.614L272.977 99.1561L203.374 165.229L220.847 259.594L136.5 213.815L52.1528 259.594L69.6265 165.229L0.0233917 99.1561L95.1699 86.614L136.5 0Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      )}
-    />
-  </Rating>
-)
-
-const iconHalf = (
+const IconHalf = () => (
   <svg
     viewBox="0 0 273 260"
     data-part="star"
@@ -67,7 +51,7 @@ const iconHalf = (
   </svg>
 )
 
-const iconEmpty = (
+const IconEmpty = () => (
   <svg
     viewBox="0 0 273 260"
     data-part="star"
@@ -83,7 +67,7 @@ const iconEmpty = (
   </svg>
 )
 
-const iconFull = (
+const IconFull = () => (
   <svg
     viewBox="0 0 273 260"
     data-part="star"
