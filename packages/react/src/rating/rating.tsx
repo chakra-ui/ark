@@ -3,7 +3,7 @@ import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { RatingProvider } from './rating-context'
 
-export type RatingProps = HTMLAtlasProps<'input'> & UseRatingProps
+export type RatingProps = Omit<HTMLAtlasProps<'input'>, keyof UseRatingProps> & UseRatingProps
 
 export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
   const { api, htmlProps } = useRating(props)

@@ -3,7 +3,8 @@ import { forwardRef } from '../forwardRef'
 import { useRadioGroupContext } from './radio-group-context'
 import { RadioGroupItemContext, RadioGroupItemProvider } from './radio-group-item-context'
 
-export type RadioGroupItemProps = HTMLAtlasProps<'label'> & RadioGroupItemContext
+export type RadioGroupItemProps = Omit<HTMLAtlasProps<'label'>, keyof RadioGroupItemContext> &
+  RadioGroupItemContext
 
 export const RadioGroupItem = forwardRef<'label', RadioGroupItemProps>((props, ref) => {
   const { value, disabled, invalid, readonly, ...htmlProps } = props
