@@ -5,31 +5,31 @@ export type PressableProps = UsePressableProps & ComponentProps<'button'>
 
 export const Pressable = (props: PressableProps) => {
   const {
-    onPress,
     allowTextSelectionOnPress,
-    dir,
     cancelOnPointerExit,
+    dir,
+    disabled,
+    getRootNode,
     onLongPress,
+    onPress,
     onPressEnd,
     onPressStart,
     onPressUp,
-    disabled,
-    getRootNode,
     preventFocusOnPress,
     ...restProps
   } = props
 
   const api = usePressable({
-    onPress,
     allowTextSelectionOnPress,
-    dir,
     cancelOnPointerExit,
+    dir,
+    disabled,
+    getRootNode,
     onLongPress,
+    onPress,
     onPressEnd,
     onPressStart,
     onPressUp,
-    disabled,
-    getRootNode,
     preventFocusOnPress,
   })
 
