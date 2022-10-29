@@ -15,7 +15,7 @@ export const basic = () => {
     <>
       <p>Value: {value}</p>
       <Editable
-        placeholder="Enter some text"
+        placeholder={{ preview: 'preview', edit: 'blub' }}
         value={value}
         onChange={({ value }) => setValue(value)}
       >
