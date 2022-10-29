@@ -55,7 +55,7 @@ export function forwardRef<
   Props extends Record<string, unknown> = Record<string, unknown>,
 >(
   component: ForwardRefRenderFunction<
-    unknown,
+    never,
     Assign<ComponentProps<Component>, Props> & {
       as?: ElementType
     }
