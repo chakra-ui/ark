@@ -6,16 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 export type AccordionButtonProps = HTMLAtlasProps<'button'>
 
 export const AccordionButton = forwardRef<'button'>((props, ref) => {
-  const { api } = useAccordionContext()
-  const { value, disabled } = useAccordionItemContext()
-  return (
-    <atlas.button
-      ref={ref}
-      {...api.getTriggerProps({
-        value,
-        disabled,
-      })}
-      {...props}
-    />
-  )
+  const { getTriggerProps } = useAccordionContext()
+  const context = useAccordionItemContext()
+  return <atlas.button ref={ref} {...getTriggerProps(context)} {...props} />
 })
