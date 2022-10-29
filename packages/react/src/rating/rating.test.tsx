@@ -45,7 +45,7 @@ describe('Rating', () => {
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
     fireEvent.click(maxStarRadio)
 
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onChange).toHaveBeenNthCalledWith(1, { value: 5 }))
   })
 
   it('should update rating on click', async () => {
