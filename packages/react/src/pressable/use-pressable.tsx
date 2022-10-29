@@ -1,16 +1,43 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
 import * as pressable from '@zag-js/pressable'
+import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 
 export type UsePressableProps = Omit<pressable.Context, 'id'>
+export type UsePressableReturn = ReturnType<typeof usePressable>
 
-export function usePressable(props: UsePressableProps) {
+export const usePressable = (props: UsePressableProps) => {
+  const {
+    allowTextSelectionOnPress,
+    cancelOnPointerExit,
+    dir,
+    disabled,
+    getRootNode,
+    onLongPress,
+    onPress,
+    onPressEnd,
+    onPressStart,
+    onPressUp,
+    preventFocusOnPress,
+    ...htmlProps
+  } = props
+
   const [state, send] = useMachine(
     pressable.machine({
       id: useId(),
-      ...props,
+      allowTextSelectionOnPress,
+      cancelOnPointerExit,
+      dir,
+      disabled,
+      getRootNode,
+      onLongPress,
+      onPress,
+      onPressEnd,
+      onPressStart,
+      onPressUp,
+      preventFocusOnPress,
     }),
   )
 
-  return pressable.connect(state, send, normalizeProps)
+  const api = pressable.connect(state, send, normalizeProps)
+  return { api, htmlProps }
 }

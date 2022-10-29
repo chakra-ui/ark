@@ -1,5 +1,5 @@
-import { Pressable } from './pressable'
 import { render, screen } from '@testing-library/react'
+import { Pressable } from './pressable'
 
 describe('Pressable', () => {
   it('should have the correct aria role', () => {

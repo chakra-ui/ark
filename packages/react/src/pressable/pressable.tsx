@@ -1,38 +1,11 @@
-import { usePressable, UsePressableProps } from './use-pressable'
-import { forwardRef } from '../forwardRef'
 import { atlas, HTMLAtlasProps } from '../factory'
+import { forwardRef } from '../forwardRef'
+import { usePressable, UsePressableProps } from './use-pressable'
 
-export type PressableProps = UsePressableProps & HTMLAtlasProps<'button'>
+export type PressableProps = Omit<HTMLAtlasProps<'button'>, keyof UsePressableProps> &
+  UsePressableProps
 
 export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
-  const {
-    allowTextSelectionOnPress,
-    cancelOnPointerExit,
-    dir,
-    disabled,
-    getRootNode,
-    onLongPress,
-    onPress,
-    onPressEnd,
-    onPressStart,
-    onPressUp,
-    preventFocusOnPress,
-    ...restProps
-  } = props
-
-  const api = usePressable({
-    allowTextSelectionOnPress,
-    cancelOnPointerExit,
-    dir,
-    disabled,
-    getRootNode,
-    onLongPress,
-    onPress,
-    onPressEnd,
-    onPressStart,
-    onPressUp,
-    preventFocusOnPress,
-  })
-
-  return <atlas.button {...api.pressableProps} {...restProps} ref={ref} />
+  const { api, htmlProps } = usePressable(props)
+  return <atlas.button {...htmlProps} {...api.pressableProps} ref={ref} />
 })
