@@ -29,11 +29,11 @@
     "test:ci": "vitest --run"
   },
   "dependencies": {
-    "@testing-library/user-event": "14.4.3",
     "@zag-js/accordion": "0.1.15",
     "@zag-js/editable": "0.1.16",
     "@zag-js/pin-input": "0.1.17",
     "@zag-js/popover": "0.1.16",
+    "@zag-js/pressable": "0.2.2",
     "@zag-js/radio": "0.0.5",
     "@zag-js/rating": "0.1.17",
     "@zag-js/react": "0.1.18",
@@ -49,6 +49,7 @@
     "@storybook/react": "6.5.13",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "14.4.3",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "@types/testing-library__jest-dom": "5.14.5",

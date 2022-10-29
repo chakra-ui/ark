@@ -48,6 +48,7 @@ importers:
       '@zag-js/editable': 0.1.16
       '@zag-js/pin-input': 0.1.17
       '@zag-js/popover': 0.1.16
+      '@zag-js/pressable': 0.2.2
       '@zag-js/radio': 0.0.5
       '@zag-js/rating': 0.1.17
       '@zag-js/react': 0.1.18
@@ -59,11 +60,11 @@ importers:
       vite: 3.2.1
       vitest: 0.24.3
     dependencies:
-      '@testing-library/user-event': 14.4.3
       '@zag-js/accordion': 0.1.15
       '@zag-js/editable': 0.1.16
       '@zag-js/pin-input': 0.1.17
       '@zag-js/popover': 0.1.16
+      '@zag-js/pressable': 0.2.2
       '@zag-js/radio': 0.0.5
       '@zag-js/rating': 0.1.17
       '@zag-js/react': 0.1.18_react@18.2.0
@@ -78,6 +79,7 @@ importers:
       '@storybook/react': 6.5.13_ffaxjev6yuaygxxxxrbmywytji
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+      '@testing-library/user-event': 14.4.3
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
       '@types/testing-library__jest-dom': 5.14.5
@@ -3497,7 +3499,7 @@ packages:
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
-    dev: false
+    dev: true
 
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -4213,6 +4215,13 @@ packages:
     resolution: {integrity: sha512-P6EzpxHvJRaQFVft6Ko9LlgKh5jX+/3yxCVIkrweXpmVRPPukzj+0uZK3u4i4c1SWC/7r7AIRRxrwxf4DEDeOg==}
     dependencies:
       '@floating-ui/dom': 1.0.1
+    dev: false
+
+  /@zag-js/pressable/0.2.2:
+    resolution: {integrity: sha512-HGl1gx3IO/UHCZLL4UdiCGDs8VcaQyGfJyC2IwepHsurUrjxPkzFfUBkNrZuOf30Tqwgf6hzWQ2YXd288vV6WA==}
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/types': 0.2.7
     dev: false
 
   /@zag-js/radio/0.0.5:
