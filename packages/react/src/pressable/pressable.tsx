@@ -1,9 +1,10 @@
-import type { ComponentProps } from 'react'
 import { usePressable, UsePressableProps } from './use-pressable'
+import { forwardRef } from '../forwardRef'
+import { atlas, HTMLAtlasProps } from '../factory'
 
-export type PressableProps = UsePressableProps & ComponentProps<'button'>
+export type PressableProps = UsePressableProps & HTMLAtlasProps<'button'>
 
-export const Pressable = (props: PressableProps) => {
+export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
   const {
     allowTextSelectionOnPress,
     cancelOnPointerExit,
@@ -33,5 +34,5 @@ export const Pressable = (props: PressableProps) => {
     preventFocusOnPress,
   })
 
-  return <button {...api.pressableProps} {...restProps} />
-}
+  return <atlas.button {...api.pressableProps} {...restProps} ref={ref} />
+})
