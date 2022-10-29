@@ -31,9 +31,13 @@
   "dependencies": {
     "@testing-library/user-event": "14.4.3",
     "@zag-js/accordion": "0.1.15",
+    "@zag-js/editable": "0.1.16",
     "@zag-js/pin-input": "0.1.17",
+    "@zag-js/popover": "0.1.16",
+    "@zag-js/radio": "0.0.5",
     "@zag-js/rating": "0.1.17",
-    "@zag-js/react": "0.1.18"
+    "@zag-js/react": "0.1.18",
+    "@zag-js/tooltip": "0.1.16"
   },
   "devDependencies": {
     "@babel/core": "7.19.6",
