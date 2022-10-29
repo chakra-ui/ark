@@ -1,5 +1,5 @@
 export { Popover } from './popover'
-export type { PopoverProps } from './Popover'
+export type { PopoverProps } from './popover'
 export { PopoverArrow } from './popover-arrow'
 export type { PopoverArrowProps } from './popover-arrow'
 export { PopoverCloseButton } from './popover-close-button'

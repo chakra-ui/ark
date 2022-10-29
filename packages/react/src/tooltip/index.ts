@@ -1,5 +1,5 @@
 export { Tooltip } from './tooltip'
-export type { TooltipProps } from './Tooltip'
+export type { TooltipProps } from './tooltip'
 export { TooltipArrow } from './tooltip-arrow'
 export type { TooltipArrowProps } from './tooltip-arrow'
 export { TooltipContent } from './tooltip-content'
