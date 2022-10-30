@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseMenuReturn } from './use-menu'
+import type { UseMenuReturn } from './use-menu'
 
 export type MenuContext = Pick<UseMenuReturn, 'api' | 'machine'>
 

@@ -3,8 +3,8 @@ import { forwardRef } from '../forwardRef'
 import { useMenuContext } from './menu-context'
 import { Assign, splitProps } from '../splitProps'
 import * as React from 'react'
-import { ReactNode } from 'react'
-import { connect } from '@zag-js/menu'
+import type { ReactNode } from 'react'
+import type { connect } from '@zag-js/menu'
 import { runIfFn } from '../run-if-fn'
 
 export type MenuItemOptionState = { isActive: boolean }
