@@ -1,8 +1,8 @@
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import type { Assign } from '../split-props'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
-import type { Assign } from '../split-props'
 
 export type AccordionProps = Assign<HTMLAtlasProps<'div'>, UseAccordionProps>
 

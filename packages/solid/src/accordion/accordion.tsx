@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 import { JSX, splitProps } from 'solid-js'
-import { useAccordion, UseAccordionProps } from './use-accordion'
 import { AccordionProvider } from './accordion-context'
+import { useAccordion, UseAccordionProps } from './use-accordion'
 
 export type AccordionProps = UseAccordionProps & JSX.HTMLAttributes<HTMLDivElement>
 

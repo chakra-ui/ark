@@ -1,8 +1,8 @@
 import * as rating from '@zag-js/rating'
-import { useId } from 'react'
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { splitProps } from '../split-props'
+import { useId } from 'react'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
+import { splitProps } from '../split-props'
 
 export type UseRatingProps = Omit<rating.Context, 'id'> & { defaultValue?: rating.Context['value'] }
 export type UseRatingReturn = ReturnType<typeof useRating>

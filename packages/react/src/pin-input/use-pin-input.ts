@@ -1,8 +1,8 @@
 import * as pinInput from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { splitProps } from '../split-props'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
+import { splitProps } from '../split-props'
 
 export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
   defaultValue?: pinInput.Context['value']

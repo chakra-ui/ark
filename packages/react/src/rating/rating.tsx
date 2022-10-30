@@ -1,7 +1,7 @@
-import { useRating, UseRatingProps } from './use-rating'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { RatingProvider } from './rating-context'
+import { useRating, UseRatingProps } from './use-rating'
 
 export type RatingProps = Omit<HTMLAtlasProps<'input'>, keyof UseRatingProps> & UseRatingProps
 

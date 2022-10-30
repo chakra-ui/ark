@@ -1,7 +1,7 @@
+import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { RatingContext, useRatingContext } from './rating-context'
-import type { ReactNode } from 'react'
 
 export type RatingGroupProps = Omit<HTMLAtlasProps<'div'>, 'children'> & {
   children: ReactNode | ((context: RatingContext) => ReactNode)

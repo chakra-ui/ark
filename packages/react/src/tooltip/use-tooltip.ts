@@ -1,8 +1,8 @@
-import * as tooltip from '@zag-js/tooltip'
 import { normalizeProps, useMachine } from '@zag-js/react'
+import * as tooltip from '@zag-js/tooltip'
 import { useId } from 'react'
-import { splitProps } from '../split-props'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
+import { splitProps } from '../split-props'
 
 export type UseTooltipProps = Omit<tooltip.Context, 'id'>
 
