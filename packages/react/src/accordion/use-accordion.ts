@@ -7,6 +7,7 @@ import { splitProps } from '../split-props'
 export type UseAccordionProps = Omit<accordion.Context, 'id'> & {
   defaultValue?: accordion.Context['value']
 }
+export type UseAccordionReturn = ReturnType<typeof useAccordion>
 
 export const useAccordion = (props: UseAccordionProps) => {
   const [{ value, defaultValue }, accordionProps, htmlProps] = splitProps(
@@ -28,5 +29,3 @@ export const useAccordion = (props: UseAccordionProps) => {
   const [state, send] = useMachine(accordion.machine(initialContext), { context })
   return { api: accordion.connect(state, send, normalizeProps), htmlProps }
 }
-
-export type UseAccordionReturn = ReturnType<typeof useAccordion>

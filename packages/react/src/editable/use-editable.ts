@@ -1,8 +1,8 @@
 import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { splitProps } from '../split-props'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
+import { splitProps } from '../split-props'
 
 export type UseEditableProps = Omit<editable.Context, 'id'> & {
   defaultValue?: editable.Context['value']
