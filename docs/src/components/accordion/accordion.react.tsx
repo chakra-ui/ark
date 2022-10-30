@@ -3,7 +3,7 @@ import { Accordion, AccordionButton, AccordionItem, AccordionPanel } from '@atla
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion value="panel-1">
+    <Accordion defaultValue="panel-1">
       {items.map((item, id) => (
         <AccordionItem key={id} value={item}>
           <AccordionButton>{item} trigger</AccordionButton>

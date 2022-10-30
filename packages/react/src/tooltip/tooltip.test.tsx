@@ -8,7 +8,7 @@ import { TooltipPositioner } from './tooltip-positioner'
 import { TooltipTrigger } from './tooltip-trigger'
 
 const Component = (props: TooltipProps) => (
-  <Tooltip {...props}>
+  <Tooltip openDelay={0} closeDelay={0} {...props}>
     <TooltipTrigger>
       <button>hover me</button>
     </TooltipTrigger>
