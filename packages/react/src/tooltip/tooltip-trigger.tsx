@@ -1,15 +1,14 @@
-import { Children, cloneElement, PropsWithChildren } from 'react'
+import { cloneElement, ReactElement } from 'react'
+import { atlas } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipTriggerProps = PropsWithChildren
+export type TooltipTriggerProps = { children: ReactElement | string | number }
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const { children } = props
-  const child = Children.only(children) as React.ReactElement & {
-    ref?: React.Ref<unknown>
-  }
   const { triggerProps } = useTooltipContext()
-  const trigger = cloneElement(child, triggerProps)
 
-  return <>{trigger}</>
+  return typeof children === 'string' || typeof children === 'number'
+    ? cloneElement(<atlas.span>{children}</atlas.span>, triggerProps)
+    : cloneElement(children, triggerProps)
 }
