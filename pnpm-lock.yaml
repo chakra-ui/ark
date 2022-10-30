@@ -107,11 +107,13 @@ importers:
   packages/solid:
     specifiers:
       '@zag-js/accordion': 0.1.15
+      '@zag-js/pin-input': 0.1.17
       '@zag-js/solid': 0.1.17
       solid-js: 1.6.1
       typescript: 4.8.4
     dependencies:
       '@zag-js/accordion': 0.1.15
+      '@zag-js/pin-input': 0.1.17
       '@zag-js/solid': 0.1.17_solid-js@1.6.1
     devDependencies:
       solid-js: 1.6.1

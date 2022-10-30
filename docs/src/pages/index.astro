@@ -2,6 +2,7 @@
 import { Basic,Collapsible,Disabled,Multiple } from '../components/accordion/accordion.react';
 import { Basic as SolidBasic } from '../components/accordion/accordion.solid';
 import Layout from '../layouts/Layout.astro';
+import {Basic as SolidBasicPinInput} from '../components/pin-input/pin-input.solid'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -18,6 +19,8 @@ import Layout from '../layouts/Layout.astro';
     <h1>SolidJS</h1>
     <h2>Basic</h2>
     <SolidBasic client:load />
+    <h2>PinInput</h2>
+    <SolidBasicPinInput client:load />
   </main>
 </Layout>
 
