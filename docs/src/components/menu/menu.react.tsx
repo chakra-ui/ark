@@ -1,6 +1,7 @@
 import {
   Menu,
   MenuContent,
+  MenuContextTrigger,
   MenuItem,
   MenuPositioner,
   MenuProps,
@@ -58,11 +59,11 @@ export const ReactNestedMenu = (props: MenuProps) => {
 export const ReactNestedContextMenu = (props: MenuProps) => {
   return (
     <Menu {...props}>
-      <MenuTrigger>
+      <MenuContextTrigger>
         <button>Open</button>
-      </MenuTrigger>
+      </MenuContextTrigger>
       <MenuPositioner>
-        <MenuContent>
+        <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
           <MenuItem id="new-tab">New tab</MenuItem>
           <MenuItem id="new-window">New window</MenuItem>
           <MenuItem id="print">Print</MenuItem>
@@ -71,7 +72,7 @@ export const ReactNestedContextMenu = (props: MenuProps) => {
           <NestedMenu {...props}>
             <MenuItem id="share">Share...</MenuItem>
             <MenuPositioner>
-              <MenuContent>
+              <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
                 <MenuItem id="twitter">Twitter</MenuItem>
                 <MenuItem id="message">Message</MenuItem>
               </MenuContent>
