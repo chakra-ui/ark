@@ -23,7 +23,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Dialog       | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | 🟢    | ⚪    | ⚪  |
-| Menu         | 🟡    | ⚪    | ⚪  |
+| Menu         | 🟢    | ⚪    | ⚪  |
 | Number Input | 🟢    | ⚪    | ⚪  |
 | Pagination   | 🟢    | ⚪    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
