@@ -1,3 +1,4 @@
+/** @jsxImportSource solid-js */
 import { UseAccordionReturn } from './use-accordion'
 import { createContext } from '../createContext'
 
