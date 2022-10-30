@@ -2,7 +2,7 @@
  * All html and svg elements for chakra components.
  * This is mostly for `chakra.<element>` syntax.
  */
-import { ElementType } from 'react'
+import type { ElementType } from 'react'
 import { ComponentWithAs, forwardRef, PropsOf } from './forwardRef'
 
 export type DOMElements = keyof JSX.IntrinsicElements

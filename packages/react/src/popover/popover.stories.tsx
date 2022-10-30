@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { Popover } from './popover'
 import { PopoverArrow } from './popover-arrow'
 import { PopoverCloseButton } from './popover-close-button'

@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UsePinInputReturn } from './use-pin-input'
+import type { UsePinInputReturn } from './use-pin-input'
 
 export type PinInputContext = UsePinInputReturn['api']
 

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { PinInput } from './pin-input'
 import { PinInputField } from './pin-input-field'
 

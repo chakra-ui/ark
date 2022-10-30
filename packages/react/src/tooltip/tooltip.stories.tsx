@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { Tooltip } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipContent } from './tooltip-content'

@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
-import { JSX } from 'solid-js'
-import { useAccordionItemContext } from './accordion-item-context'
+import type { JSX } from 'solid-js'
 import { useAccordionContext } from './accordion-context'
+import { useAccordionItemContext } from './accordion-item-context'
 
 export type AccordionPanelProps = JSX.HTMLAttributes<HTMLDivElement>
 

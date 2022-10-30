@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { Accordion } from './accordion'
 import { AccordionButton } from './accordion-button'
 import { AccordionItem } from './accordion-item'

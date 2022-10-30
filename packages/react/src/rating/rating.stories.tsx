@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { Rating } from './rating'
 import { RatingLabel } from './rating-label'
 import { RatingGroup } from './rating-group'

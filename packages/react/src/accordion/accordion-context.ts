@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseAccordionReturn } from './use-accordion'
+import type { UseAccordionReturn } from './use-accordion'
 
 export type AccordionContext = UseAccordionReturn['api']
 
