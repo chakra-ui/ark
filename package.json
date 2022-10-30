@@ -11,6 +11,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
+    "doc": "pnpm --filter=@atlas/docs",
     "react": "pnpm --filter=@atlas/react",
     "solid": "pnpm --filter=@atlas/solid"
   },

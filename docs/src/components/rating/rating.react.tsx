@@ -1,12 +1,4 @@
-import type { Meta } from '@storybook/react'
-import { Rating } from './rating'
-import { RatingLabel } from './rating-label'
-import { RatingGroup } from './rating-group'
-import { RatingItem } from './rating-item'
-
-export default {
-  title: 'React/Rating',
-} as Meta
+import { Rating, RatingLabel, RatingGroup, RatingItem } from '@atlas/react'
 
 export const basic = () => (
   <Rating max={5} defaultValue={3} allowHalf>

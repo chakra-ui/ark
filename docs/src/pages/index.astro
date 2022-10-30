@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { ReactAccordion, SolidAccordion } from '../components/accordion'
+import { ReactTooltip } from '../components/tooltip'
+
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>React</h1>
     <ReactAccordion client:load />
+    <ReactTooltip client:load />
     <h1>SolidJS</h1>
     <SolidAccordion client:load />
   </main>

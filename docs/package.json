@@ -1,6 +1,6 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
+  "name": "@atlas/docs",
+  "version": "0.1.0",
   "description": "",
   "scripts": {
     "dev": "astro dev",

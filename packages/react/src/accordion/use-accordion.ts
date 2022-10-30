@@ -2,7 +2,9 @@ import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 
-export const useAccordion = (props: Omit<accordion.Context, 'id'>) => {
+export type UseAccordionProps = Omit<accordion.Context, 'id'>
+
+export const useAccordion = (props: UseAccordionProps) => {
   const { collapsible, dir, disabled, getRootNode, ids, multiple, onChange, value, ...htmlProps } =
     props
   const [state, send] = useMachine(
