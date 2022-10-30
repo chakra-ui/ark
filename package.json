@@ -20,7 +20,7 @@
     "@commitlint/config-conventional": "17.1.0",
     "@typescript-eslint/eslint-plugin": "5.41.0",
     "@typescript-eslint/parser": "5.41.0",
-    "@types/node": "18.11.7",
+    "@types/node": "18.11.8",
     "eslint": "8.26.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
