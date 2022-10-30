@@ -1,10 +1,10 @@
-import type { Context } from '@zag-js/accordion'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion } from './use-accordion'
+import { useAccordion, UseAccordionProps } from './use-accordion'
+import { Assign } from '../split-props'
 
-export type AccordionProps = Omit<Context, 'id'> & HTMLAtlasProps<'div'>
+export type AccordionProps = Assign<HTMLAtlasProps<'div'>, UseAccordionProps>
 
 export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
   const { api, htmlProps } = useAccordion(props)
