@@ -1,17 +1,22 @@
-import type { connect } from '@zag-js/menu'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
+import type { UseMenuReturn } from './use-menu'
 
 export type MenuItemProps = Assign<
-  HTMLAtlasProps<'div'>,
-  Parameters<ReturnType<typeof connect>['getItemProps']>[0]
+  HTMLAtlasProps<'button'>,
+  Parameters<UseMenuReturn['api']['getItemProps']>[0]
 >
 
-export const MenuItem = forwardRef<'div', MenuItemProps>((props, ref) => {
+export const MenuItem = forwardRef<'button', MenuItemProps>((props, ref) => {
   const { api } = useMenuContext()
-  const [menuItemProps, htmlProps] = splitProps(props, ['id'])
+  const [menuItemProps, htmlProps] = splitProps(props, [
+    'id',
+    'disabled',
+    'valueText',
+    'closeOnSelect',
+  ])
 
-  return <atlas.div {...api.getItemProps(menuItemProps)} {...htmlProps} ref={ref} />
+  return <atlas.button {...api.getItemProps(menuItemProps)} {...htmlProps} ref={ref} />
 })
