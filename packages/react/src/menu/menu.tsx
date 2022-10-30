@@ -3,7 +3,7 @@ import { useMenu, UseMenuProps } from './use-menu'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
 import { MenuProvider } from './menu-context'
-import { Assign } from '../splitProps'
+import type { Assign } from '../splitProps'
 
 export type MenuProps = Assign<HTMLAtlasProps<'div'>, UseMenuProps>
 
