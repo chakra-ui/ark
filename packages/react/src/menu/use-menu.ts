@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
 import { OptionalId, splitProps } from '../split-props'
 
-export type UseMenuProps = OptionalId<menu.Context> & { isOpen?: boolean }
+export type UseMenuProps = OptionalId<menu.Context>
 
 export const useMenu = <Props extends UseMenuProps>(props: Props) => {
   const [menuProps, htmlProps] = splitProps(props, [
