@@ -1,3 +1,9 @@
+/**
+ * Assign property types from right to left.
+ * Handy for overriding e.g. `onChange` from an HTMLElement with your own type
+ */
+export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
+
 export type SplitProps<T, K extends (readonly (keyof T)[])[]> = [
   ...{
     [P in keyof K]: P extends `${number}`
