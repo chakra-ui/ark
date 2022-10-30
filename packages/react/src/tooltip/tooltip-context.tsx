@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseTooltipReturn } from './use-tooltip'
+import type { UseTooltipReturn } from './use-tooltip'
 
 export type TooltipContext = UseTooltipReturn['api']
 

@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseRadioGroupReturn } from './use-radio-group'
+import type { UseRadioGroupReturn } from './use-radio-group'
 
 export type RadioGroupContext = UseRadioGroupReturn['api']
 

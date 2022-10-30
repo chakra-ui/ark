@@ -1,5 +1,6 @@
+/** @jsxImportSource solid-js */
 import * as accordion from '@zag-js/accordion'
-import { useMachine, normalizeProps } from '@zag-js/solid'
+import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId } from 'solid-js'
 
 export type UseAccordionProps = Omit<accordion.Context, 'id'> & {

@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react'
-import { Accordion } from './accordion'
-import { AccordionButton } from './accordion-button'
-import { AccordionItem } from './accordion-item'
-import { AccordionPanel } from './accordion-panel'
+import { Accordion, AccordionButton, AccordionItem, AccordionPanel } from '@atlas/react'
 
-export default {
-  title: 'React/Accordion',
-} as Meta
-
-export const basic = () => {
+export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion value="panel-1">
@@ -22,7 +14,7 @@ export const basic = () => {
   )
 }
 
-export const collapsible = () => {
+export const Collapsible = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion collapsible>
@@ -36,7 +28,7 @@ export const collapsible = () => {
   )
 }
 
-export const multiple = () => {
+export const Multiple = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion multiple>
@@ -50,7 +42,7 @@ export const multiple = () => {
   )
 }
 
-export const disabled = () => {
+export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion multiple>

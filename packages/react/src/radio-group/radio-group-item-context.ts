@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { connect } from '@zag-js/radio'
+import type { connect } from '@zag-js/radio'
 
 export type RadioGroupItemContext = Parameters<ReturnType<typeof connect>['getItemProps']>[0]
 

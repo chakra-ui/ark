@@ -11,6 +11,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "noEmit": false
+    "noEmit": false,
+    "importsNotUsedAsValues": "error"
   }
 }

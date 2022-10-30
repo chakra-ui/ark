@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "docs"
   ],
   "scripts": {
     "prepare": "husky install",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
+    "doc": "pnpm --filter=@atlas/docs",
     "react": "pnpm --filter=@atlas/react",
     "solid": "pnpm --filter=@atlas/solid"
   },

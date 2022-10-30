@@ -1,17 +1,14 @@
-import { Meta } from '@storybook/react'
+import {
+  Editable,
+  EditableArea,
+  EditableCancelButton,
+  EditableControls,
+  EditableEditButton,
+  EditableInput,
+  EditablePreview,
+  EditableSubmitButton,
+} from '@atlas/react'
 import { useState } from 'react'
-import { Editable } from './editable'
-import { EditableArea } from './editable-area'
-import { EditableCancelButton } from './editable-cancel-button'
-import { EditableControls } from './editable-controls'
-import { EditableEditButton } from './editable-edit-button'
-import { EditableInput } from './editable-input'
-import { EditablePreview } from './editable-preview'
-import { EditableSubmitButton } from './editable-submit-button'
-
-export default {
-  title: 'React/Editable',
-} as Meta
 
 export const basic = () => {
   const [value, setValue] = useState('')

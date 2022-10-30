@@ -1,5 +1,6 @@
-import { UseAccordionReturn } from './use-accordion'
+/** @jsxImportSource solid-js */
 import { createContext } from '../createContext'
+import type { UseAccordionReturn } from './use-accordion'
 
 export type AccordionContext = UseAccordionReturn
 

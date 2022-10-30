@@ -1,15 +1,12 @@
-import { Meta } from '@storybook/react'
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemInput,
+  RadioGroupItemLabel,
+  RadioGroupLabel,
+} from '@atlas/react'
 import { useState } from 'react'
-import { RadioGroup } from './radio-group'
-import { RadioGroupItem } from './radio-group-item'
-import { RadioGroupItemControl } from './radio-group-item-control'
-import { RadioGroupItemInput } from './radio-group-item-input'
-import { RadioGroupItemLabel } from './radio-group-item-label'
-import { RadioGroupLabel } from './radio-group-label'
-
-export default {
-  title: 'React/Radio Group',
-} as Meta
 
 const options = [
   { id: 'apple', label: 'Apples' },

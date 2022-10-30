@@ -1,4 +1,5 @@
-import { JSX } from 'solid-js'
+/** @jsxImportSource solid-js */
+import type { JSX } from 'solid-js'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 

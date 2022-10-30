@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import { PopoverProvider } from './popover-context'
 import { usePopover, UsePopoverProps } from './use-popover'
 

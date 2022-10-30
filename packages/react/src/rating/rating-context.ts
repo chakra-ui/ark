@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseRatingReturn } from './use-rating'
+import type { UseRatingReturn } from './use-rating'
 
 export type RatingContext = UseRatingReturn['api']
 

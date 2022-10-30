@@ -3,6 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 
 export type UseEditableProps = Omit<editable.Context, 'id'>
+export type UseEditableReturn = ReturnType<typeof useEditable>
 
 export const useEditable = (props: UseEditableProps) => {
   const {
@@ -57,5 +58,3 @@ export const useEditable = (props: UseEditableProps) => {
   const api = editable.connect(state, send, normalizeProps)
   return { api, htmlProps }
 }
-
-export type UseEditableReturn = ReturnType<typeof useEditable>

@@ -3,7 +3,7 @@
 | Accordion    | 🟢    | 🟢    | ⚪  |
 | Checkbox     | ⚪    | ⚪    | ⚪  |
 | Dialog       | ⚪    | ⚪    | ⚪  |
-| Editable     | ⚪    | ⚪    | ⚪  |
+| Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | ⚪    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |
 | Number Input | ⚪    | ⚪    | ⚪  |
@@ -11,7 +11,7 @@
 | Pin Input    | 🟢    | ⚪    | ⚪  |
 | Popover      | 🟢    | ⚪    | ⚪  |
 | Pressable    | 🟢    | ⚪    | ⚪  |
-| Radio Group  | ⚪    | ⚪    | ⚪  |
+| Radio Group  | 🟢    | ⚪    | ⚪  |
 | Rating       | 🟢    | ⚪    | ⚪  |
 | Slider       | ⚪    | ⚪    | ⚪  |
 | Tabs         | ⚪    | ⚪    | ⚪  |
