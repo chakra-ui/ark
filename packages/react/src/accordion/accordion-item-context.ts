@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { connect } from '@zag-js/accordion'
+import type { connect } from '@zag-js/accordion'
 
 export type AccordionItemContext = Parameters<ReturnType<typeof connect>['getItemProps']>[0]
 

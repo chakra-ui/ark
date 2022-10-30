@@ -1,5 +1,5 @@
 import { createContext } from '../createContext'
-import { UseEditableReturn } from './use-editable'
+import type { UseEditableReturn } from './use-editable'
 
 export type EditableContext = UseEditableReturn['api']
 
