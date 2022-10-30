@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
+    "@zag-js/pin-input": "0.1.17",
     "@zag-js/solid": "0.1.17"
   },
   "devDependencies": {

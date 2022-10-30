@@ -8,7 +8,7 @@
 | Menu         | ⚪    | ⚪    | ⚪  |
 | Number Input | ⚪    | ⚪    | ⚪  |
 | Pagination   | ⚪    | ⚪    | ⚪  |
-| Pin Input    | 🟢    | ⚪    | ⚪  |
+| Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | ⚪    | ⚪  |
 | Pressable    | 🟢    | ⚪    | ⚪  |
 | Radio Group  | 🟢    | ⚪    | ⚪  |
