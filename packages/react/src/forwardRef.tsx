@@ -20,9 +20,9 @@ export type OmitCommonProps<
   OmitAdditionalProps extends string | number | symbol = never,
 > = Omit<Target, 'transition' | 'as' | 'color' | OmitAdditionalProps>
 
-export type Assign<
-  SourceProps extends object = Record<string, unknown>,
-  OverrideProps extends object = Record<string, unknown>,
+export type AssignCommon<
+  SourceProps extends Record<string, unknown> = Record<string, unknown>,
+  OverrideProps extends Record<string, unknown> = Record<string, unknown>,
 > = OmitCommonProps<SourceProps, keyof OverrideProps> & OverrideProps
 
 export type MergeWithAs<
@@ -30,8 +30,8 @@ export type MergeWithAs<
   AsProps extends Record<string, unknown>,
   AdditionalProps extends Record<string, unknown> = Record<string, unknown>,
   AsComponent extends ElementType = ElementType,
-> = Assign<ComponentProps, AdditionalProps> &
-  Assign<AsProps, AdditionalProps> & {
+> = AssignCommon<ComponentProps, AdditionalProps> &
+  AssignCommon<AsProps, AdditionalProps> & {
     as?: AsComponent
   }
 
@@ -56,7 +56,7 @@ export function forwardRef<
 >(
   component: ForwardRefRenderFunction<
     never,
-    Assign<ComponentProps<Component>, Props> & {
+    AssignCommon<ComponentProps<Component>, Props> & {
       as?: ElementType
     }
   >,
