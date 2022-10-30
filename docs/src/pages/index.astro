@@ -1,16 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { ReactAccordion, SolidAccordion } from '../components/accordion'
-import { ReactTooltip } from '../components/tooltip'
-
+import { Basic,Collapsible,Disabled,Multiple } from '../components/accordion/accordion.react';
+import { Basic as SolidBasic } from '../components/accordion/accordion.solid';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>React</h1>
-    <ReactAccordion client:load />
+    <h1>React Accordion</h1>
+    <h2>Basic</h2>
+    <Basic client:load/>
+    <h2>Collapsible</h2>
+    <Collapsible client:load/>
+    <h2>Disabled</h2>
+    <Disabled client:load/>
+    <h2>Multiple</h2>
+    <Multiple client:load/>
     <h1>SolidJS</h1>
-    <SolidAccordion client:load />
+    <h2>Basic</h2>
+    <SolidBasic client:load />
   </main>
 </Layout>
 
