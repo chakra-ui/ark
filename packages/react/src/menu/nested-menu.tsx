@@ -16,10 +16,8 @@ export const NestedMenu = forwardRef<'div', NestedMenuProps>((props, ref) => {
   } = useMenu(props)
 
   React.useEffect(() => {
-    setTimeout(() => {
-      parentApi.setChild(machine)
-      api.setParent(parentMachine)
-    })
+    parentApi.setChild(machine)
+    api.setParent(parentMachine)
   }, [])
 
   const menuContextValue = React.useMemo(() => ({ api, machine }), [api, machine])
