@@ -4,10 +4,10 @@ import { useId } from 'react'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
 import { splitProps } from '../split-props'
 
+export type UseEditableReturn = ReturnType<typeof useEditable>
 export type UseEditableProps = Omit<editable.Context, 'id'> & {
   defaultValue?: editable.Context['value']
 }
-export type UseEditableReturn = ReturnType<typeof useEditable>
 
 export const useEditable = (props: UseEditableProps) => {
   const [{ value, defaultValue }, editableProps, htmlProps] = splitProps(
