@@ -4687,6 +4687,15 @@ packages:
     resolution: {integrity: sha512-vj+roRkCI5NogZApuporXoWMI5uq57zWzFGsQUL2Yl91Oq7l448IvWzmmoSi+Tsgd4aGO7hwbJCvp3oqjCa5JA==}
     dev: false
 
+  /@zag-js/menu/0.1.16:
+    resolution: {integrity: sha512-LT6VuUMb+HlizHCuZOMo6Vagc4BDaYts1VcRJ1s3Hb9KQm5aP8hQvrHkDW/y58p9CrqqfqC1UdcB3nZkmHZTKw==}
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/dismissable': 0.1.6
+      '@zag-js/popper': 0.1.13
+      '@zag-js/types': 0.2.7
+    dev: false
+
   /@zag-js/live-region/0.2.0:
     resolution: {integrity: sha512-fhG3YeI7EfXbSm9+mkx6nKLhMjB1NQgqmuoskNidplySaRa+XXCMfZLILbGr9tQYX/73Q+fln0iia6g2xIVeFA==}
     dev: false
