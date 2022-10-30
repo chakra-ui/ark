@@ -10,7 +10,7 @@ export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
   const { api, htmlProps } = useAccordion(props)
 
   return (
-    <AccordionProvider value={{ api }}>
+    <AccordionProvider value={api}>
       <atlas.div {...api.rootProps} {...htmlProps} ref={ref} />
     </AccordionProvider>
   )
