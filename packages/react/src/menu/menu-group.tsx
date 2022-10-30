@@ -1,9 +1,8 @@
+import { useId } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import { splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
-import { splitProps } from '../splitProps'
-import * as React from 'react'
-import { useId } from 'react'
 
 export type MenuGroupProps = HTMLAtlasProps<'div'>
 

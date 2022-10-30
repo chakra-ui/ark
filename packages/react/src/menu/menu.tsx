@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useMenu, UseMenuProps } from './use-menu'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import type { Assign } from '../split-props'
 import { MenuProvider } from './menu-context'
-import type { Assign } from '../splitProps'
+import { useMenu, UseMenuProps } from './use-menu'
 
 export type MenuProps = Assign<HTMLAtlasProps<'div'>, UseMenuProps>
 

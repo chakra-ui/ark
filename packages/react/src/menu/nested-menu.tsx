@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import type { Assign } from '../split-props'
 import { MenuProvider, useMenuContext } from './menu-context'
 import { useMenu, UseMenuProps } from './use-menu'
-import type { Assign } from '../splitProps'
 
 export type NestedMenuProps = Assign<HTMLAtlasProps<'div'>, UseMenuProps>
 

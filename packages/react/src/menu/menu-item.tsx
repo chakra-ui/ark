@@ -1,9 +1,8 @@
+import type { connect } from '@zag-js/menu'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
+import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
-import { Assign, splitProps } from '../splitProps'
-import * as React from 'react'
-import type { connect } from '@zag-js/menu'
 
 export type MenuItemProps = Assign<
   HTMLAtlasProps<'div'>,

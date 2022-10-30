@@ -1,11 +1,10 @@
+import type { connect } from '@zag-js/menu'
+import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
-import { useMenuContext } from './menu-context'
-import { Assign, splitProps } from '../splitProps'
-import * as React from 'react'
-import type { ReactNode } from 'react'
-import type { connect } from '@zag-js/menu'
 import { runIfFn } from '../run-if-fn'
+import { Assign, splitProps } from '../split-props'
+import { useMenuContext } from './menu-context'
 
 export type MenuItemOptionState = { isActive: boolean }
 

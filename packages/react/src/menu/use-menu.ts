@@ -1,7 +1,7 @@
 import * as menu from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { splitProps } from '../splitProps'
+import { splitProps } from '../split-props'
 
 export type UseMenuProps = Omit<menu.Context, 'id'>
 

@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { forwardRef } from '../forwardRef'
-import { useMenuContext } from './menu-context'
-import { Assign, splitProps } from '../splitProps'
 import { atlas, HTMLAtlasProps } from '../factory'
+import { forwardRef } from '../forwardRef'
+import { Assign, splitProps } from '../split-props'
+import { useMenuContext } from './menu-context'
 
 export type MenuGroupLabelProps = Assign<
   HTMLAtlasProps<'label'>,
