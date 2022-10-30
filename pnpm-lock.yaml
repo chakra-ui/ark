@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
-      '@types/node': 18.11.7
+      '@types/node': 18.11.8
       '@typescript-eslint/eslint-plugin': 5.41.0
       '@typescript-eslint/parser': 5.41.0
       eslint: 8.26.0
@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.1.2
       '@commitlint/config-conventional': 17.1.0
-      '@types/node': 18.11.7
+      '@types/node': 18.11.8
       '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
       '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
       eslint: 8.26.0
@@ -41,19 +41,19 @@ importers:
       astro: 1.6.1
       react: 18.2.0
       react-dom: 18.2.0
-      solid-js: 1.6.0
+      solid-js: 1.6.1
     dependencies:
       '@atlas/react': link:../packages/react
       '@atlas/solid-js': link:../packages/solid
       astro: 1.6.1
     devDependencies:
       '@astrojs/react': 1.2.2_nsgh7lqw2e2kb5wanadocemtdi
-      '@astrojs/solid-js': 1.2.2_solid-js@1.6.0
+      '@astrojs/solid-js': 1.2.2_solid-js@1.6.1
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      solid-js: 1.6.0
+      solid-js: 1.6.1
 
   packages/react:
     specifiers:
@@ -73,7 +73,7 @@ importers:
       '@zag-js/rating': 0.1.17
       '@zag-js/react': 0.1.18
       '@zag-js/tooltip': 0.1.16
-      jsdom: 20.0.1
+      jsdom: 20.0.2
       react: 18.2.0
       react-dom: 18.2.0
       typescript: 4.8.4
@@ -97,24 +97,24 @@ importers:
       '@types/react-dom': 18.0.8
       '@types/testing-library__jest-dom': 5.14.5
       '@vitejs/plugin-react': 2.2.0_vite@3.2.1
-      jsdom: 20.0.1
+      jsdom: 20.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.8.4
       vite: 3.2.1
-      vitest: 0.24.3_jsdom@20.0.1
+      vitest: 0.24.3_jsdom@20.0.2
 
   packages/solid:
     specifiers:
       '@zag-js/accordion': 0.1.15
       '@zag-js/solid': 0.1.17
-      solid-js: 1.6.0
+      solid-js: 1.6.1
       typescript: 4.8.4
     dependencies:
       '@zag-js/accordion': 0.1.15
-      '@zag-js/solid': 0.1.17_solid-js@1.6.0
+      '@zag-js/solid': 0.1.17_solid-js@1.6.1
     devDependencies:
-      solid-js: 1.6.0
+      solid-js: 1.6.1
       typescript: 4.8.4
 
 packages:
@@ -227,14 +227,14 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/solid-js/1.2.2_solid-js@1.6.0:
+  /@astrojs/solid-js/1.2.2_solid-js@1.6.1:
     resolution: {integrity: sha512-kC16HKo4LVQfecfRHqRsqaVMQ7wrziege0YieZipuY3HvsX4l3i4O+QCnyHQsJ9W5MMdUvFAtf1IP1nJAdvisA==}
     engines: {node: ^14.18.0 || >=16.12.0}
     peerDependencies:
       solid-js: ^1.4.3
     dependencies:
       babel-preset-solid: 1.6.1
-      solid-js: 1.6.0
+      solid-js: 1.6.1
       vitefu: 0.1.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -799,7 +799,7 @@ packages:
       '@jest/schemas': 29.0.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 14.18.32
+      '@types/node': 18.11.8
       '@types/yargs': 17.0.13
       chalk: 4.1.2
     dev: true
@@ -1114,6 +1114,10 @@ packages:
 
   /@types/node/18.11.7:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
+    dev: true
+
+  /@types/node/18.11.8:
+    resolution: {integrity: sha512-uGwPWlE0Hj972KkHtCDVwZ8O39GmyjfMane1Z3GUBGGnkZ2USDq7SxLpVIiIHpweY9DS0QTDH0Nw7RNBsAAZ5A==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1436,7 +1440,7 @@ packages:
     resolution: {integrity: sha512-1QrfAaC0dH9WKyJw5pUURNSETsBRfcRrHCso70/f8WqC7XhH56E9HIAEqQjo7k3g4rDIIlqGX4XSWxVdsBt85g==}
     dev: false
 
-  /@zag-js/solid/0.1.17_solid-js@1.6.0:
+  /@zag-js/solid/0.1.17_solid-js@1.6.1:
     resolution: {integrity: sha512-fYOwI55RQ60eP0XGlgyv4wv9ZfmfiM4a3GiIISKp6pXgbLEZfORYlWCUO8tfo9cXiYWvOLBK4j/4z3XqjdCIbA==}
     peerDependencies:
       solid-js: '>=1.1.3'
@@ -1445,7 +1449,7 @@ packages:
       '@zag-js/store': 0.1.4
       '@zag-js/types': 0.2.7
       hyphenate-style-name: 1.0.4
-      solid-js: 1.6.0
+      solid-js: 1.6.1
     dev: false
 
   /@zag-js/store/0.1.4:
@@ -3883,7 +3887,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.2.1
-      '@types/node': 14.18.32
+      '@types/node': 18.11.8
       chalk: 4.1.2
       ci-info: 3.5.0
       graceful-fs: 4.2.10
@@ -3912,8 +3916,8 @@ packages:
       argparse: 2.0.1
     dev: true
 
-  /jsdom/20.0.1:
-    resolution: {integrity: sha512-pksjj7Rqoa+wdpkKcLzQRHhJCEE42qQhl/xLMUKHgoSejaKOdaXEAnqs6uDNwMl/fciHTzKeR8Wm8cw7N+g98A==}
+  /jsdom/20.0.2:
+    resolution: {integrity: sha512-AHWa+QO/cgRg4N+DsmHg1Y7xnz+8KU3EflM0LVDTdmrYOc1WWTSkOjtpUveQH+1Bqd5rtcVnb/DuxV/UjDO4rA==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -5658,8 +5662,8 @@ packages:
       is-fullwidth-code-point: 4.0.0
     dev: true
 
-  /solid-js/1.6.0:
-    resolution: {integrity: sha512-db5s65ErgZnBhapPx77qauzul8akHlMCvirS+Y86U4abMa3uizMVNW9ql3UxbO0yMzMGNpFJwUiOlXmJCbwVpA==}
+  /solid-js/1.6.1:
+    resolution: {integrity: sha512-i8OmR419Hr0918Or6sm1ET/cgmxTtAB7Bdz/UwhZ7G2THixrvVSO3jd+C7YqMKKfVwmf8PJ2gUSbKE8NKv28GA==}
     dependencies:
       csstype: 3.1.0
 
@@ -6380,7 +6384,7 @@ packages:
       vite: 3.2.1
     dev: false
 
-  /vitest/0.24.3_jsdom@20.0.1:
+  /vitest/0.24.3_jsdom@20.0.2:
     resolution: {integrity: sha512-aM0auuPPgMSstWvr851hB74g/LKaKBzSxcG3da7ejfZbx08Y21JpZmbmDYrMTCGhVZKqTGwzcnLMwyfz2WzkhQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -6407,7 +6411,7 @@ packages:
       '@types/node': 18.11.7
       chai: 4.3.6
       debug: 4.3.4
-      jsdom: 20.0.1
+      jsdom: 20.0.2
       local-pkg: 0.4.2
       strip-literal: 0.4.2
       tinybench: 2.3.1
