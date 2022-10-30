@@ -1,17 +1,17 @@
-import { useId } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { forwardRef } from '../forwardRef'
-import { splitProps } from '../split-props'
+import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
+import type { UseMenuReturn } from './use-menu'
 
-export type MenuGroupProps = HTMLAtlasProps<'div'>
+export type MenuGroupProps = Assign<
+  HTMLAtlasProps<'div'>,
+  Parameters<UseMenuReturn['api']['getGroupProps']>[0]
+>
 
 export const MenuGroup = forwardRef<'div', MenuGroupProps>((props, ref) => {
   const { api } = useMenuContext()
-  const [{ id: idProp }, htmlProps] = splitProps(props, ['id'])
+  const [menuGroupProps, htmlProps] = splitProps(props, ['id'])
 
-  const generatedId = useId()
-  const id = idProp ?? generatedId
-
-  return <atlas.div {...api.getGroupProps({ id })} {...htmlProps} ref={ref} />
+  return <atlas.div {...api.getGroupProps(menuGroupProps)} {...htmlProps} ref={ref} />
 })
