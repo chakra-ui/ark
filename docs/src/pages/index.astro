@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { ReactAccordion, SolidAccordion } from '../components/accordion'
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>React</h1>
+    <ReactAccordion client:load />
+    <h1>SolidJS</h1>
+    <SolidAccordion client:load />
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+</style>

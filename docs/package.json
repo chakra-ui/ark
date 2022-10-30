@@ -1,0 +1,26 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@atlas/react": "workspace:*",
+    "@atlas/solid-js": "workspace:*",
+    "astro": "1.6.1"
+  },
+  "devDependencies": {
+    "@astrojs/react": "1.2.2",
+    "@astrojs/solid-js": "1.2.2",
+    "@types/react": "18.0.24",
+    "@types/react-dom": "18.0.8",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "solid-js": "1.6.0"
+  }
+}
