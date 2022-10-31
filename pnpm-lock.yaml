@@ -82,6 +82,7 @@ importers:
       '@zag-js/rating': 0.1.17
       '@zag-js/react': 0.1.18
       '@zag-js/slider': 0.1.16
+      '@zag-js/tabs': 0.1.15
       '@zag-js/tags-input': 0.2.9
       '@zag-js/toast': 0.1.16
       '@zag-js/tooltip': 0.1.16
@@ -109,6 +110,7 @@ importers:
       '@zag-js/rating': 0.1.17
       '@zag-js/react': 0.1.18_react@18.2.0
       '@zag-js/slider': 0.1.16
+      '@zag-js/tabs': 0.1.15
       '@zag-js/tags-input': 0.2.9
       '@zag-js/toast': 0.1.16
       '@zag-js/tooltip': 0.1.16
@@ -1596,6 +1598,13 @@ packages:
     resolution: {integrity: sha512-Mq3IwpPvoOzbNqWGcH/t0u7M3IpXTHmU+YeyYmZy8aD+kUrMx8s4IY8fZvnrIgOZrL7Rb45GRrRNpEJfGmTGFg==}
     dependencies:
       proxy-compare: 2.3.0
+    dev: false
+
+  /@zag-js/tabs/0.1.15:
+    resolution: {integrity: sha512-oGGArNYvsuZ9Sv3M+8TkooGTh+vIWKyfGb8qj/bfuzBjPurpC7FzjwMhnXQuMU7BtlTd7RoLo91AGnecF/TLPA==}
+    dependencies:
+      '@zag-js/core': 0.1.12
+      '@zag-js/types': 0.2.7
     dev: false
 
   /@zag-js/tags-input/0.2.9:

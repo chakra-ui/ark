@@ -1,0 +1,5 @@
+export { Tab, type TabProps } from './tab'
+export { TabContent, type TabContentProps } from './tab-content'
+export { TabList, type TabListProps } from './tab-list'
+export { Tabs, type TabsProps } from './tabs'
+export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs'
