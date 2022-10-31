@@ -13,6 +13,9 @@ export const Basic = () => {
         <TabContent value="two">Value item two</TabContent>
         <TabContent value="three">Value item three</TabContent>
       </TabContentGroup>
+      <TabContent value="one">Value item one</TabContent>
+      <TabContent value="two">Value item two</TabContent>
+      <TabContent value="three">Value item three</TabContent>
     </Tabs>
   )
 }

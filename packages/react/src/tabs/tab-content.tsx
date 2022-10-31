@@ -1,6 +1,6 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import type { connect } from '@zag-js/tabs'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { splitProps, type Assign } from '../split-props'
 import { useTabsContext } from './tabs-context'
 
