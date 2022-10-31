@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { EditableProvider } from './editable-context'
 import { useEditable, UseEditableProps } from './use-editable'
 

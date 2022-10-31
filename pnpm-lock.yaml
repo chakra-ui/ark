@@ -57,6 +57,7 @@ importers:
 
   packages/react:
     specifiers:
+      '@polymorphic-factory/react': 0.1.1
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
@@ -91,6 +92,7 @@ importers:
       vite: 3.2.2
       vitest: 0.24.4
     dependencies:
+      '@polymorphic-factory/react': 0.1.1_react@18.2.0
       '@zag-js/accordion': 0.1.15
       '@zag-js/checkbox': 0.1.8
       '@zag-js/dialog': 0.1.15
@@ -935,6 +937,14 @@ packages:
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: false
+
+  /@polymorphic-factory/react/0.1.1_react@18.2.0:
+    resolution: {integrity: sha512-BtNVS/DcSODNGSmhWZiofzp5y5Ht/TGPzFlOVXq2lHPts3DPqrK7NrDFzJ+W/N/nCQ0FvwuOBxZ7W3vGicyHSA==}
+    peerDependencies:
+      react: '>=16.8 || >=17 || >18'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@proload/core/0.3.3:
