@@ -27,7 +27,24 @@
   },
   "dependencies": {
     "@zag-js/accordion": "0.1.15",
-    "@zag-js/solid": "0.1.17"
+    "@zag-js/checkbox": "0.1.8",
+    "@zag-js/dialog": "0.1.15",
+    "@zag-js/editable": "0.1.16",
+    "@zag-js/hover-card": "0.0.3",
+    "@zag-js/menu": "0.1.16",
+    "@zag-js/number-input": "0.1.19",
+    "@zag-js/pagination": "0.0.1",
+    "@zag-js/pin-input": "0.1.17",
+    "@zag-js/popover": "0.1.16",
+    "@zag-js/pressable": "0.2.2",
+    "@zag-js/radio": "0.0.5",
+    "@zag-js/range-slider": "0.1.16",
+    "@zag-js/rating": "0.1.17",
+    "@zag-js/slider": "0.1.16",
+    "@zag-js/solid": "0.1.17",
+    "@zag-js/tags-input": "0.2.9",
+    "@zag-js/toast": "0.1.16",
+    "@zag-js/tooltip": "0.1.16"
   },
   "devDependencies": {
     "solid-js": "1.6.1",
