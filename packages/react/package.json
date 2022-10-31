@@ -50,7 +50,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.8.4",
-    "vite": "3.2.1",
+    "vite": "3.2.2",
     "vitest": "0.24.4"
   },
   "peerDependencies": {
