@@ -5,7 +5,7 @@ import { splitProps, type Assign } from '../split-props'
 import { useTabsContext } from './tabs-context'
 
 export type TabContentProps = Assign<
-  HTMLAtlasProps<'button'>,
+  HTMLAtlasProps<'div'>,
   Parameters<ReturnType<typeof connect>['getContentProps']>[0]
 >
 
