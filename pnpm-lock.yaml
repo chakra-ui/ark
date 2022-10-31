@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@commitlint/cli': 17.1.2
-      '@commitlint/config-conventional': 17.1.0
+      '@commitlint/config-conventional': 17.2.0
       '@types/node': 18.11.8
       '@typescript-eslint/eslint-plugin': 5.41.0
       '@typescript-eslint/parser': 5.41.0
@@ -18,7 +18,7 @@ importers:
       typescript: 4.8.4
     devDependencies:
       '@commitlint/cli': 17.1.2
-      '@commitlint/config-conventional': 17.1.0
+      '@commitlint/config-conventional': 17.2.0
       '@types/node': 18.11.8
       '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
       '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
@@ -541,8 +541,8 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@commitlint/config-conventional/17.1.0:
-    resolution: {integrity: sha512-WU2p0c9/jLi8k2q2YrDV96Y8XVswQOceIQ/wyJvQxawJSCasLdRB3kUIYdNjOCJsxkpoUlV/b90ZPxp1MYZDiA==}
+  /@commitlint/config-conventional/17.2.0:
+    resolution: {integrity: sha512-g5hQqRa80f++SYS233dbDSg16YdyounMTAhVcmqtInNeY/GF3aA4st9SVtJxpeGrGmueMrU4L+BBb+6Vs5wrcg==}
     engines: {node: '>=v14'}
     dependencies:
       conventional-changelog-conventionalcommits: 5.0.0
