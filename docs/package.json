@@ -12,7 +12,7 @@
   "dependencies": {
     "@atlas/react": "workspace:*",
     "@atlas/solid-js": "workspace:*",
-    "astro": "1.6.1"
+    "astro": "1.6.2"
   },
   "devDependencies": {
     "@astrojs/react": "1.2.2",
