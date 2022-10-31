@@ -1,26 +1,13 @@
 ---
-import { Basic,Collapsible,Disabled,Multiple } from '../components/accordion/accordion.react';
-import { Basic as SolidBasic } from '../components/accordion/accordion.solid';
+import { Basic } from '../components/pin-input/pin-input.solid';
+
 import Layout from '../layouts/Layout.astro';
-import {Basic as SolidBasicPinInput} from '../components/pin-input/pin-input.solid'
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>React Accordion</h1>
-    <h2>Basic</h2>
-    <Basic client:load/>
-    <h2>Collapsible</h2>
-    <Collapsible client:load/>
-    <h2>Disabled</h2>
-    <Disabled client:load/>
-    <h2>Multiple</h2>
-    <Multiple client:load/>
-    <h1>SolidJS</h1>
-    <h2>Basic</h2>
-    <SolidBasic client:load />
-    <h2>PinInput</h2>
-    <SolidBasicPinInput client:load />
+    <h1>Solid Accordion</h1>
+    <Basic client:load />
   </main>
 </Layout>
 
