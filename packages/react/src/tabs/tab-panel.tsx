@@ -10,8 +10,8 @@ export type TabPanelProps = Assign<
 >
 
 export const TabPanel = forwardRef<'div', TabPanelProps>((props, ref) => {
-  const [tabContentProps, htmlProps] = splitProps(props, ['value'])
+  const [tabContentProps, rootProps] = splitProps(props, ['value'])
   const { getContentProps } = useTabsContext()
 
-  return <atlas.div {...htmlProps} {...getContentProps(tabContentProps)} ref={ref} />
+  return <atlas.div {...getContentProps(tabContentProps)} {...rootProps} ref={ref} />
 })

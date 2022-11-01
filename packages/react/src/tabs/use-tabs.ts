@@ -7,6 +7,7 @@ export type UseTabsProps = Omit<tabs.Context, 'id'>
 export type UseTabsReturn = ReturnType<typeof useTabs>
 
 export const useTabs = (props: UseTabsProps) => {
-  const [state, send] = useMachine(tabs.machine({ id: useId(), ...filterUndefinedEntries(props) }))
+  const context = { id: useId(), ...filterUndefinedEntries(props) }
+  const [state, send] = useMachine(tabs.machine(context), { context })
   return tabs.connect(state, send, normalizeProps)
 }

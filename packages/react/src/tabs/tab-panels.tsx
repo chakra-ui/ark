@@ -7,5 +7,5 @@ export type TabPanelsProps = HTMLAtlasProps<'div'>
 export const TabPanels = forwardRef<'div', TabPanelsProps>((props, ref) => {
   const { contentGroupProps } = useTabsContext()
 
-  return <atlas.div {...props} {...contentGroupProps} ref={ref} />
+  return <atlas.div {...contentGroupProps} {...props} ref={ref} />
 })

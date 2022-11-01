@@ -10,8 +10,8 @@ export type TabProps = Assign<
 >
 
 export const Tab = forwardRef<'button', TabProps>((props, ref) => {
-  const [tabProps, htmlProps] = splitProps(props, ['disabled', 'value'])
+  const [tabProps, buttonProps] = splitProps(props, ['disabled', 'value'])
   const { getTriggerProps } = useTabsContext()
 
-  return <atlas.button {...htmlProps} {...getTriggerProps(tabProps)} ref={ref} />
+  return <atlas.button {...getTriggerProps(tabProps)} {...buttonProps} ref={ref} />
 })

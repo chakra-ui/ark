@@ -7,7 +7,7 @@ import { useTabs, UseTabsProps } from './use-tabs'
 export type TabsProps = Assign<HTMLAtlasProps<'div'>, UseTabsProps>
 
 export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
-  const [tabsProps, htmlProps] = splitProps(props, [
+  const [tabsProps, rootProps] = splitProps(props, [
     'activationMode',
     'dir',
     'getRootNode',
@@ -25,7 +25,7 @@ export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
   const tabs = useTabs(tabsProps)
   return (
     <TabsProvider value={tabs}>
-      <atlas.div {...tabs.rootProps} {...htmlProps} ref={ref} />
+      <atlas.div {...tabs.rootProps} {...rootProps} ref={ref} />
     </TabsProvider>
   )
 })
