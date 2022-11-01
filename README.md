@@ -1,7 +1,7 @@
 |              | React | Solid | Vue |
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | ⚪  |
-| Checkbox     | ⚪    | ⚪    | ⚪  |
+| Checkbox     | 🟢    | ⚪    | ⚪  |
 | Dialog       | ⚪    | ⚪    | ⚪  |
 | Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | ⚪    | ⚪    | ⚪  |
