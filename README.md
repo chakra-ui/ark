@@ -6,7 +6,7 @@
 | Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | ⚪    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |
-| Number Input | ⚪    | ⚪    | ⚪  |
+| Number Input | 🟢    | ⚪    | ⚪  |
 | Pagination   | ⚪    | ⚪    | ⚪  |
 | Pin Input    | 🟢    | ⚪    | ⚪  |
 | Popover      | 🟢    | ⚪    | ⚪  |
@@ -26,3 +26,4 @@
 - Read-only value for controlled inputs
 - Should zag filter undefined values?
 - Give renovate bot write permissions for automerge
+- NumberInput missing precision
