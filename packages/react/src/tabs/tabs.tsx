@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { Assign, splitProps } from '../split-props'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
@@ -22,10 +22,10 @@ export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
     'value',
   ])
 
-  const api = useTabs(tabsProps)
+  const tabs = useTabs(tabsProps)
   return (
-    <TabsProvider value={api}>
-      <atlas.div {...htmlProps} {...api.rootProps} ref={ref} />
+    <TabsProvider value={tabs}>
+      <atlas.div {...tabs.rootProps} {...htmlProps} ref={ref} />
     </TabsProvider>
   )
 })

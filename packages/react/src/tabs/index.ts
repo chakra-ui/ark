@@ -1,6 +1,6 @@
 export { Tab, type TabProps } from './tab'
-export { TabContent, type TabContentProps } from './tab-content'
-export { TabContentGroup, type TabContentGroupProps } from './tab-content-group'
 export { TabList, type TabListProps } from './tab-list'
+export { TabPanel, type TabPanelProps } from './tab-panel'
+export { TabPanels, type TabPanelsProps } from './tab-panels'
 export { Tabs, type TabsProps } from './tabs'
 export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs'

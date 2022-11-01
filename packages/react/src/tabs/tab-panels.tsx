@@ -1,10 +1,10 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { useTabsContext } from './tabs-context'
 
-export type TabContentGroupProps = HTMLAtlasProps<'div'>
+export type TabPanelsProps = HTMLAtlasProps<'div'>
 
-export const TabContentGroup = forwardRef<'div', TabContentGroupProps>((props, ref) => {
+export const TabPanels = forwardRef<'div', TabPanelsProps>((props, ref) => {
   const { contentGroupProps } = useTabsContext()
 
   return <atlas.div {...props} {...contentGroupProps} ref={ref} />
