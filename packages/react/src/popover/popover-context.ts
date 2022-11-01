@@ -1,7 +1,7 @@
 import { createContext } from '../createContext'
 import type { UsePopoverReturn } from './use-popover'
 
-export type PopoverContext = UsePopoverReturn['api']
+export type PopoverContext = UsePopoverReturn
 
 export const [PopoverProvider, usePopoverContext] = createContext<PopoverContext>({
   name: 'PopoverContext',

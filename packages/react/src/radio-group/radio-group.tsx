@@ -1,14 +1,27 @@
 import { atlas, HTMLAtlasProps } from '../factory'
+import { splitProps, type Assign } from '../split-props'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
 
-export type RadioGroupProps = Omit<HTMLAtlasProps<'div'>, keyof UseRadioGroupProps> &
-  UseRadioGroupProps
+export type RadioGroupProps = Assign<HTMLAtlasProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const { api, htmlProps } = useRadioGroup(props)
+  const [useRadioGroupProps, htmlProps] = splitProps(props, [
+    'defaultValue',
+    'dir',
+    'disabled',
+    'getRootNode',
+    'ids',
+    'name',
+    'onChange',
+    'orientation',
+    'readonly',
+    'value',
+  ])
+  const radioGroup = useRadioGroup(useRadioGroupProps)
+
   return (
-    <RadioGroupProvider value={api}>
+    <RadioGroupProvider value={radioGroup}>
       <atlas.div {...htmlProps} />
     </RadioGroupProvider>
   )

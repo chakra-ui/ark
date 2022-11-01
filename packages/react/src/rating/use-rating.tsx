@@ -2,44 +2,25 @@ import * as rating from '@zag-js/rating'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
-import { splitProps } from '../split-props'
 
 export type UseRatingProps = Omit<rating.Context, 'id'> & { defaultValue?: rating.Context['value'] }
 export type UseRatingReturn = ReturnType<typeof useRating>
 
 export const useRating = (props: UseRatingProps) => {
-  const [{ value, defaultValue }, ratingProps, htmlProps] = splitProps(
-    props,
-    ['value', 'defaultValue'],
-    [
-      'ids',
-      'translations',
-      'max',
-      'name',
-      'readonly',
-      'disabled',
-      'allowHalf',
-      'autoFocus',
-      'onChange',
-      'onHover',
-    ],
-  )
-
   const initialContext = filterUndefinedEntries({
     id: useId(),
-    ...ratingProps,
-    value: value ?? defaultValue,
+    ...props,
+    value: props.value ?? props.defaultValue,
   })
 
   const context = filterUndefinedEntries({
     ...initialContext,
-    value,
+    value: props.value,
   })
 
   const [state, send] = useMachine(rating.machine(initialContext), {
     context,
   })
 
-  const api = rating.connect(state, send, normalizeProps)
-  return { api, htmlProps }
+  return rating.connect(state, send, normalizeProps)
 }

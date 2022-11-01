@@ -2,53 +2,25 @@ import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { filterUndefinedEntries } from '../filter-undefined-entries'
-import { splitProps } from '../split-props'
 
-export type UseEditableReturn = ReturnType<typeof useEditable>
 export type UseEditableProps = Omit<editable.Context, 'id'> & {
   defaultValue?: editable.Context['value']
 }
+export type UseEditableReturn = ReturnType<typeof useEditable>
 
 export const useEditable = (props: UseEditableProps) => {
-  const [{ value, defaultValue }, editableProps, htmlProps] = splitProps(
-    props,
-    ['value', 'defaultValue'],
-    [
-      'activationMode',
-      'autoResize',
-      'dir',
-      'disabled',
-      'getRootNode',
-      'ids',
-      'invalid',
-      'maxLength',
-      'name',
-      'onCancel',
-      'onChange',
-      'onEdit',
-      'onSubmit',
-      'placeholder',
-      'readonly',
-      'selectOnFocus',
-      'startWithEditView',
-      'submitMode',
-      'translations',
-    ],
-  )
-
   const initialContext = filterUndefinedEntries({
     id: useId(),
-    ...editableProps,
-    value: value ?? defaultValue,
+    ...props,
+    value: props.value ?? props.defaultValue,
   })
 
   const context = filterUndefinedEntries({
     ...initialContext,
-    value,
+    value: props.value,
   })
 
   const [state, send] = useMachine(editable.machine(initialContext), { context })
 
-  const api = editable.connect(state, send, normalizeProps)
-  return { api, htmlProps }
+  return editable.connect(state, send, normalizeProps)
 }
