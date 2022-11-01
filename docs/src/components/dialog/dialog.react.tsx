@@ -4,18 +4,21 @@ import {
   DialogCloseButton,
   DialogContent,
   DialogDescription,
+  DialogPortal,
   DialogTitle,
   DialogTrigger,
+  DialogUnderlay,
 } from '@atlas/react'
 
 export const ReactDialog = () => {
   return (
-    <Dialog defaultOpen>
+    <Dialog>
       <DialogTrigger>
         <button>click me</button>
       </DialogTrigger>
-      <Portal>
+      <DialogPortal>
         <DialogBackdrop />
+        <DialogUnderlay />
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>
@@ -25,7 +28,7 @@ export const ReactDialog = () => {
           </div>
           <DialogCloseButton>Close</DialogCloseButton>
         </DialogContent>
-      </Portal>
+      </DialogPortal>
     </Dialog>
   )
 }
