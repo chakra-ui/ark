@@ -27,3 +27,4 @@
 - Should zag filter undefined values?
 - Give renovate bot write permissions for automerge
 - NumberInput missing precision
+- Check Checkbox tests (onChange cb)
