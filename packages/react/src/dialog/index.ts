@@ -1,0 +1,7 @@
+export { Dialog, type DialogProps } from './dialog'
+export { DialogBackdrop, type DialogBackdropProps } from './dialog-backdrop'
+export { DialogCloseButton, type DialogCloseButtonProps } from './dialog-close-button'
+export { DialogContent, type DialogContentProps } from './dialog-content'
+export { DialogDescription, type DialogDescriptionProps } from './dialog-description'
+export { DialogTitle, type DialogTitleProps } from './dialog-title'
+export { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
