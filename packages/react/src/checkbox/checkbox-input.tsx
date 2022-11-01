@@ -4,7 +4,7 @@ import { useCheckboxContext } from './checkbox-context'
 
 export type CheckboxInputProps = HTMLAtlasProps<'input'>
 
-export const CheckboxInput = forwardRef<'input'>((props, ref) => {
+export const CheckboxInput = forwardRef<'input', CheckboxInputProps>((props, ref) => {
   const { inputProps } = useCheckboxContext()
   return <atlas.input {...inputProps} {...props} ref={ref} />
 })
