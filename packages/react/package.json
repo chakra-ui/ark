@@ -64,7 +64,7 @@
     "react-dom": "18.2.0",
     "typescript": "4.8.4",
     "vite": "3.2.2",
-    "vitest": "0.24.4"
+    "vitest": "0.24.5"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
