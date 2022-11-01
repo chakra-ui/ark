@@ -45,6 +45,7 @@
     "@zag-js/rating": "0.1.17",
     "@zag-js/react": "0.1.18",
     "@zag-js/slider": "0.1.16",
+    "@zag-js/tabs": "0.1.15",
     "@zag-js/tags-input": "0.2.9",
     "@zag-js/toast": "0.1.16",
     "@zag-js/tooltip": "0.1.16"
