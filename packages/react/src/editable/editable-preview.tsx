@@ -4,7 +4,7 @@ import { useEditableContext } from './editable-context'
 
 export type EditablePreviewProps = HTMLAtlasProps<'span'>
 
-export const EditablePreview = forwardRef<'span'>((props, ref) => {
+export const EditablePreview = forwardRef<'span', EditablePreviewProps>((props, ref) => {
   const { previewProps } = useEditableContext()
   return <atlas.span {...props} {...previewProps} ref={ref} />
 })

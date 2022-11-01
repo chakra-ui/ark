@@ -5,7 +5,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export type AccordionPanelProps = HTMLAtlasProps<'div'>
 
-export const AccordionPanel = forwardRef<'div'>((props, ref) => {
+export const AccordionPanel = forwardRef<'div', AccordionPanelProps>((props, ref) => {
   const { getContentProps } = useAccordionContext()
   const context = useAccordionItemContext()
 
