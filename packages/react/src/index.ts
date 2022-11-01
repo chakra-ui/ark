@@ -1,5 +1,6 @@
 export * from './accordion'
 export * from './editable'
+export * from './number-input'
 export * from './pin-input'
 export * from './popover'
 export * from './pressable'

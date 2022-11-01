@@ -1,11 +1,13 @@
 ---
 import { Basic,Collapsible,Disabled,Multiple } from '../components/accordion/accordion.react';
 import { Basic as SolidBasic } from '../components/accordion/accordion.solid';
+import { ReactNumberInput } from '../components/number-input/number-input.react';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
+    <ReactNumberInput client:load  />
     <h1>React Accordion</h1>
     <h2>Basic</h2>
     <Basic client:load/>
