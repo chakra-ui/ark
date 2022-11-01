@@ -1,47 +1,16 @@
 /**
- * All html and svg elements for chakra components.
- * This is mostly for `chakra.<element>` syntax.
+ * All html and svg elements for atlas components.
+ * This is mostly for `atlas.<element>` syntax.
  */
+import type { HTMLPolymorphicComponents, HTMLPolymorphicProps } from '@polymorphic-factory/react'
+import { polymorphicFactory } from '@polymorphic-factory/react'
 import type { ElementType } from 'react'
-import { ComponentWithAs, forwardRef, PropsOf } from './forwardRef'
 
-export type DOMElements = keyof JSX.IntrinsicElements
+export type HTMLAtlasComponents = HTMLPolymorphicComponents
 
-export type HTMLAtlasComponents = {
-  [Tag in DOMElements]: ComponentWithAs<Tag>
-}
-
-export type HTMLAtlasProps<T extends ElementType> = Omit<PropsOf<T>, 'ref'> & { as?: ElementType }
-
-type AtlasFactory = {
-  <T extends ElementType, P extends Record<string, unknown> = Record<string, unknown>>(
-    component: T,
-  ): ComponentWithAs<T, P>
-}
-
-function factory() {
-  const cache = new Map<DOMElements, ComponentWithAs<DOMElements>>()
-  const styled = (originalComponent: DOMElements) =>
-    forwardRef((props, ref) => {
-      const { as, ...restProps } = props
-      const Component = as || originalComponent
-      return <Component {...restProps} ref={ref} />
-    })
-  return new Proxy(styled, {
-    /**
-     * @example
-     * <atlas.div />
-     */
-    get(_, element: DOMElements) {
-      if (!cache.has(element)) {
-        cache.set(element, styled(element))
-      }
-      return cache.get(element)
-    },
-  }) as AtlasFactory & HTMLAtlasComponents
-}
+export type HTMLAtlasProps<T extends ElementType> = HTMLPolymorphicProps<T>
 
 /**
- * The Atlas factory serves as an object of JSX elements to render React Components which accept the `as` prop
+ * The atlas factory serves as an object of JSX elements to render React components which accept the `as` prop
  */
-export const atlas = factory()
+export const atlas = polymorphicFactory()

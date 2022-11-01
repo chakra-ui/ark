@@ -28,6 +28,7 @@
     "test:ci": "vitest --run"
   },
   "dependencies": {
+    "@polymorphic-factory/react": "0.1.1",
     "@zag-js/accordion": "0.1.15",
     "@zag-js/checkbox": "0.1.8",
     "@zag-js/dialog": "0.1.15",

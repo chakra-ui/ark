@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, UsePinInputProps } from './use-pin-input'
 

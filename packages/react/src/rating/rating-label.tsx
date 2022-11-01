@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { useRatingContext } from './rating-context'
 
 export type RatingLabelProps = HTMLAtlasProps<'label'>
