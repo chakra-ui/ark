@@ -12,18 +12,22 @@ import {
 
 export const ReactMenu = (props: MenuProps) => {
   return (
-    <Menu id="menu" closeOnSelect {...props}>
-      <MenuTrigger>
-        <button>Open menu</button>
-      </MenuTrigger>
-      <MenuPositioner>
-        <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
-          <MenuItem id="new-tab">New tab</MenuItem>
-          <MenuItem id="new-window">New window</MenuItem>
-          <MenuItem id="print">Print</MenuItem>
-          <MenuItem id="help">Help</MenuItem>
-        </MenuContent>
-      </MenuPositioner>
+    <Menu id="menu" {...props}>
+      {({ isOpen }) => (
+        <>
+          <MenuTrigger>
+            <button>{isOpen ? 'Close' : 'Open'} menu</button>
+          </MenuTrigger>
+          <MenuPositioner>
+            <MenuContent>
+              <MenuItem id="new-tab">New tab</MenuItem>
+              <MenuItem id="new-window">New window</MenuItem>
+              <MenuItem id="print">Print</MenuItem>
+              <MenuItem id="help">Help</MenuItem>
+            </MenuContent>
+          </MenuPositioner>
+        </>
+      )}
     </Menu>
   )
 }
@@ -35,7 +39,7 @@ export const ReactNestedMenu = (props: MenuProps) => {
         <button>Open nested menu</button>
       </MenuTrigger>
       <MenuPositioner>
-        <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
+        <MenuContent>
           <MenuItem id="new-tab">New tab</MenuItem>
           <MenuItem id="new-window">New window</MenuItem>
           <MenuItem id="print">Print</MenuItem>
@@ -44,7 +48,7 @@ export const ReactNestedMenu = (props: MenuProps) => {
           <NestedMenu {...props}>
             <MenuItem id="share">Share...</MenuItem>
             <MenuPositioner>
-              <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
+              <MenuContent>
                 <MenuItem id="twitter">Twitter</MenuItem>
                 <MenuItem id="message">Message</MenuItem>
               </MenuContent>
@@ -63,7 +67,7 @@ export const ReactNestedContextMenu = (props: MenuProps) => {
         <button>Open</button>
       </MenuContextTrigger>
       <MenuPositioner>
-        <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
+        <MenuContent>
           <MenuItem id="new-tab">New tab</MenuItem>
           <MenuItem id="new-window">New window</MenuItem>
           <MenuItem id="print">Print</MenuItem>
@@ -72,7 +76,7 @@ export const ReactNestedContextMenu = (props: MenuProps) => {
           <NestedMenu {...props}>
             <MenuItem id="share">Share...</MenuItem>
             <MenuPositioner>
-              <MenuContent style={{ display: 'flex', flexDirection: 'column' }}>
+              <MenuContent>
                 <MenuItem id="twitter">Twitter</MenuItem>
                 <MenuItem id="message">Message</MenuItem>
               </MenuContent>
