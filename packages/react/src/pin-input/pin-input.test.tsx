@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { PinInput, PinInputProps } from './pin-input'
 import { PinInputField } from './pin-input-field'
 
@@ -50,7 +49,7 @@ describe('PinInput', () => {
   })
 
   it('should invoke onComplete when all inputs are filled out', async () => {
-    const onComplete = vi.fn()
+    const onComplete = jest.fn()
     render(<Component onComplete={onComplete} />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
@@ -78,7 +77,7 @@ describe('PinInput', () => {
   })
 
   it('should replace last input calls onComplete correctly', async () => {
-    const onComplete = vi.fn()
+    const onComplete = jest.fn()
     render(<Component onComplete={onComplete} />)
 
     const input1 = screen.getByLabelText('pin code 1 of 3')

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { NumberInput, NumberInputProps } from './number-input'
 import { NumberInputDecrementButton } from './number-input-decrement-button'
 import { NumberInputField } from './number-input-field'
@@ -48,7 +47,7 @@ describe('NumberInput', () => {
   })
 
   it('should call onChange on value change', async () => {
-    const onChange = vi.fn()
+    const onChange = jest.fn()
 
     render(<Component onChange={onChange} />)
 

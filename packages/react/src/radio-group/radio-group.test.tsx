@@ -1,7 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-
-import { vi } from 'vitest'
 import { RadioGroup, RadioGroupProps } from './radio-group'
 import { RadioGroupItem } from './radio-group-item'
 import { RadioGroupItemControl } from './radio-group-item-control'
@@ -31,7 +29,7 @@ const Component = (props: RadioGroupProps) => (
 
 describe('Radio Group', () => {
   it('should invoke onChange if another value has selected', async () => {
-    const onChange = vi.fn()
+    const onChange = jest.fn()
 
     render(<Component onChange={onChange} />)
 
@@ -40,7 +38,7 @@ describe('Radio Group', () => {
   })
 
   it('should invoke onChange if another value has selected', async () => {
-    const onChange = vi.fn()
+    const onChange = jest.fn()
 
     render(<Component onChange={onChange} />)
 

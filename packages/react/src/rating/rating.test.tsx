@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { vi } from 'vitest'
 import { Rating, RatingGroup, RatingItem, RatingLabel, RatingProps } from '.'
 
 const ComponentUnderTest = (props: RatingProps) => (
@@ -39,7 +38,7 @@ describe('Rating', () => {
   })
 
   it('should trigger onChange on click', async () => {
-    const onChange = vi.fn()
+    const onChange = jest.fn()
     render(<ComponentUnderTest value={1} onChange={onChange} max={5} />)
 
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
