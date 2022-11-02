@@ -27,7 +27,9 @@ export const useMenu = <Props extends UseMenuProps>(props: Props) => {
     ...menuProps,
   })
 
-  const [state, send, machine] = useMachine(menu.machine(initialContext))
+  const [state, send, machine] = useMachine(menu.machine(initialContext), {
+    context: initialContext,
+  })
 
   const api = menu.connect(state, send, normalizeProps)
 

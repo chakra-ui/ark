@@ -1,7 +1,7 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import type { connect } from '@zag-js/menu'
 import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { runIfFn } from '../run-if-fn'
 import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
