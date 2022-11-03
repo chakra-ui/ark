@@ -1,4 +1,9 @@
-import { Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs } from '@atlas/react'
+import { Tab } from './tab'
+import { TabIndicator } from './tab-indicator'
+import { TabList } from './tab-list'
+import { TabPanel } from './tab-panel'
+import { TabPanels } from './tab-panels'
+import { Tabs } from './tabs'
 
 export const Basic = () => (
   <Tabs>

@@ -1,5 +1,7 @@
-/** @jsxImportSource solid-js */
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel } from '@atlas/solid-js'
+import { Accordion } from './accordion'
+import { AccordionButton } from './accordion-button'
+import { AccordionItem } from './accordion-item'
+import { AccordionPanel } from './accordion-panel'
 
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

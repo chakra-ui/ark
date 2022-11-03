@@ -1,12 +1,10 @@
-import {
-  RadioGroup,
-  RadioGroupItem,
-  RadioGroupItemControl,
-  RadioGroupItemInput,
-  RadioGroupItemLabel,
-  RadioGroupLabel,
-} from '@atlas/react'
 import { useState } from 'react'
+import { RadioGroup } from './radio-group'
+import { RadioGroupItem } from './radio-group-item'
+import { RadioGroupItemControl } from './radio-group-item-control'
+import { RadioGroupItemInput } from './radio-group-item-input'
+import { RadioGroupItemLabel } from './radio-group-item-label'
+import { RadioGroupLabel } from './radio-group-label'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -15,7 +13,7 @@ const options = [
   { id: 'grape', label: 'Grapes' },
 ]
 
-export const basic = () => {
+export const Basic = () => {
   const [value, setValue] = useState('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
@@ -35,7 +33,7 @@ export const basic = () => {
   )
 }
 
-export const disabled = () => {
+export const Disabled = () => {
   const [value, setValue] = useState('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>

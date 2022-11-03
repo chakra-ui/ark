@@ -1,6 +1,9 @@
-import { Rating, RatingLabel, RatingGroup, RatingItem } from '@atlas/react'
+import { Rating } from './rating'
+import { RatingGroup } from './rating-group'
+import { RatingItem } from './rating-item'
+import { RatingLabel } from './rating-label'
 
-export const basic = () => (
+export const Basic = () => (
   <Rating max={5} defaultValue={3} allowHalf>
     <RatingLabel>Rating label</RatingLabel>
     <RatingGroup style={{ fontSize: '2em' }}>
