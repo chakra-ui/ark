@@ -12,7 +12,7 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | ⚪  |
 | Checkbox     | 🟢    | ⚪    | ⚪  |
-| Dialog       | ⚪    | ⚪    | ⚪  |
+| Dialog       | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | ⚪    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |
