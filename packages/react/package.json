@@ -5,7 +5,16 @@
   "keywords": [],
   "homepage": "https://github.com/chakra-ui/atlas#readme",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
   "sideEffects": false,
   "files": [
     "dist"
@@ -22,6 +31,7 @@
     "url": "https://github.com/chakra-ui/atlas/issues"
   },
   "scripts": {
+    "build": "tsup src/index.ts",
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
@@ -62,6 +72,7 @@
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tsup": "6.3.0",
     "typescript": "4.8.4",
     "vite": "3.2.2",
     "vitest": "0.24.5"

@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
+    "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
