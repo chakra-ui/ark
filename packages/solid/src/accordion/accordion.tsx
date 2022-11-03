@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { JSX, splitProps } from 'solid-js'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
@@ -16,11 +15,11 @@ export function Accordion(props: AccordionProps) {
     'onChange',
     'value',
   ])
-  const api = useAccordion(accordionProps)
+  const accordion = useAccordion(accordionProps)
 
   return (
-    <AccordionProvider value={api}>
-      <div {...api?.().rootProps} {...htmlProps} />
+    <AccordionProvider value={accordion}>
+      <div {...accordion?.().rootProps} {...htmlProps} />
     </AccordionProvider>
   )
 }
