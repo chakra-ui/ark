@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "docs"
+    "packages/*"
   ],
   "scripts": {
     "prepare": "husky install",
+    "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
@@ -42,5 +42,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.14.1"
+  "packageManager": "pnpm@7.14.2"
 }

@@ -1,14 +1,12 @@
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverPositioner,
-  PopoverArrow,
-  PopoverInnerArrow,
-  PopoverContent,
-  PopoverTitle,
-  PopoverDescription,
-  PopoverCloseButton,
-} from '@atlas/react'
+import { Popover } from './popover'
+import { PopoverArrow } from './popover-arrow'
+import { PopoverCloseButton } from './popover-close-button'
+import { PopoverContent } from './popover-content'
+import { PopoverDescription } from './popover-description'
+import { PopoverInnerArrow } from './popover-inner-arrow'
+import { PopoverPositioner } from './popover-positioner'
+import { PopoverTitle } from './popover-title'
+import { PopoverTrigger } from './popover-trigger'
 
 export const PopoverReact = () => (
   <Popover>

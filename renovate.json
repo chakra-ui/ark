@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [":semanticCommitTypeAll(chore)"],
+  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],

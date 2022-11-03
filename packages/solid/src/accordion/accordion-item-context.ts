@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createContext } from '../createContext'
 
 export type AccordionItemContext = { value: string; disabled?: boolean }

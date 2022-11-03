@@ -1,5 +1,5 @@
-import { Pressable } from '@atlas/react'
+import { Pressable } from './pressable'
 
-export const ReactPressable = () => {
+export const Basic = () => {
   return <Pressable onPress={() => console.log('onPress')}>Pressable</Pressable>
 }

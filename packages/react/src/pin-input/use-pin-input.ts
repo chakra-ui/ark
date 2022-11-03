@@ -19,6 +19,7 @@ export const usePinInput = (props: UsePinInputProps) => {
     value: props.value,
   })
 
+  // TODO https://github.com/chakra-ui/atlas/issues/48
   const [state, send] = useMachine(pinInput.machine(initialContext), { context })
 
   return pinInput.connect(state, send, normalizeProps)
