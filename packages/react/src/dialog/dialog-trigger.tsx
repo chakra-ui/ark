@@ -1,12 +1,12 @@
 import { cloneElement, ReactElement } from 'react'
 import { atlas } from '../factory'
-import { usePopoverContext } from './popover-context'
+import { useDialogContext } from './dialog-context'
 
-export type PopoverTriggerProps = { children: ReactElement | string | number }
+export type DialogTriggerProps = { children: ReactElement | string | number }
 
-export const PopoverTrigger = (props: PopoverTriggerProps) => {
+export const DialogTrigger = (props: DialogTriggerProps) => {
   const { children } = props
-  const { triggerProps } = usePopoverContext()
+  const { triggerProps } = useDialogContext()
 
   return typeof children === 'string' || typeof children === 'number' ? (
     <atlas.span {...triggerProps}>{children}</atlas.span>

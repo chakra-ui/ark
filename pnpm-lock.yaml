@@ -33,6 +33,7 @@ importers:
   packages/react:
     specifiers:
       '@polymorphic-factory/react': 0.1.2
+      '@reach/portal': 0.18.0
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
@@ -70,6 +71,7 @@ importers:
       vitest: 0.24.5
     dependencies:
       '@polymorphic-factory/react': 0.1.2_react@18.2.0
+      '@reach/portal': 0.18.0_biqbaboplfbrettd7655fr4n2y
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
@@ -825,6 +827,43 @@ packages:
       react: '>=16.8 || >=17 || >18'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@proload/core/0.3.3:
+    resolution: {integrity: sha512-7dAFWsIK84C90AMl24+N/ProHKm4iw0akcnoKjRvbfHifJZBLhaDsDus1QJmhG12lXj4e/uB/8mB/0aduCW+NQ==}
+    dependencies:
+      deepmerge: 4.2.2
+      escalade: 3.1.1
+    dev: false
+
+  /@proload/plugin-tsm/0.2.1_@proload+core@0.3.3:
+    resolution: {integrity: sha512-Ex1sL2BxU+g8MHdAdq9SZKz+pU34o8Zcl9PHWo2WaG9hrnlZme607PU6gnpoAYsDBpHX327+eu60wWUk+d/b+A==}
+    peerDependencies:
+      '@proload/core': ^0.3.2
+    dependencies:
+      '@proload/core': 0.3.3
+      tsm: 2.2.2
+    dev: false
+
+  /@reach/portal/0.18.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-TImozRapd576ofRk30Le2L3lRTFXF1p47B182wnp5eMTdZa74JX138BtNGEPJFOyrMaVmguVF8SSwZ6a0fon1Q==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/utils': 0.18.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@reach/utils/0.18.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-KdVMdpTgDyK8FzdKO9SCpiibuy/kbv3pwgfXshTI6tEcQT1OOwj7BAksnzGC0rPz0UholwC+AgkqEl3EJX3M1A==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@sinclair/typebox/0.24.51:
@@ -4022,7 +4061,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: true
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -4223,7 +4261,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
