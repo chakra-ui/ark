@@ -1,16 +1,14 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseButton,
-  DialogContent,
-  DialogDescription,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-  DialogUnderlay,
-} from '@atlas/react'
+import { Dialog } from './dialog'
+import { DialogBackdrop } from './dialog-backdrop'
+import { DialogCloseButton } from './dialog-close-button'
+import { DialogContent } from './dialog-content'
+import { DialogDescription } from './dialog-description'
+import { DialogPortal } from './dialog-portal'
+import { DialogTitle } from './dialog-title'
+import { DialogTrigger } from './dialog-trigger'
+import { DialogUnderlay } from './dialog-underlay'
 
-export const ReactDialog = () => {
+export const Basic = () => {
   return (
     <Dialog>
       <DialogTrigger>
