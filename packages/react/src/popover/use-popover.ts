@@ -12,8 +12,7 @@ export const usePopover = (props: UsePopoverProps) => {
   })
 
   const [state, send] = useMachine(popover.machine(initialContext), { context: initialContext })
-  const api = popover.connect(state, send, normalizeProps)
-  return { api }
+  return popover.connect(state, send, normalizeProps)
 }
 
 export type UsePopoverReturn = ReturnType<typeof usePopover>

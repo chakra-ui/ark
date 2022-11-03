@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { splitProps, type Assign } from '../split-props'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, UsePinInputProps } from './use-pin-input'
@@ -7,7 +7,7 @@ import { usePinInput, UsePinInputProps } from './use-pin-input'
 export type PinInputProps = Assign<HTMLAtlasProps<'div'>, UsePinInputProps>
 
 export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
-  const [pinInputProps, htmlProps] = splitProps(props, [
+  const [usePinInputProps, rootProps] = splitProps(props, [
     'autoFocus',
     'blurOnComplete',
     'defaultValue',
@@ -28,11 +28,11 @@ export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
     'type',
     'value',
   ])
-  const { api } = usePinInput(pinInputProps)
+  const pinInput = usePinInput(usePinInputProps)
 
   return (
-    <PinInputProvider value={api}>
-      <atlas.div {...api.rootProps} {...htmlProps} ref={ref} />
+    <PinInputProvider value={pinInput}>
+      <atlas.div {...pinInput.rootProps} {...rootProps} ref={ref} />
     </PinInputProvider>
   )
 })

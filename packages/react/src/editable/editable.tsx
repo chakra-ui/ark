@@ -1,16 +1,40 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
+import { splitProps, type Assign } from '../split-props'
 import { EditableProvider } from './editable-context'
 import { useEditable, UseEditableProps } from './use-editable'
 
-export type EditableProps = Omit<HTMLAtlasProps<'div'>, keyof UseEditableProps> & UseEditableProps
+export type EditableProps = Assign<HTMLAtlasProps<'div'>, UseEditableProps>
 
 export const Editable = forwardRef<'div', EditableProps>((props, ref) => {
-  const { api, htmlProps } = useEditable(props)
+  const [useEditableProps, rootPRops] = splitProps(props, [
+    'activationMode',
+    'autoResize',
+    'defaultValue',
+    'dir',
+    'disabled',
+    'getRootNode',
+    'ids',
+    'invalid',
+    'maxLength',
+    'name',
+    'onCancel',
+    'onChange',
+    'onEdit',
+    'onSubmit',
+    'placeholder',
+    'readonly',
+    'selectOnFocus',
+    'startWithEditView',
+    'submitMode',
+    'translations',
+    'value',
+  ])
+  const editable = useEditable(useEditableProps)
 
   return (
-    <EditableProvider value={api}>
-      <atlas.div {...htmlProps} {...api.rootProps} ref={ref} />
+    <EditableProvider value={editable}>
+      <atlas.div {...editable.rootProps} {...rootPRops} ref={ref} />
     </EditableProvider>
   )
 })

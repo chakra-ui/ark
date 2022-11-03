@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 

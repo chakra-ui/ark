@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { JSX, splitProps } from 'solid-js'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'

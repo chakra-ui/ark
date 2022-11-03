@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverPositionerProps = HTMLAtlasProps<'div'>

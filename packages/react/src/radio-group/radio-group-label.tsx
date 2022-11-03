@@ -1,5 +1,5 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioGroupLabelProps = HTMLAtlasProps<'label'>

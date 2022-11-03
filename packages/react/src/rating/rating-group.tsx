@@ -1,6 +1,6 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { RatingContext, useRatingContext } from './rating-context'
 
 export type RatingGroupProps = Omit<HTMLAtlasProps<'div'>, 'children'> & {

@@ -1,19 +1,36 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
+import { splitProps, type Assign } from '../split-props'
 import { RatingProvider } from './rating-context'
 import { useRating, UseRatingProps } from './use-rating'
 
-export type RatingProps = Omit<HTMLAtlasProps<'input'>, keyof UseRatingProps> & UseRatingProps
+export type RatingProps = Assign<HTMLAtlasProps<'input'>, UseRatingProps>
 
 export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
-  const { api, htmlProps } = useRating(props)
+  const [useRatingProps, htmlProps] = splitProps(props as UseRatingProps, [
+    'allowHalf',
+    'autoFocus',
+    'defaultValue',
+    'dir',
+    'disabled',
+    'getRootNode',
+    'ids',
+    'max',
+    'name',
+    'onChange',
+    'onHover',
+    'readonly',
+    'translations',
+    'value',
+  ])
+  const rating = useRating(useRatingProps)
 
   return (
-    <atlas.div {...api.rootProps} {...htmlProps}>
-      <RatingProvider value={api}>
+    <RatingProvider value={rating}>
+      <atlas.div {...rating.rootProps} {...htmlProps}>
         {props.children}
-        <atlas.input {...api.inputProps} ref={ref} />
-      </RatingProvider>
-    </atlas.div>
+        <atlas.input {...rating.inputProps} ref={ref} />
+      </atlas.div>
+    </RatingProvider>
   )
 })

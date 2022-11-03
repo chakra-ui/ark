@@ -1,6 +1,7 @@
 import * as pinInput from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { filterUndefinedEntries } from '../filter-undefined-entries'
 
 export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
   defaultValue?: pinInput.Context['value']
@@ -14,19 +15,20 @@ export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
 // Should the machine ignore undefined values by default?
 
 export const usePinInput = (props: UsePinInputProps) => {
-  const [state, send] = useMachine(
-    pinInput.machine({
-      id: useId(),
-      ...props,
-      value: props.value ?? props.defaultValue ?? [],
-    }),
-    {
-      context: { ...props },
-    },
-  )
+  const initialContext = filterUndefinedEntries({
+    id: useId(),
+    ...props,
+    value: props.value ?? props.defaultValue ?? [],
+  })
 
-  const api = pinInput.connect(state, send, normalizeProps)
-  return { api }
+  const context = filterUndefinedEntries({
+    ...initialContext,
+    value: props.value,
+  })
+
+  const [state, send] = useMachine(pinInput.machine(initialContext), { context })
+
+  return pinInput.connect(state, send, normalizeProps)
 }
 
 export type UsePinInputReturn = ReturnType<typeof usePinInput>

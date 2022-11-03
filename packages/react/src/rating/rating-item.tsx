@@ -1,6 +1,6 @@
+import { forwardRef } from '@polymorphic-factory/react'
 import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { forwardRef } from '../forwardRef'
 import { useRatingContext } from './rating-context'
 import { RatingItemContext, RatingItemProvider } from './rating-item-context'
 

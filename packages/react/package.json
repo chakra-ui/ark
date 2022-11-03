@@ -5,7 +5,16 @@
   "keywords": [],
   "homepage": "https://github.com/chakra-ui/atlas#readme",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
   "sideEffects": false,
   "files": [
     "dist"
@@ -22,23 +31,37 @@
     "url": "https://github.com/chakra-ui/atlas/issues"
   },
   "scripts": {
+    "build": "tsup src/index.ts",
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ci": "vitest --run"
   },
   "dependencies": {
-    "@zag-js/accordion": "0.1.15",
-    "@zag-js/editable": "0.1.16",
-    "@zag-js/pin-input": "0.1.17",
-    "@zag-js/popover": "0.1.16",
-    "@zag-js/pressable": "0.2.2",
-    "@zag-js/radio": "0.0.5",
-    "@zag-js/rating": "0.1.17",
-    "@zag-js/react": "0.1.18",
-    "@zag-js/tooltip": "0.1.16"
+    "@polymorphic-factory/react": "0.1.2",
+    "@zag-js/accordion": "0.2.0",
+    "@zag-js/checkbox": "0.2.0",
+    "@zag-js/dialog": "0.2.0",
+    "@zag-js/editable": "0.2.0",
+    "@zag-js/hover-card": "0.1.0",
+    "@zag-js/menu": "0.2.0",
+    "@zag-js/number-input": "0.2.0",
+    "@zag-js/pagination": "0.1.0",
+    "@zag-js/pin-input": "0.2.0",
+    "@zag-js/popover": "0.2.0",
+    "@zag-js/pressable": "0.3.0",
+    "@zag-js/radio": "0.1.0",
+    "@zag-js/range-slider": "0.2.0",
+    "@zag-js/rating": "0.2.0",
+    "@zag-js/react": "0.2.0",
+    "@zag-js/slider": "0.2.0",
+    "@zag-js/tabs": "0.2.0",
+    "@zag-js/tags-input": "0.3.0",
+    "@zag-js/toast": "0.2.0",
+    "@zag-js/tooltip": "0.2.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "8.19.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
@@ -49,9 +72,10 @@
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tsup": "6.3.0",
     "typescript": "4.8.4",
     "vite": "3.2.2",
-    "vitest": "0.24.4"
+    "vitest": "0.24.5"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
