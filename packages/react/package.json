@@ -35,7 +35,7 @@
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:ci": "vitest --run"
+    "test:ci": "vitest --run --coverage"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.1.2",
