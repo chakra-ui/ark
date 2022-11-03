@@ -39,13 +39,14 @@ export const Menu = forwardRef<'div', MenuProps>((props, ref) => {
 
   const menuContextValue = React.useMemo(() => ({ api, machine }), [api, machine])
 
-  const renderPropResult = runIfFn(children, { isOpen: api.isOpen, onClose: api.close })
+  const renderPropResult = runIfFn<ReactNode, MenuState>(children, {
+    isOpen: api.isOpen,
+    onClose: api.close,
+  })
 
   return (
     <atlas.div {...htmlProps} ref={ref}>
-      <MenuProvider value={menuContextValue}>
-        <>{renderPropResult}</>
-      </MenuProvider>
+      <MenuProvider value={menuContextValue}>{renderPropResult}</MenuProvider>
     </atlas.div>
   )
 })
