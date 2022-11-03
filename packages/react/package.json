@@ -35,7 +35,7 @@
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:ci": "vitest --run"
+    "test:ci": "vitest --run --coverage"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.1.2",
@@ -70,6 +70,7 @@
     "@types/react-dom": "18.0.8",
     "@types/testing-library__jest-dom": "5.14.5",
     "@vitejs/plugin-react": "2.2.0",
+    "@vitest/coverage-c8": "0.24.5",
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
