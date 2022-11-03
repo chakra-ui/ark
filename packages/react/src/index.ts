@@ -1,4 +1,5 @@
 export * from './accordion'
+export * from './checkbox'
 export * from './editable'
 export * from './number-input'
 export * from './pin-input'
