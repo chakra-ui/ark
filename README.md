@@ -18,7 +18,7 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | Menu         | ⚪    | ⚪    | ⚪  |
 | Number Input | 🟢    | ⚪    | ⚪  |
 | Pagination   | ⚪    | ⚪    | ⚪  |
-| Pin Input    | 🟢    | ⚪    | ⚪  |
+| Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | ⚪    | ⚪  |
 | Pressable    | 🟢    | ⚪    | ⚪  |
 | Radio Group  | 🟢    | ⚪    | ⚪  |

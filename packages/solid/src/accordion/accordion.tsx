@@ -15,11 +15,11 @@ export function Accordion(props: AccordionProps) {
     'onChange',
     'value',
   ])
-  const api = useAccordion(accordionProps)
+  const accordion = useAccordion(accordionProps)
 
   return (
-    <AccordionProvider value={api}>
-      <div {...api?.().rootProps} {...htmlProps} />
+    <AccordionProvider value={accordion}>
+      <div {...accordion?.().rootProps} {...htmlProps} />
     </AccordionProvider>
   )
 }
