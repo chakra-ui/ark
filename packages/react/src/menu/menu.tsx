@@ -4,6 +4,7 @@ import * as React from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../split-props'
+import { splitProps } from '../split-props'
 import { MenuProvider } from './menu-context'
 import { useMenu, UseMenuProps } from './use-menu'
 
@@ -20,11 +21,21 @@ export type MenuProps = Assign<
 >
 
 export const Menu = forwardRef<'div', MenuProps>((props, ref) => {
-  const {
-    api,
-    machine,
-    htmlProps: { children, ...htmlProps },
-  } = useMenu(props)
+  const [menuProps, { children, ...htmlProps }] = splitProps(props, [
+    'activeId',
+    'anchorPoint',
+    'aria-label',
+    'closeOnSelect',
+    'dir',
+    'getRootNode',
+    'id',
+    'ids',
+    'loop',
+    'onSelect',
+    'onValueChange',
+    'positioning',
+  ])
+  const { api, machine } = useMenu(menuProps)
 
   const menuContextValue = React.useMemo(() => ({ api, machine }), [api, machine])
 
