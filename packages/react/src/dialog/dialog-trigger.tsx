@@ -8,7 +8,9 @@ export const DialogTrigger = (props: DialogTriggerProps) => {
   const { children } = props
   const { triggerProps } = useDialogContext()
 
-  return typeof children === 'string' || typeof children === 'number'
-    ? cloneElement(<atlas.span>{children}</atlas.span>, triggerProps)
-    : cloneElement(children, triggerProps)
+  return typeof children === 'string' || typeof children === 'number' ? (
+    <atlas.span {...triggerProps}>{children}</atlas.span>
+  ) : (
+    cloneElement(children, triggerProps)
+  )
 }
