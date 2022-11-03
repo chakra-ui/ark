@@ -8,18 +8,13 @@ export type UseAccordionProps = Omit<accordion.Context, 'id'> & {
 
 export type UseAccordionReturn = ReturnType<typeof useAccordion>
 
-export function useAccordion(props: UseAccordionProps) {
+export const useAccordion = (props: UseAccordionProps) => {
   const [state, send] = useMachine(
     accordion.machine({
       id: createUniqueId(),
       ...props,
       value: props.defaultValue ?? props.value,
     }),
-    {
-      context: {
-        value: props.value,
-      },
-    },
   )
   return createMemo(() => accordion.connect(state, send, normalizeProps))
 }

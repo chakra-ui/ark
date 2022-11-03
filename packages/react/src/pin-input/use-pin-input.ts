@@ -7,13 +7,6 @@ export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
   defaultValue?: pinInput.Context['value']
 }
 
-// https://zagjs.com/overview/programmatic-control#transient-updates
-// do we need to always pass props as context? call stack exceeds
-// `This only works for context updates, not internal state updates and is not recommended.`
-// how can we ensure that value is not overriden?
-
-// Should the machine ignore undefined values by default?
-
 export const usePinInput = (props: UsePinInputProps) => {
   const initialContext = filterUndefinedEntries({
     id: useId(),
@@ -26,6 +19,7 @@ export const usePinInput = (props: UsePinInputProps) => {
     value: props.value,
   })
 
+  // TODO https://github.com/chakra-ui/atlas/issues/48
   const [state, send] = useMachine(pinInput.machine(initialContext), { context })
 
   return pinInput.connect(state, send, normalizeProps)

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import type { JSX } from 'solid-js'
 import { usePinInputContext } from './pin-input-context'
 
@@ -6,10 +5,10 @@ export type PinInputFieldProps = { index: number } & JSX.HTMLAttributes<HTMLInpu
 
 export const PinInputField = (props: PinInputFieldProps) => {
   const { index, ...htmlProps } = props
-  const context = usePinInputContext()
+  const pinInput = usePinInputContext()
   return (
     <input
-      {...context().getInputProps({
+      {...pinInput().getInputProps({
         index,
       })}
       {...htmlProps}

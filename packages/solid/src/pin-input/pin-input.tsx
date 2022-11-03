@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { splitProps, type JSX } from 'solid-js'
 import type { Assign } from '../types'
 import { PinInputProvider } from './pin-input-context'
@@ -28,10 +27,10 @@ export const PinInput = (props: PinInputProps) => {
     'type',
     'value',
   ])
-  const api = usePinInput(pinInputProps)
+  const pinInput = usePinInput(pinInputProps)
   return (
-    <PinInputProvider value={api}>
-      <div {...api?.().rootProps} {...htmlProps} />
+    <PinInputProvider value={pinInput}>
+      <div {...pinInput?.().rootProps} {...htmlProps} />
     </PinInputProvider>
   )
 }

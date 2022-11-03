@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createContext } from '../createContext'
 import type { UsePinInputReturn } from './use-pin-input'
 
