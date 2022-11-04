@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
-import { HTMLAtlasProps } from '../factory'
-import { Assign } from '../split-props'
+import type { ReactNode } from 'react'
+import type { HTMLAtlasProps } from '../factory'
+import type { Assign } from '../split-props'
 import { usePaginationContext } from './pagination-context'
-import { UsePaginationReturn } from './use-pagination'
+import type { UsePaginationReturn } from './use-pagination'
 
 export type PaginationPagesProps = Assign<
   HTMLAtlasProps<'div'>,
