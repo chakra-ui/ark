@@ -32,10 +32,10 @@ describe('Menu', () => {
       </Menu>,
     )
 
-    expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
+    expect(screen.getByText('Delivery')).toBeDisabled()
   })
 
-  it.skip('should not fire onClick on disabled MenuItem', async () => {
+  it('should not fire onClick on disabled MenuItem', async () => {
     const onClick = vi.fn()
 
     render(
