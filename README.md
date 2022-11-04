@@ -17,7 +17,7 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | Hover Card   | ⚪    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |
 | Number Input | 🟢    | ⚪    | ⚪  |
-| Pagination   | ⚪    | ⚪    | ⚪  |
+| Pagination   | 🟢    | ⚪    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | ⚪    | ⚪  |
 | Pressable    | 🟢    | ⚪    | ⚪  |
