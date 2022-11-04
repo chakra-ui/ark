@@ -64,6 +64,7 @@ importers:
       '@zag-js/toast': 0.2.0
       '@zag-js/tooltip': 0.2.0
       jsdom: 20.0.2
+      jsdom-testing-mocks: 1.6.0
       react: 18.2.0
       react-dom: 18.2.0
       tsup: 6.4.0
@@ -104,6 +105,7 @@ importers:
       '@vitejs/plugin-react': 2.2.0_vite@3.2.2
       '@vitest/coverage-c8': 0.24.5_jsdom@20.0.2
       jsdom: 20.0.2
+      jsdom-testing-mocks: 1.6.0_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.4.0_typescript@4.8.4
@@ -1758,6 +1760,10 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
 
+  /bezier-easing/2.1.0:
+    resolution: {integrity: sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==}
+    dev: true
+
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
@@ -2082,6 +2088,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /css-mediaquery/0.1.2:
+    resolution: {integrity: sha512-COtn4EROW5dBGlE/4PiKnh6rZpAPxDeFLaEEwt4i10jpDMFt2EhQGS79QmmrO+iKCHv0PU/HrOWEhijFd1x99Q==}
     dev: true
 
   /css.escape/1.5.1:
@@ -3446,6 +3456,17 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
+    dev: true
+
+  /jsdom-testing-mocks/1.6.0_react@18.2.0:
+    resolution: {integrity: sha512-fHeCy/vzUpB6eBAYCFbSyFRgSvaIu8KkGHCzeRqIGqkPPT5uSH78jrWErCVGADtFfH0KxoTHf+bZwsRAf7UWnA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=17'
+    dependencies:
+      bezier-easing: 2.1.0
+      css-mediaquery: 0.1.2
+      react: 18.2.0
     dev: true
 
   /jsdom/20.0.2:
