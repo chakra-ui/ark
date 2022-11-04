@@ -3,10 +3,10 @@ import user from '@testing-library/user-event'
 
 import { vi } from 'vitest'
 import { RadioGroup, RadioGroupProps } from './radio-group'
-import { RadioGroupItem } from './radio-group-item'
-import { RadioGroupItemControl } from './radio-group-item-control'
-import { RadioGroupItemInput } from './radio-group-item-input'
-import { RadioGroupItemLabel } from './radio-group-item-label'
+import { Radio } from './radio-group-item'
+import { RadioControl } from './radio-group-item-control'
+import { RadioInput } from './radio-group-item-input'
+import { RadioLabel } from './radio-group-item-label'
 import { RadioGroupLabel } from './radio-group-label'
 
 const options = [
@@ -20,11 +20,11 @@ const Component = (props: RadioGroupProps) => (
   <RadioGroup {...props}>
     <RadioGroupLabel as="h3">Fruits</RadioGroupLabel>
     {options.map((option, id) => (
-      <RadioGroupItem key={id} value={option.id} disabled={option.disabled}>
-        <RadioGroupItemLabel>{option.label}</RadioGroupItemLabel>
-        <RadioGroupItemInput />
-        <RadioGroupItemControl />
-      </RadioGroupItem>
+      <Radio key={id} value={option.id} disabled={option.disabled}>
+        <RadioLabel>{option.label}</RadioLabel>
+        <RadioInput />
+        <RadioControl />
+      </Radio>
     ))}
   </RadioGroup>
 )

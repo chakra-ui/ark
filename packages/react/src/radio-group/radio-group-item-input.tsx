@@ -1,12 +1,12 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { useRadioGroupContext } from './radio-group-context'
-import { useRadioGroupItemContext } from './radio-group-item-context'
+import { useRadioContext } from './radio-group-item-context'
 
-export type RadioGroupItemInputProps = HTMLAtlasProps<'input'>
+export type RadioInputProps = HTMLAtlasProps<'input'>
 
-export const RadioGroupItemInput = forwardRef<'input', RadioGroupItemInputProps>((props, ref) => {
+export const RadioInput = forwardRef<'input', RadioInputProps>((props, ref) => {
   const { getItemInputProps } = useRadioGroupContext()
-  const context = useRadioGroupItemContext()
+  const context = useRadioContext()
   return <atlas.input {...props} {...getItemInputProps(context)} ref={ref} />
 })
