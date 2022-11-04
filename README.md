@@ -24,7 +24,7 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | Radio Group  | 🟢    | ⚪    | ⚪  |
 | Range Slider | ⚪    | ⚪    | ⚪  |
 | Rating       | 🟢    | ⚪    | ⚪  |
-| Slider       | ⚪    | ⚪    | ⚪  |
+| Slider       | 🟢    | ⚪    | ⚪  |
 | Tabs         | 🟢    | ⚪    | ⚪  |
 | Tags Input   | ⚪    | ⚪    | ⚪  |
 | Toast        | ⚪    | ⚪    | ⚪  |
