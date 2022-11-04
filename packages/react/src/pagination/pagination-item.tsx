@@ -3,9 +3,9 @@ import { atlas, HTMLAtlasProps } from '../factory'
 import { Assign, splitProps } from '../split-props'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPageProps = Assign<HTMLAtlasProps<'a'>, { value: number }>
+export type PaginationItemProps = Assign<HTMLAtlasProps<'a'>, { value: number }>
 
-export const PaginationPage = forwardRef<'a', PaginationPageProps>((props, ref) => {
+export const PaginationItem = forwardRef<'a', PaginationItemProps>((props, ref) => {
   const { getItemProps } = usePaginationContext()
   const [{ value }, htmlProps] = splitProps(props, ['value'])
   return (

@@ -2,9 +2,9 @@ import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextPageProps = HTMLAtlasProps<'a'>
+export type PaginationNextItemProps = HTMLAtlasProps<'a'>
 
-export const PaginationNextPage = forwardRef<'a', PaginationNextPageProps>((props, ref) => {
+export const PaginationNextItem = forwardRef<'a', PaginationNextItemProps>((props, ref) => {
   const { nextItemProps } = usePaginationContext()
   return <atlas.a href="#next" {...nextItemProps} {...props} ref={ref} />
 })

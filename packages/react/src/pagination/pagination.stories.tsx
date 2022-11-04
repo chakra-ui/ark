@@ -1,36 +1,35 @@
 import { Pagination } from './pagination'
 import { PaginationEllipsis } from './pagination-ellipsis'
-import { PaginationNextPage } from './pagination-next-page'
-import { PaginationPage } from './pagination-page'
-import { PaginationPages } from './pagination-pages'
-import { PaginationPrevPage } from './pagination-prev-page'
+import { PaginationItem } from './pagination-item'
+import { PaginationNextItem } from './pagination-next-item'
+import { PaginationPrevItem } from './pagination-prev-item'
 
 export const Basic = () => (
-  <Pagination count={500} pageSize={10} siblingCount={1}>
-    <ul>
-      <li>
-        <PaginationPrevPage>
-          Previous <span className="visually-hidden">Page</span>
-        </PaginationPrevPage>
-      </li>
+  <Pagination count={5000} pageSize={10} siblingCount={2}>
+    {(pages) => (
+      <ul>
+        <li>
+          <PaginationPrevItem>
+            Previous <span className="visually-hidden">Page</span>
+          </PaginationPrevItem>
+        </li>
 
-      <PaginationPages>
-        {(page, index) => (
+        {pages.map((page, index) => (
           <li key={index}>
             {page.type === 'page' ? (
-              <PaginationPage value={page.value}>{page.value}</PaginationPage>
+              <PaginationItem value={page.value}>{page.value}</PaginationItem>
             ) : (
               <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
             )}
           </li>
-        )}
-      </PaginationPages>
+        ))}
 
-      <li>
-        <PaginationNextPage>
-          Next <span className="visually-hidden">Page</span>
-        </PaginationNextPage>
-      </li>
-    </ul>
+        <li>
+          <PaginationNextItem>
+            Next <span className="visually-hidden">Page</span>
+          </PaginationNextItem>
+        </li>
+      </ul>
+    )}
   </Pagination>
 )
