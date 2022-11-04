@@ -1,7 +1,7 @@
 import { Children, cloneElement, isValidElement, ReactElement } from 'react'
 import { useMenuContext } from './menu-context'
 
-export type MenuTriggerProps = { children: ReactElement }
+export type MenuTriggerProps = { children: ReactElement | string | number }
 
 export const MenuTrigger = (props: MenuTriggerProps) => {
   const { api } = useMenuContext()
