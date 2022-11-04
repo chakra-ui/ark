@@ -1,6 +1,6 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { atlas, HTMLAtlasProps } from '../factory'
-import { splitProps } from '../split-props'
+import { Assign, splitProps } from '../split-props'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationPageProps = Assign<HTMLAtlasProps<'a'>, { value: number }>
