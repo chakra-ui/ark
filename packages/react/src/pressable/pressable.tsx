@@ -1,4 +1,5 @@
 import { forwardRef } from '@polymorphic-factory/react'
+import { mergeProps } from '@zag-js/react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { usePressable, UsePressableProps } from './use-pressable'
@@ -6,7 +7,7 @@ import { usePressable, UsePressableProps } from './use-pressable'
 export type PressableProps = Assign<HTMLAtlasProps<'button'>, UsePressableProps>
 
 export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
-  const [usePressableProps, rootProps] = splitProps(props, [
+  const [usePressableProps, divProps] = splitProps(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',
     'dir',
@@ -20,5 +21,7 @@ export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
     'preventFocusOnPress',
   ])
   const { pressableProps } = usePressable(usePressableProps)
-  return <atlas.button {...pressableProps} {...rootProps} ref={ref} />
+  const mergedProps = mergeProps(pressableProps, divProps)
+
+  return <atlas.button {...mergedProps} ref={ref} />
 })

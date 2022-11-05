@@ -7,5 +7,6 @@ export type DialogProps = PropsWithChildren<UseDialogProps>
 export const Dialog = (props: DialogProps) => {
   const { children, ...useDialogProps } = props
   const dialog = useDialog(useDialogProps)
+
   return <DialogProvider value={dialog}>{children}</DialogProvider>
 }
