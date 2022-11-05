@@ -6,7 +6,7 @@ import { PaginationPrevItem } from './pagination-prev-item'
 
 export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
-    {(pages) => (
+    {({ pages }) => (
       <ul>
         <li>
           <PaginationPrevItem>

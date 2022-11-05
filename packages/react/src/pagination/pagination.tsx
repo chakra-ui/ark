@@ -9,7 +9,7 @@ import { usePagination, UsePaginationProps, UsePaginationReturn } from './use-pa
 export type PaginationProps = Assign<
   Assign<HTMLAtlasProps<'nav'>, UsePaginationProps>,
   {
-    children: ReactNode | ((pages: UsePaginationReturn['pages']) => ReactNode)
+    children: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
   }
 >
 
@@ -27,7 +27,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props: PaginationP
   ])
   const pagination = usePagination(paginationProps)
 
-  const view = runIfFn(children, pagination.pages)
+  const view = runIfFn(children, pagination)
 
   return (
     <PaginationProvider value={pagination}>
