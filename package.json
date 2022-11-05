@@ -1,5 +1,5 @@
 {
-  "name": "@atlas/root",
+  "name": "@ark-ui/root",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -7,15 +7,15 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "doc": "pnpm --filter=@atlas/docs",
+    "doc": "pnpm --filter=@ark-ui/docs",
     "format:check": "prettier --check packages/**/src",
     "format:write": "prettier --write packages/**/src",
     "lint": "turbo run lint",
     "prepare": "husky install",
-    "react": "pnpm --filter=@atlas/react",
+    "react": "pnpm --filter=@ark-ui/react",
     "release": "changeset publish",
     "release:rc": "changeset publish --tag rc",
-    "solid": "pnpm --filter=@atlas/solid",
+    "solid": "pnpm --filter=@ark-ui/solid",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
     "version": "changeset version",
