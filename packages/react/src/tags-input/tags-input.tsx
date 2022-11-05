@@ -1,14 +1,21 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
+import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
+import { runIfFn } from '../run-if-fn'
 import { splitProps, type Assign } from '../split-props'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, UseTagsInputProps } from './use-tags-input'
 
-export type TagsInputProps = Assign<HTMLAtlasProps<'div'>, UseTagsInputProps>
+export type TagsInputProps = Assign<
+  Assign<HTMLAtlasProps<'input'>, UseTagsInputProps>,
+  {
+    children: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
+  }
+>
 
-export const TagsInput = forwardRef<'div', TagsInputProps>((props, ref) => {
-  const [useTagsInputProps, divProps] = splitProps(props, [
+export const TagsInput = forwardRef<'input', TagsInputProps>((props, ref) => {
+  const [useTagsInputProps, { children, ...inputProps }] = splitProps(props, [
     'addOnPaste',
     'allowEditTag',
     'allowOverflow',
@@ -34,12 +41,16 @@ export const TagsInput = forwardRef<'div', TagsInputProps>((props, ref) => {
     'validate',
     'value',
   ])
-  const pinInput = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(pinInput.rootProps, divProps)
+  const tagsInput = useTagsInput(useTagsInputProps)
+  const mergedProps = mergeProps(tagsInput.inputProps, inputProps)
+  const view = runIfFn(children, tagsInput)
 
   return (
-    <TagsInputProvider value={pinInput}>
-      <atlas.div {...mergedProps} ref={ref} />
+    <TagsInputProvider value={tagsInput}>
+      <atlas.div>
+        {view}
+        <input {...mergedProps} ref={ref} />
+      </atlas.div>
     </TagsInputProvider>
   )
 })
