@@ -15,7 +15,7 @@ export type PaginationProps = Assign<
 >
 
 export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
-  const [paginationProps, { children, ...htmlProps }] = splitProps(props, [
+  const [paginationProps, { children, ...navProps }] = splitProps(props, [
     'count',
     'dir',
     'getRootNode',
@@ -30,7 +30,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
 
   const view = runIfFn(children, pagination)
 
-  const mergedProps = mergeProps(pagination.rootProps, htmlProps)
+  const mergedProps = mergeProps(pagination.rootProps, navProps)
 
   return (
     <PaginationProvider value={pagination}>

@@ -8,7 +8,7 @@ export type PaginationEllipsisProps = Assign<HTMLAtlasProps<'span'>, { index: nu
 
 export const PaginationEllipsis = forwardRef<'span', PaginationEllipsisProps>((props, ref) => {
   const { getEllipsisProps } = usePaginationContext()
-  const [{ index }, htmlProps] = splitProps(props, ['index'])
-  const mergedProps = mergeProps(getEllipsisProps({ index }), htmlProps)
+  const [{ index }, spanProps] = splitProps(props, ['index'])
+  const mergedProps = mergeProps(getEllipsisProps({ index }), spanProps)
   return <atlas.span {...mergedProps} ref={ref} />
 })
