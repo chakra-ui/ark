@@ -9,6 +9,10 @@ export default defineConfig({
   plugins: [react()],
   test: {
     setupFiles: './src/setupTest.ts',
+    coverage: {
+      all: true,
+      reporter: ['lcov', 'text'],
+    },
     globals: true,
     environment: 'jsdom',
     css: false,

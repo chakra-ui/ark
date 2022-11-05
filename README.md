@@ -11,8 +11,8 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 |              | React | Solid | Vue |
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | ⚪  |
-| Checkbox     | ⚪    | ⚪    | ⚪  |
-| Dialog       | ⚪    | ⚪    | ⚪  |
+| Checkbox     | 🟢    | ⚪    | ⚪  |
+| Dialog       | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | ⚪    | ⚪  |
 | Hover Card   | ⚪    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |

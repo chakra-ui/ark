@@ -1,4 +1,5 @@
 import { forwardRef } from '@polymorphic-factory/react'
+import { mergeProps } from '@zag-js/react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { EditableProvider } from './editable-context'
@@ -7,7 +8,7 @@ import { useEditable, UseEditableProps } from './use-editable'
 export type EditableProps = Assign<HTMLAtlasProps<'div'>, UseEditableProps>
 
 export const Editable = forwardRef<'div', EditableProps>((props, ref) => {
-  const [useEditableProps, rootPRops] = splitProps(props, [
+  const [useEditableProps, divProps] = splitProps(props, [
     'activationMode',
     'autoResize',
     'defaultValue',
@@ -31,10 +32,11 @@ export const Editable = forwardRef<'div', EditableProps>((props, ref) => {
     'value',
   ])
   const editable = useEditable(useEditableProps)
+  const mergedProps = mergeProps(editable.rootProps, divProps)
 
   return (
     <EditableProvider value={editable}>
-      <atlas.div {...editable.rootProps} {...rootPRops} ref={ref} />
+      <atlas.div {...mergedProps} ref={ref} />
     </EditableProvider>
   )
 })

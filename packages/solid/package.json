@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "solid-js": "1.6.1",
-    "tsup": "6.3.0",
+    "tsup": "6.4.0",
     "typescript": "4.8.4"
   },
   "peerDependencies": {

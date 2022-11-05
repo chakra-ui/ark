@@ -8,7 +8,9 @@ export const PopoverTrigger = (props: PopoverTriggerProps) => {
   const { children } = props
   const { triggerProps } = usePopoverContext()
 
-  return typeof children === 'string' || typeof children === 'number'
-    ? cloneElement(<atlas.span>{children}</atlas.span>, triggerProps)
-    : cloneElement(children, triggerProps)
+  return typeof children === 'string' || typeof children === 'number' ? (
+    <atlas.span {...triggerProps}>{children}</atlas.span>
+  ) : (
+    cloneElement(children, triggerProps)
+  )
 }

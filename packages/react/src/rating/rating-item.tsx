@@ -1,4 +1,5 @@
 import { forwardRef } from '@polymorphic-factory/react'
+import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { useRatingContext } from './rating-context'
@@ -12,13 +13,14 @@ export type RatingItemProps = Omit<HTMLAtlasProps<'span'>, 'children'> & {
 }
 
 export const RatingItem = forwardRef<'span', RatingItemProps>((props, ref) => {
-  const { children, index, ...htmlProps } = props
-  const api = useRatingContext()
-  const state = api.getRatingState(index)
+  const { children, index, ...divProps } = props
+  const { getRatingState, getItemProps } = useRatingContext()
+  const state = getRatingState(index)
   const icon = typeof children === 'function' ? children(state) : children
+  const mergedProps = mergeProps(getItemProps({ index }), divProps)
 
   return (
-    <atlas.span {...api.getItemProps({ index })} {...htmlProps} ref={ref}>
+    <atlas.span {...mergedProps} ref={ref}>
       <RatingItemProvider value={state}>{icon}</RatingItemProvider>
     </atlas.span>
   )

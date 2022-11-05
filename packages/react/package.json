@@ -35,10 +35,11 @@
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:ci": "vitest --run"
+    "test:ci": "vitest --run --coverage"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.1.2",
+    "@reach/portal": "0.18.0",
     "@zag-js/accordion": "0.2.0",
     "@zag-js/checkbox": "0.2.0",
     "@zag-js/dialog": "0.2.0",
@@ -65,14 +66,15 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/react": "18.0.24",
+    "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@types/testing-library__jest-dom": "5.14.5",
     "@vitejs/plugin-react": "2.2.0",
+    "@vitest/coverage-c8": "0.24.5",
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tsup": "6.3.0",
+    "tsup": "6.4.0",
     "typescript": "4.8.4",
     "vite": "3.2.2",
     "vitest": "0.24.5"

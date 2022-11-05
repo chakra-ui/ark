@@ -8,10 +8,11 @@ export type EditableControlsProps = Omit<HTMLAtlasProps<'div'>, 'children'> & {
 }
 
 export const EditableControls = forwardRef<'div', EditableControlsProps>((props, ref) => {
-  const { children, ...htmlProps } = props
+  const { children, ...divProps } = props
   const api = useEditableContext()
+
   return (
-    <atlas.div {...htmlProps} ref={ref}>
+    <atlas.div {...divProps} ref={ref}>
       {children(api)}
     </atlas.div>
   )

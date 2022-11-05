@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { Radio } from './radio'
+import { RadioControl } from './radio-control'
 import { RadioGroup } from './radio-group'
-import { RadioGroupItem } from './radio-group-item'
-import { RadioGroupItemControl } from './radio-group-item-control'
-import { RadioGroupItemInput } from './radio-group-item-input'
-import { RadioGroupItemLabel } from './radio-group-item-label'
 import { RadioGroupLabel } from './radio-group-label'
+import { RadioInput } from './radio-input'
+import { RadioLabel } from './radio-label'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -19,15 +19,15 @@ export const Basic = () => {
     <RadioGroup onChange={({ value }) => setValue(value)}>
       <RadioGroupLabel as="h3">Fruits: {value}</RadioGroupLabel>
       {options.map((option, id) => (
-        <RadioGroupItem
+        <Radio
           key={id}
           value={option.id}
           style={{ fontWeight: option.id === value ? 'bold' : 'inherit' }}
         >
-          <RadioGroupItemLabel>{option.label}</RadioGroupItemLabel>
-          <RadioGroupItemInput />
-          <RadioGroupItemControl />
-        </RadioGroupItem>
+          <RadioLabel>{option.label}</RadioLabel>
+          <RadioInput />
+          <RadioControl />
+        </Radio>
       ))}
     </RadioGroup>
   )
@@ -39,7 +39,7 @@ export const Disabled = () => {
     <RadioGroup onChange={({ value }) => setValue(value)}>
       <RadioGroupLabel as="h3">Fruits: {value}</RadioGroupLabel>
       {options.map((option, id) => (
-        <RadioGroupItem
+        <Radio
           key={id}
           value={option.id}
           disabled={option.id === 'mango'}
@@ -48,10 +48,10 @@ export const Disabled = () => {
             fontWeight: option.id === value ? 'bold' : 'inherit',
           }}
         >
-          <RadioGroupItemLabel>{option.label}</RadioGroupItemLabel>
-          <RadioGroupItemInput />
-          <RadioGroupItemControl />
-        </RadioGroupItem>
+          <RadioLabel>{option.label}</RadioLabel>
+          <RadioInput />
+          <RadioControl />
+        </Radio>
       ))}
     </RadioGroup>
   )
