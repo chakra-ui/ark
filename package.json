@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json}": [
-      "prettier --write --plugin=./node_modules/prettier-plugin-organize-imports"
+      "prettier --write"
     ]
   },
   "engines": {
