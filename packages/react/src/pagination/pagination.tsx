@@ -13,7 +13,7 @@ export type PaginationProps = Assign<
   }
 >
 
-export const Pagination = forwardRef<'nav', PaginationProps>((props: PaginationProps) => {
+export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
   const [paginationProps, { children, ...htmlProps }] = splitProps(props, [
     'count',
     'dir',
@@ -31,7 +31,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props: PaginationP
 
   return (
     <PaginationProvider value={pagination}>
-      <atlas.nav {...pagination.rootProps} {...htmlProps}>
+      <atlas.nav {...pagination.rootProps} {...htmlProps} ref={ref}>
         {view}
       </atlas.nav>
     </PaginationProvider>
