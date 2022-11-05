@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { Radio } from './radio'
+import { RadioControl } from './radio-control'
 import { RadioGroup } from './radio-group'
-import { Radio } from './radio-group-item'
-import { RadioControl } from './radio-group-item-control'
-import { RadioInput } from './radio-group-item-input'
-import { RadioLabel } from './radio-group-item-label'
 import { RadioGroupLabel } from './radio-group-label'
+import { RadioInput } from './radio-input'
+import { RadioLabel } from './radio-label'
 
 const options = [
   { id: 'apple', label: 'Apples' },

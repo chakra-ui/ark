@@ -7,5 +7,6 @@ export type TooltipProps = PropsWithChildren<UseTooltipProps>
 export const Tooltip = (props: TooltipProps) => {
   const { children, ...useTooltipProps } = props
   const tooltip = useTooltip(useTooltipProps)
+
   return <TooltipProvider value={tooltip}>{children}</TooltipProvider>
 }
