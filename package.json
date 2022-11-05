@@ -8,8 +8,8 @@
   "scripts": {
     "build": "turbo run build",
     "doc": "pnpm --filter=@ark-ui/docs",
-    "format:check": "prettier --check packages/**/src",
-    "format:write": "prettier --write packages/**/src",
+    "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
+    "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
     "prepare": "husky install",
     "react": "pnpm --filter=@ark-ui/react",
@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json}": [
-      "prettier --write"
+      "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
   "engines": {
