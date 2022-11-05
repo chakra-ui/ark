@@ -1,4 +1,5 @@
 import { forwardRef } from '@polymorphic-factory/react'
+import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { atlas, HTMLAtlasProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -29,9 +30,11 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
 
   const view = runIfFn(children, pagination)
 
+  const mergedProps = mergeProps(pagination.rootProps, htmlProps)
+
   return (
     <PaginationProvider value={pagination}>
-      <atlas.nav {...pagination.rootProps} {...htmlProps} ref={ref}>
+      <atlas.nav {...mergedProps} ref={ref}>
         {view}
       </atlas.nav>
     </PaginationProvider>
