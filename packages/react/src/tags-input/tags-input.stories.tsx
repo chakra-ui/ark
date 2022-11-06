@@ -6,6 +6,7 @@ import { TagsInput } from './tags-input'
 import { TagsInputClearButton } from './tags-input-clear-button'
 import { TagsInputControl } from './tags-input-control'
 import { TagsInputField } from './tags-input-field'
+import './tags-input.css'
 
 export const Basic = () => (
   <TagsInput value={['react', 'solid', 'vue']}>
