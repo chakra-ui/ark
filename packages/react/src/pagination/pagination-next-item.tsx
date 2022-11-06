@@ -1,12 +1,12 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextItemProps = HTMLAtlasProps<'a'>
+export type PaginationNextItemProps = HTMLArkProps<'a'>
 
 export const PaginationNextItem = forwardRef<'a', PaginationNextItemProps>((props, ref) => {
   const { nextItemProps } = usePaginationContext()
   const mergedProps = mergeProps(nextItemProps, props)
-  return <atlas.a href="#next" {...mergedProps} ref={ref} />
+  return <ark.a href="#next" {...mergedProps} ref={ref} />
 })

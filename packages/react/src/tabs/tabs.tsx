@@ -1,11 +1,11 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { Assign, splitProps } from '../split-props'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HTMLAtlasProps<'div'>, UseTabsProps>
+export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
 export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
   const [useTabsProps, divProps] = splitProps(props, [
@@ -27,7 +27,7 @@ export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
 
   return (
     <TabsProvider value={tabs}>
-      <atlas.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </TabsProvider>
   )
 })

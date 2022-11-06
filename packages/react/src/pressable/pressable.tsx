@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { usePressable, UsePressableProps } from './use-pressable'
 
-export type PressableProps = Assign<HTMLAtlasProps<'button'>, UsePressableProps>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
 export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
   const [usePressableProps, divProps] = splitProps(props, [
@@ -23,5 +23,5 @@ export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
   const { pressableProps } = usePressable(usePressableProps)
   const mergedProps = mergeProps(pressableProps, divProps)
 
-  return <atlas.button {...mergedProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} />
 })

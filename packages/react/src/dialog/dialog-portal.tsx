@@ -5,5 +5,5 @@ export type DialogPortalProps = PortalProps
 
 export const DialogPortal = (props: DialogPortalProps) => {
   const { isOpen } = useDialogContext()
-  return isOpen ? <Portal type="atlas-portal" {...props} /> : null
+  return isOpen ? <Portal type="ark-portal" {...props} /> : null
 }

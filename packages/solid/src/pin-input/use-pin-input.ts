@@ -7,7 +7,7 @@ export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
 }
 export type UsePinInputReturn = ReturnType<typeof usePinInput>
 
-// TODO https://github.com/chakra-ui/atlas/issues/48
+// TODO https://github.com/chakra-ui/ark/issues/48
 export const usePinInput = (props: UsePinInputProps) => {
   const [state, send] = useMachine(
     pinInput.machine({

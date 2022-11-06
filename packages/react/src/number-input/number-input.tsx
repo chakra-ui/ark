@@ -1,11 +1,11 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, UseNumberInputProps } from './use-number-input'
 
-export type NumberInputProps = Assign<HTMLAtlasProps<'div'>, UseNumberInputProps>
+export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
 export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
   const [useNumberInputProps, divProps] = splitProps(props, [
@@ -44,7 +44,7 @@ export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
 
   return (
     <NumberInputProvider value={pinInput}>
-      <atlas.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </NumberInputProvider>
   )
 })

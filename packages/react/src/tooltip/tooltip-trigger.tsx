@@ -1,5 +1,5 @@
 import { cloneElement, ReactElement } from 'react'
-import { atlas } from '../factory'
+import { ark } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipTriggerProps = { children: ReactElement | string | number }
@@ -9,7 +9,7 @@ export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const { triggerProps } = useTooltipContext()
 
   return typeof children === 'string' || typeof children === 'number' ? (
-    <atlas.span {...triggerProps}>{children}</atlas.span>
+    <ark.span {...triggerProps}>{children}</ark.span>
   ) : (
     cloneElement(children, triggerProps)
   )
