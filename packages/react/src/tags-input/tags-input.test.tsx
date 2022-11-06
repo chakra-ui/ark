@@ -59,6 +59,26 @@ describe('TagsInput', () => {
     expect(screen.queryByText('angular')).toBeNull()
   })
 
+  it('should allow to modify an added item', async () => {
+    render(<ComponentUnderTest />)
+    const input = screen.getByPlaceholderText('Add tag')
+    await user.type(input, 'angular')
+    await user.keyboard('[Enter]')
+
+    expect(screen.getByText('angular')).toBeInTheDocument()
+
+    await user.keyboard('[ArrowLeft]')
+    await user.keyboard('[Enter]')
+    await user.keyboard('[Backspace]')
+
+    await user.type(
+      screen.getByLabelText('Editing tag angular. Press enter to save or escape to cancel.'),
+      '!',
+    )
+    await user.keyboard('[Enter]')
+    expect(await screen.findByText('angular!')).toBeInTheDocument()
+  })
+
   it('should clear all item when clear all button is clicked', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByText('react')).toBeInTheDocument()
