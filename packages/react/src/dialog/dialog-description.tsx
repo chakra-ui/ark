@@ -1,13 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { useDialogContext } from './dialog-context'
 
-export type DialogDescriptionProps = HTMLAtlasProps<'p'>
+export type DialogDescriptionProps = HTMLArkProps<'p'>
 
 export const DialogDescription = forwardRef<'p', DialogDescriptionProps>((props, ref) => {
   const { descriptionProps } = useDialogContext()
   const mergedProps = mergeProps(descriptionProps, props)
 
-  return <atlas.p {...mergedProps} ref={ref} />
+  return <ark.p {...mergedProps} ref={ref} />
 })

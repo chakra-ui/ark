@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { RadioContext, RadioProvider } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 
-export type RadioProps = Omit<HTMLAtlasProps<'label'>, keyof RadioContext> & RadioContext
+export type RadioProps = Omit<HTMLArkProps<'label'>, keyof RadioContext> & RadioContext
 
 export const Radio = forwardRef<'label', RadioProps>((props, ref) => {
   const { value, disabled, invalid, readonly, ...divProps } = props
@@ -13,7 +13,7 @@ export const Radio = forwardRef<'label', RadioProps>((props, ref) => {
 
   return (
     <RadioProvider value={{ value, disabled, invalid, readonly }}>
-      <atlas.label {...mergedProps} ref={ref} />
+      <ark.label {...mergedProps} ref={ref} />
     </RadioProvider>
   )
 })
