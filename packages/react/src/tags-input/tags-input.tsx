@@ -1,14 +1,14 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { splitProps, type Assign } from '../split-props'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, UseTagsInputProps } from './use-tags-input'
 
 export type TagsInputProps = Assign<
-  Assign<HTMLAtlasProps<'input'>, UseTagsInputProps>,
+  Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
   {
     children: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
   }
@@ -42,15 +42,14 @@ export const TagsInput = forwardRef<'input', TagsInputProps>((props, ref) => {
     'value',
   ])
   const tagsInput = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(tagsInput.inputProps, inputProps)
+  const mergedProps = mergeProps(tagsInput.rootProps, inputProps)
   const view = runIfFn(children, tagsInput)
 
   return (
     <TagsInputProvider value={tagsInput}>
-      <atlas.div>
+      <ark.div {...mergedProps} ref={ref}>
         {view}
-        <input {...mergedProps} ref={ref} />
-      </atlas.div>
+      </ark.div>
     </TagsInputProvider>
   )
 })

@@ -14,13 +14,7 @@ export const useTagsInput = (props: UseTagsInputProps) => {
     value: props.value ?? props.defaultValue,
   })
 
-  // const context = filterUndefinedEntries({
-  //   ...initialContext,
-  //   value: props.value,
-  // })
-
   const [state, send] = useMachine(tagsInput.machine(initialContext))
-
   return tagsInput.connect(state, send, normalizeProps)
 }
 
