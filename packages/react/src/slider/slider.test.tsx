@@ -20,7 +20,7 @@ const Component = (props: SliderProps) => (
 )
 
 describe('Slider', () => {
-  it('should render', async () => {
+  it('should render!', async () => {
     render(<Component />)
   })
 })

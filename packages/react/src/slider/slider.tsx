@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { SliderProvider } from './slider-context'
 import { useSlider, UseSliderProps } from './use-slider'
 
-export type SliderProps = Assign<HTMLAtlasProps<'div'>, UseSliderProps>
+export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
 
 export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
   const [useSliderProps, rootProps] = splitProps(props, [
@@ -34,7 +34,7 @@ export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
 
   return (
     <SliderProvider value={slider}>
-      <atlas.div {...slider.rootProps} {...rootProps} ref={ref} />
+      <ark.div {...slider.rootProps} {...rootProps} ref={ref} />
     </SliderProvider>
   )
 })

@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderOutputProps = HTMLAtlasProps<'output'>
+export type SliderOutputProps = HTMLArkProps<'output'>
 
 export const SliderOutput = forwardRef<'output', SliderOutputProps>((props, ref) => {
   const { outputProps } = useSliderContext()
-  return <atlas.output {...outputProps} {...props} ref={ref} />
+  return <ark.output {...outputProps} {...props} ref={ref} />
 })
