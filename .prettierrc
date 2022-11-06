@@ -3,6 +3,5 @@
   "singleQuote": true,
   "trailingComma": "all",
   "arrowParens": "always",
-  "semi": false,
-  "pluginSearchDirs": ["./node_modules"]
+  "semi": false
 }
