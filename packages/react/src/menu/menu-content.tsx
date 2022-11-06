@@ -1,11 +1,11 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 
-export type MenuContentProps = HTMLAtlasProps<'div'>
+export type MenuContentProps = HTMLArkProps<'div'>
 
 export const MenuContent = forwardRef<'div', MenuContentProps>((props, ref) => {
   const { api } = useMenuContext()
 
-  return <atlas.div {...api.contentProps} {...props} ref={ref} />
+  return <ark.div {...api.contentProps} {...props} ref={ref} />
 })

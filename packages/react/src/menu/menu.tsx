@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import type { ReactNode } from 'react'
 import * as React from 'react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../split-props'
 import { splitProps } from '../split-props'
@@ -14,7 +14,7 @@ export type MenuState = {
 }
 
 export type MenuProps = Assign<
-  HTMLAtlasProps<'div'>,
+  HTMLArkProps<'div'>,
   UseMenuProps & {
     children?: ReactNode | ((state: MenuState) => ReactNode)
   }
@@ -45,8 +45,8 @@ export const Menu = forwardRef<'div', MenuProps>((props, ref) => {
   })
 
   return (
-    <atlas.div {...htmlProps} ref={ref}>
+    <ark.div {...htmlProps} ref={ref}>
       <MenuProvider value={menuContextValue}>{renderPropResult}</MenuProvider>
-    </atlas.div>
+    </ark.div>
   )
 })

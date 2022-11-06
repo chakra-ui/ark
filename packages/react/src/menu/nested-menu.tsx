@@ -1,12 +1,12 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import * as React from 'react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import type { Assign } from '../split-props'
 import { splitProps } from '../split-props'
 import { MenuProvider, useMenuContext } from './menu-context'
 import { useMenu, UseMenuProps } from './use-menu'
 
-export type NestedMenuProps = Assign<HTMLAtlasProps<'div'>, UseMenuProps>
+export type NestedMenuProps = Assign<HTMLArkProps<'div'>, UseMenuProps>
 
 export const NestedMenu = forwardRef<'div', NestedMenuProps>((props, ref) => {
   const { api: parentApi, machine: parentMachine } = useMenuContext()
@@ -34,8 +34,8 @@ export const NestedMenu = forwardRef<'div', NestedMenuProps>((props, ref) => {
   const menuContextValue = React.useMemo(() => ({ api, machine }), [api, machine])
 
   return (
-    <atlas.div {...parentApi.getTriggerItemProps(api)} {...htmlProps} ref={ref}>
+    <ark.div {...parentApi.getTriggerItemProps(api)} {...htmlProps} ref={ref}>
       <MenuProvider value={menuContextValue}>{children}</MenuProvider>
-    </atlas.div>
+    </ark.div>
   )
 })

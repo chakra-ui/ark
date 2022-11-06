@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import type { connect } from '@zag-js/menu'
 import type { ReactNode } from 'react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
@@ -11,7 +11,7 @@ export type MenuItemOptionState = { isActive: boolean }
 export type MenuItemOptionParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
 
 export type MenuItemOptionProps = Assign<
-  HTMLAtlasProps<'div'>,
+  HTMLArkProps<'div'>,
   MenuItemOptionParams & {
     children?: ReactNode | ((state: MenuItemOptionState) => ReactNode)
   }
@@ -33,8 +33,8 @@ export const MenuItemOption = forwardRef<'div', MenuItemOptionProps>((props, ref
   const renderPropResult = runIfFn(children, { isActive: api.isOptionChecked(optionProps) })
 
   return (
-    <atlas.div {...api.getOptionItemProps(optionProps)} {...htmlProps} ref={ref}>
+    <ark.div {...api.getOptionItemProps(optionProps)} {...htmlProps} ref={ref}>
       {renderPropResult}
-    </atlas.div>
+    </ark.div>
   )
 })

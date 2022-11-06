@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
 
 export type MenuGroupLabelProps = Assign<
-  HTMLAtlasProps<'label'>,
+  HTMLArkProps<'label'>,
   {
     htmlFor: string
   }
@@ -14,5 +14,5 @@ export const MenuGroupLabel = forwardRef<'label', MenuGroupLabelProps>((props, r
   const { api } = useMenuContext()
   const [labelProps, htmlProps] = splitProps(props, ['htmlFor'])
 
-  return <atlas.label {...api.getLabelProps(labelProps)} {...htmlProps} ref={ref} />
+  return <ark.label {...api.getLabelProps(labelProps)} {...htmlProps} ref={ref} />
 })

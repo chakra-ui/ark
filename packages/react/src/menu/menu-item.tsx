@@ -1,11 +1,11 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { Assign, splitProps } from '../split-props'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
 export type MenuItemProps = Assign<
-  HTMLAtlasProps<'button'>,
+  HTMLArkProps<'button'>,
   Parameters<UseMenuReturn['api']['getItemProps']>[0]
 >
 
@@ -18,5 +18,5 @@ export const MenuItem = forwardRef<'button', MenuItemProps>((props, ref) => {
     'closeOnSelect',
   ])
 
-  return <atlas.button {...api.getItemProps(menuItemProps)} {...htmlProps} ref={ref} />
+  return <ark.button {...api.getItemProps(menuItemProps)} {...htmlProps} ref={ref} />
 })
