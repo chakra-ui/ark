@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/chakra-ui/atlas#readme",
+  "homepage": "https://github.com/chakra-ui/ark#readme",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -24,11 +24,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chakra-ui/atlas.git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
     "directory": "packages/react"
   },
   "bugs": {
-    "url": "https://github.com/chakra-ui/atlas/issues"
+    "url": "https://github.com/chakra-ui/ark/issues"
   },
   "scripts": {
     "build": "tsup src/index.ts",
