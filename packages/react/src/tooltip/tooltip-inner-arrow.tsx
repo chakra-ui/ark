@@ -1,10 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipInnerArrowProps = HTMLAtlasProps<'div'>
+export type TooltipInnerArrowProps = HTMLArkProps<'div'>
 
 export const TooltipInnerArrow = forwardRef<'div', TooltipInnerArrowProps>((props, ref) => {
   const { innerArrowProps } = useTooltipContext()
-  return <atlas.div ref={ref} {...innerArrowProps} {...props} />
+  const mergedProps = mergeProps(innerArrowProps, props)
+
+  return <ark.div {...mergedProps} ref={ref} />
 })

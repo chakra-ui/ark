@@ -1,13 +1,14 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, UsePinInputProps } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLAtlasProps<'div'>, UsePinInputProps>
+export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 
 export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
-  const [usePinInputProps, rootProps] = splitProps(props, [
+  const [usePinInputProps, divProps] = splitProps(props, [
     'autoFocus',
     'blurOnComplete',
     'defaultValue',
@@ -29,10 +30,11 @@ export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
     'value',
   ])
   const pinInput = usePinInput(usePinInputProps)
+  const mergedProps = mergeProps(pinInput.rootProps, divProps)
 
   return (
     <PinInputProvider value={pinInput}>
-      <atlas.div {...pinInput.rootProps} {...rootProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </PinInputProvider>
   )
 })

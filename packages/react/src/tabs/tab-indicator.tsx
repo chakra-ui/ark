@@ -1,11 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useTabsContext } from './tabs-context'
 
-export type TabIndicatorProps = HTMLAtlasProps<'div'>
+export type TabIndicatorProps = HTMLArkProps<'div'>
 
 export const TabIndicator = forwardRef<'div', TabIndicatorProps>((props, ref) => {
   const { indicatorProps } = useTabsContext()
+  const mergedProps = mergeProps(indicatorProps, props)
 
-  return <atlas.div {...indicatorProps} {...props} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} />
 })

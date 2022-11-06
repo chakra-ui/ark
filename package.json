@@ -1,27 +1,35 @@
 {
-  "name": "@atlas/root",
+  "name": "@ark-ui/root",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky install",
     "build": "turbo run build",
+    "doc": "pnpm --filter=@ark-ui/docs",
+    "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
+    "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
+    "prepare": "husky install",
+    "react": "pnpm --filter=@ark-ui/react",
+    "release": "changeset publish",
+    "release:rc": "changeset publish --tag rc",
+    "solid": "pnpm --filter=@ark-ui/solid",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "doc": "pnpm --filter=@atlas/docs",
-    "react": "pnpm --filter=@atlas/react",
-    "solid": "pnpm --filter=@atlas/solid"
+    "version": "changeset version",
+    "version:rc": "changeset version --snapshot rc"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "0.4.7",
+    "@changesets/cli": "2.25.2",
     "@commitlint/cli": "17.2.0",
     "@commitlint/config-conventional": "17.2.0",
+    "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
-    "@types/node": "18.11.9",
-    "eslint": "8.26.0",
+    "eslint": "8.27.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
@@ -36,7 +44,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json}": [
-      "prettier --write --plugin=./node_modules/prettier-plugin-organize-imports"
+      "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
   "engines": {

@@ -1,12 +1,15 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionButtonProps = HTMLAtlasProps<'button'>
+export type AccordionButtonProps = HTMLArkProps<'button'>
 
 export const AccordionButton = forwardRef<'button', AccordionButtonProps>((props, ref) => {
   const { getTriggerProps } = useAccordionContext()
   const context = useAccordionItemContext()
-  return <atlas.button ref={ref} {...getTriggerProps(context)} {...props} />
+  const mergedProps = mergeProps(getTriggerProps(context), props)
+
+  return <ark.button {...mergedProps} ref={ref} />
 })

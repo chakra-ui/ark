@@ -1,10 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditablePreviewProps = HTMLAtlasProps<'span'>
+export type EditablePreviewProps = HTMLArkProps<'span'>
 
 export const EditablePreview = forwardRef<'span', EditablePreviewProps>((props, ref) => {
   const { previewProps } = useEditableContext()
-  return <atlas.span {...props} {...previewProps} ref={ref} />
+  const mergedProps = mergeProps(previewProps, props)
+
+  return <ark.span {...mergedProps} ref={ref} />
 })

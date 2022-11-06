@@ -1,12 +1,15 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableCancelButtonProps = HTMLAtlasProps<'button'>
+export type EditableCancelButtonProps = HTMLArkProps<'button'>
 
 export const EditableCancelButton = forwardRef<'button', EditableCancelButtonProps>(
   (props, ref) => {
     const { cancelButtonProps } = useEditableContext()
-    return <atlas.button {...props} {...cancelButtonProps} ref={ref} />
+    const mergedProps = mergeProps(cancelButtonProps, props)
+
+    return <ark.button {...mergedProps} ref={ref} />
   },
 )

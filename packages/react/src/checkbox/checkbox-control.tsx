@@ -1,10 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxControlProps = HTMLAtlasProps<'div'>
+export type CheckboxControlProps = HTMLArkProps<'div'>
 
 export const CheckboxControl = forwardRef<'div', CheckboxControlProps>((props, ref) => {
   const { controlProps } = useCheckboxContext()
-  return <atlas.div {...controlProps} {...props} ref={ref} />
+  const mergedProps = mergeProps(controlProps, props)
+
+  return <ark.div {...mergedProps} ref={ref} />
 })

@@ -1,13 +1,14 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { RatingProvider } from './rating-context'
 import { useRating, UseRatingProps } from './use-rating'
 
-export type RatingProps = Assign<HTMLAtlasProps<'input'>, UseRatingProps>
+export type RatingProps = Assign<HTMLArkProps<'input'>, UseRatingProps>
 
 export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
-  const [useRatingProps, htmlProps] = splitProps(props as UseRatingProps, [
+  const [useRatingProps, divProps] = splitProps(props as UseRatingProps, [
     'allowHalf',
     'autoFocus',
     'defaultValue',
@@ -24,13 +25,14 @@ export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
     'value',
   ])
   const rating = useRating(useRatingProps)
+  const mergedProps = mergeProps(rating.rootProps, divProps)
 
   return (
     <RatingProvider value={rating}>
-      <atlas.div {...rating.rootProps} {...htmlProps}>
+      <ark.div {...mergedProps}>
         {props.children}
-        <atlas.input {...rating.inputProps} ref={ref} />
-      </atlas.div>
+        <ark.input {...rating.inputProps} ref={ref} />
+      </ark.div>
     </RatingProvider>
   )
 })

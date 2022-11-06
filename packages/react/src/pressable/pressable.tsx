@@ -1,12 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { usePressable, UsePressableProps } from './use-pressable'
 
-export type PressableProps = Assign<HTMLAtlasProps<'button'>, UsePressableProps>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
 export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
-  const [usePressableProps, rootProps] = splitProps(props, [
+  const [usePressableProps, divProps] = splitProps(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',
     'dir',
@@ -20,5 +21,7 @@ export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
     'preventFocusOnPress',
   ])
   const { pressableProps } = usePressable(usePressableProps)
-  return <atlas.button {...pressableProps} {...rootProps} ref={ref} />
+  const mergedProps = mergeProps(pressableProps, divProps)
+
+  return <ark.button {...mergedProps} ref={ref} />
 })

@@ -1,11 +1,14 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputFieldProps = { index: number } & HTMLAtlasProps<'input'>
+export type PinInputFieldProps = { index: number } & HTMLArkProps<'input'>
 
 export const PinInputField = forwardRef<'input', PinInputFieldProps>((props, ref) => {
-  const { index, ...rest } = props
+  const { index, ...inputProps } = props
   const { getInputProps } = usePinInputContext()
-  return <atlas.input ref={ref} {...getInputProps({ index })} {...rest} />
+  const mergedProps = mergeProps(getInputProps({ index }), inputProps)
+
+  return <ark.input {...mergedProps} ref={ref} />
 })

@@ -1,10 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverInnerArrowProps = HTMLAtlasProps<'div'>
+export type PopoverInnerArrowProps = HTMLArkProps<'div'>
 
 export const PopoverInnerArrow = forwardRef<'div', PopoverInnerArrowProps>((props, ref) => {
   const { innerArrowProps } = usePopoverContext()
-  return <atlas.div ref={ref} {...innerArrowProps} {...props} />
+  const mergedProps = mergeProps(innerArrowProps, props)
+
+  return <ark.div {...mergedProps} ref={ref} />
 })

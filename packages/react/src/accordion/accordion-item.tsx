@@ -1,9 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
-export type AccordionItemProps = HTMLAtlasProps<'div'> & {
+export type AccordionItemProps = HTMLArkProps<'div'> & {
   value: string
   disabled?: boolean
   children?:
@@ -12,15 +13,16 @@ export type AccordionItemProps = HTMLAtlasProps<'div'> & {
 }
 
 export const AccordionItem = forwardRef<'div', AccordionItemProps>((props, ref) => {
-  const { value, disabled, children, ...htmlProps } = props
+  const { value, disabled, children, ...rest } = props
   const { getItemProps, getItemState } = useAccordionContext()
   const itemState = getItemState({ value })
+  const mergedProps = mergeProps(getItemProps({ value, disabled }), rest)
 
   return (
     <AccordionItemProvider value={{ value, disabled, ...itemState }}>
-      <atlas.div {...htmlProps} {...getItemProps({ value, disabled })} ref={ref}>
+      <ark.div {...mergedProps} ref={ref}>
         {typeof children === 'function' ? children(itemState) : children}
-      </atlas.div>
+      </ark.div>
     </AccordionItemProvider>
   )
 })

@@ -1,10 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { mergeProps } from '@zag-js/react'
+import { ark, HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputFieldProps = HTMLAtlasProps<'input'>
+export type NumberInputFieldProps = HTMLArkProps<'input'>
 
 export const NumberInputField = forwardRef<'input', NumberInputFieldProps>((props, ref) => {
   const { inputProps } = useNumberInputContext()
-  return <atlas.input {...inputProps} {...props} ref={ref} />
+  const mergedProps = mergeProps(inputProps, props)
+
+  return <ark.input {...mergedProps} ref={ref} />
 })
