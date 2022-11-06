@@ -73,7 +73,6 @@
     "@vitejs/plugin-react": "2.2.0",
     "@vitest/coverage-c8": "0.24.5",
     "jsdom": "20.0.2",
-    "jsdom-testing-mocks": "1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tsup": "6.4.0",
