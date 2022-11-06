@@ -1,11 +1,11 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLAtlasProps<'div'>, UseAccordionProps>
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
 export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
   const [useAccordionProps, divProps] = splitProps(props, [
@@ -24,7 +24,7 @@ export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
 
   return (
     <AccordionProvider value={accordion}>
-      <atlas.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </AccordionProvider>
   )
 })

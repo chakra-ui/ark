@@ -1,8 +1,8 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { atlas, HTMLAtlasProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 
-export type AccordionIconProps = HTMLAtlasProps<'div'>
+export type AccordionIconProps = HTMLArkProps<'div'>
 
 export const AccordionIcon = forwardRef<'div', AccordionIconProps>((props, ref) => {
-  return <atlas.div {...props} ref={ref} />
+  return <ark.div {...props} ref={ref} />
 })
