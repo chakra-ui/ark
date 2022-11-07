@@ -71,6 +71,7 @@ importers:
       jsdom: 20.0.2
       react: 18.2.0
       react-dom: 18.2.0
+      resize-observer-polyfill: 1.5.1
       tsup: 6.4.0
       typescript: 4.8.4
       vite: 3.2.3
@@ -112,6 +113,7 @@ importers:
       jsdom: 20.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      resize-observer-polyfill: 1.5.1
       tsup: 6.4.0_typescript@4.8.4
       typescript: 4.8.4
       vite: 3.2.3
@@ -4827,6 +4829,10 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: true
+
+  /resize-observer-polyfill/1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
     dev: true
 
   /resolve-from/4.0.0:

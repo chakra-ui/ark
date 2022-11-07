@@ -75,6 +75,7 @@
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "resize-observer-polyfill": "1.5.1",
     "tsup": "6.4.0",
     "typescript": "4.8.4",
     "vite": "3.2.3",
