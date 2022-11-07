@@ -11,6 +11,7 @@ export const RangeSlider = forwardRef<'div', RangeSliderProps>((props, ref) => {
   const [useRangeSliderProps, divProps] = splitProps(props, [
     'aria-label',
     'aria-labelledby',
+    'defaultValue',
     'dir',
     'disabled',
     'getAriaValueText',
@@ -28,7 +29,7 @@ export const RangeSlider = forwardRef<'div', RangeSliderProps>((props, ref) => {
     'readonly',
     'step',
     'thumbAlignment',
-    'values',
+    'value',
   ])
   const slider = useRangeSlider(useRangeSliderProps)
   const mergedProps = mergeProps(slider.rootProps, divProps)
