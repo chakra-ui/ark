@@ -10,8 +10,8 @@ import {
 
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger href="https://twitter.com/zag_js" target="_blank">
-      Twitter
+    <HoverCardTrigger href="https://mastodon.com/zag_js" target="_blank">
+      Mastodon
     </HoverCardTrigger>
 
     <HoverCardPortal>
@@ -20,7 +20,7 @@ export const Basic = () => (
           <HoverCardArrow>
             <HoverCardInnerArrow />
           </HoverCardArrow>
-          Twitter Preview
+          Mastodon Preview
         </HoverCardContent>
       </HoverCardPositioner>
     </HoverCardPortal>
