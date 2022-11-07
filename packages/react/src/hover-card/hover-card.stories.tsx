@@ -7,6 +7,7 @@ import {
   HoverCardPositioner,
   HoverCardTrigger,
 } from '.'
+import './hover-card.css'
 
 export const Basic = () => (
   <HoverCard>
