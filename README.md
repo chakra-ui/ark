@@ -27,5 +27,5 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | Slider       | 🟢    | ⚪    | ⚪  |
 | Tabs         | 🟢    | ⚪    | ⚪  |
 | Tags Input   | 🟢    | ⚪    | ⚪  |
-| Toast        | ⚪    | ⚪    | ⚪  |
+| Toast        | 🟢    | ⚪    | ⚪  |
 | Tooltip      | 🟢    | ⚪    | ⚪  |
