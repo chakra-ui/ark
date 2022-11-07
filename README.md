@@ -14,7 +14,7 @@ So instead we are recommend [Preview.js](https://previewjs.com/), an IDE plugin 
 | Checkbox     | 🟢    | ⚪    | ⚪  |
 | Dialog       | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | ⚪    | ⚪  |
-| Hover Card   | ⚪    | ⚪    | ⚪  |
+| Hover Card   | 🟢    | ⚪    | ⚪  |
 | Menu         | ⚪    | ⚪    | ⚪  |
 | Number Input | 🟢    | ⚪    | ⚪  |
 | Pagination   | 🟢    | ⚪    | ⚪  |
