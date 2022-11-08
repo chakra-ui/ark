@@ -42,7 +42,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
-      '@types/jsdom': 20.0.0
+      '@types/jsdom': 20.0.1
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
       '@types/testing-library__jest-dom': 5.14.5
@@ -103,7 +103,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_aaq3sbffpfe3jnxzm2zngsddei
-      '@types/jsdom': 20.0.0
+      '@types/jsdom': 20.0.1
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.8
       '@types/testing-library__jest-dom': 5.14.5
@@ -1225,8 +1225,8 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
-  /@types/jsdom/20.0.0:
-    resolution: {integrity: sha512-YfAchFs0yM1QPDrLm2VHe+WHGtqms3NXnXAMolrgrVP6fgBHHXy1ozAbo/dFtPNtZC/m66bPiCTWYmqp1F14gA==}
+  /@types/jsdom/20.0.1:
+    resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
     dependencies:
       '@types/node': 18.11.9
       '@types/tough-cookie': 4.0.2
