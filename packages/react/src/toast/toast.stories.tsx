@@ -2,25 +2,22 @@ import type { PropsWithChildren } from 'react'
 import { Toast } from './toast'
 import { ToastCloseButton } from './toast-close-button'
 import { ToastDescription } from './toast-description'
-import { ToastProvider } from './toast-provider'
+import { ToastProvider, useToast } from './toast-provider'
 import { ToastTitle } from './toast-title'
-import { useToast } from './use-toast'
 
 // chakra land
 export const ChakraToastProivder = (props: PropsWithChildren) => {
   return (
     <ToastProvider
-      render={(toasts) => (
-        <>
-          {toasts.map((toast) => (
-            <Toast key={toast.id} actor={toast}>
-              <ToastTitle />
-              <ToastDescription />
-              <ToastCloseButton />
-            </Toast>
-          ))}
-        </>
-      )}
+      render={(toasts) =>
+        toasts.map((toast) => (
+          <Toast key={toast.id} toast={toast}>
+            <ToastTitle />
+            <ToastDescription />
+            <ToastCloseButton>Close</ToastCloseButton>
+          </Toast>
+        ))
+      }
     >
       {props.children}
     </ToastProvider>
