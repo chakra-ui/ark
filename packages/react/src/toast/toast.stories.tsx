@@ -9,8 +9,8 @@ import { ToastTitle } from './toast-title'
 export const ChakraToastProvider = (props: PropsWithChildren) => (
   <ToastProvider>
     <ToastPlacements>
-      {(placments) =>
-        placments.map((placement) => (
+      {(placements) =>
+        placements.map((placement) => (
           <ToastGroup key={placement} placement={placement}>
             {(toasts) =>
               toasts.map((toast) => (
