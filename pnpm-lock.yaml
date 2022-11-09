@@ -15,7 +15,7 @@ importers:
       husky: 8.0.2
       lint-staged: 13.0.3
       prettier: 2.7.1
-      prettier-plugin-organize-imports: 3.1.1
+      prettier-plugin-organize-imports: 3.2.0
       turbo: 1.6.3
       typescript: 4.8.4
     devDependencies:
@@ -30,7 +30,7 @@ importers:
       husky: 8.0.2
       lint-staged: 13.0.3
       prettier: 2.7.1
-      prettier-plugin-organize-imports: 3.1.1_dmjzcauo3cshxeipj7bv64ktgm
+      prettier-plugin-organize-imports: 3.2.0_dmjzcauo3cshxeipj7bv64ktgm
       turbo: 1.6.3
       typescript: 4.8.4
 
@@ -4639,13 +4639,16 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-organize-imports/3.1.1_dmjzcauo3cshxeipj7bv64ktgm:
-    resolution: {integrity: sha512-6bHIQzybqA644h0WGUW3gpWEVbMBvzui5wCMRBi7qA++d5ov2xjjfDk8pxJJ/ardfZrGAwizKMq/fQMFdJ+0Zw==}
+  /prettier-plugin-organize-imports/3.2.0_dmjzcauo3cshxeipj7bv64ktgm:
+    resolution: {integrity: sha512-jeZ13YVKgXYCzkuwnoR6saKxJmdRYWMxS2G/su1V3qDWqTo1Q5iSoTblBxsXXAmomXfPqa/uA7YCK0/S86KLOQ==}
     peerDependencies:
-      '@volar/vue-typescript': '>=0.40.2'
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
       prettier: '>=2.0'
       typescript: '>=2.9'
     peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
       '@volar/vue-typescript':
         optional: true
     dependencies:
