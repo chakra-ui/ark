@@ -66,7 +66,7 @@ importers:
       '@zag-js/slider': 0.2.1
       '@zag-js/tabs': 0.2.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
       jsdom: 20.0.2
       react: 18.2.0
@@ -96,7 +96,7 @@ importers:
       '@zag-js/slider': 0.2.1
       '@zag-js/tabs': 0.2.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
     devDependencies:
       '@testing-library/dom': 8.19.0
@@ -136,7 +136,7 @@ importers:
       '@zag-js/slider': 0.2.1
       '@zag-js/solid': 0.2.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
       solid-js: 1.6.1
       tsup: 6.4.0
@@ -159,7 +159,7 @@ importers:
       '@zag-js/slider': 0.2.1
       '@zag-js/solid': 0.2.1_solid-js@1.6.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
     devDependencies:
       solid-js: 1.6.1
@@ -190,7 +190,7 @@ importers:
       '@zag-js/rating': 0.2.1
       '@zag-js/slider': 0.2.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
       '@zag-js/vue': 0.2.1
       typescript: 4.8.4
@@ -214,7 +214,7 @@ importers:
       '@zag-js/rating': 0.2.1
       '@zag-js/slider': 0.2.1
       '@zag-js/tags-input': 0.3.1
-      '@zag-js/toast': 0.2.1
+      '@zag-js/toast': 0.2.2
       '@zag-js/tooltip': 0.2.1
       '@zag-js/vue': 0.2.1_vue@3.2.43
     devDependencies:
@@ -1804,8 +1804,8 @@ packages:
       '@zag-js/types': 0.3.0
     dev: false
 
-  /@zag-js/toast/0.2.1:
-    resolution: {integrity: sha512-LYbdn4OMSJlDowvJrUOfUaYAcqv25EJvu9PYo8KigbTVUKJvf5XyOaKoKpChIZIZnquZKtRbK9XbQi1jg1LJag==}
+  /@zag-js/toast/0.2.2:
+    resolution: {integrity: sha512-DrGC5xHal159hUttjARdEKe6Z764bpqVA7k2+hSTctg+Q0aVX9vXcqabB7a8M6oXXBynR6bF2ZWRuFMuCr0eZw==}
     dependencies:
       '@zag-js/core': 0.2.1
       '@zag-js/types': 0.3.0

@@ -58,7 +58,7 @@
     "@zag-js/slider": "0.2.1",
     "@zag-js/tabs": "0.2.1",
     "@zag-js/tags-input": "0.3.1",
-    "@zag-js/toast": "0.2.1",
+    "@zag-js/toast": "0.2.2",
     "@zag-js/tooltip": "0.2.1"
   },
   "devDependencies": {
