@@ -43,7 +43,7 @@ const ExampleComponent = () => {
     <div>
       <button
         onClick={() => {
-          toast.create({ title: 'Hello', placement: 'bottom', duration: 10000 })
+          toast.create({ title: 'Hello', placement: 'bottom', duration: 10000, removeDelay: 0 })
         }}
       >
         Add top-right toast
