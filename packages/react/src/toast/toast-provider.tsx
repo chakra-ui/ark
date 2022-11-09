@@ -1,36 +1,38 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
-import * as toast from '@zag-js/toast'
-import { createContext, PropsWithChildren, useContext, useId } from 'react'
-import { Toast } from './toast'
-import { ToastCloseButton } from './toast-close-button'
-import { ToastDescription } from './toast-description'
-import { ToastTitle } from './toast-title'
+import type { Service } from '@zag-js/toast'
+import type { PropsWithChildren, ReactNode } from 'react'
+import { ToastProvider as Foo } from './toast-context'
+import { useToast } from './use-toast'
 
-const ToastContext = createContext<any>(null)
-export const useToast = () => useContext(ToastContext)
-export type ToastProviderProps = PropsWithChildren
+export type ToastProviderProps = PropsWithChildren<{
+  render: (toasts: Service[]) => ReactNode
+}>
 
 export const ToastProvider = (props: ToastProviderProps) => {
-  const [state, send] = useMachine(toast.group.machine({ id: useId() }))
-  const api = toast.group.connect(state, send, normalizeProps)
+  const api = useToast()
 
-  return (
-    <ToastContext.Provider value={api}>
-      {Object.entries(api.toastsByPlacement).map(([placement, toasts]) => (
-        <div key={placement} {...api.getGroupProps({ placement })}>
-          {toasts.map((toast) => {
-            console.log('ToastProivder', toast.context)
-            return (
-              <Toast key={toast.id} actor={toast}>
-                <ToastTitle />
-                <ToastDescription />
-                <ToastCloseButton />
-              </Toast>
-            )
-          })}
-        </div>
-      ))}
-      {props.children}
-    </ToastContext.Provider>
-  )
+  Object.entries(api.toastsByPlacement).map(([placement, toasts]) => console.log(placement))
+
+  return <Foo value={api}>{props.children}</Foo>
 }
+
+// const ToastGroup = (props: any) => {
+//   const api = useContext(ToastContext)
+
+//   return (
+//     <>
+//       {Object.entries(api.toastsByPlacement).map(([placement, toasts]) => (
+//         <div key={placement} {...api.getGroupProps({ placement })}>
+//           {toasts.map((toast) => {
+//             return (
+//               <Toast key={toast.id} actor={toast}>
+//                 <ToastTitle />
+//                 <ToastDescription />
+//                 <ToastCloseButton />
+//               </Toast>
+//             )
+//           })}
+//         </div>
+//       ))}
+//     </>
+//   )
+// }

@@ -1,12 +1,39 @@
-import { ToastProvider, useToast } from './toast-provider'
+import type { PropsWithChildren } from 'react'
+import { Toast } from './toast'
+import { ToastCloseButton } from './toast-close-button'
+import { ToastDescription } from './toast-description'
+import { ToastProvider } from './toast-provider'
+import { ToastTitle } from './toast-title'
+import { useToast } from './use-toast'
 
-export const Basic = () => {
+// chakra land
+export const ChakraToastProivder = (props: PropsWithChildren) => {
   return (
-    <ToastProvider>
-      <ExampleComponent />
+    <ToastProvider
+      render={(toasts) => (
+        <>
+          {toasts.map((toast) => (
+            <Toast key={toast.id} actor={toast}>
+              <ToastTitle />
+              <ToastDescription />
+              <ToastCloseButton />
+            </Toast>
+          ))}
+        </>
+      )}
+    >
+      {props.children}
     </ToastProvider>
   )
 }
+
+// user land
+export const Basic = () => (
+  <ChakraToastProivder>
+    <h1>Hello World</h1>
+    <ExampleComponent />
+  </ChakraToastProivder>
+)
 
 const ExampleComponent = () => {
   const toast = useToast()
@@ -14,7 +41,7 @@ const ExampleComponent = () => {
     <div>
       <button
         onClick={() => {
-          toast.create({ title: 'Hello', placement: 'top-right' })
+          toast.create({ title: 'Hello', placement: 'bottom' })
         }}
       >
         Add top-right toast
@@ -24,7 +51,7 @@ const ExampleComponent = () => {
           toast.create({
             title: 'Data submitted!',
             type: 'success',
-            placement: 'bottom-right',
+            placement: 'bottom-start',
           })
         }}
       >

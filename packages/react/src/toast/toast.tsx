@@ -8,7 +8,6 @@ export type ToastProps = HTMLArkProps<'div'> & UseToastItemProps
 export const Toast = (props: ToastProps) => {
   const { actor, ...divProps } = props
   const api = useToastItem({ actor })
-  console.log('## Title', api.title)
   const mergedProps = mergeProps(api.rootProps, divProps)
 
   return (
