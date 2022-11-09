@@ -1,17 +1,16 @@
 import * as pagination from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
 
 export type UsePaginationProps = Omit<pagination.Context, 'id'>
 
 export const usePagination = (props: UsePaginationProps) => {
-  const initialContext = filterUndefinedEntries({
+  const context = {
     id: useId(),
     ...props,
-  })
+  }
 
-  const [state, send] = useMachine(pagination.machine(initialContext), { context: initialContext })
+  const [state, send] = useMachine(pagination.machine(context), { context })
   return pagination.connect(state, send, normalizeProps)
 }
 
