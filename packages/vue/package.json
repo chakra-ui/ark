@@ -63,11 +63,11 @@
     "@testing-library/vue": "6.6.1",
     "@vitejs/plugin-vue": "3.2.0",
     "@vitest/coverage-c8": "0.25.1",
-    "@vue/compiler-sfc": "3.2.43",
+    "@vue/compiler-sfc": "3.2.44",
     "typescript": "4.8.4",
     "vite": "3.2.3",
     "vitest": "0.25.1",
-    "vue": "3.2.43"
+    "vue": "3.2.44"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
