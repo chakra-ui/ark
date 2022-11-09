@@ -50,7 +50,7 @@ importers:
       '@vitest/coverage-c8': 0.25.1
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -80,7 +80,7 @@ importers:
       '@reach/portal': 0.18.0_biqbaboplfbrettd7655fr4n2y
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -121,7 +121,7 @@ importers:
     specifiers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -144,7 +144,7 @@ importers:
     dependencies:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -176,7 +176,7 @@ importers:
       '@vue/compiler-sfc': 3.2.42
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -200,7 +200,7 @@ importers:
     dependencies:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
-      '@zag-js/dialog': 0.2.0
+      '@zag-js/dialog': 0.2.1
       '@zag-js/editable': 0.2.0
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
@@ -1621,11 +1621,18 @@ packages:
       klona: 2.0.5
     dev: false
 
-  /@zag-js/dialog/0.2.0:
-    resolution: {integrity: sha512-uRUN5yYtvZKfFla9Q+/svNuZjOt73USzJgOK4NZskH/BcpWzCsu/OcGknayDju0N3vhhlB6lXEZPwtl38g02PA==}
+  /@zag-js/core/0.2.1:
+    resolution: {integrity: sha512-MJOtJ+8BVe0hSrFJ9NJRkJP95icjs06B+QRaP4n0SeT5u/u20NLr1/qnbOEvZPSwpI994U2snmyRvpXDn4SD0g==}
+    dependencies:
+      '@zag-js/store': 0.2.0
+      klona: 2.0.5
+    dev: false
+
+  /@zag-js/dialog/0.2.1:
+    resolution: {integrity: sha512-uvkAXxznnsqE+YL03UnJZZEopWwbTsTGek/IVTTRSaWb2+mseRcFwD2UsnbA4oj81qbu7I++q3s71dTvt5ZOTg==}
     dependencies:
       '@zag-js/aria-hidden': 0.2.0
-      '@zag-js/core': 0.2.0
+      '@zag-js/core': 0.2.1
       '@zag-js/dismissable': 0.2.0
       '@zag-js/remove-scroll': 0.2.0
       '@zag-js/types': 0.3.0
