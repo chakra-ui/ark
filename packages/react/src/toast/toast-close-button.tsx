@@ -7,7 +7,6 @@ export type ToastCloseButtonProps = HTMLArkProps<'button'>
 
 export const ToastCloseButton = forwardRef<'button', ToastCloseButtonProps>((props, ref) => {
   const { closeButtonProps } = useToastItemContext()
-  console.log({ closeButtonProps })
   const mergedProps = mergeProps(closeButtonProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
