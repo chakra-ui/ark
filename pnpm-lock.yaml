@@ -51,7 +51,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -81,7 +81,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -122,7 +122,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -145,7 +145,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -177,7 +177,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -201,7 +201,7 @@ importers:
       '@zag-js/accordion': 0.2.0
       '@zag-js/checkbox': 0.2.0
       '@zag-js/dialog': 0.2.0
-      '@zag-js/editable': 0.2.0
+      '@zag-js/editable': 0.2.1
       '@zag-js/hover-card': 0.1.0
       '@zag-js/menu': 0.2.0
       '@zag-js/number-input': 0.2.0
@@ -1621,6 +1621,13 @@ packages:
       klona: 2.0.5
     dev: false
 
+  /@zag-js/core/0.2.1:
+    resolution: {integrity: sha512-MJOtJ+8BVe0hSrFJ9NJRkJP95icjs06B+QRaP4n0SeT5u/u20NLr1/qnbOEvZPSwpI994U2snmyRvpXDn4SD0g==}
+    dependencies:
+      '@zag-js/store': 0.2.0
+      klona: 2.0.5
+    dev: false
+
   /@zag-js/dialog/0.2.0:
     resolution: {integrity: sha512-uRUN5yYtvZKfFla9Q+/svNuZjOt73USzJgOK4NZskH/BcpWzCsu/OcGknayDju0N3vhhlB6lXEZPwtl38g02PA==}
     dependencies:
@@ -1638,10 +1645,10 @@ packages:
       '@zag-js/interact-outside': 0.2.0
     dev: false
 
-  /@zag-js/editable/0.2.0:
-    resolution: {integrity: sha512-sZsoJZRf3j07oWktnnyJG9i69iToS89jls7rnOnth2yPRQkqFWPWkALIBQj9fzrvmqq9MOIq3sQGbThXi5rzUw==}
+  /@zag-js/editable/0.2.1:
+    resolution: {integrity: sha512-sM0E5CTv3UK4jylyERh6ixfvD3XbMJX1Blc9NEzH73EuJ6LnPF3SJZTVycn7hv+p5dBP0s2t15z2UWXW3k+nDA==}
     dependencies:
-      '@zag-js/core': 0.2.0
+      '@zag-js/core': 0.2.1
       '@zag-js/interact-outside': 0.2.0
       '@zag-js/types': 0.3.0
     dev: false
