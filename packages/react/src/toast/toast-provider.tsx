@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react'
 import { createContext } from '../createContext'
 
 export type ToastContext = ReturnType<typeof toast['group']['connect']>
-export const [Provider, useToast] = createContext<ToastContext>()
+export const [ToastContextProvider, useToast] = createContext<ToastContext>()
 
 export type ToastProviderProps = PropsWithChildren
 export const ToastProvider = (props: ToastProviderProps) => {
@@ -12,5 +12,5 @@ export const ToastProvider = (props: ToastProviderProps) => {
   const [state, send] = useMachine(toast.group.machine({ id: '1' }))
   const api = toast.group.connect(state, send, normalizeProps)
 
-  return <Provider value={api}>{children}</Provider>
+  return <ToastContextProvider value={api}>{children}</ToastContextProvider>
 }
