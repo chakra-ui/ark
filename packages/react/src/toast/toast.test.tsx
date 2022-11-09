@@ -1,0 +1,64 @@
+import { render, screen } from '@testing-library/react'
+import user from '@testing-library/user-event'
+import { Toast } from './toast'
+import { ToastCloseButton } from './toast-close-button'
+import { ToastDescription } from './toast-description'
+import { ToastGroup } from './toast-group'
+import { ToastPlacements } from './toast-placements'
+import { ToastProvider, ToastProviderProps, useToast } from './toast-provider'
+import { ToastTitle } from './toast-title'
+
+const ExampleToastProvider = (props: ToastProviderProps) => (
+  <ToastProvider>
+    <ToastPlacements>
+      {(placements) =>
+        placements.map((placement) => (
+          <ToastGroup key={placement} placement={placement}>
+            {(toasts) =>
+              toasts.map((toast) => (
+                <Toast key={toast.id} toast={toast}>
+                  <ToastTitle />
+                  <ToastDescription />
+                  <ToastCloseButton>Close</ToastCloseButton>
+                </Toast>
+              ))
+            }
+          </ToastGroup>
+        ))
+      }
+    </ToastPlacements>
+    {props.children}
+  </ToastProvider>
+)
+
+const ComponentUnderTest = () => {
+  const toast = useToast()
+  return (
+    <button
+      onClick={() => {
+        toast.create({
+          title: 'Toast title',
+          description: 'Toast description',
+          placement: 'bottom',
+          removeDelay: 0,
+        })
+      }}
+    >
+      Add toast
+    </button>
+  )
+}
+
+const renderToastComponent = () => render(<ComponentUnderTest />, { wrapper: ExampleToastProvider })
+
+describe('Toast', () => {
+  it('should render', async () => {
+    renderToastComponent()
+  })
+  it('should show a toast message', async () => {
+    renderToastComponent()
+    await user.click(screen.getByText('Add toast'))
+    expect(screen.getByText('Toast title')).toBeInTheDocument()
+    expect(screen.getByText('Toast description')).toBeInTheDocument()
+  })
+})
