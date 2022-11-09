@@ -9,24 +9,14 @@ import { runIfFn } from '../run-if-fn'
 export type ToastContext = ReturnType<typeof toast['group']['connect']>
 export const [Provider, useToast] = createContext<ToastContext>()
 
-export type ToastProviderProps = PropsWithChildren<{
-  render: (placements: Placement[]) => ReactNode
-}>
-
+export type ToastProviderProps = PropsWithChildren
 export const ToastProvider = (props: ToastProviderProps) => {
-  const { render, children } = props
+  const { children } = props
 
   const [state, send] = useMachine(toast.group.machine({ id: '1' }))
   const api = toast.group.connect(state, send, normalizeProps)
 
-  const view = runIfFn(render, Object.keys(api.toastsByPlacement))
-
-  return (
-    <Provider value={api}>
-      <>{view}</>
-      {children}
-    </Provider>
-  )
+  return <Provider value={api}>{children}</Provider>
 }
 
 export type ToastGroupProps = {
@@ -44,4 +34,15 @@ export const ToastGroup = (props: ToastGroupProps) => {
       <>{view}</>
     </ark.div>
   )
+}
+
+export type ToastPlacementsProps = {
+  children: (placements: Placement[]) => ReactNode
+}
+
+export const ToastPlacements = (props: ToastPlacementsProps) => {
+  const { children } = props
+  const { toastsByPlacement } = useToast()
+  const view = runIfFn(children, Object.keys(toastsByPlacement))
+  return <>{view}</>
 }

@@ -2,38 +2,39 @@ import type { PropsWithChildren } from 'react'
 import { Toast } from './toast'
 import { ToastCloseButton } from './toast-close-button'
 import { ToastDescription } from './toast-description'
-import { ToastGroup, ToastProvider, useToast } from './toast-provider'
+import { ToastGroup, ToastPlacements, ToastProvider, useToast } from './toast-provider'
 import { ToastTitle } from './toast-title'
 
 // chakra land
-export const ChakraToastProivder = (props: PropsWithChildren) => (
-  <ToastProvider
-    render={(placments) =>
-      placments.map((placement) => (
-        <ToastGroup key={placement} placement={placement}>
-          {(toasts) =>
-            toasts.map((toast) => (
-              <Toast key={toast.id} toast={toast}>
-                <ToastTitle />
-                <ToastDescription />
-                <ToastCloseButton>Close</ToastCloseButton>
-              </Toast>
-            ))
-          }
-        </ToastGroup>
-      ))
-    }
-  >
+export const ChakraToastProvider = (props: PropsWithChildren) => (
+  <ToastProvider>
+    <ToastPlacements>
+      {(placments) =>
+        placments.map((placement) => (
+          <ToastGroup key={placement} placement={placement}>
+            {(toasts) =>
+              toasts.map((toast) => (
+                <Toast key={toast.id} toast={toast}>
+                  <ToastTitle />
+                  <ToastDescription />
+                  <ToastCloseButton>Close</ToastCloseButton>
+                </Toast>
+              ))
+            }
+          </ToastGroup>
+        ))
+      }
+    </ToastPlacements>
     {props.children}
   </ToastProvider>
 )
 
 // user land
 export const Basic = () => (
-  <ChakraToastProivder>
+  <ChakraToastProvider>
     <h1>Hello World</h1>
     <ExampleComponent />
-  </ChakraToastProivder>
+  </ChakraToastProvider>
 )
 
 const ExampleComponent = () => {
@@ -42,7 +43,7 @@ const ExampleComponent = () => {
     <div>
       <button
         onClick={() => {
-          toast.create({ title: 'Hello', placement: 'bottom' })
+          toast.create({ title: 'Hello', placement: 'bottom', duration: 10000 })
         }}
       >
         Add top-right toast
