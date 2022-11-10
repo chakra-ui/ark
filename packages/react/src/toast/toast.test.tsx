@@ -39,7 +39,6 @@ const ComponentUnderTest = () => {
         toast.create({
           title: 'Toast title',
           description: 'Toast description',
-          placement: 'bottom',
           removeDelay: 0,
         })
       }}
@@ -55,10 +54,24 @@ describe('Toast', () => {
   it('should render', async () => {
     renderToastComponent()
   })
+
   it('should show a toast message', async () => {
     renderToastComponent()
     await user.click(screen.getByText('Add toast'))
     expect(screen.getByText('Toast title')).toBeInTheDocument()
     expect(screen.getByText('Toast description')).toBeInTheDocument()
+  })
+
+  it('should hide a toast message after close button is clicked', async () => {
+    renderToastComponent()
+    await user.click(screen.getByText('Add toast'))
+
+    expect(screen.getByText('Toast title')).toBeInTheDocument()
+    expect(screen.getByText('Toast description')).toBeInTheDocument()
+
+    await user.click(screen.getByText('Close'))
+
+    expect(screen.queryByText('Toast title')).toBeNull()
+    expect(screen.queryByText('Toast description')).toBeNull()
   })
 })
