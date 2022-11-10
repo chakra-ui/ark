@@ -7,7 +7,7 @@ import { RangeSliderTrack } from './range-slider-track'
 import './range-slider.css'
 
 export const Basic = () => (
-  <RangeSlider min={-50} max={50} defaultValue={[10, 20]}>
+  <RangeSlider min={-50} max={50}>
     <RangeSliderControl>
       <RangeSliderTrack>
         <RangeSliderRange />
