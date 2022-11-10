@@ -1,7 +1,8 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import { splitProps } from '../split-props'
+import type { Assign } from '../types'
 import { RangeSliderProvider } from './range-slider-context'
 import { useRangeSlider, UseRangeSliderProps } from './use-range-slider'
 

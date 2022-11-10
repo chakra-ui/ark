@@ -1,8 +1,9 @@
 import * as rangeSlider from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import type { Optional } from '../types'
 
-export type UseRangeSliderProps = Omit<rangeSlider.Context, 'id' | 'values'> & {
+export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id' | 'values'> & {
   value?: rangeSlider.Context['values']
   defaultValue?: rangeSlider.Context['values']
 }
