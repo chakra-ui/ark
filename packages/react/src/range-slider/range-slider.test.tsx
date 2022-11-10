@@ -4,6 +4,8 @@ import { JSDOM } from 'jsdom'
 import { RangeSlider, type RangeSliderProps } from './range-slider'
 import { RangeSliderControl } from './range-slider-control'
 import { RangeSliderInput } from './range-slider-input'
+import { RangeSliderLabel } from './range-slider-label'
+import { RangeSliderOutput } from './range-slider-output'
 import { RangeSliderRange } from './range-slider-range'
 import { RangeSliderThumb } from './range-slider-thumb'
 import { RangeSliderTrack } from './range-slider-track'
@@ -18,6 +20,10 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
       getRootNode={() => new JSDOM().window.document}
       {...props}
     >
+      <div>
+        <RangeSliderLabel>Quantity: </RangeSliderLabel>
+        <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
+      </div>
       <RangeSliderControl>
         <RangeSliderTrack>
           <RangeSliderRange />

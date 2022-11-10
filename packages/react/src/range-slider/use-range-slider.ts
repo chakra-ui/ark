@@ -11,10 +11,9 @@ export type UseRangeSliderReturn = ReturnType<typeof useRangeSlider>
 
 export const useRangeSlider = (props: UseRangeSliderProps) => {
   const { defaultValue, value, ...restProps } = props
-
   const initialContext = {
-    ...props,
     id: useId(),
+    ...props,
     values: defaultValue,
   }
 
