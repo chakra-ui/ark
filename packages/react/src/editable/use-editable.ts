@@ -1,9 +1,9 @@
 import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseEditableProps = OptionalId<editable.Context> & {
+export type UseEditableProps = Optional<editable.Context, 'id'> & {
   defaultValue?: editable.Context['value']
 }
 export type UseEditableReturn = ReturnType<typeof useEditable>

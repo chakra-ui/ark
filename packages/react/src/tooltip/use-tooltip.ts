@@ -1,9 +1,9 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as tooltip from '@zag-js/tooltip'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseTooltipProps = OptionalId<tooltip.Context>
+export type UseTooltipProps = Optional<tooltip.Context, 'id'>
 
 export const useTooltip = (props: UseTooltipProps) => {
   const context = {

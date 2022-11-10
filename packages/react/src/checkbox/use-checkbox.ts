@@ -1,9 +1,9 @@
 import * as checkbox from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseCheckboxProps = OptionalId<checkbox.Context> & {
+export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
   defaultValue?: checkbox.Context['value']
 }
 export type UseCheckboxReturn = ReturnType<typeof useCheckbox>

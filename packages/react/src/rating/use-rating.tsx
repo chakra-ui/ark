@@ -1,9 +1,11 @@
 import * as rating from '@zag-js/rating'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseRatingProps = OptionalId<rating.Context> & { defaultValue?: rating.Context['value'] }
+export type UseRatingProps = Optional<rating.Context, 'id'> & {
+  defaultValue?: rating.Context['value']
+}
 export type UseRatingReturn = ReturnType<typeof useRating>
 
 export const useRating = (props: UseRatingProps) => {

@@ -1,9 +1,9 @@
 import * as pressable from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UsePressableProps = OptionalId<pressable.Context>
+export type UsePressableProps = Optional<pressable.Context, 'id'>
 export type UsePressableReturn = ReturnType<typeof usePressable>
 
 export const usePressable = (props: UsePressableProps) => {

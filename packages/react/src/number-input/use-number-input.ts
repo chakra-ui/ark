@@ -1,9 +1,9 @@
 import * as numberInput from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseNumberInputProps = OptionalId<numberInput.Context> & {
+export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
   defaultValue?: numberInput.Context['value']
 }
 

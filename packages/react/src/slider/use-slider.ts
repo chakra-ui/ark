@@ -1,9 +1,9 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as slider from '@zag-js/slider'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseSliderProps = OptionalId<slider.Context>
+export type UseSliderProps = Optional<slider.Context, 'id'>
 export type UseSliderReturn = ReturnType<typeof useSlider>
 
 export const useSlider = (props: UseSliderProps) => {

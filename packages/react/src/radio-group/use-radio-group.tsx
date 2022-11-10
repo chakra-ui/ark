@@ -1,9 +1,9 @@
 import * as radio from '@zag-js/radio'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { OptionalId } from '../types'
+import type { Optional } from '../types'
 
-export type UseRadioGroupProps = OptionalId<radio.Context> & {
+export type UseRadioGroupProps = Optional<radio.Context, 'id'> & {
   defaultValue?: radio.Context['value']
 }
 export type UseRadioGroupReturn = ReturnType<typeof useRadioGroup>
