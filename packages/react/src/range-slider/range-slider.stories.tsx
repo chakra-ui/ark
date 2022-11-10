@@ -13,10 +13,10 @@ export const Basic = () => {
   const [values, setValues] = useState([-10, 10])
   return (
     <RangeSlider min={-50} max={50} value={values} onChange={(e) => setValues(e.value)}>
-      <div>
+      <>
         <RangeSliderLabel>Quantity: </RangeSliderLabel>
-        <RangeSliderOutput>{({ value }) => <div>{value}</div>}</RangeSliderOutput>
-      </div>
+        <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
+      </>
       <RangeSliderControl>
         <RangeSliderTrack>
           <RangeSliderRange />
