@@ -1,6 +1,6 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import type { HTMLArkProps } from '../factory'
+import { ark, HTMLArkProps } from '../factory'
 import { splitProps, type Assign } from '../split-props'
 import { ToastItemProvider } from './toast-item-context'
 import { useToastItem, UseToastItemProps } from './use-toast-item'
@@ -14,9 +14,7 @@ export const Toast = forwardRef<'div', ToastProps>((props, ref) => {
 
   return (
     <ToastItemProvider value={api}>
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-expect-error TODO ask tim */}
-      <div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </ToastItemProvider>
   )
 })

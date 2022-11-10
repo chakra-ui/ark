@@ -11,7 +11,7 @@ export type ToastGroupProps = Assign<
   HTMLArkProps<'div'>,
   {
     placement: Placement
-    children: (toasts: Service[]) => ReactNode | ((toasts: Service[]) => ReactNode)
+    children: ReactNode | ((toasts: Service[]) => ReactNode)
   }
 >
 
