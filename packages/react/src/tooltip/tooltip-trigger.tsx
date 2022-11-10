@@ -1,16 +1,11 @@
-import { cloneElement, ReactElement } from 'react'
-import { ark } from '../factory'
+import { Children, cloneElement, ReactElement } from 'react'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipTriggerProps = { children: ReactElement | string | number }
+export type TooltipTriggerProps = { children: ReactElement }
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
-  const { children } = props
   const { triggerProps } = useTooltipContext()
 
-  return typeof children === 'string' || typeof children === 'number' ? (
-    <ark.span {...triggerProps}>{children}</ark.span>
-  ) : (
-    cloneElement(children, triggerProps)
-  )
+  const onlyChild = Children.only(props.children)
+  return cloneElement(onlyChild, triggerProps)
 }
