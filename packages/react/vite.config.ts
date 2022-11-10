@@ -12,6 +12,8 @@ export default defineConfig({
     coverage: {
       all: true,
       reporter: ['lcov', 'text'],
+      include: ['src/**'],
+      exclude: ['**/*.stories.tsx'],
     },
     globals: true,
     environment: 'jsdom',
