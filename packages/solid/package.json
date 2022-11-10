@@ -57,6 +57,9 @@
     "@zag-js/tooltip": "0.2.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.42.1",
+    "@typescript-eslint/parser": "5.42.1",
+    "eslint": "8.27.0",
     "solid-js": "1.6.1",
     "tsup": "6.4.0",
     "typescript": "4.8.4"
