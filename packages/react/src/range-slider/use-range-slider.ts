@@ -10,12 +10,17 @@ export type UseRangeSliderProps = Omit<rangeSlider.Context, 'id' | 'values'> & {
 export type UseRangeSliderReturn = ReturnType<typeof useRangeSlider>
 
 export const useRangeSlider = (props: UseRangeSliderProps) => {
+  const { defaultValue, value, ...restProps } = props
+
   const initialContext = {
-    id: useId(),
-    values: props.value ?? props.defaultValue,
     ...props,
+    id: useId(),
+    values: defaultValue,
   }
-  const [state, send] = useMachine(rangeSlider.machine(initialContext))
+
+  const [state, send] = useMachine(rangeSlider.machine(initialContext), {
+    context: { ...restProps, values: value },
+  })
 
   return rangeSlider.connect(state, send, normalizeProps)
 }
