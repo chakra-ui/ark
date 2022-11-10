@@ -4,7 +4,7 @@ import { runIfFn } from '../run-if-fn'
 import { useToast } from './toast-provider'
 
 export type ToastPlacementsProps = {
-  children: (placements: Placement[]) => ReactNode
+  children: ReactNode | ((placements: Placement[]) => ReactNode)
 }
 
 export const ToastPlacements = (props: ToastPlacementsProps) => {
