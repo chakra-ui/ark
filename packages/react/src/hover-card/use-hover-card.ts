@@ -1,8 +1,9 @@
 import * as hoverCard from '@zag-js/hover-card'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import type { Optional } from '../types'
 
-export type UseHoverCardProps = Omit<hoverCard.Context, 'id'>
+export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
 
 export const useHoverCard = (props: UseHoverCardProps) => {
   const context = {
@@ -11,7 +12,6 @@ export const useHoverCard = (props: UseHoverCardProps) => {
   }
 
   const [state, send] = useMachine(hoverCard.machine(context), { context })
-
   return hoverCard.connect(state, send, normalizeProps)
 }
 

@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../split-props'
+import type { Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
 
 export type RangeSliderOutputProps = Assign<

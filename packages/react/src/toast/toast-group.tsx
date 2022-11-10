@@ -4,7 +4,7 @@ import type { Placement, Service } from '@zag-js/toast'
 import type { ReactNode } from 'react'
 import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../split-props'
+import type { Assign } from '../types'
 import { useToast } from './toast-provider'
 
 export type ToastGroupProps = Assign<

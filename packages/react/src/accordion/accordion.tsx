@@ -1,7 +1,8 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import { splitProps } from '../split-props'
+import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
 

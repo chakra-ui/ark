@@ -8,8 +8,8 @@ export const [ToastContextProvider, useToast] = createContext<ToastContext>()
 
 export type ToastProviderProps = PropsWithChildren
 export const ToastProvider = (props: ToastProviderProps) => {
-  const { children } = props
-  const [state, send] = useMachine(toast.group.machine({ id: useId() }))
+  const { children, ...restProps } = props
+  const [state, send] = useMachine(toast.group.machine({ id: useId(), ...restProps }))
   const api = toast.group.connect(state, send, normalizeProps)
 
   return <ToastContextProvider value={api}>{children}</ToastContextProvider>

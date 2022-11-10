@@ -1,7 +1,8 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
-import { Assign, splitProps } from '../split-props'
+import { splitProps } from '../split-props'
+import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, { index: number }>
