@@ -283,11 +283,9 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,intellij+all
 
+# Turbo
 .turbo
 
-
-build
-
-# Generated files
+# Docusaurus
 .docusaurus
 .cache-loader
