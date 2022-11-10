@@ -1,8 +1,9 @@
 import * as dialog from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import type { OptionalId } from '../types'
 
-export type UseDialogProps = Omit<dialog.Context, 'id'>
+export type UseDialogProps = OptionalId<dialog.Context>
 
 export const useDialog = (props: UseDialogProps) => {
   const context = {

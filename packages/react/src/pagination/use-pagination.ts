@@ -1,8 +1,9 @@
 import * as pagination from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import type { OptionalId } from '../types'
 
-export type UsePaginationProps = Omit<pagination.Context, 'id'>
+export type UsePaginationProps = OptionalId<pagination.Context>
 
 export const usePagination = (props: UsePaginationProps) => {
   const context = {

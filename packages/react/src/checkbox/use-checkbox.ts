@@ -1,8 +1,9 @@
 import * as checkbox from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import type { OptionalId } from '../types'
 
-export type UseCheckboxProps = Omit<checkbox.Context, 'id'> & {
+export type UseCheckboxProps = OptionalId<checkbox.Context> & {
   defaultValue?: checkbox.Context['value']
 }
 export type UseCheckboxReturn = ReturnType<typeof useCheckbox>
@@ -11,7 +12,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const initialContext = {
     id: useId(),
     ...props,
-    value: props.value ?? props.defaultValue,
+    value: props.defaultValue,
   }
 
   const context = {
@@ -20,6 +21,5 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   }
 
   const [state, send] = useMachine(checkbox.machine(initialContext), { context })
-
   return checkbox.connect(state, send, normalizeProps)
 }

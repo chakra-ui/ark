@@ -2,7 +2,8 @@ import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import type { connect } from '@zag-js/tabs'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import { splitProps } from '../split-props'
+import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
 export type TabPanelProps = Assign<
