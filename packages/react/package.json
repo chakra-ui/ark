@@ -58,7 +58,7 @@
     "@zag-js/slider": "0.2.1",
     "@zag-js/tabs": "0.2.1",
     "@zag-js/tags-input": "0.3.1",
-    "@zag-js/toast": "0.2.1",
+    "@zag-js/toast": "0.2.2",
     "@zag-js/tooltip": "0.2.1"
   },
   "devDependencies": {
@@ -70,8 +70,13 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@types/testing-library__jest-dom": "5.14.5",
+    "@typescript-eslint/eslint-plugin": "5.42.1",
+    "@typescript-eslint/parser": "5.42.1",
     "@vitejs/plugin-react": "2.2.0",
     "@vitest/coverage-c8": "0.25.1",
+    "eslint": "8.27.0",
+    "eslint-plugin-react": "7.31.10",
+    "eslint-plugin-react-hooks": "4.6.0",
     "jsdom": "20.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
