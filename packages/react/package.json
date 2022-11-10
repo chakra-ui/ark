@@ -33,9 +33,9 @@
   "scripts": {
     "build": "tsup src/index.ts",
     "lint": "eslint --ext .ts,.tsx src",
-    "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:ci": "vitest --run --coverage"
+    "test:ci": "vitest --run --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.1.2",
