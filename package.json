@@ -50,5 +50,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.14.2"
+  "packageManager": "pnpm@7.15.0"
 }
