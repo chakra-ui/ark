@@ -1,9 +1,6 @@
 export const createSplitProps =
   <T, K = keyof T>() =>
-  <U extends K[]>(
-    props: T,
-    keys: U & ([K] extends [U[number]] ? unknown : never), // <-- replaced "Invalid" with never
-  ) =>
+  <U extends K[]>(props: T, keys: U & ([K] extends [U[number]] ? unknown : never)) =>
     keys.reduce(
       (prev, key) => {
         const [target, source] = prev
