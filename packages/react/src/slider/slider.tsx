@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps } from '../split-props'
 import type { Assign } from '../types'
 import { SliderProvider } from './slider-context'
 import { useSlider, UseSliderProps } from './use-slider'
@@ -9,7 +9,7 @@ import { useSlider, UseSliderProps } from './use-slider'
 export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
 
 export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
-  const [useSliderProps, divProps] = splitProps(props, [
+  const [useSliderProps, divProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
     'dir',
@@ -17,6 +17,7 @@ export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
     'focusThumbOnChange',
     'getAriaValueText',
     'getRootNode',
+    'id',
     'ids',
     'invalid',
     'max',

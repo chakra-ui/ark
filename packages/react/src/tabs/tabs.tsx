@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps } from '../split-props'
 import type { Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
@@ -9,10 +9,11 @@ import { useTabs, UseTabsProps } from './use-tabs'
 export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
 export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
-  const [useTabsProps, divProps] = splitProps(props, [
+  const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [
     'activationMode',
     'dir',
     'getRootNode',
+    'id',
     'ids',
     'isIndicatorRendered',
     'loop',
