@@ -8,9 +8,13 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "css": "panda",
+    "css:dev": "panda --watch"
   },
   "dependencies": {
-    "astro": "1.6.7"
+    "@css-panda/presets": "dev",
+    "astro": "1.6.7",
+    "css-panda": "dev"
   }
 }

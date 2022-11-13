@@ -289,3 +289,6 @@ dist
 # Docusaurus
 .docusaurus
 .cache-loader
+
+## CSS Panda
+panda
