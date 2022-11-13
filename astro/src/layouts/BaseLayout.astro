@@ -1,6 +1,8 @@
 ---
 import '@fontsource/inter'
 import { css, globalCss } from '../../panda/css'
+import { container } from '../../panda/patterns'
+
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import Sidebar from '../components/Sidebar.astro'
@@ -21,21 +23,21 @@ globalCss({
     <meta name="generator" content={Astro.generator} />
     <title>Ark UI</title>
   </head>
-  <body>
+  <body
+    class={css({
+      backgroundColor: { value: { base: '#ffffff', dark: '#141414' } },
+      color: { value: { base: '#141414', dark: '#ffffff' } },
+    })}
+  >
     <Header />
     <aside>
       <Sidebar />
     </aside>
-    <main
-      class={css({
-        bg: 'green.600',
-        padding: '40px',
-        color: 'white',
-        fontSize: '50px',
-      })}
-    >
-      <slot />
-    </main>
-    <Footer />
+    <div class={container({})}>
+      <main>
+        <slot />
+      </main>
+    </div>
   </body>
+  <Footer />
 </html>

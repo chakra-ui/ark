@@ -1,4 +1,6 @@
 ---
+import { cx } from '../../panda/css'
+import { button } from '../../panda/recipes'
 ---
 
-<button>mdx button</button>
+<button class={cx(button({ variant: 'primary', size: 'sm' }))}>Click me</button>

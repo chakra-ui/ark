@@ -1,9 +1,12 @@
 ---
+import { container } from '../../panda/patterns'
 import Navigation from '../components/Navigation.astro'
+import ThemeIcon from './ThemeIcon.astro'
 ---
 
 <header>
-  <nav>
+  <nav class={container({})}>
+    <ThemeIcon />
     <Navigation />
   </nav>
 </header>
