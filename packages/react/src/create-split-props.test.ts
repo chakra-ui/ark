@@ -1,21 +1,37 @@
 import { createSplitProps } from './create-split-props'
 
 describe('createSplitProps', () => {
-  it('should split props', () => {
-    type Framework = {
-      name: string
-    }
-    const source = { name: 'react', b: 2, c: 3 }
+  type Target = {
+    name: string
+  }
 
+  const source = {
+    name: 'react',
+    b: 2,
+    c: 3,
+  }
+
+  it('should throw TS error on incomplete keys', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error this must be an error because name is not specified
-    createSplitProps<User>()(source, [])
+    createSplitProps<Target>()(source, [])
+  })
 
+  it('should throw TS error on extra keys', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error this must be an error because age is not known to User
-    createSplitProps<User>()(source, ['name', 'age'])
+    // @ts-expect-error this must be an error because age is not known to Target
+    createSplitProps<Target>()(source, ['name', 'age'])
+  })
 
-    const [firstGroup, rest] = createSplitProps<Framework>()(source, ['name'])
+  it('should create an empty object when no keys are required', () => {
+    const [firstGroup, rest] = createSplitProps()(source, [])
+
+    expect(firstGroup).toStrictEqual({})
+    expect(rest).toStrictEqual(source)
+  })
+
+  it('should split props', () => {
+    const [firstGroup, rest] = createSplitProps<Target>()(source, ['name'])
 
     expect(firstGroup).toStrictEqual({ name: 'react' })
     expect(rest).toEqual({ b: 2, c: 3 })

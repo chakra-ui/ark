@@ -1,13 +1,16 @@
 export const createSplitProps =
-  <T, K = keyof T, S extends T = T>() =>
-  <U extends K[]>(props: S, keys: U & ([K] extends [U[number]] ? unknown : never)): [T, any] => {
-    // return type
-    return keys.reduce<[T, any]>( // TODO any
-      (prev, key) => {
-        const [target, source] = prev
-        const { [key as string]: value, ...rest } = source
-        return [{ ...target, [key as string]: value }, rest]
+  <Target>() =>
+  <Keys extends (keyof Target)[], Props extends Target = Target>(
+    props: Props,
+    keys: Keys & ([keyof Target] extends [Keys[number]] ? unknown : never),
+  ) =>
+    (keys as string[]).reduce<[Target, Omit<Props, Extract<typeof keys[number], string>>]>(
+      (previousValue, currentValue) => {
+        const [target, source] = previousValue
+        const key = currentValue as keyof Target & keyof typeof source
+        target[key] = source[key]
+        delete source[key]
+        return [target, source]
       },
-      [{} as T, props],
+      [{} as Target, { ...props }],
     )
-  }
