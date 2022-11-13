@@ -1,6 +1,6 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
-    "importsNotUsedAsValues": "error"
+    "baseUrl": "."
   }
 }
