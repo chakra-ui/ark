@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@css-panda/presets": "dev",
+    "@fontsource/inter": "4.5.14",
     "astro": "1.6.7",
     "css-panda": "dev"
   }
