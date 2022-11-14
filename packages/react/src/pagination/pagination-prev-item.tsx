@@ -1,12 +1,17 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { mergeProps } from '@zag-js/react'
+import { Children, cloneElement, ReactElement } from 'react'
 import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPrevItemProps = HTMLArkProps<'a'>
+export type PaginationPrevItemProps = HTMLArkProps<'li'> & { children: ReactElement }
 
-export const PaginationPrevItem = forwardRef<'a', PaginationPrevItemProps>((props, ref) => {
+export const PaginationPrevItem = forwardRef<'li', PaginationPrevItemProps>((props, ref) => {
   const { prevItemProps } = usePaginationContext()
-  const mergedProps = mergeProps(prevItemProps, props)
-  return <ark.a href="#previous" {...mergedProps} ref={ref} />
+  const child = cloneElement(Children.only(props.children), prevItemProps)
+
+  return (
+    <ark.li {...props} ref={ref}>
+      {child}
+    </ark.li>
+  )
 })
