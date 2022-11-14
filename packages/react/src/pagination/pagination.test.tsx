@@ -4,6 +4,7 @@ import {
   Pagination,
   PaginationEllipsis,
   PaginationItem,
+  PaginationList,
   PaginationNextItem,
   PaginationPrevItem,
   PaginationProps,
@@ -12,29 +13,30 @@ import {
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   <Pagination {...props}>
     {({ pages }) => (
-      <ul>
-        <li>
-          <PaginationPrevItem>
+      <PaginationList>
+        <PaginationPrevItem>
+          <button>
             Previous <span className="visually-hidden">Page</span>
-          </PaginationPrevItem>
-        </li>
+          </button>
+        </PaginationPrevItem>
 
-        {pages.map((page, index) => (
-          <li key={index}>
-            {page.type === 'page' ? (
-              <PaginationItem value={page.value}>{page.value}</PaginationItem>
-            ) : (
-              <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
-            )}
-          </li>
-        ))}
-
-        <li>
-          <PaginationNextItem>
+        {pages.map((page, index) =>
+          page.type === 'page' ? (
+            <PaginationItem key={index} value={page.value}>
+              <button>{page.value}</button>
+            </PaginationItem>
+          ) : (
+            <PaginationEllipsis key={index} index={index}>
+              &#8230;
+            </PaginationEllipsis>
+          ),
+        )}
+        <PaginationNextItem>
+          <button>
             Next <span className="visually-hidden">Page</span>
-          </PaginationNextItem>
-        </li>
-      </ul>
+          </button>
+        </PaginationNextItem>
+      </PaginationList>
     )}
   </Pagination>
 )
