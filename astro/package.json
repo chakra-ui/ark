@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "0.11.6",
+    "@astrojs/sitemap": "1.0.0",
     "@css-panda/presets": "dev",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.7",
