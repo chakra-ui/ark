@@ -33,13 +33,13 @@ importers:
   astro:
     specifiers:
       '@astrojs/mdx': 0.11.6
-      '@css-panda/presets': 0.0.0-dev-20221113131253
+      '@css-panda/presets': 0.0.0-dev-20221113213436
       '@fontsource/inter': 4.5.14
       astro: 1.6.8
       css-panda: 0.0.0-dev-20221113131253
     dependencies:
       '@astrojs/mdx': 0.11.6
-      '@css-panda/presets': 0.0.0-dev-20221113131253
+      '@css-panda/presets': 0.0.0-dev-20221113213436
       '@fontsource/inter': 4.5.14
       astro: 1.6.8
       css-panda: 0.0.0-dev-20221113131253
@@ -2387,10 +2387,10 @@ packages:
       ts-pattern: 4.0.5
     dev: false
 
-  /@css-panda/presets/0.0.0-dev-20221113131253:
-    resolution: {integrity: sha512-gjeXbZ4jCeKVl+mX1oiZU1l8pfgHQhGwqVLGZQelDdtqhHwK/rbHlEWyq5vrtN3SBsPcBCzNLcM4MjOlKCM3xA==}
+  /@css-panda/presets/0.0.0-dev-20221113213436:
+    resolution: {integrity: sha512-iCLpC2YD1I+8uq/O0tNpEqUPPMNmv+SjckC6xW7tXCWRzpDo6FmDIvhxEnZeKRTQdSMUqEUJgDfOTkynAHWtuA==}
     dependencies:
-      '@css-panda/types': 0.0.0-dev-20221113131253
+      '@css-panda/types': 0.0.0-dev-20221113213436
     dev: false
 
   /@css-panda/shared/0.0.0-dev-20221113131253:
@@ -2406,6 +2406,10 @@ packages:
 
   /@css-panda/types/0.0.0-dev-20221113131253:
     resolution: {integrity: sha512-qjsBiIqIa2UE6LvVDr3C76iw3LHop1v/2Mv7sujhs/fPDY5dTgnQtpf/zYILBZKx2T4cYY3B0D4oR5Nr32X09w==}
+    dev: false
+
+  /@css-panda/types/0.0.0-dev-20221113213436:
+    resolution: {integrity: sha512-Qbb34pSNIDdPXwcfqmDiCZezgKJ1JYJeNftC/cVQSBOTL8wU5NKd2HOs3FB3paLH3XsTrS9NSdA5TGZaZMe8Iw==}
     dev: false
 
   /@docsearch/css/3.3.0:
