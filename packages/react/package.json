@@ -38,7 +38,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@polymorphic-factory/react": "0.1.2",
+    "@polymorphic-factory/react": "0.2.0",
     "@reach/portal": "0.18.0",
     "@zag-js/accordion": "0.2.1",
     "@zag-js/checkbox": "0.2.1",
