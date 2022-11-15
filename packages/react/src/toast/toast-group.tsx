@@ -19,7 +19,7 @@ export const ToastGroup = forwardRef<'div', ToastGroupProps>((props, ref) => {
   const { children, placement, ...divProps } = props
   const { toastsByPlacement, getGroupProps } = useToast()
   const mergedProps = mergeProps(getGroupProps({ placement }), divProps)
-  const view = runIfFn(children, toastsByPlacement[placement])
+  const view = runIfFn(children, toastsByPlacement[placement] ?? [])
 
   return (
     <ark.div {...mergedProps} ref={ref}>
