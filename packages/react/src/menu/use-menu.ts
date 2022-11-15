@@ -11,8 +11,11 @@ export type UseMenuReturn = {
 }
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
-  const uid = useId()
-  const context = { ...props, id: props.id ?? uid }
+  const context = {
+    id: useId(),
+    ...props,
+  }
+
   const [state, send, machine] = useMachine(menu.machine(context), { context })
   const api = menu.connect(state, send, normalizeProps)
   return { api, machine }
