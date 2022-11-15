@@ -1,6 +1,7 @@
 import { Portal } from '@reach/portal'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { useState } from 'react'
 import { vi } from 'vitest'
 import {
   Menu,
@@ -9,6 +10,7 @@ import {
   MenuGroup,
   MenuGroupLabel,
   MenuItem,
+  MenuItemOption,
   MenuPositioner,
   MenuSeparator,
   MenuTrigger,
@@ -213,5 +215,103 @@ describe('Menu', () => {
       await user.click(nestedButton)
       await waitFor(() => expect(screen.getByText(/nested menu content/i)).toBeVisible())
     })
+  })
+
+  describe('OptionGroups', () => {
+    const ComponentUnderTest = () => {
+      const [value, setValue] = useState<Record<string, string | string[]>>({
+        framework: '',
+        libraries: [],
+      })
+      return (
+        <Menu
+          value={value}
+          onValueChange={(data) => {
+            setValue((prev) => ({
+              ...prev,
+              [data.name]: data.value,
+            }))
+          }}
+        >
+          <MenuTrigger>
+            <button>Open menu</button>
+          </MenuTrigger>
+          <Portal>
+            <MenuPositioner>
+              <MenuContent>
+                <MenuGroup id="radio-group">
+                  <MenuGroupLabel htmlFor="radio-group">Radio Group</MenuGroupLabel>
+                  <MenuItemOption name="framework" type="radio" value="react">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
+                  </MenuItemOption>
+                  <MenuItemOption name="framework" type="radio" value="solid">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
+                  </MenuItemOption>
+                  <MenuItemOption name="framework" type="radio" value="vue">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
+                  </MenuItemOption>
+                </MenuGroup>
+                <MenuGroup id="checkbox-group">
+                  <MenuGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuGroupLabel>
+                  <MenuItemOption name="libraries" type="checkbox" value="zag-js">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} zag-js</>}
+                  </MenuItemOption>
+                  <MenuItemOption name="libraries" type="checkbox" value="ark">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} ark</>}
+                  </MenuItemOption>
+                  <MenuItemOption name="libraries" type="checkbox" value="panda">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} panda</>}
+                  </MenuItemOption>
+                  <MenuItemOption name="libraries" type="checkbox" value="chakra">
+                    {({ isActive }) => <>{isActive ? '✅' : ''} chakra</>}
+                  </MenuItemOption>
+                </MenuGroup>
+              </MenuContent>
+            </MenuPositioner>
+          </Portal>
+        </Menu>
+      )
+    }
+
+    it('should select a radio option', async () => {
+      render(<ComponentUnderTest />)
+      const menuButton = screen.getByRole('button', { name: /open menu/i })
+      await user.click(menuButton)
+
+      const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
+      await user.click(radioButton)
+      await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
+    })
+
+    it('should select a checkbox option', async () => {
+      render(<ComponentUnderTest />)
+      const menuButton = screen.getByRole('button', { name: /open menu/i })
+      await user.click(menuButton)
+
+      const checkboxButton1 = screen.getByRole('menuitemcheckbox', { name: /ark/i })
+      await user.click(checkboxButton1)
+
+      await user.click(menuButton)
+
+      const checkboxButton2 = screen.getByRole('menuitemcheckbox', { name: /panda/i })
+      await user.click(checkboxButton2)
+
+      await waitFor(() => expect(checkboxButton1).toHaveAttribute('aria-checked', 'true'))
+      await waitFor(() => expect(checkboxButton2).toHaveAttribute('aria-checked', 'true'))
+    })
+  })
+
+  it('should control the open state', () => {
+    render(
+      <Menu isOpen>
+        <MenuPositioner>
+          <MenuContent>
+            <span>main menu content</span>
+          </MenuContent>
+        </MenuPositioner>
+      </Menu>,
+    )
+    const text = screen.getByText('main menu content')
+    expect(text).toBeVisible()
   })
 })
