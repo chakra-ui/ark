@@ -12,8 +12,8 @@ import {
   MenuPositioner,
   MenuSeparator,
   MenuTrigger,
+  MenuTriggerItem,
 } from '.'
-import { MenuTriggerItem } from './menu-trigger-item'
 
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {

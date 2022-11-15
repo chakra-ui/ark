@@ -1,13 +1,15 @@
 import { Portal } from '@reach/portal'
-import { Menu } from './menu'
-import { MenuContent } from './menu-content'
-import { MenuGroup } from './menu-group'
-import { MenuGroupLabel } from './menu-group-label'
-import { MenuItem } from './menu-item'
-import { MenuPositioner } from './menu-positioner'
-import { MenuSeparator } from './menu-separator'
-import { MenuTrigger } from './menu-trigger'
-import { MenuTriggerItem } from './menu-trigger-item'
+import {
+  Menu,
+  MenuContent,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuItem,
+  MenuPositioner,
+  MenuSeparator,
+  MenuTrigger,
+  MenuTriggerItem,
+} from '.'
 import './menu.css'
 
 export const Basic = () => (

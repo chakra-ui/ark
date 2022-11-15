@@ -23,4 +23,5 @@ export {
 export { MenuPositioner, type MenuPositionerProps } from './menu-positioner'
 export { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 export { MenuTrigger, type MenuTriggerProps } from './menu-trigger'
+export { MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item'
 export { useMenu, type UseMenuProps } from './use-menu'
