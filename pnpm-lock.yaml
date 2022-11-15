@@ -172,6 +172,7 @@ importers:
 
   packages/solid:
     specifiers:
+      '@polymorphic-factory/solid': 0.1.1
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@types/jsdom': 20.0.1
@@ -208,6 +209,7 @@ importers:
       vite-plugin-solid: 2.4.0
       vitest: 0.25.2
     dependencies:
+      '@polymorphic-factory/solid': 0.1.1_solid-js@1.6.2
       '@zag-js/accordion': 0.2.1
       '@zag-js/checkbox': 0.2.1
       '@zag-js/dialog': 0.2.1
@@ -3500,6 +3502,14 @@ packages:
       react: '>=16.8 || >=17 || >18'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@polymorphic-factory/solid/0.1.1_solid-js@1.6.2:
+    resolution: {integrity: sha512-WX1OneLsiOBn+fd3vD4zIrWRBEDcSX2GJQL7Szw8zx3FWkkdA9FlWKTlEkG8zeoRiCG+3nl6bhvWXIB14it6Ng==}
+    peerDependencies:
+      solid-js: '>=1.6.0'
+    dependencies:
+      solid-js: 1.6.2
     dev: false
 
   /@proload/core/0.3.3:

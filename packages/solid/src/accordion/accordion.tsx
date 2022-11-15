@@ -1,8 +1,10 @@
-import { JSX, splitProps } from 'solid-js'
+import type { Assign } from '@polymorphic-factory/solid'
+import { splitProps } from 'solid-js'
+import { ark, HTMLArkProps } from '../factory'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = UseAccordionProps & JSX.HTMLAttributes<HTMLDivElement>
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
 export function Accordion(props: AccordionProps) {
   const [accordionProps, htmlProps] = splitProps(props, [
@@ -19,7 +21,7 @@ export function Accordion(props: AccordionProps) {
 
   return (
     <AccordionProvider value={accordion}>
-      <div {...accordion?.().rootProps} {...htmlProps} />
+      <ark.div {...accordion?.().rootProps} {...htmlProps} />
     </AccordionProvider>
   )
 }
