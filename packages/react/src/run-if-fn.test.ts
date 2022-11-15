@@ -19,6 +19,13 @@ describe('Util: runIfFn', () => {
     expect(result).toEqual('function result suffix')
   })
 
+  it('should infer an invalid argument type', () => {
+    const valueOrFn = (suffix: string) => `function result ${suffix}`
+    // @ts-expect-error number is not a string
+    const result = runIfFn(valueOrFn, 1337)
+    expect(result).toEqual('function result suffix')
+  })
+
   it('should infer the return type', () => {
     const valueOrFn = (suffix: string) => `function result ${suffix}`
     const result: string = runIfFn(valueOrFn, 'suffix')
