@@ -42,7 +42,6 @@
     "@reach/portal": "0.18.0",
     "@zag-js/accordion": "dev",
     "@zag-js/checkbox": "dev",
-    "@zag-js/core": "dev",
     "@zag-js/dialog": "dev",
     "@zag-js/editable": "dev",
     "@zag-js/hover-card": "dev",
@@ -61,8 +60,7 @@
     "@zag-js/tabs": "dev",
     "@zag-js/tags-input": "dev",
     "@zag-js/toast": "dev",
-    "@zag-js/tooltip": "dev",
-    "@zag-js/types": "dev"
+    "@zag-js/tooltip": "dev"
   },
   "devDependencies": {
     "@testing-library/dom": "8.19.0",
