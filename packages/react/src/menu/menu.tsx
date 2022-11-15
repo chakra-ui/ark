@@ -21,11 +21,12 @@ export type MenuProps = Assign<
   { children: ReactNode },
   UseMenuProps & {
     children?: ReactNode | ((state: MenuState) => ReactNode)
+    isOpen?: boolean
   }
 >
 
 export const Menu = (props: MenuProps) => {
-  const [menuProps, { children }] = createSplitProps<UseMenuProps>()(props, [
+  const [menuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(props, [
     'activeId',
     'anchorPoint',
     'aria-label',
@@ -61,6 +62,12 @@ export const Menu = (props: MenuProps) => {
     parentApiRef.current?.setChild(machineRef.current)
     apiRef.current?.setParent(parentMachineRef.current)
   }, [parentMachineRef, parentApiRef, machineRef, apiRef])
+
+  useEffect(() => {
+    if (isOpen && !api.isOpen) {
+      api.open()
+    }
+  }, [isOpen, api])
 
   const getTriggerItemProps = useCallback(
     () => parentApiRef.current?.getTriggerItemProps(apiRef.current),
