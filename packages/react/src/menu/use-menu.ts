@@ -1,10 +1,9 @@
 import * as menu from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
-import type { OptionalId } from '../split-props'
+import type { Optional } from '../types'
 
-export type UseMenuProps = OptionalId<menu.Context>
+export type UseMenuProps = Optional<menu.Context, 'id'>
 
 export type UseMenuReturn = {
   machine: ReturnType<typeof menu.machine>
@@ -12,19 +11,9 @@ export type UseMenuReturn = {
 }
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
-  const initialContext = filterUndefinedEntries({
-    id: useId(),
-    ...props,
-  })
-
-  const [state, send, machine] = useMachine(menu.machine(initialContext), {
-    context: initialContext,
-  })
-
+  const uid = useId()
+  const context = { ...props, id: props.id ?? uid }
+  const [state, send, machine] = useMachine(menu.machine(context), { context })
   const api = menu.connect(state, send, normalizeProps)
-
-  return {
-    api,
-    machine,
-  }
+  return { api, machine }
 }

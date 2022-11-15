@@ -1,17 +1,17 @@
 import { forwardRef } from '@polymorphic-factory/react'
+import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { Assign, splitProps } from '../split-props'
+import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-export type MenuGroupProps = Assign<
-  HTMLArkProps<'div'>,
-  Parameters<UseMenuReturn['api']['getGroupProps']>[0]
->
+type MenuGroupParams = Parameters<UseMenuReturn['api']['getGroupProps']>[0]
+export type MenuGroupProps = Assign<HTMLArkProps<'div'>, MenuGroupParams>
 
 export const MenuGroup = forwardRef<'div', MenuGroupProps>((props, ref) => {
-  const { api } = useMenuContext()
-  const [menuGroupProps, htmlProps] = splitProps(props, ['id'])
-
-  return <ark.div {...api.getGroupProps(menuGroupProps)} {...htmlProps} ref={ref} />
+  const api = useMenuContext() as UseMenuReturn['api']
+  const [menuGroupProps, divProps] = createSplitProps<MenuGroupParams>()(props, ['id'])
+  const mergedProps = mergeProps(api?.getGroupProps(menuGroupProps) ?? {}, divProps)
+  return <ark.div {...mergedProps} ref={ref} />
 })

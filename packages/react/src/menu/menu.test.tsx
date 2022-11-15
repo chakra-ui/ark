@@ -1,3 +1,4 @@
+import { Portal } from '@reach/portal'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
@@ -11,8 +12,8 @@ import {
   MenuPositioner,
   MenuSeparator,
   MenuTrigger,
-  NestedMenu,
 } from '.'
+import { MenuTriggerItem } from './menu-trigger-item'
 
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
@@ -32,21 +33,21 @@ describe('Menu', () => {
       </Menu>,
     )
 
-    expect(screen.getByText('Delivery')).toBeDisabled()
+    expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it('should not fire onClick on disabled MenuItem', async () => {
-    const onClick = vi.fn()
+  it('should not fire onValueChange on disabled MenuItems', async () => {
+    const onValueChange = vi.fn()
 
     render(
-      <Menu>
+      <Menu onValueChange={onValueChange}>
         <MenuTrigger>
           <button>Open menu</button>
         </MenuTrigger>
         <MenuContent>
           <MenuItem id="search">Search</MenuItem>
           <MenuItem id="undo">Undo</MenuItem>
-          <MenuItem id="delivery" disabled onClick={onClick}>
+          <MenuItem id="delivery" disabled>
             Delivery
           </MenuItem>
           <MenuItem id="unlink">Unlink</MenuItem>
@@ -56,7 +57,7 @@ describe('Menu', () => {
 
     await user.click(screen.getByText('Delivery'))
 
-    expect(onClick).not.toHaveBeenCalled()
+    expect(onValueChange).not.toHaveBeenCalled()
   })
 
   it('should apply correct role to MenuGroup', async () => {
@@ -135,10 +136,9 @@ describe('Menu', () => {
     expect(submitOption).toHaveAttribute('type', 'submit')
   })
 
-  it.skip('should flip direction for MenuContent in rtl', async () => {
-    // test fails, and passing `positioning={{ placement: 'bottom-start' }}` leads to max callstack
+  it('should accept a custom placement', async () => {
     render(
-      <Menu dir="rtl">
+      <Menu dir="rtl" positioning={{ placement: 'left-start' }}>
         <MenuTrigger>
           <button>Open menu</button>
         </MenuTrigger>
@@ -153,7 +153,7 @@ describe('Menu', () => {
     await user.click(button)
 
     const menuList = screen.getByRole('menu')
-    expect(menuList.getAttribute('data-placement')).toEqual('top-start')
+    expect(menuList.getAttribute('data-placement')).toEqual('left-start')
   })
 
   describe('ContextMenu', () => {
@@ -182,20 +182,26 @@ describe('Menu', () => {
           <MenuTrigger>
             <button>Open menu</button>
           </MenuTrigger>
-          <MenuContent>
-            <span>main menu content</span>
-            <MenuSeparator />
-            <NestedMenu>
-              <MenuItem id="share">Share...</MenuItem>
-              <MenuPositioner>
-                <MenuContent>
-                  <span>nested menu content</span>
-                  <MenuItem id="twitter">Twitter</MenuItem>
-                  <MenuItem id="message">Message</MenuItem>
-                </MenuContent>
-              </MenuPositioner>
-            </NestedMenu>
-          </MenuContent>
+          <Portal>
+            <MenuPositioner>
+              <MenuContent>
+                <span>main menu content</span>
+                <MenuSeparator />
+                <Menu>
+                  <MenuTriggerItem>Share...</MenuTriggerItem>
+                  <Portal>
+                    <MenuPositioner>
+                      <MenuContent>
+                        <span>nested menu content</span>
+                        <MenuItem id="twitter">Twitter</MenuItem>
+                        <MenuItem id="message">Message</MenuItem>
+                      </MenuContent>
+                    </MenuPositioner>
+                  </Portal>
+                </Menu>
+              </MenuContent>
+            </MenuPositioner>
+          </Portal>
         </Menu>,
       )
 

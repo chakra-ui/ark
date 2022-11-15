@@ -1,12 +1,16 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import type { ReactNode } from 'react'
-import * as React from 'react'
-import { ark, HTMLArkProps } from '../factory'
+import { ReactNode, useCallback, useEffect } from 'react'
+import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../split-props'
-import { splitProps } from '../split-props'
-import { MenuProvider } from './menu-context'
-import { useMenu, UseMenuProps } from './use-menu'
+import type { Assign } from '../types'
+import { useLatestRef } from '../use-latest-ref'
+import {
+  MenuMachineProvider,
+  MenuProvider,
+  MenuTriggerItemProvider,
+  useMenuContext,
+  useMenuMachineContext,
+} from './menu-context'
+import { useMenu, UseMenuProps, UseMenuReturn } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean
@@ -14,14 +18,14 @@ export type MenuState = {
 }
 
 export type MenuProps = Assign<
-  HTMLArkProps<'div'>,
+  { children: ReactNode },
   UseMenuProps & {
     children?: ReactNode | ((state: MenuState) => ReactNode)
   }
 >
 
-export const Menu = forwardRef<'div', MenuProps>((props, ref) => {
-  const [menuProps, { children, ...htmlProps }] = splitProps(props, [
+export const Menu = (props: MenuProps) => {
+  const [menuProps, { children }] = createSplitProps<UseMenuProps>()(props, [
     'activeId',
     'anchorPoint',
     'aria-label',
@@ -34,19 +38,40 @@ export const Menu = forwardRef<'div', MenuProps>((props, ref) => {
     'onSelect',
     'onValueChange',
     'positioning',
+    'value',
   ])
+
+  const parentApi = useMenuContext() as UseMenuReturn['api']
+  const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
+
   const { api, machine } = useMenu(menuProps)
 
-  const menuContextValue = React.useMemo(() => ({ api, machine }), [api, machine])
-
-  const renderPropResult = runIfFn<ReactNode, MenuState>(children, {
+  const view = runIfFn<ReactNode, MenuState>(children, {
     isOpen: api.isOpen,
     onClose: api.close,
   })
 
-  return (
-    <ark.div {...htmlProps} ref={ref}>
-      <MenuProvider value={menuContextValue}>{renderPropResult}</MenuProvider>
-    </ark.div>
+  const parentMachineRef = useLatestRef(parentMachine)
+  const parentApiRef = useLatestRef(parentApi)
+  const machineRef = useLatestRef(machine)
+  const apiRef = useLatestRef(api)
+
+  useEffect(() => {
+    if (!parentMachineRef.current) return
+    parentApiRef.current?.setChild(machineRef.current)
+    apiRef.current?.setParent(parentMachineRef.current)
+  }, [parentMachineRef, parentApiRef, machineRef, apiRef])
+
+  const getTriggerItemProps = useCallback(
+    () => parentApiRef.current?.getTriggerItemProps(apiRef.current),
+    [apiRef, parentApiRef],
   )
-})
+
+  return (
+    <MenuTriggerItemProvider value={getTriggerItemProps}>
+      <MenuMachineProvider value={machine}>
+        <MenuProvider value={api}>{view}</MenuProvider>
+      </MenuMachineProvider>
+    </MenuTriggerItemProvider>
+  )
+}
