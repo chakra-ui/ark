@@ -10,7 +10,7 @@ export type ToastPlacementsProps = {
 export const ToastPlacements = (props: ToastPlacementsProps) => {
   const { children } = props
   const { toastsByPlacement } = useToast()
-  const view = runIfFn(children, Object.keys(toastsByPlacement))
+  const view = runIfFn(children, Object.keys(toastsByPlacement) as Placement[])
 
   return <>{view}</>
 }
