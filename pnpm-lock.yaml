@@ -35,13 +35,13 @@ importers:
       '@astrojs/mdx': 0.11.6
       '@css-panda/presets': 0.0.0-dev-20221113213436
       '@fontsource/inter': 4.5.14
-      astro: 1.6.9
+      astro: 1.6.10
       css-panda: 0.0.0-dev-20221113131253
     dependencies:
       '@astrojs/mdx': 0.11.6
       '@css-panda/presets': 0.0.0-dev-20221113213436
       '@fontsource/inter': 4.5.14
-      astro: 1.6.9
+      astro: 1.6.10
       css-panda: 0.0.0-dev-20221113131253
 
   docs:
@@ -5148,8 +5148,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro/1.6.9:
-    resolution: {integrity: sha512-KXFKXobe8MIYl4gduUPLcAazMz+thox6N1pOv3F3QMbJS5rMRXkWloVK/6XebBO7p3DYkOfOGB4qA9ijTc4ftA==}
+  /astro/1.6.10:
+    resolution: {integrity: sha512-W/ZGROkCKsDicpiXB82n8EkY6I0/12wdXS80NGaBdIUR1jZZxdN+0YMmdz+C2kYbjlo45KUsXpC/Tej+5KQYSQ==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
