@@ -18,8 +18,8 @@ export type MenuState = {
 }
 
 export type MenuProps = Assign<
-  { children: ReactNode },
-  UseMenuProps & {
+  UseMenuProps,
+  {
     children?: ReactNode | ((state: MenuState) => ReactNode)
     isOpen?: boolean
   }
