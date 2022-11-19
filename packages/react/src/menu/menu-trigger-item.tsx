@@ -6,8 +6,7 @@ import { useMenuTriggerItemContext } from './menu-context'
 export type MenuTriggerItemProps = HTMLArkProps<'div'>
 
 export const MenuTriggerItem = forwardRef<'div', MenuTriggerItemProps>((props, ref) => {
-  const getTriggerProps = useMenuTriggerItemContext()
-  const mergedProps = mergeProps(getTriggerProps?.() ?? {}, props)
-
+  const getTriggerItemProps = useMenuTriggerItemContext()
+  const mergedProps = mergeProps(getTriggerItemProps?.() ?? {}, props)
   return <ark.div {...mergedProps} ref={ref} />
 })

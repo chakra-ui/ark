@@ -2,7 +2,7 @@ import { ReactNode, useCallback, useEffect } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useLatestRef } from '../use-latest-ref'
+import { useEffectOnce } from '../use-effect-once'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -52,16 +52,11 @@ export const Menu = (props: MenuProps) => {
     onClose: api.close,
   })
 
-  const parentMachineRef = useLatestRef(parentMachine)
-  const parentApiRef = useLatestRef(parentApi)
-  const machineRef = useLatestRef(machine)
-  const apiRef = useLatestRef(api)
-
-  useEffect(() => {
-    if (!parentMachineRef.current) return
-    parentApiRef.current?.setChild(machineRef.current)
-    apiRef.current?.setParent(parentMachineRef.current)
-  }, [parentMachineRef, parentApiRef, machineRef, apiRef])
+  useEffectOnce(() => {
+    if (!parentMachine) return
+    parentApi.setChild(machine)
+    api.setParent(parentMachine)
+  })
 
   useEffect(() => {
     if (isOpen && !api.isOpen) {
@@ -70,10 +65,9 @@ export const Menu = (props: MenuProps) => {
   }, [isOpen, api])
 
   const getTriggerItemProps = useCallback(
-    () => parentApiRef.current?.getTriggerItemProps(apiRef.current),
-    [apiRef, parentApiRef],
+    () => parentApi.getTriggerItemProps(api),
+    [api, parentApi],
   )
-
   return (
     <MenuTriggerItemProvider value={getTriggerItemProps}>
       <MenuMachineProvider value={machine}>

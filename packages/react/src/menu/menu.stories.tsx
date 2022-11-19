@@ -116,7 +116,7 @@ export const Options = () => {
 export const SubMenu = () => (
   <Menu>
     <MenuTrigger>
-      <button>Open SubMenu</button>
+      <button>Open menu</button>
     </MenuTrigger>
     <Portal>
       <MenuPositioner>
@@ -125,11 +125,10 @@ export const SubMenu = () => (
           <MenuItem id="new-win">New Window...</MenuItem>
           <MenuSeparator />
           <Menu>
-            <MenuTriggerItem>Share...</MenuTriggerItem>
+            <MenuTriggerItem>Share &gt;</MenuTriggerItem>
             <Portal>
               <MenuPositioner>
                 <MenuContent>
-                  <span>nested menu content</span>
                   <MenuItem id="twitter">Twitter</MenuItem>
                   <MenuItem id="message">Message</MenuItem>
                 </MenuContent>
