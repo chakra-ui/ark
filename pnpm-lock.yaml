@@ -2397,10 +2397,6 @@ packages:
     resolution: {integrity: sha512-k3Kgn9ofVvTxON0L984B+ZFeBcDk9LGPgND5Jp0X7Rm12SJcRjivDmwPDvOIVlYrttbyIOyaOPwr1c4i7nwa6A==}
     dev: false
 
-  /@css-panda/types/0.0.0-dev-20221121124619:
-    resolution: {integrity: sha512-k3Kgn9ofVvTxON0L984B+ZFeBcDk9LGPgND5Jp0X7Rm12SJcRjivDmwPDvOIVlYrttbyIOyaOPwr1c4i7nwa6A==}
-    dev: false
-
   /@docsearch/css/3.3.0:
     resolution: {integrity: sha512-rODCdDtGyudLj+Va8b6w6Y85KE85bXRsps/R4Yjwt5vueXKXZQKYw0aA9knxLBT6a/bI/GMrAcmCR75KYOM6hg==}
     dev: false
@@ -15035,7 +15031,7 @@ packages:
       spdy: 4.0.2
       webpack: 5.75.0
       webpack-dev-middleware: 5.3.3_webpack@5.75.0
-      ws: 8.11.0
+      ws: 8.10.0
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -15287,6 +15283,19 @@ packages:
         optional: true
     dev: false
 
+  /ws/8.10.0:
+    resolution: {integrity: sha512-+s49uSmZpvtAsd2h37vIPy1RBusaLawVe8of+GyEPsaJTCMpj/2v8NpeK1SHXjBlQ95lQTmQofOJnFiLoaN3yw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
+
   /ws/8.11.0:
     resolution: {integrity: sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg==}
     engines: {node: '>=10.0.0'}
@@ -15298,6 +15307,7 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dev: true
 
   /xdg-basedir/4.0.0:
     resolution: {integrity: sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==}
