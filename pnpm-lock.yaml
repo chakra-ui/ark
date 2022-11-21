@@ -33,13 +33,13 @@ importers:
   astro:
     specifiers:
       '@astrojs/mdx': 0.11.6
-      '@css-panda/presets': 0.0.0-dev-20221113213436
+      '@css-panda/presets': 0.0.0-dev-20221121124619
       '@fontsource/inter': 4.5.14
       astro: 1.6.10
       css-panda: 0.0.0-dev-20221113131253
     dependencies:
       '@astrojs/mdx': 0.11.6
-      '@css-panda/presets': 0.0.0-dev-20221113213436
+      '@css-panda/presets': 0.0.0-dev-20221121124619
       '@fontsource/inter': 4.5.14
       astro: 1.6.10
       css-panda: 0.0.0-dev-20221113131253
@@ -2376,10 +2376,10 @@ packages:
       ts-pattern: 4.0.5
     dev: false
 
-  /@css-panda/presets/0.0.0-dev-20221113213436:
-    resolution: {integrity: sha512-iCLpC2YD1I+8uq/O0tNpEqUPPMNmv+SjckC6xW7tXCWRzpDo6FmDIvhxEnZeKRTQdSMUqEUJgDfOTkynAHWtuA==}
+  /@css-panda/presets/0.0.0-dev-20221121124619:
+    resolution: {integrity: sha512-vn/r0wnnq1e4BZldqKRLo9ca0QnXOPxUoTfr2deV7OdUZ0v5y8A5aYunagjPzqBjqODwQaWbMDHe7RF/6IwwuQ==}
     dependencies:
-      '@css-panda/types': 0.0.0-dev-20221113213436
+      '@css-panda/types': 0.0.0-dev-20221121124619
     dev: false
 
   /@css-panda/shared/0.0.0-dev-20221113131253:
@@ -2397,8 +2397,8 @@ packages:
     resolution: {integrity: sha512-qjsBiIqIa2UE6LvVDr3C76iw3LHop1v/2Mv7sujhs/fPDY5dTgnQtpf/zYILBZKx2T4cYY3B0D4oR5Nr32X09w==}
     dev: false
 
-  /@css-panda/types/0.0.0-dev-20221113213436:
-    resolution: {integrity: sha512-Qbb34pSNIDdPXwcfqmDiCZezgKJ1JYJeNftC/cVQSBOTL8wU5NKd2HOs3FB3paLH3XsTrS9NSdA5TGZaZMe8Iw==}
+  /@css-panda/types/0.0.0-dev-20221121124619:
+    resolution: {integrity: sha512-k3Kgn9ofVvTxON0L984B+ZFeBcDk9LGPgND5Jp0X7Rm12SJcRjivDmwPDvOIVlYrttbyIOyaOPwr1c4i7nwa6A==}
     dev: false
 
   /@docsearch/css/3.3.0:
