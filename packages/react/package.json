@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.2.0",
-    "@reach/portal": "0.18.0",
     "@zag-js/accordion": "0.2.2",
     "@zag-js/checkbox": "0.2.2",
     "@zag-js/dialog": "0.2.2",

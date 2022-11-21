@@ -1,6 +1,6 @@
-import { Portal } from '@reach/portal'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import {

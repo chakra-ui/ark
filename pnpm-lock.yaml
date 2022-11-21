@@ -80,7 +80,6 @@ importers:
   packages/react:
     specifiers:
       '@polymorphic-factory/react': 0.2.0
-      '@reach/portal': 0.18.0
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
@@ -125,7 +124,6 @@ importers:
       vitest: 0.25.2
     dependencies:
       '@polymorphic-factory/react': 0.2.0_react@18.2.0
-      '@reach/portal': 0.18.0_biqbaboplfbrettd7655fr4n2y
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
@@ -3511,27 +3509,6 @@ packages:
     dependencies:
       '@proload/core': 0.3.3
       tsm: 2.2.2
-    dev: false
-
-  /@reach/portal/0.18.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-TImozRapd576ofRk30Le2L3lRTFXF1p47B182wnp5eMTdZa74JX138BtNGEPJFOyrMaVmguVF8SSwZ6a0fon1Q==}
-    peerDependencies:
-      react: ^16.8.0 || 17.x
-      react-dom: ^16.8.0 || 17.x
-    dependencies:
-      '@reach/utils': 0.18.0_biqbaboplfbrettd7655fr4n2y
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /@reach/utils/0.18.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-KdVMdpTgDyK8FzdKO9SCpiibuy/kbv3pwgfXshTI6tEcQT1OOwj7BAksnzGC0rPz0UholwC+AgkqEl3EJX3M1A==}
-    peerDependencies:
-      react: ^16.8.0 || 17.x
-      react-dom: ^16.8.0 || 17.x
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@remix-run/router/1.0.3:
