@@ -64,12 +64,12 @@
     "@typescript-eslint/eslint-plugin": "5.44.0",
     "@typescript-eslint/parser": "5.44.0",
     "@vitejs/plugin-vue": "3.2.0",
-    "@vitest/coverage-c8": "0.25.2",
+    "@vitest/coverage-c8": "0.25.3",
     "@vue/compiler-sfc": "3.2.45",
     "eslint": "8.28.0",
     "typescript": "4.9.3",
     "vite": "3.2.4",
-    "vitest": "0.25.2",
+    "vitest": "0.25.3",
     "vue": "3.2.45"
   },
   "peerDependencies": {
