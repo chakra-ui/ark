@@ -30,7 +30,7 @@
     "@types/node": "18.11.9",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
     "prettier-plugin-astro": "0.7.0",
     "prettier-plugin-organize-imports": "3.2.0",
     "turbo": "1.6.3",
