@@ -4,12 +4,12 @@ import { vi } from 'vitest'
 import { Dialog, DialogProps } from './dialog'
 import { DialogBackdrop } from './dialog-backdrop'
 import { DialogCloseButton } from './dialog-close-button'
+import { DialogContainer } from './dialog-container'
 import { DialogContent } from './dialog-content'
 import { DialogDescription } from './dialog-description'
 import { DialogPortal } from './dialog-portal'
 import { DialogTitle } from './dialog-title'
 import { DialogTrigger } from './dialog-trigger'
-import { DialogUnderlay } from './dialog-underlay'
 
 const ComponentUnderTest = (props: DialogProps) => (
   <Dialog {...props}>
@@ -18,7 +18,7 @@ const ComponentUnderTest = (props: DialogProps) => (
     </DialogTrigger>
     <DialogPortal>
       <DialogBackdrop />
-      <DialogUnderlay />
+      <DialogContainer />
       <DialogContent>
         <DialogTitle>Dialog title</DialogTitle>
         <DialogDescription>Dialog description</DialogDescription>

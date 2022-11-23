@@ -1,0 +1,13 @@
+---
+const allComponents = await Astro.glob('../pages/components/*.mdx')
+---
+
+<ul>
+  {
+    allComponents.map((component) => (
+      <li>
+        <a href={component.url}>{component.frontmatter.title}</a>
+      </li>
+    ))
+  }
+</ul>

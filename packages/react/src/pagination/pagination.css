@@ -1,0 +1,9 @@
+[data-part='item'][data-selected] {
+  background-color: aqua;
+}
+
+[data-part='prev-item'][data-disabled],
+[data-part='next-item'][data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}

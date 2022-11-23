@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps } from '../split-props'
 import type { Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
@@ -9,11 +9,12 @@ import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
 export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = forwardRef<'div', UseRadioGroupProps>((props, ref) => {
-  const [useRadioGroupProps, divProps] = splitProps(props, [
+  const [useRadioGroupProps, divProps] = createSplitProps<UseRadioGroupProps>()(props, [
     'defaultValue',
     'dir',
     'disabled',
     'getRootNode',
+    'id',
     'ids',
     'name',
     'onChange',
