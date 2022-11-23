@@ -11,7 +11,7 @@ importers:
       '@types/node': 18.11.9
       husky: 8.0.2
       lint-staged: 13.0.3
-      prettier: 2.7.1
+      prettier: 2.8.0
       prettier-plugin-astro: 0.7.0
       prettier-plugin-organize-imports: 3.2.0
       turbo: 1.6.3
@@ -24,9 +24,9 @@ importers:
       '@types/node': 18.11.9
       husky: 8.0.2
       lint-staged: 13.0.3
-      prettier: 2.7.1
+      prettier: 2.8.0
       prettier-plugin-astro: 0.7.0
-      prettier-plugin-organize-imports: 3.2.0_wbcyan4knibwiqrg7345gyo3qi
+      prettier-plugin-organize-imports: 3.2.0_brpckf4sz23pco3jyty2eys3iq
       turbo: 1.6.3
       typescript: 4.9.3
 
@@ -454,7 +454,7 @@ packages:
     dependencies:
       '@vscode/emmet-helper': 2.8.4
       events: 3.3.0
-      prettier: 2.7.1
+      prettier: 2.8.0
       prettier-plugin-astro: 0.7.0
       source-map: 0.7.4
       vscode-css-languageservice: 6.1.1
@@ -1923,7 +1923,7 @@ packages:
       fs-extra: 7.0.1
       lodash.startcase: 4.4.0
       outdent: 0.5.0
-      prettier: 2.7.1
+      prettier: 2.8.0
       resolve-from: 5.0.0
       semver: 5.7.1
     dev: true
@@ -2109,7 +2109,7 @@ packages:
       '@changesets/types': 5.2.0
       fs-extra: 7.0.1
       human-id: 1.0.2
-      prettier: 2.7.1
+      prettier: 2.8.0
     dev: true
 
   /@colors/colors/1.5.0:
@@ -11972,11 +11972,11 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
     dependencies:
       '@astrojs/compiler': 0.29.13
-      prettier: 2.7.1
+      prettier: 2.8.0
       sass-formatter: 0.7.5
       synckit: 0.8.4
 
-  /prettier-plugin-organize-imports/3.2.0_wbcyan4knibwiqrg7345gyo3qi:
+  /prettier-plugin-organize-imports/3.2.0_brpckf4sz23pco3jyty2eys3iq:
     resolution: {integrity: sha512-jeZ13YVKgXYCzkuwnoR6saKxJmdRYWMxS2G/su1V3qDWqTo1Q5iSoTblBxsXXAmomXfPqa/uA7YCK0/S86KLOQ==}
     peerDependencies:
       '@volar/vue-language-plugin-pug': ^1.0.4
@@ -11989,12 +11989,12 @@ packages:
       '@volar/vue-typescript':
         optional: true
     dependencies:
-      prettier: 2.7.1
+      prettier: 2.8.0
       typescript: 4.9.3
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+  /prettier/2.8.0:
+    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
