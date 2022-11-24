@@ -42,7 +42,7 @@
     "@zag-js/accordion": "0.2.2",
     "@zag-js/checkbox": "0.2.2",
     "@zag-js/dialog": "0.2.2",
-    "@zag-js/editable": "0.2.2",
+    "@zag-js/editable": "0.2.3",
     "@zag-js/hover-card": "0.1.2",
     "@zag-js/menu": "0.2.2",
     "@zag-js/number-input": "0.2.2",

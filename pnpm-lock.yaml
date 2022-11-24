@@ -95,7 +95,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -127,7 +127,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -181,7 +181,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -211,7 +211,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -258,7 +258,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -283,7 +283,7 @@ importers:
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.2
       '@zag-js/dialog': 0.2.2
-      '@zag-js/editable': 0.2.2
+      '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
@@ -4644,8 +4644,8 @@ packages:
       '@zag-js/interact-outside': 0.2.0
     dev: false
 
-  /@zag-js/editable/0.2.2:
-    resolution: {integrity: sha512-p9uwpnNuuyzoDq1gr6HkWCP7EEueUFOSFdaMnQawbqqUmWg/T4UQ/qv/X9jLQYIcZ6C1RZIEBdOPYmSha+BHjw==}
+  /@zag-js/editable/0.2.3:
+    resolution: {integrity: sha512-+Goh11vIK7wuV5vuwgCgIQlcqmgo5hEylNujWrojcWDfShSAQt2FIE0ZYotuU0x8hSK7iHgwXZGrloEtYdC9CQ==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/interact-outside': 0.2.0
