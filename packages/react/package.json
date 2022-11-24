@@ -52,7 +52,7 @@
     "@zag-js/pressable": "0.3.2",
     "@zag-js/radio": "0.1.2",
     "@zag-js/range-slider": "0.2.2",
-    "@zag-js/rating": "0.2.2",
+    "@zag-js/rating": "0.2.3",
     "@zag-js/react": "0.3.0",
     "@zag-js/slider": "0.2.2",
     "@zag-js/tabs": "0.2.2",
