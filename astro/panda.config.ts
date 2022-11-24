@@ -5,23 +5,44 @@ export default defineConfig({
   include: ['./src/**/*.{astro,tsx}'],
   presets: ['css-panda/presets'],
   outdir: 'panda',
+  jsxFramework: 'solid',
   tokens: {
     colors: {
-      light: {
-        blue: {
-          300: { value: '#91C3FD' },
-          500: { value: '#3479E8' },
-          600: { value: '#2362EA' },
-          700: { value: '#1D4FD7' },
-        },
+      gray: {
+        50: '#F9FAFB',
+        100: '#F3F4F6',
+        200: '#E5E7EB',
+        300: '#D1D5DB',
+        400: '#9CA3AF',
+        500: '#6B7280',
+        600: '#4B5563',
+        700: '#374151',
+        800: '#1F2A37',
+        900: '#111928',
       },
-      dark: {
-        blue: {
-          600: { value: '#50A1FF' },
-          700: { value: '#7AB7FF' },
-          800: { value: '#DCEBFE' },
-          900: { value: '#F0F6FF' },
-        },
+      blue: {
+        50: '#EBF5FF',
+        100: '#E1EFFE',
+        200: '#C3DDFD',
+        300: '#A4CAFE',
+        400: '#76A9FA',
+        500: '#3F83F8',
+        600: '#1C64F2',
+        700: '#1A56DB',
+        800: '#1E429F',
+        900: '#233876',
+      },
+      purple: {
+        50: '#F6F5FF',
+        100: '#EDEBFE',
+        200: '#DCD7FE',
+        300: '#CABFFD',
+        400: '#AC94FA',
+        500: '#9061F9',
+        600: '#7E3AF2',
+        700: '#6C2BD9',
+        800: '#5521B5',
+        900: '#4A1D96',
       },
     },
   },
@@ -38,63 +59,97 @@ export default defineConfig({
       },
     },
   },
+  semanticTokens: {
+    colors: {
+      default: { value: { base: 'gray.900', dark: 'white' } },
+      muted: { value: { base: 'gray.500', dark: 'gray.400' } },
+    },
+  },
+  globalCss: {
+    html: {
+      lineHeight: 1.5,
+      textRendering: 'optimizeLegibility',
+      MozOsxFontSmoothing: 'grayscale',
+      WebkitFontSmoothing: 'antialiased',
+      WebkitTextSizeAdjust: '100%',
+    },
+    body: {
+      backgroundColor: { base: 'gray.50', dark: 'gray.900' },
+      color: { base: 'gray.900', dark: 'white' },
+      fontFamily: 'InterVariable, sans-serif',
+    },
+    a: {
+      color: 'purple.600',
+    },
+  },
+  sizes: {
+    4.5: '1.125rem', // TODO ?
+  },
   recipes: {
     button: {
       name: 'button',
       description: 'A button styles',
       base: {
-        fontWeight: 'semibold',
         cursor: 'pointer',
-        transitionProperty: 'common',
-        transitionDuration: 'normal',
+        borderRadius: 'lg',
+        fontWeight: 'semibold',
+        display: 'inline-flex',
+        appearance: 'none',
+        alignItems: 'center',
+        justifyContent: 'center',
+        userSelect: 'none',
+        position: 'relative',
+        whiteSpace: 'nowrap',
+        verticalAlign: 'middle',
+        outline: 'none',
       },
       variants: {
         variant: {
           primary: {
             color: {
-              value: {
-                base: '#ffffff',
-                dark: '#141414',
-              },
+              base: 'white',
             },
             backgroundColor: {
-              value: {
-                base: 'light.blue.600',
-                dark: 'dark.blue.600',
-              },
+              base: 'purple.600',
               hover: {
-                base: 'light.blue.500',
-                dark: 'dark.blue.700',
-              },
-              active: {
-                base: 'light.blue.300',
-                dark: 'dark.blue.800',
+                base: 'purple.700',
               },
             },
-            borderColor: {
-              value: {
-                base: 'light.blue.700',
-                dark: 'dark.blue.700',
-              },
-              active: {
-                base: 'light.blue.300',
-                dark: 'dark.blue.800',
-              },
-            },
-            borderWidth: '1px',
-            borderStyle: 'solid',
           },
         },
         size: {
           sm: {
+            h: 9,
+            minW: 9,
             fontSize: 'sm',
-            height: 9,
-            minHeight: 9,
-            px: 4,
-            borderRadius: 'lg',
+            px: 3.5,
           },
           md: {
+            h: 10,
+            minW: 10,
+            fontSize: 'sm',
+            px: 4,
+          },
+          lg: {
+            h: 11,
+            minW: 11,
+            // px: 4.5,
+            px: '1.125rem',
             fontSize: 'md',
+          },
+          xl: {
+            h: 12,
+            minW: 12,
+            px: 5,
+            fontSize: 'md',
+          },
+          '2xl': {
+            // h: 15,
+            // minW: 15,
+            h: '3.75rem',
+            minW: '3.75rem',
+            px: 7,
+            fontSize: 'lg',
           },
         },
       },

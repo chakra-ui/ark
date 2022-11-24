@@ -1,5 +1,20 @@
 ---
+import { css, cx } from '../../panda/css'
+import { stack } from '../../panda/patterns'
+import { button } from '../../panda/recipes'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
-<BaseLayout><h1>Homepage</h1></BaseLayout>
+<BaseLayout>
+  <!-- <div class={cx(container({}))}> -->
+  <div class={css({ px: '24px' })}>
+    <h1>Button</h1>
+    <div class={cx(stack({ gap: '2' }))}>
+      <button class={cx(button({ variant: 'primary', size: 'sm' }))}>Button</button>
+      <button class={cx(button({ variant: 'primary', size: 'md' }))}>Button</button>
+      <button class={cx(button({ variant: 'primary', size: 'lg' }))}>Button</button>
+      <button class={cx(button({ variant: 'primary', size: 'xl' }))}>Button</button>
+      <button class={cx(button({ variant: 'primary', size: '2xl' }))}>Button</button>
+    </div>
+  </div>
+</BaseLayout>
