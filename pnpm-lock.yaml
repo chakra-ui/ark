@@ -106,7 +106,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/react': 0.3.0
+      '@zag-js/react': 0.3.1
       '@zag-js/slider': 0.2.2
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.2
@@ -138,7 +138,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/react': 0.3.0_biqbaboplfbrettd7655fr4n2y
+      '@zag-js/react': 0.3.1_biqbaboplfbrettd7655fr4n2y
       '@zag-js/slider': 0.2.2
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.2
@@ -4751,8 +4751,8 @@ packages:
       '@zag-js/types': 0.3.1
     dev: false
 
-  /@zag-js/react/0.3.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-FmVVG10ypa+Djw50ho53UJkBTybkabJsNlQKvHTjWGzKU21KByF8r4Mq6Lo7mRgZVgNXjfEGjKFRca7wps0abA==}
+  /@zag-js/react/0.3.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-EQ0kS467Y5Xjtlg40zezsFdRYId9wNTslBf18e/mc2B9ADlCJL0wMDmkmd/1FkH/01FN2aJxnRvgTF2oBgQzkg==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
