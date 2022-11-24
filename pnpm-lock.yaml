@@ -100,7 +100,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -132,7 +132,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -186,7 +186,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -216,7 +216,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -263,7 +263,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -288,7 +288,7 @@ importers:
       '@zag-js/menu': 0.2.2
       '@zag-js/number-input': 0.2.2
       '@zag-js/pagination': 0.1.2
-      '@zag-js/pin-input': 0.2.2
+      '@zag-js/pin-input': 0.2.3
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
       '@zag-js/radio': 0.1.2
@@ -4696,8 +4696,8 @@ packages:
       '@zag-js/types': 0.3.1
     dev: false
 
-  /@zag-js/pin-input/0.2.2:
-    resolution: {integrity: sha512-o9MtsFlpDYzFZmm3TVTnLBl1i2fQaxcDymBEIsvoWYXtxHgSvyfcGXgox4KV4zpm3m45MD4/M80Rr1l+RkNZ3Q==}
+  /@zag-js/pin-input/0.2.3:
+    resolution: {integrity: sha512-dYbqzhyQqbA2zHFOnES5nqdphvyrND13fjWhVZmaWdGly3jq55PAWGUeMlBAF5AiwjzEMHEsN1himHciikNOqQ==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1

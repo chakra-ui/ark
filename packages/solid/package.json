@@ -47,7 +47,7 @@
     "@zag-js/menu": "0.2.2",
     "@zag-js/number-input": "0.2.2",
     "@zag-js/pagination": "0.1.2",
-    "@zag-js/pin-input": "0.2.2",
+    "@zag-js/pin-input": "0.2.3",
     "@zag-js/popover": "0.2.2",
     "@zag-js/pressable": "0.3.2",
     "@zag-js/radio": "0.1.2",
