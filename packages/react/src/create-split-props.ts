@@ -8,7 +8,9 @@ export const createSplitProps =
       (previousValue, currentValue) => {
         const [target, source] = previousValue
         const key = currentValue as keyof Target & keyof typeof source
-        target[key] = source[key]
+        if (source[key] !== undefined) {
+          target[key] = source[key]
+        }
         delete source[key]
         return [target, source]
       },

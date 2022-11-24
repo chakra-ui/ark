@@ -25,16 +25,16 @@
   "devDependencies": {
     "@changesets/changelog-github": "0.4.7",
     "@changesets/cli": "2.25.2",
-    "@commitlint/cli": "17.2.0",
-    "@commitlint/config-conventional": "17.2.0",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
     "@types/node": "18.11.9",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
     "prettier-plugin-astro": "0.7.0",
     "prettier-plugin-organize-imports": "3.2.0",
     "turbo": "1.6.3",
-    "typescript": "4.8.4"
+    "typescript": "4.9.3"
   },
   "commitlint": {
     "extends": [
@@ -49,5 +49,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.15.0"
+  "packageManager": "pnpm@7.17.0"
 }

@@ -1,12 +1,12 @@
 import { Dialog } from './dialog'
 import { DialogBackdrop } from './dialog-backdrop'
 import { DialogCloseButton } from './dialog-close-button'
+import { DialogContainer } from './dialog-container'
 import { DialogContent } from './dialog-content'
 import { DialogDescription } from './dialog-description'
 import { DialogPortal } from './dialog-portal'
 import { DialogTitle } from './dialog-title'
 import { DialogTrigger } from './dialog-trigger'
-import { DialogUnderlay } from './dialog-underlay'
 
 export const Basic = () => {
   return (
@@ -16,7 +16,7 @@ export const Basic = () => {
       </DialogTrigger>
       <DialogPortal>
         <DialogBackdrop />
-        <DialogUnderlay />
+        <DialogContainer />
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>

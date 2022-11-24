@@ -32,9 +32,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
     ],
   )
   const pagination = usePagination(paginationProps)
-
   const view = runIfFn(children, pagination)
-
   const mergedProps = mergeProps(pagination.rootProps, navProps)
 
   return (
