@@ -32,13 +32,13 @@ importers:
 
   astro:
     specifiers:
-      '@astrojs/mdx': 0.11.6
+      '@astrojs/mdx': 0.12.0
       '@css-panda/presets': 0.0.0-dev-20221121144047
       '@fontsource/inter': 4.5.14
       astro: 1.6.11
       css-panda: 0.0.0-dev-20221124174429
     dependencies:
-      '@astrojs/mdx': 0.11.6
+      '@astrojs/mdx': 0.12.0
       '@css-panda/presets': 0.0.0-dev-20221121144047
       '@fontsource/inter': 4.5.14
       astro: 1.6.11
@@ -497,8 +497,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.11.6:
-    resolution: {integrity: sha512-MEi8CZuz4vXn74/jCb0CMOAKEqd6nsLrShYfE+ddb1//14CwuaVGbXN7V6/zGj8ZvBhFk/darBbNpJBmzfbI6A==}
+  /@astrojs/mdx/0.12.0:
+    resolution: {integrity: sha512-KeX5YYla4KpiiDBVmbaYGqqt9QLVUj/Q2d3u+VRK3WnGI+lN9bVsJLid4wApU/kTA6iWlquIrbX2XmhUUF6viQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.2
