@@ -107,7 +107,7 @@ importers:
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/react': 0.3.0
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
@@ -139,7 +139,7 @@ importers:
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/react': 0.3.0_biqbaboplfbrettd7655fr4n2y
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
@@ -192,7 +192,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/solid': 0.2.2
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
@@ -222,7 +222,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/solid': 0.2.2_solid-js@1.6.2
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
@@ -269,7 +269,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
       '@zag-js/tooltip': 0.2.2
@@ -294,7 +294,7 @@ importers:
       '@zag-js/radio': 0.1.2
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
-      '@zag-js/slider': 0.2.2
+      '@zag-js/slider': 0.2.3
       '@zag-js/tags-input': 0.3.2
       '@zag-js/toast': 0.2.3
       '@zag-js/tooltip': 0.2.2
@@ -4771,6 +4771,14 @@ packages:
 
   /@zag-js/slider/0.2.2:
     resolution: {integrity: sha512-7i8vUvcp8M451A6wnQ0Q4e+cjs/4yf0XpGYkE4v/eg5VqMyc7tFFwBLZTJEUFaUtm/Rb1RI/SSn7n7KmxKgQGA==}
+    dependencies:
+      '@zag-js/core': 0.2.2
+      '@zag-js/element-size': 0.3.0
+      '@zag-js/types': 0.3.1
+    dev: false
+
+  /@zag-js/slider/0.2.3:
+    resolution: {integrity: sha512-5koGXA4F5TkrA4s7fUGzObJnC6gVTjiC5BIadYju36ZeqEXOeGGBmbDEPHNu149rMU4CC8Tm54ue24ZnkRLEyw==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/element-size': 0.3.0
