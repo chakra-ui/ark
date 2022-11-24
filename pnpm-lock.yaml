@@ -93,7 +93,7 @@ importers:
       '@vitejs/plugin-react': 2.2.0
       '@vitest/coverage-c8': 0.25.3
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -125,7 +125,7 @@ importers:
     dependencies:
       '@polymorphic-factory/react': 0.2.0_react@18.2.0
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -179,7 +179,7 @@ importers:
       '@typescript-eslint/parser': 5.44.0
       '@vitest/coverage-c8': 0.25.3
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -209,7 +209,7 @@ importers:
     dependencies:
       '@polymorphic-factory/solid': 0.1.1_solid-js@1.6.2
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -256,7 +256,7 @@ importers:
       '@vitest/coverage-c8': 0.25.3
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -281,7 +281,7 @@ importers:
       vue: 3.2.45
     dependencies:
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.2
+      '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
@@ -4613,8 +4613,8 @@ packages:
     resolution: {integrity: sha512-Pj7AeCuZL94a2AoI1WIAeRtTpttkH0SAv7kuFXpEbTneKHUhqyr+ooWn8LA/wrPzcZ7qtuM+Vp/VxgwEtXTvrw==}
     dev: false
 
-  /@zag-js/checkbox/0.2.2:
-    resolution: {integrity: sha512-MX85vQD1FdFWB26rcauZ2cb4UKK6iA3jvvTH2pEFz8xYgUpvyq43hhDYB3EZGwLMbUWetLss5yPysvFF8JTWUg==}
+  /@zag-js/checkbox/0.2.3:
+    resolution: {integrity: sha512-XLtWx4C32+tQFkEbz1vcGPIfct79xJs1scLqhJtbA6xhWDkxXaFp6WyfzadRdeKvKP23mxqRenwDss1JBN/Mpw==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1
