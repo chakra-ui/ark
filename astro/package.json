@@ -14,7 +14,7 @@
     "css:dev": "panda --watch"
   },
   "dependencies": {
-    "@astrojs/mdx": "0.11.6",
+    "@astrojs/mdx": "0.12.0",
     "@css-panda/presets": "0.0.0-dev-20221121144047",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.11",
