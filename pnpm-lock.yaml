@@ -98,7 +98,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -130,7 +130,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -184,7 +184,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -214,7 +214,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -261,7 +261,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -286,7 +286,7 @@ importers:
       '@zag-js/editable': 0.2.2
       '@zag-js/hover-card': 0.1.2
       '@zag-js/menu': 0.2.2
-      '@zag-js/number-input': 0.2.2
+      '@zag-js/number-input': 0.2.3
       '@zag-js/pagination': 0.1.2
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
@@ -4682,8 +4682,8 @@ packages:
       '@zag-js/types': 0.3.1
     dev: false
 
-  /@zag-js/number-input/0.2.2:
-    resolution: {integrity: sha512-NBHqMJMv4M04W9S1RRtOZ9w2jQXTnQio5GzBUUnDlgybCVsldb15Y+6dcOq6U0biJ1AQLNPB8kzgu/kTkbx17A==}
+  /@zag-js/number-input/0.2.3:
+    resolution: {integrity: sha512-RKB6unW+yj7fHLR+LpZvhoTeOh3WYAAttU3QbzGyH2fU06UzbznWNgqmA0d7LCTLE3lG6QjANIE0YgOaIxoGhg==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1
