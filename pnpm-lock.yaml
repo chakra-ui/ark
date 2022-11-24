@@ -103,7 +103,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/react': 0.3.0
@@ -135,7 +135,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/react': 0.3.0_biqbaboplfbrettd7655fr4n2y
@@ -189,7 +189,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/slider': 0.2.2
@@ -219,7 +219,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/slider': 0.2.2
@@ -266,7 +266,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/slider': 0.2.2
@@ -291,7 +291,7 @@ importers:
       '@zag-js/pin-input': 0.2.2
       '@zag-js/popover': 0.2.2
       '@zag-js/pressable': 0.3.2
-      '@zag-js/radio': 0.1.2
+      '@zag-js/radio': 0.1.3
       '@zag-js/range-slider': 0.2.2
       '@zag-js/rating': 0.2.2
       '@zag-js/slider': 0.2.2
@@ -4728,8 +4728,8 @@ packages:
       '@zag-js/types': 0.3.1
     dev: false
 
-  /@zag-js/radio/0.1.2:
-    resolution: {integrity: sha512-gmzIQ3T5dcRdE82Ovjmuc7g5BgeLASj5sFFzIDoitWbUQRwgDhIHk+DNEybDn+PZwHf/DP44q23GgCx3yUgRCw==}
+  /@zag-js/radio/0.1.3:
+    resolution: {integrity: sha512-J8UQDXXh+ugkDjaIdZE+nfcdS4bdG4eImxIJ2JLBfmqCHbJfrPQm26JZAnRXY8h5p27SRK6YH8py1LuIVKOHYw==}
     dependencies:
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1
