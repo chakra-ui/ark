@@ -1,7 +1,7 @@
 ---
 import { css, cx } from '../../panda/css'
 import { stack } from '../../panda/patterns'
-import { button } from '../../panda/recipes'
+import { Button } from '../components/Button'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
@@ -10,11 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   <div class={css({ px: '24px' })}>
     <h1>Button</h1>
     <div class={cx(stack({ gap: '2' }))}>
-      <button class={cx(button({ variant: 'primary', size: 'sm' }))}>Button</button>
-      <button class={cx(button({ variant: 'primary', size: 'md' }))}>Button</button>
-      <button class={cx(button({ variant: 'primary', size: 'lg' }))}>Button</button>
-      <button class={cx(button({ variant: 'primary', size: 'xl' }))}>Button</button>
-      <button class={cx(button({ variant: 'primary', size: '2xl' }))}>Button</button>
+      <Button variant="primary" size="sm">Button</Button>
+      <Button variant="primary" size="md">Button</Button>
+      <Button variant="primary" size="lg">Button</Button>
+      <Button variant="primary" size="xl">Button</Button>
+      <Button variant="primary" size="2xl">Button</Button>
     </div>
   </div>
 </BaseLayout>

@@ -16,8 +16,10 @@
   "dependencies": {
     "@astrojs/mdx": "0.11.6",
     "@astrojs/sitemap": "1.0.0",
+    "@astrojs/solid-js": "1.2.3",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.10",
-    "css-panda": "0.0.0-dev-20221124153151"
+    "css-panda": "0.0.0-dev-20221124153151",
+    "solid-js": "1.6.2"
   }
 }

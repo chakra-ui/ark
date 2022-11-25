@@ -34,15 +34,19 @@ importers:
     specifiers:
       '@astrojs/mdx': 0.11.6
       '@astrojs/sitemap': 1.0.0
+      '@astrojs/solid-js': 1.2.3
       '@fontsource/inter': 4.5.14
       astro: 1.6.10
       css-panda: 0.0.0-dev-20221124153151
+      solid-js: 1.6.2
     dependencies:
       '@astrojs/mdx': 0.11.6
       '@astrojs/sitemap': 1.0.0
+      '@astrojs/solid-js': 1.2.3_solid-js@1.6.2
       '@fontsource/inter': 4.5.14
       astro: 1.6.10
       css-panda: 0.0.0-dev-20221124153151
+      solid-js: 1.6.2
 
   docs:
     specifiers:
@@ -550,6 +554,20 @@ packages:
       zod: 3.19.1
     dev: false
 
+  /@astrojs/solid-js/1.2.3_solid-js@1.6.2:
+    resolution: {integrity: sha512-YyWQVcIeUMGKTnK3myXmBrG6dfYL5qiQNn8fv50jV0nPgahLeSUTIVxtt5WtqmbFr5kGTwDyk63TZoUvCUWJXA==}
+    engines: {node: ^14.18.0 || >=16.12.0}
+    peerDependencies:
+      solid-js: ^1.4.3
+    dependencies:
+      babel-preset-solid: 1.6.1
+      solid-js: 1.6.2
+      vitefu: 0.2.1
+    transitivePeerDependencies:
+      - '@babel/core'
+      - vite
+    dev: false
+
   /@astrojs/telemetry/1.0.1:
     resolution: {integrity: sha512-SJVfZHp00f8VZsT1fsx1+6acJGUNt/84xZytV5znPzzNE8RXjlE0rv03llgTsEeUHYZc6uJah91jNojS7RldFg==}
     engines: {node: ^14.18.0 || >=16.12.0}
@@ -742,7 +760,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.20.2
-    dev: true
 
   /@babel/helper-module-imports/7.18.6:
     resolution: {integrity: sha512-0NFvs3VkuSYbFi1x2Vd6tKrywq+z/cLeYC/RJNFrIX/30Bf5aiGYbtvGXolEktzJH8o5E5KJ3tT+nkxuuZFVlA==}
@@ -1162,6 +1179,15 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
+      '@babel/helper-plugin-utils': 7.20.2
+    dev: false
+
+  /@babel/plugin-syntax-jsx/7.18.6:
+    resolution: {integrity: sha512-6mmljtAedFGTWu2p/8WIORGwy+61PLgOMPOdazc7YoJ9ZCWUyFy3A6CpPkRKLKD1ToAesxX8KGEViAiLo9N+7Q==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
       '@babel/helper-plugin-utils': 7.20.2
     dev: false
 
@@ -5310,6 +5336,17 @@ packages:
       '@babel/helper-plugin-utils': 7.10.4
     dev: false
 
+  /babel-plugin-jsx-dom-expressions/0.35.3:
+    resolution: {integrity: sha512-eiZdShe8iVunHXRnr+fHeZrDpeOJey8IZD9OYtjyaY0IvTV8IdLz5mSTh8ekFFBo+1vKJtf9SoYM2ppUz94Q0w==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/helper-module-imports': 7.16.0
+      '@babel/plugin-syntax-jsx': 7.18.6
+      '@babel/types': 7.20.2
+      html-entities: 2.3.2
+    dev: false
+
   /babel-plugin-jsx-dom-expressions/0.35.3_@babel+core@7.19.6:
     resolution: {integrity: sha512-eiZdShe8iVunHXRnr+fHeZrDpeOJey8IZD9OYtjyaY0IvTV8IdLz5mSTh8ekFFBo+1vKJtf9SoYM2ppUz94Q0w==}
     peerDependencies:
@@ -5356,6 +5393,14 @@ packages:
       '@babel/helper-define-polyfill-provider': 0.3.3_@babel+core@7.19.6
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /babel-preset-solid/1.6.1:
+    resolution: {integrity: sha512-Ji/cvYUE2BROsA3zOhaqKjuAEo6YAkmw8ZE11QsMtSEcWJ1rCFC829qWb5FLPl3UymVxh68+dpScPDtyyr/rdA==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      babel-plugin-jsx-dom-expressions: 0.35.3
     dev: false
 
   /babel-preset-solid/1.6.1_@babel+core@7.19.6:
@@ -8812,7 +8857,6 @@ packages:
 
   /html-entities/2.3.2:
     resolution: {integrity: sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==}
-    dev: true
 
   /html-entities/2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
@@ -14728,6 +14772,15 @@ packages:
     dependencies:
       vite: 3.2.4
     dev: true
+
+  /vitefu/0.2.1:
+    resolution: {integrity: sha512-clkvXTAeUf+XQKm3bhWUhT4pye+3acm6YCTGaWhxxIvZZ/QjnA3JA8Zud+z/mO5y5XYvJJhevs5Sjkv/FI8nRw==}
+    peerDependencies:
+      vite: ^3.0.0
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dev: false
 
   /vitefu/0.2.1_vite@3.2.4:
     resolution: {integrity: sha512-clkvXTAeUf+XQKm3bhWUhT4pye+3acm6YCTGaWhxxIvZZ/QjnA3JA8Zud+z/mO5y5XYvJJhevs5Sjkv/FI8nRw==}
