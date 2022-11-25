@@ -15,6 +15,7 @@ export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
     'defaultValue',
     'dir',
     'disabled',
+    'form',
     'getRootNode',
     'id',
     'ids',
@@ -22,7 +23,7 @@ export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
     'name',
     'onChange',
     'onHover',
-    'readonly',
+    'readOnly',
     'translations',
     'value',
   ])

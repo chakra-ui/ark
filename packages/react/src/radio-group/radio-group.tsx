@@ -13,13 +13,14 @@ export const RadioGroup = forwardRef<'div', UseRadioGroupProps>((props, ref) => 
     'defaultValue',
     'dir',
     'disabled',
+    'form',
     'getRootNode',
     'id',
     'ids',
     'name',
     'onChange',
     'orientation',
-    'readonly',
+    'readOnly',
     'value',
   ])
   const radioGroup = useRadioGroup(useRadioGroupProps)

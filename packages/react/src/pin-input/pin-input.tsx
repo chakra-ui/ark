@@ -15,6 +15,7 @@ export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
     'defaultValue',
     'dir',
     'disabled',
+    'form',
     'getRootNode',
     'id',
     'ids',
