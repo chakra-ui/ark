@@ -2,7 +2,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import solidJs from '@astrojs/solid-js'
 import { defineConfig } from 'astro/config'
-import pandacss from 'css-panda/astro'
+import pandacss from 'css-panda/astro' // TODO
 
 // https://astro.build/config
 export default defineConfig({
