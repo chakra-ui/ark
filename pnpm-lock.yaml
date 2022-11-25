@@ -37,7 +37,7 @@ importers:
       '@astrojs/solid-js': 1.2.3
       '@fontsource/inter': 4.5.14
       astro: 1.6.11
-      css-panda: 0.0.0-dev-20221124153151
+      css-panda: 0.0.0-dev-20221124174429
       solid-js: 1.6.2
     dependencies:
       '@astrojs/mdx': 0.12.0
@@ -45,7 +45,7 @@ importers:
       '@astrojs/solid-js': 1.2.3_solid-js@1.6.2
       '@fontsource/inter': 4.5.14
       astro: 1.6.11
-      css-panda: 0.0.0-dev-20221124153151
+      css-panda: 0.0.0-dev-20221124174429
       solid-js: 1.6.2
 
   docs:
@@ -3396,26 +3396,26 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@pandacss/config/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-X19Mc79Yn8jNWB8VpCzpALs4r4diKDCt/1RMMk7LyiyGHda71eC+jaQhbu5okg4WOGJHK37aHY2zkFLoRYQ3vQ==}
+  /@pandacss/config/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-za4tSTaQA5Zwb2Q+xbDGzVIQQaNQ/iOKl0qFGl4MtqeoSZPPh6W5GOFlYbDsTflmhdAfsgRLTrUNtSuvkgPI2Q==}
     dependencies:
-      '@pandacss/error': 0.0.0-dev-20221124153151
-      '@pandacss/logger': 0.0.0-dev-20221124153151
-      '@pandacss/types': 0.0.0-dev-20221124153151
+      '@pandacss/error': 0.0.0-dev-20221124174429
+      '@pandacss/logger': 0.0.0-dev-20221124174429
+      '@pandacss/types': 0.0.0-dev-20221124174429
       esbuild: 0.15.15
       escalade: 3.1.1
       merge-anything: 5.0.4
       node-eval: 2.0.0
     dev: false
 
-  /@pandacss/core/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-Llza6rY4utJb3UamzKjVEfR0YIBAiAivyvrPC1gBldqlsw0sPc+nAyJzD7TzAtBn3/g0rYMkHDfyEL3Qs0nu7Q==}
+  /@pandacss/core/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-L3ZdgXnLcrx/Zb+GWtZO0vhQEqeqC+34Ggs0r5XZ4IOEx1T8ArdxpPVImeLs+OEdMjjRtpamPniAdAiKkI1FpQ==}
     dependencies:
-      '@pandacss/error': 0.0.0-dev-20221124153151
-      '@pandacss/logger': 0.0.0-dev-20221124153151
-      '@pandacss/shared': 0.0.0-dev-20221124153151
-      '@pandacss/token-dictionary': 0.0.0-dev-20221124153151
-      '@pandacss/types': 0.0.0-dev-20221124153151
+      '@pandacss/error': 0.0.0-dev-20221124174429
+      '@pandacss/logger': 0.0.0-dev-20221124174429
+      '@pandacss/shared': 0.0.0-dev-20221124174429
+      '@pandacss/token-dictionary': 0.0.0-dev-20221124174429
+      '@pandacss/types': 0.0.0-dev-20221124174429
       autoprefixer: 10.4.13_postcss@8.4.19
       camelcase-css: 2.0.1
       lodash.merge: 4.6.2
@@ -3427,32 +3427,32 @@ packages:
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/error/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-0xifnZe2exoxAb/qHCTcEe7B/2ppYYkln/ZAlGfRVTkwIsjTLgxFLkWLrtDs+vomM5nAmKab1uft7D33rvGjBQ==}
+  /@pandacss/error/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-tT8V5xiKyXjLXm9tigDvIcGQF2qHRTpLH+dchNqW3jcDTTlNIAnWFtUcHEdYlbKsfJHhqBOFAkJwoU9YQr8/gA==}
     dev: false
 
-  /@pandacss/is-valid-prop/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-pmDnXEXR0po46Jv9ZdukNw31BCveCWZ//MPrw2Ta3Cqaa91WYwE+fj3pBr8PgMWfLwz/cfbDla9LM6ViY1i/cw==}
+  /@pandacss/is-valid-prop/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-k5qTjqM3DAaDTELfM2zWkrHWz+8IG5lYPDuNNyUgCFed0XKziiID5oIyH7zKlbXmnu7HghTukpdQDb0j5ui9Cg==}
     dev: false
 
-  /@pandacss/logger/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-1py/YyEHDxNfqPJNQMXuAF0NUYVabUJj+KA6qK+OOtVTJRS/WJmWM3POv3Pi124Bi+s8kR1s60saZ6nECINefQ==}
+  /@pandacss/logger/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-+34rfkiStyHyxduDRhp+OiD4nSHyNfev4X46xe7osJ05OMKrkQpxyytseOZo21BX4CW6cms3A7Lz/vsACzl/1g==}
     dependencies:
       kleur: 4.1.5
     dev: false
 
-  /@pandacss/node/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-p3cCic0p5Yv2jMxYGTjx0duW1S7Bn5ffCg9QsbS5dVJUnSt/DnpDsdk+EM3k0Fk875Q82yYWU1FLMaUcSlhkMA==}
+  /@pandacss/node/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-dQqCY92snbTKkycgysThHP9RgqlXc7cIFGACgykVUXqd6xafKj9DZ9ffhxte33uR/as7pQSPAAL6L22UJ1oc/Q==}
     dependencies:
-      '@pandacss/config': 0.0.0-dev-20221124153151
-      '@pandacss/core': 0.0.0-dev-20221124153151
-      '@pandacss/error': 0.0.0-dev-20221124153151
-      '@pandacss/is-valid-prop': 0.0.0-dev-20221124153151
-      '@pandacss/logger': 0.0.0-dev-20221124153151
-      '@pandacss/parser': 0.0.0-dev-20221124153151
-      '@pandacss/shared': 0.0.0-dev-20221124153151
-      '@pandacss/token-dictionary': 0.0.0-dev-20221124153151
-      '@pandacss/types': 0.0.0-dev-20221124153151
+      '@pandacss/config': 0.0.0-dev-20221124174429
+      '@pandacss/core': 0.0.0-dev-20221124174429
+      '@pandacss/error': 0.0.0-dev-20221124174429
+      '@pandacss/is-valid-prop': 0.0.0-dev-20221124174429
+      '@pandacss/logger': 0.0.0-dev-20221124174429
+      '@pandacss/parser': 0.0.0-dev-20221124174429
+      '@pandacss/shared': 0.0.0-dev-20221124174429
+      '@pandacss/token-dictionary': 0.0.0-dev-20221124174429
+      '@pandacss/types': 0.0.0-dev-20221124174429
       chokidar: 3.5.3
       fast-glob: 3.2.12
       fs-extra: 10.1.0
@@ -3471,30 +3471,30 @@ packages:
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/parser/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-6At19blY1T2/Wr//wvEkVWgubMfdk19b+NSJOfYSiEm8cCsJqIt/xHSPFzc74xz7FBYVSRzD+Pr/tF53Q1P/ow==}
+  /@pandacss/parser/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-laBEJMe2o3vTb3bP1g+iA1LHQiAM/5tdGVfNH5wkh2kyV9+AIn4ajlRRLR47ZWoQA4EEH7Z3b2ga8X/NEwtcHw==}
     dependencies:
-      '@pandacss/is-valid-prop': 0.0.0-dev-20221124153151
-      '@pandacss/logger': 0.0.0-dev-20221124153151
-      '@pandacss/shared': 0.0.0-dev-20221124153151
-      '@pandacss/types': 0.0.0-dev-20221124153151
+      '@pandacss/is-valid-prop': 0.0.0-dev-20221124174429
+      '@pandacss/logger': 0.0.0-dev-20221124174429
+      '@pandacss/shared': 0.0.0-dev-20221124174429
+      '@pandacss/types': 0.0.0-dev-20221124174429
       ts-morph: 17.0.1
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/shared/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-inL0sOcM8NdA+M+xDumVxfjOKMeK2cMlMLFPunR9wbTuTPHW4CZDDQ9Jsoay5kc0ixBais60zt/KzAQ4jT+wow==}
+  /@pandacss/shared/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-iuZUM6BR6P9WmllXlnmNn4e1/nELk+h8aXhX4MQUr41FT4pyQryYcdvJjcNUfCNV5Ofpi6FM3aVsQadf5sUoWA==}
     dev: false
 
-  /@pandacss/token-dictionary/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-zw993Ci1y5PQcT32yMpsyEFDJzWPLj4uxbZHh4vI0UFlNTPJjjMcMoUhgk32rlOui26/8zEutohaofqwBlEMqA==}
+  /@pandacss/token-dictionary/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-yWc/bXoduezWtSXGUkNNAqaxlZrq40AMpQAZsx0zpv9gN0Qjq6CU/o5bG+c6OvKoGq/W3KuAWMMqVmY99hVoPg==}
     dependencies:
-      '@pandacss/shared': 0.0.0-dev-20221124153151
+      '@pandacss/shared': 0.0.0-dev-20221124174429
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/types/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-REJsnN386hfshwY2IyBDMCM7okwNVEyk1PNf/P7Q1TJk09vpZeWfdUfPLyQz2tRCpAQZZu/yTznj+om9HMaUNA==}
+  /@pandacss/types/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-7wXAe1NbDGHno9cIoZcpBVoYokX+Xru5n8LfkuYH707WI/kxqCKF924v/5pLzJ3H46BmC9H6e+Ft6JesHPbfOw==}
     dev: false
 
   /@pkgr/utils/2.3.1:
@@ -6296,17 +6296,17 @@ packages:
       webpack: 5.75.0
     dev: false
 
-  /css-panda/0.0.0-dev-20221124153151:
-    resolution: {integrity: sha512-MIUdBHXofP4DltMYHqsQdP6YkWBg4pg3Y2KTFVXtl/6JC5dbFJzojLl26wCMblh9m5Y2W6P3Lzm5IeAV5X+7jg==}
+  /css-panda/0.0.0-dev-20221124174429:
+    resolution: {integrity: sha512-sdCS9AveoEpuAbVKDu3USbHf9Ll22z1UP7BssFxeX400hGfIAAPymzxWFKRamO4gaSG1UYJBAla+YbkaBAVxPA==}
     hasBin: true
     dependencies:
-      '@pandacss/config': 0.0.0-dev-20221124153151
-      '@pandacss/error': 0.0.0-dev-20221124153151
-      '@pandacss/logger': 0.0.0-dev-20221124153151
-      '@pandacss/node': 0.0.0-dev-20221124153151
-      '@pandacss/shared': 0.0.0-dev-20221124153151
-      '@pandacss/token-dictionary': 0.0.0-dev-20221124153151
-      '@pandacss/types': 0.0.0-dev-20221124153151
+      '@pandacss/config': 0.0.0-dev-20221124174429
+      '@pandacss/error': 0.0.0-dev-20221124174429
+      '@pandacss/logger': 0.0.0-dev-20221124174429
+      '@pandacss/node': 0.0.0-dev-20221124174429
+      '@pandacss/shared': 0.0.0-dev-20221124174429
+      '@pandacss/token-dictionary': 0.0.0-dev-20221124174429
+      '@pandacss/types': 0.0.0-dev-20221124174429
       cac: 6.7.14
       color-contrast-checker: 2.1.0
       react: 18.2.0
