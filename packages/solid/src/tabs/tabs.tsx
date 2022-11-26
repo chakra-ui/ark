@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { mergeProps, splitProps } from 'solid-js'
+import { splitProps } from 'solid-js'
 import { ark, HTMLArkProps } from '../factory'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
@@ -9,6 +9,7 @@ export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 export const Tabs = (props: TabsProps) => {
   const [useTabsProps, divProps] = splitProps(props, [
     'activationMode',
+    'defaultValue',
     'dir',
     'getRootNode',
     'id',
@@ -23,11 +24,10 @@ export const Tabs = (props: TabsProps) => {
     'value',
   ])
   const tabs = useTabs(useTabsProps)
-  const mergedProps = mergeProps(tabs().rootProps, divProps)
 
   return (
     <TabsProvider value={tabs}>
-      <ark.div {...mergedProps} />
+      <ark.div {...tabs().rootProps} {...divProps} />
     </TabsProvider>
   )
 }
