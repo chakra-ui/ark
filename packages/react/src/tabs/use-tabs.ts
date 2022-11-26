@@ -9,5 +9,6 @@ export type UseTabsReturn = ReturnType<typeof useTabs>
 export const useTabs = (props: UseTabsProps) => {
   const context = { id: useId(), ...props }
   const [state, send] = useMachine(tabs.machine(context), { context })
+
   return tabs.connect(state, send, normalizeProps)
 }
