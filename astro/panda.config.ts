@@ -45,6 +45,10 @@ export default defineConfig({
         900: '#4A1D96',
       },
     },
+    sizes: {
+      '4.5': { value: '1.125rem' },
+      '15': { value: '3.75rem' },
+    },
   },
   patterns: {
     container: {
@@ -61,8 +65,8 @@ export default defineConfig({
   },
   semanticTokens: {
     colors: {
-      default: { value: { base: 'gray.900', dark: 'white' } },
-      muted: { value: { base: 'gray.500', dark: 'gray.400' } },
+      default: { value: { base: '{colors.gray.900}', dark: 'white' } },
+      canvas: { value: { base: '{colors.gray.50}', dark: '{colors.gray.900}' } },
     },
   },
   globalCss: {
@@ -74,16 +78,13 @@ export default defineConfig({
       WebkitTextSizeAdjust: '100%',
     },
     body: {
-      backgroundColor: { base: 'gray.50', dark: 'gray.900' },
-      color: { base: 'gray.900', dark: 'white' },
+      backgroundColor: 'canvas',
+      color: 'default',
       fontFamily: 'InterVariable, sans-serif',
     },
     a: {
       color: 'purple.600',
     },
-  },
-  sizes: {
-    4.5: '1.125rem', // TODO ?
   },
   recipes: {
     button: {
@@ -103,20 +104,34 @@ export default defineConfig({
         verticalAlign: 'middle',
         outline: 'none',
       },
+      defaultVariants: {
+        colorPalette: 'blue',
+        variant: 'primary',
+        size: 'md',
+      },
       variants: {
+        colorPalette: {
+          blue: {
+            colorPalette: 'blue',
+          },
+          purple: {
+            colorPalette: 'purple',
+          },
+        },
         variant: {
           primary: {
             color: {
               base: 'white',
             },
             backgroundColor: {
-              base: 'purple.600',
+              base: 'palette.600',
               hover: {
-                base: 'purple.700',
+                base: 'palette.700',
               },
             },
           },
         },
+
         size: {
           sm: {
             h: 9,
@@ -133,8 +148,7 @@ export default defineConfig({
           lg: {
             h: 11,
             minW: 11,
-            // px: 4.5,
-            px: '1.125rem',
+            px: '4.5',
             fontSize: 'md',
           },
           xl: {
@@ -144,10 +158,8 @@ export default defineConfig({
             fontSize: 'md',
           },
           '2xl': {
-            // h: 15,
-            // minW: 15,
-            h: '3.75rem',
-            minW: '3.75rem',
+            h: 15,
+            minW: 15,
             px: 7,
             fontSize: 'lg',
           },
