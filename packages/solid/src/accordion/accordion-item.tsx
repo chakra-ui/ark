@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { JSX, splitProps } from 'solid-js'
 import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
@@ -9,15 +9,18 @@ export type AccordionItemProps = Assign<
   {
     value: string
     disabled?: boolean
+    children?: JSX.Element
+    // | ((props: ReturnType<AccordionContext['getItemState']>) => JSX.Element) -> TODO enable render prop fn
   }
 >
 
-export function AccordionItem(props: AccordionItemProps) {
-  const [itemProps, htmlProps] = splitProps(props, ['value', 'disabled'])
+export const AccordionItem = (props: AccordionItemProps) => {
+  const [itemProps, divProps] = splitProps(props, ['value', 'disabled'])
   const api = useAccordionContext()
+
   return (
     <AccordionItemProvider value={itemProps}>
-      <ark.div {...api?.().getItemProps({ value: itemProps.value })} {...htmlProps} />
+      <ark.div {...api().getItemProps(itemProps)} {...divProps} />
     </AccordionItemProvider>
   )
 }

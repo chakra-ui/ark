@@ -8,8 +8,8 @@ export type AccordionButtonProps = HTMLArkProps<'button'>
 
 export const AccordionButton = forwardRef<'button', AccordionButtonProps>((props, ref) => {
   const { getTriggerProps } = useAccordionContext()
-  const context = useAccordionItemContext()
-  const mergedProps = mergeProps(getTriggerProps(context), props)
+  const itemContext = useAccordionItemContext()
+  const mergedProps = mergeProps(getTriggerProps(itemContext), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

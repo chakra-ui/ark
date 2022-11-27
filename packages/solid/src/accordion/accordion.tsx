@@ -6,12 +6,14 @@ import { useAccordion, UseAccordionProps } from './use-accordion'
 
 export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
-export function Accordion(props: AccordionProps) {
-  const [accordionProps, htmlProps] = splitProps(props, [
+export const Accordion = (props: AccordionProps) => {
+  const [accordionProps, divProps] = splitProps(props, [
     'collapsible',
     'defaultValue',
     'dir',
     'disabled',
+    'getRootNode',
+    'id',
     'ids',
     'multiple',
     'onChange',
@@ -21,7 +23,7 @@ export function Accordion(props: AccordionProps) {
 
   return (
     <AccordionProvider value={accordion}>
-      <ark.div {...accordion?.().rootProps} {...htmlProps} />
+      <ark.div {...accordion().rootProps} {...divProps} />
     </AccordionProvider>
   )
 }

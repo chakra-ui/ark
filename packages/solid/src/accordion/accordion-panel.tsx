@@ -1,20 +1,14 @@
+import { mergeProps } from 'solid-js'
 import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
 export type AccordionPanelProps = HTMLArkProps<'div'>
 
-export function AccordionPanel(props: AccordionPanelProps) {
+export const AccordionPanel = (props: AccordionPanelProps) => {
   const api = useAccordionContext()
-  const { value, disabled } = useAccordionItemContext()
+  const itemContext = useAccordionItemContext()
+  const mergedProps = () => mergeProps(api().getContentProps(itemContext), props)
 
-  return (
-    <ark.div
-      {...api?.().getContentProps({
-        value,
-        disabled,
-      })}
-      {...props}
-    />
-  )
+  return <ark.div {...mergedProps()} />
 }

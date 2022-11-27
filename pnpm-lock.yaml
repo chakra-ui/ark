@@ -10,10 +10,10 @@ importers:
       '@commitlint/config-conventional': 17.3.0
       '@types/node': 18.11.9
       husky: 8.0.2
-      lint-staged: 13.0.3
+      lint-staged: 13.0.4
       prettier: 2.8.0
       prettier-plugin-astro: 0.7.0
-      prettier-plugin-organize-imports: 3.2.0
+      prettier-plugin-organize-imports: 3.2.1
       turbo: 1.6.3
       typescript: 4.9.3
     devDependencies:
@@ -23,10 +23,10 @@ importers:
       '@commitlint/config-conventional': 17.3.0
       '@types/node': 18.11.9
       husky: 8.0.2
-      lint-staged: 13.0.3
+      lint-staged: 13.0.4
       prettier: 2.8.0
       prettier-plugin-astro: 0.7.0
-      prettier-plugin-organize-imports: 3.2.0_brpckf4sz23pco3jyty2eys3iq
+      prettier-plugin-organize-imports: 3.2.1_brpckf4sz23pco3jyty2eys3iq
       turbo: 1.6.3
       typescript: 4.9.3
 
@@ -6435,7 +6435,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       cssnano-preset-default: 5.2.13_postcss@8.4.19
-      lilconfig: 2.0.5
+      lilconfig: 2.0.6
       postcss: 8.4.19
       yaml: 1.10.2
     dev: false
@@ -9847,15 +9847,15 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /lilconfig/2.0.5:
-    resolution: {integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==}
+  /lilconfig/2.0.6:
+    resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged/13.0.3:
-    resolution: {integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==}
+  /lint-staged/13.0.4:
+    resolution: {integrity: sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -9864,8 +9864,8 @@ packages:
       commander: 9.4.1
       debug: 4.3.4
       execa: 6.1.0
-      lilconfig: 2.0.5
-      listr2: 4.0.5
+      lilconfig: 2.0.6
+      listr2: 5.0.5
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-inspect: 1.12.2
@@ -9877,9 +9877,9 @@ packages:
       - supports-color
     dev: true
 
-  /listr2/4.0.5:
-    resolution: {integrity: sha512-juGHV1doQdpNT3GSTs9IUN43QJb7KHdF9uqg7Vufs/tG9VTzpFphqF4pm/ICdAABGQxsyNn9CiYA3StkI6jpwA==}
-    engines: {node: '>=12'}
+  /listr2/5.0.5:
+    resolution: {integrity: sha512-DpBel6fczu7oQKTXMekeprc0o3XDgGMkD7JNYyX+X0xbwK+xgrx9dcyKoXKqpLSUvAWfmoePS7kavniOcq3r4w==}
+    engines: {node: ^14.13.1 || >=16.0.0}
     peerDependencies:
       enquirer: '>= 2.3.0 < 3'
     peerDependenciesMeta:
@@ -11618,7 +11618,7 @@ packages:
       ts-node:
         optional: true
     dependencies:
-      lilconfig: 2.0.5
+      lilconfig: 2.0.6
       yaml: 1.10.2
     dev: true
 
@@ -11634,7 +11634,7 @@ packages:
       ts-node:
         optional: true
     dependencies:
-      lilconfig: 2.0.5
+      lilconfig: 2.0.6
       postcss: 8.4.19
       yaml: 1.10.2
     dev: false
@@ -12017,8 +12017,8 @@ packages:
       sass-formatter: 0.7.5
       synckit: 0.8.4
 
-  /prettier-plugin-organize-imports/3.2.0_brpckf4sz23pco3jyty2eys3iq:
-    resolution: {integrity: sha512-jeZ13YVKgXYCzkuwnoR6saKxJmdRYWMxS2G/su1V3qDWqTo1Q5iSoTblBxsXXAmomXfPqa/uA7YCK0/S86KLOQ==}
+  /prettier-plugin-organize-imports/3.2.1_brpckf4sz23pco3jyty2eys3iq:
+    resolution: {integrity: sha512-bty7C2Ecard5EOXirtzeCAqj4FU4epeuWrQt/Z+sh8UVEpBlBZ3m3KNPz2kFu7KgRTQx/C9o4/TdquPD1jOqjQ==}
     peerDependencies:
       '@volar/vue-language-plugin-pug': ^1.0.4
       '@volar/vue-typescript': ^1.0.4
