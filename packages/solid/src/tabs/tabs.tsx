@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
@@ -7,7 +7,7 @@ import { useTabs, UseTabsProps } from './use-tabs'
 export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
 export const Tabs = (props: TabsProps) => {
-  const [useTabsProps, divProps] = splitProps(props, [
+  const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [
     'activationMode',
     'defaultValue',
     'dir',
