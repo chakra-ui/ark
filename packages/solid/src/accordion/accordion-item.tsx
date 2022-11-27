@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { JSX, mergeProps, splitProps } from 'solid-js'
+import { JSX, splitProps } from 'solid-js'
 import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
@@ -15,13 +15,12 @@ export type AccordionItemProps = Assign<
 >
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const [itemProps, htmlProps] = splitProps(props, ['value', 'disabled'])
+  const [itemProps, divProps] = splitProps(props, ['value', 'disabled'])
   const api = useAccordionContext()
-  const mergedProps = mergeProps(api().getItemProps(itemProps), htmlProps)
 
   return (
     <AccordionItemProvider value={itemProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...api().getItemProps(itemProps)} {...divProps} />
     </AccordionItemProvider>
   )
 }
