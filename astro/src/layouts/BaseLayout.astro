@@ -1,5 +1,6 @@
 ---
 import '@fontsource/inter'
+import { Container } from '../../panda/jsx'
 import Header from '../components/Header.astro'
 import '../index.css'
 ---
@@ -9,7 +10,6 @@ import '../index.css'
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>Ark UI</title>
   </head>
   <body>
@@ -17,11 +17,11 @@ import '../index.css'
     <!-- <aside>
       <Sidebar />
     </aside> -->
-    <div>
+    <Container>
       <main>
         <slot />
       </main>
-    </div>
+    </Container>
   </body>
   <!-- <Footer /> -->
 </html>

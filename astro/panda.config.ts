@@ -1,4 +1,5 @@
 import { defineConfig } from 'css-panda'
+import { button } from './src/theme/recipes/button'
 
 export default defineConfig({
   preflight: true,
@@ -9,40 +10,40 @@ export default defineConfig({
   tokens: {
     colors: {
       gray: {
-        50: '#F9FAFB',
-        100: '#F3F4F6',
-        200: '#E5E7EB',
-        300: '#D1D5DB',
-        400: '#9CA3AF',
-        500: '#6B7280',
-        600: '#4B5563',
-        700: '#374151',
-        800: '#1F2A37',
-        900: '#111928',
+        50: { value: '#F9FAFB' },
+        100: { value: '#F3F4F6' },
+        200: { value: '#E5E7EB' },
+        300: { value: '#D1D5DB' },
+        400: { value: '#9CA3AF' },
+        500: { value: '#6B7280' },
+        600: { value: '#4B5563' },
+        700: { value: '#374151' },
+        800: { value: '#1F2A37' },
+        900: { value: '#111928' },
       },
       blue: {
-        50: '#EBF5FF',
-        100: '#E1EFFE',
-        200: '#C3DDFD',
-        300: '#A4CAFE',
-        400: '#76A9FA',
-        500: '#3F83F8',
-        600: '#1C64F2',
-        700: '#1A56DB',
-        800: '#1E429F',
-        900: '#233876',
+        50: { value: '#EBF5FF' },
+        100: { value: '#E1EFFE' },
+        200: { value: '#C3DDFD' },
+        300: { value: '#A4CAFE' },
+        400: { value: '#76A9FA' },
+        500: { value: '#3F83F8' },
+        600: { value: '#1C64F2' },
+        700: { value: '#1A56DB' },
+        800: { value: '#1E429F' },
+        900: { value: '#233876' },
       },
       purple: {
-        50: '#F6F5FF',
-        100: '#EDEBFE',
-        200: '#DCD7FE',
-        300: '#CABFFD',
-        400: '#AC94FA',
-        500: '#9061F9',
-        600: '#7E3AF2',
-        700: '#6C2BD9',
-        800: '#5521B5',
-        900: '#4A1D96',
+        50: { value: '#F6F5FF' },
+        100: { value: '#EDEBFE' },
+        200: { value: '#DCD7FE' },
+        300: { value: '#CABFFD' },
+        400: { value: '#AC94FA' },
+        500: { value: '#9061F9' },
+        600: { value: '#7E3AF2' },
+        700: { value: '#6C2BD9' },
+        800: { value: '#5521B5' },
+        900: { value: '#4A1D96' },
       },
     },
     sizes: {
@@ -87,84 +88,6 @@ export default defineConfig({
     },
   },
   recipes: {
-    button: {
-      name: 'button',
-      description: 'A button styles',
-      base: {
-        cursor: 'pointer',
-        borderRadius: 'lg',
-        fontWeight: 'semibold',
-        display: 'inline-flex',
-        appearance: 'none',
-        alignItems: 'center',
-        justifyContent: 'center',
-        userSelect: 'none',
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        verticalAlign: 'middle',
-        outline: 'none',
-      },
-      defaultVariants: {
-        colorPalette: 'blue',
-        variant: 'primary',
-        size: 'md',
-      },
-      variants: {
-        colorPalette: {
-          blue: {
-            colorPalette: 'blue',
-          },
-          purple: {
-            colorPalette: 'purple',
-          },
-        },
-        variant: {
-          primary: {
-            color: {
-              base: 'white',
-            },
-            backgroundColor: {
-              base: 'palette.600',
-              hover: {
-                base: 'palette.700',
-              },
-            },
-          },
-        },
-
-        size: {
-          sm: {
-            h: 9,
-            minW: 9,
-            fontSize: 'sm',
-            px: 3.5,
-          },
-          md: {
-            h: 10,
-            minW: 10,
-            fontSize: 'sm',
-            px: 4,
-          },
-          lg: {
-            h: 11,
-            minW: 11,
-            px: '4.5',
-            fontSize: 'md',
-          },
-          xl: {
-            h: 12,
-            minW: 12,
-            px: 5,
-            fontSize: 'md',
-          },
-          '2xl': {
-            h: 15,
-            minW: 15,
-            px: 7,
-            fontSize: 'lg',
-          },
-        },
-      },
-    },
+    button,
   },
 })
