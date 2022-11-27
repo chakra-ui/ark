@@ -1,15 +1,13 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import { mergeProps } from '@zag-js/react'
-import { createSplitProps } from '../create-split-props'
+import type { Assign } from '@polymorphic-factory/solid'
+import { splitProps } from 'solid-js'
 import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
 import { RatingProvider } from './rating-context'
 import { useRating, UseRatingProps } from './use-rating'
 
 export type RatingProps = Assign<HTMLArkProps<'input'>, UseRatingProps>
 
-export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
-  const [useRatingProps, inputProps] = createSplitProps<UseRatingProps>()(props, [
+export const Rating = (props: RatingProps) => {
+  const [useRatingProps, inputProps] = splitProps(props, [
     'allowHalf',
     'autoFocus',
     'defaultValue',
@@ -28,14 +26,13 @@ export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
     'value',
   ])
   const rating = useRating(useRatingProps)
-  const mergedProps = mergeProps(rating.rootProps, inputProps)
 
   return (
     <RatingProvider value={rating}>
-      <ark.div {...mergedProps}>
+      <ark.div {...rating().rootProps}>
         {props.children}
-        <ark.input {...rating.inputProps} ref={ref} />
+        <ark.input {...rating().inputProps} {...inputProps} />
       </ark.div>
     </RatingProvider>
   )
-})
+}
