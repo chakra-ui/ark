@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, UseNumberInputProps } from './use-number-input'
@@ -7,7 +7,7 @@ import { useNumberInput, UseNumberInputProps } from './use-number-input'
 export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
 export const NumberInput = (props: NumberInputProps) => {
-  const [useNumberInputProps, divProps] = splitProps(props, [
+  const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',
     'clampValueOnBlur',
