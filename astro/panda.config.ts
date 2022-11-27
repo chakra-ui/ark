@@ -77,11 +77,13 @@ export default defineConfig({
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
       WebkitTextSizeAdjust: '100%',
+      height: '100%',
     },
     body: {
       backgroundColor: 'canvas',
       color: 'default',
       fontFamily: 'InterVariable, sans-serif',
+      height: '100%',
     },
     a: {
       color: 'purple.600',

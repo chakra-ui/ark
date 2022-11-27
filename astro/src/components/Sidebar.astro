@@ -1,13 +1,22 @@
 ---
+import { css } from '../../panda/css'
+import { stack } from '../../panda/patterns'
+
 const allComponents = await Astro.glob('../pages/components/*.mdx')
 ---
 
-<ul>
-  {
-    allComponents.map((component) => (
-      <li>
-        <a href={component.url}>{component.frontmatter.title}</a>
-      </li>
-    ))
-  }
-</ul>
+<aside
+  role="complementary"
+  class={css({
+    width: '100%',
+    alignSelf: 'start',
+    position: { base: 'unset', lg: 'sticky' },
+    top: '24',
+    maxW: { lg: '300px' },
+    bg: 'gray.200',
+  })}
+>
+  <div class={stack({ gap: '1' })}>
+    {allComponents.map((component) => <a href={component.url}>{component.frontmatter.title}</a>)}
+  </div>
+</aside>

@@ -1,7 +1,5 @@
 ---
 import '@fontsource/inter'
-import { Container } from '../../panda/jsx'
-import Header from '../components/Header.astro'
 import '../index.css'
 ---
 
@@ -13,15 +11,6 @@ import '../index.css'
     <title>Ark UI</title>
   </head>
   <body>
-    <Header />
-    <!-- <aside>
-      <Sidebar />
-    </aside> -->
-    <Container>
-      <main>
-        <slot />
-      </main>
-    </Container>
+    <slot />
   </body>
-  <!-- <Footer /> -->
 </html>

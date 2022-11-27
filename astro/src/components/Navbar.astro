@@ -1,0 +1,11 @@
+---
+import { css } from '../../panda/css'
+import { Container } from '../../panda/jsx'
+import ThemeIcon from './ThemeIcon.astro'
+---
+
+<nav role="navigation" class={css({ position: 'sticky', top: '0', background: 'canvas' })}>
+  <Container class={css({ minH: '20' })}>
+    <ThemeIcon />
+  </Container>
+</nav>
