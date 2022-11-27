@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { CheckboxProvider } from './checkbox-context'
 import { useCheckbox, UseCheckboxProps } from './use-checkbox'
@@ -7,7 +7,7 @@ import { useCheckbox, UseCheckboxProps } from './use-checkbox'
 export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxProps>
 
 export const Checkbox = (props: CheckboxProps) => {
-  const [useCheckboxProps, labelprops] = splitProps(props, [
+  const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [
     'aria-describedby',
     'aria-invalid',
     'aria-label',
