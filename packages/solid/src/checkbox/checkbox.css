@@ -1,0 +1,17 @@
+[data-part='root'] {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  gap: 8px;
+}
+
+[data-part='control'] {
+  border: 2px solid;
+  border-radius: 9999px;
+  width: 16px;
+  height: 16px;
+}
+
+[data-part='control'][data-checked] {
+  background: black;
+}
