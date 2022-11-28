@@ -16,16 +16,17 @@ export const Basic = () => {
       </DialogTrigger>
       <DialogPortal>
         <DialogBackdrop />
-        <DialogContainer />
-        <DialogContent>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>Dialog Description</DialogDescription>
-          <div>
-            <input placeholder="Enter name..." />
-            <button>Save</button>
-          </div>
-          <DialogCloseButton>Close</DialogCloseButton>
-        </DialogContent>
+        <DialogContainer>
+          <DialogContent>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogDescription>Dialog Description</DialogDescription>
+            <div>
+              <input placeholder="Enter name..." />
+              <button>Save</button>
+            </div>
+            <DialogCloseButton>Close</DialogCloseButton>
+          </DialogContent>
+        </DialogContainer>
       </DialogPortal>
     </Dialog>
   )
