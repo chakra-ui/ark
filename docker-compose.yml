@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+  worker:
+    image: myoung34/github-runner:latest
+    environment:
+      REPO_URL: https://github.com/chakra-ui/ark
+      RUNNER_NAME: cschroeter-runner
+      RUNNER_TOKEN: AAOCWKF2MO2JBZAAYOPQ3JDDQT56E
+      RUNNER_WORKDIR: /tmp/runner/work
+      RUNNER_SCOPE: 'repo'
+      LABELS: linux,x64,gpu
+    security_opt:
+      # needed on SELinux systems to allow docker container to manage other docker containers
+      - label:disable
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/tmp/runner:/tmp/runner'
