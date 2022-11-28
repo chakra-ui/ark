@@ -1,12 +1,12 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
+import { Children, cloneElement, ReactElement } from 'react'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardTriggerProps = HTMLArkProps<'a'>
+export type HoverCardTriggerProps = {
+  children: ReactElement
+}
 
-export const HoverCardTrigger = forwardRef<'a', HoverCardTriggerProps>((props, ref) => {
+export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
   const { triggerProps } = useHoverCardContext()
-  const mergedProps = mergeProps(triggerProps, props)
-  return <ark.a {...mergedProps} ref={ref} />
-})
+  const onlyChild = Children.only(props.children)
+  return cloneElement(onlyChild, triggerProps)
+}
