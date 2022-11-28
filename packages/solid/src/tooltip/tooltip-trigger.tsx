@@ -7,7 +7,6 @@ export type TooltipTriggerProps = { children: JSX.Element }
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const tooltip = useTooltipContext()
-
   const getChildren = children(() => props.children)
 
   createEffect(() => {

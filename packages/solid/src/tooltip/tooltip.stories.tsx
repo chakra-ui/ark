@@ -7,7 +7,9 @@ import { TooltipTrigger } from './tooltip-trigger'
 
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
-    <TooltipTrigger>asdf</TooltipTrigger>
+    <TooltipTrigger>
+      <span>Hover me</span>
+    </TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipInnerArrow />
