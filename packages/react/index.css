@@ -1,0 +1,105 @@
+html,
+body,
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100%;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+:root {
+  --colors-sidebar-background: #A0AEC0;
+  --colors-separator: #A0AEC0;
+}
+
+.story-renderer {
+  flex: 1;
+  display: flex;
+}
+
+.story-renderer__sidebar {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--colors-sidebar-background);
+  padding: 2rem 0.5rem;
+}
+
+.story-renderer__container {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-renderer__header {
+  padding: 2rem 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.story-renderer__content {
+  padding: 0 1rem;
+}
+
+.story-renderer__title {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.story {
+  position: relative;
+  padding: 1.75rem 0;
+}
+
+.story + .story {
+  border-bottom: 1px solid var(--colors-separator);
+}
+
+.story__header {
+  padding: 0 0 1.75rem;
+}
+
+.story__title {
+  margin: 0;
+}
+
+.story__wrapper {
+}
+
+.component-links {
+}
+
+.component-links__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.component-links__list-item {
+  display: flex;
+}
+
+.component-links__link {
+  flex: 1;
+  color: currentColor;
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 200ms ease-out;
+}
+
+.component-links__link[aria-current='page'] {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.component-links__link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}

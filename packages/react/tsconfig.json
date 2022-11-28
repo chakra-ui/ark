@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "types": ["vite/client", "vitest"]
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.ts", "main.tsx"]
 }
