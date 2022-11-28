@@ -1,5 +1,4 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { usePressable, UsePressableProps } from './use-pressable'
@@ -7,7 +6,7 @@ import { usePressable, UsePressableProps } from './use-pressable'
 export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
 export const Pressable = (props: PressableProps) => {
-  const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [
+  const [usePressableProps, buttonProps] = createSplitProps<UsePressableProps>()(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',
     'dir',
@@ -22,7 +21,6 @@ export const Pressable = (props: PressableProps) => {
     'preventFocusOnPress',
   ])
   const { pressableProps } = usePressable(usePressableProps)
-  const mergedProps = mergeProps(pressableProps, divProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...pressableProps} {...buttonProps} />
 }
