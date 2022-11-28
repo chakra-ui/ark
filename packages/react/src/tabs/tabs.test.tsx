@@ -46,4 +46,9 @@ describe('Tabs', () => {
     expect(panel2).toBeVisible()
     expect(panel1).not.toBeVisible()
   })
+
+  it('should show content of the default value', async () => {
+    render(<Component defaultValue="two" />)
+    expect(screen.getByText('Panel 2')).toBeVisible()
+  })
 })

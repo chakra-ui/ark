@@ -34,7 +34,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Rating        | 🟢    | ⚪    | ⚪  |
 | Select (beta) | ⚪    | ⚪    | ⚪  |
 | Slider        | 🟢    | ⚪    | ⚪  |
-| Tabs          | 🟢    | ⚪    | ⚪  |
+| Tabs          | 🟢    | 🟢    | ⚪  |
 | Tags Input    | 🟢    | ⚪    | ⚪  |
 | Toast         | 🟢    | ⚪    | ⚪  |
 | Tooltip       | 🟢    | ⚪    | ⚪  |
