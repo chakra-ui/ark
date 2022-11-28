@@ -33,7 +33,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Range Slider  | 🟢    | ⚪    | ⚪  |
 | Rating        | 🟢    | ⚪    | ⚪  |
 | Select (beta) | ⚪    | ⚪    | ⚪  |
-| Slider        | 🟢    | ⚪    | ⚪  |
+| Slider        | 🟢    | 🟢    | ⚪  |
 | Tabs          | 🟢    | 🟢    | ⚪  |
 | Tags Input    | 🟢    | ⚪    | ⚪  |
 | Toast         | 🟢    | ⚪    | ⚪  |
