@@ -10,7 +10,7 @@ import { usePagination, UsePaginationProps, UsePaginationReturn } from './use-pa
 export type PaginationProps = Assign<
   Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
   {
-    children: JSX.Element | ((pages: UsePaginationReturn) => JSX.Element)
+    children: JSX.Element | ((pages: ReturnType<UsePaginationReturn>) => JSX.Element)
   }
 >
 
@@ -30,8 +30,8 @@ export const Pagination = (props: PaginationProps) => {
   const [local, navProps] = splitProps(restProps, ['children'])
 
   const pagination = usePagination(paginationProps)
-  const view = () => children(() => runIfFn(local.children, pagination))
-  const mergedProps = mergeProps(pagination.rootProps, navProps)
+  const view = () => children(() => runIfFn(local.children, pagination()))
+  const mergedProps = mergeProps(pagination().rootProps, navProps)
 
   return (
     <PaginationProvider value={pagination}>

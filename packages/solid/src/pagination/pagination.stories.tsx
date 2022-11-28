@@ -19,7 +19,7 @@ export const Basic = () => (
         {pages.map((page, index) =>
           page.type === 'page' ? (
             <PaginationItem value={page.value}>
-              {(props) => <button {...props}>{page.value}</button>}
+              <button>{page.value}</button>
             </PaginationItem>
           ) : (
             <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>

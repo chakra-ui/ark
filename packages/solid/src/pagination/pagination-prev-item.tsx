@@ -1,21 +1,22 @@
 import type { JSX } from 'solid-js'
 import { children, createEffect } from 'solid-js'
+import { spread } from 'solid-js/web'
 import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationPrevItemProps = HTMLArkProps<'li'> & { children: JSX.Element }
 
 export const PaginationPrevItem = (props: PaginationPrevItemProps) => {
-  const { prevItemProps } = usePaginationContext()
+  const pagination = usePaginationContext()
 
-  const c = children(() => props.children)
+  const getChildren = children(() => props.children)
+
   createEffect(() => {
-    const child = c()
-    if (!(child instanceof Node)) {
-      throw new Error('Expected to receive single element child of instance Node')
+    const children = getChildren()
+    if (children instanceof Element) {
+      spread(children, pagination().prevItemProps)
     }
-    Object.assign(child, prevItemProps)
   })
 
-  return <ark.li {...props}>{c()}</ark.li>
+  return <ark.li {...props}>{getChildren()}</ark.li>
 }

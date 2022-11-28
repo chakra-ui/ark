@@ -1,13 +1,13 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { mergeProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, { index: number }>
+type PaginationEllipsisParams = { index: number }
+export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, PaginationEllipsisParams>
 
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
-  const { index, ...spanProps } = props
-  const { getEllipsisProps } = usePaginationContext()
-  const mergedProps = mergeProps(getEllipsisProps({ index }), spanProps)
-  return <ark.span {...mergedProps} />
+  const [ellipsisProps, spanProps] = createSplitProps<PaginationEllipsisParams>()(props, ['index'])
+  const pagination = usePaginationContext()
+  return <ark.span {...pagination().getEllipsisProps(ellipsisProps)} {...spanProps} />
 }
