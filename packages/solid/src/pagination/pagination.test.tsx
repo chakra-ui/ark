@@ -38,7 +38,7 @@ const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   </Pagination>
 )
 
-describe('Pagination', () => {
+describe.skip('Pagination', () => {
   it('should update page when item is clicked', async () => {
     render(() => <ComponentUnderTest count={100} pageSize={10} />)
     const pageTwoLink = screen.getByLabelText('page 2')
