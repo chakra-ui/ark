@@ -7,6 +7,7 @@ export default defineConfig({
   presets: ['css-panda/presets'],
   outdir: 'panda',
   jsxFramework: 'solid',
+  textStyles: {},
   tokens: {
     colors: {
       gray: {
@@ -54,12 +55,13 @@ export default defineConfig({
   patterns: {
     container: {
       properties: {},
-      transform: () => {
+      transform: (props) => {
         return {
           px: { base: '4', md: '8' },
           maxW: '7xl',
           width: '100%',
           mx: 'auto',
+          ...props,
         }
       },
     },

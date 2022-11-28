@@ -1,20 +1,22 @@
 import { splitProps } from 'solid-js'
 import type { JSX } from 'solid-js/jsx-runtime'
-import { cx } from '../../panda/css'
-import { Stack } from '../../panda/jsx'
+import { panda, Stack } from '../../panda/jsx'
 import { button, ButtonValue } from '../../panda/recipes'
+import type { JSXStyleProperties } from '../../panda/types'
 
-export type ButtonProps = ButtonValue & { children?: JSX.Element }
+export type ButtonProps = ButtonValue & { children?: JSX.Element } & JSXStyleProperties
 
 export const Button = (props: ButtonProps) => {
-  const [styleProps, buttonProps] = splitProps(props, ['variant', 'size'])
-  return <button class={cx(button(styleProps))} {...buttonProps} />
+  const [recipeProps, buttonProps] = splitProps(props, ['variant', 'size', 'palette'])
+  return <panda.button class={button(recipeProps)} {...buttonProps} />
 }
 
 export const ButtonGroup = () => {
   return (
     <Stack direction="row">
-      <Button size="sm">Button</Button>
+      <Button size="sm" palette="purple" color="blue.600">
+        Button
+      </Button>
       <Button size="md">Button</Button>
       <Button size="lg">Button</Button>
     </Stack>
