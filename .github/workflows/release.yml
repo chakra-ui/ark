@@ -14,7 +14,7 @@ concurrency:
 jobs:
   release:
     name: Release
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3

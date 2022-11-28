@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
 
   tests:
     name: Tests
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
 
   eslint:
     name: ESLint
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -55,7 +55,7 @@ jobs:
 
   types:
     name: TypeScript
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
 
   prettier:
     name: Prettier
-    runs-on: self-hosted
+    runs-on: ["ubuntu-latest", "self-hosted"]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
