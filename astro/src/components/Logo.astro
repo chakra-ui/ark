@@ -1,5 +1,10 @@
 ---
 import { css } from '../../panda/css'
+import { Stack } from '../../panda/jsx'
+import { Text } from './shared/Text'
 ---
 
-<div class={css({ h: '8', w: '8', bg: 'gray.600', borderRadius: '999px' })}></div>
+<Stack gap="2" direction="row" align="center">
+  <div class={css({ h: '8', w: '8', bg: 'purple.200', borderRadius: 'sm' })}></div>
+  <Text textStyle="lg" fontWeight="semibold">Ark UI</Text>
+</Stack>

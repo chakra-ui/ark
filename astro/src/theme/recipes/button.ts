@@ -18,7 +18,7 @@ export const button = defineRecipe({
     outline: 'none',
   },
   defaultVariants: {
-    colorPalette: 'blue',
+    colorPalette: 'purple',
     variant: 'primary',
     size: 'md',
   },

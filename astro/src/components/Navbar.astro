@@ -1,14 +1,27 @@
 ---
 import { css } from '../../panda/css'
-import { Container, HStack } from '../../panda/jsx'
+import { Container, HStack, Stack } from '../../panda/jsx'
 import Logo from './Logo.astro'
+import { Text } from './shared/Text'
 import ThemeIcon from './ThemeIcon.astro'
 ---
 
 <nav role="navigation" class={css({ position: 'sticky', top: '0', background: 'canvas' })}>
   <Container class={css({ minH: '20', display: 'flex' })}>
     <HStack justify="space-between" flex="1">
-      <Logo />
+      <Stack direction="row" gap="10" align="center">
+        <Logo />
+        <Stack direction="row" gap="8">
+          {
+            ['Docs', 'Showcase', 'Blog'].map((item) => (
+              <Text textStyle="md" fontWeight="500" color="gray.700">
+                {item}
+              </Text>
+            ))
+          }
+        </Stack>
+      </Stack>
+
       <ThemeIcon />
     </HStack>
   </Container>

@@ -1,0 +1,23 @@
+---
+import { Box, Container, Stack } from '../../../panda/jsx'
+import { Button } from '../shared/Button'
+import { Heading } from '../shared/Heading'
+import { Text } from '../shared/Text'
+---
+
+<Container py="24">
+  <Stack direction="row" gap="20" align="center">
+    <Stack gap="8" flex="1">
+      <Stack gap="6">
+        <Heading textStyle="5xl" fontWeight="semibold">Medium length hero heading goes here</Heading
+        >
+        <Text textStyle="lg" color="muted">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+          elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.
+        </Text>
+      </Stack>
+      <Button size="xl">Get Started</Button>
+    </Stack>
+    <Box bg="gray.200" flex="1" minH="600px" p="4">Placeholder Image</Box>
+  </Stack>
+</Container>

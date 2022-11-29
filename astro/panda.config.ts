@@ -7,7 +7,21 @@ export default defineConfig({
   presets: ['css-panda/presets'],
   outdir: 'panda',
   jsxFramework: 'solid',
-  textStyles: {},
+
+  textStyles: {
+    xs: { value: { fontSize: 'xs', lineHeight: '1.125rem' } },
+    sm: { value: { fontSize: 'sm', lineHeight: '1.25rem' } },
+    md: { value: { fontSize: 'md', lineHeight: '1.5rem' } },
+    lg: { value: { fontSize: 'lg', lineHeight: '1.75rem' } },
+    xl: { value: { fontSize: 'xl', lineHeight: '1.875rem' } },
+    '2xl': { value: { fontSize: '2xl', lineHeight: '2rem' } },
+    '3xl': { value: { fontSize: '3xl', lineHeight: '2.375rem' } },
+    '4xl': { value: { fontSize: '4xl', lineHeight: '2.75rem' } },
+    '5xl': { value: { fontSize: '5xl', lineHeight: '3.75rem' } },
+    '6xl': { value: { fontSize: '6xl', lineHeight: '4.5rem' } },
+    '7xl': { value: { fontSize: '7xl', lineHeight: '5.75rem' } },
+  },
+
   tokens: {
     colors: {
       gray: {
@@ -69,6 +83,7 @@ export default defineConfig({
   semanticTokens: {
     colors: {
       default: { value: { base: '{colors.gray.900}', dark: 'white' } },
+      muted: { value: { base: '{colors.gray.600}', dark: '{colors.gray.200}' } },
       canvas: { value: { base: '{colors.gray.50}', dark: '{colors.gray.900}' } },
     },
   },
