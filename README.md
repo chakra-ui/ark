@@ -20,14 +20,14 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | ------------- | ----- | ----- | --- |
 | Accordion     | 🟢    | 🟢    | ⚪  |
 | Checkbox      | 🟢    | 🟢    | ⚪  |
-| Dialog        | 🟢    | 🟢    | ⚪  |
+| Dialog        | 🟢    | ⚪    | ⚪  |
 | Editable      | 🟢    | ⚪    | ⚪  |
-| Hover Card    | 🟢    | 🟢    | ⚪  |
+| Hover Card    | 🟢    | ⚪    | ⚪  |
 | Menu          | 🟢    | ⚪    | ⚪  |
 | Number Input  | 🟢    | ⚪    | ⚪  |
 | Pagination    | 🟢    | 🟢    | ⚪  |
 | Pin Input     | 🟢    | 🟢    | ⚪  |
-| Popover       | 🟢    | ⚪    | ⚪  |
+| Popover       | 🟢    | 🟢    | ⚪  |
 | Pressable     | 🟢    | 🟢    | ⚪  |
 | Radio Group   | 🟢    | ⚪    | ⚪  |
 | Range Slider  | 🟢    | ⚪    | ⚪  |
