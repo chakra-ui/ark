@@ -19,22 +19,22 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 |               | React | Solid | Vue |
 | ------------- | ----- | ----- | --- |
 | Accordion     | 🟢    | 🟢    | ⚪  |
-| Checkbox      | 🟢    | ⚪    | ⚪  |
-| Dialog        | 🟢    | ⚪    | ⚪  |
-| Editable      | 🟢    | ⚪    | ⚪  |
-| Hover Card    | 🟢    | ⚪    | ⚪  |
+| Checkbox      | 🟢    | 🟢    | ⚪  |
+| Dialog        | 🟢    | 🟢    | ⚪  |
+| Editable      | 🟢    | 🟢    | ⚪  |
+| Hover Card    | 🟢    | 🟢    | ⚪  |
 | Menu          | 🟢    | ⚪    | ⚪  |
 | Number Input  | 🟢    | ⚪    | ⚪  |
-| Pagination    | 🟢    | ⚪    | ⚪  |
+| Pagination    | 🟢    | 🟢    | ⚪  |
 | Pin Input     | 🟢    | 🟢    | ⚪  |
-| Popover       | 🟢    | ⚪    | ⚪  |
-| Pressable     | 🟢    | ⚪    | ⚪  |
-| Radio Group   | 🟢    | ⚪    | ⚪  |
+| Popover       | 🟢    | 🟢    | ⚪  |
+| Pressable     | 🟢    | 🟢    | ⚪  |
+| Radio Group   | 🟢    | 🟢    | ⚪  |
 | Range Slider  | 🟢    | ⚪    | ⚪  |
 | Rating        | 🟢    | 🟢    | ⚪  |
 | Select (beta) | ⚪    | ⚪    | ⚪  |
-| Slider        | 🟢    | ⚪    | ⚪  |
-| Tabs          | 🟢    | ⚪    | ⚪  |
+| Slider        | 🟢    | 🟢    | ⚪  |
+| Tabs          | 🟢    | 🟢    | ⚪  |
 | Tags Input    | 🟢    | ⚪    | ⚪  |
-| Toast         | 🟢    | ⚪    | ⚪  |
-| Tooltip       | 🟢    | ⚪    | ⚪  |
+| Toast         | 🟢    | 🟢    | ⚪  |
+| Tooltip       | 🟢    | 🟢    | ⚪  |

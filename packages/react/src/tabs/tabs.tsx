@@ -11,6 +11,7 @@ export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
   const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [
     'activationMode',
+    'defaultValue',
     'dir',
     'getRootNode',
     'id',

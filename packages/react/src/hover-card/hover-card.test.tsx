@@ -10,8 +10,10 @@ import { HoverCardTrigger } from './hover-card-trigger'
 
 const ComponentUnderTest = () => (
   <HoverCard openDelay={0} closeDelay={0}>
-    <HoverCardTrigger href="https://mastodon.com/zag_js" target="_blank">
-      Mastodon
+    <HoverCardTrigger>
+      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
+        Mastodon
+      </a>
     </HoverCardTrigger>
 
     <HoverCardPortal>
