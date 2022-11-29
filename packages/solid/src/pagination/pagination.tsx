@@ -1,6 +1,6 @@
 import type { Assign } from '@polymorphic-factory/solid'
 import type { JSX } from 'solid-js'
-import { children, mergeProps, splitProps } from 'solid-js'
+import { children, splitProps } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -31,11 +31,12 @@ export const Pagination = (props: PaginationProps) => {
 
   const pagination = usePagination(paginationProps)
   const view = () => children(() => runIfFn(local.children, pagination()))
-  const mergedProps = mergeProps(pagination().rootProps, navProps)
 
   return (
     <PaginationProvider value={pagination}>
-      <ark.nav {...mergedProps}>{view()}</ark.nav>
+      <ark.nav {...pagination().rootProps} {...navProps}>
+        {view()}
+      </ark.nav>
     </PaginationProvider>
   )
 }

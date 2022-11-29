@@ -24,7 +24,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Editable      | 🟢    | 🟢    | ⚪  |
 | Hover Card    | 🟢    | 🟢    | ⚪  |
 | Menu          | 🟢    | ⚪    | ⚪  |
-| Number Input  | 🟢    | ⚪    | ⚪  |
+| Number Input  | 🟢    | 🟢    | ⚪  |
 | Pagination    | 🟢    | 🟢    | ⚪  |
 | Pin Input     | 🟢    | 🟢    | ⚪  |
 | Popover       | 🟢    | 🟢    | ⚪  |

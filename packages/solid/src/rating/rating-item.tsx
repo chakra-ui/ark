@@ -1,6 +1,8 @@
-import { splitProps } from 'solid-js'
+import { children } from 'solid-js'
 import type { JSX } from 'solid-js/jsx-runtime'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
+import { runIfFn } from '../run-if-fn'
 import { useRatingContext } from './rating-context'
 import { RatingItemContext, RatingItemProvider } from './rating-item-context'
 
@@ -12,17 +14,19 @@ export type RatingItemProps = Omit<HTMLArkProps<'span'>, 'children'> & {
 }
 
 export const RatingItem = (props: RatingItemProps) => {
-  const [localProps, spanProps] = splitProps(props, ['index', 'children'])
+  const [localProps, spanProps] = createSplitProps<{
+    index: number
+    children: JSX.Element | RenderIconFn
+  }>()(props, ['index', 'children'])
 
   const rating = useRatingContext()
+  const ratingState = rating().getRatingState(localProps.index)
 
-  const state = rating().getRatingState(localProps.index)
-  const icon =
-    typeof localProps.children === 'function' ? localProps.children(state) : localProps.children
+  const icon = children(() => runIfFn(localProps.children, ratingState))
 
   return (
     <ark.span {...rating().getItemProps({ index: localProps.index })} {...spanProps}>
-      <RatingItemProvider value={state}>{icon}</RatingItemProvider>
+      <RatingItemProvider value={ratingState}>{icon()}</RatingItemProvider>
     </ark.span>
   )
 }

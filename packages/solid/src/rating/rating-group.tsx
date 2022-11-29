@@ -1,5 +1,8 @@
+import { children } from 'solid-js'
 import type { JSX } from 'solid-js/jsx-runtime'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
+import { runIfFn } from '../run-if-fn'
 import { RatingContext, useRatingContext } from './rating-context'
 
 export type RatingGroupProps = Omit<HTMLArkProps<'div'>, 'children'> & {
@@ -8,13 +11,17 @@ export type RatingGroupProps = Omit<HTMLArkProps<'div'>, 'children'> & {
 }
 
 export const RatingGroup = (props: RatingGroupProps) => {
-  const { children, ...divProps } = props
+  const [localProps, divProps] = createSplitProps<{
+    children: JSX.Element | ((context: RatingContext) => JSX.Element)
+    renderIcon?: never
+  }>()(props, ['renderIcon', 'children'])
+
   const rating = useRatingContext()
-  const renderPropResult = typeof children === 'function' ? children(rating) : children
+  const view = children(() => runIfFn(localProps.children, rating))
 
   return (
     <ark.div {...rating().itemGroupProps} {...divProps}>
-      {renderPropResult}
+      {view()}
     </ark.div>
   )
 }
