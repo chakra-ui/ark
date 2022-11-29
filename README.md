@@ -36,5 +36,5 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Slider        | 🟢    | 🟢    | ⚪  |
 | Tabs          | 🟢    | 🟢    | ⚪  |
 | Tags Input    | 🟢    | ⚪    | ⚪  |
-| Toast         | 🟢    | ⚪    | ⚪  |
+| Toast         | 🟢    | 🟢    | ⚪  |
 | Tooltip       | 🟢    | 🟢    | ⚪  |
