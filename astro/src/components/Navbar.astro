@@ -1,11 +1,15 @@
 ---
 import { css } from '../../panda/css'
-import { Container } from '../../panda/jsx'
+import { Container, HStack } from '../../panda/jsx'
+import Logo from './Logo.astro'
 import ThemeIcon from './ThemeIcon.astro'
 ---
 
 <nav role="navigation" class={css({ position: 'sticky', top: '0', background: 'canvas' })}>
-  <Container class={css({ minH: '20' })}>
-    <ThemeIcon />
+  <Container class={css({ minH: '20', display: 'flex' })}>
+    <HStack justify="space-between" flex="1">
+      <Logo />
+      <ThemeIcon />
+    </HStack>
   </Container>
 </nav>

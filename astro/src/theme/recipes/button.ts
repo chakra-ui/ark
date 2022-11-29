@@ -18,17 +18,17 @@ export const button = defineRecipe({
     outline: 'none',
   },
   defaultVariants: {
-    palette: 'blue',
+    colorPalette: 'blue',
     variant: 'primary',
     size: 'md',
   },
   variants: {
-    palette: {
+    colorPalette: {
       blue: {
-        palette: 'blue',
+        colorPalette: 'blue',
       },
       purple: {
-        palette: 'purple',
+        colorPalette: 'purple',
       },
     },
     variant: {
@@ -37,9 +37,9 @@ export const button = defineRecipe({
           base: 'white',
         },
         backgroundColor: {
-          base: 'palette.600',
+          base: 'colorPalette.600',
           hover: {
-            base: 'palette.700',
+            base: 'colorPalette.700',
           },
         },
       },
