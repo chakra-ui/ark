@@ -11,8 +11,10 @@ import './hover-card.css'
 
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger href="https://mastodon.com/zag_js" target="_blank">
-      Mastodon
+    <HoverCardTrigger>
+      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
+        Mastodon
+      </a>
     </HoverCardTrigger>
 
     <HoverCardPortal>
