@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react'
+import type { JSX } from 'solid-js'
 import { Toast } from './toast'
 import { ToastCloseButton } from './toast-close-button'
 import { ToastDescription } from './toast-description'
@@ -8,15 +8,15 @@ import { ToastProvider, useToast } from './toast-provider'
 import { ToastTitle } from './toast-title'
 
 // chakra land
-export const ChakraToastProvider = (props: PropsWithChildren) => (
+export const ChakraToastProvider = (props: { children: JSX.Element }) => (
   <ToastProvider>
     <ToastPlacements>
       {(placements) =>
         placements.map((placement) => (
-          <ToastGroup key={placement} placement={placement}>
+          <ToastGroup placement={placement}>
             {(toasts) =>
               toasts.map((toast) => (
-                <Toast key={toast.id} toast={toast}>
+                <Toast toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
                   <ToastCloseButton>Close</ToastCloseButton>
@@ -45,7 +45,7 @@ const ExampleComponent = () => {
     <div>
       <button
         onClick={() => {
-          toast.create({
+          toast().create({
             title: 'Hello',
             placement: 'top-end',
             duration: 10000,
@@ -57,7 +57,7 @@ const ExampleComponent = () => {
       </button>
       <button
         onClick={() => {
-          toast.create({
+          toast().create({
             title: 'Data submitted!',
             type: 'success',
             placement: 'bottom-start',
