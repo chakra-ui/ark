@@ -24,3 +24,16 @@ export const Basic = () => {
     </Slider>
   )
 }
+
+export const WithDefaultVavlue = () => (
+  <Slider min={-50} max={50} defaultValue={42}>
+    <SliderControl>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb>
+        <SliderInput />
+      </SliderThumb>
+    </SliderControl>
+  </Slider>
+)
