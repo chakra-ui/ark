@@ -8,7 +8,7 @@ import { useSelect, UseSelectProps, UseSelectReturn } from './use-select'
 export type SelectProps = Assign<
   UseSelectProps,
   {
-    children: ReactNode | ((state: UseSelectReturn) => ReactNode)
+    children?: ReactNode | ((state: UseSelectReturn) => ReactNode)
   }
 >
 
