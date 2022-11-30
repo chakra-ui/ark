@@ -10,7 +10,6 @@ export const Editable = (props: EditableProps) => {
   const [useEditableProps, divProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
-    'defaultValue',
     'dir',
     'disabled',
     'form',

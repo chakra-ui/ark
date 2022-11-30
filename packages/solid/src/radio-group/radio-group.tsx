@@ -8,7 +8,6 @@ export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = (props: RadioGroupProps) => {
   const [useRadioGroupProps, divProps] = createSplitProps<UseRadioGroupProps>()(props, [
-    'defaultValue',
     'dir',
     'disabled',
     'form',

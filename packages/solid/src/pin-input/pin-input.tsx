@@ -10,7 +10,6 @@ export const PinInput = (props: PinInputProps) => {
   const [pinInputProps, htmlProps] = splitProps(props, [
     'autoFocus',
     'blurOnComplete',
-    'defaultValue',
     'dir',
     'disabled',
     'getRootNode',

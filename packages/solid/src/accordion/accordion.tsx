@@ -9,7 +9,6 @@ export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 export const Accordion = (props: AccordionProps) => {
   const [accordionProps, divProps] = splitProps(props, [
     'collapsible',
-    'defaultValue',
     'dir',
     'disabled',
     'getRootNode',
