@@ -70,6 +70,9 @@ export const App = () => (
 
 ### Create toasts with `useToast`
 
+The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
+application. Create, update, remove and upsert toasts with the returned `toast` instance.
+
 ```tsx
 const ExampleComponent = () => {
   const toast = useToast()
@@ -122,6 +125,8 @@ toast.loading({
 
 ### Update a toast by id
 
+Update the description or other options for an existing toast.
+
 ```tsx
 const toast = useToast()
 
@@ -151,6 +156,8 @@ return (
 
 ### Remove a toast by id
 
+Remove a visible toast imperatively. E.g. on an event or after a async task.
+
 ```tsx
 const toast = useToast()
 
@@ -177,6 +184,8 @@ return (
 ```
 
 ### Upsert a toast by id
+
+`upsert` updates a toast if it exists, or it creates a new toast.
 
 ```tsx
 const toast = useToast()
