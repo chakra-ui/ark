@@ -12,19 +12,14 @@ export const useTagsInput = (props: UseTagsInputProps) => {
     id: useId(),
     ...props,
     value: props.value ?? props.defaultValue,
-    // value: props.defaultValue, // FIXME: skip value assignment
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const context = {
     ...initialContext,
     value: props.value,
   }
 
-  const [state, send] = useMachine(
-    tagsInput.machine(initialContext),
-    // { context } // FIXME: callstack exceeded
-  )
+  const [state, send] = useMachine(tagsInput.machine(initialContext), { context })
   return tagsInput.connect(state, send, normalizeProps)
 }
 
