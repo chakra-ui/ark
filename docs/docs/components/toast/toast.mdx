@@ -1,0 +1,171 @@
+import CodeBlock from '@theme/CodeBlock'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+# Toast
+
+The toast component is used to give feedback to users after an action has taken place.
+
+## Import
+
+import importsReact from '!!raw-loader!./code/imports.react'
+import importsSolid from '!!raw-loader!./code/imports.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="ts" children={importsReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="ts" children={importsSolid} />
+  </TabItem>
+  <TabItem value="vue" label="Vue.js">
+    <CodeBlock language="ts" children={'not implemented'} />
+  </TabItem>
+</Tabs>
+
+## Usage
+
+### Create the `AppToastProvider`
+
+Use the toast components to compose a `ToastProvider` for your application. The granular component
+structure allows access to every DOM element.
+
+import AppToastProviderReact from '!!raw-loader!./code/AppToastProvider.react'
+import AppToastProviderSolid from '!!raw-loader!./code/AppToastProvider.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={AppToastProviderReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={AppToastProviderSolid} />
+  </TabItem>
+</Tabs>
+
+### Wrap your App with the `AppToastProvider`
+
+Wrapping the application provides all child components access to the toast context with the
+`useToast` hook.
+
+import wrapAppToastProviderReact from '!!raw-loader!./code/wrapAppToastProvider.react'
+import wrapAppToastProviderSolid from '!!raw-loader!./code/wrapAppToastProvider.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={wrapAppToastProviderReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={wrapAppToastProviderSolid} />
+  </TabItem>
+</Tabs>
+
+### Create toasts with `useToast`
+
+The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
+application. Create, update, remove and upsert toasts with the returned `toast` instance.
+
+import createToastReact from '!!raw-loader!./code/createToast.react'
+import createToastSolid from '!!raw-loader!./code/createToast.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={createToastReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={createToastSolid} />
+  </TabItem>
+</Tabs>
+
+#### Use the shorthand type methods
+
+Omitting the type property is supported for toasts with type `success`, `loading` and `error`.
+
+import shorthandsReact from '!!raw-loader!./code/shorthands.react'
+import shorthandsSolid from '!!raw-loader!./code/shorthands.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={shorthandsReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={shorthandsSolid} />
+  </TabItem>
+</Tabs>
+
+### Update a toast
+
+Update the description or other options for an existing toast by id.
+
+import updateToastReact from '!!raw-loader!./code/updateToast.react'
+import updateToastSolid from '!!raw-loader!./code/updateToast.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={updateToastReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={updateToastSolid} />
+  </TabItem>
+</Tabs>
+
+### Remove a toast by id
+
+Remove a visible toast imperatively. E.g. on an event or after a async task.
+
+import removeToastReact from '!!raw-loader!./code/removeToast.react'
+import removeToastSolid from '!!raw-loader!./code/removeToast.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={removeToastReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={removeToastSolid} />
+  </TabItem>
+</Tabs>
+
+### Upsert a toast by id
+
+`upsert` updates a toast if it exists, or it creates a new toast.
+
+import upsertToastReact from '!!raw-loader!./code/upsertToast.react'
+import upsertToastSolid from '!!raw-loader!./code/upsertToast.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={upsertToastReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={upsertToastSolid} />
+  </TabItem>
+</Tabs>
+
+### Visualize a Promise
+
+import promiseToastReact from '!!raw-loader!./code/promiseToast.react'
+import promiseToastSolid from '!!raw-loader!./code/promiseToast.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={promiseToastReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={promiseToastSolid} />
+  </TabItem>
+</Tabs>
+
+### Toast visibility
+
+Check if a toast is visible by id with `isVisible`.
+
+import toastVisibilityReact from '!!raw-loader!./code/toastVisibility.react'
+import toastVisibilitySolid from '!!raw-loader!./code/toastVisibility.solid'
+
+<Tabs groupId="framework">
+  <TabItem value="react" label="React">
+    <CodeBlock language="tsx" children={toastVisibilityReact} />
+  </TabItem>
+  <TabItem value="solid" label="SolidJS">
+    <CodeBlock language="tsx" children={toastVisibilitySolid} />
+  </TabItem>
+</Tabs>
