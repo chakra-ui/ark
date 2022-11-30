@@ -107,6 +107,7 @@ importers:
       '@zag-js/range-slider': 0.2.3
       '@zag-js/rating': 0.2.3
       '@zag-js/react': 0.3.1
+      '@zag-js/select': 0.1.1
       '@zag-js/slider': 0.2.3
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.3
@@ -139,6 +140,7 @@ importers:
       '@zag-js/range-slider': 0.2.3
       '@zag-js/rating': 0.2.3
       '@zag-js/react': 0.3.1_biqbaboplfbrettd7655fr4n2y
+      '@zag-js/select': 0.1.1
       '@zag-js/slider': 0.2.3
       '@zag-js/tabs': 0.2.2
       '@zag-js/tags-input': 0.3.3
@@ -4765,6 +4767,15 @@ packages:
 
   /@zag-js/remove-scroll/0.2.0:
     resolution: {integrity: sha512-mxtPQnPABgAka6zVSvvauS00dgfO6+2n2c8sftdnpCnpTRq6mdCPxj4/NE169Wk5ldzxBbqmnjgYWjOlWV8lpw==}
+    dev: false
+
+  /@zag-js/select/0.1.1:
+    resolution: {integrity: sha512-LFFdvXxdD7jpdM595Qi4NZ351PdR9ih8DXk5Fspddm5/EATOQ2R85ItdnTyVRHW848zqak2MBJBWP97jDZmzIw==}
+    dependencies:
+      '@zag-js/core': 0.2.2
+      '@zag-js/interact-outside': 0.2.0
+      '@zag-js/popper': 0.2.0
+      '@zag-js/types': 0.3.1
     dev: false
 
   /@zag-js/slider/0.2.3:
