@@ -4,6 +4,7 @@ import { Tooltip, TooltipProps } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipContent } from './tooltip-content'
 import { TooltipInnerArrow } from './tooltip-inner-arrow'
+import { TooltipPortal } from './tooltip-portal'
 import { TooltipPositioner } from './tooltip-positioner'
 import { TooltipTrigger } from './tooltip-trigger'
 
@@ -12,12 +13,14 @@ const Component = (props: TooltipProps) => (
     <TooltipTrigger>
       <button>hover me</button>
     </TooltipTrigger>
-    <TooltipPositioner>
-      <TooltipArrow>
-        <TooltipInnerArrow />
-      </TooltipArrow>
-      <TooltipContent>content</TooltipContent>
-    </TooltipPositioner>
+    <TooltipPortal>
+      <TooltipPositioner>
+        <TooltipArrow>
+          <TooltipInnerArrow />
+        </TooltipArrow>
+        <TooltipContent>content</TooltipContent>
+      </TooltipPositioner>
+    </TooltipPortal>
   </Tooltip>
 )
 

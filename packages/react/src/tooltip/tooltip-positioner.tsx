@@ -6,8 +6,8 @@ import { useTooltipContext } from './tooltip-context'
 export type TooltipPositionerProps = HTMLArkProps<'div'>
 
 export const TooltipPositioner = forwardRef<'div', TooltipPositionerProps>((props, ref) => {
-  const { positionerProps, isOpen } = useTooltipContext()
+  const { positionerProps } = useTooltipContext()
   const mergedProps = mergeProps(positionerProps, props)
 
-  return isOpen ? <ark.div {...mergedProps} ref={ref} /> : null
+  return <ark.div {...mergedProps} ref={ref} />
 })

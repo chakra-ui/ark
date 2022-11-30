@@ -11,6 +11,7 @@ import {
   TooltipArrow,
   TooltipContent,
   TooltipInnerArrow,
+  TooltipPortal,
   TooltipPositioner,
   TooltipTrigger,
 } from '@ark-ui/react'
@@ -32,10 +33,11 @@ necessary props to add the event listeners and attributes to ensure the desired 
   <TooltipTrigger>
     <span>hover me</span>
   </TooltipTrigger>
-
-  <TooltipPositioner>
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
+  <TooltipProtal>
+    <TooltipPositioner>
+      <TooltipContent>My tooltip content</TooltipContent>
+    </TooltipPositioner>
+  </TooltipPortal>
 </Tooltip>
 ```
 
@@ -49,14 +51,15 @@ within the `TooltipPositioner`.
   <TooltipTrigger>
     <span>hover me</span>
   </TooltipTrigger>
+  <TooltipProtal>
+    <TooltipPositioner>
+      <TooltipArrow>
+        <TooltipInnerArrow />
+      </TooltipArrow>
 
-  <TooltipPositioner>
-    <TooltipArrow>
-      <TooltipInnerArrow />
-    </TooltipArrow>
-
-    <TooltipContent>My tooltip content</TooltipContent>
+      <TooltipContent>My tooltip content</TooltipContent>
   </TooltipPositioner>
+  </TooltipPortal>
 </Tooltip>
 ```
 
@@ -101,9 +104,10 @@ const CustomComponent = (props) => <span {...props}>hover me</span>
   <TooltipTrigger>
     <CustomComponent />
   </TooltipTrigger>
-
-  <TooltipPositioner>
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
+  <TooltipPortal>
+    <TooltipPositioner>
+      <TooltipContent>My tooltip content</TooltipContent>
+    </TooltipPositioner>
+  </TooltipPortal>
 </Tooltip>
 ```
