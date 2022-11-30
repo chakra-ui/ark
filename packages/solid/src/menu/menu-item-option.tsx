@@ -6,7 +6,6 @@ import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
 
 export type MenuItemOptionState = { isActive: boolean }
 
@@ -20,7 +19,7 @@ export type MenuItemOptionProps = Assign<
 >
 
 export const MenuItemOption = (props: MenuItemOptionProps) => {
-  const api = useMenuContext() as () => ReturnType<UseMenuReturn>['api']
+  const menu = useMenuContext()
   const [optionProps, divProps] = createSplitProps<MenuItemOptionParams>()(props, [
     'id',
     'disabled',
@@ -34,11 +33,11 @@ export const MenuItemOption = (props: MenuItemOptionProps) => {
 
   const view = () =>
     children(() =>
-      runIfFn(divProps.children, { isActive: api?.().isOptionChecked(optionProps) ?? false }),
+      runIfFn(divProps.children, { isActive: menu?.().isOptionChecked(optionProps) ?? false }),
     )
 
   return (
-    <ark.div {...api?.().getOptionItemProps(optionProps)} {...divProps}>
+    <ark.div {...menu?.().getOptionItemProps(optionProps)} {...divProps}>
       {view}
     </ark.div>
   )

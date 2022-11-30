@@ -6,8 +6,8 @@ import type { Optional } from '../types'
 export type UseMenuProps = Optional<menu.Context, 'id'>
 
 export type UseMenuReturn = () => {
-  machine: ReturnType<typeof menu.machine>
-  api: ReturnType<typeof menu.connect>
+  machine: () => ReturnType<typeof menu.machine>
+  api: () => ReturnType<typeof menu.connect>
 }
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
@@ -15,7 +15,7 @@ export const useMenu = (props: UseMenuProps): UseMenuReturn => {
   const [state, send, machine] = useMachine(menu.machine(context), { context })
 
   return createMemo(() => ({
-    api: menu.connect(state, send, normalizeProps),
-    machine,
+    api: () => menu.connect(state, send, normalizeProps),
+    machine: () => machine,
   }))
 }

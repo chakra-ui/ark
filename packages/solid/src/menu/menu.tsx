@@ -10,7 +10,7 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, UseMenuProps, UseMenuReturn } from './use-menu'
+import { useMenu, UseMenuProps } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean
@@ -42,36 +42,37 @@ export const Menu = (props: MenuProps) => {
     'value',
   ])
 
-  const parentApi = useMenuContext() as (() => ReturnType<UseMenuReturn>['api']) | undefined
-  const parentMachine = useMenuMachineContext() as
-    | (() => ReturnType<UseMenuReturn>['machine'])
-    | undefined
+  const parentMenu = useMenuContext()
+  const parentMachine = useMenuMachineContext()
 
   const menu = useMenu(menuProps)
+
+  // TODO: nothing happens on trigger click
+  console.log('isOpen', menu().api().isOpen)
 
   const view = () =>
     children(() =>
       runIfFn(localProps.children, {
-        isOpen: menu().api.isOpen,
-        onClose: menu().api.close,
+        isOpen: menu().api().isOpen,
+        onClose: menu().api().close,
       }),
     )
 
   if (parentMachine) {
-    parentApi?.().setChild(menu().machine)
-    menu().api.setParent(parentMachine())
+    parentMenu?.().setChild(menu().machine())
+    menu().api().setParent(parentMachine())
   }
 
   createEffect(() => {
-    if (localProps.isOpen && !menu().api.isOpen) {
-      menu().api.open()
+    if (localProps.isOpen && !menu().api().isOpen) {
+      menu().api().open()
     }
   })
 
   return (
-    <MenuTriggerItemProvider value={() => parentApi?.().getTriggerItemProps(menu().api)}>
-      <MenuMachineProvider value={() => menu().machine}>
-        <MenuProvider value={() => menu().api}>{view()}</MenuProvider>
+    <MenuTriggerItemProvider value={() => parentMenu?.().getTriggerItemProps(menu().api())}>
+      <MenuMachineProvider value={() => menu().machine()}>
+        <MenuProvider value={() => menu().api()}>{view()}</MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>
   )
