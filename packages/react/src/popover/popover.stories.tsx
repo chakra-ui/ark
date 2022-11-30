@@ -1,3 +1,4 @@
+import { Portal } from '@zag-js/react'
 import { Popover } from './popover'
 import { PopoverArrow } from './popover-arrow'
 import { PopoverCloseButton } from './popover-close-button'
@@ -13,16 +14,18 @@ export const PopoverReact = () => (
     <PopoverTrigger>
       <button>click me</button>
     </PopoverTrigger>
-    <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverInnerArrow />
-      </PopoverArrow>
-      <PopoverContent>
-        <PopoverTitle>Title</PopoverTitle>
-        <PopoverDescription>Description</PopoverDescription>
-        <input type="text" />
-        <PopoverCloseButton>close</PopoverCloseButton>
-      </PopoverContent>
-    </PopoverPositioner>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverArrow>
+          <PopoverInnerArrow />
+        </PopoverArrow>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <input type="text" />
+          <PopoverCloseButton>close</PopoverCloseButton>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Portal>
   </Popover>
 )

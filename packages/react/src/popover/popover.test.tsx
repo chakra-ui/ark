@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { Portal } from '@zag-js/react'
 import { Popover, PopoverProps } from './popover'
 import { PopoverArrow } from './popover-arrow'
 import { PopoverCloseButton } from './popover-close-button'
@@ -13,14 +14,16 @@ const Component = (props: PopoverProps) => (
     <PopoverTrigger>
       <button>click me</button>
     </PopoverTrigger>
-    <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverInnerArrow />
-      </PopoverArrow>
-      <PopoverContent>content</PopoverContent>
-      <input placeholder="enter value" />
-      <PopoverCloseButton>close</PopoverCloseButton>
-    </PopoverPositioner>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverArrow>
+          <PopoverInnerArrow />
+        </PopoverArrow>
+        <PopoverContent>content</PopoverContent>
+        <input placeholder="enter value" />
+        <PopoverCloseButton>close</PopoverCloseButton>
+      </PopoverPositioner>
+    </Portal>
   </Popover>
 )
 
