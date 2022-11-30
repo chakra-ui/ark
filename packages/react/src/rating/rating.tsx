@@ -9,7 +9,7 @@ import { useRating, UseRatingProps } from './use-rating'
 export type RatingProps = Assign<HTMLArkProps<'input'>, UseRatingProps>
 
 export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
-  const [useRatingProps, divProps] = createSplitProps<UseRatingProps>()(props, [
+  const [useRatingProps, inputProps] = createSplitProps<UseRatingProps>()(props, [
     'allowHalf',
     'autoFocus',
     'defaultValue',
@@ -28,7 +28,7 @@ export const Rating = forwardRef<'input', RatingProps>((props, ref) => {
     'value',
   ])
   const rating = useRating(useRatingProps)
-  const mergedProps = mergeProps(rating.rootProps, divProps)
+  const mergedProps = mergeProps(rating.rootProps, inputProps)
 
   return (
     <RatingProvider value={rating}>

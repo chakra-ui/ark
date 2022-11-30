@@ -54,6 +54,7 @@
     "@zag-js/range-slider": "0.2.3",
     "@zag-js/rating": "0.2.3",
     "@zag-js/react": "0.3.1",
+    "@zag-js/select": "0.1.1",
     "@zag-js/slider": "0.2.3",
     "@zag-js/tabs": "0.2.2",
     "@zag-js/tags-input": "0.3.3",
