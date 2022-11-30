@@ -61,8 +61,7 @@ export const button = defineRecipe({
       lg: {
         h: 11,
         minW: 11,
-        // px: '4.5', TODO
-        px: '1.125rem',
+        px: '4.5',
         fontSize: 'md',
       },
       xl: {

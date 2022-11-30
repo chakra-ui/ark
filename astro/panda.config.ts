@@ -61,7 +61,7 @@ export default defineConfig({
         900: { value: '#4A1D96' },
       },
     },
-    sizes: {
+    spacing: {
       '4.5': { value: '1.125rem' },
       '15': { value: '3.75rem' },
     },
@@ -104,6 +104,10 @@ export default defineConfig({
     },
     a: {
       color: 'purple.600',
+    },
+    '*, *::before, *::after': {
+      borderColor: 'gray.200',
+      borderStyle: 'solid',
     },
   },
   recipes: {
