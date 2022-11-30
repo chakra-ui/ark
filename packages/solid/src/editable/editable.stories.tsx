@@ -11,7 +11,7 @@ import {
 
 export const Basic = () => {
   return (
-    <Editable activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
+    <Editable activationMode="dblclick" placeholder="enter a value" value="Chakra">
       <EditableArea>
         <EditableInput />
         <EditablePreview />

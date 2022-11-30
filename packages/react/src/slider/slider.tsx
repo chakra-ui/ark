@@ -12,6 +12,7 @@ export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
   const [useSliderProps, divProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
+    'defaultValue',
     'dir',
     'disabled',
     'focusThumbOnChange',

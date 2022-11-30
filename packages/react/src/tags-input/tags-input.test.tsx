@@ -10,7 +10,7 @@ import { TagsInputControl } from './tags-input-control'
 import { TagsInputField } from './tags-input-field'
 
 const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (
-  <TagsInput value={['react', 'solid', 'vue']} {...props}>
+  <TagsInput defaultValue={['react', 'solid', 'vue']} {...props}>
     {({ value }) => (
       <TagsInputControl>
         {(value ?? []).map((value, index) => (

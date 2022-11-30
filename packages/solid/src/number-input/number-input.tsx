@@ -11,7 +11,6 @@ export const NumberInput = (props: NumberInputProps) => {
     'allowMouseWheel',
     'allowOverflow',
     'clampValueOnBlur',
-    'defaultValue',
     'dir',
     'disabled',
     'focusInputOnChange',

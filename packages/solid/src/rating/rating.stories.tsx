@@ -4,7 +4,7 @@ import { RatingItem } from './rating-item'
 import { RatingLabel } from './rating-label'
 
 export const Basic = () => (
-  <Rating max={10} defaultValue={3} allowHalf>
+  <Rating max={10} value={3} allowHalf>
     <RatingLabel>Rating label</RatingLabel>
     <RatingGroup>
       {(context) =>
