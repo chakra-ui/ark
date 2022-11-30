@@ -5,7 +5,7 @@ import { NumberInputIncrementButton } from './number-input-increment-button'
 
 export const Basic = () => {
   return (
-    <NumberInput max={15} clampValueOnBlur defaultValue="10">
+    <NumberInput max={15} clampValueOnBlur value="10">
       <div>
         <NumberInputField />
         <NumberInputDecrementButton>Dec</NumberInputDecrementButton>

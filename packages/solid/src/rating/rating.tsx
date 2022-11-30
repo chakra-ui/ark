@@ -10,7 +10,6 @@ export const Rating = (props: RatingProps) => {
   const [useRatingProps, inputProps] = splitProps(props, [
     'allowHalf',
     'autoFocus',
-    'defaultValue',
     'dir',
     'disabled',
     'form',
