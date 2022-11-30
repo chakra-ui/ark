@@ -2,5 +2,6 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "."
-  }
+  },
+  "exclude": ["docs/**/code/**"]
 }
