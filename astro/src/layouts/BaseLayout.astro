@@ -1,5 +1,6 @@
 ---
 import '@fontsource/inter/variable.css'
+import { css } from '../../panda/css'
 import Navbar from '../components/Navbar.astro'
 import '../index.css'
 ---
@@ -12,7 +13,15 @@ import '../index.css'
     <title>Ark UI</title>
   </head>
   <body>
-    <Navbar />
-    <slot />
+    <div
+      class={css({
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100%',
+      })}
+    >
+      <Navbar />
+      <slot />
+    </div>
   </body>
 </html>

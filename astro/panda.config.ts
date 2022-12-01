@@ -1,5 +1,6 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
+import { link } from './src/theme/recipes/link'
 
 export default defineConfig({
   preflight: true,
@@ -83,7 +84,7 @@ export default defineConfig({
   semanticTokens: {
     colors: {
       default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
-      muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.200}' } },
+      muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.200}' } },
       canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.gray.900}' } },
     },
   },
@@ -102,9 +103,6 @@ export default defineConfig({
       fontFamily: 'InterVariable, sans-serif',
       height: '100%',
     },
-    a: {
-      color: 'purple.600',
-    },
     '*, *::before, *::after': {
       borderColor: 'gray.200',
       borderStyle: 'solid',
@@ -112,5 +110,6 @@ export default defineConfig({
   },
   recipes: {
     button,
+    link,
   },
 })
