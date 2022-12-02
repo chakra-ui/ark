@@ -6,5 +6,5 @@ export type RangeSliderControlProps = HTMLArkProps<'div'>
 export const RangeSliderControl = (props: RangeSliderControlProps) => {
   const slider = useRangeSliderContext()
 
-  return <ark.div {...slider().rootProps} {...props} />
+  return <ark.div {...slider().controlProps} {...props} />
 }

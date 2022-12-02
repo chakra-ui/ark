@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { createSignal, For } from 'solid-js'
 import {
   RangeSlider,
   RangeSliderControl,
@@ -23,11 +23,13 @@ export const Basic = () => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        {values().map((_, index) => (
-          <RangeSliderThumb index={index}>
-            <RangeSliderInput index={index} />
-          </RangeSliderThumb>
-        ))}
+        <For each={values()}>
+          {(_, i) => (
+            <RangeSliderThumb index={i()}>
+              <RangeSliderInput index={i()} />
+            </RangeSliderThumb>
+          )}
+        </For>
       </RangeSliderControl>
     </RangeSlider>
   )
