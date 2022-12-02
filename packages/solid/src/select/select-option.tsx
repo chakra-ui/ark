@@ -11,7 +11,7 @@ export const SelectOption = (props: SelectOptionProps) => {
     'disabled',
     'label',
     'value',
-    'valueText', // TODO what is value text
+    'valueText',
   ])
   const select = useSelectContext()
 
