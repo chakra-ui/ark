@@ -1,31 +1,23 @@
+import type { Assign } from '@polymorphic-factory/solid'
 import * as rangeSlider from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
+import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import type { Optional } from '../types'
 
-type UseRangeSliderParams = {
-  value?: rangeSlider.Context['values']
-  defaultValue?: rangeSlider.Context['values']
-}
-export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id' | 'values'> &
-  UseRangeSliderParams
+export type UseRangeSliderProps = Assign<
+  Omit<Optional<rangeSlider.Context, 'id'>, 'values'>,
+  {
+    value: rangeSlider.Context['values']
+  }
+>
 
 export type UseRangeSliderReturn = ReturnType<typeof useRangeSlider>
 
 export const useRangeSlider = (props: UseRangeSliderProps) => {
-  const [localProps, context] = createSplitProps<UseRangeSliderParams>()(props, [
-    'defaultValue',
-    'value',
-  ])
-  const initialContext = {
-    id: createUniqueId(),
-    ...props,
-    values: localProps.defaultValue,
-  }
+  const context = mergeProps({ id: createUniqueId(), values: props.value }, props)
 
-  const [state, send] = useMachine(rangeSlider.machine(initialContext), {
-    context: { ...context, values: localProps.value },
+  const [state, send] = useMachine(rangeSlider.machine(context), {
+    context,
   })
 
   return createMemo(() => rangeSlider.connect(state, send, normalizeProps))

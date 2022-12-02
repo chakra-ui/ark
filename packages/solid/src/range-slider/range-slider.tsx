@@ -10,7 +10,6 @@ export const RangeSlider = (props: RangeSliderProps) => {
   const [useRangeSliderProps, divProps] = createSplitProps<UseRangeSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
-    'defaultValue',
     'dir',
     'disabled',
     'form',
@@ -31,7 +30,6 @@ export const RangeSlider = (props: RangeSliderProps) => {
     'step',
     'thumbAlignment',
     'value',
-    'values',
   ])
   const slider = useRangeSlider(useRangeSliderProps)
 
