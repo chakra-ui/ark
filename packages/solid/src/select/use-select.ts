@@ -3,9 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import type { Optional } from '../types'
 
-export type UseSelectProps = Optional<select.Context, 'id'> & {
-  defaultValue?: select.Context['selectedOption']
-}
+export type UseSelectProps = Optional<select.Context, 'id'>
 export type UseSelectReturn = ReturnType<typeof useSelect>
 
 export const useSelect = (props: UseSelectProps) => {

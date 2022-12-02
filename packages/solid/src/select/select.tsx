@@ -9,14 +9,13 @@ import { useSelect, UseSelectProps } from './use-select'
 export type SelectProps = Assign<
   UseSelectProps,
   {
-    children: JSX.Element
+    children: JSX.Element | ((context: SelectContext) => JSX.Element)
   }
 >
 
 export const Select = (props: SelectProps) => {
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
-    'defaultValue',
     'dir',
     'disabled',
     'form',
@@ -37,10 +36,6 @@ export const Select = (props: SelectProps) => {
     'selectedOption',
   ])
   const select = useSelect(useSelectProps)
-  // console.log('select', select)
-  // // const getChildren = createMemo(() => runIfFn(localProps.children, select()))
-  // const view = children(() => props.children)
-  // console.log('select: after', select)
 
   return (
     <SelectProvider value={select}>
@@ -49,14 +44,10 @@ export const Select = (props: SelectProps) => {
   )
 }
 
-export const SelectContextWrapper = (props: any) => {
-  const [localProps, divProps] = createSplitProps<{
-    children: JSX.Element | ((context: SelectContext) => JSX.Element)
-    renderIcon?: never
-  }>()(props, ['renderIcon', 'children'])
-
+// Children need to be wrapped in a function so that the context is available
+const SelectContextWrapper = (props: Pick<SelectProps, 'children'>) => {
   const select = useSelectContext()
-  const view = children(() => runIfFn(localProps.children, select))
+  const view = children(() => runIfFn(props.children, select))
 
   return <>{view()}</>
 }

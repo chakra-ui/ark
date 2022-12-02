@@ -14,31 +14,28 @@ export const Basic = () => {
   ]
   return (
     <Select>
-      {/* <SelectContextWrapper> */}
-      {/* {(context) => ( */}
-      <div>
-        <SelectLabel>Framework:</SelectLabel>
-        <SelectTrigger>
-          {/* <span>{context().selectedOption?.label ?? 'Select option'}</span> */}
-          <span>Select option</span>
-        </SelectTrigger>
-        <Portal>
-          <SelectPositioner>
-            <SelectMenu>
-              <For each={options}>
-                {(option) => (
-                  <SelectOption {...option}>
-                    <span>{option.label}</span>
-                    {/* {option.value === context().selectedOption?.value && '✓'} */}
-                  </SelectOption>
-                )}
-              </For>
-            </SelectMenu>
-          </SelectPositioner>
-        </Portal>
-      </div>
-      {/* )} */}
-      {/* </SelectContextWrapper> */}
+      {(context) => (
+        <div>
+          <SelectLabel>Framework:</SelectLabel>
+          <SelectTrigger>
+            <span>{context().selectedOption?.label ?? 'Select option'}</span>
+          </SelectTrigger>
+          <Portal>
+            <SelectPositioner>
+              <SelectMenu>
+                <For each={options}>
+                  {(option) => (
+                    <SelectOption {...option}>
+                      <span>{option.label}</span>
+                      {option.value === context().selectedOption?.value && '✓'}
+                    </SelectOption>
+                  )}
+                </For>
+              </SelectMenu>
+            </SelectPositioner>
+          </Portal>
+        </div>
+      )}
     </Select>
   )
 }
