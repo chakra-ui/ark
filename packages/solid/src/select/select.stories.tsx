@@ -1,5 +1,5 @@
-import { Portal } from 'solid-js/web'
-import { Select } from './select'
+import { For, Portal } from 'solid-js/web'
+import { Select, SelectContextWrapper } from './select'
 import { SelectLabel } from './select-label'
 import { SelectMenu } from './select-menu'
 import { SelectOption } from './select-option'
@@ -14,26 +14,30 @@ export const Basic = () => {
   ]
   return (
     <Select>
-      {({ selectedOption }) => (
-        <>
-          <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>
-            <span>{selectedOption?.label ?? 'Select option'}</span>
-          </SelectTrigger>
-          <Portal>
-            <SelectPositioner>
-              <SelectMenu>
-                {options.map((option) => (
-                  <SelectOption {...option}>
-                    <span>{option.label}</span>
-                    {option.value === selectedOption?.value && '✓'}
-                  </SelectOption>
-                ))}
-              </SelectMenu>
-            </SelectPositioner>
-          </Portal>
-        </>
-      )}
+      <SelectContextWrapper>
+        {(context) => (
+          <>
+            <SelectLabel>Framework:</SelectLabel>
+            <SelectTrigger>
+              <span>{context().selectedOption?.label ?? 'Select option'}</span>
+            </SelectTrigger>
+            <Portal>
+              <SelectPositioner>
+                <SelectMenu>
+                  <For each={options}>
+                    {(option) => (
+                      <SelectOption {...option}>
+                        <span>{option.label}</span>
+                        {option.value === context().selectedOption?.value && '✓'}
+                      </SelectOption>
+                    )}
+                  </For>
+                </SelectMenu>
+              </SelectPositioner>
+            </Portal>
+          </>
+        )}
+      </SelectContextWrapper>
     </Select>
   )
 }
