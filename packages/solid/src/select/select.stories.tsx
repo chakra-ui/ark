@@ -1,5 +1,5 @@
 import { For, Portal } from 'solid-js/web'
-import { Select, SelectContextWrapper } from './select'
+import { Select } from './select'
 import { SelectLabel } from './select-label'
 import { SelectMenu } from './select-menu'
 import { SelectOption } from './select-option'
@@ -14,30 +14,31 @@ export const Basic = () => {
   ]
   return (
     <Select>
-      <SelectContextWrapper>
-        {(context) => (
-          <>
-            <SelectLabel>Framework:</SelectLabel>
-            <SelectTrigger>
-              <span>{context().selectedOption?.label ?? 'Select option'}</span>
-            </SelectTrigger>
-            <Portal>
-              <SelectPositioner>
-                <SelectMenu>
-                  <For each={options}>
-                    {(option) => (
-                      <SelectOption {...option}>
-                        <span>{option.label}</span>
-                        {option.value === context().selectedOption?.value && '✓'}
-                      </SelectOption>
-                    )}
-                  </For>
-                </SelectMenu>
-              </SelectPositioner>
-            </Portal>
-          </>
-        )}
-      </SelectContextWrapper>
+      {/* <SelectContextWrapper> */}
+      {/* {(context) => ( */}
+      <div>
+        <SelectLabel>Framework:</SelectLabel>
+        <SelectTrigger>
+          {/* <span>{context().selectedOption?.label ?? 'Select option'}</span> */}
+          <span>Select option</span>
+        </SelectTrigger>
+        <Portal>
+          <SelectPositioner>
+            <SelectMenu>
+              <For each={options}>
+                {(option) => (
+                  <SelectOption {...option}>
+                    <span>{option.label}</span>
+                    {/* {option.value === context().selectedOption?.value && '✓'} */}
+                  </SelectOption>
+                )}
+              </For>
+            </SelectMenu>
+          </SelectPositioner>
+        </Portal>
+      </div>
+      {/* )} */}
+      {/* </SelectContextWrapper> */}
     </Select>
   )
 }
