@@ -79,7 +79,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@polymorphic-factory/react': 0.2.0
+      '@polymorphic-factory/react': 0.2.1
       '@testing-library/dom': 8.19.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
@@ -124,7 +124,7 @@ importers:
       vite: 3.2.4
       vitest: 0.25.3
     dependencies:
-      '@polymorphic-factory/react': 0.2.0_react@18.2.0
+      '@polymorphic-factory/react': 0.2.1_react@18.2.0
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
@@ -3510,8 +3510,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: false
 
-  /@polymorphic-factory/react/0.2.0_react@18.2.0:
-    resolution: {integrity: sha512-5mQMWfZBdtX6wY3vSS6rLY3ZSrnrlH8fhYalSacD51Z8rClvqjN4MLVnJnP0fpbpfGIb28K0tXhOO/ezNU3wJQ==}
+  /@polymorphic-factory/react/0.2.1_react@18.2.0:
+    resolution: {integrity: sha512-n90IHO1uvII17KSo5z/9pW+zgngFbf8gikRrYn/CmtiVR9y8YOuHcfbQy21Z9juTGLvxs1l7GXYqexqrTDEIcw==}
     peerDependencies:
       react: '>=16.8 || >=17 || >18'
     dependencies:
