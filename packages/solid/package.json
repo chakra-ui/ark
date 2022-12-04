@@ -38,7 +38,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@polymorphic-factory/solid": "0.1.1",
+    "@polymorphic-factory/solid": "0.1.2",
     "@zag-js/accordion": "0.2.2",
     "@zag-js/checkbox": "0.2.3",
     "@zag-js/dialog": "0.2.2",
