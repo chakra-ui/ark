@@ -34,6 +34,33 @@ export const Basic = () => (
   </Menu>
 )
 
+export const WithIsOpen = () => {
+  const [isOpen, setIsOpen] = createSignal(false)
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(!isOpen())}>Trigger from the outside</button>
+      <Menu isOpen={isOpen}>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+        <Portal>
+          <MenuPositioner>
+            <MenuContent>
+              <MenuItem id="search">Search</MenuItem>
+              <MenuItem id="undo">Undo</MenuItem>
+              <MenuItem id="delivery" disabled>
+                Delivery
+              </MenuItem>
+              <MenuItem id="unlink">Unlink</MenuItem>
+            </MenuContent>
+          </MenuPositioner>
+        </Portal>
+      </Menu>
+    </>
+  )
+}
+
 export const Group = () => (
   <Menu>
     <MenuTrigger>
@@ -127,7 +154,7 @@ export const SubMenu = () => (
           <Menu>
             <MenuTriggerItem>Share &gt;</MenuTriggerItem>
             <Portal>
-              <MenuPositioner>
+              <MenuPositioner style={{ 'z-index': '1' }}>
                 <MenuContent>
                   <MenuItem id="twitter">Twitter</MenuItem>
                   <MenuItem id="message">Message</MenuItem>

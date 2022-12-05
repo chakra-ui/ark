@@ -9,7 +9,7 @@ export const [MenuProvider, useMenuContext] = createContext<MenuContext | undefi
   strict: false,
 })
 
-export type MenuMachineContext = () => ReturnType<ReturnType<UseMenuReturn>['machine']>
+export type MenuMachineContext = () => ReturnType<UseMenuReturn>['machine']
 
 export const [MenuMachineProvider, useMenuMachineContext] = createContext<
   MenuMachineContext | undefined

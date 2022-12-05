@@ -5,5 +5,6 @@ export type MenuTriggerItemProps = HTMLArkProps<'div'>
 
 export const MenuTriggerItem = (props: MenuTriggerItemProps) => {
   const getTriggerItemProps = useMenuTriggerItemContext()
+
   return <ark.div {...getTriggerItemProps?.()} {...props} />
 }
