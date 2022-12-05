@@ -53,20 +53,21 @@
     "@zag-js/radio": "0.1.3",
     "@zag-js/range-slider": "0.2.3",
     "@zag-js/rating": "0.2.3",
+    "@zag-js/select": "0.1.1",
     "@zag-js/slider": "0.2.3",
     "@zag-js/solid": "0.2.2",
-    "@zag-js/tags-input": "0.3.3",
     "@zag-js/tabs": "0.2.2",
+    "@zag-js/tags-input": "0.3.3",
     "@zag-js/toast": "0.2.3",
     "@zag-js/tooltip": "0.2.2"
   },
   "devDependencies": {
     "@testing-library/dom": "8.19.0",
     "@testing-library/jest-dom": "5.16.5",
-    "@typescript-eslint/eslint-plugin": "5.45.0",
-    "@typescript-eslint/parser": "5.45.0",
     "@types/jsdom": "20.0.1",
     "@types/testing-library__jest-dom": "5.14.5",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
+    "@typescript-eslint/parser": "5.45.0",
     "@vitest/coverage-c8": "0.25.3",
     "eslint": "8.29.0",
     "jsdom": "20.0.3",
@@ -75,8 +76,8 @@
     "tsup": "6.5.0",
     "typescript": "4.9.3",
     "vite": "3.2.4",
-    "vitest": "0.25.3",
-    "vite-plugin-solid": "2.4.0"
+    "vite-plugin-solid": "2.4.0",
+    "vitest": "0.25.3"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
