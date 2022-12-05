@@ -18,6 +18,6 @@
     "@css-panda/presets": "0.0.0-dev-20221121144047",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.12",
-    "css-panda": "0.0.0-dev-20221202065255"
+    "css-panda": "0.0.0-dev-20221204052723"
   }
 }
