@@ -68,7 +68,7 @@
     "@vue/compiler-sfc": "3.2.45",
     "eslint": "8.29.0",
     "typescript": "4.9.3",
-    "vite": "3.2.4",
+    "vite": "3.2.5",
     "vitest": "0.25.3",
     "vue": "3.2.45"
   },
