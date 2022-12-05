@@ -32,7 +32,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Radio Group  | 🟢    | 🟢    | ⚪  |
 | Range Slider | 🟢    | 🟢    | ⚪  |
 | Rating       | 🟢    | 🟢    | ⚪  |
-| Select       | 🟢    | ⚪    | ⚪  |
+| Select       | 🟢    | 🟢    | ⚪  |
 | Slider       | 🟢    | 🟢    | ⚪  |
 | Tabs         | 🟢    | 🟢    | ⚪  |
 | Tags Input   | 🟢    | 🟢    | ⚪  |
