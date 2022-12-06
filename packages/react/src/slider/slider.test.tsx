@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { JSDOM } from 'jsdom'
 import { Slider, type SliderProps } from './slider'
 import { SliderControl } from './slider-control'
 import { SliderInput } from './slider-input'
@@ -9,13 +8,7 @@ import { SliderThumb } from './slider-thumb'
 import { SliderTrack } from './slider-track'
 
 const ComponentUnderTest = (props: SliderProps) => (
-  <Slider
-    min={-50}
-    max={50}
-    defaultValue={0}
-    getRootNode={() => new JSDOM().window.document}
-    {...props}
-  >
+  <Slider min={-50} max={50} defaultValue={0} {...props}>
     <SliderControl>
       <SliderTrack>
         <SliderRange />
