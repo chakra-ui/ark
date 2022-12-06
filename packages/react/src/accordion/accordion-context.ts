@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseAccordionReturn } from './use-accordion'
 
 export type AccordionContext = UseAccordionReturn

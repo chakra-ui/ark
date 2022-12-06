@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseNumberInputReturn } from './use-number-input'
 
 export type NumberInputContext = UseNumberInputReturn

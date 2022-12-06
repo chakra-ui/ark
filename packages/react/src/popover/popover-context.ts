@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UsePopoverReturn } from './use-popover'
 
 export type PopoverContext = UsePopoverReturn

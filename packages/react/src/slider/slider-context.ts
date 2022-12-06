@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseSliderReturn } from './use-slider'
 
 export type SliderContext = UseSliderReturn

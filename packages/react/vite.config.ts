@@ -8,7 +8,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   test: {
-    setupFiles: './src/setupTest.ts',
+    setupFiles: './src/setup-test.ts',
     coverage: {
       all: true,
       reporter: ['lcov', 'text'],

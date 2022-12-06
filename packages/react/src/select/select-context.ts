@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseSelectReturn } from './use-select'
 
 export type SelectContext = UseSelectReturn
