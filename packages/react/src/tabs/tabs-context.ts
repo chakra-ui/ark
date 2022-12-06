@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseTabsReturn } from './use-tabs'
 
 export type TabsContext = UseTabsReturn

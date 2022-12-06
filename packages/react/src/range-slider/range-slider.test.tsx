@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { JSDOM } from 'jsdom'
 import { RangeSlider, type RangeSliderProps } from './range-slider'
 import { RangeSliderControl } from './range-slider-control'
 import { RangeSliderInput } from './range-slider-input'
@@ -13,13 +12,7 @@ import { RangeSliderTrack } from './range-slider-track'
 const ComponentUnderTest = (props: RangeSliderProps) => {
   const values = [-20, 20]
   return (
-    <RangeSlider
-      min={-50}
-      max={50}
-      defaultValue={values}
-      getRootNode={() => new JSDOM().window.document}
-      {...props}
-    >
+    <RangeSlider min={-50} max={50} defaultValue={values} {...props}>
       <div>
         <RangeSliderLabel>Quantity: </RangeSliderLabel>
         <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>

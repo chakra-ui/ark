@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 
 export type AccordionItemContext = { value: string; disabled?: boolean }
 

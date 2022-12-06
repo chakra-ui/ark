@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseMenuReturn } from './use-menu'
 
 export type MenuContext = unknown // type `UseMenuReturn['api']` can't be named
