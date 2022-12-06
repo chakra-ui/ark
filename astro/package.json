@@ -14,12 +14,12 @@
     "css:dev": "panda --watch"
   },
   "dependencies": {
-    "@astrojs/mdx": "0.12.0",
+    "@astrojs/mdx": "0.12.1",
     "@astrojs/sitemap": "1.0.0",
     "@astrojs/solid-js": "1.2.3",
     "@fontsource/inter": "4.5.14",
-    "astro": "1.6.12",
-    "css-panda": "0.0.0-dev-20221202065255",
+    "astro": "1.6.13",
+    "css-panda": "0.0.0-dev-20221205060847",
     "solid-js": "1.6.2"
   }
 }
