@@ -97,7 +97,7 @@ importers:
       '@vitejs/plugin-react': 2.2.0
       '@vitest/coverage-c8': 0.25.4
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -131,7 +131,7 @@ importers:
     dependencies:
       '@polymorphic-factory/react': 0.2.1_react@18.2.0
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -187,7 +187,7 @@ importers:
       '@typescript-eslint/parser': 5.45.1
       '@vitest/coverage-c8': 0.25.4
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -219,7 +219,7 @@ importers:
     dependencies:
       '@polymorphic-factory/solid': 0.1.2_solid-js@1.6.2
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -268,7 +268,7 @@ importers:
       '@vitest/coverage-c8': 0.25.4
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -293,7 +293,7 @@ importers:
       vue: 3.2.45
     dependencies:
       '@zag-js/accordion': 0.2.2
-      '@zag-js/checkbox': 0.2.3
+      '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
       '@zag-js/hover-card': 0.1.2
@@ -4649,6 +4649,10 @@ packages:
       '@zag-js/types': 0.3.1
     dev: false
 
+  /@zag-js/anatomy/0.1.1:
+    resolution: {integrity: sha512-OpeEVfQ8ITDA1hQRtRNCUC+FiQiPwwDjoeyNR161p/Pt212l/YbZdVP8Q72TQG2wQTtjoJ5qKB6da++KFjoNIg==}
+    dev: false
+
   /@zag-js/aria-hidden/0.2.0:
     resolution: {integrity: sha512-NjCybo9zICpJh/eVnckzNFqqoC5tEyXpogjudqWAxLPVewp+plmOBfqtrYwWMbRJ87mtxkCUUpWKTP3en4WtmQ==}
     dev: false
@@ -4657,9 +4661,10 @@ packages:
     resolution: {integrity: sha512-Pj7AeCuZL94a2AoI1WIAeRtTpttkH0SAv7kuFXpEbTneKHUhqyr+ooWn8LA/wrPzcZ7qtuM+Vp/VxgwEtXTvrw==}
     dev: false
 
-  /@zag-js/checkbox/0.2.3:
-    resolution: {integrity: sha512-XLtWx4C32+tQFkEbz1vcGPIfct79xJs1scLqhJtbA6xhWDkxXaFp6WyfzadRdeKvKP23mxqRenwDss1JBN/Mpw==}
+  /@zag-js/checkbox/0.2.4:
+    resolution: {integrity: sha512-Kyz/t1ruWPuXV9w1vspdm7qCB18WND/Rz66uyuQpPHWAQwE7LzO38G06ihlIWaPu8R+myvSDdvLGnghxxWK2Cw==}
     dependencies:
+      '@zag-js/anatomy': 0.1.1
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1
     dev: false
