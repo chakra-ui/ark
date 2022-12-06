@@ -21,11 +21,12 @@ const { frontmatter } = Astro.props
     <Stack gap="16" direction="row">
       <Sidebar />
       <main>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
-        <slot />
+        <article>
+          <h1>{frontmatter.title}</h1>
+          <p>{frontmatter.description}</p>
+          <slot />
+        </article>
       </main>
     </Stack>
   </Container>
-  <Footer />
 </BaseLayout>

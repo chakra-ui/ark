@@ -3,7 +3,6 @@ import { css } from '../../panda/css'
 import { Container, HStack, Stack } from '../../panda/jsx'
 import Logo from './Logo.astro'
 import { Link } from './shared/Link'
-import { Text } from './shared/Text'
 import ThemeIcon from './ThemeIcon.astro'
 ---
 
@@ -19,7 +18,7 @@ import ThemeIcon from './ThemeIcon.astro'
         </Link>
         {
           ['Docs', 'Showcase', 'Blog'].map((item) => (
-            <Link href="/components" textStyle="sm">
+            <Link href="/docs/react/accordion" textStyle="sm">
               {item}
             </Link>
           ))

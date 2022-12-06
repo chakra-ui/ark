@@ -1,0 +1,24 @@
+---
+export async function getStaticPaths() {
+  const frameworks = ['react', 'solid', 'vue']
+  const components = await Astro.glob('../../../docs/**/*.mdx')
+
+  return components.map((component) =>
+    frameworks.map((framework) => ({
+      params: {
+        component: component.frontmatter.id,
+        framework,
+      },
+      props: {
+        component,
+      },
+    })),
+  )
+}
+
+// TODO use for provider
+// const { framework } = Astro.params
+const { Content } = Astro.props.component
+---
+
+<Content />
