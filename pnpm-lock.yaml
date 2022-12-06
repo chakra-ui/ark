@@ -96,7 +96,7 @@ importers:
       '@typescript-eslint/parser': 5.45.1
       '@vitejs/plugin-react': 2.2.0
       '@vitest/coverage-c8': 0.25.4
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -130,7 +130,7 @@ importers:
       vitest: 0.25.4
     dependencies:
       '@polymorphic-factory/react': 0.2.1_react@18.2.0
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -186,7 +186,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.45.1
       '@typescript-eslint/parser': 5.45.1
       '@vitest/coverage-c8': 0.25.4
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -218,7 +218,7 @@ importers:
       vitest: 0.25.4
     dependencies:
       '@polymorphic-factory/solid': 0.1.2_solid-js@1.6.2
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -267,7 +267,7 @@ importers:
       '@vitejs/plugin-vue': 3.2.0
       '@vitest/coverage-c8': 0.25.4
       '@vue/compiler-sfc': 3.2.45
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -292,7 +292,7 @@ importers:
       vitest: 0.25.4
       vue: 3.2.45
     dependencies:
-      '@zag-js/accordion': 0.2.2
+      '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
       '@zag-js/editable': 0.2.3
@@ -4642,11 +4642,16 @@ packages:
   /@xtuc/long/4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  /@zag-js/accordion/0.2.2:
-    resolution: {integrity: sha512-MS4MROJbXnc/1xS2Oa0Iuu7qkPvotAO83YnYLADNRkDnnfXgjvHljR0AJaCgQNjam6NaUoMe+e37t+R75kZVMQ==}
+  /@zag-js/accordion/0.2.3:
+    resolution: {integrity: sha512-guolU8IGBlFj7fPzeZq2E8T9bFUq/Lisb5pIr4nM4LgKi2ADlMKGKPC2IR1FyLNY88+qGln5scfPhDKLDNdQYg==}
     dependencies:
+      '@zag-js/anatomy': 0.1.1
       '@zag-js/core': 0.2.2
       '@zag-js/types': 0.3.1
+    dev: false
+
+  /@zag-js/anatomy/0.1.1:
+    resolution: {integrity: sha512-OpeEVfQ8ITDA1hQRtRNCUC+FiQiPwwDjoeyNR161p/Pt212l/YbZdVP8Q72TQG2wQTtjoJ5qKB6da++KFjoNIg==}
     dev: false
 
   /@zag-js/aria-hidden/0.2.0:
