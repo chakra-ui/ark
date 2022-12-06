@@ -1,17 +1,17 @@
 import * as dialog from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UseDialogProps = Omit<dialog.Context, 'id'>
+export type UseDialogProps = Optional<dialog.Context, 'id'>
 
 export const useDialog = (props: UseDialogProps) => {
-  const initialContext = filterUndefinedEntries({
+  const context = {
     id: useId(),
     ...props,
-  })
+  }
 
-  const [state, send] = useMachine(dialog.machine(initialContext), { context: initialContext })
+  const [state, send] = useMachine(dialog.machine(context), { context })
   return dialog.connect(state, send, normalizeProps)
 }
 

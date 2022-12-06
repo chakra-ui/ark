@@ -1,18 +1,17 @@
 import * as hoverCard from '@zag-js/hover-card'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UseHoverCardProps = Omit<hoverCard.Context, 'id'>
+export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
 
 export const useHoverCard = (props: UseHoverCardProps) => {
-  const initialContext = filterUndefinedEntries({
+  const context = {
     id: useId(),
     ...props,
-  })
+  }
 
-  const [state, send] = useMachine(hoverCard.machine(initialContext), { context: initialContext })
-
+  const [state, send] = useMachine(hoverCard.machine(context), { context })
   return hoverCard.connect(state, send, normalizeProps)
 }
 

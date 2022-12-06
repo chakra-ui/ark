@@ -1,27 +1,25 @@
 import * as pinInput from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UsePinInputProps = Omit<pinInput.Context, 'id'> & {
+export type UsePinInputProps = Optional<pinInput.Context, 'id'> & {
   defaultValue?: pinInput.Context['value']
 }
 
 export const usePinInput = (props: UsePinInputProps) => {
-  const initialContext = filterUndefinedEntries({
+  const initialContext = {
     id: useId(),
     ...props,
-    value: props.value ?? props.defaultValue ?? [],
-  })
+    value: props.defaultValue ?? [],
+  }
 
-  const context = filterUndefinedEntries({
+  const context = {
     ...initialContext,
     value: props.value,
-  })
+  }
 
-  // TODO https://github.com/chakra-ui/ark/issues/48
   const [state, send] = useMachine(pinInput.machine(initialContext), { context })
-
   return pinInput.connect(state, send, normalizeProps)
 }
 

@@ -1,0 +1,7 @@
+export { Tab, type TabProps } from './tab'
+export { TabIndicator, type TabIndicatorProps } from './tab-indicator'
+export { TabList, type TabListProps } from './tab-list'
+export { TabPanel, type TabPanelProps } from './tab-panel'
+export { TabPanels, type TabPanelsProps } from './tab-panels'
+export { Tabs, type TabsProps } from './tabs'
+export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs'

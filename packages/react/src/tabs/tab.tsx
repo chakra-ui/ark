@@ -1,17 +1,16 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import type { connect } from '@zag-js/tabs'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
-export type TabProps = Assign<
-  HTMLArkProps<'button'>,
-  Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
->
+type TabContext = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
+export type TabProps = Assign<HTMLArkProps<'button'>, TabContext>
 
 export const Tab = forwardRef<'button', TabProps>((props, ref) => {
-  const [tabProps, buttonProps] = splitProps(props, ['disabled', 'value'])
+  const [tabProps, buttonProps] = createSplitProps<TabContext>()(props, ['disabled', 'value'])
   const { getTriggerProps } = useTabsContext()
   const mergedProps = mergeProps(getTriggerProps(tabProps), buttonProps)
 

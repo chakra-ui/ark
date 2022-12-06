@@ -1,22 +1,24 @@
 import * as rating from '@zag-js/rating'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UseRatingProps = Omit<rating.Context, 'id'> & { defaultValue?: rating.Context['value'] }
+export type UseRatingProps = Optional<rating.Context, 'id'> & {
+  defaultValue?: rating.Context['value']
+}
 export type UseRatingReturn = ReturnType<typeof useRating>
 
 export const useRating = (props: UseRatingProps) => {
-  const initialContext = filterUndefinedEntries({
+  const initialContext = {
     id: useId(),
     ...props,
-    value: props.value ?? props.defaultValue,
-  })
+    value: props.defaultValue,
+  }
 
-  const context = filterUndefinedEntries({
+  const context = {
     ...initialContext,
     value: props.value,
-  })
+  }
 
   const [state, send] = useMachine(rating.machine(initialContext), {
     context,

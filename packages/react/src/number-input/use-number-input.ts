@@ -1,26 +1,25 @@
 import * as numberInput from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UseNumberInputProps = Omit<numberInput.Context, 'id'> & {
+export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
   defaultValue?: numberInput.Context['value']
 }
 
 export const useNumberInput = (props: UseNumberInputProps) => {
-  const initialContext = filterUndefinedEntries({
+  const initialContext = {
     id: useId(),
     ...props,
-    value: props.value ?? props.defaultValue,
-  })
+    value: props.defaultValue,
+  }
 
-  const context = filterUndefinedEntries({
+  const context = {
     ...initialContext,
     value: props.value,
-  })
+  }
 
   const [state, send] = useMachine(numberInput.machine(initialContext), { context })
-
   return numberInput.connect(state, send, normalizeProps)
 }
 

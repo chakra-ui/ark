@@ -1,14 +1,15 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import type { Assign } from '../types'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, UseNumberInputProps } from './use-number-input'
 
 export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
 export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
-  const [useNumberInputProps, divProps] = splitProps(props, [
+  const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',
     'clampValueOnBlur',
@@ -16,8 +17,10 @@ export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
     'dir',
     'disabled',
     'focusInputOnChange',
+    'form',
     'format',
     'getRootNode',
+    'id',
     'ids',
     'inputMode',
     'invalid',
@@ -32,7 +35,7 @@ export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
     'onInvalid',
     'parse',
     'pattern',
-    'readonly',
+    'readOnly',
     'spinOnPress',
     'step',
     'translations',

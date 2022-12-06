@@ -1,4 +1,10 @@
-# Ark
+<h1 align="center">@ark</h1>
+
+<p align="center">
+  <img alt="CodeCov" src="https://codecov.io/gh/chakra-ui/ark/branch/main/graph/badge.svg?token=O6BB59DHJ4"/>
+  <img alt="MIT License" src="https://img.shields.io/github/license/chakra-ui/ark"/>
+  <img alt="Github Stars" src="https://badgen.net/github/stars/chakra-ui/ark" />
+</p>
 
 ## Preview components
 
@@ -13,21 +19,22 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 |              | React | Solid | Vue |
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | ⚪  |
-| Checkbox     | 🟢    | ⚪    | ⚪  |
-| Dialog       | 🟢    | ⚪    | ⚪  |
-| Editable     | 🟢    | ⚪    | ⚪  |
-| Hover Card   | 🟢    | ⚪    | ⚪  |
-| Menu         | ⚪    | ⚪    | ⚪  |
-| Number Input | 🟢    | ⚪    | ⚪  |
-| Pagination   | 🟢    | ⚪    | ⚪  |
+| Checkbox     | 🟢    | 🟢    | ⚪  |
+| Dialog       | 🟢    | 🟢    | ⚪  |
+| Editable     | 🟢    | 🟢    | ⚪  |
+| Hover Card   | 🟢    | 🟢    | ⚪  |
+| Menu         | 🟢    | ⚪    | ⚪  |
+| Number Input | 🟢    | 🟢    | ⚪  |
+| Pagination   | 🟢    | 🟢    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
-| Popover      | 🟢    | ⚪    | ⚪  |
-| Pressable    | 🟢    | ⚪    | ⚪  |
-| Radio Group  | 🟢    | ⚪    | ⚪  |
-| Range Slider | ⚪    | ⚪    | ⚪  |
-| Rating       | 🟢    | ⚪    | ⚪  |
-| Slider       | 🟢    | ⚪    | ⚪  |
-| Tabs         | 🟢    | ⚪    | ⚪  |
-| Tags Input   | 🟢    | ⚪    | ⚪  |
-| Toast        | ⚪    | ⚪    | ⚪  |
-| Tooltip      | 🟢    | ⚪    | ⚪  |
+| Popover      | 🟢    | 🟢    | ⚪  |
+| Pressable    | 🟢    | 🟢    | ⚪  |
+| Radio Group  | 🟢    | 🟢    | ⚪  |
+| Range Slider | 🟢    | 🟢    | ⚪  |
+| Rating       | 🟢    | 🟢    | ⚪  |
+| Select       | 🟢    | 🟢    | ⚪  |
+| Slider       | 🟢    | 🟢    | ⚪  |
+| Tabs         | 🟢    | 🟢    | ⚪  |
+| Tags Input   | 🟢    | 🟢    | ⚪  |
+| Toast        | 🟢    | 🟢    | ⚪  |
+| Tooltip      | 🟢    | 🟢    | ⚪  |

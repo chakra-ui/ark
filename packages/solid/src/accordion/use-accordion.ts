@@ -1,20 +1,14 @@
 import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId } from 'solid-js'
+import { createMemo, createUniqueId, mergeProps } from 'solid-js'
+import type { Optional } from '../types'
 
-export type UseAccordionProps = Omit<accordion.Context, 'id'> & {
-  defaultValue?: accordion.Context['value']
-}
-
+export type UseAccordionProps = Optional<accordion.Context, 'id'>
 export type UseAccordionReturn = ReturnType<typeof useAccordion>
 
 export const useAccordion = (props: UseAccordionProps) => {
-  const [state, send] = useMachine(
-    accordion.machine({
-      id: createUniqueId(),
-      ...props,
-      value: props.defaultValue ?? props.value,
-    }),
-  )
+  const context = mergeProps({ id: createUniqueId() }, props)
+  const [state, send] = useMachine(accordion.machine(context), { context })
+
   return createMemo(() => accordion.connect(state, send, normalizeProps))
 }

@@ -1,17 +1,17 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import type { connect } from '@zag-js/tabs'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { splitProps, type Assign } from '../split-props'
+import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
-export type TabPanelProps = Assign<
-  HTMLArkProps<'div'>,
-  Parameters<ReturnType<typeof connect>['getContentProps']>[0]
->
+type GetContentProps = Parameters<ReturnType<typeof connect>['getContentProps']>[0]
+
+export type TabPanelProps = Assign<HTMLArkProps<'div'>, GetContentProps>
 
 export const TabPanel = forwardRef<'div', TabPanelProps>((props, ref) => {
-  const [tabContentProps, divProps] = splitProps(props, ['value'])
+  const [tabContentProps, divProps] = createSplitProps<GetContentProps>()(props, ['value'])
   const { getContentProps } = useTabsContext()
   const mergedProps = mergeProps(getContentProps(tabContentProps), divProps)
 

@@ -1,24 +1,24 @@
 import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { filterUndefinedEntries } from '../filter-undefined-entries'
+import type { Optional } from '../types'
 
-export type UseAccordionProps = Omit<accordion.Context, 'id'> & {
+export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
   defaultValue?: accordion.Context['value']
 }
 export type UseAccordionReturn = ReturnType<typeof useAccordion>
 
 export const useAccordion = (props: UseAccordionProps) => {
-  const initialContext = filterUndefinedEntries({
+  const initialContext = {
     id: useId(),
     ...props,
-    value: props.value ?? props.defaultValue,
-  })
+    value: props.defaultValue,
+  }
 
-  const context = filterUndefinedEntries({
+  const context = {
     ...initialContext,
     value: props.value,
-  })
+  }
 
   const [state, send] = useMachine(accordion.machine(initialContext), { context })
   return accordion.connect(state, send, normalizeProps)
