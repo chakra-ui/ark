@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react'
+import user from '@testing-library/user-event'
+import { Portal } from '@zag-js/react'
 import { Select, SelectProps } from './select'
 import { SelectLabel } from './select-label'
 import { SelectMenu } from './select-menu'
@@ -12,26 +14,28 @@ const ComponentUnderTest = (props: SelectProps) => {
     { label: 'Vue', value: 'vue' },
     { label: 'Angular', value: 'angular' },
   ]
+
   return (
     <Select {...props}>
       {({ selectedOption }) => (
-        <div>
+        <>
           <SelectLabel>Framework:</SelectLabel>
           <SelectTrigger>
             <span>{selectedOption?.label ?? 'Select option'}</span>
           </SelectTrigger>
-
-          <SelectPositioner>
-            <SelectMenu>
-              {options.map((option, id) => (
-                <SelectOption key={id} {...option}>
-                  <span>{option.label}</span>
-                  {option.value === selectedOption?.value && '✓'}
-                </SelectOption>
-              ))}
-            </SelectMenu>
-          </SelectPositioner>
-        </div>
+          <Portal>
+            <SelectPositioner>
+              <SelectMenu>
+                {options.map((option, id) => (
+                  <SelectOption key={id} {...option}>
+                    <span>{option.label}</span>
+                    {option.value === selectedOption?.value && '✓'}
+                  </SelectOption>
+                ))}
+              </SelectMenu>
+            </SelectPositioner>
+          </Portal>
+        </>
       )}
     </Select>
   )
@@ -40,9 +44,21 @@ const ComponentUnderTest = (props: SelectProps) => {
 describe('Select', () => {
   it('should render', () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByText('Framework:')).toBeInTheDocument()
+  })
+
+  it('should show options on click', async () => {
+    render(<ComponentUnderTest />)
     expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()
-    expect(screen.getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
-    expect(screen.getByRole('option', { hidden: true, name: 'Vue' })).not.toBeVisible()
+    await user.click(screen.getByText('Select option'))
+    expect(screen.getByRole('option', { name: 'Angular' })).toBeVisible()
+  })
+
+  it('should allow to selectt a option', async () => {
+    render(<ComponentUnderTest />)
+    expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()
+    await user.click(screen.getByText('Select option'))
+    await user.click(screen.getByRole('option', { name: 'Angular' }))
+
+    expect(screen.queryByText('Select option')).not.toBeInTheDocument()
   })
 })
