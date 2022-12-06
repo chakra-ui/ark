@@ -1,0 +1,31 @@
+---
+import type { MarkdownLayoutProps } from 'astro'
+import { css } from '../../panda/css'
+import { Container, Stack } from '../../panda/jsx'
+import Footer from '../components/Footer.astro'
+import Navbar from '../components/Navbar.astro'
+import Sidebar from '../components/Sidebar.astro'
+import BaseLayout from './BaseLayout.astro'
+
+type Props = MarkdownLayoutProps<{
+  title: string
+  description: string
+  url: string
+}>
+
+const { frontmatter } = Astro.props
+---
+
+<BaseLayout>
+  <Container>
+    <Stack gap="16" direction="row">
+      <Sidebar />
+      <main>
+        <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.description}</p>
+        <slot />
+      </main>
+    </Stack>
+  </Container>
+  <Footer />
+</BaseLayout>
