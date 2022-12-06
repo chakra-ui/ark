@@ -11,3 +11,11 @@ export const Basic = () => (
     <CheckboxControl />
   </Checkbox>
 )
+
+export const Indetermiante = () => (
+  <Checkbox indeterminate>
+    <CheckboxLabel>Checkbox</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+)

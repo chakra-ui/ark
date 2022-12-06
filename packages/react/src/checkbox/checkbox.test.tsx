@@ -10,7 +10,7 @@ const Component = (props: CheckboxProps) => (
   <Checkbox defaultChecked {...props}>
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxInput />
-    <CheckboxControl data-testid="foo" />
+    <CheckboxControl data-testid="control" />
   </Checkbox>
 )
 
@@ -32,7 +32,6 @@ describe('Checkbox', () => {
   it('should handle indeterminate state properly', async () => {
     render(<Component indeterminate />)
 
-    const checkbox = screen.getByRole('checkbox')
-    expect(checkbox.getAttribute('aria-checked')).toBe('mixed')
+    expect(screen.getByTestId('control')).toHaveAttribute('data-indeterminate')
   })
 })

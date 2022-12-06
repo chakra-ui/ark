@@ -53,7 +53,10 @@ describe('Select', () => {
     expect(screen.getByRole('option', { name: 'Angular' })).toBeVisible()
   })
 
-  it('should allow to selectt a option', async () => {
+  // TODO
+  // stderr | src/select/select.test.tsx > Select > should allow to select a option
+  // Error: Uncaught [Error: Could not find the menu element.]
+  it('should allow to select a option', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()
     await user.click(screen.getByText('Select option'))

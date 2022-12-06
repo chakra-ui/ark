@@ -27,15 +27,17 @@ export type MenuProps = Assign<
 
 export const Menu = (props: MenuProps) => {
   const [menuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(props, [
-    'activeId',
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
     'dir',
     'getRootNode',
+    'highlightedId',
     'id',
     'ids',
     'loop',
+    'onClose',
+    'onOpen',
     'onSelect',
     'onValueChange',
     'positioning',

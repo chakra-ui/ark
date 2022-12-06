@@ -14,7 +14,7 @@ export type RangeSliderOutputProps = Assign<
 
 export const RangeSliderOutput = (props: RangeSliderOutputProps) => {
   const slider = useRangeSliderContext()
-  const view = () => children(() => runIfFn(props.children, { value: slider().values }))
+  const view = () => children(() => runIfFn(props.children, { value: slider().value }))
 
   return (
     <ark.output {...slider().outputProps} {...props}>
