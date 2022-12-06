@@ -91,7 +91,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.45.1
       '@typescript-eslint/parser': 5.45.1
       '@vitejs/plugin-react': 2.2.0
-      '@vitest/coverage-c8': 0.25.3
+      '@vitest/coverage-c8': 0.25.4
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
@@ -122,7 +122,7 @@ importers:
       tsup: 6.5.0
       typescript: 4.9.3
       vite: 3.2.5
-      vitest: 0.25.3
+      vitest: 0.25.4
     dependencies:
       '@polymorphic-factory/react': 0.2.1_react@18.2.0
       '@zag-js/accordion': 0.2.2
@@ -158,7 +158,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
       '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
       '@vitejs/plugin-react': 2.2.0_vite@3.2.5
-      '@vitest/coverage-c8': 0.25.3_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.25.4_jsdom@20.0.3
       eslint: 8.29.0
       eslint-plugin-react: 7.31.11_eslint@8.29.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
@@ -168,7 +168,7 @@ importers:
       tsup: 6.5.0_typescript@4.9.3
       typescript: 4.9.3
       vite: 3.2.5
-      vitest: 0.25.3_jsdom@20.0.3
+      vitest: 0.25.4_jsdom@20.0.3
 
   packages/solid:
     specifiers:
@@ -179,7 +179,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.45.1
       '@typescript-eslint/parser': 5.45.1
-      '@vitest/coverage-c8': 0.25.3
+      '@vitest/coverage-c8': 0.25.4
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.3
       '@zag-js/dialog': 0.2.2
@@ -209,7 +209,7 @@ importers:
       typescript: 4.9.3
       vite: 3.2.5
       vite-plugin-solid: 2.4.0
-      vitest: 0.25.3
+      vitest: 0.25.4
     dependencies:
       '@polymorphic-factory/solid': 0.1.2_solid-js@1.6.2
       '@zag-js/accordion': 0.2.2
@@ -240,7 +240,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
       '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
-      '@vitest/coverage-c8': 0.25.3_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.25.4_jsdom@20.0.3
       eslint: 8.29.0
       jsdom: 20.0.3
       solid-js: 1.6.2
@@ -249,7 +249,7 @@ importers:
       typescript: 4.9.3
       vite: 3.2.5
       vite-plugin-solid: 2.4.0_solid-js@1.6.2+vite@3.2.5
-      vitest: 0.25.3_jsdom@20.0.3
+      vitest: 0.25.4_jsdom@20.0.3
 
   packages/vue:
     specifiers:
@@ -259,7 +259,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.45.1
       '@typescript-eslint/parser': 5.45.1
       '@vitejs/plugin-vue': 3.2.0
-      '@vitest/coverage-c8': 0.25.3
+      '@vitest/coverage-c8': 0.25.4
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.2
       '@zag-js/checkbox': 0.2.3
@@ -283,7 +283,7 @@ importers:
       eslint: 8.29.0
       typescript: 4.9.3
       vite: 3.2.5
-      vitest: 0.25.3
+      vitest: 0.25.4
       vue: 3.2.45
     dependencies:
       '@zag-js/accordion': 0.2.2
@@ -312,12 +312,12 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
       '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.45
-      '@vitest/coverage-c8': 0.25.3
+      '@vitest/coverage-c8': 0.25.4
       '@vue/compiler-sfc': 3.2.45
       eslint: 8.29.0
       typescript: 4.9.3
       vite: 3.2.5
-      vitest: 0.25.3
+      vitest: 0.25.4
       vue: 3.2.45
 
 packages:
@@ -4390,11 +4390,11 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@vitest/coverage-c8/0.25.3:
-    resolution: {integrity: sha512-+tmrB3E7pZTSM+aWKzLk0FpyyaQOoRQf0594hHp+E3Kk0tiFONiEFYf7+9a1Z+C2ffU/0w6KvyBjpNPdashMrg==}
+  /@vitest/coverage-c8/0.25.4:
+    resolution: {integrity: sha512-3ozqZUr3x8woBCBXJRzt1P8DRGKsIxajfzRu3ySKJE0bCkIl2hofzHYzkHBZafhfhMOt+hR6L395Io7gyMmpUQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.3
+      vitest: 0.25.4
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -4409,11 +4409,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.25.3_jsdom@20.0.3:
-    resolution: {integrity: sha512-+tmrB3E7pZTSM+aWKzLk0FpyyaQOoRQf0594hHp+E3Kk0tiFONiEFYf7+9a1Z+C2ffU/0w6KvyBjpNPdashMrg==}
+  /@vitest/coverage-c8/0.25.4_jsdom@20.0.3:
+    resolution: {integrity: sha512-3ozqZUr3x8woBCBXJRzt1P8DRGKsIxajfzRu3ySKJE0bCkIl2hofzHYzkHBZafhfhMOt+hR6L395Io7gyMmpUQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.3_jsdom@20.0.3
+      vitest: 0.25.4_jsdom@20.0.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -13599,8 +13599,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  /strip-literal/0.4.2:
-    resolution: {integrity: sha512-pv48ybn4iE1O9RLgCAN0iU4Xv7RlBTiit6DKmMiErbs9x1wH6vXBs45tWc0H5wUIF6TLTrKweqkmYF/iraQKNw==}
+  /strip-literal/1.0.0:
+    resolution: {integrity: sha512-5o4LsH1lzBzO9UFH63AJ2ad2/S2AVx6NtjOcaz+VTT2h1RiRvbipW72z8M/lxEhcPHDBQwpDrnTF7sXy/7OwCQ==}
     dependencies:
       acorn: 8.8.1
     dev: true
@@ -14766,8 +14766,8 @@ packages:
       vite: 3.2.4
     dev: false
 
-  /vitest/0.25.3:
-    resolution: {integrity: sha512-/UzHfXIKsELZhL7OaM2xFlRF8HRZgAHtPctacvNK8H4vOcbJJAMEgbWNGSAK7Y9b1NBe5SeM7VTuz2RsTHFJJA==}
+  /vitest/0.25.4:
+    resolution: {integrity: sha512-v/qoSEYPrf8qa1CbKIKYK+1GGmPPEJyXFbkuD6jhh080cfNBsuUDAdMu6hV2h9Uv34EMiUrVETL/wB+EHxFtbA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -14797,7 +14797,7 @@ packages:
       debug: 4.3.4
       local-pkg: 0.4.2
       source-map: 0.6.1
-      strip-literal: 0.4.2
+      strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
@@ -14811,8 +14811,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.25.3_jsdom@20.0.3:
-    resolution: {integrity: sha512-/UzHfXIKsELZhL7OaM2xFlRF8HRZgAHtPctacvNK8H4vOcbJJAMEgbWNGSAK7Y9b1NBe5SeM7VTuz2RsTHFJJA==}
+  /vitest/0.25.4_jsdom@20.0.3:
+    resolution: {integrity: sha512-v/qoSEYPrf8qa1CbKIKYK+1GGmPPEJyXFbkuD6jhh080cfNBsuUDAdMu6hV2h9Uv34EMiUrVETL/wB+EHxFtbA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -14843,7 +14843,7 @@ packages:
       jsdom: 20.0.3
       local-pkg: 0.4.2
       source-map: 0.6.1
-      strip-literal: 0.4.2
+      strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
