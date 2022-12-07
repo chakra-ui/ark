@@ -1,18 +1,28 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { NumberInput, NumberInputProps } from './number-input'
-import { NumberInputDecrementButton } from './number-input-decrement-button'
-import { NumberInputField } from './number-input-field'
-import { NumberInputIncrementButton } from './number-input-increment-button'
+import {
+  NumberInput,
+  NumberInputControls,
+  NumberInputDecrementTrigger,
+  NumberInputField,
+  NumberInputIncrementTrigger,
+  NumberInputLabel,
+  NumberInputProps,
+} from './'
 
 const Component = (props: NumberInputProps) => (
   <NumberInput {...props}>
-    <div>
-      <NumberInputField />
-      <NumberInputDecrementButton>Inc</NumberInputDecrementButton>
-      <NumberInputIncrementButton>Dec</NumberInputIncrementButton>
-    </div>
+    <NumberInputLabel>Label</NumberInputLabel>
+    <NumberInputField />
+    <NumberInputControls>
+      <NumberInputDecrementTrigger>
+        <button>-1</button>
+      </NumberInputDecrementTrigger>
+      <NumberInputIncrementTrigger>
+        <button>+1</button>
+      </NumberInputIncrementTrigger>
+    </NumberInputControls>
   </NumberInput>
 )
 
