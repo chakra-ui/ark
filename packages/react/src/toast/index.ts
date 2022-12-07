@@ -1,5 +1,5 @@
 export { Toast, type ToastProps } from './toast'
-export { ToastCloseButton, type ToastCloseButtonProps } from './toast-close-button'
+export { ToastCloseTrigger, type ToastCloseTriggerProps } from './toast-close-trigger'
 export { ToastDescription, type ToastDescriptionProps } from './toast-description'
 export { ToastGroup, type ToastGroupProps } from './toast-group'
 export { ToastPlacements, type ToastPlacementsProps } from './toast-placements'

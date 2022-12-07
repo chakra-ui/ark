@@ -7,7 +7,7 @@ The toast component is used to give feedback to users after an action has taken 
 ```ts
 import {
   Toast,
-  ToastCloseButton,
+  ToastCloseTrigger,
   ToastDescription,
   ToastGroup,
   ToastPlacements,
@@ -40,7 +40,9 @@ export const AppToastProvider = (props: AppToastProviderProps) => (
                 <Toast key={toast.id} toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
-                  <ToastCloseButton>Close</ToastCloseButton>
+                  <ToastCloseTrigger>
+                    <button>Close</button>
+                  </ToastCloseTrigger>
                 </Toast>
               ))
             }

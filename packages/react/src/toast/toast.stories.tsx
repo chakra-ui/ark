@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import { Toast } from './toast'
-import { ToastCloseButton } from './toast-close-button'
+import { ToastCloseTrigger } from './toast-close-trigger'
 import { ToastDescription } from './toast-description'
 import { ToastGroup } from './toast-group'
 import { ToastPlacements } from './toast-placements'
@@ -19,7 +19,9 @@ export const ChakraToastProvider = (props: PropsWithChildren) => (
                 <Toast key={toast.id} toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
-                  <ToastCloseButton>Close</ToastCloseButton>
+                  <ToastCloseTrigger>
+                    <button>close</button>
+                  </ToastCloseTrigger>
                 </Toast>
               ))
             }
