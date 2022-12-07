@@ -20,6 +20,6 @@
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.13",
     "css-panda": "0.0.0-dev-20221206180514",
-    "solid-js": "1.6.2"
+    "solid-js": "1.6.3"
   }
 }
