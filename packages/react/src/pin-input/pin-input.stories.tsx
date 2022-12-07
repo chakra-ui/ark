@@ -1,23 +1,12 @@
-import { PinInput } from './pin-input'
-import { PinInputField } from './pin-input-field'
+import { PinInput, PinInputControls, PinInputField, PinInputLabel } from './'
 
-// TODO implement hidden input but dont exprot this
-// TODO implement PinInputLabel
 export const Basic = () => (
   <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
-    {[0, 1, 2].map((id, index) => (
-      <PinInputField key={id} index={index} />
-    ))}
+    <PinInputLabel>Label</PinInputLabel>
+    <PinInputControls>
+      {[0, 1, 2].map((id, index) => (
+        <PinInputField key={id} index={index} />
+      ))}
+    </PinInputControls>
   </PinInput>
 )
-
-// export const Basic = () => (
-//   <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
-//     <PinIntputLabel>asd</PinIntputLabel>
-//     <PinInputControls>
-//       {[0, 1, 2].map((id, index) => (
-//         <PinInputField key={id} index={index} />
-//       ))}
-//     </PinInputControls>
-//   </PinInput>
-// )
