@@ -42,7 +42,7 @@ const ComponentUnderTest = (props: SelectProps) => {
 }
 
 describe('Select', () => {
-  it('should render', () => {
+  it('should render', async () => {
     render(<ComponentUnderTest />)
   })
 

@@ -7,6 +7,8 @@ export type EditableControlsProps = Omit<HTMLArkProps<'div'>, 'children'> & {
   children: (context: EditableContext) => ReactNode
 }
 
+// TODO move into root component
+// TODO use controlsProps
 export const EditableControls = forwardRef<'div', EditableControlsProps>((props, ref) => {
   const { children, ...divProps } = props
   const api = useEditableContext()

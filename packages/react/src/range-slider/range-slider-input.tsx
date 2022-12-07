@@ -5,6 +5,7 @@ import { useRangeSliderContext } from './range-slider-context'
 
 export type RangeSliderInputProps = HTMLArkProps<'input'> & { index: number }
 
+// TODO burry in slider thumb
 export const RangeSliderInput = forwardRef<'input', RangeSliderInputProps>((props, ref) => {
   const { index, ...inputProps } = props
   const { getInputProps } = useRangeSliderContext()

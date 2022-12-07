@@ -5,6 +5,7 @@ import { usePopoverContext } from './popover-context'
 
 export type PopoverCloseButtonProps = HTMLArkProps<'button'>
 
+// TODO trigger pattern
 export const PopoverCloseButton = forwardRef<'button', PopoverCloseButtonProps>((props, ref) => {
   const { closeButtonProps } = usePopoverContext()
   const mergedProps = mergeProps(closeButtonProps, props)

@@ -6,6 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export type AccordionButtonProps = HTMLArkProps<'button'>
 
+// TODO rename accordion trigger
 export const AccordionButton = forwardRef<'button', AccordionButtonProps>((props, ref) => {
   const { getTriggerProps } = useAccordionContext()
   const itemContext = useAccordionItemContext()

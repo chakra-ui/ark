@@ -6,6 +6,10 @@ import { PaginationNextItem } from './pagination-next-item'
 import { PaginationPrevItem } from './pagination-prev-item'
 import './pagination.css'
 
+// TODO rename PagnationPrevItem to PaginationPrevPageTrigger
+// TODO rename PagnationNextItem to PaginationNextPageTrigger
+// TODO rename PagnationItem to PaginationPageTrigger
+
 export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (

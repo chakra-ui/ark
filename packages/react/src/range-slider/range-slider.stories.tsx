@@ -9,6 +9,7 @@ import { RangeSliderThumb } from './range-slider-thumb'
 import { RangeSliderTrack } from './range-slider-track'
 import './range-slider.css'
 
+// TODO add marker and makrergroup
 export const Basic = () => {
   const [values, setValues] = useState([-10, 10])
   return (

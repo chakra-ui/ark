@@ -8,6 +8,7 @@ import { SliderThumb } from './slider-thumb'
 import { SliderTrack } from './slider-track'
 import './slider.css'
 
+// TODO implemetn label, marker, markerGroup
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (

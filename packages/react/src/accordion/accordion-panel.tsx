@@ -6,6 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export type AccordionPanelProps = HTMLArkProps<'div'>
 
+// TODO rename to AccordionContent
 export const AccordionPanel = forwardRef<'div', AccordionPanelProps>((props, ref) => {
   const { getContentProps } = useAccordionContext()
   const context = useAccordionItemContext()

@@ -9,6 +9,7 @@ import { useTabsContext } from './tabs-context'
 type TabContext = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
 export type TabProps = Assign<HTMLArkProps<'button'>, TabContext>
 
+// trigger
 export const Tab = forwardRef<'button', TabProps>((props, ref) => {
   const [tabProps, buttonProps] = createSplitProps<TabContext>()(props, ['disabled', 'value'])
   const { getTriggerProps } = useTabsContext()

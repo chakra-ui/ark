@@ -5,6 +5,7 @@ import { useToastItemContext } from './toast-item-context'
 
 export type ToastCloseButtonProps = HTMLArkProps<'button'>
 
+// TODO trigger props pattern
 export const ToastCloseButton = forwardRef<'button', ToastCloseButtonProps>((props, ref) => {
   const { closeButtonProps } = useToastItemContext()
   const mergedProps = mergeProps(closeButtonProps, props)

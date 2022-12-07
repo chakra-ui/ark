@@ -8,6 +8,7 @@ import { TagsInputControl } from './tags-input-control'
 import { TagsInputField } from './tags-input-field'
 import './tags-input.css'
 
+// TODO add label, hiddenInput
 export const Basic = () => {
   const [value, setValue] = useState<string[]>(['react', 'solid', 'vue'])
   return (
