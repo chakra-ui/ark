@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Accordion } from './accordion'
-import { AccordionButton } from './accordion-button'
 import { AccordionItem } from './accordion-item'
-import { AccordionPanel } from './accordion-panel'
+import { AccordionContent } from './accordion-panel'
+import { AccordionTrigger } from './accordion-trigger'
 
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {
@@ -11,9 +11,11 @@ describe('Accordion', () => {
       <Accordion value="0">
         <AccordionItem value="0">
           <h2>
-            <AccordionButton data-testid="button">Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button data-testid="button">Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel data-testid="panel">Panel 1</AccordionPanel>
+          <AccordionContent data-testid="panel">Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -26,9 +28,11 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>Trigger</AccordionButton>
+            <AccordionTrigger>
+              <button>Trigger</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel</AccordionPanel>
+          <AccordionContent>Panel</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -48,14 +52,18 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="1">
-          <AccordionButton>Section 2 title</AccordionButton>
-          <AccordionPanel>Panel 2</AccordionPanel>
+          <AccordionTrigger>
+            <button>Section 2 title</button>
+          </AccordionTrigger>
+          <AccordionContent>Panel 2</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -76,23 +84,29 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>First section</AccordionButton>
+            <AccordionTrigger>
+              <button>First section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Second section</AccordionButton>
+            <AccordionTrigger>
+              <button>Second section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="2">
           <h2>
-            <AccordionButton>Last section</AccordionButton>
+            <AccordionTrigger>
+              <button>Last section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 2</AccordionPanel>
+          <AccordionContent>Panel 2</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -113,16 +127,20 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>First section</AccordionButton>
+            <AccordionTrigger>
+              <button>First section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Second section</AccordionButton>
+            <AccordionTrigger>
+              <button>Second section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -141,16 +159,20 @@ describe('Accordion', () => {
       <Accordion collapsible>
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>First section</AccordionButton>
+            <AccordionTrigger>
+              <button>First section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="2">
           <h2>
-            <AccordionButton>Second section</AccordionButton>
+            <AccordionTrigger>
+              <button>Second section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -169,16 +191,20 @@ describe('Accordion', () => {
       <Accordion multiple>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>First section</AccordionButton>
+            <AccordionTrigger>
+              <button>First section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Second section</AccordionButton>
+            <AccordionTrigger>
+              <button>Second section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -198,9 +224,11 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -217,23 +245,29 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>First section</AccordionButton>
+            <AccordionTrigger>
+              <button>First section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Second section</AccordionButton>
+            <AccordionTrigger>
+              <button>Second section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="2">
           <h2>
-            <AccordionButton>Last section</AccordionButton>
+            <AccordionTrigger>
+              <button>Last section</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 2</AccordionPanel>
+          <AccordionContent>Panel 2</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -256,9 +290,11 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -272,15 +308,19 @@ describe('Accordion', () => {
       <Accordion value="0">
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
         <AccordionItem value="1">
           <h2>
-            <AccordionButton>Section 2 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 2 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 2</AccordionPanel>
+          <AccordionContent>Panel 2</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )
@@ -294,9 +334,11 @@ describe('Accordion', () => {
       <Accordion>
         <AccordionItem value="0">
           <h2>
-            <AccordionButton>Section 1 title</AccordionButton>
+            <AccordionTrigger>
+              <button>Section 1 title</button>
+            </AccordionTrigger>
           </h2>
-          <AccordionPanel>Panel 1</AccordionPanel>
+          <AccordionContent>Panel 1</AccordionContent>
         </AccordionItem>
       </Accordion>,
     )

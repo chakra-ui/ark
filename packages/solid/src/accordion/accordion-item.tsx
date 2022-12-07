@@ -16,11 +16,11 @@ export type AccordionItemProps = Assign<
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, divProps] = splitProps(props, ['value', 'disabled'])
-  const api = useAccordionContext()
+  const accordion = useAccordionContext()
 
   return (
     <AccordionItemProvider value={itemProps}>
-      <ark.div {...api().getItemProps(itemProps)} {...divProps} />
+      <ark.div {...accordion().getItemProps(itemProps)} {...divProps} />
     </AccordionItemProvider>
   )
 }
