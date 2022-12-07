@@ -1,6 +1,7 @@
 export { Popover, type PopoverProps } from './popover'
+export { PopoverAnchor, type PopoverAnchorProps } from './popover-anchor'
 export { PopoverArrow, type PopoverArrowProps } from './popover-arrow'
-export { PopoverCloseButton, type PopoverCloseButtonProps } from './popover-close-button'
+export { PopoverCloseTrigger, type PopoverCloseTriggerProps } from './popover-close-trigger'
 export { PopoverContent, type PopoverContentProps } from './popover-content'
 export { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
 export { PopoverInnerArrow, type PopoverInnerArrowProps } from './popover-inner-arrow'

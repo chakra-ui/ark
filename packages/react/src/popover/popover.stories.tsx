@@ -1,12 +1,14 @@
-import { Popover } from './popover'
-import { PopoverArrow } from './popover-arrow'
-import { PopoverCloseButton } from './popover-close-button'
-import { PopoverContent } from './popover-content'
-import { PopoverDescription } from './popover-description'
-import { PopoverInnerArrow } from './popover-inner-arrow'
-import { PopoverPositioner } from './popover-positioner'
-import { PopoverTitle } from './popover-title'
-import { PopoverTrigger } from './popover-trigger'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverInnerArrow,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from './'
 
 export const PopoverReact = () => (
   <Popover>
@@ -21,10 +23,10 @@ export const PopoverReact = () => (
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />
-        <PopoverCloseButton>close</PopoverCloseButton>
+        <PopoverCloseTrigger>
+          <button>close</button>
+        </PopoverCloseTrigger>
       </PopoverContent>
     </PopoverPositioner>
   </Popover>
 )
-
-// TODO add story for anchor, add anchor

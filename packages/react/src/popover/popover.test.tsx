@@ -1,12 +1,17 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Popover, PopoverProps } from './popover'
-import { PopoverArrow } from './popover-arrow'
-import { PopoverCloseButton } from './popover-close-button'
-import { PopoverContent } from './popover-content'
-import { PopoverInnerArrow } from './popover-inner-arrow'
-import { PopoverPositioner } from './popover-positioner'
-import { PopoverTrigger } from './popover-trigger'
+import {
+  Popover,
+  PopoverArrow,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverInnerArrow,
+  PopoverPositioner,
+  PopoverProps,
+  PopoverTitle,
+  PopoverTrigger,
+} from './'
 
 const Component = (props: PopoverProps) => (
   <Popover {...props}>
@@ -17,9 +22,13 @@ const Component = (props: PopoverProps) => (
       <PopoverArrow>
         <PopoverInnerArrow />
       </PopoverArrow>
-      <PopoverContent>content</PopoverContent>
-      <input placeholder="enter value" />
-      <PopoverCloseButton>close</PopoverCloseButton>
+      <PopoverContent>
+        <PopoverTitle>title</PopoverTitle>
+        <PopoverDescription>description</PopoverDescription>
+        <PopoverCloseTrigger>
+          <button>close</button>
+        </PopoverCloseTrigger>
+      </PopoverContent>
     </PopoverPositioner>
   </Popover>
 )
@@ -32,7 +41,7 @@ describe('Popover', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByText('close'))
-    expect(screen.queryByText('content')).not.toBeVisible()
+    expect(screen.queryByText('title')).not.toBeVisible()
   })
 
   it('should hide the tooltip when escape is pressed', async () => {
@@ -42,7 +51,7 @@ describe('Popover', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByText('content')).not.toBeVisible()
+    expect(screen.queryByText('title')).not.toBeVisible()
   })
 
   it('should focus the first focusable element', async () => {
@@ -50,10 +59,5 @@ describe('Popover', () => {
 
     await user.click(screen.getByText('click me'))
     expect(screen.getByRole('dialog')).toBeInTheDocument()
-
-    // TODO input has focus in storybook but the button is focused instead
-    // const input = screen.getByRole('textbox')
-    // expect(input).toHaveFocus()
-    // screen.debug()
   })
 })
