@@ -1,16 +1,9 @@
-import type { Assign } from '@polymorphic-factory/solid'
 import * as rangeSlider from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import type { Optional } from '../types'
 
-export type UseRangeSliderProps = Assign<
-  Omit<Optional<rangeSlider.Context, 'id'>, 'values'>,
-  {
-    value: rangeSlider.Context['values']
-  }
->
-
+export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id'>
 export type UseRangeSliderReturn = ReturnType<typeof useRangeSlider>
 
 export const useRangeSlider = (props: UseRangeSliderProps) => {

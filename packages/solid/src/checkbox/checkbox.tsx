@@ -9,7 +9,6 @@ export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxProps>
 export const Checkbox = (props: CheckboxProps) => {
   const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [
     'aria-describedby',
-    'aria-invalid',
     'aria-label',
     'aria-labelledby',
     'defaultChecked',

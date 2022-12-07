@@ -3,6 +3,7 @@ import { RatingGroup } from './rating-group'
 import { RatingItem } from './rating-item'
 import { RatingLabel } from './rating-label'
 
+// TODO deal with hiddenInput
 export const Basic = () => (
   <Rating max={5} defaultValue={3} allowHalf>
     <RatingLabel>Rating label</RatingLabel>
@@ -21,6 +22,19 @@ export const Basic = () => (
     </RatingGroup>
   </Rating>
 )
+
+// TODO implement me
+// export const Basic = () => (
+//   <RatingGroup max={5} defaultValue={3} allowHalf>
+//     <RatingLabel>Rating label</RatingLabel>
+//     <RatingControls>
+//       <Rating />
+//       <Rating />
+//       <Rating />
+//       <Rating />
+//     </RatingControl>
+//   </RatingGroup>
+// )
 
 const IconHalf = () => (
   <svg

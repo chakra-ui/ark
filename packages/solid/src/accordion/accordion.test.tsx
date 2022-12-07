@@ -1,8 +1,8 @@
 import { render, screen } from 'solid-testing-library'
 import { Accordion, AccordionProps } from './accordion'
-import { AccordionButton } from './accordion-button'
+import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
-import { AccordionPanel } from './accordion-panel'
+import { AccordionTrigger } from './accordion-trigger'
 
 const ComponentUnderTest = (props: AccordionProps) => {
   const items = ['panel-1', 'panel-2', 'panel-3']
@@ -10,8 +10,10 @@ const ComponentUnderTest = (props: AccordionProps) => {
     <Accordion {...props}>
       {items.map((item) => (
         <AccordionItem value={item}>
-          <AccordionButton>{item} trigger</AccordionButton>
-          <AccordionPanel>{item} content</AccordionPanel>
+          <AccordionTrigger>
+            <button>{item} trigger</button>
+          </AccordionTrigger>
+          <AccordionContent>{item} content</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

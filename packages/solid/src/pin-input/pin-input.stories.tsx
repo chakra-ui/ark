@@ -1,10 +1,12 @@
-import { PinInput } from './pin-input'
-import { PinInputField } from './pin-input-field'
+import { PinInput, PinInputControls, PinInputField, PinInputLabel } from './'
 
 export const Basic = () => (
   <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
-    {[0, 1, 2].map((id) => (
-      <PinInputField index={id} />
-    ))}
+    <PinInputLabel>Label</PinInputLabel>
+    <PinInputControls>
+      {[0, 1, 2].map((id) => (
+        <PinInputField index={id} />
+      ))}
+    </PinInputControls>
   </PinInput>
 )

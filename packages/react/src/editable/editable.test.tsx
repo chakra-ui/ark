@@ -9,24 +9,26 @@ import { EditableInput } from './editable-input'
 import { EditablePreview } from './editable-preview'
 import { EditableSubmitButton } from './editable-submit-button'
 
-const ComponentUnderTest = (props: EditableProps) => (
+const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
   <Editable activationMode="dblclick" placeholder="Placeholder" {...props}>
-    <EditableArea>
-      <EditableInput />
-      <EditablePreview />
-    </EditableArea>
-    <EditableControls>
-      {({ isEditing }) =>
-        isEditing ? (
-          <>
-            <EditableSubmitButton>Save</EditableSubmitButton>
-            <EditableCancelButton>Cancel</EditableCancelButton>
-          </>
-        ) : (
-          <EditableEditButton>Edit</EditableEditButton>
-        )
-      }
-    </EditableControls>
+    {({ isEditing }) => (
+      <>
+        <EditableArea>
+          <EditableInput />
+          <EditablePreview />
+        </EditableArea>
+        <EditableControls>
+          {isEditing ? (
+            <>
+              <EditableSubmitButton>Save</EditableSubmitButton>
+              <EditableCancelButton>Cancel</EditableCancelButton>
+            </>
+          ) : (
+            <EditableEditButton>Edit</EditableEditButton>
+          )}
+        </EditableControls>
+      </>
+    )}
   </Editable>
 )
 

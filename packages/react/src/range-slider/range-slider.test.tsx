@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { JSDOM } from 'jsdom'
+import { useState } from 'react'
 import { RangeSlider, type RangeSliderProps } from './range-slider'
 import { RangeSliderControl } from './range-slider-control'
 import { RangeSliderInput } from './range-slider-input'
@@ -11,15 +11,9 @@ import { RangeSliderThumb } from './range-slider-thumb'
 import { RangeSliderTrack } from './range-slider-track'
 
 const ComponentUnderTest = (props: RangeSliderProps) => {
-  const values = [-20, 20]
+  const [value, setValue] = useState([-20, 20])
   return (
-    <RangeSlider
-      min={-50}
-      max={50}
-      defaultValue={values}
-      getRootNode={() => new JSDOM().window.document}
-      {...props}
-    >
+    <RangeSlider min={-50} max={50} value={value} onChange={(e) => setValue(e.value)} {...props}>
       <div>
         <RangeSliderLabel>Quantity: </RangeSliderLabel>
         <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
@@ -28,7 +22,7 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        {values.map((_, index) => (
+        {value.map((_, index) => (
           <RangeSliderThumb key={index} index={index}>
             <RangeSliderInput index={index} />
           </RangeSliderThumb>

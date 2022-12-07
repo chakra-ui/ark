@@ -1,8 +1,8 @@
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
 import { createMemo, createUniqueId, mergeProps, type JSX } from 'solid-js'
+import { createContext } from '../create-context'
 import { createSplitProps } from '../create-split-props'
-import { createContext } from '../createContext'
 import type { Optional } from '../types'
 
 export type ToastContext = () => ReturnType<typeof toast['group']['connect']>

@@ -1,5 +1,5 @@
 import type { connect } from '@zag-js/rating'
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 
 export type RatingItemContext = ReturnType<ReturnType<typeof connect>['getRatingState']>
 

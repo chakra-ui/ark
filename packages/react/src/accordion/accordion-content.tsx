@@ -4,12 +4,12 @@ import { ark, HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionPanelProps = HTMLArkProps<'div'>
+export type AccordionContentProps = HTMLArkProps<'div'>
 
-export const AccordionPanel = forwardRef<'div', AccordionPanelProps>((props, ref) => {
+export const AccordionContent = forwardRef<'div', AccordionContentProps>((props, ref) => {
   const { getContentProps } = useAccordionContext()
-  const context = useAccordionItemContext()
-  const mergedProps = mergeProps(getContentProps(context), props)
+  const accordionItem = useAccordionItemContext()
+  const mergedProps = mergeProps(getContentProps(accordionItem), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

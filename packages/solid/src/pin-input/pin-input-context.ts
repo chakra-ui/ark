@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UsePinInputReturn } from './use-pin-input'
 
 export type PinInputContext = UsePinInputReturn

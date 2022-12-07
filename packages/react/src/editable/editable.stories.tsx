@@ -7,25 +7,25 @@ import { EditableInput } from './editable-input'
 import { EditablePreview } from './editable-preview'
 import { EditableSubmitButton } from './editable-submit-button'
 
-export const Basic = () => {
-  return (
-    <Editable activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
-      <EditableArea>
-        <EditableInput />
-        <EditablePreview />
-      </EditableArea>
-      <EditableControls>
-        {({ isEditing }) =>
-          isEditing ? (
+export const Basic = () => (
+  <Editable activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
+    {(state) => (
+      <>
+        <EditableArea>
+          <EditableInput />
+          <EditablePreview />
+        </EditableArea>
+        <EditableControls>
+          {state.isEditing ? (
             <>
               <EditableSubmitButton>Save</EditableSubmitButton>
               <EditableCancelButton>Cancel</EditableCancelButton>
             </>
           ) : (
             <EditableEditButton>Edit</EditableEditButton>
-          )
-        }
-      </EditableControls>
-    </Editable>
-  )
-}
+          )}
+        </EditableControls>
+      </>
+    )}
+  </Editable>
+)

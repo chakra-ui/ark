@@ -1,7 +1,7 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
 import { PropsWithChildren, useId } from 'react'
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 
 export type ToastContext = ReturnType<typeof toast['group']['connect']>
 export const [ToastContextProvider, useToast] = createContext<ToastContext>()

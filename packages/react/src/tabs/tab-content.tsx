@@ -8,9 +8,9 @@ import { useTabsContext } from './tabs-context'
 
 type GetContentProps = Parameters<ReturnType<typeof connect>['getContentProps']>[0]
 
-export type TabPanelProps = Assign<HTMLArkProps<'div'>, GetContentProps>
+export type TabContentProps = Assign<HTMLArkProps<'div'>, GetContentProps>
 
-export const TabPanel = forwardRef<'div', TabPanelProps>((props, ref) => {
+export const TabContent = forwardRef<'div', TabContentProps>((props, ref) => {
   const [tabContentProps, divProps] = createSplitProps<GetContentProps>()(props, ['value'])
   const { getContentProps } = useTabsContext()
   const mergedProps = mergeProps(getContentProps(tabContentProps), divProps)

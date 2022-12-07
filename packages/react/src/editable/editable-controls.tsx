@@ -1,19 +1,13 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import type { ReactNode } from 'react'
+import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
-import { EditableContext, useEditableContext } from './editable-context'
+import { useEditableContext } from './editable-context'
 
-export type EditableControlsProps = Omit<HTMLArkProps<'div'>, 'children'> & {
-  children: (context: EditableContext) => ReactNode
-}
+export type EditableControlsProps = HTMLArkProps<'div'>
 
 export const EditableControls = forwardRef<'div', EditableControlsProps>((props, ref) => {
-  const { children, ...divProps } = props
-  const api = useEditableContext()
+  const { controlGroupProps } = useEditableContext()
+  const mergedProps = mergeProps(controlGroupProps, props)
 
-  return (
-    <ark.div {...divProps} ref={ref}>
-      {children(api)}
-    </ark.div>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })

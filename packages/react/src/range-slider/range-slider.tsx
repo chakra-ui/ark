@@ -33,7 +33,6 @@ export const RangeSlider = forwardRef<'div', RangeSliderProps>((props, ref) => {
     'step',
     'thumbAlignment',
     'value',
-    'values',
   ])
   const slider = useRangeSlider(useRangeSliderProps)
   const mergedProps = mergeProps(slider.rootProps, divProps)

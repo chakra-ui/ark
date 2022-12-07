@@ -1,13 +1,37 @@
 ---
-const allComponents = await Astro.glob('../pages/components/*.mdx')
+import { css } from '../../panda/css'
+import { Stack } from '../../panda/jsx'
+import { Link } from './shared/Link'
+import { Text } from './shared/Text'
+
+const components = await Astro.glob('../docs/*.mdx')
 ---
 
-<ul>
-  {
-    allComponents.map((component) => (
-      <li>
-        <a href={component.url}>{component.frontmatter.title}</a>
-      </li>
-    ))
-  }
-</ul>
+<aside
+  role="complementary"
+  class={css({
+    width: '100%',
+    alignSelf: 'start',
+    position: { base: 'unset', lg: 'sticky' },
+    top: '24',
+    maxW: { lg: '300px' },
+  })}
+>
+  <Stack gap="1">
+    <Text
+      textStyle="xs"
+      textTransform="uppercase"
+      fontWeight="semibold"
+      color="gray.500"
+      px="2"
+      py="1">Components</Text
+    >
+    {
+      components.map((component) => (
+        <Link href={component.frontmatter.id} variant="sidebar">
+          {component.frontmatter.title}
+        </Link>
+      ))
+    }
+  </Stack>
+</aside>

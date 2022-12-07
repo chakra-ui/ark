@@ -15,10 +15,10 @@ export type RangeSliderOutputProps = Assign<
 
 export const RangeSliderOutput = forwardRef<'output', RangeSliderOutputProps>((props, ref) => {
   const { children, ...rest } = props
-  const { outputProps, values } = useRangeSliderContext()
+  const { outputProps, value } = useRangeSliderContext()
   const mergedProps = mergeProps(outputProps, rest)
 
-  const view = runIfFn(children, { value: values })
+  const view = runIfFn(children, { value: value })
 
   return (
     <ark.output {...mergedProps} ref={ref}>

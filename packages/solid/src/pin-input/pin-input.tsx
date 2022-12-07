@@ -28,9 +28,10 @@ export const PinInput = (props: PinInputProps) => {
     'value',
   ])
   const pinInput = usePinInput(pinInputProps)
+
   return (
     <PinInputProvider value={pinInput}>
-      <ark.div {...pinInput?.().rootProps} {...htmlProps} />
+      <ark.div {...pinInput().rootProps} {...htmlProps} />
     </PinInputProvider>
   )
 }

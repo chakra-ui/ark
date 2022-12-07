@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseTooltipReturn } from './use-tooltip'
 
 export type TooltipContext = UseTooltipReturn

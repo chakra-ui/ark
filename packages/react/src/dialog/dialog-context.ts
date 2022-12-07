@@ -1,4 +1,4 @@
-import { createContext } from '../createContext'
+import { createContext } from '../create-context'
 import type { UseDialogReturn } from './use-dialog'
 
 export type DialogContext = UseDialogReturn

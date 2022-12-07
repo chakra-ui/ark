@@ -20,6 +20,7 @@ export type MenuItemOptionProps = Assign<
   }
 >
 
+// TODO rename to MenuOptionItem
 export const MenuItemOption = forwardRef<'div', MenuItemOptionProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const [optionProps, { children, ...divProps }] = createSplitProps<MenuItemOptionParams>()(props, [

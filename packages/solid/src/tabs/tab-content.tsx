@@ -6,9 +6,9 @@ import { useTabsContext } from './tabs-context'
 
 type GetContentPropsArgs = Parameters<ReturnType<typeof connect>['getContentProps']>[0]
 
-export type TabPanelProps = Assign<HTMLArkProps<'div'>, GetContentPropsArgs>
+export type TabContentProps = Assign<HTMLArkProps<'div'>, GetContentPropsArgs>
 
-export const TabPanel = (props: TabPanelProps) => {
+export const TabContent = (props: TabContentProps) => {
   const [tabContentProps, divProps] = createSplitProps<GetContentPropsArgs>()(props, ['value'])
   const tabs = useTabsContext()
 

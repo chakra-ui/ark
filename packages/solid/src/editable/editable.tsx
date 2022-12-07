@@ -1,13 +1,15 @@
 import type { Assign } from '@polymorphic-factory/solid'
+import { children, JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
-import { EditableProvider } from './editable-context'
+import { runIfFn } from '../run-if-fn'
+import { EditableContext, EditableProvider, useEditableContext } from './editable-context'
 import { useEditable, UseEditableProps } from './use-editable'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
+export type EditableProps = Assign<EditableContextWrapperProps, UseEditableProps>
 
 export const Editable = (props: EditableProps) => {
-  const [useEditableProps, divProps] = createSplitProps<UseEditableProps>()(props, [
+  const [useEditableProps, editableContextProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
     'dir',
@@ -35,7 +37,25 @@ export const Editable = (props: EditableProps) => {
 
   return (
     <EditableProvider value={editable}>
-      <ark.div {...editable().rootProps} {...divProps} />
+      <EditableContextWrapper {...editableContextProps} />
     </EditableProvider>
+  )
+}
+
+type EditableContextWrapperProps = Assign<
+  HTMLArkProps<'div'>,
+  {
+    children: JSX.Element | ((context: EditableContext) => JSX.Element)
+  }
+>
+
+const EditableContextWrapper = (props: EditableContextWrapperProps) => {
+  const editable = useEditableContext()
+  const view = children(() => runIfFn(props.children, editable))
+
+  return (
+    <ark.div {...editable().rootProps} {...props}>
+      {view()}
+    </ark.div>
   )
 }
