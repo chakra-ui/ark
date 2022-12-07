@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Accordion } from './accordion'
+import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
-import { AccordionContent } from './accordion-panel'
 import { AccordionTrigger } from './accordion-trigger'
 
 describe('Accordion', () => {
