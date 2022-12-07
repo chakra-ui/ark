@@ -1,30 +1,42 @@
-import { Tag } from './tag'
-import { TagDeleteButton } from './tag-delete-button'
-import { TagInput } from './tag-input'
-import { TagsInput } from './tags-input'
-import { TagsInputClearButton } from './tags-input-clear-button'
-import { TagsInputControl } from './tags-input-control'
-import { TagsInputField } from './tags-input-field'
+import { For } from 'solid-js'
+import {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputLabel,
+} from './'
 import './tags-input.css'
 
 export const Basic = () => (
-  <TagsInput defaultValue={['react', 'solid', 'vue']}>
+  <TagsInput value={['react', 'solid', 'vue']}>
     {({ value }) => (
-      <TagsInputControl>
-        {(value ?? []).map((value, index) => (
-          <>
-            <Tag index={index} value={value}>
-              <span>{value}</span>
-              <TagDeleteButton index={index} value={value}>
-                &#x2715;
-              </TagDeleteButton>
-            </Tag>
-            <TagInput index={index} value={value} />
-          </>
-        ))}
-        <TagsInputField placeholder="Add tag" />
-        <TagsInputClearButton>Clear all</TagsInputClearButton>
-      </TagsInputControl>
+      <>
+        <TagsInputLabel>Label</TagsInputLabel>
+        <TagsInputControl>
+          <For each={value}>
+            {(val, index) => (
+              <>
+                <Tag index={index()} value={val}>
+                  <span>{val}</span>
+                  <TagDeleteTrigger index={index()} value={val}>
+                    <button>&#x2715;</button>
+                  </TagDeleteTrigger>
+                </Tag>
+                <TagInput index={index()} value={val} />
+              </>
+            )}
+          </For>
+
+          <TagsInputField placeholder="Add tag" />
+          <TagsInputClearTrigger>
+            <button>clear all</button>
+          </TagsInputClearTrigger>
+        </TagsInputControl>
+      </>
     )}
   </TagsInput>
 )

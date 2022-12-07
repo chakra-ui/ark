@@ -1,13 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Fragment } from 'react'
-import { Tag } from './tag'
-import { TagDeleteButton } from './tag-delete-button'
-import { TagInput } from './tag-input'
-import { TagsInput, TagsInputProps } from './tags-input'
-import { TagsInputClearButton } from './tags-input-clear-button'
-import { TagsInputControl } from './tags-input-control'
-import { TagsInputField } from './tags-input-field'
+import {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputProps,
+} from './'
 
 const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (
   <TagsInput defaultValue={['react', 'solid', 'vue']} {...props}>
@@ -17,15 +20,17 @@ const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (
           <Fragment key={index}>
             <Tag index={index} value={value}>
               <span>{value}</span>
-              <TagDeleteButton index={index} value={value}>
-                &#x2715;
-              </TagDeleteButton>
+              <TagDeleteTrigger index={index} value={value}>
+                <button>&#x2715;</button>
+              </TagDeleteTrigger>
             </Tag>
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
         <TagsInputField placeholder="Add tag" />
-        <TagsInputClearButton>Clear all</TagsInputClearButton>
+        <TagsInputClearTrigger>
+          <button>Clear all</button>
+        </TagsInputClearTrigger>
       </TagsInputControl>
     )}
   </TagsInput>

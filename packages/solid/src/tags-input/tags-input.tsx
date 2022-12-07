@@ -22,7 +22,6 @@ export const TagsInput = (props: TagsInputProps) => {
     'allowOverflow',
     'autoFocus',
     'blurBehavior',
-    'defaultValue',
     'delimiter',
     'dir',
     'disabled',
