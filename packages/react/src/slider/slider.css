@@ -1,7 +1,8 @@
 [data-part='thumb'] {
   background: blue;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
 }
 
 [data-part='track'] {
@@ -14,4 +15,12 @@
   position: relative;
   align-items: center;
   display: flex;
+}
+
+[data-part='marker'] {
+  color: gray;
+}
+
+[data-part='marker'][data-state='under-value'] {
+  color: blue;
 }

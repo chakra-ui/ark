@@ -1,19 +1,26 @@
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
-import { Slider } from './slider'
-import { SliderControl } from './slider-control'
-import { SliderInput } from './slider-input'
-import { SliderRange } from './slider-range'
-import { SliderThumb } from './slider-thumb'
-import { SliderTrack } from './slider-track'
+import {
+  Slider,
+  SliderControl,
+  SliderInput,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderOutput,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from './'
 import './slider.css'
 
-// TODO implemetn label, marker, markerGroup
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (
     // TODO move this into use-slider.ts
     <Slider min={-50} max={50} value={value} onChange={(e) => flushSync(() => setValue(e.value))}>
+      <SliderLabel>Label</SliderLabel>
+      <SliderOutput>{value}</SliderOutput>
       <SliderControl>
         <SliderTrack>
           <SliderRange />
@@ -22,6 +29,11 @@ export const Basic = () => {
           <SliderInput />
         </SliderThumb>
       </SliderControl>
+      <SliderMarkerGroup>
+        <SliderMarker value={-30}>*</SliderMarker>
+        <SliderMarker value={0}>*</SliderMarker>
+        <SliderMarker value={30}>*</SliderMarker>
+      </SliderMarkerGroup>
     </Slider>
   )
 }

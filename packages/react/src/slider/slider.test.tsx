@@ -1,24 +1,38 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Slider, type SliderProps } from './slider'
-import { SliderControl } from './slider-control'
-import { SliderInput } from './slider-input'
-import { SliderRange } from './slider-range'
-import { SliderThumb } from './slider-thumb'
-import { SliderTrack } from './slider-track'
+import {
+  Slider,
+  SliderControl,
+  SliderInput,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderProps,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from './'
 
-const ComponentUnderTest = (props: SliderProps) => (
-  <Slider min={-50} max={50} defaultValue={0} {...props}>
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb>
-        <SliderInput />
-      </SliderThumb>
-    </SliderControl>
-  </Slider>
-)
+const ComponentUnderTest = (props: SliderProps) => {
+  return (
+    <Slider min={-50} max={50} defaultValue={0} {...props}>
+      <SliderLabel>Label</SliderLabel>
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <SliderThumb>
+          <SliderInput />
+        </SliderThumb>
+      </SliderControl>
+      <SliderMarkerGroup>
+        <SliderMarker value={-30}>*</SliderMarker>
+        <SliderMarker value={0}>*</SliderMarker>
+        <SliderMarker value={30}>*</SliderMarker>
+      </SliderMarkerGroup>
+    </Slider>
+  )
+}
 
 describe('Slider', () => {
   it('should render!', async () => {
