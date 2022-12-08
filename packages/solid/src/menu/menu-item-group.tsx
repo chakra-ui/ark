@@ -4,11 +4,13 @@ import { ark, HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-type MenuGroupParams = Parameters<ReturnType<ReturnType<UseMenuReturn>['api']>['getGroupProps']>[0]
-export type MenuGroupProps = Assign<HTMLArkProps<'div'>, MenuGroupParams>
+type MenuItemGroupParams = Parameters<
+  ReturnType<ReturnType<UseMenuReturn>['api']>['getGroupProps']
+>[0]
+export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
 
-export const MenuGroup = (props: MenuGroupProps) => {
+export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const menu = useMenuContext()
-  const [menuGroupProps, divProps] = createSplitProps<MenuGroupParams>()(props, ['id'])
+  const [menuGroupProps, divProps] = createSplitProps<MenuItemGroupParams>()(props, ['id'])
   return <ark.div {...menu?.()?.getGroupProps(menuGroupProps)} {...divProps} />
 }

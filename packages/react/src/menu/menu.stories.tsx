@@ -3,10 +3,10 @@ import { useState } from 'react'
 import {
   Menu,
   MenuContent,
-  MenuGroup,
-  MenuGroupLabel,
   MenuItem,
-  MenuItemOption,
+  MenuItemGroup,
+  MenuItemGroupLabel,
+  MenuOptionItem,
   MenuPositioner,
   MenuSeparator,
   MenuTrigger,
@@ -42,16 +42,16 @@ export const Group = () => (
     <Portal>
       <MenuPositioner>
         <MenuContent>
-          <MenuGroup id="group-1">
-            <MenuGroupLabel htmlFor="group-1">Group 1</MenuGroupLabel>
+          <MenuItemGroup id="group-1">
+            <MenuItemGroupLabel htmlFor="group-1">Group 1</MenuItemGroupLabel>
             <MenuItem id="share">Share...</MenuItem>
             <MenuItem id="move">Move...</MenuItem>
-          </MenuGroup>
-          <MenuGroup id="group-2">
-            <MenuGroupLabel htmlFor="group-2">Group 2</MenuGroupLabel>
+          </MenuItemGroup>
+          <MenuItemGroup id="group-2">
+            <MenuItemGroupLabel htmlFor="group-2">Group 2</MenuItemGroupLabel>
             <MenuItem id="rename">Rename...</MenuItem>
             <MenuItem id="delete">Delete...</MenuItem>
-          </MenuGroup>
+          </MenuItemGroup>
         </MenuContent>
       </MenuPositioner>
     </Portal>
@@ -79,51 +79,39 @@ export const Options = () => {
       <Portal>
         <MenuPositioner>
           <MenuContent>
-            <MenuGroup id="radio-group">
-              <MenuGroupLabel htmlFor="radio-group">Radio Group</MenuGroupLabel>
-              <MenuItemOption name="framework" type="radio" value="react">
+            <MenuItemGroup id="radio-group">
+              <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
+              <MenuOptionItem name="framework" type="radio" value="react">
                 {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
-              </MenuItemOption>
-              <MenuItemOption name="framework" type="radio" value="solid">
+              </MenuOptionItem>
+              <MenuOptionItem name="framework" type="radio" value="solid">
                 {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
-              </MenuItemOption>
-              <MenuItemOption name="framework" type="radio" value="vue">
+              </MenuOptionItem>
+              <MenuOptionItem name="framework" type="radio" value="vue">
                 {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
-              </MenuItemOption>
-            </MenuGroup>
-            <MenuGroup id="checkbox-group">
-              <MenuGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuGroupLabel>
-              <MenuItemOption name="libraries" type="checkbox" value="zag-js">
+              </MenuOptionItem>
+            </MenuItemGroup>
+            <MenuItemGroup id="checkbox-group">
+              <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
+              <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
                 {({ isActive }) => <>{isActive ? '✅' : ''} zag-js</>}
-              </MenuItemOption>
-              <MenuItemOption name="libraries" type="checkbox" value="ark">
+              </MenuOptionItem>
+              <MenuOptionItem name="libraries" type="checkbox" value="ark">
                 {({ isActive }) => <>{isActive ? '✅' : ''} ark</>}
-              </MenuItemOption>
-              <MenuItemOption name="libraries" type="checkbox" value="panda">
+              </MenuOptionItem>
+              <MenuOptionItem name="libraries" type="checkbox" value="panda">
                 {({ isActive }) => <>{isActive ? '✅' : ''} panda</>}
-              </MenuItemOption>
-              <MenuItemOption name="libraries" type="checkbox" value="chakra">
+              </MenuOptionItem>
+              <MenuOptionItem name="libraries" type="checkbox" value="chakra">
                 {({ isActive }) => <>{isActive ? '✅' : ''} chakra</>}
-              </MenuItemOption>
-            </MenuGroup>
+              </MenuOptionItem>
+            </MenuItemGroup>
           </MenuContent>
         </MenuPositioner>
       </Portal>
     </Menu>
   )
 }
-
-// export const Prosa = () => (
-//   <MenuPositioner>
-//     <MenuContent>
-//       <MenutItemGroup>
-//         <MenuItemGroupLabel></MenuItemGroupLabel>
-//         <MenuItem id="search">Search</MenuItem>
-//         <MenuOptionItem></MenuOptionItem>
-//       </MenutItemGroup>
-//     </MenuContent>
-//   </MenuPositioner>
-// )
 
 export const SubMenu = () => (
   <Menu>

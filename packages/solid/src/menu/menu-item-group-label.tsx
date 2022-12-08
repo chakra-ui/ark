@@ -3,12 +3,12 @@ import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 
-type MenuGroupLabelParams = { htmlFor: string }
-export type MenuGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuGroupLabelParams>
+type MenuItemGroupLabelParams = { htmlFor: string }
+export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGroupLabelParams>
 
-export const MenuGroupLabel = (props: MenuGroupLabelProps) => {
+export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
-  const [labelProps, htmlProps] = createSplitProps<MenuGroupLabelParams>()(props, ['htmlFor'])
+  const [labelProps, htmlProps] = createSplitProps<MenuItemGroupLabelParams>()(props, ['htmlFor'])
 
   return <ark.label {...menu?.()?.getLabelProps(labelProps)} {...htmlProps} />
 }

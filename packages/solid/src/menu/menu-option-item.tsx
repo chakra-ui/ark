@@ -7,20 +7,20 @@ import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { useMenuContext } from './menu-context'
 
-export type MenuItemOptionState = { isActive: boolean }
+export type MenuOptionItemState = { isActive: boolean }
 
-export type MenuItemOptionParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
+export type MenuOptionItemParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
 
-export type MenuItemOptionProps = Assign<
+export type MenuOptionItemProps = Assign<
   HTMLArkProps<'div'>,
-  MenuItemOptionParams & {
-    children?: JSX.Element | ((state: MenuItemOptionState) => JSX.Element)
+  MenuOptionItemParams & {
+    children?: JSX.Element | ((state: MenuOptionItemState) => JSX.Element)
   }
 >
 
-export const MenuItemOption = (props: MenuItemOptionProps) => {
+export const MenuOptionItem = (props: MenuOptionItemProps) => {
   const menu = useMenuContext()
-  const [optionProps, divProps] = createSplitProps<MenuItemOptionParams>()(props, [
+  const [optionProps, divProps] = createSplitProps<MenuOptionItemParams>()(props, [
     'id',
     'disabled',
     'valueText',

@@ -9,21 +9,18 @@ import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-export type MenuItemOptionState = { isActive: boolean }
-
-export type MenuItemOptionParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
-
-export type MenuItemOptionProps = Assign<
+export type MenuOptionItemState = { isActive: boolean }
+export type MenuOptionItemParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
+export type MenuOptionItemProps = Assign<
   HTMLArkProps<'div'>,
-  MenuItemOptionParams & {
-    children?: ReactNode | ((state: MenuItemOptionState) => ReactNode)
+  MenuOptionItemParams & {
+    children?: ReactNode | ((state: MenuOptionItemState) => ReactNode)
   }
 >
 
-// TODO rename to MenuOptionItem
-export const MenuItemOption = forwardRef<'div', MenuItemOptionProps>((props, ref) => {
+export const MenuOptionItem = forwardRef<'div', MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
-  const [optionProps, { children, ...divProps }] = createSplitProps<MenuItemOptionParams>()(props, [
+  const [optionProps, { children, ...divProps }] = createSplitProps<MenuOptionItemParams>()(props, [
     'id',
     'disabled',
     'valueText',

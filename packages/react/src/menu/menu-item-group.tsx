@@ -6,12 +6,12 @@ import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-type MenuGroupParams = Parameters<UseMenuReturn['api']['getGroupProps']>[0]
-export type MenuGroupProps = Assign<HTMLArkProps<'div'>, MenuGroupParams>
+type MenuItemGroupParams = Parameters<UseMenuReturn['api']['getGroupProps']>[0]
+export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
 
-export const MenuGroup = forwardRef<'div', MenuGroupProps>((props, ref) => {
+export const MenuItemGroup = forwardRef<'div', MenuItemGroupProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
-  const [menuGroupProps, divProps] = createSplitProps<MenuGroupParams>()(props, ['id'])
+  const [menuGroupProps, divProps] = createSplitProps<MenuItemGroupParams>()(props, ['id'])
   const mergedProps = mergeProps(api?.getGroupProps(menuGroupProps) ?? {}, divProps)
   return <ark.div {...mergedProps} ref={ref} />
 })

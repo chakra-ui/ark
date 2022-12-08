@@ -6,12 +6,12 @@ import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-type MenuGroupLabelParams = { htmlFor: string }
-export type MenuGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuGroupLabelParams>
+type MenuItemGroupLabelParams = { htmlFor: string }
+export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGroupLabelParams>
 
-export const MenuGroupLabel = forwardRef<'label', MenuGroupLabelProps>((props, ref) => {
+export const MenuItemGroupLabel = forwardRef<'label', MenuItemGroupLabelProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
-  const [labelProps, htmlProps] = createSplitProps<MenuGroupLabelParams>()(props, ['htmlFor'])
+  const [labelProps, htmlProps] = createSplitProps<MenuItemGroupLabelParams>()(props, ['htmlFor'])
   const mergedProps = mergeProps(api?.getLabelProps(labelProps) ?? {}, htmlProps)
 
   return <ark.label {...mergedProps} ref={ref} />
