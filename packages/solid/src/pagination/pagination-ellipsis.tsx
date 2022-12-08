@@ -9,5 +9,6 @@ export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, PaginationEll
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const [ellipsisProps, spanProps] = createSplitProps<PaginationEllipsisParams>()(props, ['index'])
   const pagination = usePaginationContext()
+
   return <ark.span {...pagination().getEllipsisProps(ellipsisProps)} {...spanProps} />
 }

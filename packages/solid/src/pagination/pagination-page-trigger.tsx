@@ -5,16 +5,17 @@ import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-type PaginationItemParams = {
+type PaginationPageTriggerParams = {
   children: JSX.Element
   value: number
 }
-export type PaginationItemProps = Assign<HTMLArkProps<'li'>, PaginationItemParams>
+export type PaginationPageTriggerProps = Assign<HTMLArkProps<'li'>, PaginationPageTriggerParams>
 
-export const PaginationItem = (props: PaginationItemProps) => {
-  const [itemParams, liProps] = createSplitProps<Omit<PaginationItemParams, 'children'>>()(props, [
-    'value',
-  ])
+export const PaginationPageTrigger = (props: PaginationPageTriggerProps) => {
+  const [itemParams, liProps] = createSplitProps<Omit<PaginationPageTriggerParams, 'children'>>()(
+    props,
+    ['value'],
+  )
   const pagination = usePaginationContext()
 
   const getChildren = children(() => props.children)

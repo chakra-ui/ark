@@ -1,12 +1,11 @@
-import type { JSX } from 'solid-js'
-import { children, createEffect } from 'solid-js'
+import { children, createEffect, JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { ark, HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPrevItemProps = HTMLArkProps<'li'> & { children: JSX.Element }
+export type PaginationNextPageTriggerProps = HTMLArkProps<'li'> & { children: JSX.Element }
 
-export const PaginationPrevItem = (props: PaginationPrevItemProps) => {
+export const PaginationNextPageTrigger = (props: PaginationNextPageTriggerProps) => {
   const pagination = usePaginationContext()
 
   const getChildren = children(() => props.children)
@@ -14,7 +13,7 @@ export const PaginationPrevItem = (props: PaginationPrevItemProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, pagination().prevItemProps)
+      spread(children, pagination().nextItemProps)
     }
   })
 

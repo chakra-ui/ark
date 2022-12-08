@@ -3,10 +3,10 @@ import user from '@testing-library/user-event'
 import {
   Pagination,
   PaginationEllipsis,
-  PaginationItem,
   PaginationList,
-  PaginationNextItem,
-  PaginationPrevItem,
+  PaginationNextPageTrigger,
+  PaginationPageTrigger,
+  PaginationPrevPageTrigger,
   PaginationProps,
 } from '.'
 
@@ -14,28 +14,28 @@ const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   <Pagination {...props}>
     {({ pages }) => (
       <PaginationList>
-        <PaginationPrevItem>
+        <PaginationPrevPageTrigger>
           <button>
             Previous <span className="visually-hidden">Page</span>
           </button>
-        </PaginationPrevItem>
+        </PaginationPrevPageTrigger>
 
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationItem key={index} value={page.value}>
+            <PaginationPageTrigger key={index} value={page.value}>
               <button>{page.value}</button>
-            </PaginationItem>
+            </PaginationPageTrigger>
           ) : (
             <PaginationEllipsis key={index} index={index}>
               &#8230;
             </PaginationEllipsis>
           ),
         )}
-        <PaginationNextItem>
+        <PaginationNextPageTrigger>
           <button>
             Next <span className="visually-hidden">Page</span>
           </button>
-        </PaginationNextItem>
+        </PaginationNextPageTrigger>
       </PaginationList>
     )}
   </Pagination>

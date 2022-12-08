@@ -4,12 +4,12 @@ import { ark, HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationItemProps = Assign<
+export type PaginationPageTriggerProps = Assign<
   HTMLArkProps<'li'>,
   { children: ReactElement; value: number }
 >
 
-export const PaginationItem = forwardRef<'li', PaginationItemProps>((props, ref) => {
+export const PaginationPageTrigger = forwardRef<'li', PaginationPageTriggerProps>((props, ref) => {
   const { value, children, ...liProps } = props
   const { getItemProps } = usePaginationContext()
   const itemProps = getItemProps({ type: 'page', value })

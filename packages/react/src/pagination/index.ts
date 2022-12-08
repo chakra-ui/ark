@@ -1,12 +1,19 @@
 export { Pagination, type PaginationProps } from './pagination'
+export { anatomy } from './pagination-anatomy'
 export {
   PaginationProvider,
   usePaginationContext,
   type PaginationContext,
 } from './pagination-context'
 export { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
-export { PaginationItem, type PaginationItemProps } from './pagination-item'
 export { PaginationList, type PaginationListProps } from './pagination-list'
-export { PaginationNextItem, type PaginationNextItemProps } from './pagination-next-item'
-export { PaginationPrevItem, type PaginationPrevItemProps } from './pagination-prev-item'
+export {
+  PaginationNextPageTrigger,
+  type PaginationNextPageTriggerProps,
+} from './pagination-next-page-trigger'
+export { PaginationPageTrigger, type PaginationPageTriggerProps } from './pagination-page-trigger'
+export {
+  PaginationPrevPageTrigger,
+  type PaginationPrevPageTriggerProps,
+} from './pagination-prev-page-trigger'
 export { usePagination, type UsePaginationProps } from './use-pagination'
