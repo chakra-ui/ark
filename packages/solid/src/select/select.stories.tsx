@@ -1,10 +1,14 @@
 import { For, Portal } from 'solid-js/web'
-import { Select } from './select'
-import { SelectLabel } from './select-label'
-import { SelectMenu } from './select-menu'
-import { SelectOption } from './select-option'
-import { SelectPositioner } from './select-positioner'
-import { SelectTrigger } from './select-trigger'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectOptionGroup,
+  SelectOptionGroupLabel,
+  SelectPositioner,
+  SelectTrigger,
+} from './'
 
 export const Basic = () => {
   const options = [
@@ -18,20 +22,23 @@ export const Basic = () => {
         <div>
           <SelectLabel>Framework:</SelectLabel>
           <SelectTrigger>
-            <span>{context().selectedOption?.label ?? 'Select option'}</span>
+            <button>{context().selectedOption?.label ?? 'Select option'}</button>
           </SelectTrigger>
           <Portal>
             <SelectPositioner>
-              <SelectMenu>
-                <For each={options}>
-                  {(option) => (
-                    <SelectOption {...option}>
-                      <span>{option.label}</span>
-                      {option.value === context().selectedOption?.value && '✓'}
-                    </SelectOption>
-                  )}
-                </For>
-              </SelectMenu>
+              <SelectContent>
+                <SelectOptionGroup id="framework">
+                  <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
+                  <For each={options}>
+                    {(option) => (
+                      <SelectOption {...option}>
+                        <span>{option.label}</span>
+                        {option.value === context().selectedOption?.value && '✓'}
+                      </SelectOption>
+                    )}
+                  </For>
+                </SelectOptionGroup>
+              </SelectContent>
             </SelectPositioner>
           </Portal>
         </div>

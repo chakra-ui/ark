@@ -1,12 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Portal } from '@zag-js/react'
-import { Select, SelectProps } from './select'
-import { SelectLabel } from './select-label'
-import { SelectMenu } from './select-menu'
-import { SelectOption } from './select-option'
-import { SelectPositioner } from './select-positioner'
-import { SelectTrigger } from './select-trigger'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectPositioner,
+  SelectProps,
+  SelectTrigger,
+} from './'
 
 const ComponentUnderTest = (props: SelectProps) => {
   const options = [
@@ -25,14 +28,14 @@ const ComponentUnderTest = (props: SelectProps) => {
           </SelectTrigger>
           <Portal>
             <SelectPositioner>
-              <SelectMenu>
+              <SelectContent>
                 {options.map((option, id) => (
                   <SelectOption key={id} {...option}>
                     <span>{option.label}</span>
                     {option.value === selectedOption?.value && '✓'}
                   </SelectOption>
                 ))}
-              </SelectMenu>
+              </SelectContent>
             </SelectPositioner>
           </Portal>
         </>
@@ -53,9 +56,6 @@ describe('Select', () => {
     expect(screen.getByRole('option', { name: 'Angular' })).toBeVisible()
   })
 
-  // TODO
-  // stderr | src/select/select.test.tsx > Select > should allow to select a option
-  // Error: Uncaught [Error: Could not find the menu element.]
   it('should allow to select a option', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()

@@ -1,53 +1,42 @@
 import { Portal } from '@zag-js/react'
-import { Select } from './select'
-import { SelectLabel } from './select-label'
-import { SelectMenu } from './select-menu'
-import { SelectOption } from './select-option'
-import { SelectPositioner } from './select-positioner'
-import { SelectTrigger } from './select-trigger'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectOptionGroup,
+  SelectOptionGroupLabel,
+  SelectPositioner,
+  SelectTrigger,
+} from './'
 
-export const Basic = () => {
-  const options = [
-    { label: 'React', value: 'react' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Angular', value: 'angular' },
-  ]
-  return (
-    <Select>
-      {({ selectedOption }) => (
-        <>
-          <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>
-            <span>{selectedOption?.label ?? 'Select option'}</span>
-          </SelectTrigger>
-          <Portal>
-            <SelectPositioner>
-              <SelectMenu>
-                {options.map((option, id) => (
-                  <SelectOption key={id} {...option}>
-                    <span>{option.label}</span>
-                    {option.value === selectedOption?.value && '✓'}
-                  </SelectOption>
-                ))}
-              </SelectMenu>
-            </SelectPositioner>
-          </Portal>
-        </>
-      )}
-    </Select>
-  )
-}
-
-// TODO implement me
-// export const Prosa = () => (
-//   <SelectPositioner>
-//     <SelectContent>
-//       <SelectOptionGroup>
-//         <SelctOptionGroupLabel></SelctOptionGroupLabel>
-//         <SelectOption />
-//         <SelectOption />
-//         <SelectOption />
-//       </SelectOptionGroup>
-//     </SelectContent>
-//   </SelectPositioner>
-// )
+export const Basic = () => (
+  <Select>
+    {({ selectedOption }) => (
+      <>
+        <SelectLabel>Framework:</SelectLabel>
+        <SelectTrigger>
+          <button>{selectedOption?.label ?? 'Select option'}</button>
+        </SelectTrigger>
+        <Portal>
+          <SelectPositioner>
+            <SelectContent>
+              <SelectOptionGroup id="framework">
+                <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
+                <SelectOption value="react" label="React">
+                  React
+                </SelectOption>
+                <SelectOption value="solid" label="Solid">
+                  Solid
+                </SelectOption>
+                <SelectOption value="vue" label="Vue">
+                  Vue
+                </SelectOption>
+              </SelectOptionGroup>
+            </SelectContent>
+          </SelectPositioner>
+        </Portal>
+      </>
+    )}
+  </Select>
+)

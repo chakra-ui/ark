@@ -3,9 +3,9 @@ import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectMenuProps = HTMLArkProps<'ul'>
+export type SelectContentProps = HTMLArkProps<'ul'>
 
-export const SelectMenu = forwardRef<'ul', SelectMenuProps>((props, ref) => {
+export const SelectContent = forwardRef<'ul', SelectContentProps>((props, ref) => {
   const { menuProps } = useSelectContext()
   const mergedProps = mergeProps(menuProps, props)
 

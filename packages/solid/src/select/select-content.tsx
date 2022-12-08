@@ -1,9 +1,9 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectMenuProps = HTMLArkProps<'ul'>
+export type SelectContentProps = HTMLArkProps<'ul'>
 
-export const SelectMenu = (props: SelectMenuProps) => {
+export const SelectContent = (props: SelectContentProps) => {
   const select = useSelectContext()
 
   return <ark.ul {...select().menuProps} {...props} />
