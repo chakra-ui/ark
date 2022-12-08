@@ -3,10 +3,10 @@ import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import type { Optional } from '../types'
 
-export type UseRatingProps = Optional<rating.Context, 'id'>
-export type UseRatingReturn = ReturnType<typeof useRating>
+export type UseRatingGroupProps = Optional<rating.Context, 'id'>
+export type UseRatingGroupReturn = ReturnType<typeof useRatingGroup>
 
-export const useRating = (props: UseRatingProps) => {
+export const useRatingGroup = (props: UseRatingGroupProps) => {
   const context = mergeProps({ id: createUniqueId() }, props)
   const [state, send] = useMachine(rating.machine(context), { context })
 

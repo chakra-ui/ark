@@ -1,24 +1,24 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { Rating, RatingGroup, RatingItem, RatingLabel, RatingProps } from '.'
+import { Rating, RatingControls, RatingGroup, RatingGroupProps, RatingLabel } from '.'
 
-const ComponentUnderTest = (props: RatingProps) => (
-  <Rating {...props}>
-    <RatingLabel>Rating label</RatingLabel>
-    <RatingGroup style={{ fontSize: '2em' }}>
+const ComponentUnderTest = (props: RatingGroupProps) => (
+  <RatingGroup {...props}>
+    <RatingLabel>Label</RatingLabel>
+    <RatingControls>
       {({ sizeArray }) =>
         sizeArray.map((index) => (
-          <RatingItem key={index} index={index}>
+          <Rating key={index} index={index}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return 'half'
               if (isHighlighted) return 'highlighted'
               return 'empty'
             }}
-          </RatingItem>
+          </Rating>
         ))
       }
-    </RatingGroup>
-  </Rating>
+    </RatingControls>
+  </RatingGroup>
 )
 
 describe('Rating', () => {

@@ -1,47 +1,30 @@
-import { Rating } from './rating'
-import { RatingGroup } from './rating-group'
-import { RatingItem } from './rating-item'
-import { RatingLabel } from './rating-label'
+import { Rating, RatingControls, RatingGroup, RatingLabel } from '.'
 
-// TODO deal with hiddenInput
 export const Basic = () => (
-  <Rating max={5} defaultValue={3} allowHalf>
-    <RatingLabel>Rating label</RatingLabel>
-    <RatingGroup style={{ fontSize: '2em' }}>
+  <RatingGroup max={5} defaultValue={3} allowHalf>
+    <RatingLabel>Label</RatingLabel>
+    <RatingControls>
       {({ sizeArray }) =>
         sizeArray.map((index) => (
-          <RatingItem key={index} index={index}>
+          <Rating key={index} index={index}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return <IconHalf />
               if (isHighlighted) return <IconFull />
               return <IconEmpty />
             }}
-          </RatingItem>
+          </Rating>
         ))
       }
-    </RatingGroup>
-  </Rating>
+    </RatingControls>
+  </RatingGroup>
 )
-
-// TODO implement me
-// export const Basic = () => (
-//   <RatingGroup max={5} defaultValue={3} allowHalf>
-//     <RatingLabel>Rating label</RatingLabel>
-//     <RatingControls>
-//       <Rating />
-//       <Rating />
-//       <Rating />
-//       <Rating />
-//     </RatingControl>
-//   </RatingGroup>
-// )
 
 const IconHalf = () => (
   <svg
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#ffb400',
     }}
   >
@@ -65,7 +48,7 @@ const IconEmpty = () => (
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#bdbdbd',
     }}
   >
@@ -81,7 +64,7 @@ const IconFull = () => (
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#ffb400',
     }}
   >

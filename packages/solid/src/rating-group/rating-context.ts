@@ -1,7 +1,7 @@
+import type { connect } from '@zag-js/rating'
 import { createContext } from '../create-context'
-import type { UseRatingReturn } from './use-rating'
 
-export type RatingContext = UseRatingReturn
+export type RatingContext = ReturnType<ReturnType<typeof connect>['getRatingState']>
 
 export const [RatingProvider, useRatingContext] = createContext<RatingContext>({
   hookName: 'useRatingContext',

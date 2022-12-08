@@ -1,25 +1,22 @@
-import { Rating } from './rating'
-import { RatingGroup } from './rating-group'
-import { RatingItem } from './rating-item'
-import { RatingLabel } from './rating-label'
+import { Rating, RatingControls, RatingGroup, RatingLabel } from '.'
 
 export const Basic = () => (
-  <Rating max={10} value={3} allowHalf>
-    <RatingLabel>Rating label</RatingLabel>
-    <RatingGroup>
+  <RatingGroup max={5} value={1} allowHalf>
+    <RatingLabel>Label</RatingLabel>
+    <RatingControls>
       {(context) =>
         context().sizeArray.map((index) => (
-          <RatingItem index={index}>
+          <Rating index={index}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return <IconHalf />
               if (isHighlighted) return <IconFull />
               return <IconEmpty />
             }}
-          </RatingItem>
+          </Rating>
         ))
       }
-    </RatingGroup>
-  </Rating>
+    </RatingControls>
+  </RatingGroup>
 )
 
 const IconHalf = () => (
