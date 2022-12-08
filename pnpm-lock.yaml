@@ -36,7 +36,7 @@ importers:
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3
       '@fontsource/inter': 4.5.14
-      astro: 1.6.13
+      astro: 1.6.14
       css-panda: 0.0.0-dev-20221206180514
       solid-js: 1.6.3
     dependencies:
@@ -44,7 +44,7 @@ importers:
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3_solid-js@1.6.3
       '@fontsource/inter': 4.5.14
-      astro: 1.6.13
+      astro: 1.6.14
       css-panda: 0.0.0-dev-20221206180514
       solid-js: 1.6.3
 
@@ -456,8 +456,8 @@ packages:
   /@astrojs/compiler/0.29.13:
     resolution: {integrity: sha512-C9+91vsWiJspj/VkVp6UtSIrJGuj/Aia1KCEDzg2Ge27uSDCOl1QlUQuAAnAbGpFBF71uaYOUZOPCbptQeGbdQ==}
 
-  /@astrojs/compiler/0.29.15:
-    resolution: {integrity: sha512-vicPD8oOPNkcFZvz71Uz/nJcadovurUQ3L0yMZNPb6Nn6T1nHhlSHt5nAKaurB2pYU9DrxOFWZS2/RdV+JsWmQ==}
+  /@astrojs/compiler/0.30.1:
+    resolution: {integrity: sha512-sH3hvGA9JR5eE2bHG3sr5QjaJl5ER9EmmZzSwBHkMPoBj0XU7XzQjSGoyCbIML6sSaelJEPnfsr9NsypvKOecg==}
     dev: false
 
   /@astrojs/language-server/0.28.3:
@@ -5238,12 +5238,12 @@ packages:
     hasBin: true
     dev: false
 
-  /astro/1.6.13:
-    resolution: {integrity: sha512-26Ip+7iCdHiK4FQokEWNYTcVDkJ76KLwlzUsuzLck8QBiUFQQUm9fs5nITHDI06k1EYfODYPH81xqZavXlC3Hg==}
+  /astro/1.6.14:
+    resolution: {integrity: sha512-8ljrWPKEU5Hrrbupan48ba4gLWPY14Aqiv4u0U92wSl3wtsqPJUWWlHGGkXcgS/9dx8aiLkUm4RzCPFVnP7V2w==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 0.29.15
+      '@astrojs/compiler': 0.30.1
       '@astrojs/language-server': 0.28.3
       '@astrojs/markdown-remark': 1.1.3
       '@astrojs/telemetry': 1.0.1
@@ -5296,7 +5296,7 @@ packages:
       strip-ansi: 7.0.1
       supports-esm: 1.0.0
       tsconfig-resolver: 3.0.1
-      typescript: 4.9.3
+      typescript: 4.9.4
       unist-util-visit: 4.1.1
       vfile: 5.3.5
       vite: 3.2.5
@@ -6357,7 +6357,7 @@ packages:
       '@pandacss/shared': 0.0.0-dev-20221206180514
       '@pandacss/token-dictionary': 0.0.0-dev-20221206180514
       '@pandacss/types': 0.0.0-dev-20221206180514
-      astro: 1.6.13
+      astro: 1.6.14
       cac: 6.7.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -14249,12 +14249,6 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
-    dev: false
-
-  /typescript/4.9.3:
-    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: false
 
   /typescript/4.9.4:
