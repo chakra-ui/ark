@@ -3,7 +3,6 @@ import { flushSync } from 'react-dom'
 import {
   Slider,
   SliderControl,
-  SliderInput,
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
@@ -25,9 +24,7 @@ export const Basic = () => {
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        <SliderThumb>
-          <SliderInput />
-        </SliderThumb>
+        <SliderThumb />
       </SliderControl>
       <SliderMarkerGroup>
         <SliderMarker value={-30}>*</SliderMarker>
@@ -44,9 +41,7 @@ export const WithDefaultVavlue = () => (
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
-      <SliderThumb>
-        <SliderInput />
-      </SliderThumb>
+      <SliderThumb />
     </SliderControl>
   </Slider>
 )

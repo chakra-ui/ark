@@ -2,7 +2,6 @@ import { createSignal } from 'solid-js'
 import {
   Slider,
   SliderControl,
-  SliderInput,
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
@@ -23,9 +22,7 @@ export const Basic = () => {
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        <SliderThumb>
-          <SliderInput />
-        </SliderThumb>
+        <SliderThumb />
       </SliderControl>
       <SliderMarkerGroup>
         <SliderMarker value={-30}>*</SliderMarker>

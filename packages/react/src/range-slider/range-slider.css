@@ -15,3 +15,11 @@
   align-items: center;
   display: flex;
 }
+
+[data-part='marker'] {
+  color: gray;
+}
+
+[data-part='marker'][data-state='under-value'] {
+  color: blue;
+}

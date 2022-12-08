@@ -1,6 +1,5 @@
 export { Slider, type SliderProps } from './slider'
 export { SliderControl, type SliderControlProps } from './slider-control'
-export { SliderInput, type SliderInputProps } from './slider-input'
 export { SliderLabel, type SliderLabelProps } from './slider-label'
 export { SliderMarker, type SliderMarkerProps } from './slider-marker'
 export { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'

@@ -6,5 +6,10 @@ export type SliderThumbProps = HTMLArkProps<'div'>
 export const SliderThumb = (props: SliderThumbProps) => {
   const slider = useSliderContext()
 
-  return <ark.div {...slider().thumbProps} {...props} />
+  return (
+    <ark.div {...slider().thumbProps} {...props}>
+      <ark.input {...slider().inputProps} />
+      {props.children}
+    </ark.div>
+  )
 }

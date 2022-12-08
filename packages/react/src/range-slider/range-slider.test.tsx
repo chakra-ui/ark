@@ -1,33 +1,38 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
-import { RangeSlider, type RangeSliderProps } from './range-slider'
-import { RangeSliderControl } from './range-slider-control'
-import { RangeSliderInput } from './range-slider-input'
-import { RangeSliderLabel } from './range-slider-label'
-import { RangeSliderOutput } from './range-slider-output'
-import { RangeSliderRange } from './range-slider-range'
-import { RangeSliderThumb } from './range-slider-thumb'
-import { RangeSliderTrack } from './range-slider-track'
+import {
+  RangeSlider,
+  RangeSliderControl,
+  RangeSliderLabel,
+  RangeSliderMarker,
+  RangeSliderMarkerGroup,
+  RangeSliderOutput,
+  RangeSliderProps,
+  RangeSliderRange,
+  RangeSliderThumb,
+  RangeSliderTrack,
+} from './'
 
 const ComponentUnderTest = (props: RangeSliderProps) => {
   const [value, setValue] = useState([-20, 20])
   return (
     <RangeSlider min={-50} max={50} value={value} onChange={(e) => setValue(e.value)} {...props}>
-      <div>
-        <RangeSliderLabel>Quantity: </RangeSliderLabel>
-        <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
-      </div>
+      <RangeSliderLabel>Quantity: </RangeSliderLabel>
+      <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
         {value.map((_, index) => (
-          <RangeSliderThumb key={index} index={index}>
-            <RangeSliderInput index={index} />
-          </RangeSliderThumb>
+          <RangeSliderThumb key={index} index={index} />
         ))}
       </RangeSliderControl>
+      <RangeSliderMarkerGroup>
+        <RangeSliderMarker value={-30}>*</RangeSliderMarker>
+        <RangeSliderMarker value={0}>*</RangeSliderMarker>
+        <RangeSliderMarker value={30}>*</RangeSliderMarker>
+      </RangeSliderMarkerGroup>
     </RangeSlider>
   )
 }

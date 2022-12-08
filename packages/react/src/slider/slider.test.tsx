@@ -3,7 +3,6 @@ import user from '@testing-library/user-event'
 import {
   Slider,
   SliderControl,
-  SliderInput,
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
@@ -21,9 +20,7 @@ const ComponentUnderTest = (props: SliderProps) => {
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        <SliderThumb>
-          <SliderInput />
-        </SliderThumb>
+        <SliderThumb />
       </SliderControl>
       <SliderMarkerGroup>
         <SliderMarker value={-30}>*</SliderMarker>

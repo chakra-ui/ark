@@ -6,8 +6,13 @@ import { useSliderContext } from './slider-context'
 export type SliderThumbProps = HTMLArkProps<'div'>
 
 export const SliderThumb = forwardRef<'div', SliderThumbProps>((props, ref) => {
-  const { thumbProps } = useSliderContext()
+  const { thumbProps, inputProps } = useSliderContext()
   const mergedProps = mergeProps(thumbProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <ark.div {...mergedProps} ref={ref}>
+      <ark.input {...inputProps} />
+      {props.children}
+    </ark.div>
+  )
 })
