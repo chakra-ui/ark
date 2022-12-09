@@ -4,11 +4,11 @@ import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { RatingGroupContext, useRatingGroupContext } from './rating-group-context'
 
-export type RatingControlsProps = Omit<HTMLArkProps<'div'>, 'children'> & {
+export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
   children: JSX.Element | ((context: RatingGroupContext) => JSX.Element)
 }
 
-export const RatingControls = (props: RatingControlsProps) => {
+export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const rating = useRatingGroupContext()
   const view = children(() => runIfFn(props.children, rating))
 

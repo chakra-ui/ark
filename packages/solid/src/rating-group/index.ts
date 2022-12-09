@@ -1,7 +1,7 @@
 export { Rating, type RatingProps } from './rating'
-export { RatingControls, type RatingControlsProps } from './rating-controls'
 export { RatingGroup, type RatingGroupProps } from './rating-group'
-export { RatingLabel, type RatingLabelProps } from './rating-label'
+export { RatingGroupControl, type RatingGroupControlProps } from './rating-group-control'
+export { RatingGroupLabel, type RatingGroupLabelProps } from './rating-group-label'
 export {
   useRatingGroup,
   type UseRatingGroupProps,

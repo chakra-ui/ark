@@ -1,11 +1,11 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { Rating, RatingControls, RatingGroup, RatingGroupProps, RatingLabel } from '.'
+import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel, RatingGroupProps } from '.'
 
 const ComponentUnderTest = (props: RatingGroupProps) => (
   <RatingGroup {...props}>
-    <RatingLabel>Label</RatingLabel>
-    <RatingControls>
+    <RatingGroupLabel>GroupLabel</RatingGroupLabel>
+    <RatingGroupControl>
       {({ sizeArray }) =>
         sizeArray.map((index) => (
           <Rating key={index} index={index}>
@@ -17,11 +17,11 @@ const ComponentUnderTest = (props: RatingGroupProps) => (
           </Rating>
         ))
       }
-    </RatingControls>
+    </RatingGroupControl>
   </RatingGroup>
 )
 
-describe('Rating', () => {
+describe('Rating Group', () => {
   it('should apply default value', async () => {
     render(<ComponentUnderTest defaultValue={2} max={5} />)
 

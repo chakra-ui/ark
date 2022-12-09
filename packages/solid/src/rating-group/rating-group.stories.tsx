@@ -1,9 +1,9 @@
-import { Rating, RatingControls, RatingGroup, RatingLabel } from '.'
+import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
 
 export const Basic = () => (
   <RatingGroup max={5} value={1} allowHalf>
-    <RatingLabel>Label</RatingLabel>
-    <RatingControls>
+    <RatingGroupLabel>GroupLabel</RatingGroupLabel>
+    <RatingGroupControl>
       {(context) =>
         context().sizeArray.map((index) => (
           <Rating index={index}>
@@ -15,7 +15,7 @@ export const Basic = () => (
           </Rating>
         ))
       }
-    </RatingControls>
+    </RatingGroupControl>
   </RatingGroup>
 )
 

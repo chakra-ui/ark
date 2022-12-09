@@ -1,9 +1,9 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useRatingGroupContext } from './rating-group-context'
 
-export type RatingLabelProps = HTMLArkProps<'label'>
+export type RatingGroupLabelProps = HTMLArkProps<'label'>
 
-export const RatingLabel = (props: RatingLabelProps) => {
+export const RatingGroupLabel = (props: RatingGroupLabelProps) => {
   const rating = useRatingGroupContext()
 
   return <ark.label {...rating().labelProps} {...props} />

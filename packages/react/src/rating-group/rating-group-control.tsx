@@ -5,11 +5,11 @@ import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { RatingGroupContext, useRatingGroupContext } from './rating-group-context'
 
-export type RatingControlsProps = Omit<HTMLArkProps<'div'>, 'children'> & {
+export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
   children: ReactNode | ((context: RatingGroupContext) => ReactNode)
 }
 
-export const RatingControls = forwardRef<'div', RatingControlsProps>((props, ref) => {
+export const RatingGroupControl = forwardRef<'div', RatingGroupControlProps>((props, ref) => {
   const { children, ...divProps } = props
   const ratingGroup = useRatingGroupContext()
   const mergedProps = mergeProps(ratingGroup.itemGroupProps, divProps)
