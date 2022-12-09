@@ -22,44 +22,47 @@ export default defineConfig({
     '6xl': { value: { fontSize: '6xl', lineHeight: '4.5rem', letterSpacing: '-0.02em' } },
     '7xl': { value: { fontSize: '7xl', lineHeight: '5.75rem', letterSpacing: '-0.02em' } },
   },
-
   tokens: {
     colors: {
+      black: { value: '#171717' },
       gray: {
-        50: { value: '#F9FAFB' },
-        100: { value: '#F3F4F6' },
-        200: { value: '#E5E7EB' },
-        300: { value: '#D1D5DB' },
-        400: { value: '#9CA3AF' },
-        500: { value: '#6B7280' },
-        600: { value: '#4B5563' },
-        700: { value: '#374151' },
-        800: { value: '#1F2A37' },
-        900: { value: '#111928' },
+        50: { value: '#FCFCFC' },
+        100: { value: '#F5F5F5' },
+        200: { value: '#EEEEEE' },
+        300: { value: '#E0E0E0' },
+        400: { value: '#BDBDBD' },
+        500: { value: '#9E9E9E' },
+        600: { value: '#757575' },
+        700: { value: '#616161' },
+        800: { value: '#424242' },
+        900: { value: '#323232' },
+        950: { value: '#1F1F1F' },
       },
       blue: {
-        50: { value: '#EBF5FF' },
-        100: { value: '#E1EFFE' },
-        200: { value: '#C3DDFD' },
-        300: { value: '#A4CAFE' },
-        400: { value: '#76A9FA' },
-        500: { value: '#3F83F8' },
-        600: { value: '#1C64F2' },
-        700: { value: '#1A56DB' },
-        800: { value: '#1E429F' },
-        900: { value: '#233876' },
+        50: { value: '#ECEEFE' },
+        100: { value: '#D8DDFD' },
+        200: { value: '#B1BAFB' },
+        300: { value: '#8B98F9' },
+        400: { value: '#6475F7' },
+        500: { value: '#3D53F5' },
+        600: { value: '#3142C4' },
+        700: { value: '#253293 ' },
+        800: { value: '#182162' },
+        900: { value: '#0C1131' },
+        950: { value: '#060818' },
       },
       purple: {
-        50: { value: '#F6F5FF' },
-        100: { value: '#EDEBFE' },
-        200: { value: '#DCD7FE' },
-        300: { value: '#CABFFD' },
-        400: { value: '#AC94FA' },
-        500: { value: '#9061F9' },
-        600: { value: '#7E3AF2' },
-        700: { value: '#6C2BD9' },
-        800: { value: '#5521B5' },
-        900: { value: '#4A1D96' },
+        50: { value: '#EEECFB' },
+        100: { value: '#DDD9F7' },
+        200: { value: '#BBB2EF' },
+        300: { value: '#9A8CE8' },
+        400: { value: '#7865E0 ' },
+        500: { value: '#563FD8' },
+        600: { value: '#4532AD' },
+        700: { value: '#342682' },
+        800: { value: '#221956 ' },
+        900: { value: '#110D2B' },
+        950: { value: '#090616' },
       },
     },
     spacing: {
@@ -83,9 +86,55 @@ export default defineConfig({
   },
   semanticTokens: {
     colors: {
-      default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
-      muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.200}' } },
-      canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.gray.900}' } },
+      fg: {
+        default: { value: { base: '{colors.black}', _dark: 'white' } },
+        muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
+        subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+      },
+      bg: {
+        canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.black}' } },
+        surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
+        muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
+        subtle: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
+      },
+      accent: {
+        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.300}' } }, // original _dark:400
+        emphasis: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.500}' } },
+        muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
+        subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
+      },
+    },
+    shadows: {
+      xs: {
+        value: {
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 1px 3px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 1px 3px rgba(13, 13, 13, 0.9)',
+        },
+      },
+      sm: {
+        value: {
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 2px 4px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 2px 4px rgba(13, 13, 13, 0.9)',
+        },
+      },
+      md: {
+        value: {
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 4px 8px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 4px 8px rgba(13, 13, 13, 0.9)',
+        },
+      },
+      lg: {
+        value: {
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 8px 16px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 8px 16px rgba(13, 13, 13, 0.9)',
+        },
+      },
+      xl: {
+        value: {
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 16px 24px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 16px 24px rgba(13, 13, 13, 0.9)',
+        },
+      },
     },
   },
   globalCss: {
@@ -98,16 +147,13 @@ export default defineConfig({
       height: '100%',
     },
     body: {
-      backgroundColor: 'canvas',
-      color: 'default',
+      backgroundColor: 'bg.canvas',
+      color: 'fg.default',
       fontFamily: 'InterVariable, sans-serif',
       height: '100%',
     },
     '*, *::before, *::after': {
-      borderColor: 'gray.200',
-      _dark: {
-        borderColor: 'gray.800',
-      },
+      borderColor: 'bg.subtle',
       borderStyle: 'solid',
     },
   },

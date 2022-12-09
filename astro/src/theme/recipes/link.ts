@@ -34,7 +34,7 @@ export const link = defineRecipe({
         px: '2',
         borderRadius: 'sm',
         _hover: {
-          color: 'default',
+          color: 'fg.default',
           backgroundColor: 'gray.100',
         },
       },

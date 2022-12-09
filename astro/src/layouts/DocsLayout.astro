@@ -1,11 +1,9 @@
 ---
 import type { MarkdownLayoutProps } from 'astro'
-import { Box, Container, HStack, Stack } from '../../panda/jsx'
-import Sidebar from '../components/Sidebar.astro'
-import Toc from '../components/Toc.astro'
-import BaseLayout from './BaseLayout.astro'
-import { Text } from '../components/shared/Text'
 import { css } from '../../panda/css'
+import { Box, Container, HStack, Stack } from '../../panda/jsx'
+import { Text } from '../components/shared/Text'
+import BaseLayout from './BaseLayout.astro'
 
 type Props = MarkdownLayoutProps<{
   title: string
@@ -25,13 +23,13 @@ const { frontmatter } = Astro.props
           gap="4"
           textStyle="sm"
           fontWeight="medium"
-          color="muted"
+          color="fg.muted"
           listStyle="none"
           ps="0"
         >
           <li>
-            <HStack as="a" gap="4" fontWeight="semibold" color="purple.600">
-              <Box w="6" h="6" backgroundColor="gray.200" borderRadius="md" />
+            <HStack as="a" gap="4" fontWeight="semibold" color="accent.default">
+              <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
               Documentation
             </HStack>
           </li>
@@ -39,7 +37,7 @@ const { frontmatter } = Astro.props
             [, 'Discord', 'GitHub'].map((item) => (
               <li>
                 <HStack as="a" gap="4">
-                  <Box w="6" h="6" backgroundColor="gray.200" borderRadius="md" />
+                  <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
                   {item}
                 </HStack>
               </li>
@@ -48,18 +46,18 @@ const { frontmatter } = Astro.props
         </Stack>
         <Stack gap="3">
           <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Getting started</Text>
-          <Stack borderLeftWidth="1px">
+          <Stack borderLeftWidth="1px" gap="2">
             {
               ['Welcome'].map((item) => (
                 <Text
-                  fontSize="sm"
+                  textStyle="sm"
                   lineHeight="1.5rem"
                   pl="4"
-                  color="purple.500"
+                  color="accent.default"
                   fontWeight="semibold"
                   ml="-1px"
                   borderLeftWidth="1px"
-                  borderColor="purple.500"
+                  borderColor="accent.default"
                 >
                   {item}
                 </Text>
@@ -68,15 +66,15 @@ const { frontmatter } = Astro.props
           </Stack>
         </Stack>
         <Stack gap="3">
-          <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
-          <Stack borderLeftWidth="1px">
+          <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
+          <Stack borderLeftWidth="1px" gap="2">
             {
               ['Accorrdion', 'Checkbox', 'Tooltip'].map((item) => (
                 <Text
-                  fontSize="sm"
+                  textStyle="sm"
                   lineHeight="1.5rem"
                   pl="4"
-                  color="muted"
+                  color="fg.muted"
                   borderLeftWidth="1px"
                   _hover={{ color: 'gray.800', borderLeftColor: 'gray.400' }}
                   ml="-1px"
@@ -89,16 +87,49 @@ const { frontmatter } = Astro.props
         </Stack>
       </Stack>
     </Box>
-    <Box pl={{ base: '0', lg: '80' }}>
-      <Stack direction="row" gap="12">
-        <Box maxW="43rem" flex="1">
-          <article class={css({ '& > p': { my: '5', color: 'muted', lineHeight: '1.75' } })}>
+    <Box pl={{ base: '0', lg: '80' }} pt="1">
+      <Stack direction="row" gap="12" justify="space-between">
+        <Box maxW={{ xl: '43rem' }} flex="1">
+          <article
+            class={css({
+              '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
+              '& > pre': {
+                my: '5',
+                p: '5',
+                borderRadius: 'xl',
+                backgroundColor: 'gray.950 !important',
+                boxShadow: 'xs',
+              },
+            })}
+          >
             <h1>{frontmatter.title}</h1>
             <p>{frontmatter.description}</p>
             <slot />
           </article>
         </Box>
-        <Box>Toc</Box>
+        <Box width="16rem" display={{ base: 'none', xl: 'block' }}>
+          <Stack
+            as="ul"
+            gap="2"
+            fontSize="sm"
+            lineHeight="1.5rem"
+            color="fg.muted"
+            listStyle="none"
+            ps="0"
+            position="fixed"
+          >
+            <Box as="li">
+              <Text color="accent.default" fontWeight="medium">Headline 0</Text>
+            </Box>
+            {
+              ['Headline 1', 'Headline 2', 'Headline 3', 'Headline 4'].map((headline) => (
+                <Box as="li">
+                  <Text>{headline}</Text>
+                </Box>
+              ))
+            }
+          </Stack>
+        </Box>
       </Stack>
     </Box>
   </Container>
