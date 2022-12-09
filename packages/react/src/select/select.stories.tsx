@@ -23,9 +23,7 @@ export const Basic = () => (
             <SelectContent>
               <SelectOptionGroup id="framework">
                 <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
-                <SelectOption value="react" label="React">
-                  React
-                </SelectOption>
+                <SelectOption value="react" label="React" />
                 <SelectOption value="solid" label="Solid">
                   Solid
                 </SelectOption>

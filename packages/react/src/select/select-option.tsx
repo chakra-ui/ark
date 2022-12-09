@@ -8,15 +8,19 @@ type OptionProps = Parameters<ReturnType<typeof useSelectContext>['getOptionProp
 export type SelectOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
 
 export const SelectOption = forwardRef<'li', SelectOptionProps>((props, ref) => {
-  const [optionProps, liProps] = createSplitProps<OptionProps>()(props, [
+  const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [
     'disabled',
     'label',
     'value',
-    'valueText', // TODO what is value text
+    'valueText',
   ])
 
   const { getOptionProps } = useSelectContext()
   const mergedProps = mergeProps(getOptionProps(optionProps), liProps)
 
-  return <ark.li {...mergedProps} ref={ref} />
+  return (
+    <ark.li {...mergedProps} ref={ref}>
+      {children ? children : optionProps.label}
+    </ark.li>
+  )
 })

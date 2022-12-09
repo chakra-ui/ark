@@ -29,14 +29,7 @@ export const Basic = () => {
               <SelectContent>
                 <SelectOptionGroup id="framework">
                   <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
-                  <For each={options}>
-                    {(option) => (
-                      <SelectOption {...option}>
-                        <span>{option.label}</span>
-                        {option.value === context().selectedOption?.value && '✓'}
-                      </SelectOption>
-                    )}
-                  </For>
+                  <For each={options}>{(option) => <SelectOption {...option} />}</For>
                 </SelectOptionGroup>
               </SelectContent>
             </SelectPositioner>

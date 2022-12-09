@@ -15,5 +15,9 @@ export const SelectOption = (props: SelectOptionProps) => {
   ])
   const select = useSelectContext()
 
-  return <ark.li {...select().getOptionProps(optionProps)} {...liProps} />
+  return (
+    <ark.li {...select().getOptionProps(optionProps)} {...liProps}>
+      {liProps.children ? liProps.children : optionProps.label}
+    </ark.li>
+  )
 }
