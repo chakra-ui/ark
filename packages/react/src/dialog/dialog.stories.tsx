@@ -1,12 +1,14 @@
-import { Dialog } from './dialog'
-import { DialogBackdrop } from './dialog-backdrop'
-import { DialogCloseButton } from './dialog-close-button'
-import { DialogContainer } from './dialog-container'
-import { DialogContent } from './dialog-content'
-import { DialogDescription } from './dialog-description'
-import { DialogPortal } from './dialog-portal'
-import { DialogTitle } from './dialog-title'
-import { DialogTrigger } from './dialog-trigger'
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from './'
 
 export const Basic = () => {
   return (
@@ -24,7 +26,9 @@ export const Basic = () => {
               <input placeholder="Enter name..." />
               <button>Save</button>
             </div>
-            <DialogCloseButton>Close</DialogCloseButton>
+            <DialogCloseTrigger>
+              <button>close</button>
+            </DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
       </DialogPortal>

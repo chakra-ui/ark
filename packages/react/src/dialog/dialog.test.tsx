@@ -1,15 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Dialog, DialogProps } from './dialog'
-import { DialogBackdrop } from './dialog-backdrop'
-import { DialogCloseButton } from './dialog-close-button'
-import { DialogContainer } from './dialog-container'
-import { DialogContent } from './dialog-content'
-import { DialogDescription } from './dialog-description'
-import { DialogPortal } from './dialog-portal'
-import { DialogTitle } from './dialog-title'
-import { DialogTrigger } from './dialog-trigger'
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogPortal,
+  DialogProps,
+  DialogTitle,
+  DialogTrigger,
+} from './'
 
 const ComponentUnderTest = (props: DialogProps) => (
   <Dialog {...props}>
@@ -26,7 +29,9 @@ const ComponentUnderTest = (props: DialogProps) => (
           <input placeholder="Enter name..." />
           <button>Save</button>
         </div>
-        <DialogCloseButton>Close</DialogCloseButton>
+        <DialogCloseTrigger>
+          <button>Close</button>
+        </DialogCloseTrigger>
       </DialogContent>
     </DialogPortal>
   </Dialog>
