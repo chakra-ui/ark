@@ -40,14 +40,14 @@ const main = async () => {
   ).filter((x) => !x.isValid)
 
   if (invalidExports.length > 0) {
-    console.error('Export check failed')
-    console.error(
-      'The following components have different exports in different frameworks:',
-      invalidExports.map((x) => x.component).join(', '),
+    throw new Error(
+      'Export check failed. The following components have different exports in different frameworks: ' +
+        invalidExports.map((x) => x.component).join(', '),
     )
-
-    process.exit(1)
   }
 }
 
-main()
+main().catch((err) => {
+  console.error(err.message)
+  process.exit(1)
+})
