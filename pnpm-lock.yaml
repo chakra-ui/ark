@@ -264,7 +264,7 @@ importers:
       '@testing-library/vue': 6.6.1
       '@typescript-eslint/eslint-plugin': 5.46.0
       '@typescript-eslint/parser': 5.46.0
-      '@vitejs/plugin-vue': 3.2.0
+      '@vitejs/plugin-vue': 4.0.0
       '@vitest/coverage-c8': 0.25.6
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.3
@@ -317,7 +317,7 @@ importers:
       '@testing-library/vue': 6.6.1_tfvhctuaqmmqnirfl65c47tqwu
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
-      '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.45
+      '@vitejs/plugin-vue': 4.0.0_vite@3.2.5+vue@3.2.45
       '@vitest/coverage-c8': 0.25.6
       '@vue/compiler-sfc': 3.2.45
       eslint: 8.29.0
@@ -4404,11 +4404,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue/3.2.0_vite@3.2.5+vue@3.2.45:
-    resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
+  /@vitejs/plugin-vue/4.0.0_vite@3.2.5+vue@3.2.45:
+    resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^3.0.0
+      vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
       vite: 3.2.5

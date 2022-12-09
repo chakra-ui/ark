@@ -63,7 +63,7 @@
     "@testing-library/vue": "6.6.1",
     "@typescript-eslint/eslint-plugin": "5.46.0",
     "@typescript-eslint/parser": "5.46.0",
-    "@vitejs/plugin-vue": "3.2.0",
+    "@vitejs/plugin-vue": "4.0.0",
     "@vitest/coverage-c8": "0.25.6",
     "@vue/compiler-sfc": "3.2.45",
     "eslint": "8.29.0",
