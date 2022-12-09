@@ -1,32 +1,40 @@
 import {
   Editable,
   EditableArea,
-  EditableCancelButton,
-  EditableControls,
-  EditableEditButton,
+  EditableCancelTrigger,
+  EditableControl,
+  EditableEditTrigger,
   EditableInput,
+  EditableLabel,
   EditablePreview,
-  EditableSubmitButton,
+  EditableSubmitTrigger,
 } from '.'
 
 export const Basic = () => (
   <Editable activationMode="dblclick" placeholder="enter a value" value="Chakra">
     {(state) => (
       <>
+        <EditableLabel>Label</EditableLabel>
         <EditableArea>
           <EditableInput />
           <EditablePreview />
         </EditableArea>
-        <EditableControls>
+        <EditableControl>
           {state().isEditing ? (
             <>
-              <EditableSubmitButton>Save</EditableSubmitButton>
-              <EditableCancelButton>Cancel</EditableCancelButton>
+              <EditableSubmitTrigger>
+                <button>Save</button>
+              </EditableSubmitTrigger>
+              <EditableCancelTrigger>
+                <button>Cancel</button>
+              </EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditButton>Edit</EditableEditButton>
+            <EditableEditTrigger>
+              <button>Edit</button>
+            </EditableEditTrigger>
           )}
-        </EditableControls>
+        </EditableControl>
       </>
     )}
   </Editable>

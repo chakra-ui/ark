@@ -1,9 +1,9 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableControlsProps = HTMLArkProps<'div'>
+export type EditableControlProps = HTMLArkProps<'div'>
 
-export const EditableControls = (props: EditableControlsProps) => {
+export const EditableControl = (props: EditableControlProps) => {
   const editable = useEditableContext()
 
   return <ark.div {...editable().controlGroupProps} {...props} />

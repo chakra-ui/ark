@@ -1,13 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Editable, EditableProps } from './editable'
-import { EditableArea } from './editable-area'
-import { EditableCancelButton } from './editable-cancel-button'
-import { EditableControls } from './editable-controls'
-import { EditableEditButton } from './editable-edit-button'
-import { EditableInput } from './editable-input'
-import { EditablePreview } from './editable-preview'
-import { EditableSubmitButton } from './editable-submit-button'
+import {
+  Editable,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableControl,
+  EditableEditTrigger,
+  EditableInput,
+  EditablePreview,
+  EditableProps,
+  EditableSubmitTrigger,
+} from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
   <Editable activationMode="dblclick" placeholder="Placeholder" {...props}>
@@ -17,16 +20,22 @@ const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
           <EditableInput />
           <EditablePreview />
         </EditableArea>
-        <EditableControls>
+        <EditableControl>
           {isEditing ? (
             <>
-              <EditableSubmitButton>Save</EditableSubmitButton>
-              <EditableCancelButton>Cancel</EditableCancelButton>
+              <EditableSubmitTrigger>
+                <button>Save</button>
+              </EditableSubmitTrigger>
+              <EditableCancelTrigger>
+                <button>Cancel</button>
+              </EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditButton>Edit</EditableEditButton>
+            <EditableEditTrigger>
+              <button>Edit</button>
+            </EditableEditTrigger>
           )}
-        </EditableControls>
+        </EditableControl>
       </>
     )}
   </Editable>
