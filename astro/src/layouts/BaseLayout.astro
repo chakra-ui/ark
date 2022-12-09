@@ -13,17 +13,16 @@ import '../index.css'
     <meta name="viewport" content="width=device-width" />
     <title>Ark UI</title>
   </head>
-  <body>
-    <div
-      class={css({
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-      })}
-    >
-      <Navbar />
+  <body
+    class={css({
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100%',
+    })}
+  >
+    <Navbar />
+    <main class={css({ flex: '1' })}>
       <slot />
-    </div>
-    <Footer />
+    </main>
   </body>
 </html>

@@ -1,4 +1,7 @@
 ---
+import { Text } from '../../../components/shared/Text'
+import { Heading } from '../../../components/shared/Heading'
+
 export async function getStaticPaths() {
   const frameworks = ['react', 'solid', 'vue']
   const components = await Astro.glob('../../../docs/**/*.mdx')
@@ -21,4 +24,4 @@ export async function getStaticPaths() {
 const { Content } = Astro.props.component
 ---
 
-<Content />
+<Content components={{ h1: Heading, p: Text }} />

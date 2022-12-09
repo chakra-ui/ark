@@ -10,14 +10,15 @@ const components = await Astro.glob('../docs/*.mdx')
 <aside
   role="complementary"
   class={css({
-    width: '100%',
+    background: 'red',
+    minH: '500px',
+    width: '16rem',
     alignSelf: 'start',
-    position: { base: 'unset', lg: 'sticky' },
-    top: '24',
-    maxW: { lg: '300px' },
+    position: 'fixed',
+    display: { base: 'none', lg: 'block' },
   })}
 >
-  <Stack gap="1">
+  <!-- <Stack gap="1">
     <Text
       textStyle="xs"
       textTransform="uppercase"
@@ -33,5 +34,5 @@ const components = await Astro.glob('../docs/*.mdx')
         </Link>
       ))
     }
-  </Stack>
+  </Stack> -->
 </aside>

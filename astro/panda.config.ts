@@ -73,7 +73,7 @@ export default defineConfig({
       transform: (props) => {
         return {
           px: { base: '4', md: '8' },
-          maxW: '7xl',
+          maxW: '8xl',
           width: '100%',
           mx: 'auto',
           ...props,
@@ -84,7 +84,7 @@ export default defineConfig({
   semanticTokens: {
     colors: {
       default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
-      muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.200}' } },
+      muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.200}' } },
       canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.gray.900}' } },
     },
   },
@@ -105,6 +105,9 @@ export default defineConfig({
     },
     '*, *::before, *::after': {
       borderColor: 'gray.200',
+      _dark: {
+        borderColor: 'gray.800',
+      },
       borderStyle: 'solid',
     },
   },

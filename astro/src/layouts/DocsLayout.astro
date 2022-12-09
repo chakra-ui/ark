@@ -1,11 +1,11 @@
 ---
 import type { MarkdownLayoutProps } from 'astro'
-import { css } from '../../panda/css'
-import { Container, Stack } from '../../panda/jsx'
-import Footer from '../components/Footer.astro'
-import Navbar from '../components/Navbar.astro'
+import { Box, Container, HStack, Stack } from '../../panda/jsx'
 import Sidebar from '../components/Sidebar.astro'
+import Toc from '../components/Toc.astro'
 import BaseLayout from './BaseLayout.astro'
+import { Text } from '../components/shared/Text'
+import { css } from '../../panda/css'
 
 type Props = MarkdownLayoutProps<{
   title: string
@@ -17,16 +17,89 @@ const { frontmatter } = Astro.props
 ---
 
 <BaseLayout>
-  <Container>
-    <Stack gap="16" direction="row">
-      <Sidebar />
-      <main>
-        <article>
-          <h1>{frontmatter.title}</h1>
-          <p>{frontmatter.description}</p>
-          <slot />
-        </article>
-      </main>
-    </Stack>
+  <Container py="8">
+    <Box width="19.5rem" position="fixed" display={{ base: 'none', lg: 'block' }}>
+      <Stack gap="12">
+        <Stack
+          as="ul"
+          gap="4"
+          textStyle="sm"
+          fontWeight="medium"
+          color="muted"
+          listStyle="none"
+          ps="0"
+        >
+          <li>
+            <HStack as="a" gap="4" fontWeight="semibold" color="purple.600">
+              <Box w="6" h="6" backgroundColor="gray.200" borderRadius="md" />
+              Documentation
+            </HStack>
+          </li>
+          {
+            [, 'Discord', 'GitHub'].map((item) => (
+              <li>
+                <HStack as="a" gap="4">
+                  <Box w="6" h="6" backgroundColor="gray.200" borderRadius="md" />
+                  {item}
+                </HStack>
+              </li>
+            ))
+          }
+        </Stack>
+        <Stack gap="3">
+          <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Getting started</Text>
+          <Stack borderLeftWidth="1px">
+            {
+              ['Welcome'].map((item) => (
+                <Text
+                  fontSize="sm"
+                  lineHeight="1.5rem"
+                  pl="4"
+                  color="purple.500"
+                  fontWeight="semibold"
+                  ml="-1px"
+                  borderLeftWidth="1px"
+                  borderColor="purple.500"
+                >
+                  {item}
+                </Text>
+              ))
+            }
+          </Stack>
+        </Stack>
+        <Stack gap="3">
+          <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
+          <Stack borderLeftWidth="1px">
+            {
+              ['Accorrdion', 'Checkbox', 'Tooltip'].map((item) => (
+                <Text
+                  fontSize="sm"
+                  lineHeight="1.5rem"
+                  pl="4"
+                  color="muted"
+                  borderLeftWidth="1px"
+                  _hover={{ color: 'gray.800', borderLeftColor: 'gray.400' }}
+                  ml="-1px"
+                >
+                  {item}
+                </Text>
+              ))
+            }
+          </Stack>
+        </Stack>
+      </Stack>
+    </Box>
+    <Box pl={{ base: '0', lg: '80' }}>
+      <Stack direction="row" gap="12">
+        <Box maxW="43rem" flex="1">
+          <article class={css({ '& > p': { my: '5', color: 'muted', lineHeight: '1.75' } })}>
+            <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.description}</p>
+            <slot />
+          </article>
+        </Box>
+        <Box>Toc</Box>
+      </Stack>
+    </Box>
   </Container>
 </BaseLayout>

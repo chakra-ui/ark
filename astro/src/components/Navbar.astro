@@ -1,6 +1,6 @@
 ---
 import { css } from '../../panda/css'
-import { Container, HStack, Stack } from '../../panda/jsx'
+import { Box, Container, HStack, Stack } from '../../panda/jsx'
 import Logo from './Logo.astro'
 import { Link } from './shared/Link'
 import ThemeIcon from './ThemeIcon.astro'
@@ -8,23 +8,19 @@ import ThemeIcon from './ThemeIcon.astro'
 
 <nav
   role="navigation"
-  class={css({ position: 'sticky', top: '0', background: 'canvas', borderBottomWidth: '1px' })}
+  class={css({
+    position: 'sticky',
+    top: '0',
+    background: 'canvas',
+    borderBottomWidth: '1px',
+  })}
 >
-  <Container class={css({ minH: '20', display: 'flex' })}>
+  <Container class={css({ minH: '68px', display: 'flex' })}>
     <HStack justify="space-between" flex="1">
-      <Stack direction="row" gap="8" align="center">
-        <Link href="/" aria-label="Back home">
-          <Logo />
-        </Link>
-        {
-          ['Docs', 'Showcase', 'Blog'].map((item) => (
-            <Link href="/docs/react/accordion" textStyle="sm">
-              {item}
-            </Link>
-          ))
-        }
-      </Stack>
-
+      <Link href="/" aria-label="Back home">
+        <Logo />
+      </Link>
+      <Box bg="gray.100" borderWidth="1px" h="9" width="320px" borderRadius="sm" />
       <ThemeIcon />
     </HStack>
   </Container>
