@@ -40,7 +40,7 @@ async function loadComponentDocs() {
 
       const dir = path.dirname(restPath)
       const fileName = path.basename(restPath)
-      const destDir = path.join(docsRoot, framework, component, dir)
+      const destDir = path.join(docsRoot, framework, 'components', component, dir)
       await mkdirp(destDir)
       const destFile = path.join(destDir, fileName)
 

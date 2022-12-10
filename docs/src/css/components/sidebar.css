@@ -1,0 +1,52 @@
+.sidebar_category_header > .menu__list-item-collapsible:first-of-type {
+  margin-top: 1rem;
+}
+
+.sidebar_category_header > .menu__list-item-collapsible:first-of-type:hover {
+  background: inherit;
+}
+
+.sidebar_category_header > .menu__list-item-collapsible:first-of-type .menu__link {
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  font-weight: var(--ifm-font-weight-bold);
+  font-size: 0.75rem;
+}
+
+.theme-doc-sidebar-item-category-level-1 .menu__list {
+  font-size: 0.85rem;
+  padding-left: 0;
+}
+
+/* The level changes when folder structure changes */
+.theme-doc-sidebar-item-category-level-1 .menu__list .theme-doc-sidebar-item-link-level-4 {
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+[class^='docSidebarContainer'] {
+  border-right: 1px solid var(--ifm-color-emphasis-100);
+}
+
+[class^='sidebar_'] {
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.menu {
+  overflow-x: initial;
+}
+
+.menu__caret::before {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem;
+}
+
+.menu__caret:hover {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.menu__link--sublist-caret::after {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1.25rem 1.25rem;
+}

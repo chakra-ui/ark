@@ -1,23 +1,18 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
+const lightCodeTheme = require('prism-react-renderer/themes/nightOwlLight')
+const darkCodeTheme = require('prism-react-renderer/themes/nightOwl')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Ark',
+  title: 'Ark UI',
   tagline: '',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://ark-ui.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'chakra', // Usually your GitHub org/user name.
-  projectName: 'ark', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -27,40 +22,41 @@ const config = {
     locales: ['en'],
   },
 
-  presets: [
-    [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      }),
-    ],
-  ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Ark',
+        title: 'Ark UI',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Ark UI Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            href: '/docs/react',
-            label: 'React',
+            position: 'left',
+            label: 'Framework',
+            items: [
+              {
+                type: 'doc',
+                docId: 'index',
+                docsPluginId: 'react',
+                label: 'React',
+              },
+              {
+                type: 'doc',
+                docId: 'index',
+                docsPluginId: 'solid',
+                label: 'SolidJS',
+              },
+              {
+                type: 'doc',
+                docId: 'index',
+                docsPluginId: 'vue',
+                label: 'Vue.js',
+              },
+            ],
           },
-          {
-            href: '/docs/solid',
-            label: 'SolidJS',
-          },
-          {
-            href: '/docs/vue',
-            label: 'Vue.js',
-          },
+
           {
             href: 'https://github.com/chakra-ui/ark',
             label: 'GitHub',
@@ -101,7 +97,36 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-  plugins: ['./plugins/load-component-docs.js'],
+
+  plugins: [
+    './plugins/load-component-docs.js',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'react',
+        path: 'docs/react',
+        routeBasePath: '/docs/react',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'solid',
+        path: 'docs/solid',
+        routeBasePath: '/docs/solid',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'vue',
+        path: 'docs/vue',
+        routeBasePath: '/docs/vue',
+      },
+    ],
+    '@docusaurus/plugin-content-pages',
+  ],
+  themes: [['@docusaurus/theme-classic', { customCss: require.resolve('./src/css/custom.css') }]],
 }
 
 module.exports = config
