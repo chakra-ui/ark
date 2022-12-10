@@ -1,0 +1,16 @@
+.partList {
+  list-style: none;
+  padding: 0;
+}
+
+.partListItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.partName {
+  margin: 0;
+  font-weight: var(--ifm-font-weight-semibold);
+  font-size: var(--ifm-h3-font-size);
+}
