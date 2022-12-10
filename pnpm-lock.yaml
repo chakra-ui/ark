@@ -104,7 +104,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.0
       '@typescript-eslint/parser': 5.46.0
       '@vitejs/plugin-react': 3.0.0
-      '@vitest/coverage-c8': 0.25.6
+      '@vitest/coverage-c8': 0.25.7
       '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
@@ -136,7 +136,7 @@ importers:
       tsup: 6.5.0
       typescript: 4.9.4
       vite: 4.0.0
-      vitest: 0.25.6
+      vitest: 0.25.7
     dependencies:
       '@polymorphic-factory/react': 0.2.1_react@18.2.0
       '@zag-js/accordion': 0.2.3
@@ -172,7 +172,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       '@vitejs/plugin-react': 3.0.0_vite@4.0.0
-      '@vitest/coverage-c8': 0.25.6_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.25.7_jsdom@20.0.3
       eslint: 8.29.0
       eslint-plugin-react: 7.31.11_eslint@8.29.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
@@ -183,7 +183,7 @@ importers:
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
       vite: 4.0.0
-      vitest: 0.25.6_jsdom@20.0.3
+      vitest: 0.25.7_jsdom@20.0.3
 
   packages/solid:
     specifiers:
@@ -194,7 +194,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.46.0
       '@typescript-eslint/parser': 5.46.0
-      '@vitest/coverage-c8': 0.25.6
+      '@vitest/coverage-c8': 0.25.7
       '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
@@ -224,7 +224,7 @@ importers:
       typescript: 4.9.4
       vite: 4.0.0
       vite-plugin-solid: 2.5.0
-      vitest: 0.25.6
+      vitest: 0.25.7
     dependencies:
       '@polymorphic-factory/solid': 0.1.2_solid-js@1.6.4
       '@zag-js/accordion': 0.2.3
@@ -255,7 +255,7 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
-      '@vitest/coverage-c8': 0.25.6_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.25.7_jsdom@20.0.3
       eslint: 8.29.0
       jsdom: 20.0.3
       solid-js: 1.6.4
@@ -264,7 +264,7 @@ importers:
       typescript: 4.9.4
       vite: 4.0.0
       vite-plugin-solid: 2.5.0_solid-js@1.6.4+vite@4.0.0
-      vitest: 0.25.6_jsdom@20.0.3
+      vitest: 0.25.7_jsdom@20.0.3
 
   packages/vue:
     specifiers:
@@ -274,7 +274,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.0
       '@typescript-eslint/parser': 5.46.0
       '@vitejs/plugin-vue': 4.0.0
-      '@vitest/coverage-c8': 0.25.6
+      '@vitest/coverage-c8': 0.25.7
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.3
       '@zag-js/checkbox': 0.2.4
@@ -298,7 +298,7 @@ importers:
       eslint: 8.29.0
       typescript: 4.9.4
       vite: 4.0.0
-      vitest: 0.25.6
+      vitest: 0.25.7
       vue: 3.2.45
     dependencies:
       '@zag-js/accordion': 0.2.3
@@ -327,12 +327,12 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
       '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.0+vue@3.2.45
-      '@vitest/coverage-c8': 0.25.6
+      '@vitest/coverage-c8': 0.25.7
       '@vue/compiler-sfc': 3.2.45
       eslint: 8.29.0
       typescript: 4.9.4
       vite: 4.0.0
-      vitest: 0.25.6
+      vitest: 0.25.7
       vue: 3.2.45
 
 packages:
@@ -3332,6 +3332,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-arm/0.16.3:
@@ -3448,6 +3449,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-loong64/0.16.3:
@@ -4817,11 +4819,11 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@vitest/coverage-c8/0.25.6:
-    resolution: {integrity: sha512-+Bcs1XZ8CuEe52QSOgzqmqiV82CXZRRj3yclPQqtLkUV4S6+kdOdfRTtMHOilwhZH70giDjBQx3jgiZoYgFVMA==}
+  /@vitest/coverage-c8/0.25.7:
+    resolution: {integrity: sha512-TEoYjW4YIDXKCMmLqduIGpIq2JmlhE3M0Q68apjNM0ljrJyEvYpaDI5b7OyfXbAJjhmZvIlfEZfZnmhbExHLHg==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.6
+      vitest: 0.25.7
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -4836,11 +4838,11 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.25.6_jsdom@20.0.3:
-    resolution: {integrity: sha512-+Bcs1XZ8CuEe52QSOgzqmqiV82CXZRRj3yclPQqtLkUV4S6+kdOdfRTtMHOilwhZH70giDjBQx3jgiZoYgFVMA==}
+  /@vitest/coverage-c8/0.25.7_jsdom@20.0.3:
+    resolution: {integrity: sha512-TEoYjW4YIDXKCMmLqduIGpIq2JmlhE3M0Q68apjNM0ljrJyEvYpaDI5b7OyfXbAJjhmZvIlfEZfZnmhbExHLHg==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.6_jsdom@20.0.3
+      vitest: 0.25.7_jsdom@20.0.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -7478,6 +7480,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-android-arm64/0.14.54:
@@ -7504,6 +7507,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-darwin-64/0.14.54:
@@ -7530,6 +7534,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-darwin-arm64/0.14.54:
@@ -7556,6 +7561,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-freebsd-64/0.14.54:
@@ -7582,6 +7588,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-freebsd-arm64/0.14.54:
@@ -7608,6 +7615,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-32/0.14.54:
@@ -7634,6 +7642,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-64/0.14.54:
@@ -7660,6 +7669,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-arm/0.14.54:
@@ -7686,6 +7696,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-arm64/0.14.54:
@@ -7712,6 +7723,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-mips64le/0.14.54:
@@ -7738,6 +7750,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-ppc64le/0.14.54:
@@ -7764,6 +7777,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-riscv64/0.14.54:
@@ -7790,6 +7804,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-linux-s390x/0.14.54:
@@ -7816,6 +7831,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-netbsd-64/0.14.54:
@@ -7842,6 +7858,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-openbsd-64/0.14.54:
@@ -7868,6 +7885,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-sunos-64/0.14.54:
@@ -7894,6 +7912,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-windows-32/0.14.54:
@@ -7920,6 +7939,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-windows-64/0.14.54:
@@ -7946,6 +7966,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild-windows-arm64/0.14.54:
@@ -7972,6 +7993,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /esbuild/0.14.54:
@@ -8061,6 +8083,7 @@ packages:
       esbuild-windows-32: 0.15.18
       esbuild-windows-64: 0.15.18
       esbuild-windows-arm64: 0.15.18
+    dev: false
 
   /esbuild/0.16.3:
     resolution: {integrity: sha512-71f7EjPWTiSguen8X/kxEpkAS7BFHwtQKisCDDV3Y4GLGWBaoSCyD5uXkaUew6JDzA9FEN1W23mdnSwW9kqCeg==}
@@ -13391,6 +13414,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /rollup/3.2.5:
     resolution: {integrity: sha512-/Ha7HhVVofduy+RKWOQJrxe4Qb3xyZo+chcpYiD8SoQa4AG7llhupUtyfKSSrdBM2mWJjhM8wZwmbY23NmlIYw==}
@@ -15222,40 +15246,6 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vite/3.2.5_@types+node@18.11.12:
-    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 18.11.12
-      esbuild: 0.15.18
-      postcss: 8.4.19
-      resolve: 1.22.1
-      rollup: 2.79.1
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /vite/4.0.0:
     resolution: {integrity: sha512-ynad+4kYs8Jcnn8J7SacS9vAbk7eMy0xWg6E7bAhS1s79TK+D7tVFGXVZ55S7RNLRROU1rxoKlvZ/qjaB41DGA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -15281,6 +15271,40 @@ packages:
       terser:
         optional: true
     dependencies:
+      esbuild: 0.16.3
+      postcss: 8.4.19
+      resolve: 1.22.1
+      rollup: 3.7.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite/4.0.0_@types+node@18.11.12:
+    resolution: {integrity: sha512-ynad+4kYs8Jcnn8J7SacS9vAbk7eMy0xWg6E7bAhS1s79TK+D7tVFGXVZ55S7RNLRROU1rxoKlvZ/qjaB41DGA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 18.11.12
       esbuild: 0.16.3
       postcss: 8.4.19
       resolve: 1.22.1
@@ -15320,8 +15344,8 @@ packages:
       vite: 4.0.0
     dev: true
 
-  /vitest/0.25.6:
-    resolution: {integrity: sha512-jdPgmZ7BcDnm1+hmMPIl9BZjSy+b8Y8V0tQMsv7ECO90Qic7EZ5/+traILXLpsXgqK5KgVrUJmchevAUuKL/1w==}
+  /vitest/0.25.7:
+    resolution: {integrity: sha512-lJ+Ue+v8kHl2JzjaKHJ9u5Yo/loU7zrWK2/Whn8OKQjtq5G7nkeWfXuq3elZaC8xKdkdIuWiiIicaNBG1F5yzg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -15355,7 +15379,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.5_@types+node@18.11.12
+      vite: 4.0.0_@types+node@18.11.12
     transitivePeerDependencies:
       - less
       - sass
@@ -15365,8 +15389,8 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.25.6_jsdom@20.0.3:
-    resolution: {integrity: sha512-jdPgmZ7BcDnm1+hmMPIl9BZjSy+b8Y8V0tQMsv7ECO90Qic7EZ5/+traILXLpsXgqK5KgVrUJmchevAUuKL/1w==}
+  /vitest/0.25.7_jsdom@20.0.3:
+    resolution: {integrity: sha512-lJ+Ue+v8kHl2JzjaKHJ9u5Yo/loU7zrWK2/Whn8OKQjtq5G7nkeWfXuq3elZaC8xKdkdIuWiiIicaNBG1F5yzg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -15401,7 +15425,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.5_@types+node@18.11.12
+      vite: 4.0.0_@types+node@18.11.12
     transitivePeerDependencies:
       - less
       - sass
