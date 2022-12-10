@@ -11,6 +11,16 @@ import {
 } from './'
 
 export const Basic = () => (
+  <Editable placeholder="Placeholder">
+    <EditableLabel>Label</EditableLabel>
+    <EditableArea>
+      <EditableInput />
+      <EditablePreview />
+    </EditableArea>
+  </Editable>
+)
+
+export const CustomControls = () => (
   <Editable activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
     {(state) => (
       <>
