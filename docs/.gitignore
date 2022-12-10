@@ -1,0 +1,10 @@
+/docs
+
+!/docs/react/_category_.json
+!/docs/react/index.md
+
+!/docs/solid/_category_.json
+!/docs/solid/index.md
+
+!/docs/vue/_category_.json
+!/docs/vue/index.md
