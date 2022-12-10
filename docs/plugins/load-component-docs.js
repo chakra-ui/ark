@@ -58,6 +58,14 @@ async function loadComponentDocs() {
 module.exports = async function loadComponentDocsPlugin() {
   return {
     name: 'load-component-docs',
+    extendCli(cli) {
+      cli
+        .command('load-component-docs')
+        .description('Load component docs from all packages')
+        .action(async () => {
+          await loadComponentDocs()
+        })
+    },
     getPathsToWatch() {
       return docsPattern
     },

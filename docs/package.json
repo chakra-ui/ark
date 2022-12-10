@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "prebuild": "docusaurus load-component-docs",
     "build": "docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
