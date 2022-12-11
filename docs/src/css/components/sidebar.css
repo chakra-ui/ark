@@ -13,7 +13,7 @@
   font-size: 0.75rem;
 }
 
-.theme-doc-sidebar-item-category-level-1 .menu__list {
+.theme-doc-sidebar-item-category-level-1 > .menu__list {
   font-size: 0.85rem;
   padding-left: 0;
 }
