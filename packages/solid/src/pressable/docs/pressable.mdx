@@ -1,0 +1,37 @@
+import Intro from '@site/shared/components/pressable/pressable.intro.mdx'
+
+# Pressable
+
+<Intro />
+
+## Import
+
+```ts
+import { Pressable } from '@ark-ui/solid'
+```
+
+## Usage
+
+The Pressable component consists only of the `Pressable` component.
+
+### Plain
+
+```tsx
+<Pressable onPress={() => alert('onPress')}>Press me</Pressable>
+```
+
+### Long Press
+
+`onLongPress` is called when the element has been pressed for 500 milliseconds.
+
+```tsx
+<Pressable onLongPress={() => alert('onLongPress')}>Press me long</Pressable>
+```
+
+### Disabled
+
+To make disable a pressable, set the `disabled` prop to `true`.
+
+```tsx
+<Pressable disabled>Disabled</Pressable>
+```
