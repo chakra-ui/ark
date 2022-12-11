@@ -1,15 +1,17 @@
 {
-  "name": "docs",
+  "name": "@ark-ui/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "prebuild": "docusaurus load-component-docs",
     "build": "docusaurus build --out-dir dist",
-    "swizzle": "docusaurus swizzle",
+    "clean": "git clean -Xdf docs && pnpm run clear",
     "clear": "docusaurus clear",
+    "dev": "docusaurus start",
+    "docusaurus": "docusaurus",
+    "prebuild": "docusaurus load-component-docs",
     "serve": "docusaurus serve --dir dist",
+    "start": "pnpm run dev",
+    "swizzle": "docusaurus swizzle",
     "typecheck": "tsc"
   },
   "dependencies": {

@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "astro": "pnpm --filter=@ark-ui/astro",
     "doc": "pnpm --filter=@ark-ui/docs",
     "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
