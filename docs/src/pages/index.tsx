@@ -18,7 +18,7 @@ function HomepageHeader() {
             React
           </Link>
 
-          <Link className="button button--secondary button--lg" to="/docs/react">
+          <Link className="button button--secondary button--lg" to="/docs/solid">
             SolidJS
           </Link>
 
