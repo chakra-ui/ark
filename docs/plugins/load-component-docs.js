@@ -30,7 +30,7 @@ async function loadComponentDocs() {
   await Promise.all(
     files.map(async (file) => {
       const match = String(file).match(
-        /packages\/(?<framework>\w+)\/src\/(?<component>\w+)\/docs\/(?<restPath>.*)/,
+        /packages\/(?<framework>\w+)\/src\/(?<component>.+)\/docs\/(?<restPath>.*)/,
       )
       const { framework, component, restPath } = match?.groups || {}
       if (!framework || !component || !restPath) {
