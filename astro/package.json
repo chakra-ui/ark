@@ -14,6 +14,7 @@
     "css:dev": "panda --watch"
   },
   "dependencies": {
+    "@ark-ui/solid": "workspace:*",
     "@astrojs/mdx": "0.12.2",
     "@astrojs/sitemap": "1.0.0",
     "@astrojs/solid-js": "1.2.3",

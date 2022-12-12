@@ -2,6 +2,7 @@
 import type { MarkdownLayoutProps } from 'astro'
 import { css } from '../../panda/css'
 import { Box, Container, HStack, Stack } from '../../panda/jsx'
+import { DemoTooltip } from '../components/shared/DemoTooltip'
 import { Text } from '../components/shared/Text'
 import BaseLayout from './BaseLayout.astro'
 
@@ -102,6 +103,9 @@ const { frontmatter } = Astro.props
               },
             })}
           >
+            <Box py="4">
+              <DemoTooltip client:load />
+            </Box>
             <h1>{frontmatter.title}</h1>
             <p>{frontmatter.description}</p>
             <slot />
