@@ -8,4 +8,5 @@ export { PopoverInnerArrow, type PopoverInnerArrowProps } from './popover-inner-
 export { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 export { PopoverTitle, type PopoverTitleProps } from './popover-title'
 export { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
+export { popoverAnatomy } from './popover.anatomy'
 export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'

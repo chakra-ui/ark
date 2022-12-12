@@ -10,4 +10,5 @@ export {
 } from './select-option-group-label'
 export { SelectPositioner, type SelectPositionerProps } from './select-positioner'
 export { SelectTrigger, type SelectTriggerProps } from './select-trigger'
+export { selectAnatomy } from './select.anatomy'
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'

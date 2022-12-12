@@ -1,4 +1,5 @@
 export { Tooltip, type TooltipProps } from './tooltip'
+export { tooltipAnatomy } from './tooltip-anatomy'
 export { TooltipArrow, type TooltipArrowProps } from './tooltip-arrow'
 export { TooltipContent, type TooltipContentProps } from './tooltip-content'
 export { TooltipInnerArrow, type TooltipInnerArrowProps } from './tooltip-inner-arrow'

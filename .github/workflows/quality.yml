@@ -89,5 +89,5 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Run check:exports
-        run: pnpm check:exports
+      - name: Run exports:check
+        run: pnpm exports:check

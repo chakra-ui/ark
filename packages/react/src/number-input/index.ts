@@ -11,3 +11,4 @@ export {
 } from './number-input-increment-trigger'
 export { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
 export { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
+export { numberInputAnatomy } from './number-input.anatomy'

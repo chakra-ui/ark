@@ -1,5 +1,4 @@
 export { Pagination, type PaginationProps } from './pagination'
-export { anatomy } from './pagination-anatomy'
 export {
   PaginationProvider,
   usePaginationContext,
@@ -16,4 +15,5 @@ export {
   PaginationPrevPageTrigger,
   type PaginationPrevPageTriggerProps,
 } from './pagination-prev-page-trigger'
+export { paginationAnatomy } from './pagination.anatomy'
 export { usePagination, type UsePaginationProps } from './use-pagination'

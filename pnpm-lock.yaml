@@ -8,7 +8,9 @@ importers:
       '@changesets/cli': 2.25.2
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
+      '@types/fs-extra': 9.0.13
       '@types/node': 18.11.13
+      fs-extra: 11.1.0
       globby: 13.1.2
       husky: 8.0.2
       lint-staged: 13.1.0
@@ -25,7 +27,9 @@ importers:
       '@changesets/cli': 2.25.2
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
+      '@types/fs-extra': 9.0.13
       '@types/node': 18.11.13
+      fs-extra: 11.1.0
       husky: 8.0.2
       lint-staged: 13.1.0
       prettier: 2.8.1
@@ -37,6 +41,7 @@ importers:
 
   astro:
     specifiers:
+      '@ark-ui/solid': workspace:*
       '@astrojs/mdx': 0.12.1
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3
@@ -45,6 +50,7 @@ importers:
       css-panda: 0.0.0-dev-20221209055600
       solid-js: 1.6.4
     dependencies:
+      '@ark-ui/solid': link:../packages/solid
       '@astrojs/mdx': 0.12.1
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3_solid-js@1.6.4
@@ -4272,6 +4278,12 @@ packages:
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.0
 
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 18.11.13
+    dev: true
+
   /@types/hast/2.3.4:
     resolution: {integrity: sha512-wLEm0QvaoawEDoTRwzTXp4b4jpwiJDvR5KMnFnVodm3scufTlBOWRD6N1OBf9TZMhjlNsSfcO5V+7AF4+Vy+9g==}
     dependencies:
@@ -8491,7 +8503,6 @@ packages:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 2.0.0
-    dev: false
 
   /fs-extra/7.0.1:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}

@@ -5,3 +5,4 @@ export { HoverCardInnerArrow, type HoverCardInnerArrowProps } from './hover-card
 export { HoverCardPortal, type HoverCardPortalProps } from './hover-card-portal'
 export { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card-positioner'
 export { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'
+export { hoverCardAnatomy } from './hover-card.anatomy'

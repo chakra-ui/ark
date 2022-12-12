@@ -7,3 +7,4 @@ export { DialogDescription, type DialogDescriptionProps } from './dialog-descrip
 export { DialogPortal, type DialogPortalProps } from './dialog-portal'
 export { DialogTitle, type DialogTitleProps } from './dialog-title'
 export { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
+export { dialogAnatomy } from './dialog.anatomy'

@@ -10,6 +10,7 @@ export { RangeSliderOutput, type RangeSliderOutputProps } from './range-slider-o
 export { RangeSliderRange, type RangeSliderRangeProps } from './range-slider-range'
 export { RangeSliderThumb, type RangeSliderThumbProps } from './range-slider-thumb'
 export { RangeSliderTrack, type RangeSliderTrackProps } from './range-slider-track'
+export { rangeSliderAnatomy } from './range-slider.anatomy'
 export {
   useRangeSlider,
   type UseRangeSliderProps,
