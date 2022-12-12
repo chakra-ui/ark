@@ -14,7 +14,7 @@
     "css:dev": "panda --watch"
   },
   "dependencies": {
-    "@astrojs/mdx": "0.12.1",
+    "@astrojs/mdx": "0.12.2",
     "@astrojs/sitemap": "1.0.0",
     "@astrojs/solid-js": "1.2.3",
     "@fontsource/inter": "4.5.14",
