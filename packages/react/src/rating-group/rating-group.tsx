@@ -33,7 +33,7 @@ export const RatingGroup = forwardRef<'input', RatingGroupProps>((props, ref) =>
   return (
     <RatingGroupProvider value={ratingGroup}>
       <ark.div {...mergedProps}>
-        <ark.input {...ratingGroup.inputProps} ref={ref} />
+        <ark.input {...ratingGroup.hiddenInputProps} ref={ref} />
         {props.children}
       </ark.div>
     </RatingGroupProvider>

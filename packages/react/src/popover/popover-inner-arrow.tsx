@@ -3,11 +3,11 @@ import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverInnerArrowProps = HTMLArkProps<'div'>
+export type PopoverArrowTipProps = HTMLArkProps<'div'>
 
-export const PopoverInnerArrow = forwardRef<'div', PopoverInnerArrowProps>((props, ref) => {
-  const { innerArrowProps } = usePopoverContext()
-  const mergedProps = mergeProps(innerArrowProps, props)
+export const PopoverArrowTip = forwardRef<'div', PopoverArrowTipProps>((props, ref) => {
+  const { arrowTipProps } = usePopoverContext()
+  const mergedProps = mergeProps(arrowTipProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

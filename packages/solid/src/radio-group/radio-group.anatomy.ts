@@ -1,1 +1,1 @@
-export { anatomy as radioGroupAnatomy } from '@zag-js/radio'
+export { anatomy as radioGroupAnatomy } from '@zag-js/radio-group'

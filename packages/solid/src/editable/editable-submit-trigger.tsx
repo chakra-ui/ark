@@ -11,7 +11,7 @@ export const EditableSubmitTrigger = (props: EditableSubmitTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, dialog().submitButtonProps)
+      spread(children, dialog().submitTriggerProps)
     }
   })
 

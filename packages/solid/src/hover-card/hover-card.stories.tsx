@@ -1,8 +1,8 @@
 import {
   HoverCard,
   HoverCardArrow,
+  HoverCardArrowTip,
   HoverCardContent,
-  HoverCardInnerArrow,
   HoverCardPortal,
   HoverCardPositioner,
   HoverCardTrigger,
@@ -21,7 +21,7 @@ export const Basic = () => (
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
-            <HoverCardInnerArrow />
+            <HoverCardArrowTip />
           </HoverCardArrow>
           Mastodon Preview
         </HoverCardContent>

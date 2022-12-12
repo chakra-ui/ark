@@ -1,10 +1,10 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipInnerArrowProps = HTMLArkProps<'div'>
+export type TooltipArrowTipProps = HTMLArkProps<'div'>
 
-export const TooltipInnerArrow = (props: TooltipInnerArrowProps) => {
+export const TooltipArrowTip = (props: TooltipArrowTipProps) => {
   const tooltip = useTooltipContext()
 
-  return <ark.div {...tooltip().innerArrowProps} {...props} />
+  return <ark.div {...tooltip().arrowTipProps} {...props} />
 }

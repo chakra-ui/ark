@@ -1,10 +1,10 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 
-export type MenuInnerArrowProps = HTMLArkProps<'div'>
+export type MenuArrowTipProps = HTMLArkProps<'div'>
 
-export const MenuInnerArrow = (props: MenuInnerArrowProps) => {
+export const MenuArrowTip = (props: MenuArrowTipProps) => {
   const menu = useMenuContext()
 
-  return <ark.div {...menu?.().innerArrowProps} {...props} />
+  return <ark.div {...menu?.().arrowTipProps} {...props} />
 }

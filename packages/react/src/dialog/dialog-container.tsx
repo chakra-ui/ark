@@ -6,8 +6,8 @@ import { useDialogContext } from './dialog-context'
 export type DialogContainerProps = HTMLArkProps<'div'>
 
 export const DialogContainer = forwardRef<'div', DialogContainerProps>((props, ref) => {
-  const { underlayProps } = useDialogContext()
-  const mergedProps = mergeProps(underlayProps, props)
+  const { containerProps } = useDialogContext()
+  const mergedProps = mergeProps(containerProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

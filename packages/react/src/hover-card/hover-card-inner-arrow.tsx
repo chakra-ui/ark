@@ -3,10 +3,10 @@ import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardInnerArrowProps = HTMLArkProps<'div'>
+export type HoverCardArrowTipProps = HTMLArkProps<'div'>
 
-export const HoverCardInnerArrow = forwardRef<'div', HoverCardInnerArrowProps>((props, ref) => {
-  const { innerArrowProps } = useHoverCardContext()
-  const mergedProps = mergeProps(innerArrowProps, props)
+export const HoverCardArrowTip = forwardRef<'div', HoverCardArrowTipProps>((props, ref) => {
+  const { arrowTipProps } = useHoverCardContext()
+  const mergedProps = mergeProps(arrowTipProps, props)
   return <ark.div {...mergedProps} ref={ref} />
 })

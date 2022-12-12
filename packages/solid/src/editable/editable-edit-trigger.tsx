@@ -11,7 +11,7 @@ export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, dialog().editButtonProps)
+      spread(children, dialog().editTriggerProps)
     }
   })
 

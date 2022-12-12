@@ -1,7 +1,7 @@
 export { HoverCard, type HoverCardProps } from './hover-card'
 export { HoverCardArrow, type HoverCardArrowProps } from './hover-card-arrow'
 export { HoverCardContent, type HoverCardContentProps } from './hover-card-content'
-export { HoverCardInnerArrow, type HoverCardInnerArrowProps } from './hover-card-inner-arrow'
+export { HoverCardArrowTip, type HoverCardArrowTipProps } from './hover-card-inner-arrow'
 export { HoverCardPortal, type HoverCardPortalProps } from './hover-card-portal'
 export { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card-positioner'
 export { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'

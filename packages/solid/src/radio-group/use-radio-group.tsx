@@ -1,4 +1,4 @@
-import * as radio from '@zag-js/radio'
+import * as radio from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import type { Optional } from '../types'

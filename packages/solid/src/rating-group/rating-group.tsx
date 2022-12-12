@@ -30,7 +30,7 @@ export const RatingGroup = (props: RatingGroupProps) => {
     <RatingGroupProvider value={ratingGroup}>
       <ark.div {...ratingGroup().rootProps}>
         {props.children}
-        <ark.input {...ratingGroup().inputProps} {...inputProps} />
+        <ark.input {...ratingGroup().hiddenInputProps} {...inputProps} />
       </ark.div>
     </RatingGroupProvider>
   )

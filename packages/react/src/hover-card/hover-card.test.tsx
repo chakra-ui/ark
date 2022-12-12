@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { HoverCard } from './hover-card'
 import { HoverCardArrow } from './hover-card-arrow'
 import { HoverCardContent } from './hover-card-content'
-import { HoverCardInnerArrow } from './hover-card-inner-arrow'
+import { HoverCardArrowTip } from './hover-card-inner-arrow'
 import { HoverCardPortal } from './hover-card-portal'
 import { HoverCardPositioner } from './hover-card-positioner'
 import { HoverCardTrigger } from './hover-card-trigger'
@@ -20,7 +20,7 @@ const ComponentUnderTest = () => (
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
-            <HoverCardInnerArrow />
+            <HoverCardArrowTip />
           </HoverCardArrow>
           Mastodon Preview
         </HoverCardContent>

@@ -7,8 +7,8 @@ export type PaginationNextPageTriggerProps = HTMLArkProps<'li'> & { children: Re
 
 export const PaginationNextPageTrigger = forwardRef<'li', PaginationNextPageTriggerProps>(
   (props, ref) => {
-    const { nextItemProps } = usePaginationContext()
-    const child = cloneElement(Children.only(props.children), nextItemProps)
+    const { nextPageTriggerProps } = usePaginationContext()
+    const child = cloneElement(Children.only(props.children), nextPageTriggerProps)
 
     return (
       <ark.li {...props} ref={ref}>

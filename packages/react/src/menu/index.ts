@@ -13,7 +13,7 @@ export {
   type MenuTriggerItemProviderContext,
 } from './menu-context'
 export { MenuContextTrigger, type MenuContextTriggerProps } from './menu-context-trigger'
-export { MenuInnerArrow, type MenuInnerArrowProps } from './menu-inner-arrow'
+export { MenuArrowTip, type MenuArrowTipProps } from './menu-inner-arrow'
 export { MenuItem, type MenuItemProps } from './menu-item'
 export { MenuItemGroup, type MenuItemGroupProps } from './menu-item-group'
 export { MenuItemGroupLabel, type MenuItemGroupLabelProps } from './menu-item-group-label'

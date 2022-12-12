@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { Tooltip, TooltipProps } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipContent } from './tooltip-content'
-import { TooltipInnerArrow } from './tooltip-inner-arrow'
+import { TooltipArrowTip } from './tooltip-inner-arrow'
 import { TooltipPositioner } from './tooltip-positioner'
 import { TooltipTrigger } from './tooltip-trigger'
 
@@ -14,7 +14,7 @@ const Component = (props: TooltipProps) => (
     </TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
-        <TooltipInnerArrow />
+        <TooltipArrowTip />
       </TooltipArrow>
       <TooltipContent>content</TooltipContent>
     </TooltipPositioner>

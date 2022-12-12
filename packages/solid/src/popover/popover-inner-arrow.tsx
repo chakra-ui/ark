@@ -1,10 +1,10 @@
 import { ark, HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverInnerArrowProps = HTMLArkProps<'div'>
+export type PopoverArrowTipProps = HTMLArkProps<'div'>
 
-export const PopoverInnerArrow = (props: PopoverInnerArrowProps) => {
+export const PopoverArrowTip = (props: PopoverArrowTipProps) => {
   const popover = usePopoverContext()
 
-  return <ark.div {...popover().innerArrowProps} {...props} />
+  return <ark.div {...popover().arrowTipProps} {...props} />
 }

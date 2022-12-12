@@ -1,9 +1,9 @@
 import { ark, HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardInnerArrowProps = HTMLArkProps<'div'>
+export type HoverCardArrowTipProps = HTMLArkProps<'div'>
 
-export const HoverCardInnerArrow = (props: HoverCardInnerArrowProps) => {
+export const HoverCardArrowTip = (props: HoverCardArrowTipProps) => {
   const hoverCard = useHoverCardContext()
-  return <ark.div {...hoverCard().innerArrowProps} {...props} />
+  return <ark.div {...hoverCard().arrowTipProps} {...props} />
 }

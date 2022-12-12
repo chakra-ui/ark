@@ -16,7 +16,7 @@ export const Rating = (props: RatingProps) => {
   const view = children(() => runIfFn(props.children, ratingState))
 
   return (
-    <ark.span {...rating().getItemProps({ index: props.index })} {...props}>
+    <ark.span {...rating().getRatingProps({ index: props.index })} {...props}>
       <RatingProvider value={ratingState}>{view()}</RatingProvider>
     </ark.span>
   )

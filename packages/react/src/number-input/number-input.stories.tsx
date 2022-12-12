@@ -1,6 +1,6 @@
 import {
   NumberInput,
-  NumberInputControls,
+  NumberInputControl,
   NumberInputDecrementTrigger,
   NumberInputField,
   NumberInputIncrementTrigger,
@@ -14,13 +14,13 @@ export const Basic = () => (
     <NumberInputScrubber />
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputField />
-    <NumberInputControls>
+    <NumberInputControl>
       <NumberInputDecrementTrigger>
         <button>-1</button>
       </NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>
         <button>+1</button>
       </NumberInputIncrementTrigger>
-    </NumberInputControls>
+    </NumberInputControl>
   </NumberInput>
 )
