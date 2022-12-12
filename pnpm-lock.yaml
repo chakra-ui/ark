@@ -41,7 +41,7 @@ importers:
 
   astro:
     specifiers:
-      '@astrojs/mdx': 0.12.1
+      '@astrojs/mdx': 0.12.2
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3
       '@fontsource/inter': 4.5.14
@@ -49,7 +49,7 @@ importers:
       css-panda: 0.0.0-dev-20221209055600
       solid-js: 1.6.4
     dependencies:
-      '@astrojs/mdx': 0.12.1
+      '@astrojs/mdx': 0.12.2
       '@astrojs/sitemap': 1.0.0
       '@astrojs/solid-js': 1.2.3_solid-js@1.6.4
       '@fontsource/inter': 4.5.14
@@ -524,8 +524,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.12.1:
-    resolution: {integrity: sha512-d41ariAR7VMHb+4ALiXPbYXMPSqjpGqTAZBSp40sRam084r/4Vwr6F1mwRKWFDwbwgN6iLN+fczSQDvqoOD2JQ==}
+  /@astrojs/mdx/0.12.2:
+    resolution: {integrity: sha512-rv4f2h0zdQVu+dA8mPfCs3zp0j8CECJ11a9DijxcIcSZusou6CZ1N4KWMLlQYVKl8bOA5h0VzL/IvToh9A+dnA==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.2
