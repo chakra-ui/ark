@@ -10,5 +10,5 @@ export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
   const [labelProps, htmlProps] = createSplitProps<MenuItemGroupLabelParams>()(props, ['htmlFor'])
 
-  return <ark.label {...menu?.()?.getLabelProps(labelProps)} {...htmlProps} />
+  return <ark.label {...menu?.()?.getGroupLabelProps(labelProps)} {...htmlProps} />
 }

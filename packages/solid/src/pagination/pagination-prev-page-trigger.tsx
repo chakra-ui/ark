@@ -14,7 +14,7 @@ export const PaginationPrevPageTrigger = (props: PaginationPrevPageTriggerProps)
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, pagination().prevItemProps)
+      spread(children, pagination().prevPageTriggerProps)
     }
   })
 

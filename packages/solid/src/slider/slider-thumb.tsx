@@ -8,7 +8,7 @@ export const SliderThumb = (props: SliderThumbProps) => {
 
   return (
     <ark.div {...slider().thumbProps} {...props}>
-      <ark.input {...slider().inputProps} />
+      <ark.input {...slider().hiddenInputProps} />
       {props.children}
     </ark.div>
   )

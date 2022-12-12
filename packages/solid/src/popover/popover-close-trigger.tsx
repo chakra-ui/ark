@@ -11,7 +11,7 @@ export const PopoverCloseTrigger = (props: PopoverCloseTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, popover().closeButtonProps)
+      spread(children, popover().closeTriggerProps)
     }
   })
 

@@ -11,7 +11,7 @@ export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, dialog().closeButtonProps)
+      spread(children, dialog().closeTriggerProps)
     }
   })
 

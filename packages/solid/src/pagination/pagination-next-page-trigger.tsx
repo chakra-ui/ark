@@ -13,7 +13,7 @@ export const PaginationNextPageTrigger = (props: PaginationNextPageTriggerProps)
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, pagination().nextItemProps)
+      spread(children, pagination().nextPageTriggerProps)
     }
   })
 

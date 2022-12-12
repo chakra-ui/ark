@@ -11,12 +11,12 @@ export type RatingProps = Omit<HTMLArkProps<'span'>, 'children'> & {
 }
 
 export const Rating = (props: RatingProps) => {
-  const rating = useRatingGroupContext()
-  const ratingState = rating().getRatingState(props.index)
+  const ratingGroup = useRatingGroupContext()
+  const ratingState = ratingGroup().getRatingState(props.index)
   const view = children(() => runIfFn(props.children, ratingState))
 
   return (
-    <ark.span {...rating().getRatingProps({ index: props.index })} {...props}>
+    <ark.span {...ratingGroup().getRatingProps({ index: props.index })} {...props}>
       <RatingProvider value={ratingState}>{view()}</RatingProvider>
     </ark.span>
   )
