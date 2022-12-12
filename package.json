@@ -57,6 +57,6 @@
   },
   "packageManager": "pnpm@7.18.2",
   "dependencies": {
-    "globby": "13.1.2"
+    "globby": "13.1.3"
   }
 }
