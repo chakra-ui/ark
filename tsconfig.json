@@ -3,15 +3,16 @@
     "target": "esnext",
     "module": "esnext",
     "lib": ["dom", "esnext"],
-    "declaration": true,
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "strict": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "noEmit": false,
-    "importsNotUsedAsValues": "error"
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "importsNotUsedAsValues": "error",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true
   },
   "ts-node": {
     "esm": true
