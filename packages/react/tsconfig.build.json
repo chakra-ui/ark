@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "declarationDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["**/*.spec.*", "**/*.test.*", "**/*.stories.*"]
+}
