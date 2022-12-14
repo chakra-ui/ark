@@ -31,7 +31,7 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@polymorphic-factory/react": "0.2.1",
+    "@polymorphic-factory/react": "0.2.2",
     "@zag-js/accordion": "0.2.4",
     "@zag-js/checkbox": "0.2.5",
     "@zag-js/dialog": "0.2.4",
