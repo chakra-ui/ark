@@ -43,7 +43,7 @@
     "@zag-js/editable": "0.2.4",
     "@zag-js/hover-card": "0.1.3",
     "@zag-js/menu": "0.3.0",
-    "@zag-js/number-input": "0.2.4",
+    "@zag-js/number-input": "0.2.5",
     "@zag-js/pagination": "0.1.3",
     "@zag-js/pin-input": "0.2.4",
     "@zag-js/popover": "0.2.3",
