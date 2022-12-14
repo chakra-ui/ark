@@ -288,7 +288,7 @@ importers:
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
-      '@zag-js/hover-card': 0.1.3
+      '@zag-js/hover-card': 0.1.4
       '@zag-js/menu': 0.3.0
       '@zag-js/number-input': 0.2.4
       '@zag-js/pagination': 0.1.3
@@ -313,7 +313,7 @@ importers:
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
-      '@zag-js/hover-card': 0.1.3
+      '@zag-js/hover-card': 0.1.4
       '@zag-js/menu': 0.3.0
       '@zag-js/number-input': 0.2.4
       '@zag-js/pagination': 0.1.3
@@ -5883,16 +5883,6 @@ packages:
 
   /@zag-js/element-size/0.3.0:
     resolution: {integrity: sha512-5/hEI+0c6ZNCx6KHlOS5/WeHsd6+I7gk7Y/b/zATp4Rp3tHirs/tu1frq+iy5BmfaG9hbQtfHfUJTjOcI5jnoQ==}
-    dev: false
-
-  /@zag-js/hover-card/0.1.3:
-    resolution: {integrity: sha512-WYOfsessjYyZmblb839/IXIIsVVkXiT0av0lGJ78m9tcvaqQNWgi0eNlusOEi42doGmhykgSH46SLkN81eRg9Q==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.1
-      '@zag-js/core': 0.2.2
-      '@zag-js/dismissable': 0.2.0
-      '@zag-js/popper': 0.2.0
-      '@zag-js/types': 0.3.1
     dev: false
 
   /@zag-js/hover-card/0.1.4:
