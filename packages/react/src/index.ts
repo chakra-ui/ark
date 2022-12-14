@@ -1,3 +1,4 @@
+export { Portal, type PortalProps } from '@zag-js/react'
 export * from './accordion'
 export * from './checkbox'
 export * from './dialog'
