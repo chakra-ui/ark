@@ -1,3 +1,4 @@
+import { Portal } from '@zag-js/react'
 import { Tooltip } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipArrowTip } from './tooltip-arrow-tip'
@@ -10,11 +11,13 @@ export const Basic = () => (
     <TooltipTrigger>
       <span>hover me</span>
     </TooltipTrigger>
-    <TooltipPositioner>
-      <TooltipArrow>
-        <TooltipArrowTip />
-      </TooltipArrow>
-      <TooltipContent>My Tooltip</TooltipContent>
-    </TooltipPositioner>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipArrow>
+          <TooltipArrowTip />
+        </TooltipArrow>
+        <TooltipContent>My Tooltip</TooltipContent>
+      </TooltipPositioner>
+    </Portal>
   </Tooltip>
 )

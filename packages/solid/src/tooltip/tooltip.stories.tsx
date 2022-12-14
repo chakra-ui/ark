@@ -1,3 +1,4 @@
+import { Portal } from 'solid-js/web'
 import { Tooltip } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipArrowTip } from './tooltip-arrow-tip'
@@ -10,11 +11,13 @@ export const Basic = () => (
     <TooltipTrigger>
       <span>Hover me</span>
     </TooltipTrigger>
-    <TooltipPositioner>
-      <TooltipArrow>
-        <TooltipArrowTip />
-      </TooltipArrow>
-      <TooltipContent>My Tooltip</TooltipContent>
-    </TooltipPositioner>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipArrow>
+          <TooltipArrowTip />
+        </TooltipArrow>
+        <TooltipContent>My Tooltip</TooltipContent>
+      </TooltipPositioner>
+    </Portal>
   </Tooltip>
 )

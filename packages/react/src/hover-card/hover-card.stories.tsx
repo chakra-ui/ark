@@ -1,9 +1,9 @@
+import { Portal } from '@zag-js/react'
 import {
   HoverCard,
   HoverCardArrow,
   HoverCardArrowTip,
   HoverCardContent,
-  HoverCardPortal,
   HoverCardPositioner,
   HoverCardTrigger,
 } from '.'
@@ -17,7 +17,7 @@ export const Basic = () => (
       </a>
     </HoverCardTrigger>
 
-    <HoverCardPortal>
+    <Portal>
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
@@ -26,6 +26,6 @@ export const Basic = () => (
           Mastodon Preview
         </HoverCardContent>
       </HoverCardPositioner>
-    </HoverCardPortal>
+    </Portal>
   </HoverCard>
 )

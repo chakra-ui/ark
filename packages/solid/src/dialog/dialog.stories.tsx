@@ -1,3 +1,4 @@
+import { Portal } from 'solid-js/web'
 import {
   Dialog,
   DialogBackdrop,
@@ -5,7 +6,6 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogPortal,
   DialogTitle,
   DialogTrigger,
 } from './'
@@ -16,7 +16,7 @@ export const Basic = () => {
       <DialogTrigger>
         <button>click me</button>
       </DialogTrigger>
-      <DialogPortal>
+      <Portal>
         <DialogBackdrop />
         <DialogContainer>
           <DialogContent>
@@ -31,7 +31,7 @@ export const Basic = () => {
             </DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
-      </DialogPortal>
+      </Portal>
     </Dialog>
   )
 }
