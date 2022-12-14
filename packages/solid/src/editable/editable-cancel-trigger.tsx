@@ -11,7 +11,7 @@ export const EditableCancelTrigger = (props: EditableCancelTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, dialog().cancelButtonProps)
+      spread(children, dialog().cancelTriggerProps)
     }
   })
 

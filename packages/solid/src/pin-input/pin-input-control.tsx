@@ -1,13 +1,12 @@
 import { ark, type HTMLArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputControlsProps = HTMLArkProps<'div'>
+export type PinInputControlProps = HTMLArkProps<'div'>
 
-export const PinInputControls = (props: PinInputControlsProps) => {
-  // TODO add controlsProps when available
+export const PinInputControl = (props: PinInputControlProps) => {
   const pinInput = usePinInputContext()
   return (
-    <ark.div {...props}>
+    <ark.div {...pinInput().controlProps} {...props}>
       {props.children}
       <input {...pinInput().hiddenInputProps} />
     </ark.div>

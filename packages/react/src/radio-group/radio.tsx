@@ -8,8 +8,8 @@ export type RadioProps = Omit<HTMLArkProps<'label'>, keyof RadioContext> & Radio
 
 export const Radio = forwardRef<'label', RadioProps>((props, ref) => {
   const { value, disabled, invalid, readOnly, ...divProps } = props
-  const { getItemProps } = useRadioGroupContext()
-  const mergedProps = mergeProps(getItemProps({ value, disabled }), divProps)
+  const { getRadioProps } = useRadioGroupContext()
+  const mergedProps = mergeProps(getRadioProps({ value, disabled }), divProps)
 
   return (
     <RadioProvider value={{ value, disabled, invalid, readOnly }}>

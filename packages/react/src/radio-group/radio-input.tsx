@@ -7,9 +7,9 @@ import { useRadioGroupContext } from './radio-group-context'
 export type RadioInputProps = HTMLArkProps<'input'>
 
 export const RadioInput = forwardRef<'input', RadioInputProps>((props, ref) => {
-  const { getItemInputProps } = useRadioGroupContext()
+  const { getRadioInputProps } = useRadioGroupContext()
   const context = useRadioContext()
-  const mergedProps = mergeProps(getItemInputProps(context), props)
+  const mergedProps = mergeProps(getRadioInputProps(context), props)
 
   return <ark.input {...mergedProps} ref={ref} />
 })

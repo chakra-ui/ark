@@ -11,8 +11,8 @@ export type PaginationPageTriggerProps = Assign<
 
 export const PaginationPageTrigger = forwardRef<'li', PaginationPageTriggerProps>((props, ref) => {
   const { value, children, ...liProps } = props
-  const { getItemProps } = usePaginationContext()
-  const itemProps = getItemProps({ type: 'page', value })
+  const { getPageTriggerProps } = usePaginationContext()
+  const itemProps = getPageTriggerProps({ type: 'page', value })
   const child = cloneElement(Children.only(children), itemProps)
 
   return (

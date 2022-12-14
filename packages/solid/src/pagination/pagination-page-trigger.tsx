@@ -24,7 +24,7 @@ export const PaginationPageTrigger = (props: PaginationPageTriggerProps) => {
     if (children instanceof Element) {
       spread(
         children,
-        pagination().getItemProps({
+        pagination().getPageTriggerProps({
           type: 'page',
           value: itemParams.value,
         }),

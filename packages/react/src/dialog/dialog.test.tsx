@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
 import {
   Dialog,
@@ -8,7 +9,6 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogPortal,
   DialogProps,
   DialogTitle,
   DialogTrigger,
@@ -19,7 +19,7 @@ const ComponentUnderTest = (props: DialogProps) => (
     <DialogTrigger>
       <button>Open dialog</button>
     </DialogTrigger>
-    <DialogPortal>
+    <Portal>
       <DialogBackdrop />
       <DialogContainer />
       <DialogContent>
@@ -33,7 +33,7 @@ const ComponentUnderTest = (props: DialogProps) => (
           <button>Close</button>
         </DialogCloseTrigger>
       </DialogContent>
-    </DialogPortal>
+    </Portal>
   </Dialog>
 )
 

@@ -1,31 +1,33 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { HoverCard } from './hover-card'
-import { HoverCardArrow } from './hover-card-arrow'
-import { HoverCardContent } from './hover-card-content'
-import { HoverCardInnerArrow } from './hover-card-inner-arrow'
-import { HoverCardPortal } from './hover-card-portal'
-import { HoverCardPositioner } from './hover-card-positioner'
-import { HoverCardTrigger } from './hover-card-trigger'
+import { Portal } from '@zag-js/react'
+import {
+  HoverCard,
+  HoverCardArrow,
+  HoverCardArrowTip,
+  HoverCardContent,
+  HoverCardPositioner,
+  HoverCardTrigger,
+} from '.'
 
 const ComponentUnderTest = () => (
   <HoverCard openDelay={0} closeDelay={0}>
     <HoverCardTrigger>
       <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
-        Mastodon
+        Trigger
       </a>
     </HoverCardTrigger>
 
-    <HoverCardPortal>
+    <Portal>
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
-            <HoverCardInnerArrow />
+            <HoverCardArrowTip />
           </HoverCardArrow>
-          Mastodon Preview
+          Content
         </HoverCardContent>
       </HoverCardPositioner>
-    </HoverCardPortal>
+    </Portal>
   </HoverCard>
 )
 
@@ -33,10 +35,10 @@ describe('HoverCard', () => {
   it('should open on hover', async () => {
     render(<ComponentUnderTest />)
 
-    const target = screen.getByText(/mastodon/i)
+    const target = screen.getByText(/Trigger/i)
     await user.hover(target)
 
-    const hoverContent = screen.getByText(/mastodon preview/i)
+    const hoverContent = screen.getByText(/content/i)
     await waitFor(() => expect(hoverContent).toBeVisible())
 
     await user.unhover(target)

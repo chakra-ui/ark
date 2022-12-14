@@ -9,11 +9,11 @@ export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
 }
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
-  const rating = useRatingGroupContext()
-  const view = children(() => runIfFn(props.children, rating))
+  const ratingGroup = useRatingGroupContext()
+  const view = children(() => runIfFn(props.children, ratingGroup))
 
   return (
-    <ark.div {...rating().itemGroupProps} {...props}>
+    <ark.div {...ratingGroup().controlProps} {...props}>
       {view()}
     </ark.div>
   )

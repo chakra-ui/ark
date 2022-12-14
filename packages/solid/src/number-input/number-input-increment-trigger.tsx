@@ -11,7 +11,7 @@ export const NumberInputIncrementTrigger = (props: NumberInputIncrementTriggerPr
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, numberInput().incrementButtonProps)
+      spread(children, numberInput().incrementTriggerProps)
     }
   })
 

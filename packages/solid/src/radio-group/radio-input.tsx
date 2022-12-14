@@ -8,5 +8,5 @@ export const RadioInput = (props: RadioInputProps) => {
   const radioGroup = useRadioGroupContext()
   const context = useRadioContext()
 
-  return <ark.input {...radioGroup().getItemInputProps(context)} {...props} />
+  return <ark.input {...radioGroup().getRadioInputProps(context)} {...props} />
 }

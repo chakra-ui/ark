@@ -11,7 +11,7 @@ export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, toast().closeButtonProps)
+      spread(children, toast().closeTriggerProps)
     }
   })
 

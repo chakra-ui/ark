@@ -11,7 +11,7 @@ export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, { ...tagsInput().clearButtonProps })
+      spread(children, { ...tagsInput().clearTriggerProps })
     }
   })
 

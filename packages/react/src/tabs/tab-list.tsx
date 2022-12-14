@@ -6,8 +6,8 @@ import { useTabsContext } from './tabs-context'
 export type TabListProps = HTMLArkProps<'div'>
 
 export const TabList = forwardRef<'div', TabListProps>((props, ref) => {
-  const { triggerGroupProps } = useTabsContext()
-  const mergedProps = mergeProps(triggerGroupProps, props)
+  const { tablistProps } = useTabsContext()
+  const mergedProps = mergeProps(tablistProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

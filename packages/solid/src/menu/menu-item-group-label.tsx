@@ -8,7 +8,9 @@ export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGrou
 
 export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
-  const [labelProps, htmlProps] = createSplitProps<MenuItemGroupLabelParams>()(props, ['htmlFor'])
+  const [itemGroupLabelProps, labelProps] = createSplitProps<MenuItemGroupLabelParams>()(props, [
+    'htmlFor',
+  ])
 
-  return <ark.label {...menu?.()?.getLabelProps(labelProps)} {...htmlProps} />
+  return <ark.label {...menu?.()?.getItemGroupLabelProps(itemGroupLabelProps)} {...labelProps} />
 }

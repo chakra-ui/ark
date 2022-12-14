@@ -13,9 +13,9 @@ export type RatingProps = Omit<HTMLArkProps<'span'>, 'children'> & {
 
 export const Rating = forwardRef<'span', RatingProps>((props, ref) => {
   const { children, index, ...divProps } = props
-  const { getRatingState, getItemProps } = useRatingGroupContext()
+  const { getRatingState, getRatingProps } = useRatingGroupContext()
   const ratingState = getRatingState(index)
-  const mergedProps = mergeProps(getItemProps({ index }), divProps)
+  const mergedProps = mergeProps(getRatingProps({ index }), divProps)
   const view = runIfFn(children, ratingState)
 
   return (

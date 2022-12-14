@@ -8,5 +8,5 @@ export const RadioLabel = (props: RadioLabelProps) => {
   const radioGroup = useRadioGroupContext()
   const context = useRadioContext()
 
-  return <ark.span {...radioGroup().getItemLabelProps(context)} {...props} />
+  return <ark.span {...radioGroup().getRadioLabelProps(context)} {...props} />
 }

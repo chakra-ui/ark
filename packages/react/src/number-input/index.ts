@@ -1,5 +1,5 @@
 export { NumberInput, type NumberInputProps } from './number-input'
-export { NumberInputControls, type NumberInputControlsProps } from './number-input-controls'
+export { NumberInputControl, type NumberInputControlProps } from './number-input-control'
 export {
   NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerProps,

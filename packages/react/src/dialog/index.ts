@@ -4,7 +4,6 @@ export { DialogCloseTrigger, type DialogCloseTriggerProps } from './dialog-close
 export { DialogContainer, type DialogContainerProps } from './dialog-container'
 export { DialogContent, type DialogContentProps } from './dialog-content'
 export { DialogDescription, type DialogDescriptionProps } from './dialog-description'
-export { DialogPortal, type DialogPortalProps } from './dialog-portal'
 export { DialogTitle, type DialogTitleProps } from './dialog-title'
 export { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
 export { dialogAnatomy } from './dialog.anatomy'

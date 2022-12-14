@@ -16,7 +16,7 @@ export const TagDeleteTrigger = (props: TagDeleteTriggerProps) => {
   createEffect(() => {
     const children = getChildren()
     if (children instanceof Element) {
-      spread(children, { ...tagsInput().getTagDeleteButtonProps(tagProps) })
+      spread(children, { ...tagsInput().getTagDeleteTriggerProps(tagProps) })
     }
   })
 

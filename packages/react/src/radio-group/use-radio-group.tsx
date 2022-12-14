@@ -1,4 +1,4 @@
-import * as radio from '@zag-js/radio'
+import * as radio from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import type { Optional } from '../types'
