@@ -285,7 +285,7 @@ importers:
       '@vitest/coverage-c8': 0.25.8
       '@vue/compiler-sfc': 3.2.45
       '@zag-js/accordion': 0.2.3
-      '@zag-js/checkbox': 0.2.4
+      '@zag-js/checkbox': 0.2.5
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
       '@zag-js/hover-card': 0.1.3
@@ -310,7 +310,7 @@ importers:
       vue: 3.2.45
     dependencies:
       '@zag-js/accordion': 0.2.3
-      '@zag-js/checkbox': 0.2.4
+      '@zag-js/checkbox': 0.2.5
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
       '@zag-js/hover-card': 0.1.3
@@ -5801,14 +5801,6 @@ packages:
 
   /@zag-js/auto-resize/0.2.0:
     resolution: {integrity: sha512-Pj7AeCuZL94a2AoI1WIAeRtTpttkH0SAv7kuFXpEbTneKHUhqyr+ooWn8LA/wrPzcZ7qtuM+Vp/VxgwEtXTvrw==}
-    dev: false
-
-  /@zag-js/checkbox/0.2.4:
-    resolution: {integrity: sha512-Kyz/t1ruWPuXV9w1vspdm7qCB18WND/Rz66uyuQpPHWAQwE7LzO38G06ihlIWaPu8R+myvSDdvLGnghxxWK2Cw==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.1
-      '@zag-js/core': 0.2.2
-      '@zag-js/types': 0.3.1
     dev: false
 
   /@zag-js/checkbox/0.2.5:
