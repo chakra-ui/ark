@@ -37,7 +37,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@zag-js/accordion": "0.2.3",
+    "@zag-js/accordion": "0.2.4",
     "@zag-js/checkbox": "0.2.4",
     "@zag-js/dialog": "0.2.3",
     "@zag-js/editable": "0.2.4",

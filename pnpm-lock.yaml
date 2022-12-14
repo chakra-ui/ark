@@ -284,7 +284,7 @@ importers:
       '@vitejs/plugin-vue': 4.0.0
       '@vitest/coverage-c8': 0.25.8
       '@vue/compiler-sfc': 3.2.45
-      '@zag-js/accordion': 0.2.3
+      '@zag-js/accordion': 0.2.4
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
@@ -309,7 +309,7 @@ importers:
       vitest: 0.25.8
       vue: 3.2.45
     dependencies:
-      '@zag-js/accordion': 0.2.3
+      '@zag-js/accordion': 0.2.4
       '@zag-js/checkbox': 0.2.4
       '@zag-js/dialog': 0.2.3
       '@zag-js/editable': 0.2.4
@@ -5774,14 +5774,6 @@ packages:
 
   /@xtuc/long/4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
-
-  /@zag-js/accordion/0.2.3:
-    resolution: {integrity: sha512-guolU8IGBlFj7fPzeZq2E8T9bFUq/Lisb5pIr4nM4LgKi2ADlMKGKPC2IR1FyLNY88+qGln5scfPhDKLDNdQYg==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.1
-      '@zag-js/core': 0.2.2
-      '@zag-js/types': 0.3.1
-    dev: false
 
   /@zag-js/accordion/0.2.4:
     resolution: {integrity: sha512-9VkrkgwKZKILIqhzg3PKdAcy3h6ej71/bwffdRc+6u85LTqsHhggcUtu4eKmiZUQoe5hP7HEBD+l186MS4ccDw==}
