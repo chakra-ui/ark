@@ -5,17 +5,7 @@
   "keywords": [],
   "homepage": "https://github.com/chakra-ui/ark#readme",
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],
@@ -36,7 +26,9 @@
     "lint": "eslint --ext .ts,.tsx src",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "dependencies": {
     "@polymorphic-factory/solid": "0.1.2",
@@ -70,6 +62,7 @@
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
     "@vitest/coverage-c8": "0.25.8",
+    "clean-package": "2.2.0",
     "eslint": "8.29.0",
     "jsdom": "20.0.3",
     "solid-js": "1.6.5",
@@ -82,5 +75,6 @@
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
-  }
+  },
+  "clean-package": "../../config/clean-package.config.json"
 }

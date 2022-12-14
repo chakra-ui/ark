@@ -134,6 +134,7 @@ importers:
       '@zag-js/tags-input': 0.3.5
       '@zag-js/toast': 0.2.5
       '@zag-js/tooltip': 0.2.4
+      clean-package: 2.2.0
       eslint: 8.29.0
       eslint-plugin-react: 7.31.11
       eslint-plugin-react-hooks: 4.6.0
@@ -181,6 +182,7 @@ importers:
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@vitejs/plugin-react': 3.0.0_vite@4.0.1
       '@vitest/coverage-c8': 0.25.8_jsdom@20.0.3
+      clean-package: 2.2.0
       eslint: 8.29.0
       eslint-plugin-react: 7.31.11_eslint@8.29.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
@@ -224,6 +226,7 @@ importers:
       '@zag-js/tags-input': 0.3.5
       '@zag-js/toast': 0.2.5
       '@zag-js/tooltip': 0.2.4
+      clean-package: 2.2.0
       eslint: 8.29.0
       jsdom: 20.0.3
       solid-js: 1.6.5
@@ -264,6 +267,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
       '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       '@vitest/coverage-c8': 0.25.8_jsdom@20.0.3
+      clean-package: 2.2.0
       eslint: 8.29.0
       jsdom: 20.0.3
       solid-js: 1.6.5
@@ -303,6 +307,7 @@ importers:
       '@zag-js/toast': 0.2.5
       '@zag-js/tooltip': 0.2.4
       '@zag-js/vue': 0.2.3
+      clean-package: 2.2.0
       eslint: 8.29.0
       typescript: 4.9.4
       vite: 4.0.1
@@ -337,6 +342,7 @@ importers:
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.1+vue@3.2.45
       '@vitest/coverage-c8': 0.25.8
       '@vue/compiler-sfc': 3.2.45
+      clean-package: 2.2.0
       eslint: 8.29.0
       typescript: 4.9.4
       vite: 4.0.1
@@ -7019,6 +7025,13 @@ packages:
     dependencies:
       source-map: 0.6.1
 
+  /clean-package/2.2.0:
+    resolution: {integrity: sha512-vLv8kRqvh4smPDpqAYFPLEijTppAd/cfCz4yBcUGoVl/JKu6ZWKhlo+G/cAmwlSa29RudfBeuyiNEzas8bTwEQ==}
+    hasBin: true
+    dependencies:
+      dot-prop: 6.0.1
+    dev: true
+
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -8040,6 +8053,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-obj: 2.0.0
+
+  /dot-prop/6.0.1:
+    resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
+    engines: {node: '>=10'}
+    dependencies:
+      is-obj: 2.0.0
+    dev: true
 
   /dotenv/8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}

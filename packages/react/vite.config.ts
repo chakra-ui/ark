@@ -20,7 +20,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.esm.js' : 'index.cjs.js'),
+      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
