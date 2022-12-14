@@ -1,7 +1,7 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { link } from './src/theme/recipes/link'
-// import { tooltip } from './src/theme/recipes/tooltip'
+import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
   preflight: true,
@@ -161,6 +161,6 @@ export default defineConfig({
   recipes: {
     button,
     link,
-    // tooltip,
+    tooltip,
   },
 })

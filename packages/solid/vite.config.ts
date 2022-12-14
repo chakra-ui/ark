@@ -12,7 +12,7 @@ export default defineConfig({
     dts({
       tsConfigFilePath: 'tsconfig.build.json',
     }),
-    solid(),
+    solid({ ssr: true }),
   ],
   build: {
     target: 'esnext',

@@ -7,6 +7,7 @@ import {
   TooltipTrigger,
 } from '@ark-ui/solid'
 import { Portal } from 'solid-js/web'
+import { tooltip } from '../../../panda/recipes'
 
 export const DemoTooltip = () => {
   return (
@@ -19,7 +20,7 @@ export const DemoTooltip = () => {
           <TooltipArrow>
             <TooltipInnerArrow />
           </TooltipArrow>
-          <TooltipContent>My Tooltip</TooltipContent>
+          <TooltipContent class={tooltip({})}>My Tooltip</TooltipContent>
         </TooltipPositioner>
       </Portal>
     </Tooltip>

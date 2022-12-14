@@ -38,3 +38,13 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Tags Input   | 🟢    | 🟢    | ⚪  |
 | Toast        | 🟢    | 🟢    | ⚪  |
 | Tooltip      | 🟢    | 🟢    | ⚪  |
+
+## Portal Components
+
+- Tooltip
+- Dialog
+- Popover
+- Menu
+- HoverCard
+- Toast
+- Select
