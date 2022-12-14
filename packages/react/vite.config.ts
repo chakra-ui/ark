@@ -6,7 +6,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
 
-// see https://vitejs.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     dts({
