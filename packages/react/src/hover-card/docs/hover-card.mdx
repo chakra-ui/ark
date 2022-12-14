@@ -12,6 +12,7 @@ import {
   HoverCardInnerArrow,
   HoverCardPositioner,
   HoverCardTrigger,
+  Portal,
 } from '@ark-ui/react'
 ```
 
@@ -31,13 +32,15 @@ necessary props to add the event listeners and attributes to ensure the desired 
     </a>
   </HoverCardTrigger>
 
-  <HoverCardPositioner>
-    <HoverCardContent>
-      <HoverCardArrow>
-        <HoverCardInnerArrow />
-      </HoverCardArrow>
-      zag Preview
-    </HoverCardContent>
-  </HoverCardPositioner>
+  <Portal>
+    <HoverCardPositioner>
+      <HoverCardContent>
+        <HoverCardArrow>
+          <HoverCardInnerArrow />
+        </HoverCardArrow>
+        zag Preview
+      </HoverCardContent>
+    </HoverCardPositioner>
+  </Portal>
 </HoverCard>
 ```
