@@ -128,7 +128,7 @@ importers:
       '@zag-js/range-slider': 0.2.5
       '@zag-js/rating-group': 0.2.5
       '@zag-js/react': 0.3.2
-      '@zag-js/select': 0.1.3
+      '@zag-js/select': 0.1.4
       '@zag-js/slider': 0.2.5
       '@zag-js/tabs': 0.2.4
       '@zag-js/tags-input': 0.3.5
@@ -163,7 +163,7 @@ importers:
       '@zag-js/range-slider': 0.2.5
       '@zag-js/rating-group': 0.2.5
       '@zag-js/react': 0.3.2_biqbaboplfbrettd7655fr4n2y
-      '@zag-js/select': 0.1.3
+      '@zag-js/select': 0.1.4
       '@zag-js/slider': 0.2.5
       '@zag-js/tabs': 0.2.4
       '@zag-js/tags-input': 0.3.5
@@ -219,7 +219,7 @@ importers:
       '@zag-js/radio-group': 0.1.5
       '@zag-js/range-slider': 0.2.5
       '@zag-js/rating-group': 0.2.5
-      '@zag-js/select': 0.1.3
+      '@zag-js/select': 0.1.4
       '@zag-js/slider': 0.2.5
       '@zag-js/solid': 0.2.3
       '@zag-js/tabs': 0.2.4
@@ -252,7 +252,7 @@ importers:
       '@zag-js/radio-group': 0.1.5
       '@zag-js/range-slider': 0.2.5
       '@zag-js/rating-group': 0.2.5
-      '@zag-js/select': 0.1.3
+      '@zag-js/select': 0.1.4
       '@zag-js/slider': 0.2.5
       '@zag-js/solid': 0.2.3_solid-js@1.6.5
       '@zag-js/tabs': 0.2.4
@@ -5987,8 +5987,8 @@ packages:
     resolution: {integrity: sha512-mxtPQnPABgAka6zVSvvauS00dgfO6+2n2c8sftdnpCnpTRq6mdCPxj4/NE169Wk5ldzxBbqmnjgYWjOlWV8lpw==}
     dev: false
 
-  /@zag-js/select/0.1.3:
-    resolution: {integrity: sha512-Lt4iA9ufRhRK08fR733U8XiyOl1RHDq75UDAybUkpJASoNlIAUfPyCOpB/Q4RKVtvAl0vWk48yrHeGmEFQ2zNw==}
+  /@zag-js/select/0.1.4:
+    resolution: {integrity: sha512-sumq4kEjj2R52LGD85AG0jxoZpwbU01mi5L6rVCRGGoNmiEVY3iqPjIcgWmLQnurTDXPv4XkkvfW3GKp/TtCSw==}
     dependencies:
       '@zag-js/anatomy': 0.1.1
       '@zag-js/core': 0.2.3
