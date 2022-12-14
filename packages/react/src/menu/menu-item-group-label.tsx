@@ -12,7 +12,7 @@ export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGrou
 export const MenuItemGroupLabel = forwardRef<'label', MenuItemGroupLabelProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const [labelProps, htmlProps] = createSplitProps<MenuItemGroupLabelParams>()(props, ['htmlFor'])
-  const mergedProps = mergeProps(api?.getGroupLabelProps(labelProps) ?? {}, htmlProps)
+  const mergedProps = mergeProps(api?.getItemGroupLabelProps(labelProps) ?? {}, htmlProps)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

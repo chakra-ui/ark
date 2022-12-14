@@ -5,12 +5,12 @@ import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
 type MenuItemGroupParams = Parameters<
-  ReturnType<ReturnType<UseMenuReturn>['api']>['getGroupProps']
+  ReturnType<ReturnType<UseMenuReturn>['api']>['getItemGroupProps']
 >[0]
 export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
 
 export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const menu = useMenuContext()
-  const [menuGroupProps, divProps] = createSplitProps<MenuItemGroupParams>()(props, ['id'])
-  return <ark.div {...menu?.()?.getGroupProps(menuGroupProps)} {...divProps} />
+  const [itemGroupProps, divProps] = createSplitProps<MenuItemGroupParams>()(props, ['id'])
+  return <ark.div {...menu?.()?.getItemGroupProps(itemGroupProps)} {...divProps} />
 }
