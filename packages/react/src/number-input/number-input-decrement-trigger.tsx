@@ -4,8 +4,8 @@ import { useNumberInputContext } from './number-input-context'
 export type NumberInputDecrementTriggerProps = { children: ReactElement }
 
 export const NumberInputDecrementTrigger = (props: NumberInputDecrementTriggerProps) => {
-  const { decrementButtonProps } = useNumberInputContext()
+  const { decrementTriggerProps } = useNumberInputContext()
   const onlyChild = Children.only(props.children)
 
-  return cloneElement(onlyChild, decrementButtonProps)
+  return cloneElement(onlyChild, decrementTriggerProps)
 }

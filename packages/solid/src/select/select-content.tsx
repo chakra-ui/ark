@@ -6,5 +6,5 @@ export type SelectContentProps = HTMLArkProps<'ul'>
 export const SelectContent = (props: SelectContentProps) => {
   const select = useSelectContext()
 
-  return <ark.ul {...select().menuProps} {...props} />
+  return <ark.ul {...select().contentProps} {...props} />
 }

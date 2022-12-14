@@ -6,8 +6,8 @@ import { useEditableContext } from './editable-context'
 export type EditableControlProps = HTMLArkProps<'div'>
 
 export const EditableControl = forwardRef<'div', EditableControlProps>((props, ref) => {
-  const { controlGroupProps } = useEditableContext()
-  const mergedProps = mergeProps(controlGroupProps, props)
+  const { controlProps } = useEditableContext()
+  const mergedProps = mergeProps(controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

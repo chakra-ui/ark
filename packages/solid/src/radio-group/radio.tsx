@@ -18,7 +18,7 @@ export const Radio = (props: RadioProps) => {
   return (
     <RadioProvider value={contextProps}>
       <ark.label
-        {...radioGroup().getItemProps({
+        {...radioGroup().getRadioProps({
           value: contextProps.value,
           disabled: contextProps.disabled,
         })}

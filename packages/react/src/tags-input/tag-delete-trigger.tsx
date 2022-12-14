@@ -12,8 +12,8 @@ export const TagDeleteTrigger = (props: TagDeleteTriggerProps) => {
     'disabled',
     'value',
   ])
-  const { getTagDeleteButtonProps } = useTagsInputContext()
+  const { getTagDeleteTriggerProps } = useTagsInputContext()
 
   const onlyChild = Children.only(children)
-  return cloneElement(onlyChild, getTagDeleteButtonProps(tagProps))
+  return cloneElement(onlyChild, getTagDeleteTriggerProps(tagProps))
 }

@@ -8,5 +8,5 @@ export const RadioControl = (props: RadioControlProps) => {
   const radioGroup = useRadioGroupContext()
   const context = useRadioContext()
 
-  return <ark.div {...radioGroup().getItemControlProps(context)} {...props} />
+  return <ark.div {...radioGroup().getRadioControlProps(context)} {...props} />
 }

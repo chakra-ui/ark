@@ -4,8 +4,8 @@ import { useEditableContext } from './editable-context'
 export type EditableEditTriggerProps = { children: ReactElement }
 
 export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
-  const { editButtonProps } = useEditableContext()
+  const { editTriggerProps } = useEditableContext()
 
   const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, editButtonProps)
+  return cloneElement(onlyChild, editTriggerProps)
 }

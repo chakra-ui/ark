@@ -1,10 +1,10 @@
 import {
   Popover,
   PopoverArrow,
+  PopoverArrowTip,
   PopoverCloseTrigger,
   PopoverContent,
   PopoverDescription,
-  PopoverInnerArrow,
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
@@ -17,7 +17,7 @@ export const PopoverReact = () => (
     </PopoverTrigger>
     <PopoverPositioner>
       <PopoverArrow>
-        <PopoverInnerArrow />
+        <PopoverArrowTip />
       </PopoverArrow>
       <PopoverContent>
         <PopoverTitle>Title</PopoverTitle>

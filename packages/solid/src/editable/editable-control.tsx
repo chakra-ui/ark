@@ -6,5 +6,5 @@ export type EditableControlProps = HTMLArkProps<'div'>
 export const EditableControl = (props: EditableControlProps) => {
   const editable = useEditableContext()
 
-  return <ark.div {...editable().controlGroupProps} {...props} />
+  return <ark.div {...editable().controlProps} {...props} />
 }

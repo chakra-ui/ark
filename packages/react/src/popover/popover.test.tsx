@@ -3,10 +3,10 @@ import user from '@testing-library/user-event'
 import {
   Popover,
   PopoverArrow,
+  PopoverArrowTip,
   PopoverCloseTrigger,
   PopoverContent,
   PopoverDescription,
-  PopoverInnerArrow,
   PopoverPositioner,
   PopoverProps,
   PopoverTitle,
@@ -20,7 +20,7 @@ const Component = (props: PopoverProps) => (
     </PopoverTrigger>
     <PopoverPositioner>
       <PopoverArrow>
-        <PopoverInnerArrow />
+        <PopoverArrowTip />
       </PopoverArrow>
       <PopoverContent>
         <PopoverTitle>title</PopoverTitle>

@@ -12,7 +12,7 @@ export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
 export const RatingGroupControl = forwardRef<'div', RatingGroupControlProps>((props, ref) => {
   const { children, ...divProps } = props
   const ratingGroup = useRatingGroupContext()
-  const mergedProps = mergeProps(ratingGroup.itemGroupProps, divProps)
+  const mergedProps = mergeProps(ratingGroup.controlProps, divProps)
   const view = runIfFn(children, ratingGroup)
 
   return (

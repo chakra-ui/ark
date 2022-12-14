@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import {
   NumberInput,
-  NumberInputControls,
+  NumberInputControl,
   NumberInputDecrementTrigger,
   NumberInputField,
   NumberInputIncrementTrigger,
@@ -15,14 +15,14 @@ const Component = (props: NumberInputProps) => (
   <NumberInput {...props}>
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputField />
-    <NumberInputControls>
+    <NumberInputControl>
       <NumberInputDecrementTrigger>
         <button>-1</button>
       </NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>
         <button>+1</button>
       </NumberInputIncrementTrigger>
-    </NumberInputControls>
+    </NumberInputControl>
   </NumberInput>
 )
 
