@@ -10,12 +10,13 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      tsConfigFilePath: 'tsconfig.build.json',
+      rollupTypes: true,
     }),
     react(),
   ],
   build: {
     target: 'esnext',
+    minify: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
