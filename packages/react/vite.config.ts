@@ -10,19 +10,28 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      tsConfigFilePath: 'tsconfig.build.json',
+      rollupTypes: true,
     }),
     react(),
   ],
   build: {
     target: 'esnext',
+    minify: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.esm.js' : 'index.cjs.js'),
+      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+      external: [
+        ...Object.keys(pkg.dependencies),
+        ...Object.keys(pkg.peerDependencies),
+        'react/jsx-runtime',
+      ],
+      output: {
+        // this is needed to allow tree shaking in webpack
+        preserveModules: true,
+      },
     },
   },
   test: {

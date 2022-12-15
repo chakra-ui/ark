@@ -4,14 +4,12 @@
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationMap": true,
     "esModuleInterop": true,
     "importsNotUsedAsValues": "error",
     "moduleResolution": "node",
     "noEmit": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true
   },
   "ts-node": {

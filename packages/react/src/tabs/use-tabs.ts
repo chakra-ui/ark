@@ -1,10 +1,10 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
-import * as tabs from '@zag-js/tabs'
+import { connect, Context, machine } from '@zag-js/tabs'
 import { useId } from 'react'
 import type { Optional } from '../types'
 
-export type UseTabsProps = Optional<tabs.Context, 'id'> & {
-  defaultValue?: tabs.Context['value']
+export type UseTabsProps = Optional<Context, 'id'> & {
+  defaultValue?: Context['value']
 }
 export type UseTabsReturn = ReturnType<typeof useTabs>
 
@@ -14,7 +14,7 @@ export const useTabs = (props: UseTabsProps) => {
     ...initialContext,
     value: props.value,
   }
-  const [state, send] = useMachine(tabs.machine(initialContext), { context })
+  const [state, send] = useMachine(machine(initialContext), { context })
 
-  return tabs.connect(state, send, normalizeProps)
+  return connect(state, send, normalizeProps)
 }

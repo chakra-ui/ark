@@ -10,16 +10,17 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      tsConfigFilePath: 'tsconfig.build.json',
+      rollupTypes: true,
     }),
     solid({ ssr: true }),
   ],
   build: {
     target: 'esnext',
+    minify: false,
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.esm.js' : 'index.cjs.js'),
+      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
     rollupOptions: {
       external: [
@@ -29,6 +30,10 @@ export default defineConfig({
         'solid-js/web',
         'solid-js/store',
       ],
+      output: {
+        // this is needed to allow tree shaking in webpack
+        preserveModules: true,
+      },
     },
   },
   test: {
