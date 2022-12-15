@@ -8,7 +8,7 @@ export default defineConfig({
   include: ['./src/**/*.{astro,tsx}'],
   presets: ['css-panda/presets'],
   outdir: 'panda',
-  jsxFramework: 'solid',
+  jsxFramework: 'react',
 
   textStyles: {
     xs: { value: { fontSize: 'xs', lineHeight: '1.125rem' } },

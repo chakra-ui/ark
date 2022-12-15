@@ -1,12 +1,12 @@
 import {
+  Portal,
   Tooltip,
   TooltipArrow,
+  TooltipArrowTip,
   TooltipContent,
-  TooltipInnerArrow,
   TooltipPositioner,
   TooltipTrigger,
-} from '@ark-ui/solid'
-import { Portal } from 'solid-js/web'
+} from '@ark-ui/react'
 
 export const DemoTooltip = () => {
   return (
@@ -17,7 +17,7 @@ export const DemoTooltip = () => {
       <Portal>
         <TooltipPositioner>
           <TooltipArrow>
-            <TooltipInnerArrow />
+            <TooltipArrowTip />
           </TooltipArrow>
           <TooltipContent>My Tooltip</TooltipContent>
         </TooltipPositioner>

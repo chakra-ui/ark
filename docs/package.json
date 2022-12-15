@@ -5,22 +5,24 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "prebuild": "panda codegen",
-    "bundle": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
+    "build": "astro build",
     "css": "panda",
     "css:dev": "panda --watch"
   },
   "dependencies": {
-    "@ark-ui/solid": "workspace:*",
+    "@ark-ui/react": "workspace:*",
     "@astrojs/mdx": "0.12.2",
+    "@astrojs/react": "1.2.2",
     "@astrojs/sitemap": "1.0.0",
-    "@astrojs/solid-js": "1.2.3",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.15",
-    "css-panda": "0.0.0-dev-20221209055600",
-    "solid-js": "1.6.5"
+    "css-panda": "0.0.0-dev-20221215103927",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9"
   }
 }
