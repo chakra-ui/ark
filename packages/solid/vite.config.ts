@@ -12,7 +12,7 @@ export default defineConfig({
     dts({
       rollupTypes: true,
     }),
-    solid({ ssr: true }),
+    solid(),
   ],
   build: {
     target: 'esnext',
