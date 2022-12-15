@@ -29,6 +29,8 @@ export async function getStaticPaths() {
       props: {
         doc,
         sidebarItems: byFramework[framework],
+        component,
+        framework,
       },
     }
   })
@@ -36,11 +38,18 @@ export async function getStaticPaths() {
 
 const {
   doc: { Content, frontmatter },
+  component,
+  framework,
   sidebarItems,
 } = Astro.props
 ---
 
 <DocsLayout frontmatter={frontmatter}>
-  <ComponentSidebar items={sidebarItems} slot="sidebar" />
+  <ComponentSidebar
+    slot="components"
+    framework={framework}
+    component={component}
+    items={sidebarItems}
+  />
   <Content components={{ h1: Heading, p: Text }} />
 </DocsLayout>

@@ -19,7 +19,7 @@ const { frontmatter, sidebar } = Astro.props
   <Container as="main">
     <Stack gap="24" direction="row" height="100%" position="relative">
       <Sidebar>
-        <slot name="sidebar" />
+        <slot name="components" slot="components" />
       </Sidebar>
       <article
         class={css({

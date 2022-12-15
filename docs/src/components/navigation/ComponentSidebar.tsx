@@ -9,9 +9,12 @@ interface ComponentSidebarItem {
 
 interface ComponentSidebarProps {
   items: ComponentSidebarItem[]
+  framework: string
+  component: string
 }
 
 export const ComponentSidebar = (props: ComponentSidebarProps) => {
+  const { items, framework, component } = props
   return (
     <>
       <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">
@@ -19,27 +22,26 @@ export const ComponentSidebar = (props: ComponentSidebarProps) => {
       </Text>
       <Stack borderLeftWidth="1px" gap="2">
         <panda.ul listStyleType="none" p="0">
-          {props.items.map((item) => (
-            <panda.li
-              key={`${item.framework}-${item.component}`}
-              display="flex"
-              alignItems="stretch"
-            >
-              <Link
-                textStyle="sm"
-                lineHeight="2rem"
-                pl="4"
-                color="fg.muted"
-                borderLeftWidth="1px"
-                _hover={{ color: 'gray.800', borderLeftColor: 'gray.400' }}
-                ml="-1px"
-                textTransform="capitalize"
-                href={`/docs/${item.framework}/${item.component}`}
+          {items.map((item) => {
+            let absoluteHref = `/docs/${item.framework}/${item.component}`
+            let isCurrentPage = component === item.component && framework === item.framework
+            return (
+              <panda.li
+                key={`${item.framework}-${item.component}`}
+                display="flex"
+                alignItems="stretch"
               >
-                {item.component}
-              </Link>
-            </panda.li>
-          ))}
+                <Link
+                  aria-current={isCurrentPage ? 'page' : undefined}
+                  href={absoluteHref}
+                  variant="sidebar"
+                  textTransform="capitalize"
+                >
+                  {item.component}
+                </Link>
+              </panda.li>
+            )
+          })}
         </panda.ul>
       </Stack>
     </>

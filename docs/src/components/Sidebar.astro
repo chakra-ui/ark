@@ -2,9 +2,6 @@
 import { Box, HStack, Stack } from '../../panda/jsx'
 import { Link } from './shared/Link'
 import { Text } from './shared/Text'
-
-const components = await Astro.glob('../docs/*.mdx')
-const pathname = new URL(Astro.request.url).pathname
 ---
 
 <Box as="aside" minW="256px" position="sticky" display={{ base: 'none', lg: 'block' }} top="92px">
@@ -42,20 +39,7 @@ const pathname = new URL(Astro.request.url).pathname
       </Stack>
     </Stack>
     <Stack gap="3" alignSelf="stretch">
-      <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
-      <Stack borderLeftWidth="1px" alignSelf="stretch">
-        {
-          components.map((component) => (
-            <Link
-              href={component.frontmatter.id}
-              variant="sidebar"
-              aria-current={pathname.endsWith(component.frontmatter.id)}
-            >
-              {component.frontmatter.title}
-            </Link>
-          ))
-        }
-      </Stack>
+      <slot name="components" />
     </Stack>
   </Stack>
 </Box>
