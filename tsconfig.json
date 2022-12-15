@@ -8,6 +8,7 @@
     "importsNotUsedAsValues": "error",
     "moduleResolution": "node",
     "noEmit": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true
   },

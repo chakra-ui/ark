@@ -23,7 +23,11 @@ export default defineConfig({
       fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
+      external: [
+        ...Object.keys(pkg.dependencies),
+        ...Object.keys(pkg.peerDependencies),
+        'react/jsx-runtime',
+      ],
       output: {
         // this is needed to allow tree shaking in webpack
         preserveModules: true,

@@ -30,6 +30,10 @@ export default defineConfig({
         'solid-js/web',
         'solid-js/store',
       ],
+      output: {
+        // this is needed to allow tree shaking in webpack
+        preserveModules: true,
+      },
     },
   },
   test: {
