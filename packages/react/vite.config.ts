@@ -10,7 +10,9 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      rollupTypes: true,
+      skipDiagnostics: true,
+      entryRoot: 'src',
+      staticImport: true,
     }),
     react(),
   ],
