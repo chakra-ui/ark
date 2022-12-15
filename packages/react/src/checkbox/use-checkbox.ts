@@ -1,25 +1,34 @@
-import { connect, Context, machine } from '@zag-js/checkbox'
+import * as checkbox from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { useId } from 'react'
+import { useEffect, useId } from 'react'
 import type { Optional } from '../types'
 
-export type UseCheckboxProps = Optional<Context, 'id'> & {
-  defaultValue?: Context['value']
+export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
+  checked?: checkbox.Context['defaultChecked']
 }
 export type UseCheckboxReturn = ReturnType<typeof useCheckbox>
 
 export const useCheckbox = (props: UseCheckboxProps) => {
-  const initialContext = {
+  const context = {
     id: useId(),
     ...props,
-    value: props.defaultValue,
   }
 
-  const context = {
-    ...initialContext,
-    value: props.value,
-  }
+  const [state, send] = useMachine(checkbox.machine(context), { context })
 
-  const [state, send] = useMachine(machine(initialContext), { context })
-  return connect(state, send, normalizeProps)
+  const api = checkbox.connect(state, send, normalizeProps)
+
+  const { checked } = props
+  const { isChecked } = api
+  useEffect(() => {
+    if (checked == undefined) {
+      return
+    }
+
+    if (checked !== isChecked) {
+      api.setChecked(checked)
+    }
+  }, [checked, isChecked, api])
+
+  return api
 }

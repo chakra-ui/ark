@@ -1,13 +1,14 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { useState } from 'react'
 import { vi } from 'vitest'
 import { Checkbox, CheckboxProps } from './checkbox'
 import { CheckboxControl } from './checkbox-control'
 import { CheckboxInput } from './checkbox-input'
 import { CheckboxLabel } from './checkbox-label'
 
-const Component = (props: CheckboxProps) => (
-  <Checkbox defaultChecked {...props}>
+const ComponentUnderTest = (props: CheckboxProps) => (
+  <Checkbox {...props}>
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl data-testid="control" />
@@ -16,12 +17,12 @@ const Component = (props: CheckboxProps) => (
 
 describe('Checkbox', () => {
   it('should render', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
   })
 
   it('should handle check and unchecked', async () => {
     const onChange = vi.fn()
-    render(<Component onChange={onChange} />)
+    render(<ComponentUnderTest onChange={onChange} />)
 
     const checkbox = screen.getByRole('checkbox')
 
@@ -30,8 +31,25 @@ describe('Checkbox', () => {
   })
 
   it('should handle indeterminate state properly', async () => {
-    render(<Component indeterminate />)
-
+    render(<ComponentUnderTest indeterminate />)
     expect(screen.getByTestId('control')).toHaveAttribute('data-indeterminate')
+  })
+
+  it('should allow controlled usage', async () => {
+    const ControlledComponentUnderTest = () => {
+      const [checked, setChecked] = useState(false)
+      return (
+        <>
+          <button onClick={() => setChecked(true)}>set checked</button>
+          <ComponentUnderTest checked={checked} />
+        </>
+      )
+    }
+
+    render(<ControlledComponentUnderTest />)
+
+    expect(screen.getByRole('checkbox')).not.toBeChecked()
+    await user.click(screen.getByText('set checked'))
+    await waitFor(() => expect(screen.getByRole('checkbox')).toBeChecked())
   })
 })
