@@ -13,6 +13,7 @@ export default defineConfig({
       skipDiagnostics: true,
       entryRoot: 'src',
       staticImport: true,
+      rollupTypes: false,
     }),
     react(),
   ],

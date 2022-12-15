@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "prebuild": "panda codegen",
-    "build": "astro build",
+    "bundle": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "css": "panda",
