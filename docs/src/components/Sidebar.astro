@@ -1,38 +1,61 @@
 ---
-import { css } from '../../panda/css'
-import { Stack } from '../../panda/jsx'
+import { Box, HStack, Stack } from '../../panda/jsx'
 import { Link } from './shared/Link'
 import { Text } from './shared/Text'
 
 const components = await Astro.glob('../docs/*.mdx')
+const pathname = new URL(Astro.request.url).pathname
 ---
 
-<aside
-  role="complementary"
-  class={css({
-    background: 'red',
-    minH: '500px',
-    width: '16rem',
-    alignSelf: 'start',
-    position: 'fixed',
-    display: { base: 'none', lg: 'block' },
-  })}
->
-  <!-- <Stack gap="1">
-    <Text
-      textStyle="xs"
-      textTransform="uppercase"
-      fontWeight="semibold"
-      color="gray.500"
-      px="2"
-      py="1">Components</Text
+<Box as="aside" minW="256px" position="sticky" display={{ base: 'none', lg: 'block' }} top="92px">
+  <Stack gap="12">
+    <Stack
+      as="ul"
+      gap="4"
+      textStyle="sm"
+      fontWeight="medium"
+      color="fg.muted"
+      listStyle="none"
+      ps="0"
     >
-    {
-      components.map((component) => (
-        <Link href={component.frontmatter.id} variant="sidebar">
-          {component.frontmatter.title}
-        </Link>
-      ))
-    }
-  </Stack> -->
-</aside>
+      <li>
+        <HStack as="a" gap="4" fontWeight="semibold" color="accent.default">
+          <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
+          Documentation
+        </HStack>
+      </li>
+      {
+        [, 'Discord', 'GitHub'].map((item) => (
+          <li>
+            <HStack as="a" gap="4">
+              <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
+              {item}
+            </HStack>
+          </li>
+        ))
+      }
+    </Stack>
+    <Stack gap="3">
+      <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Getting started</Text>
+      <Stack borderLeftWidth="1px" gap="2">
+        {['Welcome'].map((item) => <Link variant="sidebar">{item}</Link>)}
+      </Stack>
+    </Stack>
+    <Stack gap="3" alignSelf="stretch">
+      <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
+      <Stack borderLeftWidth="1px" alignSelf="stretch">
+        {
+          components.map((component) => (
+            <Link
+              href={component.frontmatter.id}
+              variant="sidebar"
+              aria-current={pathname.endsWith(component.frontmatter.id)}
+            >
+              {component.frontmatter.title}
+            </Link>
+          ))
+        }
+      </Stack>
+    </Stack>
+  </Stack>
+</Box>

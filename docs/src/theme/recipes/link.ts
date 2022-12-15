@@ -10,15 +10,6 @@ export const link = defineRecipe({
     cursor: 'pointer',
     textDecoration: 'none',
     outline: 'none',
-    color: 'inherit',
-    fontWeight: 'medium',
-    _hover: {
-      textDecoration: 'none',
-      color: 'purple.600',
-      _dark: {
-        color: 'purple.500',
-      },
-    },
     _focusVisible: {
       boxShadow: 'outline',
     },
@@ -29,13 +20,17 @@ export const link = defineRecipe({
       sidebar: {
         display: 'flex',
         alignSelf: 'stretch',
+        borderLeftWidth: '1px',
+        color: 'fg.muted',
+        ml: '-1px',
+        pl: '4',
         textStyle: 'sm',
-        py: '1.5',
-        px: '2',
-        borderRadius: 'sm',
-        _hover: {
-          color: 'fg.default',
-          backgroundColor: 'gray.100',
+        lineHeight: '1.5rem',
+        _hover: { color: 'fg.default', borderLeftColor: 'fg.muted' },
+        '&[aria-current="true"]': {
+          color: 'accent.default',
+          fontWeight: 'semibold',
+          borderColor: 'accent.default',
         },
       },
     },
