@@ -7,15 +7,16 @@ import {
   TooltipPositioner,
   TooltipTrigger,
 } from '@ark-ui/react'
+import { tooltip } from '../../../panda/recipes'
 
 export const DemoTooltip = () => {
   return (
-    <Tooltip openDelay={0} closeDelay={999999} positioning={{ placement: 'right' }}>
+    <Tooltip openDelay={0} closeDelay={200} positioning={{ placement: 'right' }}>
       <TooltipTrigger>
         <span>hover me</span>
       </TooltipTrigger>
       <Portal>
-        <TooltipPositioner>
+        <TooltipPositioner className={tooltip({})}>
           <TooltipArrow>
             <TooltipArrowTip />
           </TooltipArrow>
