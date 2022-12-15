@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "panda",
-    "bundle": "astro build",
+    "prebuild": "panda codegen",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "css": "panda",
