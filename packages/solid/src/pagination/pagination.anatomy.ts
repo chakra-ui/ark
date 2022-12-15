@@ -1,3 +1,4 @@
-import { anatomy } from '@zag-js/pagination'
+export { anatomy as paginationAnatomy } from '@zag-js/pagination'
 
-export const paginationAnatomy = anatomy.extendWith('list')
+// TODO typescript error in vitest (test runner)
+// export const paginationAnatomy = anatomy.extendWith('list')
