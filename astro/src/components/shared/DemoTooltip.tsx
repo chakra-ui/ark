@@ -1,8 +1,8 @@
 import {
   Tooltip,
   TooltipArrow,
+  TooltipArrowTip,
   TooltipContent,
-  TooltipInnerArrow,
   TooltipPositioner,
   TooltipTrigger,
 } from '@ark-ui/solid'
@@ -16,11 +16,11 @@ export const DemoTooltip = () => {
         <span>hover me</span>
       </TooltipTrigger>
       <Portal>
-        <TooltipPositioner>
+        <TooltipPositioner class={tooltip({})}>
           <TooltipArrow>
-            <TooltipInnerArrow />
+            <TooltipArrowTip />
           </TooltipArrow>
-          <TooltipContent class={tooltip({})}>My Tooltip</TooltipContent>
+          <TooltipContent>My Tooltip</TooltipContent>
         </TooltipPositioner>
       </Portal>
     </Tooltip>
