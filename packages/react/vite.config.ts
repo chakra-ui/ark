@@ -28,10 +28,22 @@ export default defineConfig({
         ...Object.keys(pkg.peerDependencies),
         'react/jsx-runtime',
       ],
-      output: {
-        // this is needed to allow tree shaking in webpack
-        preserveModules: true,
-      },
+      output: [
+        {
+          format: 'cjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          exports: 'named',
+          entryFileNames: '[name].cjs',
+        },
+        {
+          format: 'es',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          exports: 'named',
+          entryFileNames: '[name].mjs',
+        },
+      ],
     },
   },
   test: {
