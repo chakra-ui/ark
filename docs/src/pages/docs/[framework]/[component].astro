@@ -1,27 +1,46 @@
 ---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
 import { Text } from '../../../components/shared/Text'
 import { Heading } from '../../../components/shared/Heading'
+import { ComponentSidebar } from '../../../components/navigation/ComponentSidebar'
 
 export async function getStaticPaths() {
-  const frameworks = ['react', 'solid', 'vue']
-  const components = await Astro.glob('../../../docs/**/*.mdx')
+  const allFiles = await Astro.glob('../../../../../packages/*/src/**/docs/**/*.mdx')
+  const allDocs = allFiles.map((doc) => ({
+    doc,
+    framework: doc.file.match(/\/packages\/(\w+)\/src/)[1],
+    component: doc.file.match(/docs\/(.*)\.mdx$/)[1],
+  }))
 
-  return components.map((component) =>
-    frameworks.map((framework) => ({
+  const byFramework = allDocs.reduce((acc, docData) => {
+    if (!acc[docData.framework]) {
+      acc[docData.framework] = []
+    }
+    acc[docData.framework].push(docData)
+    return acc
+  }, {})
+
+  return allDocs.map(({ doc, framework, component }) => {
+    return {
       params: {
-        component: component.frontmatter.id,
+        component,
         framework,
       },
       props: {
-        component,
+        doc,
+        sidebarItems: byFramework[framework],
       },
-    })),
-  )
+    }
+  })
 }
 
-// TODO use for provider
-// const { framework } = Astro.params
-const { Content } = Astro.props.component
+const {
+  doc: { Content, frontmatter },
+  sidebarItems,
+} = Astro.props
 ---
 
-<Content components={{ h1: Heading, p: Text }} />
+<DocsLayout frontmatter={frontmatter}>
+  <ComponentSidebar items={sidebarItems} slot="sidebar" />
+  <Content components={{ h1: Heading, p: Text }} />
+</DocsLayout>

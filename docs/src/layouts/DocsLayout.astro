@@ -2,7 +2,6 @@
 import type { MarkdownLayoutProps } from 'astro'
 import { css } from '../../panda/css'
 import { Box, Container, HStack, Stack } from '../../panda/jsx'
-import { DemoTooltip } from '../components/shared/DemoTooltip'
 import { Text } from '../components/shared/Text'
 import Sidebar from '../components/Sidebar.astro'
 import BaseLayout from './BaseLayout.astro'
@@ -13,13 +12,15 @@ type Props = MarkdownLayoutProps<{
   url: string
 }>
 
-const { frontmatter } = Astro.props
+const { frontmatter, sidebar } = Astro.props
 ---
 
 <BaseLayout>
   <Container as="main">
     <Stack gap="24" direction="row" height="100%" position="relative">
-      <Sidebar />
+      <Sidebar>
+        <slot name="sidebar" />
+      </Sidebar>
       <article
         class={css({
           '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
@@ -35,11 +36,6 @@ const { frontmatter } = Astro.props
           minHeight: '100vh',
         })}
       >
-        <Box py="4">
-          <DemoTooltip client:load />
-        </Box>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
         <slot />
       </article>
       <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">
