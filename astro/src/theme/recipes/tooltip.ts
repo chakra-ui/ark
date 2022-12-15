@@ -6,12 +6,12 @@ export const tooltip = defineRecipe({
   base: {
     px: '4',
     py: '2.5',
-    borderRadius: 'sm',
     backgroundColor: {
       base: 'gray.950',
       _dark: 'white',
     },
     boxShadow: 'sm',
+    borderRadius: 'sm',
     color: {
       base: 'white',
       _dark: 'gray.950',

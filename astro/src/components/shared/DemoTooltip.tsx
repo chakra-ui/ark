@@ -11,7 +11,7 @@ import { tooltip } from '../../../panda/recipes'
 
 export const DemoTooltip = () => {
   return (
-    <Tooltip openDelay={0} closeDelay={999999} positioning={{ placement: 'right' }}>
+    <Tooltip openDelay={0} positioning={{ placement: 'right' }}>
       <TooltipTrigger>
         <span>hover me</span>
       </TooltipTrigger>
