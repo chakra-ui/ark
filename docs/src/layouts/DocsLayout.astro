@@ -16,102 +16,109 @@ const { frontmatter } = Astro.props
 ---
 
 <BaseLayout>
-  <Container py="8">
-    <Box width="19.5rem" position="fixed" display={{ base: 'none', lg: 'block' }}>
-      <Stack gap="12">
-        <Stack
-          as="ul"
-          gap="4"
-          textStyle="sm"
-          fontWeight="medium"
-          color="fg.muted"
-          listStyle="none"
-          ps="0"
-        >
-          <li>
-            <HStack as="a" gap="4" fontWeight="semibold" color="accent.default">
-              <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
-              Documentation
-            </HStack>
-          </li>
-          {
-            [, 'Discord', 'GitHub'].map((item) => (
-              <li>
-                <HStack as="a" gap="4">
-                  <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
-                  {item}
-                </HStack>
-              </li>
-            ))
-          }
-        </Stack>
-        <Stack gap="3">
-          <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Getting started</Text>
-          <Stack borderLeftWidth="1px" gap="2">
-            {
-              ['Welcome'].map((item) => (
-                <Text
-                  textStyle="sm"
-                  lineHeight="1.5rem"
-                  pl="4"
-                  color="accent.default"
-                  fontWeight="semibold"
-                  ml="-1px"
-                  borderLeftWidth="1px"
-                  borderColor="accent.default"
-                >
-                  {item}
-                </Text>
-              ))
-            }
-          </Stack>
-        </Stack>
-        <Stack gap="3">
-          <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
-          <Stack borderLeftWidth="1px" gap="2">
-            {
-              ['Accorrdion', 'Checkbox', 'Tooltip'].map((item) => (
-                <Text
-                  textStyle="sm"
-                  lineHeight="1.5rem"
-                  pl="4"
-                  color="fg.muted"
-                  borderLeftWidth="1px"
-                  _hover={{ color: 'gray.800', borderLeftColor: 'gray.400' }}
-                  ml="-1px"
-                >
-                  {item}
-                </Text>
-              ))
-            }
-          </Stack>
-        </Stack>
-      </Stack>
-    </Box>
-    <Box pl={{ base: '0', lg: '80' }} pt="1">
-      <Stack direction="row" gap="12" justify="space-between">
-        <Box maxW={{ xl: '43rem' }} flex="1">
-          <article
-            class={css({
-              '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
-              '& > pre': {
-                my: '5',
-                p: '5',
-                borderRadius: 'xl',
-                backgroundColor: 'gray.950 !important',
-                boxShadow: 'xs',
-              },
-            })}
+  <Container as="main">
+    <Stack gap="24" direction="row" height="100%" position="relative">
+      <Box
+        as="aside"
+        minW="256px"
+        position="sticky"
+        display={{ base: 'none', lg: 'block' }}
+        top="92px"
+      >
+        <Stack gap="12">
+          <Stack
+            as="ul"
+            gap="4"
+            textStyle="sm"
+            fontWeight="medium"
+            color="fg.muted"
+            listStyle="none"
+            ps="0"
           >
-            <Box py="4">
-              <DemoTooltip client:load />
-            </Box>
-            <h1>{frontmatter.title}</h1>
-            <p>{frontmatter.description}</p>
-            <slot />
-          </article>
+            <li>
+              <HStack as="a" gap="4" fontWeight="semibold" color="accent.default">
+                <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
+                Documentation
+              </HStack>
+            </li>
+            {
+              [, 'Discord', 'GitHub'].map((item) => (
+                <li>
+                  <HStack as="a" gap="4">
+                    <Box w="6" h="6" backgroundColor="bg.subtle" borderRadius="md" />
+                    {item}
+                  </HStack>
+                </li>
+              ))
+            }
+          </Stack>
+          <Stack gap="3">
+            <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">Getting started</Text>
+            <Stack borderLeftWidth="1px" gap="2">
+              {
+                ['Welcome'].map((item) => (
+                  <Text
+                    textStyle="sm"
+                    lineHeight="1.5rem"
+                    pl="4"
+                    color="accent.default"
+                    fontWeight="semibold"
+                    ml="-1px"
+                    borderLeftWidth="1px"
+                    borderColor="accent.default"
+                  >
+                    {item}
+                  </Text>
+                ))
+              }
+            </Stack>
+          </Stack>
+          <Stack gap="3">
+            <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">Components</Text>
+            <Stack borderLeftWidth="1px" gap="2">
+              {
+                ['Accorrdion', 'Checkbox', 'Tooltip'].map((item) => (
+                  <Text
+                    textStyle="sm"
+                    lineHeight="1.5rem"
+                    pl="4"
+                    color="fg.muted"
+                    borderLeftWidth="1px"
+                    _hover={{ color: 'gray.800', borderLeftColor: 'gray.400' }}
+                    ml="-1px"
+                  >
+                    {item}
+                  </Text>
+                ))
+              }
+            </Stack>
+          </Stack>
+        </Stack>
+      </Box>
+      <article
+        class={css({
+          '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
+          '& > pre': {
+            my: '5',
+            p: '5',
+            borderRadius: 'xl',
+            backgroundColor: 'gray.950 !important',
+            boxShadow: 'xs',
+          },
+          maxWidth: { xl: '43rem' },
+          overflowX: 'hidden',
+          flex: '1',
+        })}
+      >
+        <Box py="4">
+          <DemoTooltip client:load />
         </Box>
-        <Box width="16rem" display={{ base: 'none', xl: 'block' }}>
+        <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.description}</p>
+        <slot />
+      </article>
+      <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">
+        <div>
           <Stack
             as="ul"
             gap="2"
@@ -133,8 +140,8 @@ const { frontmatter } = Astro.props
               ))
             }
           </Stack>
-        </Box>
-      </Stack>
-    </Box>
+        </div>
+      </Box>
+    </Stack>
   </Container>
 </BaseLayout>
