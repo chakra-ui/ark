@@ -6,7 +6,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
 export async function getStaticPaths() {
   const frameworks = ['react', 'solid', 'vue']
-  const components = await Astro.glob('../../../../../packages/react/src/*/*.mdx')
+  const components = await Astro.glob('../../../../../packages/react/src/**/*.mdx')
 
   return components.map((component) =>
     frameworks.map((framework) => ({

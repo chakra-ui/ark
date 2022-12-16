@@ -4,7 +4,7 @@ import { Box, HStack, Stack } from '../../panda/jsx'
 import { Link } from './shared/Link'
 import { Text } from './shared/Text'
 
-const components = (await Astro.glob('../../../packages/react/src/*/*.mdx')).map(
+const components = (await Astro.glob('../../../packages/react/src/**/*.mdx')).map(
   ({ file }) => parse(file).name,
 )
 const pathname = new URL(Astro.request.url).pathname
