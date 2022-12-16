@@ -49,7 +49,7 @@ importers:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       astro: 1.6.15
-      css-panda: 0.0.0-dev-20221215141248
+      css-panda: 0.0.0-dev-20221216174419
       react: 18.2.0
       react-dom: 18.2.0
     dependencies:
@@ -59,7 +59,7 @@ importers:
       '@astrojs/sitemap': 1.0.0
       '@fontsource/inter': 4.5.14
       astro: 1.6.15
-      css-panda: 0.0.0-dev-20221215141248_ypsrn7ouqe6g2de3mu4dyzkgzm
+      css-panda: 0.0.0-dev-20221216174419_ypsrn7ouqe6g2de3mu4dyzkgzm
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -1240,7 +1240,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-arm/0.16.7:
@@ -1258,7 +1257,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-arm64/0.16.7:
@@ -1276,7 +1274,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/android-x64/0.16.7:
@@ -1294,7 +1291,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-arm64/0.16.7:
@@ -1312,7 +1308,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/darwin-x64/0.16.7:
@@ -1330,7 +1325,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64/0.16.7:
@@ -1348,7 +1342,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/freebsd-x64/0.16.7:
@@ -1366,7 +1359,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm/0.16.7:
@@ -1384,7 +1376,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-arm64/0.16.7:
@@ -1402,7 +1393,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ia32/0.16.7:
@@ -1429,7 +1419,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-loong64/0.16.7:
@@ -1447,7 +1436,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-mips64el/0.16.7:
@@ -1465,7 +1453,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-ppc64/0.16.7:
@@ -1483,7 +1470,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-riscv64/0.16.7:
@@ -1501,7 +1487,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-s390x/0.16.7:
@@ -1519,7 +1504,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/linux-x64/0.16.7:
@@ -1537,7 +1521,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/netbsd-x64/0.16.7:
@@ -1555,7 +1538,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/openbsd-x64/0.16.7:
@@ -1573,7 +1555,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/sunos-x64/0.16.7:
@@ -1591,7 +1572,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-arm64/0.16.7:
@@ -1609,7 +1589,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-ia32/0.16.7:
@@ -1627,7 +1606,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@esbuild/win32-x64/0.16.7:
@@ -1878,26 +1856,26 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@pandacss/config/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-VJgO2TTCpgUVpmJlqSbFptSlTwjEPG2/zhyyaVd83sfr/MyCHRDncjBBEIE5E04jXuYP3TcuBxI7sFW/rKw9Ug==}
+  /@pandacss/config/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-PJpQYonIJwxKT5S5CDnMKAqWFQMoENDedw22fCqZiTzrHrJrbb/xJTW7S7hFQCSVrFpnRrYItwebIlhHebyKxg==}
     dependencies:
-      '@pandacss/error': 0.0.0-dev-20221215141248
-      '@pandacss/logger': 0.0.0-dev-20221215141248
-      '@pandacss/types': 0.0.0-dev-20221215141248
+      '@pandacss/error': 0.0.0-dev-20221216174419
+      '@pandacss/logger': 0.0.0-dev-20221216174419
+      '@pandacss/types': 0.0.0-dev-20221216174419
       esbuild: 0.16.7
       escalade: 3.1.1
       merge-anything: 5.1.4
       node-eval: 2.0.0
     dev: false
 
-  /@pandacss/core/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-pgmKkD3yo6b2GHZYnLqDBXBxPuIOdP3408akne/we8We5RcTFqWHcGHLNdSgeo+UKMQIQ67X3HYLq2sRbSHuBQ==}
+  /@pandacss/core/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-cps4S+RVZEUMESXxgEI5JjynavPORhPwHODwFkv26AoPm422RplyJQXPiL3C1zw31ggcz1e3aBV/s0wAUaeH5Q==}
     dependencies:
-      '@pandacss/error': 0.0.0-dev-20221215141248
-      '@pandacss/logger': 0.0.0-dev-20221215141248
-      '@pandacss/shared': 0.0.0-dev-20221215141248
-      '@pandacss/token-dictionary': 0.0.0-dev-20221215141248
-      '@pandacss/types': 0.0.0-dev-20221215141248
+      '@pandacss/error': 0.0.0-dev-20221216174419
+      '@pandacss/logger': 0.0.0-dev-20221216174419
+      '@pandacss/shared': 0.0.0-dev-20221216174419
+      '@pandacss/token-dictionary': 0.0.0-dev-20221216174419
+      '@pandacss/types': 0.0.0-dev-20221216174419
       autoprefixer: 10.4.13_postcss@8.4.20
       camelcase-css: 2.0.1
       lodash.merge: 4.6.2
@@ -1909,32 +1887,32 @@ packages:
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/error/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-f+DSFJC/xjuyt4nQCZOzz2iiHgK4EFu05U3zKFEERess4fYZzR+tvqZgU3bfOQZuq26QfSSXv5jLsEqnpgO4IQ==}
+  /@pandacss/error/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-U2NdTO8m7sGQhEWW9hIUuTFG3h73kchRb1jOiatRrNv0yEJzijJU6a0J1Wc5baOXpNAw36dioLjVPH/sGyVkSg==}
     dev: false
 
-  /@pandacss/is-valid-prop/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-jqOaE5/gNxVa1qRe50ZSaD2RLWz+5Ugv58yiQkdRpt7NC0fLcJBS05F+cUdWkCgUUqPu9+PTM+tUSw84zcTdTA==}
+  /@pandacss/is-valid-prop/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-W0uzMonjUz4lrs9p2AGJ3ioy2OGbaxR8rCFoqwSvVwOopOFC9z5a8ugczNBpOuTZppsqkjN+8R6l+KKmUFC1lg==}
     dev: false
 
-  /@pandacss/logger/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-pPesEX/B+9qq8Z4UJbFPqWrcaiTM8+4wfqtfXXBBcADCtXwN6jgmpM+g6W2szaegXwuXMvWm1chKC7Uw5hYVfA==}
+  /@pandacss/logger/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-C7SsasQm2Sblc7V0lfHgCa92ZOdADvfwdLNqU3qaMo82mtGgEML20tgFM2cbTis9tu0+gJLVZqAt1rVzyqdYCg==}
     dependencies:
       kleur: 4.1.5
     dev: false
 
-  /@pandacss/node/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-aTIs5Kc8S7nIwXrgOwop/qLA2ONHJ6Ta7CDLoW5XBV6iKZpWVlVoslHITQxt0g2wC3i0V9qGyMi/8jD+4zA1jQ==}
+  /@pandacss/node/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-v2Yoawnrnzt37sb9yzydQMuxx8tzoCV5jkfOUF9UtOco2J7qTD6jb3TBjsNTpW/596NDd9PeZeXO43UWVC+ziw==}
     dependencies:
-      '@pandacss/config': 0.0.0-dev-20221215141248
-      '@pandacss/core': 0.0.0-dev-20221215141248
-      '@pandacss/error': 0.0.0-dev-20221215141248
-      '@pandacss/is-valid-prop': 0.0.0-dev-20221215141248
-      '@pandacss/logger': 0.0.0-dev-20221215141248
-      '@pandacss/parser': 0.0.0-dev-20221215141248
-      '@pandacss/shared': 0.0.0-dev-20221215141248
-      '@pandacss/token-dictionary': 0.0.0-dev-20221215141248
-      '@pandacss/types': 0.0.0-dev-20221215141248
+      '@pandacss/config': 0.0.0-dev-20221216174419
+      '@pandacss/core': 0.0.0-dev-20221216174419
+      '@pandacss/error': 0.0.0-dev-20221216174419
+      '@pandacss/is-valid-prop': 0.0.0-dev-20221216174419
+      '@pandacss/logger': 0.0.0-dev-20221216174419
+      '@pandacss/parser': 0.0.0-dev-20221216174419
+      '@pandacss/shared': 0.0.0-dev-20221216174419
+      '@pandacss/token-dictionary': 0.0.0-dev-20221216174419
+      '@pandacss/types': 0.0.0-dev-20221216174419
       chokidar: 3.5.3
       fast-glob: 3.2.12
       fs-extra: 11.1.0
@@ -1953,30 +1931,30 @@ packages:
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/parser/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-7B2epy2O0FmyUoGzyzC733A1UK3m73mnV4vlYEpTFRIuEEgGIvzL4nkk6pCB0FWtXrWM7zf4hv8dMo/Uha2P3Q==}
+  /@pandacss/parser/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-XE+OL5TXEbsmWq2kN676L0FK1tR/RYFISoFWL/DlRFalc8AA/ZDZVNyKs28YsaXQT7BaMNvsPCK3HjGqpcQ6Pw==}
     dependencies:
-      '@pandacss/is-valid-prop': 0.0.0-dev-20221215141248
-      '@pandacss/logger': 0.0.0-dev-20221215141248
-      '@pandacss/shared': 0.0.0-dev-20221215141248
-      '@pandacss/types': 0.0.0-dev-20221215141248
+      '@pandacss/is-valid-prop': 0.0.0-dev-20221216174419
+      '@pandacss/logger': 0.0.0-dev-20221216174419
+      '@pandacss/shared': 0.0.0-dev-20221216174419
+      '@pandacss/types': 0.0.0-dev-20221216174419
       ts-morph: 17.0.1
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/shared/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-vTJtWv6i5x7mSPWx/SXs4dqyE3Zx2dwoel0CQmJ+Ja9skT1oC+DH+1FVLk66ttVNLyH0kfbzYj3urLPI8r56zA==}
+  /@pandacss/shared/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-kvQGeo6DaZnx0NM+fy+imHp+QXNOlHA5VNV+DI4YaocjS7R1PELUv9Nl9Z4UOwfFQ7s+eNU+OJUSHnm1JnXr5Q==}
     dev: false
 
-  /@pandacss/token-dictionary/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-jDy1cUU+YP1j1OPBkFcNrd+IGLdt7nSPsgfRxOkQL4jsZ+NIFpzYNtmuvOh2xrP1+CU7iXyGWNlDEg74iKqZTw==}
+  /@pandacss/token-dictionary/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-bJgslBfR0I/GXu2fZdDsorICWNYlz9dqmjnP00qzkt9fF5hTbIvno5bAAFwJ+ibL9JGjCLxmBvaAV1iEsdxm2w==}
     dependencies:
-      '@pandacss/shared': 0.0.0-dev-20221215141248
+      '@pandacss/shared': 0.0.0-dev-20221216174419
       ts-pattern: 4.0.6
     dev: false
 
-  /@pandacss/types/0.0.0-dev-20221215141248:
-    resolution: {integrity: sha512-Kg0KJFWCdbPpvJj1gCXdjArTA5PSiRyGEao8ITKpeuFMg43944ULiwEJbNDS8k2ci97nNcoscKzhGw258F9aRw==}
+  /@pandacss/types/0.0.0-dev-20221216174419:
+    resolution: {integrity: sha512-VLsZgndmpPumUZqFdOyLHi8LR3IRa5joo0HCBTqBJRShG82YW81KqUXEOGist+jGLS4+hply+9/qHAeTw01GIQ==}
     dev: false
 
   /@pkgr/utils/2.3.1:
@@ -3859,24 +3837,24 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  /css-panda/0.0.0-dev-20221215141248_ypsrn7ouqe6g2de3mu4dyzkgzm:
-    resolution: {integrity: sha512-GY1BdjIgu2WjIUCPdRMsfiYC3HA47oR25bDmGcbaRW4j3ctd5G878K4gzsKlfz0MVMMGJtDSseOl3GmI5s+8kQ==}
+  /css-panda/0.0.0-dev-20221216174419_ypsrn7ouqe6g2de3mu4dyzkgzm:
+    resolution: {integrity: sha512-T/Kl9GT1q+uXPRpi0jcwCQhT1Y54qdK9CSOHC0+kXaowKxDD2IEXFZzKSy6kYgYWxtUdDFj3Nn2i9PXog1X0Ag==}
     hasBin: true
     dependencies:
       '@astrojs/react': 1.2.2_yqqa5ithnjtlkxisuaub7c4kpa
-      '@pandacss/config': 0.0.0-dev-20221215141248
-      '@pandacss/error': 0.0.0-dev-20221215141248
-      '@pandacss/logger': 0.0.0-dev-20221215141248
-      '@pandacss/node': 0.0.0-dev-20221215141248
-      '@pandacss/shared': 0.0.0-dev-20221215141248
-      '@pandacss/token-dictionary': 0.0.0-dev-20221215141248
-      '@pandacss/types': 0.0.0-dev-20221215141248
+      '@pandacss/config': 0.0.0-dev-20221216174419
+      '@pandacss/error': 0.0.0-dev-20221216174419
+      '@pandacss/logger': 0.0.0-dev-20221216174419
+      '@pandacss/node': 0.0.0-dev-20221216174419
+      '@pandacss/shared': 0.0.0-dev-20221216174419
+      '@pandacss/token-dictionary': 0.0.0-dev-20221216174419
+      '@pandacss/types': 0.0.0-dev-20221216174419
       astro: 1.6.15
       cac: 6.7.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router: 6.4.5_react@18.2.0
-      vite: 3.2.5
+      vite: 4.0.1
     transitivePeerDependencies:
       - '@types/node'
       - '@types/react'
@@ -4491,7 +4469,6 @@ packages:
       '@esbuild/win32-arm64': 0.16.3
       '@esbuild/win32-ia32': 0.16.3
       '@esbuild/win32-x64': 0.16.3
-    dev: true
 
   /esbuild/0.16.7:
     resolution: {integrity: sha512-P6OBFYFSQOGzfApqCeYKqfKRRbCIRsdppTXFo4aAvtiW3o8TTyiIplBvHJI171saPAiy3WlawJHCveJVIOIx1A==}
@@ -7927,7 +7904,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /run-parallel/1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -9090,7 +9066,6 @@ packages:
       rollup: 3.7.0
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vite/4.0.1_@types+node@18.11.15:
     resolution: {integrity: sha512-kZQPzbDau35iWOhy3CpkrRC7It+HIHtulAzBhMqzGHKRf/4+vmh8rPDDdv98SWQrFWo6//3ozwsRmwQIPZsK9g==}
