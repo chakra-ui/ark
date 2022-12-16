@@ -1,6 +1,7 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { link } from './src/theme/recipes/link'
+import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
@@ -161,6 +162,7 @@ export default defineConfig({
   recipes: {
     button,
     link,
+    tabs,
     tooltip,
   },
 })
