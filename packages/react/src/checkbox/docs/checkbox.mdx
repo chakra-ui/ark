@@ -24,7 +24,6 @@ components.
 </Checkbox>
 ```
 
-<!-- TODO: implement controlled usage
 ### Controlled usage
 
 When the checkbox value changes, the `onChange` callback is invoked.
@@ -41,19 +40,6 @@ const MyCheckbox = () => {
     </Checkbox>
   )
 }
-```
--->
-
-### Indeterminate
-
-To make a checkbox indeterminate, set the `indeterminate` prop to `true`
-
-```tsx
-<Checkbox indeterminate>
-  <CheckboxLabel>Indeterminate</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
 ```
 
 ### Disabling the Checkbox
@@ -78,4 +64,49 @@ To make a checkbox readonly, set the `readonly` prop to `true`
   <CheckboxInput />
   <CheckboxControl />
 </Checkbox>
+```
+
+### Indeterminate
+
+To make a checkbox indeterminate, set the `indeterminate` prop to `true`
+
+```tsx
+const DemoIndeterminateCheckbox = () => {
+  const [checkedItems, setCheckedItems] = React.useState([false, false])
+
+  const allChecked = checkedItems.every(Boolean)
+  const someChecked = checkedItems.some(Boolean) && !allChecked
+
+  return (
+    <>
+      <Checkbox
+        checked={allChecked}
+        indeterminate={someChecked}
+        onChange={(e) => setCheckedItems([e.checked === true, e.checked === true])}
+      >
+        <CheckboxLabel>Parent Checkbox</CheckboxLabel>
+        <CheckboxInput />
+        <CheckboxControl />
+      </Checkbox>
+      <div>
+        <Checkbox
+          checked={checkedItems[0]}
+          onChange={(e) => setCheckedItems([e.checked === true, checkedItems[1]])}
+        >
+          <CheckboxLabel>Child Checkbox 1</CheckboxLabel>
+          <CheckboxInput />
+          <CheckboxControl />
+        </Checkbox>
+        <Checkbox
+          checked={checkedItems[1]}
+          onChange={(e) => setCheckedItems([checkedItems[0], e.checked === true])}
+        >
+          <CheckboxLabel>Child Checkbox 2</CheckboxLabel>
+          <CheckboxInput />
+          <CheckboxControl />
+        </Checkbox>
+      </div>
+    </>
+  )
+}
 ```
