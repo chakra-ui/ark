@@ -1,14 +1,15 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { link } from './src/theme/recipes/link'
-// import { tooltip } from './src/theme/recipes/tooltip'
+import { tabs } from './src/theme/recipes/tabs'
+import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
   preflight: true,
   include: ['./src/**/*.{astro,tsx}'],
   presets: ['css-panda/presets'],
   outdir: 'panda',
-  jsxFramework: 'solid',
+  jsxFramework: 'react',
 
   textStyles: {
     xs: { value: { fontSize: 'xs', lineHeight: '1.125rem' } },
@@ -161,6 +162,7 @@ export default defineConfig({
   recipes: {
     button,
     link,
-    // tooltip,
+    tabs,
+    tooltip,
   },
 })

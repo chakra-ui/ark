@@ -1,10 +1,7 @@
-import { defineRecipe } from 'css-panda'
-
-type Part = {
+export type Part = {
   selector: string
   attrs: Record<'data-scope' | 'data-part', string>
 }
-type Parts = Record<string, Part>
 
 export type Anatomy<T extends string> = {
   parts: <U extends string>(...parts: U[]) => Omit<Anatomy<U>, 'parts'>
@@ -12,6 +9,7 @@ export type Anatomy<T extends string> = {
   build: () => Record<T, Part>
 }
 
+// TODO replace when zag updates
 export const createAnatomy = <T extends string>(name: string, parts = [] as T[]): Anatomy<T> => ({
   parts: <U extends string>(...values: U[]): Omit<Anatomy<U>, 'parts'> => {
     if (isEmpty(parts)) {
@@ -28,7 +26,9 @@ export const createAnatomy = <T extends string>(name: string, parts = [] as T[])
       (prev, part) =>
         Object.assign(prev, {
           [part]: {
-            selector: `[data-scope="${toKebabCase(name)}"][data-part="${toKebabCase(part)}"]`,
+            selector: `&[data-scope="${toKebabCase(name)}"][data-part="${toKebabCase(
+              part,
+            )}"], & [data-scope="${toKebabCase(name)}"][data-part="${toKebabCase(part)}"]`,
             attrs: { 'data-scope': toKebabCase(name), 'data-part': toKebabCase(part) },
           },
         }),
@@ -44,24 +44,3 @@ const toKebabCase = (value: string) =>
     .toLowerCase()
 
 const isEmpty = <T>(v: T[]): boolean => v.length === 0
-
-export function defineParts<T extends Parts>(parts: T) {
-  return function (config: Partial<Record<keyof T, any>>) {
-    return Object.fromEntries(
-      Object.entries(config).map(([key, value]) => [parts[key].selector, value]),
-    )
-  }
-}
-
-export const parts = createAnatomy('tooltip')
-  .parts('trigger', 'arrow', 'arrowTip', 'positioner', 'content', 'label')
-  .extendWith()
-  .build()
-
-export const tooltip = defineRecipe({
-  name: 'tooltip',
-  description: 'A tooltip style',
-  base: parts({
-    trigger: { color: 'red' },
-  }),
-})

@@ -1,0 +1,57 @@
+---
+import { css } from '../../panda/css'
+import { Box, Container, Stack } from '../../panda/jsx'
+import { Text } from '../components/shared/Text'
+import Sidebar from '../components/Sidebar.astro'
+import BaseLayout from './BaseLayout.astro'
+---
+
+<BaseLayout>
+  <Container as="main">
+    <Stack gap="24" direction="row" height="100%" position="relative">
+      <Sidebar />
+      <article
+        class={css({
+          py: '8',
+          '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
+          '& > pre': {
+            my: '5',
+            p: '5',
+            borderRadius: 'xl',
+            backgroundColor: 'gray.950 !important',
+            boxShadow: 'xs',
+          },
+          maxWidth: { xl: '43rem' },
+          flex: '1',
+        })}
+      >
+        <slot />
+      </article>
+      <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">
+        <div>
+          <Stack
+            as="ul"
+            gap="2"
+            fontSize="sm"
+            lineHeight="1.5rem"
+            color="fg.muted"
+            listStyle="none"
+            ps="0"
+            position="fixed"
+          >
+            <Box as="li">
+              <Text color="accent.default" fontWeight="medium">Headline 0</Text>
+            </Box>
+            {
+              ['Headline 1', 'Headline 2', 'Headline 3', 'Headline 4'].map((headline) => (
+                <Box as="li">
+                  <Text>{headline}</Text>
+                </Box>
+              ))
+            }
+          </Stack>
+        </div>
+      </Box>
+    </Stack>
+  </Container>
+</BaseLayout>
