@@ -9,6 +9,7 @@ export type Anatomy<T extends string> = {
   build: () => Record<T, Part>
 }
 
+// TODO replace when zag updates
 export const createAnatomy = <T extends string>(name: string, parts = [] as T[]): Anatomy<T> => ({
   parts: <U extends string>(...values: U[]): Omit<Anatomy<U>, 'parts'> => {
     if (isEmpty(parts)) {
