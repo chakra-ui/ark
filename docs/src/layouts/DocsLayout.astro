@@ -1,18 +1,9 @@
 ---
-import type { MarkdownLayoutProps } from 'astro'
 import { css } from '../../panda/css'
 import { Box, Container, Stack } from '../../panda/jsx'
 import { Text } from '../components/shared/Text'
 import Sidebar from '../components/Sidebar.astro'
 import BaseLayout from './BaseLayout.astro'
-
-type Props = MarkdownLayoutProps<{
-  title: string
-  description: string
-  url: string
-}>
-
-const { frontmatter } = Astro.props
 ---
 
 <BaseLayout>
@@ -21,6 +12,7 @@ const { frontmatter } = Astro.props
       <Sidebar />
       <article
         class={css({
+          py: '8',
           '& > p': { my: '5', color: 'fg.muted', textStyle: 'md', lineHeight: '1.75rem' },
           '& > pre': {
             my: '5',
@@ -31,11 +23,8 @@ const { frontmatter } = Astro.props
           },
           maxWidth: { xl: '43rem' },
           flex: '1',
-          minHeight: '100vh',
         })}
       >
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
         <slot />
       </article>
       <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">
