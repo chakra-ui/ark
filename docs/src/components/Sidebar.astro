@@ -1,9 +1,12 @@
 ---
+import { parse } from 'path'
 import { Box, HStack, Stack } from '../../panda/jsx'
 import { Link } from './shared/Link'
 import { Text } from './shared/Text'
 
-const components = await Astro.glob('../docs/*.mdx')
+const components = (await Astro.glob('../../../packages/react/src/*/*.mdx')).map(
+  ({ file }) => parse(file).name,
+)
 const pathname = new URL(Astro.request.url).pathname
 ---
 
@@ -47,11 +50,11 @@ const pathname = new URL(Astro.request.url).pathname
         {
           components.map((component) => (
             <Link
-              href={component.frontmatter.id}
+              href={component}
               variant="sidebar"
-              aria-current={pathname.endsWith(component.frontmatter.id)}
+              aria-current={pathname.endsWith(component) ? 'page' : false}
             >
-              {component.frontmatter.title}
+              {component}
             </Link>
           ))
         }

@@ -1,15 +1,17 @@
 ---
-import { Text } from '../../../components/shared/Text'
+import { parse } from 'path'
 import { Heading } from '../../../components/shared/Heading'
+import { Text } from '../../../components/shared/Text'
+import DocsLayout from '../../../layouts/DocsLayout.astro'
 
 export async function getStaticPaths() {
   const frameworks = ['react', 'solid', 'vue']
-  const components = await Astro.glob('../../../docs/**/*.mdx')
+  const components = await Astro.glob('../../../../../packages/react/src/*/*.mdx')
 
   return components.map((component) =>
     frameworks.map((framework) => ({
       params: {
-        component: component.frontmatter.id,
+        component: parse(component.file).name,
         framework,
       },
       props: {
@@ -19,9 +21,9 @@ export async function getStaticPaths() {
   )
 }
 
-// TODO use for provider
-// const { framework } = Astro.params
 const { Content } = Astro.props.component
 ---
 
-<Content components={{ h1: Heading, p: Text }} />
+<DocsLayout>
+  <Content components={{ h1: Heading, p: Text }} />
+</DocsLayout>
