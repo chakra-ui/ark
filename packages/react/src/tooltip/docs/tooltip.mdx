@@ -1,7 +1,18 @@
+import { Showcase } from '../../../../../docs/src/components/Showcase'
+
 # Tooltip
 
 A tooltip is a brief, informative message that appears when a user interacts with an element.
 Tooltips are usually initiated when a button is focused or hovered.
+
+<Showcase
+  client:load
+  component="tooltip"
+  controls={{
+    openDelay: { type: 'number', defaultValue: 500 },
+    closeDelay: { type: 'number', defaultValue: 200 },
+  }}
+/>
 
 ## Import
 
