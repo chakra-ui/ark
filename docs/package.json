@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@astrojs/mdx": "0.12.2",
+    "@astrojs/mdx": "0.13.0",
     "@astrojs/react": "1.2.2",
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",

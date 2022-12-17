@@ -42,7 +42,7 @@ importers:
   docs:
     specifiers:
       '@ark-ui/react': workspace:*
-      '@astrojs/mdx': 0.12.2
+      '@astrojs/mdx': 0.13.0
       '@astrojs/react': 1.2.2
       '@astrojs/sitemap': 1.0.0
       '@fontsource/inter': 4.5.14
@@ -54,7 +54,7 @@ importers:
       react-dom: 18.2.0
     dependencies:
       '@ark-ui/react': link:../packages/react
-      '@astrojs/mdx': 0.12.2
+      '@astrojs/mdx': 0.13.0
       '@astrojs/react': 1.2.2_yqqa5ithnjtlkxisuaub7c4kpa
       '@astrojs/sitemap': 1.0.0
       '@fontsource/inter': 4.5.14
@@ -386,8 +386,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.12.2:
-    resolution: {integrity: sha512-rv4f2h0zdQVu+dA8mPfCs3zp0j8CECJ11a9DijxcIcSZusou6CZ1N4KWMLlQYVKl8bOA5h0VzL/IvToh9A+dnA==}
+  /@astrojs/mdx/0.13.0:
+    resolution: {integrity: sha512-2D/O5AjCBQQ/PLx3P/WysACdFxz97iQPu55hy9pc+u04a+fMFuVdKm9ftWXpsNHL2SXbKb7uRpcuFw93FnRNDw==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.2
