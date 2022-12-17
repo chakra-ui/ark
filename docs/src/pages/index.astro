@@ -1,4 +1,6 @@
 ---
+import { Container } from '../../panda/jsx'
+import { DemoRangeSlider } from '../components/demo/RangeSlider'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -6,5 +8,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout>
   <Hero />
+  <Container>
+    <DemoRangeSlider client:load />
+    <!-- <DemoSlider client:load /> -->
+  </Container>
   <LogoSection />
 </BaseLayout>
