@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",
     "astro": "1.7.1",
-    "css-panda": "0.0.0-dev-20221216174419",
+    "css-panda": "0.0.0-dev-20221217040050",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
