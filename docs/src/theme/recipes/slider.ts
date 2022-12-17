@@ -30,7 +30,7 @@ export const slider = defineRecipe({
       py: '2',
     },
     track: {
-      backgroundColor: 'bg.subtle',
+      backgroundColor: 'border.default',
       borderRadius: 'sm',
       flex: '1',
       height: '2',
