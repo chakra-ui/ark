@@ -23,12 +23,13 @@ export const input = defineRecipe({
   variants: {
     variant: {
       outline: {
+        background: 'bg.surface',
+        borderColor: 'border.emphasized',
         borderRadius: 'lg',
         borderWidth: '1px',
         boxShadow: 'xs',
         color: 'fg.default',
-        background: 'bg.surface',
-        borderColor: 'border.emphasized',
+        textAlign: 'left',
         _focus: {
           zIndex: 1,
           '--shadow': {

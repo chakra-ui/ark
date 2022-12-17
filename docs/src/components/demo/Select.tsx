@@ -2,35 +2,36 @@ import {
   Portal,
   Select,
   SelectContent,
-  SelectLabel,
   SelectOption,
-  SelectOptionGroup,
-  SelectOptionGroupLabel,
   SelectPositioner,
   SelectTrigger,
 } from '@ark-ui/react'
+import { select } from '../../../panda/recipes'
+import { Input } from '../shared/Input'
 
 export const DemoSelect = () => (
-  <Select>
+  <Select positioning={{ gutter: 4 }}>
     {({ selectedOption }) => (
       <>
-        <SelectLabel>Framework:</SelectLabel>
         <SelectTrigger>
-          <button>{selectedOption?.label ?? 'Select option'}</button>
+          <Input
+            variant="outline"
+            size="md"
+            width="xs"
+            cursor="pointer"
+            value={selectedOption?.label ?? 'Select option'}
+          />
         </SelectTrigger>
         <Portal>
-          <SelectPositioner>
+          <SelectPositioner className={select()}>
             <SelectContent>
-              <SelectOptionGroup id="framework">
-                <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
-                <SelectOption value="react" label="React" />
-                <SelectOption value="solid" label="Solid">
-                  Solid
-                </SelectOption>
-                <SelectOption value="vue" label="Vue">
-                  Vue
-                </SelectOption>
-              </SelectOptionGroup>
+              <SelectOption value="react" label="React" />
+              <SelectOption value="solid" label="Solid">
+                Solid
+              </SelectOption>
+              <SelectOption value="vue" label="Vue">
+                Vue
+              </SelectOption>
             </SelectContent>
           </SelectPositioner>
         </Portal>

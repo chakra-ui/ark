@@ -3,6 +3,7 @@ import { button } from './src/theme/recipes/button'
 import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
 import { pagination } from './src/theme/recipes/pagination'
+import { select } from './src/theme/recipes/select'
 import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
 
@@ -109,7 +110,7 @@ export default defineConfig({
         default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
         emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
         muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
-        subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
+        subtle: { value: { base: '{colors.purple.300}', _dark: '{colors.purple.950}' } },
       },
       border: {
         default: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
@@ -179,6 +180,7 @@ export default defineConfig({
     input,
     link,
     pagination,
+    select,
     tabs,
     tooltip,
   },
