@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --filter=\!@ark-ui/docs
 
       - name: Create release Pull Request or publish to NPM
         id: changesets

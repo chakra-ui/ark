@@ -4,8 +4,8 @@ export const link = defineRecipe({
   name: 'link',
   description: 'A link styles',
   base: {
-    transitionProperty: 'common',
-    transitionDuration: 'fast',
+    transitionProperty: 'base',
+    transitionDuration: '100',
     transitionTimingFunction: 'ease-out',
     cursor: 'pointer',
     textDecoration: 'none',

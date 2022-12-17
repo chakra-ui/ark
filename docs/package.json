@@ -12,12 +12,12 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@astrojs/mdx": "0.12.2",
+    "@astrojs/mdx": "0.13.0",
     "@astrojs/react": "1.2.2",
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",
-    "astro": "1.6.15",
-    "css-panda": "0.0.0-dev-20221215141248",
+    "astro": "1.7.1",
+    "css-panda": "0.0.0-dev-20221217040050",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

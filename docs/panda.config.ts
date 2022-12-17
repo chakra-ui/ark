@@ -1,6 +1,8 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
+import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
+import { pagination } from './src/theme/recipes/pagination'
 import { slider } from './src/theme/recipes/slider'
 import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
@@ -91,27 +93,35 @@ export default defineConfig({
     colors: {
       fg: {
         default: { value: { base: '{colors.black}', _dark: 'white' } },
-        muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
+        emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
+        muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
         subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+        inverted: {
+          default: { value: { base: 'white', _dark: '{colors.black}' } },
+        },
       },
       bg: {
         canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.black}' } },
         surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
         muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
-        subtle: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
+        subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },
       },
       accent: {
-        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.300}' } }, // original _dark:400
-        emphasis: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.500}' } },
+        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
+        emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
         muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
         subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
+      },
+      border: {
+        default: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
+        emphasized: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.800}' } },
       },
     },
     shadows: {
       xs: {
         value: {
-          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 1px 3px rgba(48, 49, 51, 0.1)',
-          _dark: '0px 0px 1px #0D0D0D, 0px 1px 3px rgba(13, 13, 13, 0.9)',
+          base: '0px 0px 1px rgba(48, 49, 51, 0.05), 0px 1px 2px rgba(48, 49, 51, 0.1)',
+          _dark: '0px 0px 1px #0D0D0D, 0px 1px 2px rgba(13, 13, 13, 0.9)',
         },
       },
       sm: {
@@ -140,6 +150,7 @@ export default defineConfig({
       },
     },
   },
+
   globalCss: {
     html: {
       lineHeight: 1.5,
@@ -156,14 +167,20 @@ export default defineConfig({
       height: '100%',
     },
     '*, *::before, *::after': {
-      borderColor: 'bg.subtle',
+      borderColor: 'border.default',
       borderStyle: 'solid',
+    },
+    '*::placeholder': {
+      opacity: 1,
+      color: 'fg.muted',
     },
   },
   recipes: {
     button,
+    input,
     link,
     slider,
+    pagination,
     tabs,
     tooltip,
   },

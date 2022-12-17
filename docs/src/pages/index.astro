@@ -7,10 +7,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
-  <Hero />
-  <Container>
+  <Container py="8">
     <DemoRangeSlider client:load />
-    <!-- <DemoSlider client:load /> -->
   </Container>
+  <Hero />
   <LogoSection />
 </BaseLayout>
