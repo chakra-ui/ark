@@ -1,7 +1,6 @@
 import {
   RangeSlider,
   RangeSliderControl,
-  RangeSliderLabel,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
   RangeSliderOutput,
@@ -13,7 +12,6 @@ import { slider } from '../../../panda/recipes'
 
 export const DemoRangeSlider = () => (
   <RangeSlider min={-50} max={50} defaultValue={[-10, 10]} className={slider({})}>
-    <RangeSliderLabel>Label</RangeSliderLabel>
     <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
     <RangeSliderControl>
       <RangeSliderTrack>

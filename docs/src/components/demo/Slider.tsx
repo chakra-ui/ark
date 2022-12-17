@@ -1,17 +1,16 @@
 import {
   Slider,
   SliderControl,
-  SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
   SliderRange,
   SliderThumb,
   SliderTrack,
 } from '@ark-ui/react'
+import { slider } from '../../../panda/recipes'
 
 export const DemoSlider = () => (
-  <Slider min={-50} max={50} defaultValue={0}>
-    <SliderLabel>Label</SliderLabel>
+  <Slider min={0} max={100} defaultValue={33} className={slider()}>
     <SliderControl>
       <SliderTrack>
         <SliderRange />
@@ -19,9 +18,9 @@ export const DemoSlider = () => (
       <SliderThumb />
     </SliderControl>
     <SliderMarkerGroup>
-      <SliderMarker value={-30}>*</SliderMarker>
-      <SliderMarker value={0}>*</SliderMarker>
-      <SliderMarker value={30}>*</SliderMarker>
+      <SliderMarker value={25}>25</SliderMarker>
+      <SliderMarker value={50}>50</SliderMarker>
+      <SliderMarker value={75}>75</SliderMarker>
     </SliderMarkerGroup>
   </Slider>
 )

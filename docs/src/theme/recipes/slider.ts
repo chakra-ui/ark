@@ -26,8 +26,8 @@ export const slider = defineRecipe({
     control: {
       position: 'relative',
       display: 'flex',
-      align: 'center',
-      py: '2.5',
+      alignItems: 'center',
+      py: '2',
     },
     track: {
       backgroundColor: 'bg.subtle',
@@ -37,16 +37,25 @@ export const slider = defineRecipe({
     },
     range: {
       backgroundColor: 'accent.default',
-      height: 'full',
+      borderRadius: 'sm',
+      height: '2',
     },
     thumb: {
-      height: '6',
-      width: '6',
       background: 'bg.surface',
       borderRadius: 'full',
       borderWidth: '1.5px',
       borderColor: 'accent.default',
       boxShadow: 'sm',
+      outline: 'none',
+      height: '6',
+      width: '6',
+      _focus: {
+        outline: 'none',
+      },
+    },
+    marker: {
+      mt: '2',
+      textStyle: 'md',
     },
   }),
 })
