@@ -33,6 +33,7 @@ export const button = defineRecipe({
           backgroundColor: 'accent.emphasized',
         },
         _focusVisible: {
+          zIndex: 1,
           '--shadow': {
             base: 'colors.purple.100',
             _dark: 'colors.gray.100',
@@ -59,9 +60,39 @@ export const button = defineRecipe({
           background: 'bg.subtle',
         },
         _focusVisible: {
+          zIndex: 1,
           '--shadow': {
             base: 'colors.gray.100',
-            _dark: 'colors.gray.900',
+            _dark: 'colors.gray.800',
+          },
+          boxShadow: '0 0 0 4px var(--shadow)',
+        },
+        _disabled: {
+          borderColor: 'border.default',
+          color: 'fg.subtle',
+          cursor: 'not-allowed',
+        },
+      },
+      tertiary: {
+        background: 'transparent',
+        color: 'fg.emphasized',
+        _hover: {
+          color: 'fg.default',
+          background: 'bg.subtle',
+          _disabled: {
+            borderColor: 'border.default',
+            color: 'fg.subtle',
+            cursor: 'not-allowed',
+          },
+        },
+        _selected: {
+          background: 'bg.subtle',
+        },
+        _focusVisible: {
+          zIndex: 1,
+          '--shadow': {
+            base: 'colors.gray.100',
+            _dark: 'colors.gray.800',
           },
           boxShadow: '0 0 0 4px var(--shadow)',
         },

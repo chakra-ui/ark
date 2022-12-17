@@ -13,39 +13,20 @@ export const pagination = defineRecipe({
   description: 'A pagination style',
   base: parts({
     root: {
-      display: 'inline-flex',
-      borderRadius: 'lg',
-      boxShadow: 'xs',
+      display: 'flex',
+      justifyContent: 'space-between',
     },
     list: {
       display: 'flex',
       listStyle: 'none',
       padding: '0',
-    },
-    prevPageTrigger: {
-      borderRightRadius: '0',
-      marginInlineEnd: '-1px',
-      boxShadow: 'none',
-    },
-    pageTrigger: {
-      borderRadius: '0',
-      marginInlineEnd: '-1px',
-      boxShadow: 'none',
-    },
-    nextPageTrigger: {
-      borderLeftRadius: '0',
-      marginInlineEnd: '-1px',
-      boxShadow: 'none',
+      gap: '1',
     },
     ellipsis: {
       alignItems: 'center',
-      background: 'bg.surface',
-      borderWidth: '1px',
-      borderColor: 'border.emphasized',
       color: 'fg.emphasized',
       display: 'inline-flex',
       height: '10',
-      marginInlineEnd: '-1px',
       minW: '10',
       fontSize: 'sm',
       px: '4',
