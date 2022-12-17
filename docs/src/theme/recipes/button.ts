@@ -49,6 +49,14 @@ export const button = defineRecipe({
         _hover: {
           color: 'fg.default',
           background: 'bg.subtle',
+          _disabled: {
+            borderColor: 'border.default',
+            color: 'fg.subtle',
+            cursor: 'not-allowed',
+          },
+        },
+        _selected: {
+          background: 'bg.subtle',
         },
         _focusVisible: {
           '--shadow': {
@@ -56,6 +64,11 @@ export const button = defineRecipe({
             _dark: 'colors.gray.900',
           },
           boxShadow: '0 0 0 4px var(--shadow)',
+        },
+        _disabled: {
+          borderColor: 'border.default',
+          color: 'fg.subtle',
+          cursor: 'not-allowed',
         },
       },
     },
