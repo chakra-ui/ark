@@ -1,10 +1,20 @@
 ---
+import { Container, Stack } from '../../panda/jsx'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
+import { Input } from '../components/shared/Input'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
+  <Container py="8">
+    <Stack gap="4">
+      <Input placeholder="sm" variant="outline" size="sm" />
+      <Input placeholder="md" variant="outline" size="md" />
+      <Input placeholder="lg" variant="outline" size="lg" />
+      <Input placeholder="xl" variant="outline" size="xl" />
+    </Stack>
+  </Container>
   <Hero />
   <LogoSection />
 </BaseLayout>
