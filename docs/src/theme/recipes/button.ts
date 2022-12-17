@@ -35,7 +35,7 @@ export const button = defineRecipe({
         _focusVisible: {
           '--shadow': {
             base: 'colors.purple.100',
-            _dark: 'colors.purple.800',
+            _dark: 'colors.gray.100',
           },
           boxShadow: '0 0 0 4px var(--shadow)',
         },
