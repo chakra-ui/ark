@@ -36,7 +36,7 @@ export const button = defineRecipe({
           zIndex: 1,
           '--shadow': {
             base: 'colors.purple.100',
-            _dark: 'colors.gray.100',
+            _dark: 'colors.gray.800',
           },
           boxShadow: '0 0 0 4px var(--shadow)',
         },
