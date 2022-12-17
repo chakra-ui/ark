@@ -94,6 +94,9 @@ export default defineConfig({
         emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
         muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
         subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+        inverted: {
+          default: { value: { base: 'white', _dark: '{colors.black}' } },
+        },
       },
       bg: {
         canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.black}' } },
@@ -102,8 +105,8 @@ export default defineConfig({
         subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },
       },
       accent: {
-        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } }, // original _dark:400
-        emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.500}' } },
+        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
+        emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
         muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
         subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
       },
