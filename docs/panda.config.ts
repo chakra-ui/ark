@@ -2,6 +2,7 @@ import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
+import { pagination } from './src/theme/recipes/pagination'
 import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
 
@@ -91,24 +92,28 @@ export default defineConfig({
     colors: {
       fg: {
         default: { value: { base: '{colors.black}', _dark: 'white' } },
+        emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
         muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
         subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+        inverted: {
+          default: { value: { base: 'white', _dark: '{colors.black}' } },
+        },
       },
       bg: {
         canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.black}' } },
         surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
         muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
-        subtle: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
+        subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },
       },
       accent: {
-        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } }, // original _dark:400
-        emphasis: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.500}' } },
+        default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
+        emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
         muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
         subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
       },
       border: {
         default: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
-        input: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.800}' } },
+        emphasized: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.800}' } },
       },
     },
     shadows: {
@@ -173,6 +178,7 @@ export default defineConfig({
     button,
     input,
     link,
+    pagination,
     tabs,
     tooltip,
   },

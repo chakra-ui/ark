@@ -28,7 +28,7 @@ export const input = defineRecipe({
         boxShadow: 'xs',
         color: 'fg.default',
         background: 'bg.surface',
-        borderColor: 'border.input',
+        borderColor: 'border.emphasized',
         _focus: {
           zIndex: 1,
           '--shadow': {

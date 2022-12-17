@@ -4,47 +4,105 @@ export const button = defineRecipe({
   name: 'button',
   description: 'A button styles',
   base: {
-    cursor: 'pointer',
-    borderRadius: 'lg',
-    fontWeight: 'semibold',
-    display: 'inline-flex',
-    appearance: 'none',
     alignItems: 'center',
+    appearance: 'none',
+    borderRadius: 'lg',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    fontWeight: 'semibold',
     justifyContent: 'center',
-    userSelect: 'none',
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    verticalAlign: 'middle',
     outline: 'none',
+    position: 'relative',
+    transitionProperty: 'base',
+    transitionDuration: '100',
+    transitionTimingFunction: 'ease-out',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
   },
   defaultVariants: {
-    colorPalette: 'purple',
     variant: 'primary',
     size: 'md',
   },
   variants: {
-    colorPalette: {
-      blue: {
-        colorPalette: 'blue',
-      },
-      purple: {
-        colorPalette: 'purple',
-      },
-    },
     variant: {
       primary: {
-        color: {
-          base: 'white',
+        color: 'fg.inverted.default',
+        backgroundColor: 'accent.default',
+        _hover: {
+          backgroundColor: 'accent.emphasized',
         },
-        backgroundColor: {
-          base: 'colorPalette.600',
-          hover: {
-            base: 'colorPalette.700',
+        _focusVisible: {
+          zIndex: 1,
+          '--shadow': {
+            base: 'colors.purple.100',
+            _dark: 'colors.gray.100',
           },
+          boxShadow: '0 0 0 4px var(--shadow)',
+        },
+      },
+      secondary: {
+        background: 'bg.surface',
+        borderWidth: '1px',
+        borderColor: 'border.emphasized',
+        boxShadow: 'xs',
+        color: 'fg.emphasized',
+        _hover: {
+          color: 'fg.default',
+          background: 'bg.subtle',
+          _disabled: {
+            borderColor: 'border.default',
+            color: 'fg.subtle',
+            cursor: 'not-allowed',
+          },
+        },
+        _selected: {
+          background: 'bg.subtle',
+        },
+        _focusVisible: {
+          zIndex: 1,
+          '--shadow': {
+            base: 'colors.gray.100',
+            _dark: 'colors.gray.800',
+          },
+          boxShadow: '0 0 0 4px var(--shadow)',
+        },
+        _disabled: {
+          borderColor: 'border.default',
+          color: 'fg.subtle',
+          cursor: 'not-allowed',
+        },
+      },
+      tertiary: {
+        background: 'transparent',
+        color: 'fg.emphasized',
+        _hover: {
+          color: 'fg.default',
+          background: 'bg.subtle',
+          _disabled: {
+            borderColor: 'border.default',
+            color: 'fg.subtle',
+            cursor: 'not-allowed',
+          },
+        },
+        _selected: {
+          background: 'bg.subtle',
+        },
+        _focusVisible: {
+          zIndex: 1,
+          '--shadow': {
+            base: 'colors.gray.100',
+            _dark: 'colors.gray.800',
+          },
+          boxShadow: '0 0 0 4px var(--shadow)',
+        },
+        _disabled: {
+          borderColor: 'border.default',
+          color: 'fg.subtle',
+          cursor: 'not-allowed',
         },
       },
     },
-
     size: {
       sm: {
         h: 9,

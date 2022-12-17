@@ -4,11 +4,11 @@ import { ark, HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, { index: number }>
+export type PaginationEllipsisProps = Assign<HTMLArkProps<'li'>, { index: number }>
 
-export const PaginationEllipsis = forwardRef<'span', PaginationEllipsisProps>((props, ref) => {
+export const PaginationEllipsis = forwardRef<'li', PaginationEllipsisProps>((props, ref) => {
   const { index, ...spanProps } = props
   const { getEllipsisProps } = usePaginationContext()
   const mergedProps = mergeProps(getEllipsisProps({ index }), spanProps)
-  return <ark.span {...mergedProps} ref={ref} />
+  return <ark.li {...mergedProps} ref={ref} />
 })
