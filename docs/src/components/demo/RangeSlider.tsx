@@ -3,7 +3,6 @@ import {
   RangeSliderControl,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
-  RangeSliderOutput,
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
@@ -11,8 +10,7 @@ import {
 import { slider } from '../../../panda/recipes'
 
 export const DemoRangeSlider = () => (
-  <RangeSlider min={-50} max={50} defaultValue={[-10, 10]} className={slider({})}>
-    <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
+  <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider({})}>
     <RangeSliderControl>
       <RangeSliderTrack>
         <RangeSliderRange />
@@ -22,9 +20,9 @@ export const DemoRangeSlider = () => (
       ))}
     </RangeSliderControl>
     <RangeSliderMarkerGroup>
-      <RangeSliderMarker value={-30}>*</RangeSliderMarker>
-      <RangeSliderMarker value={0}>*</RangeSliderMarker>
-      <RangeSliderMarker value={30}>*</RangeSliderMarker>
+      <RangeSliderMarker value={25}>25</RangeSliderMarker>
+      <RangeSliderMarker value={50}>50</RangeSliderMarker>
+      <RangeSliderMarker value={75}>75</RangeSliderMarker>
     </RangeSliderMarkerGroup>
   </RangeSlider>
 )

@@ -23,6 +23,9 @@ export const slider = defineRecipe({
   name: 'slider',
   description: 'A slider style',
   base: parts({
+    root: {
+      width: 'full',
+    },
     control: {
       position: 'relative',
       display: 'flex',
