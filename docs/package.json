@@ -7,6 +7,7 @@
     "dev": "astro dev",
     "prebuild": "panda codegen",
     "build": "astro build",
+    "start": "astro preview",
     "css": "panda",
     "css:dev": "panda --watch"
   },
@@ -17,7 +18,7 @@
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",
     "astro": "1.7.1",
-    "css-panda": "0.0.0-dev-20221217040050",
+    "css-panda": "0.0.0-dev-20221218093122",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
