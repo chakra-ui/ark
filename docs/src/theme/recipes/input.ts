@@ -41,10 +41,11 @@ export const input = defineRecipe({
       },
     },
     size: {
-      sm: { px: '2.5', h: '9', textStyle: 'sm' },
-      md: { px: '3', h: '10', textStyle: 'md' },
-      lg: { px: '3.5', h: '11', textStyle: 'md' },
-      xl: { px: '4', h: '12', textStyle: 'md' },
+      sm: { px: '2.5', h: '9', minW: '9', textStyle: 'sm' },
+      md: { px: '3', h: '10', minW: '10', textStyle: 'md' },
+      lg: { px: '3.5', h: '11', minW: '11', textStyle: 'md' },
+      xl: { px: '4', h: '12', minW: '12', textStyle: 'md' },
+      '2xl': { px: '2', h: '16', minW: '16', textStyle: '3xl' },
     },
   },
 })

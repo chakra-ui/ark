@@ -1,6 +1,7 @@
 ---
 import { Container } from '../../panda/jsx'
 import { DemoPagination } from '../components/demo/Pagination'
+import { DemoPinInput } from '../components/demo/PinInput'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -8,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout>
   <Container py="8">
-    <DemoPagination client:load />
+    <DemoPinInput client:only="react" />
   </Container>
   <Hero />
   <LogoSection />
