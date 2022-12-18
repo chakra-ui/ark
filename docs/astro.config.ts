@@ -5,6 +5,8 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.PUBLIC_VERCEL_URL || 'http://localhost:3000',
+  site: process.env.PUBLIC_VERCEL_URL
+    ? `https://${process.env.PUBLIC_VERCEL_URL}`
+    : 'http://localhost:3000',
   integrations: [mdx(), sitemap(), react()],
 })
