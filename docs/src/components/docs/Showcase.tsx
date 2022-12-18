@@ -1,6 +1,5 @@
 import { AbsoluteCenter, Box, Stack } from '../../../panda/jsx'
 import { DemoTooltip } from '../demo/Tooltip'
-import { Input } from '../shared/Input'
 import { Text } from '../shared/Text'
 
 export const Showcase = () => (
@@ -29,26 +28,29 @@ export const Showcase = () => (
     <Box borderLeftWidth="1px" p="4" maxWidth="256px" flex="1">
       <Stack gap="6">
         <Stack gap="1">
-          <Text textStyle="md" fontWeight="medium">
+          <Text textStyle="sm" fontWeight="medium">
             Properties
           </Text>
           <Text textStyle="sm" color="fg.muted">
-            Lorem ipsum dolor sit amet.
+            Double click to edit values
           </Text>
         </Stack>
-        {/* <Box h="1px" width="full" bg="border.default" /> */}
-        <Stack gap="4">
-          <Stack gap="10" direction="row" align="center">
-            <Text textStyle="sm" fontWeight="medium" color="fg.emphasized" whiteSpace="nowrap">
-              Open delay
+        <Stack gap="3" width="full">
+          <Stack gap="10" direction="row" align="center" justify="space-between" width="full">
+            <Text textStyle="sm" color="fg.muted" whiteSpace="nowrap">
+              Open delay:
             </Text>
-            <Input variant="outline" size="sm" defaultValue="200" />
+            <Text textStyle="sm" fontWeight="medium" color="fg.emphasized" whiteSpace="nowrap">
+              150
+            </Text>
           </Stack>
-          <Stack gap="10" direction="row" align="center">
-            <Text textStyle="sm" fontWeight="medium" color="fg.emphasized" whiteSpace="nowrap">
-              Close delay
+          <Stack gap="10" direction="row" align="center" justify="space-between" width="full">
+            <Text textStyle="sm" color="fg.muted" whiteSpace="nowrap">
+              Close delay:
             </Text>
-            <Input variant="outline" size="sm" defaultValue="200" />
+            <Text textStyle="sm" fontWeight="medium" color="fg.emphasized" whiteSpace="nowrap">
+              100
+            </Text>
           </Stack>
         </Stack>
       </Stack>
