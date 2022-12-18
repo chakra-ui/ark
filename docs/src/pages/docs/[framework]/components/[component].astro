@@ -2,7 +2,7 @@
 import { parse } from 'path'
 import { panda } from '../../../../../panda/jsx'
 import { markdown } from '../../../../../panda/recipes'
-
+import Showcase from '../../../../components/Showcase.astro'
 import DocsLayout from '../../../../layouts/DocsLayout.astro'
 
 export async function getStaticPaths() {
@@ -27,6 +27,6 @@ const { Content } = Astro.props.component
 
 <DocsLayout>
   <panda.article className={markdown()}>
-    <Content />
+    <Content components={{ Showcase }} />
   </panda.article>
 </DocsLayout>

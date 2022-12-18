@@ -1,7 +1,7 @@
 import React, { ComponentType, Suspense } from 'react'
-import { panda } from '../../panda/jsx'
+import { panda } from '../../../panda/jsx'
 
-export function lazyNamedImport<
+function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
   MemberName extends keyof Module,
 >(modulePromise: Promise<Module>, memberName: MemberName) {
@@ -9,8 +9,9 @@ export function lazyNamedImport<
 }
 
 const demoComponents = {
-  tooltip: lazyNamedImport(import('./demo/Tooltip'), 'DemoTooltip'),
-  tab: lazyNamedImport(import('./demo/Tabs'), 'DemoTabs'),
+  tooltip: lazyNamedImport(import('../demo/Tooltip'), 'DemoTooltip'),
+  tab: lazyNamedImport(import('../demo/Tabs'), 'DemoTabs'),
+  pagination: lazyNamedImport(import('../demo/Pagination'), 'DemoPagination'),
 }
 
 type DemoComponents = typeof demoComponents
@@ -36,12 +37,12 @@ type Controls = {
       }
 }
 
-type ShowcaseProps = {
+type PlaygroundProps = {
   component: keyof DemoComponents
   controls: Controls
 }
 
-export const Showcase = (props: ShowcaseProps) => {
+export const Playground = (props: PlaygroundProps) => {
   const { component, controls } = props
   const [componentProps, setComponentProps] = React.useState(() =>
     Object.fromEntries(
@@ -66,7 +67,6 @@ export const Showcase = (props: ShowcaseProps) => {
           <Comp {...componentProps} />
         </Suspense>
       </Canvas>
-
       <ControlsPanel controls={controls} value={componentProps} onChange={setComponentProps} />
     </panda.div>
   )
@@ -75,7 +75,7 @@ export const Showcase = (props: ShowcaseProps) => {
 const Canvas = (props: { children?: React.ReactElement }) => (
   <panda.div
     display="flex"
-    alignItems="flex-start"
+    alignItems="center"
     justifyContent="center"
     py="20"
     bg="bg.dark"
