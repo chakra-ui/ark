@@ -5,6 +5,6 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ark-docs.vercel.app',
+  site: process.env.VERCEL_URL || 'http://localhost:3000',
   integrations: [mdx(), sitemap(), react()],
 })
