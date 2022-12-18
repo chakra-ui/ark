@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "panda codegen",
+    "prepare": "panda codegen",
     "build": "astro build",
     "start": "astro preview",
     "css": "panda",
