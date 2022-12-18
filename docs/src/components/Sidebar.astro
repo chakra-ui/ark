@@ -52,7 +52,7 @@ const pathname = new URL(Astro.request.url).pathname
             <Link
               href={component}
               variant="sidebar"
-              aria-current={pathname.endsWith(component) ? 'page' : false}
+              aria-current={'tooltip'.endsWith(component) ? 'page' : false}
             >
               {component}
             </Link>
