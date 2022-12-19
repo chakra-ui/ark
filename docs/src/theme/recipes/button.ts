@@ -115,7 +115,14 @@ export const button = defineRecipe({
       },
       link: {
         background: 'transparent',
-        color: 'fg.emphasized',
+        color: 'fg.muted',
+        _hover: {
+          color: 'fg.emphasized',
+        },
+        _disabled: {
+          color: 'fg.subtle',
+          cursor: 'not-allowed',
+        },
         height: 'auto !important',
         px: '0 !important',
       },
