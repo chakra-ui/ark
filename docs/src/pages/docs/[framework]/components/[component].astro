@@ -1,54 +1,31 @@
 ---
-import { startCase } from 'lodash-es'
 import { parse } from 'path'
 import { panda } from '../../../../../panda/jsx'
 import { markdown } from '../../../../../panda/recipes'
+
 import DocsLayout from '../../../../layouts/DocsLayout.astro'
 
 export async function getStaticPaths() {
   const frameworks = ['react', 'solid', 'vue']
-  const documents = await Astro.glob('../../../../../../packages/react/src/**/*.mdx')
+  const components = await Astro.glob('../../../../../../packages/react/src/**/*.mdx')
 
-  return documents.map((document, index, array) => {
-    const currentComponent = parse(document.file).name
-    const nextComponent = array[index + 1] ? parse(array[index + 1].file).name : null
-    const prevComponent = array[index - 1] ? parse(array[index - 1].file).name : null
-
-    return frameworks.map((framework) => ({
+  return components.map((component) =>
+    frameworks.map((framework) => ({
       params: {
-        component: currentComponent,
+        component: parse(component.file).name,
         framework,
       },
       props: {
-        document,
-        page: {
-          current: {
-            title: startCase(currentComponent),
-            url: `/docs/${framework}/components/${currentComponent}`,
-          },
-          ...(nextComponent && {
-            next: {
-              title: startCase(nextComponent),
-              url: `/docs/${framework}/components/${nextComponent}`,
-            },
-          }),
-          ...(prevComponent && {
-            prev: {
-              title: startCase(prevComponent),
-              url: `/docs/${framework}/components/${prevComponent}`,
-            },
-          }),
-        },
+        component,
       },
-    }))
-  })
+    })),
+  )
 }
 
-const { Content } = Astro.props.document
-const { page } = Astro.props
+const { Content } = Astro.props.component
 ---
 
-<DocsLayout page={page}>
+<DocsLayout>
   <panda.article className={markdown()}>
     <Content />
   </panda.article>

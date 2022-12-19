@@ -1,5 +1,4 @@
 ---
-import { startCase } from 'lodash-es'
 import { parse } from 'path'
 import { Box, HStack, Stack } from '../../panda/jsx'
 import { Link } from './shared/Link'
@@ -55,7 +54,7 @@ const params = Astro.params
               variant="sidebar"
               aria-current={params.component === component ? 'page' : false}
             >
-              {startCase(component)}
+              {component}
             </Link>
           ))
         }
