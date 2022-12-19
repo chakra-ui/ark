@@ -11,7 +11,7 @@ import {
 import { tooltip } from '../../../panda/recipes'
 import { Button } from '../shared/Button'
 
-export const DemoTooltip = (props: TooltipProps) => {
+export const DemoTooltip = (props: Partial<TooltipProps>) => {
   return (
     <Tooltip openDelay={0} closeDelay={200} positioning={{ placement: 'top' }} {...props}>
       <TooltipTrigger>

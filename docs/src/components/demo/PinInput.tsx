@@ -1,9 +1,14 @@
-import { PinInput, PinInputControl, PinInputField } from '@ark-ui/react'
+import { PinInput, PinInputControl, PinInputField, PinInputProps } from '@ark-ui/react'
 import { css, cx } from '../../../panda/css'
 import { input, pinInput } from '../../../panda/recipes'
 
-export const DemoPinInput = () => (
-  <PinInput placeholder="0" onComplete={(e) => alert(e.valueAsString)} className={pinInput()}>
+export const DemoPinInput = (props: Partial<PinInputProps>) => (
+  <PinInput
+    placeholder="0"
+    onComplete={(e) => alert(e.valueAsString)}
+    className={pinInput()}
+    {...props}
+  >
     <PinInputControl>
       {[0, 1, 2, 3].map((id, index) => (
         <PinInputField

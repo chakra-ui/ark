@@ -1,8 +1,8 @@
-import { TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
+import { TabIndicator, TabList, Tabs, TabsProps, TabTrigger } from '@ark-ui/react'
 import { tabs } from '../../../panda/recipes'
 
-export const DemoTabs = () => (
-  <Tabs className={tabs({})} defaultValue="react">
+export const DemoTabs = (props: Partial<TabsProps>) => (
+  <Tabs className={tabs({})} defaultValue="react" {...props}>
     <TabList>
       <TabTrigger value="react">
         <button>React</button>
