@@ -1,7 +1,6 @@
 ---
-import { Container, Stack } from '../../panda/jsx'
+import { Container } from '../../panda/jsx'
 import { DemoRangeSlider } from '../components/demo/RangeSlider'
-import { DemoSlider } from '../components/demo/Slider'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -9,10 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout>
   <Container py="16" maxW="512px" bg="bg.surface">
-    <Stack gap="12" alignItems="start">
-      <DemoSlider client:load />
-      <DemoRangeSlider client:load />
-    </Stack>
+    <DemoRangeSlider client:load />
   </Container>
   <Hero />
   <LogoSection />

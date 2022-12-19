@@ -13,9 +13,9 @@ import {
 import './range-slider.css'
 
 export const Basic = () => {
-  const [values, setValues] = useState([-10, 10])
+  const [values, setValues] = useState([33, 66])
   return (
-    <RangeSlider min={-50} max={50} value={values} onChange={(e) => setValues(e.value)}>
+    <RangeSlider min={0} max={100} value={values} onChange={(e) => setValues(e.value)}>
       <RangeSliderLabel>Label</RangeSliderLabel>
       <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>
@@ -36,7 +36,7 @@ export const Basic = () => {
 }
 
 export const WithDefaultValue = () => (
-  <RangeSlider min={-50} max={50} defaultValue={[-10, 10]}>
+  <RangeSlider min={0} max={100} defaultValue={[33, 66]}>
     <RangeSliderLabel>Label</RangeSliderLabel>
     <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
     <RangeSliderControl>

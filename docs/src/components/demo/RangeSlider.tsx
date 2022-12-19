@@ -10,13 +10,13 @@ import {
 import { slider } from '../../../panda/recipes'
 
 export const DemoRangeSlider = () => (
-  <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider({})}>
+  <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider()}>
     <RangeSliderControl>
       <RangeSliderTrack>
         <RangeSliderRange />
       </RangeSliderTrack>
-      {[0, 1].map((_, index) => (
-        <RangeSliderThumb key={index} index={index} />
+      {[0, 1].map((i) => (
+        <RangeSliderThumb key={i} index={i} />
       ))}
     </RangeSliderControl>
     <RangeSliderMarkerGroup>
