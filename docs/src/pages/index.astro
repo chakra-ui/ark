@@ -1,14 +1,14 @@
 ---
 import { Container } from '../../panda/jsx'
-import { DemoPopover } from '../components/demo/Popover'
+import { DemoRangeSlider } from '../components/demo/RangeSlider'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
-  <Container py="8" display="flex" justifyContent="center">
-    <DemoPopover client:load />
+  <Container py="16" maxW="512px" bg="bg.surface">
+    <DemoRangeSlider client:load />
   </Container>
   <Hero />
   <LogoSection />

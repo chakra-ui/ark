@@ -13,7 +13,7 @@ export const useRangeSlider = (props: UseRangeSliderProps) => {
   const initialContext = {
     id: useId(),
     ...props,
-    values: props.defaultValue,
+    value: props.defaultValue,
   }
 
   const context = {
