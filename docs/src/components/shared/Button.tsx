@@ -1,5 +1,5 @@
 import { cloneElement, isValidElement, PropsWithChildren } from 'react'
-import { FiCircle } from 'react-icons/fi'
+import { Circle } from 'react-feather'
 import { HTMLPandaProps, panda } from '../../../panda/jsx'
 import { button, ButtonVariants } from '../../../panda/recipes'
 
@@ -14,7 +14,7 @@ export const Button = (props: ButtonProps) => {
   const { variant, size, ...rest } = props
   return (
     <panda.button className={button({ variant, size })} data-scope="button" data-part="root">
-      <ButtonContent leftIcon={<FiCircle />} rightIcon={<FiCircle />} {...rest} />
+      <ButtonContent leftIcon={<Circle />} rightIcon={<Circle />} {...rest} />
     </panda.button>
   )
 }
