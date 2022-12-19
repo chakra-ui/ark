@@ -4,6 +4,7 @@ import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
 import { markdown } from './src/theme/recipes/markdown'
 import { pagination } from './src/theme/recipes/pagination'
+import { popover } from './src/theme/recipes/popover'
 import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
 
@@ -181,6 +182,7 @@ export default defineConfig({
     link,
     markdown,
     pagination,
+    popover,
     tabs,
     tooltip,
   },

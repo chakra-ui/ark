@@ -1,48 +1,14 @@
 ---
-import { Box, Container } from '../../panda/jsx'
+import { Container } from '../../panda/jsx'
+import { DemoPopover } from '../components/demo/Popover'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { markdown } from '../../panda/recipes'
 ---
 
 <BaseLayout>
-  <Container py="8">
-    <Box className={markdown()} maxW="43rem">
-      <h1>Headline 1</h1>
-      <p>
-        Muffin pudding biscuit oat cake candy canes bonbon apple pie pastry. Brownie tiramisu powder
-        liquorice tootsie roll. Cupcake topping sugar plum cupcake jelly beans pudding.
-      </p>
-      <p>
-        Gummies marzipan chocolate cheesecake carrot cake pudding. Macaroon lemon drops caramels
-        donut gummies icing topping. Bonbon sesame snaps sesame snaps toffee donut cookie topping
-        sweet roll.
-      </p>
-      <h2>Headline 2</h2>
-      <p>
-        Muffin pudding biscuit oat cake candy canes bonbon apple pie pastry. Brownie tiramisu powder
-        liquorice tootsie roll. Cupcake topping sugar plum cupcake jelly beans pudding.
-      </p>
-      <pre>
-        <code>SourceCode</code>
-      </pre>
-      <p>
-        Gummies marzipan chocolate cheesecake carrot cake pudding. Macaroon lemon drops caramels
-        donut gummies icing topping. Bonbon sesame snaps sesame snaps toffee donut cookie topping
-        sweet roll.
-      </p>
-      <h3>Headline 3</h3>
-      <p>
-        Muffin pudding biscuit oat cake candy canes bonbon apple pie pastry. Brownie tiramisu powder
-        liquorice tootsie roll. Cupcake topping sugar plum cupcake jelly beans pudding.
-      </p>
-      <p>
-        Gummies marzipan chocolate cheesecake carrot cake pudding. Macaroon lemon drops caramels
-        donut gummies icing topping. Bonbon sesame snaps sesame snaps toffee donut cookie topping
-        sweet roll.
-      </p>
-    </Box>
+  <Container py="8" display="flex" justifyContent="center">
+    <DemoPopover client:load />
   </Container>
   <Hero />
   <LogoSection />
