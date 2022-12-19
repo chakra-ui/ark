@@ -19,10 +19,12 @@
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.15",
     "css-panda": "0.0.0-dev-20221218210650",
+    "lodash-es": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/lodash-es": "4.17.6",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "concurrently": "7.6.0"
