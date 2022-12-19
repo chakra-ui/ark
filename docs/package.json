@@ -4,12 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "prebuild": "panda codegen",
+    "prepare": "panda",
+    "dev": "concurrently 'pnpm:dev:*'",
+    "dev:astro": "astro dev",
+    "dev:css": "panda --watch",
     "build": "astro build",
-    "start": "astro preview",
-    "css": "panda",
-    "css:dev": "panda --watch"
+    "start": "astro preview"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
@@ -17,13 +17,14 @@
     "@astrojs/react": "1.2.2",
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",
-    "astro": "1.7.1",
-    "css-panda": "0.0.0-dev-20221218093122",
+    "astro": "1.6.15",
+    "css-panda": "0.0.0-dev-20221218210650",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.9"
+    "@types/react-dom": "18.0.9",
+    "concurrently": "7.6.0"
   }
 }
