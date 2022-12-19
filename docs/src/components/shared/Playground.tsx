@@ -9,59 +9,83 @@ function lazyNamedImport<
   return React.lazy(async () => ({ default: (await modulePromise)[memberName] }))
 }
 
-const demoComponents = {
-  pagination: lazyNamedImport(import('../demo/Pagination'), 'DemoPagination'),
-  'pin-input': lazyNamedImport(import('../demo/PinInput'), 'DemoPinInput'),
-  popover: lazyNamedImport(import('../demo/Popover'), 'DemoPopover'),
-  'range-slider': lazyNamedImport(import('../demo/RangeSlider'), 'DemoRangeSlider'),
-  slider: lazyNamedImport(import('../demo/Slider'), 'DemoSlider'),
-  tabs: lazyNamedImport(import('../demo/Tabs'), 'DemoTabs'),
-  tooltip: lazyNamedImport(import('../demo/Tooltip'), 'DemoTooltip'),
-}
+const presets = {
+  pagination: {
+    component: lazyNamedImport(import('../demo/Pagination'), 'DemoPagination'),
+    controls: {},
+  },
+  'pin-input': {
+    component: lazyNamedImport(import('../demo/PinInput'), 'DemoPinInput'),
+    controls: {},
+  },
+  popover: {
+    component: lazyNamedImport(import('../demo/Popover'), 'DemoPopover'),
+    controls: {},
+  },
+  'range-slider': {
+    component: lazyNamedImport(import('../demo/RangeSlider'), 'DemoRangeSlider'),
+    controls: {},
+  },
+  slider: {
+    component: lazyNamedImport(import('../demo/Slider'), 'DemoSlider'),
+    controls: {},
+  },
+  tabs: {
+    component: lazyNamedImport(import('../demo/Tabs'), 'DemoTabs'),
+    controls: {},
+  },
+  tooltip: {
+    component: lazyNamedImport(import('../demo/Tooltip'), 'DemoTooltip'),
+    controls: {
+      openDelay: { type: 'number', label: 'Open delay', defaultValue: 500 },
+      closeDelay: { type: 'number', label: 'Close delay', defaultValue: 200 },
+    },
+  },
+} satisfies Record<string, { component: React.ElementType; controls?: Controls }>
 
-type DemoComponents = typeof demoComponents
+type Presets = typeof presets
 
-type Controls = {
-  [PropName: string]:
-    | {
-        type: 'string'
-        label?: React.ReactNode
-        defaultValue: string
-      }
-    | {
-        type: 'number'
-        label?: React.ReactNode
-        defaultValue: number
-      }
-    | {
-        type: 'boolean'
-        label?: React.ReactNode
-        defaultValue: boolean
-      }
-    | {
-        type: 'select'
-        label?: React.ReactNode
-        defaultValue: string
-        options: string[]
-      }
-}
+type Controls = Record<
+  string,
+  | {
+      type: 'string'
+      label?: React.ReactNode
+      defaultValue: string
+    }
+  | {
+      type: 'number'
+      label?: React.ReactNode
+      defaultValue: number
+    }
+  | {
+      type: 'boolean'
+      label?: React.ReactNode
+      defaultValue: boolean
+    }
+  | {
+      type: 'select'
+      label?: React.ReactNode
+      defaultValue: string
+      options: string[]
+    }
+>
 
 type PlaygroundProps = {
-  component: keyof DemoComponents
+  preset: keyof Presets
   controls?: Controls
 }
 
 export const Playground = (props: PlaygroundProps) => {
-  const { component, controls } = props
+  const { preset, controls: propControls } = props
+  console.log(props)
+  const { controls: presetControls, component: Comp } = presets[preset]
+  const controls = propControls ?? presetControls ?? {}
+
   const [componentProps, setComponentProps] = React.useState(() =>
     Object.fromEntries(
-      Object.entries(controls ?? {}).map(([key, control]) => {
-        return [key, control.defaultValue]
-      }),
+      Object.entries(controls).map(([key, control]) => [key, control.defaultValue]),
     ),
   )
-
-  const Comp = demoComponents[component]
 
   return (
     <panda.div
@@ -108,7 +132,7 @@ const ControlsPanel = (props: {
 }) => {
   const { controls, value, onChange } = props
 
-  if (!controls) {
+  if (!controls || !Object.keys(controls).length) {
     return null
   }
 

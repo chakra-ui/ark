@@ -1,7 +1,7 @@
 ---
 import { Playground } from './shared/Playground'
 
-const { component, controls } = Astro.props
+const { preset, controls } = Astro.props
 ---
 
-<Playground client:idle component={component} controls={controls} />
+<Playground client:idle preset={preset} controls={controls} />
