@@ -113,6 +113,12 @@ export const button = defineRecipe({
           cursor: 'not-allowed',
         },
       },
+      link: {
+        background: 'transparent',
+        color: 'fg.emphasized',
+        height: 'auto !important',
+        px: '0 !important',
+      },
     },
     size: {
       sm: parts({
