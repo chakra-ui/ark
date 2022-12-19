@@ -1,11 +1,26 @@
-# Astro Docs (PoC)
+# Documentation
 
-## Astro vs Docusaurus
+## State
 
-- Smaller bundle size
-- Better developer experience (CLI)
-- Modern tooling
-- Easy customizable
-- Build in solution for MDX, Syntax Highlightning, Routing, i18n etc.
-- No React lock in
-- No Theme lock in
+|              | Basic | Anatomy | Demo |
+| ------------ | ----- | ------- | ---- |
+| Accordion    | 🟢    | ⚪      | ⚪   |
+| Checkbox     | 🟢    | ⚪      | ⚪   |
+| Dialog       | 🟢    | ⚪      | ⚪   |
+| Editable     | 🟢    | ⚪      | ⚪   |
+| Hover Card   | 🟢    | ⚪      | ⚪   |
+| Menu         | ⚪    | ⚪      | ⚪   |
+| Number Input | 🟢    | ⚪      | ⚪   |
+| Pagination   | ⚪    | ⚪      | 🟢   |
+| Pin Input    | ⚪    | ⚪      | ⚪   |
+| Popover      | 🟢    | ⚪      | ⚪   |
+| Pressable    | 🟢    | ⚪      | ⚪   |
+| Radio Group  | ⚪    | ⚪      | ⚪   |
+| Range Slider | ⚪    | ⚪      | ⚪   |
+| Rating Group | 🟢    | ⚪      | ⚪   |
+| Select       | ⚪    | ⚪      | ⚪   |
+| Slider       | ⚪    | ⚪      | ⚪   |
+| Tabs         | ⚪    | ⚪      | 🟢   |
+| Tags Input   | ⚪    | ⚪      | ⚪   |
+| Toast        | 🟢    | ⚪      | ⚪   |
+| Tooltip      | 🟢    | ⚪      | 🟢   |

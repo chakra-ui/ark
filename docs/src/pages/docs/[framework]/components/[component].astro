@@ -1,7 +1,8 @@
 ---
 import { parse } from 'path'
-import { Heading } from '../../../../components/shared/Heading'
-import { Text } from '../../../../components/shared/Text'
+import { panda } from '../../../../../panda/jsx'
+import { markdown } from '../../../../../panda/recipes'
+
 import DocsLayout from '../../../../layouts/DocsLayout.astro'
 
 export async function getStaticPaths() {
@@ -25,5 +26,7 @@ const { Content } = Astro.props.component
 ---
 
 <DocsLayout>
-  <Content components={{ h1: Heading, p: Text }} />
+  <panda.article className={markdown()}>
+    <Content />
+  </panda.article>
 </DocsLayout>
