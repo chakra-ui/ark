@@ -13,7 +13,7 @@
 | Number Input | 🟢    | ⚪      | ⚪   |
 | Pagination   | ⚪    | ⚪      | 🟢   |
 | Pin Input    | ⚪    | ⚪      | ⚪   |
-| Popover      | 🟢    | ⚪      | ⚪   |
+| Popover      | 🟢    | ⚪      | 🟢   |
 | Pressable    | 🟢    | ⚪      | ⚪   |
 | Radio Group  | ⚪    | ⚪      | ⚪   |
 | Range Slider | ⚪    | ⚪      | ⚪   |
