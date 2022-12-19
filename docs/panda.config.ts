@@ -2,6 +2,7 @@ import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
+import { markdown } from './src/theme/recipes/markdown'
 import { pagination } from './src/theme/recipes/pagination'
 import { tabs } from './src/theme/recipes/tabs'
 import { tooltip } from './src/theme/recipes/tooltip'
@@ -178,6 +179,7 @@ export default defineConfig({
     button,
     input,
     link,
+    markdown,
     pagination,
     tabs,
     tooltip,
