@@ -160,6 +160,7 @@ const Control = (props: {
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        size="sm"
         flexGrow="1"
         flexShrink="0"
         flexBasis="20"
@@ -172,6 +173,7 @@ const Control = (props: {
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        size="sm"
         flexGrow="1"
         flexShrink="0"
         flexBasis="20"
