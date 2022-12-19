@@ -7,7 +7,7 @@ import { Text } from './shared/Text'
 const components = (await Astro.glob('../../../packages/react/src/**/*.mdx')).map(
   ({ file }) => parse(file).name,
 )
-const pathname = new URL(Astro.request.url).pathname
+const params = Astro.params
 ---
 
 <Box as="aside" minW="256px" position="sticky" display={{ base: 'none', lg: 'block' }} top="92px">
@@ -52,7 +52,7 @@ const pathname = new URL(Astro.request.url).pathname
             <Link
               href={component}
               variant="sidebar"
-              aria-current={pathname.endsWith(component) ? 'page' : false}
+              aria-current={params.component === component ? 'page' : false}
             >
               {component}
             </Link>
