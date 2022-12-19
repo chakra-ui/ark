@@ -16,10 +16,10 @@
 | Popover      | 🟢    | ⚪      | 🟢   |
 | Pressable    | 🟢    | ⚪      | ⚪   |
 | Radio Group  | ⚪    | ⚪      | ⚪   |
-| Range Slider | ⚪    | ⚪      | ⚪   |
+| Range Slider | ⚪    | ⚪      | 🟢   |
 | Rating Group | 🟢    | ⚪      | ⚪   |
 | Select       | ⚪    | ⚪      | ⚪   |
-| Slider       | ⚪    | ⚪      | ⚪   |
+| Slider       | ⚪    | ⚪      | 🟢   |
 | Tabs         | ⚪    | ⚪      | 🟢   |
 | Tags Input   | ⚪    | ⚪      | ⚪   |
 | Toast        | 🟢    | ⚪      | ⚪   |
