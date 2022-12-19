@@ -4,6 +4,7 @@ import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
 import { markdown } from './src/theme/recipes/markdown'
 import { pagination } from './src/theme/recipes/pagination'
+import { pinInput } from './src/theme/recipes/pin-input'
 import { popover } from './src/theme/recipes/popover'
 import { slider } from './src/theme/recipes/slider'
 import { tabs } from './src/theme/recipes/tabs'
@@ -97,6 +98,7 @@ export default defineConfig({
         default: { value: { base: '{colors.black}', _dark: 'white' } },
         emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
         muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
+        placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
         subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
         inverted: {
           default: { value: { base: 'white', _dark: '{colors.black}' } },
@@ -174,7 +176,7 @@ export default defineConfig({
     },
     '*::placeholder': {
       opacity: 1,
-      color: 'fg.muted',
+      color: 'fg.placeholder',
     },
   },
   recipes: {
@@ -183,6 +185,7 @@ export default defineConfig({
     link,
     markdown,
     pagination,
+    pinInput,
     popover,
     slider,
     tabs,
