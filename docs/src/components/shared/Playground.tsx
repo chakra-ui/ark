@@ -20,18 +20,22 @@ type Controls = {
   [PropName: string]:
     | {
         type: 'string'
+        label?: React.ReactNode
         defaultValue: string
       }
     | {
         type: 'number'
+        label?: React.ReactNode
         defaultValue: number
       }
     | {
         type: 'boolean'
+        label?: React.ReactNode
         defaultValue: boolean
       }
     | {
         type: 'select'
+        label?: React.ReactNode
         defaultValue: string
         options: string[]
       }
@@ -162,7 +166,7 @@ const Control = (props: {
 
   return (
     <panda.div display="flex" flexDirection="column" gap="2">
-      <panda.label htmlFor={name}>{name}</panda.label>
+      <panda.label htmlFor={name}>{control.label || name}</panda.label>
       {controlViews[control.type]?.()}
     </panda.div>
   )
