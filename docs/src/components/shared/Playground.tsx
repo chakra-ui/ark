@@ -1,5 +1,6 @@
-import React, { ComponentType, Suspense } from 'react'
+import React, { ComponentType, Suspense, useId } from 'react'
 import { panda } from '../../../panda/jsx'
+import { Input } from './Input'
 
 function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
@@ -9,9 +10,13 @@ function lazyNamedImport<
 }
 
 const demoComponents = {
-  tooltip: lazyNamedImport(import('../demo/Tooltip'), 'DemoTooltip'),
-  tab: lazyNamedImport(import('../demo/Tabs'), 'DemoTabs'),
   pagination: lazyNamedImport(import('../demo/Pagination'), 'DemoPagination'),
+  'pin-input': lazyNamedImport(import('../demo/PinInput'), 'DemoPinInput'),
+  popover: lazyNamedImport(import('../demo/Popover'), 'DemoPopover'),
+  'range-slider': lazyNamedImport(import('../demo/RangeSlider'), 'DemoRangeSlider'),
+  slider: lazyNamedImport(import('../demo/Slider'), 'DemoSlider'),
+  tabs: lazyNamedImport(import('../demo/Tabs'), 'DemoTabs'),
+  tooltip: lazyNamedImport(import('../demo/Tooltip'), 'DemoTooltip'),
 }
 
 type DemoComponents = typeof demoComponents
@@ -43,14 +48,14 @@ type Controls = {
 
 type PlaygroundProps = {
   component: keyof DemoComponents
-  controls: Controls
+  controls?: Controls
 }
 
 export const Playground = (props: PlaygroundProps) => {
   const { component, controls } = props
   const [componentProps, setComponentProps] = React.useState(() =>
     Object.fromEntries(
-      Object.entries(controls).map(([key, control]) => {
+      Object.entries(controls ?? {}).map(([key, control]) => {
         return [key, control.defaultValue]
       }),
     ),
@@ -83,7 +88,10 @@ const Canvas = (props: { children?: React.ReactElement }) => (
     justifyContent="center"
     py="20"
     bg="bg.dark"
-    flex="3"
+    flexGrow="3"
+    flexShrink="1"
+    flexBasis="60"
+    p="4"
     bgImage={{
       base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
       _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
@@ -94,17 +102,23 @@ const Canvas = (props: { children?: React.ReactElement }) => (
 )
 
 const ControlsPanel = (props: {
-  controls: Controls
+  controls?: Controls
   value: { [key: string]: any }
   onChange: (value: { [key: string]: any }) => void
 }) => {
   const { controls, value, onChange } = props
 
+  if (!controls) {
+    return null
+  }
+
   return (
     <panda.aside
       display="flex"
       flexDirection="column"
-      flex="1"
+      flexGrow="0"
+      flexShrink="1"
+      flexBasis="60"
       bg="bg.dark"
       borderLeft="1px solid"
       borderLeftColor="bg.subtle"
@@ -136,16 +150,45 @@ const Control = (props: {
   onChange: (value: any) => void
 }) => {
   const { name, control, value, onChange } = props
+  const id = `${useId()}${name}`
 
   const controlViews = {
     string: () => (
-      <panda.input type="text" value={value} onChange={(e) => onChange(e.target.value)} />
+      <Input
+        type="text"
+        name={name}
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        flexGrow="1"
+        flexShrink="0"
+        flexBasis="20"
+      />
     ),
     number: () => (
-      <panda.input type="number" value={value} onChange={(e) => onChange(e.target.value)} />
+      <Input
+        type="number"
+        name={name}
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        flexGrow="1"
+        flexShrink="0"
+        flexBasis="20"
+      />
     ),
     boolean: () => (
-      <panda.input type="checkbox" checked={value} onChange={(e) => onChange(e.target.checked)} />
+      <Input
+        type="checkbox"
+        name={name}
+        id={id}
+        checked={value}
+        onChange={(e) => onChange(e.target.checked)}
+        flexGrow="0"
+        flexShrink="0"
+        flexBasis="min-content"
+        appearance="auto"
+      />
     ),
     select: () => {
       if (!('options' in control)) {
@@ -153,7 +196,13 @@ const Control = (props: {
       }
 
       return (
-        <panda.select value={value} onChange={(e) => onChange(e.target.value)}>
+        <panda.select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          flexGrow="1"
+          flexShrink="0"
+          flexBasis="20"
+        >
           {control.options.map((option) => (
             <panda.option key={option} value={option}>
               {option}
@@ -165,8 +214,16 @@ const Control = (props: {
   }
 
   return (
-    <panda.div display="flex" flexDirection="column" gap="2">
-      <panda.label htmlFor={name}>{control.label || name}</panda.label>
+    <panda.div display="flex" gap="2" justifyContent="space-between" alignItems="baseline">
+      <panda.label
+        htmlFor={id}
+        textStyle="sm"
+        color="fg.muted"
+        flexGrow="1"
+        _after={{ content: '":"' }}
+      >
+        {control.label || name}
+      </panda.label>
       {controlViews[control.type]?.()}
     </panda.div>
   )
