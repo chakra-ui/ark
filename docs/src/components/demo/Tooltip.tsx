@@ -12,7 +12,7 @@ import { Button } from '../shared/Button'
 
 export const DemoTooltip = () => {
   return (
-    <Tooltip openDelay={0} closeDelay={9999} positioning={{ placement: 'bottom' }}>
+    <Tooltip openDelay={0} closeDelay={200} positioning={{ placement: 'bottom' }}>
       <TooltipTrigger>
         <Button size="sm" variant="tertiary">
           hover me

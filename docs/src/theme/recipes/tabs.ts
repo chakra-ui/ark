@@ -12,9 +12,7 @@ export const tabs = defineRecipe({
   name: 'tabs',
   description: 'A tabs style',
   base: parts({
-    root: {
-      width: 'full',
-    },
+    root: {},
     tablist: {
       borderBottomWidth: '1px',
       position: 'relative',
@@ -28,7 +26,7 @@ export const tabs = defineRecipe({
       px: '1',
       pt: '0',
       pb: '3',
-      textStyle: 'sm', // md
+      textStyle: 'md',
       _selected: {
         color: 'accent.default',
       },
