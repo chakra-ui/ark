@@ -33,6 +33,9 @@ export const markdown = defineRecipe({
       my: '8',
       p: '4',
     },
+    '& :first-child': {
+      mt: '0',
+    },
     '& :last-child': {
       mb: '0',
     },
