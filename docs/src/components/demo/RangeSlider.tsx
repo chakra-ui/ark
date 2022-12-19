@@ -3,14 +3,15 @@ import {
   RangeSliderControl,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
+  RangeSliderProps,
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
 } from '@ark-ui/react'
 import { slider } from '../../../panda/recipes'
 
-export const DemoRangeSlider = () => (
-  <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider()}>
+export const DemoRangeSlider = (props: Partial<RangeSliderProps>) => (
+  <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider()} {...props}>
     <RangeSliderControl>
       <RangeSliderTrack>
         <RangeSliderRange />
