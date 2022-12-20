@@ -21,7 +21,14 @@ import ThemeIcon from './ThemeIcon.astro'
       <Link href="/" aria-label="Back home">
         <Logo />
       </Link>
-      <Box bg="bg.subtle" borderWidth="1px" h="9" width="320px" borderRadius="sm" />
+      <Box
+        bg="bg.subtle"
+        borderWidth="1px"
+        h="9"
+        width="320px"
+        borderRadius="sm"
+        display={{ base: 'none', md: 'block' }}
+      />
       <ThemeIcon />
     </HStack>
   </Container>
