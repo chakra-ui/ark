@@ -1,5 +1,5 @@
 import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
-import { AbsoluteCenter, Box } from '../../../panda/jsx'
+import { Box } from '../../../panda/jsx'
 
 function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
@@ -66,7 +66,10 @@ export const Playground = (props: PlaygroundProps) => {
 
 const Canvas = (props: PropsWithChildren) => (
   <Box
-    position="relative"
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    p="4"
     flex="1"
     bgImage={{
       base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
@@ -74,6 +77,6 @@ const Canvas = (props: PropsWithChildren) => (
     }}
     bgSize="16px 16px"
   >
-    <AbsoluteCenter>{props.children}</AbsoluteCenter>
+    {props.children}
   </Box>
 )
