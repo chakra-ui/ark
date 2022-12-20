@@ -9,6 +9,9 @@ function lazyNamedImport<
 }
 
 const presets = {
+  dialog: {
+    component: lazyNamedImport(import('../demo/Dialog'), 'DemoDialog'),
+  },
   pagination: {
     component: lazyNamedImport(import('../demo/Pagination'), 'DemoPagination'),
   },
