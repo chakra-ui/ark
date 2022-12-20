@@ -181,6 +181,9 @@ export default defineConfig({
       opacity: 1,
       color: 'fg.placeholder',
     },
+    a: {
+      textDecoration: 'none',
+    },
   },
   recipes: {
     button,
