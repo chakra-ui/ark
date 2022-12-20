@@ -18,10 +18,11 @@
     "@astrojs/sitemap": "1.0.0",
     "@fontsource/inter": "4.5.14",
     "astro": "1.6.15",
-    "css-panda": "0.0.0-dev-20221218210650",
+    "css-panda": "0.0.0-dev-20221220033401",
     "lodash-es": "4.17.21",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-feather": "2.0.10"
   },
   "devDependencies": {
     "@types/lodash-es": "4.17.6",

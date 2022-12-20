@@ -5,12 +5,13 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
+  PaginationProps,
 } from '@ark-ui/react'
 import { pagination } from '../../../panda/recipes'
 import { Button } from '../shared/Button'
 
-export const DemoPagination = () => (
-  <Pagination count={5000} pageSize={10} siblingCount={2} className={pagination()}>
+export const DemoPagination = (props: Partial<PaginationProps>) => (
+  <Pagination count={5000} pageSize={10} siblingCount={2} className={pagination()} {...props}>
     {({ pages }) => (
       <>
         <PaginationList>

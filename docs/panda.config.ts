@@ -1,5 +1,6 @@
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
+import { dialog } from './src/theme/recipes/dialog'
 import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
 import { markdown } from './src/theme/recipes/markdown'
@@ -75,6 +76,8 @@ export default defineConfig({
     },
     spacing: {
       '4.5': { value: '1.125rem' },
+    },
+    sizes: {
       '15': { value: '3.75rem' },
     },
   },
@@ -181,6 +184,7 @@ export default defineConfig({
   },
   recipes: {
     button,
+    dialog,
     input,
     link,
     markdown,

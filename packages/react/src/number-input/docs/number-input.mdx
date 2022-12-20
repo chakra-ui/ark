@@ -115,7 +115,10 @@ To apply custom formatting to the input's value, use the exposed `format` and `p
 example, to format the input's value to currency, here's how to achieve it:
 
 ```tsx
-<NumberInput format={(value) => `$${value}`} parse={(value) => value.replace(/\$/g, '')}>
+<NumberInput
+  format={(value) => `$${value}`}
+  parse={(value) => value.replace(/\$/g, '')}
+>
   {/*...*/}
 </NumberInput>
 ```

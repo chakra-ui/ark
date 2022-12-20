@@ -13,24 +13,25 @@ export const tooltip = defineRecipe({
   description: 'A tooltip style',
   base: parts({
     positioner: {
-      py: '2.5',
-      px: '4',
+      py: '2',
+      px: '3',
       backgroundColor: {
         base: 'gray.950',
         _dark: 'white',
       },
-      boxShadow: 'sm',
-      borderRadius: 'sm',
+      boxShadow: 'lg',
+      borderRadius: 'lg',
       color: {
         base: 'white',
         _dark: 'gray.950',
       },
     },
     content: {
-      textStyle: 'sm',
+      fontWeight: 'semibold',
+      textStyle: 'xs',
     },
     arrow: {
-      '--arrow-size': '8px',
+      '--arrow-size': 'sizes.2',
       '--arrow-background': {
         base: 'colors.gray.950',
         _dark: 'colors.white',

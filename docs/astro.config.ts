@@ -5,6 +5,13 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ark-docs.vercel.app',
+  site: process.env.PUBLIC_VERCEL_URL
+    ? `https://${process.env.PUBLIC_VERCEL_URL}`
+    : 'http://localhost:3000',
   integrations: [mdx(), sitemap(), react()],
+  markdown: {
+    shikiConfig: {
+      wrap: true,
+    },
+  },
 })

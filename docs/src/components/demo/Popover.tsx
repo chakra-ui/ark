@@ -6,6 +6,7 @@ import {
   PopoverContent,
   PopoverDescription,
   PopoverPositioner,
+  PopoverProps,
   PopoverTitle,
   PopoverTrigger,
 } from '@ark-ui/react'
@@ -15,8 +16,8 @@ import { Button } from '../shared/Button'
 import { Input } from '../shared/Input'
 import { Link } from '../shared/Link'
 
-export const DemoPopover = () => (
-  <Popover>
+export const DemoPopover = (props: Partial<PopoverProps>) => (
+  <Popover {...props}>
     <PopoverTrigger>
       <Button variant="secondary" size="md">
         Open

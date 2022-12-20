@@ -6,7 +6,12 @@ exclusive options.
 ## Import
 
 ```ts
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '@ark-ui/react'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/react'
 ```
 
 ## Usage
@@ -82,7 +87,9 @@ const DemoIndeterminateCheckbox = () => {
       <Checkbox
         checked={allChecked}
         indeterminate={someChecked}
-        onChange={(e) => setCheckedItems([e.checked === true, e.checked === true])}
+        onChange={(e) =>
+          setCheckedItems([e.checked === true, e.checked === true])
+        }
       >
         <CheckboxLabel>Parent Checkbox</CheckboxLabel>
         <CheckboxInput />
@@ -91,7 +98,9 @@ const DemoIndeterminateCheckbox = () => {
       <div>
         <Checkbox
           checked={checkedItems[0]}
-          onChange={(e) => setCheckedItems([e.checked === true, checkedItems[1]])}
+          onChange={(e) =>
+            setCheckedItems([e.checked === true, checkedItems[1]])
+          }
         >
           <CheckboxLabel>Child Checkbox 1</CheckboxLabel>
           <CheckboxInput />
@@ -99,7 +108,9 @@ const DemoIndeterminateCheckbox = () => {
         </Checkbox>
         <Checkbox
           checked={checkedItems[1]}
-          onChange={(e) => setCheckedItems([checkedItems[0], e.checked === true])}
+          onChange={(e) =>
+            setCheckedItems([checkedItems[0], e.checked === true])
+          }
         >
           <CheckboxLabel>Child Checkbox 2</CheckboxLabel>
           <CheckboxInput />
