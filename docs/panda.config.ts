@@ -76,6 +76,8 @@ export default defineConfig({
     },
     spacing: {
       '4.5': { value: '1.125rem' },
+    },
+    sizes: {
       '15': { value: '3.75rem' },
     },
   },

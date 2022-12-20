@@ -1,14 +1,45 @@
 ---
-import { Container } from '../../panda/jsx'
-import { DemoPinInput } from '../components/demo/PinInput'
+import { Container, Stack } from '../../panda/jsx'
 import Hero from '../components/marketing/Hero.astro'
 import LogoSection from '../components/marketing/LogoSection.astro'
+import { Button } from '../components/shared/Button'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout>
   <Container py="8">
-    <DemoPinInput client:only="react" />
+    <Stack gap="3">
+      <Stack direction="row" gap="3">
+        <Button size="sm" variant="primary">Primary</Button>
+        <Button size="sm" variant="secondary">Secondary</Button>
+        <Button size="sm" variant="tertiary">Tertiary</Button>
+        <Button size="sm" variant="link">Link</Button>
+      </Stack>
+      <Stack direction="row" gap="3">
+        <Button size="md" variant="primary">Primary</Button>
+        <Button size="md" variant="secondary">Secondary</Button>
+        <Button size="md" variant="tertiary">Tertiary</Button>
+        <Button size="md" variant="link">Link</Button>
+      </Stack>
+      <Stack direction="row" gap="3">
+        <Button size="lg" variant="primary">Primary</Button>
+        <Button size="lg" variant="secondary">Secondary</Button>
+        <Button size="lg" variant="tertiary">Tertiary</Button>
+        <Button size="lg" variant="link">Link</Button>
+      </Stack>
+      <Stack direction="row" gap="3">
+        <Button size="xl" variant="primary">Primary</Button>
+        <Button size="xl" variant="secondary">Secondary</Button>
+        <Button size="xl" variant="tertiary">Tertiary</Button>
+        <Button size="xl" variant="link">Link</Button>
+      </Stack>
+      <Stack direction="row" gap="3">
+        <Button size="2xl" variant="primary">Primary</Button>
+        <Button size="2xl" variant="secondary">Secondary</Button>
+        <Button size="2xl" variant="tertiary">Tertiary</Button>
+        <Button size="2xl" variant="link">Link</Button>
+      </Stack>
+    </Stack>
   </Container>
   <Hero />
   <LogoSection />
