@@ -9,4 +9,9 @@ export default defineConfig({
     ? `https://${process.env.PUBLIC_VERCEL_URL}`
     : 'http://localhost:3000',
   integrations: [mdx(), sitemap(), react()],
+  markdown: {
+    shikiConfig: {
+      wrap: true,
+    },
+  },
 })
