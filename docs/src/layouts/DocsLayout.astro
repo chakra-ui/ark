@@ -1,6 +1,6 @@
 ---
 import { Box, Container, Stack } from '../../panda/jsx'
-import { Link } from '../components/shared/Link'
+import { Pagination } from '../components/docs/Pagination'
 import { Text } from '../components/shared/Text'
 import Sidebar from '../components/Sidebar.astro'
 import BaseLayout from './BaseLayout.astro'
@@ -29,14 +29,7 @@ const { page } = Astro.props
         <Box>
           <slot />
         </Box>
-        <Box display="flex" justifyContent="space-between" my="12">
-          <Link href={page.prev?.url}>
-            {page.prev?.title}
-          </Link>
-          <Link href={page.next?.url}>
-            {page.next?.title}
-          </Link>
-        </Box>
+        <Pagination page={page} />
       </Box>
 
       <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">
