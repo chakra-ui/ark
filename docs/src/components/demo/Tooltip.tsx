@@ -1,5 +1,4 @@
 import {
-  Portal,
   Tooltip,
   TooltipArrow,
   TooltipArrowTip,
@@ -24,14 +23,12 @@ export const DemoTooltip = (props: DemoTooltipProps) => {
           hover me
         </Button>
       </TooltipTrigger>
-      <Portal>
-        <TooltipPositioner className={tooltip({})}>
-          <TooltipArrow>
-            <TooltipArrowTip />
-          </TooltipArrow>
-          <TooltipContent>My Tooltip</TooltipContent>
-        </TooltipPositioner>
-      </Portal>
+      <TooltipPositioner className={tooltip({})}>
+        <TooltipArrow>
+          <TooltipArrowTip />
+        </TooltipArrow>
+        <TooltipContent>My Tooltip</TooltipContent>
+      </TooltipPositioner>
     </Tooltip>
   )
 }

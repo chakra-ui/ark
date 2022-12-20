@@ -1,5 +1,5 @@
-import React, { ComponentType, Suspense } from 'react'
-import { panda } from '../../../panda/jsx'
+import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
+import { AbsoluteCenter, Box } from '../../../panda/jsx'
 
 function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
@@ -43,38 +43,34 @@ export const Playground = (props: PlaygroundProps) => {
   const { component: Comp } = presets[preset]
 
   return (
-    <panda.div
+    <Box
       display="flex"
       flexDirection={{ base: 'column', md: 'row' }}
-      borderWidth="1px"
-      minHeight="24rem"
-      my="16"
+      minHeight="xs"
+      my="12"
+      bg="bg.surface"
+      borderRadius="lg"
+      boxShadow="sm"
     >
       <Canvas>
         <Suspense fallback={null}>
           <Comp />
         </Suspense>
       </Canvas>
-    </panda.div>
+    </Box>
   )
 }
 
-const Canvas = (props: { children?: React.ReactElement }) => (
-  <panda.div
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    py="20"
-    bg="bg.dark"
-    flexGrow="3"
-    flexShrink="0"
-    flexBasis="60"
-    p="4"
+const Canvas = (props: PropsWithChildren) => (
+  <Box
+    position="relative"
+    flex="1"
     bgImage={{
       base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
       _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
     }}
     bgSize="16px 16px"
-    {...props}
-  />
+  >
+    <AbsoluteCenter>{props.children}</AbsoluteCenter>
+  </Box>
 )
