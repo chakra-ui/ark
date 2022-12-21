@@ -13,7 +13,7 @@ import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
   preflight: true,
-  include: ['./src/**/*.{tsx}'],
+  include: ['./src/**/*.tsx'],
   presets: ['css-panda/presets'],
   outdir: 'panda',
   jsxFramework: 'react',
