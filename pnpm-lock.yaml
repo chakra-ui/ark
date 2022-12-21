@@ -328,7 +328,7 @@ importers:
   website:
     specifiers:
       '@ark-ui/react': workspace:*
-      '@next/font': 13.0.7
+      '@next/font': 13.0.4
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
@@ -342,7 +342,7 @@ importers:
       typescript: 4.9.4
     dependencies:
       '@ark-ui/react': link:../packages/react
-      '@next/font': 13.0.7
+      '@next/font': 13.0.4
       css-panda: 0.0.0-dev-20221220033401_yczpt4nfvvntt2u6pjdii3tfei
       next: 13.0.4_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
@@ -1885,8 +1885,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.0.7:
-    resolution: {integrity: sha512-39SzuoMI6jbrIzPs3KtXdKX03OrVp6Y7kRHcoVmOg69spiBzruPJ5x5DQSfN+OXqznbvVBNZBXnmdnSqs3qXiA==}
+  /@next/font/13.0.4:
+    resolution: {integrity: sha512-csZhVqe870p7XE03WfbDLzjVwdBAWxe6/lWGQosfqY/XN5tsmfDLpj442veicfCiiuF7/ydSnAAJxH8PQVBVWQ==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.0.4:
