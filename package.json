@@ -55,7 +55,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@7.19.0",
   "dependencies": {
     "globby": "13.1.3"
   }
