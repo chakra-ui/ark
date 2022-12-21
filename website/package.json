@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@next/font": "13.0.7",
+    "@next/font": "13.0.4",
     "css-panda": "0.0.0-dev-20221220033401",
     "next": "13.0.4",
     "react": "18.2.0",

@@ -12,6 +12,7 @@ export type ButtonProps = HTMLPandaProps<'button'> & ButtonVariants & ButtonCont
 export const Button = (props: ButtonProps) => {
   const { variant, size, leftIcon, rightIcon, children, ...rest } = props
   return (
+    // @ts-expect-error typings are wrong
     <panda.button
       className={button({ variant, size })}
       data-scope="button"
@@ -19,6 +20,7 @@ export const Button = (props: ButtonProps) => {
       {...rest}
     >
       <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+        {/* @ts-expect-error */}
         {children}
       </ButtonContent>
     </panda.button>

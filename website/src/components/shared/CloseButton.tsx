@@ -3,6 +3,7 @@ import { Button, ButtonProps } from './Button'
 export const CloseButton = (props: ButtonProps) => {
   // TODO IconButton
   return (
+    // @ts-expect-error typings are wrong
     <Button
       variant="tertiary"
       size="md"
