@@ -19,6 +19,7 @@ export const accordion = defineRecipe({
       background: 'transparent',
       borderRadius: 'lg',
       cursor: 'pointer',
+      color: 'fg.default',
       display: 'flex',
       justifyContent: 'space-between',
       fontWeight: 'medium',
