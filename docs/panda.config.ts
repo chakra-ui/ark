@@ -1,4 +1,5 @@
 import { defineConfig } from 'css-panda'
+import { accordion } from './src/theme/recipes/accordion'
 import { button } from './src/theme/recipes/button'
 import { dialog } from './src/theme/recipes/dialog'
 import { input } from './src/theme/recipes/input'
@@ -186,6 +187,7 @@ export default defineConfig({
     },
   },
   recipes: {
+    accordion,
     button,
     dialog,
     input,
