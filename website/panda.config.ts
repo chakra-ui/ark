@@ -84,14 +84,16 @@ export default defineConfig({
   patterns: {
     container: {
       properties: {},
-      transform: () => {
-        return {
-          px: { base: '4', md: '8' },
-          maxW: '8xl',
-          width: '100%',
-          mx: 'auto',
-        }
-      },
+      transform: (props) =>
+        Object.assign(
+          {
+            px: { base: '4', md: '8' },
+            maxW: '8xl',
+            width: '100%',
+            mx: 'auto',
+          },
+          props,
+        ),
     },
   },
 
@@ -170,7 +172,7 @@ export default defineConfig({
     body: {
       backgroundColor: 'bg.canvas',
       color: 'fg.default',
-      fontFamily: 'InterVariable, sans-serif',
+      fontFamily: 'var(--font-inter), sans-serif',
       height: '100%',
     },
     '*, *::before, *::after': {

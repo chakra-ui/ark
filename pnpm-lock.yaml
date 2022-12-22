@@ -343,11 +343,11 @@ importers:
       next-contentlayer: 0.2.9
       react: 18.2.0
       react-dom: 18.2.0
+      react-feather: 2.0.10
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-prism-plus: 1.5.0
       rehype-slug: 5.1.0
-      shiki: 0.12.1
       typescript: 4.9.4
     dependencies:
       '@ark-ui/react': link:../packages/react
@@ -359,11 +359,11 @@ importers:
       next-contentlayer: 0.2.9_dcors23iqtgxrhrwosgnnc4xji
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-feather: 2.0.10_react@18.2.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-prism-plus: 1.5.0
       rehype-slug: 5.1.0
-      shiki: 0.12.1
     devDependencies:
       '@types/lodash-es': 4.17.6
       '@types/node': 18.11.17
@@ -9536,14 +9536,6 @@ packages:
       vscode-textmate: 6.0.0
     dev: false
 
-  /shiki/0.12.1:
-    resolution: {integrity: sha512-aieaV1m349rZINEBkjxh2QbBvFFQOlgqYTNtCal82hHj4dDZ76oMlQIX+C7ryerBTDiga3e5NfH6smjdJ02BbQ==}
-    dependencies:
-      jsonc-parser: 3.2.0
-      vscode-oniguruma: 1.7.0
-      vscode-textmate: 8.0.0
-    dev: false
-
   /side-channel/1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
@@ -10774,7 +10766,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5_@types+node@18.11.17
+      vite: 3.2.5
     dev: false
 
   /vitefu/0.2.3_vite@4.0.2:
@@ -11029,10 +11021,6 @@ packages:
 
   /vscode-textmate/6.0.0:
     resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
-    dev: false
-
-  /vscode-textmate/8.0.0:
-    resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==}
     dev: false
 
   /vscode-uri/2.1.2:
