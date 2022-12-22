@@ -27,7 +27,7 @@ export const markdown = defineRecipe({
       mb: '4',
     },
     '& pre': {
-      backgroundColor: 'gray.950 !important',
+      backgroundColor: 'gray.950',
       borderRadius: 'lg',
       boxShadow: 'sm',
       my: '8',
