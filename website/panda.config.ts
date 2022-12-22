@@ -81,20 +81,20 @@ export default defineConfig({
       '15': { value: '3.75rem' },
     },
   },
-  // patterns: {
-  //   container: {
-  //     properties: {},
-  //     transform: (props) => {
-  //       return {
-  //         px: { base: '4', md: '8' },
-  //         maxW: '8xl',
-  //         width: '100%',
-  //         mx: 'auto',
-  //         ...props,
-  //       }
-  //     },
-  //   },
-  // },
+  patterns: {
+    container: {
+      properties: {},
+      transform: () => {
+        return {
+          px: { base: '4', md: '8' },
+          maxW: '8xl',
+          width: '100%',
+          mx: 'auto',
+        }
+      },
+    },
+  },
+
   semanticTokens: {
     colors: {
       fg: {
