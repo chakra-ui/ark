@@ -15,9 +15,9 @@ export const Button = (props: ButtonProps) => {
     // @ts-expect-error typings are wrong
     <panda.button
       className={button({ variant, size })}
+      {...rest}
       data-scope="button"
       data-part="root"
-      {...rest}
     >
       <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
         {/* @ts-expect-error */}
