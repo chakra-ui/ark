@@ -1,6 +1,6 @@
+import { HTMLPandaProps, panda } from '@/panda/jsx'
+import { button, ButtonVariants } from '@/panda/recipes'
 import { cloneElement, isValidElement, PropsWithChildren } from 'react'
-import { HTMLPandaProps, panda } from '../../../panda/jsx'
-import { button, ButtonVariants } from '../../../panda/recipes'
 
 type ButtonContentProps = {
   leftIcon?: React.ReactElement

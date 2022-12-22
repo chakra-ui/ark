@@ -1,5 +1,5 @@
-import { HTMLPandaProps, panda } from '../../../panda/jsx'
-import { input, InputVariants } from '../../../panda/recipes'
+import { HTMLPandaProps, panda } from '@/panda/jsx'
+import { input, InputVariants } from '@/panda/recipes'
 
 export type InputProps = HTMLPandaProps<'input'> & InputVariants
 

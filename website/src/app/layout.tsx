@@ -1,7 +1,7 @@
-import { css } from '../../panda/css'
-import { Container } from '../../panda/jsx'
+import { Navbar } from '@/components/Navbar'
+import { css } from '@/panda/css'
+import { Container } from '@/panda/jsx'
 import '../../panda/styles.css'
-import { Navbar } from '../components/Navbar'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

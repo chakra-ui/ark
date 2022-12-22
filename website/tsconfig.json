@@ -21,8 +21,12 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/contentlayer": ["./.contentlayer/generated"],
-      "@/panda": ["./panda/"]
+      "@/panda/css": ["./panda/css"],
+      "@/panda/jsx": ["./panda/jsx"],
+      "@/panda/recipes": ["./panda/recipes"],
+      "@/panda/types": ["./panda/types"],
+      "@/contentlayer": [".contentlayer/generated"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

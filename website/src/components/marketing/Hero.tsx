@@ -1,4 +1,4 @@
-import { Box, Stack } from '../../../panda/jsx'
+import { Box, Stack } from '@/panda/jsx'
 import { Button } from '../shared/Button'
 import { Heading } from '../shared/Heading'
 import { Text } from '../shared/Text'

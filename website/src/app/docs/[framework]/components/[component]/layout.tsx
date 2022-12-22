@@ -1,11 +1,14 @@
-import { Box, Container, Stack } from '../../../../../../panda/jsx'
-import { Text } from '../../../../../components/shared/Text'
+import { Text } from '@/components/shared/Text'
+import { Sidebar } from '@/components/Sidebar'
+import { Box, Container, Stack } from '@/panda/jsx'
+
+const x = ['a', 'b', 'c']
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <Container as="main">
       <Stack gap="24" direction="row" height="100%" position="relative">
-        {/* <Sidebar /> */}
+        <Sidebar items={x} />
         <Box flex="1" py="8" maxWidth={{ xl: '43rem' }}>
           <Box>{children}</Box>
           {/* <Pagination page={page} /> */}
