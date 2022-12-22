@@ -5,6 +5,7 @@ import { Box, HStack, Stack } from '@/panda/jsx'
 type SidebarItem = {
   title: string
   url: string
+  isActive: boolean
 }
 
 type SidebarProps = {
@@ -67,7 +68,7 @@ export const Sidebar = (props: SidebarProps) => {
                 key={id}
                 href={item.url}
                 variant="sidebar"
-                // aria-current={params.component === component ? 'page' : false}
+                aria-current={item.isActive ? 'page' : false}
               >
                 {item.title}
               </Link>

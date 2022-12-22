@@ -2,11 +2,14 @@ import { Text } from '@/components/shared/Text'
 import { Sidebar } from '@/components/Sidebar'
 import { getComponentDocuments } from '@/lib/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
-import { PropsWithChildren } from 'react'
 
-const sidebarItems = getComponentDocuments().map((doc) => ({ title: doc.title, url: doc.url }))
+const DocsLayout = (props) => {
+  const sidebarItems = getComponentDocuments().map((doc) => ({
+    title: doc.title,
+    url: doc.url,
+    isActive: doc.name === props.params.component,
+  }))
 
-const DocsLayout = (props: PropsWithChildren) => {
   return (
     <Container as="main">
       <Stack gap="24" direction="row" height="100%" position="relative">
