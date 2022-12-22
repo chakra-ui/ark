@@ -2,8 +2,13 @@ import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { Box, HStack, Stack } from '@/panda/jsx'
 
+type SidebarItem = {
+  title: string
+  url: string
+}
+
 type SidebarProps = {
-  items: string[]
+  items: SidebarItem[]
 }
 
 export const Sidebar = (props: SidebarProps) => {
@@ -57,14 +62,14 @@ export const Sidebar = (props: SidebarProps) => {
             Components
           </Text>
           <Stack borderLeftWidth="1px" alignSelf="stretch">
-            {props.items.map((component) => (
+            {props.items.map((item, id) => (
               <Link
-                key={component}
-                href={component}
+                key={id}
+                href={item.url}
                 variant="sidebar"
                 // aria-current={params.component === component ? 'page' : false}
               >
-                {component}
+                {item.title}
               </Link>
             ))}
           </Stack>

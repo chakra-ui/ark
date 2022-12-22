@@ -25,7 +25,6 @@ export const link = defineRecipe({
         ml: '-1px',
         pl: '4',
         textStyle: 'sm',
-        textTransform: 'capitalize',
         lineHeight: '1.5rem',
         _hover: { color: 'fg.default', borderLeftColor: 'fg.muted' },
         _currentPage: {

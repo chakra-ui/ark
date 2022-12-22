@@ -1,7 +1,7 @@
 'use client'
+import { tabs } from '@/panda/recipes'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
 import { useRouter } from 'next/navigation'
-import { tabs } from '../../panda/recipes'
 
 type PageTabsProps = {
   value: string

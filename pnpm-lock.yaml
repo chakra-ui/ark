@@ -329,6 +329,7 @@ importers:
     specifiers:
       '@ark-ui/react': workspace:*
       '@next/font': 13.0.4
+      '@types/lodash-es': 4.17.6
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
@@ -337,6 +338,7 @@ importers:
       css-panda: 0.0.0-dev-20221220033401
       eslint: 8.30.0
       eslint-config-next: 13.0.7
+      lodash-es: 4.17.21
       next: 13.0.4
       next-contentlayer: 0.2.9
       react: 18.2.0
@@ -347,11 +349,13 @@ importers:
       '@next/font': 13.0.4
       contentlayer: 0.2.9
       css-panda: 0.0.0-dev-20221220033401_yczpt4nfvvntt2u6pjdii3tfei
+      lodash-es: 4.17.21
       next: 13.0.4_biqbaboplfbrettd7655fr4n2y
       next-contentlayer: 0.2.9_dcors23iqtgxrhrwosgnnc4xji
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@types/lodash-es': 4.17.6
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
@@ -10672,7 +10676,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5_@types+node@18.11.17
+      vite: 3.2.5
     dev: false
 
   /vitefu/0.2.3_vite@4.0.2:

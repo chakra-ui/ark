@@ -1,6 +1,6 @@
+import { css } from '@/panda/css'
+import { Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
-import { css } from '../../panda/css'
-import { Container, HStack } from '../../panda/jsx'
 import { Logo } from './Logo'
 
 export const Navbar = () => (

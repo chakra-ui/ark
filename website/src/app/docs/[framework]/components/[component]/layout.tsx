@@ -1,16 +1,18 @@
 import { Text } from '@/components/shared/Text'
 import { Sidebar } from '@/components/Sidebar'
+import { allComponentDocuments } from '@/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
+import { PropsWithChildren } from 'react'
 
-const x = ['a', 'b', 'c']
+const sidebarItems = allComponentDocuments.map((doc) => ({ title: doc.title, url: doc.url }))
 
-export default function DocsLayout({ children }: { children: React.ReactNode }) {
+const DocsLayout = (props: PropsWithChildren) => {
   return (
     <Container as="main">
       <Stack gap="24" direction="row" height="100%" position="relative">
-        <Sidebar items={x} />
+        <Sidebar items={sidebarItems} />
         <Box flex="1" py="8" maxWidth={{ xl: '43rem' }}>
-          <Box>{children}</Box>
+          <Box>{props.children}</Box>
           {/* <Pagination page={page} /> */}
         </Box>
 
@@ -42,3 +44,5 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
     </Container>
   )
 }
+
+export default DocsLayout

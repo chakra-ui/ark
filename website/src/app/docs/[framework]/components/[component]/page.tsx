@@ -1,19 +1,22 @@
 import { allComponentDocuments } from '@/contentlayer'
-import Link from 'next/link'
+import { panda } from '@/panda/jsx'
+import { markdown } from '@/panda/recipes'
 
-export default function Page(props) {
+const Page = (props) => {
   const { params } = props
+  const document = allComponentDocuments.find((document) => document.name === params.component)
+
   return (
-    <>
-      <h1>Hello, Next.js!</h1>
-      <p>Framnework: {params.framework}</p>
-      <p>Componetn: {params.component}</p>
-      <Link href="/dashboard">Dashboard</Link>
-    </>
+    <panda.article
+      className={markdown()}
+      dangerouslySetInnerHTML={{ __html: document.body.html }}
+    />
   )
 }
 
-export async function generateStaticParams() {
+export default Page
+
+export const generateStaticParams = () => {
   const frameworks = ['react', 'solid', 'vue']
   return allComponentDocuments.flatMap((component) =>
     frameworks.map((framework) => ({

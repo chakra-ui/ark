@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import { parse } from 'path'
+import { startCase } from 'lodash-es'
 
 export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
@@ -7,7 +7,16 @@ export const ComponentDocument = defineDocumentType(() => ({
   computedFields: {
     name: {
       type: 'string',
-      resolve: (doc) => parse(doc._raw.sourceFileName).name,
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+    },
+    title: {
+      type: 'string',
+      resolve: (doc) => startCase(doc._raw.sourceFileName.replace(/\.mdx$/, '')),
+    },
+    url: {
+      type: 'string',
+      // TODO add support for solid and vue
+      resolve: (doc) => '/docs/react/components/' + doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
   },
 }))
