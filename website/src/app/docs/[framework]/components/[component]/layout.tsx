@@ -1,10 +1,10 @@
 import { Text } from '@/components/shared/Text'
 import { Sidebar } from '@/components/Sidebar'
-import { allComponentDocuments } from '@/contentlayer'
+import { getComponentDocuments } from '@/lib/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { PropsWithChildren } from 'react'
 
-const sidebarItems = allComponentDocuments.map((doc) => ({ title: doc.title, url: doc.url }))
+const sidebarItems = getComponentDocuments().map((doc) => ({ title: doc.title, url: doc.url }))
 
 const DocsLayout = (props: PropsWithChildren) => {
   return (
@@ -13,7 +13,6 @@ const DocsLayout = (props: PropsWithChildren) => {
         <Sidebar items={sidebarItems} />
         <Box flex="1" py="8" maxWidth={{ xl: '43rem' }}>
           <Box>{props.children}</Box>
-          {/* <Pagination page={page} /> */}
         </Box>
 
         <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px">

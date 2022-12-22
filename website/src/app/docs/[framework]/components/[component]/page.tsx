@@ -1,18 +1,32 @@
+import { Footer } from '@/components/Footer'
 import { Markdown } from '@/components/Markdown'
-import { allComponentDocuments } from '@/contentlayer'
+import {
+  findComponentDocumentByName,
+  findNextComponentDocument,
+  findPreviousComponentDocument,
+  getComponentDocuments,
+} from '@/lib/contentlayer'
 
 const Page = (props) => {
   const { params } = props
-  const document = allComponentDocuments.find((document) => document.name === params.component)
+  const document = findComponentDocumentByName(params.component)
 
-  return <Markdown markdown={document.body.code} />
+  const prevDocument = findPreviousComponentDocument(document)
+  const nextDocument = findNextComponentDocument(document)
+
+  return (
+    <>
+      <Markdown markdown={document.body.code} />
+      <Footer prevPage={prevDocument} nextPage={nextDocument} />
+    </>
+  )
 }
 
 export default Page
 
 export const generateStaticParams = () => {
   const frameworks = ['react', 'solid', 'vue']
-  return allComponentDocuments.flatMap((component) =>
+  return getComponentDocuments().flatMap((component) =>
     frameworks.map((framework) => ({
       framework,
       component: component.name,
