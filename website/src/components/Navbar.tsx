@@ -2,7 +2,7 @@ import { css } from '@/panda/css'
 import { Box, Container, HStack } from '@/panda/jsx'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { DarkModeButton } from './DarkModeButton'
+import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
 
 export const Navbar = () => {
@@ -34,7 +34,7 @@ export const Navbar = () => {
             borderRadius="sm"
             display={{ base: 'none' }}
           />
-          <DarkModeButton defaultValue={colorMode} />
+          <ColorModeButton defaultValue={colorMode} />
         </HStack>
       </Container>
     </nav>

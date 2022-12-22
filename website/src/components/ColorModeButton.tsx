@@ -5,7 +5,7 @@ import { Button } from './shared/Button'
 type DarkModeButton = UseColorModeProps
 
 // TODO use IconButton
-export const DarkModeButton = (props: DarkModeButton) => {
+export const ColorModeButton = (props: DarkModeButton) => {
   const { colorMode, toggle } = useColorMode(props)
   return (
     <Button variant="tertiary" size="md" onClick={toggle}>
