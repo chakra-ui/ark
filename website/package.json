@@ -20,7 +20,11 @@
     "next": "13.0.4",
     "next-contentlayer": "0.2.9",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rehype": "12.0.1",
+    "rehype-autolink-headings": "6.1.1",
+    "rehype-slug": "5.1.0",
+    "shiki": "0.12.1"
   },
   "devDependencies": {
     "@types/lodash-es": "4.17.6",
