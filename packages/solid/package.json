@@ -61,17 +61,17 @@
     "@types/testing-library__jest-dom": "5.14.5",
     "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",
-    "@vitest/coverage-c8": "0.26.0",
+    "@vitest/coverage-c8": "0.26.2",
     "clean-package": "2.2.0",
     "eslint": "8.30.0",
     "jsdom": "20.0.3",
     "solid-js": "1.6.6",
     "solid-testing-library": "0.5.0",
     "typescript": "4.9.4",
-    "vite": "4.0.2",
+    "vite": "4.0.3",
     "vite-plugin-dts": "1.7.1",
     "vite-plugin-solid": "2.5.0",
-    "vitest": "0.26.1"
+    "vitest": "0.26.2"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
