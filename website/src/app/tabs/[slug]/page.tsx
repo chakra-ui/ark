@@ -1,5 +1,6 @@
 import { PageTabs } from '../../../components/PageTabs'
 
+// TODO remove me
 export default function Page({ params }) {
   return (
     <>

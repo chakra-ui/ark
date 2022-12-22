@@ -7,6 +7,7 @@ type PageTabsProps = {
   value: string
 }
 
+// TODO integrate in docs page
 export const PageTabs = (props: PageTabsProps) => {
   const { value } = props
   const router = useRouter()
