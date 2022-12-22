@@ -1,6 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import { startCase } from 'lodash-es'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 
 export const ComponentDocument = defineDocumentType(() => ({
@@ -31,6 +32,7 @@ export default makeSource({
   mdx: {
     rehypePlugins: [
       [
+        rehypePrism,
         rehypeSlug,
         rehypeAutolinkHeadings,
         {

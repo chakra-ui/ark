@@ -23,6 +23,7 @@
     "react-dom": "18.2.0",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
+    "rehype-prism-plus": "1.5.0",
     "rehype-slug": "5.1.0",
     "shiki": "0.12.1"
   },
