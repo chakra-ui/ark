@@ -1,5 +1,5 @@
 import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
-import { AbsoluteCenter, Box } from '../../../panda/jsx'
+import { Box } from '../../../panda/jsx'
 
 function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
@@ -9,6 +9,9 @@ function lazyNamedImport<
 }
 
 const presets = {
+  accordion: {
+    component: lazyNamedImport(import('../demo/Accordion'), 'DemoAccordion'),
+  },
   dialog: {
     component: lazyNamedImport(import('../demo/Dialog'), 'DemoDialog'),
   },
@@ -66,14 +69,17 @@ export const Playground = (props: PlaygroundProps) => {
 
 const Canvas = (props: PropsWithChildren) => (
   <Box
-    position="relative"
-    flex="1"
+    alignItems="center"
     bgImage={{
       base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
       _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
     }}
     bgSize="16px 16px"
+    display="flex"
+    flex="1"
+    justifyContent="center"
+    p="6"
   >
-    <AbsoluteCenter>{props.children}</AbsoluteCenter>
+    {props.children}
   </Box>
 )
