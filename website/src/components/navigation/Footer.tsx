@@ -1,6 +1,6 @@
 import { Box } from '@/panda/jsx'
 import { ChevronLeft, ChevronRight } from 'react-feather'
-import { Button } from '../shared/Button'
+import { PageButton } from './PageButton'
 
 type Page = {
   url: string
@@ -18,14 +18,13 @@ export const Footer = (props: FooterProps) => {
   return (
     <Box display="flex" my="12" width="full">
       {prevPage && (
-        <Button as="a" href={prevPage.url} variant="link" size="md" leftIcon={<ChevronLeft />}>
+        <PageButton href={prevPage.url} variant="link" size="md" leftIcon={<ChevronLeft />}>
           {prevPage.title}
-        </Button>
+        </PageButton>
       )}
 
       {nextPage && (
-        <Button
-          as="a"
+        <PageButton
           variant="link"
           href={nextPage.url}
           size="md"
@@ -33,7 +32,7 @@ export const Footer = (props: FooterProps) => {
           ml="auto"
         >
           {nextPage.title}
-        </Button>
+        </PageButton>
       )}
     </Box>
   )
