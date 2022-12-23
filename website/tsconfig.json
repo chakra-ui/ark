@@ -1,25 +1,10 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "baseUrl": ".",
+    "incremental": true,
+    "jsx": "preserve",
     "paths": {
       "@/panda/css": ["./panda/css"],
       "@/panda/jsx": ["./panda/jsx"],
@@ -27,7 +12,13 @@
       "@/panda/types": ["./panda/types"],
       "@/contentlayer": [".contentlayer/generated"],
       "@/*": ["src/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "target": "es6"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

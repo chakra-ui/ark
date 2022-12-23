@@ -6,10 +6,15 @@ import {
   findPreviousComponentDocument,
   getComponentDocuments,
 } from '@/lib/contentlayer'
+import { notFound } from 'next/navigation'
 
-const Page = (props) => {
+const Page = (props: any) => {
   const { params } = props
   const document = findComponentDocumentByName(params.component)
+
+  if (!document) {
+    return notFound()
+  }
 
   const prevDocument = findPreviousComponentDocument(document)
   const nextDocument = findNextComponentDocument(document)

@@ -1,7 +1,7 @@
 import { Navbar } from '@/components/navigation/navbar/Navbar'
 import { css, cx } from '@/panda/css'
 import { Inter, Roboto_Mono } from '@next/font/google'
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
 // TODO use panda for styling
 import '../../public/code.css'

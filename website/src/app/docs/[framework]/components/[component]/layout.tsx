@@ -3,7 +3,7 @@ import { Text } from '@/components/shared/Text'
 import { getComponentDocuments } from '@/lib/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
 
-const DocsLayout = (props) => {
+const DocsLayout = (props: any) => {
   const sidebarItems = getComponentDocuments().map((doc) => ({
     title: doc.title,
     url: doc.url,
