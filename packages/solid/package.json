@@ -55,7 +55,7 @@
     "@zag-js/tooltip": "0.2.5"
   },
   "devDependencies": {
-    "@testing-library/dom": "8.19.0",
+    "@testing-library/dom": "8.19.1",
     "@testing-library/jest-dom": "5.16.5",
     "@types/jsdom": "20.0.1",
     "@types/testing-library__jest-dom": "5.14.5",
