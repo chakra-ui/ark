@@ -1,15 +1,13 @@
 'use client'
-import { useColorMode, UseColorModeProps } from '@/lib/useColorMode'
+import { useColorMode } from '@/lib/useColorMode'
 import { Button } from './shared/Button'
 
-type DarkModeButton = UseColorModeProps
-
 // TODO use IconButton
-export const ColorModeButton = (props: DarkModeButton) => {
-  const { colorMode, toggle } = useColorMode(props)
+export const ColorModeButton = () => {
+  const { toggle } = useColorMode()
   return (
     <Button variant="tertiary" size="md" onClick={toggle}>
-      {colorMode}
+      Toggle ColorMode
     </Button>
   )
 }

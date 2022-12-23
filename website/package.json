@@ -20,7 +20,6 @@
     "next": "13.1.0",
     "next-contentlayer": "0.2.9",
     "react": "18.2.0",
-    "react-cookie": "4.1.1",
     "react-dom": "18.2.0",
     "react-feather": "2.0.10",
     "rehype": "12.0.1",
