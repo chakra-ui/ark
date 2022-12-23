@@ -26,7 +26,7 @@ export const Hero = () => (
             Get Started
           </PageButton>
           <Button size={{ base: 'xl', md: '2xl' }} variant="secondary">
-            Learn more
+            Learn more!
           </Button>
         </Stack>
       </Stack>
