@@ -1,6 +1,7 @@
 import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { Box, HStack, Stack } from '@/panda/jsx'
+import { PageLink } from './navigation/PageLink'
 
 type SidebarItem = {
   title: string
@@ -64,14 +65,14 @@ export const Sidebar = (props: SidebarProps) => {
           </Text>
           <Stack borderLeftWidth="1px" alignSelf="stretch">
             {props.items.map((item, id) => (
-              <Link
+              <PageLink
                 key={id}
                 href={item.url}
                 variant="sidebar"
                 aria-current={item.isActive ? 'page' : false}
               >
                 {item.title}
-              </Link>
+              </PageLink>
             ))}
           </Stack>
         </Stack>

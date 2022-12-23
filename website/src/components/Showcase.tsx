@@ -10,6 +10,9 @@ function lazyNamedImport<
 }
 
 const presets = {
+  accordion: {
+    component: lazyNamedImport(import('./demo/Accordion'), 'DemoAccordion'),
+  },
   dialog: {
     component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
   },
