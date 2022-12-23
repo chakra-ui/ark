@@ -1,4 +1,4 @@
-import { PageTabs } from '../../../components/PageTabs'
+import { PageTabs } from '@/components/navigation/PageTabs'
 
 // TODO remove me
 export default function Page({ params }) {

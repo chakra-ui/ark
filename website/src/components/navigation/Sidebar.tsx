@@ -1,7 +1,7 @@
 import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { Box, HStack, Stack } from '@/panda/jsx'
-import { PageLink } from './navigation/PageLink'
+import { PageLink } from './PageLink'
 
 type SidebarItem = {
   title: string

@@ -1,5 +1,5 @@
-import { Footer } from '@/components/Footer'
 import { Markdown } from '@/components/Markdown'
+import { Footer } from '@/components/navigation/Footer'
 import {
   findComponentDocumentByName,
   findNextComponentDocument,

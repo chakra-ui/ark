@@ -1,6 +1,6 @@
 import { Box } from '@/panda/jsx'
 import { ChevronLeft, ChevronRight } from 'react-feather'
-import { Button } from './shared/Button'
+import { Button } from '../shared/Button'
 
 type Page = {
   url: string
