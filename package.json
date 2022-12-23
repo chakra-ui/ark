@@ -5,15 +5,16 @@
   "type": "module",
   "workspaces": [
     "packages/*",
-    "docs"
+    "webiste"
   ],
   "scripts": {
+    "prepare": "husky install",
     "build": "turbo run build",
-    "doc": "pnpm --filter=@ark-ui/docs",
+    "exports:check": "ts-node scripts/check-exports.ts",
+    "exports:sync": "ts-node scripts/sync-exports.ts",
     "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
-    "prepare": "husky install",
     "react": "pnpm --filter=@ark-ui/react",
     "release": "changeset publish",
     "release:rc": "changeset publish --tag rc",
@@ -22,8 +23,7 @@
     "typecheck": "turbo run typecheck",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
-    "exports:check": "ts-node scripts/check-exports.ts",
-    "exports:sync": "ts-node scripts/sync-exports.ts"
+    "website": "pnpm --filter=@ark-ui/website"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.8",
@@ -37,7 +37,6 @@
     "husky": "8.0.2",
     "lint-staged": "13.1.0",
     "prettier": "2.8.1",
-    "prettier-plugin-astro": "0.7.0",
     "prettier-plugin-organize-imports": "3.2.1",
     "ts-node": "10.9.1",
     "turbo": "1.6.3",
