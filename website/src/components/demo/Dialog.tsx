@@ -42,7 +42,7 @@ export const DemoDialog = () => (
             </Stack>
           </Stack>
           <DialogCloseTrigger>
-            <CloseButton />
+            <CloseButton aria-label="Close dialog" />
           </DialogCloseTrigger>
         </DialogContent>
       </DialogContainer>

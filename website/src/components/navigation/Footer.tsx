@@ -1,5 +1,5 @@
 import { Box } from '@/panda/jsx'
-import { ChevronLeft, ChevronRight } from 'react-feather'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { PageButton } from './PageButton'
 
 type Page = {
@@ -18,7 +18,7 @@ export const Footer = (props: FooterProps) => {
   return (
     <Box display="flex" my="12" width="full">
       {prevPage && (
-        <PageButton href={prevPage.url} variant="link" size="md" leftIcon={<ChevronLeft />}>
+        <PageButton href={prevPage.url} variant="link" size="md" leftIcon={<FiChevronLeft />}>
           {prevPage.title}
         </PageButton>
       )}
@@ -28,7 +28,7 @@ export const Footer = (props: FooterProps) => {
           variant="link"
           href={nextPage.url}
           size="md"
-          rightIcon={<ChevronRight />}
+          rightIcon={<FiChevronRight />}
           ml="auto"
         >
           {nextPage.title}
