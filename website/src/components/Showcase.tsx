@@ -16,6 +16,9 @@ const presets = {
   dialog: {
     component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
   },
+  'hover-card': {
+    component: lazyNamedImport(import('./demo/HoverCard'), 'DemoHoverCard'),
+  },
   pagination: {
     component: lazyNamedImport(import('./demo/Pagination'), 'DemoPagination'),
   },
