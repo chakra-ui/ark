@@ -1,4 +1,5 @@
 import { accordion } from '@/theme/recipes/accordion'
+import { tagsInput } from '@/theme/recipes/tags-input'
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { dialog } from './src/theme/recipes/dialog'
@@ -200,6 +201,7 @@ export default defineConfig({
     popover,
     slider,
     tabs,
+    tagsInput,
     tooltip,
   },
 })

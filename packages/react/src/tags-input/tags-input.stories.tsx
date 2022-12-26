@@ -23,9 +23,9 @@ export const Basic = () => {
               <Fragment key={index}>
                 <Tag index={index} value={value}>
                   <span>{value}</span>
-                  <TagDeleteTrigger index={index} value={value}>
+                  {/* <TagDeleteTrigger index={index} value={value}>
                     <button>&#x2715;</button>
-                  </TagDeleteTrigger>
+                  </TagDeleteTrigger> */}
                 </Tag>
                 <TagInput index={index} value={value} />
               </Fragment>
