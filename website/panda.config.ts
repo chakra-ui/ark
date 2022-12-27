@@ -1,4 +1,5 @@
 import { accordion } from '@/theme/recipes/accordion'
+import { hoverCard } from '@/theme/recipes/hover-card'
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { dialog } from './src/theme/recipes/dialog'
@@ -97,7 +98,6 @@ export default defineConfig({
         ),
     },
   },
-
   semanticTokens: {
     colors: {
       fg: {
@@ -160,7 +160,6 @@ export default defineConfig({
       },
     },
   },
-
   globalCss: {
     html: {
       lineHeight: 1.5,
@@ -192,6 +191,7 @@ export default defineConfig({
     accordion,
     button,
     dialog,
+    hoverCard,
     input,
     link,
     markdown,
