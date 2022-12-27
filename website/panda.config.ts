@@ -1,4 +1,5 @@
 import { accordion } from '@/theme/recipes/accordion'
+import { radioGroup } from '@/theme/recipes/radio-group'
 import { defineConfig } from 'css-panda'
 import { button } from './src/theme/recipes/button'
 import { dialog } from './src/theme/recipes/dialog'
@@ -198,6 +199,7 @@ export default defineConfig({
     pagination,
     pinInput,
     popover,
+    radioGroup,
     slider,
     tabs,
     tooltip,

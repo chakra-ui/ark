@@ -25,6 +25,9 @@ const presets = {
   popover: {
     component: lazyNamedImport(import('./demo/Popover'), 'DemoPopover'),
   },
+  radioGroup: {
+    component: lazyNamedImport(import('./demo/RadioGroup'), 'DemoRadioGroup'),
+  },
   'range-slider': {
     component: lazyNamedImport(import('./demo/RangeSlider'), 'DemoRangeSlider'),
   },
