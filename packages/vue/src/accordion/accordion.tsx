@@ -1,14 +1,10 @@
-import type { connect } from '@zag-js/accordion'
-import { ComputedRef, defineComponent, PropType } from 'vue'
-import { createContext } from '../context'
+import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
-import { useAccordion } from './use-accordion'
+import { AccordionProvider } from './accordion-context'
+import { useAccordion, UseAccordionProps } from './use-accordion'
 
-export const [AccordionProvider, useAccordionContext] =
-  createContext<ComputedRef<ReturnType<typeof connect>>>('AccordionContext')
-
-const AccordionProps = {
+const VueAccordionProps = {
   defaultValue: {
     type: String,
   },
@@ -32,7 +28,7 @@ const AccordionProps = {
   },
 }
 
-export interface AccordionPropType extends HTMLArkProps<'div'> {
+export interface AccordionProps extends HTMLArkProps<'div'> {
   defaultValue?: string | string[]
   value?: string | string[]
   modelValue?: string | string[]
@@ -41,12 +37,17 @@ export interface AccordionPropType extends HTMLArkProps<'div'> {
   disable?: boolean
 }
 
-export const Accordion: ComponentWithProps<AccordionPropType> = defineComponent({
+export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({
   name: 'Accordion',
   emits: ['change', 'update:modelValue'],
-  props: AccordionProps,
+  props: VueAccordionProps,
   setup(props, { slots, attrs, emit }) {
-    const { api } = useAccordion(props, emit, props.modelValue || props.defaultValue)
+    const accordionProps = computed<UseAccordionProps>(() => ({
+      context: props,
+      emit,
+      defaultValue: props.modelValue || props.defaultValue,
+    }))
+    const { api } = useAccordion(accordionProps.value)
     AccordionProvider(api)
 
     return () => (

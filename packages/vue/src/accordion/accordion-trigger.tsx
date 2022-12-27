@@ -1,9 +1,14 @@
 import { cloneVNode, defineComponent, h } from 'vue'
 import { getValidChildren } from '../utils'
-import { useAccordionContext } from './accordion'
-import { useAccordionItemContext } from './accordion-item'
+import { useAccordionContext } from './accordion-context'
+import { useAccordionItemContext } from './accordion-item-context'
 
-export const AccordionTrigger = defineComponent({
+/** This type is here so that the script 'check-exports' passes
+ *  because in Vue we don't pass 'children' as props
+ */
+export type AccordionTriggerProps = Record<string, unknown>
+
+export const AccordionTrigger = defineComponent<AccordionTriggerProps>({
   setup(_, { slots, attrs }) {
     const api = useAccordionContext()
     const { value, disabled } = useAccordionItemContext()

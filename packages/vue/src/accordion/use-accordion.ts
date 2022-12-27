@@ -5,11 +5,16 @@ import { computed, getCurrentInstance, onMounted, reactive, watch } from 'vue'
 interface AccordionProps extends AccordionContext {
   modelValue?: string | string[]
 }
-export const useAccordion = (
-  context: Omit<AccordionProps, 'id'>,
-  emit: CallableFunction,
-  defaultValue?: string | string[],
-) => {
+
+export interface UseAccordionProps {
+  context: Omit<AccordionProps, 'id'>
+  emit: CallableFunction
+  defaultValue?: string | string[]
+}
+
+export const useAccordion = (props: UseAccordionProps) => {
+  const reactiveProps = reactive(props)
+  const { context, emit, defaultValue } = reactiveProps
   const reactiveContext = reactive(context)
   const instance = getCurrentInstance()
   const [state, send] = useMachine(
@@ -45,3 +50,5 @@ export const useAccordion = (
 
   return { api }
 }
+
+export type UseAccordionReturn = ReturnType<typeof useAccordion>
