@@ -9,7 +9,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@types/fs-extra': 9.0.13
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       fs-extra: 11.1.0
       globby: 13.1.3
       husky: 8.0.2
@@ -25,14 +25,14 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@types/fs-extra': 9.0.13
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       fs-extra: 11.1.0
       globby: 13.1.3
       husky: 8.0.2
       lint-staged: 13.1.0
       prettier: 2.8.1
       prettier-plugin-organize-imports: 3.2.1_2gbcgqmzq2pxiocqw2qs7hdeqe
-      ts-node: 10.9.1_moeqx3xmzxqxagf2sz6mqkbb7m
+      ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       turbo: 1.6.3
       typescript: 4.9.4
 
@@ -292,7 +292,7 @@ importers:
       '@ark-ui/react': workspace:*
       '@next/font': 13.1.1
       '@types/lodash-es': 4.17.6
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       concurrently: 7.6.0
@@ -316,7 +316,7 @@ importers:
       '@ark-ui/react': link:../packages/react
       '@next/font': 13.1.1
       contentlayer: 0.2.9
-      css-panda: 0.0.0-dev-20221220033401_yczpt4nfvvntt2u6pjdii3tfei
+      css-panda: 0.0.0-dev-20221220033401_mrcua6on6hkircfbujamvvrfhi
       lodash-es: 4.17.21
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       next-contentlayer: 0.2.9_q76c2b4vyoegvsbrcwkfvimnai
@@ -330,7 +330,7 @@ importers:
       usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@types/lodash-es': 4.17.6
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       concurrently: 7.6.0
@@ -1617,7 +1617,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.4
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
     dev: false
 
   /@grpc/proto-loader/0.6.13:
@@ -1690,7 +1690,7 @@ packages:
       '@jest/schemas': 29.0.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       '@types/yargs': 17.0.13
       chalk: 4.1.2
     dev: true
@@ -2590,7 +2590,7 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
     dev: true
 
   /@types/hast/2.3.4:
@@ -2704,6 +2704,10 @@ packages:
 
   /@types/node/18.11.17:
     resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
+    dev: true
+
+  /@types/node/18.11.18:
+    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -3626,7 +3630,7 @@ packages:
     hasBin: true
     dev: false
 
-  /astro/1.7.1_@types+node@18.11.17:
+  /astro/1.7.1_@types+node@18.11.18:
     resolution: {integrity: sha512-ENfHAm8/zYPgO5G1KJtCzt+hnTJaYdfjYqFWBB9PcBdxlHOOQvOd1zWCVX+uOvwKe8+ASUHXyyyULh3qlB5UUQ==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
@@ -3688,7 +3692,7 @@ packages:
       typescript: 4.9.4
       unist-util-visit: 4.1.1
       vfile: 5.3.6
-      vite: 3.2.5_@types+node@18.11.17
+      vite: 3.2.5_@types+node@18.11.18
       vitefu: 0.2.3_vite@3.2.5
       yargs-parser: 21.1.1
       zod: 3.20.2
@@ -4310,7 +4314,7 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  /css-panda/0.0.0-dev-20221220033401_yczpt4nfvvntt2u6pjdii3tfei:
+  /css-panda/0.0.0-dev-20221220033401_mrcua6on6hkircfbujamvvrfhi:
     resolution: {integrity: sha512-2vtXK6eUiG+6b/JGc4OF1eBCIOIpeVkOs7m3Dpfjp8h39bCfllGkQdTVWE1a3zlPvy1eGLkdDNKbXUHZqM5dMA==}
     hasBin: true
     dependencies:
@@ -4322,12 +4326,12 @@ packages:
       '@pandacss/shared': 0.0.0-dev-20221220033401
       '@pandacss/token-dictionary': 0.0.0-dev-20221220033401
       '@pandacss/types': 0.0.0-dev-20221220033401
-      astro: 1.7.1_@types+node@18.11.17
+      astro: 1.7.1_@types+node@18.11.18
       cac: 6.7.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router: 6.4.5_react@18.2.0
-      vite: 4.0.2_@types+node@18.11.17
+      vite: 4.0.2_@types+node@18.11.18
     transitivePeerDependencies:
       - '@types/node'
       - '@types/react'
@@ -6526,7 +6530,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.2.1
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       chalk: 4.1.2
       ci-info: 3.5.0
       graceful-fs: 4.2.10
@@ -8394,7 +8398,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       long: 4.0.0
     dev: false
 
@@ -8413,7 +8417,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       long: 5.2.1
     dev: false
 
@@ -9582,7 +9586,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node/10.9.1_moeqx3xmzxqxagf2sz6mqkbb7m:
+  /ts-node/10.9.1_awa2wsr5thmg3i7jqycphctjfq:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -9601,7 +9605,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -10093,7 +10097,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite/3.2.5_@types+node@18.11.17:
+  /vite/3.2.5_@types+node@18.11.18:
     resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -10118,7 +10122,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       esbuild: 0.15.18
       postcss: 8.4.20
       resolve: 1.22.1
@@ -10127,7 +10131,7 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vite/4.0.2_@types+node@18.11.17:
+  /vite/4.0.2_@types+node@18.11.18:
     resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -10152,7 +10156,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       esbuild: 0.16.10
       postcss: 8.4.20
       resolve: 1.22.1
@@ -10236,7 +10240,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.5_@types+node@18.11.17
+      vite: 3.2.5_@types+node@18.11.18
     dev: false
 
   /vitefu/0.2.3_vite@4.0.3:
