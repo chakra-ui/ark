@@ -16,6 +16,9 @@ const presets = {
   dialog: {
     component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
   },
+  'hover-card': {
+    component: lazyNamedImport(import('./demo/HoverCard'), 'DemoHoverCard'),
+  },
   pagination: {
     component: lazyNamedImport(import('./demo/Pagination'), 'DemoPagination'),
   },
@@ -36,6 +39,9 @@ const presets = {
   },
   tabs: {
     component: lazyNamedImport(import('./demo/Tabs'), 'DemoTabs'),
+  },
+  tagsInput: {
+    component: lazyNamedImport(import('./demo/TagsInput'), 'DemoTagsInput'),
   },
   tooltip: {
     component: lazyNamedImport(import('./demo/Tooltip'), 'DemoTooltip'),
