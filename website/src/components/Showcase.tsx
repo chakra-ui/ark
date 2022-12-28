@@ -22,14 +22,17 @@ const presets = {
   pagination: {
     component: lazyNamedImport(import('./demo/Pagination'), 'DemoPagination'),
   },
-  'pin-input': {
+  pinInput: {
     component: lazyNamedImport(import('./demo/PinInput'), 'DemoPinInput'),
   },
   popover: {
     component: lazyNamedImport(import('./demo/Popover'), 'DemoPopover'),
   },
-  'range-slider': {
+  rangeSlider: {
     component: lazyNamedImport(import('./demo/RangeSlider'), 'DemoRangeSlider'),
+  },
+  ratingGroup: {
+    component: lazyNamedImport(import('./demo/RatingGroup'), 'DemoRatingGroup'),
   },
   slider: {
     component: lazyNamedImport(import('./demo/Slider'), 'DemoSlider'),

@@ -9,6 +9,7 @@ import { markdown } from './src/theme/recipes/markdown'
 import { pagination } from './src/theme/recipes/pagination'
 import { pinInput } from './src/theme/recipes/pin-input'
 import { popover } from './src/theme/recipes/popover'
+import { ratingGroup } from './src/theme/recipes/rating-group'
 import { slider } from './src/theme/recipes/slider'
 import { tabs } from './src/theme/recipes/tabs'
 import { tagsInput } from './src/theme/recipes/tags-input'
@@ -199,6 +200,7 @@ export default defineConfig({
     pagination,
     pinInput,
     popover,
+    ratingGroup,
     slider,
     tabs,
     tagsInput,
