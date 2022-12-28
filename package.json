@@ -19,6 +19,7 @@
     "release": "changeset publish",
     "release:rc": "changeset publish --tag rc",
     "solid": "pnpm --filter=@ark-ui/solid",
+    "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
     "version": "changeset version",
