@@ -37,6 +37,9 @@ const presets = {
   tabs: {
     component: lazyNamedImport(import('./demo/Tabs'), 'DemoTabs'),
   },
+  tagsInput: {
+    component: lazyNamedImport(import('./demo/TagsInput'), 'DemoTagsInput'),
+  },
   tooltip: {
     component: lazyNamedImport(import('./demo/Tooltip'), 'DemoTooltip'),
   },
