@@ -10,6 +10,21 @@ export const Basic = () => (
   </Checkbox>
 )
 
+export const RenderProp = () => (
+  <Checkbox>
+    {(state) => (
+      <>
+        <CheckboxLabel>Checkbox</CheckboxLabel>
+        <CheckboxInput data-peer />
+        <CheckboxControl>
+          {state.isChecked && <span>✓</span>}
+          {state.isIndeterminate && <span>-</span>}
+        </CheckboxControl>
+      </>
+    )}
+  </Checkbox>
+)
+
 export const IndeterminateExample = () => {
   const [checkedItems, setCheckedItems] = useState([false, false])
 

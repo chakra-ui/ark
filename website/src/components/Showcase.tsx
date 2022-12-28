@@ -13,6 +13,9 @@ const presets = {
   accordion: {
     component: lazyNamedImport(import('./demo/Accordion'), 'DemoAccordion'),
   },
+  checkbox: {
+    component: lazyNamedImport(import('./demo/Checkbox'), 'DemoCheckbox'),
+  },
   dialog: {
     component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
   },

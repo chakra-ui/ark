@@ -1,6 +1,7 @@
 import { defineConfig } from 'css-panda'
 import { accordion } from './src/theme/recipes/accordion'
 import { button } from './src/theme/recipes/button'
+import { checkbox } from './src/theme/recipes/checkbox'
 import { dialog } from './src/theme/recipes/dialog'
 import { hoverCard } from './src/theme/recipes/hover-card'
 import { input } from './src/theme/recipes/input'
@@ -123,7 +124,7 @@ export default defineConfig({
         default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
         emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
         muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
-        subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.950}' } },
+        subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.900}' } },
       },
       border: {
         default: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
@@ -193,6 +194,7 @@ export default defineConfig({
   recipes: {
     accordion,
     button,
+    checkbox,
     dialog,
     hoverCard,
     input,
