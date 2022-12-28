@@ -128,6 +128,18 @@ export const button = defineRecipe({
       },
     },
     size: {
+      xs: parts({
+        root: {
+          h: '8',
+          minW: '8',
+          textStyle: 'xs',
+          px: '3',
+        },
+        icon: {
+          fontSize: '1.0rem',
+          '--icon-spacing': '0.5rem',
+        },
+      }),
       sm: parts({
         root: {
           h: '9',
