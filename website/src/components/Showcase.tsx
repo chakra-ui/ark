@@ -16,10 +16,13 @@ const presets = {
   dialog: {
     component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
   },
+  'hover-card': {
+    component: lazyNamedImport(import('./demo/HoverCard'), 'DemoHoverCard'),
+  },
   pagination: {
     component: lazyNamedImport(import('./demo/Pagination'), 'DemoPagination'),
   },
-  'pin-input': {
+  pinInput: {
     component: lazyNamedImport(import('./demo/PinInput'), 'DemoPinInput'),
   },
   popover: {
@@ -28,14 +31,20 @@ const presets = {
   radioGroup: {
     component: lazyNamedImport(import('./demo/RadioGroup'), 'DemoRadioGroup'),
   },
-  'range-slider': {
+  rangeSlider: {
     component: lazyNamedImport(import('./demo/RangeSlider'), 'DemoRangeSlider'),
+  },
+  ratingGroup: {
+    component: lazyNamedImport(import('./demo/RatingGroup'), 'DemoRatingGroup'),
   },
   slider: {
     component: lazyNamedImport(import('./demo/Slider'), 'DemoSlider'),
   },
   tabs: {
     component: lazyNamedImport(import('./demo/Tabs'), 'DemoTabs'),
+  },
+  tagsInput: {
+    component: lazyNamedImport(import('./demo/TagsInput'), 'DemoTagsInput'),
   },
   tooltip: {
     component: lazyNamedImport(import('./demo/Tooltip'), 'DemoTooltip'),

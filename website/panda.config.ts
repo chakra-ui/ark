@@ -1,16 +1,19 @@
-import { accordion } from '@/theme/recipes/accordion'
-import { radioGroup } from '@/theme/recipes/radio-group'
 import { defineConfig } from 'css-panda'
+import { accordion } from './src/theme/recipes/accordion'
 import { button } from './src/theme/recipes/button'
 import { dialog } from './src/theme/recipes/dialog'
+import { hoverCard } from './src/theme/recipes/hover-card'
 import { input } from './src/theme/recipes/input'
 import { link } from './src/theme/recipes/link'
 import { markdown } from './src/theme/recipes/markdown'
 import { pagination } from './src/theme/recipes/pagination'
 import { pinInput } from './src/theme/recipes/pin-input'
 import { popover } from './src/theme/recipes/popover'
+import { radioGroup } from './src/theme/recipes/radio-group'
+import { ratingGroup } from './src/theme/recipes/rating-group'
 import { slider } from './src/theme/recipes/slider'
 import { tabs } from './src/theme/recipes/tabs'
+import { tagsInput } from './src/theme/recipes/tags-input'
 import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
@@ -98,7 +101,6 @@ export default defineConfig({
         ),
     },
   },
-
   semanticTokens: {
     colors: {
       fg: {
@@ -161,7 +163,6 @@ export default defineConfig({
       },
     },
   },
-
   globalCss: {
     html: {
       lineHeight: 1.5,
@@ -193,6 +194,7 @@ export default defineConfig({
     accordion,
     button,
     dialog,
+    hoverCard,
     input,
     link,
     markdown,
@@ -200,8 +202,10 @@ export default defineConfig({
     pinInput,
     popover,
     radioGroup,
+    ratingGroup,
     slider,
     tabs,
+    tagsInput,
     tooltip,
   },
 })
