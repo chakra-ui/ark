@@ -1,6 +1,7 @@
 import { markdown } from '@/panda/recipes'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { panda } from 'panda/jsx'
+import { AnatomyStyleguide } from './AnatomyStyleguide'
 import { Showcase } from './Showcase'
 
 type MarkdownProps = {
@@ -12,7 +13,7 @@ export const Markdown = (props: MarkdownProps) => {
 
   return (
     <panda.article className={markdown()}>
-      <MDXComponent components={{ Showcase }} />
+      <MDXComponent components={{ Showcase, AnatomyStyleguide }} />
     </panda.article>
   )
 }
