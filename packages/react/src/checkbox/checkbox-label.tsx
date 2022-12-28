@@ -3,11 +3,11 @@ import { mergeProps } from '@zag-js/react'
 import { ark, HTMLArkProps } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxLabelProps = HTMLArkProps<'label'>
+export type CheckboxLabelProps = HTMLArkProps<'span'>
 
-export const CheckboxLabel = forwardRef<'label', CheckboxLabelProps>((props, ref) => {
+export const CheckboxLabel = forwardRef<'span', CheckboxLabelProps>((props, ref) => {
   const { labelProps } = useCheckboxContext()
   const mergedProps = mergeProps(labelProps, props)
 
-  return <ark.label {...mergedProps} ref={ref} />
+  return <ark.span {...mergedProps} ref={ref} />
 })

@@ -22,6 +22,7 @@
     "url": "https://github.com/chakra-ui/ark/issues"
   },
   "scripts": {
+    "build": "vite build",
     "lint": "eslint --ext .ts,.tsx src",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
@@ -30,6 +31,7 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
+    "@polymorphic-factory/vue": "0.2.0",
     "@zag-js/accordion": "0.2.5",
     "@zag-js/checkbox": "0.2.6",
     "@zag-js/dialog": "0.2.5",
@@ -51,19 +53,26 @@
     "@zag-js/vue": "0.2.3"
   },
   "devDependencies": {
-    "@testing-library/dom": "8.19.0",
+    "@testing-library/dom": "8.19.1",
+    "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
     "@testing-library/vue": "6.6.1",
-    "@typescript-eslint/eslint-plugin": "5.46.1",
-    "@typescript-eslint/parser": "5.46.1",
+    "@types/jsdom": "20.0.1",
+    "@types/testing-library__jest-dom": "5.14.5",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
     "@vitejs/plugin-vue": "4.0.0",
-    "@vitest/coverage-c8": "0.25.8",
+    "@vitejs/plugin-vue-jsx": "3.0.0",
+    "@vitest/coverage-c8": "0.26.2",
     "@vue/compiler-sfc": "3.2.45",
     "clean-package": "2.2.0",
-    "eslint": "8.29.0",
+    "eslint": "8.30.0",
+    "jsdom": "20.0.3",
+    "resize-observer-polyfill": "1.5.1",
     "typescript": "4.9.4",
-    "vite": "4.0.1",
-    "vitest": "0.25.8",
+    "vite": "4.0.3",
+    "vite-plugin-dts": "1.7.1",
+    "vitest": "0.26.2",
     "vue": "3.2.45"
   },
   "peerDependencies": {
