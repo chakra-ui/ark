@@ -29,8 +29,6 @@ export const checkbox = defineRecipe({
       display: 'flex',
       height: '5',
       justifyContent: 'center',
-      transitionProperty: 'base',
-      transitionDuration: '100',
       width: '5',
       _peerFocusVisible: {
         '--shadow': {
