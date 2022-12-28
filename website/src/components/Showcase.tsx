@@ -28,6 +28,9 @@ const presets = {
   pinInput: {
     component: lazyNamedImport(import('./demo/PinInput'), 'DemoPinInput'),
   },
+  pressable: {
+    component: lazyNamedImport(import('./demo/Pressable'), 'DemoPressable'),
+  },
   popover: {
     component: lazyNamedImport(import('./demo/Popover'), 'DemoPopover'),
   },
