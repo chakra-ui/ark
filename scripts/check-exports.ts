@@ -2,6 +2,16 @@ import { readFile } from 'fs/promises'
 import { globby } from 'globby'
 import path from 'path'
 
+// converts `export { Toast, type ToastProps } from './toast' ...` to  ['Toast']
+const findAllComponentExports = (fileContent?: string) =>
+  fileContent?.match(/(?<=export\s{).*(?=})/gm)?.flatMap((line) =>
+    line
+      .split(',')
+      .map((x) => x.trim())
+      .filter((x) => !x.startsWith('type '))
+      .filter((x) => /^[A-Z]\w*/.test(x)),
+  )
+
 /**
  * This script checks that all components have the same exports in all frameworks.
  */
@@ -34,7 +44,8 @@ const main = async () => {
           )
         )
           .filter(Boolean)
-          .every((val, i, arr) => val === arr[0]),
+          .map(findAllComponentExports)
+          .every((val, i, arr) => JSON.stringify(val) == JSON.stringify(arr[0])),
       })),
     )
   ).filter((x) => !x.isValid)
