@@ -1,21 +1,5 @@
+import { recipes } from '@/theme/recipes'
 import { defineConfig } from 'css-panda'
-import { accordion } from './src/theme/recipes/accordion'
-import { button } from './src/theme/recipes/button'
-import { checkbox } from './src/theme/recipes/checkbox'
-import { dialog } from './src/theme/recipes/dialog'
-import { hoverCard } from './src/theme/recipes/hover-card'
-import { input } from './src/theme/recipes/input'
-import { link } from './src/theme/recipes/link'
-import { markdown } from './src/theme/recipes/markdown'
-import { pagination } from './src/theme/recipes/pagination'
-import { pinInput } from './src/theme/recipes/pin-input'
-import { popover } from './src/theme/recipes/popover'
-import { radioGroup } from './src/theme/recipes/radio-group'
-import { ratingGroup } from './src/theme/recipes/rating-group'
-import { slider } from './src/theme/recipes/slider'
-import { tabs } from './src/theme/recipes/tabs'
-import { tagsInput } from './src/theme/recipes/tags-input'
-import { tooltip } from './src/theme/recipes/tooltip'
 
 export default defineConfig({
   preflight: true,
@@ -191,23 +175,5 @@ export default defineConfig({
       textDecoration: 'none',
     },
   },
-  recipes: {
-    accordion,
-    button,
-    checkbox,
-    dialog,
-    hoverCard,
-    input,
-    link,
-    markdown,
-    pagination,
-    pinInput,
-    popover,
-    radioGroup,
-    ratingGroup,
-    slider,
-    tabs,
-    tagsInput,
-    tooltip,
-  },
+  recipes,
 })
