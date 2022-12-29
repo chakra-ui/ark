@@ -19,7 +19,7 @@ const presets = {
   dialog: {
     component: lazyNamedImport(() => import('./demo/Dialog'), 'DemoDialog'),
   },
-  'hover-card': {
+  hoverCard: {
     component: lazyNamedImport(() => import('./demo/HoverCard'), 'DemoHoverCard'),
   },
   pagination: {
@@ -29,7 +29,7 @@ const presets = {
     component: lazyNamedImport(() => import('./demo/PinInput'), 'DemoPinInput'),
   },
   pressable: {
-    component: lazyNamedImport(import('./demo/Pressable'), 'DemoPressable'),
+    component: lazyNamedImport(() => import('./demo/Pressable'), 'DemoPressable'),
   },
   popover: {
     component: lazyNamedImport(() => import('./demo/Popover'), 'DemoPopover'),
