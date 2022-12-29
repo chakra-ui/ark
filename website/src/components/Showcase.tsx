@@ -22,6 +22,9 @@ const presets = {
   hoverCard: {
     component: lazyNamedImport(() => import('./demo/HoverCard'), 'DemoHoverCard'),
   },
+  numberInput: {
+    component: lazyNamedImport(() => import('./demo/NumberInput'), 'DemoNumberInput'),
+  },
   pagination: {
     component: lazyNamedImport(() => import('./demo/Pagination'), 'DemoPagination'),
   },
