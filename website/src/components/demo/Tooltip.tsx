@@ -1,3 +1,4 @@
+import { panda } from '@/panda/jsx'
 import {
   Tooltip,
   TooltipArrow,
@@ -8,7 +9,6 @@ import {
   TooltipTrigger,
 } from '@ark-ui/react'
 import { tooltip } from '../../../panda/recipes'
-import { Button } from '../shared/Button'
 
 export type DemoTooltipProps = Partial<TooltipProps> & {
   placement?: NonNullable<TooltipProps['positioning']>['placement']
@@ -19,9 +19,9 @@ export const DemoTooltip = (props: DemoTooltipProps) => {
   return (
     <Tooltip openDelay={0} closeDelay={200} positioning={{ placement }} {...tooltipProps}>
       <TooltipTrigger>
-        <Button size="sm" variant="tertiary">
-          hover me
-        </Button>
+        <panda.span textStyle="sm" fontWeight="medium">
+          Hover me
+        </panda.span>
       </TooltipTrigger>
       <TooltipPositioner className={tooltip({})}>
         <TooltipArrow>

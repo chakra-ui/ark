@@ -5,7 +5,7 @@ import { accordion } from '../../../panda/recipes'
 export const DemoAccordion = () => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Accordion defaultValue="panel-1" className={accordion()}>
+    <Accordion defaultValue="React" className={accordion()}>
       {items.map((item, id) => (
         <AccordionItem key={id} value={item}>
           {({ isOpen }) => (
