@@ -1,18 +1,14 @@
-import { Button, ButtonProps } from './Button'
+import { IconButton, IconButtonProps } from './IconButton'
 
-export const CloseButton = (props: ButtonProps) => {
-  // TODO IconButton
+export const CloseButton = (props: IconButtonProps) => {
   return (
     // @ts-expect-error typings are wrong
-    <Button
+    <IconButton
       variant="tertiary"
       size="md"
       position="absolute"
       top="4"
       right="4"
-      width="10"
-      height="10"
-      px="0"
       color="fg.muted"
       {...props}
     >
@@ -31,6 +27,6 @@ export const CloseButton = (props: ButtonProps) => {
           stroke-linejoin="round"
         />
       </svg>
-    </Button>
+    </IconButton>
   )
 }
