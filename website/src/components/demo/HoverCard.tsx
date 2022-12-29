@@ -21,7 +21,7 @@ export const DemoHoverCard = () => (
         <Avatar
           name="Segun Adebayo"
           src="https://avatars2.githubusercontent.com/u/6916170"
-          size="11"
+          size="10"
         />
       </a>
     </HoverCardTrigger>
