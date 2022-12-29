@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ark-ui/react'
-import { ChevronDown } from 'react-feather'
+import { FiChevronDown } from 'react-icons/fi'
 import { accordion } from '../../../panda/recipes'
 
 export const DemoAccordion = () => {
@@ -33,8 +33,6 @@ const AccordionIcon = (props: { isOpen: boolean }) => {
     transform: props.isOpen ? 'rotate(-180deg)' : undefined,
     transition: 'transform 0.2s',
     transformOrigin: 'center',
-    height: '1rem',
-    width: '1rem',
   }
-  return <ChevronDown style={iconStyles} />
+  return <FiChevronDown style={iconStyles} />
 }
