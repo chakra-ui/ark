@@ -8,6 +8,53 @@ const parts = defineParts(
     .build(),
 )
 
+const trigger = {
+  alignItems: 'center',
+  appearance: 'none',
+  cursor: 'pointer',
+  display: 'inline-flex',
+  fontWeight: 'semibold',
+  flex: '1',
+  justifyContent: 'center',
+  outline: 'none',
+  position: 'relative',
+  transitionProperty: 'base',
+  transitionDuration: '100',
+  transitionTimingFunction: 'ease-out',
+  userSelect: 'none',
+  verticalAlign: 'middle',
+  whiteSpace: 'nowrap',
+  background: 'bg.surface',
+  color: 'fg.emphasized',
+  _hover: {
+    background: 'bg.subtle',
+    _disabled: {
+      borderColor: 'border.default',
+      color: 'fg.subtle',
+      cursor: 'not-allowed',
+    },
+  },
+  _selected: {
+    background: 'bg.subtle',
+  },
+  _focusVisible: {
+    zIndex: 1,
+    '--shadow': {
+      base: 'colors.gray.100',
+      _dark: 'colors.gray.800',
+    },
+    boxShadow: '0 0 0 4px var(--shadow)',
+  },
+  _disabled: {
+    borderColor: 'border.default',
+    color: 'fg.subtle',
+    cursor: 'not-allowed',
+    _hover: {
+      background: 'bg.surface',
+    },
+  },
+}
+
 export const numberInput = defineRecipe({
   name: 'numberInput',
   description: 'A number input style',
@@ -46,5 +93,7 @@ export const numberInput = defineRecipe({
       color: 'fg.default',
       outline: 'none',
     },
+    decrementTrigger: trigger,
+    incrementTrigger: { ...trigger, borderBottomWidth: '1px', borderColor: 'border.emphasized' },
   }),
 })
