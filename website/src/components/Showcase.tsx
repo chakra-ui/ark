@@ -5,52 +5,52 @@ import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
 function lazyNamedImport<
   Module extends { [Key in MemberName]: ComponentType<any> },
   MemberName extends keyof Module,
->(modulePromise: Promise<Module>, memberName: MemberName) {
-  return React.lazy(async () => ({ default: (await modulePromise)[memberName] }))
+>(modulePromise: () => Promise<Module>, memberName: MemberName) {
+  return React.lazy(async () => ({ default: (await modulePromise())[memberName] }))
 }
 
 const presets = {
   accordion: {
-    component: lazyNamedImport(import('./demo/Accordion'), 'DemoAccordion'),
+    component: lazyNamedImport(() => import('./demo/Accordion'), 'DemoAccordion'),
   },
   checkbox: {
-    component: lazyNamedImport(import('./demo/Checkbox'), 'DemoCheckbox'),
+    component: lazyNamedImport(() => import('./demo/Checkbox'), 'DemoCheckbox'),
   },
   dialog: {
-    component: lazyNamedImport(import('./demo/Dialog'), 'DemoDialog'),
+    component: lazyNamedImport(() => import('./demo/Dialog'), 'DemoDialog'),
   },
   'hover-card': {
-    component: lazyNamedImport(import('./demo/HoverCard'), 'DemoHoverCard'),
+    component: lazyNamedImport(() => import('./demo/HoverCard'), 'DemoHoverCard'),
   },
   pagination: {
-    component: lazyNamedImport(import('./demo/Pagination'), 'DemoPagination'),
+    component: lazyNamedImport(() => import('./demo/Pagination'), 'DemoPagination'),
   },
   pinInput: {
-    component: lazyNamedImport(import('./demo/PinInput'), 'DemoPinInput'),
+    component: lazyNamedImport(() => import('./demo/PinInput'), 'DemoPinInput'),
   },
   popover: {
-    component: lazyNamedImport(import('./demo/Popover'), 'DemoPopover'),
+    component: lazyNamedImport(() => import('./demo/Popover'), 'DemoPopover'),
   },
   radioGroup: {
-    component: lazyNamedImport(import('./demo/RadioGroup'), 'DemoRadioGroup'),
+    component: lazyNamedImport(() => import('./demo/RadioGroup'), 'DemoRadioGroup'),
   },
   rangeSlider: {
-    component: lazyNamedImport(import('./demo/RangeSlider'), 'DemoRangeSlider'),
+    component: lazyNamedImport(() => import('./demo/RangeSlider'), 'DemoRangeSlider'),
   },
   ratingGroup: {
-    component: lazyNamedImport(import('./demo/RatingGroup'), 'DemoRatingGroup'),
+    component: lazyNamedImport(() => import('./demo/RatingGroup'), 'DemoRatingGroup'),
   },
   slider: {
-    component: lazyNamedImport(import('./demo/Slider'), 'DemoSlider'),
+    component: lazyNamedImport(() => import('./demo/Slider'), 'DemoSlider'),
   },
   tabs: {
-    component: lazyNamedImport(import('./demo/Tabs'), 'DemoTabs'),
+    component: lazyNamedImport(() => import('./demo/Tabs'), 'DemoTabs'),
   },
   tagsInput: {
-    component: lazyNamedImport(import('./demo/TagsInput'), 'DemoTagsInput'),
+    component: lazyNamedImport(() => import('./demo/TagsInput'), 'DemoTagsInput'),
   },
   tooltip: {
-    component: lazyNamedImport(import('./demo/Tooltip'), 'DemoTooltip'),
+    component: lazyNamedImport(() => import('./demo/Tooltip'), 'DemoTooltip'),
   },
 } satisfies Record<string, { component: React.ElementType }>
 
