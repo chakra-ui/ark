@@ -1,10 +1,8 @@
+import { pinInputAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('pinInput').parts('root', 'label', 'hiddenInput', 'input', 'control').build(),
-)
+const parts = defineParts(pinInputAnatomy.build())
 
 export const pinInput = defineRecipe({
   name: 'pinInput',

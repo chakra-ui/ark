@@ -1,22 +1,8 @@
+import { popoverAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('popover')
-    .parts(
-      'arrow',
-      'arrowTip',
-      'anchor',
-      'trigger',
-      'positioner',
-      'content',
-      'title',
-      'description',
-      'closeTrigger',
-    )
-    .build(),
-)
+const parts = defineParts(popoverAnatomy.build())
 
 export const popover = defineRecipe({
   name: 'popover',

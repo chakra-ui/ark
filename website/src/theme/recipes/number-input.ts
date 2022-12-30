@@ -1,12 +1,8 @@
+import { numberInputAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('numberInput')
-    .parts('root', 'label', 'input', 'control', 'incrementTrigger', 'decrementTrigger', 'scrubber')
-    .build(),
-)
+const parts = defineParts(numberInputAnatomy.build())
 
 const trigger = {
   alignItems: 'center',

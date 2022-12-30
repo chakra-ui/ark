@@ -1,10 +1,8 @@
+import { accordionAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('accordion').parts('root', 'item', 'trigger', 'content').build(),
-)
+const parts = defineParts(accordionAnatomy.build())
 
 export const accordion = defineRecipe({
   name: 'accordion',
