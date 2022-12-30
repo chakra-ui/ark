@@ -20,10 +20,10 @@ export const DemoToast = () => (
       <ToastPlacements>
         {(placements) =>
           placements.map((placement) => (
-            <ToastGroup key={placement} placement={placement}>
+            <ToastGroup key={placement} placement={placement} className={toastStyles()}>
               {(toasts) =>
                 toasts.map((toast) => (
-                  <Toast key={toast.id} toast={toast} className={toastStyles()}>
+                  <Toast key={toast.id} toast={toast}>
                     <Stack gap="4">
                       <Stack gap="1">
                         <ToastTitle />
@@ -35,7 +35,7 @@ export const DemoToast = () => (
                             Dismiss
                           </Button>
                         </ToastCloseTrigger>
-                        <Button variant="link" size="sm">
+                        <Button variant="link" size="sm" color="accent.default">
                           Show
                         </Button>
                       </Stack>
@@ -57,21 +57,21 @@ export const DemoToast = () => (
 
 const DemoToastWrapper = () => {
   const toast = useToast()
+
   return (
-    <div>
-      <button
-        onClick={() => {
-          toast.create({
-            title: 'Hello',
-            description: "I'm a toast",
-            placement: 'top-end',
-            duration: 10000000,
-            removeDelay: 0,
-          })
-        }}
-      >
-        Add top-end toast
-      </button>
-    </div>
+    <Button
+      variant="primary"
+      size="md"
+      onClick={() => {
+        toast.create({
+          title: 'Hello',
+          description: "I'm a toast",
+          placement: 'bottom-end',
+          removeDelay: 0,
+        })
+      }}
+    >
+      Add toast
+    </Button>
   )
 }

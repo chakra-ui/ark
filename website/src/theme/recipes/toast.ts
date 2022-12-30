@@ -1,10 +1,8 @@
+import { toastAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('toast').parts('group', 'root', 'title', 'description', 'closeTrigger').build(),
-)
+const parts = defineParts(toastAnatomy.build())
 
 export const toast = defineRecipe({
   name: 'toast',
@@ -16,6 +14,9 @@ export const toast = defineRecipe({
       borderWidth: '1px',
       boxShadow: 'lg',
       minWidth: 'xs',
+      p: '4',
+    },
+    group: {
       p: '4',
     },
     title: {
