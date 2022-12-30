@@ -51,7 +51,7 @@ importers:
       '@typescript-eslint/parser': 5.47.1
       '@vitejs/plugin-react': 3.0.0
       '@vitest/coverage-c8': 0.26.2
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -86,7 +86,7 @@ importers:
       vitest: 0.26.2
     dependencies:
       '@polymorphic-factory/react': 0.2.2_react@18.2.0
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -143,7 +143,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.47.1
       '@typescript-eslint/parser': 5.47.1
       '@vitest/coverage-c8': 0.26.2
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -176,7 +176,7 @@ importers:
       vitest: 0.26.2
     dependencies:
       '@polymorphic-factory/solid': 0.1.3_solid-js@1.6.6
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -231,7 +231,7 @@ importers:
       '@vitejs/plugin-vue-jsx': 3.0.0
       '@vitest/coverage-c8': 0.26.2
       '@vue/compiler-sfc': 3.2.45
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -261,7 +261,7 @@ importers:
       vue: 3.2.45
     dependencies:
       '@polymorphic-factory/vue': 0.2.0_vue@3.2.45
-      '@zag-js/accordion': 0.2.5
+      '@zag-js/accordion': 0.2.6
       '@zag-js/checkbox': 0.2.6
       '@zag-js/dialog': 0.2.5
       '@zag-js/editable': 0.2.6
@@ -3120,12 +3120,12 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@zag-js/accordion/0.2.5:
-    resolution: {integrity: sha512-nE789nz0BnwFgBgp2QvAkL37wNA0AdGqoE6OZxJVel+gfSir2MgtHoq9RSSYv3vFrLKvW71nwnFJWfqA3NlJuQ==}
+  /@zag-js/accordion/0.2.6:
+    resolution: {integrity: sha512-ott0fxa5l9p1ZC4078UC0wpy8s4ttTkRQ7NRbE4puN9gV2bk1Hm+aaFZkxTE0Dp5ZS1+7wRwVaDPuC+q6edXpw==}
     dependencies:
-      '@zag-js/anatomy': 0.1.2
-      '@zag-js/core': 0.2.3
-      '@zag-js/types': 0.3.1
+      '@zag-js/anatomy': 0.1.3
+      '@zag-js/core': 0.2.4
+      '@zag-js/types': 0.3.2
     dev: false
 
   /@zag-js/anatomy/0.1.1:
@@ -3134,6 +3134,10 @@ packages:
 
   /@zag-js/anatomy/0.1.2:
     resolution: {integrity: sha512-sj+KuCdPG+wAkAeyROXbN9FbVLTrDZk3N/Am1lL+TQKmZH28NRezt0Wf9arVHCJ+mDnZhW173CoxZ8B5cKT8Kw==}
+    dev: false
+
+  /@zag-js/anatomy/0.1.3:
+    resolution: {integrity: sha512-jiXEJ9aMmLs/0lGTOjrji7ug8QKwM0EpLfzStzTJ7TOSCLaASyKqGsL6J9pRDl6Zo2n/DgjdQY5gjGMNNhtHow==}
     dev: false
 
   /@zag-js/aria-hidden/0.2.0:
@@ -3163,6 +3167,13 @@ packages:
     resolution: {integrity: sha512-+YjI1cPnvd3DEuWEO/MWg88OrV6Wh5uO1c0Azb6+9QOrlKfBTEGPJUy5KWd2greyTw9oXyUJX3CsEw8YbRVTIw==}
     dependencies:
       '@zag-js/store': 0.2.1
+      klona: 2.0.5
+    dev: false
+
+  /@zag-js/core/0.2.4:
+    resolution: {integrity: sha512-T+4xCjCShGjMb+3gmLga/auZ6ID1cdkJC4XwsCAFomJRxnyh6/at6OGLi1Ln0L/+DdXBvksLku/DwwKe4UkB7g==}
+    dependencies:
+      '@zag-js/store': 0.2.2
       klona: 2.0.5
     dev: false
 
@@ -3379,6 +3390,12 @@ packages:
       proxy-compare: 2.3.0
     dev: false
 
+  /@zag-js/store/0.2.2:
+    resolution: {integrity: sha512-epHzWquai5l4SDkTuyWmbJUz8VUFmdx0BAUuonbz6lMv24e+HODRegHMgtLjTgF6KHg6+30X07k9gCxOsrrZsQ==}
+    dependencies:
+      proxy-compare: 2.3.0
+    dev: false
+
   /@zag-js/tabs/0.2.5:
     resolution: {integrity: sha512-D1anNWJYAvb2A7Jw3Gr8J52wPiK5uBtsVuNjaPQNakhgen6vGRNIFKWvO+ym37jde0UIOrj5Gs3H0TB0KdhW6w==}
     dependencies:
@@ -3417,6 +3434,12 @@ packages:
 
   /@zag-js/types/0.3.1:
     resolution: {integrity: sha512-mSGkt+mqmvE+E6RAR1py74Pbzb5q2HjhijkpsUojHsDa+DIX9KJ2XTKGt9Dv3qxqwY81/pQdBQFNLDNKMAeYdQ==}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
+
+  /@zag-js/types/0.3.2:
+    resolution: {integrity: sha512-ADOFgW8vccD4h94nBGJZdzM5GVKK/lAssL7HH+hTo+tiWczOEbPT20p2/YSBz5Xy7QpEIdQB6bZ373f0h1FaSQ==}
     dependencies:
       csstype: 3.1.1
     dev: false

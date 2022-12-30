@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.2.2",
-    "@zag-js/accordion": "0.2.5",
+    "@zag-js/accordion": "0.2.6",
     "@zag-js/checkbox": "0.2.6",
     "@zag-js/dialog": "0.2.5",
     "@zag-js/editable": "0.2.6",
