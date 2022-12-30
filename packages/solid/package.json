@@ -33,7 +33,7 @@
   "dependencies": {
     "@polymorphic-factory/solid": "0.1.3",
     "@zag-js/accordion": "0.2.5",
-    "@zag-js/checkbox": "0.2.6",
+    "@zag-js/checkbox": "0.2.7",
     "@zag-js/dialog": "0.2.5",
     "@zag-js/editable": "0.2.6",
     "@zag-js/hover-card": "0.1.5",
