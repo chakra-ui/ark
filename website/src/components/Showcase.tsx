@@ -55,6 +55,9 @@ const presets = {
   tagsInput: {
     component: lazyNamedImport(() => import('./demo/TagsInput'), 'DemoTagsInput'),
   },
+  toast: {
+    component: lazyNamedImport(() => import('./demo/Toast'), 'DemoToast'),
+  },
   tooltip: {
     component: lazyNamedImport(() => import('./demo/Tooltip'), 'DemoTooltip'),
   },

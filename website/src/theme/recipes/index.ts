@@ -15,6 +15,7 @@ import { ratingGroup } from './rating-group'
 import { slider } from './slider'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
+import { toast } from './toast'
 import { tooltip } from './tooltip'
 
 export const recipes = {
@@ -35,5 +36,6 @@ export const recipes = {
   slider,
   tabs,
   tagsInput,
+  toast,
   tooltip,
 }
