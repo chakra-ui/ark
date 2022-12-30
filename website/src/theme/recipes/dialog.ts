@@ -1,12 +1,8 @@
+import { dialogAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('dialog')
-    .parts('trigger', 'backdrop', 'container', 'content', 'title', 'description', 'closeTrigger')
-    .build(),
-)
+const parts = defineParts(dialogAnatomy.build())
 
 export const dialog = defineRecipe({
   name: 'dialog',

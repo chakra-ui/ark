@@ -1,12 +1,8 @@
+import { tabsAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('tabs')
-    .parts('root', 'tablist', 'trigger', 'contentGroup', 'content', 'indicator')
-    .build(),
-)
+const parts = defineParts(tabsAnatomy.build())
 
 export const tabs = defineRecipe({
   name: 'tabs',

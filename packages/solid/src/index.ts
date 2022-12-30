@@ -1,3 +1,4 @@
+export { createAnatomy } from '@zag-js/anatomy'
 export * from './accordion'
 export * from './checkbox'
 export * from './dialog'

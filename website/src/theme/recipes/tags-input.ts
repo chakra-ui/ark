@@ -1,22 +1,8 @@
+import { tagsInputAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('tagsInput')
-    .parts(
-      'root',
-      'label',
-      'control',
-      'input',
-      'clearTrigger',
-      'hiddenInput',
-      'tag',
-      'tagInput',
-      'tagDeleteTrigger',
-    )
-    .build(),
-)
+const parts = defineParts(tagsInputAnatomy.build())
 
 export const tagsInput = defineRecipe({
   name: 'tagsInput',

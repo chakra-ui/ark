@@ -1,12 +1,8 @@
+import { paginationAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('pagination')
-    .parts('root', 'list', 'pageTrigger', 'ellipsis', 'prevPageTrigger', 'nextPageTrigger')
-    .build(),
-)
+const parts = defineParts(paginationAnatomy.build())
 
 export const pagination = defineRecipe({
   name: 'pagination',
