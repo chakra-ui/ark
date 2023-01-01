@@ -156,6 +156,9 @@ export default defineConfig({
       WebkitFontSmoothing: 'antialiased',
       WebkitTextSizeAdjust: '100%',
       height: '100%',
+      _dark: {
+        colorScheme: 'dark',
+      },
     },
     body: {
       backgroundColor: 'bg.canvas',
