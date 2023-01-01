@@ -1,5 +1,6 @@
 import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
+import { css } from '@/panda/css'
 import { Box, HStack, Stack } from '@/panda/jsx'
 import { PageLink } from './PageLink'
 
@@ -17,10 +18,16 @@ export const Sidebar = (props: SidebarProps) => {
   return (
     <Box
       as="aside"
-      minW="256px"
-      position="sticky"
+      className={css({
+        '--header-height': 'sizes.16',
+      })}
       display={{ base: 'none', lg: 'block' }}
-      top="92px"
+      position="sticky"
+      top="var(--header-height)"
+      minW="64"
+      py="8"
+      maxH="calc(100vh - var(--header-height))"
+      overflowY="auto"
     >
       <Stack gap="12">
         <Stack
