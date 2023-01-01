@@ -156,15 +156,15 @@ export default defineConfig({
       WebkitFontSmoothing: 'antialiased',
       WebkitTextSizeAdjust: '100%',
       height: '100%',
-      _dark: {
-        colorScheme: 'dark',
-      },
     },
     body: {
       backgroundColor: 'bg.canvas',
       color: 'fg.default',
       fontFamily: 'var(--font-inter), sans-serif',
       height: '100%',
+      _dark: {
+        colorScheme: 'dark',
+      },
     },
     '*, *::before, *::after': {
       borderColor: 'border.default',
