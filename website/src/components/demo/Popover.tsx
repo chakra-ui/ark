@@ -14,7 +14,6 @@ import { Stack } from '../../../panda/jsx'
 import { popover } from '../../../panda/recipes'
 import { Button } from '../shared/Button'
 import { Input } from '../shared/Input'
-import { Link } from '../shared/Link'
 
 export const DemoPopover = (props: Partial<PopoverProps>) => (
   <Popover {...props}>
@@ -38,13 +37,13 @@ export const DemoPopover = (props: Partial<PopoverProps>) => (
           <Input variant="outline" size="sm" />
           <Stack direction="row" gap="3">
             <PopoverCloseTrigger>
-              <Link textStyle="sm" color="fg.muted" fontWeight="semibold">
-                Cancel
-              </Link>
+              <Button variant="link" size="sm">
+                Dismiss
+              </Button>
             </PopoverCloseTrigger>
-            <Link textStyle="sm" color="accent.default" fontWeight="semibold">
-              Submit
-            </Link>
+            <Button variant="link" size="sm" color="accent.default">
+              Show
+            </Button>
           </Stack>
         </Stack>
       </PopoverContent>
