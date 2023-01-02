@@ -12,6 +12,7 @@
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
+    "docs:write:styleguides": "node scripts/write-styleguides.mjs",
     "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
