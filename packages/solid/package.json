@@ -28,7 +28,8 @@
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
     "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "postpack": "clean-package restore",
+    "gen:docs": "ts-node ../../scripts/generate-type-docs.ts"
   },
   "dependencies": {
     "@polymorphic-factory/solid": "0.1.3",
