@@ -69,6 +69,7 @@ export default defineConfig({
     },
     sizes: {
       '15': { value: '3.75rem' },
+      '18': { value: '4.5rem' },
     },
   },
   patterns: {
@@ -173,6 +174,25 @@ export default defineConfig({
     },
     a: {
       textDecoration: 'none',
+    },
+    th: {
+      color: 'fg.muted',
+      fontWeight: 'medium',
+      px: '6',
+      py: '3',
+      textAlign: 'left',
+      textStyle: 'xs',
+    },
+    td: {
+      borderTopWidth: '1px',
+      color: 'fg.muted',
+      height: '18',
+      px: '6',
+      textStyle: 'sm',
+      _first: {
+        color: 'fg.default',
+        fontWeight: 'medium',
+      },
     },
   },
   recipes,
