@@ -1,5 +1,5 @@
+import { Link, LinkProps } from '@/components/shared/Link'
 import NextLink from 'next/link'
-import { Link, LinkProps } from '../shared/Link'
 
 export const PageLink = (props: LinkProps) => {
   const { href, ...rest } = props

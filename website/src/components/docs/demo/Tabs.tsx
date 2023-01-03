@@ -1,5 +1,5 @@
+import { tabs } from '@/panda/recipes'
 import { TabIndicator, TabList, Tabs, TabsProps, TabTrigger } from '@ark-ui/react'
-import { tabs } from '../../../panda/recipes'
 
 export const DemoTabs = (props: Partial<TabsProps>) => (
   <Tabs className={tabs({})} defaultValue="react" {...props}>

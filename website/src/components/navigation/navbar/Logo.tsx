@@ -1,6 +1,6 @@
+import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Stack } from '@/panda/jsx'
-import { Text } from '../../shared/Text'
 
 export const Logo = () => (
   <Stack gap="2" direction="row" align="center">

@@ -1,3 +1,5 @@
+import { Button } from '@/components/shared/Button'
+import { CloseButton } from '@/components/shared/CloseButton'
 import { Stack } from '@/panda/jsx'
 import { toast as toastStyles } from '@/panda/recipes'
 import {
@@ -11,8 +13,6 @@ import {
   ToastTitle,
   useToast,
 } from '@ark-ui/react'
-import { Button } from '../shared/Button'
-import { CloseButton } from '../shared/CloseButton'
 
 export const DemoToast = () => (
   <ToastProvider>

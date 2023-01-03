@@ -1,6 +1,6 @@
 'use client'
+import { Button } from '@/components/shared/Button'
 import { useColorMode } from '@/lib/useColorMode'
-import { Button } from '../../shared/Button'
 
 // TODO use IconButton
 export const ColorModeButton = () => {

@@ -1,9 +1,9 @@
+import { Playground } from '@/components/docs/Playground'
 import { Markdown } from '@/components/Markdown'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { Footer } from '@/components/navigation/Footer'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
-import { Showcase } from '@/components/Showcase'
 import {
   findComponentDocumentById,
   findNextComponentDocument,
@@ -41,8 +41,7 @@ const Page = (props: any) => {
           </Text>
         </Stack>
         <ComponentTabs
-          // @ts-expect-error either use a string or cast the document id @tim
-          showcase={<Showcase preset={document.id} />}
+          showcase={<Playground component={document.id} />}
           overview={<Markdown markdown={document.body.code} />}
         />
       </Stack>
