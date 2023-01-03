@@ -286,9 +286,8 @@ dist
 # Turbo
 .turbo
 
-# Docusaurus
-.docusaurus
-.cache-loader
+# generated files by scripts/generate-type-docs.ts
+**/generated-type-docs/*
 
 ## CSS Panda
 panda

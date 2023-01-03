@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs from 'fs-extra'
 import path from 'node:path'
 import ts from 'typescript'
 
@@ -98,5 +98,11 @@ const typeSearch = createTypeSearch('tsconfig.json', shouldIgnoreExternalPropert
 const searchTerm = /.*Props$/
 const result = typeSearch(searchTerm)
 
-console.log(JSON.stringify(result, null, 2))
-fs.writeFileSync('typedocs.json', JSON.stringify(result, null, 2))
+const outDir = 'generated-type-docs'
+await fs.mkdirp(outDir)
+await Promise.all(
+  Object.entries(result).map(async ([typeName, properties]) => {
+    const outPath = path.join(outDir, `${typeName}.json`)
+    await fs.writeFile(outPath, JSON.stringify(properties, null, 2))
+  }),
+)
