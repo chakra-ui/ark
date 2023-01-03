@@ -10,7 +10,7 @@ type ComponentTabsProps = {
 }
 
 export const ComponentTabs = (props: ComponentTabsProps) => (
-  <Tabs className={tabs({ size: 'sm' })} defaultValue="props">
+  <Tabs className={tabs({ size: 'sm' })} defaultValue="overview">
     <TabList>
       <TabTrigger value="overview">
         <button>Overview</button>
