@@ -5,7 +5,8 @@ import { Stack } from 'panda/jsx/stack'
 
 type ComponentTabsProps = {
   overview: React.ReactNode
-  showcase: React.ReactNode
+  playground: React.ReactNode
+  properties: React.ReactNode
 }
 
 export const ComponentTabs = (props: ComponentTabsProps) => (
@@ -15,7 +16,7 @@ export const ComponentTabs = (props: ComponentTabsProps) => (
         <button>Overview</button>
       </TabTrigger>
       <TabTrigger value="props">
-        <button>Props</button>
+        <button>Properties</button>
       </TabTrigger>
       <TabTrigger value="styling">
         <button>Styling</button>
@@ -23,14 +24,12 @@ export const ComponentTabs = (props: ComponentTabsProps) => (
       <TabIndicator />
     </TabList>
     <TabContent value="overview">
-      <Stack gap="12" mt="12">
-        {props.showcase}
+      <Stack gap="12">
+        {props.playground}
         {props.overview}
       </Stack>
     </TabContent>
-    <TabContent value="props">
-      <h2>Props</h2>
-    </TabContent>
+    <TabContent value="props">{props.properties}</TabContent>
     <TabContent value="styling">
       <h2>Styling</h2>
     </TabContent>
