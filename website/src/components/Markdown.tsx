@@ -1,7 +1,6 @@
 import { markdown } from '@/panda/recipes'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { panda } from 'panda/jsx'
-import { Showcase } from './Showcase'
 
 type MarkdownProps = {
   markdown: string
@@ -12,7 +11,7 @@ export const Markdown = (props: MarkdownProps) => {
 
   return (
     <panda.article className={markdown()}>
-      <MDXComponent components={{ Showcase }} />
+      <MDXComponent />
     </panda.article>
   )
 }

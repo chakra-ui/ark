@@ -19,16 +19,16 @@ const presets = {
   dialog: {
     component: lazyNamedImport(() => import('./demo/Dialog'), 'DemoDialog'),
   },
-  hoverCard: {
+  'hover-card': {
     component: lazyNamedImport(() => import('./demo/HoverCard'), 'DemoHoverCard'),
   },
-  numberInput: {
+  'number-input': {
     component: lazyNamedImport(() => import('./demo/NumberInput'), 'DemoNumberInput'),
   },
   pagination: {
     component: lazyNamedImport(() => import('./demo/Pagination'), 'DemoPagination'),
   },
-  pinInput: {
+  'pin-input': {
     component: lazyNamedImport(() => import('./demo/PinInput'), 'DemoPinInput'),
   },
   pressable: {
@@ -37,13 +37,13 @@ const presets = {
   popover: {
     component: lazyNamedImport(() => import('./demo/Popover'), 'DemoPopover'),
   },
-  radioGroup: {
+  'radio-group': {
     component: lazyNamedImport(() => import('./demo/RadioGroup'), 'DemoRadioGroup'),
   },
-  rangeSlider: {
+  'range-slider': {
     component: lazyNamedImport(() => import('./demo/RangeSlider'), 'DemoRangeSlider'),
   },
-  ratingGroup: {
+  'rating-group': {
     component: lazyNamedImport(() => import('./demo/RatingGroup'), 'DemoRatingGroup'),
   },
   slider: {
@@ -52,7 +52,7 @@ const presets = {
   tabs: {
     component: lazyNamedImport(() => import('./demo/Tabs'), 'DemoTabs'),
   },
-  tagsInput: {
+  'tags-input': {
     component: lazyNamedImport(() => import('./demo/TagsInput'), 'DemoTagsInput'),
   },
   toast: {
@@ -71,17 +71,17 @@ type PlaygroundProps = {
 
 export const Showcase = (props: PlaygroundProps) => {
   const { preset } = props
-  const { component: Comp } = presets[preset]
+  const { component: Comp } = presets[preset] ?? { component: () => <Box>n/A</Box> }
 
   return (
     <Box
       display="flex"
       flexDirection={{ base: 'column', md: 'row' }}
       minHeight="xs"
-      my="12"
       bg="bg.surface"
       borderRadius="lg"
       boxShadow="sm"
+      width="full"
     >
       <Canvas>
         <Suspense fallback={null}>

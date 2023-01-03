@@ -13,7 +13,7 @@ export const Navbar = () => (
       background: 'bg.canvas',
       borderBottomWidth: '1px',
       zIndex: '100',
-      minH: '16',
+      minH: '18',
       display: 'flex',
       alignItems: 'stretch',
     })}
