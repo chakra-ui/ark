@@ -1,3 +1,5 @@
+import { Button } from '@/components/shared/Button'
+import { pagination } from '@/panda/recipes'
 import {
   Pagination,
   PaginationEllipsis,
@@ -7,8 +9,6 @@ import {
   PaginationPrevPageTrigger,
   PaginationProps,
 } from '@ark-ui/react'
-import { pagination } from '../../../panda/recipes'
-import { Button } from '../shared/Button'
 
 export const DemoPagination = (props: Partial<PaginationProps>) => (
   <Pagination count={5000} pageSize={10} siblingCount={2} className={pagination()} {...props}>

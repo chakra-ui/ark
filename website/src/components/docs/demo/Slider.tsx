@@ -1,3 +1,4 @@
+import { slider } from '@/panda/recipes'
 import {
   Slider,
   SliderControl,
@@ -8,7 +9,6 @@ import {
   SliderThumb,
   SliderTrack,
 } from '@ark-ui/react'
-import { slider } from '../../../panda/recipes'
 
 export const DemoSlider = (props: Partial<SliderProps>) => (
   <Slider min={0} max={100} defaultValue={33} className={slider()} {...props}>

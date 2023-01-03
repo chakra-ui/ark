@@ -1,3 +1,7 @@
+import { Button } from '@/components/shared/Button'
+import { Input } from '@/components/shared/Input'
+import { Stack } from '@/panda/jsx'
+import { popover } from '@/panda/recipes'
 import {
   Popover,
   PopoverArrow,
@@ -10,10 +14,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from '@ark-ui/react'
-import { Stack } from '../../../panda/jsx'
-import { popover } from '../../../panda/recipes'
-import { Button } from '../shared/Button'
-import { Input } from '../shared/Input'
 
 export const DemoPopover = (props: Partial<PopoverProps>) => (
   <Popover {...props}>

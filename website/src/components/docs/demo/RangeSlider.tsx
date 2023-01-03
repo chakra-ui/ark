@@ -1,3 +1,4 @@
+import { slider } from '@/panda/recipes'
 import {
   RangeSlider,
   RangeSliderControl,
@@ -8,7 +9,6 @@ import {
   RangeSliderThumb,
   RangeSliderTrack,
 } from '@ark-ui/react'
-import { slider } from '../../../panda/recipes'
 
 export const DemoRangeSlider = (props: Partial<RangeSliderProps>) => (
   <RangeSlider min={0} max={100} defaultValue={[33, 66]} className={slider()} {...props}>

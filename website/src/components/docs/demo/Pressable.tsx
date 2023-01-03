@@ -1,8 +1,8 @@
+import { Button } from '@/components/shared/Button'
+import { Text } from '@/components/shared/Text'
 import { Box, Stack } from '@/panda/jsx'
 import { usePressable } from '@ark-ui/react'
 import { useCallback, useState } from 'react'
-import { Button } from '../shared/Button'
-import { Text } from '../shared/Text'
 
 export const DemoPressable = () => {
   const [timesPressed, setTimesPressed] = useState(0)

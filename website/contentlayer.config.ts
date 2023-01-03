@@ -1,5 +1,4 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import { startCase } from 'lodash-es'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
@@ -8,19 +7,28 @@ export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
   filePathPattern: '**/*.mdx',
   contentType: 'mdx',
-  computedFields: {
+  fields: {
+    id: {
+      type: 'string',
+      description: 'The id of a component.',
+      required: true,
+    },
     name: {
       type: 'string',
-      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+      description: 'The name of a component',
+      required: true,
     },
-    title: {
+    description: {
       type: 'string',
-      resolve: (doc) => startCase(doc._raw.sourceFileName.replace(/\.mdx$/, '')),
+      description: 'The description of a component',
+      required: true,
     },
-    url: {
+  },
+  computedFields: {
+    route: {
       type: 'string',
       // TODO add support for solid and vue
-      resolve: (doc) => '/docs/react/components/' + doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+      resolve: (doc) => '/docs/react/components/' + doc.id,
     },
   },
 }))

@@ -1,3 +1,7 @@
+import { Button } from '@/components/shared/Button'
+import { CloseButton } from '@/components/shared/CloseButton'
+import { Stack } from '@/panda/jsx'
+import { dialog } from '@/panda/recipes'
 import {
   Dialog,
   DialogBackdrop,
@@ -9,10 +13,6 @@ import {
   DialogTrigger,
   Portal,
 } from '@ark-ui/react'
-import { Stack } from '../../../panda/jsx'
-import { dialog } from '../../../panda/recipes'
-import { Button } from '../shared/Button'
-import { CloseButton } from '../shared/CloseButton'
 
 export const DemoDialog = () => (
   <Dialog>

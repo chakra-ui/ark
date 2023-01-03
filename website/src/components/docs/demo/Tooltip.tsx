@@ -1,4 +1,5 @@
 import { panda } from '@/panda/jsx'
+import { tooltip } from '@/panda/recipes'
 import {
   Tooltip,
   TooltipArrow,
@@ -8,7 +9,6 @@ import {
   TooltipProps,
   TooltipTrigger,
 } from '@ark-ui/react'
-import { tooltip } from '../../../panda/recipes'
 
 export type DemoTooltipProps = Partial<TooltipProps> & {
   placement?: NonNullable<TooltipProps['positioning']>['placement']
