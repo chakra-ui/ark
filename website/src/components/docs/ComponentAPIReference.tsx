@@ -4,9 +4,9 @@ import { Stack } from '@/panda/jsx'
 
 type Property = {
   name: string
-  type: String
-  default: string
-  description: string
+  type: string
+  defaultValue?: string
+  description?: string
 }
 
 type ComponentAPIReferenceProps = {
@@ -41,7 +41,7 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
             <tr key={property.name}>
               <td>{property.name}</td>
               <td>{property.type}</td>
-              <td>{property.default}</td>
+              <td>{property.defaultValue}</td>
               <td>{property.description}</td>
             </tr>
           ))}
