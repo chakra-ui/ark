@@ -69,7 +69,7 @@
     "solid-js": "1.6.6",
     "solid-testing-library": "0.5.0",
     "typescript": "4.9.4",
-    "vite": "4.0.3",
+    "vite": "4.0.4",
     "vite-plugin-dts": "1.7.1",
     "vite-plugin-solid": "2.5.0",
     "vitest": "0.26.3"
