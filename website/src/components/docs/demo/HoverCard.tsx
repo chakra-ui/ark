@@ -1,3 +1,6 @@
+import { Avatar } from '@/components/shared/Avatar'
+import { Button } from '@/components/shared/Button'
+import { Text } from '@/components/shared/Text'
 import { Stack } from '@/panda/jsx'
 import { hoverCard } from '@/panda/recipes'
 import {
@@ -10,9 +13,6 @@ import {
   Portal,
 } from '@ark-ui/react'
 import { FiMapPin } from 'react-icons/fi'
-import { Avatar } from '../shared/Avatar'
-import { Button } from '../shared/Button'
-import { Text } from '../shared/Text'
 
 export const DemoHoverCard = () => (
   <HoverCard>

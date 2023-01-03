@@ -1,5 +1,5 @@
+import { Button, ButtonProps } from '@/components/shared/Button'
 import NextLink from 'next/link'
-import { Button, ButtonProps } from '../shared/Button'
 
 export type PageButtonProps = ButtonProps & { href: string }
 

@@ -3,8 +3,8 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { PageButton } from './PageButton'
 
 type Page = {
-  url: string
-  title: string
+  route: string
+  name: string
 }
 
 type FooterProps = {
@@ -18,20 +18,20 @@ export const Footer = (props: FooterProps) => {
   return (
     <Box display="flex" my="12" width="full">
       {prevPage && (
-        <PageButton href={prevPage.url} variant="link" size="md" leftIcon={<FiChevronLeft />}>
-          {prevPage.title}
+        <PageButton href={prevPage.route} variant="link" size="md" leftIcon={<FiChevronLeft />}>
+          {prevPage.name}
         </PageButton>
       )}
 
       {nextPage && (
         <PageButton
           variant="link"
-          href={nextPage.url}
+          href={nextPage.route}
           size="md"
           rightIcon={<FiChevronRight />}
           ml="auto"
         >
-          {nextPage.title}
+          {nextPage.name}
         </PageButton>
       )}
     </Box>

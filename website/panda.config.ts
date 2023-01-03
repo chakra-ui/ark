@@ -69,6 +69,7 @@ export default defineConfig({
     },
     sizes: {
       '15': { value: '3.75rem' },
+      '18': { value: '4.5rem' },
     },
   },
   patterns: {

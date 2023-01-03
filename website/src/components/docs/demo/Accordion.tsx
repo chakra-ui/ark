@@ -1,6 +1,6 @@
+import { accordion } from '@/panda/recipes'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ark-ui/react'
 import { FiChevronDown } from 'react-icons/fi'
-import { accordion } from '../../../panda/recipes'
 
 export const DemoAccordion = () => {
   const items = ['React', 'Solid', 'Vue']
