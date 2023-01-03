@@ -1,10 +1,10 @@
+import { ComponentAPIReference } from '@/components/docs/ComponentAPIReference'
+import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
-import { Markdown } from '@/components/Markdown'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { Footer } from '@/components/navigation/Footer'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
-import { Table } from '@/components/Table'
 import {
   findComponentDocumentById,
   findNextComponentDocument,
@@ -42,8 +42,8 @@ const Page = (props: any) => {
   ]
 
   return (
-    <>
-      <Stack gap="10">
+    <Stack gap="12">
+      <Stack gap="5">
         <Stack gap="3">
           <Text color="accent.default" fontWeight="semibold" textStyle="sm">
             Component
@@ -57,12 +57,12 @@ const Page = (props: any) => {
         </Text>
       </Stack>
       <ComponentTabs
-        showcase={<Playground component={document.id} />}
+        playground={<Playground component={document.id} />}
         overview={<Markdown markdown={document.body.code} />}
-        properties={<Table properties={properties} />}
+        properties={<ComponentAPIReference properties={properties} />}
       />
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
-    </>
+    </Stack>
   )
 }
 

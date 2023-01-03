@@ -37,6 +37,9 @@ export const tabs = defineRecipe({
       background: 'accent.default',
       bottom: '-1px',
     },
+    content: {
+      py: '10',
+    },
   }),
   defaultVariants: {
     size: 'md',
