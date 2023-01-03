@@ -22,7 +22,7 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
         <Heading textStyle="2xl" fontWeight="semibold">
           Properties
         </Heading>
-        <Text color="fg.muted">
+        <Text color="fg.muted" lineHeight="relaxed">
           {/* TODO update text */}
           API reference docs for the React Button component. Learn about the props, CSS, and other
           APIs of this exported module.

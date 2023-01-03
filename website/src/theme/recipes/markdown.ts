@@ -24,14 +24,38 @@ export const markdown = defineRecipe({
     },
     '& p': {
       color: 'fg.muted',
+      lineHeight: 'relaxed',
       mb: '4',
+    },
+    '& ul': {
+      color: 'fg.muted',
+      listStyle: 'none',
+      lineHeight: 'loose',
+      mb: '4',
+      p: '0',
+      pl: '1.675em',
+    },
+    '& li::before': {
+      display: 'inline-block',
+      content: "'–'",
+      width: '1em',
     },
     '& pre': {
       backgroundColor: 'gray.950',
       borderRadius: 'lg',
       boxShadow: 'sm',
+      fontFamily: 'var(--font-roboto-mono)',
       my: '8',
       p: '4',
+    },
+    '& code:not([class])': {
+      background: 'bg.subtle',
+      borderRadius: 'sm',
+      borderWidth: '1px',
+      fontFamily: 'var(--font-roboto-mono)',
+      textStyle: 'sm',
+      px: '1',
+      py: '0.5',
     },
     '& :first-child': {
       mt: '0',

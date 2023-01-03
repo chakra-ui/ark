@@ -16,7 +16,7 @@ export const Footer = (props: FooterProps) => {
   const { prevPage, nextPage } = props
 
   return (
-    <Box display="flex" my="12" width="full">
+    <Box display="flex" width="full">
       {prevPage && (
         <PageButton href={prevPage.route} variant="link" size="md" leftIcon={<FiChevronLeft />}>
           {prevPage.name}
