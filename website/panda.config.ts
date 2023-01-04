@@ -22,6 +22,9 @@ export default defineConfig({
     '7xl': { value: { fontSize: '7xl', lineHeight: '5.75rem', letterSpacing: '-0.02em' } },
   },
   tokens: {
+    lineHeights: {
+      relaxed: { value: '1.75' },
+    },
     colors: {
       black: { value: '#171717' },
       gray: {
@@ -90,7 +93,7 @@ export default defineConfig({
   semanticTokens: {
     colors: {
       fg: {
-        default: { value: { base: '{colors.black}', _dark: 'white' } },
+        default: { value: { base: '{colors.gray.950}', _dark: 'white' } },
         emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
         muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
         placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },

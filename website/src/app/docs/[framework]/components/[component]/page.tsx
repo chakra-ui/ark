@@ -52,7 +52,7 @@ const Page = (props: any) => {
             {document.name}
           </Heading>
         </Stack>
-        <Text color="fg.muted" textStyle="md">
+        <Text color="fg.muted" textStyle="md" lineHeight="relaxed">
           {document.description}
         </Text>
       </Stack>
