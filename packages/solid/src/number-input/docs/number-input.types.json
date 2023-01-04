@@ -51,12 +51,12 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; label: string; input: string; incrementTrigger: string; decrementTrigger: string; scrubber: string; }>",
+      "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "\"text\" | \"tel\" | \"numeric\" | \"decimal\"",
+      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },
@@ -101,12 +101,12 @@
       "description": "Function invoked when the value changes"
     },
     "onFocus": {
-      "type": "(details: Value & { srcElement: HTMLElement | null; }) => void",
+      "type": "(details: Value & { srcElement: HTMLElement | null }) => void",
       "isRequired": false,
       "description": "Function invoked when the number input is focused"
     },
     "onInvalid": {
-      "type": "(details: Value & { reason: ValidityState; }) => void",
+      "type": "(details: Value & { reason: ValidityState }) => void",
       "isRequired": false,
       "description": "Function invoked when the value overflows or underflows the min/max range"
     },

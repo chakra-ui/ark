@@ -31,7 +31,7 @@
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
-      "type": "Partial<{ root: string; hiddenInput: string; label: string; control: string; input(id: string): string; }>",
+      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the pin input. Useful for composition."
     },
@@ -51,17 +51,17 @@
       "description": "The name of the input element. Useful for form submission."
     },
     "onChange": {
-      "type": "(details: { value: string[]; }) => void",
+      "type": "(details: { value: string[] }) => void",
       "isRequired": false,
       "description": "Function called on input change"
     },
     "onComplete": {
-      "type": "(details: { value: string[]; valueAsString: string; }) => void",
+      "type": "(details: { value: string[]; valueAsString: string }) => void",
       "isRequired": false,
       "description": "Function called when all inputs have valid values"
     },
     "onInvalid": {
-      "type": "(details: { value: string; index: number; }) => void",
+      "type": "(details: { value: string; index: number }) => void",
       "isRequired": false,
       "description": "Function called when an invalid value is entered"
     },
@@ -91,7 +91,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "\"numeric\" | \"alphanumeric\" | \"alphabetic\"",
+      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
@@ -134,7 +134,7 @@
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
-      "type": "Partial<{ root: string; hiddenInput: string; label: string; control: string; input(id: string): string; }>",
+      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the pin input. Useful for composition."
     },
@@ -154,17 +154,17 @@
       "description": "The name of the input element. Useful for form submission."
     },
     "onChange": {
-      "type": "(details: { value: string[]; }) => void",
+      "type": "(details: { value: string[] }) => void",
       "isRequired": false,
       "description": "Function called on input change"
     },
     "onComplete": {
-      "type": "(details: { value: string[]; valueAsString: string; }) => void",
+      "type": "(details: { value: string[]; valueAsString: string }) => void",
       "isRequired": false,
       "description": "Function called when all inputs have valid values"
     },
     "onInvalid": {
-      "type": "(details: { value: string; index: number; }) => void",
+      "type": "(details: { value: string; index: number }) => void",
       "isRequired": false,
       "description": "Function called when an invalid value is entered"
     },
@@ -194,7 +194,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "\"numeric\" | \"alphanumeric\" | \"alphabetic\"",
+      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },

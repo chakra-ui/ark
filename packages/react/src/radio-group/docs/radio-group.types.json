@@ -45,7 +45,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; label: string; radio(value: string): string; radioLabel(value: string): string; radioControl(value: string): string; radioInput(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  label: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },
@@ -55,12 +55,12 @@
       "description": "The name of the input fields in the radio\n(Useful for form submission)."
     },
     "onChange": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called once a radio is checked"
     },
     "orientation": {
-      "type": "\"horizontal\" | \"vertical\"",
+      "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "Orientation of the radio group"
     },
@@ -103,7 +103,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; label: string; radio(value: string): string; radioLabel(value: string): string; radioControl(value: string): string; radioInput(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  label: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },
@@ -113,12 +113,12 @@
       "description": "The name of the input fields in the radio\n(Useful for form submission)."
     },
     "onChange": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called once a radio is checked"
     },
     "orientation": {
-      "type": "\"horizontal\" | \"vertical\"",
+      "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "Orientation of the radio group"
     },
@@ -141,7 +141,7 @@
       "isRequired": true
     },
     "getRadioInputProps": {
-      "type": "(props: InputProps) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
+      "type": "(\n  props: InputProps,\n) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
       "isRequired": true
     },
     "getRadioLabelProps": {
@@ -149,7 +149,7 @@
       "isRequired": true
     },
     "getRadioProps": {
-      "type": "(props: RadioProps) => DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
+      "type": "(\n  props: RadioProps,\n) => DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
       "isRequired": true
     },
     "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },

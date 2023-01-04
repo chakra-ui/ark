@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string; }>",
+      "type": "Partial<{ trigger: string; content: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },
@@ -103,7 +103,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string; }>",
+      "type": "Partial<{ trigger: string; content: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },
@@ -139,7 +139,7 @@
     "close": { "type": "() => void", "isRequired": true },
     "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "createPortal": { "type": "() => HTMLElement", "isRequired": true },
-    "getAnimationState": { "type": "() => { enter: boolean; exit: boolean; }", "isRequired": true },
+    "getAnimationState": { "type": "() => { enter: boolean; exit: boolean }", "isRequired": true },
     "isOpen": { "type": "boolean", "isRequired": true },
     "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "open": { "type": "() => void", "isRequired": true },

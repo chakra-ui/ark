@@ -38,7 +38,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; label: string; hiddenInput: string; control: string; rating(id: string): string; }>",
+      "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the rating. Useful for composition."
     },
@@ -49,12 +49,12 @@
       "description": "The name attribute of the rating element (used in forms)."
     },
     "onChange": {
-      "type": "(details: { value: number; }) => void",
+      "type": "(details: { value: number }) => void",
       "isRequired": false,
       "description": "Function to be called when the rating value changes."
     },
     "onHover": {
-      "type": "(details: { value: number; }) => void",
+      "type": "(details: { value: number }) => void",
       "isRequired": false,
       "description": "Function to be called when the rating value is hovered."
     },
