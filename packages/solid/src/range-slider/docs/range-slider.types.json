@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
-    "defaultValue": { "type": "number[]", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -102,7 +101,7 @@
       "description": "The step value of the slider"
     },
     "thumbAlignment": {
-      "type": "\"center\" | \"contain\"",
+      "type": "\"contain\" | \"center\"",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
     },
@@ -113,5 +112,5 @@
     }
   },
   "RangeSliderMarkerProps": { "value": { "type": "number", "isRequired": true } },
-  "RangeSliderThumbProps": { "index": { "type": "number", "isRequired": true } }
+  "RangeSliderThumbProps": { "index": { "type": "Accessor<number>", "isRequired": true } }
 }

@@ -40,7 +40,6 @@
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
-    "defaultValue": { "type": "string[]", "isRequired": false },
     "delimiter": {
       "type": "string",
       "isRequired": false,
@@ -156,7 +155,6 @@
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
-    "defaultValue": { "type": "string[]", "isRequired": false },
     "delimiter": {
       "type": "string",
       "isRequired": false,
@@ -245,51 +243,5 @@
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
-  },
-  "UseTagsInputReturn": {
-    "addValue": { "type": "(value: string) => void", "isRequired": true },
-    "clearAll": { "type": "() => void", "isRequired": true },
-    "clearInputValue": { "type": "() => void", "isRequired": true },
-    "clearTriggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "controlProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "count": { "type": "number", "isRequired": true },
-    "deleteValue": { "type": "(id: string) => void", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
-    "getTagDeleteTriggerProps": {
-      "type": "(options: TagProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "getTagInputProps": {
-      "type": "(options: TagProps) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
-      "isRequired": true
-    },
-    "getTagProps": {
-      "type": "(options: TagProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "hiddenInputProps": {
-      "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
-      "isRequired": true
-    },
-    "inputProps": {
-      "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
-      "isRequired": true
-    },
-    "inputValue": { "type": "string", "isRequired": true },
-    "isAtMax": { "type": "boolean", "isRequired": true },
-    "isEmpty": { "type": "boolean", "isRequired": true },
-    "labelProps": {
-      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
-      "isRequired": true
-    },
-    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setInputValue": { "type": "(value: string) => void", "isRequired": true },
-    "setValue": { "type": "(value: string[]) => void", "isRequired": true },
-    "setValueAtIndex": { "type": "(index: number, value: string) => void", "isRequired": true },
-    "value": { "type": "string[]", "isRequired": true },
-    "valueAsString": { "type": "string", "isRequired": true }
   }
 }

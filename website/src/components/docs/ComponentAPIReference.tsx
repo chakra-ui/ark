@@ -4,7 +4,6 @@ import { Stack } from '@/panda/jsx'
 import type { ReactNode } from 'react'
 
 type Property = {
-  name: string
   type: string
   isRequired: boolean
   defaultValue?: string
@@ -13,7 +12,7 @@ type Property = {
 
 type ComponentAPIReferenceProps = {
   componentName: ReactNode
-  types: { name: string; properties: Property[] }[]
+  types: Record<string, Record<string, Property>>
 }
 
 export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
@@ -33,12 +32,12 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
         </Text>
       </Stack>
       <Stack gap="4">
-        {types.map((type) => (
-          <Stack key={type.name} gap="4">
+        {Object.entries(types).map(([name, properties]) => (
+          <Stack key={name} gap="4">
             <Heading textStyle="xl" fontWeight="semibold">
-              {type.name}
+              {name}
             </Heading>
-            <Properties properties={type.properties} />
+            <Properties properties={properties} />
           </Stack>
         ))}
       </Stack>
@@ -46,7 +45,11 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
   )
 }
 
-const Properties = (props: { properties: Property[] }) => {
+type PropertiesProps = {
+  properties: Record<string, Property>
+}
+
+const Properties = (props: PropertiesProps) => {
   const { properties } = props
 
   return (
@@ -59,10 +62,10 @@ const Properties = (props: { properties: Property[] }) => {
         </tr>
       </thead>
       <tbody>
-        {properties.map((property) => (
-          <tr key={property.name}>
+        {Object.entries(properties).map(([name, property]) => (
+          <tr key={name}>
             <td>
-              {property.name}
+              {name}
               <RequiredIndicator isRequired={property.isRequired} />
             </td>
             <td>{property.type}</td>

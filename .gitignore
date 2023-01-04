@@ -286,9 +286,6 @@ dist
 # Turbo
 .turbo
 
-# generated files by scripts/generate-type-docs.ts
-**/generated-type-docs/*
-
 ## CSS Panda
 panda
 

@@ -40,7 +40,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
-    "isOpen": { "type": "boolean", "isRequired": false },
+    "isOpen": { "type": "Accessor<boolean>", "isRequired": false },
     "loop": {
       "type": "boolean",
       "isRequired": false,

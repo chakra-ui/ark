@@ -11,7 +11,6 @@ import {
   findPreviousComponentDocument,
   getComponentDocuments,
 } from '@/lib/contentlayer'
-import { getTypeDocsForComponent } from '@/lib/type-docs'
 import { Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
@@ -25,8 +24,6 @@ const Page = async (props: any) => {
 
   const prevDocument = findPreviousComponentDocument(document)
   const nextDocument = findNextComponentDocument(document)
-
-  const types = await getTypeDocsForComponent(params.framework, params.component)
 
   return (
     <Stack gap="12">
@@ -46,7 +43,7 @@ const Page = async (props: any) => {
       <ComponentTabs
         playground={<Playground component={document.id} />}
         overview={<Markdown markdown={document.body.code} />}
-        properties={<ComponentAPIReference componentName={document.name} types={types} />}
+        properties={<ComponentAPIReference componentName={document.name} types={document.types} />}
       />
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </Stack>

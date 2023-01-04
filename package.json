@@ -8,7 +8,7 @@
     "webiste"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install && pnpm typecheck",
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
@@ -22,7 +22,6 @@
     "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "typedocs": "turbo run typedocs",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
     "website": "pnpm --filter=@ark-ui/website"

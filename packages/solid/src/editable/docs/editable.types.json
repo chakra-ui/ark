@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -123,7 +122,6 @@
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -224,39 +222,5 @@
       "isRequired": false,
       "description": "The value of the editable in both edit and preview mode"
     }
-  },
-  "UseEditableReturn": {
-    "areaProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "cancel": { "type": "() => void", "isRequired": true },
-    "cancelTriggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "clearValue": { "type": "() => void", "isRequired": true },
-    "controlProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "edit": { "type": "() => void", "isRequired": true },
-    "editTriggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "inputProps": {
-      "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
-      "isRequired": true
-    },
-    "isEditing": { "type": "boolean", "isRequired": true },
-    "isValueEmpty": { "type": "boolean", "isRequired": true },
-    "labelProps": {
-      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
-      "isRequired": true
-    },
-    "previewProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string) => void", "isRequired": true },
-    "submit": { "type": "() => void", "isRequired": true },
-    "submitTriggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "value": { "type": "string", "isRequired": true }
   }
 }

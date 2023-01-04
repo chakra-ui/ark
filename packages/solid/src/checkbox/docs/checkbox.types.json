@@ -7,7 +7,6 @@
       "description": "Defines the string that labels the checkbox element."
     },
     "aria-labelledby": { "type": "string", "isRequired": false },
-    "checked": { "type": "boolean", "isRequired": false },
     "defaultChecked": {
       "type": "boolean",
       "isRequired": false,
@@ -92,7 +91,6 @@
       "description": "Defines the string that labels the checkbox element."
     },
     "aria-labelledby": { "type": "string", "isRequired": false },
-    "checked": { "type": "boolean", "isRequired": false },
     "defaultChecked": {
       "type": "boolean",
       "isRequired": false,
@@ -168,25 +166,5 @@
       "isRequired": false,
       "description": "The value to be used in the checkbox input.\nThis is the value that will be returned on form submission."
     }
-  },
-  "UseCheckboxReturn": {
-    "controlProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "inputProps": {
-      "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
-      "isRequired": true
-    },
-    "isChecked": { "type": "boolean", "isRequired": true },
-    "isFocused": { "type": "boolean", "isRequired": true },
-    "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "rootProps": {
-      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
-      "isRequired": true
-    },
-    "setChecked": { "type": "(checked: boolean) => void", "isRequired": true },
-    "setIndeterminate": { "type": "(indeterminate: boolean) => void", "isRequired": true },
-    "view": { "type": "string", "isRequired": true },
-    "isDisabled": { "type": "boolean", "isRequired": false },
-    "isIndeterminate": { "type": "boolean", "isRequired": false },
-    "isReadOnly": { "type": "boolean", "isRequired": false }
   }
 }

@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -74,7 +73,6 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -131,24 +129,5 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
-  },
-  "UseTabsReturn": {
-    "clearValue": { "type": "() => void", "isRequired": true },
-    "contentGroupProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "getContentProps": {
-      "type": "({ value }: { value: string; }) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getTriggerProps": {
-      "type": "(props: TabProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "indicatorProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "previousValues": { "type": "string[]", "isRequired": true },
-    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string) => void", "isRequired": true },
-    "tablistProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focusedValue": { "type": "string", "isRequired": false },
-    "value": { "type": "string", "isRequired": false }
   }
 }

@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import fs from 'fs-extra'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
@@ -29,6 +30,12 @@ export const ComponentDocument = defineDocumentType(() => ({
       type: 'string',
       // TODO add support for solid and vue
       resolve: (doc) => '/docs/react/components/' + doc.id,
+    },
+    types: {
+      type: 'json',
+      resolve: (doc) => {
+        return fs.readJSONSync(`../packages/react/src/${doc.id}/docs/${doc.id}.types.json`)
+      },
     },
   },
 }))

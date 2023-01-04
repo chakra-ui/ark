@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "concurrently 'pnpm:prepare:*'",
-    "prepare:panda": "panda",
-    "prepare:typedocs": "cd .. && turbo run typedocs",
+    "prepare": "panda",
     "dev": "concurrently 'pnpm:dev:*'",
     "dev:css": "panda --watch",
     "dev:next": "next dev",

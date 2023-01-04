@@ -1,5 +1,7 @@
 import fs from 'fs-extra'
-import path from 'node:path'
+import { readFile } from 'fs/promises'
+import { globby } from 'globby'
+import path from 'path'
 import ts from 'typescript'
 
 type TypeProperties = Record<
@@ -54,7 +56,11 @@ function extractPropertiesOfTypeName(
       }
     }
     if (Object.keys(properties).length) {
-      results[(typeStatement as any).name.getText()] = properties
+      results[(typeStatement as any).name.getText()] = Object.fromEntries(
+        Object.entries(properties)
+          .sort(([aName], [bName]) => aName.localeCompare(bName))
+          .sort(([, a], [, b]) => (a.isRequired === b.isRequired ? 0 : a.isRequired ? -1 : 1)),
+      )
     }
   }
 
@@ -102,16 +108,48 @@ function shouldIgnoreProperty(property: ts.Symbol) {
   return isExternal || isExcludedByName
 }
 
-const searchType = createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
+function extractTypeExports(fileContent?: string) {
+  return fileContent?.match(/(?<=export\s{).*(?=})/gm)?.flatMap((line) =>
+    line
+      .split(',')
+      .map((x) => x.trim())
+      .filter((x) => x.startsWith('type '))
+      .map((x) => x.replace('type ', '')),
+  )
+}
 
-const searchTerm = /.*Props$/
-const result = searchType(searchTerm)
+const main = async () => {
+  const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
 
-const outDir = 'generated-type-docs'
-await fs.mkdirp(outDir)
-await Promise.all(
-  Object.entries(result).map(async ([typeName, properties]) => {
-    const outPath = path.join(outDir, `${typeName}.json`)
-    await fs.writeFile(outPath, JSON.stringify(properties, null, 2))
-  }),
-)
+  const componentExportMap: Record<string, string[]> = Object.fromEntries(
+    await Promise.all(
+      components.map(async (component) => {
+        const fileContent = await readFile(path.join(component, 'index.ts'), {
+          encoding: 'utf8',
+        }).catch(() => undefined)
+        return [component, extractTypeExports(fileContent)]
+      }),
+    ),
+  )
+
+  const searchType = createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
+  Object.entries(componentExportMap)
+    .flatMap(([component, typeExports]) => ({
+      component,
+      typeExports: typeExports
+        .map((x) => searchType(new RegExp('^' + x + '$')))
+        .filter((value) => Object.keys(value).length !== 0)
+        .reduce((acc, value) => ({ ...acc, ...value }), {}),
+    }))
+    .map(({ component, typeExports }) => {
+      fs.outputJsonSync(
+        path.join(component, 'docs', path.basename(component) + '.types.json'),
+        typeExports,
+      )
+    })
+}
+
+main().catch((err) => {
+  console.error(err.message)
+  process.exit(1)
+})

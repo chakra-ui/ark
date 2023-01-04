@@ -5,7 +5,6 @@
       "isRequired": false,
       "description": "Whether the select should close after an option is selected"
     },
-    "defaultValue": { "type": "Option", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -96,48 +95,6 @@
       "isRequired": false,
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
-  },
-  "SelectContext": {
-    "blur": { "type": "() => void", "isRequired": true },
-    "clearSelectedOption": { "type": "() => void", "isRequired": true },
-    "close": { "type": "() => void", "isRequired": true },
-    "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
-    "getOptionGroupLabelProps": {
-      "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionGroupProps": {
-      "type": "(props: OptionGroupProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionProps": {
-      "type": "(props: OptionProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionState": {
-      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
-      "isRequired": true
-    },
-    "hiddenSelectProps": {
-      "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
-      "isRequired": true
-    },
-    "isOpen": { "type": "boolean", "isRequired": true },
-    "labelProps": {
-      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
-      "isRequired": true
-    },
-    "open": { "type": "() => void", "isRequired": true },
-    "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "triggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "highlightedOption": { "type": "Option", "isRequired": false },
-    "selectedOption": { "type": "Option", "isRequired": false }
   },
   "SelectOptionProps": {
     "label": { "type": "string", "isRequired": true },
@@ -152,7 +109,6 @@
       "isRequired": false,
       "description": "Whether the select should close after an option is selected"
     },
-    "defaultValue": { "type": "Option", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -243,47 +199,5 @@
       "isRequired": false,
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
-  },
-  "UseSelectReturn": {
-    "blur": { "type": "() => void", "isRequired": true },
-    "clearSelectedOption": { "type": "() => void", "isRequired": true },
-    "close": { "type": "() => void", "isRequired": true },
-    "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
-    "getOptionGroupLabelProps": {
-      "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionGroupProps": {
-      "type": "(props: OptionGroupProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionProps": {
-      "type": "(props: OptionProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getOptionState": {
-      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
-      "isRequired": true
-    },
-    "hiddenSelectProps": {
-      "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
-      "isRequired": true
-    },
-    "isOpen": { "type": "boolean", "isRequired": true },
-    "labelProps": {
-      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
-      "isRequired": true
-    },
-    "open": { "type": "() => void", "isRequired": true },
-    "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "triggerProps": {
-      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "highlightedOption": { "type": "Option", "isRequired": false },
-    "selectedOption": { "type": "Option", "isRequired": false }
   }
 }

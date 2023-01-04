@@ -5,7 +5,6 @@
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
-    "defaultValue": { "type": "string | string[]", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -52,9 +51,6 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "AccordionItemContext": {
-    "isDisabled": { "type": "boolean", "isRequired": true },
-    "isFocused": { "type": "boolean", "isRequired": true },
-    "isOpen": { "type": "boolean", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
@@ -64,7 +60,6 @@
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
-    "defaultValue": { "type": "string | string[]", "isRequired": false },
     "dir": {
       "type": "Direction",
       "isRequired": false,
@@ -105,26 +100,5 @@
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
     }
-  },
-  "UseAccordionReturn": {
-    "getContentProps": {
-      "type": "(props: ItemProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getItemProps": {
-      "type": "(props: ItemProps) => HTMLAttributes<HTMLElement>",
-      "isRequired": true
-    },
-    "getItemState": {
-      "type": "(props: ItemProps) => { isOpen: boolean; isFocused: boolean; isDisabled: boolean; }",
-      "isRequired": true
-    },
-    "getTriggerProps": {
-      "type": "(props: ItemProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
-      "isRequired": true
-    },
-    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string | string[]) => void", "isRequired": true },
-    "value": { "type": "string | string[]", "isRequired": false }
   }
 }
