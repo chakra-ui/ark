@@ -7,15 +7,20 @@ type TypeProperties = Record<
   {
     type: string
     defaultValue?: string
+    isRequired: boolean
     description?: string
   }
 >
+
+type TypeSearchOptions = {
+  shouldIgnoreProperty?: (property: ts.Symbol) => boolean | undefined
+}
 
 function extractPropertiesOfTypeName(
   searchTerm: string | RegExp,
   sourceFile: ts.SourceFile,
   typeChecker: ts.TypeChecker,
-  shouldIgnoreProperty: (property: ts.Symbol) => boolean | undefined = () => false,
+  { shouldIgnoreProperty = () => false }: TypeSearchOptions = {},
 ) {
   const typeStatements = sourceFile.statements.filter(
     (statement) =>
@@ -29,7 +34,9 @@ function extractPropertiesOfTypeName(
     for (const property of type.getProperties()) {
       const propertyName = property.getName()
       const type = typeChecker.getTypeOfSymbolAtLocation(property, sourceFile)
-      const typeName = typeChecker.typeToString(type)
+      const nonNullableType = type.getNonNullableType()
+      const typeName = typeChecker.typeToString(nonNullableType)
+      const isRequired = nonNullableType === type && typeName !== 'any'
       const defaultValueType = type.getDefault()
       const defaultValue = defaultValueType ? typeChecker.typeToString(defaultValueType) : undefined
       if (shouldIgnoreProperty(property)) {
@@ -38,6 +45,7 @@ function extractPropertiesOfTypeName(
       properties[propertyName] = {
         type: typeName,
         defaultValue,
+        isRequired,
         description:
           property
             .getDocumentationComment(typeChecker)
@@ -53,15 +61,11 @@ function extractPropertiesOfTypeName(
   return Object.keys(results).length ? results : null
 }
 
-function createTypeSearch(
-  tsConfigPath: string,
-  shouldIgnoreProperty?: (property: ts.Symbol) => boolean | undefined,
-) {
+function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
+  const { shouldIgnoreProperty } = typeSearchOptions
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
   const basePath = path.dirname(tsConfigPath)
-  const config = ts.parseJsonConfigFileContent(configFile.config, ts.sys, basePath)
-  const options = config.options
-  const fileNames = config.fileNames
+  const { fileNames, options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, basePath)
 
   const program = ts.createProgram(fileNames, options)
   const sourceFiles = program.getSourceFiles()
@@ -73,7 +77,7 @@ function createTypeSearch(
         searchTerm,
         sourceFile,
         program.getTypeChecker(),
-        shouldIgnoreProperty,
+        { shouldIgnoreProperty },
       )
       Object.assign(results, typeInfo)
     }
@@ -90,15 +94,18 @@ function getSourceFileName(symbol: ts.Symbol): string | undefined {
   return sourceFile ? sourceFile.fileName : undefined
 }
 
-function shouldIgnoreExternalProperties(property: ts.Symbol) {
+function shouldIgnoreProperty(property: ts.Symbol) {
   const sourceFileName = getSourceFileName(property)
-  return sourceFileName?.includes('node_modules') && !sourceFileName?.includes('@zag-js')
+  const isExternal =
+    sourceFileName?.includes('node_modules') && !sourceFileName?.includes('@zag-js')
+  const isExcludedByName = ['children'].includes(property.getName())
+  return isExternal || isExcludedByName
 }
 
-const typeSearch = createTypeSearch('tsconfig.json', shouldIgnoreExternalProperties)
+const searchType = createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
 
 const searchTerm = /.*Props$/
-const result = typeSearch(searchTerm)
+const result = searchType(searchTerm)
 
 const outDir = 'generated-type-docs'
 await fs.mkdirp(outDir)

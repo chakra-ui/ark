@@ -2,8 +2,15 @@ import fs from 'fs-extra'
 
 async function getTypeDoc(framework: string, type: string) {
   const file = await fs.readFile(`../packages/${framework}/generated-type-docs/${type}.json`)
-  const data: Record<string, { type: string; defaultValue?: string; description?: string }> =
-    JSON.parse(file.toString())
+  const data: Record<
+    string,
+    {
+      type: string
+      defaultValue?: string
+      isRequired: boolean
+      description?: string
+    }
+  > = JSON.parse(file.toString())
   return Object.entries(data).map(([name, value]) => ({ name, ...value }))
 }
 
