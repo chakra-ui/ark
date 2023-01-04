@@ -44,6 +44,7 @@ export default makeSource({
   contentDirPath: '../packages/react/src',
   documentTypes: [ComponentDocument],
   disableImportAliasWarning: true,
+  onUnknownDocuments: 'skip-ignore',
   mdx: {
     rehypePlugins: [
       [
