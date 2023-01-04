@@ -30,12 +30,14 @@ function extractPropertiesOfTypeName(
       const propertyName = property.getName()
       const type = typeChecker.getTypeOfSymbolAtLocation(property, sourceFile)
       const typeName = typeChecker.typeToString(type)
+      const defaultValueType = type.getDefault()
+      const defaultValue = defaultValueType ? typeChecker.typeToString(defaultValueType) : undefined
       if (shouldIgnoreProperty(property)) {
         continue
       }
       properties[propertyName] = {
         type: typeName,
-        defaultValue: undefined, // TODO: get default value
+        defaultValue,
         description:
           property
             .getDocumentationComment(typeChecker)
@@ -69,7 +71,7 @@ function createTypeSearch(
     for (const sourceFile of sourceFiles) {
       const typeInfo = extractPropertiesOfTypeName(
         searchTerm,
-        sourceFile!,
+        sourceFile,
         program.getTypeChecker(),
         shouldIgnoreProperty,
       )
