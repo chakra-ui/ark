@@ -12,10 +12,10 @@ description:
 
 ```ts
 import {
-  TagsInput,
   Tag,
   TagDeleteTrigger,
   TagInput,
+  TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
   TagsInputField,
@@ -120,8 +120,8 @@ data type.
 When the tags input is blurred, you can configure the action the component
 should take by passing the `blurBehavior` prop.
 
-- `"add"` — Adds the tag to the list of tags.
-- `"clear"` — Clears the tags input value.
+- `add` — Adds the tag to the list of tags.
+- `clear` — Clears the tags input value.
 
 ```tsx
 <TagsInput blurBehavior="add">{/*...*/}</TagsInput>
