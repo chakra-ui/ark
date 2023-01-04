@@ -2,6 +2,7 @@ import fs from 'fs-extra'
 import { readFile } from 'fs/promises'
 import { globby } from 'globby'
 import path from 'path'
+import prettier from 'prettier'
 import ts from 'typescript'
 
 type TypeProperties = Record<
@@ -141,10 +142,14 @@ const main = async () => {
         .filter((value) => Object.keys(value).length !== 0)
         .reduce((acc, value) => ({ ...acc, ...value }), {}),
     }))
-    .map(({ component, typeExports }) => {
-      fs.outputJsonSync(
+    .map(async ({ component, typeExports }) => {
+      const filePath = path.join(component, 'docs', path.basename(component) + '.types.json')
+      fs.outputFileSync(
         path.join(component, 'docs', path.basename(component) + '.types.json'),
-        typeExports,
+        prettier.format(JSON.stringify(typeExports), {
+          ...(await prettier.resolveConfig(filePath)),
+          parser: 'json',
+        }),
       )
     })
 }

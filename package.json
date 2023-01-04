@@ -8,7 +8,7 @@
     "webiste"
   ],
   "scripts": {
-    "prepare": "husky install && pnpm typecheck",
+    "prepare": "husky install && pnpm typedocs",
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
@@ -22,6 +22,7 @@
     "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
+    "typedocs": "turbo run typedocs",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
     "website": "pnpm --filter=@ark-ui/website"
@@ -56,5 +57,8 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.22.0"
+  "packageManager": "pnpm@7.22.0",
+  "dependencies": {
+    "@types/prettier": "2.7.2"
+  }
 }
