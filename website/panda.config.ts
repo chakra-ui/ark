@@ -166,6 +166,9 @@ export default defineConfig({
       color: 'fg.default',
       fontFamily: 'var(--font-inter), sans-serif',
       height: '100%',
+      _dark: {
+        colorScheme: 'dark',
+      },
     },
     '*, *::before, *::after': {
       borderColor: 'border.default',
