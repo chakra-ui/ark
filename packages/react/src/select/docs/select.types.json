@@ -1,0 +1,289 @@
+{
+  "SelectProps": {
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an option is selected"
+    },
+    "defaultValue": { "type": "Option", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onChange": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected option changes."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is closed."
+    },
+    "onHighlight": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted option changes."
+    },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is opened."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
+    "selectOnTab": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
+    }
+  },
+  "SelectContext": {
+    "blur": { "type": "() => void", "isRequired": true },
+    "clearSelectedOption": { "type": "() => void", "isRequired": true },
+    "close": { "type": "() => void", "isRequired": true },
+    "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "focus": { "type": "() => void", "isRequired": true },
+    "getOptionGroupLabelProps": {
+      "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionGroupProps": {
+      "type": "(props: OptionGroupProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionProps": {
+      "type": "(props: OptionProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionState": {
+      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
+      "isRequired": true
+    },
+    "hiddenSelectProps": {
+      "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
+      "isRequired": true
+    },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "labelProps": {
+      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
+      "isRequired": true
+    },
+    "open": { "type": "() => void", "isRequired": true },
+    "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "triggerProps": {
+      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "isRequired": true
+    },
+    "highlightedOption": { "type": "Option", "isRequired": false },
+    "selectedOption": { "type": "Option", "isRequired": false }
+  },
+  "SelectOptionProps": {
+    "label": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "valueText": { "type": "string", "isRequired": false }
+  },
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "UseSelectProps": {
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an option is selected"
+    },
+    "defaultValue": { "type": "Option", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onChange": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected option changes."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is closed."
+    },
+    "onHighlight": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted option changes."
+    },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is opened."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
+    "selectOnTab": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
+    }
+  },
+  "UseSelectReturn": {
+    "blur": { "type": "() => void", "isRequired": true },
+    "clearSelectedOption": { "type": "() => void", "isRequired": true },
+    "close": { "type": "() => void", "isRequired": true },
+    "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "focus": { "type": "() => void", "isRequired": true },
+    "getOptionGroupLabelProps": {
+      "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionGroupProps": {
+      "type": "(props: OptionGroupProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionProps": {
+      "type": "(props: OptionProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getOptionState": {
+      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
+      "isRequired": true
+    },
+    "hiddenSelectProps": {
+      "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
+      "isRequired": true
+    },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "labelProps": {
+      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
+      "isRequired": true
+    },
+    "open": { "type": "() => void", "isRequired": true },
+    "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "triggerProps": {
+      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "isRequired": true
+    },
+    "highlightedOption": { "type": "Option", "isRequired": false },
+    "selectedOption": { "type": "Option", "isRequired": false }
+  }
+}

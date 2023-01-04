@@ -1,0 +1,203 @@
+{
+  "SelectProps": {
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an option is selected"
+    },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onChange": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected option changes."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is closed."
+    },
+    "onHighlight": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted option changes."
+    },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is opened."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
+    "selectOnTab": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
+    }
+  },
+  "SelectOptionProps": {
+    "label": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "valueText": { "type": "string", "isRequired": false }
+  },
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "UseSelectProps": {
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an option is selected"
+    },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onChange": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected option changes."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is closed."
+    },
+    "onHighlight": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted option changes."
+    },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is opened."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
+    "selectOnTab": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
+    }
+  }
+}

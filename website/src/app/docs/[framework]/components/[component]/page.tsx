@@ -14,7 +14,7 @@ import {
 import { Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
-const Page = (props: any) => {
+const Page = async (props: any) => {
   const { params } = props
   const document = findComponentDocumentById(params.component)
 
@@ -24,22 +24,6 @@ const Page = (props: any) => {
 
   const prevDocument = findPreviousComponentDocument(document)
   const nextDocument = findNextComponentDocument(document)
-
-  // TODO replace with actual props
-  const properties = [
-    {
-      name: 'mutliple',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether multple accordion items can be open at the same time.',
-    },
-    {
-      name: 'collapsible',
-      type: 'boolean',
-      default: 'false',
-      description: 'Whether an accordion item can be collapsed after it has been opened.',
-    },
-  ]
 
   return (
     <Stack gap="12">
@@ -59,7 +43,7 @@ const Page = (props: any) => {
       <ComponentTabs
         playground={<Playground component={document.id} />}
         overview={<Markdown markdown={document.body.code} />}
-        properties={<ComponentAPIReference properties={properties} />}
+        properties={<ComponentAPIReference componentName={document.name} types={document.types} />}
       />
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </Stack>

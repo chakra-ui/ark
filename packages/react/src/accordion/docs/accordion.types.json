@@ -1,0 +1,130 @@
+{
+  "AccordionProps": {
+    "collapsible": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether an accordion item can be collapsed after it has been opened."
+    },
+    "defaultValue": { "type": "string | string[]", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the accordion items are disabled"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onChange": {
+      "type": "(details: { value: string | string[] | null; }) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "value": {
+      "type": "string | string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
+    }
+  },
+  "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "AccordionItemContext": {
+    "isDisabled": { "type": "boolean", "isRequired": true },
+    "isFocused": { "type": "boolean", "isRequired": true },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "UseAccordionProps": {
+    "collapsible": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether an accordion item can be collapsed after it has been opened."
+    },
+    "defaultValue": { "type": "string | string[]", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the accordion items are disabled"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onChange": {
+      "type": "(details: { value: string | string[] | null; }) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "value": {
+      "type": "string | string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
+    }
+  },
+  "UseAccordionReturn": {
+    "getContentProps": {
+      "type": "(props: ItemProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getItemProps": {
+      "type": "(props: ItemProps) => HTMLAttributes<HTMLElement>",
+      "isRequired": true
+    },
+    "getItemState": {
+      "type": "(props: ItemProps) => { isOpen: boolean; isFocused: boolean; isDisabled: boolean; }",
+      "isRequired": true
+    },
+    "getTriggerProps": {
+      "type": "(props: ItemProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "isRequired": true
+    },
+    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "setValue": { "type": "(value: string | string[]) => void", "isRequired": true },
+    "value": { "type": "string | string[]", "isRequired": false }
+  }
+}

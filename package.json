@@ -8,7 +8,7 @@
     "webiste"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install && pnpm typedocs",
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
@@ -22,6 +22,7 @@
     "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
+    "typedocs": "turbo run typedocs",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
     "website": "pnpm --filter=@ark-ui/website"
@@ -33,6 +34,7 @@
     "@commitlint/config-conventional": "17.4.0",
     "@types/fs-extra": "9.0.13",
     "@types/node": "18.11.18",
+    "@types/prettier": "2.7.2",
     "fs-extra": "11.1.0",
     "globby": "13.1.3",
     "husky": "8.0.3",
