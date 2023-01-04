@@ -1,5 +1,6 @@
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
+import { css } from '@/panda/css'
 import { Stack } from '@/panda/jsx'
 import type { ReactNode } from 'react'
 
@@ -68,7 +69,16 @@ const Properties = (props: PropertiesProps) => {
               {name}
               <RequiredIndicator isRequired={property.isRequired} />
             </td>
-            <td>{property.type}</td>
+            <td>
+              <code
+                className={css({
+                  display: 'inline-block',
+                  whiteSpace: 'pre',
+                })}
+              >
+                {property.type}
+              </code>
+            </td>
             <td>{property.defaultValue}</td>
             <td>{property.description}</td>
           </tr>
