@@ -18,6 +18,9 @@ export const pagination = defineRecipe({
       padding: '0',
       gap: '1',
     },
+    pageTrigger: {
+      fontVariantNumeric: 'tabular-nums',
+    },
     ellipsis: {
       alignItems: 'center',
       color: 'fg.emphasized',
