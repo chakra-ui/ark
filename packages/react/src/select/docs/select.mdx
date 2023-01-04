@@ -1,7 +1,8 @@
 ---
 id: select
 name: Select
-description: A Select component allows users pick a value from predefined options.
+description:
+  A Select component allows users pick a value from predefined options.
 ---
 
 ## Import
@@ -36,9 +37,11 @@ the desired accessibility.
   {({ selectedOption }) => (
     <>
       <SelectLabel>Framework</SelectLabel>
+
       <SelectTrigger>
         <button>{selectedOption?.label ?? 'Select option'}</button>
       </SelectTrigger>
+
       <Portal>
         <SelectPositioner>
           <SelectContent>
@@ -49,6 +52,45 @@ the desired accessibility.
             <SelectOption value="vue" label="Vue">
               Vue
             </SelectOption>
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
+    </>
+  )}
+</Select>
+```
+
+### Grouping options
+
+When dealing with a larger amount of options, groups help to keep them
+organized. Use the `SelectOptionGroup` and `SelectOptionGroupLabel` components
+to group options.
+
+```tsx {13-16}
+<Select>
+  {({ selectedOption }) => (
+    <>
+      <SelectLabel>Framework:</SelectLabel>
+
+      <SelectTrigger>
+        <button>{selectedOption?.label ?? 'Select option'}</button>
+      </SelectTrigger>
+
+      <Portal>
+        <SelectPositioner>
+          <SelectContent>
+            <SelectOptionGroup id="framework">
+              <SelectOptionGroupLabel htmlFor="framework">
+                Frameworks
+              </SelectOptionGroupLabel>
+              <SelectOption value="react" label="React" />
+              <SelectOption value="solid" label="Solid">
+                Solid
+              </SelectOption>
+              <SelectOption value="vue" label="Vue">
+                Vue
+              </SelectOption>
+            </SelectOptionGroup>
           </SelectContent>
         </SelectPositioner>
       </Portal>
