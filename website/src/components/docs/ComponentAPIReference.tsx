@@ -5,6 +5,7 @@ import { Stack } from '@/panda/jsx'
 type Property = {
   name: string
   type: string
+  isRequired: boolean
   defaultValue?: string
   description?: string
 }
@@ -39,7 +40,10 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
         <tbody>
           {properties.map((property) => (
             <tr key={property.name}>
-              <td>{property.name}</td>
+              <td>
+                {property.name}
+                <RequiredIndicator isRequired={property.isRequired} />
+              </td>
               <td>{property.type}</td>
               <td>{property.defaultValue}</td>
               <td>{property.description}</td>
@@ -48,5 +52,19 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
         </tbody>
       </table>
     </Stack>
+  )
+}
+
+const RequiredIndicator = (props: { isRequired: boolean }) => {
+  const { isRequired } = props
+
+  if (!isRequired) {
+    return null
+  }
+
+  return (
+    <Text as="span" color="fg.muted" textStyle="xs" userSelect="none" ps="1">
+      required
+    </Text>
   )
 }
