@@ -1,0 +1,158 @@
+{
+  "TooltipProps": {
+    "aria-label": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Custom label for the tooltip."
+    },
+    "closeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The close delay of the tooltip."
+    },
+    "closeOnEsc": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip when the Escape key is pressed."
+    },
+    "closeOnPointerDown": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip on pointerdown."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is disabled"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
+    },
+    "ids": {
+      "type": "Partial<{ trigger: string; content: string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the tooltip. Useful for composition."
+    },
+    "interactive": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip's content is interactive.\nIn this mode, the tooltip will remain open when user hovers over the content."
+    },
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function called when the tooltip is closed."
+    },
+    "onOpen": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function called when the tooltip is opened."
+    },
+    "openDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The open delay of the tooltip."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    }
+  },
+  "TooltipTriggerProps": {
+    "children": {
+      "type": "ReactElement<any, string | JSXElementConstructor<any>>",
+      "isRequired": true
+    }
+  },
+  "UseTooltipProps": {
+    "aria-label": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Custom label for the tooltip."
+    },
+    "closeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The close delay of the tooltip."
+    },
+    "closeOnEsc": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip when the Escape key is pressed."
+    },
+    "closeOnPointerDown": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip on pointerdown."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is disabled"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
+    },
+    "ids": {
+      "type": "Partial<{ trigger: string; content: string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the tooltip. Useful for composition."
+    },
+    "interactive": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip's content is interactive.\nIn this mode, the tooltip will remain open when user hovers over the content."
+    },
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function called when the tooltip is closed."
+    },
+    "onOpen": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function called when the tooltip is opened."
+    },
+    "openDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The open delay of the tooltip."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    }
+  },
+  "UseTooltipReturn": {
+    "arrowProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "arrowTipProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "close": { "type": "() => void", "isRequired": true },
+    "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "createPortal": { "type": "() => HTMLElement", "isRequired": true },
+    "getAnimationState": { "type": "() => { enter: boolean; exit: boolean; }", "isRequired": true },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "open": { "type": "() => void", "isRequired": true },
+    "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "triggerProps": {
+      "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "isRequired": true
+    }
+  }
+}
