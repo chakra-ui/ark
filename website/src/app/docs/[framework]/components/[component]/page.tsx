@@ -11,7 +11,7 @@ import {
   findPreviousComponentDocument,
   getComponentDocuments,
 } from '@/lib/contentlayer'
-import { getTypeDocsForComponent } from '@/lib/getTypeDocsForComponent'
+import { getTypeDocsForComponent } from '@/lib/type-docs'
 import { Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 

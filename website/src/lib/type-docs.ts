@@ -1,5 +1,12 @@
 import fs from 'fs-extra'
 
+async function getTypeDoc(framework: string, type: string) {
+  const file = await fs.readFile(`../packages/${framework}/generated-type-docs/${type}.json`)
+  const data: Record<string, { type: string; defaultValue?: string; description?: string }> =
+    JSON.parse(file.toString())
+  return Object.entries(data).map(([name, value]) => ({ name, ...value }))
+}
+
 /**
  * Prerequisite:
  * Run `pnpm run typedocs` in the mono repo root first
@@ -33,16 +40,11 @@ export async function getTypeDocsForComponent(framework: string, component: stri
   }
 
   try {
-    const file = await fs.readFile(`../packages/${framework}/generated-type-docs/${type}.json`)
-    const data: Record<string, { type: string; defaultValue?: string; description?: string }> =
-      JSON.parse(file.toString())
-    return Object.entries(data).map(([name, value]) => ({ name, ...value }))
+    return await getTypeDoc(framework, type)
   } catch (e) {
     console.error(
-      "Couldn't find type docs for component %s/%s",
-      framework,
-      component,
-      (e as any).path,
+      `Couldn't find type docs for component ${component}/${framework}`,
+      (e as NodeJS.ErrnoException).path,
     )
     return []
   }
