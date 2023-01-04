@@ -63,25 +63,31 @@ export async function getTypeDocsForComponent(framework: string, component: stri
     return []
   }
 
-  try {
-    return (
-      await Promise.allSettled(
-        types.map(async (name) => ({
-          name,
-          properties: await getTypeDoc(framework, name),
-        })),
-      )
+  const settledPromises = await Promise.allSettled(
+    types.map(async (name) => ({
+      name,
+      properties: await getTypeDoc(framework, name),
+    })),
+  )
+
+  const warnings = settledPromises
+    .filter((result): result is PromiseRejectedResult => result.status === 'rejected')
+    .map(
+      (result) =>
+        `[warning]: Couldn't find type docs for component ${framework}/${component}: ${
+          (result.reason as NodeJS.ErrnoException).path
+        }`,
     )
-      .filter(
-        <T>(result: PromiseSettledResult<T>): result is PromiseFulfilledResult<T> =>
-          result.status === 'fulfilled',
-      )
-      .map((result) => result.value)
-  } catch (e) {
-    console.error(
-      `Couldn't find type docs for component ${component}/${framework}`,
-      (e as NodeJS.ErrnoException).path,
-    )
-    return []
+    .join('\n')
+
+  if (warnings) {
+    console.warn(warnings)
   }
+
+  return settledPromises
+    .filter(
+      <T>(result: PromiseSettledResult<T>): result is PromiseFulfilledResult<T> =>
+        result.status === 'fulfilled',
+    )
+    .map((result) => result.value)
 }
