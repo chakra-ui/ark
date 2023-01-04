@@ -1,5 +1,6 @@
 import { Markdown } from '@/components/Markdown'
 import { Footer } from '@/components/navigation/Footer'
+import { Styleguide } from '@/components/Styleguide'
 import {
   findComponentDocumentByName,
   findNextComponentDocument,
@@ -22,6 +23,7 @@ const Page = (props: any) => {
   return (
     <>
       <Markdown markdown={document.body.code} />
+      <Styleguide component={params.component} />
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </>
   )

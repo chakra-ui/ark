@@ -6,7 +6,7 @@ import rehypeSlug from 'rehype-slug'
 
 export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
-  filePathPattern: '**/*.mdx',
+  filePathPattern: 'packages/*/src/**.mdx',
   contentType: 'mdx',
   computedFields: {
     name: {
@@ -25,9 +25,16 @@ export const ComponentDocument = defineDocumentType(() => ({
   },
 }))
 
+export const StyleguideDocument = defineDocumentType(() => ({
+  name: 'StyleguideDocument',
+  filePathPattern: 'styleguides/*.mdx',
+  contentType: 'markdown',
+}))
+
 export default makeSource({
-  contentDirPath: '../packages/react/src',
-  documentTypes: [ComponentDocument],
+  contentDirPath: '..',
+  contentDirInclude: ['styleguides'],
+  documentTypes: [StyleguideDocument, ComponentDocument],
   disableImportAliasWarning: true,
   mdx: {
     rehypePlugins: [
