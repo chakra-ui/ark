@@ -1,10 +1,8 @@
+import { ratingGroupAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('rating-group').parts('root', 'hiddenInput', 'label', 'rating', 'control').build(),
-)
+const parts = defineParts(ratingGroupAnatomy.build())
 
 export const ratingGroup = defineRecipe({
   name: 'ratingGroup',

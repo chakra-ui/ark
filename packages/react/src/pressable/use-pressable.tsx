@@ -6,7 +6,7 @@ import type { Optional } from '../types'
 export type UsePressableProps = Optional<pressable.Context, 'id'>
 export type UsePressableReturn = ReturnType<typeof usePressable>
 
-export const usePressable = (props: UsePressableProps) => {
+export const usePressable = (props?: UsePressableProps) => {
   const context = {
     id: useId(),
     ...props,

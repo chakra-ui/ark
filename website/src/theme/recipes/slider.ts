@@ -1,23 +1,8 @@
+import { sliderAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('slider')
-    .parts(
-      'root',
-      'label',
-      'thumb',
-      'hiddenInput',
-      'output',
-      'track',
-      'range',
-      'control',
-      'markerGroup',
-      'marker',
-    )
-    .build(),
-)
+const parts = defineParts(sliderAnatomy.build())
 
 export const slider = defineRecipe({
   name: 'slider',

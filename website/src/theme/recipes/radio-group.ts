@@ -1,12 +1,8 @@
+import { radioGroupAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('radioGroup')
-    .parts('root', 'label', 'radio', 'radioLabel', 'radioControl', 'radioInput')
-    .build(),
-)
+const parts = defineParts(radioGroupAnatomy.build())
 
 export const radioGroup = defineRecipe({
   name: 'radioGroup',

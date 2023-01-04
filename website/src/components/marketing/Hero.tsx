@@ -1,8 +1,8 @@
+import { Button } from '@/components/shared/Button'
+import { Heading } from '@/components/shared/Heading'
+import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { PageButton } from '../navigation/PageButton'
-import { Button } from '../shared/Button'
-import { Heading } from '../shared/Heading'
-import { Text } from '../shared/Text'
 
 export const Hero = () => (
   <Container py="24">

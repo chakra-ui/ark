@@ -1,10 +1,8 @@
+import { checkboxAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('checkbox').parts('root', 'input', 'label', 'control').build(),
-)
+const parts = defineParts(checkboxAnatomy.build())
 
 export const checkbox = defineRecipe({
   name: 'checkbox',

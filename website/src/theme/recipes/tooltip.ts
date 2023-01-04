@@ -1,12 +1,8 @@
+import { tooltipAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('tooltip')
-    .parts('trigger', 'arrow', 'arrowTip', 'positioner', 'content', 'label')
-    .build(),
-)
+const parts = defineParts(tooltipAnatomy.build())
 
 export const tooltip = defineRecipe({
   name: 'tooltip',

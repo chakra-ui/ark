@@ -1,10 +1,8 @@
+import { hoverCardAnatomy } from '@ark-ui/react'
 import { defineRecipe } from 'css-panda'
-import { createAnatomy } from './create-anatomy'
 import { defineParts } from './define-parts'
 
-const parts = defineParts(
-  createAnatomy('hoverCard').parts('arrow', 'arrowTip', 'trigger', 'positioner', 'content').build(),
-)
+const parts = defineParts(hoverCardAnatomy.build())
 
 export const hoverCard = defineRecipe({
   name: 'hoverCard',

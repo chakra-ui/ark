@@ -1,0 +1,92 @@
+{
+  "PaginationProps": {
+    "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; ellipsis(index: number): string; prevPageTrigger: string; nextPageTrigger: string; pageTrigger(page: number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "onChange": {
+      "type": "(details: { page: number; pageSize: number; srcElement: HTMLElement | null; }) => void",
+      "isRequired": false,
+      "description": "Called when the page number is changed, and it takes the resulting page number argument"
+    },
+    "page": { "type": "number", "isRequired": false, "description": "The active page" },
+    "pageSize": {
+      "type": "number",
+      "isRequired": false,
+      "description": "Number of data items per page"
+    },
+    "siblingCount": {
+      "type": "number",
+      "isRequired": false,
+      "description": "Number of pages to show beside active page"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    }
+  },
+  "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
+  "PaginationPageTriggerProps": { "value": { "type": "number", "isRequired": true } },
+  "UsePaginationProps": {
+    "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; ellipsis(index: number): string; prevPageTrigger: string; nextPageTrigger: string; pageTrigger(page: number): string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "onChange": {
+      "type": "(details: { page: number; pageSize: number; srcElement: HTMLElement | null; }) => void",
+      "isRequired": false,
+      "description": "Called when the page number is changed, and it takes the resulting page number argument"
+    },
+    "page": { "type": "number", "isRequired": false, "description": "The active page" },
+    "pageSize": {
+      "type": "number",
+      "isRequired": false,
+      "description": "Number of data items per page"
+    },
+    "siblingCount": {
+      "type": "number",
+      "isRequired": false,
+      "description": "Number of pages to show beside active page"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    }
+  }
+}

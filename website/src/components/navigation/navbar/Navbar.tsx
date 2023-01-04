@@ -13,9 +13,12 @@ export const Navbar = () => (
       background: 'bg.canvas',
       borderBottomWidth: '1px',
       zIndex: '100',
+      minH: '18',
+      display: 'flex',
+      alignItems: 'stretch',
     })}
   >
-    <Container className={css({ minH: '68px', display: 'flex' })}>
+    <Container display="flex">
       <HStack justify="space-between" flex="1">
         <Link href="/" aria-label="Back home">
           <Logo />
