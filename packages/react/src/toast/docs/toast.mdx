@@ -1,6 +1,8 @@
-# Toast
-
-The toast component is used to give feedback to users after an action has taken place.
+---
+id: toast
+name: Toast
+description: The toast component is used to give feedback to users after an action has taken place.
+---
 
 ## Import
 
@@ -19,7 +21,7 @@ import {
 
 ## Usage
 
-### Create the `AppToastProvider`
+### Create the AppToastProvider
 
 Use the toast components to compose a `ToastProvider` for your application. The granular component
 structure allows access to every DOM element.
@@ -56,7 +58,7 @@ export const AppToastProvider = (props: AppToastProviderProps) => (
 )
 ```
 
-### Wrap your App with the `AppToastProvider`
+### Wrap your App with the AppToastProvider
 
 Wrapping the application provides all child components access to the toast context with the
 `useToast` hook.
@@ -70,7 +72,7 @@ export const App = () => (
 )
 ```
 
-### Create toasts with `useToast`
+### Create toasts with useToast
 
 The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
 application. Create, update, remove and upsert toasts with the returned `toast` instance.

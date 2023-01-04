@@ -1,9 +1,8 @@
-# Accordion
-
-An accordion is a vertically stacked set of interactive headings containing a title, content
-snippet, or thumbnail representing a section of content.
-
-<Showcase preset="accordion" />
+---
+id: accordion
+name: Accordion
+description: An accordion is a vertically stacked set of interactive headings containing a title, content snippet, or thumbnail representing a section of content.
+---
 
 ## Import
 
@@ -46,7 +45,7 @@ The Accordion component consists of the `Accordion`, `AccordionTrigger`, `Accord
 To collapse an already expanded accordion item by clicking on it, set the `collapsible` prop
 property to `true`.
 
-> If `multiple` is `true`, we internally set collapsible to be true.
+If `multiple` is `true`, we internally set collapsible to be true.
 
 ```tsx
 <Accordion collapsible>
@@ -112,7 +111,7 @@ disabled, it is skipped from keyboard navigation and can't be interacted with.
 </Accordion>
 ```
 
-### Uncontrolled usage with `defaultValue`
+### Uncontrolled usage with defaultValue
 
 Expand accordion items by default with setting `defaultValue` to the value of an `AccordionItem`.
 The `defaultValue` should be of type `string | string[] | null`
@@ -135,7 +134,7 @@ The `defaultValue` should be of type `string | string[] | null`
 </Accordion>
 ```
 
-### Controlled usage with `value` and `onChange`
+### Controlled usage with value and onChange
 
 The accordion item accepts a `value` and `onChange` prop, to allow a controlled usage. The `value`
 prop should be of type `string | string[] | null`.

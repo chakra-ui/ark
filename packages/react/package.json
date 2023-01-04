@@ -28,7 +28,8 @@
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
     "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "postpack": "clean-package restore",
+    "typedocs": "ts-node ../../scripts/generate-type-docs.ts"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.2.2",
@@ -64,10 +65,10 @@
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
     "@types/testing-library__jest-dom": "5.14.5",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
+    "@typescript-eslint/eslint-plugin": "5.48.0",
+    "@typescript-eslint/parser": "5.48.0",
     "@vitejs/plugin-react": "3.0.0",
-    "@vitest/coverage-c8": "0.26.2",
+    "@vitest/coverage-c8": "0.26.3",
     "clean-package": "2.2.0",
     "eslint": "8.31.0",
     "eslint-plugin-react": "7.31.11",
@@ -77,9 +78,9 @@
     "react-dom": "18.2.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "4.9.4",
-    "vite": "4.0.3",
+    "vite": "4.0.4",
     "vite-plugin-dts": "1.7.1",
-    "vitest": "0.26.2"
+    "vitest": "0.26.3"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

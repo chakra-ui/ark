@@ -22,6 +22,9 @@ export default defineConfig({
     '7xl': { value: { fontSize: '7xl', lineHeight: '5.75rem', letterSpacing: '-0.02em' } },
   },
   tokens: {
+    lineHeights: {
+      relaxed: { value: '1.75' },
+    },
     colors: {
       black: { value: '#171717' },
       gray: {
@@ -69,6 +72,7 @@ export default defineConfig({
     },
     sizes: {
       '15': { value: '3.75rem' },
+      '18': { value: '4.5rem' },
     },
   },
   patterns: {
@@ -89,7 +93,7 @@ export default defineConfig({
   semanticTokens: {
     colors: {
       fg: {
-        default: { value: { base: '{colors.black}', _dark: 'white' } },
+        default: { value: { base: '{colors.gray.950}', _dark: 'white' } },
         emphasized: { value: { base: '{colors.gray.800}', _dark: '{colors.gray.200}' } },
         muted: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.300}' } },
         placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
@@ -162,6 +166,9 @@ export default defineConfig({
       color: 'fg.default',
       fontFamily: 'var(--font-inter), sans-serif',
       height: '100%',
+      _dark: {
+        colorScheme: 'dark',
+      },
     },
     '*, *::before, *::after': {
       borderColor: 'border.default',
@@ -173,6 +180,25 @@ export default defineConfig({
     },
     a: {
       textDecoration: 'none',
+    },
+    th: {
+      color: 'fg.muted',
+      fontWeight: 'medium',
+      px: '6',
+      py: '3',
+      textAlign: 'left',
+      textStyle: 'xs',
+    },
+    td: {
+      borderTopWidth: '1px',
+      color: 'fg.muted',
+      height: '18',
+      px: '6',
+      textStyle: 'sm',
+      _first: {
+        color: 'fg.default',
+        fontWeight: 'medium',
+      },
     },
   },
   recipes,
