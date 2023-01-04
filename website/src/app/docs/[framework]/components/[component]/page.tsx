@@ -26,7 +26,7 @@ const Page = async (props: any) => {
   const prevDocument = findPreviousComponentDocument(document)
   const nextDocument = findNextComponentDocument(document)
 
-  const properties = await getTypeDocsForComponent(params.framework, params.component)
+  const types = await getTypeDocsForComponent(params.framework, params.component)
 
   return (
     <Stack gap="12">
@@ -46,7 +46,7 @@ const Page = async (props: any) => {
       <ComponentTabs
         playground={<Playground component={document.id} />}
         overview={<Markdown markdown={document.body.code} />}
-        properties={<ComponentAPIReference properties={properties} />}
+        properties={<ComponentAPIReference componentName={document.name} types={types} />}
       />
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </Stack>
