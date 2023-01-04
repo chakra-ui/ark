@@ -38,22 +38,19 @@ listeners and attributes to ensure the desired accessibility.
   {({ value }) => (
     <>
       <TagsInputLabel>Label</TagsInputLabel>
-
       <TagsInputControl>
         {(value ?? []).map((value, index) => (
           <Fragment key={index}>
             <Tag index={index} value={value}>
               <span>{value}</span>
               <TagDeleteTrigger index={index} value={value}>
-                <button>&#x2715;</button>
+                <button>x</button>
               </TagDeleteTrigger>
             </Tag>
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
-
         <TagsInputField placeholder="Add tag" />
-
         <TagsInputClearTrigger>
           <button>Clear all</button>
         </TagsInputClearTrigger>
