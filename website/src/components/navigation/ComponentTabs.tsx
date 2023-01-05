@@ -18,9 +18,7 @@ export const ComponentTabs = (props: ComponentTabsProps) => (
       <TabTrigger value="props">
         <button>Properties</button>
       </TabTrigger>
-      <TabTrigger value="styling">
-        <button>Styling</button>
-      </TabTrigger>
+
       <TabIndicator />
     </TabList>
     <TabContent value="overview">
@@ -30,8 +28,5 @@ export const ComponentTabs = (props: ComponentTabsProps) => (
       </Stack>
     </TabContent>
     <TabContent value="props">{props.properties}</TabContent>
-    <TabContent value="styling">
-      <h2>Styling</h2>
-    </TabContent>
   </Tabs>
 )
