@@ -37,7 +37,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -116,7 +116,7 @@
       "isRequired": true
     },
     "getOptionState": {
-      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
+      "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isSelected: boolean\n}",
       "isRequired": true
     },
     "hiddenSelectProps": {
@@ -184,7 +184,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ content: string; trigger: string; label: string; option(id: string | number): string; }>",
+      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -263,7 +263,7 @@
       "isRequired": true
     },
     "getOptionState": {
-      "type": "(props: OptionProps) => { isDisabled: boolean; isHighlighted: boolean; isSelected: boolean; }",
+      "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isSelected: boolean\n}",
       "isRequired": true
     },
     "hiddenSelectProps": {

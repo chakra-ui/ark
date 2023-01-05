@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; contextTrigger: string; content: string; label(id: string): string; group(id: string): string; }>",
+      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
@@ -57,12 +57,12 @@
       "description": "Function called when the menu is opened"
     },
     "onSelect": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called when a menu item is selected."
     },
     "onValueChange": {
-      "type": "(details: { name: string; value: string | string[]; }) => void",
+      "type": "(details: { name: string; value: string | string[] }) => void",
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
@@ -144,7 +144,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; contextTrigger: string; content: string; label(id: string): string; group(id: string): string; }>",
+      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
@@ -164,12 +164,12 @@
       "description": "Function called when the menu is opened"
     },
     "onSelect": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called when a menu item is selected."
     },
     "onValueChange": {
-      "type": "(details: { name: string; value: string | string[]; }) => void",
+      "type": "(details: { name: string; value: string | string[] }) => void",
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },

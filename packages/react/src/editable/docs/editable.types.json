@@ -37,7 +37,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; area: string; label: string; preview: string; input: string; controls: string; submitTrigger: string; cancelTrigger: string; editTrigger: string; }>",
+      "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  controls: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the editable. Useful for composition."
     },
@@ -57,12 +57,12 @@
       "description": "The name attribute of the editable component. Used for form submission."
     },
     "onCancel": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     },
     "onChange": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the editable's value is changed"
     },
@@ -72,12 +72,12 @@
       "description": "The callback that is called when in the edit mode."
     },
     "onSubmit": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the editable's value is submitted."
     },
     "placeholder": {
-      "type": "string | { edit: string; preview: string; }",
+      "type": "string | { edit: string; preview: string }",
       "isRequired": false,
       "description": "The placeholder value to show when the `value` is empty"
     },
@@ -150,7 +150,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; area: string; label: string; preview: string; input: string; controls: string; submitTrigger: string; cancelTrigger: string; editTrigger: string; }>",
+      "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  controls: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the editable. Useful for composition."
     },
@@ -170,12 +170,12 @@
       "description": "The name attribute of the editable component. Used for form submission."
     },
     "onCancel": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     },
     "onChange": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the editable's value is changed"
     },
@@ -185,12 +185,12 @@
       "description": "The callback that is called when in the edit mode."
     },
     "onSubmit": {
-      "type": "(details: { value: string; }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "The callback that is called when the editable's value is submitted."
     },
     "placeholder": {
-      "type": "string | { edit: string; preview: string; }",
+      "type": "string | { edit: string; preview: string }",
       "isRequired": false,
       "description": "The placeholder value to show when the `value` is empty"
     },

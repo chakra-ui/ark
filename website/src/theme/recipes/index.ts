@@ -1,4 +1,5 @@
 import { accordion } from './accordion'
+import { badge } from './badge'
 import { button } from './button'
 import { checkbox } from './checkbox'
 import { dialog } from './dialog'
@@ -20,6 +21,7 @@ import { tooltip } from './tooltip'
 
 export const recipes = {
   accordion,
+  badge,
   button,
   checkbox,
   dialog,

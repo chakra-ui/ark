@@ -36,7 +36,7 @@
       "description": "Whether the input should be auto-focused"
     },
     "blurBehavior": {
-      "type": "\"clear\" | \"add\"",
+      "type": "'clear' | 'add'",
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
@@ -72,7 +72,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; input: string; clearBtn: string; label: string; control: string; tag(opts: TagProps): string; tagDeleteTrigger(opts: TagProps): string; tagInput(opts: TagProps): string; }>",
+      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  tag(opts: TagProps): string\n  tagDeleteTrigger(opts: TagProps): string\n  tagInput(opts: TagProps): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tags input. Useful for composition."
     },
@@ -94,22 +94,22 @@
       "description": "The name attribute for the input. Useful for form submissions"
     },
     "onChange": {
-      "type": "(details: { values: string[]; }) => void",
+      "type": "(details: { values: string[] }) => void",
       "isRequired": false,
       "description": "Callback fired when the tag values is updated"
     },
     "onHighlight": {
-      "type": "(details: { value: string | null; }) => void",
+      "type": "(details: { value: string | null }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
     },
     "onInvalid": {
-      "type": "(details: { reason: ValidityState; }) => void",
+      "type": "(details: { reason: ValidityState }) => void",
       "isRequired": false,
       "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
     },
     "onTagUpdate": {
-      "type": "(details: { value: string; index: number; }) => void",
+      "type": "(details: { value: string; index: number }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag's value is updated"
     },
@@ -124,7 +124,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "validate": {
-      "type": "(details: { inputValue: string; values: string[]; }) => boolean",
+      "type": "(details: { inputValue: string; values: string[] }) => boolean",
       "isRequired": false,
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
@@ -152,7 +152,7 @@
       "description": "Whether the input should be auto-focused"
     },
     "blurBehavior": {
-      "type": "\"clear\" | \"add\"",
+      "type": "'clear' | 'add'",
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
@@ -188,7 +188,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; input: string; clearBtn: string; label: string; control: string; tag(opts: TagProps): string; tagDeleteTrigger(opts: TagProps): string; tagInput(opts: TagProps): string; }>",
+      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  tag(opts: TagProps): string\n  tagDeleteTrigger(opts: TagProps): string\n  tagInput(opts: TagProps): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tags input. Useful for composition."
     },
@@ -210,22 +210,22 @@
       "description": "The name attribute for the input. Useful for form submissions"
     },
     "onChange": {
-      "type": "(details: { values: string[]; }) => void",
+      "type": "(details: { values: string[] }) => void",
       "isRequired": false,
       "description": "Callback fired when the tag values is updated"
     },
     "onHighlight": {
-      "type": "(details: { value: string | null; }) => void",
+      "type": "(details: { value: string | null }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
     },
     "onInvalid": {
-      "type": "(details: { reason: ValidityState; }) => void",
+      "type": "(details: { reason: ValidityState }) => void",
       "isRequired": false,
       "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
     },
     "onTagUpdate": {
-      "type": "(details: { value: string; index: number; }) => void",
+      "type": "(details: { value: string; index: number }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag's value is updated"
     },
@@ -240,7 +240,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "validate": {
-      "type": "(details: { inputValue: string; values: string[]; }) => boolean",
+      "type": "(details: { inputValue: string; values: string[] }) => boolean",
       "isRequired": false,
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
@@ -259,11 +259,11 @@
     "deleteValue": { "type": "(id: string) => void", "isRequired": true },
     "focus": { "type": "() => void", "isRequired": true },
     "getTagDeleteTriggerProps": {
-      "type": "(options: TagProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "type": "(\n  options: TagProps,\n) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
       "isRequired": true
     },
     "getTagInputProps": {
-      "type": "(options: TagProps) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
+      "type": "(\n  options: TagProps,\n) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
       "isRequired": true
     },
     "getTagProps": {
