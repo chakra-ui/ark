@@ -1,6 +1,7 @@
 import { ComponentAPIReference } from '@/components/docs/ComponentAPIReference'
 import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
+import { TableOfContent } from '@/components/docs/TableOfContent'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { Footer } from '@/components/navigation/Footer'
 import { Heading } from '@/components/shared/Heading'
@@ -11,7 +12,7 @@ import {
   findPreviousComponentDocument,
   getComponentDocuments,
 } from '@/lib/contentlayer'
-import { Stack } from '@/panda/jsx'
+import { Box, Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
 const Page = async (props: any) => {
@@ -36,15 +37,22 @@ const Page = async (props: any) => {
             {document.name}
           </Heading>
         </Stack>
-        <Text color="fg.muted" textStyle="md" lineHeight="relaxed">
+        <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
           {document.description}
         </Text>
       </Stack>
-      <ComponentTabs
-        playground={<Playground component={document.id} />}
-        overview={<Markdown markdown={document.body.code} />}
-        properties={<ComponentAPIReference componentName={document.name} types={document.types} />}
-      />
+      <Stack direction="row" gap="24" width="full">
+        <Box maxWidth={{ xl: '43rem' }}>
+          <ComponentTabs
+            playground={<Playground component={document.id} />}
+            overview={<Markdown markdown={document.body.code} />}
+            properties={
+              <ComponentAPIReference componentName={document.name} types={document.types} />
+            }
+          />
+        </Box>
+        <TableOfContent />
+      </Stack>
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </Stack>
   )
