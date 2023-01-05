@@ -75,6 +75,7 @@ export const Sidebar = (props: SidebarProps) => (
                 backgroundColor="bg.subtle"
                 borderRadius="md"
                 fontSize="md"
+                borderWidth="1px"
               >
                 {link.icon}
               </Box>
