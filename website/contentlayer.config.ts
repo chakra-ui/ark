@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
+import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
@@ -31,6 +32,10 @@ export const ComponentDocument = defineDocumentType(() => ({
       // TODO add support for solid and vue
       resolve: (doc) => '/docs/react/components/' + doc.id,
     },
+    toc: {
+      type: 'json',
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+    },
     types: {
       type: 'json',
       resolve: (doc) => {
@@ -48,7 +53,6 @@ export default makeSource({
   mdx: {
     rehypePlugins: [
       [
-        rehypePrism,
         rehypeSlug,
         rehypeAutolinkHeadings,
         {
@@ -57,6 +61,7 @@ export default makeSource({
           properties: { className: ['anchor'] },
         },
       ],
+      rehypePrism,
     ],
   },
 })

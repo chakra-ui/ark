@@ -13,7 +13,7 @@ const DocsLayout = (props: any) => {
     <Stack as={Container} gap="24" direction="row" height="100%" position="relative">
       <Sidebar items={sidebarItems} />
       <Box as="main" flex="1" py="12">
-        <Box>{props.children}</Box>
+        {props.children}
       </Box>
     </Stack>
   )

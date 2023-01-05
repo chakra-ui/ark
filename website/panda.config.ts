@@ -160,6 +160,7 @@ export default defineConfig({
       WebkitFontSmoothing: 'antialiased',
       WebkitTextSizeAdjust: '100%',
       height: '100%',
+      scrollPaddingTop: '6rem',
     },
     body: {
       backgroundColor: 'bg.canvas',

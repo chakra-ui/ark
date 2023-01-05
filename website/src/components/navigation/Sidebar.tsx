@@ -43,7 +43,7 @@ export const Sidebar = (props: SidebarProps) => (
     display={{ base: 'none', lg: 'block' }}
     position="sticky"
     top="var(--header-height)"
-    minW="64"
+    minW="60"
     py="8"
     maxH="calc(100vh - var(--header-height))"
     overflowY="auto"
@@ -84,8 +84,8 @@ export const Sidebar = (props: SidebarProps) => (
           </li>
         ))}
       </Stack>
-      <Stack gap="3">
-        <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">
+      <Stack gap="3.5">
+        <Text textStyle="sm" fontWeight="semibold">
           Overview
         </Text>
         <Stack borderLeftWidth="1px" gap="2">
@@ -96,8 +96,8 @@ export const Sidebar = (props: SidebarProps) => (
           ))}
         </Stack>
       </Stack>
-      <Stack gap="3" alignSelf="stretch">
-        <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">
+      <Stack gap="3.5">
+        <Text textStyle="sm" fontWeight="semibold">
           Components
         </Text>
         <Stack borderLeftWidth="1px" alignSelf="stretch">
