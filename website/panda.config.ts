@@ -181,23 +181,56 @@ export default defineConfig({
     a: {
       textDecoration: 'none',
     },
+    table: {
+      width: 'full',
+      tableLayout: 'auto',
+      textAlign: 'left',
+    },
     th: {
       color: 'fg.muted',
-      fontWeight: 'medium',
-      px: '6',
-      py: '3',
+      fontWeight: 'semibold',
+      pb: '2.5',
+      pt: '0',
+      pr: {
+        // @ts-expect-error invalid type
+        base: '2',
+        md: '4',
+      },
       textAlign: 'left',
-      textStyle: 'xs',
+      textStyle: 'sm',
+      _last: {
+        pl: {
+          base: '2',
+          md: '4',
+        },
+        pr: '0',
+      },
     },
     td: {
       borderTopWidth: '1px',
       color: 'fg.muted',
-      height: '18',
-      px: '6',
       textStyle: 'sm',
+      py: '2.5',
+      wordWrap: 'break-word',
+      pr: {
+        // @ts-expect-error invalid type
+        base: '2',
+        md: '4',
+      },
+      verticalAlign: 'top',
       _first: {
-        color: 'fg.default',
-        fontWeight: 'medium',
+        minWidth: {
+          base: 'unset',
+          sm: '12rem',
+        },
+      },
+      _last: {
+        width: 'full',
+        pl: {
+          base: '2',
+          md: '4',
+        },
+        pr: '0',
       },
     },
   },
