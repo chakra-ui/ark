@@ -26,7 +26,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string; }>",
+      "type": "Partial<{ trigger: string; content: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },

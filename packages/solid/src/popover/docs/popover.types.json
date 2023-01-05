@@ -31,7 +31,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ anchor: string; trigger: string; content: string; title: string; description: string; closeTrigger: string; }>",
+      "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
@@ -100,7 +100,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ anchor: string; trigger: string; content: string; title: string; description: string; closeTrigger: string; }>",
+      "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },

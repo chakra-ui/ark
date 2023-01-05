@@ -26,7 +26,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -36,7 +36,7 @@
       "description": "Whether multple accordion items can be open at the same time."
     },
     "onChange": {
-      "type": "(details: { value: string | string[] | null; }) => void",
+      "type": "(details: { value: string | string[] | null }) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },
@@ -81,7 +81,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -91,7 +91,7 @@
       "description": "Whether multple accordion items can be open at the same time."
     },
     "onChange": {
-      "type": "(details: { value: string | string[] | null; }) => void",
+      "type": "(details: { value: string | string[] | null }) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },

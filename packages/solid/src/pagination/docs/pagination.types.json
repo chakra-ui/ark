@@ -17,12 +17,12 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; ellipsis(index: number): string; prevPageTrigger: string; nextPageTrigger: string; pageTrigger(page: number): string; }>",
+      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevPageTrigger: string\n  nextPageTrigger: string\n  pageTrigger(page: number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
     "onChange": {
-      "type": "(details: { page: number; pageSize: number; srcElement: HTMLElement | null; }) => void",
+      "type": "(details: {\n  page: number\n  pageSize: number\n  srcElement: HTMLElement | null\n}) => void",
       "isRequired": false,
       "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },
@@ -63,12 +63,12 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; ellipsis(index: number): string; prevPageTrigger: string; nextPageTrigger: string; pageTrigger(page: number): string; }>",
+      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevPageTrigger: string\n  nextPageTrigger: string\n  pageTrigger(page: number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
     "onChange": {
-      "type": "(details: { page: number; pageSize: number; srcElement: HTMLElement | null; }) => void",
+      "type": "(details: {\n  page: number\n  pageSize: number\n  srcElement: HTMLElement | null\n}) => void",
       "isRequired": false,
       "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },
