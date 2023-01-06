@@ -89,11 +89,14 @@ export const Sidebar = (props: SidebarProps) => (
           Overview
         </Text>
         <Stack borderLeftWidth="1px" gap="2">
-          {['Introduction', 'Getting started', 'Styling', 'Roadmap', 'Changelog'].map((item) => (
+          {['Introduction', 'Getting started', 'Styling', 'Roadmap'].map((item) => (
             <Link key={item} variant="sidebar">
               {item}
             </Link>
           ))}
+          <PageLink variant="sidebar" href="/docs/react/changelog">
+            Changelog
+          </PageLink>
         </Stack>
       </Stack>
       <Stack gap="3" alignSelf="stretch">
