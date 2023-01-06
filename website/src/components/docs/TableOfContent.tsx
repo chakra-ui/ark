@@ -1,9 +1,8 @@
-import { Box } from '@/panda/jsx'
+import { panda } from '@/panda/jsx'
 
 export const TableOfContent = () => {
   return (
-    <Box
-      as="aside"
+    <panda.aside
       position="sticky"
       display={{ base: 'none', xl: 'block' }}
       top="112px"
@@ -35,6 +34,6 @@ export const TableOfContent = () => {
           ))}
         </Stack>
       </div> */}
-    </Box>
+    </panda.aside>
   )
 }

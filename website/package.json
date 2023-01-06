@@ -15,7 +15,7 @@
     "@ark-ui/react": "workspace:*",
     "@next/font": "13.1.1",
     "contentlayer": "0.2.9",
-    "css-panda": "0.0.0-dev-20230105084653",
+    "css-panda": "0.0.0-dev-20230106105402",
     "next": "13.1.1",
     "next-contentlayer": "0.2.9",
     "react": "18.2.0",
