@@ -60,27 +60,28 @@ export const Sidebar = (props: SidebarProps) => (
       >
         {links.map((link) => (
           <li key={link.label}>
-            <HStack
-              as="a"
-              gap="4"
+            <Link
+              href={link.href}
               _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
               aria-current={link.isActive ? 'page' : false}
             >
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                w="6"
-                h="6"
-                backgroundColor="bg.subtle"
-                borderRadius="md"
-                fontSize="md"
-                borderWidth="1px"
-              >
-                {link.icon}
-              </Box>
-              <Text as="span">{link.label}</Text>
-            </HStack>
+              <HStack gap="4">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  w="6"
+                  h="6"
+                  backgroundColor="bg.subtle"
+                  borderRadius="md"
+                  fontSize="md"
+                  borderWidth="1px"
+                >
+                  {link.icon}
+                </Box>
+                <Text as="span">{link.label}</Text>
+              </HStack>
+            </Link>
           </li>
         ))}
       </Stack>

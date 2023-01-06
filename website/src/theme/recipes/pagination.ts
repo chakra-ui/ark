@@ -1,6 +1,5 @@
 import { paginationAnatomy } from '@ark-ui/react'
-import { defineRecipe } from 'css-panda'
-import { defineParts } from './define-parts'
+import { defineParts, defineRecipe } from 'css-panda'
 
 const parts = defineParts(paginationAnatomy.build())
 

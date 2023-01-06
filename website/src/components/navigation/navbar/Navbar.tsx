@@ -29,7 +29,6 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-        {/* @ts-expect-error */}
         <Box
           bg="bg.subtle"
           borderWidth="1px"
