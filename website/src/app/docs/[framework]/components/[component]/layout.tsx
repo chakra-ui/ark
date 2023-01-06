@@ -3,7 +3,8 @@ import { getComponentDocuments } from '@/lib/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
 
 const DocsLayout = (props: any) => {
-  const sidebarItems = getComponentDocuments().map((doc) => ({
+  const { params } = props
+  const sidebarItems = getComponentDocuments(params.framework).map((doc) => ({
     name: doc.name,
     route: doc.route,
     isActive: doc.id === props.params.component,

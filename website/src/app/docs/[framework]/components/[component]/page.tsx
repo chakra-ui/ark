@@ -7,7 +7,7 @@ import { Footer } from '@/components/navigation/Footer'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import {
-  findComponentDocumentById,
+  findComponentDocumentByFrameworkAndId,
   findNextComponentDocument,
   findPreviousComponentDocument,
   getComponentDocuments,
@@ -17,7 +17,7 @@ import { notFound } from 'next/navigation'
 
 const Page = async (props: any) => {
   const { params } = props
-  const document = findComponentDocumentById(params.component)
+  const document = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
   if (!document) {
     return notFound()
@@ -42,7 +42,7 @@ const Page = async (props: any) => {
         </Text>
       </Stack>
       <Stack direction="row" gap="24" width="full">
-        <Box maxWidth={{ xl: '43rem' }}>
+        <Box w="full" maxWidth={{ xl: '43rem' }}>
           <ComponentTabs
             playground={<Playground component={document.id} />}
             overview={<Markdown markdown={document.body.code} />}
@@ -62,8 +62,8 @@ export default Page
 
 export const generateStaticParams = () => {
   const frameworks = ['react', 'solid', 'vue']
-  return getComponentDocuments().flatMap((component) =>
-    frameworks.map((framework) => ({
+  return frameworks.flatMap((framework) =>
+    getComponentDocuments(framework).map((component) => ({
       framework,
       component: component.id,
     })),
