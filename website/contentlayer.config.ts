@@ -63,11 +63,6 @@ export const ChangelogDocument = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: '../packages',
-  contentDirInclude: [
-    'react',
-    //'solid',
-    //'vue',
-  ],
   contentDirExclude: ['*/node_modules', 'dist'],
   documentTypes: [ComponentDocument, ChangelogDocument],
   disableImportAliasWarning: true,
