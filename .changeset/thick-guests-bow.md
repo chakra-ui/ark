@@ -1,5 +1,5 @@
 ---
-'@ark-ui/react': minor
+'@ark-ui/solid': minor
 ---
 
 Add components `Accordion`, `Checkbox`, `Dialog`, `Editable`, `HoverCard`, `Menu`, `NumberInput`,
