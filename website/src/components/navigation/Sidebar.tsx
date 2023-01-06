@@ -1,8 +1,12 @@
+import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Box, HStack, Stack } from '@/panda/jsx'
 import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
 import { PageLink } from './PageLink'
+
+// Because of a bug in panda, we need to use a Link component somewhere with variant "sidebar" to include the styles
+const _a = <Link variant="sidebar" display="none" />
 
 type SidebarItem = {
   name: string
