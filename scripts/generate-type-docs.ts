@@ -41,11 +41,12 @@ function extractPropertiesOfTypeName(
   { shouldIgnoreProperty = () => false }: TypeSearchOptions = {},
 ) {
   const regexSearchTerm = typeof searchTerm === 'string' ? `^${searchTerm}$` : searchTerm
-  const typeStatements = sourceFile.statements.filter(
-    (statement) =>
-      ts.isTypeAliasDeclaration(statement) &&
-      new RegExp(regexSearchTerm).test(statement.name.getText()),
-  )
+  const typeStatements = sourceFile.statements.filter((statement) => {
+    return (
+      (ts.isInterfaceDeclaration(statement) || ts.isTypeAliasDeclaration(statement)) &&
+      new RegExp(regexSearchTerm).test(statement.name.getText())
+    )
+  })
 
   const results: Record<string, TypeProperties> = {}
   for (const typeStatement of typeStatements) {
