@@ -7,7 +7,7 @@ export type IconButtonProps = HTMLPandaProps<'button'> &
   ButtonVariants & { icon?: React.ReactElement; 'aria-label': string }
 
 export const IconButton = (props: IconButtonProps) => {
-  const { icon, variant, size, children, ...rest } = props
+  const { icon, variant, size, children, className, ...rest } = props
 
   const element = icon || children
   const _children = isValidElement(element)
@@ -22,7 +22,7 @@ export const IconButton = (props: IconButtonProps) => {
 
   return (
     <panda.button
-      className={cx(button({ variant, size }), css({ px: '0' }))}
+      className={cx(button({ variant, size }), css({ px: '0' }), String(className || ''))}
       {...rest}
       data-scope="button"
       data-part="root"
