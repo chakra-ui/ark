@@ -1,6 +1,7 @@
+import { GitHubStats } from '@/components/navigation/navbar/GitHubStats'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Box, Container, HStack } from '@/panda/jsx'
+import { Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
@@ -29,15 +30,10 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-        <Box
-          bg="bg.subtle"
-          borderWidth="1px"
-          h="9"
-          width="320px"
-          borderRadius="sm"
-          display={{ base: 'none' }}
-        />
-        <ColorModeButton />
+
+          {/* @ts-expect-error Server Component */}
+          <GitHubStats className={css({ ml: 'auto' })} repo="chakra-ui/ark" />
+          <ColorModeButton />
       </HStack>
     </Container>
   </nav>
