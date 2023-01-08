@@ -1,3 +1,4 @@
+import { SidebarButton } from '@/components/navigation/sidebar/SidebarButton'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Box, Container, HStack } from '@/panda/jsx'
@@ -20,8 +21,9 @@ export const Navbar = () => (
     })}
   >
     <Container display="flex">
-      <HStack justify="space-between" flex="1">
-        <Link href="/" aria-label="Back home">
+      <HStack flex="1">
+        <SidebarButton />
+        <Link href="/" aria-label="Back home" className={css({ mr: 'auto' })}>
           <HStack color="fg.emphasized">
             <Logo />
             <Text textStyle="lg" fontWeight="semibold" whiteSpace="nowrap">

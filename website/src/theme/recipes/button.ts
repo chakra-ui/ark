@@ -99,6 +99,9 @@ export const button = defineRecipe({
         _selected: {
           background: 'bg.subtle',
         },
+        _expanded: {
+          color: 'accent.default',
+        },
         _focusVisible: {
           zIndex: 1,
           '--shadow': {

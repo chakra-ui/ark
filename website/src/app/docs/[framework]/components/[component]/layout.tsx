@@ -1,4 +1,4 @@
-import { Sidebar } from '@/components/navigation/Sidebar'
+import { Sidebar } from '@/components/navigation/sidebar/Sidebar'
 import { getComponentDocuments } from '@/lib/contentlayer'
 import { Box, Container, Stack } from '@/panda/jsx'
 

@@ -1,4 +1,5 @@
 import { Navbar } from '@/components/navigation/navbar/Navbar'
+import { SidebarProvider } from '@/components/navigation/sidebar/sidebarContext'
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { css, cx } from '@/panda/css'
 import { Inter, Roboto_Mono } from '@next/font/google'
@@ -19,8 +20,10 @@ const RootLayout = (props: PropsWithChildren) => {
       </head>
       <body>
         <div className={css({ minHeight: 'full' })}>
-          <Navbar />
-          {props.children}
+          <SidebarProvider>
+            <Navbar />
+            {props.children}
+          </SidebarProvider>
         </div>
       </body>
     </html>
