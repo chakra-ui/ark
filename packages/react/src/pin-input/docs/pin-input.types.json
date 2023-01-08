@@ -1,0 +1,242 @@
+{
+  "PinInputProps": {
+    "autoFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to auto-focus the first input."
+    },
+    "blurOnComplete": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to blur the input when the value is complete"
+    },
+    "defaultValue": { "type": "string[]", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the inputs are disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input element."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the pin input. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the pin input is in the invalid state"
+    },
+    "mask": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the input's value will be masked just like `type=password`"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input element. Useful for form submission."
+    },
+    "onChange": {
+      "type": "(details: { value: string[] }) => void",
+      "isRequired": false,
+      "description": "Function called on input change"
+    },
+    "onComplete": {
+      "type": "(details: { value: string[]; valueAsString: string }) => void",
+      "isRequired": false,
+      "description": "Function called when all inputs have valid values"
+    },
+    "onInvalid": {
+      "type": "(details: { value: string; index: number }) => void",
+      "isRequired": false,
+      "description": "Function called when an invalid value is entered"
+    },
+    "otp": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the pin input component signals to its fields that they should\nuse `autocomplete=\"one-time-code\"`."
+    },
+    "pattern": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The regular expression that the user-entered input value is checked against."
+    },
+    "placeholder": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The placeholder text for the input"
+    },
+    "selectOnFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select input value when input is focused"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "type": {
+      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
+      "isRequired": false,
+      "description": "The type of value the pin-input should allow"
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The value of the the pin input."
+    }
+  },
+  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } },
+  "UsePinInputProps": {
+    "autoFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to auto-focus the first input."
+    },
+    "blurOnComplete": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to blur the input when the value is complete"
+    },
+    "defaultValue": { "type": "string[]", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the inputs are disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input element."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the pin input. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the pin input is in the invalid state"
+    },
+    "mask": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the input's value will be masked just like `type=password`"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input element. Useful for form submission."
+    },
+    "onChange": {
+      "type": "(details: { value: string[] }) => void",
+      "isRequired": false,
+      "description": "Function called on input change"
+    },
+    "onComplete": {
+      "type": "(details: { value: string[]; valueAsString: string }) => void",
+      "isRequired": false,
+      "description": "Function called when all inputs have valid values"
+    },
+    "onInvalid": {
+      "type": "(details: { value: string; index: number }) => void",
+      "isRequired": false,
+      "description": "Function called when an invalid value is entered"
+    },
+    "otp": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the pin input component signals to its fields that they should\nuse `autocomplete=\"one-time-code\"`."
+    },
+    "pattern": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The regular expression that the user-entered input value is checked against."
+    },
+    "placeholder": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The placeholder text for the input"
+    },
+    "selectOnFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select input value when input is focused"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "type": {
+      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
+      "isRequired": false,
+      "description": "The type of value the pin-input should allow"
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The value of the the pin input."
+    }
+  },
+  "UsePinInputReturn": {
+    "clearValue": { "type": "() => void", "isRequired": true },
+    "controlProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "focus": { "type": "() => void", "isRequired": true },
+    "getInputProps": {
+      "type": "({\n  index,\n}: {\n  index: number\n}) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
+      "isRequired": true
+    },
+    "hiddenInputProps": {
+      "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
+      "isRequired": true
+    },
+    "isValueComplete": { "type": "boolean", "isRequired": true },
+    "labelProps": {
+      "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
+      "isRequired": true
+    },
+    "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "setValue": { "type": "(value: string[]) => void", "isRequired": true },
+    "setValueAtIndex": { "type": "(index: number, value: string) => void", "isRequired": true },
+    "value": { "type": "string[]", "isRequired": true },
+    "valueAsString": { "type": "string", "isRequired": true }
+  }
+}

@@ -286,9 +286,10 @@ dist
 # Turbo
 .turbo
 
-# Docusaurus
-.docusaurus
-.cache-loader
-
 ## CSS Panda
 panda
+
+# Contentlayer
+.contentlayer
+
+.vscode

@@ -1,7 +1,8 @@
-# Dialog
-
-A dialog is a window overlaid on either the primary window or another dialog window. Content behind
-a modal dialog is inert, meaning that users cannot interact with it.
+---
+id: dialog
+name: Dialog
+description: A dialog is a window overlaid on either the primary window or another dialog window. Content behind a modal dialog is inert, meaning that users cannot interact with it.
+---
 
 ## Import
 
@@ -13,16 +14,16 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogPortal,
   DialogTitle,
   DialogTrigger,
+  Portal,
 } from '@ark-ui/react'
 ```
 
 ## Usage
 
 The Dialog component consists of the `DialogBackdrop`, `DialogCloseTrigger`, `DialogContainer`,
-`DialogContent`, `DialogDescription`, `DialogPortal`, `DialogTitle`, `DialogTrigger` components.
+`DialogContent`, `DialogDescription`, `Portal`, `DialogTitle`, `DialogTrigger` components.
 
 Note that the `DialogTrigger` and `DialogCloseTrigger` components accept a single JSX element which
 will receive all necessary props to add the event listeners and attributes to ensure the desired
@@ -33,7 +34,7 @@ accessibility.
   <DialogTrigger>
     <button>Open Dialog</button>
   </DialogTrigger>
-  <DialogPortal>
+  <Portal>
     <DialogBackdrop />
     <DialogContainer>
       <DialogContent>
@@ -44,7 +45,7 @@ accessibility.
         </DialogCloseTrigger>
       </DialogContent>
     </DialogContainer>
-  </DialogPortal>
+  </Portal>
 </Dialog>
 ```
 

@@ -4,12 +4,11 @@
   "trailingComma": "all",
   "arrowParens": "always",
   "semi": false,
-  "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {
-      "files": "*.astro",
+      "files": "*.mdx",
       "options": {
-        "parser": "astro"
+        "printWidth": 80
       }
     }
   ]

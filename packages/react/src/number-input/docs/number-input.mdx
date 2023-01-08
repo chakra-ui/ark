@@ -1,7 +1,8 @@
-# Number Input
-
-The number input provides controls for editing, incrementing or decrementing numeric values using
-the keyboard or pointer.
+---
+id: number-input
+name: Number Input
+description: The number input provides controls for editing, incrementing or decrementing numeric values using the keyboard or pointer.
+---
 
 ## Import
 
@@ -115,7 +116,10 @@ To apply custom formatting to the input's value, use the exposed `format` and `p
 example, to format the input's value to currency, here's how to achieve it:
 
 ```tsx
-<NumberInput format={(value) => `$${value}`} parse={(value) => value.replace(/\$/g, '')}>
+<NumberInput
+  format={(value) => `$${value}`}
+  parse={(value) => value.replace(/\$/g, '')}
+>
   {/*...*/}
 </NumberInput>
 ```

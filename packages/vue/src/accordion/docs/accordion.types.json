@@ -1,0 +1,12 @@
+{
+  "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "UseAccordionReturn": {
+    "api": {
+      "type": "ComputedRef<{ value: string | string[] | null; setValue(value: string | string[]): void; rootProps: Attrs<HTMLAttributes>; getItemState(props: ItemProps): { ...; }; getItemProps(props: ItemProps): Attrs<...>; getContentProps(props: ItemProps): Attrs<...>; getTriggerProps(props: ItemProps): ElementAttrs<...>; }>",
+      "isRequired": true
+    }
+  }
+}

@@ -1,11 +1,18 @@
-# Rating Group
-
-The RatingGroup allows a user to add and remove ratings for an item.
+---
+id: rating-group
+name: Rating Group
+description: The RatingGroup allows a user to add and remove ratings for an item.
+---
 
 ## Import
 
 ```ts
-import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '@ark-ui/react'
+import {
+  Rating,
+  RatingGroup,
+  RatingGroupControl,
+  RatingGroupLabel,
+} from '@ark-ui/react'
 ```
 
 ## Usage
@@ -73,7 +80,12 @@ const ControlledRatingGroup = () => {
   const [value, setValue] = React.useState(0)
 
   return (
-    <RatingGroup max={5} value={value} onChange={(details) => setValue(details.value)} allowHalf>
+    <RatingGroup
+      max={5}
+      value={value}
+      onChange={(details) => setValue(details.value)}
+      allowHalf
+    >
       <RatingGroupLabel>Label</RatingGroupLabel>
       <RatingGroupControl>
         {({ sizeArray }) =>
