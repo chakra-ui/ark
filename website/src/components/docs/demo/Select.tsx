@@ -1,3 +1,4 @@
+import { select } from '@/panda/recipes'
 import {
   Portal,
   Select,
@@ -6,21 +7,13 @@ import {
   SelectPositioner,
   SelectTrigger,
 } from '@ark-ui/react'
-import { select } from '../../../panda/recipes'
-import { Input } from '../shared/Input'
 
 export const DemoSelect = () => (
   <Select positioning={{ gutter: 4 }}>
     {({ selectedOption }) => (
       <>
         <SelectTrigger>
-          <Input
-            variant="outline"
-            size="md"
-            width="xs"
-            cursor="pointer"
-            value={selectedOption?.label ?? 'Select option'}
-          />
+          <button className={select()}>{selectedOption?.label ?? 'Select option'}</button>
         </SelectTrigger>
         <Portal>
           <SelectPositioner className={select()}>
