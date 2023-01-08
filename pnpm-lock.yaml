@@ -79,7 +79,7 @@ importers:
       eslint: 8.31.0
       eslint-plugin-react: 7.31.11
       eslint-plugin-react-hooks: 4.6.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       react: 18.2.0
       react-dom: 18.2.0
       resize-observer-polyfill: 1.5.1
@@ -123,19 +123,19 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
       '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
       '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      '@vitest/coverage-c8': 0.26.3_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.26.3_jsdom@21.0.0
       clean-package: 2.2.0
       eslint: 8.31.0
       eslint-plugin-react: 7.31.11_eslint@8.31.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.31.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.4
       vite: 4.0.4
       vite-plugin-dts: 1.7.1_vite@4.0.4
-      vitest: 0.26.3_jsdom@20.0.3
+      vitest: 0.26.3_jsdom@21.0.0
 
   packages/solid:
     specifiers:
@@ -171,7 +171,7 @@ importers:
       '@zag-js/tooltip': 0.2.6
       clean-package: 2.2.0
       eslint: 8.31.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       solid-js: 1.6.6
       solid-testing-library: 0.5.0
       typescript: 4.9.4
@@ -210,17 +210,17 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
       '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
-      '@vitest/coverage-c8': 0.26.3_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.26.3_jsdom@21.0.0
       clean-package: 2.2.0
       eslint: 8.31.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       solid-js: 1.6.6
       solid-testing-library: 0.5.0_solid-js@1.6.6
       typescript: 4.9.4
       vite: 4.0.4
       vite-plugin-dts: 1.7.1_vite@4.0.4
       vite-plugin-solid: 2.5.0_solid-js@1.6.6+vite@4.0.4
-      vitest: 0.26.3_jsdom@20.0.3
+      vitest: 0.26.3_jsdom@21.0.0
 
   packages/vue:
     specifiers:
@@ -259,7 +259,7 @@ importers:
       '@zag-js/vue': 0.2.4
       clean-package: 2.2.0
       eslint: 8.31.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.4
       vite: 4.0.4
@@ -299,16 +299,16 @@ importers:
       '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
       '@vitejs/plugin-vue-jsx': 3.0.0_vite@4.0.4+vue@3.2.45
-      '@vitest/coverage-c8': 0.26.3_jsdom@20.0.3
+      '@vitest/coverage-c8': 0.26.3_jsdom@21.0.0
       '@vue/compiler-sfc': 3.2.45
       clean-package: 2.2.0
       eslint: 8.31.0
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.4
       vite: 4.0.4
       vite-plugin-dts: 1.7.1_vite@4.0.4
-      vitest: 0.26.3_jsdom@20.0.3
+      vitest: 0.26.3_jsdom@21.0.0
       vue: 3.2.45
 
   website:
@@ -3064,11 +3064,11 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@vitest/coverage-c8/0.26.3_jsdom@20.0.3:
+  /@vitest/coverage-c8/0.26.3_jsdom@21.0.0:
     resolution: {integrity: sha512-sjmVYPozajWY2DawzuvhYX6hEe/LD6p2xv9VmPvh1zzDeNNVCAnyLcvXoaSMQD522x9bqciuyPrlrnh2iNkE/w==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.26.3_jsdom@20.0.3
+      vitest: 0.26.3_jsdom@21.0.0
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -6696,8 +6696,8 @@ packages:
     resolution: {integrity: sha512-SnZNcinB4RIcnEyZqFPdGPVgrg2AcnykiBy0sHVJQKHYeaLUvi3Exj+iaPpLnFVkDPZIV4U0yvgC9/R4uEAZ9g==}
     dev: false
 
-  /jsdom/20.0.3:
-    resolution: {integrity: sha512-SYhBvTh89tTfCD/CRdSOm13mOBa42iTaTyfyEWBdKcGdPxPtLFBXuHR8XHb33YNYaP+lLbmSvBTsnoesCNJEsQ==}
+  /jsdom/21.0.0:
+    resolution: {integrity: sha512-AIw+3ZakSUtDYvhwPwWHiZsUi3zHugpMEKlNPaurviseYoBqo0zBd3zqoUi3LPCNtPFlEP8FiW9MqCZdjb2IYA==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -10318,7 +10318,7 @@ packages:
       vite: 4.0.4
     dev: true
 
-  /vitest/0.26.3_jsdom@20.0.3:
+  /vitest/0.26.3_jsdom@21.0.0:
     resolution: {integrity: sha512-FmHxU9aUCxTi23keF3vxb/Qp0lYXaaJ+jRLGOUmMS3qVTOJvgGE+f1VArupA6pEhaG2Ans4X+zV9dqM5WISMbg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -10347,7 +10347,7 @@ packages:
       acorn-walk: 8.2.0
       chai: 4.3.7
       debug: 4.3.4
-      jsdom: 20.0.3
+      jsdom: 21.0.0
       local-pkg: 0.4.2
       source-map: 0.6.1
       strip-literal: 1.0.0
