@@ -1,4 +1,12 @@
-import { AllowedComponentProps, ComponentCustomProps, isVNode, Slots, VNode, VNodeProps } from 'vue'
+import {
+  AllowedComponentProps,
+  cloneVNode,
+  ComponentCustomProps,
+  isVNode,
+  Slots,
+  VNode,
+  VNodeProps,
+} from 'vue'
 
 /**
  * Gets only the valid children of a component,
@@ -23,4 +31,23 @@ export type ComponentWithProps<P> = {
         [key: string]: unknown
       }
   }
+}
+
+/**
+ * Returns a copy of only the valid default slot
+ *
+ * @param slots - the slots object from the component setup
+ * @param componentName component display name for thrown errors
+ * @returns A VNode clone of the default slot
+ */
+export function useUniqueChild(slots: Slots, componentName: string) {
+  const validChildren = getValidChildren(slots)
+  if (validChildren.length > 1) {
+    const errorMessage = `[${componentName}] : ${componentName} can only have one root element.`
+    console.error(errorMessage)
+    throw new SyntaxError(errorMessage)
+  }
+  const DefaultSlot = cloneVNode(validChildren[0])
+
+  return DefaultSlot
 }

@@ -52,7 +52,8 @@
     "@zag-js/tags-input": "0.3.7",
     "@zag-js/toast": "0.2.7",
     "@zag-js/tooltip": "0.2.6",
-    "@zag-js/vue": "0.2.4"
+    "@zag-js/vue": "0.2.4",
+    "@zag-js/select": "0.1.6"
   },
   "devDependencies": {
     "@testing-library/dom": "8.19.1",
