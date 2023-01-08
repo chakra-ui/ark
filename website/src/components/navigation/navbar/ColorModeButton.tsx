@@ -1,13 +1,18 @@
 'use client'
-import { Button } from '@/components/shared/Button'
+import { IconButton } from '@/components/shared/IconButton'
 import { useColorMode } from '@/lib/useColorMode'
+import { FiMoon } from 'react-icons/fi'
 
 // TODO use IconButton
 export const ColorModeButton = () => {
   const { toggle } = useColorMode()
   return (
-    <Button variant="tertiary" size="md" onClick={toggle}>
-      Toggle ColorMode
-    </Button>
+    <IconButton
+      variant="tertiary"
+      size="md"
+      icon={<FiMoon />}
+      aria-label="Toggle color mode"
+      onClick={toggle}
+    />
   )
 }

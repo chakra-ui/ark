@@ -19,15 +19,32 @@ type TypeSearchOptions = {
   shouldIgnoreProperty?: (property: ts.Symbol) => boolean | undefined
 }
 
+const prettierConfig = await prettier.resolveConfig('.')
+
+function tryPrettier(typeName: string) {
+  try {
+    const prefix = 'type ONLY_FOR_FORMAT = '
+    const prettyType = prettier.format(prefix + typeName, {
+      ...prettierConfig,
+      parser: 'typescript',
+    })
+    return prettyType.replace(prefix, '').trim()
+  } catch {
+    return typeName
+  }
+}
+
 function extractPropertiesOfTypeName(
   searchTerm: string | RegExp,
   sourceFile: ts.SourceFile,
   typeChecker: ts.TypeChecker,
   { shouldIgnoreProperty = () => false }: TypeSearchOptions = {},
 ) {
+  const regexSearchTerm = typeof searchTerm === 'string' ? `^${searchTerm}$` : searchTerm
   const typeStatements = sourceFile.statements.filter(
     (statement) =>
-      ts.isTypeAliasDeclaration(statement) && new RegExp(searchTerm).test(statement.name.getText()),
+      ts.isTypeAliasDeclaration(statement) &&
+      new RegExp(regexSearchTerm).test(statement.name.getText()),
   )
 
   const results: Record<string, TypeProperties> = {}
@@ -45,8 +62,9 @@ function extractPropertiesOfTypeName(
       if (shouldIgnoreProperty(property)) {
         continue
       }
+      const prettyType = tryPrettier(typeName)
       properties[propertyName] = {
-        type: typeName,
+        type: prettyType,
         defaultValue,
         isRequired,
         description:
@@ -134,20 +152,20 @@ const main = async () => {
   )
 
   const searchType = createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
+
   Object.entries(componentExportMap)
     .flatMap(([component, typeExports]) => ({
       component,
       typeExports: typeExports
-        .map((x) => searchType(new RegExp('^' + x + '$')))
+        .map(searchType)
         .filter((value) => Object.keys(value).length !== 0)
         .reduce((acc, value) => ({ ...acc, ...value }), {}),
     }))
     .map(async ({ component, typeExports }) => {
-      const filePath = path.join(component, 'docs', path.basename(component) + '.types.json')
       fs.outputFileSync(
         path.join(component, 'docs', path.basename(component) + '.types.json'),
         prettier.format(JSON.stringify(typeExports), {
-          ...(await prettier.resolveConfig(filePath)),
+          ...prettierConfig,
           parser: 'json',
         }),
       )

@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string; }>",
+      "type": "Partial<{ trigger: string; content: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },
@@ -103,7 +103,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string; }>",
+      "type": "Partial<{ trigger: string; content: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },

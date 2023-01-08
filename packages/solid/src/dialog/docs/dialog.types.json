@@ -41,7 +41,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; container: string; backdrop: string; content: string; closeTrigger: string; title: string; description: string; }>",
+      "type": "Partial<{\n  trigger: string\n  container: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the dialog. Useful for composition."
     },
@@ -81,7 +81,7 @@
       "description": "Whether to restore focus to the element that had focus before the dialog was opened"
     },
     "role": {
-      "type": "\"dialog\" | \"alertdialog\"",
+      "type": "'dialog' | 'alertdialog'",
       "isRequired": false,
       "description": "The dialog's role"
     },

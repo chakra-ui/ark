@@ -27,7 +27,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -37,7 +37,7 @@
       "description": "Whether multple accordion items can be open at the same time."
     },
     "onChange": {
-      "type": "(details: { value: string | string[] | null; }) => void",
+      "type": "(details: { value: string | string[] | null }) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },
@@ -86,7 +86,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; item(value: string): string; content(value: string): string; trigger(value: string): string; }>",
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -96,7 +96,7 @@
       "description": "Whether multple accordion items can be open at the same time."
     },
     "onChange": {
-      "type": "(details: { value: string | string[] | null; }) => void",
+      "type": "(details: { value: string | string[] | null }) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },
@@ -116,11 +116,11 @@
       "isRequired": true
     },
     "getItemState": {
-      "type": "(props: ItemProps) => { isOpen: boolean; isFocused: boolean; isDisabled: boolean; }",
+      "type": "(props: ItemProps) => {\n  isOpen: boolean\n  isFocused: boolean\n  isDisabled: boolean\n}",
       "isRequired": true
     },
     "getTriggerProps": {
-      "type": "(props: ItemProps) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
+      "type": "(\n  props: ItemProps,\n) => DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
       "isRequired": true
     },
     "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },

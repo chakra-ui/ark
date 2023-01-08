@@ -44,7 +44,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; input: string; control: string; label: string; }>",
+      "type": "Partial<{ root: string; input: string; control: string; label: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the checkbox. Useful for composition."
     },
@@ -64,7 +64,7 @@
       "description": "The name of the input field in a checkbox\n(Useful for form submission)."
     },
     "onChange": {
-      "type": "(details: { checked: boolean | \"indeterminate\"; }) => void",
+      "type": "(details: { checked: boolean | 'indeterminate' }) => void",
       "isRequired": false,
       "description": "The callback invoked when the checked state of the `Checkbox` changes."
     },
@@ -129,7 +129,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; input: string; control: string; label: string; }>",
+      "type": "Partial<{ root: string; input: string; control: string; label: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the checkbox. Useful for composition."
     },
@@ -149,7 +149,7 @@
       "description": "The name of the input field in a checkbox\n(Useful for form submission)."
     },
     "onChange": {
-      "type": "(details: { checked: boolean | \"indeterminate\"; }) => void",
+      "type": "(details: { checked: boolean | 'indeterminate' }) => void",
       "isRequired": false,
       "description": "The callback invoked when the checked state of the `Checkbox` changes."
     },

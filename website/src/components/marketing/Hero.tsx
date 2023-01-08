@@ -10,11 +10,11 @@ export const Hero = () => (
       <Stack gap="8" flex="1">
         <Stack gap="6">
           <Heading textStyle="6xl" fontWeight="semibold">
-            The only UI library you will ever need
+            A UI framework made for enterprises
           </Heading>
-          <Text textStyle="lg" color="fg.muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.
+          <Text textStyle="xl" color="fg.muted">
+            Access fully customizable, accessible, and unstyled UI components that give you complete
+            control over the styling of your web app in React, Vue and Solid.js
           </Text>
         </Stack>
         <Stack direction="row" gap="3">
@@ -23,10 +23,10 @@ export const Hero = () => (
             size={{ base: 'xl', md: '2xl' }}
             variant="primary"
           >
-            Get Started
+            Explore now
           </PageButton>
           <Button size={{ base: 'xl', md: '2xl' }} variant="secondary">
-            Learn more!
+            Learn more
           </Button>
         </Stack>
       </Stack>

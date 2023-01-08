@@ -1,3 +1,4 @@
+import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Box, Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
@@ -21,7 +22,12 @@ export const Navbar = () => (
     <Container display="flex">
       <HStack justify="space-between" flex="1">
         <Link href="/" aria-label="Back home">
-          <Logo />
+          <HStack color="fg.emphasized">
+            <Logo />
+            <Text textStyle="lg" fontWeight="semibold" whiteSpace="nowrap">
+              Ark UI
+            </Text>
+          </HStack>
         </Link>
         {/* @ts-expect-error */}
         <Box

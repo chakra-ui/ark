@@ -20,8 +20,7 @@ export const DemoPagination = (props: Partial<PaginationProps>) => (
               Previous
             </Button>
           </PaginationPrevPageTrigger>
-        </PaginationList>
-        <PaginationList>
+
           {pages.map((page, index) =>
             page.type === 'page' ? (
               <PaginationPageTrigger key={index} value={page.value}>
@@ -35,8 +34,7 @@ export const DemoPagination = (props: Partial<PaginationProps>) => (
               </PaginationEllipsis>
             ),
           )}
-        </PaginationList>
-        <PaginationList>
+
           <PaginationNextPageTrigger>
             <Button variant="secondary" size="md">
               Next

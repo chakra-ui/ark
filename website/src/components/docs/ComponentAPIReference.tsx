@@ -1,7 +1,9 @@
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
+import { css } from '@/panda/css'
 import { Stack } from '@/panda/jsx'
 import type { ReactNode } from 'react'
+import { Badge } from '../shared/Badge'
 
 type Property = {
   type: string
@@ -19,7 +21,7 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
   const { componentName, types } = props
 
   return (
-    <Stack gap="10">
+    <Stack gap="10" width="full">
       <Stack gap="4">
         <Heading textStyle="2xl" fontWeight="semibold">
           Properties
@@ -31,10 +33,10 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
           other APIs of this exported module.
         </Text>
       </Stack>
-      <Stack gap="4">
+      <Stack gap="10">
         {Object.entries(types).map(([name, properties]) => (
-          <Stack key={name} gap="4">
-            <Heading textStyle="xl" fontWeight="semibold">
+          <Stack key={name} gap="6" width="full">
+            <Heading textStyle="lg" fontWeight="semibold">
               {name}
             </Heading>
             <Properties properties={properties} />
@@ -56,7 +58,7 @@ const Properties = (props: PropertiesProps) => {
     <table>
       <thead>
         <tr>
-          {['Name', 'Type', 'Default', 'Description'].map((title) => (
+          {['Property', 'Description'].map((title) => (
             <th key={title}>{title}</th>
           ))}
         </tr>
@@ -65,29 +67,34 @@ const Properties = (props: PropertiesProps) => {
         {Object.entries(properties).map(([name, property]) => (
           <tr key={name}>
             <td>
-              {name}
-              <RequiredIndicator isRequired={property.isRequired} />
+              <Stack gap="1" direction="row">
+                <Text as="span">{name}</Text>
+                {property.isRequired && <Badge>required</Badge>}
+              </Stack>
             </td>
-            <td>{property.type}</td>
-            <td>{property.defaultValue}</td>
-            <td>{property.description}</td>
+            <td>
+              <Stack gap="0.5">
+                <code
+                  className={css({
+                    display: 'block',
+                    fontSize: '13px',
+                    whiteSpace: 'break-spaces',
+                    color: 'accent.default',
+                    fontFamily: 'var(--font-roboto-mono)',
+                    textStyle: 'sm',
+                    wordBreak: 'break-all',
+                  })}
+                >
+                  {property.type}
+                </code>
+                <Text textStyle="sm" color="fg.muted" lineHeight="relaxed">
+                  {property.description}
+                </Text>
+              </Stack>
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
-  )
-}
-
-const RequiredIndicator = (props: { isRequired: boolean }) => {
-  const { isRequired } = props
-
-  if (!isRequired) {
-    return null
-  }
-
-  return (
-    <Text as="span" color="fg.muted" textStyle="xs" userSelect="none" ps="1">
-      required
-    </Text>
   )
 }
