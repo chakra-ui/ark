@@ -21,8 +21,8 @@ export const Navbar = () => (
     })}
   >
     <Container display="flex">
-      <HStack justify="space-between" flex="1">
-        <Link href="/" aria-label="Back home">
+      <HStack flex="1">
+        <Link href="/" aria-label="Back home" className={css({ mr: 'auto' })}>
           <HStack color="fg.emphasized">
             <Logo />
             <Text textStyle="lg" fontWeight="semibold" whiteSpace="nowrap">
@@ -31,9 +31,9 @@ export const Navbar = () => (
           </HStack>
         </Link>
 
-          {/* @ts-expect-error Server Component */}
-          <GitHubStats className={css({ ml: 'auto' })} repo="chakra-ui/ark" />
-          <ColorModeButton />
+        {/* @ts-expect-error Server Component */}
+        <GitHubStats repo="chakra-ui/ark" />
+        <ColorModeButton />
       </HStack>
     </Container>
   </nav>
