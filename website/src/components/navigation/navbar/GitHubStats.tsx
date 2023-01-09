@@ -19,7 +19,7 @@ export const GitHubStats = async (props: GitHubStatsProps) => {
 
   return (
     <Link
-      href={url}
+      href={url || '#'}
       className={hstack({
         gap: '3',
         fontSize: 'lg',
