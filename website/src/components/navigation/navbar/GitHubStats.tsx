@@ -1,30 +1,16 @@
-import { Text } from '@/components/shared/Text'
-import { HStack, Stack } from '@/panda/jsx'
+import { getGitHubRepoStats } from '@/lib/github'
 import Link from 'next/link'
 import type { ComponentPropsWithoutRef } from 'react'
 import { GoMarkGithub, GoRepoForked, GoStar } from 'react-icons/go'
+import { hstack, stack } from '../../../../panda/patterns'
 
 type GitHubStatsProps = ComponentPropsWithoutRef<'a'> & { repo: string }
 export const GitHubStats = async (props: GitHubStatsProps) => {
   const { repo, ...linkProps } = props
-  const res = await fetch(`https://api.github.com/repos/${repo}`, {
-    headers: {
-      Accept: 'application/vnd.github.v3+json',
-      Authorization: `token ${process.env.GITHUB_TOKEN}`,
-    },
-  })
-
-  if (!res.ok) {
-    console.error(
-      `Failed to fetch GitHub stats for ${repo}.
-Generate a personal access token for GitHub https://github.com/settings/personal-access-tokens/new with read permissions for "Metadata".
-Set the environment variable GITHUB_TOKEN. See https://nextjs.org/docs/basic-features/environment-variables for more information.
-`,
-    )
+  const data = await getGitHubRepoStats(repo)
+  if (!data) {
     return null
   }
-
-  const data = await res.json()
 
   const { full_name: name, html_url: url, stargazers_count, forks_count } = data
   const formatter = Intl.NumberFormat('en', { notation: 'compact' })
@@ -32,38 +18,36 @@ Set the environment variable GITHUB_TOKEN. See https://nextjs.org/docs/basic-fea
   const forks = formatter.format(forks_count)
 
   return (
-    <HStack
-      as={Link}
-      gap="3"
-      fontSize="lg"
-      py="2"
-      px="4"
-      href={url || '#'}
-      target="_blank"
-      rel="noopener"
-      color="fg.default"
-      transitionProperty="base"
-      transitionDuration="100"
-      transitionTimingFunction="ease-out"
-      borderRadius="lg"
-      _hover={{ bg: 'bg.subtle' }}
+    <Link
+      href={url}
+      className={hstack({
+        gap: '3',
+        fontSize: 'lg',
+        py: '2',
+        px: '4',
+        target: '_blank',
+        rel: 'noopener',
+        color: 'fg.default',
+        transitionProperty: 'base',
+        transitionDuration: '100',
+        transitionTimingFunction: 'ease-out',
+        borderRadius: 'lg',
+        _hover: { bg: 'bg.subtle' },
+      })}
       {...linkProps}
     >
       <GoMarkGithub />
-      {/* @ts-expect-error wrong typings */}
-      <Stack as="span" gap="0" fontSize="sm">
-        <Text as="span" aria-label="GitHub repository name">
-          {name}
-        </Text>
-        <HStack as="span" fontSize="xs" color="fg.muted" gap="3">
-          <HStack as="span" aria-label="GitHub stargazers count" gap="1">
+      <span className={stack({ gap: '0', fontSize: 'sm' })}>
+        <span aria-label="GitHub repository name">{name}</span>
+        <span className={hstack({ fontSize: 'xs', color: 'fg.muted', gap: '3' })}>
+          <span className={hstack({ gap: '1' })} aria-label="GitHub stargazers count">
             <GoStar role="presentation" /> {stars}
-          </HStack>
-          <HStack as="span" aria-label="GitHub forks count" gap="1">
+          </span>
+          <span className={hstack({ gap: '1' })} aria-label="GitHub forks count">
             <GoRepoForked role="presentation" /> {forks}
-          </HStack>
-        </HStack>
-      </Stack>
-    </HStack>
+          </span>
+        </span>
+      </span>
+    </Link>
   )
 }
