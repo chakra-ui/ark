@@ -1,7 +1,24 @@
 {
+  "AccordionProps": {
+    "collapsible": { "type": "boolean", "isRequired": false },
+    "defaultValue": { "type": "string | string[]", "isRequired": false },
+    "disable": { "type": "boolean", "isRequired": false },
+    "modelValue": { "type": "string | string[]", "isRequired": false },
+    "multiple": { "type": "boolean", "isRequired": false },
+    "value": { "type": "string | string[]", "isRequired": false }
+  },
   "AccordionItemProps": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "AccordionItemContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "UseAccordionProps": {
+    "context": { "type": "Omit<AccordionProps, 'id'>", "isRequired": true },
+    "emit": { "type": "CallableFunction", "isRequired": true },
+    "defaultValue": { "type": "string | string[]", "isRequired": false }
   },
   "UseAccordionReturn": {
     "api": {

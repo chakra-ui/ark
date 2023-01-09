@@ -1,7 +1,7 @@
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Stack } from '@/panda/jsx'
+import { panda, Stack } from '@/panda/jsx'
 import type { ReactNode } from 'react'
 import { Badge } from '../shared/Badge'
 
@@ -68,7 +68,7 @@ const Properties = (props: PropertiesProps) => {
           <tr key={name}>
             <td>
               <Stack gap="1" direction="row">
-                <Text as="span">{name}</Text>
+                <panda.span>{name}</panda.span>
                 {property.isRequired && <Badge>required</Badge>}
               </Stack>
             </td>

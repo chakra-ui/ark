@@ -1,6 +1,7 @@
 import { Box } from '@/panda/jsx'
+import Link from 'next/link'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { PageButton } from './PageButton'
+import { Button } from '../shared/Button'
 
 type Page = {
   route: string
@@ -18,21 +19,19 @@ export const Footer = (props: FooterProps) => {
   return (
     <Box display="flex" width="full">
       {prevPage && (
-        <PageButton href={prevPage.route} variant="link" size="md" leftIcon={<FiChevronLeft />}>
-          {prevPage.name}
-        </PageButton>
+        <Link href={prevPage.route}>
+          <Button variant="link" size="md" leftIcon={<FiChevronLeft />}>
+            {prevPage.name}
+          </Button>
+        </Link>
       )}
 
       {nextPage && (
-        <PageButton
-          variant="link"
-          href={nextPage.route}
-          size="md"
-          rightIcon={<FiChevronRight />}
-          ml="auto"
-        >
-          {nextPage.name}
-        </PageButton>
+        <Link href={nextPage.route} style={{ marginLeft: 'auto' }}>
+          <Button variant="link" size="md" rightIcon={<FiChevronRight />}>
+            {nextPage.name}
+          </Button>
+        </Link>
       )}
     </Box>
   )

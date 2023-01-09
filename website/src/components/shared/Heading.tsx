@@ -1,7 +1,5 @@
-import { panda } from '@/panda/jsx'
-import type { JSXStyleProperties } from '@/panda/types'
+import { HTMLPandaProps, panda } from '@/panda/jsx'
 
-export const Heading = (props: JSXStyleProperties) => {
-  // @ts-expect-error typings are wrong
+export const Heading = (props: HTMLPandaProps<'h2'>) => {
   return <panda.h2 {...props} />
 }
