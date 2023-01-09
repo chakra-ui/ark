@@ -17,6 +17,7 @@ importers:
       lint-staged: 13.1.0
       prettier: 2.8.1
       prettier-plugin-organize-imports: 3.2.1
+      react: 18.2.0
       ts-node: 10.9.1
       turbo: 1.6.3
       typescript: 4.9.4
@@ -34,6 +35,7 @@ importers:
       lint-staged: 13.1.0
       prettier: 2.8.1
       prettier-plugin-organize-imports: 3.2.1_2gbcgqmzq2pxiocqw2qs7hdeqe
+      react: 18.2.0
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       turbo: 1.6.3
       typescript: 4.9.4
