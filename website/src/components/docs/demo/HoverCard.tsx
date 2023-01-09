@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/shared/Avatar'
 import { Button } from '@/components/shared/Button'
 import { Text } from '@/components/shared/Text'
-import { Stack } from '@/panda/jsx'
+import { panda, Stack } from '@/panda/jsx'
 import { hoverCard } from '@/panda/recipes'
 import {
   HoverCard,
@@ -41,12 +41,12 @@ export const DemoHoverCard = () => (
             <Stack gap="2">
               <Stack gap="1">
                 <Stack direction="row" gap="1">
-                  <Text as="span" textStyle="sm" fontWeight="semibold">
+                  <panda.span textStyle="sm" fontWeight="semibold">
                     segunadebayo
-                  </Text>
-                  <Text as="span" textStyle="sm" color="fg.muted">
+                  </panda.span>
+                  <panda.span textStyle="sm" color="fg.muted">
                     Segun Adebayo
-                  </Text>
+                  </panda.span>
                 </Stack>
                 <Text textStyle="sm">Building @chakra-ui ⚡️. Design Systems and UI Engineer</Text>
               </Stack>

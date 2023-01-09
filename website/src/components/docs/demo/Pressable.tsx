@@ -1,6 +1,5 @@
 import { Button } from '@/components/shared/Button'
-import { Text } from '@/components/shared/Text'
-import { Box, Stack } from '@/panda/jsx'
+import { Box, panda, Stack } from '@/panda/jsx'
 import { usePressable } from '@ark-ui/react'
 import { useCallback, useState } from 'react'
 
@@ -44,12 +43,12 @@ const MetricCard = (props: StatProps) => (
     minWidth="8rem"
   >
     <Stack alignItems="center">
-      <Text as="span" textStyle="sm" fontWeight="medium" color="fg.muted">
+      <panda.span textStyle="sm" fontWeight="medium" color="fg.muted">
         {props.label}
-      </Text>
-      <Text as="span" fontWeight="semibold" textStyle="3xl">
+      </panda.span>
+      <panda.span fontWeight="semibold" textStyle="3xl">
         {props.metric}
-      </Text>
+      </panda.span>
     </Stack>
   </Box>
 )

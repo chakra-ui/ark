@@ -4,7 +4,6 @@ import { Playground } from '@/components/docs/Playground'
 import { TableOfContent } from '@/components/docs/TableOfContent'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { Footer } from '@/components/navigation/Footer'
-import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import {
   findComponentDocumentById,
@@ -12,7 +11,7 @@ import {
   findPreviousComponentDocument,
   getComponentDocuments,
 } from '@/lib/contentlayer'
-import { Box, Stack } from '@/panda/jsx'
+import { Box, panda, Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
 const Page = async (props: any) => {
@@ -33,9 +32,9 @@ const Page = async (props: any) => {
           <Text color="accent.default" fontWeight="semibold" textStyle="sm">
             Component
           </Text>
-          <Heading as="h1" textStyle="3xl" fontWeight="semibold">
+          <panda.h1 textStyle="3xl" fontWeight="semibold">
             {document.name}
-          </Heading>
+          </panda.h1>
         </Stack>
         <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
           {document.description}

@@ -1,7 +1,7 @@
 import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Box, HStack, Stack } from '@/panda/jsx'
+import { Box, HStack, panda, Stack } from '@/panda/jsx'
 import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
 import { PageLink } from './PageLink'
 
@@ -35,8 +35,7 @@ const links = [
 ]
 
 export const Sidebar = (props: SidebarProps) => (
-  <Box
-    as="aside"
+  <panda.aside
     className={css({
       '--header-height': 'sizes.18',
     })}
@@ -49,8 +48,9 @@ export const Sidebar = (props: SidebarProps) => (
     overflowY="auto"
   >
     <Stack gap="12">
-      <Stack
-        as="ul"
+      <panda.ul
+        display="flex"
+        flexDirection="column"
         gap="4"
         textStyle="sm"
         fontWeight="medium"
@@ -60,30 +60,32 @@ export const Sidebar = (props: SidebarProps) => (
       >
         {links.map((link) => (
           <li key={link.label}>
-            <HStack
-              as="a"
-              gap="4"
+            <Link
+              href={link.href}
+              color="fg.default"
               _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
               aria-current={link.isActive ? 'page' : false}
             >
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                w="6"
-                h="6"
-                backgroundColor="bg.subtle"
-                borderRadius="md"
-                fontSize="md"
-                borderWidth="1px"
-              >
-                {link.icon}
-              </Box>
-              <Text as="span">{link.label}</Text>
-            </HStack>
+              <HStack gap="4">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  w="6"
+                  h="6"
+                  backgroundColor="bg.subtle"
+                  borderRadius="md"
+                  fontSize="md"
+                  borderWidth="1px"
+                >
+                  {link.icon}
+                </Box>
+                <panda.span>{link.label}</panda.span>
+              </HStack>
+            </Link>
           </li>
         ))}
-      </Stack>
+      </panda.ul>
       <Stack gap="3">
         <Text fontSize="sm" lineHeight="1.5rem" fontWeight="semibold">
           Overview
@@ -114,5 +116,5 @@ export const Sidebar = (props: SidebarProps) => (
         </Stack>
       </Stack>
     </Stack>
-  </Box>
+  </panda.aside>
 )

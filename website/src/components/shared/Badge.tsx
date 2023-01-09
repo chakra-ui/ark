@@ -1,8 +1,6 @@
-import { panda } from '@/panda/jsx'
+import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { badge } from '@/panda/recipes'
-import type { JSXStyleProperties } from '@/panda/types'
 
-export const Badge = (props: JSXStyleProperties) => {
-  // @ts-expect-error
+export const Badge = (props: HTMLPandaProps<'div'>) => {
   return <panda.div className={badge()} {...props} />
 }
