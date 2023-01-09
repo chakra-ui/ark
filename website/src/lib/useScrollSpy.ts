@@ -6,7 +6,6 @@ export const useScrollSpy = (selectors: string[]) => {
 
   useEffect(() => {
     const elements = selectors.map((selector) => document.querySelector(selector))
-    observer.current?.disconnect()
     observer.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
