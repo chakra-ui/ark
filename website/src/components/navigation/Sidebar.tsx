@@ -62,6 +62,7 @@ export const Sidebar = (props: SidebarProps) => (
           <li key={link.label}>
             <Link
               href={link.href}
+              color="fg.default"
               _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
               aria-current={link.isActive ? 'page' : false}
             >
