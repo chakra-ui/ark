@@ -9,7 +9,7 @@ import { useSelect, UseSelectProps } from './use-select'
 export type SelectProps = Assign<
   UseSelectProps,
   {
-    children: JSX.Element | ((context: SelectContext) => JSX.Element)
+    children?: JSX.Element | ((context: SelectContext) => JSX.Element)
   }
 >
 

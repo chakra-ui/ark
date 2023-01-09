@@ -62,11 +62,11 @@
     "@testing-library/vue": "6.6.1",
     "@types/jsdom": "20.0.1",
     "@types/testing-library__jest-dom": "5.14.5",
-    "@typescript-eslint/eslint-plugin": "5.48.0",
-    "@typescript-eslint/parser": "5.48.0",
+    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/parser": "5.48.1",
     "@vitejs/plugin-vue": "4.0.0",
     "@vitejs/plugin-vue-jsx": "3.0.0",
-    "@vitest/coverage-c8": "0.26.3",
+    "@vitest/coverage-c8": "0.27.0",
     "@vue/compiler-sfc": "3.2.45",
     "clean-package": "2.2.0",
     "eslint": "8.31.0",
@@ -75,7 +75,7 @@
     "typescript": "4.9.4",
     "vite": "4.0.4",
     "vite-plugin-dts": "1.7.1",
-    "vitest": "0.26.3",
+    "vitest": "0.27.0",
     "vue": "3.2.45"
   },
   "peerDependencies": {
