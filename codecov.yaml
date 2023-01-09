@@ -8,3 +8,15 @@ coverage:
     patch:
       default:
         informational: true
+
+flag_management:
+  individual_flags:
+    - name: react
+      paths:
+        - packages/react/
+    - name: solid
+      paths:
+        - packages/solid/
+    - name: vue
+      paths:
+        - packages/vue/
