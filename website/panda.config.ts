@@ -142,22 +142,6 @@ export default defineConfig({
     },
   },
 
-  patterns: {
-    container: {
-      properties: {},
-      transform: (props) =>
-        Object.assign(
-          {
-            px: { base: '4', md: '8' },
-            maxW: '8xl',
-            width: '100%',
-            mx: 'auto',
-          },
-          props,
-        ),
-    },
-  },
-
   globalCss: {
     html: {
       lineHeight: 1.5,

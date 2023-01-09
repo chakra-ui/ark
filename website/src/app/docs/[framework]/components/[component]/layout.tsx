@@ -10,7 +10,7 @@ const DocsLayout = (props: any) => {
   }))
 
   return (
-    <Container>
+    <Container maxW="8xl">
       <Stack gap="24" direction="row" height="100%" position="relative">
         <Sidebar items={sidebarItems} />
         <panda.main flex="1" py="12">

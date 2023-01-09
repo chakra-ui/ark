@@ -19,7 +19,7 @@ export const Navbar = () => (
       alignItems: 'stretch',
     })}
   >
-    <Container display="flex">
+    <Container maxW="8xl" display="flex">
       <HStack justify="space-between" flex="1">
         <Link href="/" aria-label="Back home">
           <HStack color="fg.emphasized">

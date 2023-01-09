@@ -1,6 +1,5 @@
 import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { button, ButtonVariants } from '@/panda/recipes'
-import type { PolymorphicComponent } from 'panda/types/jsx'
 import { cloneElement, isValidElement, PropsWithChildren } from 'react'
 
 type ButtonContentProps = {
@@ -10,9 +9,7 @@ type ButtonContentProps = {
 
 export type ButtonProps = HTMLPandaProps<'button'> & ButtonVariants & ButtonContentProps
 
-export const Button: PolymorphicComponent<'button', ButtonVariants & ButtonContentProps> = (
-  props,
-) => {
+export const Button = (props: ButtonProps) => {
   const { variant, size, leftIcon, rightIcon, children, ...rest } = props
   return (
     <panda.button

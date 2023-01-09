@@ -5,7 +5,7 @@ import { Box, Container, Stack } from '@/panda/jsx'
 import { PageButton } from '../navigation/PageButton'
 
 export const Hero = () => (
-  <Container py="24">
+  <Container maxW="8xl" py="24">
     <Stack direction={{ base: 'column', md: 'row' }} gap="20" align="center">
       <Stack gap="8" flex="1">
         <Stack gap="6">
