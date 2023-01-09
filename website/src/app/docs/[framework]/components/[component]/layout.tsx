@@ -17,7 +17,7 @@ const DocsLayout = (props: any) => {
           items={sidebarItems}
           activePath={`/docs/${params.framework}/components/${params.component}`}
         />
-        <panda.main flex="1" py="12">
+        <panda.main flex="1" overflow="hidden" py="12">
           <Box>{props.children}</Box>
         </panda.main>
       </Stack>

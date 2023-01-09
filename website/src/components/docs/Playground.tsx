@@ -52,7 +52,6 @@ export const Playground = (props: PlaygroundProps) => {
 
 const Canvas = (props: PropsWithChildren) => (
   <Box
-    alignItems="center"
     bgImage={{
       base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
       _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
@@ -60,10 +59,10 @@ const Canvas = (props: PropsWithChildren) => (
     bgSize="16px 16px"
     display="flex"
     flex="1"
-    justifyContent="center"
+    overflow="auto"
     p="6"
   >
-    {props.children}
+    <Box m="auto">{props.children}</Box>
   </Box>
 )
 
