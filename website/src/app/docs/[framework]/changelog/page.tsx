@@ -22,7 +22,7 @@ const Page = async (props: any) => {
         <Box w="full" maxWidth={{ xl: '43rem' }}>
           <Markdown markdown={changelog.body.code} />
         </Box>
-        <TableOfContent />
+        <TableOfContent entries={[]} />
       </Stack>
     </Stack>
   )

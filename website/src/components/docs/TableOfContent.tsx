@@ -1,39 +1,37 @@
-import { panda } from '@/panda/jsx'
+'use client'
+import { useScrollSpy } from '@/lib/useScrollSpy'
+import { panda, Stack } from '@/panda/jsx'
+import type { TOCEntry } from 'markdown-toc'
+import { Link } from '../shared/Link'
+import { Text } from '../shared/Text'
 
-export const TableOfContent = () => {
+interface Props {
+  entries: TOCEntry[]
+}
+
+export const TableOfContent = (props: Props) => {
+  const { entries } = props
+  const activeId = useScrollSpy(props.entries.map((item) => '#' + item.slug))
+
   return (
-    <panda.aside
-      position="sticky"
-      display={{ base: 'none', xl: 'block' }}
-      top="112px"
-      background="bg.subtle"
-      height="xs"
-      flex="1"
-      p="4"
-      borderRadius="lg"
-    >
-      {/* <div>
-        <Stack
-          as="ul"
-          gap="2"
-          fontSize="sm"
-          lineHeight="1.5rem"
-          color="fg.muted"
-          listStyle="none"
-          ps="0"
-        >
-          <Box as="li">
-            <Text color="accent.default" fontWeight="medium">
-              Headline 0
-            </Text>
-          </Box>
-          {['Headline 1', 'Headline 2', 'Headline 3', 'Headline 4'].map((headline) => (
-            <Box as="li" key={headline}>
-              <Text>{headline}</Text>
-            </Box>
+    <panda.aside position="sticky" display={{ base: 'none', xl: 'block' }} top="112px" flex="1">
+      <Stack gap="4">
+        <Text textStyle="sm" fontWeight="semibold">
+          On this page
+        </Text>
+        <Stack>
+          {entries.map((item, id) => (
+            <Link
+              key={id}
+              href={`#${item.slug}`}
+              variant="toc"
+              aria-current={(activeId ?? entries[0].slug) === item.slug ? 'page' : false}
+            >
+              {item.content}
+            </Link>
           ))}
         </Stack>
-      </div> */}
+      </Stack>
     </panda.aside>
   )
 }

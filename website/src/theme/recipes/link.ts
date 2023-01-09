@@ -33,6 +33,19 @@ export const link = defineRecipe({
           borderColor: 'accent.default',
         },
       },
+      toc: {
+        display: 'flex',
+        alignSelf: 'stretch',
+        color: 'fg.muted',
+        textStyle: 'sm',
+        lineHeight: '1.5rem',
+        _hover: { color: 'fg.default', borderLeftColor: 'fg.muted' },
+        _currentPage: {
+          color: 'accent.default',
+          fontWeight: 'semibold',
+          borderColor: 'accent.default',
+        },
+      },
     },
   },
 })

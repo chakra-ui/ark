@@ -50,7 +50,7 @@ const Page = async (props: any) => {
             }
           />
         </Box>
-        <TableOfContent />
+        <TableOfContent entries={document.toc} />
       </Stack>
       <Footer prevPage={prevDocument} nextPage={nextDocument} />
     </Stack>
