@@ -43,7 +43,7 @@ function extractPropertiesOfTypeName(
   const regexSearchTerm = typeof searchTerm === 'string' ? `^${searchTerm}$` : searchTerm
   const typeStatements = sourceFile.statements.filter(
     (statement) =>
-      ts.isTypeAliasDeclaration(statement) &&
+      (ts.isInterfaceDeclaration(statement) || ts.isTypeAliasDeclaration(statement)) &&
       new RegExp(regexSearchTerm).test(statement.name.getText()),
   )
 
