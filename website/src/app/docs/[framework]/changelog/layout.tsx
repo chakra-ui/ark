@@ -1,6 +1,6 @@
 import { Sidebar } from '@/components/navigation/Sidebar'
 import { getComponentDocuments } from '@/lib/contentlayer'
-import { Box, Container, Stack } from '@/panda/jsx'
+import { Container, panda, Stack } from '@/panda/jsx'
 
 const DocsLayout = (props: any) => {
   const { params } = props
@@ -10,16 +10,18 @@ const DocsLayout = (props: any) => {
   }))
 
   return (
-    <Stack as={Container} gap="24" direction="row" height="100%" position="relative">
-      <Sidebar
-        framework={params.framework}
-        items={sidebarItems}
-        activePath={`/docs/${params.framework}/changelog`}
-      />
-      <Box as="main" flex="1" py="12">
-        {props.children}
-      </Box>
-    </Stack>
+    <Container maxW="8xl">
+      <Stack gap="24" direction="row">
+        <Sidebar
+          framework={params.framework}
+          items={sidebarItems}
+          activePath={`/docs/${params.framework}/changelog`}
+        />
+        <panda.main flex="1" py="12">
+          {props.children}
+        </panda.main>
+      </Stack>
+    </Container>
   )
 }
 

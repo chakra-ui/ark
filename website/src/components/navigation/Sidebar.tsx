@@ -113,6 +113,23 @@ export const Sidebar = (props: SidebarProps) => {
             ))}
           </Stack>
         </Stack>
+        <Stack gap="3" alignSelf="stretch">
+          <Text textStyle="sm" lineHeight="1.5rem" fontWeight="semibold">
+            Components
+          </Text>
+          <Stack borderLeftWidth="1px" alignSelf="stretch">
+            {items.map((item, id) => (
+              <PageLink
+                key={id}
+                href={item.route}
+                variant="sidebar"
+                aria-current={item.route === activePath ? 'page' : false}
+              >
+                {item.name}
+              </PageLink>
+            ))}
+          </Stack>
+        </Stack>
       </Stack>
     </panda.aside>
   )
