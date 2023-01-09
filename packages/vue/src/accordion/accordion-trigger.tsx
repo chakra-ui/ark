@@ -1,5 +1,5 @@
-import { cloneVNode, defineComponent, h } from 'vue'
-import { getValidChildren } from '../utils'
+import { defineComponent, h } from 'vue'
+import { useUniqueChild } from '../utils'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
@@ -14,14 +14,7 @@ export const AccordionTrigger = defineComponent<AccordionTriggerProps>({
     const { value, disabled } = useAccordionItemContext()
 
     return () => {
-      const validChildren = getValidChildren(slots)
-      if (validChildren.length > 1) {
-        const errorMessage =
-          '[AccordionTrigger] : Accordion Trigger can only have one root element.'
-        console.error(errorMessage)
-        throw new SyntaxError(errorMessage)
-      }
-      const DefaultSlot = cloneVNode(validChildren[0])
+      const DefaultSlot = useUniqueChild(slots, 'AccordionTrigger')
 
       return h(DefaultSlot, { ...api.value.getTriggerProps({ value, disabled }), ...attrs })
     }

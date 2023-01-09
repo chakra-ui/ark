@@ -2,8 +2,10 @@ import { useEffectOnce, useLocalStorage, useUpdateEffect } from 'usehooks-ts'
 
 type ColorMode = 'light' | 'dark'
 
+export const colorModeLocalStorageKey = 'ark-color-mode'
+
 export const useColorMode = () => {
-  const [colorMode, setColorMode] = useLocalStorage<ColorMode>('ark-color-mode', 'light')
+  const [colorMode, setColorMode] = useLocalStorage<ColorMode>(colorModeLocalStorageKey, 'light')
 
   const syncColorMode = () =>
     colorMode === 'dark'

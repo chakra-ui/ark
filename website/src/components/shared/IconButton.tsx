@@ -21,7 +21,6 @@ export const IconButton = (props: IconButtonProps) => {
     : null
 
   return (
-    // @ts-expect-error typings are wrong
     <panda.button
       className={cx(button({ variant, size }), css({ px: '0' }))}
       {...rest}

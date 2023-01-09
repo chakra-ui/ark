@@ -52,7 +52,8 @@
     "@zag-js/tags-input": "0.3.7",
     "@zag-js/toast": "0.2.7",
     "@zag-js/tooltip": "0.2.6",
-    "@zag-js/vue": "0.2.4"
+    "@zag-js/vue": "0.2.4",
+    "@zag-js/select": "0.1.6"
   },
   "devDependencies": {
     "@testing-library/dom": "8.19.1",
@@ -69,7 +70,7 @@
     "@vue/compiler-sfc": "3.2.45",
     "clean-package": "2.2.0",
     "eslint": "8.31.0",
-    "jsdom": "20.0.3",
+    "jsdom": "21.0.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "4.9.4",
     "vite": "4.0.4",

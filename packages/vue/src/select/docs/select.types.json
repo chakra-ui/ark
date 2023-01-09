@@ -1,0 +1,32 @@
+{
+  "SelectProps": {
+    "isClosedOnSelect": { "type": "boolean", "isRequired": false },
+    "isDisabled": { "type": "boolean", "isRequired": false },
+    "isLooped": { "type": "boolean", "isRequired": false },
+    "isReadOnly": { "type": "boolean", "isRequired": false },
+    "modelValue": { "type": "Option", "isRequired": false }
+  },
+  "SelectContext": {
+    "api": {
+      "type": "ComputedRef<{ isOpen: boolean; highlightedOption: Option | null; selectedOption: Option | null; focus(): void; blur(): void; open(): void; close(): void; setSelectedOption(value: Option): void; ... 10 more ...; contentProps: Attrs<...>; }>",
+      "isRequired": true
+    }
+  },
+  "SelectOptionProps": {
+    "label": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "valueText": { "type": "string", "isRequired": false }
+  },
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "UseSelectProps": {
+    "context": { "type": "Omit<SelectProps, 'id'>", "isRequired": true },
+    "emit": { "type": "CallableFunction", "isRequired": true }
+  },
+  "UseSelectReturn": {
+    "api": {
+      "type": "ComputedRef<{ isOpen: boolean; highlightedOption: Option | null; selectedOption: Option | null; focus(): void; blur(): void; open(): void; close(): void; setSelectedOption(value: Option): void; ... 10 more ...; contentProps: Attrs<...>; }>",
+      "isRequired": true
+    }
+  }
+}

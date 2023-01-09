@@ -1,6 +1,6 @@
 'use client'
 import { useScrollSpy } from '@/lib/useScrollSpy'
-import { Box, Stack } from '@/panda/jsx'
+import { panda, Stack } from '@/panda/jsx'
 import type { TOCEntry } from 'markdown-toc'
 import { Link } from '../shared/Link'
 import { Text } from '../shared/Text'
@@ -14,7 +14,7 @@ export const TableOfContent = (props: Props) => {
   const activeId = useScrollSpy(props.entries.map((item) => '#' + item.slug))
 
   return (
-    <Box as="aside" position="sticky" display={{ base: 'none', xl: 'block' }} top="112px" flex="1">
+    <panda.aside position="sticky" display={{ base: 'none', xl: 'block' }} top="112px" flex="1">
       <Stack gap="4">
         <Text textStyle="sm" fontWeight="semibold">
           On this page
@@ -32,6 +32,6 @@ export const TableOfContent = (props: Props) => {
           ))}
         </Stack>
       </Stack>
-    </Box>
+    </panda.aside>
   )
 }

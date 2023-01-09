@@ -2,10 +2,10 @@ import { Button } from '@/components/shared/Button'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
-import { PageButton } from '../navigation/PageButton'
+import Link from 'next/link'
 
 export const Hero = () => (
-  <Container py="24">
+  <Container maxW="8xl" py="24">
     <Stack direction={{ base: 'column', md: 'row' }} gap="20" align="center">
       <Stack gap="8" flex="1">
         <Stack gap="6">
@@ -14,17 +14,13 @@ export const Hero = () => (
           </Heading>
           <Text textStyle="xl" color="fg.muted">
             Access fully customizable, accessible, and unstyled UI components that give you complete
-            control over the styling of your web app in React, Vue and Solid.js
+            control over the styling of your webp app in React, Vue and Solid.js
           </Text>
         </Stack>
         <Stack direction="row" gap="3">
-          <PageButton
-            href="/docs/react/components/accordion"
-            size={{ base: 'xl', md: '2xl' }}
-            variant="primary"
-          >
-            Explore now
-          </PageButton>
+          <Link href="/docs/react/components/accordion">
+            <Button size={{ base: 'xl', md: '2xl' }}>Explore now</Button>
+          </Link>
           <Button size={{ base: 'xl', md: '2xl' }} variant="secondary">
             Learn more
           </Button>
