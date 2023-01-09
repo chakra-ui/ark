@@ -1,11 +1,13 @@
 import type { Endpoints } from '@octokit/types'
 
 export async function getGitHubRepoStats(repo: string) {
+  const TEN_MINUTES = 600
   const res = await fetch(`https://api.github.com/repos/${repo}`, {
     headers: {
       Accept: 'application/vnd.github.v3+json',
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
     },
+    next: { revalidate: TEN_MINUTES },
   })
 
   if (!res.ok) {
