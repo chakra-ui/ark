@@ -334,7 +334,7 @@ importers:
       rehype-autolink-headings: 6.1.1
       rehype-prism-plus: 1.5.0
       rehype-slug: 5.1.0
-      ts-pattern: 4.0.6
+      ts-pattern: 4.1.1
       typescript: 4.9.4
       usehooks-ts: 2.9.1
     dependencies:
@@ -351,7 +351,7 @@ importers:
       rehype-autolink-headings: 6.1.1
       rehype-prism-plus: 1.5.0
       rehype-slug: 5.1.0
-      ts-pattern: 4.0.6
+      ts-pattern: 4.1.1
       usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@types/node': 18.11.18
@@ -1397,7 +1397,7 @@ packages:
       gray-matter: 4.0.3
       imagescript: 1.2.15
       micromatch: 4.0.5
-      ts-pattern: 4.0.6
+      ts-pattern: 4.1.1
       unified: 10.1.2
       yaml: 1.10.2
       zod: 3.20.2
@@ -1435,7 +1435,7 @@ packages:
       hash-wasm: 4.9.0
       inflection: 1.13.4
       oo-ascii-tree: 1.72.0
-      ts-pattern: 4.0.6
+      ts-pattern: 4.1.1
       type-fest: 3.4.0
     dev: false
 
@@ -9752,6 +9752,10 @@ packages:
 
   /ts-pattern/4.0.6:
     resolution: {integrity: sha512-sFHQYD4KoysBi7e7a2mzDPvRBeqA4w+vEyRE+P5MU9VLq8eEYxgKCgD9RNEAT+itGRWUTYN+hry94GDPLb1/Yw==}
+    dev: false
+
+  /ts-pattern/4.1.1:
+    resolution: {integrity: sha512-fLMhPEixNmQieJ0BeWUy4eg90Vn4ECRQxl0LGuU7NE1LUVCsZlb0IFWcBWwAw6WA/YeY5RShY82bZCLbI+Zf3w==}
     dev: false
 
   /tsconfig-paths/3.14.1:
