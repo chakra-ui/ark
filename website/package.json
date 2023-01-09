@@ -14,6 +14,7 @@
   "dependencies": {
     "@ark-ui/react": "workspace:*",
     "@next/font": "13.1.1",
+    "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.2.9",
     "css-panda": "0.0.0-dev-20230109090050",
     "markdown-toc": "1.2.0",

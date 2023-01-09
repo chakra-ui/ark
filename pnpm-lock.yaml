@@ -319,6 +319,7 @@ importers:
     specifiers:
       '@ark-ui/react': workspace:*
       '@next/font': 13.1.1
+      '@theme-toggles/react': 4.1.0
       '@types/node': 18.11.18
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
@@ -343,6 +344,7 @@ importers:
     dependencies:
       '@ark-ui/react': link:../packages/react
       '@next/font': 13.1.1
+      '@theme-toggles/react': 4.1.0_biqbaboplfbrettd7655fr4n2y
       contentlayer: 0.2.9
       css-panda: 0.0.0-dev-20230109090050_kmm6myycpbx45pdeiugnnkdxzu
       markdown-toc: 1.2.0
@@ -2838,6 +2840,16 @@ packages:
       '@vue/test-utils': 2.2.1_vue@3.2.45
       vue: 3.2.45
     dev: true
+
+  /@theme-toggles/react/4.1.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-h3SuJMsej8DfelHt5fjNIlaMfJOK52Vku4pPDVoHaTwjAcoTr4fn8hzeur2oiqWBYFYfKugvv1RdQaBFXaiPKg==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
