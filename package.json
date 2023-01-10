@@ -32,7 +32,7 @@
     "@changesets/cli": "2.26.0",
     "@commitlint/cli": "17.4.1",
     "@commitlint/config-conventional": "17.4.0",
-    "@types/fs-extra": "11.0.0",
+    "@types/fs-extra": "11.0.1",
     "@types/node": "18.11.18",
     "@types/prettier": "2.7.2",
     "fs-extra": "11.1.0",

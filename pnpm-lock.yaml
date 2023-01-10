@@ -8,7 +8,7 @@ importers:
       '@changesets/cli': 2.26.0
       '@commitlint/cli': 17.4.1
       '@commitlint/config-conventional': 17.4.0
-      '@types/fs-extra': 11.0.0
+      '@types/fs-extra': 11.0.1
       '@types/node': 18.11.18
       '@types/prettier': 2.7.2
       fs-extra: 11.1.0
@@ -26,7 +26,7 @@ importers:
       '@changesets/cli': 2.26.0
       '@commitlint/cli': 17.4.1
       '@commitlint/config-conventional': 17.4.0
-      '@types/fs-extra': 11.0.0
+      '@types/fs-extra': 11.0.1
       '@types/node': 18.11.18
       '@types/prettier': 2.7.2
       fs-extra: 11.1.0
@@ -2965,8 +2965,8 @@ packages:
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
-  /@types/fs-extra/11.0.0:
-    resolution: {integrity: sha512-zdV5odfHf95B4qr6bdpshG4VMm/3xgnPhSJLa3xh75CYr35e34k+4FQli82Q48sPqwHazJGy+6+jl4T+Vw1AMg==}
+  /@types/fs-extra/11.0.1:
+    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
       '@types/node': 18.11.18
