@@ -5,7 +5,6 @@ import Link from 'next/link'
 import type { ComponentPropsWithoutRef } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import { GoMarkGithub, GoRepoForked, GoStar } from 'react-icons/go'
-
 import { css } from '../../../../panda/css'
 import { hstack, stack } from '../../../../panda/patterns'
 
