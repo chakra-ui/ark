@@ -1,14 +1,10 @@
 import { connect, Context as CheckboxContext, machine } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, getCurrentInstance, reactive } from 'vue'
+import { computed, getCurrentInstance, reactive, watchEffect } from 'vue'
 
 interface CheckboxProps extends CheckboxContext {
   modelValue?: CheckboxContext['value']
-  isReadOnly?: CheckboxContext['readOnly']
-  isDisabled?: CheckboxContext['disabled']
-  isIndeterminate?: CheckboxContext['indeterminate']
-  isFocusable?: CheckboxContext['focusable']
-  isChecked?: CheckboxContext['defaultChecked']
+  checked?: CheckboxContext['defaultChecked']
 }
 
 export interface UseCheckboxProps {
@@ -26,11 +22,6 @@ export const useCheckbox = (props: UseCheckboxProps) => {
       ...reactiveContext,
       id: instance?.uid.toString() as string,
       value: context.modelValue,
-      readOnly: context.isReadOnly,
-      disabled: context.isDisabled,
-      indeterminate: context.isIndeterminate,
-      focusable: context.isFocusable,
-      defaultChecked: context.isChecked,
       onChange(details) {
         emit('change', { ...details })
         emit('update:modelValue', { ...details })
@@ -39,6 +30,14 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   )
 
   const api = computed(() => connect(state.value, send, normalizeProps))
+
+  watchEffect(() => {
+    if (context.checked == undefined) return
+
+    if (context.checked !== api.value.isChecked) {
+      api.value.setChecked(context.checked)
+    }
+  })
 
   return api
 }
