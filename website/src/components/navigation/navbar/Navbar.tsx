@@ -1,4 +1,4 @@
-import { GitHubStats } from '@/components/navigation/navbar/GitHubStats'
+import { GitHubStats, GitHubStats2 } from '@/components/navigation/navbar/GitHubStats'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Container, HStack } from '@/panda/jsx'
@@ -30,10 +30,12 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-
-        {/* @ts-expect-error Server Component */}
-        <GitHubStats repo="chakra-ui/ark" />
-        <ColorModeButton />
+        <HStack gap="8">
+          {/* @ts-expect-error Server Component */}
+          <GitHubStats repo="chakra-ui/ark" />
+          <GitHubStats2 />
+          <ColorModeButton />
+        </HStack>
       </HStack>
     </Container>
   </nav>
