@@ -22,7 +22,7 @@ export const GitHubStats = async () => {
     >
       <HStack gap="3">
         <FaGithub
-          fontSize="1.375rem"
+          fontSize="1.25rem"
           className={css({
             color: 'fg.emphasized',
           })}
