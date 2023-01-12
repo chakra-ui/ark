@@ -1,80 +1,22 @@
 import { Text } from '@/components/shared/Text'
-import { getGitHubRepoStats } from '@/lib/github'
+import { fetchGitHubStats } from '@/lib/fetchGitHubStats'
+import { css } from '@/panda/css'
 import { Box, HStack } from '@/panda/jsx'
 import Link from 'next/link'
-import type { ComponentPropsWithoutRef } from 'react'
 import { FaGithub } from 'react-icons/fa'
-import { GoMarkGithub, GoRepoForked, GoStar } from 'react-icons/go'
-import { css } from '../../../../panda/css'
-import { hstack, stack } from '../../../../panda/patterns'
+import { GoRepoForked, GoStar } from 'react-icons/go'
 
-type GitHubStatsProps = ComponentPropsWithoutRef<'a'> & { repo: string }
-export const GitHubStats = async (props: GitHubStatsProps) => {
-  const { repo, ...linkProps } = props
-  const data = await getGitHubRepoStats(repo)
-  if (!data) {
-    return null
-  }
-
-  const { full_name: name, html_url: url, stargazers_count, forks_count } = data
-  const formatter = Intl.NumberFormat('en', { notation: 'compact' })
-  const stars = formatter.format(stargazers_count)
-  const forks = formatter.format(forks_count)
+export const GitHubStats = async () => {
+  const { stars, forks } = await fetchGitHubStats()
 
   return (
     <Link
-      href={url || '#'}
-      className={hstack({
-        gap: '3',
-        fontSize: 'lg',
-        py: '2',
-        px: '4',
-        target: '_blank',
-        rel: 'noopener',
-        color: 'fg.default',
-        transitionProperty: 'base',
-        transitionDuration: '100',
-        transitionTimingFunction: 'ease-out',
-        borderRadius: 'lg',
-        _hover: { bg: 'bg.subtle' },
-      })}
-      {...linkProps}
-    >
-      <GoMarkGithub />
-      <span className={stack({ gap: '0', fontSize: 'sm' })}>
-        <span aria-label="GitHub repository name">{name}</span>
-        <span className={hstack({ fontSize: 'xs', color: 'fg.muted', gap: '3' })}>
-          <span className={hstack({ gap: '1' })} aria-label="GitHub stargazers count">
-            <GoStar role="presentation" /> {stars}
-          </span>
-          <span className={hstack({ gap: '1' })} aria-label="GitHub forks count">
-            <GoRepoForked role="presentation" /> {forks}
-          </span>
-        </span>
-      </span>
-    </Link>
-  )
-}
-
-export const GitHubStats2 = async () => {
-  const data = await getGitHubRepoStats('chakra-ui/ark')
-  if (!data) {
-    return null
-  }
-
-  const { html_url, stargazers_count, forks_count } = data
-  const formatter = Intl.NumberFormat('en', { notation: 'compact' })
-  const stars = formatter.format(stargazers_count)
-  const forks = formatter.format(forks_count)
-
-  return (
-    <Link
-      href={html_url}
+      href="https://github.com/chakra-ui/ark"
       target="_blank"
       rel="noopener"
       className={css({
         color: 'fg.emphasized',
-        _hover: { color: 'accent.default' },
+        _hover: { color: 'fg.default' },
       })}
     >
       <HStack>
