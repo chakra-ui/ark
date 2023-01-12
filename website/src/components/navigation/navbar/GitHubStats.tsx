@@ -3,8 +3,9 @@ import { fetchGitHubStats } from '@/lib/fetchGitHubStats'
 import { css } from '@/panda/css'
 import { Box, HStack } from '@/panda/jsx'
 import Link from 'next/link'
+import { AiOutlineStar } from 'react-icons/ai'
 import { FaGithub } from 'react-icons/fa'
-import { GoRepoForked, GoStar } from 'react-icons/go'
+import { GoRepoForked } from 'react-icons/go'
 
 export const GitHubStats = async () => {
   const { stars, forks } = await fetchGitHubStats()
@@ -19,15 +20,20 @@ export const GitHubStats = async () => {
         _hover: { color: 'fg.default' },
       })}
     >
-      <HStack>
-        <FaGithub fontSize="1.25rem" />
+      <HStack gap="3">
+        <FaGithub
+          fontSize="1.375rem"
+          className={css({
+            color: 'fg.emphasized',
+          })}
+        />
         <Box>
-          <Text textStyle="sm" fontWeight="medium">
+          <Text textStyle="sm" fontWeight="medium" color="fg.muted">
             chakra-ui/ark
           </Text>
-          <HStack color="fg.muted">
+          <HStack color="fg.muted" gap="1.5">
             <HStack gap="0.5">
-              <GoStar fontSize="0.875rem" />
+              <AiOutlineStar fontSize="0.875rem" />
               <Text textStyle="xs">{stars}</Text>
             </HStack>
             <HStack gap="0.5">

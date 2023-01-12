@@ -30,7 +30,7 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-        <HStack gap="8">
+        <HStack gap="12">
           {/* @ts-expect-error Server Component */}
           <GitHubStats />
           <ColorModeButton />
