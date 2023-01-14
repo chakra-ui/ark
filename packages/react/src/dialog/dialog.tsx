@@ -7,7 +7,7 @@ import { useDialog, UseDialogProps } from './use-dialog'
 export type DialogProps = Assign<
   PropsWithChildren<UseDialogProps>,
   {
-    children: ReactNode | ((pages: DialogContext) => ReactNode)
+    children?: ReactNode | ((pages: DialogContext) => ReactNode)
   }
 >
 
