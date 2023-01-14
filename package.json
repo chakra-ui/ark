@@ -40,7 +40,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
     "prettier": "2.8.1",
-    "prettier-plugin-organize-imports": "3.2.1",
+    "prettier-plugin-organize-imports": "3.2.2",
     "react": "18.2.0",
     "ts-node": "10.9.1",
     "turbo": "1.7.0",

@@ -16,7 +16,7 @@ importers:
       husky: 8.0.3
       lint-staged: 13.1.0
       prettier: 2.8.1
-      prettier-plugin-organize-imports: 3.2.1
+      prettier-plugin-organize-imports: 3.2.2
       react: 18.2.0
       ts-node: 10.9.1
       turbo: 1.7.0
@@ -34,7 +34,7 @@ importers:
       husky: 8.0.3
       lint-staged: 13.1.0
       prettier: 2.8.1
-      prettier-plugin-organize-imports: 3.2.1_2gbcgqmzq2pxiocqw2qs7hdeqe
+      prettier-plugin-organize-imports: 3.2.2_2gbcgqmzq2pxiocqw2qs7hdeqe
       react: 18.2.0
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       turbo: 1.7.0
@@ -8986,8 +8986,8 @@ packages:
       synckit: 0.8.4
     dev: false
 
-  /prettier-plugin-organize-imports/3.2.1_2gbcgqmzq2pxiocqw2qs7hdeqe:
-    resolution: {integrity: sha512-bty7C2Ecard5EOXirtzeCAqj4FU4epeuWrQt/Z+sh8UVEpBlBZ3m3KNPz2kFu7KgRTQx/C9o4/TdquPD1jOqjQ==}
+  /prettier-plugin-organize-imports/3.2.2_2gbcgqmzq2pxiocqw2qs7hdeqe:
+    resolution: {integrity: sha512-e97lE6odGSiHonHJMTYC0q0iLXQyw0u5z/PJpvP/3vRy6/Zi9kLBwFAbEGjDzIowpjQv8b+J04PDamoUSQbzGA==}
     peerDependencies:
       '@volar/vue-language-plugin-pug': ^1.0.4
       '@volar/vue-typescript': ^1.0.4
