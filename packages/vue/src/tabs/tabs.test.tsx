@@ -4,11 +4,11 @@ import Component from './stories/basic.story.vue'
 
 describe('Tabs', () => {
   it('should render', () => {
-    render(<Component />)
+    render(Component)
   })
 
   it('should show the active panel and hide other panels', async () => {
-    render(<Component />)
+    render(Component)
     const tab2 = screen.getByRole('tab', { name: 'Item two' })
     await user.click(tab2)
     // Because tab 2 is disabled, there should be no change in state
@@ -27,7 +27,11 @@ describe('Tabs', () => {
   })
 
   it('should show content of the default value', () => {
-    render(<Component defaultValue="two" />)
+    render(Component, {
+      props: {
+        defaultValue: 'two',
+      },
+    })
     expect(screen.getByText('Value item two')).toBeVisible()
   })
 })
