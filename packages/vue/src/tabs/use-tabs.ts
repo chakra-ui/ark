@@ -1,10 +1,14 @@
-import { connect, Context, machine } from '@zag-js/tabs'
+import { connect, Context as TabsContext, machine } from '@zag-js/tabs'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, getCurrentInstance, reactive } from 'vue'
 
+type TabsPropsContext = Omit<TabsContext, 'id' | 'value'> & {
+  isLoop: TabsContext['loop']
+}
+
 export type UseTabsProps = {
-  context: Omit<Context, 'id' | 'value'>
-  defaultValue?: Context['value']
+  context: TabsPropsContext
+  defaultValue?: TabsContext['value']
   emit: CallableFunction
 }
 

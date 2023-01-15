@@ -44,7 +44,7 @@ export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
   },
   setup(props, { slots, attrs, emit }) {
     const tabsProps = computed<UseTabsProps>(() => ({
-      context: { ...props, loop: props.isLoop },
+      context: props,
       defaultValue: props.defaultValue,
       emit,
     }))
