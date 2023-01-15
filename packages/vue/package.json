@@ -70,7 +70,7 @@
     "@vitest/coverage-c8": "0.27.1",
     "@vue/compiler-sfc": "3.2.45",
     "clean-package": "2.2.0",
-    "eslint": "8.31.0",
+    "eslint": "8.32.0",
     "jsdom": "21.0.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "4.9.4",
