@@ -4,9 +4,9 @@ import { PropsWithChildren, useId } from 'react'
 import { createContext } from '../create-context'
 import type { Optional } from '../types'
 
-type GroupPublicContext = Parameters<typeof toast['group']['machine']>[0]
+type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
 
-export type ToastContext = ReturnType<typeof toast['group']['connect']>
+export type ToastContext = ReturnType<(typeof toast)['group']['connect']>
 export const [ToastContextProvider, useToast] = createContext<ToastContext>()
 
 export type ToastProviderProps = PropsWithChildren & Optional<GroupPublicContext, 'id'>

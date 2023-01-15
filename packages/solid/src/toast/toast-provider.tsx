@@ -5,10 +5,10 @@ import { createContext } from '../create-context'
 import { createSplitProps } from '../create-split-props'
 import type { Optional } from '../types'
 
-type GroupPublicContext = Parameters<typeof toast['group']['machine']>[0]
+type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
 type ToastProviderParams = { children: JSX.Element }
 
-export type ToastContext = () => ReturnType<typeof toast['group']['connect']>
+export type ToastContext = () => ReturnType<(typeof toast)['group']['connect']>
 export type ToastProviderProps = Optional<GroupPublicContext, 'id'> & ToastProviderParams
 
 export const [ToastContextProvider, useToast] = createContext<ToastContext>()
