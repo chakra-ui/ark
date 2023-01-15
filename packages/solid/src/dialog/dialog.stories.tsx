@@ -39,7 +39,7 @@ export const Basic = () => {
 const DialogWithRenderFn = () => {
   return (
     <Dialog>
-      {(api) => (
+      {({ isOpen }) => (
         <>
           <DialogTrigger>
             <button>Open Dialog</button>
@@ -56,7 +56,7 @@ const DialogWithRenderFn = () => {
               </DialogContent>
             </DialogContainer>
           </Portal>
-          <p>Dialog is {api().isOpen ? 'open' : 'closed'}</p>
+          <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
         </>
       )}
     </Dialog>

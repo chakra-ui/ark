@@ -2,11 +2,11 @@ import type { JSX } from 'solid-js'
 import { children } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import { DialogProvider, type DialogContext } from './dialog-context'
-import { useDialog, type UseDialogProps } from './use-dialog'
+import { DialogProvider } from './dialog-context'
+import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 
 export type DialogProps = UseDialogProps & {
-  children?: JSX.Element | ((state: DialogContext) => JSX.Element)
+  children?: JSX.Element | ((state: ReturnType<UseDialogReturn>) => JSX.Element)
 }
 
 export const Dialog = (props: DialogProps) => {
@@ -31,7 +31,7 @@ export const Dialog = (props: DialogProps) => {
     'trapFocus',
   ])
   const dialog = useDialog(useDialogProps)
-  const view = () => children(() => runIfFn(restProps.children, dialog))
+  const view = () => children(() => runIfFn(restProps.children, dialog()))
 
   return <DialogProvider value={dialog}>{view}</DialogProvider>
 }
