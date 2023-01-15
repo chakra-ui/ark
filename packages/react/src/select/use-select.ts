@@ -1,6 +1,7 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
+import { useEnvironment } from '../environment'
 import type { Optional } from '../types'
 
 export type UseSelectProps = Optional<select.Context, 'id'> & {
@@ -9,11 +10,11 @@ export type UseSelectProps = Optional<select.Context, 'id'> & {
 export type UseSelectReturn = ReturnType<typeof useSelect>
 
 export const useSelect = (props: UseSelectProps) => {
-  const initialContext = {
+  const initialContext = useEnvironment({
     id: useId(),
     ...props,
     value: props.defaultValue,
-  }
+  })
   const context = {
     ...initialContext,
     value: props.selectedOption,

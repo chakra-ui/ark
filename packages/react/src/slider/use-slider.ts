@@ -2,6 +2,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import * as slider from '@zag-js/slider'
 import { useCallback, useId } from 'react'
 import { flushSync } from 'react-dom'
+import { useEnvironment } from '../environment'
 import type { Optional } from '../types'
 
 export type UseSliderProps = Optional<slider.Context, 'id'> & {
@@ -10,7 +11,7 @@ export type UseSliderProps = Optional<slider.Context, 'id'> & {
 export type UseSliderReturn = ReturnType<typeof useSlider>
 
 export const useSlider = (props: UseSliderProps) => {
-  const initialContext = { id: useId(), ...props, value: props.defaultValue }
+  const initialContext = useEnvironment({ id: useId(), ...props, value: props.defaultValue })
   const onChange = props.onChange
 
   const onChangeWithFlushSync = useCallback(

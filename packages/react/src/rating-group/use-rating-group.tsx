@@ -1,6 +1,7 @@
 import * as ratingGroup from '@zag-js/rating-group'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { useEnvironment } from '../environment'
 import type { Optional } from '../types'
 
 export type UseRatingGroupProps = Optional<ratingGroup.Context, 'id'> & {
@@ -9,11 +10,11 @@ export type UseRatingGroupProps = Optional<ratingGroup.Context, 'id'> & {
 export type UseRatingGroupReturn = ReturnType<typeof useRatingGroup>
 
 export const useRatingGroup = (props: UseRatingGroupProps) => {
-  const initialContext = {
+  const initialContext = useEnvironment({
     id: useId(),
     ...props,
     value: props.defaultValue,
-  }
+  })
   const context = {
     ...initialContext,
     value: props.value,

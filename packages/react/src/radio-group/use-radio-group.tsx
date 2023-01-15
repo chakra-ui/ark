@@ -1,6 +1,7 @@
 import * as radio from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { useEnvironment } from '../environment'
 import type { Optional } from '../types'
 
 export type UseRadioGroupProps = Optional<radio.Context, 'id'> & {
@@ -9,11 +10,11 @@ export type UseRadioGroupProps = Optional<radio.Context, 'id'> & {
 export type UseRadioGroupReturn = ReturnType<typeof useRadioGroup>
 
 export const useRadioGroup = (props: UseRadioGroupProps) => {
-  const initialContext = {
+  const initialContext = useEnvironment({
     id: useId(),
     ...props,
     value: props.defaultValue,
-  }
+  })
 
   const context = {
     ...initialContext,
