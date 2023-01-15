@@ -14,13 +14,7 @@ export const useSlider = (props: UseSliderProps) => {
   const onChange = props.onChange
 
   const onChangeWithFlushSync = useCallback(
-    (e: { value: number }) => {
-      if (!onChange) {
-        return
-      }
-
-      flushSync(() => onChange?.(e))
-    },
+    (e: { value: number }) => flushSync(() => onChange?.(e)),
     [onChange],
   )
 
