@@ -11,18 +11,6 @@
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     }
   },
-  "EnvironmentContext": {
-    "dir": {
-      "type": "Direction",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    }
-  },
   "UseEnvironmentReturn": {
     "dir": {
       "type": "Direction",
