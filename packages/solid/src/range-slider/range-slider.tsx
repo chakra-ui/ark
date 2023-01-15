@@ -13,7 +13,7 @@ import {
 export type RangeSliderProps = Assign<
   HTMLArkProps<'div'>,
   UseRangeSliderProps & {
-    children: JSX.Element | ((api: ReturnType<UseRangeSliderReturn>) => JSX.Element)
+    children?: JSX.Element | ((api: ReturnType<UseRangeSliderReturn>) => JSX.Element)
   }
 >
 

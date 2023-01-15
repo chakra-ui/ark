@@ -9,7 +9,7 @@ import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slid
 export type SliderProps = Assign<
   HTMLArkProps<'div'>,
   UseSliderProps & {
-    children: JSX.Element | ((api: ReturnType<UseSliderReturn>) => JSX.Element)
+    children?: ((api: ReturnType<UseSliderReturn>) => JSX.Element) | JSX.Element
   }
 >
 

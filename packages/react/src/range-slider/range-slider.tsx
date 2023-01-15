@@ -11,7 +11,7 @@ import { useRangeSlider, UseRangeSliderProps, UseRangeSliderReturn } from './use
 export type RangeSliderProps = Assign<
   HTMLArkProps<'div'>,
   UseRangeSliderProps & {
-    children: ReactNode | ((api: UseRangeSliderReturn) => ReactNode)
+    children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode
   }
 >
 
