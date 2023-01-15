@@ -6,6 +6,7 @@ import {
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
+  SliderOutput,
   SliderProps,
   SliderRange,
   SliderThumb,
@@ -92,5 +93,25 @@ describe('Slider', () => {
 
     await user.keyboard('[End]')
     expect(thumb).toHaveAttribute('aria-valuenow', '50')
+  })
+
+  it('should allow access to context with children render prop for Select', () => {
+    render(
+      <Slider min={-50} max={50} defaultValue={22}>
+        {(context) => <div data-testid="slider-value">{JSON.stringify(context.value)}</div>}
+      </Slider>,
+    )
+    expect(screen.getByTestId('slider-value')).toHaveTextContent('22')
+  })
+
+  it('should allow access to context with children render prop for SelectOutput', () => {
+    render(
+      <Slider min={-50} max={50} defaultValue={22}>
+        <SliderOutput>
+          {(context) => <div data-testid="slider-value">{JSON.stringify(context.value)}</div>}
+        </SliderOutput>
+      </Slider>,
+    )
+    expect(screen.getByTestId('slider-value')).toHaveTextContent('22')
   })
 })
