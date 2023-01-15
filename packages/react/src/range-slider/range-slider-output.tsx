@@ -5,20 +5,21 @@ import { ark, HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
+import type { UseRangeSliderReturn } from './use-range-slider'
 
 export type RangeSliderOutputProps = Assign<
   HTMLArkProps<'output'>,
   {
-    children: ReactNode | (({ value }: { value: number[] }) => ReactNode)
+    children: ReactNode | ((api: UseRangeSliderReturn) => ReactNode)
   }
 >
 
 export const RangeSliderOutput = forwardRef<'output', RangeSliderOutputProps>((props, ref) => {
   const { children, ...rest } = props
-  const { outputProps, value } = useRangeSliderContext()
-  const mergedProps = mergeProps(outputProps, rest)
+  const rangeSlider = useRangeSliderContext()
+  const mergedProps = mergeProps(rangeSlider.outputProps, rest)
 
-  const view = runIfFn(children, { value: value })
+  const view = runIfFn(children, rangeSlider)
 
   return (
     <ark.output {...mergedProps} ref={ref}>
