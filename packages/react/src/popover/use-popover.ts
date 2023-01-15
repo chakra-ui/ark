@@ -25,21 +25,13 @@ export const usePopover = (props: UsePopoverProps) => {
   const apiRef = useLatestRef(api)
 
   useEffect(() => {
-    console.log({ isOpen })
-
     if (isOpen == null) {
-      console.log('isOpen nullish')
       return
     }
 
-    console.log('changes', state.changed.toString())
-
     if (isOpen && !state.matches('open')) {
-      console.log('open')
-
       apiRef.current.open()
     } else if (!isOpen && !state.matches('closed')) {
-      console.log('close')
       apiRef.current.close()
     }
   }, [isOpen, state, apiRef])
