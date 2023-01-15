@@ -35,3 +35,30 @@ export const Basic = () => {
     </Dialog>
   )
 }
+
+const DialogWithRenderFn = () => {
+  return (
+    <Dialog>
+      {(api) => (
+        <>
+          <DialogTrigger>
+            <button>Open Dialog</button>
+          </DialogTrigger>
+          <Portal>
+            <DialogBackdrop />
+            <DialogContainer>
+              <DialogContent>
+                <DialogTitle>Dialog Title</DialogTitle>
+                <DialogDescription>Dialog Description</DialogDescription>
+                <DialogCloseTrigger>
+                  <button>Close</button>
+                </DialogCloseTrigger>
+              </DialogContent>
+            </DialogContainer>
+          </Portal>
+          <p>Dialog is {api().isOpen ? 'open' : 'closed'}</p>
+        </>
+      )}
+    </Dialog>
+  )
+}
