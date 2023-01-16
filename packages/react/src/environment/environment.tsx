@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from 'react'
+import { useMemo, useRef, type ReactNode } from 'react'
 import { EnvironmentProvider, type EnvironmentContext } from './environment-context'
 
 export type EnvironmentProps = EnvironmentContext & {
@@ -6,7 +6,19 @@ export type EnvironmentProps = EnvironmentContext & {
 }
 
 export const Environment = (props: EnvironmentProps) => {
-  const { dir, getRootNode, children } = props
-  const currentEnv = useMemo(() => ({ dir, getRootNode }), [dir, getRootNode])
-  return <EnvironmentProvider value={currentEnv}>{children}</EnvironmentProvider>
+  const { getRootNode: getRootNodeProp, children } = props
+  const ref = useRef<HTMLSpanElement>(null)
+
+  const currentEnv = useMemo(() => {
+    const getRootNode = getRootNodeProp ?? (() => ref.current?.ownerDocument ?? document)
+    return { getRootNode }
+  }, [getRootNodeProp])
+  const showSpan = !getRootNodeProp
+
+  return (
+    <EnvironmentProvider value={currentEnv}>
+      {children}
+      {showSpan && <span hidden ref={ref} />}
+    </EnvironmentProvider>
+  )
 }

@@ -1,7 +1,9 @@
-import type { CommonProperties, DirectionProperty } from '@zag-js/types'
+import type { CommonProperties } from '@zag-js/types'
 import { createContext } from '../create-context'
 
-export type EnvironmentContext = Omit<DirectionProperty & CommonProperties, 'id'>
+export type EnvironmentContext = {
+  getRootNode?: CommonProperties['getRootNode']
+}
 
 export const [EnvironmentProvider, useEnvironmentContext] = createContext<EnvironmentContext>({
   name: 'EnvironmentContext',

@@ -1,10 +1,5 @@
 {
   "EnvironmentProps": {
-    "dir": {
-      "type": "Direction",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -12,11 +7,6 @@
     }
   },
   "UseEnvironmentReturn": {
-    "dir": {
-      "type": "Direction",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,

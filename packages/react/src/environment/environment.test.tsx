@@ -20,7 +20,7 @@ const PrintEnvironment = <Override extends Record<string, unknown>>(props: {
 describe('Environment', () => {
   it('should have access to the environment values', async () => {
     const ComponentUnderTest = () => (
-      <Environment dir="rtl" getRootNode={() => document}>
+      <Environment getRootNode={() => document}>
         <PrintEnvironment />
       </Environment>
     )
@@ -28,7 +28,6 @@ describe('Environment', () => {
 
     expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(`
       "{
-        \\"dir\\": \\"rtl\\",
         \\"getRootNode\\": \\"() =&gt; document\\"
       }"
     `)
@@ -36,15 +35,14 @@ describe('Environment', () => {
 
   it('should allow overrides', async () => {
     const ComponentUnderTest = () => (
-      <Environment dir="rtl" getRootNode={() => document}>
-        <PrintEnvironment override={{ dir: 'ltr' }} />
+      <Environment getRootNode={() => document}>
+        <PrintEnvironment />
       </Environment>
     )
     render(<ComponentUnderTest />)
 
     expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(`
       "{
-        \\"dir\\": \\"ltr\\",
         \\"getRootNode\\": \\"() =&gt; document\\"
       }"
     `)
@@ -52,15 +50,14 @@ describe('Environment', () => {
 
   it('should not override with undefined in overrides', async () => {
     const ComponentUnderTest = () => (
-      <Environment dir="rtl" getRootNode={() => document}>
-        <PrintEnvironment override={{ dir: undefined }} />
+      <Environment getRootNode={() => document}>
+        <PrintEnvironment override={{ getRootNode: undefined }} />
       </Environment>
     )
     render(<ComponentUnderTest />)
 
     expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(`
       "{
-        \\"dir\\": \\"rtl\\",
         \\"getRootNode\\": \\"() =&gt; document\\"
       }"
     `)
