@@ -34,4 +34,34 @@ describe('Tabs', () => {
     })
     expect(screen.getByText('Value item two')).toBeVisible()
   })
+
+  it('handles focus and change events', async () => {
+    const { getByRole, getByTestId, container } = render(Component)
+
+    const changeTestId = getByTestId('change-content')
+    // Making sure that this has not been fired
+    expect(changeTestId).toHaveTextContent(/^Changed:$/)
+
+    const tab1 = getByRole('tab', { name: 'Item one' })
+    // Making sure this does not have focus
+    expect(tab1).not.toHaveFocus()
+
+    await user.click(tab1)
+    expect(tab1).toHaveFocus()
+    expect(changeTestId).toHaveTextContent('Changed: one')
+
+    // User clicks away from tabs to lose focus, but change event does not fire
+    await user.click(container)
+    expect(tab1).not.toHaveFocus()
+    expect(changeTestId).toHaveTextContent('Changed: one')
+
+    // User gives focus back to tab one and changes focus to tab 3
+    tab1.focus()
+    expect(tab1).toHaveFocus()
+
+    const tab3 = getByRole('tab', { name: 'Item three' })
+    tab3.focus()
+    expect(tab3).toHaveFocus()
+    expect(changeTestId).toHaveTextContent('Changed: one')
+  })
 })
