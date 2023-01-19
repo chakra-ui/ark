@@ -61,7 +61,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -97,7 +97,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -155,7 +155,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -189,7 +189,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -245,7 +245,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -278,7 +278,7 @@ importers:
       '@zag-js/dialog': 0.2.6
       '@zag-js/editable': 0.2.7
       '@zag-js/hover-card': 0.1.6
-      '@zag-js/menu': 0.3.3
+      '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.7
       '@zag-js/pagination': 0.1.6
       '@zag-js/pin-input': 0.2.7
@@ -3519,6 +3519,13 @@ packages:
       klona: 2.0.5
     dev: false
 
+  /@zag-js/core/0.2.5:
+    resolution: {integrity: sha512-fPcC4B/fHg4Fj3MA65Hzu6r5iPUtxzcUJ3V59pDZjdfeomCMKdxhMGRkwDrkmesCP+tfJ6xqJiIGEPgPCLmfyA==}
+    dependencies:
+      '@zag-js/store': 0.2.3
+      klona: 2.0.5
+    dev: false
+
   /@zag-js/dialog/0.2.6:
     resolution: {integrity: sha512-ayKDJorrwFa5C2uZWcI5vXagDwhisKckDhxlE/JosWZA4HX6X8ml+TeB3fzMmmdKUbbPwuBDUcyR7aw1ycNpPg==}
     dependencies:
@@ -3568,14 +3575,14 @@ packages:
     resolution: {integrity: sha512-izHXivPuZxWgAVlrWpgcruTU1dq+9tolDE0dxUHvR66Gbg0TX6+18FogkM+iKUAa0KOj7UJDKmrILrjNPhHm2A==}
     dev: false
 
-  /@zag-js/menu/0.3.3:
-    resolution: {integrity: sha512-bm5Oc04Dtj4V+dVHgv0aA+Bgt1xRM1iC9EZR4N7EXvzA1Xfqr79q+GxGYV6qXTDNCkgmCauaBRcFdgZ6tdXugQ==}
+  /@zag-js/menu/0.3.4:
+    resolution: {integrity: sha512-smieqlmCpN1eAxoO39tzgbS3nQN6AbyfvkFvKCSki/sUostPUbIXFx1Z7ZA/tvJp3VnuTpn2p8KTF9okpdFmiQ==}
     dependencies:
       '@zag-js/anatomy': 0.1.3
-      '@zag-js/core': 0.2.4
+      '@zag-js/core': 0.2.5
       '@zag-js/dismissable': 0.2.1
       '@zag-js/popper': 0.2.2
-      '@zag-js/types': 0.3.2
+      '@zag-js/types': 0.3.3
     dev: false
 
   /@zag-js/number-input/0.2.7:
@@ -3732,6 +3739,12 @@ packages:
       proxy-compare: 2.3.0
     dev: false
 
+  /@zag-js/store/0.2.3:
+    resolution: {integrity: sha512-Qcb2mCdB0YxKl5FVWBNU5FLRFNpnTVe4v5rAG/ftXXPCiuSAzm3l62FPqzWb+Dbun7BuhKgVUZqbOVsHEV0Scg==}
+    dependencies:
+      proxy-compare: 2.4.0
+    dev: false
+
   /@zag-js/tabs/0.2.6:
     resolution: {integrity: sha512-lMnIiIMcUc52Mdd51Zg5snGz1eHnNkGgGtUxBJkBLE1xhMNRBSDMwaW1/2h6AxKY33fcLVAzkVNiyhh28Fc2kw==}
     dependencies:
@@ -3776,6 +3789,12 @@ packages:
 
   /@zag-js/types/0.3.2:
     resolution: {integrity: sha512-ADOFgW8vccD4h94nBGJZdzM5GVKK/lAssL7HH+hTo+tiWczOEbPT20p2/YSBz5Xy7QpEIdQB6bZ373f0h1FaSQ==}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
+
+  /@zag-js/types/0.3.3:
+    resolution: {integrity: sha512-OLZKFo2aPOmxFeaqUH9DUFiE+iLKgAxAvxhD8HhmQJOJlyUC1jXgCv6fOG5so7UUKWz+yitPjHYjys6ReymZdQ==}
     dependencies:
       csstype: 3.1.1
     dev: false
@@ -4685,8 +4704,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -9098,6 +9117,10 @@ packages:
 
   /proxy-compare/2.3.0:
     resolution: {integrity: sha512-c3L2CcAi7f7pvlD0D7xsF+2CQIW8C3HaYx2Pfgq8eA4HAl3GAH6/dVYsyBbYF/0XJs2ziGLrzmz5fmzPm6A0pQ==}
+    dev: false
+
+  /proxy-compare/2.4.0:
+    resolution: {integrity: sha512-FD8KmQUQD6Mfpd0hywCOzcon/dbkFP8XBd9F1ycbKtvVsfv6TsFUKJ2eC0Iz2y+KzlkdT1Z8SY6ZSgm07zOyqg==}
     dev: false
 
   /pseudomap/1.0.2:
