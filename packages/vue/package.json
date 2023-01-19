@@ -43,7 +43,7 @@
     "@zag-js/number-input": "0.2.7",
     "@zag-js/pagination": "0.1.6",
     "@zag-js/pin-input": "0.2.7",
-    "@zag-js/popover": "0.2.6",
+    "@zag-js/popover": "0.2.7",
     "@zag-js/pressable": "0.3.6",
     "@zag-js/radio": "0.1.4",
     "@zag-js/range-slider": "0.2.7",
