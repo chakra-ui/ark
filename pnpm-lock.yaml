@@ -55,7 +55,7 @@ importers:
       '@typescript-eslint/parser': 5.48.1
       '@vitejs/plugin-react': 3.0.1
       '@vitest/coverage-c8': 0.27.1
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -91,7 +91,7 @@ importers:
       vitest: 0.27.1
     dependencies:
       '@polymorphic-factory/react': 0.2.2_react@18.2.0
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -149,7 +149,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.48.1
       '@typescript-eslint/parser': 5.48.1
       '@vitest/coverage-c8': 0.27.1
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -183,7 +183,7 @@ importers:
       vitest: 0.27.1
     dependencies:
       '@polymorphic-factory/solid': 0.1.3_solid-js@1.6.6
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -239,7 +239,7 @@ importers:
       '@vitejs/plugin-vue-jsx': 3.0.0
       '@vitest/coverage-c8': 0.27.1
       '@vue/compiler-sfc': 3.2.45
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -272,7 +272,7 @@ importers:
       vue: 3.2.45
     dependencies:
       '@polymorphic-factory/vue': 0.2.0_vue@3.2.45
-      '@zag-js/accordion': 0.2.6
+      '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.7
       '@zag-js/dialog': 0.2.6
@@ -3473,12 +3473,12 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@zag-js/accordion/0.2.6:
-    resolution: {integrity: sha512-ott0fxa5l9p1ZC4078UC0wpy8s4ttTkRQ7NRbE4puN9gV2bk1Hm+aaFZkxTE0Dp5ZS1+7wRwVaDPuC+q6edXpw==}
+  /@zag-js/accordion/0.2.7:
+    resolution: {integrity: sha512-kAkO//i7QydVLzJ++2WchmC68EMy4UiuHd569TW81Pqc6N8yLAQOO+tm3gagor0eXF6mAsVAhBB6fZXox1wVOQ==}
     dependencies:
       '@zag-js/anatomy': 0.1.3
-      '@zag-js/core': 0.2.4
-      '@zag-js/types': 0.3.2
+      '@zag-js/core': 0.2.5
+      '@zag-js/types': 0.3.3
     dev: false
 
   /@zag-js/anatomy/0.1.1:
@@ -3516,6 +3516,13 @@ packages:
     resolution: {integrity: sha512-T+4xCjCShGjMb+3gmLga/auZ6ID1cdkJC4XwsCAFomJRxnyh6/at6OGLi1Ln0L/+DdXBvksLku/DwwKe4UkB7g==}
     dependencies:
       '@zag-js/store': 0.2.2
+      klona: 2.0.5
+    dev: false
+
+  /@zag-js/core/0.2.5:
+    resolution: {integrity: sha512-fPcC4B/fHg4Fj3MA65Hzu6r5iPUtxzcUJ3V59pDZjdfeomCMKdxhMGRkwDrkmesCP+tfJ6xqJiIGEPgPCLmfyA==}
+    dependencies:
+      '@zag-js/store': 0.2.3
       klona: 2.0.5
     dev: false
 
@@ -3732,6 +3739,12 @@ packages:
       proxy-compare: 2.3.0
     dev: false
 
+  /@zag-js/store/0.2.3:
+    resolution: {integrity: sha512-Qcb2mCdB0YxKl5FVWBNU5FLRFNpnTVe4v5rAG/ftXXPCiuSAzm3l62FPqzWb+Dbun7BuhKgVUZqbOVsHEV0Scg==}
+    dependencies:
+      proxy-compare: 2.4.0
+    dev: false
+
   /@zag-js/tabs/0.2.6:
     resolution: {integrity: sha512-lMnIiIMcUc52Mdd51Zg5snGz1eHnNkGgGtUxBJkBLE1xhMNRBSDMwaW1/2h6AxKY33fcLVAzkVNiyhh28Fc2kw==}
     dependencies:
@@ -3776,6 +3789,12 @@ packages:
 
   /@zag-js/types/0.3.2:
     resolution: {integrity: sha512-ADOFgW8vccD4h94nBGJZdzM5GVKK/lAssL7HH+hTo+tiWczOEbPT20p2/YSBz5Xy7QpEIdQB6bZ373f0h1FaSQ==}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
+
+  /@zag-js/types/0.3.3:
+    resolution: {integrity: sha512-OLZKFo2aPOmxFeaqUH9DUFiE+iLKgAxAvxhD8HhmQJOJlyUC1jXgCv6fOG5so7UUKWz+yitPjHYjys6ReymZdQ==}
     dependencies:
       csstype: 3.1.1
     dev: false
@@ -4685,8 +4704,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -9098,6 +9117,10 @@ packages:
 
   /proxy-compare/2.3.0:
     resolution: {integrity: sha512-c3L2CcAi7f7pvlD0D7xsF+2CQIW8C3HaYx2Pfgq8eA4HAl3GAH6/dVYsyBbYF/0XJs2ziGLrzmz5fmzPm6A0pQ==}
+    dev: false
+
+  /proxy-compare/2.4.0:
+    resolution: {integrity: sha512-FD8KmQUQD6Mfpd0hywCOzcon/dbkFP8XBd9F1ycbKtvVsfv6TsFUKJ2eC0Iz2y+KzlkdT1Z8SY6ZSgm07zOyqg==}
     dev: false
 
   /pseudomap/1.0.2:
