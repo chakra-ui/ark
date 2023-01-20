@@ -6,42 +6,41 @@ import { useTabs, UseTabsProps } from './use-tabs'
 
 type UseTabsPropsContext = UseTabsProps['context']
 
-export interface TabsProps extends HTMLArkProps<'div'> {
+export interface TabsProps extends HTMLArkProps<'div'>, UseTabsPropsContext {
   defaultValue?: UseTabsProps['defaultValue']
-  orientation?: UseTabsPropsContext['orientation']
-  activationMode?: UseTabsPropsContext['activationMode']
-  dir?: UseTabsPropsContext['dir']
-  translation?: UseTabsPropsContext['translations']
-  ids?: UseTabsPropsContext['ids']
-  isLoop?: UseTabsPropsContext['loop']
-  onChange?: UseTabsPropsContext['onChange']
-  onFocus?: UseTabsPropsContext['onFocus']
-  onDelete?: UseTabsPropsContext['onDelete']
+}
+
+const VueSelectProps = {
+  defaultValue: {
+    type: String as PropType<TabsProps['defaultValue']>,
+  },
+  orientation: {
+    type: String as PropType<TabsProps['orientation']>,
+  },
+  activationMode: {
+    type: String as PropType<TabsProps['activationMode']>,
+  },
+  dir: {
+    type: String as PropType<TabsProps['dir']>,
+  },
+  loop: {
+    type: Boolean as PropType<TabsProps['loop']>,
+  },
+  translation: {
+    type: Object as PropType<TabsProps['translations']>,
+  },
+  isIndicatorRendered: {
+    type: Boolean as PropType<TabsProps['isIndicatorRendered']>,
+  },
+  ids: {
+    type: Object as PropType<TabsProps['ids']>,
+  },
 }
 
 export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
   name: 'Tabs',
   emits: ['change', 'focus', 'delete'],
-  props: {
-    defaultValue: {
-      type: String as PropType<TabsProps['defaultValue']>,
-    },
-    orientation: {
-      type: String as PropType<TabsProps['orientation']>,
-    },
-    activationMode: {
-      type: String as PropType<TabsProps['activationMode']>,
-    },
-    dir: {
-      type: String as PropType<TabsProps['dir']>,
-    },
-    ids: {
-      type: Object as PropType<TabsProps['ids']>,
-    },
-    isLoop: {
-      type: Boolean as PropType<TabsProps['isLoop']>,
-    },
-  },
+  props: VueSelectProps,
   setup(props, { slots, attrs, emit }) {
     const tabsProps = computed<UseTabsProps>(() => ({
       context: props,

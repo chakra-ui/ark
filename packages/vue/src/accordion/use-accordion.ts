@@ -2,14 +2,14 @@ import { connect, machine, type Context as AccordionContext } from '@zag-js/acco
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, getCurrentInstance, onMounted, reactive, watch } from 'vue'
 
-interface AccordionProps extends AccordionContext {
-  modelValue?: string | string[]
+interface AccordionProps extends Omit<AccordionContext, 'id' | 'value'> {
+  modelValue?: AccordionContext['value']
 }
 
 export interface UseAccordionProps {
   context: Omit<AccordionProps, 'id'>
   emit: CallableFunction
-  defaultValue?: string | string[]
+  defaultValue?: AccordionContext['value']
 }
 
 export const useAccordion = (props: UseAccordionProps) => {

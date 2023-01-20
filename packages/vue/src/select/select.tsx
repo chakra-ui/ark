@@ -1,50 +1,65 @@
 import { computed, defineComponent, PropType } from 'vue'
+import type { ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
 import { useSelect, UseSelectProps } from './use-select'
 
-export interface SelectProps {
-  modelValue: UseSelectProps['context']['modelValue']
-  isLooped?: UseSelectProps['context']['loop']
-  isClosedOnSelect?: UseSelectProps['context']['closeOnSelect']
-  isDisabled?: UseSelectProps['context']['disabled']
-  isReadOnly?: UseSelectProps['context']['readOnly']
+type UseSelectPropsContext = UseSelectProps['context']
+
+export type SelectProps = UseSelectPropsContext
+
+const VueSelectProps = {
+  modelValue: {
+    type: [Object, null] as PropType<SelectProps['modelValue']>,
+  },
+  loop: {
+    type: Boolean as PropType<SelectProps['loop']>,
+    default: false,
+  },
+  closedOnSelect: {
+    type: Boolean as PropType<SelectProps['closeOnSelect']>,
+    default: true,
+  },
+  disabled: {
+    type: Boolean as PropType<SelectProps['disabled']>,
+    default: false,
+  },
+  readOnly: {
+    type: Boolean as PropType<SelectProps['readOnly']>,
+    default: false,
+  },
+  name: {
+    type: String as PropType<SelectProps['name']>,
+  },
+  invalid: {
+    type: Boolean as PropType<SelectProps['invalid']>,
+  },
+  form: {
+    type: String as PropType<SelectProps['form']>,
+  },
+  positioning: {
+    type: Object as PropType<SelectProps['positioning']>,
+  },
+  highlightedOption: {
+    type: Object as PropType<SelectProps['highlightedOption']>,
+  },
+  selectOnTab: {
+    type: Boolean as PropType<SelectProps['selectOnTab']>,
+  },
+  dir: {
+    type: String as PropType<SelectProps['dir']>,
+  },
+  ids: {
+    type: Object as PropType<SelectProps['ids']>,
+  },
 }
 
-export const Select = defineComponent({
+export const Select: ComponentWithProps<SelectProps> = defineComponent({
   name: 'Select',
   emits: ['change', 'highlight', 'open', 'close', 'update:modelValue'],
-  props: {
-    modelValue: {
-      type: [Object, null] as PropType<SelectProps['modelValue']>,
-      default: null,
-    },
-    isLooped: {
-      type: Boolean as PropType<SelectProps['isLooped']>,
-      default: false,
-    },
-    isClosedOnSelect: {
-      type: Boolean as PropType<UseSelectProps['context']['closeOnSelect']>,
-      default: true,
-    },
-    isDisabled: {
-      type: Boolean as PropType<UseSelectProps['context']['disabled']>,
-      default: false,
-    },
-    isReadOnly: {
-      type: Boolean as PropType<UseSelectProps['context']['readOnly']>,
-      default: false,
-    },
-  },
+  props: VueSelectProps,
   setup(props, { slots, emit }) {
     const selectProps = computed<UseSelectProps>(() => ({
-      context: {
-        ...props,
-        loop: props.isLooped,
-        closeOnSelect: props.isClosedOnSelect,
-        disabled: props.isDisabled,
-        readOnly: props.isReadOnly,
-        modelValue: props.modelValue,
-      },
+      context: props,
       emit,
     }))
 

@@ -2,12 +2,12 @@ import { connect, Context as SelectContext, machine } from '@zag-js/select'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, getCurrentInstance, reactive, watch } from 'vue'
 
-interface SelectProps extends SelectContext {
+interface UseSelectContext extends Omit<SelectContext, 'id' | 'selectedOption'> {
   modelValue: SelectContext['selectedOption']
 }
 
 export interface UseSelectProps {
-  context: Omit<SelectProps, 'id'>
+  context: UseSelectContext
   emit: CallableFunction
 }
 
