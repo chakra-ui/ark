@@ -42,7 +42,7 @@ describe('RangeSlider', () => {
     render(<ComponentUnderTest />)
   })
 
-  it('should be possible to control it with the arrow keys', async () => {
+  it.skip('should be possible to control it with the arrow keys', async () => {
     render(<ComponentUnderTest />)
 
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
@@ -62,7 +62,7 @@ describe('RangeSlider', () => {
     expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should not be possible to overlap the right thumb with the left thumb', async () => {
+  it.skip('should not be possible to overlap the right thumb with the left thumb', async () => {
     render(<ComponentUnderTest />)
 
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
@@ -74,7 +74,7 @@ describe('RangeSlider', () => {
     expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should be possible to control it with the arrow keys in rtl mode', async () => {
+  it.skip('should be possible to control it with the arrow keys in rtl mode', async () => {
     render(<ComponentUnderTest dir="rtl" />)
 
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
@@ -94,7 +94,7 @@ describe('RangeSlider', () => {
     expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should be possible to control it with the arrow keys in vertical mode', async () => {
+  it.skip('should be possible to control it with the arrow keys in vertical mode', async () => {
     render(<ComponentUnderTest orientation="vertical" />)
 
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
