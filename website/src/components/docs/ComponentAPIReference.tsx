@@ -26,7 +26,6 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
         <Heading textStyle="2xl" fontWeight="semibold">
           Properties
         </Heading>
-        {/*@ts-ignore wrong typings*/}
         <Text color="fg.muted" lineHeight="relaxed">
           {/* TODO update text */}
           API reference docs for the {componentName} component. Learn about the props, CSS, and
