@@ -28,7 +28,7 @@ const VueAccordionProps = {
     type: Boolean as PropType<AccordionProps['multiple']>,
     default: false,
   },
-  disable: {
+  disabled: {
     type: Boolean as PropType<AccordionProps['disabled']>,
     default: false,
   },
