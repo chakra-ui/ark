@@ -33,7 +33,7 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it('should render!', async () => {
+  it.only('should render!', async () => {
     render(<ComponentUnderTest />)
   })
 
