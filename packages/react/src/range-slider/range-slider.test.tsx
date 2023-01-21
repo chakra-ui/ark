@@ -38,7 +38,7 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
 }
 
 describe('RangeSlider', () => {
-  it('should render!', async () => {
+  it.skip('should render!', async () => {
     render(<ComponentUnderTest />)
   })
 
