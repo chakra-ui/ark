@@ -35,6 +35,9 @@ const VueAccordionProps = {
   ids: {
     type: Object as PropType<AccordionProps['ids']>,
   },
+  getRootNode: {
+    type: Function as PropType<AccordionProps['getRootNode']>,
+  },
 }
 
 export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({

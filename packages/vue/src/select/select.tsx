@@ -51,6 +51,9 @@ const VueSelectProps = {
   ids: {
     type: Object as PropType<SelectProps['ids']>,
   },
+  getRootNode: {
+    type: Function as PropType<SelectProps['getRootNode']>,
+  },
 }
 
 export const Select: ComponentWithProps<SelectProps> = defineComponent({

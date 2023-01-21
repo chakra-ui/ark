@@ -35,6 +35,9 @@ const VueSelectProps = {
   ids: {
     type: Object as PropType<TabsProps['ids']>,
   },
+  getRootNode: {
+    type: Function as PropType<TabsProps['getRootNode']>,
+  },
 }
 
 export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
