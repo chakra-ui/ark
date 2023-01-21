@@ -1,12 +1,13 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import type { ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
 
 type UseAccordionPropsContext = UseAccordionProps['context']
 
-export interface AccordionProps extends HTMLArkProps<'div'>, UseAccordionPropsContext {
+export interface AccordionProps extends Assign<HTMLArkProps<'div'>, UseAccordionPropsContext> {
   defaultValue?: UseAccordionProps['defaultValue']
 }
 

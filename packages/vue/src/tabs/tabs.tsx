@@ -1,12 +1,13 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { ComponentWithProps, getValidChildren } from '../utils'
 import { TabsProvider } from './tabs-context'
 import { useTabs, UseTabsProps } from './use-tabs'
 
 type UseTabsPropsContext = UseTabsProps['context']
 
-export interface TabsProps extends HTMLArkProps<'div'>, UseTabsPropsContext {
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsPropsContext> {
   defaultValue?: UseTabsProps['defaultValue']
 }
 
