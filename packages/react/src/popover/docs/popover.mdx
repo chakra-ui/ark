@@ -138,6 +138,20 @@ When the popover is opened or closed, we invoke the `onOpen` and `onClose` callb
 </Popover>
 ```
 
+### Control the open state
+
+Use the `isOpen` prop to control the open state of the popover.
+
+```tsx
+const [isOpen, setIsOpen] = React.useState(false)
+return (
+  <>
+    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover</button>
+    <Popover isOpen={isOpen}>{/*...*/}</Popover>
+  </>
+)
+```
+
 ### Changing the modality
 
 In some cases, you might want the popover to be modal. This means that it'll:
