@@ -22,7 +22,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Checkbox     | 🟢    | 🟢    | ⚪  |
 | Dialog       | 🟢    | 🟢    | ⚪  |
 | Editable     | 🟢    | 🟢    | ⚪  |
-| Hover Card   | 🟢    | 🟢    | ⚪  |
+| Hover Card   | 🟢    | 🟢    | 🟢  |
 | Menu         | 🟢    | 🟢    | ⚪  |
 | Number Input | 🟢    | 🟢    | ⚪  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
