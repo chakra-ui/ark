@@ -1,58 +1,76 @@
 import { computed, defineComponent, PropType } from 'vue'
-import { ark } from '../factory'
-import { getValidChildren } from '../utils'
+import { ark, HTMLArkProps } from '../factory'
+import { ComponentWithProps, getValidChildren } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
 import { useCheckbox, UseCheckboxProps } from './use-checkbox'
 
+export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
+
 type UseCheckboxContext = UseCheckboxProps['context']
 
-export interface CheckboxProps {
-  modelValue?: UseCheckboxContext['modelValue']
-  isDisabled?: UseCheckboxContext['disabled']
-  isReadOnly?: UseCheckboxContext['readOnly']
-  isRequired?: UseCheckboxContext['required']
-  isIndeterminate?: UseCheckboxContext['indeterminate']
-  isChecked?: UseCheckboxContext['checked']
-  isFocusable?: UseCheckboxContext['focusable']
+export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxContext>
+
+const VueCheckboxProps = {
+  'aria-describedby': {
+    type: String as PropType<CheckboxProps['aria-describedby']>,
+  },
+  'aria-label': {
+    type: String as PropType<CheckboxProps['aria-label']>,
+  },
+  'aria-labelledby': {
+    type: String as PropType<CheckboxProps['aria-labelledby']>,
+  },
+  defaultChecked: {
+    type: Boolean as PropType<CheckboxProps['defaultChecked']>,
+  },
+  dir: {
+    type: String as PropType<CheckboxProps['dir']>,
+  },
+  disabled: {
+    type: Boolean as PropType<CheckboxProps['disabled']>,
+  },
+  focusable: {
+    type: Boolean as PropType<CheckboxProps['focusable']>,
+  },
+  form: {
+    type: String as PropType<CheckboxProps['form']>,
+  },
+  getRootNode: {
+    type: Function as PropType<CheckboxProps['getRootNode']>,
+  },
+  ids: {
+    type: Object as PropType<CheckboxProps['ids']>,
+  },
+  indeterminate: {
+    type: Boolean as PropType<CheckboxProps['indeterminate']>,
+  },
+  invalid: {
+    type: Boolean as PropType<CheckboxProps['invalid']>,
+  },
+  modelValue: {
+    type: Boolean as PropType<CheckboxProps['modelValue']>,
+  },
+  name: {
+    type: String as PropType<CheckboxProps['name']>,
+  },
+  readOnly: {
+    type: Boolean as PropType<CheckboxProps['readOnly']>,
+  },
+  required: {
+    type: Boolean as PropType<CheckboxProps['required']>,
+  },
+  value: {
+    type: String as PropType<CheckboxProps['value']>,
+  },
 }
 
-export const Checkbox = defineComponent({
+export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
   name: 'Checkbox',
   emits: ['change', 'update:modelValue'],
-  props: {
-    modelValue: {
-      type: [String, Number] as PropType<CheckboxProps['modelValue']>,
-    },
-    isDisabled: {
-      type: Boolean as PropType<CheckboxProps['isDisabled']>,
-    },
-    isReadOnly: {
-      type: Boolean as PropType<CheckboxProps['isReadOnly']>,
-    },
-    isRequired: {
-      type: Boolean as PropType<CheckboxProps['isRequired']>,
-    },
-    isIndeterminate: {
-      type: Boolean as PropType<CheckboxProps['isIndeterminate']>,
-    },
-    isChecked: {
-      type: Boolean as PropType<CheckboxProps['isChecked']>,
-    },
-    isFocusable: {
-      type: Boolean as PropType<CheckboxProps['isFocusable']>,
-    },
-  },
+  props: VueCheckboxProps,
   setup(props, { attrs, emit, slots }) {
     const checkboxProps = computed<UseCheckboxProps>(() => ({
-      context: {
-        ...props,
-        focusable: props.isFocusable,
-        defaultChecked: props.isChecked,
-        disabled: props.isDisabled,
-        indeterminate: props.isIndeterminate,
-        readOnly: props.isReadOnly,
-        required: props.isRequired,
-      },
+      context: props,
       emit,
     }))
 
