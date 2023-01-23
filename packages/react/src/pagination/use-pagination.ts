@@ -1,16 +1,19 @@
 import * as pagination from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironment } from '../environment'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UsePaginationProps = Optional<pagination.Context, 'id'>
 
 export const usePagination = (props: UsePaginationProps) => {
-  const context = useEnvironment({
+  const getRootNode = useEnvironmentContext()
+
+  const context = {
     id: useId(),
+    getRootNode,
     ...props,
-  })
+  }
 
   const [state, send] = useMachine(pagination.machine(context), { context })
   return pagination.connect(state, send, normalizeProps)

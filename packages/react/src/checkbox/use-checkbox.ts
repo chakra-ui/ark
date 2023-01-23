@@ -1,7 +1,7 @@
 import * as checkbox from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useEffect, useId } from 'react'
-import { useEnvironment } from '../environment'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
@@ -10,10 +10,12 @@ export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
 export type UseCheckboxReturn = ReturnType<typeof useCheckbox>
 
 export const useCheckbox = (props: UseCheckboxProps) => {
-  const context = useEnvironment({
+  const getRootNode = useEnvironmentContext()
+  const context = {
     id: useId(),
+    getRootNode,
     ...props,
-  })
+  }
 
   const [state, send] = useMachine(checkbox.machine(context), { context })
 

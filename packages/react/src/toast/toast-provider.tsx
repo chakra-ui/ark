@@ -2,7 +2,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
 import { PropsWithChildren, useId } from 'react'
 import { createContext } from '../create-context'
-import { useEnvironment } from '../environment'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
@@ -14,7 +14,8 @@ export type ToastProviderProps = PropsWithChildren & Optional<GroupPublicContext
 
 export const ToastProvider = (props: ToastProviderProps) => {
   const { children, ...restProps } = props
-  const context = useEnvironment({ id: useId(), ...restProps })
+  const getRootNode = useEnvironmentContext()
+  const context = { id: useId(), getRootNode, ...restProps }
   const [state, send] = useMachine(toast.group.machine(context))
   const api = toast.group.connect(state, send, normalizeProps)
 

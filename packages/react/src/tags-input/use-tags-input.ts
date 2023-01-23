@@ -1,7 +1,7 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as tagsInput from '@zag-js/tags-input'
 import { useId } from 'react'
-import { useEnvironment } from '../environment'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
@@ -9,11 +9,13 @@ export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
 }
 
 export const useTagsInput = (props: UseTagsInputProps) => {
-  const initialContext = useEnvironment({
+  const getRootNode = useEnvironmentContext()
+  const initialContext = {
     id: useId(),
+    getRootNode,
     ...props,
     value: props.value ?? props.defaultValue,
-  })
+  }
 
   const context = {
     ...initialContext,

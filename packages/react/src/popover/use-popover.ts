@@ -1,7 +1,7 @@
 import * as popover from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useEffect, useId } from 'react'
-import { useEnvironment } from '../environment'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useLatestRef } from '../use-latest-ref'
 
@@ -16,10 +16,12 @@ export type UsePopoverProps = Optional<popover.Context, 'id'> & {
 
 export const usePopover = (props: UsePopoverProps) => {
   const { isOpen, ...restProps } = props
-  const context = useEnvironment({
+  const getRootNode = useEnvironmentContext()
+  const context = {
     id: useId(),
+    getRootNode,
     ...restProps,
-  })
+  }
 
   const [state, send] = useMachine(popover.machine(context), { context })
   const api = popover.connect(state, send, normalizeProps)

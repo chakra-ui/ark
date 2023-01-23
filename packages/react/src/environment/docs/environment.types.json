@@ -1,16 +1,6 @@
 {
-  "EnvironmentProps": {
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    }
-  },
+  "EnvironmentProps": { "value": { "type": "Node | ShadowRoot | Document", "isRequired": false } },
   "UseEnvironmentReturn": {
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    }
+    "getRootNode": { "type": "() => Node | ShadowRoot | Document", "isRequired": false }
   }
 }

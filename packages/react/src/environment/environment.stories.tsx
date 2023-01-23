@@ -1,23 +1,24 @@
+import { useEffect } from 'react'
+import Frame from 'react-frame-component'
 import { Environment } from './environment'
-import { useEnvironment } from './use-environment'
+import { useEnvironmentContext } from './environment-context'
 
 const PrintEnvironment = () => {
-  const environment = useEnvironment({})
-  const rootNode = environment.getRootNode?.()
-  return (
-    <dl>
-      <dt>rootNode</dt>
-      <dd>
-        <pre>{String(rootNode)}</pre>
-      </dd>
-    </dl>
-  )
+  const getRootNode = useEnvironmentContext()
+  useEffect(() => {
+    const rootNode = getRootNode?.()
+    console.log(rootNode)
+  })
+
+  return null
 }
 
 export const Basic = () => {
   return (
-    <Environment>
-      <PrintEnvironment />
-    </Environment>
+    <Frame>
+      <Environment>
+        <PrintEnvironment />
+      </Environment>
+    </Frame>
   )
 }
