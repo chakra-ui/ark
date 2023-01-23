@@ -20,7 +20,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | 🟢  |
 | Checkbox     | 🟢    | 🟢    | ⚪  |
-| Dialog       | 🟢    | 🟢    | ⚪  |
+| Dialog       | 🟢    | 🟢    | 🟢  |
 | Editable     | 🟢    | 🟢    | ⚪  |
 | Hover Card   | 🟢    | 🟢    | ⚪  |
 | Menu         | 🟢    | 🟢    | ⚪  |
