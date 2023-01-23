@@ -253,7 +253,7 @@ importers:
       '@zag-js/pressable': 0.3.7
       '@zag-js/radio': 0.1.4
       '@zag-js/range-slider': 0.2.9
-      '@zag-js/rating': 0.2.4
+      '@zag-js/rating-group': 0.2.8
       '@zag-js/select': 0.1.7
       '@zag-js/slider': 0.2.9
       '@zag-js/tabs': 0.2.7
@@ -286,7 +286,7 @@ importers:
       '@zag-js/pressable': 0.3.7
       '@zag-js/radio': 0.1.4
       '@zag-js/range-slider': 0.2.9
-      '@zag-js/rating': 0.2.4
+      '@zag-js/rating-group': 0.2.8
       '@zag-js/select': 0.1.7
       '@zag-js/slider': 0.2.9
       '@zag-js/tabs': 0.2.7
@@ -3683,14 +3683,6 @@ packages:
       '@zag-js/anatomy': 0.1.3
       '@zag-js/core': 0.2.5
       '@zag-js/types': 0.3.3
-    dev: false
-
-  /@zag-js/rating/0.2.4:
-    resolution: {integrity: sha512-y39W5IO1PbJDPh8hVOsEUjDXsJP2pUoaA6mvfMtdICGa0Zj1kSFl0nYWyfsHEhst4Yxw7wmAV/nTT/smTi2eeQ==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.1
-      '@zag-js/core': 0.2.2
-      '@zag-js/types': 0.3.1
     dev: false
 
   /@zag-js/react/0.3.4_biqbaboplfbrettd7655fr4n2y:
