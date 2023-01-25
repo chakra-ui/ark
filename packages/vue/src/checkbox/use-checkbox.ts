@@ -20,9 +20,10 @@ export const useCheckbox = (props: UseCheckboxProps) => {
     machine({
       ...reactiveContext,
       id: instance?.uid.toString() as string,
+      defaultChecked: context.modelValue,
       onChange(details) {
         emit('change', details.checked)
-        emit('update:modelValue', typeof details.checked == 'boolean' && details.checked)
+        emit('update:modelValue', details.checked)
       },
     }),
   )
@@ -30,7 +31,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value) => {
       if (value == undefined) return
 
