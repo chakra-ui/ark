@@ -27,9 +27,7 @@ export const useTooltip = (props: UseTooltipProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseTooltipReturn = ReturnType<typeof useTooltip>
