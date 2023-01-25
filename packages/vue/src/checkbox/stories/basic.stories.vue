@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '.'
-import './checkbox.css'
+import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
+import '../checkbox.css'
 
-const checkboxRef = ref(false)
+const checkboxRef = ref(true)
 </script>
 <template>
   <Checkbox v-model="checkboxRef">
