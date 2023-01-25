@@ -55,7 +55,8 @@
     "@zag-js/tabs": "0.2.7",
     "@zag-js/tags-input": "0.3.8",
     "@zag-js/toast": "0.2.8",
-    "@zag-js/tooltip": "0.2.7"
+    "@zag-js/tooltip": "0.2.7",
+    "@zag-js/types": "0.3.3"
   },
   "devDependencies": {
     "@testing-library/dom": "8.20.0",
