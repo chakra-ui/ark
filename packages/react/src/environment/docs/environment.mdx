@@ -37,10 +37,9 @@ Ark UI child components.
 import { useCallback, type ReactNode } from 'react'
 
 export const App = (props: { children: ReactNode }) => {
-  const dir = 'ltr'
   const getRootNode = useCallback(() => document, [])
   return (
-    <Environment dir={dir} getRootNode={getRootNode}>
+    <Environment value={getRootNode}>
       {props.children}
     </Environment>
   )
@@ -50,13 +49,10 @@ export const App = (props: { children: ReactNode }) => {
 ### Consuming the environment context
 
 You can use the `useEnvironmentContext` hook to consume the environment context.
-Override the context values by passing an override object to the hook.
 
-It will return an empty object by default, if the Environment component is not
+It will return `undefined` by default, if the Environment component is not
 rendered as a parent.
 
 ```tsx
-const overrides = { dir: 'ltr' }
-const { dir, getRootNode } = useEnvironmentContext(overrides)
-// dir will always be 'ltr'
+const getRootNode = useEnvironmentContext(overrides)
 ```
