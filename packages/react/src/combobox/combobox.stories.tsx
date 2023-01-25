@@ -12,6 +12,7 @@ import {
   ComboboxProps,
   ComboboxTrigger,
 } from './'
+import './combobox.css'
 
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
