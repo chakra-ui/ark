@@ -24,9 +24,7 @@ export const useHoverCard = (props: UseHoverCardProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseHoverCardReturn = ReturnType<typeof useHoverCard>
