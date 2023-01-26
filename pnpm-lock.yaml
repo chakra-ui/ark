@@ -78,6 +78,7 @@ importers:
       '@zag-js/tags-input': 0.3.8
       '@zag-js/toast': 0.2.8
       '@zag-js/tooltip': 0.2.7
+      '@zag-js/types': 0.3.3
       clean-package: 2.2.0
       eslint: 8.32.0
       eslint-plugin-react: 7.32.1
@@ -85,6 +86,7 @@ importers:
       jsdom: 21.1.0
       react: 18.2.0
       react-dom: 18.2.0
+      react-frame-component: 5.2.6
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.4
       vite: 4.0.4
@@ -115,6 +117,7 @@ importers:
       '@zag-js/tags-input': 0.3.8
       '@zag-js/toast': 0.2.8
       '@zag-js/tooltip': 0.2.7
+      '@zag-js/types': 0.3.3
     devDependencies:
       '@testing-library/dom': 8.20.0
       '@testing-library/jest-dom': 5.16.5
@@ -135,6 +138,7 @@ importers:
       jsdom: 21.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-frame-component: 5.2.6_biqbaboplfbrettd7655fr4n2y
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.4
       vite: 4.0.4
@@ -8805,6 +8809,17 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  /react-frame-component/5.2.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-CwkEM5VSt6nFwZ1Op8hi3JB5rPseZlmnp5CGiismVTauE6S4Jsc4TNMlT0O7Cts4WgIC3ZBAQ2p1Mm9XgLbj+w==}
+    peerDependencies:
+      prop-types: ^15.5.9
+      react: '>= 16.3'
+      react-dom: '>= 16.3'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: true
 
   /react-icons/4.7.1_react@18.2.0:
     resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
