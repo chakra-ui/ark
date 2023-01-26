@@ -1,6 +1,7 @@
 import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, getCurrentInstance, onMounted, reactive, watch } from 'vue'
+import { computed, onMounted, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
 interface AccordionProps extends Omit<AccordionContext, 'id' | 'value'> {
   modelValue?: AccordionContext['value']
@@ -16,12 +17,11 @@ export const useAccordion = (props: UseAccordionProps) => {
   const reactiveProps = reactive(props)
   const { context, emit, defaultValue } = reactiveProps
   const reactiveContext = reactive(context)
-  const instance = getCurrentInstance()
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       value: defaultValue,
-      id: instance?.uid.toString() as string,
+      id: useId().value,
       onChange: (details) => {
         emit('change', details.value)
         emit(
