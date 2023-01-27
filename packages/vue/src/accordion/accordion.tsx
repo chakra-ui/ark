@@ -1,40 +1,44 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import type { ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
 
+type UseAccordionPropsContext = UseAccordionProps['context']
+
+export interface AccordionProps extends Assign<HTMLArkProps<'div'>, UseAccordionPropsContext> {
+  defaultValue?: UseAccordionProps['defaultValue']
+}
+
 const VueAccordionProps = {
   defaultValue: {
-    type: String,
+    type: String as PropType<AccordionProps['defaultValue']>,
   },
   value: {
-    type: [String, Object] as PropType<string | string[]>,
+    type: [String, Object] as PropType<AccordionProps['value']>,
   },
   modelValue: {
-    type: [String, Object] as PropType<string | string[]>,
+    type: [String, Object] as PropType<AccordionProps['modelValue']>,
   },
   collapsible: {
-    type: Boolean,
+    type: Boolean as PropType<AccordionProps['collapsible']>,
     default: false,
   },
   multiple: {
-    type: Boolean,
+    type: Boolean as PropType<AccordionProps['multiple']>,
     default: false,
   },
-  disable: {
-    type: Boolean,
+  disabled: {
+    type: Boolean as PropType<AccordionProps['disabled']>,
     default: false,
   },
-}
-
-export interface AccordionProps extends HTMLArkProps<'div'> {
-  defaultValue?: string | string[]
-  value?: string | string[]
-  modelValue?: string | string[]
-  collapsible?: boolean
-  multiple?: boolean
-  disable?: boolean
+  ids: {
+    type: Object as PropType<AccordionProps['ids']>,
+  },
+  getRootNode: {
+    type: Function as PropType<AccordionProps['getRootNode']>,
+  },
 }
 
 export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({

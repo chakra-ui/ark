@@ -1,6 +1,7 @@
 import * as pinInput from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UsePinInputProps = Optional<pinInput.Context, 'id'> & {
@@ -8,8 +9,10 @@ export type UsePinInputProps = Optional<pinInput.Context, 'id'> & {
 }
 
 export const usePinInput = (props: UsePinInputProps) => {
+  const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
+    getRootNode,
     ...props,
     value: props.defaultValue ?? [],
   }
