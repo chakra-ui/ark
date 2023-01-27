@@ -1,11 +1,12 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { ComponentWithProps, getValidChildren } from '../utils'
 import { usePressable, UsePressableProps } from './use-pressable'
 
 type UsePressablePropsContext = UsePressableProps['context']
 
-export type PressableProps = HTMLArkProps<'button'> & UsePressablePropsContext
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressablePropsContext>
 
 export const Pressable: ComponentWithProps<PressableProps> = defineComponent({
   name: 'Pressable',
