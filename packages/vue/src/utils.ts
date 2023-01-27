@@ -2,7 +2,11 @@ import {
   AllowedComponentProps,
   cloneVNode,
   ComponentCustomProps,
+  computed,
   isVNode,
+  onBeforeMount,
+  onMounted,
+  ref,
   Slots,
   VNode,
   VNodeProps,
@@ -50,4 +54,41 @@ export function useUniqueChild(slots: Slots, componentName: string) {
   const DefaultSlot = cloneVNode(validChildren[0])
 
   return DefaultSlot
+}
+
+/**
+ * Credit for useId(): @codebender828 & https://github.com/reach/reach-ui/blob/develop/packages/auto-id/src/index.tsx
+ *
+ */
+
+let serverHandoffComplete = false
+let _id = 1
+const genId = () => ++_id
+
+/**
+ * Generates a unique id
+ *
+ * @param id external ID provided by consumer/user.
+ * @param prefix prefix to append before the id
+ */
+export const useId = (id?: string, prefix?: string) => {
+  const initialId = id || (serverHandoffComplete ? genId() : _id)
+  const uid = ref(initialId)
+
+  onBeforeMount(() => {
+    if (serverHandoffComplete === false) {
+      serverHandoffComplete = true
+    }
+  })
+
+  onMounted(() => {
+    if (uid.value === null) {
+      uid.value = genId()
+    }
+  })
+
+  return computed(() => {
+    const __id__ = uid.value !== null ? uid.value.toString() : undefined
+    return (prefix ? `${prefix}-${__id__}` : __id__) as string
+  })
 }

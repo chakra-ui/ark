@@ -1,10 +1,17 @@
 import type { Assign } from '@polymorphic-factory/solid'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
+import { runIfFn } from '../run-if-fn'
 import { SliderProvider } from './slider-context'
-import { useSlider, UseSliderProps } from './use-slider'
+import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 
-export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
+export type SliderProps = Assign<
+  HTMLArkProps<'div'>,
+  UseSliderProps & {
+    children?: ((api: ReturnType<UseSliderReturn>) => JSX.Element) | JSX.Element
+  }
+>
 
 export const Slider = (props: SliderProps) => {
   const [useSliderProps, divProps] = createSplitProps<UseSliderProps>()(props, [
@@ -34,9 +41,12 @@ export const Slider = (props: SliderProps) => {
   ])
   const slider = useSlider(useSliderProps)
 
+  const view = () => children(() => runIfFn(divProps.children, slider()))
   return (
     <SliderProvider value={slider}>
-      <ark.div {...slider().rootProps} {...divProps} />
+      <ark.div {...slider().rootProps} {...divProps}>
+        {view}
+      </ark.div>
     </SliderProvider>
   )
 }

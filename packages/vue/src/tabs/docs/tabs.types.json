@@ -1,0 +1,27 @@
+{
+  "TabContentProps": { "value": { "type": "string", "isRequired": true } },
+  "TabTriggerProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "TabsProps": {
+    "activationMode": { "type": "'manual' | 'automatic'", "isRequired": false },
+    "defaultValue": { "type": "string", "isRequired": false },
+    "dir": { "type": "Direction", "isRequired": false },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n}>",
+      "isRequired": false
+    },
+    "isLoop": { "type": "boolean", "isRequired": false },
+    "onChange": { "type": "(details: { value: string | null }) => void", "isRequired": false },
+    "onDelete": { "type": "(details: { value: string }) => void", "isRequired": false },
+    "onFocus": { "type": "(details: { value: string | null }) => void", "isRequired": false },
+    "orientation": { "type": "'horizontal' | 'vertical'", "isRequired": false },
+    "translation": { "type": "IntlTranslations", "isRequired": false }
+  },
+  "UseTabsProps": {
+    "context": { "type": "TabsPropsContext", "isRequired": true },
+    "emit": { "type": "CallableFunction", "isRequired": true },
+    "defaultValue": { "type": "string", "isRequired": false }
+  }
+}
