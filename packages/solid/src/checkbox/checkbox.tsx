@@ -41,7 +41,7 @@ export const Checkbox = (props: CheckboxProps) => {
 type CheckboxContextWrapperProps = Assign<
   HTMLArkProps<'label'>,
   {
-    children: JSX.Element | ((context: CheckboxContext) => JSX.Element)
+    children?: JSX.Element | ((context: CheckboxContext) => JSX.Element)
   }
 >
 
