@@ -62,7 +62,9 @@ const Canvas = (props: PropsWithChildren) => (
     overflow="auto"
     p={{ base: '4', md: '6' }}
   >
-    <Box m="auto">{props.children}</Box>
+    <Box m="auto" flex="1" display="flex" justifyContent="center" alignItems="center">
+      {props.children}
+    </Box>
   </Box>
 )
 
