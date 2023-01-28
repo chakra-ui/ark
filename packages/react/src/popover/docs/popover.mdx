@@ -130,10 +130,10 @@ To change the placement of the popover, set the `positioning` prop.
 
 ### Listening for open and close events
 
-When the popover is opened or closed, we invoke the `onOpen` and `onClose` callbacks.
+When the popover is opened or closed, we invoke the `onOpenChange` callback.
 
 ```tsx
-<Popover onOpen={() => alert('opened')} onClose={() => alert('closed')}>
+<Popover onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
   {/*...*/}
 </Popover>
 ```
