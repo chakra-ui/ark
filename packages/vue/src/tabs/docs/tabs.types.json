@@ -5,22 +5,65 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "TabsProps": {
-    "activationMode": { "type": "'manual' | 'automatic'", "isRequired": false },
+    "activationMode": {
+      "type": "'manual' | 'automatic'",
+      "isRequired": false,
+      "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
+    },
     "defaultValue": { "type": "string", "isRequired": false },
-    "dir": { "type": "Direction", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
     "ids": {
       "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n}>",
-      "isRequired": false
+      "isRequired": false,
+      "description": "The ids of the elements in the tabs. Useful for composition."
     },
-    "isLoop": { "type": "boolean", "isRequired": false },
-    "onChange": { "type": "(details: { value: string | null }) => void", "isRequired": false },
-    "onDelete": { "type": "(details: { value: string }) => void", "isRequired": false },
-    "onFocus": { "type": "(details: { value: string | null }) => void", "isRequired": false },
-    "orientation": { "type": "'horizontal' | 'vertical'", "isRequired": false },
-    "translation": { "type": "IntlTranslations", "isRequired": false }
+    "isIndicatorRendered": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the indicator is rendered."
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
+    },
+    "onChange": {
+      "type": "(details: { value: string | null }) => void",
+      "isRequired": false,
+      "description": "Callback to be called when the selected/active tab changes"
+    },
+    "onDelete": {
+      "type": "(details: { value: string }) => void",
+      "isRequired": false,
+      "description": "Callback to be called when a tab's close button is clicked"
+    },
+    "onFocus": {
+      "type": "(details: { value: string | null }) => void",
+      "isRequired": false,
+      "description": "Callback to be called when the focused tab changes"
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    }
   },
   "UseTabsProps": {
-    "context": { "type": "TabsPropsContext", "isRequired": true },
+    "context": { "type": "Omit<UserDefinedContext, 'id' | 'value'>", "isRequired": true },
     "emit": { "type": "CallableFunction", "isRequired": true },
     "defaultValue": { "type": "string", "isRequired": false }
   }
