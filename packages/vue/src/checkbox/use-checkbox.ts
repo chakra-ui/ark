@@ -1,6 +1,7 @@
 import { connect, Context as CheckboxContext, machine } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, getCurrentInstance, reactive, watch } from 'vue'
+import { computed, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
 interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
   modelValue?: CheckboxContext['defaultChecked']
@@ -15,11 +16,10 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const reactiveProps = reactive(props)
   const { context, emit } = reactiveProps
   const reactiveContext = reactive(context)
-  const instance = getCurrentInstance()
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: instance?.uid.toString() as string,
+      id: useId().value,
       defaultChecked: context.modelValue,
       onChange(details) {
         emit('change', details.checked)
