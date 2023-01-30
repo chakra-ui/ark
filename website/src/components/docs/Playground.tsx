@@ -1,5 +1,5 @@
 'use client'
-import { Box } from '@/panda/jsx'
+import { Flex } from '@/panda/jsx'
 import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
 import { match } from 'ts-pattern'
 
@@ -32,9 +32,8 @@ export const Playground = (props: PlaygroundProps) => {
   if (!Component) return null
 
   return (
-    <Box
-      display="flex"
-      flexDirection={{ base: 'column', md: 'row' }}
+    <Flex
+      direction={{ base: 'column', md: 'row' }}
       minHeight="xs"
       bg="bg.surface"
       borderRadius="lg"
@@ -46,24 +45,14 @@ export const Playground = (props: PlaygroundProps) => {
           <Component />
         </Suspense>
       </Canvas>
-    </Box>
+    </Flex>
   )
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Box
-    bgImage={{
-      base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
-      _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
-    }}
-    bgSize="16px 16px"
-    display="flex"
-    flex="1"
-    overflow="auto"
-    p={{ base: '4', md: '6' }}
-  >
-    <Box m="auto">{props.children}</Box>
-  </Box>
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+    {props.children}
+  </Flex>
 )
 
 function lazyLoad<

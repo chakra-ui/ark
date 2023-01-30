@@ -34,14 +34,14 @@ const DocsLayout = (props: any) => {
         <panda.main flex="1" overflow="hidden" py="12">
           <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
             <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
-              <Stack gap="12">
+              <Stack gap="12" alignItems="stretch">
                 <PageHeader
                   subHeading="Component"
                   heading={document.name}
                   supportingText={document.description}
                 />
                 <ComponentTabs basePath={pathName} />
-                <Box>{props.children}</Box>
+                {props.children}
                 <Footer prevPage={prevDocument} nextPage={nextDocument} />
               </Stack>
             </Box>
