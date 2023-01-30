@@ -11,7 +11,7 @@ const DocsLayout = (props: any) => {
 
   return (
     <Container>
-      <Stack gap="24" direction="row" height="100%" position="relative">
+      <Stack gap="8" direction="row" height="100%" position="relative">
         <Sidebar
           framework={params.framework}
           items={sidebarItems}
