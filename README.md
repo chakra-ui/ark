@@ -20,6 +20,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | 🟢  |
 | Checkbox     | 🟢    | 🟢    | 🟢  |
+| Combobox     | 🟢    | ⚪    | ⚪  |
 | Dialog       | 🟢    | 🟢    | ⚪  |
 | Editable     | 🟢    | 🟢    | ⚪  |
 | Hover Card   | 🟢    | 🟢    | ⚪  |
@@ -34,7 +35,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Rating       | 🟢    | 🟢    | ⚪  |
 | Select       | 🟢    | 🟢    | 🟢  |
 | Slider       | 🟢    | 🟢    | ⚪  |
-| Tabs         | 🟢    | 🟢    | ⚪  |
+| Tabs         | 🟢    | 🟢    | 🟢  |
 | Tags Input   | 🟢    | 🟢    | ⚪  |
 | Toast        | 🟢    | 🟢    | ⚪  |
 | Tooltip      | 🟢    | 🟢    | ⚪  |

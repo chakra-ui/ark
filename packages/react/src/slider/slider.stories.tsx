@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { flushSync } from 'react-dom'
 import {
   Slider,
   SliderControl,
@@ -16,8 +15,7 @@ import './slider.css'
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (
-    // TODO move this into use-slider.ts
-    <Slider min={-50} max={50} value={value} onChange={(e) => flushSync(() => setValue(e.value))}>
+    <Slider min={-50} max={50} value={value} onChange={(details) => setValue(details.value)}>
       <SliderLabel>Label</SliderLabel>
       <SliderOutput>{value}</SliderOutput>
       <SliderControl>
@@ -35,7 +33,7 @@ export const Basic = () => {
   )
 }
 
-export const WithDefaultVavlue = () => (
+export const WithDefaultValue = () => (
   <Slider min={-50} max={50} defaultValue={42}>
     <SliderControl>
       <SliderTrack>

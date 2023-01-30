@@ -66,3 +66,33 @@ the `preventScroll` prop to `false`.
 ```tsx
 <Dialog preventScroll={false}>{/*...*/}</Dialog>
 ```
+
+### Access to isOpen state
+
+The `Dialog` component exposes the `isOpen` state via a render prop. This can be useful if you want
+to control the visibility of other components.
+
+```tsx
+<Dialog>
+  {({ isOpen }) => (
+    <>
+      <DialogTrigger>
+        <button>Open Dialog</button>
+      </DialogTrigger>
+      <Portal>
+        <DialogBackdrop />
+        <DialogContainer>
+          <DialogContent>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogDescription>Dialog Description</DialogDescription>
+            <DialogCloseTrigger>
+              <button>Close</button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogContainer>
+      </Portal>
+      <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
+    </>
+  )}
+</Dialog>
+```

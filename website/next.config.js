@@ -7,6 +7,9 @@ const nextConfig = {
     appDir: true,
     externalDir: true,
   },
+  images: {
+    domains: ['avatars2.githubusercontent.com'],
+  },
 }
 
 module.exports = withContentlayer(nextConfig)

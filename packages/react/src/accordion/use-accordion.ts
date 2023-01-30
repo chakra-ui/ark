@@ -1,6 +1,7 @@
 import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
@@ -9,8 +10,10 @@ export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
 export type UseAccordionReturn = ReturnType<typeof useAccordion>
 
 export const useAccordion = (props: UseAccordionProps) => {
+  const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

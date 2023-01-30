@@ -237,6 +237,7 @@
       "isRequired": true
     },
     "getPercentValue": { "type": "(percent: number) => number", "isRequired": true },
+    "getValuePercent": { "type": "(value: number) => number", "isRequired": true },
     "hiddenInputProps": {
       "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
       "isRequired": true

@@ -1,6 +1,7 @@
+import { GitHubStats } from '@/components/navigation/navbar/GitHubStats'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Box, Container, HStack } from '@/panda/jsx'
+import { Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
@@ -20,8 +21,8 @@ export const Navbar = () => (
     })}
   >
     <Container display="flex">
-      <HStack justify="space-between" flex="1">
-        <Link href="/" aria-label="Back home">
+      <HStack flex="1">
+        <Link href="/" aria-label="Back home" className={css({ mr: 'auto' })}>
           <HStack color="fg.emphasized">
             <Logo />
             <Text textStyle="lg" fontWeight="semibold" whiteSpace="nowrap">
@@ -29,15 +30,11 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-        <Box
-          bg="bg.subtle"
-          borderWidth="1px"
-          h="9"
-          width="320px"
-          borderRadius="sm"
-          display={{ base: 'none' }}
-        />
-        <ColorModeButton />
+        <HStack gap="12">
+          {/* @ts-expect-error Server Component */}
+          <GitHubStats />
+          <ColorModeButton />
+        </HStack>
       </HStack>
     </Container>
   </nav>

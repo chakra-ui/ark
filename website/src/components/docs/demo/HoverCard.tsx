@@ -20,8 +20,8 @@ export const DemoHoverCard = () => (
       <a href="https://github.com/segunadebayo" target="_blank" rel="noreferrer">
         <Avatar
           name="Segun Adebayo"
+          size="lg"
           src="https://avatars2.githubusercontent.com/u/6916170"
-          size="10"
         />
       </a>
     </HoverCardTrigger>

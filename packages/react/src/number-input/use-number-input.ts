@@ -1,6 +1,7 @@
 import * as numberInput from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
@@ -8,8 +9,10 @@ export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
 }
 
 export const useNumberInput = (props: UseNumberInputProps) => {
+  const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

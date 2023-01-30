@@ -26,22 +26,22 @@ const Page = async (props: any) => {
   const nextDocument = findNextComponentDocument(document)
 
   return (
-    <Stack gap="12">
-      <Stack gap="5">
-        <Stack gap="3">
-          <Text color="accent.default" fontWeight="semibold" textStyle="sm">
-            Component
-          </Text>
-          <panda.h1 textStyle="3xl" fontWeight="semibold">
-            {document.name}
-          </panda.h1>
-        </Stack>
-        <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
-          {document.description}
-        </Text>
-      </Stack>
-      <Stack direction="row" gap="24" width="full">
-        <Box w="full" maxWidth={{ xl: '43rem' }}>
+    <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
+      <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
+        <Stack gap="12">
+          <Stack gap="5">
+            <Stack gap="3">
+              <Text color="accent.default" fontWeight="semibold" textStyle="sm">
+                Component
+              </Text>
+              <panda.h1 textStyle="3xl" fontWeight="semibold">
+                {document.name}
+              </panda.h1>
+            </Stack>
+            <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
+              {document.description}
+            </Text>
+          </Stack>
           <ComponentTabs
             playground={<Playground component={document.id} />}
             overview={<Markdown markdown={document.body.code} />}
@@ -49,10 +49,10 @@ const Page = async (props: any) => {
               <ComponentAPIReference componentName={document.name} types={document.types} />
             }
           />
-        </Box>
-        <TableOfContent entries={document.toc} />
-      </Stack>
-      <Footer prevPage={prevDocument} nextPage={nextDocument} />
+          <Footer prevPage={prevDocument} nextPage={nextDocument} />
+        </Stack>
+      </Box>
+      <TableOfContent entries={document.toc} />
     </Stack>
   )
 }
