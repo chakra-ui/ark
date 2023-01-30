@@ -21,6 +21,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Accordion    | 🟢    | 🟢    | 🟢  |
 | Checkbox     | 🟢    | 🟢    | ⚪  |
 | Dialog       | 🟢    | 🟢    | 🟢  |
+| Combobox     | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | 🟢    | ⚪  |
 | Hover Card   | 🟢    | 🟢    | ⚪  |
 | Menu         | 🟢    | 🟢    | ⚪  |

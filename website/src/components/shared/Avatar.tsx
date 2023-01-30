@@ -1,18 +1,24 @@
-import { Circle, panda } from '@/panda/jsx'
-import type { ConditionalValue } from '@/panda/types'
-import type { Size } from 'panda/types/token'
+import { Circle } from '@/panda/jsx'
+import Image from 'next/image'
+import { circle } from 'panda/patterns'
+
+const sizes = {
+  sm: circle({ size: '8' }),
+  md: circle({ size: '10' }),
+  lg: circle({ size: '14' }),
+}
 
 type AvatarProps = {
-  size?: ConditionalValue<Size>
+  size?: keyof typeof sizes
   name: string
   src: string
 }
 
 export const Avatar = (props: AvatarProps) => {
-  const { name, size = '10', src } = props
+  const { name, size = 'md', src } = props
   return (
-    <Circle size={size} bg="bg.muted" overflow="hidden">
-      <panda.img alt={name} src={src} />
+    <Circle className={sizes[size]} bg="bg.muted" overflow="hidden" position="relative">
+      <Image alt={name} src={src} fill sizes="100vw" />
     </Circle>
   )
 }

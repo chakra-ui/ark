@@ -48,8 +48,8 @@ export const Sidebar = (props: SidebarProps) => {
       display={{ base: 'none', lg: 'block' }}
       position="sticky"
       top="var(--header-height)"
-      minW="64"
       py="8"
+      pr="16"
       maxH="calc(100vh - var(--header-height))"
       overflowY="auto"
     >
