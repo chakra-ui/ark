@@ -23,7 +23,6 @@ export const useNumberInput = (props: UseNumberInputProps) => {
   }
 
   const [state, send] = useMachine(numberInput.machine(initialContext), { context })
-  console.log('🚀 ~ file: use-number-input.ts:23 ~ useNumberInput ~ state.value', state.value)
   return numberInput.connect(state, send, normalizeProps)
 }
 
