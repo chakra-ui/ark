@@ -1,3 +1,4 @@
+import { IconButton } from '@/components/shared/IconButton'
 import { Text } from '@/components/shared/Text'
 import { fetchGitHubStats } from '@/lib/fetchGitHubStats'
 import { css } from '@/panda/css'
@@ -20,7 +21,7 @@ export const GitHubStats = async () => {
         _hover: { color: 'fg.default' },
       })}
     >
-      <HStack gap="3">
+      <HStack gap="3" display={{ base: 'none', md: 'flex' }}>
         <FaGithub
           fontSize="1.25rem"
           className={css({
@@ -43,6 +44,13 @@ export const GitHubStats = async () => {
           </HStack>
         </Box>
       </HStack>
+      <IconButton
+        aria-label="GitHub"
+        variant="tertiary"
+        size="md"
+        icon={<FaGithub />}
+        display={{ base: 'inline-flex', md: 'none' }}
+      />
     </Link>
   )
 }
