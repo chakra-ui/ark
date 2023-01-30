@@ -22,17 +22,18 @@ export const accordion = defineRecipe({
       fontWeight: 'medium',
       textStyle: 'md',
       width: '100%',
-      p: '0',
+      px: '0',
+      pt: '4',
+      pb: '2',
     },
     item: {
-      borderTopWidth: '1px',
-      pt: '4',
-      pb: '6',
+      borderTopWidth: '1px'
     },
     content: {
       color: 'fg.muted',
       textStyle: 'sm',
       pt: '2',
+      pb: '6',
     },
   }),
 })
