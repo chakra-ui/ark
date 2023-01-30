@@ -1,6 +1,6 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { RatingProvider } from './rating-context'
 import { useRatingGroupContext } from './rating-group-context'
 
@@ -25,7 +25,7 @@ export const Rating: ComponentWithProps<RatingProps> = defineComponent({
 
     return () => (
       <ark.span {...api.value.getRatingProps({ index: props.index })} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.({ ...ratingState.value })}
       </ark.span>
     )
   },
