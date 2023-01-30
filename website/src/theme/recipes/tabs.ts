@@ -16,6 +16,7 @@ export const tabs = defineRecipe({
       background: 'transparent',
       cursor: 'pointer',
       color: 'fg.muted',
+      display: 'inline-flex',
       fontWeight: 'semibold',
       mr: '4',
       pt: '0',
