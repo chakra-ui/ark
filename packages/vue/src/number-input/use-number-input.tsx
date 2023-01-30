@@ -1,6 +1,7 @@
 import { connect, Context as NumberInputContext, machine } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, getCurrentInstance, reactive, watch } from 'vue'
+import { computed, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
 interface NumberInputPropsContext extends Omit<NumberInputContext, 'id'> {
   modelValue?: NumberInputContext['value']
@@ -15,11 +16,10 @@ export const useNumberInput = (props: UseNumberInputProps) => {
   const reactiveProps = reactive(props)
   const { context, emit } = reactiveProps
   const reactiveContext = reactive(context)
-  const instance = getCurrentInstance()
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: instance?.uid.toString() as string,
+      id: useId().value,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onBlur(details) {
         emit('blur', details)
