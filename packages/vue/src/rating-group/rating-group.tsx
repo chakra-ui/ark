@@ -1,6 +1,6 @@
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, Fragment, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, UseRatingGroupProps } from './use-rating-group'
 
@@ -74,8 +74,10 @@ export const RatingGroup: ComponentWithProps<RatingGroupProps> = defineComponent
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        <ark.input {...api.value.hiddenInputProps} />
-        {() => getValidChildren(slots)}
+        <Fragment>
+          <ark.input {...api.value.hiddenInputProps} />
+          {slots.default?.()}
+        </Fragment>
       </ark.div>
     )
   },
