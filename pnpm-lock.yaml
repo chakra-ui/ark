@@ -181,7 +181,7 @@ importers:
       eslint: 8.33.0
       jsdom: 21.1.0
       solid-js: 1.6.9
-      solid-testing-library: 0.5.0
+      solid-testing-library: 0.5.1
       typescript: 4.9.4
       vite: 4.0.4
       vite-plugin-dts: 1.7.1
@@ -223,7 +223,7 @@ importers:
       eslint: 8.33.0
       jsdom: 21.1.0
       solid-js: 1.6.9
-      solid-testing-library: 0.5.0_solid-js@1.6.9
+      solid-testing-library: 0.5.1_solid-js@1.6.9
       typescript: 4.9.4
       vite: 4.0.4
       vite-plugin-dts: 1.7.1_vite@4.0.4
@@ -9415,9 +9415,10 @@ packages:
       solid-js: 1.6.9
     dev: true
 
-  /solid-testing-library/0.5.0_solid-js@1.6.9:
-    resolution: {integrity: sha512-vr4Ke9Dq3bUFLaXOcN8/IVn2e9Q37w4vdmoIOmFBIPs7iCJX9IxuC0IdQqK8nzBZMQqceijkfyCE3Qc407KmaA==}
+  /solid-testing-library/0.5.1_solid-js@1.6.9:
+    resolution: {integrity: sha512-CfcCWsI5zIJz2zcyZQz2weq+6cCS5QrcmWeEmUEy03fElJ/BV5Ly4MMTsmwdOK803zY3wJP5pPf026C40VrE1Q==}
     engines: {node: '>= 14'}
+    deprecated: This package is now available at @solidjs/testing-library
     peerDependencies:
       solid-js: '>=1.0.0'
     dependencies:
