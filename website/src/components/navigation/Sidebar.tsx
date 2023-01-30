@@ -99,7 +99,6 @@ export const Sidebar = (props: SidebarProps) => {
               { href: `${activePath}?`, label: 'Introduction' },
               { href: `${activePath}?`, label: 'Getting started' },
               { href: `${activePath}?`, label: 'Styling' },
-              { href: `${activePath}?`, label: 'Roadmap' },
               { href: `/docs/${framework}/changelog`, label: 'Changelog' },
             ].map((item) => (
               <PageLink
