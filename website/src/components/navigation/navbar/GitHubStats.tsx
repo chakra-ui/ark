@@ -21,7 +21,7 @@ export const GitHubStats = async () => {
         _hover: { color: 'fg.default' },
       })}
     >
-      <HStack gap="3" display={{ base: 'none', md: 'flex' }}>
+      <HStack gap="3" display={{ base: 'none', lg: 'flex' }}>
         <FaGithub
           fontSize="1.25rem"
           className={css({
@@ -49,7 +49,7 @@ export const GitHubStats = async () => {
         variant="tertiary"
         size="md"
         icon={<FaGithub />}
-        display={{ base: 'inline-flex', md: 'none' }}
+        display={{ base: 'inline-flex', lg: 'none' }}
       />
     </Link>
   )
