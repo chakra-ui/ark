@@ -1,10 +1,9 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { ComponentWithProps, getValidChildren } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
 import { useCheckbox, UseCheckboxProps } from './use-checkbox'
-
-export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
 
 type UseCheckboxContext = UseCheckboxProps['context']
 
