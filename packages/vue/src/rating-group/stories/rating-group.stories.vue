@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import type { UnwrapRef } from 'vue'
+import { ref, UnwrapRef } from 'vue'
 import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '..'
 import type { RatingGroupContext } from '../rating-group-context'
 import { IconEmpty, IconFull, IconHalf } from './rating-icons'
+
+// For tests
+const props = withDefaults(defineProps<{ max?: number; defaultValue?: number }>(), {
+  max: 5,
+  defaultValue: 3,
+})
+
+const defaultRef = ref(props.defaultValue)
 </script>
 <template>
-  <RatingGroup :max="5" :defaultValue="3" allowHalf>
+  <RatingGroup :max="props.max" v-model="defaultRef" allowHalf>
     <RatingGroupLabel>Label</RatingGroupLabel>
     <RatingGroupControl v-slot="{ sizeArray }: UnwrapRef<RatingGroupContext>">
       <Rating

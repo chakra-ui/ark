@@ -8,9 +8,7 @@ export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
 
 type UseRatingGroupPropsContext = UseRatingGroupProps['context']
 
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupPropsContext> & {
-  defaultValue?: UseRatingGroupProps['defaultValue']
-}
+export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupPropsContext>
 
 const vueRatingGroupProps = {
   allowHalf: {
@@ -18,9 +16,6 @@ const vueRatingGroupProps = {
   },
   autoFocus: {
     type: Boolean as PropType<RatingGroupProps['autoFocus']>,
-  },
-  defaultValue: {
-    type: Number as PropType<RatingGroupProps['defaultValue']>,
   },
   dir: {
     type: String as PropType<RatingGroupProps['dir']>,
@@ -64,7 +59,6 @@ export const RatingGroup: ComponentWithProps<RatingGroupProps> = defineComponent
   setup(props, { slots, attrs, emit }) {
     const ratingGroupProps = computed<UseRatingGroupProps>(() => ({
       context: props,
-      defaultValue: props.modelValue || props.defaultValue,
       emit,
     }))
 
