@@ -180,7 +180,7 @@ importers:
       clean-package: 2.2.0
       eslint: 8.33.0
       jsdom: 21.1.0
-      solid-js: 1.6.9
+      solid-js: 1.6.10
       solid-testing-library: 0.5.1
       typescript: 4.9.5
       vite: 4.0.4
@@ -188,7 +188,7 @@ importers:
       vite-plugin-solid: 2.5.0
       vitest: 0.28.3
     dependencies:
-      '@polymorphic-factory/solid': 0.2.0_solid-js@1.6.9
+      '@polymorphic-factory/solid': 0.2.0_solid-js@1.6.10
       '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
@@ -206,7 +206,7 @@ importers:
       '@zag-js/rating-group': 0.2.8
       '@zag-js/select': 0.1.7
       '@zag-js/slider': 0.2.9
-      '@zag-js/solid': 0.2.5_solid-js@1.6.9
+      '@zag-js/solid': 0.2.5_solid-js@1.6.10
       '@zag-js/tabs': 0.2.7
       '@zag-js/tags-input': 0.3.8
       '@zag-js/toast': 0.2.8
@@ -222,12 +222,12 @@ importers:
       clean-package: 2.2.0
       eslint: 8.33.0
       jsdom: 21.1.0
-      solid-js: 1.6.9
-      solid-testing-library: 0.5.1_solid-js@1.6.9
+      solid-js: 1.6.10
+      solid-testing-library: 0.5.1_solid-js@1.6.10
       typescript: 4.9.5
       vite: 4.0.4
       vite-plugin-dts: 1.7.2_vite@4.0.4
-      vite-plugin-solid: 2.5.0_solid-js@1.6.9+vite@4.0.4
+      vite-plugin-solid: 2.5.0_solid-js@1.6.10+vite@4.0.4
       vitest: 0.28.3_jsdom@21.1.0
 
   packages/vue:
@@ -2546,12 +2546,12 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@polymorphic-factory/solid/0.2.0_solid-js@1.6.9:
+  /@polymorphic-factory/solid/0.2.0_solid-js@1.6.10:
     resolution: {integrity: sha512-AFH5Mffj/4q4I6wM88BBQqW64/TzZ6L1ltipkY6mP2EMllGtzNrkWE7HqPNh7Ji+zwg6MHeis1IXDS/Mcn7SvA==}
     peerDependencies:
       solid-js: '>=1.6.0'
     dependencies:
-      solid-js: 1.6.9
+      solid-js: 1.6.10
     dev: false
 
   /@polymorphic-factory/vue/0.2.0_vue@3.2.45:
@@ -3615,7 +3615,7 @@ packages:
       '@zag-js/types': 0.3.3
     dev: false
 
-  /@zag-js/solid/0.2.5_solid-js@1.6.9:
+  /@zag-js/solid/0.2.5_solid-js@1.6.10:
     resolution: {integrity: sha512-2FZ2iQO+3i1HZdv1p6Qppf0IHps44wSXOE+5X1EIbSfzAcxvkJu3/7im6AkyfTXjblPnTIXf6hcV6nwaskGwkA==}
     peerDependencies:
       solid-js: '>=1.1.3'
@@ -3624,7 +3624,7 @@ packages:
       '@zag-js/store': 0.2.3
       '@zag-js/types': 0.3.3
       hyphenate-style-name: 1.0.4
-      solid-js: 1.6.9
+      solid-js: 1.6.10
     dev: false
 
   /@zag-js/store/0.2.0:
@@ -9389,12 +9389,12 @@ packages:
       yargs: 15.4.1
     dev: true
 
-  /solid-js/1.6.9:
-    resolution: {integrity: sha512-kV3fMmm+1C2J95c8eDOPKGfZHnuAkHUBLG4hX1Xu08bXeAIPqmxuz/QdH3B8SIdTp3EatBVIyA6RCes3hrGzpg==}
+  /solid-js/1.6.10:
+    resolution: {integrity: sha512-Sf0e6PQCEFkFtbPq0L+93Ua81YQOefBEbvDJ0YXT92b6Lzw0k7UvzSd2l1BbYM+yzE3UmepU1tyMDc/3nIByjA==}
     dependencies:
       csstype: 3.1.1
 
-  /solid-refresh/0.4.1_solid-js@1.6.9:
+  /solid-refresh/0.4.1_solid-js@1.6.10:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -9402,10 +9402,10 @@ packages:
       '@babel/generator': 7.20.7
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.20.7
-      solid-js: 1.6.9
+      solid-js: 1.6.10
     dev: true
 
-  /solid-testing-library/0.5.1_solid-js@1.6.9:
+  /solid-testing-library/0.5.1_solid-js@1.6.10:
     resolution: {integrity: sha512-CfcCWsI5zIJz2zcyZQz2weq+6cCS5QrcmWeEmUEy03fElJ/BV5Ly4MMTsmwdOK803zY3wJP5pPf026C40VrE1Q==}
     engines: {node: '>= 14'}
     deprecated: This package is now available at @solidjs/testing-library
@@ -9413,7 +9413,7 @@ packages:
       solid-js: '>=1.0.0'
     dependencies:
       '@testing-library/dom': 8.20.0
-      solid-js: 1.6.9
+      solid-js: 1.6.10
     dev: true
 
   /sort-css-media-queries/2.1.0:
@@ -10353,7 +10353,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid/2.5.0_solid-js@1.6.9+vite@4.0.4:
+  /vite-plugin-solid/2.5.0_solid-js@1.6.10+vite@4.0.4:
     resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
@@ -10363,8 +10363,8 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.5
       babel-preset-solid: 1.6.3_@babel+core@7.20.5
       merge-anything: 5.1.4
-      solid-js: 1.6.9
-      solid-refresh: 0.4.1_solid-js@1.6.9
+      solid-js: 1.6.10
+      solid-refresh: 0.4.1_solid-js@1.6.10
       vite: 4.0.4
       vitefu: 0.2.3_vite@4.0.4
     transitivePeerDependencies:
