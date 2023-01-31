@@ -26,8 +26,12 @@ export const DemoMenu = () => (
     <Portal>
       <MenuPositioner className={menu()}>
         <MenuContent>
-          <MenuItem id="new-tab">New Tab...</MenuItem>
-          <MenuItem id="new-win">New Window...</MenuItem>
+          <MenuItem id="new-tab">
+            <span>New Tab...</span>
+          </MenuItem>
+          <MenuItem id="new-win">
+            <span>New Window...</span>
+          </MenuItem>
           <MenuItemGroup id="radio-group">
             <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
             <MenuOptionItem name="framework" type="radio" value="react">
