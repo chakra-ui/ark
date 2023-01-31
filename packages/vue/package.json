@@ -38,7 +38,7 @@
     "@zag-js/checkbox": "0.2.8",
     "@zag-js/dialog": "0.2.7",
     "@zag-js/editable": "0.2.8",
-    "@zag-js/hover-card": "0.2.0",
+    "@zag-js/hover-card": "0.2.1",
     "@zag-js/menu": "0.3.4",
     "@zag-js/number-input": "0.2.8",
     "@zag-js/pagination": "0.1.7",
