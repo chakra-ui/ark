@@ -41,4 +41,19 @@ export const dialog = defineRecipe({
       textStyle: 'sm',
     },
   }),
+  variants: {
+    variant: {
+      drawer: parts({
+        container: {
+          alignItems: 'start !important',
+          justifyContent: 'start !important',
+        },
+        content: {
+          borderRadius: '0 !important',
+          height: 'full',
+          minW: 'xs !important',
+        },
+      }),
+    },
+  },
 })

@@ -1,9 +1,10 @@
 'use client'
-import { IconButton } from '@/components/shared/IconButton'
+import { MobileSidebar } from '@/components/shared/MobileSidebar'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { usePathname } from 'next/navigation'
-import { FiChevronRight, FiMenu } from 'react-icons/fi'
+import { Fragment } from 'react'
+import { FiChevronRight } from 'react-icons/fi'
 
 export const MobileNavbar = () => {
   const pathName = usePathname()
@@ -17,11 +18,10 @@ export const MobileNavbar = () => {
     <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
       <Container>
         <Stack direction="row" py="3" align="center">
-          <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
+          <MobileSidebar />
           {crumbs?.map((crumb, index, arr) => (
-            <>
+            <Fragment key={index}>
               <Text
-                key={index}
                 textStyle="sm"
                 fontWeight="medium"
                 color="fg.muted"
@@ -35,7 +35,7 @@ export const MobileNavbar = () => {
                   <FiChevronRight />
                 </Box>
               )}
-            </>
+            </Fragment>
           ))}
         </Stack>
       </Container>
