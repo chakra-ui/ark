@@ -17,7 +17,7 @@ import {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
-} from '@ark-ui/react'
+} from '@ark-ui/solid'
 ```
 
 ## Usage
@@ -136,20 +136,6 @@ When the popover is opened or closed, we invoke the `onOpenChange` callback.
 <Popover onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
   {/*...*/}
 </Popover>
-```
-
-### Control the open state
-
-Use the `isOpen` prop to control the open state of the popover.
-
-```tsx
-const [isOpen, setIsOpen] = React.useState(false)
-return (
-  <>
-    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover</button>
-    <Popover isOpen={isOpen}>{/*...*/}</Popover>
-  </>
-)
 ```
 
 ### Changing the modality
