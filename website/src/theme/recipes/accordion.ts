@@ -10,6 +10,9 @@ export const accordion = defineRecipe({
     root: {
       width: '100%',
       background: 'bg.surface',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '8',
     },
     trigger: {
       alignItems: 'center',
@@ -18,21 +21,18 @@ export const accordion = defineRecipe({
       cursor: 'pointer',
       color: 'fg.default',
       display: 'flex',
-      justifyContent: 'space-between',
       fontWeight: 'medium',
-      textStyle: 'md',
-      width: '100%',
+      justifyContent: 'space-between',
+      mb: '2',
       p: '0',
+      textStyle: 'lg',
+      width: '100%',
     },
-    item: {
-      borderTopWidth: '1px',
-      pt: '4',
-      pb: '6',
-    },
+    item: {},
     content: {
       color: 'fg.muted',
-      textStyle: 'sm',
-      pt: '2',
+      pr: '12',
+      textStyle: 'md',
     },
   }),
 })
