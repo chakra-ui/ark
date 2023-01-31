@@ -60,7 +60,7 @@ importers:
       '@zag-js/checkbox': 0.2.8
       '@zag-js/combobox': 0.2.9
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -99,7 +99,7 @@ importers:
       '@zag-js/checkbox': 0.2.8
       '@zag-js/combobox': 0.2.9
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -161,7 +161,7 @@ importers:
       '@zag-js/checkbox': 0.2.8
       '@zag-js/combobox': 0.2.9
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -196,7 +196,7 @@ importers:
       '@zag-js/checkbox': 0.2.8
       '@zag-js/combobox': 0.2.9
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -253,7 +253,7 @@ importers:
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -286,7 +286,7 @@ importers:
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
       '@zag-js/dialog': 0.2.7
-      '@zag-js/editable': 0.2.8
+      '@zag-js/editable': 0.2.9
       '@zag-js/hover-card': 0.2.0
       '@zag-js/menu': 0.3.4
       '@zag-js/number-input': 0.2.8
@@ -3420,6 +3420,13 @@ packages:
       klona: 2.0.5
     dev: false
 
+  /@zag-js/core/0.2.6:
+    resolution: {integrity: sha512-RzJnC3EJCxgK0hmPUuHX2j+lcUMIfBWQmTeHDbBvR7OO74iVUdO+sbNr7ZMjqSooR6voDs6qO38BQ/w1ket7TA==}
+    dependencies:
+      '@zag-js/store': 0.2.4
+      klona: 2.0.6
+    dev: false
+
   /@zag-js/dialog/0.2.7:
     resolution: {integrity: sha512-0XLTHtcPQmaS+8iRphTOrYkLLJjzEkkyqMxnlDPj0qmjFhIuUin2ruzbEZ/c+49K41iXbLLn0S9BxFzv5J1pjA==}
     dependencies:
@@ -3438,11 +3445,11 @@ packages:
       '@zag-js/interact-outside': 0.2.1
     dev: false
 
-  /@zag-js/editable/0.2.8:
-    resolution: {integrity: sha512-MkosITklXOfNoLXxOXyasjM4K4OOoAQ5wvplJqYqbXoqQ55HOh+RvCvucEELF/V4ZKjYUsFuBcepqYlKfrGGqQ==}
+  /@zag-js/editable/0.2.9:
+    resolution: {integrity: sha512-nh3cgxtmnTHTEOZxGwYWcD5QE3RasEda8dNVIX8fwZtQ69xQmDKkA88OYHLp9ALUxwPi2QCq2Y2lpbLVU2Xoqw==}
     dependencies:
       '@zag-js/anatomy': 0.1.3
-      '@zag-js/core': 0.2.5
+      '@zag-js/core': 0.2.6
       '@zag-js/interact-outside': 0.2.1
       '@zag-js/types': 0.3.3
     dev: false
@@ -3640,6 +3647,12 @@ packages:
 
   /@zag-js/store/0.2.3:
     resolution: {integrity: sha512-Qcb2mCdB0YxKl5FVWBNU5FLRFNpnTVe4v5rAG/ftXXPCiuSAzm3l62FPqzWb+Dbun7BuhKgVUZqbOVsHEV0Scg==}
+    dependencies:
+      proxy-compare: 2.4.0
+    dev: false
+
+  /@zag-js/store/0.2.4:
+    resolution: {integrity: sha512-UxF6NJh/5VGFeql7R+fTVxWeKY1yg5t4rAQ6xIonQOeyV91FSnLmxvhM/ah21JecbW3ZQKasYJMITIhr/M6HCA==}
     dependencies:
       proxy-compare: 2.4.0
     dev: false
@@ -6920,6 +6933,11 @@ packages:
 
   /klona/2.0.5:
     resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
+    engines: {node: '>= 8'}
+    dev: false
+
+  /klona/2.0.6:
+    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
     dev: false
 
