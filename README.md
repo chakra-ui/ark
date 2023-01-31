@@ -29,7 +29,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Pagination   | 🟢    | 🟢    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | 🟢    | ⚪  |
-| Pressable    | 🟢    | 🟢    | ⚪  |
+| Pressable    | 🟢    | 🟢    | 🟢  |
 | Radio Group  | 🟢    | 🟢    | ⚪  |
 | Range Slider | 🟢    | 🟢    | ⚪  |
 | Rating       | 🟢    | 🟢    | ⚪  |
