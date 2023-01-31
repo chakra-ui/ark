@@ -36,8 +36,8 @@ export const Playground = (props: PlaygroundProps) => {
   return (
     <Flex
       direction={{ base: 'column', md: 'row' }}
-      minHeight="xs"
       bg="bg.surface"
+      minH="40"
       borderRadius="lg"
       boxShadow="sm"
       width="full"
