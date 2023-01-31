@@ -118,6 +118,7 @@ jobs:
       - name: Generated type docs
         uses: pnpm typedocs
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: GitHub Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: chore update typedocs [skip-ci]
