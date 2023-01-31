@@ -9,6 +9,7 @@ import {
   Portal,
 } from '@ark-ui/react'
 import { FiMenu } from 'react-icons/fi'
+import { SidebarContent } from '../navigation/Sidebar'
 import { CloseButton } from './CloseButton'
 import { IconButton } from './IconButton'
 
@@ -22,7 +23,7 @@ export const MobileSidebar = () => {
         <DialogBackdrop className={dialog({ variant: 'drawer' })} />
         <DialogContainer className={dialog({ variant: 'drawer' })}>
           <DialogContent>
-            <div>Content</div>
+            <SidebarContent framework="" items={[]} />
             <DialogCloseTrigger>
               <CloseButton aria-label="Close dialog" />
             </DialogCloseTrigger>

@@ -52,6 +52,7 @@ export const dialog = defineRecipe({
           borderRadius: '0 !important',
           height: 'full',
           minW: 'xs !important',
+          p: '6',
         },
       }),
     },
