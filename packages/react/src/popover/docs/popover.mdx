@@ -13,7 +13,7 @@ import {
   PopoverCloseTrigger,
   PopoverContent,
   PopoverDescription,
-  PopoverInnerArrow,
+  PopoverArrowTip,
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
@@ -23,7 +23,7 @@ import {
 ## Usage
 
 The Popover component consists of the `PopoverTrigger`, `PopoverPositioner`, `PopoverContent`,
-`PopoverTitle`, `PopoverDescription`, `PopoverArrow`, `PopoverInnerArrow`, `PopoverCloseTrigger`,
+`PopoverTitle`, `PopoverDescription`, `PopoverArrow`, `PopoverArrowTip`, `PopoverCloseTrigger`,
 components.
 
 Note that the `PopoverTrigger` and `PopoverCloseTrigger` components accept a single JSX element
@@ -49,7 +49,7 @@ desired accessibility.
 
 ### Adding an arrow
 
-To render an arrow within the popover, render the component `PopoverArrow` and `PopoverInnerArrow`
+To render an arrow within the popover, render the component `PopoverArrow` and `PopoverArrowTip`
 as children of `PopoverPositioner`.
 
 ```tsx
@@ -59,7 +59,7 @@ as children of `PopoverPositioner`.
   </PopoverTrigger>
   <PopoverPositioner>
     <PopoverArrow>
-      <PopoverInnerArrow />
+      <PopoverArrowTip />
     </PopoverArrow>
     <PopoverContent>
       <PopoverTitle>Title</PopoverTitle>
@@ -130,10 +130,10 @@ To change the placement of the popover, set the `positioning` prop.
 
 ### Listening for open and close events
 
-When the popover is opened or closed, we invoke the `onOpen` and `onClose` callbacks.
+When the popover is opened or closed, we invoke the `onOpenChange` callback.
 
 ```tsx
-<Popover onOpen={() => alert('opened')} onClose={() => alert('closed')}>
+<Popover onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
   {/*...*/}
 </Popover>
 ```

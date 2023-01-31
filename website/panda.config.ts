@@ -190,6 +190,9 @@ export default defineConfig({
     a: {
       textDecoration: 'none',
     },
+    hr: {
+      borderBottomWidth: '1px',
+    },
     table: {
       width: 'full',
       tableLayout: 'auto',

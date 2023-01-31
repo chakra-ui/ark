@@ -36,7 +36,7 @@ export const Basic = () => {
   )
 }
 
-const DialogWithRenderFn = () => {
+export const DialogWithRenderFn = () => {
   return (
     <Dialog>
       {({ isOpen }) => (

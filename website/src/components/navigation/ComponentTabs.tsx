@@ -1,32 +1,30 @@
 'use client'
 import { tabs } from '@/panda/recipes'
-import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
-import { Stack } from 'panda/jsx/stack'
+import { TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 type ComponentTabsProps = {
-  overview: React.ReactNode
-  playground: React.ReactNode
-  properties: React.ReactNode
+  basePath: string
 }
 
-export const ComponentTabs = (props: ComponentTabsProps) => (
-  <Tabs className={tabs({ size: 'sm' })} defaultValue="overview">
-    <TabList>
-      <TabTrigger value="overview">
-        <button>Overview</button>
-      </TabTrigger>
-      <TabTrigger value="props">
-        <button>Properties</button>
-      </TabTrigger>
+export const ComponentTabs = (props: ComponentTabsProps) => {
+  const pathname = usePathname()
 
-      <TabIndicator />
-    </TabList>
-    <TabContent value="overview">
-      <Stack gap="12">
-        {props.playground}
-        {props.overview}
-      </Stack>
-    </TabContent>
-    <TabContent value="props">{props.properties}</TabContent>
-  </Tabs>
-)
+  const lastSegment = pathname?.split('/').pop() ?? 'overview'
+  const defaultValue = ['overview', 'props'].includes(lastSegment) ? lastSegment : 'overview'
+
+  return (
+    <Tabs className={tabs({ size: 'sm' })} defaultValue={defaultValue}>
+      <TabList>
+        <TabTrigger value="overview">
+          <Link href={props.basePath + '/overview'}>Overview</Link>
+        </TabTrigger>
+        <TabTrigger value="props">
+          <Link href={props.basePath + '/props'}>Properties</Link>
+        </TabTrigger>
+        <TabIndicator />
+      </TabList>
+    </Tabs>
+  )
+}
