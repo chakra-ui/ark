@@ -9,7 +9,7 @@
     "webiste"
   ],
   "scripts": {
-    "prepare": "husky install && pnpm typedocs",
+    "prepare": "husky install",
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
