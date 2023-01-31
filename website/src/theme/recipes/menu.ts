@@ -10,11 +10,6 @@ const baseItemStyle = {
   cursor: 'pointer',
   display: 'flex',
   my: '1',
-  '& > *': {
-    flex: '1',
-    px: '2.5',
-    py: '2',
-  },
   textStyle: 'sm',
   _focus: {
     background: 'bg.subtle',
@@ -49,8 +44,23 @@ export const menu = defineRecipe({
       py: '0.5',
       outline: 'none',
     },
-    item: baseItemStyle,
-    optionItem: baseItemStyle,
-    triggerItem: baseItemStyle,
+    item: {
+      ...baseItemStyle,
+      px: '2.5',
+      py: '2',
+    },
+    optionItem: {
+      ...baseItemStyle,
+      '& > *': {
+        flex: '1',
+        px: '2.5',
+        py: '2',
+      },
+    },
+    triggerItem: {
+      ...baseItemStyle,
+      px: '2.5',
+      py: '2',
+    },
   }),
 })
