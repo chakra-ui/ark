@@ -7,10 +7,12 @@ import { hoverCard } from './hover-card'
 import { input } from './input'
 import { link } from './link'
 import { markdown } from './markdown'
+import { menu } from './menu'
 import { numberInput } from './number-input'
 import { pagination } from './pagination'
 import { pinInput } from './pin-input'
 import { popover } from './popover'
+import { radio } from './radio'
 import { radioGroup } from './radio-group'
 import { ratingGroup } from './rating-group'
 import { select } from './select'
@@ -30,10 +32,12 @@ export const recipes = {
   input,
   link,
   markdown,
+  menu,
   numberInput,
   pagination,
   pinInput,
   popover,
+  radio,
   radioGroup,
   ratingGroup,
   select,
