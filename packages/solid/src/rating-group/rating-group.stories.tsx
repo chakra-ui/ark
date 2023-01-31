@@ -1,3 +1,4 @@
+import { createSignal } from 'solid-js'
 import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
 
 export const Basic = () => (
@@ -74,3 +75,26 @@ const IconFull = () => (
     ></path>
   </svg>
 )
+
+export const ControlledRatingGroup = () => {
+  const [value, setValue] = createSignal(0)
+
+  return (
+    <RatingGroup max={5} value={value()} onChange={(details) => setValue(details.value)} allowHalf>
+      <RatingGroupLabel>Label</RatingGroupLabel>
+      <RatingGroupControl>
+        {(context) =>
+          context().sizeArray.map((index) => (
+            <Rating index={index}>
+              {({ isHalf, isHighlighted }) => {
+                if (isHalf) return <IconHalf />
+                if (isHighlighted) return <IconFull />
+                return <IconEmpty />
+              }}
+            </Rating>
+          ))
+        }
+      </RatingGroupControl>
+    </RatingGroup>
+  )
+}
