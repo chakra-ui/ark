@@ -13,6 +13,7 @@ import { pinInput } from './pin-input'
 import { popover } from './popover'
 import { radioGroup } from './radio-group'
 import { ratingGroup } from './rating-group'
+import { select } from './select'
 import { slider } from './slider'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
@@ -35,6 +36,7 @@ export const recipes = {
   popover,
   radioGroup,
   ratingGroup,
+  select,
   slider,
   tabs,
   tagsInput,
