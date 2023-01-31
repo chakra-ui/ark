@@ -14,6 +14,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
     .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
+    .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))
     .with('number-input', () => lazyLoad(() => import('./demo/NumberInput'), 'DemoNumberInput'))
     .with('pagination', () => lazyLoad(() => import('./demo/Pagination'), 'DemoPagination'))
     .with('pin-input', () => lazyLoad(() => import('./demo/PinInput'), 'DemoPinInput'))
