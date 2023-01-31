@@ -1,12 +1,11 @@
 import { GitHubStats } from '@/components/navigation/navbar/GitHubStats'
-import { IconButton } from '@/components/shared/IconButton'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Box, Container, HStack, Stack } from '@/panda/jsx'
+import { Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
-import { FiChevronRight, FiMenu } from 'react-icons/fi'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
+import { MobileNavbar } from './MobileNavbar'
 
 export const Navbar = () => (
   <nav
@@ -36,21 +35,6 @@ export const Navbar = () => (
       </HStack>
     </Container>
     <hr />
-    <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
-      <Container>
-        <Stack direction="row" py="3" align="center">
-          <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
-          <Text textStyle="sm" fontWeight="medium" color="fg.muted">
-            Overview
-          </Text>
-          <Box color="fg.subtle">
-            <FiChevronRight />
-          </Box>
-          <Text textStyle="sm" fontWeight="medium" color="accent.default">
-            Introduction
-          </Text>
-        </Stack>
-      </Container>
-    </Box>
+    <MobileNavbar />
   </nav>
 )
