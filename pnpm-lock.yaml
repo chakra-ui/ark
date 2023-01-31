@@ -58,7 +58,7 @@ importers:
       '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
-      '@zag-js/combobox': 0.2.9
+      '@zag-js/combobox': 0.2.10
       '@zag-js/dialog': 0.2.7
       '@zag-js/editable': 0.2.8
       '@zag-js/hover-card': 0.2.0
@@ -97,7 +97,7 @@ importers:
       '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
-      '@zag-js/combobox': 0.2.9
+      '@zag-js/combobox': 0.2.10
       '@zag-js/dialog': 0.2.7
       '@zag-js/editable': 0.2.8
       '@zag-js/hover-card': 0.2.0
@@ -159,7 +159,7 @@ importers:
       '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
-      '@zag-js/combobox': 0.2.9
+      '@zag-js/combobox': 0.2.10
       '@zag-js/dialog': 0.2.7
       '@zag-js/editable': 0.2.8
       '@zag-js/hover-card': 0.2.0
@@ -194,7 +194,7 @@ importers:
       '@zag-js/accordion': 0.2.7
       '@zag-js/anatomy': 0.1.3
       '@zag-js/checkbox': 0.2.8
-      '@zag-js/combobox': 0.2.9
+      '@zag-js/combobox': 0.2.10
       '@zag-js/dialog': 0.2.7
       '@zag-js/editable': 0.2.8
       '@zag-js/hover-card': 0.2.0
@@ -3394,12 +3394,12 @@ packages:
       '@zag-js/types': 0.3.3
     dev: false
 
-  /@zag-js/combobox/0.2.9:
-    resolution: {integrity: sha512-wDHHvNdxUDv1LkpOKPGN8tN1J7GnfnEvpeL+4tGM5R4MCrAex9lnXWh5Sk4E+i4VG2A3xK13sQ5YtZ59+ybbpQ==}
+  /@zag-js/combobox/0.2.10:
+    resolution: {integrity: sha512-4EZ6ISEUUbiVewQkD4YcsPasztUayrCA2rGL2ZFDIfrNTzxmlXW6bHcZ3AAkr6HSNnNGc86J1nQLulL1QYhouQ==}
     dependencies:
       '@zag-js/anatomy': 0.1.3
       '@zag-js/aria-hidden': 0.2.1
-      '@zag-js/core': 0.2.5
+      '@zag-js/core': 0.2.6
       '@zag-js/interact-outside': 0.2.1
       '@zag-js/live-region': 0.2.1
       '@zag-js/popper': 0.2.2
@@ -3418,6 +3418,13 @@ packages:
     dependencies:
       '@zag-js/store': 0.2.3
       klona: 2.0.5
+    dev: false
+
+  /@zag-js/core/0.2.6:
+    resolution: {integrity: sha512-RzJnC3EJCxgK0hmPUuHX2j+lcUMIfBWQmTeHDbBvR7OO74iVUdO+sbNr7ZMjqSooR6voDs6qO38BQ/w1ket7TA==}
+    dependencies:
+      '@zag-js/store': 0.2.4
+      klona: 2.0.6
     dev: false
 
   /@zag-js/dialog/0.2.7:
@@ -3640,6 +3647,12 @@ packages:
 
   /@zag-js/store/0.2.3:
     resolution: {integrity: sha512-Qcb2mCdB0YxKl5FVWBNU5FLRFNpnTVe4v5rAG/ftXXPCiuSAzm3l62FPqzWb+Dbun7BuhKgVUZqbOVsHEV0Scg==}
+    dependencies:
+      proxy-compare: 2.4.0
+    dev: false
+
+  /@zag-js/store/0.2.4:
+    resolution: {integrity: sha512-UxF6NJh/5VGFeql7R+fTVxWeKY1yg5t4rAQ6xIonQOeyV91FSnLmxvhM/ah21JecbW3ZQKasYJMITIhr/M6HCA==}
     dependencies:
       proxy-compare: 2.4.0
     dev: false
@@ -6920,6 +6933,11 @@ packages:
 
   /klona/2.0.5:
     resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
+    engines: {node: '>= 8'}
+    dev: false
+
+  /klona/2.0.6:
+    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
     dev: false
 
