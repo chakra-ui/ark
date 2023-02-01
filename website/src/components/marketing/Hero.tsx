@@ -2,10 +2,11 @@ import { Button } from '@/components/shared/Button'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const Hero = () => (
-  <Container py={{ base: '16', md: '24' }}>
+  <Container py={{ base: '16', md: '24' }} overflowX="hidden">
     <Stack direction={{ base: 'column', md: 'row' }} gap="20" align="center">
       <Stack gap={{ base: '8', md: '12' }} flex="1">
         <Stack gap="6">
@@ -28,8 +29,24 @@ export const Hero = () => (
           </Button>
         </Stack>
       </Stack>
-      <Box bg="bg.subtle" flex="1" minH="600px" p="4" width="full">
-        Placeholder Image
+
+      <Box
+        width="700px"
+        height="700px"
+        maxWidth="100%"
+        position="relative"
+        left="30px"
+        flex="1"
+        minHeight={{ lg: '700px' }}
+      >
+        <Image
+          quality={100}
+          fill
+          sizes="100vw"
+          alt="Ark UI"
+          src="/assets/hero-img.png"
+          style={{ objectFit: 'contain' }}
+        />
       </Box>
     </Stack>
   </Container>
