@@ -1,12 +1,11 @@
 'use client'
-import { IconButton } from '@/components/shared/IconButton'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { usePathname } from 'next/navigation'
-import { Fragment } from 'react'
-import { FiChevronRight, FiMenu } from 'react-icons/fi'
+import { Fragment, PropsWithChildren } from 'react'
+import { FiChevronRight } from 'react-icons/fi'
 
-export const MobileNavbar = () => {
+export const MobileNavbar = (props: PropsWithChildren) => {
   const pathName = usePathname()
   const crumbs = pathName
     ?.split('/')
@@ -18,11 +17,10 @@ export const MobileNavbar = () => {
     <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
       <Container>
         <Stack direction="row" py="3" align="center">
-          <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
+          {props.children}
           {crumbs?.map((crumb, index, arr) => (
             <Fragment key={index}>
               <Text
-                key={index}
                 textStyle="sm"
                 fontWeight="medium"
                 color="fg.muted"

@@ -5,7 +5,6 @@ import { Container, HStack } from '@/panda/jsx'
 import Link from 'next/link'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
-import { MobileNavbar } from './MobileNavbar'
 
 export const Navbar = () => (
   <nav
@@ -15,6 +14,7 @@ export const Navbar = () => (
       top: '0',
       background: 'bg.canvas',
       zIndex: '100',
+      borderBottomWidth: '1px',
     })}
   >
     <Container>
@@ -34,7 +34,5 @@ export const Navbar = () => (
         </HStack>
       </HStack>
     </Container>
-    <hr />
-    <MobileNavbar />
   </nav>
 )
