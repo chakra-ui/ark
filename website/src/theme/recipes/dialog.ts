@@ -54,6 +54,7 @@ export const dialog = defineRecipe({
           minW: 'xs !important',
           py: '6',
           px: '4',
+          overflowY: 'auto',
         },
       }),
     },

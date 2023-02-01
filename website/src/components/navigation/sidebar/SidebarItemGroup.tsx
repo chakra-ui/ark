@@ -17,11 +17,11 @@ export const SidebarItemGroup = (props: SidebarItemGroupProps) => {
   const { heading, items } = props
   const pathname = usePathname()
   return (
-    <Stack gap={{ base: '8', lg: '3' }}>
+    <Stack gap={{ base: '6', lg: '3' }}>
       <Text fontSize={{ base: 'md', lg: 'sm' }} lineHeight="1.5rem" fontWeight="semibold">
         {heading}
       </Text>
-      <Stack borderLeftWidth="1px" gap={{ base: '6', lg: '2' }}>
+      <Stack borderLeftWidth="1px" gap={{ base: '5', lg: '2' }}>
         {items.map((item, index) => (
           <Link
             key={index}
