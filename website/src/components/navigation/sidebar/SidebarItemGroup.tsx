@@ -27,7 +27,7 @@ export const SidebarItemGroup = (props: SidebarItemGroupProps) => {
             key={index}
             href={item.href}
             className={link({ variant: 'sidebar' })}
-            aria-current={item.href === pathname ? 'page' : false}
+            aria-current={pathname?.includes(item.href) ? 'page' : false}
           >
             {item.label}
           </Link>

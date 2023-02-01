@@ -24,10 +24,10 @@ const DocsLayout = (props: any) => {
   const overview = {
     heading: 'Overview',
     items: [
-      { href: '', label: 'Introduction' },
-      { href: '', label: 'Getting started' },
-      { href: '', label: 'Styling' },
-      { href: '', label: 'Changelog' },
+      { href: '/docs/react/overview/introduction', label: 'Introduction' },
+      { href: '/docs/react/overview/getting-started', label: 'Getting started' },
+      { href: '/docs/react/overview/styling', label: 'Styling' },
+      { href: '/docs/react/overview/changelog', label: 'Changelog' },
     ],
   }
 
