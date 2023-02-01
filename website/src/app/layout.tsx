@@ -18,10 +18,8 @@ const RootLayout = (props: PropsWithChildren) => {
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js"></script>
       </head>
       <body>
-        <div className={css({ minHeight: 'full' })}>
-          <Navbar />
-          {props.children}
-        </div>
+        <Navbar />
+        <div className={css({ minHeight: 'full' })}>{props.children}</div>
       </body>
     </html>
   )

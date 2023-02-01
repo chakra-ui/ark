@@ -25,14 +25,14 @@ export const accordion = defineRecipe({
       justifyContent: 'space-between',
       mb: '2',
       p: '0',
-      textStyle: 'lg',
+      textStyle: 'md',
       width: '100%',
     },
     item: {},
     content: {
       color: 'fg.muted',
       pr: '12',
-      textStyle: 'md',
+      textStyle: 'sm',
     },
   }),
 })
