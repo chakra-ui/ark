@@ -38,6 +38,7 @@ export const Hero = () => (
         left="30px"
         flex="1"
         minHeight={{ lg: '700px' }}
+        display={{ base: 'none', lg: 'block' }}
       >
         <Image
           quality={100}
