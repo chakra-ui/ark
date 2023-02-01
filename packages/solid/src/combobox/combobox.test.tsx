@@ -1,6 +1,6 @@
+import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
-import { render, screen } from 'solid-testing-library'
 import { vi } from 'vitest'
 import {
   Combobox,
