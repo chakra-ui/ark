@@ -3,6 +3,7 @@ import { IconButton } from '@/components/shared/IconButton'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { usePathname } from 'next/navigation'
+import { Fragment } from 'react'
 import { FiChevronRight, FiMenu } from 'react-icons/fi'
 
 export const MobileNavbar = () => {
@@ -19,7 +20,7 @@ export const MobileNavbar = () => {
         <Stack direction="row" py="3" align="center">
           <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
           {crumbs?.map((crumb, index, arr) => (
-            <>
+            <Fragment key={index}>
               <Text
                 key={index}
                 textStyle="sm"
@@ -35,7 +36,7 @@ export const MobileNavbar = () => {
                   <FiChevronRight />
                 </Box>
               )}
-            </>
+            </Fragment>
           ))}
         </Stack>
       </Container>

@@ -146,6 +146,9 @@ export default defineConfig({
     extend: {
       container: {
         transform(props) {
+          // TODO descructuring props.centerContent is not working @panda
+          delete props.centerContent
+
           return Object.assign(
             {
               position: 'relative',
