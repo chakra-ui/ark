@@ -7,7 +7,7 @@ describe('Select', () => {
     render(SelectStory)
   })
 
-  it.skip('should show options on click', async () => {
+  it('should show options on click', async () => {
     const { getByRole, getByText } = render(SelectStory)
 
     expect(getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
@@ -15,7 +15,7 @@ describe('Select', () => {
     expect(getByRole('option', { name: 'React' })).toBeVisible()
   })
 
-  it.skip('should allow to select an option', async () => {
+  it('should allow to select an option', async () => {
     const { getByRole, getByText, queryByText } = render(SelectStory)
     expect(getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
     await user.click(getByText('Select'))

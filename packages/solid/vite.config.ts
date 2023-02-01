@@ -52,8 +52,11 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     setupFiles: 'src/setup-test.ts',
+    transformMode: {
+      web: [/\.[jt]sx?$/],
+    },
     coverage: {
       all: true,
       reporter: ['lcov', 'text'],
