@@ -49,7 +49,7 @@ describe('Editable', () => {
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ComponentUnderTest />)
     await user.dblClick(screen.getByText('Placeholder'))
-    await user.type(screen.getByLabelText('editable input'), 'React', { delay: 10 })
+    await user.type(screen.getByLabelText('editable input'), 'React')
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
@@ -61,7 +61,7 @@ describe('Editable', () => {
 
     const input = screen.getByRole('textbox')
     await user.clear(input)
-    await user.type(input, 'Solid', { delay: 10 })
+    await user.type(input, 'Solid')
     await user.click(screen.getByText('Save'))
 
     expect(await screen.findByText('Solid')).toBeInTheDocument()

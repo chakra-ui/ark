@@ -1,4 +1,4 @@
-import { render, screen } from 'solid-testing-library'
+import { render, screen } from '@solidjs/testing-library'
 import { Pressable } from './pressable'
 
 describe('Pressable', () => {
