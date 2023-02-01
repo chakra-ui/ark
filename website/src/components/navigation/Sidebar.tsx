@@ -2,8 +2,8 @@ import { Link } from '@/components/shared/Link'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Box, HStack, panda, Stack } from '@/panda/jsx'
+import { link } from '@/panda/recipes'
 import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
-import { PageLink } from './PageLink'
 
 // Because of a bug in panda, we need to use a Link component somewhere with variant "sidebar" to include the styles
 const _a = <Link variant="sidebar" display="none" />
@@ -107,15 +107,15 @@ export const SidebarContent = (props: SidebarProps) => {
             { href: `${activePath}?`, label: 'Getting started' },
             { href: `${activePath}?`, label: 'Styling' },
             { href: `/docs/${framework}/changelog`, label: 'Changelog' },
-          ].map((item) => (
-            <PageLink
-              key={item.href}
-              variant="sidebar"
+          ].map((item, index) => (
+            <Link
+              key={index}
               href={item.href}
+              className={link({ variant: 'sidebar' })}
               aria-current={item.href === activePath ? 'page' : false}
             >
               {item.label}
-            </PageLink>
+            </Link>
           ))}
         </Stack>
       </Stack>
@@ -125,14 +125,14 @@ export const SidebarContent = (props: SidebarProps) => {
         </Text>
         <Stack borderLeftWidth="1px" alignSelf="stretch">
           {items.map((item, id) => (
-            <PageLink
+            <Link
               key={id}
               href={item.route}
-              variant="sidebar"
+              className={link({ variant: 'sidebar' })}
               aria-current={item.route === activePath ? 'page' : false}
             >
               {item.name}
-            </PageLink>
+            </Link>
           ))}
         </Stack>
       </Stack>
