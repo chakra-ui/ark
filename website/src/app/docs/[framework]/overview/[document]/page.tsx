@@ -1,25 +1,25 @@
 import { Markdown } from '@/components/docs/Markdown'
 import { TableOfContent } from '@/components/docs/TableOfContent'
 import { PageHeader } from '@/components/shared/PageHeader'
-import { findChangelogDocumentByFramework } from '@/lib/contentlayer'
+import { findDocumentByFrameWorkAndId } from '@/lib/contentlayer'
 import { Box, Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
-const Page = async (props: any) => {
+const Page = (props: any) => {
   const { params } = props
-  const changelog = findChangelogDocumentByFramework(params.framework)
+  const document = findDocumentByFrameWorkAndId(params.framework, params.document)
 
-  if (!changelog) {
+  if (!document) {
     return notFound()
   }
 
   return (
     <Stack direction="row" gap="16">
       <Box maxW={{ base: 'unset', lg: '3xl' }}>
-        <PageHeader subHeading="Overview" heading="Changelog" />
-        <Markdown markdown={changelog.body.code} />
+        <PageHeader subHeading="Overview" heading={document.name} />
+        <Markdown markdown={document.body.code} />
       </Box>
-      <TableOfContent entries={changelog.toc} />
+      <TableOfContent entries={document.toc} />
     </Stack>
   )
 }
