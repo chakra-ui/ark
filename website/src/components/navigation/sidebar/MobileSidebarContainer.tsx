@@ -30,7 +30,6 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => {
             </DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
-        ≈
       </Portal>
     </Dialog>
   )
