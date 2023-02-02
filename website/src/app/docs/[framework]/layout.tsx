@@ -43,7 +43,6 @@ const DocsLayout = (props: any) => {
           </SidebarContainer>
           <Stack gap="12" py={{ base: '10', lg: '12' }}>
             <panda.main>{props.children}</panda.main>
-            <panda.footer>Docs Footer</panda.footer>
           </Stack>
         </Stack>
       </Container>
