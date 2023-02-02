@@ -3,9 +3,9 @@ import { defineParts, defineRecipe } from 'css-panda'
 
 const parts = defineParts(dialogAnatomy.build())
 
-export const dialog = defineRecipe({
-  name: 'dialog',
-  description: 'A dialog style',
+export const drawer = defineRecipe({
+  name: 'drawer',
+  description: 'A drawer style',
   base: parts({
     backdrop: {
       background: {
@@ -18,19 +18,22 @@ export const dialog = defineRecipe({
       zIndex: '200',
     },
     container: {
-      alignItems: 'center',
+      alignItems: 'start',
       display: 'flex',
       inset: '0',
-      justifyContent: 'center',
+      justifyContent: 'start',
       position: 'fixed',
       zIndex: '200',
     },
     content: {
       background: 'bg.surface',
-      borderRadius: 'xl',
       boxShadow: 'lg',
-      minW: 'sm',
       position: 'relative',
+      height: 'full',
+      minW: 'xs',
+      py: '6',
+      px: '4',
+      overflowY: 'auto',
     },
     title: {
       fontWeight: 'semibold',
