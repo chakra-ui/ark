@@ -17,7 +17,7 @@ const Page = (props: any) => {
   }
 
   return (
-    <Stack direction="row" gap="16" bg="blue.100">
+    <Stack direction="row" gap="16">
       <Box maxW={{ base: 'unset', lg: '3xl' }}>
         <Stack gap="12">
           <PageHeader
