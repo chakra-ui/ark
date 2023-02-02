@@ -18,18 +18,18 @@ jobs:
           git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 
-      - name: Setup
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm'
-
       - name: Install
         uses: pnpm/action-setup@v2
         with:
           version: '7'
           run_install: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
       - name: Build
         # Website is already built on Vercel
