@@ -38,9 +38,9 @@ const DocsLayout = (props: any) => {
           <SidebarContainer>
             <Sidebar entries={[overview, components]} />
           </SidebarContainer>
-          <Stack gap="12" py={{ base: '10', lg: '12' }}>
-            <panda.main>{props.children}</panda.main>
-          </Stack>
+          <panda.main py={{ base: '10', lg: '12' }} flex={1}>
+            {props.children}
+          </panda.main>
         </Stack>
       </Container>
     </>
