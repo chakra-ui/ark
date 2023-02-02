@@ -1,8 +1,4 @@
-import {
-  allChangelogDocuments,
-  allComponentDocuments,
-  type ComponentDocument,
-} from '@/contentlayer'
+import { allComponentDocuments, allDocuments, type ComponentDocument } from '@/contentlayer'
 
 export const getComponentDocuments = (framework: string) =>
   allComponentDocuments
@@ -26,7 +22,13 @@ export const findNextComponentDocument = (document: ComponentDocument) => {
   return componentDocuments[index + 1]
 }
 
-export const getChangelogDocuments = () => allChangelogDocuments
+export const getGeneralDocuments = (framework: string) => {
+  const priority = ['introduction', 'getting-started', 'changelog']
+  return allDocuments
+    .filter((doc) => doc.framework === framework)
+    .filter((doc) => !doc.hasOwnProperty('types'))
+    .sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id))
+}
 
-export const findChangelogDocumentByFramework = (framework: string) =>
-  getChangelogDocuments().find((document) => document.framework === framework)
+export const findDocumentByFrameWorkAndId = (framework: string, id: string) =>
+  allDocuments.find((document) => document.id === id && document.framework === framework)

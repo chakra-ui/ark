@@ -2,7 +2,7 @@ import { MobileNavbar } from '@/components/navigation/navbar/MobileNavbar'
 import { MobileSidebarContainer } from '@/components/navigation/sidebar/MobileSidebarContainer'
 import { Sidebar } from '@/components/navigation/sidebar/Sidebar'
 import { SidebarContainer } from '@/components/navigation/sidebar/SidebarContainer'
-import { getComponentDocuments } from '@/lib/contentlayer'
+import { getComponentDocuments, getGeneralDocuments } from '@/lib/contentlayer'
 import { Container, panda, Stack } from '@/panda/jsx'
 
 const DocsLayout = (props: any) => {
@@ -10,15 +10,12 @@ const DocsLayout = (props: any) => {
     params: { framework },
   } = props
 
-  // TODO resolve overview links for framework
   const overview = {
     heading: 'Overview',
-    items: [
-      { href: '/docs/react/overview/introduction', label: 'Introduction' },
-      { href: '/docs/react/overview/getting-started', label: 'Getting started' },
-      { href: '/docs/react/overview/styling', label: 'Styling' },
-      { href: '/docs/react/overview/changelog', label: 'Changelog' },
-    ],
+    items: getGeneralDocuments(framework).map((doc) => ({
+      label: doc.name,
+      href: doc.route,
+    })),
   }
 
   const components = {

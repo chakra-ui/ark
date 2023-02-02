@@ -54,14 +54,60 @@ export const ComponentDocument = defineDocumentType(() => ({
   },
 }))
 
+export const GeneralDocument = defineDocumentType(() => ({
+  name: 'GeneralDocument',
+  filePathPattern: '*/docs/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    id: {
+      type: 'string',
+      required: true,
+    },
+    name: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+  },
+  computedFields: {
+    framework: {
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFilePath.split('/')[0],
+    },
+    route: {
+      type: 'string',
+      resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/${doc.id}`,
+    },
+    toc: {
+      type: 'json',
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+    },
+  },
+}))
+
 export const ChangelogDocument = defineDocumentType(() => ({
   name: 'ChangelogDocument',
   filePathPattern: '*/CHANGELOG.md',
   contentType: 'mdx',
   computedFields: {
+    id: {
+      type: 'string',
+      resolve: () => 'changelog',
+    },
     framework: {
       type: 'string',
       resolve: (doc) => doc._raw.sourceFilePath.split('/')[0],
+    },
+    name: {
+      type: 'string',
+      resolve: () => 'Changelog',
+    },
+    route: {
+      type: 'string',
+      resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/changelog`,
     },
     toc: {
       type: 'json',
@@ -73,7 +119,7 @@ export const ChangelogDocument = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: '../packages',
   contentDirExclude: ['*/node_modules', 'dist'],
-  documentTypes: [ComponentDocument, ChangelogDocument],
+  documentTypes: [ComponentDocument, ChangelogDocument, GeneralDocument],
   disableImportAliasWarning: true,
   onUnknownDocuments: 'skip-ignore',
   mdx: {
