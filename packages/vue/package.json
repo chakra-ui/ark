@@ -68,7 +68,7 @@
     "@vitejs/plugin-vue": "4.0.0",
     "@vitejs/plugin-vue-jsx": "3.0.0",
     "@vitest/coverage-c8": "0.28.3",
-    "@vue/compiler-sfc": "3.2.45",
+    "@vue/compiler-sfc": "3.2.47",
     "clean-package": "2.2.0",
     "eslint": "8.33.0",
     "happy-dom": "8.2.2",
@@ -78,7 +78,7 @@
     "vite": "4.0.4",
     "vite-plugin-dts": "1.7.2",
     "vitest": "0.28.3",
-    "vue": "3.2.45"
+    "vue": "3.2.47"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
