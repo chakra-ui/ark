@@ -20,13 +20,17 @@ export const select = defineRecipe({
       p: '1',
     },
     trigger: {
-      w: 'full',
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: 'space-between',
       outline: 0,
       position: 'relative',
       appearance: 'none',
-      cursor: 'pointer',
       transitionProperty: 'base',
       transitionDuration: '100',
+      width: 'full',
+
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',
@@ -36,12 +40,13 @@ export const select = defineRecipe({
       borderRadius: 'md',
       cursor: 'pointer',
       mb: '1',
-      p: '2',
-      textStyle: 'md',
       _hover: {
         background: 'bg.subtle',
       },
       _selected: {
+        background: 'bg.subtle',
+      },
+      _focus: {
         background: 'bg.subtle',
       },
       _last: {
@@ -77,25 +82,35 @@ export const select = defineRecipe({
       }),
     },
     size: {
+      xs: parts({
+        trigger: { px: '2', h: '8', maxW: '2xs', textStyle: 'sm' },
+        content: { w: '2xs' },
+        option: { textStyle: 'sm', p: '1' },
+      }),
       sm: parts({
         trigger: { px: '2.5', h: '9', maxW: '2xs', textStyle: 'sm' },
         content: { w: '2xs' },
+        option: { textStyle: 'sm', p: '1.5' },
       }),
       md: parts({
         trigger: { px: '3', h: '10', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
+        option: { textStyle: 'md', p: '2' },
       }),
       lg: parts({
         trigger: { px: '3.5', h: '11', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
+        option: { textStyle: 'md' },
       }),
       xl: parts({
         trigger: { px: '4', h: '12', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
+        option: { textStyle: 'md' },
       }),
       '2xl': parts({
         trigger: { px: '2', h: '16', maxW: 'xs', textStyle: '3xl' },
         content: { w: 'xs' },
+        option: { textStyle: '3xl' },
       }),
     },
   },

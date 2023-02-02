@@ -15,11 +15,11 @@ export const useSelect = (props: UseSelectProps) => {
     id: useId(),
     getRootNode,
     ...props,
-    value: props.defaultValue,
+    selectedOption: props.defaultValue,
   }
   const context = {
     ...initialContext,
-    value: props.selectedOption,
+    selectedOption: props.selectedOption,
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {
