@@ -77,6 +77,10 @@ export const select = defineRecipe({
       }),
     },
     size: {
+      xs: parts({
+        trigger: { px: '2', h: '8', maxW: '2xs', textStyle: 'sm' },
+        content: { w: '2xs' },
+      }),
       sm: parts({
         trigger: { px: '2.5', h: '9', maxW: '2xs', textStyle: 'sm' },
         content: { w: '2xs' },

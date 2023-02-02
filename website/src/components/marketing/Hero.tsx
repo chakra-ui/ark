@@ -19,7 +19,7 @@ export const Hero = () => (
           </Text>
         </Stack>
         <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
-          <Link href="/docs/react/components/accordion">
+          <Link href="/docs/react/overview/introduction">
             <Button size={{ base: 'xl', md: '2xl' }} width="full">
               Explore now
             </Button>

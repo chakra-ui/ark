@@ -138,6 +138,7 @@
     "arrowTipProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "close": { "type": "() => void", "isRequired": true },
     "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
+    "createPortal": { "type": "() => HTMLElement", "isRequired": true },
     "getAnimationState": { "type": "() => { enter: boolean; exit: boolean }", "isRequired": true },
     "isOpen": { "type": "boolean", "isRequired": true },
     "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
