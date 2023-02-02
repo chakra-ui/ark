@@ -1,21 +1,36 @@
 import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
+import { TableOfContent } from '@/components/docs/TableOfContent'
+import { ComponentTabs } from '@/components/navigation/ComponentTabs'
+import { PageHeader } from '@/components/shared/PageHeader'
 import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
+import { Box } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 import { Stack } from 'panda/jsx/stack'
 
 const Page = (props: any) => {
   const { params } = props
-  const document = findComponentDocumentByFrameworkAndId(params.framework, params.component)
+  const component = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
-  if (!document) {
+  if (!component) {
     notFound()
   }
 
   return (
-    <Stack gap="12">
-      <Playground component={document.id} />
-      <Markdown markdown={document.body.code} />
+    <Stack direction="row" gap="16">
+      <Box maxW={{ base: 'unset', lg: '3xl' }}>
+        <Stack gap="12">
+          <PageHeader
+            subHeading="Component"
+            heading={component.name}
+            supportingText={component.description}
+          />
+          <ComponentTabs basePath={component.route} />
+          <Playground component={component.id} />
+          <Markdown markdown={component.body.code} />
+        </Stack>
+      </Box>
+      <TableOfContent entries={component.toc} />
     </Stack>
   )
 }

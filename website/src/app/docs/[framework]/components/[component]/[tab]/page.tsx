@@ -29,7 +29,7 @@ const Page = (props: any) => {
 export default Page
 
 export const generateStaticParams = () => {
-  const tabs = ['overview', 'props']
+  const tabs = ['usage', 'props']
   const frameworks = ['react', 'solid', 'vue']
 
   return tabs.flatMap((tab) =>

@@ -63,6 +63,10 @@ export const ChangelogDocument = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.sourceFilePath.split('/')[0],
     },
+    toc: {
+      type: 'json',
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+    },
   },
 }))
 
