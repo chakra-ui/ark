@@ -18,11 +18,10 @@ jobs:
           git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 
-      - name: Install
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: '7'
-          run_install: true
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -31,21 +30,24 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
-      - name: Build
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build packages
         # Website is already built on Vercel
         run: pnpm build --filter=\!@ark-ui/website
 
-      - name: Tests
+      - name: Test packages
         run: pnpm test
 
-      - name: ESLint
+      - name: Lint packages
         run: pnpm lint
 
-      - name: Typecheck
+      - name: Typecheck packages
         run: pnpm typecheck
 
-      - name: Prettier
+      - name: Check format
         run: pnpm format:check
 
-      - name: Run exports:check
+      - name: Check exports
         run: pnpm exports:check
