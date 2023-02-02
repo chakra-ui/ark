@@ -41,6 +41,11 @@
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the accordion items."
+    },
     "value": {
       "type": "string | string[]",
       "isRequired": false,
@@ -100,6 +105,11 @@
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
     },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the accordion items."
+    },
     "value": {
       "type": "string | string[]",
       "isRequired": false,
@@ -125,6 +135,7 @@
     },
     "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "setValue": { "type": "(value: string | string[]) => void", "isRequired": true },
+    "focusedValue": { "type": "string", "isRequired": false },
     "value": { "type": "string | string[]", "isRequired": false }
   }
 }
