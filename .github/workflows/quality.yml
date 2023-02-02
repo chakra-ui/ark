@@ -12,42 +12,39 @@ jobs:
   main:
     runs-on: self-hosted
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
       - run: |
           git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 
-      - name: Setup environment
-        uses: actions/setup-node@v2
+      - name: Setup
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
-      - name: Prepare cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
-
-      - name: Install dependencies
-        uses: pnpm/action-setup@v2.2.4
+      - name: Install
+        uses: pnpm/action-setup@v2
         with:
           version: '7'
           run_install: true
 
-      - name: Run tests
+      - name: Build
+        # Website is already built on Vercel
+        run: pnpm build --filter=\!@ark-ui/website
+
+      - name: Tests
         run: pnpm test
 
-      - name: Run ESLint
+      - name: ESLint
         run: pnpm lint
 
-      - name: Run typecheck
+      - name: Typecheck
         run: pnpm typecheck
 
-      - name: Run prettier
+      - name: Prettier
         run: pnpm format:check
 
       - name: Run exports:check
