@@ -12,6 +12,7 @@ import {
   SelectTrigger,
 } from '@ark-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
+import { FiChevronDown } from 'react-icons/fi'
 import { match, P } from 'ts-pattern'
 
 export const FrameworkSelect = () => {
@@ -34,16 +35,16 @@ export const FrameworkSelect = () => {
 
   return (
     <Select
-      positioning={{ gutter: 4 }}
       defaultValue={defaultValue}
+      positioning={{ gutter: 2, placement: 'bottom-start', sameWidth: true }}
       onChange={(e) => {
         if (pathName) {
           router.push(pathName.replace(/\/(solid|vue|react)\//, `/${e?.value}/`))
         }
       }}
     >
-      {({ selectedOption }) => (
-        <Stack flex="1" gap={{ base: '6', lg: '3' }}>
+      {({ selectedOption, isOpen }) => (
+        <Stack gap={{ base: '6', lg: '3' }}>
           <SelectLabel
             className={css({
               fontSize: { base: 'md', lg: 'sm' },
@@ -55,7 +56,8 @@ export const FrameworkSelect = () => {
           </SelectLabel>
           <SelectTrigger>
             <button className={select({ size: 'xs' })}>
-              {selectedOption?.label ?? 'Select option'}
+              <span>{selectedOption?.label ?? 'Select option'}</span>
+              <SelectIcon isOpen={isOpen} />
             </button>
           </SelectTrigger>
           <Portal>
@@ -71,4 +73,13 @@ export const FrameworkSelect = () => {
       )}
     </Select>
   )
+}
+
+const SelectIcon = (props: { isOpen: boolean }) => {
+  const iconStyles = {
+    transform: props.isOpen ? 'rotate(-180deg)' : undefined,
+    transition: 'transform 0.2s',
+    transformOrigin: 'center',
+  }
+  return <FiChevronDown style={iconStyles} />
 }
