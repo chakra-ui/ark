@@ -10,7 +10,7 @@ export const drawer = defineRecipe({
     backdrop: {
       background: {
         base: 'gray.700',
-        dark: 'black',
+        _dark: 'black',
       },
       opacity: '0.7',
       inset: '0',
