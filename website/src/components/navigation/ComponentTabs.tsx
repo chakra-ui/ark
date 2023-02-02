@@ -11,14 +11,14 @@ type ComponentTabsProps = {
 export const ComponentTabs = (props: ComponentTabsProps) => {
   const pathname = usePathname()
 
-  const lastSegment = pathname?.split('/').pop() ?? 'overview'
-  const defaultValue = ['overview', 'props'].includes(lastSegment) ? lastSegment : 'overview'
+  const lastSegment = pathname?.split('/').pop() ?? 'usage'
+  const defaultValue = ['usage', 'props'].includes(lastSegment) ? lastSegment : 'usage'
 
   return (
     <Tabs className={tabs({ size: 'sm' })} defaultValue={defaultValue}>
       <TabList>
-        <TabTrigger value="overview">
-          <Link href={props.basePath + '/overview'}>Overview</Link>
+        <TabTrigger value="usage">
+          <Link href={props.basePath + '/usage'}>Usage</Link>
         </TabTrigger>
         <TabTrigger value="props">
           <Link href={props.basePath + '/props'}>Properties</Link>

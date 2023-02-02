@@ -10,7 +10,7 @@ export const MobileNavbar = (props: PropsWithChildren) => {
   const crumbs = pathName
     ?.split('/')
     .filter(Boolean)
-    .filter((path) => !['docs', 'react', 'vue', 'solid', 'props', 'overview'].includes(path))
+    .filter((path) => !['docs', 'react', 'vue', 'solid', 'usage', 'props'].includes(path))
     .map((path) => path.replace(/-/g, ' '))
 
   return (

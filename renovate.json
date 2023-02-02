@@ -7,7 +7,7 @@
       "automerge": true
     },
     {
-      "groupName": "eslint",
+      "groupName": "@zag-js",
       "matchPackagePatterns": ["@zag-js/*"]
     }
   ]
