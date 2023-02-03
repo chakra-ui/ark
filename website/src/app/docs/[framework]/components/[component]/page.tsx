@@ -5,7 +5,7 @@ import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
 import { Box } from '@/panda/jsx'
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { Stack } from 'panda/jsx/stack'
 
 const Page = (props: any) => {
@@ -13,7 +13,7 @@ const Page = (props: any) => {
   const component = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
   if (!component) {
-    notFound()
+    redirect(`/docs/${params.framework}/overview/introduction`)
   }
 
   return (
