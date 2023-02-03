@@ -54,7 +54,7 @@ export const DemoMenu = () => (
             </MenuOptionItem>
           </MenuItemGroup>
           <MenuSeparator />
-          <Menu>
+          <Menu positioning={{ placement: 'right-start' }}>
             <MenuTriggerItem>
               <panda.span flex="1">More options</panda.span>
               <FiChevronRight />
