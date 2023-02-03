@@ -29,6 +29,7 @@ export const Dialog = (props: DialogProps) => {
     'restoreFocus',
     'role',
     'trapFocus',
+    'onOpen',
   ])
   const dialog = useDialog(useDialogProps)
   const view = () => children(() => runIfFn(restProps.children, dialog()))

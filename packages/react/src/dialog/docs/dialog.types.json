@@ -65,6 +65,11 @@
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
     },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Callback to be invoked when the dialog is opened"
+    },
     "onOutsideClick": {
       "type": "() => void",
       "isRequired": false,
