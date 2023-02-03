@@ -17,8 +17,8 @@ const Page = (props: any) => {
   }
 
   return (
-    <Stack direction="row" gap="16">
-      <Box maxW={{ base: 'unset', lg: '3xl' }}>
+    <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
+      <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
         <Stack gap="12">
           <PageHeader
             subHeading="Component"
