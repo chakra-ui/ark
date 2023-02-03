@@ -1,11 +1,17 @@
 import { accordion } from '@/panda/recipes'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@ark-ui/react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  type AccordionProps,
+} from '@ark-ui/react'
 import { FiChevronDown } from 'react-icons/fi'
 
-export const DemoAccordion = () => {
+export const DemoAccordion = (props: AccordionProps) => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Accordion defaultValue="React" className={accordion()}>
+    <Accordion defaultValue="React" className={accordion()} {...props}>
       {items.map((item, id) => (
         <AccordionItem key={id} value={item}>
           {({ isOpen }) => (

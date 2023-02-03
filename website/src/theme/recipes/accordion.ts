@@ -9,7 +9,6 @@ export const accordion = defineRecipe({
   base: parts({
     root: {
       width: '100%',
-      background: 'bg.surface',
       display: 'flex',
       flexDirection: 'column',
       divideY: '1px',
