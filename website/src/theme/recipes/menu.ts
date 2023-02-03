@@ -23,7 +23,9 @@ export const menu = defineRecipe({
   name: 'menu',
   description: 'A menu style',
   base: parts({
-    positioner: {},
+    positioner: {
+      zIndex: '100',
+    },
     separator: {
       borderBottomWidth: '1px',
       my: '1',
