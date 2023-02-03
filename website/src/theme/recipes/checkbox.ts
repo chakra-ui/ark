@@ -21,12 +21,10 @@ export const checkbox = defineRecipe({
       alignItems: 'center',
       background: 'bg.surface',
       borderColor: 'border.emphasized',
-      borderRadius: 'md',
+
       borderWidth: '1px',
       display: 'flex',
-      height: '5',
       justifyContent: 'center',
-      width: '5',
       _peerFocusVisible: {
         '--shadow': {
           base: 'colors.purple.100',
@@ -57,4 +55,33 @@ export const checkbox = defineRecipe({
       },
     },
   }),
+  defaultVariants: {
+    size: 'md',
+  },
+  variants: {
+    size: {
+      sm: parts({
+        control: {
+          borderRadius: 'sm',
+          h: '4',
+          w: '4',
+          '& > svg': {
+            h: '3',
+            w: '3',
+          },
+        },
+      }),
+      md: parts({
+        control: {
+          borderRadius: 'md',
+          h: '5',
+          w: '5',
+          '& > svg': {
+            h: '3.5',
+            w: '3.5',
+          },
+        },
+      }),
+    },
+  },
 })
