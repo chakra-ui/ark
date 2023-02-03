@@ -18,10 +18,10 @@ export const drawer = defineRecipe({
       zIndex: '200',
     },
     container: {
-      alignItems: 'start',
+      alignItems: 'flex-start',
       display: 'flex',
       inset: '0',
-      justifyContent: 'start',
+      justifyContent: 'flex-start',
       position: 'fixed',
       zIndex: '200',
     },
