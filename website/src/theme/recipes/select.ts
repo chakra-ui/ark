@@ -7,16 +7,13 @@ export const select = defineRecipe({
   name: 'select',
   description: 'A select style',
   base: parts({
-    positioner: {
+    content: {
       background: 'bg.surface',
       borderRadius: 'lg',
       borderWidth: '1px',
       boxShadow: 'lg',
-      minWidth: 'max-content',
-    },
-    content: {
-      maxW: 'calc(100vw - 1rem)',
       listStyle: 'none',
+      maxW: 'calc(100vw - 1rem)',
       p: '1',
     },
     trigger: {
