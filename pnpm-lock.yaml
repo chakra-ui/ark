@@ -83,7 +83,7 @@ importers:
       eslint: 8.33.0
       eslint-plugin-react: 7.32.2
       eslint-plugin-react-hooks: 4.6.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       jsdom: 21.1.0
       react: 18.2.0
       react-dom: 18.2.0
@@ -131,12 +131,12 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
       '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
       '@vitejs/plugin-react': 3.1.0_vite@4.1.1
-      '@vitest/coverage-c8': 0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym
+      '@vitest/coverage-c8': 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
       clean-package: 2.2.0
       eslint: 8.33.0
       eslint-plugin-react: 7.32.2_eslint@8.33.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.33.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       jsdom: 21.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -145,7 +145,7 @@ importers:
       typescript: 4.9.5
       vite: 4.1.1
       vite-plugin-dts: 1.7.2_vite@4.1.1
-      vitest: 0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym
+      vitest: 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
 
   packages/solid:
     specifiers:
@@ -184,7 +184,7 @@ importers:
       '@zag-js/tooltip': 0.2.10
       clean-package: 2.2.0
       eslint: 8.33.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       solid-js: 1.6.10
       typescript: 4.9.5
       vite: 4.1.1
@@ -225,16 +225,16 @@ importers:
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
       '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
-      '@vitest/coverage-c8': 0.28.4_happy-dom@8.2.3
+      '@vitest/coverage-c8': 0.28.4_happy-dom@8.2.6
       clean-package: 2.2.0
       eslint: 8.33.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       solid-js: 1.6.10
       typescript: 4.9.5
       vite: 4.1.1
       vite-plugin-dts: 1.7.2_vite@4.1.1
       vite-plugin-solid: 2.5.0_solid-js@1.6.10+vite@4.1.1
-      vitest: 0.28.4_happy-dom@8.2.3
+      vitest: 0.28.4_happy-dom@8.2.6
 
   packages/vue:
     specifiers:
@@ -275,7 +275,7 @@ importers:
       '@zag-js/vue': 0.2.8
       clean-package: 2.2.0
       eslint: 8.33.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       jsdom: 21.1.0
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
@@ -318,17 +318,17 @@ importers:
       '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
       '@vitejs/plugin-vue-jsx': 3.0.0_vite@4.1.1+vue@3.2.47
-      '@vitest/coverage-c8': 0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym
+      '@vitest/coverage-c8': 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
       '@vue/compiler-sfc': 3.2.47
       clean-package: 2.2.0
       eslint: 8.33.0
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       jsdom: 21.1.0
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
       vite: 4.1.1
       vite-plugin-dts: 1.7.2_vite@4.1.1
-      vitest: 0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym
+      vitest: 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
       vue: 3.2.47
 
   website:
@@ -3216,13 +3216,13 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@vitest/coverage-c8/0.28.4_happy-dom@8.2.3:
+  /@vitest/coverage-c8/0.28.4_happy-dom@8.2.6:
     resolution: {integrity: sha512-btelLBxaWhHnywXRQxDlrvPhGdnuIaD3XulsxcZRIcnpLPbFu39dNTT0IYu2QWP2ZZrV0AmNtdLIfD4c77zMAg==}
     dependencies:
       c8: 7.12.0
       picocolors: 1.0.0
       std-env: 3.3.1
-      vitest: 0.28.4_happy-dom@8.2.3
+      vitest: 0.28.4_happy-dom@8.2.6
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -3237,13 +3237,13 @@ packages:
       - terser
     dev: true
 
-  /@vitest/coverage-c8/0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym:
+  /@vitest/coverage-c8/0.28.4_ovcbbuviqz2apeeeyd5eetugfm:
     resolution: {integrity: sha512-btelLBxaWhHnywXRQxDlrvPhGdnuIaD3XulsxcZRIcnpLPbFu39dNTT0IYu2QWP2ZZrV0AmNtdLIfD4c77zMAg==}
     dependencies:
       c8: 7.12.0
       picocolors: 1.0.0
       std-env: 3.3.1
-      vitest: 0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym
+      vitest: 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -6421,8 +6421,8 @@ packages:
       through2: 2.0.5
     dev: false
 
-  /happy-dom/8.2.3:
-    resolution: {integrity: sha512-CG10Cf6mbB8yxeWBt1BIoao8fqdaJk8BQYyQhf1QDByW6OTWF+CBAp/5H8owvIO74i1a7DJSFgAXWpAziGkEWg==}
+  /happy-dom/8.2.6:
+    resolution: {integrity: sha512-s53VwyMFpQPEZdN00M82i3tFTzz0T4kBVD4tu8b+im99s1NkLK6tfKGCCl2Jmf3ZWfFCRwS+DV2qkR7S1wmIhQ==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -11026,7 +11026,7 @@ packages:
       vite: 4.1.1_@types+node@18.11.18
     dev: false
 
-  /vitest/0.28.4_happy-dom@8.2.3:
+  /vitest/0.28.4_happy-dom@8.2.6:
     resolution: {integrity: sha512-sfWIy0AdlbyGRhunm+TLQEJrFH9XuRPdApfubsyLcDbCRrUX717BRQKInTgzEfyl2Ipi1HWoHB84Nqtcwxogcg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11060,7 +11060,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       local-pkg: 0.4.2
       pathe: 1.1.0
       picocolors: 1.0.0
@@ -11082,7 +11082,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.28.4_i6pgmfxk5tjr4ai24vfxmnrxym:
+  /vitest/0.28.4_ovcbbuviqz2apeeeyd5eetugfm:
     resolution: {integrity: sha512-sfWIy0AdlbyGRhunm+TLQEJrFH9XuRPdApfubsyLcDbCRrUX717BRQKInTgzEfyl2Ipi1HWoHB84Nqtcwxogcg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11116,7 +11116,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.2.3
+      happy-dom: 8.2.6
       jsdom: 21.1.0
       local-pkg: 0.4.2
       pathe: 1.1.0
