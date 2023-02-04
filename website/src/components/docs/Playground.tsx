@@ -1,40 +1,16 @@
-'use client'
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
 import { Flex, Stack } from '@/panda/jsx'
-import React, { ComponentType, Suspense } from 'react'
-import { match } from 'ts-pattern'
+import { Suspense } from 'react'
 import { PlaygroundControls } from './PlaygroundControls'
+import { usePlayground } from './usePlayground'
 
 type PlaygroundProps = {
   component: string
 }
 
-export const Playground = (props: PlaygroundProps) => {
-  const { component } = props
-  const Component = match(component)
-    .with('accordion', () => lazyLoad(() => import('./demo/Accordion'), 'DemoAccordion'))
-    .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
-    .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
-    .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
-    .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))
-    .with('number-input', () => lazyLoad(() => import('./demo/NumberInput'), 'DemoNumberInput'))
-    .with('pagination', () => lazyLoad(() => import('./demo/Pagination'), 'DemoPagination'))
-    .with('pin-input', () => lazyLoad(() => import('./demo/PinInput'), 'DemoPinInput'))
-    .with('pressable', () => lazyLoad(() => import('./demo/Pressable'), 'DemoPressable'))
-    .with('popover', () => lazyLoad(() => import('./demo/Popover'), 'DemoPopover'))
-    .with('radio-group', () => lazyLoad(() => import('./demo/RadioGroup'), 'DemoRadioGroup'))
-    .with('range-slider', () => lazyLoad(() => import('./demo/RangeSlider'), 'DemoRangeSlider'))
-    .with('rating-group', () => lazyLoad(() => import('./demo/RatingGroup'), 'DemoRatingGroup'))
-    .with('select', () => lazyLoad(() => import('./demo/Select'), 'DemoSelect'))
-    .with('slider', () => lazyLoad(() => import('./demo/Slider'), 'DemoSlider'))
-    .with('tabs', () => lazyLoad(() => import('./demo/Tabs'), 'DemoTabs'))
-    .with('tags-input', () => lazyLoad(() => import('./demo/TagsInput'), 'DemoTagsInput'))
-    .with('toast', () => lazyLoad(() => import('./demo/Toast'), 'DemoToast'))
-    .with('tooltip', () => lazyLoad(() => import('./demo/Tooltip'), 'DemoTooltip'))
-    .otherwise(() => null)
-
-  if (!Component) return null
+export const Playground = async (props: PlaygroundProps) => {
+  const [Component, controls] = usePlayground('Accordion')
 
   return (
     <Flex
@@ -62,16 +38,9 @@ export const Playground = (props: PlaygroundProps) => {
           >
             Properties
           </Text>
-          <PlaygroundControls controls={{ multiple: { type: 'boolean' } }} />
+          <PlaygroundControls controls={controls} />
         </Stack>
       </Flex>
     </Flex>
   )
-}
-
-function lazyLoad<
-  Module extends { [Key in MemberName]: ComponentType<any> },
-  MemberName extends keyof Module,
->(modulePromise: () => Promise<Module>, memberName: MemberName) {
-  return React.lazy(async () => ({ default: (await modulePromise())[memberName] }))
 }

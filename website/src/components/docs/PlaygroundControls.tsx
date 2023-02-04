@@ -1,10 +1,11 @@
+'use client'
 import { Checkbox } from '@/components/shared/Checkbox'
 import { Text } from '@/components/shared/Text'
 import { HStack } from 'panda/jsx/hstack'
 import { Stack } from 'panda/jsx/stack'
 import { match } from 'ts-pattern'
 
-type Controls = {
+export type Controls = {
   [key: string]: {
     type: 'boolean'
   }

@@ -1,3 +1,4 @@
+'use client'
 import { accordion } from '@/panda/recipes'
 import {
   Accordion,
@@ -33,6 +34,10 @@ export const DemoAccordion = (props: AccordionProps) => {
     </Accordion>
   )
 }
+
+export const controls = {
+  multiple: { type: 'boolean' },
+} as const
 
 const AccordionIcon = (props: { isOpen: boolean }) => {
   const iconStyles = {
