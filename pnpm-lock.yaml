@@ -74,6 +74,7 @@ importers:
       '@zag-js/react': 0.3.8
       '@zag-js/select': 0.1.10
       '@zag-js/slider': 0.2.12
+      '@zag-js/splitter': 0.2.11
       '@zag-js/tabs': 0.2.10
       '@zag-js/tags-input': 0.3.11
       '@zag-js/toast': 0.2.11
@@ -114,6 +115,7 @@ importers:
       '@zag-js/react': 0.3.8_biqbaboplfbrettd7655fr4n2y
       '@zag-js/select': 0.1.10_react@18.2.0
       '@zag-js/slider': 0.2.12_react@18.2.0
+      '@zag-js/splitter': 0.2.11_react@18.2.0
       '@zag-js/tabs': 0.2.10_react@18.2.0
       '@zag-js/tags-input': 0.3.11_react@18.2.0
       '@zag-js/toast': 0.2.11_react@18.2.0
@@ -3918,6 +3920,16 @@ packages:
       '@zag-js/types': 0.3.4
       hyphenate-style-name: 1.0.4
       solid-js: 1.6.10
+    transitivePeerDependencies:
+      - react
+    dev: false
+
+  /@zag-js/splitter/0.2.11_react@18.2.0:
+    resolution: {integrity: sha512-gG4EWGGx6bhZiTj1ehN/KPw3515hAwC79VCij4j0Az4kB9m6zDTXuUnMQ923gqWa0YfngI04954Q15EMGurYqA==}
+    dependencies:
+      '@zag-js/anatomy': 0.1.4
+      '@zag-js/core': 0.2.8_react@18.2.0
+      '@zag-js/types': 0.3.4
     transitivePeerDependencies:
       - react
     dev: false
