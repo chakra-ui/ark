@@ -256,6 +256,7 @@ importers:
       '@zag-js/accordion': 0.2.10
       '@zag-js/anatomy': 0.1.4
       '@zag-js/checkbox': 0.2.11
+      '@zag-js/combobox': 0.2.12
       '@zag-js/dialog': 0.2.10
       '@zag-js/editable': 0.2.11
       '@zag-js/hover-card': 0.2.3
@@ -290,6 +291,7 @@ importers:
       '@zag-js/accordion': 0.2.10
       '@zag-js/anatomy': 0.1.4
       '@zag-js/checkbox': 0.2.11
+      '@zag-js/combobox': 0.2.12
       '@zag-js/dialog': 0.2.10
       '@zag-js/editable': 0.2.11
       '@zag-js/hover-card': 0.2.3
