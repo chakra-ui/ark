@@ -47,7 +47,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/react': 18.0.27
       '@types/react-dom': 18.0.10
       '@types/testing-library__jest-dom': 5.14.5
@@ -126,7 +126,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/react': 18.0.27
       '@types/react-dom': 18.0.10
       '@types/testing-library__jest-dom': 5.14.5
@@ -156,7 +156,7 @@ importers:
       '@testing-library/dom': 8.20.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.50.0
       '@typescript-eslint/parser': 5.50.0
@@ -223,7 +223,7 @@ importers:
       '@testing-library/dom': 8.20.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
       '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
@@ -245,7 +245,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@testing-library/vue': 6.6.1
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.50.0
       '@typescript-eslint/parser': 5.50.0
@@ -314,7 +314,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
       '@testing-library/vue': 6.6.1_a2ihsjreowava2sm4iorpgwkom
-      '@types/jsdom': 20.0.1
+      '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.50.0_go4drrxstycfikanvu45pi4vgq
       '@typescript-eslint/parser': 5.50.0_4vsywjlpuriuw3tl5oq6zy5a64
@@ -2909,10 +2909,10 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
-  /@types/jsdom/20.0.1:
-    resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
+  /@types/jsdom/21.1.0:
+    resolution: {integrity: sha512-leWreJOdnuIxq9Y70tBVm/bvTuh31DSlF/r4l7Cfi4uhVQqLHD0Q4v301GMisEMwwbMgF7ZKxuZ+Jbd4NcdmRw==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.11.19
       '@types/tough-cookie': 4.0.2
       parse5: 7.1.1
     dev: true
