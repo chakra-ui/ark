@@ -58,7 +58,7 @@
     "@zag-js/tooltip": "0.2.11"
   },
   "devDependencies": {
-    "@solidjs/testing-library": "0.6.0",
+    "@solidjs/testing-library": "0.6.1",
     "@testing-library/dom": "8.20.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",

@@ -152,7 +152,7 @@ importers:
   packages/solid:
     specifiers:
       '@polymorphic-factory/solid': 0.2.0
-      '@solidjs/testing-library': 0.6.0
+      '@solidjs/testing-library': 0.6.1
       '@testing-library/dom': 8.20.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
@@ -219,7 +219,7 @@ importers:
       '@zag-js/toast': 0.2.12
       '@zag-js/tooltip': 0.2.11
     devDependencies:
-      '@solidjs/testing-library': 0.6.0_solid-js@1.6.10
+      '@solidjs/testing-library': 0.6.1_solid-js@1.6.10
       '@testing-library/dom': 8.20.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
@@ -2696,8 +2696,8 @@ packages:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: true
 
-  /@solidjs/testing-library/0.6.0_solid-js@1.6.10:
-    resolution: {integrity: sha512-Hnm1lF2qkwyqYb2BM2pZw1gw1yzJUrFgfpvTSHi/iVRHpeZbSbPgPMCQSsLN5+iCSCYepAi7D8MBmWoH3M7voA==}
+  /@solidjs/testing-library/0.6.1_solid-js@1.6.10:
+    resolution: {integrity: sha512-cS91EDopZhpVa+F55vLxbT+xrQEtc6jIYhXEleu7aCtPRKuBAhKGYQoiOAWrxRd2cXu678dhR8kuwp7ZS2gkNQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       solid-js: '>=1.0.0'
