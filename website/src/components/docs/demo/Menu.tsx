@@ -19,7 +19,7 @@ import { panda } from 'panda/jsx/factory'
 import { FiChevronRight } from 'react-icons/fi'
 
 export const DemoMenu = () => (
-  <Menu>
+  <Menu closeOnSelect={false} onValueChange={console.log} value={{ framework: '', libraries: [] }}>
     <MenuTrigger>
       <Button>Open menu</Button>
     </MenuTrigger>
@@ -54,7 +54,7 @@ export const DemoMenu = () => (
             </MenuOptionItem>
           </MenuItemGroup>
           <MenuSeparator />
-          <Menu positioning={{ placement: 'right-start' }}>
+          <Menu closeOnSelect={false} positioning={{ placement: 'right-start' }}>
             <MenuTriggerItem>
               <panda.span flex="1">More options</panda.span>
               <FiChevronRight />

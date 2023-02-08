@@ -135,6 +135,7 @@
   },
   "UseRadioGroupReturn": {
     "blur": { "type": "() => void", "isRequired": true },
+    "clearValue": { "type": "() => void", "isRequired": true },
     "focus": { "type": "() => void", "isRequired": true },
     "getRadioControlProps": {
       "type": "(props: RadioProps) => HTMLAttributes<HTMLElement>",
