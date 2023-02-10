@@ -19,7 +19,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 |              | React | Solid | Vue |
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | 🟢  |
-| Checkbox     | 🟢    | 🟢    | ⚪  |
+| Checkbox     | 🟢    | 🟢    | 🟢  |
 | Combobox     | 🟢    | ⚪    | ⚪  |
 | Dialog       | 🟢    | 🟢    | ⚪  |
 | Editable     | 🟢    | 🟢    | ⚪  |

@@ -1,0 +1,132 @@
+---
+id: checkbox
+name: Checkbox
+description: A checkbox allows users to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.
+---
+
+## Import
+
+```ts
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The Checkbox component consists of the `CheckboxControl`, `CheckboxInput`, `CheckboxLabel`
+components.
+
+### Plain
+
+```tsx
+<Checkbox>
+  <CheckboxLabel>Checkbox</CheckboxLabel>
+  <CheckboxInput />
+  <CheckboxControl />
+</Checkbox>
+```
+
+### Controlled usage
+
+When the checkbox value changes, the `onChange` callback is invoked.
+Use the `v-model` to handle the `checked` state
+
+```tsx
+<script setup lang='ts'>
+  import { ref } from 'vue'
+  import {
+    Checkbox,
+    CheckboxControl,
+    CheckboxInput,
+    CheckboxLabel,
+  } from '@ark-ui/vue'
+
+  const checked = ref(false)
+</script>
+<template>
+  <Checkbox v-model='checked'>
+    <CheckboxLabel>Controlled</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+</template>
+```
+
+### Disabling the Checkbox
+
+To make a checkbox disabled, set the `disabled` prop to `true`
+
+```tsx
+<Checkbox disabled>
+  <CheckboxLabel>Disabled</CheckboxLabel>
+  <CheckboxInput />
+  <CheckboxControl />
+</Checkbox>
+```
+
+### Making the checkbox readonly
+
+To make a checkbox readonly, set the `readOnly` prop to `true`
+
+```tsx
+<Checkbox readOnly>
+  <CheckboxLabel>Readonly</CheckboxLabel>
+  <CheckboxInput />
+  <CheckboxControl />
+</Checkbox>
+```
+
+### Indeterminate
+
+To make a checkbox indeterminate, set the `indeterminate` prop to `true`
+
+```tsx
+<script setup lang="ts">
+  import { reactive, ref, watch } from 'vue'
+  import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
+  import '../checkbox.css'
+
+  const parentChecked = ref(false)
+  const someChecked = ref(false)
+  const childItems = reactive([false, false])
+
+  watch(childItems, (items) => {
+    parentChecked.value = items.every(Boolean)
+    someChecked.value = items.some(Boolean) && !parentChecked.value
+  })
+
+  watch(
+    () => parentChecked.value,
+    (parentVal) => {
+      if (someChecked.value && !parentVal) return
+      childItems.map((_, idx) => {
+        childItems[idx] = parentVal
+      })
+      return
+    },
+  )
+</script>
+<template>
+  <Checkbox v-model="parentChecked" :indeterminate="someChecked">
+    <CheckboxLabel>Parent Checkbox</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+  <div>
+    <Checkbox v-model="childItems[0]">
+      <CheckboxLabel>Child One Checkbox</CheckboxLabel>
+      <CheckboxInput />
+      <CheckboxControl />
+    </Checkbox>
+    <Checkbox v-model="childItems[1]">
+      <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
+      <CheckboxInput />
+      <CheckboxControl />
+    </Checkbox>
+  </div>
+</template>
+```
