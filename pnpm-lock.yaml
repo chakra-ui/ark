@@ -79,6 +79,7 @@ importers:
       '@zag-js/tags-input': 0.3.12
       '@zag-js/toast': 0.2.12
       '@zag-js/tooltip': 0.2.11
+      '@zag-js/transition': 0.1.2
       '@zag-js/types': 0.3.4
       clean-package: 2.2.0
       eslint: 8.33.0
@@ -120,6 +121,7 @@ importers:
       '@zag-js/tags-input': 0.3.12
       '@zag-js/toast': 0.2.12
       '@zag-js/tooltip': 0.2.11
+      '@zag-js/transition': 0.1.2
       '@zag-js/types': 0.3.4
     devDependencies:
       '@testing-library/dom': 8.20.0
@@ -3760,6 +3762,13 @@ packages:
       '@zag-js/anatomy': 0.1.4
       '@zag-js/core': 0.2.9
       '@zag-js/popper': 0.2.3
+      '@zag-js/types': 0.3.4
+    dev: false
+
+  /@zag-js/transition/0.1.2:
+    resolution: {integrity: sha512-GL8yH9RHSuMA11PqcE1qyevRFY4PyCVp8OgouG41TpSC/qVDYhod3+0O+F69wHx4f0BfQq82jqn6CPwjlVnijQ==}
+    dependencies:
+      '@zag-js/core': 0.2.9
       '@zag-js/types': 0.3.4
     dev: false
 

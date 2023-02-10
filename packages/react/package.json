@@ -57,6 +57,7 @@
     "@zag-js/tags-input": "0.3.12",
     "@zag-js/toast": "0.2.12",
     "@zag-js/tooltip": "0.2.11",
+    "@zag-js/transition": "0.1.2",
     "@zag-js/types": "0.3.4"
   },
   "devDependencies": {
