@@ -1,58 +1,36 @@
-import { ComponentAPIReference } from '@/components/docs/ComponentAPIReference'
 import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
 import { TableOfContent } from '@/components/docs/TableOfContent'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
-import { Footer } from '@/components/navigation/Footer'
-import { Text } from '@/components/shared/Text'
-import {
-  findComponentDocumentByFrameworkAndId,
-  findNextComponentDocument,
-  findPreviousComponentDocument,
-  getComponentDocuments,
-} from '@/lib/contentlayer'
-import { Box, panda, Stack } from '@/panda/jsx'
-import { notFound } from 'next/navigation'
+import { PageHeader } from '@/components/shared/PageHeader'
+import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
+import { Box } from '@/panda/jsx'
+import { redirect } from 'next/navigation'
+import { Stack } from 'panda/jsx/stack'
 
-const Page = async (props: any) => {
+const Page = (props: any) => {
   const { params } = props
-  const document = findComponentDocumentByFrameworkAndId(params.framework, params.component)
+  const component = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
-  if (!document) {
-    return notFound()
+  if (!component) {
+    redirect(`/docs/${params.framework}/overview/introduction`)
   }
-
-  const prevDocument = findPreviousComponentDocument(document)
-  const nextDocument = findNextComponentDocument(document)
 
   return (
     <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
       <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
         <Stack gap="12">
-          <Stack gap="5">
-            <Stack gap="3">
-              <Text color="accent.default" fontWeight="semibold" textStyle="sm">
-                Component
-              </Text>
-              <panda.h1 textStyle="3xl" fontWeight="semibold">
-                {document.name}
-              </panda.h1>
-            </Stack>
-            <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
-              {document.description}
-            </Text>
-          </Stack>
-          <ComponentTabs
-            playground={<Playground component={document.id} />}
-            overview={<Markdown markdown={document.body.code} />}
-            properties={
-              <ComponentAPIReference componentName={document.name} types={document.types} />
-            }
+          <PageHeader
+            subHeading="Component"
+            heading={component.name}
+            supportingText={component.description}
           />
-          <Footer prevPage={prevDocument} nextPage={nextDocument} />
+          <ComponentTabs basePath={component.route} />
+          <Playground component={component.id} />
+          <Markdown markdown={component.body.code} />
         </Stack>
       </Box>
-      <TableOfContent entries={document.toc} />
+      <TableOfContent entries={component.toc} />
     </Stack>
   )
 }

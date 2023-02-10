@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, UsePinInputProps } from './use-pin-input'
@@ -7,12 +7,14 @@ import { usePinInput, UsePinInputProps } from './use-pin-input'
 export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 
 export const PinInput = (props: PinInputProps) => {
-  const [pinInputProps, htmlProps] = splitProps(props, [
+  const [pinInputProps, htmlProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',
     'dir',
     'disabled',
+    'form',
     'getRootNode',
+    'id',
     'ids',
     'invalid',
     'mask',
@@ -23,6 +25,7 @@ export const PinInput = (props: PinInputProps) => {
     'otp',
     'pattern',
     'placeholder',
+    'selectOnFocus',
     'translations',
     'type',
     'value',

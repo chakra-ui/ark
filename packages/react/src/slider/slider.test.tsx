@@ -33,11 +33,11 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it.skip('should render!', async () => {
+  it('should render!', async () => {
     render(<ComponentUnderTest />)
   })
 
-  it.skip('should move the thumb correctly when orientated horizontal', async () => {
+  it('should move the thumb correctly when orientated horizontal', async () => {
     render(<ComponentUnderTest />)
 
     const thumb = screen.getByRole('slider', { hidden: true })
@@ -57,7 +57,7 @@ describe('Slider', () => {
     expect(thumb).toHaveAttribute('aria-valuenow', '50')
   })
 
-  it.skip('should move the thumb correctly when orientated vertical', async () => {
+  it('should move the thumb correctly when orientated vertical', async () => {
     render(<ComponentUnderTest orientation="vertical" />)
 
     const thumb = screen.getByRole('slider', { hidden: true })
@@ -76,7 +76,7 @@ describe('Slider', () => {
     expect(thumb).toHaveAttribute('aria-valuenow', '50')
   })
 
-  it.skip('should move the thumb correctly under rtl ', async () => {
+  it('should move the thumb correctly under rtl ', async () => {
     render(<ComponentUnderTest dir="rtl" />)
 
     const thumb = screen.getByRole('slider', { hidden: true })
@@ -95,7 +95,7 @@ describe('Slider', () => {
     expect(thumb).toHaveAttribute('aria-valuenow', '50')
   })
 
-  it.skip('should allow access to context with children render prop for Select', () => {
+  it('should allow access to context with children render prop for Select', () => {
     render(
       <Slider min={-50} max={50} defaultValue={22}>
         {(context) => <div data-testid="slider-value">{JSON.stringify(context.value)}</div>}
@@ -104,7 +104,7 @@ describe('Slider', () => {
     expect(screen.getByTestId('slider-value')).toHaveTextContent('22')
   })
 
-  it.skip('should allow access to context with children render prop for SelectOutput', () => {
+  it('should allow access to context with children render prop for SelectOutput', () => {
     render(
       <Slider min={-50} max={50} defaultValue={22}>
         <SliderOutput>
