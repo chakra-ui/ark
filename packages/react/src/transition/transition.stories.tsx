@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useTransition } from '.'
+import { Transition, useTransition } from '.'
 
-export const Basic = () => {
+export const WithHook = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { hidden, style } = useTransition({
     mounted: isOpen,
@@ -23,6 +23,24 @@ export const Basic = () => {
           Hello
         </div>
       )}
+    </div>
+  )
+}
+
+export const WithTransition = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle me</button>
+      <Transition
+        unmountOnExit
+        mounted={isOpen}
+        enter={{ opacity: 1, transform: 'translateY(0)' }}
+        exit={{ opacity: 0, transform: 'translateY(10px)' }}
+      >
+        <div style={{ height: '40px', background: 'red' }}>Hello</div>
+      </Transition>
     </div>
   )
 }
