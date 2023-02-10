@@ -11,7 +11,7 @@ import {
 } from './'
 
 export const Basic = () => (
-  <Select>
+  <Select defaultValue={{ label: 'React', value: 'react' }}>
     {({ selectedOption }) => (
       <>
         <SelectLabel>Framework:</SelectLabel>

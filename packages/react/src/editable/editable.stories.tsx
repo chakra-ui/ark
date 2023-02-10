@@ -11,7 +11,7 @@ import {
 } from './'
 
 export const Basic = () => (
-  <Editable placeholder="Placeholder">
+  <Editable placeholder="Placeholder" activationMode="dblclick">
     <EditableLabel>Label</EditableLabel>
     <EditableArea>
       <EditableInput />

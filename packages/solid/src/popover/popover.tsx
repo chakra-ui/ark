@@ -11,7 +11,6 @@ export const Popover = (props: PopoverProps) => {
     'closeOnEsc',
     'closeOnInteractOutside',
     'defaultOpen',
-    'defaultOpen',
     'getRootNode',
     'id',
     'ids',

@@ -16,15 +16,26 @@ jobs:
     name: Release
     runs-on: self-hosted
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
 
-      - name: Install
-        uses: ./.github/composite-actions/install
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
 
-      - name: Build
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
         run: pnpm build --filter=\!@ark-ui/website
 
       - name: Create release Pull Request or publish to NPM

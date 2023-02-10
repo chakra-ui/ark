@@ -50,7 +50,6 @@ describe('Editable', () => {
     render(<ComponentUnderTest />)
     await user.dblClick(screen.getByText('Placeholder'))
     await user.type(screen.getByLabelText('editable input'), 'React')
-    await user.click(screen.getByText('Save'))
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })

@@ -9,98 +9,43 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  main:
     runs-on: self-hosted
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install
-        uses: ./.github/composite-actions/install
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build packages
-        run: pnpm build
+        # Website is already built on Vercel
+        run: pnpm build --filter=\!@ark-ui/website
 
-  tests:
-    name: Tests
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run tests
+      - name: Test packages
         run: pnpm test
 
-      - name: Upload /react coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: react
-
-      - name: Upload /solid coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: solid
-
-      - name: Upload /vue coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: vue
-
-  eslint:
-    name: ESLint
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run ESLint
+      - name: Lint packages
         run: pnpm lint
 
-  types:
-    name: TypeScript
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run typecheck
+      - name: Typecheck packages
         run: pnpm typecheck
 
-  prettier:
-    name: Prettier
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run prettier
+      - name: Check format
         run: pnpm format:check
 
-  exports:
-    name: Check package exports
-    runs-on: self-hosted
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run exports:check
+      - name: Check exports
         run: pnpm exports:check
