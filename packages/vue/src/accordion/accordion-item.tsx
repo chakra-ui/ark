@@ -18,6 +18,7 @@ const VueAccordionItemProps = {
 export type AccordionItemProps = AccordionItemContext & HTMLArkProps<'div'>
 
 export const AccordionItem: ComponentWithProps<AccordionItemProps> = defineComponent({
+  name: 'AccordionItem',
   props: VueAccordionItemProps,
   setup(props, { slots, attrs }) {
     const api = useAccordionContext()

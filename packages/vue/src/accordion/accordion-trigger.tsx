@@ -9,6 +9,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 export type AccordionTriggerProps = Record<string, unknown>
 
 export const AccordionTrigger = defineComponent<AccordionTriggerProps>({
+  name: 'AccordionTrigger',
   setup(_, { slots, attrs }) {
     const api = useAccordionContext()
     const { value, disabled } = useAccordionItemContext()
