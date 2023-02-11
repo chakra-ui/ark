@@ -48,7 +48,7 @@ importers:
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
       '@types/jsdom': 21.1.0
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.51.0
@@ -129,7 +129,7 @@ importers:
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
       '@types/jsdom': 21.1.0
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.51.0_z4swst3wuuqk4hlme4ajzslgh4
@@ -343,7 +343,7 @@ importers:
       '@octokit/types': 9.0.0
       '@theme-toggles/react': 4.1.0
       '@types/node': 18.13.0
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       concurrently: 7.6.0
       contentlayer: 0.3.0
@@ -371,7 +371,7 @@ importers:
       '@next/font': 13.1.6
       '@theme-toggles/react': 4.1.0_biqbaboplfbrettd7655fr4n2y
       contentlayer: 0.3.0
-      css-panda: 0.0.0-dev-20230210130914_a756rqyvlo6tt3m6xky53mhwru
+      css-panda: 0.0.0-dev-20230210130914_mipiix73rzt6n3nnaz5atbgmiq
       markdown-toc: 1.2.0
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       next-contentlayer: 0.3.0_3vryta7zmbcsw4rrqf4axjqggm
@@ -389,7 +389,7 @@ importers:
     devDependencies:
       '@octokit/types': 9.0.0
       '@types/node': 18.13.0
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       concurrently: 7.6.0
       eslint: 8.34.0
@@ -465,7 +465,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react/2.0.0_fxtgt6bjwd6p4cwoordejim2zi:
+  /@astrojs/react/2.0.0_ffd5foczrxyy7gyjqbwgwcqlbq:
     resolution: {integrity: sha512-drHnCnYH6u6hKN4ObNepw4OQiCvMsRFLeKqRbbGmME5yJyxfdkFw2K4m/8zGah90LgW1xmr9hyPsSVU3PTmd9g==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -476,7 +476,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/plugin-transform-react-jsx': 7.19.0_@babel+core@7.20.12
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
       '@types/react-dom': 18.0.10
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -3221,10 +3221,10 @@ packages:
   /@types/react-dom/18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
     dependencies:
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
 
-  /@types/react/18.0.27:
-    resolution: {integrity: sha512-3vtRKHgVxu3Jp9t718R9BuzoD4NcQ8YJ5XRzsSKxNDiDonD2MXIT1TmSkenxuCycZJoQT5d2vE8LwWJxBC1gmA==}
+  /@types/react/18.0.28:
+    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -4948,11 +4948,11 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  /css-panda/0.0.0-dev-20230210130914_a756rqyvlo6tt3m6xky53mhwru:
+  /css-panda/0.0.0-dev-20230210130914_mipiix73rzt6n3nnaz5atbgmiq:
     resolution: {integrity: sha512-2hcMMN+0HQ7edFtzKWkm8Ez3nwuWDHtcv7kr0eXMSUN0UwnDNHBmKwjgzFG9AN4mIj1cHWLiA4fzRdmLhLXpRQ==}
     hasBin: true
     dependencies:
-      '@astrojs/react': 2.0.0_fxtgt6bjwd6p4cwoordejim2zi
+      '@astrojs/react': 2.0.0_ffd5foczrxyy7gyjqbwgwcqlbq
       '@pandacss/config': 0.0.0-dev-20230210130914
       '@pandacss/error': 0.0.0-dev-20230210130914
       '@pandacss/logger': 0.0.0-dev-20230210130914
