@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { ark, HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
 import { useCheckbox, UseCheckboxProps } from './use-checkbox'
 
@@ -79,7 +79,7 @@ export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots.default?.(api.value)}
       </ark.label>
     )
   },
