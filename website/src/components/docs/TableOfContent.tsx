@@ -14,8 +14,8 @@ export const TableOfContent = (props: Props) => {
   const activeId = useScrollSpy(props.entries.map((item) => '#' + item.slug))
 
   return (
-    <panda.aside position="sticky" display={{ base: 'none', xl: 'block' }} top="112px" flex="1">
-      <Stack gap="4">
+    <panda.aside position="sticky" display={{ base: 'none', xl: 'block' }} width="256px">
+      <Stack gap="3">
         <Text textStyle="sm" fontWeight="semibold">
           On this page
         </Text>

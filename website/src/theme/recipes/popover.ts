@@ -12,6 +12,7 @@ export const popover = defineRecipe({
       borderRadius: 'lg',
       borderWidth: '1px',
       boxShadow: 'lg',
+      zIndex: '1',
     },
     content: {
       maxWidth: 'sm',

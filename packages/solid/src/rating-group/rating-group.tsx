@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, UseRatingGroupProps } from './use-rating-group'
@@ -7,7 +7,7 @@ import { useRatingGroup, UseRatingGroupProps } from './use-rating-group'
 export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupProps>
 
 export const RatingGroup = (props: RatingGroupProps) => {
-  const [useRatingGroupProps, inputProps] = splitProps(props, [
+  const [useRatingGroupProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
     'dir',

@@ -19,7 +19,7 @@ export const Basic = () => {
   return (
     <Select>
       {(context) => (
-        <div>
+        <>
           <SelectLabel>Framework:</SelectLabel>
           <SelectTrigger>
             <button>{context().selectedOption?.label ?? 'Select option'}</button>
@@ -34,7 +34,7 @@ export const Basic = () => {
               </SelectContent>
             </SelectPositioner>
           </Portal>
-        </div>
+        </>
       )}
     </Select>
   )

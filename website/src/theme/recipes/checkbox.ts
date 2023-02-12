@@ -10,7 +10,7 @@ export const checkbox = defineRecipe({
     root: {
       cursor: 'pointer',
       display: 'flex',
-      gap: '3',
+      gap: '2',
     },
     label: {
       display: 'inline-flex',

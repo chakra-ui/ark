@@ -58,7 +58,7 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
     },
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     css: false,
   },
 })

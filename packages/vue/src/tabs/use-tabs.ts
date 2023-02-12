@@ -1,13 +1,10 @@
 import { connect, Context as TabsContext, machine } from '@zag-js/tabs'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, getCurrentInstance, reactive } from 'vue'
-
-type TabsPropsContext = Omit<TabsContext, 'id' | 'value'> & {
-  isLoop: TabsContext['loop']
-}
+import { computed, reactive } from 'vue'
+import { useId } from '../utils'
 
 export type UseTabsProps = {
-  context: TabsPropsContext
+  context: Omit<TabsContext, 'id' | 'value'>
   defaultValue?: TabsContext['value']
   emit: CallableFunction
 }
@@ -16,11 +13,10 @@ export const useTabs = (props: UseTabsProps) => {
   const reactiveProps = reactive(props)
   const { context, defaultValue, emit } = reactiveProps
   const reactiveContext = reactive(context)
-  const instance = getCurrentInstance()
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: instance?.uid.toString() as string,
+      id: useId().value,
       value: defaultValue,
       onChange(details) {
         emit('change', details)

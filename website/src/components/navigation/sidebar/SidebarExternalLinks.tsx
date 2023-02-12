@@ -1,0 +1,64 @@
+import { Link } from '@/components/shared/Link'
+import { Box, HStack, panda } from '@/panda/jsx'
+import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
+
+const links = [
+  {
+    label: 'Documentation',
+    href: 'https://ark-ui.com',
+    icon: <FaBookOpen />,
+    isActive: true,
+  },
+  {
+    label: 'Discord',
+    href: 'https://discord.com/invite/dQHfcWF',
+    icon: <FaDiscord />,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/chakra-ui/ark/',
+    icon: <FaGithub />,
+  },
+]
+
+export const SidebarExternalLinks = () => (
+  <panda.ul
+    display="flex"
+    flexDirection="column"
+    gap={{ base: '5', lg: '4' }}
+    textStyle={{ base: 'md', lg: 'sm' }}
+    fontWeight="medium"
+    color="fg.muted"
+    listStyle="none"
+    ps="0"
+  >
+    {links.map((link) => (
+      <li key={link.label}>
+        <Link
+          color="inherit"
+          _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
+          aria-current={link.isActive ? 'page' : false}
+          href={link.href}
+          target="_blank"
+        >
+          <HStack gap="4">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              w="6"
+              h="6"
+              backgroundColor="bg.subtle"
+              borderRadius="md"
+              fontSize="md"
+              borderWidth="1px"
+            >
+              {link.icon}
+            </Box>
+            <panda.span>{link.label}</panda.span>
+          </HStack>
+        </Link>
+      </li>
+    ))}
+  </panda.ul>
+)

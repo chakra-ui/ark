@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
 } from './'
 
-export const PopoverReact = () => (
+export const Basic = () => (
   <Popover>
     <PopoverTrigger>
       <button>click me</button>

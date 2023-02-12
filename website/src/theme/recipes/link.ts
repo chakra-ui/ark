@@ -21,10 +21,10 @@ export const link = defineRecipe({
         display: 'flex',
         alignSelf: 'stretch',
         borderLeftWidth: '1px',
-        color: 'fg.muted',
+        color: 'fg.emphasized',
         ml: '-1px',
         pl: '4',
-        textStyle: 'sm',
+        fontSize: { base: 'md', lg: 'sm' },
         lineHeight: '1.5rem',
         _hover: { color: 'fg.default', borderLeftColor: 'fg.muted' },
         _currentPage: {
