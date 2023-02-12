@@ -186,6 +186,7 @@ importers:
       '@zag-js/tags-input': 0.3.12
       '@zag-js/toast': 0.2.12
       '@zag-js/tooltip': 0.2.11
+      '@zag-js/types': 0.3.4
       clean-package: 2.2.0
       eslint: 8.34.0
       happy-dom: 8.2.6
@@ -220,6 +221,7 @@ importers:
       '@zag-js/tags-input': 0.3.12
       '@zag-js/toast': 0.2.12
       '@zag-js/tooltip': 0.2.11
+      '@zag-js/types': 0.3.4
     devDependencies:
       '@solidjs/testing-library': 0.6.1_solid-js@1.6.10
       '@testing-library/dom': 8.20.0

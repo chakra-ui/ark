@@ -3,6 +3,7 @@ import * as toast from '@zag-js/toast'
 import { createMemo, createUniqueId, mergeProps, type JSX } from 'solid-js'
 import { createContext } from '../create-context'
 import { createSplitProps } from '../create-split-props'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
@@ -17,7 +18,8 @@ export const ToastProvider = (props: ToastProviderProps) => {
   const [toastProviderParams, machineProps] = createSplitProps<ToastProviderParams>()(props, [
     'children',
   ])
-  const context = mergeProps({ id: createUniqueId() }, machineProps)
+  const getRootNode = useEnvironmentContext()
+  const context = mergeProps({ id: createUniqueId(), getRootNode }, machineProps)
   const [state, send] = useMachine(toast.group.machine(context))
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
 
