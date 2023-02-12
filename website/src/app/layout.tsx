@@ -6,7 +6,7 @@ import { NextSeo } from 'next-seo'
 import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
 // TODO use panda for styling
-import '../../public/code.css'
+import '../theme/prism.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
