@@ -1,7 +1,7 @@
-import { Button } from '@/components/shared/Button'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
+import { button } from '@/panda/recipes'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -18,15 +18,32 @@ export const Hero = () => (
             control over the styling of your webp app in React, Vue and Solid.js
           </Text>
         </Stack>
-        <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
-          <Link href="/docs/react/overview/introduction">
-            <Button size={{ base: 'xl', md: '2xl' }} width="full">
-              Explore now
-            </Button>
-          </Link>
-          <Button size={{ base: 'xl', md: '2xl' }} variant="secondary">
-            Learn more
-          </Button>
+        <Stack w="full">
+          <Text textStyle={{ base: 'md', md: 'lg' }} fontWeight="semibold">
+            Get started with
+          </Text>
+          <Stack
+            direction={{ base: 'column', sm: 'row' }}
+            gap="3"
+            width="full"
+            alignItems="stretch"
+          >
+            {[
+              { value: 'react', label: 'React' },
+              { value: 'vue', label: 'Vue.js' },
+              { value: 'solid', label: 'SolidJS' },
+            ].map((framework) => (
+              <Link
+                key={framework.value}
+                href={`/docs/${framework.value}/overview/introduction`}
+                className={button({ variant: 'primary', size: { base: 'xl', md: '2xl' } })}
+                data-scope="button"
+                data-part="root"
+              >
+                {framework.label}
+              </Link>
+            ))}
+          </Stack>
         </Stack>
       </Stack>
 
