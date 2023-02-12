@@ -50,6 +50,7 @@ export const markdown = defineRecipe({
       fontFamily: 'var(--font-roboto-mono)',
       my: '8',
       p: '4',
+      wordBreak: 'break-word',
     },
     '& code:not([class])': {
       background: 'bg.subtle',
