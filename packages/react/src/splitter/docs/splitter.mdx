@@ -43,16 +43,16 @@ The Splitter component consists of the `SplitterPanel`, `SplitterProps` and
 
 You can nest Splitter components to create a more complex layout.
 
-The `useId` hook from `react` can generate unique ids which you
-can apply to the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger`
-components.
+> The `useId` hook from `react` can generate unique ids which you
+> can apply to the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger`
+> components.
 
 ```tsx
 import { useId } from 'react'
 import type { SplitterProps } from '@ark-ui/react'
 
 const Basic = (props: Partial<SplitterProps>) => {
-  const [first, second] = [useId(), useId()]
+  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
   return (
     <>
       <Splitter
