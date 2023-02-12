@@ -1,7 +1,8 @@
-import { defineComponent, h } from 'vue'
+import { DefineComponent, defineComponent, h } from 'vue'
 import { useUniqueChild } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
+export type NumberInputDecrementTriggerProps = DefineComponent
 export const NumberInputDecrementTrigger = defineComponent({
   name: 'NumberInputDecrementTrigger',
   setup(_, { slots, attrs }) {
