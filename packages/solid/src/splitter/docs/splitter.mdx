@@ -48,8 +48,8 @@ You can nest Splitter components to create a more complex layout.
 > components.
 
 ```tsx
-import { createUniqueId } from 'solid-js'
 import type { SplitterProps } from '@ark-ui/solid'
+import { createUniqueId } from 'solid-js'
 
 export const Basic = (props: Partial<SplitterProps>) => {
   const [first, second] = [createUniqueId(), createUniqueId()]

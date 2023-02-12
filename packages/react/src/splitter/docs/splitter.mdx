@@ -48,8 +48,8 @@ You can nest Splitter components to create a more complex layout.
 > components.
 
 ```tsx
-import { useId } from 'react'
 import type { SplitterProps } from '@ark-ui/react'
+import { useId } from 'react'
 
 const Basic = (props: Partial<SplitterProps>) => {
   const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
