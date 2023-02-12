@@ -1,5 +1,5 @@
+import { render, screen } from '@solidjs/testing-library'
 import { createEffect, createSignal } from 'solid-js'
-import { render, screen } from 'solid-testing-library'
 import { Environment, useEnvironmentContext } from '.'
 import type { EnvironmentContext } from './environment-context'
 
