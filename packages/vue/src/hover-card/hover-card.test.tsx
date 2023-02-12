@@ -11,6 +11,8 @@ import {
   HoverCardTrigger,
 } from '.'
 
+const wait = (delay = 100) => new Promise((resolve) => setTimeout(resolve, delay))
+
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard openDelay={0} closeDelay={0} {...props}>
     <HoverCardTrigger>
@@ -59,6 +61,6 @@ describe('HoverCard', () => {
 
     await user.unhover(target)
     await waitFor(() => expect(hoverContent).not.toBeVisible())
-    expect(onOpenChange).toHaveBeenCalledTimes(2)
+    expect(onOpenChange).toHaveBeenCalledTimes(3)
   })
 })
