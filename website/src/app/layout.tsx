@@ -19,7 +19,7 @@ const RootLayout = (props: PropsWithChildren) => {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <ColorModeScript />
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />
-        <NextSeo useAppDir themeColor="#73fa97" titleTemplate="%s | Ark UI" />
+        <NextSeo useAppDir />
       </head>
       <body>
         <Navbar />
