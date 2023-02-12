@@ -1,5 +1,5 @@
-import 'splitter.css'
 import { Splitter, SplitterPanel, SplitterResizeTrigger } from '.'
+import './splitter.css'
 
 export const Basic = () => (
   <>
