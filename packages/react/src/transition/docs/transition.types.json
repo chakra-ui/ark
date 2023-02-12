@@ -1,0 +1,25 @@
+{
+  "TransitionProps": {
+    "enter": { "type": "CSSProperties", "isRequired": true },
+    "exit": { "type": "CSSProperties", "isRequired": true },
+    "duration": { "type": "number | { enter: number; exit: number }", "isRequired": false },
+    "mounted": { "type": "boolean", "isRequired": false },
+    "onEnter": { "type": "VoidFunction", "isRequired": false },
+    "onEntered": { "type": "VoidFunction", "isRequired": false },
+    "onExit": { "type": "VoidFunction", "isRequired": false },
+    "onExited": { "type": "VoidFunction", "isRequired": false },
+    "reduceMotion": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": { "type": "boolean", "isRequired": false }
+  },
+  "UseTransitionProps": {
+    "enter": { "type": "CSSProperties", "isRequired": true },
+    "exit": { "type": "CSSProperties", "isRequired": true },
+    "duration": { "type": "number | { enter: number; exit: number }", "isRequired": false },
+    "mounted": { "type": "boolean", "isRequired": false },
+    "onEnter": { "type": "VoidFunction", "isRequired": false },
+    "onEntered": { "type": "VoidFunction", "isRequired": false },
+    "onExit": { "type": "VoidFunction", "isRequired": false },
+    "onExited": { "type": "VoidFunction", "isRequired": false },
+    "reduceMotion": { "type": "boolean", "isRequired": false }
+  }
+}

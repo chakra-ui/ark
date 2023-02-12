@@ -1,5 +1,5 @@
 'use client'
-import { Box } from '@/panda/jsx'
+import { Flex } from '@/panda/jsx'
 import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
 import { match } from 'ts-pattern'
 
@@ -14,6 +14,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
     .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
+    .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))
     .with('number-input', () => lazyLoad(() => import('./demo/NumberInput'), 'DemoNumberInput'))
     .with('pagination', () => lazyLoad(() => import('./demo/Pagination'), 'DemoPagination'))
     .with('pin-input', () => lazyLoad(() => import('./demo/PinInput'), 'DemoPinInput'))
@@ -22,6 +23,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('radio-group', () => lazyLoad(() => import('./demo/RadioGroup'), 'DemoRadioGroup'))
     .with('range-slider', () => lazyLoad(() => import('./demo/RangeSlider'), 'DemoRangeSlider'))
     .with('rating-group', () => lazyLoad(() => import('./demo/RatingGroup'), 'DemoRatingGroup'))
+    .with('select', () => lazyLoad(() => import('./demo/Select'), 'DemoSelect'))
     .with('slider', () => lazyLoad(() => import('./demo/Slider'), 'DemoSlider'))
     .with('tabs', () => lazyLoad(() => import('./demo/Tabs'), 'DemoTabs'))
     .with('tags-input', () => lazyLoad(() => import('./demo/TagsInput'), 'DemoTagsInput'))
@@ -32,11 +34,10 @@ export const Playground = (props: PlaygroundProps) => {
   if (!Component) return null
 
   return (
-    <Box
-      display="flex"
-      flexDirection={{ base: 'column', md: 'row' }}
-      minHeight="xs"
+    <Flex
+      direction={{ base: 'column', md: 'row' }}
       bg="bg.surface"
+      minH="40"
       borderRadius="lg"
       boxShadow="sm"
       width="full"
@@ -46,24 +47,14 @@ export const Playground = (props: PlaygroundProps) => {
           <Component />
         </Suspense>
       </Canvas>
-    </Box>
+    </Flex>
   )
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Box
-    bgImage={{
-      base: 'radial-gradient(circle,var(--colors-gray-200) 1px, transparent 1px)',
-      _dark: 'radial-gradient(circle,var(--colors-gray-800) 1px, transparent 1px)',
-    }}
-    bgSize="16px 16px"
-    display="flex"
-    flex="1"
-    overflow="auto"
-    p={{ base: '4', md: '6' }}
-  >
-    <Box m="auto">{props.children}</Box>
-  </Box>
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+    {props.children}
+  </Flex>
 )
 
 function lazyLoad<

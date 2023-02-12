@@ -1,5 +1,5 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import { splitProps } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { ark, HTMLArkProps } from '../factory'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, UseAccordionProps } from './use-accordion'
@@ -7,7 +7,7 @@ import { useAccordion, UseAccordionProps } from './use-accordion'
 export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
 export const Accordion = (props: AccordionProps) => {
-  const [accordionProps, divProps] = splitProps(props, [
+  const [accordionProps, divProps] = createSplitProps<UseAccordionProps>()(props, [
     'collapsible',
     'dir',
     'disabled',
@@ -17,6 +17,7 @@ export const Accordion = (props: AccordionProps) => {
     'multiple',
     'onChange',
     'value',
+    'orientation',
   ])
   const accordion = useAccordion(accordionProps)
 

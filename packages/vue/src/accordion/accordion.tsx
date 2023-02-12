@@ -39,6 +39,9 @@ const VueAccordionProps = {
   getRootNode: {
     type: Function as PropType<AccordionProps['getRootNode']>,
   },
+  orientation: {
+    type: String as PropType<AccordionProps['orientation']>,
+  },
 }
 
 export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({

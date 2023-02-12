@@ -1,4 +1,4 @@
-import { Box } from '@/panda/jsx'
+import { Flex } from '@/panda/jsx'
 import Link from 'next/link'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { Button } from '../shared/Button'
@@ -17,7 +17,7 @@ export const Footer = (props: FooterProps) => {
   const { prevPage, nextPage } = props
 
   return (
-    <Box display="flex" width="full">
+    <Flex>
       {prevPage && (
         <Link href={prevPage.route}>
           <Button variant="link" size="md" leftIcon={<FiChevronLeft />}>
@@ -33,6 +33,6 @@ export const Footer = (props: FooterProps) => {
           </Button>
         </Link>
       )}
-    </Box>
+    </Flex>
   )
 }

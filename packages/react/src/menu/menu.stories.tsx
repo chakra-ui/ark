@@ -140,3 +140,54 @@ export const SubMenu = () => (
     </Portal>
   </Menu>
 )
+
+export const ComplexSubMenu = () => {
+  const [value, setValue] = useState<Record<string, string | string[]>>({
+    framework: '',
+    libraries: [],
+  })
+  return (
+    <Menu
+      value={value}
+      onValueChange={(data) => {
+        setValue((prev) => ({
+          ...prev,
+          [data.name]: data.value,
+        }))
+      }}
+    >
+      <MenuTrigger>
+        <button>Open menu</button>
+      </MenuTrigger>
+      <Portal>
+        <MenuPositioner>
+          <MenuContent>
+            <MenuItemGroup id="radio-group">
+              <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
+              <MenuOptionItem name="framework" type="radio" value="react">
+                {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
+              </MenuOptionItem>
+              <MenuOptionItem name="framework" type="radio" value="solid">
+                {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
+              </MenuOptionItem>
+              <MenuOptionItem name="framework" type="radio" value="vue">
+                {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
+              </MenuOptionItem>
+            </MenuItemGroup>
+            <Menu>
+              <MenuTriggerItem>Share &gt;</MenuTriggerItem>
+              <Portal>
+                <MenuPositioner>
+                  <MenuContent>
+                    <MenuItem id="twitter">Twitter</MenuItem>
+                    <MenuItem id="message">Message</MenuItem>
+                  </MenuContent>
+                </MenuPositioner>
+              </Portal>
+            </Menu>
+          </MenuContent>
+        </MenuPositioner>
+      </Portal>
+    </Menu>
+  )
+}

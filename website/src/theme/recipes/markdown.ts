@@ -4,6 +4,9 @@ export const markdown = defineRecipe({
   name: 'markdown',
   description: 'A recipe for markdown content',
   base: {
+    '&': {
+      width: 'full',
+    },
     '& h1': {
       fontWeight: 'semibold',
       mt: { base: '8', md: '10' },

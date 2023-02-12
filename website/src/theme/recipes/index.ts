@@ -3,16 +3,20 @@ import { badge } from './badge'
 import { button } from './button'
 import { checkbox } from './checkbox'
 import { dialog } from './dialog'
+import { drawer } from './drawer'
 import { hoverCard } from './hover-card'
 import { input } from './input'
 import { link } from './link'
 import { markdown } from './markdown'
+import { menu } from './menu'
 import { numberInput } from './number-input'
 import { pagination } from './pagination'
 import { pinInput } from './pin-input'
 import { popover } from './popover'
+import { radio } from './radio'
 import { radioGroup } from './radio-group'
 import { ratingGroup } from './rating-group'
+import { select } from './select'
 import { slider } from './slider'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
@@ -25,16 +29,20 @@ export const recipes = {
   button,
   checkbox,
   dialog,
+  drawer,
   hoverCard,
   input,
   link,
   markdown,
+  menu,
   numberInput,
   pagination,
   pinInput,
   popover,
+  radio,
   radioGroup,
   ratingGroup,
+  select,
   slider,
   tabs,
   tagsInput,
