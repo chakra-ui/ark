@@ -292,4 +292,5 @@ panda
 # Contentlayer
 .contentlayer
 
-.vscode
+# Sitemap
+/website/public/sitemap*.xml
