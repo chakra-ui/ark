@@ -47,6 +47,7 @@ const VueDialogProps = {
 }
 
 export const Dialog: ComponentWithProps<DialogProps> = defineComponent({
+  name: 'Dialog',
   props: VueDialogProps,
   emits: ['close', 'outsideClick', 'esc'],
   setup(props, { slots, emit }) {
