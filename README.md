@@ -26,7 +26,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Environment  | 🟢    | ⚪    | ⚪  |
 | Hover Card   | 🟢    | 🟢    | ⚪  |
 | Menu         | 🟢    | 🟢    | ⚪  |
-| Number Input | 🟢    | 🟢    | ⚪  |
+| Number Input | 🟢    | 🟢    | 🟢  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | 🟢    | ⚪  |
