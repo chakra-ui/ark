@@ -9,7 +9,7 @@ import { useTabsContext } from './tabs-context'
 export type TabTriggerProps = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
 
 export const TabTrigger: ComponentWithProps<TabTriggerProps> = defineComponent({
-  name: 'TabsTrigger',
+  name: 'TabTrigger',
   props: {
     value: {
       type: String as PropType<TabTriggerProps['value']>,

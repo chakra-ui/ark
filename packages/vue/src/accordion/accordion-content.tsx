@@ -6,6 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 export type AccordionContentProps = HTMLArkProps<'div'>
 
 export const AccordionContent = defineComponent<AccordionContentProps>({
+  name: 'AccordionContent',
   setup(_, { slots, attrs }) {
     const api = useAccordionContext()
     const { value } = useAccordionItemContext()

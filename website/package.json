@@ -18,7 +18,7 @@
     "@next/font": "13.1.6",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.0",
-    "css-panda": "0.0.0-dev-20230208184147",
+    "css-panda": "0.0.0-dev-20230210130914",
     "markdown-toc": "1.2.0",
     "next": "13.1.6",
     "next-contentlayer": "0.3.0",
@@ -37,10 +37,10 @@
   "devDependencies": {
     "@octokit/types": "9.0.0",
     "@types/node": "18.13.0",
-    "@types/react": "18.0.27",
+    "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
     "concurrently": "7.6.0",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "typescript": "4.9.5"
   }
