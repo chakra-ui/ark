@@ -13,15 +13,12 @@ export const Navbar = () => (
       position: 'sticky',
       top: '0',
       background: 'bg.canvas',
-      borderBottomWidth: '1px',
       zIndex: '100',
-      minH: '18',
-      display: 'flex',
-      alignItems: 'stretch',
+      borderBottomWidth: '1px',
     })}
   >
-    <Container display="flex">
-      <HStack flex="1">
+    <Container>
+      <HStack flex="1" minH={{ base: '16', md: '18' }}>
         <Link href="/" aria-label="Back home" className={css({ mr: 'auto' })}>
           <HStack color="fg.emphasized">
             <Logo />
@@ -30,7 +27,7 @@ export const Navbar = () => (
             </Text>
           </HStack>
         </Link>
-        <HStack gap="12">
+        <HStack gap={{ base: '1', lg: '12' }}>
           {/* @ts-expect-error Server Component */}
           <GitHubStats />
           <ColorModeButton />

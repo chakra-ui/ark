@@ -36,6 +36,11 @@
       "type": "(details: { value: string | string[] | null }) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the accordion items."
     }
   },
   "AccordionItemProps": {
@@ -53,7 +58,7 @@
   },
   "UseAccordionReturn": {
     "api": {
-      "type": "ComputedRef<{ value: string | string[] | null; setValue(value: string | string[]): void; rootProps: Attrs<HTMLAttributes>; getItemState(props: ItemProps): { ...; }; getItemProps(props: ItemProps): Attrs<...>; getContentProps(props: ItemProps): Attrs<...>; getTriggerProps(props: ItemProps): ElementAttrs<...>; }>",
+      "type": "ComputedRef<{ rootProps: Attrs<HTMLAttributes>; getItemProps(props: ItemProps): Attrs<HTMLAttributes>; getContentProps(props: ItemProps): Attrs<...>; ... 4 more ...; getItemState: (props: ItemProps) => { ...; }; }>",
       "isRequired": true
     }
   }

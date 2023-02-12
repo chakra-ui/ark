@@ -1,8 +1,9 @@
 import * as pinInput from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
+import type { Optional } from '../types'
 
-export type UsePinInputProps = Omit<pinInput.Context, 'id'>
+export type UsePinInputProps = Optional<pinInput.Context, 'id'>
 export type UsePinInputReturn = ReturnType<typeof usePinInput>
 
 export const usePinInput = (props: UsePinInputProps) => {

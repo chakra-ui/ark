@@ -1,0 +1,57 @@
+---
+id: pagination
+name: Pagination
+description:
+  Pagination is an interface that allows navigating between pages that contain
+  split information, instead of being shown on a single page.
+---
+
+## Import
+
+```ts
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationList,
+  PaginationNextPageTrigger,
+  PaginationPageTrigger,
+  PaginationPrevPageTrigger,
+} from '@ark-ui/solid'
+```
+
+## Usage
+
+The Pagination component consists of the `PaginationEllipsis`, `PaginationList`,
+`PaginationNextPageTrigger`, `PaginationPageTrigger`, and
+`PaginationPrevPageTrigger` components.
+
+Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
+`PaginationPageTrigger` components accept a single JSX element which will
+receive all necessary props to add the event listeners and attributes to ensure
+the desired accessibility.
+
+```tsx
+<Pagination count={5000} pageSize={10} siblingCount={2}>
+  {({ pages }) => (
+    <PaginationList>
+      <PaginationPrevPageTrigger>
+        <button>Previous</button>
+      </PaginationPrevPageTrigger>
+
+      {pages.map((page, index) =>
+        page.type === 'page' ? (
+          <PaginationPageTrigger value={page.value}>
+            <button>{page.value}</button>
+          </PaginationPageTrigger>
+        ) : (
+          <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
+        ),
+      )}
+
+      <PaginationNextPageTrigger>
+        <button>Next</button>
+      </PaginationNextPageTrigger>
+    </PaginationList>
+  )}
+</Pagination>
+```

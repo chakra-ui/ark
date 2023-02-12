@@ -8,36 +8,40 @@
     "dev:css": "panda --watch",
     "dev:next": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
+    "@next/env": "13.1.6",
     "@next/font": "13.1.6",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.0",
-    "css-panda": "0.0.0-dev-20230128072108",
+    "css-panda": "0.0.0-dev-20230210130914",
     "markdown-toc": "1.2.0",
     "next": "13.1.6",
     "next-contentlayer": "0.3.0",
+    "next-seo": "5.15.0",
+    "next-sitemap": "3.1.52",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.7.1",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
-    "rehype-prism-plus": "1.5.0",
+    "rehype-prism-plus": "1.5.1",
     "rehype-slug": "5.1.0",
-    "ts-pattern": "4.1.3",
+    "ts-pattern": "4.1.4",
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
     "@octokit/types": "9.0.0",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
+    "@types/node": "18.13.0",
+    "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
     "concurrently": "7.6.0",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   }
 }

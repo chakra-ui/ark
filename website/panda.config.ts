@@ -146,6 +146,9 @@ export default defineConfig({
     extend: {
       container: {
         transform(props) {
+          // TODO descructuring props.centerContent is not working @panda
+          delete props.centerContent
+
           return Object.assign(
             {
               position: 'relative',
@@ -173,8 +176,9 @@ export default defineConfig({
     body: {
       backgroundColor: 'bg.canvas',
       color: 'fg.default',
+      overflow: 'scroll',
       fontFamily: 'var(--font-inter), sans-serif',
-      height: '100%',
+      height: 'fit-content',
       _dark: {
         colorScheme: 'dark',
       },
@@ -189,6 +193,9 @@ export default defineConfig({
     },
     a: {
       textDecoration: 'none',
+    },
+    hr: {
+      borderBottomWidth: '1px',
     },
     table: {
       width: 'full',

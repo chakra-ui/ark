@@ -20,6 +20,7 @@ export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
     'multiple',
     'onChange',
     'value',
+    'orientation',
   ])
   const accordion = useAccordion(useAccordionProps)
   const mergedProps = mergeProps(accordion.rootProps, divProps)

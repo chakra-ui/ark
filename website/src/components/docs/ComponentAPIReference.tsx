@@ -22,16 +22,11 @@ export const ComponentAPIReference = (props: ComponentAPIReferenceProps) => {
 
   return (
     <Stack gap="10" width="full">
-      <Stack gap="4">
-        <Heading textStyle="2xl" fontWeight="semibold">
-          Properties
-        </Heading>
-        <Text color="fg.muted" lineHeight="relaxed">
-          {/* TODO update text */}
-          API reference docs for the {componentName} component. Learn about the props, CSS, and
-          other APIs of this exported module.
-        </Text>
-      </Stack>
+      <Text color="fg.muted" lineHeight="relaxed">
+        {/* TODO update text */}
+        API reference docs for the {componentName} component. Learn about the props, CSS, and other
+        APIs of this exported module.
+      </Text>
       <Stack gap="10">
         {Object.entries(types).map(([name, properties]) => (
           <Stack key={name} gap="6" width="full">

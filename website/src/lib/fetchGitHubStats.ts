@@ -30,7 +30,4 @@ export const fetchGitHubStats = (): Promise<GitHubStats> =>
           )
         }),
     )
-    .catch((err) => {
-      console.error(err.message)
-      return { stars: '0', forks: '0' }
-    })
+    .catch(() => ({ stars: '0', forks: '0' }))
