@@ -24,7 +24,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Combobox     | 🟢    | ⚪    | ⚪  |
 | Editable     | 🟢    | 🟢    | ⚪  |
 | Environment  | 🟢    | ⚪    | ⚪  |
-| Hover Card   | 🟢    | 🟢    | ⚪  |
+| Hover Card   | 🟢    | 🟢    | 🟢  |
 | Menu         | 🟢    | 🟢    | ⚪  |
 | Number Input | 🟢    | 🟢    | 🟢  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
