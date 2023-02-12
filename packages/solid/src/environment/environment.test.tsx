@@ -26,7 +26,7 @@ describe('Environment', () => {
   it('should have access to the environment values', async () => {
     render(() => <ComponentUnderTest />)
     expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(
-      '"[object Document]"',
+      '"[object HTMLDocument]"',
     )
   })
 })
