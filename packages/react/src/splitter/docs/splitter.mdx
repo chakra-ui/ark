@@ -39,6 +39,23 @@ The Splitter component consists of the `SplitterPanel`, `SplitterProps` and
 </Splitter>
 ```
 
+### Listening to resize changes
+
+You can listen to resize changes by passing a `onResize` callback to the
+`Splitter` component.
+
+`onResizeStart` and `onResizeEnd` callbacks are also available.
+
+```tsx
+<Splitter
+  onResize={(details) => console.log('onResize', details)}
+  onResizeStart={(details) => console.log('onResizeStart', details)}
+  onResizeEnd={(details) => console.log('onResizeEnd', details)}
+>
+  {/*...*/}
+</Splitter>
+```
+
 ### Nested
 
 You can nest Splitter components to create a more complex layout.

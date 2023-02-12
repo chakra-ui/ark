@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
 import './splitter.css'
 
@@ -34,3 +34,36 @@ export const Nested = () => (
     </Basic>
   </div>
 )
+
+export const Controlled = () => {
+  const [size, setSize] = useState([
+    { id: 'first', size: 50 },
+    { id: 'second', size: 50 },
+  ])
+
+  return (
+    <div style={{ height: '100vh' }}>
+      <Splitter
+        size={size}
+        onResizeEnd={(details) => {
+          setSize(
+            details.size.map((s) => ({
+              id: `${s.id}`,
+              size: s.size!,
+            })),
+          )
+        }}
+      >
+        <SplitterPanel id={'first'}>
+          <p>first</p>
+        </SplitterPanel>
+        <SplitterResizeTrigger id={`first:second`}>
+          <div className="bar" />
+        </SplitterResizeTrigger>
+        <SplitterPanel id="second">
+          <p>second</p>
+        </SplitterPanel>
+      </Splitter>
+    </div>
+  )
+}
