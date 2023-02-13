@@ -23,8 +23,8 @@ The Splitter component consists of the `SplitterPanel`, `SplitterProps` and
 ```tsx
 <Splitter
   size={[
-    { id: "first", size: 50 },
-    { id: "second", size: 50 },
+    { id: 'first', size: 50 },
+    { id: 'second', size: 50 },
   ]}
 >
   <SplitterPanel id="first">
@@ -33,7 +33,7 @@ The Splitter component consists of the `SplitterPanel`, `SplitterProps` and
   <SplitterResizeTrigger id="first:second">
     <div class="bar" />
   </SplitterResizeTrigger>
-  <SplitterPanel id=second>
+  <SplitterPanel id="second">
     <p>second</p>
   </SplitterPanel>
 </Splitter>
