@@ -14,7 +14,7 @@ importers:
       fs-extra: 11.1.0
       globby: 13.1.3
       husky: 8.0.3
-      lint-staged: 13.1.1
+      lint-staged: 13.1.2
       prettier: 2.8.4
       prettier-plugin-organize-imports: 3.2.2
       react: 18.2.0
@@ -32,7 +32,7 @@ importers:
       fs-extra: 11.1.0
       globby: 13.1.3
       husky: 8.0.3
-      lint-staged: 13.1.1
+      lint-staged: 13.1.2
       prettier: 2.8.4
       prettier-plugin-organize-imports: 3.2.2_silln3pw57har7jydmecgzoypa
       react: 18.2.0
@@ -5151,7 +5151,7 @@ packages:
       is-shared-array-buffer: 1.0.2
       is-string: 1.0.7
       is-weakref: 1.0.2
-      object-inspect: 1.12.2
+      object-inspect: 1.12.3
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.4.3
@@ -7202,8 +7202,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.1.1:
-    resolution: {integrity: sha512-LLJLO0Kdbcv2a+CvSF4p1M7jBZOajKSMpBUvyR8+bXccsqPER0/NxTFQSpNHjqwV9kM3tkHczYerTB5wI+bksQ==}
+  /lint-staged/13.1.2:
+    resolution: {integrity: sha512-K9b4FPbWkpnupvK3WXZLbgu9pchUJ6N7TtVZjbaPsoizkqFUDkUReUL25xdrCljJs7uLUF3tZ7nVPeo/6lp+6w==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -8375,10 +8375,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /object-inspect/1.12.2:
-    resolution: {integrity: sha512-z+cPxW0QGUp0mcqcsgQyLVRDoXFQbXOwBaqyF7VIgI4TWNQsDHrBpUQslRmIfAoYWdYzs6UlKJtB2XJpTaNSpQ==}
     dev: true
 
   /object-inspect/1.12.3:
@@ -9577,7 +9573,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.1.3
-      object-inspect: 1.12.2
+      object-inspect: 1.12.3
     dev: true
 
   /siginfo/2.0.0:
