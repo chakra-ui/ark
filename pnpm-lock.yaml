@@ -274,6 +274,7 @@ importers:
       '@zag-js/radio': 0.1.4
       '@zag-js/range-slider': 0.2.13
       '@zag-js/rating': 0.2.4
+      '@zag-js/rating-group': 0.2.12
       '@zag-js/select': 0.1.11
       '@zag-js/slider': 0.2.13
       '@zag-js/tabs': 0.2.11
@@ -308,6 +309,7 @@ importers:
       '@zag-js/radio': 0.1.4
       '@zag-js/range-slider': 0.2.13
       '@zag-js/rating': 0.2.4
+      '@zag-js/rating-group': 0.2.12
       '@zag-js/select': 0.1.11
       '@zag-js/slider': 0.2.13
       '@zag-js/tabs': 0.2.11
