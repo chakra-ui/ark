@@ -7,7 +7,7 @@ description: Splitter is a component that allows you to split a container into t
 ## Import
 
 ```ts
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/react'
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/solid'
 ```
 
 ## Usage
@@ -17,8 +17,8 @@ The Splitter component consists of the `SplitterPanel` and `SplitterResizeTrigge
 ```tsx
 <Splitter
   size={[
-    { id: 'first', size: 50 },
-    { id: 'second', size: 50 },
+    { id: "first", size: 50 },
+    { id: "second", size: 50 },
   ]}
 >
   <SplitterPanel id="first">
@@ -27,7 +27,7 @@ The Splitter component consists of the `SplitterPanel` and `SplitterResizeTrigge
   <SplitterResizeTrigger id="first:second">
     <div class="bar" />
   </SplitterResizeTrigger>
-  <SplitterPanel id="second">
+  <SplitterPanel id=second>
     <p>second</p>
   </SplitterPanel>
 </Splitter>
@@ -54,16 +54,16 @@ You can listen to resize changes by passing a `onResize` callback to the
 
 You can nest Splitter components to create a more complex layout.
 
-> The `useId` hook from `react` can generate unique ids which you
+> The `createUniqueId` function from `solid-js` can generate unique ids which you
 > can apply to the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger`
 > components.
 
 ```tsx
-import type { SplitterProps } from '@ark-ui/react'
-import { useId } from 'react'
+import type { SplitterProps } from '@ark-ui/solid'
+import { createUniqueId } from 'solid-js'
 
-const Basic = (props: Partial<SplitterProps>) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
+export const Basic = (props: Partial<SplitterProps>) => {
+  const [first, second] = [createUniqueId(), createUniqueId()]
   return (
     <>
       <Splitter
@@ -77,10 +77,10 @@ const Basic = (props: Partial<SplitterProps>) => {
           <p>{first}</p>
         </SplitterPanel>
         <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div className="bar" />
+          <div class="bar" />
         </SplitterResizeTrigger>
         <SplitterPanel id={second}>
-          {props.children ?? <p>{second}</p>}
+          <p>{second}</p>
         </SplitterPanel>
       </Splitter>
     </>

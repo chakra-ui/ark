@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react'
+import { render } from '@solidjs/testing-library'
 import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
-
 const ComponentUnderTest = (props: SplitterProps) => (
   <Splitter
     size={[
@@ -13,7 +12,7 @@ const ComponentUnderTest = (props: SplitterProps) => (
       <p>A</p>
     </SplitterPanel>
     <SplitterResizeTrigger id="a:b">
-      <div className="bar" />
+      <div class="bar" />
     </SplitterResizeTrigger>
     <SplitterPanel id="b">
       <p>B</p>
@@ -23,6 +22,6 @@ const ComponentUnderTest = (props: SplitterProps) => (
 
 describe('Splitter', () => {
   it('should render', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
   })
 })

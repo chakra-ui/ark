@@ -52,6 +52,7 @@
     "@zag-js/select": "0.1.11",
     "@zag-js/slider": "0.2.13",
     "@zag-js/solid": "0.2.9",
+    "@zag-js/splitter": "0.2.12",
     "@zag-js/tabs": "0.2.11",
     "@zag-js/tags-input": "0.3.12",
     "@zag-js/toast": "0.2.12",

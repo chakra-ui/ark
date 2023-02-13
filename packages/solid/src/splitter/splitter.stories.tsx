@@ -1,9 +1,9 @@
-import { useId, useState } from 'react'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
+import { createSignal, createUniqueId } from 'solid-js'
+import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 import './splitter.css'
 
-const Basic = (props: Partial<SplitterProps>) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replaceAll(':', '-'))
+export const Basic = (props: Partial<SplitterProps>) => {
+  const [first, second] = [createUniqueId(), createUniqueId()]
   return (
     <>
       <Splitter
@@ -17,7 +17,7 @@ const Basic = (props: Partial<SplitterProps>) => {
           <p>{first}</p>
         </SplitterPanel>
         <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div className="bar" />
+          <div class="bar" />
         </SplitterResizeTrigger>
         <SplitterPanel id={second}>{props.children ?? <p>{second}</p>}</SplitterPanel>
       </Splitter>
@@ -36,7 +36,7 @@ export const Nested = () => (
 )
 
 export const Controlled = () => {
-  const [size, setSize] = useState([
+  const [size, setSize] = createSignal([
     { id: 'first', size: 50 },
     { id: 'second', size: 50 },
   ])
@@ -44,7 +44,7 @@ export const Controlled = () => {
   return (
     <div style={{ height: '100vh' }}>
       <Splitter
-        size={size}
+        size={size()}
         onResizeEnd={(details) => {
           setSize(
             details.size.map((s) => ({
@@ -58,7 +58,7 @@ export const Controlled = () => {
           <p>first</p>
         </SplitterPanel>
         <SplitterResizeTrigger id={`first:second`}>
-          <div className="bar" />
+          <div class="bar" />
         </SplitterResizeTrigger>
         <SplitterPanel id="second">
           <p>second</p>
