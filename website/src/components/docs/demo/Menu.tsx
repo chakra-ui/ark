@@ -31,13 +31,25 @@ export const DemoMenu = () => (
           <MenuItemGroup id="radio-group">
             <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
             <MenuOptionItem name="framework" type="radio" value="react">
-              {({ isActive }) => <Radio defaultChecked={isActive}>React</Radio>}
+              {({ isActive }) => (
+                <Radio name="framework" defaultChecked={isActive} value="react">
+                  {isActive ? '✅' : null} React
+                </Radio>
+              )}
             </MenuOptionItem>
             <MenuOptionItem name="framework" type="radio" value="solid">
-              {({ isActive }) => <Radio defaultChecked={isActive}>Solid</Radio>}
+              {({ isActive }) => (
+                <Radio name="framework" defaultChecked={isActive}>
+                  Solid
+                </Radio>
+              )}
             </MenuOptionItem>
             <MenuOptionItem name="framework" type="radio" value="vue">
-              {({ isActive }) => <Radio defaultChecked={isActive}>Vue</Radio>}
+              {({ isActive }) => (
+                <Radio name="framework" defaultChecked={isActive}>
+                  Vue
+                </Radio>
+              )}
             </MenuOptionItem>
           </MenuItemGroup>
 

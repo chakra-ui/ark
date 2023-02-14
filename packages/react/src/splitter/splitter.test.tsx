@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
 
-const Component = (props: SplitterProps) => (
+const ComponentUnderTest = (props: SplitterProps) => (
   <Splitter
     size={[
       { id: 'a', size: 50 },
@@ -23,6 +23,6 @@ const Component = (props: SplitterProps) => (
 
 describe('Splitter', () => {
   it('should render', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
   })
 })
