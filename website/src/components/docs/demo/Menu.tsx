@@ -20,12 +20,6 @@ import { FiChevronRight } from 'react-icons/fi'
 
 export const DemoMenu = () => (
   <Menu closeOnSelect={false} onValueChange={console.log} value={{ framework: '', libraries: [] }}>
-    <Radio name="frameworks" value="react">
-      React
-    </Radio>
-    <Radio name="frameworks" value="vue">
-      Vue
-    </Radio>
     <MenuTrigger>
       <Button>Open menu</Button>
     </MenuTrigger>

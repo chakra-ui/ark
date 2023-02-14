@@ -34,7 +34,7 @@ export const radio = defineRecipe({
           _dark: 'gray.700',
         },
       },
-      _peerChecked: {
+      _checked: {
         background: 'accent.default',
         borderColor: 'accent.default',
         '--outline-color': {
