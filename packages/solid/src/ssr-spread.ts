@@ -1,28 +1,34 @@
 import type { JSX } from 'solid-js'
-import { filterObject } from './filter-object'
+import { filterEmptyValues, filterFunctionValues } from './filter-object'
 import { mergeStyle } from './merge-style'
 import { parse, render } from './parse-template'
+import { pipe } from './pipe'
 
-type Props = JSX.Element | { t: string }
+type Children = { t: string } | JSX.Element
 
-const isJSXElement = (children: Props): children is JSX.Element =>
-  !Object.hasOwnProperty.call(children, 't')
+type Attributes = {
+  class?: string
+  style?: string | JSX.CSSProperties
+} & object
 
-export const ssrSpread = (children: any, attrs: any) => {
+export const ssrSpread = <T extends Children>(children: T, attributes: Attributes) => {
   if (isJSXElement(children)) return children
 
   const { t } = children
   const ast = parse(t)
   const [node] = ast.children
 
-  const filteredAttrs = filterObject(attrs, ([, v]) => typeof v !== 'function')
-
-  const nodeAttrs = Object.assign({}, node.attributes, filteredAttrs, {
-    class: [attrs.class, filteredAttrs.class].filter(Boolean).join(' '),
-    style: mergeStyle(attrs.style, filteredAttrs.style),
+  const mergedAttributes = Object.assign({}, attributes, {
+    class: [attributes?.class, node.attributes.class].filter(Boolean).join(' '),
+    style: mergeStyle(attributes.style, node.attributes.style),
   })
 
-  Object.assign(node.attributes, nodeAttrs)
+  const ssrAttributes = pipe(mergedAttributes, filterEmptyValues, filterFunctionValues)
 
-  return { t: render(ast) }
+  Object.assign(node.attributes, ssrAttributes)
+
+  return { t: render(ast) } as T
 }
+
+const isJSXElement = (children: Children): children is JSX.Element =>
+  !Object.hasOwnProperty.call(children, 't')

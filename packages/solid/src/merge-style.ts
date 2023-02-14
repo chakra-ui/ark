@@ -2,17 +2,18 @@ import type { JSX } from 'solid-js'
 
 type StyleObject = JSX.CSSProperties
 type StyleString = string
-
 type Style = StyleObject | StyleString
 
-export const mergeStyle = (a: Style, b: Style): StyleString =>
+export const mergeStyle = (a?: Style, b?: Style): StyleString =>
   styleObjectToString({ ...getStyleObject(a), ...getStyleObject(b) })
 
-const getStyleObject = (style: Style): StyleObject =>
+const getStyleObject = (style?: Style): StyleObject =>
   typeof style === 'object' ? style : stringStyleToObject(style)
 
-const stringStyleToObject = (style: StyleString): StyleObject => {
+const stringStyleToObject = (style?: StyleString): StyleObject => {
   const object: Record<string, string> = {}
+  if (!style) return object
+
   const extractCSSregex = /([^:; ]*):\s*([^;]*)/g
   let match: RegExpExecArray | null
   while ((match = extractCSSregex.exec(style))) {
@@ -21,9 +22,9 @@ const stringStyleToObject = (style: StyleString): StyleObject => {
   return object
 }
 
-const styleObjectToString = (value: StyleObject): StyleString => {
+const styleObjectToString = (value?: StyleObject): StyleString => {
   if (!value) return ''
-  if (typeof value === 'string') return value
+
   let result = ''
   const k = Object.keys(value)
   for (let i = 0; i < k.length; i++) {

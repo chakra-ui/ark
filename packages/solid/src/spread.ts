@@ -8,8 +8,6 @@ export const spread = (node: HTMLElement, props: any) => {
   // @ts-expect-error fix later
   const events = filterObject(node, ([key]) => key.slice(0, 2) === '$$')
 
-  console.log({ eventListeners, events })
-
   const result: Record<string, unknown> = {}
 
   for (const key in eventListeners) {
@@ -24,8 +22,6 @@ export const spread = (node: HTMLElement, props: any) => {
       result[key] = eventListeners[key]
     }
   }
-
-  console.log({ result })
 
   solidSpread(node, { ...props, ...result })
 }
