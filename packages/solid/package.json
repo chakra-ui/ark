@@ -52,10 +52,12 @@
     "@zag-js/select": "0.1.11",
     "@zag-js/slider": "0.2.13",
     "@zag-js/solid": "0.2.9",
+    "@zag-js/splitter": "0.2.12",
     "@zag-js/tabs": "0.2.11",
     "@zag-js/tags-input": "0.3.12",
     "@zag-js/toast": "0.2.12",
-    "@zag-js/tooltip": "0.2.11"
+    "@zag-js/tooltip": "0.2.11",
+    "@zag-js/types": "0.3.4"
   },
   "devDependencies": {
     "@solidjs/testing-library": "0.6.1",
@@ -64,11 +66,11 @@
     "@testing-library/user-event": "14.4.3",
     "@types/jsdom": "21.1.0",
     "@types/testing-library__jest-dom": "5.14.5",
-    "@typescript-eslint/eslint-plugin": "5.51.0",
-    "@typescript-eslint/parser": "5.51.0",
+    "@typescript-eslint/eslint-plugin": "5.52.0",
+    "@typescript-eslint/parser": "5.52.0",
     "@vitest/coverage-c8": "0.28.4",
     "clean-package": "2.2.0",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "happy-dom": "8.2.6",
     "solid-js": "1.6.10",
     "typescript": "4.9.5",

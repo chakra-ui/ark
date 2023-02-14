@@ -1,0 +1,4 @@
+{
+  "RatingProps": { "index": { "type": "number", "isRequired": true } },
+  "RatingGroupProps": { "modelValue": { "type": "any", "isRequired": false } }
+}

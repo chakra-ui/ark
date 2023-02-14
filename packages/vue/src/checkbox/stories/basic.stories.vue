@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
 

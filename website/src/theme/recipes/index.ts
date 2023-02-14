@@ -18,6 +18,7 @@ import { radioGroup } from './radio-group'
 import { ratingGroup } from './rating-group'
 import { select } from './select'
 import { slider } from './slider'
+import { splitter } from './splitter'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
 import { toast } from './toast'
@@ -44,6 +45,7 @@ export const recipes = {
   ratingGroup,
   select,
   slider,
+  splitter,
   tabs,
   tagsInput,
   toast,

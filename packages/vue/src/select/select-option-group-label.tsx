@@ -9,6 +9,7 @@ export interface SelectOptionGroupLabelProps extends HTMLArkProps<'label'> {
 
 export const SelectOptionGroupLabel: ComponentWithProps<SelectOptionGroupLabelProps> =
   defineComponent({
+    name: 'SelectOptionGroupLabel',
     props: {
       htmlFor: String as PropType<SelectOptionGroupLabelProps['htmlFor']>,
     },
