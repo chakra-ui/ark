@@ -1,5 +1,9 @@
 import type { JSX } from 'solid-js'
-import { filterEmptyValues, filterFunctionValues } from './filter-object'
+import {
+  filterBooleanAttributeValues,
+  filterEmptyValues,
+  filterFunctionValues,
+} from './filter-object'
 import { mergeStyle } from './merge-style'
 import { parse, render } from './parse-template'
 import { pipe } from './pipe'
@@ -23,7 +27,12 @@ export const ssrSpread = <T extends Children>(children: T, attributes: Attribute
     style: mergeStyle(attributes.style, node.attributes.style),
   })
 
-  const ssrAttributes = pipe(mergedAttributes, filterEmptyValues, filterFunctionValues)
+  const ssrAttributes = pipe(
+    mergedAttributes,
+    filterEmptyValues,
+    filterFunctionValues,
+    filterBooleanAttributeValues,
+  )
 
   Object.assign(node.attributes, ssrAttributes)
 

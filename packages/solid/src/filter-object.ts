@@ -1,3 +1,4 @@
+import { BooleanAttributes } from './constants'
 import { isEmpty } from './is-empty'
 import { isFunction } from './is-function'
 
@@ -15,3 +16,6 @@ export const filterEmptyValues = <T extends object>(obj: T) =>
 
 export const filterFunctionValues = <T extends object>(obj: T) =>
   filterObject(obj, ([, v]) => !isFunction(v))
+
+export const filterBooleanAttributeValues = <T extends object>(obj: T) =>
+  filterObject(obj, ([k, v]) => !(BooleanAttributes.has(k as string) && !v))

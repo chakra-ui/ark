@@ -1,4 +1,4 @@
-// forked from ultrahtml
+// Forked from https://github.com/natemoo-re/ultrahtml.git under MIT license
 
 type Node = DocumentNode | ElementNode | TextNode | CommentNode | DoctypeNode
 type NodeType =
@@ -106,6 +106,7 @@ export function parse(str: string): any {
   function commitTextNode() {
     text = str.substring(lastIndex, DOM_PARSER_RE.lastIndex - token[0].length)
     if (text) {
+      // eslint-disable-next-line @typescript-eslint/no-extra-semi
       ;(parent as ParentNode).children.push({
         type: TEXT_NODE,
         value: text,
