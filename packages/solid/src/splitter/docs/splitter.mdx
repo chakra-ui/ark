@@ -1,0 +1,99 @@
+---
+id: splitter
+name: Splitter
+description: Splitter is a component that allows you to split a container into two or more resizable sections.
+---
+
+## Import
+
+```ts
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/solid'
+```
+
+## Usage
+
+The Splitter component consists of the `SplitterPanel` and `SplitterResizeTrigger` components.
+
+```tsx
+<Splitter
+  size={[
+    { id: "first", size: 50 },
+    { id: "second", size: 50 },
+  ]}
+>
+  <SplitterPanel id="first">
+    <p>first</p>
+  </SplitterPanel>
+  <SplitterResizeTrigger id="first:second">
+    <div class="bar" />
+  </SplitterResizeTrigger>
+  <SplitterPanel id=second>
+    <p>second</p>
+  </SplitterPanel>
+</Splitter>
+```
+
+### Listening to resize changes
+
+You can listen to resize changes by passing a `onResize` callback to the
+`Splitter` component.
+
+`onResizeStart` and `onResizeEnd` callbacks are also available.
+
+```tsx
+<Splitter
+  onResize={(details) => console.log('onResize', details)}
+  onResizeStart={(details) => console.log('onResizeStart', details)}
+  onResizeEnd={(details) => console.log('onResizeEnd', details)}
+>
+  {/*...*/}
+</Splitter>
+```
+
+### Nested
+
+You can nest Splitter components to create a more complex layout.
+
+> The `createUniqueId` function from `solid-js` can generate unique ids which you
+> can apply to the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger`
+> components.
+
+```tsx
+import type { SplitterProps } from '@ark-ui/solid'
+import { createUniqueId } from 'solid-js'
+
+export const Basic = (props: Partial<SplitterProps>) => {
+  const [first, second] = [createUniqueId(), createUniqueId()]
+  return (
+    <>
+      <Splitter
+        size={[
+          { id: first, size: 50 },
+          { id: second, size: 50 },
+        ]}
+        {...props}
+      >
+        <SplitterPanel id={first}>
+          <p>{first}</p>
+        </SplitterPanel>
+        <SplitterResizeTrigger id={`${first}:${second}`}>
+          <div class="bar" />
+        </SplitterResizeTrigger>
+        <SplitterPanel id={second}>
+          <p>{second}</p>
+        </SplitterPanel>
+      </Splitter>
+    </>
+  )
+}
+
+export const Nested = () => (
+  <div style={{ height: '100vh' }}>
+    <Basic orientation="vertical">
+      <Basic>
+        <Basic orientation="vertical" />
+      </Basic>
+    </Basic>
+  </div>
+)
+```

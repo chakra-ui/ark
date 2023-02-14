@@ -6,7 +6,7 @@ import { NextSeo } from 'next-seo'
 import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
 // TODO use panda for styling
-import '../../public/code.css'
+import '../theme/prism.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
@@ -19,7 +19,7 @@ const RootLayout = (props: PropsWithChildren) => {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <ColorModeScript />
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />
-        <NextSeo useAppDir themeColor="#73fa97" titleTemplate="%s | Ark UI" />
+        <NextSeo useAppDir />
       </head>
       <body>
         <Navbar />

@@ -8,6 +8,7 @@ export interface SelectOptionGroupProps extends HTMLArkProps<'div'> {
 }
 
 export const SelectOptionGroup: ComponentWithProps<SelectOptionGroupProps> = defineComponent({
+  name: 'SelectOptionGroup',
   props: {
     id: String as PropType<SelectOptionGroupProps['id']>,
   },

@@ -19,14 +19,14 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 |              | React | Solid | Vue |
 | ------------ | ----- | ----- | --- |
 | Accordion    | 🟢    | 🟢    | 🟢  |
-| Checkbox     | 🟢    | 🟢    | ⚪  |
-| Combobox     | 🟢    | ⚪    | 🟢  |
-| Dialog       | 🟢    | 🟢    | ⚪  |
+| Checkbox     | 🟢    | 🟢    | 🟢  |
+| Dialog       | 🟢    | 🟢    | 🟢  |
+| Combobox     | 🟢    | 🟢    | 🟢  |
 | Editable     | 🟢    | 🟢    | ⚪  |
-| Environment  | 🟢    | ⚪    | ⚪  |
-| Hover Card   | 🟢    | 🟢    | ⚪  |
+| Environment  | 🟢    | 🟢    | ⚪  |
+| Hover Card   | 🟢    | 🟢    | 🟢  |
 | Menu         | 🟢    | 🟢    | ⚪  |
-| Number Input | 🟢    | 🟢    | ⚪  |
+| Number Input | 🟢    | 🟢    | 🟢  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
 | Pin Input    | 🟢    | 🟢    | ⚪  |
 | Popover      | 🟢    | 🟢    | ⚪  |
@@ -36,8 +36,8 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Rating       | 🟢    | 🟢    | ⚪  |
 | Select       | 🟢    | 🟢    | 🟢  |
 | Slider       | 🟢    | 🟢    | ⚪  |
-| Splitter     | 🟢    | ⚪    | ⚪  |
+| Splitter     | 🟢    | 🟢    | ⚪  |
 | Tabs         | 🟢    | 🟢    | 🟢  |
 | Tags Input   | 🟢    | 🟢    | ⚪  |
 | Toast        | 🟢    | 🟢    | ⚪  |
-| Tooltip      | 🟢    | 🟢    | ⚪  |
+| Tooltip      | 🟢    | 🟢    | 🟢  |
