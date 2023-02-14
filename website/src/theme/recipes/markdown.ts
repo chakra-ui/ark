@@ -1,4 +1,4 @@
-import { defineRecipe } from 'css-panda'
+import { defineRecipe } from '@pandacss/dev'
 
 export const markdown = defineRecipe({
   name: 'markdown',
