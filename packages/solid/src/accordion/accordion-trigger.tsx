@@ -10,12 +10,14 @@ export const AccordionTrigger = (props: AccordionTriggerProps) => {
   const accordion = useAccordionContext()
   const accordionItem = useAccordionItemContext()
 
-  const getChildren = children(() => ssrSpread(props, accordion().getTriggerProps(accordionItem)))
+  const triggerProps = accordion().getTriggerProps(accordionItem)
+  // @ts-expect-error TODO fix types
+  const getChildren = children(() => ssrSpread(props.children, triggerProps))
 
   createEffect(() => {
     const children = getChildren()
     if (children instanceof HTMLElement) {
-      spread(children, accordion().getTriggerProps(accordionItem))
+      spread(children, triggerProps)
     }
   })
 
