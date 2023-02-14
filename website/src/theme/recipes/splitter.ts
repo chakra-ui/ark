@@ -25,16 +25,14 @@ export const splitter = defineRecipe({
     },
     panel: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      border: '1px solid lightgray',
       overflow: 'auto',
+      flex: '1',
     },
     resizeTrigger: {
-      background: '#ebebeb',
-      borderRadius: '8px',
-      display: 'flex',
       alignItems: 'center',
+      background: 'bg.muted',
+      borderRadius: 'lg',
+      display: 'flex',
       justifyContent: 'center',
       transition: 'background-color 0.2s ease-in-out',
       outline: '0',
@@ -57,12 +55,10 @@ export const splitter = defineRecipe({
         border: 'none',
       },
       _hover: {
-        background: '#abb2c9',
-        color: 'white',
+        background: 'accent.default',
       },
       _active: {
-        background: '#3f51b5',
-        color: 'white',
+        background: 'accent.default',
       },
       _disabled: {
         opacity: 0.5,
