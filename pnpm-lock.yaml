@@ -260,7 +260,7 @@ importers:
       '@vitest/coverage-c8': 0.28.4
       '@vue/compiler-sfc': 3.2.47
       '@zag-js/accordion': 0.2.11
-      '@zag-js/anatomy': 0.1.4    
+      '@zag-js/anatomy': 0.1.4
       '@zag-js/checkbox': 0.2.12
       '@zag-js/combobox': 0.2.12
       '@zag-js/dialog': 0.2.11
@@ -299,16 +299,6 @@ importers:
       '@zag-js/anatomy': 0.1.4
       '@zag-js/checkbox': 0.2.12
       '@zag-js/combobox': 0.2.12
-      '@zag-js/dialog': 0.2.11
-      '@zag-js/editable': 0.2.12
-      '@zag-js/hover-card': 0.2.4
-      '@zag-js/menu': 0.3.8
-      '@zag-js/number-input': 0.2.12
-      '@zag-js/pagination': 0.1.11
-      '@zag-js/pin-input': 0.2.12
-      '@zag-js/popover': 0.2.11
-      '@zag-js/pressable': 0.3.11
-      '@zag-js/checkbox': 0.2.12
       '@zag-js/dialog': 0.2.11
       '@zag-js/editable': 0.2.12
       '@zag-js/hover-card': 0.2.4
@@ -3490,6 +3480,20 @@ packages:
       '@zag-js/types': 0.3.4
     dev: false
 
+  /@zag-js/combobox/0.2.12:
+    resolution: {integrity: sha512-/O2HZ+asL4GA0x5xpQW5LKNrGzzJJvk8LpvJ5N2JBUm0lBuRQLgpYbsrHNiXymumirepQvRTOhOF0yUVn9WOuw==}
+    dependencies:
+      '@zag-js/anatomy': 0.1.4
+      '@zag-js/aria-hidden': 0.2.2
+      '@zag-js/core': 0.2.8
+      '@zag-js/interact-outside': 0.2.2
+      '@zag-js/live-region': 0.2.2
+      '@zag-js/popper': 0.2.3
+      '@zag-js/types': 0.3.4
+    transitivePeerDependencies:
+      - react
+    dev: false
+
   /@zag-js/combobox/0.2.13:
     resolution: {integrity: sha512-ZZiDjWNyKKi3CM1dMoaDYLcpmI48KBWuk48J2Wk7XA++Ao375mktvTBigtldYq895rGt+r/qqu5wnVt8eCGaxQ==}
     dependencies:
@@ -3507,6 +3511,15 @@ packages:
     dependencies:
       '@zag-js/store': 0.2.0
       klona: 2.0.5
+    dev: false
+
+  /@zag-js/core/0.2.8:
+    resolution: {integrity: sha512-3WXIn2G4BfQEvO6I+5CvOy9aJAkvnBzYbuFWM9wfgtU6OHSx4mZJW88XDGexYLUcoIEunKByFmTxvtA9UncSOQ==}
+    dependencies:
+      '@zag-js/store': 0.2.6
+      klona: 2.0.6
+    transitivePeerDependencies:
+      - react
     dev: false
 
   /@zag-js/core/0.2.9:
@@ -3740,6 +3753,15 @@ packages:
     resolution: {integrity: sha512-B9PxSMTYu9KXEMFoyB2El+mey41eqVMVKU6cqE8GlbzNu71rdlSz2mPzvK3qQVXA0rXBhB4xapj3ScosSMyhTg==}
     dependencies:
       proxy-compare: 2.3.0
+    dev: false
+
+  /@zag-js/store/0.2.6:
+    resolution: {integrity: sha512-2++D+Y7fz+aEMV1WIDyqEus9vGqssWkdLUTSXar3oTKNIIiD3hFHimqtFCLWnArqZUL4VP+89GWHr5f506P84w==}
+    dependencies:
+      proxy-compare: 2.4.0
+      valtio: 1.10.2
+    transitivePeerDependencies:
+      - react
     dev: false
 
   /@zag-js/store/0.2.7:
@@ -8964,6 +8986,10 @@ packages:
     resolution: {integrity: sha512-FD8KmQUQD6Mfpd0hywCOzcon/dbkFP8XBd9F1ycbKtvVsfv6TsFUKJ2eC0Iz2y+KzlkdT1Z8SY6ZSgm07zOyqg==}
     dev: false
 
+  /proxy-compare/2.5.0:
+    resolution: {integrity: sha512-f1us0OsVAJ3tdIMXGQx2lmseYS4YXe4W+sKF5g5ww/jV+5ogMadPt+sIZ+88Ga9kvMJsrRNWzCrKPpr6pMWYbA==}
+    dev: false
+
   /pseudomap/1.0.2:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
     dev: true
@@ -10505,6 +10531,12 @@ packages:
       requires-port: 1.0.0
     dev: true
 
+  /use-sync-external-store/1.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dev: false
+
   /usehooks-ts/2.9.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-2FAuSIGHlY+apM9FVlj8/oNhd+1y+Uwv5QNkMQz1oSfdHk4PXo1qoCw9I5M7j0vpH8CSWFJwXbVPeYDjLCx9PA==}
     engines: {node: '>=16.15.0', npm: '>=8'}
@@ -10559,6 +10591,19 @@ packages:
     resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
     engines: {node: '>= 0.10'}
     dev: true
+
+  /valtio/1.10.2:
+    resolution: {integrity: sha512-NG9FUB44VQKzEqs6qGke6XEuAYWoEeCADiS6/Hkgy2bYALOdztoCwJUNl79lEae2wGhqZ6Lv+K9wPUIiS8VLxw==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      react: '>=16.8'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      proxy-compare: 2.5.0
+      use-sync-external-store: 1.2.0
+    dev: false
 
   /vfile-location/4.0.1:
     resolution: {integrity: sha512-JDxPlTbZrZCQXogGheBHjbRWjESSPEak770XwWPfw5mTc1v1nWGLB/apzZxsx8a0SJVfF8HK8ql8RD308vXRUw==}
