@@ -93,7 +93,7 @@ importers:
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2
+      vite-plugin-dts: 1.7.3
       vitest: 0.28.4
     dependencies:
       '@polymorphic-factory/react': 0.3.0_react@18.2.0
@@ -148,7 +148,7 @@ importers:
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2_vite@4.1.1
+      vite-plugin-dts: 1.7.3_vite@4.1.1
       vitest: 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
 
   packages/solid:
@@ -194,7 +194,7 @@ importers:
       solid-js: 1.6.11
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2
+      vite-plugin-dts: 1.7.3
       vite-plugin-solid: 2.5.0
       vitest: 0.28.4
     dependencies:
@@ -240,7 +240,7 @@ importers:
       solid-js: 1.6.11
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2_vite@4.1.1
+      vite-plugin-dts: 1.7.3_vite@4.1.1
       vite-plugin-solid: 2.5.0_solid-js@1.6.11+vite@4.1.1
       vitest: 0.28.4_happy-dom@8.2.6
 
@@ -289,7 +289,7 @@ importers:
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2
+      vite-plugin-dts: 1.7.3
       vitest: 0.28.4
       vue: 3.2.47
     dependencies:
@@ -337,7 +337,7 @@ importers:
       resize-observer-polyfill: 1.5.1
       typescript: 4.9.5
       vite: 4.1.1
-      vite-plugin-dts: 1.7.2_vite@4.1.1
+      vite-plugin-dts: 1.7.3_vite@4.1.1
       vitest: 0.28.4_ovcbbuviqz2apeeeyd5eetugfm
       vue: 3.2.47
 
@@ -10826,8 +10826,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts/1.7.2_vite@4.1.1:
-    resolution: {integrity: sha512-55Jwfv6n8gAlRSVGCpIY13TCqadtaKex9d2mCbaSxMFAU06suMDsFhIch1x55eptpC2RpeiresqbTjhN2HSEtQ==}
+  /vite-plugin-dts/1.7.3_vite@4.1.1:
+    resolution: {integrity: sha512-u3t45p6fTbzUPMkwYe0ESwuUeiRMlwdPfD3dRyDKUwLe2WmEYcFyVp2o9/ke2EMrM51lQcmNWdV9eLcgjD1/ng==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: '>=2.9.0'
