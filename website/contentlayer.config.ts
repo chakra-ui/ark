@@ -51,6 +51,19 @@ export const ComponentDocument = defineDocumentType(() => ({
         return fs.readJSONSync(`../packages/${framework}/src/${doc.id}/docs/${doc.id}.types.json`)
       },
     },
+    stories: {
+      type: 'json',
+      resolve: (doc) => {
+        const framework = resolveFramework(doc)
+        try {
+          return fs.readJSONSync(
+            `../packages/${framework}/src/${doc.id}/docs/${doc.id}.stories.json`,
+          )
+        } catch (error) {
+          return {}
+        }
+      },
+    },
   },
 }))
 
