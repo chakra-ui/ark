@@ -11,10 +11,10 @@ export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
 
   createEffect(() => {
     const children = getChildren()
-    if (children instanceof Element) {
+    if (children instanceof HTMLElement) {
       spread(children, menu?.()?.contextTriggerProps)
     }
   })
 
-  return <>{getChildren()}</>
+  return getChildren
 }
