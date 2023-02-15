@@ -21,7 +21,7 @@ export const PaginationPageTrigger = (props: PaginationPageTriggerProps) => {
   const getChildren = children(() => props.children)
   createEffect(() => {
     const children = getChildren()
-    if (children instanceof Element) {
+    if (children instanceof HTMLElement) {
       spread(
         children,
         pagination().getPageTriggerProps({
