@@ -68,7 +68,7 @@
     "@typescript-eslint/parser": "5.52.0",
     "@vitejs/plugin-vue": "4.0.0",
     "@vitejs/plugin-vue-jsx": "3.0.0",
-    "@vitest/coverage-c8": "0.28.4",
+    "@vitest/coverage-c8": "0.28.5",
     "@vue/compiler-sfc": "3.2.47",
     "clean-package": "2.2.0",
     "eslint": "8.34.0",
@@ -78,7 +78,7 @@
     "typescript": "4.9.5",
     "vite": "4.1.1",
     "vite-plugin-dts": "1.7.3",
-    "vitest": "0.28.4",
+    "vitest": "0.28.5",
     "vue": "3.2.47"
   },
   "peerDependencies": {

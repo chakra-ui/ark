@@ -68,7 +68,7 @@
     "@types/testing-library__jest-dom": "5.14.5",
     "@typescript-eslint/eslint-plugin": "5.52.0",
     "@typescript-eslint/parser": "5.52.0",
-    "@vitest/coverage-c8": "0.28.4",
+    "@vitest/coverage-c8": "0.28.5",
     "clean-package": "2.2.0",
     "eslint": "8.34.0",
     "happy-dom": "8.2.6",
@@ -77,7 +77,7 @@
     "vite": "4.1.1",
     "vite-plugin-dts": "1.7.3",
     "vite-plugin-solid": "2.5.0",
-    "vitest": "0.28.4"
+    "vitest": "0.28.5"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
