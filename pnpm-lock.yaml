@@ -18,7 +18,9 @@ importers:
       prettier: 2.8.4
       prettier-plugin-organize-imports: 3.2.2
       react: 18.2.0
+      ts-morph: ^17.0.1
       ts-node: 10.9.1
+      ts-pattern: ^4.1.4
       turbo: 1.7.4
       typescript: 4.9.5
     devDependencies:
@@ -36,7 +38,9 @@ importers:
       prettier: 2.8.4
       prettier-plugin-organize-imports: 3.2.2_silln3pw57har7jydmecgzoypa
       react: 18.2.0
+      ts-morph: 17.0.1
       ts-node: 10.9.1_4bewfcp2iebiwuold25d6rgcsy
+      ts-pattern: 4.1.4
       turbo: 1.7.4
       typescript: 4.9.5
 
@@ -10242,7 +10246,6 @@ packages:
 
   /ts-pattern/4.1.4:
     resolution: {integrity: sha512-Mcw65oUd1w5ktKi5BRwrnz16Otwk9iv7P0dKgvbi+A1albCDgnixohSqNLuFwIp5dzxPmTPm0iDQ6p1ZJr9uGw==}
-    dev: false
 
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}

@@ -29,7 +29,8 @@
     "typecheck": "tsc",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
-    "typedocs": "ts-node ../../scripts/generate-type-docs.ts"
+    "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
+    "storydocs": "ts-node ../../scripts/generate-stories.ts"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.3.0",
