@@ -43,23 +43,35 @@ export const markdown = defineRecipe({
       content: "'–'",
       width: '1em',
     },
-    '& pre': {
+    '& [data-rehype-pretty-code-fragment]': {
+      my: '8',
       backgroundColor: 'gray.950',
       borderRadius: 'lg',
+      overflowY: 'hidden',
+    },
+    '& pre': {
       boxShadow: 'sm',
       fontFamily: 'var(--font-roboto-mono)',
-      my: '8',
       py: '5',
       wordBreak: 'break-word',
+    },
+    '& [data-rehype-pretty-code-title]': {
+      padding: '12px 20px',
+      background: '#1e1e1e',
+      color: '#888888',
+      borderRadius: '10px 10px 0 0',
+      fontSize: '14px',
+      borderBottom: '1px solid token(colors.gray.900)',
     },
     '& code:not([class])': {
       fontFamily: 'var(--font-roboto-mono)',
       textStyle: 'sm',
     },
+    '& pre > code': {
+      display: 'grid',
+    },
     '& pre > code > .line': {
       px: '5',
-      display: 'inline-block',
-      width: 'full',
       borderLeftWidth: '2px',
       borderColor: 'transparent',
     },

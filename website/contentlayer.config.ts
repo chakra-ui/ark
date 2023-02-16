@@ -150,7 +150,6 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: 'dark-plus',
-          keepBackground: true,
           onVisitLine(node) {
             if (node.children.length === 0) {
               node.children = [{ type: 'text', value: ' ' }]

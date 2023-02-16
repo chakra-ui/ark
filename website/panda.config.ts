@@ -7,7 +7,6 @@ export default defineConfig({
   presets: ['@pandacss/dev/presets'],
   outdir: 'panda',
   jsxFramework: 'react',
-  clean: true,
   theme: {
     extend: {
       recipes,
