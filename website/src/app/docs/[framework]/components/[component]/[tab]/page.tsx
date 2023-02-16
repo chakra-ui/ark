@@ -21,7 +21,7 @@ const Page = (props: any) => {
     .otherwise(() => (
       <Stack gap="12">
         <Playground component={document.id} />
-        <Markdown markdown={document.body.code} />
+        <Markdown doc={document} />
       </Stack>
     ))
 }

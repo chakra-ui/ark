@@ -17,7 +17,7 @@ const Page = (props: any) => {
     <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
       <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
         <PageHeader subHeading="Overview" heading={document.name} />
-        <Markdown markdown={document.body.code} />
+        <Markdown doc={document} />
       </Box>
       <TableOfContent entries={document.toc} />
     </Stack>
