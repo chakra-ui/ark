@@ -20,137 +20,41 @@ import {
 The Accordion component consists of the `Accordion`, `AccordionTrigger`, `AccordionItem` and
 `AccordionContent` components.
 
-```tsx
-<Accordion>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Basic" />
 
 ### Allow toggling the open state
 
 To collapse an already expanded accordion item by clicking on it, set the `collapsible` prop
 property to `true`.
 
-If `multiple` is `true`, we internally set collapsible to be true.
+> If `multiple` is `true`, we internally set `collapsible` to be true.
 
-```tsx
-<Accordion collapsible>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Collapsible" />
 
 ### Allow multiple open accordions at once
 
 To allow multiple items to be expanded at once, set `multiple` to `true`. This mode implicitly sets
 `collapsible` to `true` and ensures that each accordion can be expanded.
 
-```tsx
-<Accordion multiple>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Multiple" />
 
 ### Disable specific accordion items
 
 To disable a specific accordion item, set the `disabled` prop to `true`. When an accordion item is
 disabled, it is skipped from keyboard navigation and can't be interacted with.
 
-```tsx
-<Accordion>
-  <AccordionItem value="panel-1" disabled>
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Disabled" />
 
 ### Uncontrolled usage with defaultValue
 
 Expand accordion items by default with setting `defaultValue` to the value of an `AccordionItem`.
 The `defaultValue` should be of type `string | string[] | null`
 
-```tsx
-<Accordion defaultValue="panel-2">
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Uncontrolled" />
 
 ### Controlled usage with value and onChange
 
 The accordion item accepts a `value` and `onChange` prop, to allow a controlled usage. The `value`
 prop should be of type `string | string[] | null`.
 
-```tsx
-export const Controlled = () => {
-  const [value, setValue] = React.useState<string | string[] | null>('panel-2')
-  return (
-    <Accordion value={value} onChange={(details) => setValue(details.value)}>
-      {['panel-1', 'panel-2', 'panel-3'].map((id) => (
-        <AccordionItem key={id} value={id}>
-          <AccordionTrigger>
-            <button>{id} trigger</button>
-          </AccordionTrigger>
-          <AccordionContent>{id} content</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  )
-}
-```
+<Story name="Controlled" />
