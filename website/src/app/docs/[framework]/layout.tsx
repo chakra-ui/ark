@@ -38,7 +38,7 @@ const DocsLayout = (props: any) => {
           <SidebarContainer>
             <Sidebar entries={[overview, components]} />
           </SidebarContainer>
-          <panda.main py={{ base: '10', lg: '12' }} flex={1}>
+          <panda.main py={{ base: '10', lg: '12' }} flex={1} width="full">
             {props.children}
           </panda.main>
         </Stack>

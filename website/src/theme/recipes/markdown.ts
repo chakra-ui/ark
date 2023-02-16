@@ -53,9 +53,6 @@ export const markdown = defineRecipe({
       wordBreak: 'break-word',
     },
     '& code:not([class])': {
-      background: 'bg.subtle',
-      borderRadius: 'sm',
-      borderWidth: '1px',
       fontFamily: 'var(--font-roboto-mono)',
       textStyle: 'sm',
       px: '1',

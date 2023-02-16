@@ -11,7 +11,13 @@ export const Markdown = (props: MarkdownProps) => {
 
   return (
     <panda.article className={markdown()}>
-      <MDXComponent />
+      <MDXComponent
+        components={{
+          pre({ html }: any) {
+            return <div dangerouslySetInnerHTML={{ __html: html }} />
+          },
+        }}
+      />
     </panda.article>
   )
 }
