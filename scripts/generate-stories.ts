@@ -1,7 +1,17 @@
 import { outputFile } from 'fs-extra'
 import { join } from 'path'
+import prettier from 'prettier'
 import { Node, Project } from 'ts-morph'
 import { match } from 'ts-pattern'
+
+const prettierConfig = await prettier.resolveConfig('.')
+
+function format(stories: Record<string, string>) {
+  return prettier.format(JSON.stringify(stories), {
+    ...prettierConfig,
+    parser: 'json',
+  })
+}
 
 const main = async () => {
   const project = new Project({})
@@ -27,7 +37,7 @@ const main = async () => {
 
       const outPath = join(sourceFile.getDirectoryPath(), 'docs', `${component}.stories.json`)
 
-      return outputFile(outPath, JSON.stringify(stories, null, 2))
+      return outputFile(outPath, format(stories))
     }),
   )
 }

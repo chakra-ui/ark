@@ -1,8 +1,0 @@
-@import '../../node_modules/prism-themes/themes/prism-night-owl.css';
-
-code[class*='language-'],
-pre[class*='language-'] {
-  font-size: calc(13rem / 16);
-  font-family: var(--font-roboto-mono, monospace);
-  max-width: calc(100vw - 32px);
-}

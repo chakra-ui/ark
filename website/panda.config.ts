@@ -172,6 +172,7 @@ export default defineConfig({
       WebkitTextSizeAdjust: '100%',
       height: '100%',
       scrollPaddingTop: '6rem',
+      overflow: 'auto',
     },
     body: {
       backgroundColor: 'bg.canvas',
@@ -179,6 +180,8 @@ export default defineConfig({
       overflow: 'scroll',
       fontFamily: 'var(--font-inter), sans-serif',
       height: 'fit-content',
+      overflowX: 'hidden',
+      overflowY: 'auto',
       _dark: {
         colorScheme: 'dark',
       },
