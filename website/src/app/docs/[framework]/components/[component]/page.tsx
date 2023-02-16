@@ -10,9 +10,9 @@ import { Stack } from 'panda/jsx/stack'
 
 const Page = (props: any) => {
   const { params } = props
-  const component = findComponentDocumentByFrameworkAndId(params.framework, params.component)
+  const doc = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
-  if (!component) {
+  if (!doc) {
     redirect(`/docs/${params.framework}/overview/introduction`)
   }
 
@@ -20,17 +20,13 @@ const Page = (props: any) => {
     <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
       <Box flex="1" maxW={{ base: '100%', lg: '3xl' }}>
         <Stack gap="12">
-          <PageHeader
-            subHeading="Component"
-            heading={component.name}
-            supportingText={component.description}
-          />
-          <ComponentTabs basePath={component.route} />
-          <Playground component={component.id} />
-          <Markdown markdown={component.body.code} />
+          <PageHeader subHeading="Component" heading={doc.name} supportingText={doc.description} />
+          <ComponentTabs basePath={doc.route} />
+          <Playground component={doc.id} />
+          <Markdown doc={doc} />
         </Stack>
       </Box>
-      <TableOfContent entries={component.toc} />
+      <TableOfContent entries={doc.toc} />
     </Stack>
   )
 }
