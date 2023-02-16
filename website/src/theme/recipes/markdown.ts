@@ -49,14 +49,23 @@ export const markdown = defineRecipe({
       boxShadow: 'sm',
       fontFamily: 'var(--font-roboto-mono)',
       my: '8',
-      p: '4',
+      py: '5',
       wordBreak: 'break-word',
     },
     '& code:not([class])': {
       fontFamily: 'var(--font-roboto-mono)',
       textStyle: 'sm',
-      px: '1',
-      py: '0.5',
+    },
+    '& pre > code > .line': {
+      px: '5',
+      display: 'inline-block',
+      width: 'full',
+      borderLeftWidth: '2px',
+      borderColor: 'transparent',
+    },
+    '& pre > code > .line.highlighted': {
+      bg: 'gray.800',
+      borderColor: 'purple.500',
     },
     '& kbd': {
       background: 'bg.subtle',

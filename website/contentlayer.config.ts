@@ -3,8 +3,8 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
 import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrettyCode, { Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import rehypeShiki from './src/lib/rehypeShiki'
 
 const resolveFramework = (doc: { _raw: RawDocumentData }) => doc._raw.sourceFilePath.split('/')[0]
 export const ComponentDocument = defineDocumentType(() => ({
@@ -146,7 +146,24 @@ export default makeSource({
           properties: { className: ['anchor'] },
         },
       ],
-      rehypeShiki,
+      [
+        rehypePrettyCode,
+        {
+          theme: 'dark-plus',
+          keepBackground: true,
+          onVisitLine(node) {
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }]
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push('highlighted')
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ['word']
+          },
+        } satisfies Partial<PrettyCodeOptions>,
+      ],
     ],
   },
 })
