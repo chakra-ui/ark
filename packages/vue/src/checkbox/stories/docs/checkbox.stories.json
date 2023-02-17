@@ -1,3 +1,0 @@
-{
-  "Basic": "const Basic = () => (\n  <>\n    <Checkbox>\n      <CheckboxLabel>Checkbox 1</CheckboxLabel>\n      <CheckboxInput />\n      <CheckboxControl />\n    </Checkbox>\n\n    <Checkbox>\n      <CheckboxLabel>Checkbox 2</CheckboxLabel>\n      <CheckboxInput />\n      <CheckboxControl />\n    </Checkbox>\n  </>\n)"
-}
