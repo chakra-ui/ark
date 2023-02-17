@@ -64,7 +64,7 @@ importers:
   packages/react:
     specifiers:
       '@polymorphic-factory/react': 0.3.0
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
@@ -145,10 +145,10 @@ importers:
       '@zag-js/transition': 0.1.2
       '@zag-js/types': 0.3.4
     devDependencies:
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-      '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
       '@types/jsdom': 21.1.0
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -176,7 +176,7 @@ importers:
     specifiers:
       '@polymorphic-factory/solid': 0.2.0
       '@solidjs/testing-library': 0.6.1
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@types/jsdom': 21.1.0
@@ -247,9 +247,9 @@ importers:
       '@zag-js/types': 0.3.4
     devDependencies:
       '@solidjs/testing-library': 0.6.1_solid-js@1.6.11
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
       '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.52.0_6cfvjsbua5ptj65675bqcn6oza
@@ -268,7 +268,7 @@ importers:
   packages/vue:
     specifiers:
       '@polymorphic-factory/vue': 0.2.0
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@testing-library/vue': 6.6.1
@@ -339,9 +339,9 @@ importers:
       '@zag-js/tooltip': 0.2.11
       '@zag-js/vue': 0.2.9_vue@3.2.47
     devDependencies:
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
       '@testing-library/vue': 6.6.1_a2ihsjreowava2sm4iorpgwkom
       '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
@@ -927,13 +927,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/runtime/7.20.6:
     resolution: {integrity: sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: true
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -2844,6 +2844,20 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
+  /@testing-library/dom/9.0.0:
+    resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      '@babel/code-frame': 7.18.6
+      '@babel/runtime': 7.20.13
+      '@types/aria-query': 5.0.1
+      aria-query: 5.1.1
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.14
+      lz-string: 1.4.4
+      pretty-format: 27.5.1
+    dev: true
+
   /@testing-library/jest-dom/5.16.5:
     resolution: {integrity: sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
@@ -2873,13 +2887,13 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /@testing-library/user-event/14.4.3_yxlyej73nftwmh2fiao7paxmlm:
+  /@testing-library/user-event/14.4.3_@testing-library+dom@9.0.0:
     resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.0
     dev: true
 
   /@testing-library/vue/6.6.1_a2ihsjreowava2sm4iorpgwkom:
@@ -4067,7 +4081,7 @@ packages:
     resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
     engines: {node: '>=6.0'}
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.13
       '@babel/runtime-corejs3': 7.20.6
     dev: true
 
@@ -5538,7 +5552,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.13
       aria-query: 4.2.2
       array-includes: 3.1.6
       ast-types-flow: 0.0.7
@@ -7774,7 +7788,7 @@ packages:
     peerDependencies:
       esbuild: 0.*
     dependencies:
-      '@babel/runtime': 7.20.6
+      '@babel/runtime': 7.20.13
       '@esbuild-plugins/node-resolve': 0.1.4_esbuild@0.17.7
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
       '@mdx-js/esbuild': 2.2.1_esbuild@0.17.7

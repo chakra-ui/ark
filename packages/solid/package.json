@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@solidjs/testing-library": "0.6.1",
-    "@testing-library/dom": "8.20.0",
+    "@testing-library/dom": "9.0.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
     "@types/jsdom": "21.1.0",
