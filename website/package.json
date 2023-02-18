@@ -29,7 +29,7 @@
     "react-icons": "4.7.1",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
-    "rehype-pretty-code": "0.9.3",
+    "rehype-pretty-code": "0.9.4",
     "rehype-slug": "5.1.0",
     "shiki": "^0.14.1",
     "ts-pattern": "4.1.4",
