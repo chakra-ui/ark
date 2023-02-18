@@ -387,7 +387,7 @@ importers:
       react-icons: 4.7.1
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
-      rehype-pretty-code: 0.9.3
+      rehype-pretty-code: 0.9.4
       rehype-slug: 5.1.0
       shiki: ^0.14.1
       ts-pattern: 4.1.4
@@ -410,7 +410,7 @@ importers:
       react-icons: 4.7.1_react@18.2.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
-      rehype-pretty-code: 0.9.3_shiki@0.14.1
+      rehype-pretty-code: 0.9.4_shiki@0.14.1
       rehype-slug: 5.1.0
       shiki: 0.14.1
       ts-pattern: 4.1.4
@@ -9245,8 +9245,8 @@ packages:
       unified: 10.1.2
     dev: false
 
-  /rehype-pretty-code/0.9.3_shiki@0.14.1:
-    resolution: {integrity: sha512-57i+ifrttqpeQxub0NZ2pRw0aiUPYeBpr234NLWfZ4BfbEaP+29+iCXB1rUMkzoPi6IBC4w4I93mUPgw36IajQ==}
+  /rehype-pretty-code/0.9.4_shiki@0.14.1:
+    resolution: {integrity: sha512-3m4aQT15n8C+UizcZL0enaahoZwCDm5K1qKQ3DGgHE7U8l/DEEEJ/hm+uDe9yyK4sxVOSfZcRIMHrpJwLQi+Rg==}
     engines: {node: ^12.16.0 || >=13.2.0}
     peerDependencies:
       shiki: '*'
