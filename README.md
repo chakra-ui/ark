@@ -28,7 +28,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Menu         | 🟢    | 🟢    | ⚪  |
 | Number Input | 🟢    | 🟢    | 🟢  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
-| Pin Input    | 🟢    | 🟢    | ⚪  |
+| Pin Input    | 🟢    | 🟢    | 🟢  |
 | Popover      | 🟢    | 🟢    | ⚪  |
 | Pressable    | 🟢    | 🟢    | 🟢  |
 | Radio Group  | 🟢    | 🟢    | ⚪  |
