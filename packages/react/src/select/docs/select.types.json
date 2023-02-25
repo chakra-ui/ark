@@ -98,11 +98,27 @@
     }
   },
   "SelectContext": {
-    "blur": { "type": "() => void", "isRequired": true },
-    "clearSelectedOption": { "type": "() => void", "isRequired": true },
-    "close": { "type": "() => void", "isRequired": true },
+    "blur": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to blur the select"
+    },
+    "clearSelectedOption": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the selected option"
+    },
+    "close": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to close the select"
+    },
     "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the select"
+    },
     "getOptionGroupLabelProps": {
       "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
       "isRequired": true
@@ -117,27 +133,52 @@
     },
     "getOptionState": {
       "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isSelected: boolean\n}",
-      "isRequired": true
+      "isRequired": true,
+      "description": "Returns the state details of an option"
     },
     "hiddenSelectProps": {
       "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
       "isRequired": true
     },
-    "isOpen": { "type": "boolean", "isRequired": true },
+    "isOpen": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the select is open"
+    },
     "labelProps": {
       "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
       "isRequired": true
     },
-    "open": { "type": "() => void", "isRequired": true },
+    "open": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to open the select"
+    },
     "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "setHighlightedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the highlighted option"
+    },
+    "setSelectedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the selected option"
+    },
     "triggerProps": {
       "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
       "isRequired": true
     },
-    "highlightedOption": { "type": "Option", "isRequired": false },
-    "selectedOption": { "type": "Option", "isRequired": false }
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently highlighted option"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently selected option"
+    }
   },
   "SelectOptionProps": {
     "label": { "type": "string", "isRequired": true },
@@ -245,11 +286,27 @@
     }
   },
   "UseSelectReturn": {
-    "blur": { "type": "() => void", "isRequired": true },
-    "clearSelectedOption": { "type": "() => void", "isRequired": true },
-    "close": { "type": "() => void", "isRequired": true },
+    "blur": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to blur the select"
+    },
+    "clearSelectedOption": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the selected option"
+    },
+    "close": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to close the select"
+    },
     "contentProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the select"
+    },
     "getOptionGroupLabelProps": {
       "type": "(props: OptionGroupLabelProps) => HTMLAttributes<HTMLElement>",
       "isRequired": true
@@ -264,26 +321,51 @@
     },
     "getOptionState": {
       "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isSelected: boolean\n}",
-      "isRequired": true
+      "isRequired": true,
+      "description": "Returns the state details of an option"
     },
     "hiddenSelectProps": {
       "type": "DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>",
       "isRequired": true
     },
-    "isOpen": { "type": "boolean", "isRequired": true },
+    "isOpen": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the select is open"
+    },
     "labelProps": {
       "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
       "isRequired": true
     },
-    "open": { "type": "() => void", "isRequired": true },
+    "open": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to open the select"
+    },
     "positionerProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setHighlightedOption": { "type": "(value: Option) => void", "isRequired": true },
-    "setSelectedOption": { "type": "(value: Option) => void", "isRequired": true },
+    "setHighlightedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the highlighted option"
+    },
+    "setSelectedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the selected option"
+    },
     "triggerProps": {
       "type": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>",
       "isRequired": true
     },
-    "highlightedOption": { "type": "Option", "isRequired": false },
-    "selectedOption": { "type": "Option", "isRequired": false }
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently highlighted option"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently selected option"
+    }
   }
 }
