@@ -1,4 +1,4 @@
-import { defineRecipe } from 'css-panda'
+import { defineRecipe } from '@pandacss/dev'
 
 export const markdown = defineRecipe({
   name: 'markdown',
@@ -43,23 +43,41 @@ export const markdown = defineRecipe({
       content: "'–'",
       width: '1em',
     },
-    '& pre': {
+    '& [data-rehype-pretty-code-fragment]': {
+      my: '8',
       backgroundColor: 'gray.950',
       borderRadius: 'lg',
+      overflowY: 'hidden',
+    },
+    '& pre': {
       boxShadow: 'sm',
       fontFamily: 'var(--font-roboto-mono)',
-      my: '8',
-      p: '4',
+      py: '5',
       wordBreak: 'break-word',
     },
+    '& [data-rehype-pretty-code-title]': {
+      padding: '12px 20px',
+      background: '#1e1e1e',
+      color: '#888888',
+      borderRadius: '10px 10px 0 0',
+      fontSize: '14px',
+      borderBottom: '1px solid token(colors.gray.900)',
+    },
     '& code:not([class])': {
-      background: 'bg.subtle',
-      borderRadius: 'sm',
-      borderWidth: '1px',
       fontFamily: 'var(--font-roboto-mono)',
       textStyle: 'sm',
-      px: '1',
-      py: '0.5',
+    },
+    '& pre > code': {
+      display: 'grid',
+    },
+    '& pre > code > .line': {
+      px: '5',
+      borderLeftWidth: '2px',
+      borderColor: 'transparent',
+    },
+    '& pre > code > .line.highlighted': {
+      bg: 'gray.800',
+      borderColor: 'purple.500',
     },
     '& kbd': {
       background: 'bg.subtle',

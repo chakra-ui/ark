@@ -30,9 +30,6 @@ const VueSelectProps = {
   translation: {
     type: Object as PropType<TabsProps['translations']>,
   },
-  isIndicatorRendered: {
-    type: Boolean as PropType<TabsProps['isIndicatorRendered']>,
-  },
   ids: {
     type: Object as PropType<TabsProps['ids']>,
   },

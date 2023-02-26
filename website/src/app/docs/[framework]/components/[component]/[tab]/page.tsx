@@ -8,20 +8,18 @@ import { match } from 'ts-pattern'
 
 const Page = (props: any) => {
   const { params } = props
-  const document = findComponentDocumentByFrameworkAndId(params.framework, params.component)
+  const doc = findComponentDocumentByFrameworkAndId(params.framework, params.component)
 
-  if (!document) {
+  if (!doc) {
     notFound()
   }
 
   return match(params.tab)
-    .with('props', () => (
-      <ComponentAPIReference componentName={document.name} types={document.types} />
-    ))
+    .with('props', () => <ComponentAPIReference componentName={doc.name} types={doc.types} />)
     .otherwise(() => (
       <Stack gap="12">
-        <Playground component={document.id} />
-        <Markdown markdown={document.body.code} />
+        <Playground component={doc.id} />
+        <Markdown doc={doc} />
       </Stack>
     ))
 }

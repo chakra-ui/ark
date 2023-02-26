@@ -1,0 +1,4 @@
+{
+  "Basic": "const Basic = () => (\n  <Checkbox>\n    <CheckboxLabel>Checkbox</CheckboxLabel>\n    <CheckboxInput />\n    <CheckboxControl />\n  </Checkbox>\n)",
+  "RenderProp": "const RenderProp = () => (\n  <Checkbox>\n    {(state) => (\n      <>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput data-peer />\n        <CheckboxControl>\n          {state().isChecked && <span>✓</span>}\n          {state().isIndeterminate && <span>-</span>}\n        </CheckboxControl>\n      </>\n    )}\n  </Checkbox>\n)"
+}

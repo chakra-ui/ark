@@ -1,7 +1,7 @@
 {
   "MenuProps": {
     "anchorPoint": {
-      "type": "any",
+      "type": "Point",
       "isRequired": false,
       "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
     },
@@ -109,7 +109,7 @@
   "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } },
   "UseMenuProps": {
     "anchorPoint": {
-      "type": "any",
+      "type": "Point",
       "isRequired": false,
       "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
     },

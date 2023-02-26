@@ -217,9 +217,17 @@
     }
   },
   "UsePinInputReturn": {
-    "clearValue": { "type": "() => void", "isRequired": true },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the inputs."
+    },
     "controlProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the pin-input. This will focus the first input."
+    },
     "getInputProps": {
       "type": "({\n  index,\n}: {\n  index: number\n}) => DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
       "isRequired": true
@@ -228,15 +236,35 @@
       "type": "DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>",
       "isRequired": true
     },
-    "isValueComplete": { "type": "boolean", "isRequired": true },
+    "isValueComplete": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether all inputs are filled."
+    },
     "labelProps": {
       "type": "DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
       "isRequired": true
     },
     "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string[]) => void", "isRequired": true },
-    "setValueAtIndex": { "type": "(index: number, value: string) => void", "isRequired": true },
-    "value": { "type": "string[]", "isRequired": true },
-    "valueAsString": { "type": "string", "isRequired": true }
+    "setValue": {
+      "type": "(value: string[]) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the inputs."
+    },
+    "setValueAtIndex": {
+      "type": "(index: number, value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the input at a specific index."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The value of the input as an array of strings."
+    },
+    "valueAsString": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The value of the input as a string."
+    }
   }
 }

@@ -4,7 +4,7 @@ import { Accordion } from './accordion'
 import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
 import { AccordionTrigger } from './accordion-trigger'
-import VModelAccordion from './accordion.story.vue'
+import VModelAccordion from './accordion.stories.vue'
 
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {

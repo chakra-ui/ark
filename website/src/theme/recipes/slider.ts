@@ -1,5 +1,5 @@
 import { sliderAnatomy } from '@ark-ui/react'
-import { defineParts, defineRecipe } from 'css-panda'
+import { defineParts, defineRecipe } from '@pandacss/dev'
 
 const parts = defineParts(sliderAnatomy.build())
 
