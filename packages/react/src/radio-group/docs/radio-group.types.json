@@ -134,9 +134,21 @@
     }
   },
   "UseRadioGroupReturn": {
-    "blur": { "type": "() => void", "isRequired": true },
-    "clearValue": { "type": "() => void", "isRequired": true },
-    "focus": { "type": "() => void", "isRequired": true },
+    "blur": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to blur the currently focused radio input in the radio group"
+    },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the radio group"
+    },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the radio group"
+    },
     "getRadioControlProps": {
       "type": "(props: RadioProps) => HTMLAttributes<HTMLElement>",
       "isRequired": true
@@ -153,9 +165,22 @@
       "type": "(\n  props: RadioProps,\n) => DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>",
       "isRequired": true
     },
+    "getRadioState": {
+      "type": "<T_1 extends RadioProps>(\n  props: T_1,\n) => {\n  isInteractive: boolean\n  isReadOnly: boolean | undefined\n  isInvalid: boolean | undefined\n  isDisabled: boolean | undefined\n  isChecked: boolean\n  isFocused: boolean\n  isHovered: boolean\n  isActive: boolean\n}",
+      "isRequired": true,
+      "description": "Returns the state details of a radio input"
+    },
     "labelProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string) => void", "isRequired": true },
-    "value": { "type": "string", "isRequired": false }
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the radio group"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the radio group"
+    }
   }
 }

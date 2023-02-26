@@ -21,22 +21,22 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Accordion    | 🟢    | 🟢    | 🟢  |
 | Checkbox     | 🟢    | 🟢    | 🟢  |
 | Dialog       | 🟢    | 🟢    | 🟢  |
-| Combobox     | 🟢    | 🟢    | ⚪  |
+| Combobox     | 🟢    | 🟢    | 🟢  |
 | Editable     | 🟢    | 🟢    | 🟢  |
 | Environment  | 🟢    | 🟢    | ⚪  |
 | Hover Card   | 🟢    | 🟢    | 🟢  |
 | Menu         | 🟢    | 🟢    | ⚪  |
 | Number Input | 🟢    | 🟢    | 🟢  |
 | Pagination   | 🟢    | 🟢    | ⚪  |
-| Pin Input    | 🟢    | 🟢    | ⚪  |
+| Pin Input    | 🟢    | 🟢    | 🟢  |
 | Popover      | 🟢    | 🟢    | ⚪  |
 | Pressable    | 🟢    | 🟢    | 🟢  |
 | Radio Group  | 🟢    | 🟢    | ⚪  |
 | Range Slider | 🟢    | 🟢    | ⚪  |
-| Rating       | 🟢    | 🟢    | ⚪  |
+| Rating       | 🟢    | 🟢    | 🟢  |
 | Select       | 🟢    | 🟢    | 🟢  |
 | Slider       | 🟢    | 🟢    | ⚪  |
-| Splitter     | 🟢    | 🟢    | ⚪  |
+| Splitter     | 🟢    | 🟢    | 🟢  |
 | Tabs         | 🟢    | 🟢    | 🟢  |
 | Tags Input   | 🟢    | 🟢    | ⚪  |
 | Toast        | 🟢    | 🟢    | ⚪  |

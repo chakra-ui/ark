@@ -26,11 +26,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
-    "isIndicatorRendered": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the indicator is rendered."
-    },
     "loop": {
       "type": "boolean",
       "isRequired": false,

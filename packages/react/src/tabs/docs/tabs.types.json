@@ -31,11 +31,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
-    "isIndicatorRendered": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the indicator is rendered."
-    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -95,11 +90,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
-    "isIndicatorRendered": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the indicator is rendered."
-    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -133,7 +123,11 @@
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   },
   "UseTabsReturn": {
-    "clearValue": { "type": "() => void", "isRequired": true },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Clears the value of the tabs."
+    },
     "contentGroupProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
     "getContentProps": {
       "type": "({ value }: { value: string }) => HTMLAttributes<HTMLElement>",
@@ -144,11 +138,27 @@
       "isRequired": true
     },
     "indicatorProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "previousValues": { "type": "string[]", "isRequired": true },
+    "previousValues": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The previous values of the tabs in sequence of selection."
+    },
     "rootProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "setValue": { "type": "(value: string) => void", "isRequired": true },
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Sets the value of the tabs."
+    },
     "tablistProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true },
-    "focusedValue": { "type": "string", "isRequired": false },
-    "value": { "type": "string", "isRequired": false }
+    "focusedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the tab that is currently focused."
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the tabs."
+    }
   }
 }
