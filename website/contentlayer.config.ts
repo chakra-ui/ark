@@ -3,8 +3,18 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
 import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrism from 'rehype-prism-plus'
+import rehypePrettyCode, { Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
+import type { Highlighter } from 'shiki'
+
+let highlighter: Highlighter
+const highlightWithShiki = async (code: string) => {
+  if (!highlighter) {
+    const { getHighlighter } = await import('shiki')
+    highlighter = await getHighlighter({ theme: 'dark-plus' })
+  }
+  return highlighter.codeToHtml(code, { lang: 'tsx' })
+}
 
 const resolveFramework = (doc: { _raw: RawDocumentData }) => doc._raw.sourceFilePath.split('/')[0]
 export const ComponentDocument = defineDocumentType(() => ({
@@ -49,6 +59,26 @@ export const ComponentDocument = defineDocumentType(() => ({
       resolve: (doc) => {
         const framework = resolveFramework(doc)
         return fs.readJSONSync(`../packages/${framework}/src/${doc.id}/docs/${doc.id}.types.json`)
+      },
+    },
+    stories: {
+      type: 'json',
+      resolve: async (doc) => {
+        const framework = resolveFramework(doc)
+        try {
+          const jsonPath = `../packages/${framework}/src/${doc.id}/docs/${doc.id}.stories.json`
+          const json: Record<string, string> = fs.readJSONSync(jsonPath)
+          const items = await Promise.all(
+            Object.entries(json).map(async ([key, value]) => [
+              key,
+              await highlightWithShiki(value),
+            ]),
+          )
+          return Object.fromEntries(items)
+        } catch (error) {
+          console.log("Couldn't find stories for", `${framework}/src/${doc.id}`)
+          return {}
+        }
       },
     },
   },
@@ -133,7 +163,23 @@ export default makeSource({
           properties: { className: ['anchor'] },
         },
       ],
-      rehypePrism,
+      [
+        rehypePrettyCode,
+        {
+          theme: 'dark-plus',
+          onVisitLine(node) {
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }]
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push('highlighted')
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ['word']
+          },
+        } satisfies Partial<PrettyCodeOptions>,
+      ],
     ],
   },
 })

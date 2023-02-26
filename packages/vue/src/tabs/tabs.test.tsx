@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import Component from './stories/basic.story.vue'
+import Component from './stories/basic.stories.vue'
 
 describe('Tabs', () => {
   it('should render', () => {

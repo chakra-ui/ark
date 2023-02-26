@@ -13,7 +13,6 @@ export const Tabs = (props: TabsProps) => {
     'getRootNode',
     'id',
     'ids',
-    'isIndicatorRendered',
     'loop',
     'onChange',
     'onDelete',

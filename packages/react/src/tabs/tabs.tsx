@@ -16,7 +16,6 @@ export const Tabs = forwardRef<'div', TabsProps>((props, ref) => {
     'getRootNode',
     'id',
     'ids',
-    'isIndicatorRendered',
     'loop',
     'onChange',
     'onDelete',

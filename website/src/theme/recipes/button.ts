@@ -1,5 +1,5 @@
 import { createAnatomy } from '@ark-ui/react'
-import { defineParts, defineRecipe } from 'css-panda'
+import { defineParts, defineRecipe } from '@pandacss/dev'
 
 const parts = defineParts(createAnatomy('button').parts('root', 'icon', 'spinner').build())
 

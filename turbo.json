@@ -4,6 +4,9 @@
     "typedocs": {
       "cache": false
     },
+    "storydocs": {
+      "cache": false
+    },
     "build": {
       "outputs": ["dist/**", ".next/**"]
     },

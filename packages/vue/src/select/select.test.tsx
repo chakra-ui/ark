@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
-import SelectStory from './select.story.vue'
+import SelectStory from './select.stories.vue'
 
 /**
  * We occasionally wait for the component to render in between interactions

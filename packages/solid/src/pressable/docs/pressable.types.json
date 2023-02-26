@@ -124,7 +124,11 @@
     }
   },
   "UsePressableReturn": {
-    "isPressed": { "type": "boolean", "isRequired": true },
+    "isPressed": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the element is pressed."
+    },
     "pressableProps": { "type": "HTMLAttributes<any>", "isRequired": true }
   }
 }

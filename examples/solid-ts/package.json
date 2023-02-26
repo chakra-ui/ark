@@ -1,0 +1,23 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@ark-ui/solid": "workspace:*",
+    "solid-js": "1.6.11"
+  },
+  "devDependencies": {
+    "typescript": "4.9.5",
+    "vite": "4.1.4",
+    "vite-plugin-solid": "2.5.0",
+    "vite-plugin-ssr": "0.4.89"
+  }
+}
