@@ -37,6 +37,7 @@
     "@zag-js/accordion": "0.2.13",
     "@zag-js/anatomy": "0.1.4",
     "@zag-js/checkbox": "0.2.14",
+    "@zag-js/combobox": "0.2.16",
     "@zag-js/dialog": "0.2.13",
     "@zag-js/editable": "0.2.14",
     "@zag-js/hover-card": "0.2.6",

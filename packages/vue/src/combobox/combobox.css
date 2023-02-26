@@ -1,0 +1,10 @@
+[data-part='option'][data-highlighted] {
+  background-color: greenyellow;
+}
+
+[data-part='content'] {
+  list-style-type: none;
+  max-width: 240px;
+  padding: 0;
+  margin: 0;
+}
