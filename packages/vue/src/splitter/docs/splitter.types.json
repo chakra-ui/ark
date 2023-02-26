@@ -1,0 +1,36 @@
+{
+  "SplitterProps": {
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "onResize": { "type": "(details: ResizeDetails) => void", "isRequired": false },
+    "onResizeEnd": { "type": "(details: ResizeDetails) => void", "isRequired": false },
+    "onResizeStart": { "type": "(details: ResizeDetails) => void", "isRequired": false },
+    "orientation": { "type": "'horizontal' | 'vertical'", "isRequired": false },
+    "size": { "type": "PanelSizeData[]", "isRequired": false }
+  },
+  "SplitterPanelProps": {
+    "id": { "type": "PanelId", "isRequired": true },
+    "snapSize": { "type": "number", "isRequired": false }
+  },
+  "SplitterResizeTriggerProps": {
+    "id": {
+      "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
+      "isRequired": true
+    },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "step": { "type": "number", "isRequired": false }
+  }
+}

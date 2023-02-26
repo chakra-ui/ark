@@ -299,6 +299,7 @@ importers:
       '@zag-js/rating-group': 0.2.14
       '@zag-js/select': 0.1.14
       '@zag-js/slider': 0.2.15
+      '@zag-js/splitter': 0.2.14
       '@zag-js/tabs': 0.2.13
       '@zag-js/tags-input': 0.3.14
       '@zag-js/toast': 0.2.14
@@ -335,6 +336,7 @@ importers:
       '@zag-js/rating-group': 0.2.14
       '@zag-js/select': 0.1.14
       '@zag-js/slider': 0.2.15
+      '@zag-js/splitter': 0.2.14
       '@zag-js/tabs': 0.2.13
       '@zag-js/tags-input': 0.3.14
       '@zag-js/toast': 0.2.14
