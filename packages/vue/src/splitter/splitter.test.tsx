@@ -13,7 +13,7 @@ const ComponentUnderTest = (props: SplitterProps) => (
       <p>A</p>
     </SplitterPanel>
     <SplitterResizeTrigger id="a:b">
-      <div className="bar" />
+      <div />
     </SplitterResizeTrigger>
     <SplitterPanel id="b">
       <p>B</p>
