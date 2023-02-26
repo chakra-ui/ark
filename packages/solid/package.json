@@ -71,7 +71,7 @@
     "@typescript-eslint/parser": "5.53.0",
     "@vitest/coverage-c8": "0.29.1",
     "clean-package": "2.2.0",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "happy-dom": "8.9.0",
     "solid-js": "1.6.11",
     "typescript": "4.9.5",

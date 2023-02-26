@@ -72,7 +72,7 @@
     "@vitest/coverage-c8": "0.29.1",
     "@vue/compiler-sfc": "3.2.47",
     "clean-package": "2.2.0",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "happy-dom": "8.9.0",
     "jsdom": "21.1.0",
     "resize-observer-polyfill": "1.5.1",
