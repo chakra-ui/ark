@@ -10,13 +10,14 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pandaup": "pnpm upgrade @pandacss/dev@dev"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
     "@next/env": "13.2.1",
     "@next/font": "13.2.1",
-    "@pandacss/dev": "0.0.0-dev-20230213064154",
+    "@pandacss/dev": "0.0.0-dev-20230222171333",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.0",
     "markdown-toc": "1.2.0",
