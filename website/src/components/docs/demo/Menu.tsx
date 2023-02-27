@@ -32,8 +32,8 @@ export const DemoMenu = () => (
             <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
             <MenuOptionItem name="framework" type="radio" value="react">
               {({ isActive }) => (
-                <Radio name="framework" defaultChecked={isActive} value="react">
-                  {isActive ? '✅' : null} React
+                <Radio name="framework" defaultChecked={isActive}>
+                  React
                 </Radio>
               )}
             </MenuOptionItem>
