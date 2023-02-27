@@ -19,15 +19,14 @@ export type UsePopoverProps = {
 }
 
 export const usePopover = (props: UsePopoverProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      defaultOpen: context.isOpen,
+      defaultOpen: props.context.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -49,7 +48,7 @@ export const usePopover = (props: UsePopoverProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.isOpen,
+    () => reactiveContext.isOpen,
     (curr) => {
       if (curr == null) return
 
