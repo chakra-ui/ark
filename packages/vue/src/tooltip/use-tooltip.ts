@@ -11,9 +11,8 @@ export type UseTooltipProps = {
 }
 
 export const useTooltip = (props: UseTooltipProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,

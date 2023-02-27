@@ -13,14 +13,13 @@ export type UseNumberInputProps = {
 }
 
 export const useNumberInput = (props: UseNumberInputProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
+      value: props.context.modelValue ?? props.context.value,
       onBlur(details) {
         emit('blur', details)
       },

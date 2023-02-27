@@ -356,8 +356,7 @@ describe('Accordion', () => {
     expect(button).toHaveAttribute('aria-expanded', 'true')
   })
 
-  // TODO https://linear.app/chakra/issue/OSS-675/fixvue-accordiong-changes-v-model-value-on-external-trigger
-  it.skip('changes v-model value on external trigger', async () => {
+  it('changes v-model value on external trigger', async () => {
     render(VModelAccordion)
 
     const externalTrigger = screen.getByText('Trigger')

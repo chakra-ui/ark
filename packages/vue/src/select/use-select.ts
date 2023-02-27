@@ -13,14 +13,13 @@ export interface UseSelectProps {
 }
 
 export const useSelect = (props: UseSelectProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      selectedOption: context.modelValue,
+      selectedOption: props.context.modelValue,
       onChange: (details) => {
         emit('change', { ...details })
         emit('update:modelValue', { ...details })
@@ -38,7 +37,7 @@ export const useSelect = (props: UseSelectProps) => {
   )
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       api.value.setSelectedOption(value as { label: string; value: string })

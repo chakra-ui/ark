@@ -14,9 +14,8 @@ export type UsePressableProps = {
 }
 
 export const usePressable = (props: UsePressableProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
 
   const [state, send] = useMachine(
     machine({

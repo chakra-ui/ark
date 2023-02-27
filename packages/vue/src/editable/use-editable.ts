@@ -14,14 +14,13 @@ export type UseEditableProps = {
 }
 
 export const useEditable = (props: UseEditableProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
+      value: props.context.modelValue ?? props.context.value,
       onCancel(details) {
         emit('cancel', details)
       },
@@ -41,7 +40,7 @@ export const useEditable = (props: UseEditableProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (val, prevVal) => {
       if (val == undefined) return
 

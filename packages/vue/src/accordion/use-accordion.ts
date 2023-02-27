@@ -14,9 +14,9 @@ export interface UseAccordionProps {
 }
 
 export const useAccordion = (props: UseAccordionProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit, defaultValue } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const defaultValue = props.defaultValue
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
@@ -39,7 +39,7 @@ export const useAccordion = (props: UseAccordionProps) => {
   })
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       api.value.setValue(value as string | string[])

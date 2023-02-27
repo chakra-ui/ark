@@ -13,14 +13,13 @@ export type UseRatingGroupProps = {
 }
 
 export const useRatingGroup = (props: UseRatingGroupProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      value: context.modelValue,
+      value: props.context.modelValue,
       onChange(details) {
         emit('change', details.value)
         emit('update:modelValue', details.value)
