@@ -10,9 +10,9 @@ export type UseTabsProps = {
 }
 
 export const useTabs = (props: UseTabsProps) => {
-  const reactiveProps = reactive(props)
-  const { context, defaultValue, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const defaultValue = props.defaultValue
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,

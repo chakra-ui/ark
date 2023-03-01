@@ -14,9 +14,9 @@ export type UseComboboxProps = {
 }
 
 export const useCombobox = (props: UseComboboxProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit, defaultValue } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const defaultValue = props.defaultValue
+  const reactiveContext = reactive(props.context)
 
   const [state, send] = useMachine(
     machine({
@@ -47,7 +47,7 @@ export const useCombobox = (props: UseComboboxProps) => {
   })
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       if (value === undefined) return

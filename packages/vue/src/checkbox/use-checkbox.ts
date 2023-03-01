@@ -13,14 +13,13 @@ export interface UseCheckboxProps {
 }
 
 export const useCheckbox = (props: UseCheckboxProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      defaultChecked: context.modelValue,
+      defaultChecked: props.context.modelValue,
       onChange(details) {
         emit('change', details.checked)
         emit('update:modelValue', details.checked)

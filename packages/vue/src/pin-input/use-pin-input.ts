@@ -13,15 +13,14 @@ export type UsePinInputProps = {
 }
 
 export const usePinInput = (props: UsePinInputProps) => {
-  const reactiveProps = reactive(props)
-  const { context, emit } = reactiveProps
-  const reactiveContext = reactive(context)
+  const emit = props.emit
+  const reactiveContext = reactive(props.context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
+      value: props.context.modelValue ?? props.context.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', Array.from(details.value))
