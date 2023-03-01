@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@next/env": "13.2.1",
-    "@next/font": "13.2.1",
+    "@next/env": "13.2.2",
+    "@next/font": "13.2.2",
     "@pandacss/dev": "0.0.0-dev-20230222171333",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.0",
     "markdown-toc": "1.2.0",
-    "next": "13.2.1",
+    "next": "13.2.2",
     "next-contentlayer": "0.3.0",
     "next-seo": "5.15.0",
     "next-sitemap": "3.1.55",
@@ -43,7 +43,7 @@
     "@types/react-dom": "18.0.11",
     "concurrently": "7.6.0",
     "eslint": "8.35.0",
-    "eslint-config-next": "13.2.1",
+    "eslint-config-next": "13.2.2",
     "typescript": "4.9.5"
   }
 }
