@@ -6,6 +6,7 @@ import {
   isVNode,
   onBeforeMount,
   onMounted,
+  reactive,
   ref,
   Slots,
   VNode,
@@ -91,4 +92,15 @@ export const useId = (id?: string, prefix?: string) => {
     const __id__ = uid.value !== null ? uid.value.toString() : undefined
     return (prefix ? `${prefix}-${__id__}` : __id__) as string
   })
+}
+
+/**
+ * For the component composables -- takes in the props object
+ * and returns the props with a reactive context object
+ */
+export function transformComposableProps<T extends { context: object }>(props: T): T {
+  return {
+    ...props,
+    context: reactive(props.context),
+  }
 }

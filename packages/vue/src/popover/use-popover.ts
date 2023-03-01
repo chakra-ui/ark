@@ -1,8 +1,8 @@
 import { connect, Context as PopoverContext, machine } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, UnwrapRef, watch } from 'vue'
+import { computed, UnwrapRef, watch } from 'vue'
 import type { Optional } from '../types'
-import { useId } from '../utils'
+import { transformComposableProps, useId } from '../utils'
 
 interface UsePopoverPropsContext extends Optional<PopoverContext, 'id'> {
   /**
@@ -19,14 +19,13 @@ export type UsePopoverProps = {
 }
 
 export const usePopover = (props: UsePopoverProps) => {
-  const emit = props.emit
-  const reactiveContext = reactive(props.context)
+  const { context, emit } = transformComposableProps(props)
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
+      ...context,
       id: useId().value,
-      defaultOpen: props.context.isOpen,
+      defaultOpen: context.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -48,7 +47,7 @@ export const usePopover = (props: UsePopoverProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => reactiveContext.isOpen,
+    () => context.isOpen,
     (curr) => {
       if (curr == null) return
 

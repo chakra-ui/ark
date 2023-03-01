@@ -1,7 +1,7 @@
 import { connect, Context as PressableContext, machine } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
-import { useId } from '../utils'
+import { computed } from 'vue'
+import { transformComposableProps, useId } from '../utils'
 
 type PressablePropsContext = Omit<PressableContext, 'id' | 'disabled' | 'cancelOnPointerExit'> & {
   isDisabled?: PressableContext['disabled']
@@ -14,14 +14,13 @@ export type UsePressableProps = {
 }
 
 export const usePressable = (props: UsePressableProps) => {
-  const emit = props.emit
-  const reactiveContext = reactive(props.context)
+  const { context, emit } = transformComposableProps(props)
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      disabled: reactiveContext.isDisabled,
-      cancelOnPointerExit: reactiveContext.isCanceledOnExit,
+      ...context,
+      disabled: context.isDisabled,
+      cancelOnPointerExit: context.isCanceledOnExit,
       id: useId().value,
       onLongPress(event) {
         emit('longPress', event)
