@@ -37,16 +37,16 @@ export const button = defineRecipe({
   variants: {
     variant: {
       primary: {
-        color: 'fg.inverted.default',
-        backgroundColor: 'accent.default',
+        color: 'white',
+        backgroundColor: 'orange.400',
         _hover: {
-          backgroundColor: 'accent.emphasized',
+          backgroundColor: 'orange.500',
         },
         _focusVisible: {
           zIndex: 1,
           '--shadow': {
-            base: 'colors.purple.100',
-            _dark: 'colors.gray.800',
+            base: 'colors.orange.50',
+            _dark: 'colors.gray.700',
           },
           boxShadow: '0 0 0 4px var(--shadow)',
         },
