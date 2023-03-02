@@ -38,6 +38,6 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Slider       | 🟢    | 🟢    | ⚪  |
 | Splitter     | 🟢    | 🟢    | 🟢  |
 | Tabs         | 🟢    | 🟢    | 🟢  |
-| Tags Input   | 🟢    | 🟢    | ⚪  |
+| Tags Input   | 🟢    | 🟢    | 🟢  |
 | Toast        | 🟢    | 🟢    | ⚪  |
 | Tooltip      | 🟢    | 🟢    | 🟢  |
