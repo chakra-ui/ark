@@ -1,7 +1,7 @@
 import { connect, Context as RatingGroupContext, machine } from '@zag-js/rating-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
-import { useId } from '../utils'
+import { computed } from 'vue'
+import { transformComposableProps, useId } from '../utils'
 
 type RatingGroupPropsContext = Omit<RatingGroupContext, 'id'> & {
   modelValue?: RatingGroupContext['value']
@@ -13,13 +13,13 @@ export type UseRatingGroupProps = {
 }
 
 export const useRatingGroup = (props: UseRatingGroupProps) => {
-  const emit = props.emit
-  const reactiveContext = reactive(props.context)
+  const { context, emit } = transformComposableProps(props)
+
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
+      ...context,
       id: useId().value,
-      value: props.context.modelValue,
+      value: context.modelValue,
       onChange(details) {
         emit('change', details.value)
         emit('update:modelValue', details.value)
