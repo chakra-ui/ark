@@ -1,5 +1,14 @@
-export const VueIcon = () => (
-  <svg width="20" height="auto" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+import type { SVGAttributes } from 'react'
+
+export const VueIcon = (props: SVGAttributes<SVGElement>) => (
+  <svg
+    width="20"
+    height="auto"
+    viewBox="0 0 21 19"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <path
       d="M12.6863 0.950014L10.4 4.89904L8.1137 0.950014H0.5L10.4 18.05L20.3 0.950014H12.6863Z"
       fill="#41B883"

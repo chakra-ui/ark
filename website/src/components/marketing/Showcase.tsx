@@ -6,7 +6,7 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { IconButton } from '../shared/IconButton'
 
 export const Showcase = () => (
-  <Container>
+  <Container py={{ base: '12', md: '16' }}>
     <Stack direction="row" gap="8" width="full" overflow="hidden">
       <Stack gap="8" width="full" maxW="3xl">
         <Box

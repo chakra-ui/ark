@@ -1,5 +1,14 @@
-export const ReactIcon = () => (
-  <svg width="20" height="auto" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+import type { SVGAttributes } from 'react'
+
+export const ReactIcon = (props: SVGAttributes<SVGElement>) => (
+  <svg
+    width="20"
+    height="auto"
+    viewBox="0 0 23 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
