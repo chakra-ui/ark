@@ -13,7 +13,7 @@ export const Hero = () => (
     <Stack gap={{ base: '8', md: '10' }} maxW="xl">
       <Stack gap="5">
         <Heading textStyle={{ base: '4xl', md: '5xl' }} fontWeight="semibold">
-          Get fully customizable, <panda.span color="orange.400">accessible</panda.span>, and{' '}
+          Get fully customizable, <panda.span color="orange.400">accessible</panda.span> and{' '}
           <panda.span color="orange.400">unstyled</panda.span> UI components
         </Heading>
         <Text textStyle={{ base: 'md', md: 'lg' }} color="fg.muted">
@@ -30,12 +30,13 @@ export const Hero = () => (
           </Link>
           <HStack
             background="gray.100"
+            _dark={{ background: 'brown.600' }}
             borderWidth="1px"
             borderRadius="lg"
             px="5"
             color="fg.emphasized"
           >
-            <Text>npm i @ark-ui/react</Text>
+            <Text fontWeight="medium">npm i @ark-ui/react</Text>
             <MdContentCopy />
           </HStack>
         </Stack>

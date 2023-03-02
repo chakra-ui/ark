@@ -48,7 +48,7 @@ export default defineConfig({
             subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.900}' } },
           },
           border: {
-            default: { value: { base: '{colors.gray.200}', _dark: '{colors.gray.900}' } },
+            default: { value: { base: '{colors.gray.200}', _dark: '{colors.brown.400}' } },
             emphasized: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.800}' } },
           },
         },

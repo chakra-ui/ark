@@ -9,33 +9,36 @@ export const tabs = defineRecipe({
   base: parts({
     root: {},
     tablist: {
-      borderBottomWidth: '1px',
+      alignItems: 'center',
+      background: {
+        base: 'gray.200',
+        _dark: 'brown.600',
+      },
+      borderRadius: 'lg',
+      display: 'inline-flex',
+      gap: '8',
       position: 'relative',
+      px: '7',
     },
     trigger: {
       background: 'transparent',
       cursor: 'pointer',
       color: 'fg.muted',
       display: 'inline-flex',
-      fontWeight: 'semibold',
-      mr: '4',
-      pt: '0',
-      pb: '3',
+      fontWeight: 'medium',
+
       _selected: {
-        color: 'accent.default',
+        color: 'fg.default',
       },
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',
       },
-      _last: {
-        mr: '0',
-      },
     },
     indicator: {
-      height: '0.5',
-      background: 'accent.default',
-      bottom: '-1px',
+      height: '2px',
+      background: 'orange.400',
+      bottom: '0',
     },
     content: {
       py: '10',
@@ -46,16 +49,13 @@ export const tabs = defineRecipe({
   },
   variants: {
     size: {
-      sm: parts({
+      md: parts({
+        tablist: {
+          height: '10',
+        },
         trigger: {
           textStyle: 'sm',
-          px: '2',
-        },
-      }),
-      md: parts({
-        trigger: {
-          textStyle: 'md',
-          px: '3',
+          px: '1',
         },
       }),
     },
