@@ -20,9 +20,9 @@ export const ColorModeButton = () => {
       onToggle={toggle}
       toggled={colorMode === 'light'}
       className={cx(
-        button({ variant: 'tertiary', size: 'md' }),
+        button({ variant: 'link', size: 'md' }),
         css({
-          fontSize: '2xl',
+          fontSize: 'xl',
           px: '0',
           color: 'fg.emphasized',
           _hover: { bg: 'bg.subtle !important' },

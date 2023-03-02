@@ -1,38 +1,44 @@
-import { GitHubStats } from '@/components/navigation/navbar/GitHubStats'
-import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Container, HStack } from '@/panda/jsx'
+import { Container, Flex, HStack } from '@/panda/jsx'
 import Link from 'next/link'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
 
 export const Navbar = () => (
-  <nav
-    role="navigation"
-    className={css({
-      position: 'sticky',
-      top: '0',
-      background: 'bg.canvas',
-      zIndex: '100',
-      borderBottomWidth: '1px',
-    })}
-  >
-    <Container>
-      <HStack flex="1" minH={{ base: '16', md: '18' }}>
-        <Link href="/" aria-label="Back home" className={css({ mr: 'auto' })}>
-          <HStack color="fg.emphasized">
+  <nav role="navigation">
+    <Container pt="10">
+      <Flex justify="center" align="center">
+        <HStack
+          gap="12"
+          background="rgba(0, 0, 0, 0.05)"
+          _dark={{ background: 'rgba(255, 255, 255, 0.05)' }}
+          borderRadius="lg"
+          minH="12"
+          px="7"
+        >
+          <Link href="/" aria-label="Back home">
             <Logo />
-            <Text textStyle="lg" fontWeight="semibold" whiteSpace="nowrap">
-              Ark UI
-            </Text>
+          </Link>
+          <HStack gap="10">
+            <Link
+              href="/docs/react/overview/introduction"
+              className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
+            >
+              Docs
+            </Link>
+            <Link
+              href="/docs/roadmap"
+              className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
+            >
+              Roadmap
+            </Link>
           </HStack>
-        </Link>
-        <HStack gap={{ base: '1', lg: '12' }}>
-          {/* @ts-expect-error Server Component */}
-          <GitHubStats />
-          <ColorModeButton />
+          <HStack gap="3">
+            <ColorModeButton />
+            <ColorModeButton />
+          </HStack>
         </HStack>
-      </HStack>
+      </Flex>
     </Container>
   </nav>
 )

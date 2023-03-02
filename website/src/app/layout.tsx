@@ -1,4 +1,3 @@
-import { Navbar } from '@/components/navigation/navbar/Navbar'
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { css, cx } from '@/panda/css'
 import { Inter, Roboto_Mono } from '@next/font/google'
@@ -20,7 +19,6 @@ const RootLayout = (props: PropsWithChildren) => {
         <NextSeo useAppDir />
       </head>
       <body>
-        <Navbar />
         <div className={css({ minHeight: 'full' })}>{props.children}</div>
       </body>
     </html>

@@ -1,11 +1,17 @@
+import { CodeExample } from '@/components/marketing/CodeExample'
+import { Frameworks } from '@/components/marketing/Frameworks'
 import { Hero } from '@/components/marketing/Hero'
-import { Stats } from '@/components/marketing/Stats'
+import { Showcase } from '@/components/marketing/Showcase'
+import { Navbar } from '@/components/navigation/navbar/Navbar'
 
 export default function Page() {
   return (
     <>
+      <Navbar />
       <Hero />
-      <Stats />
+      <Showcase />
+      <Frameworks />
+      <CodeExample />
     </>
   )
 }

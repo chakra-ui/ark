@@ -1,54 +1,60 @@
 import { Button } from '@/components/shared/Button'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
-import { Box, Container, Stack } from '@/panda/jsx'
-import Image from 'next/image'
+import { ReactIcon } from '@/icons/React'
+import { SolidIcon } from '@/icons/Solid'
+import { VueIcon } from '@/icons/Vue'
+import { Container, HStack, panda, Stack } from '@/panda/jsx'
 import Link from 'next/link'
+import { MdContentCopy } from 'react-icons/md'
 
 export const Hero = () => (
-  <Container py={{ base: '16', md: '24' }} overflowX="hidden">
-    <Stack direction={{ base: 'column', md: 'row' }} gap="20" align="center">
-      <Stack gap={{ base: '8', md: '12' }} flex="1">
-        <Stack gap="6">
-          <Heading textStyle={{ base: '4xl', md: '6xl' }} fontWeight="semibold">
-            A UI framework made for enterprises
-          </Heading>
-          <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
-            Access fully customizable, accessible, and unstyled UI components that give you complete
-            control over the styling of your webp app in React, Vue and Solid.js
-          </Text>
-        </Stack>
+  <Container py={{ base: '16', md: '24' }}>
+    <Stack gap={{ base: '8', md: '10' }} maxW="xl">
+      <Stack gap="5">
+        <Heading textStyle={{ base: '4xl', md: '5xl' }} fontWeight="semibold">
+          Get fully customizable, <panda.span color="orange.400">accessible</panda.span> and{' '}
+          <panda.span color="orange.400">unstyled</panda.span> UI components
+        </Heading>
+        <Text textStyle={{ base: 'md', md: 'lg' }} color="fg.muted">
+          Ark UI is a headless library for building reusable, scalable Design Systems that works in
+          any framework.
+        </Text>
+      </Stack>
+      <Stack gap="8">
         <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
           <Link href="/docs/react/overview/introduction">
-            <Button size={{ base: 'xl', md: '2xl' }} width="full">
-              Explore now
+            <Button size={{ base: 'xl', md: 'xl' }} width="full">
+              Get Started
             </Button>
           </Link>
-          <Button size={{ base: 'xl', md: '2xl' }} variant="secondary">
-            Learn more
-          </Button>
+          <HStack
+            background="gray.100"
+            _dark={{ background: 'brown.600' }}
+            borderWidth="1px"
+            borderRadius="lg"
+            px="5"
+            color="fg.emphasized"
+          >
+            <Text fontWeight="medium">npm i @ark-ui/react</Text>
+            <MdContentCopy />
+          </HStack>
         </Stack>
+        <HStack gap="8">
+          {[
+            { framework: 'React', icon: <ReactIcon /> },
+            { framework: 'Vue', icon: <VueIcon /> },
+            { framework: 'Solid', icon: <SolidIcon /> },
+          ].map(({ framework, icon }) => (
+            <HStack key={framework} gap="1">
+              {icon}
+              <Text textStyle="md" color="fg.muted">
+                {framework}
+              </Text>
+            </HStack>
+          ))}
+        </HStack>
       </Stack>
-
-      <Box
-        width="700px"
-        height="700px"
-        maxWidth="100%"
-        position="relative"
-        left="30px"
-        flex="1"
-        minHeight={{ lg: '700px' }}
-        display={{ base: 'none', lg: 'block' }}
-      >
-        <Image
-          quality={100}
-          fill
-          sizes="100vw"
-          alt="Ark UI"
-          src="/assets/hero-img.png"
-          style={{ objectFit: 'contain' }}
-        />
-      </Box>
     </Stack>
   </Container>
 )
