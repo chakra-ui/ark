@@ -1,3 +1,4 @@
+import { CodeExample } from '@/components/marketing/CodeExample'
 import { Frameworks } from '@/components/marketing/Frameworks'
 import { Hero } from '@/components/marketing/Hero'
 import { Showcase } from '@/components/marketing/Showcase'
@@ -10,6 +11,7 @@ export default function Page() {
       <Hero />
       <Showcase />
       <Frameworks />
+      <CodeExample />
     </>
   )
 }

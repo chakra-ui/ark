@@ -18,7 +18,7 @@ export const tabs = defineRecipe({
       display: 'inline-flex',
       gap: '8',
       position: 'relative',
-      px: '7',
+      px: '6',
     },
     trigger: {
       background: 'transparent',
@@ -41,7 +41,10 @@ export const tabs = defineRecipe({
       bottom: '0',
     },
     content: {
+      background: 'brown.700',
+      minH: 'xl',
       py: '10',
+      px: '6',
     },
   }),
   defaultVariants: {

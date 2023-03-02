@@ -14,28 +14,28 @@ export const Frameworks = () => {
       heading: '@ark-ui/react',
       description: 'Start using headless components with React.js',
       href: '/docs/react/overview/introduction',
-      icon: <ReactIcon height="48px" width="auto" />,
+      icon: <ReactIcon height="44px" width="auto" />,
     },
     {
       heading: '@ark-ui/vue',
       description: 'Start using headless components with Vue.js',
       href: '/docs/vue/overview/introduction',
-      icon: <VueIcon height="48px" width="auto" />,
+      icon: <VueIcon height="44px" width="auto" />,
     },
     {
       heading: '@ark-ui/solid',
       description: 'Start using headless components with Solid.js',
       href: '/docs/solid/overview/introduction',
-      icon: <SolidIcon height="48px" width="auto" />,
+      icon: <SolidIcon height="44px" width="auto" />,
     },
   ]
   return (
     <Container py={{ base: '16', md: '24' }}>
       <Stack gap={{ base: '12', md: '16' }}>
-        <Stack gap={{ base: '4', md: '5' }} maxW="lg">
+        <Stack gap={{ base: '4', md: '5' }} maxW="xl">
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
-            A single <panda.span color="orange.400">component library</panda.span> <br />
-            for every framework
+            A single <panda.span color="orange.400">component library</panda.span> for <br />
+            every framework
           </Heading>
           <Text color="fg.muted" textStyle={{ base: 'md', md: 'lg' }}>
             Ark is framework agnostic and doesn&apos;t impose any JS framework on you and your team.
@@ -57,7 +57,7 @@ export const Frameworks = () => {
                 {icon}
                 <Stack gap={{ base: '4', md: '5' }}>
                   <Stack gap={{ base: '1', md: '2' }}>
-                    <Heading textStyle={{ base: 'lg', md: 'xl' }} fontWeight="semibold">
+                    <Heading textStyle="lg" fontWeight="semibold">
                       {heading}
                     </Heading>
                     <Text textStyle="md" color="fg.muted">
