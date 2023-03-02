@@ -36,7 +36,7 @@ export default defineConfig({
             },
           },
           bg: {
-            canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.black}' } },
+            canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.900}' } },
             surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
             muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
             subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },

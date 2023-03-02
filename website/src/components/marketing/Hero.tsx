@@ -1,8 +1,12 @@
 import { Button } from '@/components/shared/Button'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
-import { Container, panda, Stack } from '@/panda/jsx'
+import { ReactIcon } from '@/icons/React'
+import { SolidIcon } from '@/icons/Solid'
+import { VueIcon } from '@/icons/Vue'
+import { Container, HStack, panda, Stack } from '@/panda/jsx'
 import Link from 'next/link'
+import { MdContentCopy } from 'react-icons/md'
 
 export const Hero = () => (
   <Container py={{ base: '16', md: '24' }}>
@@ -14,18 +18,41 @@ export const Hero = () => (
         </Heading>
         <Text textStyle={{ base: 'md', md: 'lg' }} color="fg.muted">
           Ark UI is a headless library for building reusable, scalable Design Systems that works in
-          any framework
+          any framework.
         </Text>
       </Stack>
-      <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
-        <Link href="/docs/react/overview/introduction">
-          <Button size={{ base: 'xl', md: 'xl' }} width="full">
-            Get Started
-          </Button>
-        </Link>
-        <Button size={{ base: 'xl', md: 'xl' }} variant="secondary">
-          npm i @ark-ui/react
-        </Button>
+      <Stack gap="8">
+        <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
+          <Link href="/docs/react/overview/introduction">
+            <Button size={{ base: 'xl', md: 'xl' }} width="full">
+              Get Started
+            </Button>
+          </Link>
+          <HStack
+            background="gray.100"
+            borderWidth="1px"
+            borderRadius="lg"
+            px="5"
+            color="fg.emphasized"
+          >
+            <Text>npm i @ark-ui/react</Text>
+            <MdContentCopy />
+          </HStack>
+        </Stack>
+        <HStack gap="8">
+          {[
+            { framework: 'React', icon: <ReactIcon /> },
+            { framework: 'Vue', icon: <VueIcon /> },
+            { framework: 'Solid', icon: <SolidIcon /> },
+          ].map(({ framework, icon }) => (
+            <HStack key={framework} gap="1">
+              {icon}
+              <Text textStyle="md" color="fg.muted">
+                {framework}
+              </Text>
+            </HStack>
+          ))}
+        </HStack>
       </Stack>
     </Stack>
   </Container>
