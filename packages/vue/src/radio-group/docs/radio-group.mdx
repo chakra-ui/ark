@@ -1,0 +1,92 @@
+---
+id: radio-group
+name: Radio Group
+description:
+  A radio group allows users to make a single choice from a selected number of
+  options.
+---
+
+## Import
+
+```ts
+import {
+  RadioGroup,
+  Radio,
+  RadioControl,
+  RadioGroupLabel,
+  RadioInput,
+  RadioLabel,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The RadioGroup component consists of the `RadioControl`, `Radio`,
+`RadioGroupLabel`, `RadioInput`, and `RadioLabel` components. Combine them as
+desired to fit your design system.
+
+```tsx
+// In the `<script>`
+
+const options = [
+    { id: 'apple', label: 'Apples' },
+    { id: 'orange', label: 'Oranges' },
+    { id: 'mango', label: 'Mangoes' },
+    { id: 'grape', label: 'Grapes' },
+  ]
+
+// In the `<template>`
+<RadioGroup>
+  <RadioGroupLabel>Fruits</RadioGroupLabel>
+  <Radio v-for='(option, id) in options' :key='id' :value="option.id">
+    <RadioLabel>{{ option.label }}</RadioLabel>
+    <RadioInput />
+    <RadioControl />
+  </Radio>
+</RadioGroup>
+```
+
+### Disabling the radio group
+
+To make a radio group disabled, set the `disabled` prop to `true`.
+
+```tsx
+<RadioGroup disabled>{/*...*/}</RadioGroup>
+```
+
+### Making the radio group readonly
+
+To make a radio group readonly, set the `readOnly` prop to `true`.
+
+```tsx
+<RadioGroup readOnly>{/*...*/}</RadioGroup>
+```
+
+### Setting the initial value
+
+To set the radio group's initial value, use the `v-model` directive to the value
+of the radio item to be selected by default.
+
+```tsx
+// In the `<script>`
+const currentValue = ref<RadioGroupProps['modelValue']>('apple')
+
+// In the `<template>`
+<RadioGroup v-model="currentValue">{/*...*/}</RadioGroup>
+```
+
+### Listening for changes
+
+When the radio group value changes, the `onChange` callback is invoked.
+
+```tsx
+// In the `<script>`
+const handleOnChange: RadioGroupProps['onChange'] = (details) => {
+  console.log(details.value)
+}
+
+// In the `<template>`
+<RadioGroup @change='handleOnChange'>
+  {/*...*/}
+</RadioGroup>
+```
