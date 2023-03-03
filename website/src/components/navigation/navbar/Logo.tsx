@@ -1,5 +1,14 @@
-export const Logo = () => (
-  <svg width="63" height="20" viewBox="0 0 63 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+import type { SVGAttributes } from 'react'
+
+export const Logo = (props: SVGAttributes<SVGElement>) => (
+  <svg
+    width="auto"
+    height="20px"
+    viewBox="0 0 63 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
