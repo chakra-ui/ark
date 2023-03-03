@@ -388,7 +388,7 @@ importers:
       next-sitemap: 4.0.1
       react: 18.2.0
       react-dom: 18.2.0
-      react-icons: 4.7.1
+      react-icons: 4.8.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-pretty-code: 0.9.4
@@ -411,7 +411,7 @@ importers:
       next-sitemap: 4.0.1_xeg3tdra7hobsncwzvo3da7vxi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-icons: 4.7.1_react@18.2.0
+      react-icons: 4.8.0_react@18.2.0
       rehype: 12.0.1
       rehype-autolink-headings: 6.1.1
       rehype-pretty-code: 0.9.4_shiki@0.14.1
@@ -9582,8 +9582,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /react-icons/4.7.1_react@18.2.0:
-    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+  /react-icons/4.8.0_react@18.2.0:
+    resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
       react: '*'
     dependencies:
