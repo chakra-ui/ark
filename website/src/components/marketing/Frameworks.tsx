@@ -46,7 +46,7 @@ export const Frameworks = () => {
           {frameworks.map(({ heading, description, href, icon }) => (
             <Box
               key={heading}
-              flex="1"
+              width="full"
               borderRadius="lg"
               borderWidth="1px"
               background="gray.100"

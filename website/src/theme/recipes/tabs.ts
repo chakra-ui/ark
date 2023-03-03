@@ -7,7 +7,9 @@ export const tabs = defineRecipe({
   name: 'tabs',
   description: 'A tabs style',
   base: parts({
-    root: {},
+    root: {
+      width: 'full',
+    },
     tablist: {
       alignItems: 'center',
       background: {

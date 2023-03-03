@@ -21,10 +21,10 @@ export const Hero = () => (
           any framework.
         </Text>
       </Stack>
-      <Stack gap="8">
-        <Stack direction={{ base: 'column', sm: 'row' }} gap="3" width="full" alignItems="stretch">
+      <Stack gap="8" width="100%">
+        <Stack direction={{ base: 'column', sm: 'row' }} gap="3" alignItems="stretch" width="full">
           <Link href="/docs/react/overview/introduction">
-            <Button size={{ base: 'xl', md: 'xl' }} width="full">
+            <Button size={{ base: 'lg', md: 'xl' }} width="full">
               Get Started
             </Button>
           </Link>
@@ -35,6 +35,8 @@ export const Hero = () => (
             borderRadius="lg"
             px="5"
             color="fg.emphasized"
+            justify="center"
+            minH="11"
           >
             <Text fontWeight="medium">npm i @ark-ui/react</Text>
             <MdContentCopy />

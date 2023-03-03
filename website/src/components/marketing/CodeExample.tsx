@@ -1,4 +1,5 @@
 'use client'
+import { Flex } from '@/panda/jsx'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
 import { Box } from 'panda/jsx/box'
 import { Container } from 'panda/jsx/container'
@@ -28,23 +29,22 @@ export const CodeExample = () => {
   ]
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Stack gap="24" direction="row">
-        <Stack flex="1" gap="12">
+      <Stack gap="24" direction={{ base: 'column', md: 'row' }}>
+        <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
             Composable API design for a delightful experience
           </Heading>
           <Stack gap="10">
             {features.map(({ heading, description }) => (
-              <Stack key={heading} direction="row" gap="6">
+              <Stack key={heading} direction="row" gap={{ base: '5', md: '6' }}>
                 <Box
-                  width="16"
-                  height="16"
-                  borderWidth="2px"
-                  borderColor="orange.900"
+                  width={{ base: '10', md: '12' }}
+                  height={{ base: '10', md: '12' }}
                   background="orange.800"
                   borderRadius="full"
+                  flexShrink={0}
                 />
-                <Stack gap="4">
+                <Stack gap={{ base: '1', md: '2' }}>
                   <Heading textStyle="lg" fontWeight="semibold">
                     {heading}
                   </Heading>
@@ -54,9 +54,9 @@ export const CodeExample = () => {
             ))}
           </Stack>
         </Stack>
-        <Box
-          flex="1"
+        <Flex
           bg="gray.100"
+          width="full"
           _dark={{ bg: 'brown.600' }}
           borderWidth="1px"
           borderRadius="lg"
@@ -75,7 +75,7 @@ export const CodeExample = () => {
             <TabContent value="Vue">Vue Code Example</TabContent>
             <TabContent value="Solid">Solid Code Example</TabContent>
           </Tabs>
-        </Box>
+        </Flex>
       </Stack>
     </Container>
   )
