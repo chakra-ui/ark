@@ -1,29 +1,63 @@
 'use client'
+import { css } from '@/panda/css'
 import { Box, Container, HStack, Stack } from '@/panda/jsx'
 import { tabs } from '@/panda/recipes'
-import { TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
+import {
+  Carousel,
+  CarouselSlide,
+  CarouselSlideGroup,
+  CarouselViewport,
+  TabIndicator,
+  TabList,
+  Tabs,
+  TabTrigger,
+} from '@ark-ui/react'
+import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { IconButton } from '../shared/IconButton'
 
-export const Showcase = () => (
-  <Container py={{ base: '12', md: '16' }}>
-    <Stack direction="row" gap="8" width="full" overflow="hidden">
-      <Stack gap="8" width="full" maxW="3xl">
-        <Box
-          bg="gray.100"
-          _dark={{ background: 'brown.600' }}
-          borderWidth="1px"
-          borderRadius="lg"
-          minH="400px"
-          width="full"
-          maxW="3xl"
-        />
+export const Showcase = () => {
+  const components = ['Dialog', 'Menu', 'Popover', 'Slider', 'Accordion']
+  const [index, setIndex] = useState(0)
+  return (
+    <Container py={{ base: '12', md: '16' }}>
+      <Stack direction="column" gap="8" width="full" overflow="hidden">
+        <Carousel
+          className={css({ width: 'full' })}
+          index={index}
+          onSlideChange={({ index }) => setIndex(index)}
+          slidesPerView={2}
+        >
+          <CarouselViewport className={css({ overflowX: 'hidden' })}>
+            <CarouselSlideGroup>
+              {components.map((component, id) => (
+                <CarouselSlide key={component} index={id}>
+                  <Box
+                    bg="gray.100"
+                    _dark={{ background: 'brown.600' }}
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    minH="400px"
+                    p="6"
+                  >
+                    {component} Demo
+                  </Box>
+                </CarouselSlide>
+              ))}
+            </CarouselSlideGroup>
+          </CarouselViewport>
+        </Carousel>
+
         <Stack direction="row" justify="space-between" width="full">
-          <Tabs className={tabs({})} defaultValue="Dialog">
+          <Tabs
+            className={tabs({})}
+            defaultValue="Dialog"
+            onChange={({ value }) => setIndex(components.indexOf(value ?? ''))}
+          >
             <TabList>
-              {['Dialog', 'Menu', 'Popover', 'Slider', 'Accordion'].map((value) => (
-                <TabTrigger key={value} value={value}>
-                  <button>{value}</button>
+              {components.map((component) => (
+                <TabTrigger key={component} value={component}>
+                  <button>{component}</button>
                 </TabTrigger>
               ))}
               <TabIndicator />
@@ -35,14 +69,6 @@ export const Showcase = () => (
           </HStack>
         </Stack>
       </Stack>
-      <Box
-        bg="gray.100"
-        _dark={{ background: 'brown.600' }}
-        borderWidth="1px"
-        borderRadius="lg"
-        minH="400px"
-        flex="1"
-      />
-    </Stack>
-  </Container>
-)
+    </Container>
+  )
+}
