@@ -17,7 +17,7 @@
     "@ark-ui/react": "workspace:*",
     "@next/env": "13.2.3",
     "@next/font": "13.2.3",
-    "@pandacss/dev": "0.0.0-dev-20230222171333",
+    "@pandacss/dev": "0.0.0-dev-20230304131012",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.0",
     "markdown-toc": "1.2.0",
