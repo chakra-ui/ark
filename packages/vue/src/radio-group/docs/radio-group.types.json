@@ -1,0 +1,132 @@
+{
+  "RadioProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio will be disabled"
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio is marked as invalid."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio will be readonly"
+    }
+  },
+  "RadioGroupProps": {
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio group will be disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  label: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the radio. Useful for composition."
+    },
+    "modelValue": { "type": "string", "isRequired": false },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input fields in the radio\n(Useful for form submission)."
+    },
+    "onChange": {
+      "type": "(details: { value: string }) => void",
+      "isRequired": false,
+      "description": "Function called once a radio is checked"
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "Orientation of the radio group"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio group will be readonly"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the checked radio"
+    }
+  },
+  "UseRadioGroupProps": {
+    "context": { "type": "UseRadioGroupPropsContext", "isRequired": true },
+    "emit": { "type": "CallableFunction", "isRequired": true }
+  },
+  "UseRadioGroupReturn": {
+    "blur": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to blur the currently focused radio input in the radio group"
+    },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the radio group"
+    },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the radio group"
+    },
+    "getRadioControlProps": {
+      "type": "(props: RadioProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getRadioInputProps": {
+      "type": "(props: InputProps) => ElementAttrs<InputHTMLAttributes>",
+      "isRequired": true
+    },
+    "getRadioLabelProps": {
+      "type": "(props: RadioProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getRadioProps": {
+      "type": "(props: RadioProps) => ElementAttrs<LabelHTMLAttributes>",
+      "isRequired": true
+    },
+    "getRadioState": {
+      "type": "<T_1 extends RadioProps>(\n  props: T_1,\n) => {\n  isInteractive: boolean\n  isReadOnly: boolean | undefined\n  isInvalid: boolean | undefined\n  isDisabled: boolean | undefined\n  isChecked: boolean\n  isFocused: boolean\n  isHovered: boolean\n  isActive: boolean\n}",
+      "isRequired": true,
+      "description": "Returns the state details of a radio input"
+    },
+    "labelProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
+    "rootProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the radio group"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the radio group"
+    }
+  }
+}
