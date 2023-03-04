@@ -293,7 +293,7 @@ importers:
       '@zag-js/pin-input': 0.2.14
       '@zag-js/popover': 0.2.13
       '@zag-js/pressable': 0.3.13
-      '@zag-js/radio': 0.1.4
+      '@zag-js/radio-group': 0.2.1
       '@zag-js/range-slider': 0.2.15
       '@zag-js/rating': 0.2.4
       '@zag-js/rating-group': 0.2.14
@@ -330,7 +330,7 @@ importers:
       '@zag-js/pin-input': 0.2.14
       '@zag-js/popover': 0.2.13
       '@zag-js/pressable': 0.3.13
-      '@zag-js/radio': 0.1.4
+      '@zag-js/radio-group': 0.2.1
       '@zag-js/range-slider': 0.2.15
       '@zag-js/rating': 0.2.4
       '@zag-js/rating-group': 0.2.14
@@ -4062,14 +4062,6 @@ packages:
       '@zag-js/types': 0.3.4
       '@zag-js/utils': 0.3.3
       '@zag-js/visually-hidden': 0.0.1
-    dev: false
-
-  /@zag-js/radio/0.1.4:
-    resolution: {integrity: sha512-3T5Zu/S/3NQVMzOUAWAOI6SXnft4fg5EnyzfWK9Cn7xo8CxFXAAfIKjiKCZeKQl0s3bXX210fVds9X1M9y7i6Q==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.1
-      '@zag-js/core': 0.2.2
-      '@zag-js/types': 0.3.1
     dev: false
 
   /@zag-js/range-slider/0.2.15:
