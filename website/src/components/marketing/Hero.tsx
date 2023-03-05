@@ -29,8 +29,7 @@ export const Hero = () => (
             </Button>
           </Link>
           <HStack
-            background="gray.100"
-            _dark={{ background: 'brown.600' }}
+            background="bg.surface"
             borderWidth="1px"
             borderRadius="lg"
             px="5"

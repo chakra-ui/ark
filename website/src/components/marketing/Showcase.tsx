@@ -33,8 +33,7 @@ export const Showcase = () => {
               {components.map((component, id) => (
                 <CarouselSlide key={component} index={id}>
                   <Box
-                    bg="gray.100"
-                    _dark={{ background: 'brown.600' }}
+                    background="bg.surface"
                     borderWidth="1px"
                     borderRadius="lg"
                     minH="400px"

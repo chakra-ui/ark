@@ -46,12 +46,11 @@ export const Frameworks = () => {
           {frameworks.map(({ heading, description, href, icon }) => (
             <Box
               key={heading}
-              width="full"
+              background="bg.surface"
               borderRadius="lg"
               borderWidth="1px"
-              background="gray.100"
-              _dark={{ background: 'brown.600' }}
               p={{ base: '5', md: '6' }}
+              width="full"
             >
               <Stack gap={{ base: '12', md: '16' }}>
                 {icon}

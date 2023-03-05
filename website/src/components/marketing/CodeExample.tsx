@@ -55,12 +55,11 @@ export const CodeExample = () => {
           </Stack>
         </Stack>
         <Flex
-          bg="gray.100"
-          width="full"
-          _dark={{ bg: 'brown.600' }}
+          background="bg.surface"
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
+          width="full"
         >
           <Tabs className={tabs({})} defaultValue="React">
             <TabList>

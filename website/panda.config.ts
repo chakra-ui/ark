@@ -37,13 +37,13 @@ export default defineConfig({
           },
           bg: {
             canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.900}' } },
-            surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
+            surface: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.600}' } },
             muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
             subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },
           },
           accent: {
-            default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
-            emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
+            default: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.400}' } },
+            emphasized: { value: { base: '{colors.purple.500}', _dark: '{colors.orange.500}' } },
             muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
             subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.900}' } },
           },
