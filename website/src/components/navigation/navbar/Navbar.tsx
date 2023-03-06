@@ -1,20 +1,23 @@
 import { css } from '@/panda/css'
-import { Container, Flex, HStack } from '@/panda/jsx'
+import { Container, Flex, HStack, panda } from '@/panda/jsx'
 import Link from 'next/link'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
 
 export const Navbar = () => (
-  <nav role="navigation">
-    <Container pt="10">
+  <panda.nav role="navigation" position="sticky" top="0" zIndex={100}>
+    <Container pt={{ base: '4', md: '10' }}>
       <Flex justify="center" align="center">
         <HStack
           gap="12"
-          background="rgba(0, 0, 0, 0.05)"
-          _dark={{ background: 'rgba(255, 255, 255, 0.05)' }}
+          background="rgba(245, 245, 245, 0.6)"
+          _dark={{ background: 'rgba(38, 25, 22, 0.6)' }}
+          backdropFilter="blur(10px)"
           borderRadius="lg"
+          boxShadow="xs"
           minH="12"
           px="7"
+          width={{ base: 'full', sm: 'auto' }}
         >
           <Link href="/" aria-label="Back home">
             <Logo />
@@ -40,5 +43,5 @@ export const Navbar = () => (
         </HStack>
       </Flex>
     </Container>
-  </nav>
+  </panda.nav>
 )

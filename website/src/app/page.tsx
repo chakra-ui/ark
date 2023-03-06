@@ -13,9 +13,9 @@ import { Box } from '@/panda/jsx'
 
 export default function Page() {
   return (
-    <Box position="relative" background="url(/images/pattern.svg) -26px -7px repeat-x">
-      <Overlay />
+    <Box minH="100%" position="relative" background="url(/images/pattern.svg) -26px -7px repeat-x">
       <Navbar />
+      <Overlay />
       <Hero />
       <Showcase />
       <Frameworks />
