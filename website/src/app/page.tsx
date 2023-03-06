@@ -1,4 +1,6 @@
 import { CodeExample } from '@/components/marketing/CodeExample'
+import { Community } from '@/components/marketing/Community'
+import { Creators } from '@/components/marketing/Creators'
 import { Enterprise } from '@/components/marketing/Enterprise'
 import { Footer } from '@/components/marketing/Footer'
 import { Frameworks } from '@/components/marketing/Frameworks'
@@ -21,6 +23,8 @@ export default function Page() {
       <Enterprise />
       <Testimonials />
       <Universe />
+      <Creators />
+      <Community />
       <Footer />
     </Box>
   )
