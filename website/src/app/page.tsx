@@ -5,6 +5,7 @@ import { Frameworks } from '@/components/marketing/Frameworks'
 import { Hero } from '@/components/marketing/Hero'
 import { Showcase } from '@/components/marketing/Showcase'
 import { Testimonials } from '@/components/marketing/Testimonials'
+import { Universe } from '@/components/marketing/Universe'
 import { Navbar } from '@/components/navigation/navbar/Navbar'
 import { Box } from '@/panda/jsx'
 
@@ -19,6 +20,7 @@ export default function Page() {
       <CodeExample />
       <Enterprise />
       <Testimonials />
+      <Universe />
       <Footer />
     </Box>
   )
