@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <Box minH="100%" position="relative" background="url(/images/pattern.svg) -26px -7px repeat-x">
       <Navbar />
-      <Overlay />
+      <Gradient />
       <Hero />
       <Showcase />
       <Frameworks />
@@ -30,16 +30,14 @@ export default function Page() {
   )
 }
 
-const Overlay = () => {
-  return (
-    <Box
-      position="absolute"
-      right="-480px"
-      width="960px"
-      height="960px"
-      top="-130px"
-      background="radial-gradient(42.48% 42.48% at 50% 50%, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
-      filter="blur(282px)"
-    />
-  )
-}
+const Gradient = () => (
+  <Box
+    position="absolute"
+    right="-480px"
+    width="960px"
+    height="960px"
+    top="-130px"
+    background="radial-gradient(42.48% 42.48% at 50% 50%, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
+    filter="blur(282px)"
+  />
+)

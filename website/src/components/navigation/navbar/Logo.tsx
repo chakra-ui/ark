@@ -2,7 +2,7 @@ import type { SVGAttributes } from 'react'
 
 export const Logo = (props: SVGAttributes<SVGElement>) => (
   <svg
-    width="auto"
+    width="63px"
     height="20px"
     viewBox="0 0 63 20"
     fill="none"
