@@ -1,5 +1,4 @@
 import { Box, Container, Flex, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import { RiDiscordFill, RiGithubFill, RiTwitterFill } from 'react-icons/ri'
 import { Button } from '../shared/Button'
@@ -63,16 +62,15 @@ export const Community = () => {
                       {channel.description}
                     </Text>
                   </Stack>
-                  <Link href={channel.href}>
-                    <Button
-                      variant="link"
-                      size="lg"
-                      color="orange.400"
-                      rightIcon={<FiArrowRight />}
-                    >
-                      {channel.callToAction}
-                    </Button>
-                  </Link>
+                  <Button
+                    variant="link"
+                    href={channel.href}
+                    size="lg"
+                    color="orange.400"
+                    rightIcon={<FiArrowRight />}
+                  >
+                    {channel.callToAction}
+                  </Button>
                 </Stack>
               </Stack>
             </Flex>

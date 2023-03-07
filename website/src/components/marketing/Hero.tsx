@@ -5,7 +5,6 @@ import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
 import { Box, Container, HStack, panda, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { MdContentCopy } from 'react-icons/md'
 
 export const Hero = () => (
@@ -36,11 +35,9 @@ export const Hero = () => (
             alignItems="stretch"
             width="full"
           >
-            <Link href="/docs/react/overview/introduction">
-              <Button size={{ base: 'lg', md: 'xl' }} width="full">
-                Get Started
-              </Button>
-            </Link>
+            <Button href="/docs/react/overview/introduction" size={{ base: 'lg', md: 'xl' }}>
+              Get Started
+            </Button>
             <HStack
               background="bg.surface"
               borderWidth="1px"

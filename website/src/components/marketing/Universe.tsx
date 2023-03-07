@@ -4,7 +4,6 @@ import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
 import { Box, Container, Flex, FlexProps, panda, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { match } from 'ts-pattern'
 import { Button } from '../shared/Button'
 import { Heading } from '../shared/Heading'
@@ -40,11 +39,10 @@ export const Universe = () => {
             Ark UI is an open-source library that allows developers to build components faster
             without sweating on functionality.
           </Text>
-          <Link href="/docs/react/overview/introduction">
-            <Button size={{ base: 'lg', md: 'xl' }} width="full">
-              Get Started
-            </Button>
-          </Link>
+
+          <Button href="/docs/react/overview/introduction" size={{ base: 'lg', md: 'xl' }}>
+            Get Started
+          </Button>
         </Stack>
       </Container>
     </Box>

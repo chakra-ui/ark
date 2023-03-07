@@ -1,20 +1,42 @@
 import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { button, ButtonVariants } from '@/panda/recipes'
-import { cloneElement, isValidElement, PropsWithChildren } from 'react'
+import type { JsxStyleProps } from '@/panda/types'
+import NextLink, { type LinkProps } from 'next/link'
+import { cloneElement, isValidElement, PropsWithChildren, ReactElement, ReactNode } from 'react'
 
 type ButtonContentProps = {
-  leftIcon?: React.ReactElement
-  rightIcon?: React.ReactElement
+  children?: ReactNode | undefined
+  leftIcon?: ReactElement
+  rightIcon?: ReactElement
 }
 
-export type ButtonProps = HTMLPandaProps<'button'> & ButtonVariants & ButtonContentProps
+export type ButtonProps = ButtonVariants &
+  ButtonContentProps & { href?: LinkProps['href'] } & JsxStyleProps
 
 export const Button = (props: ButtonProps) => {
-  const { variant, size, leftIcon, rightIcon, children, ...rest } = props
+  const { variant, href, size, leftIcon, rightIcon, children, ...rest } = props
+
+  if (href) {
+    return (
+      <NextLink legacyBehavior href={href} passHref>
+        <panda.a
+          {...rest}
+          className={button({ variant, size })}
+          data-scope="button"
+          data-part="root"
+        >
+          <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
+            {children}
+          </ButtonContent>
+        </panda.a>
+      </NextLink>
+    )
+  }
+
   return (
     <panda.button
-      className={button({ variant, size })}
       {...rest}
+      className={button({ variant, size })}
       data-scope="button"
       data-part="root"
     >

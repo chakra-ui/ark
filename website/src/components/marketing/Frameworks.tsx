@@ -2,7 +2,6 @@ import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
 import { Box, Container, panda, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import { Button } from '../shared/Button'
 import { Heading } from '../shared/Heading'
@@ -63,16 +62,15 @@ export const Frameworks = () => {
                       {description}
                     </Text>
                   </Stack>
-                  <Link href={href}>
-                    <Button
-                      variant="link"
-                      size="lg"
-                      color="orange.400"
-                      rightIcon={<FiArrowRight />}
-                    >
-                      Get started
-                    </Button>
-                  </Link>
+                  <Button
+                    href={href}
+                    variant="link"
+                    size="lg"
+                    color="accent.default"
+                    rightIcon={<FiArrowRight />}
+                  >
+                    Get started
+                  </Button>
                 </Stack>
               </Stack>
             </Box>
