@@ -11,7 +11,7 @@ type ButtonContentProps = {
 }
 
 export type ButtonProps = ButtonVariants &
-  ButtonContentProps & { href?: LinkProps['href'] } & JsxStyleProps
+  ButtonContentProps & { href?: LinkProps['href']; onClick?: () => void } & JsxStyleProps
 
 export const Button = (props: ButtonProps) => {
   const { variant, href, size, leftIcon, rightIcon, children, ...rest } = props
