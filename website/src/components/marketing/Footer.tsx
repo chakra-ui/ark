@@ -1,25 +1,24 @@
 import { Container, Stack } from '@/panda/jsx'
-
 import { Logo } from '../navigation/navbar/Logo'
-import { Link } from '../shared/Link'
+import { Button } from '../shared/Button'
 import { Text } from '../shared/Text'
 
 export const Footer = () => {
-  const links = [
+  const resources = [
     {
-      label: 'Docs',
+      name: 'Docs',
       href: 'https://chakra-ui.com/docs/getting-started',
     },
     {
-      label: 'GitHub',
+      name: 'GitHub',
       href: 'https://chakra-ui.com/docs/getting-started',
     },
     {
-      label: 'Twitter',
+      name: 'Twitter',
       href: 'https://chakra-ui.com/docs/getting-started',
     },
     {
-      label: 'Discord',
+      name: 'Discord',
       href: 'https://chakra-ui.com/docs/getting-started',
     },
   ]
@@ -32,10 +31,10 @@ export const Footer = () => {
             <Text color="fg.muted">A project by Chakra Inc.</Text>
           </Stack>
           <Stack direction="row" gap="8">
-            {links.map((link, id) => (
-              <Link key={id} href={link.href}>
-                {link.label}
-              </Link>
+            {resources.map((resource, id) => (
+              <Button key={id} href={resource.href} variant="link">
+                {resource.name}
+              </Button>
             ))}
           </Stack>
         </Stack>

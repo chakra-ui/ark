@@ -1,5 +1,4 @@
 import { Box, Container, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import { Button } from '../shared/Button'
 import { Heading } from '../shared/Heading'
@@ -25,11 +24,15 @@ export const Enterprise = () => (
             Ark UI is a bundle of headless UI components
           </Text>
         </Stack>
-        <Link href="/docs/react/overview/">
-          <Button variant="link" size="lg" color="orange.400" rightIcon={<FiArrowRight />}>
-            Get started
-          </Button>
-        </Link>
+        <Button
+          href="/docs/react/overview/"
+          variant="link"
+          size="lg"
+          color="orange.400"
+          rightIcon={<FiArrowRight />}
+        >
+          Get started
+        </Button>
       </Stack>
       <Stack direction="row" gap="6" flex="1" justify="center">
         {['React', 'Vue', 'Solid', 'Ark'].map((name) => (

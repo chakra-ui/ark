@@ -2,11 +2,12 @@ import type { SVGAttributes } from 'react'
 
 export const Logo = (props: SVGAttributes<SVGElement>) => (
   <svg
-    width="auto"
+    width="63px"
     height="20px"
     viewBox="0 0 63 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    style={{ transform: 'translateY(2px)' }}
     {...props}
   >
     <path

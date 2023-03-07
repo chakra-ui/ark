@@ -2,7 +2,6 @@ import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
 import { Box, Container, panda, Stack } from '@/panda/jsx'
-import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import { Button } from '../shared/Button'
 import { Heading } from '../shared/Heading'
@@ -14,19 +13,19 @@ export const Frameworks = () => {
       heading: '@ark-ui/react',
       description: 'Start using headless components with React.js',
       href: '/docs/react/overview/introduction',
-      icon: <ReactIcon height="44px" width="auto" />,
+      icon: <ReactIcon width="44" />,
     },
     {
       heading: '@ark-ui/vue',
       description: 'Start using headless components with Vue.js',
       href: '/docs/vue/overview/introduction',
-      icon: <VueIcon height="44px" width="auto" />,
+      icon: <VueIcon width="44" />,
     },
     {
       heading: '@ark-ui/solid',
       description: 'Start using headless components with Solid.js',
       href: '/docs/solid/overview/introduction',
-      icon: <SolidIcon height="44px" width="auto" />,
+      icon: <SolidIcon width="44" />,
     },
   ]
   return (
@@ -63,16 +62,15 @@ export const Frameworks = () => {
                       {description}
                     </Text>
                   </Stack>
-                  <Link href={href}>
-                    <Button
-                      variant="link"
-                      size="lg"
-                      color="orange.400"
-                      rightIcon={<FiArrowRight />}
-                    >
-                      Get started
-                    </Button>
-                  </Link>
+                  <Button
+                    href={href}
+                    variant="link"
+                    size="lg"
+                    color="accent.default"
+                    rightIcon={<FiArrowRight />}
+                  >
+                    Get started
+                  </Button>
                 </Stack>
               </Stack>
             </Box>
