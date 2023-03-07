@@ -1,0 +1,26 @@
+[data-part='thumb'] {
+  background: blue;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+[data-part='track'] {
+  background: silver;
+  height: 8px;
+  flex: 1;
+}
+
+[data-part='control'] {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+[data-part='marker'] {
+  color: gray;
+}
+
+[data-part='marker'][data-state='under-value'] {
+  color: blue;
+}

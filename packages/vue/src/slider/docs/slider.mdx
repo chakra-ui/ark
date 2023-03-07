@@ -1,0 +1,129 @@
+---
+id: slider
+name: Slider
+description: A slider allows users to make selections from a range of values. Think of it as a custom `<input type='range'/>` with the ability to achieve custom styling and accessibility.
+---
+
+## Import
+
+```ts
+import {
+  Slider,
+  SliderControl,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderOutput,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The Slider component consists of the `SliderControl`, `SliderLabel`,
+`SliderMarker`, `SliderMarkerGroup`, `SliderOutput`, `SliderRange`,
+`SliderThumb`, and `SliderTrack` components. Combine them as desired to fit your
+design system.
+
+```tsx
+<Slider>
+  <SliderLabel>Label</SliderLabel>
+  <SliderControl>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </SliderControl>
+</Slider>
+```
+
+### Adding slider marks
+
+You can add marks to the slider track by using the `SliderMarkerGroup` and
+`SliderMarker` components.
+
+Position the `SliderMarker` components relative to the track by providing the
+`value` prop.
+
+```tsx
+<Slider>
+  <SliderControl>
+    <SliderTrack>
+      <SliderRange />
+    </SliderTrack>
+    <SliderThumb />
+  </SliderControl>
+  <SliderMarkerGroup>
+    <SliderMarker :value="0">0</SliderMarker>
+    <SliderMarker :value="25">25</SliderMarker>
+    <SliderMarker :value="50">50</SliderMarker>
+    <SliderMarker :value="75">75</SliderMarker>
+    <SliderMarker :value="100">100</SliderMarker>
+  </SliderMarkerGroup>
+</Slider>
+```
+
+### Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the
+`min` and/or `max` props.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+```tsx
+<Slider :min="-10" :max="10">
+  {/*...*/}
+</Slider>
+```
+
+### Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+```tsx
+<Slider :step="0.01" :min="5" :max="10">
+  {/*...*/}
+</Slider>
+```
+
+### Listening for changes
+
+When the slider value changes, the `onChange` and `onChangeEnd` callbacks are
+invoked. You can use this to set up custom behaviors in your app.
+
+```tsx
+//<script>
+
+const handleOnChange = (value) => console.log(value)
+const handleOnChangeEnd = (value) => console.log(value)
+
+//<template>
+<Slider
+  @change="handleOnChange"
+  @change-end="handleOnChangeEnd"
+>
+  {/*...*/}
+</Slider>
+```
+
+### Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the orientation property in the machine's context to vertical.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+```tsx
+<Slider orientation="vertical">{/*...*/}</Slider>
+```
