@@ -1,6 +1,8 @@
+import { IconButton } from '@/components/shared/IconButton'
 import { css } from '@/panda/css'
 import { Container, Flex, HStack, panda } from '@/panda/jsx'
 import Link from 'next/link'
+import { RiGithubFill } from 'react-icons/ri'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
 
@@ -9,20 +11,21 @@ export const Navbar = () => (
     <Container pt={{ base: '4', md: '10' }}>
       <Flex justify="center" align="center">
         <HStack
-          gap="12"
           background="rgba(245, 245, 245, 0.6)"
           _dark={{ background: 'rgba(38, 25, 22, 0.6)' }}
           backdropFilter="blur(10px)"
           borderRadius="lg"
           boxShadow="xs"
-          minH="12"
-          px="7"
+          gap="10"
+          h="12"
+          justify="space-between"
+          px="3"
           width={{ base: 'full', sm: 'auto' }}
         >
           <Link href="/" aria-label="Back home">
             <Logo />
           </Link>
-          <HStack gap="10">
+          <HStack gap="8">
             <Link
               href="/docs/react/overview/introduction"
               className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
@@ -36,8 +39,8 @@ export const Navbar = () => (
               Roadmap
             </Link>
           </HStack>
-          <HStack gap="3">
-            <ColorModeButton />
+          <HStack gap="1">
+            <IconButton size="sm" variant="tertiary" icon={<RiGithubFill />} aria-label="GitHub" />
             <ColorModeButton />
           </HStack>
         </HStack>
