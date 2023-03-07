@@ -13,19 +13,19 @@ export const Frameworks = () => {
       heading: '@ark-ui/react',
       description: 'Start using headless components with React.js',
       href: '/docs/react/overview/introduction',
-      icon: <ReactIcon height="44px" width="auto" />,
+      icon: <ReactIcon width="44" />,
     },
     {
       heading: '@ark-ui/vue',
       description: 'Start using headless components with Vue.js',
       href: '/docs/vue/overview/introduction',
-      icon: <VueIcon height="44px" width="auto" />,
+      icon: <VueIcon width="44" />,
     },
     {
       heading: '@ark-ui/solid',
       description: 'Start using headless components with Solid.js',
       href: '/docs/solid/overview/introduction',
-      icon: <SolidIcon height="44px" width="auto" />,
+      icon: <SolidIcon width="44" />,
     },
   ]
   return (

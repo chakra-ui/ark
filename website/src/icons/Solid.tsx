@@ -1,14 +1,7 @@
 import type { SVGAttributes } from 'react'
 
 export const SolidIcon = (props: SVGAttributes<SVGElement>) => (
-  <svg
-    width="20"
-    height="auto"
-    viewBox="0 0 24 23"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       d="M6.173 11.2876C5.41479 10.8554 4.46286 9.59832 5.19815 7.39808C5.28833 7.12823 5.4223 6.89271 5.59486 6.68924C6.22431 5.56893 7.17163 3.90122 7.79777 2.8603C12.997 -1.28853 20.1459 3.07638 23.0704 5.77744L20.7958 10.3152C14.5567 12.6489 8.44765 11.9359 6.173 11.2876Z"
       fill="#0B8CEA"

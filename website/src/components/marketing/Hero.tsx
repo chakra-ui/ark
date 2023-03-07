@@ -53,12 +53,12 @@ export const Hero = () => (
           </Stack>
           <HStack gap="8">
             {[
-              { framework: 'React', icon: <ReactIcon /> },
-              { framework: 'Vue', icon: <VueIcon /> },
-              { framework: 'Solid', icon: <SolidIcon /> },
+              { framework: 'React', icon: <ReactIcon width="20" /> },
+              { framework: 'Vue', icon: <VueIcon width="20" /> },
+              { framework: 'Solid', icon: <SolidIcon width="20" /> },
             ].map(({ framework, icon }) => (
               <HStack key={framework}>
-                {icon}
+                <Box fontSize="lg">{icon}</Box>
                 <Text color="fg.muted">{framework}</Text>
               </HStack>
             ))}
