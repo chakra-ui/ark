@@ -13,7 +13,12 @@ import { Box } from '@/panda/jsx'
 
 export default function Page() {
   return (
-    <Box minH="100%" position="relative" background="url(/images/pattern.svg) -26px -7px repeat-x">
+    <Box
+      minH="100%"
+      position="relative"
+      backgroundImage="url(/images/pattern.svg)"
+      backgroundRepeat="repeat-x"
+    >
       <Navbar />
       <Gradient />
       <Hero />
@@ -33,11 +38,10 @@ export default function Page() {
 const Gradient = () => (
   <Box
     position="absolute"
-    right="-480px"
-    width="960px"
-    height="960px"
-    top="-130px"
-    background="radial-gradient(42.48% 42.48% at 50% 50%, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
+    display={{ base: 'none', sm: 'block' }}
+    inset="0"
+    height="830px"
+    background="radial-gradient(42.48% 42.48% at calc(50% + 100vw / 2) center, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
     filter="blur(282px)"
   />
 )

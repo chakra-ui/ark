@@ -10,12 +10,12 @@ import { MdContentCopy } from 'react-icons/md'
 
 export const Hero = () => (
   <Box
-    backgroundImage="url(/images/hero.svg)"
+    backgroundImage={{ base: 'none', md: 'url(/images/hero.svg)' }}
+    _dark={{
+      backgroundImage: { base: 'none', md: 'url(/images/hero_dark.svg)' },
+    }}
     backgroundPosition="calc(50% + 250px) 25px"
     backgroundRepeat="no-repeat"
-    _dark={{
-      backgroundImage: 'url(/images/hero_dark.svg)',
-    }}
   >
     <Container py={{ base: '16', md: '24' }}>
       <Stack gap={{ base: '8', md: '10' }} maxW="xl">
