@@ -1,6 +1,5 @@
 import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { button, ButtonVariants } from '@/panda/recipes'
-import type { JsxStyleProps } from '@/panda/types'
 import NextLink, { type LinkProps } from 'next/link'
 import { cloneElement, isValidElement, PropsWithChildren, ReactElement, ReactNode } from 'react'
 
@@ -11,7 +10,8 @@ type ButtonContentProps = {
 }
 
 export type ButtonProps = ButtonVariants &
-  ButtonContentProps & { href?: LinkProps['href']; onClick?: () => void } & JsxStyleProps
+  ButtonContentProps & { href?: LinkProps['href'] } & HTMLPandaProps<'button'> &
+  HTMLPandaProps<'a'>
 
 export const Button = (props: ButtonProps) => {
   const { variant, href, size, leftIcon, rightIcon, children, ...rest } = props
