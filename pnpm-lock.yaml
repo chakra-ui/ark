@@ -387,7 +387,7 @@ importers:
       next: 13.2.3
       next-contentlayer: 0.3.0
       next-seo: 5.15.0
-      next-sitemap: 4.0.4
+      next-sitemap: 4.0.5
       react: 18.2.0
       react-dom: 18.2.0
       react-icons: 4.8.0
@@ -410,7 +410,7 @@ importers:
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
       next-contentlayer: 0.3.0_nvzgbose6yf6w7ijjprgspqefi
       next-seo: 5.15.0_nvzgbose6yf6w7ijjprgspqefi
-      next-sitemap: 4.0.4_xeg3tdra7hobsncwzvo3da7vxi
+      next-sitemap: 4.0.5_xeg3tdra7hobsncwzvo3da7vxi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-icons: 4.8.0_react@18.2.0
@@ -9067,8 +9067,8 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/4.0.4_xeg3tdra7hobsncwzvo3da7vxi:
-    resolution: {integrity: sha512-4/bUDeWNx03fc8ac+5wA55H1Zn3X3c1qj5iq3Mk5eidzxnBzIuUt4NJ+1TpB0n1m7HUgEtE+kaUGShFK0McZVg==}
+  /next-sitemap/4.0.5_xeg3tdra7hobsncwzvo3da7vxi:
+    resolution: {integrity: sha512-kIABX4n8wJqY2sttRjivBF2r1MgQ1pg12y87qGT+5meippq0ivxaNSRldMDOj8pIGhXW6uFAsCxyH/JftqkwWQ==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
