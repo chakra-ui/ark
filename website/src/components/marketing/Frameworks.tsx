@@ -11,21 +11,21 @@ export const Frameworks = () => {
   const frameworks = [
     {
       heading: '@ark-ui/react',
-      description: 'Start using headless components with React.js',
+      description: 'Start using headless Ark UI Components with React.js',
       href: '/docs/react/overview/introduction',
-      icon: <ReactIcon width="44" />,
+      icon: <ReactIcon height="44" />,
     },
     {
       heading: '@ark-ui/vue',
-      description: 'Start using headless components with Vue.js',
+      description: 'Start using headless Ark UI Components with Vue.js',
       href: '/docs/vue/overview/introduction',
-      icon: <VueIcon width="44" />,
+      icon: <VueIcon height="44" />,
     },
     {
       heading: '@ark-ui/solid',
-      description: 'Start using headless components with Solid.js',
+      description: 'Start using headless Ark UI Components with Solid.js',
       href: '/docs/solid/overview/introduction',
-      icon: <SolidIcon width="44" />,
+      icon: <SolidIcon height="44" />,
     },
   ]
   return (
@@ -33,15 +33,15 @@ export const Frameworks = () => {
       <Stack gap={{ base: '12', md: '16' }}>
         <Stack gap={{ base: '4', md: '5' }} maxW="xl">
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
-            A versatile <panda.span color="accent.default">component library</panda.span> for <br />
-            every framework
+            A versatile <panda.span color="accent.default">component library</panda.span> for every
+            framework
           </Heading>
           <Text color="fg.muted" textStyle={{ base: 'md', md: 'lg' }}>
             With Ark, you have the freedom to choose the framework that suits your team&apos;s needs
             and preferences.
           </Text>
         </Stack>
-        <Stack gap="8" direction={{ base: 'column', md: 'row' }} width="full">
+        <Stack gap={{ base: '6', md: '8' }} direction={{ base: 'column', md: 'row' }} width="full">
           {frameworks.map(({ heading, description, href, icon }) => (
             <Box
               key={heading}
@@ -58,7 +58,7 @@ export const Frameworks = () => {
                     <Heading textStyle="lg" fontWeight="semibold">
                       {heading}
                     </Heading>
-                    <Text textStyle="md" color="fg.muted">
+                    <Text color="fg.muted" maxW="20rem">
                       {description}
                     </Text>
                   </Stack>
