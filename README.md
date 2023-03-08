@@ -33,7 +33,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Popover         | 🟢    | 🟢    | 🟢  |
 | Pressable       | 🟢    | 🟢    | 🟢  |
 | Radio Group     | 🟢    | 🟢    | 🟢  |
-| Range Slider    | 🟢    | 🟢    | ⚪  |
+| Range Slider    | 🟢    | 🟢    | 🟢  |
 | Rating          | 🟢    | 🟢    | 🟢  |
 | Select          | 🟢    | 🟢    | 🟢  |
 | Slider          | 🟢    | 🟢    | 🟢  |
