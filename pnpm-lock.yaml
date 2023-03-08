@@ -64,7 +64,7 @@ importers:
   packages/react:
     specifiers:
       '@polymorphic-factory/react': 0.3.0
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 14.0.0
       '@testing-library/user-event': 14.4.3
@@ -147,10 +147,10 @@ importers:
       '@zag-js/transition': 0.1.4
       '@zag-js/types': 0.3.4
     devDependencies:
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
-      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
       '@types/jsdom': 21.1.0
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -178,7 +178,7 @@ importers:
     specifiers:
       '@polymorphic-factory/solid': 0.2.0
       '@solidjs/testing-library': 0.6.1
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@types/jsdom': 21.1.0
@@ -249,9 +249,9 @@ importers:
       '@zag-js/types': 0.3.4
     devDependencies:
       '@solidjs/testing-library': 0.6.1_solid-js@1.6.12
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
       '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.54.1_mlk7dnz565t663n4razh6a6v6i
@@ -270,7 +270,7 @@ importers:
   packages/vue:
     specifiers:
       '@polymorphic-factory/vue': 0.2.0
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@testing-library/vue': 6.6.1
@@ -345,9 +345,9 @@ importers:
       '@zag-js/tooltip': 0.2.13
       '@zag-js/vue': 0.2.10_vue@3.2.47
     devDependencies:
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.0
+      '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
       '@testing-library/vue': 6.6.1_a2ihsjreowava2sm4iorpgwkom
       '@types/jsdom': 21.1.0
       '@types/testing-library__jest-dom': 5.14.5
@@ -3338,8 +3338,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/dom/9.0.0:
-    resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
+  /@testing-library/dom/9.0.1:
+    resolution: {integrity: sha512-fTOVsMY9QLFCCXRHG3Ese6cMH5qIWwSbgxZsgeF5TNsy81HKaZ4kgehnSF8FsR3OF+numlIV2YcU79MzbnhSig==}
     engines: {node: '>=14'}
     dependencies:
       '@babel/code-frame': 7.18.6
@@ -3348,7 +3348,7 @@ packages:
       aria-query: 5.1.1
       chalk: 4.1.2
       dom-accessibility-api: 0.5.14
-      lz-string: 1.4.4
+      lz-string: 1.5.0
       pretty-format: 27.5.1
     dev: true
 
@@ -3375,19 +3375,19 @@ packages:
       react-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.20.13
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
       '@types/react-dom': 18.0.11
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: true
 
-  /@testing-library/user-event/14.4.3_@testing-library+dom@9.0.0:
+  /@testing-library/user-event/14.4.3_@testing-library+dom@9.0.1:
     resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@testing-library/dom': 9.0.0
+      '@testing-library/dom': 9.0.1
     dev: true
 
   /@testing-library/vue/6.6.1_a2ihsjreowava2sm4iorpgwkom:
@@ -8242,6 +8242,11 @@ packages:
 
   /lz-string/1.4.4:
     resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
+    hasBin: true
+    dev: true
+
+  /lz-string/1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
     dev: true
 
