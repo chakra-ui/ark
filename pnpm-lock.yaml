@@ -78,7 +78,7 @@ importers:
       '@vitest/coverage-c8': 0.29.2
       '@zag-js/accordion': 0.2.13
       '@zag-js/anatomy': 0.1.4
-      '@zag-js/carousel': 0.0.0-dev-20230304172910
+      '@zag-js/carousel': 0.0.2
       '@zag-js/checkbox': 0.2.14
       '@zag-js/combobox': 0.2.16
       '@zag-js/dialog': 0.2.13
@@ -121,7 +121,7 @@ importers:
       '@polymorphic-factory/react': 0.3.0_react@18.2.0
       '@zag-js/accordion': 0.2.13
       '@zag-js/anatomy': 0.1.4
-      '@zag-js/carousel': 0.0.0-dev-20230304172910
+      '@zag-js/carousel': 0.0.2
       '@zag-js/checkbox': 0.2.14
       '@zag-js/combobox': 0.2.16
       '@zag-js/dialog': 0.2.13
@@ -4106,8 +4106,8 @@ packages:
       '@zag-js/dom-query': 0.1.4
     dev: false
 
-  /@zag-js/carousel/0.0.0-dev-20230304172910:
-    resolution: {integrity: sha512-Sr0LiYawzSZCKuVg39OaVp1z02qdr8YFKI4HmBDijKSkwJg9p0zQyQ++yi7wdsdRT4RxzVRR8ARd86FtkpecUg==}
+  /@zag-js/carousel/0.0.2:
+    resolution: {integrity: sha512-OHQqmfVLqY/AEO8H0uVpEFf6oqTkUqnm+FbtajYzytM3VPVAYUmJ/bs31uprMeJ2UlXSacqhXY9zEZXUUVrFuw==}
     dependencies:
       '@zag-js/anatomy': 0.1.4
       '@zag-js/core': 0.2.10

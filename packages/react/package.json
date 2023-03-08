@@ -36,7 +36,7 @@
     "@polymorphic-factory/react": "0.3.0",
     "@zag-js/accordion": "0.2.13",
     "@zag-js/anatomy": "0.1.4",
-    "@zag-js/carousel": "0.0.0-dev-20230304172910",
+    "@zag-js/carousel": "0.0.2",
     "@zag-js/checkbox": "0.2.14",
     "@zag-js/combobox": "0.2.16",
     "@zag-js/dialog": "0.2.13",
