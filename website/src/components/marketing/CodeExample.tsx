@@ -5,7 +5,7 @@ import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/rea
 import { Container } from 'panda/jsx/container'
 import { Stack } from 'panda/jsx/stack'
 import { tabs } from 'panda/recipes/tabs'
-import { AiOutlineAppstoreAdd } from 'react-icons/Ai'
+import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 import { BsPalette } from 'react-icons/bs'
 import { MdOutlineAccessibleForward } from 'react-icons/md'
 import { VscWorkspaceTrusted } from 'react-icons/vsc'
