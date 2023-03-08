@@ -23,7 +23,7 @@ export const CodeExample = () => {
     {
       heading: 'Themeable',
       description:
-        'Style the components according to your design system, rather than being limited by predefined styles',
+        'Style the components according to your design system, rather than being limited by predefined styles.',
       icon: <BsPalette />,
     },
     {
@@ -56,9 +56,9 @@ export const CodeExample = () => {
                   borderWidth="1px"
                   color="accent.default"
                   fontSize="2xl"
-                  height={{ base: '10', md: '12' }}
                   justify="center"
                   shrink={0}
+                  height={{ base: '10', md: '12' }}
                   width={{ base: '10', md: '12' }}
                 >
                   {icon}

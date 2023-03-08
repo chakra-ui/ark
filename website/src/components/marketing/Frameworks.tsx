@@ -33,12 +33,12 @@ export const Frameworks = () => {
       <Stack gap={{ base: '12', md: '16' }}>
         <Stack gap={{ base: '4', md: '5' }} maxW="xl">
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
-            A single <panda.span color="accent.default">component library</panda.span> for <br />
+            A versatile <panda.span color="accent.default">component library</panda.span> for <br />
             every framework
           </Heading>
           <Text color="fg.muted" textStyle={{ base: 'md', md: 'lg' }}>
-            Ark is framework agnostic and doesn&apos;t impose any JS framework on you and your team.
-            Use what you prefer
+            With Ark, you have the freedom to choose the framework that suits your team&apos;s needs
+            and preferences.
           </Text>
         </Stack>
         <Stack gap="8" direction={{ base: 'column', md: 'row' }} width="full">
