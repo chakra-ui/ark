@@ -41,7 +41,7 @@ export const CodeExample = () => {
   ]
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Stack gap="24" direction={{ base: 'column', md: 'row' }}>
+      <Stack gap={{ base: '16', md: '24' }} direction={{ base: 'column', md: 'row' }}>
         <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
             Composable API design for a delightful experience

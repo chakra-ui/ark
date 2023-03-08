@@ -22,7 +22,7 @@ export const Enterprise = () => (
           <Button
             href="/docs/react/overview/"
             variant="link"
-            size={{ base: 'lg', md: 'xl' }}
+            size={{ base: 'lg', md: '2xl' }}
             color="accent.default"
             rightIcon={<FiArrowRight />}
           >
