@@ -39,7 +39,9 @@ export const Navbar = () => (
           </Link>
         </HStack>
         <HStack gap="1">
-          <IconButton size="sm" variant="tertiary" icon={<RiGithubFill />} aria-label="GitHub" />
+          <Link target="_blank" href="https://github.com/chakra-ui/ark">
+            <IconButton size="sm" variant="tertiary" icon={<RiGithubFill />} aria-label="GitHub" />
+          </Link>
           <ColorModeButton />
         </HStack>
       </HStack>
