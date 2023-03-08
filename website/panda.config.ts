@@ -17,11 +17,11 @@ export default defineConfig({
       semanticTokens: {
         colors: {
           fg: {
-            default: { value: { base: '{colors.gray.800}', _dark: 'white' } },
+            default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
-            muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.300}' } },
-            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
+            muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
             subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },
@@ -34,9 +34,9 @@ export default defineConfig({
           },
           accent: {
             default: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.400}' } },
-            emphasized: { value: { base: '{colors.purple.500}', _dark: '{colors.orange.500}' } },
-            muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
-            subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.900}' } },
+            emphasized: { value: { base: '{colors.orange.500}', _dark: '{colors.orange.500}' } },
+            muted: { value: { base: '{colors.orange.100}', _dark: '{colors.orange.800}' } },
+            subtle: { value: { base: '{colors.orange.50}', _dark: '{colors.orange.900}' } },
           },
           border: {
             default: { value: { base: '{colors.gray.200}', _dark: '{colors.brown.400}' } },

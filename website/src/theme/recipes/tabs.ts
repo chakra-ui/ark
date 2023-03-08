@@ -17,7 +17,7 @@ export const tabs = defineRecipe({
         _dark: 'brown.600',
       },
       borderRadius: 'lg',
-      display: 'inline-flex',
+      display: 'flex',
       gap: '8',
       position: 'relative',
       px: '6',

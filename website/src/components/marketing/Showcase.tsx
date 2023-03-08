@@ -50,7 +50,7 @@ export const Showcase = () => {
                 value={components[index]}
                 onChange={({ value }) => setIndex(components.indexOf(value ?? ''))}
               >
-                <TabList>
+                <TabList className={css({ display: 'inline-flex' })}>
                   {components.map((component) => (
                     <TabTrigger key={component} value={component}>
                       <button>{component}</button>

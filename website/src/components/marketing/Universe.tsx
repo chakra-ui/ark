@@ -35,11 +35,10 @@ export const Universe = () => {
                 )),
             )}
           </Stack>
-          <Text color="gray.400" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="lg">
+          <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="lg">
             Ark UI is an open-source library that allows developers to build components faster
             without sweating on functionality.
           </Text>
-
           <Button href="/docs/react/overview/introduction" size={{ base: 'lg', md: 'xl' }}>
             Get Started
           </Button>

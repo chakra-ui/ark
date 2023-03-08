@@ -28,7 +28,7 @@ export const Enterprise = () => (
           href="/docs/react/overview/"
           variant="link"
           size="lg"
-          color="orange.400"
+          color="accent.default"
           rightIcon={<FiArrowRight />}
         >
           Get started
@@ -36,7 +36,7 @@ export const Enterprise = () => (
       </Stack>
       <Stack direction="row" gap="6" flex="1" justify="center">
         {['React', 'Vue', 'Solid', 'Ark'].map((name) => (
-          <Box key={name} bg="orange.400" borderRadius="full" width="24" height="24" />
+          <Box key={name} bg="accent.default" borderRadius="full" width="24" height="24" />
         ))}
       </Stack>
     </Stack>

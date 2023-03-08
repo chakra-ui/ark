@@ -31,7 +31,7 @@ export const Testimonials = () => {
         {testimonials.map((testimonial, id) => (
           <Stack key={id} gap="8">
             <Stack gap="4">
-              <VscQuote className={css({ fontSize: '2xl', color: 'orange.400' })} />
+              <VscQuote className={css({ fontSize: '2xl', color: 'accent.default' })} />
               <Text textStyle="lg" color="fg.mtued">
                 {testimonial.quote}
               </Text>
@@ -39,7 +39,7 @@ export const Testimonials = () => {
             <Stack direction="row" gap="4" alignItems="center">
               <Avatar name={testimonial.author.name} src={testimonial.author.avatar} />
               <Stack gap="0">
-                <Text>{testimonial.author.name}</Text>
+                <Text color="fg.emphasized">{testimonial.author.name}</Text>
                 <Text color="fg.muted">{testimonial.author.title}</Text>
               </Stack>
             </Stack>

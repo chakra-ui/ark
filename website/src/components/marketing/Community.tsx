@@ -66,7 +66,7 @@ export const Community = () => {
                     variant="link"
                     href={channel.href}
                     size="lg"
-                    color="orange.400"
+                    color="accent.default"
                     rightIcon={<FiArrowRight />}
                   >
                     {channel.callToAction}

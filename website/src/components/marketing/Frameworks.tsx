@@ -33,7 +33,7 @@ export const Frameworks = () => {
       <Stack gap={{ base: '12', md: '16' }}>
         <Stack gap={{ base: '4', md: '5' }} maxW="xl">
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
-            A single <panda.span color="orange.400">component library</panda.span> for <br />
+            A single <panda.span color="accent.default">component library</panda.span> for <br />
             every framework
           </Heading>
           <Text color="fg.muted" textStyle={{ base: 'md', md: 'lg' }}>
