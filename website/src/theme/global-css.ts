@@ -18,6 +18,9 @@ export const globalCss = defineGlobalStyles({
       colorScheme: 'dark',
     },
   },
+  'h1, h2, h3, h4, h5, h6': {
+    fontFamily: 'var(--font-mona-sans), sans-serif',
+  },
   'html, body': {
     display: 'flex',
     flexDirection: 'column',
