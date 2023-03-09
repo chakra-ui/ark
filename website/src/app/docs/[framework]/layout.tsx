@@ -32,16 +32,9 @@ const DocsLayout = (props: any) => {
 
   return (
     <>
-      <Box
-        height="14"
-        backdropFilter="blur(10px)"
-        position="sticky"
-        top="0"
-        zIndex={10}
-        borderBottomWidth="1px"
-      >
+      <Box bg="bg.canvas" position="sticky" top="0" borderBottomWidth="1px" zIndex={10}>
         <Container>
-          <Stack direction="row" align="center" h="14" justify="space-between">
+          <Stack direction="row" align="center" h="16" justify="space-between">
             <Link href="/" aria-label="Back home">
               <Logo />
             </Link>
@@ -68,26 +61,19 @@ const DocsLayout = (props: any) => {
         <Flex
           display={{ base: 'none', lg: 'flex' }}
           position="fixed"
-          width="250px"
-          top="14"
-          bottom="0px"
+          width="15rem"
+          top="16"
+          bottom="0"
           overflowY="auto"
-          pt="8"
+          py="8"
         >
           <Sidebar entries={[overview, components]} />
         </Flex>
-        <Flex flex="1" pl={{ base: 'none', lg: '250px' }} pt="8">
-          {props.children}
+        <Flex flex="1" pl={{ base: 'none', lg: '15rem' }}>
+          <Box pt="8" pl={{ base: 'none', lg: '16' }}>
+            {props.children}
+          </Box>
         </Flex>
-        <Flex
-          display={{ base: 'none', xl: 'flex' }}
-          position="fixed"
-          width="250px"
-          top="14"
-          pt="8"
-          bottom="0px"
-          right="max(0px, calc(100vw / 2 - 640px))"
-        ></Flex>
       </Container>
     </>
   )
