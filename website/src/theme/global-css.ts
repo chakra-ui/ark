@@ -7,21 +7,21 @@ export const globalCss = defineGlobalStyles({
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     WebkitTextSizeAdjust: '100%',
-    height: '100%',
-    scrollPaddingTop: '6rem',
-    overflow: 'auto',
+    minHeight: '100%',
   },
   body: {
     backgroundColor: 'bg.canvas',
     color: 'fg.default',
-    overflow: 'scroll',
     fontFamily: 'var(--font-inter), sans-serif',
-    height: 'fit-content',
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    flexGrow: '1',
     _dark: {
       colorScheme: 'dark',
     },
+  },
+  'html, body': {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 'unset !important', // TODO possbile issue in panda
   },
   '*, *::before, *::after': {
     borderColor: 'border.default',

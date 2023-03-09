@@ -1,5 +1,5 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
-import { css, cx } from '@/panda/css'
+import { cx } from '@/panda/css'
 import { Inter, Roboto_Mono } from '@next/font/google'
 import { NextSeo } from 'next-seo'
 import type { PropsWithChildren } from 'react'
@@ -18,9 +18,7 @@ const RootLayout = (props: PropsWithChildren) => {
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />
         <NextSeo useAppDir />
       </head>
-      <body>
-        <div className={css({ minHeight: 'full' })}>{props.children}</div>
-      </body>
+      <body>{props.children}</body>
     </html>
   )
 }
