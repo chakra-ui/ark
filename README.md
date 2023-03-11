@@ -28,7 +28,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Hover Card      | 🟢    | 🟢    | 🟢  |
 | Menu            | 🟢    | 🟢    | ⚪  |
 | Number Input    | 🟢    | 🟢    | 🟢  |
-| Pagination      | 🟢    | 🟢    | ⚪  |
+| Pagination      | 🟢    | 🟢    | 🟢  |
 | Pin Input       | 🟢    | 🟢    | 🟢  |
 | Popover         | 🟢    | 🟢    | 🟢  |
 | Pressable       | 🟢    | 🟢    | 🟢  |
