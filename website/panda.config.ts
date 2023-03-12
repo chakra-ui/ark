@@ -1,4 +1,6 @@
+import { globalCss } from '@/theme/global-css'
 import { recipes } from '@/theme/recipes'
+import { textStyles } from '@/theme/text-styles'
 import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
@@ -7,45 +9,34 @@ export default defineConfig({
   presets: ['@pandacss/dev/presets'],
   outdir: 'panda',
   jsxFramework: 'react',
+  globalCss,
   theme: {
     extend: {
       recipes,
-      textStyles: {
-        xs: { value: { fontSize: 'xs', lineHeight: '1.125rem' } },
-        sm: { value: { fontSize: 'sm', lineHeight: '1.25rem' } },
-        md: { value: { fontSize: 'md', lineHeight: '1.5rem' } },
-        lg: { value: { fontSize: 'lg', lineHeight: '1.75rem' } },
-        xl: { value: { fontSize: 'xl', lineHeight: '1.875rem' } },
-        '2xl': { value: { fontSize: '2xl', lineHeight: '2rem' } },
-        '3xl': { value: { fontSize: '3xl', lineHeight: '2.375rem' } },
-        '4xl': { value: { fontSize: '4xl', lineHeight: '2.75rem', letterSpacing: '-0.03em' } },
-        '5xl': { value: { fontSize: '5xl', lineHeight: '3.75rem', letterSpacing: '-0.03em' } },
-        '6xl': { value: { fontSize: '6xl', lineHeight: '4.5rem', letterSpacing: '-0.03em' } },
-        '7xl': { value: { fontSize: '7xl', lineHeight: '5.75rem', letterSpacing: '-0.03em' } },
-      },
+      textStyles,
       semanticTokens: {
         colors: {
           fg: {
-            default: { value: { base: '{colors.gray.800}', _dark: 'white' } },
+            default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
-            muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.300}' } },
-            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
+            muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
             subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },
           },
           bg: {
             canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.900}' } },
-            surface: { value: { base: '{colors.white}', _dark: '{colors.gray.950}' } },
-            muted: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.600}' } },
-            subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.gray.900}' } },
+            surface: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.600}' } },
+            muted: { value: { base: '{colors.gray.300}', _dark: '{colors.brown.700}' } },
+            subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.800}' } },
           },
           accent: {
-            default: { value: { base: '{colors.purple.500}', _dark: '{colors.purple.200}' } },
-            emphasized: { value: { base: '{colors.purple.600}', _dark: '{colors.purple.300}' } },
-            muted: { value: { base: '{colors.purple.400}', _dark: '{colors.purple.600}' } },
-            subtle: { value: { base: '{colors.purple.50}', _dark: '{colors.purple.900}' } },
+            default: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.400}' } },
+            emphasized: { value: { base: '{colors.orange.500}', _dark: '{colors.orange.500}' } },
+            muted: { value: { base: '{colors.orange.100}', _dark: '{colors.orange.800}' } },
+            subtle: { value: { base: '{colors.orange.50}', _dark: '{colors.orange.900}' } },
           },
           border: {
             default: { value: { base: '{colors.gray.200}', _dark: '{colors.brown.400}' } },
@@ -103,32 +94,6 @@ export default defineConfig({
             800: { value: '#262626' },
             900: { value: '#171717' },
           },
-          blue: {
-            50: { value: '#ECEEFE' },
-            100: { value: '#D8DDFD' },
-            200: { value: '#B1BAFB' },
-            300: { value: '#8B98F9' },
-            400: { value: '#6475F7' },
-            500: { value: '#3D53F5' },
-            600: { value: '#3142C4' },
-            700: { value: '#253293 ' },
-            800: { value: '#182162' },
-            900: { value: '#0C1131' },
-            950: { value: '#060818' },
-          },
-          purple: {
-            50: { value: '#EEECFB' },
-            100: { value: '#DDD9F7' },
-            200: { value: '#BBB2EF' },
-            300: { value: '#9A8CE8' },
-            400: { value: '#7865E0 ' },
-            500: { value: '#563FD8' },
-            600: { value: '#4532AD' },
-            700: { value: '#342682' },
-            800: { value: '#221956 ' },
-            900: { value: '#110D2B' },
-            950: { value: '#090616' },
-          },
           orange: {
             50: { value: '#F6E1DB' },
             100: { value: '#EEC2B7' },
@@ -164,7 +129,6 @@ export default defineConfig({
       },
     },
   },
-
   patterns: {
     extend: {
       container: {
@@ -183,94 +147,6 @@ export default defineConfig({
             props,
           )
         },
-      },
-    },
-  },
-  globalCss: {
-    html: {
-      lineHeight: 1.5,
-      textRendering: 'optimizeLegibility',
-      MozOsxFontSmoothing: 'grayscale',
-      WebkitFontSmoothing: 'antialiased',
-      WebkitTextSizeAdjust: '100%',
-      height: '100%',
-      scrollPaddingTop: '6rem',
-      overflow: 'auto',
-    },
-    body: {
-      backgroundColor: 'bg.canvas',
-      color: 'fg.default',
-      overflow: 'scroll',
-      fontFamily: 'var(--font-inter), sans-serif',
-      height: 'fit-content',
-      overflowX: 'hidden',
-      overflowY: 'auto',
-      _dark: {
-        colorScheme: 'dark',
-      },
-    },
-    '*, *::before, *::after': {
-      borderColor: 'border.default',
-      borderStyle: 'solid',
-    },
-    '*::placeholder': {
-      opacity: 1,
-      color: 'fg.placeholder',
-    },
-    a: {
-      textDecoration: 'none',
-    },
-    hr: {
-      borderBottomWidth: '1px',
-    },
-    table: {
-      width: 'full',
-      tableLayout: 'auto',
-      textAlign: 'left',
-    },
-    th: {
-      color: 'fg.muted',
-      fontWeight: 'semibold',
-      pb: '2.5',
-      pt: '0',
-      pr: {
-        base: '2',
-        md: '4',
-      },
-      textAlign: 'left',
-      textStyle: 'sm',
-      _last: {
-        pl: {
-          base: '2',
-          md: '4',
-        },
-        pr: '0',
-      },
-    },
-    td: {
-      borderTopWidth: '1px',
-      color: 'fg.muted',
-      textStyle: 'sm',
-      py: '2.5',
-      wordWrap: 'break-word',
-      pr: {
-        base: '2',
-        md: '4',
-      },
-      verticalAlign: 'top',
-      _first: {
-        minWidth: {
-          base: 'unset',
-          sm: '12rem',
-        },
-      },
-      _last: {
-        width: 'full',
-        pl: {
-          base: '2',
-          md: '4',
-        },
-        pr: '0',
       },
     },
   },

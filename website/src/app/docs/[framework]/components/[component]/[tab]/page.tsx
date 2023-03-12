@@ -2,6 +2,7 @@ import { ComponentAPIReference } from '@/components/docs/ComponentAPIReference'
 import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
 import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
+import { Box } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 import { Stack } from 'panda/jsx/stack'
 import { match } from 'ts-pattern'
@@ -17,10 +18,12 @@ const Page = (props: any) => {
   return match(params.tab)
     .with('props', () => <ComponentAPIReference componentName={doc.name} types={doc.types} />)
     .otherwise(() => (
-      <Stack gap="12">
-        <Playground component={doc.id} />
-        <Markdown doc={doc} />
-      </Stack>
+      <Box width={{ base: 'full', xl: '41rem' }}>
+        <Stack gap="12">
+          <Playground component={doc.id} />
+          <Markdown doc={doc} />
+        </Stack>
+      </Box>
     ))
 }
 

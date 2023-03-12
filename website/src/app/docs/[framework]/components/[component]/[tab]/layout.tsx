@@ -17,8 +17,8 @@ const Layout = (props: any) => {
   const entries = params.tab === 'props' ? [] : component.toc
 
   return (
-    <Stack direction="row" gap="16" flex="1" justifyContent="flex-end">
-      <Box flex="1" maxW={{ base: 'unset', lg: '3xl' }}>
+    <>
+      <Box width={{ base: 'full', xl: '41rem' }}>
         <Stack gap="12">
           <PageHeader
             subHeading="Component"
@@ -30,7 +30,7 @@ const Layout = (props: any) => {
         </Stack>
       </Box>
       <TableOfContent entries={entries} />
-    </Stack>
+    </>
   )
 }
 

@@ -8,7 +8,7 @@ const nextConfig = {
     externalDir: true,
   },
   images: {
-    domains: ['avatars2.githubusercontent.com'],
+    domains: ['avatars2.githubusercontent.com', 'avatars.githubusercontent.com', 'tinyurl.com'],
   },
 }
 

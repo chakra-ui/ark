@@ -1,0 +1,27 @@
+{
+  "CarouselProps": {
+    "align": { "type": "'center' | 'start' | 'end'", "isRequired": false },
+    "dir": {
+      "type": "Direction",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "index": { "type": "number", "isRequired": false },
+    "loop": { "type": "boolean", "isRequired": false },
+    "onSlideChange": { "type": "(details: { index: number }) => void", "isRequired": false },
+    "orientation": { "type": "'horizontal' | 'vertical'", "isRequired": false },
+    "slidesPerView": { "type": "number", "isRequired": false },
+    "spacing": { "type": "string", "isRequired": false }
+  },
+  "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } }
+}
