@@ -95,6 +95,7 @@ const VueComboboxProps = {
 export const Combobox: ComponentWithProps<ComboboxProps> = defineComponent({
   name: 'Combobox',
   props: VueComboboxProps,
+  emits: ['close', 'open', 'highlight', 'input-change', 'update:modelValue', 'select'],
   setup(props, { slots, attrs, emit, expose }) {
     const comboboxProps = computed<UseComboboxProps>(() => ({
       context: props,
