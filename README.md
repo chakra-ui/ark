@@ -40,5 +40,5 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Splitter        | 🟢    | 🟢    | 🟢  |
 | Tabs            | 🟢    | 🟢    | 🟢  |
 | Tags Input      | 🟢    | 🟢    | ⚪  |
-| Toast           | 🟢    | 🟢    | ⚪  |
+| Toast           | 🟢    | 🟢    | 🟢  |
 | Tooltip         | 🟢    | 🟢    | 🟢  |

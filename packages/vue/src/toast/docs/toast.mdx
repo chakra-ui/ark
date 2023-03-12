@@ -1,0 +1,255 @@
+---
+id: toast
+name: Toast
+description: The toast component is used to give feedback to users after an action has taken place.
+---
+
+## Import
+
+```ts
+import {
+  Toast,
+  ToastCloseTrigger,
+  ToastDescription,
+  ToastGroup,
+  ToastPlacements,
+  ToastProvider,
+  ToastTitle,
+  useToast,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+### Create the AppToastProvider
+
+Use the toast components to compose a `ToastProvider` for your application. The granular component
+structure allows access to every DOM element.
+
+```tsx
+// app-toast-provider.vue
+<script>
+
+  const placementsRef = ref<PlacementsContext>()
+
+  const groupRef = ref<ToastsContext[]>()
+</script>
+<template>
+  <ToastProvider>
+    <ToastPlacements ref="placementsRef">
+      <ToastGroup
+        ref="groupRef"
+        v-for="(placement, placementIdx) in placementsRef?.placements"
+        :key="placementIdx"
+        :placement="placement"
+      >
+        <Toast v-for="toast in groupRef?.[placementIdx].toasts" :key="toast.id" :toast="toast">
+          <ToastTitle />
+          <ToastDescription />
+          <ToastCloseTrigger>
+            <button>Close</button>
+          </ToastCloseTrigger>
+        </Toast>
+      </ToastGroup>
+    </ToastPlacements>
+    <slot></slot>
+  </ToastProvider>
+</template>
+```
+
+### Wrap your App with the AppToastProvider
+
+Wrapping the application provides all child components access to the toast context with the
+`useToast` hook.
+
+```tsx
+<template>
+  <AppToastProvider>
+    {/*...*/}
+    <ExampleComponent />
+  </AppToastProvider>
+</template>
+```
+
+### Create toasts with useToast
+
+The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
+application. Create, update, remove and upsert toasts with the returned `toast` instance.
+
+```tsx
+// example-component.vue
+<script>
+  const toast = useToast()
+
+  const handleOnClick = () => {
+    toast.create({
+      type: 'success',
+      title: 'Form submitted',
+      placement: 'bottom',
+    })
+  }
+</script>
+<template>
+  <button @click='handleOnClick'>Show Toast</button>
+</template>
+```
+
+#### Use the shorthand type methods
+
+Omitting the type property is supported for toasts with type `success`, `loading` and `error`.
+
+```tsx
+toast.success({
+  title: 'Form submitted',
+})
+```
+
+```tsx
+toast.error({
+  title: 'An error occurred. Please try again!',
+})
+```
+
+```tsx
+toast.loading({
+  title: 'Submitting form',
+})
+```
+
+### Update a toast by id
+
+Update the description or other options for an existing toast.
+
+```tsx
+<script>
+  const toast = useToast()
+
+  async function submitForm() {
+    // simulate very slow request - wait for 3 seconds
+    await new Promise((r) => setTimeout(r, 3000))
+  }
+
+  const handleOnClick = async () => {
+    toast.create({
+      id: 'my-toast',
+      title: 'Submitting form',
+      placement: 'bottom',
+    })
+    await submitForm()
+    toast.update('my-toast', {
+      title: 'Form submitted successfully',
+    })
+  }
+</script>
+<template>
+  <button @click='handleOnClick'>Show Toast</button>
+</template>
+```
+
+### Remove a toast by id
+
+Remove a visible toast imperatively. E.g. on an event or after a async task.
+
+```tsx
+<script>
+  const toast = useToast()
+
+  async function submitForm() {
+    // simulate very slow request - wait for 3 seconds
+    await new Promise((r) => setTimeout(r, 3000))
+  }
+
+  const handleOnClick = async () => {
+    toast.create({
+      id: 'my-toast',
+      title: 'Submitting form',
+      placement: 'bottom',
+    })
+    await submitForm()
+    toast.remove('my-toast')
+  }
+</script>
+<template>
+  <button @click='handleOnClick'>Show Toast</button>
+</template>
+```
+
+### Upsert a toast by id
+
+`upsert` updates a toast if it exists, or it creates a new toast.
+
+```tsx
+<script>
+  const toast = useToast()
+
+  async function submitForm() {
+    // simulate very slow request - wait for 3 seconds
+    await new Promise((r) => setTimeout(r, 3000))
+  }
+
+  const handleOnClick = async () => {
+    toast.upsert({
+      id: 'my-toast',
+      title: 'Submitting form',
+      placement: 'bottom',
+    })
+    await submitForm()
+    toast.remove('my-toast')
+  }
+</script>
+<template>
+  <button @click='handleOnClick'>Show Toast</button>
+</template>
+```
+
+### Visualize a Promise
+
+```tsx
+<script>
+  const toast = useToast()
+
+  async function submitForm() {
+    // simulate very slow request - wait for 3 seconds
+    await new Promise((r) => setTimeout(r, 3000))
+  }
+
+  const handleOnClick = async () => {
+    await toast.promise(submitForm(), {
+      error: {
+        id: 'error',
+        type: 'error',
+        title: 'An error occurred. Please try again!',
+        placement: 'bottom',
+        duration: Infinity,
+      },
+      loading: {
+        id: 'loading',
+        type: 'loading',
+        title: 'Submitting form. Please wait.',
+        placement: 'bottom',
+        duration: Infinity,
+      },
+      success: {
+        id: 'success',
+        type: 'success',
+        title: 'Successfully submitted form.',
+        placement: 'bottom',
+        duration: 3_000,
+      },
+    })
+  }
+</script>
+<template>
+  <button @click="handleOnClick">Show toast</button>
+</template>
+```
+
+### Toast visibility
+
+Check if a toast is visible by id with `isVisible`.
+
+```tsx
+const toast = useToast()
+
+const isVisible = computed(() => toast.value.isVisible('my-toast'))
+```
