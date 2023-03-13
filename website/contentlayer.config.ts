@@ -11,7 +11,7 @@ let highlighter: Highlighter
 const highlightWithShiki = async (code: string) => {
   if (!highlighter) {
     const { getHighlighter } = await import('shiki')
-    highlighter = await getHighlighter({ theme: 'dark-plus' })
+    highlighter = await getHighlighter({ theme: 'css-variables' })
   }
   return highlighter.codeToHtml(code, { lang: 'tsx' })
 }
@@ -170,18 +170,8 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'dark-plus',
-          onVisitLine(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push('highlighted')
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ['word']
-          },
+          theme: 'css-variables',
+          keepBackground: true,
         } satisfies Partial<PrettyCodeOptions>,
       ],
     ],

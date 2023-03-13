@@ -40,7 +40,7 @@ export const Playground = (props: PlaygroundProps) => {
       bg="bg.surface"
       minH="40"
       borderRadius="lg"
-      boxShadow="sm"
+      borderWidth="1px"
       width="full"
     >
       <Canvas>
