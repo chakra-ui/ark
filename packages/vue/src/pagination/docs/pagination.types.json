@@ -44,9 +44,5 @@
     }
   },
   "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
-  "PaginationPageTriggerProps": { "value": { "type": "number", "isRequired": true } },
-  "UsePaginationProps": {
-    "context": { "type": "UsePaginationPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  }
+  "PaginationPageTriggerProps": { "value": { "type": "number", "isRequired": true } }
 }

@@ -56,10 +56,5 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     }
-  },
-  "UseTabsProps": {
-    "context": { "type": "Omit<UserDefinedContext, 'id' | 'value'>", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true },
-    "defaultValue": { "type": "string", "isRequired": false }
   }
 }

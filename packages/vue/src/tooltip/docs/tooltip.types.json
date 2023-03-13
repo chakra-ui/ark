@@ -60,9 +60,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "UseTooltipProps": {
-    "context": { "type": "TooltipPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
   }
 }

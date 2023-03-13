@@ -10,8 +10,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint",
-    "pandaup": "pnpm upgrade @pandacss/dev@dev"
+    "lint": "next lint"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
@@ -32,7 +31,7 @@
     "rehype-autolink-headings": "6.1.1",
     "rehype-pretty-code": "0.9.4",
     "rehype-slug": "5.1.0",
-    "shiki": "^0.14.1",
+    "shiki": "0.14.1",
     "ts-pattern": "4.2.1",
     "usehooks-ts": "2.9.1"
   },

@@ -38,44 +38,5 @@
       "description": "Whether to listen to reduce motion preferences"
     },
     "unmountOnExit": { "type": "boolean", "isRequired": false }
-  },
-  "UseTransitionProps": {
-    "enter": { "type": "CSSProperties", "isRequired": true },
-    "exit": { "type": "CSSProperties", "isRequired": true },
-    "duration": {
-      "type": "number | { enter: number; exit: number }",
-      "isRequired": false,
-      "description": "The duration of the transition."
-    },
-    "mounted": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the transition is mounted."
-    },
-    "onEnter": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function called when the transition enters."
-    },
-    "onEntered": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function called when the transition has entered."
-    },
-    "onExit": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function called when the transition exits."
-    },
-    "onExited": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function called when the transition has exited."
-    },
-    "reduceMotion": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to listen to reduce motion preferences"
-    }
   }
 }

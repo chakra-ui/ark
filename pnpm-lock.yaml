@@ -395,7 +395,7 @@ importers:
       rehype-autolink-headings: 6.1.1
       rehype-pretty-code: 0.9.4
       rehype-slug: 5.1.0
-      shiki: ^0.14.1
+      shiki: 0.14.1
       ts-pattern: 4.2.1
       typescript: 4.9.5
       usehooks-ts: 2.9.1
@@ -3859,7 +3859,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.1
-      vitest: 0.29.2_johjnpegw72r7dm4tpcr4a6xna
+      vitest: 0.29.2_happy-dom@8.9.0
     dev: true
 
   /@vitest/expect/0.29.2:

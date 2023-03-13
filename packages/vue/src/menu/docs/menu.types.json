@@ -106,9 +106,5 @@
       "description": "The `id` of the element that provides accessibility label to the option group"
     }
   },
-  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } },
-  "UseMenuProps": {
-    "context": { "type": "UseMenuPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  }
+  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

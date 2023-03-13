@@ -102,9 +102,5 @@
       "description": "The value of the the pin input."
     }
   },
-  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } },
-  "UsePinInputProps": {
-    "context": { "type": "PinInputPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  }
+  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } }
 }
