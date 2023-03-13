@@ -82,7 +82,7 @@ const VueIcon = () => (
     <path
       d="M48.2957 23.1999L43.0996 32.3221L37.9035 23.1999H29.5996L43.0996 46.8999L56.5996 23.1999H48.2957Z"
       fill="white"
-      fill-opacity="0.94"
+      fillOpacity="0.94"
     />
   </svg>
 )
