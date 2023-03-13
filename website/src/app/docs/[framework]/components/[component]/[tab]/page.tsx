@@ -1,10 +1,10 @@
 import { ComponentAPIReference } from '@/components/docs/ComponentAPIReference'
+import { DocsFooter } from '@/components/docs/DocsFooter'
 import { Markdown } from '@/components/docs/Markdown'
 import { Playground } from '@/components/docs/Playground'
 import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
-import { Box } from '@/panda/jsx'
+import { Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
-import { Stack } from 'panda/jsx/stack'
 import { match } from 'ts-pattern'
 
 const Page = (props: any) => {
@@ -15,16 +15,19 @@ const Page = (props: any) => {
     notFound()
   }
 
-  return match(params.tab)
-    .with('props', () => <ComponentAPIReference componentName={doc.name} types={doc.types} />)
-    .otherwise(() => (
-      <Box width={{ base: 'full', xl: '41rem' }}>
-        <Stack gap="12">
-          <Playground component={doc.id} />
-          <Markdown doc={doc} />
-        </Stack>
-      </Box>
-    ))
+  return (
+    <Stack gap="12" width={{ base: 'full', xl: '41rem' }}>
+      {match(params.tab)
+        .with('props', () => <ComponentAPIReference componentName={doc.name} types={doc.types} />)
+        .otherwise(() => (
+          <>
+            <Playground component={doc.id} />
+            <Markdown doc={doc} />
+          </>
+        ))}
+      <DocsFooter doc={doc} />
+    </Stack>
+  )
 }
 
 export default Page

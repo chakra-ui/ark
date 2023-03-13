@@ -20,7 +20,7 @@ export const PageHeader = (props: PageHeaderProps) => {
           {heading}
         </panda.h1>
       </Stack>
-      <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
+      <Text color="fg.muted" textStyle="md" lineHeight="relaxed">
         {supportingText}
       </Text>
     </Stack>

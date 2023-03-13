@@ -1,4 +1,4 @@
-import { Stack } from '@/panda/jsx'
+import { Box, Stack } from '@/panda/jsx'
 import { FrameworkSelect } from './FrameworkSelect'
 import { SidebarExternalLinks } from './SidebarExternalLinks'
 import { SidebarItemGroup, type SidebarItemGroupProps } from './SidebarItemGroup'
@@ -14,5 +14,6 @@ export const Sidebar = (props: SidebarProps) => (
     {props.entries.map((itemGroup, index) => (
       <SidebarItemGroup key={index} {...itemGroup} />
     ))}
+    <Box minH="1px" />
   </Stack>
 )

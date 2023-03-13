@@ -135,6 +135,10 @@ export const ChangelogDocument = defineDocumentType(() => ({
       type: 'string',
       resolve: () => 'Changelog',
     },
+    description: {
+      type: 'string',
+      resolve: () => 'See what is new',
+    },
     route: {
       type: 'string',
       resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/changelog`,
