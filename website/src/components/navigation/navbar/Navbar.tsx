@@ -1,3 +1,4 @@
+'use client'
 import { IconButton } from '@/components/shared/IconButton'
 import { css } from '@/panda/css'
 import { Flex, HStack, panda } from '@/panda/jsx'

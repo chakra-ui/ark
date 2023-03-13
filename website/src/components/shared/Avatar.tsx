@@ -1,3 +1,4 @@
+'use client'
 import { Circle } from '@/panda/jsx'
 import Image from 'next/image'
 import { circle } from 'panda/patterns'

@@ -1,3 +1,4 @@
+'use client'
 import { css, cx } from '@/panda/css'
 import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { button, ButtonVariants } from '@/panda/recipes'
