@@ -14,7 +14,7 @@ export const MobileNavbar = (props: PropsWithChildren) => {
     .map((path) => path.replace(/-/g, ' '))
 
   return (
-    <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
+    <Box borderTopWidth="1px" display={{ base: 'block', lg: 'none' }}>
       <Container>
         <Stack direction="row" py="3" align="center">
           {props.children}

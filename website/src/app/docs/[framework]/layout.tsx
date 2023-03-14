@@ -51,12 +51,13 @@ const DocsLayout = (props: any) => {
             </HStack>
           </Stack>
         </Container>
+        <MobileNavbar>
+          <MobileSidebarContainer>
+            <Sidebar entries={[overview, components]} />
+          </MobileSidebarContainer>
+        </MobileNavbar>
       </Box>
-      <MobileNavbar>
-        <MobileSidebarContainer>
-          <Sidebar entries={[overview, components]} />
-        </MobileSidebarContainer>
-      </MobileNavbar>
+
       <Container flex="1">
         <Flex
           display={{ base: 'none', lg: 'flex' }}
