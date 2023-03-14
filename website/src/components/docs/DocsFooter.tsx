@@ -22,7 +22,7 @@ export const DocsFooter = (props: FooterProps) => {
       <HStack justify="space-between" width="full">
         {prevDoc && (
           <Stack gap="3">
-            <Text color="accent.default" fontWeight="semibold" textStyle="sm">
+            <Text color="accent.muted" fontWeight="semibold" textStyle="sm">
               Previous
             </Text>
             <Button variant="link" size="lg" href={prevDoc.route} leftIcon={<FiArrowLeft />}>
@@ -33,7 +33,7 @@ export const DocsFooter = (props: FooterProps) => {
 
         {nextDoc && (
           <Stack gap="3" style={{ marginLeft: 'auto' }}>
-            <Text color="accent.default" fontWeight="semibold" textStyle="sm">
+            <Text color="accent.muted" fontWeight="semibold" textStyle="sm">
               Next
             </Text>
             <Button variant="link" size="lg" href={nextDoc.route} rightIcon={<FiArrowRight />}>

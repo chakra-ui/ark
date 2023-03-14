@@ -52,7 +52,9 @@ export const Community = () => {
               alignSelf="stretch"
             >
               <Stack gap={{ base: '8', md: '12' }} justify="space-between">
-                <Box fontSize="4xl">{channel.icon}</Box>
+                <Box fontSize="4xl" color="accent.default">
+                  {channel.icon}
+                </Box>
                 <Stack gap={{ base: '4', md: '5' }}>
                   <Stack gap={{ base: '1', md: '2' }}>
                     <Heading textStyle="lg" fontWeight="semibold">

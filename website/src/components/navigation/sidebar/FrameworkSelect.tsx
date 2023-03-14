@@ -50,6 +50,7 @@ export const FrameworkSelect = () => {
               fontSize: { base: 'md', lg: 'sm' },
               lineHeight: '1.5rem',
               fontWeight: 'semibold',
+              color: 'accent.muted',
             })}
           >
             Framework

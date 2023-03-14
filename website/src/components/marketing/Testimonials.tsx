@@ -35,7 +35,7 @@ export const Testimonials = () => {
         {testimonials.map((testimonial, id) => (
           <Stack key={id} gap="8">
             <Stack gap="4">
-              <VscQuote className={css({ fontSize: '2xl', color: 'accent.default' })} />
+              <VscQuote className={css({ fontSize: '2xl', color: 'accent.muted' })} />
               <Text textStyle={{ base: 'lg', md: 'xl' }} fontWeight="medium" color="fg.emphasized">
                 {testimonial.quote}
               </Text>

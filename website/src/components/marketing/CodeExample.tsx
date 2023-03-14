@@ -54,7 +54,7 @@ export const CodeExample = () => {
                   background="bg.surface"
                   borderRadius="lg"
                   borderWidth="1px"
-                  color="accent.default"
+                  color="accent.muted"
                   fontSize="2xl"
                   justify="center"
                   shrink={0}
@@ -73,27 +73,20 @@ export const CodeExample = () => {
             ))}
           </Stack>
         </Stack>
-        <Flex
-          background="bg.surface"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          width="full"
-        >
-          <Tabs className={tabs({})} defaultValue="React">
-            <TabList className={css({ borderBottomRadius: '0' })}>
-              {['React', 'Vue', 'Solid'].map((value) => (
-                <TabTrigger key={value} value={value}>
-                  <button>{value}</button>
-                </TabTrigger>
-              ))}
-              <TabIndicator />
-            </TabList>
-            <TabContent value="React">React Code Example</TabContent>
-            <TabContent value="Vue">Vue Code Example</TabContent>
-            <TabContent value="Solid">Solid Code Example</TabContent>
-          </Tabs>
-        </Flex>
+
+        <Tabs className={tabs({ variant: 'fill' })} defaultValue="React">
+          <TabList className={css({ borderBottomRadius: '0' })}>
+            {['React', 'Vue', 'Solid'].map((value) => (
+              <TabTrigger key={value} value={value}>
+                <button>{value}</button>
+              </TabTrigger>
+            ))}
+            <TabIndicator />
+          </TabList>
+          <TabContent value="React">React Code Example</TabContent>
+          <TabContent value="Vue">Vue Code Example</TabContent>
+          <TabContent value="Solid">Solid Code Example</TabContent>
+        </Tabs>
       </Stack>
     </Container>
   )

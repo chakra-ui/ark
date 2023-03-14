@@ -18,7 +18,12 @@ export const SidebarItemGroup = (props: SidebarItemGroupProps) => {
   const pathname = usePathname()
   return (
     <Stack gap={{ base: '6', lg: '3' }}>
-      <Text fontSize={{ base: 'md', lg: 'sm' }} lineHeight="1.5rem" fontWeight="semibold">
+      <Text
+        fontSize={{ base: 'md', lg: 'sm' }}
+        lineHeight="1.5rem"
+        fontWeight="semibold"
+        color="accent.muted"
+      >
         {heading}
       </Text>
       <Stack borderLeftWidth="1px" gap={{ base: '5', lg: '2' }}>

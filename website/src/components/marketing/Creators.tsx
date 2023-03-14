@@ -57,7 +57,7 @@ export const Creators = () => {
             </Stack>
             <Stack gap={{ base: '4', md: '5' }}>
               <Heading
-                color="accent.default"
+                color="accent.muted"
                 textTransform="uppercase"
                 textStyle="md"
                 letterSpacing="0.12em"

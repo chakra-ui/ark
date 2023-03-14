@@ -25,7 +25,7 @@ export const MobileNavbar = (props: PropsWithChildren) => {
                 fontWeight="medium"
                 color="fg.muted"
                 textTransform="capitalize"
-                _last={{ color: 'accent.default' }}
+                _last={{ color: 'accent.muted' }}
               >
                 {crumb}
               </Text>

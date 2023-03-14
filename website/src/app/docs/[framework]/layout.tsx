@@ -71,7 +71,7 @@ const DocsLayout = (props: any) => {
           <Sidebar entries={[overview, components]} />
         </Flex>
         <Flex flex="1" pl={{ base: 'none', lg: '15rem' }}>
-          <Box pt="8" pb={{ base: '12', md: '24' }} pl={{ base: 'none', lg: '16' }}>
+          <Box pt="8" pb={{ base: '12', md: '24' }} pl={{ base: 'none', lg: '16' }} width="full">
             {props.children}
           </Box>
         </Flex>

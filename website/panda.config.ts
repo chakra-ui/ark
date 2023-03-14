@@ -19,23 +19,23 @@ export default defineConfig({
           fg: {
             default: { value: { base: '{colors.gray.900}', _dark: 'white' } },
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
-            muted: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
-            subtle: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.500}' } },
+            muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.400}' } },
+            subtle: { value: { base: '{colors.gray.400}', _dark: '{colors.gray.500}' } },
             placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },
           },
           bg: {
-            canvas: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.900}' } },
-            surface: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.600}' } },
+            canvas: { value: { base: '{colors.gray.25}', _dark: '{colors.brown.900}' } },
+            surface: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.600}' } },
             muted: { value: { base: '{colors.gray.300}', _dark: '{colors.brown.700}' } },
             subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.800}' } },
           },
           accent: {
             default: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.400}' } },
             emphasized: { value: { base: '{colors.orange.500}', _dark: '{colors.orange.500}' } },
-            muted: { value: { base: '{colors.orange.100}', _dark: '{colors.orange.800}' } },
+            muted: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.300}' } },
             subtle: { value: { base: '{colors.orange.50}', _dark: '{colors.orange.900}' } },
           },
           border: {

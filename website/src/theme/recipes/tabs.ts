@@ -11,26 +11,22 @@ export const tabs = defineRecipe({
       width: 'full',
     },
     tablist: {
-      alignItems: 'center',
-      background: {
-        base: 'gray.200',
-        _dark: 'brown.600',
-      },
-      borderRadius: 'lg',
+      borderBottomWidth: '1px',
       display: 'flex',
-      gap: '8',
+      gap: '4',
+      height: '8',
       position: 'relative',
-      px: '6',
     },
     trigger: {
       background: 'transparent',
       cursor: 'pointer',
       color: 'fg.muted',
       display: 'inline-flex',
-      fontWeight: 'medium',
-
+      fontWeight: 'semibold',
+      textStyle: 'sm',
+      px: '1',
       _selected: {
-        color: 'fg.default',
+        color: 'accent.muted',
       },
       _disabled: {
         opacity: 0.4,
@@ -39,28 +35,47 @@ export const tabs = defineRecipe({
     },
     indicator: {
       height: '2px',
-      background: 'orange.400',
-      bottom: '0',
+      background: 'accent.muted',
+      bottom: '-1px',
     },
     content: {
       background: 'brown.700',
+      borderRadius: 'lg',
+      borderWidth: '1px',
+      borderTopRightRadius: '0',
+      borderTopLeftRadius: '0',
+      borderTopWidth: '0px',
       minH: 'xl',
-      py: '10',
-      px: '6',
+      textStyle: 'sm',
+      color: 'fg.muted',
+      py: '6',
+      px: '4',
     },
   }),
-  defaultVariants: {
-    size: 'md',
-  },
   variants: {
-    size: {
-      md: parts({
+    variant: {
+      fill: parts({
         tablist: {
+          alignItems: 'center',
+          background: {
+            base: 'gray.200',
+            _dark: 'brown.600',
+          },
+          borderWidth: '1px',
+          borderRadius: 'lg',
+          gap: '6',
+          px: '4',
           height: '10',
         },
         trigger: {
-          textStyle: 'sm',
-          px: '1',
+          color: 'fg.muted',
+          fontWeight: 'medium',
+          _selected: {
+            color: 'fg.default',
+          },
+        },
+        indicator: {
+          background: 'accent.default',
         },
       }),
     },
