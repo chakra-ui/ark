@@ -7,6 +7,7 @@ const sizes = {
   sm: circle({ size: '8' }),
   md: circle({ size: '10' }),
   lg: circle({ size: '12' }),
+  xl: circle({ size: '14' }),
 }
 
 type AvatarProps = {
