@@ -1,6 +1,7 @@
 import { connect, Context as RatingGroupContext, machine } from '@zag-js/rating-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 type RatingGroupPropsContext = Omit<RatingGroupContext, 'id'> & {
@@ -15,10 +16,13 @@ export type UseRatingGroupProps = {
 export const useRatingGroup = (props: UseRatingGroupProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       value: context.modelValue,
       onChange(details) {
         emit('change', details.value)

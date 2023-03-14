@@ -1,6 +1,7 @@
 import { connect, Context as ComboboxContext, machine } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, onMounted, UnwrapRef, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 type ComboboxPropsContext = Omit<ComboboxContext, 'id'> & {
@@ -16,10 +17,13 @@ export type UseComboboxProps = {
 export const useCombobox = (props: UseComboboxProps) => {
   const { context, emit, defaultValue } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       inputValue: defaultValue,
       onClose() {
         emit('close')

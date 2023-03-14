@@ -1,6 +1,7 @@
 import { connect, Context, machine } from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, UnwrapRef } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
@@ -14,10 +15,13 @@ export type UseMenuProps = {
 export const useMenu = (props: UseMenuProps) => {
   const { emit, context } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send, menuMachine] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       onOpen() {
         emit('open')
       },

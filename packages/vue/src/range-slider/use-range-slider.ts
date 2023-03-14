@@ -1,6 +1,7 @@
 import { connect, Context, machine } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, UnwrapRef, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
@@ -16,10 +17,13 @@ export type UseRangeSliderProps = {
 export const useRangeSlider = (props: UseRangeSliderProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       value: context.modelValue ?? context.value,
       onChangeStart(details) {
         emit('change-start', details)

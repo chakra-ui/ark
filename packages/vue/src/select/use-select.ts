@@ -1,6 +1,7 @@
 import { connect, Context as SelectContext, machine } from '@zag-js/select'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 interface UseSelectContext extends Omit<SelectContext, 'id' | 'selectedOption'> {
@@ -15,10 +16,13 @@ export interface UseSelectProps {
 export const useSelect = (props: UseSelectProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       selectedOption: context.modelValue,
       onChange: (details) => {
         emit('change', { ...details })

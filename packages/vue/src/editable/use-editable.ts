@@ -1,6 +1,7 @@
 import { connect, Context as EditableContext, machine } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, UnwrapRef, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
@@ -16,10 +17,13 @@ export type UseEditableProps = {
 export const useEditable = (props: UseEditableProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       value: context.modelValue ?? context.value,
       onCancel(details) {
         emit('cancel', details)

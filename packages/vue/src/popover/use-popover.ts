@@ -1,6 +1,7 @@
 import { connect, Context as PopoverContext, machine } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, UnwrapRef, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
@@ -21,10 +22,13 @@ export type UsePopoverProps = {
 export const usePopover = (props: UsePopoverProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       defaultOpen: context.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)

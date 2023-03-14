@@ -1,6 +1,7 @@
 import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, onMounted, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 interface AccordionProps extends Omit<AccordionContext, 'id' | 'value'> {
@@ -16,11 +17,14 @@ export interface UseAccordionProps {
 export const useAccordion = (props: UseAccordionProps) => {
   const { context, emit, defaultValue } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       value: defaultValue,
       id: useId().value,
+      getRootNode,
       onChange: (details) => {
         emit('change', details.value)
         emit(

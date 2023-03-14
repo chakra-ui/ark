@@ -1,6 +1,7 @@
 import { connect, Context as PressableContext, machine } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 type PressablePropsContext = Omit<PressableContext, 'id' | 'disabled' | 'cancelOnPointerExit'> & {
@@ -16,12 +17,15 @@ export type UsePressableProps = {
 export const usePressable = (props: UsePressableProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       disabled: context.isDisabled,
       cancelOnPointerExit: context.isCanceledOnExit,
       id: useId().value,
+      getRootNode,
       onLongPress(event) {
         emit('longPress', event)
       },

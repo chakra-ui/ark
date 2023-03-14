@@ -1,6 +1,7 @@
 import { connect, Context as NumberInputContext, machine } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 interface NumberInputPropsContext extends Omit<NumberInputContext, 'id'> {
@@ -14,10 +15,14 @@ export type UseNumberInputProps = {
 
 export const useNumberInput = (props: UseNumberInputProps) => {
   const { context, emit } = transformComposableProps(props)
+
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       value: context.modelValue ?? context.value,
       onBlur(details) {
         emit('blur', details)

@@ -1,6 +1,7 @@
 import { connect, Context as CheckboxContext, machine } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { transformComposableProps, useId } from '../utils'
 
 interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
@@ -15,10 +16,13 @@ export interface UseCheckboxProps {
 export const useCheckbox = (props: UseCheckboxProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       defaultChecked: context.modelValue,
       onChange(details) {
         emit('change', details.checked)

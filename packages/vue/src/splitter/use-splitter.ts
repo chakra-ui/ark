@@ -1,6 +1,7 @@
 import { connect, Context as SplitterContext, machine } from '@zag-js/splitter'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, UnwrapRef } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
@@ -12,10 +13,13 @@ export type UseSplitterProps = {
 export const useSplitter = (props: UseSplitterProps) => {
   const { context, emit } = transformComposableProps(props)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...context,
       id: useId().value,
+      getRootNode,
       onResize(details) {
         emit('resize', details)
       },
