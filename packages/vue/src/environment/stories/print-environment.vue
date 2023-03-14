@@ -7,7 +7,7 @@ const getRootNode = useEnvironmentContext()
 const rootNode = ref<ReturnType<NonNullable<EnvironmentContext>> | undefined>(undefined)
 
 watchEffect(() => {
-  rootNode.value = getRootNode.value?.()
+  rootNode.value = getRootNode?.()
 
   console.log(rootNode.value)
 })
