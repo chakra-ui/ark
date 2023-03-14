@@ -306,6 +306,7 @@ importers:
       '@zag-js/tags-input': 0.3.14
       '@zag-js/toast': 0.2.14
       '@zag-js/tooltip': 0.2.13
+      '@zag-js/types': 0.3.4
       '@zag-js/vue': 0.2.10
       clean-package: 2.2.0
       eslint: 8.35.0
@@ -343,6 +344,7 @@ importers:
       '@zag-js/tags-input': 0.3.14
       '@zag-js/toast': 0.2.14
       '@zag-js/tooltip': 0.2.13
+      '@zag-js/types': 0.3.4
       '@zag-js/vue': 0.2.10_vue@3.2.47
     devDependencies:
       '@testing-library/dom': 9.0.0

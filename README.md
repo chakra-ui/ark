@@ -24,7 +24,7 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 | Dialog          | 🟢    | 🟢    | 🟢  |
 | Combobox        | 🟢    | 🟢    | 🟢  |
 | Editable        | 🟢    | 🟢    | 🟢  |
-| Environment     | 🟢    | 🟢    | ⚪  |
+| Environment     | 🟢    | 🟢    | 🟢  |
 | Hover Card      | 🟢    | 🟢    | 🟢  |
 | Menu            | 🟢    | 🟢    | ⚪  |
 | Number Input    | 🟢    | 🟢    | 🟢  |
