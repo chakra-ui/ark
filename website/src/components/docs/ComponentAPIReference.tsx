@@ -74,7 +74,7 @@ const Properties = (props: PropertiesProps) => {
                     fontSize: '13px',
                     whiteSpace: 'break-spaces',
                     color: 'accent.default',
-                    fontFamily: 'var(--font-roboto-mono)',
+                    fontFamily: 'var(--font-fira-code)',
                     textStyle: 'sm',
                     wordBreak: 'break-all',
                   })}

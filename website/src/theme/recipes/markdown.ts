@@ -59,9 +59,10 @@ export const markdown = defineRecipe({
       borderBottomWidth: '3px',
       fontSize: 'xs',
       fontWeight: 'bold',
-      fontFamily: 'var(--font-roboto-mono)',
+      fontFamily: 'var(--font-fira-code)',
       lineHeight: 'normal',
       px: '1',
+      py: '0.5',
       whiteSpace: 'nowrap',
     },
     '& :first-child': {
@@ -69,6 +70,19 @@ export const markdown = defineRecipe({
     },
     '& :last-child': {
       mb: '0',
+    },
+    '& p code': {
+      alignItems: 'center',
+      bg: 'bg.surface',
+      borderWidth: '1px',
+      borderRadius: 'sm',
+      color: 'accent.muted',
+      display: 'inline-flex',
+      fontFamily: 'var(--font-fira-code)',
+      fontWeight: 'medium',
+      fontSize: 'sm',
+      height: '6',
+      px: '1',
     },
   },
 })
