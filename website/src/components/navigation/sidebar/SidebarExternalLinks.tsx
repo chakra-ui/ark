@@ -36,12 +36,12 @@ export const SidebarExternalLinks = () => (
       <li key={link.label}>
         <Link
           color="inherit"
-          _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
+          _currentPage={{ color: 'accent.muted', fontWeight: 'semibold' }}
           aria-current={link.isActive ? 'page' : false}
           href={link.href}
           target="_blank"
         >
-          <HStack gap="4">
+          <HStack gap="3">
             <Box
               display="flex"
               justifyContent="center"

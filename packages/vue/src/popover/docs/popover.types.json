@@ -72,40 +72,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "UsePopoverProps": {
-    "context": { "type": "UsePopoverPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  },
-  "UsePopoverReturn": {
-    "anchorProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "arrowProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "arrowTipProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "close": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to close the popover"
-    },
-    "closeTriggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true },
-    "contentProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "descriptionProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the popover is open"
-    },
-    "open": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to open the popover"
-    },
-    "portalled": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the popover is portalled"
-    },
-    "positionerProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "titleProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "triggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true }
   }
 }

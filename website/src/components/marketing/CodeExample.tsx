@@ -1,49 +1,68 @@
 'use client'
+import { css } from '@/panda/css'
 import { Flex } from '@/panda/jsx'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
-import { Box } from 'panda/jsx/box'
 import { Container } from 'panda/jsx/container'
 import { Stack } from 'panda/jsx/stack'
 import { tabs } from 'panda/recipes/tabs'
+import { AiOutlineAppstoreAdd } from 'react-icons/ai'
+import { BsPalette } from 'react-icons/bs'
+import { MdOutlineAccessibleForward } from 'react-icons/md'
+import { VscWorkspaceTrusted } from 'react-icons/vsc'
 import { Heading } from '../shared/Heading'
 import { Text } from '../shared/Text'
 
 export const CodeExample = () => {
   const features = [
     {
-      heading: 'Modular',
-      description: 'Access granular component parts giving you full control over styling',
+      heading: 'Compsable',
+      description:
+        'The components are built using a declarative syntax, which makes them easier to reason about and understand.',
+      icon: <AiOutlineAppstoreAdd />,
     },
     {
-      heading: 'Unstyled',
-      description: 'No need override styles. Use any CSS framework you love',
+      heading: 'Themeable',
+      description:
+        'Style the components according to your design system, rather than being limited by predefined styles.',
+      icon: <BsPalette />,
     },
     {
       heading: 'Accessible',
-      description: 'From focus management to screen reader, or ARIA attributes',
+      description:
+        'Ark follows accessibility standards and guidelines, ensuring that the components can be accessed and used by all users.',
+      icon: <MdOutlineAccessibleForward />,
     },
     {
-      heading: 'Robust',
-      description: 'Ark UI components are state machines, so they work with any major framework.',
+      heading: 'Reliable',
+      description:
+        'Using state machines, Ark can help you create more reliable user interfaces, with less room for bugs and unexpected behavior.',
+      icon: <VscWorkspaceTrusted />,
     },
   ]
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Stack gap="24" direction={{ base: 'column', md: 'row' }}>
+      <Stack gap={{ base: '16', md: '24' }} direction={{ base: 'column', md: 'row' }}>
         <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
             Composable API design for a delightful experience
           </Heading>
           <Stack gap="10">
-            {features.map(({ heading, description }) => (
+            {features.map(({ heading, description, icon }) => (
               <Stack key={heading} direction="row" gap={{ base: '5', md: '6' }}>
-                <Box
-                  width={{ base: '10', md: '12' }}
+                <Flex
+                  align="center"
+                  background="bg.surface"
+                  borderRadius="lg"
+                  borderWidth="1px"
+                  color="accent.muted"
+                  fontSize="2xl"
+                  justify="center"
+                  shrink={0}
                   height={{ base: '10', md: '12' }}
-                  background="orange.800"
-                  borderRadius="full"
-                  flexShrink={0}
-                />
+                  width={{ base: '10', md: '12' }}
+                >
+                  {icon}
+                </Flex>
                 <Stack gap={{ base: '1', md: '2' }}>
                   <Heading textStyle="lg" fontWeight="semibold">
                     {heading}
@@ -54,27 +73,20 @@ export const CodeExample = () => {
             ))}
           </Stack>
         </Stack>
-        <Flex
-          background="bg.surface"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          width="full"
-        >
-          <Tabs className={tabs({})} defaultValue="React">
-            <TabList>
-              {['React', 'Vue', 'Solid'].map((value) => (
-                <TabTrigger key={value} value={value}>
-                  <button>{value}</button>
-                </TabTrigger>
-              ))}
-              <TabIndicator />
-            </TabList>
-            <TabContent value="React">React Code Example</TabContent>
-            <TabContent value="Vue">Vue Code Example</TabContent>
-            <TabContent value="Solid">Solid Code Example</TabContent>
-          </Tabs>
-        </Flex>
+
+        <Tabs className={tabs({ variant: 'fill' })} defaultValue="React">
+          <TabList className={css({ borderBottomRadius: '0' })}>
+            {['React', 'Vue', 'Solid'].map((value) => (
+              <TabTrigger key={value} value={value}>
+                <button>{value}</button>
+              </TabTrigger>
+            ))}
+            <TabIndicator />
+          </TabList>
+          <TabContent value="React">React Code Example</TabContent>
+          <TabContent value="Vue">Vue Code Example</TabContent>
+          <TabContent value="Solid">Solid Code Example</TabContent>
+        </Tabs>
       </Stack>
     </Container>
   )

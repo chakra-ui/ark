@@ -1,3 +1,4 @@
+'use client'
 import { HTMLPandaProps, panda } from '@/panda/jsx'
 import { button, ButtonVariants } from '@/panda/recipes'
 import NextLink, { type LinkProps } from 'next/link'

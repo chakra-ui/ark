@@ -1,16 +1,23 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
-import { css, cx } from '@/panda/css'
-import { Inter, Roboto_Mono } from '@next/font/google'
+import { cx } from '@/panda/css'
+import { Fira_Code, Inter } from '@next/font/google'
 import { NextSeo } from 'next-seo'
+import localFont from 'next/font/local'
 import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
+const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' })
+
+const monaSans = localFont({
+  src: './mona-sans.woff2',
+  display: 'swap',
+  variable: '--font-mona-sans',
+})
 
 const RootLayout = (props: PropsWithChildren) => {
   return (
-    <html lang="en" className={cx(inter.variable, roboto.variable)}>
+    <html lang="en" className={cx(inter.variable, firaCode.variable, monaSans.variable)}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -18,9 +25,7 @@ const RootLayout = (props: PropsWithChildren) => {
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />
         <NextSeo useAppDir />
       </head>
-      <body>
-        <div className={css({ minHeight: 'full' })}>{props.children}</div>
-      </body>
+      <body>{props.children}</body>
     </html>
   )
 }

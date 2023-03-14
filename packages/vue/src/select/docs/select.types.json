@@ -87,27 +87,11 @@
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
   },
-  "SelectContext": {
-    "api": {
-      "type": "ComputedRef<{ isOpen: boolean; highlightedOption: Option | null; selectedOption: Option | null; focus(): void; blur(): void; open(): void; close(): void; setSelectedOption(value: Option): void; ... 10 more ...; contentProps: Attrs<...>; }>",
-      "isRequired": true
-    }
-  },
   "SelectOptionProps": {
     "label": { "type": "string", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
     "valueText": { "type": "string", "isRequired": false }
   },
-  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "UseSelectProps": {
-    "context": { "type": "UseSelectContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  },
-  "UseSelectReturn": {
-    "api": {
-      "type": "ComputedRef<{ isOpen: boolean; highlightedOption: Option | null; selectedOption: Option | null; focus(): void; blur(): void; open(): void; close(): void; setSelectedOption(value: Option): void; ... 10 more ...; contentProps: Attrs<...>; }>",
-      "isRequired": true
-    }
-  }
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
 }

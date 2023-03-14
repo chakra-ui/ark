@@ -78,9 +78,5 @@
       "isRequired": false,
       "description": "The value to be used in the checkbox input.\nThis is the value that will be returned on form submission."
     }
-  },
-  "UseCheckboxProps": {
-    "context": { "type": "CheckboxPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
   }
 }

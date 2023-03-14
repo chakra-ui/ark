@@ -2,7 +2,9 @@ import { accordion } from './accordion'
 import { badge } from './badge'
 import { button } from './button'
 import { checkbox } from './checkbox'
+import { code } from './code'
 import { dialog } from './dialog'
+import { divider } from './divider'
 import { drawer } from './drawer'
 import { hoverCard } from './hover-card'
 import { input } from './input'
@@ -29,7 +31,9 @@ export const recipes = {
   badge,
   button,
   checkbox,
+  code,
   dialog,
+  divider,
   drawer,
   hoverCard,
   input,

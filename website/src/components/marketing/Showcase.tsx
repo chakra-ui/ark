@@ -39,18 +39,23 @@ export const Showcase = () => {
               <CarouselSlideGroup>
                 {components.map((component, id) => (
                   <CarouselSlide key={component} index={id}>
-                    <Box p="6">{component} Demo</Box>
+                    <Box px="4" py="6" color="fg.muted">
+                      {component} Demo
+                    </Box>
                   </CarouselSlide>
                 ))}
               </CarouselSlideGroup>
             </CarouselViewport>
             <Stack direction="row" justify="space-between" width="full">
               <Tabs
-                className={cx(tabs({}), css({ display: { base: 'none', sm: 'block' } }))}
+                className={cx(
+                  tabs({ variant: 'fill' }),
+                  css({ display: { base: 'none', sm: 'block' } }),
+                )}
                 value={components[index]}
                 onChange={({ value }) => setIndex(components.indexOf(value ?? ''))}
               >
-                <TabList>
+                <TabList className={css({ display: 'inline-flex' })}>
                   {components.map((component) => (
                     <TabTrigger key={component} value={component}>
                       <button>{component}</button>

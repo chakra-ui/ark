@@ -1,4 +1,4 @@
-import { allComponentDocuments, allDocuments, type ComponentDocument } from '@/contentlayer'
+import { allComponentDocuments, allDocuments, DocumentTypes } from '@/contentlayer'
 
 export const getComponentDocuments = (framework: string) =>
   allComponentDocuments
@@ -10,16 +10,21 @@ export const findComponentDocumentByFrameworkAndId = (framework: string, id: str
     (document) => document.id === id && document.framework === framework,
   )
 
-export const findPreviousComponentDocument = (document: ComponentDocument) => {
-  const componentDocuments = getComponentDocuments(document.framework)
-  const index = componentDocuments.findIndex((entry) => entry.id === document.id)
-  return componentDocuments[index - 1]
+export const findDocumentsByFramework = (framework: string) => [
+  ...getGeneralDocuments(framework),
+  ...getComponentDocuments(framework),
+]
+
+export const findNextDocument = (document: DocumentTypes) => {
+  const docs = findDocumentsByFramework(document.framework)
+  const index = docs.findIndex((entry) => entry.id === document.id)
+  return docs[index + 1]
 }
 
-export const findNextComponentDocument = (document: ComponentDocument) => {
-  const componentDocuments = getComponentDocuments(document.framework)
-  const index = componentDocuments.findIndex((entry) => entry.id === document.id)
-  return componentDocuments[index + 1]
+export const findPrevDocument = (document: DocumentTypes) => {
+  const docs = findDocumentsByFramework(document.framework)
+  const index = docs.findIndex((entry) => entry.id === document.id)
+  return docs[index - 1]
 }
 
 export const getGeneralDocuments = (framework: string) => {

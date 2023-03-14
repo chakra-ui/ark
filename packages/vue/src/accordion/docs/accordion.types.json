@@ -46,20 +46,5 @@
   "AccordionItemProps": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "AccordionItemContext": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "UseAccordionProps": {
-    "context": { "type": "Omit<AccordionProps, 'id'>", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true },
-    "defaultValue": { "type": "string | string[]", "isRequired": false }
-  },
-  "UseAccordionReturn": {
-    "api": {
-      "type": "ComputedRef<{ rootProps: Attrs<HTMLAttributes>; getItemProps(props: ItemProps): Attrs<HTMLAttributes>; getContentProps(props: ItemProps): Attrs<...>; ... 4 more ...; getItemState: (props: ItemProps) => { ...; }; }>",
-      "isRequired": true
-    }
   }
 }

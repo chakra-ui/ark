@@ -1,6 +1,6 @@
 import { Text } from '@/components/shared/Text'
 import { css } from '@/panda/css'
-import { Container, Stack } from '@/panda/jsx'
+import { Box, Container, Stack } from '@/panda/jsx'
 import { VscQuote } from 'react-icons/vsc'
 import { Avatar } from '../shared/Avatar'
 
@@ -8,44 +8,50 @@ export const Testimonials = () => {
   const testimonials = [
     {
       author: {
-        name: 'Bruno Mendes',
-        title: 'UI Engineer, Mandix',
-        avatar: 'https://avatars.githubusercontent.com/u/11624407?v=4',
+        name: 'Isabella Williams',
+        title: 'Accessibility Engineer, Clearbit',
+        avatar: 'https://tinyurl.com/37385wcf',
       },
       quote:
-        "We've been able to focus on building solid user experiences on top of Ark Primitives. With UI components, there are just too many angles and rabbit holes to cover for product teams that wish to move quickly.",
+        "I've been using Ark for my personal project, and it's been a game-changer. The accessibility standards have given me peace of mind that my UI is usable by everyone. I'd definitely recommend Ark to any developer who wants to build reliable and accessible UIs.",
     },
     {
       author: {
-        name: 'Christian Jones',
-        title: 'Engineering Manager',
-        avatar: 'https://avatars.githubusercontent.com/u/11624407?v=4',
+        name: 'Tyler Kim',
+        title: 'Frontend Developer, Mandix',
+        avatar: 'https://tinyurl.com/23b2uvbu',
       },
       quote:
-        "We've been able to focus on building solid user experiences on top of Ark Primitives. With UI components, there are just too many angles and rabbit holes to cover for product teams that wish to move quickly.",
+        "As someone who's new to UI development, I've found Ark to be incredibly helpful. The declarative syntax has made it easy for me to reason about how my components will behave, and the themeability has allowed me to create UIs that match my client's brand perfectly.",
     },
   ]
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Stack direction={{ base: 'column', md: 'row' }} gap="16">
+      <Box
+        display="grid"
+        gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
+        gap={{ base: '16', md: '24' }}
+      >
         {testimonials.map((testimonial, id) => (
           <Stack key={id} gap="8">
             <Stack gap="4">
-              <VscQuote className={css({ fontSize: '2xl', color: 'orange.400' })} />
-              <Text textStyle="lg" color="fg.mtued">
+              <VscQuote className={css({ fontSize: '2xl', color: 'accent.muted' })} />
+              <Text textStyle={{ base: 'lg', md: 'xl' }} fontWeight="medium" color="fg.emphasized">
                 {testimonial.quote}
               </Text>
             </Stack>
-            <Stack direction="row" gap="4" alignItems="center">
-              <Avatar name={testimonial.author.name} src={testimonial.author.avatar} />
+            <Stack gap="5" direction="row">
+              <Avatar name={testimonial.author.name} src={testimonial.author.avatar} size="lg" />
               <Stack gap="0">
-                <Text>{testimonial.author.name}</Text>
+                <Text fontWeight="semibold" color="fg.emphasized">
+                  {testimonial.author.name}
+                </Text>
                 <Text color="fg.muted">{testimonial.author.title}</Text>
               </Stack>
             </Stack>
           </Stack>
         ))}
-      </Stack>
+      </Box>
     </Container>
   )
 }

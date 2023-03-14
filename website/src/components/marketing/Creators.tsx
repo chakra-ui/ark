@@ -36,36 +36,37 @@ export const Creators = () => {
     <Container py={{ base: '12', md: '24' }}>
       <Stack
         direction={{ base: 'column', md: 'row' }}
-        p="16"
+        px={{ base: '6', md: '16' }}
+        py={{ base: '10', md: '16' }}
         gap="16"
         background="bg.surface"
         borderWidth="1px"
         borderRadius="2xl"
         alignItems="center"
       >
-        <Stack direction="row" gap="16" flex="1">
+        <Stack direction={{ base: 'column', md: 'row' }} gap="16" flex="1">
           <Stack gap="10">
-            <Stack gap={{ base: '4', md: '5' }} maxW="lg">
-              <Heading textStyle={{ base: '2xl', md: '3xl' }} fontWeight="semibold">
+            <Stack gap="4" maxW="lg">
+              <Heading textStyle="3xl" fontWeight="semibold">
                 Made by creators of <br /> Chakra UI and Zag.js
               </Heading>
-              <Text color="fg.muted" textStyle="xl">
+              <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }}>
                 The Chakra UI team developed Ark UI to give you total control of your web
                 applications
               </Text>
             </Stack>
             <Stack gap={{ base: '4', md: '5' }}>
               <Heading
-                color="accent.default"
+                color="accent.muted"
                 textTransform="uppercase"
                 textStyle="md"
                 letterSpacing="0.12em"
               >
                 People
               </Heading>
-              <HStack gap="3">
+              <HStack gap="3" justifyContent="flex-end">
                 {creators.map((creator) => (
-                  <Avatar key={creator.name} name={creator.name} src={creator.avatar} size="lg" />
+                  <Avatar key={creator.name} name={creator.name} src={creator.avatar} size="xl" />
                 ))}
               </HStack>
             </Stack>

@@ -40,7 +40,7 @@ export const Community = () => {
             Ark UI is an open-source library that allows developers to build components faster
           </Text>
         </Stack>
-        <Stack gap="8" direction={{ base: 'column', md: 'row' }} width="full">
+        <Stack gap={{ base: '6', md: '8' }} direction={{ base: 'column', md: 'row' }} width="full">
           {channels.map((channel, id) => (
             <Flex
               key={id}
@@ -52,7 +52,9 @@ export const Community = () => {
               alignSelf="stretch"
             >
               <Stack gap={{ base: '8', md: '12' }} justify="space-between">
-                <Box fontSize="4xl">{channel.icon}</Box>
+                <Box fontSize="4xl" color="accent.default">
+                  {channel.icon}
+                </Box>
                 <Stack gap={{ base: '4', md: '5' }}>
                   <Stack gap={{ base: '1', md: '2' }}>
                     <Heading textStyle="lg" fontWeight="semibold">
@@ -66,7 +68,7 @@ export const Community = () => {
                     variant="link"
                     href={channel.href}
                     size="lg"
-                    color="orange.400"
+                    color="accent.default"
                     rightIcon={<FiArrowRight />}
                   >
                     {channel.callToAction}
