@@ -1,7 +1,8 @@
+import { Link } from '@/components/shared/Link'
 import type { DocumentTypes } from '@/contentlayer'
+import { panda } from '@/panda/jsx'
 import { markdown } from '@/panda/recipes'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { panda } from 'panda/jsx'
 import { match, P } from 'ts-pattern'
 
 type MarkdownProps = {
@@ -15,16 +16,14 @@ export const Markdown = (props: MarkdownProps) => {
     <panda.article className={markdown()}>
       <MDXComponent
         components={{
+          a: (props: any) => (
+            <Link {...props} variant="mdx" target="_blank" rel="noopener noreferrer" />
+          ),
           Story({ name }: any) {
             return match(doc)
               .with(
                 { type: 'ComponentDocument', stories: P.when((v: any) => v[name] != null) },
-                ({ stories }) => (
-                  <div
-                    data-rehype-pretty-code-fragment=""
-                    dangerouslySetInnerHTML={{ __html: stories[name] }}
-                  />
-                ),
+                ({ stories }) => <div dangerouslySetInnerHTML={{ __html: stories[name] }} />,
               )
               .otherwise(() => null)
           },

@@ -48,6 +48,13 @@ export const link = defineRecipe({
           borderColor: 'accent.default',
         },
       },
+      mdx: {
+        color: 'fg.emphasized',
+        _visited: { color: 'fg.emphasized' },
+        textDecoration: 'underline',
+        textDecorationColor: 'accent.muted',
+        textUnderlineOffset: '0.2em',
+      },
     },
   },
 })
