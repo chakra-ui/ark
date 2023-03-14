@@ -10,7 +10,7 @@ export const hoverCard = defineRecipe({
     positioner: {
       '--hover-card-background': {
         base: 'white',
-        _dark: 'token(colors.bg.surface)',
+        _dark: 'colors.bg.surface',
       },
 
       background: 'var(--hover-card-background)',
