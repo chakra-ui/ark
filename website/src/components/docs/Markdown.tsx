@@ -1,3 +1,4 @@
+import { Code } from '@/components/shared/Code'
 import { Link } from '@/components/shared/Link'
 import type { DocumentTypes } from '@/contentlayer'
 import { panda } from '@/panda/jsx'
@@ -19,6 +20,7 @@ export const Markdown = (props: MarkdownProps) => {
           a: (props: any) => (
             <Link {...props} variant="mdx" target="_blank" rel="noopener noreferrer" />
           ),
+          code: (props: any) => <Code {...props} />,
           Story({ name }: any) {
             return match(doc)
               .with(

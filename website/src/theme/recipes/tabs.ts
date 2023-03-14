@@ -25,8 +25,14 @@ export const tabs = defineRecipe({
       fontWeight: 'semibold',
       textStyle: 'sm',
       px: '1',
+      _hover: {
+        color: 'fg.emphasized',
+      },
       _selected: {
         color: 'accent.muted',
+        _hover: {
+          color: 'accent.muted',
+        },
       },
       _disabled: {
         opacity: 0.4,

@@ -54,55 +54,6 @@ export const globalCss = defineGlobalStyles({
     '--shiki-token-string-expression': 'colors.gray.100',
     '--shiki-token-punctuation': 'colors.gray.100',
     '--shiki-token-link': 'colors.gray.100',
-  },
-  table: {
-    width: 'full',
-    tableLayout: 'auto',
-    textAlign: 'left',
-  },
-  th: {
-    color: 'fg.muted',
-    fontWeight: 'semibold',
-    pb: '2.5',
-    pt: '0',
-    pr: {
-      base: '2',
-      md: '4',
-    },
-    textAlign: 'left',
-    textStyle: 'sm',
-    _last: {
-      pl: {
-        base: '2',
-        md: '4',
-      },
-      pr: '0',
-    },
-  },
-  td: {
-    borderTopWidth: '1px',
-    color: 'fg.muted',
-    textStyle: 'sm',
-    py: '2.5',
-    wordWrap: 'break-word',
-    pr: {
-      base: '2',
-      md: '4',
-    },
-    verticalAlign: 'top',
-    _first: {
-      minWidth: {
-        base: 'unset',
-        sm: '12rem',
-      },
-    },
-    _last: {
-      width: 'full',
-      pl: {
-        base: '2',
-        md: '4',
-      },
-      pr: '0',
-    },
+    '& code': {},
   },
 })

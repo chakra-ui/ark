@@ -71,18 +71,5 @@ export const markdown = defineRecipe({
     '& :last-child': {
       mb: '0',
     },
-    '& p code': {
-      alignItems: 'center',
-      bg: 'bg.surface',
-      borderWidth: '1px',
-      borderRadius: 'sm',
-      color: 'accent.muted',
-      display: 'inline-flex',
-      fontFamily: 'var(--font-fira-code)',
-      fontWeight: 'medium',
-      fontSize: 'sm',
-      height: '6',
-      px: '1',
-    },
   },
 })

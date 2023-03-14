@@ -1,9 +1,9 @@
 import type { DocumentTypes } from '@/contentlayer'
 import { findNextDocument, findPrevDocument } from '@/lib/contentlayer'
-import { css } from '@/panda/css'
 import { HStack, Stack } from '@/panda/jsx'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { Button } from '../shared/Button'
+import { Divider } from '../shared/Divider'
 import { Text } from '../shared/Text'
 
 type FooterProps = {
@@ -18,7 +18,7 @@ export const DocsFooter = (props: FooterProps) => {
 
   return (
     <Stack width="full" gap="6">
-      <hr className={css({ borderBottomWidth: '1px', width: 'full' })} />
+      <Divider />
       <HStack justify="space-between" width="full">
         {prevDoc && (
           <Stack gap="3">
