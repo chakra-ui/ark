@@ -8,7 +8,12 @@ export const hoverCard = defineRecipe({
   description: 'A hover card style',
   base: parts({
     positioner: {
-      background: 'bg.surface',
+      '--hover-card-background': {
+        base: 'white',
+        _dark: 'token(colors.bg.surface)',
+      },
+
+      background: 'var(--hover-card-background)',
       borderRadius: 'lg',
       borderWidth: '1px',
       boxShadow: 'xl',
@@ -20,10 +25,7 @@ export const hoverCard = defineRecipe({
     },
     arrow: {
       '--arrow-size': '12px',
-      '--arrow-background': {
-        base: 'white',
-        _dark: 'colors.gray.950',
-      },
+      '--arrow-background': 'var(--hover-card-background)',
     },
     arrowTip: {
       borderTopWidth: '1px',
