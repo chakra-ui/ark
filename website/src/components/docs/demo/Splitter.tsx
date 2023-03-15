@@ -1,37 +1,58 @@
+import { Box, BoxProps } from '@/panda/jsx'
 import { splitter } from '@/panda/recipes'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '@ark-ui/react'
-import { useId } from 'react'
+import {
+  Splitter as ArkSplitter,
+  SplitterPanel,
+  SplitterProps as ArkSplitterProps,
+  SplitterResizeTrigger,
+} from '@ark-ui/react'
+import { ReactNode, useId } from 'react'
 
-const Basic = (props: Partial<SplitterProps> & { content?: React.ReactNode }) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
+type SplitterProps = ArkSplitterProps & {
+  start: ReactNode
+  end: ReactNode
+}
+
+const Splitter = (props: SplitterProps) => {
+  const { start, end, ...rest } = props
+  const [a, b] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
   return (
     <>
-      <Splitter
+      <ArkSplitter
         size={[
-          { id: first, size: 50 },
-          { id: second, size: 50 },
+          { id: a, size: 50 },
+          { id: b, size: 50 },
         ]}
-        {...props}
+        {...rest}
         className={splitter()}
       >
-        <SplitterPanel id={first}>{props.content ?? <p>{first}</p>}</SplitterPanel>
-        <SplitterResizeTrigger id={`${first}:${second}`}>
+        <SplitterPanel id={a}>{start}</SplitterPanel>
+        <SplitterResizeTrigger id={`${a}:${b}`}>
           <div />
         </SplitterResizeTrigger>
-        <SplitterPanel id={second}>{props.children ?? <p>{second}</p>}</SplitterPanel>
-      </Splitter>
+        <SplitterPanel id={b}>{end}</SplitterPanel>
+      </ArkSplitter>
     </>
   )
 }
 
-export const DemoSplitter = (props: Partial<SplitterProps>) => (
-  <div style={{ height: '26rem', width: '100%' }}>
-    <Basic {...props} orientation="vertical" content="A">
-      <Basic {...props} content="B">
-        <Basic {...props} orientation="vertical" content="C">
-          D
-        </Basic>
-      </Basic>
-    </Basic>
-  </div>
+export const DemoSplitter = () => (
+  <Splitter
+    orientation="vertical"
+    start={<Container>A</Container>}
+    end={
+      <Splitter
+        start={<Container>B</Container>}
+        end={
+          <Splitter
+            orientation="vertical"
+            start={<Container>C</Container>}
+            end={<Container>D</Container>}
+          />
+        }
+      />
+    }
+  />
 )
+
+const Container = (props: BoxProps) => <Box {...props} />
