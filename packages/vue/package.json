@@ -79,7 +79,7 @@
     "jsdom": "21.1.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "4.9.5",
-    "vite": "4.1.4",
+    "vite": "4.2.0",
     "vite-plugin-dts": "2.1.0",
     "vitest": "0.29.3",
     "vue": "3.2.47"
