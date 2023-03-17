@@ -70,7 +70,7 @@
     "@typescript-eslint/eslint-plugin": "5.55.0",
     "@typescript-eslint/parser": "5.55.0",
     "@vitejs/plugin-vue": "4.1.0",
-    "@vitejs/plugin-vue-jsx": "3.0.0",
+    "@vitejs/plugin-vue-jsx": "3.0.1",
     "@vitest/coverage-c8": "0.29.3",
     "@vue/compiler-sfc": "3.2.47",
     "clean-package": "2.2.0",
