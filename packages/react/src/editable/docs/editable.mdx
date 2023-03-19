@@ -1,7 +1,10 @@
 ---
 id: editable
 name: Editable
-description: Editable is an input field used for editing a single line of text. It renders as static text and transforms into a text input field when then edit interaction is triggered (click, focus, or double-click).
+description:
+  Editable is an input field used for editing a single line of text. It renders
+  as static text and transforms into a text input field when then edit
+  interaction is triggered (click, focus, or double-click).
 ---
 
 ## Import
@@ -22,9 +25,9 @@ import {
 
 ## Usage
 
-The Editable component consists of the `EditableArea`, `EditableCancelTrigger`, `EditableControl`,
-`EditableEditTrigger`, `EditableInput`, `EditableLabel`, `EditablePreview` and
-`EditableSubmitTrigger` components.
+The Editable component consists of the `EditableArea`, `EditableCancelTrigger`,
+`EditableControl`, `EditableEditTrigger`, `EditableInput`, `EditableLabel`,
+`EditablePreview` and `EditableSubmitTrigger` components.
 
 ```tsx
 <Editable placeholder="Placeholder">
@@ -38,8 +41,9 @@ The Editable component consists of the `EditableArea`, `EditableCancelTrigger`, 
 
 ### Using custom controls
 
-In some cases, you might need to use custom controls to toggle the edit and read mode. We use the
-render prop pattern to provide access to the internal state of the component.
+In some cases, you might need to use custom controls to toggle the edit and read
+mode. We use the render prop pattern to provide access to the internal state of
+the component.
 
 ```tsx
 <Editable placeholder="Placeholder">
@@ -73,7 +77,8 @@ render prop pattern to provide access to the internal state of the component.
 
 ### Auto-resizing the editable
 
-To auto-grow the editable as the content changes, set the `autoResize` prop to `true`.
+To auto-grow the editable as the content changes, set the `autoResize` prop to
+`true`.
 
 ```tsx
 <Editable placeholder="Placeholder" autoResize>
@@ -83,8 +88,8 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to `
 
 #### Setting a maxWidth
 
-It is a common pattern to set a maximum of the editable as it auto-grows. To achieve this, set the
-`maxWidth` prop to the desired value.
+It is a common pattern to set a maximum of the editable as it auto-grows. To
+achieve this, set the `maxWidth` prop to the desired value.
 
 ```tsx
 <Editable placeholder="Placeholder" autoResize maxWidth="320px">
