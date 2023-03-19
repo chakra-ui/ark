@@ -177,7 +177,7 @@ importers:
   packages/solid:
     specifiers:
       '@polymorphic-factory/solid': 0.2.0
-      '@solidjs/testing-library': 0.6.1
+      '@solidjs/testing-library': 0.7.0
       '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
@@ -248,7 +248,7 @@ importers:
       '@zag-js/tooltip': 0.2.13
       '@zag-js/types': 0.3.4
     devDependencies:
-      '@solidjs/testing-library': 0.6.1_solid-js@1.6.15
+      '@solidjs/testing-library': 0.7.0_solid-js@1.6.15
       '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
@@ -3365,13 +3365,13 @@ packages:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: true
 
-  /@solidjs/testing-library/0.6.1_solid-js@1.6.15:
-    resolution: {integrity: sha512-cS91EDopZhpVa+F55vLxbT+xrQEtc6jIYhXEleu7aCtPRKuBAhKGYQoiOAWrxRd2cXu678dhR8kuwp7ZS2gkNQ==}
+  /@solidjs/testing-library/0.7.0_solid-js@1.6.15:
+    resolution: {integrity: sha512-mTSINHdcLc6rn9xWWJfzPkY0zyKtLb7QAM2CouVw2QvNZ0mgfk3z2tpaprismlE/YLn+I3ij4BqiV3ocvI+hIQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       solid-js: '>=1.0.0'
     dependencies:
-      '@testing-library/dom': 8.20.0
+      '@testing-library/dom': 9.0.1
       solid-js: 1.6.15
     dev: true
 
@@ -3380,20 +3380,6 @@ packages:
     dependencies:
       tslib: 2.5.0
     dev: false
-
-  /@testing-library/dom/8.20.0:
-    resolution: {integrity: sha512-d9ULIT+a4EXLX3UU8FBjauG9NnsZHkHztXoIcTsOKoOw030fyjheN9svkTULjJxtYag9DZz5Jz5qkWZDPxTFwA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@babel/runtime': 7.20.13
-      '@types/aria-query': 5.0.1
-      aria-query: 5.1.1
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.14
-      lz-string: 1.4.4
-      pretty-format: 27.5.1
-    dev: true
 
   /@testing-library/dom/9.0.1:
     resolution: {integrity: sha512-fTOVsMY9QLFCCXRHG3Ese6cMH5qIWwSbgxZsgeF5TNsy81HKaZ4kgehnSF8FsR3OF+numlIV2YcU79MzbnhSig==}
@@ -8331,11 +8317,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-
-  /lz-string/1.4.4:
-    resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
-    hasBin: true
-    dev: true
 
   /lz-string/1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}

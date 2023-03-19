@@ -61,7 +61,7 @@
     "@zag-js/types": "0.3.4"
   },
   "devDependencies": {
-    "@solidjs/testing-library": "0.6.1",
+    "@solidjs/testing-library": "0.7.0",
     "@testing-library/dom": "9.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
