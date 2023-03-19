@@ -8,7 +8,8 @@
     {
       "files": "*.mdx",
       "options": {
-        "printWidth": 80
+        "printWidth": 80,
+        "proseWrap": "always"
       }
     }
   ]
