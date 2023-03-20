@@ -1,6 +1,6 @@
 'use client'
 import { Flex } from '@/panda/jsx'
-import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
+import React, { Suspense, type ComponentType, type PropsWithChildren } from 'react'
 import { match } from 'ts-pattern'
 
 type PlaygroundProps = {

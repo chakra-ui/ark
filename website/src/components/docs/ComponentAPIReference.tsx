@@ -3,7 +3,7 @@ import { Divider } from '@/components/shared/Divider'
 import { Heading } from '@/components/shared/Heading'
 import { Text } from '@/components/shared/Text'
 import { HStack, Stack } from '@/panda/jsx'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 
 type Property = {
   type: string

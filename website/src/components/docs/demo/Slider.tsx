@@ -4,10 +4,10 @@ import {
   SliderControl,
   SliderMarker,
   SliderMarkerGroup,
-  SliderProps,
   SliderRange,
   SliderThumb,
   SliderTrack,
+  type SliderProps,
 } from '@ark-ui/react'
 
 export const DemoSlider = (props: Partial<SliderProps>) => (
