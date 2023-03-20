@@ -71,5 +71,11 @@ export const markdown = defineRecipe({
     '& :last-child': {
       mb: '0',
     },
+    '& blockquote': {
+      padding: '1em',
+      borderWidth: '1px',
+      mb: '4',
+      borderRadius: '0.5em',
+    },
   },
 })
