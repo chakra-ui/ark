@@ -1,4 +1,4 @@
-import { connect, Context as TabsContext, machine } from '@zag-js/tabs'
+import { connect, machine, type Context as TabsContext } from '@zag-js/tabs'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { transformComposableProps, useId } from '../utils'

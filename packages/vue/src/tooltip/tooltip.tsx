@@ -1,7 +1,7 @@
-import { computed, defineComponent, PropType } from 'vue'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
 type UseTooltipPropsContext = UseTooltipProps['context']
 

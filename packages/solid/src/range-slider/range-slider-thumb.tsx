@@ -1,7 +1,7 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { Accessor } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { type Accessor } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useRangeSliderContext } from './range-slider-context'
 
 type RangeSliderThumbParams = { index: Accessor<number> }

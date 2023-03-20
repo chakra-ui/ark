@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
-import { useCheckbox, UseCheckboxProps } from './use-checkbox'
+import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
 type UseCheckboxContext = UseCheckboxProps['context']
 

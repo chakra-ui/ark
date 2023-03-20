@@ -2,7 +2,7 @@
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { usePathname } from 'next/navigation'
-import { Fragment, PropsWithChildren } from 'react'
+import { Fragment, type PropsWithChildren } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 
 export const MobileNavbar = (props: PropsWithChildren) => {

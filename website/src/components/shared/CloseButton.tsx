@@ -1,5 +1,5 @@
 import { FiX } from 'react-icons/fi'
-import { IconButton, IconButtonProps } from './IconButton'
+import { IconButton, type IconButtonProps } from './IconButton'
 
 export const CloseButton = (props: IconButtonProps) => (
   <IconButton

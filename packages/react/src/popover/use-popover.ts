@@ -2,7 +2,7 @@ import * as popover from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useEffect, useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 import { useLatestRef } from '../use-latest-ref'
 
 export type UsePopoverProps = Optional<popover.Context, 'id'> & {

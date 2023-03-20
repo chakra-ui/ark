@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagsInputControlProps = HTMLArkProps<'div'>

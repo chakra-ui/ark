@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTabsContext } from './tabs-context'
 
 export type TabIndicatorProps = HTMLArkProps<'div'>

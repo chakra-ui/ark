@@ -1,7 +1,7 @@
 import * as combobox from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseComboboxProps = Optional<combobox.Context, 'id'>
 

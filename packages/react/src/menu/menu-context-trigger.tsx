@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Children, ReactElement } from 'react'
+import { Children, type ReactElement } from 'react'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
+import { type UseMenuReturn } from './use-menu'
 
 export type MenuContextTriggerProps = { children: ReactElement }
 

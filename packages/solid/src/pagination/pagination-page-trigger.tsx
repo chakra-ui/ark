@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { children, createEffect, JSX } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
 type PaginationPageTriggerParams = {

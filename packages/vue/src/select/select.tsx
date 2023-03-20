@@ -1,7 +1,7 @@
-import { computed, defineComponent, PropType } from 'vue'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
-import { useSelect, UseSelectProps } from './use-select'
+import { useSelect, type UseSelectProps } from './use-select'
 
 type UseSelectPropsContext = UseSelectProps['context']
 

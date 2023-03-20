@@ -1,7 +1,7 @@
 import {
-  Context,
   createContext as createSolidContext,
   useContext as useSolidContext,
+  type Context,
 } from 'solid-js'
 
 export interface CreateContextOptions<T> {

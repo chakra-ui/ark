@@ -1,7 +1,7 @@
-import type { connect } from '@zag-js/radio-group'
-import type { ComputedRef } from 'vue'
+import { type connect } from '@zag-js/radio-group'
+import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
-import type { UseRadioGroupReturn } from './use-radio-group'
+import { type UseRadioGroupReturn } from './use-radio-group'
 
 export type RadioContext = Parameters<ReturnType<typeof connect>['getRadioProps']>[0]
 

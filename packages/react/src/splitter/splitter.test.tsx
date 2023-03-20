@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
+import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 
 const ComponentUnderTest = (props: SplitterProps) => (
   <Splitter

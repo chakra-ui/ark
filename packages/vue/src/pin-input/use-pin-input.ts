@@ -1,4 +1,4 @@
-import { connect, Context as PinInputContext, machine } from '@zag-js/pin-input'
+import { connect, machine, type Context as PinInputContext } from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { transformComposableProps, useId } from '../utils'

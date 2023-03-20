@@ -10,9 +10,9 @@ import {
   PopoverContent,
   PopoverDescription,
   PopoverPositioner,
-  PopoverProps,
   PopoverTitle,
   PopoverTrigger,
+  type PopoverProps,
 } from '@ark-ui/react'
 
 export const DemoPopover = (props: Partial<PopoverProps>) => (

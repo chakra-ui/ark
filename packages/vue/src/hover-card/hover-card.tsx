@@ -1,7 +1,7 @@
-import { computed, defineComponent, PropType } from 'vue'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
 type UseHoverCardPropsContext = UseHoverCardProps['context']
 

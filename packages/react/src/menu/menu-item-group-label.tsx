@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
+import { type UseMenuReturn } from './use-menu'
 
 type MenuItemGroupLabelParams = { htmlFor: string }
 export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGroupLabelParams>

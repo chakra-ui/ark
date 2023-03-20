@@ -1,5 +1,5 @@
 import { splitter } from '@/panda/recipes'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '@ark-ui/react'
+import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '@ark-ui/react'
 import { useId } from 'react'
 
 const Basic = (props: Partial<SplitterProps> & { content?: React.ReactNode }) => {

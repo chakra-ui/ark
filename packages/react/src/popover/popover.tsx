@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import { PopoverProvider } from './popover-context'
-import { usePopover, UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverProps } from './use-popover'
 
 export type PopoverProps = PropsWithChildren<UsePopoverProps>
 

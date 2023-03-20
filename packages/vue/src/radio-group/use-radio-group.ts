@@ -1,7 +1,7 @@
-import { connect, Context, machine } from '@zag-js/radio-group'
+import { connect, machine, type Context } from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef, watch } from 'vue'
-import type { Optional } from '../types'
+import { computed, watch, type UnwrapRef } from 'vue'
+import { type Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
 type UseRadioGroupPropsContext = Optional<Context, 'id'> & {

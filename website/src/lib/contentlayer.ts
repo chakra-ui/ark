@@ -1,4 +1,4 @@
-import { allComponentDocuments, allDocuments, DocumentTypes } from '@/contentlayer'
+import { allComponentDocuments, allDocuments, type DocumentTypes } from '@/contentlayer'
 
 export const getComponentDocuments = (framework: string) =>
   allComponentDocuments

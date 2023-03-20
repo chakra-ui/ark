@@ -1,7 +1,7 @@
-import type { JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
 export type TooltipProps = UseTooltipProps & { children: JSX.Element }
 

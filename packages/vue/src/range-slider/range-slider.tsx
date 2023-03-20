@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { RangeSliderProvider } from './range-slider-context'
-import { useRangeSlider, UseRangeSliderProps } from './use-range-slider'
+import { useRangeSlider, type UseRangeSliderProps } from './use-range-slider'
 
 export type RangeSliderProps = Assign<HTMLArkProps<'div'>, UseRangeSliderProps['context']>
 

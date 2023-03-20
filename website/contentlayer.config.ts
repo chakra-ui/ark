@@ -1,11 +1,11 @@
-import type { RawDocumentData } from 'contentlayer/core'
+import { type RawDocumentData } from 'contentlayer/core'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
 import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrettyCode, { Options as PrettyCodeOptions } from 'rehype-pretty-code'
+import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import type { Highlighter } from 'shiki'
+import { type Highlighter } from 'shiki'
 
 let highlighter: Highlighter
 const highlightWithShiki = async (code: string) => {

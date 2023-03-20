@@ -3,7 +3,7 @@ import * as slider from '@zag-js/slider'
 import { useCallback, useId } from 'react'
 import { flushSync } from 'react-dom'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseSliderProps = Optional<slider.Context, 'id'> & {
   defaultValue?: slider.Context['value']

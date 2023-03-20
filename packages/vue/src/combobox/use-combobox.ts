@@ -1,6 +1,6 @@
-import { connect, Context as ComboboxContext, machine } from '@zag-js/combobox'
+import { connect, machine, type Context as ComboboxContext } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, UnwrapRef, watch } from 'vue'
+import { computed, onMounted, watch, type UnwrapRef } from 'vue'
 import { transformComposableProps, useId } from '../utils'
 
 type ComboboxPropsContext = Omit<ComboboxContext, 'id'> & {
