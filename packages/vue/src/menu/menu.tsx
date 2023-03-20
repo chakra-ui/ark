@@ -1,6 +1,6 @@
-import { computed, defineComponent, onMounted, PropType } from 'vue'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, onMounted, type PropType } from 'vue'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -8,7 +8,7 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, UseMenuProps } from './use-menu'
+import { useMenu, type UseMenuProps } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean

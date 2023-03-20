@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
 export type HoverCardProps = PropsWithChildren<UseHoverCardProps>
 

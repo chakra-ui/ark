@@ -1,6 +1,6 @@
-import type { connect } from '@zag-js/tabs'
-import { Children, cloneElement, ReactElement } from 'react'
-import type { Assign } from '../types'
+import { type connect } from '@zag-js/tabs'
+import { Children, cloneElement, type ReactElement } from 'react'
+import { type Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
 type TabContext = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]

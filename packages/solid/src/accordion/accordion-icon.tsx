@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 
 export type AccordionIconProps = HTMLArkProps<'div'>
 

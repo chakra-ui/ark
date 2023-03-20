@@ -9,7 +9,7 @@ import {
   TagsInputClearTrigger,
   TagsInputControl,
   TagsInputField,
-  TagsInputProps,
+  type TagsInputProps,
 } from './'
 
 const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (

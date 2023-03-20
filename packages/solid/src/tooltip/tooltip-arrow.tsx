@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipArrowProps = HTMLArkProps<'div'>

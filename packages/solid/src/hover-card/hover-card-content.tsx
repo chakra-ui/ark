@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
 export type HoverCardContentProps = HTMLArkProps<'div'>

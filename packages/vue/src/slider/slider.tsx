@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { SliderProvider } from './slider-context'
-import { useSlider, UseSliderProps } from './use-slider'
+import { useSlider, type UseSliderProps } from './use-slider'
 
 export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps['context']>
 

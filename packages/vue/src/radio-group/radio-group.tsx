@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { RadioGroupProvider } from './radio-context'
-import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
+import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
 export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps['context']>
 

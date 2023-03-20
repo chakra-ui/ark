@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter, UseSplitterProps } from './use-splitter'
+import { useSplitter, type UseSplitterProps } from './use-splitter'
 
 type SplitterPropsContext = UseSplitterProps['context']
 

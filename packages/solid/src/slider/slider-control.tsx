@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
 export type SliderControlProps = HTMLArkProps<'div'>

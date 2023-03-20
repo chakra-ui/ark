@@ -1,4 +1,4 @@
-import { connect, Context as TooltipContext, machine } from '@zag-js/tooltip'
+import { connect, machine, type Context as TooltipContext } from '@zag-js/tooltip'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { transformComposableProps, useId } from '../utils'

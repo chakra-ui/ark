@@ -1,6 +1,6 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
+import { type UseMenuReturn } from './use-menu'
 
 export type MenuTriggerProps = { children: ReactElement }
 

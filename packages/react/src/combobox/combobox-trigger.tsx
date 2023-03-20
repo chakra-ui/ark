@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxTriggerProps = { children: ReactElement }

@@ -1,7 +1,7 @@
-import { connect, Context as EditableContext, machine } from '@zag-js/editable'
+import { connect, machine, type Context as EditableContext } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef, watch } from 'vue'
-import type { Optional } from '../types'
+import { computed, watch, type UnwrapRef } from 'vue'
+import { type Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
 interface EditablePropContext extends Optional<EditableContext, 'id'> {

@@ -1,7 +1,7 @@
-import type { JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { PopoverProvider } from './popover-context'
-import { usePopover, UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverProps } from './use-popover'
 
 export type PopoverProps = UsePopoverProps & { children: JSX.Element }
 

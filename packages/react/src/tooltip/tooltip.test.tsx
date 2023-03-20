@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Tooltip, TooltipProps } from './tooltip'
+import { Tooltip, type TooltipProps } from './tooltip'
 import { TooltipArrow } from './tooltip-arrow'
 import { TooltipArrowTip } from './tooltip-arrow-tip'
 import { TooltipContent } from './tooltip-content'

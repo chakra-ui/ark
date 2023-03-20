@@ -1,11 +1,11 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { children } from 'solid-js'
-import type { JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, UseTagsInputProps, UseTagsInputReturn } from './use-tags-input'
+import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
 export type TagsInputChildren = {
   children: (pages: ReturnType<UseTagsInputReturn>) => JSX.Element | JSX.Element

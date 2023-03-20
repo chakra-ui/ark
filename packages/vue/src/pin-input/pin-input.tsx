@@ -1,9 +1,9 @@
-import { ComponentPropsOptions, computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { computed, defineComponent, type ComponentPropsOptions, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, UsePinInputProps } from './use-pin-input'
+import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
 type UsePinInputPropsContext = UsePinInputProps['context']
 

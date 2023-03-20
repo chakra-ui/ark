@@ -7,10 +7,10 @@ import {
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
-  ComboboxOptionProps,
   ComboboxPositioner,
-  ComboboxProps,
   ComboboxTrigger,
+  type ComboboxOptionProps,
+  type ComboboxProps,
 } from '.'
 
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [

@@ -1,7 +1,7 @@
-import { connect, Context as PopoverContext, machine } from '@zag-js/popover'
+import { connect, machine, type Context as PopoverContext } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef, watch } from 'vue'
-import type { Optional } from '../types'
+import { computed, watch, type UnwrapRef } from 'vue'
+import { type Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 
 interface UsePopoverPropsContext extends Optional<PopoverContext, 'id'> {

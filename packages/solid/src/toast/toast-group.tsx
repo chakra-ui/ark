@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { Placement, Service } from '@zag-js/toast'
+import { type Assign } from '@polymorphic-factory/solid'
+import { type Placement, type Service } from '@zag-js/toast'
 import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { useToast } from './toast-provider'
 

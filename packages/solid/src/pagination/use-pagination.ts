@@ -2,7 +2,7 @@ import * as pagination from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UsePaginationProps = Optional<pagination.Context, 'id'>
 

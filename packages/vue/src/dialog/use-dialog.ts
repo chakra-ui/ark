@@ -1,4 +1,4 @@
-import { connect, Context, machine } from '@zag-js/dialog'
+import { connect, machine, type Context } from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { transformComposableProps, useId } from '../utils'

@@ -7,8 +7,8 @@ import {
   SelectLabel,
   SelectOption,
   SelectPositioner,
-  SelectProps,
   SelectTrigger,
+  type SelectProps,
 } from './'
 
 const ComponentUnderTest = (props: SelectProps) => {

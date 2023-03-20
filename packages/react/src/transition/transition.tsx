@@ -1,5 +1,5 @@
 import { Children, cloneElement } from 'react'
-import { useTransition, UseTransitionProps } from './use-transition'
+import { useTransition, type UseTransitionProps } from './use-transition'
 
 type RenderProps = {
   hidden: boolean

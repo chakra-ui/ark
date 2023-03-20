@@ -1,4 +1,4 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 

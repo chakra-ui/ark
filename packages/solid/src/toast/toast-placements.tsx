@@ -1,4 +1,4 @@
-import type { Placement } from '@zag-js/toast'
+import { type Placement } from '@zag-js/toast'
 import { children, type JSX } from 'solid-js'
 import { runIfFn } from '../run-if-fn'
 import { useToast } from './toast-provider'

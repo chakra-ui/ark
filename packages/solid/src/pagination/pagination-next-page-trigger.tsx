@@ -1,6 +1,6 @@
-import { children, createEffect, JSX } from 'solid-js'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationNextPageTriggerProps = HTMLArkProps<'li'> & { children: JSX.Element }

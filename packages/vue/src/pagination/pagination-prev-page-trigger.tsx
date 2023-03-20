@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, useUniqueChild } from '../utils'
+import { ark, type HTMLArkProps } from '../factory'
+import { useUniqueChild, type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationPrevPageTriggerProps = HTMLArkProps<'li'>

@@ -1,7 +1,7 @@
-import type { JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
 export type HoverCardProps = UseHoverCardProps & { children: JSX.Element }
 

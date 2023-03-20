@@ -1,8 +1,8 @@
-import type { connect } from '@zag-js/combobox'
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { type connect } from '@zag-js/combobox'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
 type OptionProps = Parameters<ReturnType<typeof connect>['getOptionProps']>[0]

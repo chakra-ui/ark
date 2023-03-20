@@ -1,8 +1,8 @@
-import { computed, defineComponent, Fragment, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, Fragment, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, UseRatingGroupProps } from './use-rating-group'
+import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
 export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
 

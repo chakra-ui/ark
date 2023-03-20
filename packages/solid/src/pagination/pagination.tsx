@@ -1,11 +1,10 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { JSX } from 'solid-js'
-import { children, splitProps } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, splitProps, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { PaginationProvider } from './pagination-context'
-import { usePagination, UsePaginationProps, UsePaginationReturn } from './use-pagination'
+import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 
 export type PaginationProps = Assign<
   Assign<HTMLArkProps<'nav'>, UsePaginationProps>,

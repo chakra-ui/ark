@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDialogContext } from './dialog-context'
 
 export type DialogTitleProps = HTMLArkProps<'h2'>

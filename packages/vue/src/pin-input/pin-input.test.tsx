@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render, waitFor } from '@testing-library/vue'
 import { nextTick } from 'vue'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, PinInputProps } from '.'
+import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputProps } from '.'
 
 const Component = (props: PinInputProps) => (
   <PinInput {...props}>

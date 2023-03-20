@@ -1,6 +1,6 @@
-import type { connect } from '@zag-js/splitter'
-import { Children, cloneElement, ReactElement } from 'react'
-import type { Assign } from '../types'
+import { type connect } from '@zag-js/splitter'
+import { Children, cloneElement, type ReactElement } from 'react'
+import { type Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
 type SplitterContext = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
