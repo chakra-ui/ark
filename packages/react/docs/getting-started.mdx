@@ -27,18 +27,25 @@ slider. Importing the `Slider` component will give you access to all its parts
 via the dot notation.
 
 ```jsx
-import { Slider } from '@ark-ui/react'
+import {
+  Slider,
+  SliderLabel,
+  SliderControl,
+  SliderThumb,
+  SliderTrack,
+  SliderRange,
+} from '@ark-ui/react'
 
 export const SliderDemo = () => {
   return (
     <Slider>
-      <Slider.Label>Label</Slider.Label>
-      <Slider.Control>
-        <Slider.Track>
-          <Slider.Range />
-        </Slider.Track>
-        <Slider.Thumb />
-      </Slider.Control>
+      <SliderLabel>Label</SliderLabel>
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        <SliderThumb />
+      </SliderControl>
     </Slider>
   )
 }
