@@ -12,10 +12,14 @@ import {
   SelectTrigger,
 } from '@ark-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
+import { Fragment } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
-import { match, P } from 'ts-pattern'
+import { P, match } from 'ts-pattern'
 
-export const FrameworkSelect = () => {
+type FrameworkSelect = {
+  noPortal?: boolean
+}
+export const FrameworkSelect = (props: FrameworkSelect) => {
   const router = useRouter()
   const pathName = usePathname()
 
@@ -32,6 +36,8 @@ export const FrameworkSelect = () => {
       label: 'React',
       value: 'react',
     }))
+
+  const SelectWrapper = props.noPortal ? Fragment : Portal
 
   return (
     <Select
@@ -61,7 +67,7 @@ export const FrameworkSelect = () => {
               <SelectIcon isOpen={isOpen} />
             </button>
           </SelectTrigger>
-          <Portal>
+          <SelectWrapper>
             <SelectPositioner className={select({ size: 'xs' })}>
               <SelectContent>
                 <SelectOption value="react" label="React" />
@@ -69,7 +75,7 @@ export const FrameworkSelect = () => {
                 <SelectOption value="vue" label="Vue" />
               </SelectContent>
             </SelectPositioner>
-          </Portal>
+          </SelectWrapper>
         </Stack>
       )}
     </Select>

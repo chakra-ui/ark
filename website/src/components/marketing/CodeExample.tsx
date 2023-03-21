@@ -19,7 +19,7 @@ type CodeExampleProps = {
 export const CodeExample = (props: CodeExampleProps) => {
   const features = [
     {
-      heading: 'Compsable',
+      heading: 'Composable',
       description:
         'The components are built using a declarative syntax, which makes them easier to reason about and understand.',
       icon: <AiOutlineAppstoreAdd />,

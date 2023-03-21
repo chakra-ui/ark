@@ -53,7 +53,7 @@ const DocsLayout = (props: any) => {
         </Container>
         <MobileNavbar>
           <MobileSidebarContainer>
-            <Sidebar entries={[overview, components]} />
+            <Sidebar entries={[overview, components]} isMobile />
           </MobileSidebarContainer>
         </MobileNavbar>
       </Box>
