@@ -28,7 +28,7 @@ export const Footer = () => {
         <Stack direction={{ base: 'column-reverse', md: 'row' }} justify="space-between" gap="8">
           <Stack gap={{ base: '1', md: '6' }} direction={{ base: 'column', md: 'row' }}>
             <Logo height="24px" />
-            <Text color="fg.muted">A project by Chakra Inc.</Text>
+            <Text color="fg.muted">A project by Chakra Systems</Text>
           </Stack>
           <Stack direction="row" gap="8">
             {resources.map((resource, id) => (
