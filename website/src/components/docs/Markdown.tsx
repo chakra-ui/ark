@@ -25,7 +25,12 @@ export const Markdown = (props: MarkdownProps) => {
             match(doc)
               .with(
                 { type: 'ComponentDocument', stories: P.when((v: any) => v[name] != null) },
-                ({ stories }) => <div dangerouslySetInnerHTML={{ __html: stories[name] }} />,
+                ({ stories }) => (
+                  <div
+                    data-rehype-pretty-code-fragment
+                    dangerouslySetInnerHTML={{ __html: stories[name] }}
+                  />
+                ),
               )
               .otherwise(() => null),
         }}

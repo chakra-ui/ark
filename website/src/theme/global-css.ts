@@ -42,6 +42,7 @@ export const globalCss = defineGlobalStyles({
   },
   pre: {
     fontFamily: 'var(--font-fira-code)',
+    overflowX: 'auto',
     fontSize: '0.8125rem!',
     '--shiki-color-text': 'colors.gray.100',
     '--shiki-color-background': 'transparent',
