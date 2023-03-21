@@ -5,18 +5,10 @@ import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import { type Highlighter } from 'shiki'
-
-let highlighter: Highlighter
-const highlightWithShiki = async (code: string) => {
-  if (!highlighter) {
-    const { getHighlighter } = await import('shiki')
-    highlighter = await getHighlighter({ theme: 'css-variables' })
-  }
-  return highlighter.codeToHtml(code, { lang: 'tsx' })
-}
+import { highlightCode } from './src/lib/highlightCode'
 
 const resolveFramework = (doc: { _raw: RawDocumentData }) => doc._raw.sourceFilePath.split('/')[0]
+
 export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
   filePathPattern: '*/src/**/docs/*.mdx',
@@ -69,10 +61,7 @@ export const ComponentDocument = defineDocumentType(() => ({
           const jsonPath = `../packages/${framework}/src/${doc.id}/docs/${doc.id}.stories.json`
           const json: Record<string, string> = fs.readJSONSync(jsonPath)
           const items = await Promise.all(
-            Object.entries(json).map(async ([key, value]) => [
-              key,
-              await highlightWithShiki(value),
-            ]),
+            Object.entries(json).map(async ([key, value]) => [key, await highlightCode(value)]),
           )
           return Object.fromEntries(items)
         } catch (error) {

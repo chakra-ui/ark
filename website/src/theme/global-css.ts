@@ -44,7 +44,7 @@ export const globalCss = defineGlobalStyles({
     fontFamily: 'var(--font-fira-code)',
     fontSize: '0.8125rem!',
     '--shiki-color-text': 'colors.gray.100',
-    '--shiki-color-background': 'colors.brown.600',
+    '--shiki-color-background': 'transparent',
     '--shiki-token-constant': 'colors.orange.200',
     '--shiki-token-string': 'colors.orange.100',
     '--shiki-token-comment': 'colors.gray.500',

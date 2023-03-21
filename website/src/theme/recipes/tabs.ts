@@ -52,10 +52,7 @@ export const tabs = defineRecipe({
       borderTopLeftRadius: '0',
       borderTopWidth: '0px',
       minH: 'xl',
-      textStyle: 'sm',
-      color: 'fg.muted',
-      py: '6',
-      px: '4',
+      p: '4',
     },
   }),
   variants: {

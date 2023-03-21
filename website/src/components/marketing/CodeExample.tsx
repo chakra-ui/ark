@@ -1,7 +1,7 @@
 'use client'
 import { css } from '@/panda/css'
-import { Flex } from '@/panda/jsx'
-import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '@ark-ui/react'
+import { Flex, Grid } from '@/panda/jsx'
+import { TabContent, TabIndicator, TabList, TabTrigger, Tabs } from '@ark-ui/react'
 import { Container } from 'panda/jsx/container'
 import { Stack } from 'panda/jsx/stack'
 import { tabs } from 'panda/recipes/tabs'
@@ -12,7 +12,11 @@ import { VscWorkspaceTrusted } from 'react-icons/vsc'
 import { Heading } from '../shared/Heading'
 import { Text } from '../shared/Text'
 
-export const CodeExample = () => {
+type CodeExampleProps = {
+  examples: Record<'react' | 'solid' | 'vue', string>
+}
+
+export const CodeExample = (props: CodeExampleProps) => {
   const features = [
     {
       heading: 'Compsable',
@@ -39,9 +43,14 @@ export const CodeExample = () => {
       icon: <VscWorkspaceTrusted />,
     },
   ]
+  const frameworks = ['react', 'vue', 'solid'] as const
+
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Stack gap={{ base: '16', md: '24' }} direction={{ base: 'column', md: 'row' }}>
+      <Grid
+        gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
+        gap={{ base: '16', lg: '24' }}
+      >
         <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
             Composable API design for a delightful experience
@@ -73,21 +82,24 @@ export const CodeExample = () => {
             ))}
           </Stack>
         </Stack>
-
-        <Tabs className={tabs({ variant: 'fill' })} defaultValue="React">
+        <Tabs className={tabs({ variant: 'fill' })} defaultValue="react">
           <TabList className={css({ borderBottomRadius: '0' })}>
-            {['React', 'Vue', 'Solid'].map((value) => (
+            {frameworks.map((value) => (
               <TabTrigger key={value} value={value}>
-                <button>{value}</button>
+                <button style={{ textTransform: 'capitalize' }}>{value}</button>
               </TabTrigger>
             ))}
             <TabIndicator />
           </TabList>
-          <TabContent value="React">React Code Example</TabContent>
-          <TabContent value="Vue">Vue Code Example</TabContent>
-          <TabContent value="Solid">Solid Code Example</TabContent>
+          {frameworks.map((value) => (
+            <TabContent
+              key={value}
+              value={value}
+              dangerouslySetInnerHTML={{ __html: props.examples[value] }}
+            />
+          ))}
         </Tabs>
-      </Stack>
+      </Grid>
     </Container>
   )
 }

@@ -46,6 +46,9 @@ export const markdown = defineRecipe({
     '& [data-rehype-pretty-code-fragment]': {
       my: '8',
     },
+    '& [data-rehype-pretty-code-fragment] pre': {
+      background: 'brown.600 !important',
+    },
     '& pre': {
       borderRadius: 'lg',
       borderWidth: '1px',
