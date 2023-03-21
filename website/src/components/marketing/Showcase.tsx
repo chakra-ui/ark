@@ -11,11 +11,12 @@ import {
   CarouselViewport,
   TabIndicator,
   TabList,
-  Tabs,
   TabTrigger,
+  Tabs,
 } from '@ark-ui/react'
 import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { DemoRatingGroup } from '../docs/demo/RatingGroup'
 import { IconButton } from '../shared/IconButton'
 
 export const Showcase = () => {
@@ -40,7 +41,7 @@ export const Showcase = () => {
                 {components.map((component, id) => (
                   <CarouselSlide key={component} index={id}>
                     <Box px="4" py="6" color="fg.muted">
-                      {component} Demo
+                      <DemoRatingGroup />
                     </Box>
                   </CarouselSlide>
                 ))}
