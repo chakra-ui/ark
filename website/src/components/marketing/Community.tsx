@@ -19,7 +19,7 @@ export const Community = () => {
       description: 'Follow now for announcements and new features.',
       icon: <RiTwitterFill />,
       callToAction: 'Follow us',
-      href: 'https://twitter.com/ark_ui', // TODO update this
+      href: 'https://twitter.com/ark_ui_',
     },
     {
       name: 'GitHub',

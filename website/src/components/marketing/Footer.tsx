@@ -7,19 +7,19 @@ export const Footer = () => {
   const resources = [
     {
       name: 'Docs',
-      href: 'https://chakra-ui.com/docs/getting-started',
+      href: 'https://ark-ui.com/docs/getting-started',
     },
     {
       name: 'GitHub',
-      href: 'https://chakra-ui.com/docs/getting-started',
+      href: 'https://github.com/chakra-ui/ark',
     },
     {
       name: 'Twitter',
-      href: 'https://chakra-ui.com/docs/getting-started',
+      href: 'https://twitter.com/ark_ui_',
     },
     {
       name: 'Discord',
-      href: 'https://chakra-ui.com/docs/getting-started',
+      href: 'https://discord.gg/ark',
     },
   ]
   return (
