@@ -48,7 +48,7 @@
     "ts-node": "10.9.1",
     "ts-pattern": "4.2.1",
     "ts-morph": "17.0.1",
-    "turbo": "1.8.3",
+    "turbo": "1.8.4",
     "typescript": "5.0.2"
   },
   "commitlint": {
