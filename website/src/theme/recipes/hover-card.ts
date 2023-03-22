@@ -8,10 +8,7 @@ export const hoverCard = defineRecipe({
   description: 'A hover card style',
   base: parts({
     positioner: {
-      '--hover-card-background': {
-        base: 'white',
-        _dark: 'colors.bg.surface',
-      },
+      '--hover-card-background': 'colors.bg.surface',
 
       background: 'var(--hover-card-background)',
       borderRadius: 'lg',
