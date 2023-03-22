@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@changesets/changelog-github': 0.4.8
-      '@changesets/cli': 2.26.0
+      '@changesets/cli': 2.26.1
       '@commitlint/cli': 17.4.4
       '@commitlint/config-conventional': 17.4.4
       '@types/fs-extra': 11.0.1
@@ -25,7 +25,7 @@ importers:
       typescript: 5.0.2
     devDependencies:
       '@changesets/changelog-github': 0.4.8
-      '@changesets/cli': 2.26.0
+      '@changesets/cli': 2.26.1
       '@commitlint/cli': 17.4.4
       '@commitlint/config-conventional': 17.4.4
       '@types/fs-extra': 11.0.1
@@ -951,7 +951,7 @@ packages:
     resolution: {integrity: sha512-EXpLCrk55f+cYqmHsSR+yD/0gAIMxxA9QK9lnQWzhMCvt+YmoBN7Zx94s++Kv0+unHk39vxNO8t+CMA2WSS3wA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.10
+      regenerator-runtime: 0.13.11
     dev: true
 
   /@babel/runtime/7.20.13:
@@ -1063,11 +1063,11 @@ packages:
       - encoding
     dev: true
 
-  /@changesets/cli/2.26.0:
-    resolution: {integrity: sha512-0cbTiDms+ICTVtEwAFLNW0jBNex9f5+fFv3I771nBvdnV/mOjd1QJ4+f8KtVSOrwD9SJkk9xbDkWFb0oXd8d1Q==}
+  /@changesets/cli/2.26.1:
+    resolution: {integrity: sha512-XnTa+b51vt057fyAudvDKGB0Sh72xutQZNAdXkCqPBKO2zvs2yYZx5hFZj1u9cbtpwM6Sxtcr02/FQJfZOzemQ==}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.20.13
+      '@babel/runtime': 7.21.0
       '@changesets/apply-release-plan': 6.1.3
       '@changesets/assemble-release-plan': 5.2.3
       '@changesets/changelog-git': 0.1.14
@@ -9248,10 +9248,6 @@ packages:
     dependencies:
       indent-string: 4.0.0
       strip-indent: 3.0.0
-    dev: true
-
-  /regenerator-runtime/0.13.10:
-    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==}
     dev: true
 
   /regenerator-runtime/0.13.11:
