@@ -20,7 +20,7 @@ importers:
       react: 18.2.0
       ts-morph: 17.0.1
       ts-node: 10.9.1
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       turbo: 1.8.5
       typescript: 5.0.2
     devDependencies:
@@ -40,7 +40,7 @@ importers:
       react: 18.2.0
       ts-morph: 17.0.1
       ts-node: 10.9.1_zlbzrxdj56n2qhafx752nt3nlm
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       turbo: 1.8.5
       typescript: 5.0.2
 
@@ -396,7 +396,7 @@ importers:
       rehype-pretty-code: 0.9.4
       rehype-slug: 5.1.0
       shiki: 0.14.1
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       typescript: 5.0.2
       usehooks-ts: 2.9.1
     dependencies:
@@ -419,7 +419,7 @@ importers:
       rehype-pretty-code: 0.9.4_shiki@0.14.1
       rehype-slug: 5.1.0
       shiki: 0.14.1
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@octokit/types': 9.0.0
@@ -1450,7 +1450,7 @@ packages:
       gray-matter: 4.0.3
       imagescript: 1.2.15
       micromatch: 4.0.5
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       unified: 10.1.2
       yaml: 1.10.2
       zod: 3.20.6
@@ -1500,7 +1500,7 @@ packages:
       hash-wasm: 4.9.0
       inflection: 2.0.1
       oo-ascii-tree: 1.73.0
-      ts-pattern: 4.2.1
+      ts-pattern: 4.2.2
       type-fest: 3.5.2
     dev: false
 
@@ -10281,6 +10281,10 @@ packages:
 
   /ts-pattern/4.2.1:
     resolution: {integrity: sha512-lXCmHZb01QOM9HdCLvisCGUH9ATdKPON9UaUvwe007gJAhuSBhRWIAIowys5QqNxEq6odWctfMIdI96vzjnOMQ==}
+    dev: false
+
+  /ts-pattern/4.2.2:
+    resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
 
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
