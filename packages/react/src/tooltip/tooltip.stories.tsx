@@ -1,10 +1,12 @@
 import { Portal } from '@zag-js/react'
-import { Tooltip } from './tooltip'
-import { TooltipArrow } from './tooltip-arrow'
-import { TooltipArrowTip } from './tooltip-arrow-tip'
-import { TooltipContent } from './tooltip-content'
-import { TooltipPositioner } from './tooltip-positioner'
-import { TooltipTrigger } from './tooltip-trigger'
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+} from './'
 
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
@@ -19,5 +21,25 @@ export const Basic = () => (
         <TooltipContent>My Tooltip</TooltipContent>
       </TooltipPositioner>
     </Portal>
+  </Tooltip>
+)
+
+export const WithRenderFn = () => (
+  <Tooltip openDelay={0} closeDelay={0}>
+    {({ isOpen }) => (
+      <>
+        <TooltipTrigger>
+          <span>hover me</span>
+        </TooltipTrigger>
+        <Portal>
+          <TooltipPositioner>
+            <TooltipArrow>
+              <TooltipArrowTip />
+            </TooltipArrow>
+            <TooltipContent>IsOpen: {isOpen.toString()}</TooltipContent>
+          </TooltipPositioner>
+        </Portal>
+      </>
+    )}
   </Tooltip>
 )
