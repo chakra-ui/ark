@@ -68,7 +68,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 14.0.0
       '@testing-library/user-event': 14.4.3
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       '@types/testing-library__jest-dom': 5.14.5
@@ -151,7 +151,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       '@types/testing-library__jest-dom': 5.14.5
@@ -181,7 +181,7 @@ importers:
       '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.56.0
       '@typescript-eslint/parser': 5.56.0
@@ -252,7 +252,7 @@ importers:
       '@testing-library/dom': 9.0.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.56.0_2hcjazgfnbtq42tcc73br2vup4
       '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
@@ -274,7 +274,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3
       '@testing-library/vue': 7.0.0
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.56.0
       '@typescript-eslint/parser': 5.56.0
@@ -349,7 +349,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/user-event': 14.4.3_@testing-library+dom@9.0.1
       '@testing-library/vue': 7.0.0_a2ihsjreowava2sm4iorpgwkom
-      '@types/jsdom': 21.1.0
+      '@types/jsdom': 21.1.1
       '@types/testing-library__jest-dom': 5.14.5
       '@typescript-eslint/eslint-plugin': 5.56.0_2hcjazgfnbtq42tcc73br2vup4
       '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
@@ -2896,12 +2896,12 @@ packages:
       pretty-format: 29.2.1
     dev: true
 
-  /@types/jsdom/21.1.0:
-    resolution: {integrity: sha512-leWreJOdnuIxq9Y70tBVm/bvTuh31DSlF/r4l7Cfi4uhVQqLHD0Q4v301GMisEMwwbMgF7ZKxuZ+Jbd4NcdmRw==}
+  /@types/jsdom/21.1.1:
+    resolution: {integrity: sha512-cZFuoVLtzKP3gmq9eNosUL1R50U+USkbLtUQ1bYVgl/lKp0FZM7Cq4aIHAL8oIvQ17uSHi7jXPtfDOdjPwBE7A==}
     dependencies:
       '@types/node': 18.15.5
       '@types/tough-cookie': 4.0.2
-      parse5: 7.1.1
+      parse5: 7.1.2
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -8762,12 +8762,6 @@ packages:
   /parse5/6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: false
-
-  /parse5/7.1.1:
-    resolution: {integrity: sha512-kwpuwzB+px5WUg9pyK0IcK/shltJN5/OVhQagxhCQNtT9Y9QRZqNY2e1cmbu/paRh5LMnz/oVTVLBpjFmMZhSg==}
-    dependencies:
-      entities: 4.4.0
-    dev: true
 
   /parse5/7.1.2:
     resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
