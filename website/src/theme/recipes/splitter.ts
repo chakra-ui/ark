@@ -3,7 +3,6 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 
 const parts = defineParts(splitterAnatomy.build())
 
-const partDetails = splitterAnatomy.build()
 export const splitter = defineRecipe({
   name: 'splitter',
   description: 'A splitter style',
@@ -11,17 +10,6 @@ export const splitter = defineRecipe({
     root: {
       width: 'full',
       gap: '2',
-      '&[data-orientation="horizontal"]': {
-        height: '300px',
-      },
-      '&[data-orientation="vertical"]': {
-        width: '800px',
-        height: '600px',
-        flexDirection: 'column',
-      },
-      [`& ${partDetails.panel.selector}:has(${partDetails.panel.selector})` as any]: {
-        border: 'none',
-      },
     },
     panel: {
       display: 'flex',
@@ -30,7 +18,10 @@ export const splitter = defineRecipe({
     },
     resizeTrigger: {
       alignItems: 'center',
-      background: 'bg.muted',
+      background: {
+        base: 'gray.200',
+        _dark: 'brown.200',
+      },
       borderRadius: 'lg',
       display: 'flex',
       justifyContent: 'center',
@@ -55,10 +46,10 @@ export const splitter = defineRecipe({
         border: 'none',
       },
       _hover: {
-        background: 'accent.default',
+        background: 'accent.muted',
       },
       _active: {
-        background: 'accent.default',
+        background: 'accent.muted',
       },
       _disabled: {
         opacity: 0.5,

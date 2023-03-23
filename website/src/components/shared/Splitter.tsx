@@ -13,6 +13,7 @@ type SplitterProps = {
 } & ArkSplitterProps
 
 export const Splitter = (props: SplitterProps) => {
+  const { start, end } = props
   const [a, b] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
   return (
     <>
@@ -24,11 +25,11 @@ export const Splitter = (props: SplitterProps) => {
         className={splitter()}
         {...props}
       >
-        <SplitterPanel id={a}>{props.start}</SplitterPanel>
+        <SplitterPanel id={a}>{start}</SplitterPanel>
         <SplitterResizeTrigger id={`${a}:${b}`}>
           <div />
         </SplitterResizeTrigger>
-        <SplitterPanel id={b}>{props.end}</SplitterPanel>
+        <SplitterPanel id={b}>{end}</SplitterPanel>
       </ArkSplitter>
     </>
   )

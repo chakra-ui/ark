@@ -32,7 +32,7 @@ export const Showcase = () => {
                 background: 'bg.surface',
                 borderWidth: '1px',
                 borderRadius: 'lg',
-                minH: '400px',
+                minH: 'md',
                 overflowX: 'hidden',
                 width: 'full',
               })}
@@ -40,7 +40,7 @@ export const Showcase = () => {
               <CarouselSlideGroup>
                 {components.map((component, id) => (
                   <CarouselSlide key={component} index={id}>
-                    <Box px="4" py="6" color="fg.muted" height="400px">
+                    <Box px="4" py="6">
                       <DemoSplitter />
                     </Box>
                   </CarouselSlide>
