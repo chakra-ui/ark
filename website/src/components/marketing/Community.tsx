@@ -67,6 +67,7 @@ export const Community = () => {
                   <Button
                     variant="link"
                     href={channel.href}
+                    target="_blank"
                     size="lg"
                     color="accent.default"
                     rightIcon={<FiArrowRight />}
