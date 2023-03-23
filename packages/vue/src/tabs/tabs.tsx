@@ -11,7 +11,7 @@ export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsPropsConte
   defaultValue?: UseTabsProps['defaultValue']
 }
 
-const VueSelectProps = {
+const VueTabsProps = {
   defaultValue: {
     type: String as PropType<TabsProps['defaultValue']>,
   },
@@ -41,7 +41,7 @@ const VueSelectProps = {
 export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
   name: 'Tabs',
   emits: ['change', 'focus', 'delete'],
-  props: VueSelectProps,
+  props: VueTabsProps,
   setup(props, { slots, attrs, emit }) {
     const tabsProps = computed<UseTabsProps>(() => ({
       context: props,
