@@ -2,7 +2,7 @@ import * as slider from '@zag-js/slider'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseSliderProps = Optional<slider.Context, 'id'>
 export type UseSliderReturn = ReturnType<typeof useSlider>

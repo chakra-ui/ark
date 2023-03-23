@@ -1,5 +1,5 @@
-import { HTMLPandaProps, panda } from '@/panda/jsx'
-import { link, LinkVariants } from '@/panda/recipes'
+import { panda, type HTMLPandaProps } from '@/panda/jsx'
+import { link, type LinkVariants } from '@/panda/recipes'
 
 export type LinkProps = HTMLPandaProps<'a'> & LinkVariants
 

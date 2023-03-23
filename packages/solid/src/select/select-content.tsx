@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
 export type SelectContentProps = HTMLArkProps<'ul'>

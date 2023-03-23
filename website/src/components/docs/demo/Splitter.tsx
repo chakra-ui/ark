@@ -1,56 +1,34 @@
-import { Box } from '@/panda/jsx'
-import { splitter } from '@/panda/recipes'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '@ark-ui/react'
-import { PropsWithChildren, useId } from 'react'
+import { Splitter } from '@/components/shared/Splitter'
+import { Flex } from '@/panda/jsx'
+import { PropsWithChildren } from 'react'
 
-const Basic = (props: Partial<SplitterProps> & { content?: React.ReactNode }) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
-  return (
-    <>
+export const DemoSplitter = () => (
+  <Splitter
+    orientation="vertical"
+    start={<Content>A</Content>}
+    end={
       <Splitter
-        size={[
-          { id: first, size: 50 },
-          { id: second, size: 50 },
-        ]}
-        className={splitter()}
-        {...props}
-      >
-        <SplitterPanel id={first}>{props.content ?? <Content>{first} high</Content>}</SplitterPanel>
-        <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div />
-        </SplitterResizeTrigger>
-        <SplitterPanel id={second}>
-          {props.children ?? <Content>{second} low</Content>}
-        </SplitterPanel>
-      </Splitter>
-    </>
-  )
-}
-
-const Content = (props: PropsWithChildren) => (
-  <Box bg="bg.subtle" borderRadius="lg" flex="1" p="4" {...props} />
+        start={<Content>B</Content>}
+        end={
+          <Splitter
+            orientation="vertical"
+            start={<Content>C</Content>}
+            end={<Content>D</Content>}
+          />
+        }
+      />
+    }
+  />
 )
 
-export const DemoSplitter = (props: Partial<SplitterProps>) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
-  return (
-    <Splitter
-      size={[
-        { id: first, size: 50 },
-        { id: second, size: 50 },
-      ]}
-      className={splitter()}
-      {...props}
-    >
-      <SplitterPanel id={first}>
-        <Content>A</Content>
-      </SplitterPanel>
-      <SplitterResizeTrigger id={`${first}:${second}`}>
-        <div />
-      </SplitterResizeTrigger>
-      <SplitterPanel id={second}>
-        <Content>B</Content>
-      </SplitterPanel>
-    </Splitter>
-  )
-}
+const Content = (props: PropsWithChildren) => (
+  <Flex
+    justify="center"
+    align="center"
+    bg="brown.400"
+    borderRadius="lg"
+    flex="1"
+    p="4"
+    {...props}
+  />
+)

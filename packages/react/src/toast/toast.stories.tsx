@@ -1,11 +1,14 @@
-import type { PropsWithChildren } from 'react'
-import { Toast } from './toast'
-import { ToastCloseTrigger } from './toast-close-trigger'
-import { ToastDescription } from './toast-description'
-import { ToastGroup } from './toast-group'
-import { ToastPlacements } from './toast-placements'
-import { ToastProvider, useToast } from './toast-provider'
-import { ToastTitle } from './toast-title'
+import { type PropsWithChildren } from 'react'
+import {
+  Toast,
+  ToastCloseTrigger,
+  ToastDescription,
+  ToastGroup,
+  ToastPlacements,
+  ToastProvider,
+  ToastTitle,
+  useToast,
+} from '.'
 
 // chakra land
 export const ChakraToastProvider = (props: PropsWithChildren) => (

@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useSelectContext } from './select-context'
 
 export type SelectTriggerProps = { children: ReactElement }

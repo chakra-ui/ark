@@ -1,12 +1,14 @@
-import type { RawDocumentData } from 'contentlayer/core'
+import { type RawDocumentData } from 'contentlayer/core'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
 import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrism from 'rehype-prism-plus'
+import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
+import { highlightCode } from './src/lib/highlightCode'
 
 const resolveFramework = (doc: { _raw: RawDocumentData }) => doc._raw.sourceFilePath.split('/')[0]
+
 export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
   filePathPattern: '*/src/**/docs/*.mdx',
@@ -49,6 +51,23 @@ export const ComponentDocument = defineDocumentType(() => ({
       resolve: (doc) => {
         const framework = resolveFramework(doc)
         return fs.readJSONSync(`../packages/${framework}/src/${doc.id}/docs/${doc.id}.types.json`)
+      },
+    },
+    stories: {
+      type: 'json',
+      resolve: async (doc) => {
+        const framework = resolveFramework(doc)
+        try {
+          const jsonPath = `../packages/${framework}/src/${doc.id}/docs/${doc.id}.stories.json`
+          const json: Record<string, string> = fs.readJSONSync(jsonPath)
+          const items = await Promise.all(
+            Object.entries(json).map(async ([key, value]) => [key, await highlightCode(value)]),
+          )
+          return Object.fromEntries(items)
+        } catch (error) {
+          console.log("Couldn't find stories for", `${framework}/src/${doc.id}`)
+          return {}
+        }
       },
     },
   },
@@ -105,6 +124,10 @@ export const ChangelogDocument = defineDocumentType(() => ({
       type: 'string',
       resolve: () => 'Changelog',
     },
+    description: {
+      type: 'string',
+      resolve: () => 'See what is new',
+    },
     route: {
       type: 'string',
       resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/changelog`,
@@ -133,7 +156,13 @@ export default makeSource({
           properties: { className: ['anchor'] },
         },
       ],
-      rehypePrism,
+      [
+        rehypePrettyCode,
+        {
+          theme: 'css-variables',
+          keepBackground: true,
+        } satisfies Partial<PrettyCodeOptions>,
+      ],
     ],
   },
 })

@@ -1,7 +1,10 @@
 ---
 id: dialog
 name: Dialog
-description: A dialog is a window overlaid on either the primary window or another dialog window. Content behind a modal dialog is inert, meaning that users cannot interact with it.
+description:
+  A dialog is a window overlaid on either the primary window or another dialog
+  window. Content behind a modal dialog is inert, meaning that users cannot
+  interact with it.
 ---
 
 ## Import
@@ -21,14 +24,16 @@ import {
 
 ## Usage
 
-The Dialog component consists of the `DialogBackdrop`, `DialogCloseTrigger`, `DialogContainer`,
-`DialogContent`, `DialogDescription`, `DialogTitle`, `DialogTrigger` components.
+The Dialog component consists of the `DialogBackdrop`, `DialogCloseTrigger`,
+`DialogContainer`, `DialogContent`, `DialogDescription`, `DialogTitle`,
+`DialogTrigger` components.
 
-Note that the `DialogTrigger` and `DialogCloseTrigger` components accept a single JSX element which
-will receive all necessary props to add the event listeners and attributes to ensure the desired
-accessibility.
+Note that the `DialogTrigger` and `DialogCloseTrigger` components accept a
+single JSX element which will receive all necessary props to add the event
+listeners and attributes to ensure the desired accessibility.
 
-> Import `Teleport` from Vue to wrap the backdrop and container with the contents
+> Import `Teleport` from Vue to wrap the backdrop and container with the
+> contents
 
 ```tsx
 <Dialog>
@@ -52,8 +57,8 @@ accessibility.
 
 ### Closing the dialog on overlay click
 
-By default, the dialog closes when you click its overlay. You can set `closeOnOutsideClick` to
-`false` if you want the modal to stay visible.
+By default, the dialog closes when you click its overlay. You can set
+`closeOnOutsideClick` to `false` if you want the modal to stay visible.
 
 ```tsx
 <Dialog :closeOnOutsideClick="false">{/*...*/}</Dialog>
@@ -61,8 +66,8 @@ By default, the dialog closes when you click its overlay. You can set `closeOnOu
 
 ### Allow scrolling behind the dialog
 
-When the dialog is open, it prevents scrolling on the `body` element. To disable this behavior, set
-the `preventScroll` prop to `false`.
+When the dialog is open, it prevents scrolling on the `body` element. To disable
+this behavior, set the `preventScroll` prop to `false`.
 
 ```tsx
 <Dialog :preventScroll="false">{/*...*/}</Dialog>

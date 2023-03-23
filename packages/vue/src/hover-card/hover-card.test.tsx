@@ -7,11 +7,9 @@ import {
   HoverCardArrowTip,
   HoverCardContent,
   HoverCardPositioner,
-  HoverCardProps,
   HoverCardTrigger,
+  type HoverCardProps,
 } from '.'
-
-const wait = (delay = 100) => new Promise((resolve) => setTimeout(resolve, delay))
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard openDelay={0} closeDelay={0} {...props}>

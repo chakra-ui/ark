@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter, UseSplitterProps } from './use-splitter'
+import { useSplitter, type UseSplitterProps } from './use-splitter'
 
 export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
 

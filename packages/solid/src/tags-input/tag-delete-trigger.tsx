@@ -1,8 +1,9 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { children, createEffect, JSX } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { createSplitProps } from '../create-split-props'
-import type { TagProps } from './tag'
+import { ssrSpread } from '../ssr-spread'
+import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagDeleteTriggerProps = Assign<{ children: JSX.Element }, TagProps>
@@ -10,15 +11,16 @@ export type TagDeleteTriggerProps = Assign<{ children: JSX.Element }, TagProps>
 export const TagDeleteTrigger = (props: TagDeleteTriggerProps) => {
   const [tagProps, localProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
   const tagsInput = useTagsInputContext()
+  const triggerProps = tagsInput().getTagDeleteTriggerProps(tagProps)
 
-  const getChildren = children(() => localProps.children)
+  const getChildren = children(() => ssrSpread(localProps.children, triggerProps))
 
   createEffect(() => {
     const children = getChildren()
-    if (children instanceof Element) {
-      spread(children, { ...tagsInput().getTagDeleteTriggerProps(tagProps) })
+    if (children instanceof HTMLElement) {
+      spread(children, triggerProps)
     }
   })
 
-  return <>{getChildren()}</>
+  return getChildren
 }

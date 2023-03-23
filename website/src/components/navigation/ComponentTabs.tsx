@@ -15,7 +15,7 @@ export const ComponentTabs = (props: ComponentTabsProps) => {
   const defaultValue = ['usage', 'props'].includes(lastSegment) ? lastSegment : 'usage'
 
   return (
-    <Tabs className={tabs({ size: 'sm' })} defaultValue={defaultValue}>
+    <Tabs className={tabs()} defaultValue={defaultValue}>
       <TabList>
         <TabTrigger value="usage">
           <Link href={props.basePath + '/usage'}>Usage</Link>

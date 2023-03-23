@@ -1,7 +1,7 @@
 {
   "MenuProps": {
     "anchorPoint": {
-      "type": "any",
+      "type": "Point",
       "isRequired": false,
       "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
     },
@@ -106,82 +106,5 @@
       "description": "The `id` of the element that provides accessibility label to the option group"
     }
   },
-  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } },
-  "UseMenuProps": {
-    "anchorPoint": {
-      "type": "any",
-      "isRequired": false,
-      "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
-    },
-    "aria-label": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The accessibility label for the menu"
-    },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to close the menu when an option is selected"
-    },
-    "dir": {
-      "type": "Direction",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    },
-    "highlightedId": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the active menu item."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the menu. Useful for composition."
-    },
-    "loop": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to loop the keyboard navigation."
-    },
-    "onClose": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the menu is closed"
-    },
-    "onOpen": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the menu is opened"
-    },
-    "onSelect": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "Function called when a menu item is selected."
-    },
-    "onValueChange": {
-      "type": "(details: { name: string; value: string | string[] }) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the menu values change (for radios and checkboxes)."
-    },
-    "positioning": {
-      "type": "PositioningOptions",
-      "isRequired": false,
-      "description": "The options used to dynamically position the menu"
-    },
-    "value": {
-      "type": "Record<string, string | string[]>",
-      "isRequired": false,
-      "description": "The values of radios and checkboxes in the menu."
-    }
-  }
+  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

@@ -1,4 +1,4 @@
-import { DefineComponent, defineComponent, h } from 'vue'
+import { defineComponent, h, type DefineComponent } from 'vue'
 import { useUniqueChild } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 

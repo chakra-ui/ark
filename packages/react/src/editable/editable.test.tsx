@@ -8,8 +8,8 @@ import {
   EditableEditTrigger,
   EditableInput,
   EditablePreview,
-  EditableProps,
   EditableSubmitTrigger,
+  type EditableProps,
 } from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (

@@ -1,7 +1,10 @@
 ---
 id: tooltip
 name: Tooltip
-description: A tooltip is a brief, informative message that appears when a user interacts with an element. Tooltips are usually initiated when a button is focused or hovered.
+description:
+  A tooltip is a brief, informative message that appears when a user interacts
+  with an element. Tooltips are usually initiated when a button is focused or
+  hovered.
 ---
 
 ## Import
@@ -19,12 +22,13 @@ import {
 
 ## Usage
 
-The Tooltip component consists of the `TooltipTrigger`, `TooltipPositioner`, `TooltipArrow`,
-`TooltipArrowTip` and `TooltipContent` components. Combine them as desired to fit your design
-system.
+The Tooltip component consists of the `TooltipTrigger`, `TooltipPositioner`,
+`TooltipArrow`, `TooltipArrowTip` and `TooltipContent` components. Combine them
+as desired to fit your design system.
 
-Note that the `TooltipTrigger` component accepts a single JSX element which will receive all
-necessary props to add the event listeners and attributes to ensure the desired accessibility.
+Note that the `TooltipTrigger` component accepts a single JSX element which will
+receive all necessary props to add the event listeners and attributes to ensure
+the desired accessibility.
 
 ```tsx
 <Tooltip>
@@ -40,8 +44,8 @@ necessary props to add the event listeners and attributes to ensure the desired 
 
 ### Adding an arrow
 
-To render an arrow within the tooltip render the components `TooltipArrow` and `TooltipArrowTip`
-within the `TooltipPositioner`.
+To render an arrow within the tooltip render the components `TooltipArrow` and
+`TooltipArrowTip` within the `TooltipPositioner`.
 
 ```tsx {7-9}
 <Tooltip>
@@ -69,7 +73,8 @@ To disable showing a tooltip, pass the `disabled` prop to the Tooltip component.
 
 ### Changing the placement
 
-Control the placement, gutter and offset of the tooltip with the `positioning` prop.
+Control the placement, gutter and offset of the tooltip with the `positioning`
+prop.
 
 ```tsx
 <Tooltip
@@ -81,8 +86,9 @@ Control the placement, gutter and offset of the tooltip with the `positioning` p
 
 ### Timings
 
-By default, the tooltip is designed to open after `1000ms` and close after `500ms`. You can
-customize this by passing the `openDelay` and `closeDelay` props.
+By default, the tooltip is designed to open after `1000ms` and close after
+`500ms`. You can customize this by passing the `openDelay` and `closeDelay`
+props.
 
 ```tsx
 <Tooltip :open-delay="500" :close-delay="200">
@@ -92,5 +98,5 @@ customize this by passing the `openDelay` and `closeDelay` props.
 
 ### Custom Component
 
-When using a custom component as trigger for the tooltip, ensure that the component forwards all
-necessary DOM attributes.
+When using a custom component as trigger for the tooltip, ensure that the
+component forwards all necessary DOM attributes.

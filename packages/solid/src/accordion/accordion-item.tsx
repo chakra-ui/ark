@@ -1,6 +1,6 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { JSX, splitProps } from 'solid-js'
-import { ark, HTMLArkProps } from '../factory'
+import { type Assign } from '@polymorphic-factory/solid'
+import { splitProps, type JSX } from 'solid-js'
+import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 

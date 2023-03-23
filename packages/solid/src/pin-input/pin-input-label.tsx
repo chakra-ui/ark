@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
 export type PinInputLabelProps = HTMLArkProps<'label'>

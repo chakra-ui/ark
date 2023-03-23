@@ -1,7 +1,9 @@
 ---
 id: toast
 name: Toast
-description: The toast component is used to give feedback to users after an action has taken place.
+description:
+  The toast component is used to give feedback to users after an action has
+  taken place.
 ---
 
 ## Import
@@ -23,8 +25,8 @@ import {
 
 ### Create the AppToastProvider
 
-Use the toast components to compose a `ToastProvider` for your application. The granular component
-structure allows access to every DOM element.
+Use the toast components to compose a `ToastProvider` for your application. The
+granular component structure allows access to every DOM element.
 
 ```tsx
 export type AppToastProviderProps = {
@@ -60,8 +62,8 @@ export const AppToastProvider = (props: AppToastProviderProps) => (
 
 ### Wrap your App with the AppToastProvider
 
-Wrapping the application provides all child components access to the toast context with the
-`useToast` hook.
+Wrapping the application provides all child components access to the toast
+context with the `useToast` hook.
 
 ```tsx
 export const App = () => (
@@ -74,8 +76,9 @@ export const App = () => (
 
 ### Create toasts with useToast
 
-The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
-application. Create, update, remove and upsert toasts with the returned `toast` instance.
+The `useToast` hook is your _central toast intelligence unit_ to control the
+toasts in your application. Create, update, remove and upsert toasts with the
+returned `toast` instance.
 
 ```tsx
 const ExampleComponent = () => {
@@ -99,7 +102,8 @@ const ExampleComponent = () => {
 
 #### Use the shorthand type methods
 
-Omitting the type property is supported for toasts with type `success`, `loading` and `error`.
+Omitting the type property is supported for toasts with type `success`,
+`loading` and `error`.
 
 ```tsx
 toast.success({

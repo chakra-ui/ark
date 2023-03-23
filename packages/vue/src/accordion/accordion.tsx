@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion, UseAccordionProps } from './use-accordion'
+import { useAccordion, type UseAccordionProps } from './use-accordion'
 
 type UseAccordionPropsContext = UseAccordionProps['context']
 

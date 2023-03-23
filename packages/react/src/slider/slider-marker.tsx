@@ -1,6 +1,6 @@
-import { Assign, forwardRef } from '@polymorphic-factory/react'
+import { forwardRef, type Assign } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
 export type SliderMarkerProps = Assign<HTMLArkProps<'span'>, { value: number }>

@@ -1,5 +1,5 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { Accessor, children, createEffect, createMemo, JSX } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import {
@@ -9,7 +9,7 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, UseMenuProps } from './use-menu'
+import { useMenu, type UseMenuProps } from './use-menu'
 
 export type MenuState = {
   isOpen?: boolean

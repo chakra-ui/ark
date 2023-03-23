@@ -1,10 +1,9 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { JSX } from 'solid-js'
-import { children } from 'solid-js'
-import { ark, HTMLArkProps } from '../factory'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, type JSX } from 'solid-js'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { useRangeSliderContext } from './range-slider-context'
-import type { UseRangeSliderReturn } from './use-range-slider'
+import { type UseRangeSliderReturn } from './use-range-slider'
 
 export type RangeSliderOutputProps = Assign<
   HTMLArkProps<'output'>,

@@ -7,9 +7,14 @@ export const tabs = defineRecipe({
   name: 'tabs',
   description: 'A tabs style',
   base: parts({
-    root: {},
+    root: {
+      width: 'full',
+    },
     tablist: {
       borderBottomWidth: '1px',
+      display: 'flex',
+      gap: '4',
+      height: '8',
       position: 'relative',
     },
     trigger: {
@@ -18,44 +23,62 @@ export const tabs = defineRecipe({
       color: 'fg.muted',
       display: 'inline-flex',
       fontWeight: 'semibold',
-      mr: '4',
-      pt: '0',
-      pb: '3',
+      textStyle: 'sm',
+      px: '1',
+      _hover: {
+        color: 'fg.emphasized',
+      },
       _selected: {
-        color: 'accent.default',
+        color: 'accent.muted',
+        _hover: {
+          color: 'accent.muted',
+        },
       },
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',
       },
-      _last: {
-        mr: '0',
-      },
     },
     indicator: {
-      height: '0.5',
-      background: 'accent.default',
+      height: '2px',
+      background: 'accent.muted',
       bottom: '-1px',
     },
     content: {
-      py: '10',
+      background: 'brown.700',
+      borderRadius: 'lg',
+      borderWidth: '1px',
+      borderTopRightRadius: '0',
+      borderTopLeftRadius: '0',
+      borderTopWidth: '0px',
+      minH: 'xl',
+      p: '4',
     },
   }),
-  defaultVariants: {
-    size: 'md',
-  },
   variants: {
-    size: {
-      sm: parts({
-        trigger: {
-          textStyle: 'sm',
-          px: '2',
+    variant: {
+      fill: parts({
+        tablist: {
+          alignItems: 'center',
+          background: {
+            base: 'gray.200',
+            _dark: 'brown.600',
+          },
+          borderWidth: '1px',
+          borderRadius: 'lg',
+          gap: '6',
+          px: '4',
+          height: '10',
         },
-      }),
-      md: parts({
         trigger: {
-          textStyle: 'md',
-          px: '3',
+          color: 'fg.muted',
+          fontWeight: 'medium',
+          _selected: {
+            color: 'fg.default',
+          },
+        },
+        indicator: {
+          background: 'accent.default',
         },
       }),
     },

@@ -1,6 +1,7 @@
 export { createAnatomy } from '@zag-js/anatomy'
 export { Portal, type PortalProps } from '@zag-js/react'
 export * from './accordion'
+export * from './carousel'
 export * from './checkbox'
 export * from './combobox'
 export * from './dialog'

@@ -7,7 +7,7 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-  PaginationProps,
+  type PaginationProps,
 } from '.'
 
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (

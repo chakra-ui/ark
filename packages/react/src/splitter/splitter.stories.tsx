@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
+import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 import './splitter.css'
 
 const Basic = (props: Partial<SplitterProps>) => {

@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
 export type TooltipProps = PropsWithChildren<UseTooltipProps>
 

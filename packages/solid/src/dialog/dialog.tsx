@@ -1,5 +1,4 @@
-import type { JSX } from 'solid-js'
-import { children } from 'solid-js'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'

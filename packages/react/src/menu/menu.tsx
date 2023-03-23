@@ -1,7 +1,7 @@
-import { ReactNode, useCallback, useEffect } from 'react'
+import { useCallback, useEffect, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import { type Assign } from '../types'
 import { useEffectOnce } from '../use-effect-once'
 import {
   MenuMachineProvider,
@@ -10,7 +10,7 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, UseMenuProps, UseMenuReturn } from './use-menu'
+import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean

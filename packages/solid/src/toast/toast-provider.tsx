@@ -4,7 +4,7 @@ import { createMemo, createUniqueId, mergeProps, type JSX } from 'solid-js'
 import { createContext } from '../create-context'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
 type ToastProviderParams = { children: JSX.Element }

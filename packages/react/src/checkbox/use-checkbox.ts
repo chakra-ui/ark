@@ -2,7 +2,7 @@ import * as checkbox from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useEffect, useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
   checked?: checkbox.Context['defaultChecked']
