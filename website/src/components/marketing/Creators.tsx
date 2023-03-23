@@ -64,7 +64,7 @@ export const Creators = () => {
               >
                 People
               </Heading>
-              <HStack gap="3" justifyContent="flex-end">
+              <HStack gap="3" flexWrap="wrap">
                 {creators.map((creator) => (
                   <Avatar key={creator.name} name={creator.name} src={creator.avatar} size="xl" />
                 ))}

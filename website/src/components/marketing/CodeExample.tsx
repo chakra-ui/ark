@@ -1,6 +1,6 @@
 'use client'
 import { css } from '@/panda/css'
-import { Flex, Grid } from '@/panda/jsx'
+import { Flex } from '@/panda/jsx'
 import { TabContent, TabIndicator, TabList, TabTrigger, Tabs } from '@ark-ui/react'
 import { Container } from 'panda/jsx/container'
 import { Stack } from 'panda/jsx/stack'
@@ -47,10 +47,7 @@ export const CodeExample = (props: CodeExampleProps) => {
 
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Grid
-        gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
-        gap={{ base: '16', lg: '24' }}
-      >
+      <Stack direction={{ base: 'column', lg: 'row' }} gap={{ base: '16', lg: '24' }}>
         <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
             Composable API design for a delightful experience
@@ -99,7 +96,7 @@ export const CodeExample = (props: CodeExampleProps) => {
             />
           ))}
         </Tabs>
-      </Grid>
+      </Stack>
     </Container>
   )
 }
