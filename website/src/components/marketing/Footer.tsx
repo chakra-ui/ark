@@ -32,7 +32,7 @@ export const Footer = () => {
           </Stack>
           <Stack direction="row" gap="8">
             {resources.map((resource, id) => (
-              <Button key={id} href={resource.href} variant="link">
+              <Button key={id} href={resource.href} variant="link" target="_blank">
                 {resource.name}
               </Button>
             ))}
