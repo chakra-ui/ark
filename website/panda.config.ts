@@ -29,8 +29,8 @@ export default defineConfig({
           bg: {
             canvas: { value: { base: '{colors.gray.25}', _dark: '{colors.brown.900}' } },
             surface: { value: { base: '{colors.gray.50}', _dark: '{colors.brown.600}' } },
-            muted: { value: { base: '{colors.gray.300}', _dark: '{colors.brown.700}' } },
-            subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.800}' } },
+            muted: { value: { base: '{colors.gray.200}', _dark: '{colors.brown.400}' } },
+            subtle: { value: { base: '{colors.gray.100}', _dark: '{colors.brown.500}' } },
           },
           accent: {
             default: { value: { base: '{colors.orange.400}', _dark: '{colors.orange.400}' } },
@@ -40,7 +40,7 @@ export default defineConfig({
           },
           border: {
             default: { value: { base: '{colors.gray.200}', _dark: '{colors.brown.400}' } },
-            emphasized: { value: { base: '{colors.gray.300}', _dark: '{colors.gray.800}' } },
+            emphasized: { value: { base: '{colors.gray.300}', _dark: '{colors.brown.300}' } },
           },
         },
         shadows: {

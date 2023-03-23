@@ -1,37 +1,37 @@
-import { splitter } from '@/panda/recipes'
-import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '@ark-ui/react'
-import { useId } from 'react'
+import { Splitter } from '@/components/shared/Splitter'
+import { Box, Flex } from '@/panda/jsx'
+import { PropsWithChildren } from 'react'
 
-const Basic = (props: Partial<SplitterProps> & { content?: React.ReactNode }) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
-  return (
-    <>
-      <Splitter
-        size={[
-          { id: first, size: 50 },
-          { id: second, size: 50 },
-        ]}
-        {...props}
-        className={splitter()}
-      >
-        <SplitterPanel id={first}>{props.content ?? <p>{first}</p>}</SplitterPanel>
-        <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div />
-        </SplitterResizeTrigger>
-        <SplitterPanel id={second}>{props.children ?? <p>{second}</p>}</SplitterPanel>
-      </Splitter>
-    </>
-  )
-}
+export const DemoSplitter = () => (
+  <Box width="full" height="md">
+    <Splitter
+      orientation="vertical"
+      start={<Content>A</Content>}
+      end={
+        <Splitter
+          start={<Content>B</Content>}
+          end={
+            <Splitter
+              orientation="vertical"
+              start={<Content>C</Content>}
+              end={<Content>D</Content>}
+            />
+          }
+        />
+      }
+    />
+  </Box>
+)
 
-export const DemoSplitter = (props: Partial<SplitterProps>) => (
-  <div style={{ height: '26rem', width: '100%' }}>
-    <Basic {...props} orientation="vertical" content="A">
-      <Basic {...props} content="B">
-        <Basic {...props} orientation="vertical" content="C">
-          D
-        </Basic>
-      </Basic>
-    </Basic>
-  </div>
+const Content = (props: PropsWithChildren) => (
+  <Flex
+    justify="center"
+    align="center"
+    bg="bg.muted"
+    borderRadius="lg"
+    color="fg.muted"
+    flex="1"
+    p="4"
+    {...props}
+  />
 )

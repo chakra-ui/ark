@@ -3,7 +3,6 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 
 const parts = defineParts(splitterAnatomy.build())
 
-const partDetails = splitterAnatomy.build()
 export const splitter = defineRecipe({
   name: 'splitter',
   description: 'A splitter style',
@@ -11,30 +10,20 @@ export const splitter = defineRecipe({
     root: {
       width: 'full',
       gap: '2',
-      '&[data-orientation="horizontal"]': {
-        height: '300px',
-      },
-      '&[data-orientation="vertical"]': {
-        width: '800px',
-        height: '600px',
-        flexDirection: 'column',
-      },
-      [`& ${partDetails.panel.selector}:has(${partDetails.panel.selector})` as any]: {
-        border: 'none',
-      },
     },
     panel: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      border: '1px solid lightgray',
       overflow: 'auto',
+      flex: '1',
     },
     resizeTrigger: {
-      background: '#ebebeb',
-      borderRadius: '8px',
-      display: 'flex',
       alignItems: 'center',
+      background: {
+        base: 'gray.200',
+        _dark: 'brown.200',
+      },
+      borderRadius: 'lg',
+      display: 'flex',
       justifyContent: 'center',
       transition: 'background-color 0.2s ease-in-out',
       outline: '0',
@@ -57,12 +46,10 @@ export const splitter = defineRecipe({
         border: 'none',
       },
       _hover: {
-        background: '#abb2c9',
-        color: 'white',
+        background: 'accent.muted',
       },
       _active: {
-        background: '#3f51b5',
-        color: 'white',
+        background: 'accent.muted',
       },
       _disabled: {
         opacity: 0.5,
