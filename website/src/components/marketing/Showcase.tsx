@@ -40,7 +40,7 @@ export const Showcase = () => {
               <CarouselSlideGroup>
                 {components.map((component, id) => (
                   <CarouselSlide key={component} index={id}>
-                    <Box px="4" py="6">
+                    <Box p="4">
                       <DemoSplitter />
                     </Box>
                   </CarouselSlide>
