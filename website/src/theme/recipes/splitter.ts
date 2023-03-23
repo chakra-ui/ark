@@ -42,7 +42,6 @@ export const splitter = defineRecipe({
         position: 'absolute',
         display: 'block',
         inset: '-4',
-        borderRadius: '-2',
         border: 'none',
       },
       _hover: {
