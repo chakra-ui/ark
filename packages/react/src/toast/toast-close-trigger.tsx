@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useToastItemContext } from './toast-item-context'
 
 export type ToastCloseTriggerProps = { children: ReactElement }

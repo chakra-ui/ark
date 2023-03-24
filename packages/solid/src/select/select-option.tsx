@@ -1,6 +1,6 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
 type OptionProps = Parameters<ReturnType<ReturnType<typeof useSelectContext>>['getOptionProps']>[0]

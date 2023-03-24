@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 
 type StyleObject = JSX.CSSProperties
 type StyleString = string

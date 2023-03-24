@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion, UseAccordionProps } from './use-accordion'
+import { useAccordion, type UseAccordionProps } from './use-accordion'
 
 export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 

@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import type { UseToastItemReturn } from './use-toast-item'
+import { type UseToastItemReturn } from './use-toast-item'
 
 export type ToastItemContext = UseToastItemReturn
 

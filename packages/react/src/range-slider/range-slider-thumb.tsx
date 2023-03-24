@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
 
 export type RangeSliderThumbProps = Assign<HTMLArkProps<'div'>, { index: number }>

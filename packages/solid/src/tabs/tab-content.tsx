@@ -1,7 +1,7 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { connect } from '@zag-js/tabs'
+import { type Assign } from '@polymorphic-factory/solid'
+import { type connect } from '@zag-js/tabs'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTabsContext } from './tabs-context'
 
 type GetContentPropsArgs = Parameters<ReturnType<typeof connect>['getContentProps']>[0]

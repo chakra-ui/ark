@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxContentProps = HTMLArkProps<'ul'>

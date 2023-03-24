@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useCarouselContext } from './carousel-context'
 
 export type CarouselPrevSlideTriggerProps = { children: ReactElement }

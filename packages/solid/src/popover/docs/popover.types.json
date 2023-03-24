@@ -36,7 +36,7 @@
       "description": "The ids of the elements in the popover. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement<HTMLElement>)",
+      "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },

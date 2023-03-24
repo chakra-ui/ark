@@ -1,7 +1,9 @@
 ---
 id: accordion
 name: Accordion
-description: An accordion is a vertically stacked set of interactive headings containing a title, content snippet, or thumbnail representing a section of content.
+description:
+  An accordion is a vertically stacked set of interactive headings containing a
+  title, content snippet, or thumbnail representing a section of content.
 ---
 
 ## Import
@@ -17,15 +19,15 @@ import {
 
 ## Usage
 
-The Accordion component consists of the `Accordion`, `AccordionTrigger`, `AccordionItem` and
-`AccordionContent` components.
+The Accordion component consists of the `Accordion`, `AccordionTrigger`,
+`AccordionItem` and `AccordionContent` components.
 
 <Story name="Basic" />
 
 ### Allow toggling the open state
 
-To collapse an already expanded accordion item by clicking on it, set the `collapsible` prop
-property to `true`.
+To collapse an already expanded accordion item by clicking on it, set the
+`collapsible` prop property to `true`.
 
 > If `multiple` is `true`, we internally set `collapsible` to be true.
 
@@ -33,28 +35,30 @@ property to `true`.
 
 ### Allow multiple open accordions at once
 
-To allow multiple items to be expanded at once, set `multiple` to `true`. This mode implicitly sets
-`collapsible` to `true` and ensures that each accordion can be expanded.
+To allow multiple items to be expanded at once, set `multiple` to `true`. This
+mode implicitly sets `collapsible` to `true` and ensures that each accordion can
+be expanded.
 
 <Story name="Multiple" />
 
 ### Disable specific accordion items
 
-To disable a specific accordion item, set the `disabled` prop to `true`. When an accordion item is
-disabled, it is skipped from keyboard navigation and can't be interacted with.
+To disable a specific accordion item, set the `disabled` prop to `true`. When an
+accordion item is disabled, it is skipped from keyboard navigation and can't be
+interacted with.
 
 <Story name="Disabled" />
 
 ### Uncontrolled usage with defaultValue
 
-Expand accordion items by default with setting `defaultValue` to the value of an `AccordionItem`.
-The `defaultValue` should be of type `string | string[] | null`
+Expand accordion items by default with setting `defaultValue` to the value of an
+`AccordionItem`. The `defaultValue` should be of type `string | string[] | null`
 
 <Story name="Uncontrolled" />
 
 ### Controlled usage with value and onChange
 
-The accordion item accepts a `value` and `onChange` prop, to allow a controlled usage. The `value`
-prop should be of type `string | string[] | null`.
+The accordion item accepts a `value` and `onChange` prop, to allow a controlled
+usage. The `value` prop should be of type `string | string[] | null`.
 
 <Story name="Controlled" />

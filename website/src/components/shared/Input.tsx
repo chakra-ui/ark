@@ -1,5 +1,5 @@
-import { HTMLPandaProps, panda } from '@/panda/jsx'
-import { input, InputVariants } from '@/panda/recipes'
+import { panda, type HTMLPandaProps } from '@/panda/jsx'
+import { input, type InputVariants } from '@/panda/recipes'
 
 export type InputProps = Omit<HTMLPandaProps<'input'>, 'size'> & InputVariants
 

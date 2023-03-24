@@ -1,7 +1,9 @@
 ---
 id: splitter
 name: Splitter
-description: Splitter is a component that allows you to split a container into two or more resizable sections.
+description:
+  Splitter is a component that allows you to split a container into two or more
+  resizable sections.
 ---
 
 ## Import
@@ -12,7 +14,8 @@ import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/react'
 
 ## Usage
 
-The Splitter component consists of the `SplitterPanel` and `SplitterResizeTrigger` components.
+The Splitter component consists of the `SplitterPanel` and
+`SplitterResizeTrigger` components.
 
 ```tsx
 <Splitter
@@ -54,9 +57,8 @@ You can listen to resize changes by passing a `onResize` callback to the
 
 You can nest Splitter components to create a more complex layout.
 
-> The `useId` hook from `react` can generate unique ids which you
-> can apply to the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger`
-> components.
+> The `useId` hook from `react` can generate unique ids which you can apply to
+> the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger` components.
 
 ```tsx
 import type { SplitterProps } from '@ark-ui/react'

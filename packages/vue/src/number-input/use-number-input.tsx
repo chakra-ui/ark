@@ -1,4 +1,4 @@
-import { connect, Context as NumberInputContext, machine } from '@zag-js/number-input'
+import { connect, machine, type Context as NumberInputContext } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
 import { useEnvironmentContext } from '../environment'

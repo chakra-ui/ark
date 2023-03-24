@@ -1,4 +1,4 @@
-import { connect, Context as SelectContext, machine } from '@zag-js/select'
+import { connect, machine, type Context as SelectContext } from '@zag-js/select'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
 import { useEnvironmentContext } from '../environment'

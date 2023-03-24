@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
-import { RadioContext, RadioProvider } from './radio-context'
+import { ark, type HTMLArkProps } from '../factory'
+import { RadioProvider, type RadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioProps = Omit<HTMLArkProps<'label'>, keyof RadioContext> & RadioContext

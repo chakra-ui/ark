@@ -23,7 +23,7 @@ export const input = defineRecipe({
   variants: {
     variant: {
       outline: {
-        background: 'bg.surface',
+        background: 'transparent',
         borderColor: 'border.emphasized',
         borderRadius: 'lg',
         borderWidth: '1px',

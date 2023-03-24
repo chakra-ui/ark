@@ -1,16 +1,16 @@
 import {
-  ComponentObjectPropsOptions,
   computed,
   defineComponent,
-  PropType,
   reactive,
   watchEffect,
+  type ComponentObjectPropsOptions,
+  type PropType,
 } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable, UseEditableProps } from './use-editable'
+import { useEditable, type UseEditableProps } from './use-editable'
 
 type UseEditablePropsContext = UseEditableProps['context']
 

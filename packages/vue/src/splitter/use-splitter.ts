@@ -1,6 +1,6 @@
-import { connect, Context as SplitterContext, machine } from '@zag-js/splitter'
+import { connect, machine, type Context as SplitterContext } from '@zag-js/splitter'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef } from 'vue'
+import { computed, type UnwrapRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'

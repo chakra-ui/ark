@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import type { UseComboboxReturn } from './use-combobox'
+import { type UseComboboxReturn } from './use-combobox'
 
 export type ComboboxContext = UseComboboxReturn
 

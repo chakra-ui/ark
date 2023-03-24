@@ -1,7 +1,7 @@
-import { computed, defineComponent, PropType } from 'vue'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import { DialogProvider } from './dialog-context'
-import { useDialog, UseDialogProps } from './use-dialog'
+import { useDialog, type UseDialogProps } from './use-dialog'
 
 type UseDialogPropsContext = UseDialogProps['context']
 

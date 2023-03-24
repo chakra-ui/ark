@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event'
 import { render, waitFor } from '@testing-library/vue'
-import { defineComponent, Fragment, ref } from 'vue'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, CheckboxProps } from '.'
+import { Fragment, defineComponent, ref } from 'vue'
+import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, type CheckboxProps } from '.'
 
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox {...props}>

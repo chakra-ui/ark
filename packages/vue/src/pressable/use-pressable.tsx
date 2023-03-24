@@ -1,4 +1,4 @@
-import { connect, Context as PressableContext, machine } from '@zag-js/pressable'
+import { connect, machine, type Context as PressableContext } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { useEnvironmentContext } from '../environment'

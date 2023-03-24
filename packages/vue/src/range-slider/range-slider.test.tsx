@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, RenderOptions } from '@testing-library/vue'
+import { render, type RenderOptions } from '@testing-library/vue'
 import BasicComponentStory from './range-slider-stories.vue'
 
 const TestComponentRender = (opts?: RenderOptions) => render(BasicComponentStory, opts)

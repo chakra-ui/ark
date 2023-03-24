@@ -1,7 +1,7 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { TagProps } from './tag'
+import { ark, type HTMLArkProps } from '../factory'
+import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagInputProps = Assign<HTMLArkProps<'input'>, TagProps>

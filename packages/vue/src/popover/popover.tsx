@@ -1,6 +1,6 @@
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { PopoverProvider } from './popover-context'
-import { usePopover, UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverProps } from './use-popover'
 
 type PopoverPropsContext = UsePopoverProps['context']
 

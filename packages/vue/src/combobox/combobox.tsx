@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox, UseComboboxProps } from './use-combobox'
+import { useCombobox, type UseComboboxProps } from './use-combobox'
 
 type UseComboboxPropsContext = UseComboboxProps['context']
 

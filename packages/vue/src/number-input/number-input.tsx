@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { getValidChildren } from '../utils'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, UseNumberInputProps } from './use-number-input'
+import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
 type UseNumberInputContext = UseNumberInputProps['context']
 

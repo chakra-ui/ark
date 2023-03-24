@@ -1,10 +1,10 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { children, JSX } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { CheckboxContext, CheckboxProvider, useCheckboxContext } from './checkbox-context'
-import { useCheckbox, UseCheckboxProps } from './use-checkbox'
+import { CheckboxProvider, useCheckboxContext, type CheckboxContext } from './checkbox-context'
+import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
 export type CheckboxProps = Assign<CheckboxContextWrapperProps, UseCheckboxProps>
 

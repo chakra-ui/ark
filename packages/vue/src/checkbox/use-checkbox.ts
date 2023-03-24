@@ -1,4 +1,4 @@
-import { connect, Context as CheckboxContext, machine } from '@zag-js/checkbox'
+import { connect, machine, type Context as CheckboxContext } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
 import { useEnvironmentContext } from '../environment'

@@ -1,6 +1,6 @@
-import { connect, Context, machine } from '@zag-js/menu'
+import { connect, machine, type Context } from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef } from 'vue'
+import { computed, type UnwrapRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'

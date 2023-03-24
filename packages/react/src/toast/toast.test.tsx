@@ -5,7 +5,7 @@ import { ToastCloseTrigger } from './toast-close-trigger'
 import { ToastDescription } from './toast-description'
 import { ToastGroup } from './toast-group'
 import { ToastPlacements } from './toast-placements'
-import { ToastProvider, ToastProviderProps, useToast } from './toast-provider'
+import { ToastProvider, useToast, type ToastProviderProps } from './toast-provider'
 import { ToastTitle } from './toast-title'
 
 const ExampleToastProvider = (props: ToastProviderProps) => (

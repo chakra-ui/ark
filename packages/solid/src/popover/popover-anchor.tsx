@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverAnchorProps = HTMLArkProps<'div'>

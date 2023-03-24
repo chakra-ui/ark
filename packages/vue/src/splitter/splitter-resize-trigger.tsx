@@ -1,6 +1,6 @@
-import type { connect } from '@zag-js/splitter'
-import { defineComponent, h, PropType } from 'vue'
-import { ComponentWithProps, useUniqueChild } from '../utils'
+import { type connect } from '@zag-js/splitter'
+import { defineComponent, h, type PropType } from 'vue'
+import { useUniqueChild, type ComponentWithProps } from '../utils'
 import { useSplitterContext } from './splitter-context'
 
 type SplitterContext = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]

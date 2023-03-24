@@ -1,8 +1,8 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { connect, Context, machine } from '@zag-js/tabs'
+import { connect, machine, type Context } from '@zag-js/tabs'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseTabsProps = Optional<Context, 'id'> & {
   defaultValue?: Context['value']

@@ -11,11 +11,12 @@ import {
   CarouselViewport,
   TabIndicator,
   TabList,
-  Tabs,
   TabTrigger,
+  Tabs,
 } from '@ark-ui/react'
 import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { DemoSplitter } from '../docs/demo/Splitter'
 import { IconButton } from '../shared/IconButton'
 
 export const Showcase = () => {
@@ -31,7 +32,7 @@ export const Showcase = () => {
                 background: 'bg.surface',
                 borderWidth: '1px',
                 borderRadius: 'lg',
-                minH: '400px',
+                minH: 'md',
                 overflowX: 'hidden',
                 width: 'full',
               })}
@@ -39,8 +40,8 @@ export const Showcase = () => {
               <CarouselSlideGroup>
                 {components.map((component, id) => (
                   <CarouselSlide key={component} index={id}>
-                    <Box px="4" py="6" color="fg.muted">
-                      {component} Demo
+                    <Box p="4">
+                      <DemoSplitter />
                     </Box>
                   </CarouselSlide>
                 ))}

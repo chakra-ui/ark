@@ -1,9 +1,9 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { usePressable, UsePressableProps } from './use-pressable'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { usePressable, type UsePressableProps } from './use-pressable'
 
 export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 

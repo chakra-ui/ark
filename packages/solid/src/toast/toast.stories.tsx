@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { Toast } from './toast'
 import { ToastCloseTrigger } from './toast-close-trigger'
 import { ToastDescription } from './toast-description'

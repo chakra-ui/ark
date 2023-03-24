@@ -1,6 +1,6 @@
-import { connect, Context, machine } from '@zag-js/range-slider'
+import { connect, machine, type Context } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef, watch } from 'vue'
+import { computed, type UnwrapRef, watch } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'

@@ -9,9 +9,9 @@ import {
   PopoverContent,
   PopoverDescription,
   PopoverPositioner,
-  PopoverProps,
   PopoverTitle,
   PopoverTrigger,
+  type PopoverProps,
 } from './'
 
 const ComponentUnderTest = (props: PopoverProps) => (

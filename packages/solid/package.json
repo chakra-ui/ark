@@ -61,24 +61,24 @@
     "@zag-js/types": "0.3.4"
   },
   "devDependencies": {
-    "@solidjs/testing-library": "0.6.1",
+    "@solidjs/testing-library": "0.7.0",
     "@testing-library/dom": "9.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
-    "@types/jsdom": "21.1.0",
+    "@types/jsdom": "21.1.1",
     "@types/testing-library__jest-dom": "5.14.5",
-    "@typescript-eslint/eslint-plugin": "5.55.0",
-    "@typescript-eslint/parser": "5.55.0",
-    "@vitest/coverage-c8": "0.29.2",
+    "@typescript-eslint/eslint-plugin": "5.56.0",
+    "@typescript-eslint/parser": "5.56.0",
+    "@vitest/coverage-c8": "0.29.7",
     "clean-package": "2.2.0",
     "eslint": "8.36.0",
     "happy-dom": "8.9.0",
-    "solid-js": "1.6.14",
-    "typescript": "4.9.5",
-    "vite": "4.1.4",
+    "solid-js": "1.6.15",
+    "typescript": "5.0.2",
+    "vite": "4.2.1",
     "vite-plugin-dts": "2.1.0",
     "vite-plugin-solid": "2.6.1",
-    "vitest": "0.29.2"
+    "vitest": "0.29.7"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"

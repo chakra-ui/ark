@@ -1,6 +1,6 @@
-import { defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useRangeSliderContext } from './range-slider-context'
 
 export type RangeSliderMarkerProps = HTMLArkProps<'span'> & { value: number }

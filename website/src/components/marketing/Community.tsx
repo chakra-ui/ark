@@ -19,7 +19,7 @@ export const Community = () => {
       description: 'Follow now for announcements and new features.',
       icon: <RiTwitterFill />,
       callToAction: 'Follow us',
-      href: 'https://twitter.com/ark_ui', // TODO update this
+      href: 'https://twitter.com/ark_ui_',
     },
     {
       name: 'GitHub',
@@ -67,6 +67,7 @@ export const Community = () => {
                   <Button
                     variant="link"
                     href={channel.href}
+                    target="_blank"
                     size="lg"
                     color="accent.default"
                     rightIcon={<FiArrowRight />}

@@ -21,14 +21,18 @@ export const Markdown = (props: MarkdownProps) => {
             <Link {...props} variant="mdx" target="_blank" rel="noopener noreferrer" />
           ),
           code: (props: any) => <Code {...props} />,
-          Story({ name }: any) {
-            return match(doc)
+          Story: ({ name }: any) =>
+            match(doc)
               .with(
                 { type: 'ComponentDocument', stories: P.when((v: any) => v[name] != null) },
-                ({ stories }) => <div dangerouslySetInnerHTML={{ __html: stories[name] }} />,
+                ({ stories }) => (
+                  <div
+                    data-rehype-pretty-code-fragment
+                    dangerouslySetInnerHTML={{ __html: stories[name] }}
+                  />
+                ),
               )
-              .otherwise(() => null)
-          },
+              .otherwise(() => null),
         }}
       />
     </panda.article>

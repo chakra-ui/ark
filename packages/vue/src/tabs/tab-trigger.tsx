@@ -1,6 +1,6 @@
-import type { connect } from '@zag-js/tabs'
-import { defineComponent, h, PropType } from 'vue'
-import { ComponentWithProps, useUniqueChild } from '../utils'
+import { type connect } from '@zag-js/tabs'
+import { defineComponent, h, type PropType } from 'vue'
+import { useUniqueChild, type ComponentWithProps } from '../utils'
 import { useTabsContext } from './tabs-context'
 
 /** This type is here so that the script 'check-exports' passes

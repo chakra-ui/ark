@@ -1,4 +1,4 @@
-import { connect, Context as HoverCardContext, machine } from '@zag-js/hover-card'
+import { connect, machine, type Context as HoverCardContext } from '@zag-js/hover-card'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed } from 'vue'
 import { useEnvironmentContext } from '../environment'

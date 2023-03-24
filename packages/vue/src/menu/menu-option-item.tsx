@@ -1,9 +1,9 @@
-import type { connect } from '@zag-js/menu'
-import type { OptionItemProps } from '@zag-js/menu/dist/menu.types'
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { type connect } from '@zag-js/menu'
+import { type OptionItemProps } from '@zag-js/menu/dist/menu.types'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export type MenuOptionItemState = { isActive: boolean }
