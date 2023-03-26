@@ -19,9 +19,6 @@ const VueCheckboxProps = {
   'aria-labelledby': {
     type: String as PropType<CheckboxProps['aria-labelledby']>,
   },
-  defaultChecked: {
-    type: Boolean as PropType<CheckboxProps['defaultChecked']>,
-  },
   dir: {
     type: String as PropType<CheckboxProps['dir']>,
   },
@@ -48,6 +45,9 @@ const VueCheckboxProps = {
   },
   modelValue: {
     type: Boolean as PropType<CheckboxProps['modelValue']>,
+  },
+  modelValueIndeterminate: {
+    type: Boolean as PropType<CheckboxProps['modelValueIndeterminate']>,
   },
   name: {
     type: String as PropType<CheckboxProps['name']>,
@@ -79,7 +79,7 @@ export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {() => slots.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.label>
     )
   },

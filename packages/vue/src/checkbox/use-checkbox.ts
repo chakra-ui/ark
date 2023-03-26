@@ -3,7 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, watch } from 'vue'
 import { transformComposableProps, useId } from '../utils'
 
-interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
+interface CheckboxPropsContext extends Omit<CheckboxContext, 'id' | 'defaultChecked'> {
   modelValue?: CheckboxContext['defaultChecked']
 }
 
@@ -21,7 +21,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
       id: useId().value,
       defaultChecked: context.modelValue,
       onChange(details) {
-        emit('change', details.checked)
+        emit('change', details)
         emit('update:modelValue', details.checked)
       },
     }),
@@ -32,9 +32,17 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   watch(
     () => context.modelValue,
     (value) => {
-      if (value == undefined) return
+      if (value === undefined) return
 
       api.value.setChecked(value)
+    },
+  )
+
+  watch(
+    () => context.indeterminate,
+    (value, oldValue) => {
+      if (value == undefined || value === oldValue) return
+      api.value.setIndeterminate(value)
     },
   )
 

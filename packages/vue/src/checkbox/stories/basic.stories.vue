@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
+import CheckIcon from './CheckIcon.vue'
 
 const checkboxRef = ref(true)
 </script>
@@ -10,7 +11,7 @@ const checkboxRef = ref(true)
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl>
-      <span v-if="checkboxRef">✓</span>
+      <CheckIcon v-if="checkboxRef">✓</CheckIcon>
     </CheckboxControl>
   </Checkbox>
 </template>
