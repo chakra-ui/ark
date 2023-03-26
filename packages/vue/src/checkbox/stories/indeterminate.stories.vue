@@ -26,7 +26,7 @@ watch(
 )
 </script>
 <template>
-  <Checkbox v-model="parentChecked" v-model:indeterminate="someChecked">
+  <Checkbox v-model:checked="parentChecked" v-model:indeterminate="someChecked">
     <CheckboxLabel>Parent Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl data-testid="parent-control">
@@ -35,14 +35,14 @@ watch(
     </CheckboxControl>
   </Checkbox>
   <div>
-    <Checkbox v-model="childCheckedItems[0]">
+    <Checkbox v-model:checked="childCheckedItems[0]">
       <CheckboxLabel>Child One Checkbox</CheckboxLabel>
       <CheckboxInput data-testid="child-one-input" />
       <CheckboxControl>
         <CheckIcon v-if="childCheckedItems[0]" />
       </CheckboxControl>
     </Checkbox>
-    <Checkbox v-model="childCheckedItems[1]">
+    <Checkbox v-model:checked="childCheckedItems[1]">
       <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
       <CheckboxInput data-testid="child-two-input" />
       <CheckboxControl>

@@ -4,14 +4,14 @@ import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
 import CheckIcon from './CheckIcon.vue'
 
-const checkboxRef = ref(true)
+const checked = ref(true)
 </script>
 <template>
-  <Checkbox v-model="checkboxRef">
+  <Checkbox v-model:checked="checked">
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl>
-      <CheckIcon v-if="checkboxRef">✓</CheckIcon>
+      <CheckIcon v-if="checked">✓</CheckIcon>
     </CheckboxControl>
   </Checkbox>
 </template>

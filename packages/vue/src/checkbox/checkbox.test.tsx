@@ -35,7 +35,7 @@ describe('Checkbox', () => {
         return () => (
           <Fragment>
             <button onClick={() => (checked.value = true)}>set checked</button>
-            <ComponentUnderTest modelValue={checked.value} />
+            <ComponentUnderTest checked={checked.value} />
           </Fragment>
         )
       },
