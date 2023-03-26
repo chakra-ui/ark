@@ -43,11 +43,8 @@ const VueCheckboxProps = {
   invalid: {
     type: Boolean as PropType<CheckboxProps['invalid']>,
   },
-  modelValue: {
-    type: Boolean as PropType<CheckboxProps['modelValue']>,
-  },
-  modelValueIndeterminate: {
-    type: Boolean as PropType<CheckboxProps['modelValueIndeterminate']>,
+  checked: {
+    type: Boolean as PropType<CheckboxProps['checked']>,
   },
   name: {
     type: String as PropType<CheckboxProps['name']>,
@@ -65,7 +62,7 @@ const VueCheckboxProps = {
 
 export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
   name: 'Checkbox',
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:checked'],
   props: VueCheckboxProps,
   setup(props, { attrs, emit, slots }) {
     const checkboxProps = computed<UseCheckboxProps>(() => ({
