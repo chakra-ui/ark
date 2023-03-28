@@ -19,7 +19,7 @@ export const Footer = () => {
     },
     {
       name: 'Discord',
-      href: '#',
+      href: 'https://discord.com/invite/dQHfcWF',
     },
   ]
   return (
