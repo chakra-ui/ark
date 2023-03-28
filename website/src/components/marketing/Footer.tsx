@@ -19,7 +19,7 @@ export const Footer = () => {
     },
     {
       name: 'Discord',
-      href: 'https://discord.gg/ark',
+      href: '#',
     },
   ]
   return (

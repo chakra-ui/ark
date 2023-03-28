@@ -12,7 +12,7 @@ export const Community = () => {
       description: 'To get involved in the community, ask questions.',
       icon: <RiDiscordFill />,
       callToAction: 'Join us',
-      href: 'https://discord.gg/ark', // TODO update this
+      href: '#', // TODO update this
     },
     {
       name: 'Twitter',
