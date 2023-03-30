@@ -29,11 +29,12 @@ export const Select = (props: SelectProps) => {
     'onChange',
     'onClose',
     'onHighlight',
+    'onInteractOutside',
     'onOpen',
     'positioning',
     'readOnly',
-    'selectOnTab',
     'selectedOption',
+    'selectOnTab',
   ])
   const select = useSelect(useSelectProps)
   const view = runIfFn(children, select)

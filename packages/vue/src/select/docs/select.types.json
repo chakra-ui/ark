@@ -66,6 +66,11 @@
       "isRequired": false,
       "description": "The callback fired when the highlighted option changes."
     },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on select when composing it with other components."
+    },
     "onOpen": {
       "type": "() => void",
       "isRequired": false,
