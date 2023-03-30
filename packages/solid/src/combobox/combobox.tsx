@@ -31,6 +31,7 @@ export const Combobox = (props: ComboboxProps) => {
     'onHighlight',
     'onInputChange',
     'onInputChange',
+    'onInteractOutside',
     'onOpen',
     'onSelect',
     'openOnClick',

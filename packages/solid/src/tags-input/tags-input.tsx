@@ -36,6 +36,7 @@ export const TagsInput = (props: TagsInputProps) => {
     'name',
     'onChange',
     'onHighlight',
+    'onInteractOutside',
     'onInvalid',
     'onTagUpdate',
     'readOnly',

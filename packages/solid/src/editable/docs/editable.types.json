@@ -70,6 +70,11 @@
       "isRequired": false,
       "description": "The callback that is called when in the edit mode."
     },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on editable when composing it with other components."
+    },
     "onSubmit": {
       "type": "(details: { value: string }) => void",
       "isRequired": false,

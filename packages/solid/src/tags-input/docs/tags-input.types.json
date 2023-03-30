@@ -102,6 +102,11 @@
       "isRequired": false,
       "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
     },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on the tags input when composing it with other components (e.g. combobox)."
+    },
     "onInvalid": {
       "type": "(details: { reason: ValidityState }) => void",
       "isRequired": false,

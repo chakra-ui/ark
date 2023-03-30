@@ -24,6 +24,7 @@ export const Editable = (props: EditableProps) => {
     'onCancel',
     'onChange',
     'onEdit',
+    'onInteractOutside',
     'onSubmit',
     'placeholder',
     'readOnly',
