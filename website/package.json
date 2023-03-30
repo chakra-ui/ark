@@ -18,7 +18,7 @@
     "@next/font": "13.2.4",
     "@pandacss/dev": "0.0.0-dev-20230329015144",
     "@theme-toggles/react": "4.1.0",
-    "contentlayer": "0.3.0",
+    "contentlayer": "0.3.1",
     "markdown-toc": "1.2.0",
     "next": "13.2.4",
     "next-contentlayer": "0.3.0",
