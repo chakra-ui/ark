@@ -372,7 +372,6 @@ importers:
     specifiers:
       '@ark-ui/react': workspace:*
       '@next/env': 13.2.4
-      '@next/font': 13.2.4
       '@octokit/types': 9.0.0
       '@pandacss/dev': 0.0.0-dev-20230331034319
       '@theme-toggles/react': 4.1.0
@@ -402,7 +401,6 @@ importers:
     dependencies:
       '@ark-ui/react': link:../packages/react
       '@next/env': 13.2.4
-      '@next/font': 13.2.4
       '@pandacss/dev': 0.0.0-dev-20230331034319_qr2e3eriwsljeip6ltt4bcleqa
       '@theme-toggles/react': 4.1.0_biqbaboplfbrettd7655fr4n2y
       contentlayer: 0.3.1
@@ -2331,10 +2329,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.2.4:
-    resolution: {integrity: sha512-lMAnuOYjv5g22WhD00u0DQ9u2rTMJH0S64PKE4Sy8Y2q+FJTYs6ZHT2z3VRoI8+AOWSLK4FirpnygcjOienQ9A==}
-    dev: false
 
   /@next/swc-android-arm-eabi/13.2.4:
     resolution: {integrity: sha512-DWlalTSkLjDU11MY11jg17O1gGQzpRccM9Oes2yTqj2DpHndajrXHGxj9HGtJ+idq2k7ImUdJVWS2h2l/EDJOw==}
