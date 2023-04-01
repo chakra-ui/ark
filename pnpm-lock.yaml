@@ -107,7 +107,7 @@ importers:
       eslint: 8.37.0
       eslint-plugin-react: 7.32.2
       eslint-plugin-react-hooks: 4.6.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       jsdom: 21.1.1
       react: 18.2.0
       react-dom: 18.2.0
@@ -163,7 +163,7 @@ importers:
       eslint: 8.37.0
       eslint-plugin-react: 7.32.2_eslint@8.37.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.37.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       jsdom: 21.1.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -172,7 +172,7 @@ importers:
       typescript: 5.0.3
       vite: 4.2.1
       vite-plugin-dts: 2.1.0_vite@4.2.1
-      vitest: 0.29.8_johjnpegw72r7dm4tpcr4a6xna
+      vitest: 0.29.8_cmjul5afz57jbsqpbbeoo4cczq
 
   packages/solid:
     specifiers:
@@ -213,7 +213,7 @@ importers:
       '@zag-js/types': 0.3.4
       clean-package: 2.2.0
       eslint: 8.37.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       solid-js: 1.6.16
       typescript: 5.0.3
       vite: 4.2.1
@@ -259,13 +259,13 @@ importers:
       '@vitest/coverage-c8': 0.29.8_vitest@0.29.8
       clean-package: 2.2.0
       eslint: 8.37.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       solid-js: 1.6.16
       typescript: 5.0.3
       vite: 4.2.1
       vite-plugin-dts: 2.1.0_vite@4.2.1
       vite-plugin-solid: 2.6.1_solid-js@1.6.16+vite@4.2.1
-      vitest: 0.29.8_happy-dom@8.9.0
+      vitest: 0.29.8_happy-dom@9.1.0
 
   packages/vue:
     specifiers:
@@ -309,7 +309,7 @@ importers:
       '@zag-js/vue': 0.2.12
       clean-package: 2.2.0
       eslint: 8.37.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       jsdom: 21.1.1
       resize-observer-polyfill: 1.5.1
       typescript: 5.0.3
@@ -359,13 +359,13 @@ importers:
       '@vue/compiler-sfc': 3.2.47
       clean-package: 2.2.0
       eslint: 8.37.0
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
       jsdom: 21.1.1
       resize-observer-polyfill: 1.5.1
       typescript: 5.0.3
       vite: 4.2.1
       vite-plugin-dts: 2.1.0_vite@4.2.1
-      vitest: 0.29.8_johjnpegw72r7dm4tpcr4a6xna
+      vitest: 0.29.8_cmjul5afz57jbsqpbbeoo4cczq
       vue: 3.2.47
 
   website:
@@ -3585,7 +3585,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.1
-      vitest: 0.29.8_johjnpegw72r7dm4tpcr4a6xna
+      vitest: 0.29.8_cmjul5afz57jbsqpbbeoo4cczq
     dev: true
 
   /@vitest/expect/0.29.8:
@@ -6621,18 +6621,15 @@ packages:
       duplexer: 0.1.2
     dev: false
 
-  /happy-dom/8.9.0:
-    resolution: {integrity: sha512-JZwJuGdR7ko8L61136YzmrLv7LgTh5b8XaEM3P709mLjyQuXJ3zHTDXvUtBBahRjGlcYW0zGjIiEWizoTUGKfA==}
+  /happy-dom/9.1.0:
+    resolution: {integrity: sha512-Z/oOcAJsZjHFOQ/VK8n0CnZBjWucZNeZwFdlDK234vIBW9IVYGWjSUR9ujK6nwsSzJ6vNdYuSZoiag72AzlD0A==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
       iconv-lite: 0.6.3
-      node-fetch: 2.6.9
       webidl-conversions: 7.0.0
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /hard-rejection/2.1.0:
@@ -11375,7 +11372,7 @@ packages:
     dependencies:
       vite: 4.2.1
 
-  /vitest/0.29.8_happy-dom@8.9.0:
+  /vitest/0.29.8_cmjul5afz57jbsqpbbeoo4cczq:
     resolution: {integrity: sha512-JIAVi2GK5cvA6awGpH0HvH/gEG9PZ0a/WoxdiV3PmqK+3CjQMf8c+J/Vhv4mdZ2nRyXFw66sAg6qz7VNkaHfDQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11418,7 +11415,8 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.9.0
+      happy-dom: 9.1.0
+      jsdom: 21.1.1
       local-pkg: 0.4.2
       pathe: 1.1.0
       picocolors: 1.0.0
@@ -11440,7 +11438,7 @@ packages:
       - terser
     dev: true
 
-  /vitest/0.29.8_johjnpegw72r7dm4tpcr4a6xna:
+  /vitest/0.29.8_happy-dom@9.1.0:
     resolution: {integrity: sha512-JIAVi2GK5cvA6awGpH0HvH/gEG9PZ0a/WoxdiV3PmqK+3CjQMf8c+J/Vhv4mdZ2nRyXFw66sAg6qz7VNkaHfDQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -11483,8 +11481,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 8.9.0
-      jsdom: 21.1.1
+      happy-dom: 9.1.0
       local-pkg: 0.4.2
       pathe: 1.1.0
       picocolors: 1.0.0
