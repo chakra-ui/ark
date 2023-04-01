@@ -63,7 +63,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@polymorphic-factory/react': 0.3.0
+      '@polymorphic-factory/react': 0.4.1
       '@testing-library/dom': 9.2.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 14.0.0
@@ -118,7 +118,7 @@ importers:
       vite-plugin-dts: 2.1.0
       vitest: 0.29.8
     dependencies:
-      '@polymorphic-factory/react': 0.3.0_react@18.2.0
+      '@polymorphic-factory/react': 0.4.1_react@18.2.0
       '@zag-js/accordion': 0.2.15
       '@zag-js/anatomy': 0.1.4
       '@zag-js/carousel': 0.0.4
@@ -2861,6 +2861,14 @@ packages:
 
   /@polymorphic-factory/react/0.3.0_react@18.2.0:
     resolution: {integrity: sha512-MMJNVV1yVqVBuOcAZhEyZgcWcMhN8Dwp+mg9dtakjiPVma+BQgIV/3GpErA9TXB9W5q4D2CalT42LGe6ta6Suw==}
+    peerDependencies:
+      react: '>=16.8 || >=17 || >18'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@polymorphic-factory/react/0.4.1_react@18.2.0:
+    resolution: {integrity: sha512-GQMmzGARKDLmj3DYAS1lSiQNfUbqIGInAmOMpJwbbwm3MWUPfg+3UE8jQmeORaiXUjoO0sagHdwtf2lx1XCyhA==}
     peerDependencies:
       react: '>=16.8 || >=17 || >18'
     dependencies:
