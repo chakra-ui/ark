@@ -33,7 +33,7 @@
     "storydocs": "ts-node ../../scripts/generate-stories.ts"
   },
   "dependencies": {
-    "@polymorphic-factory/solid": "0.2.0",
+    "@polymorphic-factory/solid": "0.3.1",
     "@zag-js/accordion": "0.2.15",
     "@zag-js/anatomy": "0.1.4",
     "@zag-js/checkbox": "0.2.16",
