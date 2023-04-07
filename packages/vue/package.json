@@ -75,7 +75,7 @@
     "@vue/compiler-sfc": "3.2.47",
     "clean-package": "2.2.0",
     "eslint": "8.37.0",
-    "happy-dom": "9.1.7",
+    "happy-dom": "9.1.9",
     "jsdom": "21.1.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.3",
