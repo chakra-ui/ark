@@ -1,4 +1,4 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { type ComponentWithProps } from '../utils'
 import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps } from './use-dialog'
@@ -21,10 +21,10 @@ const VueDialogProps = {
     type: Boolean as PropType<DialogProps['modal']>,
   },
   initialFocusEl: {
-    type: Element as PropType<DialogProps['initialFocusEl']>,
+    type: Object as PropType<DialogProps['initialFocusEl']>,
   },
   finalFocusEl: {
-    type: Element as PropType<DialogProps['finalFocusEl']>,
+    type: Object as PropType<DialogProps['finalFocusEl']>,
   },
   restoreFocus: {
     type: Boolean as PropType<DialogProps['restoreFocus']>,
@@ -51,12 +51,7 @@ export const Dialog: ComponentWithProps<DialogProps> = defineComponent({
   props: VueDialogProps,
   emits: ['close', 'outsideClick', 'esc'],
   setup(props, { slots, emit }) {
-    const dialogProps = computed<UseDialogProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useDialog(dialogProps.value)
+    const api = useDialog(emit, props)
 
     DialogProvider(api)
 
