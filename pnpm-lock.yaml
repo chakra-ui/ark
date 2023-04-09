@@ -561,8 +561,8 @@ importers:
         specifier: 0.3.1
         version: 0.3.1(esbuild@0.17.15)(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
       next-seo:
-        specifier: 5.15.0
-        version: 5.15.0(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 6.0.0
+        version: 6.0.0(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: 4.0.7
         version: 4.0.7(@next/env@13.3.0)(next@13.3.0)
@@ -8835,8 +8835,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-seo@5.15.0(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}
+  /next-seo@6.0.0(next@13.3.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-jKKt1p1z4otMA28AyeoAONixVjdYmgFCWwpEFtu+DwRHQDllVX3RjtyXbuCQiUZEfQ9rFPBpAI90vDeLZlMBdg==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
