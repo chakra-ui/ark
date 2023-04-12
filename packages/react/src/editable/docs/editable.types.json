@@ -12,7 +12,7 @@
     },
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

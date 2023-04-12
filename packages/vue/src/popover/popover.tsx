@@ -16,9 +16,6 @@ const VuePopoverProps = {
   closeOnInteractOutside: {
     type: Boolean as PropType<PopoverProps['closeOnInteractOutside']>,
   },
-  defaultOpen: {
-    type: Boolean as PropType<PopoverProps['defaultOpen']>,
-  },
   getRootNode: {
     type: Function as PropType<PopoverProps['getRootNode']>,
   },
@@ -39,6 +36,9 @@ const VuePopoverProps = {
   },
   portalled: {
     type: Boolean as PropType<PopoverProps['portalled']>,
+  },
+  open: {
+    type: Boolean as PropType<PopoverProps['open']>,
   },
   positioning: {
     type: Object as PropType<PopoverProps['positioning']>,

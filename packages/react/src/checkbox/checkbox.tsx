@@ -22,7 +22,6 @@ export const Checkbox = forwardRef<'label', CheckboxProps>((props, ref) => {
       'aria-describedby',
       'aria-label',
       'aria-labelledby',
-      'defaultChecked',
       'checked',
       'dir',
       'disabled',

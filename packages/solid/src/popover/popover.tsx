@@ -10,7 +10,6 @@ export const Popover = (props: PopoverProps) => {
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
-    'defaultOpen',
     'getRootNode',
     'id',
     'ids',
@@ -21,6 +20,7 @@ export const Popover = (props: PopoverProps) => {
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
+    'open',
     'portalled',
     'positioning',
   ])

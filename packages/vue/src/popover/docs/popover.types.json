@@ -15,11 +15,6 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to open the popover on page load"
-    },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
@@ -61,6 +56,11 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is open"
     },
     "portalled": {
       "type": "boolean",

@@ -21,7 +21,7 @@
       "description": "Whether to blur the input on select"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

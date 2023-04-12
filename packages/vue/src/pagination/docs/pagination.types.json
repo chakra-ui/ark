@@ -2,7 +2,7 @@
   "PaginationProps": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

@@ -6,7 +6,7 @@
       "description": "Whether text selection should be enabled on the pressable element."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

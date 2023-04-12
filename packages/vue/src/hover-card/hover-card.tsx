@@ -17,14 +17,14 @@ const VueHoverCardProps = {
   closeDelay: {
     type: Number as PropType<HoverCardProps['closeDelay']>,
   },
-  defaultOpen: {
-    type: Boolean as PropType<HoverCardProps['defaultOpen']>,
-  },
   dir: {
     type: String as PropType<HoverCardProps['dir']>,
   },
   getRootNode: {
     type: Function as PropType<HoverCardProps['getRootNode']>,
+  },
+  open: {
+    type: Boolean as PropType<HoverCardProps['open']>,
   },
   positioning: {
     type: Object as PropType<HoverCardProps['positioning']>,
