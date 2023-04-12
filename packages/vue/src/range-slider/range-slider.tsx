@@ -1,11 +1,11 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { RangeSliderProvider } from './range-slider-context'
-import { useRangeSlider, type UseRangeSliderProps } from './use-range-slider'
+import { useRangeSlider, type UseRangeSliderContext } from './use-range-slider'
 
-export type RangeSliderProps = Assign<HTMLArkProps<'div'>, UseRangeSliderProps['context']>
+export type RangeSliderProps = Assign<HTMLArkProps<'div'>, UseRangeSliderContext>
 
 export const RangeSlider: ComponentWithProps<RangeSliderProps> = defineComponent({
   name: 'RangeSlider',
@@ -73,12 +73,7 @@ export const RangeSlider: ComponentWithProps<RangeSliderProps> = defineComponent
   },
   emits: ['change', 'update:modelValue', 'change-start', 'change-end'],
   setup(props, { slots, attrs, emit, expose }) {
-    const rangeSliderProps = computed<UseRangeSliderProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useRangeSlider(rangeSliderProps.value)
+    const api = useRangeSlider(emit, props)
 
     RangeSliderProvider(api)
 

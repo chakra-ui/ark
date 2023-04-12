@@ -3,12 +3,10 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox, type UseComboboxProps } from './use-combobox'
+import { useCombobox, type UseComboboxContext, type UseComboboxDefaultValue } from './use-combobox'
 
-type UseComboboxPropsContext = UseComboboxProps['context']
-
-export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxPropsContext> & {
-  defaultValue?: UseComboboxProps['defaultValue']
+export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxContext> & {
+  defaultValue?: UseComboboxDefaultValue
 }
 
 const VueComboboxProps = {
@@ -97,13 +95,9 @@ export const Combobox: ComponentWithProps<ComboboxProps> = defineComponent({
   props: VueComboboxProps,
   emits: ['close', 'open', 'highlight', 'input-change', 'update:modelValue', 'select'],
   setup(props, { slots, attrs, emit, expose }) {
-    const comboboxProps = computed<UseComboboxProps>(() => ({
-      context: props,
-      defaultValue: props.modelValue ?? props.defaultValue,
-      emit,
-    }))
+    const defaultValue = computed(() => props.modelValue ?? props.defaultValue)
 
-    const api = useCombobox(comboboxProps.value)
+    const api = useCombobox(emit, props, defaultValue.value)
 
     ComboboxProvider(api)
 

@@ -1,20 +1,20 @@
 import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, watch } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, onMounted, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
-interface AccordionProps extends Omit<AccordionContext, 'id' | 'value'> {
+export interface UseAccordionContext extends Omit<AccordionContext, 'id' | 'value'> {
   modelValue?: AccordionContext['value']
 }
 
-export interface UseAccordionProps {
-  context: Omit<AccordionProps, 'id'>
-  emit: CallableFunction
-  defaultValue?: AccordionContext['value']
-}
+export type UseAccordionDefaultValue = AccordionContext['value']
 
-export const useAccordion = (props: UseAccordionProps) => {
-  const { context, emit, defaultValue } = transformComposableProps(props)
+export const useAccordion = (
+  emit: CallableFunction,
+  context: UseAccordionContext,
+  defaultValue?: UseAccordionDefaultValue,
+) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
@@ -38,7 +38,7 @@ export const useAccordion = (props: UseAccordionProps) => {
   })
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       api.value.setValue(value as string | string[])

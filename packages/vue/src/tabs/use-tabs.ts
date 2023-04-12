@@ -1,20 +1,22 @@
 import { connect, machine, type Context as TabsContext } from '@zag-js/tabs'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive } from 'vue'
+import { useId } from '../utils'
 
-export type UseTabsProps = {
-  context: Omit<TabsContext, 'id' | 'value'>
-  defaultValue?: TabsContext['value']
-  emit: CallableFunction
-}
+export type UseTabsContext = Omit<TabsContext, 'id' | 'value'>
 
-export const useTabs = (props: UseTabsProps) => {
-  const { context, emit, defaultValue } = transformComposableProps(props)
+export type UseTabsDefaultValue = TabsContext['value']
+
+export const useTabs = (
+  emit: CallableFunction,
+  context: UseTabsContext,
+  defaultValue?: UseTabsDefaultValue,
+) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       value: defaultValue,
       onChange(details) {

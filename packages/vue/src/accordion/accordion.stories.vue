@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './index'
 
-import { Ref, ref } from 'vue'
+import { type Ref, ref } from 'vue'
 const val: Ref<string | string[]> = ref('panel-2')
 </script>
 
