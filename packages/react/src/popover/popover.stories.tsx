@@ -34,11 +34,11 @@ export const Basic = () => (
 )
 
 export const Controlled = () => {
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen((prev) => !prev)}>click me</button>
-      <Popover isOpen={isOpen} onOpenChange={setOpen}>
+      <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
+      <Popover isOpen={isOpen} onOpenChange={setIsOpen}>
         <PopoverAnchor>
           <span>anchor</span>
         </PopoverAnchor>
