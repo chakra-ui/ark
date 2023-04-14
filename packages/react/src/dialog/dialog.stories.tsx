@@ -42,10 +42,7 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
-      <Dialog open={isOpen}>
-        <DialogTrigger>
-          <button>click me</button>
-        </DialogTrigger>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Portal>
           <DialogBackdrop />
           <DialogContainer>

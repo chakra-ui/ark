@@ -1,4 +1,5 @@
 import { Portal } from '@zag-js/react'
+import { useState } from 'react'
 import {
   HoverCard,
   HoverCardArrow,
@@ -29,3 +30,29 @@ export const Basic = () => (
     </Portal>
   </HoverCard>
 )
+
+export const Controlled = () => {
+  const [isOpen, setOpen] = useState(false)
+  return (
+    <>
+      <button onClick={() => setOpen(!isOpen)}>click me</button>
+      <HoverCard open={isOpen} onOpenChange={() => setOpen(false)}>
+        <HoverCardTrigger>
+          <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
+            Mastodon
+          </a>
+        </HoverCardTrigger>
+        <Portal>
+          <HoverCardPositioner>
+            <HoverCardContent>
+              <HoverCardArrow>
+                <HoverCardArrowTip />
+              </HoverCardArrow>
+              Mastodon Preview
+            </HoverCardContent>
+          </HoverCardPositioner>
+        </Portal>
+      </HoverCard>
+    </>
+  )
+}
