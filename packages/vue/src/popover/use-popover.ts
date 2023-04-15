@@ -25,7 +25,6 @@ export const usePopover = (props: UsePopoverProps) => {
     machine({
       ...context,
       id: useId().value,
-      defaultOpen: context.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -35,8 +34,11 @@ export const usePopover = (props: UsePopoverProps) => {
       onInteractOutside(event) {
         emit('interact-outside', event)
       },
-      onOpenChange(open) {
-        emit('open-change', open)
+      onOpen() {
+        emit('open')
+      },
+      onClose() {
+        emit('close')
       },
       onPointerDownOutside(event) {
         emit('pointer-down-outside', event)

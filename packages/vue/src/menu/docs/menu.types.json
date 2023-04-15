@@ -16,7 +16,7 @@
       "description": "Whether to close the menu when an option is selected"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

@@ -15,11 +15,6 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to open the popover on page load"
-    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -50,17 +45,27 @@
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function invoked when the popover is closed"
+    },
     "onEscapeKeyDown": { "type": "(event: KeyboardEvent) => void", "isRequired": false },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
-    "onOpenChange": {
-      "type": "(open: boolean) => void",
+    "onOpen": {
+      "type": "VoidFunction",
       "isRequired": false,
-      "description": "Function invoked when the popover is opened."
+      "description": "Function invoked when the popover is opened"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is open"
     },
     "portalled": {
       "type": "boolean",

@@ -11,7 +11,7 @@
       "description": "Whether the editable should auto-resize to fit the content."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

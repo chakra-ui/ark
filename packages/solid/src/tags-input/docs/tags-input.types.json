@@ -46,7 +46,7 @@
       "description": "The character that serves has:\n- event key to trigger the addition of a new tag\n- character used to split tags when pasting into the input"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

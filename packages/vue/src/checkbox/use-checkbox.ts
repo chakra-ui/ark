@@ -4,7 +4,7 @@ import { computed, watch } from 'vue'
 import { transformComposableProps, useId } from '../utils'
 
 interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
-  modelValue?: CheckboxContext['defaultChecked']
+  modelValue?: CheckboxContext['checked']
 }
 
 export interface UseCheckboxProps {
@@ -19,7 +19,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
     machine({
       ...context,
       id: useId().value,
-      defaultChecked: context.modelValue,
+      checked: context.modelValue,
       onChange(details) {
         emit('change', details.checked)
         emit('update:modelValue', details.checked)

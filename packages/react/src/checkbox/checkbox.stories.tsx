@@ -10,6 +10,19 @@ export const Basic = () => (
   </Checkbox>
 )
 
+export const Controlled = () => {
+  const [checked, setChecked] = useState(true)
+  return (
+    <>
+      <button onClick={() => setChecked(!checked)}>set checked</button>
+      <Checkbox checked={checked}>
+        <CheckboxLabel>Checkbox</CheckboxLabel>
+        <CheckboxInput />
+        <CheckboxControl />
+      </Checkbox>
+    </>
+  )
+}
 export const RenderProp = () => (
   <Checkbox>
     {(state) => (
