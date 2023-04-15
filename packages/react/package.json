@@ -46,6 +46,7 @@
     "@zag-js/carousel": "0.5.0",
     "@zag-js/checkbox": "0.6.0",
     "@zag-js/combobox": "0.6.0",
+    "@zag-js/date-picker": "0.6.0",
     "@zag-js/dialog": "0.6.0",
     "@zag-js/editable": "0.6.0",
     "@zag-js/hover-card": "0.6.0",
