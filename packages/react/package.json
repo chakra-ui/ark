@@ -1,8 +1,15 @@
 {
   "name": "@ark-ui/react",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
+  "keywords": [
+    "components",
+    "headless",
+    "react",
+    "state-machines",
+    "ui",
+    "zag"
+  ],
   "homepage": "https://github.com/chakra-ui/ark#readme",
   "license": "MIT",
   "main": "src/index.ts",

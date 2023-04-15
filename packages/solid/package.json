@@ -1,8 +1,15 @@
 {
   "name": "@ark-ui/solid",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
+  "keywords": [
+    "components",
+    "headless",
+    "solid",
+    "state-machines",
+    "ui",
+    "zag"
+  ],
   "homepage": "https://github.com/chakra-ui/ark#readme",
   "license": "MIT",
   "main": "src/index.ts",

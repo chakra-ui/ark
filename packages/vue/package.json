@@ -1,8 +1,15 @@
 {
   "name": "@ark-ui/vue",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
+  "keywords": [
+    "components",
+    "headless",
+    "state-machines",
+    "ui",
+    "vue",
+    "zag"
+  ],
   "homepage": "https://github.com/chakra-ui/ark#readme",
   "license": "MIT",
   "main": "src/index.ts",
@@ -16,7 +23,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "packages/solid"
+    "directory": "packages/vue"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
