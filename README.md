@@ -16,29 +16,31 @@ The plugin is available for [VSCode](https://marketplace.visualstudio.com/items?
 
 ## State
 
-|                 | React | Solid | Vue |
-| --------------- | ----- | ----- | --- |
-| Accordion       | 🟢    | 🟢    | 🟢  |
-| Carousel (Beta) | 🟢    | ⚪    | ⚪  |
-| Checkbox        | 🟢    | 🟢    | 🟢  |
-| Dialog          | 🟢    | 🟢    | 🟢  |
-| Combobox        | 🟢    | 🟢    | 🟢  |
-| Editable        | 🟢    | 🟢    | 🟢  |
-| Environment     | 🟢    | 🟢    | ⚪  |
-| Hover Card      | 🟢    | 🟢    | 🟢  |
-| Menu            | 🟢    | 🟢    | 🟢  |
-| Number Input    | 🟢    | 🟢    | 🟢  |
-| Pagination      | 🟢    | 🟢    | 🟢  |
-| Pin Input       | 🟢    | 🟢    | 🟢  |
-| Popover         | 🟢    | 🟢    | 🟢  |
-| Pressable       | 🟢    | 🟢    | 🟢  |
-| Radio Group     | 🟢    | 🟢    | 🟢  |
-| Range Slider    | 🟢    | 🟢    | 🟢  |
-| Rating          | 🟢    | 🟢    | 🟢  |
-| Select          | 🟢    | 🟢    | 🟢  |
-| Slider          | 🟢    | 🟢    | 🟢  |
-| Splitter        | 🟢    | 🟢    | 🟢  |
-| Tabs            | 🟢    | 🟢    | 🟢  |
-| Tags Input      | 🟢    | 🟢    | ⚪  |
-| Toast           | 🟢    | 🟢    | ⚪  |
-| Tooltip         | 🟢    | 🟢    | 🟢  |
+|                     | React | Solid | Vue |
+| ------------------- | ----- | ----- | --- |
+| Accordion           | 🟢    | 🟢    | 🟢  |
+| Carousel (Beta)     | 🟢    | ⚪    | ⚪  |
+| Checkbox            | 🟢    | 🟢    | 🟢  |
+| Color Picker (Beta) | ⚪    | ⚪    | ⚪  |
+| Date Picker (Beta)  | 🟢    | ⚪    | ⚪  |
+| Dialog              | 🟢    | 🟢    | 🟢  |
+| Combobox            | 🟢    | 🟢    | 🟢  |
+| Editable            | 🟢    | 🟢    | 🟢  |
+| Environment         | 🟢    | 🟢    | ⚪  |
+| Hover Card          | 🟢    | 🟢    | 🟢  |
+| Menu                | 🟢    | 🟢    | 🟢  |
+| Number Input        | 🟢    | 🟢    | 🟢  |
+| Pagination          | 🟢    | 🟢    | 🟢  |
+| Pin Input           | 🟢    | 🟢    | 🟢  |
+| Popover             | 🟢    | 🟢    | 🟢  |
+| Pressable           | 🟢    | 🟢    | 🟢  |
+| Radio Group         | 🟢    | 🟢    | 🟢  |
+| Range Slider        | 🟢    | 🟢    | 🟢  |
+| Rating              | 🟢    | 🟢    | 🟢  |
+| Select              | 🟢    | 🟢    | 🟢  |
+| Slider              | 🟢    | 🟢    | 🟢  |
+| Splitter            | 🟢    | 🟢    | 🟢  |
+| Tabs                | 🟢    | 🟢    | 🟢  |
+| Tags Input          | 🟢    | 🟢    | ⚪  |
+| Toast               | 🟢    | 🟢    | ⚪  |
+| Tooltip             | 🟢    | 🟢    | 🟢  |
