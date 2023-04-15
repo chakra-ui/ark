@@ -17,8 +17,11 @@ export const useHoverCard = (props: UseHoverCardProps) => {
     machine({
       ...context,
       id: useId().value,
-      onOpenChange(open) {
-        emit('open-change', open)
+      onOpen() {
+        emit('open')
+      },
+      onClose() {
+        emit('close')
       },
     }),
   )

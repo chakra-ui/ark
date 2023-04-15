@@ -36,7 +36,7 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setOpen(!isOpen)}>click me</button>
-      <HoverCard open={isOpen} onOpenChange={() => setOpen(false)}>
+      <HoverCard open={isOpen} onClose={() => setOpen(false)} openDelay={0} closeDelay={0}>
         <HoverCardTrigger>
           <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
             Mastodon

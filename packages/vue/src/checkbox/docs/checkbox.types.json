@@ -52,7 +52,7 @@
       "isRequired": false,
       "description": "If `true`, the checkbox is marked as invalid."
     },
-    "modelValue": { "type": "any", "isRequired": false },
+    "modelValue": { "type": "boolean", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,

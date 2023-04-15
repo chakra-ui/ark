@@ -49,11 +49,12 @@ export const Popover = defineComponent({
   name: 'Popover',
   props: VuePopoverProps,
   emits: [
-    'open-change',
+    'close',
     'escape-key-down',
-    'pointer-down-outside',
     'focus-outside',
     'interact-outside',
+    'open',
+    'pointer-down-outside',
   ],
   setup(props, { slots, emit }) {
     const popoverProps = computed<UsePopoverProps>(() => ({

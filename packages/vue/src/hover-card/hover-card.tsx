@@ -34,7 +34,7 @@ const VueHoverCardProps = {
 export const HoverCard: ComponentWithProps<HoverCardProps> = defineComponent({
   name: 'HoverCard',
   props: VueHoverCardProps,
-  emits: ['open-change'],
+  emits: ['open', 'close'],
   setup(props, { slots, emit }) {
     const hoverCardProps = computed<UseHoverCardProps>(() => ({
       context: props,
