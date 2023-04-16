@@ -12,6 +12,17 @@ import {
   PopoverTrigger,
 } from './'
 
+import type { Meta } from '@storybook/react'
+
+type PopoverType = typeof Popover
+
+const meta: Meta<PopoverType> = {
+  title: 'Popover',
+  component: Popover,
+}
+
+export default meta
+
 export const Basic = () => (
   <Popover>
     <PopoverTrigger>

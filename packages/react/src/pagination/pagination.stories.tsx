@@ -8,6 +8,17 @@ import {
 } from './'
 import './pagination.css'
 
+import type { Meta } from '@storybook/react'
+
+type PaginationType = typeof Pagination
+
+const meta: Meta<PaginationType> = {
+  title: 'Pagination',
+  component: Pagination,
+}
+
+export default meta
+
 export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (

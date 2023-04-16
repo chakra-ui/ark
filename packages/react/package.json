@@ -37,7 +37,8 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore",
     "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts"
+    "storydocs": "ts-node ../../scripts/generate-stories.ts",
+    "storybook": "storybook dev"
   },
   "dependencies": {
     "@polymorphic-factory/react": "0.4.1",

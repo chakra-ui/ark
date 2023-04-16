@@ -10,6 +10,17 @@ import {
   useToast,
 } from '.'
 
+import type { Meta } from '@storybook/react'
+
+type ToastType = typeof Toast
+
+const meta: Meta<ToastType> = {
+  title: 'Toast',
+  component: Toast,
+}
+
+export default meta
+
 // chakra land
 export const ChakraToastProvider = (props: PropsWithChildren) => (
   <ToastProvider>

@@ -6,6 +6,17 @@ import { RadioGroupLabel } from './radio-group-label'
 import { RadioInput } from './radio-input'
 import { RadioLabel } from './radio-label'
 
+import type { Meta } from '@storybook/react'
+
+type RadioGroupType = typeof RadioGroup
+
+const meta: Meta<RadioGroupType> = {
+  title: 'RadioGroup',
+  component: RadioGroup,
+}
+
+export default meta
+
 const options = [
   { id: 'apple', label: 'Apples' },
   { id: 'orange', label: 'Oranges' },

@@ -1,5 +1,16 @@
 import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
 
+import type { Meta } from '@storybook/react'
+
+type RatingGroupType = typeof RatingGroup
+
+const meta: Meta<RatingGroupType> = {
+  title: 'RatingGroup',
+  component: RatingGroup,
+}
+
+export default meta
+
 export const Basic = () => (
   <RatingGroup max={5} defaultValue={3} allowHalf>
     <RatingGroupLabel>Label</RatingGroupLabel>

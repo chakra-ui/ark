@@ -11,6 +11,17 @@ import {
   DialogTrigger,
 } from './'
 
+import type { Meta } from '@storybook/react'
+
+type DialogType = typeof Dialog
+
+const meta: Meta<DialogType> = {
+  title: 'Dialog',
+  component: Dialog,
+}
+
+export default meta
+
 export const Basic = () => {
   return (
     <Dialog>

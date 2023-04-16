@@ -14,6 +14,17 @@ import {
 } from '.'
 import './menu.css'
 
+import type { Meta } from '@storybook/react'
+
+type MenuType = typeof Menu
+
+const meta: Meta<MenuType> = {
+  title: 'Menu',
+  component: Menu,
+}
+
+export default meta
+
 export const Basic = () => (
   <Menu>
     <MenuTrigger>

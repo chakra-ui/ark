@@ -1,7 +1,19 @@
+import type { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.'
 
-export const Basic = () => {
+type AccordionType = typeof Accordion
+
+const meta: Meta<AccordionType> = {
+  title: 'Accordion',
+  component: Accordion,
+}
+
+export default meta
+
+type Story = StoryFn<AccordionType>
+
+export const Basic: Story = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion defaultValue="panel-1">
@@ -17,7 +29,7 @@ export const Basic = () => {
   )
 }
 
-export const Collapsible = () => {
+export const Collapsible: Story = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion collapsible>
@@ -33,7 +45,7 @@ export const Collapsible = () => {
   )
 }
 
-export const Multiple = () => {
+export const Multiple: Story = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion multiple>
@@ -49,7 +61,7 @@ export const Multiple = () => {
   )
 }
 
-export const Disabled = () => {
+export const Disabled: Story = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion multiple>
@@ -65,7 +77,7 @@ export const Disabled = () => {
   )
 }
 
-export const Uncontrolled = () => {
+export const Uncontrolled: Story = () => {
   return (
     <Accordion defaultValue="panel-2">
       <AccordionItem value="panel-1">
@@ -85,7 +97,7 @@ export const Uncontrolled = () => {
   )
 }
 
-export const Controlled = () => {
+export const Controlled: Story = () => {
   const [value, setValue] = useState<string | string[] | null>(null)
   return (
     <Accordion value={value} onChange={(details) => setValue(details.value)}>

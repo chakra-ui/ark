@@ -12,6 +12,17 @@ import {
 } from './'
 import './slider.css'
 
+import type { Meta } from '@storybook/react'
+
+type SliderType = typeof Slider
+
+const meta: Meta<SliderType> = {
+  title: 'Slider',
+  component: Slider,
+}
+
+export default meta
+
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (

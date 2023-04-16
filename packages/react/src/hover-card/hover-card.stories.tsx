@@ -10,6 +10,17 @@ import {
 } from '.'
 import './hover-card.css'
 
+import type { Meta } from '@storybook/react'
+
+type HoverCardType = typeof HoverCard
+
+const meta: Meta<HoverCardType> = {
+  title: 'HoverCard',
+  component: HoverCard,
+}
+
+export default meta
+
 export const Basic = () => (
   <HoverCard>
     <HoverCardTrigger>

@@ -14,6 +14,17 @@ import {
 } from './'
 import './combobox.css'
 
+import type { Meta } from '@storybook/react'
+
+type ComboboxType = typeof Combobox
+
+const meta: Meta<ComboboxType> = {
+  title: 'Combobox',
+  component: Combobox,
+}
+
+export default meta
+
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
   { label: 'SolidJS', value: 'solid' },

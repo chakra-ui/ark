@@ -8,6 +8,17 @@ import {
 } from './'
 import './carousel.css'
 
+import type { Meta } from '@storybook/react'
+
+type CarouselType = typeof Carousel
+
+const meta: Meta<CarouselType> = {
+  title: 'Carousel',
+  component: Carousel,
+}
+
+export default meta
+
 export const images = [
   'https://tinyurl.com/5b6ka8jd',
   'https://tinyurl.com/7rmccdn5',

@@ -1,5 +1,16 @@
 import { PinInput, PinInputControl, PinInputField, PinInputLabel } from './'
 
+import type { Meta } from '@storybook/react'
+
+type PinInputType = typeof PinInput
+
+const meta: Meta<PinInputType> = {
+  title: 'PinInput',
+  component: PinInput,
+}
+
+export default meta
+
 export const Basic = () => (
   <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
     <PinInputLabel>Label</PinInputLabel>

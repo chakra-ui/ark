@@ -10,6 +10,17 @@ import {
   SelectTrigger,
 } from './'
 
+import type { Meta } from '@storybook/react'
+
+type SelectType = typeof Select
+
+const meta: Meta<SelectType> = {
+  title: 'Select',
+  component: Select,
+}
+
+export default meta
+
 export const Basic = () => (
   <Select defaultValue={{ label: 'React', value: 'react' }}>
     {({ selectedOption }) => (

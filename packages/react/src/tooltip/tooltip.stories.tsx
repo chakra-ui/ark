@@ -9,6 +9,17 @@ import {
   TooltipTrigger,
 } from './'
 
+import type { Meta } from '@storybook/react'
+
+type TooltipType = typeof Tooltip
+
+const meta: Meta<TooltipType> = {
+  title: 'Tooltip',
+  component: Tooltip,
+}
+
+export default meta
+
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
     <TooltipTrigger>
