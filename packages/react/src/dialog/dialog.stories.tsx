@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -10,6 +11,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './'
+
+type DialogType = typeof Dialog
+
+const meta: Meta<DialogType> = {
+  title: 'Dialog',
+  component: Dialog,
+}
+
+export default meta
 
 export const Basic = () => {
   return (

@@ -1,4 +1,14 @@
+import type { Meta } from '@storybook/react'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '.'
+
+type TabContentType = typeof TabContent
+
+const meta: Meta<TabContentType> = {
+  title: 'TabContent',
+  component: TabContent,
+}
+
+export default meta
 
 export const Basic = () => (
   <Tabs>

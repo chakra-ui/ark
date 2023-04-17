@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -9,6 +10,15 @@ import {
   HoverCardTrigger,
 } from '.'
 import './hover-card.css'
+
+type HoverCardType = typeof HoverCard
+
+const meta: Meta<HoverCardType> = {
+  title: 'HoverCard',
+  component: HoverCard,
+}
+
+export default meta
 
 export const Basic = () => (
   <HoverCard>
