@@ -1,37 +1,7 @@
 import { globalCss } from '@/theme/global-css'
-// TODO type error in panda config declaration
-// import { recipes } from '@/theme/recipes'
+import { recipes } from '@/theme/recipes'
 import { textStyles } from '@/theme/text-styles'
 import { defineConfig } from '@pandacss/dev'
-import { link } from 'fs-extra'
-import { select } from 'ts-pattern/dist/patterns'
-import {
-  accordion,
-  badge,
-  button,
-  checkbox,
-  code,
-  dialog,
-  divider,
-  drawer,
-  hoverCard,
-  input,
-  markdown,
-  menu,
-  numberInput,
-  pagination,
-  pinInput,
-  popover,
-  radio,
-  radioGroup,
-  ratingGroup,
-  slider,
-  splitter,
-  tabs,
-  tagsInput,
-  toast,
-  tooltip,
-} from './panda/recipes'
 
 export default defineConfig({
   preflight: true,
@@ -42,35 +12,7 @@ export default defineConfig({
   globalCss,
   theme: {
     extend: {
-      recipes: {
-        accordion,
-        badge,
-        button,
-        checkbox,
-        code,
-        dialog,
-        divider,
-        drawer,
-        hoverCard,
-        input,
-        link,
-        markdown,
-        menu,
-        numberInput,
-        pagination,
-        pinInput,
-        popover,
-        radio,
-        radioGroup,
-        ratingGroup,
-        select,
-        slider,
-        splitter,
-        tabs,
-        tagsInput,
-        toast,
-        tooltip,
-      },
+      recipes,
       textStyles,
       semanticTokens: {
         colors: {
