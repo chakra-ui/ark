@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "components",
@@ -96,8 +96,8 @@
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",
     "vite": "4.2.1",
-    "vite-plugin-dts": "2.2.0",
-    "vitest": "0.30.1",
+    "vite-plugin-dts": "2.3.0",
+    "vitest": "0.30.1"
     "storybook": "^7.0.5",
     "@storybook/react": "^7.0.5",
     "@storybook/react-vite": "^7.0.5",

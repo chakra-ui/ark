@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/solid",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [
     "components",
@@ -83,7 +83,7 @@
     "solid-js": "1.6.16",
     "typescript": "5.0.4",
     "vite": "4.2.1",
-    "vite-plugin-dts": "2.2.0",
+    "vite-plugin-dts": "2.3.0",
     "vite-plugin-solid": "2.6.1",
     "vitest": "0.30.1"
   },
