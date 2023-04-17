@@ -18,5 +18,5 @@ export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

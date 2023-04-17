@@ -18,5 +18,5 @@ export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }
