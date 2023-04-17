@@ -1,7 +1,37 @@
 import { globalCss } from '@/theme/global-css'
-import { recipes } from '@/theme/recipes'
+// TODO type error in panda config declaration
+// import { recipes } from '@/theme/recipes'
 import { textStyles } from '@/theme/text-styles'
 import { defineConfig } from '@pandacss/dev'
+import { link } from 'fs-extra'
+import { select } from 'ts-pattern/dist/patterns'
+import {
+  accordion,
+  badge,
+  button,
+  checkbox,
+  code,
+  dialog,
+  divider,
+  drawer,
+  hoverCard,
+  input,
+  markdown,
+  menu,
+  numberInput,
+  pagination,
+  pinInput,
+  popover,
+  radio,
+  radioGroup,
+  ratingGroup,
+  slider,
+  splitter,
+  tabs,
+  tagsInput,
+  toast,
+  tooltip,
+} from './panda/recipes'
 
 export default defineConfig({
   preflight: true,
@@ -12,7 +42,35 @@ export default defineConfig({
   globalCss,
   theme: {
     extend: {
-      recipes,
+      recipes: {
+        accordion,
+        badge,
+        button,
+        checkbox,
+        code,
+        dialog,
+        divider,
+        drawer,
+        hoverCard,
+        input,
+        link,
+        markdown,
+        menu,
+        numberInput,
+        pagination,
+        pinInput,
+        popover,
+        radio,
+        radioGroup,
+        ratingGroup,
+        select,
+        slider,
+        splitter,
+        tabs,
+        tagsInput,
+        toast,
+        tooltip,
+      },
       textStyles,
       semanticTokens: {
         colors: {
@@ -21,7 +79,7 @@ export default defineConfig({
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
             muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.400}' } },
             subtle: { value: { base: '{colors.gray.400}', _dark: '{colors.gray.500}' } },
-            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
+            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },
