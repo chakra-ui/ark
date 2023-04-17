@@ -18,5 +18,5 @@ export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

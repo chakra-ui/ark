@@ -27,5 +27,5 @@ export const TabTrigger = (props: TabTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }
