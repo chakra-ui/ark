@@ -244,8 +244,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1(@types/node@18.15.11)
       vite-plugin-dts:
-        specifier: 2.2.0
-        version: 2.2.0(vite@4.2.1)
+        specifier: 2.3.0
+        version: 2.3.0(@types/node@18.15.11)(vite@4.2.1)
       vitest:
         specifier: 0.30.1
         version: 0.30.1(happy-dom@9.7.1)(jsdom@21.1.1)
@@ -377,8 +377,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1(@types/node@18.15.11)
       vite-plugin-dts:
-        specifier: 2.2.0
-        version: 2.2.0(vite@4.2.1)
+        specifier: 2.3.0
+        version: 2.3.0(@types/node@18.15.11)(vite@4.2.1)
       vite-plugin-solid:
         specifier: 2.6.1
         version: 2.6.1(solid-js@1.6.16)(vite@4.2.1)
@@ -525,8 +525,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1(@types/node@18.15.11)
       vite-plugin-dts:
-        specifier: 2.2.0
-        version: 2.2.0(vite@4.2.1)
+        specifier: 2.3.0
+        version: 2.3.0(@types/node@18.15.11)(vite@4.2.1)
       vitest:
         specifier: 0.30.1
         version: 0.30.1(happy-dom@9.7.1)(jsdom@21.1.1)
@@ -813,7 +813,7 @@ packages:
       '@babel/helper-compilation-targets': 7.20.7(@babel/core@7.21.0)
       '@babel/helper-module-transforms': 7.21.2
       '@babel/helpers': 7.21.0
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/template': 7.20.7
       '@babel/traverse': 7.21.2
       '@babel/types': 7.21.2
@@ -1064,6 +1064,13 @@ packages:
     dependencies:
       '@babel/types': 7.21.2
 
+  /@babel/parser@7.21.4:
+    resolution: {integrity: sha512-alVJj7k7zIxqBZ7BTRhz0IqJFxW1VJbm6N8JbcYhQ186df9ZBPbZBmWSqAMXwHGsCJdYks7z/voa3ibiS5bCIw==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.21.2
+
   /@babel/plugin-syntax-jsx@7.18.6(@babel/core@7.21.0):
     resolution: {integrity: sha512-6mmljtAedFGTWu2p/8WIORGwy+61PLgOMPOdazc7YoJ9ZCWUyFy3A6CpPkRKLKD1ToAesxX8KGEViAiLo9N+7Q==}
     engines: {node: '>=6.9.0'}
@@ -1193,7 +1200,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
 
   /@babel/traverse@7.21.2:
@@ -1206,7 +1213,7 @@ packages:
       '@babel/helper-function-name': 7.21.0
       '@babel/helper-hoist-variables': 7.18.6
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
       debug: 4.3.4
       globals: 11.12.0
@@ -2446,30 +2453,34 @@ packages:
       - supports-color
     dev: false
 
-  /@microsoft/api-extractor-model@7.25.3:
-    resolution: {integrity: sha512-WWxBUq77p2iZ+5VF7Nmrm3y/UtqCh5bYV8ii3khwq3w99+fXWpvfsAhgSLsC7k8XDQc6De4ssMxH6He/qe1pzg==}
+  /@microsoft/api-extractor-model@7.26.4(@types/node@18.15.11):
+    resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.53.3
+      '@rushstack/node-core-library': 3.55.2(@types/node@18.15.11)
+    transitivePeerDependencies:
+      - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.33.7:
-    resolution: {integrity: sha512-fQT2v/j/55DhvMFiopLtth66E7xTFNhnumMKgKY14SaG6qU/V1W0e4nOAgbA+SmLakQjAd1Evu06ofaVaxBPbA==}
+  /@microsoft/api-extractor@7.34.4(@types/node@18.15.11):
+    resolution: {integrity: sha512-HOdcci2nT40ejhwPC3Xja9G+WSJmWhCUKKryRfQYsmE9cD+pxmBaKBKCbuS9jUcl6bLLb4Gz+h7xEN5r0QiXnQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.25.3
+      '@microsoft/api-extractor-model': 7.26.4(@types/node@18.15.11)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.53.3
-      '@rushstack/rig-package': 0.3.17
-      '@rushstack/ts-command-line': 4.13.1
+      '@rushstack/node-core-library': 3.55.2(@types/node@18.15.11)
+      '@rushstack/rig-package': 0.3.18
+      '@rushstack/ts-command-line': 4.13.2
       colors: 1.2.5
       lodash: 4.17.21
-      resolve: 1.17.0
+      resolve: 1.22.1
       semver: 7.3.8
       source-map: 0.6.1
       typescript: 4.8.4
+    transitivePeerDependencies:
+      - '@types/node'
     dev: true
 
   /@microsoft/tsdoc-config@0.16.2:
@@ -3064,28 +3075,33 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
-  /@rushstack/node-core-library@3.53.3:
-    resolution: {integrity: sha512-H0+T5koi5MFhJUd5ND3dI3bwLhvlABetARl78L3lWftJVQEPyzcgTStvTTRiIM5mCltyTM8VYm6BuCtNUuxD0Q==}
+  /@rushstack/node-core-library@3.55.2(@types/node@18.15.11):
+    resolution: {integrity: sha512-SaLe/x/Q/uBVdNFK5V1xXvsVps0y7h1sN7aSJllQyFbugyOaxhNRF25bwEDnicARNEjJw0pk0lYnJQ9Kr6ev0A==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
     dependencies:
-      '@types/node': 12.20.24
+      '@types/node': 18.15.11
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
       jju: 1.4.0
-      resolve: 1.17.0
+      resolve: 1.22.1
       semver: 7.3.8
       z-schema: 5.0.4
     dev: true
 
-  /@rushstack/rig-package@0.3.17:
-    resolution: {integrity: sha512-nxvAGeIMnHl1LlZSQmacgcRV4y1EYtgcDIrw6KkeVjudOMonlxO482PhDj3LVZEp6L7emSf6YSO2s5JkHlwfZA==}
+  /@rushstack/rig-package@0.3.18:
+    resolution: {integrity: sha512-SGEwNTwNq9bI3pkdd01yCaH+gAsHqs0uxfGvtw9b0LJXH52qooWXnrFTRRLG1aL9pf+M2CARdrA9HLHJys3jiQ==}
     dependencies:
-      resolve: 1.17.0
+      resolve: 1.22.1
       strip-json-comments: 3.1.1
     dev: true
 
-  /@rushstack/ts-command-line@4.13.1:
-    resolution: {integrity: sha512-UTQMRyy/jH1IS2U+6pyzyn9xQ2iMcoUKkTcZUzOP/aaMiKlWLwCTDiBVwhw/M1crDx6apF9CwyjuWO9r1SBdJQ==}
+  /@rushstack/ts-command-line@4.13.2:
+    resolution: {integrity: sha512-bCU8qoL9HyWiciltfzg7GqdfODUeda/JpI0602kbN5YH22rzTxyqYvv7aRLENCM7XCQ1VRs7nMkEqgJUOU8Sag==}
     dependencies:
       '@types/argparse': 1.0.38
       argparse: 1.0.10
@@ -3194,15 +3210,6 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /@ts-morph/common@0.18.1:
-    resolution: {integrity: sha512-RVE+zSRICWRsfrkAw5qCAK+4ZH9kwEFv5h0+/YeHTLieWP7F4wWq4JsKFuNWG+fYh/KF+8rAtgdj5zb2mm+DVA==}
-    dependencies:
-      fast-glob: 3.2.12
-      minimatch: 5.1.6
-      mkdirp: 1.0.4
-      path-browserify: 1.0.1
-    dev: true
-
   /@ts-morph/common@0.19.0:
     resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==}
     dependencies:
@@ -3244,7 +3251,7 @@ packages:
   /@types/babel__core@7.20.0:
     resolution: {integrity: sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==}
     dependencies:
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
@@ -3258,7 +3265,7 @@ packages:
   /@types/babel__template@7.4.1:
     resolution: {integrity: sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==}
     dependencies:
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/types': 7.21.2
 
   /@types/babel__traverse@7.18.3:
@@ -3386,10 +3393,6 @@ packages:
     dependencies:
       '@types/unist': 2.0.6
     dev: false
-
-  /@types/node@12.20.24:
-    resolution: {integrity: sha512-yxDeaQIAJlMav7fH5AQqPH1u8YIuhYJXYBzxaQ4PifsU0GDO38MSdmEDeRlIxrKbC6NbEaaEHDanWb+y30U8SQ==}
-    dev: true
 
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -5012,7 +5015,7 @@ packages:
       '@astrojs/webapi': 2.1.0
       '@babel/core': 7.21.0
       '@babel/generator': 7.21.1
-      '@babel/parser': 7.21.2
+      '@babel/parser': 7.21.4
       '@babel/plugin-transform-react-jsx': 7.21.0(@babel/core@7.21.0)
       '@babel/traverse': 7.21.2
       '@babel/types': 7.21.2
@@ -5485,10 +5488,6 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
-
-  /code-block-writer@11.0.3:
-    resolution: {integrity: sha512-NiujjUFB4SwScJq2bwbYUtXbZhBSlY6vYzm++3Q6oC+U+injTqfPYFK8wS9COOmb2lueqp0ZRB4nK1VYeHgNyw==}
-    dev: true
 
   /code-block-writer@12.0.0:
     resolution: {integrity: sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==}
@@ -8143,8 +8142,8 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
-  /kolorist@1.6.0:
-    resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
+  /kolorist@1.7.0:
+    resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
     dev: true
 
   /language-subtag-registry@0.3.22:
@@ -9191,12 +9190,6 @@ packages:
   /mixme@0.5.5:
     resolution: {integrity: sha512-/6IupbRx32s7jjEwHcycXikJwFD5UujbVNuJFkeKLYje+92OvtuPniF6JhnFm5JCTDUhS+kYK3W/4BWYQYXz7w==}
     engines: {node: '>= 8.0.0'}
-    dev: true
-
-  /mkdirp@1.0.4:
-    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
-    engines: {node: '>=10'}
-    hasBin: true
     dev: true
 
   /mkdirp@2.1.6:
@@ -10377,12 +10370,6 @@ packages:
       global-dirs: 0.1.1
     dev: true
 
-  /resolve@1.17.0:
-    resolution: {integrity: sha512-ic+7JYiV8Vi2yzQGFWOkiZD5Z9z7O2Zhm9XMaTxdJExKasieFCr+yXZ/WmXsckHiKl12ar0y6XiXDx3m4RHn1w==}
-    dependencies:
-      path-parse: 1.0.7
-    dev: true
-
   /resolve@1.19.0:
     resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}
     dependencies:
@@ -11207,13 +11194,6 @@ packages:
       typescript: 5.0.4
     dev: false
 
-  /ts-morph@17.0.1:
-    resolution: {integrity: sha512-10PkHyXmrtsTvZSL+cqtJLTgFXkU43Gd0JCc0Rw6GchWbqKe0Rwgt1v3ouobTZwQzF1mGhDeAlWYBMGRV7y+3g==}
-    dependencies:
-      '@ts-morph/common': 0.18.1
-      code-block-writer: 11.0.3
-    dev: true
-
   /ts-morph@18.0.0:
     resolution: {integrity: sha512-Kg5u0mk19PIIe4islUI/HWRvm9bC1lHejK4S0oh1zaZ77TMZAEmQC0sHQYiu2RgCQFZKXz1fMVi/7nOOeirznA==}
     dependencies:
@@ -11735,24 +11715,25 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@2.2.0(vite@4.2.1):
-    resolution: {integrity: sha512-XmZtv02I7eGWm3DrZbLo1AdJK5gCisk9GqJBpY4N63pDYR6AVUnlyjFP5FCBvSBUfgE0Ppl90bKgtJU9k3AzFw==}
+  /vite-plugin-dts@2.3.0(@types/node@18.15.11)(vite@4.2.1):
+    resolution: {integrity: sha512-WbJgGtsStgQhdm3EosYmIdTGbag5YQpZ3HXWUAPCDyoXI5qN6EY0V7NXq0lAmnv9hVQsvh0htbYcg0Or5Db9JQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: '>=2.9.0'
     dependencies:
-      '@babel/parser': 7.21.2
-      '@microsoft/api-extractor': 7.33.7
+      '@babel/parser': 7.21.4
+      '@microsoft/api-extractor': 7.34.4(@types/node@18.15.11)
       '@rollup/pluginutils': 5.0.2
-      '@rushstack/node-core-library': 3.53.3
+      '@rushstack/node-core-library': 3.55.2(@types/node@18.15.11)
       debug: 4.3.4
       fast-glob: 3.2.12
       fs-extra: 10.1.0
-      kolorist: 1.6.0
+      kolorist: 1.7.0
       magic-string: 0.29.0
-      ts-morph: 17.0.1
+      ts-morph: 18.0.0
       vite: 4.2.1(@types/node@18.15.11)
     transitivePeerDependencies:
+      - '@types/node'
       - rollup
       - supports-color
     dev: true
