@@ -93,7 +93,7 @@
     "react-frame-component": "5.2.6",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",
-    "vite": "4.2.1",
+    "vite": "4.2.2",
     "vite-plugin-dts": "2.3.0",
     "vitest": "0.30.1"
   },
