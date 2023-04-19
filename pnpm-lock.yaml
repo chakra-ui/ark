@@ -3922,7 +3922,6 @@ packages:
       '@zag-js/visually-hidden': 0.0.1
     dev: false
 
-<<<<<<< HEAD
   /@zag-js/color-picker@0.6.0:
     resolution: {integrity: sha512-bjEBOkS9XOH8cnA27hHlrDDqtOzcKtAfSeNqNJxCtHzBGA6mKvfWYxkNiJpHhdcFF0tYUBM9Boo4Lxi/2bAEkw==}
     dependencies:
@@ -3942,24 +3941,6 @@ packages:
     resolution: {integrity: sha512-Nkpa3Dx+lQoy6pkxxztxsvuLnRiN27IMrtQ3Z4OPHZi90GrscWqq+8+mOBhF/r1ogWq2CI8hLe5SwnRA519SiA==}
     dev: false
 
-  /@zag-js/combobox@0.3.1:
-    resolution: {integrity: sha512-UWNBvEqGol7VZHn1GhScqp9F5zdLCkFFVEIBb5I52CmUfKL7MvHPw7S2ibPZ0aKWQhvr4n0x30QpDGqS07GoTg==}
-    dependencies:
-      '@zag-js/anatomy': 0.1.4
-      '@zag-js/aria-hidden': 0.2.2
-      '@zag-js/core': 0.2.12
-      '@zag-js/dom-event': 0.0.1
-      '@zag-js/dom-query': 0.1.4
-      '@zag-js/interact-outside': 0.2.6
-      '@zag-js/live-region': 0.2.3
-      '@zag-js/mutation-observer': 0.0.1
-      '@zag-js/popper': 0.2.7
-      '@zag-js/types': 0.3.4
-      '@zag-js/utils': 0.3.4
-    dev: false
-
-=======
->>>>>>> main
   /@zag-js/combobox@0.6.0:
     resolution: {integrity: sha512-cbtKVCDYw7mIc3UrSYqmyxz2io0cVUaVSzpApvCqnd6qh4TXdXPgOIyLMRSYWVr1AJZ9dzdx3A957Fmq7Gy1tA==}
     dependencies:
