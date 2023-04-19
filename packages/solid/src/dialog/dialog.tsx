@@ -31,7 +31,7 @@ export const Dialog = (props: DialogProps) => {
     'onOpen',
   ])
   const dialog = useDialog(useDialogProps)
-  const view = () => children(() => runIfFn(restProps.children, dialog()))
+  const view = children(() => runIfFn(restProps.children, dialog()))
 
-  return <DialogProvider value={dialog}>{view}</DialogProvider>
+  return <DialogProvider value={dialog}>{view()}</DialogProvider>
 }

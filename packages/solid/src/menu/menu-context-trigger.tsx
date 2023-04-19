@@ -16,5 +16,5 @@ export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

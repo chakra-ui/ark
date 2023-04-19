@@ -19,5 +19,5 @@ export const TooltipTrigger = (props: TooltipTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

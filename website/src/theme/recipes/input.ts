@@ -1,6 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
-export const input = defineRecipe({
+// TODO sth is wrong with types
+export const input: any = defineRecipe({
   name: 'input',
   description: 'An input style',
   base: {

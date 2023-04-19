@@ -18,5 +18,5 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }
