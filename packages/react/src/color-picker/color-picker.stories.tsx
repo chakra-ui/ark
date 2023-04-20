@@ -1,9 +1,11 @@
 import {
   ColorPicker,
   ColorPickerChannelInput,
+  ColorPickerContent,
   ColorPickerEyeDropperTrigger,
+  ColorPickerSliderThumb,
+  ColorPickerSliderTrack,
   ColorPickerSwatch,
-  ColorPickerSwatchBackground,
 } from './'
 import './color-picker.css'
 
@@ -13,39 +15,37 @@ export const Basic = () => {
       {(api) => {
         const [hue, saturation, lightness] = api.channels
         return (
-          <>
+          <ColorPickerContent>
             <output>
               <div>Color: {api.value}</div>
             </output>
 
-            <ColorPickerSwatch value={api.value} readOnly>
-              <ColorPickerSwatchBackground value={api.value} />
-            </ColorPickerSwatch>
+            <ColorPickerSwatch value={api.value} readOnly />
 
-            {/*
-              TODO Prefer this syntax, ask @segunadebayo
-              <ColorPickerChannelInput channel="hue"/>
-              <ColorPickerChannelInput channel="saturation"/>
-              <ColorPickerChannelInput channel="lightness"/>
-           */}
+            <ColorPickerSliderTrack channel={hue}>
+              <ColorPickerSliderThumb />
+            </ColorPickerSliderTrack>
+
+            <ColorPickerSliderTrack channel="alpha">
+              <ColorPickerSliderThumb />
+            </ColorPickerSliderTrack>
+
             <ColorPickerChannelInput channel={hue} />
             <ColorPickerChannelInput channel={saturation} />
             <ColorPickerChannelInput channel={lightness} />
+
             <ColorPickerChannelInput channel="alpha" />
             <ColorPickerChannelInput channel="hex" />
 
-            {/*
-              TODO Prefer this syntax, ask @segunadebayo
-              <ColorPickerSwatch value="#123123">
-           */}
-            <ColorPickerSwatch value="#123123">
-              <ColorPickerSwatchBackground value="#123123" />
-            </ColorPickerSwatch>
+            <div>
+              <ColorPickerSwatch value="#123123" />
+              <ColorPickerSwatch value="#ff1321" />
+            </div>
 
             <ColorPickerEyeDropperTrigger>
               <button>Pick color</button>
             </ColorPickerEyeDropperTrigger>
-          </>
+          </ColorPickerContent>
         )
       }}
     </ColorPicker>

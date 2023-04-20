@@ -1,6 +1,30 @@
 [data-scope='color-picker'][data-part='swatch'] {
+  all: unset;
   border-radius: 4px;
   width: 20px;
   height: 20px;
   overflow: hidden;
+}
+[data-scope='color-picker'][data-part='swatch']:focus {
+  outline: auto;
+}
+
+[data-scope='color-picker'][data-part='area-thumb'],
+[data-scope='color-picker'][data-part='channel-slider-thumb'] {
+  border: 2px solid white;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  box-shadow: black 0px 0px 0px 1px, black 0px 0px 0px 1px inset;
+  width: 16px;
+  height: 16px;
+}
+
+[data-scope='color-picker'][data-part='channel-slider-track'] {
+  height: 20px;
+  border-radius: 4px;
+}
+
+[data-scope='color-picker'][data-part='channel-slider-track-bg'] {
+  border-radius: 4px;
 }
