@@ -1,4 +1,10 @@
 export { ColorPicker, type ColorPickerProps } from './color-picker'
+export { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
+export {
+  ColorPickerAreaGradient,
+  type ColorPickerAreaGradientProps,
+} from './color-picker-area-gradient'
+export { ColorPickerAreaThumb, type ColorPickerAreaThumbProps } from './color-picker-area-thumb'
 export {
   ColorPickerChannelInput,
   type ColorPickerChannelInputProps,
