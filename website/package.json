@@ -15,7 +15,7 @@
   "dependencies": {
     "@ark-ui/react": "workspace:*",
     "@next/env": "13.3.0",
-    "@pandacss/dev": "0.0.0-dev-20230417181739",
+    "@pandacss/dev": "0.0.0-dev-20230419091337",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.1",
     "markdown-toc": "1.2.0",
@@ -28,7 +28,7 @@
     "react-icons": "4.8.0",
     "rehype": "12.0.1",
     "rehype-autolink-headings": "6.1.1",
-    "rehype-pretty-code": "0.9.4",
+    "rehype-pretty-code": "0.9.5",
     "rehype-slug": "5.1.0",
     "shiki": "0.14.1",
     "ts-pattern": "4.2.2",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@octokit/types": "9.0.0",
-    "@types/node": "18.15.11",
+    "@types/node": "18.15.13",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "concurrently": "8.0.1",
