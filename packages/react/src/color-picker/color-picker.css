@@ -51,7 +51,13 @@
   -webkit-appearance: none;
 }
 
+[data-scope='color-picker'][data-part='swatch-group'] {
+  display: flex;
+  gap: 4px;
+}
+
 [data-scope='color-picker'][data-part='swatch'] {
+  all: unset;
   border-radius: 4px;
   width: 20px;
   height: 20px;

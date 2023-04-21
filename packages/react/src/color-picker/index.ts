@@ -23,3 +23,8 @@ export {
   type ColorPickerEyeDropperTriggerProps,
 } from './color-picker-eye-dropper-trigger'
 export { ColorPickerSwatch, type ColorPickerSwatchProps } from './color-picker-swatch'
+export {
+  ColorPickerSwatchGroup,
+  type ColorPickerSwatchGroupProps,
+} from './color-picker-swatch-group'
+export { colorPickerAnatomy } from './color-picker.anatomy'

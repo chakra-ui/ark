@@ -9,11 +9,12 @@ import {
   ColorPickerSliderThumb,
   ColorPickerSliderTrack,
   ColorPickerSwatch,
+  ColorPickerSwatchGroup,
 } from './'
 import './color-picker.css'
 
 export const Basic = () => (
-  <ColorPicker>
+  <ColorPicker defaultValue="hsl(10, 81%, 59%)">
     {(api) => {
       const [hue, saturation, lightness] = api.channels
       return (
@@ -43,10 +44,10 @@ export const Basic = () => (
           <ColorPickerChannelInput channel="alpha" />
           <ColorPickerChannelInput channel="hex" />
 
-          <div>
+          <ColorPickerSwatchGroup>
             <ColorPickerSwatch value="#123123" />
             <ColorPickerSwatch value="#ff1321" />
-          </div>
+          </ColorPickerSwatchGroup>
 
           <ColorPickerEyeDropperTrigger>
             <button>Pick color</button>

@@ -18,7 +18,7 @@ export const useColorPicker = (props: UseColorPickerProps) => {
     id: useId(),
     getRootNode,
     ...props,
-    value: props.defaultValue,
+    value: props.defaultValue ?? props.value,
   }
   const onChange = props.onChange
 
