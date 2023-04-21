@@ -13,7 +13,7 @@ import {
 } from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
-  <Editable activationMode="dblclick" placeholder="Placeholder" {...props}>
+  <Editable activationMode={props.activationMode} placeholder="Placeholder" {...props}>
     {({ isEditing }) => (
       <>
         <EditableArea>
@@ -49,6 +49,14 @@ describe('Editable', () => {
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ComponentUnderTest />)
     await user.dblClick(screen.getByText('Placeholder'))
+    await user.type(screen.getByLabelText('editable input'), 'React')
+
+    expect(await screen.findByText('React')).toBeInTheDocument()
+  })
+  
+  it('should be possible to click the placeholder to enter a value', async () => {
+    render(<ComponentUnderTest activationMode="focus" />)
+    await user.click(screen.getByText('Placeholder'))
     await user.type(screen.getByLabelText('editable input'), 'React')
 
     expect(await screen.findByText('React')).toBeInTheDocument()
