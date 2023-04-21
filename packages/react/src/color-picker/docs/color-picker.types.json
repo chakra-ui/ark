@@ -1,5 +1,6 @@
 {
   "ColorPickerProps": {
+    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -36,5 +37,10 @@
       "description": "Whether the color picker is read-only"
     },
     "value": { "type": "string", "isRequired": false, "description": "The current color value" }
-  }
+  },
+  "ColorPickerAreaProps": {
+    "xChannel": { "type": "ColorChannel", "isRequired": true },
+    "yChannel": { "type": "ColorChannel", "isRequired": true }
+  },
+  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
 }
