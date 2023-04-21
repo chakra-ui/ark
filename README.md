@@ -13,12 +13,12 @@
 | Accordion           | 🟢    | 🟢    | 🟢  |
 | Carousel (Beta)     | 🟢    | ⚪    | ⚪  |
 | Checkbox            | 🟢    | 🟢    | 🟢  |
-| Color Picker (Beta) | ⚪    | ⚪    | ⚪  |
-| Date Picker (Beta)  | 🟢    | ⚪    | ⚪  |
+| Color Picker (Beta) | 🟢    | ⚪    | ⚪  |
+| Date Picker (Beta)  | 🟡    | ⚪    | ⚪  |
 | Dialog              | 🟢    | 🟢    | 🟢  |
 | Combobox            | 🟢    | 🟢    | 🟢  |
 | Editable            | 🟢    | 🟢    | 🟢  |
-| Environment         | 🟢    | 🟢    | ⚪  |
+| Environment         | 🟢    | 🟢    | 🟡  |
 | Hover Card          | 🟢    | 🟢    | 🟢  |
 | Menu                | 🟢    | 🟢    | 🟢  |
 | Number Input        | 🟢    | 🟢    | 🟢  |
@@ -33,8 +33,8 @@
 | Slider              | 🟢    | 🟢    | 🟢  |
 | Splitter            | 🟢    | 🟢    | 🟢  |
 | Tabs                | 🟢    | 🟢    | 🟢  |
-| Tags Input          | 🟢    | 🟢    | ⚪  |
-| Toast               | 🟢    | 🟢    | ⚪  |
+| Tags Input          | 🟢    | 🟢    | 🟡  |
+| Toast               | 🟢    | 🟢    | 🟡  |
 | Tooltip             | 🟢    | 🟢    | 🟢  |
 
 ## Contributing
