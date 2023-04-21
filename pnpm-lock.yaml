@@ -101,6 +101,9 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.6.0
         version: 0.6.0
+      '@zag-js/color-picker':
+        specifier: 0.6.0
+        version: 0.6.0
       '@zag-js/combobox':
         specifier: 0.6.0
         version: 0.6.0
@@ -3909,6 +3912,25 @@ packages:
       '@zag-js/types': 0.5.0
       '@zag-js/utils': 0.3.4
       '@zag-js/visually-hidden': 0.0.1
+    dev: false
+
+  /@zag-js/color-picker@0.6.0:
+    resolution: {integrity: sha512-bjEBOkS9XOH8cnA27hHlrDDqtOzcKtAfSeNqNJxCtHzBGA6mKvfWYxkNiJpHhdcFF0tYUBM9Boo4Lxi/2bAEkw==}
+    dependencies:
+      '@zag-js/anatomy': 0.1.4
+      '@zag-js/color-utils': 0.6.0
+      '@zag-js/core': 0.5.0
+      '@zag-js/dom-event': 0.6.0
+      '@zag-js/dom-query': 0.1.4
+      '@zag-js/number-utils': 0.2.3
+      '@zag-js/numeric-range': 0.1.1
+      '@zag-js/text-selection': 0.0.1
+      '@zag-js/types': 0.5.0
+      '@zag-js/utils': 0.3.4
+    dev: false
+
+  /@zag-js/color-utils@0.6.0:
+    resolution: {integrity: sha512-Nkpa3Dx+lQoy6pkxxztxsvuLnRiN27IMrtQ3Z4OPHZi90GrscWqq+8+mOBhF/r1ogWq2CI8hLe5SwnRA519SiA==}
     dev: false
 
   /@zag-js/combobox@0.6.0:
