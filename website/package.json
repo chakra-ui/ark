@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@next/env": "13.3.0",
+    "@next/env": "13.3.1",
     "@pandacss/dev": "0.0.0-dev-20230419091337",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.1",
@@ -35,13 +35,13 @@
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
-    "@octokit/types": "9.0.0",
+    "@octokit/types": "9.1.2",
     "@types/node": "18.15.13",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "concurrently": "8.0.1",
     "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
+    "eslint-config-next": "13.3.1",
     "typescript": "5.0.4"
   }
 }
