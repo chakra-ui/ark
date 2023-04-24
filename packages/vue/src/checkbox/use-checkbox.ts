@@ -3,7 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, watch } from 'vue'
 import { useId } from '../utils'
 
-interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
+export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
   modelValue?: CheckboxContext['checked']
 }
 
