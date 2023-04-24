@@ -1,26 +1,21 @@
 import { connect, machine, type Context } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, watch, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-type UseRangeSliderPropsContext = Optional<Context, 'id'> & {
+export type UseRangeSliderContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
 }
 
-export type UseRangeSliderProps = {
-  context: UseRangeSliderPropsContext
-  emit: CallableFunction
-}
-
-export const useRangeSlider = (props: UseRangeSliderProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useRangeSlider = (emit: CallableFunction, context: UseRangeSliderContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChangeStart(details) {
         emit('change-start', details)
       },
@@ -37,7 +32,7 @@ export const useRangeSlider = (props: UseRangeSliderProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (val, oldVal) => {
       if (val == undefined || val === oldVal) return
 

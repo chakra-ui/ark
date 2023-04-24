@@ -42,7 +42,7 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -55,11 +55,6 @@
       "type": "'autohighlight' | 'autocomplete' | 'none'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
-    },
-    "inputValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The current value of the combobox's input"
     },
     "invalid": {
       "type": "boolean",
