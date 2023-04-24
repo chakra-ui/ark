@@ -13,7 +13,7 @@ import {
 } from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
-  <Editable activationMode={props.activationMode} placeholder="Placeholder" {...props}>
+  <Editable placeholder="Placeholder" {...props}>
     {({ isEditing }) => (
       <>
         <EditableArea>
@@ -46,6 +46,14 @@ describe('Editable', () => {
     render(<ComponentUnderTest />)
   })
 
+  it('should be possible to focus the placeholder and enter a value', async () => {
+    render(<ComponentUnderTest />)
+    screen.getByText('Placeholder').focus()
+    await user.type(screen.getByLabelText('editable input'), 'React')
+
+    expect(await screen.findByText('React')).toBeInTheDocument()
+  })
+
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ComponentUnderTest activationMode="dblclick" />)
     await user.dblClick(screen.getByText('Placeholder'))
@@ -54,15 +62,7 @@ describe('Editable', () => {
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it('should be possible to click the placeholder to enter a value', async () => {
-    render(<ComponentUnderTest activationMode="focus" />)
-    await user.click(screen.getByText('Placeholder'))
-    await user.type(screen.getByLabelText('editable input'), 'React')
-
-    expect(await screen.findByText('React')).toBeInTheDocument()
-  })
-
-  it('should be possible to edit a value', async () => {
+  it('should be possible to edit an existing value', async () => {
     render(<ComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
