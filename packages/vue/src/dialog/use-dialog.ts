@@ -3,12 +3,9 @@ import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive } from 'vue'
 import { useId } from '../utils'
 
-export type UseDialogProps = {
-  context: Omit<Context, 'id'>
-  emit: CallableFunction
-}
+export type UseDialogContext = Omit<Context, 'id'>
 
-export const useDialog = (emit: CallableFunction, context: Omit<Context, 'id'>) => {
+export const useDialog = (emit: CallableFunction, context: UseDialogContext) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(

@@ -1,24 +1,24 @@
 import { connect, machine, type Context as ComboboxContext } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, watch, type UnwrapRef } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, onMounted, reactive, watch, type UnwrapRef } from 'vue'
+import { useId } from '../utils'
 
-type ComboboxPropsContext = Omit<ComboboxContext, 'id'> & {
+export type UseComboboxContext = Omit<ComboboxContext, 'id' | 'inputValue'> & {
   modelValue?: ComboboxContext['inputValue']
 }
 
-export type UseComboboxProps = {
-  context: ComboboxPropsContext
-  emit: CallableFunction
-  defaultValue?: ComboboxContext['inputValue']
-}
+export type UseComboboxDefaultValue = ComboboxContext['inputValue']
 
-export const useCombobox = (props: UseComboboxProps) => {
-  const { context, emit, defaultValue } = transformComposableProps(props)
+export const useCombobox = (
+  emit: CallableFunction,
+  context: UseComboboxContext,
+  defaultValue?: UseComboboxDefaultValue,
+) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       inputValue: defaultValue,
       onClose() {
@@ -45,7 +45,7 @@ export const useCombobox = (props: UseComboboxProps) => {
   })
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       if (value === undefined) return

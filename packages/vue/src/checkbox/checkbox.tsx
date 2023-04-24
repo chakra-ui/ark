@@ -1,11 +1,9 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
-import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
-
-type UseCheckboxContext = UseCheckboxProps['context']
+import { useCheckbox, type UseCheckboxContext } from './use-checkbox'
 
 export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxContext>
 
@@ -68,12 +66,7 @@ export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
   emits: ['change', 'update:modelValue'],
   props: VueCheckboxProps,
   setup(props, { attrs, emit, slots }) {
-    const checkboxProps = computed<UseCheckboxProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useCheckbox(checkboxProps.value)
+    const api = useCheckbox(emit, props)
 
     CheckboxProvider(api)
 

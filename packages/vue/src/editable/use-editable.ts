@@ -1,26 +1,21 @@
 import { connect, machine, type Context as EditableContext } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, watch, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-interface EditablePropContext extends Optional<EditableContext, 'id'> {
+export interface UseEditableContext extends Optional<EditableContext, 'id'> {
   modelValue?: EditableContext['value']
 }
 
-export type UseEditableProps = {
-  context: EditablePropContext
-  emit: CallableFunction
-}
-
-export const useEditable = (props: UseEditableProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useEditable = (emit: CallableFunction, context: UseEditableContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onCancel(details) {
         emit('cancel', details)
       },
@@ -40,7 +35,7 @@ export const useEditable = (props: UseEditableProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (val, prevVal) => {
       if (val == undefined) return
 

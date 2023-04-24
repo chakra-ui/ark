@@ -1,25 +1,20 @@
 import { connect, machine, type Context as CheckboxContext } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
-interface CheckboxPropsContext extends Omit<CheckboxContext, 'id'> {
+export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
   modelValue?: CheckboxContext['checked']
 }
 
-export interface UseCheckboxProps {
-  context: CheckboxPropsContext
-  emit: CallableFunction
-}
-
-export const useCheckbox = (props: UseCheckboxProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      checked: context.modelValue,
+      checked: reactiveContext.modelValue,
       onChange(details) {
         emit('change', details.checked)
         emit('update:modelValue', details.checked)
@@ -30,7 +25,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value) => {
       if (value == undefined) return
 

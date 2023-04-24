@@ -1,11 +1,9 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardContext } from './use-hover-card'
 
-type UseHoverCardPropsContext = UseHoverCardProps['context']
-
-export type HoverCardProps = UseHoverCardPropsContext
+export type HoverCardProps = UseHoverCardContext
 
 const VueHoverCardProps = {
   ids: {
@@ -36,12 +34,7 @@ export const HoverCard: ComponentWithProps<HoverCardProps> = defineComponent({
   props: VueHoverCardProps,
   emits: ['open', 'close'],
   setup(props, { slots, emit }) {
-    const hoverCardProps = computed<UseHoverCardProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useHoverCard(hoverCardProps.value)
+    const api = useHoverCard(emit, props)
 
     HoverCardProvider(api)
 

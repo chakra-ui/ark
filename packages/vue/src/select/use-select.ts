@@ -1,25 +1,20 @@
 import { connect, machine, type Context as SelectContext } from '@zag-js/select'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, watch } from 'vue'
+import { useId } from '../utils'
 
-interface UseSelectContext extends Omit<SelectContext, 'id' | 'selectedOption'> {
+export interface UseSelectContext extends Omit<SelectContext, 'id' | 'selectedOption'> {
   modelValue: SelectContext['selectedOption']
 }
 
-export interface UseSelectProps {
-  context: UseSelectContext
-  emit: CallableFunction
-}
-
-export const useSelect = (props: UseSelectProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useSelect = (emit: CallableFunction, context: UseSelectContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      selectedOption: context.modelValue,
+      selectedOption: reactiveContext.modelValue,
       onChange: (details) => {
         emit('change', { ...details })
         emit('update:modelValue', { ...details })
@@ -37,7 +32,7 @@ export const useSelect = (props: UseSelectProps) => {
   )
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       api.value.setSelectedOption(value as { label: string; value: string })
