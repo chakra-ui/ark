@@ -1,0 +1,7 @@
+{
+  "ColorPickerAreaProps": {
+    "xChannel": { "type": "ColorChannel", "isRequired": true },
+    "yChannel": { "type": "ColorChannel", "isRequired": true }
+  },
+  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
+}

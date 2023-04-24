@@ -13,8 +13,8 @@ export type ColorPickerProps = Assign<
 
 export const ColorPicker = (props: ColorPickerProps) => {
   const { children, ...useColorPickerProps } = props
-  const datePicker = useColorPicker(useColorPickerProps)
-  const view = runIfFn(children, datePicker)
+  const colorPicker = useColorPicker(useColorPickerProps)
+  const view = runIfFn(children, colorPicker)
 
-  return <ColorPickerProvider value={datePicker}>{view}</ColorPickerProvider>
+  return <ColorPickerProvider value={colorPicker}>{view}</ColorPickerProvider>
 }
