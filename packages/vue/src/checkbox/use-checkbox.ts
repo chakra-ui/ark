@@ -1,6 +1,6 @@
 import { connect, machine, type Context as CheckboxContext } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, watchEffect } from 'vue'
+import { computed, reactive, watch } from 'vue'
 import { useId } from '../utils'
 
 export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
@@ -9,10 +9,6 @@ export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
 
 export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext) => {
   const reactiveContext = reactive(context)
-
-  watchEffect(() => {
-    console.log(reactiveContext)
-  })
 
   const [state, send] = useMachine(
     machine({
