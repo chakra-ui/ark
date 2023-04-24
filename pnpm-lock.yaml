@@ -545,6 +545,9 @@ importers:
       '@next/env':
         specifier: 13.3.1
         version: 13.3.1
+      '@next/font':
+        specifier: 13.3.1
+        version: 13.3.1
       '@pandacss/dev':
         specifier: 0.0.0-dev-20230419091337
         version: 0.0.0-dev-20230419091337(@types/node@18.16.0)(@types/react-dom@18.0.11)(@types/react@18.0.32)(typescript@5.0.4)
@@ -2453,6 +2456,10 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
+
+  /@next/font@13.3.1:
+    resolution: {integrity: sha512-S8Shizt4xlHDItXTAowEoyktiaLIEzTxJeXPaRu+VDeb21yXu7kMX2DUQE5Un+kb/ViCaAdWlyltCuS2sywEjA==}
+    dev: false
 
   /@next/swc-android-arm-eabi@13.2.4:
     resolution: {integrity: sha512-DWlalTSkLjDU11MY11jg17O1gGQzpRccM9Oes2yTqj2DpHndajrXHGxj9HGtJ+idq2k7ImUdJVWS2h2l/EDJOw==}
