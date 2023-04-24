@@ -10,10 +10,10 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
-  UseEditableReturn,
+  type EditableContext,
 } from '../'
 
-const editableRef = ref<{ api: UseEditableReturn }>()
+const editableRef = ref<{ api: EditableContext }>()
 
 // For editable.test.tsx
 const testProps = defineProps(['modelValue'])

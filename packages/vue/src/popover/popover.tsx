@@ -28,6 +28,7 @@ const VuePopoverProps = {
   },
   isOpen: {
     type: Boolean as PropType<PopoverProps['isOpen']>,
+    default: false,
   },
   modal: {
     type: Boolean as PropType<PopoverProps['modal']>,

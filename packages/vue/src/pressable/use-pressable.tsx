@@ -38,9 +38,7 @@ export const usePressable = (emit: CallableFunction, context: UsePressableContex
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UsePressableReturn = ReturnType<typeof usePressable>

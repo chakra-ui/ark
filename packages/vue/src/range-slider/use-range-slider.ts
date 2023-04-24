@@ -1,6 +1,6 @@
 import { connect, machine, type Context } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
 import { useId } from '../utils'
 
@@ -29,18 +29,7 @@ export const useRangeSlider = (emit: CallableFunction, context: UseRangeSliderCo
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.modelValue,
-    (val, oldVal) => {
-      if (val == undefined || val === oldVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseRangeSliderReturn = UnwrapRef<ReturnType<typeof useRangeSlider>>

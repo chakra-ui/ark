@@ -7,7 +7,7 @@ import {
   SliderMarker,
   SliderMarkerGroup,
   SliderOutput,
-  SliderProps,
+  type SliderProps,
   SliderRange,
   SliderThumb,
   SliderTrack,

@@ -1,6 +1,6 @@
 import { connect, machine, type Context } from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
 import { useId } from '../utils'
 
@@ -23,18 +23,7 @@ export const useRadioGroup = (emit: CallableFunction, context: UseRadioGroupCont
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.modelValue,
-    (val, oldVal) => {
-      if (val == undefined || val === oldVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseRadioGroupReturn = UnwrapRef<ReturnType<typeof useRadioGroup>>

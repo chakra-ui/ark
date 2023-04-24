@@ -1,26 +1,20 @@
 import { connect, machine, type Context as ComboboxContext } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, reactive, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { useId } from '../utils'
 
-export type UseComboboxContext = Omit<ComboboxContext, 'id' | 'inputValue'> & {
+export type UseComboboxContext = Omit<ComboboxContext, 'id'> & {
   modelValue?: ComboboxContext['inputValue']
 }
 
-export type UseComboboxDefaultValue = ComboboxContext['inputValue']
-
-export const useCombobox = (
-  emit: CallableFunction,
-  context: UseComboboxContext,
-  defaultValue?: UseComboboxDefaultValue,
-) => {
+export const useCombobox = (emit: CallableFunction, context: UseComboboxContext) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: useId().value,
-      inputValue: defaultValue,
+      inputValue: reactiveContext.modelValue,
       onClose() {
         emit('close')
       },
@@ -40,22 +34,7 @@ export const useCombobox = (
     }),
   )
 
-  onMounted(() => {
-    emit('update:modelValue', defaultValue)
-  })
-
-  watch(
-    () => reactiveContext.modelValue,
-    (value, prevValue) => {
-      if (value === prevValue) return
-      if (value === undefined) return
-      api.value.setInputValue(value)
-    },
-  )
-
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseComboboxReturn = UnwrapRef<ReturnType<typeof useCombobox>>
