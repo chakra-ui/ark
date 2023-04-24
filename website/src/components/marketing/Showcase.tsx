@@ -24,6 +24,10 @@ import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
 const components = [
+  {
+    name: 'Slider',
+    demo: <DemoSlider />,
+  },
   { name: 'Dialog', demo: <DemoDialog /> },
   {
     name: 'Menu',
@@ -32,10 +36,6 @@ const components = [
   {
     name: 'Popover',
     demo: <DemoPopover />,
-  },
-  {
-    name: 'Slider',
-    demo: <DemoSlider />,
   },
   {
     name: 'Accordion',
