@@ -15,14 +15,14 @@ const VueHoverCardProps = {
   closeDelay: {
     type: Number as PropType<HoverCardProps['closeDelay']>,
   },
-  defaultOpen: {
-    type: Boolean as PropType<HoverCardProps['defaultOpen']>,
-  },
   dir: {
     type: String as PropType<HoverCardProps['dir']>,
   },
   getRootNode: {
     type: Function as PropType<HoverCardProps['getRootNode']>,
+  },
+  open: {
+    type: Boolean as PropType<HoverCardProps['open']>,
   },
   positioning: {
     type: Object as PropType<HoverCardProps['positioning']>,
@@ -32,7 +32,7 @@ const VueHoverCardProps = {
 export const HoverCard: ComponentWithProps<HoverCardProps> = defineComponent({
   name: 'HoverCard',
   props: VueHoverCardProps,
-  emits: ['open-change'],
+  emits: ['open', 'close'],
   setup(props, { slots, emit }) {
     const api = useHoverCard(emit, props)
 

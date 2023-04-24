@@ -13,11 +13,12 @@ export const Tooltip = (props: TooltipProps) => {
     'closeOnPointerDown',
     'disabled',
     'getRootNode',
-    'ids',
     'id',
+    'ids',
     'interactive',
     'onClose',
     'onOpen',
+    'open',
     'openDelay',
     'positioning',
   ])

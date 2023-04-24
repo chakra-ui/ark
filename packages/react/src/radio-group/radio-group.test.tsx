@@ -38,7 +38,7 @@ describe('Radio Group', () => {
     expect(onChange).toHaveBeenCalledWith({ value: 'grape' })
   })
 
-  it('should invoke onChange if another value has selected', async () => {
+  it('should not invoke onChange if option is disabled', async () => {
     const onChange = vi.fn()
 
     render(<Component onChange={onChange} />)

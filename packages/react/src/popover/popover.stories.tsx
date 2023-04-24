@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverArrowTip,
   PopoverCloseTrigger,
@@ -33,15 +34,14 @@ export const Basic = () => (
 )
 
 export const Controlled = () => {
-  const [isOpen, setOpen] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen((prev) => !prev)}>Toggle control</button>
-      <Popover isOpen={isOpen} onOpenChange={setOpen}>
-        <PopoverTrigger>
-          <button>click me</button>
-        </PopoverTrigger>
+      <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
+      <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <PopoverAnchor>
+          <span>anchor</span>
+        </PopoverAnchor>
         <PopoverPositioner>
           <PopoverArrow>
             <PopoverArrowTip />

@@ -16,5 +16,5 @@ export const MenuTrigger = (props: MenuTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

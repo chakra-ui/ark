@@ -14,9 +14,6 @@ const VuePopoverProps = {
   closeOnInteractOutside: {
     type: Boolean as PropType<PopoverProps['closeOnInteractOutside']>,
   },
-  defaultOpen: {
-    type: Boolean as PropType<PopoverProps['defaultOpen']>,
-  },
   getRootNode: {
     type: Function as PropType<PopoverProps['getRootNode']>,
   },
@@ -38,6 +35,9 @@ const VuePopoverProps = {
   portalled: {
     type: Boolean as PropType<PopoverProps['portalled']>,
   },
+  open: {
+    type: Boolean as PropType<PopoverProps['open']>,
+  },
   positioning: {
     type: Object as PropType<PopoverProps['positioning']>,
   },
@@ -47,11 +47,12 @@ export const Popover = defineComponent({
   name: 'Popover',
   props: VuePopoverProps,
   emits: [
-    'open-change',
+    'close',
     'escape-key-down',
-    'pointer-down-outside',
     'focus-outside',
     'interact-outside',
+    'open',
+    'pointer-down-outside',
   ],
   setup(props, { slots, emit }) {
     const api = usePopover(emit, props)

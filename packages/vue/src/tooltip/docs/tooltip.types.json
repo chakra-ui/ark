@@ -50,6 +50,11 @@
       "isRequired": false,
       "description": "Function called when the tooltip is opened."
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is open"
+    },
     "openDelay": {
       "type": "number",
       "isRequired": false,

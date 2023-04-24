@@ -14,5 +14,6 @@
       "groupName": "contentlayer",
       "matchPackageNames": ["contentlayer", "next-contentlayer"]
     }
-  ]
+  ],
+  "ignoreDeps": ["next"]
 }

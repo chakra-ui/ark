@@ -18,5 +18,5 @@ export const ComboboxTrigger = (props: ComboboxTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

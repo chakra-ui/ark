@@ -39,8 +39,8 @@ const VueDialogProps = {
   role: {
     type: String as PropType<DialogProps['role']>,
   },
-  defaultOpen: {
-    type: Boolean as PropType<DialogProps['defaultOpen']>,
+  open: {
+    type: Boolean as PropType<DialogProps['open']>,
   },
 }
 

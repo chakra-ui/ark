@@ -12,8 +12,11 @@ export const useHoverCard = (emit: CallableFunction, context: UseHoverCardContex
     machine({
       ...reactiveContext,
       id: useId().value,
-      onOpenChange(open) {
-        emit('open-change', open)
+      onOpen() {
+        emit('open')
+      },
+      onClose() {
+        emit('close')
       },
     }),
   )

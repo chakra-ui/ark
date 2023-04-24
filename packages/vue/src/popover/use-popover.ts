@@ -20,7 +20,7 @@ export const usePopover = (emit: CallableFunction, context: UsePopoverContext) =
     machine({
       ...reactiveContext,
       id: useId().value,
-      defaultOpen: reactiveContext.isOpen,
+      open: reactiveContext.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -30,8 +30,11 @@ export const usePopover = (emit: CallableFunction, context: UsePopoverContext) =
       onInteractOutside(event) {
         emit('interact-outside', event)
       },
-      onOpenChange(open) {
-        emit('open-change', open)
+      onOpen() {
+        emit('open')
+      },
+      onClose() {
+        emit('close')
       },
       onPointerDownOutside(event) {
         emit('pointer-down-outside', event)

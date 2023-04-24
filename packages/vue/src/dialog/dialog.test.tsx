@@ -45,7 +45,7 @@ describe('Dialog', () => {
     const onClose = vi.fn()
     const { getByText } = render(Component, {
       props: {
-        defaultOpen: true,
+        open: true,
         onClose,
       },
     })

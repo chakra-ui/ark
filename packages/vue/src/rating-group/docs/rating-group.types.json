@@ -12,7 +12,7 @@
       "description": "Whether to autofocus the rating."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
