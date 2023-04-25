@@ -4,7 +4,7 @@ import { useColorPickerContext } from './color-picker-context'
 export type ColorPickerContentProps = HTMLArkProps<'div'>
 
 export const ColorPickerContent = (props: ColorPickerContentProps) => {
-  const dialog = useColorPickerContext()
+  const colorPicker = useColorPickerContext()
 
-  return <ark.div {...dialog().contentProps} {...props} />
+  return <ark.div {...colorPicker().contentProps} {...props} />
 }

@@ -1,3 +1,7 @@
+output {
+  font-size: 14px;
+}
+
 [data-scope='color-picker'][data-part='content'] {
   max-width: 260px;
   display: flex;

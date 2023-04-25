@@ -3,7 +3,6 @@ import { createContext } from '../create-context'
 
 export const [ColorPickerSliderProvider, useColorPickerSliderContext] = createContext<ChannelProps>(
   {
-    name: 'ColorPickerSliderContext',
     hookName: 'useColorPickerSliderContext',
     providerName: '<ColorPickerSliderProvider />',
   },

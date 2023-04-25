@@ -14,25 +14,24 @@ import {
 import './color-picker.css'
 
 export const Basic = () => (
-  <ColorPicker value="hsl(10, 81%, 59%)">
+  <ColorPicker value="hsla(10, 81%, 59%, 1)">
     {(api) => {
       const [hue, saturation, lightness] = api.channels
       return (
         <ColorPickerContent>
           <output>
-            <div>Color: {api.value}</div>
+            <ColorPickerSwatch value={api.value} readOnly />
+            <span>{api.value}</span>
           </output>
+
           <ColorPickerArea xChannel={saturation} yChannel={lightness}>
             <ColorPickerAreaGradient />
             <ColorPickerAreaThumb />
           </ColorPickerArea>
 
-          <ColorPickerSwatch value={api.value} readOnly />
-
           <ColorPickerSliderTrack channel={hue}>
             <ColorPickerSliderThumb />
           </ColorPickerSliderTrack>
-
           <ColorPickerSliderTrack channel="alpha">
             <ColorPickerSliderThumb />
           </ColorPickerSliderTrack>
@@ -40,15 +39,13 @@ export const Basic = () => (
           <ColorPickerChannelInput channel={hue} />
           <ColorPickerChannelInput channel={saturation} />
           <ColorPickerChannelInput channel={lightness} />
-
           <ColorPickerChannelInput channel="alpha" />
           <ColorPickerChannelInput channel="hex" />
 
           <ColorPickerSwatchGroup>
-            <ColorPickerSwatch value="#123123" />
-            <ColorPickerSwatch value="#ff1321" />
+            <ColorPickerSwatch value="hsla(153, 46%, 13%, 1)" />
+            <ColorPickerSwatch value="hsla(356, 100%, 54%, 1)" />
           </ColorPickerSwatchGroup>
-
           <ColorPickerEyeDropperTrigger>
             <button>Pick color</button>
           </ColorPickerEyeDropperTrigger>

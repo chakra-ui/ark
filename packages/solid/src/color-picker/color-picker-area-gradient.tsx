@@ -1,16 +1,15 @@
-import { type HTMLArkProps } from '../factory'
+import { mergeProps } from 'solid-js'
+import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerAreaContext } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerAreaGradientProps = HTMLArkProps<'div'>
 
 export const ColorPickerAreaGradient = (props: ColorPickerAreaGradientProps) => {
-  const areaContext = useColorPickerAreaContext()
   const colorPicker = useColorPickerContext()
+  const area = useColorPickerAreaContext()
 
-  // return <ark.div {...areaContext.get}
-  // const { getAreaGradientProps } = useColorPickerContext()
-  // const mergedProps = mergeProps(getAreaGradientProps(areaContext), props)
+  const mergedProps = mergeProps(colorPicker().getAreaGradientProps(area), props)
 
-  // return <ark.div {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} />
 }

@@ -1,17 +1,14 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import { mergeProps } from '@zag-js/react'
+import { mergeProps } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerSliderThumbProps = HTMLArkProps<'div'>
 
-export const ColorPickerSliderThumb = forwardRef<'div', ColorPickerSliderThumbProps>(
-  (props, ref) => {
-    const sliderContext = useColorPickerSliderContext()
-    const { getChannelSliderThumbProps } = useColorPickerContext()
-    const mergedProps = mergeProps(getChannelSliderThumbProps(sliderContext), props)
+export const ColorPickerSliderThumb = (props: ColorPickerSliderThumbProps) => {
+  const colorPicker = useColorPickerContext()
+  const slider = useColorPickerSliderContext()
+  const mergedProps = mergeProps(colorPicker().getChannelSliderThumbProps(slider), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} />
+}
