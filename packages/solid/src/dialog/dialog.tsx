@@ -33,5 +33,5 @@ export const Dialog = (props: DialogProps) => {
   const dialog = useDialog(useDialogProps)
   const view = children(() => runIfFn(restProps.children, dialog()))
 
-  return <DialogProvider value={dialog}>{view}</DialogProvider>
+  return <DialogProvider value={dialog}>{view()}</DialogProvider>
 }
