@@ -1,12 +1,11 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import { ark } from '../factory'
+import { forwardRef } from '../fordward-ref'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
+export type AccordionProps = UseAccordionProps
 
 export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
   const [useAccordionProps, divProps] = createSplitProps<UseAccordionProps>()(props, [

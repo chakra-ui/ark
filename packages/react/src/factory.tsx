@@ -1,15 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { Children, forwardRef as __forwardRef, cloneElement, isValidElement } from 'react'
+import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
 
 type AsChildProps<Props extends { children?: unknown }> =
   | { asChild: true; children: React.ReactElement }
-  | { asChild?: false; children?: Props['children'] }
+  | { asChild?: boolean; children?: React.ReactNode }
 
-export type WithAsChildProps<Props extends { children?: unknown }> = Omit<Props, 'children'> &
+type WithAsChildProps<Props extends { children?: unknown }> = Omit<Props, 'children'> &
   AsChildProps<Props>
 
-type ComponentWithAsChildProps<T extends React.ElementType> = React.FC<
+export type ComponentWithAsChildProps<T extends React.ElementType> = React.FC<
   WithAsChildProps<React.ComponentPropsWithRef<T>>
 >
 
@@ -22,7 +22,7 @@ type JsxElements = {
 }
 
 const withAsChild = (Component: React.ElementType) => {
-  const Comp = __forwardRef<unknown, AsChildProps<React.ComponentPropsWithRef<React.ElementType>>>(
+  const Comp = forwardRef<unknown, AsChildProps<React.ComponentPropsWithRef<React.ElementType>>>(
     function ComponentWithAsChild(props, ref) {
       const { asChild, ...restProps } = props
 
@@ -44,7 +44,6 @@ const withAsChild = (Component: React.ElementType) => {
 
   // @ts-expect-error - it exists
   Comp.displayName = Component.displayName || Component.name
-
   return Comp
 }
 
@@ -65,4 +64,5 @@ const jsxFactory = () => {
   }) as unknown as JsxFactoryFn & JsxElements
 }
 
+export type HTMLArkProps<T extends React.ElementType> = ComponentWithAsChildProps<T>
 export const ark = jsxFactory()

@@ -1,6 +1,6 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../fordward-ref'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
