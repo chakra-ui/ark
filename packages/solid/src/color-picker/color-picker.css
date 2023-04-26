@@ -1,5 +1,8 @@
 output {
   font-size: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 [data-scope='color-picker'][data-part='content'] {
