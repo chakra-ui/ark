@@ -9,6 +9,7 @@ export const CheckboxControl: ComponentWithProps<CheckboxControlProps> = defineC
   name: 'CheckboxControl',
   setup(_, { attrs, slots }) {
     const api = useCheckboxContext()
+
     return () => (
       <ark.div {...api.value.controlProps} {...attrs}>
         {() => getValidChildren(slots)}

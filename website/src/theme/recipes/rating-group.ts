@@ -24,16 +24,17 @@ export const ratingGroup = defineRecipe({
       },
       transitionProperty: 'base',
       transitionDuration: '50',
-      '--stop-color-active': {
-        base: 'colors.orange.400',
-        _dark: 'colors.orange.400',
-      },
-      '--stop-color-inactive': {
-        base: 'colors.gray.300',
-        _dark: 'colors.brown.300',
-      },
+      // TODO fix me
+      // '--stop-color-active': {
+      //   base: 'colors.orange.400',
+      //   _dark: 'colors.orange.400',
+      // },
+      // '--stop-color-inactive': {
+      //   base: 'colors.gray.300',
+      //   _dark: 'colors.brown.300',
+      // },
       _focus: {
-        outline: 'none',
+        outline: 0,
       },
       '& svg': {
         width: '10',

@@ -20,7 +20,6 @@
       "isRequired": false,
       "description": "Whether to blur the input on select"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -42,7 +41,7 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

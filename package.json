@@ -36,19 +36,19 @@
     "@commitlint/cli": "17.6.1",
     "@commitlint/config-conventional": "17.6.1",
     "@types/fs-extra": "11.0.1",
-    "@types/node": "18.15.11",
+    "@types/node": "18.16.1",
     "@types/prettier": "2.7.2",
     "fs-extra": "11.1.1",
     "globby": "13.1.4",
     "husky": "8.0.3",
-    "lint-staged": "13.2.1",
-    "prettier": "2.8.7",
+    "lint-staged": "13.2.2",
+    "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "3.2.2",
     "react": "18.2.0",
     "ts-node": "10.9.1",
     "ts-pattern": "4.2.2",
     "ts-morph": "18.0.0",
-    "turbo": "1.9.1",
+    "turbo": "1.9.3",
     "typescript": "5.0.4"
   },
   "commitlint": {
@@ -64,5 +64,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.2.0"
+  "packageManager": "pnpm@8.3.1"
 }

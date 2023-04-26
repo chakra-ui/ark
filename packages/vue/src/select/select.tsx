@@ -1,11 +1,9 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { type ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps } from './use-select'
+import { useSelect, type UseSelectContext } from './use-select'
 
-type UseSelectPropsContext = UseSelectProps['context']
-
-export type SelectProps = UseSelectPropsContext
+export type SelectProps = UseSelectContext
 
 const VueSelectProps = {
   modelValue: {
@@ -45,6 +43,9 @@ const VueSelectProps = {
   selectOnTab: {
     type: Boolean as PropType<SelectProps['selectOnTab']>,
   },
+  selectedOption: {
+    type: Object as PropType<SelectProps['selectedOption']>,
+  },
   dir: {
     type: String as PropType<SelectProps['dir']>,
   },
@@ -61,12 +62,7 @@ export const Select: ComponentWithProps<SelectProps> = defineComponent({
   emits: ['change', 'highlight', 'open', 'close', 'update:modelValue'],
   props: VueSelectProps,
   setup(props, { slots, emit }) {
-    const selectProps = computed<UseSelectProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const { api } = useSelect(selectProps.value)
+    const { api } = useSelect(emit, props)
 
     SelectProvider(api)
 

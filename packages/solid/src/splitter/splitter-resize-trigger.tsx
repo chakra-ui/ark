@@ -21,5 +21,5 @@ export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

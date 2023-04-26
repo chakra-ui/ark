@@ -21,7 +21,7 @@
       "description": "The associate form of the underlying select."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -85,6 +85,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
     },
     "selectOnTab": {
       "type": "boolean",

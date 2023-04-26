@@ -1,13 +1,11 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter, type UseSplitterProps } from './use-splitter'
+import { useSplitter, type UseSplitterContext } from './use-splitter'
 
-type SplitterPropsContext = UseSplitterProps['context']
-
-export type SplitterProps = Assign<HTMLArkProps<'div'>, SplitterPropsContext>
+export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterContext>
 
 export const Splitter: ComponentWithProps<SplitterProps> = defineComponent({
   name: 'Splitter',
@@ -30,12 +28,7 @@ export const Splitter: ComponentWithProps<SplitterProps> = defineComponent({
   },
   emits: ['resize', 'resize-end', 'resize-start'],
   setup(props, { slots, attrs, emit }) {
-    const splitterProps = computed<UseSplitterProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useSplitter(splitterProps.value)
+    const api = useSplitter(emit, props)
 
     SplitterProvider(api)
 

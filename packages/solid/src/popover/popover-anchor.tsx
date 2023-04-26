@@ -18,5 +18,5 @@ export const PopoverAnchor = (props: PopoverAnchorProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }
