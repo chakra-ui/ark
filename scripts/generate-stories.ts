@@ -28,6 +28,7 @@ const main = async () => {
           match(decl)
             .when(Node.isVariableDeclaration, (node) => {
               const name = node.getName()
+              if (name === 'meta') return
               const code = `const ${name} = ${node.getInitializer()?.getText()}`
               stories[name] = code
             })

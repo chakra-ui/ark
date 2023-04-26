@@ -1,5 +1,4 @@
 {
-  "meta": "const meta = {\n  title: 'Checkbox',\n  component: Checkbox,\n}",
   "Basic": "const Basic = () => (\n  <Checkbox>\n    <CheckboxLabel>Checkbox</CheckboxLabel>\n    <CheckboxInput />\n    <CheckboxControl />\n  </Checkbox>\n)",
   "Controlled": "const Controlled = () => {\n  const [checked, setChecked] = useState(true)\n  return (\n    <>\n      <button onClick={() => setChecked(!checked)}>set checked</button>\n      <Checkbox checked={checked}>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput />\n        <CheckboxControl />\n      </Checkbox>\n    </>\n  )\n}",
   "RenderProp": "const RenderProp = () => (\n  <Checkbox>\n    {(state) => (\n      <>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput data-peer />\n        <CheckboxControl>\n          {state.isChecked && <span>✓</span>}\n          {state.isIndeterminate && <span>-</span>}\n        </CheckboxControl>\n      </>\n    )}\n  </Checkbox>\n)",

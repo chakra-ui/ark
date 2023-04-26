@@ -1,4 +1,3 @@
 {
-  "meta": "const meta = {\n  title: 'Environment',\n  component: Environment,\n}",
   "Basic": "const Basic = () => {\n  return (\n    <Frame>\n      <Environment>\n        <PrintEnvironment />\n      </Environment>\n    </Frame>\n  )\n}"
 }
