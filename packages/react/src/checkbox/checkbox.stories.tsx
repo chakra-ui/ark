@@ -1,6 +1,16 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '.'
 import './checkbox.css'
+
+type CheckboxType = typeof Checkbox
+
+const meta: Meta<CheckboxType> = {
+  title: 'Checkbox',
+  component: Checkbox,
+}
+
+export default meta
 
 export const Basic = () => (
   <Checkbox>

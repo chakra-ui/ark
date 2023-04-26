@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import {
   RangeSlider,
@@ -11,6 +12,15 @@ import {
   RangeSliderTrack,
 } from './'
 import './range-slider.css'
+
+type RangeSliderType = typeof RangeSlider
+
+const meta: Meta<RangeSliderType> = {
+  title: 'RangeSlider',
+  component: RangeSlider,
+}
+
+export default meta
 
 export const Basic = () => {
   const [values, setValues] = useState([33, 66])
