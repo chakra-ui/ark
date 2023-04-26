@@ -83,7 +83,7 @@
     "happy-dom": "9.9.2",
     "solid-js": "1.7.3",
     "typescript": "5.0.4",
-    "vite": "4.3.2",
+    "vite": "4.3.3",
     "vite-plugin-dts": "2.3.0",
     "vite-plugin-solid": "2.7.0",
     "vitest": "0.30.1"
