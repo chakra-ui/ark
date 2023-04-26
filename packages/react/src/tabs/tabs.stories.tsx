@@ -30,7 +30,7 @@ export const Basic = () => (
   </Tabs>
 )
 
-export const withDefaultValue = () => (
+export const WithDefaultValue = () => (
   <Tabs defaultValue="three">
     <TabList>
       <TabTrigger value="one">
