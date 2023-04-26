@@ -3,7 +3,9 @@
 import { mergeProps } from '@zag-js/react'
 import { Children, forwardRef as __forwardRef, cloneElement, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
+import type { Assign } from './types'
 
+// TODO: I don't think we can be too strict here. See splitter.stories.tsx
 type AsChildProps<Props extends { children?: unknown }> =
   | { asChild: true; children: React.ReactElement }
   | { asChild?: false; children?: Props['children'] }
@@ -67,4 +69,7 @@ export function jsxFactory() {
 
 export const ark = jsxFactory()
 
-export type HTMLArkProps<T extends React.ElementType> = ComponentPropsWithAsChild<T>
+export type HTMLArkProps<
+  T extends React.ElementType,
+  P extends Record<never, never> = Record<never, never>,
+> = Assign<ComponentPropsWithAsChild<T>, P>

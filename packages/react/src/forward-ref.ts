@@ -1,13 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { forwardRef as __forwardRef } from 'react'
-import type { ComponentPropsWithAsChild } from './factory'
-
-type Pretty<T> = T extends infer U ? { [K in keyof U]: U[K] } : never
-
-type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never
-
-type Assign<T, U> = Pretty<DistributiveOmit<T, keyof U> & U>
+import type { HTMLArkProps } from './factory'
+import type { Assign } from './types'
 
 export function forwardRef<
   T extends React.ElementType,
@@ -18,5 +13,5 @@ export function forwardRef<
     Assign<React.ComponentPropsWithoutRef<T>, P & { asChild?: boolean }>
   >,
 ) {
-  return __forwardRef(component) as unknown as React.FC<Assign<ComponentPropsWithAsChild<T>, P>>
+  return __forwardRef(component) as unknown as React.FC<HTMLArkProps<T, P>>
 }
