@@ -1,3 +1,4 @@
 {
+  "meta": "const meta = {\n  title: 'NumberInput',\n  component: NumberInput,\n}",
   "Basic": "const Basic = () => (\n  <NumberInput min={-50} max={50} clampValueOnBlur>\n    <NumberInputScrubber />\n    <NumberInputLabel>Label</NumberInputLabel>\n    <NumberInputField />\n    <NumberInputControl>\n      <NumberInputDecrementTrigger>\n        <button>-1</button>\n      </NumberInputDecrementTrigger>\n      <NumberInputIncrementTrigger>\n        <button>+1</button>\n      </NumberInputIncrementTrigger>\n    </NumberInputControl>\n  </NumberInput>\n)"
 }

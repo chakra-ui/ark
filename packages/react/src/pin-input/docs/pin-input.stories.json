@@ -1,3 +1,4 @@
 {
+  "meta": "const meta = {\n  title: 'PinInput',\n  component: PinInput,\n}",
   "Basic": "const Basic = () => (\n  <PinInput placeholder=\"*\" onComplete={(e) => alert(e.valueAsString)}>\n    <PinInputLabel>Label</PinInputLabel>\n    <PinInputControl>\n      {[0, 1, 2].map((id, index) => (\n        <PinInputField key={id} index={index} />\n      ))}\n    </PinInputControl>\n  </PinInput>\n)"
 }

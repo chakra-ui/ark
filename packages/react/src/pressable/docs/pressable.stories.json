@@ -1,3 +1,4 @@
 {
+  "meta": "const meta = {\n  title: 'Pressable',\n  component: Pressable,\n}",
   "Basic": "const Basic = () => {\n  return <Pressable onPress={() => console.log('onPress')}>Pressable</Pressable>\n}"
 }

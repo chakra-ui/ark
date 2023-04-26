@@ -1,3 +1,4 @@
 {
+  "meta": "const meta = {\n  title: 'RatingGroup',\n  component: RatingGroup,\n}",
   "Basic": "const Basic = () => (\n  <RatingGroup max={5} defaultValue={3} allowHalf>\n    <RatingGroupLabel>Label</RatingGroupLabel>\n    <RatingGroupControl>\n      {({ sizeArray }) =>\n        sizeArray.map((index) => (\n          <Rating key={index} index={index}>\n            {({ isHalf, isHighlighted }) => {\n              if (isHalf) return <IconHalf />\n              if (isHighlighted) return <IconFull />\n              return <IconEmpty />\n            }}\n          </Rating>\n        ))\n      }\n    </RatingGroupControl>\n  </RatingGroup>\n)"
 }
