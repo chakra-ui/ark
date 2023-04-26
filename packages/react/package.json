@@ -40,7 +40,6 @@
     "storydocs": "ts-node ../../scripts/generate-stories.ts"
   },
   "dependencies": {
-    "@polymorphic-factory/react": "0.4.1",
     "@zag-js/accordion": "0.6.0",
     "@zag-js/anatomy": "0.1.4",
     "@zag-js/carousel": "0.5.0",
