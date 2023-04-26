@@ -5,17 +5,12 @@ import { Children, forwardRef as __forwardRef, cloneElement, isValidElement } fr
 import { composeRefs } from './compose-refs'
 import type { Assign } from './types'
 
-// TODO: I don't think we can be too strict here. See splitter.stories.tsx
-type AsChildProps<Props extends { children?: unknown }> =
-  | { asChild: true; children: React.ReactElement }
-  | { asChild?: false; children?: Props['children'] }
+type AsChildProps = {
+  asChild?: boolean
+}
 
-export type WithAsChildProps<Props extends { children?: unknown }> = Omit<Props, 'children'> &
-  AsChildProps<Props>
-
-export type ComponentPropsWithAsChild<T extends React.ElementType> = WithAsChildProps<
-  React.ComponentPropsWithRef<T>
->
+export type ComponentPropsWithAsChild<T extends React.ElementType> =
+  React.ComponentPropsWithRef<T> & AsChildProps
 
 type JsxFactoryFn<T extends React.ElementType = React.ElementType> = (
   component: T,
@@ -26,7 +21,7 @@ type JsxElements = {
 }
 
 function withAsChild(Component: React.ElementType) {
-  const Comp = __forwardRef<unknown, AsChildProps<any>>((props, ref) => {
+  const Comp = __forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
     const { asChild, ...restProps } = props
 
     if (!asChild) {
