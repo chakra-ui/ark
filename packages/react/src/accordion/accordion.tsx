@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
-import { forwardRef } from '../fordward-ref'
+import { forwardRef } from '../forward-ref'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 

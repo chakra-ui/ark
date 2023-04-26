@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../fordward-ref'
+import { forwardRef } from '../forward-ref'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext, type AccordionContext } from './accordion-context'

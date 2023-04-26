@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../fordward-ref'
+import { forwardRef } from '../forward-ref'
 
 export type AccordionIconProps = HTMLArkProps<'div'> & { foo: string }
 
