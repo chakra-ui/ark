@@ -20,7 +20,6 @@
       "isRequired": false,
       "description": "Whether to blur the input on select"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -55,6 +54,11 @@
       "type": "'autohighlight' | 'autocomplete' | 'none'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
+    },
+    "inputValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the combobox's input"
     },
     "invalid": {
       "type": "boolean",

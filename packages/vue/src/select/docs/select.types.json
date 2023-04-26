@@ -86,6 +86,11 @@
       "isRequired": false,
       "description": "Whether the select is read-only"
     },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
     "selectOnTab": {
       "type": "boolean",
       "isRequired": false,
