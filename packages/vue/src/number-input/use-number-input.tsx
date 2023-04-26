@@ -1,6 +1,6 @@
 import { connect, machine, type Context as NumberInputContext } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive } from 'vue'
 import { useId } from '../utils'
 
 export interface UseNumberInputContext extends Omit<NumberInputContext, 'id'> {
@@ -31,18 +31,7 @@ export const useNumberInput = (emit: CallableFunction, context: UseNumberInputCo
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.modelValue,
-    (value, prevValue) => {
-      if (value === prevValue) return
-
-      api.value.setValue(value as string)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseNumberInputReturn = ReturnType<typeof useNumberInput>

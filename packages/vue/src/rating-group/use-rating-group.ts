@@ -14,7 +14,7 @@ export const useRatingGroup = (emit: CallableFunction, context: UseRatingGroupCo
     machine({
       ...reactiveContext,
       id: useId().value,
-      value: reactiveContext.modelValue,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details.value)
         emit('update:modelValue', details.value)
@@ -25,9 +25,7 @@ export const useRatingGroup = (emit: CallableFunction, context: UseRatingGroupCo
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseRatingGroupReturn = ReturnType<typeof useRatingGroup>

@@ -46,8 +46,8 @@ export const usePopover = (emit: CallableFunction, context: UsePopoverContext) =
 
   watch(
     () => reactiveContext.isOpen,
-    (curr) => {
-      if (curr == null) return
+    (curr, prev) => {
+      if (curr == null || curr === prev) return
 
       if (curr && !state.value.matches('open')) {
         api.value.open()

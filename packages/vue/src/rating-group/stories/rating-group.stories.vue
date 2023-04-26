@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, UnwrapRef } from 'vue'
+import { ref, type UnwrapRef } from 'vue'
 import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '..'
 import type { RatingGroupContext } from '../rating-group-context'
 import { IconEmpty, IconFull, IconHalf } from './rating-icons'

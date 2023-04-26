@@ -31,9 +31,7 @@ export const useTabs = (
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseTabsReturn = ReturnType<typeof useTabs>

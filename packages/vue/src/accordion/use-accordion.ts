@@ -1,25 +1,19 @@
 import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, reactive, watch } from 'vue'
+import { computed, reactive, watch } from 'vue'
 import { useId } from '../utils'
 
-export interface UseAccordionContext extends Omit<AccordionContext, 'id' | 'value'> {
+export interface UseAccordionContext extends Omit<AccordionContext, 'id'> {
   modelValue?: AccordionContext['value']
 }
 
-export type UseAccordionDefaultValue = AccordionContext['value']
-
-export const useAccordion = (
-  emit: CallableFunction,
-  context: UseAccordionContext,
-  defaultValue?: UseAccordionDefaultValue,
-) => {
+export const useAccordion = (emit: CallableFunction, context: UseAccordionContext) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      value: defaultValue,
+      ...reactiveContext,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       id: useId().value,
       onChange: (details) => {
         emit('change', details.value)
@@ -31,11 +25,7 @@ export const useAccordion = (
     }),
   )
 
-  onMounted(() => {
-    // Init modelValue with `defaultValue`.
-    // This is mostly relevant in case modelValue is empty but defaultValue is set.
-    emit('update:modelValue', Array.isArray(defaultValue) ? Array.from(defaultValue) : defaultValue)
-  })
+  const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
     () => reactiveContext.modelValue,
@@ -44,8 +34,6 @@ export const useAccordion = (
       api.value.setValue(value as string | string[])
     },
   )
-
-  const api = computed(() => connect(state.value, send, normalizeProps))
 
   return { api }
 }

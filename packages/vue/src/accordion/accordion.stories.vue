@@ -7,7 +7,7 @@ const val: Ref<string | string[]> = ref('panel-2')
 
 <template>
   <button @click="val = 'panel-3'">Trigger</button>
-  <Accordion v-model="val" collapsible>
+  <Accordion v-model="val">
     <AccordionItem value="panel-1" disabled>
       <AccordionTrigger>
         <button>Panel 1 trigger</button>

@@ -1,6 +1,6 @@
 import { connect, machine, type Context as EditableContext } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
 import { useId } from '../utils'
 
@@ -32,20 +32,7 @@ export const useEditable = (emit: CallableFunction, context: UseEditableContext)
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.modelValue,
-    (val, prevVal) => {
-      if (val == undefined) return
-
-      if (val === prevVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseEditableReturn = UnwrapRef<ReturnType<typeof useEditable>>

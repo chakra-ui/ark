@@ -43,6 +43,9 @@ const VueSelectProps = {
   selectOnTab: {
     type: Boolean as PropType<SelectProps['selectOnTab']>,
   },
+  selectedOption: {
+    type: Object as PropType<SelectProps['selectedOption']>,
+  },
   dir: {
     type: String as PropType<SelectProps['dir']>,
   },

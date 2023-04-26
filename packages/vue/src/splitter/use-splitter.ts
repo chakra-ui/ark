@@ -25,9 +25,7 @@ export const useSplitter = (emit: CallableFunction, context: UseSplitterContext)
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseSplitterReturn = UnwrapRef<ReturnType<typeof useSplitter>>

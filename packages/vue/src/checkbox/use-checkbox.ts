@@ -14,10 +14,10 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
     machine({
       ...reactiveContext,
       id: useId().value,
-      checked: reactiveContext.modelValue,
+      checked: reactiveContext.modelValue ?? reactiveContext.checked,
       onChange(details) {
         emit('change', details.checked)
-        emit('update:modelValue', details.checked)
+        emit('update:modelValue', !details.checked)
       },
     }),
   )
@@ -29,7 +29,9 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
     (value) => {
       if (value == undefined) return
 
-      api.value.setChecked(value)
+      if (value !== api.value.isChecked) {
+        api.value.setChecked(value)
+      }
     },
   )
 
