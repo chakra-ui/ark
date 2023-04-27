@@ -9,11 +9,11 @@ import {
   TagsInputControl,
   TagsInputField,
   TagsInputLabel,
-  UseTagsInputReturn,
+  type TagsInputContext,
 } from '.'
 import './tags-input.css'
 
-const tagsInputRef = ref<{ context: UseTagsInputReturn }>()
+const tagsInputRef = ref<{ context: TagsInputContext }>()
 
 const values = ref<string[]>(['react', 'solid', 'vue'])
 </script>
