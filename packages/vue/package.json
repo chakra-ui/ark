@@ -37,7 +37,10 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore",
     "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts"
+    "storydocs": "ts-node ../../scripts/generate-stories.ts",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
   },
   "dependencies": {
     "@polymorphic-factory/vue": "0.2.0",
@@ -68,6 +71,7 @@
     "@zag-js/vue": "0.6.0"
   },
   "devDependencies": {
+    "@histoire/plugin-vue": "0.16.1",
     "@testing-library/dom": "9.2.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
@@ -83,6 +87,7 @@
     "clean-package": "2.2.0",
     "eslint": "8.39.0",
     "happy-dom": "9.9.2",
+    "histoire": "0.16.1",
     "jsdom": "21.1.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",

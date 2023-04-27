@@ -5,5 +5,5 @@
     "jsx": "preserve",
     "types": ["vitest/globals"]
   },
-  "include": ["src"]
+  "include": ["src", "env.d.ts"]
 }
