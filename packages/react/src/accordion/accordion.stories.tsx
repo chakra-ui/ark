@@ -110,3 +110,23 @@ export const Controlled = () => {
     </Accordion>
   )
 }
+
+export const AccessItemState = () => {
+  const items = ['panel-1', 'panel-2', 'panel-3']
+  return (
+    <Accordion defaultValue="panel-1">
+      {items.map((item, id) => (
+        <AccordionItem key={id} value={item}>
+          {(state) => (
+            <>
+              <AccordionTrigger>
+                <button>{state.isOpen ? 'Close' : 'Open'}</button>
+              </AccordionTrigger>
+              <AccordionContent>{item} content</AccordionContent>
+            </>
+          )}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+}
