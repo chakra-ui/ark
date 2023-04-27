@@ -18,5 +18,5 @@ export const EditableCancelTrigger = (props: EditableCancelTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import {
   Carousel,
   CarouselNextSlideTrigger,
@@ -7,6 +8,15 @@ import {
   CarouselViewport,
 } from './'
 import './carousel.css'
+
+type CarouselType = typeof Carousel
+
+const meta: Meta<CarouselType> = {
+  title: 'Carousel',
+  component: Carousel,
+}
+
+export default meta
 
 export const images = [
   'https://tinyurl.com/5b6ka8jd',

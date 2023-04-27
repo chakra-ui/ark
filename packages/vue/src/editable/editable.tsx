@@ -1,5 +1,4 @@
 import {
-  computed,
   defineComponent,
   reactive,
   watchEffect,
@@ -10,11 +9,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { useEditable, type UseEditableContext } from './use-editable'
 
-type UseEditablePropsContext = UseEditableProps['context']
-
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditablePropsContext>
+export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableContext>
 
 const VueEditableProps: ComponentObjectPropsOptions = {
   activationMode: {
@@ -81,12 +78,7 @@ export const Editable: ComponentWithProps<EditableProps> = defineComponent({
   props: VueEditableProps,
   emits: ['cancel', 'change', 'update:modelValue', 'edit', 'submit'],
   setup(props, { slots, attrs, emit, expose }) {
-    const editableProps = computed<UseEditableProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useEditable(editableProps.value)
+    const api = useEditable(emit, props)
 
     EditableProvider(api)
 

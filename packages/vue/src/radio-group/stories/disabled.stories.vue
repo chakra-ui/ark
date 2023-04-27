@@ -7,7 +7,7 @@ import {
   RadioLabel,
   RadioInput,
   RadioControl,
-  RadioGroupProps,
+  type RadioGroupProps,
 } from '../index'
 
 const options = [

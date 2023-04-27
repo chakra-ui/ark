@@ -22,5 +22,5 @@ export const TagDeleteTrigger = (props: TagDeleteTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

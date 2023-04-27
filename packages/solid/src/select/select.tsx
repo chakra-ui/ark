@@ -29,6 +29,7 @@ export const Select = (props: SelectProps) => {
     'onChange',
     'onClose',
     'onHighlight',
+    'onInteractOutside',
     'onOpen',
     'positioning',
     'readOnly',

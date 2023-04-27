@@ -34,6 +34,7 @@ export const Editable = forwardRef<'div', EditableProps>((props, ref) => {
       'onCancel',
       'onChange',
       'onEdit',
+      'onInteractOutside',
       'onSubmit',
       'placeholder',
       'readOnly',

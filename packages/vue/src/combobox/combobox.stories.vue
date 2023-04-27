@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import {
   Combobox,
   ComboboxContent,
@@ -7,9 +7,9 @@ import {
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
-  ComboboxOptionProps,
+  type ComboboxOptionProps,
   ComboboxPositioner,
-  ComboboxProps,
+  type ComboboxProps,
   ComboboxTrigger,
 } from './'
 import './combobox.css'

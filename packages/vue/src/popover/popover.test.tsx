@@ -73,14 +73,14 @@ describe('Popover', () => {
           isOpen.value = !isOpen.value
         }
 
-        const handleOnOpenChange = (open: boolean) => {
-          return (isOpen.value = open)
+        const handleClose = () => {
+          return (isOpen.value = false)
         }
 
         return () => (
           <>
             <button onClick={handleToggleClick}>toggle</button>
-            <ComponentUnderTest isOpen={isOpen.value} onOpenChange={handleOnOpenChange} />
+            <ComponentUnderTest isOpen={isOpen.value} onClose={handleClose} />
           </>
         )
       },

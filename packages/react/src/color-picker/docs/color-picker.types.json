@@ -1,0 +1,46 @@
+{
+  "ColorPickerProps": {
+    "defaultValue": { "type": "string", "isRequired": false },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The direction of the color picker"
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the color picker is disabled"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "onChange": {
+      "type": "(details: ChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the value changes, as the user drags."
+    },
+    "onChangeEnd": {
+      "type": "(details: ChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the user stops dragging."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the color picker is read-only"
+    },
+    "value": { "type": "string", "isRequired": false, "description": "The current color value" }
+  },
+  "ColorPickerAreaProps": {
+    "xChannel": { "type": "ColorChannel", "isRequired": true },
+    "yChannel": { "type": "ColorChannel", "isRequired": true }
+  },
+  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
+}

@@ -18,5 +18,5 @@ export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

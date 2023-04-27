@@ -18,5 +18,5 @@ export const NumberInputIncrementTrigger = (props: NumberInputIncrementTriggerPr
     }
   })
 
-  return getChildren
+  return getChildren()
 }

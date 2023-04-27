@@ -6,7 +6,7 @@
       "description": "Whether the select should close after an option is selected"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -21,7 +21,7 @@
       "description": "The associate form of the underlying select."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -66,6 +66,11 @@
       "isRequired": false,
       "description": "The callback fired when the highlighted option changes."
     },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on select when composing it with other components."
+    },
     "onOpen": {
       "type": "() => void",
       "isRequired": false,
@@ -80,6 +85,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
     },
     "selectOnTab": {
       "type": "boolean",

@@ -5,13 +5,8 @@
       "isRequired": false,
       "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to open the hover card on page load"
-    },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -30,10 +25,20 @@
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
-    "onOpenChange": {
-      "type": "(open: boolean) => void",
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function invoked when the hover card is closed."
+    },
+    "onOpen": {
+      "type": "VoidFunction",
       "isRequired": false,
       "description": "Function invoked when the hover card is opened."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the hover card is open"
     },
     "openDelay": {
       "type": "number",
