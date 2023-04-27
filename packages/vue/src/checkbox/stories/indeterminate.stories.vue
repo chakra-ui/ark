@@ -26,7 +26,7 @@ watch(
 )
 </script>
 <template>
-  <Checkbox v-model:checked="parentChecked" v-model:indeterminate="someChecked">
+  <Checkbox v-model:checked="parentChecked" :indeterminate="someChecked">
     <CheckboxLabel>Parent Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl data-testid="parent-control">

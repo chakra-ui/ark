@@ -3,9 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, watch } from 'vue'
 import { useId } from '../utils'
 
-export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
-  modelValue?: CheckboxContext['checked']
-}
+export type UseCheckboxContext = Omit<CheckboxContext, 'id'>
 
 export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext) => {
   const reactiveContext = reactive(context)
@@ -14,10 +12,9 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
     machine({
       ...reactiveContext,
       id: useId().value,
-      checked: reactiveContext.modelValue ?? reactiveContext.checked,
       onChange(details) {
         emit('change', details.checked)
-        emit('update:modelValue', !details.checked)
+        emit('update:checked', !details.checked)
       },
     }),
   )
@@ -25,7 +22,7 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => reactiveContext.modelValue,
+    () => reactiveContext.checked,
     (value) => {
       if (value === undefined) return
 
@@ -36,7 +33,7 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
   )
 
   watch(
-    () => context.indeterminate,
+    () => reactiveContext.indeterminate,
     (value, oldValue) => {
       if (value == undefined || value === oldValue) return
       api.value.setIndeterminate(value)
