@@ -14,28 +14,17 @@ concurrency:
 jobs:
   release:
     name: Release
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@v3
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
-          registry-url: 'https://registry.npmjs.org'
+          fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
+      - name: Install
+        uses: ./.github/composite-actions/install
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build packages
+      - name: Build
         run: pnpm build --filter=\!@ark-ui/website
 
       - name: Create release Pull Request or publish to NPM

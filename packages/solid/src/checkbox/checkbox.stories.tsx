@@ -1,7 +1,4 @@
-import { Checkbox } from './checkbox'
-import { CheckboxControl } from './checkbox-control'
-import { CheckboxInput } from './checkbox-input'
-import { CheckboxLabel } from './checkbox-label'
+import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from './'
 import './checkbox.css'
 
 export const Basic = () => (

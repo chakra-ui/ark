@@ -1,4 +1,4 @@
-import { children, createEffect, JSX } from 'solid-js'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { ssrSpread } from '../ssr-spread'
 import { useDialogContext } from './dialog-context'
@@ -18,5 +18,5 @@ export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

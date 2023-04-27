@@ -8,7 +8,7 @@ import {
   NumberInputField,
   NumberInputIncrementTrigger,
   NumberInputLabel,
-  NumberInputProps,
+  type NumberInputProps,
 } from './'
 
 const Component = (props: NumberInputProps) => (

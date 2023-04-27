@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useEditableContext } from './editable-context'
 
 export type EditableCancelTriggerProps = { children: ReactElement }

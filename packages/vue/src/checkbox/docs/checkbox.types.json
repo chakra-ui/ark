@@ -7,13 +7,13 @@
       "description": "Defines the string that labels the checkbox element."
     },
     "aria-labelledby": { "type": "string", "isRequired": false },
-    "defaultChecked": {
+    "checked": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the checkbox will be initially checked."
+      "description": "If `true`, the checkbox will be checked."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -33,7 +33,7 @@
       "description": "The associate form of the underlying checkbox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -78,9 +78,5 @@
       "isRequired": false,
       "description": "The value to be used in the checkbox input.\nThis is the value that will be returned on form submission."
     }
-  },
-  "UseCheckboxProps": {
-    "context": { "type": "CheckboxPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
   }
 }

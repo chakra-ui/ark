@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
+import { type UseMenuReturn } from './use-menu'
 
 type MenuItemGroupParams = Parameters<
   ReturnType<ReturnType<UseMenuReturn>['api']>['getItemGroupProps']

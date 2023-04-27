@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
+import { ark, type HTMLArkProps } from '../factory'
+import { type ComponentWithProps } from '../utils'
 import { useSliderContext } from './slider-context'
 
 export type SliderThumbProps = HTMLArkProps<'div'>

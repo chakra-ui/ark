@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel, RatingGroupProps } from '.'
+import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel, type RatingGroupProps } from '.'
 
 const ComponentUnderTest = (props: RatingGroupProps) => (
   <RatingGroup {...props}>

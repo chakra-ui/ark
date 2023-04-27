@@ -63,14 +63,14 @@ export const select = defineRecipe({
           borderColor: 'border.emphasized',
           borderRadius: 'lg',
           borderWidth: '1px',
-          boxShadow: 'xs',
           color: 'fg.default',
           textAlign: 'left',
+          width: 'full',
           _focus: {
             zIndex: 1,
             '--shadow': {
-              base: 'colors.purple.500',
-              _dark: 'colors.purple.200',
+              base: 'colors.orange.400',
+              _dark: 'colors.orange.400',
             },
             boxShadow: '0 0 0 1px var(--shadow)',
             borderColor: 'accent.default',

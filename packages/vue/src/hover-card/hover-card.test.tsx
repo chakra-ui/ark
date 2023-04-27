@@ -7,11 +7,9 @@ import {
   HoverCardArrowTip,
   HoverCardContent,
   HoverCardPositioner,
-  HoverCardProps,
   HoverCardTrigger,
+  type HoverCardProps,
 } from '.'
-
-const wait = (delay = 100) => new Promise((resolve) => setTimeout(resolve, delay))
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard openDelay={0} closeDelay={0} {...props}>
@@ -48,10 +46,10 @@ describe('HoverCard', () => {
     await waitFor(() => expect(hoverContent).not.toBeVisible())
   })
 
-  it('should have onOpenChange invoked when component is opened or closed', async () => {
-    const onOpenChange = vi.fn()
+  it('should have onClose invoked when component is closed', async () => {
+    const onClose = vi.fn()
 
-    const { getByText } = render(ComponentUnderTest, { props: { onOpenChange } })
+    const { getByText } = render(ComponentUnderTest, { props: { onClose } })
 
     const target = getByText(/Trigger/i)
     await user.hover(target)
@@ -61,6 +59,6 @@ describe('HoverCard', () => {
 
     await user.unhover(target)
     await waitFor(() => expect(hoverContent).not.toBeVisible())
-    expect(onOpenChange).toHaveBeenCalledTimes(3)
+    expect(onClose).toHaveBeenCalledTimes(2)
   })
 })

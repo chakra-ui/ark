@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useToastItemContext } from './toast-item-context'
 
 export type ToastTitleProps = HTMLArkProps<'h3'>

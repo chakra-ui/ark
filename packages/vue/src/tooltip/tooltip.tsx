@@ -1,11 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import type { ComponentWithProps } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipContext } from './use-tooltip'
 
-type UseTooltipPropsContext = UseTooltipProps['context']
-
-export type TooltipProps = UseTooltipPropsContext
+export type TooltipProps = UseTooltipContext
 
 const VueTooltipProps = {
   ids: {
@@ -46,12 +44,7 @@ export const Tooltip: ComponentWithProps<TooltipProps> = defineComponent({
   props: VueTooltipProps,
   emits: ['open', 'close'],
   setup(props, { slots, emit }) {
-    const tooltipProps = computed<UseTooltipProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useTooltip(tooltipProps.value)
+    const api = useTooltip(emit, props)
 
     TooltipProvider(api)
 

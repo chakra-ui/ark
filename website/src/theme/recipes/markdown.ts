@@ -45,39 +45,14 @@ export const markdown = defineRecipe({
     },
     '& [data-rehype-pretty-code-fragment]': {
       my: '8',
-      backgroundColor: 'gray.950',
-      borderRadius: 'lg',
-      overflowY: 'hidden',
+    },
+    '& [data-rehype-pretty-code-fragment] pre': {
+      background: 'brown.600 !important',
     },
     '& pre': {
-      boxShadow: 'sm',
-      fontFamily: 'var(--font-roboto-mono)',
-      py: '5',
-      wordBreak: 'break-word',
-    },
-    '& [data-rehype-pretty-code-title]': {
-      padding: '12px 20px',
-      background: '#1e1e1e',
-      color: '#888888',
-      borderRadius: '10px 10px 0 0',
-      fontSize: '14px',
-      borderBottom: '1px solid token(colors.gray.900)',
-    },
-    '& code:not([class])': {
-      fontFamily: 'var(--font-roboto-mono)',
-      textStyle: 'sm',
-    },
-    '& pre > code': {
-      display: 'grid',
-    },
-    '& pre > code > .line': {
-      px: '5',
-      borderLeftWidth: '2px',
-      borderColor: 'transparent',
-    },
-    '& pre > code > .line.highlighted': {
-      bg: 'gray.800',
-      borderColor: 'purple.500',
+      borderRadius: 'lg',
+      borderWidth: '1px',
+      p: '4',
     },
     '& kbd': {
       background: 'bg.subtle',
@@ -87,9 +62,10 @@ export const markdown = defineRecipe({
       borderBottomWidth: '3px',
       fontSize: 'xs',
       fontWeight: 'bold',
-      fontFamily: 'var(--font-roboto-mono)',
+      fontFamily: 'var(--font-fira-code)',
       lineHeight: 'normal',
       px: '1',
+      py: '0.5',
       whiteSpace: 'nowrap',
     },
     '& :first-child': {
@@ -97,6 +73,12 @@ export const markdown = defineRecipe({
     },
     '& :last-child': {
       mb: '0',
+    },
+    '& blockquote': {
+      padding: '1em',
+      borderWidth: '1px',
+      mb: '4',
+      borderRadius: '0.5em',
     },
   },
 })

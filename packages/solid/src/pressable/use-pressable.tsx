@@ -2,7 +2,7 @@ import * as pressable from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createUniqueId, mergeProps } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UsePressableProps = Optional<pressable.Context, 'id'>
 export type UsePressableReturn = ReturnType<typeof usePressable>

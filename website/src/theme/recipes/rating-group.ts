@@ -14,20 +14,27 @@ export const ratingGroup = defineRecipe({
     },
     rating: {
       cursor: 'pointer',
-      color: 'bg.muted',
-      fill: 'bg.muted',
+      color: {
+        base: 'gray.300',
+        _dark: 'brown.300',
+      },
+      fill: {
+        base: 'gray.300',
+        _dark: 'brown.300',
+      },
       transitionProperty: 'base',
       transitionDuration: '50',
-      '--stop-color-active': {
-        base: 'colors.purple.500',
-        _dark: 'colors.purple.200',
-      },
-      '--stop-color-inactive': {
-        base: 'colors.gray.300',
-        _dark: 'colors.gray.600',
-      },
+      // TODO fix me
+      // '--stop-color-active': {
+      //   base: 'colors.orange.400',
+      //   _dark: 'colors.orange.400',
+      // },
+      // '--stop-color-inactive': {
+      //   base: 'colors.gray.300',
+      //   _dark: 'colors.brown.300',
+      // },
       _focus: {
-        outline: 'none',
+        outline: 0,
       },
       '& svg': {
         width: '10',

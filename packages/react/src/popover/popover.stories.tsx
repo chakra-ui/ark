@@ -1,6 +1,8 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import {
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverArrowTip,
   PopoverCloseTrigger,
@@ -10,6 +12,15 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from './'
+
+type PopoverType = typeof Popover
+
+const meta: Meta<PopoverType> = {
+  title: 'Popover',
+  component: Popover,
+}
+
+export default meta
 
 export const Basic = () => (
   <Popover>
@@ -33,15 +44,14 @@ export const Basic = () => (
 )
 
 export const Controlled = () => {
-  const [isOpen, setOpen] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen((prev) => !prev)}>Toggle control</button>
-      <Popover isOpen={isOpen} onOpenChange={setOpen}>
-        <PopoverTrigger>
-          <button>click me</button>
-        </PopoverTrigger>
+      <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
+      <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <PopoverAnchor>
+          <span>anchor</span>
+        </PopoverAnchor>
         <PopoverPositioner>
           <PopoverArrow>
             <PopoverArrowTip />

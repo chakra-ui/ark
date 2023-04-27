@@ -1,6 +1,16 @@
+import type { Meta } from '@storybook/react'
 import { useId, useState } from 'react'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '.'
+import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 import './splitter.css'
+
+type SplitterType = typeof Splitter
+
+const meta: Meta<SplitterType> = {
+  title: 'Splitter',
+  component: Splitter,
+}
+
+export default meta
 
 const Basic = (props: Partial<SplitterProps>) => {
   const [first, second] = [useId(), useId()].map((id) => id.replaceAll(':', '-'))

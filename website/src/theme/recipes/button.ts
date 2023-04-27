@@ -88,7 +88,6 @@ export const button = defineRecipe({
         color: 'fg.emphasized',
         _hover: {
           color: 'fg.default',
-          background: 'bg.subtle',
           _disabled: {
             borderColor: 'border.default',
             color: 'fg.subtle',

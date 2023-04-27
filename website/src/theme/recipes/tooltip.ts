@@ -11,14 +11,14 @@ export const tooltip = defineRecipe({
       py: '2',
       px: '3',
       backgroundColor: {
-        base: 'gray.950',
-        _dark: 'white',
+        base: 'brown.600',
+        _dark: 'gray.100',
       },
       boxShadow: 'lg',
       borderRadius: 'lg',
       color: {
-        base: 'white',
-        _dark: 'gray.950',
+        base: 'gray.100',
+        _dark: 'brown.600',
       },
     },
     content: {
@@ -28,8 +28,8 @@ export const tooltip = defineRecipe({
     arrow: {
       '--arrow-size': 'sizes.2',
       '--arrow-background': {
-        base: 'colors.gray.950',
-        _dark: 'colors.white',
+        base: 'colors.brown.600',
+        _dark: 'colors.gray.100',
       },
     },
   }),

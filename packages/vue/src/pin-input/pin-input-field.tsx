@@ -1,6 +1,6 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type ComponentWithProps } from '../utils'
 import { usePinInputContext } from './pin-input-context'
 
 export type PinInputFieldProps = HTMLArkProps<'input'> & { index: number }

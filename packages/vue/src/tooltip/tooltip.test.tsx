@@ -6,8 +6,8 @@ import {
   TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
-  TooltipProps,
   TooltipTrigger,
+  type TooltipProps,
 } from '.'
 
 const Component = (props: TooltipProps) => (

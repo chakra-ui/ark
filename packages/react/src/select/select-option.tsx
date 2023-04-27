@@ -1,7 +1,7 @@
-import { Assign, forwardRef } from '@polymorphic-factory/react'
+import { forwardRef, type Assign } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
 type OptionProps = Parameters<ReturnType<typeof useSelectContext>['getOptionProps']>[0]

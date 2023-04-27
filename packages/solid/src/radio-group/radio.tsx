@@ -1,7 +1,7 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import { RadioContext, RadioProvider } from './radio-context'
+import { ark, type HTMLArkProps } from '../factory'
+import { RadioProvider, type RadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioProps = Assign<HTMLArkProps<'label'>, RadioContext>

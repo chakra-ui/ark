@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, UsePinInputProps } from './use-pin-input'
+import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
 export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 

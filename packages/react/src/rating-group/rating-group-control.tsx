@@ -1,9 +1,9 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import type { ReactNode } from 'react'
-import { ark, HTMLArkProps } from '../factory'
+import { type ReactNode } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { RatingGroupContext, useRatingGroupContext } from './rating-group-context'
+import { useRatingGroupContext, type RatingGroupContext } from './rating-group-context'
 
 export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
   children: ReactNode | ((context: RatingGroupContext) => ReactNode)

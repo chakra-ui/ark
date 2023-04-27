@@ -1,6 +1,7 @@
 import { Link } from '@/components/shared/Link'
 import { Box, HStack, panda } from '@/panda/jsx'
 import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
+import { RiRoadMapFill } from 'react-icons/ri'
 
 const links = [
   {
@@ -19,6 +20,11 @@ const links = [
     href: 'https://github.com/chakra-ui/ark/',
     icon: <FaGithub />,
   },
+  {
+    label: 'Roadmap',
+    href: 'https://ark-ui.canny.io/',
+    icon: <RiRoadMapFill />,
+  },
 ]
 
 export const SidebarExternalLinks = () => (
@@ -36,12 +42,12 @@ export const SidebarExternalLinks = () => (
       <li key={link.label}>
         <Link
           color="inherit"
-          _currentPage={{ color: 'accent.default', fontWeight: 'semibold' }}
+          _currentPage={{ color: 'accent.muted', fontWeight: 'semibold' }}
           aria-current={link.isActive ? 'page' : false}
           href={link.href}
           target="_blank"
         >
-          <HStack gap="4">
+          <HStack gap="3">
             <Box
               display="flex"
               justifyContent="center"

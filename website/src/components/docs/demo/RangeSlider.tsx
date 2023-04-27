@@ -4,10 +4,10 @@ import {
   RangeSliderControl,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
-  RangeSliderProps,
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
+  type RangeSliderProps,
 } from '@ark-ui/react'
 
 export const DemoRangeSlider = (props: Partial<RangeSliderProps>) => (

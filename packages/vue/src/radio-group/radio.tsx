@@ -1,7 +1,7 @@
-import { defineComponent, PropType, reactive } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
-import { RadioContext, RadioProvider, useRadioGroupContext } from './radio-context'
+import { defineComponent, reactive, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { getValidChildren, type ComponentWithProps } from '../utils'
+import { RadioProvider, useRadioGroupContext, type RadioContext } from './radio-context'
 
 export type RadioProps = Omit<HTMLArkProps<'label'>, keyof RadioContext> & RadioContext
 

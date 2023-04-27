@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event'
-import { render, waitFor } from '@testing-library/vue'
-import { defineComponent, Fragment, ref } from 'vue'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, CheckboxProps } from '.'
+import { render } from '@testing-library/vue'
+import { Fragment, defineComponent, ref } from 'vue'
+import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, type CheckboxProps } from '.'
 
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox {...props}>
@@ -48,6 +48,6 @@ describe('Checkbox', () => {
 
     expect(getByRole('checkbox')).not.toBeChecked()
     await user.click(getByText('set checked'))
-    await waitFor(() => expect(getByRole('checkbox')).toBeChecked())
+    expect(getByRole('checkbox')).toBeChecked()
   })
 })

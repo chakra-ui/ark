@@ -1,5 +1,15 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.'
+
+type AccordionType = typeof Accordion
+
+const meta: Meta<AccordionType> = {
+  title: 'Accordion',
+  component: Accordion,
+}
+
+export default meta
 
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

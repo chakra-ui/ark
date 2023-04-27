@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { fireEvent, render, RenderOptions, waitFor } from '@testing-library/vue'
+import { fireEvent, render, waitFor, type RenderOptions } from '@testing-library/vue'
 import { nextTick } from 'vue'
 import { Menu, MenuContent, MenuContextTrigger, MenuItem, MenuPositioner, MenuTrigger } from '.'
 import BasicComponentStory from './stories/basic.stories.vue'

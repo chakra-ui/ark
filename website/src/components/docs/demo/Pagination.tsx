@@ -7,7 +7,7 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-  PaginationProps,
+  type PaginationProps,
 } from '@ark-ui/react'
 
 export const DemoPagination = (props: Partial<PaginationProps>) => (

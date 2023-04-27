@@ -9,9 +9,9 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogProps,
   DialogTitle,
   DialogTrigger,
+  type DialogProps,
 } from './'
 
 const ComponentUnderTest = (props: DialogProps) => (
@@ -39,12 +39,12 @@ const ComponentUnderTest = (props: DialogProps) => (
 
 describe('Dialog', () => {
   it('should render', async () => {
-    render(<ComponentUnderTest defaultOpen />)
+    render(<ComponentUnderTest open />)
   })
 
   it('should invoke onClose if dialog is closed', async () => {
     const onClose = vi.fn()
-    render(<ComponentUnderTest defaultOpen onClose={onClose} />)
+    render(<ComponentUnderTest open onClose={onClose} />)
     await user.click(screen.getByText('Close'))
 
     expect(onClose).toHaveBeenCalledTimes(1)

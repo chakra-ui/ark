@@ -1,16 +1,16 @@
 import {
-  AllowedComponentProps,
   cloneVNode,
-  ComponentCustomProps,
   computed,
   isVNode,
   onBeforeMount,
   onMounted,
   reactive,
   ref,
-  Slots,
-  VNode,
-  VNodeProps,
+  type AllowedComponentProps,
+  type ComponentCustomProps,
+  type Slots,
+  type VNode,
+  type VNodeProps,
 } from 'vue'
 
 /**

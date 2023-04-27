@@ -1,5 +1,5 @@
 import { children, createEffect } from 'solid-js'
-import type { JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js/jsx-runtime'
 import { spread } from 'solid-js/web'
 import { ssrSpread } from '../ssr-spread'
 import { useTooltipContext } from './tooltip-context'
@@ -19,5 +19,5 @@ export const TooltipTrigger = (props: TooltipTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

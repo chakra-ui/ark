@@ -12,14 +12,14 @@ export const Community = () => {
       description: 'To get involved in the community, ask questions.',
       icon: <RiDiscordFill />,
       callToAction: 'Join us',
-      href: 'https://discord.gg/ark', // TODO update this
+      href: 'https://discord.com/invite/dQHfcWF', // TODO update this
     },
     {
       name: 'Twitter',
       description: 'Follow now for announcements and new features.',
       icon: <RiTwitterFill />,
       callToAction: 'Follow us',
-      href: 'https://twitter.com/ark_ui', // TODO update this
+      href: 'https://twitter.com/ark_ui_',
     },
     {
       name: 'GitHub',
@@ -52,8 +52,10 @@ export const Community = () => {
               alignSelf="stretch"
             >
               <Stack gap={{ base: '8', md: '12' }} justify="space-between">
-                <Box fontSize="4xl">{channel.icon}</Box>
-                <Stack gap={{ base: '4', md: '5' }}>
+                <Box fontSize="4xl" color="accent.default">
+                  {channel.icon}
+                </Box>
+                <Stack gap={{ base: '4', md: '5' }} alignItems="start">
                   <Stack gap={{ base: '1', md: '2' }}>
                     <Heading textStyle="lg" fontWeight="semibold">
                       {channel.name}
@@ -65,6 +67,7 @@ export const Community = () => {
                   <Button
                     variant="link"
                     href={channel.href}
+                    target="_blank"
                     size="lg"
                     color="accent.default"
                     rightIcon={<FiArrowRight />}

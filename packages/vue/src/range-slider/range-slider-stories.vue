@@ -10,13 +10,13 @@ import {
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
-  type UseRangeSliderReturn,
+  type RangeSliderContext,
 } from './'
 import './range-slider.css'
 
 const valuesRef = ref([-20, 20])
 
-const outputRef = ref<{ context: UseRangeSliderReturn }>()
+const outputRef = ref<{ context: RangeSliderContext }>()
 </script>
 <template>
   <RangeSlider :min="-50" :max="50" v-model="valuesRef">

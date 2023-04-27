@@ -1,10 +1,11 @@
+'use client'
 import { css, cx } from '@/panda/css'
-import { HTMLPandaProps, panda } from '@/panda/jsx'
-import { button, ButtonVariants } from '@/panda/recipes'
+import { panda, type HTMLPandaProps } from '@/panda/jsx'
+import { button, type ButtonVariantProps } from '@/panda/recipes'
 import { cloneElement, isValidElement } from 'react'
 
 export type IconButtonProps = HTMLPandaProps<'button'> &
-  ButtonVariants & { icon?: React.ReactElement; 'aria-label': string }
+  ButtonVariantProps & { icon?: React.ReactElement; 'aria-label': string }
 
 export const IconButton = (props: IconButtonProps) => {
   const { icon, variant, size, children, ...rest } = props

@@ -1,7 +1,7 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { createSplitProps } from '../create-split-props'
-import type { Assign } from '../types'
-import type { TagProps } from './tag'
+import { type Assign } from '../types'
+import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagDeleteTriggerProps = Assign<TagProps, { children: ReactElement }>

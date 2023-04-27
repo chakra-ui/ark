@@ -1,5 +1,4 @@
-import type { JSX } from 'solid-js'
-import { children } from 'solid-js'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'
@@ -14,7 +13,6 @@ export const Dialog = (props: DialogProps) => {
     'aria-label',
     'closeOnEsc',
     'closeOnOutsideClick',
-    'defaultOpen',
     'dir',
     'finalFocusEl',
     'getRootNode',
@@ -25,6 +23,7 @@ export const Dialog = (props: DialogProps) => {
     'onClose',
     'onEsc',
     'onOutsideClick',
+    'open',
     'preventScroll',
     'restoreFocus',
     'role',
@@ -32,7 +31,7 @@ export const Dialog = (props: DialogProps) => {
     'onOpen',
   ])
   const dialog = useDialog(useDialogProps)
-  const view = () => children(() => runIfFn(restProps.children, dialog()))
+  const view = children(() => runIfFn(restProps.children, dialog()))
 
-  return <DialogProvider value={dialog}>{view}</DialogProvider>
+  return <DialogProvider value={dialog}>{view()}</DialogProvider>
 }

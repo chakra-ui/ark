@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter, UseSplitterProps } from './use-splitter'
+import { useSplitter, type UseSplitterProps } from './use-splitter'
 
 export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
 

@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import { type Assign } from '../types'
 import { SelectProvider } from './select-context'
-import { useSelect, UseSelectProps, UseSelectReturn } from './use-select'
+import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 
 export type SelectProps = Assign<
   UseSelectProps,
@@ -29,11 +29,12 @@ export const Select = (props: SelectProps) => {
     'onChange',
     'onClose',
     'onHighlight',
+    'onInteractOutside',
     'onOpen',
     'positioning',
     'readOnly',
-    'selectOnTab',
     'selectedOption',
+    'selectOnTab',
   ])
   const select = useSelect(useSelectProps)
   const view = runIfFn(children, select)

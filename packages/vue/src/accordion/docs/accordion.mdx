@@ -1,7 +1,9 @@
 ---
 id: accordion
 name: Accordion
-description: An accordion is a vertically stacked set of interactive headings containing a title, content snippet, or thumbnail representing a section of content.
+description:
+  An accordion is a vertically stacked set of interactive headings containing a
+  title, content snippet, or thumbnail representing a section of content.
 ---
 
 ## Import
@@ -17,8 +19,8 @@ import {
 
 ## Usage
 
-The Accordion component consists of the `Accordion`, `AccordionTrigger`, `AccordionItem` and
-`AccordionContent` components.
+The Accordion component consists of the `Accordion`, `AccordionTrigger`,
+`AccordionItem` and `AccordionContent` components.
 
 ```tsx
 <Accordion>
@@ -40,8 +42,8 @@ The Accordion component consists of the `Accordion`, `AccordionTrigger`, `Accord
 
 ### Allow toggling the open state
 
-To collapse an already expanded accordion item by clicking on it, set the `collapsible` prop
-property to `true`.
+To collapse an already expanded accordion item by clicking on it, set the
+`collapsible` prop property to `true`.
 
 :::note
 
@@ -69,8 +71,9 @@ If `multiple` is `true`, we internally set collapsible to be true.
 
 ### Allow multiple open accordions at once
 
-To allow multiple items to be expanded at once, set `multiple` to `true`. This mode implicitly sets
-`collapsible` to `true` and ensures that each accordion can be expanded.
+To allow multiple items to be expanded at once, set `multiple` to `true`. This
+mode implicitly sets `collapsible` to `true` and ensures that each accordion can
+be expanded.
 
 ```tsx
 <Accordion multiple>
@@ -92,8 +95,9 @@ To allow multiple items to be expanded at once, set `multiple` to `true`. This m
 
 ### Disable specific accordion items
 
-To disable a specific accordion item, set the `disabled` prop to `true`. When an accordion item is
-disabled, it is skipped from keyboard navigation and can't be interacted with.
+To disable a specific accordion item, set the `disabled` prop to `true`. When an
+accordion item is disabled, it is skipped from keyboard navigation and can't be
+interacted with.
 
 ```tsx
 <Accordion>
@@ -115,8 +119,8 @@ disabled, it is skipped from keyboard navigation and can't be interacted with.
 
 ### Uncontrolled usage with `defaultValue`
 
-Expand accordion items by default with setting `defaultValue` to the value of an `AccordionItem`.
-The `defaultValue` should be of type `string | string[] | null`
+Expand accordion items by default with setting `defaultValue` to the value of an
+`AccordionItem`. The `defaultValue` should be of type `string | string[] | null`
 
 ```tsx
 <Accordion defaultValue="panel-2">
@@ -138,8 +142,8 @@ The `defaultValue` should be of type `string | string[] | null`
 
 ### Controlled usage with `v-model`
 
-The accordion item accepts a `v-model` prop, to allow a controlled usage. The `v-model`
-prop should be of type `string | string[] | null`.
+The accordion item accepts a `v-model` prop, to allow a controlled usage. The
+`v-model` prop should be of type `string | string[] | null`.
 
 ```tsx
 <script setup>

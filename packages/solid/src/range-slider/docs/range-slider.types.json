@@ -11,7 +11,7 @@
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

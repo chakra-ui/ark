@@ -1,8 +1,8 @@
 import { computed, defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
+import { ark, type HTMLArkProps } from '../factory'
+import { type ComponentWithProps } from '../utils'
 import { useAccordionContext } from './accordion-context'
-import { AccordionItemContext, AccordionItemProvider } from './accordion-item-context'
+import { AccordionItemProvider, type AccordionItemContext } from './accordion-item-context'
 
 const VueAccordionItemProps = {
   value: {

@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipTriggerProps = { children: ReactElement }

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, PinInputProps } from './'
+import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputProps } from './'
 
 const Component = (props: PinInputProps) => (
   <PinInput {...props}>
@@ -27,7 +27,7 @@ describe('PinInput', () => {
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })
 
-  it(' should move foucs to the next item when enter a value', async () => {
+  it('should move focus to the next item when enter a value', async () => {
     render(<Component />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
@@ -37,7 +37,7 @@ describe('PinInput', () => {
     await waitFor(() => expect(screen.getByLabelText('pin code 3 of 3')).toHaveFocus())
   })
 
-  it('shoud clear the previous input when pressing backspace', async () => {
+  it('should clear the previous input when pressing backspace', async () => {
     render(<Component />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')

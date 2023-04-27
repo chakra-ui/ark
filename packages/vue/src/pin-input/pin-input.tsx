@@ -1,13 +1,11 @@
-import { ComponentPropsOptions, computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type ComponentPropsOptions, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, UsePinInputProps } from './use-pin-input'
+import { usePinInput, type UsePinInputContext } from './use-pin-input'
 
-type UsePinInputPropsContext = UsePinInputProps['context']
-
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputPropsContext>
+export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputContext>
 
 const VuePinInputProps: ComponentPropsOptions = {
   autoFocus: {
@@ -71,12 +69,7 @@ export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
   props: VuePinInputProps,
   emits: ['change', 'update:modelValue', 'invalid', 'complete'],
   setup(props, { slots, attrs, emit }) {
-    const pinInputProps = computed<UsePinInputProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = usePinInput(pinInputProps.value)
+    const api = usePinInput(emit, props)
 
     PinInputProvider(api)
 

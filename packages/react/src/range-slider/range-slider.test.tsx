@@ -8,10 +8,10 @@ import {
   RangeSliderMarker,
   RangeSliderMarkerGroup,
   RangeSliderOutput,
-  RangeSliderProps,
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
+  type RangeSliderProps,
 } from './'
 
 const ComponentUnderTest = (props: RangeSliderProps) => {

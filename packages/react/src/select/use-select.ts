@@ -2,7 +2,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseSelectProps = Optional<select.Context, 'id'> & {
   defaultValue?: select.Context['selectedOption']

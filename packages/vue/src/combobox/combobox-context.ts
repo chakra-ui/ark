@@ -1,5 +1,5 @@
-import type { connect } from '@zag-js/combobox'
-import type { ComputedRef } from 'vue'
+import { type connect } from '@zag-js/combobox'
+import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
 
 export const [ComboboxProvider, useComboboxContext] =

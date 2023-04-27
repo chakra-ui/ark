@@ -5,9 +5,8 @@
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
-    "defaultValue": { "type": "string | string[]", "isRequired": false },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -17,7 +16,7 @@
       "description": "Whether the accordion items are disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,25 +40,15 @@
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "The orientation of the accordion items."
+    },
+    "value": {
+      "type": "string | string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
     }
   },
   "AccordionItemProps": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "AccordionItemContext": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "UseAccordionProps": {
-    "context": { "type": "Omit<AccordionProps, 'id'>", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true },
-    "defaultValue": { "type": "string | string[]", "isRequired": false }
-  },
-  "UseAccordionReturn": {
-    "api": {
-      "type": "ComputedRef<{ rootProps: Attrs<HTMLAttributes>; getItemProps(props: ItemProps): Attrs<HTMLAttributes>; getContentProps(props: ItemProps): Attrs<...>; ... 4 more ...; getItemState: (props: ItemProps) => { ...; }; }>",
-      "isRequired": true
-    }
   }
 }

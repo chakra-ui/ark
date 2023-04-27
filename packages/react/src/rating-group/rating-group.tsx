@@ -1,10 +1,10 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, UseRatingGroupProps } from './use-rating-group'
+import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
 export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupProps>
 
