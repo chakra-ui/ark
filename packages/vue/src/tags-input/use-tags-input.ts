@@ -1,8 +1,8 @@
 import { connect, machine, type Context as TagsInputContext } from '@zag-js/tags-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import type { Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
 type UseTagsInputPropsContext = Optional<TagsInputContext, 'id'> & {
   modelValue?: TagsInputContext['value']
@@ -13,14 +13,14 @@ export type UseTagsInputProps = {
   emit: CallableFunction
 }
 
-export const useTagsInput = (props: UseTagsInputProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useTagsInput = (emit: CallableFunction, context: UseTagsInputPropsContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.values)

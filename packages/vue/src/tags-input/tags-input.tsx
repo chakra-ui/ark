@@ -1,4 +1,4 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { getValidChildren } from '../utils'
@@ -81,12 +81,7 @@ export const TagsInput = defineComponent({
   props: VueTagsInputProps,
   emits: ['change', 'update:modelValue', 'highlight', 'invalid', 'tag-update'],
   setup(props, { slots, attrs, emit, expose }) {
-    const tagsInputProps = computed<UseTagsInputProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useTagsInput(tagsInputProps.value)
+    const api = useTagsInput(emit, props)
 
     TagsInputProvider(api)
 
