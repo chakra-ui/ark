@@ -1,5 +1,6 @@
 export { Select, type SelectProps } from './select'
 export { SelectContent, type SelectContentProps } from './select-content'
+export type { SelectContext } from './select-context'
 export { SelectLabel, type SelectLabelProps } from './select-label'
 export { SelectOption, type SelectOptionProps } from './select-option'
 export { SelectOptionGroup, type SelectOptionGroupProps } from './select-option-group'
