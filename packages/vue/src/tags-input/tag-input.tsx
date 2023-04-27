@@ -1,4 +1,4 @@
-import { defineComponent, ref, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import type { ComponentWithProps } from '../utils'
@@ -25,26 +25,15 @@ export const TagInput: ComponentWithProps<TagInputProps> = defineComponent({
   setup(props, { attrs }) {
     const api = useTagsInputContext()
 
-    const valueAtIndex = api.value.value[parseInt(props.index.toString())]
+    const tagInputProps = computed(() => ({
+      ...api.value.getTagInputProps({
+        index: props.index,
+        value: props.value,
+        disabled: props.disabled,
+      }),
+      modelValue: api.value.value[parseInt(props.index.toString())],
+    }))
 
-    const tagInputValue = ref(valueAtIndex)
-
-    // https://github.com/chakra-ui/polymorphic/blob/5ed49fa01adf880e355edcb9f15973fcfe8e6761/packages/vue/src/use-v-model.ts#L30
-    const handleOnInput = (_, value) => {
-      tagInputValue.value = value
-    }
-
-    return () => (
-      <ark.input
-        value={tagInputValue.value}
-        onInput={handleOnInput}
-        {...api.value.getTagInputProps({
-          index: props.index,
-          value: props.value,
-          disabled: props.disabled,
-        })}
-        {...attrs}
-      />
-    )
+    return () => <ark.input {...tagInputProps.value} {...attrs} />
   },
 })
