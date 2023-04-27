@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useTagsInputContext } from './tags-input-context'
 

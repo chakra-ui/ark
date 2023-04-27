@@ -1,5 +1,5 @@
-import { defineComponent, PropType, ref } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { defineComponent, ref, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import type { ComponentWithProps } from '../utils'
 import type { TagProps } from './tag'

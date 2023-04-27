@@ -1,6 +1,6 @@
-import { connect, Context as TagsInputContext, machine } from '@zag-js/tags-input'
+import { connect, machine, type Context as TagsInputContext } from '@zag-js/tags-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, UnwrapRef } from 'vue'
+import { computed, type UnwrapRef } from 'vue'
 import type { Optional } from '../types'
 import { transformComposableProps, useId } from '../utils'
 

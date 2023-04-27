@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { getValidChildren } from '../utils'
 import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, UseTagsInputProps } from './use-tags-input'
+import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
 
 type UseTagsInputPropsContext = UseTagsInputProps['context']
 

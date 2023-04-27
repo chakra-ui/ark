@@ -1,5 +1,5 @@
-import { defineComponent, h, PropType } from 'vue'
-import { ComponentWithProps, useUniqueChild } from '../utils'
+import { defineComponent, h, type PropType } from 'vue'
+import { useUniqueChild, type ComponentWithProps } from '../utils'
 import type { TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 

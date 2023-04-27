@@ -1,7 +1,7 @@
-import { defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagProps = { index: string | number; value: string; disabled?: boolean }
