@@ -16,7 +16,6 @@ export const useColorPicker = (emit: CallableFunction, context: UseColorPickerCo
       ...reactiveContext,
       id: useId().value,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      // ! Check this before taking PR out of draft
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
