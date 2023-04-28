@@ -5,8 +5,10 @@ body:
   - type: 'markdown'
     attributes:
       value: |
+        Thanks for taking the time to fill out this bug report!
+
         Kindly check for existing open or closed issues prior to submitting. 
-        There's a possibility that your question has already been addressed! 😊
+        There's a possibility that your report has already been addressed! 😊
   - type: 'textarea'
     id: 'description'
     attributes:
@@ -31,11 +33,21 @@ body:
       label: 'Steps to reproduce'
       description: |
         Explain how to cause the issue in the provided reproduction.
-      value: |
+      placeholder: |
         1. Go to '...'
         2. Click on '...'
         3. Scroll down to '...'
         4. See error
+    validations:
+      required: true
+  - type: 'input'
+    id: 'ark-version'
+    attributes:
+      label: 'Ark UI Version'
+      description: 'The version of Ark UI you use.'
+      placeholder: '1.0.0'
+    validations:
+      required: true
   - type: 'checkboxes'
     id: 'framework'
     attributes:
@@ -45,14 +57,6 @@ body:
         - label: 'React'
         - label: 'Solid'
         - label: 'Vue'
-  - type: 'input'
-    id: 'ark-version'
-    attributes:
-      label: 'Ark UI Version'
-      description: 'The version of Ark UI you use.'
-      placeholder: '1.0.0'
-    validations:
-      required: true
   - type: 'input'
     id: 'browser'
     attributes:
