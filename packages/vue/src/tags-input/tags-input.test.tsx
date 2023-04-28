@@ -3,6 +3,8 @@ import { render } from '@testing-library/vue'
 import { nextTick } from 'vue'
 import TagsInputComponentStory from './tags-input.stories.vue'
 
+const ANGULAR_VAL = 'angular'
+
 describe('TagsInput', () => {
   it('should render', () => {
     render(TagsInputComponentStory)
@@ -11,33 +13,34 @@ describe('TagsInput', () => {
   it('should allow to add a new item', async () => {
     const { getByPlaceholderText, getByText } = render(TagsInputComponentStory)
     const input = getByPlaceholderText('Add tag')
-    await user.type(input, 'angular')
+    await user.type(input, ANGULAR_VAL)
     await user.keyboard('[Enter]')
 
-    expect(getByText('angular')).toBeInTheDocument()
+    expect(input).not.toHaveValue(ANGULAR_VAL)
+    expect(getByText(ANGULAR_VAL)).toBeInTheDocument()
   })
 
   it('should allow to add and delete a new item', async () => {
     const { getByPlaceholderText, getByText, queryByText } = render(TagsInputComponentStory)
     const input = getByPlaceholderText('Add tag')
-    await user.type(input, 'angular')
+    await user.type(input, ANGULAR_VAL)
     await user.keyboard('[Enter]')
 
-    expect(getByText('angular')).toBeInTheDocument()
+    expect(getByText(ANGULAR_VAL)).toBeInTheDocument()
 
     await user.keyboard('[ArrowLeft]')
     await user.keyboard('[Delete]')
 
-    expect(queryByText('angular')).toBeNull()
+    expect(queryByText(ANGULAR_VAL)).toBeNull()
   })
 
   it('should allow to modify an added item', async () => {
     const { getByPlaceholderText, getByText, getByLabelText, findByText } =
       render(TagsInputComponentStory)
-    await user.type(getByPlaceholderText('Add tag'), 'angular')
+    await user.type(getByPlaceholderText('Add tag'), ANGULAR_VAL)
     await user.keyboard('[Enter]')
 
-    expect(getByText('angular')).toBeInTheDocument()
+    expect(getByText(ANGULAR_VAL)).toBeInTheDocument()
 
     await user.keyboard('[ArrowLeft]')
     await user.keyboard('[Enter]')
