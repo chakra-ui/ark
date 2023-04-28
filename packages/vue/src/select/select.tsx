@@ -62,10 +62,10 @@ export const Select: ComponentWithProps<SelectProps> = defineComponent({
   emits: ['change', 'highlight', 'open', 'close', 'update:modelValue'],
   props: VueSelectProps,
   setup(props, { slots, emit }) {
-    const { api } = useSelect(emit, props)
+    const api = useSelect(emit, props)
 
     SelectProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots?.default?.({ ...api.value })
   },
 })

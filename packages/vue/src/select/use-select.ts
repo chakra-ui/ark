@@ -33,7 +33,7 @@ export const useSelect = (emit: CallableFunction, context: UseSelectContext) => 
 
   const api = computed(() => connect(state.value, send, normalizeProps))
 
-  return { api }
+  return api
 }
 
 export type UseSelectReturn = ReturnType<typeof useSelect>

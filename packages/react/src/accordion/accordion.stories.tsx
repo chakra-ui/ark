@@ -1,5 +1,15 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.'
+
+type AccordionType = typeof Accordion
+
+const meta: Meta<AccordionType> = {
+  title: 'Accordion',
+  component: Accordion,
+}
+
+export default meta
 
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
@@ -95,6 +105,26 @@ export const Controlled = () => {
             <button>{item} trigger</button>
           </AccordionTrigger>
           <AccordionContent>{item} content</AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+}
+
+export const AccessItemState = () => {
+  const items = ['panel-1', 'panel-2', 'panel-3']
+  return (
+    <Accordion defaultValue="panel-1">
+      {items.map((item, id) => (
+        <AccordionItem key={id} value={item}>
+          {(state) => (
+            <>
+              <AccordionTrigger>
+                <button>{state.isOpen ? 'Close' : 'Open'}</button>
+              </AccordionTrigger>
+              <AccordionContent>{item} content</AccordionContent>
+            </>
+          )}
         </AccordionItem>
       ))}
     </Accordion>
