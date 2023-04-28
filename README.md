@@ -11,7 +11,7 @@
 |                     | React | Solid | Vue |
 | ------------------- | ----- | ----- | --- |
 | Accordion           | 🟢    | 🟢    | 🟢  |
-| Carousel (Beta)     | 🟢    | ⚪    | ⚪  |
+| Carousel (Beta)     | 🟢    | ⚪    | 🟢  |
 | Checkbox            | 🟢    | 🟢    | 🟢  |
 | Color Picker (Beta) | 🟢    | 🟢    | 🟢  |
 | Date Picker (Beta)  | 🟡    | ⚪    | ⚪  |
