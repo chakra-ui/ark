@@ -625,8 +625,8 @@ importers:
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@octokit/types':
-        specifier: 9.1.2
-        version: 9.1.2
+        specifier: 9.1.4
+        version: 9.1.4
       '@types/node':
         specifier: 18.16.1
         version: 18.16.1
@@ -3843,8 +3843,8 @@ packages:
     resolution: {integrity: sha512-V8BVJGN0ZmMlURF55VFHFd/L92XQQ43KvFjNmY1IYbCN3V/h/uUFV6iQi19WEHM395Nn+1qhUbViCAD/1czzog==}
     dev: true
 
-  /@octokit/types@9.1.2:
-    resolution: {integrity: sha512-LPbJIuu1WNoRHbN4UMysEdlissRFpTCWyoKT7kHPufI8T+XX33/qilfMWJo3mCOjNIKu0+43oSQPf+HJa0+TTQ==}
+  /@octokit/types@9.1.4:
+    resolution: {integrity: sha512-5d9vYHzC/yG9eyYBO2Pis4BM4tQfFcyFUWBquDgCzcmFG+sgBiRQ2JCY55HG/hdxvESt9IZUoRtzOm66Qv/GWw==}
     dependencies:
       '@octokit/openapi-types': 17.0.0
     dev: true
