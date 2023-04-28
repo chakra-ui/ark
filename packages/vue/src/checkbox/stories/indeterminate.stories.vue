@@ -27,7 +27,7 @@ watch(
 </script>
 <template>
   <Checkbox v-model:checked="parentChecked" :indeterminate="someChecked">
-    <CheckboxLabel>Parent Checkbox</CheckboxLabel>
+    <CheckboxLabel> Parent Checkbox </CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl data-testid="parent-control">
       <CheckIcon v-if="parentChecked" />
@@ -36,7 +36,7 @@ watch(
   </Checkbox>
   <div>
     <Checkbox v-model:checked="childCheckedItems[0]">
-      <CheckboxLabel>Child One Checkbox</CheckboxLabel>
+      <CheckboxLabel> Child One Checkbox </CheckboxLabel>
       <CheckboxInput data-testid="child-one-input" />
       <CheckboxControl>
         <CheckIcon v-if="childCheckedItems[0]" />
