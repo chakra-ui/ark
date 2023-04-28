@@ -424,6 +424,9 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.6.0
         version: 0.6.0
+      '@zag-js/color-picker':
+        specifier: 0.6.0
+        version: 0.6.0
       '@zag-js/combobox':
         specifier: 0.6.0
         version: 0.6.0
