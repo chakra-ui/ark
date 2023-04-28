@@ -52,7 +52,7 @@ body:
     id: 'framework'
     attributes:
       label: 'Framework'
-      description: 'The operating system(s) this issue occurred with.'
+      description: 'The framework that that is in use'
       options:
         - label: 'React'
         - label: 'Solid'
