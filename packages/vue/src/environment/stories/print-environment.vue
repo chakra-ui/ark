@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
-import { EnvironmentContext, useEnvironmentContext } from '../environment-context'
+import { type EnvironmentContext, useEnvironmentContext } from '../environment-context'
 
 const getRootNode = useEnvironmentContext()
 

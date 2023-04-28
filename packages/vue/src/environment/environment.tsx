@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref } from 'vue'
+import { computed, defineComponent, ref, type PropType } from 'vue'
 import type { ComponentWithProps } from '../utils'
 import { EnvironmentProvider } from './environment-context'
 
