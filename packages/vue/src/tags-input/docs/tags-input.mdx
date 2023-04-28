@@ -34,29 +34,41 @@ single JSX element which will receive all necessary props to add the event
 listeners and attributes to ensure the desired accessibility.
 
 ```tsx
-// <script>
+<script>
+import {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputLabel,
+} from '@ark-ui/vue'
 
 const tagsInputRef = ref()
+</script>
 
-// <template>
-<TagsInput ref="tagsInputRef">
-  <TagsInputLabel>Label</TagsInputLabel>
-  <TagsInputControl>
-    <template v-for="(value, index) in tagsInputRef?.context.value">
-      <Tag :index="index" :value="value">
-        <span>{{ value }}</span>
-        <TagDeleteTrigger :index="index" :value="value">
-          <button>x</button>
-        </TagDeleteTrigger>
-      </Tag>
-      <TagInput :index="index" :value="value" />
-    </template>
-    <TagsInputField placeholder="Add tag" />
-    <TagsInputClearTrigger>
-      <button>Clear all</button>
-    </TagsInputClearTrigger>
-  </TagsInputControl>
-</TagsInput>
+<template>
+  <TagsInput ref="tagsInputRef">
+    <TagsInputLabel>Label</TagsInputLabel>
+    <TagsInputControl>
+      <template v-for="(value, index) in tagsInputRef?.context.value">
+        <Tag :index="index" :value="value">
+          <span>{{ value }}</span>
+          <TagDeleteTrigger :index="index" :value="value">
+            <button>x</button>
+          </TagDeleteTrigger>
+        </Tag>
+        <TagInput :index="index" :value="value" />
+      </template>
+      <TagsInputField placeholder="Add tag" />
+      <TagsInputClearTrigger>
+        <button>Clear all</button>
+      </TagsInputClearTrigger>
+    </TagsInputControl>
+  </TagsInput>
+</template>
 ```
 
 ## Navigating and Editing tags
@@ -76,12 +88,15 @@ focus in on any tag:
 To set the initial tag values, use the `v-model` directive.
 
 ```tsx
-// <script>
+<script>
+import { TagsInput } from '@ark-ui/vue'
 
 const tagsInputValue = ref(['foo', 'bar'])
+</script>
 
-// <template>
-<TagsInput v-model='tagsInputValue'>{/*...*/}</TagsInput>
+<template>
+  <TagsInput v-model='tagsInputValue'>{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Limiting the number of tags
@@ -93,9 +108,13 @@ When the tag reaches the limit, new tags cannot be added except the
 `allowOverflow` prop is set to `true`.
 
 ```tsx
-<TagsInput :max="3" allowOverflow>
-  {/*...*/}
-</TagsInput>
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput :max="3" allowOverflow>{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Validating Tags
@@ -107,16 +126,17 @@ A common use-case for validating tags is preventing duplicates or validating the
 data type.
 
 ```tsx
-// <script>
+<script>
+import { TagsInput } from '@ark-ui/vue'
 
 const tagsInputValidate = (details) => {
   return !details.values.includes(details.inputValue)
 }
+</script>
 
-// <template>
-<TagsInput :validate="tagsInputValidate">
-  {/*...*/}
-</TagsInput>
+<template>
+  <TagsInput :validate="tagsInputValidate">{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Blur behavior
@@ -128,7 +148,13 @@ should take by passing the `blurBehavior` prop.
 - `clear` — Clears the tags input value.
 
 ```tsx
-<TagsInput blurBehavior="add">{/*...*/}</TagsInput>
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput blurBehavior="add">{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Paste behavior
@@ -142,9 +168,13 @@ When a value is pasted, the component will:
 - split the value by the `delimiter` option passed
 
 ```jsx {3}
-<TagsInput addOnPaste delimiter=",">
-  {/*...*/}
-</TagsInput>
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput addOnPaste delimiter=",">{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Disable tag editing
@@ -154,7 +184,13 @@ them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
 `allowEditTag={false}`
 
 ```tsx
-<TagsInput :allowEditTag="false">{/*...*/}</TagsInput>
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput :allowEditTag="false">{/*...*/}</TagsInput>
+</template>
 ```
 
 ## Events
@@ -168,7 +204,9 @@ emit:
   function returns `false`.
 
 ```tsx
-// <script>
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
 
 const handleOnChange = (details) => {
   console.log('tags changed to:', details.values)
@@ -181,13 +219,13 @@ const handleOnHighlight = (details) => {
 const handleOnInvalid = (details) => {
   console.log('Invalid!', details.reason)
 }
-
-// <template>
-<TagsInput
-  @change="handleOnChange"
-  @hightlight="handleOnHighlight"
-  @invalid="handleOnInvalid"
->
-  {/*...*/}
-</TagsInput>
+<template></template>
+  <TagsInput
+    @change="handleOnChange"
+    @hightlight="handleOnHighlight"
+    @invalid="handleOnInvalid"
+  >
+    {/*...*/}
+  </TagsInput>
+</template>
 ```
