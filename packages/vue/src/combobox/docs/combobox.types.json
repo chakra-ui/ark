@@ -20,9 +20,8 @@
       "isRequired": false,
       "description": "Whether to blur the input on select"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -42,7 +41,7 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -96,6 +95,11 @@
       "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called when the input's value changes"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on combobox when composing it with other components."
     },
     "onOpen": {
       "type": "() => void",

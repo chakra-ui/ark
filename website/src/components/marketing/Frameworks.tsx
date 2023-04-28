@@ -51,9 +51,9 @@ export const Frameworks = () => {
               p={{ base: '5', md: '6' }}
               width="full"
             >
-              <Stack gap={{ base: '12', md: '16' }}>
+              <Stack gap={{ base: '12', md: '16' }} alignItems="start">
                 {icon}
-                <Stack gap={{ base: '4', md: '5' }}>
+                <Stack gap={{ base: '4', md: '5' }} alignItems="start">
                   <Stack gap={{ base: '1', md: '2' }}>
                     <Heading textStyle="lg" fontWeight="semibold">
                       {heading}

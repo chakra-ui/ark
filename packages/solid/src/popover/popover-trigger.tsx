@@ -18,5 +18,5 @@ export const PopoverTrigger = (props: PopoverTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

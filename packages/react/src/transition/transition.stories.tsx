@@ -1,5 +1,15 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Transition, useTransition } from '.'
+
+type TransitionType = typeof Transition
+
+const meta: Meta<TransitionType> = {
+  title: 'Transition',
+  component: Transition,
+}
+
+export default meta
 
 export const WithHook = () => {
   const [isOpen, setIsOpen] = useState(false)

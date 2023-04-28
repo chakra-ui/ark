@@ -6,12 +6,12 @@
       "description": "Whether text selection should be enabled on the pressable element."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -48,8 +48,53 @@
       "description": "Whether the target should not receive focus on press."
     }
   },
-  "UsePressableProps": {
-    "context": { "type": "PressablePropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
+  "UsePressableContext": {
+    "allowTextSelectionOnPress": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether text selection should be enabled on the pressable element."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "isCanceledOnExit": { "type": "boolean", "isRequired": false },
+    "isDisabled": { "type": "boolean", "isRequired": false },
+    "onLongPress": {
+      "type": "(event: PressEvent) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the element has been pressed for 500 milliseconds"
+    },
+    "onPress": {
+      "type": "(event: PressEvent) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the press is released over the target."
+    },
+    "onPressEnd": {
+      "type": "(event: PressEvent) => void",
+      "isRequired": false,
+      "description": "Handler that is called when a press interaction ends, either\nover the target or when the pointer leaves the target."
+    },
+    "onPressStart": {
+      "type": "(event: PressEvent) => void",
+      "isRequired": false,
+      "description": "Handler that is called when a press interaction starts."
+    },
+    "onPressUp": {
+      "type": "(event: PressEvent) => void",
+      "isRequired": false,
+      "description": "Handler that is called when a press is released over the target, regardless of\nwhether it started on the target or not."
+    },
+    "preventFocusOnPress": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the target should not receive focus on press."
+    }
   }
 }

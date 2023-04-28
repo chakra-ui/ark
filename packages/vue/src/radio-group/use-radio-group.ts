@@ -1,30 +1,25 @@
 import { connect, machine, type Context } from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, type UnwrapRef, watch } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { type Optional } from '../types'
+import { useId } from '../utils'
 
-type UseRadioGroupPropsContext = Optional<Context, 'id'> & {
+export type UseRadioGroupContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
 }
 
-export type UseRadioGroupProps = {
-  context: UseRadioGroupPropsContext
-  emit: CallableFunction
-}
-
-export const useRadioGroup = (props: UseRadioGroupProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useRadioGroup = (emit: CallableFunction, context: UseRadioGroupContext) => {
+  const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       getRootNode,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
@@ -32,18 +27,7 @@ export const useRadioGroup = (props: UseRadioGroupProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => context.modelValue,
-    (val, oldVal) => {
-      if (val == undefined || val === oldVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseRadioGroupReturn = UnwrapRef<ReturnType<typeof useRadioGroup>>

@@ -1,24 +1,19 @@
 import { connect, machine, type Context as TooltipContext } from '@zag-js/tooltip'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-type TooltipPropsContext = Omit<TooltipContext, 'id'>
+export type UseTooltipContext = Omit<TooltipContext, 'id'>
 
-export type UseTooltipProps = {
-  context: TooltipPropsContext
-  emit: CallableFunction
-}
-
-export const useTooltip = (props: UseTooltipProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useTooltip = (emit: CallableFunction, context: UseTooltipContext) => {
+  const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       getRootNode,
       onOpen() {

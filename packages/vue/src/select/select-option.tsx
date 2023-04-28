@@ -1,6 +1,6 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { useSelectContext } from './select-context'
 
 type OptionProps = Parameters<ReturnType<typeof useSelectContext>['value']['getOptionProps']>[0]
@@ -36,14 +36,10 @@ export const SelectOption: ComponentWithProps<SelectOptionProps> = defineCompone
 
     const api = useSelectContext()
 
-    return () => {
-      const validChildren = getValidChildren(slots)
-
-      return (
-        <ark.li {...api.value.getOptionProps(selectOptionProps.value)} {...attrs}>
-          {() => (validChildren.length > 1 ? validChildren : selectOptionProps.value.label)}
-        </ark.li>
-      )
-    }
+    return () => (
+      <ark.li {...api.value.getOptionProps(selectOptionProps.value)} {...attrs}>
+        {() => (slots.default?.() ? slots.default() : selectOptionProps.value.label)}
+      </ark.li>
+    )
   },
 })

@@ -13,7 +13,7 @@ export const Checkbox = (props: CheckboxProps) => {
     'aria-describedby',
     'aria-label',
     'aria-labelledby',
-    'defaultChecked',
+    'checked',
     'dir',
     'disabled',
     'focusable',

@@ -1,4 +1,6 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
+import { useState } from 'react'
 import {
   Dialog,
   DialogBackdrop,
@@ -9,6 +11,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './'
+
+type DialogType = typeof Dialog
+
+const meta: Meta<DialogType> = {
+  title: 'Dialog',
+  component: Dialog,
+}
+
+export default meta
 
 export const Basic = () => {
   return (
@@ -33,6 +44,33 @@ export const Basic = () => {
         </DialogContainer>
       </Portal>
     </Dialog>
+  )
+}
+
+export const Controlled = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <Portal>
+          <DialogBackdrop />
+          <DialogContainer>
+            <DialogContent>
+              <DialogTitle>Dialog Title</DialogTitle>
+              <DialogDescription>Dialog Description</DialogDescription>
+              <div>
+                <input placeholder="Enter name..." />
+                <button>Save</button>
+              </div>
+              <DialogCloseTrigger>
+                <button>close</button>
+              </DialogCloseTrigger>
+            </DialogContent>
+          </DialogContainer>
+        </Portal>
+      </Dialog>
+    </>
   )
 }
 

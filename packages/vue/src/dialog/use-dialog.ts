@@ -1,22 +1,19 @@
 import { connect, machine, type Context } from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-export type UseDialogProps = {
-  context: Omit<Context, 'id'>
-  emit: CallableFunction
-}
+export type UseDialogContext = Omit<Context, 'id'>
 
-export const useDialog = (props: UseDialogProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useDialog = (emit: CallableFunction, context: UseDialogContext) => {
+  const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       getRootNode,
       onClose() {

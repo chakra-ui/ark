@@ -36,6 +36,7 @@ export const Combobox = forwardRef<'div', ComboboxProps>((props, ref) => {
       'onHighlight',
       'onInputChange',
       'onInputChange',
+      'onInteractOutside',
       'onOpen',
       'onSelect',
       'openOnClick',
@@ -43,9 +44,9 @@ export const Combobox = forwardRef<'div', ComboboxProps>((props, ref) => {
       'positioning',
       'readOnly',
       'selectInputOnFocus',
-      'selectOnTab',
       'selectionBehavior',
       'selectionData',
+      'selectOnTab',
       'translations',
     ],
   )

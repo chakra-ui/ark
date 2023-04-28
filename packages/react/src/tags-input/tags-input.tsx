@@ -40,6 +40,7 @@ export const TagsInput = forwardRef<'input', TagsInputProps>((props, ref) => {
       'onChange',
       'onHighlight',
       'onInvalid',
+      'onInteractOutside',
       'onTagUpdate',
       'readOnly',
       'translations',

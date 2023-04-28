@@ -1,6 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
-export const link = defineRecipe({
+// TODO sth is wrong with types
+export const link: any = defineRecipe({
   name: 'link',
   description: 'A link styles',
   base: {

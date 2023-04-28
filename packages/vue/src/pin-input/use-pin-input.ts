@@ -1,29 +1,24 @@
 import { connect, machine, type Context as PinInputContext } from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed } from 'vue'
+import { computed, reactive } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-interface PinInputPropsContext extends Omit<PinInputContext, 'id'> {
+export interface UsePinInputContext extends Omit<PinInputContext, 'id'> {
   modelValue?: PinInputContext['value']
 }
 
-export type UsePinInputProps = {
-  context: PinInputPropsContext
-  emit: CallableFunction
-}
-
-export const usePinInput = (props: UsePinInputProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const usePinInput = (emit: CallableFunction, context: UsePinInputContext) => {
+  const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
       getRootNode,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', Array.from(details.value))
