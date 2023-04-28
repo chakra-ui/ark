@@ -18,10 +18,12 @@ const options = [
 ]
 
 const currentValue = ref<RadioGroupProps['modelValue']>('apple')
+
+const testProps = defineProps(['onChange'])
 </script>
 <template>
   <Story title="RadioGroup - Disabled">
-    <RadioGroup v-model="currentValue">
+    <RadioGroup v-model="currentValue" v-bind="testProps">
       <RadioGroupLabel as="h3">Fruits: {{ currentValue }}</RadioGroupLabel>
       <Radio
         v-for="(option, idx) in options"

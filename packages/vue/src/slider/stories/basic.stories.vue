@@ -15,10 +15,12 @@ import {
 import '../slider.css'
 
 const sliderValue = ref<SliderProps['modelValue']>(30)
+
+const testProps = defineProps(['modelValue', 'orientation', 'dir'])
 </script>
 <template>
   <Story title="Slider - Basic">
-    <Slider :min="-50" :max="50" v-model="sliderValue">
+    <Slider :min="-50" :max="50" v-model="sliderValue" v-bind="testProps">
       <SliderLabel>Label</SliderLabel>
       <SliderOutput>{{ sliderValue }}</SliderOutput>
       <SliderControl>

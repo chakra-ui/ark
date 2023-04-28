@@ -17,10 +17,12 @@ import './range-slider.css'
 const valuesRef = ref([-20, 20])
 
 const outputRef = ref<{ context: RangeSliderContext }>()
+
+const testProps = defineProps(['dir', 'orientation'])
 </script>
 <template>
   <Story title="RangeSlider - Basic">
-    <RangeSlider :min="-50" :max="50" v-model="valuesRef">
+    <RangeSlider :min="-50" :max="50" v-model="valuesRef" v-bind="testProps">
       <RangeSliderLabel>Label</RangeSliderLabel>
       <RangeSliderOutput ref="outputRef">
         {{ outputRef?.context.value.join(' ') }}

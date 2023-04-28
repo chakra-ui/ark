@@ -10,7 +10,9 @@ describe('Slider', () => {
   })
 
   it('should move the thumb correctly when orientated horizontal', async () => {
-    const { getByRole } = render(BasicComponentStory, { props: { modelValue: 0 } })
+    const { getByRole } = render(BasicComponentStory, {
+      props: { modelValue: 0 },
+    })
 
     const thumb = getByRole('slider', { hidden: true })
 
