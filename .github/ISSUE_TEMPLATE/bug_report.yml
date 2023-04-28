@@ -1,0 +1,72 @@
+name: 'Bug Report'
+description: 'File a bug report'
+labels: [bug]
+body:
+  - type: 'markdown'
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+        Kindly check for existing open or closed issues prior to submitting. 
+        There's a possibility that your report has already been addressed! 😊
+  - type: 'textarea'
+    id: 'description'
+    attributes:
+      label: 'Description'
+      description: 'A brief description of the issue.'
+      placeholder: |
+        When I ____, I expected ____ to happen but ____ happened instead.
+    validations:
+      required: true
+  - type: 'input'
+    id: 'reproduction'
+    attributes:
+      label: 'Link to Reproduction'
+      description: |
+        A link to a CodeSandbox or Git repository which demonstrates the bug
+      placeholder: 'https://'
+    validations:
+      required: true
+  - type: 'textarea'
+    id: 'steps'
+    attributes:
+      label: 'Steps to reproduce'
+      description: |
+        Explain how to cause the issue in the provided reproduction.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: 'input'
+    id: 'ark-version'
+    attributes:
+      label: 'Ark UI Version'
+      description: 'The version of Ark UI you use.'
+      placeholder: '1.0.0'
+    validations:
+      required: true
+  - type: 'checkboxes'
+    id: 'framework'
+    attributes:
+      label: 'Framework'
+      description: 'The framework that that is in use'
+      options:
+        - label: 'React'
+        - label: 'Solid'
+        - label: 'Vue'
+  - type: 'input'
+    id: 'browser'
+    attributes:
+      label: 'Browser'
+      description: 'The browser(s) this issue occurred with.'
+      placeholder: 'Google Chrome 93'
+  - type: 'textarea'
+    id: 'additional-information'
+    attributes:
+      label: 'Additional Information'
+      description: |
+        Use this section to provide any additional information you might have
+        like screenshots, notes, or links to ideas.

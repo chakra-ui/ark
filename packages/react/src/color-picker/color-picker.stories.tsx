@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import {
   ColorPicker,
   ColorPickerArea,
@@ -12,6 +13,15 @@ import {
   ColorPickerSwatchGroup,
 } from './'
 import './color-picker.css'
+
+type ColorPickerType = typeof ColorPicker
+
+const meta: Meta<ColorPickerType> = {
+  title: 'ColorPicker',
+  component: ColorPicker,
+}
+
+export default meta
 
 export const Basic = () => (
   <ColorPicker defaultValue="hsl(10, 81%, 59%)">

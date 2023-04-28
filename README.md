@@ -13,7 +13,7 @@
 | Accordion           | 🟢    | 🟢    | 🟢  |
 | Carousel (Beta)     | 🟢    | ⚪    | ⚪  |
 | Checkbox            | 🟢    | 🟢    | 🟢  |
-| Color Picker (Beta) | 🟢    | 🟢    | ⚪  |
+| Color Picker (Beta) | 🟢    | 🟢    | 🟢  |
 | Date Picker (Beta)  | 🟡    | ⚪    | ⚪  |
 | Dialog              | 🟢    | 🟢    | 🟢  |
 | Combobox            | 🟢    | 🟢    | 🟢  |
@@ -33,7 +33,7 @@
 | Slider              | 🟢    | 🟢    | 🟢  |
 | Splitter            | 🟢    | 🟢    | 🟢  |
 | Tabs                | 🟢    | 🟢    | 🟢  |
-| Tags Input          | 🟢    | 🟢    | 🟡  |
+| Tags Input          | 🟢    | 🟢    | 🟢  |
 | Toast               | 🟢    | 🟢    | 🟡  |
 | Tooltip             | 🟢    | 🟢    | 🟢  |
 
