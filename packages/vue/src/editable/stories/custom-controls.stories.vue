@@ -19,29 +19,31 @@ const editableRef = ref<{ api: EditableContext }>()
 const testProps = defineProps(['modelValue'])
 </script>
 <template>
-  <Editable
-    ref="editableRef"
-    activationMode="dblclick"
-    placeholder="Placeholder"
-    v-bind="testProps"
-  >
-    <EditableLabel>Label</EditableLabel>
-    <EditableArea>
-      <EditableInput data-testid="edit-input" />
-      <EditablePreview />
-    </EditableArea>
-    <EditableControl v-if="editableRef?.api.isEditing">
-      <EditableSubmitTrigger>
-        <button>Save</button>
-      </EditableSubmitTrigger>
-      <EditableCancelTrigger>
-        <button>Cancel</button>
-      </EditableCancelTrigger>
-    </EditableControl>
-    <EditableControl v-else>
-      <EditableEditTrigger>
-        <button>Edit</button>
-      </EditableEditTrigger>
-    </EditableControl>
-  </Editable>
+  <Story title="Editable - Custom Controls">
+    <Editable
+      ref="editableRef"
+      activationMode="dblclick"
+      placeholder="Placeholder"
+      v-bind="testProps"
+    >
+      <EditableLabel>Label</EditableLabel>
+      <EditableArea>
+        <EditableInput data-testid="edit-input" />
+        <EditablePreview />
+      </EditableArea>
+      <EditableControl v-if="editableRef?.api.isEditing">
+        <EditableSubmitTrigger>
+          <button>Save</button>
+        </EditableSubmitTrigger>
+        <EditableCancelTrigger>
+          <button>Cancel</button>
+        </EditableCancelTrigger>
+      </EditableControl>
+      <EditableControl v-else>
+        <EditableEditTrigger>
+          <button>Edit</button>
+        </EditableEditTrigger>
+      </EditableControl>
+    </Editable>
+  </Story>
 </template>

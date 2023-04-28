@@ -2,11 +2,13 @@
 import Basic from './basic.stories.vue'
 </script>
 <template>
-  <div :style="{ height: '100vh' }">
-    <Basic orientation="vertical">
-      <Basic>
-        <Basic orientation="vertical" />
+  <Story title="Splitter - Nested">
+    <div :style="{ height: '100vh' }">
+      <Basic orientation="vertical">
+        <Basic>
+          <Basic orientation="vertical" />
+        </Basic>
       </Basic>
-    </Basic>
-  </div>
+    </div>
+  </Story>
 </template>

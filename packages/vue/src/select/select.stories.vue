@@ -13,20 +13,22 @@ import {
 const selectedOption = ref<SelectProps['modelValue']>()
 </script>
 <template>
-  <Select v-model="selectedOption">
-    <SelectLabel>Framework:</SelectLabel>
-    <SelectTrigger>
-      <button>{{ selectedOption?.label ?? 'Select' }}</button>
-    </SelectTrigger>
+  <Story title="Select - Basic">
+    <Select v-model="selectedOption">
+      <SelectLabel>Framework:</SelectLabel>
+      <SelectTrigger>
+        <button>{{ selectedOption?.label ?? 'Select' }}</button>
+      </SelectTrigger>
 
-    <Teleport to="body">
-      <SelectPositioner>
-        <SelectContent>
-          <SelectOption value="react" label="React" />
-          <SelectOption value="solidjs" label="SolidJs" />
-          <SelectOption value="vue" label="VueJS">VueJS</SelectOption>
-        </SelectContent>
-      </SelectPositioner>
-    </Teleport>
-  </Select>
+      <Teleport to="body">
+        <SelectPositioner>
+          <SelectContent>
+            <SelectOption value="react" label="React" />
+            <SelectOption value="solidjs" label="SolidJs" />
+            <SelectOption value="vue" label="VueJS">VueJS</SelectOption>
+          </SelectContent>
+        </SelectPositioner>
+      </Teleport>
+    </Select>
+  </Story>
 </template>

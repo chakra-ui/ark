@@ -20,17 +20,19 @@ const options = [
 const currentValue = ref<RadioGroupProps['modelValue']>('apple')
 </script>
 <template>
-  <RadioGroup v-model="currentValue">
-    <RadioGroupLabel as="h3">Fruits: {{ currentValue }}</RadioGroupLabel>
-    <Radio
-      v-for="(option, idx) in options"
-      :key="idx"
-      :value="option.id"
-      :style="{ fontWeight: option.id === currentValue ? 'bold' : 'inherit' }"
-    >
-      <RadioLabel>{{ option.label }}</RadioLabel>
-      <RadioInput />
-      <RadioControl />
-    </Radio>
-  </RadioGroup>
+  <Story title="RadioGroup - Basic">
+    <RadioGroup v-model="currentValue">
+      <RadioGroupLabel as="h3">Fruits: {{ currentValue }}</RadioGroupLabel>
+      <Radio
+        v-for="(option, idx) in options"
+        :key="idx"
+        :value="option.id"
+        :style="{ fontWeight: option.id === currentValue ? 'bold' : 'inherit' }"
+      >
+        <RadioLabel>{{ option.label }}</RadioLabel>
+        <RadioInput />
+        <RadioControl />
+      </Radio>
+    </RadioGroup>
+  </Story>
 </template>

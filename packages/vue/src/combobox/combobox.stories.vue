@@ -44,36 +44,38 @@ const handleOnSelect: ComboboxProps['onSelect'] = () => {
 const defaultVal = ref(comboboxData[0].label)
 </script>
 <template>
-  <Combobox
-    ref="comboboxRef"
-    @input-change="handleInputChange"
-    @select="handleOnSelect"
-    v-model="defaultVal"
-  >
-    <ComboboxLabel>JS Frameworks</ComboboxLabel>
-    <ComboboxControl>
-      <ComboboxInput />
-      <ComboboxTrigger>
-        <button>▼</button>
-      </ComboboxTrigger>
-    </ComboboxControl>
-    <div v-show="comboboxRef?.isInputValueEmpty && !comboboxRef?.isOpen">
-      Give me you favorite framework!
-    </div>
-    <Teleport to="body">
-      <ComboboxPositioner>
-        <ComboboxContent>
-          <ComboboxOption
-            v-for="(item, idx) in options"
-            :key="`${item.value}:${idx}`"
-            :label="item.label"
-            :value="item.value"
-            :disabled="item.disabled"
-          >
-            {{ item.label }}
-          </ComboboxOption>
-        </ComboboxContent>
-      </ComboboxPositioner>
-    </Teleport>
-  </Combobox>
+  <Story title="Combobox - Basic">
+    <Combobox
+      ref="comboboxRef"
+      @input-change="handleInputChange"
+      @select="handleOnSelect"
+      v-model="defaultVal"
+    >
+      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>
+          <button>▼</button>
+        </ComboboxTrigger>
+      </ComboboxControl>
+      <div v-show="comboboxRef?.isInputValueEmpty && !comboboxRef?.isOpen">
+        Give me you favorite framework!
+      </div>
+      <Teleport to="body">
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxOption
+              v-for="(item, idx) in options"
+              :key="`${item.value}:${idx}`"
+              :label="item.label"
+              :value="item.value"
+              :disabled="item.disabled"
+            >
+              {{ item.label }}
+            </ComboboxOption>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Teleport>
+    </Combobox>
+  </Story>
 </template>

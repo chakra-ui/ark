@@ -25,25 +25,27 @@ const handleOnClose: UsePopoverContext['onClose'] = () => {
 </script>
 
 <template>
-  <div>
-    <button @click="handleOpenClick">Toggle Control</button>
-    <Popover :is-open="isOpen" @close="handleOnClose">
-      <PopoverTrigger>
-        <button>click me</button>
-      </PopoverTrigger>
-      <PopoverPositioner>
-        <PopoverArrow>
-          <PopoverArrowTip />
-        </PopoverArrow>
-        <PopoverContent>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <input type="text" />
-          <PopoverCloseTrigger>
-            <button>close</button>
-          </PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
-    </Popover>
-  </div>
+  <Story title="Popover - Controlled">
+    <div>
+      <button @click="handleOpenClick">Toggle Control</button>
+      <Popover :is-open="isOpen" @close="handleOnClose">
+        <PopoverTrigger>
+          <button>click me</button>
+        </PopoverTrigger>
+        <PopoverPositioner>
+          <PopoverArrow>
+            <PopoverArrowTip />
+          </PopoverArrow>
+          <PopoverContent>
+            <PopoverTitle>Title</PopoverTitle>
+            <PopoverDescription>Description</PopoverDescription>
+            <input type="text" />
+            <PopoverCloseTrigger>
+              <button>close</button>
+            </PopoverCloseTrigger>
+          </PopoverContent>
+        </PopoverPositioner>
+      </Popover>
+    </div>
+  </Story>
 </template>

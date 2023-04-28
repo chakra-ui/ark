@@ -24,21 +24,23 @@ watch(
 )
 </script>
 <template>
-  <Checkbox v-model="parentChecked" :indeterminate="someChecked">
-    <CheckboxLabel>Parent Checkbox</CheckboxLabel>
-    <CheckboxInput />
-    <CheckboxControl />
-  </Checkbox>
-  <div>
-    <Checkbox v-model="childItems[0]">
-      <CheckboxLabel>Child One Checkbox</CheckboxLabel>
+  <Story title="Checkbox - Indeterminate">
+    <Checkbox v-model="parentChecked" :indeterminate="someChecked">
+      <CheckboxLabel>Parent Checkbox</CheckboxLabel>
       <CheckboxInput />
       <CheckboxControl />
     </Checkbox>
-    <Checkbox v-model="childItems[1]">
-      <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
-      <CheckboxInput />
-      <CheckboxControl />
-    </Checkbox>
-  </div>
+    <div>
+      <Checkbox v-model="childItems[0]">
+        <CheckboxLabel>Child One Checkbox</CheckboxLabel>
+        <CheckboxInput />
+        <CheckboxControl />
+      </Checkbox>
+      <Checkbox v-model="childItems[1]">
+        <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
+        <CheckboxInput />
+        <CheckboxControl />
+      </Checkbox>
+    </div>
+  </Story>
 </template>

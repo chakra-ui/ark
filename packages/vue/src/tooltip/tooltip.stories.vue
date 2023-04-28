@@ -10,17 +10,19 @@ import {
 } from '.'
 </script>
 <template>
-  <Tooltip :open-delay="1000" :close-delay="0">
-    <TooltipTrigger>
-      <span>hover me</span>
-    </TooltipTrigger>
-    <Teleport to="body">
-      <TooltipPositioner>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>My Tooltip</TooltipContent>
-      </TooltipPositioner>
-    </Teleport>
-  </Tooltip>
+  <Story title="Tooltip - Basic">
+    <Tooltip :open-delay="1000" :close-delay="0">
+      <TooltipTrigger>
+        <span>hover me</span>
+      </TooltipTrigger>
+      <Teleport to="body">
+        <TooltipPositioner>
+          <TooltipArrow>
+            <TooltipArrowTip />
+          </TooltipArrow>
+          <TooltipContent>My Tooltip</TooltipContent>
+        </TooltipPositioner>
+      </Teleport>
+    </Tooltip>
+  </Story>
 </template>

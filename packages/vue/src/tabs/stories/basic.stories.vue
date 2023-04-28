@@ -14,30 +14,32 @@ defineProps({
 })
 </script>
 <template>
-  <div><span>Focused: </span> {{ focusedVal }}</div>
-  <div data-testid="change-content"><span>Changed: </span> {{ changedVal }}</div>
-  <Tabs
-    activation-mode="manual"
-    @focus="handleFocus"
-    @change="handleChange"
-    :default-value="defaultValue"
-  >
-    <TabList>
-      <TabTrigger value="one" tabindex="0">
-        <button>Item one</button>
-      </TabTrigger>
-      <TabTrigger value="two" disabled>
-        <button>Item two</button>
-      </TabTrigger>
-      <TabTrigger value="three" tabindex="0">
-        <button>Item three</button>
-      </TabTrigger>
-      <TabIndicator />
-    </TabList>
-    <TabContent value="one">Value item one</TabContent>
-    <TabContent value="two">Value item two</TabContent>
-    <TabContent value="three">Value item three</TabContent>
-  </Tabs>
+  <Story title="Tabs - Basic">
+    <div><span>Focused: </span> {{ focusedVal }}</div>
+    <div data-testid="change-content"><span>Changed: </span> {{ changedVal }}</div>
+    <Tabs
+      activation-mode="manual"
+      @focus="handleFocus"
+      @change="handleChange"
+      :default-value="defaultValue"
+    >
+      <TabList>
+        <TabTrigger value="one" tabindex="0">
+          <button>Item one</button>
+        </TabTrigger>
+        <TabTrigger value="two" disabled>
+          <button>Item two</button>
+        </TabTrigger>
+        <TabTrigger value="three" tabindex="0">
+          <button>Item three</button>
+        </TabTrigger>
+        <TabIndicator />
+      </TabList>
+      <TabContent value="one">Value item one</TabContent>
+      <TabContent value="two">Value item two</TabContent>
+      <TabContent value="three">Value item three</TabContent>
+    </Tabs>
+  </Story>
 </template>
 <style>
 [data-part='trigger']:focus {

@@ -12,22 +12,24 @@ import {
 } from '../'
 </script>
 <template>
-  <Popover>
-    <PopoverTrigger>
-      <button>click me</button>
-    </PopoverTrigger>
-    <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
-      <PopoverContent>
-        <PopoverTitle>Title</PopoverTitle>
-        <PopoverDescription>Description</PopoverDescription>
-        <input type="text" />
-        <PopoverCloseTrigger>
-          <button>close</button>
-        </PopoverCloseTrigger>
-      </PopoverContent>
-    </PopoverPositioner>
-  </Popover>
+  <Story title="Popover - Basic">
+    <Popover>
+      <PopoverTrigger>
+        <button>click me</button>
+      </PopoverTrigger>
+      <PopoverPositioner>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <input type="text" />
+          <PopoverCloseTrigger>
+            <button>close</button>
+          </PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Popover>
+  </Story>
 </template>

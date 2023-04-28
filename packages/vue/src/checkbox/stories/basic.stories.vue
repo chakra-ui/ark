@@ -6,11 +6,13 @@ import '../checkbox.css'
 const checkboxRef = ref(true)
 </script>
 <template>
-  <Checkbox v-model="checkboxRef">
-    <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxInput />
-    <CheckboxControl>
-      <span v-if="checkboxRef">✓</span>
-    </CheckboxControl>
-  </Checkbox>
+  <Story title="Checkbox - Basic">
+    <Checkbox v-model="checkboxRef">
+      <CheckboxLabel>Checkbox</CheckboxLabel>
+      <CheckboxInput />
+      <CheckboxControl>
+        <span v-if="checkboxRef">✓</span>
+      </CheckboxControl>
+    </Checkbox>
+  </Story>
 </template>

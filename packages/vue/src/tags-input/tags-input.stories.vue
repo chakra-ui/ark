@@ -18,22 +18,24 @@ const tagsInputRef = ref<{ context: TagsInputContext }>()
 const values = ref<string[]>(['react', 'solid', 'vue'])
 </script>
 <template>
-  <TagsInput ref="tagsInputRef" v-model="values">
-    <TagsInputLabel>Label</TagsInputLabel>
-    <TagsInputControl>
-      <template v-for="(value, index) in tagsInputRef?.context.value">
-        <Tag :index="index" :value="value">
-          <span>{{ value }}</span>
-          <TagDeleteTrigger :index="index" :value="value">
-            <button>&#x2715;</button>
-          </TagDeleteTrigger>
-        </Tag>
-        <TagInput :index="index" :value="value" />
-      </template>
-      <TagsInputField placeholder="Add tag" />
-      <TagsInputClearTrigger>
-        <button>Clear all</button>
-      </TagsInputClearTrigger>
-    </TagsInputControl>
-  </TagsInput>
+  <Story title="TagsInput - Basic">
+    <TagsInput ref="tagsInputRef" v-model="values">
+      <TagsInputLabel>Label</TagsInputLabel>
+      <TagsInputControl>
+        <template v-for="(value, index) in tagsInputRef?.context.value">
+          <Tag :index="index" :value="value">
+            <span>{{ value }}</span>
+            <TagDeleteTrigger :index="index" :value="value">
+              <button>&#x2715;</button>
+            </TagDeleteTrigger>
+          </Tag>
+          <TagInput :index="index" :value="value" />
+        </template>
+        <TagsInputField placeholder="Add tag" />
+        <TagsInputClearTrigger>
+          <button>Clear all</button>
+        </TagsInputClearTrigger>
+      </TagsInputControl>
+    </TagsInput>
+  </Story>
 </template>

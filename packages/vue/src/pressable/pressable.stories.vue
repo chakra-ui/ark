@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Pressable } from '.'
 
-const handlePress = () => console.log('onPress')
+const handlePress = () => alert('onPress')
 </script>
 <template>
-  <Pressable @press="handlePress">Pressable</Pressable>
+  <Story title="Pressable - Basic">
+    <Pressable @press="handlePress">Pressable</Pressable>
+  </Story>
 </template>

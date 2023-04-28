@@ -13,22 +13,24 @@ const props = withDefaults(defineProps<{ max?: number; defaultValue?: number }>(
 const defaultRef = ref(props.defaultValue)
 </script>
 <template>
-  <RatingGroup :max="props.max" v-model="defaultRef" allowHalf>
-    <RatingGroupLabel>Label</RatingGroupLabel>
-    <RatingGroupControl v-slot="{ sizeArray }: UnwrapRef<RatingGroupContext>">
-      <Rating
-        v-for="idx in sizeArray"
-        :key="idx"
-        :index="idx"
-        v-slot="{
-          isHalf,
-          isHighlighted,
-        }: ReturnType<UnwrapRef<RatingGroupContext>['getRatingState']>"
-      >
-        <IconHalf v-if="isHalf" />
-        <IconFull v-else-if="isHighlighted" />
-        <IconEmpty v-else />
-      </Rating>
-    </RatingGroupControl>
-  </RatingGroup>
+  <Story title="RatingGroup - Basic">
+    <RatingGroup :max="props.max" v-model="defaultRef" allowHalf>
+      <RatingGroupLabel>Label</RatingGroupLabel>
+      <RatingGroupControl v-slot="{ sizeArray }: UnwrapRef<RatingGroupContext>">
+        <Rating
+          v-for="idx in sizeArray"
+          :key="idx"
+          :index="idx"
+          v-slot="{
+            isHalf,
+            isHighlighted,
+          }: ReturnType<UnwrapRef<RatingGroupContext>['getRatingState']>"
+        >
+          <IconHalf v-if="isHalf" />
+          <IconFull v-else-if="isHighlighted" />
+          <IconEmpty v-else />
+        </Rating>
+      </RatingGroupControl>
+    </RatingGroup>
+  </Story>
 </template>
