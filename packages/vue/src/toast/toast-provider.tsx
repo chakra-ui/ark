@@ -1,9 +1,9 @@
 import { group } from '@zag-js/toast'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, ComputedRef, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, type ComputedRef, type PropType } from 'vue'
 import { createContext } from '../context'
 import type { Optional } from '../types'
-import { ComponentWithProps, useId } from '../utils'
+import { useId, type ComponentWithProps } from '../utils'
 
 type GroupPublicContext = Parameters<(typeof group)['machine']>[0]
 

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useToastItemContext } from './toast-item-context'
 

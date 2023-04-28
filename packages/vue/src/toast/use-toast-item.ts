@@ -1,6 +1,6 @@
-import { connect, Service } from '@zag-js/toast'
+import { connect, type Service } from '@zag-js/toast'
 import { normalizeProps, useActor } from '@zag-js/vue'
-import { computed, UnwrapRef } from 'vue'
+import { computed, type UnwrapRef } from 'vue'
 
 export type UseToastItemProps = { toast: Service }
 

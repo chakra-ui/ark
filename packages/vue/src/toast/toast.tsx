@@ -1,9 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { computed, defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { ToastItemProvider } from './toast-item-context'
-import { useToastItem, UseToastItemProps } from './use-toast-item'
+import { useToastItem, type UseToastItemProps } from './use-toast-item'
 
 export type ToastProps = Assign<HTMLArkProps<'div'>, UseToastItemProps>
 
