@@ -1,7 +1,7 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagProps = { index: string | number; value: string; disabled?: boolean }
@@ -33,7 +33,7 @@ export const Tag: ComponentWithProps<Assign<HTMLArkProps<'div'>, TagProps>> = de
         })}
         {...attrs}
       >
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },
