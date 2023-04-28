@@ -4,14 +4,18 @@ import { Creators } from '@/components/marketing/Creators'
 import { Enterprise } from '@/components/marketing/Enterprise'
 import { Footer } from '@/components/marketing/Footer'
 import { Frameworks } from '@/components/marketing/Frameworks'
+import { Gradient } from '@/components/marketing/Gradient'
 import { Hero } from '@/components/marketing/Hero'
 import { Showcase } from '@/components/marketing/Showcase'
 import { Testimonials } from '@/components/marketing/Testimonials'
 import { Universe } from '@/components/marketing/Universe'
 import { Navbar } from '@/components/navigation/navbar/Navbar'
+import { getCodeExamples } from '@/lib/getCodeExamples'
 import { Box } from '@/panda/jsx'
 
-export default function Page() {
+export default async function Page() {
+  const examples = await getCodeExamples()
+
   return (
     <Box
       minH="100%"
@@ -24,7 +28,7 @@ export default function Page() {
       <Hero />
       <Showcase />
       <Frameworks />
-      <CodeExample />
+      <CodeExample examples={examples} />
       <Enterprise />
       <Testimonials />
       <Universe />
@@ -34,14 +38,3 @@ export default function Page() {
     </Box>
   )
 }
-
-const Gradient = () => (
-  <Box
-    position="absolute"
-    display={{ base: 'none', sm: 'block' }}
-    inset="0"
-    height="830px"
-    background="radial-gradient(42.48% 42.48% at calc(50% + 100vw / 2) center, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
-    filter="blur(282px)"
-  />
-)

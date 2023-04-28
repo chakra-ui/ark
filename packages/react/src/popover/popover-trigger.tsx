@@ -1,4 +1,4 @@
-import { Children, cloneElement, ReactElement } from 'react'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverTriggerProps = { children: ReactElement }

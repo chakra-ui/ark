@@ -1,6 +1,6 @@
 import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useRadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 

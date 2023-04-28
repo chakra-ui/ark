@@ -1,9 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { connect } from '@zag-js/menu'
-import type { JSX } from 'solid-js'
-import { children } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { type connect } from '@zag-js/menu'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { useMenuContext } from './menu-context'
 

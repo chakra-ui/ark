@@ -1,13 +1,11 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
+import { Children, cloneElement, type ReactElement } from 'react'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverAnchorProps = HTMLArkProps<'div'>
+export type PopoverAnchorProps = { children: ReactElement }
 
-export const PopoverAnchor = forwardRef<'div', PopoverAnchorProps>((props, ref) => {
+export const PopoverAnchor = (props: PopoverAnchorProps) => {
   const { anchorProps } = usePopoverContext()
-  const mergedProps = mergeProps(anchorProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+  const onlyChild = Children.only(props.children)
+  return cloneElement(onlyChild, anchorProps)
+}

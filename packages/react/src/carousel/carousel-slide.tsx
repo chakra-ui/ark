@@ -1,6 +1,6 @@
-import { Assign, forwardRef } from '@polymorphic-factory/react'
+import { forwardRef, type Assign } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
 export type CarouselSlideProps = Assign<HTMLArkProps<'div'>, { index: number }>

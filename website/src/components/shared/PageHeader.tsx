@@ -13,14 +13,14 @@ export const PageHeader = (props: PageHeaderProps) => {
   return (
     <Stack gap="5">
       <Stack gap="3">
-        <Text color="accent.default" fontWeight="semibold" textStyle="sm">
+        <Text color="accent.muted" fontWeight="semibold" textStyle="sm">
           {subHeading}
         </Text>
         <panda.h1 textStyle="3xl" fontWeight="semibold">
           {heading}
         </panda.h1>
       </Stack>
-      <Text color="fg.muted" textStyle="md" lineHeight="relaxed" maxW="xl">
+      <Text color="fg.muted" textStyle="md" lineHeight="relaxed">
         {supportingText}
       </Text>
     </Stack>

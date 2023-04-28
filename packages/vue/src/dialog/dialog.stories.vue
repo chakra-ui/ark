@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, Teleport } from 'vue'
+import { Teleport } from 'vue'
 import {
   Dialog,
   DialogBackdrop,

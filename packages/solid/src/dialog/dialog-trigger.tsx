@@ -18,5 +18,5 @@ export const DialogTrigger = (props: DialogTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

@@ -1,4 +1,4 @@
-import { children, createEffect, JSX } from 'solid-js'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { useMenuContext } from './menu-context'
 
@@ -16,5 +16,5 @@ export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

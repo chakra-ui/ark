@@ -1,11 +1,11 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { RadioGroupProvider } from './radio-context'
-import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
+import { useRadioGroup, type UseRadioGroupContext } from './use-radio-group'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps['context']>
+export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupContext>
 
 export const RadioGroup: ComponentWithProps<RadioGroupProps> = defineComponent({
   name: 'RadioGroup',
@@ -46,12 +46,7 @@ export const RadioGroup: ComponentWithProps<RadioGroupProps> = defineComponent({
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { slots, attrs, emit }) {
-    const radioGroupProps = computed<UseRadioGroupProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useRadioGroup(radioGroupProps.value)
+    const api = useRadioGroup(emit, props)
 
     RadioGroupProvider(api)
 

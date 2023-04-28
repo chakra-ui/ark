@@ -2,9 +2,12 @@
  * All html and svg elements for ark components.
  * This is mostly for `ark.<element>` syntax.
  */
-import type { HTMLPolymorphicComponents, HTMLPolymorphicProps } from '@polymorphic-factory/react'
-import { polymorphicFactory } from '@polymorphic-factory/react'
-import type { ElementType } from 'react'
+import {
+  polymorphicFactory,
+  type HTMLPolymorphicComponents,
+  type HTMLPolymorphicProps,
+} from '@polymorphic-factory/react'
+import { type ElementType } from 'react'
 
 export type HTMLArkComponents = HTMLPolymorphicComponents
 

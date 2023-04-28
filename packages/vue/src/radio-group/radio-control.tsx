@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { ark, type HTMLArkProps } from '../factory'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useRadioContext, useRadioGroupContext } from './radio-context'
 
 export type RadioControlProps = HTMLArkProps<'div'>

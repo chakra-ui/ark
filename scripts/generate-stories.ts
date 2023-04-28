@@ -13,6 +13,8 @@ function format(stories: Record<string, string>) {
   })
 }
 
+const isComponent = (str: string) => str.charAt(0) === str.charAt(0).toUpperCase()
+
 const main = async () => {
   const project = new Project({})
   project.addSourceFilesAtPaths('src/**/*.stories.tsx')
@@ -28,6 +30,7 @@ const main = async () => {
           match(decl)
             .when(Node.isVariableDeclaration, (node) => {
               const name = node.getName()
+              if (!isComponent(name)) return
               const code = `const ${name} = ${node.getInitializer()?.getText()}`
               stories[name] = code
             })

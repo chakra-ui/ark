@@ -1,3 +1,4 @@
+'use client'
 import { IconButton } from '@/components/shared/IconButton'
 import { css } from '@/panda/css'
 import { Flex, HStack, panda } from '@/panda/jsx'
@@ -32,7 +33,8 @@ export const Navbar = () => (
             Docs
           </Link>
           <Link
-            href="/docs/roadmap"
+            href="https://ark-ui.canny.io/"
+            target="_blank"
             className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
           >
             Roadmap

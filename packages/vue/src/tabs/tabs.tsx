@@ -1,17 +1,15 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { TabsProvider } from './tabs-context'
-import { useTabs, UseTabsProps } from './use-tabs'
+import { useTabs, type UseTabsContext, type UseTabsDefaultValue } from './use-tabs'
 
-type UseTabsPropsContext = UseTabsProps['context']
-
-export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsPropsContext> {
-  defaultValue?: UseTabsProps['defaultValue']
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsContext> {
+  defaultValue?: UseTabsDefaultValue
 }
 
-const VueSelectProps = {
+const VueTabsProps = {
   defaultValue: {
     type: String as PropType<TabsProps['defaultValue']>,
   },
@@ -41,15 +39,9 @@ const VueSelectProps = {
 export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
   name: 'Tabs',
   emits: ['change', 'focus', 'delete'],
-  props: VueSelectProps,
+  props: VueTabsProps,
   setup(props, { slots, attrs, emit }) {
-    const tabsProps = computed<UseTabsProps>(() => ({
-      context: props,
-      defaultValue: props.defaultValue,
-      emit,
-    }))
-
-    const api = useTabs(tabsProps.value)
+    const api = useTabs(emit, props, props.defaultValue)
 
     TabsProvider(api)
 

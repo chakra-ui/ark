@@ -9,7 +9,7 @@ export const Enterprise = () => (
   <Box bg="bg.surface">
     <Container py={{ base: '16', md: '24' }}>
       <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: '12', md: '16' }}>
-        <Stack gap={{ base: '8', md: '10' }}>
+        <Stack gap={{ base: '8', md: '10' }} alignItems="start">
           <Stack gap={{ base: '4', md: '5' }} maxW="3xl">
             <Heading textStyle={{ base: '2xl', md: '3xl' }} fontWeight="semibold">
               Designed for product teams and organizations
@@ -82,7 +82,7 @@ const VueIcon = () => (
     <path
       d="M48.2957 23.1999L43.0996 32.3221L37.9035 23.1999H29.5996L43.0996 46.8999L56.5996 23.1999H48.2957Z"
       fill="white"
-      fill-opacity="0.94"
+      fillOpacity="0.94"
     />
   </svg>
 )

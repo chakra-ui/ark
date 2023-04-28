@@ -21,5 +21,5 @@ export const AccordionTrigger = (props: AccordionTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

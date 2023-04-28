@@ -1,9 +1,9 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
-import { PropsWithChildren, useId } from 'react'
+import { useId, type PropsWithChildren } from 'react'
 import { createContext } from '../create-context'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
 

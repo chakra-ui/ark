@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 

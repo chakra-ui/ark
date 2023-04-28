@@ -26,7 +26,7 @@
       "description": "Whether the tooltip is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -50,6 +50,11 @@
       "isRequired": false,
       "description": "Function called when the tooltip is opened."
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is open"
+    },
     "openDelay": {
       "type": "number",
       "isRequired": false,
@@ -60,9 +65,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "UseTooltipProps": {
-    "context": { "type": "TooltipPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
   }
 }

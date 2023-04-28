@@ -1,11 +1,9 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { getValidChildren } from '../utils'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, UseNumberInputProps } from './use-number-input'
-
-type UseNumberInputContext = UseNumberInputProps['context']
+import { useNumberInput, type UseNumberInputContext } from './use-number-input'
 
 export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputContext>
 
@@ -96,12 +94,7 @@ export const NumberInput = defineComponent({
   emits: ['change', 'focus', 'invalid', 'blur', 'update:modelValue'],
   props: VueNumberInputProps,
   setup(props, { slots, emit }) {
-    const numberInputProps = computed<UseNumberInputProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useNumberInput(numberInputProps.value)
+    const api = useNumberInput(emit, props)
 
     NumberInputProvider(api)
 

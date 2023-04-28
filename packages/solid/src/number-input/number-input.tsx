@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, UseNumberInputProps } from './use-number-input'
+import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
 export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 

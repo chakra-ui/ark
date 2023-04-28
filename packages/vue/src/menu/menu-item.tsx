@@ -1,9 +1,9 @@
-import { defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
-import type { UseMenuReturn } from './use-menu'
+import { type UseMenuReturn } from './use-menu'
 
 type MenuItemParams = Parameters<UseMenuReturn['api']['getItemProps']>[0]
 

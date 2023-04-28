@@ -1,3 +1,4 @@
+'use client'
 import { Circle } from '@/panda/jsx'
 import Image from 'next/image'
 import { circle } from 'panda/patterns'
@@ -6,6 +7,7 @@ const sizes = {
   sm: circle({ size: '8' }),
   md: circle({ size: '10' }),
   lg: circle({ size: '12' }),
+  xl: circle({ size: '14' }),
 }
 
 type AvatarProps = {

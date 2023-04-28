@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Fragment, useState } from 'react'
 import {
   Tag,
@@ -10,6 +11,15 @@ import {
   TagsInputLabel,
 } from './'
 import './tags-input.css'
+
+type TagsInputType = typeof TagsInput
+
+const meta: Meta<TagsInputType> = {
+  title: 'TagsInput',
+  component: TagsInput,
+}
+
+export default meta
 
 export const Basic = () => {
   const [value, setValue] = useState<string[]>(['react', 'solid', 'vue'])

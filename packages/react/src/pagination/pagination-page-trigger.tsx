@@ -1,7 +1,7 @@
 import { forwardRef } from '@polymorphic-factory/react'
-import { Children, cloneElement, ReactElement } from 'react'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { Children, cloneElement, type ReactElement } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationPageTriggerProps = Assign<

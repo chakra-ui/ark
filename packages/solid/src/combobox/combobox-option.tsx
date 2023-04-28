@@ -1,7 +1,7 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
 type OptionProps = Parameters<

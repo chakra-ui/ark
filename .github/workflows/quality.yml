@@ -9,43 +9,98 @@ on:
       - main
 
 jobs:
-  main:
-    runs-on: self-hosted
+  build:
+    name: Build
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          registry-url: 'https://registry.npmjs.org'
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install
+        uses: ./.github/composite-actions/install
 
       - name: Build packages
-        # Website is already built on Vercel
-        run: pnpm build --filter=\!@ark-ui/website
+        run: pnpm build
 
-      - name: Test packages
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run tests
         run: pnpm test
 
-      - name: Lint packages
+      - name: Upload /react coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: react
+
+      - name: Upload /solid coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: solid
+
+      - name: Upload /vue coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: vue
+
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run ESLint
         run: pnpm lint
 
-      - name: Typecheck packages
+  types:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run typecheck
         run: pnpm typecheck
 
-      - name: Check format
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run prettier
         run: pnpm format:check
 
-      - name: Check exports
+  exports:
+    name: Check package exports
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run exports:check
         run: pnpm exports:check

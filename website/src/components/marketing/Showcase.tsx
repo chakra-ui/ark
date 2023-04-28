@@ -11,15 +11,39 @@ import {
   CarouselViewport,
   TabIndicator,
   TabList,
-  Tabs,
   TabTrigger,
+  Tabs,
 } from '@ark-ui/react'
 import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { DemoAccordion } from '../docs/demo/Accordion'
+import { DemoDialog } from '../docs/demo/Dialog'
+import { DemoMenu } from '../docs/demo/Menu'
+import { DemoPopover } from '../docs/demo/Popover'
+import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
+const components = [
+  {
+    name: 'Slider',
+    demo: <DemoSlider />,
+  },
+  { name: 'Dialog', demo: <DemoDialog /> },
+  {
+    name: 'Menu',
+    demo: <DemoMenu />,
+  },
+  {
+    name: 'Popover',
+    demo: <DemoPopover />,
+  },
+  {
+    name: 'Accordion',
+    demo: <DemoAccordion />,
+  },
+] as const
+
 export const Showcase = () => {
-  const components = ['Dialog', 'Menu', 'Popover', 'Slider', 'Accordion']
   const [index, setIndex] = useState(0)
   return (
     <Container py={{ base: '12', md: '16' }}>
@@ -31,29 +55,34 @@ export const Showcase = () => {
                 background: 'bg.surface',
                 borderWidth: '1px',
                 borderRadius: 'lg',
-                minH: '400px',
+                minH: 'md',
                 overflowX: 'hidden',
                 width: 'full',
               })}
             >
               <CarouselSlideGroup>
                 {components.map((component, id) => (
-                  <CarouselSlide key={component} index={id}>
-                    <Box p="6">{component} Demo</Box>
+                  <CarouselSlide key={component.name} index={id}>
+                    <Box p="4">{component.demo}</Box>
                   </CarouselSlide>
                 ))}
               </CarouselSlideGroup>
             </CarouselViewport>
             <Stack direction="row" justify="space-between" width="full">
               <Tabs
-                className={cx(tabs({}), css({ display: { base: 'none', sm: 'block' } }))}
-                value={components[index]}
-                onChange={({ value }) => setIndex(components.indexOf(value ?? ''))}
+                className={cx(
+                  tabs({ variant: 'fill' }),
+                  css({ display: { base: 'none', sm: 'block' } }),
+                )}
+                value={components[index].name}
+                onChange={({ value }) =>
+                  setIndex(components.findIndex((component) => component.name === value))
+                }
               >
                 <TabList className={css({ display: 'inline-flex' })}>
                   {components.map((component) => (
-                    <TabTrigger key={component} value={component}>
-                      <button>{component}</button>
+                    <TabTrigger key={component.name} value={component.name}>
+                      <button>{component.name}</button>
                     </TabTrigger>
                   ))}
                   <TabIndicator />

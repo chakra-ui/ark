@@ -1,7 +1,7 @@
-import type { connect } from '@zag-js/tabs'
-import { defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { type connect } from '@zag-js/tabs'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useTabsContext } from './tabs-context'
 
 type GetContentProps = Parameters<ReturnType<typeof connect>['getContentProps']>[0]

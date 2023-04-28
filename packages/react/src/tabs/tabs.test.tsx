@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { TabContent, TabIndicator, TabList, Tabs, TabsProps, TabTrigger } from '.'
+import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
 
 const Component = (props: TabsProps) => (
   <Tabs {...props}>

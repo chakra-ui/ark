@@ -34,3 +34,24 @@ export const Disabled = () => {
     </Accordion>
   )
 }
+
+export const ItemState = () => {
+  const items = ['panel-1', 'panel-2', 'panel-3']
+  return (
+    <Accordion value="panel-1">
+      {items.map((item) => (
+        <AccordionItem value={item}>
+          {(state) => (
+            <>
+              {state().isOpen ? 'Open' : 'Close'}
+              <AccordionTrigger>
+                <button>{item} trigger</button>
+              </AccordionTrigger>
+              <AccordionContent>{item} content</AccordionContent>
+            </>
+          )}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
+}

@@ -1,11 +1,11 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ComponentWithProps, getValidChildren } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { SliderProvider } from './slider-context'
-import { useSlider, UseSliderProps } from './use-slider'
+import { useSlider, type UseSliderContext } from './use-slider'
 
-export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps['context']>
+export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderContext>
 
 export const Slider: ComponentWithProps<SliderProps> = defineComponent({
   name: 'Slider',
@@ -75,12 +75,7 @@ export const Slider: ComponentWithProps<SliderProps> = defineComponent({
     },
   },
   setup(props, { slots, attrs, emit, expose }) {
-    const sliderProps = computed<UseSliderProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useSlider(sliderProps.value)
+    const api = useSlider(emit, props)
 
     expose({
       context: api.value,

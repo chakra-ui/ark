@@ -1,6 +1,6 @@
-import { computed, defineComponent, onMounted, PropType } from 'vue'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { computed, defineComponent, onMounted, type PropType } from 'vue'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -8,14 +8,14 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, UseMenuProps } from './use-menu'
+import { useMenu, type UseMenuContext } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean
   onClose: () => void
 }
 
-export type MenuProps = Assign<UseMenuProps['context'], { isOpen?: boolean }>
+export type MenuProps = Assign<UseMenuContext, { isOpen?: boolean }>
 
 export const Menu: ComponentWithProps<MenuProps> = defineComponent({
   name: 'Menu',
@@ -58,12 +58,7 @@ export const Menu: ComponentWithProps<MenuProps> = defineComponent({
   },
   emits: ['close', 'open', 'select', 'value-change'],
   setup(props, { slots, emit, expose }) {
-    const menuProps = computed<UseMenuProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const { api, menuMachine } = useMenu(menuProps.value)
+    const { api, menuMachine } = useMenu(emit, props)
 
     const parentApi = useMenuContext(undefined)
     const parentMachine = useMenuMachineContext(undefined)

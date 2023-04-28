@@ -8,9 +8,9 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogProps,
   DialogTitle,
   DialogTrigger,
+  type DialogProps,
 } from '.'
 
 const Component = (props: DialogProps) => (
@@ -45,7 +45,7 @@ describe('Dialog', () => {
     const onClose = vi.fn()
     const { getByText } = render(Component, {
       props: {
-        defaultOpen: true,
+        open: true,
         onClose,
       },
     })

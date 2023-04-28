@@ -1,10 +1,10 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { children, JSX } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { EditableContext, EditableProvider, useEditableContext } from './editable-context'
-import { useEditable, UseEditableProps } from './use-editable'
+import { EditableProvider, useEditableContext, type EditableContext } from './editable-context'
+import { useEditable, type UseEditableProps } from './use-editable'
 
 export type EditableProps = Assign<EditableContextWrapperProps, UseEditableProps>
 
@@ -24,6 +24,7 @@ export const Editable = (props: EditableProps) => {
     'onCancel',
     'onChange',
     'onEdit',
+    'onInteractOutside',
     'onSubmit',
     'placeholder',
     'readOnly',

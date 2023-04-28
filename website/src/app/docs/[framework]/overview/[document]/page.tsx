@@ -1,8 +1,9 @@
+import { DocsFooter } from '@/components/docs/DocsFooter'
 import { Markdown } from '@/components/docs/Markdown'
 import { TableOfContent } from '@/components/docs/TableOfContent'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { findDocumentByFrameWorkAndId } from '@/lib/contentlayer'
-import { Box } from '@/panda/jsx'
+import { Stack } from '@/panda/jsx'
 import { notFound } from 'next/navigation'
 
 const Page = (props: any) => {
@@ -15,10 +16,11 @@ const Page = (props: any) => {
 
   return (
     <>
-      <Box width={{ base: 'full', xl: '41rem' }}>
-        <PageHeader subHeading="Overview" heading={doc.name} />
+      <Stack gap="12" width={{ base: 'full', xl: '41rem' }}>
+        <PageHeader subHeading="Overview" heading={doc.name} supportingText={doc.description} />
         <Markdown doc={doc} />
-      </Box>
+        <DocsFooter doc={doc} />
+      </Stack>
       <TableOfContent entries={doc.toc} />
     </>
   )

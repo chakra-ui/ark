@@ -1,6 +1,6 @@
 'use client'
 import { Flex } from '@/panda/jsx'
-import React, { ComponentType, PropsWithChildren, Suspense } from 'react'
+import React, { Suspense, type ComponentType, type PropsWithChildren } from 'react'
 import { match } from 'ts-pattern'
 
 type PlaygroundProps = {
@@ -37,11 +37,12 @@ export const Playground = (props: PlaygroundProps) => {
   return (
     <Flex
       direction={{ base: 'column', md: 'row' }}
-      bg="bg.surface"
+      bg="bg.canvas"
       minH="40"
       borderRadius="lg"
-      boxShadow="sm"
+      borderWidth="1px"
       width="full"
+      overflow="hidden"
     >
       <Canvas>
         <Suspense fallback={null}>
@@ -53,7 +54,7 @@ export const Playground = (props: PlaygroundProps) => {
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+  <Flex justify="center" align="center" flex="1" p="4" bg="bg.surface">
     {props.children}
   </Flex>
 )

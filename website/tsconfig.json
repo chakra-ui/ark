@@ -18,7 +18,9 @@
         "name": "next"
       }
     ],
-    "target": "es6"
+    "target": "es6",
+    "verbatimModuleSyntax": false,
+    "isolatedModules": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

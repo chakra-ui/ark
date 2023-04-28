@@ -9,10 +9,10 @@ import {
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
-  ComboboxOptionProps,
   ComboboxPositioner,
-  ComboboxProps,
   ComboboxTrigger,
+  type ComboboxOptionProps,
+  type ComboboxProps,
 } from '.'
 
 const ComponentUnderTest = (props: Omit<ComboboxProps, 'children'>) => {

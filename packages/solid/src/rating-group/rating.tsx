@@ -1,8 +1,8 @@
 import { children } from 'solid-js'
-import type { JSX } from 'solid-js/jsx-runtime'
-import { ark, HTMLArkProps } from '../factory'
+import { type JSX } from 'solid-js/jsx-runtime'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { RatingContext, RatingProvider } from './rating-context'
+import { RatingProvider, type RatingContext } from './rating-context'
 import { useRatingGroupContext } from './rating-group-context'
 
 export type RatingProps = Omit<HTMLArkProps<'span'>, 'children'> & {

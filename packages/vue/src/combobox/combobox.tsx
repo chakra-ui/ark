@@ -1,15 +1,11 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox, UseComboboxProps } from './use-combobox'
+import { useCombobox, type UseComboboxContext } from './use-combobox'
 
-type UseComboboxPropsContext = UseComboboxProps['context']
-
-export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxPropsContext> & {
-  defaultValue?: UseComboboxProps['defaultValue']
-}
+export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxContext>
 
 const VueComboboxProps = {
   modelValue: {
@@ -33,9 +29,6 @@ const VueComboboxProps = {
   disabled: {
     type: Boolean as PropType<ComboboxProps['disabled']>,
   },
-  defaultValue: {
-    type: String as PropType<ComboboxProps['defaultValue']>,
-  },
   focusOnClear: {
     type: Boolean as PropType<ComboboxProps['focusOnClear']>,
   },
@@ -50,6 +43,9 @@ const VueComboboxProps = {
   },
   inputBehavior: {
     type: String as PropType<ComboboxProps['inputBehavior']>,
+  },
+  inputValue: {
+    type: String as PropType<ComboboxProps['inputValue']>,
   },
   invalid: {
     type: Boolean as PropType<ComboboxProps['invalid']>,
@@ -97,13 +93,7 @@ export const Combobox: ComponentWithProps<ComboboxProps> = defineComponent({
   props: VueComboboxProps,
   emits: ['close', 'open', 'highlight', 'input-change', 'update:modelValue', 'select'],
   setup(props, { slots, attrs, emit, expose }) {
-    const comboboxProps = computed<UseComboboxProps>(() => ({
-      context: props,
-      defaultValue: props.modelValue ?? props.defaultValue,
-      emit,
-    }))
-
-    const api = useCombobox(comboboxProps.value)
+    const api = useCombobox(emit, props)
 
     ComboboxProvider(api)
 

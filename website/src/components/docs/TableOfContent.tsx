@@ -24,7 +24,7 @@ export const TableOfContent = (props: Props) => {
       right="max(0px, calc(100vw / 2 - 640px))"
     >
       <Stack gap="3">
-        <Text textStyle="sm" fontWeight="semibold">
+        <Text textStyle="sm" fontWeight="semibold" color="accent.muted">
           On this page
         </Text>
         <Stack>

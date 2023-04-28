@@ -1,10 +1,10 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { type Assign } from '@polymorphic-factory/solid'
 import { children } from 'solid-js'
-import type { JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import { SelectProvider, useSelectContext, type SelectContext } from './select-context'
-import { useSelect, UseSelectProps } from './use-select'
+import { useSelect, type UseSelectProps } from './use-select'
 
 export type SelectProps = Assign<
   UseSelectProps,
@@ -29,6 +29,7 @@ export const Select = (props: SelectProps) => {
     'onChange',
     'onClose',
     'onHighlight',
+    'onInteractOutside',
     'onOpen',
     'positioning',
     'readOnly',

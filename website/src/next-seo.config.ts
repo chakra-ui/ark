@@ -17,7 +17,7 @@ export const config: NextSeoProps = {
     description,
     siteName: title,
   },
-  themeColor: '#563fd8',
+  themeColor: '#eb5e41',
   additionalLinkTags: [
     {
       rel: 'manifest',

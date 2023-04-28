@@ -1,22 +1,14 @@
-import type { RawDocumentData } from 'contentlayer/core'
+import { type RawDocumentData } from 'contentlayer/core'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
 import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrettyCode, { Options as PrettyCodeOptions } from 'rehype-pretty-code'
+import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
-import type { Highlighter } from 'shiki'
-
-let highlighter: Highlighter
-const highlightWithShiki = async (code: string) => {
-  if (!highlighter) {
-    const { getHighlighter } = await import('shiki')
-    highlighter = await getHighlighter({ theme: 'dark-plus' })
-  }
-  return highlighter.codeToHtml(code, { lang: 'tsx' })
-}
+import { highlightCode } from './src/lib/highlightCode'
 
 const resolveFramework = (doc: { _raw: RawDocumentData }) => doc._raw.sourceFilePath.split('/')[0]
+
 export const ComponentDocument = defineDocumentType(() => ({
   name: 'ComponentDocument',
   filePathPattern: '*/src/**/docs/*.mdx',
@@ -69,10 +61,7 @@ export const ComponentDocument = defineDocumentType(() => ({
           const jsonPath = `../packages/${framework}/src/${doc.id}/docs/${doc.id}.stories.json`
           const json: Record<string, string> = fs.readJSONSync(jsonPath)
           const items = await Promise.all(
-            Object.entries(json).map(async ([key, value]) => [
-              key,
-              await highlightWithShiki(value),
-            ]),
+            Object.entries(json).map(async ([key, value]) => [key, await highlightCode(value)]),
           )
           return Object.fromEntries(items)
         } catch (error) {
@@ -135,6 +124,10 @@ export const ChangelogDocument = defineDocumentType(() => ({
       type: 'string',
       resolve: () => 'Changelog',
     },
+    description: {
+      type: 'string',
+      resolve: () => 'See what is new',
+    },
     route: {
       type: 'string',
       resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/changelog`,
@@ -166,18 +159,8 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: 'dark-plus',
-          onVisitLine(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push('highlighted')
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ['word']
-          },
+          theme: 'css-variables',
+          keepBackground: true,
         } satisfies Partial<PrettyCodeOptions>,
       ],
     ],

@@ -1,10 +1,23 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
-import { Tooltip } from './tooltip'
-import { TooltipArrow } from './tooltip-arrow'
-import { TooltipArrowTip } from './tooltip-arrow-tip'
-import { TooltipContent } from './tooltip-content'
-import { TooltipPositioner } from './tooltip-positioner'
-import { TooltipTrigger } from './tooltip-trigger'
+import { useState } from 'react'
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+} from './'
+
+type TooltipType = typeof Tooltip
+
+const meta: Meta<TooltipType> = {
+  title: 'Tooltip',
+  component: Tooltip,
+}
+
+export default meta
 
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
@@ -19,5 +32,47 @@ export const Basic = () => (
         <TooltipContent>My Tooltip</TooltipContent>
       </TooltipPositioner>
     </Portal>
+  </Tooltip>
+)
+
+export const Controlled = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <Tooltip open={isOpen} openDelay={0} closeDelay={0}>
+        <TooltipTrigger>
+          <span>hover me</span>
+        </TooltipTrigger>
+        <Portal>
+          <TooltipPositioner>
+            <TooltipArrow>
+              <TooltipArrowTip />
+            </TooltipArrow>
+            <TooltipContent>My Tooltip</TooltipContent>
+          </TooltipPositioner>
+        </Portal>
+      </Tooltip>
+    </>
+  )
+}
+
+export const WithRenderFn = () => (
+  <Tooltip openDelay={0} closeDelay={0}>
+    {({ isOpen }) => (
+      <>
+        <TooltipTrigger>
+          <span>hover me</span>
+        </TooltipTrigger>
+        <Portal>
+          <TooltipPositioner>
+            <TooltipArrow>
+              <TooltipArrowTip />
+            </TooltipArrow>
+            <TooltipContent>IsOpen: {isOpen.toString()}</TooltipContent>
+          </TooltipPositioner>
+        </Portal>
+      </>
+    )}
   </Tooltip>
 )

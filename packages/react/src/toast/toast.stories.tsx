@@ -1,11 +1,24 @@
-import type { PropsWithChildren } from 'react'
-import { Toast } from './toast'
-import { ToastCloseTrigger } from './toast-close-trigger'
-import { ToastDescription } from './toast-description'
-import { ToastGroup } from './toast-group'
-import { ToastPlacements } from './toast-placements'
-import { ToastProvider, useToast } from './toast-provider'
-import { ToastTitle } from './toast-title'
+import type { Meta } from '@storybook/react'
+import { type PropsWithChildren } from 'react'
+import {
+  Toast,
+  ToastCloseTrigger,
+  ToastDescription,
+  ToastGroup,
+  ToastPlacements,
+  ToastProvider,
+  ToastTitle,
+  useToast,
+} from '.'
+
+type ToastType = typeof Toast
+
+const meta: Meta<ToastType> = {
+  title: 'Toast',
+  component: Toast,
+}
+
+export default meta
 
 // chakra land
 export const ChakraToastProvider = (props: PropsWithChildren) => (

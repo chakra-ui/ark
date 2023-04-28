@@ -1,7 +1,6 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import type { connect } from '@zag-js/splitter'
-import type { JSX } from 'solid-js'
-import { children, createEffect } from 'solid-js'
+import { type Assign } from '@polymorphic-factory/solid'
+import { type connect } from '@zag-js/splitter'
+import { children, createEffect, type JSX } from 'solid-js'
 import { spread } from 'solid-js/web'
 import { ssrSpread } from '../ssr-spread'
 import { useSplitterContext } from './splitter-context'
@@ -22,5 +21,5 @@ export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

@@ -2,7 +2,7 @@ import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
   defaultValue?: accordion.Context['value']

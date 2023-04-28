@@ -1,13 +1,13 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { cx } from '@/panda/css'
-import { Inter, Roboto_Mono } from '@next/font/google'
+import { Fira_Code, Inter } from '@next/font/google'
 import { NextSeo } from 'next-seo'
 import localFont from 'next/font/local'
 import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
+const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' })
 
 const monaSans = localFont({
   src: './mona-sans.woff2',
@@ -17,7 +17,7 @@ const monaSans = localFont({
 
 const RootLayout = (props: PropsWithChildren) => {
   return (
-    <html lang="en" className={cx(inter.variable, roboto.variable, monaSans.variable)}>
+    <html lang="en" className={cx(inter.variable, firaCode.variable, monaSans.variable)}>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />

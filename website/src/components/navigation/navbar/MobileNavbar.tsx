@@ -2,7 +2,7 @@
 import { Text } from '@/components/shared/Text'
 import { Box, Container, Stack } from '@/panda/jsx'
 import { usePathname } from 'next/navigation'
-import { Fragment, PropsWithChildren } from 'react'
+import { Fragment, type PropsWithChildren } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 
 export const MobileNavbar = (props: PropsWithChildren) => {
@@ -14,7 +14,7 @@ export const MobileNavbar = (props: PropsWithChildren) => {
     .map((path) => path.replace(/-/g, ' '))
 
   return (
-    <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
+    <Box borderTopWidth="1px" display={{ base: 'block', lg: 'none' }}>
       <Container>
         <Stack direction="row" py="3" align="center">
           {props.children}
@@ -25,7 +25,7 @@ export const MobileNavbar = (props: PropsWithChildren) => {
                 fontWeight="medium"
                 color="fg.muted"
                 textTransform="capitalize"
-                _last={{ color: 'accent.default' }}
+                _last={{ color: 'accent.muted' }}
               >
                 {crumb}
               </Text>

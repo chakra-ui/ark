@@ -2,7 +2,7 @@ import * as radio from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
+import { type Optional } from '../types'
 
 export type UseRadioGroupProps = Optional<radio.Context, 'id'>
 export type UseRadioGroupReturn = ReturnType<typeof useRadioGroup>

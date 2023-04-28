@@ -15,18 +15,13 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to open or close the dialog on setup"
-    },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "finalFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement<HTMLElement>)",
+      "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is closed"
     },
@@ -46,7 +41,7 @@
       "description": "The ids of the elements in the dialog. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement<HTMLElement>)",
+      "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
@@ -75,6 +70,7 @@
       "isRequired": false,
       "description": "Callback to be invoked when the outside is clicked"
     },
+    "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
     "preventScroll": {
       "type": "boolean",
       "isRequired": false,

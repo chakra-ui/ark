@@ -1,4 +1,4 @@
-import { ark, HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useMenuTriggerItemContext } from './menu-context'
 
 export type MenuTriggerItemProps = HTMLArkProps<'div'>

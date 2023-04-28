@@ -1,23 +1,13 @@
-import { computed, defineComponent, PropType } from 'vue'
-import { ark, HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
+import { defineComponent, type PropType } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { type Assign } from '../types'
+import { type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion, UseAccordionProps } from './use-accordion'
+import { useAccordion, type UseAccordionContext } from './use-accordion'
 
-type UseAccordionPropsContext = UseAccordionProps['context']
-
-export interface AccordionProps extends Assign<HTMLArkProps<'div'>, UseAccordionPropsContext> {
-  defaultValue?: UseAccordionProps['defaultValue']
-}
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionContext>
 
 const VueAccordionProps = {
-  defaultValue: {
-    type: String as PropType<AccordionProps['defaultValue']>,
-  },
-  value: {
-    type: [String, Object] as PropType<AccordionProps['value']>,
-  },
   modelValue: {
     type: [String, Object] as PropType<AccordionProps['modelValue']>,
   },
@@ -49,12 +39,8 @@ export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({
   emits: ['change', 'update:modelValue'],
   props: VueAccordionProps,
   setup(props, { slots, attrs, emit }) {
-    const accordionProps = computed<UseAccordionProps>(() => ({
-      context: props,
-      emit,
-      defaultValue: props.modelValue || props.defaultValue,
-    }))
-    const { api } = useAccordion(accordionProps.value)
+    console.log('🚀 ~ file: accordion.tsx:42 ~ setup ~ props:', props)
+    const { api } = useAccordion(emit, props)
     AccordionProvider(api)
 
     return () => (
