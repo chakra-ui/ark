@@ -1,5 +1,5 @@
 ---
-'@ark-ui/react': minor
+'@ark-ui/solid': minor
 ---
 
 Add `ColorPicker` component
