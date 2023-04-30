@@ -238,8 +238,8 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(eslint@8.39.0)
       happy-dom:
-        specifier: 9.10.0
-        version: 9.10.0
+        specifier: 9.10.1
+        version: 9.10.1
       jsdom:
         specifier: 21.1.1
         version: 21.1.1
@@ -269,7 +269,7 @@ importers:
         version: 2.3.0(@types/node@18.16.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.0)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
 
   packages/solid:
     dependencies:
@@ -389,8 +389,8 @@ importers:
         specifier: 8.39.0
         version: 8.39.0
       happy-dom:
-        specifier: 9.10.0
-        version: 9.10.0
+        specifier: 9.10.1
+        version: 9.10.1
       solid-js:
         specifier: 1.7.3
         version: 1.7.3
@@ -408,7 +408,7 @@ importers:
         version: 2.7.0(solid-js@1.7.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.0)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
 
   packages/vue:
     dependencies:
@@ -537,8 +537,8 @@ importers:
         specifier: 8.39.0
         version: 8.39.0
       happy-dom:
-        specifier: 9.10.0
-        version: 9.10.0
+        specifier: 9.10.1
+        version: 9.10.1
       jsdom:
         specifier: 21.1.1
         version: 21.1.1
@@ -556,7 +556,7 @@ importers:
         version: 2.3.0(@types/node@18.16.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.0)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
       vue:
         specifier: 3.2.47
         version: 3.2.47
@@ -5921,7 +5921,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.30.1(happy-dom@9.10.0)(jsdom@21.1.1)
+      vitest: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
     dev: true
 
   /@vitest/expect@0.30.1:
@@ -9791,8 +9791,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@9.10.0:
-    resolution: {integrity: sha512-A2NGV4Z2goQEoFUed1jODPcG7WYHF04Ashv804qzIZU0I8kF5wQoJM6SVGC77nxZZAk7PypWzXKenfskgcpdMw==}
+  /happy-dom@9.10.1:
+    resolution: {integrity: sha512-4wEWL9jYxtjcvGJDACtcelTBD86Sv//Kwn3G/+zb0mrNF3sC/JC0lTznqLu4Vw4cNUfR4WLMjiC+jeAr8CxM2g==}
     dependencies:
       css.escape: 1.5.1
       he: 1.2.0
@@ -15625,7 +15625,7 @@ packages:
     dependencies:
       vite: 4.3.3(@types/node@18.16.3)
 
-  /vitest@0.30.1(happy-dom@9.10.0)(jsdom@21.1.1):
+  /vitest@0.30.1(happy-dom@9.10.1)(jsdom@21.1.1):
     resolution: {integrity: sha512-y35WTrSTlTxfMLttgQk4rHcaDkbHQwDP++SNwPb+7H8yb13Q3cu2EixrtHzF27iZ8v0XCciSsLg00RkPAzB/aA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -15670,7 +15670,7 @@ packages:
       chai: 4.3.7
       concordance: 5.0.4
       debug: 4.3.4
-      happy-dom: 9.10.0
+      happy-dom: 9.10.1
       jsdom: 21.1.1
       local-pkg: 0.4.3
       magic-string: 0.30.0
