@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@next/env": "13.3.1",
-    "@next/font": "13.3.1",
+    "@next/env": "13.3.2",
+    "@next/font": "13.3.2",
     "@pandacss/dev": "0.0.0-dev-20230424165658",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.2",
@@ -42,7 +42,7 @@
     "@types/react-dom": "18.0.11",
     "concurrently": "8.0.1",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.3.1",
+    "eslint-config-next": "13.3.2",
     "typescript": "5.0.4"
   }
 }
