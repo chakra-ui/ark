@@ -33,7 +33,7 @@
 | Slider              | 🟢    | 🟢    | 🟢  |
 | Splitter            | 🟢    | 🟢    | 🟢  |
 | Tabs                | 🟢    | 🟢    | 🟢  |
-| Tags Input          | 🟢    | 🟢    | 🟡  |
+| Tags Input          | 🟢    | 🟢    | 🟢  |
 | Toast               | 🟢    | 🟢    | 🟡  |
 | Tooltip             | 🟢    | 🟢    | 🟢  |
 

@@ -18,10 +18,10 @@ export const Basic = () => (
       <button>click me</button>
     </PopoverTrigger>
     <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
       <PopoverContent>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />
@@ -43,10 +43,10 @@ export const Controlled = () => {
           <span>anchor</span>
         </PopoverAnchor>
         <PopoverPositioner>
-          <PopoverArrow>
-            <PopoverArrowTip />
-          </PopoverArrow>
           <PopoverContent>
+            <PopoverArrow>
+              <PopoverArrowTip />
+            </PopoverArrow>
             <PopoverTitle>Title</PopoverTitle>
             <PopoverDescription>Description</PopoverDescription>
             <input type="text" />

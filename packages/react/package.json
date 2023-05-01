@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "components",
@@ -87,7 +87,7 @@
     "eslint": "8.39.0",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "happy-dom": "9.9.2",
+    "happy-dom": "9.10.1",
     "jsdom": "21.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
