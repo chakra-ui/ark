@@ -241,8 +241,8 @@ importers:
         specifier: 9.10.1
         version: 9.10.1
       jsdom:
-        specifier: 21.1.1
-        version: 21.1.1
+        specifier: 21.1.2
+        version: 21.1.2
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -269,7 +269,7 @@ importers:
         version: 2.3.0(@types/node@18.16.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.2)
 
   packages/solid:
     dependencies:
@@ -408,7 +408,7 @@ importers:
         version: 2.7.0(solid-js@1.7.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.2)
 
   packages/vue:
     dependencies:
@@ -540,8 +540,8 @@ importers:
         specifier: 9.10.1
         version: 9.10.1
       jsdom:
-        specifier: 21.1.1
-        version: 21.1.1
+        specifier: 21.1.2
+        version: 21.1.2
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -556,7 +556,7 @@ importers:
         version: 2.3.0(@types/node@18.16.3)(vite@4.3.3)
       vitest:
         specifier: 0.30.1
-        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
+        version: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.2)
       vue:
         specifier: 3.2.47
         version: 3.2.47
@@ -5921,7 +5921,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.1)
+      vitest: 0.30.1(happy-dom@9.10.1)(jsdom@21.1.2)
     dev: true
 
   /@vitest/expect@0.30.1:
@@ -10840,8 +10840,8 @@ packages:
       - supports-color
     dev: true
 
-  /jsdom@21.1.1:
-    resolution: {integrity: sha512-Jjgdmw48RKcdAIQyUD1UdBh2ecH7VqwaXPN3ehoZN6MqgVbMn+lRm1aAT1AsdJRAJpwfa4IpwgzySn61h2qu3w==}
+  /jsdom@21.1.2:
+    resolution: {integrity: sha512-sCpFmK2jv+1sjff4u7fzft+pUh2KSUbUrEHYHyfSIbGTIcmnjyp83qg6qLwdJ/I3LpTXx33ACxeRL7Lsyc6lGQ==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -10862,7 +10862,7 @@ packages:
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
       is-potential-custom-element-name: 1.0.1
-      nwsapi: 2.2.2
+      nwsapi: 2.2.4
       parse5: 7.1.2
       rrweb-cssom: 0.6.0
       saxes: 6.0.0
@@ -12443,8 +12443,8 @@ packages:
       set-blocking: 2.0.0
     dev: true
 
-  /nwsapi@2.2.2:
-    resolution: {integrity: sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==}
+  /nwsapi@2.2.4:
+    resolution: {integrity: sha512-NHj4rzRo0tQdijE9ZqAx6kYDcoRwYwSYzCA8MY3JzfxlrvEU0jhnhJT9BhqhJs7I/dKcrDm6TyulaRqZPIhN5g==}
     dev: true
 
   /object-assign@4.1.1:
@@ -15625,7 +15625,7 @@ packages:
     dependencies:
       vite: 4.3.3(@types/node@18.16.3)
 
-  /vitest@0.30.1(happy-dom@9.10.1)(jsdom@21.1.1):
+  /vitest@0.30.1(happy-dom@9.10.1)(jsdom@21.1.2):
     resolution: {integrity: sha512-y35WTrSTlTxfMLttgQk4rHcaDkbHQwDP++SNwPb+7H8yb13Q3cu2EixrtHzF27iZ8v0XCciSsLg00RkPAzB/aA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -15671,7 +15671,7 @@ packages:
       concordance: 5.0.4
       debug: 4.3.4
       happy-dom: 9.10.1
-      jsdom: 21.1.1
+      jsdom: 21.1.2
       local-pkg: 0.4.3
       magic-string: 0.30.0
       pathe: 1.1.0
