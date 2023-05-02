@@ -80,7 +80,7 @@
     "@vitest/coverage-c8": "0.30.1",
     "clean-package": "2.2.0",
     "eslint": "8.39.0",
-    "happy-dom": "9.10.1",
+    "happy-dom": "9.10.2",
     "solid-js": "1.7.4",
     "typescript": "5.0.4",
     "vite": "4.3.3",
