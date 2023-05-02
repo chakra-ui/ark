@@ -81,7 +81,7 @@
     "clean-package": "2.2.0",
     "eslint": "8.39.0",
     "happy-dom": "9.10.1",
-    "solid-js": "1.7.3",
+    "solid-js": "1.7.4",
     "typescript": "5.0.4",
     "vite": "4.3.3",
     "vite-plugin-dts": "2.3.0",
