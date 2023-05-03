@@ -41,5 +41,13 @@
       "description": "Whether the color picker is read-only"
     },
     "value": { "type": "string", "isRequired": false, "description": "The current color value" }
+  },
+  "ColorPickerAreaProps": {
+    "xChannel": { "type": "ColorChannel", "isRequired": true },
+    "yChannel": { "type": "ColorChannel", "isRequired": true }
+  },
+  "ColorPickerSwatchProps": {
+    "value": { "type": "string | Color", "isRequired": true },
+    "readOnly": { "type": "boolean", "isRequired": false }
   }
 }
