@@ -1,14 +1,12 @@
-import { computed, defineComponent, Fragment, type PropType } from 'vue'
+import { defineComponent, Fragment, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
+import { useRatingGroup, type UseRatingGroupContext } from './use-rating-group'
 
 export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
 
-type UseRatingGroupPropsContext = UseRatingGroupProps['context']
-
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupPropsContext>
+export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupContext>
 
 const vueRatingGroupProps = {
   allowHalf: {
@@ -57,12 +55,7 @@ export const RatingGroup: ComponentWithProps<RatingGroupProps> = defineComponent
   props: vueRatingGroupProps,
   emits: ['change', 'update:modelValue', 'hover'],
   setup(props, { slots, attrs, emit }) {
-    const ratingGroupProps = computed<UseRatingGroupProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useRatingGroup(ratingGroupProps.value)
+    const api = useRatingGroup(emit, props)
 
     RatingGroupProvider(api)
 

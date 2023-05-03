@@ -1,13 +1,13 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import type { ComponentWithProps } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputFieldProps = HTMLArkProps<'input'>
 
 export const NumberInputField: ComponentWithProps<NumberInputFieldProps> = defineComponent({
   name: 'NumberInputField',
-  setup(_, { slots, attrs }) {
+  setup(_, { attrs }) {
     const api = useNumberInputContext()
 
     const inputProps = computed(() => ({
@@ -15,10 +15,6 @@ export const NumberInputField: ComponentWithProps<NumberInputFieldProps> = defin
       modelValue: api.value.value || '',
     }))
 
-    return () => (
-      <ark.input {...inputProps.value} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.input>
-    )
+    return () => <ark.input {...inputProps.value} {...attrs} />
   },
 })

@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import {
   Editable,
   EditableArea,
@@ -9,6 +10,15 @@ import {
   EditablePreview,
   EditableSubmitTrigger,
 } from './'
+
+type EditableType = typeof Editable
+
+const meta: Meta<EditableType> = {
+  title: 'Editable',
+  component: Editable,
+}
+
+export default meta
 
 export const Basic = () => (
   <Editable placeholder="Placeholder" activationMode="dblclick">

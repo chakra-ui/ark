@@ -8,12 +8,13 @@ export type HoverCardProps = UseHoverCardProps & { children: JSX.Element }
 export const HoverCard = (props: HoverCardProps) => {
   const [useHoverCardProps, restProps] = createSplitProps<UseHoverCardProps>()(props, [
     'closeDelay',
-    'defaultOpen',
     'dir',
     'getRootNode',
     'id',
     'ids',
-    'onOpenChange',
+    'onClose',
+    'onOpen',
+    'open',
     'openDelay',
     'positioning',
   ])

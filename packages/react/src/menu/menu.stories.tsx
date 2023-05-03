@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -13,6 +14,15 @@ import {
   MenuTriggerItem,
 } from '.'
 import './menu.css'
+
+type MenuType = typeof Menu
+
+const meta: Meta<MenuType> = {
+  title: 'Menu',
+  component: Menu,
+}
+
+export default meta
 
 export const Basic = () => (
   <Menu>

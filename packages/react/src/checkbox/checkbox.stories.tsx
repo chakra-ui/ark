@@ -1,6 +1,16 @@
+import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '.'
 import './checkbox.css'
+
+type CheckboxType = typeof Checkbox
+
+const meta: Meta<CheckboxType> = {
+  title: 'Checkbox',
+  component: Checkbox,
+}
+
+export default meta
 
 export const Basic = () => (
   <Checkbox>
@@ -10,6 +20,19 @@ export const Basic = () => (
   </Checkbox>
 )
 
+export const Controlled = () => {
+  const [checked, setChecked] = useState(true)
+  return (
+    <>
+      <button onClick={() => setChecked(!checked)}>set checked</button>
+      <Checkbox checked={checked}>
+        <CheckboxLabel>Checkbox</CheckboxLabel>
+        <CheckboxInput />
+        <CheckboxControl />
+      </Checkbox>
+    </>
+  )
+}
 export const RenderProp = () => (
   <Checkbox>
     {(state) => (

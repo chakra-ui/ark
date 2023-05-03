@@ -1,12 +1,10 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
-import { usePressable, type UsePressableProps } from './use-pressable'
+import { usePressable, type UsePressableContext } from './use-pressable'
 
-type UsePressablePropsContext = UsePressableProps['context']
-
-export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressablePropsContext>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableContext>
 
 export const Pressable: ComponentWithProps<PressableProps> = defineComponent({
   name: 'Pressable',
@@ -29,12 +27,7 @@ export const Pressable: ComponentWithProps<PressableProps> = defineComponent({
   },
   emits: ['press', 'longPress', 'pressEnd', 'pressUp', 'pressStart'],
   setup(props, { slots, attrs, emit }) {
-    const pressableProps = computed<UsePressableProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = usePressable(pressableProps.value)
+    const api = usePressable(emit, props)
     return () => (
       <ark.button {...api.value.pressableProps} {...attrs}>
         {() => getValidChildren(slots)}

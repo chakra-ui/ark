@@ -7,7 +7,7 @@ export const Footer = () => {
   const resources = [
     {
       name: 'Docs',
-      href: 'https://ark-ui.com/docs/getting-started',
+      href: '/docs/react/overview/getting-started',
     },
     {
       name: 'GitHub',
@@ -19,7 +19,7 @@ export const Footer = () => {
     },
     {
       name: 'Discord',
-      href: 'https://discord.gg/ark',
+      href: 'https://discord.com/invite/dQHfcWF',
     },
   ]
   return (

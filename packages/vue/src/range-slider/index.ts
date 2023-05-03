@@ -1,4 +1,5 @@
 export { RangeSlider, type RangeSliderProps } from './range-slider'
+export type { RangeSliderContext } from './range-slider-context'
 export { RangeSliderControl, type RangeSliderControlProps } from './range-slider-control'
 export { RangeSliderLabel, type RangeSliderLabelProps } from './range-slider-label'
 export { RangeSliderMarker, type RangeSliderMarkerProps } from './range-slider-marker'

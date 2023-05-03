@@ -12,7 +12,7 @@ export const Community = () => {
       description: 'To get involved in the community, ask questions.',
       icon: <RiDiscordFill />,
       callToAction: 'Join us',
-      href: 'https://discord.gg/ark', // TODO update this
+      href: 'https://discord.com/invite/dQHfcWF', // TODO update this
     },
     {
       name: 'Twitter',
@@ -55,7 +55,7 @@ export const Community = () => {
                 <Box fontSize="4xl" color="accent.default">
                   {channel.icon}
                 </Box>
-                <Stack gap={{ base: '4', md: '5' }}>
+                <Stack gap={{ base: '4', md: '5' }} alignItems="start">
                   <Stack gap={{ base: '1', md: '2' }}>
                     <Heading textStyle="lg" fontWeight="semibold">
                       {channel.name}
