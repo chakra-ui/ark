@@ -11,6 +11,7 @@ export const Splitter = (props: SplitterProps) => {
     'dir',
     'getRootNode',
     'id',
+    'ids',
     'onResize',
     'onResizeEnd',
     'onResizeStart',
