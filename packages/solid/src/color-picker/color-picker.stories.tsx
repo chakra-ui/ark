@@ -40,7 +40,6 @@ export const Basic = () => (
           <ColorPickerChannelInput channel={saturation} />
           <ColorPickerChannelInput channel={lightness} />
           <ColorPickerChannelInput channel="alpha" />
-          <ColorPickerChannelInput channel="hex" />
 
           <ColorPickerSwatchGroup>
             <ColorPickerSwatch value="hsla(153, 46%, 13%, 1)" />

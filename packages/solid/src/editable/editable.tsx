@@ -14,6 +14,7 @@ export const Editable = (props: EditableProps) => {
     'autoResize',
     'dir',
     'disabled',
+    'finalFocusEl',
     'form',
     'getRootNode',
     'id',

@@ -22,7 +22,7 @@
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n}>",
+      "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n  indicator: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },

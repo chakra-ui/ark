@@ -24,6 +24,7 @@ export const Editable = forwardRef<'div', EditableProps>((props, ref) => {
       'defaultValue',
       'dir',
       'disabled',
+      'finalFocusEl',
       'form',
       'getRootNode',
       'id',

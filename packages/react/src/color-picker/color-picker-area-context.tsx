@@ -1,7 +1,7 @@
-import type { AreaProps } from '@zag-js/color-picker/dist/color-picker.types'
+import type { ColorAreaProps } from '@zag-js/color-picker'
 import { createContext } from '../create-context'
 
-export const [ColorPickerAreaProvider, useColorPickerAreaContext] = createContext<AreaProps>({
+export const [ColorPickerAreaProvider, useColorPickerAreaContext] = createContext<ColorAreaProps>({
   name: 'ColorPickerAreaContext',
   hookName: 'useColorPickerAreaContext',
   providerName: '<ColorPickerAreaProvider />',

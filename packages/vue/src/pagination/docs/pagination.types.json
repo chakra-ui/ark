@@ -41,6 +41,11 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "type": {
+      "type": "'button' | 'link'",
+      "isRequired": false,
+      "description": "The type of the trigger element"
     }
   },
   "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
