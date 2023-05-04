@@ -4,8 +4,8 @@ import { useCarouselContext } from './carousel-context'
 export type CarouselPrevSlideTriggerProps = { children: ReactElement }
 
 export const CarouselPrevSlideTrigger = (props: CarouselPrevSlideTriggerProps) => {
-  const { previousTriggerProps } = useCarouselContext()
+  const { prevTriggerProps } = useCarouselContext()
 
   const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, previousTriggerProps)
+  return cloneElement(onlyChild, prevTriggerProps)
 }

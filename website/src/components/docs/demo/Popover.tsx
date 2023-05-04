@@ -23,10 +23,10 @@ export const DemoPopover = (props: Partial<PopoverProps>) => (
       </Button>
     </PopoverTrigger>
     <PopoverPositioner className={popover()}>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
       <PopoverContent>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
         <Stack gap="4">
           <Stack gap="1">
             <PopoverTitle>Favorite Cake</PopoverTitle>

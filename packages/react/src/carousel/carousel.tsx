@@ -23,6 +23,7 @@ export const Carousel = forwardRef<'div', CarouselProps>((props, ref) => {
       'dir',
       'getRootNode',
       'id',
+      'ids',
       'index',
       'loop',
       'onSlideChange',
