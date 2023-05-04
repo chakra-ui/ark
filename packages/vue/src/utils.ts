@@ -2,8 +2,6 @@ import {
   cloneVNode,
   computed,
   isVNode,
-  onBeforeMount,
-  onMounted,
   reactive,
   ref,
   type AllowedComponentProps,
@@ -62,8 +60,7 @@ export function useUniqueChild(slots: Slots, componentName: string) {
  *
  */
 
-let serverHandoffComplete = false
-let _id = 1
+let _id = 0
 const genId = () => ++_id
 
 /**
@@ -73,20 +70,8 @@ const genId = () => ++_id
  * @param prefix prefix to append before the id
  */
 export const useId = (id?: string, prefix?: string) => {
-  const initialId = id || (serverHandoffComplete ? genId() : _id)
+  const initialId = id || genId()
   const uid = ref(initialId)
-
-  onBeforeMount(() => {
-    if (serverHandoffComplete === false) {
-      serverHandoffComplete = true
-    }
-  })
-
-  onMounted(() => {
-    if (uid.value === null) {
-      uid.value = genId()
-    }
-  })
 
   return computed(() => {
     const __id__ = uid.value !== null ? uid.value.toString() : undefined
