@@ -52,7 +52,6 @@ export const Basic = () => (
           <ColorPickerChannelInput channel={lightness} />
 
           <ColorPickerChannelInput channel="alpha" />
-          <ColorPickerChannelInput channel="hex" />
 
           <ColorPickerSwatchGroup>
             <ColorPickerSwatch value="#123123" />

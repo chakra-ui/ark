@@ -15,11 +15,36 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
-    "onResize": { "type": "(details: ResizeDetails) => void", "isRequired": false },
-    "onResizeEnd": { "type": "(details: ResizeDetails) => void", "isRequired": false },
-    "onResizeStart": { "type": "(details: ResizeDetails) => void", "isRequired": false },
-    "orientation": { "type": "'horizontal' | 'vertical'", "isRequired": false },
-    "size": { "type": "PanelSizeData[]", "isRequired": false }
+    "ids": {
+      "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  toggleTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the splitter. Useful for composition."
+    },
+    "onResize": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter is resized."
+    },
+    "onResizeEnd": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter resize ends."
+    },
+    "onResizeStart": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter resize starts."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
+    },
+    "size": {
+      "type": "PanelSizeData[]",
+      "isRequired": false,
+      "description": "The size data of the panels"
+    }
   },
   "SplitterPanelProps": {
     "id": { "type": "PanelId", "isRequired": true },
