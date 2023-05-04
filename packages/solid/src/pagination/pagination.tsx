@@ -25,6 +25,7 @@ export const Pagination = (props: PaginationProps) => {
     'pageSize',
     'siblingCount',
     'translations',
+    'type',
   ])
   const [local, navProps] = splitProps(restProps, ['children'])
 

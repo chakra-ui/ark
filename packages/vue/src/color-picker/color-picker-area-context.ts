@@ -1,6 +1,6 @@
-import type { AreaProps } from '@zag-js/color-picker/dist/color-picker.types'
+import type { ColorAreaProps } from '@zag-js/color-picker'
 import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
 
 export const [ColorPickerAreaProvider, useColorPickerAreaContext] =
-  createContext<ComputedRef<AreaProps>>('ColorPickerAreaContext')
+  createContext<ComputedRef<ColorAreaProps>>('ColorPickerAreaContext')
