@@ -89,7 +89,7 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "happy-dom": "9.10.9",
-    "jsdom": "21.1.2",
+    "jsdom": "22.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-frame-component": "5.2.6",
