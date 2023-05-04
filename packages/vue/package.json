@@ -84,7 +84,7 @@
     "clean-package": "2.2.0",
     "eslint": "8.39.0",
     "happy-dom": "9.10.9",
-    "jsdom": "21.1.2",
+    "jsdom": "22.0.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",
     "vite": "4.3.4",
