@@ -64,4 +64,26 @@ describe('Tabs', () => {
     expect(tab3).toHaveFocus()
     expect(changeTestId).toHaveTextContent('Changed: one')
   })
+
+  it('should pass scoped slot props for `focusedValue` and `selectedValue`', async () => {
+    render(Component, {
+      props: {
+        defaultValue: 'one',
+      },
+    })
+    expect(screen.getByText('Value item one')).toBeVisible()
+
+    const tab1 = screen.getByRole('tab', { name: 'Item one' })
+    await user.click(tab1)
+
+    const tablist = screen.getByTestId('tablist')
+    expect(tablist.getAttribute('data-test-selected-value')).toBe('one')
+    expect(tablist.getAttribute('data-test-focused-value')).toBe('one')
+
+    await user.tab()
+    const tab3 = screen.getByRole('tab', { name: 'Item three' })
+    expect(tab3).toHaveFocus()
+    expect(tablist.getAttribute('data-test-selected-value')).toBe('one')
+    expect(tablist.getAttribute('data-test-focused-value')).toBe('three')
+  })
 })
