@@ -116,6 +116,10 @@
   },
   "SliderControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "SliderLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SliderMarkerProps": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "SliderMarkerGroupProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "SliderRangeProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "SliderThumbProps": { "asChild": { "type": "boolean", "isRequired": false } },
