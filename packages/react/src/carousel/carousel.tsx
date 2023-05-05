@@ -9,7 +9,7 @@ import { CarouselProvider, type CarouselContext } from './carousel-context'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 
 export type CarouselProps = Assign<
-  Omit<HTMLArkProps<'div'>, 'children'> & {
+  HTMLArkProps<'div'> & {
     children: ReactNode | ((pages: CarouselContext) => ReactNode)
   },
   UseCarouselProps
