@@ -1,6 +1,6 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerContentProps = HTMLArkProps<'div'>

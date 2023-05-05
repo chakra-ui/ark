@@ -1,6 +1,6 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useDialogContext } from './dialog-context'
 
 export type DialogDescriptionProps = HTMLArkProps<'p'>

@@ -1,8 +1,8 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import type { ColorSwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerSwatchProps = HTMLArkProps<'button'> & ColorSwatchProps

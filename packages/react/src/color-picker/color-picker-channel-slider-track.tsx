@@ -1,8 +1,8 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import type { ColorChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { ColorPickerSliderProvider } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 

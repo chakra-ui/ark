@@ -1,7 +1,7 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'

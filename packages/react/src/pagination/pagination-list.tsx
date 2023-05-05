@@ -1,5 +1,5 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { parts } from './pagination.anatomy'
 
 export type PaginationListProps = HTMLArkProps<'ul'>

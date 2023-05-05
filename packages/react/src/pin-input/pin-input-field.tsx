@@ -1,6 +1,6 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { usePinInputContext } from './pin-input-context'
 
 export type PinInputFieldProps = { index: number } & HTMLArkProps<'input'>
