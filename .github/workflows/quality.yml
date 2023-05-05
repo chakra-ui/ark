@@ -39,6 +39,8 @@ jobs:
         run: pnpm document
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'docs: update types and storydocs'
 
   tests:
     name: Tests
