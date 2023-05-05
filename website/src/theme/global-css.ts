@@ -8,6 +8,7 @@ export const globalCss = defineGlobalStyles({
     WebkitFontSmoothing: 'antialiased',
     WebkitTextSizeAdjust: '100%',
     minHeight: '100%',
+    scrollPaddingTop: '6rem',
   },
   body: {
     backgroundColor: 'bg.canvas',
