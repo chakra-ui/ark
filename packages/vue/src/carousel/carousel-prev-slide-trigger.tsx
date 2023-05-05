@@ -9,7 +9,7 @@ export const CarouselPrevSlideTrigger = defineComponent({
     return () => {
       const DefaultSlot = useUniqueChild(slots, 'CarouselPrevSlideTrigger')
 
-      return h(DefaultSlot, { ...api.value.previousTriggerProps, ...attrs })
+      return h(DefaultSlot, { ...api.value.prevTriggerProps, ...attrs })
     }
   },
 })
