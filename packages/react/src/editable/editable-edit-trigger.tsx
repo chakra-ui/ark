@@ -1,11 +1,14 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { type ReactElement } from 'react'
+import { ark } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useEditableContext } from './editable-context'
 
 export type EditableEditTriggerProps = { children: ReactElement }
 
-export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
+export const EditableEditTrigger = forwardRef<'button'>((props, ref) => {
   const { editTriggerProps } = useEditableContext()
+  const mergedProps = mergeProps(editTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, editTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

@@ -5,7 +5,7 @@ import { useComboboxContext } from './combobox-context'
 
 export type ComboboxLabelProps = HTMLArkProps<'label'>
 
-export const ComboboxLabel = forwardRef<'label', ComboboxLabelProps>((props, ref) => {
+export const ComboboxLabel = forwardRef<'label'>((props, ref) => {
   const { labelProps } = useComboboxContext()
   const mergedProps = mergeProps(labelProps, props)
 

@@ -5,7 +5,7 @@ import { useDialogContext } from './dialog-context'
 
 export type DialogBackdropProps = HTMLArkProps<'div'>
 
-export const DialogBackdrop = forwardRef<'div', DialogBackdropProps>((props, ref) => {
+export const DialogBackdrop = forwardRef<'div'>((props, ref) => {
   const { backdropProps } = useDialogContext()
   const mergedProps = mergeProps(backdropProps, props)
 
