@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { mergeProps } from '@zag-js/react'
-import { Children, forwardRef as __forwardRef, cloneElement, isValidElement } from 'react'
+import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
-import type { Assign } from './types'
 
-type AsChildProps = {
+export type AsChildProps = {
   asChild?: boolean
 }
 
-export type ComponentPropsWithAsChild<T extends React.ElementType> =
-  React.ComponentPropsWithRef<T> & AsChildProps
-
-type JsxFactoryFn<T extends React.ElementType = React.ElementType> = (
-  component: T,
-) => React.FC<ComponentPropsWithAsChild<T>>
-
 type JsxElements = {
-  [K in keyof JSX.IntrinsicElements]: React.FC<ComponentPropsWithAsChild<K>>
+  [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
 }
 
+export type AsChildForwardRefComponent<E extends React.ElementType> =
+  React.ForwardRefExoticComponent<AsChildComponentProps<E>>
+
+export type AsChildComponentProps<E extends React.ElementType> = React.ComponentProps<E> &
+  AsChildProps
+
+export type HTMLArkProps<T extends React.ElementType> = AsChildComponentProps<T>
+
 function withAsChild(Component: React.ElementType) {
-  const Comp = __forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
+  const Comp = forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
     const { asChild, ...restProps } = props
 
     if (!asChild) {
@@ -29,12 +29,11 @@ function withAsChild(Component: React.ElementType) {
     }
 
     const onlyChild = Children.only(props.children)
-    const forwardedRef = composeRefs(ref, (onlyChild as any).ref)
 
     return isValidElement(onlyChild)
       ? cloneElement(onlyChild, {
           ...mergeProps(restProps, onlyChild.props as any),
-          ref: forwardedRef,
+          ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
         })
       : null
   })
@@ -59,12 +58,7 @@ export function jsxFactory() {
       }
       return cache.get(asElement)
     },
-  }) as unknown as JsxFactoryFn & JsxElements
+  }) as unknown as JsxElements
 }
 
 export const ark = jsxFactory()
-
-export type HTMLArkProps<
-  T extends React.ElementType,
-  P extends Record<never, never> = Record<never, never>,
-> = Assign<ComponentPropsWithAsChild<T>, P>

@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { forwardRef as __forwardRef } from 'react'
-import type { HTMLArkProps } from './factory'
+import React from 'react'
+import type { AsChildComponentProps, AsChildProps } from './factory'
 import type { Assign } from './types'
 
 export function forwardRef<
-  T extends React.ElementType,
+  E extends React.ElementType,
   P extends Record<never, never> = Record<never, never>,
 >(
   component: React.ForwardRefRenderFunction<
-    any,
-    Assign<React.ComponentPropsWithoutRef<T>, P & { asChild?: boolean }>
+    React.ElementRef<E>,
+    Assign<React.ComponentPropsWithoutRef<E>, P & AsChildProps>
   >,
 ) {
-  return __forwardRef(component) as unknown as React.FC<HTMLArkProps<T, P>>
+  return React.forwardRef(component) as unknown as React.ForwardRefExoticComponent<
+    Assign<AsChildComponentProps<E>, P>
+  >
 }

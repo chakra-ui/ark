@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { forwardRef } from '../forward-ref'
+import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = UseAccordionProps
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
 export const Accordion = forwardRef<'div', AccordionProps>((props, ref) => {
   const [useAccordionProps, divProps] = createSplitProps<UseAccordionProps>()(props, [
