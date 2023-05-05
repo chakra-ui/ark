@@ -15,7 +15,7 @@ export type CarouselProps = Assign<
   UseCarouselProps
 >
 
-export const Carousel = forwardRef<'div', CarouselProps>((props, ref) => {
+export const Carousel = forwardRef<'div', UseCarouselProps>((props, ref) => {
   const [useCarouselProps, { children, ...divProps }] = createSplitProps<UseCarouselProps>()(
     props,
     [

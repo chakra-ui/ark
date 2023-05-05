@@ -5,7 +5,7 @@ import { useCheckboxContext } from './checkbox-context'
 
 export type CheckboxLabelProps = HTMLArkProps<'span'>
 
-export const CheckboxLabel = forwardRef<'span', CheckboxLabelProps>((props, ref) => {
+export const CheckboxLabel = forwardRef<'span'>((props, ref) => {
   const { labelProps } = useCheckboxContext()
   const mergedProps = mergeProps(labelProps, props)
 

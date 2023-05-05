@@ -6,12 +6,10 @@ import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerSliderThumbProps = HTMLArkProps<'div'>
 
-export const ColorPickerSliderThumb = forwardRef<'div', ColorPickerSliderThumbProps>(
-  (props, ref) => {
-    const sliderContext = useColorPickerSliderContext()
-    const { getChannelSliderThumbProps } = useColorPickerContext()
-    const mergedProps = mergeProps(getChannelSliderThumbProps(sliderContext), props)
+export const ColorPickerSliderThumb = forwardRef<'div'>((props, ref) => {
+  const sliderContext = useColorPickerSliderContext()
+  const { getChannelSliderThumbProps } = useColorPickerContext()
+  const mergedProps = mergeProps(getChannelSliderThumbProps(sliderContext), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})

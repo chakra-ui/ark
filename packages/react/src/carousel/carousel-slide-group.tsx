@@ -5,7 +5,7 @@ import { useCarouselContext } from './carousel-context'
 
 export type CarouselSlideGroupProps = HTMLArkProps<'div'>
 
-export const CarouselSlideGroup = forwardRef<'div', CarouselSlideGroupProps>((props, ref) => {
+export const CarouselSlideGroup = forwardRef<'div'>((props, ref) => {
   const { slideGroupProps } = useCarouselContext()
   const mergedProps = mergeProps(slideGroupProps, props)
 

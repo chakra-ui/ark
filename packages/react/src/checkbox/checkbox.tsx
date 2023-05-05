@@ -15,7 +15,7 @@ export type CheckboxProps = Assign<
   UseCheckboxProps
 >
 
-export const Checkbox = forwardRef<'label', CheckboxProps>((props, ref) => {
+export const Checkbox = forwardRef<'label', UseCheckboxProps>((props, ref) => {
   const [useCheckboxProps, { children, ...labelProps }] = createSplitProps<UseCheckboxProps>()(
     props,
     [

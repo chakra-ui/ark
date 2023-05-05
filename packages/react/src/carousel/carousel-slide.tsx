@@ -7,7 +7,7 @@ import { useCarouselContext } from './carousel-context'
 
 export type CarouselSlideProps = Assign<HTMLArkProps<'div'>, SlideProps>
 
-export const CarouselSlide = forwardRef<'div', CarouselSlideProps>((props, ref) => {
+export const CarouselSlide = forwardRef<'div', SlideProps>((props, ref) => {
   const { index, ...divProps } = props
   const { getSlideProps } = useCarouselContext()
   const mergedProps = mergeProps(getSlideProps({ index }), divProps)

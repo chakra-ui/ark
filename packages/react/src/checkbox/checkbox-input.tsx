@@ -5,7 +5,7 @@ import { useCheckboxContext } from './checkbox-context'
 
 export type CheckboxInputProps = HTMLArkProps<'input'>
 
-export const CheckboxInput = forwardRef<'input', CheckboxInputProps>((props, ref) => {
+export const CheckboxInput = forwardRef<'input'>((props, ref) => {
   const { inputProps } = useCheckboxContext()
   const mergedProps = mergeProps(inputProps, props)
 

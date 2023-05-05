@@ -6,12 +6,10 @@ import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerAreaGradientProps = HTMLArkProps<'div'>
 
-export const ColorPickerAreaGradient = forwardRef<'div', ColorPickerAreaGradientProps>(
-  (props, ref) => {
-    const areaContext = useColorPickerAreaContext()
-    const { getAreaGradientProps } = useColorPickerContext()
-    const mergedProps = mergeProps(getAreaGradientProps(areaContext), props)
+export const ColorPickerAreaGradient = forwardRef<'div'>((props, ref) => {
+  const areaContext = useColorPickerAreaContext()
+  const { getAreaGradientProps } = useColorPickerContext()
+  const mergedProps = mergeProps(getAreaGradientProps(areaContext), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
