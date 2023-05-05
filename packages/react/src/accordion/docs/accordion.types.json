@@ -1,6 +1,5 @@
 {
   "AccordionProps": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
       "isRequired": false,
@@ -53,12 +52,8 @@
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
-  "AccordionContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "AccordionIconProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "AccordionItemProps": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "AccordionTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

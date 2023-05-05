@@ -1,6 +1,5 @@
 {
   "PinInputProps": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -108,10 +107,5 @@
       "description": "The value of the the pin input."
     }
   },
-  "PinInputControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PinInputFieldProps": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "PinInputLabelProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } }
 }

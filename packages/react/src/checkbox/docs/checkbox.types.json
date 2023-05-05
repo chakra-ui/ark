@@ -7,7 +7,6 @@
       "description": "Defines the string that labels the checkbox element."
     },
     "aria-labelledby": { "type": "string", "isRequired": false },
-    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -83,8 +82,5 @@
       "isRequired": false,
       "description": "The value to be used in the checkbox input.\nThis is the value that will be returned on form submission."
     }
-  },
-  "CheckboxControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CheckboxInputProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CheckboxLabelProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

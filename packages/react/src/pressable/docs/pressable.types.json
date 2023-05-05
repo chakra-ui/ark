@@ -5,7 +5,6 @@
       "isRequired": false,
       "description": "Whether text selection should be enabled on the pressable element."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "cancelOnPointerExit": {
       "type": "boolean",
       "isRequired": false,

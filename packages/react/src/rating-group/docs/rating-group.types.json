@@ -1,15 +1,11 @@
 {
-  "RatingProps": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
+  "RatingProps": { "index": { "type": "number", "isRequired": true } },
   "RatingGroupProps": {
     "allowHalf": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -73,7 +69,5 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
-  },
-  "RatingGroupControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "RatingGroupLabelProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

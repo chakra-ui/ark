@@ -50,10 +50,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "HoverCardArrowProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "HoverCardArrowTipProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "HoverCardContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "HoverCardPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "HoverCardTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

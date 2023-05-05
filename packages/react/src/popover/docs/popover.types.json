@@ -77,13 +77,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "PopoverArrowProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverArrowTipProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverCloseTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverDescriptionProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverTitleProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PopoverTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

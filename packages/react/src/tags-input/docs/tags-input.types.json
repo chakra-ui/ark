@@ -12,7 +12,6 @@
   "TagInputProps": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "TagsInputProps": {
@@ -31,7 +30,6 @@
       "isRequired": false,
       "description": "Whether to allow tags to exceed max. In this case,\nwe'll attach `data-invalid` to the root"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -136,8 +134,5 @@
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
-  },
-  "TagsInputControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TagsInputFieldProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TagsInputLabelProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

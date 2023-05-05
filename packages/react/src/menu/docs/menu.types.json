@@ -77,16 +77,12 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "MenuArrowProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MenuArrowTipProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MenuContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "MenuItemProps": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the menu item option."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -108,14 +104,7 @@
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
-    },
-    "asChild": { "type": "boolean", "isRequired": false }
+    }
   },
-  "MenuItemGroupLabelProps": {
-    "htmlFor": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "MenuPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MenuSeparatorProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MenuTriggerItemProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

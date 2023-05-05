@@ -70,9 +70,5 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     }
-  },
-  "TooltipArrowProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TooltipArrowTipProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TooltipContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TooltipPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

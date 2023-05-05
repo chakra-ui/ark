@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "isRequired": false,
@@ -148,9 +147,5 @@
       "description": "Whether the pressed key should be allowed in the input.\nThe default behavior is to allow DOM floating point characters defined by /^[Ee0-9+\\-.]$/"
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
-  },
-  "NumberInputControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NumberInputFieldProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NumberInputLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NumberInputScrubberProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

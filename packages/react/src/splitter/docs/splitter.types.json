@@ -1,6 +1,5 @@
 {
   "SplitterProps": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -49,7 +48,6 @@
   },
   "SplitterPanelProps": {
     "id": { "type": "PanelId", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "snapSize": { "type": "number", "isRequired": false }
   },
   "SplitterResizeTriggerProps": {

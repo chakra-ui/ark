@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "defaultValue": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -114,14 +113,5 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
   },
-  "SliderControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SliderLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SliderMarkerProps": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "SliderMarkerGroupProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SliderRangeProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SliderThumbProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SliderTrackProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  "SliderMarkerProps": { "value": { "type": "number", "isRequired": true } }
 }

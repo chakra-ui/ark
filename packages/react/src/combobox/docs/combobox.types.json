@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "Whether to hide all elements besides the combobox parts. Useful for accessibility"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -162,10 +161,6 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     }
   },
-  "ComboboxContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ComboboxControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ComboboxInputProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ComboboxLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "ComboboxOptionProps": {
     "label": {
       "type": "string",
@@ -177,7 +172,6 @@
       "isRequired": true,
       "description": "The actual value of the option"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "count": {
       "type": "number",
       "isRequired": false,
@@ -193,7 +187,5 @@
       "isRequired": false,
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
-  },
-  "ComboboxPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ComboboxTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }
