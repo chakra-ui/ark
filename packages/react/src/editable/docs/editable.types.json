@@ -5,6 +5,7 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
@@ -121,5 +122,10 @@
       "isRequired": false,
       "description": "The value of the editable in both edit and preview mode"
     }
-  }
+  },
+  "EditableAreaProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditableControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditableInputProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditableLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditablePreviewProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

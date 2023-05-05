@@ -8,7 +8,7 @@ import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
 export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 
-export const PinInput = forwardRef<'div', PinInputProps>((props, ref) => {
+export const PinInput = forwardRef<'div', UsePinInputProps>((props, ref) => {
   const [usePinInputProps, divProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',

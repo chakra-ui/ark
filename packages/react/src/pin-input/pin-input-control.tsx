@@ -5,7 +5,7 @@ import { usePinInputContext } from './pin-input-context'
 
 export type PinInputControlProps = HTMLArkProps<'div'>
 
-export const PinInputControl = forwardRef<'div', PinInputControlProps>((props, ref) => {
+export const PinInputControl = forwardRef<'div'>((props, ref) => {
   const { controlProps, hiddenInputProps } = usePinInputContext()
   const mergedProps = mergeProps(controlProps, props)
 

@@ -6,7 +6,7 @@ import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioControlProps = HTMLArkProps<'div'>
 
-export const RadioControl = forwardRef<'div', RadioControlProps>((props, ref) => {
+export const RadioControl = forwardRef<'div'>((props, ref) => {
   const { getRadioControlProps } = useRadioGroupContext()
   const context = useRadioContext()
   const mergedProps = mergeProps(getRadioControlProps(context), props)

@@ -5,7 +5,7 @@ import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputFieldProps = HTMLArkProps<'input'>
 
-export const NumberInputField = forwardRef<'input', NumberInputFieldProps>((props, ref) => {
+export const NumberInputField = forwardRef<'input'>((props, ref) => {
   const { inputProps } = useNumberInputContext()
   const mergedProps = mergeProps(inputProps, props)
 

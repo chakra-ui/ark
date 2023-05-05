@@ -5,7 +5,7 @@ import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputControlProps = HTMLArkProps<'div'>
 
-export const NumberInputControl = forwardRef<'div', NumberInputControlProps>((props, ref) => {
+export const NumberInputControl = forwardRef<'div'>((props, ref) => {
   const { controlProps } = useNumberInputContext()
   const mergedProps = mergeProps(controlProps, props)
 

@@ -5,7 +5,7 @@ import { usePopoverContext } from './popover-context'
 
 export type PopoverContentProps = HTMLArkProps<'div'>
 
-export const PopoverContent = forwardRef<'div', PopoverContentProps>((props, ref) => {
+export const PopoverContent = forwardRef<'div'>((props, ref) => {
   const { contentProps } = usePopoverContext()
   const mergedProps = mergeProps(contentProps, props)
 

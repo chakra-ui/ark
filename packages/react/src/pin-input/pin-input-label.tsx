@@ -5,7 +5,7 @@ import { usePinInputContext } from './pin-input-context'
 
 export type PinInputLabelProps = HTMLArkProps<'label'>
 
-export const PinInputLabel = forwardRef<'label', PinInputLabelProps>((props, ref) => {
+export const PinInputLabel = forwardRef<'label'>((props, ref) => {
   const { labelProps } = usePinInputContext()
   const mergedProps = mergeProps(labelProps, props)
 

@@ -6,7 +6,7 @@ import { type UseMenuReturn } from './use-menu'
 
 export type MenuArrowTipProps = HTMLArkProps<'div'>
 
-export const MenuArrowTip = forwardRef<'div', MenuArrowTipProps>((props, ref) => {
+export const MenuArrowTip = forwardRef<'div'>((props, ref) => {
   const { arrowTipProps } = useMenuContext() as UseMenuReturn['api']
   const mergedProps = mergeProps(arrowTipProps, props)
 

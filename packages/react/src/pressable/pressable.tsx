@@ -7,7 +7,7 @@ import { usePressable, type UsePressableProps } from './use-pressable'
 
 export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
-export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
+export const Pressable = forwardRef<'button', UsePressableProps>((props, ref) => {
   const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',

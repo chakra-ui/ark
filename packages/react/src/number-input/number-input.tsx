@@ -8,7 +8,7 @@ import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
 export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
-export const NumberInput = forwardRef<'div', NumberInputProps>((props, ref) => {
+export const NumberInput = forwardRef<'div', UseNumberInputProps>((props, ref) => {
   const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',

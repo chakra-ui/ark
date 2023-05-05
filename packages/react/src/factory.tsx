@@ -4,17 +4,9 @@ import { mergeProps } from '@zag-js/react'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
 
-type AsChildTrue = {
-  asChild: true
-  children: React.ReactElement | null
+export type AsChildProps = {
+  asChild?: boolean
 }
-
-type AsChildFalse = {
-  asChild?: false
-  children?: React.ReactNode
-}
-
-export type AsChildProps = AsChildTrue | AsChildFalse
 
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>

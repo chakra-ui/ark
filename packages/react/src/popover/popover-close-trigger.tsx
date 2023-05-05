@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverCloseTriggerProps = { children: ReactElement }
+export type PopoverCloseTriggerProps = HTMLArkProps<'button'>
 
-export const PopoverCloseTrigger = (props: PopoverCloseTriggerProps) => {
+export const PopoverCloseTrigger = forwardRef<'button'>((props, ref) => {
   const { closeTriggerProps } = usePopoverContext()
+  const mergedProps = mergeProps(closeTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, closeTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

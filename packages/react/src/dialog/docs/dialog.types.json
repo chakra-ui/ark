@@ -91,5 +91,12 @@
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
     }
-  }
+  },
+  "DialogBackdropProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogCloseTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogContainerProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogDescriptionProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogTitleProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DialogTriggerProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

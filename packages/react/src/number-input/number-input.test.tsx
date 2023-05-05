@@ -16,7 +16,8 @@ const Component = (props: NumberInputProps) => (
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputField />
     <NumberInputControl>
-      <NumberInputDecrementTrigger>
+      <NumberInputDecrementTrigger asChild>
+        <button>-1</button>
         <button>-1</button>
       </NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>

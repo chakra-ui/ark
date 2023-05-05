@@ -6,7 +6,7 @@ import { type UseMenuReturn } from './use-menu'
 
 export type MenuArrowProps = HTMLArkProps<'div'>
 
-export const MenuArrow = forwardRef<'div', MenuArrowProps>((props, ref) => {
+export const MenuArrow = forwardRef<'div'>((props, ref) => {
   const { arrowProps } = useMenuContext() as UseMenuReturn['api']
   const mergedProps = mergeProps(arrowProps, props)
 
