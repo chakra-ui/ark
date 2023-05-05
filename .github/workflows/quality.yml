@@ -22,6 +22,24 @@ jobs:
       - name: Build packages
         run: pnpm build
 
+  docs:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Generate docs
+        run: pnpm document
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -66,7 +84,7 @@ jobs:
       - name: Run ESLint
         run: pnpm lint
 
-  types:
+  typecheck:
     name: TypeScript
     runs-on: ubuntu-latest
     steps:
