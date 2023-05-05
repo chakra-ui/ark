@@ -12,6 +12,7 @@ export const Splitter = forwardRef<'div', UseSplitterProps>((props, ref) => {
     'dir',
     'getRootNode',
     'id',
+    'ids',
     'onResize',
     'onResizeEnd',
     'onResizeStart',

@@ -29,6 +29,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
       'pageSize',
       'siblingCount',
       'translations',
+      'type',
     ],
   )
   const pagination = usePagination(paginationProps)

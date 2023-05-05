@@ -37,7 +37,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n}>",
+      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n  hiddenSelect: string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },

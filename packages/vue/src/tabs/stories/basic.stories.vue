@@ -21,8 +21,13 @@ defineProps({
     @focus="handleFocus"
     @change="handleChange"
     :default-value="defaultValue"
+    v-slot="{ selectedValue, focusedValue }"
   >
-    <TabList>
+    <TabList
+      data-testid="tablist"
+      :data-test-selected-value="selectedValue"
+      :data-test-focused-value="focusedValue"
+    >
       <TabTrigger value="one" tabindex="0">
         <button>Item one</button>
       </TabTrigger>
