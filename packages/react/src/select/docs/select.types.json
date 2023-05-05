@@ -102,11 +102,18 @@
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
   },
+  "SelectContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SelectLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "SelectOptionProps": {
     "label": { "type": "string", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "valueText": { "type": "string", "isRequired": false }
   },
-  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
+  "SelectOptionGroupProps": {
+    "id": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "SelectPositionerProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

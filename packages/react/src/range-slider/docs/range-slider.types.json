@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "defaultValue": { "type": "number[]", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -112,6 +113,17 @@
       "description": "The value of the range slider"
     }
   },
-  "RangeSliderMarkerProps": { "value": { "type": "number", "isRequired": true } },
-  "RangeSliderThumbProps": { "index": { "type": "number", "isRequired": true } }
+  "RangeSliderControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RangeSliderLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RangeSliderMarkerProps": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "RangeSliderOutputProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RangeSliderRangeProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RangeSliderThumbProps": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "RangeSliderTrackProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

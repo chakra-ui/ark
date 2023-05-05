@@ -1,6 +1,7 @@
 {
   "PaginationProps": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -48,6 +49,13 @@
       "description": "The type of the trigger element"
     }
   },
-  "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
-  "PaginationPageTriggerProps": { "value": { "type": "number", "isRequired": true } }
+  "PaginationEllipsisProps": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "PaginationListProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PaginationPageTriggerProps": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  }
 }

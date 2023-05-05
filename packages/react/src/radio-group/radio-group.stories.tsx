@@ -27,7 +27,9 @@ export const Basic = () => {
   const [value, setValue] = useState('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel as="h3">Fruits: {value}</RadioGroupLabel>
+      <RadioGroupLabel asChild>
+        <h3>Fruits: {value}</h3>
+      </RadioGroupLabel>
       {options.map((option, id) => (
         <Radio
           key={id}
@@ -47,7 +49,9 @@ export const Disabled = () => {
   const [value, setValue] = useState('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel as="h3">Fruits: {value}</RadioGroupLabel>
+      <RadioGroupLabel asChild>
+        <h3>Fruits: {value}</h3>
+      </RadioGroupLabel>
       {options.map((option, id) => (
         <Radio
           key={id}

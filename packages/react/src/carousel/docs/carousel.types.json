@@ -5,6 +5,7 @@
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -52,5 +53,10 @@
       "description": "The amount of space between slides."
     }
   },
-  "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } }
+  "CarouselSlideProps": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "CarouselSlideGroupProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CarouselViewportProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

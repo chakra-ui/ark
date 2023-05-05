@@ -1,5 +1,10 @@
 {
-  "TabContentProps": { "value": { "type": "string", "isRequired": true } },
+  "TabContentProps": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "TabIndicatorProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TabListProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "TabTriggerProps": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
@@ -10,6 +15,7 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",

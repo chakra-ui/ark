@@ -1,11 +1,11 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverTitleProps = HTMLArkProps<'div'>
 
-export const PopoverTitle = forwardRef<'div', PopoverTitleProps>((props, ref) => {
+export const PopoverTitle = forwardRef<'div'>((props, ref) => {
   const { titleProps } = usePopoverContext()
   const mergedProps = mergeProps(titleProps, props)
 

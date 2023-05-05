@@ -28,12 +28,10 @@ export const Basic = () => {
   ]
   return (
     <Carousel>
-      <CarouselPrevSlideTrigger>
-        <button>Prev</button>
+      <CarouselPrevSlideTrigger asChild>
+        <button>Previous</button>
       </CarouselPrevSlideTrigger>
-      <CarouselNextSlideTrigger>
-        <button>Next</button>
-      </CarouselNextSlideTrigger>
+      <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       <CarouselViewport>
         <CarouselSlideGroup>
           {images.map((image, index) => (

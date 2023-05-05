@@ -45,7 +45,14 @@
   },
   "ColorPickerAreaProps": {
     "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true }
+    "yChannel": { "type": "ColorChannel", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
+  "ColorPickerAreaThumbProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ColorPickerContentProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ColorPickerSwatchProps": {
+    "value": { "type": "string | Color", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  }
 }

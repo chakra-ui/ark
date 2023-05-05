@@ -1,6 +1,13 @@
 {
-  "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
-  "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
+  "ToastProps": {
+    "toast": { "type": "Service", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "ToastDescriptionProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ToastGroupProps": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "ToastProviderProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -47,5 +54,6 @@
       "isRequired": false,
       "description": "The z-index applied to each toast group"
     }
-  }
+  },
+  "ToastTitleProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

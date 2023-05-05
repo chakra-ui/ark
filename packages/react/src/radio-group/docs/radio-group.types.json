@@ -1,6 +1,7 @@
 {
   "RadioProps": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -17,7 +18,9 @@
       "description": "If `true`, the radio will be readonly"
     }
   },
+  "RadioControlProps": { "asChild": { "type": "boolean", "isRequired": false } },
   "RadioGroupProps": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -74,5 +77,8 @@
       "isRequired": false,
       "description": "The value of the checked radio"
     }
-  }
+  },
+  "RadioGroupLabelProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RadioInputProps": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RadioLabelProps": { "asChild": { "type": "boolean", "isRequired": false } }
 }

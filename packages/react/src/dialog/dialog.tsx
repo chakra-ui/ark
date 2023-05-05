@@ -1,11 +1,11 @@
-import { type PropsWithChildren, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { DialogProvider, type DialogContext } from './dialog-context'
 import { useDialog, type UseDialogProps } from './use-dialog'
 
 export type DialogProps = Assign<
-  PropsWithChildren<UseDialogProps>,
+  UseDialogProps,
   {
     children?: ReactNode | ((props: DialogContext) => ReactNode)
   }
