@@ -273,9 +273,6 @@ importers:
 
   packages/solid:
     dependencies:
-      '@polymorphic-factory/solid':
-        specifier: 0.3.1
-        version: 0.3.1(solid-js@1.7.5)
       '@zag-js/accordion':
         specifier: 0.7.0
         version: 0.7.0
@@ -4054,14 +4051,6 @@ packages:
       react: '>=16.8 || >=17 || >18'
     dependencies:
       react: 18.2.0
-    dev: false
-
-  /@polymorphic-factory/solid@0.3.1(solid-js@1.7.5):
-    resolution: {integrity: sha512-TvYSj8d0lZrB3IfqJyv1DgOMFTollSXUGHEh0vSEneP1BHHYbsRTvq9BNrZbxX8gJyLZLkGsm6WgqnGe4HZ6qQ==}
-    peerDependencies:
-      solid-js: '>=1.6.0'
-    dependencies:
-      solid-js: 1.7.5
     dev: false
 
   /@polymorphic-factory/vue@0.2.0(vue@3.2.47):
