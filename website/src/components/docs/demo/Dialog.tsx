@@ -16,7 +16,7 @@ import {
 
 export const DemoDialog = () => (
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button variant="primary" size="md">
         Open dialog
       </Button>
@@ -31,7 +31,7 @@ export const DemoDialog = () => (
               <DialogDescription>Dialog Description</DialogDescription>
             </Stack>
             <Stack gap="3" direction="row" width="full">
-              <DialogCloseTrigger>
+              <DialogCloseTrigger asChild>
                 <Button variant="secondary" size="md" width="full">
                   Cancel
                 </Button>
@@ -41,7 +41,7 @@ export const DemoDialog = () => (
               </Button>
             </Stack>
           </Stack>
-          <DialogCloseTrigger>
+          <DialogCloseTrigger asChild>
             <CloseButton aria-label="Close dialog" />
           </DialogCloseTrigger>
         </DialogContent>
