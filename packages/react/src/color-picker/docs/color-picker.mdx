@@ -1,12 +1,17 @@
 ---
 id: color-picker
 name: Color Picker
-description: TODO
+description:
+  The Color Picker is a versatile and feature-rich color selection tool for your
+  applications. It provides support for different color spaces, user
+  interaction, and accessibility.
 ---
 
-## Import
+## Usage
 
-```ts
+To get started, import the necessary components from the package:
+
+```tsx
 import {
   ColorPicker,
   ColorPickerArea,
@@ -22,6 +27,60 @@ import {
 } from '@ark-ui/react'
 ```
 
-## Usage
+Here is an example of how to use the Color Picker component:
 
-TBD
+<Story name="Basic" />
+
+## Uncontrolled Component
+
+In the uncontrolled use case, you don't need to manage the state of the Color
+Picker component. Instead, you can provide a defaultValue prop to set the
+initial value, and use the onChange and onChangeEnd event handlers to get the
+selected color:
+
+```tsx
+export const Uncontrolled = () => {
+  const handleColorChange = (details) => {
+    console.log('Color changed:', details.value)
+  }
+
+  const handleColorChangeEnd = (details) => {
+    console.log('Color change ended:', details.value)
+  }
+
+  return (
+    <ColorPicker
+      defaultValue="#ff0000"
+      onChange={handleColorChange}
+      onChangeEnd={handleColorChangeEnd}
+    >
+      {/* ... */}
+    </ColorPicker>
+  )
+}
+```
+
+## Controlled Component
+
+In the controlled use case, you can manage the state of the Color Picker
+component by using the `value` prop and updating it when the `onChange` or
+`onChangeEnd` event handlers are called:
+
+```tsx
+export const Controlled = () => {
+  const [color, setColor] = useState('#ff0000')
+
+  return (
+    <ColorPicker value={color} onChange={(details) => setColor(details.value)}>
+      {/* ... */}
+    </ColorPicker>
+  )
+}
+```
+
+## Conclusion
+
+The Color Picker component offers a flexible and powerful solution for
+integrating color selection into your applications. With its comprehensive set
+of features and customizability, it can accommodate a wide range of use cases
+and designs.

@@ -17,10 +17,10 @@ import {
       <button>click me</button>
     </PopoverTrigger>
     <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
       <PopoverContent>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />

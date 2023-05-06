@@ -16,14 +16,10 @@ export const DemoNumberInput = () => {
       <NumberInputField />
       <NumberInputControl>
         <NumberInputIncrementTrigger>
-          <button>
-            <FiChevronUp />
-          </button>
+          <FiChevronUp />
         </NumberInputIncrementTrigger>
         <NumberInputDecrementTrigger>
-          <button>
-            <FiChevronDown />
-          </button>
+          <FiChevronDown />
         </NumberInputDecrementTrigger>
       </NumberInputControl>
     </NumberInput>

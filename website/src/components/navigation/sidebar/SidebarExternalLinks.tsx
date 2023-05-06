@@ -46,6 +46,9 @@ export const SidebarExternalLinks = () => (
           aria-current={link.isActive ? 'page' : false}
           href={link.href}
           target="_blank"
+          _hover={{
+            color: 'fg.default',
+          }}
         >
           <HStack gap="3">
             <Box

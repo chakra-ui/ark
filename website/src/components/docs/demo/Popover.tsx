@@ -17,16 +17,16 @@ import {
 
 export const DemoPopover = (props: Partial<PopoverProps>) => (
   <Popover {...props}>
-    <PopoverTrigger>
+    <PopoverTrigger asChild>
       <Button variant="secondary" size="md">
         Open
       </Button>
     </PopoverTrigger>
     <PopoverPositioner className={popover()}>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
       <PopoverContent>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
         <Stack gap="4">
           <Stack gap="1">
             <PopoverTitle>Favorite Cake</PopoverTitle>
