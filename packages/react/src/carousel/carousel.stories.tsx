@@ -28,9 +28,7 @@ export const Basic = () => {
   ]
   return (
     <Carousel>
-      <CarouselPrevSlideTrigger asChild>
-        <button>Previous</button>
-      </CarouselPrevSlideTrigger>
+      <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
       <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       <CarouselViewport>
         <CarouselSlideGroup>
