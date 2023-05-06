@@ -1,14 +1,14 @@
 import type { Assign } from '@polymorphic-factory/solid'
-import type { ChannelInputProps } from '@zag-js/color-picker/dist/color-picker.types'
+import type { ColorChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelInputProps = Assign<HTMLArkProps<'input'>, ChannelInputProps>
+export type ColorPickerChannelInputProps = Assign<HTMLArkProps<'input'>, ColorChannelProps>
 
 export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => {
-  const [channelProps, inputProps] = createSplitProps<ChannelInputProps>()(props, [
+  const [channelProps, inputProps] = createSplitProps<ColorChannelProps>()(props, [
     'channel',
     'orientation',
   ])

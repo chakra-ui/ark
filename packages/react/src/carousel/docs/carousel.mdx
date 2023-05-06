@@ -1,0 +1,77 @@
+---
+id: carousel
+name: Carousel
+description:
+  The Carousel component is a dynamic and responsive content display tool for
+  your applications. It provides support for various configurations, including
+  slide alignment, text direction, and slide orientation.
+---
+
+## Basic Usage
+
+To get started, import the necessary components from the package:
+
+```jsx
+import {
+  Carousel,
+  CarouselNextSlideTrigger,
+  CarouselPrevSlideTrigger,
+  CarouselSlide,
+  CarouselSlideGroup,
+  CarouselViewport,
+} from '@ark-ui/react'
+```
+
+Here's an example of how to use the Carousel component with a set of images:
+
+<Story name="Basic" />
+
+## Controlled Carousel
+
+To create a controlled Carousel component, you can manage the state of the
+carousel using the `index` prop and update it when the `onSlideChange` event
+handler is called:
+
+```tsx
+const ControlledCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const handleSlideChange = (details) => {
+    setCurrentIndex(details.index)
+  }
+
+  return (
+    <Carousel index={currentIndex} onSlideChange={handleSlideChange}>
+      {/* ... */}
+    </Carousel>
+  )
+}
+```
+
+## Customizing the Carousel
+
+You can customize the Carousel component by setting various props such as
+`align`, `loop`, `slidesPerView`, and `spacing`. Here's an example of a
+customized Carousel:
+
+```tsx
+const CustomCarousel = () => {
+  return (
+    <Carousel
+      align="center"
+      loop={true}
+      slidesPerView={2}
+      spacing="16px"
+      orientation="horizontal"
+    >
+      {/* ... */}
+    </Carousel>
+  )
+}
+```
+
+## Conclusion
+
+The Carousel component offers a flexible and powerful solution for displaying
+dynamic content in your applications. With its comprehensive set of features and
+customizability, it can accommodate a wide range of use cases and designs.

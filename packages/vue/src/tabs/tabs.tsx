@@ -1,7 +1,7 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsContext, type UseTabsDefaultValue } from './use-tabs'
 
@@ -47,7 +47,10 @@ export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.({
+          selectedValue: api.value.value,
+          focusedValue: api.value.focusedValue,
+        })}
       </ark.div>
     )
   },

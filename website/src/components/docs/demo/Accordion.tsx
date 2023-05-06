@@ -10,7 +10,7 @@ export const DemoAccordion = () => {
         <AccordionItem key={id} value={item}>
           {({ isOpen }) => (
             <>
-              <AccordionTrigger>
+              <AccordionTrigger asChild>
                 <button>
                   <span>What is {item}?</span>
                   <AccordionIcon isOpen={isOpen} />

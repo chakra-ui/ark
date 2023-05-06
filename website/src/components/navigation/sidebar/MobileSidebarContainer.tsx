@@ -16,31 +16,29 @@ import { IconButton } from '../../shared/IconButton'
 
 import { usePathname } from 'next/navigation'
 
-export const MobileSidebarContainer = (props: PropsWithChildren) => {
-  return (
-    <Dialog>
-      {({ close }) => (
-        <>
-          <DialogTrigger>
-            <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
-          </DialogTrigger>
-          <RouteChangeHandler close={close} />
-          <Portal>
-            <DialogBackdrop className={drawer()} />
-            <DialogContainer className={drawer()}>
-              <DialogContent>
-                {props.children}
-                <DialogCloseTrigger>
-                  <CloseButton aria-label="Close dialog" />
-                </DialogCloseTrigger>
-              </DialogContent>
-            </DialogContainer>
-          </Portal>
-        </>
-      )}
-    </Dialog>
-  )
-}
+export const MobileSidebarContainer = (props: PropsWithChildren) => (
+  <Dialog>
+    {({ close }) => (
+      <>
+        <DialogTrigger asChild>
+          <IconButton icon={<FiMenu />} aria-label="Menu" variant="link" minW="unset" />
+        </DialogTrigger>
+        <RouteChangeHandler close={close} />
+        <Portal>
+          <DialogBackdrop className={drawer()} />
+          <DialogContainer className={drawer()}>
+            <DialogContent>
+              {props.children}
+              <DialogCloseTrigger>
+                <CloseButton aria-label="Close dialog" />
+              </DialogCloseTrigger>
+            </DialogContent>
+          </DialogContainer>
+        </Portal>
+      </>
+    )}
+  </Dialog>
+)
 
 const RouteChangeHandler = ({ close }: { close: () => void }) => {
   const pathname = usePathname()

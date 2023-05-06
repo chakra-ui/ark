@@ -47,7 +47,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n}>",
+      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n  hiddenInput: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the slider. Useful for composition."
     },

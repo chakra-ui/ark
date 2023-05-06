@@ -1,15 +1,23 @@
+import { mergeProps } from '@zag-js/react'
 import { type connect } from '@zag-js/splitter'
-import { Children, cloneElement, type ReactElement } from 'react'
-import { type Assign } from '../types'
+import { createSplitProps } from '../create-split-props'
+import { ark } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useSplitterContext } from './splitter-context'
 
-type SplitterContext = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
-export type SplitterResizeTriggerProps = Assign<{ children: ReactElement }, SplitterContext>
+type ResizeTriggerProps = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
 
-export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
-  const { children, ...tabProps } = props
-  const { getResizeTriggerProps } = useSplitterContext()
+export type SplitterResizeTriggerProps = ResizeTriggerProps
 
-  const onlyChild = Children.only(children)
-  return cloneElement(onlyChild, getResizeTriggerProps(tabProps))
-}
+export const SplitterResizeTrigger = forwardRef<'button', SplitterResizeTriggerProps>(
+  (props, ref) => {
+    const [triggerProps, restProps] = createSplitProps<ResizeTriggerProps>()(props, [
+      'disabled',
+      'id',
+      'step',
+    ])
+    const { getResizeTriggerProps } = useSplitterContext()
+    const mergedProps = mergeProps(getResizeTriggerProps(triggerProps), restProps)
+    return <ark.button ref={ref} {...mergedProps} />
+  },
+)

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Roadmap
+    url: https://ark-ui.canny.io/
+    about: Explore upcoming features and vote for the ones you like most.
+  - name: Questions & Discussions
+    url: https://github.com/chakra-ui/ark/discussions
+    about: Ask questions and discuss topics with other community members

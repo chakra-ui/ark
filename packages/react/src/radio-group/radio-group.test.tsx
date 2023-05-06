@@ -17,7 +17,7 @@ const options = [
 
 const Component = (props: RadioGroupProps) => (
   <RadioGroup {...props}>
-    <RadioGroupLabel as="h3">Fruits</RadioGroupLabel>
+    <RadioGroupLabel>Fruits</RadioGroupLabel>
     {options.map((option, id) => (
       <Radio key={id} value={option.id} disabled={option.disabled}>
         <RadioLabel>{option.label}</RadioLabel>
