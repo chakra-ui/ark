@@ -56,8 +56,8 @@ importers:
         specifier: 10.9.1
         version: 10.9.1(@types/node@18.16.5)(typescript@5.0.4)
       ts-pattern:
-        specifier: 4.2.2
-        version: 4.2.2
+        specifier: 4.2.3
+        version: 4.2.3
       turbo:
         specifier: 1.9.3
         version: 1.9.3
@@ -621,8 +621,8 @@ importers:
         specifier: 0.14.2
         version: 0.14.2
       ts-pattern:
-        specifier: 4.2.2
-        version: 4.2.2
+        specifier: 4.2.3
+        version: 4.2.3
       usehooks-ts:
         specifier: 2.9.1
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
@@ -2611,7 +2611,7 @@ packages:
       gray-matter: 4.0.3
       imagescript: 1.2.16
       micromatch: 4.0.5
-      ts-pattern: 4.2.2
+      ts-pattern: 4.2.3
       unified: 10.1.2
       yaml: 1.10.2
       zod: 3.21.4
@@ -2664,7 +2664,7 @@ packages:
       inflection: 2.0.1
       memfs: 3.5.1
       oo-ascii-tree: 1.80.0
-      ts-pattern: 4.2.2
+      ts-pattern: 4.2.3
       type-fest: 3.7.2
     dev: false
 
@@ -14933,6 +14933,10 @@ packages:
 
   /ts-pattern@4.2.2:
     resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
+    dev: false
+
+  /ts-pattern@4.2.3:
+    resolution: {integrity: sha512-tPg2/owaVtWiimsmXpFEzI5IcfPU2BEwzFbviuSmqqaKIGyy6hyvBF4kxcuhy8UJz+6nEKUOEeaHc43drIuvpQ==}
 
   /tsconfig-paths@3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
