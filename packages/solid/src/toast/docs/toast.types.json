@@ -1,6 +1,4 @@
 {
-  "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
-  "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
   "ToastProviderProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",
