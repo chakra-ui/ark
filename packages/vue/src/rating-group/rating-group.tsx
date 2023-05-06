@@ -1,14 +1,21 @@
+import type { Context } from '@zag-js/rating-group'
 import { defineComponent, Fragment, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, type UseRatingGroupContext } from './use-rating-group'
+import { useRatingGroup } from './use-rating-group'
 
-export type Assign<Target, Source> = Omit<Target, keyof Source> & Source
+export type RatingGroupContext = Context & {
+  modelValue?: RatingGroupContext['value']
+}
 
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupContext>
+export type RatingGroupProps = Assign<HTMLArkProps<'input'>, RatingGroupContext>
 
-const vueRatingGroupProps = {
+const vueRatingGroupProps = createVueProps<RatingGroupProps>({
+  id: {
+    type: String as PropType<RatingGroupProps['id']>,
+  },
   allowHalf: {
     type: Boolean as PropType<RatingGroupProps['allowHalf']>,
   },
@@ -48,9 +55,9 @@ const vueRatingGroupProps = {
   value: {
     type: Number as PropType<RatingGroupProps['value']>,
   },
-}
+})
 
-export const RatingGroup: ComponentWithProps<RatingGroupProps> = defineComponent({
+export const RatingGroup: ComponentWithProps<Partial<RatingGroupProps>> = defineComponent({
   name: 'RatingGroup',
   props: vueRatingGroupProps,
   emits: ['change', 'update:modelValue', 'hover'],
@@ -63,7 +70,7 @@ export const RatingGroup: ComponentWithProps<RatingGroupProps> = defineComponent
       <ark.div {...api.value.rootProps} {...attrs}>
         <Fragment>
           <ark.input {...api.value.hiddenInputProps} />
-          {slots.default?.()}
+          {slots.default?.(api.value)}
         </Fragment>
       </ark.div>
     )

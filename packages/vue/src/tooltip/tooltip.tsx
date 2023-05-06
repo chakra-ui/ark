@@ -1,11 +1,15 @@
+import type { Context } from '@zag-js/tooltip'
 import { defineComponent, type PropType } from 'vue'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, type UseTooltipContext } from './use-tooltip'
+import { useTooltip } from './use-tooltip'
 
-export type TooltipProps = UseTooltipContext
+export type TooltipProps = Context
 
-const VueTooltipProps = {
+const VueTooltipProps = createVueProps<TooltipProps>({
+  id: {
+    type: String as PropType<TooltipProps['id']>,
+  },
   ids: {
     type: Object as PropType<TooltipProps['ids']>,
   },
@@ -37,14 +41,14 @@ const VueTooltipProps = {
   getRootNode: {
     type: Function as PropType<TooltipProps['getRootNode']>,
   },
-}
+})
 
-export const Tooltip: ComponentWithProps<TooltipProps> = defineComponent({
+export const Tooltip: ComponentWithProps<Partial<TooltipProps>> = defineComponent({
   name: 'Tooltip',
   props: VueTooltipProps,
   emits: ['open', 'close'],
   setup(props, { slots, emit }) {
-    const api = useTooltip(emit, props)
+    const api = useTooltip(emit, props as TooltipProps)
 
     TooltipProvider(api)
 

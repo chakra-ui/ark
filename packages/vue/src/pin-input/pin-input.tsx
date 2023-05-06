@@ -1,13 +1,17 @@
-import { defineComponent, type ComponentPropsOptions, type PropType } from 'vue'
+import { type Context } from '@zag-js/pin-input'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, type UsePinInputContext } from './use-pin-input'
+import { usePinInput } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputContext>
+export type PinInputContext = Context & {
+  modelValue?: PinInputContext['value']
+}
+export type PinInputProps = Assign<HTMLArkProps<'div'>, PinInputContext>
 
-const VuePinInputProps: ComponentPropsOptions = {
+const VuePinInputProps = createVueProps<PinInputProps>({
   autoFocus: {
     type: Boolean as PropType<PinInputProps['autoFocus']>,
   },
@@ -62,9 +66,9 @@ const VuePinInputProps: ComponentPropsOptions = {
   value: {
     type: Array as PropType<PinInputProps['value']>,
   },
-}
+})
 
-export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
+export const PinInput: ComponentWithProps<Partial<PinInputProps>> = defineComponent({
   name: 'PinInput',
   props: VuePinInputProps,
   emits: ['change', 'update:modelValue', 'invalid', 'complete'],
@@ -75,7 +79,7 @@ export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },

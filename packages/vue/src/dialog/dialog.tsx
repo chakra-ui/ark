@@ -1,11 +1,17 @@
+import { type Context as DialogContext } from '@zag-js/dialog'
 import { defineComponent, type PropType } from 'vue'
-import { type ComponentWithProps } from '../utils'
+import { type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogContext } from './use-dialog'
+import { useDialog } from './use-dialog'
 
-export type DialogProps = UseDialogContext
+export type DialogProps = Assign<HTMLArkProps<any>, DialogContext>
 
-const VueDialogProps = {
+const VueDialogProps = createVueProps<DialogProps>({
+  id: {
+    type: String as PropType<DialogProps['id']>,
+  },
   ids: {
     type: Object as PropType<DialogProps['ids']>,
   },
@@ -43,12 +49,12 @@ const VueDialogProps = {
   open: {
     type: Boolean as PropType<DialogProps['open']>,
   },
-}
+})
 
-export const Dialog: ComponentWithProps<DialogProps> = defineComponent({
+export const Dialog: ComponentWithProps<Partial<DialogProps>> = defineComponent({
   name: 'Dialog',
   props: VueDialogProps,
-  emits: ['close', 'outsideClick', 'esc', 'open', 'update:open'],
+  emits: ['close', 'outside-click', 'esc'],
   setup(props, { slots, emit }) {
     const api = useDialog(emit, props)
 

@@ -1,19 +1,13 @@
-import {
-  defineComponent,
-  reactive,
-  watchEffect,
-  type ComponentObjectPropsOptions,
-  type PropType,
-} from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type Context } from '@zag-js/editable'
+import { defineComponent, type PropType } from 'vue'
+import { ark } from '../factory'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable, type UseEditableContext } from './use-editable'
+import { useEditable } from './use-editable'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableContext>
+export type EditableProps = Context & { modelValue?: Context['value'] }
 
-const VueEditableProps: ComponentObjectPropsOptions = {
+const VueEditableProps = createVueProps<EditableProps>({
   activationMode: {
     type: String as PropType<EditableProps['activationMode']>,
   },
@@ -71,28 +65,20 @@ const VueEditableProps: ComponentObjectPropsOptions = {
   value: {
     type: String as PropType<EditableProps['value']>,
   },
-}
+})
 
-export const Editable: ComponentWithProps<EditableProps> = defineComponent({
+export const Editable: ComponentWithProps<Partial<EditableProps>> = defineComponent({
   name: 'Editable',
   props: VueEditableProps,
   emits: ['cancel', 'change', 'update:modelValue', 'edit', 'submit'],
-  setup(props, { slots, attrs, emit, expose }) {
-    const api = useEditable(emit, props)
+  setup(props, { slots, attrs, emit }) {
+    const api = useEditable(emit, props as EditableProps)
 
     EditableProvider(api)
 
-    const exposeApi = reactive({ api: {} })
-
-    watchEffect(() => {
-      exposeApi.api = api.value
-    })
-
-    expose(exposeApi)
-
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },

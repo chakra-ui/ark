@@ -1,13 +1,29 @@
+import { type Context } from '@zag-js/checkbox'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
-import { useCheckbox, type UseCheckboxContext } from './use-checkbox'
+import { useCheckbox } from './use-checkbox'
 
-export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxContext>
+export type CheckboxContext = Context & {
+  modelValue?: Context['checked']
+}
+export type CheckboxProps = Assign<HTMLArkProps<'label'>, CheckboxContext>
 
-const VueCheckboxProps = {
+export const VueCheckboxProps = createVueProps<CheckboxProps>({
+  id: {
+    type: String as PropType<CheckboxProps['id']>,
+  },
+  'aria-describedby': {
+    type: String as PropType<CheckboxProps['aria-describedby']>,
+  },
+  'aria-label': {
+    type: String as PropType<CheckboxProps['aria-label']>,
+  },
+  'aria-labelledby': {
+    type: String as PropType<CheckboxProps['aria-labelledby']>,
+  },
   checked: {
     type: Boolean as PropType<CheckboxProps['checked']>,
     default: false,
@@ -31,7 +47,7 @@ const VueCheckboxProps = {
     type: Boolean as PropType<CheckboxProps['invalid']>,
   },
   modelValue: {
-    type: Boolean as PropType<CheckboxProps['modelValue']>,
+    type: [Boolean, String] as PropType<CheckboxProps['modelValue']>,
     default: undefined,
   },
   name: {
@@ -43,9 +59,9 @@ const VueCheckboxProps = {
   value: {
     type: String as PropType<CheckboxProps['value']>,
   },
-}
+})
 
-export const Checkbox: ComponentWithProps<CheckboxProps> = defineComponent({
+export const Checkbox: ComponentWithProps<Partial<CheckboxProps>> = defineComponent({
   name: 'Checkbox',
   emits: ['change', 'update:modelValue'],
   props: VueCheckboxProps,

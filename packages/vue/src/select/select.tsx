@@ -1,11 +1,19 @@
+import type { Context } from '@zag-js/select'
 import { defineComponent, type PropType } from 'vue'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectContext } from './use-select'
+import { useSelect } from './use-select'
 
-export type SelectProps = UseSelectContext
+export type SelectContext = Context & {
+  modelValue?: Context['selectedOption']
+}
 
-const VueSelectProps = {
+export type SelectProps = SelectContext
+
+const VueSelectProps = createVueProps<SelectProps>({
+  id: {
+    type: String as PropType<SelectProps['id']>,
+  },
   modelValue: {
     type: [Object, null] as PropType<SelectProps['modelValue']>,
   },
@@ -13,7 +21,7 @@ const VueSelectProps = {
     type: Boolean as PropType<SelectProps['loop']>,
     default: false,
   },
-  closedOnSelect: {
+  closeOnSelect: {
     type: Boolean as PropType<SelectProps['closeOnSelect']>,
     default: true,
   },
@@ -55,17 +63,17 @@ const VueSelectProps = {
   getRootNode: {
     type: Function as PropType<SelectProps['getRootNode']>,
   },
-}
+})
 
-export const Select: ComponentWithProps<SelectProps> = defineComponent({
+export const Select: ComponentWithProps<Partial<SelectProps>> = defineComponent({
   name: 'Select',
   emits: ['change', 'highlight', 'open', 'close', 'update:modelValue'],
   props: VueSelectProps,
   setup(props, { slots, emit }) {
-    const api = useSelect(emit, props)
+    const api = useSelect(emit, props as SelectProps)
 
     SelectProvider(api)
 
-    return () => slots?.default?.({ ...api.value })
+    return () => slots?.default?.(api.value)
   },
 })

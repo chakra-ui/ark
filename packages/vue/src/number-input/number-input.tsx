@@ -1,13 +1,18 @@
+import type { Context } from '@zag-js/number-input'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, type UseNumberInputContext } from './use-number-input'
+import { useNumberInput } from './use-number-input'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputContext>
+export type NumberInputContext = Context & { modelValue?: Context['value'] }
+export type NumberInputProps = Assign<HTMLArkProps<'div'>, NumberInputContext>
 
-const VueNumberInputProps = {
+const VueNumberInputProps = createVueProps<NumberInputProps>({
+  id: {
+    type: String as PropType<NumberInputProps['id']>,
+  },
   allowMouseWheel: {
     type: Boolean as PropType<NumberInputProps['allowMouseWheel']>,
   },
@@ -87,9 +92,9 @@ const VueNumberInputProps = {
   value: {
     type: String as PropType<NumberInputProps['value']>,
   },
-}
+})
 
-export const NumberInput = defineComponent({
+export const NumberInput: ComponentWithProps<Partial<NumberInputProps>> = defineComponent({
   name: 'NumberInput',
   emits: ['change', 'focus', 'invalid', 'blur', 'update:modelValue'],
   props: VueNumberInputProps,
@@ -98,6 +103,6 @@ export const NumberInput = defineComponent({
 
     NumberInputProvider(api)
 
-    return () => <ark.div>{() => getValidChildren(slots)}</ark.div>
+    return () => <ark.div>{() => slots?.default?.(api.value)}</ark.div>
   },
 })

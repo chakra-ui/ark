@@ -51,7 +51,7 @@ const colorPickerValue = ref('hsl(10, 81%, 59%)')
       <ColorPickerChannelInput :channel="lightness" />
 
       <ColorPickerChannelInput channel="alpha" />
-      <ColorPickerChannelInput channel="hex" />
+      <ColorPickerChannelInput channel="hue" />
 
       <ColorPickerSwatchGroup>
         <ColorPickerSwatch value="#123123">

@@ -1,15 +1,20 @@
+import type { Context } from '@zag-js/tabs'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { TabsProvider } from './tabs-context'
-import { useTabs, type UseTabsContext, type UseTabsDefaultValue } from './use-tabs'
+import { useTabs } from './use-tabs'
 
-export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsContext> {
-  defaultValue?: UseTabsDefaultValue
+export type TabsContext = Context & {
+  defaultValue?: Context['value']
 }
+export type TabsProps = Assign<HTMLArkProps<'div'>, TabsContext>
 
-const VueTabsProps = {
+const VueTabsProps = createVueProps<TabsProps>({
+  id: {
+    type: String as PropType<TabsProps['id']>,
+  },
   defaultValue: {
     type: String as PropType<TabsProps['defaultValue']>,
   },
@@ -34,14 +39,14 @@ const VueTabsProps = {
   getRootNode: {
     type: Function as PropType<TabsProps['getRootNode']>,
   },
-}
+})
 
-export const Tabs: ComponentWithProps<TabsProps> = defineComponent({
+export const Tabs: ComponentWithProps<Partial<TabsProps>> = defineComponent({
   name: 'Tabs',
   emits: ['change', 'focus', 'delete'],
   props: VueTabsProps,
   setup(props, { slots, attrs, emit }) {
-    const api = useTabs(emit, props, props.defaultValue)
+    const api = useTabs(emit, props)
 
     TabsProvider(api)
 

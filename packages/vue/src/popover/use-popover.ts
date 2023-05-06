@@ -1,25 +1,19 @@
-import { connect, machine, type Context as PopoverContext } from '@zag-js/popover'
+import { connect, machine } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
+import type { PopoverContext } from './popover'
 
-export interface UsePopoverContext extends Optional<PopoverContext, 'id'> {
-  /**
-   * Control the open state of the popover.
-   *
-   * @default false
-   */
-  isOpen?: boolean
-}
-
-export const usePopover = (emit: CallableFunction, context: UsePopoverContext) => {
+export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       open: reactiveContext.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
@@ -61,5 +55,3 @@ export const usePopover = (emit: CallableFunction, context: UsePopoverContext) =
 
   return api
 }
-
-export type UsePopoverReturn = UnwrapRef<ReturnType<typeof usePopover>>

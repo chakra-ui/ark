@@ -1,13 +1,18 @@
+import { type Context } from '@zag-js/accordion'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion, type UseAccordionContext } from './use-accordion'
+import { useAccordion } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionContext>
+export type AccordionContext = Context & { modelValue?: AccordionContext['value'] }
+export type AccordionProps = Assign<HTMLArkProps<'div'>, AccordionContext>
 
-const VueAccordionProps = {
+const VueAccordionProps = createVueProps<AccordionProps>({
+  id: {
+    type: String as PropType<AccordionProps['id']>,
+  },
   modelValue: {
     type: [String, Object] as PropType<AccordionProps['modelValue']>,
   },
@@ -32,9 +37,9 @@ const VueAccordionProps = {
   orientation: {
     type: String as PropType<AccordionProps['orientation']>,
   },
-}
+})
 
-export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({
+export const Accordion: ComponentWithProps<Partial<AccordionProps>> = defineComponent({
   name: 'Accordion',
   emits: ['change', 'update:modelValue'],
   props: VueAccordionProps,
@@ -45,7 +50,7 @@ export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.()}
+        {slots?.default?.(api.value)}
       </ark.div>
     )
   },

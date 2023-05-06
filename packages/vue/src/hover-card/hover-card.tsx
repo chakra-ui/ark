@@ -1,11 +1,16 @@
+import { type Context as HoverCardContext } from '@zag-js/hover-card'
 import { defineComponent, type PropType } from 'vue'
-import { type ComponentWithProps } from '../utils'
+
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardContext } from './use-hover-card'
+import { useHoverCard } from './use-hover-card'
 
-export type HoverCardProps = UseHoverCardContext
+export type HoverCardProps = HoverCardContext
 
-const VueHoverCardProps = {
+const VueHoverCardProps = createVueProps<HoverCardProps>({
+  id: {
+    type: String as PropType<HoverCardProps['id']>,
+  },
   ids: {
     type: Object as PropType<HoverCardProps['ids']>,
   },
@@ -27,17 +32,17 @@ const VueHoverCardProps = {
   positioning: {
     type: Object as PropType<HoverCardProps['positioning']>,
   },
-}
+})
 
-export const HoverCard: ComponentWithProps<HoverCardProps> = defineComponent({
+export const HoverCard: ComponentWithProps<Partial<HoverCardProps>> = defineComponent({
   name: 'HoverCard',
   props: VueHoverCardProps,
   emits: ['open', 'close'],
   setup(props, { slots, emit }) {
-    const api = useHoverCard(emit, props)
+    const api = useHoverCard(emit, props as HoverCardProps)
 
     HoverCardProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots?.default?.(api.value)
   },
 })

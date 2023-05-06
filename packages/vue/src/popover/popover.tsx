@@ -1,10 +1,20 @@
+import type { Context } from '@zag-js/popover'
 import { defineComponent, type PropType } from 'vue'
+import { createVueProps } from '../utils'
 import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverContext } from './use-popover'
+import { usePopover } from './use-popover'
 
-export type PopoverProps = UsePopoverContext
+export type PopoverContext = Context & {
+  /**
+   * Control the open state of the popover.
+   *
+   * @default false
+   */
+  isOpen?: boolean
+}
+export type PopoverProps = PopoverContext
 
-const VuePopoverProps = {
+const VuePopoverProps = createVueProps({
   autoFocus: {
     type: Boolean as PropType<PopoverProps['autoFocus']>,
   },
@@ -42,7 +52,7 @@ const VuePopoverProps = {
   positioning: {
     type: Object as PropType<PopoverProps['positioning']>,
   },
-}
+})
 
 export const Popover = defineComponent({
   name: 'Popover',
@@ -60,6 +70,6 @@ export const Popover = defineComponent({
 
     PopoverProvider(api)
 
-    return () => slots.default?.()
+    return () => slots.default?.(api.value)
   },
 })

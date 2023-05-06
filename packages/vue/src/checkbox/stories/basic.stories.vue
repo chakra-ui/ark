@@ -3,7 +3,9 @@ import { ref } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
 
-const checkboxRef = ref(true)
+const props = defineProps(['modelValue'])
+
+const checkboxRef = ref(props.modelValue || true)
 </script>
 <template>
   <Checkbox v-model="checkboxRef">

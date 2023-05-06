@@ -1,13 +1,20 @@
+import { type Context } from '@zag-js/combobox'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { type ComponentWithProps } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox, type UseComboboxContext } from './use-combobox'
+import { useCombobox } from './use-combobox'
 
-export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxContext>
+export type ComboboxContext = Context & {
+  modelValue?: ComboboxContext['inputValue']
+}
+export type ComboboxProps = Assign<HTMLArkProps<any>, ComboboxContext>
 
-const VueComboboxProps = {
+const VueComboboxProps = createVueProps<ComboboxProps>({
+  id: {
+    type: String as PropType<ComboboxProps['id']>,
+  },
   modelValue: {
     type: String as PropType<ComboboxProps['modelValue']>,
   },
@@ -86,22 +93,20 @@ const VueComboboxProps = {
   translations: {
     type: Object as PropType<ComboboxProps['translations']>,
   },
-}
+})
 
-export const Combobox: ComponentWithProps<ComboboxProps> = defineComponent({
+export const Combobox: ComponentWithProps<Partial<ComboboxProps>> = defineComponent({
   name: 'Combobox',
   props: VueComboboxProps,
   emits: ['close', 'open', 'highlight', 'input-change', 'update:modelValue', 'select'],
-  setup(props, { slots, attrs, emit, expose }) {
+  setup(props, { slots, attrs, emit }) {
     const api = useCombobox(emit, props)
 
     ComboboxProvider(api)
 
-    expose({ ...api.value })
-
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots.default?.()}
+        {() => slots.default?.(api.value)}
       </ark.div>
     )
   },

@@ -1,15 +1,19 @@
+import type { Context } from '@zag-js/tags-input'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { getValidChildren } from '../utils'
+import { createVueProps, type ComponentWithProps } from '../utils'
+import type { TagInputProps } from './tag-input'
 import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
+import { useTagsInput } from './use-tags-input'
 
-type UseTagsInputPropsContext = UseTagsInputProps['context']
+export type TagsInputContext = Context & {
+  modelValue?: Context['value']
+}
 
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputPropsContext>
+export type TagsInputProps = Assign<HTMLArkProps<'div'>, TagsInputContext>
 
-const VueTagsInputProps = {
+const VueTagsInputProps = createVueProps<TagsInputProps>({
   addOnPaste: {
     type: Boolean as PropType<TagsInputProps['addOnPaste']>,
   },
@@ -74,9 +78,9 @@ const VueTagsInputProps = {
   value: {
     type: Object as PropType<TagsInputProps['value']>,
   },
-}
+})
 
-export const TagsInput = defineComponent({
+export const TagsInput: ComponentWithProps<Partial<TagInputProps>> = defineComponent({
   name: 'TagsInput',
   props: VueTagsInputProps,
   emits: ['change', 'update:modelValue', 'highlight', 'invalid', 'tag-update'],
@@ -91,7 +95,7 @@ export const TagsInput = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },
