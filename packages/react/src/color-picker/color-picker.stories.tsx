@@ -30,14 +30,12 @@ export const Basic = () => (
       return (
         <ColorPickerContent>
           <output>
-            <div>Color: {api.value}</div>
+            <ColorPickerSwatch value={api.value} readOnly />
           </output>
           <ColorPickerArea xChannel={saturation} yChannel={lightness}>
             <ColorPickerAreaGradient />
             <ColorPickerAreaThumb />
           </ColorPickerArea>
-
-          <ColorPickerSwatch value={api.value} readOnly />
 
           <ColorPickerSliderTrack channel={hue}>
             <ColorPickerSliderThumb />
@@ -50,7 +48,6 @@ export const Basic = () => (
           <ColorPickerChannelInput channel={hue} />
           <ColorPickerChannelInput channel={saturation} />
           <ColorPickerChannelInput channel={lightness} />
-
           <ColorPickerChannelInput channel="alpha" />
 
           <ColorPickerSwatchGroup>
@@ -58,9 +55,7 @@ export const Basic = () => (
             <ColorPickerSwatch value="#ff1321" />
           </ColorPickerSwatchGroup>
 
-          <ColorPickerEyeDropperTrigger>
-            <button>Pick color</button>
-          </ColorPickerEyeDropperTrigger>
+          <ColorPickerEyeDropperTrigger>Pick color</ColorPickerEyeDropperTrigger>
         </ColorPickerContent>
       )
     }}

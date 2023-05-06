@@ -1,15 +1,14 @@
-import { forwardRef } from '@polymorphic-factory/react'
+import type { OptionProps } from '@zag-js/combobox/dist/combobox.types'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-type OptionProps = Parameters<ReturnType<typeof useComboboxContext>['getOptionProps']>[0]
-
 export type ComboboxOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
 
-export const ComboboxOption = forwardRef<'li', ComboboxOptionProps>((props, ref) => {
+export const ComboboxOption = forwardRef<'li', OptionProps>((props, ref) => {
   const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [
     'count',
     'disabled',

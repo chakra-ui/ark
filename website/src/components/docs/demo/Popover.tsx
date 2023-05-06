@@ -17,7 +17,7 @@ import {
 
 export const DemoPopover = (props: Partial<PopoverProps>) => (
   <Popover {...props}>
-    <PopoverTrigger>
+    <PopoverTrigger asChild>
       <Button variant="secondary" size="md">
         Open
       </Button>

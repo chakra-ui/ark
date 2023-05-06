@@ -47,5 +47,8 @@
     "xChannel": { "type": "ColorChannel", "isRequired": true },
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
-  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
+  "ColorPickerSwatchProps": {
+    "value": { "type": "string | Color", "isRequired": true },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  }
 }

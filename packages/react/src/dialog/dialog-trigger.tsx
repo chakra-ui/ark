@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useDialogContext } from './dialog-context'
 
-export type DialogTriggerProps = { children: ReactElement }
+export type DialogTriggerProps = HTMLArkProps<'button'>
 
-export const DialogTrigger = (props: DialogTriggerProps) => {
+export const DialogTrigger = forwardRef<'button'>((props, ref) => {
   const { triggerProps } = useDialogContext()
+  const mergedProps = mergeProps(triggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, triggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})
