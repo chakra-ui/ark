@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo, splitProps, type JSX } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
@@ -18,14 +18,15 @@ export type AccordionItemProps = Assign<
 >
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const [itemProps, divProps] = splitProps(props, ['value', 'disabled'])
+  const [accordionItemProps, restProps] = splitProps(props, ['value', 'disabled'])
   const accordion = useAccordionContext()
-  const mergedProps = createMemo(() => mergeProps(accordion().getItemProps(itemProps), divProps))
-  const view = () => runIfFn(divProps.children, () => accordion().getItemState(props))
+
+  const itemProps = mergeProps(() => accordion().getItemProps(accordionItemProps), restProps)
+  const getChildren = () => runIfFn(restProps.children, () => accordion().getItemState(props))
 
   return (
-    <AccordionItemProvider value={itemProps}>
-      <ark.div {...mergedProps}>{view()}</ark.div>
+    <AccordionItemProvider value={accordionItemProps}>
+      <ark.div {...itemProps}>{getChildren()}</ark.div>
     </AccordionItemProvider>
   )
 }
