@@ -1,7 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { mergeProps } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { createMemo, splitProps } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
 type OptionProps = Parameters<
@@ -11,16 +12,15 @@ type OptionProps = Parameters<
 export type ComboboxOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
 
 export const ComboboxOption = (props: ComboboxOptionProps) => {
-  const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [
+  const [optionProps, localProps] = createSplitProps<OptionProps>()(props, [
     'count',
     'disabled',
     'label',
     'value',
     'index',
   ])
-
+  const [childrenProps, liProps] = splitProps(localProps, ['children'])
   const combobox = useComboboxContext()
-  const mergedProps = () => mergeProps(combobox().getOptionProps(optionProps), liProps)
-
-  return <ark.li {...mergedProps()}>{children ? children : optionProps.label}</ark.li>
+  const mergedProps = createMemo(() => mergeProps(combobox().getOptionProps(optionProps), liProps))
+  return <ark.li {...mergedProps()}>{childrenProps.children || optionProps.label}</ark.li>
 }

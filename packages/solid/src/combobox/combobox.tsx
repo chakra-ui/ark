@@ -1,8 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { ComboboxProvider, useComboboxContext, type ComboboxContext } from './combobox-context'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 

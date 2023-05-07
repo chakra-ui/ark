@@ -1,5 +1,6 @@
-import { createSignal, For } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Combobox,
   ComboboxContent,
@@ -12,6 +13,13 @@ import {
   type ComboboxOptionProps,
   type ComboboxProps,
 } from '.'
+import './combobox.css'
+
+const meta = {
+  title: 'Combobox',
+} satisfies Meta
+
+export default meta
 
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
@@ -32,16 +40,16 @@ export const Basic = () => {
 
   return (
     <Combobox onInputChange={handleInputChange}>
-      {(context) => (
+      {(state) => (
         <>
           <ComboboxLabel>JS Frameworks</ComboboxLabel>
           <ComboboxControl>
             <ComboboxInput />
-            <ComboboxTrigger>
+            <ComboboxTrigger asChild>
               <button>▼</button>
             </ComboboxTrigger>
           </ComboboxControl>
-          {context().isInputValueEmpty && !context().isOpen && (
+          {state().isInputValueEmpty && !state().isOpen && (
             <div>Give me you favorite framework!</div>
           )}
           <Portal>
