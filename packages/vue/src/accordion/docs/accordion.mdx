@@ -22,22 +22,32 @@ import {
 The Accordion component consists of the `Accordion`, `AccordionTrigger`,
 `AccordionItem` and `AccordionContent` components.
 
-```tsx
-<Accordion>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+```vue
+<script setup>
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Accordion>
+    <AccordionItem value="panel-1">
+      <AccordionTrigger>
+        <button>Panel 1 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 1 content</AccordionContent>
+    </AccordionItem>
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <AccordionItem value="panel-2">
+      <AccordionTrigger>
+        <button>Panel 2 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 2 content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
 ```
 
 ### Allow toggling the open state
@@ -51,22 +61,32 @@ If `multiple` is `true`, we internally set collapsible to be true.
 
 :::
 
-```tsx
-<Accordion collapsible>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+```vue
+<script setup>
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Accordion collapsible>
+    <AccordionItem value="panel-1">
+      <AccordionTrigger>
+        <button>Panel 1 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 1 content</AccordionContent>
+    </AccordionItem>
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <AccordionItem value="panel-2">
+      <AccordionTrigger>
+        <button>Panel 2 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 2 content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
 ```
 
 ### Allow multiple open accordions at once
@@ -75,22 +95,32 @@ To allow multiple items to be expanded at once, set `multiple` to `true`. This
 mode implicitly sets `collapsible` to `true` and ensures that each accordion can
 be expanded.
 
-```tsx
-<Accordion multiple>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+```vue
+<script setup>
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Accordion multiple>
+    <AccordionItem value="panel-1">
+      <AccordionTrigger>
+        <button>Panel 1 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 1 content</AccordionContent>
+    </AccordionItem>
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <AccordionItem value="panel-2">
+      <AccordionTrigger>
+        <button>Panel 2 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 2 content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
 ```
 
 ### Disable specific accordion items
@@ -99,22 +129,32 @@ To disable a specific accordion item, set the `disabled` prop to `true`. When an
 accordion item is disabled, it is skipped from keyboard navigation and can't be
 interacted with.
 
-```tsx
-<Accordion>
-  <AccordionItem value="panel-1" disabled>
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+```vue
+<script setup>
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Accordion>
+    <AccordionItem value="panel-1" disabled>
+      <AccordionTrigger>
+        <button>Panel 1 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 1 content</AccordionContent>
+    </AccordionItem>
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <AccordionItem value="panel-2">
+      <AccordionTrigger>
+        <button>Panel 2 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 2 content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
 ```
 
 ### Uncontrolled usage with `defaultValue`
@@ -122,22 +162,32 @@ interacted with.
 Expand accordion items by default with setting `defaultValue` to the value of an
 `AccordionItem`. The `defaultValue` should be of type `string | string[] | null`
 
-```tsx
-<Accordion defaultValue="panel-2">
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+```vue
+<script setup>
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionItem,
+  AccordionContent,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Accordion defaultValue="panel-2">
+    <AccordionItem value="panel-1">
+      <AccordionTrigger>
+        <button>Panel 1 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 1 content</AccordionContent>
+    </AccordionItem>
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+    <AccordionItem value="panel-2">
+      <AccordionTrigger>
+        <button>Panel 2 trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>Panel 2 content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
 ```
 
 ### Controlled usage with `v-model`
@@ -145,9 +195,9 @@ Expand accordion items by default with setting `defaultValue` to the value of an
 The accordion item accepts a `v-model` prop, to allow a controlled usage. The
 `v-model` prop should be of type `string | string[] | null`.
 
-```tsx
-<script setup>
-import {ref} from 'vue'
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
 import {
   Accordion,
   AccordionTrigger,
@@ -155,15 +205,20 @@ import {
   AccordionContent,
 } from '@ark-ui/vue'
 
-const value = ref('')
+const value = ref('panel-2')
 </script>
 <template>
-<Accordion v-model="value">
-  <AccordionItem v-for="id in ['panel-1', 'panel-2', 'panel-3']" :key="item" :value="id">
-    <AccordionTrigger>
-      <button>{{id}} trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>{{id}} content</AccordionContent>
-  </AccordionItem>
+  <Accordion v-model="value">
+    <AccordionItem
+      v-for="id in ['panel-1', 'panel-2', 'panel-3']"
+      :key="item"
+      :value="id"
+    >
+      <AccordionTrigger>
+        <button>{{ id }} trigger</button>
+      </AccordionTrigger>
+      <AccordionContent>{{ id }} content</AccordionContent>
+    </AccordionItem>
+  </Accordion>
 </template>
 ```

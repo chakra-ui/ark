@@ -20,7 +20,7 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
-} from '@ark-ui/react'
+} from '@ark-ui/vue'
 ```
 
 ## Usage
@@ -29,14 +29,25 @@ The Editable component consists of the `EditableArea`, `EditableCancelTrigger`,
 `EditableControl`, `EditableEditTrigger`, `EditableInput`, `EditableLabel`,
 `EditablePreview` and `EditableSubmitTrigger` components.
 
-```tsx
-<Editable placeholder="Placeholder">
-  <EditableLabel>Label</EditableLabel>
-  <EditableArea>
-    <EditableInput />
-    <EditablePreview />
-  </EditableArea>
-</Editable>
+```vue
+<script setup>
+import {
+  Editable,
+  EditableArea,
+  EditableInput,
+  EditableLabel,
+  EditablePreview,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Editable placeholder="Placeholder">
+    <EditableLabel>Label</EditableLabel>
+    <EditableArea>
+      <EditableInput />
+      <EditablePreview />
+    </EditableArea>
+  </Editable>
+</template>
 ```
 
 ### Using custom controls
@@ -45,14 +56,25 @@ In some cases, you might need to use custom controls to toggle the edit and read
 mode. We use `ref` prop from `Editable` to provide access to the internal state
 of the component.
 
-```tsx
-<script setup lang='ts'>
-  import { ref } from 'vue'
+```vue
+<script setup>
+import { ref } from 'vue'
+import {
+  Editable,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableControl,
+  EditableEditTrigger,
+  EditableInput,
+  EditableLabel,
+  EditablePreview,
+  EditableSubmitTrigger,
+} from '@ark-ui/vue'
 
-  const editableRef = ref()
+const editableRef = ref()
 </script>
 <template>
-<Editable ref="editableRef" placeholder="Placeholder">
+  <Editable ref="editableRef" placeholder="Placeholder">
     <EditableLabel>Editable Label</EditableLabel>
     <EditableArea>
       <EditableInput />
@@ -81,10 +103,15 @@ of the component.
 To auto-grow the editable as the content changes, set the `autoResize` prop to
 `true`.
 
-```tsx
-<Editable placeholder="Placeholder" autoResize>
-  {/*...*/}
-</Editable>
+```vue
+<script setup lang="ts">
+import { Editable } from '@ark-ui/vue'
+</script>
+<template>
+  <Editable placeholder="Placeholder" autoResize>
+    <!-- ... -->
+  </Editable>
+</template>
 ```
 
 #### Setting a maxWidth
@@ -92,10 +119,15 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to
 It is a common pattern to set a maximum of the editable as it auto-grows. To
 achieve this, set the `maxWidth` prop to the desired value.
 
-```tsx
-<Editable placeholder="Placeholder" autoResize maxWidth="320px">
-  {/*...*/}
-</Editable>
+```vue
+<script setup lang="ts">
+import { Editable } from '@ark-ui/vue'
+</script>
+<template>
+  <Editable placeholder="Placeholder" autoResize maxWidth="320px">
+    <!-- ... -->
+  </Editable>
+</template>
 ```
 
 ### Editing with double click
@@ -107,8 +139,13 @@ The editable supports two modes of activating the "edit" state:
 
 To change the mode to double-click, pass the prop `activationMode="dblclick"`.
 
-```tsx
-<Editable placeholder="Placeholder" activationMode="dblclick">
-  {/*...*/}
-</Editable>
+```vue
+<script setup lang="ts">
+import { Editable } from '@ark-ui/vue'
+</script>
+<template>
+  <Editable placeholder="Placeholder" activationMode="dblclick">
+    <!-- ... -->
+  </Editable>
+</template>
 ```

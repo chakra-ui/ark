@@ -30,8 +30,9 @@ Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
 receive all necessary props to add the event listeners and attributes to ensure
 the desired accessibility.
 
-```tsx
+```vue
 <script setup lang="ts">
+import { ref } from 'vue'
 import {
   Pagination,
   PaginationEllipsis,
@@ -41,10 +42,10 @@ import {
   PaginationPrevPageTrigger,
 } from '@ark-ui/vue'
 
-const paginationRef = ref<{ context: UsePaginationReturn }>()
+const paginationRef = ref()
 </script>
 <template>
-<Pagination :count="5000" :pageSize="10" :siblingCount="2">
+  <Pagination :count="5000" :pageSize="10" :siblingCount="2">
     <PaginationList>
       <PaginationPrevPageTrigger>
         <button>Previous</button>
@@ -55,15 +56,13 @@ const paginationRef = ref<{ context: UsePaginationReturn }>()
           <button>{{ page.value }}</button>
         </PaginationPageTrigger>
 
-        <PaginationEllipsis v-else :index="index" >
-          &#8230;
-        </PaginationEllipsis>
+        <PaginationEllipsis v-else :index="index"> &#8230; </PaginationEllipsis>
       </template>
 
       <PaginationNextPageTrigger>
         <button>Next</button>
       </PaginationNextPageTrigger>
     </PaginationList>
-</Pagination>
+  </Pagination>
 </template>
 ```

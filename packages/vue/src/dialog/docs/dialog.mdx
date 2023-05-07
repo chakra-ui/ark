@@ -35,8 +35,9 @@ listeners and attributes to ensure the desired accessibility.
 > Import `Teleport` from Vue to wrap the backdrop and container with the
 > contents
 
-```tsx
-<script setup>
+```vue
+<script setup lang="ts">
+import { Teleport } from 'vue'
 import {
   Dialog,
   DialogBackdrop,
@@ -53,7 +54,7 @@ import {
     <DialogTrigger>
       <button>Open Dialog</button>
     </DialogTrigger>
-    <Teleport>
+    <Teleport to="body">
       <DialogBackdrop />
       <DialogContainer>
         <DialogContent>
@@ -74,8 +75,8 @@ import {
 By default, the dialog closes when you click its overlay. You can set
 `closeOnOutsideClick` to `false` if you want the modal to stay visible.
 
-```tsx
-<script setup>
+```vue
+<script setup lang="ts">
 import { Dialog } from '@ark-ui/vue'
 </script>
 <template>
@@ -90,8 +91,8 @@ import { Dialog } from '@ark-ui/vue'
 When the dialog is open, it prevents scrolling on the `body` element. To disable
 this behavior, set the `preventScroll` prop to `false`.
 
-```tsx
-<script setup>
+```vue
+<script setup lang="ts">
 import { Dialog } from '@ark-ui/vue'
 </script>
 <template>
@@ -106,8 +107,8 @@ import { Dialog } from '@ark-ui/vue'
 The `Dialog` component exposes the `isOpen` state via `v-slot`. This can be
 useful if you want to control the visibility of other components.
 
-```tsx
-<script setup>
+```vue
+<script setup lang="ts">
 import {
   Dialog,
   DialogBackdrop,
@@ -146,8 +147,8 @@ import {
 Should you need to use an external trigger to open the dialog, the `open` prop
 is provided as two-way binding.
 
-```tsx
-<script setup>
+```vue
+<script setup lang="ts">
 import { Teleport, ref } from 'vue'
 import {
   Dialog,
@@ -161,9 +162,7 @@ import {
 
 const open = ref(false)
 
-const handleOpen = () => {
-  open.value = !open.value
-}
+const handleOpen = () => (open.value = true)
 </script>
 <template>
   <button @click="handleOpen">Toggle Dialog</button>

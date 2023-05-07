@@ -33,7 +33,7 @@ Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
 single JSX element which will receive all necessary props to add the event
 listeners and attributes to ensure the desired accessibility.
 
-```tsx
+```vue
 <script>
 import {
   Tag,
@@ -87,7 +87,7 @@ focus in on any tag:
 
 To set the initial tag values, use the `v-model` directive.
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
 
@@ -95,7 +95,9 @@ const tagsInputValue = ref(['foo', 'bar'])
 </script>
 
 <template>
-  <TagsInput v-model='tagsInputValue'>{/*...*/}</TagsInput>
+  <TagsInput v-model="tagsInputValue">
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -107,13 +109,15 @@ to the limit you want. The default value is `Infinity`.
 When the tag reaches the limit, new tags cannot be added except the
 `allowOverflow` prop is set to `true`.
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
 </script>
 
 <template>
-  <TagsInput :max="3" allowOverflow>{/*...*/}</TagsInput>
+  <TagsInput :max="3" allowOverflow>
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -125,7 +129,7 @@ accept or reject a tag.
 A common use-case for validating tags is preventing duplicates or validating the
 data type.
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
 
@@ -135,7 +139,9 @@ const tagsInputValidate = (details) => {
 </script>
 
 <template>
-  <TagsInput :validate="tagsInputValidate">{/*...*/}</TagsInput>
+  <TagsInput :validate="tagsInputValidate">
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -147,13 +153,15 @@ should take by passing the `blurBehavior` prop.
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
 </script>
 
 <template>
-  <TagsInput blurBehavior="add">{/*...*/}</TagsInput>
+  <TagsInput blurBehavior="add">
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -167,13 +175,15 @@ When a value is pasted, the component will:
 - check if the value is a valid tag based on the `validate` option
 - split the value by the `delimiter` option passed
 
-```jsx {3}
+```vue {3}
 <script>
 import { TagsInput } from '@ark-ui/vue'
 </script>
 
 <template>
-  <TagsInput addOnPaste delimiter=",">{/*...*/}</TagsInput>
+  <TagsInput addOnPaste delimiter=",">
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -181,15 +191,17 @@ import { TagsInput } from '@ark-ui/vue'
 
 by default the tags can be edited by double-clicking on the tag or focusing on
 them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
-`allowEditTag={false}`
+`:allowEditTag="false"`
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
 </script>
 
 <template>
-  <TagsInput :allowEditTag="false">{/*...*/}</TagsInput>
+  <TagsInput :allowEditTag="false">
+    <!-- ... -->
+  </TagsInput>
 </template>
 ```
 
@@ -203,10 +215,9 @@ emit:
 - `@invalid` — invoked when the max tag count is reached or the `validate`
   function returns `false`.
 
-```tsx
+```vue
 <script>
 import { TagsInput } from '@ark-ui/vue'
-</script>
 
 const handleOnChange = (details) => {
   console.log('tags changed to:', details.values)
@@ -219,13 +230,14 @@ const handleOnHighlight = (details) => {
 const handleOnInvalid = (details) => {
   console.log('Invalid!', details.reason)
 }
-<template></template>
+</script>
+<template>
   <TagsInput
     @change="handleOnChange"
     @hightlight="handleOnHighlight"
     @invalid="handleOnInvalid"
   >
-    {/*...*/}
+    <!-- ... -->
   </TagsInput>
 </template>
 ```
