@@ -5,11 +5,11 @@ import { useTooltipContext } from './tooltip-context'
 export type TooltipPositionerProps = HTMLArkProps<'div'>
 
 export const TooltipPositioner = (props: TooltipPositionerProps) => {
-  const tooltip = useTooltipContext()
+  const api = useTooltipContext()
 
   return (
-    <Show when={tooltip().isOpen}>
-      <ark.div {...tooltip().positionerProps} {...props} />
+    <Show when={api().isOpen}>
+      <ark.div {...api().positionerProps} {...props} />
     </Show>
   )
 }

@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from '../spread'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverTriggerProps = { children: JSX.Element }
+export type PopoverTriggerProps = HTMLArkProps<'button'>
 
 export const PopoverTrigger = (props: PopoverTriggerProps) => {
-  const popover = usePopoverContext()
-
-  const triggerProps = popover().triggerProps
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const api = usePopoverContext()
+  const triggerProps = mergeProps(() => api().triggerProps, props)
+  return <ark.button {...triggerProps} />
 }

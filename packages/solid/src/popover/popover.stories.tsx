@@ -14,7 +14,7 @@ import {
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>
+    <PopoverTrigger asChild>
       <button>click me</button>
     </PopoverTrigger>
     <PopoverPositioner>

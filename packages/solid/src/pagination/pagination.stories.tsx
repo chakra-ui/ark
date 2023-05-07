@@ -1,3 +1,4 @@
+import type { Meta } from 'storybook-solidjs'
 import {
   Pagination,
   PaginationEllipsis,
@@ -8,19 +9,25 @@ import {
 } from './'
 import './pagination.css'
 
+const meta: Meta = {
+  title: 'Pagination',
+}
+
+export default meta
+
 export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
-    {({ pages }) => (
+    {(api) => (
       <PaginationList>
-        <PaginationPrevPageTrigger>
+        <PaginationPrevPageTrigger asChild>
           <button>
             Previous <span class="visually-hidden">Page</span>
           </button>
         </PaginationPrevPageTrigger>
 
-        {pages.map((page, index) =>
+        {api().pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationPageTrigger value={page.value}>
+            <PaginationPageTrigger value={page.value} asChild>
               <button>{page.value}</button>
             </PaginationPageTrigger>
           ) : (
@@ -28,7 +35,7 @@ export const Basic = () => (
           ),
         )}
 
-        <PaginationNextPageTrigger>
+        <PaginationNextPageTrigger asChild>
           <button>
             Next <span class="visually-hidden">Page</span>
           </button>

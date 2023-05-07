@@ -1,4 +1,5 @@
 import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { PinInputProvider } from './pin-input-context'
@@ -30,11 +31,14 @@ export const PinInput = (props: PinInputProps) => {
     'type',
     'value',
   ])
-  const pinInput = usePinInput(pinInputProps)
+
+  const api = usePinInput(pinInputProps)
+
+  const rootProps = mergeProps(() => api().rootProps, htmlProps)
 
   return (
-    <PinInputProvider value={pinInput}>
-      <ark.div {...pinInput().rootProps} {...htmlProps} />
+    <PinInputProvider value={api}>
+      <ark.div {...rootProps} />
     </PinInputProvider>
   )
 }
