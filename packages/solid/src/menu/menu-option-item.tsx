@@ -1,6 +1,7 @@
 import { type Assign } from '@polymorphic-factory/solid'
 import { type connect } from '@zag-js/menu'
-import { children, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -19,7 +20,8 @@ export type MenuOptionItemProps = Assign<
 
 export const MenuOptionItem = (props: MenuOptionItemProps) => {
   const menu = useMenuContext()
-  const [optionProps, divProps] = createSplitProps<MenuOptionItemParams>()(props, [
+
+  const [optionProps, localProps] = createSplitProps<MenuOptionItemParams>()(props, [
     'id',
     'disabled',
     'valueText',
@@ -30,14 +32,10 @@ export const MenuOptionItem = (props: MenuOptionItemProps) => {
     'onCheckedChange',
   ])
 
-  const view = () =>
-    children(() =>
-      runIfFn(divProps.children, { isActive: menu?.().isOptionChecked(optionProps) ?? false }),
-    )
+  const itemProps = mergeProps(() => menu?.().getOptionItemProps(optionProps), localProps)
 
-  return (
-    <ark.div {...menu?.().getOptionItemProps(optionProps)} {...divProps}>
-      {view}
-    </ark.div>
-  )
+  const getChildren = () =>
+    runIfFn(localProps.children, { isActive: menu?.().isOptionChecked(optionProps) ?? false })
+
+  return <ark.div {...itemProps}>{getChildren()}</ark.div>
 }

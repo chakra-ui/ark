@@ -1,5 +1,5 @@
 import { type Assign } from '@polymorphic-factory/solid'
-import { children, createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
+import { createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import {
@@ -50,42 +50,29 @@ export const Menu = (props: MenuProps) => {
 
   createEffect(() => {
     if (!parentMachine) return
-
     parentMenu?.().setChild(menu().machine)
     menu().api().setParent(parentMachine())
   })
 
   createEffect(() => {
     if (!localProps.isOpen) return
-
     localProps.isOpen?.() ? menu().api().open() : menu().api().close()
   })
 
+  const triggerItemContext = createMemo(() => parentMenu?.().getTriggerItemProps(menu().api()))
+  const machineContext = () => menu().machine
+
+  const getChildren = () =>
+    runIfFn(props.children, () => ({
+      isOpen: menu?.().api().isOpen,
+      onClose: menu?.().api().close,
+    }))
+
   return (
-    <MenuTriggerItemProvider
-      value={createMemo(() => parentMenu?.().getTriggerItemProps(menu().api()))}
-    >
-      <MenuMachineProvider value={() => menu().machine}>
-        <MenuProvider value={menu().api}>
-          <MenuContextWrapper>{localProps.children}</MenuContextWrapper>
-        </MenuProvider>
+    <MenuTriggerItemProvider value={triggerItemContext}>
+      <MenuMachineProvider value={machineContext}>
+        <MenuProvider value={menu().api}>{getChildren()}</MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>
   )
-}
-
-const MenuContextWrapper = (props: Pick<MenuProps, 'children'>) => {
-  const menu = useMenuContext()
-  const view = () =>
-    children(() =>
-      runIfFn(
-        props.children,
-        createMemo(() => ({
-          isOpen: menu?.().isOpen,
-          onClose: menu?.().close,
-        })),
-      ),
-    )
-
-  return <>{view()}</>
 }

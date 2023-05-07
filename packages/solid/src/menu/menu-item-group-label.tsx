@@ -1,4 +1,5 @@
 import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
@@ -8,9 +9,15 @@ export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGrou
 
 export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
-  const [itemGroupLabelProps, labelProps] = createSplitProps<MenuItemGroupLabelParams>()(props, [
+
+  const [itemGroupLabelProps, localProps] = createSplitProps<MenuItemGroupLabelParams>()(props, [
     'htmlFor',
   ])
 
-  return <ark.label {...menu?.()?.getItemGroupLabelProps(itemGroupLabelProps)} {...labelProps} />
+  const labelProps = mergeProps(
+    () => menu?.().getItemGroupLabelProps(itemGroupLabelProps),
+    localProps,
+  )
+
+  return <ark.label {...labelProps} />
 }

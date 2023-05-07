@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Menu,
   MenuContent,
@@ -13,6 +14,12 @@ import {
   MenuTriggerItem,
 } from '.'
 import './menu.css'
+
+const meta: Meta = {
+  title: 'Menu',
+}
+
+export default meta
 
 export const Basic = () => (
   <Menu>
