@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo, splitProps } from 'solid-js'
+import { splitProps } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
@@ -19,8 +19,11 @@ export const ComboboxOption = (props: ComboboxOptionProps) => {
     'value',
     'index',
   ])
-  const [childrenProps, liProps] = splitProps(localProps, ['children'])
+
+  const [childrenProps, restProps] = splitProps(localProps, ['children'])
+
   const combobox = useComboboxContext()
-  const mergedProps = createMemo(() => mergeProps(combobox().getOptionProps(optionProps), liProps))
-  return <ark.li {...mergedProps()}>{childrenProps.children || optionProps.label}</ark.li>
+  const mergedProps = mergeProps(() => combobox().getOptionProps(optionProps), restProps)
+
+  return <ark.li {...mergedProps}>{childrenProps.children || optionProps.label}</ark.li>
 }

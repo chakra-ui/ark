@@ -8,11 +8,16 @@ import { useColorPickerContext } from './color-picker-context'
 export type ColorPickerChannelInputProps = Assign<HTMLArkProps<'input'>, ColorChannelProps>
 
 export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => {
-  const [channelProps, inputProps] = createSplitProps<ColorChannelProps>()(props, [
+  const [channelProps, restProps] = createSplitProps<ColorChannelProps>()(props, [
     'channel',
     'orientation',
   ])
+
   const colorPicker = useColorPickerContext()
-  const mergedProps = mergeProps(colorPicker().getChannelInputProps(channelProps), inputProps)
-  return <ark.input {...mergedProps} />
+  const channelInputProps = mergeProps(
+    () => colorPicker().getChannelInputProps(channelProps),
+    restProps,
+  )
+
+  return <ark.input {...channelInputProps} />
 }
