@@ -11,9 +11,9 @@ import {
   DialogTrigger,
 } from './'
 
-const meta = {
+const meta: Meta = {
   title: 'Dialog',
-} satisfies Meta
+}
 
 export default meta
 

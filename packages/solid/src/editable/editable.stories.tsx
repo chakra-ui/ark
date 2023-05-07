@@ -12,9 +12,9 @@ import {
 } from '.'
 import { useEditable } from './use-editable'
 
-const meta = {
+const meta: Meta = {
   title: 'Editable',
-} satisfies Meta
+}
 
 export default meta
 

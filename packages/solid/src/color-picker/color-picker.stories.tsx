@@ -1,3 +1,4 @@
+import type { Meta } from 'storybook-solidjs'
 import {
   ColorPicker,
   ColorPickerArea,
@@ -12,6 +13,12 @@ import {
   ColorPickerSwatchGroup,
 } from './'
 import './color-picker.css'
+
+const meta: Meta = {
+  title: 'ColorPicker',
+}
+
+export default meta
 
 export const Basic = () => (
   <ColorPicker value="hsla(10, 81%, 59%, 1)">

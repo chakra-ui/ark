@@ -1,8 +1,15 @@
 import { For } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Accordion } from './accordion'
 import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
 import { AccordionTrigger } from './accordion-trigger'
+
+const meta: Meta = {
+  title: 'Accordion',
+}
+
+export default meta
 
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

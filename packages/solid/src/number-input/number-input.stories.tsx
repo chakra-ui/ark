@@ -15,10 +15,10 @@ export const Basic = () => (
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputField />
     <NumberInputControl>
-      <NumberInputDecrementTrigger>
+      <NumberInputDecrementTrigger asChild>
         <button>-1</button>
       </NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>
+      <NumberInputIncrementTrigger asChild>
         <button>+1</button>
       </NumberInputIncrementTrigger>
     </NumberInputControl>

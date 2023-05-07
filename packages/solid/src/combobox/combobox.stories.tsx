@@ -15,9 +15,9 @@ import {
 } from '.'
 import './combobox.css'
 
-const meta = {
+const meta: Meta = {
   title: 'Combobox',
-} satisfies Meta
+}
 
 export default meta
 
