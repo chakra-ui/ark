@@ -22,9 +22,7 @@ type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
 }
 
-export type AsChildForwardRefComponent<E extends ElementType> = ParentProps<
-  AsChildComponentProps<E>
->
+export type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
 
 export type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
 

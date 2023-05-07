@@ -1,6 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
@@ -19,11 +20,13 @@ export const Accordion = (props: AccordionProps) => {
     'value',
     'orientation',
   ])
+
   const accordion = useAccordion(accordionProps)
+  const mergedProps = mergeProps(accordion().rootProps, divProps)
 
   return (
     <AccordionProvider value={accordion}>
-      <ark.div {...accordion().rootProps} {...divProps} />
+      <ark.div {...mergedProps} />
     </AccordionProvider>
   )
 }
