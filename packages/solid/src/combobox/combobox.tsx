@@ -1,4 +1,5 @@
-import { children, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { children, createMemo, splitProps, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -63,11 +64,8 @@ type ComboboxContextWrapperProps = Assign<
 
 const ComboboxContextWrapper = (props: ComboboxContextWrapperProps) => {
   const combobox = useComboboxContext()
-  const view = children(() => runIfFn(props.children, combobox))
-
-  return (
-    <ark.div {...combobox().rootProps} {...props}>
-      {view()}
-    </ark.div>
-  )
+  const [childrenProps, divProps] = splitProps(props, ['children'])
+  const view = children(() => runIfFn(childrenProps.children, combobox))
+  const mergedProps = createMemo(() => mergeProps(combobox().rootProps, divProps))
+  return <ark.div {...mergedProps()}>{view()}</ark.div>
 }

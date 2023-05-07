@@ -39,38 +39,36 @@ export const Basic = () => {
   }
 
   return (
-    <Combobox onInputChange={handleInputChange}>
-      {(state) => (
-        <>
-          <ComboboxLabel>JS Frameworks</ComboboxLabel>
-          <ComboboxControl>
-            <ComboboxInput />
-            <ComboboxTrigger asChild>
-              <button>▼</button>
-            </ComboboxTrigger>
-          </ComboboxControl>
-          {state().isInputValueEmpty && !state().isOpen && (
-            <div>Give me you favorite framework!</div>
-          )}
-          <Portal>
-            <ComboboxPositioner>
-              <ComboboxContent>
-                <For each={options()}>
-                  {(option) => (
-                    <ComboboxOption
-                      label={option.label}
-                      value={option.value}
-                      disabled={option?.disabled}
-                    >
-                      {option.label}
-                    </ComboboxOption>
-                  )}
-                </For>
-              </ComboboxContent>
-            </ComboboxPositioner>
-          </Portal>
-        </>
-      )}
+    <Combobox
+      onOpen={() => {
+        setOptions(comboboxData)
+      }}
+      onInputChange={handleInputChange}
+    >
+      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger asChild>
+          <button>▼</button>
+        </ComboboxTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <For each={options()}>
+              {(option) => (
+                <ComboboxOption
+                  label={option.label}
+                  value={option.value}
+                  disabled={option?.disabled}
+                >
+                  {option.label}
+                </ComboboxOption>
+              )}
+            </For>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
     </Combobox>
   )
 }
