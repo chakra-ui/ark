@@ -1,3 +1,4 @@
+import type { Meta } from 'storybook-solidjs'
 import {
   Editable,
   EditableArea,
@@ -9,10 +10,37 @@ import {
   EditablePreview,
   EditableSubmitTrigger,
 } from '.'
+import { useEditable } from './use-editable'
+
+const meta = {
+  title: 'Editable',
+} satisfies Meta
+
+export default meta
+
+export const Hook = () => {
+  const api = useEditable({ placeholder: 'Enter' })
+  return (
+    <div {...api().rootProps}>
+      <div {...api().areaProps}>
+        <input {...api().inputProps} />
+        <span {...api().previewProps} />
+      </div>
+      {api().isEditing ? (
+        <>
+          <button {...api().submitTriggerProps}>Save</button>
+          <button {...api().cancelTriggerProps}>Cancel</button>
+        </>
+      ) : (
+        <button {...api().editTriggerProps}>Edit</button>
+      )}
+    </div>
+  )
+}
 
 export const Basic = () => (
-  <Editable activationMode="dblclick" placeholder="enter a value" value="Chakra">
-    {(state) => (
+  <Editable placeholder="Enter">
+    {(api) => (
       <>
         <EditableLabel>Label</EditableLabel>
         <EditableArea>
@@ -20,17 +48,17 @@ export const Basic = () => (
           <EditablePreview />
         </EditableArea>
         <EditableControl>
-          {state().isEditing ? (
+          {api().isEditing ? (
             <>
-              <EditableSubmitTrigger>
+              <EditableSubmitTrigger asChild>
                 <button>Save</button>
               </EditableSubmitTrigger>
-              <EditableCancelTrigger>
+              <EditableCancelTrigger asChild>
                 <button>Cancel</button>
               </EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>
+            <EditableEditTrigger asChild>
               <button>Edit</button>
             </EditableEditTrigger>
           )}
