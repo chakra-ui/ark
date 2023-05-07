@@ -28,14 +28,30 @@ export const Navbar = () => (
         <HStack gap="8">
           <Link
             href="/docs/react/overview/introduction"
-            className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
+            className={css({
+              textStyle: 'sm',
+              fontWeight: 'medium',
+              color: 'fg.emphasized',
+              _hover: {
+                color: 'fg.default',
+                fontWeight: 'semibold',
+              },
+            })}
           >
             Docs
           </Link>
           <Link
             href="https://ark-ui.canny.io/"
             target="_blank"
-            className={css({ textStyle: 'sm', fontWeight: 'medium', color: 'fg.emphasized' })}
+            className={css({
+              textStyle: 'sm',
+              fontWeight: 'medium',
+              color: 'fg.emphasized',
+              _hover: {
+                color: 'fg.default',
+                fontWeight: 'semibold',
+              },
+            })}
           >
             Roadmap
           </Link>
