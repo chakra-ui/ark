@@ -22,7 +22,7 @@ const handleOpen = () => {
   <Dialog v-model:open="open">
     <Teleport to="body">
       <DialogBackdrop />
-      <DialogContainer>
+      <DialogContainer data-testid="dialog-container">
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>
