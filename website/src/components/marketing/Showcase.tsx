@@ -1,6 +1,6 @@
 'use client'
 import { css, cx } from '@/panda/css'
-import { Box, Container, HStack, Stack } from '@/panda/jsx'
+import { Box, Container, Flex, HStack, Stack } from '@/panda/jsx'
 import { tabs } from '@/panda/recipes'
 import {
   Carousel,
@@ -17,18 +17,18 @@ import {
 import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { DemoAccordion } from '../docs/demo/Accordion'
-import { DemoDialog } from '../docs/demo/Dialog'
+import { DemoColorPicker } from '../docs/demo/ColorPicker'
 import { DemoMenu } from '../docs/demo/Menu'
 import { DemoPopover } from '../docs/demo/Popover'
 import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
 const components = [
+  { name: 'Color Picker', demo: <DemoColorPicker /> },
   {
     name: 'Slider',
     demo: <DemoSlider />,
   },
-  { name: 'Dialog', demo: <DemoDialog /> },
   {
     name: 'Menu',
     demo: <DemoMenu />,
@@ -63,7 +63,9 @@ export const Showcase = () => {
               <CarouselSlideGroup>
                 {components.map((component, id) => (
                   <CarouselSlide key={component.name} index={id}>
-                    <Box p="4">{component.demo}</Box>
+                    <Flex px="4" py="6" justify="center" align="center">
+                      {component.demo}
+                    </Flex>
                   </CarouselSlide>
                 ))}
               </CarouselSlideGroup>
@@ -89,10 +91,10 @@ export const Showcase = () => {
                 </TabList>
               </Tabs>
               <HStack gap="3" justify="space-between" flex="1">
-                <CarouselPrevSlideTrigger>
+                <CarouselPrevSlideTrigger asChild>
                   <IconButton icon={<FiArrowLeft />} aria-label="Previous component" />
                 </CarouselPrevSlideTrigger>
-                <CarouselNextSlideTrigger>
+                <CarouselNextSlideTrigger asChild>
                   <IconButton icon={<FiArrowRight />} aria-label="Next component" />
                 </CarouselNextSlideTrigger>
               </HStack>
