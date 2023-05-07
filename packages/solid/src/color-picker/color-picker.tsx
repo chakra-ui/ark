@@ -1,8 +1,8 @@
-import type { Assign } from '@polymorphic-factory/solid'
-import { children, type JSX } from 'solid-js'
+import { children, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import type { HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { ColorPickerProvider, useColorPickerContext } from './color-picker-context'
 import {
   useColorPicker,
@@ -36,13 +36,13 @@ export const ColorPicker = (props: ColorPickerProps) => {
 type ColorPickerContextWrapperProps = Assign<
   HTMLArkProps<'div'>,
   {
-    children?: JSX.Element | ((state: ReturnType<UseColorPickerReturn>) => JSX.Element)
+    children?: JSX.Element | ((state: Accessor<ReturnType<UseColorPickerReturn>>) => JSX.Element)
   }
 >
 
 const ColorPickerContextWrapper = (props: ColorPickerContextWrapperProps) => {
   const colorPicker = useColorPickerContext()
-  const view = children(() => runIfFn(props.children, colorPicker()))
+  const view = children(() => runIfFn(props.children, colorPicker))
 
   return <>{view()}</>
 }

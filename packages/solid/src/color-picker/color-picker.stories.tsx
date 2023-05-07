@@ -16,12 +16,12 @@ import './color-picker.css'
 export const Basic = () => (
   <ColorPicker value="hsla(10, 81%, 59%, 1)">
     {(api) => {
-      const [hue, saturation, lightness] = api.channels
+      const [hue, saturation, lightness] = api().channels
       return (
         <ColorPickerContent>
           <output>
-            <ColorPickerSwatch value={api.value} readOnly />
-            <span>{api.value}</span>
+            <ColorPickerSwatch value={api().value} readOnly />
+            <span>{api().value}</span>
           </output>
 
           <ColorPickerArea xChannel={saturation} yChannel={lightness}>
@@ -45,7 +45,7 @@ export const Basic = () => (
             <ColorPickerSwatch value="hsla(153, 46%, 13%, 1)" />
             <ColorPickerSwatch value="hsla(356, 100%, 54%, 1)" />
           </ColorPickerSwatchGroup>
-          <ColorPickerEyeDropperTrigger>
+          <ColorPickerEyeDropperTrigger asChild>
             <button>Pick color</button>
           </ColorPickerEyeDropperTrigger>
         </ColorPickerContent>
