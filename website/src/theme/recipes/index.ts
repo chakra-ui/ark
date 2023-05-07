@@ -3,6 +3,7 @@ import { badge } from './badge'
 import { button } from './button'
 import { checkbox } from './checkbox'
 import { code } from './code'
+import { colorPicker } from './color-picker'
 import { dialog } from './dialog'
 import { divider } from './divider'
 import { drawer } from './drawer'
@@ -32,6 +33,7 @@ export const recipes = {
   button,
   checkbox,
   code,
+  colorPicker,
   dialog,
   divider,
   drawer,

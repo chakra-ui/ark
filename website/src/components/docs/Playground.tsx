@@ -12,6 +12,7 @@ export const Playground = (props: PlaygroundProps) => {
   const Component = match(component)
     .with('accordion', () => lazyLoad(() => import('./demo/Accordion'), 'DemoAccordion'))
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
+    .with('color-picker', () => lazyLoad(() => import('./demo/ColorPicker'), 'DemoColorPicker'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
     .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
     .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))
