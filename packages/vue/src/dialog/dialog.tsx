@@ -29,6 +29,7 @@ const VueDialogProps = {
   },
   closeOnOutsideClick: {
     type: Boolean as PropType<DialogProps['closeOnOutsideClick']>,
+    default: true,
   },
   closeOnEsc: {
     type: Boolean as PropType<DialogProps['closeOnEsc']>,
@@ -47,12 +48,12 @@ const VueDialogProps = {
 export const Dialog: ComponentWithProps<DialogProps> = defineComponent({
   name: 'Dialog',
   props: VueDialogProps,
-  emits: ['close', 'outsideClick', 'esc'],
+  emits: ['close', 'outsideClick', 'esc', 'open', 'update:open'],
   setup(props, { slots, emit }) {
     const api = useDialog(emit, props)
 
     DialogProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots?.default?.(api.value)
   },
 })

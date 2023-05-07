@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from '.'
+} from '../'
 </script>
 <template>
   <Dialog>
