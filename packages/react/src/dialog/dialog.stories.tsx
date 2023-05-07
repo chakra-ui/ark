@@ -49,13 +49,9 @@ export const Basic = () => {
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const handleClick = () => {
-    setIsOpen(!isOpen)
-    console.log('clicked')
-  }
   return (
     <>
-      <button onClick={}>Toggle</button>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Portal>
           <DialogBackdrop />
@@ -67,7 +63,9 @@ export const Controlled = () => {
                 <input placeholder="Enter name..." />
                 <button>Save</button>
               </div>
-              <DialogCloseTrigger>close</DialogCloseTrigger>
+              <DialogCloseTrigger>
+                <button>close</button>
+              </DialogCloseTrigger>
             </DialogContent>
           </DialogContainer>
         </Portal>
