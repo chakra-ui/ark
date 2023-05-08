@@ -23,7 +23,7 @@ The Accordion component consists of the `Accordion`, `AccordionTrigger`,
 `AccordionItem` and `AccordionContent` components.
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import {
   Accordion,
   AccordionTrigger,
@@ -62,7 +62,7 @@ If `multiple` is `true`, we internally set collapsible to be true.
 :::
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import {
   Accordion,
   AccordionTrigger,
@@ -96,7 +96,7 @@ mode implicitly sets `collapsible` to `true` and ensures that each accordion can
 be expanded.
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import {
   Accordion,
   AccordionTrigger,
@@ -130,7 +130,7 @@ accordion item is disabled, it is skipped from keyboard navigation and can't be
 interacted with.
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import {
   Accordion,
   AccordionTrigger,
@@ -163,7 +163,7 @@ Expand accordion items by default with setting `defaultValue` to the value of an
 `AccordionItem`. The `defaultValue` should be of type `string | string[] | null`
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import {
   Accordion,
   AccordionTrigger,
