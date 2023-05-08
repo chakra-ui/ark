@@ -1,3 +1,4 @@
+import { For } from 'solid-js'
 import {
   Pagination,
   PaginationEllipsis,
@@ -18,16 +19,17 @@ export const Basic = () => (
           </button>
         </PaginationPrevPageTrigger>
 
-        {pages.map((page, index) =>
-          page.type === 'page' ? (
-            <PaginationPageTrigger value={page.value}>
-              <button>{page.value}</button>
-            </PaginationPageTrigger>
-          ) : (
-            <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
-          ),
-        )}
-
+        <For each={pages}>
+          {(page, index) =>
+            page.type === 'page' ? (
+              <PaginationPageTrigger value={page.value}>
+                <button>{page.value}</button>
+              </PaginationPageTrigger>
+            ) : (
+              <PaginationEllipsis index={index()}>&#8230;</PaginationEllipsis>
+            )
+          }
+        </For>
         <PaginationNextPageTrigger>
           <button>
             Next <span class="visually-hidden">Page</span>

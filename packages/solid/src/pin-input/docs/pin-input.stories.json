@@ -1,3 +1,3 @@
 {
-  "Basic": "const Basic = () => (\n  <PinInput placeholder=\"*\" onComplete={(e) => alert(e.valueAsString)}>\n    <PinInputLabel>Label</PinInputLabel>\n    <PinInputControl>\n      {[0, 1, 2].map((id) => (\n        <PinInputField index={id} />\n      ))}\n    </PinInputControl>\n  </PinInput>\n)"
+  "Basic": "const Basic = () => (\n  <PinInput placeholder=\"*\" onComplete={(e) => console.log(e)}>\n    <PinInputLabel>Label</PinInputLabel>\n    <PinInputControl>\n      <For each={[0, 1, 2]}>{(id) => <PinInputField index={id} />}</For>\n    </PinInputControl>\n  </PinInput>\n)"
 }
