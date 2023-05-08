@@ -84,7 +84,7 @@ export const Showcase = () => {
                 <TabList className={css({ display: 'inline-flex' })}>
                   {components.map((component) => (
                     <TabTrigger key={component.name} value={component.name}>
-                      <button>{component.name}</button>
+                      {component.name}
                     </TabTrigger>
                   ))}
                   <TabIndicator />
