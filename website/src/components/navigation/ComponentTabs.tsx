@@ -17,10 +17,10 @@ export const ComponentTabs = (props: ComponentTabsProps) => {
   return (
     <Tabs className={tabs()} defaultValue={defaultValue}>
       <TabList>
-        <TabTrigger value="usage">
+        <TabTrigger value="usage" asChild>
           <Link href={props.basePath + '/usage'}>Usage</Link>
         </TabTrigger>
-        <TabTrigger value="props">
+        <TabTrigger value="props" asChild>
           <Link href={props.basePath + '/props'}>Properties</Link>
         </TabTrigger>
         <TabIndicator />
