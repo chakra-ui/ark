@@ -24,12 +24,22 @@ The Checkbox component consists of the `CheckboxControl`, `CheckboxInput`,
 
 ### Plain
 
-```tsx
-<Checkbox>
-  <CheckboxLabel>Checkbox</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
+```vue
+<script setup lang="ts">
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Checkbox>
+    <CheckboxLabel>Checkbox</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+</template>
 ```
 
 ### Controlled usage
@@ -37,20 +47,20 @@ The Checkbox component consists of the `CheckboxControl`, `CheckboxInput`,
 When the checkbox value changes, the `onChange` callback is invoked. Use the
 `v-model` to handle the `checked` state
 
-```tsx
-<script setup lang='ts'>
-  import { ref } from 'vue'
-  import {
-    Checkbox,
-    CheckboxControl,
-    CheckboxInput,
-    CheckboxLabel,
-  } from '@ark-ui/vue'
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
 
-  const checked = ref(false)
+const checked = ref(false)
 </script>
 <template>
-  <Checkbox v-model='checked'>
+  <Checkbox v-model="checked">
     <CheckboxLabel>Controlled</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl />
@@ -62,55 +72,79 @@ When the checkbox value changes, the `onChange` callback is invoked. Use the
 
 To make a checkbox disabled, set the `disabled` prop to `true`
 
-```tsx
-<Checkbox disabled>
-  <CheckboxLabel>Disabled</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
+```vue
+<script setup lang="ts">
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Checkbox disabled>
+    <CheckboxLabel>Disabled</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+</template>
 ```
 
 ### Making the checkbox readonly
 
 To make a checkbox readonly, set the `readOnly` prop to `true`
 
-```tsx
-<Checkbox readOnly>
-  <CheckboxLabel>Readonly</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
+```vue
+<script setup lang="ts">
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Checkbox readOnly>
+    <CheckboxLabel>Readonly</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+</template>
 ```
 
 ### Indeterminate
 
 To make a checkbox indeterminate, set the `indeterminate` prop to `true`
 
-```tsx
+```vue
 <script setup lang="ts">
-  import { reactive, ref, watch } from 'vue'
-  import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
-  import '../checkbox.css'
+import { reactive, ref, watch } from 'vue'
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+} from '@ark-ui/vue'
 
-  const parentChecked = ref(false)
-  const someChecked = ref(false)
-  const childItems = reactive([false, false])
+const parentChecked = ref(false)
+const someChecked = ref(false)
+const childItems = reactive([false, false])
 
-  watch(childItems, (items) => {
-    parentChecked.value = items.every(Boolean)
-    someChecked.value = items.some(Boolean) && !parentChecked.value
-  })
+watch(childItems, (items) => {
+  parentChecked.value = items.every(Boolean)
+  someChecked.value = items.some(Boolean) && !parentChecked.value
+})
 
-  watch(
-    () => parentChecked.value,
-    (parentVal) => {
-      if (someChecked.value && !parentVal) return
-      childItems.map((_, idx) => {
-        childItems[idx] = parentVal
-      })
-      return
-    },
-  )
+watch(
+  () => parentChecked.value,
+  (parentVal) => {
+    if (someChecked.value && !parentVal) return
+    childItems.map((_, idx) => {
+      childItems[idx] = parentVal
+    })
+    return
+  },
+)
 </script>
 <template>
   <Checkbox v-model="parentChecked" :indeterminate="someChecked">
