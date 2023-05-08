@@ -19,9 +19,7 @@ const ExampleToastProvider = (props: ToastProviderProps) => (
                 <Toast key={toast.id} toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
-                  <ToastCloseTrigger>
-                    <button>Close</button>
-                  </ToastCloseTrigger>
+                  <ToastCloseTrigger>Close</ToastCloseTrigger>
                 </Toast>
               ))
             }
