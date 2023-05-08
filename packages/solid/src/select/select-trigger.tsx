@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectTriggerProps = { children: JSX.Element }
+export type SelectTriggerProps = HTMLArkProps<'button'>
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
-  const select = useSelectContext()
-  const triggerProps = select().triggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const api = useSelectContext()
+  const triggerProps = mergeProps(() => api().triggerProps, props)
+  return <ark.button {...triggerProps} />
 }

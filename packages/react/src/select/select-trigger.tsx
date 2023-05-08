@@ -1,11 +1,11 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectTriggerProps = { children: ReactElement }
+export type SelectTriggerProps = HTMLArkProps<'button'>
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
-  const { triggerProps } = useSelectContext()
-
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, triggerProps)
+  const api = useSelectContext()
+  const triggerProps = mergeProps(api.triggerProps, props)
+  return <ark.button {...triggerProps} />
 }

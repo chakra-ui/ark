@@ -25,7 +25,7 @@ export const Basic = () => (
     {({ selectedOption }) => (
       <>
         <SelectLabel>Framework:</SelectLabel>
-        <SelectTrigger>
+        <SelectTrigger asChild>
           <button>{selectedOption?.label ?? 'Select option'}</button>
         </SelectTrigger>
         <Portal>
