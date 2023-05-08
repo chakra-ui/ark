@@ -1,7 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -25,7 +25,7 @@ export type MenuProps = Assign<
 >
 
 export const Menu = (props: MenuProps) => {
-  const [menuProps, localProps] = createSplitProps<UseMenuProps>()(props, [
+  const [menuParams, restProps] = createSplitProps<UseMenuProps>()(props, [
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
@@ -46,7 +46,7 @@ export const Menu = (props: MenuProps) => {
   const parentMenu = useMenuContext()
   const parentMachine = useMenuMachineContext()
 
-  const menu = useMenu(menuProps)
+  const menu = useMenu(menuParams)
 
   createEffect(() => {
     if (!parentMachine) return
@@ -55,15 +55,15 @@ export const Menu = (props: MenuProps) => {
   })
 
   createEffect(() => {
-    if (!localProps.isOpen) return
-    localProps.isOpen?.() ? menu().api().open() : menu().api().close()
+    if (!restProps.isOpen) return
+    restProps.isOpen?.() ? menu().api().open() : menu().api().close()
   })
 
   const triggerItemContext = createMemo(() => parentMenu?.().getTriggerItemProps(menu().api()))
   const machineContext = () => menu().machine
 
   const getChildren = () =>
-    runIfFn(props.children, () => ({
+    runIfFn(restProps.children, () => ({
       isOpen: menu?.().api().isOpen,
       onClose: menu?.().api().close,
     }))

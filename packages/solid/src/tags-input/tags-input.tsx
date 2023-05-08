@@ -1,19 +1,17 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
 export type TagsInputChildren = {
   children: (pages: UseTagsInputReturn) => JSX.Element | JSX.Element
 }
-export type TagsInputProps = Assign<
-  Assign<HTMLArkProps<'div'>, UseTagsInputProps>,
-  TagsInputChildren
->
+
+export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps> & TagsInputChildren
 
 export const TagsInput = (props: TagsInputProps) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [

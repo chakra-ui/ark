@@ -22,7 +22,7 @@ export const Provider = (props: { children: JSX.Element }) => (
           {(placement) => (
             <ToastGroup placement={placement}>
               {(toasts) => (
-                <For each={toasts}>
+                <For each={toasts()}>
                   {(toast) => (
                     <Toast toast={toast}>
                       <ToastTitle />

@@ -1,8 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
 import { type UseSliderReturn } from './use-slider'
 

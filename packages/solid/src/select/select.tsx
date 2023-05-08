@@ -1,7 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { SelectProvider, type SelectContext } from './select-context'
 import { useSelect, type UseSelectProps } from './use-select'
 

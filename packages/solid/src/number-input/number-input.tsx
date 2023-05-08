@@ -1,7 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
@@ -42,6 +42,7 @@ export const NumberInput = (props: NumberInputProps) => {
   ])
 
   const api = useNumberInput(useNumberInputProps)
+
   const rootProps = mergeProps(() => api().rootProps, localProps)
 
   return (

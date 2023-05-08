@@ -1,7 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { ToastItemProvider } from './toast-item-context'
 import { useToastItem, type UseToastItemProps } from './use-toast-item'
 

@@ -116,28 +116,28 @@ export const Options = () => {
             <MenuItemGroup id="radio-group">
               <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
               <MenuOptionItem name="framework" type="radio" value="react">
-                {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} React</>}
               </MenuOptionItem>
               <MenuOptionItem name="framework" type="radio" value="solid">
-                {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} Solid</>}
               </MenuOptionItem>
               <MenuOptionItem name="framework" type="radio" value="vue">
-                {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} Vue</>}
               </MenuOptionItem>
             </MenuItemGroup>
             <MenuItemGroup id="checkbox-group">
               <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
               <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
-                {({ isActive }) => <>{isActive ? '✅' : ''} zag-js</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} zag-js</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="ark">
-                {({ isActive }) => <>{isActive ? '✅' : ''} ark</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} ark</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="panda">
-                {({ isActive }) => <>{isActive ? '✅' : ''} panda</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} panda</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="chakra">
-                {({ isActive }) => <>{isActive ? '✅' : ''} chakra</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} chakra</>}
               </MenuOptionItem>
             </MenuItemGroup>
           </MenuContent>

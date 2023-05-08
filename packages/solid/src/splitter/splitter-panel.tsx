@@ -1,8 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import { mergeProps } from '@zag-js/solid'
 import { type connect } from '@zag-js/splitter'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
 type PanelParams = Parameters<ReturnType<typeof connect>['getPanelProps']>[0]
