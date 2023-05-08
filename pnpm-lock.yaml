@@ -282,6 +282,9 @@ importers:
       '@zag-js/anatomy':
         specifier: 0.1.4
         version: 0.1.4
+      '@zag-js/carousel':
+        specifier: 0.7.0
+        version: 0.7.0
       '@zag-js/checkbox':
         specifier: 0.7.0
         version: 0.7.0

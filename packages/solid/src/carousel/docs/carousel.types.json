@@ -1,0 +1,56 @@
+{
+  "CarouselProps": {
+    "align": {
+      "type": "'start' | 'center' | 'end'",
+      "isRequired": false,
+      "description": "The alignment of the slides in the carousel."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  viewport: string\n  slide(index: number): string\n  slideGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the carousel. Useful for composition."
+    },
+    "index": { "type": "number", "isRequired": false, "description": "The current slide index." },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the carousel should loop around."
+    },
+    "onSlideChange": {
+      "type": "(details: ChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the slide changes."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the carousel."
+    },
+    "slidesPerView": {
+      "type": "number | 'auto'",
+      "isRequired": false,
+      "description": "The number of slides to show at a time."
+    },
+    "spacing": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The amount of space between slides."
+    }
+  },
+  "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } }
+}
