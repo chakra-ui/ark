@@ -26,20 +26,33 @@ The NumberInput component consists of the `NumberInputLabel`,
 `NumberInputControl`, `NumberInputField`, `NumberInputDecrementTrigger`,
 `NumberInputIncrementTrigger`, `NumberInputScrubber`, components.
 
-```tsx
-<NumberInput>
-  <NumberInputScrubber />
-  <NumberInputLabel>Label</NumberInputLabel>
-  <NumberInputField />
-  <NumberInputControl>
-    <NumberInputDecrementTrigger>
-      <button>-</button>
-    </NumberInputDecrementTrigger>
-    <NumberInputIncrementTrigger>
-      <button>+</button>
-    </NumberInputIncrementTrigger>
-  </NumberInputControl>
-</NumberInput>
+```vue
+<script setup lang="ts">
+import {
+  NumberInput,
+  NumberInputControl,
+  NumberInputDecrementTrigger,
+  NumberInputField,
+  NumberInputIncrementTrigger,
+  NumberInputLabel,
+  NumberInputScrubber,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput>
+    <NumberInputScrubber />
+    <NumberInputLabel>Label</NumberInputLabel>
+    <NumberInputField />
+    <NumberInputControl>
+      <NumberInputDecrementTrigger>
+        <button>-</button>
+      </NumberInputDecrementTrigger>
+      <NumberInputIncrementTrigger>
+        <button>+</button>
+      </NumberInputIncrementTrigger>
+    </NumberInputControl>
+  </NumberInput>
+</template>
 ```
 
 ### Setting a minimum and maximum value
@@ -48,10 +61,15 @@ Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
 By default, the input will restrict the value to stay within the specified
 range.
 
-```tsx
-<NumberInput :min="0" :max="10">
-  {/*...*/}
-</NumberInput>
+```vue
+<script setup lang="ts">
+import { NumberInput } from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput :min="0" :max="10">
+    <!-- ... -->
+  </NumberInput>
+</template>
 ```
 
 ### Scrubbing the input value
@@ -61,20 +79,33 @@ render the `NumberInputScrubber` component. It uses the Pointer lock API and
 tracks the pointer movement. It also renders a virtual cursor which mimics the
 real cursor's pointer.
 
-```tsx {2}
-<NumberInput>
-  <NumberInputScrubber />
-  <NumberInputLabel>Label</NumberInputLabel>
-  <NumberInputField />
-  <NumberInputControl>
-    <NumberInputDecrementTrigger>
-      <button>-</button>
-    </NumberInputDecrementTrigger>
-    <NumberInputIncrementTrigger>
-      <button>+</button>
-    </NumberInputIncrementTrigger>
-  </NumberInputControl>
-</NumberInput>
+```vue {2}
+<script setup lang="ts">
+import {
+  NumberInput,
+  NumberInputControl,
+  NumberInputDecrementTrigger,
+  NumberInputField,
+  NumberInputIncrementTrigger,
+  NumberInputLabel,
+  NumberInputScrubber,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput>
+    <NumberInputScrubber />
+    <NumberInputLabel>Label</NumberInputLabel>
+    <NumberInputField />
+    <NumberInputControl>
+      <NumberInputDecrementTrigger>
+        <button>-</button>
+      </NumberInputDecrementTrigger>
+      <NumberInputIncrementTrigger>
+        <button>+</button>
+      </NumberInputIncrementTrigger>
+    </NumberInputControl>
+  </NumberInput>
+</template>
 ```
 
 ## Using the mousewheel to change value
@@ -82,8 +113,15 @@ real cursor's pointer.
 The NumberInput exposes a way to increment/decrement the value using the mouse
 wheel event. To activate this, set the `allowMouseWheel` prop to `true`.
 
-```tsx
-<NumberInput allowMouseWheel>{/*...*/}</NumberInput>
+```vue
+<script setup lang="ts">
+import { NumberInput } from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput allowMouseWheel>
+    <!-- ... -->
+  </NumberInput>
+</template>
 ```
 
 ## Clamp value when user blurs the input
@@ -94,16 +132,30 @@ of the input.
 
 To disable this behavior, pass `clampValueOnBlur` and set to `false`.
 
-```tsx
-<NumberInput :clampValueOnBlur="false">{/*...*/}</NumberInput>
+```vue
+<script setup lang="ts">
+import { NumberInput } from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput :clampValueOnBlur="false">
+    <!-- ... -->
+  </NumberInput>
+</template>
 ```
 
 ## Usage within forms
 
 To use the number input within forms, set the `name` prop.
 
-```tsx
-<NumberInput name="quantity">{/*...*/}</NumberInput>
+```vue
+<script setup lang="ts">
+import { NumberInput } from '@ark-ui/vue'
+</script>
+<template>
+  <NumberInput name="quantity">
+    <!-- ... -->
+  </NumberInput>
+</template>
 ```
 
 ## Format and parse value
@@ -112,17 +164,15 @@ To apply custom formatting to the input's value, use the exposed `format` and
 `parse` functions. For example, to format the input's value to currency, here's
 how to achieve it:
 
-```tsx
-<script setup lang='ts'>
-  const handleFormat: NumberInputProps['format'] = (value) => `$${value}`
-  const handleParse: NumberInputProps['parse'] = (value) => value.replace(/\$/g, '')
+```vue
+<script setup lang="ts">
+import { NumberInput } from '@ark-ui/vue'
+const handleFormat = (value) => `$${value}`
+const handleParse = (value) => value.replace(/\$/g, '')
 </script>
 <template>
-  <NumberInput
-    :format="handleFormat"
-    :parse="handleParse"
-  >
-    {/*...*/}
+  <NumberInput :format="handleFormat" :parse="handleParse">
+    <!-- ... -->
   </NumberInput>
 </template>
 ```
