@@ -61,7 +61,7 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
           >
             Framework
           </SelectLabel>
-          <SelectTrigger>
+          <SelectTrigger asChild>
             <button className={select({ size: 'xs' })}>
               <span>{selectedOption?.label ?? 'Select option'}</span>
               <SelectIcon isOpen={isOpen} />

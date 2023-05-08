@@ -36,7 +36,7 @@ export const DemoPopover = (props: Partial<PopoverProps>) => (
           </Stack>
           <Input variant="outline" size="sm" />
           <Stack direction="row" gap="3">
-            <PopoverCloseTrigger>
+            <PopoverCloseTrigger asChild>
               <Button variant="link" size="sm">
                 Dismiss
               </Button>
