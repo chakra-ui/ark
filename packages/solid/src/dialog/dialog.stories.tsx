@@ -9,7 +9,8 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from './'
+} from '.'
+import './dialog.css'
 
 const meta: Meta = {
   title: 'Dialog',

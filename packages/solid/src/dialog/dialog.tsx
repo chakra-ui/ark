@@ -1,15 +1,15 @@
-import { type Accessor, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 
 export type DialogProps = UseDialogProps & {
-  children?: JSX.Element | ((state: Accessor<ReturnType<UseDialogReturn>>) => JSX.Element)
+  children?: JSX.Element | ((state: UseDialogReturn) => JSX.Element)
 }
 
 export const Dialog = (props: DialogProps) => {
-  const [useDialogProps, restProps] = createSplitProps<UseDialogProps>()(props, [
+  const [dialogParams, restProps] = createSplitProps<UseDialogProps>()(props, [
     'aria-label',
     'closeOnEsc',
     'closeOnOutsideClick',
@@ -30,8 +30,9 @@ export const Dialog = (props: DialogProps) => {
     'trapFocus',
     'onOpen',
   ])
-  const dialog = useDialog(useDialogProps)
-  const getChildren = () => runIfFn(restProps.children, dialog)
 
-  return <DialogProvider value={dialog}>{getChildren()}</DialogProvider>
+  const api = useDialog(dialogParams)
+  const getChildren = () => runIfFn(restProps.children, api)
+
+  return <DialogProvider value={api}>{getChildren()}</DialogProvider>
 }
