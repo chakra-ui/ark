@@ -15,13 +15,13 @@ export type ToastProviderProps = Optional<GroupPublicContext, 'id'> & ToastProvi
 export const [ToastContextProvider, useToast] = createContext<ToastContext>()
 
 export const ToastProvider = (props: ToastProviderProps) => {
-  const [toastProviderParams, machineProps] = createSplitProps<ToastProviderParams>()(props, [
-    'children',
-  ])
+  const [childrenProps, machineProps] = createSplitProps<ToastProviderParams>()(props, ['children'])
+
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, machineProps)
+
   const [state, send] = useMachine(toast.group.machine(context))
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
 
-  return <ToastContextProvider value={api}>{toastProviderParams.children}</ToastContextProvider>
+  return <ToastContextProvider value={api}>{childrenProps.children}</ToastContextProvider>
 }
