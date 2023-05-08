@@ -48,9 +48,7 @@ export const Basic = () => {
           <ComboboxLabel>JS Frameworks</ComboboxLabel>
           <ComboboxControl>
             <ComboboxInput />
-            <ComboboxTrigger>
-              <button>▼</button>
-            </ComboboxTrigger>
+            <ComboboxTrigger>▼</ComboboxTrigger>
           </ComboboxControl>
           {isInputValueEmpty && !isOpen && <div>Give me you favorite framework!</div>}
           <Portal>

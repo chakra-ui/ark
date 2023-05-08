@@ -35,18 +35,14 @@ listeners and attributes to ensure the desired accessibility.
 
 ```tsx
 <Dialog>
-  <DialogTrigger>
-    <button>Open Dialog</button>
-  </DialogTrigger>
+  <DialogTrigger>Open Dialog</DialogTrigger>
   <Portal>
     <DialogBackdrop />
     <DialogContainer>
       <DialogContent>
         <DialogTitle>Dialog Title</DialogTitle>
         <DialogDescription>Dialog Description</DialogDescription>
-        <DialogCloseTrigger>
-          <button>Close</button>
-        </DialogCloseTrigger>
+        <DialogCloseTrigger>Close</DialogCloseTrigger>
       </DialogContent>
     </DialogContainer>
   </Portal>
@@ -80,18 +76,14 @@ useful if you want to control the visibility of other components.
 <Dialog>
   {({ isOpen }) => (
     <>
-      <DialogTrigger>
-        <button>Open Dialog</button>
-      </DialogTrigger>
+      <DialogTrigger>Open Dialog</DialogTrigger>
       <Portal>
         <DialogBackdrop />
         <DialogContainer>
           <DialogContent>
             <DialogTitle>Dialog Title</DialogTitle>
             <DialogDescription>Dialog Description</DialogDescription>
-            <DialogCloseTrigger>
-              <button>Close</button>
-            </DialogCloseTrigger>
+            <DialogCloseTrigger>Close</DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
       </Portal>

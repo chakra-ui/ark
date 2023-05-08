@@ -5,15 +5,11 @@ import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } f
 const Component = (props: TabsProps) => (
   <Tabs {...props}>
     <TabList>
-      <TabTrigger value="one">
-        <button>Tab 1</button>
-      </TabTrigger>
+      <TabTrigger value="one">Tab 1</TabTrigger>
       <TabTrigger value="two" disabled>
-        <button>Tab 2</button>
+        Tab 2
       </TabTrigger>
-      <TabTrigger value="three">
-        <button>Tab 3</button>
-      </TabTrigger>
+      <TabTrigger value="three">Tab 3</TabTrigger>
       <TabIndicator />
     </TabList>
     <TabContent value="one">Content 1</TabContent>
