@@ -1,3 +1,4 @@
+import { For } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { PinInput, PinInputControl, PinInputField, PinInputLabel } from '.'
 import './pin-input.css'
@@ -9,12 +10,10 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
+  <PinInput placeholder="*" onComplete={(e) => console.log(e)}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
-      {[0, 1, 2].map((id) => (
-        <PinInputField index={id} />
-      ))}
+      <For each={[0, 1, 2]}>{(id) => <PinInputField index={id} />}</For>
     </PinInputControl>
   </PinInput>
 )
