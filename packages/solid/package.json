@@ -63,6 +63,7 @@
   "dependencies": {
     "@zag-js/accordion": "0.7.0",
     "@zag-js/anatomy": "0.1.4",
+    "@zag-js/carousel": "0.7.0",
     "@zag-js/checkbox": "0.7.0",
     "@zag-js/color-picker": "0.7.0",
     "@zag-js/combobox": "0.7.0",
