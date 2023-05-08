@@ -14,7 +14,7 @@ const meta: Meta = {
 
 export default meta
 
-export const Provider = (props: { children: JSX.Element }) => (
+const Provider = (props: { children: JSX.Element }) => (
   <ToastProvider>
     <ToastPlacements>
       {(placements) => (
@@ -27,7 +27,7 @@ export const Provider = (props: { children: JSX.Element }) => (
                     <Toast toast={toast}>
                       <ToastTitle />
                       <ToastDescription />
-                      <ToastCloseTrigger>
+                      <ToastCloseTrigger asChild>
                         <button>close</button>
                       </ToastCloseTrigger>
                     </Toast>

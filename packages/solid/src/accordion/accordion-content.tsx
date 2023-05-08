@@ -6,8 +6,8 @@ import { useAccordionItemContext } from './accordion-item-context'
 export type AccordionContentProps = HTMLArkProps<'div'>
 
 export const AccordionContent = (props: AccordionContentProps) => {
-  const accordion = useAccordionContext()
-  const accordionItem = useAccordionItemContext()
-  const contentProps = mergeProps(() => accordion().getContentProps(accordionItem), props)
+  const api = useAccordionContext()
+  const itemParams = useAccordionItemContext()
+  const contentProps = mergeProps(() => api().getContentProps(itemParams), props)
   return <ark.div {...contentProps} />
 }

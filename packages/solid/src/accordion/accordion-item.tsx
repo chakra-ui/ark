@@ -18,14 +18,14 @@ export type AccordionItemProps = Assign<
 >
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const [accordionItemProps, restProps] = splitProps(props, ['value', 'disabled'])
-  const accordion = useAccordionContext()
+  const [itemParams, restProps] = splitProps(props, ['value', 'disabled'])
+  const api = useAccordionContext()
 
-  const itemProps = mergeProps(() => accordion().getItemProps(accordionItemProps), restProps)
-  const getChildren = () => runIfFn(restProps.children, () => accordion().getItemState(props))
+  const itemProps = mergeProps(() => api().getItemProps(itemParams), restProps)
+  const getChildren = () => runIfFn(restProps.children, () => api().getItemState(itemParams))
 
   return (
-    <AccordionItemProvider value={accordionItemProps}>
+    <AccordionItemProvider value={itemParams}>
       <ark.div {...itemProps}>{getChildren()}</ark.div>
     </AccordionItemProvider>
   )

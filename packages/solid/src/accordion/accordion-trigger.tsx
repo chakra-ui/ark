@@ -6,8 +6,8 @@ import { useAccordionItemContext } from './accordion-item-context'
 export type AccordionTriggerProps = HTMLArkProps<'button'>
 
 export const AccordionTrigger = (props: AccordionTriggerProps) => {
-  const accordion = useAccordionContext()
-  const accordionItem = useAccordionItemContext()
-  const triggerProps = mergeProps(() => accordion().getTriggerProps(accordionItem), props)
+  const api = useAccordionContext()
+  const itemParams = useAccordionItemContext()
+  const triggerProps = mergeProps(() => api().getTriggerProps(itemParams), props)
   return <ark.button {...triggerProps} />
 }

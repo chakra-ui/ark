@@ -11,7 +11,7 @@ export type TagsInputChildren = {
   children: (pages: UseTagsInputReturn) => JSX.Element | JSX.Element
 }
 
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps> & TagsInputChildren
+export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps & TagsInputChildren>
 
 export const TagsInput = (props: TagsInputProps) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [

@@ -10,6 +10,7 @@ import {
   SelectPositioner,
   SelectTrigger,
 } from '.'
+import './select.css'
 
 const meta: Meta = {
   title: 'Select',

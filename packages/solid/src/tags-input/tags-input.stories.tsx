@@ -29,7 +29,7 @@ export const Basic = () => (
               <>
                 <Tag index={index()} value={val}>
                   <span>{val}</span>
-                  <TagDeleteTrigger index={index()} value={val}>
+                  <TagDeleteTrigger asChild index={index()} value={val}>
                     <button>&#x2715;</button>
                   </TagDeleteTrigger>
                 </Tag>
