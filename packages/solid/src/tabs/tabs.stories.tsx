@@ -1,4 +1,11 @@
+import type { Meta } from 'storybook-solidjs'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '.'
+
+const meta: Meta = {
+  title: 'Tabs',
+}
+
+export default meta
 
 export const Basic = () => (
   <Tabs value="three">

@@ -1,4 +1,5 @@
 import { createSignal, For } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   RangeSlider,
   RangeSliderControl,
@@ -11,6 +12,12 @@ import {
   RangeSliderTrack,
 } from '.'
 import './range-slider.css'
+
+const meta: Meta = {
+  title: 'RangeSlider',
+}
+
+export default meta
 
 export const Basic = () => {
   const [values, setValues] = createSignal([-10, 10])
