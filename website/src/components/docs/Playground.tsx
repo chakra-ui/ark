@@ -11,6 +11,7 @@ export const Playground = (props: PlaygroundProps) => {
   const { component } = props
   const Component = match(component)
     .with('accordion', () => lazyLoad(() => import('./demo/Accordion'), 'DemoAccordion'))
+    .with('carousel', () => lazyLoad(() => import('./demo/Carousel'), 'DemoCarousel'))
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
     .with('color-picker', () => lazyLoad(() => import('./demo/ColorPicker'), 'DemoColorPicker'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
@@ -55,7 +56,7 @@ export const Playground = (props: PlaygroundProps) => {
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Flex justify="center" align="center" flex="1" p="4" bg="bg.surface">
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} bg="bg.surface">
     {props.children}
   </Flex>
 )
