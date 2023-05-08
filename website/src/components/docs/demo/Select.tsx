@@ -13,11 +13,9 @@ export const DemoSelect = () => (
   <Select positioning={{ gutter: 4 }}>
     {({ selectedOption, isOpen }) => (
       <>
-        <SelectTrigger>
-          <button className={select()}>
-            <span>{selectedOption?.label ?? 'Select option'}</span>
-            <SelectIcon isOpen={isOpen} />
-          </button>
+        <SelectTrigger className={select()}>
+          <span>{selectedOption?.label ?? 'Select option'}</span>
+          <SelectIcon isOpen={isOpen} />
         </SelectTrigger>
         <Portal>
           <SelectPositioner className={select()}>

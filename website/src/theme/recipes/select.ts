@@ -27,7 +27,6 @@ export const select = defineRecipe({
       transitionProperty: 'base',
       transitionDuration: '100',
       width: 'full',
-
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',
