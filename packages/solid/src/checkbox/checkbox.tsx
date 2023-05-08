@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { children, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -35,13 +35,13 @@ export const Checkbox = (props: CheckboxProps) => {
     'required',
     'value',
   ])
-  const checkbox = useCheckbox(useCheckboxProps)
-  const rootProps = mergeProps(() => checkbox().rootProps, labelprops)
+  const api = useCheckbox(useCheckboxProps)
+  const rootProps = mergeProps(() => api().rootProps, labelprops)
 
-  const getChildren = children(() => runIfFn(props.children, checkbox))
+  const getChildren = () => runIfFn(props.children, api)
 
   return (
-    <CheckboxProvider value={checkbox}>
+    <CheckboxProvider value={api}>
       <ark.label {...rootProps}>{getChildren()}</ark.label>
     </CheckboxProvider>
   )

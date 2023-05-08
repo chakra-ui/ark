@@ -24,7 +24,7 @@ export const Basic = () => {
   return (
     <RangeSlider min={-50} max={50} value={values()} onChange={(e) => setValues(e.value)}>
       <RangeSliderLabel>Quantity: </RangeSliderLabel>
-      <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
+      <RangeSliderOutput>{(api) => api().value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>
         <RangeSliderTrack>
           <RangeSliderRange />

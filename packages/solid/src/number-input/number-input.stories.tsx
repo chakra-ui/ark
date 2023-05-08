@@ -1,3 +1,4 @@
+import type { Meta } from 'storybook-solidjs'
 import {
   NumberInput,
   NumberInputControl,
@@ -8,6 +9,12 @@ import {
   NumberInputScrubber,
 } from './'
 import './number-input.css'
+
+const meta: Meta = {
+  title: 'NumberInput',
+}
+
+export default meta
 
 export const Basic = () => (
   <NumberInput min={-50} max={50} value="0" clampValueOnBlur>
