@@ -89,10 +89,18 @@ export const Showcase = () => {
                 </TabList>
               </Tabs>
               <HStack gap="3" justify="space-between" flex="1">
-                <CarouselPrevSlideTrigger>
+                <CarouselPrevSlideTrigger
+                  style={{
+                    backgroundColor: 'transparent',
+                  }}
+                >
                   <IconButton icon={<FiArrowLeft />} aria-label="Previous component" />
                 </CarouselPrevSlideTrigger>
-                <CarouselNextSlideTrigger>
+                <CarouselNextSlideTrigger
+                  style={{
+                    backgroundColor: 'transparent',
+                  }}
+                >
                   <IconButton icon={<FiArrowRight />} aria-label="Next component" />
                 </CarouselNextSlideTrigger>
               </HStack>
