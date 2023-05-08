@@ -1,6 +1,7 @@
 import { accordion } from './accordion'
 import { badge } from './badge'
 import { button } from './button'
+import { carousel } from './carousel'
 import { checkbox } from './checkbox'
 import { code } from './code'
 import { colorPicker } from './color-picker'
@@ -31,6 +32,7 @@ export const recipes = {
   accordion,
   badge,
   button,
+  carousel,
   checkbox,
   code,
   colorPicker,

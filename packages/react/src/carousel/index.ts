@@ -1,4 +1,5 @@
 export { Carousel, type CarouselProps } from './carousel'
+export { CarouselControl, type CarouselControlProps } from './carousel-control'
 export {
   CarouselNextSlideTrigger,
   type CarouselNextSlideTriggerProps,
