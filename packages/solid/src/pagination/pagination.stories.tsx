@@ -3,6 +3,7 @@ import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
@@ -13,28 +14,36 @@ export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
       <PaginationList>
-        <PaginationPrevPageTrigger>
-          <button>
-            Previous <span class="visually-hidden">Page</span>
-          </button>
-        </PaginationPrevPageTrigger>
+        <PaginationListItem>
+          <PaginationPrevPageTrigger>
+            <button>
+              Previous <span class="visually-hidden">Page</span>
+            </button>
+          </PaginationPrevPageTrigger>
+        </PaginationListItem>
 
         <For each={pages}>
           {(page, index) =>
             page.type === 'page' ? (
-              <PaginationPageTrigger value={page.value}>
-                <button>{page.value}</button>
-              </PaginationPageTrigger>
+              <PaginationListItem>
+                <PaginationPageTrigger value={page.value}>
+                  <button>{page.value}</button>
+                </PaginationPageTrigger>
+              </PaginationListItem>
             ) : (
-              <PaginationEllipsis index={index()}>&#8230;</PaginationEllipsis>
+              <PaginationListItem>
+                <PaginationEllipsis index={index()}>&#8230;</PaginationEllipsis>
+              </PaginationListItem>
             )
           }
         </For>
-        <PaginationNextPageTrigger>
-          <button>
-            Next <span class="visually-hidden">Page</span>
-          </button>
-        </PaginationNextPageTrigger>
+        <PaginationListItem>
+          <PaginationNextPageTrigger>
+            <button>
+              Next <span class="visually-hidden">Page</span>
+            </button>
+          </PaginationNextPageTrigger>
+        </PaginationListItem>
       </PaginationList>
     )}
   </Pagination>

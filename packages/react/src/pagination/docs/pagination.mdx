@@ -13,6 +13,7 @@ import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
@@ -30,30 +31,4 @@ Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
 receive all necessary props to add the event listeners and attributes to ensure
 the desired accessibility.
 
-```tsx
-<Pagination count={5000} pageSize={10} siblingCount={2}>
-  {({ pages }) => (
-    <PaginationList>
-      <PaginationPrevPageTrigger>
-        <button>Previous</button>
-      </PaginationPrevPageTrigger>
-
-      {pages.map((page, index) =>
-        page.type === 'page' ? (
-          <PaginationPageTrigger key={index} value={page.value}>
-            <button>{page.value}</button>
-          </PaginationPageTrigger>
-        ) : (
-          <PaginationEllipsis key={index} index={index}>
-            &#8230;
-          </PaginationEllipsis>
-        ),
-      )}
-
-      <PaginationNextPageTrigger>
-        <button>Next</button>
-      </PaginationNextPageTrigger>
-    </PaginationList>
-  )}
-</Pagination>
-```
+<Story name="Basic" />
