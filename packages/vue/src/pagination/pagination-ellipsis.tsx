@@ -4,7 +4,7 @@ import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationEllipsisProps = Assign<HTMLArkProps<'li'>, { index: number }>
+export type PaginationEllipsisProps = Assign<HTMLArkProps<'div'>, { index: number }>
 
 export const PaginationEllipsis: ComponentWithProps<PaginationEllipsisProps> = defineComponent({
   name: 'PaginationEllipsis',
@@ -18,9 +18,9 @@ export const PaginationEllipsis: ComponentWithProps<PaginationEllipsisProps> = d
     const api = usePaginationContext()
 
     return () => (
-      <ark.li {...api.value.getEllipsisProps({ index: props.index })} {...attrs}>
+      <ark.div {...api.value.getEllipsisProps({ index: props.index })} {...attrs}>
         {() => getValidChildren(slots)}
-      </ark.li>
+      </ark.div>
     )
   },
 })

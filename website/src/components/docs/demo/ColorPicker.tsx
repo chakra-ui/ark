@@ -63,8 +63,8 @@ export const DemoColorPicker = () => {
                 </Stack>
               </Stack>
               <Stack direction="row" gap="4" align="center">
-                <ColorPickerChannelInput channel="hex" className={input({ size: 'xs' })} />
-                <ColorPickerChannelInput channel="alpha" className={input({ size: 'xs' })} />
+                <ColorPickerChannelInput channel="hex" className={input({ size: 'sm' })} />
+                <ColorPickerChannelInput channel="alpha" className={input({ size: 'sm' })} />
               </Stack>
             </Stack>
             <Divider />
