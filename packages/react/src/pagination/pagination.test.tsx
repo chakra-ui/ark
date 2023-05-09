@@ -15,15 +15,13 @@ const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
     {({ pages }) => (
       <PaginationList>
         <PaginationPrevPageTrigger>
-          <button>
-            Previous <span className="visually-hidden">Page</span>
-          </button>
+          Previous <span className="visually-hidden">Page</span>
         </PaginationPrevPageTrigger>
 
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationPageTrigger key={index} value={page.value}>
-              <button>{page.value}</button>
+            <PaginationPageTrigger key={index} {...page}>
+              {page.value}
             </PaginationPageTrigger>
           ) : (
             <PaginationEllipsis key={index} index={index}>
@@ -32,9 +30,7 @@ const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
           ),
         )}
         <PaginationNextPageTrigger>
-          <button>
-            Next <span className="visually-hidden">Page</span>
-          </button>
+          Next <span className="visually-hidden">Page</span>
         </PaginationNextPageTrigger>
       </PaginationList>
     )}
