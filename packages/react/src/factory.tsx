@@ -22,13 +22,17 @@ export type HTMLArkProps<T extends React.ElementType> = AsChildComponentProps<T>
 
 function withAsChild(Component: React.ElementType) {
   const Comp = forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
-    const { asChild, ...restProps } = props
+    const { asChild, children, ...restProps } = props
 
     if (!asChild) {
-      return <Component {...restProps} ref={ref} />
+      return (
+        <Component {...restProps} ref={ref}>
+          {children}
+        </Component>
+      )
     }
 
-    const onlyChild = Children.only(props.children)
+    const onlyChild = Children.only(children)
 
     return isValidElement(onlyChild)
       ? cloneElement(onlyChild, {
