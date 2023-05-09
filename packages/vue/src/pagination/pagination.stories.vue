@@ -4,6 +4,7 @@ import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
@@ -16,18 +17,26 @@ const paginationRef = ref<{ context: UsePaginationReturn }>()
 <template>
   <Pagination ref="paginationRef" :count="5000" :page-size="10" :sibling-count="2">
     <PaginationList>
-      <PaginationPrevPageTrigger>
-        <button>Previous <span className="visually-hidden">Page</span></button>
-      </PaginationPrevPageTrigger>
-      <template v-for="(page, index) in paginationRef?.context.pages">
-        <PaginationPageTrigger v-if="page.type === 'page'" :value="page.value">
-          <button>{{ page.value }}</button>
-        </PaginationPageTrigger>
-        <PaginationEllipsis v-else :index="index"> &#8230; </PaginationEllipsis>
+      <PaginationListItem>
+        <PaginationPrevPageTrigger>
+          Previous <span className="visually-hidden">Page</span>
+        </PaginationPrevPageTrigger>
+      </PaginationListItem>
+
+      <!-- eslint-disable-next-line vue/no-v-for-template-key -->
+      <template v-for="(page, index) in paginationRef?.context.pages" :key="index">
+        <PaginationListItem>
+          <PaginationPageTrigger v-if="page.type === 'page'" :value="page.value" :type="page.type">
+            {{ page.value }}
+          </PaginationPageTrigger>
+          <PaginationEllipsis v-else :index="index"> &#8230; </PaginationEllipsis>
+        </PaginationListItem>
       </template>
-      <PaginationNextPageTrigger>
-        <button>Next <span className="visually-hidden">Page</span></button>
-      </PaginationNextPageTrigger>
+      <PaginationListItem>
+        <PaginationNextPageTrigger>
+          Next <span className="visually-hidden">Page</span>
+        </PaginationNextPageTrigger>
+      </PaginationListItem>
     </PaginationList>
   </Pagination>
 </template>
