@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react'
+import { useState } from 'react'
 import {
   Pagination,
   PaginationEllipsis,
@@ -44,3 +45,37 @@ export const Basic = () => (
     )}
   </Pagination>
 )
+
+export const Controlled = () => {
+  const [currentPage, setCurrentPage] = useState(1)
+
+  return (
+    <Pagination
+      count={5000}
+      pageSize={10}
+      siblingCount={2}
+      page={currentPage}
+      onChange={(details) => setCurrentPage(details.page)}
+    >
+      {/* ... */}
+    </Pagination>
+  )
+}
+
+export const Customized = () => {
+  return (
+    <Pagination
+      count={5000}
+      pageSize={20}
+      siblingCount={3}
+      dir="ltr"
+      translations={{
+        nextPageTriggerLabel: 'Next',
+        prevPageTriggerLabel: 'Prev',
+        pageTriggerLabel: (details) => `Page ${details.page}`,
+      }}
+    >
+      {/* ... */}
+    </Pagination>
+  )
+}

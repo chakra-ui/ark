@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import {
   Pagination,
   PaginationEllipsis,
@@ -48,3 +48,37 @@ export const Basic = () => (
     )}
   </Pagination>
 )
+
+export const Controlled = () => {
+  const [currentPage, setCurrentPage] = createSignal(1)
+
+  return (
+    <Pagination
+      count={5000}
+      pageSize={10}
+      siblingCount={2}
+      page={currentPage()}
+      onChange={(details) => setCurrentPage(details.page)}
+    >
+      {/* ... */}
+    </Pagination>
+  )
+}
+
+export const Customized = () => {
+  return (
+    <Pagination
+      count={5000}
+      pageSize={20}
+      siblingCount={3}
+      dir="ltr"
+      translations={{
+        nextPageTriggerLabel: 'Next',
+        prevPageTriggerLabel: 'Prev',
+        pageTriggerLabel: (details) => `Page ${details.page}`,
+      }}
+    >
+      {/* ... */}
+    </Pagination>
+  )
+}
