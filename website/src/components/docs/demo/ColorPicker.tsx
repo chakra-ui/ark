@@ -9,11 +9,13 @@ import {
   ColorPickerAreaGradient,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
+  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSliderThumb,
+  ColorPickerChannelSliderTrack,
   ColorPickerContent,
   ColorPickerEyeDropperTrigger,
-  ColorPickerSliderThumb,
-  ColorPickerSliderTrack,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
 } from '@ark-ui/react'
 import { CgColorPicker } from 'react-icons/cg'
@@ -54,12 +56,14 @@ export const DemoColorPicker = () => {
                   />
                 </ColorPickerEyeDropperTrigger>
                 <Stack gap="4" width="full">
-                  <ColorPickerSliderTrack channel={hue}>
-                    <ColorPickerSliderThumb />
-                  </ColorPickerSliderTrack>
-                  <ColorPickerSliderTrack channel="alpha">
-                    <ColorPickerSliderThumb />
-                  </ColorPickerSliderTrack>
+                  <ColorPickerChannelSliderTrack channel={hue}>
+                    <ColorPickerChannelSliderBackground />
+                    <ColorPickerChannelSliderThumb />
+                  </ColorPickerChannelSliderTrack>
+                  <ColorPickerChannelSliderTrack channel="alpha">
+                    <ColorPickerChannelSliderBackground />
+                    <ColorPickerChannelSliderThumb />
+                  </ColorPickerChannelSliderTrack>
                 </Stack>
               </Stack>
               <Stack direction="row" gap="4" align="center">
@@ -74,7 +78,9 @@ export const DemoColorPicker = () => {
               </Text>
               <ColorPickerSwatchGroup>
                 {presets.map((color) => (
-                  <ColorPickerSwatch key={color} value={color} />
+                  <ColorPickerSwatch key={color} value={color}>
+                    <ColorPickerSwatchBackground />
+                  </ColorPickerSwatch>
                 ))}
               </ColorPickerSwatchGroup>
             </Stack>
