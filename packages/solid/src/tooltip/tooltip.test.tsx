@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import {
   Tooltip,
@@ -10,9 +10,11 @@ import {
   type TooltipProps,
 } from './'
 
-const Component = (props: TooltipProps) => (
+const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
   <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>hover me</TooltipTrigger>
+    <TooltipTrigger>
+      <span>hover me</span>
+    </TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipArrowTip />
@@ -23,21 +25,23 @@ const Component = (props: TooltipProps) => (
 )
 
 describe('Tooltip', () => {
+  it('should render', async () => {
+    render(() => <ComponentUnderTest />)
+  })
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
-    render(<Component />)
+    render(() => <ComponentUnderTest />)
 
     const tooltipTrigger = screen.getByText('hover me')
-    await user.hover(tooltipTrigger)
 
+    await user.hover(tooltipTrigger)
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
 
     await user.unhover(tooltipTrigger)
-
     expect(screen.queryByText('content')).not.toBeInTheDocument()
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
-    render(<Component disabled={false} />)
+    render(() => <ComponentUnderTest disabled={false} />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -47,7 +51,7 @@ describe('Tooltip', () => {
   })
 
   it('should hide the tooltip when escape is pressed', async () => {
-    render(<Component closeOnEsc />)
+    render(() => <ComponentUnderTest closeOnEsc />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -60,7 +64,7 @@ describe('Tooltip', () => {
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
-    render(<Component closeOnEsc={false} />)
+    render(() => <ComponentUnderTest closeOnEsc={false} />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -73,7 +77,7 @@ describe('Tooltip', () => {
   })
 
   it('should have pointer-events none style if interactive is set to false', async () => {
-    render(<Component interactive={false} />)
+    render(() => <ComponentUnderTest interactive={false} />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
