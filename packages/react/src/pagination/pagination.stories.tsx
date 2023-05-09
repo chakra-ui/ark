@@ -3,6 +3,7 @@ import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
@@ -22,27 +23,23 @@ export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
       <PaginationList>
-        <PaginationPrevPageTrigger>
-          <button>
-            Previous <span className="visually-hidden">Page</span>
-          </button>
-        </PaginationPrevPageTrigger>
+        <PaginationListItem>
+          <PaginationPrevPageTrigger>Previous Page</PaginationPrevPageTrigger>
+        </PaginationListItem>
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationPageTrigger key={index} value={page.value}>
-              <button>{page.value}</button>
-            </PaginationPageTrigger>
+            <PaginationListItem key={index}>
+              <PaginationPageTrigger {...page}>{page.value}</PaginationPageTrigger>
+            </PaginationListItem>
           ) : (
-            <PaginationEllipsis key={index} index={index}>
-              &#8230;
-            </PaginationEllipsis>
+            <PaginationListItem key={index}>
+              <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
+            </PaginationListItem>
           ),
         )}
-        <PaginationNextPageTrigger>
-          <button>
-            Next <span className="visually-hidden">Page</span>
-          </button>
-        </PaginationNextPageTrigger>
+        <PaginationListItem>
+          <PaginationNextPageTrigger>Next Page</PaginationNextPageTrigger>
+        </PaginationListItem>
       </PaginationList>
     )}
   </Pagination>
