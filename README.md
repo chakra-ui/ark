@@ -14,7 +14,7 @@
 | Carousel           | 🟢    | 🟢    | ⚪  |
 | Checkbox           | 🟢    | 🟢    | 🟢  |
 | Color Picker       | 🟢    | 🟢    | 🟢  |
-| Date Picker (Beta) | 🟡    | ⚪    | ⚪  |
+| Date Picker (beta) | 🟡    | ⚪    | ⚪  |
 | Dialog             | 🟢    | 🟢    | 🟢  |
 | Combobox           | 🟢    | 🟢    | 🟢  |
 | Editable           | 🟢    | 🟢    | 🟢  |
@@ -30,11 +30,13 @@
 | Range Slider       | 🟢    | 🟢    | 🟢  |
 | Rating             | 🟢    | 🟢    | 🟢  |
 | Select             | 🟢    | 🟢    | 🟢  |
+| Segmented Control  | ⚪    | ⚪    | ⚪  |
 | Slider             | 🟢    | 🟢    | 🟢  |
 | Splitter           | 🟢    | 🟢    | 🟢  |
 | Tabs               | 🟢    | 🟢    | 🟢  |
 | Tags Input         | 🟢    | 🟢    | 🟢  |
 | Toast              | 🟢    | 🟢    | 🟡  |
+| Toggle             | ⚪    | ⚪    | ⚪  |
 | Tooltip            | 🟢    | 🟢    | 🟢  |
 
 ## Contributing
