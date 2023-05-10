@@ -3,6 +3,7 @@ import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useColorPickerContext } from './color-picker-context'
+import { ColorPickerSwatchProvider } from './color-picker-swatch.context'
 
 export type ColorPickerSwatchProps = HTMLArkProps<'button'> & ColorSwatchProps
 
@@ -17,12 +18,14 @@ export const ColorPickerSwatch: ComponentWithProps<ColorPickerSwatchProps> = def
       required: true,
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { slots, attrs }) {
     const swatchProps = computed<ColorSwatchProps>(() => ({
       value: props.value,
       readOnly: props.readOnly,
     }))
     const rootContext = useColorPickerContext()
+
+    ColorPickerSwatchProvider(swatchProps)
 
     return () => (
       <ark.button
@@ -30,7 +33,7 @@ export const ColorPickerSwatch: ComponentWithProps<ColorPickerSwatchProps> = def
         disabled={swatchProps.value.readOnly}
         {...attrs}
       >
-        <ark.div {...rootContext.value.getSwatchBackgroundProps(swatchProps.value)} />
+        {slots.default?.()}
       </ark.button>
     )
   },
