@@ -33,52 +33,13 @@ Here is an example of how to use the Color Picker component:
 
 <Story name="Basic" />
 
-## Uncontrolled Component
+## Controlled Color Picker
 
-In the uncontrolled use case, you don't need to manage the state of the Color
-Picker component. Instead, you can provide a defaultValue prop to set the
-initial value, and use the onChange and onChangeEnd event handlers to get the
-selected color:
+To create a controlled Color Picker component, manage the state of the current
+coclor using the `value` prop and update it when the `onChange` event handler is
+called:
 
-```tsx
-export const Uncontrolled = () => {
-  const handleColorChange = (details) => {
-    console.log('Color changed:', details.value)
-  }
-
-  const handleColorChangeEnd = (details) => {
-    console.log('Color change ended:', details.value)
-  }
-
-  return (
-    <ColorPicker
-      defaultValue="#ff0000"
-      onChange={handleColorChange}
-      onChangeEnd={handleColorChangeEnd}
-    >
-      {/* ... */}
-    </ColorPicker>
-  )
-}
-```
-
-## Controlled Component
-
-In the controlled use case, you can manage the state of the Color Picker
-component by using the `value` prop and updating it when the `onChange` or
-`onChangeEnd` event handlers are called:
-
-```tsx
-export const Controlled = () => {
-  const [color, setColor] = useState('#ff0000')
-
-  return (
-    <ColorPicker value={color} onChange={(details) => setColor(details.value)}>
-      {/* ... */}
-    </ColorPicker>
-  )
-}
-```
+<Story name="Controlled" />
 
 ## Conclusion
 
