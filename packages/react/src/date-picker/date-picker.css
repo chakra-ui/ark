@@ -1,6 +1,16 @@
 [data-scope='date-picker'][data-part='content'] {
   max-width: 320px;
 }
+[data-scope='date-picker'][data-part='cell-trigger'] {
+  all: unset;
+}
+[data-scope='date-picker'][data-part='cell-trigger']:focus {
+  outline: 1px solid blue;
+}
+
+[data-scope='date-picker'][data-part='cell-trigger'][data-outside-range] {
+  color: gray;
+}
 
 [data-scope='date-picker'][data-part='grid'][data-type='day'] {
   display: grid;
