@@ -36,7 +36,7 @@
       "description": "Function that returns a human readable value for the slider"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -46,7 +46,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n}>",
+      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n  hiddenInput: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the slider. Useful for composition."
     },
@@ -92,7 +92,7 @@
       "description": "The orientation of the slider"
     },
     "origin": {
-      "type": "'center' | 'start'",
+      "type": "'start' | 'center'",
       "isRequired": false,
       "description": "- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
     },

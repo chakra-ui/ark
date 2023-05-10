@@ -48,7 +48,7 @@ const trigger = {
       background: 'bg.surface',
     },
   },
-}
+} as const
 
 export const numberInput = defineRecipe({
   name: 'numberInput',

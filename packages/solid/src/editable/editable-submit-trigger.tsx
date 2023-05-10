@@ -18,5 +18,5 @@ export const EditableSubmitTrigger = (props: EditableSubmitTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

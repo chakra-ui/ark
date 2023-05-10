@@ -1,17 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Tooltip, type TooltipProps } from './tooltip'
-import { TooltipArrow } from './tooltip-arrow'
-import { TooltipArrowTip } from './tooltip-arrow-tip'
-import { TooltipContent } from './tooltip-content'
-import { TooltipPositioner } from './tooltip-positioner'
-import { TooltipTrigger } from './tooltip-trigger'
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+  type TooltipProps,
+} from './'
 
 const Component = (props: TooltipProps) => (
   <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>
-      <button>hover me</button>
-    </TooltipTrigger>
+    <TooltipTrigger>hover me</TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipArrowTip />
@@ -69,5 +70,15 @@ describe('Tooltip', () => {
 
     await user.keyboard('[Escape]')
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
+  })
+
+  it('should have pointer-events none style if interactive is set to false', async () => {
+    render(<Component interactive={false} />)
+
+    const tooltipTrigger = screen.getByText('hover me')
+    await user.hover(tooltipTrigger)
+
+    const tooltipContent = screen.getByText('content')
+    expect(tooltipContent).toHaveStyle({ 'pointer-events': 'none' })
   })
 })

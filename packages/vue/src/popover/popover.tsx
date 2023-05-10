@@ -1,10 +1,8 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverContext } from './use-popover'
 
-type PopoverPropsContext = UsePopoverProps['context']
-
-export type PopoverProps = PopoverPropsContext
+export type PopoverProps = UsePopoverContext
 
 const VuePopoverProps = {
   autoFocus: {
@@ -30,6 +28,7 @@ const VuePopoverProps = {
   },
   isOpen: {
     type: Boolean as PropType<PopoverProps['isOpen']>,
+    default: false,
   },
   modal: {
     type: Boolean as PropType<PopoverProps['modal']>,
@@ -57,12 +56,7 @@ export const Popover = defineComponent({
     'pointer-down-outside',
   ],
   setup(props, { slots, emit }) {
-    const popoverProps = computed<UsePopoverProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = usePopover(popoverProps.value)
+    const api = usePopover(emit, props)
 
     PopoverProvider(api)
 

@@ -13,7 +13,7 @@ import {
 } from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
-  <Editable activationMode="dblclick" placeholder="Placeholder" {...props}>
+  <Editable placeholder="Placeholder" {...props}>
     {({ isEditing }) => (
       <>
         <EditableArea>
@@ -23,17 +23,11 @@ const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
         <EditableControl>
           {isEditing ? (
             <>
-              <EditableSubmitTrigger>
-                <button>Save</button>
-              </EditableSubmitTrigger>
-              <EditableCancelTrigger>
-                <button>Cancel</button>
-              </EditableCancelTrigger>
+              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
+              <EditableCancelTrigger>Cancel</EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>
-              <button>Edit</button>
-            </EditableEditTrigger>
+            <EditableEditTrigger>Edit</EditableEditTrigger>
           )}
         </EditableControl>
       </>
@@ -46,16 +40,24 @@ describe('Editable', () => {
     render(<ComponentUnderTest />)
   })
 
-  it('should be possible to dbl click the placeholder to enter a value', async () => {
+  it('should be possible to focus the placeholder and enter a value', async () => {
     render(<ComponentUnderTest />)
+    screen.getByText('Placeholder').focus()
+    await user.type(screen.getByLabelText('editable input'), 'React')
+
+    expect(await screen.findByText('React')).toBeInTheDocument()
+  })
+
+  it('should be possible to dbl click the placeholder to enter a value', async () => {
+    render(<ComponentUnderTest activationMode="dblclick" />)
     await user.dblClick(screen.getByText('Placeholder'))
     await user.type(screen.getByLabelText('editable input'), 'React')
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it('should be possible to edit a value', async () => {
-    render(<ComponentUnderTest defaultValue="React" />)
+  it('should be possible to edit an existing value', async () => {
+    render(<ComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
 
@@ -65,5 +67,22 @@ describe('Editable', () => {
     await user.click(screen.getByText('Save'))
 
     expect(await screen.findByText('Solid')).toBeInTheDocument()
+  })
+
+  it('should be possible to hide input if click EditableCancelTrigger ', async () => {
+    render(<ComponentUnderTest activationMode="dblclick" />)
+
+    await user.dblClick(screen.getByText('Placeholder'))
+
+    const input = screen.getByRole('textbox')
+    expect(input).not.toHaveAttribute('hidden', '')
+
+    const editableCancelTriggerButton = screen.getByRole('button', {
+      name: 'cancel',
+    })
+
+    await user.click(editableCancelTriggerButton)
+
+    expect(input).toHaveAttribute('hidden', '')
   })
 })

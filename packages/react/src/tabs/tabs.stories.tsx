@@ -1,16 +1,22 @@
+import type { Meta } from '@storybook/react'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '.'
+
+type TabContentType = typeof TabContent
+
+const meta: Meta<TabContentType> = {
+  title: 'TabContent',
+  component: TabContent,
+}
+
+export default meta
 
 export const Basic = () => (
   <Tabs>
     <TabList>
-      <TabTrigger value="one">
-        <button>Item one</button>
-      </TabTrigger>
-      <TabTrigger value="two" disabled>
-        <button>Item two</button>
-      </TabTrigger>
-      <TabTrigger value="three">
-        <button>Item three</button>
+      <TabTrigger value="one">Item one</TabTrigger>
+      <TabTrigger value="two">Item two</TabTrigger>
+      <TabTrigger value="three" disabled>
+        Item three
       </TabTrigger>
       <TabIndicator />
     </TabList>
@@ -20,18 +26,14 @@ export const Basic = () => (
   </Tabs>
 )
 
-export const withDefaultValue = () => (
+export const WithDefaultValue = () => (
   <Tabs defaultValue="three">
     <TabList>
-      <TabTrigger value="one">
-        <button>Item one</button>
-      </TabTrigger>
+      <TabTrigger value="one">Item one </TabTrigger>
       <TabTrigger value="two" disabled>
-        <button>Item two</button>
+        Item two
       </TabTrigger>
-      <TabTrigger value="three">
-        <button>Item three</button>
-      </TabTrigger>
+      <TabTrigger value="three">Item three</TabTrigger>
       <TabIndicator />
     </TabList>
     <TabContent value="one">Value item one</TabContent>

@@ -1,11 +1,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { type ComponentWithProps } from '../utils'
 import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogProps } from './use-dialog'
+import { useDialog, type UseDialogContext } from './use-dialog'
 
-type UseDialogPropsContext = UseDialogProps['context']
-
-export type DialogProps = UseDialogPropsContext
+export type DialogProps = UseDialogContext
 
 const VueDialogProps = {
   ids: {
@@ -31,6 +29,7 @@ const VueDialogProps = {
   },
   closeOnOutsideClick: {
     type: Boolean as PropType<DialogProps['closeOnOutsideClick']>,
+    default: true,
   },
   closeOnEsc: {
     type: Boolean as PropType<DialogProps['closeOnEsc']>,
@@ -49,12 +48,12 @@ const VueDialogProps = {
 export const Dialog: ComponentWithProps<DialogProps> = defineComponent({
   name: 'Dialog',
   props: VueDialogProps,
-  emits: ['close', 'outsideClick', 'esc'],
+  emits: ['close', 'outsideClick', 'esc', 'open', 'update:open'],
   setup(props, { slots, emit }) {
     const api = useDialog(emit, props)
 
     DialogProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots?.default?.(api.value)
   },
 })

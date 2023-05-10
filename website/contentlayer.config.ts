@@ -102,7 +102,7 @@ export const GeneralDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))

@@ -3,14 +3,24 @@ import { globby } from 'globby'
 import path from 'path'
 
 // converts `export { Toast, type ToastProps } from './toast' ...` to  ['Toast']
-const findAllComponentExports = (fileContent?: string) =>
-  fileContent?.match(/(?<=export\s{).*(?=})/gm)?.flatMap((line) =>
+const findAllComponentExports = (fileContent?: string) => {
+  if (!fileContent) return
+
+  const cleanedContent = fileContent.replace(/(\r\n|\n|\r)/gm, ' ')
+  const matches = cleanedContent.match(/export\s+{[^}]*}/gm)
+
+  if (!matches) return
+
+  return matches.flatMap((line) =>
     line
+      .replace(/export\s+{/, '')
+      .replace(/}/, '')
       .split(',')
       .map((x) => x.trim())
       .filter((x) => !x.startsWith('type '))
       .filter((x) => /^[A-Z]\w*/.test(x)),
   )
+}
 
 /**
  * This script checks that all components have the same exports in all frameworks.

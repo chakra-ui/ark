@@ -1,6 +1,6 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useToastItemContext } from './toast-item-context'
 
 export type ToastTitleProps = HTMLArkProps<'h3'>

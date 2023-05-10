@@ -30,17 +30,32 @@ The Range Slider component consists of the `RangeSliderControl`,
 `RangeSliderTrack` components. Combine them as desired to fit your design
 system.
 
-```tsx
-<RangeSlider>
-  <RangeSliderLabel>Label</RangeSliderLabel>
-  <RangeSliderControl>
-    <RangeSliderTrack>
-      <RangeSliderRange />
-    </RangeSliderTrack>
-    <RangeSliderThumb :index="0" />
-    <RangeSliderThumb :index="1" />
-  </RangeSliderControl>
-</RangeSlider>
+```vue
+<script setup lang="ts">
+import {
+  RangeSlider,
+  RangeSliderControl,
+  RangeSliderLabel,
+  RangeSliderMarker,
+  RangeSliderMarkerGroup,
+  RangeSliderOutput,
+  RangeSliderRange,
+  RangeSliderThumb,
+  RangeSliderTrack,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <RangeSlider>
+    <RangeSliderLabel>Label</RangeSliderLabel>
+    <RangeSliderControl>
+      <RangeSliderTrack>
+        <RangeSliderRange />
+      </RangeSliderTrack>
+      <RangeSliderThumb :index="0" />
+      <RangeSliderThumb :index="1" />
+    </RangeSliderControl>
+  </RangeSlider>
+</template>
 ```
 
 ### Specifying the minimum and maximum
@@ -51,10 +66,15 @@ want, you can easily specify different bounds by changing the values of the
 
 For example, to ask the user for a value between `-10` and `10`, you can use:
 
-```tsx
-<RangeSlider :min="-10" :max="10">
-  {/*...*/}
-</RangeSlider>
+```vue
+<script setup lang="ts">
+import { RangeSlider } from '@ark-ui/vue'
+</script>
+<template>
+  <RangeSlider :min="-10" :max="10">
+    <!-- ... -->
+  </RangeSlider>
+</template>
 ```
 
 ### Setting the value's granularity
@@ -65,9 +85,12 @@ integer. You can change the step attribute to control the granularity.
 For example, If you need a value between `5` and `10`, accurate to two decimal
 places, you should set the value of step to `0.01`:
 
-```tsx
-<RangeSlider :step="0.01" :min="5" :max="10"></RangeSlider>
-  {/*...*/}
+```vue
+<script setup lang="ts">
+import { RangeSlider } from '@ark-ui/vue'
+</script>
+<RangeSlider :step="0.01" :min="5" :max="10">
+  <!-- ... -->
 </RangeSlider>
 ```
 
@@ -77,28 +100,35 @@ By default, the range slider thumbs are allowed to overlap when their values are
 equal. To prevent this, set the prop `minStepsBetweenThumbs` to avoid thumbs
 with equal values.
 
-```tsx
-<RangeSlider :minStepsBetweenThumbs="1">{/*...*/}</RangeSlider>
+```vue
+<script setup lang="ts">
+import { RangeSlider } from '@ark-ui/vue'
+</script>
+<template>
+  <RangeSlider :minStepsBetweenThumbs="1">
+    <!-- ... -->
+  </RangeSlider>
+</template>
 ```
 
 ### Listening for changes
 
-When the slider value changes, the `onChange` and `onChangeEnd` callbacks are
+When the slider value changes, the `@change` and `@change-end` callbacks are
 invoked. You can use this to setup custom behaviors in your app.
 
-```tsx
-// <script>
+```vue
+<script setup lang="ts">
+import { RangeSlider } from '@ark-ui/vue'
 
 const handleOnChange = (value) => console.log(value)
 const handleOnChangeEnd = (value) => console.log(value)
+</script>
 
-// <template>
-<RangeSlider
-  @change='handleOnChange'
-  @change-end='handleOnChangeEnd'
->
-  {/*...*/}
-</RangeSlider>
+<template>
+  <RangeSlider @change="handleOnChange" @change-end="handleOnChangeEnd">
+    <!-- ... -->
+  </RangeSlider>
+</template>
 ```
 
 ### Changing the orientation
@@ -112,6 +142,13 @@ increment/decrement its value.
 > Don't forget to change the styles of the vertical slider by specifying its
 > height
 
-```tsx
-<RangeSlider orientation="vertical">{/*...*/}</RangeSlider>
+```vue
+<script setup lang="ts">
+import { RangeSlider } from '@ark-ui/vue'
+</script>
+<template>
+  <RangeSlider orientation="vertical">
+    <!-- ... -->
+  </RangeSlider>
+</template>
 ```

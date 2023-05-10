@@ -1,7 +1,7 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { ComboboxProvider } from './combobox-context'

@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -10,24 +11,37 @@ import {
 } from '.'
 import './hover-card.css'
 
+type HoverCardType = typeof HoverCard
+
+const meta: Meta<HoverCardType> = {
+  title: 'HoverCard',
+  component: HoverCard,
+}
+
+export default meta
+
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger>
-      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
-        Mastodon
-      </a>
-    </HoverCardTrigger>
+    {() => (
+      <>
+        <HoverCardTrigger>
+          <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
+            Mastodon
+          </a>
+        </HoverCardTrigger>
 
-    <Portal>
-      <HoverCardPositioner>
-        <HoverCardContent>
-          <HoverCardArrow>
-            <HoverCardArrowTip />
-          </HoverCardArrow>
-          Mastodon Preview
-        </HoverCardContent>
-      </HoverCardPositioner>
-    </Portal>
+        <Portal>
+          <HoverCardPositioner>
+            <HoverCardContent>
+              <HoverCardArrow>
+                <HoverCardArrowTip />
+              </HoverCardArrow>
+              Mastodon Preview
+            </HoverCardContent>
+          </HoverCardPositioner>
+        </Portal>
+      </>
+    )}
   </HoverCard>
 )
 

@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -11,12 +12,19 @@ import {
   DialogTrigger,
 } from './'
 
+type DialogType = typeof Dialog
+
+const meta: Meta<DialogType> = {
+  title: 'Dialog',
+  component: Dialog,
+}
+
+export default meta
+
 export const Basic = () => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <button>click me</button>
-      </DialogTrigger>
+      <DialogTrigger>click me</DialogTrigger>
       <Portal>
         <DialogBackdrop />
         <DialogContainer>
@@ -27,9 +35,7 @@ export const Basic = () => {
               <input placeholder="Enter name..." />
               <button>Save</button>
             </div>
-            <DialogCloseTrigger>
-              <button>close</button>
-            </DialogCloseTrigger>
+            <DialogCloseTrigger>close</DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
       </Portal>
@@ -53,9 +59,7 @@ export const Controlled = () => {
                 <input placeholder="Enter name..." />
                 <button>Save</button>
               </div>
-              <DialogCloseTrigger>
-                <button>close</button>
-              </DialogCloseTrigger>
+              <DialogCloseTrigger>close</DialogCloseTrigger>
             </DialogContent>
           </DialogContainer>
         </Portal>
@@ -69,18 +73,14 @@ export const DialogWithRenderFn = () => {
     <Dialog>
       {({ isOpen }) => (
         <>
-          <DialogTrigger>
-            <button>Open Dialog</button>
-          </DialogTrigger>
+          <DialogTrigger>Open Dialog</DialogTrigger>
           <Portal>
             <DialogBackdrop />
             <DialogContainer>
               <DialogContent>
                 <DialogTitle>Dialog Title</DialogTitle>
                 <DialogDescription>Dialog Description</DialogDescription>
-                <DialogCloseTrigger>
-                  <button>Close</button>
-                </DialogCloseTrigger>
+                <DialogCloseTrigger>Close</DialogCloseTrigger>
               </DialogContent>
             </DialogContainer>
           </Portal>

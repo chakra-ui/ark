@@ -26,12 +26,12 @@
       "description": "Whether the tooltip is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string }>",
+      "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },

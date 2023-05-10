@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useToastItemContext } from './toast-item-context'
 
-export type ToastCloseTriggerProps = { children: ReactElement }
+export type ToastCloseTriggerProps = HTMLArkProps<'button'>
 
-export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
+export const ToastCloseTrigger = forwardRef<'button'>((props, ref) => {
   const { closeTriggerProps } = useToastItemContext()
+  const mergedProps = mergeProps(closeTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, closeTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

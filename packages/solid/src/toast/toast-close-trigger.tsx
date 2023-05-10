@@ -18,5 +18,5 @@ export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
     }
   })
 
-  return getChildren
+  return getChildren()
 }

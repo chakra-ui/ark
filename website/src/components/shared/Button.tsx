@@ -1,6 +1,6 @@
 'use client'
 import { panda, type HTMLPandaProps } from '@/panda/jsx'
-import { button, type ButtonVariants } from '@/panda/recipes'
+import { button, type ButtonVariantProps } from '@/panda/recipes'
 import NextLink, { type LinkProps } from 'next/link'
 import {
   cloneElement,
@@ -16,7 +16,7 @@ type ButtonContentProps = {
   rightIcon?: ReactElement
 }
 
-export type ButtonProps = ButtonVariants &
+export type ButtonProps = ButtonVariantProps &
   ButtonContentProps & { href?: LinkProps['href'] } & HTMLPandaProps<'button'> &
   HTMLPandaProps<'a'>
 

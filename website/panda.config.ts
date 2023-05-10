@@ -21,7 +21,7 @@ export default defineConfig({
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
             muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.400}' } },
             subtle: { value: { base: '{colors.gray.400}', _dark: '{colors.gray.500}' } },
-            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
+            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },

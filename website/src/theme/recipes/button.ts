@@ -62,6 +62,7 @@ export const button = defineRecipe({
           background: 'bg.subtle',
           _disabled: {
             borderColor: 'border.default',
+            background: 'bg.surface',
             color: 'fg.subtle',
             cursor: 'not-allowed',
           },

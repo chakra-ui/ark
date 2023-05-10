@@ -1,26 +1,21 @@
 import { connect, machine, type Context as SliderContext } from '@zag-js/slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch, type UnwrapRef } from 'vue'
+import { computed, reactive, type UnwrapRef } from 'vue'
 import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { useId } from '../utils'
 
-type UseSliderPropsContext = Optional<SliderContext, 'id'> & {
+export type UseSliderContext = Optional<SliderContext, 'id'> & {
   modelValue?: SliderContext['value']
 }
 
-export type UseSliderProps = {
-  context: UseSliderPropsContext
-  emit: CallableFunction
-}
-
-export const useSlider = (props: UseSliderProps) => {
-  const { context, emit } = transformComposableProps(props)
+export const useSlider = (emit: CallableFunction, context: UseSliderContext) => {
+  const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
-      ...context,
+      ...reactiveContext,
       id: useId().value,
-      value: context.modelValue ?? context.value,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
@@ -34,18 +29,7 @@ export const useSlider = (props: UseSliderProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => context.modelValue,
-    (val, oldVal) => {
-      if (val == undefined || val === oldVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseSliderReturn = UnwrapRef<ReturnType<typeof useSlider>>

@@ -16,9 +16,7 @@ import {
 
 const ComponentUnderTest = (props: PopoverProps) => (
   <Popover {...props}>
-    <PopoverTrigger>
-      <button>click me</button>
-    </PopoverTrigger>
+    <PopoverTrigger>click me</PopoverTrigger>
     <PopoverPositioner>
       <PopoverArrow>
         <PopoverArrowTip />
@@ -26,9 +24,7 @@ const ComponentUnderTest = (props: PopoverProps) => (
       <PopoverContent>
         <PopoverTitle>title</PopoverTitle>
         <PopoverDescription>description</PopoverDescription>
-        <PopoverCloseTrigger>
-          <button>close</button>
-        </PopoverCloseTrigger>
+        <PopoverCloseTrigger>close</PopoverCloseTrigger>
       </PopoverContent>
     </PopoverPositioner>
   </Popover>

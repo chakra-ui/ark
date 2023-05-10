@@ -1,26 +1,22 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode } from 'react'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
 import { useSliderContext, type SliderContext } from './slider-context'
 
-export type SliderOutputProps = Assign<
-  HTMLArkProps<'output'>,
-  {
-    children?: ((context: SliderContext) => ReactNode) | ReactNode
-  }
->
+export type SliderOutputProps = {
+  children?: ((context: SliderContext) => React.ReactNode) | React.ReactNode
+}
 
 export const SliderOutput = forwardRef<'output', SliderOutputProps>((props, ref) => {
-  const { children, ...rest } = props
+  const { children, ...restProps } = props
   const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.outputProps, rest)
+  const mergedProps = mergeProps(slider.outputProps, restProps)
   const view = runIfFn(children, slider)
+
   return (
     <ark.output {...mergedProps} ref={ref}>
-      {view}
+      {view ?? slider.value}
     </ark.output>
   )
 })

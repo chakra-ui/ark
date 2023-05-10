@@ -1,5 +1,14 @@
 import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
+import { Teleport } from 'vue'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectPositioner,
+  SelectTrigger,
+} from '.'
 import SelectStory from './select.stories.vue'
 
 /**
@@ -31,5 +40,37 @@ describe('Select', () => {
     await user.click(getByRole('option', { name: 'React' }))
     await wait(50)
     expect(queryByText('Select')).not.toBeInTheDocument()
+  })
+
+  it('should allow content as children through SelectOption', async () => {
+    const onChange = vi.fn()
+
+    const { getByRole, getByText } = render(
+      <Select onChange={onChange}>
+        <SelectLabel>Framework:</SelectLabel>
+        <SelectTrigger>
+          <button>Select</button>
+        </SelectTrigger>
+
+        <Teleport to="body">
+          <SelectPositioner>
+            <SelectContent>
+              <SelectOption value="sad" label="Sad" />
+              <SelectOption value="disappointed" label="Disappointed" />
+              <SelectOption value="starstruck" label="Starstruck">
+                🤩
+              </SelectOption>
+            </SelectContent>
+          </SelectPositioner>
+        </Teleport>
+      </Select>,
+    )
+
+    expect(getByRole('option', { hidden: true, name: '🤩' })).not.toBeVisible()
+    await user.click(getByText('Select'))
+
+    await user.click(getByRole('option', { name: '🤩' }))
+
+    expect(onChange).toBeCalledWith({ value: 'starstruck', label: 'Starstruck' })
   })
 })

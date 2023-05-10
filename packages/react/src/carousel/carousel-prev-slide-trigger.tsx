@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselPrevSlideTriggerProps = { children: ReactElement }
+export type CarouselPrevSlideTriggerProps = HTMLArkProps<'button'>
 
-export const CarouselPrevSlideTrigger = (props: CarouselPrevSlideTriggerProps) => {
-  const { previousTriggerProps } = useCarouselContext()
+export const CarouselPrevSlideTrigger = forwardRef<'button'>((props, ref) => {
+  const { prevTriggerProps } = useCarouselContext()
+  const mergedProps = mergeProps(prevTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, previousTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

@@ -17,7 +17,7 @@ const baseItemStyle = {
   _selected: {
     background: 'bg.subtle',
   },
-}
+} as const
 
 export const menu = defineRecipe({
   name: 'menu',

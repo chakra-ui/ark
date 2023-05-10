@@ -20,7 +20,6 @@
       "isRequired": false,
       "description": "Whether to blur the input on select"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -42,17 +41,17 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'autohighlight' | 'autocomplete' | 'none'",
+      "type": "'none' | 'autohighlight' | 'autocomplete'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
     },

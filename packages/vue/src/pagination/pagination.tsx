@@ -1,11 +1,11 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { PaginationProvider } from './pagination-context'
-import { usePagination, type UsePaginationProps } from './use-pagination'
+import { usePagination, type UsePaginationContext } from './use-pagination'
 
-export type PaginationProps = Assign<HTMLArkProps<'nav'>, UsePaginationProps['context']>
+export type PaginationProps = Assign<HTMLArkProps<'nav'>, UsePaginationContext>
 
 export const Pagination: ComponentWithProps<PaginationProps> = defineComponent({
   name: 'Pagination',
@@ -41,12 +41,7 @@ export const Pagination: ComponentWithProps<PaginationProps> = defineComponent({
   },
   emits: ['change'],
   setup(props, { slots, attrs, emit, expose }) {
-    const paginationProps = computed<UsePaginationProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = usePagination(paginationProps.value)
+    const api = usePagination(emit, props)
 
     expose({
       context: api,

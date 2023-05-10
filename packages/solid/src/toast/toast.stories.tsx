@@ -1,4 +1,4 @@
-import { type JSX } from 'solid-js'
+import { For, type JSX } from 'solid-js'
 import { Toast } from './toast'
 import { ToastCloseTrigger } from './toast-close-trigger'
 import { ToastDescription } from './toast-description'
@@ -11,23 +11,27 @@ import { ToastTitle } from './toast-title'
 export const ChakraToastProvider = (props: { children: JSX.Element }) => (
   <ToastProvider>
     <ToastPlacements>
-      {(placements) =>
-        placements.map((placement) => (
-          <ToastGroup placement={placement}>
-            {(toasts) =>
-              toasts.map((toast) => (
-                <Toast toast={toast}>
-                  <ToastTitle />
-                  <ToastDescription />
-                  <ToastCloseTrigger>
-                    <button>close</button>
-                  </ToastCloseTrigger>
-                </Toast>
-              ))
-            }
-          </ToastGroup>
-        ))
-      }
+      {(placements) => (
+        <For each={placements}>
+          {(placement) => (
+            <ToastGroup placement={placement}>
+              {(toasts) => (
+                <For each={toasts}>
+                  {(toast) => (
+                    <Toast toast={toast}>
+                      <ToastTitle />
+                      <ToastDescription />
+                      <ToastCloseTrigger>
+                        <button>close</button>
+                      </ToastCloseTrigger>
+                    </Toast>
+                  )}
+                </For>
+              )}
+            </ToastGroup>
+          )}
+        </For>
+      )}
     </ToastPlacements>
     {props.children}
   </ToastProvider>

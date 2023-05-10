@@ -35,24 +35,39 @@ listeners and attributes to ensure the desired accessibility.
 > Import `Teleport` from Vue to wrap the backdrop and container with the
 > contents
 
-```tsx
-<Dialog>
-  <DialogTrigger>
-    <button>Open Dialog</button>
-  </DialogTrigger>
-  <Teleport>
-    <DialogBackdrop />
-    <DialogContainer>
-      <DialogContent>
-        <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>Dialog Description</DialogDescription>
-        <DialogCloseTrigger>
-          <button>Close</button>
-        </DialogCloseTrigger>
-      </DialogContent>
-    </DialogContainer>
-  </Teleport>
-</Dialog>
+```vue
+<script setup lang="ts">
+import { Teleport } from 'vue'
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Dialog>
+    <DialogTrigger>
+      <button>Open Dialog</button>
+    </DialogTrigger>
+    <Teleport to="body">
+      <DialogBackdrop />
+      <DialogContainer>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogCloseTrigger>
+            <button>Close</button>
+          </DialogCloseTrigger>
+        </DialogContent>
+      </DialogContainer>
+    </Teleport>
+  </Dialog>
+</template>
 ```
 
 ### Closing the dialog on overlay click
@@ -60,8 +75,15 @@ listeners and attributes to ensure the desired accessibility.
 By default, the dialog closes when you click its overlay. You can set
 `closeOnOutsideClick` to `false` if you want the modal to stay visible.
 
-```tsx
-<Dialog :closeOnOutsideClick="false">{/*...*/}</Dialog>
+```vue
+<script setup lang="ts">
+import { Dialog } from '@ark-ui/vue'
+</script>
+<template>
+  <Dialog :closeOnOutsideClick="false">
+    <!-- ... -->
+  </Dialog>
+</template>
 ```
 
 ### Allow scrolling behind the dialog
@@ -69,6 +91,98 @@ By default, the dialog closes when you click its overlay. You can set
 When the dialog is open, it prevents scrolling on the `body` element. To disable
 this behavior, set the `preventScroll` prop to `false`.
 
-```tsx
-<Dialog :preventScroll="false">{/*...*/}</Dialog>
+```vue
+<script setup lang="ts">
+import { Dialog } from '@ark-ui/vue'
+</script>
+<template>
+  <Dialog :preventScroll="false">
+    <!-- ... -->
+  </Dialog>
+</template>
+```
+
+### Access to isOpen state
+
+The `Dialog` component exposes the `isOpen` state via `v-slot`. This can be
+useful if you want to control the visibility of other components.
+
+```vue
+<script setup lang="ts">
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Dialog v-slot="{ isOpen }">
+    <DialogTrigger>
+      <button>Open Dialog</button>
+    </DialogTrigger>
+    <Portal>
+      <DialogBackdrop />
+      <DialogContainer>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogCloseTrigger>
+            <button>Close</button>
+          </DialogCloseTrigger>
+        </DialogContent>
+      </DialogContainer>
+    </Portal>
+    <p>Dialog is {{ isOpen ? 'open' : 'closed' }}</p>
+  </Dialog>
+</template>
+```
+
+### Making Dialog Controlled
+
+Should you need to use an external trigger to open the dialog, the `open` prop
+is provided as two-way binding.
+
+```vue
+<script setup lang="ts">
+import { Teleport, ref } from 'vue'
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '../'
+
+const open = ref(false)
+
+const handleOpen = () => (open.value = true)
+</script>
+<template>
+  <button @click="handleOpen">Toggle Dialog</button>
+  <Dialog v-model:open="open">
+    <Teleport to="body">
+      <DialogBackdrop />
+      <DialogContainer>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <div>
+            <input placeholder="Enter name..." />
+            <button>Save</button>
+          </div>
+          <DialogCloseTrigger>
+            <button>close</button>
+          </DialogCloseTrigger>
+        </DialogContent>
+      </DialogContainer>
+    </Teleport>
+  </Dialog>
+</template>
 ```
