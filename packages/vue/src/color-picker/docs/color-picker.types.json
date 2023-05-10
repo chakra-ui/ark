@@ -47,6 +47,81 @@
     "xChannel": { "type": "ColorChannel", "isRequired": true },
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
+  "ColorPickerContext": {
+    "channels": {
+      "type": "[ColorChannel, ColorChannel, ColorChannel]",
+      "isRequired": true,
+      "description": "The current color channels of the color"
+    },
+    "contentProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
+    "eyeDropperTriggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true },
+    "getAreaGradientProps": {
+      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getAreaProps": {
+      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getAreaThumbProps": {
+      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getChannelInputProps": {
+      "type": "(props: ColorChannelInputProps) => ElementAttrs<InputHTMLAttributes>",
+      "isRequired": true
+    },
+    "getChannelSliderBackgroundProps": {
+      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getChannelSliderThumbProps": {
+      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getChannelSliderTrackProps": {
+      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getSwatchBackgroundProps": {
+      "type": "(props: ColorSwatchProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "getSwatchProps": {
+      "type": "(props: ColorSwatchProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
+    },
+    "isDragging": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the color picker is being dragged"
+    },
+    "setChannelValue": {
+      "type": "(channel: ColorChannel, value: number) => void",
+      "isRequired": true,
+      "description": "Function to set the color value of a specific channel"
+    },
+    "setColor": {
+      "type": "(value: string | Color) => void",
+      "isRequired": true,
+      "description": "Function to set the color value"
+    },
+    "setFormat": {
+      "type": "(format: ColorFormat) => void",
+      "isRequired": true,
+      "description": "Function to set the color format"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The current color value (as a string)"
+    },
+    "valueAsColor": {
+      "type": "Color",
+      "isRequired": true,
+      "description": "The current color value (as a Color object)"
+    }
+  },
   "ColorPickerSwatchProps": {
     "value": { "type": "string | Color", "isRequired": true },
     "readOnly": { "type": "boolean", "isRequired": false }
