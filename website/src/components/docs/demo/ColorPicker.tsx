@@ -1,8 +1,9 @@
 import { Divider } from '@/components/shared/Divider'
 import { IconButton } from '@/components/shared/IconButton'
+import { Input } from '@/components/shared/Input'
 import { Text } from '@/components/shared/Text'
 import { Stack } from '@/panda/jsx'
-import { colorPicker, input } from '@/panda/recipes'
+import { colorPicker } from '@/panda/recipes'
 import {
   ColorPicker,
   ColorPickerArea,
@@ -67,8 +68,12 @@ export const DemoColorPicker = () => {
                 </Stack>
               </Stack>
               <Stack direction="row" gap="4" align="center">
-                <ColorPickerChannelInput channel="hex" className={input({ size: 'sm' })} />
-                <ColorPickerChannelInput channel="alpha" className={input({ size: 'sm' })} />
+                <ColorPickerChannelInput channel="hex" asChild>
+                  <Input size="sm" />
+                </ColorPickerChannelInput>
+                <ColorPickerChannelInput channel="alpha" asChild>
+                  <Input size="sm" />
+                </ColorPickerChannelInput>
               </Stack>
             </Stack>
             <Divider />
