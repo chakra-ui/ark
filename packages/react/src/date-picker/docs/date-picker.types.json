@@ -35,6 +35,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
+    "ids": {
+      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 6 more ...; yearSelect: string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the date picker. Useful for composition."
+    },
     "inline": {
       "type": "boolean",
       "isRequired": false,
