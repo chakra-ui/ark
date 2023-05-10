@@ -15,9 +15,7 @@ import {
 
 const ComponentUnderTest = (props: DialogProps) => (
   <Dialog {...props}>
-    <DialogTrigger>
-      <button>Open Dialog</button>
-    </DialogTrigger>
+    <DialogTrigger>Open Dialog</DialogTrigger>
     <Portal>
       <DialogBackdrop />
       <DialogContainer>
@@ -28,9 +26,7 @@ const ComponentUnderTest = (props: DialogProps) => (
             <input placeholder="Enter name..." />
             <button>Save</button>
           </div>
-          <DialogCloseTrigger>
-            <button>Close</button>
-          </DialogCloseTrigger>
+          <DialogCloseTrigger>Close</DialogCloseTrigger>
         </DialogContent>
       </DialogContainer>
     </Portal>

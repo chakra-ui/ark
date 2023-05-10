@@ -23,9 +23,7 @@ const Basic = (props: Partial<SplitterProps>) => {
         ]}
         {...props}
       >
-        <SplitterPanel id={first}>
-          <p>{first}</p>
-        </SplitterPanel>
+        <SplitterPanel id={first}>{first}</SplitterPanel>
         <SplitterResizeTrigger id={`${first}:${second}`}>
           <div className="bar" />
         </SplitterResizeTrigger>

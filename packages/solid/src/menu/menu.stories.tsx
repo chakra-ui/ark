@@ -23,9 +23,7 @@ export default meta
 
 export const Basic = () => (
   <Menu>
-    <MenuTrigger asChild>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open Menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>
@@ -48,9 +46,7 @@ export const WithIsOpen = () => {
     <>
       <button onClick={() => setIsOpen(!isOpen())}>Trigger from the outside</button>
       <Menu isOpen={isOpen}>
-        <MenuTrigger asChild>
-          <button>Toggle menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Toggle Menu</MenuTrigger>
         <Portal>
           <MenuPositioner>
             <MenuContent>
@@ -70,9 +66,7 @@ export const WithIsOpen = () => {
 
 export const Group = () => (
   <Menu>
-    <MenuTrigger asChild>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open Menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>
@@ -107,9 +101,7 @@ export const Options = () => {
         }))
       }}
     >
-      <MenuTrigger asChild>
-        <button>Open menu</button>
-      </MenuTrigger>
+      <MenuTrigger>Open Menu</MenuTrigger>
       <Portal>
         <MenuPositioner>
           <MenuContent>
@@ -149,9 +141,7 @@ export const Options = () => {
 
 export const SubMenu = () => (
   <Menu>
-    <MenuTrigger asChild>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open Menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>

@@ -10,15 +10,11 @@ export default meta
 export const Basic = () => (
   <Tabs value="three">
     <TabList>
-      <TabTrigger asChild value="one">
-        <button>Item one</button>
+      <TabTrigger value="one">Item one</TabTrigger>
+      <TabTrigger value="two" disabled>
+        Item two
       </TabTrigger>
-      <TabTrigger asChild value="two" disabled>
-        <button>Item two</button>
-      </TabTrigger>
-      <TabTrigger asChild value="three">
-        <button>Item three</button>
-      </TabTrigger>
+      <TabTrigger value="three">Item three</TabTrigger>
       <TabIndicator />
     </TabList>
     <TabContent value="one">Value item one</TabContent>

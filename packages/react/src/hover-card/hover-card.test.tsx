@@ -12,7 +12,7 @@ import {
 
 const ComponentUnderTest = () => (
   <HoverCard openDelay={0} closeDelay={0}>
-    <HoverCardTrigger>
+    <HoverCardTrigger asChild>
       <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
         Trigger
       </a>

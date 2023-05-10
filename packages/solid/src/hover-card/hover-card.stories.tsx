@@ -18,7 +18,7 @@ export default meta
 
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger>
+    <HoverCardTrigger asChild>
       <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
         Mastodon
       </a>

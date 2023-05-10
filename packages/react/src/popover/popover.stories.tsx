@@ -45,9 +45,7 @@ export const Controlled = () => {
     <>
       <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
       <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <PopoverAnchor>
-          <span>anchor</span>
-        </PopoverAnchor>
+        <PopoverAnchor>anchor</PopoverAnchor>
         <PopoverPositioner>
           <PopoverContent>
             <PopoverArrow>

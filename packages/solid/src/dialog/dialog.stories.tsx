@@ -21,9 +21,7 @@ export default meta
 export const Basic = () => {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <button>click me</button>
-      </DialogTrigger>
+      <DialogTrigger>Open Dialog</DialogTrigger>
       <Portal>
         <DialogBackdrop />
         <DialogContainer>
@@ -34,9 +32,7 @@ export const Basic = () => {
               <input placeholder="Enter name..." />
               <button>Save</button>
             </div>
-            <DialogCloseTrigger asChild>
-              <button>Close</button>
-            </DialogCloseTrigger>
+            <DialogCloseTrigger>Close</DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
       </Portal>
@@ -49,18 +45,14 @@ export const DialogWithRenderFn = () => {
     <Dialog>
       {(api) => (
         <>
-          <DialogTrigger asChild>
-            <button>Open Dialog</button>
-          </DialogTrigger>
+          <DialogTrigger>Open Dialog</DialogTrigger>
           <Portal>
             <DialogBackdrop />
             <DialogContainer>
               <DialogContent>
                 <DialogTitle>Dialog Title</DialogTitle>
                 <DialogDescription>Dialog Description</DialogDescription>
-                <DialogCloseTrigger>
-                  <button>Close</button>
-                </DialogCloseTrigger>
+                <DialogCloseTrigger>Close</DialogCloseTrigger>
               </DialogContent>
             </DialogContainer>
           </Portal>

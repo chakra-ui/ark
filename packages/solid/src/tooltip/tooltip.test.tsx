@@ -12,9 +12,7 @@ import {
 
 const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
   <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>
-      <span>hover me</span>
-    </TooltipTrigger>
+    <TooltipTrigger>hover me</TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipArrowTip />
