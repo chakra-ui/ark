@@ -22,12 +22,8 @@ export const Basic = () => (
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputField />
     <NumberInputControl>
-      <NumberInputDecrementTrigger asChild>
-        <button>-1</button>
-      </NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger asChild>
-        <button>+1</button>
-      </NumberInputIncrementTrigger>
+      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
+      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
     </NumberInputControl>
   </NumberInput>
 )

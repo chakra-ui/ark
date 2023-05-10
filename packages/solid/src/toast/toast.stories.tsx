@@ -27,9 +27,7 @@ const Provider = (props: { children: JSX.Element }) => (
                     <Toast toast={toast}>
                       <ToastTitle />
                       <ToastDescription />
-                      <ToastCloseTrigger asChild>
-                        <button>close</button>
-                      </ToastCloseTrigger>
+                      <ToastCloseTrigger>Close</ToastCloseTrigger>
                     </Toast>
                   )}
                 </For>

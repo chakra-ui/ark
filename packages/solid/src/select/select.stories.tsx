@@ -29,9 +29,7 @@ export const Basic = () => {
       {(api) => (
         <>
           <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger asChild>
-            <button>{api().selectedOption?.label ?? 'Select option'}</button>
-          </SelectTrigger>
+          <SelectTrigger>{api().selectedOption?.label ?? 'Select option'}</SelectTrigger>
           <Portal>
             <SelectPositioner>
               <SelectContent>

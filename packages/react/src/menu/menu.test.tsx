@@ -151,9 +151,7 @@ describe('Menu', () => {
       render(
         <Menu>
           <MenuContextTrigger>Open menu</MenuContextTrigger>
-          <MenuContent>
-            <span>menu content</span>
-          </MenuContent>
+          <MenuContent>menu content</MenuContent>
         </Menu>,
       )
 

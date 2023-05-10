@@ -1,4 +1,5 @@
 import { For, createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   Pagination,
   PaginationEllipsis,
@@ -9,7 +10,6 @@ import {
   PaginationPrevPageTrigger,
 } from './'
 import './pagination.css'
-import type { Meta } from 'storybook-solidjs'
 
 const meta: Meta = {
   title: 'Pagination',
@@ -22,10 +22,8 @@ export const Basic = () => (
     {(api) => (
       <PaginationList>
         <PaginationListItem>
-          <PaginationPrevPageTrigger asChild>
-            <button>
-              Previous <span class="visually-hidden">Page</span>
-            </button>
+          <PaginationPrevPageTrigger>
+            Previous <span class="visually-hidden">Page</span>
           </PaginationPrevPageTrigger>
         </PaginationListItem>
 
@@ -33,9 +31,7 @@ export const Basic = () => (
           {(page, index) =>
             page.type === 'page' ? (
               <PaginationListItem>
-                <PaginationPageTrigger asChild value={page.value}>
-                  <button>{page.value}</button>
-                </PaginationPageTrigger>
+                <PaginationPageTrigger value={page.value}>{page.value}</PaginationPageTrigger>
               </PaginationListItem>
             ) : (
               <PaginationListItem>
@@ -45,10 +41,8 @@ export const Basic = () => (
           }
         </For>
         <PaginationListItem>
-          <PaginationNextPageTrigger asChild>
-            <button>
-              Next <span class="visually-hidden">Page</span>
-            </button>
+          <PaginationNextPageTrigger>
+            Next <span class="visually-hidden">Page</span>
           </PaginationNextPageTrigger>
         </PaginationListItem>
       </PaginationList>

@@ -18,9 +18,7 @@ export const Basic = () => {
       <For each={items}>
         {(item) => (
           <AccordionItem value={item}>
-            <AccordionTrigger asChild>
-              <button>{item} trigger</button>
-            </AccordionTrigger>
+            <AccordionTrigger>{item} trigger</AccordionTrigger>
             <AccordionContent>{item} content</AccordionContent>
           </AccordionItem>
         )}
@@ -36,9 +34,7 @@ export const Disabled = () => {
       <For each={items}>
         {(item) => (
           <AccordionItem value={item} disabled={item === 'panel-2'}>
-            <AccordionTrigger asChild>
-              <button>{item} trigger</button>
-            </AccordionTrigger>
+            <AccordionTrigger>{item} trigger</AccordionTrigger>
             <AccordionContent>{item} content</AccordionContent>
           </AccordionItem>
         )}
@@ -57,9 +53,7 @@ export const ItemState = () => {
             {(itemState) => (
               <>
                 {itemState().isOpen ? 'Open' : 'Close'}
-                <AccordionTrigger asChild>
-                  <button>{item} trigger</button>
-                </AccordionTrigger>
+                <AccordionTrigger asChild>{item} trigger</AccordionTrigger>
                 <AccordionContent>{item} content</AccordionContent>
               </>
             )}

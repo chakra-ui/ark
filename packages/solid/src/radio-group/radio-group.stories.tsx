@@ -20,9 +20,7 @@ export const Basic = () => {
   const [value, setValue] = createSignal('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel asChild>
-        <h3>Fruits: {value()}</h3>
-      </RadioGroupLabel>
+      <RadioGroupLabel>Fruits: {value()}</RadioGroupLabel>
       <For each={options}>
         {(option) => (
           <Radio
@@ -43,9 +41,7 @@ export const Disabled = () => {
   const [value, setValue] = createSignal('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel asChild>
-        <h3>Fruits: {value()}</h3>
-      </RadioGroupLabel>
+      <RadioGroupLabel>Fruits: {value()}</RadioGroupLabel>
       <For each={options}>
         {(option) => (
           <Radio

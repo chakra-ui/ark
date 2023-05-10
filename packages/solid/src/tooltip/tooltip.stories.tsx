@@ -15,9 +15,7 @@ export default meta
 
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
-    <TooltipTrigger asChild>
-      <span>Hover me</span>
-    </TooltipTrigger>
+    <TooltipTrigger>Hover Me</TooltipTrigger>
     <Portal>
       <TooltipPositioner>
         <TooltipArrow>

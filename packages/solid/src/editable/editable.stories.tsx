@@ -50,17 +50,11 @@ export const Basic = () => (
         <EditableControl>
           {api().isEditing ? (
             <>
-              <EditableSubmitTrigger asChild>
-                <button>Save</button>
-              </EditableSubmitTrigger>
-              <EditableCancelTrigger asChild>
-                <button>Cancel</button>
-              </EditableCancelTrigger>
+              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
+              <EditableCancelTrigger>Canvel</EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger asChild>
-              <button>Edit</button>
-            </EditableEditTrigger>
+            <EditableEditTrigger>Edit</EditableEditTrigger>
           )}
         </EditableControl>
       </>

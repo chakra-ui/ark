@@ -29,19 +29,16 @@ export const Basic = () => (
               <>
                 <Tag index={index()} value={val}>
                   <span>{val}</span>
-                  <TagDeleteTrigger asChild index={index()} value={val}>
-                    <button>&#x2715;</button>
+                  <TagDeleteTrigger index={index()} value={val}>
+                    &#x2715;
                   </TagDeleteTrigger>
                 </Tag>
                 <TagInput index={index()} value={val} />
               </>
             )}
           </For>
-
           <TagsInputField placeholder="Add tag" />
-          <TagsInputClearTrigger asChild>
-            <button>clear all</button>
-          </TagsInputClearTrigger>
+          <TagsInputClearTrigger asChild>Clear All</TagsInputClearTrigger>
         </TagsInputControl>
       </>
     )}
