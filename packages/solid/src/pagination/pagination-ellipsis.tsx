@@ -1,8 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
 import type { EllipsisProps } from '@zag-js/pagination/dist/pagination.types'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationEllipsisProps = Assign<HTMLArkProps<'div'>, EllipsisProps>

@@ -21,7 +21,7 @@ export default meta
 
 export const Basic = () => (
   <Tooltip openDelay={0} closeDelay={0}>
-    <TooltipTrigger>
+    <TooltipTrigger asChild>
       <span>hover me</span>
     </TooltipTrigger>
     <Portal>
@@ -41,7 +41,7 @@ export const Controlled = () => {
     <>
       <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
       <Tooltip open={isOpen} openDelay={0} closeDelay={0}>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <span>hover me</span>
         </TooltipTrigger>
         <Portal>
@@ -61,7 +61,7 @@ export const WithRenderFn = () => (
   <Tooltip openDelay={0} closeDelay={0}>
     {({ isOpen }) => (
       <>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <span>hover me</span>
         </TooltipTrigger>
         <Portal>

@@ -7,8 +7,9 @@ export type ColorPickerChannelSliderThumbProps = HTMLArkProps<'div'>
 
 export const ColorPickerChannelSliderThumb = (props: ColorPickerChannelSliderThumbProps) => {
   const api = useColorPickerContext()
-  const colorChannelProps = useColorPickerChannelSliderContext()
-  const mergedProps = mergeProps(api().getChannelSliderThumbProps(colorChannelProps), props)
+  const sliderProps = useColorPickerChannelSliderContext()
 
-  return <ark.div {...mergedProps} />
+  const thumbProps = mergeProps(() => api().getChannelSliderThumbProps(sliderProps), props)
+
+  return <ark.div {...thumbProps} />
 }

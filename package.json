@@ -7,7 +7,7 @@
   "workspaces": [
     "examples/*",
     "packages/*",
-    "webiste"
+    "website"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -29,7 +29,8 @@
     "document:stories": "turbo run storydocs",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
-    "website": "pnpm --filter=@ark-ui/website"
+    "website": "pnpm --filter=@ark-ui/website",
+    "clean": "pnpm -r --parallel exec rm -rf dist .turbo *.log"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.8",

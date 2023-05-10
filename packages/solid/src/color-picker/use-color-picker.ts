@@ -10,7 +10,6 @@ export type UseColorPickerReturn = ReturnType<typeof useColorPicker>
 export const useColorPicker = (props: UseColorPickerProps) => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-
   const [state, send] = useMachine(colorPicker.machine(context), { context })
   return createMemo(() => colorPicker.connect(state, send, normalizeProps))
 }

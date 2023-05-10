@@ -1,4 +1,5 @@
 import { For, createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   Carousel,
   CarouselControl,
@@ -9,6 +10,12 @@ import {
   CarouselViewport,
 } from './'
 import './carousel.css'
+
+const meta: Meta = {
+  title: 'Carousel',
+}
+
+export default meta
 
 export const Basic = () => {
   const images = [

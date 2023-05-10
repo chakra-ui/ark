@@ -1,4 +1,5 @@
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   HoverCard,
   HoverCardArrow,
@@ -8,6 +9,12 @@ import {
   HoverCardTrigger,
 } from '.'
 import './hover-card.css'
+
+const meta: Meta = {
+  title: 'HoverCard',
+}
+
+export default meta
 
 export const Basic = () => (
   <HoverCard>

@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   Popover,
   PopoverAnchor,
@@ -10,11 +11,17 @@ import {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
-} from './'
+} from '.'
+
+const meta: Meta = {
+  title: 'Popover',
+}
+
+export default meta
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>
+    <PopoverTrigger asChild>
       <button>click me</button>
     </PopoverTrigger>
     <PopoverPositioner>
@@ -25,7 +32,7 @@ export const Basic = () => (
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />
-        <PopoverCloseTrigger>
+        <PopoverCloseTrigger asChild>
           <button>close</button>
         </PopoverCloseTrigger>
       </PopoverContent>
@@ -50,7 +57,7 @@ export const Controlled = () => {
             <PopoverTitle>Title</PopoverTitle>
             <PopoverDescription>Description</PopoverDescription>
             <input type="text" />
-            <PopoverCloseTrigger>
+            <PopoverCloseTrigger asChild>
               <button>close</button>
             </PopoverCloseTrigger>
           </PopoverContent>

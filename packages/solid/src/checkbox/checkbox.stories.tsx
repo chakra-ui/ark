@@ -1,5 +1,12 @@
+import type { Meta } from 'storybook-solidjs'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from './'
 import './checkbox.css'
+
+const meta: Meta = {
+  title: 'Checkbox',
+}
+
+export default meta
 
 export const Basic = () => (
   <Checkbox>

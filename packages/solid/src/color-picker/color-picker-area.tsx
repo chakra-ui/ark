@@ -8,16 +8,17 @@ import { useColorPickerContext } from './color-picker-context'
 export type ColorPickerAreaProps = HTMLArkProps<'div'> & ColorAreaProps
 
 export const ColorPickerArea = (props: ColorPickerAreaProps) => {
-  const [areaProps, localProps] = createSplitProps<ColorAreaProps>()(props, [
+  const [colorAreaProps, restProps] = createSplitProps<ColorAreaProps>()(props, [
     'xChannel',
     'yChannel',
   ])
-  const api = useColorPickerContext()
-  const mergedProps = mergeProps(api().getAreaProps(areaProps), localProps)
+
+  const colorPicker = useColorPickerContext()
+  const areaProps = mergeProps(() => colorPicker().getAreaProps(colorAreaProps), restProps)
 
   return (
-    <ColorPickerAreaProvider value={areaProps}>
-      <ark.div {...mergedProps} />
+    <ColorPickerAreaProvider value={colorAreaProps}>
+      <ark.div {...areaProps} />
     </ColorPickerAreaProvider>
   )
 }

@@ -56,7 +56,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autocomplete' | 'autohighlight'",
+      "type": "'none' | 'autohighlight' | 'autocomplete'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
     },

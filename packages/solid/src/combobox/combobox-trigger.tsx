@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxTriggerProps = { children: JSX.Element }
+export type ComboboxTriggerProps = HTMLArkProps<'button'>
 
 export const ComboboxTrigger = (props: ComboboxTriggerProps) => {
   const combobox = useComboboxContext()
-  const triggerProps = combobox().triggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const triggerProps = mergeProps(() => combobox().triggerProps, props)
+  return <ark.button {...triggerProps} />
 }

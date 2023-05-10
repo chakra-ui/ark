@@ -1,13 +1,14 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { useSplitter, type UseSplitterProps } from './use-splitter'
 
 export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
 
 export const Splitter = (props: SplitterProps) => {
-  const [useSplitterProps, divProps] = createSplitProps<UseSplitterProps>()(props, [
+  const [splitterParams, divProps] = createSplitProps<UseSplitterProps>()(props, [
     'dir',
     'getRootNode',
     'id',
@@ -18,11 +19,13 @@ export const Splitter = (props: SplitterProps) => {
     'orientation',
     'size',
   ])
-  const splitter = useSplitter(useSplitterProps)
+
+  const api = useSplitter(splitterParams)
+  const rootProps = mergeProps(() => api().rootProps, divProps)
 
   return (
-    <SplitterProvider value={splitter}>
-      <ark.div {...splitter().rootProps} {...divProps} />
+    <SplitterProvider value={api}>
+      <ark.div {...rootProps} />
     </SplitterProvider>
   )
 }

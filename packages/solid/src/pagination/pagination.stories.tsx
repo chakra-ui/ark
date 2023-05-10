@@ -9,24 +9,31 @@ import {
   PaginationPrevPageTrigger,
 } from './'
 import './pagination.css'
+import type { Meta } from 'storybook-solidjs'
+
+const meta: Meta = {
+  title: 'Pagination',
+}
+
+export default meta
 
 export const Basic = () => (
   <Pagination count={5000} pageSize={10} siblingCount={2}>
-    {({ pages }) => (
+    {(api) => (
       <PaginationList>
         <PaginationListItem>
-          <PaginationPrevPageTrigger>
+          <PaginationPrevPageTrigger asChild>
             <button>
               Previous <span class="visually-hidden">Page</span>
             </button>
           </PaginationPrevPageTrigger>
         </PaginationListItem>
 
-        <For each={pages}>
+        <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
               <PaginationListItem>
-                <PaginationPageTrigger value={page.value}>
+                <PaginationPageTrigger asChild value={page.value}>
                   <button>{page.value}</button>
                 </PaginationPageTrigger>
               </PaginationListItem>
@@ -38,7 +45,7 @@ export const Basic = () => (
           }
         </For>
         <PaginationListItem>
-          <PaginationNextPageTrigger>
+          <PaginationNextPageTrigger asChild>
             <button>
               Next <span class="visually-hidden">Page</span>
             </button>

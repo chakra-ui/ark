@@ -6,14 +6,14 @@ import { usePaginationContext } from './pagination-context'
 export type PaginationPrevPageTriggerProps = HTMLArkProps<'li'> & { children: JSX.Element }
 
 export const PaginationPrevPageTrigger = (props: PaginationPrevPageTriggerProps) => {
-  const pagination = usePaginationContext()
+  const api = usePaginationContext()
 
   const getChildren = children(() => props.children)
 
   createEffect(() => {
     const children = getChildren()
     if (children instanceof HTMLElement) {
-      spread(children, pagination().prevPageTriggerProps)
+      spread(children, api().prevPageTriggerProps)
     }
   })
 

@@ -1,5 +1,13 @@
 import { For, createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioInput, RadioLabel } from '.'
+import './radio-group.css'
+
+const meta: Meta = {
+  title: 'RadioGroup',
+}
+
+export default meta
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -12,7 +20,9 @@ export const Basic = () => {
   const [value, setValue] = createSignal('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel as="h3">Fruits: {value()}</RadioGroupLabel>
+      <RadioGroupLabel asChild>
+        <h3>Fruits: {value()}</h3>
+      </RadioGroupLabel>
       <For each={options}>
         {(option) => (
           <Radio
@@ -33,7 +43,9 @@ export const Disabled = () => {
   const [value, setValue] = createSignal('apple')
   return (
     <RadioGroup onChange={({ value }) => setValue(value)}>
-      <RadioGroupLabel as="h3">Fruits: {value()}</RadioGroupLabel>
+      <RadioGroupLabel asChild>
+        <h3>Fruits: {value()}</h3>
+      </RadioGroupLabel>
       <For each={options}>
         {(option) => (
           <Radio

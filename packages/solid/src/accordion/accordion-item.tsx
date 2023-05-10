@@ -1,7 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children, splitProps, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { splitProps, type JSX } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
@@ -17,16 +18,15 @@ export type AccordionItemProps = Assign<
 >
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const [itemProps, divProps] = splitProps(props, ['value', 'disabled'])
-  const accordion = useAccordionContext()
-  const view = () =>
-    children(() => runIfFn(divProps.children, () => accordion().getItemState(props)))
+  const [itemParams, restProps] = splitProps(props, ['value', 'disabled'])
+  const api = useAccordionContext()
+
+  const itemProps = mergeProps(() => api().getItemProps(itemParams), restProps)
+  const getChildren = () => runIfFn(restProps.children, () => api().getItemState(itemParams))
 
   return (
-    <AccordionItemProvider value={itemProps}>
-      <ark.div {...accordion().getItemProps(itemProps)} {...divProps}>
-        {view}
-      </ark.div>
+    <AccordionItemProvider value={itemParams}>
+      <ark.div {...itemProps}>{getChildren()}</ark.div>
     </AccordionItemProvider>
   )
 }

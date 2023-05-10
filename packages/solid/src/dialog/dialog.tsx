@@ -1,7 +1,7 @@
-import { children, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import { DialogProvider, useDialogContext } from './dialog-context'
+import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 
 export type DialogProps = UseDialogProps & {
@@ -32,17 +32,7 @@ export const Dialog = (props: DialogProps) => {
   ])
 
   const api = useDialog(dialogParams)
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return (
-    <DialogProvider value={api}>
-      <DialogContextWrapper {...localProps} />
-    </DialogProvider>
-  )
-}
-
-const DialogContextWrapper = (props: Pick<DialogProps, 'children'>) => {
-  const dialog = useDialogContext()
-  const view = children(() => runIfFn(props.children, dialog))
-
-  return <>{view()}</>
+  return <DialogProvider value={api}>{getChildren()}</DialogProvider>
 }

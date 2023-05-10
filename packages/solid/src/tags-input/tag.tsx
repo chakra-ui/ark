@@ -1,6 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
 
 export type TagProps = {
@@ -10,8 +11,8 @@ export type TagProps = {
 }
 
 export const Tag = (props: Assign<HTMLArkProps<'div'>, TagProps>) => {
-  const [tagProps, divProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
-  const tagsInput = useTagsInputContext()
-
-  return <ark.div {...tagsInput().getTagProps(tagProps)} {...divProps} />
+  const [tagParams, restProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
+  const api = useTagsInputContext()
+  const tagProps = mergeProps(() => api().getTagProps(tagParams), restProps)
+  return <ark.div {...tagProps} />
 }

@@ -6,9 +6,8 @@ import { useColorPickerContext } from './color-picker-context'
 export type ColorPickerAreaThumbProps = HTMLArkProps<'div'>
 
 export const ColorPickerAreaThumb = (props: ColorPickerAreaThumbProps) => {
-  const api = useColorPickerContext()
-  const colorAreaProps = useColorPickerAreaContext()
-  const mergedProps = mergeProps(api().getAreaThumbProps(colorAreaProps), props)
-
-  return <ark.div {...mergedProps} />
+  const colorPicker = useColorPickerContext()
+  const area = useColorPickerAreaContext()
+  const areaThumbProps = mergeProps(() => colorPicker().getAreaThumbProps(area), props)
+  return <ark.div {...areaThumbProps} />
 }

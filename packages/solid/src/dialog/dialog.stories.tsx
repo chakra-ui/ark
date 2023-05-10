@@ -1,4 +1,5 @@
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Dialog,
   DialogBackdrop,
@@ -8,12 +9,19 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from './'
+} from '.'
+import './dialog.css'
+
+const meta: Meta = {
+  title: 'Dialog',
+}
+
+export default meta
 
 export const Basic = () => {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <button>click me</button>
       </DialogTrigger>
       <Portal>
@@ -26,7 +34,7 @@ export const Basic = () => {
               <input placeholder="Enter name..." />
               <button>Save</button>
             </div>
-            <DialogCloseTrigger>
+            <DialogCloseTrigger asChild>
               <button>Close</button>
             </DialogCloseTrigger>
           </DialogContent>
@@ -41,7 +49,7 @@ export const DialogWithRenderFn = () => {
     <Dialog>
       {(api) => (
         <>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <button>Open Dialog</button>
           </DialogTrigger>
           <Portal>
