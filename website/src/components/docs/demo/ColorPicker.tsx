@@ -1,19 +1,22 @@
 import { Divider } from '@/components/shared/Divider'
 import { IconButton } from '@/components/shared/IconButton'
+import { Input } from '@/components/shared/Input'
 import { Text } from '@/components/shared/Text'
 import { Stack } from '@/panda/jsx'
-import { colorPicker, input } from '@/panda/recipes'
+import { colorPicker } from '@/panda/recipes'
 import {
   ColorPicker,
   ColorPickerArea,
   ColorPickerAreaGradient,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
+  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSliderThumb,
+  ColorPickerChannelSliderTrack,
   ColorPickerContent,
   ColorPickerEyeDropperTrigger,
-  ColorPickerSliderThumb,
-  ColorPickerSliderTrack,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
 } from '@ark-ui/react'
 import { CgColorPicker } from 'react-icons/cg'
@@ -54,17 +57,23 @@ export const DemoColorPicker = () => {
                   />
                 </ColorPickerEyeDropperTrigger>
                 <Stack gap="4" width="full">
-                  <ColorPickerSliderTrack channel={hue}>
-                    <ColorPickerSliderThumb />
-                  </ColorPickerSliderTrack>
-                  <ColorPickerSliderTrack channel="alpha">
-                    <ColorPickerSliderThumb />
-                  </ColorPickerSliderTrack>
+                  <ColorPickerChannelSliderTrack channel={hue}>
+                    <ColorPickerChannelSliderBackground />
+                    <ColorPickerChannelSliderThumb />
+                  </ColorPickerChannelSliderTrack>
+                  <ColorPickerChannelSliderTrack channel="alpha">
+                    <ColorPickerChannelSliderBackground />
+                    <ColorPickerChannelSliderThumb />
+                  </ColorPickerChannelSliderTrack>
                 </Stack>
               </Stack>
               <Stack direction="row" gap="4" align="center">
-                <ColorPickerChannelInput channel="hex" className={input({ size: 'sm' })} />
-                <ColorPickerChannelInput channel="alpha" className={input({ size: 'sm' })} />
+                <ColorPickerChannelInput channel="hex" asChild>
+                  <Input size="sm" />
+                </ColorPickerChannelInput>
+                <ColorPickerChannelInput channel="alpha" asChild>
+                  <Input size="sm" />
+                </ColorPickerChannelInput>
               </Stack>
             </Stack>
             <Divider />
@@ -74,7 +83,9 @@ export const DemoColorPicker = () => {
               </Text>
               <ColorPickerSwatchGroup>
                 {presets.map((color) => (
-                  <ColorPickerSwatch key={color} value={color} />
+                  <ColorPickerSwatch key={color} value={color}>
+                    <ColorPickerSwatchBackground />
+                  </ColorPickerSwatch>
                 ))}
               </ColorPickerSwatchGroup>
             </Stack>

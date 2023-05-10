@@ -1,15 +1,18 @@
 import type { Meta } from '@storybook/react'
+import { useState } from 'react'
 import {
   ColorPicker,
   ColorPickerArea,
   ColorPickerAreaGradient,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
+  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSliderThumb,
+  ColorPickerChannelSliderTrack,
   ColorPickerContent,
   ColorPickerEyeDropperTrigger,
-  ColorPickerSliderThumb,
-  ColorPickerSliderTrack,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
 } from './'
 import './color-picker.css'
@@ -37,13 +40,15 @@ export const Basic = () => (
             <ColorPickerAreaThumb />
           </ColorPickerArea>
 
-          <ColorPickerSliderTrack channel={hue}>
-            <ColorPickerSliderThumb />
-          </ColorPickerSliderTrack>
+          <ColorPickerChannelSliderTrack channel={hue}>
+            <ColorPickerChannelSliderBackground />
+            <ColorPickerChannelSliderThumb />
+          </ColorPickerChannelSliderTrack>
 
-          <ColorPickerSliderTrack channel="alpha">
-            <ColorPickerSliderThumb />
-          </ColorPickerSliderTrack>
+          <ColorPickerChannelSliderTrack channel="alpha">
+            <ColorPickerChannelSliderBackground />
+            <ColorPickerChannelSliderThumb />
+          </ColorPickerChannelSliderTrack>
 
           <ColorPickerChannelInput channel={hue} />
           <ColorPickerChannelInput channel={saturation} />
@@ -51,8 +56,12 @@ export const Basic = () => (
           <ColorPickerChannelInput channel="alpha" />
 
           <ColorPickerSwatchGroup>
-            <ColorPickerSwatch value="#123123" />
-            <ColorPickerSwatch value="#ff1321" />
+            <ColorPickerSwatch value="#123123">
+              <ColorPickerSwatchBackground />
+            </ColorPickerSwatch>
+            <ColorPickerSwatch value="#ff1321">
+              <ColorPickerSwatchBackground />
+            </ColorPickerSwatch>
           </ColorPickerSwatchGroup>
 
           <ColorPickerEyeDropperTrigger>Pick color</ColorPickerEyeDropperTrigger>
@@ -61,3 +70,13 @@ export const Basic = () => (
     }}
   </ColorPicker>
 )
+
+export const Controlled = () => {
+  const [color, setColor] = useState('hsl(10, 81%, 59%)')
+
+  return (
+    <ColorPicker value={color} onChange={(details) => setColor(details.value)}>
+      <ColorPickerContent>{/* ... */}</ColorPickerContent>
+    </ColorPicker>
+  )
+}

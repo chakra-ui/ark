@@ -9,7 +9,7 @@ export type DialogProps = UseDialogProps & {
 }
 
 export const Dialog = (props: DialogProps) => {
-  const [dialogParams, restProps] = createSplitProps<UseDialogProps>()(props, [
+  const [dialogParams, localProps] = createSplitProps<UseDialogProps>()(props, [
     'aria-label',
     'closeOnEsc',
     'closeOnOutsideClick',
@@ -32,7 +32,7 @@ export const Dialog = (props: DialogProps) => {
   ])
 
   const api = useDialog(dialogParams)
-  const getChildren = () => runIfFn(restProps.children, api)
+  const getChildren = () => runIfFn(localProps.children, api)
 
   return <DialogProvider value={api}>{getChildren()}</DialogProvider>
 }

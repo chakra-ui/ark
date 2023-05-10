@@ -1,5 +1,5 @@
 import type { ColorAreaProps } from '@zag-js/color-picker'
-import { mergeProps } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { ColorPickerAreaProvider } from './color-picker-area-context'

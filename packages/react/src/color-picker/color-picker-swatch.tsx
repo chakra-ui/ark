@@ -5,20 +5,21 @@ import { ark, type HTMLArkProps } from '../factory'
 import { forwardRef } from '../forward-ref'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
+import { ColorPickerSwatchProvider } from './color-picker-swatch.context'
 
 export type ColorPickerSwatchProps = Assign<HTMLArkProps<'button'>, ColorSwatchProps>
 
 export const ColorPickerSwatch = forwardRef<'button', ColorSwatchProps>((props, ref) => {
-  const [swatchProps, buttonProps] = createSplitProps<ColorSwatchProps>()(props, [
+  const [colorSwatchProps, localProps] = createSplitProps<ColorSwatchProps>()(props, [
     'readOnly',
     'value',
   ])
-  const { getSwatchProps, getSwatchBackgroundProps } = useColorPickerContext()
-  const mergedProps = mergeProps(getSwatchProps(swatchProps), buttonProps)
+  const { getSwatchProps } = useColorPickerContext()
+  const mergedProps = mergeProps(getSwatchProps(colorSwatchProps), localProps)
 
   return (
-    <ark.button {...mergedProps} ref={ref} disabled={swatchProps.readOnly}>
-      <ark.div {...getSwatchBackgroundProps(swatchProps)} />
-    </ark.button>
+    <ColorPickerSwatchProvider value={colorSwatchProps}>
+      <ark.button disabled={colorSwatchProps.readOnly} {...mergedProps} ref={ref} />
+    </ColorPickerSwatchProvider>
   )
 })
