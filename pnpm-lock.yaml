@@ -359,19 +359,19 @@ importers:
         specifier: 0.7.0
         version: 0.7.0(solid-js@1.7.5)
       '@storybook/addon-essentials':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-interactions':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-links':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/blocks':
-        specifier: ^7.0.9
-        version: 7.0.10(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.0.9
+        version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/testing-library':
-        specifier: ^0.0.14-next.2
+        specifier: 0.0.14-next.2
         version: 0.0.14-next.2
       '@testing-library/dom':
         specifier: 9.2.0
@@ -407,22 +407,22 @@ importers:
         specifier: 9.10.9
         version: 9.10.9
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       react-dom:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       solid-js:
         specifier: 1.7.5
         version: 1.7.5
       storybook:
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9
       storybook-solidjs:
-        specifier: ^1.0.0-beta.2
+        specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(babel-preset-solid@1.7.3)(solid-js@1.7.5)
       storybook-solidjs-vite:
-        specifier: ^1.0.0-beta.2
+        specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(typescript@5.0.4)(vite@4.3.5)
       typescript:
         specifier: 5.0.4
