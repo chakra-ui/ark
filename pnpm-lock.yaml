@@ -205,11 +205,11 @@ importers:
         specifier: 21.1.1
         version: 21.1.1
       '@types/react':
-        specifier: 18.0.32
-        version: 18.0.32
+        specifier: 18.2.6
+        version: 18.2.6
       '@types/react-dom':
-        specifier: 18.0.11
-        version: 18.0.11
+        specifier: 18.2.4
+        version: 18.2.4
       '@types/testing-library__jest-dom':
         specifier: 5.14.5
         version: 5.14.5
@@ -359,19 +359,19 @@ importers:
         specifier: 0.7.0
         version: 0.7.0(solid-js@1.7.5)
       '@storybook/addon-essentials':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-interactions':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/addon-links':
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/blocks':
-        specifier: ^7.0.9
-        version: 7.0.10(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.0.9
+        version: 7.0.9(react-dom@18.2.0)(react@18.2.0)
       '@storybook/testing-library':
-        specifier: ^0.0.14-next.2
+        specifier: 0.0.14-next.2
         version: 0.0.14-next.2
       '@testing-library/dom':
         specifier: 9.2.0
@@ -407,22 +407,22 @@ importers:
         specifier: 9.10.9
         version: 9.10.9
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       react-dom:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       solid-js:
         specifier: 1.7.5
         version: 1.7.5
       storybook:
-        specifier: ^7.0.9
+        specifier: 7.0.9
         version: 7.0.9
       storybook-solidjs:
-        specifier: ^1.0.0-beta.2
+        specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(babel-preset-solid@1.7.3)(solid-js@1.7.5)
       storybook-solidjs-vite:
-        specifier: ^1.0.0-beta.2
+        specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(typescript@5.0.4)(vite@4.3.5)
       typescript:
         specifier: 5.0.4
@@ -604,7 +604,7 @@ importers:
         version: 13.4.1
       '@pandacss/dev':
         specifier: 0.0.0-dev-20230509224037
-        version: 0.0.0-dev-20230509224037(@types/node@18.16.6)(@types/react-dom@18.0.11)(@types/react@18.0.32)(typescript@5.0.4)
+        version: 0.0.0-dev-20230509224037(@types/node@18.16.6)(@types/react-dom@18.2.4)(@types/react@18.2.6)(typescript@5.0.4)
       '@theme-toggles/react':
         specifier: 4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -664,11 +664,11 @@ importers:
         specifier: 18.16.6
         version: 18.16.6
       '@types/react':
-        specifier: 18.0.32
-        version: 18.0.32
+        specifier: 18.2.6
+        version: 18.2.6
       '@types/react-dom':
-        specifier: 18.0.11
-        version: 18.0.11
+        specifier: 18.2.4
+        version: 18.2.4
       concurrently:
         specifier: 8.0.1
         version: 8.0.1
@@ -787,7 +787,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react@2.1.3(@types/react-dom@18.0.11)(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0):
+  /@astrojs/react@2.1.3(@types/react-dom@18.2.4)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-m0PgAEZOF0bZFYwRszCu9DvW62xaExUyuYw/7M9+sOWTr91/t6E6UFuui3h7uNVteFSAeHXoeIGgbUPheR2A5Q==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -798,8 +798,8 @@ packages:
     dependencies:
       '@babel/core': 7.21.0
       '@babel/plugin-transform-react-jsx': 7.21.0(@babel/core@7.21.0)
-      '@types/react': 18.0.32
-      '@types/react-dom': 18.0.11
+      '@types/react': 18.2.6
+      '@types/react-dom': 18.2.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -1111,11 +1111,6 @@ packages:
   /@babel/helper-validator-identifier@7.19.1:
     resolution: {integrity: sha512-awrNfaMtnHUr653GgGEs++LlAvW6w+DcPrOliSMXWCKo597CwL5Acf/wWdNkf/tfEQE3mjkeD1YOVZOUV/od1w==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/helper-validator-option@7.18.6:
-    resolution: {integrity: sha512-XO7gESt5ouv/LRJdrVjkShckw6STTaB7l9BrpBaAHDeF5YZT+01PCwmR0SJHnkW6i8OwW/EVWRShfi4j2x+KQw==}
-    engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.21.0:
     resolution: {integrity: sha512-rmL/B8/f0mKS2baE9ZpyTcTavvEuWhTTW8amjzXNvYG4AwBsqTLikfXsEofsJEfKHf+HQVQbFOHy6o+4cnC/fQ==}
@@ -1923,20 +1918,6 @@ packages:
       '@babel/helper-plugin-utils': 7.20.2
     dev: true
 
-  /@babel/plugin-transform-typescript@7.20.2(@babel/core@7.21.0):
-    resolution: {integrity: sha512-jvS+ngBfrnTUBfOQq8NfGnSbF9BrqlR6hjJ2yVxMkmO5nL/cdifNbI30EfjRlN4g5wYWNnMPyj5Sa6R1pbLeag==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.21.0
-      '@babel/helper-create-class-features-plugin': 7.21.0(@babel/core@7.21.0)
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/plugin-syntax-typescript': 7.20.0(@babel/core@7.21.0)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@babel/plugin-transform-typescript@7.21.3(@babel/core@7.21.0):
     resolution: {integrity: sha512-RQxPz6Iqt8T0uw/WsJNReuBpWpBqs/n7mNo18sKLoTbMp+UrEekhH+pKSVC7gWz+DNjo9gryfV8YzCiT45RgMw==}
     engines: {node: '>=6.9.0'}
@@ -2092,8 +2073,8 @@ packages:
     dependencies:
       '@babel/core': 7.21.0
       '@babel/helper-plugin-utils': 7.20.2
-      '@babel/helper-validator-option': 7.18.6
-      '@babel/plugin-transform-typescript': 7.20.2(@babel/core@7.21.0)
+      '@babel/helper-validator-option': 7.21.0
+      '@babel/plugin-transform-typescript': 7.21.3(@babel/core@7.21.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3497,7 +3478,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.3
-      '@types/react': 18.0.32
+      '@types/react': 18.2.6
       react: 18.2.0
     dev: true
 
@@ -3915,12 +3896,12 @@ packages:
       - typescript
     dev: false
 
-  /@pandacss/dev@0.0.0-dev-20230509224037(@types/node@18.16.6)(@types/react-dom@18.0.11)(@types/react@18.0.32)(typescript@5.0.4):
+  /@pandacss/dev@0.0.0-dev-20230509224037(@types/node@18.16.6)(@types/react-dom@18.2.4)(@types/react@18.2.6)(typescript@5.0.4):
     resolution: {integrity: sha512-YYTuuPnbxV4EKylHzlQopXuWWwxZdagHsJJL30q1Q3Szxflpjy+kbHRccccmIRa8sFXsGzd2PwZVm73oQceSVQ==}
     hasBin: true
     dependencies:
       '@ark-ui/react': 0.2.0(react-dom@18.2.0)(react@18.2.0)
-      '@astrojs/react': 2.1.3(@types/react-dom@18.0.11)(@types/react@18.0.32)(react-dom@18.2.0)(react@18.2.0)
+      '@astrojs/react': 2.1.3(@types/react-dom@18.2.4)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
       '@pandacss/config': 0.0.0-dev-20230509224037(typescript@5.0.4)
       '@pandacss/error': 0.0.0-dev-20230509224037
       '@pandacss/logger': 0.0.0-dev-20230509224037
@@ -5905,7 +5886,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.13
       '@testing-library/dom': 9.2.0
-      '@types/react-dom': 18.0.11
+      '@types/react-dom': 18.2.4
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -6284,13 +6265,13 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: true
 
-  /@types/react-dom@18.0.11:
-    resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
+  /@types/react-dom@18.2.4:
+    resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.0.32
+      '@types/react': 18.2.6
 
-  /@types/react@18.0.32:
-    resolution: {integrity: sha512-gYGXdtPQ9Cj0w2Fwqg5/ak6BcK3Z15YgjSqtyDizWUfx7mQ8drs0NBUzRRsAdoFVTO8kJ8L2TL8Skm7OFPnLUw==}
+  /@types/react@18.2.6:
+    resolution: {integrity: sha512-wRZClXn//zxCFW+ye/D2qY65UsYP1Fpex2YXorHc8awoNamkMZSvBxwxdYVInsHOZZd2Ppq8isnSzJL5Mpf8OA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
