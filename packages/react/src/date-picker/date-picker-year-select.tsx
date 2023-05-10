@@ -1,26 +1,24 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useDatePickerContext } from './date-picker-context'
 
 export type DatePickerYearSelectProps = HTMLArkProps<'select'>
 
-export const DatePickerYearSelect = forwardRef<'select', DatePickerYearSelectProps>(
-  (props, ref) => {
-    const { yearSelectProps } = useDatePickerContext()
-    const mergedProps = mergeProps(yearSelectProps, props)
+export const DatePickerYearSelect = forwardRef<'select'>((props, ref) => {
+  const { yearSelectProps } = useDatePickerContext()
+  const mergedProps = mergeProps(yearSelectProps, props)
 
-    return (
-      <ark.select {...mergedProps} ref={ref}>
-        {getYearsRange({ from: 1_000, to: 4_000 }).map((year, i) => (
-          <option key={i} value={year}>
-            {year}
-          </option>
-        ))}
-      </ark.select>
-    )
-  },
-)
+  return (
+    <ark.select {...mergedProps} ref={ref}>
+      {getYearsRange({ from: 1_000, to: 4_000 }).map((year, i) => (
+        <option key={i} value={year}>
+          {year}
+        </option>
+      ))}
+    </ark.select>
+  )
+})
 
 export interface YearsRange {
   from: number

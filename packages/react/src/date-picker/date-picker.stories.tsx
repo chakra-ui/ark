@@ -20,12 +20,8 @@ export const Basic = () => {
           </output>
           <DatePickerControl>
             <DatePickerInput />
-            <DatePickerTrigger>
-              <button>🗓</button>
-            </DatePickerTrigger>
-            <DatePickerClearTrigger>
-              <button>❌</button>
-            </DatePickerClearTrigger>
+            <DatePickerTrigger>🗓</DatePickerTrigger>
+            <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
           </DatePickerControl>
           <DatePickerContent>
             <div>

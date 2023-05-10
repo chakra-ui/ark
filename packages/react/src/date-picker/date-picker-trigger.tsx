@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerTriggerProps = { children: ReactElement }
+export type DatePickerTriggerProps = HTMLArkProps<'button'>
 
-export const DatePickerTrigger = (props: DatePickerTriggerProps) => {
+export const DatePickerTrigger = forwardRef<'button'>((props, ref) => {
   const { triggerProps } = useDatePickerContext()
+  const mergedProps = mergeProps(triggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, triggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})
