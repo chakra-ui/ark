@@ -1,0 +1,8 @@
+[data-scope='date-picker'][data-part='content'] {
+  max-width: 320px;
+}
+
+[data-scope='date-picker'][data-part='grid'][data-type='day'] {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}

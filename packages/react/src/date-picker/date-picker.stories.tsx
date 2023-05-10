@@ -3,11 +3,13 @@ import {
   DatePickerClearTrigger,
   DatePickerContent,
   DatePickerControl,
+  DatePickerGrid,
   DatePickerInput,
   DatePickerMonthSelect,
   DatePickerTrigger,
   DatePickerYearSelect,
 } from './'
+import './date-picker.css'
 
 export const Basic = () => {
   return (
@@ -24,10 +26,27 @@ export const Basic = () => {
             <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
           </DatePickerControl>
           <DatePickerContent>
-            <div>
+            <>
               <DatePickerYearSelect />
               <DatePickerMonthSelect />
-              <table {...api.getGridProps()}>
+              <DatePickerGrid>
+                {/* 
+                {api.daysOfMonth.map((day) => (
+                  <DatePickerDayTrigger key={day.day} value={day} />
+                ))}
+                */}
+                {api.weeks.map((week) =>
+                  week.map((day, id) => {
+                    if (day === null) return <div />
+                    return (
+                      <div key={id} {...api.getDayCellProps({ value: day })}>
+                        <button {...api.getDayCellTriggerProps({ value: day })}>{day.day}</button>
+                      </div>
+                    )
+                  }),
+                )}
+              </DatePickerGrid>
+              {/* <table {...api.getGridProps()}>
                 <thead {...api.getHeaderProps()}>
                   <tr>
                     {api.weekDays.map((day, i) => (
@@ -51,18 +70,8 @@ export const Basic = () => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
-            </div>
-            {/* <DatePickerDayView>
-              <DatePickerDayCell>
-                <DatePickerDayCellTrigger />
-              </DatePickerDayCell>
-            </DatePickerDayView> */}
-            {/* <DatePickerGrid>
-              <DatePickerDayView />
-              <DatePickerMonthView />
-              <DatePickerYearView />
-            </DatePickerGrid> */}
+              </table> */}
+            </>
           </DatePickerContent>
         </>
       )}

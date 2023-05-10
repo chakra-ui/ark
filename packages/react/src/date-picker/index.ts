@@ -5,6 +5,7 @@ export {
 } from './date-picker-clear-trigger'
 export { DatePickerContent, type DatePickerContentProps } from './date-picker-content'
 export { DatePickerControl, type DatePickerControlProps } from './date-picker-control'
+export { DatePickerGrid, type DatePickerGridProps } from './date-picker-grid'
 export { DatePickerInput, type DatePickerInputProps } from './date-picker-input'
 export { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
 export { DatePickerTrigger, type DatePickerTriggerProps } from './date-picker-trigger'
