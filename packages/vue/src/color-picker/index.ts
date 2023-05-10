@@ -10,17 +10,25 @@ export {
   type ColorPickerChannelInputProps,
 } from './color-picker-channel-input'
 export {
-  ColorPickerSliderThumb,
-  type ColorPickerSliderThumbProps,
+  ColorPickerChannelSliderBackground,
+  type ColorPickerChannelSliderBackgroundProps,
+} from './color-picker-channel-slider-background'
+export {
+  ColorPickerChannelSliderThumb,
+  type ColorPickerChannelSliderThumbProps,
 } from './color-picker-channel-slider-thumb'
 export {
-  ColorPickerSliderTrack,
-  type ColorPickerSliderTrackProps,
+  ColorPickerChannelSliderTrack,
+  type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track'
 export { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
-export type { ColorPickerContext } from './color-picker-context'
+export { type ColorPickerContext } from './color-picker-context'
 export { ColorPickerEyeDropperTrigger } from './color-picker-eye-dropper-trigger'
 export { ColorPickerSwatch, type ColorPickerSwatchProps } from './color-picker-swatch'
+export {
+  ColorPickerSwatchBackground,
+  type ColorPickerSwatchBackgroundProps,
+} from './color-picker-swatch-background'
 export {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
