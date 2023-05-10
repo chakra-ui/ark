@@ -56,7 +56,9 @@ export const Basic = () => (
             <ColorPickerSwatch value="#123123">
               <ColorPickerSwatchBackground />
             </ColorPickerSwatch>
-            <ColorPickerSwatch value="#ff1321" />
+            <ColorPickerSwatch value="#ff1321">
+              <ColorPickerSwatchBackground />
+            </ColorPickerSwatch>
           </ColorPickerSwatchGroup>
 
           <ColorPickerEyeDropperTrigger>Pick color</ColorPickerEyeDropperTrigger>
