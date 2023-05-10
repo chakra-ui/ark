@@ -1,13 +1,14 @@
-import type { Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { CarouselProvider } from './carousel-context'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 
 export type CarouselProps = Assign<HTMLArkProps<'div'>, UseCarouselProps>
 
 export const Carousel = (props: CarouselProps) => {
-  const [useCarouselProps, divProps] = createSplitProps<UseCarouselProps>()(props, [
+  const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
     'align',
     'dir',
     'getRootNode',
@@ -21,10 +22,10 @@ export const Carousel = (props: CarouselProps) => {
     'spacing',
   ])
   const carousel = useCarousel(useCarouselProps)
-
+  const rootProps = mergeProps(() => carousel().rootProps, localProps)
   return (
     <CarouselProvider value={carousel}>
-      <ark.div {...carousel().rootProps} {...divProps} />
+      <ark.div {...rootProps} />
     </CarouselProvider>
   )
 }
