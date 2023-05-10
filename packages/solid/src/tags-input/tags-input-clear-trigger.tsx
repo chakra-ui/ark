@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputClearTriggerProps = { children: JSX.Element }
+export type TagsInputClearTriggerProps = HTMLArkProps<'button'>
 
 export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
   const tagsInput = useTagsInputContext()
-  const triggerProps = tagsInput().clearTriggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const triggerProps = mergeProps(() => tagsInput().clearTriggerProps, props)
+  return <ark.button {...triggerProps} />
 }

@@ -1,8 +1,15 @@
 import { For } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Accordion } from './accordion'
 import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
 import { AccordionTrigger } from './accordion-trigger'
+
+const meta: Meta = {
+  title: 'Accordion',
+}
+
+export default meta
 
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
@@ -11,7 +18,7 @@ export const Basic = () => {
       <For each={items}>
         {(item) => (
           <AccordionItem value={item}>
-            <AccordionTrigger>
+            <AccordionTrigger asChild>
               <button>{item} trigger</button>
             </AccordionTrigger>
             <AccordionContent>{item} content</AccordionContent>
@@ -29,7 +36,7 @@ export const Disabled = () => {
       <For each={items}>
         {(item) => (
           <AccordionItem value={item} disabled={item === 'panel-2'}>
-            <AccordionTrigger>
+            <AccordionTrigger asChild>
               <button>{item} trigger</button>
             </AccordionTrigger>
             <AccordionContent>{item} content</AccordionContent>
@@ -47,10 +54,10 @@ export const ItemState = () => {
       <For each={items}>
         {(item) => (
           <AccordionItem value={item}>
-            {(state) => (
+            {(itemState) => (
               <>
-                {state().isOpen ? 'Open' : 'Close'}
-                <AccordionTrigger>
+                {itemState().isOpen ? 'Open' : 'Close'}
+                <AccordionTrigger asChild>
                   <button>{item} trigger</button>
                 </AccordionTrigger>
                 <AccordionContent>{item} content</AccordionContent>

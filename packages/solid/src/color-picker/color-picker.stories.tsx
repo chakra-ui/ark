@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   ColorPicker,
   ColorPickerArea,
@@ -16,10 +17,16 @@ import {
 } from './'
 import './color-picker.css'
 
+const meta: Meta = {
+  title: 'ColorPicker',
+}
+
+export default meta
+
 export const Basic = () => (
   <ColorPicker value="hsla(10, 81%, 59%, 1)">
     {(api) => {
-      const [hue, saturation, lightness] = api.channels
+      const [hue, saturation, lightness] = api().channels
       return (
         <ColorPickerContent>
           <ColorPickerArea xChannel={saturation} yChannel={lightness}>

@@ -9,6 +9,7 @@ export type UseRadioGroupReturn = ReturnType<typeof useRadioGroup>
 
 export const useRadioGroup = (props: UseRadioGroupProps) => {
   const getRootNode = useEnvironmentContext()
+
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
   const [state, send] = useMachine(radio.machine(context), {
     context,

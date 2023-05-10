@@ -1,20 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 
-export type MenuContextTriggerProps = { children: JSX.Element }
+export type MenuContextTriggerProps = HTMLArkProps<'button'>
 
 export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
   const menu = useMenuContext()
-
-  const getChildren = children(() => props.children)
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, menu?.()?.contextTriggerProps)
-    }
-  })
-
-  return getChildren()
+  const triggerProps = mergeProps(() => menu?.().contextTriggerProps, props)
+  return <ark.button {...triggerProps} />
 }

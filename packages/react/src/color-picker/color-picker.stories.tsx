@@ -32,6 +32,9 @@ export const Basic = () => (
       const [hue, saturation, lightness] = api.channels
       return (
         <ColorPickerContent>
+          <output>
+            <ColorPickerSwatch value={api.value} readOnly />
+          </output>
           <ColorPickerArea xChannel={saturation} yChannel={lightness}>
             <ColorPickerAreaGradient />
             <ColorPickerAreaThumb />

@@ -11,6 +11,7 @@ export const useDialog = (props: UseDialogProps) => {
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
   const [state, send] = useMachine(dialog.machine(context), { context })
+
   return createMemo(() => dialog.connect(state, send, normalizeProps))
 }
 

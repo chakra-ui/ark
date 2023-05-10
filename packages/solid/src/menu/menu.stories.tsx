@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Menu,
   MenuContent,
@@ -14,9 +15,15 @@ import {
 } from '.'
 import './menu.css'
 
+const meta: Meta = {
+  title: 'Menu',
+}
+
+export default meta
+
 export const Basic = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger asChild>
       <button>Open menu</button>
     </MenuTrigger>
     <Portal>
@@ -41,7 +48,7 @@ export const WithIsOpen = () => {
     <>
       <button onClick={() => setIsOpen(!isOpen())}>Trigger from the outside</button>
       <Menu isOpen={isOpen}>
-        <MenuTrigger>
+        <MenuTrigger asChild>
           <button>Toggle menu</button>
         </MenuTrigger>
         <Portal>
@@ -63,7 +70,7 @@ export const WithIsOpen = () => {
 
 export const Group = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger asChild>
       <button>Open menu</button>
     </MenuTrigger>
     <Portal>
@@ -100,7 +107,7 @@ export const Options = () => {
         }))
       }}
     >
-      <MenuTrigger>
+      <MenuTrigger asChild>
         <button>Open menu</button>
       </MenuTrigger>
       <Portal>
@@ -109,28 +116,28 @@ export const Options = () => {
             <MenuItemGroup id="radio-group">
               <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
               <MenuOptionItem name="framework" type="radio" value="react">
-                {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} React</>}
               </MenuOptionItem>
               <MenuOptionItem name="framework" type="radio" value="solid">
-                {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} Solid</>}
               </MenuOptionItem>
               <MenuOptionItem name="framework" type="radio" value="vue">
-                {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} Vue</>}
               </MenuOptionItem>
             </MenuItemGroup>
             <MenuItemGroup id="checkbox-group">
               <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
               <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
-                {({ isActive }) => <>{isActive ? '✅' : ''} zag-js</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} zag-js</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="ark">
-                {({ isActive }) => <>{isActive ? '✅' : ''} ark</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} ark</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="panda">
-                {({ isActive }) => <>{isActive ? '✅' : ''} panda</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} panda</>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="chakra">
-                {({ isActive }) => <>{isActive ? '✅' : ''} chakra</>}
+                {(itemState) => <>{itemState().isActive ? '✅' : ''} chakra</>}
               </MenuOptionItem>
             </MenuItemGroup>
           </MenuContent>
@@ -142,7 +149,7 @@ export const Options = () => {
 
 export const SubMenu = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger asChild>
       <button>Open menu</button>
     </MenuTrigger>
     <Portal>

@@ -1,16 +1,16 @@
 import { type Placement } from '@zag-js/toast'
-import { children, type JSX } from 'solid-js'
+import { createMemo, type Accessor, type JSX } from 'solid-js'
 import { runIfFn } from '../run-if-fn'
 import { useToast } from './toast-provider'
 
 export type ToastPlacementsProps = {
-  children: (placements: Placement[]) => JSX.Element
+  children: (placements: Accessor<Placement[]>) => JSX.Element
 }
 
 export const ToastPlacements = (props: ToastPlacementsProps) => {
   const toast = useToast()
-  const view = () =>
-    children(() => runIfFn(props.children, Object.keys(toast().toastsByPlacement) as Placement[]))
+  const placements = createMemo(() => Object.keys(toast().toastsByPlacement) as Placement[])
 
-  return <>{view}</>
+  const getChildren = () => runIfFn(props.children, placements)
+  return <>{getChildren()}</>
 }

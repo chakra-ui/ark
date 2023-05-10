@@ -25,7 +25,7 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
       {...props}
     >
       <RangeSliderLabel>Quantity: </RangeSliderLabel>
-      <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
+      <RangeSliderOutput>{(api) => api().value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>
         <RangeSliderTrack>
           <RangeSliderRange />
