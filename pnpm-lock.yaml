@@ -667,8 +667,8 @@ importers:
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@octokit/types':
-        specifier: 9.2.1
-        version: 9.2.1
+        specifier: 9.2.2
+        version: 9.2.2
       '@types/node':
         specifier: 18.16.7
         version: 18.16.7
@@ -3715,14 +3715,14 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@octokit/openapi-types@17.1.1:
-    resolution: {integrity: sha512-/X7Gh/qWiWaooJmUnYD48SYy72fyrk2ceisOSe89JojK7r0j8YrTwYpDi76kI+c6QiqX1KSgdoBTMJvktsDkYw==}
+  /@octokit/openapi-types@17.1.2:
+    resolution: {integrity: sha512-OaS7Ol4Y+U50PbejfzQflGWRMxO04nYWO5ZBv6JerqMKE2WS/tI9VoVDDPXHBlRMGG2fOdKwtVGlFfc7AVIstw==}
     dev: true
 
-  /@octokit/types@9.2.1:
-    resolution: {integrity: sha512-Vx4keMiD/CAiwVFasLcH0xBSVbKIHebIZke9i7ZbUWGNN4vJFWSYH6Nvga7UY9NIJCGa6x3QG849XTbi5wYmkA==}
+  /@octokit/types@9.2.2:
+    resolution: {integrity: sha512-9BjDxjgQIvCjNWZsbqyH5QC2Yni16oaE6xL+8SUBMzcYPF4TGQBXGA97Cl3KceK9mwiNMb1mOYCz6FbCCLEL+g==}
     dependencies:
-      '@octokit/openapi-types': 17.1.1
+      '@octokit/openapi-types': 17.1.2
     dev: true
 
   /@opentelemetry/api-metrics@0.31.0:
