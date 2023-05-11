@@ -8,14 +8,14 @@ import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
-export type SwtichProps = Assign<
+export type SwitchProps = Assign<
   Assign<HTMLArkProps<'label'>, UseSwitchProps>,
   {
     children: ReactNode | ((pages: UseSwitchReturn) => ReactNode)
   }
 >
 
-export const Switch = forwardRef<'label', SwtichProps>((props, ref) => {
+export const Switch = forwardRef<'label', SwitchProps>((props, ref) => {
   const [switchProps, { children, ...labelProps }] = createSplitProps<UseSwitchProps>()(props, [
     'aria-describedby',
     'aria-label',
