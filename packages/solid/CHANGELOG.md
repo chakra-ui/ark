@@ -1,5 +1,11 @@
 ## 0.1.0
 
+## 0.3.0
+
+### Minor Changes
+
+- [`ec4ef660`](https://github.com/chakra-ui/ark/commit/ec4ef66000822168ce050f2ae5377f1b56259f1d) Thanks [@segunadebayo](https://github.com/segunadebayo)! - Add support for `asChild` prop in all components
+
 ## 0.2.0
 
 ### Minor Changes
