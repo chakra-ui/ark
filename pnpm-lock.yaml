@@ -158,6 +158,9 @@ importers:
       '@zag-js/splitter':
         specifier: 0.7.0
         version: 0.7.0
+      '@zag-js/switch':
+        specifier: 0.7.0
+        version: 0.7.0
       '@zag-js/tabs':
         specifier: 0.7.0
         version: 0.7.0
@@ -7510,6 +7513,18 @@ packages:
     resolution: {integrity: sha512-QgBnbYjb5jvcTt0+JCoPJ9YKM9vP1/RR78mkT6fWCIM0N8hnZu4MzQPVKxiopxZ8XIrDbUjFWlJLzL83uiYv2g==}
     dependencies:
       proxy-compare: 2.5.0
+    dev: false
+
+  /@zag-js/switch@0.7.0:
+    resolution: {integrity: sha512-XKW761B4MhGQidoOkpE8MZhXBWk+IeYlh886MNC5g2BRWpEsTxDmS1PH5kPsTzEhRz4iJp5bYp/RW9rRzvnhzg==}
+    dependencies:
+      '@zag-js/anatomy': 0.1.4
+      '@zag-js/core': 0.7.0
+      '@zag-js/dom-query': 0.1.4
+      '@zag-js/form-utils': 0.2.5
+      '@zag-js/types': 0.5.0
+      '@zag-js/utils': 0.3.4
+      '@zag-js/visually-hidden': 0.0.1
     dev: false
 
   /@zag-js/tabbable@0.1.1:
