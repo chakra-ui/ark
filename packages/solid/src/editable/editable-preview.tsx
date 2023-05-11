@@ -1,4 +1,4 @@
-import { mergeProps } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
