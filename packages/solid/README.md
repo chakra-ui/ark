@@ -34,6 +34,7 @@ At the moment, `@ark-ui/solid`offers the following components:
 - [Select](https://ark-ui.com/docs/solid/components/select)
 - [Slider](https://ark-ui.com/docs/solid/components/slider)
 - [Splitter](https://ark-ui.com/docs/solid/components/splitter)
+- [Switch](https://ark-ui.com/docs/solid/components/switch)
 - [Tabs](https://ark-ui.com/docs/solid/components/tabs)
 - [Tags Input](https://ark-ui.com/docs/solid/components/tags-input)
 - [Toast](https://ark-ui.com/docs/solid/components/toast)
