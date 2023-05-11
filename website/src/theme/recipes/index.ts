@@ -23,6 +23,7 @@ import { ratingGroup } from './rating-group'
 import { select } from './select'
 import { slider } from './slider'
 import { splitter } from './splitter'
+import { switchRecipe } from './switch'
 import { tabs } from './tabs'
 import { tagsInput } from './tags-input'
 import { toast } from './toast'
@@ -54,6 +55,7 @@ export const recipes = {
   select,
   slider,
   splitter,
+  switchRecipe,
   tabs,
   tagsInput,
   toast,

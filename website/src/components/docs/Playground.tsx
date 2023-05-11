@@ -28,6 +28,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('select', () => lazyLoad(() => import('./demo/Select'), 'DemoSelect'))
     .with('slider', () => lazyLoad(() => import('./demo/Slider'), 'DemoSlider'))
     .with('splitter', () => lazyLoad(() => import('./demo/Splitter'), 'DemoSplitter'))
+    .with('switch', () => lazyLoad(() => import('./demo/Switch'), 'DemoSwitch'))
     .with('tabs', () => lazyLoad(() => import('./demo/Tabs'), 'DemoTabs'))
     .with('tags-input', () => lazyLoad(() => import('./demo/TagsInput'), 'DemoTagsInput'))
     .with('toast', () => lazyLoad(() => import('./demo/Toast'), 'DemoToast'))
