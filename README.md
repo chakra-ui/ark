@@ -14,7 +14,7 @@
 | Carousel                | 🟢    | 🟢    | ⚪  |
 | Checkbox                | 🟢    | 🟢    | 🟢  |
 | Color Picker            | 🟢    | 🟢    | 🟢  |
-| Date Picker (beta)      | 🟡    | ⚪    | ⚪  |
+| Date Picker             | 🟢    | ⚪    | ⚪  |
 | Dialog                  | 🟢    | 🟢    | 🟢  |
 | Combobox / Autocomplete | 🟢    | 🟢    | 🟢  |
 | Editable                | 🟢    | 🟢    | 🟢  |
