@@ -1,9 +1,9 @@
+import type { Meta } from '@storybook/react'
 import {
   DatePicker,
   DatePickerClearTrigger,
   DatePickerContent,
   DatePickerControl,
-  DatePickerGrid,
   DatePickerInput,
   DatePickerMonthSelect,
   DatePickerTrigger,
@@ -11,9 +11,18 @@ import {
 } from './'
 import './date-picker.css'
 
+type DatePickerType = typeof DatePicker
+
+const meta: Meta<DatePickerType> = {
+  title: 'DatePicker',
+  component: DatePicker,
+}
+
+export default meta
+
 export const Basic = () => {
   return (
-    <DatePicker selectionMode="single">
+    <DatePicker selectionMode="range">
       {(api) => (
         <>
           <output>
@@ -29,12 +38,13 @@ export const Basic = () => {
             <>
               <DatePickerYearSelect />
               <DatePickerMonthSelect />
-              <DatePickerGrid>
-                {/* 
-                {api.daysOfMonth.map((day) => (
+
+              {/* {api.daysOfMonth.map((day) => (
                   <DatePickerDayTrigger key={day.day} value={day} />
-                ))}
-                */}
+                ))} */}
+              {/* <DatePickerGrid>
+ 
+
                 {api.weeks.map((week) =>
                   week.map((day, id) => {
                     if (day === null) return <div />
@@ -45,7 +55,34 @@ export const Basic = () => {
                     )
                   }),
                 )}
-              </DatePickerGrid>
+              </DatePickerGrid> */}
+              <div role="grid">
+                <div role="row">
+                  <div role="columnheader">Mo</div>
+                </div>
+                <div role="rowgroup">
+                  <div role="row">
+                    <div role="gridcell">
+                      <button role="button">1</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 
+              <DatePickerGrid>
+                <DatePickerHeaderRow> 
+                  <DatePickerHeader />
+                </DatePickerHeaderRow>
+                <DatePickerRowGroup>
+                  <DatePickerRow>
+                    <DatePickerDayCell>
+                      <DatePickerDayCellTrigger />
+                    </DatePickerDayCell>
+                  </DatePickerRow>
+                </DatePickerRowGroup>
+              </DatePickerGrid> 
+*/}
+
               {/* <table {...api.getGridProps()}>
                 <thead {...api.getHeaderProps()}>
                   <tr>
