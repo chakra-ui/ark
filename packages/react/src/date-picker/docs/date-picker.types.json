@@ -128,5 +128,8 @@
     "value": { "type": "DateValue", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
     "offset": { "type": "Offset", "isRequired": false }
-  }
+  },
+  "DatePickerNextTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerPrevTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
 }
