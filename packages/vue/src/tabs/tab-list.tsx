@@ -11,9 +11,9 @@ export const TabList: ComponentWithProps<TabListProps> = defineComponent({
     const api = useTabsContext()
 
     return () => (
-      <ark.div {...api.value.tablistProps} {...attrs}>
+      <ark.address {...api.value.tablistProps} {...attrs}>
         {() => getValidChildren(slots)}
-      </ark.div>
+      </ark.address>
     )
   },
 })

@@ -16,7 +16,7 @@ import {
     <PopoverTrigger>
       <button>click me</button>
     </PopoverTrigger>
-    <PopoverPositioner>
+    <PopoverPositioner as-child>
       <PopoverContent>
         <PopoverArrow>
           <PopoverArrowTip />
