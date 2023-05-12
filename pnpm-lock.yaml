@@ -448,9 +448,6 @@ importers:
 
   packages/vue:
     dependencies:
-      '@polymorphic-factory/vue':
-        specifier: 0.2.0
-        version: 0.2.0(vue@3.2.47)
       '@zag-js/accordion':
         specifier: 0.8.0
         version: 0.8.0
@@ -589,7 +586,7 @@ importers:
         version: 4.3.5(@types/node@18.16.8)
       vite-plugin-dts:
         specifier: 2.3.0
-        version: 2.3.0(@types/node@18.16.8)(vite@4.3.5)
+        version: 2.3.0(vite@4.3.5)
       vitest:
         specifier: 0.31.0
         version: 0.31.0(happy-dom@9.10.9)(jsdom@22.0.0)
@@ -3508,12 +3505,42 @@ packages:
       react: 18.2.0
     dev: true
 
+  /@microsoft/api-extractor-model@7.26.4:
+    resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.2
+      '@microsoft/tsdoc-config': 0.16.2
+      '@rushstack/node-core-library': 3.55.2
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
   /@microsoft/api-extractor-model@7.26.4(@types/node@18.16.8):
     resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
       '@rushstack/node-core-library': 3.55.2(@types/node@18.16.8)
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
+  /@microsoft/api-extractor@7.34.4:
+    resolution: {integrity: sha512-HOdcci2nT40ejhwPC3Xja9G+WSJmWhCUKKryRfQYsmE9cD+pxmBaKBKCbuS9jUcl6bLLb4Gz+h7xEN5r0QiXnQ==}
+    hasBin: true
+    dependencies:
+      '@microsoft/api-extractor-model': 7.26.4
+      '@microsoft/tsdoc': 0.14.2
+      '@microsoft/tsdoc-config': 0.16.2
+      '@rushstack/node-core-library': 3.55.2
+      '@rushstack/rig-package': 0.3.18
+      '@rushstack/ts-command-line': 4.13.2
+      colors: 1.2.5
+      lodash: 4.17.21
+      resolve: 1.22.1
+      semver: 7.3.8
+      source-map: 0.6.1
+      typescript: 4.8.4
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -4104,14 +4131,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@polymorphic-factory/vue@0.2.0(vue@3.2.47):
-    resolution: {integrity: sha512-0MKD0A48lRTl2Os2jnCOjdwJOstcFxdzcXcrhM0ER6gSuRNw7rS06nS0IbjZcFQP+nyrWSBAXhOKiWR47QYnyg==}
-    peerDependencies:
-      vue: '>=3'
-    dependencies:
-      vue: 3.2.47
-    dev: false
-
   /@protobufjs/aspromise@1.1.2:
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
     dev: false
@@ -4179,6 +4198,23 @@ packages:
 
   /@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
+    dev: true
+
+  /@rushstack/node-core-library@3.55.2:
+    resolution: {integrity: sha512-SaLe/x/Q/uBVdNFK5V1xXvsVps0y7h1sN7aSJllQyFbugyOaxhNRF25bwEDnicARNEjJw0pk0lYnJQ9Kr6ev0A==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      colors: 1.2.5
+      fs-extra: 7.0.1
+      import-lazy: 4.0.0
+      jju: 1.4.0
+      resolve: 1.22.1
+      semver: 7.3.8
+      z-schema: 5.0.4
     dev: true
 
   /@rushstack/node-core-library@3.55.2(@types/node@18.16.8):
@@ -16438,6 +16474,29 @@ packages:
       '@microsoft/api-extractor': 7.34.4(@types/node@18.16.8)
       '@rollup/pluginutils': 5.0.2
       '@rushstack/node-core-library': 3.55.2(@types/node@18.16.8)
+      debug: 4.3.4
+      fast-glob: 3.2.12
+      fs-extra: 10.1.0
+      kolorist: 1.7.0
+      magic-string: 0.29.0
+      ts-morph: 18.0.0
+      vite: 4.3.5(@types/node@18.16.8)
+    transitivePeerDependencies:
+      - '@types/node'
+      - rollup
+      - supports-color
+    dev: true
+
+  /vite-plugin-dts@2.3.0(vite@4.3.5):
+    resolution: {integrity: sha512-WbJgGtsStgQhdm3EosYmIdTGbag5YQpZ3HXWUAPCDyoXI5qN6EY0V7NXq0lAmnv9hVQsvh0htbYcg0Or5Db9JQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: '>=2.9.0'
+    dependencies:
+      '@babel/parser': 7.21.4
+      '@microsoft/api-extractor': 7.34.4
+      '@rollup/pluginutils': 5.0.2
+      '@rushstack/node-core-library': 3.55.2
       debug: 4.3.4
       fast-glob: 3.2.12
       fs-extra: 10.1.0
