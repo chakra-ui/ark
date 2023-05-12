@@ -30,7 +30,7 @@
     "form": {
       "type": "string",
       "isRequired": false,
-      "description": "The associate form of the underlying input."
+      "description": "The id of the form that the switch belongs to"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -80,7 +80,7 @@
     "value": {
       "type": "string | number",
       "isRequired": false,
-      "description": "The value to be used in the switch input.\nThis is the value that will be returned on form submission."
+      "description": "The value of switch input. Useful for form submission."
     }
   }
 }
