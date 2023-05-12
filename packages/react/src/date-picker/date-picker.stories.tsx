@@ -10,10 +10,13 @@ import {
   DatePickerGrid,
   DatePickerInput,
   DatePickerMonthSelect,
+  DatePickerNextTrigger,
+  DatePickerPrevTrigger,
   DatePickerRow,
   DatePickerRowGroup,
   DatePickerRowHeader,
   DatePickerTrigger,
+  DatePickerViewTrigger,
   DatePickerYearSelect,
 } from './'
 import './date-picker.css'
@@ -41,6 +44,12 @@ export const Basic = () => {
             <>
               <DatePickerYearSelect />
               <DatePickerMonthSelect />
+              <div>
+                <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+                <DatePickerViewTrigger>{api.visibleRangeText.start}</DatePickerViewTrigger>
+                <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+              </div>
+
               <DatePickerGrid>
                 <DatePickerRowHeader>
                   {api.weekDays.map((day, i) => (
