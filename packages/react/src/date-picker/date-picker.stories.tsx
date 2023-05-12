@@ -9,6 +9,8 @@ import {
   DatePickerDayCellTrigger,
   DatePickerGrid,
   DatePickerInput,
+  DatePickerMonthCell,
+  DatePickerMonthCellTrigger,
   DatePickerMonthSelect,
   DatePickerNextTrigger,
   DatePickerPrevTrigger,
@@ -30,26 +32,26 @@ const meta: Meta<DatePickerType> = {
 
 export default meta
 
-export const Basic = () => {
-  return (
-    <DatePicker selectionMode="single">
-      {(api) => (
-        <>
-          <DatePickerControl>
-            <DatePickerInput />
-            <DatePickerTrigger>🗓</DatePickerTrigger>
-            <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
-          </DatePickerControl>
-          <DatePickerContent>
+export const Basic = () => (
+  <DatePicker selectionMode="single">
+    {(api) => (
+      <>
+        <DatePickerControl>
+          <span>View mode: {api.view}</span>
+          <DatePickerInput />
+          <DatePickerTrigger>🗓</DatePickerTrigger>
+          <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
+        </DatePickerControl>
+        <DatePickerContent>
+          <DatePickerYearSelect />
+          <DatePickerMonthSelect />
+          {api.view === 'day' && (
             <>
-              <DatePickerYearSelect />
-              <DatePickerMonthSelect />
               <div>
                 <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
                 <DatePickerViewTrigger>{api.visibleRangeText.start}</DatePickerViewTrigger>
                 <DatePickerNextTrigger>Next</DatePickerNextTrigger>
               </div>
-
               <DatePickerGrid>
                 <DatePickerRowHeader>
                   {api.weekDays.map((day, i) => (
@@ -74,9 +76,58 @@ export const Basic = () => {
                 </DatePickerRowGroup>
               </DatePickerGrid>
             </>
-          </DatePickerContent>
-        </>
-      )}
-    </DatePicker>
-  )
-}
+          )}
+          {api.view === 'month' && (
+            <>
+              <div>
+                <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+                <DatePickerViewTrigger>{api.visibleRange.start.year}</DatePickerViewTrigger>
+                <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+              </div>
+              <DatePickerGrid view="day">
+                <DatePickerRowGroup>
+                  {api.getMonths({ columns: 4, format: 'short' }).map((months, row) => (
+                    <DatePickerRow key={row}>
+                      {months.map((month, index) => {
+                        const value = row * 4 + index + 1
+                        return (
+                          <DatePickerMonthCell key={index} value={value}>
+                            <DatePickerMonthCellTrigger>{month}</DatePickerMonthCellTrigger>
+                          </DatePickerMonthCell>
+                        )
+                      })}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
+            </>
+          )}
+          {api.view === 'year' && (
+            <>
+              <div>
+                <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+                <DatePickerViewTrigger>
+                  {api.getDecade().start} - {api.getDecade().end}
+                </DatePickerViewTrigger>
+                <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+              </div>
+              <DatePickerGrid>
+                <DatePickerRowGroup>
+                  {api.getYears({ columns: 4 }).map((years, row) => (
+                    <DatePickerRow key={row}>
+                      {years.map((year, index) => (
+                        <td colSpan={4} key={index} {...api.getYearCellProps({ value: year })}>
+                          {year}
+                        </td>
+                      ))}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
+            </>
+          )}
+        </DatePickerContent>
+      </>
+    )}
+  </DatePicker>
+)

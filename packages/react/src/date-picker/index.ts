@@ -16,6 +16,11 @@ export {
 } from './date-picker-day-cell-trigger'
 export { DatePickerGrid, type DatePickerGridProps } from './date-picker-grid'
 export { DatePickerInput, type DatePickerInputProps } from './date-picker-input'
+export { DatePickerMonthCell, type DatePickerMonthCellProps } from './date-picker-month-cell'
+export {
+  DatePickerMonthCellTrigger,
+  type DatePickerMonthCellTriggerProps,
+} from './date-picker-month-cell-trigger'
 export { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
 export { DatePickerNextTrigger, type DatePickerNextTriggerProps } from './date-picker-next-trigger'
 export { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
