@@ -146,15 +146,15 @@ export function mergeProps(...propsArgs: Record<any, any>[]) {
   if (propsArgs.length === 0) return {}
   if (propsArgs.length === 1) return propsArgs[0]
 
-  let target: Record<any, any> = {}
+  const target: Record<any, any> = {}
 
-  let eventHandlers: Record<
+  const eventHandlers: Record<
     string,
     ((event: { defaultPrevented: boolean }, ...args: any[]) => void | undefined)[]
   > = {}
 
-  for (let props of propsArgs) {
-    for (let prop in props) {
+  for (const props of propsArgs) {
+    for (const prop in props) {
       // Collect event handlers
       if (prop.startsWith('on') && typeof props[prop] === 'function') {
         eventHandlers[prop] ??= []
@@ -178,12 +178,12 @@ export function mergeProps(...propsArgs: Record<any, any>[]) {
   }
 
   // Merge event handlers
-  for (let eventName in eventHandlers) {
+  for (const eventName in eventHandlers) {
     Object.assign(target, {
       [eventName](event: { defaultPrevented: boolean }, ...args: any[]) {
-        let handlers = eventHandlers[eventName]
+        const handlers = eventHandlers[eventName]
 
-        for (let handler of handlers) {
+        for (const handler of handlers) {
           if (event instanceof Event && event.defaultPrevented) {
             return
           }

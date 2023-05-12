@@ -70,11 +70,11 @@ export function withAsChild(__component: RenderFunctionArgs) {
             throw new Error('Only one child is allowed')
 
           const mergedProps = mergeProps(firstChild.props ?? {}, attrs)
-          let cloned = cloneVNode(firstChild, mergedProps)
+          const cloned = cloneVNode(firstChild, mergedProps)
           // Explicitly override props starting with `on`.
           // It seems cloneVNode from Vue doesn't like overriding `onXXX` props. So
           // we have to do it manually.
-          for (let prop in mergedProps) {
+          for (const prop in mergedProps) {
             if (prop.startsWith('on')) {
               cloned.props ||= {}
               cloned.props[prop] = mergedProps[prop]
