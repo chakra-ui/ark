@@ -21,9 +21,14 @@
       "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
     },
     "ids": {
       "type": "Partial<{ root: string; input: string; control: string; label: string }>",

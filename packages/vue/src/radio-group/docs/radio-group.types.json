@@ -11,6 +11,7 @@
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -34,7 +35,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
