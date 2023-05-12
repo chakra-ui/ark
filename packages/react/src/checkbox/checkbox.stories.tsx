@@ -57,8 +57,7 @@ export const IndeterminateExample = () => {
   return (
     <>
       <Checkbox
-        checked={allChecked}
-        indeterminate={someChecked}
+        checked={'indeterminate'}
         onChange={(e) => setCheckedItems([e.checked === true, e.checked === true])}
       >
         <CheckboxLabel>Parent Checkbox</CheckboxLabel>
