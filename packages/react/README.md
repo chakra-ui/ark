@@ -19,6 +19,7 @@ At the moment, `@ark-ui/react`offers the following components:
 - [Checkbox](https://ark-ui.com/docs/react/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/react/components/color-picker)
 - [Combobox](https://ark-ui.com/docs/react/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/react/components/date-picker)
 - [Dialog](https://ark-ui.com/docs/react/components/dialog)
 - [Editable](https://ark-ui.com/docs/react/components/editable)
 - [Hover Card](https://ark-ui.com/docs/react/components/hover-card)
