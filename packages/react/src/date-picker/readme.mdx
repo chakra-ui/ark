@@ -3,9 +3,9 @@
   {(api) => (
     <DatePickerContent>
       <DatePickerGrid>
-        <DatePickerHeaderRow>
-          <DatePickerHeader />
-        </DatePickerHeaderRow>
+        <DatePickerRowHeader>
+          <DatePickerColumnHeader />
+        </DatePickerRowHeader>
         <DatePickerRowGroup>
           <DatePickerRow>
             <DatePickerDayCell>
@@ -17,4 +17,19 @@
     </DatePickerContent>
   )}
 </DatePicker>
+```
+
+```tsx
+<div role="grid">
+  <div role="row">
+    <div role="columnheader">Mo</div>
+  </div>
+  <div role="rowgroup">
+    <div role="row">
+      <div role="gridcell">
+        <button role="button">1</button>
+      </div>
+    </div>
+  </div>
+</div>
 ```

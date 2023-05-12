@@ -3,10 +3,22 @@ export {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
 } from './date-picker-clear-trigger'
+export {
+  DatePickerColumnHeader,
+  type DatePickerColumnHeaderProps,
+} from './date-picker-column-header'
 export { DatePickerContent, type DatePickerContentProps } from './date-picker-content'
 export { DatePickerControl, type DatePickerControlProps } from './date-picker-control'
+export { DatePickerDayCell, type DatePickerDayCellProps } from './date-picker-day-cell'
+export {
+  DatePickerDayCellTrigger,
+  type DatePickerDayCellTriggerProps,
+} from './date-picker-day-cell-trigger'
 export { DatePickerGrid, type DatePickerGridProps } from './date-picker-grid'
 export { DatePickerInput, type DatePickerInputProps } from './date-picker-input'
 export { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
+export { DatePickerRow, type DatePickerRowProps } from './date-picker-row'
+export { DatePickerRowGroup, type DatePickerRowGroupProps } from './date-picker-row-group'
+export { DatePickerRowHeader, type DatePickerRowHeaderProps } from './date-picker-row-header'
 export { DatePickerTrigger, type DatePickerTriggerProps } from './date-picker-trigger'
 export { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'

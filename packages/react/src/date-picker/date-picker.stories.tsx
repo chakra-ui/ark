@@ -2,10 +2,17 @@ import type { Meta } from '@storybook/react'
 import {
   DatePicker,
   DatePickerClearTrigger,
+  DatePickerColumnHeader,
   DatePickerContent,
   DatePickerControl,
+  DatePickerDayCell,
+  DatePickerDayCellTrigger,
+  DatePickerGrid,
   DatePickerInput,
   DatePickerMonthSelect,
+  DatePickerRow,
+  DatePickerRowGroup,
+  DatePickerRowHeader,
   DatePickerTrigger,
   DatePickerYearSelect,
 } from './'
@@ -22,13 +29,9 @@ export default meta
 
 export const Basic = () => {
   return (
-    <DatePicker selectionMode="range">
+    <DatePicker selectionMode="single">
       {(api) => (
         <>
-          <output>
-            <div>Selected: {api.valueAsString ?? '-'}</div>
-            <div>Focused: {api.focusedValueAsString}</div>
-          </output>
           <DatePickerControl>
             <DatePickerInput />
             <DatePickerTrigger>🗓</DatePickerTrigger>
@@ -38,76 +41,29 @@ export const Basic = () => {
             <>
               <DatePickerYearSelect />
               <DatePickerMonthSelect />
-
-              {/* {api.daysOfMonth.map((day) => (
-                  <DatePickerDayTrigger key={day.day} value={day} />
-                ))} */}
-              {/* <DatePickerGrid>
- 
-
-                {api.weeks.map((week) =>
-                  week.map((day, id) => {
-                    if (day === null) return <div />
-                    return (
-                      <div key={id} {...api.getDayCellProps({ value: day })}>
-                        <button {...api.getDayCellTriggerProps({ value: day })}>{day.day}</button>
-                      </div>
-                    )
-                  }),
-                )}
-              </DatePickerGrid> */}
-              <div role="grid">
-                <div role="row">
-                  <div role="columnheader">Mo</div>
-                </div>
-                <div role="rowgroup">
-                  <div role="row">
-                    <div role="gridcell">
-                      <button role="button">1</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* 
               <DatePickerGrid>
-                <DatePickerHeaderRow> 
-                  <DatePickerHeader />
-                </DatePickerHeaderRow>
+                <DatePickerRowHeader>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      {day.narrow}
+                    </DatePickerColumnHeader>
+                  ))}
+                </DatePickerRowHeader>
                 <DatePickerRowGroup>
-                  <DatePickerRow>
-                    <DatePickerDayCell>
-                      <DatePickerDayCellTrigger />
-                    </DatePickerDayCell>
-                  </DatePickerRow>
-                </DatePickerRowGroup>
-              </DatePickerGrid> 
-*/}
-
-              {/* <table {...api.getGridProps()}>
-                <thead {...api.getHeaderProps()}>
-                  <tr>
-                    {api.weekDays.map((day, i) => (
-                      <th scope="col" key={i} aria-label={day.long}>
-                        {day.narrow}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {api.weeks.map((week, i) => (
-                    <tr key={i}>
-                      {week.map((value, i) => {
-                        if (value === null) return <td key={i} />
+                  {api.weeks.map((week, id) => (
+                    <DatePickerRow key={id}>
+                      {week.map((day, id) => {
+                        if (day === null) return <div />
                         return (
-                          <td key={i} {...api.getDayCellProps({ value })}>
-                            <div {...api.getDayCellTriggerProps({ value })}>{value.day}</div>
-                          </td>
+                          <DatePickerDayCell key={id} value={day}>
+                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                          </DatePickerDayCell>
                         )
                       })}
-                    </tr>
+                    </DatePickerRow>
                   ))}
-                </tbody>
-              </table> */}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
             </>
           </DatePickerContent>
         </>

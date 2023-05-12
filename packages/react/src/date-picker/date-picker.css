@@ -12,7 +12,13 @@
   color: gray;
 }
 
-[data-scope='date-picker'][data-part='grid'][data-type='day'] {
+[data-scope='date-picker'][data-part='row'] {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+[data-scope='date-picker'][data-part='header'] {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 500;
 }
