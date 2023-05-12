@@ -25,3 +25,5 @@ export const useHoverCard = <T extends ExtractPropTypes<HoverCardProps>>(
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
+
+export type UseHoverCardReturn = ReturnType<typeof connect>

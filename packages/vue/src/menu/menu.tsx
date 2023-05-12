@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/menu'
 import { computed, defineComponent, onMounted, type PropType } from 'vue'
+import type { Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import {
   MenuMachineProvider,
@@ -15,47 +16,47 @@ export type MenuState = {
   onClose: () => void
 }
 
-export type MenuProps = Context & { isOpen?: boolean }
+export type UseMenuProps = Context & { isOpen?: boolean }
 
-const VueProps = createVueProps<MenuProps>({
+const VueProps = createVueProps<UseMenuProps>({
   anchorPoint: {
-    type: Object as PropType<MenuProps['anchorPoint']>,
+    type: Object as PropType<UseMenuProps['anchorPoint']>,
   },
   'aria-label': {
-    type: String as PropType<MenuProps['aria-label']>,
+    type: String as PropType<UseMenuProps['aria-label']>,
   },
   closeOnSelect: {
-    type: Boolean as PropType<MenuProps['closeOnSelect']>,
+    type: Boolean as PropType<UseMenuProps['closeOnSelect']>,
     default: true,
   },
   dir: {
-    type: String as PropType<MenuProps['dir']>,
+    type: String as PropType<UseMenuProps['dir']>,
   },
   getRootNode: {
-    type: Function as PropType<MenuProps['getRootNode']>,
+    type: Function as PropType<UseMenuProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<MenuProps['id']>,
+    type: String as PropType<UseMenuProps['id']>,
   },
   ids: {
-    type: Object as PropType<MenuProps['ids']>,
+    type: Object as PropType<UseMenuProps['ids']>,
   },
   isOpen: {
-    type: Boolean as PropType<MenuProps['isOpen']>,
+    type: Boolean as PropType<UseMenuProps['isOpen']>,
     default: false,
   },
   loop: {
-    type: Boolean as PropType<MenuProps['loop']>,
+    type: Boolean as PropType<UseMenuProps['loop']>,
   },
   positioning: {
-    type: Object as PropType<MenuProps['positioning']>,
+    type: Object as PropType<UseMenuProps['positioning']>,
   },
   value: {
-    type: Object as PropType<MenuProps['value']>,
+    type: Object as PropType<UseMenuProps['value']>,
   },
 })
 
-export const Menu: ComponentWithProps<Partial<MenuProps>> = defineComponent({
+export const Menu: ComponentWithProps<Partial<UseMenuProps>> = defineComponent({
   name: 'Menu',
   props: VueProps,
   emits: ['close', 'open', 'select', 'value-change'],
@@ -95,3 +96,5 @@ export const Menu: ComponentWithProps<Partial<MenuProps>> = defineComponent({
     return () => slots.default?.({ isOpen: api.value.isOpen, close: api.value.close })
   },
 })
+
+export type MenuProps = Optional<UseMenuProps, 'id'>

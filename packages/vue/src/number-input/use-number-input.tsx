@@ -33,3 +33,5 @@ export const useNumberInput = <T extends ExtractPropTypes<NumberInputContext>>(
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
+
+export type UseNumberInputReturn = ReturnType<typeof connect>

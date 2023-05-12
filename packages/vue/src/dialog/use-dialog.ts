@@ -43,3 +43,5 @@ export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
 
   return api
 }
+
+export type UseDialogReturn = ReturnType<typeof connect>

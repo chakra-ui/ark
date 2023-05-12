@@ -33,3 +33,5 @@ export const useEditable = <T extends ExtractPropTypes<EditableProps>>(
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
+
+export type UseEditableReturn = ReturnType<typeof connect>

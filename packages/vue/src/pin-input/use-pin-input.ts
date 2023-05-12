@@ -32,3 +32,5 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
 
   return api
 }
+
+export type UsePinInputReturn = ReturnType<typeof connect>

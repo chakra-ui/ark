@@ -1,34 +1,34 @@
 import type { Context as PressableContext } from '@zag-js/pressable'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import { type Assign, type Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { usePressable } from './use-pressable'
 
-export type PressableProps = Assign<HTMLArkProps<'button'>, PressableContext>
+export type UsePressableProps = Assign<HTMLArkProps<'button'>, PressableContext>
 
-const VueProps = createVueProps<PressableProps>({
+const VueProps = createVueProps<UsePressableProps>({
   id: {
-    type: String as PropType<PressableProps['id']>,
+    type: String as PropType<UsePressableProps['id']>,
   },
   disabled: {
-    type: Boolean as PropType<PressableProps['disabled']>,
+    type: Boolean as PropType<UsePressableProps['disabled']>,
   },
   cancelOnPointerExit: {
-    type: Boolean as PropType<PressableProps['cancelOnPointerExit']>,
+    type: Boolean as PropType<UsePressableProps['cancelOnPointerExit']>,
   },
   preventFocusOnPress: {
-    type: Boolean as PropType<PressableProps['preventFocusOnPress']>,
+    type: Boolean as PropType<UsePressableProps['preventFocusOnPress']>,
   },
   allowTextSelectionOnPress: {
-    type: Boolean as PropType<PressableProps['allowTextSelectionOnPress']>,
+    type: Boolean as PropType<UsePressableProps['allowTextSelectionOnPress']>,
   },
   dir: {
-    type: String as PropType<PressableProps['dir']>,
+    type: String as PropType<UsePressableProps['dir']>,
   },
 })
 
-export const Pressable: ComponentWithProps<Partial<PressableProps>> = defineComponent({
+export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineComponent({
   name: 'Pressable',
   props: VueProps,
   emits: ['press', 'long-press', 'press-end', 'press-up', 'press-start'],
@@ -41,3 +41,5 @@ export const Pressable: ComponentWithProps<Partial<PressableProps>> = defineComp
     )
   },
 })
+
+export type PressableProps = Optional<UsePressableProps, 'id'>

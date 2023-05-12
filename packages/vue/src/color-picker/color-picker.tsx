@@ -1,7 +1,7 @@
 import { type Context } from '@zag-js/color-picker'
 import { defineComponent, type PropType } from 'vue'
 import type { HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import type { Assign, Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { ColorPickerProvider } from './color-picker-context'
 import { useColorPicker } from './use-color-picker'
@@ -9,29 +9,29 @@ import { useColorPicker } from './use-color-picker'
 export type ColorPickerContext = Context & {
   modelValue?: Context['value']
 }
-export type ColorPickerProps = Assign<HTMLArkProps<'div'>, ColorPickerContext>
+export type UseColorPickerProps = Assign<HTMLArkProps<'div'>, ColorPickerContext>
 
-const VueColorPickerProps = createVueProps<ColorPickerProps>({
+const VueColorPickerProps = createVueProps<UseColorPickerProps>({
   dir: {
-    type: String as PropType<ColorPickerProps['dir']>,
+    type: String as PropType<UseColorPickerProps['dir']>,
   },
   id: {
-    type: String as PropType<ColorPickerProps['id']>,
+    type: String as PropType<UseColorPickerProps['id']>,
   },
   getRootNode: {
-    type: Function as PropType<ColorPickerProps['getRootNode']>,
+    type: Function as PropType<UseColorPickerProps['getRootNode']>,
   },
   modelValue: {
-    type: String as PropType<ColorPickerProps['modelValue']>,
+    type: String as PropType<UseColorPickerProps['modelValue']>,
   },
   value: {
-    type: String as PropType<ColorPickerProps['value']>,
+    type: String as PropType<UseColorPickerProps['value']>,
   },
   disabled: {
-    type: Boolean as PropType<ColorPickerProps['disabled']>,
+    type: Boolean as PropType<UseColorPickerProps['disabled']>,
   },
   readOnly: {
-    type: Boolean as PropType<ColorPickerProps['readOnly']>,
+    type: Boolean as PropType<UseColorPickerProps['readOnly']>,
   },
 })
 
@@ -47,3 +47,5 @@ export const ColorPicker: ComponentWithProps<Partial<ColorPickerContext>> = defi
     return () => slots.default?.(api.value)
   },
 })
+
+export type ColorPickerProps = Optional<ColorPickerContext, 'id'>

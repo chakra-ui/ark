@@ -1,7 +1,7 @@
 import type { Context } from '@zag-js/rating-group'
 import { defineComponent, Fragment, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import type { Assign, Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup } from './use-rating-group'
@@ -10,54 +10,54 @@ export type RatingGroupContext = Context & {
   modelValue?: RatingGroupContext['value']
 }
 
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, RatingGroupContext>
+export type UseRatingGroupProps = Assign<HTMLArkProps<'input'>, RatingGroupContext>
 
-const vueRatingGroupProps = createVueProps<RatingGroupProps>({
+const vueRatingGroupProps = createVueProps<UseRatingGroupProps>({
   id: {
-    type: String as PropType<RatingGroupProps['id']>,
+    type: String as PropType<UseRatingGroupProps['id']>,
   },
   allowHalf: {
-    type: Boolean as PropType<RatingGroupProps['allowHalf']>,
+    type: Boolean as PropType<UseRatingGroupProps['allowHalf']>,
   },
   autoFocus: {
-    type: Boolean as PropType<RatingGroupProps['autoFocus']>,
+    type: Boolean as PropType<UseRatingGroupProps['autoFocus']>,
   },
   dir: {
-    type: String as PropType<RatingGroupProps['dir']>,
+    type: String as PropType<UseRatingGroupProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<RatingGroupProps['disabled']>,
+    type: Boolean as PropType<UseRatingGroupProps['disabled']>,
   },
   form: {
-    type: String as PropType<RatingGroupProps['form']>,
+    type: String as PropType<UseRatingGroupProps['form']>,
   },
   getRootNode: {
-    type: Function as PropType<RatingGroupProps['getRootNode']>,
+    type: Function as PropType<UseRatingGroupProps['getRootNode']>,
   },
   ids: {
-    type: Object as PropType<RatingGroupProps['ids']>,
+    type: Object as PropType<UseRatingGroupProps['ids']>,
   },
   max: {
-    type: Number as PropType<RatingGroupProps['max']>,
+    type: Number as PropType<UseRatingGroupProps['max']>,
   },
   modelValue: {
-    type: Number as PropType<RatingGroupProps['modelValue']>,
+    type: Number as PropType<UseRatingGroupProps['modelValue']>,
   },
   name: {
-    type: String as PropType<RatingGroupProps['name']>,
+    type: String as PropType<UseRatingGroupProps['name']>,
   },
   readOnly: {
-    type: Boolean as PropType<RatingGroupProps['readOnly']>,
+    type: Boolean as PropType<UseRatingGroupProps['readOnly']>,
   },
   translations: {
-    type: Object as PropType<RatingGroupProps['translations']>,
+    type: Object as PropType<UseRatingGroupProps['translations']>,
   },
   value: {
-    type: Number as PropType<RatingGroupProps['value']>,
+    type: Number as PropType<UseRatingGroupProps['value']>,
   },
 })
 
-export const RatingGroup: ComponentWithProps<Partial<RatingGroupProps>> = defineComponent({
+export const RatingGroup: ComponentWithProps<Partial<UseRatingGroupProps>> = defineComponent({
   name: 'RatingGroup',
   props: vueRatingGroupProps,
   emits: ['change', 'update:modelValue', 'hover'],
@@ -76,3 +76,5 @@ export const RatingGroup: ComponentWithProps<Partial<RatingGroupProps>> = define
     )
   },
 })
+
+export type RatingGroupProps = Optional<RatingGroupContext, 'id'>

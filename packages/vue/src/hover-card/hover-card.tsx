@@ -1,40 +1,41 @@
 import { type Context as HoverCardContext } from '@zag-js/hover-card'
 import { defineComponent, type PropType } from 'vue'
 
+import type { Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
 import { useHoverCard } from './use-hover-card'
 
-export type HoverCardProps = HoverCardContext
+export type UseHoverCardProps = HoverCardContext
 
-const VueHoverCardProps = createVueProps<HoverCardProps>({
+const VueHoverCardProps = createVueProps<UseHoverCardProps>({
   id: {
-    type: String as PropType<HoverCardProps['id']>,
+    type: String as PropType<UseHoverCardProps['id']>,
   },
   ids: {
-    type: Object as PropType<HoverCardProps['ids']>,
+    type: Object as PropType<UseHoverCardProps['ids']>,
   },
   openDelay: {
-    type: Number as PropType<HoverCardProps['openDelay']>,
+    type: Number as PropType<UseHoverCardProps['openDelay']>,
   },
   closeDelay: {
-    type: Number as PropType<HoverCardProps['closeDelay']>,
+    type: Number as PropType<UseHoverCardProps['closeDelay']>,
   },
   dir: {
-    type: String as PropType<HoverCardProps['dir']>,
+    type: String as PropType<UseHoverCardProps['dir']>,
   },
   getRootNode: {
-    type: Function as PropType<HoverCardProps['getRootNode']>,
+    type: Function as PropType<UseHoverCardProps['getRootNode']>,
   },
   open: {
-    type: Boolean as PropType<HoverCardProps['open']>,
+    type: Boolean as PropType<UseHoverCardProps['open']>,
   },
   positioning: {
-    type: Object as PropType<HoverCardProps['positioning']>,
+    type: Object as PropType<UseHoverCardProps['positioning']>,
   },
 })
 
-export const HoverCard: ComponentWithProps<Partial<HoverCardProps>> = defineComponent({
+export const HoverCard: ComponentWithProps<Partial<UseHoverCardProps>> = defineComponent({
   name: 'HoverCard',
   props: VueHoverCardProps,
   emits: ['open', 'close'],
@@ -46,3 +47,5 @@ export const HoverCard: ComponentWithProps<Partial<HoverCardProps>> = defineComp
     return () => slots?.default?.(api.value)
   },
 })
+
+export type HoverCardProps = Optional<UseHoverCardProps, 'id'>

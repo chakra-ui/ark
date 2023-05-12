@@ -27,3 +27,5 @@ export const useColorPicker = <T extends ExtractPropTypes<ColorPickerContext>>(
 
   return computed(() => colorPicker.connect(state.value, send, normalizeProps))
 }
+
+export type UseColorPickerReturn = ReturnType<typeof colorPicker.connect>

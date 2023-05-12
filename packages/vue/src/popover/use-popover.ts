@@ -55,3 +55,5 @@ export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
 
   return api
 }
+
+export type UsePopoverReturn = ReturnType<typeof connect>

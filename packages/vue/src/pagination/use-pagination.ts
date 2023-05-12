@@ -22,3 +22,5 @@ export const usePagination = <T extends ExtractPropTypes<PaginationContext>>(
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
+
+export type UsePaginationReturn = ReturnType<typeof connect>

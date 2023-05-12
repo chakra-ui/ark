@@ -3,6 +3,8 @@ import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
 
+export type UsePressableContext = PressableContext
+
 export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
   emit: CallableFunction,
   context: T,

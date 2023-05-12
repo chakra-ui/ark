@@ -6,7 +6,7 @@ import { usePaginationContext } from './pagination-context'
 
 export type PaginationPageTriggerProps = HTMLArkProps<'li'> & PageTriggerProps
 
-export const PaginationPageTrigger: ComponentWithProps<PaginationPageTriggerProps> =
+export const PaginationPageTrigger: ComponentWithProps<Partial<PaginationPageTriggerProps>> =
   defineComponent({
     name: 'PaginationPageTrigger',
     props: {

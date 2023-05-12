@@ -1,7 +1,7 @@
 import type { Context } from '@zag-js/radio-group'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import { type Assign, type Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { RadioGroupProvider } from './radio-context'
 import { useRadioGroup } from './use-radio-group'
@@ -9,45 +9,45 @@ import { useRadioGroup } from './use-radio-group'
 export type RadioGroupContext = Context & {
   modelValue?: Context['value']
 }
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, RadioGroupContext>
+export type UseRadioGroupProps = Assign<HTMLArkProps<'div'>, RadioGroupContext>
 
-const VueProps = createVueProps<RadioGroupProps>({
+const VueProps = createVueProps<UseRadioGroupProps>({
   dir: {
-    type: String as PropType<RadioGroupProps['dir']>,
+    type: String as PropType<UseRadioGroupProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<RadioGroupProps['disabled']>,
+    type: Boolean as PropType<UseRadioGroupProps['disabled']>,
   },
   form: {
-    type: String as PropType<RadioGroupProps['form']>,
+    type: String as PropType<UseRadioGroupProps['form']>,
   },
   getRootNode: {
-    type: Function as PropType<RadioGroupProps['getRootNode']>,
+    type: Function as PropType<UseRadioGroupProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<RadioGroupProps['id']>,
+    type: String as PropType<UseRadioGroupProps['id']>,
   },
   ids: {
-    type: Object as PropType<RadioGroupProps['ids']>,
+    type: Object as PropType<UseRadioGroupProps['ids']>,
   },
   modelValue: {
-    type: String as PropType<RadioGroupProps['modelValue']>,
+    type: String as PropType<UseRadioGroupProps['modelValue']>,
   },
   name: {
-    type: String as PropType<RadioGroupProps['name']>,
+    type: String as PropType<UseRadioGroupProps['name']>,
   },
   orientation: {
-    type: String as PropType<RadioGroupProps['orientation']>,
+    type: String as PropType<UseRadioGroupProps['orientation']>,
   },
   readOnly: {
-    type: Boolean as PropType<RadioGroupProps['readOnly']>,
+    type: Boolean as PropType<UseRadioGroupProps['readOnly']>,
   },
   value: {
-    type: String as PropType<RadioGroupProps['value']>,
+    type: String as PropType<UseRadioGroupProps['value']>,
   },
 })
 
-export const RadioGroup: ComponentWithProps<Partial<RadioGroupProps>> = defineComponent({
+export const RadioGroup: ComponentWithProps<Partial<UseRadioGroupProps>> = defineComponent({
   name: 'RadioGroup',
   props: VueProps,
   emits: ['change', 'update:modelValue'],
@@ -63,3 +63,5 @@ export const RadioGroup: ComponentWithProps<Partial<RadioGroupProps>> = defineCo
     )
   },
 })
+
+export type RadioGroupProps = Optional<RadioGroupContext, 'id'>

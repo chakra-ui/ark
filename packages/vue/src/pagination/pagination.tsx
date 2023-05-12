@@ -1,45 +1,45 @@
 import type { Context as PaginationContext } from '@zag-js/pagination'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import { type Assign, type Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PaginationProvider } from './pagination-context'
 import { usePagination } from './use-pagination'
 
-export type PaginationProps = Assign<HTMLArkProps<'nav'>, PaginationContext>
+export type UsePaginationProps = Assign<HTMLArkProps<'nav'>, PaginationContext>
 
-const VueProps = createVueProps<PaginationProps>({
+const VueProps = createVueProps<UsePaginationProps>({
   count: {
-    type: Number as PropType<PaginationProps['count']>,
+    type: Number as PropType<UsePaginationProps['count']>,
     required: true,
   },
   dir: {
-    type: String as PropType<PaginationProps['dir']>,
+    type: String as PropType<UsePaginationProps['dir']>,
   },
   getRootNode: {
-    type: Function as PropType<PaginationProps['getRootNode']>,
+    type: Function as PropType<UsePaginationProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<PaginationProps['id']>,
+    type: String as PropType<UsePaginationProps['id']>,
   },
   ids: {
-    type: Object as PropType<PaginationProps['ids']>,
+    type: Object as PropType<UsePaginationProps['ids']>,
   },
   page: {
-    type: Number as PropType<PaginationProps['page']>,
+    type: Number as PropType<UsePaginationProps['page']>,
   },
   pageSize: {
-    type: Number as PropType<PaginationProps['pageSize']>,
+    type: Number as PropType<UsePaginationProps['pageSize']>,
   },
   siblingCount: {
-    type: Number as PropType<PaginationProps['siblingCount']>,
+    type: Number as PropType<UsePaginationProps['siblingCount']>,
   },
   translations: {
-    type: Object as PropType<PaginationProps['translations']>,
+    type: Object as PropType<UsePaginationProps['translations']>,
   },
 })
 
-export const Pagination: ComponentWithProps<Partial<PaginationProps>> = defineComponent({
+export const Pagination: ComponentWithProps<Partial<UsePaginationProps>> = defineComponent({
   name: 'Pagination',
   props: VueProps,
   emits: ['change'],
@@ -55,3 +55,5 @@ export const Pagination: ComponentWithProps<Partial<PaginationProps>> = defineCo
     )
   },
 })
+
+export type PaginationProps = Optional<PaginationContext, 'id'>
