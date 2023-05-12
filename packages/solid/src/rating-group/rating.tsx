@@ -1,3 +1,4 @@
+import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
 import type { Accessor } from 'solid-js'
 import { type JSX } from 'solid-js/jsx-runtime'
@@ -10,17 +11,16 @@ import { useRatingGroupContext } from './rating-group-context'
 
 export type RatingProps = Assign<
   HTMLArkProps<'span'>,
-  {
-    index: number
+  ItemProps & {
     children: (state: Accessor<RatingContext>) => JSX.Element | JSX.Element
   }
 >
 
 export const Rating = (props: RatingProps) => {
-  const [ratingParams, restProps] = createSplitProps<{ index: number }>()(props, ['index'])
+  const [ratingParams, restProps] = createSplitProps<ItemProps>()(props, ['index'])
   const api = useRatingGroupContext()
 
-  const ratingState = () => api().getRatingState(ratingParams.index)
+  const ratingState = () => api().getRatingState(ratingParams)
   const getChildren = () => runIfFn(restProps.children, ratingState)
 
   const ratingProps = mergeProps(() => api().getRatingProps(ratingParams), restProps)

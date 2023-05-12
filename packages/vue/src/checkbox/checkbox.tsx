@@ -8,15 +8,6 @@ import { useCheckbox, type UseCheckboxContext } from './use-checkbox'
 export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxContext>
 
 const VueCheckboxProps = {
-  'aria-describedby': {
-    type: String as PropType<CheckboxProps['aria-describedby']>,
-  },
-  'aria-label': {
-    type: String as PropType<CheckboxProps['aria-label']>,
-  },
-  'aria-labelledby': {
-    type: String as PropType<CheckboxProps['aria-labelledby']>,
-  },
   checked: {
     type: Boolean as PropType<CheckboxProps['checked']>,
     default: false,
@@ -27,9 +18,6 @@ const VueCheckboxProps = {
   disabled: {
     type: Boolean as PropType<CheckboxProps['disabled']>,
   },
-  focusable: {
-    type: Boolean as PropType<CheckboxProps['focusable']>,
-  },
   form: {
     type: String as PropType<CheckboxProps['form']>,
   },
@@ -38,9 +26,6 @@ const VueCheckboxProps = {
   },
   ids: {
     type: Object as PropType<CheckboxProps['ids']>,
-  },
-  indeterminate: {
-    type: Boolean as PropType<CheckboxProps['indeterminate']>,
   },
   invalid: {
     type: Boolean as PropType<CheckboxProps['invalid']>,
@@ -51,9 +36,6 @@ const VueCheckboxProps = {
   },
   name: {
     type: String as PropType<CheckboxProps['name']>,
-  },
-  readOnly: {
-    type: Boolean as PropType<CheckboxProps['readOnly']>,
   },
   required: {
     type: Boolean as PropType<CheckboxProps['required']>,
