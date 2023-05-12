@@ -30,13 +30,12 @@ describe('Checkbox', () => {
     expect(checkbox).toBeChecked()
   })
 
-  // it('should handle indeterminate state properly', async () => {
-  //   render(<ComponentUnderTest indeterminate />)
-  //   expect(screen.getByTestId('control')).toHaveAttribute('data-indeterminate')
-  // })
+  it('should handle indeterminate state properly', async () => {
+    render(<ComponentUnderTest checked="indeterminate" />)
+    expect(screen.getByTestId('control')).toHaveAttribute('data-indeterminate')
+  })
 
-  // TODO: https://chakraui.slack.com/archives/C0491R77XE1/p1681311591433489?thread_ts=1681298946.333949&cid=C0491R77XE1
-  it.skip('should allow controlled usage', async () => {
+  it('should allow controlled usage', async () => {
     const ControlledComponentUnderTest = () => {
       const [checked, setChecked] = useState(false)
       return (
