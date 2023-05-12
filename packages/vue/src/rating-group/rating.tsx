@@ -19,7 +19,7 @@ export const Rating: ComponentWithProps<RatingProps> = defineComponent({
   setup(props, { slots, attrs }) {
     const api = useRatingGroupContext()
 
-    const ratingState = computed(() => api.value.getRatingState(props.index))
+    const ratingState = computed(() => api.value.getRatingState({ index: props.index }))
 
     RatingProvider(ratingState)
 
