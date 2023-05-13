@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@octokit/types": "9.2.2",
-    "@types/node": "18.16.8",
+    "@types/node": "18.16.9",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "concurrently": "8.0.1",
