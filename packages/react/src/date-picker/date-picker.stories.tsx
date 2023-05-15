@@ -57,7 +57,7 @@ export const Basic = () => (
             <DatePickerNextTrigger>Next</DatePickerNextTrigger>
           </div>
           {api.view === 'day' && (
-            <DatePickerGrid view="day">
+            <DatePickerGrid>
               <DatePickerRowHeader>
                 {api.weekDays.map((day, i) => (
                   <DatePickerColumnHeader key={i} aria-label={day.long}>
@@ -79,7 +79,7 @@ export const Basic = () => (
             </DatePickerGrid>
           )}
           {api.view === 'month' && (
-            <DatePickerGrid view="month">
+            <DatePickerGrid>
               <DatePickerRowGroup>
                 {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
                   <DatePickerRow key={row}>
@@ -94,7 +94,7 @@ export const Basic = () => (
             </DatePickerGrid>
           )}
           {api.view === 'year' && (
-            <DatePickerGrid view="year">
+            <DatePickerGrid>
               <DatePickerRowGroup>
                 {api.getYearsGrid({ columns: 4 }).map((years, row) => (
                   <DatePickerRow key={row}>
