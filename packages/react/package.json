@@ -67,7 +67,7 @@
     "@zag-js/color-picker": "0.8.0",
     "@zag-js/checkbox": "0.8.0",
     "@zag-js/combobox": "0.8.0",
-    "@zag-js/date-picker": "0.8.0",
+    "@zag-js/date-picker": "0.0.0-dev-20230515134923",
     "@zag-js/dialog": "0.8.0",
     "@zag-js/editable": "0.8.0",
     "@zag-js/hover-card": "0.8.0",

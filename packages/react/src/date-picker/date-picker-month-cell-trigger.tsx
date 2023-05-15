@@ -4,9 +4,9 @@ import { forwardRef } from '../forward-ref'
 import { useDatePickerCellContext } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerCellTriggerProps = HTMLArkProps<'button'>
+export type DatePickerMonthCellTriggerProps = HTMLArkProps<'button'>
 
-export const DatePickerCellTrigger = forwardRef<'button'>((props, ref) => {
+export const DatePickerMonthCellTrigger = forwardRef<'button'>((props, ref) => {
   const { getMonthCellTriggerProps } = useDatePickerContext()
   const cellProps = useDatePickerCellContext()
   const mergedProps = mergeProps(getMonthCellTriggerProps(cellProps), props)

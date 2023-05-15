@@ -13,8 +13,8 @@ export const DatePickerMonthSelect = forwardRef<'select', DatePickerMonthSelectP
     return (
       <ark.select {...mergedProps} ref={ref}>
         {getMonths().map((month, i) => (
-          <option key={i} value={i + 1}>
-            {month}
+          <option key={i} value={month.value}>
+            {month.label}
           </option>
         ))}
       </ark.select>

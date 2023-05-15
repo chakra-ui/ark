@@ -10,8 +10,8 @@ export type DatePickerViewTriggerProps = Assign<HTMLArkProps<'button'>, ViewProp
 
 export const DatePickerViewTrigger = forwardRef<'button', ViewProps>((props, ref) => {
   const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['view'])
-  const { getViewTriggerProps } = useDatePickerContext()
-  const mergedProps = mergeProps(getViewTriggerProps(viewProps), localProps)
+  const { getViewTriggerProps, view } = useDatePickerContext()
+  const mergedProps = mergeProps(getViewTriggerProps({ view }), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

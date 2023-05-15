@@ -1,14 +1,16 @@
 import type { Meta } from '@storybook/react'
 import {
   DatePicker,
-  DatePickerCell,
-  DatePickerCellTrigger,
   DatePickerClearTrigger,
   DatePickerColumnHeader,
   DatePickerContent,
   DatePickerControl,
+  DatePickerDayCell,
+  DatePickerDayCellTrigger,
   DatePickerGrid,
   DatePickerInput,
+  DatePickerMonthCell,
+  DatePickerMonthCellTrigger,
   DatePickerMonthSelect,
   DatePickerNextTrigger,
   DatePickerPrevTrigger,
@@ -17,6 +19,8 @@ import {
   DatePickerRowHeader,
   DatePickerTrigger,
   DatePickerViewTrigger,
+  DatePickerYearCell,
+  DatePickerYearCellTrigger,
   DatePickerYearSelect,
 } from './'
 import './date-picker.css'
@@ -48,9 +52,9 @@ export const Basic = () => (
             <DatePickerViewTrigger>
               {api.view === 'day' && api.visibleRangeText.start}
               {api.view === 'month' && api.visibleRange.start.year}
-              {api.view === 'year' && api.getDecade().start} - {api.getDecade().end}
+              {api.view === 'year' && `${api.getDecade().start} - ${api.getDecade().end}`}
             </DatePickerViewTrigger>
-            <DatePickerNextTrigger>Next</DatePickerNextTrigger>#
+            <DatePickerNextTrigger>Next</DatePickerNextTrigger>
           </div>
           {api.view === 'day' && (
             <DatePickerGrid view="day">
@@ -65,9 +69,9 @@ export const Basic = () => (
                 {api.weeks.map((week, id) => (
                   <DatePickerRow key={id}>
                     {week.map((day, id) => (
-                      <DatePickerCell key={id} value={day.value}>
-                        <DatePickerCellTrigger>{day.label}</DatePickerCellTrigger>
-                      </DatePickerCell>
+                      <DatePickerDayCell key={id} value={day}>
+                        <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                      </DatePickerDayCell>
                     ))}
                   </DatePickerRow>
                 ))}
@@ -77,12 +81,12 @@ export const Basic = () => (
           {api.view === 'month' && (
             <DatePickerGrid view="month">
               <DatePickerRowGroup>
-                {api.getMonths({ columns: 4, format: 'short' }).map((months, row) => (
+                {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
                   <DatePickerRow key={row}>
                     {months.map((month, index) => (
-                      <DatePickerCell key={index} value={month.value}>
-                        <DatePickerCellTrigger>{month.label}</DatePickerCellTrigger>
-                      </DatePickerCell>
+                      <DatePickerMonthCell key={index} value={month.value}>
+                        <DatePickerMonthCellTrigger>{month.label}</DatePickerMonthCellTrigger>
+                      </DatePickerMonthCell>
                     ))}
                   </DatePickerRow>
                 ))}
@@ -92,12 +96,12 @@ export const Basic = () => (
           {api.view === 'year' && (
             <DatePickerGrid view="year">
               <DatePickerRowGroup>
-                {api.getYears({ columns: 4 }).map((years, row) => (
+                {api.getYearsGrid({ columns: 4 }).map((years, row) => (
                   <DatePickerRow key={row}>
                     {years.map((year, index) => (
-                      <DatePickerCell key={index} value={year.value}>
-                        <DatePickerCellTrigger>{year.label}</DatePickerCellTrigger>
-                      </DatePickerCell>
+                      <DatePickerYearCell key={index} value={year.value}>
+                        <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
+                      </DatePickerYearCell>
                     ))}
                   </DatePickerRow>
                 ))}

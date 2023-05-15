@@ -1,8 +1,5 @@
+import type { CellProps } from '@zag-js/date-picker'
 import { createContext } from '../create-context'
-
-type CellProps = {
-  value: number
-}
 
 export const [DatePickerCellProvider, useDatePickerCellContext] = createContext<CellProps>({
   name: 'DatePickerCellContext',
