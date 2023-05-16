@@ -3,10 +3,12 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 
 const parts = defineParts(datePickerAnatomy.build())
 
-export const colorPicker = defineRecipe({
+export const datePicker = defineRecipe({
   name: 'datePicker',
   description: 'A date picker style',
   base: parts({
-    cellTrigger: {},
+    cellTrigger: {
+      all: 'unset',
+    },
   }),
 })

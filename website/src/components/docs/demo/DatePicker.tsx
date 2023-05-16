@@ -1,3 +1,4 @@
+import { datePicker } from '@/panda/recipes'
 import {
   DatePicker,
   DatePickerClearTrigger,
@@ -34,7 +35,7 @@ export const DemoDatePicker = () => {
             <DatePickerTrigger>🗓</DatePickerTrigger>
             <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
           </DatePickerControl>
-          <DatePickerContent>
+          <DatePickerContent className={datePicker()}>
             <DatePickerYearSelect />
             <DatePickerMonthSelect />
             <div>
