@@ -6,7 +6,6 @@ import { checkbox } from './checkbox'
 import { code } from './code'
 import { colorPicker } from './color-picker'
 import { datePicker } from './date-picker'
-
 import { dialog } from './dialog'
 import { divider } from './divider'
 import { drawer } from './drawer'

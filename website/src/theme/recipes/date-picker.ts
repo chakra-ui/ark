@@ -10,40 +10,86 @@ export const datePicker = defineRecipe({
     cellTrigger: {
       all: 'unset',
       alignItems: 'center',
-      borderRadius: 'full',
+      borderRadius: 'lg',
       color: 'fg.emphasized',
+      cursor: 'pointer',
       display: 'inline-flex',
-      height: '10',
+      minH: '10',
       justifyContent: 'center',
       outline: 'none',
       userSelect: 'none',
       textStyle: 'sm',
       verticalAlign: 'middle',
       whiteSpace: 'nowrap',
-      width: '10',
+      minW: '10',
+      width: 'full',
+      _hover: {
+        background: 'bg.subtle',
+      },
+      _focus: {
+        background: 'bg.subtle',
+        color: 'accent.default',
+        fontWeight: 'medium',
+        _hover: {
+          color: 'accent.default',
+        },
+      },
+      _selected: {
+        // TODO issue in panda css
+        background: 'accent.default !important',
+        color: 'white !important',
+        _before: {
+          color: 'white !important',
+        },
+      },
+      '&[data-outside-range]': {
+        visibility: 'hidden',
+      },
+      '&[data-today]': {
+        _before: {
+          content: "'•'",
+          color: 'accent.default',
+          position: 'absolute',
+          marginTop: '6',
+        },
+      },
     },
     content: {
-      width: 'fit-content',
       background: {
-        base: 'white',
         _dark: 'brown.600',
+        base: 'white',
       },
+      borderRadius: 'lg',
+      borderWidth: '1px',
+      boxShadow: 'lg',
       px: '6',
       py: '5',
+      width: '330px',
     },
     grid: {
       display: 'flex',
       flexDirection: 'column',
       gap: '1',
+      '&[data-type="day"] [data-part="row"]': {
+        gridTemplateColumns: 'repeat(7, 1fr)',
+      },
+      '&[data-type="month"] [data-part="row"]': {
+        gridTemplateColumns: 'repeat(4, 1fr)',
+      },
+      '&[data-type="year"] [data-part="row"]': {
+        gridTemplateColumns: 'repeat(4, 1fr)',
+      },
     },
     rowGroup: {
       display: 'flex',
       flexDirection: 'column',
       gap: '1',
     },
+    control: {
+      minW: '330px',
+    },
     row: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(7, 1fr)',
     },
     header: {
       display: 'grid',

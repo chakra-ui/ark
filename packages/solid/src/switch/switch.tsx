@@ -16,9 +16,6 @@ export type SwitchProps = Assign<
 
 export const Switch = (props: SwitchProps) => {
   const [switchProps, labelProps] = createSplitProps<UseSwitchProps>()(props, [
-    'aria-describedby',
-    'aria-label',
-    'aria-labelledby',
     'checked',
     'dir',
     'disabled',
