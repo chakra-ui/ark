@@ -129,7 +129,15 @@
     "disabled": { "type": "boolean", "isRequired": false },
     "offset": { "type": "Offset", "isRequired": false }
   },
-  "DatePickerNextTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerGridProps": {
+    "columns": { "type": "number", "isRequired": false },
+    "id": { "type": "string", "isRequired": false },
+    "view": { "type": "DateView", "isRequired": false }
+  },
+  "DatePickerMonthCellProps": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "DatePickerPrevTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
   "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
 }
