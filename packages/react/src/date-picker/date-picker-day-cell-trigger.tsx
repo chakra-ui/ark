@@ -9,7 +9,6 @@ export type DatePickerDayCellTriggerProps = HTMLArkProps<'button'>
 export const DatePickerDayCellTrigger = forwardRef<'button'>((props, ref) => {
   const { getDayCellTriggerProps } = useDatePickerContext()
   const cellProps = useDatePickerDayCellContext()
-
   const mergedProps = mergeProps(getDayCellTriggerProps(cellProps), props)
 
   return <ark.button {...mergedProps} ref={ref} />

@@ -35,7 +35,7 @@ const meta: Meta<DatePickerType> = {
 export default meta
 
 export const Basic = () => (
-  <DatePicker selectionMode="single">
+  <DatePicker>
     {(api) => (
       <>
         <DatePickerControl>
@@ -111,5 +111,74 @@ export const Basic = () => (
         </DatePickerContent>
       </>
     )}
+  </DatePicker>
+)
+
+export const Range = () => (
+  <DatePicker selectionMode="range" numOfMonths={2}>
+    {(api) => {
+      const offset = api.getOffset(1)
+      return (
+        <>
+          <DatePickerControl>
+            <span>View mode: {api.view}</span>
+            <DatePickerInput />
+            <DatePickerTrigger>🗓</DatePickerTrigger>
+            <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
+          </DatePickerControl>
+          <DatePickerContent>
+            <DatePickerYearSelect />
+            <DatePickerMonthSelect />
+            <div>
+              <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+              <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <DatePickerGrid>
+                <DatePickerRowHeader>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      {day.narrow}
+                    </DatePickerColumnHeader>
+                  ))}
+                </DatePickerRowHeader>
+                <DatePickerRowGroup>
+                  {api.weeks.map((week, id) => (
+                    <DatePickerRow key={id}>
+                      {week.map((day, id) => (
+                        <DatePickerDayCell key={id} value={day}>
+                          <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                        </DatePickerDayCell>
+                      ))}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
+
+              <DatePickerGrid id="+1">
+                <DatePickerRowHeader>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      {day.narrow}
+                    </DatePickerColumnHeader>
+                  ))}
+                </DatePickerRowHeader>
+                <DatePickerRowGroup>
+                  {offset.weeks.map((week, id) => (
+                    <DatePickerRow key={id}>
+                      {week.map((day, id) => (
+                        <DatePickerDayCell key={id} value={day} offset={offset}>
+                          <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                        </DatePickerDayCell>
+                      ))}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
+            </div>
+          </DatePickerContent>
+        </>
+      )
+    }}
   </DatePicker>
 )
