@@ -18,12 +18,14 @@ import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { DemoAccordion } from '../docs/demo/Accordion'
 import { DemoColorPicker } from '../docs/demo/ColorPicker'
+import { DemoDatePicker } from '../docs/demo/DatePicker'
 import { DemoMenu } from '../docs/demo/Menu'
 import { DemoPopover } from '../docs/demo/Popover'
 import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
 const components = [
+  { name: 'Date Picker', demo: <DemoDatePicker /> },
   { name: 'Color Picker', demo: <DemoColorPicker /> },
   {
     name: 'Slider',

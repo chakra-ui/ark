@@ -35,3 +35,4 @@ export {
   type DatePickerYearCellTriggerProps,
 } from './date-picker-year-cell-trigger'
 export { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
+export { datePickerAnatomy } from './date-picker.anatomy'
