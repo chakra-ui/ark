@@ -107,6 +107,9 @@ importers:
       '@zag-js/combobox':
         specifier: 0.9.1
         version: 0.9.1
+      '@zag-js/date-picker':
+        specifier: 0.9.1
+        version: 0.9.1
       '@zag-js/dialog':
         specifier: 0.9.1
         version: 0.9.1
@@ -3279,6 +3282,12 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@internationalized/date@3.2.0:
+    resolution: {integrity: sha512-VDMHN1m33L4eqPs5BaihzgQJXyaORbMoHOtrapFxx179J8ucY5CRIHYsq5RRLKPHZWgjNfa5v6amWWDkkMFywA==}
+    dependencies:
+      '@swc/helpers': 0.4.14
+    dev: false
+
   /@istanbuljs/load-nyc-config@1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
     engines: {node: '>=8'}
@@ -6297,6 +6306,31 @@ packages:
     dependencies:
       '@zag-js/store': 0.9.1
       klona: 2.0.6
+    dev: false
+
+  /@zag-js/date-picker@0.9.1:
+    resolution: {integrity: sha512-EQLci9wUr/Ue3QUEvNW9VFDmFydbEyTWAwzk/0OmwXVM8QZAv4OWni/0XLY3r2pNZldo5jVkygE3m1DeOSVBvw==}
+    dependencies:
+      '@internationalized/date': 3.2.0
+      '@zag-js/anatomy': 0.9.1
+      '@zag-js/core': 0.9.1
+      '@zag-js/date-utils': 0.9.1(@internationalized/date@3.2.0)
+      '@zag-js/dismissable': 0.9.1
+      '@zag-js/dom-event': 0.9.1
+      '@zag-js/dom-query': 0.9.1
+      '@zag-js/form-utils': 0.9.1
+      '@zag-js/live-region': 0.9.1
+      '@zag-js/text-selection': 0.9.1
+      '@zag-js/types': 0.9.1
+      '@zag-js/utils': 0.9.1
+    dev: false
+
+  /@zag-js/date-utils@0.9.1(@internationalized/date@3.2.0):
+    resolution: {integrity: sha512-JMLDLWiFD29GDn4a3+lnkYSGo/RdBP5DZoIU/lIJlrvATGLShoWRUsGOnoiEOpyVrftxugZ9x378q/pNujBRMQ==}
+    peerDependencies:
+      '@internationalized/date': '>=3.0.0'
+    dependencies:
+      '@internationalized/date': 3.2.0
     dev: false
 
   /@zag-js/dialog@0.7.0:
