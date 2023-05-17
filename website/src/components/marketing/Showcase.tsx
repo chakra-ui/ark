@@ -25,8 +25,8 @@ import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
 const components = [
-  { name: 'Date Picker', demo: <DemoDatePicker /> },
   { name: 'Color Picker', demo: <DemoColorPicker /> },
+  { name: 'Date Picker', demo: <DemoDatePicker /> },
   {
     name: 'Slider',
     demo: <DemoSlider />,
