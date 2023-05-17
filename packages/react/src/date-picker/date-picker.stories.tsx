@@ -207,66 +207,55 @@ export const RangeWithTwoGrids = () => (
             <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
           </DatePickerControl>
           <DatePickerContent>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+              <DatePickerViewTrigger>
+                {api.view === 'day' && api.visibleRangeText.start}
+              </DatePickerViewTrigger>
+              <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                  <DatePickerViewTrigger>
-                    {api.view === 'day' && api.visibleRangeText.start}
-                  </DatePickerViewTrigger>
-                  <DatePickerNextTrigger>Next</DatePickerNextTrigger>
-                </div>
-                <DatePickerGrid>
-                  <DatePickerRowHeader>
-                    {api.weekDays.map((day, i) => (
-                      <DatePickerColumnHeader key={i} aria-label={day.long}>
-                        {day.narrow}
-                      </DatePickerColumnHeader>
-                    ))}
-                  </DatePickerRowHeader>
-                  <DatePickerRowGroup>
-                    {api.weeks.map((week, id) => (
-                      <DatePickerRow key={id}>
-                        {week.map((day, id) => (
-                          <DatePickerDayCell key={id} value={day}>
-                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                          </DatePickerDayCell>
-                        ))}
-                      </DatePickerRow>
-                    ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
-              </div>
+              <DatePickerGrid>
+                <DatePickerRowHeader>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      {day.narrow}
+                    </DatePickerColumnHeader>
+                  ))}
+                </DatePickerRowHeader>
+                <DatePickerRowGroup>
+                  {api.weeks.map((week, id) => (
+                    <DatePickerRow key={id}>
+                      {week.map((day, id) => (
+                        <DatePickerDayCell key={id} value={day}>
+                          <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                        </DatePickerDayCell>
+                      ))}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
 
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                  <DatePickerViewTrigger>
-                    {api.view === 'day' && api.visibleRangeText.start}
-                  </DatePickerViewTrigger>
-                  <DatePickerNextTrigger>Next</DatePickerNextTrigger>
-                </div>
-                <DatePickerGrid id="+1">
-                  <DatePickerRowHeader>
-                    {api.weekDays.map((day, i) => (
-                      <DatePickerColumnHeader key={i} aria-label={day.long}>
-                        {day.narrow}
-                      </DatePickerColumnHeader>
-                    ))}
-                  </DatePickerRowHeader>
-                  <DatePickerRowGroup>
-                    {offset.weeks.map((week, id) => (
-                      <DatePickerRow key={id}>
-                        {week.map((day, id) => (
-                          <DatePickerDayCell key={id} value={day} offset={offset}>
-                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                          </DatePickerDayCell>
-                        ))}
-                      </DatePickerRow>
-                    ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
-              </div>
+              <DatePickerGrid>
+                <DatePickerRowHeader>
+                  {api.weekDays.map((day, i) => (
+                    <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      {day.narrow}
+                    </DatePickerColumnHeader>
+                  ))}
+                </DatePickerRowHeader>
+                <DatePickerRowGroup>
+                  {offset.weeks.map((week, id) => (
+                    <DatePickerRow key={id}>
+                      {week.map((day, id) => (
+                        <DatePickerDayCell key={id} value={day} offset={offset}>
+                          <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                        </DatePickerDayCell>
+                      ))}
+                    </DatePickerRow>
+                  ))}
+                </DatePickerRowGroup>
+              </DatePickerGrid>
             </div>
           </DatePickerContent>
         </>
