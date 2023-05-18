@@ -59,7 +59,6 @@
     "storydocs": "ts-node ../../scripts/generate-stories.ts"
   },
   "dependencies": {
-    "@polymorphic-factory/vue": "0.2.0",
     "@zag-js/accordion": "0.9.1",
     "@zag-js/anatomy": "0.9.1",
     "@zag-js/checkbox": "0.9.1",
