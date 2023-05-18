@@ -54,7 +54,10 @@
       "description": "The current color channels of the color"
     },
     "contentProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "eyeDropperTriggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true },
+    "eyeDropperTriggerProps": {
+      "type": "ButtonHTMLAttributes & ReservedProps",
+      "isRequired": true
+    },
     "getAreaGradientProps": {
       "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
       "isRequired": true
@@ -68,7 +71,7 @@
       "isRequired": true
     },
     "getChannelInputProps": {
-      "type": "(props: ColorChannelInputProps) => ElementAttrs<InputHTMLAttributes>",
+      "type": "(props: ColorChannelInputProps) => InputHTMLAttributes & ReservedProps",
       "isRequired": true
     },
     "getChannelSliderBackgroundProps": {
