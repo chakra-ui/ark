@@ -14,6 +14,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('carousel', () => lazyLoad(() => import('./demo/Carousel'), 'DemoCarousel'))
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
     .with('color-picker', () => lazyLoad(() => import('./demo/ColorPicker'), 'DemoColorPicker'))
+    .with('date-picker', () => lazyLoad(() => import('./demo/DatePicker'), 'DemoDatePicker'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
     .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
     .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))

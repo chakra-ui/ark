@@ -17,9 +17,6 @@ export type SwitchProps = Assign<
 
 export const Switch = forwardRef<'label', SwitchProps>((props, ref) => {
   const [switchProps, { children, ...labelProps }] = createSplitProps<UseSwitchProps>()(props, [
-    'aria-describedby',
-    'aria-label',
-    'aria-labelledby',
     'checked',
     'dir',
     'disabled',

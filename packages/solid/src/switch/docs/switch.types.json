@@ -1,12 +1,5 @@
 {
   "SwitchProps": {
-    "aria-describedby": { "type": "string", "isRequired": false },
-    "aria-label": {
-      "type": "string",
-      "isRequired": false,
-      "description": "Defines the string that labels the switch element."
-    },
-    "aria-labelledby": { "type": "string", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
