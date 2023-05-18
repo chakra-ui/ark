@@ -3,9 +3,11 @@
  * This is mostly for `ark.<element>` syntax.
  */
 
+import { mergeProps } from '@zag-js/vue'
 import {
   cloneVNode,
   defineComponent,
+  getCurrentInstance,
   h,
   type AllowedComponentProps,
   type ComponentCustomProps,
@@ -15,8 +17,7 @@ import {
   type VNodeProps,
 } from 'vue'
 import type { IntrinsicElementAttributes } from './dom.types'
-import { isValidVNodeElement, mergeProps, renderSlotFragments } from './utils'
-
+import { isValidVNodeElement, renderSlotFragments } from './utils'
 export type AsChildProps = {
   asChild?: boolean
 }
@@ -57,6 +58,7 @@ type RenderFunctionArgs = Parameters<typeof h>[0]
 
 export function withAsChild(__component: RenderFunctionArgs) {
   const component = defineComponent<AsChildProps>(({ asChild }, { attrs, slots }) => {
+    const instance = getCurrentInstance()
     if (!asChild) return () => <__component {...attrs}>{slots.default?.()}</__component>
     else {
       return () => {
@@ -65,9 +67,25 @@ export function withAsChild(__component: RenderFunctionArgs) {
 
         if (Object.keys(attrs).length > 0) {
           const [firstChild, ...otherChildren] = children
-          if (!isValidVNodeElement(firstChild) || otherChildren.length > 0)
-            // TODO Improve error message
-            throw new Error('Only one child is allowed')
+          if (!isValidVNodeElement(firstChild) || otherChildren.length > 0) {
+            const componentName = instance?.parent?.type.name
+              ? `<${instance.parent.type.name} />`
+              : 'component'
+            throw new Error(
+              [
+                `Detected an invalid children for \`${componentName}\` with \`asChild\` prop.`,
+                '',
+                `Note: All components accepting \`asChild\` expect only one direct child of valid VNode type.`,
+                'You can apply a few solutions:',
+                [
+                  'Provide a single child element so that we can forward the props onto that element.',
+                  'Ensure the first child is an actual element instead of a raw text node or comment node.',
+                ]
+                  .map((line) => `  - ${line}`)
+                  .join('\n'),
+              ].join('\n'),
+            )
+          }
 
           const mergedProps = mergeProps(firstChild.props ?? {}, attrs)
           const cloned = cloneVNode(firstChild, mergedProps)
@@ -81,13 +99,13 @@ export function withAsChild(__component: RenderFunctionArgs) {
             }
           }
           return cloned
-        }
-
-        if (Array.isArray(children) && children.length === 1) {
+        } else if (Array.isArray(children) && children.length === 1) {
+          // No props to inherit
           return children[0]
+        } else {
+          // No children.
+          return null
         }
-
-        return children
       }
     }
   })
@@ -99,11 +117,7 @@ export function withAsChild(__component: RenderFunctionArgs) {
   return component
 }
 
-export function jsxFactory<
-  Component extends ElementType,
-  Props extends Record<string, unknown>,
-  Options = never,
->() {
+export function jsxFactory() {
   const cache = new Map()
 
   const factory = new Proxy(withAsChild, {

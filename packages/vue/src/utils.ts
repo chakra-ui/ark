@@ -95,16 +95,12 @@ export function transformComposableProps<T extends { context: object }>(props: T
  * Checks whether a given VNode is a render-vialble element.
  */
 export function isValidVNodeElement(input: any): boolean {
-  // No children
-  if (input == null) return false
-  // Raw HTML elements like 'div', 'span', e.t.c.
-  if (typeof input.type === 'string') return true
-  // Other Vue component objects
-  if (typeof input.type === 'object') return true
-  // Functional components
-  if (typeof input.type === 'function') return true
-  // HTML Comment nodes or Text nodes
-  return false
+  return (
+    input &&
+    (typeof input.type === 'string' ||
+      typeof input.type === 'object' ||
+      typeof input.type === 'function')
+  )
 }
 
 /**
