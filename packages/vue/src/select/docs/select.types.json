@@ -21,7 +21,7 @@
       "description": "The associate form of the underlying select."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -29,6 +29,11 @@
       "type": "Option",
       "isRequired": false,
       "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
     },
     "ids": {
       "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n  hiddenSelect: string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",

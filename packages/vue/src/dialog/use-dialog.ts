@@ -1,21 +1,19 @@
-import { connect, machine, type Context } from '@zag-js/dialog'
+import { connect, machine } from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
+import type { DialogProps } from './dialog'
 
-export type UseDialogContext = Omit<Context, 'id'>
-
-export const useDialog = (emit: CallableFunction, context: UseDialogContext) => {
+export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
-      onOpen() {
-        emit('open')
-        emit('update:open', true)
-      },
+      id: reactiveContext.id || useId().value,
       onClose() {
         emit('close')
         emit('update:open', false)
@@ -24,7 +22,7 @@ export const useDialog = (emit: CallableFunction, context: UseDialogContext) => 
         emit('esc')
       },
       onOutsideClick() {
-        emit('outsideClick')
+        emit('outside-click')
       },
     }),
   )
@@ -46,4 +44,4 @@ export const useDialog = (emit: CallableFunction, context: UseDialogContext) => 
   return api
 }
 
-export type UseDialogReturn = ReturnType<typeof useDialog>
+export type UseDialogReturn = ReturnType<typeof connect>

@@ -41,9 +41,14 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
     },
     "ids": {
       "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n}>",
@@ -51,7 +56,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autohighlight' | 'autocomplete'",
+      "type": "'autohighlight' | 'autocomplete' | 'none'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
     },

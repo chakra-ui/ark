@@ -1,19 +1,19 @@
-import { connect, machine, type Context as CheckboxContext } from '@zag-js/checkbox'
+import { connect, machine } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
+import type { CheckboxContext } from './checkbox'
 
-export interface UseCheckboxContext extends Omit<CheckboxContext, 'id'> {
-  modelValue?: CheckboxContext['checked']
-}
-
-export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext) => {
+export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       checked: reactiveContext.modelValue ?? reactiveContext.checked,
       onChange(details) {
         emit('change', details.checked)
@@ -30,12 +30,10 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxContext)
       if (value == undefined) return
 
       if (value !== api.value.isChecked) {
-        api.value.setChecked(value)
+        api.value.setChecked(value as boolean)
       }
     },
   )
 
   return api
 }
-
-export type UseCheckboxReturn = ReturnType<typeof useCheckbox>

@@ -1,39 +1,36 @@
 import { connect, machine, type Context as PressableContext } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
 
-export type UsePressableContext = Omit<
-  PressableContext,
-  'id' | 'disabled' | 'cancelOnPointerExit'
-> & {
-  isDisabled?: PressableContext['disabled']
-  isCanceledOnExit?: PressableContext['cancelOnPointerExit']
-}
+export type UsePressableContext = PressableContext
 
-export const usePressable = (emit: CallableFunction, context: UsePressableContext) => {
+export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      disabled: reactiveContext.isDisabled,
-      cancelOnPointerExit: reactiveContext.isCanceledOnExit,
-      id: useId().value,
+      disabled: reactiveContext.disabled,
+      cancelOnPointerExit: reactiveContext.cancelOnPointerExit,
+      id: reactiveContext.id || useId().value,
       onLongPress(event) {
-        emit('longPress', event)
+        emit('long-press', event)
       },
       onPress(event) {
         emit('press', event)
       },
       onPressEnd(event) {
-        emit('pressEnd', event)
+        emit('press-end', event)
       },
       onPressStart(event) {
-        emit('pressStart', event)
+        emit('press-start', event)
       },
       onPressUp(event) {
-        emit('pressUp', event)
+        emit('press-up', event)
       },
     }),
   )
