@@ -42,17 +42,11 @@ export const CustomControls = () => (
         <EditableControl>
           {state.isEditing ? (
             <>
-              <EditableSubmitTrigger>
-                <button>Save</button>
-              </EditableSubmitTrigger>
-              <EditableCancelTrigger>
-                <button>Cancel</button>
-              </EditableCancelTrigger>
+              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
+              <EditableCancelTrigger>Cancel</EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>
-              <button>Edit</button>
-            </EditableEditTrigger>
+            <EditableEditTrigger>Edit</EditableEditTrigger>
           )}
         </EditableControl>
       </>

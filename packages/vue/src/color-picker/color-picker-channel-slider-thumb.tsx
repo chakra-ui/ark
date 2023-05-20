@@ -1,16 +1,16 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
-import { useColorPickerSliderContext } from './color-picker-channel-slider-context'
+import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerSliderThumbProps = HTMLArkProps<'div'>
+export type ColorPickerChannelSliderThumbProps = HTMLArkProps<'div'>
 
-export const ColorPickerSliderThumb: ComponentWithProps<ColorPickerSliderThumbProps> =
+export const ColorPickerChannelSliderThumb: ComponentWithProps<ColorPickerChannelSliderThumbProps> =
   defineComponent({
-    name: 'ColorPickerSliderThumb',
+    name: 'ColorPickerChannelSliderThumb',
     setup(_, { slots, attrs }) {
-      const sliderContext = useColorPickerSliderContext()
+      const sliderContext = useColorPickerChannelSliderContext()
 
       const rootContext = useColorPickerContext()
 

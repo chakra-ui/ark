@@ -6,13 +6,15 @@ import {
   ColorPickerAreaGradient,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
+  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSliderThumb,
+  ColorPickerChannelSliderTrack,
   ColorPickerContent,
-  type ColorPickerContext,
   ColorPickerEyeDropperTrigger,
-  ColorPickerSliderThumb,
-  ColorPickerSliderTrack,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
+  type ColorPickerContext,
 } from './'
 import './color-picker.css'
 
@@ -34,24 +36,30 @@ const colorPickerValue = ref('hsl(10, 81%, 59%)')
 
       <ColorPickerSwatch :value="value" readOnly />
 
-      <ColorPickerSliderTrack :channel="hue">
-        <ColorPickerSliderThumb />
-      </ColorPickerSliderTrack>
+      <ColorPickerChannelSliderTrack :channel="hue">
+        <ColorPickerChannelSliderBackground />
+        <ColorPickerChannelSliderThumb />
+      </ColorPickerChannelSliderTrack>
 
-      <ColorPickerSliderTrack channel="alpha">
-        <ColorPickerSliderThumb />
-      </ColorPickerSliderTrack>
+      <ColorPickerChannelSliderTrack channel="alpha">
+        <ColorPickerChannelSliderBackground />
+        <ColorPickerChannelSliderThumb />
+      </ColorPickerChannelSliderTrack>
 
       <ColorPickerChannelInput :channel="hue" />
       <ColorPickerChannelInput :channel="saturation" />
       <ColorPickerChannelInput :channel="lightness" />
 
       <ColorPickerChannelInput channel="alpha" />
-      <ColorPickerChannelInput channel="hex" />
+      <ColorPickerChannelInput channel="hue" />
 
       <ColorPickerSwatchGroup>
-        <ColorPickerSwatch value="#123123" />
-        <ColorPickerSwatch value="#ff1321" />
+        <ColorPickerSwatch value="#123123">
+          <ColorPickerSwatchBackground />
+        </ColorPickerSwatch>
+        <ColorPickerSwatch value="#ff1321">
+          <ColorPickerSwatchBackground />
+        </ColorPickerSwatch>
       </ColorPickerSwatchGroup>
 
       <ColorPickerEyeDropperTrigger>

@@ -1,4 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
+import { For } from 'solid-js'
 import { Accordion, type AccordionProps } from './accordion'
 import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
@@ -8,14 +9,14 @@ const ComponentUnderTest = (props: AccordionProps) => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion {...props}>
-      {items.map((item) => (
-        <AccordionItem value={item}>
-          <AccordionTrigger>
-            <button>{item} trigger</button>
-          </AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
-      ))}
+      <For each={items}>
+        {(item) => (
+          <AccordionItem value={item}>
+            <AccordionTrigger>{item} trigger</AccordionTrigger>
+            <AccordionContent>{item} content</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
     </Accordion>
   )
 }

@@ -1,13 +1,26 @@
 {
   "root": true,
   "env": {
+    "browser": true,
     "node": true
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "eslint:recommended",
+    "plugin:vue/essential",
+    "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ]
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "vue/multi-word-component-names": ["off"],
+    "no-unused-vars": "warn"
+  },
+  "globals": {
+    "it": "readonly",
+    "expect": "readonly",
+    "describe": "readonly",
+    "vi": "readonly"
+  }
 }

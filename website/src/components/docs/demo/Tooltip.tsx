@@ -18,7 +18,7 @@ export const DemoTooltip = (props: DemoTooltipProps) => {
   const { placement = 'top', ...tooltipProps } = props
   return (
     <Tooltip openDelay={0} closeDelay={200} positioning={{ placement }} {...tooltipProps}>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <panda.span textStyle="sm" fontWeight="medium">
           Hover me
         </panda.span>

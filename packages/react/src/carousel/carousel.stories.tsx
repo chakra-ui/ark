@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react'
 import {
   Carousel,
+  CarouselControl,
   CarouselNextSlideTrigger,
   CarouselPrevSlideTrigger,
   CarouselSlide,
@@ -28,8 +29,10 @@ export const Basic = () => {
   ]
   return (
     <Carousel>
-      <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
-      <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
+      <CarouselControl>
+        <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
+        <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
+      </CarouselControl>
       <CarouselViewport>
         <CarouselSlideGroup>
           {images.map((image, index) => (

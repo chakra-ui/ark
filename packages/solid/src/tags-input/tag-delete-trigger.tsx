@@ -1,26 +1,17 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ssrSpread } from '../ssr-spread'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagDeleteTriggerProps = Assign<{ children: JSX.Element }, TagProps>
+export type TagDeleteTriggerProps = Assign<HTMLArkProps<'button'>, TagProps>
 
 export const TagDeleteTrigger = (props: TagDeleteTriggerProps) => {
-  const [tagProps, localProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
-  const tagsInput = useTagsInputContext()
-  const triggerProps = tagsInput().getTagDeleteTriggerProps(tagProps)
+  const [tagParams, restProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
 
-  const getChildren = children(() => ssrSpread(localProps.children, triggerProps))
+  const api = useTagsInputContext()
 
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const triggerProps = mergeProps(() => api().getTagDeleteTriggerProps(tagParams), restProps)
+  return <ark.button {...triggerProps} />
 }

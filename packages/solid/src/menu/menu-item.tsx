@@ -1,6 +1,7 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
@@ -10,11 +11,15 @@ export type MenuItemProps = Assign<HTMLArkProps<'div'>, MenuItemParams>
 
 export const MenuItem = (props: MenuItemProps) => {
   const menu = useMenuContext()
-  const [menuItemProps, divProps] = createSplitProps<MenuItemParams>()(props, [
+
+  const [itemParams, restProps] = createSplitProps<MenuItemParams>()(props, [
     'id',
     'disabled',
     'valueText',
     'closeOnSelect',
   ])
-  return <ark.div {...menu?.().getItemProps(menuItemProps)} {...divProps} />
+
+  const itemProps = mergeProps(() => menu?.().getItemProps(itemParams), restProps)
+
+  return <ark.div {...itemProps} />
 }

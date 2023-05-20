@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "prepare": "panda",
@@ -14,16 +14,16 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
-    "@next/env": "13.4.1",
-    "@next/font": "13.4.1",
-    "@pandacss/dev": "0.0.0-dev-20230505185444",
+    "@next/env": "13.4.3",
+    "@next/font": "13.4.3",
+    "@pandacss/dev": "0.0.2",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.2",
     "markdown-toc": "1.2.0",
     "next": "13.2.4",
     "next-contentlayer": "0.3.2",
     "next-seo": "5.15.0",
-    "next-sitemap": "4.0.9",
+    "next-sitemap": "4.1.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
@@ -32,17 +32,17 @@
     "rehype-pretty-code": "0.9.5",
     "rehype-slug": "5.1.0",
     "shiki": "0.14.2",
-    "ts-pattern": "4.2.3",
+    "ts-pattern": "4.3.0",
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
-    "@octokit/types": "9.2.1",
-    "@types/node": "18.16.5",
+    "@octokit/types": "9.2.3",
+    "@types/node": "18.16.13",
     "@types/react": "18.0.32",
     "@types/react-dom": "18.0.11",
     "concurrently": "8.0.1",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
     "typescript": "5.0.4"
   }
 }

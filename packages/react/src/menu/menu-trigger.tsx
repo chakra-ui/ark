@@ -1,12 +1,14 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuTriggerProps = { children: ReactElement }
+export type MenuTriggerProps = HTMLArkProps<'button'>
 
-export const MenuTrigger = (props: MenuTriggerProps) => {
+export const MenuTrigger = forwardRef<'button'>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
+  const mergedProps = mergeProps(api?.triggerProps ?? {}, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, api?.triggerProps ?? {})
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

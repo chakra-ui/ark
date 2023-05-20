@@ -1,15 +1,14 @@
-import { connect, machine, type Context } from '@zag-js/range-slider'
+import { connect, machine } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
+import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
 import { useId } from '../utils'
+import type { RangeSliderContext } from './range-slider'
 
-export type UseRangeSliderContext = Optional<Context, 'id'> & {
-  modelValue?: Context['value']
-}
-
-export const useRangeSlider = (emit: CallableFunction, context: UseRangeSliderContext) => {
+export const useRangeSlider = <T extends ExtractPropTypes<RangeSliderContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
@@ -17,7 +16,7 @@ export const useRangeSlider = (emit: CallableFunction, context: UseRangeSliderCo
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChangeStart(details) {

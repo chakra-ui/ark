@@ -1,23 +1,11 @@
-import { children, createEffect } from 'solid-js'
-import { type JSX } from 'solid-js/jsx-runtime'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipTriggerProps = { children: JSX.Element }
+export type TooltipTriggerProps = HTMLArkProps<'button'>
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
-  const tooltip = useTooltipContext()
-  const triggerProps = tooltip().triggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const api = useTooltipContext()
+  const triggerProps = mergeProps(() => api().triggerProps, props)
+  return <ark.button {...triggerProps} />
 }

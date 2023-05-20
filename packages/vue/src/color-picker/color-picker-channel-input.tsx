@@ -1,10 +1,10 @@
-import type { ColorChannelProps } from '@zag-js/color-picker'
+import type { ColorChannelInputProps } from '@zag-js/color-picker/dist/color-picker.types'
 import { computed, defineComponent, reactive, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelInputProps = HTMLArkProps<'input'> & ColorChannelProps
+export type ColorPickerChannelInputProps = HTMLArkProps<'input'> & ColorChannelInputProps
 
 export const ColorPickerChannelInput: ComponentWithProps<ColorPickerChannelInputProps> =
   defineComponent({
@@ -19,7 +19,7 @@ export const ColorPickerChannelInput: ComponentWithProps<ColorPickerChannelInput
       },
     },
     setup(props, { attrs }) {
-      const channelProps = reactive<ColorChannelProps>({
+      const channelProps = reactive<ColorChannelInputProps>({
         channel: props.channel,
         orientation: props.orientation,
       })

@@ -32,9 +32,7 @@ export const ChakraToastProvider = (props: PropsWithChildren) => (
                 <Toast key={toast.id} toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
-                  <ToastCloseTrigger>
-                    <button>close</button>
-                  </ToastCloseTrigger>
+                  <ToastCloseTrigger>close</ToastCloseTrigger>
                 </Toast>
               ))
             }

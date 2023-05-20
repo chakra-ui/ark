@@ -1,5 +1,11 @@
 ## 0.1.0
 
+## 0.2.1
+
+### Patch Changes
+
+- [#899](https://github.com/chakra-ui/ark/pull/899) [`0da6b58a`](https://github.com/chakra-ui/ark/commit/0da6b58a3081c382bbc0a31e279da29fb48aadc0) Thanks [@TylerAPfledderer](https://github.com/TylerAPfledderer)! - Update `Dialog` component: apply two-way binding to `open` prop
+
 ## 0.2.0
 
 ### Minor Changes

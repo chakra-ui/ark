@@ -44,16 +44,14 @@ listeners and attributes to ensure the desired accessibility.
             <Tag index={index} value={value}>
               <span>{value}</span>
               <TagDeleteTrigger index={index} value={value}>
-                <button>x</button>
+                x
               </TagDeleteTrigger>
             </Tag>
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
         <TagsInputField placeholder="Add tag" />
-        <TagsInputClearTrigger>
-          <button>Clear all</button>
-        </TagsInputClearTrigger>
+        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
       </TagsInputControl>
     </>
   )}

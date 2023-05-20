@@ -1,15 +1,17 @@
-import { type connect } from '@zag-js/tabs'
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import type { TriggerProps } from '@zag-js/tabs'
+import { createSplitProps } from '../create-split-props'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { type Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
-type TabContext = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
-export type TabTriggerProps = Assign<{ children: ReactElement }, TabContext>
+export type TabTriggerProps = Assign<HTMLArkProps<'button'>, TriggerProps>
 
-export const TabTrigger = (props: TabTriggerProps) => {
-  const { children, ...tabProps } = props
+export const TabTrigger = forwardRef<'button', TriggerProps>((props, ref) => {
+  const [tabProps, buttonProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])
   const { getTriggerProps } = useTabsContext()
+  const mergedProps = mergeProps(getTriggerProps(tabProps), buttonProps)
 
-  const onlyChild = Children.only(children)
-  return cloneElement(onlyChild, getTriggerProps(tabProps))
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

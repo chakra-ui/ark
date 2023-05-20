@@ -1,0 +1,123 @@
+---
+id: splitter
+name: Splitter
+description:
+  Splitter is a component that allows you to split a container into two or more
+  resizable sections.
+---
+
+## Import
+
+```ts
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/vue'
+```
+
+## Usage
+
+The Splitter component consists of the `SplitterPanel` and
+`SplitterResizeTrigger` components.
+
+```vue
+<script setup lang="ts">
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/vue'
+</script>
+<template>
+  <Splitter
+    :size="[
+      { id: 'first', size: 50 },
+      { id: 'second', size: 50 },
+    ]"
+  >
+    <SplitterPanel id="first">
+      <p>first</p>
+    </SplitterPanel>
+    <SplitterResizeTrigger id="first:second">
+      <div class="bar" />
+    </SplitterResizeTrigger>
+    <SplitterPanel id="second">
+      <p>second</p>
+    </SplitterPanel>
+  </Splitter>
+</template>
+```
+
+### Listening to resize changes
+
+You can listen to resize changes by passing a `@resize` callback to the
+`Splitter` component.
+
+`@resize-start` and `@resize-end` callbacks are also available.
+
+```vue
+<script setup lang="ts">
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/vue'
+</script>
+<template>
+  <Splitter
+    @resize="(details) => console.log('onResize', details)"
+    @resize-start="(details) => console.log('onResizeStart', details)"
+    @resize-end="(details) => console.log('onResizeEnd', details)"
+  >
+    <!-- ... -->
+  </Splitter>
+</template>
+```
+
+### Nested
+
+You can nest Splitter components to create a more complex layout.
+
+> The `useId` hook from `ark` can generate unique ids which you can apply to the
+> `id` prop of the `SplitterPanel` and `SplitterResizeTrigger` components.
+
+```vue
+<!-- basic.vue -->
+<script setup lang="ts">
+import {
+  useId,
+  Splitter,
+  SplitterPanel,
+  SplitterResizeTrigger,
+  SplitterPanel,
+} from '@ark-ui/vue'
+
+const panelIds = ref([useId().value, useId().value])
+</script>
+<template>
+  <Splitter
+    v-bind="props"
+    :size="[
+      { id: panelIds[0], size: 50 },
+      { id: panelIds[1], size: 50 },
+    ]"
+  >
+    <SplitterPanel :id="panelIds[0]">
+      <p>{{ panelIds[0] }}</p>
+    </SplitterPanel>
+    <SplitterResizeTrigger :id="`${panelIds[0]}:${panelIds[1]}`">
+      <div className="bar" />
+    </SplitterResizeTrigger>
+    <SplitterPanel :id="panelIds[1]">
+      <slot>
+        <p>{{ panelIds[1] }}</p>
+      </slot>
+    </SplitterPanel>
+  </Splitter>
+</template>
+```
+
+```vue
+<!-- nested.vue -->
+<script setup lang="ts">
+import Basic from './basic.vue'
+</script>
+<template>
+  <div :style="{ height: '100vh' }">
+    <Basic orientation="vertical">
+      <Basic>
+        <Basic orientation="vertical" />
+      </Basic>
+    </Basic>
+  </div>
+</template>
+```

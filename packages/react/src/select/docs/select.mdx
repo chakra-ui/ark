@@ -37,9 +37,7 @@ the desired accessibility.
   {({ selectedOption }) => (
     <>
       <SelectLabel>Framework</SelectLabel>
-      <SelectTrigger>
-        <button>{selectedOption?.label ?? 'Select option'}</button>
-      </SelectTrigger>
+      <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
       <Portal>
         <SelectPositioner>
           <SelectContent>
@@ -69,9 +67,7 @@ to group options.
   {({ selectedOption }) => (
     <>
       <SelectLabel>Framework:</SelectLabel>
-      <SelectTrigger>
-        <button>{selectedOption?.label ?? 'Select option'}</button>
-      </SelectTrigger>
+      <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
       <Portal>
         <SelectPositioner>
           <SelectContent>
@@ -127,7 +123,7 @@ skipped on keyboard navigation.
     <>
       <SelectLabel>Framework</SelectLabel>
       <SelectTrigger>
-        <button>{selectedOption?.label ?? 'Select option'}</button>
+        {selectedOption?.label ?? 'Select option'}
       </SelectTrigger>
       <Portal>
         <SelectPositioner>

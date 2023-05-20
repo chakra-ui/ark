@@ -1,0 +1,50 @@
+---
+id: switch
+name: Switch
+description:
+  The Switch is an interactive, binary component designed for your applications.
+  It offers a clear, visual interface for users to enable or disable specific
+  settings, features, or functionalities.
+---
+
+## Usage
+
+To use the Switch component in your project, import the necessary sub-components
+from the package:
+
+```tsx
+import {
+  Switch,
+  SwitchInput,
+  SwitchControl,
+  SwitchThumb,
+  SwitchLabel,
+} from '@ark-ui/solid'
+```
+
+Here is a basic example of how to use the Switch component:
+
+<Story name="Basic" />
+
+## Controlled Switch
+
+For a controlled Switch component, the state of the toggle is managed using the
+checked prop, and updates when the onChange event handler is called:
+
+<Story name="Controlled" />
+
+## Render Prop Usage
+
+The Switch component also allows for a render prop, granting direct access to
+its internal state. This enables you to dynamically adjust and customize aspects
+of the component based on its current state:
+
+<Story name="RenderProp" />
+
+## Conclusion
+
+The Switch component provides a straightforward, intuitive solution for
+incorporating toggle functionality into your applications. With its flexibility
+for both controlled and uncontrolled scenarios and provision for dynamic
+customization through its render prop, it can accommodate various use cases
+effectively.

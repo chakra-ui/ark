@@ -1,4 +1,5 @@
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   HoverCard,
   HoverCardArrow,
@@ -9,9 +10,15 @@ import {
 } from '.'
 import './hover-card.css'
 
+const meta: Meta = {
+  title: 'HoverCard',
+}
+
+export default meta
+
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger>
+    <HoverCardTrigger asChild>
       <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
         Mastodon
       </a>

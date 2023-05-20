@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputDecrementTriggerProps = { children: JSX.Element }
+export type NumberInputDecrementTriggerProps = HTMLArkProps<'button'>
 
 export const NumberInputDecrementTrigger = (props: NumberInputDecrementTriggerProps) => {
-  const numberInput = useNumberInputContext()
-  const triggerProps = numberInput().decrementTriggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const api = useNumberInputContext()
+  const triggerProps = mergeProps(() => api().decrementTriggerProps, props)
+  return <ark.button {...triggerProps} />
 }

@@ -1,23 +1,24 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-type OptionProps = Parameters<ReturnType<ReturnType<typeof useSelectContext>>['getOptionProps']>[0]
-export type SelectOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
+type OptionParams = Parameters<ReturnType<ReturnType<typeof useSelectContext>>['getOptionProps']>[0]
+
+export type SelectOptionProps = Assign<HTMLArkProps<'li'>, OptionParams>
 
 export const SelectOption = (props: SelectOptionProps) => {
-  const [optionProps, liProps] = createSplitProps<OptionProps>()(props, [
+  const [optionParams, restProps] = createSplitProps<OptionParams>()(props, [
     'disabled',
     'label',
     'value',
     'valueText',
   ])
-  const select = useSelectContext()
 
-  return (
-    <ark.li {...select().getOptionProps(optionProps)} {...liProps}>
-      {liProps.children ? liProps.children : optionProps.label}
-    </ark.li>
-  )
+  const api = useSelectContext()
+
+  const optionProps = mergeProps(() => api().getOptionProps(optionParams), restProps)
+
+  return <ark.li {...optionProps}>{restProps.children ?? optionParams.label}</ark.li>
 }

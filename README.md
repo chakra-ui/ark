@@ -8,34 +8,36 @@
 
 ## Available Components
 
-|                    | React | Solid | Vue |
-| ------------------ | ----- | ----- | --- |
-| Accordion          | 🟢    | 🟢    | 🟢  |
-| Carousel (Beta)    | 🟢    | ⚪    | ⚪  |
-| Checkbox           | 🟢    | 🟢    | 🟢  |
-| Color Picker       | 🟢    | 🟢    | 🟢  |
-| Date Picker (Beta) | 🟡    | ⚪    | ⚪  |
-| Dialog             | 🟢    | 🟢    | 🟢  |
-| Combobox           | 🟢    | 🟢    | 🟢  |
-| Editable           | 🟢    | 🟢    | 🟢  |
-| Environment        | 🟢    | 🟢    | 🟢  |
-| Hover Card         | 🟢    | 🟢    | 🟢  |
-| Menu               | 🟢    | 🟢    | 🟢  |
-| Number Input       | 🟢    | 🟢    | 🟢  |
-| Pagination         | 🟢    | 🟢    | 🟢  |
-| Pin Input          | 🟢    | 🟢    | 🟢  |
-| Popover            | 🟢    | 🟢    | 🟢  |
-| Pressable          | 🟢    | 🟢    | 🟢  |
-| Radio Group        | 🟢    | 🟢    | 🟢  |
-| Range Slider       | 🟢    | 🟢    | 🟢  |
-| Rating             | 🟢    | 🟢    | 🟢  |
-| Select             | 🟢    | 🟢    | 🟢  |
-| Slider             | 🟢    | 🟢    | 🟢  |
-| Splitter           | 🟢    | 🟢    | 🟢  |
-| Tabs               | 🟢    | 🟢    | 🟢  |
-| Tags Input         | 🟢    | 🟢    | 🟢  |
-| Toast              | 🟢    | 🟢    | 🟡  |
-| Tooltip            | 🟢    | 🟢    | 🟢  |
+|                         | React | Solid | Vue |
+| ----------------------- | ----- | ----- | --- |
+| Accordion               | 🟢    | 🟢    | 🟢  |
+| Carousel                | 🟢    | 🟢    | ⚪  |
+| Checkbox                | 🟢    | 🟢    | 🟢  |
+| Color Picker            | 🟢    | 🟢    | 🟢  |
+| Date Picker             | 🟢    | ⚪    | ⚪  |
+| Dialog                  | 🟢    | 🟢    | 🟢  |
+| Combobox / Autocomplete | 🟢    | 🟢    | 🟢  |
+| Editable                | 🟢    | 🟢    | 🟢  |
+| Environment             | 🟢    | 🟢    | 🟢  |
+| Hover Card              | 🟢    | 🟢    | 🟢  |
+| Menu                    | 🟢    | 🟢    | 🟢  |
+| Number Input            | 🟢    | 🟢    | 🟢  |
+| Pagination              | 🟢    | 🟢    | 🟢  |
+| Pin Input               | 🟢    | 🟢    | 🟢  |
+| Popover                 | 🟢    | 🟢    | 🟢  |
+| Pressable               | 🟢    | 🟢    | 🟢  |
+| Radio Group             | 🟢    | 🟢    | 🟢  |
+| Range Slider            | 🟢    | 🟢    | 🟢  |
+| Rating                  | 🟢    | 🟢    | 🟢  |
+| Select                  | 🟢    | 🟢    | 🟢  |
+| Segmented Control       | ⚪    | ⚪    | ⚪  |
+| Slider                  | 🟢    | 🟢    | 🟢  |
+| Splitter                | 🟢    | 🟢    | 🟢  |
+| Switch                  | 🟢    | 🟢    | ⚪  |
+| Tabs                    | 🟢    | 🟢    | 🟢  |
+| Tags Input              | 🟢    | 🟢    | 🟢  |
+| Toast                   | 🟢    | 🟢    | 🟡  |
+| Tooltip                 | 🟢    | 🟢    | 🟢  |
 
 ## Contributing
 

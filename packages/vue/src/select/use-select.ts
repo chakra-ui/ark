@@ -1,14 +1,14 @@
-import { connect, machine, type Context as SelectContext } from '@zag-js/select'
+import { connect, machine } from '@zag-js/select'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
+import type { SelectContext } from './select'
 
-export interface UseSelectContext extends Omit<SelectContext, 'id'> {
-  modelValue?: SelectContext['selectedOption']
-}
-
-export const useSelect = (emit: CallableFunction, context: UseSelectContext) => {
+export const useSelect = <T extends ExtractPropTypes<SelectContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
@@ -16,7 +16,7 @@ export const useSelect = (emit: CallableFunction, context: UseSelectContext) => 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       getRootNode,
       selectedOption: reactiveContext.modelValue ?? reactiveContext.selectedOption,
       onChange: (details) => {

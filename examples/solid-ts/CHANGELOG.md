@@ -1,5 +1,12 @@
 # vite-template-solid
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [[`ec4ef660`](https://github.com/chakra-ui/ark/commit/ec4ef66000822168ce050f2ae5377f1b56259f1d)]:
+  - @ark-ui/solid@0.3.0
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,14 +1,15 @@
-import { mergeProps } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useColorPickerSliderContext } from './color-picker-channel-slider-context'
+import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerSliderThumbProps = HTMLArkProps<'div'>
+export type ColorPickerChannelSliderThumbProps = HTMLArkProps<'div'>
 
-export const ColorPickerSliderThumb = (props: ColorPickerSliderThumbProps) => {
-  const colorPicker = useColorPickerContext()
-  const slider = useColorPickerSliderContext()
-  const mergedProps = mergeProps(colorPicker().getChannelSliderThumbProps(slider), props)
+export const ColorPickerChannelSliderThumb = (props: ColorPickerChannelSliderThumbProps) => {
+  const api = useColorPickerContext()
+  const sliderProps = useColorPickerChannelSliderContext()
 
-  return <ark.div {...mergedProps} />
+  const thumbProps = mergeProps(() => api().getChannelSliderThumbProps(sliderProps), props)
+
+  return <ark.div {...thumbProps} />
 }

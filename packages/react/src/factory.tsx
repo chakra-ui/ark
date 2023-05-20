@@ -20,15 +20,15 @@ export type AsChildComponentProps<E extends React.ElementType> = React.Component
 
 export type HTMLArkProps<T extends React.ElementType> = AsChildComponentProps<T>
 
-function withAsChild(Component: React.ElementType) {
+const withAsChild = (Component: React.ElementType) => {
   const Comp = forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
-    const { asChild, ...restProps } = props
+    const { asChild, children, ...restProps } = props
 
     if (!asChild) {
-      return <Component {...restProps} ref={ref} />
+      return <Component {...props} ref={ref} />
     }
 
-    const onlyChild = Children.only(props.children)
+    const onlyChild = Children.only(children)
 
     return isValidElement(onlyChild)
       ? cloneElement(onlyChild, {
@@ -44,7 +44,7 @@ function withAsChild(Component: React.ElementType) {
   return Comp
 }
 
-export function jsxFactory() {
+export const jsxFactory = () => {
   const cache = new Map()
 
   return new Proxy(withAsChild, {

@@ -1,14 +1,14 @@
-import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
+import { connect, machine } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
+import type { AccordionContext } from './accordion'
 
-export interface UseAccordionContext extends Omit<AccordionContext, 'id'> {
-  modelValue?: AccordionContext['value']
-}
-
-export const useAccordion = (emit: CallableFunction, context: UseAccordionContext) => {
+export const useAccordion = <T extends ExtractPropTypes<AccordionContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const getRootNode = useEnvironmentContext()
@@ -17,7 +17,7 @@ export const useAccordion = (emit: CallableFunction, context: UseAccordionContex
     machine({
       ...reactiveContext,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       getRootNode,
       onChange: (details) => {
         emit('change', details.value)
@@ -41,5 +41,3 @@ export const useAccordion = (emit: CallableFunction, context: UseAccordionContex
 
   return { api }
 }
-
-export type UseAccordionReturn = ReturnType<typeof useAccordion>

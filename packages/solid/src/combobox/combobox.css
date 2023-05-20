@@ -1,0 +1,40 @@
+[data-scope='combobox'][data-part='root'] {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+[data-scope='combobox'][data-part='content'] {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid lightgray;
+  max-height: 240px;
+  overflow: auto;
+}
+
+[data-scope='combobox'][data-part='option'] {
+  padding: 4px 8px;
+}
+
+[data-scope='combobox'][data-part='option'][data-highlighted] {
+  background-color: blue;
+  color: white;
+}
+
+[data-scope='combobox'][data-part='option'][data-disabled] {
+  opacity: 0.5;
+}
+
+[data-scope='combobox'][data-part='label'] {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+[data-scope='combobox'][data-part='control'] {
+  display: inline-flex;
+  width: 300px;
+}
+
+[data-scope='combobox'][data-part='input'] {
+  flex: 1;
+}

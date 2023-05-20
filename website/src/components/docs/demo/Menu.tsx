@@ -35,7 +35,7 @@ export const DemoMenu = () => {
       }}
       value={value}
     >
-      <MenuTrigger>
+      <MenuTrigger asChild>
         <Button>Open menu</Button>
       </MenuTrigger>
       <Portal>
