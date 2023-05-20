@@ -24,11 +24,13 @@ export const input: any = defineRecipe({
   variants: {
     variant: {
       outline: {
-        background: 'transparent',
+        background: {
+          base: 'white',
+          _dark: 'brown.600',
+        },
         borderColor: 'border.emphasized',
         borderRadius: 'lg',
         borderWidth: '1px',
-        boxShadow: 'xs',
         color: 'fg.default',
         textAlign: 'left',
         _focus: {

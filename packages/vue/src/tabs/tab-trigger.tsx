@@ -1,4 +1,4 @@
-import { type connect } from '@zag-js/tabs'
+import { type TriggerProps } from '@zag-js/tabs'
 import { defineComponent, h, type PropType } from 'vue'
 import { useUniqueChild, type ComponentWithProps } from '../utils'
 import { useTabsContext } from './tabs-context'
@@ -6,7 +6,8 @@ import { useTabsContext } from './tabs-context'
 /** This type is here so that the script 'check-exports' passes
  *  because in Vue we don't pass 'children' as props
  */
-export type TabTriggerProps = Parameters<ReturnType<typeof connect>['getTriggerProps']>[0]
+
+export type TabTriggerProps = TriggerProps
 
 export const TabTrigger: ComponentWithProps<TabTriggerProps> = defineComponent({
   name: 'TabTrigger',

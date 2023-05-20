@@ -24,29 +24,42 @@ import {
 The PinInput component consists of the `PinInputControl` `PinInputField` and
 `PinInputLabel` components. Combine them as desired to fit your design system.
 
-```tsx
-<PinInput>
-  <PinInputLabel>Label</PinInputLabel>
-  <PinInputControl>
-    <PinInputField :index="0" />
-    <PinInputField :index="1" />
-    <PinInputField :index="2" />
-  </PinInputControl>
-</PinInput>
+```vue
+<script setup>
+import {
+  PinInput,
+  PinInputControl,
+  PinInputField,
+  PinInputLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <PinInput>
+    <PinInputLabel>Label</PinInputLabel>
+    <PinInputControl>
+      <PinInputField :index="0" />
+      <PinInputField :index="1" />
+      <PinInputField :index="2" />
+    </PinInputControl>
+  </PinInput>
+</template>
 ```
 
 ### Setting a default value
 
-To set the initial value of the pin input, set a `v-model.
+To set the initial value of the pin input, set a `v-model`.
 
-```tsx
-<script setup lang='ts'>
-import {PinInput} from '@ark-ui/vue'
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { PinInput } from '@ark-ui/vue'
 
 const defaultValue = ref(['1', '2', '3'])
 </script>
 <template>
-  <PinInput v-model="defaultValue">{/*...*/}</PinInput>
+  <PinInput v-model="defaultValue">
+    <!-- ... -->
+  </PinInput>
 </template>
 ```
 
@@ -55,8 +68,15 @@ const defaultValue = ref(['1', '2', '3'])
 To customize the default pin input placeholder `○` for each input, pass the
 placeholder prop and set it to your desired value.
 
-```tsx
-<PinInput placeholder="*">{/*...*/}</PinInput>
+```vue
+<script setup lang="ts">
+import { PinInput } from '@ark-ui/vue'
+</script>
+<template>
+  <PinInput placeholder="*">
+    <!-- ... -->
+  </PinInput>
+</template>
 ```
 
 ### Blur on complete
@@ -65,8 +85,15 @@ By default, the last input maintains focus when filled, and we invoke the
 `onComplete` callback. To blur the last input when the user completes the input,
 set the prop `blurOnComplete` to `true`.
 
-```tsx
-<PinInput blurOnComplete>{/*...*/}</PinInput>
+```vue
+<script setup lang="ts">
+import { PinInput } from '@ark-ui/vue'
+</script>
+<template>
+  <PinInput blurOnComplete>
+    <!-- ... -->
+  </PinInput>
+</template>
 ```
 
 ### Using OTP mode
@@ -75,8 +102,15 @@ To trigger smartphone OTP auto-suggestion, it is recommended to set the
 `autocomplete` attribute to "one-time-code". The pin input component provides
 support for this automatically when you set the `otp` prop to true.
 
-```tsx
-<PinInput otp>{/*...*/}</PinInput>
+```vue
+<script setup lang="ts">
+import { PinInput } from '@ark-ui/vue'
+</script>
+<template>
+  <PinInput otp>
+    <!-- ... -->
+  </PinInput>
+</template>
 ```
 
 ### Securing the text input
@@ -85,8 +119,15 @@ When collecting private or sensitive information using the pin input, you might
 need to mask the value entered, similar to `<input type="password"/>`. Pass the
 `mask` prop to `true`.
 
-```tsx
-<PinInput mask>{/*...*/}</PinInput>
+```vue
+<script setup lang="ts">
+import { PinInput } from '@ark-ui/vue'
+</script>
+<template>
+  <PinInput mask>
+    <!-- ... -->
+  </PinInput>
+</template>
 ```
 
 ### Listening for changes

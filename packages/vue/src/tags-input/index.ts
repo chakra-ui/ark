@@ -8,4 +8,4 @@ export { TagsInputControl, type TagsInputControlProps } from './tags-input-contr
 export { TagsInputField, type TagsInputFieldProps } from './tags-input-field'
 export { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 export { tagsInputAnatomy } from './tags-input.anatomy'
-export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
+export { useTagsInput, type UseTagsInputReturn } from './use-tags-input'

@@ -52,16 +52,19 @@ export const button = defineRecipe({
         },
       },
       secondary: {
-        background: 'bg.surface',
+        background: {
+          base: 'white',
+          _dark: 'transparent',
+        },
         borderWidth: '1px',
         borderColor: 'border.emphasized',
-        boxShadow: 'xs',
         color: 'fg.emphasized',
         _hover: {
           color: 'fg.default',
           background: 'bg.subtle',
           _disabled: {
             borderColor: 'border.default',
+            background: 'bg.surface',
             color: 'fg.subtle',
             cursor: 'not-allowed',
           },

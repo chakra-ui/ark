@@ -11,6 +11,7 @@
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -34,7 +35,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -44,7 +45,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },

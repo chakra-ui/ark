@@ -1,5 +1,13 @@
 ## 0.1.0
 
+## 0.3.0
+
+### Minor Changes
+
+- [`888886bb`](https://github.com/chakra-ui/ark/commit/888886bb4b15c52d926caf4294a487c7e1d8d339) Thanks [@cschroeter](https://github.com/cschroeter)! - Add Switch Component
+
+- [`888886bb`](https://github.com/chakra-ui/ark/commit/888886bb4b15c52d926caf4294a487c7e1d8d339) Thanks [@cschroeter](https://github.com/cschroeter)! - Add support for `asChild` prop in all components
+
 ## 0.2.0
 
 ### Minor Changes

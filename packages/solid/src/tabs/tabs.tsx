@@ -1,13 +1,14 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
 export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
 export const Tabs = (props: TabsProps) => {
-  const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [
+  const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(props, [
     'activationMode',
     'dir',
     'getRootNode',
@@ -21,11 +22,13 @@ export const Tabs = (props: TabsProps) => {
     'translations',
     'value',
   ])
-  const tabs = useTabs(useTabsProps)
+
+  const api = useTabs(tabsParams)
+  const rootProps = mergeProps(() => api().rootProps, restProps)
 
   return (
-    <TabsProvider value={tabs}>
-      <ark.div {...tabs().rootProps} {...divProps} />
+    <TabsProvider value={api}>
+      <ark.div {...rootProps} />
     </TabsProvider>
   )
 }

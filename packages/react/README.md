@@ -5,9 +5,9 @@
 ## Key Features
 
 - **Accessible**: Components in Ark UI are designed with accessibility in mind, adhering to WAI-ARIA design patterns and handling implementation details such as aria and role attributes, focus management, and keyboard navigation.
-- **Unstyled**: Components are shipped without styles, giving developers full control over styling.
+- **Headless**: Components are shipped without styles, giving developers full control over styling.
 - **Customizable**: The open component architecture allows for customization and customization, providing granular access to each component part.
-- **Uncontrolled or Controlled**: Components can be uncontrolled by default or controlled alternatively.
+- **Powered by state machines**: Predictable, simplified, and robust component behavior.
 - **Developer Experience**: The library provides a fully-typed API with a consistent and predictable experience.
 
 ## Available Components
@@ -19,6 +19,7 @@ At the moment, `@ark-ui/react`offers the following components:
 - [Checkbox](https://ark-ui.com/docs/react/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/react/components/color-picker)
 - [Combobox](https://ark-ui.com/docs/react/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/react/components/date-picker)
 - [Dialog](https://ark-ui.com/docs/react/components/dialog)
 - [Editable](https://ark-ui.com/docs/react/components/editable)
 - [Hover Card](https://ark-ui.com/docs/react/components/hover-card)
@@ -34,6 +35,7 @@ At the moment, `@ark-ui/react`offers the following components:
 - [Select](https://ark-ui.com/docs/react/components/select)
 - [Slider](https://ark-ui.com/docs/react/components/slider)
 - [Splitter](https://ark-ui.com/docs/react/components/splitter)
+- [Switch](https://ark-ui.com/docs/react/components/switch)
 - [Tabs](https://ark-ui.com/docs/react/components/tabs)
 - [Tags Input](https://ark-ui.com/docs/react/components/tags-input)
 - [Toast](https://ark-ui.com/docs/react/components/toast)

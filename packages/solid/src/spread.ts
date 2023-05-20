@@ -1,27 +1,46 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createMemo, mergeProps } from 'solid-js'
 import { spread as solidSpread } from 'solid-js/web'
-import { filterObject } from './filter-object'
+import { filterProps, mapProps } from './filter-props'
+import { mergeStyle } from './merge-style'
 
 const getEventKey = (key: string) => `$$${key.toLowerCase().slice(2)}`
+const hasOwn = (obj: any, key: string) => Object.prototype.hasOwnProperty.call(obj, key)
 
 export const spread = (node: HTMLElement, props: any) => {
-  const eventListeners = filterObject(props, ([key]) => key.slice(0, 2) === 'on')
-  // @ts-expect-error - TODO iterator type
-  const events = filterObject(node, ([key]) => key.slice(0, 2) === '$$')
-
-  const result = Object.fromEntries(
-    Object.entries(eventListeners).map(([key, value]) => {
-      const prop = getEventKey(key)
-      const newValue =
-        prop in events
-          ? function (...args: unknown[]) {
-              // @ts-expect-error - TODO iterator type
-              events[prop](...args)
-              value(...args)
-            }
-          : value
-      return [key, newValue]
-    }),
+  const parentProps = filterProps(
+    props,
+    (key) => typeof key === 'string' && key.slice(0, 2) === 'on',
   )
 
-  solidSpread(node, { ...props, ...result })
+  const nodeEvents = Object.fromEntries(
+    Object.keys(node)
+      .filter((prop) => prop.startsWith('$$'))
+      // @ts-expect-error - fix later
+      .map((prop) => [prop, node[prop]]),
+  )
+
+  const composedProps = createMemo(() => {
+    return mapProps(parentProps, (key, value) => {
+      const prop = getEventKey(key)
+
+      // event composition
+      if (hasOwn(nodeEvents, prop)) {
+        return function next(...args: unknown[]) {
+          // @ts-expect-error - fix later
+          value(...args)
+          nodeEvents[prop](...args)
+        }
+      }
+
+      // style composition
+      if (key === 'style') {
+        return mergeStyle(node.style.cssText, value as any)
+      }
+
+      return value
+    })
+  })
+
+  solidSpread(node, mergeProps(props, composedProps))
 }

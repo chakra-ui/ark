@@ -8,15 +8,11 @@ const ComponentUnderTest = (props: SplitterProps) => (
     ]}
     {...props}
   >
-    <SplitterPanel id="a">
-      <p>A</p>
-    </SplitterPanel>
+    <SplitterPanel id="a">A</SplitterPanel>
     <SplitterResizeTrigger id="a:b">
       <div class="bar" />
     </SplitterResizeTrigger>
-    <SplitterPanel id="b">
-      <p>B</p>
-    </SplitterPanel>
+    <SplitterPanel id="b">B</SplitterPanel>
   </Splitter>
 )
 

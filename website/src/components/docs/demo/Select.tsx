@@ -13,7 +13,7 @@ export const DemoSelect = () => (
   <Select positioning={{ gutter: 4 }}>
     {({ selectedOption, isOpen }) => (
       <>
-        <SelectTrigger>
+        <SelectTrigger asChild>
           <button className={select()}>
             <span>{selectedOption?.label ?? 'Select option'}</span>
             <SelectIcon isOpen={isOpen} />

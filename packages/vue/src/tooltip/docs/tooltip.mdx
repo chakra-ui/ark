@@ -30,16 +30,26 @@ Note that the `TooltipTrigger` component accepts a single JSX element which will
 receive all necessary props to add the event listeners and attributes to ensure
 the desired accessibility.
 
-```tsx
-<Tooltip>
-  <TooltipTrigger>
-    <span>hover me</span>
-  </TooltipTrigger>
+```vue
+<script setup lang="ts">
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Tooltip>
+    <TooltipTrigger>
+      <span>hover me</span>
+    </TooltipTrigger>
 
-  <TooltipPositioner>
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
-</Tooltip>
+    <TooltipPositioner>
+      <TooltipContent>My tooltip content</TooltipContent>
+    </TooltipPositioner>
+  </Tooltip>
+</template>
 ```
 
 ### Adding an arrow
@@ -47,28 +57,47 @@ the desired accessibility.
 To render an arrow within the tooltip render the components `TooltipArrow` and
 `TooltipArrowTip` within the `TooltipPositioner`.
 
-```tsx {7-9}
-<Tooltip>
-  <TooltipTrigger>
-    <span>hover me</span>
-  </TooltipTrigger>
+```vue {7-9}
+<script setup lang="ts">
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Tooltip>
+    <TooltipTrigger>
+      <span>hover me</span>
+    </TooltipTrigger>
 
-  <TooltipPositioner>
-    <TooltipArrow>
-      <TooltipArrowTip />
-    </TooltipArrow>
+    <TooltipPositioner>
+      <TooltipArrow>
+        <TooltipArrowTip />
+      </TooltipArrow>
 
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
-</Tooltip>
+      <TooltipContent>My tooltip content</TooltipContent>
+    </TooltipPositioner>
+  </Tooltip>
+</template>
 ```
 
 ### Disabled
 
 To disable showing a tooltip, pass the `disabled` prop to the Tooltip component.
 
-```tsx
-<Tooltip disabled>{/*...*/}</Tooltip>
+```vue
+<script setup lang="ts">
+import { Tooltip } from '@ark-ui/vue'
+</script>
+<template>
+  <Tooltip disabled>
+    <!-- ... -->
+  </Tooltip>
+</template>
 ```
 
 ### Changing the placement
@@ -76,12 +105,21 @@ To disable showing a tooltip, pass the `disabled` prop to the Tooltip component.
 Control the placement, gutter and offset of the tooltip with the `positioning`
 prop.
 
-```tsx
-<Tooltip
-  :positioning="{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12 } }"
->
-  {/*...*/}
-</Tooltip>
+```vue
+<script setup lang="ts">
+import { Tooltip } from '@ark-ui/vue'
+</script>
+<template>
+  <Tooltip
+    :positioning="{
+      placement: 'left-start',
+      gutter: 16,
+      offset: { mainAxis: 12 },
+    }"
+  >
+    <!-- ... -->
+  </Tooltip>
+</template>
 ```
 
 ### Timings
@@ -90,10 +128,15 @@ By default, the tooltip is designed to open after `1000ms` and close after
 `500ms`. You can customize this by passing the `openDelay` and `closeDelay`
 props.
 
-```tsx
-<Tooltip :open-delay="500" :close-delay="200">
-  {/*...*/}
-</Tooltip>
+```vue
+<script setup lang="ts">
+import { Tooltip } from '@ark-ui/vue'
+</script>
+<template>
+  <Tooltip :open-delay="500" :close-delay="200">
+    <!-- ... -->
+  </Tooltip>
+</template>
 ```
 
 ### Custom Component

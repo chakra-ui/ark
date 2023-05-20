@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputClearTriggerProps = { children: ReactElement }
+export type TagsInputClearTriggerProps = HTMLArkProps<'button'>
 
-export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
+export const TagsInputClearTrigger = forwardRef<'button'>((props, ref) => {
   const { clearTriggerProps } = useTagsInputContext()
+  const mergedProps = mergeProps(clearTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, clearTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

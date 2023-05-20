@@ -24,9 +24,7 @@ export default meta
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>
-      <button>click me</button>
-    </PopoverTrigger>
+    <PopoverTrigger>click me</PopoverTrigger>
     <PopoverPositioner>
       <PopoverContent>
         <PopoverArrow>
@@ -35,9 +33,7 @@ export const Basic = () => (
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />
-        <PopoverCloseTrigger>
-          <button>close</button>
-        </PopoverCloseTrigger>
+        <PopoverCloseTrigger>close</PopoverCloseTrigger>
       </PopoverContent>
     </PopoverPositioner>
   </Popover>
@@ -49,9 +45,7 @@ export const Controlled = () => {
     <>
       <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
       <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <PopoverAnchor>
-          <span>anchor</span>
-        </PopoverAnchor>
+        <PopoverAnchor>anchor</PopoverAnchor>
         <PopoverPositioner>
           <PopoverContent>
             <PopoverArrow>
@@ -60,9 +54,7 @@ export const Controlled = () => {
             <PopoverTitle>Title</PopoverTitle>
             <PopoverDescription>Description</PopoverDescription>
             <input type="text" />
-            <PopoverCloseTrigger>
-              <button>close</button>
-            </PopoverCloseTrigger>
+            <PopoverCloseTrigger>close</PopoverCloseTrigger>
           </PopoverContent>
         </PopoverPositioner>
       </Popover>

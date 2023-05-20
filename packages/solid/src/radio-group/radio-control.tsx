@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useRadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
@@ -5,8 +6,10 @@ import { useRadioGroupContext } from './radio-group-context'
 export type RadioControlProps = HTMLArkProps<'div'>
 
 export const RadioControl = (props: RadioControlProps) => {
-  const radioGroup = useRadioGroupContext()
-  const context = useRadioContext()
+  const api = useRadioGroupContext()
 
-  return <ark.div {...radioGroup().getRadioControlProps(context)} {...props} />
+  const radioParams = useRadioContext()
+  const controlProps = mergeProps(() => api().getRadioControlProps(radioParams), props)
+
+  return <ark.div {...controlProps} />
 }

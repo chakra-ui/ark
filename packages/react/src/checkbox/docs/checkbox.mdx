@@ -2,123 +2,54 @@
 id: checkbox
 name: Checkbox
 description:
-  A checkbox allows users to make a binary choice, i.e. a choice between one of
-  two possible mutually exclusive options.
+  The Checkbox is a widely used input component for toggling between checked and
+  unchecked states. It supports basic, controlled, and indeterminate states.
 ---
-
-## Import
-
-```ts
-import {
-  Checkbox,
-  CheckboxControl,
-  CheckboxInput,
-  CheckboxLabel,
-} from '@ark-ui/react'
-```
 
 ## Usage
 
-The Checkbox component consists of the `CheckboxControl`, `CheckboxInput`,
-`CheckboxLabel` components.
+To get started, import the necessary components from the package:
 
 ```tsx
-<Checkbox>
-  <CheckboxLabel>Checkbox</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
+import {
+  Checkbox,
+  CheckboxLabel,
+  CheckboxInput,
+  CheckboxControl,
+} from '@ark-ui/react'
 ```
 
-### Controlled usage
+Here is an example of how to use the Checkbox component:
 
-When the checkbox value changes, the `onChange` callback is invoked. Pass the
-checked state via the `checked` prop.
+<Story name="Basic" />
 
-```tsx
-const MyCheckbox = () => {
-  const [checked, setChecked] = React.useState(false)
-  return (
-    <Checkbox checked={checked} onChange={(e) => setChecked(e.checked)}>
-      <CheckboxLabel>Controlled</CheckboxLabel>
-      <CheckboxInput />
-      <CheckboxControl />
-    </Checkbox>
-  )
-}
-```
+## Controlled Checkbox
 
-### Disabling the Checkbox
+To create a controlled Checkbox component, manage the state of the checked
+status using the `checked` prop and update it when the `onChange` event handler
+is called:
 
-To make a checkbox disabled, set the `disabled` prop to `true`
+<Story name="Controlled" />
 
-```tsx
-<Checkbox disabled>
-  <CheckboxLabel>Disabled</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
-```
+## Indeterminate Checkbox
 
-### Making the checkbox readonly
+In some cases, you may need a checkbox to represent a state that is neither
+checked nor unchecked, known as the indeterminate state. This can be achieved by
+setting the `checked` prop to `indeterminate`:
 
-To make a checkbox readonly, set the `readOnly` prop to `true`
+<Story name="Indeterminate" />
 
-```tsx
-<Checkbox readOnly>
-  <CheckboxLabel>Readonly</CheckboxLabel>
-  <CheckboxInput />
-  <CheckboxControl />
-</Checkbox>
-```
+## Render Prop Usage
 
-### Indeterminate
+For cases where you need more flexibility in rendering, the Checkbox component
+offers the use of a render prop. The render prop function gives you access to
+the checkbox's API, allowing you to customize the checkbox control's rendering:
 
-To make a checkbox indeterminate, set the `indeterminate` prop to `true`
+<Story name="RenderProp" />
 
-```tsx
-const DemoIndeterminateCheckbox = () => {
-  const [checkedItems, setCheckedItems] = React.useState([false, false])
+## Conclusion
 
-  const allChecked = checkedItems.every(Boolean)
-  const someChecked = checkedItems.some(Boolean) && !allChecked
-
-  return (
-    <>
-      <Checkbox
-        checked={allChecked}
-        indeterminate={someChecked}
-        onChange={(e) =>
-          setCheckedItems([e.checked === true, e.checked === true])
-        }
-      >
-        <CheckboxLabel>Parent Checkbox</CheckboxLabel>
-        <CheckboxInput />
-        <CheckboxControl />
-      </Checkbox>
-      <div>
-        <Checkbox
-          checked={checkedItems[0]}
-          onChange={(e) =>
-            setCheckedItems([e.checked === true, checkedItems[1]])
-          }
-        >
-          <CheckboxLabel>Child Checkbox 1</CheckboxLabel>
-          <CheckboxInput />
-          <CheckboxControl />
-        </Checkbox>
-        <Checkbox
-          checked={checkedItems[1]}
-          onChange={(e) =>
-            setCheckedItems([checkedItems[0], e.checked === true])
-          }
-        >
-          <CheckboxLabel>Child Checkbox 2</CheckboxLabel>
-          <CheckboxInput />
-          <CheckboxControl />
-        </Checkbox>
-      </div>
-    </>
-  )
-}
-```
+The Checkbox component provides a robust and flexible solution for toggleable
+input needs in your applications. With its support for controlled and
+indeterminate states, as well as custom render props, it offers a wide range of
+design possibilities and use cases.

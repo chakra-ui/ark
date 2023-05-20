@@ -1,19 +1,23 @@
-import { connect, machine, type Context as PinInputContext } from '@zag-js/pin-input'
+import { connect, machine } from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
+import type { PinInputContext } from './pin-input'
 
-export interface UsePinInputContext extends Omit<PinInputContext, 'id'> {
-  modelValue?: PinInputContext['value']
-}
-
-export const usePinInput = (emit: CallableFunction, context: UsePinInputContext) => {
+export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
+
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
@@ -33,4 +37,4 @@ export const usePinInput = (emit: CallableFunction, context: UsePinInputContext)
   return api
 }
 
-export type UsePinInputReturn = ReturnType<typeof usePinInput>
+export type UsePinInputReturn = ReturnType<typeof connect>

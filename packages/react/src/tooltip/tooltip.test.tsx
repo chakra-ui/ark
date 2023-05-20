@@ -1,17 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Tooltip, type TooltipProps } from './tooltip'
-import { TooltipArrow } from './tooltip-arrow'
-import { TooltipArrowTip } from './tooltip-arrow-tip'
-import { TooltipContent } from './tooltip-content'
-import { TooltipPositioner } from './tooltip-positioner'
-import { TooltipTrigger } from './tooltip-trigger'
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipTrigger,
+  type TooltipProps,
+} from './'
 
 const Component = (props: TooltipProps) => (
   <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>
-      <button>hover me</button>
-    </TooltipTrigger>
+    <TooltipTrigger>hover me</TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipArrowTip />

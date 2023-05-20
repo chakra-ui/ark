@@ -1,25 +1,22 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { type connect } from '@zag-js/splitter'
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { connect } from '@zag-js/splitter'
+import { createSplitProps } from '../create-split-props'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
-type SplitterContext = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
-export type SplitterResizeTriggerProps = Assign<{ children: JSX.Element }, SplitterContext>
+type TriggerParams = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
+
+export type SplitterResizeTriggerProps = Assign<HTMLArkProps<'button'>, TriggerParams>
 
 export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
-  const splitter = useSplitterContext()
-  const triggerProps = splitter?.().getResizeTriggerProps(props)
+  const api = useSplitterContext()
+  const [triggerParams, restProps] = createSplitProps<TriggerParams>()(props, [
+    'disabled',
+    'id',
+    'step',
+  ])
+  const triggerProps = mergeProps(() => api().getResizeTriggerProps(triggerParams), restProps)
 
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  return <ark.button {...triggerProps} />
 }

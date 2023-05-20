@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
@@ -5,6 +6,6 @@ export type PopoverArrowProps = HTMLArkProps<'div'>
 
 export const PopoverArrow = (props: PopoverArrowProps) => {
   const popover = usePopoverContext()
-
-  return <ark.div {...popover().arrowProps} {...props} />
+  const arrowProps = mergeProps(() => popover().arrowProps, props)
+  return <ark.div {...arrowProps} />
 }

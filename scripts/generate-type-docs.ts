@@ -168,10 +168,6 @@ const main = async () => {
               .filter((y) => Object.keys(y[1]).length !== 0),
           ),
         )
-        .map((x) => {
-          console.log(x)
-          return x
-        })
         .filter((value) => Object.keys(value).length !== 0)
         .reduce((acc, value) => ({ ...acc, ...value }), {}),
     }))
