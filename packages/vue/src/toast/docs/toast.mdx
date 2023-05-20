@@ -1,7 +1,9 @@
 ---
 id: toast
 name: Toast
-description: The toast component is used to give feedback to users after an action has taken place.
+description:
+  The toast component is used to give feedback to users after an action has
+  taken place.
 ---
 
 ## Import
@@ -23,27 +25,22 @@ import {
 
 ### Create the AppToastProvider
 
-Use the toast components to compose a `ToastProvider` for your application. The granular component
-structure allows access to every DOM element.
+Use the toast components to compose a `ToastProvider` for your application. The
+granular component structure allows access to every DOM element.
 
-```tsx
+```vue
 // app-toast-provider.vue
-<script>
 
-  const placementsRef = ref<PlacementsContext>()
-
-  const groupRef = ref<ToastsContext[]>()
-</script>
 <template>
   <ToastProvider>
-    <ToastPlacements ref="placementsRef">
+    <ToastPlacements v-slot="{ placements }">
       <ToastGroup
-        ref="groupRef"
-        v-for="(placement, placementIdx) in placementsRef?.placements"
+        v-for="(placement, placementIdx) in placements"
         :key="placementIdx"
         :placement="placement"
+        v-slot="{ toasts }"
       >
-        <Toast v-for="toast in groupRef?.[placementIdx].toasts" :key="toast.id" :toast="toast">
+        <Toast v-for="toast in toasts" :key="toast.id" :toast="toast">
           <ToastTitle />
           <ToastDescription />
           <ToastCloseTrigger>
@@ -55,63 +52,65 @@ structure allows access to every DOM element.
     <slot></slot>
   </ToastProvider>
 </template>
-```
 
-### Wrap your App with the AppToastProvider
-
-Wrapping the application provides all child components access to the toast context with the
-`useToast` hook.
-
-```tsx
-<template>
-  <AppToastProvider>
-    {/*...*/}
-    <ExampleComponent />
-  </AppToastProvider>
-</template>
+<script setup lang="ts">
+import {
+  ToastPlacements,
+  ToastGroup,
+  Toast,
+  ToastTitle,
+  ToastDescription,
+  ToastCloseTrigger,
+  ToastProvider,
+} from '@ark-ui/vue'
+</script>
 ```
 
 ### Create toasts with useToast
 
-The `useToast` hook is your _central toast intelligence unit_ to control the toasts in your
-application. Create, update, remove and upsert toasts with the returned `toast` instance.
+The `useToast` hook is your _central toast intelligence unit_ to control the
+toasts in your application. Create, update, remove and upsert toasts with the
+returned `toast` instance.
 
-```tsx
+```vue
 // example-component.vue
-<script>
-  const toast = useToast()
 
-  const handleOnClick = () => {
-    toast.create({
-      type: 'success',
-      title: 'Form submitted',
-      placement: 'bottom',
-    })
-  }
-</script>
 <template>
-  <button @click='handleOnClick'>Show Toast</button>
+  <button @click="handleOnClick">Show Toast</button>
 </template>
+
+<script lang="ts" setup>
+const toast = useToast()
+
+const handleOnClick = () => {
+  toast.value.create({
+    type: 'success',
+    title: 'Form submitted',
+    placement: 'bottom',
+  })
+}
+</script>
 ```
 
 #### Use the shorthand type methods
 
-Omitting the type property is supported for toasts with type `success`, `loading` and `error`.
+Omitting the type property is supported for toasts with type `success`,
+`loading` and `error`.
 
 ```tsx
-toast.success({
+toast.value.success({
   title: 'Form submitted',
 })
 ```
 
 ```tsx
-toast.error({
+toast.value.error({
   title: 'An error occurred. Please try again!',
 })
 ```
 
 ```tsx
-toast.loading({
+toast.value.loading({
   title: 'Submitting form',
 })
 ```
@@ -120,128 +119,132 @@ toast.loading({
 
 Update the description or other options for an existing toast.
 
-```tsx
-<script>
-  const toast = useToast()
-
-  async function submitForm() {
-    // simulate very slow request - wait for 3 seconds
-    await new Promise((r) => setTimeout(r, 3000))
-  }
-
-  const handleOnClick = async () => {
-    toast.create({
-      id: 'my-toast',
-      title: 'Submitting form',
-      placement: 'bottom',
-    })
-    await submitForm()
-    toast.update('my-toast', {
-      title: 'Form submitted successfully',
-    })
-  }
-</script>
+```vue
 <template>
-  <button @click='handleOnClick'>Show Toast</button>
+  <button @click="handleOnClick">Show Toast</button>
 </template>
+
+<script lang="ts" setup>
+const toast.value = useToast()
+
+async function submitForm() {
+  // simulate very slow request - wait for 3 seconds
+  await new Promise((r) => setTimeout(r, 3000))
+}
+
+const handleOnClick = async () => {
+  toast.value.create({
+    id: 'my-toast',
+    title: 'Submitting form',
+    placement: 'bottom',
+  })
+  await submitForm()
+  toast.value.update('my-toast', {
+    title: 'Form submitted successfully',
+  })
+}
+</script>
 ```
 
 ### Remove a toast by id
 
 Remove a visible toast imperatively. E.g. on an event or after a async task.
 
-```tsx
-<script>
-  const toast = useToast()
-
-  async function submitForm() {
-    // simulate very slow request - wait for 3 seconds
-    await new Promise((r) => setTimeout(r, 3000))
-  }
-
-  const handleOnClick = async () => {
-    toast.create({
-      id: 'my-toast',
-      title: 'Submitting form',
-      placement: 'bottom',
-    })
-    await submitForm()
-    toast.remove('my-toast')
-  }
-</script>
+```vue
 <template>
-  <button @click='handleOnClick'>Show Toast</button>
+  <button @click="handleOnClick">Show Toast</button>
 </template>
+
+<script lang="ts" setup>
+const toast = useToast()
+
+async function submitForm() {
+  // simulate very slow request - wait for 3 seconds
+  await new Promise((r) => setTimeout(r, 3000))
+}
+
+const handleOnClick = async () => {
+  toast.value.create({
+    id: 'my-toast',
+    title: 'Submitting form',
+    placement: 'bottom',
+  })
+  await submitForm()
+  toast.value.remove('my-toast')
+}
+</script>
 ```
 
 ### Upsert a toast by id
 
 `upsert` updates a toast if it exists, or it creates a new toast.
 
-```tsx
-<script>
-  const toast = useToast()
-
-  async function submitForm() {
-    // simulate very slow request - wait for 3 seconds
-    await new Promise((r) => setTimeout(r, 3000))
-  }
-
-  const handleOnClick = async () => {
-    toast.upsert({
-      id: 'my-toast',
-      title: 'Submitting form',
-      placement: 'bottom',
-    })
-    await submitForm()
-    toast.remove('my-toast')
-  }
-</script>
+```vue
 <template>
-  <button @click='handleOnClick'>Show Toast</button>
+  <button @click="handleOnClick">Show Toast</button>
 </template>
+
+<script lang="ts" setup>
+const toast = useToast()
+
+async function submitForm() {
+  // simulate very slow request - wait for 3 seconds
+  await new Promise((r) => setTimeout(r, 3000))
+}
+
+const handleOnClick = async () => {
+  toast.value.upsert({
+    id: 'my-toast',
+    title: 'Submitting form',
+    placement: 'bottom',
+  })
+  await submitForm()
+  toast.remove('my-toast')
+}
+</script>
 ```
 
 ### Visualize a Promise
 
-```tsx
-<script>
-  const toast = useToast()
-
-  async function submitForm() {
-    // simulate very slow request - wait for 3 seconds
-    await new Promise((r) => setTimeout(r, 3000))
-  }
-
-  const handleOnClick = async () => {
-    await toast.promise(submitForm(), {
-      error: {
-        id: 'error',
-        type: 'error',
-        title: 'An error occurred. Please try again!',
-        placement: 'bottom',
-        duration: Infinity,
-      },
-      loading: {
-        id: 'loading',
-        type: 'loading',
-        title: 'Submitting form. Please wait.',
-        placement: 'bottom',
-        duration: Infinity,
-      },
-      success: {
-        id: 'success',
-        type: 'success',
-        title: 'Successfully submitted form.',
-        placement: 'bottom',
-        duration: 3_000,
-      },
-    })
-  }
-</script>
+```vue
 <template>
   <button @click="handleOnClick">Show toast</button>
 </template>
+
+<script lang="ts" setup>
+const toast = useToast()
+
+async function submitForm() {
+  // simulate very slow request - wait for 3 seconds
+  await new Promise((r) => setTimeout(r, 3000))
+}
+
+const handleOnClick = async () => {
+  await toast.value.promise(submitForm(), {
+    error: {
+      id: 'error',
+      type: 'error',
+      title: 'An error occurred. Please try again!',
+      placement: 'bottom',
+      duration: Infinity,
+    },
+    loading: {
+      id: 'loading',
+      type: 'loading',
+      title: 'Submitting form. Please wait.',
+      placement: 'bottom',
+      duration: Infinity,
+    },
+    success: {
+      id: 'success',
+      type: 'success',
+      title: 'Successfully submitted form.',
+      placement: 'bottom',
+      duration: 3_000,
+    },
+  })
+}
+</script>
 ```
 
 ### Toast visibility

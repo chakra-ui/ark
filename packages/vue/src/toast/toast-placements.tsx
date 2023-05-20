@@ -1,5 +1,5 @@
 import type { Placement } from '@zag-js/toast'
-import { computed, defineComponent } from 'vue'
+import { Fragment, computed, defineComponent } from 'vue'
 import { useToast } from './toast-provider'
 
 export type PlacementsContext = { placements: Placement[] }
@@ -15,6 +15,6 @@ export const ToastPlacements = defineComponent({
 
     expose({ placements: toastsByPlacement })
 
-    return () => slots.default?.()
+    return () => <Fragment>{slots.default?.({ placements: toastsByPlacement.value })}</Fragment>
   },
 })

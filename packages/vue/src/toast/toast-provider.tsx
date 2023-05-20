@@ -40,7 +40,7 @@ export const ToastProvider: ComponentWithProps<ToastProviderProps> = defineCompo
     },
     offsets: {
       type: [String, Object] as PropType<ToastProviderProps['offsets']>,
-      default: { left: '0px', right: '0px', top: '0px', bottom: '0px' },
+      default: () => ({ left: '0px', right: '0px', top: '0px', bottom: '0px' }),
     },
     pauseOnPageIdle: {
       type: Boolean as PropType<ToastProviderProps['pauseOnPageIdle']>,
@@ -66,7 +66,7 @@ export const ToastProvider: ComponentWithProps<ToastProviderProps> = defineCompo
     const [state, send] = useMachine(
       group.machine({
         ...context.value,
-        id: useId().value,
+        id: props.id || useId().value,
       }),
     )
 

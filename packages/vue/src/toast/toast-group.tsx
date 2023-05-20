@@ -26,7 +26,7 @@ export const ToastGroup: ComponentWithProps<ToastGroupProps> = defineComponent({
 
     return () => (
       <ark.div {...api.value.getGroupProps({ placement: props.placement })} {...attrs}>
-        {slots.default?.()}
+        {slots.default?.({ toasts: toastsByPlacement.value })}
       </ark.div>
     )
   },

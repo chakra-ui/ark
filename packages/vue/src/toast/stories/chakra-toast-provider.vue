@@ -1,31 +1,24 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
 import {
-  ToastProvider,
   ToastPlacements,
   ToastGroup,
   Toast,
   ToastTitle,
   ToastDescription,
   ToastCloseTrigger,
+  ToastProvider,
 } from '../'
-import type { ToastsContext } from '../toast-group'
-import type { PlacementsContext } from '../toast-placements'
-
-const placementsRef = ref<PlacementsContext>()
-
-const groupRef = ref<ToastsContext[]>()
 </script>
 <template>
   <ToastProvider>
-    <ToastPlacements ref="placementsRef">
+    <ToastPlacements v-slot="{ placements }">
       <ToastGroup
-        ref="groupRef"
-        v-for="(placement, placementIdx) in placementsRef?.placements"
+        v-for="(placement, placementIdx) in placements"
         :key="placementIdx"
         :placement="placement"
+        v-slot="{ toasts }"
       >
-        <Toast v-for="toast in groupRef?.[placementIdx].toasts" :key="toast.id" :toast="toast">
+        <Toast v-for="toast in toasts" :key="toast.id" :toast="toast">
           <ToastTitle />
           <ToastDescription />
           <ToastCloseTrigger>
