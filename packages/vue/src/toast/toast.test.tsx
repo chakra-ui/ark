@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
 import { defineComponent } from 'vue'
-import ChakraToastProvider from './stories/chakra-toast-provider.vue'
+import { ChakraToastProvider } from './stories/chakra-toast.provider'
 import { useToast } from './toast-provider'
 
 const ComponentUnderTest = defineComponent({

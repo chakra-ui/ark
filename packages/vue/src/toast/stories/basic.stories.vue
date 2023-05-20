@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChakraToastProvider from './chakra-toast-provider.vue'
+import { ChakraToastProvider } from './chakra-toast.provider'
 import ExampleComponent from './example-component.vue'
 </script>
 <template>
