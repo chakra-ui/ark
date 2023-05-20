@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { onMounted, ref } from 'vue'
 import { type EnvironmentContext, useEnvironmentContext } from '../environment-context'
 
 const getRootNode = useEnvironmentContext()
 
 const rootNode = ref<ReturnType<NonNullable<EnvironmentContext>> | undefined>(undefined)
 
-watchEffect(() => {
+onMounted(() => {
   rootNode.value = getRootNode?.()
-
-  console.log(rootNode.value)
+  console.log('rootNode.value', rootNode.value)
 })
 </script>
 <template>
