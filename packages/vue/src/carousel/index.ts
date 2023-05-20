@@ -1,5 +1,5 @@
 export { Carousel, type CarouselProps } from './carousel'
-export type { CarouselContext } from './carousel-context'
+export { CarouselControl, type CarouselControlProps } from './carousel-control'
 export {
   CarouselNextSlideTrigger,
   type CarouselNextSlideTriggerProps,
