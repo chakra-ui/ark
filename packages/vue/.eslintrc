@@ -1,10 +1,12 @@
 {
   "root": true,
   "env": {
-    "node": true
+    "node": true,
+    "browser": true,
+    "es2021": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "plugin:vue/vue3-essential"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
