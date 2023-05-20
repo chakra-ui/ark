@@ -18,6 +18,7 @@ export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
       onChange(details) {
         emit('change', details.checked)
         emit('update:checked', details.checked)
+        emit('update:modelValue', details.checked)
       },
     }),
   )
@@ -25,13 +26,21 @@ export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => reactiveContext.checked,
-    (value) => {
-      if (value == undefined) return
+    () => reactiveContext.modelValue,
+    (newValue, previousValue) => {
+      if (newValue == undefined) return
+      if (newValue !== previousValue) {
+        api.value.setChecked(newValue)
+      }
+    },
+  )
 
-      if (value !== api.value.isChecked) {
-        api.value.setChecked(value as boolean)
-        api.value.checkedState
+  watch(
+    () => reactiveContext.checked,
+    (newValue, previousValue) => {
+      if (newValue == undefined) return
+      if (newValue !== previousValue) {
+        api.value.setChecked(newValue)
       }
     },
   )
