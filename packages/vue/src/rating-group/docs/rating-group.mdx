@@ -1,0 +1,177 @@
+---
+id: rating-group
+name: Rating Group
+description:
+  The RatingGroup allows a user to add and remove ratings for an item.
+---
+
+## Import
+
+```ts
+import {
+  Rating,
+  RatingGroup,
+  RatingGroupControl,
+  RatingGroupLabel,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The RatingGroup component consists of the `RatingGroup`, `RatingGroupControl`
+and `RatingGroupLabel` components.
+
+```vue
+<script setup lang="ts">
+import {
+  Rating,
+  RatingGroup,
+  RatingGroupControl,
+  RatingGroupLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup :max="5" :defaultValue="3">
+    <RatingGroupLabel>Label</RatingGroupLabel>
+    <RatingGroupControl v-slot="{ sizeArray }">
+      <Rating
+        v-for="index in sizeArray"
+        :key="index"
+        :index="index"
+        v-slot="{ isHighlighted }"
+      >
+        <IconFull v-if="isHighlighted" />
+        <IconEmpty v-else />
+      </Rating>
+    </RatingGroupControl>
+  </RatingGroup>
+</template>
+```
+
+### Using half ratings
+
+Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to
+render the correct icon if the `isHalf` value is set in the Rating components
+render callback.
+
+```vue
+<script setup lang="ts">
+import {
+  Rating,
+  RatingGroup,
+  RatingGroupControl,
+  RatingGroupLabel,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup :max="5" :defaultValue="3" allowHalf>
+    <RatingGroupLabel>Label</RatingGroupLabel>
+    <RatingGroupControl v-slot="{ sizeArray }">
+      <Rating
+        v-for="index in sizeArray"
+        :key="index"
+        :index="index"
+        v-slot="{ isHighlighted, isHalf }"
+      >
+        <IconFull v-if="isHighlighted" />
+        <IconHalf v-else-if="isHalf" />
+        <IconEmpty v-else />
+      </Rating>
+    </RatingGroupControl>
+  </RatingGroup>
+</template>
+```
+
+### Using a default value
+
+```vue
+<script setup lang="ts">
+import { RatingGroup } from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup :max="5" :defaultValue="3">
+    <!-- ... -->
+  </RatingGroupControl>
+</template>
+```
+
+### Controlled
+
+When using the `RatingGroup` component, you can use the `v-model` to control the
+state.
+
+```vue
+<script setup lang="ts">
+import {
+  RatingGroup,
+  RatingGroupLabel,
+  RatingGroupControl,
+  Rating,
+} from '@ark-ui/vue'
+
+const value = ref(0)
+</script>
+<template>
+  <RatingGroup :max="5" v-model="value" allowHalf>
+    <RatingGroupLabel>Label</RatingGroupLabel>
+    <RatingGroupControl v-slot="{ sizeArray }">
+      <Rating
+        v-for="index in sizeArray"
+        :key="index"
+        :index="index"
+        v-slot="{ isHalf, isHighlighted }"
+      >
+        <IconFull v-if="isHighlighted" />
+        <IconHalf v-else-if="isHalf" />
+        <IconEmpty v-else />
+      </Rating>
+    </RatingGroupControl>
+  </RatingGroup>
+</template>
+```
+
+### Disabling the rating group
+
+To make the rating group disabled, set the `disabled` prop to `true`.
+
+```vue
+<script setup lang="ts">
+import { RatingGroup } from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup disabled>
+    <!-- ... -->
+  </RatingGroup>
+</template>
+```
+
+### Readonly rating group
+
+To make the rating group readonly, set the `readonly` prop to `true`.
+
+```vue
+<script setup lang="ts">
+import { RatingGroup } from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup readonly>
+    <!-- ... -->
+  </RatingGroup>
+</template>
+```
+
+### Usage within forms
+
+To use the rating group within forms, pass the prop `name`. It will render a
+hidden input and ensure the value changes get propagated to the form correctly.
+
+```vue
+<script setup lang="ts">
+import { RatingGroup } from '@ark-ui/vue'
+</script>
+<template>
+  <RatingGroup name="my-rating">
+    <!-- ... -->
+  </RatingGroup>
+</template>
+```

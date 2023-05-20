@@ -26,12 +26,17 @@
       "description": "Whether the tooltip is disabled"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
+    },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string }>",
+      "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },

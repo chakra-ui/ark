@@ -1,6 +1,13 @@
 import { createSignal, createUniqueId } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 import './splitter.css'
+
+const meta: Meta = {
+  title: 'Splitter',
+}
+
+export default meta
 
 export const Basic = (props: Partial<SplitterProps>) => {
   const [first, second] = [createUniqueId(), createUniqueId()]

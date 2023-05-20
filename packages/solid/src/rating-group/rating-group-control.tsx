@@ -1,20 +1,22 @@
-import { children } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { useRatingGroupContext, type RatingGroupContext } from './rating-group-context'
 
-export type RatingGroupControlProps = Omit<HTMLArkProps<'div'>, 'children'> & {
-  children: JSX.Element | ((context: RatingGroupContext) => JSX.Element)
-}
+export type RatingGroupControlProps = Assign<
+  HTMLArkProps<'div'>,
+  {
+    children: JSX.Element | ((context: RatingGroupContext) => JSX.Element)
+  }
+>
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
-  const ratingGroup = useRatingGroupContext()
-  const view = children(() => runIfFn(props.children, ratingGroup))
+  const api = useRatingGroupContext()
 
-  return (
-    <ark.div {...ratingGroup().controlProps} {...props}>
-      {view()}
-    </ark.div>
-  )
+  const getChildren = () => runIfFn(props.children, api)
+  const controlProps = mergeProps(() => api().controlProps, props)
+
+  return <ark.div {...controlProps}>{getChildren()}</ark.div>
 }

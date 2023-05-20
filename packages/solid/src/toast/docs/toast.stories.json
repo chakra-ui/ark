@@ -1,4 +1,3 @@
 {
-  "ChakraToastProvider": "const ChakraToastProvider = (props: { children: JSX.Element }) => (\n  <ToastProvider>\n    <ToastPlacements>\n      {(placements) =>\n        placements.map((placement) => (\n          <ToastGroup placement={placement}>\n            {(toasts) =>\n              toasts.map((toast) => (\n                <Toast toast={toast}>\n                  <ToastTitle />\n                  <ToastDescription />\n                  <ToastCloseTrigger>\n                    <button>close</button>\n                  </ToastCloseTrigger>\n                </Toast>\n              ))\n            }\n          </ToastGroup>\n        ))\n      }\n    </ToastPlacements>\n    {props.children}\n  </ToastProvider>\n)",
-  "Basic": "const Basic = () => (\n  <ChakraToastProvider>\n    <h1>Hello World</h1>\n    <ExampleComponent />\n  </ChakraToastProvider>\n)"
+  "Basic": "const Basic = () => (\n  <Provider>\n    <h1>Hello World</h1>\n    <ExampleComponent />\n  </Provider>\n)"
 }

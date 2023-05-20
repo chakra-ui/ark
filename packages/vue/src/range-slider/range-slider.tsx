@@ -1,76 +1,83 @@
+import type { Context } from '@zag-js/range-slider'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type Assign, type Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { RangeSliderProvider } from './range-slider-context'
-import { useRangeSlider, type UseRangeSliderContext } from './use-range-slider'
+import { useRangeSlider } from './use-range-slider'
 
-export type RangeSliderProps = Assign<HTMLArkProps<'div'>, UseRangeSliderContext>
+export type RangeSliderContext = Context & {
+  modelValue?: Context['value']
+}
 
-export const RangeSlider: ComponentWithProps<RangeSliderProps> = defineComponent({
-  name: 'RangeSlider',
-  props: {
-    'aria-label': {
-      type: Object as PropType<RangeSliderProps['aria-label']>,
-    },
-    'aria-labelledby': {
-      type: Object as PropType<RangeSliderProps['aria-labelledby']>,
-    },
-    dir: {
-      type: String as PropType<RangeSliderProps['dir']>,
-    },
-    disabled: {
-      type: Boolean as PropType<RangeSliderProps['disabled']>,
-    },
-    form: {
-      type: String as PropType<RangeSliderProps['form']>,
-    },
-    getAriaValueText: {
-      type: Function as PropType<RangeSliderProps['getAriaValueText']>,
-    },
-    getRootNode: {
-      type: Function as PropType<RangeSliderProps['getRootNode']>,
-    },
-    id: {
-      type: String as PropType<RangeSliderProps['id']>,
-    },
-    ids: {
-      type: Object as PropType<RangeSliderProps['ids']>,
-    },
-    invalid: {
-      type: Boolean as PropType<RangeSliderProps['invalid']>,
-    },
-    max: {
-      type: Number as PropType<RangeSliderProps['max']>,
-    },
-    min: {
-      type: Number as PropType<RangeSliderProps['min']>,
-    },
-    minStepsBetweenThumbs: {
-      type: Number as PropType<RangeSliderProps['minStepsBetweenThumbs']>,
-    },
-    modelValue: {
-      type: Object as PropType<RangeSliderProps['modelValue']>,
-    },
-    name: {
-      type: String as PropType<RangeSliderProps['name']>,
-    },
-    orientation: {
-      type: String as PropType<RangeSliderProps['orientation']>,
-    },
-    readOnly: {
-      type: Boolean as PropType<RangeSliderProps['readOnly']>,
-    },
-    step: {
-      type: Number as PropType<RangeSliderProps['step']>,
-    },
-    thumbAlignment: {
-      type: String as PropType<RangeSliderProps['thumbAlignment']>,
-    },
-    value: {
-      type: Object as PropType<RangeSliderProps['value']>,
-    },
+export type UseRangeSliderProps = Assign<HTMLArkProps<'div'>, RangeSliderContext>
+
+const VueProps = createVueProps<UseRangeSliderProps>({
+  'aria-label': {
+    type: Object as PropType<UseRangeSliderProps['aria-label']>,
   },
+  'aria-labelledby': {
+    type: Object as PropType<UseRangeSliderProps['aria-labelledby']>,
+  },
+  dir: {
+    type: String as PropType<UseRangeSliderProps['dir']>,
+  },
+  disabled: {
+    type: Boolean as PropType<UseRangeSliderProps['disabled']>,
+  },
+  form: {
+    type: String as PropType<UseRangeSliderProps['form']>,
+  },
+  getAriaValueText: {
+    type: Function as PropType<UseRangeSliderProps['getAriaValueText']>,
+  },
+  getRootNode: {
+    type: Function as PropType<UseRangeSliderProps['getRootNode']>,
+  },
+  id: {
+    type: String as PropType<UseRangeSliderProps['id']>,
+  },
+  ids: {
+    type: Object as PropType<UseRangeSliderProps['ids']>,
+  },
+  invalid: {
+    type: Boolean as PropType<UseRangeSliderProps['invalid']>,
+  },
+  max: {
+    type: Number as PropType<UseRangeSliderProps['max']>,
+  },
+  min: {
+    type: Number as PropType<UseRangeSliderProps['min']>,
+  },
+  minStepsBetweenThumbs: {
+    type: Number as PropType<UseRangeSliderProps['minStepsBetweenThumbs']>,
+  },
+  modelValue: {
+    type: Object as PropType<UseRangeSliderProps['modelValue']>,
+  },
+  name: {
+    type: String as PropType<UseRangeSliderProps['name']>,
+  },
+  orientation: {
+    type: String as PropType<UseRangeSliderProps['orientation']>,
+  },
+  readOnly: {
+    type: Boolean as PropType<UseRangeSliderProps['readOnly']>,
+  },
+  step: {
+    type: Number as PropType<UseRangeSliderProps['step']>,
+  },
+  thumbAlignment: {
+    type: String as PropType<UseRangeSliderProps['thumbAlignment']>,
+  },
+  value: {
+    type: Object as PropType<UseRangeSliderProps['value']>,
+  },
+})
+
+export const RangeSlider: ComponentWithProps<Partial<UseRangeSliderProps>> = defineComponent({
+  name: 'RangeSlider',
+  props: VueProps,
   emits: ['change', 'update:modelValue', 'change-start', 'change-end'],
   setup(props, { slots, attrs, emit, expose }) {
     const api = useRangeSlider(emit, props)
@@ -83,8 +90,10 @@ export const RangeSlider: ComponentWithProps<RangeSliderProps> = defineComponent
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
+
+export type RangeSliderProps = Optional<RangeSliderContext, 'id'>

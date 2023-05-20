@@ -2,58 +2,49 @@
 id: pagination
 name: Pagination
 description:
-  Pagination is an interface that allows navigating between pages that contain
-  split information, instead of being shown on a single page.
+  The Pagination component allows you to navigate through large sets of data by
+  dividing it into smaller chunks, making it easier for users to browse through
+  your application.
 ---
 
-## Import
+## Basic Usage
+
+First, import the required components from the package:
 
 ```ts
 import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
 } from '@ark-ui/react'
 ```
 
-## Usage
+Here's an example of how to use the Pagination component:
 
-The Pagination component consists of the `PaginationEllipsis`, `PaginationList`,
-`PaginationNextPageTrigger`, `PaginationPageTrigger`, and
-`PaginationPrevPageTrigger` components.
+<Story name="Basic" />
 
-Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
-`PaginationPageTrigger` components accept a single JSX element which will
-receive all necessary props to add the event listeners and attributes to ensure
-the desired accessibility.
+## Controlled Pagination
 
-```tsx
-<Pagination count={5000} pageSize={10} siblingCount={2}>
-  {({ pages }) => (
-    <PaginationList>
-      <PaginationPrevPageTrigger>
-        <button>Previous</button>
-      </PaginationPrevPageTrigger>
+To create a controlled Pagination component, manage the state of the current
+page using the `page` prop and update it when the `onChange` event handler is
+called:
 
-      {pages.map((page, index) =>
-        page.type === 'page' ? (
-          <PaginationPageTrigger key={index} value={page.value}>
-            <button>{page.value}</button>
-          </PaginationPageTrigger>
-        ) : (
-          <PaginationEllipsis key={index} index={index}>
-            &#8230;
-          </PaginationEllipsis>
-        ),
-      )}
+<Story name="Controlled" />
 
-      <PaginationNextPageTrigger>
-        <button>Next</button>
-      </PaginationNextPageTrigger>
-    </PaginationList>
-  )}
-</Pagination>
-```
+## Customizing Pagination
+
+You can customize the Pagination component by setting various props such as
+`dir`, `pageSize`, `siblingCount`, and `translations`. Here's an example of a
+customized Pagination:
+
+<Story name="Customized" />
+
+## Conclusion
+
+The Pagination component offers an intuitive and flexible solution for managing
+paginated content in your applications. With its extensive set of features and
+customization options, it can accommodate a wide range of use cases and designs.

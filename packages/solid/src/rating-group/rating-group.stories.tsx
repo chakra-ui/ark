@@ -1,21 +1,30 @@
-import { createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
+
+const meta: Meta = {
+  title: 'RatingGroup',
+}
+
+export default meta
 
 export const Basic = () => (
   <RatingGroup max={5} value={1} allowHalf>
     <RatingGroupLabel>GroupLabel</RatingGroupLabel>
     <RatingGroupControl>
-      {(context) =>
-        context().sizeArray.map((index) => (
-          <Rating index={index}>
-            {({ isHalf, isHighlighted }) => {
-              if (isHalf) return <IconHalf />
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </Rating>
-        ))
-      }
+      {(api) => (
+        <For each={api().sizeArray}>
+          {(index) => (
+            <Rating index={index}>
+              {(api) => {
+                if (api().isHalf) return <IconHalf />
+                if (api().isHighlighted) return <IconFull />
+                return <IconEmpty />
+              }}
+            </Rating>
+          )}
+        </For>
+      )}
     </RatingGroupControl>
   </RatingGroup>
 )
@@ -83,17 +92,19 @@ export const ControlledRatingGroup = () => {
     <RatingGroup max={5} value={value()} onChange={(details) => setValue(details.value)} allowHalf>
       <RatingGroupLabel>Label</RatingGroupLabel>
       <RatingGroupControl>
-        {(context) =>
-          context().sizeArray.map((index) => (
-            <Rating index={index}>
-              {({ isHalf, isHighlighted }) => {
-                if (isHalf) return <IconHalf />
-                if (isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
-            </Rating>
-          ))
-        }
+        {(api) => (
+          <For each={api().sizeArray}>
+            {(index) => (
+              <Rating index={index}>
+                {(api) => {
+                  if (api().isHalf) return <IconHalf />
+                  if (api().isHighlighted) return <IconFull />
+                  return <IconEmpty />
+                }}
+              </Rating>
+            )}
+          </For>
+        )}
       </RatingGroupControl>
     </RatingGroup>
   )

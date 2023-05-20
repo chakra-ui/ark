@@ -30,7 +30,7 @@ export const DemoToast = () => (
                         <ToastDescription />
                       </Stack>
                       <Stack direction="row" gap="3">
-                        <ToastCloseTrigger>
+                        <ToastCloseTrigger asChild>
                           <Button variant="link" size="sm">
                             Dismiss
                           </Button>

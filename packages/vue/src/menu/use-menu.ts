@@ -1,18 +1,19 @@
-import { connect, machine, type Context } from '@zag-js/menu'
+import { connect, machine } from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
+import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
 import { useId } from '../utils'
+import type { MenuProps } from './menu'
 
-export type UseMenuContext = Optional<Context, 'id'>
-
-export const useMenu = (emit: CallableFunction, context: UseMenuContext) => {
+export const useMenu = <T extends ExtractPropTypes<MenuProps>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send, menuMachine] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       onOpen() {
         emit('open')
       },

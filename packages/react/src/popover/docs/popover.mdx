@@ -35,16 +35,12 @@ listeners and attributes to ensure the desired accessibility.
 
 ```tsx
 <Popover>
-  <PopoverTrigger>
-    <button>Open Popover</button>
-  </PopoverTrigger>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
   <PopoverPositioner>
     <PopoverContent>
       <PopoverTitle>Title</PopoverTitle>
       <PopoverDescription>Description</PopoverDescription>
-      <PopoverCloseTrigger>
-        <button>Close</button>
-      </PopoverCloseTrigger>
+      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
     </PopoverContent>
   </PopoverPositioner>
 </Popover>
@@ -57,19 +53,15 @@ To render an arrow within the popover, render the component `PopoverArrow` and
 
 ```tsx
 <Popover>
-  <PopoverTrigger>
-    <button>Open Popover</button>
-  </PopoverTrigger>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
   <PopoverPositioner>
-    <PopoverArrow>
-      <PopoverArrowTip />
-    </PopoverArrow>
     <PopoverContent>
+      <PopoverArrow>
+        <PopoverArrowTip />
+      </PopoverArrow>
       <PopoverTitle>Title</PopoverTitle>
       <PopoverDescription>Description</PopoverDescription>
-      <PopoverCloseTrigger>
-        <button>Close</button>
-      </PopoverCloseTrigger>
+      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
     </PopoverContent>
   </PopoverPositioner>
 </Popover>
@@ -82,17 +74,13 @@ render the popover within a portal, set the `portalled` prop to `true`.
 
 ```tsx
 <Popover portalled>
-  <PopoverTrigger>
-    <button>Open Popover</button>
-  </PopoverTrigger>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
   <Portal>
     <PopoverPositioner>
       <PopoverContent>
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
-        <PopoverCloseTrigger>
-          <button>Close</button>
-        </PopoverCloseTrigger>
+        <PopoverCloseTrigger>Close</PopoverCloseTrigger>
       </PopoverContent>
     </PopoverPositioner>
   </Portal>
@@ -150,7 +138,7 @@ Use the `isOpen` prop to control the open state of the popover.
 const [isOpen, setIsOpen] = React.useState(false)
 return (
   <>
-    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover</button>
+    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover
     <Popover isOpen={isOpen}>{/*...*/}</Popover>
   </>
 )

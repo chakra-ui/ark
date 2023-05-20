@@ -1,4 +1,5 @@
 import { For, Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Select,
   SelectContent,
@@ -8,7 +9,14 @@ import {
   SelectOptionGroupLabel,
   SelectPositioner,
   SelectTrigger,
-} from './'
+} from '.'
+import './select.css'
+
+const meta: Meta = {
+  title: 'Select',
+}
+
+export default meta
 
 export const Basic = () => {
   const options = [
@@ -18,12 +26,10 @@ export const Basic = () => {
   ]
   return (
     <Select>
-      {(context) => (
+      {(api) => (
         <>
           <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>
-            <button>{context().selectedOption?.label ?? 'Select option'}</button>
-          </SelectTrigger>
+          <SelectTrigger>{api().selectedOption?.label ?? 'Select option'}</SelectTrigger>
           <Portal>
             <SelectPositioner>
               <SelectContent>

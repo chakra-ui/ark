@@ -16,7 +16,7 @@ import { FiMapPin } from 'react-icons/fi'
 
 export const DemoHoverCard = () => (
   <HoverCard>
-    <HoverCardTrigger>
+    <HoverCardTrigger asChild>
       <a href="https://github.com/segunadebayo" target="_blank" rel="noreferrer">
         <Avatar
           name="Segun Adebayo"

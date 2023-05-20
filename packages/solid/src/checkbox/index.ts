@@ -1,3 +1,4 @@
+export type { CheckedState } from '@zag-js/checkbox/dist/checkbox.types'
 export { Checkbox, type CheckboxProps } from './checkbox'
 export { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
 export { CheckboxInput, type CheckboxInputProps } from './checkbox-input'

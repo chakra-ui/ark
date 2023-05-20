@@ -1,9 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children } from 'solid-js'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { runIfFn } from '../run-if-fn'
-import { SelectProvider, useSelectContext, type SelectContext } from './select-context'
+import type { Assign } from '../types'
+import { SelectProvider, type SelectContext } from './select-context'
 import { useSelect, type UseSelectProps } from './use-select'
 
 export type SelectProps = Assign<
@@ -14,7 +13,7 @@ export type SelectProps = Assign<
 >
 
 export const Select = (props: SelectProps) => {
-  const [useSelectProps, localProps] = createSplitProps<UseSelectProps>()(props, [
+  const [selectParams, restProps] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
     'dir',
     'disabled',
@@ -36,19 +35,9 @@ export const Select = (props: SelectProps) => {
     'selectOnTab',
     'selectedOption',
   ])
-  const select = useSelect(useSelectProps)
 
-  return (
-    <SelectProvider value={select}>
-      <SelectContextWrapper {...localProps} />
-    </SelectProvider>
-  )
-}
+  const api = useSelect(selectParams)
+  const getChildren = () => runIfFn(restProps.children, api)
 
-// Children need to be wrapped in a function so that the context is available
-const SelectContextWrapper = (props: Pick<SelectProps, 'children'>) => {
-  const select = useSelectContext()
-  const view = children(() => runIfFn(props.children, select))
-
-  return <>{view()}</>
+  return <SelectProvider value={api}>{getChildren()}</SelectProvider>
 }

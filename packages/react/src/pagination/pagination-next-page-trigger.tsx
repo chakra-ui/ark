@@ -1,19 +1,13 @@
-import { forwardRef } from '@polymorphic-factory/react'
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextPageTriggerProps = HTMLArkProps<'li'> & { children: ReactElement }
+export type PaginationNextPageTriggerProps = HTMLArkProps<'button'>
 
-export const PaginationNextPageTrigger = forwardRef<'li', PaginationNextPageTriggerProps>(
-  (props, ref) => {
-    const { nextPageTriggerProps } = usePaginationContext()
-    const child = cloneElement(Children.only(props.children), nextPageTriggerProps)
+export const PaginationNextPageTrigger = forwardRef<'button'>((props, ref) => {
+  const { nextPageTriggerProps } = usePaginationContext()
+  const mergedProps = mergeProps(nextPageTriggerProps, props)
 
-    return (
-      <ark.li {...props} ref={ref}>
-        {child}
-      </ark.li>
-    )
-  },
-)
+  return <ark.button {...mergedProps} ref={ref} />
+})

@@ -1,15 +1,21 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { ComboboxProvider, useComboboxContext, type ComboboxContext } from './combobox-context'
+import type { Assign } from '../types'
+import { ComboboxProvider, type ComboboxContext } from './combobox-context'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 
-export type ComboboxProps = Assign<ComboboxContextWrapperProps, UseComboboxProps>
+export type ComboboxProps = Assign<
+  HTMLArkProps<'div'>,
+  UseComboboxProps & {
+    children: JSX.Element | ((context: ComboboxContext) => JSX.Element)
+  }
+>
 
 export const Combobox = (props: ComboboxProps) => {
-  const [useComboboxProps, divProps] = createSplitProps<UseComboboxProps>()(props, [
+  const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps>()(props, [
     'allowCustomValue',
     'ariaHidden',
     'autoFocus',
@@ -46,28 +52,13 @@ export const Combobox = (props: ComboboxProps) => {
   ])
 
   const combobox = useCombobox(useComboboxProps)
+  const rootProps = mergeProps(() => combobox().rootProps, localProps)
+
+  const getChildren = () => runIfFn(localProps.children, combobox)
 
   return (
     <ComboboxProvider value={combobox}>
-      <ComboboxContextWrapper {...divProps} />
+      <ark.div {...rootProps}>{getChildren()}</ark.div>
     </ComboboxProvider>
-  )
-}
-
-type ComboboxContextWrapperProps = Assign<
-  HTMLArkProps<'div'>,
-  {
-    children: JSX.Element | ((context: ComboboxContext) => JSX.Element)
-  }
->
-
-const ComboboxContextWrapper = (props: ComboboxContextWrapperProps) => {
-  const combobox = useComboboxContext()
-  const view = children(() => runIfFn(props.children, combobox))
-
-  return (
-    <ark.div {...combobox().rootProps} {...props}>
-      {view()}
-    </ark.div>
   )
 }

@@ -5,14 +5,10 @@ import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } f
 const Component = (props: TabsProps) => (
   <Tabs {...props}>
     <TabList>
-      <TabTrigger value="one">
-        <button>Tab 1</button>
-      </TabTrigger>
-      <TabTrigger value="two" disabled>
-        <button>Tab 2</button>
-      </TabTrigger>
-      <TabTrigger value="three">
-        <button>Tab 3</button>
+      <TabTrigger value="one">Tab 1</TabTrigger>
+      <TabTrigger value="two">Tab 2</TabTrigger>
+      <TabTrigger value="three" disabled>
+        Tab 3
       </TabTrigger>
       <TabIndicator />
     </TabList>
@@ -27,31 +23,37 @@ describe('Tabs', () => {
     render(<Component />)
   })
 
-  it('should show the active panel and hide other panels', async () => {
-    render(<Component />)
-    const tab2 = screen.getByRole('tab', { name: 'Tab 2' })
-    await user.click(tab2)
-    // TODO fix me
-    // expect(screen.getByText('Content 2')).toBeVisible()
-
-    // const tab1 = screen.getByText('Tab 1')
-    // const content1 = screen.getByText('Content 1')
-
-    // const tab2 = screen.getByRole('Tab 2')
-    // const content2 = screen.getByText('Content 2')
-
-    // await user.click(tab1)
-    // expect(content1).toBeVisible()
-    // expect(content2).not.toBeVisible()
-
-    // await user.click(tab2)
-    // screen.debug()
-    // expect(content2).toBeVisible()
-    // expect(content1).not.toBeVisible()
+  it('should render the content of tabe one by default', async () => {
+    render(<Component defaultValue="one" />)
+    expect(screen.getByText('Content 1')).toBeVisible()
   })
 
-  it('should show content of the default value', async () => {
-    render(<Component defaultValue="two" />)
+  it('should show the active panel and hide other panels', async () => {
+    render(<Component />)
+
+    await user.click(screen.getByRole('tab', { name: 'Tab 1' }))
+    expect(screen.getByText('Content 1')).toBeVisible()
+
+    await user.click(screen.getByRole('tab', { name: 'Tab 2' }))
     expect(screen.getByText('Content 2')).toBeVisible()
+    expect(screen.getByText('Content 1')).not.toBeVisible()
+  })
+
+  it('should show the active panel and hide other panels', async () => {
+    render(<Component />)
+    const tab1 = screen.getByRole('tab', { name: 'Tab 1' })
+    const tab2 = screen.getByRole('tab', { name: 'Tab 2' })
+    const tab3 = screen.getByRole('tab', { name: 'Tab 3' }) // disabled tab
+
+    tab1.focus()
+    expect(tab1).toHaveFocus()
+
+    await user.keyboard('[ArrowRight]')
+    expect(tab2).toHaveFocus()
+
+    await user.keyboard('[ArrowRight]')
+    // skip disabled tab, loop to next element
+    expect(tab3).not.toHaveFocus()
+    expect(tab1).toHaveFocus()
   })
 })

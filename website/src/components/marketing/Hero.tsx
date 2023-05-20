@@ -30,7 +30,7 @@ export const Hero = () => {
             </Heading>
             <Text textStyle={{ base: 'md', md: 'lg' }} color="fg.muted">
               Ark UI is a headless library for building reusable, scalable Design Systems that works
-              in any framework.
+              for a wide range of JS frameworks.
             </Text>
           </Stack>
           <Stack gap="8" width="100%">

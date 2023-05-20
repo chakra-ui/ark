@@ -21,9 +21,7 @@ describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(
       <Menu>
-        <MenuTrigger>
-          <button>Open menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Open menu</MenuTrigger>
         <MenuContent>
           <MenuItem id="search">Search</MenuItem>
           <MenuItem id="undo">Undo</MenuItem>
@@ -43,9 +41,7 @@ describe('Menu', () => {
 
     render(
       <Menu onValueChange={onValueChange}>
-        <MenuTrigger>
-          <button>Open menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Open menu</MenuTrigger>
         <MenuContent>
           <MenuItem id="search">Search</MenuItem>
           <MenuItem id="undo">Undo</MenuItem>
@@ -65,9 +61,7 @@ describe('Menu', () => {
   it('should apply correct role to MenuItemGroup', async () => {
     render(
       <Menu>
-        <MenuTrigger>
-          <button>Open menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Open menu</MenuTrigger>
         <MenuContent>
           <MenuItemGroup id="group-1">
             <MenuItemGroupLabel htmlFor="group-1">Group 1</MenuItemGroupLabel>
@@ -96,9 +90,7 @@ describe('Menu', () => {
       <Menu>
         {({ isOpen }) => (
           <>
-            <MenuTrigger>
-              <button>{isOpen ? 'Close' : 'Open'} menu</button>
-            </MenuTrigger>
+            <MenuTrigger>{isOpen ? 'Close' : 'Open'} menu</MenuTrigger>
             <MenuContent>
               <MenuItem id="download">Download</MenuItem>
               <MenuItem id="copy" onClick={() => alert('Kagebunshin')}>
@@ -122,9 +114,7 @@ describe('Menu', () => {
   it('should override menu item type', async () => {
     render(
       <Menu>
-        <MenuTrigger>
-          <button>Open menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Open menu</MenuTrigger>
         <MenuContent>
           <MenuItem id="submit" type="submit">
             Submit
@@ -141,9 +131,7 @@ describe('Menu', () => {
   it('should accept a custom placement', async () => {
     render(
       <Menu dir="rtl" positioning={{ placement: 'left-start' }}>
-        <MenuTrigger>
-          <button>Open menu</button>
-        </MenuTrigger>
+        <MenuTrigger>Open menu</MenuTrigger>
         <MenuContent>
           <MenuItem id="1">Pick me</MenuItem>
           <MenuItem id="2">No no, pick me</MenuItem>
@@ -162,12 +150,8 @@ describe('Menu', () => {
     it('should open on context menu', async () => {
       render(
         <Menu>
-          <MenuContextTrigger>
-            <button>Open menu</button>
-          </MenuContextTrigger>
-          <MenuContent>
-            <span>menu content</span>
-          </MenuContent>
+          <MenuContextTrigger>Open menu</MenuContextTrigger>
+          <MenuContent>menu content</MenuContent>
         </Menu>,
       )
 
@@ -181,9 +165,7 @@ describe('Menu', () => {
     it('should open on nested menu', async () => {
       render(
         <Menu>
-          <MenuTrigger>
-            <button>Open menu</button>
-          </MenuTrigger>
+          <MenuTrigger>Open menu</MenuTrigger>
           <Portal>
             <MenuPositioner>
               <MenuContent>
@@ -233,9 +215,7 @@ describe('Menu', () => {
             }))
           }}
         >
-          <MenuTrigger>
-            <button>Open menu</button>
-          </MenuTrigger>
+          <MenuTrigger>Open menu</MenuTrigger>
           <Portal>
             <MenuPositioner>
               <MenuContent>

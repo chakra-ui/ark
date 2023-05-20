@@ -1,5 +1,19 @@
 ## 0.1.0
 
+## 0.2.1
+
+### Patch Changes
+
+- [#899](https://github.com/chakra-ui/ark/pull/899) [`0da6b58a`](https://github.com/chakra-ui/ark/commit/0da6b58a3081c382bbc0a31e279da29fb48aadc0) Thanks [@TylerAPfledderer](https://github.com/TylerAPfledderer)! - Update `Dialog` component: apply two-way binding to `open` prop
+
+## 0.2.0
+
+### Minor Changes
+
+- [#834](https://github.com/chakra-ui/ark/pull/834) [`2fc3ca6`](https://github.com/chakra-ui/ark/commit/2fc3ca6adbdcfcc903c09cbc58e5937198ae8a70) Thanks [@TylerAPfledderer](https://github.com/TylerAPfledderer)! - Add `ColorPicker` component
+
+- [#629](https://github.com/chakra-ui/ark/pull/629) [`906e3a8`](https://github.com/chakra-ui/ark/commit/906e3a89eb1a13465201a24e3a2d8d5d10264258) Thanks [@TylerAPfledderer](https://github.com/TylerAPfledderer)! - Add `TagsInput` component
+
 ### Minor Changes
 
 - [#579](https://github.com/chakra-ui/ark/pull/579) [`35fbf0e3`](https://github.com/chakra-ui/ark/commit/35fbf0e328bfb0d523aa23e498444ee970340d73) Thanks [@TylerAPfledderer](https://github.com/TylerAPfledderer)! - Add component `PinInput`

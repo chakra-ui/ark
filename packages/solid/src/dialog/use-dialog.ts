@@ -1,6 +1,6 @@
 import * as dialog from '@zag-js/dialog'
-import { normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId, mergeProps } from 'solid-js'
+import { mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
@@ -11,6 +11,7 @@ export const useDialog = (props: UseDialogProps) => {
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
   const [state, send] = useMachine(dialog.machine(context), { context })
+
   return createMemo(() => dialog.connect(state, send, normalizeProps))
 }
 

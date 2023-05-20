@@ -1,19 +1,19 @@
-import { connect, machine, type Context as ComboboxContext } from '@zag-js/combobox'
+import { connect, machine } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
+import type { ComboboxProps } from './combobox'
 
-export type UseComboboxContext = Omit<ComboboxContext, 'id'> & {
-  modelValue?: ComboboxContext['inputValue']
-}
-
-export const useCombobox = (emit: CallableFunction, context: UseComboboxContext) => {
+export const useCombobox = <T extends ExtractPropTypes<ComboboxProps>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       inputValue: reactiveContext.modelValue,
       onClose() {
         emit('close')
@@ -36,5 +36,3 @@ export const useCombobox = (emit: CallableFunction, context: UseComboboxContext)
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
-
-export type UseComboboxReturn = UnwrapRef<ReturnType<typeof useCombobox>>

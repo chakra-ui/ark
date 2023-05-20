@@ -25,7 +25,8 @@ export const Popover = (props: PopoverProps) => {
     'portalled',
     'positioning',
   ])
-  const popover = usePopover(usePopoverProps)
 
-  return <PopoverProvider value={popover}>{restProps.children}</PopoverProvider>
+  const api = usePopover(usePopoverProps)
+
+  return <PopoverProvider value={api}>{restProps.children}</PopoverProvider>
 }

@@ -1,13 +1,14 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupProps>
+export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
 
 export const RatingGroup = (props: RatingGroupProps) => {
-  const [useRatingGroupProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
+  const [ratingParams, restProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
     'dir',
@@ -24,13 +25,16 @@ export const RatingGroup = (props: RatingGroupProps) => {
     'translations',
     'value',
   ])
-  const ratingGroup = useRatingGroup(useRatingGroupProps)
+
+  const api = useRatingGroup(ratingParams)
+
+  const rootProps = mergeProps(() => api().rootProps, restProps)
 
   return (
-    <RatingGroupProvider value={ratingGroup}>
-      <ark.div {...ratingGroup().rootProps}>
-        {props.children}
-        <ark.input {...ratingGroup().hiddenInputProps} {...inputProps} />
+    <RatingGroupProvider value={api}>
+      <ark.div {...rootProps}>
+        {restProps.children}
+        <ark.input {...api().hiddenInputProps} />
       </ark.div>
     </RatingGroupProvider>
   )

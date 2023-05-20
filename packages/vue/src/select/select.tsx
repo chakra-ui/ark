@@ -1,71 +1,82 @@
+import type { Context } from '@zag-js/select'
 import { defineComponent, type PropType } from 'vue'
-import { type ComponentWithProps } from '../utils'
+import type { Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectContext } from './use-select'
+import { useSelect } from './use-select'
 
-export type SelectProps = UseSelectContext
+export type SelectContext = Context & {
+  modelValue?: Context['selectedOption']
+}
 
-const VueSelectProps = {
+export type UseSelectProps = SelectContext
+
+const VueSelectProps = createVueProps<UseSelectProps>({
+  id: {
+    type: String as PropType<UseSelectProps['id']>,
+  },
   modelValue: {
-    type: [Object, null] as PropType<SelectProps['modelValue']>,
+    type: [Object, null] as PropType<UseSelectProps['modelValue']>,
   },
   loop: {
-    type: Boolean as PropType<SelectProps['loop']>,
+    type: Boolean as PropType<UseSelectProps['loop']>,
     default: false,
   },
-  closedOnSelect: {
-    type: Boolean as PropType<SelectProps['closeOnSelect']>,
+  closeOnSelect: {
+    type: Boolean as PropType<UseSelectProps['closeOnSelect']>,
     default: true,
   },
   disabled: {
-    type: Boolean as PropType<SelectProps['disabled']>,
+    type: Boolean as PropType<UseSelectProps['disabled']>,
     default: false,
   },
   readOnly: {
-    type: Boolean as PropType<SelectProps['readOnly']>,
+    type: Boolean as PropType<UseSelectProps['readOnly']>,
     default: false,
   },
   name: {
-    type: String as PropType<SelectProps['name']>,
+    type: String as PropType<UseSelectProps['name']>,
   },
   invalid: {
-    type: Boolean as PropType<SelectProps['invalid']>,
+    type: Boolean as PropType<UseSelectProps['invalid']>,
   },
   form: {
-    type: String as PropType<SelectProps['form']>,
+    type: String as PropType<UseSelectProps['form']>,
   },
   positioning: {
-    type: Object as PropType<SelectProps['positioning']>,
+    type: Object as PropType<UseSelectProps['positioning']>,
   },
   highlightedOption: {
-    type: Object as PropType<SelectProps['highlightedOption']>,
+    type: Object as PropType<UseSelectProps['highlightedOption']>,
   },
   selectOnTab: {
-    type: Boolean as PropType<SelectProps['selectOnTab']>,
+    type: Boolean as PropType<UseSelectProps['selectOnTab']>,
   },
   selectedOption: {
-    type: Object as PropType<SelectProps['selectedOption']>,
+    type: Object as PropType<UseSelectProps['selectedOption']>,
   },
   dir: {
-    type: String as PropType<SelectProps['dir']>,
+    type: String as PropType<UseSelectProps['dir']>,
   },
   ids: {
-    type: Object as PropType<SelectProps['ids']>,
+    type: Object as PropType<UseSelectProps['ids']>,
   },
   getRootNode: {
-    type: Function as PropType<SelectProps['getRootNode']>,
+    type: Function as PropType<UseSelectProps['getRootNode']>,
   },
-}
+})
 
-export const Select: ComponentWithProps<SelectProps> = defineComponent({
+export const Select: ComponentWithProps<Partial<UseSelectProps>> = defineComponent({
   name: 'Select',
   emits: ['change', 'highlight', 'open', 'close', 'update:modelValue'],
   props: VueSelectProps,
   setup(props, { slots, emit }) {
-    const { api } = useSelect(emit, props)
+    const api = useSelect(emit, props as UseSelectProps)
 
     SelectProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots?.default?.(api.value)
   },
 })
+
+export type SelectProps = Optional<SelectContext, 'id'>

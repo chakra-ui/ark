@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   Slider,
   SliderControl,
@@ -11,6 +12,12 @@ import {
   SliderTrack,
 } from './'
 import './slider.css'
+
+const meta: Meta = {
+  title: 'Slider',
+}
+
+export default meta
 
 export const Basic = () => {
   const [value, setValue] = createSignal(30)

@@ -1,0 +1,79 @@
+{
+  "SwitchProps": {
+    "checked": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the switch is checked."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the switch is disabled."
+    },
+    "focusable": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true` and `disabled` is passed, the switch will\nremain tabbable but not interactive"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The id of the form that the switch belongs to"
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  input: string\n  control: string\n  label: string\n  thumb: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the switch. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the switch is marked as invalid."
+    },
+    "label": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input field in a switch\n(Useful for form submission)."
+    },
+    "onChange": {
+      "type": "(details: { checked: boolean }) => void",
+      "isRequired": false,
+      "description": "Function to call when the switch is clicked."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the switch will be readonly"
+    },
+    "required": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the switch input is marked as required,"
+    },
+    "value": {
+      "type": "string | number",
+      "isRequired": false,
+      "description": "The value of switch input. Useful for form submission."
+    }
+  }
+}

@@ -1,13 +1,12 @@
-import { defineComponent, h, type PropType } from 'vue'
+import type { PageTriggerProps } from '@zag-js/pagination/dist/pagination.types'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { useUniqueChild, type ComponentWithProps } from '../utils'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPageTriggerProps = HTMLArkProps<'li'> & {
-  value: number
-}
+export type PaginationPageTriggerProps = HTMLArkProps<'li'> & PageTriggerProps
 
-export const PaginationPageTrigger: ComponentWithProps<PaginationPageTriggerProps> =
+export const PaginationPageTrigger: ComponentWithProps<Partial<PaginationPageTriggerProps>> =
   defineComponent({
     name: 'PaginationPageTrigger',
     props: {
@@ -18,18 +17,13 @@ export const PaginationPageTrigger: ComponentWithProps<PaginationPageTriggerProp
     },
     setup(props, { slots, attrs }) {
       const api = usePaginationContext()
-      return () => {
-        const DefaultSlot = useUniqueChild(slots, 'PaginationPageTrigger')
-
-        return (
-          <ark.li {...attrs}>
-            {() =>
-              h(DefaultSlot, {
-                ...api.value.getPageTriggerProps({ type: 'page', value: props.value }),
-              })
-            }
-          </ark.li>
-        )
-      }
+      return () => (
+        <ark.button
+          {...attrs}
+          {...api.value.getPageTriggerProps({ type: 'page', value: props.value })}
+        >
+          {() => getValidChildren(slots)}
+        </ark.button>
+      )
     },
   })

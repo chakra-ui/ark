@@ -34,16 +34,14 @@ export const Basic = () => {
                 <Tag index={index} value={value}>
                   <span>{value}</span>
                   <TagDeleteTrigger index={index} value={value}>
-                    <button>&#x2715;</button>
+                    &#x2715;
                   </TagDeleteTrigger>
                 </Tag>
                 <TagInput index={index} value={value} />
               </Fragment>
             ))}
             <TagsInputField placeholder="Add tag" />
-            <TagsInputClearTrigger>
-              <button>Clear all</button>
-            </TagsInputClearTrigger>
+            <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
           </TagsInputControl>
         </>
       )}
@@ -60,16 +58,14 @@ export const WithDefaultValue = () => (
             <Tag index={index} value={value}>
               <span>{value}</span>
               <TagDeleteTrigger index={index} value={value}>
-                <button>&#x2715;</button>
+                &#x2715;
               </TagDeleteTrigger>
             </Tag>
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
         <TagsInputField placeholder="Add tag" />
-        <TagsInputClearTrigger>
-          <button>Clear all</button>
-        </TagsInputClearTrigger>
+        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
       </TagsInputControl>
     )}
   </TagsInput>

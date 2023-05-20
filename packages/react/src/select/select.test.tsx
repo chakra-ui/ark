@@ -23,9 +23,7 @@ const ComponentUnderTest = (props: SelectProps) => {
       {({ selectedOption }) => (
         <>
           <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>
-            <span>{selectedOption?.label ?? 'Select option'}</span>
-          </SelectTrigger>
+          <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
           <Portal>
             <SelectPositioner>
               <SelectContent>

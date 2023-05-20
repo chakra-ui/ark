@@ -1,13 +1,15 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionTriggerProps = { children: ReactElement }
+export type AccordionTriggerProps = HTMLArkProps<'button'>
 
-export const AccordionTrigger = (props: AccordionTriggerProps) => {
+export const AccordionTrigger = forwardRef<'button'>((props, ref) => {
   const { getTriggerProps } = useAccordionContext()
-  const itemContext = useAccordionItemContext()
+  const accordionItem = useAccordionItemContext()
+  const mergedProps = mergeProps(getTriggerProps(accordionItem), props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, getTriggerProps(itemContext))
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

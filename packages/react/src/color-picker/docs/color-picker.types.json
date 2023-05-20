@@ -21,6 +21,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
+    "ids": {
+      "type": "Partial<{\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the color picker. Useful for composition."
+    },
     "onChange": {
       "type": "(details: ChangeDetails) => void",
       "isRequired": false,
@@ -42,5 +47,8 @@
     "xChannel": { "type": "ColorChannel", "isRequired": true },
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
-  "ColorPickerSwatchProps": { "readOnly": { "type": "boolean", "isRequired": false } }
+  "ColorPickerSwatchProps": {
+    "value": { "type": "string | Color", "isRequired": true },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  }
 }

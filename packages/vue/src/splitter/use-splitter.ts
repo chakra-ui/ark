@@ -1,18 +1,18 @@
 import { connect, machine, type Context as SplitterContext } from '@zag-js/splitter'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
+import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
 import { useId } from '../utils'
 
-export type UseSplitterContext = Optional<SplitterContext, 'id'>
-
-export const useSplitter = (emit: CallableFunction, context: UseSplitterContext) => {
+export const useSplitter = <T extends ExtractPropTypes<SplitterContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       onResize(details) {
         emit('resize', details)
       },

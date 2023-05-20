@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerEyeDropperTriggerProps = { children: ReactElement }
+export type ColorPickerEyeDropperTriggerProps = HTMLArkProps<'button'>
 
-export const ColorPickerEyeDropperTrigger = (props: ColorPickerEyeDropperTriggerProps) => {
+export const ColorPickerEyeDropperTrigger = forwardRef<'button'>((props, ref) => {
   const { eyeDropperTriggerProps } = useColorPickerContext()
+  const mergedProps = mergeProps(eyeDropperTriggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, eyeDropperTriggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

@@ -1,23 +1,33 @@
-import { children } from 'solid-js'
+import type { ItemProps } from '@zag-js/rating-group'
+import { mergeProps } from '@zag-js/solid'
+import type { Accessor } from 'solid-js'
 import { type JSX } from 'solid-js/jsx-runtime'
+import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { RatingProvider, type RatingContext } from './rating-context'
 import { useRatingGroupContext } from './rating-group-context'
 
-export type RatingProps = Omit<HTMLArkProps<'span'>, 'children'> & {
-  index: number
-  children: (state: RatingContext) => JSX.Element | JSX.Element
-}
+export type RatingProps = Assign<
+  HTMLArkProps<'span'>,
+  ItemProps & {
+    children: (state: Accessor<RatingContext>) => JSX.Element | JSX.Element
+  }
+>
 
 export const Rating = (props: RatingProps) => {
-  const ratingGroup = useRatingGroupContext()
-  const ratingState = ratingGroup().getRatingState(props.index)
-  const view = children(() => runIfFn(props.children, ratingState))
+  const [ratingParams, restProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const api = useRatingGroupContext()
+
+  const ratingState = () => api().getRatingState(ratingParams)
+  const getChildren = () => runIfFn(restProps.children, ratingState)
+
+  const ratingProps = mergeProps(() => api().getRatingProps(ratingParams), restProps)
 
   return (
-    <ark.span {...ratingGroup().getRatingProps({ index: props.index })} {...props}>
-      <RatingProvider value={ratingState}>{view()}</RatingProvider>
+    <ark.span {...ratingProps}>
+      <RatingProvider value={ratingState}>{getChildren()}</RatingProvider>
     </ark.span>
   )
 }

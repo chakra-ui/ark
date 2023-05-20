@@ -7,10 +7,10 @@
   "workspaces": [
     "examples/*",
     "packages/*",
-    "webiste"
+    "website"
   ],
   "scripts": {
-    "prepare": "husky install && pnpm typedocs && pnpm storydocs",
+    "prepare": "husky install",
     "build": "turbo run build",
     "exports:check": "ts-node scripts/check-exports.ts",
     "exports:sync": "ts-node scripts/sync-exports.ts",
@@ -24,20 +24,23 @@
     "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "typedocs": "turbo run typedocs",
-    "storydocs": "turbo run storydocs",
+    "document": "concurrently 'pnpm:document:*'",
+    "document:types": "turbo run typedocs",
+    "document:stories": "turbo run storydocs",
     "version": "changeset version",
     "version:rc": "changeset version --snapshot rc",
-    "website": "pnpm --filter=@ark-ui/website"
+    "website": "pnpm --filter=@ark-ui/website",
+    "clean": "pnpm -r --parallel exec rm -rf dist .turbo *.log"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.1",
-    "@commitlint/cli": "17.6.1",
-    "@commitlint/config-conventional": "17.6.1",
+    "@commitlint/cli": "17.6.3",
+    "@commitlint/config-conventional": "17.6.3",
     "@types/fs-extra": "11.0.1",
-    "@types/node": "18.16.1",
+    "@types/node": "18.16.13",
     "@types/prettier": "2.7.2",
+    "concurrently": "8.0.1",
     "fs-extra": "11.1.1",
     "globby": "13.1.4",
     "husky": "8.0.3",
@@ -46,9 +49,9 @@
     "prettier-plugin-organize-imports": "3.2.2",
     "react": "18.2.0",
     "ts-node": "10.9.1",
-    "ts-pattern": "4.2.2",
+    "ts-pattern": "4.3.0",
     "ts-morph": "18.0.0",
-    "turbo": "1.9.3",
+    "turbo": "1.9.8",
     "typescript": "5.0.4"
   },
   "commitlint": {
@@ -64,5 +67,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.3.1"
+  "packageManager": "pnpm@8.5.1"
 }

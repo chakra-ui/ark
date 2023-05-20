@@ -1,99 +1,88 @@
-import {
-  defineComponent,
-  reactive,
-  watchEffect,
-  type ComponentObjectPropsOptions,
-  type PropType,
-} from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type Context } from '@zag-js/editable'
+import { defineComponent, type PropType } from 'vue'
+import { ark } from '../factory'
+import type { Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable, type UseEditableContext } from './use-editable'
+import { useEditable } from './use-editable'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableContext>
+export type UseEditableProps = Context & { modelValue?: Context['value'] }
 
-const VueEditableProps: ComponentObjectPropsOptions = {
+const VueEditableProps = createVueProps<UseEditableProps>({
   activationMode: {
-    type: String as PropType<EditableProps['activationMode']>,
+    type: String as PropType<UseEditableProps['activationMode']>,
   },
   autoResize: {
-    type: Boolean as PropType<EditableProps['autoResize']>,
+    type: Boolean as PropType<UseEditableProps['autoResize']>,
   },
   dir: {
-    type: String as PropType<EditableProps['dir']>,
+    type: String as PropType<UseEditableProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<EditableProps['disabled']>,
+    type: Boolean as PropType<UseEditableProps['disabled']>,
   },
   form: {
-    type: String as PropType<EditableProps['form']>,
+    type: String as PropType<UseEditableProps['form']>,
   },
   getRootNode: {
-    type: Function as PropType<EditableProps['getRootNode']>,
+    type: Function as PropType<UseEditableProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<EditableProps['id']>,
+    type: String as PropType<UseEditableProps['id']>,
   },
   ids: {
-    type: Object as PropType<EditableProps['ids']>,
+    type: Object as PropType<UseEditableProps['ids']>,
   },
   invalid: {
-    type: Boolean as PropType<EditableProps['invalid']>,
+    type: Boolean as PropType<UseEditableProps['invalid']>,
   },
   maxLength: {
-    type: Number as PropType<EditableProps['maxLength']>,
+    type: Number as PropType<UseEditableProps['maxLength']>,
   },
   modelValue: {
-    type: String as PropType<EditableProps['value']>,
+    type: String as PropType<UseEditableProps['value']>,
   },
   name: {
-    type: String as PropType<EditableProps['name']>,
+    type: String as PropType<UseEditableProps['name']>,
   },
   placeholder: {
-    type: String as PropType<EditableProps['placeholder']>,
+    type: String as PropType<UseEditableProps['placeholder']>,
   },
   readOnly: {
-    type: Boolean as PropType<EditableProps['readOnly']>,
+    type: Boolean as PropType<UseEditableProps['readOnly']>,
   },
   selectOnFocus: {
-    type: Boolean as PropType<EditableProps['selectOnFocus']>,
+    type: Boolean as PropType<UseEditableProps['selectOnFocus']>,
   },
   startWithEditView: {
-    type: Boolean as PropType<EditableProps['startWithEditView']>,
+    type: Boolean as PropType<UseEditableProps['startWithEditView']>,
   },
   submitMode: {
-    type: String as PropType<EditableProps['submitMode']>,
+    type: String as PropType<UseEditableProps['submitMode']>,
   },
   translations: {
-    type: Object as PropType<EditableProps['translations']>,
+    type: Object as PropType<UseEditableProps['translations']>,
   },
   value: {
-    type: String as PropType<EditableProps['value']>,
+    type: String as PropType<UseEditableProps['value']>,
   },
-}
+})
 
-export const Editable: ComponentWithProps<EditableProps> = defineComponent({
+export const Editable: ComponentWithProps<Partial<UseEditableProps>> = defineComponent({
   name: 'Editable',
   props: VueEditableProps,
   emits: ['cancel', 'change', 'update:modelValue', 'edit', 'submit'],
-  setup(props, { slots, attrs, emit, expose }) {
-    const api = useEditable(emit, props)
+  setup(props, { slots, attrs, emit }) {
+    const api = useEditable(emit, props as UseEditableProps)
 
     EditableProvider(api)
 
-    const exposeApi = reactive({ api: {} })
-
-    watchEffect(() => {
-      exposeApi.api = api.value
-    })
-
-    expose(exposeApi)
-
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
+
+export type EditableProps = Optional<UseEditableProps, 'id'>
