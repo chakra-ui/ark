@@ -12,7 +12,8 @@ export const useCarousel = (emit: CallableFunction, context: UseCarouselContext)
   const [state, send] = useMachine(
     carousel.machine({
       ...reactiveContext,
-      id: useId().value,
+      getRootNode: reactiveContext.getRootNode,
+      id: reactiveContext.id || useId().value,
       onSlideChange(details) {
         emit('slide-change', details)
       },
