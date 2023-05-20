@@ -18,7 +18,7 @@
 | Dialog                  | 🟢    | 🟢    | 🟢  |
 | Combobox / Autocomplete | 🟢    | 🟢    | 🟢  |
 | Editable                | 🟢    | 🟢    | 🟢  |
-| Environment             | 🟢    | 🟢    | 🟡  |
+| Environment             | 🟢    | 🟢    | 🟢  |
 | Hover Card              | 🟢    | 🟢    | 🟢  |
 | Menu                    | 🟢    | 🟢    | 🟢  |
 | Number Input            | 🟢    | 🟢    | 🟢  |

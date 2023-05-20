@@ -1,6 +1,7 @@
 import { connect, machine } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 import type { EditableProps } from './editable'
 
@@ -10,10 +11,13 @@ export const useEditable = <T extends ExtractPropTypes<EditableProps>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onCancel(details) {
         emit('cancel', details)

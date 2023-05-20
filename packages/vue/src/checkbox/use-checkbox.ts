@@ -1,6 +1,7 @@
 import { connect, machine } from '@zag-js/checkbox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 import type { CheckboxContext } from './checkbox'
 
@@ -10,10 +11,13 @@ export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       checked: reactiveContext.modelValue ?? reactiveContext.checked,
       onChange(details) {
         emit('change', details.checked)

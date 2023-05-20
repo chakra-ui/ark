@@ -1,6 +1,7 @@
 import { connect, machine } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 import type { PopoverContext } from './popover'
 
@@ -10,10 +11,13 @@ export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       open: reactiveContext.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)

@@ -1,6 +1,7 @@
 import { connect, machine } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 import type { ComboboxProps } from './combobox'
 
@@ -10,10 +11,13 @@ export const useCombobox = <T extends ExtractPropTypes<ComboboxProps>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       inputValue: reactiveContext.modelValue,
       onClose() {
         emit('close')

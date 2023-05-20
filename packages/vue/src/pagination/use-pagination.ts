@@ -1,6 +1,7 @@
 import { connect, machine, type Context as PaginationContext } from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 
 export const usePagination = <T extends ExtractPropTypes<PaginationContext>>(
@@ -9,11 +10,14 @@ export const usePagination = <T extends ExtractPropTypes<PaginationContext>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       count: reactiveContext.count || 0,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       onChange(details) {
         emit('change', details)
       },

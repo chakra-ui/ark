@@ -1,6 +1,7 @@
 import { connect, machine } from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 import type { PinInputContext } from './pin-input'
 
@@ -10,10 +11,13 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
 ) => {
   const reactiveContext = reactive(context)
 
+  const getRootNode = useEnvironmentContext()
+
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
+      getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
