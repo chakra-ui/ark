@@ -1,3 +1,5 @@
+/* eslint-disable vue/no-reserved-component-names */
+
 import { type Context as DialogContext } from '@zag-js/dialog'
 import { defineComponent, type PropType } from 'vue'
 import type { Optional } from '../types'

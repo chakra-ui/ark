@@ -4,10 +4,9 @@ import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
 
 const checked = ref(true)
-const props = defineProps(['modelValue'])
 </script>
 <template>
-  <Checkbox>
+  <Checkbox v-model="checked">
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl />

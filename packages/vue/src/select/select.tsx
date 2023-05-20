@@ -1,3 +1,5 @@
+/* eslint-disable vue/no-reserved-component-names */
+
 import type { Context } from '@zag-js/select'
 import { defineComponent, type PropType } from 'vue'
 import type { Optional } from '../types'

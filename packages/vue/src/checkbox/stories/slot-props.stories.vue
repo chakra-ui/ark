@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
 import '../checkbox.css'
-
-const checked = ref(true)
-const props = defineProps(['modelValue'])
 </script>
 <template>
-  <Checkbox>
-    <CheckboxLabel>Checkbox</CheckboxLabel>
+  <Checkbox #default="{ isChecked }">
+    <CheckboxLabel>Checkbox with slot props: {{ isChecked }}</CheckboxLabel>
     <CheckboxInput />
     <CheckboxControl />
   </Checkbox>

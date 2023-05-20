@@ -9,6 +9,7 @@ import { useCheckbox } from './use-checkbox'
 export type CheckboxContext = Context & {
   modelValue?: Context['checked']
 }
+
 export type UseCheckboxProps = Assign<HTMLArkProps<'label'>, CheckboxContext>
 
 export const VueCheckboxProps = createVueProps<UseCheckboxProps>({
@@ -25,8 +26,7 @@ export const VueCheckboxProps = createVueProps<UseCheckboxProps>({
     type: String as PropType<UseCheckboxProps['aria-labelledby']>,
   },
   checked: {
-    type: Boolean as PropType<UseCheckboxProps['checked']>,
-    default: false,
+    type: [Boolean, String] as PropType<UseCheckboxProps['checked']>,
   },
   dir: {
     type: String as PropType<UseCheckboxProps['dir']>,
@@ -46,15 +46,11 @@ export const VueCheckboxProps = createVueProps<UseCheckboxProps>({
   ids: {
     type: Object as PropType<UseCheckboxProps['ids']>,
   },
-  indeterminate: {
-    type: Boolean as PropType<UseCheckboxProps['indeterminate']>,
-  },
   invalid: {
     type: Boolean as PropType<UseCheckboxProps['invalid']>,
   },
   modelValue: {
     type: [Boolean, String] as PropType<UseCheckboxProps['modelValue']>,
-    default: undefined,
   },
   name: {
     type: String as PropType<UseCheckboxProps['name']>,
@@ -72,7 +68,7 @@ export const VueCheckboxProps = createVueProps<UseCheckboxProps>({
 
 export const Checkbox: ComponentWithProps<Partial<UseCheckboxProps>> = defineComponent({
   name: 'Checkbox',
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:modelValue', 'update:checked'],
   props: VueCheckboxProps,
   setup(props, { attrs, emit, slots }) {
     const api = useCheckbox(emit, props)
@@ -81,7 +77,7 @@ export const Checkbox: ComponentWithProps<Partial<UseCheckboxProps>> = defineCom
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {() => slots.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.label>
     )
   },

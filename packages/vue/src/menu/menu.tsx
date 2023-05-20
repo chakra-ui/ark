@@ -1,3 +1,5 @@
+/* eslint-disable vue/no-reserved-component-names */
+
 import type { Context } from '@zag-js/menu'
 import { computed, defineComponent, onMounted, type PropType } from 'vue'
 import type { Optional } from '../types'
