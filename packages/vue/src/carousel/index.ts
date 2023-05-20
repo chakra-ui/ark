@@ -1,7 +1,13 @@
 export { Carousel, type CarouselProps } from './carousel'
 export type { CarouselContext } from './carousel-context'
-export { CarouselNextSlideTrigger } from './carousel-next-slide-trigger'
-export { CarouselPrevSlideTrigger } from './carousel-prev-slide-trigger'
+export {
+  CarouselNextSlideTrigger,
+  type CarouselNextSlideTriggerProps,
+} from './carousel-next-slide-trigger'
+export {
+  CarouselPrevSlideTrigger,
+  type CarouselPrevSlideTriggerProps,
+} from './carousel-prev-slide-trigger'
 export { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
 export { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
 export { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
