@@ -17,12 +17,10 @@ import {
   type ColorPickerContext,
 } from './'
 import './color-picker.css'
-
-const colorPickerValue = ref('hsl(10, 81%, 59%)')
 </script>
 <template>
   <ColorPicker
-    v-model="colorPickerValue"
+    default-value="hsl(10, 81%, 59%)"
     v-slot="{ channels: [hue, saturation, lightness], value }: ColorPickerContext"
   >
     <ColorPickerContent>

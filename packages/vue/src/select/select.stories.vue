@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import {
   Select,
   SelectTrigger,
@@ -7,13 +6,11 @@ import {
   SelectPositioner,
   SelectContent,
   SelectOption,
-  type SelectProps,
+  type SelectContext,
 } from './index'
-
-const selectedOption = ref<SelectProps['modelValue']>()
 </script>
 <template>
-  <Select v-model="selectedOption">
+  <Select v-slot="{ selectedOption }: SelectContext">
     <SelectLabel>Framework:</SelectLabel>
     <SelectTrigger>
       <button>{{ selectedOption?.label ?? 'Select' }}</button>

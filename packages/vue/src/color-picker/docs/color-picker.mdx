@@ -18,11 +18,13 @@ import {
   ColorPickerAreaGradient,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
-  ColorPickerContent,
-  ColorPickerEyeDropperTrigger,
+  ColorPickerChannelSliderBackground,
   ColorPickerChannelSliderThumb,
   ColorPickerChannelSliderTrack,
+  ColorPickerContent,
+  ColorPickerEyeDropperTrigger,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
 } from '@ark-ui/vue'
 ```
@@ -31,7 +33,6 @@ Here is an example of how to use the Color Picker component:
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import {
   ColorPicker,
   ColorPickerArea,
@@ -53,7 +54,7 @@ const colorPickerValue = ref('hsl(10, 81%, 59%)')
 </script>
 <template>
   <ColorPicker
-    v-model="colorPickerValue"
+    defaultValue="hsl(10, 81%, 59%)"
     v-slot="{
       channels: [hue, saturation, lightness],
       value,
@@ -113,10 +114,7 @@ selected color:
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ColorPicker } from '@ark-ui/vue'
-
-const colorPickerValue = ref('#ff0000')
 
 const handleColorChange = (details) => {
   console.log('Color changed:', details.value)
@@ -128,7 +126,7 @@ const handleColorChangeEnd = (details) => {
 </script>
 <template>
   <ColorPicker
-    v-model="colorPickerValue"
+    defaultValue="#ff0000"
     @change="handleColorChange"
     @change-end="handleColorChangeEnd"
   >

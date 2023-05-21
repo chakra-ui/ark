@@ -1,41 +1,38 @@
-import { type Context as HoverCardContext } from '@zag-js/hover-card'
 import { defineComponent, type PropType } from 'vue'
-
-import type { Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
-export type UseHoverCardProps = HoverCardContext
+export type HoverCardProps = UseHoverCardProps
 
-const VueHoverCardProps = createVueProps<UseHoverCardProps>({
+const VueHoverCardProps = createVueProps<HoverCardProps>({
   id: {
-    type: String as PropType<UseHoverCardProps['id']>,
+    type: String as PropType<HoverCardProps['id']>,
   },
   ids: {
-    type: Object as PropType<UseHoverCardProps['ids']>,
+    type: Object as PropType<HoverCardProps['ids']>,
   },
   openDelay: {
-    type: Number as PropType<UseHoverCardProps['openDelay']>,
+    type: Number as PropType<HoverCardProps['openDelay']>,
   },
   closeDelay: {
-    type: Number as PropType<UseHoverCardProps['closeDelay']>,
+    type: Number as PropType<HoverCardProps['closeDelay']>,
   },
   dir: {
-    type: String as PropType<UseHoverCardProps['dir']>,
+    type: String as PropType<HoverCardProps['dir']>,
   },
   getRootNode: {
-    type: Function as PropType<UseHoverCardProps['getRootNode']>,
+    type: Function as PropType<HoverCardProps['getRootNode']>,
   },
   open: {
-    type: Boolean as PropType<UseHoverCardProps['open']>,
+    type: Boolean as PropType<HoverCardProps['open']>,
   },
   positioning: {
-    type: Object as PropType<UseHoverCardProps['positioning']>,
+    type: Object as PropType<HoverCardProps['positioning']>,
   },
 })
 
-export const HoverCard: ComponentWithProps<Partial<UseHoverCardProps>> = defineComponent({
+export const HoverCard: ComponentWithProps<HoverCardProps> = defineComponent({
   name: 'HoverCard',
   props: VueHoverCardProps,
   emits: ['open', 'close'],
@@ -47,5 +44,3 @@ export const HoverCard: ComponentWithProps<Partial<UseHoverCardProps>> = defineC
     return () => slots?.default?.(api.value)
   },
 })
-
-export type HoverCardProps = Optional<UseHoverCardProps, 'id'>

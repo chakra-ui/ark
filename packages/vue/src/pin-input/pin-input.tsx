@@ -1,74 +1,73 @@
-import { type Context } from '@zag-js/pin-input'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput } from './use-pin-input'
+import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
-export type PinInputContext = Context & {
-  modelValue?: PinInputContext['value']
-}
-export type UsePinInputProps = Assign<HTMLArkProps<'div'>, PinInputContext>
+export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 
-const VuePinInputProps = createVueProps<UsePinInputProps>({
+const VuePinInputProps = createVueProps<PinInputProps>({
   autoFocus: {
-    type: Boolean as PropType<UsePinInputProps['autoFocus']>,
+    type: Boolean as PropType<PinInputProps['autoFocus']>,
   },
   blurOnComplete: {
-    type: Boolean as PropType<UsePinInputProps['blurOnComplete']>,
+    type: Boolean as PropType<PinInputProps['blurOnComplete']>,
   },
   dir: {
-    type: String as PropType<UsePinInputProps['dir']>,
+    type: String as PropType<PinInputProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<UsePinInputProps['disabled']>,
+    type: Boolean as PropType<PinInputProps['disabled']>,
+  },
+  defaultValue: {
+    type: Array as PropType<PinInputProps['defaultValue']>,
   },
   form: {
-    type: String as PropType<UsePinInputProps['form']>,
+    type: String as PropType<PinInputProps['form']>,
   },
   id: {
-    type: String as PropType<UsePinInputProps['id']>,
+    type: String as PropType<PinInputProps['id']>,
   },
   ids: {
-    type: Object as PropType<UsePinInputProps['ids']>,
+    type: Object as PropType<PinInputProps['ids']>,
   },
   invalid: {
-    type: Boolean as PropType<UsePinInputProps['invalid']>,
+    type: Boolean as PropType<PinInputProps['invalid']>,
   },
   mask: {
-    type: Boolean as PropType<UsePinInputProps['mask']>,
+    type: Boolean as PropType<PinInputProps['mask']>,
   },
   modelValue: {
-    type: Array as PropType<UsePinInputProps['modelValue']>,
+    type: Array as PropType<PinInputProps['modelValue']>,
   },
   name: {
-    type: String as PropType<UsePinInputProps['name']>,
+    type: String as PropType<PinInputProps['name']>,
   },
   otp: {
-    type: Boolean as PropType<UsePinInputProps['otp']>,
+    type: Boolean as PropType<PinInputProps['otp']>,
   },
   pattern: {
-    type: String as PropType<UsePinInputProps['pattern']>,
+    type: String as PropType<PinInputProps['pattern']>,
   },
   placeholder: {
-    type: String as PropType<UsePinInputProps['placeholder']>,
+    type: String as PropType<PinInputProps['placeholder']>,
   },
   selectOnFocus: {
-    type: Boolean as PropType<UsePinInputProps['selectOnFocus']>,
+    type: Boolean as PropType<PinInputProps['selectOnFocus']>,
   },
   translations: {
-    type: Object as PropType<UsePinInputProps['translations']>,
+    type: Object as PropType<PinInputProps['translations']>,
   },
   type: {
-    type: String as PropType<UsePinInputProps['type']>,
+    type: String as PropType<PinInputProps['type']>,
   },
   value: {
-    type: Array as PropType<UsePinInputProps['value']>,
+    type: Array as PropType<PinInputProps['value']>,
   },
 })
 
-export const PinInput: ComponentWithProps<Partial<UsePinInputProps>> = defineComponent({
+export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
   name: 'PinInput',
   props: VuePinInputProps,
   emits: ['change', 'update:modelValue', 'invalid', 'complete'],
@@ -79,10 +78,8 @@ export const PinInput: ComponentWithProps<Partial<UsePinInputProps>> = defineCom
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
-
-export type PinInputProps = Optional<PinInputContext, 'id'>

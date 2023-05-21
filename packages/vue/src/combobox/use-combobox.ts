@@ -1,24 +1,30 @@
-import { connect, machine } from '@zag-js/combobox'
+import { connect, machine, type Context } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { ComboboxProps } from './combobox'
 
-export const useCombobox = <T extends ExtractPropTypes<ComboboxProps>>(
+export type UseComboboxProps = Optional<Context, 'id'> & {
+  modelValue?: Context['inputValue']
+}
+
+export const useCombobox = <T extends ExtractPropTypes<UseComboboxProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    inputValue: context.modelValue ?? context.inputValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      inputValue: reactiveContext.modelValue,
       onClose() {
         emit('close')
       },
@@ -36,7 +42,10 @@ export const useCombobox = <T extends ExtractPropTypes<ComboboxProps>>(
         emit('select', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
+
+export type UseComboboxReturn = ReturnType<typeof useCombobox>

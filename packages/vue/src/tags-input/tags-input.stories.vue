@@ -9,13 +9,14 @@ import {
   TagsInputControl,
   TagsInputField,
   TagsInputLabel,
+  type TagsInputContext,
 } from '.'
 import './tags-input.css'
 
 const values = ref<string[]>(['react', 'solid', 'vue'])
 </script>
 <template>
-  <TagsInput v-slot="{ value: v }" v-model="values">
+  <TagsInput v-slot="{ value: v }: TagsInputContext" v-model="values">
     <TagsInputLabel>Label</TagsInputLabel>
     <TagsInputControl>
       <template v-for="(value, index) in v">

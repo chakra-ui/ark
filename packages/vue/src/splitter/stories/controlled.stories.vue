@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Splitter, SplitterPanel, SplitterProps, SplitterResizeTrigger } from '../'
+import { Splitter, SplitterPanel, type SplitterProps, SplitterResizeTrigger } from '../'
 import '../splitter.css'
 
 const size = ref([

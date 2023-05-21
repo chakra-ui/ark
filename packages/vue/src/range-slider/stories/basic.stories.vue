@@ -11,29 +11,31 @@ import {
   RangeSliderThumb,
   RangeSliderTrack,
   type RangeSliderContext,
-} from './'
-import './range-slider.css'
+} from '../'
+import '../range-slider.css'
 
-const valuesRef = ref([-20, 20])
+// '../range-slider.test.tsx'
+const testProps = defineProps(['dir', 'orientation'])
 
-const outputRef = ref<{ context: RangeSliderContext }>()
+const values = ref([33, 66])
 </script>
 <template>
-  <RangeSlider :min="-50" :max="50" v-model="valuesRef">
+  <div>{{ values }}</div>
+  <RangeSlider :min="0" :max="100" v-model="values" v-bind="testProps">
     <RangeSliderLabel>Label</RangeSliderLabel>
-    <RangeSliderOutput ref="outputRef">
-      {{ outputRef?.context.value.join(' ') }}
+    <RangeSliderOutput v-slot="{ value }: RangeSliderContext">
+      {{ value.join(' ') }}
     </RangeSliderOutput>
     <RangeSliderControl>
       <RangeSliderTrack>
         <RangeSliderRange />
       </RangeSliderTrack>
-      <RangeSliderThumb v-for="(_, idx) in valuesRef" :key="idx" :index="idx" />
+      <RangeSliderThumb v-for="(_, idx) in values" :key="idx" :index="idx" />
     </RangeSliderControl>
     <RangeSliderMarkerGroup>
-      <RangeSliderMarker :value="-30">*</RangeSliderMarker>
-      <RangeSliderMarker :value="0">*</RangeSliderMarker>
       <RangeSliderMarker :value="30">*</RangeSliderMarker>
+      <RangeSliderMarker :value="50">*</RangeSliderMarker>
+      <RangeSliderMarker :value="70">*</RangeSliderMarker>
     </RangeSliderMarkerGroup>
   </RangeSlider>
 </template>

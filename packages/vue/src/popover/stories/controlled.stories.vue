@@ -10,8 +10,8 @@ import {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
+  type PopoverProps,
 } from '../'
-import type { PopoverContext } from '../popover'
 
 const isOpen = ref(false)
 
@@ -19,7 +19,7 @@ const handleOpenClick = () => {
   return (isOpen.value = !isOpen.value)
 }
 
-const handleOnClose: PopoverContext['onClose'] = () => {
+const handleOnClose: PopoverProps['onClose'] = () => {
   return (isOpen.value = false)
 }
 </script>

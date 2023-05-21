@@ -1,22 +1,24 @@
-import { connect, machine } from '@zag-js/dialog'
+import { connect, machine, type Context } from '@zag-js/dialog'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { computed, ref, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { DialogProps } from './dialog'
 
-export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
+export type UseDialogProps = Optional<Context, 'id'>
+
+export const useDialog = <T extends ExtractPropTypes<UseDialogProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = ref(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
       onClose() {
         emit('close')
@@ -29,23 +31,10 @@ export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
         emit('outside-click')
       },
     }),
+    { context: machineContext },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.open,
-    (value) => {
-      if (value == undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseDialogReturn = ReturnType<typeof connect>
+export type UseDialogReturn = ReturnType<typeof useDialog>

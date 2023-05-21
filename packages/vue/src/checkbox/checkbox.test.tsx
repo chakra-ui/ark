@@ -34,16 +34,17 @@ describe('Checkbox', () => {
         return () => (
           <Fragment>
             <button onClick={() => (checked.value = true)}>set checked</button>
-            <ComponentUnderTest checked={checked.value} />
+            <ComponentUnderTest modelValue={checked.value} />
           </Fragment>
         )
       },
     })
 
-    const { getByRole, getByText } = render(ControlledComponentUnderTest)
+    const { getByRole, getByText, debug, baseElement } = render(ControlledComponentUnderTest)
 
     expect(getByRole('checkbox')).not.toBeChecked()
     await user.click(getByText('set checked'))
+    debug(baseElement)
     expect(getByRole('checkbox')).toBeChecked()
   })
 

@@ -1,20 +1,27 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { ColorPickerContext } from './color-picker'
 
-export const useColorPicker = <T extends ExtractPropTypes<ColorPickerContext>>(
+export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
+  modelValue?: colorPicker.Context['value']
+  defaultValue?: colorPicker.Context['value']
+}
+
+export const useColorPicker = <T extends ExtractPropTypes<UseColorPickerProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
+  }))
 
   const [state, send] = useMachine(
     colorPicker.machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
@@ -23,9 +30,10 @@ export const useColorPicker = <T extends ExtractPropTypes<ColorPickerContext>>(
         emit('change-end', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => colorPicker.connect(state.value, send, normalizeProps))
 }
 
-export type UseColorPickerReturn = ReturnType<typeof colorPicker.connect>
+export type UseColorPickerReturn = ReturnType<typeof useColorPicker>

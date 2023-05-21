@@ -1,61 +1,51 @@
-import type { Context } from '@zag-js/popover'
 import { defineComponent, type PropType } from 'vue'
-import type { Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PopoverProvider } from './popover-context'
-import { usePopover } from './use-popover'
+import { usePopover, type UsePopoverProps } from './use-popover'
 
-export type PopoverContext = Context & {
-  /**
-   * Control the open state of the popover.
-   *
-   * @default false
-   */
-  isOpen?: boolean
-}
-export type UsePopoverProps = PopoverContext
+export type PopoverProps = UsePopoverProps
 
-const VuePopoverProps = createVueProps<Partial<UsePopoverProps>>({
+const VuePopoverProps = createVueProps<Partial<PopoverProps>>({
   autoFocus: {
-    type: Boolean as PropType<UsePopoverProps['autoFocus']>,
+    type: Boolean as PropType<PopoverProps['autoFocus']>,
   },
   closeOnEsc: {
-    type: Boolean as PropType<UsePopoverProps['closeOnEsc']>,
+    type: Boolean as PropType<PopoverProps['closeOnEsc']>,
   },
   closeOnInteractOutside: {
-    type: Boolean as PropType<UsePopoverProps['closeOnInteractOutside']>,
+    type: Boolean as PropType<PopoverProps['closeOnInteractOutside']>,
   },
   getRootNode: {
-    type: Function as PropType<UsePopoverProps['getRootNode']>,
+    type: Function as PropType<PopoverProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<UsePopoverProps['id']>,
+    type: String as PropType<PopoverProps['id']>,
   },
   ids: {
-    type: Object as PropType<UsePopoverProps['ids']>,
+    type: Object as PropType<PopoverProps['ids']>,
   },
   initialFocusEl: {
-    type: [Object, Function] as PropType<UsePopoverProps['initialFocusEl']>,
+    type: [Object, Function] as PropType<PopoverProps['initialFocusEl']>,
   },
   isOpen: {
-    type: Boolean as PropType<UsePopoverProps['isOpen']>,
+    type: Boolean as PropType<PopoverProps['isOpen']>,
     default: false,
   },
   modal: {
-    type: Boolean as PropType<UsePopoverProps['modal']>,
+    type: Boolean as PropType<PopoverProps['modal']>,
   },
   portalled: {
-    type: Boolean as PropType<UsePopoverProps['portalled']>,
+    type: Boolean as PropType<PopoverProps['portalled']>,
   },
   open: {
-    type: Boolean as PropType<UsePopoverProps['open']>,
+    type: Boolean as PropType<PopoverProps['open']>,
   },
   positioning: {
-    type: Object as PropType<UsePopoverProps['positioning']>,
+    type: Object as PropType<PopoverProps['positioning']>,
   },
 })
 
-export const Popover: ComponentWithProps<Partial<UsePopoverProps>> = defineComponent({
+export const Popover: ComponentWithProps<PopoverProps> = defineComponent({
   name: 'Popover',
   props: VuePopoverProps,
   emits: [
@@ -67,12 +57,10 @@ export const Popover: ComponentWithProps<Partial<UsePopoverProps>> = defineCompo
     'pointer-down-outside',
   ],
   setup(props, { slots, emit }) {
-    const api = usePopover(emit, props as Partial<UsePopoverProps>)
+    const api = usePopover(emit, props as PopoverProps)
 
     PopoverProvider(api)
 
     return () => slots.default?.(api.value)
   },
 })
-
-export type PopoverProps = Optional<UsePopoverProps, 'id'>

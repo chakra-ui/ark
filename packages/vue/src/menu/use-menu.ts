@@ -1,22 +1,24 @@
-import { connect, machine } from '@zag-js/menu'
+import { connect, machine, type Context } from '@zag-js/menu'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
+import { computed, ref, type ExtractPropTypes, type UnwrapRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { MenuProps } from './menu'
 
-export const useMenu = <T extends ExtractPropTypes<MenuProps>>(
+export type UseMenuProps = Optional<Context, 'id'>
+
+export const useMenu = <T extends ExtractPropTypes<UseMenuProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = ref(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send, menuMachine] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
       onOpen() {
         emit('open')
@@ -31,6 +33,7 @@ export const useMenu = <T extends ExtractPropTypes<MenuProps>>(
         emit('value-change', details)
       },
     }),
+    { context: machineContext },
   )
 
   const api = computed(() => connect(state.value, send, normalizeProps))

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Teleport } from 'vue'
+import { Teleport } from 'vue'
 import {
   Menu,
   MenuContent,
@@ -8,7 +8,6 @@ import {
   MenuItemGroup,
   MenuItemGroupLabel,
   MenuOptionItem,
-  MenuOptionItemState,
 } from '../'
 import '../menu.css'
 
@@ -29,9 +28,6 @@ const libraryCheckboxData: { value: string; label: string }[] = [
   { value: 'panda', label: 'Panda' },
   { value: 'chakra', label: 'ChakraUI' },
 ]
-
-const frameworkItemsRef = ref<MenuOptionItemState[]>()
-const libraryItemsRef = ref<MenuOptionItemState[]>()
 </script>
 <template>
   <Menu :value="menuValue">
@@ -44,28 +40,28 @@ const libraryItemsRef = ref<MenuOptionItemState[]>()
           <MenuItemGroup id="radio-group">
             <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
             <MenuOptionItem
-              v-for="(item, idx) in frameworkRadioData"
+              v-for="item in frameworkRadioData"
               :key="item.value"
-              ref="frameworkItemsRef"
               name="framework"
               type="radio"
               :value="item.value"
+              v-slot="{ isActive }"
             >
-              {{ frameworkItemsRef?.[idx].isActive ? '✅' : '' }}
+              {{ isActive ? '✅' : '' }}
               {{ item.label }}
             </MenuOptionItem>
           </MenuItemGroup>
           <MenuItemGroup id="radio-group">
             <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
             <MenuOptionItem
-              v-for="(item, idx) in libraryCheckboxData"
+              v-for="item in libraryCheckboxData"
               :key="item.value"
-              ref="libraryItemsRef"
               name="libraries"
               type="checkbox"
               :value="item.value"
+              v-slot="{ isActive }"
             >
-              {{ libraryItemsRef?.[idx].isActive ? '✅' : '' }}
+              {{ isActive ? '✅' : '' }}
               {{ item.label }}
             </MenuOptionItem>
           </MenuItemGroup>

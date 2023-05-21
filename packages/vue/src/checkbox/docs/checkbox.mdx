@@ -124,23 +124,27 @@ import {
   CheckboxControl,
   CheckboxInput,
   CheckboxLabel,
+  type CheckboxProps,
 } from '@ark-ui/vue'
 
-const parentChecked = ref<CheckedState>(false)
-const childItems = reactive([false, false])
+const parentChecked = ref<CheckboxProps['modelValue']>(false)
+const childCheckedItems = reactive<CheckboxProps['modelValue'][]>([
+  false,
+  false,
+])
 
-watch(childItems, (items) => {
-  parentChecked.value = items.every(Boolean)
-    ? true
-    : items.indexOf(true) < 0
-    ? false
-    : 'indeterminate'
+watch(childCheckedItems, (items) => {
+  if (items.indexOf(true) < 0) {
+    parentChecked.value = false
+    return
+  }
+  parentChecked.value = items.every(Boolean) ? true : 'indeterminate'
 })
 
 watch(parentChecked, (parentVal) => {
   if (parentVal === 'indeterminate') return
-  childItems.map((_, idx) => {
-    childItems[idx] = parentVal
+  childCheckedItems.map((_, idx) => {
+    childCheckedItems[idx] = parentVal
   })
   return
 })
@@ -148,21 +152,53 @@ watch(parentChecked, (parentVal) => {
 
 <template>
   <Checkbox v-model="parentChecked">
-    <CheckboxLabel>Parent Checkbox</CheckboxLabel>
-    <CheckboxInput />
     <CheckboxControl />
+    <CheckboxLabel> Parent Checkbox</CheckboxLabel>
+    <CheckboxInput />
   </Checkbox>
   <div>
-    <Checkbox v-model="childItems[0]">
-      <CheckboxLabel>Child One Checkbox</CheckboxLabel>
-      <CheckboxInput />
+    <Checkbox v-model="childCheckedItems[0]">
       <CheckboxControl />
+      <CheckboxLabel> Child One Checkbox</CheckboxLabel>
+      <CheckboxInput />
     </Checkbox>
-    <Checkbox v-model="childItems[1]">
+    <Checkbox v-model="childCheckedItems[1]">
+      <CheckboxControl />
       <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
       <CheckboxInput />
-      <CheckboxControl />
     </Checkbox>
   </div>
 </template>
 ```
+
+## V-Slot Usage
+
+For cases where you need more flexibility in rendering, the Checkbox component
+offers the use of the `v-slot`. This gives you access to the checkbox's API,
+allowing you to customize the checkbox control's rendering:
+
+```vue
+<script setup lang="ts">
+import {
+  Checkbox,
+  CheckboxControl,
+  CheckboxInput,
+  CheckboxLabel,
+  type CheckboxContext,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Checkbox v-slot="{ isChecked }: CheckboxContext">
+    <CheckboxLabel>Checkbox with slot props: {{ isChecked }}</CheckboxLabel>
+    <CheckboxInput />
+    <CheckboxControl />
+  </Checkbox>
+</template>
+```
+
+## Conclusion
+
+The Checkbox component provides a robust and flexible solution for toggleable
+input needs in your applications. With its support for controlled and
+indeterminate states, as well as custom render props, it offers a wide range of
+design possibilities and use cases.

@@ -41,10 +41,11 @@ import {
   SelectOption,
   SelectPositioner,
   SelectTrigger,
+  type SelectContext,
 } from '@ark-ui/vue'
 </script>
 <template>
-  <Select v-slot="{ selectedOption }">
+  <Select v-slot="{ selectedOption }: SelectContext">
     <SelectLabel>Framework</SelectLabel>
     <SelectTrigger>
       <button>{{ selectedOption?.label ?? 'Select option' }}</button>
@@ -80,11 +81,11 @@ import {
   SelectOptionGroupLabel,
   SelectPositioner,
   SelectTrigger,
-  Portal,
+  type SelectContext,
 } from '@ark-ui/vue'
 </script>
 <template>
-  <Select v-slot="{ selectedOption }">
+  <Select v-slot="{ selectedOption }: SelectContext">
     <SelectLabel>Framework:</SelectLabel>
     <SelectTrigger>
       <button>{{ selectedOption?.label ?? 'Select option' }}</button>
@@ -157,10 +158,11 @@ import {
   SelectOption,
   SelectPositioner,
   SelectTrigger,
+  type SelectContext,
 } from '@ark-ui/vue'
 </script>
 <template>
-  <Select v-slot="{ selectedOption }">
+  <Select v-slot="{ selectedOption }: SelectContext">
     <SelectLabel>Framework</SelectLabel>
     <SelectTrigger>
       <button>{{ selectedOption?.label ?? 'Select option' }}</button>

@@ -9,7 +9,7 @@ import {
   MenuItemGroup,
   MenuItemGroupLabel,
   MenuOptionItem,
-  MenuOptionItemState,
+  type MenuOptionItemState,
   MenuTriggerItem,
 } from '../'
 import '../menu.css'

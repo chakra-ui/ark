@@ -93,10 +93,9 @@ of the radio item to be selected by default.
 ```vue
 <script setup lang="ts">
 import { RadioGroup } from '@ark-ui/vue'
-const currentValue = ref('apple')
 </script>
 <template>
-  <RadioGroup v-model="currentValue">
+  <RadioGroup defaultValue="apple">
     <!-- ... -->
   </RadioGroup>
 </template>

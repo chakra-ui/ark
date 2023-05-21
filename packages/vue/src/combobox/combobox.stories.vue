@@ -11,6 +11,7 @@ import {
   ComboboxPositioner,
   type ComboboxProps,
   ComboboxTrigger,
+  type ComboboxContext,
 } from './'
 import './combobox.css'
 
@@ -45,7 +46,7 @@ const defaultVal = ref(comboboxData[0].label)
     @input-change="handleInputChange"
     @select="handleOnSelect"
     v-model="defaultVal"
-    v-slot="{ isInputValueEmpty, isOpen }"
+    v-slot="{ isInputValueEmpty, isOpen }: ComboboxContext"
   >
     <ComboboxLabel>JS Frameworks</ComboboxLabel>
     <ComboboxControl>
@@ -54,9 +55,7 @@ const defaultVal = ref(comboboxData[0].label)
         <button>▼</button>
       </ComboboxTrigger>
     </ComboboxControl>
-    <div v-show="isInputValueEmpty && !isOpen">
-      Give me you favorite framework!
-    </div>
+    <div v-show="isInputValueEmpty && !isOpen">Give me you favorite framework!</div>
     <Teleport to="body">
       <ComboboxPositioner>
         <ComboboxContent>

@@ -1,60 +1,59 @@
-import type { Context } from '@zag-js/tooltip'
 import { defineComponent, type PropType } from 'vue'
-import type { Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip } from './use-tooltip'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
-export type UseTooltipProps = Context
+export type TooltipProps = UseTooltipProps
 
-const VueTooltipProps = createVueProps<UseTooltipProps>({
+const VueTooltipProps = createVueProps<TooltipProps>({
   id: {
-    type: String as PropType<UseTooltipProps['id']>,
+    type: String as PropType<TooltipProps['id']>,
   },
   ids: {
-    type: Object as PropType<UseTooltipProps['ids']>,
+    type: Object as PropType<TooltipProps['ids']>,
   },
   openDelay: {
-    type: Number as PropType<UseTooltipProps['openDelay']>,
+    type: Number as PropType<TooltipProps['openDelay']>,
   },
   closeDelay: {
-    type: Number as PropType<UseTooltipProps['closeDelay']>,
+    type: Number as PropType<TooltipProps['closeDelay']>,
   },
   closeOnPointerDown: {
-    type: Boolean as PropType<UseTooltipProps['closeOnPointerDown']>,
+    type: Boolean as PropType<TooltipProps['closeOnPointerDown']>,
   },
   closeOnEsc: {
-    type: Boolean as PropType<UseTooltipProps['closeOnEsc']>,
+    type: Boolean as PropType<TooltipProps['closeOnEsc']>,
     default: true,
   },
   interactive: {
-    type: Boolean as PropType<UseTooltipProps['interactive']>,
+    type: Boolean as PropType<TooltipProps['interactive']>,
   },
   'aria-label': {
-    type: String as PropType<UseTooltipProps['aria-label']>,
+    type: String as PropType<TooltipProps['aria-label']>,
   },
   positioning: {
-    type: Object as PropType<UseTooltipProps['positioning']>,
+    type: Object as PropType<TooltipProps['positioning']>,
   },
   disabled: {
-    type: Boolean as PropType<UseTooltipProps['disabled']>,
+    type: Boolean as PropType<TooltipProps['disabled']>,
   },
   getRootNode: {
-    type: Function as PropType<UseTooltipProps['getRootNode']>,
+    type: Function as PropType<TooltipProps['getRootNode']>,
+  },
+  open: {
+    type: Boolean as PropType<TooltipProps['open']>,
   },
 })
 
-export const Tooltip: ComponentWithProps<Partial<UseTooltipProps>> = defineComponent({
+export const Tooltip: ComponentWithProps<Partial<TooltipProps>> = defineComponent({
   name: 'Tooltip',
   props: VueTooltipProps,
   emits: ['open', 'close'],
   setup(props, { slots, emit }) {
-    const api = useTooltip(emit, props as UseTooltipProps)
+    const api = useTooltip(emit, props as TooltipProps)
 
     TooltipProvider(api)
 
     return () => slots?.default?.()
   },
 })
-
-export type TooltipProps = Optional<Context, 'id'>

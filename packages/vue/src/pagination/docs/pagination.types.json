@@ -21,6 +21,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
+    "modelValue": { "type": "number", "isRequired": false },
     "onChange": {
       "type": "(details: {\n  page: number\n  pageSize: number\n  srcElement: HTMLElement | null\n}) => void",
       "isRequired": false,

@@ -1,24 +1,30 @@
-import { connect, machine } from '@zag-js/tabs'
+import { connect, machine, type Context } from '@zag-js/tabs'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { TabsContext } from './tabs'
 
-export const useTabs = <T extends ExtractPropTypes<TabsContext>>(
+export type UseTabsProps = Optional<Context, 'id'> & {
+  defaultValue?: Context['value']
+}
+
+export const useTabs = <T extends ExtractPropTypes<UseTabsProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: context.value || context.defaultValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.defaultValue,
       onChange(details) {
         emit('change', details)
       },
@@ -29,6 +35,7 @@ export const useTabs = <T extends ExtractPropTypes<TabsContext>>(
         emit('delete', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))

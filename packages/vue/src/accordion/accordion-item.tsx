@@ -1,8 +1,9 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider, type AccordionItemContext } from './accordion-item-context'
+import { AccordionItemProvider } from './accordion-item-context'
 
 const VueAccordionItemProps = {
   value: {
@@ -15,19 +16,26 @@ const VueAccordionItemProps = {
   },
 }
 
-export type AccordionItemProps = AccordionItemContext & HTMLArkProps<'div'>
+export type AccordionItemProps = Assign<HTMLArkProps<'div'>, { value: string; disabled?: boolean }>
 
 export const AccordionItem: ComponentWithProps<AccordionItemProps> = defineComponent({
   name: 'AccordionItem',
   props: VueAccordionItemProps,
   setup(props, { slots, attrs }) {
     const api = useAccordionContext()
-    const itemProps = computed(() => ({ value: props.value, disabled: props.disabled }))
+    const itemState = computed(() =>
+      api.value.getItemState({ value: props.value, disabled: props.disabled }),
+    )
+    const itemProps = computed(() => ({
+      value: props.value,
+      disabled: props.disabled,
+      ...itemState.value,
+    }))
     AccordionItemProvider(itemProps.value)
 
     return () => (
       <ark.div {...api.value.getItemProps(itemProps.value)} {...attrs}>
-        {slots?.default?.()}
+        {slots?.default?.(itemState.value)}
       </ark.div>
     )
   },

@@ -1,24 +1,31 @@
-import { connect, machine } from '@zag-js/pin-input'
+import { connect, machine, type Context } from '@zag-js/pin-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { PinInputContext } from './pin-input'
 
-export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
+export type UsePinInputProps = Optional<Context, 'id'> & {
+  modelValue?: Context['value']
+  defaultValue?: Context['value']
+}
+
+export const usePinInput = <T extends ExtractPropTypes<UsePinInputProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', Array.from(details.value))
@@ -32,9 +39,7 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UsePinInputReturn = ReturnType<typeof connect>
+export type UsePinInputReturn = ReturnType<typeof usePinInput>

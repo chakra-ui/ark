@@ -11,6 +11,7 @@
       "isRequired": false,
       "description": "Whether to autofocus the rating."
     },
+    "defaultValue": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

@@ -28,12 +28,13 @@ import {
   RatingGroup,
   RatingGroupControl,
   RatingGroupLabel,
+  type RatingGroupContext,
 } from '@ark-ui/vue'
 </script>
 <template>
   <RatingGroup :max="5" :defaultValue="3">
     <RatingGroupLabel>Label</RatingGroupLabel>
-    <RatingGroupControl v-slot="{ sizeArray }">
+    <RatingGroupControl v-slot="{ sizeArray }: RatingGroupContext">
       <Rating
         v-for="index in sizeArray"
         :key="index"

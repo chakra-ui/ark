@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 import {
   Editable,
   EditableArea,
@@ -10,13 +10,19 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
+  type EditableContext,
 } from '../'
 
 // For editable.test.tsx
 const testProps = ref<string>('')
 </script>
 <template>
-  <Editable activationMode="dblclick" placeholder="Placeholder" v-model="testProps" v-slot="{ isEditing }">
+  <Editable
+    activationMode="dblclick"
+    placeholder="Placeholder"
+    v-model="testProps"
+    v-slot="{ isEditing }: EditableContext"
+  >
     <EditableLabel>Label</EditableLabel>
     <EditableArea>
       <EditableInput data-testid="edit-input" />

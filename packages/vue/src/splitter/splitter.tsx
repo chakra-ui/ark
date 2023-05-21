@@ -1,31 +1,30 @@
-import type { Context as SplitterContext } from '@zag-js/splitter'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import { type Assign } from '../types'
 import { createVueProps, getValidChildren, type ComponentWithProps } from '../utils'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter } from './use-splitter'
+import { useSplitter, type UseSplitterProps } from './use-splitter'
 
-export type UseSplitterProps = Assign<HTMLArkProps<'div'>, SplitterContext>
-const VueProps = createVueProps<UseSplitterProps>({
+export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
+const VueProps = createVueProps<SplitterProps>({
   dir: {
-    type: String as PropType<UseSplitterProps['dir']>,
+    type: String as PropType<SplitterProps['dir']>,
   },
   getRootNode: {
-    type: Function as PropType<UseSplitterProps['getRootNode']>,
+    type: Function as PropType<SplitterProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<UseSplitterProps['id']>,
+    type: String as PropType<SplitterProps['id']>,
   },
   orientation: {
-    type: String as PropType<UseSplitterProps['orientation']>,
+    type: String as PropType<SplitterProps['orientation']>,
   },
   size: {
-    type: Object as PropType<UseSplitterProps['size']>,
+    type: Object as PropType<SplitterProps['size']>,
   },
 })
 
-export const Splitter: ComponentWithProps<Partial<UseSplitterProps>> = defineComponent({
+export const Splitter: ComponentWithProps<SplitterProps> = defineComponent({
   name: 'Splitter',
   props: VueProps,
   emits: ['resize', 'resize-end', 'resize-start'],
@@ -41,5 +40,3 @@ export const Splitter: ComponentWithProps<Partial<UseSplitterProps>> = defineCom
     )
   },
 })
-
-export type SplitterProps = Optional<SplitterContext, 'id'>

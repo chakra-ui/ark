@@ -30,22 +30,18 @@ import {
   AccordionItem,
   AccordionContent,
 } from '@ark-ui/vue'
+
+const items = ['panel-1', 'panel-2', 'panel-3']
 </script>
 <template>
-  <Accordion>
+  <Accordion defaultValue="panel-1">
     <AccordionItem value="panel-1">
-      <AccordionTrigger>
-        <button>Panel 1 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 1 content</AccordionContent>
-    </AccordionItem>
-
-    <AccordionItem value="panel-2">
-      <AccordionTrigger>
-        <button>Panel 2 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 2 content</AccordionContent>
-    </AccordionItem>
+      <AccordionItem v-for="(item, id) in items" :key="item" :value="item">
+        <AccoordionTrigger>
+          <button>{{ item }} trigger</button>
+        </AccoordionTrigger>
+        <AccordionContent>{{ item }} content</AccordionContent>
+      </AccordionItem>
   </Accordion>
 </template>
 ```
@@ -65,22 +61,18 @@ import {
   AccordionItem,
   AccordionContent,
 } from '@ark-ui/vue'
+
+const items = ['panel-1', 'panel-2', 'panel-3']
 </script>
 <template>
   <Accordion collapsible>
     <AccordionItem value="panel-1">
-      <AccordionTrigger>
-        <button>Panel 1 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 1 content</AccordionContent>
-    </AccordionItem>
-
-    <AccordionItem value="panel-2">
-      <AccordionTrigger>
-        <button>Panel 2 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 2 content</AccordionContent>
-    </AccordionItem>
+      <AccordionItem v-for="(item, id) in items" :key="item" :value="item">
+        <AccoordionTrigger>
+          <button>{{ item }} trigger</button>
+        </AccoordionTrigger>
+        <AccordionContent>{{ item }} content</AccordionContent>
+      </AccordionItem>
   </Accordion>
 </template>
 ```
@@ -99,22 +91,18 @@ import {
   AccordionItem,
   AccordionContent,
 } from '@ark-ui/vue'
+
+const items = ['panel-1', 'panel-2', 'panel-3']
 </script>
 <template>
   <Accordion multiple>
     <AccordionItem value="panel-1">
-      <AccordionTrigger>
-        <button>Panel 1 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 1 content</AccordionContent>
-    </AccordionItem>
-
-    <AccordionItem value="panel-2">
-      <AccordionTrigger>
-        <button>Panel 2 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 2 content</AccordionContent>
-    </AccordionItem>
+      <AccordionItem v-for="(item, id) in items" :key="item" :value="item">
+        <AccoordionTrigger>
+          <button>{{ item }} trigger</button>
+        </AccoordionTrigger>
+        <AccordionContent>{{ item }} content</AccordionContent>
+      </AccordionItem>
   </Accordion>
 </template>
 ```
@@ -133,22 +121,23 @@ import {
   AccordionItem,
   AccordionContent,
 } from '@ark-ui/vue'
+
+const items = ['panel-1', 'panel-2', 'panel-3']
 </script>
 <template>
-  <Accordion>
-    <AccordionItem value="panel-1" disabled>
-      <AccordionTrigger>
-        <button>Panel 1 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 1 content</AccordionContent>
-    </AccordionItem>
-
-    <AccordionItem value="panel-2">
-      <AccordionTrigger>
-        <button>Panel 2 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Panel 2 content</AccordionContent>
-    </AccordionItem>
+  <Accordion multiple>
+    <AccordionItem value="panel-1">
+      <AccordionItem
+        v-for="(item, id) in items"
+        :key="item"
+        :value="item"
+        :disabled="item === 'panel-2'"
+      >
+        <AccoordionTrigger>
+          <button>{{ item }} trigger</button>
+        </AccoordionTrigger>
+        <AccordionContent>{{ item }} content</AccordionContent>
+      </AccordionItem>
   </Accordion>
 </template>
 ```

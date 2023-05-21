@@ -22,18 +22,10 @@ import {
 
 ## Usage
 
-The Pagination component consists of the `PaginationEllipsis`, `PaginationList`,
-`PaginationNextPageTrigger`, `PaginationPageTrigger`, and
-`PaginationPrevPageTrigger` components.
-
-Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
-`PaginationPageTrigger` components accept a single JSX element which will
-receive all necessary props to add the event listeners and attributes to ensure
-the desired accessibility.
+Here's an example of how to use the Pagination component:
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import {
   Pagination,
   PaginationEllipsis,
@@ -41,23 +33,22 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
+  type PaginationContext,
 } from '@ark-ui/vue'
-
-const paginationRef = ref()
 </script>
 <template>
-  <Pagination :count="5000" :page-size="10" :sibling-count="2">
+  <Pagination
+    :count="5000"
+    :page-size="10"
+    :sibling-count="2"
+    v-slot="{ pages }: PaginationContext"
+  >
     <PaginationList>
       <PaginationListItem>
-        <PaginationPrevPageTrigger>
-          Previous <span className="visually-hidden">Page</span>
-        </PaginationPrevPageTrigger>
+        <PaginationPrevPageTrigger> Previous Page </PaginationPrevPageTrigger>
       </PaginationListItem>
 
-      <template
-        v-for="(page, index) in paginationRef?.context.pages"
-        :key="index"
-      >
+      <template v-for="(page, index) in pages" :key="index">
         <PaginationListItem>
           <PaginationPageTrigger
             v-if="page.type === 'page'"
@@ -72,11 +63,62 @@ const paginationRef = ref()
         </PaginationListItem>
       </template>
       <PaginationListItem>
-        <PaginationNextPageTrigger>
-          Next <span className="visually-hidden">Page</span>
-        </PaginationNextPageTrigger>
+        <PaginationNextPageTrigger> Next Page </PaginationNextPageTrigger>
       </PaginationListItem>
     </PaginationList>
+  </Pagination>
+</template>
+```
+
+## Controlled Pagination
+
+To create a controlled Pagination component, manage the state of the current
+page using the `page` prop and update it when the `onChange` event handler is
+called:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Pagination, type PaginationProps } from '@ark-ui/vue'
+
+const currentPage = ref<PaginationProps['modelValue']>(1)
+</script>
+<template>
+  <Pagination
+    :count="5000"
+    :page-size="10"
+    :sibling-count="2"
+    v-model="currentPage"
+  >
+    <!-- ... -->
+  </Pagination>
+</template>
+```
+
+## Customizing Pagination
+
+You can customize the Pagination component by setting various props such as
+`dir`, `pageSize`, `siblingCount`, and `translations`. Here's an example of a
+customized Pagination:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Pagination } from '@ark-ui/vue'
+</script>
+<template>
+  <Pagination
+    :count="5000"
+    :page-size="10"
+    :sibling-count="3"
+    dir="ltr"
+    :translations="{
+      nextPageTriggerLabel: 'Next',
+      prevPageTriggerLabel: 'Prev',
+      pageTriggerLabel: (details) => `Page ${details.page}`,
+    }"
+  >
+    <!-- ... -->
   </Pagination>
 </template>
 ```

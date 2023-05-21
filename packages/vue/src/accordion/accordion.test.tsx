@@ -4,7 +4,7 @@ import { Accordion } from './accordion'
 import { AccordionContent } from './accordion-content'
 import { AccordionItem } from './accordion-item'
 import { AccordionTrigger } from './accordion-trigger'
-import VModelAccordion from './accordion.stories.vue'
+import VModelAccordion from './stories/controlled.stories.vue'
 
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {
@@ -352,7 +352,7 @@ describe('Accordion', () => {
   it('is initialized correctly with v-model', () => {
     render(VModelAccordion)
 
-    const button = screen.getByText('Panel 2 trigger')
+    const button = screen.getByText('panel-2 trigger')
     expect(button).toHaveAttribute('aria-expanded', 'true')
   })
 
@@ -360,7 +360,7 @@ describe('Accordion', () => {
     render(VModelAccordion)
 
     const externalTrigger = screen.getByText('Trigger')
-    const expanded = screen.getByText('Panel 3 trigger')
+    const expanded = screen.getByText('panel-3 trigger')
     expect(expanded).toHaveAttribute('aria-expanded', 'false')
 
     await user.click(externalTrigger)

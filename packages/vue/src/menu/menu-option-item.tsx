@@ -3,7 +3,7 @@ import { type OptionItemProps } from '@zag-js/menu/dist/menu.types'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export type MenuOptionItemState = { isActive: boolean }
@@ -40,7 +40,7 @@ export const MenuOptionItem: ComponentWithProps<MenuOptionItemProps> = defineCom
     },
   },
   emits: ['checked-change'],
-  setup(props, { slots, attrs, emit, expose }) {
+  setup(props, { slots, attrs, emit }) {
     const menuOptionItemProps = computed<OptionItemProps>(() => ({
       name: props.name,
       type: props.type,
@@ -56,17 +56,15 @@ export const MenuOptionItem: ComponentWithProps<MenuOptionItemProps> = defineCom
 
     const api = useMenuContext()
 
-    const optionCheckedComputed = computed(() =>
-      api.value.isOptionChecked(menuOptionItemProps.value),
+    const optionCheckedComputed = computed(
+      () => api.value.isOptionChecked(menuOptionItemProps.value) ?? false,
     )
-
-    expose({
-      isActive: optionCheckedComputed,
-    })
 
     return () => (
       <ark.div {...api.value.getOptionItemProps(menuOptionItemProps.value)} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.({
+          isActive: optionCheckedComputed.value,
+        })}
       </ark.div>
     )
   },

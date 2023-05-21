@@ -69,19 +69,17 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
+  type EditableContext,
 } from '@ark-ui/vue'
-
-const editableRef = ref()
 </script>
 <template>
-  <Editable ref="editableRef" placeholder="Placeholder">
+  <Editable placeholder="Placeholder" v-slot="{ isEditing }: EditableContext">
     <EditableLabel>Editable Label</EditableLabel>
     <EditableArea>
       <EditableInput />
       <EditablePreview />
     </EditableArea>
-    <!-- Access the internal state via `editableRef.api` -->
-    <EditableControl v-if="editableRef?.api.isEditing">
+    <EditableControl v-if="isEditing">
       <EditableSubmitTrigger>
         <button>Save</button>
       </EditableSubmitTrigger>

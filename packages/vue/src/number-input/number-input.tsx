@@ -1,100 +1,101 @@
-import type { Context } from '@zag-js/number-input'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput } from './use-number-input'
+import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
-export type NumberInputContext = Context & { modelValue?: Context['value'] }
-export type UseNumberInputProps = Assign<HTMLArkProps<'div'>, NumberInputContext>
+export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
-const VueNumberInputProps = createVueProps<UseNumberInputProps>({
+const VueNumberInputProps = createVueProps<NumberInputProps>({
   id: {
-    type: String as PropType<UseNumberInputProps['id']>,
+    type: String as PropType<NumberInputProps['id']>,
   },
   allowMouseWheel: {
-    type: Boolean as PropType<UseNumberInputProps['allowMouseWheel']>,
+    type: Boolean as PropType<NumberInputProps['allowMouseWheel']>,
   },
   allowOverflow: {
-    type: Boolean as PropType<UseNumberInputProps['allowOverflow']>,
+    type: Boolean as PropType<NumberInputProps['allowOverflow']>,
   },
   clampValueOnBlur: {
-    type: Boolean as PropType<UseNumberInputProps['clampValueOnBlur']>,
+    type: Boolean as PropType<NumberInputProps['clampValueOnBlur']>,
     default: true,
   },
   dir: {
-    type: String as PropType<UseNumberInputProps['dir']>,
+    type: String as PropType<NumberInputProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<UseNumberInputProps['disabled']>,
+    type: Boolean as PropType<NumberInputProps['disabled']>,
   },
   focusInputOnChange: {
-    type: Boolean as PropType<UseNumberInputProps['focusInputOnChange']>,
+    type: Boolean as PropType<NumberInputProps['focusInputOnChange']>,
   },
   form: {
-    type: String as PropType<UseNumberInputProps['form']>,
+    type: String as PropType<NumberInputProps['form']>,
   },
   format: {
-    type: Function as PropType<UseNumberInputProps['format']>,
+    type: Function as PropType<NumberInputProps['format']>,
   },
   getRootNode: {
-    type: Function as PropType<UseNumberInputProps['getRootNode']>,
+    type: Function as PropType<NumberInputProps['getRootNode']>,
   },
   ids: {
-    type: Object as PropType<UseNumberInputProps['ids']>,
+    type: Object as PropType<NumberInputProps['ids']>,
   },
   inputMode: {
-    type: String as PropType<UseNumberInputProps['inputMode']>,
+    type: String as PropType<NumberInputProps['inputMode']>,
   },
   invalid: {
-    type: Boolean as PropType<UseNumberInputProps['invalid']>,
+    type: Boolean as PropType<NumberInputProps['invalid']>,
   },
   max: {
-    type: Number as PropType<UseNumberInputProps['max']>,
+    type: Number as PropType<NumberInputProps['max']>,
   },
   maxFractionDigits: {
-    type: Number as PropType<UseNumberInputProps['maxFractionDigits']>,
+    type: Number as PropType<NumberInputProps['maxFractionDigits']>,
   },
   min: {
-    type: Number as PropType<UseNumberInputProps['min']>,
+    type: Number as PropType<NumberInputProps['min']>,
   },
   minFractionDigits: {
-    type: Number as PropType<UseNumberInputProps['minFractionDigits']>,
+    type: Number as PropType<NumberInputProps['minFractionDigits']>,
   },
   modelValue: {
-    type: String as PropType<UseNumberInputProps['modelValue']>,
+    type: String as PropType<NumberInputProps['modelValue']>,
   },
   name: {
-    type: String as PropType<UseNumberInputProps['name']>,
+    type: String as PropType<NumberInputProps['name']>,
   },
   parse: {
-    type: Function as PropType<UseNumberInputProps['parse']>,
+    type: Function as PropType<NumberInputProps['parse']>,
   },
   pattern: {
-    type: String as PropType<UseNumberInputProps['pattern']>,
+    type: String as PropType<NumberInputProps['pattern']>,
   },
   readOnly: {
-    type: Boolean as PropType<UseNumberInputProps['readOnly']>,
+    type: Boolean as PropType<NumberInputProps['readOnly']>,
   },
   spinOnPress: {
-    type: Boolean as PropType<UseNumberInputProps['spinOnPress']>,
+    type: Boolean as PropType<NumberInputProps['spinOnPress']>,
   },
   step: {
-    type: Number as PropType<UseNumberInputProps['step']>,
+    type: Number as PropType<NumberInputProps['step']>,
   },
   translations: {
-    type: Object as PropType<UseNumberInputProps['translations']>,
+    type: Object as PropType<NumberInputProps['translations']>,
   },
   validateCharacter: {
-    type: Function as PropType<UseNumberInputProps['validateCharacter']>,
+    type: Function as PropType<NumberInputProps['validateCharacter']>,
   },
   value: {
-    type: String as PropType<UseNumberInputProps['value']>,
+    type: String as PropType<NumberInputProps['value']>,
+  },
+  defaultValue: {
+    type: String as PropType<NumberInputProps['defaultValue']>,
   },
 })
 
-export const NumberInput: ComponentWithProps<Partial<UseNumberInputProps>> = defineComponent({
+export const NumberInput: ComponentWithProps<Partial<NumberInputProps>> = defineComponent({
   name: 'NumberInput',
   emits: ['change', 'focus', 'invalid', 'blur', 'update:modelValue'],
   props: VueNumberInputProps,
@@ -106,5 +107,3 @@ export const NumberInput: ComponentWithProps<Partial<UseNumberInputProps>> = def
     return () => <ark.div>{() => slots?.default?.(api.value)}</ark.div>
   },
 })
-
-export type NumberInputProps = Optional<NumberInputContext, 'id'>

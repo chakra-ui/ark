@@ -1,101 +1,90 @@
-import type { Context } from '@zag-js/slider'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
-import { createVueProps, getValidChildren, type ComponentWithProps } from '../utils'
+import { type Assign } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { SliderProvider } from './slider-context'
-import { useSlider } from './use-slider'
+import { useSlider, type UseSliderProps } from './use-slider'
 
-export type SliderContext = Context & {
-  modelValue?: Context['value']
-}
+export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
 
-export type UseSliderProps = Assign<HTMLArkProps<'div'>, SliderContext>
-
-const VueProps = createVueProps<UseSliderProps>({
+const VueProps = createVueProps<SliderProps>({
   'aria-label': {
-    type: String as PropType<UseSliderProps['aria-label']>,
+    type: String as PropType<SliderProps['aria-label']>,
   },
   'aria-labelledby': {
-    type: String as PropType<UseSliderProps['aria-labelledby']>,
+    type: String as PropType<SliderProps['aria-labelledby']>,
   },
   dir: {
-    type: String as PropType<UseSliderProps['dir']>,
+    type: String as PropType<SliderProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<UseSliderProps['disabled']>,
+    type: Boolean as PropType<SliderProps['disabled']>,
   },
   focusThumbOnChange: {
-    type: Boolean as PropType<UseSliderProps['focusThumbOnChange']>,
+    type: Boolean as PropType<SliderProps['focusThumbOnChange']>,
   },
   form: {
-    type: String as PropType<UseSliderProps['form']>,
+    type: String as PropType<SliderProps['form']>,
   },
   getAriaValueText: {
-    type: Function as PropType<UseSliderProps['getAriaValueText']>,
+    type: Function as PropType<SliderProps['getAriaValueText']>,
   },
   getRootNode: {
-    type: Function as PropType<UseSliderProps['getRootNode']>,
+    type: Function as PropType<SliderProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<UseSliderProps['id']>,
+    type: String as PropType<SliderProps['id']>,
   },
   ids: {
-    type: Object as PropType<UseSliderProps['ids']>,
+    type: Object as PropType<SliderProps['ids']>,
   },
   invalid: {
-    type: Boolean as PropType<UseSliderProps['invalid']>,
+    type: Boolean as PropType<SliderProps['invalid']>,
   },
   max: {
-    type: Number as PropType<UseSliderProps['max']>,
+    type: Number as PropType<SliderProps['max']>,
   },
   min: {
-    type: Number as PropType<UseSliderProps['min']>,
+    type: Number as PropType<SliderProps['min']>,
   },
   modelValue: {
-    type: Number as PropType<UseSliderProps['modelValue']>,
+    type: Number as PropType<SliderProps['modelValue']>,
   },
   name: {
-    type: String as PropType<UseSliderProps['name']>,
+    type: String as PropType<SliderProps['name']>,
   },
   orientation: {
-    type: String as PropType<UseSliderProps['orientation']>,
+    type: String as PropType<SliderProps['orientation']>,
   },
   origin: {
-    type: String as PropType<UseSliderProps['origin']>,
+    type: String as PropType<SliderProps['origin']>,
   },
   readOnly: {
-    type: Boolean as PropType<UseSliderProps['readOnly']>,
+    type: Boolean as PropType<SliderProps['readOnly']>,
   },
   step: {
-    type: Number as PropType<UseSliderProps['step']>,
+    type: Number as PropType<SliderProps['step']>,
   },
   thumbAlignment: {
-    type: String as PropType<UseSliderProps['thumbAlignment']>,
+    type: String as PropType<SliderProps['thumbAlignment']>,
   },
   value: {
-    type: Number as PropType<UseSliderProps['value']>,
+    type: Number as PropType<SliderProps['value']>,
   },
 })
 
-export const Slider: ComponentWithProps<Partial<UseSliderProps>> = defineComponent({
+export const Slider: ComponentWithProps<SliderProps> = defineComponent({
   name: 'Slider',
   props: VueProps,
-  setup(props, { slots, attrs, emit, expose }) {
+  setup(props, { slots, attrs, emit }) {
     const api = useSlider(emit, props)
-
-    expose({
-      context: api.value,
-    })
 
     SliderProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
 })
-
-export type SliderProps = Optional<SliderContext, 'id'>

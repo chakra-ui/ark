@@ -5,6 +5,7 @@
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
+    "defaultValue": { "type": "string | string[]", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

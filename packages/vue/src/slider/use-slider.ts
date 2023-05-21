@@ -1,24 +1,31 @@
-import { connect, machine } from '@zag-js/slider'
+import { connect, machine, type Context } from '@zag-js/slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { SliderContext } from './slider'
 
-export const useSlider = <T extends ExtractPropTypes<SliderContext>>(
+export type UseSliderProps = Optional<Context, 'id'> & {
+  modelValue?: Context['value']
+  defaultValue?: Context['value']
+}
+
+export const useSlider = <T extends ExtractPropTypes<UseSliderProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
@@ -30,9 +37,10 @@ export const useSlider = <T extends ExtractPropTypes<SliderContext>>(
         emit('change-start', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseSliderReturn = UnwrapRef<ReturnType<typeof useSlider>>
+export type UseSliderReturn = ReturnType<typeof useSlider>

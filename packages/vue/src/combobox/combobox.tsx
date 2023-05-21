@@ -1,115 +1,109 @@
-import { type Context } from '@zag-js/combobox'
 import { defineComponent, type PropType } from 'vue'
-import { ark } from '../factory'
-import type { Optional } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox } from './use-combobox'
+import { useCombobox, type UseComboboxProps } from './use-combobox'
 
-export type ComboboxContext = Context & {
-  modelValue?: ComboboxContext['inputValue']
-}
-export type UseComboboxProps = ComboboxContext
+export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxProps>
 
-const VueComboboxProps = createVueProps<UseComboboxProps>({
+const VueComboboxProps = createVueProps<ComboboxProps>({
   id: {
-    type: String as PropType<UseComboboxProps['id']>,
+    type: String as PropType<ComboboxProps['id']>,
   },
   modelValue: {
-    type: String as PropType<UseComboboxProps['modelValue']>,
+    type: String as PropType<ComboboxProps['modelValue']>,
   },
   allowCustomValue: {
-    type: Boolean as PropType<UseComboboxProps['allowCustomValue']>,
+    type: Boolean as PropType<ComboboxProps['allowCustomValue']>,
   },
   ariaHidden: {
-    type: Boolean as PropType<UseComboboxProps['ariaHidden']>,
+    type: Boolean as PropType<ComboboxProps['ariaHidden']>,
   },
   autoFocus: {
-    type: Boolean as PropType<UseComboboxProps['autoFocus']>,
+    type: Boolean as PropType<ComboboxProps['autoFocus']>,
   },
   blurOnSelect: {
-    type: Boolean as PropType<UseComboboxProps['blurOnSelect']>,
+    type: Boolean as PropType<ComboboxProps['blurOnSelect']>,
   },
   dir: {
-    type: String as PropType<UseComboboxProps['dir']>,
+    type: String as PropType<ComboboxProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<UseComboboxProps['disabled']>,
+    type: Boolean as PropType<ComboboxProps['disabled']>,
   },
   focusOnClear: {
-    type: Boolean as PropType<UseComboboxProps['focusOnClear']>,
+    type: Boolean as PropType<ComboboxProps['focusOnClear']>,
   },
   form: {
-    type: String as PropType<UseComboboxProps['form']>,
+    type: String as PropType<ComboboxProps['form']>,
   },
   getRootNode: {
-    type: Function as PropType<UseComboboxProps['getRootNode']>,
+    type: Function as PropType<ComboboxProps['getRootNode']>,
   },
   ids: {
-    type: Object as PropType<UseComboboxProps['ids']>,
+    type: Object as PropType<ComboboxProps['ids']>,
   },
   inputBehavior: {
-    type: String as PropType<UseComboboxProps['inputBehavior']>,
+    type: String as PropType<ComboboxProps['inputBehavior']>,
   },
   inputValue: {
-    type: String as PropType<UseComboboxProps['inputValue']>,
+    type: String as PropType<ComboboxProps['inputValue']>,
   },
   invalid: {
-    type: Boolean as PropType<UseComboboxProps['invalid']>,
+    type: Boolean as PropType<ComboboxProps['invalid']>,
   },
   isCustomValue: {
-    type: Function as PropType<UseComboboxProps['isCustomValue']>,
+    type: Function as PropType<ComboboxProps['isCustomValue']>,
   },
   loop: {
-    type: Boolean as PropType<UseComboboxProps['loop']>,
+    type: Boolean as PropType<ComboboxProps['loop']>,
   },
   name: {
-    type: String as PropType<UseComboboxProps['name']>,
+    type: String as PropType<ComboboxProps['name']>,
   },
   openOnClick: {
-    type: Boolean as PropType<UseComboboxProps['openOnClick']>,
+    type: Boolean as PropType<ComboboxProps['openOnClick']>,
   },
   placeholder: {
-    type: String as PropType<UseComboboxProps['placeholder']>,
+    type: String as PropType<ComboboxProps['placeholder']>,
   },
   positioning: {
-    type: String as PropType<UseComboboxProps['positioning']>,
+    type: String as PropType<ComboboxProps['positioning']>,
   },
   readOnly: {
-    type: Boolean as PropType<UseComboboxProps['readOnly']>,
+    type: Boolean as PropType<ComboboxProps['readOnly']>,
   },
   selectInputOnFocus: {
-    type: Boolean as PropType<UseComboboxProps['selectInputOnFocus']>,
+    type: Boolean as PropType<ComboboxProps['selectInputOnFocus']>,
   },
   selectOnTab: {
-    type: Boolean as PropType<UseComboboxProps['selectOnTab']>,
+    type: Boolean as PropType<ComboboxProps['selectOnTab']>,
   },
   selectionBehavior: {
-    type: String as PropType<UseComboboxProps['selectionBehavior']>,
+    type: String as PropType<ComboboxProps['selectionBehavior']>,
   },
   selectionData: {
-    type: Object as PropType<UseComboboxProps['selectionData']>,
+    type: Object as PropType<ComboboxProps['selectionData']>,
   },
   translations: {
-    type: Object as PropType<UseComboboxProps['translations']>,
+    type: Object as PropType<ComboboxProps['translations']>,
   },
 })
 
-export const Combobox: ComponentWithProps<Partial<UseComboboxProps>> = defineComponent({
+export const Combobox: ComponentWithProps<ComboboxProps> = defineComponent({
   name: 'Combobox',
   props: VueComboboxProps,
   emits: ['close', 'open', 'highlight', 'input-change', 'update:modelValue', 'select'],
   setup(props, { slots, attrs, emit }) {
-    const api = useCombobox(emit, props as UseComboboxProps)
+    const api = useCombobox(emit, props)
 
     ComboboxProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
 })
-
-export type ComboboxProps = Optional<ComboboxContext, 'id'>

@@ -1,24 +1,31 @@
-import { connect, machine } from '@zag-js/editable'
+import { connect, machine, type Context } from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { EditableProps } from './editable'
 
-export const useEditable = <T extends ExtractPropTypes<EditableProps>>(
+export type UseEditableProps = Optional<Context, 'id'> & {
+  modelValue?: Context['value']
+  defaultValue?: Context['value']
+}
+
+export const useEditable = <T extends ExtractPropTypes<UseEditableProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onCancel(details) {
         emit('cancel', details)
       },
@@ -33,9 +40,10 @@ export const useEditable = <T extends ExtractPropTypes<EditableProps>>(
         emit('submit', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseEditableReturn = ReturnType<typeof connect>
+export type UseEditableReturn = ReturnType<typeof useEditable>

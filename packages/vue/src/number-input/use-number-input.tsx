@@ -1,24 +1,31 @@
-import { connect, machine } from '@zag-js/number-input'
+import { connect, machine, type Context } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { NumberInputContext } from './number-input'
 
-export const useNumberInput = <T extends ExtractPropTypes<NumberInputContext>>(
+export type UseNumberInputProps = Optional<Context, 'id'> & {
+  modelValue?: Context['value']
+  defaultValue?: Context['value']
+}
+
+export const useNumberInput = <T extends ExtractPropTypes<UseNumberInputProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onBlur(details) {
         emit('blur', details)
       },
@@ -33,9 +40,10 @@ export const useNumberInput = <T extends ExtractPropTypes<NumberInputContext>>(
         emit('invalid', details)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseNumberInputReturn = ReturnType<typeof connect>
+export type UseNumberInputReturn = ReturnType<typeof useNumberInput>

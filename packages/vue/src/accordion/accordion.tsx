@@ -1,52 +1,51 @@
-import { type Context } from '@zag-js/accordion'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion } from './use-accordion'
+import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export type AccordionContext = Context & { modelValue?: AccordionContext['value'] }
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
 
-export type UseAccordionProps = Assign<HTMLArkProps<'div'>, AccordionContext>
-
-const VueAccordionProps = createVueProps<UseAccordionProps>({
+const VueAccordionProps = createVueProps<AccordionProps>({
   id: {
-    type: String as PropType<UseAccordionProps['id']>,
+    type: String as PropType<AccordionProps['id']>,
   },
   modelValue: {
-    type: [String, Object] as PropType<UseAccordionProps['modelValue']>,
+    type: [String, Object] as PropType<AccordionProps['modelValue']>,
   },
   collapsible: {
-    type: Boolean as PropType<UseAccordionProps['collapsible']>,
+    type: Boolean as PropType<AccordionProps['collapsible']>,
     default: false,
   },
   multiple: {
-    type: Boolean as PropType<UseAccordionProps['multiple']>,
+    type: Boolean as PropType<AccordionProps['multiple']>,
     default: false,
   },
+  defaultValue: {
+    type: [String, Object] as PropType<AccordionProps['defaultValue']>,
+  },
   disabled: {
-    type: Boolean as PropType<UseAccordionProps['disabled']>,
+    type: Boolean as PropType<AccordionProps['disabled']>,
     default: false,
   },
   ids: {
-    type: Object as PropType<UseAccordionProps['ids']>,
+    type: Object as PropType<AccordionProps['ids']>,
   },
   getRootNode: {
-    type: Function as PropType<UseAccordionProps['getRootNode']>,
+    type: Function as PropType<AccordionProps['getRootNode']>,
   },
   orientation: {
-    type: String as PropType<UseAccordionProps['orientation']>,
+    type: String as PropType<AccordionProps['orientation']>,
   },
 })
 
-export const Accordion: ComponentWithProps<Partial<UseAccordionProps>> = defineComponent({
+export const Accordion: ComponentWithProps<AccordionProps> = defineComponent({
   name: 'Accordion',
   emits: ['change', 'update:modelValue'],
   props: VueAccordionProps,
   setup(props, { slots, attrs, emit }) {
-    console.log('🚀 ~ file: accordion.tsx:42 ~ setup ~ props:', props)
-    const { api } = useAccordion(emit, props)
+    const api = useAccordion(emit, props)
     AccordionProvider(api)
 
     return () => (
@@ -56,5 +55,3 @@ export const Accordion: ComponentWithProps<Partial<UseAccordionProps>> = defineC
     )
   },
 })
-
-export type AccordionProps = Optional<AccordionContext, 'id'>

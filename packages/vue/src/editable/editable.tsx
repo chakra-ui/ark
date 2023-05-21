@@ -1,88 +1,88 @@
-import { type Context } from '@zag-js/editable'
 import { defineComponent, type PropType } from 'vue'
-import { ark } from '../factory'
-import type { Optional } from '../types'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable } from './use-editable'
+import { useEditable, type UseEditableProps } from './use-editable'
 
-export type UseEditableProps = Context & { modelValue?: Context['value'] }
+export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
 
-const VueEditableProps = createVueProps<UseEditableProps>({
+const VueEditableProps = createVueProps<EditableProps>({
   activationMode: {
-    type: String as PropType<UseEditableProps['activationMode']>,
+    type: String as PropType<EditableProps['activationMode']>,
   },
   autoResize: {
-    type: Boolean as PropType<UseEditableProps['autoResize']>,
+    type: Boolean as PropType<EditableProps['autoResize']>,
   },
   dir: {
-    type: String as PropType<UseEditableProps['dir']>,
+    type: String as PropType<EditableProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<UseEditableProps['disabled']>,
+    type: Boolean as PropType<EditableProps['disabled']>,
   },
   form: {
-    type: String as PropType<UseEditableProps['form']>,
+    type: String as PropType<EditableProps['form']>,
   },
   getRootNode: {
-    type: Function as PropType<UseEditableProps['getRootNode']>,
+    type: Function as PropType<EditableProps['getRootNode']>,
   },
   id: {
-    type: String as PropType<UseEditableProps['id']>,
+    type: String as PropType<EditableProps['id']>,
   },
   ids: {
-    type: Object as PropType<UseEditableProps['ids']>,
+    type: Object as PropType<EditableProps['ids']>,
   },
   invalid: {
-    type: Boolean as PropType<UseEditableProps['invalid']>,
+    type: Boolean as PropType<EditableProps['invalid']>,
   },
   maxLength: {
-    type: Number as PropType<UseEditableProps['maxLength']>,
+    type: Number as PropType<EditableProps['maxLength']>,
   },
   modelValue: {
-    type: String as PropType<UseEditableProps['value']>,
+    type: String as PropType<EditableProps['value']>,
   },
   name: {
-    type: String as PropType<UseEditableProps['name']>,
+    type: String as PropType<EditableProps['name']>,
   },
   placeholder: {
-    type: String as PropType<UseEditableProps['placeholder']>,
+    type: String as PropType<EditableProps['placeholder']>,
   },
   readOnly: {
-    type: Boolean as PropType<UseEditableProps['readOnly']>,
+    type: Boolean as PropType<EditableProps['readOnly']>,
   },
   selectOnFocus: {
-    type: Boolean as PropType<UseEditableProps['selectOnFocus']>,
+    type: Boolean as PropType<EditableProps['selectOnFocus']>,
   },
   startWithEditView: {
-    type: Boolean as PropType<UseEditableProps['startWithEditView']>,
+    type: Boolean as PropType<EditableProps['startWithEditView']>,
   },
   submitMode: {
-    type: String as PropType<UseEditableProps['submitMode']>,
+    type: String as PropType<EditableProps['submitMode']>,
   },
   translations: {
-    type: Object as PropType<UseEditableProps['translations']>,
+    type: Object as PropType<EditableProps['translations']>,
   },
   value: {
-    type: String as PropType<UseEditableProps['value']>,
+    type: String as PropType<EditableProps['value']>,
+  },
+  defaultValue: {
+    type: String as PropType<EditableProps['defaultValue']>,
   },
 })
 
-export const Editable: ComponentWithProps<Partial<UseEditableProps>> = defineComponent({
+export const Editable: ComponentWithProps<EditableProps> = defineComponent({
   name: 'Editable',
   props: VueEditableProps,
   emits: ['cancel', 'change', 'update:modelValue', 'edit', 'submit'],
   setup(props, { slots, attrs, emit }) {
-    const api = useEditable(emit, props as UseEditableProps)
+    const api = useEditable(emit, props)
 
     EditableProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
-
-export type EditableProps = Optional<UseEditableProps, 'id'>

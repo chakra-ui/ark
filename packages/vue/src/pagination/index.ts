@@ -1,4 +1,5 @@
 export { Pagination, type PaginationProps } from './pagination'
+export type { PaginationContext } from './pagination-context'
 export { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
 export { PaginationList, type PaginationListProps } from './pagination-list'
 export { PaginationListItem, type PaginationListItemProps } from './pagination-list-item'

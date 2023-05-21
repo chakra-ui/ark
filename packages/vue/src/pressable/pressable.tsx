@@ -1,34 +1,36 @@
-import type { Context as PressableContext } from '@zag-js/pressable'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType, type UnwrapRef } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
-import { usePressable } from './use-pressable'
+import { usePressable, type UsePressableProps, type UsePressableReturn } from './use-pressable'
 
-export type UsePressableProps = Assign<HTMLArkProps<'button'>, PressableContext>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
-const VueProps = createVueProps<UsePressableProps>({
+const VueProps = createVueProps<PressableProps>({
   id: {
-    type: String as PropType<UsePressableProps['id']>,
+    type: String as PropType<PressableProps['id']>,
   },
   disabled: {
-    type: Boolean as PropType<UsePressableProps['disabled']>,
+    type: Boolean as PropType<PressableProps['disabled']>,
   },
   cancelOnPointerExit: {
-    type: Boolean as PropType<UsePressableProps['cancelOnPointerExit']>,
+    type: Boolean as PropType<PressableProps['cancelOnPointerExit']>,
   },
   preventFocusOnPress: {
-    type: Boolean as PropType<UsePressableProps['preventFocusOnPress']>,
+    type: Boolean as PropType<PressableProps['preventFocusOnPress']>,
   },
   allowTextSelectionOnPress: {
-    type: Boolean as PropType<UsePressableProps['allowTextSelectionOnPress']>,
+    type: Boolean as PropType<PressableProps['allowTextSelectionOnPress']>,
   },
   dir: {
-    type: String as PropType<UsePressableProps['dir']>,
+    type: String as PropType<PressableProps['dir']>,
+  },
+  getRootNode: {
+    type: Function as PropType<PressableProps['getRootNode']>,
   },
 })
 
-export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineComponent({
+export const Pressable: ComponentWithProps<PressableProps> = defineComponent({
   name: 'Pressable',
   props: VueProps,
   emits: ['press', 'long-press', 'press-end', 'press-up', 'press-start'],
@@ -36,10 +38,10 @@ export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineC
     const api = usePressable(emit, props)
     return () => (
       <ark.button {...api.value.pressableProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots?.default?.(api.value)}
       </ark.button>
     )
   },
 })
 
-export type PressableProps = Optional<UsePressableProps, 'id'>
+export type PressableContext = UnwrapRef<UsePressableReturn>

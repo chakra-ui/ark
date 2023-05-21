@@ -1,41 +1,43 @@
-import { type Context } from '@zag-js/color-picker'
 import { defineComponent, type PropType } from 'vue'
 import type { HTMLArkProps } from '../factory'
-import type { Assign, Optional } from '../types'
+import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { ColorPickerProvider } from './color-picker-context'
-import { useColorPicker } from './use-color-picker'
+import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 
-export type ColorPickerContext = Context & {
-  modelValue?: Context['value']
-}
-export type UseColorPickerProps = Assign<HTMLArkProps<'div'>, ColorPickerContext>
+export type ColorPickerProps = Assign<HTMLArkProps<'div'>, UseColorPickerProps>
 
-const VueColorPickerProps = createVueProps<UseColorPickerProps>({
+const VueColorPickerProps = createVueProps<ColorPickerProps>({
   dir: {
-    type: String as PropType<UseColorPickerProps['dir']>,
+    type: String as PropType<ColorPickerProps['dir']>,
   },
   id: {
-    type: String as PropType<UseColorPickerProps['id']>,
+    type: String as PropType<ColorPickerProps['id']>,
+  },
+  ids: {
+    type: Object as PropType<ColorPickerProps['ids']>,
   },
   getRootNode: {
-    type: Function as PropType<UseColorPickerProps['getRootNode']>,
+    type: Function as PropType<ColorPickerProps['getRootNode']>,
+  },
+  defaultValue: {
+    type: String as PropType<ColorPickerProps['defaultValue']>,
   },
   modelValue: {
-    type: String as PropType<UseColorPickerProps['modelValue']>,
+    type: String as PropType<ColorPickerProps['modelValue']>,
   },
   value: {
-    type: String as PropType<UseColorPickerProps['value']>,
+    type: String as PropType<ColorPickerProps['value']>,
   },
   disabled: {
-    type: Boolean as PropType<UseColorPickerProps['disabled']>,
+    type: Boolean as PropType<ColorPickerProps['disabled']>,
   },
   readOnly: {
-    type: Boolean as PropType<UseColorPickerProps['readOnly']>,
+    type: Boolean as PropType<ColorPickerProps['readOnly']>,
   },
 })
 
-export const ColorPicker: ComponentWithProps<Partial<ColorPickerContext>> = defineComponent({
+export const ColorPicker: ComponentWithProps<ColorPickerProps> = defineComponent({
   name: 'ColorPicker',
   props: VueColorPickerProps,
   emits: ['change', 'change-end', 'update:modelValue'],
@@ -47,5 +49,3 @@ export const ColorPicker: ComponentWithProps<Partial<ColorPickerContext>> = defi
     return () => slots.default?.(api.value)
   },
 })
-
-export type ColorPickerProps = Optional<ColorPickerContext, 'id'>

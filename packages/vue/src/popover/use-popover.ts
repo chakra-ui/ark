@@ -1,24 +1,35 @@
-import { connect, machine } from '@zag-js/popover'
+import { connect, machine, type Context } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { computed, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { PopoverContext } from './popover'
 
-export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
+export type UsePopoverProps = Optional<Context, 'id'> & {
+  /**
+   * Control the open state of the popover.
+   *
+   * @default false
+   */
+  isOpen?: boolean
+}
+
+export const usePopover = <T extends ExtractPropTypes<UsePopoverProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = computed(() => ({
+    ...context,
+    open: context.isOpen,
+  }))
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
-      open: reactiveContext.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -38,26 +49,10 @@ export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
         emit('pointer-down-outside', event)
       },
     }),
+    { context: machineContext },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.isOpen,
-    (curr, prev) => {
-      if (curr == null || curr === prev) return
-
-      if (curr && !state.value.matches('open')) {
-        api.value.open()
-        return
-      } else if (!curr && !state.value.matches('closed')) {
-        api.value.close()
-        return
-      }
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UsePopoverReturn = ReturnType<typeof connect>
+export type UsePopoverReturn = ReturnType<typeof usePopover>

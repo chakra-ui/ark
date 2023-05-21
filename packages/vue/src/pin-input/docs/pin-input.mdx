@@ -51,13 +51,10 @@ To set the initial value of the pin input, set a `v-model`.
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { PinInput } from '@ark-ui/vue'
-
-const defaultValue = ref(['1', '2', '3'])
 </script>
 <template>
-  <PinInput v-model="defaultValue">
+  <PinInput :defaultValue="['1', '2', '3']">
     <!-- ... -->
   </PinInput>
 </template>

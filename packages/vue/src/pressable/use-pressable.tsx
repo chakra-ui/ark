@@ -1,25 +1,24 @@
-import { connect, machine, type Context as PressableContext } from '@zag-js/pressable'
+import { connect, machine, type Context } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { computed, ref, type ExtractPropTypes } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePressableContext = PressableContext
+export type UsePressableProps = Optional<Context, 'id'>
 
-export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
+export const usePressable = <T extends ExtractPropTypes<UsePressableProps>>(
   emit: CallableFunction,
   context: T,
 ) => {
-  const reactiveContext = reactive(context)
+  const machineContext = ref(context)
 
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...reactiveContext,
-      disabled: reactiveContext.disabled,
-      cancelOnPointerExit: reactiveContext.cancelOnPointerExit,
-      id: reactiveContext.id || useId().value,
+      ...machineContext.value,
+      id: machineContext.value.id || useId().value,
       getRootNode,
       onLongPress(event) {
         emit('long-press', event)
@@ -37,6 +36,7 @@ export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
         emit('press-up', event)
       },
     }),
+    { context: machineContext },
   )
 
   return computed(() => connect(state.value, send, normalizeProps))
