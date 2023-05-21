@@ -365,8 +365,8 @@ importers:
         version: 0.9.2
     devDependencies:
       '@solidjs/testing-library':
-        specifier: 0.7.0
-        version: 0.7.0(solid-js@1.7.5)
+        specifier: 0.7.1
+        version: 0.7.1(solid-js@1.7.5)
       '@storybook/addon-essentials':
         specifier: 7.0.12
         version: 7.0.12(react-dom@18.2.0)(react@18.2.0)
@@ -4243,8 +4243,8 @@ packages:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}
     dev: true
 
-  /@solidjs/testing-library@0.7.0(solid-js@1.7.5):
-    resolution: {integrity: sha512-mTSINHdcLc6rn9xWWJfzPkY0zyKtLb7QAM2CouVw2QvNZ0mgfk3z2tpaprismlE/YLn+I3ij4BqiV3ocvI+hIQ==}
+  /@solidjs/testing-library@0.7.1(solid-js@1.7.5):
+    resolution: {integrity: sha512-TRDsCx2R4LZYOEZ36EjmYn9O+de7o3U/D30YMlcyaagu3OlNGJubidBIdeOE5HcVIE2ojHRo6CHWdQAisUVrzg==}
     engines: {node: '>= 14'}
     peerDependencies:
       solid-js: '>=1.0.0'
