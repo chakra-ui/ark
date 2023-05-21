@@ -1,0 +1,93 @@
+---
+id: custom-components
+name: Custom Components
+description:
+  In this article, we'll illustrate how to create a custom Pagination component
+  that encapsulates your unique design choices and defaults.
+---
+
+## Understanding the Problem
+
+Consider this basic implementation of a Pagination component:
+
+```tsx
+<Pagination count={5000} pageSize={10} siblingCount={2}>
+  {({ pages }) => (
+    <PaginationList>
+      <PaginationListItem>
+        <PaginationPrevPageTrigger>Previous Page</PaginationPrevPageTrigger>
+      </PaginationListItem>
+      {pages.map((page, index) =>
+        page.type === 'page' ? (
+          <PaginationListItem key={index}>
+            <PaginationPageTrigger {...page}>
+              {page.value}
+            </PaginationPageTrigger>
+          </PaginationListItem>
+        ) : (
+          <PaginationListItem key={index}>
+            <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
+          </PaginationListItem>
+        ),
+      )}
+      <PaginationListItem>
+        <PaginationNextPageTrigger>Next Page</PaginationNextPageTrigger>
+      </PaginationListItem>
+    </PaginationList>
+  )}
+</Pagination>
+```
+
+While functional, this approach could become verbose if you need to implement a
+`Pagination` component frequently, requiring ~30 lines of code every time. Plus,
+it doesn't reflect your specific design preferences like component structure,
+style, and default values.
+
+## Creating a Custom Pagination Component
+
+Let's streamline this by creating a reusable `CustomPagination` component. This
+component uses the `Pagination` component internally and applies your specific
+design and styling preferences.
+
+```tsx
+import { type PaginationProps } from '@ark-ui/react'
+
+interface CustomPaginationProps extends Pick<PaginationProps, 'count' | 'pageSize' | 'siblingCount'> {
+  // Add any other props you might need
+}
+
+const CustomPagination = (props: CustomPaginationProps) => {
+  const { count = 1000, pageSize = 10, siblingCount = 1 } = props
+  return (
+    <Pagination count={count} pageSize={pageSize} siblingCount={siblingCount}>
+      {({ pages }) => (
+        /* Implementation details here */
+      )}
+    </Pagination>
+  )
+}
+```
+
+## Using the Custom Pagination Component
+
+Now, instead of writing ~30 lines of code, you can simply use the
+`CustomPagination` component whenever you need pagination:
+
+```tsx
+<CustomPagination />
+```
+
+This component reflects your default preferences (count of 1000, 10 items per
+page, and 1 sibling page). If you need to override these defaults in specific
+cases, you can do so directly:
+
+```tsx
+<CustomPagination count={5000} pageSize={20} siblingCount={2} />
+```
+
+Remember that the `CustomPagination` component is just an example. The same
+principles can be applied to create other reusable components that reflect your
+specific needs and preferences, making your code cleaner, more maintainable, and
+more consistent. Be sure to explore the full range of props available in the
+base components and consider how they might be used to further enhance your
+custom components.
