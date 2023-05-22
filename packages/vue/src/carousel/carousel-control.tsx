@@ -1,7 +1,3 @@
-// export const CarouselControl = forwardRef<'div'>((props, ref) => (
-//   <ark.div {...parts.control.attrs} {...props} ref={ref} />
-// ))
-
 import { mergeProps } from '@zag-js/vue'
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
