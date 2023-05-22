@@ -37,7 +37,11 @@ export const Markdown = (props: MarkdownProps) => {
                   />
                 ),
               )
-              .otherwise(() => null),
+              .otherwise(() => {
+                throw new Error(
+                  `Storybook story named "${name}" for the ${doc.framework} ${doc.name} component was not found. Ensure that you have added the story to the storybook of the component.`,
+                )
+              }),
         }}
       />
     </panda.article>
