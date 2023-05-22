@@ -22,10 +22,10 @@ styling framework, such as `Tailwind` or `Bootstrap`.
 <Tabs>
   <TabList class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
     <TabTrigger
-      value="react"
+      value="solid"
       class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg"
     >
-      React
+      Solid
     </TabTrigger>
   </TabList>
 </Tabs>
@@ -52,7 +52,7 @@ styles from the component framework.
     }}
   >
     <TabTrigger
-      value="react"
+      value="solid"
       style={{
         display: 'inline-block',
         padding: '16px',
@@ -63,7 +63,7 @@ styles from the component framework.
         'border-bottom': '1px solid #e5e7eb',
       }}
     >
-      React
+      Solid
     </TabTrigger>
   </TabList>
 </Tabs>
@@ -80,8 +80,8 @@ For instance, the `Tabs` component renders the following markup:
 ```tsx
 <Tabs data-scope="tabs" data-part="root">
   <TabList data-scope="tabs" data-part="tablist">
-    <TabTrigger data-scope="tabs" data-part="trigger" value="react">
-      React
+    <TabTrigger data-scope="tabs" data-part="trigger" value="solid">
+      Solid
     </TabTrigger>
   </TabList>
 </Tabs>
@@ -122,8 +122,8 @@ Ark UI with an existing UI library, for instance,` Chakra UI`.
 <Tabs>
   <TabList asChild>
     <List>
-      <TabTrigger value="react" asChild>
-        <Button>React</Button>
+      <TabTrigger value="solid" asChild>
+        <Button>Solid</Button>
       </TabTrigger>
     </List>
   </TabList>
