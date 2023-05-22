@@ -38,8 +38,8 @@
   "devDependencies": {
     "@octokit/types": "9.2.3",
     "@types/node": "18.16.14",
-    "@types/react": "18.0.32",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
     "concurrently": "8.0.1",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
