@@ -18,7 +18,12 @@ export const Markdown = (props: MarkdownProps) => {
       <MDXComponent
         components={{
           a: (props: any) => (
-            <Link {...props} variant="mdx" target="_blank" rel="noopener noreferrer" />
+            <Link
+              {...props}
+              variant="mdx"
+              target={props.href.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+            />
           ),
           code: (props: any) => <Code {...props} />,
           Story: ({ name }: any) =>

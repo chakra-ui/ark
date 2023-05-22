@@ -1,11 +1,95 @@
 ---
 id: getting-started
 name: Getting Started
-description: TODO
+description:
+  This quick tutorial will guide you through the process of installing and using
+  Ark Components effectively.
 ---
 
-## Installation
+## Install Ark UI
+
+To start using Ark UI, you need to install it in your project. You can do so
+using yarn, npm, or pnpm by running one of the following commands in your
+terminal:
 
 ```bash
 yarn add @ark-ui/vue
+## or
+npm install @ark-ui/vue
+## or
+pnpm add @ark-ui/vue
 ```
+
+## Creating a Slider Component
+
+Once Ark UI is installed, you can start creating UI components. Below, we'll
+demonstrate how to create a `Slider` component using Ark UI.
+
+### Step 1: Import the Components
+
+Every component in Ark UI is modular, meaning that each part of a component can
+be imported and used independently. Below is an example of how to import and use
+the different parts of the `Slider` component:
+
+```jsx
+import {
+  Slider,
+  SliderLabel,
+  SliderControl,
+  SliderThumb,
+  SliderTrack,
+  SliderRange,
+} from '@ark-ui/vue'
+
+export const MySlider = () => (
+  <Slider>
+    <SliderLabel>Label</SliderLabel>
+    <SliderControl>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
+    </SliderControl>
+  </Slider>
+)
+```
+
+### Step 2: Style Your Slider Component
+
+While Ark UI is a headless UI library, it provides you with several flexible
+ways to style your components to suit your application's aesthetics.
+
+Ark UI assigns a `data-scope` and `data-part` attribute to every component part,
+allowing you to use CSS selectors to target specific parts of a component.
+Here's an example showing how to add styles to the `Slider` component:
+
+```css
+[data-scope='slider'][data-part='thumb'] {
+  background: blue;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+[data-scope='slider'][data-part='track'] {
+  background: silver;
+  height: 8px;
+  flex: 1;
+}
+
+[data-scope='slider'][data-part='control'] {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+```
+
+It's worth noting that Ark UI doesn't limit you to using CSS selectors. You can
+also use class names, inline styles, or even the `asChild` prop for greater
+customization and control over your components. These styling approaches make
+Ark UI compatible with any styling solution, and they enable you to integrate
+Ark UI with existing UI libraries seamlessly.
+
+To learn more about how to style components in Ark UI, refer to the
+comprehensive [Styling Components guide](/docs/vue/overview/styling) in our
+documentation.
