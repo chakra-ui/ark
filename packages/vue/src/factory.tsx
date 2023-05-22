@@ -57,63 +57,66 @@ export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
 type RenderFunctionArgs = Parameters<typeof h>[0]
 
 export function withAsChild(__component: RenderFunctionArgs) {
-  const component = defineComponent<AsChildProps>(({ asChild }, { attrs, slots }) => {
-    const instance = getCurrentInstance()
-    if (!asChild) return () => <__component {...attrs}>{slots.default?.()}</__component>
-    else {
-      return () => {
-        let children = slots.default?.()
-        children = renderSlotFragments(children || [])
+  const component = defineComponent({
+    name: 'ComponentWithAsChild',
+    inheritAttrs: false,
+    props: {
+      asChild: Boolean as PropType<boolean>,
+    },
+    setup(props, { attrs, slots }) {
+      const instance = getCurrentInstance()
+      if (!props.asChild) return () => <__component {...attrs}>{slots.default?.()}</__component>
+      else {
+        return () => {
+          let children = slots.default?.()
+          children = renderSlotFragments(children || [])
 
-        if (Object.keys(attrs).length > 0) {
-          const [firstChild, ...otherChildren] = children
-          if (!isValidVNodeElement(firstChild) || otherChildren.length > 0) {
-            const componentName = instance?.parent?.type.name
-              ? `<${instance.parent.type.name} />`
-              : 'component'
-            throw new Error(
-              [
-                `Detected an invalid children for \`${componentName}\` with \`asChild\` prop.`,
-                '',
-                `Note: All components accepting \`asChild\` expect only one direct child of valid VNode type.`,
-                'You can apply a few solutions:',
+          if (Object.keys(attrs).length > 0) {
+            const [firstChild, ...otherChildren] = children
+            if (!isValidVNodeElement(firstChild) || otherChildren.length > 0) {
+              const componentName = instance?.parent?.type.name
+                ? `<${instance.parent.type.name} />`
+                : 'component'
+              throw new Error(
                 [
-                  'Provide a single child element so that we can forward the props onto that element.',
-                  'Ensure the first child is an actual element instead of a raw text node or comment node.',
-                ]
-                  .map((line) => `  - ${line}`)
-                  .join('\n'),
-              ].join('\n'),
-            )
-          }
-
-          const mergedProps = mergeProps(firstChild.props ?? {}, attrs)
-          const cloned = cloneVNode(firstChild, mergedProps)
-          // Explicitly override props starting with `on`.
-          // It seems cloneVNode from Vue doesn't like overriding `onXXX` props. So
-          // we have to do it manually.
-          for (const prop in mergedProps) {
-            if (prop.startsWith('on')) {
-              cloned.props ||= {}
-              cloned.props[prop] = mergedProps[prop]
+                  `Detected an invalid children for \`${componentName}\` with \`asChild\` prop.`,
+                  '',
+                  `Note: All components accepting \`asChild\` expect only one direct child of valid VNode type.`,
+                  'You can apply a few solutions:',
+                  [
+                    'Provide a single child element so that we can forward the props onto that element.',
+                    'Ensure the first child is an actual element instead of a raw text node or comment node.',
+                  ]
+                    .map((line) => `  - ${line}`)
+                    .join('\n'),
+                ].join('\n'),
+              )
             }
+
+            const mergedProps = mergeProps(firstChild.props ?? {}, attrs)
+            const cloned = cloneVNode(firstChild, mergedProps)
+            // Explicitly override props starting with `on`.
+            // It seems cloneVNode from Vue doesn't like overriding `onXXX` props. So
+            // we have to do it manually.
+            for (const prop in mergedProps) {
+              if (prop.startsWith('on')) {
+                cloned.props ||= {}
+                cloned.props[prop] = mergedProps[prop]
+              }
+            }
+            return cloned
+          } else if (Array.isArray(children) && children.length === 1) {
+            // No props to inherit
+            return children[0]
+          } else {
+            // No children.
+            return null
           }
-          return cloned
-        } else if (Array.isArray(children) && children.length === 1) {
-          // No props to inherit
-          return children[0]
-        } else {
-          // No children.
-          return null
         }
       }
-    }
+    },
   })
 
-  component.props = {
-    asChild: Boolean as PropType<boolean>,
-  }
-  component.inheritAttrs = false
   return component
 }
 
