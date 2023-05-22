@@ -2,13 +2,31 @@
 id: custom-components
 name: Custom Components
 description:
-  In this article, we'll illustrate how to create a custom Pagination component
-  that encapsulates your unique design choices and defaults.
+  In this article, you'll learn how to use Ark to create custom components that
+  perfectly match your unique design decisions and specifications.
 ---
 
 ## Understanding the Problem
 
-Consider this basic implementation of a Pagination component:
+In traditional UI frameworks you normally get pre-designed, opinionated
+components like a `<Pagination />`. These components come with pre-configured
+styles and a set of predefined props that control the appearance and behavior of
+the component. This is very convenient and helpful at the beginning of the
+development phase
+
+However, it's also limiting in a sense that it restricts you to only theming
+(CSS) and tweaking the component's API (Props) to alter its design and behavior.
+This often becomes a bottleneck when you want to give your UI a unique touch or
+incorporate business-specific requirements that aren't supported by the given
+API.
+
+Contrastingly, Ark, being an un-opinionated framework, offers you the
+flexibility to design your own components. You are not confined to the
+component's API or theming alone.
+
+Let's see how Ark allow you to create custom components that perfectly fit your
+unique design choices and defaults. Consider this basic implementation of a
+`Pagination` component:
 
 ```tsx
 <Pagination count={5000} pageSize={10} siblingCount={2}>
