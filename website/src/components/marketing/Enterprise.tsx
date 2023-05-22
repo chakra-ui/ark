@@ -20,7 +20,7 @@ export const Enterprise = () => (
             </Text>
           </Stack>
           <Button
-            href="/docs/react/overview/"
+            href="/docs/react/overview/introduction"
             variant="link"
             size={{ base: 'lg', md: '2xl' }}
             color="accent.default"
