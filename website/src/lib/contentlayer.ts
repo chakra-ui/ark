@@ -32,6 +32,7 @@ export const getGeneralDocuments = (framework: string) => {
     'introduction',
     'getting-started',
     'as-child-prop',
+    'styling',
     'custom-components',
     'changelog',
   ]
