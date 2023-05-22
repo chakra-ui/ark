@@ -91,7 +91,7 @@
     "@zag-js/types": "0.9.2"
   },
   "devDependencies": {
-    "@solidjs/testing-library": "0.7.0",
+    "@solidjs/testing-library": "0.7.1",
     "@storybook/addon-essentials": "7.0.12",
     "@storybook/addon-interactions": "7.0.12",
     "@storybook/addon-links": "7.0.12",
