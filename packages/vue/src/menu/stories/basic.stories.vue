@@ -2,18 +2,11 @@
 import { ref, Teleport } from 'vue'
 import { Menu, MenuContent, MenuItem, MenuPositioner, MenuTrigger } from '../'
 import '../menu.css'
-
-const menuRef = ref<{
-  context: {
-    isOpen: boolean
-    onClose: () => void
-  }
-}>()
 </script>
 <template>
-  <Menu ref="menuRef">
+  <Menu v-slot="{ isOpen }">
     <MenuTrigger>
-      <button>{{ menuRef?.context.isOpen ? 'Close' : 'Open' }} menu</button>
+      <button>{{ isOpen ? 'Close' : 'Open' }} menu</button>
     </MenuTrigger>
     <Teleport to="body">
       <MenuPositioner>

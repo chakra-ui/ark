@@ -11,7 +11,7 @@
       "description": "Whether the color picker is disabled"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -48,82 +48,48 @@
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
   "ColorPickerContext": {
-    "channels": {
-      "type": "[ColorChannel, ColorChannel, ColorChannel]",
-      "isRequired": true,
-      "description": "The current color channels of the color"
-    },
-    "contentProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "eyeDropperTriggerProps": {
-      "type": "ButtonHTMLAttributes & ReservedProps",
-      "isRequired": true
-    },
-    "getAreaGradientProps": {
-      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getAreaProps": {
-      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getAreaThumbProps": {
-      "type": "(props: ColorAreaProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getChannelInputProps": {
-      "type": "(props: ColorChannelInputProps) => InputHTMLAttributes & ReservedProps",
-      "isRequired": true
-    },
-    "getChannelSliderBackgroundProps": {
-      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getChannelSliderThumbProps": {
-      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getChannelSliderTrackProps": {
-      "type": "(props: ColorChannelProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getSwatchBackgroundProps": {
-      "type": "(props: ColorSwatchProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "getSwatchProps": {
-      "type": "(props: ColorSwatchProps) => Attrs<HTMLAttributes>",
-      "isRequired": true
-    },
-    "isDragging": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the color picker is being dragged"
-    },
-    "setChannelValue": {
-      "type": "(channel: ColorChannel, value: number) => void",
-      "isRequired": true,
-      "description": "Function to set the color value of a specific channel"
-    },
-    "setColor": {
-      "type": "(value: string | Color) => void",
-      "isRequired": true,
-      "description": "Function to set the color value"
-    },
-    "setFormat": {
-      "type": "(format: ColorFormat) => void",
-      "isRequired": true,
-      "description": "Function to set the color format"
-    },
-    "value": {
+    "id": {
       "type": "string",
       "isRequired": true,
-      "description": "The current color value (as a string)"
+      "description": "The unique identifier of the machine."
     },
-    "valueAsColor": {
-      "type": "Color",
-      "isRequired": true,
-      "description": "The current color value (as a Color object)"
-    }
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The direction of the color picker"
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the color picker is disabled"
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "ids": {
+      "type": "Partial<{\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the color picker. Useful for composition."
+    },
+    "modelValue": { "type": "string", "isRequired": false },
+    "onChange": {
+      "type": "(details: ChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the value changes, as the user drags."
+    },
+    "onChangeEnd": {
+      "type": "(details: ChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the user stops dragging."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the color picker is read-only"
+    },
+    "value": { "type": "string", "isRequired": false, "description": "The current color value" }
   },
   "ColorPickerSwatchProps": {
     "value": { "type": "string | Color", "isRequired": true },

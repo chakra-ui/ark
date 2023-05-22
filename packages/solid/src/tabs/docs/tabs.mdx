@@ -2,165 +2,74 @@
 id: tabs
 name: Tabs
 description:
-  An accessible tabs component that provides keyboard interactions and ARIA
-  attributes described in the WAI-ARIA Tabs Design Pattern. Tabs consist of a
-  tab list with one or more visually separated tabs. Each tab has associated
-  content, and only the selected tab's content is shown.
+  The Tabs component is a powerful and flexible navigation tool for your
+  applications. It offers various interaction modes, accessibility features, and
+  the ability to display different contents based on the selected tab.
 ---
-
-## Import
-
-```ts
-import {
-  TabContent,
-  TabIndicator,
-  TabList,
-  Tabs,
-  TabTrigger,
-} from '@ark-ui/solid'
-```
 
 ## Usage
 
-The Tabs component consists of the `TabContent`, `TabIndicator` and `TabList`
-components. Combine them as desired to fit your design system.
-
-Note that the `TabTrigger` component accepts a single JSX element which will
-receive all necessary props to add the event listeners and attributes to ensure
-the desired accessibility.
+To get started, import the necessary components from the package:
 
 ```tsx
-<Tabs>
-  <TabList>
-    <TabTrigger value="react">
-      <button>React</button>
-    </TabTrigger>
-    <TabTrigger value="solid">
-      <button>Solid</button>
-    </TabTrigger>
-    <TabTrigger value="vue">
-      <button>Vue</button>
-    </TabTrigger>
-  </TabList>
-  <TabContent value="react">
-    A JavaScript library for building user interfaces
-  </TabContent>
-  <TabContent value="solid">
-    Simple and performant reactivity for building user interfaces.
-  </TabContent>
-  <TabContent value="vue">
-    An approachable, performant and versatile framework for building web user
-    interfaces.
-  </TabContent>
-</Tabs>
+import {
+  Tabs,
+  TabList,
+  TabTrigger,
+  TabContent,
+  TabIndicator,
+} from '@ark-ui/solid'
 ```
 
-### Setting the initially selected tab
+Here are some examples of how to use the Tabs component:
 
-To set the initially selected tab, set the `defaultValue` prop on the `Tabs`
-component.
+<Story name="Basic" />
 
-```tsx
-<Tabs defaultValue="react">{/*...*/}</Tabs>
-```
+## Initial Tab
 
-### Control the selected tab
+To set a default tab on initial render, use the `value` prop:
 
-To control the selected tab, set the `value` prop on the `Tabs` component.
-Listen to the `onChange` event to be notified when the selected tab changes.
+<Story name="InitialTab" />
 
-```tsx
-import { createSignal } from 'solid-js'
+## Tab Indicator
 
-const MyTabs = () => {
-  const [currentTab, setCurrentTab] = createSignal<string | null>('react')
-  return (
-    <Tabs
-      value={currentTab()}
-      onChange={(details) => setCurrentTab(details.value)}
-    >
-      <TabList>
-        <TabTrigger value="react">
-          <button>React</button>
-        </TabTrigger>
-        <TabTrigger value="solid">
-          <button>Solid</button>
-        </TabTrigger>
-        <TabTrigger value="vue">
-          <button>Vue</button>
-        </TabTrigger>
-        <TabIndicator />
-      </TabList>
-    </Tabs>
-  )
-}
-```
+To provide a visual cue for the selected tab, use the `TabIndicator` component:
 
-### Showing an indicator
+<Story name="Indicator" />
 
-The `TabIndicator` component can be used to show an indicator under the selected
-tab. The `TabIndicator` component must be a child of the `TabList` component.
+## Disabled Tab
 
-```tsx {12}
-<Tabs>
-  <TabList>
-    <TabTrigger value="react">
-      <button>React</button>
-    </TabTrigger>
-    <TabTrigger value="solid">
-      <button>Solid</button>
-    </TabTrigger>
-    <TabTrigger value="vue">
-      <button>Vue</button>
-    </TabTrigger>
-    <TabIndicator />
-  </TabList>
-</Tabs>
-```
+To disable a tab, simply pass the `disabled` prop to the `TabTrigger` component:
 
-### Changing the orientation
+<Story name="DisabledTab" />
+
+## Controlled Tabs
+
+To create a controlled Tabs component, manage the current selected tab using the
+`value` prop and update it when the `onChange` event handler is called:
+
+<Story name="Controlled" />
+
+## Vertical Tabs
 
 The default orientation of the tabs is `horizontal`. To change the orientation,
 set the `orientation` prop to `vertical`.
 
-```tsx
-<Tabs orientation="vertical">{/*...*/}</Tabs>
-```
+<Story name="Vertical" />
 
-### Manual tab activation
+## Manual Activation
 
 By default, the tab can be selected when it receives focus from either the
-keyboard or pointer interaction. This is called "automatic tab activation".
+keyboard or pointer interaction. This is called automatic tab activation.
 
-"manual tab activation" means the tab is selected with the <kbd>Enter</kbd> key
-or by clicking on the tab.
+In contrast, manual tab activation means the tab is selected with the
 
-```tsx
-<Tabs activationMode="manual">{/*...*/}</Tabs>
-```
+<kbd>Enter</kbd> key or by clicking on the tab.
 
-### Listening for events
+<Story name="Manual" />
 
-- `onChange` — Callback fired when the selected tab changes.
-- `onFocus` — Callback fired when the selected tab receives focus.
+## Conclusion
 
-```tsx
-<Tabs
-  onChange={(details) => console.log(details)}
-  onFocus={(details) => console.log(details)}
->
-  {/*...*/}
-</Tabs>
-```
-
-### Disabling a tab
-
-To disable a tab, set the disabled prop on the `TabTrigger` component. When a
-Tab is disabled, it is skipped during keyboard navigation, and it is not
-clickable.
-
-```tsx
-<TabTrigger value="react" disabled>
-  <button>React</button>
-</TabTrigger>
-```
+The Tabs component offers a comprehensive and flexible solution for adding
+tabbed navigation to your applications. With a wide variety of customization
+options and features, it can accommodate various use cases and designs.

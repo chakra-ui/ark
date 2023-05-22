@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {
   Fragment,
   cloneVNode,
@@ -11,6 +13,7 @@ import {
   type VNode,
   type VNodeProps,
 } from 'vue'
+import type { VueProps } from './types'
 
 /**
  * Gets only the valid children of a component,
@@ -131,4 +134,8 @@ export function renderSlotFragments(children: VNode[]): VNode[] {
     }
     return [child]
   })
+}
+
+export function createVueProps<T extends object>(properties: VueProps<T>) {
+  return properties
 }

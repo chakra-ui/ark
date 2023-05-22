@@ -1,0 +1,120 @@
+---
+id: carousel
+name: Carousel
+description:
+  The Carousel component is a dynamic and responsive content display tool for
+  your applications. It provides support for various configurations, including
+  slide alignment, text direction, and slide orientation.
+---
+
+## Basic Usage
+
+To get started, import the necessary components from the package:
+
+```jsx
+import {
+  Carousel,
+  CarouselNextSlideTrigger,
+  CarouselPrevSlideTrigger,
+  CarouselSlide,
+  CarouselSlideGroup,
+  CarouselViewport,
+} from '@ark-ui/vue'
+```
+
+Here's an example of how to use the Carousel component with a set of images:
+
+```tsx
+<script>
+import {
+  Carousel,
+  CarouselNextSlideTrigger,
+  CarouselPrevSlideTrigger,
+  CarouselSlide,
+  CarouselSlideGroup,
+  CarouselViewport,
+} from '@ark-ui/vue'
+
+const images = [
+  'https://tinyurl.com/5b6ka8jd',
+  'https://tinyurl.com/7rmccdn5',
+  'https://tinyurl.com/59jxz9uu',
+  'https://tinyurl.com/6jurv23t',
+  'https://tinyurl.com/yp4rfum7',
+]
+</script>
+<template>
+  <Carousel>
+    <CarouselPrevSlideTrigger>
+      <button>Prev</button>
+    </CarouselPrevSlideTrigger>
+    <CarouselNextSlideTrigger>
+      <button>Next</button>
+    </CarouselNextSlideTrigger>
+    <CarouselViewport>
+      <CarouselSlideGroup>
+        <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx">
+          <img
+            :src="image"
+            alt=""
+            :style="{ height: '300px', width: '100%', objectFit: 'cover' }"
+          />
+        </CarouselSlide>
+      </CarouselSlideGroup>
+    </CarouselViewport>
+  </Carousel>
+</template>
+```
+
+## Controlled Carousel
+
+To create a controlled Carousel component, you can manage the state of the
+carousel using the `index` prop and update it when the `@slide-change` event
+handler is called:
+
+```tsx
+<script>
+import { ref } from 'vue'
+import { Carousel } from '@ark-ui/vue'
+
+const currentIndex = ref(0)
+
+const handleSlideChange = (details) => {
+  currentIndex.value = details.index
+}
+</script>
+<template>
+  <Carousel :index="currentIndex" @slide-change="handleSlideChange">
+    <!-- ... -->
+  </Carousel>
+</template>
+```
+
+## Customizing the Carousel
+
+You can customize the Carousel component by setting various props such as
+`align`, `loop`, `slidesPerView`, and `spacing`. Here's an example of a
+customized Carousel:
+
+```tsx
+<script>
+import { Carousel } from '@ark-ui/vue'
+</script>
+<template>
+  <Carousel
+    align="center"
+    :loop="true"
+    :slidesPerView="2"
+    spacing="16px"
+    orientation="horizontal"
+  >
+    <!-- ... -->
+  </Carousel>
+</template>
+```
+
+## Conclusion
+
+The Carousel component offers a flexible and powerful solution for displaying
+dynamic content in your applications. With its comprehensive set of features and
+customizability, it can accommodate a wide range of use cases and designs.

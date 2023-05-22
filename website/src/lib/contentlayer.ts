@@ -28,7 +28,13 @@ export const findPrevDocument = (document: DocumentTypes) => {
 }
 
 export const getGeneralDocuments = (framework: string) => {
-  const priority = ['introduction', 'getting-started', 'as-child-prop', 'changelog']
+  const priority = [
+    'introduction',
+    'getting-started',
+    'as-child-prop',
+    'custom-components',
+    'changelog',
+  ]
   return allDocuments
     .filter((doc) => doc.framework === framework)
     .filter((doc) => !doc.hasOwnProperty('types'))

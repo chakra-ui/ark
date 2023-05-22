@@ -2,6 +2,7 @@ import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
 import { Fragment, defineComponent, ref } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, type CheckboxProps } from '.'
+import BasicComponentStory from './stories/basic.stories.vue'
 
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox {...props}>
@@ -12,22 +13,17 @@ const ComponentUnderTest = (props: CheckboxProps) => (
 )
 describe('Checkbox', () => {
   it('should render', async () => {
-    render(ComponentUnderTest)
+    render(BasicComponentStory)
   })
 
   it('should handle check and unchecked', async () => {
     const onChange = vi.fn()
-    const { getByRole } = render(ComponentUnderTest, { props: { onChange } })
+    const { getByRole } = render(() => <ComponentUnderTest onChange={onChange} />)
 
     const checkbox = getByRole('checkbox')
 
     await user.click(checkbox)
     expect(checkbox).toBeChecked()
-  })
-
-  it('should handle indeterminate state properly', async () => {
-    const { getByTestId } = render(ComponentUnderTest, { props: { checked: 'indeterminate' } })
-    expect(getByTestId('control')).toHaveAttribute('data-indeterminate')
   })
 
   it('should allow controlled usage', async () => {
@@ -38,7 +34,7 @@ describe('Checkbox', () => {
         return () => (
           <Fragment>
             <button onClick={() => (checked.value = true)}>set checked</button>
-            <ComponentUnderTest modelValue={checked.value} />
+            <ComponentUnderTest checked={checked.value} />
           </Fragment>
         )
       },
@@ -49,5 +45,10 @@ describe('Checkbox', () => {
     expect(getByRole('checkbox')).not.toBeChecked()
     await user.click(getByText('set checked'))
     expect(getByRole('checkbox')).toBeChecked()
+  })
+
+  it('should handle indeterminate state from example', async () => {
+    const { getByTestId } = render(() => <ComponentUnderTest modelValue={'indeterminate'} />)
+    expect(getByTestId('control')).toHaveAttribute('data-indeterminate')
   })
 })

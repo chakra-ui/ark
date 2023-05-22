@@ -1,4 +1,4 @@
-export { PinInput, type PinInputProps } from './pin-input'
+export { PinInput, type PinInputContext, type PinInputProps } from './pin-input'
 export { PinInputControl, type PinInputControlProps } from './pin-input-control'
 export { PinInputField, type PinInputFieldProps } from './pin-input-field'
 export { PinInputLabel, type PinInputLabelProps } from './pin-input-label'
