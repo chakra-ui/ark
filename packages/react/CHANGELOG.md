@@ -1,3 +1,5 @@
+<!-- The format is based on https://keepachangelog.com/en/1.1.0/ -->
+
 ## 0.3.0 – May 11, 2023
 
 ### Added
