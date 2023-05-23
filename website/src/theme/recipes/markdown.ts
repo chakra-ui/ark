@@ -36,7 +36,6 @@ export const markdown = defineRecipe({
       lineHeight: 'loose',
       mb: '4',
       p: '0',
-      pl: '1.675em',
     },
     '& li::before': {
       display: 'inline-block',
