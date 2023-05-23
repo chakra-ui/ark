@@ -7,6 +7,9 @@ export const markdown = defineRecipe({
     '&': {
       width: 'full',
     },
+    '& strong': {
+      color: 'fg.emphasized',
+    },
     '& h1': {
       fontWeight: 'semibold',
       mt: { base: '8', md: '10' },
@@ -41,6 +44,7 @@ export const markdown = defineRecipe({
       display: 'inline-block',
       content: "'–'",
       width: '1em',
+      color: 'fg.emphasized',
     },
     '& [data-rehype-pretty-code-fragment]': {
       my: '8',
