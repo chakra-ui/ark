@@ -7,7 +7,7 @@
 - Add `Toast`
 - Add support for `asChild`
 
-## Changed
+### Changed
 
 - Update `Checkbox`. Control `indeterminate` state in `checked` prop
 

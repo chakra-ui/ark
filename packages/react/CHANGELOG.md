@@ -4,7 +4,7 @@
 
 - Add `DatePicker`
 
-## Changed
+### Changed
 
 - Update `Checkbox`. Control `indeterminate` state in `checked` prop
 
