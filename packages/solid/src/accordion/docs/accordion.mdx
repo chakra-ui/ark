@@ -2,139 +2,78 @@
 id: accordion
 name: Accordion
 description:
-  An accordion is a vertically stacked set of interactive headings containing a
-  title, content snippet, or thumbnail representing a section of content.
+  The Accordion is a highly customizable and intuitive component that allows you
+  to present your content in a collapsible style. It is ideal for scenarios
+  where you want to manage a large amount of content or information in a limited
+  space, such as FAQs, menus, or lists.
 ---
-
-## Import
-
-```ts
-import {
-  Accordion,
-  AccordionTrigger,
-  AccordionItem,
-  AccordionContent,
-} from '@ark-ui/solid'
-```
 
 ## Usage
 
-The Accordion component consists of the `Accordion`, `AccordionTrigger`,
-`AccordionItem` and `AccordionContent` components.
+Start by importing the necessary components from the package:
 
 ```tsx
-<Accordion>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
-
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@ark-ui/react'
 ```
 
-### Allow toggling the open state
+Here is a basic example:
 
-To collapse an already expanded accordion item by clicking on it, set the
-`collapsible` prop property to `true`.
+<Story name="Basic" />
 
-If `multiple` is `true`, we internally set collapsible to be true.
+## Setting an Initial Panel
 
-```tsx
-<Accordion collapsible>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+To set an initial panel to be open upon rendering, use the `defaultValue` prop:
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<Story name="Initial" />
 
-### Allow multiple open accordions at once
+## Using Render Props
 
-To allow multiple items to be expanded at once, set `multiple` to `true`. This
-mode implicitly sets `collapsible` to `true` and ensures that each accordion can
-be expanded.
+For more control over the Accordion's functionality, you can use a function as a
+child, which provides access to the Accordion API:
 
-```tsx
-<Accordion multiple>
-  <AccordionItem value="panel-1">
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+<Story name="RenderProp" />
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+## Making the Accordion Collapsible
 
-### Disable specific accordion items
+For a collapsible Accordion where all panels can be closed simultaneously, use
+the `collapsible` prop:
 
-To disable a specific accordion item, set the `disabled` prop to `true`. When an
-accordion item is disabled, it is skipped from keyboard navigation and can't be
-interacted with.
+<Story name="Collapsible" />
 
-```tsx
-<Accordion>
-  <AccordionItem value="panel-1" disabled>
-    <AccordionTrigger>
-      <button>Panel 1 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 1 content</AccordionContent>
-  </AccordionItem>
+## Opening Multiple Panels
 
-  <AccordionItem value="panel-2">
-    <AccordionTrigger>
-      <button>Panel 2 trigger</button>
-    </AccordionTrigger>
-    <AccordionContent>Panel 2 content</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+For an Accordion that allows multiple panels to be open at once, use the
+`multiple` prop:
 
-### Listening to changes with onChange
+<Story name="Multiple" />
 
-The accordion item accepts a `onChange` prop to listen for change events. The
-`onChange` prop is called with the details of the accordion item that was
-selected.
+## Controlled Accordion
 
-```tsx
-import { createSignal } from 'solid-js'
+To create a controlled Accordion component, manage the state of the currently
+opened panels using the `value` prop and update it when the `onChange` event
+handler is called:
 
-const Controlled = () => {
-  const [value, setValue] = createSignal<string | string[] | null>('panel-2')
-  return (
-    <Accordion value={value()} onChange={(details) => setValue(details.value)}>
-      {['panel-1', 'panel-2', 'panel-3'].map((id) => (
-        <AccordionItem value={id}>
-          <AccordionTrigger>
-            <button>{id} trigger</button>
-          </AccordionTrigger>
-          <AccordionContent>{id} content</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  )
-}
-```
+<Story name="Controlled" />
+
+## Changing the Orientation
+
+To display the Accordion in a vertical orientation, use the `orientation` prop:
+
+<Story name="Vertical" />
+
+## Disabling an Accordion Item
+
+To disable an AccordionItem, use the `disabled` prop:
+
+<Story name="Disabled" />
+
+## Conclusion
+
+The Accordion component offers a clean and compact solution to manage and
+display content in a way that's organized and efficient. Its extensive set of
+props and configurations can accommodate a variety of use cases and designs.
