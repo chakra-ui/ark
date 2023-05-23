@@ -1,14 +1,18 @@
+## 0.4.0 - May 23, 2023
+
+### Added
+
+- Add `DatePicker`
+
+## Changed
+
+- Update `Checkbox`. Control `indeterminate` state in `checked` prop
+
+### Fixed
+
+- Fix a typo in the `SwitchProps` type
+
 ## 0.3.0 – May 11, 2023
-
-## 0.4.0
-
-### Minor Changes
-
-- [`3bd09cd6`](https://github.com/chakra-ui/ark/commit/3bd09cd601da92588eaeb52ebf88b3fec3613585) Thanks [@cschroeter](https://github.com/cschroeter)! - Add DatePicker
-
-### Patch Changes
-
-- [`09cbc614`](https://github.com/chakra-ui/ark/commit/09cbc61413bef1bbb4c885e95ab3a8ab87d53884) Thanks [@cschroeter](https://github.com/cschroeter)! - Fix a typo in SwitchProps type
 
 ### Added
 
