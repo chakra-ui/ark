@@ -1,0 +1,1 @@
+{ "Basic": "const Basic = () => {\n  return <div>Avatar</div>\n}" }
