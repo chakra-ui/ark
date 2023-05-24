@@ -119,12 +119,12 @@
     "vite": "4.3.8",
     "vite-plugin-dts": "2.3.0",
     "vitest": "0.31.1",
-    "storybook": "7.0.15",
-    "@storybook/react": "7.0.15",
-    "@storybook/react-vite": "7.0.15",
-    "@storybook/addons": "7.0.15",
-    "@storybook/addon-a11y": "7.0.15",
-    "@storybook/addon-essentials": "7.0.15"
+    "storybook": "7.0.17",
+    "@storybook/react": "7.0.17",
+    "@storybook/react-vite": "7.0.17",
+    "@storybook/addons": "7.0.17",
+    "@storybook/addon-a11y": "7.0.17",
+    "@storybook/addon-essentials": "7.0.17"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
