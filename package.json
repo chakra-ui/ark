@@ -51,7 +51,7 @@
     "ts-morph": "18.0.0",
     "ts-node": "10.9.1",
     "ts-pattern": "4.3.0",
-    "turbo": "1.9.8",
+    "turbo": "1.9.9",
     "typescript": "5.0.4"
   },
   "commitlint": {
