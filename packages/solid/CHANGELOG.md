@@ -1,5 +1,11 @@
 ## 0.4.0 - May 23, 2023
 
+## 0.5.0
+
+### Minor Changes
+
+- [`786b4862`](https://github.com/chakra-ui/ark/commit/786b486248f165fb17ea6c0ee1c1e05432ebbce8) Thanks [@cschroeter](https://github.com/cschroeter)! - Remove AccordionIcon
+
 ### Added
 
 - Add `Switch`
