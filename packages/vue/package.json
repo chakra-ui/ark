@@ -103,7 +103,7 @@
     "@vue/compiler-sfc": "3.3.4",
     "clean-package": "2.2.0",
     "eslint": "8.41.0",
-    "eslint-plugin-vue": "9.14.0",
+    "eslint-plugin-vue": "9.14.1",
     "happy-dom": "9.20.3",
     "jsdom": "22.0.0",
     "resize-observer-polyfill": "1.5.1",
