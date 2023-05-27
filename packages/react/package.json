@@ -116,7 +116,7 @@
     "react-frame-component": "5.2.6",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",
-    "vite": "4.3.8",
+    "vite": "4.3.9",
     "vite-plugin-dts": "2.3.0",
     "vitest": "0.31.1",
     "storybook": "7.0.17",
