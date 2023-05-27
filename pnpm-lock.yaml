@@ -247,8 +247,8 @@ importers:
         specifier: 9.20.3
         version: 9.20.3
       jsdom:
-        specifier: 22.0.0
-        version: 22.0.0
+        specifier: 22.1.0
+        version: 22.1.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -275,7 +275,7 @@ importers:
         version: 2.3.0(@types/node@18.16.16)(vite@4.3.9)
       vitest:
         specifier: 0.31.1
-        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.0.0)
+        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.1.0)
 
   packages/solid:
     dependencies:
@@ -447,7 +447,7 @@ importers:
         version: 2.7.0(solid-js@1.7.5)(vite@4.3.9)
       vitest:
         specifier: 0.31.1
-        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.0.0)
+        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.1.0)
 
   packages/vue:
     dependencies:
@@ -585,8 +585,8 @@ importers:
         specifier: 9.20.3
         version: 9.20.3
       jsdom:
-        specifier: 22.0.0
-        version: 22.0.0
+        specifier: 22.1.0
+        version: 22.1.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -601,7 +601,7 @@ importers:
         version: 2.3.0(@types/node@18.16.16)(vite@4.3.9)
       vitest:
         specifier: 0.31.1
-        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.0.0)
+        version: 0.31.1(happy-dom@9.20.3)(jsdom@22.1.0)
       vue:
         specifier: 3.3.4
         version: 3.3.4
@@ -6045,7 +6045,7 @@ packages:
       magic-string: 0.30.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.31.1(happy-dom@9.20.3)(jsdom@22.0.0)
+      vitest: 0.31.1(happy-dom@9.20.3)(jsdom@22.1.0)
     dev: true
 
   /@vitest/expect@0.31.1:
@@ -11526,8 +11526,8 @@ packages:
       - supports-color
     dev: true
 
-  /jsdom@22.0.0:
-    resolution: {integrity: sha512-p5ZTEb5h+O+iU02t0GfEjAnkdYPrQSkfuTSMkMYyIoMvUNEHsbG0bHHbfXIcfTqD2UfvjQX7mmgiFsyRwGscVw==}
+  /jsdom@22.1.0:
+    resolution: {integrity: sha512-/9AVW7xNbsBv6GfWho4TTNjEo9fe6Zhf9O7s0Fhhr3u+awPwAJMKwAMXnkk5vBxflqLW9hTHX/0cs+P3gW+cQw==}
     engines: {node: '>=16'}
     peerDependencies:
       canvas: ^2.5.0
@@ -16361,7 +16361,7 @@ packages:
     dependencies:
       vite: 4.3.9(@types/node@18.16.16)
 
-  /vitest@0.31.1(happy-dom@9.20.3)(jsdom@22.0.0):
+  /vitest@0.31.1(happy-dom@9.20.3)(jsdom@22.1.0):
     resolution: {integrity: sha512-/dOoOgzoFk/5pTvg1E65WVaobknWREN15+HF+0ucudo3dDG/vCZoXTQrjIfEaWvQXmqScwkRodrTbM/ScMpRcQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -16407,7 +16407,7 @@ packages:
       concordance: 5.0.4
       debug: 4.3.4
       happy-dom: 9.20.3
-      jsdom: 22.0.0
+      jsdom: 22.1.0
       local-pkg: 0.4.3
       magic-string: 0.30.0
       pathe: 1.1.0
