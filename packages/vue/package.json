@@ -105,7 +105,7 @@
     "eslint": "8.41.0",
     "eslint-plugin-vue": "9.14.1",
     "happy-dom": "9.20.3",
-    "jsdom": "22.0.0",
+    "jsdom": "22.1.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.0.4",
     "vite": "4.3.9",
