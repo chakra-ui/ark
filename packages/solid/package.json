@@ -110,7 +110,7 @@
     "happy-dom": "9.20.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "solid-js": "1.7.5",
+    "solid-js": "1.7.6",
     "storybook": "7.0.18",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
