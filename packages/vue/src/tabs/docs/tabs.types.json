@@ -17,12 +17,17 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
     "ids": {
-      "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n}>",
+      "type": "Partial<{\n  root: string\n  trigger: string\n  tablist: string\n  contentGroup: string\n  content: string\n  indicator: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
@@ -55,6 +60,7 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    }
+    },
+    "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   }
 }

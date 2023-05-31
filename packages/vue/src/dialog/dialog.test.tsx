@@ -12,6 +12,7 @@ import {
   DialogTrigger,
   type DialogProps,
 } from '.'
+import ControlledComponent from './stories/controlled.stories.vue'
 
 const Component = (props: DialogProps) => (
   <Dialog {...props}>
@@ -53,5 +54,17 @@ describe('Dialog', () => {
     await user.click(getByText('Close'))
 
     expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  it('should open with external trigger', async () => {
+    const { getByText, getByTestId } = render(ControlledComponent)
+
+    const controlButton = getByText<HTMLButtonElement>('Toggle Dialog')
+    const dialogContainer = getByTestId('dialog-container')
+
+    expect(dialogContainer).not.toBeVisible()
+
+    await user.click(controlButton)
+    expect(dialogContainer).toBeVisible()
   })
 })

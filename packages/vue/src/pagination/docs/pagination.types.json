@@ -7,7 +7,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,8 +41,16 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "type": {
+      "type": "'button' | 'link'",
+      "isRequired": false,
+      "description": "The type of the trigger element"
     }
   },
   "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
-  "PaginationPageTriggerProps": { "value": { "type": "number", "isRequired": true } }
+  "PaginationPageTriggerProps": {
+    "type": { "type": "'page'", "isRequired": true },
+    "value": { "type": "number", "isRequired": true }
+  }
 }

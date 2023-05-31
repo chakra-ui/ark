@@ -59,6 +59,6 @@ describe('HoverCard', () => {
 
     await user.unhover(target)
     await waitFor(() => expect(hoverContent).not.toBeVisible())
-    expect(onClose).toHaveBeenCalledTimes(2)
+    expect(onClose).toHaveBeenCalledTimes(1)
   })
 })

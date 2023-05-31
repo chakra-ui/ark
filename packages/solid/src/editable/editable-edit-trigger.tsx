@@ -1,22 +1,11 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { ssrSpread } from '../ssr-spread'
+import { mergeProps } from '@zag-js/solid'
+import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableEditTriggerProps = { children: JSX.Element }
+export type EditableEditTriggerProps = HTMLArkProps<'button'>
 
 export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
-  const dialog = useEditableContext()
-  const triggerProps = dialog().editTriggerProps
-
-  const getChildren = children(() => ssrSpread(props.children, triggerProps))
-
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(children, triggerProps)
-    }
-  })
-
-  return getChildren()
+  const editable = useEditableContext()
+  const triggerProps = mergeProps(() => editable().editTriggerProps, props)
+  return <ark.button {...triggerProps} />
 }

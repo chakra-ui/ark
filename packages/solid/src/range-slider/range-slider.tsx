@@ -1,8 +1,8 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { RangeSliderProvider } from './range-slider-context'
 import {
   useRangeSlider,
@@ -13,7 +13,7 @@ import {
 export type RangeSliderProps = Assign<
   HTMLArkProps<'div'>,
   UseRangeSliderProps & {
-    children?: JSX.Element | ((api: ReturnType<UseRangeSliderReturn>) => JSX.Element)
+    children?: JSX.Element | ((api: UseRangeSliderReturn) => JSX.Element)
   }
 >
 
@@ -42,13 +42,15 @@ export const RangeSlider = (props: RangeSliderProps) => {
     'thumbAlignment',
     'value',
   ])
-  const slider = useRangeSlider(useRangeSliderProps)
 
-  const view = () => children(() => runIfFn(props.children, slider()))
+  const api = useRangeSlider(useRangeSliderProps)
+
+  const getChildren = () => runIfFn(props.children, api)
+
   return (
-    <RangeSliderProvider value={slider}>
-      <ark.div {...slider().rootProps} {...divProps}>
-        {view}
+    <RangeSliderProvider value={api}>
+      <ark.div {...api().rootProps} {...divProps}>
+        {getChildren()}
       </ark.div>
     </RangeSliderProvider>
   )

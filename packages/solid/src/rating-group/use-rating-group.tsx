@@ -1,6 +1,6 @@
 import * as rating from '@zag-js/rating-group'
-import { normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId, mergeProps } from 'solid-js'
+import { mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 

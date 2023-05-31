@@ -30,16 +30,29 @@ The Slider component consists of the `SliderControl`, `SliderLabel`,
 `SliderThumb`, and `SliderTrack` components. Combine them as desired to fit your
 design system.
 
-```tsx
-<Slider>
-  <SliderLabel>Label</SliderLabel>
-  <SliderControl>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </SliderControl>
-</Slider>
+```vue
+<script setup lang="ts">
+import {
+  Slider,
+  SliderControl,
+  SliderLabel,
+  SliderOutput,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Slider>
+    <SliderLabel>Label</SliderLabel>
+    <SliderControl>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
+    </SliderControl>
+  </Slider>
+</template>
 ```
 
 ### Adding slider marks
@@ -50,22 +63,37 @@ You can add marks to the slider track by using the `SliderMarkerGroup` and
 Position the `SliderMarker` components relative to the track by providing the
 `value` prop.
 
-```tsx
-<Slider>
-  <SliderControl>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </SliderControl>
-  <SliderMarkerGroup>
-    <SliderMarker :value="0">0</SliderMarker>
-    <SliderMarker :value="25">25</SliderMarker>
-    <SliderMarker :value="50">50</SliderMarker>
-    <SliderMarker :value="75">75</SliderMarker>
-    <SliderMarker :value="100">100</SliderMarker>
-  </SliderMarkerGroup>
-</Slider>
+```vue
+<script setup lang="ts">
+import {
+  Slider,
+  SliderControl,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderOutput,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Slider>
+    <SliderControl>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
+    </SliderControl>
+    <SliderMarkerGroup>
+      <SliderMarker :value="0">0</SliderMarker>
+      <SliderMarker :value="25">25</SliderMarker>
+      <SliderMarker :value="50">50</SliderMarker>
+      <SliderMarker :value="75">75</SliderMarker>
+      <SliderMarker :value="100">100</SliderMarker>
+    </SliderMarkerGroup>
+  </Slider>
+</template>
 ```
 
 ### Specifying the minimum and maximum
@@ -76,10 +104,15 @@ want, you can easily specify different bounds by changing the values of the
 
 For example, to ask the user for a value between `-10` and `10`, you can use:
 
-```tsx
-<Slider :min="-10" :max="10">
-  {/*...*/}
-</Slider>
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue'
+</script>
+<template>
+  <Slider :min="-10" :max="10">
+    <!-- ... -->
+  </Slider>
+</template>
 ```
 
 ### Setting the value's granularity
@@ -90,10 +123,15 @@ integer. You can change the step attribute to control the granularity.
 For example, If you need a value between `5` and `10`, accurate to two decimal
 places, you should set the value of step to `0.01`:
 
-```tsx
-<Slider :step="0.01" :min="5" :max="10">
-  {/*...*/}
-</Slider>
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue'
+</script>
+<template>
+  <Slider :step="0.01" :min="5" :max="10">
+    <!-- ... -->
+  </Slider>
+</template>
 ```
 
 ### Listening for changes
@@ -101,19 +139,18 @@ places, you should set the value of step to `0.01`:
 When the slider value changes, the `onChange` and `onChangeEnd` callbacks are
 invoked. You can use this to set up custom behaviors in your app.
 
-```tsx
-//<script>
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue'
 
 const handleOnChange = (value) => console.log(value)
 const handleOnChangeEnd = (value) => console.log(value)
-
-//<template>
-<Slider
-  @change="handleOnChange"
-  @change-end="handleOnChangeEnd"
->
-  {/*...*/}
-</Slider>
+</script>
+<template>
+  <Slider @change="handleOnChange" @change-end="handleOnChangeEnd">
+    <!-- ... -->
+  </Slider>
+</template>
 ```
 
 ### Changing the orientation
@@ -127,6 +164,13 @@ increment/decrement its value.
 > Don't forget to change the styles of the vertical slider by specifying its
 > height
 
-```tsx
-<Slider orientation="vertical">{/*...*/}</Slider>
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue'
+</script>
+<template>
+  <Slider orientation="vertical">
+    <!-- ... -->
+  </Slider>
+</template>
 ```

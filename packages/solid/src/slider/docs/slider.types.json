@@ -46,7 +46,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n}>",
+      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n  hiddenInput: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the slider. Useful for composition."
     },
@@ -91,7 +91,7 @@
       "description": "The orientation of the slider"
     },
     "origin": {
-      "type": "'center' | 'start'",
+      "type": "'start' | 'center'",
       "isRequired": false,
       "description": "- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
     },
@@ -106,7 +106,7 @@
       "description": "The step value of the slider"
     },
     "thumbAlignment": {
-      "type": "'contain' | 'center'",
+      "type": "'center' | 'contain'",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
     },

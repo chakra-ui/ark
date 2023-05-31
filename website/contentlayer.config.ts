@@ -44,7 +44,7 @@ export const ComponentDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
     types: {
       type: 'json',
@@ -102,7 +102,7 @@ export const GeneralDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))
@@ -126,7 +126,7 @@ export const ChangelogDocument = defineDocumentType(() => ({
     },
     description: {
       type: 'string',
-      resolve: () => 'See what is new',
+      resolve: () => 'All notable changes to this project will be documented in this file.',
     },
     route: {
       type: 'string',
@@ -134,7 +134,7 @@ export const ChangelogDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))

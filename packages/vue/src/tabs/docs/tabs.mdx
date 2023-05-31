@@ -29,30 +29,41 @@ Note that the `TabTrigger` component accepts a single JSX element which will
 receive all necessary props to add the event listeners and attributes to ensure
 the desired accessibility.
 
-```tsx
-<Tabs>
-  <TabList>
-    <TabTrigger value="react">
-      <button>React</button>
-    </TabTrigger>
-    <TabTrigger value="solid">
-      <button>Solid</button>
-    </TabTrigger>
-    <TabTrigger value="vue">
-      <button>Vue</button>
-    </TabTrigger>
-  </TabList>
-  <TabContent value="react">
-    A JavaScript library for building user interfaces
-  </TabContent>
-  <TabContent value="solid">
-    Simple and performant reactivity for building user interfaces.
-  </TabContent>
-  <TabContent value="vue">
-    An approachable, performant and versatile framework for building web user
-    interfaces.
-  </TabContent>
-</Tabs>
+```vue
+<script setup lang="ts">
+import {
+  TabContent,
+  TabIndicator,
+  TabList,
+  Tabs,
+  TabTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs>
+    <TabList>
+      <TabTrigger value="react">
+        <button>React</button>
+      </TabTrigger>
+      <TabTrigger value="solid">
+        <button>Solid</button>
+      </TabTrigger>
+      <TabTrigger value="vue">
+        <button>Vue</button>
+      </TabTrigger>
+    </TabList>
+    <TabContent value="react">
+      A JavaScript library for building user interfaces
+    </TabContent>
+    <TabContent value="solid">
+      Simple and performant reactivity for building user interfaces.
+    </TabContent>
+    <TabContent value="vue">
+      An approachable, performant and versatile framework for building web user
+      interfaces.
+    </TabContent>
+  </Tabs>
+</template>
 ```
 
 ### Setting the initially selected tab
@@ -60,8 +71,15 @@ the desired accessibility.
 To set the initially selected tab, set the `defaultValue` prop on the `Tabs`
 component.
 
-```tsx
-<Tabs defaultValue="react">{/*...*/}</Tabs>
+```vue
+<script setup lang="ts">
+import { Tabs } from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs defaultValue="react">
+    <!-- ... -->
+  </Tabs>
+</template>
 ```
 
 ### Control the selected tab
@@ -70,19 +88,13 @@ To control the selected tab, set the `defaultValue` prop on the `Tabs`
 component. Listen to the `change` event to be notified when the selected tab
 changes.
 
-```tsx
+```vue
 <script setup lang="ts">
-import {
-  TabContent,
-  TabList,
-  Tabs,
-  TabTrigger,
-  TabsProps
-} from '@ark-ui/vue'
+import { TabContent, TabList, Tabs, TabTrigger, TabsProps } from '@ark-ui/vue'
 
-const currentTab = ref<TabsProps['defaultValue']>('react')
+const currentTab = ref('react')
 
-const handleChange: TabsProps['onChange'] = ({ value }) => {
+const handleChange = ({ value }) => {
   currentTab.value = value
 }
 </script>
@@ -109,21 +121,32 @@ const handleChange: TabsProps['onChange'] = ({ value }) => {
 The `TabIndicator` component can be used to show an indicator under the selected
 tab. The `TabIndicator` component must be a child of the `TabList` component.
 
-```tsx {12}
-<Tabs>
-  <TabList>
-    <TabTrigger value="react">
-      <button>React</button>
-    </TabTrigger>
-    <TabTrigger value="solid">
-      <button>Solid</button>
-    </TabTrigger>
-    <TabTrigger value="vue">
-      <button>Vue</button>
-    </TabTrigger>
-    <TabIndicator />
-  </TabList>
-</Tabs>
+```vue {12}
+<script setup lang="ts">
+import {
+  TabContent,
+  TabIndicator,
+  TabList,
+  Tabs,
+  TabTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs>
+    <TabList>
+      <TabTrigger value="react">
+        <button>React</button>
+      </TabTrigger>
+      <TabTrigger value="solid">
+        <button>Solid</button>
+      </TabTrigger>
+      <TabTrigger value="vue">
+        <button>Vue</button>
+      </TabTrigger>
+      <TabIndicator />
+    </TabList>
+  </Tabs>
+</template>
 ```
 
 ### Changing the orientation
@@ -131,8 +154,15 @@ tab. The `TabIndicator` component must be a child of the `TabList` component.
 The default orientation of the tabs is `horizontal`. To change the orientation,
 set the `orientation` prop to `vertical`.
 
-```tsx
-<Tabs orientation="vertical">{/*...*/}</Tabs>
+```vue
+<script setup lang="ts">
+import { Tabs } from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs orientation="vertical">
+    <!-- ... -->
+  </Tabs>
+</template>
 ```
 
 ### Manual tab activation
@@ -143,8 +173,15 @@ keyboard or pointer interaction. This is called "automatic tab activation".
 "manual tab activation" means the tab is selected with the <kbd>Enter</kbd> key
 or by clicking on the tab.
 
-```tsx
-<Tabs activationMode="manual">{/*...*/}</Tabs>
+```vue
+<script setup lang="ts">
+import { Tabs } from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs activationMode="manual">
+    <!-- ... -->
+  </Tabs>
+</template>
 ```
 
 ### Listening for events
@@ -152,15 +189,17 @@ or by clicking on the tab.
 - `change` — Callback fired when the selected tab changes.
 - `focus` — Callback fired when the selected tab receives focus.
 
-```tsx
+```vue
 <script>
-import { Tabs, TabsProps } from '@ark-ui/vue'
+import { Tabs } from '@ark-ui/vue'
 
-const handleChange: TabsProps['onChange'] = (details) => console.log(details)
-const handleFocus: TabsProps['onFocus'] = (details) => console.log(details)
+const handleChange = (details) => console.log(details)
+const handleFocus = (details) => console.log(details)
 </script>
 <template>
-  <Tabs @change="handleChange" @focus="handleFocus"> {/*...*/} </Tabs>
+  <Tabs @change="handleChange" @focus="handleFocus">
+    <!-- ... -->
+  </Tabs>
 </template>
 ```
 
@@ -170,8 +209,18 @@ To disable a tab, set the disabled prop on the `TabTrigger` component. When a
 Tab is disabled, it is skipped during keyboard navigation and it is not
 clickable.
 
-```tsx
-<TabTrigger value="react" disabled>
-  <button>React</button>
-</TabTrigger>
+```vue
+<script setup lang="ts">
+import { Tabs, TabList, TabTrigger } from '@ark-ui/vue'
+</script>
+<template>
+  <Tabs>
+    <TabList>
+      <TabTrigger value="react" disabled>
+        <button>React</button>
+      </TabTrigger>
+      <!-- ... -->
+    </TabList>
+  </Tabs>
+</template>
 ```

@@ -1,3 +1,3 @@
 {
-  "Basic": "const Basic = () => (\n  <Tooltip openDelay={0} closeDelay={0}>\n    <TooltipTrigger>\n      <span>Hover me</span>\n    </TooltipTrigger>\n    <Portal>\n      <TooltipPositioner>\n        <TooltipArrow>\n          <TooltipArrowTip />\n        </TooltipArrow>\n        <TooltipContent>My Tooltip</TooltipContent>\n      </TooltipPositioner>\n    </Portal>\n  </Tooltip>\n)"
+  "Basic": "const Basic = () => (\n  <Tooltip openDelay={0} closeDelay={0}>\n    <TooltipTrigger>Hover Me</TooltipTrigger>\n    <Portal>\n      <TooltipPositioner>\n        <TooltipArrow>\n          <TooltipArrowTip />\n        </TooltipArrow>\n        <TooltipContent>My Tooltip</TooltipContent>\n      </TooltipPositioner>\n    </Portal>\n  </Tooltip>\n)"
 }

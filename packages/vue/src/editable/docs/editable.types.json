@@ -20,13 +20,18 @@
       "isRequired": false,
       "description": "Whether the editable is disabled"
     },
+    "finalFocusEl": {
+      "type": "() => HTMLElement | null",
+      "isRequired": false,
+      "description": "The element that should receive focus when the editable is closed.\nBy default, it will focus on the trigger element."
+    },
     "form": {
       "type": "string",
       "isRequired": false,
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

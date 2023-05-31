@@ -11,7 +11,10 @@ export const Playground = (props: PlaygroundProps) => {
   const { component } = props
   const Component = match(component)
     .with('accordion', () => lazyLoad(() => import('./demo/Accordion'), 'DemoAccordion'))
+    .with('carousel', () => lazyLoad(() => import('./demo/Carousel'), 'DemoCarousel'))
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
+    .with('color-picker', () => lazyLoad(() => import('./demo/ColorPicker'), 'DemoColorPicker'))
+    .with('date-picker', () => lazyLoad(() => import('./demo/DatePicker'), 'DemoDatePicker'))
     .with('dialog', () => lazyLoad(() => import('./demo/Dialog'), 'DemoDialog'))
     .with('hover-card', () => lazyLoad(() => import('./demo/HoverCard'), 'DemoHoverCard'))
     .with('menu', () => lazyLoad(() => import('./demo/Menu'), 'DemoMenu'))
@@ -26,6 +29,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('select', () => lazyLoad(() => import('./demo/Select'), 'DemoSelect'))
     .with('slider', () => lazyLoad(() => import('./demo/Slider'), 'DemoSlider'))
     .with('splitter', () => lazyLoad(() => import('./demo/Splitter'), 'DemoSplitter'))
+    .with('switch', () => lazyLoad(() => import('./demo/Switch'), 'DemoSwitch'))
     .with('tabs', () => lazyLoad(() => import('./demo/Tabs'), 'DemoTabs'))
     .with('tags-input', () => lazyLoad(() => import('./demo/TagsInput'), 'DemoTagsInput'))
     .with('toast', () => lazyLoad(() => import('./demo/Toast'), 'DemoToast'))
@@ -54,7 +58,7 @@ export const Playground = (props: PlaygroundProps) => {
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Flex justify="center" align="center" flex="1" p="4" bg="bg.surface">
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} bg="bg.surface">
     {props.children}
   </Flex>
 )

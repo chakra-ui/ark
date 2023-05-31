@@ -1,25 +1,19 @@
-import { connect, machine, type Context as TagsInputContext } from '@zag-js/tags-input'
+import { connect, machine } from '@zag-js/tags-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
-import type { Optional } from '../types'
+import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
 import { useId } from '../utils'
+import type { TagsInputContext } from './tags-input'
 
-type UseTagsInputPropsContext = Optional<TagsInputContext, 'id'> & {
-  modelValue?: TagsInputContext['value']
-}
-
-export type UseTagsInputProps = {
-  context: UseTagsInputPropsContext
-  emit: CallableFunction
-}
-
-export const useTagsInput = (emit: CallableFunction, context: UseTagsInputPropsContext) => {
+export const useTagsInput = <T extends ExtractPropTypes<TagsInputContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)

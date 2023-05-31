@@ -1,0 +1,119 @@
+[data-scope='tabs'][data-part='root'] {
+  max-width: 20em;
+}
+
+[data-scope='tabs'][data-part='root'][data-orientation='vertical'] {
+  display: flex;
+}
+
+[data-scope='tabs'][data-part='tablist'][data-orientation='vertical'] {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-scope='tabs'][data-part='tablist'] {
+  margin: 0 0 -0.1em;
+  overflow: visible;
+}
+
+[data-scope='tabs'][data-part='trigger'] {
+  position: relative;
+  margin: 0;
+  padding: 0.3em 0.5em 0.4em;
+  border: 1px solid hsl(219, 1%, 72%);
+  border-radius: 0.2em 0.2em 0 0;
+  box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
+  overflow: visible;
+  font-size: inherit;
+  background: hsl(220, 20%, 94%);
+}
+
+[data-scope='tabs'][data-part='trigger']:hover,
+[data-scope='tabs'][data-part='trigger']:focus,
+[data-scope='tabs'][data-part='trigger']:active {
+  outline: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+[data-scope='tabs'][data-part='trigger'][data-selected] {
+  border-radius: 0;
+  background: hsl(220, 43%, 99%);
+  outline: 0;
+}
+
+[data-scope='tabs'][data-part='trigger'][data-selected]:not(:focus):not(:hover)::before {
+  border-top: 5px solid hsl(218, 96%, 48%);
+}
+
+[data-scope='tabs'][data-part='trigger'][data-selected]::after {
+  position: absolute;
+  z-index: 3;
+  bottom: -1px;
+  right: 0;
+  left: 0;
+  height: 0.3em;
+  background: hsl(220, 43%, 99%);
+  box-shadow: none;
+  content: '';
+}
+
+[data-scope='tabs'][data-part='trigger']:hover::before,
+[data-scope='tabs'][data-part='trigger']:focus::before {
+  border-color: hsl(20, 96%, 48%);
+}
+
+[data-scope='tabs'][data-part='trigger']:hover::before,
+[data-scope='tabs'][data-part='trigger']:focus::before,
+[data-scope='tabs'][data-part='trigger'][data-selected]::before {
+  position: absolute;
+  bottom: 100%;
+  right: -1px;
+  left: -1px;
+  border-radius: 0.2em 0.2em 0 0;
+  border-top: 3px solid hsl(20, 96%, 48%);
+  content: '';
+}
+
+[data-scope='tabs'][data-part='content'] {
+  position: relative;
+  z-index: 2;
+  padding: 0.5em 0.5em 0.7em;
+  border: 1px solid hsl(219, 1%, 72%);
+  border-radius: 0 0.2em 0.2em 0.2em;
+  box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
+  background: hsl(220, 43%, 99%);
+}
+[data-scope='tabs'][data-part='content'] p {
+  margin: 0;
+}
+[data-scope='tabs'][data-part='content'] * + p {
+  margin-top: 1em;
+}
+[data-scope='tabs'][data-part='content']:focus {
+  border-color: hsl(20, 96%, 48%);
+  box-shadow: 0 0 0.2em hsl(20, 96%, 48%);
+  outline: 0;
+}
+[data-scope='tabs'][data-part='content']:focus::after {
+  position: absolute;
+  bottom: 0;
+  right: -1px;
+  left: -1px;
+  border-bottom: 3px solid hsl(20, 96%, 48%);
+  border-radius: 0 0 0.2em 0.2em;
+  content: '';
+}
+
+[data-scope='tabs'][data-part='indicator'] {
+  background-color: red;
+  z-index: 10;
+}
+
+[data-scope='tabs'][data-part='indicator'][data-orientation='horizontal'] {
+  height: 4px;
+}
+
+[data-scope='tabs'][data-part='indicator'][data-orientation='vertical'] {
+  width: 4px;
+}

@@ -22,19 +22,14 @@ export default meta
 
 export const Basic = () => (
   <HoverCard>
-    <HoverCardTrigger>
-      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
-        Mastodon
-      </a>
-    </HoverCardTrigger>
-
+    <HoverCardTrigger>Hover me</HoverCardTrigger>
     <Portal>
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
             <HoverCardArrowTip />
           </HoverCardArrow>
-          Mastodon Preview
+          Content
         </HoverCardContent>
       </HoverCardPositioner>
     </Portal>
@@ -46,19 +41,15 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setOpen(!isOpen)}>click me</button>
-      <HoverCard open={isOpen} onClose={() => setOpen(false)} openDelay={0} closeDelay={0}>
-        <HoverCardTrigger>
-          <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
-            Mastodon
-          </a>
-        </HoverCardTrigger>
+      <HoverCard open={isOpen} onClose={() => setOpen(false)}>
+        <HoverCardTrigger>Hover me</HoverCardTrigger>
         <Portal>
           <HoverCardPositioner>
             <HoverCardContent>
               <HoverCardArrow>
                 <HoverCardArrowTip />
               </HoverCardArrow>
-              Mastodon Preview
+              Content
             </HoverCardContent>
           </HoverCardPositioner>
         </Portal>
@@ -66,3 +57,39 @@ export const Controlled = () => {
     </>
   )
 }
+
+export const Positioning = () => (
+  <HoverCard positioning={{ placement: 'right', gutter: 12 }}>
+    <HoverCardTrigger>Hover me</HoverCardTrigger>
+    <Portal>
+      <HoverCardPositioner>
+        <HoverCardContent>
+          <HoverCardArrow>
+            <HoverCardArrowTip />
+          </HoverCardArrow>
+          Content
+        </HoverCardContent>
+      </HoverCardPositioner>
+    </Portal>
+  </HoverCard>
+)
+
+export const RenderProp = () => (
+  <HoverCard>
+    {(api) => (
+      <>
+        <HoverCardTrigger>Hover me {api.isOpen ? '▲' : '▼'} </HoverCardTrigger>
+        <Portal>
+          <HoverCardPositioner>
+            <HoverCardContent>
+              <HoverCardArrow>
+                <HoverCardArrowTip />
+              </HoverCardArrow>
+              Content
+            </HoverCardContent>
+          </HoverCardPositioner>
+        </Portal>
+      </>
+    )}
+  </HoverCard>
+)

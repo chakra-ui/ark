@@ -1,20 +1,23 @@
-import { connect, machine, type Context } from '@zag-js/radio-group'
+import { connect, machine } from '@zag-js/radio-group'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
+import type { RadioGroupContext } from './radio-group'
 
-export type UseRadioGroupContext = Optional<Context, 'id'> & {
-  modelValue?: Context['value']
-}
-
-export const useRadioGroup = (emit: CallableFunction, context: UseRadioGroupContext) => {
+export const useRadioGroup = <T extends ExtractPropTypes<RadioGroupContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
+
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
@@ -25,5 +28,3 @@ export const useRadioGroup = (emit: CallableFunction, context: UseRadioGroupCont
 
   return computed(() => connect(state.value, send, normalizeProps))
 }
-
-export type UseRadioGroupReturn = UnwrapRef<ReturnType<typeof useRadioGroup>>

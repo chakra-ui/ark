@@ -1,69 +1,72 @@
-import { createSignal, createUniqueId } from 'solid-js'
-import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
+import type { Meta } from 'storybook-solidjs'
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from '.'
 import './splitter.css'
 
-export const Basic = (props: Partial<SplitterProps>) => {
-  const [first, second] = [createUniqueId(), createUniqueId()]
-  return (
-    <>
-      <Splitter
-        size={[
-          { id: first, size: 50 },
-          { id: second, size: 50 },
-        ]}
-        {...props}
-      >
-        <SplitterPanel id={first}>
-          <p>{first}</p>
-        </SplitterPanel>
-        <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div class="bar" />
-        </SplitterResizeTrigger>
-        <SplitterPanel id={second}>{props.children ?? <p>{second}</p>}</SplitterPanel>
-      </Splitter>
-    </>
-  )
+const meta: Meta = {
+  title: 'Splitter',
 }
 
-export const Nested = () => (
-  <div style={{ height: '100vh' }}>
-    <Basic orientation="vertical">
-      <Basic>
-        <Basic orientation="vertical" />
-      </Basic>
-    </Basic>
-  </div>
+export default meta
+
+export const Basic = () => (
+  <Splitter
+    size={[
+      { id: 'a', size: 50 },
+      { id: 'b', size: 50 },
+    ]}
+  >
+    <SplitterPanel id="a">A</SplitterPanel>
+    <SplitterResizeTrigger id="a:b" />
+    <SplitterPanel id="b">B</SplitterPanel>
+  </Splitter>
 )
 
-export const Controlled = () => {
-  const [size, setSize] = createSignal([
-    { id: 'first', size: 50 },
-    { id: 'second', size: 50 },
-  ])
+export const RenderProp = () => (
+  <Splitter
+    size={[
+      { id: 'a', size: 50 },
+      { id: 'b', size: 50 },
+    ]}
+  >
+    {(api) => (
+      <>
+        <SplitterPanel id="a">
+          <button onClick={() => api().setSize('a', 10)}>Set to 10%</button>
+        </SplitterPanel>
+        <SplitterResizeTrigger id="a:b" />
+        <SplitterPanel id="b">
+          <button onClick={() => api().setSize('b', 10)}>Set to 10%</button>
+        </SplitterPanel>
+      </>
+    )}
+  </Splitter>
+)
 
-  return (
-    <div style={{ height: '100vh' }}>
-      <Splitter
-        size={size()}
-        onResizeEnd={(details) => {
-          setSize(
-            details.size.map((s) => ({
-              id: `${s.id}`,
-              size: s.size!,
-            })),
-          )
-        }}
-      >
-        <SplitterPanel id={'first'}>
-          <p>first</p>
-        </SplitterPanel>
-        <SplitterResizeTrigger id={`first:second`}>
-          <div class="bar" />
-        </SplitterResizeTrigger>
-        <SplitterPanel id="second">
-          <p>second</p>
-        </SplitterPanel>
-      </Splitter>
-    </div>
-  )
-}
+export const Events = () => (
+  <Splitter
+    size={[
+      { id: 'a', size: 50 },
+      { id: 'b', size: 50 },
+    ]}
+    onResizeStart={(details) => console.log('onResizeStart', details)}
+    onResizeEnd={(details) => console.log('onResizeEnd', details)}
+  >
+    <SplitterPanel id="a">A</SplitterPanel>
+    <SplitterResizeTrigger id="a:b" />
+    <SplitterPanel id="b">B</SplitterPanel>
+  </Splitter>
+)
+
+export const Vertical = () => (
+  <Splitter
+    orientation="vertical"
+    size={[
+      { id: 'a', size: 50 },
+      { id: 'b', size: 50 },
+    ]}
+  >
+    <SplitterPanel id="a">A</SplitterPanel>
+    <SplitterResizeTrigger id="a:b" />
+    <SplitterPanel id="b">B</SplitterPanel>
+  </Splitter>
+)

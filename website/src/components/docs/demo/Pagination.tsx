@@ -15,7 +15,7 @@ export const DemoPagination = (props: Partial<PaginationProps>) => (
     {({ pages }) => (
       <>
         <PaginationList>
-          <PaginationPrevPageTrigger>
+          <PaginationPrevPageTrigger asChild>
             <Button variant="secondary" size="md">
               Previous
             </Button>
@@ -23,7 +23,7 @@ export const DemoPagination = (props: Partial<PaginationProps>) => (
 
           {pages.map((page, index) =>
             page.type === 'page' ? (
-              <PaginationPageTrigger key={index} value={page.value}>
+              <PaginationPageTrigger key={index} {...page} asChild>
                 <Button variant="tertiary" size="md">
                   {page.value}
                 </Button>
@@ -35,7 +35,7 @@ export const DemoPagination = (props: Partial<PaginationProps>) => (
             ),
           )}
 
-          <PaginationNextPageTrigger>
+          <PaginationNextPageTrigger asChild>
             <Button variant="secondary" size="md">
               Next
             </Button>

@@ -1,11 +1,13 @@
-import { Children, cloneElement, type ReactElement } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxTriggerProps = { children: ReactElement }
+export type ComboboxTriggerProps = HTMLArkProps<'button'>
 
-export const ComboboxTrigger = (props: ComboboxTriggerProps) => {
+export const ComboboxTrigger = forwardRef<'button'>((props, ref) => {
   const { triggerProps } = useComboboxContext()
+  const mergedProps = mergeProps(triggerProps, props)
 
-  const onlyChild = Children.only(props.children)
-  return cloneElement(onlyChild, triggerProps)
-}
+  return <ark.button {...mergedProps} ref={ref} />
+})

@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import {
   Popover,
   PopoverAnchor,
@@ -10,13 +11,17 @@ import {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
-} from './'
+} from '.'
+
+const meta: Meta = {
+  title: 'Popover',
+}
+
+export default meta
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>
-      <button>click me</button>
-    </PopoverTrigger>
+    <PopoverTrigger>Open Popover</PopoverTrigger>
     <PopoverPositioner>
       <PopoverContent>
         <PopoverArrow>
@@ -25,9 +30,7 @@ export const Basic = () => (
         <PopoverTitle>Title</PopoverTitle>
         <PopoverDescription>Description</PopoverDescription>
         <input type="text" />
-        <PopoverCloseTrigger>
-          <button>close</button>
-        </PopoverCloseTrigger>
+        <PopoverCloseTrigger>Close</PopoverCloseTrigger>
       </PopoverContent>
     </PopoverPositioner>
   </Popover>
@@ -39,9 +42,7 @@ export const Controlled = () => {
     <>
       <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
       <Popover open={isOpen()}>
-        <PopoverAnchor>
-          <span>anchor</span>
-        </PopoverAnchor>
+        <PopoverAnchor>Anchor</PopoverAnchor>
         <PopoverPositioner>
           <PopoverContent>
             <PopoverArrow>
@@ -50,9 +51,7 @@ export const Controlled = () => {
             <PopoverTitle>Title</PopoverTitle>
             <PopoverDescription>Description</PopoverDescription>
             <input type="text" />
-            <PopoverCloseTrigger>
-              <button>close</button>
-            </PopoverCloseTrigger>
+            <PopoverCloseTrigger>Close</PopoverCloseTrigger>
           </PopoverContent>
         </PopoverPositioner>
       </Popover>

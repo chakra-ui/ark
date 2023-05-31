@@ -6,7 +6,7 @@ import { useTooltip, type UseTooltipProps } from './use-tooltip'
 export type TooltipProps = UseTooltipProps & { children: JSX.Element }
 
 export const Tooltip = (props: TooltipProps) => {
-  const [useTooltipProps, rest] = createSplitProps<UseTooltipProps>()(props, [
+  const [useTooltipProps, restProps] = createSplitProps<UseTooltipProps>()(props, [
     'aria-label',
     'closeDelay',
     'closeOnEsc',
@@ -22,7 +22,8 @@ export const Tooltip = (props: TooltipProps) => {
     'openDelay',
     'positioning',
   ])
-  const tooltip = useTooltip(useTooltipProps)
 
-  return <TooltipProvider value={tooltip} {...rest} />
+  const api = useTooltip(useTooltipProps)
+
+  return <TooltipProvider value={api} {...restProps} />
 }

@@ -1,0 +1,277 @@
+---
+id: select
+name: Select
+description:
+  A Select component allows users pick a value from predefined options.
+---
+
+## Import
+
+```ts
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectOptionGroup,
+  SelectOptionGroupLabel,
+  SelectPositioner,
+  SelectTrigger,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The Select component consists of the `SelectContent`, `SelectLabel`,
+`SelectOption`, `SelectOptionGroup`, `SelectOptionGroupLabel`,
+`SelectPositioner` and `SelectTrigger` components. Combine them as desired to
+fit your design system.
+
+Note that the `SelectTrigger` component accepts a single JSX element which will
+receive all necessary props to add the event listeners and attributes to ensure
+the desired accessibility.
+
+```vue
+<script setup lang="ts">
+import { Teleport } from 'vue'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectPositioner,
+  SelectTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Select v-slot="{ selectedOption }">
+    <SelectLabel>Framework</SelectLabel>
+    <SelectTrigger>
+      <button>{{ selectedOption?.label ?? 'Select option' }}</button>
+    </SelectTrigger>
+    <Teleport to="body">
+      <SelectPositioner>
+        <SelectContent>
+          <SelectOption value="react" label="React" />
+          <SelectOption value="solid" label="Solid"> Solid </SelectOption>
+          <SelectOption value="vue" label="Vue"> Vue </SelectOption>
+        </SelectContent>
+      </SelectPositioner>
+    </Teleport>
+  </Select>
+</template>
+```
+
+### Grouping options
+
+When dealing with a larger amount of options, groups help to keep them
+organized. Use the `SelectOptionGroup` and `SelectOptionGroupLabel` components
+to group options.
+
+```vue {13-16}
+<script setup lang="ts">
+import { Teleport } from 'vue'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectOptionGroup,
+  SelectOptionGroupLabel,
+  SelectPositioner,
+  SelectTrigger,
+  Portal,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Select v-slot="{ selectedOption }">
+    <SelectLabel>Framework:</SelectLabel>
+    <SelectTrigger>
+      <button>{{ selectedOption?.label ?? 'Select option' }}</button>
+    </SelectTrigger>
+    <Teleport to="body">
+      <SelectPositioner>
+        <SelectContent>
+          <SelectOptionGroup id="framework">
+            <SelectOptionGroupLabel htmlFor="framework">
+              Frameworks
+            </SelectOptionGroupLabel>
+            <SelectOption value="react" label="React" />
+            <SelectOption value="solid" label="Solid"> Solid </SelectOption>
+            <SelectOption value="vue" label="Vue"> Vue </SelectOption>
+          </SelectOptionGroup>
+        </SelectContent>
+      </SelectPositioner>
+    </Teleport>
+  </Select>
+</template>
+```
+
+### Selecting option on tab key
+
+While navigating the options, pressing the <kbd>Tab</kbd> key blurs the select
+and does nothing. In some cases, you might what the <kbd>Tab</kbd> key to select
+the currently highlighted option. To enable this behaviour, set `selectOnTab` to
+`true`.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+</script>
+<template>
+  <Select selectOnTab>
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Disabling the select
+
+To disable the select, set the `disabled` prop on the select component to
+`true`.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+</script>
+<template>
+  <Select disabled>
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Disabling an option
+
+To disable an option, set the `disabled` prop on the `SelectOption` component to
+`true`. This will make it unselectable via mouse and keyboard, and it will be
+skipped on keyboard navigation.
+
+```vue {15}
+<script setup lang="ts">
+import { Teleport } from 'vue'
+import {
+  Select,
+  SelectContent,
+  SelectLabel,
+  SelectOption,
+  SelectPositioner,
+  SelectTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Select v-slot="{ selectedOption }">
+    <SelectLabel>Framework</SelectLabel>
+    <SelectTrigger>
+      <button>{{ selectedOption?.label ?? 'Select option' }}</button>
+    </SelectTrigger>
+    <Portal>
+      <SelectPositioner>
+        <SelectContent>
+          <SelectOption value="react" label="React" />
+          <SelectOption value="solid" label="Solid"> Solid </SelectOption>
+          <SelectOption value="vue" label="Vue" disabled> Vue </SelectOption>
+        </SelectContent>
+      </SelectPositioner>
+    </Portal>
+  </Select>
+</template>
+```
+
+### Close on select
+
+This behaviour ensures that the menu is closed when an option is selected and is
+`true` by default. It's only concerned with when an option is selected with a
+pointer, <kbd>space</kbd> key or <kbd>Enter</kbd> key. To disable the behaviour,
+set the `closeOnSelect` prop to `false`.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+</script>
+<template>
+  <Select :closeOnSelect="false">
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Looping the keyboard navigation
+
+When navigating with the select using the <kbd>ArrowDown</kbd> and
+
+<kbd>ArrowUp</kbd> keys, the select stops at the first and last options. If you need
+want the navigation to loop back to the first or last option, set the `loop` prop
+to `true`.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+</script>
+<template>
+  <Select loop>
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Listening for highlight changes
+
+When an option is highlighted with the pointer or keyboard, the `@highlight`
+callback is invoked. You can listen for this change and do something with it.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+
+const handleHighlight = (details) => {
+  // details => { label: string, value: string }
+  console.log(details)
+}
+</script>
+<template>
+  <Select @highlight="handleHighlight">
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Listening for selection changes
+
+When an option is selected, the `@select` callback is invoked. You can listen
+for this change and do something with it.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+
+const handleSelect = (details) => {
+  // details => { label: string, value: string }
+  console.log(details)
+}
+</script>
+<template>
+  <Select @select="handleSelect">
+    <!-- ... -->
+  </Select>
+</template>
+```
+
+### Listening for open and close events
+
+When the select is opened or closed, the `@open` and `@close` callbacks are
+invoked. You can listen for these events and do something with it.
+
+```vue
+<script setup lang="ts">
+import { Select } from '@ark-ui/vue'
+</script>
+<template>
+  <Select
+    @open="() => console.log('Select opened')"
+    @close="() => console.log('Select closed')"
+  >
+    <!-- ... -->
+  </Select>
+</template>
+```

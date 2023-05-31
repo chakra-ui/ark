@@ -1,13 +1,14 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
 export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const [useRadioGroupProps, divProps] = createSplitProps<UseRadioGroupProps>()(props, [
+  const [groupParams, restProps] = createSplitProps<UseRadioGroupProps>()(props, [
     'dir',
     'disabled',
     'form',
@@ -20,11 +21,13 @@ export const RadioGroup = (props: RadioGroupProps) => {
     'readOnly',
     'value',
   ])
-  const radioGroup = useRadioGroup(useRadioGroupProps)
+
+  const api = useRadioGroup(groupParams)
+  const rootProps = mergeProps(() => api().rootProps, restProps)
 
   return (
-    <RadioGroupProvider value={radioGroup}>
-      <ark.div {...radioGroup().rootProps} {...divProps} />
+    <RadioGroupProvider value={api}>
+      <ark.div {...rootProps} />
     </RadioGroupProvider>
   )
 }

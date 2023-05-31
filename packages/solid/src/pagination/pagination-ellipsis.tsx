@@ -1,14 +1,16 @@
-import { type Assign } from '@polymorphic-factory/solid'
+import type { EllipsisProps } from '@zag-js/pagination/dist/pagination.types'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-type PaginationEllipsisParams = { index: number }
-export type PaginationEllipsisProps = Assign<HTMLArkProps<'span'>, PaginationEllipsisParams>
+export type PaginationEllipsisProps = Assign<HTMLArkProps<'div'>, EllipsisProps>
 
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
-  const [ellipsisProps, spanProps] = createSplitProps<PaginationEllipsisParams>()(props, ['index'])
-  const pagination = usePaginationContext()
+  const [ellipsisParams, restProps] = createSplitProps<EllipsisProps>()(props, ['index'])
+  const api = usePaginationContext()
+  const ellipsisProps = mergeProps(() => api().getEllipsisProps(ellipsisParams), restProps)
 
-  return <ark.span {...pagination().getEllipsisProps(ellipsisProps)} {...spanProps} />
+  return <ark.div {...ellipsisProps} />
 }

@@ -158,6 +158,16 @@ const main = async () => {
       component,
       typeExports: typeExports
         .map(searchType)
+        .map((x) =>
+          Object.fromEntries(
+            Object.entries(x)
+              .map((y) => [
+                y[0],
+                Object.fromEntries(Object.entries(y[1]).filter((z) => z[0] !== 'asChild')),
+              ])
+              .filter((y) => Object.keys(y[1]).length !== 0),
+          ),
+        )
         .filter((value) => Object.keys(value).length !== 0)
         .reduce((acc, value) => ({ ...acc, ...value }), {}),
     }))
@@ -173,6 +183,7 @@ const main = async () => {
 }
 
 main().catch((err) => {
-  console.error(err.message)
+  const error = new Error(err)
+  console.error(error.stack)
   process.exit(1)
 })

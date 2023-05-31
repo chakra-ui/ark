@@ -1,7 +1,7 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { type Assign } from '../types'
 import { ToastItemProvider } from './toast-item-context'
 import { useToastItem, type UseToastItemProps } from './use-toast-item'

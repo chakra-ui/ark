@@ -41,12 +41,17 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the combobox. Useful for composition."
     },

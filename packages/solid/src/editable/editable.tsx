@@ -1,19 +1,26 @@
-import { type Assign } from '@polymorphic-factory/solid'
-import { children, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { splitProps, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { EditableProvider, useEditableContext, type EditableContext } from './editable-context'
+import type { Assign } from '../types'
+import { EditableProvider, type EditableContext } from './editable-context'
 import { useEditable, type UseEditableProps } from './use-editable'
 
-export type EditableProps = Assign<EditableContextWrapperProps, UseEditableProps>
+export type EditableProps = Assign<
+  HTMLArkProps<'div'>,
+  UseEditableProps & {
+    children: JSX.Element | ((api: EditableContext) => JSX.Element)
+  }
+>
 
 export const Editable = (props: EditableProps) => {
-  const [useEditableProps, editableContextProps] = createSplitProps<UseEditableProps>()(props, [
+  const [useEditableProps, restProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
     'dir',
     'disabled',
+    'finalFocusEl',
     'form',
     'getRootNode',
     'id',
@@ -34,29 +41,17 @@ export const Editable = (props: EditableProps) => {
     'translations',
     'value',
   ])
+
   const editable = useEditable(useEditableProps)
+
+  const [childrenProps, localProps] = splitProps(restProps, ['children'])
+  const rootProps = mergeProps(() => editable().rootProps, localProps)
+
+  const getChildren = () => runIfFn(childrenProps.children, editable)
 
   return (
     <EditableProvider value={editable}>
-      <EditableContextWrapper {...editableContextProps} />
+      <ark.div {...rootProps}>{getChildren()}</ark.div>
     </EditableProvider>
-  )
-}
-
-type EditableContextWrapperProps = Assign<
-  HTMLArkProps<'div'>,
-  {
-    children: JSX.Element | ((context: EditableContext) => JSX.Element)
-  }
->
-
-const EditableContextWrapper = (props: EditableContextWrapperProps) => {
-  const editable = useEditableContext()
-  const view = children(() => runIfFn(props.children, editable))
-
-  return (
-    <ark.div {...editable().rootProps} {...props}>
-      {view()}
-    </ark.div>
   )
 }

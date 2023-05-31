@@ -21,7 +21,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n}>",
+      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },

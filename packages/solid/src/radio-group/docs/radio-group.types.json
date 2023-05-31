@@ -44,7 +44,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },

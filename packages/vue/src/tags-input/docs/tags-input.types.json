@@ -56,7 +56,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -141,7 +141,7 @@
       "isRequired": true,
       "description": "Function to clear the value of the tags entry input."
     },
-    "clearTriggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true },
+    "clearTriggerProps": { "type": "ButtonHTMLAttributes & ReservedProps", "isRequired": true },
     "clearValue": {
       "type": "(id?: string | undefined) => void",
       "isRequired": true,
@@ -155,16 +155,16 @@
       "description": "Function to focus the tags entry input."
     },
     "getTagDeleteTriggerProps": {
-      "type": "(options: TagProps) => ElementAttrs<ButtonHTMLAttributes>",
+      "type": "(options: TagProps) => ButtonHTMLAttributes & ReservedProps",
       "isRequired": true
     },
     "getTagInputProps": {
-      "type": "(options: TagProps) => ElementAttrs<InputHTMLAttributes>",
+      "type": "(options: TagProps) => InputHTMLAttributes & ReservedProps",
       "isRequired": true
     },
     "getTagProps": { "type": "(options: TagProps) => Attrs<HTMLAttributes>", "isRequired": true },
-    "hiddenInputProps": { "type": "ElementAttrs<InputHTMLAttributes>", "isRequired": true },
-    "inputProps": { "type": "ElementAttrs<InputHTMLAttributes>", "isRequired": true },
+    "hiddenInputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
+    "inputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
     "inputValue": {
       "type": "string",
       "isRequired": true,
@@ -180,7 +180,7 @@
       "isRequired": true,
       "description": "Whether the tags are empty"
     },
-    "labelProps": { "type": "ElementAttrs<LabelHTMLAttributes>", "isRequired": true },
+    "labelProps": { "type": "LabelHTMLAttributes & ReservedProps", "isRequired": true },
     "rootProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
     "setInputValue": {
       "type": "(value: string) => void",
@@ -208,10 +208,6 @@
       "description": "The value of the tags as a string."
     }
   },
-  "UseTagsInputProps": {
-    "context": { "type": "UseTagsInputPropsContext", "isRequired": true },
-    "emit": { "type": "CallableFunction", "isRequired": true }
-  },
   "UseTagsInputReturn": {
     "addValue": {
       "type": "(value: string) => void",
@@ -223,7 +219,7 @@
       "isRequired": true,
       "description": "Function to clear the value of the tags entry input."
     },
-    "clearTriggerProps": { "type": "ElementAttrs<ButtonHTMLAttributes>", "isRequired": true },
+    "clearTriggerProps": { "type": "ButtonHTMLAttributes & ReservedProps", "isRequired": true },
     "clearValue": {
       "type": "(id?: string | undefined) => void",
       "isRequired": true,
@@ -237,16 +233,16 @@
       "description": "Function to focus the tags entry input."
     },
     "getTagDeleteTriggerProps": {
-      "type": "(options: TagProps) => ElementAttrs<ButtonHTMLAttributes>",
+      "type": "(options: TagProps) => ButtonHTMLAttributes & ReservedProps",
       "isRequired": true
     },
     "getTagInputProps": {
-      "type": "(options: TagProps) => ElementAttrs<InputHTMLAttributes>",
+      "type": "(options: TagProps) => InputHTMLAttributes & ReservedProps",
       "isRequired": true
     },
     "getTagProps": { "type": "(options: TagProps) => Attrs<HTMLAttributes>", "isRequired": true },
-    "hiddenInputProps": { "type": "ElementAttrs<InputHTMLAttributes>", "isRequired": true },
-    "inputProps": { "type": "ElementAttrs<InputHTMLAttributes>", "isRequired": true },
+    "hiddenInputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
+    "inputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
     "inputValue": {
       "type": "string",
       "isRequired": true,
@@ -262,7 +258,7 @@
       "isRequired": true,
       "description": "Whether the tags are empty"
     },
-    "labelProps": { "type": "ElementAttrs<LabelHTMLAttributes>", "isRequired": true },
+    "labelProps": { "type": "LabelHTMLAttributes & ReservedProps", "isRequired": true },
     "rootProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
     "setInputValue": {
       "type": "(value: string) => void",
