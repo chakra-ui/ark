@@ -15,6 +15,7 @@ export const Pressable = forwardRef<'button', UsePressableProps>((props, ref) =>
     'disabled',
     'getRootNode',
     'id',
+    'longPressDelay',
     'onLongPress',
     'onPress',
     'onPressEnd',

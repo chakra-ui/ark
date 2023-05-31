@@ -37,6 +37,11 @@
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
+    "longPressDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount of time (in milliseconds) to wait before firing the `onLongPress` event."
+    },
     "onLongPress": {
       "type": "(event: PressEvent) => void",
       "isRequired": false,

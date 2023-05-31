@@ -26,6 +26,9 @@ const VueProps = createVueProps<UsePressableProps>({
   dir: {
     type: String as PropType<UsePressableProps['dir']>,
   },
+  longPressDelay: {
+    type: Number as PropType<UsePressableProps['longPressDelay']>,
+  },
 })
 
 export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineComponent({
