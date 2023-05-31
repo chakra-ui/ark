@@ -1,7 +1,7 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { cx } from '@/panda/css'
-import { Fira_Code, Inter } from '@next/font/google'
 import { NextSeo } from 'next-seo'
+import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import type { PropsWithChildren } from 'react'
 import '../../panda/styles.css'
