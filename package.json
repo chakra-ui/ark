@@ -39,7 +39,7 @@
     "@commitlint/config-conventional": "17.6.5",
     "@types/fs-extra": "11.0.1",
     "@types/node": "18.16.16",
-    "@types/prettier": "2.7.2",
+    "@types/prettier": "2.7.3",
     "concurrently": "8.0.1",
     "fs-extra": "11.1.1",
     "globby": "13.1.4",
