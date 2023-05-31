@@ -30,6 +30,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
+    "longPressDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount of time (in milliseconds) to wait before firing the `onLongPress` event."
+    },
     "onLongPress": {
       "type": "(event: PressEvent) => void",
       "isRequired": false,
@@ -91,6 +96,11 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "longPressDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount of time (in milliseconds) to wait before firing the `onLongPress` event."
     },
     "onLongPress": {
       "type": "(event: PressEvent) => void",
