@@ -10,7 +10,7 @@ import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './us
 export type SplitterProps = Assign<
   HTMLArkProps<'div'>,
   UseSplitterProps & {
-    children: JSX.Element | ((pages: UseSplitterReturn) => JSX.Element)
+    children?: JSX.Element | ((pages: UseSplitterReturn) => JSX.Element)
   }
 >
 
