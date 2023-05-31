@@ -1,0 +1,16 @@
+{
+  "AvatarProps": {
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "onError": { "type": "() => void", "isRequired": false },
+    "onLoad": { "type": "() => void", "isRequired": false }
+  }
+}

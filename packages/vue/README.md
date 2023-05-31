@@ -15,6 +15,7 @@
 At the moment, `@ark-ui/vue`offers the following components:
 
 - [Accordion](https://ark-ui.com/docs/vue/components/accordion)
+- [Avatar](https://ark-ui.com/docs/vue/components/avatar)
 - [Carousel](https://ark-ui.com/docs/vue/components/carousel)
 - [Checkbox](https://ark-ui.com/docs/vue/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/vue/components/color-picker)

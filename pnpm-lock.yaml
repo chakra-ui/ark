@@ -99,6 +99,9 @@ importers:
       '@zag-js/anatomy':
         specifier: 0.10.0
         version: 0.10.0
+      '@zag-js/avatar':
+        specifier: 0.10.0
+        version: 0.10.0
       '@zag-js/carousel':
         specifier: 0.10.0
         version: 0.10.0
@@ -6225,6 +6228,17 @@ packages:
     resolution: {integrity: sha512-Rd3NSwDQjIKd2uFuW/yA1lNeqU72oYIjx03H41t+CTTqFEf71zSxNh0XuOnmZQqejNoboy/9Kq8kv9/EuM2f6Q==}
     dependencies:
       '@zag-js/dom-query': 0.1.4
+    dev: false
+
+  /@zag-js/avatar@0.10.0:
+    resolution: {integrity: sha512-pqQRIy3CYYCEQIkbHKIKNWs0VkPd7T/J2EjodHgoWHFNNasIezOK2dHWcUIgsAi5pOeGYSTUxH3seEGiv/6lPw==}
+    dependencies:
+      '@zag-js/anatomy': 0.10.0
+      '@zag-js/core': 0.10.0
+      '@zag-js/dom-query': 0.10.0
+      '@zag-js/mutation-observer': 0.10.0
+      '@zag-js/types': 0.10.0
+      '@zag-js/utils': 0.10.0
     dev: false
 
   /@zag-js/carousel@0.10.0:
