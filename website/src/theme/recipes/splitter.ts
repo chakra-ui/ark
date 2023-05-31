@@ -27,22 +27,15 @@ export const splitter = defineRecipe({
       justifyContent: 'center',
       transition: 'background-color 0.2s ease-in-out',
       outline: '0',
+      padding: '0',
       position: 'relative',
       '&[data-orientation="horizontal"]': {
-        width: '1',
+        minWidth: '6px',
         margin: 'min(1rem, 20%) 0',
-        minHeight: '50px',
       },
       '&[data-orientation="vertical"]': {
-        minHeight: '1',
+        minHeight: '6px',
         margin: '0 min(1rem, 20%)',
-      },
-      _before: {
-        content: '""',
-        position: 'absolute',
-        display: 'block',
-        inset: '-4',
-        border: 'none',
       },
       _hover: {
         background: 'accent.muted',
