@@ -30,8 +30,8 @@ importers:
         specifier: 2.7.3
         version: 2.7.3
       concurrently:
-        specifier: 8.0.1
-        version: 8.0.1
+        specifier: 8.1.0
+        version: 8.1.0
       fs-extra:
         specifier: 11.1.1
         version: 11.1.1
@@ -686,8 +686,8 @@ importers:
         specifier: 18.2.4
         version: 18.2.4
       concurrently:
-        specifier: 8.0.1
-        version: 8.0.1
+        specifier: 8.1.0
+        version: 8.1.0
       eslint:
         specifier: 8.41.0
         version: 8.41.0
@@ -8424,8 +8424,8 @@ packages:
       well-known-symbols: 2.0.0
     dev: true
 
-  /concurrently@8.0.1:
-    resolution: {integrity: sha512-Sh8bGQMEL0TAmAm2meAXMjcASHZa7V0xXQVDBLknCPa9TPtkY9yYs+0cnGGgfdkW0SV1Mlg+hVGfXcoI8d3MJA==}
+  /concurrently@8.1.0:
+    resolution: {integrity: sha512-0AB6eOAtaW/r/kX2lCdolaWtT191ICeuJjEJvI9hT3zbPFuZ/iZaJwMRKwbuwADome7OKxk73L7od+fsveZ7tA==}
     engines: {node: ^14.13.0 || >=16.0.0}
     hasBin: true
     dependencies:
