@@ -1,5 +1,6 @@
 {
   "SplitterProps": {
+    "defaultSize": { "type": "PanelSizeData[]", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
