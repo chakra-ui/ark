@@ -10,18 +10,16 @@ import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './us
 
 export type SplitterProps = Assign<
   HTMLArkProps<'div'>,
-  Assign<
-    UseSplitterProps,
-    {
-      children?: ReactNode | ((state: UseSplitterReturn) => ReactNode)
-    }
-  >
+  UseSplitterProps & {
+    children?: ReactNode | ((state: UseSplitterReturn) => ReactNode)
+  }
 >
 
 export const Splitter = forwardRef<'div', SplitterProps>((props, ref) => {
   const [useSplitterProps, { children, ...divProps }] = createSplitProps<UseSplitterProps>()(
     props,
     [
+      'defaultSize',
       'dir',
       'getRootNode',
       'id',

@@ -13,7 +13,7 @@ export default meta
 
 export const Basic = () => (
   <Splitter
-    size={[
+    defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
@@ -26,7 +26,7 @@ export const Basic = () => (
 
 export const RenderProp = () => (
   <Splitter
-    size={[
+    defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
@@ -47,7 +47,7 @@ export const RenderProp = () => (
 
 export const Events = () => (
   <Splitter
-    size={[
+    defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
@@ -63,7 +63,7 @@ export const Events = () => (
 export const Vertical = () => (
   <Splitter
     orientation="vertical"
-    size={[
+    defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
