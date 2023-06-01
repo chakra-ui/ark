@@ -14,23 +14,13 @@ export default meta
 export const Basic = () => (
   <Avatar>
     <AvatarFallback>PA</AvatarFallback>
-    <AvatarImage
-      src="https://gravatar.com/avatar/31552c11962e933b63df3a205ffa1297?s=200&d=wavatar&r=x"
-      alt="avatar"
-    />
+    <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
   </Avatar>
 )
 
-export const RenderProp = () => (
-  <Avatar>
-    {(api) => (
-      <>
-        <AvatarFallback>{api.isLoaded ? 'Loading...' : 'PA'}</AvatarFallback>
-        <AvatarImage
-          src="https://gravatar.com/avatar/31552c11962e933b63df3a205ffa1297?s=200&d=wavatar&r=x"
-          alt="avatar"
-        />
-      </>
-    )}
+export const Events = () => (
+  <Avatar onError={() => console.log('error')} onLoad={() => console.log('loaded')}>
+    <AvatarFallback>PA</AvatarFallback>
+    <AvatarImage src="https://i.pravatar.cc/3000" alt="avatar" />
   </Avatar>
 )

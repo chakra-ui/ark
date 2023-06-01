@@ -1,4 +1,4 @@
 {
-  "Basic": "const Basic = () => (\n  <Avatar>\n    <AvatarFallback>PA</AvatarFallback>\n    <AvatarImage\n      src=\"https://gravatar.com/avatar/31552c11962e933b63df3a205ffa1297?s=200&d=wavatar&r=x\"\n      alt=\"avatar\"\n    />\n  </Avatar>\n)",
-  "RenderProp": "const RenderProp = () => (\n  <Avatar>\n    {(api) => (\n      <>\n        <AvatarFallback>{api.isLoaded ? 'Loading...' : 'PA'}</AvatarFallback>\n        <AvatarImage\n          src=\"https://gravatar.com/avatar/31552c11962e933b63df3a205ffa1297?s=200&d=wavatar&r=x\"\n          alt=\"avatar\"\n        />\n      </>\n    )}\n  </Avatar>\n)"
+  "Basic": "const Basic = () => (\n  <Avatar>\n    <AvatarFallback>PA</AvatarFallback>\n    <AvatarImage src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar>\n)",
+  "Events": "const Events = () => (\n  <Avatar onError={() => console.log('error')} onLoad={() => console.log('loaded')}>\n    <AvatarFallback>PA</AvatarFallback>\n    <AvatarImage src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar>\n)"
 }
