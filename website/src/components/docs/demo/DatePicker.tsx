@@ -1,7 +1,8 @@
 import { Button } from '@/components/shared/Button'
 import { IconButton } from '@/components/shared/IconButton'
 import { Input } from '@/components/shared/Input'
-import { Stack } from '@/panda/jsx'
+import { Text } from '@/components/shared/Text'
+import { Box, Stack } from '@/panda/jsx'
 import { datePicker } from '@/panda/recipes'
 import {
   DatePicker,
@@ -148,7 +149,7 @@ export const DemoDatePickerMulti = () => {
           <DatePickerControl>
             <Stack direction="row">
               <DatePickerInput asChild placeholder="">
-                <Input placeholder="" />
+                <Input placeholder="" minW="608px" />
               </DatePickerInput>
               <DatePickerTrigger asChild>
                 <IconButton
@@ -160,27 +161,20 @@ export const DemoDatePickerMulti = () => {
             </Stack>
           </DatePickerControl>
           <DatePickerContent className={datePicker()}>
-            <Stack gap="3">
-              <Stack justify="space-between" direction="row">
-                <DatePickerPrevTrigger asChild>
-                  <IconButton
-                    icon={<FiChevronLeft />}
-                    size="sm"
-                    variant="tertiary"
-                    aria-label="Prev"
-                  />
-                </DatePickerPrevTrigger>
-
-                <DatePickerNextTrigger asChild>
-                  <IconButton
-                    icon={<FiChevronRight />}
-                    size="sm"
-                    variant="tertiary"
-                    aria-label="Next"
-                  />
-                </DatePickerNextTrigger>
-              </Stack>
-              <Stack direction="row" gap="6">
+            <Stack direction="row" gap="12">
+              <Stack gap="3">
+                <Stack justify="space-between" direction="row" align="center">
+                  <DatePickerPrevTrigger asChild>
+                    <IconButton
+                      icon={<FiChevronLeft />}
+                      size="sm"
+                      variant="tertiary"
+                      aria-label="Prev"
+                    />
+                  </DatePickerPrevTrigger>
+                  <Text fontWeight="semibold">{api.visibleRangeText.start}</Text>
+                  <Box width="9" />
+                </Stack>
                 <DatePickerGrid>
                   <DatePickerRowHeader>
                     {api.weekDays.map((day, i) => (
@@ -201,6 +195,20 @@ export const DemoDatePickerMulti = () => {
                     ))}
                   </DatePickerRowGroup>
                 </DatePickerGrid>
+              </Stack>
+              <Stack gap="3">
+                <Stack justify="space-between" direction="row" align="center">
+                  <Box width="9" />
+                  <Text fontWeight="semibold">{api.visibleRangeText.end}</Text>
+                  <DatePickerNextTrigger asChild>
+                    <IconButton
+                      icon={<FiChevronRight />}
+                      size="sm"
+                      variant="tertiary"
+                      aria-label="Next"
+                    />
+                  </DatePickerNextTrigger>
+                </Stack>
                 <DatePickerGrid>
                   <DatePickerRowHeader>
                     {api.weekDays.map((day, i) => (
