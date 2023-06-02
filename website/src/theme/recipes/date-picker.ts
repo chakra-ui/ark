@@ -10,7 +10,7 @@ export const datePicker = defineRecipe({
     cellTrigger: {
       all: 'unset',
       alignItems: 'center',
-      borderRadius: 'lg',
+      borderRadius: 'full',
       color: 'fg.emphasized',
       cursor: 'pointer',
       display: 'inline-flex',
@@ -37,10 +37,17 @@ export const datePicker = defineRecipe({
       _selected: {
         // TODO issue in panda css
         background: 'accent.default !important',
+
         color: 'white !important',
         _before: {
           color: 'white !important',
         },
+      },
+      '&[data-range-start]': {
+        borderRadius: 'full !important',
+      },
+      '&[data-range-end]': {
+        borderRadius: 'full !important',
       },
       '&[data-outside-range]': {
         visibility: 'hidden',
@@ -64,7 +71,6 @@ export const datePicker = defineRecipe({
       boxShadow: 'lg',
       px: '6',
       py: '5',
-      width: '330px',
     },
     grid: {
       display: 'flex',
@@ -85,11 +91,18 @@ export const datePicker = defineRecipe({
       flexDirection: 'column',
       gap: '1',
     },
-    control: {
-      minW: '330px',
-    },
+    control: {},
     row: {
       display: 'grid',
+      '& [aria-selected="true"]:not([aria-disabled])': {
+        background: 'bg.subtle',
+      },
+      '& [aria-selected="true"]:first-of-type': {
+        borderLeftRadius: 'full',
+      },
+      '& [aria-selected="true"]:last-of-type': {
+        borderRightRadius: 'full',
+      },
     },
     header: {
       display: 'grid',

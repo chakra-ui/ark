@@ -19,6 +19,7 @@ At the moment, `@ark-ui/solid`offers the following components:
 - [Checkbox](https://ark-ui.com/docs/solid/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/solid/components/color-picker)
 - [Combobox](https://ark-ui.com/docs/solid/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/solid/components/date-picker)
 - [Dialog](https://ark-ui.com/docs/solid/components/dialog)
 - [Editable](https://ark-ui.com/docs/solid/components/editable)
 - [Hover Card](https://ark-ui.com/docs/solid/components/hover-card)

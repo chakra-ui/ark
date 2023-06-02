@@ -139,3 +139,93 @@ export const DemoDatePicker = () => {
     </DatePicker>
   )
 }
+
+export const DemoDatePickerMulti = () => {
+  return (
+    <DatePicker numOfMonths={2} selectionMode="range">
+      {(api) => (
+        <Stack>
+          <DatePickerControl>
+            <Stack direction="row">
+              <DatePickerInput asChild placeholder="">
+                <Input placeholder="" />
+              </DatePickerInput>
+              <DatePickerTrigger asChild>
+                <IconButton
+                  icon={<FiCalendar />}
+                  variant="secondary"
+                  aria-label="Open date picker"
+                />
+              </DatePickerTrigger>
+            </Stack>
+          </DatePickerControl>
+          <DatePickerContent className={datePicker()}>
+            <Stack gap="3">
+              <Stack justify="space-between" direction="row">
+                <DatePickerPrevTrigger asChild>
+                  <IconButton
+                    icon={<FiChevronLeft />}
+                    size="sm"
+                    variant="tertiary"
+                    aria-label="Prev"
+                  />
+                </DatePickerPrevTrigger>
+
+                <DatePickerNextTrigger asChild>
+                  <IconButton
+                    icon={<FiChevronRight />}
+                    size="sm"
+                    variant="tertiary"
+                    aria-label="Next"
+                  />
+                </DatePickerNextTrigger>
+              </Stack>
+              <Stack direction="row" gap="6">
+                <DatePickerGrid>
+                  <DatePickerRowHeader>
+                    {api.weekDays.map((day, i) => (
+                      <DatePickerColumnHeader key={i} aria-label={day.long}>
+                        {day.narrow}
+                      </DatePickerColumnHeader>
+                    ))}
+                  </DatePickerRowHeader>
+                  <DatePickerRowGroup>
+                    {api.weeks.map((week, id) => (
+                      <DatePickerRow key={id}>
+                        {week.map((day, id) => (
+                          <DatePickerDayCell key={id} value={day}>
+                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                          </DatePickerDayCell>
+                        ))}
+                      </DatePickerRow>
+                    ))}
+                  </DatePickerRowGroup>
+                </DatePickerGrid>
+                <DatePickerGrid>
+                  <DatePickerRowHeader>
+                    {api.weekDays.map((day, i) => (
+                      <DatePickerColumnHeader key={i} aria-label={day.long}>
+                        {day.narrow}
+                      </DatePickerColumnHeader>
+                    ))}
+                  </DatePickerRowHeader>
+                  <DatePickerRowGroup>
+                    {api.getOffset(1).weeks.map((week, id) => (
+                      <DatePickerRow key={id}>
+                        {week.map((day, id) => (
+                          <DatePickerDayCell key={id} value={day} offset={api.getOffset(1)}>
+                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                          </DatePickerDayCell>
+                        ))}
+                      </DatePickerRow>
+                    ))}
+                  </DatePickerRowGroup>
+                </DatePickerGrid>
+              </Stack>
+            </Stack>
+          </DatePickerContent>
+        </Stack>
+      )}
+    </DatePicker>
+  )
+}
