@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
     },
+    "defaultValue": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -36,7 +37,7 @@
       "description": "Function that returns a human readable value for the slider"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
