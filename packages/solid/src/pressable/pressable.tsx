@@ -14,6 +14,7 @@ export const Pressable = (props: PressableProps) => {
     'disabled',
     'getRootNode',
     'id',
+    'longPressDelay',
     'onLongPress',
     'onPress',
     'onPressEnd',

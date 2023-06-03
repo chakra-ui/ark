@@ -1,12 +1,16 @@
 ---
 id: getting-started
 name: Getting Started
-description: A quick tutorial to get you up and running with Ark Components.
+description:
+  This quick tutorial will guide you through the process of installing and using
+  Ark Components effectively.
 ---
 
-## Installation
+## Install Ark UI
 
-Install Ark by running either of the following:
+To start using Ark UI, you need to install it in your project. You can do so
+using yarn, npm, or pnpm by running one of the following commands in your
+terminal:
 
 ```bash
 yarn add @ark-ui/react
@@ -16,15 +20,16 @@ npm install @ark-ui/react
 pnpm add @ark-ui/react
 ```
 
-## Using the components
+## Creating a Slider Component
 
-The example below demonstrate how to create a Slider component with Ark.
+Once Ark UI is installed, you can start creating UI components. Below, we'll
+demonstrate how to create a `Slider` component using Ark UI.
 
-### 1. Import the components
+### Step 1: Import the Components
 
-The slider component exposes several parts that you can use to build your own
-slider. Importing the `Slider` component will give you access to all its parts
-via the dot notation.
+Every component in Ark UI is modular, meaning that each part of a component can
+be imported and used independently. Below is an example of how to import and use
+the different parts of the `Slider` component:
 
 ```jsx
 import {
@@ -36,29 +41,27 @@ import {
   SliderRange,
 } from '@ark-ui/react'
 
-export const SliderDemo = () => {
-  return (
-    <Slider>
-      <SliderLabel>Label</SliderLabel>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-    </Slider>
-  )
-}
+export const MySlider = () => (
+  <Slider>
+    <SliderLabel>Label</SliderLabel>
+    <SliderControl>
+      <SliderTrack>
+        <SliderRange />
+      </SliderTrack>
+      <SliderThumb />
+    </SliderControl>
+  </Slider>
+)
 ```
 
-### 2. Add your styles
+### Step 2: Style Your Slider Component
 
-The slider is headless by default but you can add your own styles to it.
+While Ark UI is a headless UI library, it provides you with several flexible
+ways to style your components to suit your application's aesthetics.
 
-> Every part of the slider's anatomy has a `data-part` attribute that you can
-> use to target the specific part of the slider.
-
-The example below shows how to add styles to the slider.
+Ark UI assigns a `data-scope` and `data-part` attribute to every component part,
+allowing you to use CSS selectors to target specific parts of a component.
+Here's an example showing how to add styles to the `Slider` component:
 
 ```css
 [data-scope='slider'][data-part='thumb'] {
@@ -81,14 +84,12 @@ The example below shows how to add styles to the slider.
 }
 ```
 
-That's it! With a few lines of code and some sprinkle of CSS, we've implemented
-a fully accessible Slider component that:
+It's worth noting that Ark UI doesn't limit you to using CSS selectors. You can
+also use class names, inline styles, or even the `asChild` prop for greater
+customization and control over your components. These styling approaches make
+Ark UI compatible with any styling solution, and they enable you to integrate
+Ark UI with existing UI libraries seamlessly.
 
-- Adheres to WAI-ARIA design pattern.
-- Can be controlled or uncontrolled.
-- Supports keyboard navigation.
-- Supports mouse and touch events.
-- Supports RTL languages.
-
-> The components are low-level and atomic by design to allow you wrap them into
-> your own high-level API that suits your team's conventions.
+To learn more about how to style components in Ark UI, refer to the
+comprehensive [Styling Components guide](/docs/react/overview/styling) in our
+documentation.

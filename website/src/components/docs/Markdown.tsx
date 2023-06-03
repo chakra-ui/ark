@@ -18,7 +18,12 @@ export const Markdown = (props: MarkdownProps) => {
       <MDXComponent
         components={{
           a: (props: any) => (
-            <Link {...props} variant="mdx" target="_blank" rel="noopener noreferrer" />
+            <Link
+              {...props}
+              variant="mdx"
+              target={props.href.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+            />
           ),
           code: (props: any) => <Code {...props} />,
           Story: ({ name }: any) =>
@@ -32,7 +37,11 @@ export const Markdown = (props: MarkdownProps) => {
                   />
                 ),
               )
-              .otherwise(() => null),
+              .otherwise(() => {
+                throw new Error(
+                  `Storybook story named "${name}" for the ${doc.framework} ${doc.name} component was not found. Ensure that you have added the story to the storybook of the component.`,
+                )
+              }),
         }}
       />
     </panda.article>

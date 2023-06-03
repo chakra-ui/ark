@@ -1,27 +1,63 @@
-## 0.1.0
+---
+---
 
-## 0.3.0
+## 0.5.0 - May 25, 2023
 
-### Minor Changes
+### Removed
 
-- [`ec4ef660`](https://github.com/chakra-ui/ark/commit/ec4ef66000822168ce050f2ae5377f1b56259f1d) Thanks [@segunadebayo](https://github.com/segunadebayo)! - Add support for `asChild` prop in all components
+- Removed `AccordionIcon`
 
-## 0.2.0
+## 0.4.0 - May 23, 2023
 
-### Minor Changes
+### Added
 
-- [`fa66b7a`](https://github.com/chakra-ui/ark/commit/fa66b7a97ea99884e0d155a04adb96d0617e7db6) Thanks [@cschroeter](https://github.com/cschroeter)! - Add `ColorPicker` component
+- Add `Switch`
 
-### Patch Changes
+### Changed
 
-- [`fa66b7a`](https://github.com/chakra-ui/ark/commit/fa66b7a97ea99884e0d155a04adb96d0617e7db6) Thanks [@cschroeter](https://github.com/cschroeter)! - Add missing exports
+- Update `Checkbox`. Control `indeterminate` state in `checked` prop
 
-### Minor Changes
+## 0.3.0 – May 11, 2023
 
-- [#365](https://github.com/chakra-ui/ark/pull/365) [`8079af69`](https://github.com/chakra-ui/ark/commit/8079af696266ffcf7cec15d90cea999eae8e7d2a) Thanks [@TimKolberger](https://github.com/TimKolberger)! - Add components `Accordion`, `Checkbox`, `Dialog`, `Editable`, `HoverCard`, `Menu`, `NumberInput`,
-  `Pagination`, `PinInput`, `Popover`, `Pressable`, `RadioGroup`, `RangeSlider`, `RatingGroup`,
-  `Select`, `Slider`, `Tabs`, `TagsInput`, `Toast` and `Tooltip`
+### Added
 
-### Patch Changes
+- Add support for `asChild`
 
-- [#681](https://github.com/chakra-ui/ark/pull/681) [`829b8d9e`](https://github.com/chakra-ui/ark/commit/829b8d9ee1d6607937b4647ce46aa39571b0c1af) Thanks [@anubra266](https://github.com/anubra266)! - Expose `AccordionItem` state in children render props
+## 0.2.0 - April 29, 2023
+
+### Added
+
+- Add `ColorPicker`
+
+### Fixed
+
+- Add missing exports for `RangeSlider`, `Splitter` and `Toast`
+
+## 0.1.0 - April 17, 2023
+
+### Added
+
+- Add `Accordion`
+- Add `Carousel`
+- Add `Checkbox`
+- Add `Combobox`
+- Add `DatePicker`
+- Add `Dialog`
+- Add `Editable`
+- Add `HoverCard`
+- Add `Menu`
+- Add `NumberInput`
+- Add `Pagination`
+- Add `PinInput`
+- Add `Popover`
+- Add `Pressable`
+- Add `RadioGroup`
+- Add `RangeSlider`
+- Add `RatingGroup`
+- Add `Select`
+- Add `Slider`
+- Add `Splitter`
+- Add `Tabs`
+- Add `TagsInput`
+- Add `Toast`
+- Add `Tooltip`

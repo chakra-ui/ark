@@ -11,6 +11,7 @@ export const Playground = (props: PlaygroundProps) => {
   const { component } = props
   const Component = match(component)
     .with('accordion', () => lazyLoad(() => import('./demo/Accordion'), 'DemoAccordion'))
+    .with('avatar', () => lazyLoad(() => import('./demo/Avatar'), 'DemoAvatar'))
     .with('carousel', () => lazyLoad(() => import('./demo/Carousel'), 'DemoCarousel'))
     .with('checkbox', () => lazyLoad(() => import('./demo/Checkbox'), 'DemoCheckbox'))
     .with('color-picker', () => lazyLoad(() => import('./demo/ColorPicker'), 'DemoColorPicker'))

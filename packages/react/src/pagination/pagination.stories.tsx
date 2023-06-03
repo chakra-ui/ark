@@ -21,7 +21,7 @@ const meta: Meta<PaginationType> = {
 export default meta
 
 export const Basic = () => (
-  <Pagination count={5000} pageSize={10} siblingCount={2}>
+  <Pagination defaultPage={2} count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
       <PaginationList>
         <PaginationListItem>
@@ -62,20 +62,18 @@ export const Controlled = () => {
   )
 }
 
-export const Customized = () => {
-  return (
-    <Pagination
-      count={5000}
-      pageSize={20}
-      siblingCount={3}
-      dir="ltr"
-      translations={{
-        nextPageTriggerLabel: 'Next',
-        prevPageTriggerLabel: 'Prev',
-        pageTriggerLabel: (details) => `Page ${details.page}`,
-      }}
-    >
-      {/* ... */}
-    </Pagination>
-  )
-}
+export const Customized = () => (
+  <Pagination
+    count={5000}
+    pageSize={20}
+    siblingCount={3}
+    dir="ltr"
+    translations={{
+      nextPageTriggerLabel: 'Next',
+      prevPageTriggerLabel: 'Prev',
+      pageTriggerLabel: (details) => `Page ${details.page}`,
+    }}
+  >
+    {/* ... */}
+  </Pagination>
+)

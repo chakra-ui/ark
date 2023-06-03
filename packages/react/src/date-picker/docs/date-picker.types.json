@@ -139,5 +139,9 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "DatePickerPrevTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
-  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
+  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerYearCellProps": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  }
 }

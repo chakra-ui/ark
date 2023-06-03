@@ -26,9 +26,7 @@ export const Splitter = (props: SplitterProps) => {
         {...props}
       >
         <SplitterPanel id={a}>{start}</SplitterPanel>
-        <SplitterResizeTrigger id={`${a}:${b}`}>
-          <div />
-        </SplitterResizeTrigger>
+        <SplitterResizeTrigger id={`${a}:${b}`} />
         <SplitterPanel id={b}>{end}</SplitterPanel>
       </ArkSplitter>
     </>

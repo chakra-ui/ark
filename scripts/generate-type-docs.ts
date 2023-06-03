@@ -183,6 +183,7 @@ const main = async () => {
 }
 
 main().catch((err) => {
-  console.error(err.message)
+  const error = new Error(err)
+  console.error(error.stack)
   process.exit(1)
 })

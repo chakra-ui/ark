@@ -15,6 +15,7 @@
 At the moment, `@ark-ui/react`offers the following components:
 
 - [Accordion](https://ark-ui.com/docs/react/components/accordion)
+- [Avatar](https://ark-ui.com/docs/react/components/avatar)
 - [Carousel](https://ark-ui.com/docs/react/components/carousel)
 - [Checkbox](https://ark-ui.com/docs/react/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/react/components/color-picker)

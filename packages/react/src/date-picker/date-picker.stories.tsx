@@ -209,9 +209,8 @@ export const RangeWithTwoGrids = () => (
           <DatePickerContent>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-              <DatePickerViewTrigger>
-                {api.view === 'day' && api.visibleRangeText.start}
-              </DatePickerViewTrigger>
+              <time>{api.visibleRangeText.start}</time>
+              <time>{api.visibleRangeText.end}</time>
               <DatePickerNextTrigger>Next</DatePickerNextTrigger>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>

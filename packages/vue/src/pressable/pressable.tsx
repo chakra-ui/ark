@@ -28,6 +28,9 @@ const VueProps = createVueProps<PressableProps>({
   getRootNode: {
     type: Function as PropType<PressableProps['getRootNode']>,
   },
+  longPressDelay: {
+    type: Number as PropType<UsePressableProps['longPressDelay']>,
+  },
 })
 
 export const Pressable: ComponentWithProps<PressableProps> = defineComponent({

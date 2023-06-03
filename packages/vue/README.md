@@ -15,6 +15,7 @@
 At the moment, `@ark-ui/vue`offers the following components:
 
 - [Accordion](https://ark-ui.com/docs/vue/components/accordion)
+- [Carousel](https://ark-ui.com/docs/vue/components/carousel)
 - [Checkbox](https://ark-ui.com/docs/vue/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/vue/components/color-picker)
 - [Combobox](https://ark-ui.com/docs/vue/components/combobox)
@@ -35,6 +36,7 @@ At the moment, `@ark-ui/vue`offers the following components:
 - [Splitter](https://ark-ui.com/docs/vue/components/splitter)
 - [Tabs](https://ark-ui.com/docs/vue/components/tabs)
 - [Tags Input](https://ark-ui.com/docs/vue/components/tags-input)
+- [Toast](https://ark-ui.com/docs/vue/components/toast)
 - [Tooltip](https://ark-ui.com/docs/vue/components/tooltip)
 
 ## Installation

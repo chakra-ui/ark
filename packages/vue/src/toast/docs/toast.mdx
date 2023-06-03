@@ -29,8 +29,7 @@ Use the toast components to compose a `ToastProvider` for your application. The
 granular component structure allows access to every DOM element.
 
 ```vue
-// app-toast-provider.vue
-
+<!-- app-toast-provider.vue -->
 <template>
   <ToastProvider>
     <ToastPlacements v-slot="{ placements }">
@@ -63,6 +62,25 @@ import {
   ToastCloseTrigger,
   ToastProvider,
 } from '@ark-ui/vue'
+</script>
+```
+
+## Wrap your App with the AppToastProvider
+
+Wrapping the application provides all child components access to the toast context with the `useToast` hook.
+
+```vue
+<!-- App.vue -->
+<template>
+  <AppToastProvider>
+    <!-- /* ... */ -->
+    <ExampleComponent />
+  </AppToastProvider>
+</template>
+
+<script setup>
+import AppToastProvider from './app-toast-provider.vue'
+import ExampleComponent from './ExampleComponent.vue'
 </script>
 ```
 
