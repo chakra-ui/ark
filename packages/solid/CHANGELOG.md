@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.6.0] - 2023-06-03
+
 ### Added
 
 - Added `DatePicker` component
@@ -76,3 +78,6 @@ description: All notable changes to this project will be documented in this file
 - Add `TagsInput`
 - Add `Toast`
 - Add `Tooltip`
+
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.6.0...HEAD
+[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.6.0
