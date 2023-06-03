@@ -374,6 +374,9 @@ importers:
         specifier: 0.10.2
         version: 0.10.2
     devDependencies:
+      '@release-it/keep-a-changelog':
+        specifier: 3.1.0
+        version: 3.1.0(release-it@15.10.5)
       '@solidjs/testing-library':
         specifier: 0.7.1
         version: 0.7.1(solid-js@1.7.6)
@@ -431,6 +434,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      release-it:
+        specifier: 15.10.5
+        version: 15.10.5
       solid-js:
         specifier: 1.7.6
         version: 1.7.6
@@ -543,6 +549,9 @@ importers:
         specifier: 0.10.2
         version: 0.10.2(vue@3.3.4)
     devDependencies:
+      '@release-it/keep-a-changelog':
+        specifier: 3.1.0
+        version: 3.1.0(release-it@15.10.5)
       '@testing-library/dom':
         specifier: 9.3.0
         version: 9.3.0
@@ -594,6 +603,9 @@ importers:
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
+      release-it:
+        specifier: 15.10.5
+        version: 15.10.5
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1

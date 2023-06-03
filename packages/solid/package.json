@@ -59,7 +59,8 @@
     "postpack": "clean-package restore",
     "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
     "storydocs": "ts-node ../../scripts/generate-stories.ts",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "release-it": "release-it --config ../../config/release-it.json"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.2",
@@ -93,6 +94,7 @@
     "@zag-js/types": "0.10.2"
   },
   "devDependencies": {
+    "@release-it/keep-a-changelog": "3.1.0",
     "@solidjs/testing-library": "0.7.1",
     "@storybook/addon-essentials": "7.0.18",
     "@storybook/addon-interactions": "7.0.18",
@@ -112,6 +114,7 @@
     "happy-dom": "9.20.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "release-it": "15.10.5",
     "solid-js": "1.7.6",
     "storybook": "7.0.18",
     "storybook-solidjs": "1.0.0-beta.2",
