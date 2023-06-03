@@ -1,7 +1,20 @@
 ---
+id: changelog
+name: Changelog
+description: All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to and this project adheres to Semantic Versioning.
 ---
 
-## 0.4.0 - May 25,2023
+## [Unreleased]
+
+### Added
+
+- Introduced the `onLongPress` property to `Pressable`
+
+### Changed
+
+- Updated all `@zag-js` dependencies to their latest versions
+
+## [0.4.0] - 2023-05-25
 
 ### Removed
 
@@ -11,7 +24,7 @@
 
 - Fixed a bug where `Toast` and `Environment` weren't exported
 
-## 0.3.0 - May 23, 2023
+## [0.3.0] - 2023-05-23
 
 ### Added
 
@@ -24,20 +37,20 @@
 
 - Update `Checkbox`. Control `indeterminate` state in `checked` prop
 
-## 0.2.1 - May 11, 2023
+## [0.2.1] - 2023-05-11
 
 ### Fixed
 
 - Fix `Dialog` component: apply two-way binding to `open` prop
 
-## 0.2.0 - April 29, 2023
+## [0.2.0] - 2023-04-29
 
 ### Added
 
 - Add `ColorPicker`
 - Add `TagsInput`
 
-## 0.1.0 - April 17, 2023
+## [0.1.0] - 2023-04-17
 
 ### Added
 

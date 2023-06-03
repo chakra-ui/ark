@@ -18,8 +18,6 @@
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
     "react": "pnpm --filter=@ark-ui/react",
-    "release": "changeset publish",
-    "release:rc": "changeset publish --tag rc",
     "solid": "pnpm --filter=@ark-ui/solid",
     "vue": "pnpm --filter=@ark-ui/vue",
     "test": "turbo run test:ci",
@@ -27,14 +25,10 @@
     "document": "concurrently 'pnpm:document:*'",
     "document:types": "turbo run typedocs",
     "document:stories": "turbo run storydocs",
-    "version": "changeset version",
-    "version:rc": "changeset version --snapshot rc",
     "website": "pnpm --filter=@ark-ui/website",
     "clean": "pnpm -r --parallel exec rm -rf dist .turbo *.log"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.4.8",
-    "@changesets/cli": "2.26.1",
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-conventional": "17.6.5",
     "@types/fs-extra": "11.0.1",
