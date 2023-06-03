@@ -26,7 +26,7 @@
     "document:types": "turbo run typedocs",
     "document:stories": "turbo run storydocs",
     "website": "pnpm --filter=@ark-ui/website",
-    "clean": "pnpm -r --parallel exec rm -rf dist .turbo *.log"
+    "slack": "tsx ./scripts/slack.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.5",
@@ -34,11 +34,13 @@
     "@types/fs-extra": "11.0.1",
     "@types/node": "18.16.16",
     "@types/prettier": "2.7.3",
+    "@types/yargs": "17.0.24",
     "concurrently": "8.1.0",
     "fs-extra": "11.1.1",
     "globby": "13.1.4",
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
+    "node-fetch": "3.3.1",
     "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "3.2.2",
     "react": "18.2.0",
@@ -46,7 +48,8 @@
     "ts-pattern": "4.3.0",
     "tsx": "3.12.7",
     "turbo": "1.10.1",
-    "typescript": "5.1.3"
+    "typescript": "5.1.3",
+    "yargs": "17.7.2"
   },
   "commitlint": {
     "extends": [

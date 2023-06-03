@@ -15,5 +15,8 @@
         "repositoryUrl": "https://github.com/chakra-ui/ark"
       }
     }
+  },
+  "hooks": {
+    "after:release": "pnpm slack -p ${name} -v ${version} -c ${changelog}"
   }
 }
