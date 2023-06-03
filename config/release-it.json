@@ -1,6 +1,7 @@
 {
   "git": {
-    "commitMessage": "chore: release @ark-ui/react v${version} [skip-ci]"
+    "commitMessage": "chore: release ${npm.name} v${version} [skip-ci]",
+    "tagName": "${npm.name}@${version}"
   },
   "github": {
     "release": true

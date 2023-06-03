@@ -60,7 +60,7 @@
     "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
     "storydocs": "ts-node ../../scripts/generate-stories.ts",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it"
+    "release-it": "release-it --config ../../config/release-it.json"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.2",
