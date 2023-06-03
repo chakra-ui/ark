@@ -108,7 +108,7 @@
     "@typescript-eslint/parser": "5.59.8",
     "@vitest/coverage-c8": "0.31.4",
     "clean-package": "2.2.0",
-    "eslint": "8.41.0",
+    "eslint": "8.42.0",
     "happy-dom": "9.20.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
