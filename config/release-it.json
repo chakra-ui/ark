@@ -17,6 +17,6 @@
     }
   },
   "hooks": {
-    "after:release": "pnpm slack -p ${name} -v ${version} -c ${changelog}"
+    "after:release": "pnpm slack -n ${name} -v ${version}"
   }
 }

@@ -10,9 +10,8 @@ const main = async () => {
 
   const argv = yargs(process.argv.slice(2))
     .options({
-      p: { type: 'string' },
+      n: { type: 'string' },
       v: { type: 'string' },
-      c: { type: 'string' },
     })
     .parseSync()
 
@@ -22,10 +21,13 @@ const main = async () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      package_name: argv.p,
+      changelog_url: `https://ark-ui.com/docs/${argv.n?.split('/')[1]}/overview/changelog`,
+      package_name: argv.n,
       version: argv.v,
-      changelog: argv.c,
     }),
+  }).catch((err) => {
+    console.error(err)
+    process.exit(1)
   })
 }
 
