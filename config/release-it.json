@@ -16,6 +16,9 @@
       }
     }
   },
+  "npm": {
+    "versionArgs": ["--workspaces-update=false"]
+  },
   "hooks": {
     "after:release": "pnpm slack -n ${name} -v ${version}"
   }
