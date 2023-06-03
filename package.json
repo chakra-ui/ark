@@ -12,8 +12,8 @@
   "scripts": {
     "prepare": "husky install",
     "build": "turbo run build",
-    "exports:check": "ts-node scripts/check-exports.ts",
-    "exports:sync": "ts-node scripts/sync-exports.ts",
+    "exports:check": "tsx scripts/check-exports.ts",
+    "exports:sync": "tsx scripts/sync-exports.ts",
     "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
     "lint": "turbo run lint",
@@ -43,8 +43,8 @@
     "prettier-plugin-organize-imports": "3.2.2",
     "react": "18.2.0",
     "ts-morph": "18.0.0",
-    "ts-node": "10.9.1",
     "ts-pattern": "4.3.0",
+    "tsx": "3.12.7",
     "turbo": "1.10.1",
     "typescript": "5.1.3"
   },

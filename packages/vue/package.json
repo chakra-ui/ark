@@ -55,8 +55,8 @@
     "typecheck": "tsc",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
-    "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts",
+    "typedocs": "tsx ../../scripts/generate-type-docs.ts",
+    "storydocs": "tsx ../../scripts/generate-stories.ts",
     "release-it": "release-it --config ../../config/release-it.json"
   },
   "dependencies": {
