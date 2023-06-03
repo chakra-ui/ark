@@ -1,0 +1,15 @@
+{
+  "git": {
+    "commitMessage": "chore: release @ark-ui/react v${version} [skip-ci]"
+  },
+  "github": {
+    "release": true
+  },
+  "plugins": {
+    "@release-it/keep-a-changelog": {
+      "addUnreleased": true,
+      "addVersionUrl": true,
+      "filename": "CHANGELOG.md"
+    }
+  }
+}

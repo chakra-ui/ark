@@ -59,15 +59,16 @@
     "postpack": "clean-package restore",
     "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
     "storydocs": "ts-node ../../scripts/generate-stories.ts",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "release-it": "release-it"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.2",
     "@zag-js/anatomy": "0.10.2",
     "@zag-js/avatar": "0.10.2",
     "@zag-js/carousel": "0.10.2",
-    "@zag-js/color-picker": "0.10.2",
     "@zag-js/checkbox": "0.10.2",
+    "@zag-js/color-picker": "0.10.2",
     "@zag-js/combobox": "0.10.2",
     "@zag-js/date-picker": "0.10.2",
     "@zag-js/dialog": "0.10.2",
@@ -95,6 +96,12 @@
     "@zag-js/types": "0.10.2"
   },
   "devDependencies": {
+    "@release-it/keep-a-changelog": "3.1.0",
+    "@storybook/addon-a11y": "7.0.18",
+    "@storybook/addon-essentials": "7.0.18",
+    "@storybook/addons": "7.0.18",
+    "@storybook/react": "7.0.18",
+    "@storybook/react-vite": "7.0.18",
     "@testing-library/dom": "9.3.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
@@ -116,17 +123,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-frame-component": "5.2.6",
+    "release-it": "15.10.5",
     "resize-observer-polyfill": "1.5.1",
+    "storybook": "7.0.18",
     "typescript": "5.1.3",
     "vite": "4.3.9",
     "vite-plugin-dts": "2.3.0",
-    "vitest": "0.31.4",
-    "storybook": "7.0.18",
-    "@storybook/react": "7.0.18",
-    "@storybook/react-vite": "7.0.18",
-    "@storybook/addons": "7.0.18",
-    "@storybook/addon-a11y": "7.0.18",
-    "@storybook/addon-essentials": "7.0.18"
+    "vitest": "0.31.4"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
