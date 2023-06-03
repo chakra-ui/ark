@@ -80,6 +80,7 @@
     "@zag-js/select": "0.10.2",
     "@zag-js/slider": "0.10.2",
     "@zag-js/splitter": "0.10.2",
+    "@zag-js/switch": "0.10.2",
     "@zag-js/tabs": "0.10.2",
     "@zag-js/tags-input": "0.10.2",
     "@zag-js/toast": "0.10.2",
