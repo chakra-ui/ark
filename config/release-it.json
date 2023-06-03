@@ -20,6 +20,6 @@
     "versionArgs": ["--workspaces-update=false"]
   },
   "hooks": {
-    "after:release": "pnpm slack -n ${name} -v ${version}"
+    "after:release": "ts-node ../../scripts/slack.ts"
   }
 }
