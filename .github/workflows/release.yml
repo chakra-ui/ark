@@ -3,8 +3,8 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      increment:
-        package: 'Package'
+      package:
+        description: 'Package'
         required: true
         type: choice
         options:
@@ -12,7 +12,7 @@ on:
           - solid
           - vue
       increment:
-        description: 'Release version'
+        description: 'Increment'
         required: true
         default: 'patch'
         type: choice
@@ -48,7 +48,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm ${{ github.event.inputs.package }} build
 
       - name: Release
         run: pnpm ${{ github.event.inputs.package }} release-it --ci --increment ${{ github.event.inputs.increment }} --dry-run
