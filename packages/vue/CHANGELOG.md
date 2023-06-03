@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.5.0] - 2023-06-03
+
 ### Added
 
 - Introduced the `onLongPress` property to `Pressable`
@@ -75,3 +77,6 @@ description: All notable changes to this project will be documented in this file
 - Add `Splitter`
 - Add `Tabs`
 - Add `Tooltip`
+
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.0...HEAD
+[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
