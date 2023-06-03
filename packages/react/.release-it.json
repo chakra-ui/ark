@@ -9,7 +9,10 @@
     "@release-it/keep-a-changelog": {
       "addUnreleased": true,
       "addVersionUrl": true,
-      "filename": "CHANGELOG.md"
+      "filename": "CHANGELOG.md",
+      "versionUrlFormats": {
+        "repositoryUrl": "https://github.com/chakra-ui/ark"
+      }
     }
   }
 }

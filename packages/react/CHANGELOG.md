@@ -15,13 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state.
 - Updated all `@zag-js` dependencies to their latest versions
 
-## 0.5.0 - May 25, 2023
+## [0.5.0] - 2023-05-25
 
 ### Removed
 
 - Removed `AccordionIcon`
 
-## 0.4.0 - May 23, 2023
+## [0.4.0] - 2023-05-23
 
 ### Added
 
@@ -35,20 +35,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix a typo in the `SwitchProps` type
 
-## 0.3.0 – May 11, 2023
+## [0.3.0] - 2023-05-11
 
 ### Added
 
 - Add `Switch`
 - Add support for `asChild`
 
-## 0.2.0 – April 29, 2023
+## [0.2.0] - 2023-04-29
 
 ### Added
 
 - Add `ColorPicker`
 
-## 0.1.0 – April 17, 2023
+## [0.1.0] - 2023-04-17
 
 ### Added
 
