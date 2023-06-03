@@ -20,6 +20,6 @@
     "versionArgs": ["--workspaces-update=false"]
   },
   "hooks": {
-    "after:release": "ts-node ../scripts/slack.ts"
+    "after:release": "ts-node ./scripts/slack.ts"
   }
 }
