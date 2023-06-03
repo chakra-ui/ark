@@ -1,17 +1,13 @@
 {
-  "PressableProps": {
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    }
-  },
-  "UsePressableContext": {
-    "id": {
-      "type": "string",
+  "PressableContext": {
+    "isPressed": {
+      "type": "boolean",
       "isRequired": true,
-      "description": "The unique identifier of the machine."
+      "description": "Whether the element is pressed."
     },
+    "pressableProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true }
+  },
+  "PressableProps": {
     "allowTextSelectionOnPress": {
       "type": "boolean",
       "isRequired": false,
@@ -33,9 +29,14 @@
       "description": "Whether the element is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
     },
     "longPressDelay": {
       "type": "number",

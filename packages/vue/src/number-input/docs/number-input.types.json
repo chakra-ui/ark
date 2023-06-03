@@ -15,6 +15,7 @@
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
+    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -41,7 +42,7 @@
       "description": "If using a custom display format, this converts the default format to the custom format."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
