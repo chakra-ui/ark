@@ -1,5 +1,23 @@
----
----
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- Added new `Avatar` componen
+- Introduced an optional `defaulPage` property to `Pagination`
+- Introduced an optional `defaultSize` property to `Splitter`
+- Introduced the `onLongPress` property to `Pressable`
+
+### Changed
+
+- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state.
+- Updated all `@zag-js` dependencies to their latest versions
 
 ## 0.5.0 - May 25, 2023
 
