@@ -1,50 +1,68 @@
 name: Release
 
 on:
-  push:
-    paths:
-      - '.changeset/**'
-      - 'packages/**'
-    branches:
-      - main
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package'
+        required: true
+        type: choice
+        options:
+          - react
+          - solid
+          - vue
+      increment:
+        description: 'Increment'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout Branch
         uses: actions/checkout@v3
+
+      - name: Setup Git User
+        shell: bash
+        run: |
+          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
       - name: Install
-        uses: ./.github/composite-actions/install
+        run: pnpm install
 
       - name: Build
-        run: pnpm build --filter=\!@ark-ui/website
+        run: pnpm ${{ github.event.inputs.package }} build
 
-      - name: Create release Pull Request or publish to NPM
-        id: changesets
-        uses: changesets/action@v1
+      - name: Release
+        run: pnpm ${{ github.event.inputs.package }} release-it --ci --increment ${{ github.event.inputs.increment }}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Notification
+        uses: slackapi/slack-github-action@v1.24.0
         with:
-          publish: pnpm release
-          commit: 'ci(changesets): version packages'
-          setupGitUser: false
+          payload: |
+            {
+              "package_name": "${{ github.event.inputs.package }}",
+              "changelog_url": "https://ark-ui.com/docs/${{ github.event.inputs.package }}/overview/changelog"
+            }
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create @rc release
-        if: steps.changesets.outputs.published != 'true'
-        run: |
-          git checkout main
-          pnpm version:rc
-          pnpm release:rc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

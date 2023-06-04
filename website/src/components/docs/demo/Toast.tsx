@@ -40,7 +40,7 @@ export const DemoToast = () => (
                         </Button>
                       </Stack>
                     </Stack>
-                    <ToastCloseTrigger>
+                    <ToastCloseTrigger asChild>
                       <CloseButton aria-label="Close toast" size="sm" variant="link" />
                     </ToastCloseTrigger>
                   </Toast>

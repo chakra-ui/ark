@@ -5,6 +5,7 @@ import { TableOfContent } from '@/components/docs/TableOfContent'
 import { ComponentTabs } from '@/components/navigation/ComponentTabs'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { findComponentDocumentByFrameworkAndId, getComponentDocuments } from '@/lib/contentlayer'
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { Stack } from 'panda/jsx/stack'
 
@@ -40,4 +41,14 @@ export const generateStaticParams = () => {
       component: component.id,
     })),
   )
+}
+
+export const generateMetadata = async (props: any): Promise<Metadata> => {
+  const { params } = props
+  const doc = findComponentDocumentByFrameworkAndId(params.framework, params.component)
+
+  return {
+    title: doc?.name,
+    description: doc?.description,
+  }
 }
