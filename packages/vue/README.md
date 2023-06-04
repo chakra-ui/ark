@@ -34,6 +34,7 @@ At the moment, `@ark-ui/vue`offers the following components:
 - [Select](https://ark-ui.com/docs/vue/components/select)
 - [Slider](https://ark-ui.com/docs/vue/components/slider)
 - [Splitter](https://ark-ui.com/docs/vue/components/splitter)
+- [Switch](https://ark-ui.com/docs/vue/components/switch)
 - [Tabs](https://ark-ui.com/docs/vue/components/tabs)
 - [Tags Input](https://ark-ui.com/docs/vue/components/tags-input)
 - [Toast](https://ark-ui.com/docs/vue/components/toast)

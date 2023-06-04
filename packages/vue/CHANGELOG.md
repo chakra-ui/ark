@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `Switch` component
+
 ## [0.5.0] - 2023-06-03
 
 ### Added
@@ -30,10 +34,10 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Add `Carousel`
-- Add `Environment`
-- Add `Toast`
-- Add support for `asChild`
+- Added `Carousel`
+- Added `Environment`
+- Added `Toast`
+- Added support for `asChild`
 
 ### Changed
 
@@ -49,34 +53,34 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Add `ColorPicker`
-- Add `TagsInput`
+- Added `ColorPicker`
+- Added `TagsInput`
 
 ## [0.1.0] - 2023-04-17
 
 ### Added
 
-- Add `Accordion`
-- Add `Checkbox`
-- Add `Combobox`
-- Add `DatePicker`
-- Add `Dialog`
-- Add `Editable`
-- Add `HoverCard`
-- Add `Menu`
-- Add `NumberInput`
-- Add `Pagination`
-- Add `PinInput`
-- Add `Popover`
-- Add `Pressable`
-- Add `RadioGroup`
-- Add `RangeSlider`
-- Add `RatingGroup`
-- Add `Select`
-- Add `Slider`
-- Add `Splitter`
-- Add `Tabs`
-- Add `Tooltip`
+- Added `Accordion`
+- Added `Checkbox`
+- Added `Combobox`
+- Added `DatePicker`
+- Added `Dialog`
+- Added `Editable`
+- Added `HoverCard`
+- Added `Menu`
+- Added `NumberInput`
+- Added `Pagination`
+- Added `PinInput`
+- Added `Popover`
+- Added `Pressable`
+- Added `RadioGroup`
+- Added `RangeSlider`
+- Added `RatingGroup`
+- Added `Select`
+- Added `Slider`
+- Added `Splitter`
+- Added `Tabs`
+- Added `Tooltip`
 
 [unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.0...HEAD
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
