@@ -651,9 +651,6 @@ importers:
       next-contentlayer:
         specifier: 0.3.3
         version: 0.3.3(esbuild@0.17.19)(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
-      next-seo:
-        specifier: 5.15.0
-        version: 5.15.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: 4.1.3
         version: 4.1.3(@next/env@13.4.4)(next@13.4.4)
@@ -13723,18 +13720,6 @@ packages:
       - esbuild
       - markdown-wasm
       - supports-color
-    dev: false
-
-  /next-seo@5.15.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}
-    peerDependencies:
-      next: ^8.1.1-canary.54 || >=9.0.0
-      react: '>=16.0.0'
-      react-dom: '>=16.0.0'
-    dependencies:
-      next: 13.4.4(@babel/core@7.22.1)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /next-sitemap@4.1.3(@next/env@13.4.4)(next@13.4.4):
