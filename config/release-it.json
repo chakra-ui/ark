@@ -4,7 +4,8 @@
     "tagName": "${npm.name}@${version}"
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "${npm.name}@${version}"
   },
   "plugins": {
     "@release-it/keep-a-changelog": {
@@ -18,8 +19,5 @@
   },
   "npm": {
     "versionArgs": ["--workspaces-update=false"]
-  },
-  "hooks": {
-    "after:release": "ts-node ./scripts/slack.ts"
   }
 }
