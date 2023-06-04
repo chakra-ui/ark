@@ -1,5 +1,6 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { cx } from '@/panda/css'
+import { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import type { PropsWithChildren } from 'react'
@@ -29,3 +30,20 @@ const RootLayout = (props: PropsWithChildren) => {
 }
 
 export default RootLayout
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Ark UI',
+    template: '%s | Ark UI',
+  },
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://ark-ui.com',
+  },
+}
