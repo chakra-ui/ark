@@ -3,10 +3,8 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "prepare": "panda",
-    "dev": "concurrently 'pnpm:dev:*'",
-    "dev:css": "panda --watch",
-    "dev:next": "next dev",
+    "prepare": "panda codegen --silent",
+    "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start -p 3002",
@@ -37,7 +35,6 @@
     "@types/node": "18.16.16",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
-    "concurrently": "8.1.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "typescript": "5.1.3"
