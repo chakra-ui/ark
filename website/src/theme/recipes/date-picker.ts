@@ -10,6 +10,7 @@ export const datePicker = defineRecipe({
     cellTrigger: {
       all: 'unset',
       alignItems: 'center',
+      borderRadius: 'lg',
       color: 'fg.emphasized',
       cursor: 'pointer',
       display: 'inline-flex',
@@ -21,7 +22,7 @@ export const datePicker = defineRecipe({
       verticalAlign: 'middle',
       whiteSpace: 'nowrap',
       minW: '10',
-      width: 'full',
+      width: '10',
       _hover: {
         background: 'bg.subtle',
       },
@@ -41,11 +42,8 @@ export const datePicker = defineRecipe({
           color: 'white !important',
         },
       },
-      '&[data-in-range]': {
-        background: 'bg.subtle',
-      },
       '&[data-outside-range]': {
-        visibility: 'hidden',
+        color: 'fg.subtle',
       },
       '&[data-today]': {
         _before: {

@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { Fira_Code, Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import type { PropsWithChildren } from 'react'
-import '../../panda/styles.css'
+import '../global.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' })
