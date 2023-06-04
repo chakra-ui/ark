@@ -83,7 +83,7 @@ export const DemoColorPicker = () => {
               </Text>
               <ColorPickerSwatchGroup>
                 {presets.map((color) => (
-                  <ColorPickerSwatch key={color} value={color}>
+                  <ColorPickerSwatch key={color} value={color} aria-label={`Pick color ${color}`}>
                     <ColorPickerSwatchBackground />
                   </ColorPickerSwatch>
                 ))}

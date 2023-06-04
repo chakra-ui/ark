@@ -19,8 +19,6 @@ const RootLayout = (props: PropsWithChildren) => {
   return (
     <html lang="en" className={cx(inter.variable, firaCode.variable, monaSans.variable)}>
       <head>
-        <meta charSet="utf-8" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <ColorModeScript />
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />
       </head>
@@ -36,6 +34,8 @@ export const metadata: Metadata = {
     default: 'Ark UI',
     template: '%s | Ark UI',
   },
+  description:
+    'A headless library for building reusable, scalable design systems that works for a wide range of JS frameworks.',
   icons: {
     icon: '/icon.svg',
     apple: '/apple-touch-icon.png',
