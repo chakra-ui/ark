@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePopoverProps = Optional<Context, 'id'> & {
+export type UsePopoverContext = Optional<Context, 'id'> & {
   /**
    * Control the open state of the popover.
    *
@@ -14,7 +14,7 @@ export type UsePopoverProps = Optional<Context, 'id'> & {
   isOpen?: boolean
 }
 
-export const usePopover = <T extends ExtractPropTypes<UsePopoverProps>>(
+export const usePopover = <T extends ExtractPropTypes<UsePopoverContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

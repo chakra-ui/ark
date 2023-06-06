@@ -4,12 +4,12 @@ import { computed, type ExtractPropTypes } from 'vue'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
+export type UseColorPickerContext = Optional<colorPicker.Context, 'id'> & {
   modelValue?: colorPicker.Context['value']
   defaultValue?: colorPicker.Context['value']
 }
 
-export const useColorPicker = <T extends ExtractPropTypes<UseColorPickerProps>>(
+export const useColorPicker = <T extends ExtractPropTypes<UseColorPickerContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

@@ -1,9 +1,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverContext } from './use-popover'
 
-export type PopoverProps = UsePopoverProps
+export type PopoverProps = UsePopoverContext
 
 const VuePopoverProps = createVueProps<Partial<PopoverProps>>({
   autoFocus: {

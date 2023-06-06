@@ -1,9 +1,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipContext } from './use-tooltip'
 
-export type TooltipProps = UseTooltipProps
+export type TooltipProps = UseTooltipContext
 
 const VueTooltipProps = createVueProps<TooltipProps>({
   id: {

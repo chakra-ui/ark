@@ -4,11 +4,11 @@ import { computed, type ExtractPropTypes } from 'vue'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTagsInputProps = Optional<Context, 'id'> & {
+export type UseTagsInputContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
 }
 
-export const useTagsInput = <T extends ExtractPropTypes<UseTagsInputProps>>(
+export const useTagsInput = <T extends ExtractPropTypes<UseTagsInputContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

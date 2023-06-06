@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { ComboboxProvider } from './combobox-context'
-import { useCombobox, type UseComboboxProps } from './use-combobox'
+import { useCombobox, type UseComboboxContext } from './use-combobox'
 
-export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxProps>
+export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxContext>
 
 const VueComboboxProps = createVueProps<ComboboxProps>({
   id: {

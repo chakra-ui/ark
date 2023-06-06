@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseRadioGroupProps = Optional<Context, 'id'> & {
+export type UseRadioGroupContext = Optional<Context, 'id'> & {
   defaultValue?: Context['value']
   modelValue?: Context['value']
 }
 
-export const useRadioGroup = <T extends ExtractPropTypes<UseRadioGroupProps>>(
+export const useRadioGroup = <T extends ExtractPropTypes<UseRadioGroupContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

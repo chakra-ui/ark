@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseHoverCardProps = Optional<Context, 'id'>
+export type UseHoverCardContext = Optional<Context, 'id'>
 
-export const useHoverCard = <T extends ExtractPropTypes<UseHoverCardProps>>(
+export const useHoverCard = <T extends ExtractPropTypes<UseHoverCardContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

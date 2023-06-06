@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseRatingGroupProps = Optional<Context, 'id'> & {
+export type UseRatingGroupContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
   defaultValue?: Context['value']
 }
 
-export const useRatingGroup = <T extends ExtractPropTypes<UseRatingGroupProps>>(
+export const useRatingGroup = <T extends ExtractPropTypes<UseRatingGroupContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

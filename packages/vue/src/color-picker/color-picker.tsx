@@ -3,9 +3,9 @@ import type { HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { ColorPickerProvider } from './color-picker-context'
-import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
+import { useColorPicker, type UseColorPickerContext } from './use-color-picker'
 
-export type ColorPickerProps = Assign<HTMLArkProps<'div'>, UseColorPickerProps>
+export type ColorPickerProps = Assign<HTMLArkProps<'div'>, UseColorPickerContext>
 
 const VueColorPickerProps = createVueProps<ColorPickerProps>({
   dir: {

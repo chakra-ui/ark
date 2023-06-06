@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
+import { useTagsInput, type UseTagsInputContext } from './use-tags-input'
 
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps>
+export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputContext>
 
 const VueTagsInputProps = createVueProps<TagsInputProps>({
   addOnPaste: {

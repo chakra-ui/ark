@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { CheckboxProvider } from './checkbox-context'
-import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
+import { useCheckbox, type UseCheckboxContext } from './use-checkbox'
 
-export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxProps>
+export type CheckboxProps = Assign<HTMLArkProps<'label'>, UseCheckboxContext>
 
 export const VueCheckboxProps = createVueProps<CheckboxProps>({
   id: {

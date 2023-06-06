@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, type UseNumberInputProps } from './use-number-input'
+import { useNumberInput, type UseNumberInputContext } from './use-number-input'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
+export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputContext>
 
 const VueNumberInputProps = createVueProps<NumberInputProps>({
   id: {

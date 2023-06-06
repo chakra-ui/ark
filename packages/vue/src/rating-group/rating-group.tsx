@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
+import { useRatingGroup, type UseRatingGroupContext } from './use-rating-group'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
+export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupContext>
 
 const vueRatingGroupProps = createVueProps<RatingGroupProps>({
   id: {

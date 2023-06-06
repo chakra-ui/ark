@@ -3,9 +3,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogProps } from './use-dialog'
+import { useDialog, type UseDialogContext } from './use-dialog'
 
-export type DialogProps = UseDialogProps
+export type DialogProps = UseDialogContext
 
 const VueDialogProps = createVueProps<DialogProps>({
   id: {

@@ -5,11 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTabsProps = Optional<Context, 'id'> & {
+export type UseTabsContext = Optional<Context, 'id'> & {
   defaultValue?: Context['value']
 }
 
-export const useTabs = <T extends ExtractPropTypes<UseTabsProps>>(
+export const useTabs = <T extends ExtractPropTypes<UseTabsContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

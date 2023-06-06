@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseSliderProps = Optional<Context, 'id'> & {
+export type UseSliderContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
   defaultValue?: Context['value']
 }
 
-export const useSlider = <T extends ExtractPropTypes<UseSliderProps>>(
+export const useSlider = <T extends ExtractPropTypes<UseSliderContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

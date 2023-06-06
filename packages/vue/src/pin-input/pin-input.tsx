@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, type UsePinInputProps } from './use-pin-input'
+import { usePinInput, type UsePinInputContext } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
+export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputContext>
 
 const VuePinInputProps = createVueProps<PinInputProps>({
   autoFocus: {

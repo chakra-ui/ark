@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseEditableProps = Optional<Context, 'id'> & {
+export type UseEditableContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
   defaultValue?: Context['value']
 }
 
-export const useEditable = <T extends ExtractPropTypes<UseEditableProps>>(
+export const useEditable = <T extends ExtractPropTypes<UseEditableContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

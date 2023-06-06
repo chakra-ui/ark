@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { RadioGroupProvider } from './radio-context'
-import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
+import { useRadioGroup, type UseRadioGroupContext } from './use-radio-group'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
+export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupContext>
 
 const VueProps = createVueProps<RadioGroupProps>({
   dir: {

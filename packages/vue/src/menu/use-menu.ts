@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseMenuProps = Optional<Context, 'id'>
+export type UseMenuContext = Optional<Context, 'id'>
 
-export const useMenu = <T extends ExtractPropTypes<UseMenuProps>>(
+export const useMenu = <T extends ExtractPropTypes<UseMenuContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

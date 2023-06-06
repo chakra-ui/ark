@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTooltipProps = Optional<Context, 'id'>
+export type UseTooltipContext = Optional<Context, 'id'>
 
-export const useTooltip = <T extends ExtractPropTypes<UseTooltipProps>>(
+export const useTooltip = <T extends ExtractPropTypes<UseTooltipContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

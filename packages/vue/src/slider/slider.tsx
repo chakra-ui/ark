@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { SliderProvider } from './slider-context'
-import { useSlider, type UseSliderProps } from './use-slider'
+import { useSlider, type UseSliderContext } from './use-slider'
 
-export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
+export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderContext>
 
 const VueProps = createVueProps<SliderProps>({
   'aria-label': {

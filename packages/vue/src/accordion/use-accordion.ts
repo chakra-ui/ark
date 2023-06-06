@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseAccordionProps = Optional<Context, 'id'> & {
+export type UseAccordionContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
   defaultValue?: Context['value']
 }
 
-export const useAccordion = <T extends ExtractPropTypes<UseAccordionProps>>(
+export const useAccordion = <T extends ExtractPropTypes<UseAccordionContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

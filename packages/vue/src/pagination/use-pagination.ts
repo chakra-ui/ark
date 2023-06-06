@@ -5,11 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePaginationProps = Optional<Context, 'id'> & {
+export type UsePaginationContext = Optional<Context, 'id'> & {
   modelValue?: Context['page']
 }
 
-export const usePagination = <T extends ExtractPropTypes<UsePaginationProps>>(
+export const usePagination = <T extends ExtractPropTypes<UsePaginationContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

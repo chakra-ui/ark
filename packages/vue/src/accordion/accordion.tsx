@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
-import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { useAccordion, type UseAccordionContext } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
+export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionContext>
 
 const VueAccordionProps = createVueProps<AccordionProps>({
   id: {

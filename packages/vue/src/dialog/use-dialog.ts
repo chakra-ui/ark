@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseDialogProps = Optional<Context, 'id'>
+export type UseDialogContext = Optional<Context, 'id'>
 
-export const useDialog = <T extends ExtractPropTypes<UseDialogProps>>(
+export const useDialog = <T extends ExtractPropTypes<UseDialogContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

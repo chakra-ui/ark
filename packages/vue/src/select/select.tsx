@@ -2,9 +2,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps } from './use-select'
+import { useSelect, type UseSelectContext } from './use-select'
 
-export type SelectProps = UseSelectProps
+export type SelectProps = UseSelectContext
 
 const VueSelectProps = createVueProps<SelectProps>({
   id: {

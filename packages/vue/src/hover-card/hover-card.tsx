@@ -1,9 +1,9 @@
 import { defineComponent, type PropType } from 'vue'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardContext } from './use-hover-card'
 
-export type HoverCardProps = UseHoverCardProps
+export type HoverCardProps = UseHoverCardContext
 
 const VueHoverCardProps = createVueProps<HoverCardProps>({
   id: {

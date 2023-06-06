@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseSplitterProps = Optional<Context, 'id'>
+export type UseSplitterContext = Optional<Context, 'id'>
 
-export const useSplitter = <T extends ExtractPropTypes<UseSplitterProps>>(
+export const useSplitter = <T extends ExtractPropTypes<UseSplitterContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

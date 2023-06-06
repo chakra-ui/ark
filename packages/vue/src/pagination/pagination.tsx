@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { PaginationProvider } from './pagination-context'
-import { usePagination, type UsePaginationProps } from './use-pagination'
+import { usePagination, type UsePaginationContext } from './use-pagination'
 
-export type PaginationProps = Assign<HTMLArkProps<'nav'>, UsePaginationProps>
+export type PaginationProps = Assign<HTMLArkProps<'nav'>, UsePaginationContext>
 
 const VueProps = createVueProps<PaginationProps>({
   count: {

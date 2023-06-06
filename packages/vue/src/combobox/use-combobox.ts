@@ -5,11 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseComboboxProps = Optional<Context, 'id'> & {
+export type UseComboboxContext = Optional<Context, 'id'> & {
   modelValue?: Context['inputValue']
 }
 
-export const useCombobox = <T extends ExtractPropTypes<UseComboboxProps>>(
+export const useCombobox = <T extends ExtractPropTypes<UseComboboxContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

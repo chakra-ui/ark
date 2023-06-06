@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { TabsProvider } from './tabs-context'
-import { useTabs, type UseTabsProps } from './use-tabs'
+import { useTabs, type UseTabsContext } from './use-tabs'
 
-export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
+export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsContext>
 
 const VueTabsProps = createVueProps<TabsProps>({
   id: {

@@ -2,9 +2,9 @@ import { defineComponent, type PropType, type UnwrapRef } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
-import { usePressable, type UsePressableProps, type UsePressableReturn } from './use-pressable'
+import { usePressable, type UsePressableContext, type UsePressableReturn } from './use-pressable'
 
-export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableContext>
 
 const VueProps = createVueProps<PressableProps>({
   id: {
@@ -29,7 +29,7 @@ const VueProps = createVueProps<PressableProps>({
     type: Function as PropType<PressableProps['getRootNode']>,
   },
   longPressDelay: {
-    type: Number as PropType<UsePressableProps['longPressDelay']>,
+    type: Number as PropType<PressableProps['longPressDelay']>,
   },
 })
 

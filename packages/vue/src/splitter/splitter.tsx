@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { createVueProps, getValidChildren, type ComponentWithProps } from '../utils'
 import { SplitterProvider } from './splitter-context'
-import { useSplitter, type UseSplitterProps } from './use-splitter'
+import { useSplitter, type UseSplitterContext } from './use-splitter'
 
-export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
+export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterContext>
 const VueProps = createVueProps<SplitterProps>({
   dir: {
     type: String as PropType<SplitterProps['dir']>,

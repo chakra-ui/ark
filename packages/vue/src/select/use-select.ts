@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseSelectProps = Optional<Context, 'id'> & {
+export type UseSelectContext = Optional<Context, 'id'> & {
   modelValue?: Context['selectedOption']
   defaultValue?: Context['selectedOption']
 }
 
-export const useSelect = <T extends ExtractPropTypes<UseSelectProps>>(
+export const useSelect = <T extends ExtractPropTypes<UseSelectContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

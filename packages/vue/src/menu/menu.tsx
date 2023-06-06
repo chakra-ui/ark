@@ -9,14 +9,14 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu, type UseMenuProps } from './use-menu'
+import { useMenu, type UseMenuContext } from './use-menu'
 
 export type MenuState = {
   isOpen: boolean
   onClose: () => void
 }
 
-export type MenuProps = UseMenuProps & { isOpen?: boolean }
+export type MenuProps = UseMenuContext & { isOpen?: boolean }
 
 const VueProps = createVueProps<MenuProps>({
   anchorPoint: {

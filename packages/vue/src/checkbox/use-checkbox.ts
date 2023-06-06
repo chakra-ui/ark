@@ -5,11 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseCheckboxProps = Optional<Context, 'id'> & {
+export type UseCheckboxContext = Optional<Context, 'id'> & {
   modelValue?: Context['checked']
 }
 
-export const useCheckbox = <T extends ExtractPropTypes<UseCheckboxProps>>(
+export const useCheckbox = <T extends ExtractPropTypes<UseCheckboxContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

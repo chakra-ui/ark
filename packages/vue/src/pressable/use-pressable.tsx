@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePressableProps = Optional<Context, 'id'>
+export type UsePressableContext = Optional<Context, 'id'>
 
-export const usePressable = <T extends ExtractPropTypes<UsePressableProps>>(
+export const usePressable = <T extends ExtractPropTypes<UsePressableContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

@@ -5,12 +5,12 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePinInputProps = Optional<Context, 'id'> & {
+export type UsePinInputContext = Optional<Context, 'id'> & {
   modelValue?: Context['value']
   defaultValue?: Context['value']
 }
 
-export const usePinInput = <T extends ExtractPropTypes<UsePinInputProps>>(
+export const usePinInput = <T extends ExtractPropTypes<UsePinInputContext>>(
   emit: CallableFunction,
   context: T,
 ) => {

@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
 import { EditableProvider } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { useEditable, type UseEditableContext } from './use-editable'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
+export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableContext>
 
 const VueEditableProps = createVueProps<EditableProps>({
   activationMode: {
