@@ -1,5 +1,6 @@
 export { createAnatomy } from '@zag-js/anatomy'
 export * from './accordion'
+export * from './avatar'
 export * from './carousel'
 export * from './checkbox'
 export * from './color-picker'
