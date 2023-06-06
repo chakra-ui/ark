@@ -123,7 +123,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-frame-component": "5.2.6",
-    "release-it": "15.10.5",
+    "release-it": "15.11.0",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "7.0.18",
     "typescript": "5.1.3",

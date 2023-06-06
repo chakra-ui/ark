@@ -183,7 +183,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.10.5)
+        version: 3.1.0(release-it@15.11.0)
       '@storybook/addon-a11y':
         specifier: 7.0.18
         version: 7.0.18(react-dom@18.2.0)(react@18.2.0)
@@ -263,8 +263,8 @@ importers:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       release-it:
-        specifier: 15.10.5
-        version: 15.10.5
+        specifier: 15.11.0
+        version: 15.11.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -376,7 +376,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.10.5)
+        version: 3.1.0(release-it@15.11.0)
       '@solidjs/testing-library':
         specifier: 0.7.1
         version: 0.7.1(solid-js@1.7.6)
@@ -435,8 +435,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 15.10.5
-        version: 15.10.5
+        specifier: 15.11.0
+        version: 15.11.0
       solid-js:
         specifier: 1.7.6
         version: 1.7.6
@@ -551,7 +551,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.10.5)
+        version: 3.1.0(release-it@15.11.0)
       '@testing-library/dom':
         specifier: 9.3.0
         version: 9.3.0
@@ -604,8 +604,8 @@ importers:
         specifier: 22.1.0
         version: 22.1.0
       release-it:
-        specifier: 15.10.5
-        version: 15.10.5
+        specifier: 15.11.0
+        version: 15.11.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -4827,14 +4827,14 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@release-it/keep-a-changelog@3.1.0(release-it@15.10.5):
+  /@release-it/keep-a-changelog@3.1.0(release-it@15.11.0):
     resolution: {integrity: sha512-o8lxZCAFwFkFpo88aIIgS5dR3kDy6yLjJVpe9QAGNY6tpKMMRHxsiJ8MS5NvrEeIC2VTzOoOjN/CDvdd3a4+/A==}
     engines: {node: '>=14'}
     peerDependencies:
       release-it: ^15.0.0-esm.4
     dependencies:
       detect-newline: 4.0.0
-      release-it: 15.10.5
+      release-it: 15.11.0
       string-template: 1.0.0
     dev: true
 
@@ -15160,8 +15160,8 @@ packages:
       unified: 10.1.2
     dev: false
 
-  /release-it@15.10.5:
-    resolution: {integrity: sha512-6AWkcOYsEfCzegtAKvXekUG+CLjlFXztDwGzxFOGa8VJRuXbPONfM8rvaPYJX1hTlL5+KC4MWOEoKKzWhQ65gA==}
+  /release-it@15.11.0:
+    resolution: {integrity: sha512-lZwoGEnKYKwGnfxxlA7vtR7vvozPrOSsIgQaHO4bgQ5ARbG3IA6Dmo0IVusv6nR1KmnjH70QIeNAgsWs6Ji/tw==}
     engines: {node: '>=14.9'}
     hasBin: true
     dependencies:
