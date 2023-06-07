@@ -16,7 +16,7 @@ export const useAccordion = <T extends ExtractPropTypes<UseAccordionContext>>(
 ) => {
   const machineContext = computed(() => ({
     ...context,
-    value: context.modelValue ?? context.value,
+    value: (context.modelValue ?? context.value) || context.defaultValue,
   }))
 
   const getRootNode = useEnvironmentContext()
