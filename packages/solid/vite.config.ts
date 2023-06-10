@@ -68,4 +68,7 @@ export default defineConfig({
   resolve: {
     conditions: ['development', 'browser'],
   },
+  ssr: {
+    noExternal: ['solid-js', 'solid-js/web', 'solid-js/store'],
+  },
 })
