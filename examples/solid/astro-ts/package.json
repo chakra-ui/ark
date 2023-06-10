@@ -1,0 +1,22 @@
+{
+  "name": "astro-ts",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@ark-ui/solid": "workspace:*",
+    "astro": "2.6.3",
+    "solid-js": "1.7.6"
+  },
+  "devDependencies": {
+    "@astrojs/solid-js": "2.2.0",
+    "typescript": "5.1.3"
+  }
+}

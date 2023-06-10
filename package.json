@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "examples/*",
+    "examples/**",
     "packages/*",
     "website"
   ],
