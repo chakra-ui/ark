@@ -21,10 +21,10 @@ const images = [
 <template>
   <Carousel>
     <CarouselPrevSlideTrigger>
-      <button>Prev</button>
+      Prev
     </CarouselPrevSlideTrigger>
     <CarouselNextSlideTrigger>
-      <button>Next</button>
+      Next
     </CarouselNextSlideTrigger>
     <CarouselViewport>
       <CarouselSlideGroup>
