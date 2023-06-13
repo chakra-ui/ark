@@ -32,7 +32,7 @@
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
-    "@types/node": "18.16.17",
+    "@types/node": "18.16.18",
     "@types/react": "18.2.11",
     "@types/react-dom": "18.2.4",
     "eslint": "8.42.0",
