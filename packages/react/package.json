@@ -115,7 +115,7 @@
     "@vitejs/plugin-react": "4.0.0",
     "@vitest/coverage-c8": "0.31.4",
     "clean-package": "2.2.0",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "happy-dom": "9.20.3",
