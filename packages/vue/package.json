@@ -104,7 +104,7 @@
     "@vue/compiler-sfc": "3.3.4",
     "clean-package": "2.2.0",
     "eslint": "8.43.0",
-    "eslint-plugin-vue": "9.14.1",
+    "eslint-plugin-vue": "9.15.0",
     "happy-dom": "9.20.3",
     "jsdom": "22.1.0",
     "release-it": "15.11.0",
