@@ -6,6 +6,11 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed an issue where `TagsInput` was not exported
+- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered correctly
+
 ## [0.5.0] - 2023-06-03
 
 ### Added
