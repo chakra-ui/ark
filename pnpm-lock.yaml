@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -397,8 +397,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0(release-it@15.11.0)
       '@solidjs/testing-library':
-        specifier: 0.7.1
-        version: 0.7.1(solid-js@1.7.6)
+        specifier: 0.8.0
+        version: 0.8.0(@solidjs/router@0.8.2)(solid-js@1.7.6)
       '@storybook/addon-essentials':
         specifier: 7.0.22
         version: 7.0.22(react-dom@18.2.0)(react@18.2.0)
@@ -1226,7 +1226,7 @@ packages:
     resolution: {integrity: sha512-0NFvs3VkuSYbFi1x2Vd6tKrywq+z/cLeYC/RJNFrIX/30Bf5aiGYbtvGXolEktzJH8o5E5KJ3tT+nkxuuZFVlA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.22.5
     dev: true
 
   /@babel/helper-module-imports@7.22.5:
@@ -3427,6 +3427,7 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+    dev: false
 
   /@babel/types@7.22.5:
     resolution: {integrity: sha512-zo3MIHGOkPOfoRXitsgHLjEXmlDaD/5KU1Uzuc9GNiZPhSqVxVRtxuPaSBZDsYZ9qV88AjtMtWW7ww98loJ9KA==}
@@ -5352,12 +5353,22 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /@solidjs/testing-library@0.7.1(solid-js@1.7.6):
-    resolution: {integrity: sha512-TRDsCx2R4LZYOEZ36EjmYn9O+de7o3U/D30YMlcyaagu3OlNGJubidBIdeOE5HcVIE2ojHRo6CHWdQAisUVrzg==}
+  /@solidjs/router@0.8.2(solid-js@1.7.6):
+    resolution: {integrity: sha512-gUKW+LZqxtX6y/Aw6JKyy4gQ9E7dLqp513oB9pSYJR1HM5c56Pf7eijzyXX+b3WuXig18Cxqah4tMtF0YGu80w==}
+    peerDependencies:
+      solid-js: ^1.5.3
+    dependencies:
+      solid-js: 1.7.6
+    dev: true
+
+  /@solidjs/testing-library@0.8.0(@solidjs/router@0.8.2)(solid-js@1.7.6):
+    resolution: {integrity: sha512-70IgDPOCnvRzeEi6SDxzOQEv8ZMfaDkV4FMyWZ2uFwYyMu3smRbO6H5zMMR/hy7Vs8JDZzbueez+4+MsDG+RvQ==}
     engines: {node: '>= 14'}
     peerDependencies:
+      '@solidjs/router': '>=0.6.0'
       solid-js: '>=1.0.0'
     dependencies:
+      '@solidjs/router': 0.8.2(solid-js@1.7.6)
       '@testing-library/dom': 9.3.1
       solid-js: 1.7.6
     dev: true
@@ -9022,7 +9033,7 @@ packages:
       '@babel/core': 7.22.1
       '@babel/helper-module-imports': 7.18.6
       '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.1)
-      '@babel/types': 7.22.4
+      '@babel/types': 7.22.5
       html-entities: 2.3.3
       validate-html-nesting: 1.2.2
     dev: true
@@ -9035,7 +9046,7 @@ packages:
       '@babel/core': 7.22.5
       '@babel/helper-module-imports': 7.18.6
       '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.5)
-      '@babel/types': 7.22.4
+      '@babel/types': 7.22.5
       html-entities: 2.3.3
       validate-html-nesting: 1.2.2
     dev: true
