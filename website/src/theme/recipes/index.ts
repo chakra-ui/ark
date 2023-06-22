@@ -22,6 +22,7 @@ import { popover } from './popover'
 import { radio } from './radio'
 import { radioGroup } from './radio-group'
 import { ratingGroup } from './rating-group'
+import { segmentGroup } from './segment-group'
 import { select } from './select'
 import { slider } from './slider'
 import { splitter } from './splitter'
@@ -56,6 +57,7 @@ export const recipes = {
   radio,
   radioGroup,
   ratingGroup,
+  segmentGroup,
   select,
   slider,
   splitter,
