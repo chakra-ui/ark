@@ -1,0 +1,120 @@
+---
+id: custom-components
+name: Custom Components
+description:
+  Dive into the world of un-opinionated component frameworks with Ark. Learn how
+  to leverage its flexibility and create custom components that align with your
+  unique design specifications.
+---
+
+## Understanding The Problem
+
+Traditional UI frameworks come with pre-designed, opinionated components such as
+a `<Pagination />`. These components are bundled with pre-configured styles and
+a set of predefined props that control the appearance and behavior of the
+component. This is very convenient and helpful at the beginning of the
+development phase.
+
+However, there is a downside to this convenience. These predefined components
+limit your design choices to just theming (CSS) and tweaking the component's API
+(Props) to alter its design and behavior. This often becomes a bottleneck when
+you want to give your UI a unique touch or incorporate business-specific
+requirements that aren't supported by the given API. For example, you might want
+a highly customized `Pagination` component that differs significantly from the
+standard model, but the opinionated framework might not support your desired
+configuration or style.
+
+## The Solution
+
+Ark is an un-opinionated component framework that empowers developers with the
+flexibility to create their own custom components. Unlike traditional UI
+frameworks, Ark does not constrain you to a particular component API or theming.
+
+Before we delve into how to create a custom component using Ark, let's
+understand what Ark is and why it is special. Ark is a UI framework that puts
+the control in the hands of developers. It does not enforce strict design
+decisions, instead providing a flexible platform that allows developers to
+create components that align with their specific needs and preferences.
+
+Now let's see how you can use Ark to create custom components that perfectly
+align with your unique design choices and specifications.
+
+## Creating a Custom Component
+
+Consider this basic implementation of a `Pagination` component:
+
+```tsx
+<Pagination count={5000} pageSize={10} siblingCount={2}>
+  {({ pages }) => (
+    <PaginationList>
+      <PaginationListItem>
+        <PaginationPrevPageTrigger>Previous Page</PaginationPrevPageTrigger>
+      </PaginationListItem>
+      {pages.map((page, index) =>
+        page.type === 'page' ? (
+          <PaginationListItem key={index}>
+            <PaginationPageTrigger {...page}>
+              {page.value}
+            </PaginationPageTrigger>
+          </PaginationListItem>
+        ) : (
+          <PaginationListItem key={index}>
+            <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
+          </PaginationListItem>
+        ),
+      )}
+      <PaginationListItem>
+        <PaginationNextPageTrigger>Next Page</PaginationNextPageTrigger>
+      </PaginationListItem>
+    </PaginationList>
+  )}
+</Pagination>
+```
+
+While functional, this approach could become verbose if you need to implement a
+`Pagination` component frequently, requiring ~30 lines of code each time.
+Furthermore, this approach does not accommodate your specific design
+preferences, such as component structure, style, and default values.
+
+To streamline this process, you can create a reusable `CustomPagination`
+component using Ark. This component will be a wrapper around the `Pagination`
+component and it will incorporate your specific design and styling preferences.
+
+```tsx
+import { type PaginationProps } from '@ark-ui/solid'
+
+interface CustomPaginationProps extends Pick<PaginationProps, 'count' | 'pageSize' | 'siblingCount'> {
+  // Add any other props you might need
+}
+
+const CustomPagination = (props: CustomPaginationProps) => {
+  const { count = 1000, pageSize = 10, siblingCount = 1 } = props
+  return (
+    <Pagination count={count} pageSize={pageSize} siblingCount={siblingCount}>
+      {({ pages }) => (
+        /* Implementation details here */
+      )}
+    </Pagination>
+  )
+}
+```
+
+In this code, `CustomPaginationProps` is an interface that extends the
+predefined `PaginationProps` from Ark. This interface represents the properties
+that the `CustomPagination` component accepts. We've set default values for the
+`count`, `pageSize`, and `siblingCount` props in the `CustomPagination`
+component, but you can override these defaults when using the component.
+
+## Conclusion
+
+The power of Ark lies in its flexibility and customizability. By offering
+developers the freedom to design their components, Ark paves the way for a user
+interface that perfectly reflects the unique design decisions and
+business-specific requirements of your application.
+
+Remember, the `CustomPagination` component is just an example. The same
+principles can be applied to create other reusable components that reflect your
+specific needs and preferences, making your code cleaner, more maintainable, and
+more consistent. Be sure to explore the full range of props available in the
+base components and consider how they might be used to further enhance your
+custom components.

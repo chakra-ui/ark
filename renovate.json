@@ -15,5 +15,5 @@
       "matchPackageNames": ["contentlayer", "next-contentlayer"]
     }
   ],
-  "ignoreDeps": ["next"]
+  "ignoreDeps": ["next", "@next/env", "eslint-config-next"]
 }

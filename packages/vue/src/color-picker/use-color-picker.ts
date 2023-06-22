@@ -1,20 +1,19 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
-import type { Optional } from '../types'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
 import { useId } from '../utils'
+import type { ColorPickerContext } from './color-picker'
 
-export interface UseColorPickerContext extends Optional<colorPicker.Context, 'id'> {
-  modelValue?: colorPicker.Context['value']
-}
-
-export const useColorPicker = (emit: CallableFunction, context: UseColorPickerContext) => {
+export const useColorPicker = <T extends ExtractPropTypes<ColorPickerContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
 
   const [state, send] = useMachine(
     colorPicker.machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onChange(details) {
         emit('change', details)
@@ -29,4 +28,4 @@ export const useColorPicker = (emit: CallableFunction, context: UseColorPickerCo
   return computed(() => colorPicker.connect(state.value, send, normalizeProps))
 }
 
-export type UseColorPickerReturn = ReturnType<typeof useColorPicker>
+export type UseColorPickerReturn = ReturnType<typeof colorPicker.connect>

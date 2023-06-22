@@ -1,7 +1,7 @@
 import { ColorModeButton } from '@/components/navigation/navbar/ColorModeButton'
 import { Button } from '@/components/shared/Button'
 import { IconButton } from '@/components/shared/IconButton'
-import { Box, Flex, panda, Stack } from '@/panda/jsx'
+import { Box, Flex, Stack, styled } from '@/panda/jsx'
 import { FiCircle } from 'react-icons/fi'
 
 export default function Page() {
@@ -19,11 +19,11 @@ export default function Page() {
 }
 
 const ControlBar = () => (
-  <panda.nav role="navigation" position="sticky" top="0" zIndex={100} py="4">
+  <styled.nav role="navigation" position="sticky" top="0" zIndex={100} py="4">
     <Flex justify="center" align="center">
       <ColorModeButton />
     </Flex>
-  </panda.nav>
+  </styled.nav>
 )
 
 const Buttons = () => (

@@ -4,6 +4,7 @@ import { TableOfContent } from '@/components/docs/TableOfContent'
 import { PageHeader } from '@/components/shared/PageHeader'
 import { findDocumentByFrameWorkAndId } from '@/lib/contentlayer'
 import { Stack } from '@/panda/jsx'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 const Page = (props: any) => {
@@ -27,3 +28,13 @@ const Page = (props: any) => {
 }
 
 export default Page
+
+export const generateMetadata = async (props: any): Promise<Metadata> => {
+  const { params } = props
+  const doc = findDocumentByFrameWorkAndId(params.framework, params.document)
+
+  return {
+    title: doc?.name,
+    description: doc?.description,
+  }
+}

@@ -1,12 +1,15 @@
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
+import { runIfFn } from '../run-if-fn'
 import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
 
-export type HoverCardProps = UseHoverCardProps & { children: JSX.Element }
+export type HoverCardProps = UseHoverCardProps & {
+  children?: JSX.Element | ((state: UseHoverCardReturn) => JSX.Element)
+}
 
 export const HoverCard = (props: HoverCardProps) => {
-  const [useHoverCardProps, restProps] = createSplitProps<UseHoverCardProps>()(props, [
+  const [hoverCardProps, localProps] = createSplitProps<UseHoverCardProps>()(props, [
     'closeDelay',
     'dir',
     'getRootNode',
@@ -18,7 +21,8 @@ export const HoverCard = (props: HoverCardProps) => {
     'openDelay',
     'positioning',
   ])
-  const hoverCard = useHoverCard(useHoverCardProps)
+  const api = useHoverCard(hoverCardProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return <HoverCardProvider value={hoverCard}>{restProps.children}</HoverCardProvider>
+  return <HoverCardProvider value={api}>{getChildren()}</HoverCardProvider>
 }

@@ -1,14 +1,7 @@
 {
   "CheckboxProps": {
-    "aria-describedby": { "type": "string", "isRequired": false },
-    "aria-label": {
-      "type": "string",
-      "isRequired": false,
-      "description": "Defines the string that labels the checkbox element."
-    },
-    "aria-labelledby": { "type": "string", "isRequired": false },
     "checked": {
-      "type": "boolean",
+      "type": "CheckedState",
       "isRequired": false,
       "description": "If `true`, the checkbox will be checked."
     },
@@ -22,51 +15,41 @@
       "isRequired": false,
       "description": "If `true`, the checkbox will be disabled"
     },
-    "focusable": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true` and `disabled` is passed, the checkbox will\nremain tabbable but not interactive"
-    },
     "form": {
       "type": "string",
       "isRequired": false,
-      "description": "The associate form of the underlying checkbox."
+      "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
     },
     "ids": {
       "type": "Partial<{ root: string; input: string; control: string; label: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the checkbox. Useful for composition."
     },
-    "indeterminate": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the checkbox will be indeterminate.\nThis only affects the icon shown inside checkbox\nand does not modify the isChecked property."
-    },
     "invalid": {
       "type": "boolean",
       "isRequired": false,
       "description": "If `true`, the checkbox is marked as invalid."
     },
-    "modelValue": { "type": "boolean", "isRequired": false },
+    "modelValue": { "type": "CheckedState", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
-      "description": "The name of the input field in a checkbox\n(Useful for form submission)."
+      "description": "The name of the input field in a checkbox. Useful for form submission."
     },
     "onChange": {
-      "type": "(details: { checked: boolean | 'indeterminate' }) => void",
+      "type": "(details: { checked: CheckedState }) => void",
       "isRequired": false,
       "description": "The callback invoked when the checked state of the `Checkbox` changes."
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the checkbox will be readonly"
     },
     "required": {
       "type": "boolean",
@@ -74,9 +57,9 @@
       "description": "If `true`, the checkbox input is marked as required,"
     },
     "value": {
-      "type": "string | number",
+      "type": "string",
       "isRequired": false,
-      "description": "The value to be used in the checkbox input.\nThis is the value that will be returned on form submission."
+      "description": "The value of checkbox input. Useful for form submission."
     }
   }
 }

@@ -1,17 +1,23 @@
-import { connect, machine, type Context as HoverCardContext } from '@zag-js/hover-card'
+import { connect, machine } from '@zag-js/hover-card'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
+import type { HoverCardProps } from './hover-card'
 
-export type UseHoverCardContext = Omit<HoverCardContext, 'id'>
-
-export const useHoverCard = (emit: CallableFunction, context: UseHoverCardContext) => {
+export const useHoverCard = <T extends ExtractPropTypes<HoverCardProps>>(
+  emit: CallableFunction,
+  context: T,
+) => {
   const reactiveContext = reactive(context)
+
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
       ...reactiveContext,
-      id: useId().value,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       onOpen() {
         emit('open')
       },
@@ -24,4 +30,4 @@ export const useHoverCard = (emit: CallableFunction, context: UseHoverCardContex
   return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseHoverCardReturn = ReturnType<typeof useHoverCard>
+export type UseHoverCardReturn = ReturnType<typeof connect>

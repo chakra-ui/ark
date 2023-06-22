@@ -3,7 +3,7 @@ import { JSIcon } from '@/icons/JS'
 import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
-import { Box, Container, Flex, Stack, panda, type FlexProps } from '@/panda/jsx'
+import { Box, Container, Flex, Stack, styled, type FlexProps } from '@/panda/jsx'
 import { FiArrowRight } from 'react-icons/fi'
 import { match } from 'ts-pattern'
 import { Button } from '../shared/Button'
@@ -19,7 +19,7 @@ export const Universe = () => (
     <Container pt={{ base: '16', md: '40' }}>
       <Heading textAlign="center" textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
         Accessible components. <br />
-        Powered by <panda.span color="accent.default">State Machines</panda.span>
+        Powered by <styled.span color="accent.default">State Machines</styled.span>
       </Heading>
     </Container>
     <Box

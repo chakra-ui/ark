@@ -2,7 +2,7 @@
 import { Editable, EditableArea, EditableInput, EditableLabel, EditablePreview } from '../'
 </script>
 <template>
-  <Editable placeholder="Placeholder" activationMode="dblclick">
+  <Editable id="my" placeholder="Placeholder" activationMode="dblclick">
     <EditableLabel>Label</EditableLabel>
     <EditableArea>
       <EditableInput />

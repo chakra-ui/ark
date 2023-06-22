@@ -1,70 +1,74 @@
-import { defineComponent, type ComponentPropsOptions, type PropType } from 'vue'
+import { type Context } from '@zag-js/pin-input'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type Assign, type Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
 import { PinInputProvider } from './pin-input-context'
-import { usePinInput, type UsePinInputContext } from './use-pin-input'
+import { usePinInput } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputContext>
+export type PinInputContext = Context & {
+  modelValue?: PinInputContext['value']
+}
+export type UsePinInputProps = Assign<HTMLArkProps<'div'>, PinInputContext>
 
-const VuePinInputProps: ComponentPropsOptions = {
+const VuePinInputProps = createVueProps<UsePinInputProps>({
   autoFocus: {
-    type: Boolean as PropType<PinInputProps['autoFocus']>,
+    type: Boolean as PropType<UsePinInputProps['autoFocus']>,
   },
   blurOnComplete: {
-    type: Boolean as PropType<PinInputProps['blurOnComplete']>,
+    type: Boolean as PropType<UsePinInputProps['blurOnComplete']>,
   },
   dir: {
-    type: String as PropType<PinInputProps['dir']>,
+    type: String as PropType<UsePinInputProps['dir']>,
   },
   disabled: {
-    type: Boolean as PropType<PinInputProps['disabled']>,
+    type: Boolean as PropType<UsePinInputProps['disabled']>,
   },
   form: {
-    type: String as PropType<PinInputProps['form']>,
+    type: String as PropType<UsePinInputProps['form']>,
   },
   id: {
-    type: String as PropType<PinInputProps['id']>,
+    type: String as PropType<UsePinInputProps['id']>,
   },
   ids: {
-    type: Object as PropType<PinInputProps['ids']>,
+    type: Object as PropType<UsePinInputProps['ids']>,
   },
   invalid: {
-    type: Boolean as PropType<PinInputProps['invalid']>,
+    type: Boolean as PropType<UsePinInputProps['invalid']>,
   },
   mask: {
-    type: Boolean as PropType<PinInputProps['mask']>,
+    type: Boolean as PropType<UsePinInputProps['mask']>,
   },
   modelValue: {
-    type: Array as PropType<PinInputProps['modelValue']>,
+    type: Array as PropType<UsePinInputProps['modelValue']>,
   },
   name: {
-    type: String as PropType<PinInputProps['name']>,
+    type: String as PropType<UsePinInputProps['name']>,
   },
   otp: {
-    type: Boolean as PropType<PinInputProps['otp']>,
+    type: Boolean as PropType<UsePinInputProps['otp']>,
   },
   pattern: {
-    type: String as PropType<PinInputProps['pattern']>,
+    type: String as PropType<UsePinInputProps['pattern']>,
   },
   placeholder: {
-    type: String as PropType<PinInputProps['placeholder']>,
+    type: String as PropType<UsePinInputProps['placeholder']>,
   },
   selectOnFocus: {
-    type: Boolean as PropType<PinInputProps['selectOnFocus']>,
+    type: Boolean as PropType<UsePinInputProps['selectOnFocus']>,
   },
   translations: {
-    type: Object as PropType<PinInputProps['translations']>,
+    type: Object as PropType<UsePinInputProps['translations']>,
   },
   type: {
-    type: String as PropType<PinInputProps['type']>,
+    type: String as PropType<UsePinInputProps['type']>,
   },
   value: {
-    type: Array as PropType<PinInputProps['value']>,
+    type: Array as PropType<UsePinInputProps['value']>,
   },
-}
+})
 
-export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
+export const PinInput: ComponentWithProps<Partial<UsePinInputProps>> = defineComponent({
   name: 'PinInput',
   props: VuePinInputProps,
   emits: ['change', 'update:modelValue', 'invalid', 'complete'],
@@ -75,8 +79,10 @@ export const PinInput: ComponentWithProps<PinInputProps> = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
+
+export type PinInputProps = Optional<PinInputContext, 'id'>

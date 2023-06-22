@@ -1,37 +1,48 @@
+import type { Context as PressableContext } from '@zag-js/pressable'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
-import { usePressable, type UsePressableContext } from './use-pressable'
+import { type Assign, type Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
+import { usePressable } from './use-pressable'
 
-export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableContext>
+export type UsePressableProps = Assign<HTMLArkProps<'button'>, PressableContext>
 
-export const Pressable: ComponentWithProps<PressableProps> = defineComponent({
-  name: 'Pressable',
-  props: {
-    isDisabled: {
-      type: Boolean as PropType<PressableProps['isDisabled']>,
-    },
-    isCanceledOnExit: {
-      type: Boolean as PropType<PressableProps['isCanceledOnExit']>,
-    },
-    preventFocusOnPress: {
-      type: Boolean as PropType<PressableProps['preventFocusOnPress']>,
-    },
-    allowTextSelectionOnPress: {
-      type: Boolean as PropType<PressableProps['allowTextSelectionOnPress']>,
-    },
-    dir: {
-      type: String as PropType<PressableProps['dir']>,
-    },
+const VueProps = createVueProps<UsePressableProps>({
+  id: {
+    type: String as PropType<UsePressableProps['id']>,
   },
-  emits: ['press', 'longPress', 'pressEnd', 'pressUp', 'pressStart'],
+  disabled: {
+    type: Boolean as PropType<UsePressableProps['disabled']>,
+  },
+  cancelOnPointerExit: {
+    type: Boolean as PropType<UsePressableProps['cancelOnPointerExit']>,
+  },
+  preventFocusOnPress: {
+    type: Boolean as PropType<UsePressableProps['preventFocusOnPress']>,
+  },
+  allowTextSelectionOnPress: {
+    type: Boolean as PropType<UsePressableProps['allowTextSelectionOnPress']>,
+  },
+  dir: {
+    type: String as PropType<UsePressableProps['dir']>,
+  },
+  longPressDelay: {
+    type: Number as PropType<UsePressableProps['longPressDelay']>,
+  },
+})
+
+export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineComponent({
+  name: 'Pressable',
+  props: VueProps,
+  emits: ['press', 'long-press', 'press-end', 'press-up', 'press-start'],
   setup(props, { slots, attrs, emit }) {
     const api = usePressable(emit, props)
     return () => (
       <ark.button {...api.value.pressableProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.button>
     )
   },
 })
+
+export type PressableProps = Optional<UsePressableProps, 'id'>

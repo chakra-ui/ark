@@ -19,3 +19,8 @@
   background: black;
   color: white;
 }
+
+[data-part='control'][data-indeterminate] {
+  background: blue;
+  color: white;
+}

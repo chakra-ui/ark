@@ -29,7 +29,7 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => (
           <DialogContainer className={drawer()}>
             <DialogContent>
               {props.children}
-              <DialogCloseTrigger>
+              <DialogCloseTrigger asChild>
                 <CloseButton aria-label="Close dialog" />
               </DialogCloseTrigger>
             </DialogContent>

@@ -15,7 +15,7 @@ import {
   MenuTriggerItem,
   Portal,
 } from '@ark-ui/react'
-import { panda } from 'panda/jsx/factory'
+import { styled } from 'panda/jsx/factory'
 import { useState } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 
@@ -83,7 +83,7 @@ export const DemoMenu = () => {
             <MenuSeparator />
             <Menu closeOnSelect={false} positioning={{ placement: 'right-start' }}>
               <MenuTriggerItem>
-                <panda.span flex="1">More options</panda.span>
+                <styled.span flex="1">More options</styled.span>
                 <FiChevronRight />
               </MenuTriggerItem>
               <Portal>

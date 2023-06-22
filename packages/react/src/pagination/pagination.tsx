@@ -20,6 +20,7 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
     props,
     [
       'count',
+      'defaultPage',
       'dir',
       'getRootNode',
       'id',
