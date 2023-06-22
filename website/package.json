@@ -13,7 +13,7 @@
   "dependencies": {
     "@ark-ui/react": "workspace:*",
     "@next/env": "13.4.5",
-    "@pandacss/dev": "0.0.2",
+    "@pandacss/dev": "0.4.0",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.3",
     "markdown-toc": "1.2.0",

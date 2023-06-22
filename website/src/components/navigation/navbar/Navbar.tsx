@@ -1,14 +1,14 @@
 'use client'
 import { IconButton } from '@/components/shared/IconButton'
 import { css } from '@/panda/css'
-import { Flex, HStack, panda } from '@/panda/jsx'
+import { Flex, HStack, styled } from '@/panda/jsx'
 import Link from 'next/link'
 import { RiGithubFill } from 'react-icons/ri'
 import { ColorModeButton } from './ColorModeButton'
 import { Logo } from './Logo'
 
 export const Navbar = () => (
-  <panda.nav role="navigation" position="sticky" top="0" zIndex={100}>
+  <styled.nav role="navigation" position="sticky" top="0" zIndex={100}>
     <Flex justify="center" align="center">
       <HStack
         background="rgba(245, 245, 245, 0.6)"
@@ -64,5 +64,5 @@ export const Navbar = () => (
         </HStack>
       </HStack>
     </Flex>
-  </panda.nav>
+  </styled.nav>
 )

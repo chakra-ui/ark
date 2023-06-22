@@ -1,5 +1,5 @@
 import { Link } from '@/components/shared/Link'
-import { Box, HStack, panda } from '@/panda/jsx'
+import { Box, HStack, styled } from '@/panda/jsx'
 import { FaBookOpen, FaDiscord, FaGithub } from 'react-icons/fa'
 import { RiRoadMapFill } from 'react-icons/ri'
 
@@ -28,7 +28,7 @@ const links = [
 ]
 
 export const SidebarExternalLinks = () => (
-  <panda.ul
+  <styled.ul
     display="flex"
     flexDirection="column"
     gap={{ base: '5', lg: '4' }}
@@ -64,10 +64,10 @@ export const SidebarExternalLinks = () => (
             >
               {link.icon}
             </Box>
-            <panda.span>{link.label}</panda.span>
+            <styled.span>{link.label}</styled.span>
           </HStack>
         </Link>
       </li>
     ))}
-  </panda.ul>
+  </styled.ul>
 )
