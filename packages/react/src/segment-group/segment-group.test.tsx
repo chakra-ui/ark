@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Segmented } from './segmented'
-import { SegmentedControl } from './segmented-control'
-import { SegmentedGroup, type SegmentedGroupProps } from './segmented-group'
-import { SegmentedGroupLabel } from './segmented-group-label'
-import { SegmentedInput } from './segmented-input'
-import { SegmentedLabel } from './segmented-label'
+import { Segment } from './segment'
+import { SegmentControl } from './segment-control'
+import { SegmentGroup, type SegmentGroupProps } from './segment-group'
+import { SegmentGroupLabel } from './segment-group-label'
+import { SegmentInput } from './segment-input'
+import { SegmentLabel } from './segment-label'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -15,20 +15,20 @@ const options = [
   { id: 'grape', label: 'Grapes' },
 ]
 
-const Component = (props: SegmentedGroupProps) => (
-  <SegmentedGroup {...props}>
-    <SegmentedGroupLabel>Fruits</SegmentedGroupLabel>
+const Component = (props: SegmentGroupProps) => (
+  <SegmentGroup {...props}>
+    <SegmentGroupLabel>Fruits</SegmentGroupLabel>
     {options.map((option, id) => (
-      <Segmented key={id} value={option.id} disabled={option.disabled}>
-        <SegmentedLabel>{option.label}</SegmentedLabel>
-        <SegmentedInput />
-        <SegmentedControl />
-      </Segmented>
+      <Segment key={id} value={option.id} disabled={option.disabled}>
+        <SegmentLabel>{option.label}</SegmentLabel>
+        <SegmentInput />
+        <SegmentControl />
+      </Segment>
     ))}
-  </SegmentedGroup>
+  </SegmentGroup>
 )
 
-describe('Segmented Group', () => {
+describe('Segment Group', () => {
   it('should invoke onChange if another value has selected', async () => {
     const onChange = vi.fn()
 

@@ -27,6 +27,7 @@ export const Playground = (props: PlaygroundProps) => {
     .with('radio-group', () => lazyLoad(() => import('./demo/RadioGroup'), 'DemoRadioGroup'))
     .with('range-slider', () => lazyLoad(() => import('./demo/RangeSlider'), 'DemoRangeSlider'))
     .with('rating-group', () => lazyLoad(() => import('./demo/RatingGroup'), 'DemoRatingGroup'))
+    .with('segment-group', () => lazyLoad(() => import('./demo/SegmentGroup'), 'DemoSegmentGroup'))
     .with('select', () => lazyLoad(() => import('./demo/Select'), 'DemoSelect'))
     .with('slider', () => lazyLoad(() => import('./demo/Slider'), 'DemoSlider'))
     .with('splitter', () => lazyLoad(() => import('./demo/Splitter'), 'DemoSplitter'))

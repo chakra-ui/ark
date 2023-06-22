@@ -1,7 +1,0 @@
-export { Segmented, type SegmentedProps } from './segmented'
-export { SegmentedControl, type SegmentedControlProps } from './segmented-control'
-export { SegmentedGroup, type SegmentedGroupProps } from './segmented-group'
-export { SegmentedGroupLabel, type SegmentedGroupLabelProps } from './segmented-group-label'
-export { segmentedGroupAnatomy } from './segmented-group.anatomy'
-export { SegmentedInput, type SegmentedInputProps } from './segmented-input'
-export { SegmentedLabel, type SegmentedLabelProps } from './segmented-label'
