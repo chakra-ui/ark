@@ -55,7 +55,7 @@ const VueDialogProps = createVueProps<UseDialogProps>({
 export const Dialog: ComponentWithProps<Partial<UseDialogProps>> = defineComponent({
   name: 'Dialog',
   props: VueDialogProps,
-  emits: ['close', 'outside-click', 'esc'],
+  emits: ['close', 'outside-click', 'esc','update:open'],
   setup(props, { slots, emit }) {
     const api = useDialog(emit, props as UseDialogProps)
 
