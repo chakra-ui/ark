@@ -1,0 +1,4 @@
+{
+  "Basic": "const Basic = () => (\n  <Avatar>\n    <AvatarFallback>PA</AvatarFallback>\n    <AvatarImage src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar>\n)",
+  "Events": "const Events = () => (\n  <Avatar onError={() => console.log('error')} onLoad={() => console.log('loaded')}>\n    <AvatarFallback>PA</AvatarFallback>\n    <AvatarImage src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar>\n)"
+}
