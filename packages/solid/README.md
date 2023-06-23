@@ -15,6 +15,7 @@
 At the moment, `@ark-ui/solid`offers the following components:
 
 - [Accordion](https://ark-ui.com/docs/solid/components/accordion)
+- [Avatar](https://ark-ui.com/docs/solid/components/avatar)
 - [Carousel](https://ark-ui.com/docs/solid/components/carousel)
 - [Checkbox](https://ark-ui.com/docs/solid/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/solid/components/color-picker)
