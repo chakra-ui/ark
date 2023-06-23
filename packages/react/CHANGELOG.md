@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `SegmentGroup` component
+
 ## [0.6.0] - 2023-06-03
 
 ### Added
@@ -17,7 +21,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state.
+- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state
 - Updated all `@zag-js` dependencies to their latest versions
 
 ## [0.5.0] - 2023-05-25
