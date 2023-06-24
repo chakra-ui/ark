@@ -28,8 +28,8 @@
     "website": "pnpm --filter=@ark-ui/website"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.5",
-    "@commitlint/config-conventional": "17.6.5",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-conventional": "17.6.6",
     "@types/fs-extra": "11.0.1",
     "@types/node": "18.16.18",
     "@types/prettier": "2.7.3",
