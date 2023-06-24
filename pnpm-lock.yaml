@@ -689,8 +689,8 @@ importers:
         specifier: 6.1.1
         version: 6.1.1
       rehype-pretty-code:
-        specifier: 0.9.11
-        version: 0.9.11(shiki@0.14.2)
+        specifier: 0.10.0
+        version: 0.10.0(shiki@0.14.2)
       rehype-slug:
         specifier: 5.1.0
         version: 5.1.0
@@ -15471,11 +15471,11 @@ packages:
       unified: 10.1.2
     dev: false
 
-  /rehype-pretty-code@0.9.11(shiki@0.14.2):
-    resolution: {integrity: sha512-Eq90eCYXQJISktfRZ8PPtwc5SUyH6fJcxS8XOMnHPUQZBtC6RYo67gGlley9X2nR8vlniPj0/7oCDEYHKQa/oA==}
+  /rehype-pretty-code@0.10.0(shiki@0.14.2):
+    resolution: {integrity: sha512-qCD071Y+vUxEy9yyrATPk2+W9q7qCbzZgtc9suZhu75bmRQvOlBhJt4d3WvqSMTamkKoFkvqtCjyAk+ggH+aXQ==}
     engines: {node: '>=16'}
     peerDependencies:
-      shiki: '*'
+      shiki: 0.x
     dependencies:
       '@types/hast': 2.3.4
       hash-obj: 4.0.0
