@@ -4,17 +4,17 @@
     "disabled": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the segment will be disabled"
+      "description": "If `true`, the radio will be disabled"
     },
     "invalid": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the segment is marked as invalid."
+      "description": "If `true`, the radio is marked as invalid."
     },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the segment will be readonly"
+      "description": "If `true`, the radio will be readonly"
     }
   },
   "SegmentGroupProps": {
@@ -26,7 +26,7 @@
     "disabled": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the segment group will be disabled"
+      "description": "If `true`, the radio group will be disabled"
     },
     "form": {
       "type": "string",
@@ -44,34 +44,34 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  segment(value: string): string\n  segmentLabel(value: string): string\n  segmentControl(value: string): string\n  segmentInput(value: string): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioInput(value: string): string\n}>",
       "isRequired": false,
-      "description": "The ids of the elements in the segment. Useful for composition."
+      "description": "The ids of the elements in the radio. Useful for composition."
     },
     "name": {
       "type": "string",
       "isRequired": false,
-      "description": "The name of the input fields in the segment\n(Useful for form submission)."
+      "description": "The name of the input fields in the radio\n(Useful for form submission)."
     },
     "onChange": {
       "type": "(details: { value: string }) => void",
       "isRequired": false,
-      "description": "Function called once a segment is checked"
+      "description": "Function called once a radio is checked"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
-      "description": "Orientation of the segment group"
+      "description": "Orientation of the radio group"
     },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the segment group will be readonly"
+      "description": "If `true`, the radio group will be readonly"
     },
     "value": {
       "type": "string",
       "isRequired": false,
-      "description": "The value of the checked segment"
+      "description": "The value of the checked radio"
     }
   }
 }
