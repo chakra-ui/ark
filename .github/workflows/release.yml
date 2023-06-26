@@ -20,6 +20,11 @@ on:
           - major
           - minor
           - patch
+      isPreRelease:
+        description: 'Pre-Release'
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   release:
@@ -50,7 +55,15 @@ jobs:
       - name: Build
         run: pnpm ${{ github.event.inputs.package }} build
 
+      - name: Pre-Release
+        if: github.event.inputs.isPreRelease == 'true'
+        run: pnpm ${{ github.event.inputs.package }} release-it ${{ github.event.inputs.increment }} --ci --preRelease=beta
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Release
+        if: github.event.inputs.isPreRelease == 'false'
         run: pnpm ${{ github.event.inputs.package }} release-it --ci --increment ${{ github.event.inputs.increment }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
