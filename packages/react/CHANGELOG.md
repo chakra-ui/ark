@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix an erorr
+
 ## [0.8.0-beta.0] - 2023-06-26
 
 ### Added
@@ -102,5 +106,4 @@ description: All notable changes to this project will be documented in this file
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
-
 [0.8.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.0-beta.0
