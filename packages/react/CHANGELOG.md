@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added support for standalone imports of components. For example, you can now import `@ark-ui/react/switch` instead of `@ark-ui/react`. This is useful when your bundler doesn't support tree-shaking.
+
 ## [0.7.0] - 2023-06-23
 
 ### Added
@@ -95,5 +99,4 @@ description: All notable changes to this project will be documented in this file
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
-
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
