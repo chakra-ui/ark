@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added 'Segment Group' component
 - Added 'Avatar' component
 
 ## [0.6.0] - 2023-06-03

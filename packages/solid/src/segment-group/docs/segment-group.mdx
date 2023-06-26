@@ -1,0 +1,49 @@
+---
+id: segment-group
+name: Segment Group
+description:
+  The SegmentGroup component offers an effective way to organize and navigate
+  between multiple sections within a single view. It provides a clear and
+  compact option to improve usability and accessibility.
+---
+
+## Usage
+
+Start by importing the necessary components from the package:
+
+```tsx
+import {
+  Segment,
+  SegmentControl,
+  SegmentGroup,
+  SegmentIndicator,
+  SegmentInput,
+  SegmentLabel,
+} from '@ark-ui/solid'
+```
+
+Here are some examples of how to use the SegmentGroup component:
+
+<Story name="Basic" />
+
+## Controlled SegmentGroup
+
+To create a controlled SegmentGroup component, manage the current selected
+segment using the `value` prop and update it when the `onChange` event handler
+is called:
+
+<Story name="Controlled" />
+
+## Disabled Segment
+
+To disable a segment, simply pass the `disabled` prop to the `Segment`
+component:
+
+<Story name="Disabled" />
+
+## Conclusion
+
+The SegmentGroup component provides a versatile and adaptable solution for
+introducing segmented navigation to your applications. With a broad variety of
+customization options and features, it can cater to various use cases and
+designs.

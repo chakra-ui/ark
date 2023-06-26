@@ -1,0 +1,77 @@
+{
+  "SegmentProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the segment will be disabled"
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the segment is marked as invalid."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the segment will be readonly"
+    }
+  },
+  "SegmentGroupProps": {
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the segment group will be disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  segment(value: string): string\n  segmentLabel(value: string): string\n  segmentControl(value: string): string\n  segmentInput(value: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the segment. Useful for composition."
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input fields in the segment\n(Useful for form submission)."
+    },
+    "onChange": {
+      "type": "(details: { value: string }) => void",
+      "isRequired": false,
+      "description": "Function called once a segment is checked"
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "Orientation of the segment group"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the segment group will be readonly"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the checked segment"
+    }
+  }
+}

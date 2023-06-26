@@ -33,6 +33,7 @@ At the moment, `@ark-ui/solid`offers the following components:
 - [Radio Group](https://ark-ui.com/docs/solid/components/radio-group)
 - [Range Slider](https://ark-ui.com/docs/solid/components/range-slider)
 - [Rating Group](https://ark-ui.com/docs/solid/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/solid/components/segment-group)
 - [Select](https://ark-ui.com/docs/solid/components/select)
 - [Slider](https://ark-ui.com/docs/solid/components/slider)
 - [Splitter](https://ark-ui.com/docs/solid/components/splitter)
