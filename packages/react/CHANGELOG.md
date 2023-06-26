@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added support for standalone imports of components. For example, you can now import `@ark-ui/react/switch` instead of `@ark-ui/react`. This is useful when your bundler doesn't support tree-shaking.
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/switch` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
 
 ## [0.7.0] - 2023-06-23
 
