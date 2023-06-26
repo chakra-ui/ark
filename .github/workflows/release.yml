@@ -69,13 +69,14 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Notification
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-              "package_name": "${{ github.event.inputs.package }}",
-              "changelog_url": "https://ark-ui.com/docs/${{ github.event.inputs.package }}/overview/changelog"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # TODO Trigger notification when new website is deployed
+      # - name: Notification
+      #   uses: slackapi/slack-github-action@v1.24.0
+      #   with:
+      #     payload: |
+      #       {
+      #         "package_name": "${{ github.event.inputs.package }}",
+      #         "changelog_url": "https://ark-ui.com/docs/${{ github.event.inputs.package }}/overview/changelog"
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
