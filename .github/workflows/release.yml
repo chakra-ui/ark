@@ -20,11 +20,15 @@ on:
           - major
           - minor
           - patch
-      isPreRelease:
-        description: 'Pre-Release'
+      preRelease:
+        description: 'Pre Release'
         required: true
-        default: true
-        type: boolean
+        default: 'skip'
+        type: choice
+        options:
+          - create
+          - continue
+          - skip
 
 jobs:
   release:
@@ -55,21 +59,29 @@ jobs:
       - name: Build
         run: pnpm ${{ github.event.inputs.package }} build
 
-      - name: Pre-Release
-        if: github.event.inputs.isPreRelease == 'true'
-        run: pnpm ${{ github.event.inputs.package }} release-it ${{ github.event.inputs.increment }} --ci --preRelease=beta
+      - name: Create Pre-Release
+        if: github.event.inputs.preRelease == 'create'
+        run: pnpm ${{ github.event.inputs.package }} release-it ${{ github.event.inputs.increment }} --preRelease=beta --ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Continue Pre-Release
+        if: github.event.inputs.preRelease == 'continue'
+        run: pnpm ${{ github.event.inputs.package }} release-it --preRelease --ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Release
-        if: github.event.inputs.isPreRelease == 'false'
+        if: github.event.inputs.preRelease == 'skip'
         run: pnpm ${{ github.event.inputs.package }} release-it --ci --increment ${{ github.event.inputs.increment }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Notification
+        if: github.event.inputs.preRelease == 'skip'
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
