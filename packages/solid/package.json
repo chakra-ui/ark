@@ -2,42 +2,9 @@
   "name": "@ark-ui/solid",
   "version": "0.6.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
-  "keywords": [
-    "solid",
-    "headless",
-    "accordion",
-    "avatar",
-    "carousel",
-    "checkbox",
-    "color picker",
-    "combobox",
-    "date picker",
-    "dialog",
-    "editable",
-    "hover card",
-    "menu",
-    "number input",
-    "pagination",
-    "pin input",
-    "popover",
-    "radio group",
-    "range slider",
-    "rating group",
-    "select",
-    "slider",
-    "splitter",
-    "switch",
-    "tabs",
-    "tags input",
-    "toast",
-    "tooltip"
-  ],
-  "homepage": "https://github.com/chakra-ui/ark#readme",
+  "keywords": [],
+  "homepage": "https://ark-ui.com",
   "license": "MIT",
-  "main": "src/index.ts",
-  "files": [
-    "dist"
-  ],
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
@@ -56,12 +23,11 @@
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore",
     "storydocs": "pnpm --filter=@ark-ui/scripts document:stories solid",
     "typedocs": "pnpm --filter=@ark-ui/scripts document:types solid",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../config/release-it.json"
+    "release-it": "release-it --config ../../release-it.json",
+    "foo": "pnpm --filter=@ark-ui/scripts release:prepare @ark-ui/solid"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.2",
@@ -111,7 +77,6 @@
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
     "@vitest/coverage-c8": "0.31.4",
-    "clean-package": "2.2.0",
     "eslint": "8.43.0",
     "happy-dom": "9.20.3",
     "react": "18.2.0",
@@ -130,5 +95,5 @@
   "peerDependencies": {
     "solid-js": ">=1.6.0"
   },
-  "clean-package": "../../config/clean-package.config.json"
+  "main": "src/index.ts"
 }
