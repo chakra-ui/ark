@@ -95,15 +95,11 @@ description: All notable changes to this project will be documented in this file
 - Add `Tooltip`
 
 [unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.1...HEAD
-[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
-[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.5.0
-[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.4.0
-[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
-[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
+[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
+[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
+[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.4.0
+[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.5.0
+[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
-[0.8.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.0-beta.0
-[0.9.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0-beta.0
-[0.9.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0-beta.1
-
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1
