@@ -27,7 +27,7 @@ const findAllComponentExports = (fileContent?: string) => {
  * This script checks that all components have the same exports in all frameworks.
  */
 const main = async () => {
-  const root = dirname(findUpSync('pnpm-workspace.yaml')!)
+  const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(root)
 
   const frameworks = await globby(['packages'], { onlyDirectories: true, deep: 1 })

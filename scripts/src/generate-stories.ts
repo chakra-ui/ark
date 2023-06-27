@@ -20,7 +20,7 @@ const main = async () => {
   const framework = process.argv.slice(2)[0]
   console.log('Generating story docs for', framework)
 
-  const root = dirname(findUpSync('pnpm-workspace.yaml')!)
+  const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(path.join(root, 'packages', framework))
 
   const project = new Project({})
