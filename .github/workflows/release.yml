@@ -57,7 +57,8 @@ jobs:
 
       - name: Pre-Release
         if: github.event.inputs.isPreRelease == 'true'
-        run: pnpm ${{ github.event.inputs.package }} release-it ${{ github.event.inputs.increment }} --ci --preRelease=beta
+        # run: pnpm ${{ github.event.inputs.package }} release-it pre${{ github.event.inputs.increment }} --ci --preRelease=beta
+        run: pnpm ${{ github.event.inputs.package }} release-it --preRelease
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
