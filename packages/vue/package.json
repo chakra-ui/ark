@@ -55,8 +55,8 @@
     "typecheck": "tsc",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
-    "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts",
+    "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
+    "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
     "release-it": "release-it --config ../../config/release-it.json"
   },
   "dependencies": {
@@ -96,8 +96,8 @@
     "@testing-library/vue": "7.0.0",
     "@types/jsdom": "21.1.1",
     "@types/testing-library__jest-dom": "5.14.6",
-    "@typescript-eslint/eslint-plugin": "5.60.0",
-    "@typescript-eslint/parser": "5.60.0",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
     "@vitejs/plugin-vue": "4.2.3",
     "@vitejs/plugin-vue-jsx": "3.0.1",
     "@vitest/coverage-c8": "0.31.4",
