@@ -717,8 +717,8 @@ importers:
         specifier: 0.14.3
         version: 0.14.3
       ts-pattern:
-        specifier: 4.3.0
-        version: 4.3.0
+        specifier: 5.0.1
+        version: 5.0.1
       usehooks-ts:
         specifier: 2.9.1
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
