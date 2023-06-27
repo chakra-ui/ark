@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.7.1] - 2023-06-27
+
 ### Added
 
 - Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/tabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
@@ -92,7 +94,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.9.0-beta.1...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.1...HEAD
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.5.0
 [0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.4.0
@@ -103,3 +105,5 @@ description: All notable changes to this project will be documented in this file
 [0.8.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.0-beta.0
 [0.9.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0-beta.0
 [0.9.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0-beta.1
+
+[0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1
