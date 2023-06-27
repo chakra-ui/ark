@@ -58,6 +58,7 @@ export default defineConfig({
       web: [/\.[jt]sx?$/],
     },
     coverage: {
+      provider: 'v8',
       all: true,
       reporter: ['lcov', 'text'],
       include: ['src/**'],
