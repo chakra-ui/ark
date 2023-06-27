@@ -12,8 +12,5 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true
-  },
-  "ts-node": {
-    "esm": true
   }
 }

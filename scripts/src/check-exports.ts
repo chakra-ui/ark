@@ -1,6 +1,7 @@
+import { findUpSync } from 'find-up'
 import { readFile } from 'fs/promises'
 import { globby } from 'globby'
-import path from 'path'
+import path, { dirname } from 'path'
 
 // converts `export { Toast, type ToastProps } from './toast' ...` to  ['Toast']
 const findAllComponentExports = (fileContent?: string) => {
@@ -26,6 +27,9 @@ const findAllComponentExports = (fileContent?: string) => {
  * This script checks that all components have the same exports in all frameworks.
  */
 const main = async () => {
+  const root = dirname(findUpSync('pnpm-workspace.yaml')!)
+  process.chdir(root)
+
   const frameworks = await globby(['packages'], { onlyDirectories: true, deep: 1 })
   const components = [
     ...new Set(

@@ -1,7 +1,8 @@
+import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { readFile } from 'fs/promises'
 import { globby } from 'globby'
-import path from 'path'
+import path, { dirname } from 'path'
 import prettier from 'prettier'
 import ts from 'typescript'
 
@@ -138,6 +139,12 @@ function extractTypeExports(fileContent?: string) {
 }
 
 const main = async () => {
+  const framework = process.argv.slice(2)[0]
+  console.log('Generating type docs for', framework)
+
+  const root = dirname(findUpSync('pnpm-workspace.yaml')!)
+  process.chdir(path.join(root, 'packages', framework))
+
   const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
 
   const componentExportMap: Record<string, string[]> = Object.fromEntries(

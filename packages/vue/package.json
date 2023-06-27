@@ -55,8 +55,8 @@
     "typecheck": "tsc",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
-    "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts",
+    "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
+    "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
     "release-it": "release-it --config ../../config/release-it.json"
   },
   "dependencies": {
