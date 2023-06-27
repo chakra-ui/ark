@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.7.0] - 2023-06-27
+
 ### Added
 
 - Added `Avatar`
@@ -85,10 +87,12 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.6.0...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.7.0...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.3.0
 [0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.4.0
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.5.0
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.6.0
+
+[0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.0
