@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+
 ## [0.5.1] - 2023-06-20
 
 ### Fixed

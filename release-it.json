@@ -18,6 +18,10 @@
     }
   },
   "npm": {
-    "versionArgs": ["--workspaces-update=false"]
+    "versionArgs": ["--workspaces-update=false"],
+    "publishPath": "./dist/"
+  },
+  "hooks": {
+    "before:release": ["pnpm --filter=@ark-ui/scripts release:prepare ${name}"]
   }
 }

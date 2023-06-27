@@ -2,40 +2,10 @@
   "name": "@ark-ui/vue",
   "version": "0.5.1",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
-  "keywords": [
-    "vue",
-    "headless",
-    "accordion",
-    "carousel",
-    "checkbox",
-    "color picker",
-    "combobox",
-    "dialog",
-    "editable",
-    "hover card",
-    "menu",
-    "number input",
-    "pagination",
-    "pin input",
-    "popover",
-    "radio group",
-    "range slider",
-    "rating group",
-    "select",
-    "slider",
-    "splitter",
-    "tabs",
-    "tags input",
-    "toast",
-    "tooltip"
-  ],
-  "homepage": "https://github.com/chakra-ui/ark#readme",
+  "keywords": [],
+  "homepage": "https://ark-ui.com",
   "license": "MIT",
-  "main": "src/index.ts",
   "sideEffects": false,
-  "files": [
-    "dist"
-  ],
   "publishConfig": {
     "access": "public"
   },
@@ -53,11 +23,9 @@
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore",
-    "typedocs": "ts-node ../../scripts/generate-type-docs.ts",
-    "storydocs": "ts-node ../../scripts/generate-stories.ts",
-    "release-it": "release-it --config ../../config/release-it.json"
+    "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
+    "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
+    "release-it": "release-it --config ../../release-it.json"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.2",
@@ -96,13 +64,12 @@
     "@testing-library/vue": "7.0.0",
     "@types/jsdom": "21.1.1",
     "@types/testing-library__jest-dom": "5.14.6",
-    "@typescript-eslint/eslint-plugin": "5.60.0",
-    "@typescript-eslint/parser": "5.60.0",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
     "@vitejs/plugin-vue": "4.2.3",
     "@vitejs/plugin-vue-jsx": "3.0.1",
     "@vitest/coverage-c8": "0.31.4",
     "@vue/compiler-sfc": "3.3.4",
-    "clean-package": "2.2.0",
     "eslint": "8.43.0",
     "eslint-plugin-vue": "9.15.1",
     "happy-dom": "9.20.3",
@@ -118,5 +85,5 @@
   "peerDependencies": {
     "vue": ">=3.0.0"
   },
-  "clean-package": "../../config/clean-package.config.json"
+  "main": "src/index.ts"
 }
