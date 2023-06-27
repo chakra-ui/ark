@@ -230,9 +230,6 @@ importers:
       '@vitest/coverage-c8':
         specifier: 0.31.4
         version: 0.31.4(vitest@0.31.4)
-      clean-package:
-        specifier: 2.2.0
-        version: 2.2.0
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -417,9 +414,6 @@ importers:
       '@vitest/coverage-c8':
         specifier: 0.31.4
         version: 0.31.4(vitest@0.31.4)
-      clean-package:
-        specifier: 2.2.0
-        version: 2.2.0
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -586,9 +580,6 @@ importers:
       '@vue/compiler-sfc':
         specifier: 3.3.4
         version: 3.3.4
-      clean-package:
-        specifier: 2.2.0
-        version: 2.2.0
       eslint:
         specifier: 8.43.0
         version: 8.43.0
@@ -9107,13 +9098,6 @@ packages:
   /ci-info@3.8.0:
     resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
     engines: {node: '>=8'}
-
-  /clean-package@2.2.0:
-    resolution: {integrity: sha512-vLv8kRqvh4smPDpqAYFPLEijTppAd/cfCz4yBcUGoVl/JKu6ZWKhlo+G/cAmwlSa29RudfBeuyiNEzas8bTwEQ==}
-    hasBin: true
-    dependencies:
-      dot-prop: 6.0.1
-    dev: true
 
   /clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
