@@ -373,8 +373,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0(release-it@15.11.0)
       '@solidjs/testing-library':
-        specifier: 0.8.1
-        version: 0.8.1(@solidjs/router@0.8.2)(solid-js@1.7.7)
+        specifier: 0.8.2
+        version: 0.8.2(@solidjs/router@0.8.2)(solid-js@1.7.7)
       '@storybook/addon-essentials':
         specifier: 7.0.24
         version: 7.0.24(react-dom@18.2.0)(react@18.2.0)
@@ -5405,8 +5405,8 @@ packages:
       solid-js: 1.7.7
     dev: true
 
-  /@solidjs/testing-library@0.8.1(@solidjs/router@0.8.2)(solid-js@1.7.7):
-    resolution: {integrity: sha512-5B4s/gV0gT7om2Rf1Ps68WwOn4NRWBsSvD8Cavzq8f4RY24epiu7J+32PFAE3bEfhD1KGdb/eoLr4LIybxhT1Q==}
+  /@solidjs/testing-library@0.8.2(@solidjs/router@0.8.2)(solid-js@1.7.7):
+    resolution: {integrity: sha512-2fV484Y1WWERjro6iwDl9mtKE/UWyS+qJHeLs88gwR/jbNgk/ADRaqFx8dHPxLj5wJmLBO1v5xJhySS8uGljpA==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@solidjs/router': '>=0.6.0'
