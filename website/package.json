@@ -38,6 +38,6 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.5",
     "fs-extra": "11.1.1",
-    "typescript": "5.1.5"
+    "typescript": "5.1.6"
   }
 }
