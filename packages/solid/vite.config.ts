@@ -10,7 +10,6 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      skipDiagnostics: true,
       entryRoot: 'src',
       staticImport: true,
     }),

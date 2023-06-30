@@ -11,6 +11,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     dts({
+      // TODO We should not skip diagnostics
       skipDiagnostics: true,
       entryRoot: 'src',
       staticImport: true,

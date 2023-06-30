@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## Fixed
+
+- Resolved an issue that types accross various components were not being exported correctly.
+
 ## [0.5.2] - 2023-06-27
 
 ### Added
@@ -103,5 +107,4 @@ description: All notable changes to this project will be documented in this file
 [0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.4.0
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
 [0.5.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.1
-
 [0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2

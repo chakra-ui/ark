@@ -9,8 +9,6 @@ export const CarouselPrevSlideTrigger = defineComponent({
   setup(_, { slots, attrs }) {
     const api = useCarouselContext()
     const mergedProps = computed(() => mergeProps(api.value.prevTriggerProps, attrs))
-    return () => (
-      <ark.button {...mergedProps.value}>{slots.default?.()}</ark.button>
-    )
+    return () => <ark.button {...mergedProps.value}>{slots.default?.()}</ark.button>
   },
 })

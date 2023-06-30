@@ -1,15 +1,5 @@
-import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
-import {
-  Carousel,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-} from '.'
 import BasicComponentStory from './carousel.stories.vue'
-
 
 describe('Carousel', () => {
   it('should render', async () => {
@@ -27,6 +17,5 @@ describe('Carousel', () => {
     expect(nextTrigger).toHaveAttribute('data-part', 'next-trigger')
     expect(nextTrigger).toHaveAttribute('type', 'button')
     expect(nextTrigger).toHaveAttribute('aria-label', 'Next Slide')
-
   })
 })
