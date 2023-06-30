@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ## [0.7.1] - 2023-06-30
 
-## Fixed
+### Fixed
 
 - Resolved an issue that types accross various components were not being exported correctly.
 
@@ -101,5 +101,4 @@ description: All notable changes to this project will be documented in this file
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.5.0
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.0
-
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.1

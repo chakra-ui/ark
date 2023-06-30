@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ## [0.7.2] - 2023-06-30
 
-## Fixed
+### Fixed
 
 - Resolved an issue that types accross various components were not being exported correctly.
 
@@ -109,5 +109,4 @@ description: All notable changes to this project will be documented in this file
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1
-
 [0.7.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.2
