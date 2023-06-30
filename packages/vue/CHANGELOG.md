@@ -6,10 +6,6 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
-## Fixed
-
-- Resolved an issue that types accross various components were not being exported correctly.
-
 ## [0.5.2] - 2023-06-27
 
 ### Added
