@@ -15,6 +15,7 @@
 At the moment, `@ark-ui/solid`offers the following components:
 
 - [Accordion](https://ark-ui.com/docs/solid/components/accordion)
+- [Avatar](https://ark-ui.com/docs/solid/components/avatar)
 - [Carousel](https://ark-ui.com/docs/solid/components/carousel)
 - [Checkbox](https://ark-ui.com/docs/solid/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/solid/components/color-picker)
@@ -32,6 +33,7 @@ At the moment, `@ark-ui/solid`offers the following components:
 - [Radio Group](https://ark-ui.com/docs/solid/components/radio-group)
 - [Range Slider](https://ark-ui.com/docs/solid/components/range-slider)
 - [Rating Group](https://ark-ui.com/docs/solid/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/solid/components/segment-group)
 - [Select](https://ark-ui.com/docs/solid/components/select)
 - [Slider](https://ark-ui.com/docs/solid/components/slider)
 - [Splitter](https://ark-ui.com/docs/solid/components/splitter)

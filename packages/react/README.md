@@ -33,6 +33,7 @@ At the moment, `@ark-ui/react`offers the following components:
 - [Radio Group](https://ark-ui.com/docs/react/components/radio-group)
 - [Range Slider](https://ark-ui.com/docs/react/components/range-slider)
 - [Rating Group](https://ark-ui.com/docs/react/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/react/components/segment-group)
 - [Select](https://ark-ui.com/docs/react/components/select)
 - [Slider](https://ark-ui.com/docs/react/components/slider)
 - [Splitter](https://ark-ui.com/docs/react/components/splitter)

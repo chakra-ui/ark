@@ -6,6 +6,27 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## Fixed
+
+- Resolved an issue that types accross various components were not being exported correctly.
+
+## [0.5.2] - 2023-06-27
+
+### Added
+
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+
+### Fixed
+
+- Added missing `onOpen` events for `Dialog`
+
+## [0.5.1] - 2023-06-20
+
+### Fixed
+
+- Fixed an issue where `TagsInput` was not exported
+- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered correctly
+
 ## [0.5.0] - 2023-06-03
 
 ### Added
@@ -78,10 +99,12 @@ description: All notable changes to this project will be documented in this file
 - Add `Tabs`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.0...HEAD
-[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
-[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.4.0
-[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.3.0
-[0.2.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.1
-[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.0
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.2...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.1.0
+[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.0
+[0.2.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.1
+[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.3.0
+[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.4.0
+[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
+[0.5.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.1
+[0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2

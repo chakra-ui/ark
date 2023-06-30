@@ -46,7 +46,7 @@ import {
 const paginationRef = ref()
 </script>
 <template>
-  <Pagination :count="5000" :page-size="10" :sibling-count="2">
+  <Pagination ref="paginationRef" :count="5000" :page-size="10" :sibling-count="2">
     <PaginationList>
       <PaginationListItem>
         <PaginationPrevPageTrigger>

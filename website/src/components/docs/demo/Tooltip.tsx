@@ -1,4 +1,4 @@
-import { panda } from '@/panda/jsx'
+import { styled } from '@/panda/jsx'
 import { tooltip } from '@/panda/recipes'
 import {
   Tooltip,
@@ -19,9 +19,9 @@ export const DemoTooltip = (props: DemoTooltipProps) => {
   return (
     <Tooltip openDelay={0} closeDelay={200} positioning={{ placement }} {...tooltipProps}>
       <TooltipTrigger asChild>
-        <panda.span textStyle="sm" fontWeight="medium">
+        <styled.span textStyle="sm" fontWeight="medium">
           Hover me
-        </panda.span>
+        </styled.span>
       </TooltipTrigger>
       <TooltipPositioner className={tooltip({})}>
         <TooltipArrow>

@@ -6,6 +6,22 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## Fixed
+
+- Resolved an issue that types accross various components were not being exported correctly.
+
+## [0.7.1] - 2023-06-27
+
+### Added
+
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/tabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+
+## [0.7.0] - 2023-06-23
+
+### Added
+
+- Added `SegmentGroup` component
+
 ## [0.6.0] - 2023-06-03
 
 ### Added
@@ -17,7 +33,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state.
+- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state
 - Updated all `@zag-js` dependencies to their latest versions
 
 ## [0.5.0] - 2023-05-25
@@ -82,10 +98,12 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.6.0...HEAD
-[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
-[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.5.0
-[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.4.0
-[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
-[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.1...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
+[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
+[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
+[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.4.0
+[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.5.0
+[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.6.0
+[0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
+[0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1

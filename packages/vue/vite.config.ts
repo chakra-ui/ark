@@ -11,6 +11,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     dts({
+      // TODO We should not skip diagnostics
       skipDiagnostics: true,
       entryRoot: 'src',
       staticImport: true,
@@ -21,6 +22,7 @@ export default defineConfig({
   test: {
     setupFiles: 'src/setup-test.ts',
     coverage: {
+      provider: 'v8',
       all: true,
       reporter: ['lcov', 'text'],
       include: ['src/**'],

@@ -133,7 +133,7 @@ export default defineConfig({
   patterns: {
     extend: {
       container: {
-        transform(props) {
+        transform(props: any) {
           // TODO descructuring props.centerContent is not working @panda
           delete props.centerContent
 

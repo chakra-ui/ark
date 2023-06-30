@@ -10,7 +10,6 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [
     dts({
-      skipDiagnostics: true,
       entryRoot: 'src',
       staticImport: true,
     }),
@@ -58,6 +57,7 @@ export default defineConfig({
       web: [/\.[jt]sx?$/],
     },
     coverage: {
+      provider: 'v8',
       all: true,
       reporter: ['lcov', 'text'],
       include: ['src/**'],
@@ -67,8 +67,5 @@ export default defineConfig({
   },
   resolve: {
     conditions: ['development', 'browser'],
-  },
-  ssr: {
-    noExternal: ['solid-js', 'solid-js/web', 'solid-js/store'],
   },
 })

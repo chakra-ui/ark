@@ -6,9 +6,7 @@ export function Page() {
     <Accordion value="panel-1">
       {items.map((item) => (
         <AccordionItem value={item}>
-          <AccordionTrigger>
-            <button>{item} trigger</button>
-          </AccordionTrigger>
+          <AccordionTrigger>{item} trigger</AccordionTrigger>
           <AccordionContent>{item} content</AccordionContent>
         </AccordionItem>
       ))}

@@ -1,7 +1,7 @@
 import { Code } from '@/components/shared/Code'
 import { Link } from '@/components/shared/Link'
 import type { DocumentTypes } from '@/contentlayer'
-import { panda } from '@/panda/jsx'
+import { styled } from '@/panda/jsx'
 import { markdown } from '@/panda/recipes'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { match, P } from 'ts-pattern'
@@ -14,7 +14,7 @@ export const Markdown = (props: MarkdownProps) => {
   const { doc } = props
   const MDXComponent = useMDXComponent(doc.body.code)
   return (
-    <panda.article className={markdown()}>
+    <styled.article className={markdown()}>
       <MDXComponent
         components={{
           a: (props: any) => (
@@ -44,6 +44,6 @@ export const Markdown = (props: MarkdownProps) => {
               }),
         }}
       />
-    </panda.article>
+    </styled.article>
   )
 }
