@@ -626,8 +626,8 @@ importers:
         specifier: 11.1.1
         version: 11.1.1
       globby:
-        specifier: 13.2.0
-        version: 13.2.0
+        specifier: 13.2.1
+        version: 13.2.1
       pkg-dir:
         specifier: 7.0.0
         version: 7.0.0
@@ -10775,7 +10775,7 @@ packages:
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.60.1)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.60.1)(eslint-import-resolver-typescript@3.5.5)(eslint@8.43.0)
       get-tsconfig: 4.6.0
-      globby: 13.2.0
+      globby: 13.2.1
       is-core-module: 2.12.1
       is-glob: 4.0.3
       synckit: 0.8.5
@@ -11868,8 +11868,8 @@ packages:
       slash: 4.0.0
     dev: true
 
-  /globby@13.2.0:
-    resolution: {integrity: sha512-jWsQfayf13NvqKUIL3Ta+CIqMnvlaIDFveWE/dpOZ9+3AMEJozsxDvKA02zync9UuvOM8rOXzsD5GqKP4OnWPQ==}
+  /globby@13.2.1:
+    resolution: {integrity: sha512-DPCBxctI7dN4EeIqjW2KGqgdcUMbrhJ9AzON+PlxCtvppWhubTLD4+a0GFxiym14ZvacUydTPjLPc2DlKz7EIg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
