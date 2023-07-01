@@ -77,7 +77,7 @@
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
     "@vitest/coverage-v8": "0.32.2",
-    "eslint": "8.43.0",
+    "eslint": "8.44.0",
     "happy-dom": "9.20.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
