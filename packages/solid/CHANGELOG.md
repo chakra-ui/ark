@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.7.2-beta.0] - 2023-07-03
+
 ### Fixed
 
 - Fixed an issue with SSR
@@ -97,7 +99,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.7.1...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.7.2-beta.0...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.3.0
@@ -106,3 +108,5 @@ description: All notable changes to this project will be documented in this file
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.0
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.1
+
+[0.7.2-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.0
