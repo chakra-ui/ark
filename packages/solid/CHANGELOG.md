@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Declare no external
+
 ## [0.7.2-beta.1] - 2023-07-05
 
 - Updated @zag-js dependencies to their latest versions
@@ -113,5 +117,4 @@ description: All notable changes to this project will be documented in this file
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.0
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.1
 [0.7.2-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.0
-
 [0.7.2-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.1
