@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.7.2-beta.3] - 2023-07-05
+
 ### Added
 
 - Set `type` to `module`
@@ -113,7 +115,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.7.2-beta.2...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.7.2-beta.3...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.3.0
@@ -125,3 +127,5 @@ description: All notable changes to this project will be documented in this file
 [0.7.2-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.0
 [0.7.2-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.1
 [0.7.2-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.2
+
+[0.7.2-beta.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.3
