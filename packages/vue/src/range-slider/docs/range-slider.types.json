@@ -102,7 +102,7 @@
       "description": "The step value of the slider"
     },
     "thumbAlignment": {
-      "type": "'center' | 'contain'",
+      "type": "'contain' | 'center'",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
     },
