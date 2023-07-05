@@ -15,9 +15,6 @@ export default defineConfig({
     }),
     solid({ ssr: true }),
   ],
-  ssr: {
-    noExternal: ['@ark-ui/solid'],
-  },
   build: {
     target: 'esnext',
     minify: false,

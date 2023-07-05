@@ -3,6 +3,7 @@
   "version": "0.7.2-beta.2",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [],
+  "type": "module",
   "homepage": "https://ark-ui.com",
   "license": "MIT",
   "sideEffects": false,
