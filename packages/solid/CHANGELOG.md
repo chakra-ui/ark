@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- solid({ solid: { generate: 'ssr', hydratable: true } })
+
 ## [0.7.2-beta.4] - 2023-07-05
 
 ### Added
@@ -134,5 +138,4 @@ description: All notable changes to this project will be documented in this file
 [0.7.2-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.1
 [0.7.2-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.2
 [0.7.2-beta.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.3
-
 [0.7.2-beta.4]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.4
