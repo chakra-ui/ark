@@ -13,7 +13,7 @@ export default defineConfig({
       entryRoot: 'src',
       staticImport: true,
     }),
-    solid(),
+    solid({ solid: { generate: 'ssr', hydratable: true } }),
   ],
   build: {
     target: 'esnext',
