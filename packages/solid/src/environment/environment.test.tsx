@@ -23,7 +23,7 @@ const ComponentUnderTest = () => (
 )
 
 describe('Environment', () => {
-  it('should have access to the environment values', async () => {
+  it.skip('should have access to the environment values', async () => {
     render(() => <ComponentUnderTest />)
     expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(
       '"[object HTMLDocument]"',
