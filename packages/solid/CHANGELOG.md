@@ -10,40 +10,6 @@ description: All notable changes to this project will be documented in this file
 
 - Add support for `SSR`
 
-## [0.7.2-beta.5] - 2023-07-05
-
-### Added
-
-- WIP
-
-## [0.7.2-beta.4] - 2023-07-05
-
-### Added
-
-- Generate `ssr`
-
-## [0.7.2-beta.3] - 2023-07-05
-
-### Added
-
-- Set `type` to `module`
-
-## [0.7.2-beta.2] - 2023-07-05
-
-### Fixed
-
-- Declare no external
-
-## [0.7.2-beta.1] - 2023-07-05
-
-- Updated @zag-js dependencies to their latest versions
-
-## [0.7.2-beta.0] - 2023-07-03
-
-### Fixed
-
-- Fixed an issue with SSR
-
 ## [0.7.1] - 2023-06-30
 
 ### Fixed
@@ -140,11 +106,4 @@ description: All notable changes to this project will be documented in this file
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.0
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.1
-[0.7.2-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.0
-[0.7.2-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.1
-[0.7.2-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.2
-[0.7.2-beta.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.3
-[0.7.2-beta.4]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.4
-[0.7.2-beta.5]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.2-beta.5
-
 [0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.8.0
