@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where the `SegmentGroup` component would not animate on the first click.
+
 ## [0.5.2] - 2023-06-27
 
 ### Added

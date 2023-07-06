@@ -8,7 +8,13 @@ description: All notable changes to this project will be documented in this file
 
 ## [0.8.0] - 2023-07-06
 
-- Add support for `SSR`
+### Added
+
+- Added support for `SSR`
+
+### Fixed
+
+- Resolved an issue where the `SegmentGroup` component would not animate on the first click.
 
 ## [0.7.1] - 2023-06-30
 
