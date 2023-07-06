@@ -72,12 +72,26 @@ const ExampleComponent = () => {
         onClick={() => {
           toast.create({
             title: 'Data submitted!',
+            description: 'Your user data has been submitted successfully!',
             type: 'success',
             placement: 'bottom-start',
           })
         }}
       >
         Add bottom-start toast
+      </button>
+      <button
+        onClick={() => {
+          toast.create({
+            render: () => (
+              <div>
+                Custom toast <a href="#">Google</a>
+              </div>
+            ),
+          })
+        }}
+      >
+        Custom
       </button>
     </div>
   )

@@ -13,6 +13,16 @@ export const Toast = forwardRef<'div', ToastProps>((props, ref) => {
   const api = useToastItem(useToastItemProps)
   const mergedProps = mergeProps(api.rootProps, divProps)
 
+  const jsx = api.render()
+
+  if (jsx) {
+    return (
+      <ark.div {...mergedProps} ref={ref}>
+        {jsx}
+      </ark.div>
+    )
+  }
+
   return (
     <ToastItemProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
