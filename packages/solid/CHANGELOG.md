@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+- Add support for `SSR`
+
 ## [0.7.2-beta.5] - 2023-07-05
 
 ### Added
