@@ -13,7 +13,7 @@
   "dependencies": {
     "find-up": "6.3.0",
     "fs-extra": "11.1.1",
-    "globby": "13.2.1",
+    "globby": "13.2.2",
     "pkg-dir": "7.0.0",
     "prettier": "2.8.8",
     "ts-morph": "19.0.0",
