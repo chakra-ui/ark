@@ -83,9 +83,10 @@ const ExampleComponent = () => {
       <button
         onClick={() => {
           toast.create({
-            render: () => (
+            title: 'Data submitted!',
+            render: (toast) => (
               <div>
-                Custom toast <a href="#">Google</a>
+                {toast.title} <a href="#">Google</a>
               </div>
             ),
           })

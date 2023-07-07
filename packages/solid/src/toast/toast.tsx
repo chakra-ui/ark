@@ -12,15 +12,11 @@ export const Toast = (props: ToastProps) => {
 
   const api = useToastItem(toastParams)
   const rootProps = mergeProps(() => api().rootProps, localProps)
-  const jsx = api().render()
-
-  if (jsx) {
-    return <ark.div {...rootProps}>{jsx}</ark.div>
-  }
+  const customToast = api().render()
 
   return (
     <ToastItemProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...rootProps}>{customToast || props.children}</ark.div>
     </ToastItemProvider>
   )
 }

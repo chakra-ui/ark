@@ -21,22 +21,13 @@ export const Toast: ComponentWithProps<ToastProps> = defineComponent({
     }))
 
     const api = useToastItem(toastItemProps.value)
-
-    const jsx = api.value.render()
-
-    if (jsx) {
-      return () => (
-        <ark.div {...api.value.rootProps} {...attrs}>
-          {() => jsx}
-        </ark.div>
-      )
-    }
+    const customToast = api.value.render()
 
     ToastItemProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => customToast || getValidChildren(slots)}
       </ark.div>
     )
   },
