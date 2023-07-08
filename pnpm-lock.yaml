@@ -181,7 +181,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        version: 3.1.0(release-it@16.1.0)
       '@storybook/addon-a11y':
         specifier: 7.0.26
         version: 7.0.26(react-dom@18.2.0)(react@18.2.0)
@@ -258,8 +258,8 @@ importers:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       release-it:
-        specifier: 15.11.0
-        version: 15.11.0
+        specifier: 16.1.0
+        version: 16.1.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -377,7 +377,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        version: 3.1.0(release-it@16.1.0)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.7)
@@ -433,8 +433,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 15.11.0
-        version: 15.11.0
+        specifier: 16.1.0
+        version: 16.1.0
       solid-js:
         specifier: 1.7.7
         version: 1.7.7
@@ -549,7 +549,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        version: 3.1.0(release-it@16.1.0)
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -599,8 +599,8 @@ importers:
         specifier: 22.1.0
         version: 22.1.0
       release-it:
-        specifier: 15.11.0
-        version: 15.11.0
+        specifier: 16.1.0
+        version: 16.1.0
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -4786,8 +4786,8 @@ packages:
       - encoding
     dev: true
 
-  /@octokit/rest@19.0.11:
-    resolution: {integrity: sha512-m2a9VhaP5/tUw8FwfnW2ICXlXpLPIqxtg3XcAiGMLj/Xhw3RSBfZ8le/466ktO1Gcjr8oXudGnHhxV1TXJgFxw==}
+  /@octokit/rest@19.0.13:
+    resolution: {integrity: sha512-/EzVox5V9gYGdbAI+ovYj3nXQT1TtTHRT+0eZPcuC05UFSWO3mdO9UY1C0i2eLF9Un1ONJkAk+IEtYGAC+TahA==}
     engines: {node: '>= 14'}
     dependencies:
       '@octokit/core': 4.2.1
@@ -5334,14 +5334,14 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@release-it/keep-a-changelog@3.1.0(release-it@15.11.0):
+  /@release-it/keep-a-changelog@3.1.0(release-it@16.1.0):
     resolution: {integrity: sha512-o8lxZCAFwFkFpo88aIIgS5dR3kDy6yLjJVpe9QAGNY6tpKMMRHxsiJ8MS5NvrEeIC2VTzOoOjN/CDvdd3a4+/A==}
     engines: {node: '>=14'}
     peerDependencies:
       release-it: ^15.0.0-esm.4
     dependencies:
       detect-newline: 4.0.0
-      release-it: 15.11.0
+      release-it: 16.1.0
       string-template: 1.0.0
     dev: true
 
@@ -9263,7 +9263,7 @@ packages:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.2.0
+      chalk: 5.3.0
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
@@ -9508,6 +9508,10 @@ packages:
 
   /chalk@5.2.0:
     resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  /chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   /character-entities-html4@2.1.0:
@@ -9938,6 +9942,16 @@ packages:
 
   /cosmiconfig@8.1.3:
     resolution: {integrity: sha512-/UkO2JKI18b5jVMJUp0lvKFMpa/Gye+ZgZjKD+DGEN9y7NRcf/nK1A0sp67ONmKtnDCNMS44E6jrk0Yc3bDuUw==}
+    engines: {node: '>=14'}
+    dependencies:
+      import-fresh: 3.3.0
+      js-yaml: 4.1.0
+      parse-json: 5.2.0
+      path-type: 4.0.0
+    dev: true
+
+  /cosmiconfig@8.2.0:
+    resolution: {integrity: sha512-3rTMnFJA1tCOPwRxtgF4wd7Ab2qvDbL8jX+3smjIbS4HlZBagTlpERbdN7iAbWlrfxE3M8c27kTwTawQ7st+OQ==}
     engines: {node: '>=14'}
     dependencies:
       import-fresh: 3.3.0
@@ -11831,8 +11845,8 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /globby@13.1.4:
-    resolution: {integrity: sha512-iui/IiiW+QrJ1X1hKH5qwlMQyv34wJAYwH1vrf8b9kBA4sNiif3gKsMHa+BrdnOpEudWjpotfa7LrTzB1ERS/g==}
+  /globby@13.2.1:
+    resolution: {integrity: sha512-DPCBxctI7dN4EeIqjW2KGqgdcUMbrhJ9AzON+PlxCtvppWhubTLD4+a0GFxiym14ZvacUydTPjLPc2DlKz7EIg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
@@ -11861,6 +11875,23 @@ packages:
   /got@12.6.1:
     resolution: {integrity: sha512-mThBblvlAF1d4O5oqyvN+ZxLAYwIJK7bpMxgYqPD9okW0C3qm5FFn7k811QrcuEBwaogR3ngOFoCfs6mRv7teQ==}
     engines: {node: '>=14.16'}
+    dependencies:
+      '@sindresorhus/is': 5.4.0
+      '@szmarczak/http-timer': 5.0.1
+      cacheable-lookup: 7.0.0
+      cacheable-request: 10.2.10
+      decompress-response: 6.0.0
+      form-data-encoder: 2.1.4
+      get-stream: 6.0.1
+      http2-wrapper: 2.2.0
+      lowercase-keys: 3.0.0
+      p-cancelable: 3.0.0
+      responselike: 3.0.0
+    dev: true
+
+  /got@13.0.0:
+    resolution: {integrity: sha512-XfBk1CxOOScDcMr9O1yKkNaQyy865NbYs+F7dr4H0LZMVgCj2Le59k6PqbNHoL5ToeaEQUYh6c6yMfVcc6SJxA==}
+    engines: {node: '>=16'}
     dependencies:
       '@sindresorhus/is': 5.4.0
       '@szmarczak/http-timer': 5.0.1
@@ -12366,12 +12397,12 @@ packages:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
     dev: false
 
-  /inquirer@9.2.6:
-    resolution: {integrity: sha512-y71l237eJJKS4rl7sQcEUiMhrR0pB/ZnRMMTxLpjJhWL4hdWCT03a6jJnC1w6qIPSRZWEozuieGt3v7XaEJYFw==}
+  /inquirer@9.2.7:
+    resolution: {integrity: sha512-Bf52lnfvNxGPJPltiNO2tLBp3zC339KNlGMqOkW+dsvNikBhcVDK5kqU2lVX2FTPzuXUFX5WJDlsw//w3ZwoTw==}
     engines: {node: '>=14.18.0'}
     dependencies:
       ansi-escapes: 4.3.2
-      chalk: 5.2.0
+      chalk: 5.3.0
       cli-cursor: 3.1.0
       cli-width: 4.0.0
       external-editor: 3.1.0
@@ -13528,7 +13559,7 @@ packages:
     resolution: {integrity: sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==}
     engines: {node: '>=12'}
     dependencies:
-      chalk: 5.2.0
+      chalk: 5.3.0
       is-unicode-supported: 1.3.0
 
   /log-update@4.0.0:
@@ -16069,21 +16100,21 @@ packages:
       unified: 10.1.2
     dev: false
 
-  /release-it@15.11.0:
-    resolution: {integrity: sha512-lZwoGEnKYKwGnfxxlA7vtR7vvozPrOSsIgQaHO4bgQ5ARbG3IA6Dmo0IVusv6nR1KmnjH70QIeNAgsWs6Ji/tw==}
-    engines: {node: '>=14.9'}
+  /release-it@16.1.0:
+    resolution: {integrity: sha512-d2XpGtPAIUoN/v0nJkfdx9GyFkgTXRj+7HATaZRmS+a0IhnE/qRDQ4kMVuDh8UCX1CKV6SRiFdV/vEpKpzZzxA==}
+    engines: {node: '>=16'}
     hasBin: true
     dependencies:
       '@iarna/toml': 2.2.5
-      '@octokit/rest': 19.0.11
+      '@octokit/rest': 19.0.13
       async-retry: 1.3.3
-      chalk: 5.2.0
-      cosmiconfig: 8.1.3
+      chalk: 5.3.0
+      cosmiconfig: 8.2.0
       execa: 7.1.1
       git-url-parse: 13.1.0
-      globby: 13.1.4
-      got: 12.6.1
-      inquirer: 9.2.6
+      globby: 13.2.1
+      got: 13.0.0
+      inquirer: 9.2.7
       is-ci: 3.0.1
       issue-parser: 6.0.0
       lodash: 4.17.21
@@ -16095,7 +16126,7 @@ packages:
       os-name: 5.1.0
       promise.allsettled: 1.0.6
       proxy-agent: 6.2.1
-      semver: 7.5.1
+      semver: 7.5.3
       shelljs: 0.8.5
       update-notifier: 6.0.2
       url-join: 5.0.0
@@ -16489,14 +16520,6 @@ packages:
 
   /semver@7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
-  /semver@7.5.1:
-    resolution: {integrity: sha512-Wvss5ivl8TMRZXXESstBA4uR5iXgEN/VC5/sOcuXdVLzcdkz4HWetIoRfG5gb5X+ij/G9rw9YoGn3QoQ8OCSpw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -17840,7 +17863,7 @@ packages:
     engines: {node: '>=14.16'}
     dependencies:
       boxen: 7.1.0
-      chalk: 5.2.0
+      chalk: 5.3.0
       configstore: 6.0.0
       has-yarn: 3.0.0
       import-lazy: 4.0.0
