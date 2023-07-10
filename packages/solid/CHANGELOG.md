@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed an issue where standalone imports were not working as expected.
+
 ## [0.8.0] - 2023-07-06
 
 ### Added

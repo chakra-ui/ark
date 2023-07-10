@@ -3,10 +3,10 @@
 
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+import { globbySync } from 'globby'
+import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
-
-import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
@@ -38,7 +38,7 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     lib: {
-      entry: 'src/index.ts',
+      entry: globbySync('src/**/index.ts'),
       formats: ['es', 'cjs'],
       fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },

@@ -29,7 +29,6 @@
     "release-it": "release-it --config ../../release-it.json"
   },
   "dependencies": {
-    "@zag-js/date-utils": "0.10.5",
     "@zag-js/accordion": "0.10.5",
     "@zag-js/anatomy": "0.10.5",
     "@zag-js/avatar": "0.10.5",
@@ -38,6 +37,7 @@
     "@zag-js/color-picker": "0.10.5",
     "@zag-js/combobox": "0.10.5",
     "@zag-js/date-picker": "0.10.5",
+    "@zag-js/date-utils": "0.10.5",
     "@zag-js/dialog": "0.10.5",
     "@zag-js/editable": "0.10.5",
     "@zag-js/hover-card": "0.10.5",
@@ -60,7 +60,8 @@
     "@zag-js/toast": "0.10.5",
     "@zag-js/tooltip": "0.10.5",
     "@zag-js/transition": "0.10.5",
-    "@zag-js/types": "0.10.5"
+    "@zag-js/types": "0.10.5",
+    "globby": "13.2.2"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "3.1.0",

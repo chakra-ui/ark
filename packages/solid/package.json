@@ -60,6 +60,7 @@
     "@zag-js/toast": "0.10.5",
     "@zag-js/tooltip": "0.10.5",
     "@zag-js/types": "0.10.5",
+    "globby": "13.2.2",
     "vite-plugin-ssr": "0.4.133"
   },
   "devDependencies": {
