@@ -6,6 +6,8 @@ import {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
+  CarouselIndicatorGroup,
+  CarouselIndicator,
 } from './'
 
 import './carousel.css'
@@ -28,7 +30,7 @@ const images = [
     </CarouselNextSlideTrigger>
     <CarouselViewport>
       <CarouselSlideGroup>
-        <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx">
+        <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx" data-testid="slide">
           <img
             :src="image"
             alt=""
@@ -37,5 +39,10 @@ const images = [
         </CarouselSlide>
       </CarouselSlideGroup>
     </CarouselViewport>
+    <CarouselIndicatorGroup data-testid="indicator-group">
+      <CarouselIndicator v-for="(_, idx) in images" :key="idx" :index="idx" data-testid="indicator">
+        {{ idx + 1 }}
+      </CarouselIndicator>
+    </CarouselIndicatorGroup>
   </Carousel>
 </template>
