@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Resolved an issue where the `SegmentGroup` component would not animate on the first click.
 - Fixed an issue where standalone imports were not working as expected.
+- Resolved an issue whre the `Toast` component would not render custom content.
 
 ## [0.7.2] - 2023-06-30
 

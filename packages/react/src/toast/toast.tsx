@@ -9,13 +9,19 @@ import { useToastItem, type UseToastItemProps } from './use-toast-item'
 export type ToastProps = Assign<HTMLArkProps<'div'>, UseToastItemProps>
 
 export const Toast = forwardRef<'div', ToastProps>((props, ref) => {
-  const [useToastItemProps, divProps] = createSplitProps<UseToastItemProps>()(props, ['toast'])
+  const [useToastItemProps, { children, ...divProps }] = createSplitProps<UseToastItemProps>()(
+    props,
+    ['toast'],
+  )
   const api = useToastItem(useToastItemProps)
   const mergedProps = mergeProps(api.rootProps, divProps)
+  const customToast = api.render()
 
   return (
     <ToastItemProvider value={api}>
-      <ark.div {...mergedProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref}>
+        {customToast || children}
+      </ark.div>
     </ToastItemProvider>
   )
 })
