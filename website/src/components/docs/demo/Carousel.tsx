@@ -10,6 +10,8 @@ import {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
 } from '@ark-ui/react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
@@ -56,6 +58,13 @@ export const DemoCarousel = () => {
               />
             </CarouselNextSlideTrigger>
           </CarouselControl>
+          <CarouselIndicatorGroup>
+            {images.map((_, index) => (
+              <CarouselIndicator key={index} index={index}>
+                <span>Goto {index + 1}</span>
+              </CarouselIndicator>
+            ))}
+          </CarouselIndicatorGroup>
         </CarouselViewport>
       </Stack>
     </Carousel>
