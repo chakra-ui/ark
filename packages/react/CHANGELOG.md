@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.7.3] - 2023-07-10
+
 ### Fixed
 
 - Resolved an issue where the `SegmentGroup` component would not animate on the first click.
@@ -106,7 +108,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.2...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.3...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
@@ -116,3 +118,5 @@ description: All notable changes to this project will be documented in this file
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.0
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1
 [0.7.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.2
+
+[0.7.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.3
