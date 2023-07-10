@@ -228,8 +228,8 @@ importers:
         specifier: 5.61.0
         version: 5.61.0(eslint@8.44.0)(typescript@5.1.6)
       '@vitejs/plugin-react':
-        specifier: 4.0.2
-        version: 4.0.2(vite@4.4.2)
+        specifier: 4.0.3
+        version: 4.0.3(vite@4.4.2)
       '@vitest/coverage-v8':
         specifier: 0.33.0
         version: 0.33.0(vitest@0.33.0)
@@ -3347,7 +3347,7 @@ packages:
       '@babel/core': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-validator-option': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.5)
       '@babel/plugin-transform-modules-commonjs': 7.21.5(@babel/core@7.22.5)
       '@babel/plugin-transform-typescript': 7.22.3(@babel/core@7.22.5)
     transitivePeerDependencies:
@@ -7159,8 +7159,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-react@4.0.2(vite@4.4.2):
-    resolution: {integrity: sha512-zbnVp3Esfg33zDaoLrjxG+p/dPiOtpvJA+1oOEQwSxMMTRL9zi1eghIcd2WtLjkcKnPsa3S15LzS/OzDn2BOCA==}
+  /@vitejs/plugin-react@4.0.3(vite@4.4.2):
+    resolution: {integrity: sha512-pwXDog5nwwvSIzwrvYYmA2Ljcd/ZNlcsSG2Q9CNDBwnsd55UGAyr2doXtB5j+2uymRCnCfExlznzzSFbBRcoCg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0
