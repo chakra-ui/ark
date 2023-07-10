@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue whre the `Toast` component would not render custom content.
+- Fixed an issue where standalone imports were not working as expected.
 
 ## [0.8.0] - 2023-07-06
 
