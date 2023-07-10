@@ -11,4 +11,6 @@ export {
 export { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
 export { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
 export { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
+export { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
+export { CarouselIndicatorGroup, type CarouselIndicatorGroupProps } from './carousel-indicator-group'
 export { carouselAnatomy } from './carousel.anatomy'

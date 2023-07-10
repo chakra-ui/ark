@@ -7,6 +7,8 @@ import {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
 } from './'
 import './carousel.css'
 
@@ -33,6 +35,13 @@ export const Basic = () => {
         <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
         <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       </CarouselControl>
+      <CarouselIndicatorGroup>
+        {images.map((_, index) => (
+          <CarouselIndicator key={index} index={index}>
+            {index + 1}
+          </CarouselIndicator>
+        ))}
+      </CarouselIndicatorGroup>
       <CarouselViewport>
         <CarouselSlideGroup>
           {images.map((image, index) => (
