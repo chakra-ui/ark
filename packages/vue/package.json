@@ -54,7 +54,8 @@
     "@zag-js/toast": "0.10.5",
     "@zag-js/tooltip": "0.10.5",
     "@zag-js/types": "0.10.5",
-    "@zag-js/vue": "0.10.5"
+    "@zag-js/vue": "0.10.5",
+    "globby": "13.2.2"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "3.1.0",

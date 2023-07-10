@@ -1,9 +1,10 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import react from '@vitejs/plugin-react'
+import { globbySync } from 'globby'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import solid from 'vite-plugin-solid'
 import pkg from './package.json'
 
 // https://vitejs.dev/config/
@@ -13,13 +14,13 @@ export default defineConfig({
       entryRoot: 'src',
       staticImport: true,
     }),
-    react(),
+    solid({ solid: { generate: 'ssr', hydratable: true } }),
   ],
   build: {
     target: 'esnext',
     minify: false,
     lib: {
-      entry: 'src/index.ts',
+      entry: globbySync('src/**/index.ts'),
       formats: ['es', 'cjs'],
       fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
@@ -27,7 +28,9 @@ export default defineConfig({
       external: [
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
-        'react/jsx-runtime',
+        'solid-js',
+        'solid-js/web',
+        'solid-js/store',
       ],
       output: [
         {
@@ -48,7 +51,12 @@ export default defineConfig({
     },
   },
   test: {
+    globals: true,
+    environment: 'happy-dom',
     setupFiles: 'src/setup-test.ts',
+    transformMode: {
+      web: [/\.[jt]sx?$/],
+    },
     coverage: {
       provider: 'v8',
       all: true,
@@ -56,8 +64,9 @@ export default defineConfig({
       include: ['src/**'],
       exclude: ['**/*.stories.tsx'],
     },
-    globals: true,
-    environment: 'happy-dom',
     css: false,
+  },
+  resolve: {
+    conditions: ['development', 'browser'],
   },
 })
