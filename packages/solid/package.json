@@ -26,8 +26,7 @@
     "storydocs": "pnpm --filter=@ark-ui/scripts document:stories solid",
     "typedocs": "pnpm --filter=@ark-ui/scripts document:types solid",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../release-it.json",
-    "foo": "pnpm --filter=@ark-ui/scripts release:prepare @ark-ui/solid"
+    "release-it": "release-it --config ../../release-it.json"
   },
   "dependencies": {
     "@zag-js/accordion": "0.10.5",
