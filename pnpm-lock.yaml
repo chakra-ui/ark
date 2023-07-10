@@ -80,8 +80,6 @@ importers:
         specifier: 0.4.132
         version: 0.4.132(vite@4.3.9)
 
-  examples/solid/vite-ts/dist/server: {}
-
   packages/react:
     dependencies:
       '@zag-js/accordion':
@@ -185,8 +183,8 @@ importers:
         version: 13.2.2
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@storybook/addon-a11y':
         specifier: 7.0.26
         version: 7.0.26(react-dom@18.2.0)(react@18.2.0)
@@ -384,8 +382,8 @@ importers:
         version: 0.4.133(vite@4.4.2)
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.7)
@@ -559,8 +557,8 @@ importers:
         version: 13.2.2
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -5345,11 +5343,11 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@release-it/keep-a-changelog@3.1.0(release-it@15.11.0):
-    resolution: {integrity: sha512-o8lxZCAFwFkFpo88aIIgS5dR3kDy6yLjJVpe9QAGNY6tpKMMRHxsiJ8MS5NvrEeIC2VTzOoOjN/CDvdd3a4+/A==}
-    engines: {node: '>=14'}
+  /@release-it/keep-a-changelog@4.0.0(release-it@15.11.0):
+    resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
+    engines: {node: '>=16'}
     peerDependencies:
-      release-it: ^15.0.0-esm.4
+      release-it: ^16.0.0
     dependencies:
       detect-newline: 4.0.0
       release-it: 15.11.0

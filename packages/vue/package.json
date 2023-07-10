@@ -58,7 +58,7 @@
     "globby": "13.2.2"
   },
   "devDependencies": {
-    "@release-it/keep-a-changelog": "3.1.0",
+    "@release-it/keep-a-changelog": "4.0.0",
     "@testing-library/dom": "9.3.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/user-event": "14.4.3",
