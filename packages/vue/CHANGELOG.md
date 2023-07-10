@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.5.3] - 2023-07-10
+
 ### Fixed
 
 - Resolved an issue whre the `Toast` component would not render custom content.
@@ -101,7 +103,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Tabs`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.2...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.5.3...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.0
 [0.2.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.1
@@ -110,3 +112,5 @@ description: All notable changes to this project will be documented in this file
 [0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
 [0.5.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.1
 [0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2
+
+[0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
