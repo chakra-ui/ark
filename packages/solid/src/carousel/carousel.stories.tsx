@@ -8,6 +8,8 @@ import {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
+  CarouselIndicator,
+  CarouselIndicatorGroup
 } from './'
 import './carousel.css'
 
@@ -31,6 +33,13 @@ export const Basic = () => {
         <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
         <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       </CarouselControl>
+      <CarouselIndicatorGroup>
+        <For each={images}>
+          {(_, index) => (
+            <CarouselIndicator index={index()} />
+          )}
+        </For>
+      </CarouselIndicatorGroup>
       <CarouselViewport>
         <CarouselSlideGroup>
           <For each={images}>
