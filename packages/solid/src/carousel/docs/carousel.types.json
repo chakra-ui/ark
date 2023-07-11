@@ -51,6 +51,5 @@
       "isRequired": false,
       "description": "The amount of space between slides."
     }
-  },
-  "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } }
+  }
 }

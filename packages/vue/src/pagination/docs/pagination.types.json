@@ -48,9 +48,5 @@
       "description": "The type of the trigger element"
     }
   },
-  "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
-  "PaginationPageTriggerProps": {
-    "type": { "type": "'page'", "isRequired": true },
-    "value": { "type": "number", "isRequired": true }
-  }
+  "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } }
 }

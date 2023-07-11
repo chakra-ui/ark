@@ -160,32 +160,5 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     }
-  },
-  "ComboboxOptionProps": {
-    "label": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The label of the option. Used to populate the combobox's input when selected"
-    },
-    "value": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The actual value of the option"
-    },
-    "count": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The total count of options. Used to set the `aria-setsize` attribute"
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the option is disabled"
-    },
-    "index": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
-    }
   }
 }
