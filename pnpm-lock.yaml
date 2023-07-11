@@ -180,8 +180,8 @@ importers:
         version: 0.10.5
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@storybook/addon-a11y':
         specifier: 7.0.26
         version: 7.0.26(react-dom@18.2.0)(react@18.2.0)
@@ -246,8 +246,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       happy-dom:
-        specifier: 9.20.3
-        version: 9.20.3
+        specifier: 10.1.1
+        version: 10.1.1
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -280,7 +280,7 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.2)
       vitest:
         specifier: 0.33.0
-        version: 0.33.0(happy-dom@9.20.3)(jsdom@22.1.0)
+        version: 0.33.0(happy-dom@10.1.1)(jsdom@22.1.0)
 
   packages/solid:
     dependencies:
@@ -376,8 +376,8 @@ importers:
         version: 0.10.5
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.7)
@@ -427,8 +427,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       happy-dom:
-        specifier: 9.20.3
-        version: 9.20.3
+        specifier: 10.1.1
+        version: 10.1.1
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -464,7 +464,7 @@ importers:
         version: 2.7.0(solid-js@1.7.7)(vite@4.4.2)
       vitest:
         specifier: 0.33.0
-        version: 0.33.0(happy-dom@9.20.3)(jsdom@22.1.0)
+        version: 0.33.0(happy-dom@10.1.1)(jsdom@22.1.0)
 
   packages/vue:
     dependencies:
@@ -551,8 +551,8 @@ importers:
         version: 0.10.5(vue@3.3.4)
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 3.1.0
-        version: 3.1.0(release-it@15.11.0)
+        specifier: 4.0.0
+        version: 4.0.0(release-it@15.11.0)
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -599,8 +599,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       happy-dom:
-        specifier: 9.20.3
-        version: 9.20.3
+        specifier: 10.1.1
+        version: 10.1.1
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -621,7 +621,7 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.2)
       vitest:
         specifier: 0.33.0
-        version: 0.33.0(happy-dom@9.20.3)(jsdom@22.1.0)
+        version: 0.33.0(happy-dom@10.1.1)(jsdom@22.1.0)
       vue:
         specifier: 3.3.4
         version: 3.3.4
@@ -5345,11 +5345,11 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@release-it/keep-a-changelog@3.1.0(release-it@15.11.0):
-    resolution: {integrity: sha512-o8lxZCAFwFkFpo88aIIgS5dR3kDy6yLjJVpe9QAGNY6tpKMMRHxsiJ8MS5NvrEeIC2VTzOoOjN/CDvdd3a4+/A==}
-    engines: {node: '>=14'}
+  /@release-it/keep-a-changelog@4.0.0(release-it@15.11.0):
+    resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
+    engines: {node: '>=16'}
     peerDependencies:
-      release-it: ^15.0.0-esm.4
+      release-it: ^16.0.0
     dependencies:
       detect-newline: 4.0.0
       release-it: 15.11.0
@@ -7294,7 +7294,7 @@ packages:
       std-env: 3.3.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.0
-      vitest: 0.33.0(happy-dom@9.20.3)(jsdom@22.1.0)
+      vitest: 0.33.0(happy-dom@10.1.1)(jsdom@22.1.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -12023,8 +12023,8 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-  /happy-dom@9.20.3:
-    resolution: {integrity: sha512-eBsgauT435fXFvQDNcmm5QbGtYzxEzOaX35Ia+h6yP/wwa4xSWZh1CfP+mGby8Hk6Xu59mTkpyf72rUXHNxY7A==}
+  /happy-dom@10.1.1:
+    resolution: {integrity: sha512-/9AMl/rwMCAz/lAs55W0B2p9I/RfnMWmR2iBI1/twz0+XZYrVgHyJzrBTpHDZlbf00NRk/pFoaktKPtdAP5Tlg==}
     dependencies:
       css.escape: 1.5.1
       entities: 4.5.0
@@ -18279,7 +18279,7 @@ packages:
     dependencies:
       vite: 4.4.2(@types/node@18.16.19)
 
-  /vitest@0.33.0(happy-dom@9.20.3)(jsdom@22.1.0):
+  /vitest@0.33.0(happy-dom@10.1.1)(jsdom@22.1.0):
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -18323,7 +18323,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-      happy-dom: 9.20.3
+      happy-dom: 10.1.1
       jsdom: 22.1.0
       local-pkg: 0.4.3
       magic-string: 0.30.1
