@@ -187,10 +187,14 @@ importers:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
 <<<<<<< HEAD
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
 =======
         version: 4.0.0(release-it@15.11.0)
 >>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
+=======
+        version: 4.0.0(release-it@16.1.0)
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@storybook/addon-a11y':
         specifier: 7.0.27
         version: 7.0.27(react-dom@18.2.0)(react@18.2.0)
@@ -384,10 +388,14 @@ importers:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
 <<<<<<< HEAD
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
 =======
         version: 4.0.0(release-it@15.11.0)
 >>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
+=======
+        version: 4.0.0(release-it@16.1.0)
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.8)
@@ -563,10 +571,14 @@ importers:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
 <<<<<<< HEAD
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
 =======
         version: 4.0.0(release-it@15.11.0)
 >>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
+=======
+        version: 4.0.0(release-it@16.1.0)
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -5357,10 +5369,14 @@ packages:
     dev: false
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@release-it/keep-a-changelog@4.0.0(release-it@16.1.0):
 =======
   /@release-it/keep-a-changelog@4.0.0(release-it@15.11.0):
 >>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
+=======
+  /@release-it/keep-a-changelog@4.0.0(release-it@16.1.0):
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -5901,8 +5917,13 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@storybook/builder-vite@7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3):
     resolution: {integrity: sha512-OIX40BjD0OU1sTyENJ8rvb6maHaB8OjBJBwmX2dwJlaIGefJfqeLLjWwjsNoyV2a5ZTD1AygUq1mOIxQBErXNA==}
+=======
+  /@storybook/builder-vite@7.1.0-rc.0(typescript@5.1.6)(vite@4.4.2):
+    resolution: {integrity: sha512-YbnCqUobQp43BG39MYS4xG8W5LLGokaB7RMfwHiwt3YxRBivolzl45J2DACX6y4fsJo89+28ZeVBrFKNXMMQJg==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     peerDependencies:
       '@preact/preset-vite': '*'
       typescript: '>= 4.3.x'
@@ -5916,6 +5937,7 @@ packages:
       vite-plugin-glimmerx:
         optional: true
     dependencies:
+<<<<<<< HEAD
       '@storybook/channels': 7.1.0-rc.2
       '@storybook/client-logger': 7.1.0-rc.2
       '@storybook/core-common': 7.1.0-rc.2
@@ -5925,6 +5947,17 @@ packages:
       '@storybook/preview': 7.1.0-rc.2
       '@storybook/preview-api': 7.1.0-rc.2
       '@storybook/types': 7.1.0-rc.2
+=======
+      '@storybook/channels': 7.1.0-rc.0
+      '@storybook/client-logger': 7.1.0-rc.0
+      '@storybook/core-common': 7.1.0-rc.0
+      '@storybook/csf-plugin': 7.1.0-rc.0
+      '@storybook/mdx2-csf': 1.1.0
+      '@storybook/node-logger': 7.1.0-rc.0
+      '@storybook/preview': 7.1.0-rc.0
+      '@storybook/preview-api': 7.1.0-rc.0
+      '@storybook/types': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@types/find-cache-dir': 3.2.1
       browser-assert: 1.2.1
       es-module-lexer: 0.9.3
@@ -5953,11 +5986,19 @@ packages:
       telejson: 7.1.0
     dev: true
 
+<<<<<<< HEAD
   /@storybook/channel-postmessage@7.1.0-rc.2:
     resolution: {integrity: sha512-XQQFN9xYdUwAdWcQopBaNPkj65bSwyBsGEDKFQd1zvwvEv4QKiMWqQVnx84yXfEUu9b4jVolyyB5tQGLS4/6Fw==}
     dependencies:
       '@storybook/channels': 7.1.0-rc.2
       '@storybook/client-logger': 7.1.0-rc.2
+=======
+  /@storybook/channel-postmessage@7.1.0-rc.0:
+    resolution: {integrity: sha512-trL6a5w+kgbW+HlLSpShEabf7+6UOmZBoNYW7kYvwYbKhCaOXKqJx/1iDvNtvRpyafCozXzJOxYzED3EZPPgZA==}
+    dependencies:
+      '@storybook/channels': 7.1.0-rc.0
+      '@storybook/client-logger': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dev: true
 
   /@storybook/channel-websocket@7.0.27:
@@ -5973,11 +6014,19 @@ packages:
     resolution: {integrity: sha512-YppvPa1qMyC+oCQJ3tf7Quzpf2NnBlvIRLPJiGAMssUwX5qE0iKe9lTtkNwMaNxEvzz6rDxewSlz+f/MWr4gPw==}
     dev: true
 
+<<<<<<< HEAD
   /@storybook/channels@7.1.0-rc.2:
     resolution: {integrity: sha512-P9u0l5T0N2zMo387f0+eRBZ29Jg2+mfalBcsvTs2TYR9Kb/plQlEXhvIRxJm3W/OeEvS2vxixN2YOFeZGWlUYg==}
     dependencies:
       '@storybook/client-logger': 7.1.0-rc.2
       '@storybook/core-events': 7.1.0-rc.2
+=======
+  /@storybook/channels@7.1.0-rc.0:
+    resolution: {integrity: sha512-uaXo5YmdK0G9+8b2TiFOfndIje8B7nXD//Rpk/W57CW8RrDrZkDABIG1bGO7EnRALDUBjfEMyh/HdELs5Y/XFg==}
+    dependencies:
+      '@storybook/client-logger': 7.1.0-rc.0
+      '@storybook/core-events': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@storybook/global': 5.0.0
       qs: 6.11.2
       telejson: 7.1.0
@@ -6039,8 +6088,13 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
+<<<<<<< HEAD
   /@storybook/client-logger@7.1.0-rc.2:
     resolution: {integrity: sha512-O0JLRCFrL7YLMd8sBHdLCqbJBLxW8nCrj7cOwkxt1HY73vy4u/VRujmVZbElaG5QJIoZNUZERyL+oSChthKWlg==}
+=======
+  /@storybook/client-logger@7.1.0-rc.0:
+    resolution: {integrity: sha512-3ulaA9fU+4FFwYVSQ9fSf1aubcLBn/VE+f3990tiK6YM6Z2kDpDNRJepan0XCnd9m4Upca/64nmMuUAbFTWzsQ==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -6119,11 +6173,19 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@storybook/core-common@7.1.0-rc.2:
     resolution: {integrity: sha512-SDJqUt1ovsLEcQDG4FDSeEPLZKsgUW5XvQCJgVLA68QWDMN1qnDrNmU1+mrzwl20cws/Ykrr8tDJRMM0H/82NQ==}
     dependencies:
       '@storybook/node-logger': 7.1.0-rc.2
       '@storybook/types': 7.1.0-rc.2
+=======
+  /@storybook/core-common@7.1.0-rc.0:
+    resolution: {integrity: sha512-hmz+FQ/+Jc7H0TijOosoPSR/Wsbaug+Pmy+LKUxPOU6ACspGt7Zi8giH5phcb8gFQxI0zZ/1q05qQTScQA+Shg==}
+    dependencies:
+      '@storybook/node-logger': 7.1.0-rc.0
+      '@storybook/types': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@types/find-cache-dir': 3.2.1
       '@types/node': 16.18.34
       '@types/node-fetch': 2.6.4
@@ -6153,8 +6215,13 @@ packages:
     resolution: {integrity: sha512-sNnqgO5i5DUIqeQfNbr987KWvAciMN9FmMBuYdKjVFMqWFyr44HTgnhfKwZZKl+VMDYkHA9Do7UGSYZIKy0P4g==}
     dev: true
 
+<<<<<<< HEAD
   /@storybook/core-events@7.1.0-rc.2:
     resolution: {integrity: sha512-qoYLet2G2vNxpVKPTqLovGNoNSNjID7V2vk9hdUis51osOiVHlgJwXxkz33fUOI18y1JbYoVRM8LZaFaMHGF2g==}
+=======
+  /@storybook/core-events@7.1.0-rc.0:
+    resolution: {integrity: sha512-07g6uZlWXP6Ph2JhpohP1tlArSOnvnZGqZ+AmomnWeA3QkXdJ8mmJQ/kMgbcAIkoO7DBt8YsDxZt2ye6FKN/qQ==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dev: true
 
   /@storybook/core-server@7.0.27:
@@ -6217,10 +6284,17 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@storybook/csf-plugin@7.1.0-rc.2:
     resolution: {integrity: sha512-wdPIrWZexLKcdLh1nc0ujnhrPmadHWsI6nu5+TQyIyqRHKWsnVz69ccF+4bYEQIkzHl38oW6jDRaFkPh3ls8ng==}
     dependencies:
       '@storybook/csf-tools': 7.1.0-rc.2
+=======
+  /@storybook/csf-plugin@7.1.0-rc.0:
+    resolution: {integrity: sha512-0nG5RHmv+m+TNIqs0PcL4cM5hQL1TMiGAEht20ghRTciwTcDkcTD9hhvHSz9fLfzTKAkpOmRq4lv47AmdiaPug==}
+    dependencies:
+      '@storybook/csf-tools': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       unplugin: 1.3.1
     transitivePeerDependencies:
       - supports-color
@@ -6242,15 +6316,24 @@ packages:
       - supports-color
     dev: true
 
+<<<<<<< HEAD
   /@storybook/csf-tools@7.1.0-rc.2:
     resolution: {integrity: sha512-YGQASURBY/hOTB+C2s5wo8MjEqDzWv0Vnw+xqFl/rEjquEWbKwFP96YocIQvHYfgBMlg92zetQHieLIOJE1shw==}
+=======
+  /@storybook/csf-tools@7.1.0-rc.0:
+    resolution: {integrity: sha512-UMAXjV7kqq76QpMFdSwiS0yNPOH8b1nAQGWuiBOyB2z8jkavKf52LSwbz9eE3fVDoHUNo6XsQ1EDBGqPL5mh3Q==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dependencies:
       '@babel/generator': 7.22.5
       '@babel/parser': 7.22.5
       '@babel/traverse': 7.22.5
       '@babel/types': 7.22.5
       '@storybook/csf': 0.1.0
+<<<<<<< HEAD
       '@storybook/types': 7.1.0-rc.2
+=======
+      '@storybook/types': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       fs-extra: 11.1.1
       recast: 0.23.2
       ts-dedent: 2.2.0
@@ -6339,8 +6422,13 @@ packages:
       pretty-hrtime: 1.0.3
     dev: true
 
+<<<<<<< HEAD
   /@storybook/node-logger@7.1.0-rc.2:
     resolution: {integrity: sha512-2CePjO6LwxqtdK9+C4L9akERZCwpGZ6/VDesY+q8lGORpQ77h6xS+JQYUdRyuDwgi9MwMSuuVIrKIZFDm52uDg==}
+=======
+  /@storybook/node-logger@7.1.0-rc.0:
+    resolution: {integrity: sha512-pnW+S8MceoAGUxJT/Q3KAwbfBmYmfYhfDdqIl+08NgS+Gl14ZM+fXCqnYH38taB6p0wu/YI4EXpwGAYmJQm79Q==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dev: true
 
   /@storybook/postinstall@7.0.27:
@@ -6367,6 +6455,7 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
+<<<<<<< HEAD
   /@storybook/preview-api@7.1.0-rc.2:
     resolution: {integrity: sha512-E+X5I1BzFF5aTmclkmoVBYQB+JMx1SUCdkzl+GGX9Wxh5JmyTQDI90ynv0k1aJNvPmC5mS2EMmeqcYoz+AuYZA==}
     dependencies:
@@ -6377,6 +6466,18 @@ packages:
       '@storybook/csf': 0.1.0
       '@storybook/global': 5.0.0
       '@storybook/types': 7.1.0-rc.2
+=======
+  /@storybook/preview-api@7.1.0-rc.0:
+    resolution: {integrity: sha512-Jy1Vmb2TBdB4ESPdYhT17qMC6YkP+bcs53IFJw9f3AW4ndYzSAbWVH37hzzT9KCidgKFvftyCirdbxq8O4GkZQ==}
+    dependencies:
+      '@storybook/channel-postmessage': 7.1.0-rc.0
+      '@storybook/channels': 7.1.0-rc.0
+      '@storybook/client-logger': 7.1.0-rc.0
+      '@storybook/core-events': 7.1.0-rc.0
+      '@storybook/csf': 0.1.0
+      '@storybook/global': 5.0.0
+      '@storybook/types': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@types/qs': 6.9.7
       dequal: 2.0.3
       lodash: 4.17.21
@@ -6391,8 +6492,13 @@ packages:
     resolution: {integrity: sha512-yHUlMX6wUlIlOYIzfUtqkuXOgRPJJLqGfeniMxLWjNpcePgZ6iSx0fF91ubKfPF1uUbA5vGSVX6KI+AF/RLM1Q==}
     dev: true
 
+<<<<<<< HEAD
   /@storybook/preview@7.1.0-rc.2:
     resolution: {integrity: sha512-VDc3IRY7FbAOoRi/KZf9c/RglCGuBIkXNnKb2xa2jv9yM8wB79L7bwCGOoXFX4tngaF2KujKlH8b0JUh77FGJQ==}
+=======
+  /@storybook/preview@7.1.0-rc.0:
+    resolution: {integrity: sha512-JG5IRLE8BwfIZu65S3quaj8WgmDLq3Pcfw1NKV+vJiohMmZZAFnk4FzugOyT9tcStFZN0k3nithiPTMWeHJ+qA==}
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     dev: true
 
   /@storybook/react-dom-shim@7.0.27(react-dom@18.2.0)(react@18.2.0):
@@ -6533,10 +6639,17 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
+<<<<<<< HEAD
   /@storybook/types@7.1.0-rc.2:
     resolution: {integrity: sha512-pd19JdNEE+yuqBNlvk61423ZWQHrbsVafEmiJLD0wL4oWBZts7dijZPYiyrw+Fhw/EuXWsLg0edizBk2Id+JmA==}
     dependencies:
       '@storybook/channels': 7.1.0-rc.2
+=======
+  /@storybook/types@7.1.0-rc.0:
+    resolution: {integrity: sha512-dt5bsv2MiD9+mqJYGjE3q7x8+Hl2GX+01VOqNI6i1oQ/bYJURUHwf6Rg7NCJjCcLUf0QdSB9qavJuaZvgjydTg==}
+    dependencies:
+      '@storybook/channels': 7.1.0-rc.0
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@types/babel__core': 7.20.1
       '@types/express': 4.17.17
       file-system-cache: 2.3.0
@@ -16910,7 +17023,11 @@ packages:
     resolution: {integrity: sha512-dD+VMYC5fBBQNesVb+mjB0LOkZIf100SQFbjAt9/sDstNUvc5ce3yZwLYXzgcOc7jcSMkrBu/cZNRzEM4YIAyw==}
     engines: {node: ^14.18 || >=16}
     dependencies:
+<<<<<<< HEAD
       '@storybook/builder-vite': 7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3)
+=======
+      '@storybook/builder-vite': 7.1.0-rc.0(typescript@5.1.6)(vite@4.4.2)
+>>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
