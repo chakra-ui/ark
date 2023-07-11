@@ -63,7 +63,7 @@
     "@testing-library/user-event": "14.4.3",
     "@testing-library/vue": "7.0.0",
     "@types/jsdom": "21.1.1",
-    "@types/testing-library__jest-dom": "5.14.7",
+    "@types/testing-library__jest-dom": "5.14.8",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vitejs/plugin-vue": "4.2.3",
