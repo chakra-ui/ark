@@ -186,7 +186,11 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
+=======
+        version: 4.0.0(release-it@15.11.0)
+>>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
       '@storybook/addon-a11y':
         specifier: 7.0.27
         version: 7.0.27(react-dom@18.2.0)(react@18.2.0)
@@ -379,7 +383,11 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
+=======
+        version: 4.0.0(release-it@15.11.0)
+>>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.8)
@@ -554,7 +562,11 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
+<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
+=======
+        version: 4.0.0(release-it@15.11.0)
+>>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -5344,7 +5356,11 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
+<<<<<<< HEAD
   /@release-it/keep-a-changelog@4.0.0(release-it@16.1.0):
+=======
+  /@release-it/keep-a-changelog@4.0.0(release-it@15.11.0):
+>>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
