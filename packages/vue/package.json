@@ -73,7 +73,7 @@
     "eslint": "8.44.0",
     "eslint-plugin-vue": "9.15.1",
     "globby": "13.2.2",
-    "happy-dom": "9.20.3",
+    "happy-dom": "10.1.1",
     "jsdom": "22.1.0",
     "release-it": "15.11.0",
     "resize-observer-polyfill": "1.5.1",
