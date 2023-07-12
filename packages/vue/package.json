@@ -63,7 +63,7 @@
     "@testing-library/user-event": "14.4.3",
     "@testing-library/vue": "7.0.0",
     "@types/jsdom": "21.1.1",
-    "@types/testing-library__jest-dom": "5.14.7",
+    "@types/testing-library__jest-dom": "5.14.8",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vitejs/plugin-vue": "4.2.3",
@@ -78,7 +78,7 @@
     "release-it": "16.1.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.1.6",
-    "vite": "4.4.2",
+    "vite": "4.4.3",
     "vite-plugin-dts": "2.3.0",
     "vitest": "0.33.0",
     "vue": "3.3.4"

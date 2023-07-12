@@ -76,7 +76,7 @@
     "@types/jsdom": "21.1.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
-    "@types/testing-library__jest-dom": "5.14.7",
+    "@types/testing-library__jest-dom": "5.14.8",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vitejs/plugin-react": "4.0.3",
@@ -94,7 +94,7 @@
     "resize-observer-polyfill": "1.5.1",
     "storybook": "7.0.26",
     "typescript": "5.1.6",
-    "vite": "4.4.2",
+    "vite": "4.4.3",
     "vite-plugin-dts": "2.3.0",
     "vitest": "0.33.0"
   },
