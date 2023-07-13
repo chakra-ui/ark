@@ -1,10 +1,11 @@
+import type { SlideIndicatorProps } from '@zag-js/carousel'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import type { ComponentWithProps } from '../utils'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorProps = Assign<HTMLArkProps<'button'>, { index: number }>
+export type CarouselIndicatorProps = Assign<HTMLArkProps<'button'>, SlideIndicatorProps>
 
 export const CarouselIndicator: ComponentWithProps<CarouselIndicatorProps> = defineComponent({
   name: 'CarouselIndicator',
@@ -13,12 +14,16 @@ export const CarouselIndicator: ComponentWithProps<CarouselIndicatorProps> = def
       type: Number as PropType<CarouselIndicatorProps['index']>,
       required: true,
     },
+    readonly: {
+      type: Boolean as PropType<CarouselIndicatorProps['readonly']>,
+      default: false,
+    },
   },
   setup(props, { slots, attrs }) {
     const api = useCarouselContext()
 
     return () => (
-      <ark.button {...api.value.getIndicatorProps({ index: props.index })} {...attrs} onClick={() => api.value.scrollTo(props.index)}>
+      <ark.button {...api.value.getIndicatorProps({ index: props.index })} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )
