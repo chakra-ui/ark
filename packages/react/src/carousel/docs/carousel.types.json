@@ -53,5 +53,8 @@
     }
   },
   "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } },
-  "CarouselIndicatorProps": { "index": { "type": "number", "isRequired": true } }
+  "CarouselIndicatorProps": {
+    "index": { "type": "number", "isRequired": true },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  }
 }
