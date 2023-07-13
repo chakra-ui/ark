@@ -1,4 +1,4 @@
-import type { ColorChannelInputProps } from '@zag-js/color-picker/dist/color-picker.types'
+import type { ColorChannelInputProps } from '@zag-js/color-picker'
 import { computed, defineComponent, reactive, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'

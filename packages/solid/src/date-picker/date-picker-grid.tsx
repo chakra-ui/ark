@@ -1,4 +1,4 @@
-import type { GridProps } from '@zag-js/date-picker/dist/date-picker.types'
+import type { GridProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
 import { createUniqueId } from 'solid-js'
 import { createSplitProps } from '../create-split-props'

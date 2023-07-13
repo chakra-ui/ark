@@ -1,4 +1,4 @@
-import type { SlideProps } from '@zag-js/carousel/dist/carousel.types'
+import type { SlideProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'

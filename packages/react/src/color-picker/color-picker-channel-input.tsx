@@ -1,4 +1,4 @@
-import type { ColorChannelInputProps } from '@zag-js/color-picker/dist/color-picker.types'
+import type { ColorChannelInputProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
