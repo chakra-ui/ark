@@ -24,8 +24,8 @@ import {
 
 Here's an example of how to use the Carousel component with a set of images:
 
-```tsx
-<script>
+```html
+<script setup>
 import {
   Carousel,
   CarouselNextSlideTrigger,
@@ -33,6 +33,8 @@ import {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
+  CarouselIndicator,
+  CarouselIndicatorProps,
 } from '@ark-ui/vue'
 
 const images = [
@@ -43,6 +45,7 @@ const images = [
   'https://tinyurl.com/yp4rfum7',
 ]
 </script>
+
 <template>
   <Carousel>
     <CarouselPrevSlideTrigger>
@@ -51,6 +54,9 @@ const images = [
     <CarouselNextSlideTrigger>
       <button>Next</button>
     </CarouselNextSlideTrigger>
+    <CarouselIndicatorGroup>
+      <CarouselIndicator v-for="(_, idx) in images" :key="idx" :index="idx" />
+    </CarouselIndicatorGroup>
     <CarouselViewport>
       <CarouselSlideGroup>
         <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx">

@@ -5,6 +5,8 @@ import { carousel } from '@/panda/recipes'
 import {
   Carousel,
   CarouselControl,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
   CarouselNextSlideTrigger,
   CarouselPrevSlideTrigger,
   CarouselSlide,
@@ -56,6 +58,13 @@ export const DemoCarousel = () => {
               />
             </CarouselNextSlideTrigger>
           </CarouselControl>
+          <CarouselIndicatorGroup>
+            {images.map((_, index) => (
+              <CarouselIndicator key={index} index={index}>
+                <span>Goto {index + 1}</span>
+              </CarouselIndicator>
+            ))}
+          </CarouselIndicatorGroup>
         </CarouselViewport>
       </Stack>
     </Carousel>

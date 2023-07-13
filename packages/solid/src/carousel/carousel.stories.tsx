@@ -3,6 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import {
   Carousel,
   CarouselControl,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
   CarouselNextSlideTrigger,
   CarouselPrevSlideTrigger,
   CarouselSlide,
@@ -31,6 +33,9 @@ export const Basic = () => {
         <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
         <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       </CarouselControl>
+      <CarouselIndicatorGroup>
+        <For each={images}>{(_, index) => <CarouselIndicator index={index()} />}</For>
+      </CarouselIndicatorGroup>
       <CarouselViewport>
         <CarouselSlideGroup>
           <For each={images}>

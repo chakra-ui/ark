@@ -1,5 +1,10 @@
 export { Carousel, type CarouselProps } from './carousel'
 export { CarouselControl, type CarouselControlProps } from './carousel-control'
+export { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
+export {
+  CarouselIndicatorGroup,
+  type CarouselIndicatorGroupProps,
+} from './carousel-indicator-group'
 export {
   CarouselNextSlideTrigger,
   type CarouselNextSlideTriggerProps,
