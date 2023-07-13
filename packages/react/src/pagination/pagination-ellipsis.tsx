@@ -1,4 +1,4 @@
-import type { EllipsisProps } from '@zag-js/pagination/dist/pagination.types'
+import type { EllipsisProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'

@@ -1,4 +1,4 @@
-import type { OptionProps } from '@zag-js/combobox/dist/combobox.types'
+import type { OptionProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'

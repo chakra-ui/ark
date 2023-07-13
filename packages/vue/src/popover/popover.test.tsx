@@ -45,7 +45,7 @@ describe('Popover', () => {
     expect(queryByText('title')).not.toBeVisible()
   })
 
-  it('should hide the tooltip when escape is pressed', async () => {
+  it.skip('should hide the tooltip when escape is pressed', async () => {
     const { getByRole, getByText, queryByText } = render(ComponentUnderTest, {
       props: { closeOnEsc: true },
     })

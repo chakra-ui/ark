@@ -1,4 +1,4 @@
-import type { SlideProps } from '@zag-js/carousel/dist/carousel.types'
+import type { SlideProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
 import { forwardRef } from '../forward-ref'

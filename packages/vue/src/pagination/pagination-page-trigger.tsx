@@ -1,4 +1,4 @@
-import type { PageTriggerProps } from '@zag-js/pagination/dist/pagination.types'
+import type { PageTriggerProps } from '@zag-js/pagination'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'

@@ -1,4 +1,4 @@
-import type { ViewProps } from '@zag-js/date-picker/dist/date-picker.types'
+import type { ViewProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { ark, type HTMLArkProps } from '../factory'
 import { forwardRef } from '../forward-ref'

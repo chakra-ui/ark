@@ -52,7 +52,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: 'src/setup-test.ts',
     transformMode: {
       web: [/\.[jt]sx?$/],
