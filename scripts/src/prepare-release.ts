@@ -25,8 +25,8 @@ const generateKeywords = () =>
     .map((component) => component.replace('-', ' '))
 
 const main = async () => {
-  const pakcageName = process.argv.slice(2)[0]
-  const framework = pakcageName.split('/')[1]
+  const packageName = process.argv.slice(2)[0]
+  const framework = packageName.split('/')[1]
 
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(path.join(root, 'packages', framework))
