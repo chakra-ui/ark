@@ -266,6 +266,12 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
+<<<<<<< HEAD
+=======
+      happy-dom:
+        specifier: 10.2.0
+        version: 10.2.0
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -298,7 +304,11 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.3)
       vitest:
         specifier: 0.33.0
+<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
+=======
+        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
 
   packages/solid:
     dependencies:
@@ -457,9 +467,15 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
+<<<<<<< HEAD
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
+=======
+      happy-dom:
+        specifier: 10.2.0
+        version: 10.2.0
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -503,7 +519,11 @@ importers:
 >>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
       vitest:
         specifier: 0.33.0
+<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
+=======
+        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
 
   packages/vue:
     dependencies:
@@ -645,6 +665,12 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
+<<<<<<< HEAD
+=======
+      happy-dom:
+        specifier: 10.2.0
+        version: 10.2.0
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -665,7 +691,11 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.3)
       vitest:
         specifier: 0.33.0
+<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
+=======
+        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
       vue:
         specifier: 3.3.4
         version: 3.3.4
@@ -7504,7 +7534,11 @@ packages:
       std-env: 3.3.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.0
+<<<<<<< HEAD
       vitest: 0.33.0(jsdom@22.1.0)
+=======
+      vitest: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -12256,6 +12290,20 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
+<<<<<<< HEAD
+=======
+  /happy-dom@10.2.0:
+    resolution: {integrity: sha512-qhxEr49zqw2D10lIRMva/Ca647CMrdcFIT5fk9cnqXOq3LXufQnDnszto/MQBldWYwlWWAipFZAB+A0W0/MMdA==}
+    dependencies:
+      css.escape: 1.5.1
+      entities: 4.5.0
+      iconv-lite: 0.6.3
+      webidl-conversions: 7.0.0
+      whatwg-encoding: 2.0.0
+      whatwg-mimetype: 3.0.0
+    dev: true
+
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
   /hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
     engines: {node: '>=6'}
@@ -18539,7 +18587,11 @@ packages:
     dependencies:
       vite: 4.4.3(@types/node@18.16.19)
 
+<<<<<<< HEAD
   /vitest@0.33.0(jsdom@22.1.0):
+=======
+  /vitest@0.33.0(happy-dom@10.2.0)(jsdom@22.1.0):
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -18583,6 +18635,10 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
+<<<<<<< HEAD
+=======
+      happy-dom: 10.2.0
+>>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
       jsdom: 22.1.0
       local-pkg: 0.4.3
       magic-string: 0.30.1
