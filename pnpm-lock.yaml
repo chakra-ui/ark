@@ -186,15 +186,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
-=======
-        version: 4.0.0(release-it@15.11.0)
->>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
-=======
-        version: 4.0.0(release-it@16.1.0)
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@storybook/addon-a11y':
         specifier: 7.0.27
         version: 7.0.27(react-dom@18.2.0)(react@18.2.0)
@@ -208,18 +200,8 @@ importers:
         specifier: 7.0.27
         version: 7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
       '@storybook/react-vite':
-<<<<<<< HEAD
-<<<<<<< HEAD
         specifier: 7.0.27
         version: 7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3)
-=======
-        specifier: 7.0.26
-        version: 7.0.26(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3)
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-=======
-        specifier: 7.0.27
-        version: 7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3)
->>>>>>> 74372585 (chore(deps): update storybook monorepo to v7.0.27 (#1172))
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -268,15 +250,6 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      happy-dom:
-        specifier: 10.2.0
-        version: 10.2.0
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -309,15 +282,7 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.3)
       vitest:
         specifier: 0.33.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
-=======
-        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-        version: 0.33.0(jsdom@22.1.0)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
 
   packages/solid:
     dependencies:
@@ -388,18 +353,8 @@ importers:
         specifier: 0.11.2
         version: 0.11.2
       '@zag-js/solid':
-<<<<<<< HEAD
-<<<<<<< HEAD
         specifier: 0.11.2
         version: 0.11.2(solid-js@1.7.8)
-=======
-        specifier: 0.10.5
-        version: 0.10.5(solid-js@1.7.8)
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-        specifier: 0.11.2
-        version: 0.11.2(solid-js@1.7.8)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@zag-js/splitter':
         specifier: 0.11.2
         version: 0.11.2
@@ -424,15 +379,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
-=======
-        version: 4.0.0(release-it@15.11.0)
->>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
-=======
-        version: 4.0.0(release-it@16.1.0)
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.8)
@@ -481,21 +428,9 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
-<<<<<<< HEAD
-<<<<<<< HEAD
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
-=======
-      happy-dom:
-        specifier: 10.2.0
-        version: 10.2.0
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-      jsdom:
-        specifier: 22.1.0
-        version: 22.1.0
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -528,26 +463,10 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.3)
       vite-plugin-solid:
         specifier: 2.7.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 2.7.0(solid-js@1.7.8)(vite@4.4.3)
-=======
-        version: 2.7.0(solid-js@1.7.8)(vite@4.4.2)
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-        version: 2.7.0(solid-js@1.7.8)(vite@4.4.3)
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
       vitest:
         specifier: 0.33.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
-=======
-        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-        version: 0.33.0(jsdom@22.1.0)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
 
   packages/vue:
     dependencies:
@@ -635,15 +554,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 4.0.0(release-it@16.1.0)
-=======
-        version: 4.0.0(release-it@15.11.0)
->>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
-=======
-        version: 4.0.0(release-it@16.1.0)
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -689,15 +600,6 @@ importers:
       globby:
         specifier: 13.2.2
         version: 13.2.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      happy-dom:
-        specifier: 10.2.0
-        version: 10.2.0
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -718,15 +620,7 @@ importers:
         version: 2.3.0(@types/node@18.16.19)(vite@4.4.3)
       vitest:
         specifier: 0.33.0
-<<<<<<< HEAD
-<<<<<<< HEAD
         version: 0.33.0(jsdom@22.1.0)
-=======
-        version: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-        version: 0.33.0(jsdom@22.1.0)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       vue:
         specifier: 3.3.4
         version: 3.3.4
@@ -3458,7 +3352,7 @@ packages:
       '@babel/core': 7.22.5
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-validator-option': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.5)
       '@babel/plugin-transform-modules-commonjs': 7.21.5(@babel/core@7.22.5)
       '@babel/plugin-transform-typescript': 7.22.3(@babel/core@7.22.5)
     transitivePeerDependencies:
@@ -5450,15 +5344,7 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@release-it/keep-a-changelog@4.0.0(release-it@16.1.0):
-=======
-  /@release-it/keep-a-changelog@4.0.0(release-it@15.11.0):
->>>>>>> 03584433 (chore(deps): update dependency @release-it/keep-a-changelog to v4 (#1163))
-=======
-  /@release-it/keep-a-changelog@4.0.0(release-it@16.1.0):
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -5957,18 +5843,8 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/builder-vite@7.0.27(typescript@5.1.6)(vite@4.4.3):
     resolution: {integrity: sha512-kIoEkkIJSKbJRq81R1jKZJ32NWbdJBcCh88J7y/C6tJFL6itKPucIiQEsptWlDZNOJHlxY2dkw3bVz1zaFWpOw==}
-=======
-  /@storybook/builder-vite@7.0.26(typescript@5.1.6)(vite@4.4.3):
-    resolution: {integrity: sha512-PRvySwvJEBLTZcUCKIULdxeFZeoDeK5odGFN0oIJhGZlOEI7jzbAcBT9SEZUh+Cv4Pk93XFr5+ZJCm/yrmF8RA==}
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-=======
-  /@storybook/builder-vite@7.0.27(typescript@5.1.6)(vite@4.4.3):
-    resolution: {integrity: sha512-kIoEkkIJSKbJRq81R1jKZJ32NWbdJBcCh88J7y/C6tJFL6itKPucIiQEsptWlDZNOJHlxY2dkw3bVz1zaFWpOw==}
->>>>>>> 74372585 (chore(deps): update storybook monorepo to v7.0.27 (#1172))
     peerDependencies:
       '@preact/preset-vite': '*'
       typescript: '>= 4.3.x'
@@ -6009,27 +5885,8 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/builder-vite@7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3):
     resolution: {integrity: sha512-OIX40BjD0OU1sTyENJ8rvb6maHaB8OjBJBwmX2dwJlaIGefJfqeLLjWwjsNoyV2a5ZTD1AygUq1mOIxQBErXNA==}
-=======
-  /@storybook/builder-vite@7.1.0-rc.0(typescript@5.1.6)(vite@4.4.2):
-    resolution: {integrity: sha512-YbnCqUobQp43BG39MYS4xG8W5LLGokaB7RMfwHiwt3YxRBivolzl45J2DACX6y4fsJo89+28ZeVBrFKNXMMQJg==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/builder-vite@7.1.0-rc.1(typescript@5.1.6)(vite@4.4.2):
-=======
-  /@storybook/builder-vite@7.1.0-rc.1(typescript@5.1.6)(vite@4.4.3):
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-    resolution: {integrity: sha512-yBdiV5H+HFQ93XKpTfJcQGpEPptTgk3nL+k3Zr1gxWCtyHZdP9YCHbsNjTMfEa6e5TYB6oWghr500j3MNpO3OQ==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/builder-vite@7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3):
-    resolution: {integrity: sha512-OIX40BjD0OU1sTyENJ8rvb6maHaB8OjBJBwmX2dwJlaIGefJfqeLLjWwjsNoyV2a5ZTD1AygUq1mOIxQBErXNA==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     peerDependencies:
       '@preact/preset-vite': '*'
       typescript: '>= 4.3.x'
@@ -6043,50 +5900,15 @@ packages:
       vite-plugin-glimmerx:
         optional: true
     dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@storybook/channels': 7.1.0-rc.2
       '@storybook/client-logger': 7.1.0-rc.2
       '@storybook/core-common': 7.1.0-rc.2
       '@storybook/csf-plugin': 7.1.0-rc.2
-<<<<<<< HEAD
       '@storybook/mdx2-csf': 1.1.0
       '@storybook/node-logger': 7.1.0-rc.2
       '@storybook/preview': 7.1.0-rc.2
       '@storybook/preview-api': 7.1.0-rc.2
       '@storybook/types': 7.1.0-rc.2
-=======
-      '@storybook/channels': 7.1.0-rc.0
-      '@storybook/client-logger': 7.1.0-rc.0
-      '@storybook/core-common': 7.1.0-rc.0
-      '@storybook/csf-plugin': 7.1.0-rc.0
-      '@storybook/mdx2-csf': 1.1.0
-      '@storybook/node-logger': 7.1.0-rc.0
-      '@storybook/preview': 7.1.0-rc.0
-      '@storybook/preview-api': 7.1.0-rc.0
-      '@storybook/types': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-      '@storybook/channels': 7.1.0-rc.1
-      '@storybook/client-logger': 7.1.0-rc.1
-      '@storybook/core-common': 7.1.0-rc.1
-      '@storybook/csf-plugin': 7.1.0-rc.1
-      '@storybook/mdx2-csf': 1.1.0
-      '@storybook/node-logger': 7.1.0-rc.1
-      '@storybook/preview': 7.1.0-rc.1
-      '@storybook/preview-api': 7.1.0-rc.1
-      '@storybook/types': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-      '@storybook/mdx2-csf': 1.1.0
-      '@storybook/node-logger': 7.1.0-rc.2
-      '@storybook/preview': 7.1.0-rc.2
-      '@storybook/preview-api': 7.1.0-rc.2
-      '@storybook/types': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@types/find-cache-dir': 3.2.1
       browser-assert: 1.2.1
       es-module-lexer: 0.9.3
@@ -6115,35 +5937,11 @@ packages:
       telejson: 7.1.0
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/channel-postmessage@7.1.0-rc.2:
     resolution: {integrity: sha512-XQQFN9xYdUwAdWcQopBaNPkj65bSwyBsGEDKFQd1zvwvEv4QKiMWqQVnx84yXfEUu9b4jVolyyB5tQGLS4/6Fw==}
     dependencies:
       '@storybook/channels': 7.1.0-rc.2
       '@storybook/client-logger': 7.1.0-rc.2
-=======
-  /@storybook/channel-postmessage@7.1.0-rc.0:
-    resolution: {integrity: sha512-trL6a5w+kgbW+HlLSpShEabf7+6UOmZBoNYW7kYvwYbKhCaOXKqJx/1iDvNtvRpyafCozXzJOxYzED3EZPPgZA==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.0
-      '@storybook/client-logger': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/channel-postmessage@7.1.0-rc.1:
-    resolution: {integrity: sha512-bX3j4EQIftkDMeXzL9JCAKSBR6FxAC6YfjavGBdhBIrOAdAqgP8opX65PJHpmN7j93hhaPqkMxsrJrtvqfTFXQ==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.1
-      '@storybook/client-logger': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/channel-postmessage@7.1.0-rc.2:
-    resolution: {integrity: sha512-XQQFN9xYdUwAdWcQopBaNPkj65bSwyBsGEDKFQd1zvwvEv4QKiMWqQVnx84yXfEUu9b4jVolyyB5tQGLS4/6Fw==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.2
-      '@storybook/client-logger': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dev: true
 
   /@storybook/channel-websocket@7.0.27:
@@ -6159,35 +5957,11 @@ packages:
     resolution: {integrity: sha512-YppvPa1qMyC+oCQJ3tf7Quzpf2NnBlvIRLPJiGAMssUwX5qE0iKe9lTtkNwMaNxEvzz6rDxewSlz+f/MWr4gPw==}
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/channels@7.1.0-rc.2:
     resolution: {integrity: sha512-P9u0l5T0N2zMo387f0+eRBZ29Jg2+mfalBcsvTs2TYR9Kb/plQlEXhvIRxJm3W/OeEvS2vxixN2YOFeZGWlUYg==}
     dependencies:
       '@storybook/client-logger': 7.1.0-rc.2
       '@storybook/core-events': 7.1.0-rc.2
-=======
-  /@storybook/channels@7.1.0-rc.0:
-    resolution: {integrity: sha512-uaXo5YmdK0G9+8b2TiFOfndIje8B7nXD//Rpk/W57CW8RrDrZkDABIG1bGO7EnRALDUBjfEMyh/HdELs5Y/XFg==}
-    dependencies:
-      '@storybook/client-logger': 7.1.0-rc.0
-      '@storybook/core-events': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/channels@7.1.0-rc.1:
-    resolution: {integrity: sha512-I7qwZdtTr+0q4/6x0UhqNy3LuvMZzHW9+cJrJwlpxfXDv9KHXQc4t1FJrWgeUymTreckLUWkwuO0DrRa8s594g==}
-    dependencies:
-      '@storybook/client-logger': 7.1.0-rc.1
-      '@storybook/core-events': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/channels@7.1.0-rc.2:
-    resolution: {integrity: sha512-P9u0l5T0N2zMo387f0+eRBZ29Jg2+mfalBcsvTs2TYR9Kb/plQlEXhvIRxJm3W/OeEvS2vxixN2YOFeZGWlUYg==}
-    dependencies:
-      '@storybook/client-logger': 7.1.0-rc.2
-      '@storybook/core-events': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@storybook/global': 5.0.0
       qs: 6.11.2
       telejson: 7.1.0
@@ -6249,23 +6023,8 @@ packages:
       '@storybook/global': 5.0.0
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/client-logger@7.1.0-rc.2:
     resolution: {integrity: sha512-O0JLRCFrL7YLMd8sBHdLCqbJBLxW8nCrj7cOwkxt1HY73vy4u/VRujmVZbElaG5QJIoZNUZERyL+oSChthKWlg==}
-=======
-  /@storybook/client-logger@7.1.0-rc.0:
-    resolution: {integrity: sha512-3ulaA9fU+4FFwYVSQ9fSf1aubcLBn/VE+f3990tiK6YM6Z2kDpDNRJepan0XCnd9m4Upca/64nmMuUAbFTWzsQ==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/client-logger@7.1.0-rc.1:
-    resolution: {integrity: sha512-9gIDb6K7cotqZie+BbhCFg0Lk2yMHkJEnC0/0cPXO7FqRhx75kHrGIsdrZShylZUjLoLQZQoV5z2mr085NO4Eg==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/client-logger@7.1.0-rc.2:
-    resolution: {integrity: sha512-O0JLRCFrL7YLMd8sBHdLCqbJBLxW8nCrj7cOwkxt1HY73vy4u/VRujmVZbElaG5QJIoZNUZERyL+oSChthKWlg==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -6344,35 +6103,11 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/core-common@7.1.0-rc.2:
     resolution: {integrity: sha512-SDJqUt1ovsLEcQDG4FDSeEPLZKsgUW5XvQCJgVLA68QWDMN1qnDrNmU1+mrzwl20cws/Ykrr8tDJRMM0H/82NQ==}
     dependencies:
       '@storybook/node-logger': 7.1.0-rc.2
       '@storybook/types': 7.1.0-rc.2
-=======
-  /@storybook/core-common@7.1.0-rc.0:
-    resolution: {integrity: sha512-hmz+FQ/+Jc7H0TijOosoPSR/Wsbaug+Pmy+LKUxPOU6ACspGt7Zi8giH5phcb8gFQxI0zZ/1q05qQTScQA+Shg==}
-    dependencies:
-      '@storybook/node-logger': 7.1.0-rc.0
-      '@storybook/types': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/core-common@7.1.0-rc.1:
-    resolution: {integrity: sha512-dGGWp6rPVadaI+f/K40xhZlzLTsd64pQlsxz5KE36r9ulFktxacSNvwtMA3ICYZ5w73GQ9I3Fyvh9GwmTxTSLw==}
-    dependencies:
-      '@storybook/node-logger': 7.1.0-rc.1
-      '@storybook/types': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/core-common@7.1.0-rc.2:
-    resolution: {integrity: sha512-SDJqUt1ovsLEcQDG4FDSeEPLZKsgUW5XvQCJgVLA68QWDMN1qnDrNmU1+mrzwl20cws/Ykrr8tDJRMM0H/82NQ==}
-    dependencies:
-      '@storybook/node-logger': 7.1.0-rc.2
-      '@storybook/types': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@types/find-cache-dir': 3.2.1
       '@types/node': 16.18.34
       '@types/node-fetch': 2.6.4
@@ -6402,23 +6137,8 @@ packages:
     resolution: {integrity: sha512-sNnqgO5i5DUIqeQfNbr987KWvAciMN9FmMBuYdKjVFMqWFyr44HTgnhfKwZZKl+VMDYkHA9Do7UGSYZIKy0P4g==}
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/core-events@7.1.0-rc.2:
     resolution: {integrity: sha512-qoYLet2G2vNxpVKPTqLovGNoNSNjID7V2vk9hdUis51osOiVHlgJwXxkz33fUOI18y1JbYoVRM8LZaFaMHGF2g==}
-=======
-  /@storybook/core-events@7.1.0-rc.0:
-    resolution: {integrity: sha512-07g6uZlWXP6Ph2JhpohP1tlArSOnvnZGqZ+AmomnWeA3QkXdJ8mmJQ/kMgbcAIkoO7DBt8YsDxZt2ye6FKN/qQ==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/core-events@7.1.0-rc.1:
-    resolution: {integrity: sha512-cuWpVQxJLLHZ8dxO17yySQdaj20VFYZC/Cm4guKv+/RH0aI+kALkoe5zJ6JnUSjwPujrZI6c/9bHVsjqi3czzQ==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/core-events@7.1.0-rc.2:
-    resolution: {integrity: sha512-qoYLet2G2vNxpVKPTqLovGNoNSNjID7V2vk9hdUis51osOiVHlgJwXxkz33fUOI18y1JbYoVRM8LZaFaMHGF2g==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dev: true
 
   /@storybook/core-server@7.0.27:
@@ -6481,31 +6201,10 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/csf-plugin@7.1.0-rc.2:
     resolution: {integrity: sha512-wdPIrWZexLKcdLh1nc0ujnhrPmadHWsI6nu5+TQyIyqRHKWsnVz69ccF+4bYEQIkzHl38oW6jDRaFkPh3ls8ng==}
     dependencies:
       '@storybook/csf-tools': 7.1.0-rc.2
-=======
-  /@storybook/csf-plugin@7.1.0-rc.0:
-    resolution: {integrity: sha512-0nG5RHmv+m+TNIqs0PcL4cM5hQL1TMiGAEht20ghRTciwTcDkcTD9hhvHSz9fLfzTKAkpOmRq4lv47AmdiaPug==}
-    dependencies:
-      '@storybook/csf-tools': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/csf-plugin@7.1.0-rc.1:
-    resolution: {integrity: sha512-Qf1kNGaCSEAS/vIHI0Ejvu7BOsyOE050DXSSoS8BVsSkCZiks0WpgFGbFF6p54/XgN4OqvitVtJ+GD9Wqt9ySQ==}
-    dependencies:
-      '@storybook/csf-tools': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/csf-plugin@7.1.0-rc.2:
-    resolution: {integrity: sha512-wdPIrWZexLKcdLh1nc0ujnhrPmadHWsI6nu5+TQyIyqRHKWsnVz69ccF+4bYEQIkzHl38oW6jDRaFkPh3ls8ng==}
-    dependencies:
-      '@storybook/csf-tools': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       unplugin: 1.3.1
     transitivePeerDependencies:
       - supports-color
@@ -6527,42 +6226,15 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/csf-tools@7.1.0-rc.2:
     resolution: {integrity: sha512-YGQASURBY/hOTB+C2s5wo8MjEqDzWv0Vnw+xqFl/rEjquEWbKwFP96YocIQvHYfgBMlg92zetQHieLIOJE1shw==}
-=======
-  /@storybook/csf-tools@7.1.0-rc.0:
-    resolution: {integrity: sha512-UMAXjV7kqq76QpMFdSwiS0yNPOH8b1nAQGWuiBOyB2z8jkavKf52LSwbz9eE3fVDoHUNo6XsQ1EDBGqPL5mh3Q==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/csf-tools@7.1.0-rc.1:
-    resolution: {integrity: sha512-Tm0S1VxhBvLqjRg74/w2QK2VljdItKgcXDzFIE2rP5DRYa5WNCKhyLWq/ccacLR4u5Jj2J1CqYhPJm9H5Ms1og==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/csf-tools@7.1.0-rc.2:
-    resolution: {integrity: sha512-YGQASURBY/hOTB+C2s5wo8MjEqDzWv0Vnw+xqFl/rEjquEWbKwFP96YocIQvHYfgBMlg92zetQHieLIOJE1shw==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dependencies:
       '@babel/generator': 7.22.5
       '@babel/parser': 7.22.5
       '@babel/traverse': 7.22.5
       '@babel/types': 7.22.5
       '@storybook/csf': 0.1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       '@storybook/types': 7.1.0-rc.2
-=======
-      '@storybook/types': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-      '@storybook/types': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-      '@storybook/types': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       fs-extra: 11.1.1
       recast: 0.23.2
       ts-dedent: 2.2.0
@@ -6651,23 +6323,8 @@ packages:
       pretty-hrtime: 1.0.3
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/node-logger@7.1.0-rc.2:
     resolution: {integrity: sha512-2CePjO6LwxqtdK9+C4L9akERZCwpGZ6/VDesY+q8lGORpQ77h6xS+JQYUdRyuDwgi9MwMSuuVIrKIZFDm52uDg==}
-=======
-  /@storybook/node-logger@7.1.0-rc.0:
-    resolution: {integrity: sha512-pnW+S8MceoAGUxJT/Q3KAwbfBmYmfYhfDdqIl+08NgS+Gl14ZM+fXCqnYH38taB6p0wu/YI4EXpwGAYmJQm79Q==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/node-logger@7.1.0-rc.1:
-    resolution: {integrity: sha512-G01De4PQiQlZnrYuI8DxpWBSwaiha9we1CzRqi0C+Y/6toGKGJTv9kB252TqhXAN9/dUNcIcWAD+Z15aZWwWJg==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/node-logger@7.1.0-rc.2:
-    resolution: {integrity: sha512-2CePjO6LwxqtdK9+C4L9akERZCwpGZ6/VDesY+q8lGORpQ77h6xS+JQYUdRyuDwgi9MwMSuuVIrKIZFDm52uDg==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dev: true
 
   /@storybook/postinstall@7.0.27:
@@ -6694,9 +6351,6 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/preview-api@7.1.0-rc.2:
     resolution: {integrity: sha512-E+X5I1BzFF5aTmclkmoVBYQB+JMx1SUCdkzl+GGX9Wxh5JmyTQDI90ynv0k1aJNvPmC5mS2EMmeqcYoz+AuYZA==}
     dependencies:
@@ -6707,34 +6361,6 @@ packages:
       '@storybook/csf': 0.1.0
       '@storybook/global': 5.0.0
       '@storybook/types': 7.1.0-rc.2
-=======
-  /@storybook/preview-api@7.1.0-rc.0:
-    resolution: {integrity: sha512-Jy1Vmb2TBdB4ESPdYhT17qMC6YkP+bcs53IFJw9f3AW4ndYzSAbWVH37hzzT9KCidgKFvftyCirdbxq8O4GkZQ==}
-=======
-  /@storybook/preview-api@7.1.0-rc.1:
-    resolution: {integrity: sha512-Wme9IZvMolGtyAbbx6Z31+AHxP5EltizYiSmBwxZrX5uxMSvNMS8MbB0A85mrnw9I0U0MORSqDeclUQ8S/CL5g==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/preview-api@7.1.0-rc.2:
-    resolution: {integrity: sha512-E+X5I1BzFF5aTmclkmoVBYQB+JMx1SUCdkzl+GGX9Wxh5JmyTQDI90ynv0k1aJNvPmC5mS2EMmeqcYoz+AuYZA==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
-    dependencies:
-      '@storybook/channel-postmessage': 7.1.0-rc.2
-      '@storybook/channels': 7.1.0-rc.2
-      '@storybook/client-logger': 7.1.0-rc.2
-      '@storybook/core-events': 7.1.0-rc.2
-      '@storybook/csf': 0.1.0
-      '@storybook/global': 5.0.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-      '@storybook/types': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-      '@storybook/types': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-      '@storybook/types': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@types/qs': 6.9.7
       dequal: 2.0.3
       lodash: 4.17.21
@@ -6749,23 +6375,8 @@ packages:
     resolution: {integrity: sha512-yHUlMX6wUlIlOYIzfUtqkuXOgRPJJLqGfeniMxLWjNpcePgZ6iSx0fF91ubKfPF1uUbA5vGSVX6KI+AF/RLM1Q==}
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/preview@7.1.0-rc.2:
     resolution: {integrity: sha512-VDc3IRY7FbAOoRi/KZf9c/RglCGuBIkXNnKb2xa2jv9yM8wB79L7bwCGOoXFX4tngaF2KujKlH8b0JUh77FGJQ==}
-=======
-  /@storybook/preview@7.1.0-rc.0:
-    resolution: {integrity: sha512-JG5IRLE8BwfIZu65S3quaj8WgmDLq3Pcfw1NKV+vJiohMmZZAFnk4FzugOyT9tcStFZN0k3nithiPTMWeHJ+qA==}
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/preview@7.1.0-rc.1:
-    resolution: {integrity: sha512-nD6eJHcptIdFGNPwQnUkJiONXi4lw66OgIWHukU+8pb0CfR9KbAdWfgkC5MJjGaCBYfTiCWhHsUsNTZEULLQpg==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/preview@7.1.0-rc.2:
-    resolution: {integrity: sha512-VDc3IRY7FbAOoRi/KZf9c/RglCGuBIkXNnKb2xa2jv9yM8wB79L7bwCGOoXFX4tngaF2KujKlH8b0JUh77FGJQ==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     dev: true
 
   /@storybook/react-dom-shim@7.0.27(react-dom@18.2.0)(react@18.2.0):
@@ -6778,18 +6389,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/react-vite@7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3):
     resolution: {integrity: sha512-dqvN3jGqICYmBcDGtkEVVDWVbVVUj5OdLVaExdU8gfB9f/qYPMTtq95KN3p75uwiDe7KMOCNf5tY/ttRJRkQXA==}
-=======
-  /@storybook/react-vite@7.0.26(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3):
-    resolution: {integrity: sha512-yDkZAvlJ9RcXSuGZy8NdDhI394P7CRme7x6VtpgCi+iPaVW9A5laK7zOe1ewYnAcbKH6g7EJWQWDz2+PqAGiFw==}
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-=======
-  /@storybook/react-vite@7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.3):
-    resolution: {integrity: sha512-dqvN3jGqICYmBcDGtkEVVDWVbVVUj5OdLVaExdU8gfB9f/qYPMTtq95KN3p75uwiDe7KMOCNf5tY/ttRJRkQXA==}
->>>>>>> 74372585 (chore(deps): update storybook monorepo to v7.0.27 (#1172))
     engines: {node: '>=16'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -6798,18 +6399,8 @@ packages:
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.2.1(typescript@5.1.6)(vite@4.4.3)
       '@rollup/pluginutils': 4.2.1
-<<<<<<< HEAD
-<<<<<<< HEAD
       '@storybook/builder-vite': 7.0.27(typescript@5.1.6)(vite@4.4.3)
       '@storybook/react': 7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
-=======
-      '@storybook/builder-vite': 7.0.26(typescript@5.1.6)(vite@4.4.3)
-      '@storybook/react': 7.0.26(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-=======
-      '@storybook/builder-vite': 7.0.27(typescript@5.1.6)(vite@4.4.3)
-      '@storybook/react': 7.0.27(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
->>>>>>> 74372585 (chore(deps): update storybook monorepo to v7.0.27 (#1172))
       '@vitejs/plugin-react': 3.1.0(vite@4.4.3)
       ast-types: 0.14.2
       magic-string: 0.27.0
@@ -6926,31 +6517,10 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@storybook/types@7.1.0-rc.2:
     resolution: {integrity: sha512-pd19JdNEE+yuqBNlvk61423ZWQHrbsVafEmiJLD0wL4oWBZts7dijZPYiyrw+Fhw/EuXWsLg0edizBk2Id+JmA==}
     dependencies:
       '@storybook/channels': 7.1.0-rc.2
-=======
-  /@storybook/types@7.1.0-rc.0:
-    resolution: {integrity: sha512-dt5bsv2MiD9+mqJYGjE3q7x8+Hl2GX+01VOqNI6i1oQ/bYJURUHwf6Rg7NCJjCcLUf0QdSB9qavJuaZvgjydTg==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.0
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-  /@storybook/types@7.1.0-rc.1:
-    resolution: {integrity: sha512-pm5xlgY37nPRm+SZJrSHJAk5oGgVA1ft/5T4zaw/C4Hkh2PtzlvP16CG1kdVug1AHRKWUSKNJYELdzYsCbvUhg==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.1
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@storybook/types@7.1.0-rc.2:
-    resolution: {integrity: sha512-pd19JdNEE+yuqBNlvk61423ZWQHrbsVafEmiJLD0wL4oWBZts7dijZPYiyrw+Fhw/EuXWsLg0edizBk2Id+JmA==}
-    dependencies:
-      '@storybook/channels': 7.1.0-rc.2
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       '@types/babel__core': 7.20.1
       '@types/express': 4.17.17
       file-system-cache: 2.3.0
@@ -7657,15 +7227,7 @@ packages:
       std-env: 3.3.3
       test-exclude: 6.0.0
       v8-to-istanbul: 9.1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
       vitest: 0.33.0(jsdom@22.1.0)
-=======
-      vitest: 0.33.0(happy-dom@10.2.0)(jsdom@22.1.0)
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-      vitest: 0.33.0(jsdom@22.1.0)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8656,18 +8218,8 @@ packages:
       '@zag-js/utils': 0.11.2
     dev: false
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@zag-js/solid@0.11.2(solid-js@1.7.8):
     resolution: {integrity: sha512-OsOAEH4JVogYfv7n8jme6d3IEyt39EG5ooTXwe2qb+M2WojaJvpAYsD2goZSN9Mkcgww/pat3hVrlnCLcJbFog==}
-=======
-  /@zag-js/solid@0.10.5(solid-js@1.7.8):
-    resolution: {integrity: sha512-Pal286F+3jKLd6w1z7R5SdBaS+2copdO8QAtUPfbSKh0WBGDUyZsVszi1lg38yYhIg92yo4gD02Kks2ocL9axw==}
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /@zag-js/solid@0.11.2(solid-js@1.7.8):
-    resolution: {integrity: sha512-OsOAEH4JVogYfv7n8jme6d3IEyt39EG5ooTXwe2qb+M2WojaJvpAYsD2goZSN9Mkcgww/pat3hVrlnCLcJbFog==}
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     peerDependencies:
       solid-js: '>=1.1.3'
     dependencies:
@@ -12422,23 +11974,6 @@ packages:
       uglify-js: 3.17.4
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  /happy-dom@10.2.0:
-    resolution: {integrity: sha512-qhxEr49zqw2D10lIRMva/Ca647CMrdcFIT5fk9cnqXOq3LXufQnDnszto/MQBldWYwlWWAipFZAB+A0W0/MMdA==}
-    dependencies:
-      css.escape: 1.5.1
-      entities: 4.5.0
-      iconv-lite: 0.6.3
-      webidl-conversions: 7.0.0
-      whatwg-encoding: 2.0.0
-      whatwg-mimetype: 3.0.0
-    dev: true
-
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
   /hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
     engines: {node: '>=6'}
@@ -17359,23 +16894,7 @@ packages:
     resolution: {integrity: sha512-dD+VMYC5fBBQNesVb+mjB0LOkZIf100SQFbjAt9/sDstNUvc5ce3yZwLYXzgcOc7jcSMkrBu/cZNRzEM4YIAyw==}
     engines: {node: ^14.18 || >=16}
     dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       '@storybook/builder-vite': 7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3)
-=======
-      '@storybook/builder-vite': 7.1.0-rc.0(typescript@5.1.6)(vite@4.4.2)
->>>>>>> 98bf5d66 (chore(deps): update dependency release-it to v16 (#1146))
-=======
-      '@storybook/builder-vite': 7.1.0-rc.1(typescript@5.1.6)(vite@4.4.2)
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-      '@storybook/builder-vite': 7.1.0-rc.1(typescript@5.1.6)(vite@4.4.3)
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
-=======
-      '@storybook/builder-vite': 7.1.0-rc.2(typescript@5.1.6)(vite@4.4.3)
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -18577,15 +18096,7 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /vite-plugin-solid@2.7.0(solid-js@1.7.8)(vite@4.4.3):
-=======
-  /vite-plugin-solid@2.7.0(solid-js@1.7.8)(vite@4.4.2):
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-  /vite-plugin-solid@2.7.0(solid-js@1.7.8)(vite@4.4.3):
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
     resolution: {integrity: sha512-avp/Jl5zOp/Itfo67xtDB2O61U7idviaIp4mLsjhCa13PjKNasz+IID0jYTyqUp9SFx6/PmBr6v4KgDppqompg==}
     peerDependencies:
       solid-js: ^1.7.2
@@ -18598,18 +18109,8 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.7.8
       solid-refresh: 0.5.2(solid-js@1.7.8)
-<<<<<<< HEAD
-<<<<<<< HEAD
       vite: 4.4.3(@types/node@18.16.19)
       vitefu: 0.2.4(vite@4.4.3)
-=======
-      vite: 4.4.2(@types/node@18.16.19)
-      vitefu: 0.2.4(vite@4.4.2)
->>>>>>> fa663e46 (chore(deps): update dependency solid-js to v1.7.8 (#1171))
-=======
-      vite: 4.4.3(@types/node@18.16.19)
-      vitefu: 0.2.4(vite@4.4.3)
->>>>>>> 8623f03f (chore(deps): update dependency vite to v4.4.3 (#1170))
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -18726,15 +18227,7 @@ packages:
     dependencies:
       vite: 4.4.3(@types/node@18.16.19)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /vitest@0.33.0(jsdom@22.1.0):
-=======
-  /vitest@0.33.0(happy-dom@10.2.0)(jsdom@22.1.0):
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
-  /vitest@0.33.0(jsdom@22.1.0):
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -18778,13 +18271,6 @@ packages:
       cac: 6.7.14
       chai: 4.3.7
       debug: 4.3.4
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      happy-dom: 10.2.0
->>>>>>> fe9c296f (chore(deps): update dependency happy-dom to v10.2.0 (#1175))
-=======
->>>>>>> 01040b40 (chore: upgrade to latest @zag-js)
       jsdom: 22.1.0
       local-pkg: 0.4.3
       magic-string: 0.30.1
