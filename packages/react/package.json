@@ -47,6 +47,7 @@
     "@zag-js/pagination": "0.11.2",
     "@zag-js/pin-input": "0.11.2",
     "@zag-js/popover": "0.11.2",
+    "@zag-js/presence": "0.11.2",
     "@zag-js/pressable": "0.11.2",
     "@zag-js/radio-group": "0.11.2",
     "@zag-js/range-slider": "0.11.2",

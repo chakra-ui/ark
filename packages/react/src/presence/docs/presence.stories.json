@@ -1,0 +1,3 @@
+{
+  "Basic": "const Basic = () => {\n  const [present, setPresent] = useState(false)\n  return (\n    <div>\n      <button onClick={() => setPresent(!present)}>Toggle</button>\n      <Presence present={present}>\n        <span>I am a red box</span>\n      </Presence>\n    </div>\n  )\n}"
+}

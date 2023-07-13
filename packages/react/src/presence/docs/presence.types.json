@@ -1,0 +1,6 @@
+{
+  "PresenceProps": {
+    "present": { "type": "boolean", "isRequired": true },
+    "onExitComplete": { "type": "() => void", "isRequired": false }
+  }
+}
