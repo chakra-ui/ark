@@ -1,4 +1,5 @@
 import { Children, cloneElement, useRef, type ReactElement } from 'react'
+import { composeRefs } from '../compose-refs'
 import { createSplitProps } from '../create-split-props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
@@ -27,9 +28,9 @@ export const Presence = (props: PresenceProps) => {
 
   const onlyChild = Children.only(children)
   return cloneElement(onlyChild, {
-    ref: api.setNode,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ref: composeRefs(api.setNode, (onlyChild as any).ref),
     hidden: !api.isPresent,
-    ['data-scope']: 'presence',
     ['data-state']: presenceProps.present ? 'open' : 'closed',
     ...onlyChild.props,
   })

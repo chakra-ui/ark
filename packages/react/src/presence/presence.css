@@ -1,17 +1,15 @@
-[data-scope='presence'] {
-  background-color: red;
+.box {
+  background-color: brown;
+  color: white;
   padding: 24px;
-  width: 240px;
-  position: absolute;
-  transform-origin: 0 0;
-  left: 100px;
+  max-width: fit-content;
 }
 
-[data-scope='presence'][data-state='open'] {
+.box[data-state='open'] {
   animation: fadeIn 0.25s ease-out;
 }
 
-[data-scope='presence'][data-state='closed'] {
+.box[data-state='closed'] {
   animation: fadeOut 0.5s ease-in;
 }
 

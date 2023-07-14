@@ -18,7 +18,7 @@ export const Basic = () => {
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
       <Presence present={present}>
-        <span>Hidden and Hidden</span>
+        <div className="box">Hidden and Hidden</div>
       </Presence>
     </div>
   )
@@ -30,7 +30,7 @@ export const LazyMount = () => {
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
       <Presence present={present} lazyMount>
-        <span>Unmounted and Hidden</span>
+        <div className="box">Unmounted and Hidden</div>
       </Presence>
     </div>
   )
@@ -42,7 +42,7 @@ export const UnmountOnExit = () => {
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
       <Presence present={present} unmountOnExit>
-        <span>Hidden and Unmounted on Exit</span>
+        <div className="box">Hidden and Unmounted on Exit</div>
       </Presence>
     </div>
   )
@@ -54,7 +54,7 @@ export const LazyMountAndUnmountOnExit = () => {
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
       <Presence present={present} lazyMount unmountOnExit>
-        <span>Lazy Mount and Unmounted on Exit</span>
+        <div className="box">Lazy Mount and Unmounted on Exit</div>
       </Presence>
     </div>
   )
