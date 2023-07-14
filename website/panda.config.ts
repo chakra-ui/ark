@@ -76,7 +76,22 @@ export default defineConfig({
           },
         },
       },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', scale: '0.8' },
+          '100%': { opacity: '1', scale: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1', scale: '1' },
+          '100%': { opacity: '0', scale: '0.8' },
+        },
+      },
       tokens: {
+        animations: {
+          spin: {
+            value: 'spin 1s linear infinite',
+          },
+        },
         lineHeights: {
           relaxed: { value: '1.75' },
         },

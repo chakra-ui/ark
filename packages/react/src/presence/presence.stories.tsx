@@ -18,7 +18,43 @@ export const Basic = () => {
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
       <Presence present={present}>
-        <span>I am a red box</span>
+        <span>Hidden and Hidden</span>
+      </Presence>
+    </div>
+  )
+}
+
+export const LazyMount = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <div>
+      <button onClick={() => setPresent(!present)}>Toggle</button>
+      <Presence present={present} lazyMount>
+        <span>Unmounted and Hidden</span>
+      </Presence>
+    </div>
+  )
+}
+
+export const UnmountOnExit = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <div>
+      <button onClick={() => setPresent(!present)}>Toggle</button>
+      <Presence present={present} unmountOnExit>
+        <span>Hidden and Unmounted on Exit</span>
+      </Presence>
+    </div>
+  )
+}
+
+export const LazyMountAndUnmountOnExit = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <div>
+      <button onClick={() => setPresent(!present)}>Toggle</button>
+      <Presence present={present} lazyMount unmountOnExit>
+        <span>Lazy Mount and Unmounted on Exit</span>
       </Presence>
     </div>
   )

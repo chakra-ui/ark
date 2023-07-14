@@ -1,6 +1,8 @@
 {
   "PresenceProps": {
     "present": { "type": "boolean", "isRequired": true },
-    "onExitComplete": { "type": "() => void", "isRequired": false }
+    "lazyMount": { "type": "boolean", "isRequired": false },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "unmountOnExit": { "type": "boolean", "isRequired": false }
   }
 }
