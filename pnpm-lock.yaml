@@ -647,8 +647,8 @@ importers:
         specifier: 19.0.0
         version: 19.0.0
       ts-pattern:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.0.2
+        version: 5.0.2
     devDependencies:
       '@types/fs-extra':
         specifier: 11.0.1
@@ -720,8 +720,8 @@ importers:
         specifier: 0.14.3
         version: 0.14.3
       ts-pattern:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.0.2
+        version: 5.0.2
       usehooks-ts:
         specifier: 2.9.1
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
@@ -17437,8 +17437,8 @@ packages:
     resolution: {integrity: sha512-pefrkcd4lmIVR0LA49Imjf9DYLK8vtWhqBPA3Ya1ir8xCW0O2yjL9dsCVvI7pCodLC5q7smNpEtDR2yVulQxOg==}
     dev: false
 
-  /ts-pattern@5.0.1:
-    resolution: {integrity: sha512-ZyNm28Lsg34Co5DS3e9DVyjlX2Y+2exkI4jqTKyU+9/OL6Y2fKOOuL8i+7no71o74C6mVS+UFoP3ekM3iCT1HQ==}
+  /ts-pattern@5.0.2:
+    resolution: {integrity: sha512-JYcu4oJ7AGbww1z835AqMhrjwqclhICWhzjib4dp8MrY3UiFHqy1PVegVy+mW6VZ5vHrMeGombCbau2FGGSTJw==}
     dev: false
 
   /tsconfck@2.1.1(typescript@5.1.6):
