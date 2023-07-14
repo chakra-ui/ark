@@ -19,7 +19,7 @@ export const DemoPresence = () => {
             p: '4',
             mt: '2',
             '&[data-state=open]': { animation: 'fadeIn 0.25s ease-out' },
-            '&[data-state=closed]': { animation: 'fadeOut 0.25s ease-in' },
+            '&[data-state=closed]': { animation: 'fadeOut 0.125s ease-in' },
           })}
         >
           I am an animated box

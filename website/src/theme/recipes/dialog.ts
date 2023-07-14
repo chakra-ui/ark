@@ -16,6 +16,8 @@ export const dialog = defineRecipe({
       inset: '0',
       position: 'fixed',
       zIndex: '200',
+      '&[data-state=open]': { animation: 'backdropIn 0.25s ease-out' },
+      '&[data-state=closed]': { animation: 'backdropOut 0.25s ease-in' },
     },
     container: {
       alignItems: 'center',
@@ -31,6 +33,8 @@ export const dialog = defineRecipe({
       boxShadow: 'lg',
       minW: 'sm',
       position: 'relative',
+      '&[data-state=open]': { animation: 'slideIn 0.25s ease-out' },
+      '&[data-state=closed]': { animation: 'slideOut 0.25s ease-in' },
     },
     title: {
       fontWeight: 'semibold',

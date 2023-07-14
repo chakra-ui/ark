@@ -8,9 +8,11 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
+  DialogPresence,
   DialogTitle,
   DialogTrigger,
 } from './'
+import './dialog.css'
 
 type DialogType = typeof Dialog
 
@@ -21,33 +23,27 @@ const meta: Meta<DialogType> = {
 
 export default meta
 
-export const Basic = () => {
-  return (
-    <Dialog>
-      <DialogTrigger>click me</DialogTrigger>
-      <Portal>
-        <DialogBackdrop />
-        <DialogContainer>
-          <DialogContent>
-            <DialogTitle>Dialog Title</DialogTitle>
-            <DialogDescription>Dialog Description</DialogDescription>
-            <div>
-              <input placeholder="Enter name..." />
-              <button>Save</button>
-            </div>
-            <DialogCloseTrigger>close</DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </Dialog>
-  )
-}
+export const Basic = () => (
+  <Dialog>
+    <DialogTrigger>Open Dialog</DialogTrigger>
+    <Portal>
+      <DialogBackdrop />
+      <DialogContainer>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogCloseTrigger>Close</DialogCloseTrigger>
+        </DialogContent>
+      </DialogContainer>
+    </Portal>
+  </Dialog>
+)
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <button onClick={() => setIsOpen(true)}>Open Dialog</button>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Portal>
           <DialogBackdrop />
@@ -55,11 +51,7 @@ export const Controlled = () => {
             <DialogContent>
               <DialogTitle>Dialog Title</DialogTitle>
               <DialogDescription>Dialog Description</DialogDescription>
-              <div>
-                <input placeholder="Enter name..." />
-                <button>Save</button>
-              </div>
-              <DialogCloseTrigger>close</DialogCloseTrigger>
+              <DialogCloseTrigger>Close</DialogCloseTrigger>
             </DialogContent>
           </DialogContainer>
         </Portal>
@@ -68,25 +60,43 @@ export const Controlled = () => {
   )
 }
 
-export const DialogWithRenderFn = () => {
-  return (
-    <Dialog>
-      {({ isOpen }) => (
-        <>
-          <DialogTrigger>Open Dialog</DialogTrigger>
-          <Portal>
-            <DialogBackdrop />
-            <DialogContainer>
-              <DialogContent>
-                <DialogTitle>Dialog Title</DialogTitle>
-                <DialogDescription>Dialog Description</DialogDescription>
-                <DialogCloseTrigger>Close</DialogCloseTrigger>
-              </DialogContent>
-            </DialogContainer>
-          </Portal>
-          <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
-        </>
-      )}
-    </Dialog>
-  )
-}
+export const RenderFn = () => (
+  <Dialog>
+    {({ isOpen }) => (
+      <>
+        <DialogTrigger>Open Dialog</DialogTrigger>
+        <Portal>
+          <DialogBackdrop />
+          <DialogContainer>
+            <DialogContent>
+              <DialogTitle>Dialog Title</DialogTitle>
+              <DialogDescription>Dialog Description</DialogDescription>
+              <DialogCloseTrigger>Close</DialogCloseTrigger>
+            </DialogContent>
+          </DialogContainer>
+        </Portal>
+        <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
+      </>
+    )}
+  </Dialog>
+)
+
+export const Animated = () => (
+  <Dialog>
+    <DialogTrigger>Open Dialog</DialogTrigger>
+    <Portal>
+      <DialogPresence>
+        <DialogBackdrop />
+      </DialogPresence>
+      <DialogContainer>
+        <DialogPresence>
+          <DialogContent>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogDescription>Dialog Description</DialogDescription>
+            <DialogCloseTrigger>Close</DialogCloseTrigger>
+          </DialogContent>
+        </DialogPresence>
+      </DialogContainer>
+    </Portal>
+  </Dialog>
+)

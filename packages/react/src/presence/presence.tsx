@@ -5,7 +5,13 @@ import { usePresence, type UsePresenceProps } from './use-presence'
 
 export type PresenceProps = UsePresenceProps & {
   children: ReactElement
+  /**
+   * Whether to enable lazy mounting. Defaults to `false`.
+   */
   lazyMount?: boolean
+  /**
+   * Whether to unmount on exit. Defaults to `false`.
+   */
   unmountOnExit?: boolean
 }
 

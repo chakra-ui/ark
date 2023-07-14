@@ -85,6 +85,22 @@ export default defineConfig({
           '0%': { opacity: '1', scale: '1' },
           '100%': { opacity: '0', scale: '0.8' },
         },
+        backdropIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '0.7' },
+        },
+        backdropOut: {
+          '0%': { opacity: '0.7' },
+          '100%': { opacity: '0' },
+        },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateY(64px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(64px)' },
+        },
       },
       tokens: {
         lineHeights: {

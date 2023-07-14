@@ -9,6 +9,7 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
+  DialogPresence,
   DialogTitle,
   DialogTrigger,
   Portal,
@@ -22,29 +23,33 @@ export const DemoDialog = () => (
       </Button>
     </DialogTrigger>
     <Portal>
-      <DialogBackdrop className={dialog()} />
+      <DialogPresence>
+        <DialogBackdrop className={dialog()} />
+      </DialogPresence>
       <DialogContainer className={dialog()}>
-        <DialogContent>
-          <Stack gap="8" p="6">
-            <Stack gap="1">
-              <DialogTitle>Dialog Title</DialogTitle>
-              <DialogDescription>Dialog Description</DialogDescription>
-            </Stack>
-            <Stack gap="3" direction="row" width="full">
-              <DialogCloseTrigger asChild>
-                <Button variant="secondary" size="md" width="full">
-                  Cancel
+        <DialogPresence>
+          <DialogContent>
+            <Stack gap="8" p="6">
+              <Stack gap="1">
+                <DialogTitle>Dialog Title</DialogTitle>
+                <DialogDescription>Dialog Description</DialogDescription>
+              </Stack>
+              <Stack gap="3" direction="row" width="full">
+                <DialogCloseTrigger asChild>
+                  <Button variant="secondary" size="md" width="full">
+                    Cancel
+                  </Button>
+                </DialogCloseTrigger>
+                <Button variant="primary" size="md" width="full">
+                  Confirm
                 </Button>
-              </DialogCloseTrigger>
-              <Button variant="primary" size="md" width="full">
-                Confirm
-              </Button>
+              </Stack>
             </Stack>
-          </Stack>
-          <DialogCloseTrigger asChild>
-            <CloseButton aria-label="Close dialog" />
-          </DialogCloseTrigger>
-        </DialogContent>
+            <DialogCloseTrigger asChild>
+              <CloseButton aria-label="Close dialog" />
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogPresence>
       </DialogContainer>
     </Portal>
   </Dialog>

@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
 - Introduced `Presence` component, a new utility designed to delay the unmount of child components to assist with animation processes.
+- Introduced animations for the `Dialog` component. `Dialog` elements can now be wrapped inside the `DialogPresence` component to add animations,
 
 ## [0.7.3] - 2023-07-10
 
