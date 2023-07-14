@@ -7,7 +7,7 @@ export const tooltip = defineRecipe({
   name: 'tooltip',
   description: 'A tooltip style',
   base: parts({
-    positioner: {
+    content: {
       py: '2',
       px: '3',
       backgroundColor: {
@@ -20,17 +20,10 @@ export const tooltip = defineRecipe({
         base: 'gray.100',
         _dark: 'brown.600',
       },
-    },
-    content: {
       fontWeight: 'semibold',
       textStyle: 'xs',
-    },
-    arrow: {
-      '--arrow-size': 'sizes.2',
-      '--arrow-background': {
-        base: 'colors.brown.600',
-        _dark: 'colors.gray.100',
-      },
+      '&[data-state=open]': { animation: 'fadeIn 0.25s ease-out' },
+      '&[data-state=closed]': { animation: 'fadeOut 0.2s ease-in' },
     },
   }),
 })

@@ -33,7 +33,7 @@ describe('Tooltip', () => {
 
     await user.unhover(tooltipTrigger)
 
-    expect(screen.queryByText('content')).not.toBeInTheDocument()
+    expect(screen.queryByText('content')).not.toBeVisible()
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
@@ -56,7 +56,7 @@ describe('Tooltip', () => {
     expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByText('content')).not.toBeInTheDocument()
+    expect(screen.queryByText('content')).not.toBeVisible()
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {

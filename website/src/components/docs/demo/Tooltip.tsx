@@ -1,11 +1,11 @@
 import { styled } from '@/panda/jsx'
 import { tooltip } from '@/panda/recipes'
 import {
+  Portal,
   Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
+  TooltipPresence,
   TooltipTrigger,
   type TooltipProps,
 } from '@ark-ui/react'
@@ -14,21 +14,19 @@ export type DemoTooltipProps = Partial<TooltipProps> & {
   placement?: NonNullable<TooltipProps['positioning']>['placement']
 }
 
-export const DemoTooltip = (props: DemoTooltipProps) => {
-  const { placement = 'top', ...tooltipProps } = props
-  return (
-    <Tooltip openDelay={0} closeDelay={200} positioning={{ placement }} {...tooltipProps}>
-      <TooltipTrigger asChild>
-        <styled.span textStyle="sm" fontWeight="medium">
-          Hover me
-        </styled.span>
-      </TooltipTrigger>
+export const DemoTooltip = () => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <styled.span textStyle="sm" fontWeight="medium">
+        Hover me
+      </styled.span>
+    </TooltipTrigger>
+    <Portal>
       <TooltipPositioner className={tooltip({})}>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>My Tooltip</TooltipContent>
+        <TooltipPresence>
+          <TooltipContent>I am a Tooltip!</TooltipContent>
+        </TooltipPresence>
       </TooltipPositioner>
-    </Tooltip>
-  )
-}
+    </Portal>
+  </Tooltip>
+)

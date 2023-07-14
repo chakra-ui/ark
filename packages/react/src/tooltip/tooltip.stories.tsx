@@ -7,8 +7,10 @@ import {
   TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
+  TooltipPresence,
   TooltipTrigger,
 } from './'
+import './tooltip.css'
 
 type TooltipType = typeof Tooltip
 
@@ -20,14 +22,11 @@ const meta: Meta<TooltipType> = {
 export default meta
 
 export const Basic = () => (
-  <Tooltip openDelay={0} closeDelay={0}>
-    <TooltipTrigger>hover me</TooltipTrigger>
+  <Tooltip>
+    <TooltipTrigger>Hover Me</TooltipTrigger>
     <Portal>
       <TooltipPositioner>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>My Tooltip</TooltipContent>
+        <TooltipContent>I am a tooltip!</TooltipContent>
       </TooltipPositioner>
     </Portal>
   </Tooltip>
@@ -38,14 +37,11 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
-      <Tooltip open={isOpen} openDelay={0} closeDelay={0}>
-        <TooltipTrigger>hover me</TooltipTrigger>
+      <Tooltip open={isOpen}>
+        <TooltipTrigger>Hover Me</TooltipTrigger>
         <Portal>
           <TooltipPositioner>
-            <TooltipArrow>
-              <TooltipArrowTip />
-            </TooltipArrow>
-            <TooltipContent>My Tooltip</TooltipContent>
+            <TooltipContent>I am a tooltip!</TooltipContent>
           </TooltipPositioner>
         </Portal>
       </Tooltip>
@@ -53,20 +49,71 @@ export const Controlled = () => {
   )
 }
 
-export const WithRenderFn = () => (
-  <Tooltip openDelay={0} closeDelay={0}>
+export const RenderFn = () => (
+  <Tooltip>
     {({ isOpen }) => (
       <>
-        <TooltipTrigger>hover me</TooltipTrigger>
+        <TooltipTrigger>Hover Me</TooltipTrigger>
         <Portal>
           <TooltipPositioner>
             <TooltipArrow>
               <TooltipArrowTip />
             </TooltipArrow>
-            <TooltipContent>IsOpen: {isOpen.toString()}</TooltipContent>
+            <TooltipContent>This tooltip is open: {isOpen.toString()}</TooltipContent>
           </TooltipPositioner>
         </Portal>
       </>
     )}
+  </Tooltip>
+)
+
+export const Arrow = () => (
+  <Tooltip>
+    <TooltipTrigger>Hove Me</TooltipTrigger>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipArrow>
+          <TooltipArrowTip />
+        </TooltipArrow>
+        <TooltipContent>I am a tooltip!</TooltipContent>
+      </TooltipPositioner>
+    </Portal>
+  </Tooltip>
+)
+
+export const Animated = () => (
+  <Tooltip>
+    <TooltipTrigger>Hover Me</TooltipTrigger>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipPresence>
+          <TooltipContent>I am a tooltip!</TooltipContent>
+        </TooltipPresence>
+      </TooltipPositioner>
+    </Portal>
+  </Tooltip>
+)
+
+export const Timings = () => (
+  <Tooltip closeDelay={0} openDelay={0}>
+    <TooltipTrigger>Hover Me</TooltipTrigger>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipContent>I am a tooltip!</TooltipContent>
+      </TooltipPositioner>
+    </Portal>
+  </Tooltip>
+)
+
+export const Positioning = () => (
+  <Tooltip
+    positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
+  >
+    <TooltipTrigger>Hover Me</TooltipTrigger>
+    <Portal>
+      <TooltipPositioner>
+        <TooltipContent>I am a tooltip!</TooltipContent>
+      </TooltipPositioner>
+    </Portal>
   </Tooltip>
 )
