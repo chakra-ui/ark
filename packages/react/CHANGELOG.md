@@ -10,7 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
 - Introduced `Presence` component, a new utility designed to delay the unmount of child components to assist with animation processes.
-- Added support to animate the `Dialog` and `Tooltip` components using the `Presence` component. Check out the [Dialog](/docs/react/components/dialog) and [Tooltip](/docs/react/components/tooltip) documentation for more information.
+- Added support to animate the `Dialog`, `Tooltip` and `Popover` elements using the `Presence` component. Check out the documentation for these components to learn more.
 
 ## [0.7.3] - 2023-07-10
 

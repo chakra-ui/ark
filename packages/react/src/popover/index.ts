@@ -6,6 +6,7 @@ export { PopoverCloseTrigger, type PopoverCloseTriggerProps } from './popover-cl
 export { PopoverContent, type PopoverContentProps } from './popover-content'
 export { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
 export { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
+export { PopoverPresence, type PopoverPresenceProps } from './popover-presence'
 export { PopoverTitle, type PopoverTitleProps } from './popover-title'
 export { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
 export { popoverAnatomy } from './popover.anatomy'
