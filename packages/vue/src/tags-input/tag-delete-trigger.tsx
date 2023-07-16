@@ -1,7 +1,11 @@
 import { defineComponent, h, type PropType } from 'vue'
+import type { HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useUniqueChild, type ComponentWithProps } from '../utils'
 import type { TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
+
+export type TagDeleteTriggerProps = Assign<HTMLArkProps<'button'>, TagProps>
 
 export const TagDeleteTrigger: ComponentWithProps<TagProps> = defineComponent({
   name: 'TagDeleteTrigger',

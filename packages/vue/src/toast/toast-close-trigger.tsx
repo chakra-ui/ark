@@ -1,6 +1,9 @@
 import { defineComponent, h } from 'vue'
+import type { HTMLArkProps } from '../factory'
 import { useUniqueChild } from '../utils'
 import { useToastItemContext } from './toast-item-context'
+
+export type ToastCloseTriggerProps = HTMLArkProps<'button'>
 
 export const ToastCloseTrigger = defineComponent({
   name: 'ToastCloseTrigger',

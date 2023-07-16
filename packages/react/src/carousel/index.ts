@@ -1,4 +1,5 @@
 export { Carousel, type CarouselProps } from './carousel'
+export { useCarouselContext } from './carousel-context'
 export { CarouselControl, type CarouselControlProps } from './carousel-control'
 export { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
 export {

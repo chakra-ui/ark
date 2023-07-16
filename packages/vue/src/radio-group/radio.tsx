@@ -3,7 +3,8 @@ import { defineComponent, reactive, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
-import { RadioProvider, useRadioGroupContext } from './radio-context'
+import { RadioProvider } from './radio-context'
+import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioContext = {
   value: string

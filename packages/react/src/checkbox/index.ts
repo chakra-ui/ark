@@ -1,5 +1,6 @@
 export type { CheckedState } from '@zag-js/checkbox'
 export { Checkbox, type CheckboxProps } from './checkbox'
+export { useCheckboxContext } from './checkbox-context'
 export { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
 export { CheckboxInput, type CheckboxInputProps } from './checkbox-input'
 export { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'

@@ -1,6 +1,8 @@
 export { Segment, type SegmentProps } from './segment'
+export { useSegmentContext } from './segment-context'
 export { SegmentControl, type SegmentControlProps } from './segment-control'
 export { SegmentGroup, type SegmentGroupProps } from './segment-group'
+export { useSegmentGroupContext } from './segment-group-context'
 export { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
 export { segmentGroupAnatomy } from './segment-group.anatomy'
 export { SegmentIndicator, type SegmentIndicatorProps } from './segment-indicator'

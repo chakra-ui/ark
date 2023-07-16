@@ -1,4 +1,5 @@
 export { Splitter, type SplitterProps } from './splitter'
+export { useSplitterContext } from './splitter-context'
 export { SplitterPanel, type SplitterPanelProps } from './splitter-panel'
 export { SplitterResizeTrigger, type SplitterResizeTriggerProps } from './splitter-resize-trigger'
 export { splitterAnatomy } from './splitter.anatomy'

@@ -3,7 +3,7 @@ import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useColorPickerContext } from './color-picker-context'
-import { ColorPickerSwatchProvider } from './color-picker-swatch.context'
+import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
 export type ColorPickerSwatchProps = HTMLArkProps<'button'> & ColorSwatchProps
 

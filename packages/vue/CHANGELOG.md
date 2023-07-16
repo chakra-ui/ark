@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
+- Expose `use<X>Context` for all components that use context.
 
 ## [0.5.3] - 2023-07-10
 

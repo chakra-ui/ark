@@ -1,6 +1,9 @@
 import { defineComponent, h } from 'vue'
+import type { HTMLArkProps } from '../factory'
 import { useUniqueChild } from '../utils'
 import { useComboboxContext } from './combobox-context'
+
+export type ComboboxTriggerProps = HTMLArkProps<'button'>
 
 export const ComboboxTrigger = defineComponent({
   setup(_, { slots, attrs }) {

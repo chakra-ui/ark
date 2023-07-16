@@ -1,4 +1,5 @@
 export { DatePicker, type DatePickerProps } from './date-picker'
+export { useDatePickerCellContext } from './date-picker-cell-context'
 export {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
@@ -8,8 +9,10 @@ export {
   type DatePickerColumnHeaderProps,
 } from './date-picker-column-header'
 export { DatePickerContent, type DatePickerContentProps } from './date-picker-content'
+export { useDatePickerContext } from './date-picker-context'
 export { DatePickerControl, type DatePickerControlProps } from './date-picker-control'
 export { DatePickerDayCell, type DatePickerDayCellProps } from './date-picker-day-cell'
+export { useDatePickerDayCellContext } from './date-picker-day-cell-context'
 export {
   DatePickerDayCellTrigger,
   type DatePickerDayCellTriggerProps,

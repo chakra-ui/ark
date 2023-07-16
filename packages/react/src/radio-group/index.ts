@@ -1,6 +1,8 @@
 export { Radio, type RadioProps } from './radio'
+export { useRadioContext } from './radio-context'
 export { RadioControl, type RadioControlProps } from './radio-control'
 export { RadioGroup, type RadioGroupProps } from './radio-group'
+export { useRadioGroupContext } from './radio-group-context'
 export { RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label'
 export { radioGroupAnatomy } from './radio-group.anatomy'
 export { RadioInput, type RadioInputProps } from './radio-input'

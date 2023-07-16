@@ -1,5 +1,6 @@
 export { Combobox, type ComboboxProps } from './combobox'
 export { ComboboxContent, type ComboboxContentProps } from './combobox-content'
+export { useComboboxContext } from './combobox-context'
 export { ComboboxControl, type ComboboxControlProps } from './combobox-control'
 export { ComboboxInput, type ComboboxInputProps } from './combobox-input'
 export { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'

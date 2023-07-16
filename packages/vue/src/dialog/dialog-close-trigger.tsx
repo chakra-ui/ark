@@ -1,6 +1,9 @@
 import { defineComponent, h } from 'vue'
+import type { HTMLArkProps } from '../factory'
 import { useUniqueChild } from '../utils'
 import { useDialogContext } from './dialog-context'
+
+export type DialogCloseTriggerProps = HTMLArkProps<'button'>
 
 export const DialogCloseTrigger = defineComponent({
   name: 'DialogCloseTrigger',

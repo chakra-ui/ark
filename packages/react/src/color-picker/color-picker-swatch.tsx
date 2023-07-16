@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { forwardRef } from '../forward-ref'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
-import { ColorPickerSwatchProvider } from './color-picker-swatch.context'
+import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
 export type ColorPickerSwatchProps = Assign<HTMLArkProps<'button'>, ColorSwatchProps>
 
