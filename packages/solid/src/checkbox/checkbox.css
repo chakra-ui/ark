@@ -15,7 +15,7 @@
   height: 16px;
 }
 
-[data-scope='checkbox'][data-part='control'][data-checked] {
+[data-scope='checkbox'][data-part='control'][data-state='checked'] {
   background: black;
   color: white;
 }

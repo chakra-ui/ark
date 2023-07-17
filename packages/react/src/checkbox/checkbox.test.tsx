@@ -32,7 +32,7 @@ describe('Checkbox', () => {
 
   it('should handle indeterminate state properly', async () => {
     render(<ComponentUnderTest checked="indeterminate" />)
-    expect(screen.getByTestId('control')).toHaveAttribute('data-indeterminate')
+    expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 
   it('should allow controlled usage', async () => {

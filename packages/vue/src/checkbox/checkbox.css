@@ -15,12 +15,12 @@
   height: 16px;
 }
 
-[data-part='control'][data-checked] {
+[data-part='control'][data-state='checked'] {
   background: black;
   color: white;
 }
 
-[data-part='control'][data-indeterminate] {
+[data-part='control'][data-state='indeterminate'] {
   background: blue;
   color: white;
 }

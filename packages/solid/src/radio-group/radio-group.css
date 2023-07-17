@@ -40,12 +40,12 @@
   background-color: #ccc;
 }
 
-[data-scope='radio-group'][data-part='radio-control'][data-checked] {
+[data-scope='radio-group'][data-part='radio-control'][data-state='checked'] {
   background-color: #2196f3;
   border-color: #2196f3;
 }
 
-[data-scope='radio-group'][data-part='radio-control'][data-checked]::after {
+[data-scope='radio-group'][data-part='radio-control'][data-state='checked']::after {
   display: initial;
 }
 

@@ -17,7 +17,7 @@ const options = [
 
 export const DemoSegmentGroup = () => {
   return (
-    <SegmentGroup className={segmentGroup()} defaultValue="react">
+    <SegmentGroup className={segmentGroup()} defaultValue="react" orientation="horizontal">
       <SegmentIndicator />
       {options.map((option, id) => (
         <Segment key={id} value={option.id} disabled={option.disabled}>

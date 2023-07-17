@@ -49,12 +49,12 @@
   background-color: #ccc;
 }
 
-[data-scope='segment-group'][data-part='radio-control'][data-checked] {
+[data-scope='segment-group'][data-part='radio-control'][data-state='checked'] {
   background-color: #2196f3;
   border-color: #2196f3;
 }
 
-[data-scope='segment-group'][data-part='radio-control'][data-checked]::after {
+[data-scope='segment-group'][data-part='radio-control'][data-state='checked']::after {
   display: initial;
 }
 

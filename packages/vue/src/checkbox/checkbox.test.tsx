@@ -49,6 +49,6 @@ describe('Checkbox', () => {
 
   it('should handle indeterminate state from example', async () => {
     const { getByTestId } = render(() => <ComponentUnderTest modelValue={'indeterminate'} />)
-    expect(getByTestId('control')).toHaveAttribute('data-indeterminate')
+    expect(getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 })

@@ -10,6 +10,15 @@ export default defineConfig({
   outdir: 'panda',
   jsxFramework: 'react',
   globalCss,
+  conditions: {
+    extend: {
+      checked: '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
+      indeterminate:
+        '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])',
+      closed: '&:is([data-state=closed])',
+      open: '&:is([open], [data-state=open])',
+    },
+  },
   theme: {
     extend: {
       recipes,
