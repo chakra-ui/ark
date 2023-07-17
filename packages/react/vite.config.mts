@@ -37,6 +37,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].cjs',
+          banner: `'use client';`,
         },
         {
           format: 'es',
@@ -44,6 +45,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].mjs',
+          banner: `'use client';`,
         },
       ],
     },
