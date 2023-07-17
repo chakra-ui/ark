@@ -32,7 +32,7 @@
     "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "3.2.3",
     "react": "18.2.0",
-    "turbo": "1.10.7",
+    "turbo": "1.10.8",
     "typescript": "5.1.6"
   },
   "commitlint": {
