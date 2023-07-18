@@ -10,6 +10,7 @@ import {
   TooltipPresence,
   TooltipTrigger,
 } from './'
+import { TooltipContentWithPresence } from './tooltip-content'
 import './tooltip.css'
 
 type TooltipType = typeof Tooltip
@@ -26,7 +27,7 @@ export const Basic = () => (
     <TooltipTrigger>Hover Me</TooltipTrigger>
     <Portal>
       <TooltipPositioner>
-        <TooltipContent>I am a tooltip!</TooltipContent>
+        <TooltipContentWithPresence>I am a tooltip!</TooltipContentWithPresence>
       </TooltipPositioner>
     </Portal>
   </Tooltip>
@@ -56,9 +57,6 @@ export const RenderFn = () => (
         <TooltipTrigger>Hover Me</TooltipTrigger>
         <Portal>
           <TooltipPositioner>
-            <TooltipArrow>
-              <TooltipArrowTip />
-            </TooltipArrow>
             <TooltipContent>This tooltip is open: {isOpen.toString()}</TooltipContent>
           </TooltipPositioner>
         </Portal>

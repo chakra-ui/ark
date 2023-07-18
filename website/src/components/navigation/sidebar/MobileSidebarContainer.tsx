@@ -9,12 +9,11 @@ import {
   DialogTrigger,
   Portal,
 } from '@ark-ui/react'
+import { usePathname } from 'next/navigation'
 import { PropsWithChildren, useEffect } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CloseButton } from '../../shared/CloseButton'
 import { IconButton } from '../../shared/IconButton'
-
-import { usePathname } from 'next/navigation'
 
 export const MobileSidebarContainer = (props: PropsWithChildren) => (
   <Dialog>

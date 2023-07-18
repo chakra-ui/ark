@@ -7,11 +7,11 @@
 }
 
 [data-part='content'][data-state='open'] {
-  animation: fadeIn 0.25s ease-out;
+  animation: fadeIn 0.5s ease-out;
 }
 
 [data-part='content'][data-state='closed'] {
-  animation: fadeOut 0.2s ease-in;
+  animation: fadeOut 0.5s ease-in;
 }
 
 [data-part='arrow'] {
