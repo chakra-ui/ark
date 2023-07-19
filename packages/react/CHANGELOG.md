@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.8.0] - 2023-07-19
+
 ### Added
 
 - Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
@@ -115,7 +117,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.7.3...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/react@0.8.0...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.3.0
@@ -126,3 +128,5 @@ description: All notable changes to this project will be documented in this file
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.1
 [0.7.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.2
 [0.7.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.7.3
+
+[0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.0
