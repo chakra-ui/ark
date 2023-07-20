@@ -83,7 +83,7 @@
     "@vitejs/plugin-react": "4.0.3",
     "@vitest/coverage-v8": "0.33.0",
     "eslint": "8.45.0",
-    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react": "7.33.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "globby": "13.2.2",
     "jsdom": "22.1.0",
