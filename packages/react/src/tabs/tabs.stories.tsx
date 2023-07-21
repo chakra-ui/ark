@@ -52,6 +52,24 @@ export const Indicator = () => (
   </Tabs>
 )
 
+export const LazyMount = () => (
+  <Tabs>
+    <TabList>
+      <TabTrigger value="react">React</TabTrigger>
+      <TabTrigger value="vue">Vue</TabTrigger>
+      <TabTrigger value="solid">Solid</TabTrigger>
+      <TabIndicator />
+    </TabList>
+    <TabContent value="react">React Content</TabContent>
+    <TabContent value="vue" lazyMount>
+      Vue Content
+    </TabContent>
+    <TabContent value="solid" lazyMount unmountOnExit>
+      Solid Content
+    </TabContent>
+  </Tabs>
+)
+
 export const DisabledTab = () => (
   <Tabs defaultValue="react">
     <TabList>

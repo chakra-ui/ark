@@ -37,6 +37,19 @@ To provide a visual cue for the selected tab, use the `TabIndicator` component:
 
 <Story name="Indicator" />
 
+## Lazy Mounting
+
+Lazy mounting is a feature that allows the content of a tab to be rendered only
+when the tab is first activated. This is useful for performance optimization,
+especially when tab content is large or complex. To enable lazy mounting, use
+the `lazyMount` prop on the `TabContent` component.
+
+In addition, the `unmountOnExit` prop can be used in conjunction with
+`lazyMount` to unmount the tab content when the tab is deactivated, freeing up
+resources. The next time the tab is activated, its content will be re-rendered.
+
+<Story name="LazyMount" />
+
 ## Disabled Tab
 
 To disable a tab, simply pass the `disabled` prop to the `TabTrigger` component:
@@ -63,6 +76,7 @@ By default, the tab can be selected when it receives focus from either the
 keyboard or pointer interaction. This is called automatic tab activation.
 
 In contrast, manual tab activation means the tab is selected with the
+
 <kbd>Enter</kbd> key or by clicking on the tab.
 
 <Story name="Manual" />
