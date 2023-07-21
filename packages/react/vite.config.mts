@@ -37,7 +37,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].cjs',
-          banner: `'use client';`,
+          banner: (x) => (x.fileName.endsWith('index.cjs') ? '' : `'use client';`),
         },
         {
           format: 'es',
@@ -45,7 +45,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].mjs',
-          banner: `'use client';`,
+          banner: (x) => (x.fileName.endsWith('index.mjs') ? '' : `'use client';`),
         },
       ],
     },

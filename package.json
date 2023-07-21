@@ -24,15 +24,15 @@
     "website": "pnpm --filter=@ark-ui/website"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.6",
-    "@commitlint/config-conventional": "17.6.6",
+    "@commitlint/cli": "17.6.7",
+    "@commitlint/config-conventional": "17.6.7",
     "concurrently": "8.2.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "3.2.3",
     "react": "18.2.0",
-    "turbo": "1.10.7",
+    "turbo": "1.10.9",
     "typescript": "5.1.6"
   },
   "commitlint": {
@@ -48,5 +48,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.6.7"
+  "packageManager": "pnpm@8.6.9"
 }
