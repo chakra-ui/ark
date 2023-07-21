@@ -8,8 +8,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Introduced a `lazyMount` property to our `DialogBackdrop`, `DialogContent`, `PopoverContent`, and `TooltipContent` components.
-- Introduced a `unmountOnExit` property to our `DialogBackdrop`, `DialogContent`, `PopoverContent`, and `TooltipContent` components.
+- Introduced a `lazyMount` property to `AccordionContent`, `DialogBackdrop`, `DialogContent`, `PopoverContent`, and `TooltipContent` components.
+- Introduced a `unmountOnExit` property to `AccordionContent`, `DialogBackdrop`, `DialogContent`, `PopoverContent`, and `TooltipContent` components.
 
 ## [0.8.1] - 2023-07-19
 
