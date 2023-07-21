@@ -5,7 +5,6 @@ import {
   Tooltip,
   TooltipContent,
   TooltipPositioner,
-  TooltipPresence,
   TooltipTrigger,
   type TooltipProps,
 } from '@ark-ui/react'
@@ -23,9 +22,7 @@ export const DemoTooltip = () => (
     </TooltipTrigger>
     <Portal>
       <TooltipPositioner className={tooltip({})}>
-        <TooltipPresence>
-          <TooltipContent>I am a Tooltip!</TooltipContent>
-        </TooltipPresence>
+        <TooltipContent>I am a Tooltip!</TooltipContent>
       </TooltipPositioner>
     </Portal>
   </Tooltip>
