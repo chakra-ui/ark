@@ -78,7 +78,7 @@
       "description": "The user provided options used to position the popover content"
     }
   },
-  "PopoverPresenceProps": {
+  "PopoverContentProps": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
