@@ -35,11 +35,6 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Control the open state of the popover."
-    },
     "modal": {
       "type": "boolean",
       "isRequired": false,
