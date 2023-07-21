@@ -8,8 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- We've added a `lazyMount` property to the following components: `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `PopoverContent`, `SelectContent`, and `TooltipContent`. This new feature allows for on-demand rendering of content, improving the performance and reducing the initial load time.
-- We've also introduced an `unmountOnExit` property for the same set of components: `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `PopoverContent`, `SelectContent`, and `TooltipContent`. With this new property, you can remove the component from the DOM as soon as it's no longer needed, providing better resource management and cleaner code.
+- To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
 
 ## [0.8.1] - 2023-07-19
 
