@@ -7,10 +7,9 @@ import {
   TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
-  TooltipPresence,
   TooltipTrigger,
 } from './'
-import { TooltipContentWithPresence } from './tooltip-content'
+
 import './tooltip.css'
 
 type TooltipType = typeof Tooltip
@@ -27,7 +26,7 @@ export const Basic = () => (
     <TooltipTrigger>Hover Me</TooltipTrigger>
     <Portal>
       <TooltipPositioner>
-        <TooltipContentWithPresence>I am a tooltip!</TooltipContentWithPresence>
+        <TooltipContent>I am a tooltip!</TooltipContent>
       </TooltipPositioner>
     </Portal>
   </Tooltip>
@@ -74,19 +73,6 @@ export const Arrow = () => (
           <TooltipArrowTip />
         </TooltipArrow>
         <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
-    </Portal>
-  </Tooltip>
-)
-
-export const Animated = () => (
-  <Tooltip>
-    <TooltipTrigger>Hover Me</TooltipTrigger>
-    <Portal>
-      <TooltipPositioner>
-        <TooltipPresence>
-          <TooltipContent>I am a tooltip!</TooltipContent>
-        </TooltipPresence>
       </TooltipPositioner>
     </Portal>
   </Tooltip>

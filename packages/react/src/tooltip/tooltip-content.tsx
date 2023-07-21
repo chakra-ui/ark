@@ -7,19 +7,16 @@ import { TooltipPresence } from './tooltip-presence'
 export type TooltipContentProps = HTMLArkProps<'div'>
 
 export const TooltipContent = forwardRef<'div', TooltipContentProps>((props, ref) => {
+  return (
+    <TooltipPresence>
+      <InnerTooltipContent ref={ref} {...props} />
+    </TooltipPresence>
+  )
+})
+
+const InnerTooltipContent = forwardRef<'div', TooltipContentProps>((props, ref) => {
   const { contentProps } = useTooltipContext()
   const mergedProps = mergeProps(contentProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
-})
-
-export const TooltipContentWithPresence = forwardRef<'div', TooltipContentProps>((props, ref) => {
-  const { contentProps } = useTooltipContext()
-  const mergedProps = mergeProps(contentProps, props)
-
-  return (
-    <TooltipPresence>
-      <ark.div {...mergedProps} ref={ref} />
-    </TooltipPresence>
-  )
 })
