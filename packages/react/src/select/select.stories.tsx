@@ -10,6 +10,7 @@ import {
   SelectPositioner,
   SelectTrigger,
 } from './'
+import './select.css'
 
 type SelectType = typeof Select
 
