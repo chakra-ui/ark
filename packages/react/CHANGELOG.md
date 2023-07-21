@@ -12,6 +12,10 @@ description: All notable changes to this project will be documented in this file
 
 - Resolved an issue that NextJS would throw a false error because of `use client` annotation.
 
+### Removed
+
+- Removed `isOpen` from `Popover`. Please use `open` instead.
+
 ## [0.8.0] - 2023-07-19
 
 ### Added
