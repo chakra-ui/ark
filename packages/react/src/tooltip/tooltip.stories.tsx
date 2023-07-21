@@ -7,9 +7,9 @@ import {
   TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
-  TooltipPresence,
   TooltipTrigger,
 } from './'
+
 import './tooltip.css'
 
 type TooltipType = typeof Tooltip
@@ -56,9 +56,6 @@ export const RenderFn = () => (
         <TooltipTrigger>Hover Me</TooltipTrigger>
         <Portal>
           <TooltipPositioner>
-            <TooltipArrow>
-              <TooltipArrowTip />
-            </TooltipArrow>
             <TooltipContent>This tooltip is open: {isOpen.toString()}</TooltipContent>
           </TooltipPositioner>
         </Portal>
@@ -72,23 +69,12 @@ export const Arrow = () => (
     <TooltipTrigger>Hove Me</TooltipTrigger>
     <Portal>
       <TooltipPositioner>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
-    </Portal>
-  </Tooltip>
-)
-
-export const Animated = () => (
-  <Tooltip>
-    <TooltipTrigger>Hover Me</TooltipTrigger>
-    <Portal>
-      <TooltipPositioner>
-        <TooltipPresence>
-          <TooltipContent>I am a tooltip!</TooltipContent>
-        </TooltipPresence>
+        <TooltipContent>
+          <TooltipArrow>
+            <TooltipArrowTip />
+          </TooltipArrow>
+          I am a tooltip!
+        </TooltipContent>
       </TooltipPositioner>
     </Portal>
   </Tooltip>

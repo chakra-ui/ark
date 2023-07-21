@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '.'
 import './tabs.css'
 
-type TabContentType = typeof TabContent
+type TabsType = typeof Tabs
 
-const meta: Meta<TabContentType> = {
-  title: 'TabContent',
-  component: TabContent,
+const meta: Meta<TabsType> = {
+  title: 'Tabs',
+  component: Tabs,
 }
 
 export default meta

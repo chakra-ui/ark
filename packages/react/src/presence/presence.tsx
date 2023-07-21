@@ -4,6 +4,9 @@ import { createSplitProps } from '../create-split-props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
 export type PresenceProps = UsePresenceProps & {
+  /**
+   * Only a single child is allowed.
+   */
   children: ReactElement
   /**
    * Whether to enable lazy mounting. Defaults to `false`.

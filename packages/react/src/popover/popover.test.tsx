@@ -60,11 +60,11 @@ describe('Popover', () => {
 
   it('should allow controlled usage', async () => {
     const ControlledComponentUnderTest = (props: PopoverProps) => {
-      const [isOpen, setOpen] = useState(false)
+      const [open, setOpen] = useState(false)
       return (
         <>
           <button onClick={() => setOpen((prev) => !prev)}>toggle</button>
-          <ComponentUnderTest {...props} isOpen={isOpen} />
+          <ComponentUnderTest {...props} open={open} />
         </>
       )
     }
