@@ -97,21 +97,6 @@ export const Arrow = () => (
   </Popover>
 )
 
-export const Animated = () => (
-  <Popover>
-    <PopoverTrigger>Click Me</PopoverTrigger>
-    <Portal>
-      <PopoverPositioner>
-        <PopoverContent>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
-    </Portal>
-  </Popover>
-)
-
 export const Positioning = () => (
   <Popover
     positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}

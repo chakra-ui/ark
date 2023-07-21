@@ -49,36 +49,6 @@ To display an arrow pointing to the trigger from the tooltip, use the
 
 <Story name="Arrow" />
 
-## Adding Animation
-
-To add an animation to the Tooltip, use the `TooltipPresence` component. Here is
-a basic example using a fadeIn / fadeOut animation:
-
-```css
-[data-part='content'][data-state='open'] {
-  animation: fadeIn 0.25s ease-out;
-}
-[data-part='content'][data-state='closed'] {
-  animation: fadeOut 0.2s ease-in;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-```
-
 ## Configuring Delay Timings
 
 To configure the delay timings for the Tooltip, use the `closeDelay` and

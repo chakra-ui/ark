@@ -79,19 +79,3 @@ export const RenderFn = () => (
     )}
   </Dialog>
 )
-
-export const Animated = () => (
-  <Dialog>
-    <DialogTrigger>Open Dialog</DialogTrigger>
-    <Portal>
-      <DialogBackdrop />
-      <DialogContainer>
-        <DialogContent>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>Dialog Description</DialogDescription>
-          <DialogCloseTrigger>Close</DialogCloseTrigger>
-        </DialogContent>
-      </DialogContainer>
-    </Portal>
-  </Dialog>
-)
