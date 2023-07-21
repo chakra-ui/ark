@@ -8,7 +8,6 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
-  DialogPresence,
   DialogTitle,
   DialogTrigger,
 } from './'
@@ -85,17 +84,13 @@ export const Animated = () => (
   <Dialog>
     <DialogTrigger>Open Dialog</DialogTrigger>
     <Portal>
-      <DialogPresence>
-        <DialogBackdrop />
-      </DialogPresence>
+      <DialogBackdrop />
       <DialogContainer>
-        <DialogPresence>
-          <DialogContent>
-            <DialogTitle>Dialog Title</DialogTitle>
-            <DialogDescription>Dialog Description</DialogDescription>
-            <DialogCloseTrigger>Close</DialogCloseTrigger>
-          </DialogContent>
-        </DialogPresence>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogCloseTrigger>Close</DialogCloseTrigger>
+        </DialogContent>
       </DialogContainer>
     </Portal>
   </Dialog>

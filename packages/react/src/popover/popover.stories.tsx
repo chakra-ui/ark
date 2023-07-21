@@ -10,7 +10,6 @@ import {
   PopoverContent,
   PopoverDescription,
   PopoverPositioner,
-  PopoverPresence,
   PopoverTitle,
   PopoverTrigger,
 } from './'
@@ -85,10 +84,10 @@ export const Arrow = () => (
     <PopoverTrigger>Click Me</PopoverTrigger>
     <Portal>
       <PopoverPositioner>
-        <PopoverArrow>
-          <PopoverArrowTip />
-        </PopoverArrow>
         <PopoverContent>
+          <PopoverArrow>
+            <PopoverArrowTip />
+          </PopoverArrow>
           <PopoverTitle>Title</PopoverTitle>
           <PopoverDescription>Description</PopoverDescription>
           <PopoverCloseTrigger>Close</PopoverCloseTrigger>
@@ -103,13 +102,11 @@ export const Animated = () => (
     <PopoverTrigger>Click Me</PopoverTrigger>
     <Portal>
       <PopoverPositioner>
-        <PopoverPresence>
-          <PopoverContent>
-            <PopoverTitle>Title</PopoverTitle>
-            <PopoverDescription>Description</PopoverDescription>
-            <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-          </PopoverContent>
-        </PopoverPresence>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+        </PopoverContent>
       </PopoverPositioner>
     </Portal>
   </Popover>
