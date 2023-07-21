@@ -37,6 +37,20 @@ the `open` and `onClose` props:
 
 <Story name="Controlled" />
 
+## Lazy Mounting
+
+Lazy mounting is a feature that allows the content of a dialog to be rendered
+only when the dialog is first opened. This is useful for performance
+optimization, especially when dialog content is large or complex. To enable lazy
+mounting, use the `lazyMount` prop on the `DialogContent` component.
+
+In addition, the `unmountOnExit` prop can be used in conjunction with
+`lazyMount` to unmount the dialog content when the Dialog is closed, freeing up
+resources. The next time the dialog is activated, its content will be
+re-rendered.
+
+<Story name="LazyMount" />
+
 ## Using Render Function
 
 The Dialog component supports the use of a render function as a child for more

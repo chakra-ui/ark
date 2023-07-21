@@ -59,6 +59,22 @@ export const Controlled = () => {
   )
 }
 
+export const LazyMount = () => (
+  <Dialog>
+    <DialogTrigger>Open Dialog</DialogTrigger>
+    <Portal>
+      <DialogBackdrop />
+      <DialogContainer>
+        <DialogContent lazyMount unmountOnExit>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogCloseTrigger>Close</DialogCloseTrigger>
+        </DialogContent>
+      </DialogContainer>
+    </Portal>
+  </Dialog>
+)
+
 export const RenderFn = () => (
   <Dialog>
     {({ isOpen }) => (
