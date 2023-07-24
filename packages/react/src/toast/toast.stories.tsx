@@ -10,6 +10,7 @@ import {
   ToastTitle,
   useToast,
 } from '.'
+import './toast.css'
 
 type ToastType = typeof Toast
 
