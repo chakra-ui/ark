@@ -2,6 +2,11 @@
   "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
   "ToastProviderProps": {
+    "defaultOptions": {
+      "type": "Partial<Pick<ToastOptions, 'placement' | 'removeDelay' | 'duration'>>",
+      "isRequired": false,
+      "description": "The default options for the toast"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
