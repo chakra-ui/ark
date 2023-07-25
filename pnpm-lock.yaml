@@ -216,8 +216,8 @@ importers:
         specifier: 21.1.1
         version: 21.1.1
       '@types/react':
-        specifier: 18.2.15
-        version: 18.2.15
+        specifier: 18.2.16
+        version: 18.2.16
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
@@ -679,7 +679,7 @@ importers:
         version: 13.4.5
       '@pandacss/dev':
         specifier: 0.7.0
-        version: 0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.15)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6)
+        version: 0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.16)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6)
       '@theme-toggles/react':
         specifier: 4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -736,8 +736,8 @@ importers:
         specifier: 18.17.0
         version: 18.17.0
       '@types/react':
-        specifier: 18.2.15
-        version: 18.2.15
+        specifier: 18.2.16
+        version: 18.2.16
       '@types/react-dom':
         specifier: 18.2.7
         version: 18.2.7
@@ -905,7 +905,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react@2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0):
+  /@astrojs/react@2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-nq5Zr8iWdwjSp5fh1NReaCplwsnL4w5PXAY5XWu1jE/frxEfF/ycGHrrhwWW0uJHX9G+kUtmQLR0GBhlR4FmAw==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -916,7 +916,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.5
       '@babel/plugin-transform-react-jsx': 7.22.5(@babel/core@7.22.5)
-      '@types/react': 18.2.15
+      '@types/react': 18.2.16
       '@types/react-dom': 18.2.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -3728,7 +3728,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.5
-      '@types/react': 18.2.15
+      '@types/react': 18.2.16
       react: 18.2.0
     dev: true
 
@@ -4237,7 +4237,7 @@ packages:
       ts-pattern: 5.0.1
     dev: false
 
-  /@pandacss/dev@0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.15)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6):
+  /@pandacss/dev@0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.16)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-FST+ttrGdCapp8frGf/otOAa+MmYbvxsVQqtwThZe2OwzACcGRKrYeDXF5hT2XV1DLE299DM8YuD3kxg8bA7QQ==}
     hasBin: true
     peerDependencies:
@@ -4254,7 +4254,7 @@ packages:
       '@pandacss/postcss': 0.7.0(typescript@5.1.6)
       '@pandacss/preset-panda': 0.7.0
       '@pandacss/shared': 0.7.0
-      '@pandacss/studio': 0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.15)(typescript@5.1.6)
+      '@pandacss/studio': 0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.16)(typescript@5.1.6)
       '@pandacss/token-dictionary': 0.7.0
       '@pandacss/types': 0.7.0
       astro: 2.7.1(@types/node@18.17.0)
@@ -4407,11 +4407,11 @@ packages:
     resolution: {integrity: sha512-ujrvXN2gKikPjR1dg2f14BR5OJDwtCLsZ1TRc2NvO0CvfEYKO+qkns004WfYdZQKmarGQbFG21mooaCsk5PMXA==}
     dev: false
 
-  /@pandacss/studio@0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.15)(typescript@5.1.6):
+  /@pandacss/studio@0.7.0(@internationalized/date@3.3.0)(@types/node@18.17.0)(@types/react-dom@18.2.7)(@types/react@18.2.16)(typescript@5.1.6):
     resolution: {integrity: sha512-hoDllsdpOv6UIHdt9myuY6oDFXGiuSwA6H5px4H2GcL6Xim9xv82c3yGAb/E3wQCV2tjTaFH2CaslI891ckgCA==}
     dependencies:
       '@ark-ui/react': 0.7.2(@internationalized/date@3.3.0)(react-dom@18.2.0)(react@18.2.0)
-      '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.15)(react-dom@18.2.0)(react@18.2.0)
+      '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0)
       '@pandacss/config': 0.7.0
       '@pandacss/logger': 0.7.0
       '@pandacss/node': 0.7.0(typescript@5.1.6)
@@ -6162,10 +6162,10 @@ packages:
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.15
+      '@types/react': 18.2.16
 
-  /@types/react@18.2.15:
-    resolution: {integrity: sha512-oEjE7TQt1fFTFSbf8kkNuc798ahTUzn3Le67/PWjE8MAfYAD/qB7O8hSTcromLFqHCt9bcdOg5GXMokzTjJ5SA==}
+  /@types/react@18.2.16:
+    resolution: {integrity: sha512-LLFWr12ZhBJ4YVw7neWLe6Pk7Ey5R9OCydfuMsz1L8bZxzaawJj2p06Q8/EFEHDeTBQNFLF62X+CG7B2zIyu0Q==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
