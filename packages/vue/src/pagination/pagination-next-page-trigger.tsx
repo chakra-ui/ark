@@ -1,21 +1,19 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { useUniqueChild, type ComponentWithProps } from '../utils'
+import { getValidChildren, type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextPageTriggerProps = HTMLArkProps<'li'>
+export type PaginationNextPageTriggerProps = HTMLArkProps<'button'>
 
 export const PaginationNextPageTrigger: ComponentWithProps<PaginationNextPageTriggerProps> =
   defineComponent({
     name: 'PaginationNextPageTrigger',
     setup(_, { slots, attrs }) {
       const api = usePaginationContext()
-      return () => {
-        const DefaultSlot = useUniqueChild(slots, 'PaginationNextPageTrigger')
-
-        return (
-          <ark.li {...attrs}>{() => h(DefaultSlot, { ...api.value.nextPageTriggerProps })}</ark.li>
-        )
-      }
+      return () => (
+        <ark.button {...attrs} {...api.value.nextPageTriggerProps}>
+          {() => getValidChildren(slots)}
+        </ark.button>
+      )
     },
   })

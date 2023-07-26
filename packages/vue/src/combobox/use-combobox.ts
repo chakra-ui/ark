@@ -1,26 +1,24 @@
-import { connect, machine, type Context as ComboboxContext } from '@zag-js/combobox'
+import { connect, machine } from '@zag-js/combobox'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, watch, type UnwrapRef } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
+import type { ComboboxProps } from './combobox'
 
-type ComboboxPropsContext = Omit<ComboboxContext, 'id'> & {
-  modelValue?: ComboboxContext['inputValue']
-}
+export const useCombobox = <T extends ExtractPropTypes<ComboboxProps>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export type UseComboboxProps = {
-  context: ComboboxPropsContext
-  emit: CallableFunction
-  defaultValue?: ComboboxContext['inputValue']
-}
-
-export const useCombobox = (props: UseComboboxProps) => {
-  const { context, emit, defaultValue } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      id: useId().value,
-      inputValue: defaultValue,
+      ...reactiveContext,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
+      inputValue: reactiveContext.modelValue,
       onClose() {
         emit('close')
       },
@@ -40,22 +38,5 @@ export const useCombobox = (props: UseComboboxProps) => {
     }),
   )
 
-  onMounted(() => {
-    emit('update:modelValue', defaultValue)
-  })
-
-  watch(
-    () => context.modelValue,
-    (value, prevValue) => {
-      if (value === prevValue) return
-      if (value === undefined) return
-      api.value.setInputValue(value)
-    },
-  )
-
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
-
-export type UseComboboxReturn = UnwrapRef<ReturnType<typeof useCombobox>>

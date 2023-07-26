@@ -1,18 +1,20 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
 import { checkboxSplitProps } from './checkbox-split-props'
 import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
-export type CheckboxProps = Assign<
-  Omit<HTMLArkProps<'label'>, 'children'> & {
+export type CheckboxProps = Assign<HTMLArkProps<'label'>, Foo>
+
+type Foo = Assign<
+  UseCheckboxProps,
+  {
     children: ReactNode | ((pages: CheckboxContext) => ReactNode)
-  },
-  UseCheckboxProps
+  }
 >
 
 export const Checkbox = forwardRef<'label', CheckboxProps>((props, ref) => {

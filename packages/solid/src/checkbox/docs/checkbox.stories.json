@@ -1,4 +1,6 @@
 {
   "Basic": "const Basic = () => (\n  <Checkbox>\n    <CheckboxLabel>Checkbox</CheckboxLabel>\n    <CheckboxInput />\n    <CheckboxControl />\n  </Checkbox>\n)",
-  "RenderProp": "const RenderProp = () => (\n  <Checkbox>\n    {(state) => (\n      <>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput data-peer />\n        <CheckboxControl>\n          {state().isChecked && <span>✓</span>}\n          {state().isIndeterminate && <span>-</span>}\n        </CheckboxControl>\n      </>\n    )}\n  </Checkbox>\n)"
+  "Controlled": "const Controlled = () => {\n  const [checked, setChecked] = createSignal<CheckedState>(true)\n  return (\n    <>\n      <Checkbox checked={checked()} onChange={(e) => setChecked(e.checked)}>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput />\n        <CheckboxControl />\n      </Checkbox>\n    </>\n  )\n}",
+  "Indeterminate": "const Indeterminate = () => (\n  <Checkbox checked=\"indeterminate\">\n    <CheckboxLabel>Checkbox</CheckboxLabel>\n    <CheckboxInput />\n    <CheckboxControl />\n  </Checkbox>\n)",
+  "RenderProp": "const RenderProp = () => (\n  <Checkbox>\n    {(api) => (\n      <>\n        <CheckboxLabel>Checkbox</CheckboxLabel>\n        <CheckboxInput />\n        <CheckboxControl>\n          {api().isChecked && <span>✓</span>}\n          {api().isIndeterminate && <span>-</span>}\n        </CheckboxControl>\n      </>\n    )}\n  </Checkbox>\n)"
 }

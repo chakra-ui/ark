@@ -1,0 +1,146 @@
+{
+  "DatePickerProps": {
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the calendar is disabled."
+    },
+    "fixedWeeks": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
+    },
+    "focusedValue": {
+      "type": "DateValue",
+      "isRequired": false,
+      "description": "The focused date."
+    },
+    "format": {
+      "type": "(date: DateValue[]) => string",
+      "isRequired": false,
+      "description": "The format of the date to display in the input."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 6 more ...; yearSelect: string; }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the date picker. Useful for composition."
+    },
+    "inline": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the calendar should be displayed inline."
+    },
+    "isDateUnavailable": {
+      "type": "(date: DateValue, locale: string) => boolean",
+      "isRequired": false,
+      "description": "Returns whether a date of the calendar is available."
+    },
+    "locale": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The locale (BCP 47 language tag) to use when formatting the date."
+    },
+    "max": {
+      "type": "DateValue",
+      "isRequired": false,
+      "description": "The maximum date that can be selected."
+    },
+    "messages": {
+      "type": "IntlMessages",
+      "isRequired": false,
+      "description": "The localized messages to use."
+    },
+    "min": {
+      "type": "DateValue",
+      "isRequired": false,
+      "description": "The minimum date that can be selected."
+    },
+    "modal": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the input element."
+    },
+    "numOfMonths": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The number of months to display."
+    },
+    "onChange": {
+      "type": "(details: { value: DateValue[] }) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes."
+    },
+    "onFocusChange": {
+      "type": "(details: ChangeDetails<{ focusedValue: DateValue; view: DateView }>) => void",
+      "isRequired": false,
+      "description": "Function called when the focused date changes."
+    },
+    "onViewChange": {
+      "type": "(details: { view: DateView }) => void",
+      "isRequired": false,
+      "description": "Function called when the view changes."
+    },
+    "parse": {
+      "type": "(value: string) => DateValue[]",
+      "isRequired": false,
+      "description": "The format of the date to display in the input."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the calendar is read-only."
+    },
+    "selectionMode": {
+      "type": "SelectionMode",
+      "isRequired": false,
+      "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+    },
+    "startOfWeek": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The first day of the week.\n `0` - Sunday\n `1` - Monday\n `2` - Tuesday\n `3` - Wednesday\n `4` - Thursday\n `5` - Friday\n `6` - Saturday"
+    },
+    "timeZone": { "type": "string", "isRequired": false, "description": "The time zone to use" },
+    "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
+    "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
+  },
+  "DatePickerDayCellProps": {
+    "value": { "type": "DateValue", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "offset": { "type": "Offset", "isRequired": false }
+  },
+  "DatePickerGridProps": {
+    "columns": { "type": "number", "isRequired": false },
+    "id": { "type": "string", "isRequired": false },
+    "view": { "type": "DateView", "isRequired": false }
+  },
+  "DatePickerMonthCellProps": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerYearCellProps": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  }
+}

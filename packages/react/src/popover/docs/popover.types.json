@@ -15,11 +15,6 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to open the popover on page load"
-    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -31,7 +26,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n}>",
+      "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n  positioner: string\n  arrow: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
@@ -40,27 +35,32 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Control the open state of the popover."
-    },
     "modal": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function invoked when the popover is closed"
+    },
     "onEscapeKeyDown": { "type": "(event: KeyboardEvent) => void", "isRequired": false },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
-    "onOpenChange": {
-      "type": "(open: boolean) => void",
+    "onOpen": {
+      "type": "VoidFunction",
       "isRequired": false,
-      "description": "Function invoked when the popover is opened."
+      "description": "Function invoked when the popover is opened"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is open"
     },
     "portalled": {
       "type": "boolean",
@@ -71,6 +71,20 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    }
+  },
+  "PopoverContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
     }
   }
 }

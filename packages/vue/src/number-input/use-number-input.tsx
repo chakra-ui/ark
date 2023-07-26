@@ -1,24 +1,24 @@
-import { connect, machine, type Context as NumberInputContext } from '@zag-js/number-input'
+import { connect, machine } from '@zag-js/number-input'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
+import type { NumberInputContext } from './number-input'
 
-interface NumberInputPropsContext extends Omit<NumberInputContext, 'id'> {
-  modelValue?: NumberInputContext['value']
-}
+export const useNumberInput = <T extends ExtractPropTypes<NumberInputContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export type UseNumberInputProps = {
-  context: NumberInputPropsContext
-  emit: CallableFunction
-}
+  const getRootNode = useEnvironmentContext()
 
-export const useNumberInput = (props: UseNumberInputProps) => {
-  const { context, emit } = transformComposableProps(props)
   const [state, send] = useMachine(
     machine({
-      ...context,
-      id: useId().value,
-      value: context.modelValue ?? context.value,
+      ...reactiveContext,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onBlur(details) {
         emit('blur', details)
       },
@@ -35,18 +35,7 @@ export const useNumberInput = (props: UseNumberInputProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => context.modelValue,
-    (value, prevValue) => {
-      if (value === prevValue) return
-
-      api.value.setValue(value as string)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UseNumberInputReturn = ReturnType<typeof useNumberInput>
+export type UseNumberInputReturn = ReturnType<typeof connect>

@@ -1,6 +1,9 @@
+import type { Meta } from '@storybook/react'
+import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverArrowTip,
   PopoverCloseTrigger,
@@ -10,52 +13,118 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from './'
+import './popover.css'
+
+type PopoverType = typeof Popover
+
+const meta: Meta<PopoverType> = {
+  title: 'Popover',
+  component: Popover,
+}
+
+export default meta
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>
-      <button>click me</button>
-    </PopoverTrigger>
-    <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
-      <PopoverContent>
-        <PopoverTitle>Title</PopoverTitle>
-        <PopoverDescription>Description</PopoverDescription>
-        <input type="text" />
-        <PopoverCloseTrigger>
-          <button>close</button>
-        </PopoverCloseTrigger>
-      </PopoverContent>
-    </PopoverPositioner>
+    <PopoverTrigger>Click Me</PopoverTrigger>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Portal>
   </Popover>
 )
 
 export const Controlled = () => {
-  const [isOpen, setOpen] = useState(false)
-
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen((prev) => !prev)}>Toggle control</button>
-      <Popover isOpen={isOpen} onOpenChange={setOpen}>
-        <PopoverTrigger>
-          <button>click me</button>
-        </PopoverTrigger>
-        <PopoverPositioner>
-          <PopoverArrow>
-            <PopoverArrowTip />
-          </PopoverArrow>
-          <PopoverContent>
-            <PopoverTitle>Title</PopoverTitle>
-            <PopoverDescription>Description</PopoverDescription>
-            <input type="text" />
-            <PopoverCloseTrigger>
-              <button>close</button>
-            </PopoverCloseTrigger>
-          </PopoverContent>
-        </PopoverPositioner>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <Popover open={isOpen}>
+        <PopoverAnchor>Anchor</PopoverAnchor>
+        <Portal>
+          <PopoverPositioner>
+            <PopoverContent>
+              <PopoverTitle>Title</PopoverTitle>
+              <PopoverDescription>Description</PopoverDescription>
+              <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+            </PopoverContent>
+          </PopoverPositioner>
+        </Portal>
       </Popover>
     </>
   )
 }
+
+export const RenderFn = () => (
+  <Popover>
+    {({ isOpen }) => (
+      <>
+        <PopoverTrigger>Click Me</PopoverTrigger>
+        <Portal>
+          <PopoverPositioner>
+            <PopoverContent>
+              <PopoverTitle>Title</PopoverTitle>
+              <PopoverDescription>Description: {isOpen.toString()}</PopoverDescription>
+              <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+            </PopoverContent>
+          </PopoverPositioner>
+        </Portal>
+      </>
+    )}
+  </Popover>
+)
+
+export const Arrow = () => (
+  <Popover>
+    <PopoverTrigger>Click Me</PopoverTrigger>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverContent>
+          <PopoverArrow>
+            <PopoverArrowTip />
+          </PopoverArrow>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Portal>
+  </Popover>
+)
+
+export const Positioning = () => (
+  <Popover
+    positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
+  >
+    <PopoverTrigger>Click Me</PopoverTrigger>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Portal>
+  </Popover>
+)
+
+export const CloseBehavior = () => (
+  <Popover closeOnEsc closeOnInteractOutside>
+    <PopoverTrigger>Click Me</PopoverTrigger>
+    <Portal>
+      <PopoverPositioner>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Portal>
+  </Popover>
+)

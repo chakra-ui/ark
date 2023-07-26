@@ -44,7 +44,7 @@ export const ComponentDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
     types: {
       type: 'json',
@@ -102,7 +102,7 @@ export const GeneralDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))
@@ -111,22 +111,24 @@ export const ChangelogDocument = defineDocumentType(() => ({
   name: 'ChangelogDocument',
   filePathPattern: '*/CHANGELOG.md',
   contentType: 'mdx',
-  computedFields: {
+  fields: {
     id: {
       type: 'string',
-      resolve: () => 'changelog',
-    },
-    framework: {
-      type: 'string',
-      resolve: (doc) => doc._raw.sourceFilePath.split('/')[0],
+      required: true,
     },
     name: {
       type: 'string',
-      resolve: () => 'Changelog',
+      required: true,
     },
     description: {
       type: 'string',
-      resolve: () => 'See what is new',
+      required: true,
+    },
+  },
+  computedFields: {
+    framework: {
+      type: 'string',
+      resolve: (doc) => doc._raw.sourceFilePath.split('/')[0],
     },
     route: {
       type: 'string',
@@ -134,7 +136,7 @@ export const ChangelogDocument = defineDocumentType(() => ({
     },
     toc: {
       type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl !== 1),
+      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))

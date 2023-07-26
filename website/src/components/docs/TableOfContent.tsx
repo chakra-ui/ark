@@ -11,8 +11,7 @@ interface Props {
 
 export const TableOfContent = (props: Props) => {
   const { entries } = props
-  const activeId = useScrollSpy(props.entries.map((item) => '#' + item.slug))
-
+  const activeId = useScrollSpy(entries.map((item) => item.slug))
   return (
     <Box
       display={{ base: 'none', xl: 'flex' }}
@@ -31,6 +30,7 @@ export const TableOfContent = (props: Props) => {
           {entries.map((item, id) => (
             <Link
               key={id}
+              id={item.slug}
               href={`#${item.slug}`}
               variant="toc"
               aria-current={(activeId ?? entries[0].slug) === item.slug ? 'page' : false}

@@ -1,48 +1,45 @@
 import { connect, machine, type Context as PressableContext } from '@zag-js/pressable'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
 
-type PressablePropsContext = Omit<PressableContext, 'id' | 'disabled' | 'cancelOnPointerExit'> & {
-  isDisabled?: PressableContext['disabled']
-  isCanceledOnExit?: PressableContext['cancelOnPointerExit']
-}
+export type UsePressableContext = PressableContext
 
-export type UsePressableProps = {
-  context: PressablePropsContext
-  emit: CallableFunction
-}
+export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export const usePressable = (props: UsePressableProps) => {
-  const { context, emit } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      disabled: context.isDisabled,
-      cancelOnPointerExit: context.isCanceledOnExit,
-      id: useId().value,
+      ...reactiveContext,
+      disabled: reactiveContext.disabled,
+      cancelOnPointerExit: reactiveContext.cancelOnPointerExit,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       onLongPress(event) {
-        emit('longPress', event)
+        emit('long-press', event)
       },
       onPress(event) {
         emit('press', event)
       },
       onPressEnd(event) {
-        emit('pressEnd', event)
+        emit('press-end', event)
       },
       onPressStart(event) {
-        emit('pressStart', event)
+        emit('press-start', event)
       },
       onPressUp(event) {
-        emit('pressUp', event)
+        emit('press-up', event)
       },
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UsePressableReturn = ReturnType<typeof usePressable>

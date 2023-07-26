@@ -28,9 +28,7 @@ const ComponentUnderTest = (props: Omit<ComboboxProps, 'children'>) => {
       <ComboboxLabel>JS Frameworks</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>
-          <button data-testid="trigger-btn">▼</button>
-        </ComboboxTrigger>
+        <ComboboxTrigger data-testid="trigger-btn">▼</ComboboxTrigger>
       </ComboboxControl>
       <Portal>
         <ComboboxPositioner>

@@ -1,0 +1,53 @@
+---
+id: presence
+name: Presence
+description:
+  The Presence is a practical and versatile component that helps control the
+  rendering and unmounting of your content based on a given state. It's designed
+  to work seamlessly with animations, ensuring smooth transitions and full
+  visibility of animations before any changes in presence are made.
+---
+
+## Usage
+
+To use the Presence component, import it from the package:
+
+```tsx
+import { Presence } from '@ark-ui/react'
+```
+
+By default the child component starts out as hidden and remains hidden after the
+`present` state is toggled off. This is useful for situations where the element
+needs to be hidden initially and continue to stay hidden after its presence is
+no longer required.
+
+<Story name="Basic" />
+
+## Lazy Mount
+
+To delay the mounting of a child component until the `present` prop is set to
+true, use the `lazyMount` prop:
+
+<Story name="LazyMount" />
+
+## Unmount on Exit
+
+To remove the child component from the DOM when it's not present, use the
+`unmountOnExit` prop:
+
+<Story name="UnmountOnExit" />
+
+## Combining Lazy Mount and Unmount on Exit
+
+Both `lazyMount` and `unmountOnExit` can be combined for a component to be
+mounted only when it's present and to be unmounted when it's no longer present:
+
+<Story name="LazyMountAndUnmountOnExit" />
+
+## Conclusion
+
+The Presence component provides an efficient way to control the rendering of
+components based on a specific condition. Its compatibility with animations
+offers a smooth and polished user experience. It is highly flexible and can be
+used to greatly improve the performance and user experience of your React
+application.

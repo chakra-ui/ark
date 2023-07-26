@@ -10,6 +10,15 @@ export default defineConfig({
   outdir: 'panda',
   jsxFramework: 'react',
   globalCss,
+  conditions: {
+    extend: {
+      checked: '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
+      indeterminate:
+        '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])',
+      closed: '&:is([data-state=closed])',
+      open: '&:is([open], [data-state=open])',
+    },
+  },
   theme: {
     extend: {
       recipes,
@@ -21,7 +30,7 @@ export default defineConfig({
             emphasized: { value: { base: '{colors.gray.700}', _dark: '{colors.gray.200}' } },
             muted: { value: { base: '{colors.gray.500}', _dark: '{colors.gray.400}' } },
             subtle: { value: { base: '{colors.gray.400}', _dark: '{colors.gray.500}' } },
-            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } }, // check
+            placeholder: { value: { base: '{colors.gray.600}', _dark: '{colors.gray.400}' } },
             inverted: {
               default: { value: { base: 'white', _dark: '{colors.black}' } },
             },
@@ -74,6 +83,32 @@ export default defineConfig({
               _dark: '0px 0px 1px #0D0D0D, 0px 16px 24px rgba(13, 13, 13, 0.9)',
             },
           },
+        },
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', scale: '0.8' },
+          '100%': { opacity: '1', scale: '1' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1', scale: '1' },
+          '100%': { opacity: '0', scale: '0.8' },
+        },
+        backdropIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '0.7' },
+        },
+        backdropOut: {
+          '0%': { opacity: '0.7' },
+          '100%': { opacity: '0' },
+        },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateY(64px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(64px)' },
         },
       },
       tokens: {
@@ -133,7 +168,7 @@ export default defineConfig({
   patterns: {
     extend: {
       container: {
-        transform(props) {
+        transform(props: any) {
           // TODO descructuring props.centerContent is not working @panda
           delete props.centerContent
 

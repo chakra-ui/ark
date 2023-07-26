@@ -1,5 +1,6 @@
-import { createSignal, For } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import {
   Combobox,
   ComboboxContent,
@@ -12,6 +13,13 @@ import {
   type ComboboxOptionProps,
   type ComboboxProps,
 } from '.'
+import './combobox.css'
+
+const meta: Meta = {
+  title: 'Combobox',
+}
+
+export default meta
 
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
@@ -31,38 +39,34 @@ export const Basic = () => {
   }
 
   return (
-    <Combobox onInputChange={handleInputChange}>
-      {(context) => (
-        <>
-          <ComboboxLabel>JS Frameworks</ComboboxLabel>
-          <ComboboxControl>
-            <ComboboxInput />
-            <ComboboxTrigger>
-              <button>▼</button>
-            </ComboboxTrigger>
-          </ComboboxControl>
-          {context().isInputValueEmpty && !context().isOpen && (
-            <div>Give me you favorite framework!</div>
-          )}
-          <Portal>
-            <ComboboxPositioner>
-              <ComboboxContent>
-                <For each={options()}>
-                  {(option) => (
-                    <ComboboxOption
-                      label={option.label}
-                      value={option.value}
-                      disabled={option?.disabled}
-                    >
-                      {option.label}
-                    </ComboboxOption>
-                  )}
-                </For>
-              </ComboboxContent>
-            </ComboboxPositioner>
-          </Portal>
-        </>
-      )}
+    <Combobox
+      onOpen={() => {
+        setOptions(comboboxData)
+      }}
+      onInputChange={handleInputChange}
+    >
+      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>▼</ComboboxTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <For each={options()}>
+              {(option) => (
+                <ComboboxOption
+                  label={option.label}
+                  value={option.value}
+                  disabled={option?.disabled}
+                >
+                  {option.label}
+                </ComboboxOption>
+              )}
+            </For>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
     </Combobox>
   )
 }

@@ -2,115 +2,62 @@
 id: tooltip
 name: Tooltip
 description:
-  A tooltip is a brief, informative message that appears when a user interacts
-  with an element. Tooltips are usually initiated when a button is focused or
-  hovered.
+  The Tooltip is a flexible and handy component that provides additional
+  information when users hover over an element. It is perfect for scenarios
+  where you need to offer users tips or help text.
 ---
-
-## Import
-
-```ts
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipContent,
-  TooltipInnerArrow,
-  TooltipPositioner,
-  TooltipTrigger,
-} from '@ark-ui/solid'
-```
 
 ## Usage
 
-The Tooltip component consists of the `TooltipTrigger`, `TooltipPositioner`,
-`TooltipArrow`, `TooltipInnerArrow` and `TooltipContent` components. Combine
-them as desired to fit your design system.
-
-Note that the `TooltipTrigger` component accepts a single JSX element which will
-receive all necessary props to add the event listeners and attributes to ensure
-the desired accessibility.
+Start by importing the necessary components from the package:
 
 ```tsx
-<Tooltip>
-  <TooltipTrigger>
-    <span>hover me</span>
-  </TooltipTrigger>
-
-  <TooltipPositioner>
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
-</Tooltip>
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipArrowTip,
+  TooltipContent,
+  TooltipPositioner,
+  TooltipPresence,
+  TooltipTrigger,
+} from '@ark-ui/solid'
+import { Portal } from 'solid-js/web'
 ```
 
-### Adding an arrow
+Here is a basic example:
 
-To render an arrow within the tooltip render the components `TooltipArrow` and
-`TooltipInnerArrow` within the `TooltipPositioner`.
+<Story name="Basic" />
 
-```tsx {7-9}
-<Tooltip>
-  <TooltipTrigger>
-    <span>hover me</span>
-  </TooltipTrigger>
+## Controlled Tooltip
 
-  <TooltipPositioner>
-    <TooltipArrow>
-      <TooltipInnerArrow />
-    </TooltipArrow>
+To create a controlled Tooltip component, manage the state of whether the
+tooltip is open using the `open` prop:
 
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
-</Tooltip>
-```
+<Story name="Controlled" />
 
-### Disabled
+## Adding an Arrow
 
-To disable showing a tooltip, pass the `disabled` prop to the Tooltip component.
+To display an arrow pointing to the trigger from the tooltip, use the
+`TooltipArrow` and `TooltipArrowTip` components:
 
-```tsx
-<Tooltip disabled>{/*...*/}</Tooltip>
-```
+<Story name="Arrow" />
 
-### Changing the placement
+## Configuring Delay Timings
 
-Control the placement, gutter and offset of the tooltip with the `positioning`
-prop.
+To configure the delay timings for the Tooltip, use the `closeDelay` and
+`openDelay` props:
 
-```tsx
-<Tooltip positioning={{ placement: 'left-start', gutter: 16, offset: 12 }}>
-  {/*...*/}
-</Tooltip>
-```
+<Story name="Timings" />
 
-### Timings
+## Custom Positioning
 
-By default, the tooltip is designed to open after `1000ms` and close after
-`500ms`. You can customize this by passing the `openDelay` and `closeDelay`
-props.
+To customize the position of the Tooltip relative to the trigger, use the
+`positioning` prop:
 
-```tsx
-<Tooltip openDelay={500} closeDelay={200}>
-  {/*...*/}
-</Tooltip>
-```
+<Story name="Positioning" />
 
-### Custom Component
+## Conclusion
 
-When using a custom component as trigger for the tooltip, ensure that the
-component forwards all necessary DOM attributes.
-
-```tsx
-const CustomComponent = (props) => <span {...props}>hover me</span>
-```
-
-```tsx {3}
-<Tooltip>
-  <TooltipTrigger>
-    <CustomComponent />
-  </TooltipTrigger>
-
-  <TooltipPositioner>
-    <TooltipContent>My tooltip content</TooltipContent>
-  </TooltipPositioner>
-</Tooltip>
-```
+The Tooltip component offers an effective way to present additional information
+to users in a sleek and unobtrusive manner. Its wide range of configuration
+options ensure that it can adapt to any UI design or user interaction needs.

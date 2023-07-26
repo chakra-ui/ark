@@ -1,6 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
-export const input = defineRecipe({
+// TODO sth is wrong with types
+export const input: any = defineRecipe({
   name: 'input',
   description: 'An input style',
   base: {
@@ -23,18 +24,20 @@ export const input = defineRecipe({
   variants: {
     variant: {
       outline: {
-        background: 'transparent',
+        background: {
+          base: 'white',
+          _dark: 'brown.600',
+        },
         borderColor: 'border.emphasized',
         borderRadius: 'lg',
         borderWidth: '1px',
-        boxShadow: 'xs',
         color: 'fg.default',
         textAlign: 'left',
         _focus: {
           zIndex: 1,
           '--shadow': {
-            base: 'colors.purple.500',
-            _dark: 'colors.purple.200',
+            base: 'colors.orange.400',
+            _dark: 'colors.orange.400',
           },
           boxShadow: '0 0 0 1px var(--shadow)',
           borderColor: 'accent.default',

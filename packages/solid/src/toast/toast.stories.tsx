@@ -1,4 +1,5 @@
-import { type JSX } from 'solid-js'
+import { For, type JSX } from 'solid-js'
+import type { Meta } from 'storybook-solidjs'
 import { Toast } from './toast'
 import { ToastCloseTrigger } from './toast-close-trigger'
 import { ToastDescription } from './toast-description'
@@ -7,27 +8,34 @@ import { ToastPlacements } from './toast-placements'
 import { ToastProvider, useToast } from './toast-provider'
 import { ToastTitle } from './toast-title'
 
-// chakra land
-export const ChakraToastProvider = (props: { children: JSX.Element }) => (
+const meta: Meta = {
+  title: 'Toast',
+}
+
+export default meta
+
+const Provider = (props: { children: JSX.Element }) => (
   <ToastProvider>
     <ToastPlacements>
-      {(placements) =>
-        placements.map((placement) => (
-          <ToastGroup placement={placement}>
-            {(toasts) =>
-              toasts.map((toast) => (
-                <Toast toast={toast}>
-                  <ToastTitle />
-                  <ToastDescription />
-                  <ToastCloseTrigger>
-                    <button>close</button>
-                  </ToastCloseTrigger>
-                </Toast>
-              ))
-            }
-          </ToastGroup>
-        ))
-      }
+      {(placements) => (
+        <For each={placements()}>
+          {(placement) => (
+            <ToastGroup placement={placement}>
+              {(toasts) => (
+                <For each={toasts()}>
+                  {(toast) => (
+                    <Toast toast={toast}>
+                      <ToastTitle />
+                      <ToastDescription />
+                      <ToastCloseTrigger>Close</ToastCloseTrigger>
+                    </Toast>
+                  )}
+                </For>
+              )}
+            </ToastGroup>
+          )}
+        </For>
+      )}
     </ToastPlacements>
     {props.children}
   </ToastProvider>
@@ -35,10 +43,10 @@ export const ChakraToastProvider = (props: { children: JSX.Element }) => (
 
 // user land
 export const Basic = () => (
-  <ChakraToastProvider>
+  <Provider>
     <h1>Hello World</h1>
     <ExampleComponent />
-  </ChakraToastProvider>
+  </Provider>
 )
 
 const ExampleComponent = () => {

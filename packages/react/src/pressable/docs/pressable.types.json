@@ -11,7 +11,7 @@
       "description": "Whether press events should be canceled when the pointer leaves the target while pressed.\n\nBy default, this is `false`, which means if the pointer returns back over the target while\nstill pressed, onPressStart will be fired again.\n\nIf set to `true`, the press is canceled when the pointer leaves the target and\nonPressStart will not be fired if the pointer returns."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -29,6 +29,11 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "longPressDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount of time (in milliseconds) to wait before firing the `onLongPress` event."
     },
     "onLongPress": {
       "type": "(event: PressEvent) => void",
@@ -73,7 +78,7 @@
       "description": "Whether press events should be canceled when the pointer leaves the target while pressed.\n\nBy default, this is `false`, which means if the pointer returns back over the target while\nstill pressed, onPressStart will be fired again.\n\nIf set to `true`, the press is canceled when the pointer leaves the target and\nonPressStart will not be fired if the pointer returns."
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -91,6 +96,11 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "longPressDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount of time (in milliseconds) to wait before firing the `onLongPress` event."
     },
     "onLongPress": {
       "type": "(event: PressEvent) => void",

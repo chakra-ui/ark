@@ -20,9 +20,8 @@
       "isRequired": false,
       "description": "Whether to blur the input on select"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -46,8 +45,13 @@
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
@@ -96,6 +100,11 @@
       "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Function called when the input's value changes"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on combobox when composing it with other components."
     },
     "onOpen": {
       "type": "() => void",

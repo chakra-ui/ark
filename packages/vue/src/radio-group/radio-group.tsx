@@ -1,64 +1,67 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import type { Context } from '@zag-js/radio-group'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
-import { RadioGroupProvider } from './radio-context'
-import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
+import { type Assign, type Optional } from '../types'
+import { createVueProps, type ComponentWithProps } from '../utils'
+import { RadioGroupProvider } from './radio-group-context'
+import { useRadioGroup } from './use-radio-group'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps['context']>
+export type RadioGroupContext = Context & {
+  modelValue?: Context['value']
+}
+export type UseRadioGroupProps = Assign<HTMLArkProps<'div'>, RadioGroupContext>
 
-export const RadioGroup: ComponentWithProps<RadioGroupProps> = defineComponent({
-  name: 'RadioGroup',
-  props: {
-    dir: {
-      type: String as PropType<RadioGroupProps['dir']>,
-    },
-    disabled: {
-      type: Boolean as PropType<RadioGroupProps['disabled']>,
-    },
-    form: {
-      type: String as PropType<RadioGroupProps['form']>,
-    },
-    getRootNode: {
-      type: Function as PropType<RadioGroupProps['getRootNode']>,
-    },
-    id: {
-      type: String as PropType<RadioGroupProps['id']>,
-    },
-    ids: {
-      type: Object as PropType<RadioGroupProps['ids']>,
-    },
-    modelValue: {
-      type: String as PropType<RadioGroupProps['modelValue']>,
-    },
-    name: {
-      type: String as PropType<RadioGroupProps['name']>,
-    },
-    orientation: {
-      type: String as PropType<RadioGroupProps['orientation']>,
-    },
-    readOnly: {
-      type: Boolean as PropType<RadioGroupProps['readOnly']>,
-    },
-    value: {
-      type: String as PropType<RadioGroupProps['value']>,
-    },
+const VueProps = createVueProps<UseRadioGroupProps>({
+  dir: {
+    type: String as PropType<UseRadioGroupProps['dir']>,
   },
+  disabled: {
+    type: Boolean as PropType<UseRadioGroupProps['disabled']>,
+  },
+  form: {
+    type: String as PropType<UseRadioGroupProps['form']>,
+  },
+  getRootNode: {
+    type: Function as PropType<UseRadioGroupProps['getRootNode']>,
+  },
+  id: {
+    type: String as PropType<UseRadioGroupProps['id']>,
+  },
+  ids: {
+    type: Object as PropType<UseRadioGroupProps['ids']>,
+  },
+  modelValue: {
+    type: String as PropType<UseRadioGroupProps['modelValue']>,
+  },
+  name: {
+    type: String as PropType<UseRadioGroupProps['name']>,
+  },
+  orientation: {
+    type: String as PropType<UseRadioGroupProps['orientation']>,
+  },
+  readOnly: {
+    type: Boolean as PropType<UseRadioGroupProps['readOnly']>,
+  },
+  value: {
+    type: String as PropType<UseRadioGroupProps['value']>,
+  },
+})
+
+export const RadioGroup: ComponentWithProps<Partial<UseRadioGroupProps>> = defineComponent({
+  name: 'RadioGroup',
+  props: VueProps,
   emits: ['change', 'update:modelValue'],
   setup(props, { slots, attrs, emit }) {
-    const radioGroupProps = computed<UseRadioGroupProps>(() => ({
-      context: props,
-      emit,
-    }))
-
-    const api = useRadioGroup(radioGroupProps.value)
+    const api = useRadioGroup(emit, props)
 
     RadioGroupProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {() => slots?.default?.(api.value)}
       </ark.div>
     )
   },
 })
+
+export type RadioGroupProps = Optional<RadioGroupContext, 'id'>

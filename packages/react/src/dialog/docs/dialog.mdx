@@ -2,14 +2,16 @@
 id: dialog
 name: Dialog
 description:
-  A dialog is a window overlaid on either the primary window or another dialog
-  window. Content behind a modal dialog is inert, meaning that users cannot
-  interact with it.
+  The Dialog component is a powerful and highly customizable tool for creating
+  dialog windows, also known as modals, in your application. It includes
+  essential elements such as triggers, content, and close triggers.
 ---
 
-## Import
+## Usage
 
-```ts
+Begin by importing the necessary components from the package:
+
+```tsx
 import {
   Dialog,
   DialogBackdrop,
@@ -17,86 +19,49 @@ import {
   DialogContainer,
   DialogContent,
   DialogDescription,
+  DialogPresence,
   DialogTitle,
   DialogTrigger,
   Portal,
 } from '@ark-ui/react'
 ```
 
-## Usage
+Here is a basic example:
 
-The Dialog component consists of the `DialogBackdrop`, `DialogCloseTrigger`,
-`DialogContainer`, `DialogContent`, `DialogDescription`, `Portal`,
-`DialogTitle`, `DialogTrigger` components.
+<Story name="Basic" />
 
-Note that the `DialogTrigger` and `DialogCloseTrigger` components accept a
-single JSX element which will receive all necessary props to add the event
-listeners and attributes to ensure the desired accessibility.
+## Controlled Dialog
 
-```tsx
-<Dialog>
-  <DialogTrigger>
-    <button>Open Dialog</button>
-  </DialogTrigger>
-  <Portal>
-    <DialogBackdrop />
-    <DialogContainer>
-      <DialogContent>
-        <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>Dialog Description</DialogDescription>
-        <DialogCloseTrigger>
-          <button>Close</button>
-        </DialogCloseTrigger>
-      </DialogContent>
-    </DialogContainer>
-  </Portal>
-</Dialog>
-```
+To create a controlled Dialog component, manage the state of the dialog using
+the `open` and `onClose` props:
 
-### Closing the dialog on overlay click
+<Story name="Controlled" />
 
-By default, the dialog closes when you click its overlay. You can set
-`closeOnOutsideClick` to `false` if you want the modal to stay visible.
+## Lazy Mounting
 
-```tsx
-<Dialog closeOnOutsideClick={false}>{/*...*/}</Dialog>
-```
+Lazy mounting is a feature that allows the content of a dialog to be rendered
+only when the dialog is first opened. This is useful for performance
+optimization, especially when dialog content is large or complex. To enable lazy
+mounting, use the `lazyMount` prop on the `DialogContent` component.
 
-### Allow scrolling behind the dialog
+In addition, the `unmountOnExit` prop can be used in conjunction with
+`lazyMount` to unmount the dialog content when the Dialog is closed, freeing up
+resources. The next time the dialog is activated, its content will be
+re-rendered.
 
-When the dialog is open, it prevents scrolling on the `body` element. To disable
-this behavior, set the `preventScroll` prop to `false`.
+<Story name="LazyMount" />
 
-```tsx
-<Dialog preventScroll={false}>{/*...*/}</Dialog>
-```
+## Using Render Function
 
-### Access to isOpen state
+The Dialog component supports the use of a render function as a child for more
+control. This allows access to dialog states like `isOpen`:
 
-The `Dialog` component exposes the `isOpen` state via a render prop. This can be
-useful if you want to control the visibility of other components.
+<Story name="RenderFn" />
 
-```tsx
-<Dialog>
-  {({ isOpen }) => (
-    <>
-      <DialogTrigger>
-        <button>Open Dialog</button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop />
-        <DialogContainer>
-          <DialogContent>
-            <DialogTitle>Dialog Title</DialogTitle>
-            <DialogDescription>Dialog Description</DialogDescription>
-            <DialogCloseTrigger>
-              <button>Close</button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-      <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
-    </>
-  )}
-</Dialog>
-```
+## Conclusion
+
+The Dialog component provides a feature-rich interface for creating dialog
+windows in your applications. It provides flexibility through a variety of props
+and configurations, accommodating different design requirements and use cases.
+From simple modals to complex, state-controlled dialogs, the Dialog component is
+a versatile tool in a developer's toolkit.

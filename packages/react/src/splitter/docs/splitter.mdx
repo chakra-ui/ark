@@ -2,100 +2,47 @@
 id: splitter
 name: Splitter
 description:
-  Splitter is a component that allows you to split a container into two or more
-  resizable sections.
+  The Splitter is a flexible and dynamic component that allows division of the
+  screen or a section into multiple resizable areas.
 ---
 
-## Import
+## Getting Started
 
-```ts
+Start by importing the necessary components from the package:
+
+```tsx
 import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/react'
 ```
 
-## Usage
+Here is a basic example:
 
-The Splitter component consists of the `SplitterPanel` and
-`SplitterResizeTrigger` components.
+<Story name="Basic" />
 
-```tsx
-<Splitter
-  size={[
-    { id: 'first', size: 50 },
-    { id: 'second', size: 50 },
-  ]}
->
-  <SplitterPanel id="first">
-    <p>first</p>
-  </SplitterPanel>
-  <SplitterResizeTrigger id="first:second">
-    <div class="bar" />
-  </SplitterResizeTrigger>
-  <SplitterPanel id="second">
-    <p>second</p>
-  </SplitterPanel>
-</Splitter>
-```
+## Using Render Props
 
-### Listening to resize changes
+The Splitter component allows you to pass a function as a child to gain direct
+access to its API. This provides more control and allows you to modify the size
+of the panels programmatically:
 
-You can listen to resize changes by passing a `onResize` callback to the
-`Splitter` component.
+<Story name="RenderProp" />
 
-`onResizeStart` and `onResizeEnd` callbacks are also available.
+## Handling Events
 
-```tsx
-<Splitter
-  onResize={(details) => console.log('onResize', details)}
-  onResizeStart={(details) => console.log('onResizeStart', details)}
-  onResizeEnd={(details) => console.log('onResizeEnd', details)}
->
-  {/*...*/}
-</Splitter>
-```
+Splitter also provides `onResizeStart` and `onResizeEnd` events which can be
+useful to perform some actions during the start and end of the resizing process:
 
-### Nested
+<Story name="Events" />
 
-You can nest Splitter components to create a more complex layout.
+## Vertical Splitter
 
-> The `useId` hook from `react` can generate unique ids which you can apply to
-> the `id` prop of the `SplitterPanel` and `SplitterResizeTrigger` components.
+By default, the Splitter component is horizontal. If you need a vertical
+splitter, use the `orientation` prop:
 
-```tsx
-import type { SplitterProps } from '@ark-ui/react'
-import { useId } from 'react'
+<Story name="Vertical" />
 
-const Basic = (props: Partial<SplitterProps>) => {
-  const [first, second] = [useId(), useId()].map((id) => id.replace(/:/g, '-'))
-  return (
-    <>
-      <Splitter
-        size={[
-          { id: first, size: 50 },
-          { id: second, size: 50 },
-        ]}
-        {...props}
-      >
-        <SplitterPanel id={first}>
-          <p>{first}</p>
-        </SplitterPanel>
-        <SplitterResizeTrigger id={`${first}:${second}`}>
-          <div className="bar" />
-        </SplitterResizeTrigger>
-        <SplitterPanel id={second}>
-          {props.children ?? <p>{second}</p>}
-        </SplitterPanel>
-      </Splitter>
-    </>
-  )
-}
+## Conclusion
 
-export const Nested = () => (
-  <div style={{ height: '100vh' }}>
-    <Basic orientation="vertical">
-      <Basic>
-        <Basic orientation="vertical" />
-      </Basic>
-    </Basic>
-  </div>
-)
-```
+The Splitter component provides an intuitive way to divide your user interface
+into multiple resizable sections. With the use of its API, event handlers, and
+props, you can achieve a high level of control and customization, accommodating
+a wide range of design and functionality needs.

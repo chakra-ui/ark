@@ -16,9 +16,7 @@ import {
 
 const ComponentUnderTest = (props: DialogProps) => (
   <Dialog {...props}>
-    <DialogTrigger>
-      <button>Open dialog</button>
-    </DialogTrigger>
+    <DialogTrigger>Open dialog</DialogTrigger>
     <Portal>
       <DialogBackdrop />
       <DialogContainer />
@@ -29,9 +27,7 @@ const ComponentUnderTest = (props: DialogProps) => (
           <input placeholder="Enter name..." />
           <button>Save</button>
         </div>
-        <DialogCloseTrigger>
-          <button>Close</button>
-        </DialogCloseTrigger>
+        <DialogCloseTrigger>Close</DialogCloseTrigger>
       </DialogContent>
     </Portal>
   </Dialog>
@@ -39,12 +35,12 @@ const ComponentUnderTest = (props: DialogProps) => (
 
 describe('Dialog', () => {
   it('should render', async () => {
-    render(<ComponentUnderTest defaultOpen />)
+    render(<ComponentUnderTest open />)
   })
 
   it('should invoke onClose if dialog is closed', async () => {
     const onClose = vi.fn()
-    render(<ComponentUnderTest defaultOpen onClose={onClose} />)
+    render(<ComponentUnderTest open onClose={onClose} />)
     await user.click(screen.getByText('Close'))
 
     expect(onClose).toHaveBeenCalledTimes(1)

@@ -5,7 +5,7 @@ export const useScrollSpy = (selectors: string[]) => {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const elements = selectors.map((selector) => document.querySelector(CSS.escape(selector)))
+    const elements = selectors.map((selector) => document.querySelector(`#${CSS.escape(selector)}`))
     observer.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

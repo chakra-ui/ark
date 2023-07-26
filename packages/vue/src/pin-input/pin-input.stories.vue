@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, UsePinInputProps } from './'
+import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputContext } from './'
 
-const handleComplete: UsePinInputProps['context']['onComplete'] = (e) => alert(e.valueAsString)
+const handleComplete: PinInputContext['onComplete'] = (e) => alert(e.valueAsString)
 </script>
 <template>
   <PinInput placeholder="*" @complete="handleComplete">

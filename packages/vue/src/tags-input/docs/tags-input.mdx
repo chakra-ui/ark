@@ -1,0 +1,243 @@
+---
+id: tags-input
+name: Tags Input
+description:
+  Tag inputs render tags inside an input, followed by an actual text input. By
+  default, tags are added when text is typed in the input field and the Enter or
+  Comma key is pressed. Throughout the interaction, DOM focus remains on the
+  input element.
+---
+
+## Import
+
+```ts
+import {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputLabel,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The TagsInput component consists of the `Tag`, `TagInput`, `TagsInputControl`,
+`TagsInputField`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
+`TagsInputLabel` components. Combine them as desired to fit your design system.
+
+Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
+single JSX element which will receive all necessary props to add the event
+listeners and attributes to ensure the desired accessibility.
+
+```vue
+<script>
+import {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputLabel,
+} from '@ark-ui/vue'
+
+const tagsInputRef = ref()
+</script>
+
+<template>
+  <TagsInput ref="tagsInputRef">
+    <TagsInputLabel>Label</TagsInputLabel>
+    <TagsInputControl>
+      <template v-for="(value, index) in tagsInputRef?.context.value">
+        <Tag :index="index" :value="value">
+          <span>{{ value }}</span>
+          <TagDeleteTrigger :index="index" :value="value">
+            <button>x</button>
+          </TagDeleteTrigger>
+        </Tag>
+        <TagInput :index="index" :value="value" />
+      </template>
+      <TagsInputField placeholder="Add tag" />
+      <TagsInputClearTrigger>
+        <button>Clear all</button>
+      </TagsInputClearTrigger>
+    </TagsInputControl>
+  </TagsInput>
+</template>
+```
+
+## Navigating and Editing tags
+
+When the input has an empty value or the caret is at the start position, the
+tags can be selected by using the arrow left and arrow right keys. When "visual"
+focus in on any tag:
+
+- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit
+  mode, allowing the user change its value and press <kbd>Enter</kbd> to commit
+  the changes.
+- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that
+  has _visual_ focus.
+
+## Setting the initial tags
+
+To set the initial tag values, use the `v-model` directive.
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+
+const tagsInputValue = ref(['foo', 'bar'])
+</script>
+
+<template>
+  <TagsInput v-model="tagsInputValue">
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Limiting the number of tags
+
+To limit the number of tags within the component, you can set the `max` property
+to the limit you want. The default value is `Infinity`.
+
+When the tag reaches the limit, new tags cannot be added except the
+`allowOverflow` prop is set to `true`.
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput :max="3" allowOverflow>
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Validating Tags
+
+Before a tag is added, the `validate` function is called to determine whether to
+accept or reject a tag.
+
+A common use-case for validating tags is preventing duplicates or validating the
+data type.
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+
+const tagsInputValidate = (details) => {
+  return !details.values.includes(details.inputValue)
+}
+</script>
+
+<template>
+  <TagsInput :validate="tagsInputValidate">
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Blur behavior
+
+When the tags input is blurred, you can configure the action the component
+should take by passing the `blurBehavior` prop.
+
+- `add` — Adds the tag to the list of tags.
+- `clear` — Clears the tags input value.
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput blurBehavior="add">
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Paste behavior
+
+To add a tag when a arbitrary value is pasted in the input element, pass the
+`addOnPaste` prop.
+
+When a value is pasted, the component will:
+
+- check if the value is a valid tag based on the `validate` option
+- split the value by the `delimiter` option passed
+
+```vue {3}
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput addOnPaste delimiter=",">
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Disable tag editing
+
+by default the tags can be edited by double-clicking on the tag or focusing on
+them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
+`:allowEditTag="false"`
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+</script>
+
+<template>
+  <TagsInput :allowEditTag="false">
+    <!-- ... -->
+  </TagsInput>
+</template>
+```
+
+## Events
+
+During the lifetime of the tags input interaction, here's a list of events we
+emit:
+
+- `@change` — invoked when the tag value changes.
+- `@highlight` — invoked when a tag has visual focus.
+- `@invalid` — invoked when the max tag count is reached or the `validate`
+  function returns `false`.
+
+```vue
+<script>
+import { TagsInput } from '@ark-ui/vue'
+
+const handleOnChange = (details) => {
+  console.log('tags changed to:', details.values)
+}
+
+const handleOnHighlight = (details) => {
+  console.log('highlighted tag:', details.value)
+}
+
+const handleOnInvalid = (details) => {
+  console.log('Invalid!', details.reason)
+}
+</script>
+<template>
+  <TagsInput
+    @change="handleOnChange"
+    @hightlight="handleOnHighlight"
+    @invalid="handleOnInvalid"
+  >
+    <!-- ... -->
+  </TagsInput>
+</template>
+```

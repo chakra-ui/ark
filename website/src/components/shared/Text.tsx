@@ -1,5 +1,5 @@
-import { panda, type HTMLPandaProps } from '@/panda/jsx'
+import { styled, type HTMLStyledProps } from '@/panda/jsx'
 
-export const Text = (props: HTMLPandaProps<'p'>) => {
-  return <panda.p {...props} />
+export const Text = (props: HTMLStyledProps<'p'>) => {
+  return <styled.p {...props} />
 }

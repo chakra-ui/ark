@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import {
   Combobox,
   ComboboxContent,
@@ -7,13 +7,12 @@ import {
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
-  ComboboxOptionProps,
+  type ComboboxOptionProps,
   ComboboxPositioner,
-  ComboboxProps,
+  type ComboboxProps,
   ComboboxTrigger,
 } from './'
 import './combobox.css'
-import type { UseComboboxReturn } from './use-combobox'
 
 type ComboboxData = Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[]
 
@@ -25,8 +24,6 @@ const comboboxData: ComboboxData = [
 ]
 
 const options = ref(comboboxData)
-
-const comboboxRef = ref<UseComboboxReturn | null>(null)
 
 const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
   const filtered = comboboxData.filter((item) =>
@@ -45,10 +42,10 @@ const defaultVal = ref(comboboxData[0].label)
 </script>
 <template>
   <Combobox
-    ref="comboboxRef"
     @input-change="handleInputChange"
     @select="handleOnSelect"
     v-model="defaultVal"
+    v-slot="{ isInputValueEmpty, isOpen }"
   >
     <ComboboxLabel>JS Frameworks</ComboboxLabel>
     <ComboboxControl>
@@ -57,7 +54,7 @@ const defaultVal = ref(comboboxData[0].label)
         <button>▼</button>
       </ComboboxTrigger>
     </ComboboxControl>
-    <div v-show="comboboxRef?.isInputValueEmpty && !comboboxRef?.isOpen">
+    <div v-show="isInputValueEmpty && !isOpen">
       Give me you favorite framework!
     </div>
     <Teleport to="body">

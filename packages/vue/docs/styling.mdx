@@ -1,0 +1,234 @@
+---
+id: styling
+name: Styling Components
+description:
+  Ark UI is a headless component library that's compatible with any styling
+  solution. This guide demonstrates how to style components.
+---
+
+## Styling Components
+
+Ark UI doesn't include built-in styling. Nevertheless, it provides a flexible
+and customizable approach to style components based on your specific needs. In
+this guide, we'll use a simple `Tabs` component as an example.
+
+Please note that the examples in this section are for SFCs as this is the recommended way to write Vue components.
+For JSX/TSX approach, you can refer to Solid's documentation as it is the same in JSX/TSX for Vue.
+
+## Using Class Names
+
+Class names offer a versatile means to style your components. This approach
+proves particularly beneficial when using Ark UI in conjunction with a CSS
+styling framework, such as `Tailwind` or `Bootstrap`.
+
+```vue
+<template>
+  <tabs>
+    <tab-list class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+      <tab-trigger
+        value="vue"
+        class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg"
+      >
+        Vue
+      </tab-trigger>
+    </tab-list>
+  </tabs>
+</template>
+```
+
+## Using Inline Styles
+
+Inline styles can also be used, although they're typically not recommended due
+to potential conflicts and maintainability issues. Nonetheless, Ark UI ensures
+that user-defined inline styles merge correctly with any pre-existing inline
+styles from the component framework.
+
+```vue
+<template>
+  <tabs>
+    <tab-list
+      :style="{
+        display: 'flex',
+        flexWrap: 'wrap',
+        fontSize: '14px',
+        fontWeight: 'medium',
+        textAlign: 'center',
+        color: '#374151',
+        borderBottom: '1px solid #e5e7eb',
+      }"
+    >
+      <tab-trigger
+        value="vue"
+        :style="{
+          display: 'inline-block',
+          padding: '16px',
+          color: '#3b82f6',
+          backgroundColor: '#f3f4f6',
+          'border-top-left-radius': '0.5rem',
+          'border-top-right-radius': '0.5rem',
+          borderBottom: '1px solid #e5e7eb',
+        }"
+      >
+        Vue
+      </tab-trigger>
+    </tab-list>
+  </tabs>
+</template>
+```
+
+You can also create a style object to make the template cleaner. 
+
+
+```vue
+<script setup>
+const tabListStyles = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  fontSize: '14px',
+  fontWeight: 'medium',
+  textAlign: 'center',
+  color: '#374151',
+  borderBottom: '1px solid #e5e7eb',
+}
+
+const tabTriggerStyles = {
+  display: 'inline-block',
+  padding: '16px',
+  color: '#3b82f6',
+  backgroundColor: '#f3f4f6',
+  'border-top-left-radius': '0.5rem',
+  'border-top-right-radius': '0.5rem',
+  borderBottom: '1px solid #e5e7eb',
+}
+</script>
+
+<template>
+  <tabs>
+    <tab-list
+      :style="tabListStyles"
+    >
+      <tab-trigger
+        value="vue"
+        :style="tabTriggerStyles"
+      >
+        Vue
+      </tab-trigger>
+    </tab-list>
+  </tabs>
+</template>
+```
+
+
+## Using CSS Selectors
+
+Ark UI automatically assigns a `data-scope` and `data-part` attribute to every
+component and component part. You can use these attributes to specify CSS for
+these selectors.
+
+For instance, the `Tabs` component renders the following markup:
+
+```vue
+<tabs data-scope="tabs" data-part="root">
+  <tab-list data-scope="tabs" data-part="tablist">
+    <tab-trigger data-scope="tabs" data-part="trigger" value="vue">
+      Vue
+    </tab-trigger>
+  </tab-list>
+</tabs>
+```
+
+With these selectors, it's possible to write CSS that targets specific component
+parts like `TabsTrigger` and `TabList`.
+
+```vue
+<style>
+[data-scope='tabs'][data-part='tablist'] {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: medium;
+  text-align: center;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+[data-scope='tabs'][data-part='trigger'] {
+  display: inline-block;
+  padding: 16px;
+  color: #3b82f6;
+  background-color: #f3f4f6;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+</style>
+```
+
+## Using CSS Modules
+
+Instead of styling your component using the selectors, you can directly target your element with CSS modules. 
+This will help you style your component while avoiding collision with other classes.
+
+```vue
+<template>
+  <tabs>
+    <tab-list :class="tabs.list">
+      <tab-trigger :class="tabs.trigger" value="vue">
+        Vue
+      </tab-trigger>
+    </tab-list>
+  </tabs>
+</template>
+
+<style module="tabs">
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  font-weight: medium;
+  text-align: center;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.trigger {
+  display: inline-block;
+  padding: 16px;
+  color: #3b82f6;
+  background-color: #f3f4f6;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+} 
+</style>
+```
+
+## Using the asChild Prop
+
+The `asChild` prop offers an additional layer of customization by enabling you
+to replace the default element with your own custom child element, such as a
+`Button` or `List`. This proves exceptionally valuable when you're integrating
+Ark UI with an existing UI library, for instance,` Chakra UI`.
+
+```vue
+<tabs>
+  <tab-list as-child>
+    <c-list>
+      <tab-trigger value="vue" as-child>
+        <c-button>Vue</c-button>
+      </tab-trigger>
+    </c-list>
+  </tab-list>
+</tabs>
+```
+
+With `asChild`, the default markup of Ark UI components can be substituted with
+elements from your existing library, granting you full control over the
+rendering and style of your UI components. This, in turn, ensures your styling
+and component architecture remains consistent across your application.
+
+## Conclusion
+
+Styling in Ark UI is intentionally unopinionated to provide you with the maximum
+flexibility you need to adapt the components to your own design system. Whether
+you're using class names, inline styles, CSS selectors, or integrating Ark UI
+with an existing UI library, the choice is yours.

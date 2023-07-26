@@ -1,4 +1,4 @@
-import { panda } from 'panda/jsx/factory'
+import { styled } from 'panda/jsx/factory'
 import { Stack } from 'panda/jsx/stack'
 import { Text } from './Text'
 
@@ -16,9 +16,9 @@ export const PageHeader = (props: PageHeaderProps) => {
         <Text color="accent.muted" fontWeight="semibold" textStyle="sm">
           {subHeading}
         </Text>
-        <panda.h1 textStyle="3xl" fontWeight="semibold">
+        <styled.h1 textStyle="3xl" fontWeight="semibold">
           {heading}
-        </panda.h1>
+        </styled.h1>
       </Stack>
       <Text color="fg.muted" textStyle="md" lineHeight="relaxed">
         {supportingText}

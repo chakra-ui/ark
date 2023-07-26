@@ -1,31 +1,24 @@
-import { connect, machine, type Context as PopoverContext } from '@zag-js/popover'
+import { connect, machine } from '@zag-js/popover'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
+import type { PopoverContext } from './popover'
 
-interface UsePopoverPropsContext extends Optional<PopoverContext, 'id'> {
-  /**
-   * Control the open state of the popover.
-   *
-   * @default false
-   */
-  isOpen?: boolean
-}
+export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export type UsePopoverProps = {
-  context: UsePopoverPropsContext
-  emit: CallableFunction
-}
-
-export const usePopover = (props: UsePopoverProps) => {
-  const { context, emit } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      id: useId().value,
-      defaultOpen: context.isOpen,
+      ...reactiveContext,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
+      open: reactiveContext.isOpen,
       onEscapeKeyDown(event) {
         emit('escape-key-down', event)
       },
@@ -35,8 +28,11 @@ export const usePopover = (props: UsePopoverProps) => {
       onInteractOutside(event) {
         emit('interact-outside', event)
       },
-      onOpenChange(open) {
-        emit('open-change', open)
+      onOpen() {
+        emit('open')
+      },
+      onClose() {
+        emit('close')
       },
       onPointerDownOutside(event) {
         emit('pointer-down-outside', event)
@@ -47,9 +43,9 @@ export const usePopover = (props: UsePopoverProps) => {
   const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.isOpen,
-    (curr) => {
-      if (curr == null) return
+    () => reactiveContext.isOpen,
+    (curr, prev) => {
+      if (curr == null || curr === prev) return
 
       if (curr && !state.value.matches('open')) {
         api.value.open()
@@ -64,4 +60,4 @@ export const usePopover = (props: UsePopoverProps) => {
   return api
 }
 
-export type UsePopoverReturn = UnwrapRef<ReturnType<typeof usePopover>>
+export type UsePopoverReturn = ReturnType<typeof connect>

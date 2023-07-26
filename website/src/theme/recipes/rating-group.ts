@@ -33,7 +33,7 @@ export const ratingGroup = defineRecipe({
         _dark: 'colors.brown.300',
       },
       _focus: {
-        outline: 'none',
+        outline: 0,
       },
       '& svg': {
         width: '10',

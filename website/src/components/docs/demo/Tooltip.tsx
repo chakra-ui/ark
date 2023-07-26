@@ -1,9 +1,8 @@
-import { panda } from '@/panda/jsx'
+import { styled } from '@/panda/jsx'
 import { tooltip } from '@/panda/recipes'
 import {
+  Portal,
   Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
   TooltipContent,
   TooltipPositioner,
   TooltipTrigger,
@@ -14,21 +13,17 @@ export type DemoTooltipProps = Partial<TooltipProps> & {
   placement?: NonNullable<TooltipProps['positioning']>['placement']
 }
 
-export const DemoTooltip = (props: DemoTooltipProps) => {
-  const { placement = 'top', ...tooltipProps } = props
-  return (
-    <Tooltip openDelay={0} closeDelay={200} positioning={{ placement }} {...tooltipProps}>
-      <TooltipTrigger>
-        <panda.span textStyle="sm" fontWeight="medium">
-          Hover me
-        </panda.span>
-      </TooltipTrigger>
+export const DemoTooltip = () => (
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <styled.span textStyle="sm" fontWeight="medium">
+        Hover me
+      </styled.span>
+    </TooltipTrigger>
+    <Portal>
       <TooltipPositioner className={tooltip({})}>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>My Tooltip</TooltipContent>
+        <TooltipContent>I am a Tooltip!</TooltipContent>
       </TooltipPositioner>
-    </Tooltip>
-  )
-}
+    </Portal>
+  </Tooltip>
+)

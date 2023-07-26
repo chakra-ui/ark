@@ -69,10 +69,10 @@ export const select = defineRecipe({
           _focus: {
             zIndex: 1,
             '--shadow': {
-              base: 'colors.purple.500',
-              _dark: 'colors.purple.200',
+              base: 'colors.orange.400',
+              _dark: 'colors.orange.400',
             },
-            boxShadow: '0 0 0 1px var(--shadow)',
+            boxShadow: 'inset 0 0 0 1px var(--shadow)',
             borderColor: 'accent.default',
           },
         },

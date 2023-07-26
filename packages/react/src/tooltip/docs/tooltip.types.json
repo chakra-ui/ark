@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string }>",
+      "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },
@@ -55,6 +55,11 @@
       "isRequired": false,
       "description": "Function called when the tooltip is opened."
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is open"
+    },
     "openDelay": {
       "type": "number",
       "isRequired": false,
@@ -64,6 +69,20 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    }
+  },
+  "TooltipContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
     }
   }
 }

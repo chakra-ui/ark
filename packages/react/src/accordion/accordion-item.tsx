@@ -1,30 +1,36 @@
-import { forwardRef, type Assign } from '@polymorphic-factory/react'
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
+import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { useAccordionContext, type AccordionContext } from './accordion-context'
+import { forwardRef } from '../forward-ref'
+import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
+import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
-export type AccordionItemProps = Assign<
-  HTMLArkProps<'div'>,
-  {
-    value: string
-    disabled?: boolean
-    children?:
-      | React.ReactNode
-      | ((props: ReturnType<AccordionContext['getItemState']>) => React.ReactNode)
-  }
->
+export type AccordionItemProps = ItemProps &
+  Assign<
+    HTMLArkProps<'div'>,
+    {
+      children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
+    }
+  >
 
 export const AccordionItem = forwardRef<'div', AccordionItemProps>((props, ref) => {
-  const { value, disabled, children, ...rest } = props
+  const [itemProps, { children, ...rest }] = createSplitProps<ItemProps>()(props, [
+    'value',
+    'disabled',
+  ])
+
   const { getItemProps, getItemState } = useAccordionContext()
-  const itemState = getItemState({ value })
-  const mergedProps = mergeProps(getItemProps({ value, disabled }), rest)
+  const itemState = getItemState(itemProps)
+  const mergedProps = mergeProps(getItemProps(itemProps), rest)
+  const view = runIfFn(children, itemState)
 
   return (
-    <AccordionItemProvider value={{ value, disabled, ...itemState }}>
+    <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
       <ark.div {...mergedProps} ref={ref}>
-        {typeof children === 'function' ? children(itemState) : children}
+        {view}
       </ark.div>
     </AccordionItemProvider>
   )

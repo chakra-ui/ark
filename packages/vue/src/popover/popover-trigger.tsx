@@ -1,6 +1,9 @@
 import { defineComponent, h } from 'vue'
+import type { HTMLArkProps } from '../factory'
 import { useUniqueChild } from '../utils'
 import { usePopoverContext } from './popover-context'
+
+export type PopoverTriggerProps = HTMLArkProps<'button'>
 
 export const PopoverTrigger = defineComponent({
   name: 'PopoverTrigger',

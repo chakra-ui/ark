@@ -9,6 +9,11 @@
     {
       "groupName": "@zag-js",
       "matchPackagePatterns": ["@zag-js/*"]
+    },
+    {
+      "groupName": "contentlayer",
+      "matchPackageNames": ["contentlayer", "next-contentlayer"]
     }
-  ]
+  ],
+  "ignoreDeps": ["next", "@next/env", "eslint-config-next"]
 }

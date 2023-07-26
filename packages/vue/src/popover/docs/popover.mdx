@@ -1,0 +1,250 @@
+---
+id: popover
+name: Popover
+description:
+  A popover is a non-modal dialog that floats around a trigger. It is used to
+  display contextual information to the user, and should be paired with a
+  clickable trigger element.
+---
+
+## Import
+
+```ts
+import {
+  Popover,
+  PopoverArrow,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverArrowTip,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The Popover component consists of the `PopoverTrigger`, `PopoverPositioner`,
+`PopoverContent`, `PopoverTitle`, `PopoverDescription`, `PopoverArrow`,
+`PopoverArrowTip`, `PopoverCloseTrigger`, components.
+
+Note that the `PopoverTrigger` and `PopoverCloseTrigger` components accept a
+single JSX element which will receive all necessary props to add the event
+listeners and attributes to ensure the desired accessibility.
+
+```vue
+<script setup lang="ts">
+import {
+  Popover,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Popover>
+    <PopoverTrigger>
+      <button>Open Popover</button>
+    </PopoverTrigger>
+    <PopoverPositioner>
+      <PopoverContent>
+        <PopoverTitle>Title</PopoverTitle>
+        <PopoverDescription>Description</PopoverDescription>
+        <PopoverCloseTrigger>
+          <button>Close</button>
+        </PopoverCloseTrigger>
+      </PopoverContent>
+    </PopoverPositioner>
+  </Popover>
+</template>
+```
+
+### Adding an arrow
+
+To render an arrow within the popover, render the component `PopoverArrow` and
+`PopoverArrowTip` as children of `PopoverPositioner`.
+
+```vue
+<script setup lang="ts">
+import {
+  Popover,
+  PopoverArrow,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverArrowTip,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Popover>
+    <PopoverTrigger>
+      <button>Open Popover</button>
+    </PopoverTrigger>
+    <PopoverPositioner>
+      <PopoverContent>
+        <PopoverArrow>
+          <PopoverArrowTip />
+        </PopoverArrow>
+        <PopoverTitle>Title</PopoverTitle>
+        <PopoverDescription>Description</PopoverDescription>
+        <PopoverCloseTrigger>
+          <button>Close</button>
+        </PopoverCloseTrigger>
+      </PopoverContent>
+    </PopoverPositioner>
+  </Popover>
+</template>
+```
+
+### Using a Portal
+
+By default, the popover is rendered in the same DOM hierarchy as the trigger. To
+render the popover within a portal, set the `portalled` prop to `true`.
+
+```vue
+<script setup lang="ts">
+import { Teleport } for 'vue'
+import {
+  Popover,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <Popover portalled>
+    <PopoverTrigger>
+      <button>Open Popover</button>
+    </PopoverTrigger>
+    <Telepor to="body">
+      <PopoverPositioner>
+        <PopoverContent>
+          <PopoverTitle>Title</PopoverTitle>
+          <PopoverDescription>Description</PopoverDescription>
+          <PopoverCloseTrigger>
+            <button>Close</button>
+          </PopoverCloseTrigger>
+        </PopoverContent>
+      </PopoverPositioner>
+    </Telepor>
+  </Popover>
+</template>
+```
+
+### Modifying the close behavior
+
+The popover is designed to close on blur and when the <kbd>esc</kbd> key is
+pressed.
+
+To prevent it from closing on blur (clicking or focusing outside), pass the
+`closeOnBlur` prop and set it to `false`.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+</script>
+<template>
+  <Popover :closeOnBlur="false">
+    <!-- ... -->
+  </Popover>
+</template>
+```
+
+To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
+`closeOnEsc` prop and set it to `false`.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+</script>
+<template>
+  <Popover :closeOnEsc="false">
+    <!-- ... -->
+  </Popover>
+</template>
+```
+
+### Changing the placement
+
+To change the placement of the popover, set the `positioning` prop.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+</script>
+<template>
+  <Popover
+    :positioning="{
+      placement: 'top-start',
+    }"
+  >
+    <!-- ... -->
+  </Popover>
+</template>
+```
+
+### Listening for open and close events
+
+When the popover is opened or closed, we invoke the `onOpenChange` callback.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+</script>
+<template>
+  <Popover @open-change="(open) => alert(open ? 'opened' : 'closed')">
+    <!-- ... -->
+  </Popover>
+</template>
+```
+
+### Control the open state
+
+Use the `isOpen` prop to control the open state of the popover.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+
+const isOpen = ref(false)
+</script>
+<template>
+  <button @click="() => (isOpen = !isOpen)">Toggle Popover</button>
+  <Popover :isOpen="isOpen">
+    <!-- ... -->
+  </Popover>
+</template>
+```
+
+### Changing the modality
+
+In some cases, you might want the popover to be modal. This means that it'll:
+
+- trap focus within its content
+- block scrolling on the body
+- disable pointer interactions outside the popover
+- hide content behind the popover from screen readers
+
+To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
+we set the `portalled` attribute to `true` as well.
+
+```vue
+<script setup lang="ts">
+import { Popover } from '@ark-ui/vue'
+</script>
+<template>
+  <Popover modal>
+    <!-- ... -->
+  </Popover>
+</template>
+```

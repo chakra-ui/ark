@@ -9,7 +9,7 @@ export const Enterprise = () => (
   <Box bg="bg.surface">
     <Container py={{ base: '16', md: '24' }}>
       <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: '12', md: '16' }}>
-        <Stack gap={{ base: '8', md: '10' }}>
+        <Stack gap={{ base: '8', md: '10' }} alignItems="start">
           <Stack gap={{ base: '4', md: '5' }} maxW="3xl">
             <Heading textStyle={{ base: '2xl', md: '3xl' }} fontWeight="semibold">
               Designed for product teams and organizations
@@ -20,7 +20,7 @@ export const Enterprise = () => (
             </Text>
           </Stack>
           <Button
-            href="/docs/react/overview/"
+            href="/docs/react/overview/introduction"
             variant="link"
             size={{ base: 'lg', md: '2xl' }}
             color="accent.default"

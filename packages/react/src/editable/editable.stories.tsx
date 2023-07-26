@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import {
   Editable,
   EditableArea,
@@ -9,6 +10,15 @@ import {
   EditablePreview,
   EditableSubmitTrigger,
 } from './'
+
+type EditableType = typeof Editable
+
+const meta: Meta<EditableType> = {
+  title: 'Editable',
+  component: Editable,
+}
+
+export default meta
 
 export const Basic = () => (
   <Editable placeholder="Placeholder" activationMode="dblclick">
@@ -32,17 +42,11 @@ export const CustomControls = () => (
         <EditableControl>
           {state.isEditing ? (
             <>
-              <EditableSubmitTrigger>
-                <button>Save</button>
-              </EditableSubmitTrigger>
-              <EditableCancelTrigger>
-                <button>Cancel</button>
-              </EditableCancelTrigger>
+              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
+              <EditableCancelTrigger>Cancel</EditableCancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>
-              <button>Edit</button>
-            </EditableEditTrigger>
+            <EditableEditTrigger>Edit</EditableEditTrigger>
           )}
         </EditableControl>
       </>

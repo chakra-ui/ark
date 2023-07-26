@@ -1,5 +1,5 @@
 import { css } from '@/panda/css'
-import { panda } from '@/panda/jsx'
+import { styled } from '@/panda/jsx'
 import { checkbox } from '@/panda/recipes'
 import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '@ark-ui/react'
 import { useState } from 'react'
@@ -20,7 +20,7 @@ export const DemoCheckbox = () => {
             {state.isIndeterminate && <MinusIcon />}
           </CheckboxControl>
           <CheckboxLabel>
-            <panda.span fontWeight="medium">Label</panda.span>
+            <styled.span fontWeight="medium">Label</styled.span>
           </CheckboxLabel>
         </>
       )}

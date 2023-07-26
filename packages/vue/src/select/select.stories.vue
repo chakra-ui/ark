@@ -7,7 +7,7 @@ import {
   SelectPositioner,
   SelectContent,
   SelectOption,
-  SelectProps,
+  type SelectProps,
 } from './index'
 
 const selectedOption = ref<SelectProps['modelValue']>()

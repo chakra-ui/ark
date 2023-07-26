@@ -1,13 +1,13 @@
-import { forwardRef } from '@polymorphic-factory/react'
 import { mergeProps } from '@zag-js/react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { forwardRef } from '../forward-ref'
 import { type Assign } from '../types'
 import { usePressable, type UsePressableProps } from './use-pressable'
 
 export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
-export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
+export const Pressable = forwardRef<'button', UsePressableProps>((props, ref) => {
   const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',
@@ -15,6 +15,7 @@ export const Pressable = forwardRef<'button', PressableProps>((props, ref) => {
     'disabled',
     'getRootNode',
     'id',
+    'longPressDelay',
     'onLongPress',
     'onPress',
     'onPressEnd',

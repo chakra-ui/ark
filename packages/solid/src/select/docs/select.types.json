@@ -6,7 +6,7 @@
       "description": "Whether the select should close after an option is selected"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n}>",
+      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n  hiddenSelect: string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -69,6 +69,11 @@
       "type": "(details: Option | null) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted option changes."
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on select when composing it with other components."
     },
     "onOpen": {
       "type": "() => void",

@@ -5,7 +5,7 @@ import { Text } from '@/components/shared/Text'
 import { ReactIcon } from '@/icons/React'
 import { SolidIcon } from '@/icons/Solid'
 import { VueIcon } from '@/icons/Vue'
-import { Box, Container, HStack, panda, Stack } from '@/panda/jsx'
+import { Box, Container, HStack, Stack, styled } from '@/panda/jsx'
 import { FiCheck, FiCopy } from 'react-icons/fi'
 import { useCopyToClipboard } from 'usehooks-ts'
 import { IconButton } from '../shared/IconButton'
@@ -25,12 +25,12 @@ export const Hero = () => {
         <Stack gap={{ base: '8', md: '10' }} maxW="xl">
           <Stack gap="5">
             <Heading textStyle={{ base: '4xl', md: '5xl' }} fontWeight="semibold">
-              Get fully customizable, <panda.span color="accent.default">accessible</panda.span> and{' '}
-              <panda.span color="accent.default">unstyled</panda.span> UI components
+              Get fully customizable, <styled.span color="accent.default">accessible</styled.span>{' '}
+              and <styled.span color="accent.default">unstyled</styled.span> UI components
             </Heading>
             <Text textStyle={{ base: 'md', md: 'lg' }} color="fg.muted">
               Ark UI is a headless library for building reusable, scalable Design Systems that works
-              in any framework.
+              for a wide range of JS frameworks.
             </Text>
           </Stack>
           <Stack gap="8" width="100%">

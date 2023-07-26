@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { type PropsWithChildren } from 'react'
 import {
   Toast,
@@ -9,6 +10,15 @@ import {
   ToastTitle,
   useToast,
 } from '.'
+
+type ToastType = typeof Toast
+
+const meta: Meta<ToastType> = {
+  title: 'Toast',
+  component: Toast,
+}
+
+export default meta
 
 // chakra land
 export const ChakraToastProvider = (props: PropsWithChildren) => (
@@ -22,9 +32,7 @@ export const ChakraToastProvider = (props: PropsWithChildren) => (
                 <Toast key={toast.id} toast={toast}>
                   <ToastTitle />
                   <ToastDescription />
-                  <ToastCloseTrigger>
-                    <button>close</button>
-                  </ToastCloseTrigger>
+                  <ToastCloseTrigger>close</ToastCloseTrigger>
                 </Toast>
               ))
             }
@@ -64,12 +72,27 @@ const ExampleComponent = () => {
         onClick={() => {
           toast.create({
             title: 'Data submitted!',
+            description: 'Your user data has been submitted successfully!',
             type: 'success',
             placement: 'bottom-start',
           })
         }}
       >
         Add bottom-start toast
+      </button>
+      <button
+        onClick={() => {
+          toast.create({
+            title: 'Data submitted!',
+            render: (toast) => (
+              <div>
+                {toast.title} <a href="#">Google</a>
+              </div>
+            ),
+          })
+        }}
+      >
+        Custom
       </button>
     </div>
   )

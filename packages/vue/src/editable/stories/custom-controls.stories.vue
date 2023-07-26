@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 import {
   Editable,
   EditableArea,
@@ -10,27 +10,19 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
-  UseEditableReturn,
 } from '../'
 
-const editableRef = ref<{ api: UseEditableReturn }>()
-
 // For editable.test.tsx
-const testProps = defineProps(['modelValue'])
+const testProps = ref<string>('')
 </script>
 <template>
-  <Editable
-    ref="editableRef"
-    activationMode="dblclick"
-    placeholder="Placeholder"
-    v-bind="testProps"
-  >
+  <Editable activationMode="dblclick" placeholder="Placeholder" v-model="testProps" v-slot="{ isEditing }">
     <EditableLabel>Label</EditableLabel>
     <EditableArea>
       <EditableInput data-testid="edit-input" />
       <EditablePreview />
     </EditableArea>
-    <EditableControl v-if="editableRef?.api.isEditing">
+    <EditableControl v-if="isEditing">
       <EditableSubmitTrigger>
         <button>Save</button>
       </EditableSubmitTrigger>

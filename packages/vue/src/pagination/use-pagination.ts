@@ -1,23 +1,23 @@
 import { connect, machine, type Context as PaginationContext } from '@zag-js/pagination'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
 
-type UsePaginationPropsContext = Optional<PaginationContext, 'id'>
+export const usePagination = <T extends ExtractPropTypes<PaginationContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export type UsePaginationProps = {
-  context: UsePaginationPropsContext
-  emit: CallableFunction
-}
-
-export const usePagination = (props: UsePaginationProps) => {
-  const { context, emit } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      id: useId().value,
+      ...reactiveContext,
+      count: reactiveContext.count || 0,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       onChange(details) {
         emit('change', details)
       },
@@ -27,4 +27,4 @@ export const usePagination = (props: UsePaginationProps) => {
   return computed(() => connect(state.value, send, normalizeProps))
 }
 
-export type UsePaginationReturn = UnwrapRef<ReturnType<typeof usePagination>>
+export type UsePaginationReturn = ReturnType<typeof connect>

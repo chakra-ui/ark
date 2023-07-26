@@ -82,7 +82,7 @@ export const CodeExample = (props: CodeExampleProps) => {
         <Tabs className={tabs({ variant: 'fill' })} defaultValue="react">
           <TabList className={css({ borderBottomRadius: '0' })}>
             {frameworks.map((value) => (
-              <TabTrigger key={value} value={value}>
+              <TabTrigger key={value} value={value} asChild>
                 <button style={{ textTransform: 'capitalize' }}>{value}</button>
               </TabTrigger>
             ))}

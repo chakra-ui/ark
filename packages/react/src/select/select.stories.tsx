@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import {
   Select,
@@ -9,15 +10,23 @@ import {
   SelectPositioner,
   SelectTrigger,
 } from './'
+import './select.css'
+
+type SelectType = typeof Select
+
+const meta: Meta<SelectType> = {
+  title: 'Select',
+  component: Select,
+}
+
+export default meta
 
 export const Basic = () => (
   <Select defaultValue={{ label: 'React', value: 'react' }}>
     {({ selectedOption }) => (
       <>
         <SelectLabel>Framework:</SelectLabel>
-        <SelectTrigger>
-          <button>{selectedOption?.label ?? 'Select option'}</button>
-        </SelectTrigger>
+        <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
         <Portal>
           <SelectPositioner>
             <SelectContent>

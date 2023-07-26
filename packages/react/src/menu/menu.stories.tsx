@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
 import {
@@ -14,11 +15,18 @@ import {
 } from '.'
 import './menu.css'
 
+type MenuType = typeof Menu
+
+const meta: Meta<MenuType> = {
+  title: 'Menu',
+  component: Menu,
+}
+
+export default meta
+
 export const Basic = () => (
   <Menu>
-    <MenuTrigger>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>
@@ -36,9 +44,7 @@ export const Basic = () => (
 
 export const Group = () => (
   <Menu>
-    <MenuTrigger>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>
@@ -73,9 +79,7 @@ export const Options = () => {
         }))
       }}
     >
-      <MenuTrigger>
-        <button>Open menu</button>
-      </MenuTrigger>
+      <MenuTrigger>Open menu</MenuTrigger>
       <Portal>
         <MenuPositioner>
           <MenuContent>
@@ -115,9 +119,7 @@ export const Options = () => {
 
 export const SubMenu = () => (
   <Menu>
-    <MenuTrigger>
-      <button>Open menu</button>
-    </MenuTrigger>
+    <MenuTrigger>Open menu</MenuTrigger>
     <Portal>
       <MenuPositioner>
         <MenuContent>
@@ -156,9 +158,7 @@ export const ComplexSubMenu = () => {
         }))
       }}
     >
-      <MenuTrigger>
-        <button>Open menu</button>
-      </MenuTrigger>
+      <MenuTrigger>Open menu</MenuTrigger>
       <Portal>
         <MenuPositioner>
           <MenuContent>

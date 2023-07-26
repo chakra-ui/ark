@@ -28,23 +28,35 @@ Note that the `HoverCardTrigger` component accepts a single JSX element which
 will receive all necessary props to add the event listeners and attributes to
 ensure the desired accessibility.
 
-```tsx
-<HoverCard>
-  <HoverCardTrigger>
-    <a href="https://zagjs.com" target="_blank" rel="noreferrer">
-      zag
-    </a>
-  </HoverCardTrigger>
+```vue
+<script setup lang="ts">
+import { Teleport } from 'vue'
+import {
+  HoverCard,
+  HoverCardArrow,
+  HoverCardContent,
+  HoverCardInnerArrow,
+  HoverCardPositioner,
+  HoverCardTrigger,
+  Portal,
+} from '@ark-ui/vue'
+</script>
+<template>
+  <HoverCard>
+    <HoverCardTrigger>
+      <a href="https://zagjs.com" target="_blank" rel="noreferrer"> zag </a>
+    </HoverCardTrigger>
 
-  <Portal>
-    <HoverCardPositioner>
-      <HoverCardContent>
-        <HoverCardArrow>
-          <HoverCardInnerArrow />
-        </HoverCardArrow>
-        zag Preview
-      </HoverCardContent>
-    </HoverCardPositioner>
-  </Portal>
-</HoverCard>
+    <Teleport to="body">
+      <HoverCardPositioner>
+        <HoverCardContent>
+          <HoverCardArrow>
+            <HoverCardInnerArrow />
+          </HoverCardArrow>
+          zag Preview
+        </HoverCardContent>
+      </HoverCardPositioner>
+    </Teleport>
+  </HoverCard>
+</template>
 ```

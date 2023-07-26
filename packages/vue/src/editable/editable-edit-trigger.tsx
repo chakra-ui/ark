@@ -1,6 +1,9 @@
 import { defineComponent, h } from 'vue'
+import type { HTMLArkProps } from '../factory'
 import { useUniqueChild } from '../utils'
 import { useEditableContext } from './editable-context'
+
+export type EditableEditTriggerProps = HTMLArkProps<'button'>
 
 export const EditableEditTrigger = defineComponent({
   name: 'EditableEditTrigger',

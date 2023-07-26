@@ -1,26 +1,24 @@
-import { connect, machine, type Context as AccordionContext } from '@zag-js/accordion'
+import { connect, machine } from '@zag-js/accordion'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, onMounted, watch } from 'vue'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
+import type { AccordionContext } from './accordion'
 
-interface AccordionProps extends Omit<AccordionContext, 'id' | 'value'> {
-  modelValue?: AccordionContext['value']
-}
+export const useAccordion = <T extends ExtractPropTypes<AccordionContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export interface UseAccordionProps {
-  context: Omit<AccordionProps, 'id'>
-  emit: CallableFunction
-  defaultValue?: AccordionContext['value']
-}
-
-export const useAccordion = (props: UseAccordionProps) => {
-  const { context, emit, defaultValue } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      value: defaultValue,
-      id: useId().value,
+      ...reactiveContext,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
       onChange: (details) => {
         emit('change', details.value)
         emit(
@@ -31,23 +29,15 @@ export const useAccordion = (props: UseAccordionProps) => {
     }),
   )
 
-  onMounted(() => {
-    // Init modelValue with `defaultValue`.
-    // This is mostly relevant in case modelValue is empty but defaultValue is set.
-    emit('update:modelValue', Array.isArray(defaultValue) ? Array.from(defaultValue) : defaultValue)
-  })
+  const api = computed(() => connect(state.value, send, normalizeProps))
 
   watch(
-    () => context.modelValue,
+    () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
       api.value.setValue(value as string | string[])
     },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
   return { api }
 }
-
-export type UseAccordionReturn = ReturnType<typeof useAccordion>

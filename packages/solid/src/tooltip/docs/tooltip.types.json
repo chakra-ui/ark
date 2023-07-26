@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine.\n\n\nThe `id` of the tooltip."
     },
     "ids": {
-      "type": "Partial<{ trigger: string; content: string }>",
+      "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tooltip. Useful for composition."
     },
@@ -54,6 +54,11 @@
       "type": "VoidFunction",
       "isRequired": false,
       "description": "Function called when the tooltip is opened."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is open"
     },
     "openDelay": {
       "type": "number",

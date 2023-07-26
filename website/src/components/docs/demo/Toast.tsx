@@ -30,7 +30,7 @@ export const DemoToast = () => (
                         <ToastDescription />
                       </Stack>
                       <Stack direction="row" gap="3">
-                        <ToastCloseTrigger>
+                        <ToastCloseTrigger asChild>
                           <Button variant="link" size="sm">
                             Dismiss
                           </Button>
@@ -40,7 +40,7 @@ export const DemoToast = () => (
                         </Button>
                       </Stack>
                     </Stack>
-                    <ToastCloseTrigger>
+                    <ToastCloseTrigger asChild>
                       <CloseButton aria-label="Close toast" size="sm" variant="link" />
                     </ToastCloseTrigger>
                   </Toast>

@@ -10,21 +10,23 @@ export const Popover = (props: PopoverProps) => {
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
-    'defaultOpen',
     'getRootNode',
     'id',
     'ids',
     'initialFocusEl',
     'modal',
+    'onClose',
     'onEscapeKeyDown',
     'onFocusOutside',
     'onInteractOutside',
-    'onOpenChange',
+    'onOpen',
     'onPointerDownOutside',
+    'open',
     'portalled',
     'positioning',
   ])
-  const popover = usePopover(usePopoverProps)
 
-  return <PopoverProvider value={popover}>{restProps.children}</PopoverProvider>
+  const api = usePopover(usePopoverProps)
+
+  return <PopoverProvider value={api}>{restProps.children}</PopoverProvider>
 }

@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/shared/Avatar'
 import { Button } from '@/components/shared/Button'
 import { Text } from '@/components/shared/Text'
-import { panda, Stack } from '@/panda/jsx'
+import { Stack, styled } from '@/panda/jsx'
 import { hoverCard } from '@/panda/recipes'
 import {
   HoverCard,
@@ -16,7 +16,7 @@ import { FiMapPin } from 'react-icons/fi'
 
 export const DemoHoverCard = () => (
   <HoverCard>
-    <HoverCardTrigger>
+    <HoverCardTrigger asChild>
       <a href="https://github.com/segunadebayo" target="_blank" rel="noreferrer">
         <Avatar
           name="Segun Adebayo"
@@ -41,12 +41,12 @@ export const DemoHoverCard = () => (
             <Stack gap="2">
               <Stack gap="1">
                 <Stack direction="row" gap="1">
-                  <panda.span textStyle="sm" fontWeight="semibold">
+                  <styled.span textStyle="sm" fontWeight="semibold">
                     segunadebayo
-                  </panda.span>
-                  <panda.span textStyle="sm" color="fg.muted">
+                  </styled.span>
+                  <styled.span textStyle="sm" color="fg.muted">
                     Segun Adebayo
-                  </panda.span>
+                  </styled.span>
                 </Stack>
                 <Text textStyle="sm">Building @chakra-ui ⚡️. Design Systems and UI Engineer</Text>
               </Stack>

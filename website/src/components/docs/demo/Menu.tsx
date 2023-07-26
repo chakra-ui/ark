@@ -15,7 +15,7 @@ import {
   MenuTriggerItem,
   Portal,
 } from '@ark-ui/react'
-import { panda } from 'panda/jsx/factory'
+import { styled } from 'panda/jsx/factory'
 import { useState } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 
@@ -35,7 +35,7 @@ export const DemoMenu = () => {
       }}
       value={value}
     >
-      <MenuTrigger>
+      <MenuTrigger asChild>
         <Button>Open menu</Button>
       </MenuTrigger>
       <Portal>
@@ -71,19 +71,19 @@ export const DemoMenu = () => {
             <MenuItemGroup id="checkbox-group">
               <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
               <MenuOptionItem name="libraries" type="checkbox" value="react-1">
-                {({ isActive }) => <Checkbox defaultChecked={isActive}>React</Checkbox>}
+                {({ isActive }) => <Checkbox checked={isActive}>React</Checkbox>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="solid-1">
-                {({ isActive }) => <Checkbox defaultChecked={isActive}>Solid</Checkbox>}
+                {({ isActive }) => <Checkbox checked={isActive}>Solid</Checkbox>}
               </MenuOptionItem>
               <MenuOptionItem name="libraries" type="checkbox" value="vue-1">
-                {({ isActive }) => <Checkbox defaultChecked={isActive}>Vue</Checkbox>}
+                {({ isActive }) => <Checkbox checked={isActive}>Vue</Checkbox>}
               </MenuOptionItem>
             </MenuItemGroup>
             <MenuSeparator />
             <Menu closeOnSelect={false} positioning={{ placement: 'right-start' }}>
               <MenuTriggerItem>
-                <panda.span flex="1">More options</panda.span>
+                <styled.span flex="1">More options</styled.span>
                 <FiChevronRight />
               </MenuTriggerItem>
               <Portal>

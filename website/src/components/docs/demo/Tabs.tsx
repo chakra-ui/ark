@@ -4,15 +4,9 @@ import { TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '@ark-ui
 export const DemoTabs = (props: Partial<TabsProps>) => (
   <Tabs className={tabs({})} defaultValue="react" {...props}>
     <TabList>
-      <TabTrigger value="react">
-        <button>React</button>
-      </TabTrigger>
-      <TabTrigger value="solid">
-        <button>Solid</button>
-      </TabTrigger>
-      <TabTrigger value="vue">
-        <button>Vue</button>
-      </TabTrigger>
+      <TabTrigger value="react">React</TabTrigger>
+      <TabTrigger value="solid">Solid</TabTrigger>
+      <TabTrigger value="vue">Vue</TabTrigger>
       <TabIndicator />
     </TabList>
   </Tabs>

@@ -16,7 +16,7 @@
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },

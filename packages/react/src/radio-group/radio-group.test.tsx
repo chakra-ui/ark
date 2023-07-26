@@ -17,7 +17,7 @@ const options = [
 
 const Component = (props: RadioGroupProps) => (
   <RadioGroup {...props}>
-    <RadioGroupLabel as="h3">Fruits</RadioGroupLabel>
+    <RadioGroupLabel>Fruits</RadioGroupLabel>
     {options.map((option, id) => (
       <Radio key={id} value={option.id} disabled={option.disabled}>
         <RadioLabel>{option.label}</RadioLabel>
@@ -38,7 +38,7 @@ describe('Radio Group', () => {
     expect(onChange).toHaveBeenCalledWith({ value: 'grape' })
   })
 
-  it('should invoke onChange if another value has selected', async () => {
+  it('should not invoke onChange if option is disabled', async () => {
     const onChange = vi.fn()
 
     render(<Component onChange={onChange} />)

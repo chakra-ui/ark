@@ -1,6 +1,7 @@
 export { Editable, type EditableProps } from './editable'
 export { EditableArea, type EditableAreaProps } from './editable-area'
 export { EditableCancelTrigger, type EditableCancelTriggerProps } from './editable-cancel-trigger'
+export { useEditableContext } from './editable-context'
 export { EditableControl, type EditableControlProps } from './editable-control'
 export { EditableEditTrigger, type EditableEditTriggerProps } from './editable-edit-trigger'
 export { EditableInput, type EditableInputProps } from './editable-input'

@@ -2,7 +2,7 @@
   "PaginationProps": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
     "dir": {
-      "type": "Direction",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -41,6 +41,11 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "type": {
+      "type": "'button' | 'link'",
+      "isRequired": false,
+      "description": "The type of the trigger element"
     }
   },
   "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },

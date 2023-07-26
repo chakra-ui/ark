@@ -1,26 +1,24 @@
-import { connect, machine, type Context } from '@zag-js/range-slider'
+import { connect, machine } from '@zag-js/range-slider'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, watch, type UnwrapRef } from 'vue'
-import { type Optional } from '../types'
-import { transformComposableProps, useId } from '../utils'
+import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import { useId } from '../utils'
+import type { RangeSliderContext } from './range-slider'
 
-type UseRangeSliderPropsContext = Optional<Context, 'id'> & {
-  modelValue?: Context['value']
-}
+export const useRangeSlider = <T extends ExtractPropTypes<RangeSliderContext>>(
+  emit: CallableFunction,
+  context: T,
+) => {
+  const reactiveContext = reactive(context)
 
-export type UseRangeSliderProps = {
-  context: UseRangeSliderPropsContext
-  emit: CallableFunction
-}
-
-export const useRangeSlider = (props: UseRangeSliderProps) => {
-  const { context, emit } = transformComposableProps(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     machine({
-      ...context,
-      id: useId().value,
-      value: context.modelValue ?? context.value,
+      ...reactiveContext,
+      id: reactiveContext.id || useId().value,
+      getRootNode,
+      value: reactiveContext.modelValue ?? reactiveContext.value,
       onChangeStart(details) {
         emit('change-start', details)
       },
@@ -34,18 +32,7 @@ export const useRangeSlider = (props: UseRangeSliderProps) => {
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => context.modelValue,
-    (val, oldVal) => {
-      if (val == undefined || val === oldVal) return
-
-      api.value.setValue(val)
-    },
-  )
-
-  return api
+  return computed(() => connect(state.value, send, normalizeProps))
 }
 
 export type UseRangeSliderReturn = UnwrapRef<ReturnType<typeof useRangeSlider>>

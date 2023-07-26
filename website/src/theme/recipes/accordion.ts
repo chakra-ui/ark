@@ -27,7 +27,7 @@ export const accordion = defineRecipe({
       pb: '2',
       textStyle: 'md',
       width: '100%',
-      '&:not([data-expanded])': {
+      _closed: {
         pb: '4',
       },
     },

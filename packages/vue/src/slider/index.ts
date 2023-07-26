@@ -1,4 +1,5 @@
 export { Slider, type SliderProps } from './slider'
+export { useSliderContext } from './slider-context'
 export { SliderControl, type SliderControlProps } from './slider-control'
 export { SliderLabel, type SliderLabelProps } from './slider-label'
 export { SliderMarker, type SliderMarkerProps } from './slider-marker'

@@ -42,7 +42,7 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
   return (
     <Select
       defaultValue={defaultValue}
-      positioning={{ gutter: 2, placement: 'bottom-start', sameWidth: true }}
+      positioning={{ gutter: 2, sameWidth: true }}
       onChange={(e) => {
         if (pathName) {
           router.push(pathName.replace(/\/(solid|vue|react)\//, `/${e?.value}/`))
@@ -61,7 +61,7 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
           >
             Framework
           </SelectLabel>
-          <SelectTrigger>
+          <SelectTrigger asChild>
             <button className={select({ size: 'xs' })}>
               <span>{selectedOption?.label ?? 'Select option'}</span>
               <SelectIcon isOpen={isOpen} />

@@ -7,10 +7,10 @@ import {
   SliderMarker,
   SliderMarkerGroup,
   SliderOutput,
-  SliderProps,
   SliderRange,
   SliderThumb,
   SliderTrack,
+  type SliderProps,
 } from '../'
 import '../slider.css'
 

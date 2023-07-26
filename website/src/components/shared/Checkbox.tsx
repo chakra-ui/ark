@@ -1,4 +1,4 @@
-import { panda } from '@/panda/jsx'
+import { styled } from '@/panda/jsx'
 import { checkbox } from '@/panda/recipes'
 import {
   Checkbox as ArkCheckbox,
@@ -24,7 +24,7 @@ export const Checkbox = (props: CheckboxProps) => (
         </CheckboxControl>
         {props.children && (
           <CheckboxLabel>
-            <panda.span fontWeight="medium">{props.children}</panda.span>
+            <styled.span fontWeight="medium">{props.children}</styled.span>
           </CheckboxLabel>
         )}
       </>

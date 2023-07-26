@@ -1,6 +1,6 @@
 'use client'
 import { css, cx } from '@/panda/css'
-import { Box, Container, HStack, Stack } from '@/panda/jsx'
+import { Box, Container, Flex, HStack, Stack } from '@/panda/jsx'
 import { tabs } from '@/panda/recipes'
 import {
   Carousel,
@@ -16,11 +16,36 @@ import {
 } from '@ark-ui/react'
 import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
-import { DemoSplitter } from '../docs/demo/Splitter'
+import { DemoAccordion } from '../docs/demo/Accordion'
+import { DemoColorPicker } from '../docs/demo/ColorPicker'
+import { DemoDatePicker } from '../docs/demo/DatePicker'
+import { DemoMenu } from '../docs/demo/Menu'
+import { DemoPopover } from '../docs/demo/Popover'
+import { DemoSlider } from '../docs/demo/Slider'
 import { IconButton } from '../shared/IconButton'
 
+const components = [
+  { name: 'Color Picker', demo: <DemoColorPicker /> },
+  { name: 'Date Picker', demo: <DemoDatePicker /> },
+  {
+    name: 'Slider',
+    demo: <DemoSlider />,
+  },
+  {
+    name: 'Menu',
+    demo: <DemoMenu />,
+  },
+  {
+    name: 'Popover',
+    demo: <DemoPopover />,
+  },
+  {
+    name: 'Accordion',
+    demo: <DemoAccordion />,
+  },
+] as const
+
 export const Showcase = () => {
-  const components = ['Dialog', 'Menu', 'Popover', 'Slider', 'Accordion']
   const [index, setIndex] = useState(0)
   return (
     <Container py={{ base: '12', md: '16' }}>
@@ -39,10 +64,10 @@ export const Showcase = () => {
             >
               <CarouselSlideGroup>
                 {components.map((component, id) => (
-                  <CarouselSlide key={component} index={id}>
-                    <Box p="4">
-                      <DemoSplitter />
-                    </Box>
+                  <CarouselSlide key={component.name} index={id}>
+                    <Flex px="4" py="6" justify="center" align="center">
+                      {component.demo}
+                    </Flex>
                   </CarouselSlide>
                 ))}
               </CarouselSlideGroup>
@@ -53,23 +78,25 @@ export const Showcase = () => {
                   tabs({ variant: 'fill' }),
                   css({ display: { base: 'none', sm: 'block' } }),
                 )}
-                value={components[index]}
-                onChange={({ value }) => setIndex(components.indexOf(value ?? ''))}
+                value={components[index].name}
+                onChange={({ value }) =>
+                  setIndex(components.findIndex((component) => component.name === value))
+                }
               >
                 <TabList className={css({ display: 'inline-flex' })}>
                   {components.map((component) => (
-                    <TabTrigger key={component} value={component}>
-                      <button>{component}</button>
+                    <TabTrigger key={component.name} value={component.name}>
+                      {component.name}
                     </TabTrigger>
                   ))}
                   <TabIndicator />
                 </TabList>
               </Tabs>
               <HStack gap="3" justify="space-between" flex="1">
-                <CarouselPrevSlideTrigger>
+                <CarouselPrevSlideTrigger asChild>
                   <IconButton icon={<FiArrowLeft />} aria-label="Previous component" />
                 </CarouselPrevSlideTrigger>
-                <CarouselNextSlideTrigger>
+                <CarouselNextSlideTrigger asChild>
                   <IconButton icon={<FiArrowRight />} aria-label="Next component" />
                 </CarouselNextSlideTrigger>
               </HStack>
