@@ -17,7 +17,7 @@ type Foo = Assign<
   }
 >
 
-export const Checkbox = forwardRef<'label', CheckboxProps>((props, ref) => {
+export const Checkbox = forwardRef<'label', Foo>((props, ref) => {
   const [useCheckboxProps, { children, ...labelProps }] = checkboxSplitProps(props)
 
   const checkbox = useCheckbox(useCheckboxProps)
