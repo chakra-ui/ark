@@ -14,7 +14,7 @@ type ChangeDetails = Parameters<NonNullable<colorPicker.Context['onChange']>>[0]
 
 export const useColorPicker = (props: UseColorPickerProps) => {
   const getRootNode = useEnvironmentContext()
-  const initialContext = {
+  const initialContext: colorPicker.Context = {
     id: useId(),
     getRootNode,
     ...props,
