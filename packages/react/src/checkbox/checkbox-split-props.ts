@@ -13,27 +13,18 @@ export type CheckboxProps = Assign<
 >
 
 export const checkboxSplitProps = (props: CheckboxProps) => {
-  const [useCheckboxProps, omittedCheckboxProps] = createSplitProps<UseCheckboxProps>()(props, [
-    'aria-describedby',
-    'aria-label',
-    'aria-labelledby',
-    'defaultChecked',
+  return createSplitProps<UseCheckboxProps>()(props, [
     'checked',
     'dir',
     'disabled',
-    'focusable',
     'form',
     'getRootNode',
     'id',
     'ids',
-    'indeterminate',
     'invalid',
     'name',
     'onChange',
-    'readOnly',
     'required',
     'value',
   ])
-
-  return [useCheckboxProps, omittedCheckboxProps]
 }
