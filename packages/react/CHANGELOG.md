@@ -8,7 +8,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Added `flushSync` to number input `onChange` handler to allow synchronous updates to the value when using the scrubber.
+- Updated number input `onChange` handler to allow synchronous updates to the value when using the scrubber.
+- Improved TypeScript typings in our factory functions. The changes allow for more accurate type inference for the `ref` property when dealing with both intrinsic HTML elements and custom React components.
 
 ## [0.9.0] - 2023-07-21
 

@@ -80,6 +80,8 @@ importers:
         specifier: 0.4.132
         version: 0.4.132(vite@4.3.9)
 
+  examples/solid/vite-ts/dist/server: {}
+
   packages/react:
     dependencies:
       '@zag-js/accordion':

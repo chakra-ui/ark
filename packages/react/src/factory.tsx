@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { mergeProps } from '@zag-js/react'
-import { Children, cloneElement, forwardRef, isValidElement } from 'react'
+import React, { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
 
 export type AsChildProps = {
@@ -15,8 +15,17 @@ type JsxElements = {
 export type AsChildForwardRefComponent<E extends React.ElementType> =
   React.ForwardRefExoticComponent<AsChildComponentProps<E>>
 
-export type AsChildComponentProps<E extends React.ElementType> = React.ComponentProps<E> &
-  AsChildProps
+export type AsChildComponentProps<E extends React.ElementType> = Omit<
+  React.ComponentProps<E>,
+  'ref'
+> &
+  AsChildProps & {
+    ref?: E extends keyof JSX.IntrinsicElements
+      ? JSX.IntrinsicElements[E] extends { ref?: infer R }
+        ? R
+        : never
+      : React.RefObject<HTMLElement>
+  }
 
 export type HTMLArkProps<T extends React.ElementType> = AsChildComponentProps<T>
 
