@@ -7,11 +7,11 @@ import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
 export type ColorPickerChannelInputProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.input>,
-  ColorChannelInputProps
+  ColorChannelInputProps,
+  ComponentPropsWithoutRef<typeof ark.input>
 >
 
-export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorChannelInputProps>(
+export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerChannelInputProps>(
   (props, ref) => {
     const [channelProps, inputProps] = createSplitProps<ColorChannelInputProps>()(props, [
       'channel',
