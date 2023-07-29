@@ -1,14 +1,16 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuSeparatorProps = HTMLArkProps<'hr'>
+export type MenuSeparatorProps = ComponentPropsWithoutRef<typeof ark.hr>
 
-export const MenuSeparator = forwardRef<'hr', MenuSeparatorProps>((props, ref) => {
+export const MenuSeparator = forwardRef<HTMLHRElement, MenuSeparatorProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const mergedProps = mergeProps(api?.separatorProps ?? {}, props)
 
   return <ark.hr {...mergedProps} ref={ref} />
 })
+
+MenuSeparator.displayName = 'MenuSeparator'

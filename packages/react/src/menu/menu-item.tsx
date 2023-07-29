@@ -1,16 +1,16 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
 type MenuItemParams = Parameters<UseMenuReturn['api']['getItemProps']>[0]
 
-export type MenuItemProps = Assign<HTMLArkProps<'button'>, MenuItemParams>
+export type MenuItemProps = Assign<ComponentPropsWithoutRef<typeof ark.button>, MenuItemParams>
 
-export const MenuItem = forwardRef<'div', MenuItemProps>((props, ref) => {
+export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const [menuItemProps, buttonProps] = createSplitProps<MenuItemParams>()(props, [
     'id',
@@ -21,3 +21,5 @@ export const MenuItem = forwardRef<'div', MenuItemProps>((props, ref) => {
   const mergedProps = mergeProps(api?.getItemProps(menuItemProps) ?? {}, buttonProps)
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+MenuItem.displayName = 'MenuItem'

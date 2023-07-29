@@ -1,15 +1,20 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderThumbProps = HTMLArkProps<'div'>
+export type ColorPickerChannelSliderThumbProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const ColorPickerChannelSliderThumb = forwardRef<'div'>((props, ref) => {
+export const ColorPickerChannelSliderThumb = forwardRef<
+  HTMLDivElement,
+  ColorPickerChannelSliderThumbProps
+>((props, ref) => {
   const sliderContext = useColorPickerChannelSliderContext()
   const { getChannelSliderThumbProps } = useColorPickerContext()
   const mergedProps = mergeProps(getChannelSliderThumbProps(sliderContext), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+ColorPickerChannelSliderThumb.displayName = 'ColorPickerChannelSliderThumb'

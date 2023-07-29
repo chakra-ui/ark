@@ -46,10 +46,6 @@
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "value": {
       "type": "string | string[]",
       "isRequired": false,
@@ -64,10 +60,6 @@
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
@@ -76,16 +68,6 @@
   },
   "AccordionItemProps": {
     "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "AccordionTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

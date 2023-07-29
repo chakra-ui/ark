@@ -1,9 +1,13 @@
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { parts } from './date-picker.anatomy'
 
-export type DatePickerColumnHeaderProps = HTMLArkProps<'div'>
+export type DatePickerColumnHeaderProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const DatePickerColumnHeader = forwardRef<'div'>((props, ref) => {
-  return <ark.div role="columnheader" {...parts.columnHeader.attrs} {...props} ref={ref} />
-})
+export const DatePickerColumnHeader = forwardRef<HTMLDivElement, DatePickerColumnHeaderProps>(
+  (props, ref) => {
+    return <ark.div role="columnheader" {...parts.columnHeader.attrs} {...props} ref={ref} />
+  },
+)
+
+DatePickerColumnHeader.displayName = 'DatePickerColumnHeader'

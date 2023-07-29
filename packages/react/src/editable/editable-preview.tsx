@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditablePreviewProps = HTMLArkProps<'span'>
+export type EditablePreviewProps = ComponentPropsWithoutRef<typeof ark.span>
 
-export const EditablePreview = forwardRef<'span'>((props, ref) => {
+export const EditablePreview = forwardRef<HTMLSpanElement, EditablePreviewProps>((props, ref) => {
   const { previewProps } = useEditableContext()
   const mergedProps = mergeProps(previewProps, props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })
+
+EditablePreview.displayName = 'EditablePreview'

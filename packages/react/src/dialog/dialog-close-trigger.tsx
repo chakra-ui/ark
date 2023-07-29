@@ -1,12 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useDialogContext } from './dialog-context'
 
-export type DialogCloseTriggerProps = HTMLArkProps<'button'>
-export const DialogCloseTrigger = forwardRef<'button'>((props, ref) => {
-  const { closeTriggerProps } = useDialogContext()
-  const mergedProps = mergeProps(closeTriggerProps, props)
+export type DialogCloseTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+export const DialogCloseTrigger = forwardRef<HTMLButtonElement, DialogCloseTriggerProps>(
+  (props, ref) => {
+    const { closeTriggerProps } = useDialogContext()
+    const mergedProps = mergeProps(closeTriggerProps, props)
+
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
+
+DialogCloseTrigger.displayName = 'DialogCloseTrigger'

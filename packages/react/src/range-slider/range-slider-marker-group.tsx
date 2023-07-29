@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useRangeSliderContext } from './range-slider-context'
 
-export type RangeSliderMarkerGroupProps = HTMLArkProps<'div'>
+export type RangeSliderMarkerGroupProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const RangeSliderMarkerGroup = forwardRef<'div', RangeSliderMarkerGroupProps>(
+export const RangeSliderMarkerGroup = forwardRef<HTMLDivElement, RangeSliderMarkerGroupProps>(
   (props, ref) => {
     const { markerGroupProps } = useRangeSliderContext()
     const mergedProps = mergeProps(markerGroupProps, props)
@@ -13,3 +13,5 @@ export const RangeSliderMarkerGroup = forwardRef<'div', RangeSliderMarkerGroupPr
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
+
+RangeSliderMarkerGroup.displayName = 'RangeSliderMarkerGroup'

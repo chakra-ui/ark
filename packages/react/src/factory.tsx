@@ -4,33 +4,16 @@ import { mergeProps } from '@zag-js/react'
 import React, { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import { composeRefs } from './compose-refs'
 
-export type AsChildProps = {
+type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
+type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<
+  ArkPropsWithRef<E>
+>
+type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & {
   asChild?: boolean
 }
 
-type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
-}
-
-export type AsChildForwardRefComponent<E extends React.ElementType> =
-  React.ForwardRefExoticComponent<AsChildComponentProps<E>>
-
-export type AsChildComponentProps<E extends React.ElementType> = Omit<
-  React.ComponentProps<E>,
-  'ref'
-> &
-  AsChildProps & {
-    ref?: E extends keyof JSX.IntrinsicElements
-      ? JSX.IntrinsicElements[E] extends { ref?: infer R }
-        ? R
-        : never
-      : React.RefObject<HTMLElement>
-  }
-
-export type HTMLArkProps<T extends React.ElementType> = AsChildComponentProps<T>
-
 const withAsChild = (Component: React.ElementType) => {
-  const Comp = forwardRef<unknown, React.PropsWithChildren<AsChildProps>>((props, ref) => {
+  const Comp = forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
     const { asChild, children, ...restProps } = props
 
     if (!asChild) {

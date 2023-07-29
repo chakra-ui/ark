@@ -11,22 +11,6 @@
       "description": "The unique identifier of the machine."
     },
     "onError": { "type": "() => void", "isRequired": false },
-    "onLoad": { "type": "() => void", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "AvatarFallbackProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
-      "isRequired": false
-    }
-  },
-  "AvatarImageProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLImageElement | null) => void)\n  | RefObject<HTMLImageElement>",
-      "isRequired": false
-    }
+    "onLoad": { "type": "() => void", "isRequired": false }
   }
 }

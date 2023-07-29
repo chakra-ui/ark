@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchInputProps = HTMLArkProps<'input'>
+export type SwitchInputProps = ComponentPropsWithoutRef<typeof ark.input>
 
-export const SwitchInput = forwardRef<'input'>((props, ref) => {
+export const SwitchInput = forwardRef<HTMLInputElement, SwitchInputProps>((props, ref) => {
   const { inputProps } = useSwitchContext()
   const mergedProps = mergeProps(inputProps, props)
 
   return <ark.input {...mergedProps} ref={ref} />
 })
+
+SwitchInput.displayName = 'SwitchInput'

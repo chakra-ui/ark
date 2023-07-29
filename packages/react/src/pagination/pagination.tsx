@@ -1,21 +1,20 @@
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
 import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 
 export type PaginationProps = Assign<
-  Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
+  Assign<ComponentPropsWithoutRef<typeof ark.nav>, UsePaginationProps>,
   {
     children: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
   }
 >
 
-export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
+export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
   const [paginationProps, { children, ...navProps }] = createSplitProps<UsePaginationProps>()(
     props,
     [
@@ -45,3 +44,5 @@ export const Pagination = forwardRef<'nav', PaginationProps>((props, ref) => {
     </PaginationProvider>
   )
 })
+
+Pagination.displayName = 'Pagination'

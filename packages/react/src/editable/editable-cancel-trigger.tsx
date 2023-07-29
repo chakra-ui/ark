@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { type ReactElement } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { forwardRef } from '../forward-ref'
 import { useEditableContext } from './editable-context'
 
-export type EditableCancelTriggerProps = { children: ReactElement }
+export type EditableCancelTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
-export const EditableCancelTrigger = forwardRef<'button'>((props, ref) => {
-  const { cancelTriggerProps } = useEditableContext()
-  const mergedProps = mergeProps(cancelTriggerProps, props)
+export const EditableCancelTrigger = forwardRef<HTMLButtonElement, EditableCancelTriggerProps>(
+  (props, ref) => {
+    const { cancelTriggerProps } = useEditableContext()
+    const mergedProps = mergeProps(cancelTriggerProps, props)
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
+
+EditableCancelTrigger.displayName = 'EditableArea'

@@ -1,13 +1,18 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextPageTriggerProps = HTMLArkProps<'button'>
+export type PaginationNextPageTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
-export const PaginationNextPageTrigger = forwardRef<'button'>((props, ref) => {
+export const PaginationNextPageTrigger = forwardRef<
+  HTMLButtonElement,
+  PaginationNextPageTriggerProps
+>((props, ref) => {
   const { nextPageTriggerProps } = usePaginationContext()
   const mergedProps = mergeProps(nextPageTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })
+
+PaginationNextPageTrigger.displayName = 'PaginationNextPageTrigger'

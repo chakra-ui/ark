@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxPositionerProps = HTMLArkProps<'div'>
+export type ComboboxPositionerProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const ComboboxPositioner = forwardRef<'div'>((props, ref) => {
-  const { positionerProps } = useComboboxContext()
-  const mergedProps = mergeProps(positionerProps, props)
+export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(
+  (props, ref) => {
+    const { positionerProps } = useComboboxContext()
+    const mergedProps = mergeProps(positionerProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)
+
+ComboboxPositioner.displayName = 'ComboboxPositioner'

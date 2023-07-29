@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerControlProps = HTMLArkProps<'div'>
+export type DatePickerControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const DatePickerControl = forwardRef<'div'>((props, ref) => {
-  const { controlProps } = useDatePickerContext()
-  const mergedProps = mergeProps(controlProps, props)
+export const DatePickerControl = forwardRef<HTMLDivElement, DatePickerControlProps>(
+  (props, ref) => {
+    const { controlProps } = useDatePickerContext()
+    const mergedProps = mergeProps(controlProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)
+
+DatePickerControl.displayName = 'DatePickerControl'

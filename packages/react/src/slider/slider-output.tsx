@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { forwardRef } from '../forward-ref'
 import { runIfFn } from '../run-if-fn'
 import { useSliderContext, type SliderContext } from './slider-context'
 
 export type SliderOutputProps = {
   children?: ((context: SliderContext) => React.ReactNode) | React.ReactNode
-}
+} & ComponentPropsWithoutRef<typeof ark.output>
 
-export const SliderOutput = forwardRef<'output', SliderOutputProps>((props, ref) => {
+export const SliderOutput = forwardRef<HTMLOutputElement, SliderOutputProps>((props, ref) => {
   const { children, ...restProps } = props
   const slider = useSliderContext()
   const mergedProps = mergeProps(slider.outputProps, restProps)
@@ -20,3 +20,5 @@ export const SliderOutput = forwardRef<'output', SliderOutputProps>((props, ref)
     </ark.output>
   )
 })
+
+SliderOutput.displayName = 'SliderOutput'

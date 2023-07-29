@@ -135,10 +135,6 @@
       "isRequired": false,
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "selectInputOnFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -173,32 +169,10 @@
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLUListElement | null) => void)\n  | RefObject<HTMLUListElement>",
-      "isRequired": false
-    },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
-  "ComboboxControlProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "ComboboxInputProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
-      "isRequired": false
-    }
-  },
-  "ComboboxLabelProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
-      "isRequired": false
     }
   },
   "ComboboxOptionProps": {
@@ -226,22 +200,6 @@
       "type": "number",
       "isRequired": false,
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
-    },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLIElement | null) => void)\n  | RefObject<HTMLLIElement>",
-      "isRequired": false
-    }
-  },
-  "ComboboxPositionerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "ComboboxTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
     }
   }
 }

@@ -77,30 +77,6 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "MenuArrowProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "MenuArrowTipProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "MenuContentProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "MenuContextTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
-  },
   "MenuItemProps": {
     "id": {
       "type": "string",
@@ -117,10 +93,6 @@
       "isRequired": false,
       "description": "Whether the menu item is disabled"
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    },
     "valueText": {
       "type": "string",
       "isRequired": false,
@@ -132,41 +104,7 @@
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
-    },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
     }
   },
-  "MenuItemGroupLabelProps": {
-    "htmlFor": { "type": "string", "isRequired": true },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
-      "isRequired": false
-    }
-  },
-  "MenuPositionerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "MenuSeparatorProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLHRElement | null) => void)\n  | RefObject<HTMLHRElement>",
-      "isRequired": false
-    }
-  },
-  "MenuTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
-  },
-  "MenuTriggerItemProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  }
+  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

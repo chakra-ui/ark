@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipArrowTipProps = HTMLArkProps<'div'>
+export type TooltipArrowTipProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const TooltipArrowTip = forwardRef<'div', TooltipArrowTipProps>((props, ref) => {
+export const TooltipArrowTip = forwardRef<HTMLDivElement, TooltipArrowTipProps>((props, ref) => {
   const { arrowTipProps } = useTooltipContext()
   const mergedProps = mergeProps(arrowTipProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+TooltipArrowTip.displayName = 'TooltipArrowTip'

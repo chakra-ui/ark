@@ -1,21 +1,20 @@
 import { mergeProps } from '@zag-js/react'
 import { type Placement, type Service } from '@zag-js/toast'
-import { type ReactNode } from 'react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useToast } from './toast-provider'
 
 export type ToastGroupProps = Assign<
-  HTMLArkProps<'div'>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   {
     placement: Placement
     children: ReactNode | ((toasts: Service[]) => ReactNode)
   }
 >
 
-export const ToastGroup = forwardRef<'div', ToastGroupProps>((props, ref) => {
+export const ToastGroup = forwardRef<HTMLDivElement, ToastGroupProps>((props, ref) => {
   const { children, placement, ...divProps } = props
   const { toastsByPlacement, getGroupProps } = useToast()
   const mergedProps = mergeProps(getGroupProps({ placement }), divProps)
@@ -27,3 +26,5 @@ export const ToastGroup = forwardRef<'div', ToastGroupProps>((props, ref) => {
     </ark.div>
   )
 })
+
+ToastGroup.displayName = 'ToastGroup'

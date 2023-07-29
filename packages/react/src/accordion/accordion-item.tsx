@@ -1,8 +1,8 @@
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
@@ -10,13 +10,13 @@ import { AccordionItemProvider } from './accordion-item-context'
 
 export type AccordionItemProps = ItemProps &
   Assign<
-    HTMLArkProps<'div'>,
+    ComponentPropsWithoutRef<typeof ark.div>,
     {
       children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
     }
   >
 
-export const AccordionItem = forwardRef<'div', AccordionItemProps>((props, ref) => {
+export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
   const [itemProps, { children, ...rest }] = createSplitProps<ItemProps>()(props, [
     'value',
     'disabled',
@@ -35,3 +35,5 @@ export const AccordionItem = forwardRef<'div', AccordionItemProps>((props, ref) 
     </AccordionItemProvider>
   )
 })
+
+AccordionItem.displayName = 'AccordionItem'

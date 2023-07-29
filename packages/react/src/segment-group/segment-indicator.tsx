@@ -1,14 +1,16 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 
-export type SegmentIndicatorProps = HTMLArkProps<'div'>
+export type SegmentIndicatorProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const SegmentIndicator = forwardRef<'div'>((props, ref) => {
+export const SegmentIndicator = forwardRef<HTMLDivElement, SegmentIndicatorProps>((props, ref) => {
   const { indicatorProps } = useSegmentGroupContext()
   const mergedProps = mergeProps(indicatorProps, props)
 
   return <ark.div {...mergedProps} {...parts.indicator.attrs} ref={ref} />
 })
+
+SegmentIndicator.displayName = 'SegmentIndicator'

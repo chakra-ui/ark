@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import type { Assign } from '../types'
 import { SegmentProvider, type SegmentContext } from './segment-context'
 import { useSegmentGroupContext } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 
-export type SegmentProps = Assign<HTMLArkProps<'label'>, SegmentContext>
+export type SegmentProps = Assign<ComponentPropsWithoutRef<typeof ark.label>, SegmentContext>
 
-export const Segment = forwardRef<'label', SegmentContext>((props, ref) => {
+export const Segment = forwardRef<HTMLLabelElement, SegmentProps>((props, ref) => {
   const { value, disabled, invalid, readOnly, ...divProps } = props
   const { getRadioProps } = useSegmentGroupContext()
   const mergedProps = mergeProps(getRadioProps({ value, disabled }), divProps)
@@ -19,3 +19,5 @@ export const Segment = forwardRef<'label', SegmentContext>((props, ref) => {
     </SegmentProvider>
   )
 })
+
+Segment.displayName = 'Segment'

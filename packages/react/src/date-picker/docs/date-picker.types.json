@@ -124,112 +124,24 @@
     "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
     "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
   },
-  "DatePickerContentProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerControlProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
   "DatePickerDayCellProps": {
     "value": { "type": "DateValue", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
+    "offset": { "type": "Offset", "isRequired": false }
   },
   "DatePickerGridProps": {
     "columns": { "type": "number", "isRequired": false },
     "id": { "type": "string", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "view": { "type": "DateView", "isRequired": false }
-  },
-  "DatePickerInputProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
-      "isRequired": false
-    }
   },
   "DatePickerMonthCellProps": {
     "value": { "type": "number", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   },
-  "DatePickerMonthSelectProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSelectElement | null) => void)\n  | RefObject<HTMLSelectElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerNextTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerPrevTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    },
-    "view": { "type": "DateView", "isRequired": false }
-  },
-  "DatePickerRowProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerRowGroupProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerRowHeaderProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerViewTriggerProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    },
-    "view": { "type": "DateView", "isRequired": false }
-  },
+  "DatePickerPrevTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
+  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
   "DatePickerYearCellProps": {
     "value": { "type": "number", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "DatePickerYearSelectProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSelectElement | null) => void)\n  | RefObject<HTMLSelectElement>",
-      "isRequired": false
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

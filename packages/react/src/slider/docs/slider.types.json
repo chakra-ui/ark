@@ -101,10 +101,6 @@
       "isRequired": false,
       "description": "Whether the slider is read-only"
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "step": {
       "type": "number",
       "isRequired": false,
@@ -117,47 +113,5 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
   },
-  "SliderControlProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "SliderLabelProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
-      "isRequired": false
-    }
-  },
-  "SliderMarkerProps": {
-    "value": { "type": "number", "isRequired": true },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
-      "isRequired": false
-    }
-  },
-  "SliderMarkerGroupProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "SliderRangeProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "SliderThumbProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "SliderTrackProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  }
+  "SliderMarkerProps": { "value": { "type": "number", "isRequired": true } }
 }

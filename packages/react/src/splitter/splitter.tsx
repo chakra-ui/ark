@@ -1,21 +1,21 @@
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
 
 export type SplitterProps = Assign<
-  HTMLArkProps<'div'>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   UseSplitterProps & {
     children?: ReactNode | ((state: UseSplitterReturn) => ReactNode)
   }
 >
 
-export const Splitter = forwardRef<'div', SplitterProps>((props, ref) => {
+export const Splitter = forwardRef<HTMLDivElement, SplitterProps>((props, ref) => {
   const [useSplitterProps, { children, ...divProps }] = createSplitProps<UseSplitterProps>()(
     props,
     [
@@ -43,3 +43,5 @@ export const Splitter = forwardRef<'div', SplitterProps>((props, ref) => {
     </SplitterProvider>
   )
 })
+
+Splitter.displayName = 'Splitter'

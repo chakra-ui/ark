@@ -1,13 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { splitPresenceProps } from '../presence'
 import { useSelectContext } from './select-context'
 import { SelectPresence, type SelectPresenceProps } from './select-presence'
 
-export type SelectContentProps = HTMLArkProps<'ul'> & Omit<SelectPresenceProps, 'children'>
+export type SelectContentProps = ComponentPropsWithoutRef<typeof ark.ul> &
+  Omit<SelectPresenceProps, 'children'>
 
-export const SelectContent = forwardRef<'ul', SelectContentProps>((props, ref) => {
+export const SelectContent = forwardRef<HTMLUListElement, SelectContentProps>((props, ref) => {
   const [presenceProps, selectContentProps] = splitPresenceProps(props)
   return (
     <SelectPresence {...presenceProps}>
@@ -16,9 +17,15 @@ export const SelectContent = forwardRef<'ul', SelectContentProps>((props, ref) =
   )
 })
 
-const InnerSelectContent = forwardRef<'ul', HTMLArkProps<'ul'>>((props, ref) => {
-  const { contentProps } = useSelectContext()
-  const mergedProps = mergeProps(contentProps, props)
+SelectContent.displayName = 'SelectContent'
 
-  return <ark.ul {...mergedProps} ref={ref} />
-})
+const InnerSelectContent = forwardRef<HTMLUListElement, ComponentPropsWithoutRef<typeof ark.ul>>(
+  (props, ref) => {
+    const { contentProps } = useSelectContext()
+    const mergedProps = mergeProps(contentProps, props)
+
+    return <ark.ul {...mergedProps} ref={ref} />
+  },
+)
+
+InnerSelectContent.displayName = 'InnerSelectContent'

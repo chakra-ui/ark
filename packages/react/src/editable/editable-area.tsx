@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableAreaProps = HTMLArkProps<'div'>
+export type EditableAreaProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const EditableArea = forwardRef<'div'>((props, ref) => {
+export const EditableArea = forwardRef<HTMLDivElement, EditableAreaProps>((props, ref) => {
   const { areaProps } = useEditableContext()
   const mergedProps = mergeProps(areaProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+EditableArea.displayName = 'EditableArea'

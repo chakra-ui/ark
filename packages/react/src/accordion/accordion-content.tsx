@@ -1,27 +1,31 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { splitPresenceProps } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 import { AccordionItemPresence, type AccordionItemPresenceProps } from './accordion-item-presence'
 
-export type AccordionContentProps = HTMLArkProps<'div'> &
+export type AccordionContentProps = ComponentPropsWithoutRef<typeof ark.div> &
   Omit<AccordionItemPresenceProps, 'children'>
 
-export const AccordionContent = forwardRef<'div', AccordionContentProps>((props, ref) => {
-  const [presenceProps, accordionContentProps] = splitPresenceProps(props)
-  return (
-    <AccordionItemPresence {...presenceProps}>
-      <InnerAccordionContent ref={ref} {...accordionContentProps} />
-    </AccordionItemPresence>
-  )
-})
+export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
+  function AccordionContent(props, ref) {
+    const [presenceProps, accordionContentProps] = splitPresenceProps(props)
+    return (
+      <AccordionItemPresence {...presenceProps}>
+        <InnerAccordionContent ref={ref} {...accordionContentProps} />
+      </AccordionItemPresence>
+    )
+  },
+)
 
-const InnerAccordionContent = forwardRef<'div', HTMLArkProps<'div'>>((props, ref) => {
-  const { getContentProps } = useAccordionContext()
-  const accordionItem = useAccordionItemContext()
-  const mergedProps = mergeProps(getContentProps(accordionItem), props)
+const InnerAccordionContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
+  function InnerAccordionContent(props, ref) {
+    const { getContentProps } = useAccordionContext()
+    const accordionItem = useAccordionItemContext()
+    const mergedProps = mergeProps(getContentProps(accordionItem), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)

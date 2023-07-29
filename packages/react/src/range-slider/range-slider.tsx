@@ -1,8 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { RangeSliderProvider } from './range-slider-context'
@@ -13,13 +12,13 @@ import {
 } from './use-range-slider'
 
 export type RangeSliderProps = Assign<
-  HTMLArkProps<'div'>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   UseRangeSliderProps & {
     children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode
   }
 >
 
-export const RangeSlider = forwardRef<'div', RangeSliderProps>((props, ref) => {
+export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>((props, ref) => {
   const [useRangeSliderProps, { children, ...divProps }] = createSplitProps<UseRangeSliderProps>()(
     props,
     [
@@ -60,3 +59,5 @@ export const RangeSlider = forwardRef<'div', RangeSliderProps>((props, ref) => {
     </RangeSliderProvider>
   )
 })
+
+RangeSlider.displayName = 'RangeSlider'

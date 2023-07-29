@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerClearTriggerProps = HTMLArkProps<'button'>
+export type DatePickerClearTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
-export const DatePickerClearTrigger = forwardRef<'button'>((props, ref) => {
-  const { clearTriggerProps } = useDatePickerContext()
-  const mergedProps = mergeProps(clearTriggerProps, props)
+export const DatePickerClearTrigger = forwardRef<HTMLButtonElement, DatePickerClearTriggerProps>(
+  (props, ref) => {
+    const { clearTriggerProps } = useDatePickerContext()
+    const mergedProps = mergeProps(clearTriggerProps, props)
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
+
+DatePickerClearTrigger.displayName = 'DatePickerClearTrigger'

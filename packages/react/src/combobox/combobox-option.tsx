@@ -1,14 +1,14 @@
 import type { OptionProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
+export type ComboboxOptionProps = Assign<ComponentPropsWithoutRef<typeof ark.li>, OptionProps>
 
-export const ComboboxOption = forwardRef<'li', OptionProps>((props, ref) => {
+export const ComboboxOption = forwardRef<HTMLLIElement, ComboboxOptionProps>((props, ref) => {
   const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [
     'count',
     'disabled',
@@ -26,3 +26,5 @@ export const ComboboxOption = forwardRef<'li', OptionProps>((props, ref) => {
     </ark.li>
   )
 })
+
+ComboboxOption.displayName = 'ComboboxOption'

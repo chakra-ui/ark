@@ -1,15 +1,15 @@
 import { mergeProps } from '@zag-js/react'
 import { type ContentProps } from '@zag-js/tabs'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { splitPresenceProps } from '../presence'
 import { TabPresence, type TabPresenceProps } from './tab-presence'
 import { useTabsContext } from './tabs-context'
 
 export type TabContentProps = InnerTabContentProps & Omit<TabPresenceProps, 'children'>
 
-export const TabContent = forwardRef<'div', TabContentProps>((props, ref) => {
+export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [presenceProps, tabContentProps] = splitPresenceProps(props)
   const [contentProps, localProps] = createSplitProps<ContentProps>()(tabContentProps, ['value'])
 
@@ -20,12 +20,16 @@ export const TabContent = forwardRef<'div', TabContentProps>((props, ref) => {
   )
 })
 
-type InnerTabContentProps = HTMLArkProps<'div'> & ContentProps
+TabContent.displayName = 'TabContent'
 
-const InnerTabContent = forwardRef<'div', InnerTabContentProps>((props, ref) => {
+type InnerTabContentProps = ComponentPropsWithoutRef<typeof ark.div> & ContentProps
+
+const InnerTabContent = forwardRef<HTMLDivElement, InnerTabContentProps>((props, ref) => {
   const [tabContentProps, divProps] = createSplitProps<ContentProps>()(props, ['value'])
   const { getContentProps } = useTabsContext()
   const mergedProps = mergeProps(getContentProps(tabContentProps), divProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+InnerTabContent.displayName = 'InnerTabContent'

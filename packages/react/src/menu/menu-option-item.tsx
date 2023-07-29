@@ -1,9 +1,8 @@
 import { type connect } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
@@ -12,13 +11,13 @@ import { type UseMenuReturn } from './use-menu'
 export type MenuOptionItemState = { isActive: boolean }
 export type MenuOptionItemParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
 export type MenuOptionItemProps = Assign<
-  HTMLArkProps<'div'>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   MenuOptionItemParams & {
     children?: ReactNode | ((state: MenuOptionItemState) => ReactNode)
   }
 >
 
-export const MenuOptionItem = forwardRef<'div', MenuOptionItemProps>((props, ref) => {
+export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const [optionProps, { children, ...divProps }] = createSplitProps<MenuOptionItemParams>()(props, [
     'id',
@@ -40,3 +39,5 @@ export const MenuOptionItem = forwardRef<'div', MenuOptionItemProps>((props, ref
     </ark.div>
   )
 })
+
+MenuOptionItem.displayName = 'MenuOptionItem'

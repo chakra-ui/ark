@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxInputProps = HTMLArkProps<'input'>
+export type CheckboxInputProps = ComponentPropsWithoutRef<typeof ark.input>
 
-export const CheckboxInput = forwardRef<'input'>((props, ref) => {
+export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>((props, ref) => {
   const { inputProps } = useCheckboxContext()
   const mergedProps = mergeProps(inputProps, props)
 
   return <ark.input {...mergedProps} ref={ref} />
 })
+
+CheckboxInput.displayName = 'CheckboxInput'

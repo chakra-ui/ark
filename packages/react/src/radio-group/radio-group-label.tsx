@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useRadioGroupContext } from './radio-group-context'
 
-export type RadioGroupLabelProps = HTMLArkProps<'label'>
+export type RadioGroupLabelProps = ComponentPropsWithoutRef<typeof ark.label>
 
-export const RadioGroupLabel = forwardRef<'label'>((props, ref) => {
+export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroupLabelProps>((props, ref) => {
   const { labelProps } = useRadioGroupContext()
   const mergedProps = mergeProps(labelProps, props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })
+
+RadioGroupLabel.displayName = 'RadioGroupLabel'

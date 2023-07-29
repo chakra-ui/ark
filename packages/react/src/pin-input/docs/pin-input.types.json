@@ -86,10 +86,6 @@
       "isRequired": false,
       "description": "The placeholder text for the input"
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "selectOnFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -101,7 +97,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
+      "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
@@ -111,23 +107,5 @@
       "description": "The value of the the pin input."
     }
   },
-  "PinInputControlProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "PinInputFieldProps": {
-    "index": { "type": "number", "isRequired": true },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
-      "isRequired": false
-    }
-  },
-  "PinInputLabelProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
-      "isRequired": false
-    }
-  }
+  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } }
 }

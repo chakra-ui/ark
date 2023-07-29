@@ -50,10 +50,6 @@
       "isRequired": false,
       "description": "The callback invoked when the checked state of the `Checkbox` changes."
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
-      "isRequired": false
-    },
     "required": {
       "type": "boolean",
       "isRequired": false,
@@ -63,24 +59,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
-    }
-  },
-  "CheckboxControlProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "CheckboxInputProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
-      "isRequired": false
-    }
-  },
-  "CheckboxLabelProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
-      "isRequired": false
     }
   }
 }

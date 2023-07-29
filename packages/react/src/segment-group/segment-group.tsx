@@ -1,15 +1,18 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { SegmentGroupProvider } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 
-export type SegmentGroupProps = Assign<HTMLArkProps<'div'>, UseSegmentGroupProps>
+export type SegmentGroupProps = Assign<
+  ComponentPropsWithoutRef<typeof ark.div>,
+  UseSegmentGroupProps
+>
 
-export const SegmentGroup = forwardRef<'div', UseSegmentGroupProps>((props, ref) => {
+export const SegmentGroup = forwardRef<HTMLDivElement, SegmentGroupProps>((props, ref) => {
   const [useSegmentGroupProps, divProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'defaultValue',
     'dir',
@@ -33,3 +36,5 @@ export const SegmentGroup = forwardRef<'div', UseSegmentGroupProps>((props, ref)
     </SegmentGroupProvider>
   )
 })
+
+SegmentGroup.displayName = 'SegmentGroup'

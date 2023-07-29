@@ -1,21 +1,20 @@
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { SliderProvider, type SliderContext } from './slider-context'
 import { useSlider, type UseSliderProps } from './use-slider'
 
 export type SliderProps = Assign<
-  Assign<HTMLArkProps<'div'>, UseSliderProps>,
+  Assign<ComponentPropsWithoutRef<typeof ark.div>, UseSliderProps>,
   {
     children?: ((context: SliderContext) => ReactNode) | ReactNode
   }
 >
 
-export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
+export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const { children, ...restProps } = props
   const [useSliderProps, divProps] = createSplitProps<UseSliderProps>()(restProps, [
     'aria-label',
@@ -55,3 +54,5 @@ export const Slider = forwardRef<'div', SliderProps>((props, ref) => {
     </SliderProvider>
   )
 })
+
+Slider.displayName = 'Slider'

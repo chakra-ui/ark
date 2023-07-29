@@ -1,9 +1,11 @@
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { parts } from './pagination.anatomy'
 
-export type PaginationListItemProps = HTMLArkProps<'li'>
+export type PaginationListItemProps = ComponentPropsWithoutRef<typeof ark.li>
 
-export const PaginationListItem = forwardRef<'li'>((props, ref) => (
-  <ark.li {...parts.listItem.attrs} {...props} ref={ref} />
-))
+export const PaginationListItem = forwardRef<HTMLLIElement, PaginationListItemProps>(
+  (props, ref) => <ark.li {...parts.listItem.attrs} {...props} ref={ref} />,
+)
+
+PaginationListItem.displayName = 'PaginationListItem'

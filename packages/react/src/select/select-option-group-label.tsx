@@ -1,12 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-export type SelectOptionGroupLabelProps = Assign<HTMLArkProps<'label'>, { htmlFor: string }>
+export type SelectOptionGroupLabelProps = Assign<
+  ComponentPropsWithoutRef<typeof ark.label>,
+  { htmlFor: string }
+>
 
-export const SelectOptionGroupLabel = forwardRef<'label', SelectOptionGroupLabelProps>(
+export const SelectOptionGroupLabel = forwardRef<HTMLLabelElement, SelectOptionGroupLabelProps>(
   (props, ref) => {
     const { htmlFor, ...labelProps } = props
     const { getOptionGroupLabelProps } = useSelectContext()
@@ -15,3 +18,5 @@ export const SelectOptionGroupLabel = forwardRef<'label', SelectOptionGroupLabel
     return <ark.label {...mergedProps} ref={ref} />
   },
 )
+
+SelectOptionGroupLabel.displayName = 'SelectOptionGroupLabel'

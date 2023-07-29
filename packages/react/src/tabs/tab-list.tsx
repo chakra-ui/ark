@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useTabsContext } from './tabs-context'
 
-export type TabListProps = HTMLArkProps<'div'>
+export type TabListProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const TabList = forwardRef<'div', TabListProps>((props, ref) => {
+export const TabList = forwardRef<HTMLDivElement, TabListProps>((props, ref) => {
   const { tablistProps } = useTabsContext()
   const mergedProps = mergeProps(tablistProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
+
+TabList.displayName = 'TabList'

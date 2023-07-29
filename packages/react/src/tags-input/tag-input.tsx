@@ -1,17 +1,29 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
-import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagInputProps = Assign<HTMLArkProps<'input'>, TagProps>
+// TODO export in Zag.js
+type _TagProps = {
+  index: string | number
+  value: string
+  disabled?: boolean
+}
 
-export const TagInput = forwardRef<'input', TagInputProps>((props, ref) => {
-  const [tagProps, inputProps] = createSplitProps<TagProps>()(props, ['index', 'disabled', 'value'])
+export type TagInputProps = Assign<ComponentPropsWithoutRef<typeof ark.input>, _TagProps>
+
+export const TagInput = forwardRef<HTMLInputElement, TagInputProps>((props, ref) => {
+  const [tagProps, inputProps] = createSplitProps<_TagProps>()(props, [
+    'index',
+    'disabled',
+    'value',
+  ])
   const { getTagInputProps } = useTagsInputContext()
   const mergedProps = mergeProps(getTagInputProps(tagProps), inputProps)
 
   return <ark.input {...mergedProps} ref={ref} />
 })
+
+TagInput.displayName = 'TagInput'

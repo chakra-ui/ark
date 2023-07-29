@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
+export type PinInputProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UsePinInputProps>
 
-export const PinInput = forwardRef<'div', UsePinInputProps>((props, ref) => {
+export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) => {
   const [usePinInputProps, divProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',
@@ -42,3 +42,5 @@ export const PinInput = forwardRef<'div', UsePinInputProps>((props, ref) => {
     </PinInputProvider>
   )
 })
+
+PinInput.displayName = 'PinInput'

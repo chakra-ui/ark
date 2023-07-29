@@ -41,10 +41,6 @@
       "isRequired": false,
       "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
     },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "size": {
       "type": "PanelSizeData[]",
       "isRequired": false,
@@ -53,10 +49,6 @@
   },
   "SplitterPanelProps": {
     "id": { "type": "PanelId", "isRequired": true },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "snapSize": { "type": "number", "isRequired": false }
   },
   "SplitterResizeTriggerProps": {

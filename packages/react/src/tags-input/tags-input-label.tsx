@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputLabelProps = HTMLArkProps<'label'>
+export type TagsInputLabelProps = ComponentPropsWithoutRef<typeof ark.label>
 
-export const TagsInputLabel = forwardRef<'label', TagsInputLabelProps>((props, ref) => {
+export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>((props, ref) => {
   const { labelProps } = useTagsInputContext()
   const mergedProps = mergeProps(labelProps, props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })
+
+TagsInputLabel.displayName = 'TagsInputLabel'

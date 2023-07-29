@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { usePressable, type UsePressableProps } from './use-pressable'
 
-export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
+export type PressableProps = Assign<ComponentPropsWithoutRef<typeof ark.button>, UsePressableProps>
 
-export const Pressable = forwardRef<'button', UsePressableProps>((props, ref) => {
+export const Pressable = forwardRef<HTMLButtonElement, PressableProps>((props, ref) => {
   const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [
     'allowTextSelectionOnPress',
     'cancelOnPointerExit',
@@ -28,3 +28,5 @@ export const Pressable = forwardRef<'button', UsePressableProps>((props, ref) =>
 
   return <ark.button {...mergedProps} ref={ref} />
 })
+
+Pressable.displayName = 'Pressable'

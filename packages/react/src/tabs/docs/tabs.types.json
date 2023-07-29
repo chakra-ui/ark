@@ -8,35 +8,15 @@
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "TabIndicatorProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
-  "TabListProps": {
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
-    }
-  },
   "TabTriggerProps": {
     "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
-      "isRequired": false
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "TabsProps": {
     "activationMode": {
@@ -89,10 +69,6 @@
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
-    },
-    "ref": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
-      "isRequired": false
     },
     "translations": {
       "type": "IntlTranslations",

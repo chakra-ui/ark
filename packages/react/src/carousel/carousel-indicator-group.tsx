@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorGroupProps = HTMLArkProps<'div'>
+export type CarouselIndicatorGroupProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const CarouselIndicatorGroup = forwardRef<'div'>((props, ref) => {
-  const { indicatorGroupProps } = useCarouselContext()
-  const mergedProps = mergeProps(indicatorGroupProps, props)
+export const CarouselIndicatorGroup = forwardRef<HTMLDivElement, CarouselIndicatorGroupProps>(
+  (props, ref) => {
+    const { indicatorGroupProps } = useCarouselContext()
+    const mergedProps = mergeProps(indicatorGroupProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)
+
+CarouselIndicatorGroup.displayName = 'CarouselIndicatorGroup'

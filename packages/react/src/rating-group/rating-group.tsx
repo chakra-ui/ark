@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'input'>, UseRatingGroupProps>
+export type RatingGroupProps = Assign<
+  ComponentPropsWithoutRef<typeof ark.input>,
+  UseRatingGroupProps
+>
 
-export const RatingGroup = forwardRef<'input', RatingGroupProps>((props, ref) => {
+export const RatingGroup = forwardRef<HTMLInputElement, RatingGroupProps>((props, ref) => {
   const [useRatingProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
@@ -39,3 +42,5 @@ export const RatingGroup = forwardRef<'input', RatingGroupProps>((props, ref) =>
     </RatingGroupProvider>
   )
 })
+
+RatingGroup.displayName = 'RatingGroup'

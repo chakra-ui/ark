@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputClearTriggerProps = HTMLArkProps<'button'>
+export type TagsInputClearTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
-export const TagsInputClearTrigger = forwardRef<'button'>((props, ref) => {
-  const { clearTriggerProps } = useTagsInputContext()
-  const mergedProps = mergeProps(clearTriggerProps, props)
+export const TagsInputClearTrigger = forwardRef<HTMLButtonElement, TagsInputClearTriggerProps>(
+  (props, ref) => {
+    const { clearTriggerProps } = useTagsInputContext()
+    const mergedProps = mergeProps(clearTriggerProps, props)
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
+
+TagsInputClearTrigger.displayName = 'TagsInputClearTrigger'

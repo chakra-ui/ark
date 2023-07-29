@@ -1,14 +1,18 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 
-export type SegmentGroupLabelProps = HTMLArkProps<'label'>
+export type SegmentGroupLabelProps = ComponentPropsWithoutRef<typeof ark.label>
 
-export const SegmentGroupLabel = forwardRef<'label'>((props, ref) => {
-  const { labelProps } = useSegmentGroupContext()
-  const mergedProps = mergeProps(labelProps, props)
+export const SegmentGroupLabel = forwardRef<HTMLLabelElement, SegmentGroupLabelProps>(
+  (props, ref) => {
+    const { labelProps } = useSegmentGroupContext()
+    const mergedProps = mergeProps(labelProps, props)
 
-  return <ark.label {...mergedProps} {...parts.label.attrs} ref={ref} />
-})
+    return <ark.label {...mergedProps} {...parts.label.attrs} ref={ref} />
+  },
+)
+
+SegmentGroupLabel.displayName = 'SegmentGroupLabel'

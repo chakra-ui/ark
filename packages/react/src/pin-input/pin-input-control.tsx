@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputControlProps = HTMLArkProps<'div'>
+export type PinInputControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const PinInputControl = forwardRef<'div'>((props, ref) => {
+export const PinInputControl = forwardRef<HTMLDivElement, PinInputControlProps>((props, ref) => {
   const { controlProps, hiddenInputProps } = usePinInputContext()
   const mergedProps = mergeProps(controlProps, props)
 
@@ -16,3 +16,5 @@ export const PinInputControl = forwardRef<'div'>((props, ref) => {
     </ark.div>
   )
 })
+
+PinInputControl.displayName = 'PinInputControl'

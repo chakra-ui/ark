@@ -1,21 +1,31 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
-import { type TagProps } from './tag'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagDeleteTriggerProps = Assign<HTMLArkProps<'button'>, TagProps>
+// TODO export in Zag.js
+type _TagProps = {
+  index: string | number
+  value: string
+  disabled?: boolean
+}
 
-export const TagDeleteTrigger = forwardRef<'button', TagProps>((props, ref) => {
-  const [tagProps, buttonProps] = createSplitProps<TagProps>()(props, [
-    'index',
-    'disabled',
-    'value',
-  ])
-  const { getTagDeleteTriggerProps } = useTagsInputContext()
-  const mergedProps = mergeProps(getTagDeleteTriggerProps(tagProps), buttonProps)
+export type TagDeleteTriggerProps = Assign<ComponentPropsWithoutRef<typeof ark.button>, _TagProps>
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+export const TagDeleteTrigger = forwardRef<HTMLButtonElement, TagDeleteTriggerProps>(
+  (props, ref) => {
+    const [tagProps, buttonProps] = createSplitProps<_TagProps>()(props, [
+      'index',
+      'disabled',
+      'value',
+    ])
+    const { getTagDeleteTriggerProps } = useTagsInputContext()
+    const mergedProps = mergeProps(getTagDeleteTriggerProps(tagProps), buttonProps)
+
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
+
+TagDeleteTrigger.displayName = 'TagDeleteTrigger'

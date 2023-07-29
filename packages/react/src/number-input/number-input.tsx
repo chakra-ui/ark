@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { ark } from '../factory'
 import { type Assign } from '../types'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
+export type NumberInputProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UseNumberInputProps>
 
-export const NumberInput = forwardRef<'div', UseNumberInputProps>((props, ref) => {
+export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
   const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',
@@ -51,3 +51,5 @@ export const NumberInput = forwardRef<'div', UseNumberInputProps>((props, ref) =
     </NumberInputProvider>
   )
 })
+
+NumberInput.displayName = 'NumberInput'

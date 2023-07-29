@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableLabelProps = HTMLArkProps<'label'>
+export type EditableLabelProps = ComponentPropsWithoutRef<typeof ark.label>
 
-export const EditableLabel = forwardRef<'label'>((props, ref) => {
+export const EditableLabel = forwardRef<HTMLLabelElement, EditableLabelProps>((props, ref) => {
   const { labelProps } = useEditableContext()
   const mergedProps = mergeProps(labelProps, props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })
+
+EditableLabel.displayName = 'EditableLabel'

@@ -15,5 +15,6 @@ export const Dialog = (props: DialogProps) => {
   const { children, ...useDialogProps } = props
   const dialog = useDialog(useDialogProps)
   const view = runIfFn(children, dialog)
+
   return <DialogProvider value={dialog}>{view}</DialogProvider>
 }

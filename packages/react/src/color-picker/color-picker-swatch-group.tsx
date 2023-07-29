@@ -1,9 +1,11 @@
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { parts } from './color-picker.anatomy'
 
-export type ColorPickerSwatchGroupProps = HTMLArkProps<'div'>
+export type ColorPickerSwatchGroupProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const ColorPickerSwatchGroup = forwardRef<'div'>((props, ref) => (
-  <ark.div {...parts.swatchGroup.attrs} {...props} ref={ref} />
-))
+export const ColorPickerSwatchGroup = forwardRef<HTMLDivElement, ColorPickerSwatchGroupProps>(
+  (props, ref) => <ark.div {...parts.swatchGroup.attrs} {...props} ref={ref} />,
+)
+
+ColorPickerSwatchGroup.displayName = 'ColorPickerSwatchGroup'

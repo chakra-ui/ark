@@ -1,13 +1,17 @@
 import { mergeProps } from '@zag-js/react'
-import { ark, type HTMLArkProps } from '../factory'
-import { forwardRef } from '../forward-ref'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { ark } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputScrubberProps = HTMLArkProps<'div'>
+export type NumberInputScrubberProps = ComponentPropsWithoutRef<typeof ark.div>
 
-export const NumberInputScrubber = forwardRef<'div'>((props, ref) => {
-  const { scrubberProps } = useNumberInputContext()
-  const mergedProps = mergeProps(scrubberProps, props)
+export const NumberInputScrubber = forwardRef<HTMLDivElement, NumberInputScrubberProps>(
+  (props, ref) => {
+    const { scrubberProps } = useNumberInputContext()
+    const mergedProps = mergeProps(scrubberProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
-})
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)
+
+NumberInputScrubber.displayName = 'NumberInputScrubber'
