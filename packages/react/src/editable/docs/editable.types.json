@@ -96,6 +96,10 @@
       "isRequired": false,
       "description": "Whether the editable is readonly"
     },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    },
     "selectOnFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -120,6 +124,36 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of the editable in both edit and preview mode"
+    }
+  },
+  "EditableAreaProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "EditableControlProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "EditableInputProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
+      "isRequired": false
+    }
+  },
+  "EditableLabelProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
+      "isRequired": false
+    }
+  },
+  "EditablePreviewProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
+      "isRequired": false
     }
   }
 }

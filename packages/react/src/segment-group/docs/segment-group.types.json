@@ -15,6 +15,16 @@
       "type": "boolean",
       "isRequired": false,
       "description": "If `true`, the radio will be readonly"
+    },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
+      "isRequired": false
+    }
+  },
+  "SegmentControlProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
     }
   },
   "SegmentGroupProps": {
@@ -69,10 +79,38 @@
       "isRequired": false,
       "description": "If `true`, the radio group will be readonly"
     },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    },
     "value": {
       "type": "string",
       "isRequired": false,
       "description": "The value of the checked radio"
+    }
+  },
+  "SegmentGroupLabelProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
+      "isRequired": false
+    }
+  },
+  "SegmentIndicatorProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "SegmentInputProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLInputElement | null) => void)\n  | RefObject<HTMLInputElement>",
+      "isRequired": false
+    }
+  },
+  "SegmentLabelProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
+      "isRequired": false
     }
   }
 }

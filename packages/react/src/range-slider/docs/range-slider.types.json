@@ -96,6 +96,10 @@
       "isRequired": false,
       "description": "Whether the slider is read-only"
     },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    },
     "step": {
       "type": "number",
       "isRequired": false,
@@ -112,6 +116,48 @@
       "description": "The value of the range slider"
     }
   },
-  "RangeSliderMarkerProps": { "value": { "type": "number", "isRequired": true } },
-  "RangeSliderThumbProps": { "index": { "type": "number", "isRequired": true } }
+  "RangeSliderControlProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderLabelProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLLabelElement | null) => void)\n  | RefObject<HTMLLabelElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderMarkerProps": {
+    "value": { "type": "number", "isRequired": true },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLSpanElement | null) => void)\n  | RefObject<HTMLSpanElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderOutputProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLOutputElement | null) => void)\n  | RefObject<HTMLOutputElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderRangeProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderThumbProps": {
+    "index": { "type": "number", "isRequired": true },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "RangeSliderTrackProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  }
 }

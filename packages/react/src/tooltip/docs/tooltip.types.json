@@ -71,6 +71,18 @@
       "description": "The user provided options used to position the popover content"
     }
   },
+  "TooltipArrowProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "TooltipArrowTipProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
   "TooltipContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -79,10 +91,26 @@
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  },
+  "TooltipPositionerProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "TooltipTriggerProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
+      "isRequired": false
     }
   }
 }

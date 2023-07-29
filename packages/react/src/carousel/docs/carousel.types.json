@@ -41,6 +41,10 @@
       "isRequired": false,
       "description": "The orientation of the carousel."
     },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    },
     "slidesPerView": {
       "type": "number | 'auto'",
       "isRequired": false,
@@ -52,9 +56,37 @@
       "description": "The amount of space between slides."
     }
   },
+  "CarouselControlProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
   "CarouselIndicatorProps": {
     "index": { "type": "number", "isRequired": true },
-    "readOnly": { "type": "boolean", "isRequired": false }
+    "readOnly": { "type": "boolean", "isRequired": false },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
+      "isRequired": false
+    }
   },
-  "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } }
+  "CarouselSlideProps": {
+    "index": { "type": "number", "isRequired": true },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "CarouselSlideGroupProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "CarouselViewportProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  }
 }

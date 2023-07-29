@@ -64,6 +64,10 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the target should not receive focus on press."
+    },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
+      "isRequired": false
     }
   },
   "UsePressableProps": {

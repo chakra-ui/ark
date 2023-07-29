@@ -1,6 +1,30 @@
 {
-  "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
-  "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
+  "ToastProps": {
+    "toast": { "type": "Service", "isRequired": true },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
+  "ToastCloseTriggerProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLButtonElement | null) => void)\n  | RefObject<HTMLButtonElement>",
+      "isRequired": false
+    }
+  },
+  "ToastDescriptionProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLParagraphElement | null) => void)\n  | RefObject<HTMLParagraphElement>",
+      "isRequired": false
+    }
+  },
+  "ToastGroupProps": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLDivElement | null) => void)\n  | RefObject<HTMLDivElement>",
+      "isRequired": false
+    }
+  },
   "ToastProviderProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -46,6 +70,12 @@
       "type": "number",
       "isRequired": false,
       "description": "The z-index applied to each toast group"
+    }
+  },
+  "ToastTitleProps": {
+    "ref": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | ((instance: HTMLHeadingElement | null) => void)\n  | RefObject<HTMLHeadingElement>",
+      "isRequired": false
     }
   }
 }
