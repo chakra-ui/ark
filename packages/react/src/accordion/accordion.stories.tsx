@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.'
+import './accordion.css'
 
 type AccordionType = typeof Accordion
 
@@ -18,9 +19,7 @@ export const Basic = () => {
       {items.map((item, id) => (
         <AccordionItem key={id} value={item}>
           <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent lazyMount unmountOnExit>
-            {item} content
-          </AccordionContent>
+          <AccordionContent>{item} content</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

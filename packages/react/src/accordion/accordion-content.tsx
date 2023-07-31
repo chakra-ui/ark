@@ -26,6 +26,13 @@ const InnerAccordionContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRe
     const accordionItem = useAccordionItemContext()
     const mergedProps = mergeProps(getContentProps(accordionItem), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    // TODO this works fine but not for lazy loaded content
+    return (
+      <ark.div {...mergedProps} ref={ref}>
+        <div data-scope="accordion" data-part="inner-content">
+          {props.children}
+        </div>
+      </ark.div>
+    )
   },
 )
