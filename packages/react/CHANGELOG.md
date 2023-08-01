@@ -6,10 +6,6 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
-### Added
-
-- Added support to animate the `Accordion` component using CSS grid.
-
 ## [0.10.0-beta.1] - 2023-07-29
 
 ### Changed
@@ -165,4 +161,5 @@ description: All notable changes to this project will be documented in this file
 [0.8.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.1
 [0.9.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0
 [0.10.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0-beta.0
+
 [0.10.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0-beta.1
