@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(switchAnatomy.build())
 
 export const switchRecipe = defineRecipe({
-  name: 'switchRecipe',
+  className: 'switchRecipe',
   description: 'A switch style',
   base: parts({
     root: {

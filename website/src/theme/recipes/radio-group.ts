@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(radioGroupAnatomy.build())
 
 export const radioGroup = defineRecipe({
-  name: 'radioGroup',
+  className: 'radioGroup',
   description: 'A radio group style',
   base: parts({
     root: {

@@ -1,7 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
 export const badge = defineRecipe({
-  name: 'badge',
+  className: 'badge',
   description: 'A badge styles',
   base: {
     borderRadius: '2xl',

@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(paginationAnatomy.build())
 
 export const pagination = defineRecipe({
-  name: 'pagination',
+  className: 'pagination',
   description: 'A pagination style',
   base: parts({
     root: {

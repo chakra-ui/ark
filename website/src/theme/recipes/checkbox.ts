@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(checkboxAnatomy.build())
 
 export const checkbox = defineRecipe({
-  name: 'checkbox',
+  className: 'checkbox',
   description: 'A checkbox style',
   base: parts({
     root: {

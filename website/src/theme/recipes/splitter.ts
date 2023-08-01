@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(splitterAnatomy.build())
 
 export const splitter = defineRecipe({
-  name: 'splitter',
+  className: 'splitter',
   description: 'A splitter style',
   base: parts({
     root: {

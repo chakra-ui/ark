@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(hoverCardAnatomy.build())
 
 export const hoverCard = defineRecipe({
-  name: 'hoverCard',
+  className: 'hoverCard',
   description: 'A hover card style',
   base: parts({
     positioner: {

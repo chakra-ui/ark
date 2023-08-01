@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(accordionAnatomy.build())
 
 export const accordion = defineRecipe({
-  name: 'accordion',
+  className: 'accordion',
   description: 'An accordion style',
   base: parts({
     root: {

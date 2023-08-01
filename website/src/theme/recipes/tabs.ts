@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(tabsAnatomy.build())
 
 export const tabs = defineRecipe({
-  name: 'tabs',
+  className: 'tabs',
   description: 'A tabs style',
   base: parts({
     root: {

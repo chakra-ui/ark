@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(avatarAnatomy.build())
 
 export const avatar = defineRecipe({
-  name: 'avatar',
+  className: 'avatar',
   description: 'An avatar style',
   base: parts({
     root: {

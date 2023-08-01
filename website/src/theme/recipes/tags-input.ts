@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(tagsInputAnatomy.build())
 
 export const tagsInput = defineRecipe({
-  name: 'tagsInput',
+  className: 'tagsInput',
   description: 'A tags input style',
   base: parts({
     root: {

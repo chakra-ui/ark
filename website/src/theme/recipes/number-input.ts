@@ -51,7 +51,7 @@ const trigger = {
 } as const
 
 export const numberInput = defineRecipe({
-  name: 'numberInput',
+  className: 'numberInput',
   description: 'A number input style',
   base: parts({
     root: {

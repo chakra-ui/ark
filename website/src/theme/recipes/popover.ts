@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(popoverAnatomy.build())
 
 export const popover = defineRecipe({
-  name: 'popover',
+  className: 'popover',
   description: 'A popover style',
   base: parts({
     positioner: {

@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(ratingGroupAnatomy.build())
 
 export const ratingGroup = defineRecipe({
-  name: 'ratingGroup',
+  className: 'ratingGroup',
   description: 'A rating group style',
   base: parts({
     root: {},

@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(datePickerAnatomy.build())
 
 export const datePicker = defineRecipe({
-  name: 'datePicker',
+  className: 'datePicker',
   description: 'A date picker style',
   base: parts({
     cellTrigger: {

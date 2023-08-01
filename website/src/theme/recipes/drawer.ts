@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(dialogAnatomy.build())
 
 export const drawer = defineRecipe({
-  name: 'drawer',
+  className: 'drawer',
   description: 'A drawer style',
   base: parts({
     backdrop: {

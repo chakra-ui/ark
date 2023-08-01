@@ -2,7 +2,7 @@ import { defineRecipe } from '@pandacss/dev'
 
 // TODO sth is wrong with types
 export const link: any = defineRecipe({
-  name: 'link',
+  className: 'link',
   description: 'A link styles',
   base: {
     transitionProperty: 'base',

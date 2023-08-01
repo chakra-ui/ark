@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(colorPickerAnatomy.build())
 
 export const colorPicker = defineRecipe({
-  name: 'colorPicker',
+  className: 'colorPicker',
   description: 'A color picker style',
   base: parts({
     content: {

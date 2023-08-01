@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(segmentGroupAnatomy.build())
 
 export const segmentGroup = defineRecipe({
-  name: 'segmentGroup',
+  className: 'segmentGroup',
   description: 'A segment group style',
   base: parts({
     root: {

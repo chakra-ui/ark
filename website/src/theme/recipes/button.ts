@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(createAnatomy('button').parts('root', 'icon', 'spinner').build())
 
 export const button = defineRecipe({
-  name: 'button',
+  className: 'button',
   description: 'A button styles',
   base: parts({
     root: {

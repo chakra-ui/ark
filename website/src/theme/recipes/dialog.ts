@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(dialogAnatomy.build())
 
 export const dialog = defineRecipe({
-  name: 'dialog',
+  className: 'dialog',
   description: 'A dialog style',
   base: parts({
     backdrop: {

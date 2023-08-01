@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(tooltipAnatomy.build())
 
 export const tooltip = defineRecipe({
-  name: 'tooltip',
+  className: 'tooltip',
   description: 'A tooltip style',
   base: parts({
     content: {

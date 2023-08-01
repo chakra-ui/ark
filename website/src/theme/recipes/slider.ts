@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(sliderAnatomy.build())
 
 export const slider = defineRecipe({
-  name: 'slider',
+  className: 'slider',
   description: 'A slider style',
   base: parts({
     root: {

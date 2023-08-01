@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(carouselAnatomy.build())
 
 export const carousel = defineRecipe({
-  name: 'carousel',
+  className: 'carousel',
   description: 'A carousel style',
   base: parts({
     viewport: {

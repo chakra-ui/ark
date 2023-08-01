@@ -1,7 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
 export const markdown = defineRecipe({
-  name: 'markdown',
+  className: 'markdown',
   description: 'A recipe for markdown content',
   base: {
     '&': {

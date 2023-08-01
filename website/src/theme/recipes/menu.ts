@@ -20,7 +20,7 @@ const baseItemStyle = {
 } as const
 
 export const menu = defineRecipe({
-  name: 'menu',
+  className: 'menu',
   description: 'A menu style',
   base: parts({
     positioner: {

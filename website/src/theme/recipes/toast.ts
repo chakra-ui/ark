@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(toastAnatomy.build())
 
 export const toast = defineRecipe({
-  name: 'toast',
+  className: 'toast',
   description: 'A toast style',
   base: parts({
     root: {

@@ -1,7 +1,7 @@
 import { defineRecipe } from '@pandacss/dev'
 
 export const code = defineRecipe({
-  name: 'code',
+  className: 'code',
   description: 'A code style',
   base: {
     '&:not([data-language])': {

@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(pinInputAnatomy.build())
 
 export const pinInput = defineRecipe({
-  name: 'pinInput',
+  className: 'pinInput',
   description: 'An pin input style',
   base: parts({
     control: {

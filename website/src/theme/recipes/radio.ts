@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(createAnatomy('radio', ['root', 'control', 'label', 'input']).build())
 
 export const radio = defineRecipe({
-  name: 'radio',
+  className: 'radio',
   description: 'A radio style',
   base: parts({
     root: {

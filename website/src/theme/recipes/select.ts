@@ -4,7 +4,7 @@ import { defineParts, defineRecipe } from '@pandacss/dev'
 const parts = defineParts(selectAnatomy.build())
 
 export const select = defineRecipe({
-  name: 'select',
+  className: 'select',
   description: 'A select style',
   base: parts({
     content: {
