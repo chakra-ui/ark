@@ -5,6 +5,11 @@
     "label": { "type": "string", "isRequired": false }
   },
   "ToastProviderProps": {
+    "defaultOptions": {
+      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
+      "isRequired": false,
+      "description": "The default options for the toast"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
