@@ -10,6 +10,7 @@ import {
   ToastTitle,
   useToast,
 } from '.'
+import './toast.css'
 
 type ToastType = typeof Toast
 
@@ -61,8 +62,8 @@ const ExampleComponent = () => {
           toast.create({
             title: 'Hello',
             placement: 'top-end',
-            duration: 10000,
-            removeDelay: 0,
+            duration: 200000,
+            removeDelay: 200,
           })
         }}
       >
@@ -75,6 +76,8 @@ const ExampleComponent = () => {
             description: 'Your user data has been submitted successfully!',
             type: 'success',
             placement: 'bottom-start',
+            duration: 2000,
+            removeDelay: 200,
           })
         }}
       >
