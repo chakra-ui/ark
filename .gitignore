@@ -294,3 +294,7 @@ panda
 
 # Sitemap
 /website/public/sitemap*.xml
+
+# Nuxt
+.nuxt
+.output
