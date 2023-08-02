@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { type PropsWithChildren } from 'react'
 import {
   Toast,
   ToastCloseTrigger,
@@ -9,6 +8,7 @@ import {
   ToastProvider,
   ToastTitle,
   useToast,
+  type ToastProviderProps,
 } from '.'
 import './toast.css'
 
@@ -17,86 +17,102 @@ type ToastType = typeof Toast
 const meta: Meta<ToastType> = {
   title: 'Toast',
   component: Toast,
+  decorators: [
+    (Story) => (
+      <AppToastProvider>
+        <Story />
+      </AppToastProvider>
+    ),
+  ],
 }
 
 export default meta
 
-// chakra land
-export const ChakraToastProvider = (props: PropsWithChildren) => (
-  <ToastProvider>
-    <ToastPlacements>
-      {(placements) =>
-        placements.map((placement) => (
-          <ToastGroup key={placement} placement={placement}>
-            {(toasts) =>
-              toasts.map((toast) => (
-                <Toast key={toast.id} toast={toast}>
-                  <ToastTitle />
-                  <ToastDescription />
-                  <ToastCloseTrigger>close</ToastCloseTrigger>
-                </Toast>
-              ))
-            }
-          </ToastGroup>
-        ))
-      }
-    </ToastPlacements>
-    {props.children}
-  </ToastProvider>
-)
-
-// user land
-export const Basic = () => (
-  <ChakraToastProvider>
-    <h1>Hello World</h1>
-    <ExampleComponent />
-  </ChakraToastProvider>
-)
-
-const ExampleComponent = () => {
-  const toast = useToast()
+export const AppToastProvider = (props: ToastProviderProps) => {
+  const { children, ...rest } = props
   return (
-    <div>
-      <button
-        onClick={() => {
-          toast.create({
-            title: 'Hello',
-            placement: 'top-end',
-            duration: 200000,
-            removeDelay: 200,
-          })
-        }}
-      >
-        Add top-end toast
-      </button>
-      <button
-        onClick={() => {
-          toast.create({
-            title: 'Data submitted!',
-            description: 'Your user data has been submitted successfully!',
-            type: 'success',
-            placement: 'bottom-start',
-            duration: 2000,
-            removeDelay: 200,
-          })
-        }}
-      >
-        Add bottom-start toast
-      </button>
-      <button
-        onClick={() => {
-          toast.create({
-            title: 'Data submitted!',
-            render: (toast) => (
-              <div>
-                {toast.title} <a href="#">Google</a>
-              </div>
-            ),
-          })
-        }}
-      >
-        Custom
-      </button>
-    </div>
+    <ToastProvider {...rest}>
+      <ToastPlacements>
+        {(placements) =>
+          placements.map((placement) => (
+            <ToastGroup key={placement} placement={placement}>
+              {(toasts) =>
+                toasts.map((toast) => (
+                  <Toast key={toast.id} toast={toast}>
+                    <ToastTitle />
+                    <ToastDescription />
+                    <ToastCloseTrigger>close</ToastCloseTrigger>
+                  </Toast>
+                ))
+              }
+            </ToastGroup>
+          ))
+        }
+      </ToastPlacements>
+      {children}
+    </ToastProvider>
   )
 }
+export const App = () => <AppToastProvider>{/* Your App */}</AppToastProvider>
+
+export const SimpleToast = () => {
+  const toast = useToast()
+  return (
+    <button
+      onClick={() => {
+        toast.create({
+          title: 'Hello',
+          description: 'This is a toast',
+        })
+      }}
+    >
+      Add Toast
+    </button>
+  )
+}
+
+export const ConfigureToast = () => {
+  const toast = useToast()
+  return (
+    <button
+      onClick={() => {
+        toast.create({
+          title: 'Success',
+          description: 'This is a success toast',
+          type: 'success',
+          placement: 'bottom-start',
+          duration: 20000,
+          removeDelay: 250,
+        })
+      }}
+    >
+      Add Toast
+    </button>
+  )
+}
+
+export const CustomRenderToast = () => {
+  const toast = useToast()
+  return (
+    <button
+      onClick={() => {
+        toast.create({
+          title: 'Please checkout',
+          render: (toast) => (
+            <div>
+              {toast.title} <a href="https://ark-ui.com">Ark UI</a>
+            </div>
+          ),
+        })
+      }}
+    >
+      Add Toast
+    </button>
+  )
+}
+
+export const DefaultOptions = () => (
+  <AppToastProvider defaultOptions={{ duration: 2000, placement: 'top-end', removeDelay: 250 }}>
+    {/* ... */}
+  </AppToastProvider>
+)

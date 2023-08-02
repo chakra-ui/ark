@@ -9,7 +9,6 @@ import {
   TooltipPositioner,
   TooltipTrigger,
 } from './'
-import './tooltip.css'
 
 type TooltipType = typeof Tooltip
 
