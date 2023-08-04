@@ -3,11 +3,13 @@ import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
+  ComboboxOptionGroup,
   ComboboxPositioner,
   ComboboxTrigger,
   type ComboboxOptionProps,
@@ -24,8 +26,8 @@ export default meta
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
   { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue', disabled: true },
-  { label: 'AngularJS', value: 'angular' },
+  { label: 'VueJS', value: 'vue' },
+  { label: 'AngularJS', value: 'angular', disabled: true },
 ]
 
 export const Basic = () => {
@@ -49,21 +51,24 @@ export const Basic = () => {
       <ComboboxControl>
         <ComboboxInput />
         <ComboboxTrigger>▼</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
-            <For each={options()}>
-              {(option) => (
-                <ComboboxOption
-                  label={option.label}
-                  value={option.value}
-                  disabled={option?.disabled}
-                >
-                  {option.label}
-                </ComboboxOption>
-              )}
-            </For>
+            <ComboboxOptionGroup label="Javascript">
+              <For each={options()}>
+                {(option) => (
+                  <ComboboxOption
+                    label={option.label}
+                    value={option.value}
+                    disabled={option?.disabled}
+                  >
+                    {option.label}
+                  </ComboboxOption>
+                )}
+              </For>
+            </ComboboxOptionGroup>
           </ComboboxContent>
         </ComboboxPositioner>
       </Portal>

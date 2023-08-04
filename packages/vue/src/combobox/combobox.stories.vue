@@ -2,15 +2,17 @@
 import { ref } from 'vue'
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
-  type ComboboxOptionProps,
+  ComboboxOptionGroup,
   ComboboxPositioner,
-  type ComboboxProps,
   ComboboxTrigger,
+  type ComboboxOptionProps,
+  type ComboboxProps,
 } from './'
 import './combobox.css'
 
@@ -19,8 +21,8 @@ type ComboboxData = Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[]
 const comboboxData: ComboboxData = [
   { label: 'ReactJS', value: 'react' },
   { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue', disabled: true },
-  { label: 'AngularJS', value: 'angular' },
+  { label: 'VueJS', value: 'vue' },
+  { label: 'AngularJS', value: 'angular', disabled: true },
 ]
 
 const options = ref(comboboxData)
@@ -53,22 +55,23 @@ const defaultVal = ref(comboboxData[0].label)
       <ComboboxTrigger>
         <button>▼</button>
       </ComboboxTrigger>
+      <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
     </ComboboxControl>
-    <div v-show="isInputValueEmpty && !isOpen">
-      Give me you favorite framework!
-    </div>
+    <div v-show="isInputValueEmpty && !isOpen">Give me you favorite framework!</div>
     <Teleport to="body">
       <ComboboxPositioner>
         <ComboboxContent>
-          <ComboboxOption
-            v-for="(item, idx) in options"
-            :key="`${item.value}:${idx}`"
-            :label="item.label"
-            :value="item.value"
-            :disabled="item.disabled"
-          >
-            {{ item.label }}
-          </ComboboxOption>
+          <ComboboxOptionGroup label="JavaScript">
+            <ComboboxOption
+              v-for="(item, idx) in options"
+              :key="`${item.value}:${idx}`"
+              :label="item.label"
+              :value="item.value"
+              :disabled="item.disabled"
+            >
+              {{ item.label }}
+            </ComboboxOption>
+          </ComboboxOptionGroup>
         </ComboboxContent>
       </ComboboxPositioner>
     </Teleport>

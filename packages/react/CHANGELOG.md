@@ -6,23 +6,19 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## Added
+
+- Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
+
 ## [0.10.0] - 2023-08-02
 
 ## Added
 
 - Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
-
-## [0.10.0-beta.1] - 2023-07-29
-
-### Changed
-
-- Simplified forwardRef setup
-
-## [0.10.0-beta.0] - 2023-07-29
-
-### Changed
-
 - Updated number input `onChange` handler to allow synchronous updates to the value when using the scrubber.
+
+### Changed
+
 - Improved TypeScript typings in our factory functions. The changes allow for more accurate type inference for the `ref` property when dealing with both intrinsic HTML elements and custom React components.
 
 ## [0.9.0] - 2023-07-21
@@ -166,7 +162,4 @@ description: All notable changes to this project will be documented in this file
 [0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.0
 [0.8.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.8.1
 [0.9.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0
-[0.10.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0-beta.0
-[0.10.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0-beta.1
-
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0

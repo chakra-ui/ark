@@ -10,6 +10,8 @@ description: All notable changes to this project will be documented in this file
 
 - Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
 - Expose `use<X>Context` for all components that use context.
+- Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
+- Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 
 ## [0.5.3] - 2023-07-10
 

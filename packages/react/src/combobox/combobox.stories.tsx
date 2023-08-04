@@ -3,11 +3,13 @@ import { useState } from 'react'
 import { Portal } from '..'
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
   ComboboxLabel,
   ComboboxOption,
+  ComboboxOptionGroup,
   ComboboxPositioner,
   ComboboxTrigger,
   type ComboboxOptionProps,
@@ -27,8 +29,8 @@ export default meta
 const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
   { label: 'ReactJS', value: 'react' },
   { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue', disabled: true },
-  { label: 'AngularJS', value: 'angular' },
+  { label: 'VueJS', value: 'vue' },
+  { label: 'AngularJS', value: 'angular', disabled: true },
 ]
 
 export const Basic = () => {
@@ -49,21 +51,24 @@ export const Basic = () => {
           <ComboboxControl>
             <ComboboxInput />
             <ComboboxTrigger>▼</ComboboxTrigger>
+            <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
           </ComboboxControl>
           {isInputValueEmpty && !isOpen && <div>Give me you favorite framework!</div>}
           <Portal>
             <ComboboxPositioner>
               <ComboboxContent>
-                {options.map((item, index) => (
-                  <ComboboxOption
-                    key={`${item.value}:${index}`}
-                    label={item.label}
-                    value={item.value}
-                    disabled={item?.disabled}
-                  >
-                    {item.label}
-                  </ComboboxOption>
-                ))}
+                <ComboboxOptionGroup label="Javascript">
+                  {options.map((item, index) => (
+                    <ComboboxOption
+                      key={`${item.value}:${index}`}
+                      label={item.label}
+                      value={item.value}
+                      disabled={item?.disabled}
+                    >
+                      {item.label}
+                    </ComboboxOption>
+                  ))}
+                </ComboboxOptionGroup>
               </ComboboxContent>
             </ComboboxPositioner>
           </Portal>

@@ -188,5 +188,12 @@
       "isRequired": false,
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
+  },
+  "ComboboxOptionGroupProps": {
+    "label": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The accessible label that describes the group"
+    }
   }
 }
