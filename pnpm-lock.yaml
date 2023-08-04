@@ -330,7 +330,7 @@ importers:
         version: 0.13.0
       '@zag-js/solid':
         specifier: 0.13.0
-        version: 0.13.0(solid-js@1.7.8)
+        version: 0.13.0(solid-js@1.7.9)
       '@zag-js/splitter':
         specifier: 0.13.0
         version: 0.13.0
@@ -358,7 +358,7 @@ importers:
         version: 4.0.0(release-it@16.1.3)
       '@solidjs/testing-library':
         specifier: 0.8.4
-        version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.8)
+        version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.9)
       '@storybook/addon-essentials':
         specifier: 7.2.1
         version: 7.2.1(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
@@ -417,14 +417,14 @@ importers:
         specifier: 16.1.3
         version: 16.1.3
       solid-js:
-        specifier: 1.7.8
-        version: 1.7.8
+        specifier: 1.7.9
+        version: 1.7.9
       storybook:
         specifier: 7.2.1
         version: 7.2.1
       storybook-solidjs:
         specifier: 1.0.0-beta.2
-        version: 1.0.0-beta.2(babel-preset-solid@1.7.4)(solid-js@1.7.8)
+        version: 1.0.0-beta.2(babel-preset-solid@1.7.4)(solid-js@1.7.9)
       storybook-solidjs-vite:
         specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(typescript@5.1.6)(vite@4.4.8)
@@ -439,7 +439,7 @@ importers:
         version: 2.3.0(@types/node@18.17.2)(vite@4.4.8)
       vite-plugin-solid:
         specifier: 2.7.0
-        version: 2.7.0(solid-js@1.7.8)(vite@4.4.8)
+        version: 2.7.0(solid-js@1.7.9)(vite@4.4.8)
       vitest:
         specifier: 0.34.1
         version: 0.34.1(jsdom@22.1.0)
@@ -5184,24 +5184,24 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /@solidjs/router@0.8.2(solid-js@1.7.8):
+  /@solidjs/router@0.8.2(solid-js@1.7.9):
     resolution: {integrity: sha512-gUKW+LZqxtX6y/Aw6JKyy4gQ9E7dLqp513oB9pSYJR1HM5c56Pf7eijzyXX+b3WuXig18Cxqah4tMtF0YGu80w==}
     peerDependencies:
       solid-js: ^1.5.3
     dependencies:
-      solid-js: 1.7.8
+      solid-js: 1.7.9
     dev: true
 
-  /@solidjs/testing-library@0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.8):
+  /@solidjs/testing-library@0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.9):
     resolution: {integrity: sha512-HHCAlBd4P4TY03tXmoBwTO6FFM7w33LeT8Skab941eLO9l5RN7OxKEBw2fiMYvSFL2h2U7L4+W5N03iC8GbB6Q==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@solidjs/router': '>=0.6.0'
       solid-js: '>=1.0.0'
     dependencies:
-      '@solidjs/router': 0.8.2(solid-js@1.7.8)
+      '@solidjs/router': 0.8.2(solid-js@1.7.9)
       '@testing-library/dom': 9.3.1
-      solid-js: 1.7.8
+      solid-js: 1.7.9
     dev: true
 
   /@storybook/addon-a11y@7.2.1(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0):
@@ -8201,7 +8201,7 @@ packages:
       '@zag-js/utils': 0.13.0
     dev: false
 
-  /@zag-js/solid@0.13.0(solid-js@1.7.8):
+  /@zag-js/solid@0.13.0(solid-js@1.7.9):
     resolution: {integrity: sha512-a3FCqr8qVIsLd+7AmZKtX7bzoo3+kSTmx3QvBCdY5HxM/MG1bHRgcAJTOmO/yVZUVgSVL8Bx4lSBcTB/kRk87Q==}
     peerDependencies:
       solid-js: '>=1.1.3'
@@ -8210,7 +8210,7 @@ packages:
       '@zag-js/store': 0.13.0
       '@zag-js/types': 0.13.0
       hyphenate-style-name: 1.0.4
-      solid-js: 1.7.8
+      solid-js: 1.7.9
     dev: false
 
   /@zag-js/splitter@0.10.3:
@@ -17171,13 +17171,13 @@ packages:
       csstype: 3.1.2
       seroval: 0.5.1
 
-  /solid-js@1.7.8:
-    resolution: {integrity: sha512-XHBWk1FvFd0JMKljko7FfhefJMTSgYEuVKcQ2a8hzRXfiuSJAGsrPPafqEo+f6l+e8Oe3cROSpIL6kbzjC1fjQ==}
+  /solid-js@1.7.9:
+    resolution: {integrity: sha512-p1orXnauMQmwYULZtuPAXyKNRGEN2qh60kLX4YURa3jvulxAqjlh2kWEljXCtAVR6UZPC16NXdj9ASHcH383Fg==}
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
 
-  /solid-refresh@0.5.2(solid-js@1.7.8):
+  /solid-refresh@0.5.2(solid-js@1.7.9):
     resolution: {integrity: sha512-I69HmFj0LsGRJ3n8CEMVjyQFgVtuM2bSjznu2hCnsY+i5oOxh8ioWj00nnHBv0UYD3WpE/Sq4Q3TNw2IKmKN7A==}
     peerDependencies:
       solid-js: ^1.3
@@ -17185,7 +17185,7 @@ packages:
       '@babel/generator': 7.22.9
       '@babel/helper-module-imports': 7.22.5
       '@babel/types': 7.22.5
-      solid-js: 1.7.8
+      solid-js: 1.7.9
     dev: true
 
   /sort-keys@5.0.0:
@@ -17318,7 +17318,7 @@ packages:
       - vite-plugin-glimmerx
     dev: true
 
-  /storybook-solidjs@1.0.0-beta.2(babel-preset-solid@1.7.4)(solid-js@1.7.8):
+  /storybook-solidjs@1.0.0-beta.2(babel-preset-solid@1.7.4)(solid-js@1.7.9):
     resolution: {integrity: sha512-wXjM/uH29IPjgxlPvQVNTM/7iBFNNzjuOugpk7iM2oy+sZl7K70eBjvOqGgX5v35pNHTaA8Ju3BlLdp+O20abg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -17326,7 +17326,7 @@ packages:
       solid-js: ^1.6.6
     dependencies:
       babel-preset-solid: 1.7.4(@babel/core@7.22.9)
-      solid-js: 1.7.8
+      solid-js: 1.7.9
     dev: true
 
   /storybook@7.2.1:
@@ -18595,7 +18595,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid@2.7.0(solid-js@1.7.8)(vite@4.4.8):
+  /vite-plugin-solid@2.7.0(solid-js@1.7.9)(vite@4.4.8):
     resolution: {integrity: sha512-avp/Jl5zOp/Itfo67xtDB2O61U7idviaIp4mLsjhCa13PjKNasz+IID0jYTyqUp9SFx6/PmBr6v4KgDppqompg==}
     peerDependencies:
       solid-js: ^1.7.2
@@ -18606,8 +18606,8 @@ packages:
       '@types/babel__core': 7.20.1
       babel-preset-solid: 1.7.4(@babel/core@7.22.1)
       merge-anything: 5.1.7
-      solid-js: 1.7.8
-      solid-refresh: 0.5.2(solid-js@1.7.8)
+      solid-js: 1.7.9
+      solid-refresh: 0.5.2(solid-js@1.7.9)
       vite: 4.4.8(@types/node@18.17.2)
       vitefu: 0.2.4(vite@4.4.8)
     transitivePeerDependencies:
