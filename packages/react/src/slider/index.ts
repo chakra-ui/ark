@@ -1,6 +1,7 @@
 export { Slider, type SliderProps } from './slider'
 export { useSliderContext } from './slider-context'
 export { SliderControl, type SliderControlProps } from './slider-control'
+export { SliderHiddenInput, type SliderHiddenInputProps } from './slider-hidden-input'
 export { SliderLabel, type SliderLabelProps } from './slider-label'
 export { SliderMarker, type SliderMarkerProps } from './slider-marker'
 export { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'

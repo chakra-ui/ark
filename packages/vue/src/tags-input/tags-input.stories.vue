@@ -7,7 +7,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from '.'
 import './tags-input.css'
@@ -27,7 +27,7 @@ const values = ref<string[]>(['react', 'solid', 'vue'])
         </Tag>
         <TagInput :index="index" :value="value" />
       </template>
-      <TagsInputField placeholder="Add tag" />
+      <TagsInputInput placeholder="Add tag" />
       <TagsInputClearTrigger>
         <button>Clear all</button>
       </TagsInputClearTrigger>

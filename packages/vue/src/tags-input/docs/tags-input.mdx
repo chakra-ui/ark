@@ -18,7 +18,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from '@ark-ui/vue'
 ```
@@ -26,7 +26,7 @@ import {
 ## Usage
 
 The TagsInput component consists of the `Tag`, `TagInput`, `TagsInputControl`,
-`TagsInputField`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
+`TagsInputInput`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
 `TagsInputLabel` components. Combine them as desired to fit your design system.
 
 Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
@@ -42,7 +42,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from '@ark-ui/vue'
 
@@ -62,7 +62,7 @@ const tagsInputRef = ref()
         </Tag>
         <TagInput :index="index" :value="value" />
       </template>
-      <TagsInputField placeholder="Add tag" />
+      <TagsInputInput placeholder="Add tag" />
       <TagsInputClearTrigger>
         <button>Clear all</button>
       </TagsInputClearTrigger>

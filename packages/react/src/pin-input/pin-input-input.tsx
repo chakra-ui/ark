@@ -4,12 +4,12 @@ import { ark } from '../factory'
 import type { Assign } from '../types'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputFieldProps = Assign<
+export type PinInputInputProps = Assign<
   ComponentPropsWithoutRef<typeof ark.input>,
   { index: number }
 >
 
-export const PinInputField = forwardRef<HTMLInputElement, PinInputFieldProps>((props, ref) => {
+export const PinInputInput = forwardRef<HTMLInputElement, PinInputInputProps>((props, ref) => {
   const { index, ...inputProps } = props
   const { getInputProps } = usePinInputContext()
   const mergedProps = mergeProps(getInputProps({ index }), inputProps)
@@ -17,4 +17,4 @@ export const PinInputField = forwardRef<HTMLInputElement, PinInputFieldProps>((p
   return <ark.input {...mergedProps} ref={ref} />
 })
 
-PinInputField.displayName = 'PinInputField'
+PinInputInput.displayName = 'PinInputInput'

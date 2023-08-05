@@ -1,6 +1,7 @@
 export { Select, type SelectProps } from './select'
 export { SelectContent, type SelectContentProps } from './select-content'
 export { useSelectContext } from './select-context'
+export { SelectHiddenSelect, type SelectHiddenSelectProps } from './select-hidden-select'
 export { SelectLabel, type SelectLabelProps } from './select-label'
 export { SelectOption, type SelectOptionProps } from './select-option'
 export { SelectOptionGroup, type SelectOptionGroupProps } from './select-option-group'

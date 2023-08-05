@@ -18,7 +18,6 @@ export const RangeSliderThumb: ComponentWithProps<RangeSliderThumbProps> = defin
 
     return () => (
       <ark.div {...api.value.getThumbProps(props.index)} {...attrs}>
-        <ark.input {...api.value.getHiddenInputProps(props.index)} />
         {slots.default?.()}
       </ark.div>
     )

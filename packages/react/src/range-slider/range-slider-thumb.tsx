@@ -14,28 +14,7 @@ export const RangeSliderThumb = forwardRef<HTMLDivElement, RangeSliderThumbProps
   const { getThumbProps } = useRangeSliderContext()
   const mergedProps = mergeProps(getThumbProps(index), divProps)
 
-  return (
-    <ark.div {...mergedProps} ref={ref}>
-      <RangeSliderHiddenInput index={index} />
-      {props.children}
-    </ark.div>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 RangeSliderThumb.displayName = 'RangeSliderThumb'
-
-type RangeSliderHiddenInputProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.input>,
-  { index: number }
->
-
-const RangeSliderHiddenInput = forwardRef<HTMLInputElement, RangeSliderHiddenInputProps>(
-  (props, ref) => {
-    const { index, ...inputProps } = props
-    const { getHiddenInputProps } = useRangeSliderContext()
-    const mergedProps = mergeProps(getHiddenInputProps(index), inputProps)
-    return <ark.input {...mergedProps} ref={ref} />
-  },
-)
-
-RangeSliderHiddenInput.displayName = 'RangeSliderHiddenInput'

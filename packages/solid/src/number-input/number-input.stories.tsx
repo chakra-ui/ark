@@ -3,8 +3,8 @@ import {
   NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
-  NumberInputField,
   NumberInputIncrementTrigger,
+  NumberInputInput,
   NumberInputLabel,
   NumberInputScrubber,
 } from './'
@@ -20,7 +20,7 @@ export const Basic = () => (
   <NumberInput min={-50} max={50} value="0" clampValueOnBlur>
     <NumberInputScrubber />
     <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
+    <NumberInputInput />
     <NumberInputControl>
       <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>

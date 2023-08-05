@@ -1,6 +1,6 @@
 import { css, cx } from '@/panda/css'
 import { input, pinInput } from '@/panda/recipes'
-import { PinInput, PinInputControl, PinInputField, type PinInputProps } from '@ark-ui/react'
+import { PinInput, PinInputControl, PinInputInput, type PinInputProps } from '@ark-ui/react'
 
 export const DemoPinInput = (props: Partial<PinInputProps>) => (
   <PinInput
@@ -11,7 +11,7 @@ export const DemoPinInput = (props: Partial<PinInputProps>) => (
   >
     <PinInputControl>
       {[0, 1, 2, 3].map((id, index) => (
-        <PinInputField
+        <PinInputInput
           key={id}
           index={index}
           className={cx(

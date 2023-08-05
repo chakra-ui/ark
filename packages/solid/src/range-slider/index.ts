@@ -1,6 +1,10 @@
 export { RangeSlider, type RangeSliderProps } from './range-slider'
 export { useRangeSliderContext } from './range-slider-context'
 export { RangeSliderControl, type RangeSliderControlProps } from './range-slider-control'
+export {
+  RangeSliderHiddenInput,
+  type RangeSliderHiddenInputProps,
+} from './range-slider-hidden-input'
 export { RangeSliderLabel, type RangeSliderLabelProps } from './range-slider-label'
 export { RangeSliderMarker, type RangeSliderMarkerProps } from './range-slider-marker'
 export {

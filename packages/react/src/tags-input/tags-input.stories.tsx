@@ -7,7 +7,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from './'
 import './tags-input.css'
@@ -40,7 +40,7 @@ export const Basic = () => {
                 <TagInput index={index} value={value} />
               </Fragment>
             ))}
-            <TagsInputField placeholder="Add tag" />
+            <TagsInputInput placeholder="Add tag" />
             <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
           </TagsInputControl>
         </>
@@ -64,7 +64,7 @@ export const WithDefaultValue = () => (
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
-        <TagsInputField placeholder="Add tag" />
+        <TagsInputInput placeholder="Add tag" />
         <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
       </TagsInputControl>
     )}

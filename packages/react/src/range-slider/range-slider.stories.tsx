@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {
   RangeSlider,
   RangeSliderControl,
+  RangeSliderHiddenInput,
   RangeSliderLabel,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
@@ -33,7 +34,9 @@ export const Basic = () => {
           <RangeSliderRange />
         </RangeSliderTrack>
         {values.map((_, index) => (
-          <RangeSliderThumb key={index} index={index} />
+          <RangeSliderThumb key={index} index={index}>
+            <RangeSliderHiddenInput index={index}></RangeSliderHiddenInput>
+          </RangeSliderThumb>
         ))}
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
@@ -54,7 +57,9 @@ export const WithDefaultValue = () => (
         <RangeSliderRange />
       </RangeSliderTrack>
       {[0, 1].map((_, index) => (
-        <RangeSliderThumb key={index} index={index} />
+        <RangeSliderThumb key={index} index={index}>
+          <RangeSliderHiddenInput index={index} />
+        </RangeSliderThumb>
       ))}
     </RangeSliderControl>
     <RangeSliderMarkerGroup>

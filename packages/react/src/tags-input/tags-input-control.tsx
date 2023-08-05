@@ -6,13 +6,12 @@ import { useTagsInputContext } from './tags-input-context'
 export type TagsInputControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
 export const TagsInputControl = forwardRef<HTMLDivElement, TagsInputControlProps>((props, ref) => {
-  const { controlProps, hiddenInputProps } = useTagsInputContext()
+  const { controlProps } = useTagsInputContext()
   const mergedProps = mergeProps(controlProps, props)
 
   return (
     <ark.div {...mergedProps} ref={ref}>
       {props.children}
-      <input {...hiddenInputProps} />
     </ark.div>
   )
 })

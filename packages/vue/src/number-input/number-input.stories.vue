@@ -4,7 +4,7 @@ import {
   NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
-  NumberInputField,
+  NumberInputInput,
   NumberInputIncrementTrigger,
   NumberInputLabel,
   NumberInputScrubber,
@@ -17,7 +17,7 @@ const value = ref('14')
   <NumberInput v-model="value" :min="-50" :max="50" clampValueOnBlur>
     <NumberInputScrubber />
     <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
+    <NumberInputInput />
     <NumberInputControl>
       <NumberInputDecrementTrigger>
         <button>-1</button>

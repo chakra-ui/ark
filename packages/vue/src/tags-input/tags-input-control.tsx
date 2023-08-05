@@ -12,7 +12,6 @@ export const TagsInputControl = defineComponent({
     return () => (
       <ark.div {...api.value.controlProps} {...attrs}>
         {slots.default?.()}
-        <input {...api.value.hiddenInputProps} />
       </ark.div>
     )
   },

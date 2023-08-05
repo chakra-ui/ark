@@ -10,9 +10,10 @@ import {
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
-  type RangeSliderContext,
+  RangeSliderHiddenInput,
 } from './'
 import './range-slider.css'
+import type { RangeSliderContext } from './range-slider-context'
 
 const valuesRef = ref([-20, 20])
 
@@ -28,7 +29,9 @@ const outputRef = ref<{ context: RangeSliderContext }>()
       <RangeSliderTrack>
         <RangeSliderRange />
       </RangeSliderTrack>
-      <RangeSliderThumb v-for="(_, idx) in valuesRef" :key="idx" :index="idx" />
+      <RangeSliderThumb v-for="(_, idx) in valuesRef" :key="idx" :index="idx">
+        <RangeSliderHiddenInput :index="idx" />
+      </RangeSliderThumb>
     </RangeSliderControl>
     <RangeSliderMarkerGroup>
       <RangeSliderMarker :value="-30">*</RangeSliderMarker>

@@ -3,6 +3,7 @@ import type { Meta } from 'storybook-solidjs'
 import {
   RangeSlider,
   RangeSliderControl,
+  RangeSliderHiddenInput,
   RangeSliderLabel,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
@@ -29,7 +30,13 @@ export const Basic = () => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        <For each={values()}>{(_, i) => <RangeSliderThumb index={i} />}</For>
+        <For each={values()}>
+          {(_, i) => (
+            <RangeSliderThumb index={i()}>
+              <RangeSliderHiddenInput index={i()} />
+            </RangeSliderThumb>
+          )}
+        </For>
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
         <RangeSliderMarker value={-30}>*</RangeSliderMarker>

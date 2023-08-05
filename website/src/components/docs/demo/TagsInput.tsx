@@ -5,7 +5,7 @@ import {
   TagInput,
   TagsInput,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
 } from '@ark-ui/react'
 import { Fragment } from 'react'
 
@@ -39,7 +39,7 @@ export const DemoTagsInput = () => {
               <TagInput index={index} value={value} />
             </Fragment>
           ))}
-          <TagsInputField placeholder="Add tag" />
+          <TagsInputInput placeholder="Add tag" />
         </TagsInputControl>
       )}
     </TagsInput>

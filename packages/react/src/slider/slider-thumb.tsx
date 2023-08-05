@@ -10,20 +10,9 @@ export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, 
   const mergedProps = mergeProps(thumbProps, props)
   return (
     <ark.div {...mergedProps} ref={ref}>
-      <SliderHiddenInput />
       {props.children}
     </ark.div>
   )
 })
 
 SliderThumb.displayName = 'SliderThumb'
-
-const SliderHiddenInput = forwardRef<HTMLInputElement, ComponentPropsWithoutRef<typeof ark.input>>(
-  (props, ref) => {
-    const { hiddenInputProps } = useSliderContext()
-    const mergedProps = mergeProps(hiddenInputProps, props)
-    return <ark.input {...mergedProps} ref={ref} />
-  },
-)
-
-SliderHiddenInput.displayName = 'SliderHiddenInput'

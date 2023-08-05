@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputContext } from './'
+import { PinInput, PinInputControl, PinInputHiddenInput, PinInputInput, PinInputLabel } from './'
 
-const handleComplete: PinInputContext['onComplete'] = (e) => alert(e.valueAsString)
+const handleComplete = (e: any) => alert(e.valueAsString)
 </script>
 <template>
   <PinInput placeholder="*" @complete="handleComplete">
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
-      <PinInputField v-for="id in [0, 1, 2]" :key="id" :index="id" />
+      <PinInputInput v-for="id in [0, 1, 2]" :key="id" :index="id" />
     </PinInputControl>
+    <PinInputHiddenInput />
   </PinInput>
 </template>

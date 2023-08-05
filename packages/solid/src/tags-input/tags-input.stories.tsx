@@ -7,7 +7,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from './'
 import './tags-input.css'
@@ -37,7 +37,7 @@ export const Basic = () => (
               </>
             )}
           </For>
-          <TagsInputField placeholder="Add tag" />
+          <TagsInputInput placeholder="Add tag" />
           <TagsInputClearTrigger asChild>Clear All</TagsInputClearTrigger>
         </TagsInputControl>
       </>

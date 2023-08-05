@@ -12,6 +12,17 @@ description: All notable changes to this project will be documented in this file
 - Expose `use<X>Context` for all components that use context.
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 - Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
+- Added `PinInputHiddenInput` component to allow for integration with form libraries.
+- Added `TagsInputHiddenInput` component to allow for integration with form libraries.
+- Added `SliderHiddenInput` component to allow for integration with form libraries.
+- Added `SelectHiddenSelect` component to allow for integration with form libraries.
+- Added `RangeSliderHiddenInput` component to allow for integration with form libraries.
+
+### Changed
+
+- Breaking: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
+- Breaking: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
+- Breaking: Renamed `TagsInputField` to `TagsInputInputInput` to match the naming convention of other input components.
 
 ## [0.8.1] - 2023-07-10
 

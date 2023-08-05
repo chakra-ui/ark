@@ -8,10 +8,5 @@ export const SliderThumb = (props: SliderThumbProps) => {
   const api = useSliderContext()
   const thumbProps = mergeProps(() => api().thumbProps, props)
 
-  return (
-    <ark.div {...thumbProps}>
-      <ark.input {...api().hiddenInputProps} />
-      {props.children}
-    </ark.div>
-  )
+  return <ark.div {...thumbProps}>{props.children}</ark.div>
 }

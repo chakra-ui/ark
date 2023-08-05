@@ -1,18 +1,18 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
-import { useNumberInputContext } from './number-input-context'
+import { useTagsInputContext } from './tags-input-context'
 
-export type NumberInputFieldProps = HTMLArkProps<'input'>
+export type TagsInputInputProps = HTMLArkProps<'input'>
 
-export const NumberInputField: ComponentWithProps<NumberInputFieldProps> = defineComponent({
-  name: 'NumberInputField',
+export const TagsInputInput: ComponentWithProps<TagsInputInputProps> = defineComponent({
+  name: 'TagsInputInput',
   setup(_, { attrs }) {
-    const api = useNumberInputContext()
+    const api = useTagsInputContext()
 
     const inputProps = computed(() => ({
       ...api.value.inputProps,
-      modelValue: api.value.value || '',
+      modelValue: api.value.inputValue,
     }))
 
     return () => <ark.input {...inputProps.value} {...attrs} />

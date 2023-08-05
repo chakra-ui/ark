@@ -2,6 +2,7 @@ import { slider } from '@/panda/recipes'
 import {
   RangeSlider,
   RangeSliderControl,
+  RangeSliderHiddenInput,
   RangeSliderMarker,
   RangeSliderMarkerGroup,
   RangeSliderRange,
@@ -17,7 +18,9 @@ export const DemoRangeSlider = (props: Partial<RangeSliderProps>) => (
         <RangeSliderRange />
       </RangeSliderTrack>
       {[0, 1].map((i) => (
-        <RangeSliderThumb key={i} index={i} />
+        <RangeSliderThumb key={i} index={i}>
+          <RangeSliderHiddenInput index={i} />
+        </RangeSliderThumb>
       ))}
     </RangeSliderControl>
     <RangeSliderMarkerGroup>

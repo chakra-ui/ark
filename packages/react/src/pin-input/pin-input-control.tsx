@@ -6,15 +6,10 @@ import { usePinInputContext } from './pin-input-context'
 export type PinInputControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
 export const PinInputControl = forwardRef<HTMLDivElement, PinInputControlProps>((props, ref) => {
-  const { controlProps, hiddenInputProps } = usePinInputContext()
+  const { controlProps } = usePinInputContext()
   const mergedProps = mergeProps(controlProps, props)
 
-  return (
-    <ark.div {...mergedProps} ref={ref}>
-      <input {...hiddenInputProps} />
-      {props.children}
-    </ark.div>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 PinInputControl.displayName = 'PinInputControl'
