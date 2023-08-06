@@ -130,5 +130,4 @@ description: All notable changes to this project will be documented in this file
 [0.7.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.7.1
 [0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.8.0
 [0.8.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.8.1
-
 [0.9.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.9.0

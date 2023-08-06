@@ -6,13 +6,13 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
-## Added
+### Added
 
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 
 ## [0.10.0] - 2023-08-02
 
-## Added
+### Added
 
 - Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
 - Updated number input `onChange` handler to allow synchronous updates to the value when using the scrubber.
