@@ -35,15 +35,17 @@ export const metadata: Metadata = {
     template: '%s | Ark UI',
   },
   description:
-    'A headless library for building reusable, scalable design systems that works for a wide range of JS frameworks.',
-  icons: {
-    icon: '/icon.svg',
-    apple: '/apple-touch-icon.png',
-  },
+    'A headless component library for building reusable, scalable design systems that works for a wide range of JS frameworks.',
   manifest: '/site.webmanifest',
+  keywords: ['Headless', 'Components', 'React', 'Solid', 'Vue'],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://ark-ui.com',
+    description:
+      'A headless component library for building reusable, scalable design systems that works for a wide range of JS frameworks.',
+  },
+  twitter: {
+    creator: '@ark_ui_',
   },
 }
