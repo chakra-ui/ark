@@ -1,5 +1,5 @@
 import { styled } from '@/panda/jsx'
-import { radio } from '@/panda/recipes'
+import { radio } from 'panda/recipes/radio'
 
 export const Radio = (props: any) => {
   const { children, defaultChecked, ...rest } = props

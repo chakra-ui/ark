@@ -2,7 +2,7 @@
   "name": "@ark-ui/website",
   "version": "1.0.0",
   "scripts": {
-    "prepare": "panda codegen --silent",
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
@@ -13,6 +13,7 @@
     "@ark-ui/react": "workspace:*",
     "@next/env": "13.4.5",
     "@pandacss/dev": "0.9.0",
+    "@park-ui/presets": "0.2.0",
     "@theme-toggles/react": "4.1.0",
     "contentlayer": "0.3.4",
     "markdown-toc": "1.2.0",

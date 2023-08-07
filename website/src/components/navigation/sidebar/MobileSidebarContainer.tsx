@@ -24,8 +24,8 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => (
         </DialogTrigger>
         <RouteChangeHandler close={close} />
         <Portal>
-          <DialogBackdrop className={drawer()} />
-          <DialogContainer className={drawer()}>
+          <DialogBackdrop className={drawer({ placement: 'left' })} />
+          <DialogContainer className={drawer({ placement: 'left' })}>
             <DialogContent>
               {props.children}
               <DialogCloseTrigger asChild>

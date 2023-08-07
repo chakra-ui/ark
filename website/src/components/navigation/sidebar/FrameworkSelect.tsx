@@ -1,18 +1,17 @@
 'use client'
-import { css } from '@/panda/css'
-import { Stack } from '@/panda/jsx'
-import { select } from '@/panda/recipes'
+import { Button } from '@/components/shared/Button'
 import {
-  Portal,
   Select,
   SelectContent,
   SelectLabel,
   SelectOption,
   SelectPositioner,
   SelectTrigger,
-} from '@ark-ui/react'
+} from '@/components/ui/select'
+import { css } from '@/panda/css'
+import { HStack, Stack } from '@/panda/jsx'
+import { Portal } from '@ark-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Fragment } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import { P, match } from 'ts-pattern'
 
@@ -37,8 +36,6 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
       value: 'react',
     }))
 
-  const SelectWrapper = props.noPortal ? Fragment : Portal
-
   return (
     <Select
       defaultValue={defaultValue}
@@ -56,26 +53,27 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
               fontSize: { base: 'md', lg: 'sm' },
               lineHeight: '1.5rem',
               fontWeight: 'semibold',
-              color: 'accent.muted',
             })}
           >
             Framework
           </SelectLabel>
           <SelectTrigger asChild>
-            <button className={select({ size: 'xs' })}>
-              <span>{selectedOption?.label ?? 'Select option'}</span>
-              <SelectIcon isOpen={isOpen} />
-            </button>
+            <Button variant="secondary" minW="252px">
+              <HStack justify="space-between" flex="1" fontWeight="medium">
+                {selectedOption?.label ?? 'Select Framework'}
+                <SelectIcon isOpen={isOpen} />
+              </HStack>
+            </Button>
           </SelectTrigger>
-          <SelectWrapper>
-            <SelectPositioner className={select({ size: 'xs' })}>
+          <Portal>
+            <SelectPositioner>
               <SelectContent>
                 <SelectOption value="react" label="React" />
                 <SelectOption value="solid" label="Solid" />
                 <SelectOption value="vue" label="Vue" />
               </SelectContent>
             </SelectPositioner>
-          </SelectWrapper>
+          </Portal>
         </Stack>
       )}
     </Select>

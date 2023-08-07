@@ -45,7 +45,7 @@ export const Frameworks = () => {
           {frameworks.map(({ heading, description, href, icon }) => (
             <Box
               key={heading}
-              background="bg.surface"
+              background="bg.subtle"
               borderRadius="lg"
               borderWidth="1px"
               p={{ base: '5', md: '6' }}

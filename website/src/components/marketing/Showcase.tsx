@@ -1,7 +1,6 @@
 'use client'
-import { css, cx } from '@/panda/css'
+import { css } from '@/panda/css'
 import { Box, Container, Flex, HStack, Stack } from '@/panda/jsx'
-import { tabs } from '@/panda/recipes'
 import {
   Carousel,
   CarouselNextSlideTrigger,
@@ -74,10 +73,6 @@ export const Showcase = () => {
             </CarouselViewport>
             <Stack direction="row" justify="space-between" width="full">
               <Tabs
-                className={cx(
-                  tabs({ variant: 'fill' }),
-                  css({ display: { base: 'none', sm: 'block' } }),
-                )}
                 value={components[index].name}
                 onChange={({ value }) =>
                   setIndex(components.findIndex((component) => component.name === value))

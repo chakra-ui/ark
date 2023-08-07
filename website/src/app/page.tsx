@@ -2,11 +2,11 @@ import { CodeExample } from '@/components/marketing/CodeExample'
 import { Community } from '@/components/marketing/Community'
 import { Creators } from '@/components/marketing/Creators'
 import { Enterprise } from '@/components/marketing/Enterprise'
+import { Examples } from '@/components/marketing/Examples'
 import { Footer } from '@/components/marketing/Footer'
 import { Frameworks } from '@/components/marketing/Frameworks'
 import { Gradient } from '@/components/marketing/Gradient'
 import { Hero } from '@/components/marketing/Hero'
-import { Showcase } from '@/components/marketing/Showcase'
 import { Testimonials } from '@/components/marketing/Testimonials'
 import { Universe } from '@/components/marketing/Universe'
 import { Navbar } from '@/components/navigation/navbar/Navbar'
@@ -26,7 +26,8 @@ export default async function Page() {
       <Navbar />
       <Gradient />
       <Hero />
-      <Showcase />
+      <Examples />
+      {/* <Showcase /> */}
       <Frameworks />
       <CodeExample examples={examples} />
       <Enterprise />

@@ -1,23 +1,22 @@
 import { ColorModeScript } from '@/lib/ColorModeScript'
 import { cx } from '@/panda/css'
 import { Metadata } from 'next'
-import { Fira_Code, Inter } from 'next/font/google'
-import localFont from 'next/font/local'
+import { Fira_Code, Plus_Jakarta_Sans } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 import '../global.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const body = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-body' })
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' })
 
-const monaSans = localFont({
-  src: './mona-sans.woff2',
-  display: 'swap',
-  variable: '--font-mona-sans',
-})
+// const body = localFont({
+//   src: './mona-sans.woff2',
+//   display: 'swap',
+//   variable: '--font-body',
+// })
 
 const RootLayout = (props: PropsWithChildren) => {
   return (
-    <html lang="en" className={cx(inter.variable, firaCode.variable, monaSans.variable)}>
+    <html lang="en" className={cx(body.variable, firaCode.variable)}>
       <head>
         <ColorModeScript />
         <script defer data-domain="ark-ui.com" src="https://plausible.io/js/script.js" />

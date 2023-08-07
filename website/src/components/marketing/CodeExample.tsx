@@ -49,7 +49,7 @@ export const CodeExample = (props: CodeExampleProps) => {
     <Container py={{ base: '16', md: '24' }}>
       <Stack direction={{ base: 'column', lg: 'row' }} gap={{ base: '16', lg: '24' }}>
         <Stack width="full" gap={{ base: '10', md: '12' }}>
-          <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
+          <Heading textStyle={{ base: '3xl', md: '4xl' }}>
             Composable API design for a delightful experience
           </Heading>
           <Stack gap="10">

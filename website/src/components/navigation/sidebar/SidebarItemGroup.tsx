@@ -1,9 +1,17 @@
 'use client'
 import { Text } from '@/components/shared/Text'
+import {
+  Segment,
+  SegmentControl,
+  SegmentGroup,
+  SegmentIndicator,
+  SegmentInput,
+  SegmentLabel,
+} from '@/components/ui/segment-group'
 import { Stack } from '@/panda/jsx'
-import { link } from '@/panda/recipes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export type SidebarItemGroupProps = {
   heading: string
@@ -16,28 +24,29 @@ export type SidebarItemGroupProps = {
 export const SidebarItemGroup = (props: SidebarItemGroupProps) => {
   const { heading, items } = props
   const pathname = usePathname()
+  const [currentPath, setCurrentPath] = useState(pathname)
+
+  useEffect(() => {
+    setCurrentPath(pathname)
+  }, [pathname])
+
   return (
-    <Stack gap={{ base: '6', lg: '3' }}>
-      <Text
-        fontSize={{ base: 'md', lg: 'sm' }}
-        lineHeight="1.5rem"
-        fontWeight="semibold"
-        color="accent.muted"
-      >
+    <Stack gap="3">
+      <Text textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">
         {heading}
       </Text>
-      <Stack borderLeftWidth="1px" gap={{ base: '5', lg: '2' }}>
-        {items.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className={link({ variant: 'sidebar' })}
-            aria-current={pathname?.includes(item.href) ? 'page' : false}
-          >
-            {item.label}
-          </Link>
+      <SegmentGroup value={currentPath} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
+        {items.map((option, id) => (
+          <Segment key={id} value={option.href} data-orientation="vertical" asChild>
+            <Link href={option.href}>
+              <SegmentInput />
+              <SegmentControl />
+              <SegmentLabel>{option.label}</SegmentLabel>
+            </Link>
+          </Segment>
         ))}
-      </Stack>
+        <SegmentIndicator hidden={!items.some((entry) => entry.href === currentPath)} />
+      </SegmentGroup>
     </Stack>
   )
 }

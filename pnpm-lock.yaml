@@ -685,6 +685,9 @@ importers:
       '@pandacss/dev':
         specifier: 0.9.0
         version: 0.9.0(@internationalized/date@3.3.0)(@types/node@18.17.3)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6)
+      '@park-ui/presets':
+        specifier: 0.2.0
+        version: 0.2.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.3)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6)
       '@theme-toggles/react':
         specifier: 4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -4674,6 +4677,32 @@ packages:
       is-glob: 4.0.3
       micromatch: 4.0.5
       napi-wasm: 1.1.0
+    dev: false
+
+  /@park-ui/presets@0.2.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.3)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-R+WC/7gNs5De7ZkriY3uSyPD3qRDhuzCkzhUF2yCPQ09Qa4BouRzLNZHJ/rjWEmnVUaV0UZUKDve6zoDB6nhaQ==}
+    peerDependencies:
+      '@ark-ui/react': ^0.10.0
+    dependencies:
+      '@ark-ui/react': link:packages/react
+      '@pandacss/dev': 0.9.0(@internationalized/date@3.3.0)(@types/node@18.17.3)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.7.1)(ts-node@10.9.1)(typescript@5.1.6)
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - astro
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - ts-node
+      - typescript
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
