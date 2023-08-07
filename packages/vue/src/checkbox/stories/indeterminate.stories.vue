@@ -33,7 +33,6 @@ watch(parentChecked, (parentVal) => {
         <MinusIcon v-else-if="parentChecked === 'indeterminate'" />
       </CheckboxControl>
       <CheckboxLabel> Parent Checkbox</CheckboxLabel>
-      <CheckboxInput />
     </Checkbox>
     <div style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px">
       <Checkbox v-model="childCheckedItems[0]">
@@ -41,14 +40,12 @@ watch(parentChecked, (parentVal) => {
           <CheckIcon v-if="childCheckedItems[0]" />
         </CheckboxControl>
         <CheckboxLabel> Child One Checkbox</CheckboxLabel>
-        <CheckboxInput data-testid="child-one-input" />
       </Checkbox>
       <Checkbox v-model="childCheckedItems[1]">
         <CheckboxControl>
           <CheckIcon v-if="childCheckedItems[1]" />
         </CheckboxControl>
         <CheckboxLabel>Child Two Checkbox</CheckboxLabel>
-        <CheckboxInput data-testid="child-two-input" />
       </Checkbox>
     </div>
   </div>

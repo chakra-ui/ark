@@ -6,7 +6,6 @@ import '../checkbox.css'
 <template>
   <Checkbox #default="{ isChecked }">
     <CheckboxLabel>Checkbox with slot props: {{ isChecked }}</CheckboxLabel>
-    <CheckboxInput />
     <CheckboxControl />
   </Checkbox>
 </template>
