@@ -1,7 +1,7 @@
 import { css } from '@/panda/css'
 import { styled } from '@/panda/jsx'
 import { checkbox } from '@/panda/recipes'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '@ark-ui/react'
+import { Checkbox, CheckboxControl, CheckboxLabel } from '@ark-ui/react'
 import { useState } from 'react'
 
 export const DemoCheckbox = () => {
@@ -14,7 +14,6 @@ export const DemoCheckbox = () => {
     >
       {(state) => (
         <>
-          <CheckboxInput data-peer />
           <CheckboxControl className={css({ mt: '0.5' })}>
             {state.isChecked && <CheckIcon />}
             {state.isIndeterminate && <MinusIcon />}

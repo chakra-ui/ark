@@ -2,7 +2,6 @@ import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
 import { Fragment, defineComponent, ref } from 'vue'
 import { Checkbox, CheckboxControl, CheckboxLabel, type CheckboxProps } from '.'
-import BasicComponentStory from './stories/basic.stories.vue'
 
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox {...props}>
@@ -12,7 +11,7 @@ const ComponentUnderTest = (props: CheckboxProps) => (
 )
 describe('Checkbox', () => {
   it('should render', async () => {
-    render(BasicComponentStory)
+    render(ComponentUnderTest)
   })
 
   it('should handle check and unchecked', async () => {

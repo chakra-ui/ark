@@ -11,9 +11,12 @@ export const CheckboxControl: ComponentWithProps<CheckboxControlProps> = defineC
     const api = useCheckboxContext()
 
     return () => (
-      <ark.div {...api.value.controlProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        <ark.div {...api.value.controlProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+        <input {...api.value.inputProps} />
+      </>
     )
   },
 })
