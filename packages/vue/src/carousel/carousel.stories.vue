@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   Carousel,
+  CarouselControl,
   CarouselNextSlideTrigger,
   CarouselPrevSlideTrigger,
   CarouselSlide,
@@ -22,12 +23,10 @@ const images = [
 </script>
 <template>
   <Carousel>
-    <CarouselPrevSlideTrigger>
-      Prev
-    </CarouselPrevSlideTrigger>
-    <CarouselNextSlideTrigger>
-      Next
-    </CarouselNextSlideTrigger>
+    <CarouselControl>
+      <CarouselPrevSlideTrigger>Prev</CarouselPrevSlideTrigger>
+      <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
+    </CarouselControl>
     <CarouselViewport>
       <CarouselSlideGroup>
         <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx" data-testid="slide">

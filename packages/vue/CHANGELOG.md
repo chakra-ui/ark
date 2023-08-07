@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the expected component. Use the `CarouselControl` component in the `Vue` documentation just like in `React`.
+
 ## [0.6.0] - 2023-08-06
 
 ### Added

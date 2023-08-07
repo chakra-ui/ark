@@ -15,8 +15,6 @@ export const CarouselControl = defineComponent({
       mergeProps(api.value.nextTriggerProps, attrs, carouselAnatomy.build().control.attrs),
     )
 
-    return () => {
-      return () => <ark.div {...mergedProps.value}>{slots.default?.()}</ark.div>
-    }
+    return () => <ark.div {...mergedProps.value}>{slots.default?.()}</ark.div>
   },
 })

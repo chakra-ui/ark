@@ -24,17 +24,18 @@ import {
 
 Here's an example of how to use the Carousel component with a set of images:
 
-```html
+```vue
 <script setup>
 import {
   Carousel,
+  CarouselControl,
   CarouselNextSlideTrigger,
   CarouselPrevSlideTrigger,
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
   CarouselIndicator,
-  CarouselIndicatorProps,
+  CarouselIndicatorGroup,
 } from '@ark-ui/vue'
 
 const images = [
@@ -48,12 +49,14 @@ const images = [
 
 <template>
   <Carousel>
-    <CarouselPrevSlideTrigger>
-      <button>Prev</button>
-    </CarouselPrevSlideTrigger>
-    <CarouselNextSlideTrigger>
-      <button>Next</button>
-    </CarouselNextSlideTrigger>
+    <CarouselControl>
+      <CarouselPrevSlideTrigger>
+        <button>Prev</button>
+      </CarouselPrevSlideTrigger>
+      <CarouselNextSlideTrigger>
+        <button>Next</button>
+      </CarouselNextSlideTrigger>
+    </CarouselControl>
     <CarouselIndicatorGroup>
       <CarouselIndicator v-for="(_, idx) in images" :key="idx" :index="idx" />
     </CarouselIndicatorGroup>
@@ -78,7 +81,7 @@ To create a controlled Carousel component, you can manage the state of the
 carousel using the `index` prop and update it when the `@slide-change` event
 handler is called:
 
-```tsx
+```vue
 <script>
 import { ref } from 'vue'
 import { Carousel } from '@ark-ui/vue'
@@ -102,7 +105,7 @@ You can customize the Carousel component by setting various props such as
 `align`, `loop`, `slidesPerView`, and `spacing`. Here's an example of a
 customized Carousel:
 
-```tsx
+```vue
 <script>
 import { Carousel } from '@ark-ui/vue'
 </script>
