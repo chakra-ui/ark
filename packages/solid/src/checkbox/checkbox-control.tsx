@@ -7,5 +7,10 @@ export type CheckboxControlProps = HTMLArkProps<'div'>
 export const CheckboxControl = (props: CheckboxControlProps) => {
   const checkbox = useCheckboxContext()
   const controlProps = mergeProps(() => checkbox().controlProps, props)
-  return <ark.div {...controlProps} />
+  return (
+    <>
+      <ark.div {...controlProps} />
+      <input {...checkbox().inputProps} />
+    </>
+  )
 }

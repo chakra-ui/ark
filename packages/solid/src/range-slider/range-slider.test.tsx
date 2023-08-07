@@ -30,8 +30,8 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        <RangeSliderThumb index={() => 0} data-testid="left-thumb" />
-        <RangeSliderThumb index={() => 1} data-testid="right-thumb" />
+        <RangeSliderThumb index={0} data-testid="left-thumb" />
+        <RangeSliderThumb index={1} data-testid="right-thumb" />
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
         <RangeSliderMarker value={-30}>*</RangeSliderMarker>

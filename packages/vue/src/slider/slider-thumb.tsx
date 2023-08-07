@@ -16,10 +16,12 @@ export const SliderThumb: ComponentWithProps<SliderThumbProps> = defineComponent
     }))
 
     return () => (
-      <ark.div {...api.value.thumbProps} {...attrs}>
-        <ark.input {...hiddenInputProps.value} />
-        {slots.default?.()}
-      </ark.div>
+      <>
+        <ark.div {...api.value.thumbProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+        <input {...hiddenInputProps} />
+      </>
     )
   },
 })

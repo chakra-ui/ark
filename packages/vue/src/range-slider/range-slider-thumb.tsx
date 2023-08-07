@@ -17,10 +17,12 @@ export const RangeSliderThumb: ComponentWithProps<RangeSliderThumbProps> = defin
     const api = useRangeSliderContext()
 
     return () => (
-      <ark.div {...api.value.getThumbProps(props.index)} {...attrs}>
-        <ark.input {...api.value.getHiddenInputProps(props.index)} />
-        {slots.default?.()}
-      </ark.div>
+      <>
+        <ark.div {...api.value.getThumbProps(props.index)} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+        <input {...api.value.getHiddenInputProps(props.index)} />
+      </>
     )
   },
 })

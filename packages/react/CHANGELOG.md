@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 
+### Removed
+
+- BREAKING: Removed `CheckboxInput`. This component is no longer required.
+
 ## [0.10.0] - 2023-08-02
 
 ### Added

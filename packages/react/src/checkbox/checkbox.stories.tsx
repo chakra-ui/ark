@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel, type CheckedState } from '.'
+import { Checkbox, CheckboxControl, CheckboxLabel, type CheckedState } from '.'
 import './checkbox.css'
 
 type CheckboxType = typeof Checkbox
@@ -15,7 +15,6 @@ export default meta
 export const Basic = () => (
   <Checkbox>
     <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxInput />
     <CheckboxControl />
   </Checkbox>
 )
@@ -26,7 +25,6 @@ export const Controlled = () => {
     <>
       <Checkbox checked={checked} onChange={(e) => setChecked(e.checked)}>
         <CheckboxLabel>Checkbox</CheckboxLabel>
-        <CheckboxInput />
         <CheckboxControl />
       </Checkbox>
     </>
@@ -36,7 +34,6 @@ export const Controlled = () => {
 export const Indeterminate = () => (
   <Checkbox checked="indeterminate">
     <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxInput />
     <CheckboxControl />
   </Checkbox>
 )
@@ -46,7 +43,6 @@ export const RenderProp = () => (
     {(api) => (
       <>
         <CheckboxLabel>Checkbox</CheckboxLabel>
-        <CheckboxInput />
         <CheckboxControl>
           {api.isChecked && <span>✓</span>}
           {api.isIndeterminate && <span>-</span>}

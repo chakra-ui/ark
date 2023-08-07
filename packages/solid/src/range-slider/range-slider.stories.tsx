@@ -29,7 +29,7 @@ export const Basic = () => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        <For each={values()}>{(_, i) => <RangeSliderThumb index={i} />}</For>
+        <For each={values()}>{(_, i) => <RangeSliderThumb index={i()} />}</For>
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
         <RangeSliderMarker value={-30}>*</RangeSliderMarker>

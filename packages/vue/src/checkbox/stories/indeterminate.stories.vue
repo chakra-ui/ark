@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
-import { Checkbox, CheckboxControl, CheckboxInput, CheckboxLabel } from '..'
+import { Checkbox, CheckboxControl, CheckboxLabel, type CheckedState } from '..'
+import '../checkbox.css'
 import CheckIcon from './CheckIcon.vue'
 import MinusIcon from './MinusIcon.vue'
-import '../checkbox.css'
-import type { CheckedState } from '@zag-js/checkbox/dist/checkbox.types'
 
 const parentChecked = ref<CheckedState>(false)
 const childCheckedItems = reactive([false, false])

@@ -18,5 +18,10 @@ export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const getChildren = () => runIfFn(props.children, api)
   const controlProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...controlProps}>{getChildren()}</ark.div>
+  return (
+    <>
+      <ark.div {...controlProps}>{getChildren()}</ark.div>
+      <input {...api().hiddenInputProps} />
+    </>
+  )
 }

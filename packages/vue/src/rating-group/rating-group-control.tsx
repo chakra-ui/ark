@@ -11,9 +11,12 @@ export const RatingGroupControl: ComponentWithProps<RatingGroupControlProps> = d
     const api = useRatingGroupContext()
 
     return () => (
-      <ark.div {...api.value.controlProps} {...attrs}>
-        {slots.default?.({ ...api.value })}
-      </ark.div>
+      <>
+        <ark.div {...api.value.controlProps} {...attrs}>
+          {slots.default?.({ ...api.value })}
+        </ark.div>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

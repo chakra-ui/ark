@@ -6,12 +6,12 @@ export type SliderThumbProps = HTMLArkProps<'div'>
 
 export const SliderThumb = (props: SliderThumbProps) => {
   const api = useSliderContext()
-  const thumbProps = mergeProps(() => api().thumbProps, props)
+  const mergePdrops = mergeProps(() => api().thumbProps, props)
 
   return (
-    <ark.div {...thumbProps}>
-      <ark.input {...api().hiddenInputProps} />
-      {props.children}
-    </ark.div>
+    <>
+      <ark.div {...mergePdrops} />
+      <input {...api().hiddenInputProps} />
+    </>
   )
 }

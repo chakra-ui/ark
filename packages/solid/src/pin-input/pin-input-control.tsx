@@ -12,9 +12,9 @@ export const PinInputControl = (props: PinInputControlProps) => {
   const controlProps = mergeProps(() => api().controlProps, restProps)
 
   return (
-    <ark.div {...controlProps}>
-      {childrenProps.children}
+    <>
+      <ark.div {...controlProps}>{childrenProps.children}</ark.div>
       <input {...api().hiddenInputProps} />
-    </ark.div>
+    </>
   )
 }

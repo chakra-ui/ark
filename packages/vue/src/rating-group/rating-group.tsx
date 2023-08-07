@@ -1,5 +1,5 @@
 import type { Context } from '@zag-js/rating-group'
-import { defineComponent, Fragment, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign, Optional } from '../types'
 import { createVueProps, type ComponentWithProps } from '../utils'
@@ -10,7 +10,7 @@ export type RatingGroupContext = Context & {
   modelValue?: RatingGroupContext['value']
 }
 
-export type UseRatingGroupProps = Assign<HTMLArkProps<'input'>, RatingGroupContext>
+export type UseRatingGroupProps = Assign<HTMLArkProps<'div'>, RatingGroupContext>
 
 const vueRatingGroupProps = createVueProps<UseRatingGroupProps>({
   id: {
@@ -68,10 +68,7 @@ export const RatingGroup: ComponentWithProps<Partial<UseRatingGroupProps>> = def
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        <Fragment>
-          <ark.input {...api.value.hiddenInputProps} />
-          {slots.default?.(api.value)}
-        </Fragment>
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
