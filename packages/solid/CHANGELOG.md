@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Removed
+
+- BREAKING: Removed `CheckboxInput`. This component is no longer required.
+
 ## [0.9.0] - 2023-08-06
 
 ### Added

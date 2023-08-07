@@ -3,7 +3,6 @@ import { checkbox } from '@/panda/recipes'
 import {
   Checkbox as ArkCheckbox,
   CheckboxControl,
-  CheckboxInput,
   CheckboxLabel,
   type CheckboxProps as ArkCheckboxProps,
 } from '@ark-ui/react'
@@ -17,7 +16,6 @@ export const Checkbox = (props: CheckboxProps) => (
   <ArkCheckbox className={checkbox()} {...props}>
     {(state) => (
       <>
-        <CheckboxInput data-peer />
         <CheckboxControl>
           {state.isChecked && <CheckIcon />}
           {state.isIndeterminate && <MinusIcon />}

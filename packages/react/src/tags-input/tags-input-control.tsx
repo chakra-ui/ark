@@ -10,10 +10,12 @@ export const TagsInputControl = forwardRef<HTMLDivElement, TagsInputControlProps
   const mergedProps = mergeProps(controlProps, props)
 
   return (
-    <ark.div {...mergedProps} ref={ref}>
-      {props.children}
+    <>
+      <ark.div {...mergedProps} ref={ref}>
+        {props.children}
+      </ark.div>
       <input {...hiddenInputProps} />
-    </ark.div>
+    </>
   )
 })
 

@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Removed
+
+- BREAKING: Removed `CheckboxInput`. This component is no longer required.
+
 ## [0.6.0] - 2023-08-06
 
 ### Added
@@ -122,5 +126,4 @@ description: All notable changes to this project will be documented in this file
 [0.5.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.1
 [0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2
 [0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
-
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.6.0

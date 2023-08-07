@@ -6,12 +6,9 @@ import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.input>,
-  UseRatingGroupProps
->
+export type RatingGroupProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UseRatingGroupProps>
 
-export const RatingGroup = forwardRef<HTMLInputElement, RatingGroupProps>((props, ref) => {
+export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, ref) => {
   const [useRatingProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
@@ -35,8 +32,7 @@ export const RatingGroup = forwardRef<HTMLInputElement, RatingGroupProps>((props
 
   return (
     <RatingGroupProvider value={ratingGroup}>
-      <ark.div {...mergedProps}>
-        <ark.input {...ratingGroup.hiddenInputProps} ref={ref} />
+      <ark.div {...mergedProps} ref={ref}>
         {props.children}
       </ark.div>
     </RatingGroupProvider>

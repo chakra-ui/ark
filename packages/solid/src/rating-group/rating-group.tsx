@@ -8,7 +8,7 @@ import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
 
 export const RatingGroup = (props: RatingGroupProps) => {
-  const [ratingParams, restProps] = createSplitProps<UseRatingGroupProps>()(props, [
+  const [ratingParams, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
     'dir',
@@ -27,15 +27,11 @@ export const RatingGroup = (props: RatingGroupProps) => {
   ])
 
   const api = useRatingGroup(ratingParams)
-
-  const rootProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <RatingGroupProvider value={api}>
-      <ark.div {...rootProps}>
-        {restProps.children}
-        <ark.input {...api().hiddenInputProps} />
-      </ark.div>
+      <ark.div {...mergedProps} />
     </RatingGroupProvider>
   )
 }

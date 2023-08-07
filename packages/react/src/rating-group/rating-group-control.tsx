@@ -16,9 +16,12 @@ export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlP
     const view = runIfFn(children, ratingGroup)
 
     return (
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+      <>
+        <ark.div {...mergedProps} ref={ref}>
+          {view}
+        </ark.div>
+        <input {...ratingGroup.hiddenInputProps} />
+      </>
     )
   },
 )

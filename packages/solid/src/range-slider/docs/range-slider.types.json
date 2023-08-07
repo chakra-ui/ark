@@ -112,5 +112,5 @@
     }
   },
   "RangeSliderMarkerProps": { "value": { "type": "number", "isRequired": true } },
-  "RangeSliderThumbProps": { "index": { "type": "Accessor<number>", "isRequired": true } }
+  "RangeSliderThumbProps": { "index": { "type": "number", "isRequired": true } }
 }

@@ -10,10 +10,12 @@ export const PinInputControl = forwardRef<HTMLDivElement, PinInputControlProps>(
   const mergedProps = mergeProps(controlProps, props)
 
   return (
-    <ark.div {...mergedProps} ref={ref}>
+    <>
+      <ark.div {...mergedProps} ref={ref}>
+        {props.children}
+      </ark.div>
       <input {...hiddenInputProps} />
-      {props.children}
-    </ark.div>
+    </>
   )
 })
 

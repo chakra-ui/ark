@@ -4,13 +4,11 @@ import { useState } from 'react'
 import { vi } from 'vitest'
 import { Checkbox, type CheckboxProps } from './checkbox'
 import { CheckboxControl } from './checkbox-control'
-import { CheckboxInput } from './checkbox-input'
 import { CheckboxLabel } from './checkbox-label'
 
 const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
   <Checkbox {...props}>
     <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxInput />
     <CheckboxControl data-testid="control" />
   </Checkbox>
 )
