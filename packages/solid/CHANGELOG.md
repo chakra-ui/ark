@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Addded
+
+- Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the calendar.
+
 ### Removed
 
 - BREAKING: Removed `CheckboxInput`. This component is no longer required.

@@ -86,7 +86,7 @@ jobs:
         with:
           payload: |
             {
-              "package_name": "${{ github.event.inputs.package }}",
+              "package_name": "@ark-ui/${{ github.event.inputs.package }}",
               "changelog_url": "https://ark-ui.com/docs/${{ github.event.inputs.package }}/overview/changelog"
             }
         env:

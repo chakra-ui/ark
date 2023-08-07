@@ -26,6 +26,7 @@ export {
 } from './date-picker-month-cell-trigger'
 export { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
 export { DatePickerNextTrigger, type DatePickerNextTriggerProps } from './date-picker-next-trigger'
+export { DatePickerPositioner, type DatePickerPositionerProps } from './date-picker-positioner'
 export { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
 export { DatePickerRow, type DatePickerRowProps } from './date-picker-row'
 export { DatePickerRowGroup, type DatePickerRowGroupProps } from './date-picker-row-group'

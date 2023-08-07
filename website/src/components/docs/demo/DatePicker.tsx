@@ -16,6 +16,7 @@ import {
   DatePickerMonthCell,
   DatePickerMonthCellTrigger,
   DatePickerNextTrigger,
+  DatePickerPositioner,
   DatePickerPrevTrigger,
   DatePickerRow,
   DatePickerRowGroup,
@@ -24,6 +25,7 @@ import {
   DatePickerViewTrigger,
   DatePickerYearCell,
   DatePickerYearCellTrigger,
+  Portal,
 } from '@ark-ui/react'
 import { FiCalendar, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
@@ -46,95 +48,101 @@ export const DemoDatePicker = () => {
               </DatePickerTrigger>
             </Stack>
           </DatePickerControl>
-          <DatePickerContent className={datePicker()}>
-            <Stack gap="3">
-              <Stack gap="3" justify="space-between" direction="row">
-                <DatePickerInput asChild>
-                  <Input placeholder="" />
-                </DatePickerInput>
-                <Button variant="secondary" onClick={api.selectToday}>
-                  Today
-                </Button>
-              </Stack>
-              <Stack justify="space-between" direction="row">
-                <DatePickerPrevTrigger asChild>
-                  <IconButton
-                    icon={<FiChevronLeft />}
-                    size="sm"
-                    variant="tertiary"
-                    aria-label="Prev"
-                  />
-                </DatePickerPrevTrigger>
-                <DatePickerViewTrigger asChild>
-                  <Button variant="tertiary" size="sm">
-                    {api.view === 'day' && api.visibleRangeText.start}
-                    {api.view === 'month' && api.visibleRange.start.year}
-                    {api.view === 'year' && `${api.getDecade().start} - ${api.getDecade().end}`}
-                  </Button>
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger asChild>
-                  <IconButton
-                    icon={<FiChevronRight />}
-                    size="sm"
-                    variant="tertiary"
-                    aria-label="Next"
-                  />
-                </DatePickerNextTrigger>
-              </Stack>
-              {api.view === 'day' && (
-                <DatePickerGrid>
-                  <DatePickerRowHeader>
-                    {api.weekDays.map((day, i) => (
-                      <DatePickerColumnHeader key={i} aria-label={day.long}>
-                        {day.narrow}
-                      </DatePickerColumnHeader>
-                    ))}
-                  </DatePickerRowHeader>
-                  <DatePickerRowGroup>
-                    {api.weeks.map((week, id) => (
-                      <DatePickerRow key={id}>
-                        {week.map((day, id) => (
-                          <DatePickerDayCell key={id} value={day}>
-                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                          </DatePickerDayCell>
+          <Portal>
+            <DatePickerPositioner>
+              <DatePickerContent className={datePicker()}>
+                <Stack gap="3">
+                  <Stack gap="3" justify="space-between" direction="row">
+                    <DatePickerInput asChild>
+                      <Input placeholder="" />
+                    </DatePickerInput>
+                    <Button variant="secondary" onClick={api.selectToday}>
+                      Today
+                    </Button>
+                  </Stack>
+                  <Stack justify="space-between" direction="row">
+                    <DatePickerPrevTrigger asChild>
+                      <IconButton
+                        icon={<FiChevronLeft />}
+                        size="sm"
+                        variant="tertiary"
+                        aria-label="Prev"
+                      />
+                    </DatePickerPrevTrigger>
+                    <DatePickerViewTrigger asChild>
+                      <Button variant="tertiary" size="sm">
+                        {api.view === 'day' && api.visibleRangeText.start}
+                        {api.view === 'month' && api.visibleRange.start.year}
+                        {api.view === 'year' && `${api.getDecade().start} - ${api.getDecade().end}`}
+                      </Button>
+                    </DatePickerViewTrigger>
+                    <DatePickerNextTrigger asChild>
+                      <IconButton
+                        icon={<FiChevronRight />}
+                        size="sm"
+                        variant="tertiary"
+                        aria-label="Next"
+                      />
+                    </DatePickerNextTrigger>
+                  </Stack>
+                  {api.view === 'day' && (
+                    <DatePickerGrid>
+                      <DatePickerRowHeader>
+                        {api.weekDays.map((day, i) => (
+                          <DatePickerColumnHeader key={i} aria-label={day.long}>
+                            {day.narrow}
+                          </DatePickerColumnHeader>
                         ))}
-                      </DatePickerRow>
-                    ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
-              )}
-              {api.view === 'month' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
-                    {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
-                      <DatePickerRow key={row}>
-                        {months.map((month, index) => (
-                          <DatePickerMonthCell key={index} value={month.value}>
-                            <DatePickerMonthCellTrigger>{month.label}</DatePickerMonthCellTrigger>
-                          </DatePickerMonthCell>
+                      </DatePickerRowHeader>
+                      <DatePickerRowGroup>
+                        {api.weeks.map((week, id) => (
+                          <DatePickerRow key={id}>
+                            {week.map((day, id) => (
+                              <DatePickerDayCell key={id} value={day}>
+                                <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                              </DatePickerDayCell>
+                            ))}
+                          </DatePickerRow>
                         ))}
-                      </DatePickerRow>
-                    ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
-              )}
-              {api.view === 'year' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
-                    {api.getYearsGrid({ columns: 4 }).map((years, row) => (
-                      <DatePickerRow key={row}>
-                        {years.map((year, index) => (
-                          <DatePickerYearCell key={index} value={year.value}>
-                            <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
-                          </DatePickerYearCell>
+                      </DatePickerRowGroup>
+                    </DatePickerGrid>
+                  )}
+                  {api.view === 'month' && (
+                    <DatePickerGrid>
+                      <DatePickerRowGroup>
+                        {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
+                          <DatePickerRow key={row}>
+                            {months.map((month, index) => (
+                              <DatePickerMonthCell key={index} value={month.value}>
+                                <DatePickerMonthCellTrigger>
+                                  {month.label}
+                                </DatePickerMonthCellTrigger>
+                              </DatePickerMonthCell>
+                            ))}
+                          </DatePickerRow>
                         ))}
-                      </DatePickerRow>
-                    ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
-              )}
-            </Stack>
-          </DatePickerContent>
+                      </DatePickerRowGroup>
+                    </DatePickerGrid>
+                  )}
+                  {api.view === 'year' && (
+                    <DatePickerGrid>
+                      <DatePickerRowGroup>
+                        {api.getYearsGrid({ columns: 4 }).map((years, row) => (
+                          <DatePickerRow key={row}>
+                            {years.map((year, index) => (
+                              <DatePickerYearCell key={index} value={year.value}>
+                                <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
+                              </DatePickerYearCell>
+                            ))}
+                          </DatePickerRow>
+                        ))}
+                      </DatePickerRowGroup>
+                    </DatePickerGrid>
+                  )}
+                </Stack>
+              </DatePickerContent>
+            </DatePickerPositioner>
+          </Portal>
         </Stack>
       )}
     </DatePicker>
