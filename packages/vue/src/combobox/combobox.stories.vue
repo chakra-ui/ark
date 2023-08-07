@@ -61,7 +61,8 @@ const defaultVal = ref(comboboxData[0].label)
     <Teleport to="body">
       <ComboboxPositioner>
         <ComboboxContent>
-          <ComboboxOptionGroup label="JavaScript">
+          <ComboboxOptionGroup id="framework">
+            <ComboboxOptionGroupLabel htmlFor="framework">Frameworks</ComboboxOptionGroupLabel>
             <ComboboxOption
               v-for="(item, idx) in options"
               :key="`${item.value}:${idx}`"

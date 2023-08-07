@@ -51,7 +51,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
@@ -190,11 +190,5 @@
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
   },
-  "ComboboxOptionGroupProps": {
-    "label": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The accessible label that describes the group"
-    }
-  }
+  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
 }

@@ -31,7 +31,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; input: string; control: string; label: string }>",
+      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  control: string\n  label: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the checkbox. Useful for composition."
     },

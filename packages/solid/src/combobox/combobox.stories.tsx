@@ -10,6 +10,7 @@ import {
   ComboboxLabel,
   ComboboxOption,
   ComboboxOptionGroup,
+  ComboboxOptionGroupLabel,
   ComboboxPositioner,
   ComboboxTrigger,
   type ComboboxOptionProps,
@@ -56,7 +57,8 @@ export const Basic = () => {
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
-            <ComboboxOptionGroup label="Javascript">
+            <ComboboxOptionGroup id="framework">
+              <ComboboxOptionGroupLabel htmlFor="framework">Frameworks</ComboboxOptionGroupLabel>
               <For each={options()}>
                 {(option) => (
                   <ComboboxOption

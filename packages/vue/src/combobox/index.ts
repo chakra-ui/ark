@@ -7,6 +7,10 @@ export { ComboboxInput, type ComboboxInputProps } from './combobox-input'
 export { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 export { ComboboxOption, type ComboboxOptionProps } from './combobox-option'
 export { ComboboxOptionGroup, type ComboboxOptionGroupProps } from './combobox-option-group'
+export {
+  ComboboxOptionGroupLabel,
+  type ComboboxOptionGroupLabelProps,
+} from './combobox-option-group-label'
 export { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 export { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
 export { comboboxAnatomy } from './combobox.anatomy'

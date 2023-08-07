@@ -10,7 +10,7 @@ export const CheckboxControl = (props: CheckboxControlProps) => {
   return (
     <>
       <ark.div {...controlProps} />
-      <input {...checkbox().inputProps} />
+      <input {...checkbox().hiddenInputProps} />
     </>
   )
 }

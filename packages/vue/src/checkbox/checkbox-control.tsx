@@ -15,7 +15,7 @@ export const CheckboxControl: ComponentWithProps<CheckboxControlProps> = defineC
         <ark.div {...api.value.controlProps} {...attrs}>
           {slots.default?.()}
         </ark.div>
-        <input {...api.value.inputProps} />
+        <input {...api.value.hiddenInputProps} />
       </>
     )
   },

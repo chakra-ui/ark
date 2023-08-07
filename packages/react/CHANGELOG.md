@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 - Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the calendar.
+- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
 
 ### Removed
 

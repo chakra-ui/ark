@@ -6,13 +6,13 @@ import { useCheckboxContext } from './checkbox-context'
 export type CheckboxControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
 export const CheckboxControl = forwardRef<HTMLDivElement, CheckboxControlProps>((props, ref) => {
-  const { controlProps, inputProps } = useCheckboxContext()
+  const { controlProps, hiddenInputProps } = useCheckboxContext()
   const mergedProps = mergeProps(controlProps, props)
 
   return (
     <>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...inputProps} />
+      <input {...hiddenInputProps} />
     </>
   )
 })
