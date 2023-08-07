@@ -24,6 +24,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
     'getRootNode',
     'id',
     'ids',
+    'name',
     'onChange',
     'onChangeEnd',
     'readOnly',

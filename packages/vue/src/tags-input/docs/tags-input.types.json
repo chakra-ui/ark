@@ -98,20 +98,21 @@
       "isRequired": false,
       "description": "Callback fired when the tag values is updated"
     },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
       "type": "(details: { value: string | null }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
     },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on the tags input when composing it with other components (e.g. combobox)."
-    },
+    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
     "onInvalid": {
       "type": "(details: { reason: ValidityState }) => void",
       "isRequired": false,
       "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false
     },
     "onTagUpdate": {
       "type": "(details: { value: string; index: number }) => void",

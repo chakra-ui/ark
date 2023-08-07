@@ -36,7 +36,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 6 more ...; yearSelect: string; }>",
+      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 7 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
     },
@@ -104,6 +104,11 @@
       "type": "(value: string) => DateValue[]",
       "isRequired": false,
       "description": "The format of the date to display in the input."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the date picker content"
     },
     "readOnly": {
       "type": "boolean",

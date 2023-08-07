@@ -32,6 +32,7 @@ export const DatePicker = (props: DatePickerProps) => {
     'onFocusChange',
     'onViewChange',
     'parse',
+    'positioning',
     'readOnly',
     'selectionMode',
     'startOfWeek',

@@ -2,7 +2,7 @@
   "name": "@ark-ui/website",
   "version": "1.0.0",
   "scripts": {
-    "prepare": "panda codegen --silent",
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",

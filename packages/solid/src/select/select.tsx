@@ -27,13 +27,16 @@ export const Select = (props: SelectProps) => {
     'name',
     'onChange',
     'onClose',
+    'onFocusOutside',
     'onHighlight',
     'onInteractOutside',
+    'onInteractOutside',
     'onOpen',
+    'onPointerDownOutside',
     'positioning',
     'readOnly',
-    'selectOnTab',
     'selectedOption',
+    'selectOnTab',
   ])
 
   const api = useSelect(selectParams)

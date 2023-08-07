@@ -9,8 +9,8 @@ export const CarouselNextSlideTrigger = forwardRef<
   HTMLButtonElement,
   CarouselNextSlideTriggerProps
 >((props, ref) => {
-  const { nextTriggerProps } = useCarouselContext()
-  const mergedProps = mergeProps(nextTriggerProps, props)
+  const { nextSlideTriggerProps } = useCarouselContext()
+  const mergedProps = mergeProps(nextSlideTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

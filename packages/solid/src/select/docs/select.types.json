@@ -65,20 +65,21 @@
       "isRequired": false,
       "description": "The callback fired when the menu is closed."
     },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
       "type": "(details: Option | null) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted option changes."
     },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Callback fired when an outside interaction was triggered.\nUseful for preventing blur on select when composing it with other components."
-    },
+    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
     "onOpen": {
       "type": "() => void",
       "isRequired": false,
       "description": "The callback fired when the menu is opened."
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false
     },
     "positioning": {
       "type": "PositioningOptions",

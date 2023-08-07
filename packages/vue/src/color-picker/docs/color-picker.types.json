@@ -26,6 +26,7 @@
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
     "modelValue": { "type": "string", "isRequired": false },
+    "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
     "onChange": {
       "type": "(details: ChangeDetails) => void",
       "isRequired": false,

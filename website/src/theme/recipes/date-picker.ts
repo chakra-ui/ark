@@ -88,7 +88,7 @@ export const datePicker = defineRecipe({
     row: {
       display: 'grid',
     },
-    header: {
+    rowHeader: {
       display: 'grid',
       gridTemplateColumns: 'repeat(7, 1fr)',
     },

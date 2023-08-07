@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - BREAKING: Removed `CheckboxInput`. This component is no longer required.
 
+### Fixed
+
+- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the expected component.
+
 ## [0.6.0] - 2023-08-06
 
 ### Added

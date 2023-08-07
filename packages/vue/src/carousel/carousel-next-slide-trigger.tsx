@@ -9,7 +9,7 @@ export const CarouselNextSlideTrigger = defineComponent({
   name: 'CarouselNextSlideTrigger',
   setup(_, { slots, attrs }) {
     const api = useCarouselContext()
-    const mergedProps = computed(() => mergeProps(api.value.nextTriggerProps, attrs))
+    const mergedProps = computed(() => mergeProps(api.value.nextSlideTriggerProps, attrs))
     return () => <ark.button {...mergedProps.value}>{slots.default?.()}</ark.button>
   },
 })

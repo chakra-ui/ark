@@ -25,6 +25,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
+    "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
     "onChange": {
       "type": "(details: ChangeDetails) => void",
       "isRequired": false,

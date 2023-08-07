@@ -6,6 +6,7 @@ export type CarouselNextSlideTriggerProps = HTMLArkProps<'button'>
 
 export const CarouselNextSlideTrigger = (props: CarouselNextSlideTriggerProps) => {
   const carousel = useCarouselContext()
-  const nextTriggerProps = mergeProps(() => carousel().nextTriggerProps, props)
-  return <ark.button {...nextTriggerProps} />
+  const mergedProps = mergeProps(() => carousel().nextSlideTriggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }
