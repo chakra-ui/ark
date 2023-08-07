@@ -45,7 +45,6 @@ export const Accordion: ComponentWithProps<Partial<UseAccordionProps>> = defineC
   emits: ['change', 'update:modelValue'],
   props: VueAccordionProps,
   setup(props, { slots, attrs, emit }) {
-    console.log('🚀 ~ file: accordion.tsx:42 ~ setup ~ props:', props)
     const { api } = useAccordion(emit, props)
     AccordionProvider(api)
 
