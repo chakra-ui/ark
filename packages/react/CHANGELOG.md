@@ -6,13 +6,16 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
+
 ## [0.11.0-beta.2] - 2023-08-08
 
 ### Changed
 
 - BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
 - BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
 
 ## [0.11.0-beta.1] - 2023-08-08
 
