@@ -106,5 +106,5 @@
       "description": "The value of the the pin input."
     }
   },
-  "PinInputFieldProps": { "index": { "type": "number", "isRequired": true } }
+  "PinInputInputProps": { "index": { "type": "number", "isRequired": true } }
 }
