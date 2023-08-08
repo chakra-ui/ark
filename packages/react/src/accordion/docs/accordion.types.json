@@ -52,6 +52,10 @@
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
+  "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "AccordionContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -65,9 +69,5 @@
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
-  },
-  "AccordionItemProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

@@ -129,18 +129,26 @@ function shouldIgnoreProperty(property: ts.Symbol) {
 }
 
 function extractTypeExports(fileContent?: string) {
-  return fileContent?.match(/(?<=export\s{).*(?=})/gm)?.flatMap((line) =>
-    line
+  const regex = /export type {([^}]+)}/gm
+  const matches = fileContent?.match(regex)
+
+  if (!matches) return []
+
+  const results = matches.flatMap((match) => {
+    const types = match.replace(/export type {/, '').replace(/}/, '')
+
+    return types
       .split(',')
       .map((x) => x.trim())
-      .filter((x) => x.startsWith('type '))
-      .map((x) => x.replace('type ', '')),
-  )
+      .filter(Boolean)
+      .sort((a, b) => a.length - b.length)
+  })
+  console.log(results)
+  return results
 }
 
 const main = async () => {
   const framework = process.argv.slice(2)[0]
-  console.log('Generating type docs for', framework)
 
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(path.join(root, 'packages', framework))

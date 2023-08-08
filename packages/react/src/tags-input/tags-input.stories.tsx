@@ -8,7 +8,6 @@ import {
   TagsInputClearTrigger,
   TagsInputControl,
   TagsInputField,
-  TagsInputLabel,
 } from './'
 import './tags-input.css'
 
@@ -24,28 +23,28 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = useState<string[]>(['react', 'solid', 'vue'])
   return (
-    <TagsInput value={value} onChange={(e) => setValue(e.values)}>
+    <TagsInput.Root value={value} onChange={(e) => setValue(e.values)}>
       {({ value }) => (
         <>
-          <TagsInputLabel>Label</TagsInputLabel>
-          <TagsInputControl>
+          <TagsInput.Label>Label</TagsInput.Label>
+          <TagsInput.Control>
             {(value ?? []).map((value, index) => (
               <Fragment key={index}>
-                <Tag index={index} value={value}>
+                <TagsInput.Tag index={index} value={value}>
                   <span>{value}</span>
-                  <TagDeleteTrigger index={index} value={value}>
+                  <TagsInput.TagDeleteTrigger index={index} value={value}>
                     &#x2715;
-                  </TagDeleteTrigger>
-                </Tag>
-                <TagInput index={index} value={value} />
+                  </TagsInput.TagDeleteTrigger>
+                </TagsInput.Tag>
+                <TagsInput.TagInput index={index} value={value} />
               </Fragment>
             ))}
-            <TagsInputField placeholder="Add tag" />
-            <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-          </TagsInputControl>
+            <TagsInput.Field placeholder="Add tag" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </TagsInput.Control>
         </>
       )}
-    </TagsInput>
+    </TagsInput.Root>
   )
 }
 

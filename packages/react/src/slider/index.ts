@@ -1,11 +1,49 @@
-export { Slider, type SliderProps } from './slider'
-export { useSliderContext } from './slider-context'
-export { SliderControl, type SliderControlProps } from './slider-control'
-export { SliderLabel, type SliderLabelProps } from './slider-label'
-export { SliderMarker, type SliderMarkerProps } from './slider-marker'
-export { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
-export { SliderOutput, type SliderOutputProps } from './slider-output'
-export { SliderRange, type SliderRangeProps } from './slider-range'
-export { SliderThumb, type SliderThumbProps } from './slider-thumb'
-export { SliderTrack, type SliderTrackProps } from './slider-track'
-export { sliderAnatomy } from './slider.anatomy'
+import { Slider as SliderRoot, type SliderProps } from './slider'
+import { useSliderContext } from './slider-context'
+import { SliderControl, type SliderControlProps } from './slider-control'
+import { SliderLabel, type SliderLabelProps } from './slider-label'
+import { SliderMarker, type SliderMarkerProps } from './slider-marker'
+import { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
+import { SliderOutput, type SliderOutputProps } from './slider-output'
+import { SliderRange, type SliderRangeProps } from './slider-range'
+import { SliderThumb, type SliderThumbProps } from './slider-thumb'
+import { SliderTrack, type SliderTrackProps } from './slider-track'
+import { sliderAnatomy } from './slider.anatomy'
+
+const Slider = Object.assign(SliderRoot, {
+  Root: SliderRoot,
+  Control: SliderControl,
+  Label: SliderLabel,
+  Marker: SliderMarker,
+  MarkerGroup: SliderMarkerGroup,
+  Output: SliderOutput,
+  Range: SliderRange,
+  Thumb: SliderThumb,
+  Track: SliderTrack,
+})
+
+export {
+  Slider,
+  SliderControl,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderOutput,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+  sliderAnatomy,
+  useSliderContext,
+}
+
+export type {
+  SliderControlProps,
+  SliderLabelProps,
+  SliderMarkerGroupProps,
+  SliderMarkerProps,
+  SliderOutputProps,
+  SliderProps,
+  SliderRangeProps,
+  SliderThumbProps,
+  SliderTrackProps,
+}

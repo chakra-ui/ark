@@ -92,7 +92,7 @@
       "description": "Whether to trap focus inside the dialog when it's opened"
     }
   },
-  "DialogBackdropProps": {
+  "DialogContentProps": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -106,7 +106,7 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "DialogContentProps": {
+  "DialogBackdropProps": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,

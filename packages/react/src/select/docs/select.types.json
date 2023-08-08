@@ -103,6 +103,12 @@
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
   },
+  "SelectOptionProps": {
+    "label": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "valueText": { "type": "string", "isRequired": false }
+  },
   "SelectContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -117,11 +123,6 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "SelectOptionProps": {
-    "label": { "type": "string", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "valueText": { "type": "string", "isRequired": false }
-  },
-  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "SelectOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

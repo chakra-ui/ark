@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
+import { RatingGroup } from '.'
 
 type RatingGroupType = typeof RatingGroup
 
@@ -11,22 +11,22 @@ const meta: Meta<RatingGroupType> = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup max={5} defaultValue={3} allowHalf>
-    <RatingGroupLabel>Label</RatingGroupLabel>
-    <RatingGroupControl>
+  <RatingGroup.Root max={5} defaultValue={3} allowHalf>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
       {({ sizeArray }) =>
         sizeArray.map((index) => (
-          <Rating key={index} index={index}>
+          <RatingGroup.Rating key={index} index={index}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return <IconHalf />
               if (isHighlighted) return <IconFull />
               return <IconEmpty />
             }}
-          </Rating>
+          </RatingGroup.Rating>
         ))
       }
-    </RatingGroupControl>
-  </RatingGroup>
+    </RatingGroup.Control>
+  </RatingGroup.Root>
 )
 
 const IconHalf = () => (
