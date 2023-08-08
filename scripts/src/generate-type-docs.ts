@@ -143,7 +143,6 @@ function extractTypeExports(fileContent?: string) {
       .filter(Boolean)
       .sort((a, b) => a.length - b.length)
   })
-  console.log(results)
   return results
 }
 

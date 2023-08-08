@@ -1,13 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputField,
-  NumberInputIncrementTrigger,
-  NumberInputLabel,
-  NumberInputScrubber,
-} from './'
+import { NumberInput } from './'
 import './number-input.css'
 
 const meta: Meta = {
@@ -17,13 +9,13 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <NumberInput min={-50} max={50} value="0" clampValueOnBlur>
-    <NumberInputScrubber />
-    <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
-    <NumberInputControl>
-      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
-    </NumberInputControl>
-  </NumberInput>
+  <NumberInput.Root min={-50} max={50} value="0" clampValueOnBlur>
+    <NumberInput.Scrubber />
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
 )

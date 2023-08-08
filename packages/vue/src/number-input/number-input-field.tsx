@@ -3,10 +3,10 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputFieldProps = HTMLArkProps<'input'>
+export type NumberInputInputProps = HTMLArkProps<'input'>
 
-export const NumberInputField: ComponentWithProps<NumberInputFieldProps> = defineComponent({
-  name: 'NumberInputField',
+export const NumberInputInput: ComponentWithProps<NumberInputInputProps> = defineComponent({
+  name: 'NumberInputInput',
   setup(_, { attrs }) {
     const api = useNumberInputContext()
 

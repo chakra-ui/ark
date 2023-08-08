@@ -1,32 +1,24 @@
 import type { Meta } from '@storybook/react'
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputField,
-  NumberInputIncrementTrigger,
-  NumberInputLabel,
-  NumberInputScrubber,
-} from './'
+import { NumberInput } from './'
 import './number-input.css'
 
-type NumberInputType = typeof NumberInput
+type NumberInputType = typeof NumberInput.Root
 
 const meta: Meta<NumberInputType> = {
-  title: 'NumberInput',
-  component: NumberInput,
+  title: 'NumberInput.',
+  component: NumberInput.Root,
 }
 
 export default meta
 
 export const Basic = () => (
-  <NumberInput min={-50} max={50} clampValueOnBlur>
-    <NumberInputScrubber />
-    <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
-    <NumberInputControl>
-      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
-    </NumberInputControl>
-  </NumberInput>
+  <NumberInput.Root min={-50} max={50} clampValueOnBlur>
+    <NumberInput.Scrubber />
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
 )

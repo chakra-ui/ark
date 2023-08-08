@@ -2,9 +2,9 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputFieldProps = HTMLArkProps<'input'>
+export type NumberInputInputProps = HTMLArkProps<'input'>
 
-export const NumberInputField = (props: NumberInputFieldProps) => {
+export const NumberInputInput = (props: NumberInputInputProps) => {
   const api = useNumberInputContext()
   const inputProps = mergeProps(() => api().inputProps, props)
   return <ark.input {...inputProps} />

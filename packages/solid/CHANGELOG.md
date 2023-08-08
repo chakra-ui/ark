@@ -11,6 +11,10 @@ description: All notable changes to this project will be documented in this file
 - Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the calendar.
 - Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
 
+### Changed
+
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
+
 ### Removed
 
 - BREAKING: Removed `CheckboxInput`. This component is no longer required.

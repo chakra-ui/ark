@@ -5,8 +5,8 @@ import {
   NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
-  NumberInputField,
   NumberInputIncrementTrigger,
+  NumberInputInput,
   NumberInputLabel,
   type NumberInputProps,
 } from './'
@@ -14,7 +14,7 @@ import {
 const Component = (props: NumberInputProps) => (
   <NumberInput {...props}>
     <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
+    <NumberInputInput />
     <NumberInputControl>
       <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>

@@ -1,27 +1,20 @@
 import { numberInput } from '@/panda/recipes'
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputField,
-  NumberInputIncrementTrigger,
-  NumberInputScrubber,
-} from '@ark-ui/react'
+import { NumberInput } from '@ark-ui/react'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 
 export const DemoNumberInput = () => {
   return (
-    <NumberInput min={-50} max={50} defaultValue="42" className={numberInput()}>
-      <NumberInputScrubber />
-      <NumberInputField />
-      <NumberInputControl>
-        <NumberInputIncrementTrigger>
+    <NumberInput.Root min={-50} max={50} defaultValue="42" className={numberInput()}>
+      <NumberInput.Scrubber />
+      <NumberInput.Input />
+      <NumberInput.Control>
+        <NumberInput.IncrementTrigger>
           <FiChevronUp />
-        </NumberInputIncrementTrigger>
-        <NumberInputDecrementTrigger>
+        </NumberInput.IncrementTrigger>
+        <NumberInput.DecrementTrigger>
           <FiChevronDown />
-        </NumberInputDecrementTrigger>
-      </NumberInputControl>
-    </NumberInput>
+        </NumberInput.DecrementTrigger>
+      </NumberInput.Control>
+    </NumberInput.Root>
   )
 }

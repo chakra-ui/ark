@@ -1,28 +1,20 @@
 import user from '@testing-library/user-event'
 import { render } from '@testing-library/vue'
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputField,
-  NumberInputIncrementTrigger,
-  NumberInputLabel,
-  type NumberInputProps,
-} from '.'
+import { NumberInput, type NumberInputProps } from '.'
 
 const Component = (props: NumberInputProps) => (
-  <NumberInput {...props}>
-    <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputField />
-    <NumberInputControl>
-      <NumberInputDecrementTrigger>
+  <NumberInput.Root {...props}>
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>
         <button>-1</button>
-      </NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>
+      </NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>
         <button>+1</button>
-      </NumberInputIncrementTrigger>
-    </NumberInputControl>
-  </NumberInput>
+      </NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
 )
 
 describe('NumberInput', () => {

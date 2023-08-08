@@ -5,7 +5,7 @@ import {
   NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerProps,
 } from './number-input-decrement-trigger'
-import { NumberInputField, type NumberInputFieldProps } from './number-input-field'
+import { NumberInputInput, type NumberInputInputProps } from './number-input-field'
 import {
   NumberInputIncrementTrigger,
   type NumberInputIncrementTriggerProps,
@@ -18,7 +18,7 @@ const NumberInput = Object.assign(NumberInputRoot, {
   Root: NumberInputRoot,
   Control: NumberInputControl,
   DecrementTrigger: NumberInputDecrementTrigger,
-  Field: NumberInputField,
+  Input: NumberInputInput,
   IncrementTrigger: NumberInputIncrementTrigger,
   Label: NumberInputLabel,
   Scrubber: NumberInputScrubber,
@@ -28,8 +28,8 @@ export {
   NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
-  NumberInputField,
   NumberInputIncrementTrigger,
+  NumberInputInput,
   NumberInputLabel,
   NumberInputScrubber,
   numberInputAnatomy,
@@ -39,8 +39,8 @@ export {
 export type {
   NumberInputControlProps,
   NumberInputDecrementTriggerProps,
-  NumberInputFieldProps,
   NumberInputIncrementTriggerProps,
+  NumberInputInputProps,
   NumberInputLabelProps,
   NumberInputProps,
   NumberInputScrubberProps,

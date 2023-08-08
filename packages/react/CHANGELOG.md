@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
+
 ## [0.11.0-beta.1] - 2023-08-08
 
 - Add support for dot noation imports
@@ -176,5 +180,4 @@ description: All notable changes to this project will be documented in this file
 [0.9.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.9.0
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0
 [0.11.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.0
-
 [0.11.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.1
