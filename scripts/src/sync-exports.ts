@@ -6,7 +6,7 @@ import { globby } from 'globby'
  */
 const main = async () => {
   const indices = await globby(['../packages/react/src/**/index.ts'])
-  await Promise.all(indices.map((index) => copy(index, index.replace('react', 'solid'))))
+  await Promise.all(indices.map((index) => copy(index, index.replace('react', 'vue'))))
 }
 
 main().catch((err) => {
