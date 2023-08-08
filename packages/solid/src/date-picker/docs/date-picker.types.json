@@ -129,23 +129,23 @@
     "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
     "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
   },
-  "DatePickerDayCellProps": {
-    "value": { "type": "DateValue", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false }
-  },
   "DatePickerGridProps": {
     "columns": { "type": "number", "isRequired": false },
     "id": { "type": "string", "isRequired": false },
     "view": { "type": "DateView", "isRequired": false }
   },
+  "DatePickerDayCellProps": {
+    "value": { "type": "DateValue", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "offset": { "type": "Offset", "isRequired": false }
+  },
+  "DatePickerYearCellProps": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "DatePickerMonthCellProps": {
     "value": { "type": "number", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
-  "DatePickerYearCellProps": {
-    "value": { "type": "number", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  }
+  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
 }

@@ -56,7 +56,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autohighlight' | 'autocomplete'",
+      "type": "'none' | 'autocomplete' | 'autohighlight'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
     },
@@ -189,5 +189,6 @@
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
   },
-  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
+  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "ComboboxOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

@@ -108,5 +108,6 @@
     "disabled": { "type": "boolean", "isRequired": false },
     "valueText": { "type": "string", "isRequired": false }
   },
-  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "SelectOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

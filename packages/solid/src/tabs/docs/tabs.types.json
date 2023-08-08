@@ -1,9 +1,4 @@
 {
-  "TabContentProps": { "value": { "type": "string", "isRequired": true } },
-  "TabTriggerProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "TabsProps": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
@@ -61,5 +56,10 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
+  },
+  "TabContentProps": { "value": { "type": "string", "isRequired": true } },
+  "TabTriggerProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }
