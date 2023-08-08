@@ -8,7 +8,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   type TagsInputProps,
 } from './'
 
@@ -27,7 +27,7 @@ const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
-        <TagsInputField placeholder="Add tag" />
+        <TagsInputInput placeholder="Add tag" />
         <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
       </TagsInputControl>
     )}

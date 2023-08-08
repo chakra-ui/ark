@@ -1,15 +1,6 @@
 import { For } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputField,
-  TagsInputLabel,
-} from './'
+import { TagsInput } from './'
 import './tags-input.css'
 
 const meta: Meta = {
@@ -19,28 +10,28 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <TagsInput value={['react', 'solid', 'vue']}>
+  <TagsInput.Root value={['react', 'solid', 'vue']}>
     {(api) => (
       <>
-        <TagsInputLabel>Label</TagsInputLabel>
-        <TagsInputControl>
+        <TagsInput.Label>Label</TagsInput.Label>
+        <TagsInput.Control>
           <For each={api().value}>
             {(val, index) => (
               <>
-                <Tag index={index()} value={val}>
+                <TagsInput.Tag index={index()} value={val}>
                   <span>{val}</span>
-                  <TagDeleteTrigger index={index()} value={val}>
+                  <TagsInput.TagDeleteTrigger index={index()} value={val}>
                     &#x2715;
-                  </TagDeleteTrigger>
-                </Tag>
-                <TagInput index={index()} value={val} />
+                  </TagsInput.TagDeleteTrigger>
+                </TagsInput.Tag>
+                <TagsInput.TagInput index={index()} value={val} />
               </>
             )}
           </For>
-          <TagsInputField placeholder="Add tag" />
-          <TagsInputClearTrigger asChild>Clear All</TagsInputClearTrigger>
-        </TagsInputControl>
+          <TagsInput.Input placeholder="Add tag" />
+          <TagsInput.ClearTrigger asChild>Clear All</TagsInput.ClearTrigger>
+        </TagsInput.Control>
       </>
     )}
-  </TagsInput>
+  </TagsInput.Root>
 )

@@ -1,14 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { Fragment, useState } from 'react'
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputField,
-} from './'
+import { TagsInput } from './'
 import './tags-input.css'
 
 type TagsInputType = typeof TagsInput
@@ -39,7 +31,7 @@ export const Basic = () => {
                 <TagsInput.TagInput index={index} value={value} />
               </Fragment>
             ))}
-            <TagsInput.Field placeholder="Add tag" />
+            <TagsInput.Input placeholder="Add tag" />
             <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
           </TagsInput.Control>
         </>
@@ -49,23 +41,23 @@ export const Basic = () => {
 }
 
 export const WithDefaultValue = () => (
-  <TagsInput defaultValue={['react', 'solid', 'vue']}>
+  <TagsInput.Root defaultValue={['react', 'solid', 'vue']}>
     {({ value }) => (
-      <TagsInputControl>
+      <TagsInput.Control>
         {(value ?? []).map((value, index) => (
           <Fragment key={index}>
-            <Tag index={index} value={value}>
+            <TagsInput.Tag index={index} value={value}>
               <span>{value}</span>
-              <TagDeleteTrigger index={index} value={value}>
+              <TagsInput.TagDeleteTrigger index={index} value={value}>
                 &#x2715;
-              </TagDeleteTrigger>
-            </Tag>
-            <TagInput index={index} value={value} />
+              </TagsInput.TagDeleteTrigger>
+            </TagsInput.Tag>
+            <TagsInput.TagInput index={index} value={value} />
           </Fragment>
         ))}
-        <TagsInputField placeholder="Add tag" />
-        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-      </TagsInputControl>
+        <TagsInput.Input placeholder="Add tag" />
+        <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+      </TagsInput.Control>
     )}
-  </TagsInput>
+  </TagsInput.Root>
 )

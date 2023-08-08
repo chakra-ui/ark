@@ -1,24 +1,17 @@
 import { tagsInput } from '@/panda/recipes'
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputControl,
-  TagsInputField,
-} from '@ark-ui/react'
+import { TagsInput } from '@ark-ui/react'
 import { Fragment } from 'react'
 
 export const DemoTagsInput = () => {
   return (
-    <TagsInput defaultValue={['React', 'Solid', 'Vue']} className={tagsInput()}>
+    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']} className={tagsInput()}>
       {({ value }) => (
-        <TagsInputControl>
+        <TagsInput.Control>
           {(value ?? []).map((value, index) => (
             <Fragment key={index}>
-              <Tag index={index} value={value}>
+              <TagsInput.Tag index={index} value={value}>
                 {value}
-                <TagDeleteTrigger index={index} value={value}>
+                <TagsInput.TagDeleteTrigger index={index} value={value}>
                   <svg
                     width="12"
                     height="12"
@@ -34,14 +27,14 @@ export const DemoTagsInput = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </TagDeleteTrigger>
-              </Tag>
-              <TagInput index={index} value={value} />
+                </TagsInput.TagDeleteTrigger>
+              </TagsInput.Tag>
+              <TagsInput.TagInput index={index} value={value} />
             </Fragment>
           ))}
-          <TagsInputField placeholder="Add tag" />
-        </TagsInputControl>
+          <TagsInput.Input placeholder="Add tag" />
+        </TagsInput.Control>
       )}
-    </TagsInput>
+    </TagsInput.Root>
   )
 }

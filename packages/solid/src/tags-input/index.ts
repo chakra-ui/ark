@@ -5,7 +5,7 @@ import { TagsInput as TagsInputRoot, type TagsInputProps } from './tags-input'
 import { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
 import { useTagsInputContext } from './tags-input-context'
 import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
-import { TagsInputField, type TagsInputFieldProps } from './tags-input-field'
+import { TagsInputInput, type TagsInputInputProps } from './tags-input-field'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 import { tagsInputAnatomy } from './tags-input.anatomy'
 
@@ -13,7 +13,7 @@ const TagsInput = Object.assign(TagsInputRoot, {
   Root: TagsInputRoot,
   ClearTrigger: TagsInputClearTrigger,
   Control: TagsInputControl,
-  Field: TagsInputField,
+  Input: TagsInputInput,
   Label: TagsInputLabel,
   Tag: Tag,
   TagInput: TagInput,
@@ -27,7 +27,7 @@ export {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
   tagsInputAnatomy,
   useTagsInputContext,
@@ -39,7 +39,7 @@ export type {
   TagProps,
   TagsInputClearTriggerProps,
   TagsInputControlProps,
-  TagsInputFieldProps,
+  TagsInputInputProps,
   TagsInputLabelProps,
   TagsInputProps,
 }

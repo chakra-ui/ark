@@ -18,7 +18,7 @@ import {
   TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
-  TagsInputField,
+  TagsInputInput,
   TagsInputLabel,
 } from '@ark-ui/react'
 ```
@@ -26,7 +26,7 @@ import {
 ## Usage
 
 The TagsInput component consists of the `Tag`, `TagInput`, `TagsInputControl`,
-`TagsInputField`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
+`TagsInputInput`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
 `TagsInputLabel` components. Combine them as desired to fit your design system.
 
 Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
@@ -50,7 +50,7 @@ listeners and attributes to ensure the desired accessibility.
             <TagInput index={index} value={value} />
           </Fragment>
         ))}
-        <TagsInputField placeholder="Add tag" />
+        <TagsInputInput placeholder="Add tag" />
         <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
       </TagsInputControl>
     </>

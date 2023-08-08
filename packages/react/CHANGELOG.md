@@ -12,6 +12,7 @@ description: All notable changes to this project will be documented in this file
 
 - BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
 - BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
 
 ## [0.11.0-beta.1] - 2023-08-08
 
@@ -184,5 +185,4 @@ description: All notable changes to this project will be documented in this file
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.10.0
 [0.11.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.0
 [0.11.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.1
-
 [0.11.0-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.2
