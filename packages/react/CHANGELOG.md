@@ -8,28 +8,17 @@ description: All notable changes to this project will be documented in this file
 
 ## [0.11.0] - 2023-08-08
 
-### Changed
-
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
-
-## [0.11.0-beta.2] - 2023-08-08
-
-### Changed
-
-- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
-
-## [0.11.0-beta.1] - 2023-08-08
-
-- Add support for dot noation imports
-
-## [0.11.0-beta.0] - 2023-08-07
-
 ### Added
 
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 - Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the calendar.
 - Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
+
+### Changed
+
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
 
 ### Removed
 
@@ -191,5 +180,4 @@ description: All notable changes to this project will be documented in this file
 [0.11.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.0
 [0.11.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.1
 [0.11.0-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.2
-
 [0.11.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0
