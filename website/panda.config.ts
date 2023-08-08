@@ -2,6 +2,7 @@ import { globalCss } from '@/theme/global-css'
 import { recipes } from '@/theme/recipes'
 import { textStyles } from '@/theme/text-styles'
 import { defineConfig } from '@pandacss/dev'
+import { ContainerProperties } from 'panda/patterns'
 
 export default defineConfig({
   preflight: true,
