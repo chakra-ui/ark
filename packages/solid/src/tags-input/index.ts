@@ -1,10 +1,45 @@
-export { Tag, type TagProps } from './tag'
-export { TagDeleteTrigger, type TagDeleteTriggerProps } from './tag-delete-trigger'
-export { TagInput, type TagInputProps } from './tag-input'
-export { TagsInput, type TagsInputProps } from './tags-input'
-export { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
-export { useTagsInputContext } from './tags-input-context'
-export { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
-export { TagsInputField, type TagsInputFieldProps } from './tags-input-field'
-export { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
-export { tagsInputAnatomy } from './tags-input.anatomy'
+import { Tag, type TagProps } from './tag'
+import { TagDeleteTrigger, type TagDeleteTriggerProps } from './tag-delete-trigger'
+import { TagInput, type TagInputProps } from './tag-input'
+import { TagsInput as TagsInputRoot, type TagsInputProps } from './tags-input'
+import { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
+import { useTagsInputContext } from './tags-input-context'
+import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
+import { TagsInputField, type TagsInputFieldProps } from './tags-input-field'
+import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
+import { tagsInputAnatomy } from './tags-input.anatomy'
+
+const TagsInput = Object.assign(TagsInputRoot, {
+  Root: TagsInputRoot,
+  ClearTrigger: TagsInputClearTrigger,
+  Control: TagsInputControl,
+  Field: TagsInputField,
+  Label: TagsInputLabel,
+  Tag: Tag,
+  TagInput: TagInput,
+  TagDeleteTrigger: TagDeleteTrigger,
+})
+
+export {
+  Tag,
+  TagDeleteTrigger,
+  TagInput,
+  TagsInput,
+  TagsInputClearTrigger,
+  TagsInputControl,
+  TagsInputField,
+  TagsInputLabel,
+  tagsInputAnatomy,
+  useTagsInputContext,
+}
+
+export type {
+  TagDeleteTriggerProps,
+  TagInputProps,
+  TagProps,
+  TagsInputClearTriggerProps,
+  TagsInputControlProps,
+  TagsInputFieldProps,
+  TagsInputLabelProps,
+  TagsInputProps,
+}

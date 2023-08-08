@@ -1,20 +1,57 @@
-export { Carousel, type CarouselProps } from './carousel'
-export { useCarouselContext } from './carousel-context'
-export { CarouselControl, type CarouselControlProps } from './carousel-control'
-export { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
-export {
+import { Carousel as CarouselRoot, type CarouselProps } from './carousel'
+import { useCarouselContext } from './carousel-context'
+import { CarouselControl, type CarouselControlProps } from './carousel-control'
+import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
+import {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
-export {
+import {
   CarouselNextSlideTrigger,
   type CarouselNextSlideTriggerProps,
 } from './carousel-next-slide-trigger'
-export {
+import {
   CarouselPrevSlideTrigger,
   type CarouselPrevSlideTriggerProps,
 } from './carousel-prev-slide-trigger'
-export { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
-export { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
-export { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
-export { carouselAnatomy } from './carousel.anatomy'
+import { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
+import { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
+import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
+import { carouselAnatomy } from './carousel.anatomy'
+
+const Carousel = Object.assign(CarouselRoot, {
+  Root: CarouselRoot,
+  Control: CarouselControl,
+  Indicator: CarouselIndicator,
+  IndicatorGroup: CarouselIndicatorGroup,
+  NextSlideTrigger: CarouselNextSlideTrigger,
+  PrevSlideTrigger: CarouselPrevSlideTrigger,
+  Slide: CarouselSlide,
+  SlideGroup: CarouselSlideGroup,
+  Viewport: CarouselViewport,
+})
+
+export {
+  Carousel,
+  CarouselControl,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
+  CarouselNextSlideTrigger,
+  CarouselPrevSlideTrigger,
+  CarouselSlide,
+  CarouselSlideGroup,
+  CarouselViewport,
+  carouselAnatomy,
+  useCarouselContext,
+}
+export type {
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselNextSlideTriggerProps,
+  CarouselPrevSlideTriggerProps,
+  CarouselProps,
+  CarouselSlideGroupProps,
+  CarouselSlideProps,
+  CarouselViewportProps,
+}
