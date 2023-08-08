@@ -1,23 +1,20 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Accordion } from './accordion'
-import { AccordionContent } from './accordion-content'
-import { AccordionItem } from './accordion-item'
-import { AccordionTrigger } from './accordion-trigger'
+import { Accordion } from './'
 
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {
     render(
-      <Accordion value="0">
-        <AccordionItem value="0">
+      <Accordion.Root value="0">
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button data-testid="button">Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent data-testid="panel">Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content data-testid="panel">Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     expect(screen.getByTestId('button')).toHaveAttribute('aria-expanded', 'true')
@@ -25,16 +22,16 @@ describe('Accordion', () => {
 
   it('should toggles the accordion on click', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Trigger</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     const trigger = screen.getByText('Trigger')
@@ -49,23 +46,23 @@ describe('Accordion', () => {
 
   it('should focus the next/previous item on arrow up & down', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="1">
-          <AccordionTrigger asChild>
+        <Accordion.Item value="1">
+          <Accordion.Trigger asChild>
             <button>Section 2 title</button>
-          </AccordionTrigger>
-          <AccordionContent>Panel 2</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          </Accordion.Trigger>
+          <Accordion.Content>Panel 2</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const first = screen.getByText('Section 1 title')
     const second = screen.getByText('Section 2 title')
@@ -81,34 +78,34 @@ describe('Accordion', () => {
 
   it('should focus the first/last item on home & end', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>First section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="1">
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Second section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="2">
+        <Accordion.Item value="2">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Last section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 2</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 2</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const first = screen.getByText('First section')
     const last = screen.getByText('Last section')
@@ -124,25 +121,25 @@ describe('Accordion', () => {
 
   it('should not collapse the curret visible item', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>First section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="1">
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Second section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     const first = screen.getByText('First section')
@@ -156,25 +153,25 @@ describe('Accordion', () => {
 
   it('should collapse the only visible item if the accordiong is collapsible', async () => {
     render(
-      <Accordion collapsible>
-        <AccordionItem value="1">
+      <Accordion.Root collapsible>
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>First section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="2">
+        <Accordion.Item value="2">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Second section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     const firstAccordion = screen.getByText('First section')
@@ -188,25 +185,25 @@ describe('Accordion', () => {
 
   it('should be possible to open multiple items in an accordion', async () => {
     render(
-      <Accordion multiple>
-        <AccordionItem value="0">
+      <Accordion.Root multiple>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>First section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="1">
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Second section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     const first = screen.getByText('First section')
@@ -221,16 +218,16 @@ describe('Accordion', () => {
 
   it('should have the correct aria attributes', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="1">
+      <Accordion.Root>
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const button = screen.getByText('Section 1 title')
     const panel = screen.getByText('Panel 1')
@@ -242,34 +239,34 @@ describe('Accordion', () => {
 
   it('should move the focus to the next element when pressing tab', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>First section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="1">
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Second section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
 
-        <AccordionItem value="2">
+        <Accordion.Item value="2">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Last section</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 2</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 2</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const first = screen.getByText('First section')
     const second = screen.getByText('Second section')
@@ -287,16 +284,16 @@ describe('Accordion', () => {
 
   it('should have the same aria-controls for the button as for the panel', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const button = screen.getByText('Section 1 title')
     const panel = screen.getByText('Panel 1')
@@ -305,24 +302,24 @@ describe('Accordion', () => {
 
   it('should set the correct aria-expanded when an item is open/closed', async () => {
     render(
-      <Accordion value="0">
-        <AccordionItem value="0">
+      <Accordion.Root value="0">
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="1">
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item value="1">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 2 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 2</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 2</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
 
     const button = screen.getByText('Section 1 title')
@@ -331,16 +328,16 @@ describe('Accordion', () => {
 
   it('should have role=region and aria-labelledby', async () => {
     render(
-      <Accordion>
-        <AccordionItem value="0">
+      <Accordion.Root>
+        <Accordion.Item value="0">
           <h2>
-            <AccordionTrigger asChild>
+            <Accordion.Trigger asChild>
               <button>Section 1 title</button>
-            </AccordionTrigger>
+            </Accordion.Trigger>
           </h2>
-          <AccordionContent>Panel 1</AccordionContent>
-        </AccordionItem>
-      </Accordion>,
+          <Accordion.Content>Panel 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>,
     )
     const panel = screen.getByText('Panel 1')
 

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '.'
+import { Accordion } from '.'
 
 type AccordionType = typeof Accordion
 
@@ -14,75 +14,75 @@ export default meta
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion>
+    <Accordion.Root>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent lazyMount unmountOnExit>
+        <Accordion.Item key={id} value={item}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content lazyMount unmountOnExit>
             {item} content
-          </AccordionContent>
-        </AccordionItem>
+          </Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Initial = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion defaultValue="panel-2">
+    <Accordion.Root defaultValue="panel-2">
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const RenderProp = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion>
+    <Accordion.Root>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
+        <Accordion.Item key={id} value={item}>
           {(api) => (
             <>
-              <AccordionTrigger>{api.isOpen ? 'Close' : 'Open'}</AccordionTrigger>
-              <AccordionContent>{item} content</AccordionContent>
+              <Accordion.Trigger>{api.isOpen ? 'Close' : 'Open'}</Accordion.Trigger>
+              <Accordion.Content>{item} content</Accordion.Content>
             </>
           )}
-        </AccordionItem>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 export const Collapsible = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion collapsible>
+    <Accordion.Root collapsible>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Multiple = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion multiple>
+    <Accordion.Root multiple>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
@@ -90,41 +90,41 @@ export const Controlled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   const [value, setValue] = useState<string | string[] | null>(null)
   return (
-    <Accordion value={value} onChange={(details) => setValue(details.value)}>
+    <Accordion.Root value={value} onChange={(details) => setValue(details.value)}>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Vertical = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion orientation="vertical">
+    <Accordion.Root orientation="vertical">
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item} disabled={item === 'panel-2'}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion multiple>
+    <Accordion.Root multiple>
       {items.map((item, id) => (
-        <AccordionItem key={id} value={item} disabled={item === 'panel-2'}>
-          <AccordionTrigger>{item} trigger</AccordionTrigger>
-          <AccordionContent>{item} content</AccordionContent>
-        </AccordionItem>
+        <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
+          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+          <Accordion.Content>{item} content</Accordion.Content>
+        </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }

@@ -1,9 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Accordion } from './accordion'
-import { AccordionContent } from './accordion-content'
-import { AccordionItem } from './accordion-item'
-import { AccordionTrigger } from './accordion-trigger'
+import { Accordion } from './'
 
 const meta: Meta = {
   title: 'Accordion',
@@ -14,83 +11,83 @@ export default meta
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion>
+    <Accordion.Root>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Initial = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion value="panel-2">
+    <Accordion.Root value="panel-2">
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const RenderProp = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion>
+    <Accordion.Root>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
+          <Accordion.Item value={item}>
             {(api) => (
               <>
-                <AccordionTrigger>{api().isOpen ? 'Close' : 'Open'}</AccordionTrigger>
-                <AccordionContent>{item} content</AccordionContent>
+                <Accordion.Trigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.Trigger>
+                <Accordion.Content>{item} content</Accordion.Content>
               </>
             )}
-          </AccordionItem>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 export const Collapsible = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion collapsible>
+    <Accordion.Root collapsible>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Multiple = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion multiple>
+    <Accordion.Root multiple>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
@@ -98,47 +95,47 @@ export const Controlled = () => {
   const [value, setValue] = createSignal<string | string[] | null>(null)
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion value={value()} onChange={(details) => setValue(details.value)}>
+    <Accordion.Root value={value()} onChange={(details) => setValue(details.value)}>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Vertical = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion orientation="vertical">
+    <Accordion.Root orientation="vertical">
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item} disabled={item === 'panel-2'}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item} disabled={item === 'panel-2'}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
 
 export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion multiple>
+    <Accordion.Root multiple>
       <For each={items}>
         {(item) => (
-          <AccordionItem value={item} disabled={item === 'panel-2'}>
-            <AccordionTrigger>{item} trigger</AccordionTrigger>
-            <AccordionContent>{item} content</AccordionContent>
-          </AccordionItem>
+          <Accordion.Item value={item} disabled={item === 'panel-2'}>
+            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
+            <Accordion.Content>{item} content</Accordion.Content>
+          </Accordion.Item>
         )}
       </For>
-    </Accordion>
+    </Accordion.Root>
   )
 }
