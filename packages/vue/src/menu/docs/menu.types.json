@@ -112,5 +112,44 @@
       "description": "The `id` of the element that provides accessibility label to the option group"
     }
   },
+  "MenuOptionItemProps": {
+    "name": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The option's name as specified in menu's `context.values` object"
+    },
+    "type": {
+      "type": "'radio' | 'checkbox'",
+      "isRequired": true,
+      "description": "Whether the option is a radio or a checkbox"
+    },
+    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the menu item option."
+    },
+    "onCheckedChange": {
+      "type": "(checked: boolean) => void",
+      "isRequired": false,
+      "description": "Function called when the option state is changed"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    }
+  },
+  "MenuOptionItemState": { "isActive": { "type": "boolean", "isRequired": true } },
   "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

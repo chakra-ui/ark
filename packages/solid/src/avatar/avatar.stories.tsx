@@ -1,5 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
-import { Avatar, AvatarFallback, AvatarImage } from './'
+import { Avatar } from './'
 import './avatar.css'
 
 const meta: Meta = {
@@ -9,15 +9,15 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Avatar>
-    <AvatarFallback>PA</AvatarFallback>
-    <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-  </Avatar>
+  <Avatar.Root>
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+  </Avatar.Root>
 )
 
 export const Events = () => (
-  <Avatar onError={() => console.log('error')} onLoad={() => console.log('loaded')}>
-    <AvatarFallback>PA</AvatarFallback>
-    <AvatarImage src="https://i.pravatar.cc/3000" alt="avatar" />
-  </Avatar>
+  <Avatar.Root onError={() => console.log('error')} onLoad={() => console.log('loaded')}>
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  </Avatar.Root>
 )

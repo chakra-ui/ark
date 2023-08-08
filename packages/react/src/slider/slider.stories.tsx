@@ -1,16 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from './'
+import { Slider } from './'
 import './slider.css'
 
 type SliderType = typeof Slider
@@ -25,31 +15,31 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (
-    <Slider min={-50} max={50} value={value} onChange={(details) => setValue(details.value)}>
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-      <SliderMarkerGroup>
-        <SliderMarker value={-30}>*</SliderMarker>
-        <SliderMarker value={0}>*</SliderMarker>
-        <SliderMarker value={30}>*</SliderMarker>
-      </SliderMarkerGroup>
-    </Slider>
+    <Slider.Root min={-50} max={50} value={value} onChange={(details) => setValue(details.value)}>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.Output>{value}</Slider.Output>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={-30}>*</Slider.Marker>
+        <Slider.Marker value={0}>*</Slider.Marker>
+        <Slider.Marker value={30}>*</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 
 export const WithDefaultValue = () => (
-  <Slider min={-50} max={50} defaultValue={42}>
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb />
-    </SliderControl>
-  </Slider>
+  <Slider.Root min={-50} max={50} defaultValue={42}>
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb />
+    </Slider.Control>
+  </Slider.Root>
 )

@@ -190,5 +190,6 @@
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
   },
-  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } }
+  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "ComboboxOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

@@ -4,11 +4,6 @@
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "TagDeleteTriggerProps": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "TagInputProps": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
@@ -135,5 +130,10 @@
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
+  },
+  "TagDeleteTriggerProps": {
+    "index": { "type": "string | number", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

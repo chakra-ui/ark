@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './index'
+import { Accordion } from './'
 
 import { type Ref, ref } from 'vue'
 const val: Ref<string | string[]> = ref('panel-2')
@@ -7,24 +7,24 @@ const val: Ref<string | string[]> = ref('panel-2')
 
 <template>
   <button @click="val = 'panel-3'">Trigger</button>
-  <Accordion v-model="val">
-    <AccordionItem value="panel-1" disabled>
-      <AccordionTrigger>
+  <Accordion.Root v-model="val">
+    <Accordion.Item value="panel-1" disabled>
+      <Accordion.Trigger>
         <button>Panel 1 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Much content to fit here 1</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="panel-2">
-      <AccordionTrigger>
+      </Accordion.Trigger>
+      <Accordion.Content>Much content to fit here 1</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="panel-2">
+      <Accordion.Trigger>
         <button>Panel 2 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Much content to fit here 2</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="panel-3">
-      <AccordionTrigger>
+      </Accordion.Trigger>
+      <Accordion.Content>Much content to fit here 2</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="panel-3">
+      <Accordion.Trigger>
         <button>Panel 3 trigger</button>
-      </AccordionTrigger>
-      <AccordionContent>Much content to fit here 3</AccordionContent>
-    </AccordionItem>
-  </Accordion>
+      </Accordion.Trigger>
+      <Accordion.Content>Much content to fit here 3</Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
 </template>

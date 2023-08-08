@@ -1,1 +1,1 @@
-export { anatomy as tooltipAnatomy } from '@zag-js/pagination'
+export { anatomy as tooltipAnatomy } from '@zag-js/tooltip'

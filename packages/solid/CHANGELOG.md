@@ -15,6 +15,10 @@ description: All notable changes to this project will be documented in this file
 
 - BREAKING: Removed `CheckboxInput`. This component is no longer required.
 
+### Fixed
+
+- Added missing exports for `ColorPicker`.
+
 ## [0.9.0] - 2023-08-06
 
 ### Added

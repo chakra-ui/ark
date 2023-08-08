@@ -1,15 +1,5 @@
 import type { Meta } from '@storybook/react'
-import {
-  Toast,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastGroup,
-  ToastPlacements,
-  ToastProvider,
-  ToastTitle,
-  useToast,
-  type ToastProviderProps,
-} from '.'
+import { Toast, useToast, type ToastProviderProps } from '.'
 import './toast.css'
 
 type ToastType = typeof Toast
@@ -31,26 +21,26 @@ export default meta
 export const AppToastProvider = (props: ToastProviderProps) => {
   const { children, ...rest } = props
   return (
-    <ToastProvider {...rest}>
-      <ToastPlacements>
+    <Toast.Provider {...rest}>
+      <Toast.Placements>
         {(placements) =>
           placements.map((placement) => (
-            <ToastGroup key={placement} placement={placement}>
+            <Toast.Group key={placement} placement={placement}>
               {(toasts) =>
                 toasts.map((toast) => (
-                  <Toast key={toast.id} toast={toast}>
-                    <ToastTitle />
-                    <ToastDescription />
-                    <ToastCloseTrigger>close</ToastCloseTrigger>
-                  </Toast>
+                  <Toast.Root key={toast.id} toast={toast}>
+                    <Toast.Title />
+                    <Toast.Description />
+                    <Toast.CloseTrigger>close</Toast.CloseTrigger>
+                  </Toast.Root>
                 ))
               }
-            </ToastGroup>
+            </Toast.Group>
           ))
         }
-      </ToastPlacements>
+      </Toast.Placements>
       {children}
-    </ToastProvider>
+    </Toast.Provider>
   )
 }
 export const App = () => <AppToastProvider>{/* Your App */}</AppToastProvider>

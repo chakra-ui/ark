@@ -51,5 +51,13 @@
   "ColorPickerSwatchProps": {
     "value": { "type": "string | Color", "isRequired": true },
     "readOnly": { "type": "boolean", "isRequired": false }
+  },
+  "ColorPickerChannelInputProps": {
+    "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+    "orientation": { "type": "Orientation", "isRequired": false }
+  },
+  "ColorPickerChannelSliderTrackProps": {
+    "channel": { "type": "ColorChannel", "isRequired": true },
+    "orientation": { "type": "Orientation", "isRequired": false }
   }
 }
