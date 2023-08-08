@@ -1,14 +1,14 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render, waitFor } from '@testing-library/vue'
 import { nextTick } from 'vue'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputProps } from '.'
+import { PinInput, PinInputControl, PinInputInput, PinInputLabel, type PinInputProps } from '.'
 
 const Component = (props: PinInputProps) => (
   <PinInput {...props}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
       {[0, 1, 2].map((id, index) => (
-        <PinInputField key={id} index={index} />
+        <PinInputInput key={id} index={index} />
       ))}
     </PinInputControl>
   </PinInput>

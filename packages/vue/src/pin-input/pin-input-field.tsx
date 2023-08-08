@@ -3,13 +3,13 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputFieldProps = HTMLArkProps<'input'> & { index: number }
+export type PinInputInputProps = HTMLArkProps<'input'> & { index: number }
 
-export const PinInputField: ComponentWithProps<PinInputFieldProps> = defineComponent({
-  name: 'PinInputField',
+export const PinInputInput: ComponentWithProps<PinInputInputProps> = defineComponent({
+  name: 'PinInputInput',
   props: {
     index: {
-      type: Number as PropType<PinInputFieldProps['index']>,
+      type: Number as PropType<PinInputInputProps['index']>,
       required: true,
     },
   },

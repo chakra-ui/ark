@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
 
 ## [0.11.0-beta.1] - 2023-08-08
 

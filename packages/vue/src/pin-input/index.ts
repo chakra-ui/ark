@@ -1,24 +1,24 @@
 import { PinInput as PinInputRoot, type PinInputProps } from './pin-input'
 import { usePinInputContext } from './pin-input-context'
 import { PinInputControl, type PinInputControlProps } from './pin-input-control'
-import { PinInputField, type PinInputFieldProps } from './pin-input-field'
+import { PinInputInput, type PinInputInputProps } from './pin-input-field'
 import { PinInputLabel, type PinInputLabelProps } from './pin-input-label'
 import { pinInputAnatomy } from './pin-input.anatomy'
 
 const PinInput = Object.assign(PinInputRoot, {
   Root: PinInputRoot,
   Control: PinInputControl,
-  Field: PinInputField,
+  Input: PinInputInput,
   Label: PinInputLabel,
 })
 
 export {
   PinInput,
   PinInputControl,
-  PinInputField,
+  PinInputInput,
   PinInputLabel,
   pinInputAnatomy,
   usePinInputContext,
 }
 
-export type { PinInputControlProps, PinInputFieldProps, PinInputLabelProps, PinInputProps }
+export type { PinInputControlProps, PinInputInputProps, PinInputLabelProps, PinInputProps }

@@ -14,14 +14,14 @@ description:
 import {
   PinInput,
   PinInputControl,
-  PinInputField,
+  PinInputInput,
   PinInputLabel,
 } from '@ark-ui/vue'
 ```
 
 ## Usage
 
-The PinInput component consists of the `PinInputControl` `PinInputField` and
+The PinInput component consists of the `PinInputControl` `PinInputInput` and
 `PinInputLabel` components. Combine them as desired to fit your design system.
 
 ```vue
@@ -29,7 +29,7 @@ The PinInput component consists of the `PinInputControl` `PinInputField` and
 import {
   PinInput,
   PinInputControl,
-  PinInputField,
+  PinInputInput,
   PinInputLabel,
 } from '@ark-ui/vue'
 </script>
@@ -37,9 +37,9 @@ import {
   <PinInput>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
-      <PinInputField :index="0" />
-      <PinInputField :index="1" />
-      <PinInputField :index="2" />
+      <PinInputInput :index="0" />
+      <PinInputInput :index="1" />
+      <PinInputInput :index="2" />
     </PinInputControl>
   </PinInput>
 </template>

@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel } from './'
+import { PinInput, PinInputControl, PinInputInput, PinInputLabel } from './'
 
 type PinInputType = typeof PinInput
 
@@ -15,7 +15,7 @@ export const Basic = () => (
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
       {[0, 1, 2].map((id, index) => (
-        <PinInputField key={id} index={index} />
+        <PinInputInput key={id} index={index} />
       ))}
     </PinInputControl>
   </PinInput>

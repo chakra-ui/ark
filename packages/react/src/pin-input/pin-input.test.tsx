@@ -1,14 +1,14 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { PinInput, PinInputControl, PinInputField, PinInputLabel, type PinInputProps } from './'
+import { PinInput, PinInputControl, PinInputInput, PinInputLabel, type PinInputProps } from './'
 
 const Component = (props: PinInputProps) => (
   <PinInput {...props}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
       {[0, 1, 2].map((id, index) => (
-        <PinInputField key={id} index={index} />
+        <PinInputInput key={id} index={index} />
       ))}
     </PinInputControl>
   </PinInput>
