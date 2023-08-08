@@ -1,1 +1,54 @@
-{}
+{
+  "HoverCardProps": {
+    "closeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the popover. Useful for composition."
+    },
+    "onClose": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function invoked when the hover card is closed."
+    },
+    "onOpen": {
+      "type": "VoidFunction",
+      "isRequired": false,
+      "description": "Function invoked when the hover card is opened."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the hover card is open"
+    },
+    "openDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration from when the mouse enters the trigger until the hover card opens."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    }
+  }
+}

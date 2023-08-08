@@ -1,1 +1,114 @@
-{}
+{
+  "SelectProps": {
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an option is selected"
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The highlighted option"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  content: string\n  trigger: string\n  label: string\n  option(id: string | number): string\n  hiddenSelect: string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "modelValue": { "type": "Option", "isRequired": false },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onChange": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected option changes."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is closed."
+    },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
+    "onHighlight": {
+      "type": "(details: Option | null) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted option changes."
+    },
+    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "The callback fired when the menu is opened."
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The selected option"
+    },
+    "selectOnTab": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
+    }
+  },
+  "SelectOptionProps": {
+    "label": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "valueText": { "type": "string", "isRequired": false }
+  },
+  "SelectOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "SelectOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+}

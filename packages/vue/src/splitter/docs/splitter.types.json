@@ -1,1 +1,61 @@
-{}
+{
+  "SplitterProps": {
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the splitter. Useful for composition."
+    },
+    "onResize": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter is resized."
+    },
+    "onResizeEnd": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter resize ends."
+    },
+    "onResizeStart": {
+      "type": "(details: ResizeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the splitter resize starts."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
+    },
+    "size": {
+      "type": "PanelSizeData[]",
+      "isRequired": false,
+      "description": "The size data of the panels"
+    }
+  },
+  "SplitterPanelProps": {
+    "id": { "type": "PanelId", "isRequired": true },
+    "snapSize": { "type": "number", "isRequired": false }
+  },
+  "SplitterResizeTriggerProps": {
+    "id": {
+      "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
+      "isRequired": true
+    },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "step": { "type": "number", "isRequired": false }
+  }
+}
