@@ -5,10 +5,10 @@ import { splitPresenceProps } from '../presence'
 import { useSelectContext } from './select-context'
 import { SelectPresence, type SelectPresenceProps } from './select-presence'
 
-export type SelectContentProps = ComponentPropsWithoutRef<typeof ark.ul> &
+export type SelectContentProps = ComponentPropsWithoutRef<typeof ark.div> &
   Omit<SelectPresenceProps, 'children'>
 
-export const SelectContent = forwardRef<HTMLUListElement, SelectContentProps>((props, ref) => {
+export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
   const [presenceProps, selectContentProps] = splitPresenceProps(props)
   return (
     <SelectPresence {...presenceProps}>
@@ -19,12 +19,12 @@ export const SelectContent = forwardRef<HTMLUListElement, SelectContentProps>((p
 
 SelectContent.displayName = 'SelectContent'
 
-const InnerSelectContent = forwardRef<HTMLUListElement, ComponentPropsWithoutRef<typeof ark.ul>>(
+const InnerSelectContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
   (props, ref) => {
     const { contentProps } = useSelectContext()
     const mergedProps = mergeProps(contentProps, props)
 
-    return <ark.ul {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useSelectContext } from './select-context'
 
-export interface SelectOptionGroupLabelProps extends HTMLArkProps<'label'> {
+export interface SelectOptionGroupLabelProps extends HTMLArkProps<'div'> {
   htmlFor: string
 }
 
@@ -17,12 +17,12 @@ export const SelectOptionGroupLabel: ComponentWithProps<SelectOptionGroupLabelPr
       const api = useSelectContext()
 
       return () => (
-        <ark.label
+        <ark.div
           {...api.value.getOptionGroupLabelProps({ htmlFor: props.htmlFor as string })}
           {...attrs}
         >
           {() => getValidChildren(slots)}
-        </ark.label>
+        </ark.div>
       )
     },
   })

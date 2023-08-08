@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
-export interface ComboboxOptionGroupLabelProps extends HTMLArkProps<'label'> {
+export interface ComboboxOptionGroupLabelProps extends HTMLArkProps<'div'> {
   htmlFor: string
 }
 
@@ -17,12 +17,12 @@ export const ComboboxOptionGroupLabel: ComponentWithProps<ComboboxOptionGroupLab
       const api = useComboboxContext()
 
       return () => (
-        <ark.label
+        <ark.div
           {...api.value.getOptionGroupLabelProps({ htmlFor: props.htmlFor as string })}
           {...attrs}
         >
           {() => getValidChildren(slots)}
-        </ark.label>
+        </ark.div>
       )
     },
   })

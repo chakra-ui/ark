@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
-export interface ComboboxOptionGroupProps extends HTMLArkProps<'ul'> {
+export interface ComboboxOptionGroupProps extends HTMLArkProps<'div'> {
   id: string
 }
 

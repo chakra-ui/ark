@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useSelectContext } from './select-context'
 
-export type SelectContentProps = HTMLArkProps<'ul'>
+export type SelectContentProps = HTMLArkProps<'div'>
 
 export const SelectContent: ComponentWithProps<SelectContentProps> = defineComponent({
   name: 'SelectContent',
@@ -11,9 +11,9 @@ export const SelectContent: ComponentWithProps<SelectContentProps> = defineCompo
     const api = useSelectContext()
 
     return () => (
-      <ark.ul {...api.value.contentProps} {...attrs}>
+      <ark.div {...api.value.contentProps} {...attrs}>
         {() => getValidChildren(slots)}
-      </ark.ul>
+      </ark.div>
     )
   },
 })

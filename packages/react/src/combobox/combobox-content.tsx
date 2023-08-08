@@ -5,10 +5,10 @@ import { splitPresenceProps } from '../presence'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxPresence, type ComboboxPresenceProps } from './combobox-presence'
 
-export type ComboboxContentProps = ComponentPropsWithoutRef<typeof ark.ul> &
+export type ComboboxContentProps = ComponentPropsWithoutRef<typeof ark.div> &
   Omit<ComboboxPresenceProps, 'children'>
 
-export const ComboboxContent = forwardRef<HTMLUListElement, ComboboxContentProps>((props, ref) => {
+export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
   const [presenceProps, comboboxContentProps] = splitPresenceProps(props)
   return (
     <ComboboxPresence {...presenceProps}>
@@ -18,12 +18,12 @@ export const ComboboxContent = forwardRef<HTMLUListElement, ComboboxContentProps
 })
 ComboboxContent.displayName = 'ComboboxContent'
 
-const InnerComboboxContent = forwardRef<HTMLUListElement, ComponentPropsWithoutRef<typeof ark.ul>>(
+const InnerComboboxContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
   (props, ref) => {
     const { contentProps } = useComboboxContext()
     const mergedProps = mergeProps(contentProps, props)
 
-    return <ark.ul {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

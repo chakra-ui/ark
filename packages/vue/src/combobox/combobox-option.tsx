@@ -1,13 +1,11 @@
-import { type connect } from '@zag-js/combobox'
+import { type OptionProps } from '@zag-js/combobox'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
-type OptionProps = Parameters<ReturnType<typeof connect>['getOptionProps']>[0]
-
-export type ComboboxOptionProps = Assign<HTMLArkProps<'li'>, OptionProps>
+export type ComboboxOptionProps = Assign<HTMLArkProps<'div'>, OptionProps>
 
 export const ComboboxOption: ComponentWithProps<ComboboxOptionProps> = defineComponent({
   name: 'ComboboxOption',
@@ -44,9 +42,9 @@ export const ComboboxOption: ComponentWithProps<ComboboxOptionProps> = defineCom
     return () => {
       const validChildren = getValidChildren(slots)
       return (
-        <ark.ul {...api.value.getOptionProps(comboboxOptionProps.value)} {...attrs}>
+        <ark.div {...api.value.getOptionProps(comboboxOptionProps.value)} {...attrs}>
           {() => (validChildren.length ? validChildren : comboboxOptionProps.value.label)}
-        </ark.ul>
+        </ark.div>
       )
     }
   },

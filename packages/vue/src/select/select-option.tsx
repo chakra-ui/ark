@@ -1,10 +1,10 @@
+import type { OptionProps } from '@zag-js/select'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useSelectContext } from './select-context'
 
-type OptionProps = Parameters<ReturnType<typeof useSelectContext>['value']['getOptionProps']>[0]
-export interface SelectOptionProps extends HTMLArkProps<'li'>, OptionProps {}
+export interface SelectOptionProps extends HTMLArkProps<'div'>, OptionProps {}
 
 const VueSelectOptionProps = {
   disabled: {
@@ -37,9 +37,9 @@ export const SelectOption: ComponentWithProps<SelectOptionProps> = defineCompone
     const api = useSelectContext()
 
     return () => (
-      <ark.li {...api.value.getOptionProps(selectOptionProps.value)} {...attrs}>
+      <ark.div {...api.value.getOptionProps(selectOptionProps.value)} {...attrs}>
         {() => (slots.default?.() ? slots.default() : selectOptionProps.value.label)}
-      </ark.li>
+      </ark.div>
     )
   },
 })

@@ -6,9 +6,9 @@ import { ark } from '../factory'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxOptionProps = Assign<ComponentPropsWithoutRef<typeof ark.li>, OptionProps>
+export type ComboboxOptionProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, OptionProps>
 
-export const ComboboxOption = forwardRef<HTMLLIElement, ComboboxOptionProps>((props, ref) => {
+export const ComboboxOption = forwardRef<HTMLDivElement, ComboboxOptionProps>((props, ref) => {
   const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [
     'count',
     'disabled',
@@ -21,9 +21,9 @@ export const ComboboxOption = forwardRef<HTMLLIElement, ComboboxOptionProps>((pr
   const mergedProps = mergeProps(getOptionProps(optionProps), liProps)
 
   return (
-    <ark.li {...mergedProps} ref={ref}>
+    <ark.div {...mergedProps} ref={ref}>
       {children ? children : optionProps.label}
-    </ark.li>
+    </ark.div>
   )
 })
 

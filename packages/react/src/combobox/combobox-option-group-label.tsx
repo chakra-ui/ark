@@ -7,18 +7,18 @@ import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxOptionGroupLabelProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.label>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   OptionGroupLabelProps
 >
 
-export const ComboboxOptionGroupLabel = forwardRef<HTMLLabelElement, ComboboxOptionGroupLabelProps>(
+export const ComboboxOptionGroupLabel = forwardRef<HTMLDivElement, ComboboxOptionGroupLabelProps>(
   (props, ref) => {
     const [optionProps, labelProps] = createSplitProps<OptionGroupLabelProps>()(props, ['htmlFor'])
 
     const { getOptionGroupLabelProps } = useComboboxContext()
     const mergedProps = mergeProps(getOptionGroupLabelProps(optionProps), labelProps)
 
-    return <ark.label {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

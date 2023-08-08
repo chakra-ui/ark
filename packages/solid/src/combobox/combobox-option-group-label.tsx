@@ -5,12 +5,12 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxOptionGroupLabelProps = Assign<HTMLArkProps<'label'>, OptionGroupLabelProps>
+export type ComboboxOptionGroupLabelProps = Assign<HTMLArkProps<'div'>, OptionGroupLabelProps>
 
 export const ComboboxOptionGroupLabel = (props: ComboboxOptionGroupLabelProps) => {
   const [labelParams, restProps] = createSplitProps<OptionGroupLabelProps>()(props, ['htmlFor'])
   const api = useComboboxContext()
   const groupLabelProps = mergeProps(() => api().getOptionGroupLabelProps(labelParams), restProps)
 
-  return <ark.label {...groupLabelProps} />
+  return <ark.div {...groupLabelProps} />
 }

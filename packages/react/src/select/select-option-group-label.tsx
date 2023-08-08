@@ -5,17 +5,17 @@ import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
 export type SelectOptionGroupLabelProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.label>,
+  ComponentPropsWithoutRef<typeof ark.div>,
   { htmlFor: string }
 >
 
-export const SelectOptionGroupLabel = forwardRef<HTMLLabelElement, SelectOptionGroupLabelProps>(
+export const SelectOptionGroupLabel = forwardRef<HTMLDivElement, SelectOptionGroupLabelProps>(
   (props, ref) => {
     const { htmlFor, ...labelProps } = props
     const { getOptionGroupLabelProps } = useSelectContext()
     const mergedProps = mergeProps(getOptionGroupLabelProps({ htmlFor }), labelProps)
 
-    return <ark.label {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 
