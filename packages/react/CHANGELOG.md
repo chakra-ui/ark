@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added supoort for `defaultChecked` to `Checkbox` component.
 - Added supoort for `defaultChecked` to `Switch` component.
+- Exposed `ark` factory function.
 
 ### Fixed
 
@@ -190,3 +191,7 @@ description: All notable changes to this project will be documented in this file
 [0.11.0-beta.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.1
 [0.11.0-beta.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0-beta.2
 [0.11.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.11.0
+
+```
+
+```
