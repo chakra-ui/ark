@@ -33,7 +33,7 @@ export const Hero = () => {
             </Typography>
           </Stack>
           <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
-            <Button size={{ base: 'xl', md: '2xl' }}>
+            <Button size={{ base: 'xl', md: '2xl' }} asChild>
               <NextLink href="/docs/react/overview/introduction">Get Started</NextLink>
             </Button>
             <Button variant="secondary" size={{ base: 'xl', md: '2xl' }}>
