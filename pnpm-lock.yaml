@@ -701,8 +701,8 @@ importers:
         specifier: 0.3.4
         version: 0.3.4(contentlayer@0.3.4)(esbuild@0.18.17)(next@13.4.5)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
-        specifier: 4.1.8
-        version: 4.1.8(next@13.4.5)
+        specifier: 4.2.2
+        version: 4.2.2(next@13.4.5)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -15936,8 +15936,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-sitemap@4.1.8(next@13.4.5):
-    resolution: {integrity: sha512-XAXpBHX4o89JfMgvrm0zimlZwpu2iBPXHpimJMUrqOZSc4C2oB1Lv89mxuVON9IE8HOezaM+w4GjJxcYCuGPTQ==}
+  /next-sitemap@4.2.2(next@13.4.5):
+    resolution: {integrity: sha512-cz5PyFibUNSJSXOY5mllq5TW0OH6SGG+8GJ9fR9pl1Thu4rvkDye+0N0790h+9kQihDStuVw2xfwC3qihDkflA==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
