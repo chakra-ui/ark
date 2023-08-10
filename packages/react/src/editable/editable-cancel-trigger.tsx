@@ -14,4 +14,4 @@ export const EditableCancelTrigger = forwardRef<HTMLButtonElement, EditableCance
   },
 )
 
-EditableCancelTrigger.displayName = 'EditableArea'
+EditableCancelTrigger.displayName = 'EditableCancelTrigger'
