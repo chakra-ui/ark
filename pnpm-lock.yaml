@@ -682,6 +682,9 @@ importers:
       '@park-ui/presets':
         specifier: 0.4.0
         version: 0.4.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(astro@2.7.1)(typescript@5.1.6)
+      '@theme-toggles/react':
+        specifier: 4.1.0
+        version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
       next:
         specifier: 13.4.5
         version: 13.4.5(@babel/core@7.22.9)(@opentelemetry/api@1.4.1)(react-dom@18.2.0)(react@18.2.0)
@@ -691,6 +694,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-icons:
+        specifier: 4.10.1
+        version: 4.10.1(react@18.2.0)
       ts-pattern:
         specifier: 5.0.5
         version: 5.0.5
@@ -723,7 +729,7 @@ importers:
   website:
     dependencies:
       '@ark-ui/react':
-        specifier: 0.11.0
+        specifier: workspace:*
         version: link:../packages/react
       '@next/env':
         specifier: 13.4.5
@@ -976,7 +982,7 @@ packages:
     dependencies:
       babel-preset-solid: 1.7.7(@babel/core@7.22.9)
       solid-js: 1.7.7
-      vitefu: 0.2.4(vite@4.4.9)
+      vitefu: 0.2.4(vite@4.4.8)
     transitivePeerDependencies:
       - '@babel/core'
       - vite
