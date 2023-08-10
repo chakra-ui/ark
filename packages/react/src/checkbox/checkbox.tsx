@@ -22,6 +22,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
     props,
     [
       'checked',
+      'defaultChecked',
       'dir',
       'disabled',
       'form',

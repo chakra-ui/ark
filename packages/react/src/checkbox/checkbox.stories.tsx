@@ -13,7 +13,7 @@ const meta: Meta<CheckboxType> = {
 export default meta
 
 export const Basic = () => (
-  <Checkbox>
+  <Checkbox defaultChecked>
     <CheckboxLabel>Checkbox</CheckboxLabel>
     <CheckboxControl />
   </Checkbox>

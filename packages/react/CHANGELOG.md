@@ -6,6 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added supoort for `defaultChecked` to `Checkbox` component.
+
+### Fixed
+
+- Fixed the display name for `EditableCancelTrigger` component.
+
 ## [0.11.0] - 2023-08-08
 
 ### Added
