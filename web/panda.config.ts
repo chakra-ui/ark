@@ -1,4 +1,5 @@
 import { defineConfig } from '@pandacss/dev'
+import type { ContainerProperties } from 'styled-system/patterns/container'
 
 export default defineConfig({
   preflight: true,
@@ -33,6 +34,22 @@ export default defineConfig({
             emphasized: { value: { base: '{colors.coral.600}', _dark: '{colors.coral.400}' } },
             fg: { value: '{colors.white}' },
           },
+        },
+      },
+    },
+  },
+  patterns: {
+    extend: {
+      container: {
+        transform(props: ContainerProperties) {
+          return {
+            position: 'relative',
+            width: '100%',
+            maxWidth: '7xl',
+            mx: 'auto',
+            px: { base: '4', md: '6' },
+            ...props,
+          }
         },
       },
     },
