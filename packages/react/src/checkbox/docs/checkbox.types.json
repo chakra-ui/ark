@@ -5,6 +5,7 @@
       "isRequired": false,
       "description": "If `true`, the checkbox will be checked."
     },
+    "defaultChecked": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
