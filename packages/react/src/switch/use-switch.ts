@@ -4,18 +4,23 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSwitchProps = Optional<zagSwitch.Context, 'id'>
+export type UseSwitchProps = Optional<zagSwitch.Context, 'id'> & { defaultChecked?: boolean }
 
 export const useSwitch = (props: UseSwitchProps) => {
   const getRootNode = useEnvironmentContext()
 
-  const context = {
+  const initialContext = {
     id: useId(),
     getRootNode,
     ...props,
+    checked: props.defaultChecked,
+  }
+  const context = {
+    ...initialContext,
+    checked: props.checked,
   }
 
-  const [state, send] = useMachine(zagSwitch.machine(context), { context })
+  const [state, send] = useMachine(zagSwitch.machine(initialContext), { context })
   return zagSwitch.connect(state, send, normalizeProps)
 }
 

@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added supoort for `defaultChecked` to `Checkbox` component.
+- Added supoort for `defaultChecked` to `Switch` component.
 
 ### Fixed
 

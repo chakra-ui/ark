@@ -18,6 +18,7 @@ export type SwitchProps = Assign<
 export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const [switchProps, { children, ...labelProps }] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
+    'defaultChecked',
     'dir',
     'disabled',
     'focusable',
