@@ -11,10 +11,34 @@ import {
   SegmentInput,
   SegmentLabel,
 } from '~/components/ui/segment-group'
-// import { sitemap } from '../../sitemap'
+import { getComponentDocuments, getGeneralDocuments } from '~/lib/contentlayer'
+import { FrameworkSelect } from '../framework-select'
 import { Typography } from '../ui/typography'
+import { SidebarExternalLinks } from './sidebar-external-links'
 
-export const Sidebar = () => {
+type Props = {
+  framework: string
+}
+
+export const Sidebar = (props: Props) => {
+  const { framework } = props
+
+  const overview = {
+    heading: 'Overview',
+    items: getGeneralDocuments(framework).map((doc) => ({
+      label: doc.name,
+      href: doc.route,
+    })),
+  }
+
+  const components = {
+    heading: 'Components',
+    items: getComponentDocuments(framework).map((doc) => ({
+      label: doc.name,
+      href: doc.route,
+    })),
+  }
+
   const pathname = usePathname()
   const [currentPath, setCurrentPath] = useState(pathname)
 
@@ -22,36 +46,28 @@ export const Sidebar = () => {
     setCurrentPath(pathname)
   }, [pathname])
 
-  const sitemap = [
-    {
-      name: 'Group',
-      entries: [
-        {
-          title: 'Title',
-          href: '/docs',
-        },
-      ],
-    },
-  ]
+  const sitemap = [overview, components]
 
   return (
     <Stack gap="8" alignItems="stretch">
+      <SidebarExternalLinks />
+      <FrameworkSelect />
       {sitemap.map((group) => (
-        <Stack gap="3" key={group.name}>
+        <Stack gap="3" key={group.heading}>
           <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">
-            {group.name}
+            {group.heading}
           </Typography>
           <SegmentGroup value={currentPath} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
-            {group.entries.map((option, id) => (
+            {group.items.map((option, id) => (
               <Segment key={id} value={option.href} data-orientation="vertical" asChild>
                 <NextLink href={option.href}>
                   <SegmentInput />
                   <SegmentControl />
-                  <SegmentLabel>{option.title}</SegmentLabel>
+                  <SegmentLabel>{option.label}</SegmentLabel>
                 </NextLink>
               </Segment>
             ))}
-            <SegmentIndicator hidden={!group.entries.some((entry) => entry.href === currentPath)} />
+            <SegmentIndicator hidden={!group.items.some((entry) => entry.href === currentPath)} />
           </SegmentGroup>
         </Stack>
       ))}

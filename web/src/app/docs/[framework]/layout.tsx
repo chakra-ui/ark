@@ -1,33 +1,38 @@
-import type { PropsWithChildren } from 'react'
 import { Box, Container, Flex } from 'styled-system/jsx'
-import { Sidebar } from '~/components/docs/sidebar'
+import { Navbar } from '~/components/layout/navbar'
+import { Sidebar } from '~/components/layout/sidebar'
 
-const DocsLayout = (props: PropsWithChildren) => {
-  const { children } = props
+const DocsLayout = (props: any) => {
+  const {
+    params: { framework },
+  } = props
   return (
-    <Container flex="1">
-      <Flex
-        display={{ base: 'none', lg: 'flex' }}
-        position="fixed"
-        width="60"
-        top="16"
-        bottom="0"
-        pt="10"
-        overflowY="auto"
-      >
-        <Sidebar />
-      </Flex>
-      <Flex flex="1" pl={{ base: 'none', lg: '15rem' }}>
-        <Box
-          pb={{ base: '12', md: '24' }}
-          pl={{ base: 'none', lg: '16' }}
-          mt={{ base: '6', md: '35px' }}
-          width="full"
+    <>
+      <Navbar />
+      <Container flex="1">
+        <Flex
+          display={{ base: 'none', lg: 'flex' }}
+          position="fixed"
+          width="60"
+          top="16"
+          bottom="0"
+          pt="10"
+          overflowY="auto"
         >
-          {children}
-        </Box>
-      </Flex>
-    </Container>
+          <Sidebar framework={framework} />
+        </Flex>
+        <Flex flex="1" pl={{ base: 'none', lg: '15rem' }}>
+          <Box
+            pb={{ base: '12', md: '24' }}
+            pl={{ base: 'none', lg: '16' }}
+            mt={{ base: '6', md: '35px' }}
+            width="full"
+          >
+            {props.children}
+          </Box>
+        </Flex>
+      </Container>
+    </>
   )
 }
 
