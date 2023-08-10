@@ -72,7 +72,7 @@
     "@vue/compiler-sfc": "3.3.4",
     "@vue/eslint-config-prettier": "8.0.0",
     "@vue/eslint-config-typescript": "11.0.3",
-    "eslint-plugin-vue": "9.16.1",
+    "eslint-plugin-vue": "9.17.0",
     "eslint": "8.46.0",
     "globby": "13.2.2",
     "histoire": "0.16.2",
