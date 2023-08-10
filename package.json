@@ -21,6 +21,7 @@
     "document:types": "turbo run typedocs",
     "document:stories": "turbo run storydocs",
     "scripts": "pnpm --filter=@ark-ui/scripts",
+    "web": "pnpm --filter=@ark-ui/web",
     "website": "pnpm --filter=@ark-ui/website"
   },
   "devDependencies": {
