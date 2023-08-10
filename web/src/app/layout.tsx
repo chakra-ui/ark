@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fira_Code, Inter } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
+import { cx } from 'styled-system/css/cx'
+import './global.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const body = Inter({ subsets: ['latin'], variable: '--font-body' })
+const code = Fira_Code({ subsets: ['latin'], variable: '--font-code' })
 
 const RootLayout = (props: PropsWithChildren) => {
   const { children } = props
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={cx(body.variable, code.variable)}>{children}</body>
     </html>
   )
 }

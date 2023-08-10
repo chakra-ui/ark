@@ -298,3 +298,5 @@ panda
 # Nuxt
 .nuxt
 .output
+
+styled-system

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,6 +11,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
+    "@park-ui/presets": "0.4.0",
     "next": "13.4.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -17,6 +19,7 @@
     "usehooks-ts": "2.9.1"
   },
   "devDependencies": {
+    "@pandacss/dev": "0.10.0",
     "@types/node": "18.17.4",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
