@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Fira_Code, Inter } from 'next/font/google'
+import { Fira_Code, Plus_Jakarta_Sans } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css/cx'
 import { colorModeLocalStorageKey } from '~/lib/use-color-mode'
 import './global.css'
 
-const body = Inter({ subsets: ['latin'], variable: '--font-body' })
+const body = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-body' })
 const code = Fira_Code({ subsets: ['latin'], variable: '--font-code' })
 
 const RootLayout = (props: PropsWithChildren) => {

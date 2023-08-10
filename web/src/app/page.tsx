@@ -1,4 +1,6 @@
 import { Box } from 'styled-system/jsx'
+import { Gradient } from '~/components/marketing/gradient'
+import { Hero } from '~/components/marketing/hero'
 import { Navbar } from '~/components/marketing/navbar'
 
 export default function Home() {
@@ -10,9 +12,9 @@ export default function Home() {
       backgroundRepeat="repeat-x"
     >
       <Navbar />
-      {/* 
       <Gradient />
       <Hero />
+      {/* 
       <Showcase />
       <Frameworks />
       <CodeExample examples={examples} />
