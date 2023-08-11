@@ -1,6 +1,6 @@
 'use client'
-import Link from 'next/link'
-import { RiGithubFill } from 'react-icons/ri'
+import NextLink from 'next/link'
+import { AiOutlineGithub } from 'react-icons/ai'
 import { Flex, HStack, styled } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
@@ -19,19 +19,21 @@ export const Navbar = () => (
         px="3"
         mt={{ base: '6', md: '10' }}
       >
-        <Link href="/" aria-label="Go to start page">
+        <NextLink href="/" aria-label="Go to start page">
           <Logo />
-        </Link>
+        </NextLink>
         <HStack gap="8">
-          <Link href="/docs/react/overview/introduction">Docs</Link>
-          <Link href="https://ark-ui.canny.io/" target="_blank">
+          <NextLink href="/docs/react/overview/introduction">Docs</NextLink>
+          <NextLink href="https://ark-ui.canny.io/" target="_blank">
             Roadmap
-          </Link>
+          </NextLink>
         </HStack>
         <HStack gap="1">
-          <Link target="_blank" href="https://github.com/chakra-ui/ark">
-            <IconButton size="sm" variant="tertiary" icon={<RiGithubFill />} aria-label="GitHub" />
-          </Link>
+          <IconButton asChild variant="tertiary" size="sm" aria-label="GitHub repository">
+            <NextLink href="https://github.com/chakra-ui/ark" target="_blank">
+              <AiOutlineGithub />
+            </NextLink>
+          </IconButton>
           <ColorModeButton />
         </HStack>
       </HStack>

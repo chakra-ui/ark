@@ -2,7 +2,9 @@
 import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Stack } from 'styled-system/jsx'
+import { DocsFooter } from '~/components/layout/docs-footer'
 import { PageHeader } from '~/components/layout/page-header'
+import { TableOfContent } from '~/components/layout/table-of-content'
 import { Markdown } from '~/components/markdown'
 import { findDocumentByFrameWorkAndId } from '~/lib/contentlayer'
 
@@ -19,9 +21,9 @@ const Page = (props: any) => {
       <Stack gap="12" width={{ base: 'full', xl: '41rem' }}>
         <PageHeader subHeading="Overview" heading={doc.name} supportingText={doc.description} />
         <Markdown doc={doc} />
-        {/* <DocsFooter doc={doc} /> */}
+        <DocsFooter doc={doc} />
       </Stack>
-      {/* <TableOfContent entries={doc.toc} /> */}
+      <TableOfContent />
     </>
   )
 }

@@ -10,7 +10,7 @@ export const Breadcrumbs = (props: HstackProps) => {
   const crumbs = pathName
     ?.split('/')
     .filter(Boolean)
-    .filter((path) => !['docs'].includes(path))
+    .filter((path) => !['docs', 'react', 'vue', 'solid', 'usage', 'props'].includes(path))
     .map((path) => path.replace(/-/g, ' '))
   return (
     <HStack gap="1" {...props}>

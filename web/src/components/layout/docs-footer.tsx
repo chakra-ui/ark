@@ -1,19 +1,21 @@
+'use client'
 import NextLink from 'next/link'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { HStack, Stack } from 'styled-system/jsx'
-import { button } from 'styled-system/recipes'
+import { Button } from '~/components/ui/button'
+import type { DocumentTypes } from '~/contentlayer'
 import { findNextDocument, findPrevDocument } from '~/lib/contentlayer'
 import { Typography } from '../ui/typography'
 
 type FooterProps = {
-  currentPageTitle: string
+  doc: DocumentTypes
 }
 
 export const DocsFooter = (props: FooterProps) => {
-  const { currentPageTitle } = props
+  const { doc } = props
 
-  const prevPage = findPrevDocument(currentPageTitle)
-  const nextPage = findNextDocument(currentPageTitle)
+  const prevPage = findPrevDocument(doc)
+  const nextPage = findNextDocument(doc)
 
   return (
     <Stack width="full" gap="6">
@@ -23,10 +25,12 @@ export const DocsFooter = (props: FooterProps) => {
             <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
               Previous
             </Typography>
-            <NextLink href={prevPage.href} className={button({ variant: 'link', size: 'lg' })}>
-              <FiArrowLeft />
-              {prevPage.title}
-            </NextLink>
+            <Button variant="link" size="lg" asChild>
+              <NextLink href={prevPage.route}>
+                <FiArrowLeft />
+                {prevPage.name}
+              </NextLink>
+            </Button>
           </Stack>
         )}
 
@@ -35,10 +39,11 @@ export const DocsFooter = (props: FooterProps) => {
             <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
               Next
             </Typography>
-            <NextLink href={nextPage.href} className={button({ variant: 'link', size: 'lg' })}>
-              {nextPage.title}
-              <FiArrowRight />
-            </NextLink>
+            <Button variant="link" size="lg" asChild>
+              <NextLink href={nextPage.route}>
+                {nextPage.name} <FiArrowRight />
+              </NextLink>
+            </Button>
           </Stack>
         )}
       </HStack>

@@ -1,4 +1,3 @@
-'use client'
 import { Portal } from '@ark-ui/react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -13,16 +12,18 @@ import {
   DrawerContainer,
   DrawerContent,
   DrawerTrigger,
-} from '../ui/drawer'
-import { IconButton } from '../ui/icon-button'
+} from '~/components/ui/drawer'
+import { IconButton } from '~/components/ui/icon-button'
 
-export const MobileSidebarContainer = (props: PropsWithChildren) => {
+export const MobileContainer = (props: PropsWithChildren) => {
   return (
     <Drawer placement="left">
       {({ close }) => (
         <>
           <DrawerTrigger asChild>
-            <IconButton icon={<FiMenu />} aria-label="Open Menu" variant="tertiary" size="sm" />
+            <IconButton aria-label="Open Menu" variant="tertiary" size="sm">
+              <FiMenu />
+            </IconButton>
           </DrawerTrigger>
           <RouteChangeHandler close={close} />
           <Portal>
@@ -36,7 +37,9 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => {
                   {props.children}
                 </Stack>
                 <DrawerCloseTrigger position="absolute" top="3" right="4" asChild>
-                  <IconButton icon={<FiX />} aria-label="Close Sidebar" variant="tertiary" />
+                  <IconButton aria-label="Close Sidebar" variant="tertiary">
+                    <FiX />
+                  </IconButton>
                 </DrawerCloseTrigger>
               </DrawerContent>
             </DrawerContainer>

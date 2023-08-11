@@ -11,10 +11,10 @@ import {
   SegmentInput,
   SegmentLabel,
 } from '~/components/ui/segment-group'
+import { Typography } from '~/components/ui/typography'
 import { getComponentDocuments, getGeneralDocuments } from '~/lib/contentlayer'
-import { FrameworkSelect } from '../framework-select'
-import { Typography } from '../ui/typography'
-import { SidebarExternalLinks } from './sidebar-external-links'
+import { SidebarExternalLinks } from './external-links'
+import { FrameworkSelect } from './framework-select'
 
 type Props = {
   framework: string
@@ -22,7 +22,6 @@ type Props = {
 
 export const Sidebar = (props: Props) => {
   const { framework } = props
-
   const overview = {
     heading: 'Overview',
     items: getGeneralDocuments(framework).map((doc) => ({
@@ -49,7 +48,7 @@ export const Sidebar = (props: Props) => {
   const sitemap = [overview, components]
 
   return (
-    <Stack gap="8" alignItems="stretch">
+    <Stack gap="8" width="full">
       <SidebarExternalLinks />
       <FrameworkSelect />
       {sitemap.map((group) => (

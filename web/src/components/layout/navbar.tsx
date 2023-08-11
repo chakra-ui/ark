@@ -2,16 +2,20 @@
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AiOutlineGithub, AiOutlineTwitter } from 'react-icons/ai'
-import { css, cx } from 'styled-system/css'
 import { Box, Container, HStack, styled } from 'styled-system/jsx'
-import { button } from 'styled-system/recipes'
 import { Logo } from '~/components/logo'
 import { ColorModeButton } from '../color-mode-button'
-import { MobileNavbar } from './mobile-navbar'
-import { MobileSidebarContainer } from './mobile-sidebar-container'
+import { IconButton } from '../ui/icon-button'
+import { Breadcrumbs } from './breadcrumbs'
 import { Sidebar } from './sidebar'
+import { MobileContainer } from './sidebar/mobile-container'
 
-export const Navbar = () => {
+type Props = {
+  framework: string
+}
+
+export const Navbar = (props: Props) => {
+  const { framework } = props
   const pathName = usePathname()
 
   return (
@@ -25,41 +29,32 @@ export const Navbar = () => {
               </NextLink>
             </HStack>
             <HStack gap="0.5">
-              <NextLink
-                href="https://twitter.com/grizzly_codes"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter profile"
-                className={cx(
-                  button({ variant: 'tertiary', size: 'sm' }),
-                  css({ px: '0', color: 'fg.mtued' }),
-                )}
-              >
-                <AiOutlineTwitter />
-              </NextLink>
-              <NextLink
-                href="https://github.com/cschroeter/park-ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub repository"
-                className={cx(
-                  button({ variant: 'tertiary', size: 'sm' }),
-                  css({ px: '0', color: 'fg.mtued' }),
-                )}
-              >
-                <AiOutlineGithub />
-              </NextLink>
+              <IconButton asChild variant="tertiary" size="sm" aria-label="Twitter profile">
+                <NextLink href="https://twitter.com/ark_ui_" target="_blank">
+                  <AiOutlineTwitter />
+                </NextLink>
+              </IconButton>
+              <IconButton asChild variant="tertiary" size="sm" aria-label="GitHub repository">
+                <NextLink href="https://github.com/chakra-ui/ark" target="_blank">
+                  <AiOutlineGithub />
+                </NextLink>
+              </IconButton>
               <ColorModeButton />
             </HStack>
           </HStack>
         </Container>
       </Box>
       {pathName !== '/' && (
-        <MobileNavbar>
-          <MobileSidebarContainer>
-            <Sidebar />
-          </MobileSidebarContainer>
-        </MobileNavbar>
+        <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
+          <Container py="1">
+            <HStack gap="2">
+              <MobileContainer>
+                <Sidebar framework={framework} />
+              </MobileContainer>
+              <Breadcrumbs />
+            </HStack>
+          </Container>
+        </Box>
       )}
     </styled.nav>
   )

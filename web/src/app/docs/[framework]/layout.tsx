@@ -6,9 +6,10 @@ const DocsLayout = (props: any) => {
   const {
     params: { framework },
   } = props
+
   return (
     <>
-      <Navbar />
+      <Navbar framework={framework} />
       <Container flex="1">
         <Flex
           display={{ base: 'none', lg: 'flex' }}

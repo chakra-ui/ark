@@ -8,6 +8,13 @@ export default defineConfig({
   exclude: [],
   jsxFramework: 'react',
   outdir: 'styled-system',
+  globalCss: {
+    extend: {
+      html: {
+        scrollPaddingTop: '6rem',
+      },
+    },
+  },
   theme: {
     extend: {
       tokens: {

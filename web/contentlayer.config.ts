@@ -1,7 +1,6 @@
 import { type RawDocumentData } from 'contentlayer/core'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
-import toc from 'markdown-toc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -41,10 +40,6 @@ export const ComponentDocument = defineDocumentType(() => ({
         const framework = resolveFramework(doc)
         return `/docs/${framework}/components/${doc.id}`
       },
-    },
-    toc: {
-      type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
     types: {
       type: 'json',
@@ -100,10 +95,6 @@ export const GeneralDocument = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/${doc.id}`,
     },
-    toc: {
-      type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
-    },
   },
 }))
 
@@ -133,10 +124,6 @@ export const ChangelogDocument = defineDocumentType(() => ({
     route: {
       type: 'string',
       resolve: (doc) => `/docs/${resolveFramework(doc)}/overview/changelog`,
-    },
-    toc: {
-      type: 'json',
-      resolve: (doc) => toc(doc.body.raw, { maxdepth: 3 }).json.filter((t) => t.lvl === 2),
     },
   },
 }))
