@@ -42,7 +42,8 @@ export const Sidebar = (props: Props) => {
   const [currentPath, setCurrentPath] = useState(pathname)
 
   useEffect(() => {
-    setCurrentPath(pathname)
+    const path = pathname.replace(/\/(props|usage)$/, '')
+    setCurrentPath(path)
   }, [pathname])
 
   const sitemap = [overview, components]
