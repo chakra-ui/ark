@@ -2,10 +2,10 @@
 import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Stack } from 'styled-system/jsx'
-import { DocsFooter } from '~/components/layout/docs-footer'
-import { PageHeader } from '~/components/layout/page-header'
-import { TableOfContent } from '~/components/layout/table-of-content'
 import { Markdown } from '~/components/markdown'
+import { DocsFooter } from '~/components/navigation/docs-footer'
+import { TableOfContent } from '~/components/navigation/table-of-content'
+import { PageHeader } from '~/components/page-header'
 import { findDocumentByFrameWorkAndId } from '~/lib/contentlayer'
 
 const Page = (props: any) => {

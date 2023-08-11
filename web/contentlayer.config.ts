@@ -1,7 +1,6 @@
 import { type RawDocumentData } from 'contentlayer/core'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import fs from 'fs-extra'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode, { type Options as PrettyCodeOptions } from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import { highlightCode } from './src/lib/highlight-code'
@@ -136,15 +135,7 @@ export default makeSource({
   onUnknownDocuments: 'skip-ignore',
   mdx: {
     rehypePlugins: [
-      [
-        rehypeSlug,
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          test: ['h2', 'h3', 'h4'],
-          properties: { className: ['anchor'] },
-        },
-      ],
+      rehypeSlug,
       [
         rehypePrettyCode,
         {

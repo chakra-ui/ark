@@ -1,6 +1,6 @@
 import { Box, Container, Flex } from 'styled-system/jsx'
-import { Navbar } from '~/components/layout/navbar'
-import { Sidebar } from '~/components/layout/sidebar'
+import { Navbar } from '~/components/navigation/navbar'
+import { Sidebar } from '~/components/navigation/sidebar'
 
 const DocsLayout = (props: any) => {
   const {
