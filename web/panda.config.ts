@@ -13,6 +13,26 @@ export default defineConfig({
       html: {
         scrollPaddingTop: '6rem',
       },
+      pre: {
+        fontFamily: 'var(--font-code)',
+        overflowX: 'auto',
+        fontSize: '0.8125rem!',
+        p: '4',
+        '--shiki-color-text': 'colors.gray.100',
+        '--shiki-color-background': 'colors.orange.950',
+        '--shiki-token-constant': 'colors.orange.200',
+        '--shiki-token-string': 'colors.orange.100',
+        '--shiki-token-comment': 'colors.gray.500',
+        '--shiki-token-keyword': 'colors.orange.200',
+        '--shiki-token-parameter': 'colors.gray.100',
+        '--shiki-token-function': 'colors.gray.100',
+        '--shiki-token-string-expression': 'colors.yellow.100',
+        '--shiki-token-punctuation': 'colors.gray.100',
+        '--shiki-token-link': 'colors.gray.100',
+        '& code': {
+          fontFamily: 'inherit',
+        },
+      },
     },
   },
   theme: {
@@ -40,6 +60,9 @@ export default defineConfig({
             default: { value: { base: '{colors.coral.500}', _dark: '{colors.coral.500}' } },
             emphasized: { value: { base: '{colors.coral.600}', _dark: '{colors.coral.400}' } },
             fg: { value: '{colors.white}' },
+          },
+          border: {
+            accent: { value: { base: '{colors.coral.500}', _dark: '{colors.coral.500}' } },
           },
         },
       },

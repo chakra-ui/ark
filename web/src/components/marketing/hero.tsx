@@ -20,9 +20,9 @@ export const Hero = () => {
       backgroundPosition="calc(50% + 250px) 25px"
       backgroundRepeat="no-repeat"
     >
-      <Container py={{ base: '16', md: '24' }}>
+      <Container pt={{ base: '16', md: '28' }} pb={{ base: '16', md: '24' }}>
         <Stack gap={{ base: '8', md: '12' }}>
-          <Stack gap={{ base: '4', md: '6' }} maxW={{ lg: '3xl' }}>
+          <Stack gap={{ base: '4', md: '6' }} maxW={{ lg: '2xl' }}>
             <Heading textStyle={{ base: '4xl', md: '6xl' }}>
               Fully <styled.span color="accent.default">customizable</styled.span> and{' '}
               <styled.span color="accent.default">accessible</styled.span> UI components
