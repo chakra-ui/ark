@@ -6,7 +6,7 @@ import {
   Segment,
   SegmentControl,
   SegmentGroup,
-  SegmentIndicator,
+  SegmentGroupIndicator,
   SegmentLabel,
 } from '~/components/ui/segment-group'
 
@@ -38,7 +38,7 @@ export const ComponentSegmentGroup = (props: ComponentTabsProps) => {
           <SegmentLabel>Props</SegmentLabel>
         </NextLink>
       </Segment>
-      <SegmentIndicator />
+      <SegmentGroupIndicator />
     </SegmentGroup>
   )
 }

@@ -15,7 +15,8 @@ description: All notable changes to this project will be documented in this file
 
 - BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
 - BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.Ø
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `SegmentIndicator` to `SegmentGroupIndicator` to match the naming convention of other components.
 
 ### Removed
 

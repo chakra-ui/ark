@@ -3,9 +3,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 
-export type SegmentIndicatorProps = HTMLArkProps<'input'>
+export type SegmentGroupIndicatorProps = HTMLArkProps<'input'>
 
-export const SegmentIndicator = (props: SegmentIndicatorProps) => {
+export const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
   const api = useSegmentGroupContext()
   const indicatorProps = mergeProps(() => api().indicatorProps, props)
 

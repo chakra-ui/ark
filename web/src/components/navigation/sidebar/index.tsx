@@ -7,7 +7,7 @@ import {
   Segment,
   SegmentControl,
   SegmentGroup,
-  SegmentIndicator,
+  SegmentGroupIndicator,
   SegmentLabel,
 } from '~/components/ui/segment-group'
 import { Typography } from '~/components/ui/typography'
@@ -65,7 +65,9 @@ export const Sidebar = (props: Props) => {
                 </NextLink>
               </Segment>
             ))}
-            <SegmentIndicator hidden={!group.items.some((entry) => entry.href === currentPath)} />
+            <SegmentGroupIndicator
+              hidden={!group.items.some((entry) => entry.href === currentPath)}
+            />
           </SegmentGroup>
         </Stack>
       ))}

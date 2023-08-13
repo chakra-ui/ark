@@ -11,15 +11,15 @@ export type SegmentGroupProps = Ark.SegmentGroupProps & SegmentGroupVariantProps
 const SegmentGroupRoot = withProvider(styled(Ark.SegmentGroup.Root), 'root')
 export const SegmentGroupLabel = withContext(styled(Ark.SegmentGroup.Label), 'label')
 export const Segment = withContext(styled(Ark.SegmentGroup.Segment), 'radio')
-export const SegmentIndicator = withContext(styled(Ark.SegmentGroup.SegmentIndicator), 'indicator')
+export const SegmentGroupIndicator = withContext(styled(Ark.SegmentGroup.Indicator), 'indicator')
 export const SegmentLabel = withContext(styled(Ark.SegmentGroup.SegmentLabel), 'radioLabel')
 export const SegmentControl = withContext(styled(Ark.SegmentGroup.SegmentControl), 'radioControl')
 
 export const SegmentGroup = Object.assign(SegmentGroupRoot, {
   Root: SegmentGroupRoot,
   Label: SegmentGroupLabel,
+  Indicator: SegmentGroupIndicator,
   Segment: Segment,
-  SegmentIndicator: SegmentIndicator,
   SegmentLabel: SegmentLabel,
   SegmentControl: SegmentControl,
 })

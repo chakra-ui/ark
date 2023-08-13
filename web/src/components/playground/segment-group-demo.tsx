@@ -2,7 +2,7 @@ import {
   Segment,
   SegmentControl,
   SegmentGroup,
-  SegmentIndicator,
+  SegmentGroupIndicator,
   SegmentLabel,
   type SegmentGroupProps,
 } from '~/components/ui/segment-group'
@@ -23,7 +23,7 @@ export const SegmentGroupDemo = (props: SegmentGroupProps) => {
           <SegmentLabel>{option.label}</SegmentLabel>
         </Segment>
       ))}
-      <SegmentIndicator />
+      <SegmentGroupIndicator />
     </SegmentGroup>
   )
 }

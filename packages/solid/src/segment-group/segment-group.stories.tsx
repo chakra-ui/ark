@@ -1,6 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Segment, SegmentControl, SegmentGroup, SegmentIndicator, SegmentLabel } from '.'
+import { Segment, SegmentControl, SegmentGroup, SegmentGroupIndicator, SegmentLabel } from '.'
 import './segment-group.css'
 
 const meta: Meta = {
@@ -19,7 +19,7 @@ const options = [
 export const Basic = () => {
   return (
     <SegmentGroup>
-      <SegmentIndicator />
+      <SegmentGroupIndicator />
       <For each={options}>
         {(option) => (
           <Segment value={option.id}>
@@ -36,7 +36,7 @@ export const Controlled = () => {
   const [value, setValue] = createSignal('react')
   return (
     <SegmentGroup value={value()} onChange={({ value }) => setValue(value)}>
-      <SegmentIndicator />
+      <SegmentGroupIndicator />
       <For each={options}>
         {(option) => (
           <Segment value={option.id}>
@@ -53,7 +53,7 @@ export const Disabled = () => {
   const [value, setValue] = createSignal('react')
   return (
     <SegmentGroup value={value()} onChange={({ value }) => setValue(value)}>
-      <SegmentIndicator />
+      <SegmentGroupIndicator />
       <For each={options}>
         {(option) => (
           <Segment value={option.id} disabled={option.id === 'svelte'}>
