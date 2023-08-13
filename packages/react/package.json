@@ -90,7 +90,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-frame-component": "5.2.6",
-    "release-it": "16.1.4",
+    "release-it": "16.1.5",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "7.2.2",
     "typescript": "5.1.6",

@@ -189,7 +189,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.4)
+        version: 4.0.0(release-it@16.1.5)
       '@storybook/addon-a11y':
         specifier: 7.2.2
         version: 7.2.2(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
@@ -266,8 +266,8 @@ importers:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       release-it:
-        specifier: 16.1.4
-        version: 16.1.4
+        specifier: 16.1.5
+        version: 16.1.5
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -382,7 +382,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.4)
+        version: 4.0.0(release-it@16.1.5)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.2)(solid-js@1.7.11)
@@ -441,8 +441,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 16.1.4
-        version: 16.1.4
+        specifier: 16.1.5
+        version: 16.1.5
       solid-js:
         specifier: 1.7.11
         version: 1.7.11
@@ -560,7 +560,7 @@ importers:
         version: 0.16.1(histoire@0.16.2)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.4)
+        version: 4.0.0(release-it@16.1.5)
       '@testing-library/dom':
         specifier: 9.3.1
         version: 9.3.1
@@ -613,8 +613,8 @@ importers:
         specifier: 22.1.0
         version: 22.1.0
       release-it:
-        specifier: 16.1.4
-        version: 16.1.4
+        specifier: 16.1.5
+        version: 16.1.5
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -5241,14 +5241,14 @@ packages:
       '@babel/runtime': 7.22.6
     dev: true
 
-  /@release-it/keep-a-changelog@4.0.0(release-it@16.1.4):
+  /@release-it/keep-a-changelog@4.0.0(release-it@16.1.5):
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
       release-it: ^16.0.0
     dependencies:
       detect-newline: 4.0.0
-      release-it: 16.1.4
+      release-it: 16.1.5
       string-template: 1.0.0
     dev: true
 
@@ -18139,8 +18139,8 @@ packages:
       rehype-stringify: 9.0.3
       unified: 10.1.2
 
-  /release-it@16.1.4:
-    resolution: {integrity: sha512-lLYuXfZzAzO9tDyhQKpvkrUMY43/+PMTzibcUsC4dDDzDf3JT69FhiAjkqXv9nBAotyENGMoeHtK0jRiL4YeEQ==}
+  /release-it@16.1.5:
+    resolution: {integrity: sha512-w/zCljPZBSYcCwR9fjDB1zaYwie1CAQganUrwNqjtXacXhrrsS5E6dDUNLcxm2ypu8GWAgZNMJfuBJqIO2E7fA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
