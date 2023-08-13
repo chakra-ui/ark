@@ -557,7 +557,7 @@ importers:
     devDependencies:
       '@histoire/plugin-vue':
         specifier: 0.16.4
-        version: 0.16.4(histoire@0.16.2)(vite@4.4.9)(vue@3.3.4)
+        version: 0.16.4(histoire@0.16.4)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
         version: 4.0.0(release-it@16.1.5)
@@ -607,8 +607,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       histoire:
-        specifier: 0.16.2
-        version: 0.16.2(@types/node@20.4.7)(vite@4.4.9)
+        specifier: 0.16.4
+        version: 0.16.4(@types/node@20.4.7)(vite@4.4.9)
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3298,31 +3298,15 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: false
 
-  /@histoire/app@0.16.1(vite@4.4.9):
-    resolution: {integrity: sha512-13komnhVk1Pk0wMmkJKDPWT8RKpA5HfAbeeXSHAq29pvFP9Faq+dAa62g1wqOpoyJD5C7SkI0OPI3eJwJHgTiQ==}
+  /@histoire/app@0.16.4(vite@4.4.9):
+    resolution: {integrity: sha512-8BTfoEShyQoVUWfkfiW5hjUgkv21/kHFOIyKRgIfd28iONJwsQnZymfsHJ4q7XxkPkSR0N/FhvYTya/+NRTnOw==}
     dependencies:
-      '@histoire/controls': 0.16.1(vite@4.4.9)
-      '@histoire/shared': 0.16.1(vite@4.4.9)
+      '@histoire/controls': 0.16.4(vite@4.4.9)
+      '@histoire/shared': 0.16.4(vite@4.4.9)
       '@histoire/vendors': 0.16.0
       '@types/flexsearch': 0.7.3
       flexsearch: 0.7.21
       shiki-es: 0.2.0
-    transitivePeerDependencies:
-      - vite
-    dev: true
-
-  /@histoire/controls@0.16.1(vite@4.4.9):
-    resolution: {integrity: sha512-Ot/J/LPzUexn+fLrJrWu3jUakx9aVSJWKnriiJSmEodAxJq+4mrprX3xS0bnzieud19pJc3mzC/MSD94urTbHA==}
-    dependencies:
-      '@codemirror/commands': 6.2.4
-      '@codemirror/lang-json': 6.0.1
-      '@codemirror/language': 6.8.0
-      '@codemirror/lint': 6.4.0
-      '@codemirror/state': 6.2.1
-      '@codemirror/theme-one-dark': 6.1.2
-      '@codemirror/view': 6.16.0
-      '@histoire/shared': 0.16.1(vite@4.4.9)
-      '@histoire/vendors': 0.16.0
     transitivePeerDependencies:
       - vite
     dev: true
@@ -3343,7 +3327,7 @@ packages:
       - vite
     dev: true
 
-  /@histoire/plugin-vue@0.16.4(histoire@0.16.2)(vite@4.4.9)(vue@3.3.4):
+  /@histoire/plugin-vue@0.16.4(histoire@0.16.4)(vite@4.4.9)(vue@3.3.4):
     resolution: {integrity: sha512-1b8Q3fIDYZWpaxtJcD6w4qX8J4+siUotZBaCRKKFGn+6biYFX8CC5dZsLcnDDwjAZHaxAewi6KxlEbuBxxGmow==}
     peerDependencies:
       histoire: ^0.16.4
@@ -3354,26 +3338,12 @@ packages:
       '@histoire/vendors': 0.16.0
       change-case: 4.1.2
       globby: 13.2.2
-      histoire: 0.16.2(@types/node@20.4.7)(vite@4.4.9)
+      histoire: 0.16.4(@types/node@20.4.7)(vite@4.4.9)
       launch-editor: 2.6.0
       pathe: 0.2.0
       vue: 3.3.4
     transitivePeerDependencies:
       - vite
-    dev: true
-
-  /@histoire/shared@0.16.1(vite@4.4.9):
-    resolution: {integrity: sha512-bcySHGC6kcZ1U9OZUcBQCROTBygTZ9T9MlqfeGtBtJWXGdmHPZ/64elZOY36O8gUAMF89Q08EIVe5cIQ0SJ3Uw==}
-    peerDependencies:
-      vite: ^2.9.0 || ^3.0.0 || ^4.0.0
-    dependencies:
-      '@histoire/vendors': 0.16.0
-      '@types/fs-extra': 9.0.13
-      '@types/markdown-it': 12.2.3
-      chokidar: 3.5.3
-      pathe: 0.2.0
-      picocolors: 1.0.0
-      vite: 4.4.9(@types/node@20.4.7)
     dev: true
 
   /@histoire/shared@0.16.4(vite@4.4.9):
@@ -13148,16 +13118,16 @@ packages:
       tslib: 2.6.1
     dev: true
 
-  /histoire@0.16.2(@types/node@20.4.7)(vite@4.4.9):
-    resolution: {integrity: sha512-7/dErREfXEqAq69KuVMThu+uYzBfIuc6R13z5uylNm+rGO6WX62Y70DeKTxnp4NsYPXBNPcBhWY6UGICCuhHaw==}
+  /histoire@0.16.4(@types/node@20.4.7)(vite@4.4.9):
+    resolution: {integrity: sha512-j3Y6L2GMVmO0PiwjiTlWKPFcpD4nUCm4g4sHb6xoklG0HgO1bhaIY7zHT7123yVgCmLPDYuz/ELQF/ZwgKmQBg==}
     hasBin: true
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0
     dependencies:
       '@akryum/tinypool': 0.3.1
-      '@histoire/app': 0.16.1(vite@4.4.9)
-      '@histoire/controls': 0.16.1(vite@4.4.9)
-      '@histoire/shared': 0.16.1(vite@4.4.9)
+      '@histoire/app': 0.16.4(vite@4.4.9)
+      '@histoire/controls': 0.16.4(vite@4.4.9)
+      '@histoire/shared': 0.16.4(vite@4.4.9)
       '@histoire/vendors': 0.16.0
       '@types/flexsearch': 0.7.3
       '@types/markdown-it': 12.2.3
