@@ -281,8 +281,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.1
-        version: 3.5.1(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
+        specifier: 3.5.2
+        version: 3.5.2(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
       vitest:
         specifier: 0.34.1
         version: 0.34.1(jsdom@22.1.0)
@@ -462,8 +462,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.1
-        version: 3.5.1(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
+        specifier: 3.5.2
+        version: 3.5.2(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
       vite-plugin-solid:
         specifier: 2.7.0
         version: 2.7.0(solid-js@1.7.11)(vite@4.4.9)
@@ -625,8 +625,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.1
-        version: 3.5.1(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
+        specifier: 3.5.2
+        version: 3.5.2(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9)
       vitest:
         specifier: 0.34.1
         version: 0.34.1(jsdom@22.1.0)
@@ -20559,8 +20559,8 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /vite-plugin-dts@3.5.1(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9):
-    resolution: {integrity: sha512-wrrIvRTWq9xL0HKOUvJyJ+wivEoLsZ2GU2I2000v5tAAUtu9gE+5OUmUJ9yNkmyYz3tSPedkkiXHeb5jnnSXhg==}
+  /vite-plugin-dts@3.5.2(@types/node@20.4.7)(typescript@5.1.6)(vite@4.4.9):
+    resolution: {integrity: sha512-iKc851+jdHEoN1ifbOEsoMs+/Zg26PE1EyO2Jc+4apOWRoaeK2zRJnaStgUuJaVaEcAjTqWzpNgCAMq7iO6DWA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
