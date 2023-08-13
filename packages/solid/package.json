@@ -82,7 +82,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "16.1.4",
-    "solid-js": "1.7.10",
+    "solid-js": "1.7.11",
     "storybook": "7.2.2",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
