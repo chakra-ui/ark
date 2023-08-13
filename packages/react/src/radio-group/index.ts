@@ -5,14 +5,12 @@ import { RadioGroup as RadioGroupRoot, type RadioGroupProps } from './radio-grou
 import { useRadioGroupContext } from './radio-group-context'
 import { RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label'
 import { radioGroupAnatomy } from './radio-group.anatomy'
-import { RadioInput, type RadioInputProps } from './radio-input'
 import { RadioLabel, type RadioLabelProps } from './radio-label'
 
 const RadioGroup = Object.assign(RadioGroupRoot, {
   Root: RadioGroupRoot,
   Label: RadioGroupLabel,
   Radio: Radio,
-  RadioInput: RadioInput,
   RadioLabel: RadioLabel,
   RadioControl: RadioControl,
 })
@@ -22,7 +20,6 @@ export {
   RadioControl,
   RadioGroup,
   RadioGroupLabel,
-  RadioInput,
   RadioLabel,
   radioGroupAnatomy,
   useRadioContext,
@@ -33,7 +30,6 @@ export type {
   RadioControlProps,
   RadioGroupLabelProps,
   RadioGroupProps,
-  RadioInputProps,
   RadioLabelProps,
   RadioProps,
 }

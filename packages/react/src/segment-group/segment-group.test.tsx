@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Segment } from './segment'
-import { SegmentControl } from './segment-control'
-import { SegmentGroup, type SegmentGroupProps } from './segment-group'
-import { SegmentGroupLabel } from './segment-group-label'
-import { SegmentInput } from './segment-input'
+import {
+  Segment,
+  SegmentControl,
+  SegmentGroup,
+  SegmentGroupLabel,
+  type SegmentGroupProps,
+} from './'
+
 import { SegmentLabel } from './segment-label'
 
 const options = [
@@ -21,7 +24,6 @@ const Component = (props: SegmentGroupProps) => (
     {options.map((option, id) => (
       <Segment key={id} value={option.id} disabled={option.disabled}>
         <SegmentLabel>{option.label}</SegmentLabel>
-        <SegmentInput />
         <SegmentControl />
       </Segment>
     ))}

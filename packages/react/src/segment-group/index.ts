@@ -6,7 +6,6 @@ import { useSegmentGroupContext } from './segment-group-context'
 import { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
 import { segmentGroupAnatomy } from './segment-group.anatomy'
 import { SegmentIndicator, type SegmentIndicatorProps } from './segment-indicator'
-import { SegmentInput, type SegmentInputProps } from './segment-input'
 import { SegmentLabel, type SegmentLabelProps } from './segment-label'
 
 const SegmentGroup = Object.assign(SegmentGroupRoot, {
@@ -14,7 +13,6 @@ const SegmentGroup = Object.assign(SegmentGroupRoot, {
   Label: SegmentGroupLabel,
   Segment: Segment,
   SegmentIndicator: SegmentIndicator,
-  SegmentInput: SegmentInput,
   SegmentLabel: SegmentLabel,
   SegmentControl: SegmentControl,
 })
@@ -25,7 +23,6 @@ export {
   SegmentGroup,
   SegmentGroupLabel,
   SegmentIndicator,
-  SegmentInput,
   SegmentLabel,
   segmentGroupAnatomy,
   useSegmentContext,
@@ -37,7 +34,6 @@ export type {
   SegmentGroupLabelProps,
   SegmentGroupProps,
   SegmentIndicatorProps,
-  SegmentInputProps,
   SegmentLabelProps,
   SegmentProps,
 }

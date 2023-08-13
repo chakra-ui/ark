@@ -30,7 +30,6 @@ export const Basic = () => {
           style={{ fontWeight: option.id === value ? 'bold' : 'inherit' }}
         >
           <RadioGroup.RadioLabel>{option.label}</RadioGroup.RadioLabel>
-          <RadioGroup.RadioInput />
           <RadioGroup.RadioControl />
         </RadioGroup.Radio>
       ))}
@@ -54,7 +53,6 @@ export const Disabled = () => {
           }}
         >
           <RadioGroup.RadioLabel>{option.label}</RadioGroup.RadioLabel>
-          <RadioGroup.RadioInput />
           <RadioGroup.RadioControl />
         </RadioGroup.Radio>
       ))}

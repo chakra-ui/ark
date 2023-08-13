@@ -10,7 +10,7 @@ export const tabs = defineRecipe({
     root: {
       width: 'full',
     },
-    tablist: {
+    list: {
       borderBottomWidth: '1px',
       display: 'flex',
       gap: '4',
@@ -58,7 +58,7 @@ export const tabs = defineRecipe({
   variants: {
     variant: {
       fill: parts({
-        tablist: {
+        list: {
           alignItems: 'center',
           background: {
             base: 'gray.200',

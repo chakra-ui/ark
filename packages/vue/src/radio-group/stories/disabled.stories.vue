@@ -5,7 +5,6 @@ import {
   RadioGroupLabel,
   Radio,
   RadioLabel,
-  RadioInput,
   RadioControl,
   type RadioGroupProps,
 } from '../index'
@@ -30,7 +29,6 @@ const currentValue = ref<RadioGroupProps['modelValue']>('apple')
       :style="{ fontWeight: option.id === currentValue ? 'bold' : 'inherit' }"
     >
       <RadioLabel>{{ option.label }}</RadioLabel>
-      <RadioInput />
       <RadioControl />
     </Radio>
   </RadioGroup>

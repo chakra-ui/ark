@@ -7,7 +7,6 @@ import {
   SegmentControl,
   SegmentGroup,
   SegmentIndicator,
-  SegmentInput,
   SegmentLabel,
 } from '~/components/ui/segment-group'
 
@@ -29,14 +28,12 @@ export const ComponentSegmentGroup = (props: ComponentTabsProps) => {
     <SegmentGroup value={value} orientation="horizontal">
       <Segment value="usage" asChild>
         <NextLink href={props.basePath + '/usage'}>
-          <SegmentInput />
           <SegmentControl />
           <SegmentLabel>Usage</SegmentLabel>
         </NextLink>
       </Segment>
       <Segment value="props" asChild>
         <NextLink href={props.basePath + '/props'}>
-          <SegmentInput />
           <SegmentControl />
           <SegmentLabel>Props</SegmentLabel>
         </NextLink>

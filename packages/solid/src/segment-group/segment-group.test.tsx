@@ -7,7 +7,6 @@ import {
   SegmentControl,
   SegmentGroup,
   SegmentGroupLabel,
-  SegmentInput,
   SegmentLabel,
   type SegmentGroupProps,
 } from '.'
@@ -26,7 +25,6 @@ const ComponentUnderTest = (props: SegmentGroupProps) => (
       {(option) => (
         <Segment value={option.id} disabled={option.disabled}>
           <SegmentLabel>{option.label}</SegmentLabel>
-          <SegmentInput />
           <SegmentControl />
         </Segment>
       )}

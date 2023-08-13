@@ -2,7 +2,6 @@ import {
   Radio,
   RadioControl,
   RadioGroup,
-  RadioInput,
   RadioLabel,
   type RadioGroupProps,
 } from '~/components/ui/radio-group'
@@ -17,7 +16,6 @@ export const RadioGroupDemo = (props: RadioGroupProps) => {
     <RadioGroup defaultValue="react" orientation="vertical" {...props}>
       {options.map((option, id) => (
         <Radio key={id} value={option.id}>
-          <RadioInput data-peer />
           <RadioControl />
           <RadioLabel>{option.label}</RadioLabel>
         </Radio>

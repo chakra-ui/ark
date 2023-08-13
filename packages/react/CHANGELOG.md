@@ -16,6 +16,11 @@ description: All notable changes to this project will be documented in this file
 
 - Fixed the display name for `EditableCancelTrigger` component.
 
+### Removed
+
+- BREAKING: Removed `RadioInput`. This component is no longer required.
+- BREAKING: Removed `SegmentInput`. This component is no longer required.
+
 ## [0.11.0] - 2023-08-08
 
 ### Added

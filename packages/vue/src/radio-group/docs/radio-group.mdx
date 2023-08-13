@@ -14,7 +14,6 @@ import {
   Radio,
   RadioControl,
   RadioGroupLabel,
-  RadioInput,
   RadioLabel,
 } from '@ark-ui/vue'
 ```
@@ -22,8 +21,8 @@ import {
 ## Usage
 
 The RadioGroup component consists of the `RadioControl`, `Radio`,
-`RadioGroupLabel`, `RadioInput`, and `RadioLabel` components. Combine them as
-desired to fit your design system.
+`RadioGroupLabel` and `RadioLabel` components. Combine them as desired to fit
+your design system.
 
 ```vue
 <script setup lang="ts">
@@ -32,7 +31,6 @@ import {
   Radio,
   RadioControl,
   RadioGroupLabel,
-  RadioInput,
   RadioLabel,
 } from '@ark-ui/vue'
 
@@ -48,7 +46,6 @@ const options = [
     <RadioGroupLabel>Fruits</RadioGroupLabel>
     <Radio v-for="(option, id) in options" :key="id" :value="option.id">
       <RadioLabel>{{ option.label }}</RadioLabel>
-      <RadioInput />
       <RadioControl />
     </Radio>
   </RadioGroup>

@@ -1,12 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Radio } from './radio'
-import { RadioControl } from './radio-control'
-import { RadioGroup, type RadioGroupProps } from './radio-group'
-import { RadioGroupLabel } from './radio-group-label'
-import { RadioInput } from './radio-input'
-import { RadioLabel } from './radio-label'
+import {
+  Radio,
+  RadioControl,
+  RadioGroup,
+  RadioGroupLabel,
+  RadioLabel,
+  type RadioGroupProps,
+} from '.'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -21,7 +23,6 @@ const Component = (props: RadioGroupProps) => (
     {options.map((option, id) => (
       <Radio key={id} value={option.id} disabled={option.disabled}>
         <RadioLabel>{option.label}</RadioLabel>
-        <RadioInput />
         <RadioControl />
       </Radio>
     ))}

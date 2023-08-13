@@ -3,7 +3,6 @@ import {
   SegmentControl,
   SegmentGroup,
   SegmentIndicator,
-  SegmentInput,
   SegmentLabel,
   type SegmentGroupProps,
 } from '~/components/ui/segment-group'
@@ -20,7 +19,6 @@ export const SegmentGroupDemo = (props: SegmentGroupProps) => {
     <SegmentGroup defaultValue="react" orientation={orientation} {...rest}>
       {options.map((option, id) => (
         <Segment key={id} value={option.id} data-orientation={orientation}>
-          <SegmentInput data-peer />
           <SegmentControl />
           <SegmentLabel>{option.label}</SegmentLabel>
         </Segment>

@@ -3,7 +3,6 @@ import {
   SegmentControl,
   SegmentGroup,
   SegmentIndicator,
-  SegmentInput,
   SegmentLabel,
 } from '@ark-ui/react'
 import { segmentGroup } from 'panda/recipes/segment-group'
@@ -21,7 +20,6 @@ export const DemoSegmentGroup = () => {
       <SegmentIndicator />
       {options.map((option, id) => (
         <Segment key={id} value={option.id} disabled={option.disabled}>
-          <SegmentInput />
           <SegmentControl />
           <SegmentLabel>{option.label}</SegmentLabel>
         </Segment>

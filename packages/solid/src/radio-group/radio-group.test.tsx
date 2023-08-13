@@ -7,7 +7,6 @@ import {
   RadioControl,
   RadioGroup,
   RadioGroupLabel,
-  RadioInput,
   RadioLabel,
   type RadioGroupProps,
 } from '.'
@@ -26,7 +25,6 @@ const ComponentUnderTest = (props: RadioGroupProps) => (
       {(option) => (
         <Radio value={option.id} disabled={option.disabled}>
           <RadioLabel>{option.label}</RadioLabel>
-          <RadioInput />
           <RadioControl />
         </Radio>
       )}

@@ -20,6 +20,8 @@ description: All notable changes to this project will be documented in this file
 ### Removed
 
 - BREAKING: Removed `CheckboxInput`. This component is no longer required.
+- BREAKING: Removed `RadioInput`. This component is no longer required.
+- BREAKING: Removed `SegmentInput`. This component is no longer required.
 
 ### Fixed
 

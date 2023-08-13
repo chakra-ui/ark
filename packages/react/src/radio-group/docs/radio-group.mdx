@@ -14,7 +14,6 @@ import {
   Radio,
   RadioControl,
   RadioGroupLabel,
-  RadioInput,
   RadioLabel,
 } from '@ark-ui/react'
 ```
@@ -22,8 +21,8 @@ import {
 ## Usage
 
 The RadioGroup component consists of the `RadioControl`, `Radio`,
-`RadioGroupLabel`, `RadioInput`, and `RadioLabel` components. Combine them as
-desired to fit your design system.
+`RadioGroupLabel` and `RadioLabel` components. Combine them as desired to fit
+your design system.
 
 ```tsx
 <RadioGroup>
@@ -36,7 +35,6 @@ desired to fit your design system.
   ].map((option, id) => (
     <Radio key={id} value={option.id}>
       <RadioLabel>{option.label}</RadioLabel>
-      <RadioInput />
       <RadioControl />
     </Radio>
   ))}

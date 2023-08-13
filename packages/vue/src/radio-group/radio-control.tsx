@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useRadioContext } from './radio-context'
@@ -10,13 +10,25 @@ export const RadioControl: ComponentWithProps<RadioControlProps> = defineCompone
   name: 'RadioControl',
   setup(_, { slots, attrs }) {
     const groupApi = useRadioGroupContext()
-
     const api = useRadioContext()
 
+    const radioHiddenInputProps = computed(() => {
+      const apiInputProps = groupApi.value.getRadioHiddenInputProps(api)
+      const apiInputState = groupApi.value.getRadioState(api)
+
+      return {
+        ...apiInputProps,
+        modelValue: apiInputState.isChecked,
+      }
+    })
+
     return () => (
-      <ark.div {...groupApi.value.getRadioControlProps(api)} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <>
+        <ark.div {...groupApi.value.getRadioControlProps(api)} {...attrs}>
+          {() => getValidChildren(slots)}
+        </ark.div>
+        <input {...radioHiddenInputProps} />
+      </>
     )
   },
 })

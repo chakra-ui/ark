@@ -1,13 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import {
-  Segment,
-  SegmentControl,
-  SegmentGroup,
-  SegmentIndicator,
-  SegmentInput,
-  SegmentLabel,
-} from './index'
+import { Segment, SegmentControl, SegmentGroup, SegmentIndicator, SegmentLabel } from './index'
 import './segment-group.css'
 
 type SegmentGroupType = typeof SegmentGroup
@@ -32,7 +25,6 @@ export const Basic = () => (
     {options.map((option, id) => (
       <Segment key={id} value={option.id}>
         <SegmentLabel>{option.label}</SegmentLabel>
-        <SegmentInput />
         <SegmentControl />
       </Segment>
     ))}
@@ -45,7 +37,6 @@ export const InitialValue = () => (
     {options.map((option, id) => (
       <Segment key={id} value={option.id}>
         <SegmentLabel>{option.label}</SegmentLabel>
-        <SegmentInput />
         <SegmentControl />
       </Segment>
     ))}
@@ -60,7 +51,6 @@ export const Controlled = () => {
       {options.map((option, id) => (
         <Segment key={id} value={option.id}>
           <SegmentLabel>{option.label}</SegmentLabel>
-          <SegmentInput />
           <SegmentControl />
         </Segment>
       ))}
@@ -74,7 +64,6 @@ export const Disabled = () => (
     {options.map((option, id) => (
       <Segment key={id} value={option.id} disabled={option.id === 'svelte'}>
         <SegmentLabel>{option.label}</SegmentLabel>
-        <SegmentInput />
         <SegmentControl />
       </Segment>
     ))}

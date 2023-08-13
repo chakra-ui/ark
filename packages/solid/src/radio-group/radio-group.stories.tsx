@@ -1,6 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioInput, RadioLabel } from '.'
+import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioLabel } from '.'
 import './radio-group.css'
 
 const meta: Meta = {
@@ -28,7 +28,6 @@ export const Basic = () => {
             style={{ 'font-weight': option.id === value() ? 'bold' : 'inherit' }}
           >
             <RadioLabel>{option.label}</RadioLabel>
-            <RadioInput />
             <RadioControl />
           </Radio>
         )}
@@ -53,7 +52,6 @@ export const Disabled = () => {
             }}
           >
             <RadioLabel>{option.label}</RadioLabel>
-            <RadioInput />
             <RadioControl />
           </Radio>
         )}
