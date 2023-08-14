@@ -37,7 +37,10 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].cjs',
-          banner: (x) => (['index.cjs', 'factory.cjs'].includes(x.fileName) ? '' : `'use client';`),
+          banner: (x) =>
+            ['index.cjs', 'factory.cjs', 'compose-refs.cjs'].includes(x.fileName)
+              ? ''
+              : `'use client';`,
         },
         {
           format: 'es',
@@ -45,7 +48,10 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].mjs',
-          banner: (x) => (['index.mjs', 'factory.mjs'].includes(x.fileName) ? '' : `'use client';`),
+          banner: (x) =>
+            ['index.mjs', 'factory.mjs', 'compose-refs.mjs'].includes(x.fileName)
+              ? ''
+              : `'use client';`,
         },
       ],
     },

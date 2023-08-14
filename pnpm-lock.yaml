@@ -111,6 +111,9 @@ importers:
       '@zag-js/combobox':
         specifier: 0.16.0
         version: 0.16.0
+      '@zag-js/core':
+        specifier: 0.16.0
+        version: 0.16.0
       '@zag-js/date-picker':
         specifier: 0.16.0
         version: 0.16.0
