@@ -73,7 +73,7 @@
     "@vue/eslint-config-prettier": "8.0.0",
     "@vue/eslint-config-typescript": "11.0.3",
     "eslint-plugin-vue": "9.17.0",
-    "eslint": "8.46.0",
+    "eslint": "8.47.0",
     "globby": "13.2.2",
     "histoire": "0.16.4",
     "jsdom": "22.1.0",
