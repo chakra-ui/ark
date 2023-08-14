@@ -1,18 +1,16 @@
+import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
 
-type MenuItemParams = Parameters<ReturnType<ReturnType<UseMenuReturn>['api']>['getItemProps']>[0]
-
-export type MenuItemProps = Assign<HTMLArkProps<'div'>, MenuItemParams>
+export type MenuItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
 
 export const MenuItem = (props: MenuItemProps) => {
   const menu = useMenuContext()
 
-  const [itemParams, restProps] = createSplitProps<MenuItemParams>()(props, [
+  const [itemParams, restProps] = createSplitProps<ItemProps>()(props, [
     'id',
     'disabled',
     'valueText',

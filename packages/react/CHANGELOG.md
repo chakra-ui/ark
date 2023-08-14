@@ -8,6 +8,10 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Changed `MenuItem` from a `button` to a `div` element.
+
+### Removed
+
 - Removed `'use client'` annotation from `compose-refs` function.
 
 ## [0.13.1] - 2023-08-13
