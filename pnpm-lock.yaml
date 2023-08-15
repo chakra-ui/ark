@@ -683,8 +683,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/react
       '@park-ui/presets':
-        specifier: 0.6.0
-        version: 0.6.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.1.6)
+        specifier: 0.7.0
+        version: 0.7.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.1.6)
       '@theme-toggles/react':
         specifier: 4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -4682,8 +4682,8 @@ packages:
       napi-wasm: 1.1.0
     dev: false
 
-  /@park-ui/presets@0.6.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.1.6):
-    resolution: {integrity: sha512-9QIVkrxUz7thn5CFhjQEmbHeGTfYkuCDO1Kufrc5x/I+t9ZRCDQMEYFViXYbd+BOl+z+QnpLHhoSN0Kbxga5jA==}
+  /@park-ui/presets@0.7.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.1.6):
+    resolution: {integrity: sha512-MnzWTEJFsQoccSiN1zjeNZfIqcTXivPyWPz8lCfzLePEBLJsggM3k8P6aPdAebykVc1c/d/rVivnWonjnt0kxQ==}
     peerDependencies:
       '@ark-ui/react': ^0.13.0
     dependencies:
