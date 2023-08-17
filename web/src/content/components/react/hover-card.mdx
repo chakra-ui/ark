@@ -1,0 +1,63 @@
+---
+id: hover-card
+title: Hover Card
+description:
+  The Hover Card component is a user-friendly, interactive tool designed to
+  display information when a user hovers over a specific trigger element. It
+  offers a variety of features, such as controlled state, customizable
+  positioning, and the use of render props for a more dynamic and flexible
+  experience.
+---
+
+import Playground from '~/components/playground.astro'
+import Story from '~/components/story.astro'
+
+## Usage
+
+To get started, import the necessary components from the package:
+
+```tsx
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+  HoverCardArrow,
+  HoverCardArrowTip,
+  HoverCardPositioner,
+  Portal,
+} from '@ark-ui/react'
+```
+
+Here is an example of how to use the `HoverCard` component:
+
+<Story id="Basic" />
+
+## Controlled HoverCard
+
+The controlled `HoverCard` component provides an interface for managing the
+state of the hover card using the `open` prop. The `onClose` prop is called when
+the hover card needs to be closed:
+
+<Story id="Controlled" />
+
+## Custom Positioning
+
+The `HoverCard` component can be customized in its placement and distance from
+the trigger element through the `positioning` prop:
+
+<Story id="Positioning" />
+
+## Render Prop Usage
+
+The `HoverCard` component can also accept a render prop, giving the user more
+control over rendering behavior. This is useful for dynamically updating the
+trigger based on the state of the `HoverCard`:
+
+<Story id="RenderProp" />
+
+## Conclusion
+
+The `HoverCard` component is an intuitive and powerful tool for displaying
+contextual information in your applications. With its range of features and high
+degree of customizability, it can meet a wide variety of design and
+functionality requirements.

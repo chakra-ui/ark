@@ -9,7 +9,8 @@ const { id } = Astro.props
 const { framework, component } = Astro.params
 const slug = [framework, component].join('/')
 
-const stories = await getEntry('stories', slug)
+
+const stories = await getEntry('stories', slug + ".stories")
 ---
 
-{stories && <Code code={stories.data[id]} lang="tsx" />}
+{stories && <Code code={stories.data[id] ?? ""} lang="tsx" />}

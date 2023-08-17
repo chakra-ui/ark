@@ -1,4 +1,4 @@
-// import { IoMdColorFilter } from 'react-icons/io'
+import { Pipette } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
 import {
   ColorPicker,
@@ -48,7 +48,7 @@ export const ColorPickerDemo = () => {
               <HStack gap="3">
                 <ColorPickerEyeDropperTrigger asChild>
                   <IconButton size="xs" variant="secondary" aria-label="Pick color">
-                    {/* <IoMdColorFilter /> */}
+                    <Pipette />
                   </IconButton>
                 </ColorPickerEyeDropperTrigger>
                 <Stack gap="3" width="full">

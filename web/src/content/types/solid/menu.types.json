@@ -1,0 +1,155 @@
+{
+  "MenuProps": {
+    "anchorPoint": {
+      "type": "Point",
+      "isRequired": false,
+      "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
+    },
+    "aria-label": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The accessibility label for the menu"
+    },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the menu when an option is selected"
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedId": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the active menu item."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the menu. Useful for composition."
+    },
+    "isOpen": { "type": "boolean", "isRequired": false },
+    "loop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation."
+    },
+    "onClose": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the menu is closed"
+    },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
+    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
+    "onOpen": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the menu is opened"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false
+    },
+    "onSelect": {
+      "type": "(details: { value: string }) => void",
+      "isRequired": false,
+      "description": "Function called when a menu item is selected."
+    },
+    "onValueChange": {
+      "type": "(details: { name: string; value: string | string[] }) => void",
+      "isRequired": false,
+      "description": "Callback to be called when the menu values change (for radios and checkboxes)."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The options used to dynamically position the menu"
+    },
+    "value": {
+      "type": "Record<string, string | string[]>",
+      "isRequired": false,
+      "description": "The values of radios and checkboxes in the menu."
+    }
+  },
+  "MenuItemProps": {
+    "id": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The `id` of the menu item option."
+    },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    }
+  },
+  "MenuItemGroupProps": {
+    "id": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The `id` of the element that provides accessibility label to the option group"
+    }
+  },
+  "MenuOptionItemProps": {
+    "name": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The option's name as specified in menu's `context.values` object"
+    },
+    "type": {
+      "type": "'radio' | 'checkbox'",
+      "isRequired": true,
+      "description": "Whether the option is a radio or a checkbox"
+    },
+    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the menu item option."
+    },
+    "onCheckedChange": {
+      "type": "(checked: boolean) => void",
+      "isRequired": false,
+      "description": "Function called when the option state is changed"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    }
+  },
+  "MenuOptionItemState": { "isActive": { "type": "boolean", "isRequired": true } },
+  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+}

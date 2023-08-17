@@ -1,15 +1,15 @@
 import { Portal } from '@ark-ui/react'
 import {
-  FiChevronRight,
-  FiCreditCard,
-  FiLogOut,
-  FiMail,
-  FiMessageSquare,
-  FiPlusCircle,
-  FiSettings,
-  FiUser,
-  FiUserPlus,
-} from 'react-icons/fi'
+  ChevronRight,
+  CreditCard,
+  LogOut,
+  Mail,
+  MessageSquare,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+} from 'lucide-react'
 import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import {
@@ -40,7 +40,7 @@ export const MenuDemo = () => {
               <MenuItem id="profile">
                 <HStack gap="6" justify="space-between" flex="1">
                   <HStack gap="2">
-                    <FiUser />
+                    <User />
                     Profile
                   </HStack>
                   <Typography as="span" color="fg.subtle" textStyle="xs">
@@ -50,13 +50,13 @@ export const MenuDemo = () => {
               </MenuItem>
               <MenuItem id="billing">
                 <HStack gap="2">
-                  <FiCreditCard /> Billing
+                  <CreditCard /> Billing
                 </HStack>
               </MenuItem>
               <MenuItem id="settings">
                 <HStack gap="6" justify="space-between" flex="1">
                   <HStack gap="2">
-                    <FiSettings /> Settings
+                    <Settings /> Settings
                   </HStack>
                   <Typography as="span" color="fg.subtle" textStyle="xs">
                     ⌘,
@@ -67,10 +67,10 @@ export const MenuDemo = () => {
                 <MenuTriggerItem>
                   <HStack gap="12" justify="space-between" flex="1">
                     <HStack gap="2">
-                      <FiUserPlus />
+                      <UserPlus />
                       Inivte member
                     </HStack>
-                    <FiChevronRight />
+                    <ChevronRight />
                   </HStack>
                 </MenuTriggerItem>
                 <Portal>
@@ -78,18 +78,18 @@ export const MenuDemo = () => {
                     <MenuContent>
                       <MenuItem id="email">
                         <HStack gap="2">
-                          <FiMail /> Email
+                          <Mail /> Email
                         </HStack>
                       </MenuItem>
                       <MenuItem id="message">
                         <HStack gap="2">
-                          <FiMessageSquare /> Message
+                          <MessageSquare /> Message
                         </HStack>
                       </MenuItem>
                       <MenuSeparator />
                       <MenuItem id="other">
                         <HStack gap="2">
-                          <FiPlusCircle /> More Options...
+                          <PlusCircle /> More Options...
                         </HStack>
                       </MenuItem>
                     </MenuContent>
@@ -100,7 +100,7 @@ export const MenuDemo = () => {
               <MenuSeparator />
               <MenuItem id="logout">
                 <HStack gap="2">
-                  <FiLogOut />
+                  <LogOut />
                   Logout
                 </HStack>
               </MenuItem>

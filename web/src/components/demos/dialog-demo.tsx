@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { FiX } from 'react-icons/fi'
+import { X } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import {
@@ -40,7 +40,7 @@ export const DialogDemo = () => {
             </Stack>
             <DialogCloseTrigger asChild position="absolute" top="2" right="2">
               <IconButton aria-label="Close Dialog" variant="tertiary" size="sm">
-                <FiX />
+                <X />
               </IconButton>
             </DialogCloseTrigger>
           </DialogContent>

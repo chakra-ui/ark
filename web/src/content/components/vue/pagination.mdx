@@ -1,0 +1,90 @@
+---
+id: pagination
+title: Pagination
+description:
+  Pagination is an interface that allows navigating between pages that contain
+  split information, instead of being shown on a single page.
+---
+
+import Playground from '~/components/playground.astro'
+import Story from '~/components/story.astro'
+
+## Import
+
+```ts
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationList,
+  PaginationListItem,
+  PaginationNextPageTrigger,
+  PaginationPageTrigger,
+  PaginationPrevPageTrigger,
+} from '@ark-ui/vue'
+```
+
+## Usage
+
+The Pagination component consists of the `PaginationEllipsis`, `PaginationList`,
+`PaginationNextPageTrigger`, `PaginationPageTrigger`, and
+`PaginationPrevPageTrigger` components.
+
+Note that the `PaginationNextPageTrigger`, `PaginationPrevPageTrigger` and
+`PaginationPageTrigger` components accept a single JSX element which will
+receive all necessary props to add the event listeners and attributes to ensure
+the desired accessibility.
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationList,
+  PaginationNextPageTrigger,
+  PaginationPageTrigger,
+  PaginationPrevPageTrigger,
+} from '@ark-ui/vue'
+
+const paginationRef = ref()
+</script>
+<template>
+  <Pagination
+    ref="paginationRef"
+    :count="5000"
+    :page-size="10"
+    :sibling-count="2"
+  >
+    <PaginationList>
+      <PaginationListItem>
+        <PaginationPrevPageTrigger>
+          Previous <span className="visually-hidden">Page</span>
+        </PaginationPrevPageTrigger>
+      </PaginationListItem>
+
+      <template
+        v-for="(page, index) in paginationRef?.context.pages"
+        :key="index"
+      >
+        <PaginationListItem>
+          <PaginationPageTrigger
+            v-if="page.type === 'page'"
+            :value="page.value"
+            :type="page.type"
+          >
+            {{ page.value }}
+          </PaginationPageTrigger>
+          <PaginationEllipsis v-else :index="index">
+            &#8230;
+          </PaginationEllipsis>
+        </PaginationListItem>
+      </template>
+      <PaginationListItem>
+        <PaginationNextPageTrigger>
+          Next <span className="visually-hidden">Page</span>
+        </PaginationNextPageTrigger>
+      </PaginationListItem>
+    </PaginationList>
+  </Pagination>
+</template>
+```

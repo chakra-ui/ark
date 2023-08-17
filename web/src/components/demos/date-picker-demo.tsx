@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { FiCalendar, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import {
@@ -39,7 +39,7 @@ export const DatePickerDemo = () => {
               </DatePickerInput>
               <DatePickerTrigger asChild>
                 <IconButton variant="secondary" aria-label="Open date picker">
-                  <FiCalendar />
+                  <Calendar />
                 </IconButton>
               </DatePickerTrigger>
             </Stack>
@@ -51,7 +51,7 @@ export const DatePickerDemo = () => {
                   <Stack justify="space-between" direction="row">
                     <DatePickerPrevTrigger asChild>
                       <IconButton size="sm" variant="tertiary" aria-label="Prev">
-                        <FiChevronLeft />
+                        <ChevronLeft />
                       </IconButton>
                     </DatePickerPrevTrigger>
                     <DatePickerViewTrigger asChild>
@@ -63,7 +63,7 @@ export const DatePickerDemo = () => {
                     </DatePickerViewTrigger>
                     <DatePickerNextTrigger asChild>
                       <IconButton size="sm" variant="tertiary" aria-label="Next">
-                        <FiChevronRight />
+                        <ChevronRight />
                       </IconButton>
                     </DatePickerNextTrigger>
                   </Stack>

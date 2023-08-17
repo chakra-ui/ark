@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-// import { FiMapPin } from 'react-icons/fi'
+import { MapPin } from 'lucide-react'
 import { HStack, Stack, styled } from 'styled-system/jsx'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import {
@@ -45,7 +45,7 @@ export const HoverCardDemo = () => (
                 </Typography>
               </Stack>
               <HStack gap="1" color="fg.subtle" textStyle="xs">
-                {/* <FiMapPin /> */}
+                <MapPin />
                 <Typography>Joined Dezember 2011</Typography>
               </HStack>
             </Stack>

@@ -1,0 +1,164 @@
+---
+id: popover
+title: Popover
+description:
+  A popover is a non-modal dialog that floats around a trigger. It is used to
+  display contextual information to the user, and should be paired with a
+  clickable trigger element.
+---
+
+import Playground from '~/components/playground.astro'
+import Story from '~/components/story.astro'
+
+## Import
+
+```ts
+import {
+  Popover,
+  PopoverArrow,
+  PopoverCloseTrigger,
+  PopoverContent,
+  PopoverDescription,
+  PopoverArrowTip,
+  PopoverPositioner,
+  PopoverTitle,
+  PopoverTrigger,
+} from '@ark-ui/react'
+```
+
+## Usage
+
+The Popover component consists of the `PopoverTrigger`, `PopoverPositioner`,
+`PopoverContent`, `PopoverTitle`, `PopoverDescription`, `PopoverArrow`,
+`PopoverArrowTip`, `PopoverCloseTrigger`, components.
+
+Note that the `PopoverTrigger` and `PopoverCloseTrigger` components accept a
+single JSX element which will receive all necessary props to add the event
+listeners and attributes to ensure the desired accessibility.
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <PopoverPositioner>
+    <PopoverContent>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description</PopoverDescription>
+      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+    </PopoverContent>
+  </PopoverPositioner>
+</Popover>
+```
+
+### Adding an arrow
+
+To render an arrow within the popover, render the component `PopoverArrow` and
+`PopoverArrowTip` as children of `PopoverPositioner`.
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <PopoverPositioner>
+    <PopoverContent>
+      <PopoverArrow>
+        <PopoverArrowTip />
+      </PopoverArrow>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description</PopoverDescription>
+      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+    </PopoverContent>
+  </PopoverPositioner>
+</Popover>
+```
+
+### Using a Portal
+
+By default, the popover is rendered in the same DOM hierarchy as the trigger. To
+render the popover within a portal, set the `portalled` prop to `true`.
+
+```tsx
+<Popover portalled>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <Portal>
+    <PopoverPositioner>
+      <PopoverContent>
+        <PopoverTitle>Title</PopoverTitle>
+        <PopoverDescription>Description</PopoverDescription>
+        <PopoverCloseTrigger>Close</PopoverCloseTrigger>
+      </PopoverContent>
+    </PopoverPositioner>
+  </Portal>
+</Popover>
+```
+
+### Modifying the close behavior
+
+The popover is designed to close on blur and when the <kbd>esc</kbd> key is
+pressed.
+
+To prevent it from closing on blur (clicking or focusing outside), pass the
+`closeOnBlur` prop and set it to `false`.
+
+```tsx
+<Popover closeOnBlur={false}>{/*...*/}</Popover>
+```
+
+To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
+`closeOnEsc` prop and set it to `false`.
+
+```tsx
+<Popover closeOnEsc={false}>{/*...*/}</Popover>
+```
+
+### Changing the placement
+
+To change the placement of the popover, set the `positioning` prop.
+
+```tsx
+<Popover
+  positioning={{
+    placement: 'top-start',
+  }}
+>
+  {/*...*/}
+</Popover>
+```
+
+### Listening for open and close events
+
+When the popover is opened or closed, we invoke the `onOpenChange` callback.
+
+```tsx
+<Popover onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
+  {/*...*/}
+</Popover>
+```
+
+### Control the open state
+
+Use the `isOpen` prop to control the open state of the popover.
+
+```tsx
+const [isOpen, setIsOpen] = React.useState(false)
+return (
+  <>
+    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover
+    <Popover isOpen={isOpen}>{/*...*/}</Popover>
+  </>
+)
+```
+
+### Changing the modality
+
+In some cases, you might want the popover to be modal. This means that it'll:
+
+- trap focus within its content
+- block scrolling on the body
+- disable pointer interactions outside the popover
+- hide content behind the popover from screen readers
+
+To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
+we set the `portalled` attribute to `true` as well.
+
+```tsx
+<Popover modal>{/*...*/}</Popover>
+```

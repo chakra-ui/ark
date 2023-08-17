@@ -1,0 +1,116 @@
+---
+id: editable
+title: Editable
+description:
+  Editable is an input field used for editing a single line of text. It renders
+  as static text and transforms into a text input field when then edit
+  interaction is triggered (click, focus, or double-click).
+---
+
+import Playground from '~/components/playground.astro'
+import Story from '~/components/story.astro'
+
+## Import
+
+```ts
+import {
+  Editable,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableControl,
+  EditableEditTrigger,
+  EditableInput,
+  EditableLabel,
+  EditablePreview,
+  EditableSubmitTrigger,
+} from '@ark-ui/solid'
+```
+
+## Usage
+
+The Editable component consists of the `EditableArea`, `EditableCancelTrigger`,
+`EditableControl`, `EditableEditTrigger`, `EditableInput`, `EditableLabel`,
+`EditablePreview` and `EditableSubmitTrigger` components.
+
+```tsx
+<Editable placeholder="Placeholder">
+  <EditableLabel>Label</EditableLabel>
+  <EditableArea>
+    <EditableInput />
+    <EditablePreview />
+  </EditableArea>
+</Editable>
+```
+
+### Using custom controls
+
+In some cases, you might need to use custom controls to toggle the edit and read
+mode. We use the render prop pattern to provide access to the internal state of
+the component.
+
+```tsx
+<Editable placeholder="Placeholder">
+  {(state) => (
+    <>
+      <EditableLabel>Editable Label</EditableLabel>
+      <EditableArea>
+        <EditableInput />
+        <EditablePreview />
+      </EditableArea>
+      <EditableControl>
+        {state().isEditing ? (
+          <>
+            <EditableSubmitTrigger>
+              <button>Save</button>
+            </EditableSubmitTrigger>
+            <EditableCancelTrigger>
+              <button>Cancel</button>
+            </EditableCancelTrigger>
+          </>
+        ) : (
+          <EditableEditTrigger>
+            <button>Edit</button>
+          </EditableEditTrigger>
+        )}
+      </EditableControl>
+    </>
+  )}
+</Editable>
+```
+
+### Auto-resizing the editable
+
+To auto-grow the editable as the content changes, set the `autoResize` prop to
+`true`.
+
+```tsx
+<Editable placeholder="Placeholder" autoResize>
+  {/*...*/}
+</Editable>
+```
+
+#### Setting a maxWidth
+
+It is a common pattern to set a maximum of the editable as it auto-grows. To
+achieve this, set the `maxWidth` prop to the desired value.
+
+```tsx
+<Editable placeholder="Placeholder" autoResize maxWidth="320px">
+  {/*...*/}
+</Editable>
+```
+
+### Editing with double click
+
+The editable supports two modes of activating the "edit" state:
+
+- when the preview part is focused (with pointer or keyboard).
+- when the preview part is double-clicked.
+
+To change the mode to double-click, pass the prop `activationMode="dblclick"`.
+
+```tsx
+<Editable placeholder="Placeholder" activationMode="dblclick">
+  {/*...*/}
+</Editable>
+```

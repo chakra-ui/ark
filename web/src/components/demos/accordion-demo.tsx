@@ -1,4 +1,4 @@
-import { FiChevronDown } from 'react-icons/fi'
+import { ChevronDown } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -39,5 +39,5 @@ const AccordionIcon = (props: { isOpen: boolean }) => {
     transition: 'transform 0.2s',
     transformOrigin: 'center',
   }
-  return <FiChevronDown style={iconStyles} />
+  return <ChevronDown style={iconStyles} />
 }

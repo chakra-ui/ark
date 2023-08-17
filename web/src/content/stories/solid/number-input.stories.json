@@ -1,0 +1,3 @@
+{
+  "Basic": "const Basic = () => (\n  <NumberInput.Root min={-50} max={50} value=\"0\" clampValueOnBlur>\n    <NumberInput.Scrubber />\n    <NumberInput.Label>Label</NumberInput.Label>\n    <NumberInput.Input />\n    <NumberInput.Control>\n      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>\n      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>\n    </NumberInput.Control>\n  </NumberInput.Root>\n)"
+}

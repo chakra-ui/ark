@@ -1,0 +1,59 @@
+{
+  "AccordionProps": {
+    "collapsible": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether an accordion item can be collapsed after it has been opened."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the accordion items are disabled"
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "modelValue": { "type": "string | string[]", "isRequired": false },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onChange": {
+      "type": "(details: { value: string | string[] | null }) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the accordion items."
+    },
+    "value": {
+      "type": "string | string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
+    }
+  },
+  "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  }
+}

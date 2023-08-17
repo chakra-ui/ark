@@ -1,5 +1,5 @@
+import { X } from 'lucide-react'
 import { Fragment } from 'react'
-import { FiX } from 'react-icons/fi'
 import { IconButton } from '~/components/ui/icon-button'
 import { Label } from '~/components/ui/label'
 import {
@@ -27,7 +27,7 @@ export const TagsInputDemo = () => {
                   {value}
                   <TagDeleteTrigger index={index} value={value} asChild>
                     <IconButton aria-label="Delete tag" variant="link" size="xs">
-                      <FiX />
+                      <X />
                     </IconButton>
                   </TagDeleteTrigger>
                 </Tag>

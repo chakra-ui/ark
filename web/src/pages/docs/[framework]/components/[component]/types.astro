@@ -20,7 +20,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
-const types = await getEntry('types', entry.slug)
+const types = await getEntry('types', entry.slug + '.types')
+console.log(types)
+
 ---
 
 <ComponentDocsLayout component={entry} currentTab="types">

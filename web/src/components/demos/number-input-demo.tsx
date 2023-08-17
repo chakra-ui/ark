@@ -1,4 +1,4 @@
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { IconButton } from '~/components/ui/icon-button'
 import {
   NumberInput,
@@ -17,13 +17,13 @@ export const NumberInputDemo = () => {
       <NumberInputControl>
         <NumberInputIncrementTrigger asChild>
           <IconButton size="xs" variant="tertiary" aria-label="Increment">
-            <FiChevronUp />
+            <ChevronUp />
           </IconButton>
         </NumberInputIncrementTrigger>
         <hr />
         <NumberInputDecrementTrigger asChild>
           <IconButton size="xs" variant="tertiary" aria-label="Decrement">
-            <FiChevronDown />
+            <ChevronDown />
           </IconButton>
         </NumberInputDecrementTrigger>
       </NumberInputControl>

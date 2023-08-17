@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { FiArrowRight, FiX } from 'react-icons/fi'
+import { ArrowRight, X } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
 import type { DrawerVariantProps } from 'styled-system/recipes'
 import { Button } from '~/components/ui/button'
@@ -46,14 +46,14 @@ export const DrawerDemo = (props: DrawerVariantProps) => {
               </Stack>
               <DrawerCloseTrigger asChild>
                 <Button>
-                  Continue <FiArrowRight />
+                  Continue <ArrowRight />
                 </Button>
               </DrawerCloseTrigger>
             </Stack>
 
             <DrawerCloseTrigger position="absolute" top="3" right="4" asChild>
               <IconButton aria-label="Close Drawer" variant="tertiary">
-                <FiX />
+                <X />
               </IconButton>
             </DrawerCloseTrigger>
           </DrawerContent>

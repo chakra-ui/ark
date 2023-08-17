@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { FiX } from 'react-icons/fi'
+import { X } from 'lucide-react'
 import { Box, Stack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import { IconButton } from '~/components/ui/icon-button'
@@ -44,7 +44,7 @@ export const ToastDemo = () => {
                       <Box position="absolute" top="3" right="3">
                         <ToastCloseTrigger asChild>
                           <IconButton size="sm" variant="link" aria-label="Close Toast">
-                            <FiX />
+                            <X />
                           </IconButton>
                         </ToastCloseTrigger>
                       </Box>

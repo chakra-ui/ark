@@ -1,0 +1,6 @@
+{
+  "Basic": "const Basic = () => {\n  const [present, setPresent] = useState(false)\n  return (\n    <div>\n      <button onClick={() => setPresent(!present)}>Toggle</button>\n      <Presence present={present}>\n        <div className=\"box\">Hidden and Hidden</div>\n      </Presence>\n    </div>\n  )\n}",
+  "LazyMount": "const LazyMount = () => {\n  const [present, setPresent] = useState(false)\n  return (\n    <div>\n      <button onClick={() => setPresent(!present)}>Toggle</button>\n      <Presence present={present} lazyMount>\n        <div className=\"box\">Unmounted and Hidden</div>\n      </Presence>\n    </div>\n  )\n}",
+  "UnmountOnExit": "const UnmountOnExit = () => {\n  const [present, setPresent] = useState(false)\n  return (\n    <div>\n      <button onClick={() => setPresent(!present)}>Toggle</button>\n      <Presence present={present} unmountOnExit>\n        <div className=\"box\">Hidden and Unmounted on Exit</div>\n      </Presence>\n    </div>\n  )\n}",
+  "LazyMountAndUnmountOnExit": "const LazyMountAndUnmountOnExit = () => {\n  const [present, setPresent] = useState(false)\n  return (\n    <div>\n      <button onClick={() => setPresent(!present)}>Toggle</button>\n      <Presence present={present} lazyMount unmountOnExit>\n        <div className=\"box\">Lazy Mount and Unmounted on Exit</div>\n      </Presence>\n    </div>\n  )\n}"
+}

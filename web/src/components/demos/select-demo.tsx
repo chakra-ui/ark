@@ -1,5 +1,5 @@
 import { Portal } from '@ark-ui/react'
-import { FiChevronDown } from 'react-icons/fi'
+import { ChevronDown } from 'lucide-react'
 import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import {
@@ -50,5 +50,5 @@ const SelectIcon = (props: { isOpen: boolean }) => {
     transformOrigin: 'center',
     fontSize: '18px',
   }
-  return <FiChevronDown style={iconStyles} />
+  return <ChevronDown style={iconStyles} />
 }

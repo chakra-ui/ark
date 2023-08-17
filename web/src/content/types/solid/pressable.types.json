@@ -1,0 +1,9 @@
+{
+  "PressableProps": {
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    }
+  }
+}

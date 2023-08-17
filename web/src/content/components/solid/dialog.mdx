@@ -1,0 +1,105 @@
+---
+id: dialog
+title: Dialog
+description:
+  A dialog is a window overlaid on either the primary window or another dialog
+  window. Content behind a modal dialog is inert, meaning that users cannot
+  interact with it.
+---
+
+import Playground from '~/components/playground.astro'
+import Story from '~/components/story.astro'
+
+## Import
+
+```ts
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from '@ark-ui/solid'
+import { Portal } from 'solid-js/web'
+```
+
+## Usage
+
+The Dialog component consists of the `DialogBackdrop`, `DialogCloseTrigger`,
+`DialogContainer`, `DialogContent`, `DialogDescription`, `Portal`,
+`DialogTitle`, `DialogTrigger` components.
+
+Note that the `DialogTrigger` and `DialogCloseTrigger` components accept a
+single JSX element which will receive all necessary props to add the event
+listeners and attributes to ensure the desired accessibility.
+
+```tsx
+<Dialog>
+  <DialogTrigger>
+    <button>Open Dialog</button>
+  </DialogTrigger>
+  <Portal>
+    <DialogBackdrop />
+    <DialogContainer>
+      <DialogContent>
+        <DialogTitle>Dialog Title</DialogTitle>
+        <DialogDescription>Dialog Description</DialogDescription>
+        <DialogCloseTrigger>
+          <button>Close</button>
+        </DialogCloseTrigger>
+      </DialogContent>
+    </DialogContainer>
+  </Portal>
+</Dialog>
+```
+
+### Closing the dialog on overlay click
+
+By default, the dialog closes when you click its overlay. You can set
+`closeOnOutsideClick` to `false` if you want the modal to stay visible.
+
+```tsx
+<Dialog closeOnOutsideClick={false}>{/*...*/}</Dialog>
+```
+
+### Allow scrolling behind the dialog
+
+When the dialog is open, it prevents scrolling on the `body` element. To disable
+this behavior, set the `preventScroll` prop to `false`.
+
+```tsx
+<Dialog preventScroll={false}>{/*...*/}</Dialog>
+```
+
+### Access to isOpen state
+
+The `Dialog` component exposes the `isOpen` state via a render prop. This can be
+useful if you want to control the visibility of other components.
+
+```tsx
+<Dialog>
+  {({ isOpen }) => (
+    <>
+      <DialogTrigger>
+        <button>Open Dialog</button>
+      </DialogTrigger>
+      <Portal>
+        <DialogBackdrop />
+        <DialogContainer>
+          <DialogContent>
+            <DialogTitle>Dialog Title</DialogTitle>
+            <DialogDescription>Dialog Description</DialogDescription>
+            <DialogCloseTrigger>
+              <button>Close</button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogContainer>
+      </Portal>
+      <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
+    </>
+  )}
+</Dialog>
+```
