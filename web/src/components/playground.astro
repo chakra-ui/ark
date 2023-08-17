@@ -1,0 +1,30 @@
+---
+import { Flex } from 'styled-system/jsx'
+import { match } from 'ts-pattern'
+import { AvatarDemo } from './demos/avatar-demo'
+import { CarouselDemo } from './demos/carousel-demo'
+
+interface Props {
+  id: string
+}
+const { id } = Astro.props
+---
+
+<Flex
+  bg="bg.default"
+  minH="40"
+  borderRadius="lg"
+  borderWidth="1px"
+  width="full"
+  overflow="hidden"
+  my={{ base: '5', md: '8' }}
+>
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+    {
+      match(id)
+        .with('avatar', () => <AvatarDemo client:load />)
+        .with('carousel', () => <CarouselDemo client:load />)
+        .otherwise(() => null)
+    }
+  </Flex>
+</Flex>

@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { article } from 'styled-system/recipes'
+import Breadcrumbs from './navigation/breadcrumbs.astro'
+
+type Props = {
+  component: CollectionEntry<'components'> | CollectionEntry<'docs'>
+}
+
+const { component } = Astro.props
+---
+
+<div class={article({ size: { base: 'sm', md: 'md' } })}>
+  <Breadcrumbs />
+  <h1>
+    {component.data.title}
+  </h1>
+  <p>
+    {component.data.description}
+  </p>
+  <slot />
+</div>

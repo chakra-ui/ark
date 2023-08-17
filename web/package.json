@@ -1,0 +1,36 @@
+{
+  "name": "@ark-ui/web",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "prepare": "panda codegen --silent",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@ark-ui/react": "workspace:*",
+    "@fontsource-variable/fira-code": "5.0.8",
+    "@fontsource-variable/inter": "5.0.8",
+    "astro": "2.10.9",
+    "lucide-react": "0.268.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "shiki": "^0.14.3",
+    "ts-pattern": "5.0.5",
+    "usehooks-ts": "2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "0.19.7",
+    "@astrojs/react": "2.2.2",
+    "@pandacss/astro": "0.11.1",
+    "@pandacss/dev": "0.11.1",
+    "@park-ui/presets": "0.8.1",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "prettier": "3.0.2",
+    "prettier-plugin-astro": "0.11.1"
+  }
+}

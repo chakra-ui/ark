@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import DocsFooter from '~/components/navigation/docs-footer.astro'
+import TableOfContent from '~/components/navigation/table-of-content.astro'
+import { Article } from '~/components/ui/article'
+import ComponentDocsLayout from '~/layouts/component-layout.astro'
+
+type Props = {
+  entry: CollectionEntry<'components'>
+  components: CollectionEntry<'components'>[]
+}
+
+export async function getStaticPaths() {
+  const components = await getCollection('components')
+
+  return components.map((entry) => {
+    const [framework, component] = entry.slug.split('/')
+    return {
+      params: { framework, component },
+      props: { entry, components },
+    }
+  })
+}
+
+const { entry } = Astro.props
+const { framework } = Astro.params
+
+const { Content, headings } = await entry.render()
+const pages = Astro.props.components.filter((c) => c.slug.startsWith(framework ?? ''))
+---
+
+<ComponentDocsLayout component={entry} currentTab="usage">
+  <Article size={{ base: 'sm', md: 'md' }} width="full">
+    <Content />
+  </Article>
+  <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/${framework}/components/`} />
+  <TableOfContent headings={headings} />
+</ComponentDocsLayout>

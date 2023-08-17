@@ -1,0 +1,21 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import '@fontsource-variable/fira-code'
+import '@fontsource-variable/inter'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      if (JSON.parse(window.localStorage.getItem('ark-ui-color-mode')) === 'dark') {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+  </body>
+</html>

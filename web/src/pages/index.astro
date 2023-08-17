@@ -1,0 +1,16 @@
+---
+import { Box } from 'styled-system/jsx'
+import Hero from '~/components/hero.astro'
+import Baselayout from '~/layouts/base-layout.astro'
+---
+
+<Baselayout>
+  <Box
+    minH="100%"
+    position="relative"
+    backgroundImage="url(/images/pattern.svg)"
+    backgroundRepeat="repeat-x"
+  >
+    <Hero />
+  </Box>
+</Baselayout>

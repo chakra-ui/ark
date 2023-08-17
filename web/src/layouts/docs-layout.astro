@@ -1,0 +1,20 @@
+---
+import { Box, Container, Flex } from 'styled-system/jsx'
+import Navbar from '~/components/navigation/navbar.astro'
+import Sidebar from '~/components/navigation/sidebar.astro'
+import BaseLayout from './base-layout.astro'
+---
+
+<BaseLayout>
+  <Navbar />
+  <Container flex="1">
+    <Flex display={{ base: 'none', lg: 'flex' }} position="fixed" width="60" top="28" bottom="0">
+      <Sidebar />
+    </Flex>
+    <Flex flex="1" pl={{ base: 'none', lg: '72' }} pt="10">
+      <Box width={{ base: 'full', xl: '2xl' }}>
+        <slot />
+      </Box>
+    </Flex>
+  </Container>
+</BaseLayout>

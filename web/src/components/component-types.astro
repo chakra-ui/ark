@@ -1,0 +1,48 @@
+---
+import { Stack, Divider, HStack } from 'styled-system/jsx'
+import { Typography, Heading } from './ui/typography'
+import type { CollectionEntry } from 'astro:content'
+import { Code } from './ui/code'
+
+type Props = {
+  types: CollectionEntry<'types'>
+}
+
+const { types } = Astro.props
+---
+
+<Stack gap="10" width="full">
+  <Typography color="fg.muted" lineHeight="relaxed">
+    API reference docs for the component. Learn about the props, CSS, and other APIs of this
+    exported module.
+  </Typography>
+  {
+    Object.entries(types.data).map(([key, properties]) => (
+      <>
+        <Heading textStyle="lg" fontWeight="semibold">
+          {key}
+        </Heading>
+        <Stack gap="6" width="full">
+          {Object.entries(properties).map(([name, property], index) => (
+            <Fragment key={name}>
+              {index > 0 && <Divider />}
+              <Stack gap="2" key={name} width="full">
+                <HStack justify="space-between" width="full">
+                  <Code>{name}</Code>
+                  <Typography color="fg.muted" textStyle="sm" fontFamily="var(--font-code)">
+                    {property.type}
+                  </Typography>
+                </HStack>
+                {property.description && (
+                  <Typography color="fg.muted" textStyle="sm">
+                    {property.description}
+                  </Typography>
+                )}
+              </Stack>
+            </Fragment>
+          ))}
+        </Stack>
+      </>
+    ))
+  }
+</Stack>

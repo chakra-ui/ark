@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
+import ComponentTypes from '~/components/component-types.astro'
+import ComponentDocsLayout from '~/layouts/component-layout.astro'
+
+type Props = {
+  entry: CollectionEntry<'components'>
+}
+
+export async function getStaticPaths() {
+  const components = await getCollection('components')
+  return components.map((entry) => {
+    const [framework, component] = entry.slug.split('/')
+    return {
+      params: { framework, component },
+      props: { entry },
+    }
+  })
+}
+
+const { entry } = Astro.props
+const types = await getEntry('types', entry.slug)
+---
+
+<ComponentDocsLayout component={entry} currentTab="types">
+  {types ? <ComponentTypes types={types} /> : null}
+</ComponentDocsLayout>

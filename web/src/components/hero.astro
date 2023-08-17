@@ -1,0 +1,37 @@
+---
+import { Box, Container, Stack } from 'styled-system/jsx'
+import { Heading, Typography } from '~/components/ui/typography'
+// import { ReactIcon } from './icons/react'
+// import { SolidIcon } from './icons/solid'
+// import { VueIcon } from './icons/vue'
+import { button } from 'styled-system/recipes'
+---
+
+<Box
+  backgroundImage={{ base: 'none', md: 'url(/images/hero.svg)' }}
+  _dark={{
+    backgroundImage: { base: 'none', md: 'url(/images/hero_dark.svg)' },
+  }}
+  backgroundPosition="calc(50% + 250px) 25px"
+  backgroundRepeat="no-repeat"
+>
+  <Container pt={{ base: '16', md: '28' }} pb={{ base: '16', md: '24' }}>
+    <Stack gap={{ base: '8', md: '12' }} maxW="2xl">
+      <Stack gap={{ base: '4', md: '6' }} maxW={{ lg: '2xl' }} />
+      <Heading textStyle={{ base: '4xl', md: '6xl' }}>
+        Fully <span color="accent.default">customizable</span> and{' '}
+        <span color="accent.default">accessible</span> UI components
+      </Heading>
+      <Typography textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
+        Ark UI is a headless library for building reusable, scalable Design Systems that works for a
+        wide range of JS frameworks.
+      </Typography>
+      <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
+        <a
+          href="/docs/react/components/avatar/usage"
+          class={button({ size: { base: 'xl', md: '2xl' } })}>Get Started</a
+        >
+      </Stack>
+    </Stack>
+  </Container>
+</Box>
