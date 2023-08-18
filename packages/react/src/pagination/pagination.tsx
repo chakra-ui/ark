@@ -10,7 +10,7 @@ import { usePagination, type UsePaginationProps, type UsePaginationReturn } from
 export type PaginationProps = Assign<
   Assign<ComponentPropsWithoutRef<typeof ark.nav>, UsePaginationProps>,
   {
-    children: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
+    children?: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
   }
 >
 

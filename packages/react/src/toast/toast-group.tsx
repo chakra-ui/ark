@@ -10,7 +10,7 @@ export type ToastGroupProps = Assign<
   ComponentPropsWithoutRef<typeof ark.div>,
   {
     placement: Placement
-    children: ReactNode | ((toasts: Service[]) => ReactNode)
+    children?: ReactNode | ((toasts: Service[]) => ReactNode)
   }
 >
 

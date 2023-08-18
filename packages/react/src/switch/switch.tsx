@@ -11,7 +11,7 @@ import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-swit
 export type SwitchProps = Assign<
   Assign<ComponentPropsWithoutRef<typeof ark.label>, UseSwitchProps>,
   {
-    children: ReactNode | ((pages: UseSwitchReturn) => ReactNode)
+    children?: ReactNode | ((pages: UseSwitchReturn) => ReactNode)
   }
 >
 

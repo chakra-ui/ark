@@ -10,7 +10,7 @@ import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
 export type TagsInputProps = Assign<
   Assign<ComponentPropsWithoutRef<typeof ark.input>, UseTagsInputProps>,
   {
-    children: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
+    children?: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
   }
 >
 

@@ -9,7 +9,7 @@ import { useCarousel, type UseCarouselProps } from './use-carousel'
 
 export type CarouselProps = Assign<
   ComponentPropsWithoutRef<typeof ark.div> & {
-    children: ReactNode | ((pages: CarouselContext) => ReactNode)
+    children?: ReactNode | ((pages: CarouselContext) => ReactNode)
   },
   UseCarouselProps
 >

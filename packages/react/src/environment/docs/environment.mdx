@@ -34,9 +34,9 @@ can render the Environment component to provide the environment context to all
 Ark UI child components.
 
 ```tsx
-import { useCallback, type ReactNode } from 'react'
+import { useCallback, type PropsWithChildren, type ReactNode } from 'react'
 
-export const App = (props: { children: ReactNode }) => {
+export const App = (props: PropsWithChildren) => {
   const getRootNode = useCallback(() => document, [])
   return <Environment value={getRootNode}>{props.children}</Environment>
 }
