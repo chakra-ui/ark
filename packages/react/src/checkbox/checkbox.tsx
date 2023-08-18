@@ -12,7 +12,7 @@ export type CheckboxProps = Assign<
   Assign<
     UseCheckboxProps,
     {
-      children: ReactNode | ((pages: CheckboxContext) => ReactNode)
+      children?: ReactNode | ((pages: CheckboxContext) => ReactNode)
     }
   >
 >

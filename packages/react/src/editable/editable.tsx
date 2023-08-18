@@ -9,7 +9,7 @@ import { useEditable, type UseEditableProps } from './use-editable'
 
 export type EditableProps = Assign<
   Omit<ComponentPropsWithoutRef<typeof ark.div>, 'children'> & {
-    children: ReactNode | ((pages: EditableContext) => ReactNode)
+    children?: ReactNode | ((pages: EditableContext) => ReactNode)
   },
   UseEditableProps
 >

@@ -8,7 +8,15 @@ import BaseLayout from './base-layout.astro'
 <BaseLayout>
   <Navbar />
   <Container flex="1">
-    <Flex display={{ base: 'none', lg: 'flex' }} position="fixed" width="60" top="28" bottom="0">
+    <Flex
+      display={{ base: 'none', lg: 'flex' }}
+      position="fixed"
+      width="60"
+      top="72px"
+      py="10"
+      bottom="0"
+      overflowY="auto"
+    >
       <Sidebar />
     </Flex>
     <Flex flex="1" pl={{ base: 'none', lg: '72' }} pt="10">
