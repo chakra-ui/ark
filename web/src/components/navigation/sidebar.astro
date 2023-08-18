@@ -17,14 +17,15 @@ const priority = [
   'changelog',
 ]
 
-const docs = await getCollection('docs').then((items) =>
-  items
-    .map((item) => ({
-      id: item.data.id,
-      title: item.data.title,
-      slug: `/docs/${framework}/overview/${item.data.id}`,
-    }))
-    .sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id)),
+const docs = await getCollection('docs', ({ id }) => id.startsWith(framework ?? 'react')).then(
+  (items) =>
+    items
+      .map((item) => ({
+        id: item.data.id,
+        title: item.data.title,
+        slug: `/docs/${framework}/overview/${item.data.id}`,
+      }))
+      .sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id)),
 )
 
 const components = await getCollection('components', ({ id }) =>
@@ -43,10 +44,10 @@ const components = await getCollection('components', ({ id }) =>
   <FrameworkSelect framework={framework} client:load />
   <Stack gap="3">
     <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Overview</Typography>
-    <SidebarGroup items={docs} currentValue={doc} client:load />
+    <SidebarGroup items={docs} currentValue={doc} client:load transition:persist />
   </Stack>
   <Stack gap="3">
     <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Components</Typography>
-    <SidebarGroup items={components} currentValue={component} client:load />
+    <SidebarGroup items={components} currentValue={component} client:load transition:persist />
   </Stack>
 </Stack>

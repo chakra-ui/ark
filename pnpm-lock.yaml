@@ -26,6 +26,9 @@ importers:
       prettier:
         specifier: 2.8.8
         version: 2.8.8
+      prettier-plugin-astro:
+        specifier: 0.11.1
+        version: 0.11.1
       prettier-plugin-organize-imports:
         specifier: 3.2.3
         version: 3.2.3(prettier@2.8.8)(typescript@5.1.6)
@@ -969,7 +972,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.9.6(@types/node@18.17.4)
+      astro: 2.9.6(@types/node@20.4.7)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -9786,6 +9789,7 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: false
 
   /astro@2.9.6(@types/node@20.4.7):
     resolution: {integrity: sha512-yvbZQ6YOWYLejyQ4nAcgZLDYQ34enQJ5/LWlXKtUzXzpsUHB75vJMj+XmEq5Q2eVlZOlQrp0lU+nhSRGaOsOUQ==}
@@ -9864,7 +9868,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
 
   /async-limiter@1.0.1:
     resolution: {integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==}
@@ -21296,6 +21299,7 @@ packages:
       rollup: 3.27.2
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /vite@4.4.9(@types/node@20.4.7):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}

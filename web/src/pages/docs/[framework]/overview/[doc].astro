@@ -26,8 +26,9 @@ export async function getStaticPaths() {
   return docs
     .sort((a, b) => priority.indexOf(a.data.id) - priority.indexOf(b.data.id))
     .map((entry) => {
+      const [framework, doc] = entry.slug.split('/')
       return {
-        params: { framework: 'react', doc: entry.slug },
+        params: { framework, doc },
         props: { entry, docs },
       }
     })
