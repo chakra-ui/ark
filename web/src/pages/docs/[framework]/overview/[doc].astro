@@ -23,13 +23,15 @@ export async function getStaticPaths() {
   ]
 
   const docs = await getCollection('docs')
+  const sortedDocs = docs.sort((a, b) => priority.indexOf(a.data.id) - priority.indexOf(b.data.id))
+
   return docs
     .sort((a, b) => priority.indexOf(a.data.id) - priority.indexOf(b.data.id))
     .map((entry) => {
       const [framework, doc] = entry.slug.split('/')
       return {
         params: { framework, doc },
-        props: { entry, docs },
+        props: { entry, docs: sortedDocs.filter((doc) => doc.slug.startsWith(`${framework}/`)) },
       }
     })
 }
@@ -44,7 +46,7 @@ const pages = Astro.props.docs
 <DocsLayout>
   <PageHeader component={entry} />
   <TableOfContent headings={headings} />
-  <Article size={{ base: 'sm', md: 'md' }} width="full">
+  <Article size={{ base: 'sm', md: 'md' }} maxW="full">
     <Content />
   </Article>
   <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/${framework}/overview/`} />

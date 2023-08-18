@@ -12,15 +12,15 @@ import BaseLayout from './base-layout.astro'
       display={{ base: 'none', lg: 'flex' }}
       position="fixed"
       width="60"
-      top="72px"
+      top="18"
       py="10"
       bottom="0"
       overflowY="auto"
     >
       <Sidebar />
     </Flex>
-    <Flex flex="1" pl={{ base: 'none', lg: '72' }} pt="10">
-      <Box width={{ base: 'full', xl: '2xl' }}>
+    <Flex flex="1" pl={{ base: 'none', lg: '72' }}>
+      <Box width={{ base: 'full', xl: '2xl' }} py="10">
         <slot />
       </Box>
     </Flex>

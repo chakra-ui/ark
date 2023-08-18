@@ -1,5 +1,4 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import { IconButton } from '~/components/ui/icon-button'
 import {
   NumberInput,
   NumberInputControl,
@@ -8,6 +7,7 @@ import {
   NumberInputInput,
   NumberInputScrubber,
 } from '~/components/ui/number-input'
+import { Button } from '../ui/button'
 
 export const NumberInputDemo = () => {
   return (
@@ -16,15 +16,15 @@ export const NumberInputDemo = () => {
       <NumberInputInput />
       <NumberInputControl>
         <NumberInputIncrementTrigger asChild>
-          <IconButton size="xs" variant="tertiary" aria-label="Increment">
+          <Button size="xs" variant="tertiary" aria-label="Increment">
             <ChevronUp />
-          </IconButton>
+          </Button>
         </NumberInputIncrementTrigger>
         <hr />
         <NumberInputDecrementTrigger asChild>
-          <IconButton size="xs" variant="tertiary" aria-label="Decrement">
+          <Button px="0" size="xs" variant="tertiary" aria-label="Decrement">
             <ChevronDown />
-          </IconButton>
+          </Button>
         </NumberInputDecrementTrigger>
       </NumberInputControl>
     </NumberInput>

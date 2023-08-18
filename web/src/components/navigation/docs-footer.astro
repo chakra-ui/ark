@@ -18,12 +18,12 @@ const prevPage = pages[index - 1]
 const nextPage = pages[index + 1]
 ---
 
-<Stack width="full" gap="6" my={{ base: '5', md: '8' }}>
+<Stack width="full" gap="6" mt="12">
   <HStack justify="space-between" width="full">
     {
       prevPage && (
         <Stack gap="3">
-          <Typography color="accent.default" fontWeight="semibold" textStyle="sm">
+          <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
             Previous
           </Typography>
           <a href={basePath + prevPage.data.id} class={button({ variant: 'link', size: 'lg' })}>
@@ -35,7 +35,7 @@ const nextPage = pages[index + 1]
     {
       nextPage && (
         <Stack gap="3" style={{ marginLeft: 'auto' }}>
-          <Typography color="accent.default" fontWeight="semibold" textStyle="sm">
+          <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
             Next
           </Typography>
 

@@ -1,9 +1,10 @@
 ---
-import { Github, Twitter } from 'lucide-react'
-import { css, cx } from 'styled-system/css'
+import { css } from 'styled-system/css'
 import { Box, Container, HStack } from 'styled-system/jsx'
-import { button } from 'styled-system/recipes'
 import { ColorModeButton } from '../color-mode-button'
+import Breadcrumbs from './breadcrumbs.astro'
+import { MobileSidebarContainer } from './mobile-sidebar-container'
+import Sidebar from './sidebar.astro'
 ---
 
 <nav
@@ -11,8 +12,8 @@ import { ColorModeButton } from '../color-mode-button'
   class={css({ position: 'sticky', top: '0', zIndex: 'sticky', bg: 'bg.default' })}
 >
   <Box borderBottomWidth="1px" position="relative">
-    <Container py="4">
-      <HStack justify="space-between" gap="8">
+    <Container>
+      <HStack justify="space-between" gap="8" h="18">
         <HStack gap="10">
           <a href="/">
             <svg
@@ -34,19 +35,15 @@ import { ColorModeButton } from '../color-mode-button'
         <ColorModeButton client:only />
       </HStack>
     </Container>
-    {
-      /* {pathName !== '/' && (
-        <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
-          <Container py="1">
-            <HStack gap="2">
-              <MobileContainer>
-                <Sidebar framework={framework} />
-              </MobileContainer>
-              <Breadcrumbs />
-            </HStack>
-          </Container>
-        </Box>
-      )} */
-    }
+  </Box>
+  <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
+    <Container py="1">
+      <HStack gap="2">
+        <MobileSidebarContainer client:load>
+          <Sidebar />
+        </MobileSidebarContainer>
+        <Breadcrumbs />
+      </HStack>
+    </Container>
   </Box>
 </nav>

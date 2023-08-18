@@ -11,12 +11,11 @@ const { component } = Astro.props
 ---
 
 <div class={article({ size: { base: 'sm', md: 'md' } })}>
-  <Breadcrumbs />
+  <Breadcrumbs display={{ base: 'none', lg: 'flex' }} mb="4" />
   <h1>
     {component.data.title}
   </h1>
   <p>
     {component.data.description}
   </p>
-  <slot />
 </div>

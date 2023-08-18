@@ -7,7 +7,7 @@ interface Props {
 export const ComponentTabs = (props: Props) => {
   const { currentTab } = props
   return (
-    <Tabs defaultValue={currentTab} orientation="horizontal" my={{ base: '5', md: '8' }}>
+    <Tabs defaultValue={currentTab} orientation="horizontal">
       <TabList>
         <TabTrigger value="usage" asChild>
           <a href="usage">Usage</a>

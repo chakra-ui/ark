@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
 import DocsFooter from '~/components/navigation/docs-footer.astro'
 import TableOfContent from '~/components/navigation/table-of-content.astro'
+import Playground from '~/components/playground.astro'
 import { Article } from '~/components/ui/article'
 import ComponentDocsLayout from '~/layouts/component-layout.astro'
 
@@ -31,7 +32,8 @@ const pages = Astro.props.components.filter((c) => c.slug.startsWith(framework ?
 ---
 
 <ComponentDocsLayout component={entry} currentTab="usage">
-  <Article size={{ base: 'sm', md: 'md' }} width="full">
+  <Playground />
+  <Article size={{ base: 'sm', md: 'md' }} maxW="full">
     <Content />
   </Article>
   <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/${framework}/components/`} />

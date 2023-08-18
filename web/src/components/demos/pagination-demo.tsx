@@ -11,7 +11,7 @@ import {
   PaginationProps,
 } from '~/components/ui/pagination'
 
-export const PaginationDemo = (props: Omit<PaginationProps, 'page'>) => {
+export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) => {
   return (
     <Pagination {...props} count={90} pageSize={10} siblingCount={1} defaultPage={2}>
       {({ pages }) => (

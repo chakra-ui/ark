@@ -1,7 +1,6 @@
 ---
 import { ChevronRight } from 'lucide-react'
 import { Box, HStack } from 'styled-system/jsx'
-
 import { Typography } from '~/components/ui/typography'
 
 const crumbs = Astro.url.pathname
@@ -10,9 +9,11 @@ const crumbs = Astro.url.pathname
   .filter((path) => !['docs', 'react', 'vue', 'solid', 'usage', 'types'].includes(path))
   .map((path) => path.replace(/-/g, ' '))
   .map((item) => item.charAt(0).toUpperCase() + item.substring(1))
+
+const props = Astro.props
 ---
 
-<HStack gap="1" mb="4">
+<HStack gap="1" {...props}>
   {
     crumbs?.map((crumb, index, arr) => (
       <Fragment key={index}>

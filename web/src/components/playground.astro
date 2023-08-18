@@ -1,5 +1,4 @@
 ---
-import { RadioGroup } from '@ark-ui/react'
 import { Box, Flex } from 'styled-system/jsx'
 import { match } from 'ts-pattern'
 import { AccordionDemo } from './demos/accordion-demo'
@@ -17,7 +16,9 @@ import { NumberInputDemo } from './demos/number-input-demo'
 import { PaginationDemo } from './demos/pagination-demo'
 import { PinInputDemo } from './demos/pin-input-demo'
 import { PopoverDemo } from './demos/popover-demo'
+import { RadioGroupDemo } from './demos/radio-group-demo'
 import { RangeSliderDemo } from './demos/range-slider-demo'
+import { RatingGroupDemo } from './demos/rating-group-demo'
 import { SegmentGroupDemo } from './demos/segment-group-demo'
 import { SelectDemo } from './demos/select-demo'
 import { SliderDemo } from './demos/slider-demo'
@@ -26,19 +27,12 @@ import { TabsDemo } from './demos/tabs-demo'
 import { TagsInputDemo } from './demos/tags-input-demo'
 import { ToastDemo } from './demos/toast-demo'
 import { TooltipDemo } from './demos/tooltip-demo'
+import { SwitchDemo } from './demos/switch-demo'
 
 const { component } = Astro.params
 ---
 
-<Flex
-  bg="bg.default"
-  minH="40"
-  borderRadius="lg"
-  borderWidth="1px"
-  width="full"
-  overflow="hidden"
-  my={{ base: '5', md: '8' }}
->
+<Flex bg="bg.default" minH="40" borderRadius="lg" borderWidth="1px" width="full" overflow="hidden">
   <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
     {
       match(component)
@@ -46,8 +40,8 @@ const { component } = Astro.params
         .with('avatar', () => <AvatarDemo client:load />)
         .with('carousel', () => <CarouselDemo client:load />)
         .with('checkbox', () => <CheckboxDemo client:load />)
-        .with('color-picker', () => <ColorPickerDemo />)
-        .with('combo-box', () => <ComboboxDemo client:load />)
+        .with('color-picker', () => <ColorPickerDemo client:load />)
+        .with('combobox', () => <ComboboxDemo client:load />)
         .with('date-picker', () => <DatePickerDemo client:load />)
         .with('dialog', () => <DialogDemo client:load />)
         .with('editable', () => <EditableDemo client:load />)
@@ -57,12 +51,14 @@ const { component } = Astro.params
         .with('pagination', () => <PaginationDemo client:load />)
         .with('pin-input', () => <PinInputDemo client:load />)
         .with('popover', () => <PopoverDemo client:load />)
-        .with('radio-group', () => <RadioGroup client:load />)
+        .with('radio-group', () => <RadioGroupDemo client:load />)
         .with('range-slider', () => <RangeSliderDemo client:load />)
+        .with('rating-group', () => <RatingGroupDemo client:load />)
         .with('segment-group', () => <SegmentGroupDemo client:load />)
         .with('select', () => <SelectDemo client:load />)
         .with('slider', () => <SliderDemo client:load />)
         .with('splitter', () => <SplitterDemo client:load />)
+        .with('switch', () => <SwitchDemo client:load />)
         .with('tabs', () => <TabsDemo client:load />)
         .with('tags-input', () => <TagsInputDemo client:load />)
         .with('toast', () => <ToastDemo client:load />)

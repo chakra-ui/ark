@@ -1,6 +1,6 @@
 import { Portal } from '@ark-ui/react'
+import { ChevronsUpDown } from 'lucide-react'
 import { useState } from 'react'
-
 import {
   Combobox,
   ComboboxContent,
@@ -42,7 +42,7 @@ export const ComboboxDemo = () => {
         </ComboboxInput>
         <ComboboxTrigger asChild>
           <IconButton variant="link" aria-label="open" size="sm">
-            {/* <BiExpandVertical /> */}
+            <ChevronsUpDown />
           </IconButton>
         </ComboboxTrigger>
       </ComboboxControl>

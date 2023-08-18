@@ -9,6 +9,11 @@ export default defineConfig({
   experimental: {
     viewTransitions: true,
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'css-variables',
+    },
+  },
   redirects: {
     '/docs/[framework]/components/[component]': '/docs/[framework]/components/[component]/usage',
   },
