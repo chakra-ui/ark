@@ -46,7 +46,7 @@ const pages = Astro.props.docs
 <DocsLayout>
   <PageHeader component={entry} />
   <TableOfContent headings={headings} />
-  <Article size={{ base: 'sm', md: 'md' }} maxW="full">
+  <Article maxW="full">
     <Content />
   </Article>
   <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/${framework}/overview/`} />

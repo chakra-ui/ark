@@ -120,7 +120,7 @@ export default defineConfig({
           return {
             position: 'relative',
             width: '100%',
-            maxWidth: '7xl',
+            maxWidth: '8xl',
             mx: 'auto',
             px: { base: '4', md: '6' },
             ...props,
