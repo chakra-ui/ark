@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useMediaQuery } from 'usehooks-ts'
 import { Button } from '~/components/ui/button'
 import { IconButton } from '~/components/ui/icon-button'
 import {
@@ -9,12 +8,12 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
+  PaginationProps,
 } from '~/components/ui/pagination'
 
-export const PaginationDemo = (props: any) => {
-  const matches = useMediaQuery('(max-width: 600px)')
+export const PaginationDemo = (props: Omit<PaginationProps, 'page'>) => {
   return (
-    <Pagination count={90} pageSize={10} siblingCount={matches ? 0 : 1} defaultPage={2} {...props}>
+    <Pagination {...props} count={90} pageSize={10} siblingCount={1} defaultPage={2}>
       {({ pages }) => (
         <>
           <PaginationList>
