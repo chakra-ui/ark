@@ -17,7 +17,7 @@ const { component, currentTab } = Astro.props
 <DocsLayout>
   <Stack gap={{ base: '5', md: '6' }}>
     <PageHeader component={component} />
-    <ComponentTabs currentTab={currentTab} client:load transition:persist />
+    <ComponentTabs currentTab={currentTab} client:load />
     <slot />
   </Stack>
 </DocsLayout>

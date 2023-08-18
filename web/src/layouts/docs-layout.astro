@@ -9,6 +9,7 @@ import BaseLayout from './base-layout.astro'
   <Navbar />
   <Container flex="1">
     <Flex
+      id="sidebar"
       display={{ base: 'none', lg: 'flex' }}
       position="fixed"
       width="60"
@@ -26,3 +27,21 @@ import BaseLayout from './base-layout.astro'
     </Flex>
   </Container>
 </BaseLayout>
+
+<script>
+  const restoreScrollPosition = () => {
+    const leftSidebarScroll = localStorage.getItem('sidebar-scroll')
+    if (leftSidebarScroll !== null) {
+      document.querySelector('#sidebar')?.scrollTo({ top: parseInt(leftSidebarScroll, 10) })
+    }
+  }
+  const registerScrollEvent = () => {
+    const leftSidebar = document.querySelector('#sidebar')
+    leftSidebar?.addEventListener('scroll', () => {
+      localStorage.setItem('sidebar-scroll', leftSidebar?.scrollTop.toString() ?? '0')
+    })
+  }
+
+  document.addEventListener('astro:beforeload', restoreScrollPosition)
+  document.addEventListener('astro:load', registerScrollEvent)
+</script>
