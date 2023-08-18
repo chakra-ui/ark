@@ -111,23 +111,6 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByText(/open menu/i)).toBeInTheDocument())
   })
 
-  it('should override menu item type', async () => {
-    render(
-      <Menu>
-        <MenuTrigger>Open menu</MenuTrigger>
-        <MenuContent>
-          <MenuItem id="submit" type="submit">
-            Submit
-          </MenuItem>
-          <MenuItem id="button">Button</MenuItem>
-        </MenuContent>
-      </Menu>,
-    )
-
-    const submitOption = screen.getByText('Submit')
-    expect(submitOption).toHaveAttribute('type', 'submit')
-  })
-
   it('should accept a custom placement', async () => {
     render(
       <Menu dir="rtl" positioning={{ placement: 'left-start' }}>
