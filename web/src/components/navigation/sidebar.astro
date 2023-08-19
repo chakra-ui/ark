@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import { Stack } from 'styled-system/jsx'
+import { Box, Stack } from 'styled-system/jsx'
 import { Typography } from '../ui/typography'
 import ExternalLinks from './external-links.astro'
 import { FrameworkSelect } from './framework-select'
@@ -41,7 +41,10 @@ const components = await getCollection('components', ({ id }) =>
 
 <Stack gap="8" width="full">
   <ExternalLinks />
-  <FrameworkSelect framework={framework} client:load />
+  <Box h="68px">
+    <FrameworkSelect framework={framework} client:load />
+  </Box>
+
   <Stack gap="3">
     <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Overview</Typography>
     <SidebarGroup items={docs} currentValue={doc} client:load />

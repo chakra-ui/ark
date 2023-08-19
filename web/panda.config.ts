@@ -33,8 +33,10 @@ export default defineConfig({
         flexDirection: 'column',
         flexGrow: '1',
       },
+      'pre, code': {
+        fontFamily: 'Fira Code Variable!',
+      },
       pre: {
-        fontFamily: 'var(--font-code)',
         fontWeight: '500',
         overflowX: 'auto',
         fontSize: '14px !important',
