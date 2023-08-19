@@ -1,0 +1,56 @@
+---
+import { css } from 'styled-system/css'
+import { Box, Container, HStack, Stack } from 'styled-system/jsx'
+import { button } from 'styled-system/recipes'
+import { Heading, Typography } from '~/components/ui/typography'
+import ReactIcon from './icons/react.astro'
+import SolidIcon from './icons/solid.astro'
+import VueIcon from './icons/vue.astro'
+---
+
+<Box
+  backgroundImage={{ base: 'none', md: 'url(/images/hero.svg)' }}
+  _dark={{
+    backgroundImage: { base: 'none', md: 'url(/images/hero_dark.svg)' },
+  }}
+  backgroundPosition="calc(50% + 250px) 25px"
+  backgroundRepeat="no-repeat"
+>
+  <Container pt={{ base: '16', md: '32' }} pb={{ base: '16', md: '24' }}>
+    <Stack gap={{ base: '8', md: '12' }} maxW={{ lg: '3xl' }}>
+      <Heading textStyle={{ base: '4xl', md: '6xl' }}>
+        Fully <span class={css({ color: 'accent.default' })}>customizable</span> and{' '}
+        <span class={css({ color: 'accent.default' })}>accessible</span> UI components
+      </Heading>
+      <Typography textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
+        Ark UI is a headless library for building reusable, scalable Design Systems that works for a
+        wide range of JS frameworks.
+      </Typography>
+      <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
+        <a
+          href="/docs/react/overview/introduction"
+          class={button({ size: { base: 'xl', md: '2xl' } })}>Get Started</a
+        >
+        <a
+          href="/docs/react/components/accordion/usage"
+          class={button({ size: { base: 'xl', md: '2xl' }, variant: 'secondary' })}
+          >Show Components</a
+        >
+      </Stack>
+      <HStack gap="10">
+        <HStack>
+          <ReactIcon />
+          <Typography color="fg.muted">React</Typography>
+        </HStack>
+        <HStack>
+          <SolidIcon />
+          <Typography color="fg.muted">Solid</Typography>
+        </HStack>
+        <HStack>
+          <VueIcon />
+          <Typography color="fg.muted">Vue</Typography>
+        </HStack>
+      </HStack>
+    </Stack>
+  </Container>
+</Box>

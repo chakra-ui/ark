@@ -1,0 +1,48 @@
+---
+import { Box, Container, Grid, Stack } from 'styled-system/jsx'
+import { Heading, Typography } from '../ui/typography'
+import { Braces, Code, Keyboard, Orbit, Paintbrush } from 'lucide-react'
+
+const data = [
+  {
+    icon: Paintbrush,
+    title: 'Unstyled',
+    description:
+      'Style the components according to your design system, rather than being limited by predefined styles.',
+  },
+  {
+    icon: Braces,
+    title: 'Composable',
+    description:
+      'The components are built using a declarative syntax, which makes them easier to reason about and understand.',
+  },
+  {
+    icon: Keyboard,
+    title: 'Accessible',
+    description:
+      'Ark follows accessibility standards and guidelines, ensuring that the components can be accessed and used by all users.',
+  },
+  {
+    icon: Orbit,
+    title: 'Reliable',
+    description:
+      'Using state machines, Ark can help you create more reliable user interfaces, with less room for bugs and unexpected behavior.',
+  },
+]
+---
+
+<Container py={{ base: '16', md: '24' }}>
+  <Grid gap="8" columns={4} direction="row">
+    {
+      data.map((data) => (
+        <Stack gap="5">
+          <data.icon />
+          <Stack gap="2">
+            <Heading textStyle="xl">{data.title}</Heading>
+            <Typography color="fg.muted">{data.description}</Typography>
+          </Stack>
+        </Stack>
+      ))
+    }
+  </Grid>
+</Container>

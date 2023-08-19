@@ -1,9 +1,9 @@
 import { Moon, Sun } from 'lucide-react'
 import { useIsClient } from 'usehooks-ts'
 import { useColorMode } from '~/lib/use-color-mode'
-import { Button } from './ui/button'
+import { Button, ButtonProps } from './ui/button'
 
-export const ColorModeButton = () => {
+export const ColorModeButton = (props: ButtonProps) => {
   const { toggle, colorMode } = useColorMode()
   const isClient = useIsClient()
   if (!isClient) {
@@ -11,8 +11,8 @@ export const ColorModeButton = () => {
   }
 
   return (
-    <Button variant="tertiary" px="0" onClick={toggle}>
-      {colorMode === 'light' ? <Sun /> : <Moon />}
+    <Button variant="tertiary" px="0" onClick={toggle} {...props}>
+      {colorMode === 'light' ? <Moon /> : <Sun />}
     </Button>
   )
 }
