@@ -1,8 +1,8 @@
 ---
-const props = Astro.props
+const height = Astro.props?.height ?? 28
 ---
 
-<svg height="28" viewBox="0 0 63 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+<svg height={height} viewBox="0 0 63 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_901_179)">
     <path
       fill-rule="evenodd"
