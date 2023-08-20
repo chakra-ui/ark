@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "2.0.2",
     "@fontsource-variable/fira-code": "5.0.8",
     "@fontsource-variable/inter": "5.0.8",
-    "astro": "2.10.9",
+    "astro": "2.10.12",
     "lucide-react": "0.268.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
