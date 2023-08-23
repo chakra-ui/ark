@@ -707,14 +707,11 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       shiki:
-        specifier: ^0.14.3
+        specifier: 0.14.3
         version: 0.14.3
       ts-pattern:
         specifier: 5.0.5
         version: 5.0.5
-      usehooks-ts:
-        specifier: 2.9.1
-        version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@astrojs/mdx':
         specifier: 0.19.7
@@ -21411,6 +21408,7 @@ packages:
       rollup: 3.27.2
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /vite@4.4.9(@types/node@20.4.7):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}

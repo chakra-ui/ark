@@ -1,11 +1,11 @@
 ---
 import { css } from 'styled-system/css'
 import { Box, Container, HStack } from 'styled-system/jsx'
-import { ColorModeButton } from '../color-mode-button'
+import ColorModeButton from '../color-mode-button.astro'
+import Logo from '../logo.astro'
 import Breadcrumbs from './breadcrumbs.astro'
 import { MobileSidebarContainer } from './mobile-sidebar-container'
 import Sidebar from './sidebar.astro'
-import Logo from '../logo.astro'
 ---
 
 <nav
@@ -20,7 +20,7 @@ import Logo from '../logo.astro'
             <Logo />
           </a>
         </HStack>
-        <!-- <ColorModeButton client:load /> -->
+        <ColorModeButton />
       </HStack>
     </Container>
   </Box>

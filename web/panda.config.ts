@@ -37,7 +37,6 @@ export default defineConfig({
         fontFamily: 'Fira Code Variable!',
       },
       pre: {
-        fontWeight: '500',
         overflowX: 'auto',
         fontSize: '14px !important',
         '--astro-code-color-text': 'colors.grayPalette.300',

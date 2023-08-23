@@ -3,6 +3,7 @@ import { Github } from 'lucide-react'
 import { css, cx } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
+import ColorModeButton from '../color-mode-button.astro'
 import Logo from '../logo.astro'
 ---
 
@@ -59,7 +60,7 @@ import Logo from '../logo.astro'
         >
           <Github />
         </a>
-        <!-- <ColorModeButton size="sm" client:load /> -->
+        <ColorModeButton />
       </HStack>
     </HStack>
   </Flex>
