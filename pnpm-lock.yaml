@@ -563,7 +563,7 @@ importers:
     devDependencies:
       '@histoire/plugin-vue':
         specifier: 0.17.0
-        version: 0.17.0(histoire@0.16.5)(vite@4.4.9)(vue@3.3.4)
+        version: 0.17.0(histoire@0.17.0)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
         version: 4.0.0(release-it@16.1.5)
@@ -613,8 +613,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       histoire:
-        specifier: 0.16.5
-        version: 0.16.5(@types/node@20.4.7)(vite@4.4.9)
+        specifier: 0.17.0
+        version: 0.17.0(@types/node@20.4.7)(vite@4.4.9)
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3629,31 +3629,15 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: false
 
-  /@histoire/app@0.16.5(vite@4.4.9):
-    resolution: {integrity: sha512-m+rCZnz6lnaIbVK1R9UBZFgU91/V1RnZqVaMq6KjUuatuxUUS1M4HgsFT5Y74Utltq0U3i0RuIb5h20z6M7nHg==}
+  /@histoire/app@0.17.0(vite@4.4.9):
+    resolution: {integrity: sha512-rZyuIw3Ck6RqwBSkCfIAZAzKZTclzWmLcCNtSCbUHF/wcEUbFdfAhGTW56+NhzNeURq+QxNuklHhSnE+x0PiEQ==}
     dependencies:
-      '@histoire/controls': 0.16.5(vite@4.4.9)
-      '@histoire/shared': 0.16.5(vite@4.4.9)
-      '@histoire/vendors': 0.16.5
+      '@histoire/controls': 0.17.0(vite@4.4.9)
+      '@histoire/shared': 0.17.0(vite@4.4.9)
+      '@histoire/vendors': 0.17.0
       '@types/flexsearch': 0.7.3
       flexsearch: 0.7.21
       shiki-es: 0.2.0
-    transitivePeerDependencies:
-      - vite
-    dev: true
-
-  /@histoire/controls@0.16.5(vite@4.4.9):
-    resolution: {integrity: sha512-2Yng6fPbBOz9EMPb4arZfvnK4/SDoxA0jYaqjtuby/WDFXk/Lvp3je8xs8PbPAzXralDDSqCu02cfBQy4bUQqg==}
-    dependencies:
-      '@codemirror/commands': 6.2.4
-      '@codemirror/lang-json': 6.0.1
-      '@codemirror/language': 6.8.0
-      '@codemirror/lint': 6.4.0
-      '@codemirror/state': 6.2.1
-      '@codemirror/theme-one-dark': 6.1.2
-      '@codemirror/view': 6.16.0
-      '@histoire/shared': 0.16.5(vite@4.4.9)
-      '@histoire/vendors': 0.16.5
     transitivePeerDependencies:
       - vite
     dev: true
@@ -3674,7 +3658,7 @@ packages:
       - vite
     dev: true
 
-  /@histoire/plugin-vue@0.17.0(histoire@0.16.5)(vite@4.4.9)(vue@3.3.4):
+  /@histoire/plugin-vue@0.17.0(histoire@0.17.0)(vite@4.4.9)(vue@3.3.4):
     resolution: {integrity: sha512-sYRpgNBQF8BI3IYkHNdXfArJBqL3Gcex6e9CRopIwfFns6G9MYXGZNys1pT75d2BAM9GPBNpApH+1rmlnudpEQ==}
     peerDependencies:
       histoire: ^0.17.0
@@ -3685,26 +3669,12 @@ packages:
       '@histoire/vendors': 0.17.0
       change-case: 4.1.2
       globby: 13.2.2
-      histoire: 0.16.5(@types/node@20.4.7)(vite@4.4.9)
+      histoire: 0.17.0(@types/node@20.4.7)(vite@4.4.9)
       launch-editor: 2.6.0
       pathe: 0.2.0
       vue: 3.3.4
     transitivePeerDependencies:
       - vite
-    dev: true
-
-  /@histoire/shared@0.16.5(vite@4.4.9):
-    resolution: {integrity: sha512-iLz/y5SiKERZGK4Ux2xXaYi89w2+ecyYTPHi62YitzfHMp7YXYi8Bk48T2NfU1HbZIi1NzbHoY8c4F6fiUG2Ag==}
-    peerDependencies:
-      vite: ^2.9.0 || ^3.0.0 || ^4.0.0
-    dependencies:
-      '@histoire/vendors': 0.16.5
-      '@types/fs-extra': 9.0.13
-      '@types/markdown-it': 12.2.3
-      chokidar: 3.5.3
-      pathe: 0.2.0
-      picocolors: 1.0.0
-      vite: 4.4.9(@types/node@20.4.7)
     dev: true
 
   /@histoire/shared@0.17.0(vite@4.4.9):
@@ -3719,10 +3689,6 @@ packages:
       pathe: 0.2.0
       picocolors: 1.0.0
       vite: 4.4.9(@types/node@20.4.7)
-    dev: true
-
-  /@histoire/vendors@0.16.5:
-    resolution: {integrity: sha512-25a90vugBz3KH3VzuddxuKeAjBQ1+osXQy2QICQO0kUXAtGHNj4u8T4iG5AgQD9CQXf6dc5+pnPoFZADHlW9VQ==}
     dev: true
 
   /@histoire/vendors@0.17.0:
@@ -13710,17 +13676,17 @@ packages:
       tslib: 2.6.1
     dev: true
 
-  /histoire@0.16.5(@types/node@20.4.7)(vite@4.4.9):
-    resolution: {integrity: sha512-zrysBjiQjrwpPGTnPEQ+mYRa7yyls6shcRo8q0AIg49FW95egg1Atq3iwrjK+p09OJu7vWiX+hKEboePMDRAJA==}
+  /histoire@0.17.0(@types/node@20.4.7)(vite@4.4.9):
+    resolution: {integrity: sha512-q5fX2yAiw1vjlC0xaEcm8uqiJzdKmItozyNa24ujFVD+YjKpBE1R6tl/zpUIfqOBgpifMgh7xQD5uU4ZFd7v/g==}
     hasBin: true
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0
     dependencies:
       '@akryum/tinypool': 0.3.1
-      '@histoire/app': 0.16.5(vite@4.4.9)
-      '@histoire/controls': 0.16.5(vite@4.4.9)
-      '@histoire/shared': 0.16.5(vite@4.4.9)
-      '@histoire/vendors': 0.16.5
+      '@histoire/app': 0.17.0(vite@4.4.9)
+      '@histoire/controls': 0.17.0(vite@4.4.9)
+      '@histoire/shared': 0.17.0(vite@4.4.9)
+      '@histoire/vendors': 0.17.0
       '@types/flexsearch': 0.7.3
       '@types/markdown-it': 12.2.3
       birpc: 0.1.1
