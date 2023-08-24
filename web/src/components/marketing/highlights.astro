@@ -1,9 +1,12 @@
 ---
-import { Box, Container, Grid, Stack } from 'styled-system/jsx'
+import Code from 'astro/components/Code.astro'
+import { Braces, Keyboard, Orbit, Paintbrush } from 'lucide-react'
+import { Box, Container, Flex, Grid, Stack } from 'styled-system/jsx'
 import { Heading, Typography } from '../ui/typography'
-import { Braces, Code, Keyboard, Orbit, Paintbrush } from 'lucide-react'
+import { CodeExamples } from './code-examples'
+import { react, solid, vue } from './examples'
 
-const data = [
+const features = [
   {
     icon: Paintbrush,
     title: 'Unstyled',
@@ -32,17 +35,45 @@ const data = [
 ---
 
 <Container py={{ base: '16', md: '24' }}>
-  <Grid gap="8" columns={4} direction="row">
-    {
-      data.map((data) => (
-        <Stack gap="5">
-          <data.icon />
-          <Stack gap="2">
-            <Heading textStyle="xl">{data.title}</Heading>
-            <Typography color="fg.muted">{data.description}</Typography>
-          </Stack>
-        </Stack>
-      ))
-    }
+  <Grid columns={{ base: 1, md: 2 }} gap={{ base: '16', lg: '24' }}>
+    <Stack width="full" gap={{ base: '10', md: '12' }}>
+      <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
+        Composable API design for a delightful experience
+      </Heading>
+      <Stack gap="10">
+        {
+          features.map((feature) => (
+            <Stack direction="row" gap={{ base: '5', md: '6' }}>
+              <Flex
+                align="center"
+                justify="center"
+                background="bg.default"
+                borderRadius="l2"
+                borderWidth="1px"
+                color="accent.default"
+                flexShrink={0}
+                height={{ base: '10', md: '12' }}
+                width={{ base: '10', md: '12' }}
+              >
+                <feature.icon size="20" />
+              </Flex>
+              <Stack gap={{ base: '1', md: '2' }}>
+                <Heading textStyle="lg" fontWeight="semibold">
+                  {feature.title}
+                </Heading>
+                <Typography color="fg.muted">{feature.description}</Typography>
+              </Stack>
+            </Stack>
+          ))
+        }
+      </Stack>
+    </Stack>
+    <Box>
+      <CodeExamples client:load>
+        <Code slot="react" code={react} lang="tsx" theme="css-variables" />
+        <Code slot="solid" code={solid} lang="tsx" theme="css-variables" />
+        <Code slot="vue" code={vue} lang="vue" theme="css-variables" />
+      </CodeExamples>
+    </Box>
   </Grid>
 </Container>
