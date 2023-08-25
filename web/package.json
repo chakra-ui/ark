@@ -16,7 +16,7 @@
     "@fontsource-variable/fira-code": "5.0.8",
     "@fontsource-variable/inter": "5.0.8",
     "astro": "2.10.14",
-    "lucide-react": "0.268.0",
+    "lucide-react": "0.269.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "shiki": "0.14.3",
