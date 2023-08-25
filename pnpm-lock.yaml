@@ -695,8 +695,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       astro:
-        specifier: 2.10.13
-        version: 2.10.13(@types/node@20.4.7)
+        specifier: 2.10.14
+        version: 2.10.14(@types/node@20.4.7)
       lucide-react:
         specifier: 0.268.0
         version: 0.268.0(react@18.2.0)
@@ -715,13 +715,13 @@ importers:
     devDependencies:
       '@astrojs/mdx':
         specifier: 0.19.7
-        version: 0.19.7(astro@2.10.13)
+        version: 0.19.7(astro@2.10.14)
       '@astrojs/react':
         specifier: 2.3.2
         version: 2.3.2(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@pandacss/astro':
         specifier: 0.12.1
-        version: 0.12.1(astro@2.10.13)(ts-node@10.9.1)(typescript@5.1.6)
+        version: 0.12.1(astro@2.10.14)(ts-node@10.9.1)(typescript@5.1.6)
       '@pandacss/dev':
         specifier: 0.12.1
         version: 0.12.1(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.1.6)
@@ -921,13 +921,13 @@ packages:
       vscode-languageserver-types: 3.17.3
       vscode-uri: 3.0.7
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.10.13):
+  /@astrojs/markdown-remark@2.2.1(astro@2.10.14):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.13(@types/node@20.4.7)
+      astro: 2.10.14(@types/node@20.4.7)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -988,11 +988,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@0.19.7(astro@2.10.13):
+  /@astrojs/mdx@0.19.7(astro@2.10.14):
     resolution: {integrity: sha512-mfEbBD7oi8yBHhcJucEjnrquREkJ3os+jioURP8BR2B8tOV2rV2j8trvmLUgfS+P/+HevGObxCTjcRYxn6T7eg==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.13)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.14)
       '@astrojs/prism': 2.1.2
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
@@ -4756,13 +4756,13 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@pandacss/astro@0.12.1(astro@2.10.13)(ts-node@10.9.1)(typescript@5.1.6):
+  /@pandacss/astro@0.12.1(astro@2.10.14)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-5ITLFJ3iQ+u/xAIgkE32ZQYzY9Yz1ykcWmSC2ksKiZzkSQM4PG6OzWu9TEfdLWKHbUERtRZ9Mj0BBJM3XIwTow==}
     peerDependencies:
       astro: '>=2.x'
     dependencies:
       '@pandacss/postcss': 0.12.1(typescript@5.1.6)
-      astro: 2.10.13(@types/node@20.4.7)
+      astro: 2.10.14(@types/node@20.4.7)
       autoprefixer: 10.4.15(postcss@8.4.27)
       postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)(ts-node@10.9.1)
@@ -9986,8 +9986,8 @@ packages:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
 
-  /astro@2.10.13(@types/node@20.4.7):
-    resolution: {integrity: sha512-xSLw8C/vF6MDFvQ2BfQyrC2AKsG74pMg66zlsHXr06JsSTv5qhMFhROm9oV0IxiZnsvN7LelMe/H2Ks1CcUTDw==}
+  /astro@2.10.14(@types/node@20.4.7):
+    resolution: {integrity: sha512-02k2DjnI8yGtLCvdCSggvfCTkTWPm9UDgc/XHKdd1K34TSTl3X0A8TTYbASEXvgynk1zInCyOEe3IUDt3Lke+A==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -9999,7 +9999,7 @@ packages:
       '@astrojs/compiler': 1.8.1
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.13)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.14)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.10
