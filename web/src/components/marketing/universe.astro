@@ -1,0 +1,90 @@
+---
+import { Box, Container, Flex, Stack } from 'styled-system/jsx'
+import { Heading, Typography } from '../ui/typography'
+import { ArrowRightIcon } from 'lucide-react'
+import { button } from 'styled-system/recipes'
+import { match } from 'ts-pattern'
+import Vue from './icons/vue.astro'
+import React from './icons/react.astro'
+import Solid from './icons/solid.astro'
+---
+
+<Box
+  backgroundImage={{
+    base: 'url(/images/pattern.svg)',
+    _dark: 'url(/images/pattern_dark.svg)',
+  }}
+  backgroundRepeat="repeat-x"
+  width="full"
+>
+  <Container pt={{ base: '16', md: '40' }}>
+    <Heading textAlign="center" textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
+      Accessible components. <br />
+       Powered by <span color="accent.default">State Machines</span>
+    </Heading>
+  </Container>
+  <Box
+    backgroundImage={{
+      base: 'url(/images/universe.svg)',
+      _dark: 'url(/images/universe_dark.svg)',
+    }}
+    backgroundPosition="center center"
+    backgroundRepeat="repeat-x"
+    width="full"
+  >
+    <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }}>
+      <Stack direction="row" align="center" width="full" justify="space-evenly">
+        {
+          [
+            { framework: 'React', icon: React },
+            { framework: 'Vue', icon: Vue },
+            { framework: 'Ark', icon: React },
+            { framework: 'Solid', icon: Solid },
+            { framework: 'JS', icon: Solid },
+          ].map((item, id) =>
+            match(item)
+              .with({ framework: 'Ark' }, () => <Box width="358px" height="358px" />)
+              .otherwise(() => (
+                <Flex
+                  borderRadius="full"
+                  justify="center"
+                  align="center"
+                  bg="orange.900"
+                  borderColor="orange.800"
+                  _dark={{
+                    bg: '#220C08',
+                    borderColor: 'orange.800',
+                  }}
+                  width="94px"
+                  height="94px"
+                  display={{ base: 'none', md: 'flex' }}
+                >
+                  {<item.icon width="96" />}
+                </Flex>
+              )),
+          )
+        }
+      </Stack>
+    </Container>
+  </Box>
+  <Container pb={{ base: '16', md: '24' }}>
+    <Stack align="center" gap={{ base: '8', md: '10' }}>
+      <Typography
+        color="fg.muted"
+        textStyle={{ base: 'lg', md: 'xl' }}
+        textAlign="center"
+        maxW="lg"
+      >
+        Ark UI is an open-source library that allows developers to build components faster without
+        sweating on functionality.
+      </Typography>
+      <a
+        href="/docs/react/overview/introduction"
+        class={button({ size: { base: 'lg', md: 'xl' } })}
+      >
+        Get Started
+        <ArrowRightIcon />
+      </a>
+    </Stack>
+  </Container>
+</Box>
