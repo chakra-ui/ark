@@ -22,10 +22,10 @@ type TypeSearchOptions = {
 
 const prettierConfig = await prettier.resolveConfig('.')
 
-function tryPrettier(typeName: string) {
+async function tryPrettier(typeName: string) {
   try {
     const prefix = 'type ONLY_FOR_FORMAT = '
-    const prettyType = prettier.format(prefix + typeName, {
+    const prettyType = await prettier.format(prefix + typeName, {
       ...prettierConfig,
       parser: 'typescript',
     })
@@ -35,7 +35,7 @@ function tryPrettier(typeName: string) {
   }
 }
 
-function extractPropertiesOfTypeName(
+async function extractPropertiesOfTypeName(
   searchTerm: string | RegExp,
   sourceFile: ts.SourceFile,
   typeChecker: ts.TypeChecker,
@@ -63,7 +63,7 @@ function extractPropertiesOfTypeName(
       if (shouldIgnoreProperty(property)) {
         continue
       }
-      const prettyType = tryPrettier(typeName)
+      const prettyType = await tryPrettier(typeName)
       properties[propertyName] = {
         type: prettyType,
         defaultValue,
@@ -87,7 +87,7 @@ function extractPropertiesOfTypeName(
   return Object.keys(results).length ? results : null
 }
 
-function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
+async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
   const { shouldIgnoreProperty } = typeSearchOptions
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
   const basePath = path.dirname(tsConfigPath)
@@ -96,10 +96,10 @@ function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOpt
   const program = ts.createProgram(fileNames, options)
   const sourceFiles = program.getSourceFiles()
 
-  return (searchTerm: Parameters<typeof extractPropertiesOfTypeName>[0]) => {
+  return async (searchTerm: Parameters<typeof extractPropertiesOfTypeName>[0]) => {
     const results: Record<string, TypeProperties> = {}
     for (const sourceFile of sourceFiles) {
-      const typeInfo = extractPropertiesOfTypeName(
+      const typeInfo = await extractPropertiesOfTypeName(
         searchTerm,
         sourceFile,
         program.getTypeChecker(),
@@ -165,35 +165,40 @@ const main = async () => {
     ),
   )
 
-  const searchType = createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
+  const searchType = await createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
 
-  Object.entries(componentExportMap)
-    .flatMap(([component, typeExports]) => ({
-      component,
-      typeExports: typeExports
-        .map(searchType)
-        .map((x) =>
-          Object.fromEntries(
-            Object.entries(x)
-              .map((y) => [
-                y[0],
-                Object.fromEntries(Object.entries(y[1]).filter((z) => z[0] !== 'asChild')),
-              ])
-              .filter((y) => Object.keys(y[1]).length !== 0),
-          ),
-        )
-        .filter((value) => Object.keys(value).length !== 0)
-        .reduce((acc, value) => ({ ...acc, ...value }), {}),
-    }))
-    .map(async ({ component, typeExports }) => {
-      fs.outputFileSync(
-        path.join(component, 'docs', path.basename(component) + '.types.json'),
-        prettier.format(JSON.stringify(typeExports), {
-          ...prettierConfig,
-          parser: 'json',
-        }),
+  const result = await Promise.all(
+    Object.entries(componentExportMap).flatMap(async ([component, typeExports]) => {
+      const resolvedTypeExports = await Promise.all(
+        typeExports.map(async (type) => await searchType(type)),
       )
-    })
+      return {
+        component,
+        typeExports: resolvedTypeExports
+          .map((x) =>
+            Object.fromEntries(
+              Object.entries(x)
+                .map((y) => [
+                  y[0],
+                  Object.fromEntries(Object.entries(y[1]).filter((z) => z[0] !== 'asChild')),
+                ])
+                .filter((y) => Object.keys(y[1]).length !== 0),
+            ),
+          )
+          .filter((value) => Object.keys(value).length !== 0)
+          .reduce((acc, value) => ({ ...acc, ...value }), {}),
+      }
+    }),
+  )
+  result.map(async ({ component, typeExports }) => {
+    fs.outputFileSync(
+      path.join(component, 'docs', path.basename(component) + '.types.json'),
+      await prettier.format(JSON.stringify(typeExports), {
+        ...prettierConfig,
+        parser: 'json',
+      }),
+    )
+  })
 }
 
 main().catch((err) => {

@@ -47,7 +47,7 @@ const main = async () => {
 
       const outPath = join(sourceFile.getDirectoryPath(), 'docs', `${component}.stories.json`)
 
-      return outputFile(outPath, format(stories))
+      return outputFile(outPath, await format(stories))
     }),
   )
 }
