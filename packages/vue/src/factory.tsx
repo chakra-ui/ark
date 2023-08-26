@@ -13,10 +13,10 @@ import {
   type ComponentCustomProps,
   type DefineComponent,
   type ExtractPropTypes,
+  type IntrinsicElementAttributes,
   type PropType,
   type VNodeProps,
 } from 'vue'
-import type { IntrinsicElementAttributes } from './dom.types'
 import { isValidVNodeElement, renderSlotFragments } from './utils'
 export type AsChildProps = {
   asChild?: boolean
@@ -65,8 +65,9 @@ export function withAsChild(__component: RenderFunctionArgs) {
     },
     setup(props, { attrs, slots }) {
       const instance = getCurrentInstance()
-      if (!props.asChild) return () => <__component {...attrs}>{slots.default?.()}</__component>
-      else {
+      if (!props.asChild) {
+        return () => <__component {...attrs}>{slots.default?.()}</__component>
+      } else {
         return () => {
           let children = slots.default?.()
           children = renderSlotFragments(children || [])
