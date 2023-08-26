@@ -29,7 +29,7 @@
     "@commitlint/config-conventional": "17.7.0",
     "concurrently": "8.2.1",
     "husky": "8.0.3",
-    "lint-staged": "13.3.0",
+    "lint-staged": "14.0.1",
     "prettier": "3.0.2",
     "prettier-plugin-astro": "0.12.0",
     "prettier-plugin-organize-imports": "3.2.3",
