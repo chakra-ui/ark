@@ -30,7 +30,9 @@ output {
   border-radius: 9999px;
   box-sizing: border-box;
   transform: translate(-50%, -50%);
-  box-shadow: black 0px 0px 0px 1px, black 0px 0px 0px 1px inset;
+  box-shadow:
+    black 0px 0px 0px 1px,
+    black 0px 0px 0px 1px inset;
   width: 16px;
   height: 16px;
 }
