@@ -137,11 +137,6 @@
       "isRequired": false,
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
-    "selectInputOnFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to select the input's text content on focus"
-    },
     "selectionBehavior": {
       "type": "'clear' | 'set'",
       "isRequired": false,

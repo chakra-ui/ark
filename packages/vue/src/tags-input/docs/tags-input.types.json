@@ -93,12 +93,12 @@
       "isRequired": false,
       "description": "Callback fired when the tag values is updated"
     },
-    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
-    "onHighlight": {
+    "onFocusChange": {
       "type": "(details: { value: string | null }) => void",
       "isRequired": false,
       "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
     },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
     "onInvalid": {
       "type": "(details: { reason: ValidityState }) => void",
@@ -108,11 +108,6 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false
-    },
-    "onTagUpdate": {
-      "type": "(details: { value: string; index: number }) => void",
-      "isRequired": false,
-      "description": "Callback fired when a tag's value is updated"
     },
     "readOnly": {
       "type": "boolean",
