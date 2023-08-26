@@ -3,7 +3,7 @@
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
   "ToastProviderProps": {
     "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
+      "type": "Partial<Pick<ToastOptions, 'placement' | 'removeDelay' | 'duration'>>",
       "isRequired": false,
       "description": "The default options for the toast"
     },
@@ -13,7 +13,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -33,7 +33,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'right' | 'bottom' | 'left', string>",
+      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },

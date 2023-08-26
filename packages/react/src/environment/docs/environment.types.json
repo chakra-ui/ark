@@ -1,1 +1,1 @@
-{ "EnvironmentProps": { "value": { "type": "Node | ShadowRoot | Document", "isRequired": false } } }
+{ "EnvironmentProps": { "value": { "type": "ShadowRoot | Node | Document", "isRequired": false } } }
