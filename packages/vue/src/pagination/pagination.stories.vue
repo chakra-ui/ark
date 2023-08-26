@@ -21,7 +21,7 @@ import './pagination.css'
         <PaginationPageTrigger v-if="page.type === 'page'" :value="page.value">
           <button>{{ page.value }}</button>
         </PaginationPageTrigger>
-        <PaginationEllipsis v-else :index=" index "> &#8230; </PaginationEllipsis>
+        <PaginationEllipsis v-else :index="index"> &#8230; </PaginationEllipsis>
       </template>
       <PaginationListItem>
         <PaginationNextPageTrigger>
