@@ -26,7 +26,7 @@ export const Heading = (props: HeadingProps) => {
   const { as = 'h2', children, ...rest } = props
 
   return (
-    <Typography as={as} fontWeight="bold" {...rest}>
+    <Typography as={as} fontWeight="semibold" {...rest}>
       {children}
     </Typography>
   )

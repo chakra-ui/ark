@@ -1,4 +1,8 @@
-<svg width="24" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+---
+const width = Astro.props?.width ?? 24
+---
+
+<svg width={width} viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
     fill-rule="evenodd"
     clip-rule="evenodd"
