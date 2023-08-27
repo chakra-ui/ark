@@ -30,7 +30,7 @@ import BaseLayout from './base-layout.astro'
 
 <script>
   const restoreScrollPosition = () => {
-    const leftSidebarScroll = localStorage.getItem('sidebar-scroll')
+    const leftSidebarScroll = sessionStorage.getItem('sidebar-scroll')
     if (leftSidebarScroll !== null) {
       document.querySelector('#sidebar')?.scrollTo({ top: parseInt(leftSidebarScroll, 10) })
     }
@@ -38,7 +38,7 @@ import BaseLayout from './base-layout.astro'
   const registerScrollEvent = () => {
     const leftSidebar = document.querySelector('#sidebar')
     leftSidebar?.addEventListener('scroll', () => {
-      localStorage.setItem('sidebar-scroll', leftSidebar?.scrollTop.toString() ?? '0')
+      sessionStorage.setItem('sidebar-scroll', leftSidebar?.scrollTop.toString() ?? '0')
     })
   }
 
