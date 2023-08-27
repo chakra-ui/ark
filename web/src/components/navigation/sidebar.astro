@@ -34,7 +34,7 @@ const components = await getCollection('components', ({ id }) =>
   items.map((item) => ({
     id: item.data.id,
     title: item.data.title,
-    slug: `/docs/${framework}/components/${item.data.id}/usage`,
+    slug: `/docs/${framework}/components/${item.data.id}`,
   })),
 )
 ---

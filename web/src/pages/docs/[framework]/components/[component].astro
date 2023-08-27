@@ -31,7 +31,7 @@ const { Content, headings } = await entry.render()
 const pages = Astro.props.components.filter((c) => c.slug.startsWith(framework ?? ''))
 ---
 
-<ComponentDocsLayout component={entry} currentTab="usage">
+<ComponentDocsLayout component={entry}>
   <Playground />
   <Article maxW="full">
     <Content />

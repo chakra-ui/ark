@@ -1,19 +1,20 @@
 import { TabIndicator, TabList, TabTrigger, Tabs } from '../ui/tabs'
 
 interface Props {
-  currentTab: string
+  pathname: string
+  basePath: string
 }
 
 export const ComponentTabs = (props: Props) => {
-  const { currentTab } = props
+  const { basePath, pathname } = props
   return (
-    <Tabs defaultValue={currentTab} orientation="horizontal">
+    <Tabs defaultValue={pathname} orientation="horizontal">
       <TabList>
-        <TabTrigger value="usage" asChild>
-          <a href="usage">Usage</a>
+        <TabTrigger value={basePath} asChild>
+          <a href={basePath}>Usage</a>
         </TabTrigger>
-        <TabTrigger value="types" asChild>
-          <a href="types">Types</a>
+        <TabTrigger value={basePath + '/types'} asChild>
+          <a href={basePath + '/types'}>Types</a>
         </TabTrigger>
         <TabIndicator />
       </TabList>

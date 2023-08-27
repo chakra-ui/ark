@@ -4,20 +4,20 @@ import { Stack } from 'styled-system/jsx'
 import { ComponentTabs } from '~/components/navigation/component-tabs'
 import PageHeader from '~/components/page-header.astro'
 import DocsLayout from './docs-layout.astro'
-import Playground from '~/components/playground.astro'
 
 interface Props {
   component: CollectionEntry<'components'>
-  currentTab: string
 }
 
-const { component, currentTab } = Astro.props
+const pathname = Astro.url.pathname
+const basePath = `/docs/${Astro.params.framework}/components/${Astro.params.component}`
+const { component } = Astro.props
 ---
 
 <DocsLayout>
   <Stack gap={{ base: '5', md: '6' }}>
     <PageHeader component={component} />
-    <ComponentTabs currentTab={currentTab} client:load />
+    <ComponentTabs pathname={pathname} basePath={basePath} client:load />
     <slot />
   </Stack>
 </DocsLayout>
