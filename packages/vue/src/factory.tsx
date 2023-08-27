@@ -13,10 +13,10 @@ import {
   type ComponentCustomProps,
   type DefineComponent,
   type ExtractPropTypes,
+  type IntrinsicElementAttributes,
   type PropType,
   type VNodeProps,
 } from 'vue'
-import type { IntrinsicElementAttributes } from './dom.types'
 import { isValidVNodeElement, renderSlotFragments } from './utils'
 export type AsChildProps = {
   asChild?: boolean
