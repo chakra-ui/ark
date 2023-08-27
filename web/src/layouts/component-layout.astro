@@ -9,7 +9,7 @@ interface Props {
   component: CollectionEntry<'components'>
 }
 
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname.replace(/\/$/, '')
 const basePath = `/docs/${Astro.params.framework}/components/${Astro.params.component}`
 const { component } = Astro.props
 ---
