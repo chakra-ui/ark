@@ -34,22 +34,28 @@ import { ViewTransitions } from 'astro:transitions'
   </head>
   <body>
     <slot />
-    <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('ark-ui-color-mode')) {
-          return localStorage.getItem('ark-ui-color-mode')
+    <script>
+      const setDarkMode = () => {
+        const theme = (() => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('ark-ui-color-mode')) {
+            return localStorage.getItem('ark-ui-color-mode')
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark'
+          }
+          return 'light'
+        })()
+
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark')
+        } else {
+          document.documentElement.classList.add('dark')
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark'
-        }
-        return 'light'
-      })()
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark')
-      } else {
-        document.documentElement.classList.add('dark')
+        window.localStorage.setItem('ark-ui-color-mode', theme)
       }
-      window.localStorage.setItem('ark-ui-color-mode', theme)
+
+      setDarkMode()
+      document.addEventListener('astro:beforeload', setDarkMode)
     </script>
   </body>
 </html>
