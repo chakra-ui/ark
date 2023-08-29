@@ -40,6 +40,8 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
     'readOnly',
     'step',
     'thumbAlignment',
+    'thumbAlignment',
+    'thumbSize',
     'value',
   ])
   const slider = useSlider(useSliderProps)

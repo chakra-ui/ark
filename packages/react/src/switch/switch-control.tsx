@@ -6,10 +6,15 @@ import { useSwitchContext } from './switch-context'
 export type SwitchControlProps = ComponentPropsWithoutRef<typeof ark.span>
 
 export const SwitchControl = forwardRef<HTMLSpanElement, SwitchControlProps>((props, ref) => {
-  const { controlProps } = useSwitchContext()
+  const { controlProps, hiddenInputProps } = useSwitchContext()
   const mergedProps = mergeProps(controlProps, props)
 
-  return <ark.span {...mergedProps} ref={ref} />
+  return (
+    <>
+      <ark.span {...mergedProps} ref={ref} />
+      <input {...hiddenInputProps} />
+    </>
+  )
 })
 
 SwitchControl.displayName = 'SwitchControl'

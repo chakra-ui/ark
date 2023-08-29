@@ -7,8 +7,9 @@ import { type Optional } from '../types'
 export type UsePaginationProps = Optional<pagination.Context, 'id'> & {
   defaultPage?: pagination.Context['page']
 }
+export type UsePaginationReturn = pagination.Api
 
-export const usePagination = (props: UsePaginationProps) => {
+export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {
   const getRootNode = useEnvironmentContext()
 
   const initialContext = {
@@ -26,5 +27,3 @@ export const usePagination = (props: UsePaginationProps) => {
   const [state, send] = useMachine(pagination.machine(initialContext), { context })
   return pagination.connect(state, send, normalizeProps)
 }
-
-export type UsePaginationReturn = ReturnType<typeof usePagination>

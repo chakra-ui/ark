@@ -19,8 +19,9 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref)
     'ids',
     'multiple',
     'onChange',
-    'value',
+    'onFocusChange',
     'orientation',
+    'value',
   ])
   const accordion = useAccordion(useAccordionProps)
   const mergedProps = mergeProps(accordion.rootProps, divProps)

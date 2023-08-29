@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseEditableProps = Optional<editable.Context, 'id'> & {
   defaultValue?: editable.Context['value']
 }
-export type UseEditableReturn = ReturnType<typeof useEditable>
+export type UseEditableReturn = editable.MachineApi
 
-export const useEditable = (props: UseEditableProps) => {
+export const useEditable = (props: UseEditableProps): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

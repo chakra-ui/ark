@@ -5,7 +5,7 @@ import { Accordion } from './'
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {
     render(
-      <Accordion.Root value="0">
+      <Accordion.Root value={['0']}>
         <Accordion.Item value="0">
           <h2>
             <Accordion.Trigger asChild>
@@ -302,7 +302,7 @@ describe('Accordion', () => {
 
   it('should set the correct aria-expanded when an item is open/closed', async () => {
     render(
-      <Accordion.Root value="0">
+      <Accordion.Root value={['0']}>
         <Accordion.Item value="0">
           <h2>
             <Accordion.Trigger asChild>

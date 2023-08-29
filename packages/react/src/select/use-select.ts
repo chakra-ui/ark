@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseSelectProps = Optional<select.Context, 'id'> & {
   defaultValue?: select.Context['selectedOption']
 }
-export type UseSelectReturn = ReturnType<typeof useSelect>
+export type UseSelectReturn = select.Api
 
-export const useSelect = (props: UseSelectProps) => {
+export const useSelect = (props: UseSelectProps): UseSelectReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

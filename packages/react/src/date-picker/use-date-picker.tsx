@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
 export type UseDatePickerProps = Optional<datePicker.Context, 'id'>
-export type UseDatePickerReturn = ReturnType<typeof useDatePicker>
+export type UseDatePickerReturn = datePicker.Api
 
-export const useDatePicker = (props: UseDatePickerProps) => {
+export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),

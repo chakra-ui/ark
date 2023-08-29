@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseRatingGroupProps = Optional<ratingGroup.Context, 'id'> & {
   defaultValue?: ratingGroup.Context['value']
 }
-export type UseRatingGroupReturn = ReturnType<typeof useRatingGroup>
+export type UseRatingGroupReturn = ratingGroup.Api
 
-export const useRatingGroup = (props: UseRatingGroupProps) => {
+export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

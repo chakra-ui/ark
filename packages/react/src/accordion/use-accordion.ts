@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
   defaultValue?: accordion.Context['value']
 }
-export type UseAccordionReturn = ReturnType<typeof useAccordion>
+export type UseAccordionReturn = accordion.Api
 
-export const useAccordion = (props: UseAccordionProps) => {
+export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

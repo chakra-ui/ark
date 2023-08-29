@@ -48,7 +48,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) =
       'placeholder',
       'positioning',
       'readOnly',
-      'selectInputOnFocus',
       'selectionBehavior',
       'selectionData',
       'selectOnTab',

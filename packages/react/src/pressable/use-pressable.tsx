@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UsePressableProps = Optional<pressable.Context, 'id'>
-export type UsePressableReturn = ReturnType<typeof usePressable>
+export type UsePressableReturn = pressable.Api
 
-export const usePressable = (props?: UsePressableProps) => {
+export const usePressable = (props?: UsePressableProps): UsePressableReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),

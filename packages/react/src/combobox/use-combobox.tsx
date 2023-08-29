@@ -4,8 +4,9 @@ import { useId } from 'react'
 import { type Optional } from '../types'
 
 export type UseComboboxProps = Optional<combobox.Context, 'id'>
+export type UseComboboxReturn = combobox.Api
 
-export const useCombobox = (props: UseComboboxProps) => {
+export const useCombobox = (props: UseComboboxProps): UseComboboxReturn => {
   const context = {
     ...props,
     id: useId(),
@@ -14,5 +15,3 @@ export const useCombobox = (props: UseComboboxProps) => {
   const [state, send] = useMachine(combobox.machine(context), { context })
   return combobox.connect(state, send, normalizeProps)
 }
-
-export type UseComboboxReturn = ReturnType<typeof useCombobox>

@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseRadioGroupProps = Optional<radio.Context, 'id'> & {
   defaultValue?: radio.Context['value']
 }
-export type UseRadioGroupReturn = ReturnType<typeof useRadioGroup>
+export type UseRadioGroupReturn = radio.Api
 
-export const useRadioGroup = (props: UseRadioGroupProps) => {
+export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

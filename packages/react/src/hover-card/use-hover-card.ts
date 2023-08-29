@@ -5,8 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
+export type UseHoverCardReturn = hoverCard.Api
 
-export const useHoverCard = (props: UseHoverCardProps) => {
+export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),
@@ -17,5 +18,3 @@ export const useHoverCard = (props: UseHoverCardProps) => {
   const [state, send] = useMachine(hoverCard.machine(context), { context })
   return hoverCard.connect(state, send, normalizeProps)
 }
-
-export type UseHoverCardReturn = ReturnType<typeof useHoverCard>

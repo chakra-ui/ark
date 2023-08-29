@@ -5,8 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseTooltipProps = Optional<tooltip.Context, 'id'>
+export type UseTooltipReturn = tooltip.Api
 
-export const useTooltip = (props: UseTooltipProps) => {
+export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),
@@ -16,5 +17,3 @@ export const useTooltip = (props: UseTooltipProps) => {
   const [state, send] = useMachine(tooltip.machine(context), { context })
   return tooltip.connect(state, send, normalizeProps)
 }
-
-export type UseTooltipReturn = ReturnType<typeof useTooltip>

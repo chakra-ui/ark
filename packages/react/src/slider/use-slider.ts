@@ -8,9 +8,9 @@ import { type Optional } from '../types'
 export type UseSliderProps = Optional<slider.Context, 'id'> & {
   defaultValue?: slider.Context['value']
 }
-export type UseSliderReturn = ReturnType<typeof useSlider>
+export type UseSliderReturn = slider.Api
 
-export const useSlider = (props: UseSliderProps) => {
+export const useSlider = (props: UseSliderProps): UseSliderReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

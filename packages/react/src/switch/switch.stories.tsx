@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Switch, SwitchControl, SwitchInput, SwitchLabel, SwitchThumb } from './'
+import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from './'
 import './switch.css'
 
 type SwitchType = typeof Switch
@@ -14,7 +14,6 @@ export default meta
 
 export const Basic = () => (
   <Switch defaultChecked>
-    <SwitchInput />
     <SwitchControl>
       <SwitchThumb />
     </SwitchControl>
@@ -26,7 +25,6 @@ export const Controlled = () => {
   const [checked, setChecked] = useState(false)
   return (
     <Switch checked={checked} onChange={(e) => setChecked(e.checked)}>
-      <SwitchInput />
       <SwitchControl>
         <SwitchThumb />
       </SwitchControl>
@@ -39,7 +37,6 @@ export const RenderProp = () => (
   <Switch>
     {(api) => (
       <>
-        <SwitchInput />
         <SwitchControl>
           <SwitchThumb />
         </SwitchControl>

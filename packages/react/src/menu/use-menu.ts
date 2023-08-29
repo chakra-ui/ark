@@ -8,7 +8,7 @@ export type UseMenuProps = Optional<menu.Context, 'id'>
 
 export type UseMenuReturn = {
   machine: ReturnType<typeof menu.machine>
-  api: ReturnType<typeof menu.connect>
+  api: menu.Api
 }
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {

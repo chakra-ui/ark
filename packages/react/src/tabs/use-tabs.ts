@@ -1,15 +1,15 @@
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { connect, machine, type Context } from '@zag-js/tabs'
+import * as tabs from '@zag-js/tabs'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseTabsProps = Optional<Context, 'id'> & {
-  defaultValue?: Context['value']
+export type UseTabsProps = Optional<tabs.Context, 'id'> & {
+  defaultValue?: tabs.Context['value']
 }
-export type UseTabsReturn = ReturnType<typeof useTabs>
+export type UseTabsReturn = tabs.Api
 
-export const useTabs = (props: UseTabsProps) => {
+export const useTabs = (props: UseTabsProps): UseTabsReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
@@ -17,12 +17,11 @@ export const useTabs = (props: UseTabsProps) => {
     ...props,
     value: props.defaultValue,
   }
-
   const context = {
     ...initialContext,
     value: props.value,
   }
-  const [state, send] = useMachine(machine(initialContext), { context })
+  const [state, send] = useMachine(tabs.machine(initialContext), { context })
 
-  return connect(state, send, normalizeProps)
+  return tabs.connect(state, send, normalizeProps)
 }

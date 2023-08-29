@@ -30,7 +30,7 @@ export const Basic = () => {
 export const Initial = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root defaultValue="panel-2">
+    <Accordion.Root defaultValue={['panel-2']}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.Trigger>{item} trigger</Accordion.Trigger>
@@ -88,7 +88,7 @@ export const Multiple = () => {
 
 export const Controlled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
-  const [value, setValue] = useState<string | string[] | null>(null)
+  const [value, setValue] = useState<string[]>([])
   return (
     <Accordion.Root value={value} onChange={(details) => setValue(details.value)}>
       {items.map((item, id) => (
