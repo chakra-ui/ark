@@ -15,7 +15,7 @@
     "fs-extra": "11.1.1",
     "globby": "13.2.2",
     "pkg-dir": "7.0.0",
-    "prettier": "3.0.2",
+    "prettier": "3.0.3",
     "ts-morph": "19.0.0",
     "ts-pattern": "5.0.5"
   },

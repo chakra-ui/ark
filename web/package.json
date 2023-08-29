@@ -30,7 +30,7 @@
     "@park-ui/presets": "0.9.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
-    "prettier": "3.0.2",
+    "prettier": "3.0.3",
     "prettier-plugin-astro": "0.12.0"
   }
 }
