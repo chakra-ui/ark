@@ -23,7 +23,7 @@
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
     "onChange": {
-      "type": "(details: {\n  page: number\n  pageSize: number\n  srcElement: HTMLElement | null\n}) => void",
+      "type": "(details: ChangeDetails) => void",
       "isRequired": false,
       "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },

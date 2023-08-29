@@ -85,6 +85,11 @@
       "isRequired": false,
       "description": "Function invoked when the slider value change is started"
     },
+    "onFocusChange": {
+      "type": "(details: { index: number; value: number[] }) => void",
+      "isRequired": false,
+      "description": "Function invoked when the slider's focused index changes"
+    },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
@@ -101,9 +106,14 @@
       "description": "The step value of the slider"
     },
     "thumbAlignment": {
-      "type": "'contain' | 'center'",
+      "type": "'center' | 'contain'",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
+    },
+    "thumbSize": {
+      "type": "{ width: number; height: number }",
+      "isRequired": false,
+      "description": "The slider thumbs dimensions"
     },
     "value": {
       "type": "number[]",

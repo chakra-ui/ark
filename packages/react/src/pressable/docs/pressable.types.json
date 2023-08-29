@@ -139,6 +139,6 @@
       "isRequired": true,
       "description": "Whether the element is pressed."
     },
-    "pressableProps": { "type": "HTMLAttributes<HTMLElement>", "isRequired": true }
+    "pressableProps": { "type": "Dict<any>", "isRequired": true }
   }
 }
