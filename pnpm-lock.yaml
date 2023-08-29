@@ -122,7 +122,7 @@ importers:
         version: 0.17.0
       '@zag-js/date-utils':
         specifier: 0.17.0
-        version: 0.17.0(@internationalized/date@3.3.0)
+        version: 0.17.0(@internationalized/date@3.4.0)
       '@zag-js/dialog':
         specifier: 0.17.0
         version: 0.17.0
@@ -723,11 +723,11 @@ importers:
         specifier: 0.13.1
         version: 0.13.1(astro@2.10.14)(ts-node@10.9.1)(typescript@5.2.2)
       '@pandacss/dev':
-        specifier: 0.13.0
-        version: 0.13.0(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
+        specifier: 0.13.1
+        version: 0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
       '@park-ui/presets':
         specifier: 0.9.0
-        version: 0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
+        version: 0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
       '@types/react':
         specifier: 18.2.20
         version: 18.2.20
@@ -750,8 +750,8 @@ importers:
         specifier: 13.4.5
         version: 13.4.5
       '@pandacss/dev':
-        specifier: 0.13.0
-        version: 0.13.0(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2)
+        specifier: 0.13.1
+        version: 0.13.1(@internationalized/date@3.4.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2)
       '@theme-toggles/react':
         specifier: 4.1.0
         version: 4.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -853,7 +853,7 @@ packages:
     resolution: {integrity: sha512-dlR6LdS+0SzOAPx/TPRhnoi7hE251OVeT2Snw0RguNbBSbjUHdWr0l3vcUUDg26rEysT89kCbtw1lVorBXLLCg==}
     dev: false
 
-  /@ark-ui/react@0.9.0(@internationalized/date@3.3.0)(react-dom@18.2.0)(react@18.2.0):
+  /@ark-ui/react@0.9.0(@internationalized/date@3.4.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-lg9Sl9/SfVG9pqyCwjSFldNFGKMrs6aoFG7J83fk2ha8XKcpFIMNZwn9Hc3qkzeKLIYGhtED8vYG8UeNTT5psw==}
     peerDependencies:
       react: '>=18.0.0'
@@ -868,7 +868,7 @@ packages:
       '@zag-js/color-utils': 0.12.0
       '@zag-js/combobox': 0.12.0
       '@zag-js/date-picker': 0.12.0
-      '@zag-js/date-utils': 0.12.0(@internationalized/date@3.3.0)
+      '@zag-js/date-utils': 0.12.0(@internationalized/date@3.4.0)
       '@zag-js/dialog': 0.12.0
       '@zag-js/editable': 0.12.0
       '@zag-js/hover-card': 0.12.0
@@ -3732,16 +3732,10 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
 
-  /@internationalized/date@3.3.0:
-    resolution: {integrity: sha512-qfRd7jCIgUjabI8RxeAsxhLDRS1u8eUPX96GB5uBp1Tpm6YY6dVveE7YwsTEV6L4QOp5LKFirFHHGsL/XQwJIA==}
-    dependencies:
-      '@swc/helpers': 0.5.1
-
   /@internationalized/date@3.4.0:
     resolution: {integrity: sha512-QUDSGCsvrEVITVf+kv9VSAraAmCgjQmU5CiXtesUBBhBe374NmnEIIaOFBZ72t29dfGMBP0zF+v6toVnbcc6jg==}
     dependencies:
       '@swc/helpers': 0.5.1
-    dev: false
 
   /@ioredis/commands@1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
@@ -4820,6 +4814,7 @@ packages:
       jiti: 1.19.1
       merge-anything: 5.1.7
       typescript: 5.2.2
+    dev: true
 
   /@pandacss/config@0.13.1:
     resolution: {integrity: sha512-SloAHNewuepBywsmwa+HcRIElmUxvulfyW1N47ObWr2k8LlXdwXEpwIwzZNHs12CtwmZdK9puoXsj6D3k14zPA==}
@@ -4834,7 +4829,6 @@ packages:
       jiti: 1.19.1
       merge-anything: 5.1.7
       typescript: 5.2.2
-    dev: true
 
   /@pandacss/core@0.13.0:
     resolution: {integrity: sha512-uFKwgPDur741FYJyyik2hSh0l07cRlw0iMv50XvGEcK9M6zcWc22NlcFcjha6YVpKjkUWeohNUUIJ6D0uQ64fQ==}
@@ -4856,6 +4850,7 @@ packages:
       postcss-normalize-whitespace: 6.0.0(postcss@8.4.27)
       postcss-selector-parser: 6.0.13
       ts-pattern: 5.0.4
+    dev: true
 
   /@pandacss/core@0.13.1:
     resolution: {integrity: sha512-sR5Nb6WPHbzQa1FxPhr+CtajCjU0kgDU/jX5M9majra+JYqplQfN1I4cUdb7IEzqOnRIO4sj8SJGqxgprfufIw==}
@@ -4877,9 +4872,8 @@ packages:
       postcss-normalize-whitespace: 6.0.0(postcss@8.4.27)
       postcss-selector-parser: 6.0.13
       ts-pattern: 5.0.4
-    dev: true
 
-  /@pandacss/dev@0.13.0(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2):
+  /@pandacss/dev@0.13.0(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
     resolution: {integrity: sha512-RX8b8AZhlXb45D8NQ4nZPm0H7tOSmrB+759HHJJyaLwFDGUBEfDHpKmsqaGSHkLsUTOMw0FTrviAspguu/rCHQ==}
     hasBin: true
     dependencies:
@@ -4891,7 +4885,7 @@ packages:
       '@pandacss/postcss': 0.13.0(typescript@5.2.2)
       '@pandacss/preset-panda': 0.13.0
       '@pandacss/shared': 0.13.0
-      '@pandacss/studio': 0.13.0(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2)
+      '@pandacss/studio': 0.13.0(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
       '@pandacss/token-dictionary': 0.13.0
       '@pandacss/types': 0.13.0
       cac: 6.7.14
@@ -4912,23 +4906,58 @@ packages:
       - supports-color
       - terser
       - typescript
-    dev: false
+    dev: true
 
-  /@pandacss/dev@0.13.0(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
-    resolution: {integrity: sha512-RX8b8AZhlXb45D8NQ4nZPm0H7tOSmrB+759HHJJyaLwFDGUBEfDHpKmsqaGSHkLsUTOMw0FTrviAspguu/rCHQ==}
+  /@pandacss/dev@0.13.1(@internationalized/date@3.4.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2):
+    resolution: {integrity: sha512-7KURO4dhmAV46xzGVr8lzm8PTxyQoyGgGTjSIEW2STx7rltyMwGxg1hjr/jw/xdLwpQzquB1NQ5w588uLM02dA==}
     hasBin: true
     dependencies:
       '@clack/prompts': 0.6.3
-      '@pandacss/config': 0.13.0
-      '@pandacss/error': 0.13.0
-      '@pandacss/logger': 0.13.0
-      '@pandacss/node': 0.13.0(typescript@5.2.2)
-      '@pandacss/postcss': 0.13.0(typescript@5.2.2)
-      '@pandacss/preset-panda': 0.13.0
-      '@pandacss/shared': 0.13.0
-      '@pandacss/studio': 0.13.0(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
-      '@pandacss/token-dictionary': 0.13.0
-      '@pandacss/types': 0.13.0
+      '@pandacss/config': 0.13.1
+      '@pandacss/error': 0.13.1
+      '@pandacss/logger': 0.13.1
+      '@pandacss/node': 0.13.1(typescript@5.2.2)
+      '@pandacss/postcss': 0.13.1(typescript@5.2.2)
+      '@pandacss/preset-panda': 0.13.1
+      '@pandacss/shared': 0.13.1
+      '@pandacss/studio': 0.13.1(@internationalized/date@3.4.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2)
+      '@pandacss/token-dictionary': 0.13.1
+      '@pandacss/types': 0.13.1
+      cac: 6.7.14
+      pathe: 1.1.1
+      perfect-debounce: 1.0.0
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@pandacss/dev@0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
+    resolution: {integrity: sha512-7KURO4dhmAV46xzGVr8lzm8PTxyQoyGgGTjSIEW2STx7rltyMwGxg1hjr/jw/xdLwpQzquB1NQ5w588uLM02dA==}
+    hasBin: true
+    dependencies:
+      '@clack/prompts': 0.6.3
+      '@pandacss/config': 0.13.1
+      '@pandacss/error': 0.13.1
+      '@pandacss/logger': 0.13.1
+      '@pandacss/node': 0.13.1(typescript@5.2.2)
+      '@pandacss/postcss': 0.13.1(typescript@5.2.2)
+      '@pandacss/preset-panda': 0.13.1
+      '@pandacss/shared': 0.13.1
+      '@pandacss/studio': 0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
+      '@pandacss/token-dictionary': 0.13.1
+      '@pandacss/types': 0.13.1
       cac: 6.7.14
       pathe: 1.1.1
       perfect-debounce: 1.0.0
@@ -4951,10 +4980,10 @@ packages:
 
   /@pandacss/error@0.13.0:
     resolution: {integrity: sha512-+YOuvcfVRZ67VfQqq4KFc06FHKKBaMENaEOfxlZ3F6girKDB66e4NVy6V+gxQQUhxZ2ADxffUounuxtzCo/dOA==}
+    dev: true
 
   /@pandacss/error@0.13.1:
     resolution: {integrity: sha512-BVZuYQzGWvRa6SWl4XllwbsLn2/t5qXwd14zZe20K7lZvsqIWO1FcLrcropxSCSl1KXVkfsd7XJCP9TL71Vnmg==}
-    dev: true
 
   /@pandacss/extractor@0.13.0(typescript@5.2.2):
     resolution: {integrity: sha512-6BiWNyU03riqLdmCjYgfSaO05nzY8ta9rcdU/NOs5dW9A9azq8o9fRFv2wdxfivhLVvxfsLloheHQ789Dkhtzw==}
@@ -4966,6 +4995,7 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
+    dev: true
 
   /@pandacss/extractor@0.13.1(typescript@5.2.2):
     resolution: {integrity: sha512-rs4k2EhyvEmKJfzyUOxFAGcEy18Xg66YCXvWuPJ05HiVx7CRKYSLcZ/KTPxe9XJZ9duw6aQxBM2Pry/OFXhZTw==}
@@ -4977,7 +5007,6 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
-    dev: true
 
   /@pandacss/generator@0.13.0:
     resolution: {integrity: sha512-pY5bZFhjngayhDDg/FestqSaVMjiJkPf09/59c5JcPTsRVMktCKWeao2YGkyNyaicpLdJ4XfRV9LTsHpeNktew==}
@@ -4994,6 +5023,7 @@ packages:
       pluralize: 8.0.0
       postcss: 8.4.27
       ts-pattern: 5.0.4
+    dev: true
 
   /@pandacss/generator@0.13.1:
     resolution: {integrity: sha512-XUWLvsQm4pwgDMgjkUoWlBtjokPfHaSMMXeiaKequn4MvVEEmeTA8XCRO+OIBPyDPY8Gx0RKrdmZP3Y1QGiTng==}
@@ -5010,27 +5040,26 @@ packages:
       pluralize: 8.0.0
       postcss: 8.4.27
       ts-pattern: 5.0.4
-    dev: true
 
   /@pandacss/is-valid-prop@0.13.0:
     resolution: {integrity: sha512-ZphmFpf7nYFPZCPrjE7fOEgcmhG0aJQu+Zy3PTB/wmoD7u5pVfLyYnKEIeTpOlB1ellT8oXs5Def6fNwm616yw==}
+    dev: true
 
   /@pandacss/is-valid-prop@0.13.1:
     resolution: {integrity: sha512-qOhgbnvxpG2HT0bzt2jvnk5IDoajk+7JztSfH9XjkuyVwkWfibHS7M19TJSld06cVvLgPvSTTDDCuKsx95IGXQ==}
-    dev: true
 
   /@pandacss/logger@0.13.0:
     resolution: {integrity: sha512-IVMUvh3INIzn9ke/mIVweNtknhNBvyPjFPrJ+U0nn38iw0gvKFYsL78zBpKNo2xJp/3YbucLi62wMh1h1c806Q==}
     dependencies:
       kleur: 4.1.5
       lil-fp: 1.4.5
+    dev: true
 
   /@pandacss/logger@0.13.1:
     resolution: {integrity: sha512-KTkTR9VW0151wirULj3qeOgZ5Gbvs5655Qs1gSyAfQunrWTlh+QoEoZNhH0UQ0FNeQKQN8LpB5SI7Sz3mDRmWQ==}
     dependencies:
       kleur: 4.1.5
       lil-fp: 1.4.5
-    dev: true
 
   /@pandacss/node@0.13.0(typescript@5.2.2):
     resolution: {integrity: sha512-nOkLYx948Q7Ra2x14JLC6+PKpOsz9+lGin0TcFl9jlTbHrFqJO6DYSpScY9Rdn8iFkYvcN0uE97j2eDll8f+8g==}
@@ -5069,6 +5098,7 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
+    dev: true
 
   /@pandacss/node@0.13.1(typescript@5.2.2):
     resolution: {integrity: sha512-O+6QMenwAL0Si6Ud+AuwxTIM5bUnv7SCl4ns2lTTVrrrbk7SneHmRO2ltls+52GYKjJAOA+5xJe6bVuc3pNSDQ==}
@@ -5107,12 +5137,11 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
-    dev: true
 
   /@pandacss/parser@0.13.0(typescript@5.2.2):
     resolution: {integrity: sha512-eYPiZkjVVyDritGmXlzmhYt82NxNzOLtJDARxBCQWhuaIhj70xa1IW7zeG4Abvb3qr+rhjjNulB4tGfvdLfKMA==}
     dependencies:
-      '@pandacss/config': 0.13.0
+      '@pandacss/config': 0.13.1
       '@pandacss/extractor': 0.13.0(typescript@5.2.2)
       '@pandacss/is-valid-prop': 0.13.0
       '@pandacss/logger': 0.13.0
@@ -5126,6 +5155,7 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
+    dev: true
 
   /@pandacss/parser@0.13.1(typescript@5.2.2):
     resolution: {integrity: sha512-uJISNPBX22FvEX+1Lt+nORJiw0+FHlHW79YB5o784g0wAvja6ivo2/z+17hfKhLcKPwJiYDH3btCtoXvUhvY/A==}
@@ -5144,7 +5174,6 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
-    dev: true
 
   /@pandacss/postcss@0.13.0(typescript@5.2.2):
     resolution: {integrity: sha512-VL+J7M2ZEHqMFLMVCm9ODvHUUdFMizcb57GV/hjBkk92TT1kslquVU2V1p0nPInAM3MwOHJrePfedwXHJ4ESzQ==}
@@ -5154,6 +5183,7 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
+    dev: true
 
   /@pandacss/postcss@0.13.1(typescript@5.2.2):
     resolution: {integrity: sha512-Kfmy35iMYTXVu0a6tjgsMWwpwaCy0p+b0RS8WiH2mgskc4/dJF2YJM5HSRaQei/DqZrnjxm8WOY0QaqrRcmStQ==}
@@ -5163,74 +5193,40 @@ packages:
     transitivePeerDependencies:
       - jsdom
       - typescript
-    dev: true
 
   /@pandacss/preset-base@0.13.0:
     resolution: {integrity: sha512-+KuZfLWpUXYejAGITuEllPeR1JSeVGWUJTFPVearQFYLsG5tz5UNUTspoEoYbH8IzXwx/QtUer8OwBEmKeIOyg==}
     dependencies:
       '@pandacss/types': 0.13.0
+    dev: true
 
   /@pandacss/preset-base@0.13.1:
     resolution: {integrity: sha512-0F43QYf3Xi5BIlHstu+aC1w3hMIGnNg0gQXGMxmg8lWMNsWEZilFkaO+ps+Qklo4XGYkDEhfbNkjUjBEPSDvMA==}
     dependencies:
       '@pandacss/types': 0.13.1
-    dev: true
 
   /@pandacss/preset-panda@0.13.0:
     resolution: {integrity: sha512-B1U/D8vlC0qCJR3Uwep6Rx6eHA2SU60NVqi0elJD5E7MUEzSkBAw4T9SeRIjncQx68B5hmpeW/puAkrwKwWMeg==}
     dependencies:
       '@pandacss/types': 0.13.0
+    dev: true
 
   /@pandacss/preset-panda@0.13.1:
     resolution: {integrity: sha512-KaGsVLefRm8SyGadDdwXJV7OzeQXxDzRrR+jzh3ZpG2+vV3xkzhLNhMZB9Dy/KV04N6MV3yBLeLvh9hClTJubg==}
     dependencies:
       '@pandacss/types': 0.13.1
-    dev: true
 
   /@pandacss/shared@0.13.0:
     resolution: {integrity: sha512-cs03L9JcRNtqj8q/orfsVx9mGRiF5KsasWY9v2KNzDvHRkAq6B9TUMLK5nItOpEAYn+qNH6cT/hNlYrWP9uyWA==}
+    dev: true
 
   /@pandacss/shared@0.13.1:
     resolution: {integrity: sha512-Pwfyxs6Zs4aTXXe29JRnzLwfHDDUWakYoc+JXnBD0c/lwQEyXOITKZyxvrk+oByiadvAbLffHDr4CP/3tu0BZQ==}
-    dev: true
 
-  /@pandacss/studio@0.13.0(@internationalized/date@3.3.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2):
+  /@pandacss/studio@0.13.0(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
     resolution: {integrity: sha512-MKgJSSznzThVULKPkvHSuUWb6z1zlQIAIBJqFclo/chGtC4CIOMEb+0WeDEByw6kor4tZnyYx1R8rJsxKfCjHw==}
     dependencies:
-      '@ark-ui/react': 0.9.0(@internationalized/date@3.3.0)(react-dom@18.2.0)(react@18.2.0)
-      '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
-      '@pandacss/config': 0.13.0
-      '@pandacss/logger': 0.13.0
-      '@pandacss/node': 0.13.0(typescript@5.2.2)
-      '@pandacss/shared': 0.13.0
-      '@pandacss/token-dictionary': 0.13.0
-      '@pandacss/types': 0.13.0
-      astro: 2.9.6(@types/node@18.17.4)
-      javascript-stringify: 2.1.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      vite: 4.4.9(@types/node@18.17.4)
-    transitivePeerDependencies:
-      - '@internationalized/date'
-      - '@types/node'
-      - '@types/react'
-      - '@types/react-dom'
-      - jsdom
-      - less
-      - lightningcss
-      - sass
-      - sharp
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - typescript
-    dev: false
-
-  /@pandacss/studio@0.13.0(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
-    resolution: {integrity: sha512-MKgJSSznzThVULKPkvHSuUWb6z1zlQIAIBJqFclo/chGtC4CIOMEb+0WeDEByw6kor4tZnyYx1R8rJsxKfCjHw==}
-    dependencies:
-      '@ark-ui/react': 0.9.0(@internationalized/date@3.3.0)(react-dom@18.2.0)(react@18.2.0)
+      '@ark-ui/react': 0.9.0(@internationalized/date@3.4.0)(react-dom@18.2.0)(react@18.2.0)
       '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@pandacss/config': 0.13.0
       '@pandacss/logger': 0.13.0
@@ -5260,12 +5256,79 @@ packages:
       - typescript
     dev: true
 
+  /@pandacss/studio@0.13.1(@internationalized/date@3.4.0)(@types/node@18.17.4)(@types/react-dom@18.2.7)(@types/react@18.2.17)(typescript@5.2.2):
+    resolution: {integrity: sha512-VthMj13QmkEhZT0AZwnibJ2oE9r/GzBfZ82cHClaso5PVPo63wHwOePcpcYOFB9nTWRCJIOCmgE3CcDMrBTynA==}
+    dependencies:
+      '@ark-ui/react': 0.9.0(@internationalized/date@3.4.0)(react-dom@18.2.0)(react@18.2.0)
+      '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.17)(react-dom@18.2.0)(react@18.2.0)
+      '@pandacss/config': 0.13.1
+      '@pandacss/logger': 0.13.1
+      '@pandacss/node': 0.13.1(typescript@5.2.2)
+      '@pandacss/shared': 0.13.1
+      '@pandacss/token-dictionary': 0.13.1
+      '@pandacss/types': 0.13.1
+      astro: 2.9.6(@types/node@18.17.4)
+      javascript-stringify: 2.1.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      vite: 4.4.9(@types/node@18.17.4)
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@pandacss/studio@0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
+    resolution: {integrity: sha512-VthMj13QmkEhZT0AZwnibJ2oE9r/GzBfZ82cHClaso5PVPo63wHwOePcpcYOFB9nTWRCJIOCmgE3CcDMrBTynA==}
+    dependencies:
+      '@ark-ui/react': 0.9.0(@internationalized/date@3.4.0)(react-dom@18.2.0)(react@18.2.0)
+      '@astrojs/react': 2.2.1(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
+      '@pandacss/config': 0.13.1
+      '@pandacss/logger': 0.13.1
+      '@pandacss/node': 0.13.1(typescript@5.2.2)
+      '@pandacss/shared': 0.13.1
+      '@pandacss/token-dictionary': 0.13.1
+      '@pandacss/types': 0.13.1
+      astro: 2.9.6(@types/node@20.4.7)
+      javascript-stringify: 2.1.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      vite: 4.4.9(@types/node@20.4.7)
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: true
+
   /@pandacss/token-dictionary@0.13.0:
     resolution: {integrity: sha512-5iIT1O5q1VuP1Kltqj85JwgpFmvOok4bPvYqZKn+mPnfNGbOfrEAmMaKWVfjgdL/fp7Pq1zeNwuNPUAXQ6uIug==}
     dependencies:
       '@pandacss/shared': 0.13.0
       '@pandacss/types': 0.13.0
       ts-pattern: 5.0.4
+    dev: true
 
   /@pandacss/token-dictionary@0.13.1:
     resolution: {integrity: sha512-tzO5YKT7S5pG5WsPTPocHHd61WyHei1YMz5JfrS8T4+3e/LYJHqlLjgHiGxDYxRHwIJ0i0gBvxJGqHqYuOCevg==}
@@ -5273,14 +5336,13 @@ packages:
       '@pandacss/shared': 0.13.1
       '@pandacss/types': 0.13.1
       ts-pattern: 5.0.4
-    dev: true
 
   /@pandacss/types@0.13.0:
     resolution: {integrity: sha512-lN8whVrOBZxncKcAXxnsm2XEr8D/+8i2UEMnoe/hbXBRWb3sXBoOwO1o90rE7B0K/p9y+A3/yisGy4kZGOLOrA==}
+    dev: true
 
   /@pandacss/types@0.13.1:
     resolution: {integrity: sha512-L7W1xa74xOKOrCL2BQhtMk2p2az0tGWfIH4WpilEmIgTAsNA4rAt5NJQX6Mg3vjnhIxaAhj9L0VTk9gXCRYj8Q==}
-    dev: true
 
   /@parcel/watcher-wasm@2.3.0-alpha.1:
     resolution: {integrity: sha512-wo6065l1MQ6SJPPchYw/q8J+pFL40qBXLu4Td2CXeQ/+mUk8NenNqC75P/P1Cyvpam0kfk91iszd+XL+xKDQww==}
@@ -5291,13 +5353,13 @@ packages:
       napi-wasm: 1.1.0
     dev: false
 
-  /@park-ui/presets@0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
+  /@park-ui/presets@0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2):
     resolution: {integrity: sha512-mGVKsSaRAbOLe3HNVg5GuLyOQvEHnhH8Sqna1+E2rI9mJMfcffnbtJnJKi18DfXnk8njKwxWbwyaprd1x0Glrw==}
     peerDependencies:
       '@ark-ui/react': ^0.13.0
     dependencies:
       '@ark-ui/react': link:packages/react
-      '@pandacss/dev': 0.13.0(@internationalized/date@3.3.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
+      '@pandacss/dev': 0.13.0(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(typescript@5.2.2)
     transitivePeerDependencies:
       - '@internationalized/date'
       - '@types/node'
@@ -8668,10 +8730,10 @@ packages:
   /@zag-js/date-picker@0.12.0:
     resolution: {integrity: sha512-72fnmI8YlY9YvAUFRIefDhMVwWA8zkDAXcX24+ZNtjbmBnUhjkE16W0w5duOAqiIG2VoYMyQmx4cyyVfR9EB7Q==}
     dependencies:
-      '@internationalized/date': 3.3.0
+      '@internationalized/date': 3.4.0
       '@zag-js/anatomy': 0.12.0
       '@zag-js/core': 0.12.0
-      '@zag-js/date-utils': 0.12.0(@internationalized/date@3.3.0)
+      '@zag-js/date-utils': 0.12.0(@internationalized/date@3.4.0)
       '@zag-js/dismissable': 0.12.0
       '@zag-js/dom-event': 0.12.0
       '@zag-js/dom-query': 0.12.0
@@ -8699,20 +8761,12 @@ packages:
       '@zag-js/utils': 0.17.0
     dev: false
 
-  /@zag-js/date-utils@0.12.0(@internationalized/date@3.3.0):
+  /@zag-js/date-utils@0.12.0(@internationalized/date@3.4.0):
     resolution: {integrity: sha512-BYhhw3xFTIR9lUymLiBCkELZwd8VI8JeK16SmhFRAMAWG5ymrKKMz22PeaM4VX92/fzsMSNFQU1FK2kaEHsurA==}
     peerDependencies:
       '@internationalized/date': '>=3.0.0'
     dependencies:
-      '@internationalized/date': 3.3.0
-
-  /@zag-js/date-utils@0.17.0(@internationalized/date@3.3.0):
-    resolution: {integrity: sha512-vNkUSlFlJtRijFVIBC8pXx6XCDys3vGqKE2Bwy6++z9rqv0oGDTBREJ6ukapv3e6gQg2WWwlyebNCSWBlJUBQQ==}
-    peerDependencies:
-      '@internationalized/date': '>=3.0.0'
-    dependencies:
-      '@internationalized/date': 3.3.0
-    dev: false
+      '@internationalized/date': 3.4.0
 
   /@zag-js/date-utils@0.17.0(@internationalized/date@3.4.0):
     resolution: {integrity: sha512-vNkUSlFlJtRijFVIBC8pXx6XCDys3vGqKE2Bwy6++z9rqv0oGDTBREJ6ukapv3e6gQg2WWwlyebNCSWBlJUBQQ==}
