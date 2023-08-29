@@ -37,6 +37,7 @@ export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, re
       'maxLength',
       'name',
       'onChange',
+      'onFocusChange',
       'onFocusOutside',
       'onInteractOutside',
       'onInvalid',
@@ -45,7 +46,6 @@ export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, re
       'translations',
       'validate',
       'value',
-      'onFocusChange',
     ],
   )
   const tagsInput = useTagsInput(useTagsInputProps)
