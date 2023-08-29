@@ -35,7 +35,7 @@ export const useAccordion = <T extends ExtractPropTypes<AccordionContext>>(
     () => reactiveContext.modelValue,
     (value, prevValue) => {
       if (value === prevValue) return
-      api.value.setValue(value as string | string[])
+      api.value.setValue(value as string[])
     },
   )
 

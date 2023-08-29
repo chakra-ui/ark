@@ -8,9 +8,9 @@ export type UseSplitterProps = Optional<splitter.Context, 'id'> & {
   defaultSize?: splitter.Context['size']
 }
 
-export type UseSplitterReturn = ReturnType<typeof useSplitter>
+export type UseSplitterReturn = splitter.Api
 
-export const useSplitter = (props: UseSplitterProps) => {
+export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

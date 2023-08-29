@@ -47,7 +47,6 @@ export const Combobox = (props: ComboboxProps) => {
     'placeholder',
     'positioning',
     'readOnly',
-    'selectInputOnFocus',
     'selectionBehavior',
     'selectionData',
     'selectOnTab',

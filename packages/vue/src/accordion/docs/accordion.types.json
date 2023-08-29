@@ -30,16 +30,21 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
-    "modelValue": { "type": "string | string[]", "isRequired": false },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
     "onChange": {
-      "type": "(details: { value: string | string[] | null }) => void",
+      "type": "(details: ChangeDetails) => void",
       "isRequired": false,
       "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the focused accordion item changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
@@ -47,7 +52,7 @@
       "description": "The orientation of the accordion items."
     },
     "value": {
-      "type": "string | string[]",
+      "type": "string[]",
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
     }

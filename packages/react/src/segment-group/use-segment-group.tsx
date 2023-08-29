@@ -7,9 +7,9 @@ import { type Optional } from '../types'
 export type UseSegmentGroupProps = Optional<segmentGroup.Context, 'id'> & {
   defaultValue?: segmentGroup.Context['value']
 }
-export type UseSegmentGroupReturn = ReturnType<typeof useSegmentGroup>
+export type UseSegmentGroupReturn = segmentGroup.Api
 
-export const useSegmentGroup = (props: UseSegmentGroupProps) => {
+export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),

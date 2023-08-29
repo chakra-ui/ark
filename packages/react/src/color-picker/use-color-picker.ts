@@ -8,11 +8,11 @@ import type { Optional } from '../types'
 export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
   defaultValue?: colorPicker.Context['value']
 }
-export type UseColorPickerReturn = ReturnType<typeof useColorPicker>
+export type UseColorPickerReturn = colorPicker.Api
 
 type ChangeDetails = Parameters<NonNullable<colorPicker.Context['onChange']>>[0]
 
-export const useColorPicker = (props: UseColorPickerProps) => {
+export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext: colorPicker.Context = {
     id: useId(),

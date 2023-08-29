@@ -5,9 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UsePopoverProps = Optional<popover.Context, 'id'>
-export type UsePopoverReturn = ReturnType<typeof usePopover>
+export type UsePopoverReturn = popover.Api
 
-export const usePopover = (props: UsePopoverProps) => {
+export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),

@@ -5,10 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseCarouselProps = Optional<carousel.Context, 'id'>
+export type UseCarouselReturn = carousel.Api
 
-export type UseCarouselReturn = ReturnType<typeof useCarousel>
-
-export const useCarousel = (props: UseCarouselProps) => {
+export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),

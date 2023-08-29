@@ -5,8 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseSwitchProps = Optional<zagSwitch.Context, 'id'> & { defaultChecked?: boolean }
+export type UseSwitchReturn = zagSwitch.Api
 
-export const useSwitch = (props: UseSwitchProps) => {
+export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
   const getRootNode = useEnvironmentContext()
 
   const initialContext = {
@@ -23,5 +24,3 @@ export const useSwitch = (props: UseSwitchProps) => {
   const [state, send] = useMachine(zagSwitch.machine(initialContext), { context })
   return zagSwitch.connect(state, send, normalizeProps)
 }
-
-export type UseSwitchReturn = ReturnType<typeof useSwitch>

@@ -1,13 +1,13 @@
-import { mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import * as tabs from '@zag-js/tabs'
-import { createMemo, createUniqueId } from 'solid-js'
+import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseTabsProps = Optional<tabs.Context, 'id'>
-export type UseTabsReturn = ReturnType<typeof useTabs>
+export type UseTabsReturn = Accessor<tabs.Api<PropTypes>>
 
-export const useTabs = (props: UseTabsProps) => {
+export const useTabs = (props: UseTabsProps): UseTabsReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
   const [state, send] = useMachine(tabs.machine(context), { context })

@@ -7,8 +7,9 @@ import { type Optional } from '../types'
 export type UsePinInputProps = Optional<pinInput.Context, 'id'> & {
   defaultValue?: pinInput.Context['value']
 }
+export type UsePinInputReturn = pinInput.Api
 
-export const usePinInput = (props: UsePinInputProps) => {
+export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
@@ -25,5 +26,3 @@ export const usePinInput = (props: UsePinInputProps) => {
   const [state, send] = useMachine(pinInput.machine(initialContext), { context })
   return pinInput.connect(state, send, normalizeProps)
 }
-
-export type UsePinInputReturn = ReturnType<typeof usePinInput>

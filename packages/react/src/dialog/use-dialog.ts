@@ -5,8 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseDialogProps = Optional<dialog.Context, 'id'>
+export type UseDialogReturn = dialog.Api
 
-export const useDialog = (props: UseDialogProps) => {
+export const useDialog = (props: UseDialogProps): UseDialogReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),
@@ -17,5 +18,3 @@ export const useDialog = (props: UseDialogProps) => {
   const [state, send] = useMachine(dialog.machine(context), { context })
   return dialog.connect(state, send, normalizeProps)
 }
-
-export type UseDialogReturn = ReturnType<typeof useDialog>

@@ -10,14 +10,12 @@ export type SwitchProps = Ark.SwitchProps & SwitchRecipeVariantProps
 
 const SwitchRoot = withProvider(styled(Ark.Switch.Root), 'root')
 export const SwitchControl = withContext(styled(Ark.Switch.Control), 'control')
-export const SwitchInput = withContext(styled(Ark.Switch.Input), 'input')
 export const SwitchLabel = withContext(styled(Ark.Switch.Label), 'label')
 export const SwitchThumb = withContext(styled(Ark.Switch.Thumb), 'thumb')
 
 export const Switch = Object.assign(SwitchRoot, {
   Root: SwitchRoot,
   Control: SwitchControl,
-  Input: SwitchInput,
   Label: SwitchLabel,
   Thumb: SwitchThumb,
 })

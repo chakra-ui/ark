@@ -24,7 +24,7 @@ describe('Accordion', () => {
   })
 
   it('should have the propper aria attributes for the expanded panel', async () => {
-    render(() => <ComponentUnderTest value="panel-1" />)
+    render(() => <ComponentUnderTest value={['panel-1']} />)
     expect(screen.getByText('panel-1 trigger')).toHaveAttribute('aria-expanded', 'true')
   })
 })

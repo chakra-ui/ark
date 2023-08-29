@@ -7,8 +7,9 @@ import { type Optional } from '../types'
 export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
   defaultValue?: tagsInput.Context['value']
 }
+export type UseTagsInputReturn = tagsInput.Api
 
-export const useTagsInput = (props: UseTagsInputProps) => {
+export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext = {
     id: useId(),
@@ -25,5 +26,3 @@ export const useTagsInput = (props: UseTagsInputProps) => {
   const [state, send] = useMachine(tagsInput.machine(initialContext), { context })
   return tagsInput.connect(state, send, normalizeProps)
 }
-
-export type UseTagsInputReturn = ReturnType<typeof useTagsInput>

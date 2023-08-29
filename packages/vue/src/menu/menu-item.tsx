@@ -1,13 +1,11 @@
+import type { ItemProps } from '@zag-js/menu'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
 
-type MenuItemParams = Parameters<UseMenuReturn['api']['getItemProps']>[0]
-
-export type MenuItemProps = Assign<HTMLArkProps<'button'>, MenuItemParams>
+export type MenuItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
 
 export const MenuItem: ComponentWithProps<MenuItemProps> = defineComponent({
   name: 'MenuItem',

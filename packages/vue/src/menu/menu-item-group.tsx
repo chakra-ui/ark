@@ -1,13 +1,11 @@
+import type { GroupProps } from '@zag-js/menu'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
 
-type MenuItemGroupParams = Parameters<UseMenuReturn['api']['getItemGroupProps']>[0]
-
-export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
+export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, GroupProps>
 
 export const MenuItemGroup: ComponentWithProps<MenuItemGroupProps> = defineComponent({
   name: 'MenuItemGroup',

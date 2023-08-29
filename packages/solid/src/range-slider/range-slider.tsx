@@ -36,10 +36,12 @@ export const RangeSlider = (props: RangeSliderProps) => {
     'onChange',
     'onChangeEnd',
     'onChangeStart',
+    'onFocusChange',
     'orientation',
     'readOnly',
     'step',
     'thumbAlignment',
+    'thumbSize',
     'value',
   ])
 

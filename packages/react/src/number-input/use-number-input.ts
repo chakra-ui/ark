@@ -8,10 +8,11 @@ import { type Optional } from '../types'
 export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
   defaultValue?: numberInput.Context['value']
 }
+export type UseNumberInputReturn = numberInput.Api
 
 type ChangeDetails = Parameters<NonNullable<numberInput.Context['onChange']>>[0]
 
-export const useNumberInput = (props: UseNumberInputProps) => {
+export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
   const getRootNode = useEnvironmentContext()
   const initialContext: numberInput.Context = {
     id: useId(),
@@ -36,5 +37,3 @@ export const useNumberInput = (props: UseNumberInputProps) => {
   const [state, send] = useMachine(numberInput.machine(initialContext), { context })
   return numberInput.connect(state, send, normalizeProps)
 }
-
-export type UseNumberInputReturn = ReturnType<typeof useNumberInput>

@@ -9,10 +9,16 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - Changed `MenuItem` from a `button` to a `div` element.
+- `Accordion`: Remove support for passing value as `string`. The value property must be an array of strings.
+- `Combobox`: Remove `selectInputOnFocus` option in favor of userland control
+- `TagsInput`: Rename `onHighlight` to `onFocusChange`
 
 ### Removed
 
 - Removed `'use client'` annotation from `compose-refs` function.
+- Removed `Switchinput`. This component is no longer required.
+- `TagsInput`: Removed`onTagUpdate` use `onChange` instead.
+- `Switch`: Removed `defaultChecked` in favor of `defaultIsChecked`
 
 ## [0.13.1] - 2023-08-13
 

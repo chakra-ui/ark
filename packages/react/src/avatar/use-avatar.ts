@@ -5,10 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseAvatarProps = Optional<avatar.Context, 'id'>
+export type UseAvatarReturn = avatar.Api
 
-export type UseAvatarReturn = ReturnType<typeof useAvatar>
-
-export const useAvatar = (props: UseAvatarProps) => {
+export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
   const getRootNode = useEnvironmentContext()
   const context = {
     id: useId(),

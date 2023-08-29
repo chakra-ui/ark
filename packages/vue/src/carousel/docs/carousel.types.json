@@ -1,7 +1,7 @@
 {
   "CarouselProps": {
     "align": {
-      "type": "'start' | 'end' | 'center'",
+      "type": "'start' | 'center' | 'end'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },

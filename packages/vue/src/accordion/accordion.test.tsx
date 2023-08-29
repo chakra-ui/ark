@@ -6,7 +6,7 @@ import VModelAccordion from './accordion.stories.vue'
 describe('Accordion', () => {
   it('should open the accordion item on click', async () => {
     render(
-      <Accordion.Root modelValue="0">
+      <Accordion.Root modelValue={['0']}>
         <Accordion.Item value="0">
           <h2>
             <Accordion.Trigger>
@@ -303,7 +303,7 @@ describe('Accordion', () => {
 
   it('should set the correct aria-expanded when an item is open/closed', async () => {
     render(
-      <Accordion.Root modelValue="0">
+      <Accordion.Root modelValue={['0']}>
         <Accordion.Item value="0">
           <h2>
             <Accordion.Trigger>
