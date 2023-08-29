@@ -27,7 +27,7 @@ export const Basic = () => {
 export const Initial = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root value="panel-2">
+    <Accordion.Root value={['panel-1']}>
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
@@ -92,7 +92,7 @@ export const Multiple = () => {
 }
 
 export const Controlled = () => {
-  const [value, setValue] = createSignal<string | string[] | null>(null)
+  const [value, setValue] = createSignal<string[]>([])
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion.Root value={value()} onChange={(details) => setValue(details.value)}>

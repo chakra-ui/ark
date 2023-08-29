@@ -38,6 +38,7 @@ export const Slider = (props: SliderProps) => {
     'readOnly',
     'step',
     'thumbAlignment',
+    'thumbSize',
     'value',
   ])
 

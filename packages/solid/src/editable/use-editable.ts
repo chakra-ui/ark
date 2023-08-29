@@ -1,11 +1,11 @@
 import * as editable from '@zag-js/editable'
-import { mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId } from 'solid-js'
+import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
+import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseEditableProps = Optional<editable.Context, 'id'>
-export type UseEditableReturn = ReturnType<typeof useEditable>
+export type UseEditableReturn = Accessor<editable.MachineApi<PropTypes>>
 
 export const useEditable = (props: UseEditableProps) => {
   const getRootNode = useEnvironmentContext()

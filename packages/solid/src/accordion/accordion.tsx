@@ -17,8 +17,9 @@ export const Accordion = (props: AccordionProps) => {
     'ids',
     'multiple',
     'onChange',
-    'value',
+    'onFocusChange',
     'orientation',
+    'value',
   ])
 
   const api = useAccordion(params)
