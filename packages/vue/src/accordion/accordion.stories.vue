@@ -2,11 +2,11 @@
 import { Accordion } from './'
 
 import { type Ref, ref } from 'vue'
-const val: Ref<string | string[]> = ref('panel-2')
+const val: Ref<string[]> = ref(['panel-2'])
 </script>
 
 <template>
-  <button @click="val = 'panel-3'">Trigger</button>
+  <button @click="val = ['panel-3']">Trigger</button>
   <Accordion.Root v-model="val">
     <Accordion.Item value="panel-1" disabled>
       <Accordion.Trigger>

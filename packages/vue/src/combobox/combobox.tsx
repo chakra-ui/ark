@@ -78,9 +78,6 @@ const VueComboboxProps = createVueProps<UseComboboxProps>({
   readOnly: {
     type: Boolean as PropType<UseComboboxProps['readOnly']>,
   },
-  selectInputOnFocus: {
-    type: Boolean as PropType<UseComboboxProps['selectInputOnFocus']>,
-  },
   selectOnTab: {
     type: Boolean as PropType<UseComboboxProps['selectOnTab']>,
   },

@@ -1,7 +1,6 @@
 import {
   Switch,
   SwitchControl,
-  SwitchInput,
   SwitchLabel,
   SwitchThumb,
   type SwitchProps,
@@ -10,7 +9,6 @@ import {
 export const SwitchDemo = (props: SwitchProps) => (
   <Switch {...props}>
     <SwitchControl>
-      <SwitchInput />
       <SwitchThumb />
     </SwitchControl>
     <SwitchLabel>Label</SwitchLabel>

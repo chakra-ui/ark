@@ -19,14 +19,8 @@ export const useTagsInput = <T extends ExtractPropTypes<TagsInputContext>>(
         emit('change', details)
         emit('update:modelValue', details.values)
       },
-      onHighlight(details) {
-        emit('highlight', details)
-      },
       onInvalid(details) {
         emit('invalid', details)
-      },
-      onTagUpdate(details) {
-        emit('tag-update', details)
       },
     }),
   )

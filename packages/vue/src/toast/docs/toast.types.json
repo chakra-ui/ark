@@ -3,7 +3,7 @@
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
   "ToastProviderProps": {
     "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'placement' | 'removeDelay' | 'duration'>>",
+      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
       "isRequired": false,
       "description": "The default options for the toast"
     },
@@ -33,7 +33,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'right' | 'bottom' | 'left', string>",
+      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
