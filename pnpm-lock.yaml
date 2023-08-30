@@ -686,8 +686,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/react
       '@astrojs/sitemap':
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 3.0.0
+        version: 3.0.0
       '@fontsource-variable/fira-code':
         specifier: 5.0.8
         version: 5.0.8
@@ -1079,11 +1079,11 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/sitemap@2.0.2:
-    resolution: {integrity: sha512-dFWtdFwN8kxDiqIxF8T8ODqsUr6hG+EQlFEqm+3oQkhAkucF9QkYLM5Q72mEbYytkL4jvKyHbW1u10T5sWBZew==}
+  /@astrojs/sitemap@3.0.0:
+    resolution: {integrity: sha512-qm7npHuUW4q3OOmulqhJ1g69jEQu0Sdc6P8NbOzqIoosj/L+3v4i8dtKBnp6n1UQ4Sx8H8Vdi3Z/On7i9/ZJhw==}
     dependencies:
       sitemap: 7.1.1
-      zod: 3.21.4
+      zod: 3.21.1
     dev: false
 
   /@astrojs/solid-js@2.2.0(@babel/core@7.22.10)(solid-js@1.7.7):
@@ -22392,6 +22392,10 @@ packages:
       archiver-utils: 2.1.0
       compress-commons: 4.1.1
       readable-stream: 3.6.2
+    dev: false
+
+  /zod@3.21.1:
+    resolution: {integrity: sha512-+dTu2m6gmCbO9Ahm4ZBDapx2O6ZY9QSPXst2WXjcznPMwf2YNpn3RevLx4KkZp1OPW/ouFcoBtBzFz/LeY69oA==}
     dev: false
 
   /zod@3.21.4:
