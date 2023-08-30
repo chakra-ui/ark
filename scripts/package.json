@@ -8,7 +8,8 @@
     "exports:sync": "ts-node src/sync-exports.ts",
     "document:types": "ts-node src/generate-type-docs.ts",
     "document:stories": "ts-node src/generate-stories.ts",
-    "release:prepare": "ts-node src/prepare-release.ts"
+    "release:prepare": "ts-node src/prepare-release.ts",
+    "vue:props": "ts-node src/generate-vue-props.ts"
   },
   "dependencies": {
     "find-up": "6.3.0",

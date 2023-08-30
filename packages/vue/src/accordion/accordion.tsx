@@ -1,49 +1,20 @@
 import { type Context } from '@zag-js/accordion'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign, type Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
 import { AccordionProvider } from './accordion-context'
+import { props } from './accordion.props'
 import { useAccordion } from './use-accordion'
 
 export type AccordionContext = Context & { modelValue?: AccordionContext['value'] }
-
 export type UseAccordionProps = Assign<HTMLArkProps<'div'>, AccordionContext>
 
-const VueAccordionProps = createVueProps<UseAccordionProps>({
-  id: {
-    type: String as PropType<UseAccordionProps['id']>,
-  },
-  modelValue: {
-    type: [String, Object] as PropType<UseAccordionProps['modelValue']>,
-  },
-  collapsible: {
-    type: Boolean as PropType<UseAccordionProps['collapsible']>,
-    default: false,
-  },
-  multiple: {
-    type: Boolean as PropType<UseAccordionProps['multiple']>,
-    default: false,
-  },
-  disabled: {
-    type: Boolean as PropType<UseAccordionProps['disabled']>,
-    default: false,
-  },
-  ids: {
-    type: Object as PropType<UseAccordionProps['ids']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseAccordionProps['getRootNode']>,
-  },
-  orientation: {
-    type: String as PropType<UseAccordionProps['orientation']>,
-  },
-})
+export type AccordionProps = Optional<AccordionContext, 'id'>
 
-export const Accordion: ComponentWithProps<Partial<UseAccordionProps>> = defineComponent({
+export const Accordion = defineComponent({
   name: 'Accordion',
   emits: ['change', 'update:modelValue'],
-  props: VueAccordionProps,
+  props,
   setup(props, { slots, attrs, emit }) {
     const { api } = useAccordion(emit, props)
     AccordionProvider(api)
@@ -55,5 +26,3 @@ export const Accordion: ComponentWithProps<Partial<UseAccordionProps>> = defineC
     )
   },
 })
-
-export type AccordionProps = Optional<AccordionContext, 'id'>
