@@ -20,12 +20,11 @@ export function useEvent<T extends AnyFunction>(callback: T | undefined, opts: O
 
   const callbackRef = useLatestRef(callback)
 
-  const memoFn = useCallback(() => {
-    if (sync) {
-      return (...args: any[]) => flushSync(() => callbackRef.current?.(...args))
-    }
-    return (...args: any[]) => callbackRef.current?.(...args)
-  }, [sync, callbackRef])
-
-  return memoFn as T
+  return useCallback(
+    (...args: any[]) => {
+      if (sync) return flushSync(() => callbackRef.current?.(...args))
+      return callbackRef.current?.(...args)
+    },
+    [sync, callbackRef],
+  ) as T
 }
