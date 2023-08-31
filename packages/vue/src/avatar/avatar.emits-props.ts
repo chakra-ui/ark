@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/avatar'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   getRootNode: {
@@ -8,10 +9,6 @@ export const props = {
   id: {
     type: String as PropType<Context['id']>,
   },
-  onError: {
-    type: Function as PropType<Context['onError']>,
-  },
-  onLoad: {
-    type: Function as PropType<Context['onLoad']>,
-  },
 }
+
+export const emits = declareEmits(['load', 'error'])
