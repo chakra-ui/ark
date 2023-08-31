@@ -30,6 +30,6 @@ export const props = {
     type: Number as PropType<Context['openDelay']>,
   },
   positioning: {
-    type: Any as PropType<Context['positioning']>,
+    type: Object as PropType<Context['positioning']>,
   },
 }
