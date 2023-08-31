@@ -81,11 +81,11 @@ export const props = {
 }
 export const emits = declareEmits([
   'close',
-  'focusOutside',
+  'focus-outside',
   'highlight',
-  'inputChange',
-  'interactOutside',
+  'input-change',
+  'interact-outside',
   'open',
-  'pointerDownOutside',
+  'pointer-down-outside',
   'select',
 ])

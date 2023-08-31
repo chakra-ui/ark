@@ -34,4 +34,4 @@ export const props = {
     type: String as PropType<Context['spacing']>,
   },
 }
-export const emits = declareEmits(['slideChange'])
+export const emits = declareEmits(['slide-change'])

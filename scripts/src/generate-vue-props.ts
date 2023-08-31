@@ -5,11 +5,11 @@ import path, { dirname } from 'path'
 import prettier from 'prettier'
 import { Project, VariableDeclarationKind } from 'ts-morph'
 
-const convertToEventName = (handlerName: string): string => {
-  if (handlerName.startsWith('on')) {
-    return handlerName.charAt(2).toLowerCase() + handlerName.slice(3)
-  }
-  return handlerName
+const convertToEventName = (value: string): string => {
+  return value
+    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2')
+    .slice(3)
+    .toLowerCase()
 }
 
 const main = async () => {

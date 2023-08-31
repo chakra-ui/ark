@@ -22,4 +22,4 @@ export const props = {
     type: Array as PropType<Context['size']>,
   },
 }
-export const emits = declareEmits(['resize', 'resizeEnd', 'resizeStart'])
+export const emits = declareEmits(['resize', 'resize-end', 'resize-start'])

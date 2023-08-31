@@ -31,4 +31,4 @@ export const props = {
     type: Array as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'focusChange'])
+export const emits = declareEmits(['change', 'focus-change'])

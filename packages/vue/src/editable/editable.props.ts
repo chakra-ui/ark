@@ -65,8 +65,8 @@ export const emits = declareEmits([
   'cancel',
   'change',
   'edit',
-  'focusOutside',
-  'interactOutside',
-  'pointerDownOutside',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
   'submit',
 ])

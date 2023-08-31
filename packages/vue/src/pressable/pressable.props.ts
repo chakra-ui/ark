@@ -28,4 +28,4 @@ export const props = {
     type: Boolean as PropType<Context['preventFocusOnPress']>,
   },
 }
-export const emits = declareEmits(['longPress', 'press', 'pressEnd', 'pressStart', 'pressUp'])
+export const emits = declareEmits(['long-press', 'press', 'press-end', 'press-start', 'press-up'])
