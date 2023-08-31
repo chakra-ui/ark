@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/checkbox'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   checked: {
@@ -29,9 +30,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
   required: {
     type: Boolean as PropType<Context['required']>,
   },
@@ -39,3 +37,4 @@ export const props = {
     type: String as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change'])

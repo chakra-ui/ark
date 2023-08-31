@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/splitter'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   dir: {
@@ -14,15 +15,6 @@ export const props = {
   ids: {
     type: Object as PropType<Context['ids']>,
   },
-  onResize: {
-    type: Function as PropType<Context['onResize']>,
-  },
-  onResizeEnd: {
-    type: Function as PropType<Context['onResizeEnd']>,
-  },
-  onResizeStart: {
-    type: Function as PropType<Context['onResizeStart']>,
-  },
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
@@ -30,3 +22,4 @@ export const props = {
     type: Array as PropType<Context['size']>,
   },
 }
+export const emits = declareEmits(['resize', 'resizeEnd', 'resizeStart'])

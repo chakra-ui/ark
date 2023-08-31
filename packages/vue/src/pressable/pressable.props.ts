@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/pressable'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   allowTextSelectionOnPress: {
@@ -23,22 +24,8 @@ export const props = {
   longPressDelay: {
     type: Number as PropType<Context['longPressDelay']>,
   },
-  onLongPress: {
-    type: Function as PropType<Context['onLongPress']>,
-  },
-  onPress: {
-    type: Function as PropType<Context['onPress']>,
-  },
-  onPressEnd: {
-    type: Function as PropType<Context['onPressEnd']>,
-  },
-  onPressStart: {
-    type: Function as PropType<Context['onPressStart']>,
-  },
-  onPressUp: {
-    type: Function as PropType<Context['onPressUp']>,
-  },
   preventFocusOnPress: {
     type: Boolean as PropType<Context['preventFocusOnPress']>,
   },
 }
+export const emits = declareEmits(['longPress', 'press', 'pressEnd', 'pressStart', 'pressUp'])

@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/accordion'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   collapsible: {
@@ -23,12 +24,6 @@ export const props = {
   multiple: {
     type: Boolean as PropType<Context['multiple']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onFocusChange: {
-    type: Function as PropType<Context['onFocusChange']>,
-  },
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
@@ -36,3 +31,4 @@ export const props = {
     type: Array as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change', 'focusChange'])

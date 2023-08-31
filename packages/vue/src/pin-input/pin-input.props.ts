@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/pin-input'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   autoFocus: {
@@ -35,15 +36,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onComplete: {
-    type: Function as PropType<Context['onComplete']>,
-  },
-  onInvalid: {
-    type: Function as PropType<Context['onInvalid']>,
-  },
   otp: {
     type: Boolean as PropType<Context['otp']>,
   },
@@ -66,3 +58,4 @@ export const props = {
     type: Array as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change', 'complete', 'invalid'])

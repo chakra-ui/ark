@@ -5,6 +5,13 @@ import path, { dirname } from 'path'
 import prettier from 'prettier'
 import { Project, VariableDeclarationKind } from 'ts-morph'
 
+const convertToEventName = (handlerName: string): string => {
+  if (handlerName.startsWith('on')) {
+    return handlerName.charAt(2).toLowerCase() + handlerName.slice(3)
+  }
+  return handlerName
+}
+
 const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
@@ -29,6 +36,13 @@ const main = async () => {
           .getProperties()
           .sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
 
+        const props = publicContextProperties.filter(
+          (property) => !property.getName().startsWith('on'),
+        )
+        const emits = publicContextProperties.filter((property) =>
+          property.getName().startsWith('on'),
+        )
+
         const outputFile = project.createSourceFile(`./props.ts`, undefined, {
           overwrite: true,
         })
@@ -45,6 +59,11 @@ const main = async () => {
           isTypeOnly: true,
         })
 
+        outputFile.addImportDeclaration({
+          namedImports: ['declareEmits'],
+          moduleSpecifier: '../utils',
+        })
+
         outputFile.addVariableStatement({
           isExported: true,
           declarationKind: VariableDeclarationKind.Const,
@@ -53,42 +72,60 @@ const main = async () => {
               name: 'props',
               initializer: (writer) => {
                 writer.block(() => {
-                  for (const property of publicContextProperties) {
+                  for (const property of props) {
                     const name = property.getName()
-                    const type = property.getTypeAtLocation(publicContextTypeAlias)
+                    if (!name.startsWith('on')) {
+                      const type = property.getTypeAtLocation(publicContextTypeAlias)
 
-                    const isFunction =
-                      type.getText(publicContextTypeAlias).includes('=>') &&
-                      !type.getText(publicContextTypeAlias).startsWith('{')
+                      const isFunction =
+                        type.getText(publicContextTypeAlias).includes('=>') &&
+                        !type.getText(publicContextTypeAlias).startsWith('{')
 
-                    const propType = isFunction
-                      ? 'Function'
-                      : type.isBoolean()
-                      ? 'Boolean'
-                      : type.isString() || type.isUnion()
-                      ? 'String'
-                      : type.isNumber()
-                      ? 'Number'
-                      : type.isArray()
-                      ? 'Array'
-                      : type.isObject()
-                      ? 'Object'
-                      : 'Any'
+                      const propType = isFunction
+                        ? 'Function'
+                        : type.isBoolean()
+                        ? 'Boolean'
+                        : type.isString() || type.isUnion()
+                        ? 'String'
+                        : type.isNumber()
+                        ? 'Number'
+                        : type.isArray()
+                        ? 'Array'
+                        : 'Object'
 
-                    writer.writeLine(`${name}: {`)
-                    writer.indent(() => {
-                      writer.writeLine(`type: ${propType} as PropType<Context['${name}']>,`)
-                    })
-                    writer.writeLine('},')
+                      writer.writeLine(`${name}: {`)
+                      writer.indent(() => {
+                        writer.writeLine(`type: ${propType} as PropType<Context['${name}']>,`)
+                      })
+                      writer.writeLine('},')
+                    }
                   }
                 })
               },
             },
           ],
         })
+
+        outputFile.addVariableStatement({
+          declarationKind: VariableDeclarationKind.Const,
+          isExported: true,
+          declarations: [
+            {
+              name: 'emits',
+              initializer: `declareEmits([${emits
+                .map((property) => `'${convertToEventName(property.getName())}'`)
+                .join(', ')}])`,
+            },
+          ],
+        })
+
         fs.outputFile(
           `./src/${component}/${component}.props.ts`,
-          await prettier.format(outputFile.getText(), { ...prettierConfig, parser: 'typescript' }),
+          await prettier.format(outputFile.getText(), {
+            ...prettierConfig,
+            plugins: ['prettier-plugin-organize-imports'],
+            parser: 'typescript',
+          }),
         )
       }),
   )

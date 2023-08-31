@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/combobox'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   allowCustomValue: {
@@ -53,30 +54,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onClose: {
-    type: Function as PropType<Context['onClose']>,
-  },
-  onFocusOutside: {
-    type: Function as PropType<Context['onFocusOutside']>,
-  },
-  onHighlight: {
-    type: Function as PropType<Context['onHighlight']>,
-  },
-  onInputChange: {
-    type: Function as PropType<Context['onInputChange']>,
-  },
-  onInteractOutside: {
-    type: Function as PropType<Context['onInteractOutside']>,
-  },
-  onOpen: {
-    type: Function as PropType<Context['onOpen']>,
-  },
-  onPointerDownOutside: {
-    type: Function as PropType<Context['onPointerDownOutside']>,
-  },
-  onSelect: {
-    type: Function as PropType<Context['onSelect']>,
-  },
   openOnClick: {
     type: Boolean as PropType<Context['openOnClick']>,
   },
@@ -102,3 +79,13 @@ export const props = {
     type: Object as PropType<Context['translations']>,
   },
 }
+export const emits = declareEmits([
+  'close',
+  'focusOutside',
+  'highlight',
+  'inputChange',
+  'interactOutside',
+  'open',
+  'pointerDownOutside',
+  'select',
+])

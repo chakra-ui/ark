@@ -139,3 +139,17 @@ export function renderSlotFragments(children: VNode[]): VNode[] {
 export function createVueProps<T extends object>(properties: VueProps<T>) {
   return properties
 }
+
+export const declareEmits = <T extends string>(arr: T[]): T[] => arr
+
+export const generateEventMap = (
+  eventNames: string[],
+  emit: CallableFunction,
+): Record<string, () => void> => {
+  return Object.fromEntries(
+    eventNames.map((event) => {
+      const methodName = `on${event.charAt(0).toUpperCase() + event.slice(1)}`
+      return [methodName, () => emit(event)]
+    }),
+  )
+}
