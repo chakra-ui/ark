@@ -84,7 +84,7 @@ export const props = {
     type: String as PropType<Context['placeholder']>,
   },
   positioning: {
-    type: Any as PropType<Context['positioning']>,
+    type: Object as PropType<Context['positioning']>,
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
