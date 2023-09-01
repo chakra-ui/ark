@@ -4,7 +4,7 @@ import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { generateEventMap, useId } from '../utils'
-import { emits } from './avatar.emits-props'
+import { emits } from './avatar.props'
 
 export type UseAvatarProps = Optional<avatar.Context, 'id'>
 export type UseAvatarReturn = ComputedRef<avatar.Api<PropTypes>>
