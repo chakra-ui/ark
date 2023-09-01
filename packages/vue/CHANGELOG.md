@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Rewrote `Accordion` component.
+
 ## [0.7.0] - 2023-09-01
 
 ### Added
@@ -144,5 +148,4 @@ description: All notable changes to this project will be documented in this file
 [0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2
 [0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.6.0
-
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.7.0

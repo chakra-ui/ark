@@ -15,7 +15,6 @@ export const useAccordion = (
   emit: CallableFunction,
 ): UseAccordionReturn => {
   const getRootNode = useEnvironmentContext()
-
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -29,6 +28,9 @@ export const useAccordion = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
+      onFocusChange: (details) => {
+        emit('focus-change', details.value)
+      },
       onChange: (details) => {
         emit('change', details.value)
         emit('update:modelValue', details.value)
