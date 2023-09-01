@@ -1,4 +1,4 @@
-[data-part='item'][data-selected] {
+[data-part='page-trigger'][data-selected] {
   background-color: aqua;
 }
 

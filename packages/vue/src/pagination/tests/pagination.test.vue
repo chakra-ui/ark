@@ -7,21 +7,19 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-} from './'
-
-import './pagination.css'
+} from '../'
 </script>
 <template>
   <Pagination v-slot="{ pages }" :count="5000" :page-size="10" :sibling-count="2">
     <PaginationList>
       <PaginationPrevPageTrigger>
-        <button>Previous <span className="visually-hidden">Page</span></button>
+        Previous <span className="visually-hidden">Page</span>
       </PaginationPrevPageTrigger>
       <template v-for="(page, index) in pages">
-        <PaginationPageTrigger v-if="page.type === 'page'" :value="page.value">
-          <button>{{ page.value }}</button>
+        <PaginationPageTrigger v-if="page.type === 'page'" :key="page" :value="page.value">
+          {{ page.value }}
         </PaginationPageTrigger>
-        <PaginationEllipsis v-else :index="index"> &#8230; </PaginationEllipsis>
+        <PaginationEllipsis v-else :key="index" :index="index"> &#8230; </PaginationEllipsis>
       </template>
       <PaginationListItem>
         <PaginationNextPageTrigger>

@@ -14,6 +14,7 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - Rewrote `Accordion` component.
+- Rewrote `Pagination` component.
 
 ## [0.7.0] - 2023-09-01
 

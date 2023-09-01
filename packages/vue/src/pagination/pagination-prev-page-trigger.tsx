@@ -11,7 +11,7 @@ export const PaginationPrevPageTrigger: ComponentWithProps<PaginationPrevPageTri
     setup(_, { slots, attrs }) {
       const api = usePaginationContext()
       return () => (
-        <ark.button {...attrs} {...api.value.prevPageTriggerProps}>
+        <ark.button {...api.value.prevPageTriggerProps} {...attrs}>
           {() => getValidChildren(slots)}
         </ark.button>
       )

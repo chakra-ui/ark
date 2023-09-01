@@ -1,30 +1,31 @@
-import { connect, machine, type Context as PaginationContext } from '@zag-js/pagination'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as pagination from '@zag-js/pagination'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export const usePagination = <T extends ExtractPropTypes<PaginationContext>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export type UsePaginationProps = Optional<pagination.Context, 'id'>
+export type UsePaginationReturn = ComputedRef<pagination.Api<PropTypes>>
 
+export const usePagination = (
+  props: UsePaginationProps,
+  emit: CallableFunction,
+): UsePaginationReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = ref(props)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      count: reactiveContext.count || 0,
-      id: reactiveContext.id || useId().value,
+    pagination.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      onChange(details) {
+      onChange: (details) => {
         emit('change', details)
       },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => pagination.connect(state.value, send, normalizeProps))
 }
-
-export type UsePaginationReturn = ReturnType<typeof connect>

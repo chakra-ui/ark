@@ -5,6 +5,7 @@ import { declareEmits } from '../utils'
 export const props = {
   count: {
     type: Number as PropType<Context['count']>,
+    required: true,
   },
   dir: {
     type: String as PropType<Context['dir']>,
@@ -33,5 +34,5 @@ export const props = {
   type: {
     type: String as PropType<Context['type']>,
   },
-}
+} as const
 export const emits = declareEmits(['change'])

@@ -19,8 +19,8 @@ export const PaginationPageTrigger: ComponentWithProps<Partial<PaginationPageTri
       const api = usePaginationContext()
       return () => (
         <ark.button
-          {...attrs}
           {...api.value.getPageTriggerProps({ type: 'page', value: props.value })}
+          {...attrs}
         >
           {() => getValidChildren(slots)}
         </ark.button>

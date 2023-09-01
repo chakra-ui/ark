@@ -11,7 +11,7 @@ export const PaginationNextPageTrigger: ComponentWithProps<PaginationNextPageTri
     setup(_, { slots, attrs }) {
       const api = usePaginationContext()
       return () => (
-        <ark.button {...attrs} {...api.value.nextPageTriggerProps}>
+        <ark.button {...api.value.nextPageTriggerProps} {...attrs}>
           {() => getValidChildren(slots)}
         </ark.button>
       )

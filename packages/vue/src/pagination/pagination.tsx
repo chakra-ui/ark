@@ -1,51 +1,18 @@
-import type { Context as PaginationContext } from '@zag-js/pagination'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import { type Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
-import { usePagination } from './use-pagination'
+import { emits, props } from './pagination.props'
+import { usePagination, type UsePaginationProps } from './use-pagination'
 
-export type UsePaginationProps = Assign<HTMLArkProps<'nav'>, PaginationContext>
+export type PaginationProps = Assign<HTMLArkProps<'nav'>, UsePaginationProps>
 
-const VueProps = createVueProps<UsePaginationProps>({
-  count: {
-    type: Number as PropType<UsePaginationProps['count']>,
-    required: true,
-  },
-  dir: {
-    type: String as PropType<UsePaginationProps['dir']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UsePaginationProps['getRootNode']>,
-  },
-  id: {
-    type: String as PropType<UsePaginationProps['id']>,
-  },
-  ids: {
-    type: Object as PropType<UsePaginationProps['ids']>,
-  },
-  page: {
-    type: Number as PropType<UsePaginationProps['page']>,
-  },
-  pageSize: {
-    type: Number as PropType<UsePaginationProps['pageSize']>,
-  },
-  siblingCount: {
-    type: Number as PropType<UsePaginationProps['siblingCount']>,
-  },
-  translations: {
-    type: Object as PropType<UsePaginationProps['translations']>,
-  },
-})
-
-export const Pagination: ComponentWithProps<Partial<UsePaginationProps>> = defineComponent({
+export const Pagination = defineComponent({
   name: 'Pagination',
-  props: VueProps,
-  emits: ['change'],
+  props,
+  emits,
   setup(props, { slots, attrs, emit }) {
-    const api = usePagination(emit, props)
-
+    const api = usePagination(props, emit)
     PaginationProvider(api)
 
     return () => (
@@ -55,5 +22,3 @@ export const Pagination: ComponentWithProps<Partial<UsePaginationProps>> = defin
     )
   },
 })
-
-export type PaginationProps = Optional<PaginationContext, 'id'>
