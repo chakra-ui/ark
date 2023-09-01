@@ -33,8 +33,8 @@ export const props = {
   required: {
     type: Boolean as PropType<Context['required']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change'])
+export const emits = declareEmits(['change', 'update:modelValue'])

@@ -78,8 +78,8 @@ export const props = {
   validateCharacter: {
     type: Function as PropType<Context['validateCharacter']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['blur', 'change', 'focus', 'invalid'])
+export const emits = declareEmits(['blur', 'change', 'focus', 'invalid', 'update:modelValue'])

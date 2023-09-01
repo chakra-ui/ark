@@ -24,8 +24,8 @@ export const props = {
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'change-end'])
+export const emits = declareEmits(['change', 'change-end', 'update:modelValue'])

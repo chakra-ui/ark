@@ -73,7 +73,7 @@ const main = async () => {
               initializer: (writer) => {
                 writer.block(() => {
                   for (const property of props) {
-                    const name = property.getName()
+                    const name = property.getName() === 'value' ? 'modelValue' : property.getName()
                     if (!name.startsWith('on')) {
                       const type = property.getTypeAtLocation(publicContextTypeAlias)
 
@@ -95,7 +95,9 @@ const main = async () => {
 
                       writer.writeLine(`${name}: {`)
                       writer.indent(() => {
-                        writer.writeLine(`type: ${propType} as PropType<Context['${name}']>,`)
+                        writer.writeLine(
+                          `type: ${propType} as PropType<Context['${property.getName()}']>,`,
+                        )
                       })
                       writer.writeLine('},')
                     }
@@ -114,7 +116,12 @@ const main = async () => {
               name: 'emits',
               initializer: `declareEmits([${emits
                 .map((property) => `'${convertToEventName(property.getName())}'`)
-                .join(', ')}])`,
+                .join(', ')
+                .concat(
+                  props.some((property) => property.getName() === 'value')
+                    ? ', "update:modelValue"'
+                    : '',
+                )}])`,
             },
           ],
         })
