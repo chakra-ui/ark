@@ -6,6 +6,11 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix issue where event callbacks that use `flushSync` did not have a stable reference, resulting in a noticable blocking re-renders.
+  > Affected components: `Slider`, `RangeSlider`, `NumberInput`, `ColorPicker`
+
 ## [0.14.0] - 2023-08-29
 
 ### Changed
@@ -234,5 +239,4 @@ description: All notable changes to this project will be documented in this file
 [0.12.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.12.0
 [0.13.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.13.0
 [0.13.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.13.1
-
 [0.14.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.14.0

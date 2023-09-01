@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/carousel'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   align: {
@@ -23,9 +24,6 @@ export const props = {
   loop: {
     type: Boolean as PropType<Context['loop']>,
   },
-  onSlideChange: {
-    type: Function as PropType<Context['onSlideChange']>,
-  },
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
@@ -36,3 +34,4 @@ export const props = {
     type: String as PropType<Context['spacing']>,
   },
 }
+export const emits = declareEmits(['slide-change'])

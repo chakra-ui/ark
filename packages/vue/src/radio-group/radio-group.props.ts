@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/radio-group'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   dir: {
@@ -23,16 +24,14 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change', 'update:modelValue'])

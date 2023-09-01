@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/hover-card'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   closeDelay: {
@@ -17,12 +18,6 @@ export const props = {
   ids: {
     type: Object as PropType<Context['ids']>,
   },
-  onClose: {
-    type: Object as PropType<Context['onClose']>,
-  },
-  onOpen: {
-    type: Object as PropType<Context['onOpen']>,
-  },
   open: {
     type: Boolean as PropType<Context['open']>,
   },
@@ -33,3 +28,4 @@ export const props = {
     type: Object as PropType<Context['positioning']>,
   },
 }
+export const emits = declareEmits(['close', 'open'])

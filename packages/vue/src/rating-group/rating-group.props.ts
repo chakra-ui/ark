@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/rating-group'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   allowHalf: {
@@ -32,19 +33,14 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onHover: {
-    type: Function as PropType<Context['onHover']>,
-  },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
   },
   translations: {
     type: Object as PropType<Context['translations']>,
   },
-  value: {
+  modelValue: {
     type: Number as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change', 'hover', 'update:modelValue'])

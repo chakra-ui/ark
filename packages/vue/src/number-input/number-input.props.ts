@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/number-input'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   allowMouseWheel: {
@@ -56,18 +57,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onBlur: {
-    type: Function as PropType<Context['onBlur']>,
-  },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onFocus: {
-    type: Function as PropType<Context['onFocus']>,
-  },
-  onInvalid: {
-    type: Function as PropType<Context['onInvalid']>,
-  },
   parse: {
     type: Function as PropType<Context['parse']>,
   },
@@ -89,7 +78,8 @@ export const props = {
   validateCharacter: {
     type: Function as PropType<Context['validateCharacter']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['blur', 'change', 'focus', 'invalid', 'update:modelValue'])

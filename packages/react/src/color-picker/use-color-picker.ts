@@ -1,16 +1,14 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { useCallback, useId } from 'react'
-import { flushSync } from 'react-dom'
+import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
   defaultValue?: colorPicker.Context['value']
 }
 export type UseColorPickerReturn = colorPicker.Api
-
-type ChangeDetails = Parameters<NonNullable<colorPicker.Context['onChange']>>[0]
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const getRootNode = useEnvironmentContext()
@@ -20,17 +18,10 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     ...props,
     value: props.defaultValue ?? props.value,
   }
-  const onChange = props.onChange
-
-  const onChangeWithFlushSync = useCallback(
-    (e: ChangeDetails) => flushSync(() => onChange?.(e)),
-    [onChange],
-  )
-
   const context: colorPicker.Context = {
     ...initialContext,
     value: props.value,
-    onChange: onChangeWithFlushSync,
+    onChange: useEvent(props.onChange, { sync: true }),
   }
 
   const [state, send] = useMachine(colorPicker.machine(initialContext), { context })

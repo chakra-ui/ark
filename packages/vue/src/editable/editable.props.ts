@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/editable'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   activationMode: {
@@ -38,27 +39,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onCancel: {
-    type: Function as PropType<Context['onCancel']>,
-  },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onEdit: {
-    type: Function as PropType<Context['onEdit']>,
-  },
-  onFocusOutside: {
-    type: Function as PropType<Context['onFocusOutside']>,
-  },
-  onInteractOutside: {
-    type: Function as PropType<Context['onInteractOutside']>,
-  },
-  onPointerDownOutside: {
-    type: Function as PropType<Context['onPointerDownOutside']>,
-  },
-  onSubmit: {
-    type: Function as PropType<Context['onSubmit']>,
-  },
   placeholder: {
     type: String as PropType<Context['placeholder']>,
   },
@@ -77,7 +57,17 @@ export const props = {
   translations: {
     type: Object as PropType<Context['translations']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits([
+  'cancel',
+  'change',
+  'edit',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
+  'submit',
+  'update:modelValue',
+])

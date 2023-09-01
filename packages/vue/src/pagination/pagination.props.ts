@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/pagination'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   count: {
@@ -17,9 +18,6 @@ export const props = {
   ids: {
     type: Object as PropType<Context['ids']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
   page: {
     type: Number as PropType<Context['page']>,
   },
@@ -36,3 +34,4 @@ export const props = {
     type: String as PropType<Context['type']>,
   },
 }
+export const emits = declareEmits(['change'])

@@ -3,6 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id'> & {
   defaultValue?: rangeSlider.Context['value']
@@ -18,9 +19,10 @@ export const useRangeSlider = (props: UseRangeSliderProps): UseRangeSliderReturn
     value: props.defaultValue,
   }
 
-  const context = {
+  const context: rangeSlider.Context = {
     ...initialContext,
     value: props.value,
+    onChange: useEvent(props.onChange, { sync: true }),
   }
 
   const [state, send] = useMachine(rangeSlider.machine(initialContext), {

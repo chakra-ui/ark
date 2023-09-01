@@ -1,5 +1,6 @@
 import type { Context } from '@zag-js/color-picker'
 import type { PropType } from 'vue'
+import { declareEmits } from '../utils'
 
 export const props = {
   dir: {
@@ -20,16 +21,11 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  onChange: {
-    type: Function as PropType<Context['onChange']>,
-  },
-  onChangeEnd: {
-    type: Function as PropType<Context['onChangeEnd']>,
-  },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
+export const emits = declareEmits(['change', 'change-end', 'update:modelValue'])
