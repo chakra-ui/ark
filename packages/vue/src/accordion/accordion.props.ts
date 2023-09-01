@@ -27,8 +27,9 @@ export const props = {
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
-  value: {
+  modelValue: {
     type: Array as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'focus-change'])
+
+export const emits = declareEmits(['change', 'focus-change', 'update:modelValue'])

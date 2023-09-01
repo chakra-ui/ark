@@ -1,23 +1,20 @@
-import { defineComponent, h } from 'vue'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-/** This type is here so that the script 'check-exports' passes
- *  because in Vue we don't pass 'children' as props
- */
-export type AccordionTriggerProps = Record<string, unknown>
+export type AccordionTriggerProps = HTMLArkProps<'button'>
 
-export const AccordionTrigger = defineComponent<AccordionTriggerProps>({
+export const AccordionTrigger = defineComponent({
   name: 'AccordionTrigger',
-  setup(_, { slots, attrs }) {
+  setup(_, { attrs, slots }) {
     const api = useAccordionContext()
-    const { value, disabled } = useAccordionItemContext()
+    const accordionItem = useAccordionItemContext()
 
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'AccordionTrigger')
-
-      return h(DefaultSlot, { ...api.value.getTriggerProps({ value, disabled }), ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.getTriggerProps(accordionItem)} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })
