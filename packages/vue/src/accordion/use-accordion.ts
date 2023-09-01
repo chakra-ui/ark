@@ -1,43 +1,43 @@
-import { connect, machine } from '@zag-js/accordion'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import * as accordion from '@zag-js/accordion'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { AccordionContext } from './accordion'
 
-export const useAccordion = <T extends ExtractPropTypes<AccordionContext>>(
+export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
+  modelValue?: accordion.Context['value']
+}
+export type UseAccordionReturn = ComputedRef<accordion.Api<PropTypes>>
+
+export const useAccordion = (
+  props: UseAccordionProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseAccordionReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
-      id: reactiveContext.id || useId().value,
+    accordion.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
+      onFocusChange: (details) => {
+        emit('focus-change', details.value)
+      },
       onChange: (details) => {
         emit('change', details.value)
-        emit(
-          'update:modelValue',
-          Array.isArray(details.value) ? Array.from(details.value) : details.value,
-        )
+        emit('update:modelValue', details.value)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.modelValue,
-    (value, prevValue) => {
-      if (value === prevValue) return
-      api.value.setValue(value as string[])
-    },
-  )
-
-  return { api }
+  return computed(() => accordion.connect(state.value, send, normalizeProps))
 }

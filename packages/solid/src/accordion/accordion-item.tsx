@@ -18,15 +18,17 @@ export type AccordionItemProps = Assign<
 >
 
 export const AccordionItem = (props: AccordionItemProps) => {
-  const [itemParams, restProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
+  const [itemProps, restProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const api = useAccordionContext()
 
-  const itemProps = mergeProps(() => api().getItemProps(itemParams), restProps)
-  const getChildren = () => runIfFn(restProps.children, () => api().getItemState(itemParams))
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), restProps)
+  const accordionItem = mergeProps(() => api().getItemState(itemProps), itemProps)
+
+  const getChildren = () => runIfFn(restProps.children, () => api().getItemState(itemProps))
 
   return (
-    <AccordionItemProvider value={itemParams}>
-      <ark.div {...itemProps}>{getChildren()}</ark.div>
+    <AccordionItemProvider value={accordionItem}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </AccordionItemProvider>
   )
 }

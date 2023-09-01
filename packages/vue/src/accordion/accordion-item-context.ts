@@ -1,9 +1,7 @@
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { createContext } from '../context'
 
-export interface AccordionItemContext {
-  value: string
-  disabled?: boolean
-}
+export type AccordionItemContext = ItemProps & ItemState
 
 export const [AccordionItemProvider, useAccordionItemContext] =
   createContext<AccordionItemContext>('AccordionItemContext')

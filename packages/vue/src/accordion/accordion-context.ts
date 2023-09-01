@@ -1,6 +1,5 @@
-import { type connect } from '@zag-js/accordion'
-import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
+import type { UseAccordionReturn } from './use-accordion'
 
 export const [AccordionProvider, useAccordionContext] =
-  createContext<ComputedRef<ReturnType<typeof connect>>>('AccordionContext')
+  createContext<UseAccordionReturn>('AccordionContext')

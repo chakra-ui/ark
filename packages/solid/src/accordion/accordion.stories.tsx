@@ -127,7 +127,7 @@ export const Vertical = () => {
 export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root multiple>
+    <Accordion.Root>
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item} disabled={item === 'panel-2'}>
