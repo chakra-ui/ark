@@ -499,6 +499,9 @@ importers:
       '@zag-js/splitter':
         specifier: 0.17.0
         version: 0.17.0
+      '@zag-js/switch':
+        specifier: 0.17.0
+        version: 0.17.0
       '@zag-js/tabs':
         specifier: 0.17.0
         version: 0.17.0

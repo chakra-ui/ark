@@ -8,7 +8,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Addded `Avatar` component
+- Added `Avatar` component
+- Added `Switch` component
 
 ### Changed
 
