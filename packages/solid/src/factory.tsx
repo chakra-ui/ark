@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   children,
   createEffect,
@@ -12,9 +11,9 @@ import { Dynamic } from 'solid-js/web'
 import { spread } from './spread'
 import { ssrSpread } from './ssr-spread'
 
-type ElementType = keyof JSX.IntrinsicElements | Component<any>
+type ElementType = keyof JSX.IntrinsicElements
 
-export type AsChildProps = {
+type AsChildProps = {
   asChild?: boolean
 }
 
@@ -22,9 +21,9 @@ type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
 }
 
-export type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
+type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
 
-export type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
+type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
 
 export type HTMLArkProps<T extends ElementType> = AsChildComponentProps<T>
 
