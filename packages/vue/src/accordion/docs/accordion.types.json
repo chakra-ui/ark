@@ -56,9 +56,5 @@
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
     }
-  },
-  "AccordionItemProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
   }
 }
