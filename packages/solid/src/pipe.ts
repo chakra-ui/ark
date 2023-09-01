@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type AnyFunc = (...arg: any) => any
 
 type LastFnReturnType<F extends Array<AnyFunc>, Else = never> = F extends [
