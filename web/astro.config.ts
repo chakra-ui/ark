@@ -8,9 +8,6 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
   site: 'https://ark-ui.com',
   integrations: [react(), pandacss(), mdx(), sitemap()],
-  experimental: {
-    viewTransitions: true,
-  },
   markdown: {
     shikiConfig: {
       theme: 'css-variables',
