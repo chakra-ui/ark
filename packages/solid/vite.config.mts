@@ -58,13 +58,13 @@ export default defineConfig({
     transformMode: {
       web: [/\.[jt]sx?$/],
     },
-    coverage: {
-      provider: 'v8',
-      all: true,
-      reporter: ['lcov', 'text'],
-      include: ['src/**'],
-      exclude: ['**/*.stories.tsx'],
-    },
+    // coverage: {
+    //   provider: 'v8',
+    //   all: true,
+    //   reporter: ['lcov', 'text'],
+    //   include: ['src/**'],
+    //   exclude: ['**/*.stories.tsx'],
+    // },
     css: false,
   },
   resolve: {
