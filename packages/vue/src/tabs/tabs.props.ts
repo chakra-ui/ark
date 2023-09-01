@@ -27,8 +27,8 @@ export const props = {
   translations: {
     type: Object as PropType<Context['translations']>,
   },
-  value: {
+  modelValue: {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'delete', 'focus'])
+export const emits = declareEmits(['change', 'delete', 'focus', 'update:modelValue'])
