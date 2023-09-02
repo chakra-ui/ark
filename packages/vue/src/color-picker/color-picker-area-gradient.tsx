@@ -10,12 +10,11 @@ export const ColorPickerAreaGradient: ComponentWithProps<ColorPickerAreaGradient
   defineComponent({
     name: 'ColorPickerAreaGradient',
     setup(_, { slots, attrs }) {
-      const gradientContext = useColorPickerAreaContext()
-
-      const rootContext = useColorPickerContext()
+      const api = useColorPickerContext()
+      const gradientProps = useColorPickerAreaContext()
 
       return () => (
-        <ark.div {...rootContext.value.getAreaGradientProps(gradientContext.value)} {...attrs}>
+        <ark.div {...api.value.getAreaGradientProps(gradientProps.value)} {...attrs}>
           {slots.default?.()}
         </ark.div>
       )

@@ -10,12 +10,11 @@ export const ColorPickerSwatchBackground: ComponentWithProps<ColorPickerSwatchBa
   defineComponent({
     name: 'ColorPickerSwatchBackground',
     setup(_, { slots, attrs }) {
-      const swatchContext = useColorPickerSwatchContext()
-
-      const rootContext = useColorPickerContext()
+      const api = useColorPickerContext()
+      const swatchProps = useColorPickerSwatchContext()
 
       return () => (
-        <ark.div {...rootContext.value.getSwatchBackgroundProps(swatchContext.value)} {...attrs}>
+        <ark.div {...api.value.getSwatchBackgroundProps(swatchProps.value)} {...attrs}>
           {slots.default?.()}
         </ark.div>
       )

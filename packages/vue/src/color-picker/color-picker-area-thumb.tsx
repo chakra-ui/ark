@@ -9,12 +9,11 @@ export type ColorPickerAreaThumbProps = HTMLArkProps<'div'>
 export const ColorPickerAreaThumb: ComponentWithProps<ColorPickerAreaThumbProps> = defineComponent({
   name: 'ColorPickerAreaThumb',
   setup(_, { slots, attrs }) {
-    const areaContext = useColorPickerAreaContext()
-
-    const rootContext = useColorPickerContext()
+    const api = useColorPickerContext()
+    const areaProps = useColorPickerAreaContext()
 
     return () => (
-      <ark.div {...rootContext.value.getAreaThumbProps(areaContext.value)} {...attrs}>
+      <ark.div {...api.value.getAreaThumbProps(areaProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

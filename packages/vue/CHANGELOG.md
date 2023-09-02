@@ -15,6 +15,7 @@ description: All notable changes to this project will be documented in this file
 
 - Revised `Accordion` component
 - Revised `Carousel` component
+- Revised `ColorPicker` component
 - Revised `Pagination` component
 - Revised `Splitter` component
 - Revised `Tooltip` component

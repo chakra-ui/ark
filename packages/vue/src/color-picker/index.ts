@@ -23,7 +23,7 @@ import {
   type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track'
 import { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext, type ColorPickerContext } from './color-picker-context'
 import {
   ColorPickerEyeDropperTrigger,
   type ColorPickerEyeDropperTriggerProps,
@@ -83,6 +83,7 @@ export type {
   ColorPickerChannelSliderThumbProps,
   ColorPickerChannelSliderTrackProps,
   ColorPickerContentProps,
+  ColorPickerContext,
   ColorPickerEyeDropperTriggerProps,
   ColorPickerProps,
   ColorPickerSwatchBackgroundProps,

@@ -1,51 +1,18 @@
-import { type Context } from '@zag-js/color-picker'
-import { defineComponent, type PropType } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import type { Assign, Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import { defineComponent } from 'vue'
 import { ColorPickerProvider } from './color-picker-context'
-import { useColorPicker } from './use-color-picker'
+import { emits, props } from './color-picker.props'
+import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 
-export type ColorPickerContext = Context & {
-  modelValue?: Context['value']
-}
-export type UseColorPickerProps = Assign<HTMLArkProps<'div'>, ColorPickerContext>
+export type ColorPickerProps = UseColorPickerProps
 
-const VueColorPickerProps = createVueProps<UseColorPickerProps>({
-  dir: {
-    type: String as PropType<UseColorPickerProps['dir']>,
-  },
-  id: {
-    type: String as PropType<UseColorPickerProps['id']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseColorPickerProps['getRootNode']>,
-  },
-  modelValue: {
-    type: String as PropType<UseColorPickerProps['modelValue']>,
-  },
-  value: {
-    type: String as PropType<UseColorPickerProps['value']>,
-  },
-  disabled: {
-    type: Boolean as PropType<UseColorPickerProps['disabled']>,
-  },
-  readOnly: {
-    type: Boolean as PropType<UseColorPickerProps['readOnly']>,
-  },
-})
-
-export const ColorPicker: ComponentWithProps<Partial<ColorPickerContext>> = defineComponent({
+export const ColorPicker = defineComponent({
   name: 'ColorPicker',
-  props: VueColorPickerProps,
-  emits: ['change', 'change-end', 'update:modelValue'],
+  props,
+  emits,
   setup(props, { slots, emit }) {
-    const api = useColorPicker(emit, props)
-
+    const api = useColorPicker(props, emit)
     ColorPickerProvider(api)
 
     return () => slots.default?.(api.value)
   },
 })
-
-export type ColorPickerProps = Optional<ColorPickerContext, 'id'>

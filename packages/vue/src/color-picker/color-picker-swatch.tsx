@@ -1,13 +1,13 @@
-import type { ColorSwatchProps } from '@zag-js/color-picker'
+import { type ColorSwatchProps } from '@zag-js/color-picker'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
-export type ColorPickerSwatchProps = HTMLArkProps<'button'> & ColorSwatchProps
+export type ColorPickerSwatchProps = Assign<HTMLArkProps<'button'>, ColorSwatchProps>
 
-export const ColorPickerSwatch: ComponentWithProps<ColorPickerSwatchProps> = defineComponent({
+export const ColorPickerSwatch = defineComponent({
   name: 'ColorPickerSwatch',
   props: {
     readOnly: {
@@ -23,13 +23,13 @@ export const ColorPickerSwatch: ComponentWithProps<ColorPickerSwatchProps> = def
       value: props.value,
       readOnly: props.readOnly,
     }))
-    const rootContext = useColorPickerContext()
+    const api = useColorPickerContext()
 
     ColorPickerSwatchProvider(swatchProps)
 
     return () => (
       <ark.button
-        {...rootContext.value.getSwatchProps(swatchProps.value)}
+        {...api.value.getSwatchProps(swatchProps.value)}
         disabled={swatchProps.value.readOnly}
         {...attrs}
       >
