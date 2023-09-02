@@ -18,8 +18,8 @@ export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAva
     avatar.machine({
       id: useId().value,
       getRootNode,
-      ...eventMap,
       ...context.value,
+      ...eventMap,
     }),
     { context },
   )

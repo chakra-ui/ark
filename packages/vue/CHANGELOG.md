@@ -13,9 +13,10 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Revised `Accordion` component.
-- Revised `Pagination` component.
-- Revied `Tooltip` component.
+- Revised `Accordion` component
+- Revised `Pagination` component
+- Revised `Splitter` component
+- Revised `Tooltip` component
 
 ## [0.7.0] - 2023-09-01
 

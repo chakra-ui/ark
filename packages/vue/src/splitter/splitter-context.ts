@@ -1,8 +1,7 @@
-import { type connect } from '@zag-js/splitter'
-import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
+import type { UseSplitterReturn } from './use-splitter'
+
+export type SplitterContext = UseSplitterReturn
 
 export const [SplitterProvider, useSplitterContext] =
-  createContext<ComputedRef<ReturnType<typeof connect>>>('SplitterContext')
-
-// TODO: export type SplitterContext = UseSplitterReturn
+  createContext<UseSplitterReturn>('SplitterContext')
