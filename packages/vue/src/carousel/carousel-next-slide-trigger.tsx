@@ -1,5 +1,4 @@
-import { mergeProps } from '@zag-js/vue'
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
@@ -9,7 +8,11 @@ export const CarouselNextSlideTrigger = defineComponent({
   name: 'CarouselNextSlideTrigger',
   setup(_, { slots, attrs }) {
     const api = useCarouselContext()
-    const mergedProps = computed(() => mergeProps(api.value.nextSlideTriggerProps, attrs))
-    return () => <ark.button {...mergedProps.value}>{slots.default?.()}</ark.button>
+
+    return () => (
+      <ark.button {...api.value.nextSlideTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

@@ -1,4 +1,4 @@
-import { computed, defineComponent, mergeProps } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
@@ -8,7 +8,11 @@ export const CarouselPrevSlideTrigger = defineComponent({
   name: 'CarouselPrevSlideTrigger',
   setup(_, { slots, attrs }) {
     const api = useCarouselContext()
-    const mergedProps = computed(() => mergeProps(api.value.prevSlideTriggerProps, attrs))
-    return () => <ark.button {...mergedProps.value}>{slots.default?.()}</ark.button>
+
+    return () => (
+      <ark.button {...api.value.prevSlideTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

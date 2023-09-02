@@ -1,12 +1,11 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import type { ComponentWithProps } from '../utils'
 import { useCarouselContext } from './carousel-context'
 
 export type CarouselSlideProps = Assign<HTMLArkProps<'div'>, { index: number }>
 
-export const CarouselSlide: ComponentWithProps<CarouselSlideProps> = defineComponent({
+export const CarouselSlide = defineComponent({
   name: 'CarouselSlide',
   props: {
     index: {
@@ -18,7 +17,7 @@ export const CarouselSlide: ComponentWithProps<CarouselSlideProps> = defineCompo
     const api = useCarouselContext()
 
     return () => (
-      <ark.div {...api.value.getSlideProps({ index: props.index })} {...attrs}>
+      <ark.div {...api.value.getSlideProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
