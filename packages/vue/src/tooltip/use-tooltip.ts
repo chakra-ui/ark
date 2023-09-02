@@ -16,9 +16,9 @@ export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseT
 
   const [state, send] = useMachine(
     tooltip.machine({
-      id: useId().value,
-      getRootNode,
       ...context.value,
+      id: context.value.id ?? useId().value,
+      getRootNode,
       ...eventMap,
     }),
   )

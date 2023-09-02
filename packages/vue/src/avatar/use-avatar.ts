@@ -16,9 +16,9 @@ export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAva
 
   const [state, send] = useMachine(
     avatar.machine({
-      id: useId().value,
-      getRootNode,
       ...context.value,
+      id: context.value.id ?? useId().value,
+      getRootNode,
       ...eventMap,
     }),
     { context },

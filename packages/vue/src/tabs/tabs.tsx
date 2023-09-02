@@ -1,53 +1,18 @@
-import type { Context } from '@zag-js/tabs'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
-import { useTabs } from './use-tabs'
+import { emits, props } from './tabs.props'
+import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsContext = Context & {
-  defaultValue?: Context['value']
-}
-export type UseTabsProps = Assign<HTMLArkProps<'div'>, TabsContext>
+export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
-const VueTabsProps = createVueProps<UseTabsProps>({
-  id: {
-    type: String as PropType<UseTabsProps['id']>,
-  },
-  defaultValue: {
-    type: String as PropType<UseTabsProps['defaultValue']>,
-  },
-  orientation: {
-    type: String as PropType<UseTabsProps['orientation']>,
-  },
-  activationMode: {
-    type: String as PropType<UseTabsProps['activationMode']>,
-  },
-  dir: {
-    type: String as PropType<UseTabsProps['dir']>,
-  },
-  loop: {
-    type: Boolean as PropType<UseTabsProps['loop']>,
-  },
-  translation: {
-    type: Object as PropType<UseTabsProps['translations']>,
-  },
-  ids: {
-    type: Object as PropType<UseTabsProps['ids']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseTabsProps['getRootNode']>,
-  },
-})
-
-export const Tabs: ComponentWithProps<Partial<UseTabsProps>> = defineComponent({
+export const Tabs = defineComponent({
   name: 'Tabs',
-  emits: ['change', 'focus', 'delete'],
-  props: VueTabsProps,
+  props,
+  emits,
   setup(props, { slots, attrs, emit }) {
-    const api = useTabs(emit, props)
-
+    const api = useTabs(props, emit)
     TabsProvider(api)
 
     return () => (
@@ -60,5 +25,3 @@ export const Tabs: ComponentWithProps<Partial<UseTabsProps>> = defineComponent({
     )
   },
 })
-
-export type TabsProps = Optional<TabsContext, 'id'>

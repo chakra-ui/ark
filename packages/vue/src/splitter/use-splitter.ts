@@ -16,9 +16,9 @@ export const useSplitter = (props: UseSplitterProps, emit: CallableFunction): Us
 
   const [state, send] = useMachine(
     splitter.machine({
-      id: useId().value,
-      getRootNode,
       ...context.value,
+      id: context.value.id ?? useId().value,
+      getRootNode,
       ...eventMap,
     }),
     { context },

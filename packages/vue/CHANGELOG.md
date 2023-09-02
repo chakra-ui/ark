@@ -18,6 +18,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `ColorPicker` component
 - Revised `Pagination` component
 - Revised `Splitter` component
+- Revised `Tabs` component
 - Revised `Tooltip` component
 
 ## [0.7.0] - 2023-09-01
