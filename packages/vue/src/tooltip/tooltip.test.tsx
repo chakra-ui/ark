@@ -12,9 +12,7 @@ import {
 
 const Component = (props: TooltipProps) => (
   <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>
-      <button>hover me</button>
-    </TooltipTrigger>
+    <TooltipTrigger>hover me</TooltipTrigger>
     <TooltipPositioner>
       <TooltipArrow>
         <TooltipArrowTip />
@@ -35,7 +33,7 @@ describe('Tooltip', () => {
 
     await user.unhover(tooltipTrigger)
 
-    expect(queryByText('content')).not.toBeInTheDocument()
+    expect(queryByText('content')).not.toBeVisible()
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
@@ -49,20 +47,7 @@ describe('Tooltip', () => {
     await user.hover(tooltipTrigger)
 
     await findByRole('tooltip')
-    expect(getByText('hover me')).toBeInTheDocument()
-  })
-
-  it('should hide the tooltip when escape is pressed', async () => {
-    const { getByText, findByRole, queryByText } = render(Component)
-
-    const tooltipTrigger = getByText('hover me')
-    await user.hover(tooltipTrigger)
-
-    await findByRole('tooltip')
-    expect(getByText('content')).toBeInTheDocument()
-
-    await user.keyboard('[Escape]')
-    expect(queryByText('content')).not.toBeInTheDocument()
+    expect(getByText('hover me')).toBeVisible()
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {

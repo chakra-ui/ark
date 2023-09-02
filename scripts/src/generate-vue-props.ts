@@ -19,6 +19,7 @@ const main = async () => {
   process.chdir(path.join(root, 'packages', 'vue'))
 
   const indices = await globby(['src/*'], { onlyDirectories: true })
+  // const indices = ['tooltip']
 
   await Promise.allSettled(
     indices
@@ -93,7 +94,7 @@ const main = async () => {
                         ? 'Array'
                         : 'Object'
 
-                      writer.writeLine(`${name}: {`)
+                      writer.writeLine(`'${name}': {`)
                       writer.indent(() => {
                         writer.writeLine(
                           `type: ${propType} as PropType<Context['${property.getName()}']>,`,

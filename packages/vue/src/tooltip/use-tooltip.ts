@@ -1,32 +1,27 @@
-import { connect, machine, type Context as TooltipContext } from '@zag-js/tooltip'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as tooltip from '@zag-js/tooltip'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './tooltip.props'
 
-export const useTooltip = <T extends ExtractPropTypes<TooltipContext>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export type UseTooltipProps = Optional<tooltip.Context, 'id'>
+export type UseTooltipReturn = ComputedRef<tooltip.Api<PropTypes>>
 
+export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseTooltipReturn => {
+  const context = ref(props)
   const getRootNode = useEnvironmentContext()
+  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    tooltip.machine({
+      id: useId().value,
       getRootNode,
-      onOpen() {
-        emit('open')
-      },
-      onClose() {
-        emit('close')
-      },
+      ...context.value,
+      ...eventMap,
     }),
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => tooltip.connect(state.value, send, normalizeProps))
 }
-
-export type UseTooltipReturn = ReturnType<typeof useTooltip>

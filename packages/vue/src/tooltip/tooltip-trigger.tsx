@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipTriggerProps = HTMLArkProps<'button'>
@@ -10,10 +9,10 @@ export const TooltipTrigger = defineComponent({
   setup(_, { slots, attrs }) {
     const api = useTooltipContext()
 
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'TooltipTrigger')
-
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

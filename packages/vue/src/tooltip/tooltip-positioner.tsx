@@ -10,11 +10,10 @@ export const TooltipPositioner: ComponentWithProps<TooltipPositionerProps> = def
   setup(_, { slots, attrs }) {
     const api = useTooltipContext()
 
-    return () =>
-      api.value.isOpen ? (
-        <ark.div {...api.value.positionerProps} {...attrs}>
-          {() => getValidChildren(slots)}
-        </ark.div>
-      ) : null
+    return () => (
+      <ark.div {...api.value.positionerProps} {...attrs}>
+        {() => getValidChildren(slots)}
+      </ark.div>
+    )
   },
 })
