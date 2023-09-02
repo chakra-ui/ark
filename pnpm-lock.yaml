@@ -655,8 +655,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       astro:
-        specifier: 3.0.6
-        version: 3.0.6(@types/node@20.4.7)
+        specifier: 3.0.7
+        version: 3.0.7(@types/node@20.4.7)
       lucide-react:
         specifier: 0.274.0
         version: 0.274.0(react@18.2.0)
@@ -675,13 +675,13 @@ importers:
     devDependencies:
       '@astrojs/mdx':
         specifier: 1.0.0
-        version: 1.0.0(astro@3.0.6)
+        version: 1.0.0(astro@3.0.7)
       '@astrojs/react':
         specifier: 3.0.0
         version: 3.0.0(@types/react-dom@18.2.7)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
       '@pandacss/astro':
         specifier: 0.13.1
-        version: 0.13.1(astro@3.0.6)(ts-node@10.9.1)(typescript@5.2.2)
+        version: 0.13.1(astro@3.0.7)(ts-node@10.9.1)(typescript@5.2.2)
       '@pandacss/dev':
         specifier: 0.13.1
         version: 0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2)
@@ -893,7 +893,7 @@ packages:
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
-      rehype-stringify: 9.0.3
+      rehype-stringify: 9.0.4
       remark-gfm: 3.0.1
       remark-parse: 10.0.2
       remark-rehype: 10.1.0
@@ -905,13 +905,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/markdown-remark@3.0.0(astro@3.0.6):
+  /@astrojs/markdown-remark@3.0.0(astro@3.0.7):
     resolution: {integrity: sha512-s8I49Je4++ImgYAgwL32HgN8m6we2qz3RtBpN4AjObMODPwDylmzUHZksD8Toy31q/P59ED3MuwphqOGm9l03w==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.0.6(@types/node@20.4.7)
+      astro: 3.0.7(@types/node@20.4.7)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       rehype-raw: 6.1.1
@@ -927,17 +927,17 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@1.0.0(astro@3.0.6):
+  /@astrojs/mdx@1.0.0(astro@3.0.7):
     resolution: {integrity: sha512-Gmeleci8o4X7dST9E85c1+k273zcKW8cSFgZLTwU5K4dC0qHfY/EaDKHWrtzOB2wjZlT1JDRzTJ68LJYGrF2OA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
-      '@astrojs/markdown-remark': 3.0.0(astro@3.0.6)
+      '@astrojs/markdown-remark': 3.0.0(astro@3.0.7)
       '@astrojs/prism': 3.0.0
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.0.6(@types/node@20.4.7)
+      astro: 3.0.7(@types/node@20.4.7)
       es-module-lexer: 1.3.0
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -1029,8 +1029,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/telemetry@3.0.0:
-    resolution: {integrity: sha512-RhFlEXTiT0gbWX1osMuPS9IWm1SwhQmCZVAdAixrPyZ0xiLlHfw3Nkw3z6IYuzX3hqbx24G4XmkT/akBMBqxPg==}
+  /@astrojs/telemetry@3.0.1:
+    resolution: {integrity: sha512-7zJMuikRDQ0LLLivteu0+y4pqdgznrChFiRrY3qmKlOEkLWD1T3u1a5M970lvpErP7Vgh4P298JBPjv8LTj+sw==}
     engines: {node: '>=18.14.1'}
     dependencies:
       ci-info: 3.8.0
@@ -1209,7 +1209,7 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.4
       lodash.debounce: 4.0.8
-      resolve: 1.22.3
+      resolve: 1.22.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2985,7 +2985,7 @@ packages:
       debug: 4.3.4
       esbuild: 0.19.2
       escape-string-regexp: 4.0.0
-      resolve: 1.22.3
+      resolve: 1.22.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -3964,7 +3964,7 @@ packages:
       '@rushstack/ts-command-line': 4.15.2
       colors: 1.2.5
       lodash: 4.17.21
-      resolve: 1.22.3
+      resolve: 1.22.4
       semver: 7.5.4
       source-map: 0.6.1
       typescript: 5.0.4
@@ -4440,13 +4440,13 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@pandacss/astro@0.13.1(astro@3.0.6)(ts-node@10.9.1)(typescript@5.2.2):
+  /@pandacss/astro@0.13.1(astro@3.0.7)(ts-node@10.9.1)(typescript@5.2.2):
     resolution: {integrity: sha512-FJ7jemt7zEzCNTJAhFgHjY0aRVlDkOqgJnQZpCRu20mKLoUABt10a+CxJbKgGVQtEXsGzCaSykfcEodfvwZnUA==}
     peerDependencies:
       astro: '>=2.x'
     dependencies:
       '@pandacss/postcss': 0.13.1(typescript@5.2.2)
-      astro: 3.0.6(@types/node@20.4.7)
+      astro: 3.0.7(@types/node@20.4.7)
       autoprefixer: 10.4.15(postcss@8.4.27)
       postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)(ts-node@10.9.1)
@@ -5711,7 +5711,7 @@ packages:
       fs-extra: 7.0.1
       import-lazy: 4.0.0
       jju: 1.4.0
-      resolve: 1.22.3
+      resolve: 1.22.4
       semver: 7.5.4
       z-schema: 5.0.5
     dev: true
@@ -5719,7 +5719,7 @@ packages:
   /@rushstack/rig-package@0.4.1:
     resolution: {integrity: sha512-AGRwpqlXNSp9LhUSz4HKI9xCluqQDt/obsQFdv/NYIekF3pTTPzc+HbQsIsjVjYnJ3DcmxOREVMhvrMEjpiq6g==}
     dependencies:
-      resolve: 1.22.3
+      resolve: 1.22.4
       strip-json-comments: 3.1.1
     dev: true
 
@@ -9670,15 +9670,15 @@ packages:
       - supports-color
       - terser
 
-  /astro@3.0.6(@types/node@20.4.7):
-    resolution: {integrity: sha512-I4W71g/IzRp1dYHKbQGKp44TSlR+vO3z1c2TscMMJPCyQ3b15o0DVLWibd4zdDDeAQ1JqM8jvQy+nOYMIlacpg==}
+  /astro@3.0.7(@types/node@20.4.7):
+    resolution: {integrity: sha512-slUnDBXfxMzq5abE4svcKbaeYC/tHZsJYOrzwDNU9lLye3/4cqYP7OuHMTXiRlx7LSpHQlUhwbMe2HqCv2GKag==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.0.1
       '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.0.0(astro@3.0.6)
-      '@astrojs/telemetry': 3.0.0
+      '@astrojs/markdown-remark': 3.0.0(astro@3.0.7)
+      '@astrojs/telemetry': 3.0.1
       '@babel/core': 7.22.10
       '@babel/generator': 7.22.10
       '@babel/parser': 7.22.10
@@ -13421,6 +13421,7 @@ packages:
     resolution: {integrity: sha512-Q4ZuBAe2FUsKtyQJoQHlvP8OvBERxO3jEmy1I7hcRXcJBGGHFh/aJBswbXuS9sgrDH2QUO8ilkwNPHvHMd8clg==}
     dependencies:
       has: 1.0.3
+    dev: true
 
   /is-core-module@2.13.0:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
@@ -15670,7 +15671,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.3
+      resolve: 1.22.4
       semver: 5.7.2
       validate-npm-package-license: 3.0.4
     dev: true
@@ -15680,7 +15681,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.1.0
-      is-core-module: 2.12.1
+      is-core-module: 2.13.0
       semver: 7.5.4
       validate-npm-package-license: 3.0.4
     dev: true
@@ -16743,7 +16744,7 @@ packages:
       estree-to-babel: 3.2.1
       neo-async: 2.6.2
       node-dir: 0.1.17
-      resolve: 1.22.3
+      resolve: 1.22.4
       strip-indent: 3.0.0
     transitivePeerDependencies:
       - supports-color
@@ -16958,7 +16959,7 @@ packages:
     resolution: {integrity: sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==}
     engines: {node: '>= 0.10'}
     dependencies:
-      resolve: 1.22.3
+      resolve: 1.22.4
     dev: true
 
   /redent@3.0.0:
@@ -17296,7 +17297,7 @@ packages:
   /resolve@1.19.0:
     resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}
     dependencies:
-      is-core-module: 2.12.1
+      is-core-module: 2.13.0
       path-parse: 1.0.7
     dev: true
 
@@ -17307,6 +17308,7 @@ packages:
       is-core-module: 2.12.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
 
   /resolve@1.22.4:
     resolution: {integrity: sha512-PXNdCiPqDqeUou+w1C2eTQbNfxKSuMxqTCuvlmmMsk1NWHL5fRrhY6Pl0qEYYc6+QqGClco1Qj8XnjPego4wfg==}
@@ -17320,7 +17322,7 @@ packages:
     resolution: {integrity: sha512-iMDbmAWtfU+MHpxt/I5iWI7cY6YVEZUQ3MBgPQ++XD1PELuJHIl82xBmObyP2KyQmkNB2dsqF7seoQQiAn5yDQ==}
     hasBin: true
     dependencies:
-      is-core-module: 2.12.1
+      is-core-module: 2.13.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
