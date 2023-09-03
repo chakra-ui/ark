@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
 export type EditableEditTriggerProps = HTMLArkProps<'button'>
@@ -9,10 +8,11 @@ export const EditableEditTrigger = defineComponent({
   name: 'EditableEditTrigger',
   setup(_, { slots, attrs }) {
     const api = useEditableContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'EditableEditTrigger')
 
-      return h(DefaultSlot, { ...api.value.editTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.editTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

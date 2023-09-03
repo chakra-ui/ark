@@ -1,79 +1,18 @@
-import { type Context } from '@zag-js/editable'
-import { defineComponent, type PropType } from 'vue'
-import { ark } from '../factory'
-import type { Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { EditableProvider } from './editable-context'
-import { useEditable } from './use-editable'
+import { emits, props } from './editable.props'
+import { useEditable, type UseEditableProps } from './use-editable'
 
-export type UseEditableProps = Context & { modelValue?: Context['value'] }
+export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
 
-const VueEditableProps = createVueProps<UseEditableProps>({
-  activationMode: {
-    type: String as PropType<UseEditableProps['activationMode']>,
-  },
-  autoResize: {
-    type: Boolean as PropType<UseEditableProps['autoResize']>,
-  },
-  dir: {
-    type: String as PropType<UseEditableProps['dir']>,
-  },
-  disabled: {
-    type: Boolean as PropType<UseEditableProps['disabled']>,
-  },
-  form: {
-    type: String as PropType<UseEditableProps['form']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseEditableProps['getRootNode']>,
-  },
-  id: {
-    type: String as PropType<UseEditableProps['id']>,
-  },
-  ids: {
-    type: Object as PropType<UseEditableProps['ids']>,
-  },
-  invalid: {
-    type: Boolean as PropType<UseEditableProps['invalid']>,
-  },
-  maxLength: {
-    type: Number as PropType<UseEditableProps['maxLength']>,
-  },
-  modelValue: {
-    type: String as PropType<UseEditableProps['value']>,
-  },
-  name: {
-    type: String as PropType<UseEditableProps['name']>,
-  },
-  placeholder: {
-    type: String as PropType<UseEditableProps['placeholder']>,
-  },
-  readOnly: {
-    type: Boolean as PropType<UseEditableProps['readOnly']>,
-  },
-  selectOnFocus: {
-    type: Boolean as PropType<UseEditableProps['selectOnFocus']>,
-  },
-  startWithEditView: {
-    type: Boolean as PropType<UseEditableProps['startWithEditView']>,
-  },
-  submitMode: {
-    type: String as PropType<UseEditableProps['submitMode']>,
-  },
-  translations: {
-    type: Object as PropType<UseEditableProps['translations']>,
-  },
-  value: {
-    type: String as PropType<UseEditableProps['value']>,
-  },
-})
-
-export const Editable: ComponentWithProps<Partial<UseEditableProps>> = defineComponent({
+export const Editable = defineComponent({
   name: 'Editable',
-  props: VueEditableProps,
-  emits: ['cancel', 'change', 'update:modelValue', 'edit', 'submit'],
+  props,
+  emits,
   setup(props, { slots, attrs, emit }) {
-    const api = useEditable(emit, props as UseEditableProps)
+    const api = useEditable(props, emit)
 
     EditableProvider(api)
 
@@ -84,5 +23,3 @@ export const Editable: ComponentWithProps<Partial<UseEditableProps>> = defineCom
     )
   },
 })
-
-export type EditableProps = Optional<UseEditableProps, 'id'>
