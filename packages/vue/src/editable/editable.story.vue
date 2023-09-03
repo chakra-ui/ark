@@ -11,7 +11,7 @@ import {
   EditableControl,
   EditableEditTrigger,
 } from './'
-const value = ref('')
+const value = ref('Chakra')
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const value = ref('')
     <Variant title="Controlled">
       <Editable
         activationMode="dblclick"
-        placeholder="Placeholder"
+        placeholder="enter a value"
         v-model="value"
         v-slot="{ isEditing }"
       >

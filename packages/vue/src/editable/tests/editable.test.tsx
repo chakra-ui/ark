@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render } from '@testing-library/vue'
-import CustomControlStory from './stories/custom-controls.stories.vue'
+import CustomControlStory from './editable.test.vue'
 
 describe('Editable', () => {
   it('should render', () => {

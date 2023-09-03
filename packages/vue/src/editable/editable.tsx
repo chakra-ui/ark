@@ -13,7 +13,6 @@ export const Editable = defineComponent({
   emits,
   setup(props, { slots, attrs, emit }) {
     const api = useEditable(props, emit)
-
     EditableProvider(api)
 
     return () => (
