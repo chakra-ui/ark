@@ -686,8 +686,8 @@ importers:
         specifier: 0.13.1
         version: 0.13.1(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2)
       '@park-ui/presets':
-        specifier: 0.9.0
-        version: 0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2)
+        specifier: 0.10.0
+        version: 0.10.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2)
       '@types/react':
         specifier: 18.2.21
         version: 18.2.21
@@ -4999,8 +4999,8 @@ packages:
   /@pandacss/types@0.13.1:
     resolution: {integrity: sha512-L7W1xa74xOKOrCL2BQhtMk2p2az0tGWfIH4WpilEmIgTAsNA4rAt5NJQX6Mg3vjnhIxaAhj9L0VTk9gXCRYj8Q==}
 
-  /@park-ui/presets@0.9.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2):
-    resolution: {integrity: sha512-mGVKsSaRAbOLe3HNVg5GuLyOQvEHnhH8Sqna1+E2rI9mJMfcffnbtJnJKi18DfXnk8njKwxWbwyaprd1x0Glrw==}
+  /@park-ui/presets@0.10.0(@ark-ui/react@packages+react)(@internationalized/date@3.4.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.21)(typescript@5.2.2):
+    resolution: {integrity: sha512-waiXoo0dFXLmH85+uGrErOxhCiseDjxwTrBMzsqunlxbSTVbnnKr+GgRxhzzxw4XPqRkfEBAC4kZ5+7DuNegFA==}
     peerDependencies:
       '@ark-ui/react': ^0.13.0
     dependencies:
