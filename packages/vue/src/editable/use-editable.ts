@@ -1,41 +1,39 @@
-import { connect, machine } from '@zag-js/editable'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as editable from '@zag-js/editable'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
-import type { EditableProps } from './editable'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './editable.props'
 
-export const useEditable = <T extends ExtractPropTypes<EditableProps>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export type UseEditableProps = Optional<editable.Context, 'id'> & {
+  modelValue?: editable.Context['value']
+}
+export type UseEditableReturn = ComputedRef<editable.MachineApi<PropTypes>>
 
+export const useEditable = (props: UseEditableProps, emit: CallableFunction): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
+  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    editable.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
-      onCancel(details) {
-        emit('cancel', details)
-      },
+      ...eventMap,
       onChange(details) {
         emit('change', details)
         emit('update:modelValue', details.value)
       },
-      onEdit() {
-        emit('edit')
-      },
-      onSubmit(details) {
-        emit('submit', details)
-      },
     }),
+    { context },
   )
-
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => editable.connect(state.value, send, normalizeProps))
 }
-
-export type UseEditableReturn = ReturnType<typeof connect>

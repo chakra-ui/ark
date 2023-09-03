@@ -1,11 +1,11 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useEditableContext } from './editable-context'
 
 export type EditableInputProps = HTMLArkProps<'input'>
 
-export const EditableInput: ComponentWithProps<EditableInputProps> = defineComponent({
+export const EditableInput = defineComponent({
   name: 'EditableInput',
   setup(_, { slots, attrs }) {
     const api = useEditableContext()

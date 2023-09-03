@@ -28,17 +28,11 @@ const testProps = ref<string>('')
       <EditablePreview />
     </EditableArea>
     <EditableControl v-if="isEditing">
-      <EditableSubmitTrigger>
-        <button>Save</button>
-      </EditableSubmitTrigger>
-      <EditableCancelTrigger>
-        <button>Cancel</button>
-      </EditableCancelTrigger>
+      <EditableSubmitTrigger> Save </EditableSubmitTrigger>
+      <EditableCancelTrigger> Cancel </EditableCancelTrigger>
     </EditableControl>
     <EditableControl v-else>
-      <EditableEditTrigger>
-        <button>Edit</button>
-      </EditableEditTrigger>
+      <EditableEditTrigger> Edit </EditableEditTrigger>
     </EditableControl>
   </Editable>
 </template>

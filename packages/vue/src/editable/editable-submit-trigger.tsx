@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
 export type EditableSubmitTriggerProps = HTMLArkProps<'button'>
@@ -9,10 +8,11 @@ export const EditableSubmitTrigger = defineComponent({
   name: 'EditableSubmitTrigger',
   setup(_, { slots, attrs }) {
     const api = useEditableContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'EditableSubmitTrigger')
 
-      return h(DefaultSlot, { ...api.value.submitTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.submitTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

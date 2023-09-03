@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
 export type EditableCancelTriggerProps = HTMLArkProps<'button'>
@@ -9,10 +8,11 @@ export const EditableCancelTrigger = defineComponent({
   name: 'EditableCancelTrigger',
   setup(_, { slots, attrs }) {
     const api = useEditableContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'EditableCancelTrigger')
 
-      return h(DefaultSlot, { ...api.value.cancelTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.cancelTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })
