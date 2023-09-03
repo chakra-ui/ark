@@ -27,7 +27,7 @@
     "@astrojs/react": "3.0.0",
     "@pandacss/astro": "0.13.1",
     "@pandacss/dev": "0.13.1",
-    "@park-ui/presets": "0.9.0",
+    "@park-ui/presets": "0.10.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "prettier": "3.0.3",
