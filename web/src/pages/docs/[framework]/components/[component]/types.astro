@@ -23,6 +23,6 @@ const { entry } = Astro.props
 const types = await getEntry('types', entry.slug + '.types')
 ---
 
-<ComponentDocsLayout component={entry} currentTab="types">
+<ComponentDocsLayout component={entry}>
   {types ? <ComponentTypes types={types} /> : null}
 </ComponentDocsLayout>

@@ -1,15 +1,19 @@
 ---
 import { Code } from 'astro/components'
-import { getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import { CodeExamples } from './code-examples'
 
 interface Props {
   id: string
 }
 const { id } = Astro.props
-const { framework, component } = Astro.params
-const slug = [framework, component].join('/')
+const { component } = Astro.params
 
-const stories = await getEntry('stories', slug + '.stories')
+const stories = await getCollection('stories', (story) => story.id.includes(component ?? ''))
+const [react, solid] = stories
 ---
 
-{stories && <Code code={stories.data[id] ?? ''} lang="tsx" theme="css-variables" />}
+<CodeExamples client:load>
+  <Code slot="react" code={react?.data[id] ?? ''} lang="tsx" theme="css-variables" />
+  <Code slot="solid" code={solid?.data[id] ?? ''} lang="tsx" theme="css-variables" />
+</CodeExamples>
