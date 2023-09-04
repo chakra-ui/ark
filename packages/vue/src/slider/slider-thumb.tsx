@@ -10,17 +10,12 @@ export const SliderThumb: ComponentWithProps<SliderThumbProps> = defineComponent
   setup(_, { slots, attrs }) {
     const api = useSliderContext()
 
-    const hiddenInputProps = computed(() => ({
-      ...api.value.hiddenInputProps,
-      modelValue: api.value.value,
-    }))
-
     return () => (
       <>
         <ark.div {...api.value.thumbProps} {...attrs}>
           {slots.default?.()}
         </ark.div>
-        <input {...hiddenInputProps} />
+        <input {...api.value.hiddenInputProps} />
       </>
     )
   },

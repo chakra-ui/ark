@@ -83,4 +83,10 @@ describe('Slider', () => {
 
     expect(getByTestId('slider-value')).toHaveTextContent('22')
   })
+
+  it('renders SliderThumb hidden input correctly', async () => {
+    const { container } = render(BasicComponentStory)
+    await nextTick()
+    expect(container.querySelector('input[hidden]')).toBeInTheDocument()
+  })
 })

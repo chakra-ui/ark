@@ -24,7 +24,7 @@ const sliderValue = ref<SliderProps['modelValue']>(30)
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
-      <SliderThumb />
+      <SliderThumb data-test-id="slider-thumb"/>
     </SliderControl>
     <SliderMarkerGroup>
       <SliderMarker :value="-30">-30</SliderMarker>
