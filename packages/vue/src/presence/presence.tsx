@@ -30,7 +30,6 @@ export const Presence = defineComponent({
   },
   setup(props, { slots }) {
     const api = usePresence(props)
-
     const child = ref<ComponentPublicInstance | null>(null)
     const wasEverPresent = ref(false)
 
