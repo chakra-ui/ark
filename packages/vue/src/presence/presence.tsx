@@ -1,6 +1,7 @@
 import {
   cloneVNode,
   defineComponent,
+  isVNode,
   ref,
   watch,
   type ComponentPublicInstance,
@@ -46,7 +47,11 @@ export const Presence = defineComponent({
       () => child.value,
       (newValue) => {
         if (newValue) {
-          api.value.setNode(newValue)
+          if (isVNode(newValue)) {
+            api.value.setNode(newValue.$el)
+          } else {
+            api.value.setNode(newValue)
+          }
         }
       },
     )
@@ -60,13 +65,18 @@ export const Presence = defineComponent({
       }
 
       const children = getValidChildren(slots)
-      return cloneVNode(children[0], {
-        ref: (ref) => {
-          child.value = ref as ComponentPublicInstance | null
+      return cloneVNode(
+        children[0],
+        {
+          ref: (ref) => {
+            child.value = ref as ComponentPublicInstance | null
+          },
+          ['hidden']: !api.value.isPresent,
+          ['data-state']: props.present ? 'open' : 'closed',
+          ...children[0].props,
         },
-        ['hidden']: !api.value.isPresent,
-        ['data-state']: props.present ? 'open' : 'closed',
-      })
+        true,
+      )
     }
   },
 })
