@@ -1,0 +1,32 @@
+.box {
+  background-color: brown;
+  color: white;
+  padding: 24px;
+  max-width: fit-content;
+}
+
+.box[data-state='open'] {
+  animation: fadeIn 0.25s ease-out;
+}
+
+.box[data-state='closed'] {
+  animation: fadeOut 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    scale: 0.8;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    scale: 0.8;
+  }
+}
