@@ -9,6 +9,7 @@ import {
   TooltipPositioner,
   TooltipTrigger,
 } from './'
+import './tooltip.css'
 
 type TooltipType = typeof Tooltip
 
@@ -34,7 +35,7 @@ export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <button onClick={() => setIsOpen(!isOpen())}>Toggle</button>
       <Tooltip open={isOpen()}>
         <TooltipTrigger>Hover Me</TooltipTrigger>
         <Portal>
