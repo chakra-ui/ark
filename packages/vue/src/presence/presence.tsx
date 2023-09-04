@@ -1,13 +1,4 @@
-import {
-  cloneVNode,
-  defineComponent,
-  isVNode,
-  ref,
-  watch,
-  type ComponentPublicInstance,
-  type PropType,
-} from 'vue'
-import { getValidChildren } from '../utils'
+import { cloneVNode, defineComponent, ref, watch, withDirectives, type PropType } from 'vue'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
 export type PresenceProps = {}
@@ -31,7 +22,6 @@ export const Presence = defineComponent({
   },
   setup(props, { slots }) {
     const api = usePresence(props)
-    const child = ref<ComponentPublicInstance | null>(null)
     const wasEverPresent = ref(false)
 
     watch(
@@ -43,40 +33,28 @@ export const Presence = defineComponent({
       },
     )
 
-    watch(
-      () => child.value,
-      (newValue) => {
-        if (newValue) {
-          if (isVNode(newValue)) {
-            api.value.setNode(newValue.$el)
-          } else {
-            api.value.setNode(newValue)
-          }
-        }
+    const setRef = {
+      mounted(el: HTMLElement) {
+        api.value.setNode(el)
       },
-    )
+    }
 
     return () => {
+      const originalVNode = slots.default ? slots.default()[0] : null
+
       if (
+        !originalVNode ||
         (!api.value.isPresent && !wasEverPresent.value && props.lazyMount) ||
         (props.unmountOnExit && !api.value.isPresent && wasEverPresent.value)
       ) {
         return null
       }
 
-      const children = getValidChildren(slots)
-      return cloneVNode(
-        children[0],
-        {
-          ref: (ref) => {
-            child.value = ref as ComponentPublicInstance | null
-          },
-          ['hidden']: !api.value.isPresent,
-          ['data-state']: props.present ? 'open' : 'closed',
-          ...children[0].props,
-        },
-        true,
-      )
+      const clonedVNode = cloneVNode(originalVNode, {
+        ['data-state']: props.present ? 'open' : 'closed',
+        ['hidden']: !api.value.isPresent,
+      })
+      return withDirectives(clonedVNode, [[setRef]])
     }
   },
 })

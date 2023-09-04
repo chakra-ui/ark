@@ -12,7 +12,7 @@ const isPresent = ref(false)
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent">
-          <div className="box">Hidden and Hidden</div>
+          <div class="box">Hidden and Hidden</div>
         </Presence>
       </div>
     </Variant>
@@ -20,7 +20,7 @@ const isPresent = ref(false)
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent" lazyMount>
-          <div className="box">Hidden and Hidden</div>
+          <div class="box">Hidden and Hidden</div>
         </Presence>
       </div>
     </Variant>
@@ -28,7 +28,7 @@ const isPresent = ref(false)
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent" unmountOnExit>
-          <div className="box">Hidden and Unmounted on Exit</div>
+          <div class="box">Hidden and Unmounted on Exit</div>
         </Presence>
       </div>
     </Variant>
@@ -36,7 +36,7 @@ const isPresent = ref(false)
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent" lazyMount unmountOnExit>
-          <div className="box">Lazy Mount and Unmounted on Exit</div>
+          <div class="box">Lazy Mount and Unmounted on Exit</div>
         </Presence>
       </div>
     </Variant>
