@@ -23,19 +23,17 @@ const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
 )
 
 describe('Tooltip', () => {
-  it('should render', async () => {
-    render(() => <ComponentUnderTest />)
-  })
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
     render(() => <ComponentUnderTest />)
 
     const tooltipTrigger = screen.getByText('hover me')
-
     await user.hover(tooltipTrigger)
+
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
 
     await user.unhover(tooltipTrigger)
-    expect(screen.queryByText('content')).not.toBeInTheDocument()
+
+    expect(screen.queryByText('content')).not.toBeVisible()
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
@@ -58,7 +56,7 @@ describe('Tooltip', () => {
     expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByText('content')).not.toBeInTheDocument()
+    expect(screen.queryByText('content')).not.toBeVisible()
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
