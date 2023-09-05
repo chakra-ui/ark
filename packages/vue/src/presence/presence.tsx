@@ -1,27 +1,23 @@
-import { cloneVNode, defineComponent, ref, watch, withDirectives, type PropType } from 'vue'
+import { cloneVNode, defineComponent, ref, watch, withDirectives } from 'vue'
+import { emits, props } from './presence.props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
-export type PresenceProps = {}
+export type PresenceProps = UsePresenceProps & {
+  /**
+   * Whether to enable lazy mounting. Defaults to `false`.
+   */
+  lazyMount?: boolean
+  /**
+   * Whether to unmount on exit. Defaults to `false`.
+   */
+  unmountOnExit?: boolean
+}
 
 export const Presence = defineComponent({
-  props: {
-    present: {
-      type: Boolean,
-    },
-    onExitComplete: {
-      type: Function as PropType<UsePresenceProps['onExitComplete']>,
-    },
-    lazyMount: {
-      type: Boolean,
-      default: false,
-    },
-    unmountOnExit: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props, { slots }) {
-    const api = usePresence(props)
+  props,
+  emits,
+  setup(props, { slots, emit }) {
+    const api = usePresence(props, emit)
     const wasEverPresent = ref(false)
 
     watch(
