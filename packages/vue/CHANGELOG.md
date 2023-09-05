@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added `Avatar` component
 - Added `Switch` component
+- Added `Presence` component
 
 ### Changed
 

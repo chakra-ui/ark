@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { Tooltip, TooltipContent, TooltipPositioner, TooltipTrigger } from '.'
+import { TooltipPresence } from './tooltip-presence'
+import './tooltip.css'
 </script>
+
 <template>
-  <Story>
+  <Story title="Tooltip">
     <Variant title="Basic">
       <Tooltip :close-on-esc="true">
         <TooltipTrigger>Hover Me</TooltipTrigger>
-        <Teleport to="body">
-          <TooltipPositioner>
+        <TooltipPositioner>
+          <TooltipPresence>
             <TooltipContent>I am a tooltip!</TooltipContent>
-          </TooltipPositioner>
-        </Teleport>
+          </TooltipPresence>
+        </TooltipPositioner>
       </Tooltip>
     </Variant>
   </Story>
