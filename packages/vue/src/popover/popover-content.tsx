@@ -1,19 +1,25 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { Presence, type PresenceProps } from '../presence'
+import { emits, props } from '../presence/presence.props'
+import { getValidChildren } from '../utils'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverContentProps = HTMLArkProps<'div'>
+export type PopoverContentProps = HTMLArkProps<'div'> & PresenceProps
 
-export const PopoverContent: ComponentWithProps<PopoverContentProps> = defineComponent({
+export const PopoverContent = defineComponent({
   name: 'PopoverContent',
-  setup(_, { slots, attrs }) {
+  props,
+  emits,
+  setup(props, { slots, attrs }) {
     const api = usePopoverContext()
 
     return () => (
-      <ark.div {...api.value.contentProps} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <Presence {...props} present={props.present !== undefined ? props.present : api.value.isOpen}>
+        <ark.div {...api.value.contentProps} {...attrs}>
+          {() => getValidChildren(slots)}
+        </ark.div>
+      </Presence>
     )
   },
 })

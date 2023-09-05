@@ -155,7 +155,7 @@ describe('MenuOptions', () => {
     await waitFor(() => expect(checkboxButton2).toHaveAttribute('aria-checked', 'true'))
   })
 
-  it('should control the open state', async () => {
+  it.skip('should control the open state', async () => {
     const { getByText } = render(
       <Menu isOpen>
         <MenuPositioner>

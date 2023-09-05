@@ -1,20 +1,27 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { Presence, type PresenceProps } from '../presence'
+import { emits, props } from '../presence/presence.props'
+import { getValidChildren } from '../utils'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionContentProps = HTMLArkProps<'div'>
+export type AccordionContentProps = HTMLArkProps<'div'> & PresenceProps
 
-export const AccordionContent = defineComponent<AccordionContentProps>({
+export const AccordionContent = defineComponent({
   name: 'AccordionContent',
-  setup(_, { slots, attrs }) {
+  props,
+  emits,
+  setup(props, { slots, attrs }) {
     const api = useAccordionContext()
-    const { value } = useAccordionItemContext()
+    const { value, isOpen } = useAccordionItemContext()
 
     return () => (
-      <ark.div {...api.value.getContentProps({ value })} {...attrs}>
-        {slots?.default?.()}
-      </ark.div>
+      <Presence {...props} present={props.present !== undefined ? props.present : isOpen}>
+        <ark.div {...api.value.getContentProps({ value })} {...attrs}>
+          {() => getValidChildren(slots)}
+        </ark.div>
+      </Presence>
     )
   },
 })

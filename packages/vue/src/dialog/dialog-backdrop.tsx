@@ -1,19 +1,25 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { Presence, type PresenceProps } from '../presence'
+import { emits, props } from '../presence/presence.props'
+import { getValidChildren } from '../utils'
 import { useDialogContext } from './dialog-context'
 
-export type DialogBackdropProps = HTMLArkProps<'div'>
+export type DialogBackdropProps = HTMLArkProps<'div'> & PresenceProps
 
-export const DialogBackdrop: ComponentWithProps<DialogBackdropProps> = defineComponent({
+export const DialogBackdrop = defineComponent({
   name: 'DialogBackdrop',
-  setup(_, { slots, attrs }) {
+  props,
+  emits,
+  setup(props, { slots, attrs }) {
     const api = useDialogContext()
 
     return () => (
-      <ark.div {...api.value.backdropProps} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <Presence {...props} present={props.present !== undefined ? props.present : api.value.isOpen}>
+        <ark.div {...api.value.backdropProps} {...attrs}>
+          {() => getValidChildren(slots)}
+        </ark.div>
+      </Presence>
     )
   },
 })
