@@ -3,6 +3,7 @@ import { declareEmits } from '../utils'
 export const props = {
   present: {
     type: Boolean,
+    default: undefined,
   },
   lazyMount: {
     type: Boolean,

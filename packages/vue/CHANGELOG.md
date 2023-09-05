@@ -11,6 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Added `Avatar` component
 - Added `Switch` component
 - Added `Presence` component
+- To improve performance and reduce initial load times, we've introduced two new properties to the `TooltipContent` component. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
 
 ### Changed
 
