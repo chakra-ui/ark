@@ -1,19 +1,18 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useComboboxContext } from './combobox-context'
-import { ComboboxPresence, type ComboboxPresenceProps } from './comobox-presence'
 
-export type ComboboxContentProps = HTMLArkProps<'div'> & ComboboxPresenceProps
+export type ComboboxContentProps = HTMLArkProps<'div'> & PresenceProps
 
 export const ComboboxContent = (props: ComboboxContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
-  const combobox = useComboboxContext()
-  const contentProps = mergeProps(() => combobox().contentProps, localProps)
+  const api = useComboboxContext()
+  const contentProps = mergeProps(() => api().contentProps, localProps)
 
   return (
-    <ComboboxPresence {...presenceProps}>
+    <Presence present={api().isOpen} {...presenceProps}>
       <ark.div {...contentProps} />
-    </ComboboxPresence>
+    </Presence>
   )
 }

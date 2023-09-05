@@ -1,19 +1,18 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useSelectContext } from './select-context'
-import { SelectPresence, type SelectPresenceProps } from './select-presence'
 
-export type SelectContentProps = HTMLArkProps<'div'> & SelectPresenceProps
+export type SelectContentProps = HTMLArkProps<'div'> & PresenceProps
 
 export const SelectContent = (props: SelectContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useSelectContext()
-  const contentProps = mergeProps(() => api().contentProps, localProps)
+  const mergedProps = mergeProps(() => api().contentProps, localProps)
 
   return (
-    <SelectPresence {...presenceProps}>
-      <ark.div {...contentProps} />
-    </SelectPresence>
+    <Presence present={api().isOpen} {...presenceProps}>
+      <ark.div {...mergedProps} />
+    </Presence>
   )
 }

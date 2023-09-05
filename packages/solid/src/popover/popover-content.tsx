@@ -1,19 +1,18 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { usePopoverContext } from './popover-context'
-import { PopoverPresence, type PopoverPresenceProps } from './popover-presence'
 
-export type PopoverContentProps = HTMLArkProps<'div'> & PopoverPresenceProps
+export type PopoverContentProps = HTMLArkProps<'div'> & PresenceProps
 
 export const PopoverContent = (props: PopoverContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = usePopoverContext()
-  const contentProps = mergeProps(() => api().contentProps, localProps)
+  const mergedProps = mergeProps(() => api().contentProps, localProps)
 
   return (
-    <PopoverPresence {...presenceProps}>
-      <ark.div {...contentProps} />
-    </PopoverPresence>
+    <Presence present={api().isOpen} {...presenceProps}>
+      <ark.div {...mergedProps} />
+    </Presence>
   )
 }

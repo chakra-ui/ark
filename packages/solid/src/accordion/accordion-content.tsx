@@ -1,21 +1,20 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
-import { AccordionItemPresence, type AccordionItemPresenceProps } from './accordion-item-presence'
 
-export type AccordionContentProps = HTMLArkProps<'div'> & AccordionItemPresenceProps
+export type AccordionContentProps = HTMLArkProps<'div'> & PresenceProps
 
 export const AccordionContent = (props: AccordionContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useAccordionContext()
-  const itemParams = useAccordionItemContext()
-  const contentProps = mergeProps(() => api().getContentProps(itemParams), localProps)
+  const accordionItem = useAccordionItemContext()
+  const contentProps = mergeProps(() => api().getContentProps(accordionItem), localProps)
 
   return (
-    <AccordionItemPresence {...presenceProps}>
+    <Presence present={accordionItem.isOpen} {...presenceProps}>
       <ark.div {...contentProps} />
-    </AccordionItemPresence>
+    </Presence>
   )
 }
