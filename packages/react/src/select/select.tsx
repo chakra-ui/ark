@@ -15,16 +15,18 @@ export type SelectProps = Assign<
 export const Select = (props: SelectProps) => {
   const [useSelectProps, { children }] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
+    'collection',
     'defaultValue',
     'dir',
     'disabled',
     'form',
     'getRootNode',
-    'highlightedOption',
+    'highlightedValue',
     'id',
     'ids',
     'invalid',
     'loop',
+    'multiple',
     'name',
     'onChange',
     'onClose',
@@ -33,10 +35,11 @@ export const Select = (props: SelectProps) => {
     'onInteractOutside',
     'onOpen',
     'onPointerDownOutside',
+    'open',
     'positioning',
     'readOnly',
-    'selectedOption',
-    'selectOnTab',
+    'selectOnBlur',
+    'value',
   ])
   const select = useSelect(useSelectProps)
   const view = runIfFn(children, select)

@@ -1,12 +1,13 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
+import { collection } from '@zag-js/select'
 import {
   Select,
   SelectContent,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
   SelectLabel,
-  SelectOption,
-  SelectOptionGroup,
-  SelectOptionGroupLabel,
   SelectPositioner,
   SelectTrigger,
 } from './'
@@ -21,29 +22,33 @@ const meta: Meta<SelectType> = {
 
 export default meta
 
-export const Basic = () => (
-  <Select defaultValue={{ label: 'React', value: 'react' }}>
-    {({ selectedOption }) => (
-      <>
-        <SelectLabel>Framework:</SelectLabel>
-        <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
-        <Portal>
-          <SelectPositioner>
-            <SelectContent>
-              <SelectOptionGroup id="framework">
-                <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
-                <SelectOption value="react" label="React" />
-                <SelectOption value="solid" label="Solid">
-                  Solid
-                </SelectOption>
-                <SelectOption value="vue" label="Vue">
-                  Vue
-                </SelectOption>
-              </SelectOptionGroup>
-            </SelectContent>
-          </SelectPositioner>
-        </Portal>
-      </>
-    )}
-  </Select>
-)
+export const Basic = () => {
+  const items = collection({ items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }] })
+
+  return (
+    <Select collection={items}>
+      {(api) => (
+        <>
+          <SelectLabel>Framework:</SelectLabel>
+          <SelectTrigger>
+            {api.hasSelectedItems ? api.selectedItems[0].value : 'Select option'}
+          </SelectTrigger>
+          <Portal>
+            <SelectPositioner>
+              <SelectContent>
+                <SelectItemGroup id="framework">
+                  <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+                  {items.toArray().map((item) => (
+                    <SelectItem key={item.value} item={item}>
+                      {item.value}
+                    </SelectItem>
+                  ))}
+                </SelectItemGroup>
+              </SelectContent>
+            </SelectPositioner>
+          </Portal>
+        </>
+      )}
+    </Select>
+  )
+}

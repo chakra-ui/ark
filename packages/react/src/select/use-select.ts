@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseSelectProps = Optional<select.Context, 'id'> & {
-  defaultValue?: select.Context['selectedOption']
+  defaultValue?: select.Context['value']
 }
 export type UseSelectReturn = select.Api
 
@@ -15,11 +15,11 @@ export const useSelect = (props: UseSelectProps): UseSelectReturn => {
     id: useId(),
     getRootNode,
     ...props,
-    selectedOption: props.defaultValue,
+    value: props.defaultValue,
   }
   const context = {
     ...initialContext,
-    selectedOption: props.selectedOption,
+    value: props.value,
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {
