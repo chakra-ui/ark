@@ -1,16 +1,31 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
+import type { UseMenuReturn } from './use-menu'
 
-export type MenuContentProps = ComponentPropsWithoutRef<typeof ark.div>
+export type MenuContentProps = ComponentPropsWithoutRef<typeof ark.div> &
+  Omit<PresenceProps, 'children'>
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
+  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useMenuContext() as UseMenuReturn['api']
-  const mergedProps = mergeProps(api?.contentProps ?? {}, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <Presence present={api?.isOpen} {...presenceProps}>
+      <MenuInnerContent ref={ref} {...localProps} />
+    </Presence>
+  )
 })
 
 MenuContent.displayName = 'MenuContent'
+
+const MenuInnerContent = forwardRef<HTMLDivElement, MenuContentProps>(
+  function MenuInnerContent(props, ref) {
+    const api = useMenuContext() as UseMenuReturn['api']
+    const mergedProps = mergeProps(api?.contentProps ?? {}, props)
+
+    return <ark.div {...mergedProps} ref={ref} />
+  },
+)

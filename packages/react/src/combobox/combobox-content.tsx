@@ -1,30 +1,30 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useComboboxContext } from './combobox-context'
-import { ComboboxPresence, type ComboboxPresenceProps } from './combobox-presence'
 
 export type ComboboxContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<ComboboxPresenceProps, 'children'>
+  Omit<PresenceProps, 'children'>
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
-  const [presenceProps, comboboxContentProps] = splitPresenceProps(props)
+  const [presenceProps, localProps] = splitPresenceProps(props)
+  const api = useComboboxContext()
+
   return (
-    <ComboboxPresence {...presenceProps}>
-      <InnerComboboxContent ref={ref} {...comboboxContentProps} />
-    </ComboboxPresence>
+    <Presence present={api.isOpen} {...presenceProps}>
+      <ComboboxInnerContent ref={ref} {...localProps} />
+    </Presence>
   )
 })
+
 ComboboxContent.displayName = 'ComboboxContent'
 
-const InnerComboboxContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
-  (props, ref) => {
-    const { contentProps } = useComboboxContext()
-    const mergedProps = mergeProps(contentProps, props)
+const ComboboxInnerContent = forwardRef<HTMLDivElement, ComboboxContentProps>(
+  function ComboboxInnerContent(props, ref) {
+    const api = useComboboxContext()
+    const mergedProps = mergeProps(api.contentProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
-
-InnerComboboxContent.displayName = 'InnerComboboxContent'

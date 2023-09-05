@@ -1,31 +1,30 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useSelectContext } from './select-context'
-import { SelectPresence, type SelectPresenceProps } from './select-presence'
 
 export type SelectContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<SelectPresenceProps, 'children'>
+  Omit<PresenceProps, 'children'>
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
-  const [presenceProps, selectContentProps] = splitPresenceProps(props)
+  const [presenceProps, localProps] = splitPresenceProps(props)
+  const api = useSelectContext()
+
   return (
-    <SelectPresence {...presenceProps}>
-      <InnerSelectContent ref={ref} {...selectContentProps} />
-    </SelectPresence>
+    <Presence present={api.isOpen} {...presenceProps}>
+      <SelectInnerContent ref={ref} {...localProps} />
+    </Presence>
   )
 })
 
 SelectContent.displayName = 'SelectContent'
 
-const InnerSelectContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
-  (props, ref) => {
-    const { contentProps } = useSelectContext()
-    const mergedProps = mergeProps(contentProps, props)
+const SelectInnerContent = forwardRef<HTMLDivElement, SelectContentProps>(
+  function SelectInnerContent(props, ref) {
+    const api = useSelectContext()
+    const mergedProps = mergeProps(api.contentProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
-
-InnerSelectContent.displayName = 'InnerSelectContent'

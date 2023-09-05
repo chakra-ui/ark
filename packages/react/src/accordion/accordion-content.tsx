@@ -1,30 +1,31 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
-import { AccordionItemPresence, type AccordionItemPresenceProps } from './accordion-item-presence'
 
 export type AccordionContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<AccordionItemPresenceProps, 'children'>
+  Omit<PresenceProps, 'children'>
 
 export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
   function AccordionContent(props, ref) {
-    const [presenceProps, accordionContentProps] = splitPresenceProps(props)
+    const [presenceProps, localProps] = splitPresenceProps(props)
+    const api = useAccordionItemContext()
+
     return (
-      <AccordionItemPresence {...presenceProps}>
-        <InnerAccordionContent ref={ref} {...accordionContentProps} />
-      </AccordionItemPresence>
+      <Presence present={api.isOpen} {...presenceProps}>
+        <AccordionInnerContent ref={ref} {...localProps} />
+      </Presence>
     )
   },
 )
 
-const InnerAccordionContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
-  function InnerAccordionContent(props, ref) {
-    const { getContentProps } = useAccordionContext()
+const AccordionInnerContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
+  function AccordionInnerContent(props, ref) {
+    const api = useAccordionContext()
     const accordionItem = useAccordionItemContext()
-    const mergedProps = mergeProps(getContentProps(accordionItem), props)
+    const mergedProps = mergeProps(api.getContentProps(accordionItem), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

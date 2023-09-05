@@ -264,7 +264,7 @@ describe('Menu', () => {
     })
   })
 
-  it('should control the open state', () => {
+  it('should control the open state', async () => {
     render(
       <Menu isOpen>
         <MenuPositioner>
@@ -274,7 +274,7 @@ describe('Menu', () => {
         </MenuPositioner>
       </Menu>,
     )
-    const text = screen.getByText('main menu content')
+    const text = await screen.findByText('main menu content')
     expect(text).toBeVisible()
   })
 })

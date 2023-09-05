@@ -1,31 +1,30 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useHoverCardContext } from './hover-card-context'
-import { HoverCardPresence, type HoverCardPresenceProps } from './hover-card-presence'
 
 export type HoverCardContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<HoverCardPresenceProps, 'children'>
+  Omit<PresenceProps, 'children'>
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
-  const [presenceProps, hoverCardContentProps] = splitPresenceProps(props)
+  const [presenceProps, localProps] = splitPresenceProps(props)
+  const api = useHoverCardContext()
+
   return (
-    <HoverCardPresence {...presenceProps}>
-      <InnerHoverCardContent ref={ref} {...hoverCardContentProps} />
-    </HoverCardPresence>
+    <Presence present={api.isOpen} {...presenceProps}>
+      <HoverCardInnerContent ref={ref} {...localProps} />
+    </Presence>
   )
 })
 
 HoverCardContent.displayName = 'HoverCardContent'
 
-const InnerHoverCardContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
-  (props, ref) => {
-    const { contentProps } = useHoverCardContext()
-    const mergedProps = mergeProps(contentProps, props)
+const HoverCardInnerContent = forwardRef<HTMLDivElement, HoverCardContentProps>(
+  function HoverCardInnerContent(props, ref) {
+    const api = useHoverCardContext()
+    const mergedProps = mergeProps(api.contentProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
-
-InnerHoverCardContent.displayName = 'InnerHoverCardContent'

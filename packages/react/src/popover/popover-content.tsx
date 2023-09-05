@@ -1,31 +1,30 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
-import { splitPresenceProps } from '../presence'
+import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { usePopoverContext } from './popover-context'
-import { PopoverPresence, type PopoverPresenceProps } from './popover-presence'
 
 export type PopoverContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<PopoverPresenceProps, 'children'>
+  Omit<PresenceProps, 'children'>
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
-  const [presenceProps, popoverContentProps] = splitPresenceProps(props)
+  const [presenceProps, localProps] = splitPresenceProps(props)
+  const api = usePopoverContext()
+
   return (
-    <PopoverPresence {...presenceProps}>
-      <InnerPopoverContent ref={ref} {...popoverContentProps} />
-    </PopoverPresence>
+    <Presence present={api.isOpen} {...presenceProps}>
+      <PopoverInnerContent ref={ref} {...localProps} />
+    </Presence>
   )
 })
 
 PopoverContent.displayName = 'PopoverContent'
 
-const InnerPopoverContent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<typeof ark.div>>(
-  (props, ref) => {
-    const { contentProps } = usePopoverContext()
-    const mergedProps = mergeProps(contentProps, props)
+const PopoverInnerContent = forwardRef<HTMLDivElement, PopoverContentProps>(
+  function PopoverInnerContent(props, ref) {
+    const api = usePopoverContext()
+    const mergedProps = mergeProps(api.contentProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
-
-InnerPopoverContent.displayName = 'InnerPopoverContent'
