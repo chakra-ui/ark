@@ -185,6 +185,20 @@
       "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
     }
   },
+  "ComboboxContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  },
   "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
   "ComboboxOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
