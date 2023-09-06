@@ -9,7 +9,7 @@ import { emits } from './editable.props'
 export type UseEditableProps = Optional<editable.Context, 'id'> & {
   modelValue?: editable.Context['value']
 }
-export type UseEditableReturn = ComputedRef<editable.MachineApi<PropTypes>>
+export type UseEditableReturn = ComputedRef<editable.Api<PropTypes>>
 
 export const useEditable = (props: UseEditableProps, emit: CallableFunction): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()

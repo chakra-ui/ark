@@ -12,7 +12,6 @@ export const Radio = (props: RadioProps) => {
     'value',
     'disabled',
     'invalid',
-    'readOnly',
   ])
 
   const api = useRadioGroupContext()

@@ -27,9 +27,6 @@ export const props = {
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
-  readOnly: {
-    type: Boolean as PropType<Context['readOnly']>,
-  },
   modelValue: {
     type: String as PropType<Context['value']>,
   },

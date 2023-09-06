@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export type UseEditableProps = Optional<editable.Context, 'id'>
-export type UseEditableReturn = Accessor<editable.MachineApi<PropTypes>>
+export type UseEditableReturn = Accessor<editable.Api<PropTypes>>
 
 export const useEditable = (props: UseEditableProps) => {
   const getRootNode = useEnvironmentContext()
