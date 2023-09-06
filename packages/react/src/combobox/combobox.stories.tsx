@@ -27,47 +27,34 @@ const meta: Meta<ComboboxType> = {
 export default meta
 
 export const Basic = () => {
-  // const [options, setItems] = useState(comboboxData)
-
-  // const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
-  //   const filtered = comboboxData.filter((item) =>
-  //     item.label.toLowerCase().includes(value.toLowerCase()),
-  //   )
-  //   setItems(filtered.length > 0 ? filtered : comboboxData)
-  // }
-
   const frameworks = collection({
     items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }],
   })
 
   return (
     <Combobox collection={frameworks}>
-      {({ isInputValueEmpty, isOpen }) => (
-        <>
-          <ComboboxLabel>JS Frameworks</ComboboxLabel>
-          <ComboboxControl>
-            <ComboboxInput />
-            <ComboboxTrigger>▼</ComboboxTrigger>
-            <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-          </ComboboxControl>
-          {isInputValueEmpty && !isOpen && <div>Give me you favorite framework!</div>}
-          <Portal>
-            <ComboboxPositioner>
-              <ComboboxContent>
-                <ComboboxItemGroup id="framework">
-                  <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
-                  {frameworks.toArray().map((item) => (
-                    <ComboboxItem key={item.value} item={item}>
-                      <ComboboxItemIndicator item={item} />
-                      {item.value}
-                    </ComboboxItem>
-                  ))}
-                </ComboboxItemGroup>
-              </ComboboxContent>
-            </ComboboxPositioner>
-          </Portal>
-        </>
-      )}
+      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>▼</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
+      </ComboboxControl>
+
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              {frameworks.toArray().map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemIndicator item={item} />
+                  {item.value}
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
     </Combobox>
   )
 }

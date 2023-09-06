@@ -10,6 +10,7 @@ import {
   ComboboxItemGroupLabel,
   type ComboboxItemGroupLabelProps,
 } from './combobox-item-group-label'
+import { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combobox-item-indicator'
 import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
@@ -21,10 +22,11 @@ const Combobox = Object.assign(ComboboxRoot, {
   Content: ComboboxContent,
   Control: ComboboxControl,
   Input: ComboboxInput,
-  Label: ComboboxLabel,
   Item: ComboboxItem,
   ItemGroup: ComboboxItemGroup,
   ItemGroupLabel: ComboboxItemGroupLabel,
+  ItemIndicator: ComboboxItemIndicator,
+  Label: ComboboxLabel,
   Positioner: ComboboxPositioner,
   Trigger: ComboboxTrigger,
 })
@@ -51,6 +53,7 @@ export type {
   ComboboxInputProps,
   ComboboxItemGroupLabelProps,
   ComboboxItemGroupProps,
+  ComboboxItemIndicatorProps,
   ComboboxItemProps,
   ComboboxLabelProps,
   ComboboxPositionerProps,
