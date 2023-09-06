@@ -166,6 +166,7 @@
       "description": "The keys of the selected items"
     }
   },
+  "ComboboxItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
   "ComboboxContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -179,5 +180,7 @@
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
-  }
+  },
+  "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
