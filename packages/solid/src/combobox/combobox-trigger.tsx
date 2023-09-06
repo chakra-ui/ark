@@ -6,6 +6,7 @@ export type ComboboxTriggerProps = HTMLArkProps<'button'>
 
 export const ComboboxTrigger = (props: ComboboxTriggerProps) => {
   const combobox = useComboboxContext()
-  const triggerProps = mergeProps(() => combobox().triggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => combobox().triggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

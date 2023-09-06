@@ -8,11 +8,11 @@ export type ComboboxContentProps = HTMLArkProps<'div'> & PresenceProps
 export const ComboboxContent = (props: ComboboxContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useComboboxContext()
-  const contentProps = mergeProps(() => api().contentProps, localProps)
+  const mergedProps = mergeProps(() => api().contentProps, localProps)
 
   return (
     <Presence present={api().isOpen} {...presenceProps}>
-      <ark.div {...contentProps} />
+      <ark.div {...mergedProps} />
     </Presence>
   )
 }

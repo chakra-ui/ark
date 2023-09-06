@@ -5,17 +5,16 @@ import { type Assign } from '../types'
 import { SelectProvider } from './select-context'
 import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 
-export type SelectProps = Assign<
-  UseSelectProps,
+export type SelectProps<T> = Assign<
+  UseSelectProps<T>,
   {
-    children?: ReactNode | ((state: UseSelectReturn) => ReactNode)
+    children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
   }
 >
 
-export const Select = (props: SelectProps) => {
-  const [useSelectProps, { children }] = createSplitProps<UseSelectProps>()(props, [
+export function Select<T>(props: SelectProps<T>) {
+  const [useSelectProps, { children }] = createSplitProps<UseSelectProps<T>>()(props, [
     'closeOnSelect',
-    'collection',
     'defaultValue',
     'dir',
     'disabled',
@@ -25,6 +24,10 @@ export const Select = (props: SelectProps) => {
     'id',
     'ids',
     'invalid',
+    'isItemDisabled',
+    'items',
+    'itemToString',
+    'itemToValue',
     'loop',
     'multiple',
     'name',

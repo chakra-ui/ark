@@ -6,6 +6,7 @@ export type ComboboxLabelProps = HTMLArkProps<'label'>
 
 export const ComboboxLabel = (props: ComboboxLabelProps) => {
   const combobox = useComboboxContext()
-  const labelProps = mergeProps(() => combobox().labelProps, props)
-  return <ark.label {...labelProps} />
+  const mergedProps = mergeProps(() => combobox().labelProps, props)
+
+  return <ark.label {...mergedProps} />
 }

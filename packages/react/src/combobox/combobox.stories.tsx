@@ -14,6 +14,7 @@ import {
   ComboboxPositioner,
   ComboboxTrigger,
 } from './'
+import { ComboboxItemIndicator } from './combobox-item-indicator'
 import './combobox.css'
 
 type ComboboxType = typeof Combobox
@@ -57,6 +58,7 @@ export const Basic = () => {
                   <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
                   {frameworks.toArray().map((item) => (
                     <ComboboxItem key={item.value} item={item}>
+                      <ComboboxItemIndicator item={item} />
                       {item.value}
                     </ComboboxItem>
                   ))}

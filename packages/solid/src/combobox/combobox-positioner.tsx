@@ -6,6 +6,7 @@ export type ComboboxPositionerProps = HTMLArkProps<'div'>
 
 export const ComboboxPositioner = (props: ComboboxPositionerProps) => {
   const combobox = useComboboxContext()
-  const positionProps = mergeProps(() => combobox().positionerProps, props)
-  return <ark.div {...positionProps} />
+  const mergedProps = mergeProps(() => combobox().positionerProps, props)
+
+  return <ark.div {...mergedProps} />
 }

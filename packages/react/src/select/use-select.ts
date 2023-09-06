@@ -1,30 +1,61 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
+import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import { type Assign, type Optional } from '../types'
 
-export type UseSelectProps = Optional<select.Context, 'id'> & {
-  defaultValue?: select.Context['value']
+type CollectionOptions<T> = {
+  items: T[]
+  itemToValue?: ((item: T) => string) | undefined
+  itemToString?: ((item: T) => string) | undefined
+  isItemDisabled?: ((item: T) => boolean) | undefined
 }
-export type UseSelectReturn = select.Api
 
-export const useSelect = (props: UseSelectProps): UseSelectReturn => {
+type ValueChangeDetails<T> = {
+  value: string[]
+  items: T[]
+}
+
+export type UseSelectProps<T> = Assign<
+  Optional<Omit<select.Context<T>, 'collection'>, 'id'>,
+  {
+    defaultValue?: select.Context<T>['value']
+    onChange?: (details: ValueChangeDetails<T>) => void
+  }
+> &
+  CollectionOptions<T>
+
+// @ts-expect-error asdf
+export type UseSelectReturn<T> = select.Api<PropTypes, T>
+
+export const useSelect = <T>(props: UseSelectProps<T>): UseSelectReturn<T> => {
   const getRootNode = useEnvironmentContext()
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+    'isItemDisabled',
+    'itemToValue',
+    'itemToString',
+    'items',
+  ])
+  // @ts-expect-error fix later
+  const collection = select.collection(collectionOptions)
+
   const initialContext = {
     id: useId(),
     getRootNode,
-    ...props,
+    collection,
+    ...rest,
     value: props.defaultValue,
   }
   const context = {
     ...initialContext,
+    collection,
     value: props.value,
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {
     context,
   })
-
+  // @ts-expect-error fix later
   return select.connect(state, send, normalizeProps)
 }

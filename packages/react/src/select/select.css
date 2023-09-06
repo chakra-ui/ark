@@ -5,6 +5,9 @@
 [data-part='content'][data-state='closed'] {
   animation: fadeOut 0.2s ease-in;
 }
+[data-part='item'][data-disabled] {
+  color: silver;
+}
 
 @keyframes fadeIn {
   from {

@@ -6,6 +6,7 @@ export type ComboboxControlProps = HTMLArkProps<'div'>
 
 export const ComboboxControl = (props: ComboboxControlProps) => {
   const combobox = useComboboxContext()
-  const controlProps = mergeProps(() => combobox().controlProps, props)
-  return <ark.div {...controlProps} />
+  const mergedProps = mergeProps(() => combobox().controlProps, props)
+
+  return <ark.div {...mergedProps} />
 }
