@@ -6,6 +6,7 @@ export type SelectLabelProps = HTMLArkProps<'label'>
 
 export const SelectLabel = (props: SelectLabelProps) => {
   const api = useSelectContext()
-  const labelProps = mergeProps(() => api().labelProps, props)
-  return <ark.label {...labelProps} />
+  const mergedProps = mergeProps(() => api().labelProps, props)
+
+  return <ark.label {...mergedProps} />
 }

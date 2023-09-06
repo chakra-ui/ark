@@ -6,6 +6,7 @@ export type SelectPositionerProps = HTMLArkProps<'div'>
 
 export const SelectPositioner = (props: SelectPositionerProps) => {
   const api = useSelectContext()
-  const positionerProps = mergeProps(() => api().positionerProps, props)
-  return <ark.div {...positionerProps} />
+  const mergedProps = mergeProps(() => api().positionerProps, props)
+
+  return <ark.div {...mergedProps} />
 }

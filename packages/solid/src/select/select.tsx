@@ -13,34 +13,36 @@ export type SelectProps = Assign<
 >
 
 export const Select = (props: SelectProps) => {
-  const [selectParams, restProps] = createSplitProps<UseSelectProps>()(props, [
+  const [selectParams, localProps] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
+    'collection',
     'dir',
     'disabled',
     'form',
     'getRootNode',
-    'highlightedOption',
+    'highlightedValue',
     'id',
     'ids',
     'invalid',
     'loop',
+    'multiple',
     'name',
     'onChange',
     'onClose',
     'onFocusOutside',
     'onHighlight',
     'onInteractOutside',
-    'onInteractOutside',
     'onOpen',
     'onPointerDownOutside',
+    'open',
     'positioning',
     'readOnly',
-    'selectedOption',
-    'selectOnTab',
+    'selectOnBlur',
+    'value',
   ])
 
   const api = useSelect(selectParams)
-  const getChildren = () => runIfFn(restProps.children, api)
+  const getChildren = () => runIfFn(localProps.children, api)
 
   return <SelectProvider value={api}>{getChildren()}</SelectProvider>
 }

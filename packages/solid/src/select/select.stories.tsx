@@ -1,12 +1,13 @@
+import { collection } from '@zag-js/select'
 import { For, Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import {
   Select,
   SelectContent,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
   SelectLabel,
-  SelectOption,
-  SelectOptionGroup,
-  SelectOptionGroupLabel,
   SelectPositioner,
   SelectTrigger,
 } from '.'
@@ -19,24 +20,25 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => {
-  const options = [
-    { label: 'React', value: 'react' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Angular', value: 'angular' },
-  ]
+  const items = collection({ items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }] })
+
   return (
-    <Select>
+    <Select collection={items}>
       {(api) => (
         <>
           <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>{api().selectedOption?.label ?? 'Select option'}</SelectTrigger>
+          <SelectTrigger>
+            {api().hasSelectedItems ? api().selectedItems[0].value : 'Select option'}
+          </SelectTrigger>
           <Portal>
             <SelectPositioner>
               <SelectContent>
-                <SelectOptionGroup id="framework">
-                  <SelectOptionGroupLabel htmlFor="framework">Frameworks</SelectOptionGroupLabel>
-                  <For each={options}>{(option) => <SelectOption {...option} />}</For>
-                </SelectOptionGroup>
+                <SelectItemGroup id="framework">
+                  <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+                  <For each={items.toArray()}>
+                    {(item) => <SelectItem item={item}>{item.value}</SelectItem>}
+                  </For>
+                </SelectItemGroup>
               </SelectContent>
             </SelectPositioner>
           </Portal>
