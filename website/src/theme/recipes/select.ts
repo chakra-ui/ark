@@ -33,7 +33,7 @@ export const select = defineRecipe({
         cursor: 'not-allowed',
       },
     },
-    option: {
+    item: {
       borderRadius: 'md',
       cursor: 'pointer',
       mb: '1',
@@ -82,32 +82,32 @@ export const select = defineRecipe({
       xs: parts({
         trigger: { px: '2', h: '8', maxW: '2xs', textStyle: 'sm' },
         content: { w: '2xs' },
-        option: { textStyle: 'sm', p: '1' },
+        item: { textStyle: 'sm', p: '1' },
       }),
       sm: parts({
         trigger: { px: '2.5', h: '9', maxW: '2xs', textStyle: 'sm' },
         content: { w: '2xs' },
-        option: { textStyle: 'sm', p: '1.5' },
+        item: { textStyle: 'sm', p: '1.5' },
       }),
       md: parts({
         trigger: { px: '3', h: '10', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
-        option: { textStyle: 'md', p: '2' },
+        item: { textStyle: 'md', p: '2' },
       }),
       lg: parts({
         trigger: { px: '3.5', h: '11', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
-        option: { textStyle: 'md' },
+        item: { textStyle: 'md' },
       }),
       xl: parts({
         trigger: { px: '4', h: '12', maxW: 'xs', textStyle: 'md' },
         content: { w: 'xs' },
-        option: { textStyle: 'md' },
+        item: { textStyle: 'md' },
       }),
       '2xl': parts({
         trigger: { px: '2', h: '16', maxW: 'xs', textStyle: '3xl' },
         content: { w: 'xs' },
-        option: { textStyle: '3xl' },
+        item: { textStyle: '3xl' },
       }),
     },
   },
