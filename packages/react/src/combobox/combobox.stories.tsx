@@ -47,7 +47,7 @@ export const Basic = () => {
               <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
               {frameworks.toArray().map((item) => (
                 <ComboboxItem key={item.value} item={item}>
-                  <ComboboxItemIndicator item={item} />
+                  <ComboboxItemIndicator />
                   {item.value}
                 </ComboboxItem>
               ))}
