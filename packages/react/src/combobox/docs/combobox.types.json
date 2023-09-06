@@ -182,6 +182,5 @@
     }
   },
   "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxItemIndicatorProps": { "item": { "type": "CollectionItem", "isRequired": true } },
   "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
