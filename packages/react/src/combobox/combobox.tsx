@@ -3,7 +3,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
@@ -13,28 +13,29 @@ export type ComboboxProps = Assign<
 > & {
   children?: React.ReactNode | ((props: UseComboboxReturn) => React.ReactNode)
 }
-
 export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) => {
   const [useComboboxProps, { children, ...divProps }] = createSplitProps<UseComboboxProps>()(
     props,
     [
       'allowCustomValue',
-      'ariaHidden',
       'autoFocus',
-      'blurOnSelect',
+      'closeOnSelect',
+      'collection',
       'dir',
       'disabled',
-      'focusOnClear',
       'form',
       'getRootNode',
+      'highlightedValue',
       'id',
       'ids',
       'inputBehavior',
       'inputValue',
+      'inputValue',
       'invalid',
-      'isCustomValue',
       'loop',
+      'multiple',
       'name',
+      'onChange',
       'onClose',
       'onFocusOutside',
       'onHighlight',
@@ -43,15 +44,14 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) =
       'onInteractOutside',
       'onOpen',
       'onPointerDownOutside',
-      'onSelect',
       'openOnClick',
       'placeholder',
       'positioning',
       'readOnly',
       'selectionBehavior',
-      'selectionData',
-      'selectOnTab',
+      'selectOnBlur',
       'translations',
+      'value',
     ],
   )
 

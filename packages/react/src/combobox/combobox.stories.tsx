@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { useState } from 'react'
+import { collection } from '@zag-js/combobox'
 import { Portal } from '..'
 import {
   Combobox,
@@ -7,14 +7,12 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
   ComboboxLabel,
-  ComboboxOption,
-  ComboboxOptionGroup,
-  ComboboxOptionGroupLabel,
   ComboboxPositioner,
   ComboboxTrigger,
-  type ComboboxOptionProps,
-  type ComboboxProps,
 } from './'
 import './combobox.css'
 
@@ -27,25 +25,22 @@ const meta: Meta<ComboboxType> = {
 
 export default meta
 
-const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
-  { label: 'ReactJS', value: 'react' },
-  { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue' },
-  { label: 'AngularJS', value: 'angular', disabled: true },
-]
-
 export const Basic = () => {
-  const [options, setOptions] = useState(comboboxData)
+  // const [options, setItems] = useState(comboboxData)
 
-  const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
-    const filtered = comboboxData.filter((item) =>
-      item.label.toLowerCase().includes(value.toLowerCase()),
-    )
-    setOptions(filtered.length > 0 ? filtered : comboboxData)
-  }
+  // const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
+  //   const filtered = comboboxData.filter((item) =>
+  //     item.label.toLowerCase().includes(value.toLowerCase()),
+  //   )
+  //   setItems(filtered.length > 0 ? filtered : comboboxData)
+  // }
+
+  const frameworks = collection({
+    items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }],
+  })
 
   return (
-    <Combobox onInputChange={handleInputChange}>
+    <Combobox collection={frameworks}>
       {({ isInputValueEmpty, isOpen }) => (
         <>
           <ComboboxLabel>JS Frameworks</ComboboxLabel>
@@ -58,21 +53,14 @@ export const Basic = () => {
           <Portal>
             <ComboboxPositioner>
               <ComboboxContent>
-                <ComboboxOptionGroup id="framework">
-                  <ComboboxOptionGroupLabel htmlFor="framework">
-                    Frameworks
-                  </ComboboxOptionGroupLabel>
-                  {options.map((item, index) => (
-                    <ComboboxOption
-                      key={`${item.value}:${index}`}
-                      label={item.label}
-                      value={item.value}
-                      disabled={item?.disabled}
-                    >
-                      {item.label}
-                    </ComboboxOption>
+                <ComboboxItemGroup id="framework">
+                  <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+                  {frameworks.toArray().map((item) => (
+                    <ComboboxItem key={item.value} item={item}>
+                      {item.value}
+                    </ComboboxItem>
                   ))}
-                </ComboboxOptionGroup>
+                </ComboboxItemGroup>
               </ComboboxContent>
             </ComboboxPositioner>
           </Portal>

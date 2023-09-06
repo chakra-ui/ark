@@ -6,8 +6,8 @@ import { useComboboxContext } from './combobox-context'
 export type ComboboxTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
 
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, ComboboxTriggerProps>((props, ref) => {
-  const { triggerProps } = useComboboxContext()
-  const mergedProps = mergeProps(triggerProps, props)
+  const api = useComboboxContext()
+  const mergedProps = mergeProps(api.triggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })
