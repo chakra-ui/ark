@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useSelectContext } from './select-context'
 
 export type SelectPositionerProps = HTMLArkProps<'div'>
 
-export const SelectPositioner: ComponentWithProps<SelectPositionerProps> = defineComponent({
+export const SelectPositioner = defineComponent({
   name: 'SelectPositioner',
   setup(_, { slots, attrs }) {
     const api = useSelectContext()

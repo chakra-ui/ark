@@ -11,6 +11,7 @@
   },
   "rules": {
     "vue/multi-word-component-names": 0,
-    "vue/no-setup-props-destructure": "warn"
+    "vue/no-setup-props-destructure": "warn",
+    "vue/no-reserved-component-names": 0
   }
 }

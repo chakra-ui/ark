@@ -4,9 +4,9 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectIndicatorProps = HTMLArkProps<'div'> & ItemProps
+export type SelectItemIndicatorProps = HTMLArkProps<'div'> & ItemProps
 
-export const SelectIndicator = (props: SelectIndicatorProps) => {
+export const SelectItemIndicator = (props: SelectItemIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().getItemIndicatorProps(indicatorProps), localProps)

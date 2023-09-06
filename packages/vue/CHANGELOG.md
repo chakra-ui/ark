@@ -19,6 +19,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Carousel` component
 - Revised `ColorPicker` component
 - Revised `Pagination` component
+- Revised `Select` component
 - Revised `Splitter` component
 - Revised `Tabs` component
 - Revised `Tooltip` component

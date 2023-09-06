@@ -8,7 +8,6 @@ import { useSwitch, type UseSwitchProps } from './use-switch'
 export type SwitchProps = Assign<HTMLArkProps<'div'>, UseSwitchProps>
 
 export const Switch = defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Switch',
   props,
   emits,
