@@ -1,5 +1,7 @@
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SelectProvider, type SelectContext } from './select-context'
@@ -13,9 +15,8 @@ export type SelectProps = Assign<
 >
 
 export const Select = (props: SelectProps) => {
-  const [selectParams, localProps] = createSplitProps<UseSelectProps>()(props, [
+  const [selectProps, localProps] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
-    'collection',
     'dir',
     'disabled',
     'form',
@@ -24,6 +25,10 @@ export const Select = (props: SelectProps) => {
     'id',
     'ids',
     'invalid',
+    'isItemDisabled',
+    'items',
+    'itemToString',
+    'itemToValue',
     'loop',
     'multiple',
     'name',
@@ -41,8 +46,13 @@ export const Select = (props: SelectProps) => {
     'value',
   ])
 
-  const api = useSelect(selectParams)
+  const api = useSelect(selectProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
-  return <SelectProvider value={api}>{getChildren()}</SelectProvider>
+  return (
+    <SelectProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+    </SelectProvider>
+  )
 }
