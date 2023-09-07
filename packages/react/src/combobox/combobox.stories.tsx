@@ -38,7 +38,7 @@ export const Basic = () => {
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>Lets go</ComboboxTrigger>
+        <ComboboxTrigger>Open</ComboboxTrigger>
         <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>
@@ -72,7 +72,7 @@ export const Multiple = () => {
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>Lets go</ComboboxTrigger>
+        <ComboboxTrigger>Open</ComboboxTrigger>
         <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { collection } from '@zag-js/combobox'
 import { vi } from 'vitest'
 import { Portal } from '..'
+import type { Optional } from '../types'
 import {
   Combobox,
   ComboboxClearTrigger,
@@ -12,44 +12,44 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
   type ComboboxProps,
 } from './'
 
-const ComponentUnderTest = (props: Omit<ComboboxProps, 'collection'>) => {
-  const frameworks = collection({
-    items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }],
-  })
-
+const ComponentUnderTest = (props: Optional<ComboboxProps, 'items'>) => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
   return (
-    <Combobox collection={frameworks} {...props}>
-      {({ isInputValueEmpty, isOpen }) => (
-        <>
-          <ComboboxLabel>JS Frameworks</ComboboxLabel>
-          <ComboboxControl>
-            <ComboboxInput />
-            <ComboboxTrigger>▼</ComboboxTrigger>
-            <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-          </ComboboxControl>
-          {isInputValueEmpty && !isOpen && <div>Give me you favorite framework!</div>}
-          <Portal>
-            <ComboboxPositioner>
-              <ComboboxContent>
-                <ComboboxItemGroup id="framework">
-                  <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
-                  {frameworks.toArray().map((item) => (
-                    <ComboboxItem key={item.value} item={item}>
-                      {item.value}
-                    </ComboboxItem>
-                  ))}
-                </ComboboxItemGroup>
-              </ComboboxContent>
-            </ComboboxPositioner>
-          </Portal>
-        </>
-      )}
+    <Combobox items={items} {...props}>
+      <ComboboxLabel>Framework</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>Open</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              {items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
     </Combobox>
   )
 }
