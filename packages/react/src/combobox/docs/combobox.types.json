@@ -1,9 +1,9 @@
 {
   "ComboboxProps": {
-    "collection": {
-      "type": "Collection<any>",
+    "items": {
+      "type": "CollectionItem[]",
       "isRequired": true,
-      "description": "The collection of items"
+      "description": "The options of the select"
     },
     "allowCustomValue": {
       "type": "boolean",
@@ -20,6 +20,7 @@
       "isRequired": false,
       "description": "Whether to close the combobox when an item is selected."
     },
+    "defaultValue": { "type": "string[]", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -69,6 +70,21 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the combobox is required"
+    },
+    "isItemDisabled": {
+      "type": "(item: CollectionItem) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: CollectionItem) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: CollectionItem) => string",
+      "isRequired": false,
+      "description": "The value of the item"
     },
     "loop": {
       "type": "boolean",
