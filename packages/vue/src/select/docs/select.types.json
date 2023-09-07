@@ -41,7 +41,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  content: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+      "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the select. Useful for composition."
     },
@@ -67,7 +67,7 @@
       "description": "The `name` attribute of the underlying select."
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails) => void",
+      "type": "(details: ValueChangeDetails<CollectionItem>) => void",
       "isRequired": false,
       "description": "The callback fired when the selected item changes."
     },
@@ -78,7 +78,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails) => void",
+      "type": "(details: HighlightChangeDetails<CollectionItem>) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted item changes."
     },

@@ -87,7 +87,7 @@
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
     "onChange": {
-      "type": "(details: { value: string[]; items: CollectionItem[] }) => void",
+      "type": "(details: ValueChangeDetails<CollectionItem>) => void",
       "isRequired": false,
       "description": "Function called when a new item is selected"
     },
@@ -96,26 +96,18 @@
       "isRequired": false,
       "description": "Function called when the popup is closed"
     },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
-    },
+    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: { value: string | null; item: CollectionItem | null }) => void",
+      "type": "(details: HighlightChangeDetails<CollectionItem>) => void",
       "isRequired": false,
       "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
     "onInputChange": {
-      "type": "(details: { value: string }) => void",
+      "type": "(details: InputValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the input's value changes"
     },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
-    },
+    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
     "onOpen": {
       "type": "VoidFunction",
       "isRequired": false,
@@ -123,8 +115,7 @@
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "isRequired": false
     },
     "openOnClick": {
       "type": "boolean",

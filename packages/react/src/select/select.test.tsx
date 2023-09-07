@@ -29,12 +29,9 @@ const ComponentUnderTest = (props: Optional<SelectProps, 'items'>) => {
     <Select items={items} {...props}>
       <SelectLabel>Framework:</SelectLabel>
       <SelectControl>
-        <SelectControl>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a Framework" />
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a Framework" />
+        </SelectTrigger>
         <SelectClearTrigger>Clear</SelectClearTrigger>
       </SelectControl>
       <Portal>
