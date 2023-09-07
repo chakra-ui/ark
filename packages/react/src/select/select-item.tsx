@@ -5,6 +5,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
+import { SelectItemProvider } from './select-item-context'
 
 export type SelectItemProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, ItemProps>
 
@@ -13,7 +14,11 @@ export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, re
   const api = useSelectContext()
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <SelectItemProvider value={itemProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </SelectItemProvider>
+  )
 })
 
 SelectItem.displayName = 'SelectItem'

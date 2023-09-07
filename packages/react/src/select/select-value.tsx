@@ -1,15 +1,19 @@
-import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { ark } from '../factory'
 import { useSelectContext } from './select-context'
+import { parts } from './select.anatomy'
 
 export type SelectValueProps = ComponentPropsWithoutRef<typeof ark.span>
 
 export const SelectValue = forwardRef<HTMLSpanElement, SelectValueProps>((props, ref) => {
+  const { children, placeholder, ...rest } = props
   const api = useSelectContext()
-  const mergedProps = mergeProps(api.valueAsString, props)
 
-  return <ark.span {...mergedProps} ref={ref} />
+  return (
+    <ark.span {...parts.value.attrs} {...rest} ref={ref}>
+      {children || api.valueAsString || placeholder}
+    </ark.span>
+  )
 })
 
 SelectValue.displayName = 'SelectValue'

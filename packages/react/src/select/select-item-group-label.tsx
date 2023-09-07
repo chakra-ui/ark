@@ -8,7 +8,7 @@ import { useSelectContext } from './select-context'
 
 export type SelectItemGroupLabelProps = Assign<
   ComponentPropsWithoutRef<typeof ark.div>,
-  { htmlFor: string }
+  ItemGroupLabelProps
 >
 
 export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(

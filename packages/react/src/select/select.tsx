@@ -1,19 +1,21 @@
-import { type ReactNode } from 'react'
+import { mergeProps } from '@zag-js/react'
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
+import { ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { SelectProvider } from './select-context'
 import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 
-export type SelectProps<T> = Assign<
-  UseSelectProps<T>,
-  {
-    children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
-  }
->
+export type SelectProps = Assign<
+  Omit<ComponentPropsWithoutRef<typeof ark.div>, 'children'>,
+  UseSelectProps
+> & {
+  children?: ReactNode | ((state: UseSelectReturn) => ReactNode)
+}
 
-export function Select<T>(props: SelectProps<T>) {
-  const [useSelectProps, { children }] = createSplitProps<UseSelectProps<T>>()(props, [
+export const Select = forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
+  const [useSelectProps, { children, ...localProps }] = createSplitProps<UseSelectProps>()(props, [
     'closeOnSelect',
     'defaultValue',
     'dir',
@@ -44,8 +46,17 @@ export function Select<T>(props: SelectProps<T>) {
     'selectOnBlur',
     'value',
   ])
-  const select = useSelect(useSelectProps)
-  const view = runIfFn(children, select)
+  const api = useSelect(useSelectProps)
+  const view = runIfFn(children, api)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
-  return <SelectProvider value={select}>{view}</SelectProvider>
-}
+  return (
+    <SelectProvider value={api}>
+      <ark.div {...mergedProps} ref={ref}>
+        {view}
+      </ark.div>
+    </SelectProvider>
+  )
+})
+
+Select.displayName = 'Select'

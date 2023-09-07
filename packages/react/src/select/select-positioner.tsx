@@ -6,8 +6,8 @@ import { useSelectContext } from './select-context'
 export type SelectPositionerProps = ComponentPropsWithoutRef<typeof ark.div>
 
 export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>((props, ref) => {
-  const { positionerProps } = useSelectContext()
-  const mergedProps = mergeProps(positionerProps, props)
+  const api = useSelectContext()
+  const mergedProps = mergeProps(api.positionerProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

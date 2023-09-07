@@ -1,43 +1,29 @@
-import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
+import { normalizeProps, useMachine } from '@zag-js/react'
+import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
 
-type CollectionOptions<T> = {
-  items: T[]
-  itemToValue?: ((item: T) => string) | undefined
-  itemToString?: ((item: T) => string) | undefined
-  isItemDisabled?: ((item: T) => boolean) | undefined
-}
-
-type ValueChangeDetails<T> = {
-  value: string[]
-  items: T[]
-}
-
-export type UseSelectProps<T> = Assign<
-  Optional<Omit<select.Context<T>, 'collection'>, 'id'>,
+export type UseSelectProps = Assign<
+  Optional<Omit<select.Context, 'collection'>, 'id'>,
   {
-    defaultValue?: select.Context<T>['value']
-    onChange?: (details: ValueChangeDetails<T>) => void
+    defaultValue?: select.Context['value']
   }
 > &
-  CollectionOptions<T>
+  CollectionOptions
 
-// @ts-expect-error asdf
-export type UseSelectReturn<T> = select.Api<PropTypes, T>
+export type UseSelectReturn = select.Api
 
-export const useSelect = <T>(props: UseSelectProps<T>): UseSelectReturn<T> => {
+export const useSelect = (props: UseSelectProps): UseSelectReturn => {
   const getRootNode = useEnvironmentContext()
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
     'items',
   ])
-  // @ts-expect-error fix later
   const collection = select.collection(collectionOptions)
 
   const initialContext = {
@@ -56,6 +42,6 @@ export const useSelect = <T>(props: UseSelectProps<T>): UseSelectReturn<T> => {
   const [state, send] = useMachine(select.machine(initialContext), {
     context,
   })
-  // @ts-expect-error fix later
+
   return select.connect(state, send, normalizeProps)
 }
