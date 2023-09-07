@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { collection } from '@zag-js/combobox'
 import { Portal } from '..'
 import {
   Combobox,
@@ -10,11 +9,12 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
 } from './'
-import { ComboboxItemIndicator } from './combobox-item-indicator'
 import './combobox.css'
 
 type ComboboxType = typeof Combobox
@@ -27,28 +27,63 @@ const meta: Meta<ComboboxType> = {
 export default meta
 
 export const Basic = () => {
-  const frameworks = collection({
-    items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }],
-  })
-
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
   return (
-    <Combobox collection={frameworks}>
-      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+    <Combobox items={items}>
+      <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>▼</ComboboxTrigger>
+        <ComboboxTrigger>Lets go</ComboboxTrigger>
         <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
-
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
             <ComboboxItemGroup id="framework">
               <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
-              {frameworks.toArray().map((item) => (
+              {items.map((item) => (
                 <ComboboxItem key={item.value} item={item}>
-                  <ComboboxItemIndicator />
-                  {item.value}
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
+    </Combobox>
+  )
+}
+
+export const Multiple = () => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
+  return (
+    <Combobox items={items} multiple>
+      <ComboboxLabel>Framework</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>Lets go</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              {items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
                 </ComboboxItem>
               ))}
             </ComboboxItemGroup>
