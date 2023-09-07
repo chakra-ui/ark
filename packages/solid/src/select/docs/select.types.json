@@ -1,9 +1,9 @@
 {
   "SelectProps": {
-    "collection": {
-      "type": "Collection<any>",
+    "items": {
+      "type": "CollectionItem[]",
       "isRequired": true,
-      "description": "The item collection"
+      "description": "The options of the select"
     },
     "closeOnSelect": {
       "type": "boolean",
@@ -49,6 +49,21 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select is invalid"
+    },
+    "isItemDisabled": {
+      "type": "(item: CollectionItem) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: CollectionItem) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: CollectionItem) => string",
+      "isRequired": false,
+      "description": "The value of the item"
     },
     "loop": {
       "type": "boolean",
@@ -118,6 +133,7 @@
     }
   },
   "SelectItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "SelectValueProps": { "placeholder": { "type": "string", "isRequired": false } },
   "SelectContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -133,6 +149,5 @@
     }
   },
   "SelectItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "SelectItemIndicatorProps": { "item": { "type": "CollectionItem", "isRequired": true } },
   "SelectItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
