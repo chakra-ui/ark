@@ -8,6 +8,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -23,6 +24,7 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   modelValue: {
     type: String as PropType<Context['value']>,

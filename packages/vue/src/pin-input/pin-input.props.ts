@@ -5,15 +5,18 @@ import { declareEmits } from '../utils'
 export const props = {
   autoFocus: {
     type: Boolean as PropType<Context['autoFocus']>,
+    default: undefined,
   },
   blurOnComplete: {
     type: Boolean as PropType<Context['blurOnComplete']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -29,15 +32,18 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   mask: {
     type: Boolean as PropType<Context['mask']>,
+    default: undefined,
   },
   name: {
     type: String as PropType<Context['name']>,
   },
   otp: {
     type: Boolean as PropType<Context['otp']>,
+    default: undefined,
   },
   pattern: {
     type: String as PropType<Context['pattern']>,
@@ -47,6 +53,7 @@ export const props = {
   },
   selectOnFocus: {
     type: Boolean as PropType<Context['selectOnFocus']>,
+    default: undefined,
   },
   translations: {
     type: Object as PropType<Context['translations']>,

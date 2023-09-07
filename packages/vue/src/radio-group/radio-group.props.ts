@@ -8,6 +8,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -29,6 +30,7 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   modelValue: {
     type: String as PropType<Context['value']>,

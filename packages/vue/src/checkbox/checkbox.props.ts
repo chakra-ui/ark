@@ -11,6 +11,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -26,12 +27,14 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   name: {
     type: String as PropType<Context['name']>,
   },
   required: {
     type: Boolean as PropType<Context['required']>,
+    default: undefined,
   },
   modelValue: {
     type: String as PropType<Context['value']>,

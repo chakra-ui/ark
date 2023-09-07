@@ -5,24 +5,30 @@ import { declareEmits } from '../utils'
 export const props = {
   allowCustomValue: {
     type: Boolean as PropType<Context['allowCustomValue']>,
+    default: undefined,
   },
   ariaHidden: {
     type: Boolean as PropType<Context['ariaHidden']>,
+    default: undefined,
   },
   autoFocus: {
     type: Boolean as PropType<Context['autoFocus']>,
+    default: undefined,
   },
   blurOnSelect: {
     type: Boolean as PropType<Context['blurOnSelect']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   focusOnClear: {
     type: Boolean as PropType<Context['focusOnClear']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -44,18 +50,21 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   isCustomValue: {
     type: Function as PropType<Context['isCustomValue']>,
   },
   loop: {
     type: Boolean as PropType<Context['loop']>,
+    default: undefined,
   },
   name: {
     type: String as PropType<Context['name']>,
   },
   openOnClick: {
     type: Boolean as PropType<Context['openOnClick']>,
+    default: undefined,
   },
   placeholder: {
     type: String as PropType<Context['placeholder']>,
@@ -65,9 +74,11 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   selectOnTab: {
     type: Boolean as PropType<Context['selectOnTab']>,
+    default: undefined,
   },
   selectionBehavior: {
     type: String as PropType<Context['selectionBehavior']>,

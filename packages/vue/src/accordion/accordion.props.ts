@@ -5,12 +5,14 @@ import { declareEmits } from '../utils'
 export const props = {
   collapsible: {
     type: Boolean as PropType<Context['collapsible']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -23,6 +25,7 @@ export const props = {
   },
   multiple: {
     type: Boolean as PropType<Context['multiple']>,
+    default: undefined,
   },
   orientation: {
     type: String as PropType<Context['orientation']>,
