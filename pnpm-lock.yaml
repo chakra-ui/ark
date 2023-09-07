@@ -680,8 +680,8 @@ importers:
         version: 5.0.5
     devDependencies:
       '@astrojs/mdx':
-        specifier: 1.0.0
-        version: 1.0.0(astro@3.0.8)
+        specifier: 1.0.2
+        version: 1.0.2(astro@3.0.8)
       '@astrojs/react':
         specifier: 3.0.0
         version: 3.0.0(@types/react-dom@18.2.7)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
@@ -933,11 +933,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@1.0.0(astro@3.0.8):
-    resolution: {integrity: sha512-Gmeleci8o4X7dST9E85c1+k273zcKW8cSFgZLTwU5K4dC0qHfY/EaDKHWrtzOB2wjZlT1JDRzTJ68LJYGrF2OA==}
+  /@astrojs/mdx@1.0.2(astro@3.0.8):
+    resolution: {integrity: sha512-dcGw+Idi/xM3GF1E9b/RyRw4ot5kzVCUNZkkhSELZxiFLPa94xlAz3BcplXlUiKs7NTIOp3ehLqCmbneiC78sA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
-      astro: ^3.0.0
+      astro: ^3.0.10
     dependencies:
       '@astrojs/markdown-remark': 3.0.0(astro@3.0.8)
       '@astrojs/prism': 3.0.0
