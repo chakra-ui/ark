@@ -46,7 +46,7 @@ describe('Accordion', () => {
   })
 
   it('should collapse an expanded item when collapsible is true', async () => {
-    render(<ComponentUnderTest collapsible={true} />)
+    render(<ComponentUnderTest collapsible />)
 
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
 
@@ -63,12 +63,12 @@ describe('Accordion', () => {
   })
 
   it('should disable all items when disabled is true', async () => {
-    render(<ComponentUnderTest disabled={true} />)
+    render(<ComponentUnderTest disabled />)
     expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('disabled')
   })
 
   it('should allow multiple items to be expanded when multiple is true', async () => {
-    render(<ComponentUnderTest multiple={true} />)
+    render(<ComponentUnderTest multiple />)
 
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
     await user.click(screen.getByRole('button', { name: 'Vue Trigger' }))

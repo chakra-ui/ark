@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import {
   NumberInput,
   NumberInputControl,
@@ -11,7 +10,7 @@ import {
   type NumberInputProps,
 } from './'
 
-const Component = (props: NumberInputProps) => (
+const ComponentUnderTest = (props: NumberInputProps) => (
   <NumberInput {...props}>
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputInput />
@@ -23,56 +22,80 @@ const Component = (props: NumberInputProps) => (
 )
 
 describe('NumberInput', () => {
-  it('should render', async () => {
-    render(<Component />)
+  it('should render', () => {
+    render(<ComponentUnderTest />)
+    expect(screen.getByText('Label')).toBeInTheDocument()
+    expect(screen.getByText('-1')).toBeInTheDocument()
+    expect(screen.getByText('+1')).toBeInTheDocument()
   })
 
-  it('should increment on increment button click', async () => {
-    render(<Component />)
+  it('should handle wheel event when allowMouseWheel is true', async () => {
+    render(<ComponentUnderTest allowMouseWheel />)
     const input = screen.getByRole('spinbutton')
-    const incButton = screen.getByRole('button', {
-      name: /inc/i,
+    act(() => {
+      input.focus()
     })
-    await user.click(incButton)
+    fireEvent.wheel(input, { deltaY: -1 })
 
-    expect(input).toHaveValue('1')
-    await user.click(incButton)
-    expect(input).toHaveValue('2')
-  })
-
-  it('should decrement on decrement button click', async () => {
-    render(<Component />)
-    const input = screen.getByRole('spinbutton')
-    const decButton = screen.getByRole('button', {
-      name: /dec/i,
+    await waitFor(() => {
+      expect(input).toHaveValue('1')
     })
-    await user.click(decButton)
-
-    expect(input).toHaveValue('-1')
-    await user.click(decButton)
-    expect(input).toHaveValue('-2')
   })
 
-  it('should call onChange on value change', async () => {
-    const onChange = vi.fn()
+  it('should clamp value on blur when clampValueOnBlur is true', async () => {
+    render(<ComponentUnderTest clampValueOnBlur min={0} max={10} defaultValue="15" />)
+    const input = screen.getByRole('spinbutton')
+    act(() => {
+      input.focus()
+    })
+    fireEvent.blur(input)
 
-    render(<Component onChange={onChange} />)
-
-    await user.click(
-      screen.getByRole('button', {
-        name: /inc/i,
-      }),
-    )
-    expect(onChange).toBeCalledWith({ value: '1', valueAsNumber: 1 })
+    await waitFor(() => {
+      expect(input).toHaveValue('10')
+    })
   })
 
-  it('should clamp vlaue on blur', async () => {
-    render(<Component max={30} />)
+  it('should  allow value to exceed max when allowOverflow is true', async () => {
+    render(<ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
+    const input = screen.getByRole('spinbutton')
+    expect(input).toHaveValue('15')
+  })
+
+  it('should handle custom format and parse functions', async () => {
+    const format = (value: string) => `USD ${value}`
+    const parse = (value: string) => value.replace('USD ', '')
+
+    render(<ComponentUnderTest format={format} parse={parse} defaultValue="5" />)
+    const input = screen.getByRole('spinbutton')
+
+    await waitFor(() => {
+      expect(input).toHaveValue('USD 5')
+    })
+  })
+
+  it('should increment value by step when using increment button', async () => {
+    render(<ComponentUnderTest step={5} defaultValue="0" />)
+    const incrementBtn = screen.getByText('+1')
+    await user.click(incrementBtn)
 
     const input = screen.getByRole('spinbutton')
-    await user.type(input, '35')
-    await user.tab()
+    await waitFor(() => {
+      expect(input).toHaveValue('5')
+    })
+  })
 
-    expect(input).toHaveValue('30')
+  it('should handle min and max fraction digits', async () => {
+    render(<ComponentUnderTest minFractionDigits={2} maxFractionDigits={3} defaultValue="1.00" />)
+    const input = screen.getByRole('spinbutton')
+    await waitFor(() => {
+      expect(input).toHaveValue('1.00')
+    })
+    await user.clear(input)
+    await user.type(input, '1.1234')
+    fireEvent.blur(input)
+
+    await waitFor(() => {
+      expect(input).toHaveValue('1.123')
+    })
   })
 })

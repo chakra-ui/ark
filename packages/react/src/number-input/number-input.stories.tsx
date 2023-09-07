@@ -12,7 +12,31 @@ const meta: Meta<NumberInputType> = {
 export default meta
 
 export const Basic = () => (
-  <NumberInput.Root min={-50} max={50} clampValueOnBlur>
+  <NumberInput.Root>
+    <NumberInput.Scrubber />
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
+)
+
+export const MouseWheel = () => (
+  <NumberInput.Root allowMouseWheel>
+    <NumberInput.Scrubber />
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
+)
+
+export const FractionDigits = () => (
+  <NumberInput.Root minFractionDigits={2} maxFractionDigits={4} defaultValue="1.00">
     <NumberInput.Scrubber />
     <NumberInput.Label>Label</NumberInput.Label>
     <NumberInput.Input />
