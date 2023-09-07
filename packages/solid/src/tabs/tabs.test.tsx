@@ -1,5 +1,6 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { For } from 'solid-js'
 import { vi } from 'vitest'
 import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
 
@@ -13,30 +14,30 @@ const ComponentUnderTest = (props: TabsProps) => {
   return (
     <Tabs {...props}>
       <TabList>
-        {items.map((item, id) => (
-          <TabTrigger key={id} value={item.value} disabled={item.disabled}>
-            {item.value} Trigger
-          </TabTrigger>
-        ))}
+        <For each={items}>
+          {(item) => (
+            <TabTrigger value={item.value} disabled={item.disabled}>
+              {item.value} Trigger
+            </TabTrigger>
+          )}
+        </For>
         <TabIndicator />
       </TabList>
-      {items.map((item, id) => (
-        <TabContent key={id} value={item.value}>
-          {item.value} Content
-        </TabContent>
-      ))}
+      <For each={items}>
+        {(item) => <TabContent value={item.value}>{item.value} Content</TabContent>}
+      </For>
     </Tabs>
   )
 }
 
 describe('Tabs', () => {
   it('should render', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
   })
 
   it('should activate tab on click', async () => {
     const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+    render(() => <ComponentUnderTest onChange={onChange} />)
     const tab = screen.getByText('React Trigger')
 
     await user.click(tab)
@@ -44,7 +45,7 @@ describe('Tabs', () => {
   })
 
   it('should not focus disabled tab', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
     const disabledTab = screen.getByText('Svelte Trigger')
     const disabledContent = screen.getByText('Svelte Content')
 
@@ -55,7 +56,7 @@ describe('Tabs', () => {
   })
 
   it('should show content when tab is activated', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
 
     const firstTab = screen.getByText('React Trigger')
     const firstContent = screen.getByText('React Content')
@@ -67,7 +68,7 @@ describe('Tabs', () => {
   })
 
   it('should loop focus by default', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 
@@ -79,7 +80,7 @@ describe('Tabs', () => {
   })
 
   it('should not loop focus if loop is false', async () => {
-    render(<ComponentUnderTest loop={false} />)
+    render(() => <ComponentUnderTest loop={false} />)
     const lastTab = screen.getByText('Vue Trigger')
 
     await user.click(lastTab)
@@ -90,7 +91,7 @@ describe('Tabs', () => {
   })
 
   it('should handle orientation', async () => {
-    render(<ComponentUnderTest orientation="vertical" />)
+    render(() => <ComponentUnderTest orientation="vertical" />)
     const firstTab = screen.getByText('React Trigger')
     const secondTab = screen.getByText('Solid Trigger')
 
@@ -102,7 +103,7 @@ describe('Tabs', () => {
   })
 
   it('should render the content of tab when active', async () => {
-    render(<ComponentUnderTest defaultValue="React" />)
+    render(() => <ComponentUnderTest value="React" />)
     expect(screen.getByText('React Content')).toBeVisible()
   })
 })

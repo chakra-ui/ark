@@ -8,9 +8,11 @@ export const props = {
   },
   closeOnEsc: {
     type: Boolean as PropType<Context['closeOnEsc']>,
+    default: undefined,
   },
   closeOnOutsideClick: {
     type: Boolean as PropType<Context['closeOnOutsideClick']>,
+    default: undefined,
   },
   dir: {
     type: Object as PropType<Context['dir']>,
@@ -32,21 +34,26 @@ export const props = {
   },
   modal: {
     type: Boolean as PropType<Context['modal']>,
+    default: undefined,
   },
   open: {
     type: Boolean as PropType<Context['open']>,
+    default: undefined,
   },
   preventScroll: {
     type: Boolean as PropType<Context['preventScroll']>,
+    default: undefined,
   },
   restoreFocus: {
     type: Boolean as PropType<Context['restoreFocus']>,
+    default: undefined,
   },
   role: {
     type: Object as PropType<Context['role']>,
   },
   trapFocus: {
     type: Boolean as PropType<Context['trapFocus']>,
+    default: undefined,
   },
 }
 export const emits = declareEmits(['close', 'esc', 'open', 'outside-click'])

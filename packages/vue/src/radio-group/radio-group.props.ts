@@ -8,6 +8,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,

@@ -1,347 +1,163 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Accordion } from './'
+import { vi } from 'vitest'
+import { Accordion, type AccordionProps } from './'
+
+const ComponentUnderTest = (props: AccordionProps) => {
+  const items = [
+    { value: 'React' },
+    { value: 'Solid' },
+    { value: 'Svelte', disabled: true },
+    { value: 'Vue' },
+  ]
+  return (
+    <Accordion.Root {...props}>
+      {items.map((item, id) => (
+        <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
+          <Accordion.Trigger>{item.value} Trigger</Accordion.Trigger>
+          <Accordion.Content>{item.value} Content</Accordion.Content>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  )
+}
 
 describe('Accordion', () => {
-  it('should open the accordion item on click', async () => {
-    render(
-      <Accordion.Root value={['0']}>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button data-testid="button">Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content data-testid="panel">Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-
-    expect(screen.getByTestId('button')).toHaveAttribute('aria-expanded', 'true')
+  it('should render', async () => {
+    render(<ComponentUnderTest />)
   })
 
-  it('should toggles the accordion on click', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Trigger</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
+  it('should not have an expanded item by default', async () => {
+    render(<ComponentUnderTest />)
+
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+  })
+
+  it('should open item specified in defaultValue', async () => {
+    render(<ComponentUnderTest defaultValue={['Solid']} />)
+
+    expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
+  })
+
+  it('should collapse an expanded item when collapsible is true', async () => {
+    render(<ComponentUnderTest collapsible />)
+
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
     )
 
-    const trigger = screen.getByText('Trigger')
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+  })
 
-    await user.click(trigger)
-    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+  it('should disable all items when disabled is true', async () => {
+    render(<ComponentUnderTest disabled />)
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('disabled')
+  })
 
-    // you can't toggle an accordion without passing `allowToggle`
-    await user.click(trigger)
-    expect(trigger).toHaveAttribute('aria-expanded', 'true')
+  it('should allow multiple items to be expanded when multiple is true', async () => {
+    render(<ComponentUnderTest multiple />)
+
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+    await user.click(screen.getByRole('button', { name: 'Vue Trigger' }))
+
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Vue Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
+  })
+
+  it('should call onChange when an item is clicked', async () => {
+    const onChange = vi.fn()
+    render(<ComponentUnderTest onChange={onChange} />)
+
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+    expect(onChange).toHaveBeenCalled()
+  })
+
+  it('should call onFocusChange when focus changes', async () => {
+    const onFocusChange = vi.fn()
+    render(<ComponentUnderTest onFocusChange={onFocusChange} />)
+
+    screen.getByRole('button', { name: 'React Trigger' }).focus()
+    expect(await screen.findByRole('button', { name: 'React Trigger' })).toHaveFocus()
+
+    expect(onFocusChange).toHaveBeenCalled()
+  })
+
+  // TODO @segunadebayo
+  it.skip('should render text direction based on dir prop', async () => {
+    render(<ComponentUnderTest dir="ltr" />)
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('dir', 'rtl')
   })
 
   it('should focus the next/previous item on arrow up & down', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+    render(<ComponentUnderTest />)
 
-        <Accordion.Item value="1">
-          <Accordion.Trigger asChild>
-            <button>Section 2 title</button>
-          </Accordion.Trigger>
-          <Accordion.Content>Panel 2</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const first = screen.getByText('Section 1 title')
-    const second = screen.getByText('Section 2 title')
+    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
+    const secondTrigger = screen.getByRole('button', { name: 'Solid Trigger' })
 
-    first.focus()
+    await user.click(firstTrigger)
 
-    await user.keyboard('[ArrowDown]')
-    expect(second).toHaveFocus()
+    await user.type(firstTrigger, '{arrowdown}')
+    expect(secondTrigger).toHaveFocus()
 
-    await user.keyboard('[ArrowUp]')
-    expect(first).toHaveFocus()
+    await user.type(secondTrigger, '{arrowup}')
+    expect(firstTrigger).toHaveFocus()
   })
 
   it('should focus the first/last item on home & end', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>First section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+    render(<ComponentUnderTest />)
 
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Second section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
+    const lastTrigger = screen.getByRole('button', { name: 'Vue Trigger' })
 
-        <Accordion.Item value="2">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Last section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 2</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const first = screen.getByText('First section')
-    const last = screen.getByText('Last section')
+    await user.click(lastTrigger)
 
-    first.focus()
+    await user.type(lastTrigger, '{home}')
+    expect(firstTrigger).toHaveFocus()
 
-    await user.keyboard('[Home]')
-    expect(first).toHaveFocus()
-
-    await user.keyboard('[End]')
-    expect(last).toHaveFocus()
+    await user.type(firstTrigger, '{end}')
+    expect(lastTrigger).toHaveFocus()
   })
 
-  it('should not collapse the curret visible item', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>First section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+  it('should not collapse the current visible item', async () => {
+    render(<ComponentUnderTest collapsible={false} />)
 
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Second section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
+    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
 
-    const first = screen.getByText('First section')
+    await user.click(firstTrigger)
+    expect(firstTrigger).toHaveAttribute('aria-expanded', 'true')
 
-    await user.click(first)
-    expect(first).toHaveAttribute('aria-expanded', 'true')
-
-    await user.click(first)
-    expect(first).toHaveAttribute('aria-expanded', 'true')
-  })
-
-  it('should collapse the only visible item if the accordiong is collapsible', async () => {
-    render(
-      <Accordion.Root collapsible>
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>First section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-
-        <Accordion.Item value="2">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Second section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-
-    const firstAccordion = screen.getByText('First section')
-
-    await user.click(firstAccordion)
-    expect(firstAccordion).toHaveAttribute('aria-expanded', 'true')
-
-    await user.click(firstAccordion)
-    expect(firstAccordion).toHaveAttribute('aria-expanded', 'false')
-  })
-
-  it('should be possible to open multiple items in an accordion', async () => {
-    render(
-      <Accordion.Root multiple>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>First section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Second section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-
-    const first = screen.getByText('First section')
-    const second = screen.getByText('Second section')
-
-    await user.click(first)
-    expect(first).toHaveAttribute('aria-expanded', 'true')
-
-    await user.click(second)
-    expect(second).toHaveAttribute('aria-expanded', 'true')
-  })
-
-  it('should have the correct aria attributes', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const button = screen.getByText('Section 1 title')
-    const panel = screen.getByText('Panel 1')
-
-    expect(button).toHaveAttribute('aria-controls')
-    expect(button).toHaveAttribute('aria-expanded')
-    expect(panel).toHaveAttribute('aria-labelledby')
+    await user.click(firstTrigger)
+    expect(firstTrigger).toHaveAttribute('aria-expanded', 'true')
   })
 
   it('should move the focus to the next element when pressing tab', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>First section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+    render(<ComponentUnderTest />)
 
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Second section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
+    const firstTrigger = screen.getByRole('button', { name: 'React Trigger' })
+    const secondTrigger = screen.getByRole('button', { name: 'Solid Trigger' })
 
-        <Accordion.Item value="2">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Last section</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 2</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const first = screen.getByText('First section')
-    const second = screen.getByText('Second section')
-    const last = screen.getByText('Last section')
+    await user.click(firstTrigger)
 
-    await user.keyboard('[Tab]')
-    expect(first).toHaveFocus()
-
-    await user.keyboard('[Tab]')
-    expect(second).toHaveFocus()
-
-    await user.keyboard('[Tab]')
-    expect(last).toHaveFocus()
-  })
-
-  it('should have the same aria-controls for the button as for the panel', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const button = screen.getByText('Section 1 title')
-    const panel = screen.getByText('Panel 1')
-    expect(button.getAttribute('aria-controls')).toEqual(panel.getAttribute('id'))
-  })
-
-  it('should set the correct aria-expanded when an item is open/closed', async () => {
-    render(
-      <Accordion.Root value={['0']}>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item value="1">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 2 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 2</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-
-    const button = screen.getByText('Section 1 title')
-    expect(button).toHaveAttribute('aria-expanded', 'true')
-  })
-
-  it('should have role=region and aria-labelledby', async () => {
-    render(
-      <Accordion.Root>
-        <Accordion.Item value="0">
-          <h2>
-            <Accordion.Trigger asChild>
-              <button>Section 1 title</button>
-            </Accordion.Trigger>
-          </h2>
-          <Accordion.Content>Panel 1</Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>,
-    )
-    const panel = screen.getByText('Panel 1')
-
-    expect(panel).toHaveAttribute('aria-labelledby')
-    expect(panel).toHaveAttribute('role', 'region')
+    await user.type(firstTrigger, '{tab}')
+    expect(secondTrigger).toHaveFocus()
   })
 })

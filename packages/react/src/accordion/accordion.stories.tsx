@@ -18,9 +18,7 @@ export const Basic = () => {
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content lazyMount unmountOnExit>
-            {item} content
-          </Accordion.Content>
+          <Accordion.Content>{item} content</Accordion.Content>
         </Accordion.Item>
       ))}
     </Accordion.Root>

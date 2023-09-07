@@ -1,105 +1,78 @@
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
-import Component from './tabs.test.vue'
+import { render, screen, waitFor } from '@testing-library/vue'
+import { vi } from 'vitest'
+import ComponentUnderTest from './tabs.test.vue'
 
 describe('Tabs', () => {
-  it('should render', () => {
-    render(Component)
+  it('should render', async () => {
+    render(ComponentUnderTest)
   })
 
-  it('should render the content of tabe one by default', async () => {
-    render(Component)
-    expect(screen.getByText('Content 1')).toBeVisible()
+  it('should activate tab on click', async () => {
+    const onChange = vi.fn()
+    render(ComponentUnderTest, { props: { onChange } })
+
+    const tab = screen.getByText('React Trigger')
+    await user.click(tab)
+
+    expect(onChange).toHaveBeenCalledWith('React')
   })
 
-  it('should show the active panel and hide other panels', async () => {
-    render(Component)
+  it('should not focus disabled tab', async () => {
+    render(ComponentUnderTest)
+    const disabledTab = screen.getByText('Svelte Trigger')
+    const disabledContent = screen.getByText('Svelte Content')
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 1' }))
-    expect(screen.getByText('Content 1')).toBeVisible()
+    await user.click(disabledTab)
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }))
-    expect(screen.getByText('Content 2')).toBeVisible()
-    expect(screen.getByText('Content 1')).not.toBeVisible()
+    expect(disabledTab).not.toHaveFocus()
+    expect(disabledContent).not.toBeVisible()
   })
 
-  // it('should show the active panel and hide other panels', async () => {
-  //   render(Component)
-  //   const tab2 = screen.getByRole('tab', { name: 'Item two' })
-  //   await user.click(tab2)
-  //   // Because tab 2 is disabled, there should be no change in state
-  //   expect(screen.getByText('Value item two')).not.toBeVisible()
+  it('should show content when tab is activated', async () => {
+    render(ComponentUnderTest)
 
-  //   const tab1 = screen.getByRole('tab', { name: 'Item one' })
-  //   await user.click(tab1)
+    const firstTab = screen.getByText('React Trigger')
+    const firstContent = screen.getByText('React Content')
 
-  //   expect(screen.getByText('Value item one')).toBeVisible()
+    expect(firstContent).not.toBeVisible()
 
-  //   const tab3 = screen.getByRole('tab', { name: 'Item three' })
-  //   await user.click(tab3)
+    await user.click(firstTab)
+    expect(firstContent).toBeVisible()
+  })
 
-  //   expect(screen.getByText('Value item one')).not.toBeVisible()
-  //   expect(screen.getByText('Value item three')).toBeVisible()
-  // })
+  it('should loop focus by default', async () => {
+    render(ComponentUnderTest)
+    const firstTab = screen.getByText('React Trigger')
+    const lastTab = screen.getByText('Vue Trigger')
 
-  // it('should show content of the default value', () => {
-  //   render(Component, {
-  //     props: {
-  //       defaultValue: 'two',
-  //     },
-  //   })
-  //   expect(screen.getByText('Value item two')).toBeVisible()
-  // })
+    await user.click(lastTab)
+    await waitFor(() => expect(lastTab).toHaveFocus())
 
-  // it('handles focus and change events', async () => {
-  //   const { getByRole, getByTestId, container } = render(Component)
+    await user.keyboard('[ArrowRight]')
+    await waitFor(() => expect(firstTab).toHaveFocus())
+  })
 
-  //   const changeTestId = getByTestId('change-content')
-  //   // Making sure that this has not been fired
-  //   expect(changeTestId).toHaveTextContent(/^Changed:$/)
+  it('should not loop focus if loop is false', async () => {
+    render(ComponentUnderTest, { props: { loop: false } })
+    const lastTab = screen.getByText('Vue Trigger')
 
-  //   const tab1 = getByRole('tab', { name: 'Item one' })
-  //   // Making sure this does not have focus
-  //   expect(tab1).not.toHaveFocus()
+    await user.click(lastTab)
+    await await waitFor(() => expect(lastTab).toHaveFocus())
 
-  //   await user.click(tab1)
-  //   expect(tab1).toHaveFocus()
-  //   expect(changeTestId).toHaveTextContent('Changed: one')
+    await user.keyboard('[ArrowRight]')
+    expect(lastTab).toHaveFocus()
+  })
 
-  //   // User clicks away from tabs to lose focus, but change event does not fire
-  //   await user.click(container)
-  //   expect(tab1).not.toHaveFocus()
-  //   expect(changeTestId).toHaveTextContent('Changed: one')
+  it('should handle orientation', async () => {
+    render(ComponentUnderTest, { props: { orientation: 'vertical' } })
+    const firstTab = screen.getByText('React Trigger')
+    const secondTab = screen.getByText('Solid Trigger')
 
-  //   // User gives focus back to tab one and changes focus to tab 3
-  //   tab1.focus()
-  //   expect(tab1).toHaveFocus()
+    await user.click(firstTab)
+    await waitFor(() => expect(firstTab).toHaveFocus())
 
-  //   const tab3 = getByRole('tab', { name: 'Item three' })
-  //   tab3.focus()
-  //   expect(tab3).toHaveFocus()
-  //   expect(changeTestId).toHaveTextContent('Changed: one')
-  // })
-
-  // it('should pass scoped slot props for `focusedValue` and `selectedValue`', async () => {
-  //   render(Component, {
-  //     props: {
-  //       defaultValue: 'one',
-  //     },
-  //   })
-  //   expect(screen.getByText('Value item one')).toBeVisible()
-
-  //   const tab1 = screen.getByRole('tab', { name: 'Item one' })
-  //   await user.click(tab1)
-
-  //   const tablist = screen.getByTestId('tablist')
-  //   expect(tablist.getAttribute('data-test-selected-value')).toBe('one')
-  //   expect(tablist.getAttribute('data-test-focused-value')).toBe('one')
-
-  //   await user.tab()
-  //   const tab3 = screen.getByRole('tab', { name: 'Item three' })
-  //   expect(tab3).toHaveFocus()
-  //   expect(tablist.getAttribute('data-test-selected-value')).toBe('one')
-  //   expect(tablist.getAttribute('data-test-focused-value')).toBe('three')
-  // })
+    await user.keyboard('[ArrowDown]')
+    await waitFor(() => expect(secondTab).toHaveFocus())
+  })
 })

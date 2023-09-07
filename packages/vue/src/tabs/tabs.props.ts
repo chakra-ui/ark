@@ -20,6 +20,7 @@ export const props = {
   },
   loop: {
     type: Boolean as PropType<Context['loop']>,
+    default: undefined,
   },
   orientation: {
     type: String as PropType<Context['orientation']>,

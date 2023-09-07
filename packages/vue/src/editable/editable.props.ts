@@ -8,12 +8,14 @@ export const props = {
   },
   autoResize: {
     type: Boolean as PropType<Context['autoResize']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   finalFocusEl: {
     type: Function as PropType<Context['finalFocusEl']>,
@@ -32,6 +34,7 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   maxLength: {
     type: Number as PropType<Context['maxLength']>,
@@ -44,12 +47,15 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   selectOnFocus: {
     type: Boolean as PropType<Context['selectOnFocus']>,
+    default: undefined,
   },
   startWithEditView: {
     type: Boolean as PropType<Context['startWithEditView']>,
+    default: undefined,
   },
   submitMode: {
     type: String as PropType<Context['submitMode']>,

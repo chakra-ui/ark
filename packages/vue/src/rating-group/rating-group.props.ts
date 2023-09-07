@@ -5,15 +5,18 @@ import { declareEmits } from '../utils'
 export const props = {
   allowHalf: {
     type: Boolean as PropType<Context['allowHalf']>,
+    default: undefined,
   },
   autoFocus: {
     type: Boolean as PropType<Context['autoFocus']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -35,6 +38,7 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   translations: {
     type: Object as PropType<Context['translations']>,

@@ -99,6 +99,9 @@ const main = async () => {
                         writer.writeLine(
                           `type: ${propType} as PropType<Context['${property.getName()}']>,`,
                         )
+                        if (propType === 'Boolean') {
+                          writer.writeLine(`default: undefined,`)
+                        }
                       })
                       writer.writeLine('},')
                     }

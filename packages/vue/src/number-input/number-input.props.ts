@@ -5,21 +5,26 @@ import { declareEmits } from '../utils'
 export const props = {
   allowMouseWheel: {
     type: Boolean as PropType<Context['allowMouseWheel']>,
+    default: undefined,
   },
   allowOverflow: {
     type: Boolean as PropType<Context['allowOverflow']>,
+    default: undefined,
   },
   clampValueOnBlur: {
     type: Boolean as PropType<Context['clampValueOnBlur']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   focusInputOnChange: {
     type: Boolean as PropType<Context['focusInputOnChange']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -41,6 +46,7 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   max: {
     type: Number as PropType<Context['max']>,
@@ -65,9 +71,11 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   spinOnPress: {
     type: Boolean as PropType<Context['spinOnPress']>,
+    default: undefined,
   },
   step: {
     type: Number as PropType<Context['step']>,

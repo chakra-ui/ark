@@ -14,6 +14,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -32,6 +33,7 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   max: {
     type: Number as PropType<Context['max']>,
@@ -50,6 +52,7 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   step: {
     type: Number as PropType<Context['step']>,

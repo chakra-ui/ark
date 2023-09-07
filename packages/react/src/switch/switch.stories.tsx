@@ -33,6 +33,17 @@ export const Controlled = () => {
   )
 }
 
+export const Disabled = () => {
+  return (
+    <Switch disabled>
+      <SwitchControl>
+        <SwitchThumb />
+      </SwitchControl>
+      <SwitchLabel>Label</SwitchLabel>
+    </Switch>
+  )
+}
+
 export const RenderProp = () => (
   <Switch>
     {(api) => (

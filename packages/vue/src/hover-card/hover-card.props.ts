@@ -20,6 +20,7 @@ export const props = {
   },
   open: {
     type: Boolean as PropType<Context['open']>,
+    default: undefined,
   },
   openDelay: {
     type: Number as PropType<Context['openDelay']>,

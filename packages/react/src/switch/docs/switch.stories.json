@@ -1,5 +1,6 @@
 {
   "Basic": "const Basic = () => (\n  <Switch defaultChecked>\n    <SwitchControl>\n      <SwitchThumb />\n    </SwitchControl>\n    <SwitchLabel>Label</SwitchLabel>\n  </Switch>\n)",
   "Controlled": "const Controlled = () => {\n  const [checked, setChecked] = useState(false)\n  return (\n    <Switch checked={checked} onChange={(e) => setChecked(e.checked)}>\n      <SwitchControl>\n        <SwitchThumb />\n      </SwitchControl>\n      <SwitchLabel>Label</SwitchLabel>\n    </Switch>\n  )\n}",
+  "Disabled": "const Disabled = () => {\n  return (\n    <Switch disabled>\n      <SwitchControl>\n        <SwitchThumb />\n      </SwitchControl>\n      <SwitchLabel>Label</SwitchLabel>\n    </Switch>\n  )\n}",
   "RenderProp": "const RenderProp = () => (\n  <Switch>\n    {(api) => (\n      <>\n        <SwitchControl>\n          <SwitchThumb />\n        </SwitchControl>\n        <SwitchLabel>Feature is {api.isChecked ? 'enabled' : 'disabled'}</SwitchLabel>\n      </>\n    )}\n  </Switch>\n)"
 }

@@ -11,12 +11,15 @@ export const props = {
   },
   closeOnEsc: {
     type: Boolean as PropType<Context['closeOnEsc']>,
+    default: undefined,
   },
   closeOnPointerDown: {
     type: Boolean as PropType<Context['closeOnPointerDown']>,
+    default: undefined,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -29,9 +32,11 @@ export const props = {
   },
   interactive: {
     type: Boolean as PropType<Context['interactive']>,
+    default: undefined,
   },
   open: {
     type: Boolean as PropType<Context['open']>,
+    default: undefined,
   },
   openDelay: {
     type: Number as PropType<Context['openDelay']>,

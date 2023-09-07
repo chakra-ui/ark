@@ -2,18 +2,27 @@
 import { ref } from 'vue'
 import { Tabs, TabTrigger, TabList, TabIndicator, TabContent } from '../'
 
-const value = ref('one')
+const items = ref([
+  { value: 'React' },
+  { value: 'Solid' },
+  { value: 'Svelte', disabled: true },
+  { value: 'Vue' },
+])
 </script>
 <template>
-  <Tabs v-model="value">
+  <Tabs>
     <TabList>
-      <TabTrigger value="one">Tab 1</TabTrigger>
-      <TabTrigger value="two">Tab 2</TabTrigger>
-      <TabTrigger value="three" disabled> Tab 3 </TabTrigger>
+      <TabTrigger
+        v-for="item in items"
+        :key="item.value"
+        :value="item.value"
+        :disabled="item.disabled"
+        >{{ item.value }} Trigger</TabTrigger
+      >
       <TabIndicator />
     </TabList>
-    <TabContent value="one">Content 1</TabContent>
-    <TabContent value="two">Content 2</TabContent>
-    <TabContent value="three">Content 3</TabContent>
+    <TabContent v-for="item in items" :key="item.value" :value="item.value">
+      {{ item.value }} Content</TabContent
+    >
   </Tabs>
 </template>
