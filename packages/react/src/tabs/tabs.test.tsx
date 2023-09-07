@@ -1,61 +1,108 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
 
-const Component = (props: TabsProps) => (
-  <Tabs {...props}>
-    <TabList>
-      <TabTrigger value="one">Tab 1</TabTrigger>
-      <TabTrigger value="two">Tab 2</TabTrigger>
-      <TabTrigger value="three" disabled>
-        Tab 3
-      </TabTrigger>
-      <TabIndicator />
-    </TabList>
-    <TabContent value="one">Content 1</TabContent>
-    <TabContent value="two">Content 2</TabContent>
-    <TabContent value="three">Content 3</TabContent>
-  </Tabs>
-)
+const ComponentUnderTest = (props: TabsProps) => {
+  const items = [
+    { value: 'React' },
+    { value: 'Solid' },
+    { value: 'Svelte', disabled: true },
+    { value: 'Vue' },
+  ]
+  return (
+    <Tabs {...props}>
+      <TabList>
+        {items.map((item, id) => (
+          <TabTrigger key={id} value={item.value} disabled={item.disabled}>
+            {item.value} Trigger
+          </TabTrigger>
+        ))}
+        <TabIndicator />
+      </TabList>
+      {items.map((item, id) => (
+        <TabContent key={id} value={item.value}>
+          {item.value} Content
+        </TabContent>
+      ))}
+    </Tabs>
+  )
+}
 
 describe('Tabs', () => {
   it('should render', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
   })
 
-  it('should render the content of tabe one by default', async () => {
-    render(<Component defaultValue="one" />)
-    expect(screen.getByText('Content 1')).toBeVisible()
+  it('should activate tab on click', async () => {
+    const onChange = vi.fn()
+    render(<ComponentUnderTest onChange={onChange} />)
+    const tab = screen.getByText('React Trigger')
+
+    await user.click(tab)
+    expect(onChange).toHaveBeenCalledWith({ value: 'React' })
   })
 
-  it('should show the active panel and hide other panels', async () => {
-    render(<Component />)
+  it('should not focus disabled tab', async () => {
+    render(<ComponentUnderTest />)
+    const disabledTab = screen.getByText('Svelte Trigger')
+    const disabledContent = screen.getByText('Svelte Content')
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 1' }))
-    expect(screen.getByText('Content 1')).toBeVisible()
+    await user.click(disabledTab)
 
-    await user.click(screen.getByRole('tab', { name: 'Tab 2' }))
-    expect(screen.getByText('Content 2')).toBeVisible()
-    expect(screen.getByText('Content 1')).not.toBeVisible()
+    expect(disabledTab).not.toHaveFocus()
+    expect(disabledContent).not.toBeVisible()
   })
 
-  it.skip('should show the active panel and hide other panels', async () => {
-    render(<Component />)
-    const tab1 = screen.getByRole('tab', { name: 'Tab 1' })
-    const tab2 = screen.getByRole('tab', { name: 'Tab 2' })
-    const tab3 = screen.getByRole('tab', { name: 'Tab 3' }) // disabled tab
+  it('should show content when tab is activated', async () => {
+    render(<ComponentUnderTest />)
 
-    tab1.focus()
-    expect(tab1).toHaveFocus()
+    const firstTab = screen.getByText('React Trigger')
+    const firstContent = screen.getByText('React Content')
+
+    expect(firstContent).not.toBeVisible()
+
+    await user.click(firstTab)
+    expect(firstContent).toBeVisible()
+  })
+
+  it('should loop focus by default', async () => {
+    render(<ComponentUnderTest />)
+    const firstTab = screen.getByText('React Trigger')
+    const lastTab = screen.getByText('Vue Trigger')
+
+    await user.click(lastTab)
+    waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
-    await user.keyboard('[ArrowRight]')
+    waitFor(() => expect(firstTab).toHaveFocus())
+  })
 
-    expect(tab2).toHaveFocus()
+  it('should not loop focus if loop is false', async () => {
+    render(<ComponentUnderTest loop={false} />)
+    const lastTab = screen.getByText('Vue Trigger')
+
+    await user.click(lastTab)
+    waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
-    // skip disabled tab, loop to next element
-    expect(tab3).not.toHaveFocus()
-    expect(tab1).toHaveFocus()
+    expect(lastTab).toHaveFocus()
+  })
+
+  it('should handle orientation', async () => {
+    render(<ComponentUnderTest orientation="vertical" />)
+    const firstTab = screen.getByText('React Trigger')
+    const secondTab = screen.getByText('Solid Trigger')
+
+    await user.click(firstTab)
+    waitFor(() => expect(firstTab).toHaveFocus())
+
+    await user.keyboard('[ArrowDown]')
+    waitFor(() => expect(secondTab).toHaveFocus())
+  })
+
+  it('should render the content of tab when active', async () => {
+    render(<ComponentUnderTest defaultValue="React" />)
+    expect(screen.getByText('React Content')).toBeVisible()
   })
 })
