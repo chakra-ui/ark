@@ -1,38 +1,43 @@
-import { connect, machine } from '@zag-js/range-slider'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
+import * as rangeSlider from '@zag-js/range-slider'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
-import type { RangeSliderContext } from './range-slider'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './range-slider.props'
 
-export const useRangeSlider = <T extends ExtractPropTypes<RangeSliderContext>>(
+export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id'> & {
+  modelValue?: rangeSlider.Context['value']
+}
+export type UseRangeSliderReturn = ComputedRef<rangeSlider.Api<PropTypes>>
+
+export const useRangeSlider = (
+  props: UseRangeSliderProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseRangeSliderReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
+  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    rangeSlider.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
-      onChangeStart(details) {
-        emit('change-start', details)
-      },
-      onChange(details) {
-        emit('change', details)
+      ...eventMap,
+      onChange: (details) => {
+        emit('change', details.value)
         emit('update:modelValue', details.value)
       },
-      onChangeEnd(details) {
-        emit('change-end', details)
-      },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => rangeSlider.connect(state.value, send, normalizeProps))
 }
-
-export type UseRangeSliderReturn = UnwrapRef<ReturnType<typeof useRangeSlider>>

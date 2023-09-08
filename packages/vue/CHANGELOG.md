@@ -21,6 +21,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Combobox` component
 - Revised `NumberInput` component
 - Revised `Pagination` component
+- Revised `RangeSlider` component
 - Revised `Select` component
 - Revised `Slider` component
 - Revised `Splitter` component

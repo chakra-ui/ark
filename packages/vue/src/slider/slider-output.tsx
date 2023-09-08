@@ -7,12 +7,8 @@ export type SliderOutputProps = HTMLArkProps<'output'>
 
 export const SliderOutput: ComponentWithProps<SliderOutputProps> = defineComponent({
   name: 'SliderOutput',
-  setup(_, { slots, attrs, expose }) {
+  setup(_, { slots, attrs }) {
     const api = useSliderContext()
-
-    expose({
-      context: api.value,
-    })
 
     return () => (
       <ark.output {...api.value.outputProps} {...attrs}>
