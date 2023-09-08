@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useHoverCardContext } from './hover-card-context'
 
 export type HoverCardArrowProps = HTMLArkProps<'div'>
 
-export const HoverCardArrow: ComponentWithProps<HoverCardArrowProps> = defineComponent({
+export const HoverCardArrow = defineComponent({
   name: 'HoverCardArrow',
   setup(_, { slots, attrs }) {
     const api = useHoverCardContext()

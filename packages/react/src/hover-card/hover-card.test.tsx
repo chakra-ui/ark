@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Portal } from '@zag-js/react'
+import { vi } from 'vitest'
 import {
   HoverCard,
   HoverCardArrow,
@@ -8,16 +9,12 @@ import {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
+  type HoverCardProps,
 } from '.'
 
-const ComponentUnderTest = () => (
-  <HoverCard openDelay={0} closeDelay={0}>
-    <HoverCardTrigger asChild>
-      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer">
-        Trigger
-      </a>
-    </HoverCardTrigger>
-
+const ComponentUnderTest = (props: HoverCardProps) => (
+  <HoverCard openDelay={0} closeDelay={0} {...props}>
+    <HoverCardTrigger>Hover me</HoverCardTrigger>
     <Portal>
       <HoverCardPositioner>
         <HoverCardContent>
@@ -32,16 +29,29 @@ const ComponentUnderTest = () => (
 )
 
 describe('HoverCard', () => {
+  it('should render', async () => {
+    render(<ComponentUnderTest />)
+  })
+
   it('should open on hover', async () => {
     render(<ComponentUnderTest />)
 
-    const target = screen.getByText(/Trigger/i)
+    const target = screen.getByText('Hover me')
     await user.hover(target)
 
-    const hoverContent = screen.getByText(/content/i)
+    const hoverContent = screen.getByText('Content')
     await waitFor(() => expect(hoverContent).toBeVisible())
 
     await user.unhover(target)
     await waitFor(() => expect(hoverContent).not.toBeVisible())
+  })
+
+  it('should invoke onOpen', async () => {
+    const onOpen = vi.fn()
+    render(<ComponentUnderTest onOpen={onOpen} />)
+    await user.hover(screen.getByText('Hover me'))
+
+    await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
+    expect(onOpen).toHaveBeenCalledTimes(1)
   })
 })

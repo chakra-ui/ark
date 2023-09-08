@@ -1,33 +1,30 @@
-import { connect, machine } from '@zag-js/hover-card'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as hoverCard from '@zag-js/hover-card'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
-import type { HoverCardProps } from './hover-card'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './hover-card.props'
 
-export const useHoverCard = <T extends ExtractPropTypes<HoverCardProps>>(
+export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
+export type UseHoverCardReturn = ComputedRef<hoverCard.Api<PropTypes>>
+
+export const useHoverCard = (
+  props: UseHoverCardProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = ref(props)
+  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    hoverCard.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      onOpen() {
-        emit('open')
-      },
-      onClose() {
-        emit('close')
-      },
+      ...eventMap,
     }),
+    { context },
   )
-
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => hoverCard.connect(state.value, send, normalizeProps))
 }
-
-export type UseHoverCardReturn = ReturnType<typeof connect>

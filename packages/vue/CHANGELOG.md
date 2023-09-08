@@ -18,6 +18,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Accordion` component
 - Revised `Carousel` component
 - Revised `ColorPicker` component
+- Revised `HoverCard` component
 - Revised `Pagination` component
 - Revised `RangeSlider` component
 - Revised `Slider` component
