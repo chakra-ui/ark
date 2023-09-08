@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.8.0] - 2023-09-08
+
 ### Added
 
 - Added `Avatar` component
@@ -153,7 +155,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Tabs`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.7.0...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.8.0...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.0
 [0.2.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.1
@@ -165,3 +167,5 @@ description: All notable changes to this project will be documented in this file
 [0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.7.0
+
+[0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.8.0
