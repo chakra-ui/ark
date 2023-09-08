@@ -21,12 +21,13 @@ describe('NumberInput', () => {
     })
   })
 
-  it.skip('should clamp value on blur when clampValueOnBlur is true', async () => {
+  it('should clamp value on blur when clampValueOnBlur is true', async () => {
     render(ComponentUnderTest, {
-      props: { clampValueOnBlur: true, min: 0, max: 10, defaultValue: '15' },
+      props: { clampValueOnBlur: true, min: 0, max: 10 },
     })
     const input = screen.getByRole('spinbutton')
-    await fireEvent.update(input, '1.12345')
+    await user.type(input, '15')
+    await user.tab()
 
     await waitFor(() => {
       expect(input).toHaveValue('10')
