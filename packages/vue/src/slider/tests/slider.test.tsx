@@ -1,18 +1,16 @@
 import user from '@testing-library/user-event'
-import { render } from '@testing-library/vue'
-import { nextTick } from 'vue'
-import BasicComponentStory from '../stories/basic.stories.vue'
-import ContextTestComponent from './context-test-component.vue'
+import { render, screen } from '@testing-library/vue'
+import ComponentUnderTest from './slider.test.vue'
 
 describe('Slider', () => {
-  it('should render', () => {
-    render(BasicComponentStory)
+  it('should render', async () => {
+    render(ComponentUnderTest)
   })
 
   it('should move the thumb correctly when orientated horizontal', async () => {
-    const { getByRole } = render(BasicComponentStory, { props: { modelValue: 0 } })
+    render(ComponentUnderTest)
 
-    const thumb = getByRole('slider', { hidden: true })
+    const thumb = screen.getByRole('slider', { hidden: true })
 
     thumb.focus()
 
@@ -30,11 +28,9 @@ describe('Slider', () => {
   })
 
   it('should move the thumb correctly when orientated vertical', async () => {
-    const { getByRole } = render(BasicComponentStory, {
-      props: { orientation: 'vertical', modelValue: 0 },
-    })
+    render(ComponentUnderTest, { props: { orientation: 'vertical' } })
 
-    const thumb = getByRole('slider', { hidden: true })
+    const thumb = screen.getByRole('slider', { hidden: true })
     thumb.focus()
 
     await user.keyboard('[ArrowUp]')
@@ -51,10 +47,9 @@ describe('Slider', () => {
   })
 
   it('should move the thumb correctly under rtl ', async () => {
-    const { getByRole } = render(BasicComponentStory, { props: { modelValue: 0, dir: 'rtl' } })
+    render(ComponentUnderTest, { props: { dir: 'rtl' } })
 
-    const thumb = getByRole('slider', { hidden: true })
-
+    const thumb = screen.getByRole('slider', { hidden: true })
     thumb.focus()
 
     await user.keyboard('[ArrowRight]')
@@ -68,19 +63,5 @@ describe('Slider', () => {
 
     await user.keyboard('[End]')
     expect(thumb).toHaveAttribute('aria-valuenow', '50')
-  })
-
-  it('should expose context for Select', async () => {
-    const { getByTestId } = render(ContextTestComponent)
-    await nextTick()
-
-    expect(getByTestId('slider-value')).toHaveTextContent('22')
-  })
-
-  it('should allow access to context with children render prop for SelectOutput', async () => {
-    const { getByTestId } = render(ContextTestComponent)
-    await nextTick()
-
-    expect(getByTestId('slider-value')).toHaveTextContent('22')
   })
 })

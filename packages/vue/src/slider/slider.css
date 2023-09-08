@@ -17,10 +17,20 @@
   display: flex;
 }
 
+[data-part='marker-group'] {
+  min-height: 40px;
+}
+
 [data-part='marker'] {
   color: gray;
 }
 
 [data-part='marker'][data-state='under-value'] {
   color: blue;
+}
+
+[data-part='root'] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
