@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useRangeSliderContext } from './range-slider-context'
 
 export type RangeSliderControlProps = HTMLArkProps<'div'>
 
-export const RangeSliderControl: ComponentWithProps<RangeSliderControlProps> = defineComponent({
+export const RangeSliderControl = defineComponent({
   name: 'RangeSliderControl',
   setup(_, { slots, attrs }) {
     const api = useRangeSliderContext()

@@ -7,12 +7,8 @@ export type RangeSliderOutputProps = HTMLArkProps<'output'>
 
 export const RangeSliderOutput: ComponentWithProps<RangeSliderOutputProps> = defineComponent({
   name: 'RangeSliderOutput',
-  setup(_, { slots, attrs, expose }) {
+  setup(_, { slots, attrs }) {
     const api = useRangeSliderContext()
-
-    expose({
-      context: api.value,
-    })
 
     return () => (
       <ark.output {...api.value.outputProps} {...attrs}>

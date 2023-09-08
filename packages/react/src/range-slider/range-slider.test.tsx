@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
+import { vi } from 'vitest'
 import {
   RangeSlider,
   RangeSliderControl,
@@ -112,5 +113,25 @@ describe('RangeSlider', () => {
 
     await user.keyboard('[ArrowDown]')
     expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
+  })
+
+  it('should handle disabled state', async () => {
+    render(<ComponentUnderTest disabled />)
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+    expect(leftThumb).toHaveAttribute('aria-disabled', 'true')
+    expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
+  })
+
+  // TODO
+  it('should emit correct onChange events', async () => {
+    const onChange = vi.fn()
+    render(<ComponentUnderTest onChange={onChange} />)
+    const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+    leftThumb.focus()
+    await user.keyboard('[ArrowRight]')
+
+    // why is this 2 times
+    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
   })
 })

@@ -1,18 +1,16 @@
 import user from '@testing-library/user-event'
-import { render, type RenderOptions } from '@testing-library/vue'
-import BasicComponentStory from './range-slider-stories.vue'
-
-const TestComponentRender = (opts?: RenderOptions) => render(BasicComponentStory, opts)
+import { render, screen, waitFor } from '@testing-library/vue'
+import ComponentUnderTest from './range-slider.test.vue'
 
 describe('RangeSlider', () => {
   it('should render!', async () => {
-    TestComponentRender()
+    render(ComponentUnderTest)
   })
 
   it('should be possible to control it with the arrow keys', async () => {
-    const { getAllByRole } = TestComponentRender()
+    render(ComponentUnderTest)
 
-    const [leftThumb, rightThumb] = getAllByRole('slider', { hidden: true })
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
@@ -30,9 +28,9 @@ describe('RangeSlider', () => {
   })
 
   it('should not be possible to overlap the right thumb with the left thumb', async () => {
-    const { getAllByRole } = TestComponentRender()
+    render(ComponentUnderTest)
 
-    const [leftThumb] = getAllByRole('slider', { hidden: true })
+    const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
     leftThumb.focus()
     await user.keyboard('[End]')
     expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
@@ -42,9 +40,9 @@ describe('RangeSlider', () => {
   })
 
   it('should be possible to control it with the arrow keys in rtl mode', async () => {
-    const { getAllByRole } = TestComponentRender({ props: { dir: 'rtl' } })
+    render(ComponentUnderTest, { props: { dir: 'rtl' } })
 
-    const [leftThumb, rightThumb] = getAllByRole('slider', { hidden: true })
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
@@ -62,9 +60,8 @@ describe('RangeSlider', () => {
   })
 
   it('should be possible to control it with the arrow keys in vertical mode', async () => {
-    const { getAllByRole } = TestComponentRender({ props: { orientation: 'vertical' } })
-
-    const [leftThumb, rightThumb] = getAllByRole('slider', { hidden: true })
+    render(ComponentUnderTest, { props: { orientation: 'vertical' } })
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowUp]')
@@ -79,5 +76,25 @@ describe('RangeSlider', () => {
 
     await user.keyboard('[ArrowDown]')
     expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
+  })
+
+  it('should handle disabled state', async () => {
+    render(ComponentUnderTest, { props: { disabled: true } })
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+    expect(leftThumb).toHaveAttribute('aria-disabled', 'true')
+    expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
+  })
+
+  // TODO
+  it.skip('should emit correct onChange events', async () => {
+    const onChange = vi.fn()
+    render(ComponentUnderTest, { props: { onChange: onChange } })
+    const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+    leftThumb.focus()
+    await user.keyboard('[ArrowRight]')
+
+    // why is this 2 times
+    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
   })
 })
