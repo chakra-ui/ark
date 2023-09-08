@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputScrubberProps = HTMLArkProps<'div'>
 
-export const NumberInputScrubber: ComponentWithProps<NumberInputScrubberProps> = defineComponent({
+export const NumberInputScrubber = defineComponent({
   name: 'NumberInputScrubber',
   setup(_, { slots, attrs }) {
     const api = useNumberInputContext()

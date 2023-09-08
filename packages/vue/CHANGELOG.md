@@ -18,6 +18,8 @@ description: All notable changes to this project will be documented in this file
 - Revised `Accordion` component
 - Revised `Carousel` component
 - Revised `ColorPicker` component
+- Revised `Combobox` component
+- Revised `NumberInput` component
 - Revised `Pagination` component
 - Revised `Select` component
 - Revised `Splitter` component
