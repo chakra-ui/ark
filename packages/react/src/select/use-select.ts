@@ -1,4 +1,4 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
@@ -6,19 +6,23 @@ import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
 
-export type UseSelectProps = Assign<
-  Optional<Omit<select.Context, 'collection'>, 'id'>,
+export type CollectionItem = string | Record<string, unknown>
+
+export type UseSelectProps<T extends CollectionItem> = Assign<
+  Optional<Omit<select.Context<T>, 'collection'>, 'id'>,
   {
-    defaultValue?: select.Context['value']
+    defaultValue?: select.Context<T>['value']
   }
 > &
-  CollectionOptions
+  CollectionOptions<T>
 
-export type UseSelectReturn = select.Api
+export type UseSelectReturn<T extends CollectionItem> = select.Api<PropTypes, T>
 
-export const useSelect = (props: UseSelectProps): UseSelectReturn => {
+export const useSelect = <T extends CollectionItem>(
+  props: UseSelectProps<T>,
+): UseSelectReturn<T> => {
   const getRootNode = useEnvironmentContext()
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions>()(props, [
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',

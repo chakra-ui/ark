@@ -34,7 +34,7 @@ export const Basic = () => {
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Select items={items}>
+    <Select items={items} onChange={(e) => console.log(e.items)}>
       <SelectLabel>Framework:</SelectLabel>
       <SelectControl>
         <SelectTrigger>

@@ -1,24 +1,28 @@
 import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
 
-export type UseComboboxProps = Assign<
-  Optional<Omit<combobox.Context, 'collection'>, 'id'>,
+export type CollectionItem = string | Record<string, unknown>
+
+export type UseComboboxProps<T extends CollectionItem> = Assign<
+  Optional<Omit<combobox.Context<T>, 'collection'>, 'id'>,
   {
-    defaultValue?: combobox.Context['value']
+    defaultValue?: combobox.Context<T>['value']
   }
 > &
-  CollectionOptions
+  CollectionOptions<T>
 
-export type UseComboboxReturn = combobox.Api
+export type UseComboboxReturn<T extends CollectionItem> = combobox.Api<PropTypes, T>
 
-export const useCombobox = (props: UseComboboxProps): UseComboboxReturn => {
+export const useCombobox = <T extends CollectionItem>(
+  props: UseComboboxProps<T>,
+): UseComboboxReturn<T> => {
   const getRootNode = useEnvironmentContext()
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions>()(props, [
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
