@@ -12,20 +12,14 @@ import { spread } from './spread'
 import { ssrSpread } from './ssr-spread'
 
 type ElementType = keyof JSX.IntrinsicElements
-
 type AsChildProps = {
   asChild?: boolean
 }
-
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
 }
-
 type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
-
 type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
-
-export type HTMLArkProps<T extends ElementType> = AsChildComponentProps<T>
 
 function withAsChild(Component: ElementType) {
   return function jsx(props: ParentProps<AsChildProps>) {
@@ -52,7 +46,7 @@ function withAsChild(Component: ElementType) {
   }
 }
 
-export function jsxFactory() {
+function jsxFactory() {
   const cache = new Map()
 
   return new Proxy(withAsChild, {
@@ -69,4 +63,5 @@ export function jsxFactory() {
   }) as unknown as JsxElements
 }
 
+export type HTMLArkProps<T extends ElementType> = AsChildComponentProps<T>
 export const ark = jsxFactory()

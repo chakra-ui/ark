@@ -11,6 +11,10 @@ description: All notable changes to this project will be documented in this file
 - Added `Presence` component
 - To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
 
+### Fixed
+
+- Resolved an issue where the `ark` factory was not exported correctly.
+
 ## [0.10.1] - 2023-09-02
 
 ### Fixed
