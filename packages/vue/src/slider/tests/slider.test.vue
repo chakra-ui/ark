@@ -12,9 +12,8 @@ import {
   SliderTrack,
   type SliderProps,
 } from '../'
-import '../slider.css'
 
-const sliderValue = ref<SliderProps['modelValue']>(30)
+const sliderValue = ref<SliderProps['modelValue']>(0)
 </script>
 <template>
   <Slider :min="-50" :max="50" v-model="sliderValue">

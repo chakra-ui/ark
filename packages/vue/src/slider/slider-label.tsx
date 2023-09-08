@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { getValidChildren } from '../utils'
 import { useSliderContext } from './slider-context'
 
 export type SliderLabelProps = HTMLArkProps<'label'>
 
-export const SliderLabel: ComponentWithProps<SliderLabelProps> = defineComponent({
+export const SliderLabel = defineComponent({
   name: 'SliderLabel',
   setup(_, { slots, attrs }) {
     const api = useSliderContext()
