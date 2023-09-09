@@ -1,48 +1,22 @@
-import type { Context as PressableContext } from '@zag-js/pressable'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
-import { usePressable } from './use-pressable'
+import type { Assign } from '../types'
+import { emits, props } from './pressable.props'
+import { usePressable, type UsePressableProps } from './use-pressable'
 
-export type UsePressableProps = Assign<HTMLArkProps<'button'>, PressableContext>
+export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
 
-const VueProps = createVueProps<UsePressableProps>({
-  id: {
-    type: String as PropType<UsePressableProps['id']>,
-  },
-  disabled: {
-    type: Boolean as PropType<UsePressableProps['disabled']>,
-  },
-  cancelOnPointerExit: {
-    type: Boolean as PropType<UsePressableProps['cancelOnPointerExit']>,
-  },
-  preventFocusOnPress: {
-    type: Boolean as PropType<UsePressableProps['preventFocusOnPress']>,
-  },
-  allowTextSelectionOnPress: {
-    type: Boolean as PropType<UsePressableProps['allowTextSelectionOnPress']>,
-  },
-  dir: {
-    type: String as PropType<UsePressableProps['dir']>,
-  },
-  longPressDelay: {
-    type: Number as PropType<UsePressableProps['longPressDelay']>,
-  },
-})
-
-export const Pressable: ComponentWithProps<Partial<UsePressableProps>> = defineComponent({
+export const Pressable = defineComponent({
   name: 'Pressable',
-  props: VueProps,
-  emits: ['press', 'long-press', 'press-end', 'press-up', 'press-start'],
+  props,
+  emits,
   setup(props, { slots, attrs, emit }) {
-    const api = usePressable(emit, props)
+    const api = usePressable(props, emit)
+
     return () => (
       <ark.button {...api.value.pressableProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots?.default?.()}
       </ark.button>
     )
   },
 })
-
-export type PressableProps = Optional<UsePressableProps, 'id'>

@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Revised `Pressable` component
+
 ## [0.8.0] - 2023-09-08
 
 ### Added
@@ -167,5 +171,4 @@ description: All notable changes to this project will be documented in this file
 [0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
 [0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.6.0
 [0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.7.0
-
 [0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.8.0
