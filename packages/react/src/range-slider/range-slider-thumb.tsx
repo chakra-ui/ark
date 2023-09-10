@@ -10,16 +10,14 @@ export type RangeSliderThumbProps = Assign<
 >
 
 export const RangeSliderThumb = forwardRef<HTMLDivElement, RangeSliderThumbProps>((props, ref) => {
-  const { index, ...divProps } = props
-  const { getThumbProps, getHiddenInputProps } = useRangeSliderContext()
-  const mergedProps = mergeProps(getThumbProps(index), divProps)
+  const { index, ...localProps } = props
+  const api = useRangeSliderContext()
+  const mergedProps = mergeProps(api.getThumbProps(index), localProps)
 
   return (
     <>
-      <ark.div {...mergedProps} ref={ref}>
-        {props.children}
-      </ark.div>
-      <input {...getHiddenInputProps(index)} />
+      <ark.div {...mergedProps} ref={ref} />
+      <input {...api.getHiddenInputProps(index)} />
     </>
   )
 })

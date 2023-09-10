@@ -33,12 +33,13 @@ export const Switch = (props: SwitchProps) => {
     'value',
   ])
   const api = useSwitch(switchProps)
-  const rootProps = mergeProps(() => api().rootProps, labelProps)
+  const mergedProps = mergeProps(() => api().rootProps, labelProps)
   const getChildren = () => runIfFn(props.children, api)
 
   return (
     <SwitchProvider value={api}>
-      <ark.label {...rootProps}>{getChildren()}</ark.label>
+      <ark.label {...mergedProps}>{getChildren()}</ark.label>
+      <input {...api().hiddenInputProps} />
     </SwitchProvider>
   )
 }

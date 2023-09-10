@@ -11,16 +11,15 @@ export type RatingGroupControlProps = Omit<ComponentPropsWithoutRef<typeof ark.d
 export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlProps>(
   (props, ref) => {
     const { children, ...divProps } = props
-    const ratingGroup = useRatingGroupContext()
-    const mergedProps = mergeProps(ratingGroup.controlProps, divProps)
-    const view = runIfFn(children, ratingGroup)
+    const api = useRatingGroupContext()
+    const mergedProps = mergeProps(api.controlProps, divProps)
+    const view = runIfFn(children, api)
 
     return (
       <>
         <ark.div {...mergedProps} ref={ref}>
           {view}
         </ark.div>
-        <input {...ratingGroup.hiddenInputProps} />
       </>
     )
   },

@@ -11,12 +11,9 @@ export const PinInputControl: ComponentWithProps<PinInputControlProps> = defineC
     const api = usePinInputContext()
 
     return () => (
-      <>
-        <ark.div {...api.value.controlProps} {...attrs}>
-          {slots.default?.()}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
+      <ark.div {...api.value.controlProps} {...attrs}>
+        {slots.default?.()}
+      </ark.div>
     )
   },
 })

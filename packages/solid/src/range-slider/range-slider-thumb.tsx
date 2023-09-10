@@ -9,14 +9,13 @@ type RangeSliderThumbParams = { index: number }
 export type RangeSliderThumbProps = Assign<HTMLArkProps<'div'>, RangeSliderThumbParams>
 
 export const RangeSliderThumb = (props: RangeSliderThumbProps) => {
-  const [thumbParams, restProps] = createSplitProps<RangeSliderThumbParams>()(props, ['index'])
-
+  const [thumbParams, localProps] = createSplitProps<RangeSliderThumbParams>()(props, ['index'])
   const api = useRangeSliderContext()
-  const thumbProps = mergeProps(() => api().getThumbProps(thumbParams.index), restProps)
+  const mergedProps = mergeProps(() => api().getThumbProps(thumbParams.index), localProps)
 
   return (
     <>
-      <ark.div {...thumbProps} />
+      <ark.div {...mergedProps} />
       <input {...api().getHiddenInputProps(thumbParams.index)} />
     </>
   )

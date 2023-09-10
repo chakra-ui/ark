@@ -8,7 +8,7 @@ import { usePinInput, type UsePinInputProps } from './use-pin-input'
 export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
 
 export const PinInput = (props: PinInputProps) => {
-  const [pinInputProps, htmlProps] = createSplitProps<UsePinInputProps>()(props, [
+  const [pinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',
     'dir',
@@ -31,14 +31,13 @@ export const PinInput = (props: PinInputProps) => {
     'type',
     'value',
   ])
-
   const api = usePinInput(pinInputProps)
-
-  const rootProps = mergeProps(() => api().rootProps, htmlProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <PinInputProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...mergedProps} />
+      <input {...api().hiddenInputProps} />
     </PinInputProvider>
   )
 }

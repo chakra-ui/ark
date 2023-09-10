@@ -7,16 +7,11 @@ import { useRadioGroupContext } from './radio-group-context'
 export type RadioControlProps = ComponentPropsWithoutRef<typeof ark.div>
 
 export const RadioControl = forwardRef<HTMLDivElement, RadioControlProps>((props, ref) => {
-  const { getRadioControlProps, getRadioHiddenInputProps } = useRadioGroupContext()
-  const context = useRadioContext()
-  const mergedProps = mergeProps(getRadioControlProps(context), props)
+  const api = useRadioGroupContext()
+  const radioProps = useRadioContext()
+  const mergedProps = mergeProps(api.getRadioControlProps(radioProps), props)
 
-  return (
-    <>
-      <ark.div {...mergedProps} ref={ref} />
-      <input {...getRadioHiddenInputProps(context)} />
-    </>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 RadioControl.displayName = 'RadioControl'

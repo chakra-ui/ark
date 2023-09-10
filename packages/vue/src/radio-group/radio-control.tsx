@@ -13,12 +13,9 @@ export const RadioControl: ComponentWithProps<RadioControlProps> = defineCompone
     const api = useRadioContext()
 
     return () => (
-      <>
-        <ark.div {...groupApi.value.getRadioControlProps(api)} {...attrs}>
-          {() => getValidChildren(slots)}
-        </ark.div>
-        <input {...groupApi.value.getRadioHiddenInputProps(api)} />
-      </>
+      <ark.div {...groupApi.value.getRadioControlProps(api)} {...attrs}>
+        {() => getValidChildren(slots)}
+      </ark.div>
     )
   },
 })

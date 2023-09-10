@@ -48,15 +48,16 @@ export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, re
       'value',
     ],
   )
-  const tagsInput = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(tagsInput.rootProps, inputProps)
-  const view = runIfFn(children, tagsInput)
+  const api = useTagsInput(useTagsInputProps)
+  const mergedProps = mergeProps(api.rootProps, inputProps)
+  const view = runIfFn(children, api)
 
   return (
-    <TagsInputProvider value={tagsInput}>
+    <TagsInputProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
+      <input {...api.hiddenInputProps} />
     </TagsInputProvider>
   )
 })

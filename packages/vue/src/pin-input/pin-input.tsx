@@ -78,9 +78,12 @@ export const PinInput: ComponentWithProps<Partial<UsePinInputProps>> = defineCom
     PinInputProvider(api)
 
     return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
-      </ark.div>
+      <>
+        <ark.div {...api.value.rootProps} {...attrs}>
+          {() => slots?.default?.(api.value)}
+        </ark.div>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

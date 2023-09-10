@@ -9,20 +9,19 @@ import { parts } from './segment-group.anatomy'
 export type SegmentProps = Assign<HTMLArkProps<'label'>, SegmentContext>
 
 export const Segment = (props: SegmentProps) => {
-  const [contextProps, restProps] = createSplitProps<SegmentContext>()(props, [
+  const [segmentProps, restProps] = createSplitProps<SegmentContext>()(props, [
     'value',
     'disabled',
     'invalid',
     'readOnly',
   ])
-
   const api = useSegmentGroupContext()
-
-  const rootProps = mergeProps(() => api().getRadioProps(contextProps), restProps)
+  const mergedProps = mergeProps(() => api().getRadioProps(segmentProps), restProps)
 
   return (
-    <SegmentProvider value={contextProps}>
-      <ark.label {...rootProps} {...parts.radio.attrs} />
+    <SegmentProvider value={segmentProps}>
+      <ark.label {...mergedProps} {...parts.radio.attrs} />
+      <input {...api().getRadioHiddenInputProps(segmentProps)} />
     </SegmentProvider>
   )
 }

@@ -43,6 +43,7 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
       <ark.label {...mergedProps} ref={ref}>
         {view}
       </ark.label>
+      <input {...api.hiddenInputProps} />
     </SwitchProvider>
   )
 })

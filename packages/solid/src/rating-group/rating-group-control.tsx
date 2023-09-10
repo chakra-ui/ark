@@ -14,14 +14,8 @@ export type RatingGroupControlProps = Assign<
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const api = useRatingGroupContext()
-
   const getChildren = () => runIfFn(props.children, api)
   const controlProps = mergeProps(() => api().controlProps, props)
 
-  return (
-    <>
-      <ark.div {...controlProps}>{getChildren()}</ark.div>
-      <input {...api().hiddenInputProps} />
-    </>
-  )
+  return <ark.div {...controlProps}>{getChildren()}</ark.div>
 }

@@ -44,15 +44,16 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
     'thumbSize',
     'value',
   ])
-  const slider = useSlider(useSliderProps)
-  const mergedProps = mergeProps(slider.rootProps, divProps)
+  const api = useSlider(useSliderProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
-  const view = runIfFn(children, slider)
+  const view = runIfFn(children, api)
   return (
-    <SliderProvider value={slider}>
+    <SliderProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
+      <input {...api.hiddenInputProps} />
     </SliderProvider>
   )
 })

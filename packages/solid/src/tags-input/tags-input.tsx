@@ -46,13 +46,13 @@ export const TagsInput = (props: TagsInputProps) => {
   ])
 
   const api = useTagsInput(tagsInputParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
-
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
   const getChildren = () => runIfFn(restProps.children, api)
 
   return (
     <TagsInputProvider value={api}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <input {...api().hiddenInputProps} />
     </TagsInputProvider>
   )
 }

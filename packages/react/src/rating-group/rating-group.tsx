@@ -27,14 +27,13 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
     'translations',
     'value',
   ])
-  const ratingGroup = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(ratingGroup.rootProps, inputProps)
+  const api = useRatingGroup(useRatingProps)
+  const mergedProps = mergeProps(api.rootProps, inputProps)
 
   return (
-    <RatingGroupProvider value={ratingGroup}>
-      <ark.div {...mergedProps} ref={ref}>
-        {props.children}
-      </ark.div>
+    <RatingGroupProvider value={api}>
+      <ark.div {...mergedProps} ref={ref} />
+      <input {...api.hiddenInputProps} />
     </RatingGroupProvider>
   )
 })

@@ -8,7 +8,7 @@ import { useRadioGroupContext } from './radio-group-context'
 export type RadioProps = Assign<HTMLArkProps<'label'>, RadioContext>
 
 export const Radio = (props: RadioProps) => {
-  const [contextProps, restProps] = createSplitProps<RadioContext>()(props, [
+  const [radioProps, restProps] = createSplitProps<RadioContext>()(props, [
     'value',
     'disabled',
     'invalid',
@@ -16,12 +16,12 @@ export const Radio = (props: RadioProps) => {
   ])
 
   const api = useRadioGroupContext()
-
-  const radioProps = mergeProps(() => api().getRadioProps(contextProps), restProps)
+  const mergedProps = mergeProps(() => api().getRadioProps(radioProps), restProps)
 
   return (
-    <RadioProvider value={contextProps}>
-      <ark.label {...radioProps} />
+    <RadioProvider value={radioProps}>
+      <ark.label {...mergedProps} />
+      <input {...api().getRadioHiddenInputProps(radioProps)} />
     </RadioProvider>
   )
 }

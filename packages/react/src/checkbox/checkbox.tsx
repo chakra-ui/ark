@@ -36,16 +36,17 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
       'value',
     ],
   )
-  const checkbox = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(checkbox.rootProps, labelProps)
+  const api = useCheckbox(useCheckboxProps)
+  const mergedProps = mergeProps(api.rootProps, labelProps)
 
-  const view = runIfFn(children, checkbox)
+  const view = runIfFn(children, api)
 
   return (
-    <CheckboxProvider value={checkbox}>
+    <CheckboxProvider value={api}>
       <ark.label {...mergedProps} ref={ref}>
         {view}
       </ark.label>
+      <input {...api.hiddenInputProps} />
     </CheckboxProvider>
   )
 })
