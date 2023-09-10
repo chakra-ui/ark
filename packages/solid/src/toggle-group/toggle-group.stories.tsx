@@ -33,7 +33,7 @@ export const Multiple = () => {
 
 export const Initialvalue = () => {
   return (
-    <ToggleGroup defaultValue={['b']}>
+    <ToggleGroup value={['b']}>
       <Toggle value="a">A</Toggle>
       <Toggle value="b">B</Toggle>
       <Toggle value="c">C</Toggle>
