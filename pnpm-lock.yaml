@@ -345,6 +345,9 @@ importers:
       '@zag-js/toggle':
         specifier: 0.17.0
         version: 0.17.0
+      '@zag-js/toggle-group':
+        specifier: 0.17.0
+        version: 0.17.0
       '@zag-js/tooltip':
         specifier: 0.17.0
         version: 0.17.0

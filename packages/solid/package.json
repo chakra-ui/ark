@@ -59,6 +59,7 @@
     "@zag-js/tags-input": "0.17.0",
     "@zag-js/toast": "0.17.0",
     "@zag-js/toggle": "0.17.0",
+    "@zag-js/toggle-group": "0.17.0",
     "@zag-js/tooltip": "0.17.0",
     "@zag-js/types": "0.17.0"
   },

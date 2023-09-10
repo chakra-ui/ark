@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added `Toggle` component
+- Added `ToggleGroup` component
 
 ## [0.11.0] - 2023-09-08
 
