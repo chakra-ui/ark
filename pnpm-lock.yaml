@@ -140,9 +140,6 @@ importers:
       '@zag-js/toast':
         specifier: 0.19.1
         version: 0.19.1
-      '@zag-js/toggle':
-        specifier: 0.19.1
-        version: 0.19.1
       '@zag-js/toggle-group':
         specifier: 0.19.1
         version: 0.19.1
@@ -340,9 +337,6 @@ importers:
         specifier: 0.19.1
         version: 0.19.1
       '@zag-js/toast':
-        specifier: 0.19.1
-        version: 0.19.1
-      '@zag-js/toggle':
         specifier: 0.19.1
         version: 0.19.1
       '@zag-js/toggle-group':
