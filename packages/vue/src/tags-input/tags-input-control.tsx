@@ -10,12 +10,9 @@ export const TagsInputControl = defineComponent({
     const api = useTagsInputContext()
 
     return () => (
-      <>
-        <ark.div {...api.value.controlProps} {...attrs}>
-          {slots.default?.()}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
+      <ark.div {...api.value.controlProps} {...attrs}>
+        {slots.default?.()}
+      </ark.div>
     )
   },
 })

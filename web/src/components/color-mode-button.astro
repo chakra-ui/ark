@@ -34,16 +34,13 @@ import { button } from 'styled-system/recipes'
   }
 </style>
 
-<script>
-  const setupStuff = () => {
-    const handleToggleClick = () => {
-      const element = document.documentElement
-      element.classList.toggle('dark')
+<script is:inline>
+  const handleToggleClick = () => {
+    const element = document.documentElement
+    element.classList.toggle('dark')
 
-      const isDark = element.classList.contains('dark')
-      localStorage.setItem('ark-ui-color-mode', isDark ? 'dark' : 'light')
-    }
-    document.getElementById('themeToggle')?.addEventListener('click', handleToggleClick)
+    const isDark = element.classList.contains('dark')
+    localStorage.setItem('ark-ui-color-mode', isDark ? 'dark' : 'light')
   }
-  document.addEventListener('astro:load', setupStuff)
+  document.getElementById('themeToggle').addEventListener('click', handleToggleClick)
 </script>

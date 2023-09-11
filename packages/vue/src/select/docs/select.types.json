@@ -67,7 +67,7 @@
       "description": "The `name` attribute of the underlying select."
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails<CollectionItem>) => void",
+      "type": "(details: ValueChangeDetails<any>) => void",
       "isRequired": false,
       "description": "The callback fired when the selected item changes."
     },
@@ -78,7 +78,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails<CollectionItem>) => void",
+      "type": "(details: HighlightChangeDetails<any>) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted item changes."
     },
@@ -118,7 +118,7 @@
       "description": "The keys of the selected items"
     }
   },
-  "SelectItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "SelectItemProps": { "item": { "type": "any", "isRequired": false } },
   "SelectContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -134,6 +134,6 @@
     }
   },
   "SelectItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "SelectItemIndicatorProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "SelectItemIndicatorProps": { "item": { "type": "any", "isRequired": false } },
   "SelectItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

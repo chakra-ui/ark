@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Teleport } from 'vue'
 import {
   HoverCard,
   HoverCardArrow,
@@ -7,22 +6,18 @@ import {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
-} from '.'
-import './hover-card.css'
+} from '..'
 </script>
 <template>
-  <HoverCard>
-    <HoverCardTrigger>
-      <a href="https://mastodon.com/zag_js" target="_blank" rel="noreferrer"> Mastodon </a>
-    </HoverCardTrigger>
-
+  <HoverCard :open-delay="0" :close-delay="0">
+    <HoverCardTrigger>Hover me</HoverCardTrigger>
     <Teleport to="body">
       <HoverCardPositioner>
         <HoverCardContent>
           <HoverCardArrow>
             <HoverCardArrowTip />
           </HoverCardArrow>
-          Mastodon Preview
+          Content
         </HoverCardContent>
       </HoverCardPositioner>
     </Teleport>

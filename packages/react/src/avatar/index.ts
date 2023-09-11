@@ -1,5 +1,5 @@
 import { Avatar as AvatarRoot, type AvatarProps } from './avatar'
-import { useAvatarContext } from './avatar-context'
+import { useAvatarContext, type AvatarContext } from './avatar-context'
 import { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
 import { AvatarImage, type AvatarImageProps } from './avatar-image'
 import { avatarAnatomy } from './avatar.anatomy'
@@ -11,4 +11,4 @@ const Avatar = Object.assign(AvatarRoot, {
 })
 
 export { Avatar, AvatarFallback, AvatarImage, avatarAnatomy, useAvatarContext }
-export type { AvatarFallbackProps, AvatarImageProps, AvatarProps }
+export type { AvatarContext, AvatarFallbackProps, AvatarImageProps, AvatarProps }

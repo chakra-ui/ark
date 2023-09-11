@@ -48,15 +48,23 @@ export const Radio: ComponentWithProps<Partial<RadioProps>> = defineComponent({
     RadioProvider(context)
 
     return () => (
-      <ark.label
-        {...groupApi.value.getRadioProps({
-          value: context.value || '',
-          disabled: context.disabled,
-        })}
-        {...attrs}
-      >
-        {() => slots?.default?.(context)}
-      </ark.label>
+      <>
+        <ark.label
+          {...groupApi.value.getRadioProps({
+            value: context.value || '',
+            disabled: context.disabled,
+          })}
+          {...attrs}
+        >
+          {() => slots?.default?.(context)}
+        </ark.label>
+        <input
+          {...groupApi.value.getRadioHiddenInputProps({
+            value: context.value || '',
+            disabled: context.disabled,
+          })}
+        />
+      </>
     )
   },
 })

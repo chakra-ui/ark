@@ -14,7 +14,6 @@ export const Segment = (props: SegmentProps) => {
     'disabled',
     'invalid',
   ])
-
   const api = useSegmentGroupContext()
   const mergedProps = mergeProps(() => api().getRadioProps(contextProps), localProps)
 

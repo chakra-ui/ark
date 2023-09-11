@@ -38,6 +38,7 @@
 | Tabs                    | 🟢    | 🟢    | 🟢  |
 | Tags Input              | 🟢    | 🟢    | 🟢  |
 | Toast                   | 🟢    | 🟢    | 🟢  |
+| Toggle                  | 🟢    | 🟢    | 🟢  |
 | Tooltip                 | 🟢    | 🟢    | 🟢  |
 
 ## Contributing

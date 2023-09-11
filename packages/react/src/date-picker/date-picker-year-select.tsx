@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerYearSelectProps = ComponentPropsWithoutRef<typeof ark.select>
+export type DatePickerYearSelectProps = HTMLArkProps<'select'>
 
 export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYearSelectProps>(
   (props, ref) => {
@@ -24,12 +24,12 @@ export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYear
 
 DatePickerYearSelect.displayName = 'DatePickerYearSelect'
 
-export interface YearsRange {
+interface YearsRange {
   from: number
   to: number
 }
 
-export function getYearsRange(range: YearsRange) {
+function getYearsRange(range: YearsRange) {
   const years: number[] = []
 
   for (let year = range.from; year <= range.to; year += 1) {

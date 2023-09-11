@@ -5,12 +5,7 @@ import { useCheckboxContext } from './checkbox-context'
 export type CheckboxControlProps = HTMLArkProps<'div'>
 
 export const CheckboxControl = (props: CheckboxControlProps) => {
-  const checkbox = useCheckboxContext()
-  const controlProps = mergeProps(() => checkbox().controlProps, props)
-  return (
-    <>
-      <ark.div {...controlProps} />
-      <input {...checkbox().hiddenInputProps} />
-    </>
-  )
+  const api = useCheckboxContext()
+  const controlProps = mergeProps(() => api().controlProps, props)
+  return <ark.div {...controlProps} />
 }

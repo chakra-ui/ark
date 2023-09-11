@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UseRatingGroupProps>
+export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
 
 export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, ref) => {
   const [useRatingProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
@@ -27,14 +27,13 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
     'translations',
     'value',
   ])
-  const ratingGroup = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(ratingGroup.rootProps, inputProps)
+  const api = useRatingGroup(useRatingProps)
+  const mergedProps = mergeProps(api.rootProps, inputProps)
 
   return (
-    <RatingGroupProvider value={ratingGroup}>
-      <ark.div {...mergedProps} ref={ref}>
-        {props.children}
-      </ark.div>
+    <RatingGroupProvider value={api}>
+      <ark.div {...mergedProps} ref={ref} />
+      <input {...api.hiddenInputProps} />
     </RatingGroupProvider>
   )
 })

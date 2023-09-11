@@ -7,8 +7,8 @@ import { type Optional } from '../types'
 
 type GroupPublicContext = Parameters<(typeof toast)['group']['machine']>[0]
 
-export type ToastContext = ReturnType<(typeof toast)['group']['connect']>
-export const [ToastContextProvider, useToast] = createContext<ToastContext>()
+type ToastContext = ReturnType<(typeof toast)['group']['connect']>
+const [ToastContextProvider, useToast] = createContext<ToastContext>()
 
 export type ToastProviderProps = PropsWithChildren & Optional<GroupPublicContext, 'id'>
 
@@ -21,3 +21,5 @@ export const ToastProvider = (props: ToastProviderProps) => {
 
   return <ToastContextProvider value={api}>{children}</ToastContextProvider>
 }
+
+export { useToast }

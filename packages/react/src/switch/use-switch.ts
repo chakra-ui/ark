@@ -4,7 +4,9 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSwitchProps = Optional<zagSwitch.Context, 'id'> & { defaultChecked?: boolean }
+export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
+  defaultChecked?: zagSwitch.Context['checked']
+}
 export type UseSwitchReturn = zagSwitch.Api
 
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {

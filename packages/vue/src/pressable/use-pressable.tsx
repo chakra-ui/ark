@@ -1,45 +1,30 @@
-import { connect, machine, type Context as PressableContext } from '@zag-js/pressable'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as pressable from '@zag-js/pressable'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './pressable.props'
 
-export type UsePressableContext = PressableContext
+export type UsePressableProps = Optional<pressable.Context, 'id'>
+export type UsePressableReturn = ComputedRef<pressable.Api<PropTypes>>
 
-export const usePressable = <T extends ExtractPropTypes<PressableContext>>(
+export const usePressable = (
+  props: UsePressableProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UsePressableReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = ref(props)
+  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      disabled: reactiveContext.disabled,
-      cancelOnPointerExit: reactiveContext.cancelOnPointerExit,
-      id: reactiveContext.id || useId().value,
+    pressable.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      onLongPress(event) {
-        emit('long-press', event)
-      },
-      onPress(event) {
-        emit('press', event)
-      },
-      onPressEnd(event) {
-        emit('press-end', event)
-      },
-      onPressStart(event) {
-        emit('press-start', event)
-      },
-      onPressUp(event) {
-        emit('press-up', event)
-      },
+      ...eventMap,
     }),
+    { context },
   )
-
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => pressable.connect(state.value, send, normalizeProps))
 }
-
-export type UsePressableReturn = ReturnType<typeof usePressable>

@@ -7,6 +7,8 @@ import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
 
 export type CollectionItem = string | Record<string, unknown>
+// export interface UseComboboxProps extends Optional<combobox.Context, 'id'> {}
+// export type UseComboboxReturn = combobox.Api
 
 export type UseComboboxProps<T extends CollectionItem> = Assign<
   Optional<Omit<combobox.Context<T>, 'collection'>, 'id'>,

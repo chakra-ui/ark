@@ -86,7 +86,7 @@
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails<CollectionItem>) => void",
+      "type": "(details: ValueChangeDetails<any>) => void",
       "isRequired": false,
       "description": "Function called when a new item is selected"
     },
@@ -97,7 +97,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails<CollectionItem>) => void",
+      "type": "(details: HighlightChangeDetails<any>) => void",
       "isRequired": false,
       "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
@@ -157,7 +157,7 @@
       "description": "The keys of the selected items"
     }
   },
-  "ComboboxItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "ComboboxItemProps": { "item": { "type": "any", "isRequired": false } },
   "ComboboxContentProps": {
     "lazyMount": {
       "type": "boolean",
@@ -173,6 +173,6 @@
     }
   },
   "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxItemIndicatorProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "ComboboxItemIndicatorProps": { "item": { "type": "any", "isRequired": false } },
   "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

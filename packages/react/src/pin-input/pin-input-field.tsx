@@ -1,13 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputInputProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.input>,
-  { index: number }
->
+export type PinInputInputProps = Assign<HTMLArkProps<'input'>, { index: number }>
 
 export const PinInputInput = forwardRef<HTMLInputElement, PinInputInputProps>((props, ref) => {
   const { index, ...inputProps } = props

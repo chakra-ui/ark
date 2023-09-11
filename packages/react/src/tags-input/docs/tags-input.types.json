@@ -126,6 +126,78 @@
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
   },
+  "TagsInputContext": {
+    "addValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to add a tag to the tags."
+    },
+    "clearInputValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the tags entry input."
+    },
+    "clearTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "clearValue": {
+      "type": "(id?: string | undefined) => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the tags."
+    },
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "count": { "type": "number", "isRequired": true, "description": "The number of the tags." },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the tags entry input."
+    },
+    "getTagDeleteTriggerProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
+    "getTagInputProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
+    "getTagProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
+    "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
+    "inputProps": { "type": "Dict<any>", "isRequired": true },
+    "inputValue": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The value of the tags entry input."
+    },
+    "isAtMax": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the tags have reached the max limit."
+    },
+    "isEmpty": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the tags are empty"
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setInputValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the tags entry input."
+    },
+    "setValue": {
+      "type": "(value: string[]) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the tags."
+    },
+    "setValueAtIndex": {
+      "type": "(index: number, value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of a tag at the given index."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The value of the tags as an array of strings."
+    },
+    "valueAsString": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The value of the tags as a string."
+    }
+  },
   "TagDeleteTriggerProps": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },

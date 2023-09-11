@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/vue",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -56,6 +56,7 @@
     "@zag-js/tabs": "0.19.1",
     "@zag-js/tags-input": "0.19.1",
     "@zag-js/toast": "0.19.1",
+    "@zag-js/toggle": "0.19.1",
     "@zag-js/tooltip": "0.19.1",
     "@zag-js/types": "0.19.1",
     "@zag-js/vue": "0.19.1"
@@ -75,7 +76,7 @@
     "@vue/compiler-sfc": "3.3.4",
     "@vue/eslint-config-prettier": "8.0.0",
     "@vue/eslint-config-typescript": "11.0.3",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-plugin-vue": "9.17.0",
     "globby": "13.2.2",
     "histoire": "0.17.0",

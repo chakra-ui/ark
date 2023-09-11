@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
 import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
 export type CheckboxProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.label>,
+  HTMLArkProps<'label'>,
   Assign<
     UseCheckboxProps,
     {
@@ -36,16 +36,17 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
       'value',
     ],
   )
-  const checkbox = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(checkbox.rootProps, labelProps)
+  const api = useCheckbox(useCheckboxProps)
+  const mergedProps = mergeProps(api.rootProps, labelProps)
 
-  const view = runIfFn(children, checkbox)
+  const view = runIfFn(children, api)
 
   return (
-    <CheckboxProvider value={checkbox}>
+    <CheckboxProvider value={api}>
       <ark.label {...mergedProps} ref={ref}>
         {view}
       </ark.label>
+      <input {...api.hiddenInputProps} />
     </CheckboxProvider>
   )
 })

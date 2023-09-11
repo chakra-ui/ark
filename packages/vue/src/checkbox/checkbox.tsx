@@ -72,13 +72,15 @@ export const Checkbox: ComponentWithProps<Partial<UseCheckboxProps>> = defineCom
   props: VueCheckboxProps,
   setup(props, { attrs, emit, slots }) {
     const api = useCheckbox(emit, props)
-
     CheckboxProvider(api)
 
     return () => (
-      <ark.label {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
-      </ark.label>
+      <>
+        <ark.label {...api.value.rootProps} {...attrs}>
+          {slots.default?.(api.value)}
+        </ark.label>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

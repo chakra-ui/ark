@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
+export interface UseColorPickerProps extends Optional<colorPicker.Context, 'id'> {
   defaultValue?: colorPicker.Context['value']
 }
 export type UseColorPickerReturn = colorPicker.Api

@@ -12,7 +12,7 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
-export type MenuState = {
+type MenuState = {
   isOpen: boolean
   onClose: () => void
 }

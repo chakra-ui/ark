@@ -6,11 +6,7 @@ export type SwitchControlProps = HTMLArkProps<'span'>
 
 export const SwitchControl = (props: SwitchControlProps) => {
   const api = useSwitchContext()
-  const controlProps = mergeProps(() => api().controlProps, props)
-  return (
-    <>
-      <ark.span {...controlProps} />
-      <input {...api().hiddenInputProps} />
-    </>
-  )
+  const mergedProps = mergeProps(() => api().controlProps, props)
+
+  return <ark.span {...mergedProps} />
 }

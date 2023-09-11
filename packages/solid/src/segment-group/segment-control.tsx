@@ -8,14 +8,8 @@ export type SegmentControlProps = HTMLArkProps<'div'>
 
 export const SegmentControl = (props: SegmentControlProps) => {
   const api = useSegmentGroupContext()
-
   const context = useSegmentContext()
-  const controlProps = mergeProps(() => api().getRadioControlProps(context), props)
+  const mergedProps = mergeProps(() => api().getRadioControlProps(context), props)
 
-  return (
-    <>
-      <ark.div {...controlProps} {...parts.radioControl.attrs} />
-      <input {...api().getRadioHiddenInputProps(context)} />
-    </>
-  )
+  return <ark.div {...mergedProps} {...parts.radioControl.attrs} />
 }

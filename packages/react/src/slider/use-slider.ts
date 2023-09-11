@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export type UseSliderProps = Optional<slider.Context, 'id'> & {
+export interface UseSliderProps extends Optional<slider.Context, 'id'> {
   defaultValue?: slider.Context['value']
 }
 export type UseSliderReturn = slider.Api

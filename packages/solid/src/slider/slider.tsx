@@ -41,15 +41,14 @@ export const Slider = (props: SliderProps) => {
     'thumbSize',
     'value',
   ])
-
   const api = useSlider(sliderParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
-
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
   const getChildren = () => runIfFn(restProps.children, api)
 
   return (
     <SliderProvider value={api}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <input {...api().hiddenInputProps} />
     </SliderProvider>
   )
 }

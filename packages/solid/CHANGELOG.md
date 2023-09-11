@@ -8,8 +8,19 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added `Toggle` component
+- Added `ToggleGroup` component
+
+## [0.11.0] - 2023-09-08
+
+### Added
+
 - Added `Presence` component
 - To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
+
+### Fixed
+
+- Resolved an issue where the `ark` factory was not exported correctly.
 
 ## [0.10.1] - 2023-09-02
 
@@ -155,7 +166,7 @@ description: All notable changes to this project will be documented in this file
 - Add `Toast`
 - Add `Tooltip`
 
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.10.1...HEAD
+[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/solid@0.11.0...HEAD
 [0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.1.0
 [0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.2.0
 [0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.3.0
@@ -169,3 +180,4 @@ description: All notable changes to this project will be documented in this file
 [0.9.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.9.0
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.0
 [0.10.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.1
+[0.11.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.11.0

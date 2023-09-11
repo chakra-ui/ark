@@ -7,14 +7,8 @@ export type RadioControlProps = HTMLArkProps<'div'>
 
 export const RadioControl = (props: RadioControlProps) => {
   const api = useRadioGroupContext()
+  const radioProps = useRadioContext()
+  const mergedProps = mergeProps(() => api().getRadioControlProps(radioProps), props)
 
-  const context = useRadioContext()
-  const controlProps = mergeProps(() => api().getRadioControlProps(context), props)
-
-  return (
-    <>
-      <ark.div {...controlProps} />
-      <input {...api().getRadioHiddenInputProps(context)} />
-    </>
-  )
+  return <ark.div {...mergedProps} />
 }

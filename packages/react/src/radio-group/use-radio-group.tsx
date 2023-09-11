@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseRadioGroupProps = Optional<radio.Context, 'id'> & {
+export interface UseRadioGroupProps extends Optional<radio.Context, 'id'> {
   defaultValue?: radio.Context['value']
 }
 export type UseRadioGroupReturn = radio.Api

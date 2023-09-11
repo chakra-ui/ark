@@ -55,7 +55,7 @@ import { ViewTransitions } from 'astro:transitions'
       }
 
       setDarkMode()
-      document.addEventListener('astro:beforeload', setDarkMode)
+      document.addEventListener('astro:after-swap', setDarkMode)
     </script>
   </body>
 </html>

@@ -1,10 +1,6 @@
 {
   "SelectProps": {
-    "items": {
-      "type": "CollectionItem[]",
-      "isRequired": true,
-      "description": "The options of the select"
-    },
+    "items": { "type": "any[]", "isRequired": true, "description": "The options of the select" },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -51,17 +47,17 @@
       "description": "Whether the select is invalid"
     },
     "isItemDisabled": {
-      "type": "(item: CollectionItem) => boolean",
+      "type": "(item: any) => boolean",
       "isRequired": false,
       "description": "Whether the item is disabled"
     },
     "itemToString": {
-      "type": "(item: CollectionItem) => string",
+      "type": "(item: any) => string",
       "isRequired": false,
       "description": "The label of the item"
     },
     "itemToValue": {
-      "type": "(item: CollectionItem) => string",
+      "type": "(item: any) => string",
       "isRequired": false,
       "description": "The value of the item"
     },
@@ -81,7 +77,7 @@
       "description": "The `name` attribute of the underlying select."
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails<CollectionItem>) => void",
+      "type": "(details: ValueChangeDetails<any>) => void",
       "isRequired": false,
       "description": "The callback fired when the selected item changes."
     },
@@ -92,7 +88,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails<CollectionItem>) => void",
+      "type": "(details: HighlightChangeDetails<any>) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted item changes."
     },
@@ -132,7 +128,7 @@
       "description": "The keys of the selected items"
     }
   },
-  "SelectItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "SelectItemProps": { "item": { "type": "any", "isRequired": false } },
   "SelectValueProps": { "placeholder": { "type": "string", "isRequired": false } },
   "SelectContentProps": {
     "lazyMount": {

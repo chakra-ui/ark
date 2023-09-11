@@ -1,6 +1,6 @@
 import { createContext as createReactContext, useContext as useReactContext } from 'react'
 
-export interface CreateContextOptions<T> {
+interface CreateContextOptions<T> {
   strict?: boolean
   hookName?: string
   providerName?: string
@@ -9,7 +9,7 @@ export interface CreateContextOptions<T> {
   defaultValue?: T
 }
 
-export type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>]
+type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>]
 
 function getErrorMessage(hook: string, provider: string) {
   return `${hook} returned \`undefined\`. Seems you forgot to wrap component within ${provider}`

@@ -129,7 +129,7 @@
       "description": "The keys of the selected items"
     }
   },
-  "SelectItemProps": { "item": { "type": "CollectionItem", "isRequired": true } },
+  "SelectItemProps": { "item": { "type": "any", "isRequired": false } },
   "SelectContentProps": {
     "lazyMount": {
       "type": "boolean",

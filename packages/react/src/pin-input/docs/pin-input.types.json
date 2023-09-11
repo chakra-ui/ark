@@ -97,7 +97,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
+      "type": "'numeric' | 'alphabetic' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
@@ -105,6 +105,48 @@
       "type": "string[]",
       "isRequired": false,
       "description": "The value of the the pin input."
+    }
+  },
+  "PinInputContext": {
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the inputs."
+    },
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the pin-input. This will focus the first input."
+    },
+    "getInputProps": { "type": "({ index }: { index: number }) => Dict<any>", "isRequired": true },
+    "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
+    "isValueComplete": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether all inputs are filled."
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string[]) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the inputs."
+    },
+    "setValueAtIndex": {
+      "type": "(index: number, value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the input at a specific index."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The value of the input as an array of strings."
+    },
+    "valueAsString": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The value of the input as a string."
     }
   },
   "PinInputInputProps": { "index": { "type": "number", "isRequired": true } }

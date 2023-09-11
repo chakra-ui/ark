@@ -57,7 +57,40 @@
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
+  "AccordionContext": {
+    "getContentProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemState": {
+      "type": "(props: ItemProps) => ItemState",
+      "isRequired": true,
+      "description": "Gets the state of an accordion item."
+    },
+    "getTriggerProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string[]) => void",
+      "isRequired": true,
+      "description": "Sets the value of the accordion."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The value of the accordion"
+    },
+    "focusedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the focused accordion item."
+    }
+  },
   "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "AccordionItemContext": {
+    "isDisabled": { "type": "boolean", "isRequired": true },
+    "isFocused": { "type": "boolean", "isRequired": true },
+    "isOpen": { "type": "boolean", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },

@@ -93,9 +93,12 @@ export const TagsInput: ComponentWithProps<Partial<UseTagsInputProps>> = defineC
     })
 
     return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
-      </ark.div>
+      <>
+        <ark.div {...api.value.rootProps} {...attrs}>
+          {() => slots?.default?.(api.value)}
+        </ark.div>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

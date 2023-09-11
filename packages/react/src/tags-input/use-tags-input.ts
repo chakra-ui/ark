@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
+export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
   defaultValue?: tagsInput.Context['value']
 }
 export type UseTagsInputReturn = tagsInput.Api

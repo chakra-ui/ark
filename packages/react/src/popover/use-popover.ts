@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UsePopoverProps = Optional<popover.Context, 'id'>
+export interface UsePopoverProps extends Optional<popover.Context, 'id'> {}
 export type UsePopoverReturn = popover.Api
 
 export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {

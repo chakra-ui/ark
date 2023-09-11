@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
 
 export type TagsInputProps = Assign<
-  Assign<ComponentPropsWithoutRef<typeof ark.input>, UseTagsInputProps>,
+  Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
   {
     children?: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
   }
@@ -48,15 +48,16 @@ export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, re
       'value',
     ],
   )
-  const tagsInput = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(tagsInput.rootProps, inputProps)
-  const view = runIfFn(children, tagsInput)
+  const api = useTagsInput(useTagsInputProps)
+  const mergedProps = mergeProps(api.rootProps, inputProps)
+  const view = runIfFn(children, api)
 
   return (
-    <TagsInputProvider value={tagsInput}>
+    <TagsInputProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
+      <input {...api.hiddenInputProps} />
     </TagsInputProvider>
   )
 })

@@ -16,9 +16,12 @@ export const Switch = defineComponent({
     SwitchProvider(api)
 
     return () => (
-      <ark.label {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
-      </ark.label>
+      <>
+        <ark.label {...api.value.rootProps} {...attrs}>
+          {slots?.default?.(api.value)}
+        </ark.label>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

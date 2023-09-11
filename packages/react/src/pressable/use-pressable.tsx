@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UsePressableProps = Optional<pressable.Context, 'id'>
+export interface UsePressableProps extends Optional<pressable.Context, 'id'> {}
 export type UsePressableReturn = pressable.Api
 
 export const usePressable = (props?: UsePressableProps): UsePressableReturn => {

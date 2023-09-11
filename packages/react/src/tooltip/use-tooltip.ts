@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseTooltipProps = Optional<tooltip.Context, 'id'>
+export interface UseTooltipProps extends Optional<tooltip.Context, 'id'> {}
 export type UseTooltipReturn = tooltip.Api
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {

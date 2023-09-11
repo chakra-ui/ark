@@ -61,6 +61,8 @@
     "@zag-js/tabs": "0.19.1",
     "@zag-js/tags-input": "0.19.1",
     "@zag-js/toast": "0.19.1",
+    "@zag-js/toggle": "0.19.1",
+    "@zag-js/toggle-group": "0.19.1",
     "@zag-js/tooltip": "0.19.1",
     "@zag-js/types": "0.19.1"
   },
@@ -83,7 +85,7 @@
     "@typescript-eslint/parser": "6.6.0",
     "@vitejs/plugin-react": "4.0.4",
     "@vitest/coverage-v8": "0.34.3",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "globby": "13.2.2",

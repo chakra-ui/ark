@@ -7,6 +7,10 @@ import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
 
 export type CollectionItem = string | Record<string, unknown>
+// export interface UseSelectProps extends Optional<select.Context, 'id'> {
+//   defaultValue?: select.Context['selectedOption']
+// }
+// export type UseSelectReturn = select.Api
 
 export type UseSelectProps<T extends CollectionItem> = Assign<
   Optional<Omit<select.Context<T>, 'collection'>, 'id'>,

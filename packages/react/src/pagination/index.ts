@@ -1,5 +1,5 @@
 import { Pagination as PaginationRoot, type PaginationProps } from './pagination'
-import { usePaginationContext } from './pagination-context'
+import { usePaginationContext, type PaginationContext } from './pagination-context'
 import { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
 import { PaginationList, type PaginationListProps } from './pagination-list'
 import { PaginationListItem, type PaginationListItemProps } from './pagination-list-item'
@@ -36,6 +36,7 @@ export {
   usePaginationContext,
 }
 export type {
+  PaginationContext,
   PaginationEllipsisProps,
   PaginationListItemProps,
   PaginationListProps,

@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseEditableProps = Optional<editable.Context, 'id'> & {
+export interface UseEditableProps extends Optional<editable.Context, 'id'> {
   defaultValue?: editable.Context['value']
 }
 export type UseEditableReturn = editable.Api

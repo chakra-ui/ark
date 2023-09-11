@@ -49,6 +49,61 @@
       "description": "The type of the trigger element"
     }
   },
+  "PaginationContext": {
+    "getEllipsisProps": { "type": "(props: EllipsisProps) => Dict<any>", "isRequired": true },
+    "getPageTriggerProps": { "type": "(page: PageTriggerProps) => Dict<any>", "isRequired": true },
+    "isFirstPage": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the current page is the first page."
+    },
+    "isLastPage": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the current page is the last page."
+    },
+    "nextPageTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "page": { "type": "number", "isRequired": true, "description": "The current page." },
+    "pageRange": {
+      "type": "{ start: number; end: number }",
+      "isRequired": true,
+      "description": "The page range. Represented as an object with `start` and `end` properties."
+    },
+    "pages": {
+      "type": "PaginationRange",
+      "isRequired": true,
+      "description": "The page range. Represented as an array of page numbers (including ellipsis)"
+    },
+    "prevPageTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setCount": {
+      "type": "(count: number) => void",
+      "isRequired": true,
+      "description": "Function to set the total number of pages."
+    },
+    "setPage": {
+      "type": "(page: number) => void",
+      "isRequired": true,
+      "description": "Function to set the current page."
+    },
+    "setPageSize": {
+      "type": "(size: number) => void",
+      "isRequired": true,
+      "description": "Function to set the page size."
+    },
+    "slice": {
+      "type": "<T_1>(data: T_1[]) => T_1[]",
+      "isRequired": true,
+      "description": "Function to slice an array of data based on the current page."
+    },
+    "totalPages": {
+      "type": "number",
+      "isRequired": true,
+      "description": "The total number of pages."
+    },
+    "nextPage": { "type": "number", "isRequired": false, "description": "The next page." },
+    "previousPage": { "type": "number", "isRequired": false, "description": "The previous page." }
+  },
   "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
   "PaginationPageTriggerProps": {
     "type": { "type": "'page'", "isRequired": true },

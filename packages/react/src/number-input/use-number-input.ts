@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
+export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {
   defaultValue?: numberInput.Context['value']
 }
 export type UseNumberInputReturn = numberInput.Api

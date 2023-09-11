@@ -1,0 +1,6 @@
+{
+  "ToggleProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  }
+}

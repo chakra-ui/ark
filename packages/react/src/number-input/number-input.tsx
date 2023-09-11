@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
-export type NumberInputProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UseNumberInputProps>
+export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
 
 export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
   const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [

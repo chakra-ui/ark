@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/solid",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -58,6 +58,8 @@
     "@zag-js/tabs": "0.19.1",
     "@zag-js/tags-input": "0.19.1",
     "@zag-js/toast": "0.19.1",
+    "@zag-js/toggle": "0.19.1",
+    "@zag-js/toggle-group": "0.19.1",
     "@zag-js/tooltip": "0.19.1",
     "@zag-js/types": "0.19.1"
   },
@@ -77,7 +79,7 @@
     "@typescript-eslint/eslint-plugin": "6.6.0",
     "@typescript-eslint/parser": "6.6.0",
     "@vitest/coverage-v8": "0.34.3",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "globby": "13.2.2",
     "jsdom": "22.1.0",
     "react": "18.2.0",

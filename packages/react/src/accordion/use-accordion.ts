@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
+export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
   defaultValue?: accordion.Context['value']
 }
 export type UseAccordionReturn = accordion.Api

@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerAreaContext } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerAreaGradientProps = ComponentPropsWithoutRef<typeof ark.div>
+export type ColorPickerAreaGradientProps = HTMLArkProps<'div'>
 
 export const ColorPickerAreaGradient = forwardRef<HTMLDivElement, ColorPickerAreaGradientProps>(
   (props, ref) => {

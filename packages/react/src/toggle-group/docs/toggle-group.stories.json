@@ -1,0 +1,5 @@
+{
+  "Basic": "const Basic = () => {\n  return (\n    <ToggleGroup>\n      <Toggle value=\"a\">A</Toggle>\n      <Toggle value=\"b\">B</Toggle>\n      <Toggle value=\"c\">C</Toggle>\n    </ToggleGroup>\n  )\n}",
+  "Multiple": "const Multiple = () => {\n  return (\n    <ToggleGroup multiple>\n      <Toggle value=\"a\">A</Toggle>\n      <Toggle value=\"b\">B</Toggle>\n      <Toggle value=\"c\">C</Toggle>\n    </ToggleGroup>\n  )\n}",
+  "Initialvalue": "const Initialvalue = () => {\n  return (\n    <ToggleGroup defaultValue={['b']}>\n      <Toggle value=\"a\">A</Toggle>\n      <Toggle value=\"b\">B</Toggle>\n      <Toggle value=\"c\">C</Toggle>\n    </ToggleGroup>\n  )\n}"
+}

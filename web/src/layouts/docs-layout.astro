@@ -42,6 +42,6 @@ import BaseLayout from './base-layout.astro'
     })
   }
 
-  document.addEventListener('astro:beforeload', restoreScrollPosition)
-  document.addEventListener('astro:load', registerScrollEvent)
+  document.addEventListener('astro:after-swap', restoreScrollPosition)
+  document.addEventListener('astro:page-load', registerScrollEvent)
 </script>

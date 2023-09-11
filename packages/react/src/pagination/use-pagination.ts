@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UsePaginationProps = Optional<pagination.Context, 'id'> & {
+export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {
   defaultPage?: pagination.Context['page']
 }
 export type UsePaginationReturn = pagination.Api

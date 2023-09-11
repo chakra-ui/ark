@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
+export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {}
 export type UseHoverCardReturn = hoverCard.Api
 
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {

@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UsePinInputProps = Optional<pinInput.Context, 'id'> & {
+export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
   defaultValue?: pinInput.Context['value']
 }
 export type UsePinInputReturn = pinInput.Api

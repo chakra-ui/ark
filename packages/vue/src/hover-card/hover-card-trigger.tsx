@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
 export type HoverCardTriggerProps = HTMLArkProps<'button'>
@@ -9,10 +8,11 @@ export const HoverCardTrigger = defineComponent({
   name: 'HoverCardTrigger',
   setup(_, { slots, attrs }) {
     const api = useHoverCardContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'HoverCardTrigger')
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

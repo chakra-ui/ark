@@ -6,6 +6,12 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `Toggle` component
+- Added `ToggleGroup` component
+- Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type that can be used with `asChild` prop.
+
 ### Fixed
 
 - Fix issue where event callbacks that use `flushSync` did not have a stable reference, resulting in a noticable blocking re-renders.

@@ -30,13 +30,13 @@ export const Checkbox = (props: CheckboxProps) => {
     'value',
   ])
   const api = useCheckbox(useCheckboxProps)
-  const rootProps = mergeProps(() => api().rootProps, labelprops)
-
+  const mergedProps = mergeProps(() => api().rootProps, labelprops)
   const getChildren = () => runIfFn(props.children, api)
 
   return (
     <CheckboxProvider value={api}>
-      <ark.label {...rootProps}>{getChildren()}</ark.label>
+      <ark.label {...mergedProps}>{getChildren()}</ark.label>
+      <input {...api().hiddenInputProps} />
     </CheckboxProvider>
   )
 }

@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/vue'
-import { Pressable } from './pressable'
+import ComponentUnderTest from './pressable.test.vue'
 
 describe('Pressable', () => {
   it('should have the correct aria role', () => {
-    render(Pressable)
+    render(ComponentUnderTest)
     screen.getByRole('button')
   })
 })
