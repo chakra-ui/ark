@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerEyeDropperTriggerProps = HtmlArkProps<'button'>
+export type ColorPickerEyeDropperTriggerProps = HTMLArkProps<'button'>
 
 export const ColorPickerEyeDropperTrigger = forwardRef<
   HTMLButtonElement,

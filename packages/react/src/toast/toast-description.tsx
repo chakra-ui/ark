@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useToastItemContext } from './toast-item-context'
 
-export type ToastDescriptionProps = HtmlArkProps<'p'>
+export type ToastDescriptionProps = HTMLArkProps<'p'>
 
 export const ToastDescription = forwardRef<HTMLParagraphElement, ToastDescriptionProps>(
   (props, ref) => {

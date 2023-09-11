@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useSelectContext } from './select-context'
 
-export type SelectContentProps = HtmlArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type SelectContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

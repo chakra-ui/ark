@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerRowHeaderProps = HtmlArkProps<'div'>
+export type DatePickerRowHeaderProps = HTMLArkProps<'div'>
 
 export const DatePickerRowHeader = forwardRef<HTMLDivElement, DatePickerRowHeaderProps>(
   (props, ref) => {

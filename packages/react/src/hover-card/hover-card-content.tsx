@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardContentProps = HtmlArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type HoverCardContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

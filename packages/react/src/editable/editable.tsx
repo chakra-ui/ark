@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { EditableProvider, type EditableContext } from './editable-context'
 import { useEditable, type UseEditableProps } from './use-editable'
 
 export type EditableProps = Assign<
-  Omit<HtmlArkProps<'div'>, 'children'> & {
+  Omit<HTMLArkProps<'div'>, 'children'> & {
     children?: ReactNode | ((pages: EditableContext) => ReactNode)
   },
   UseEditableProps

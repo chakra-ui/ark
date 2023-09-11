@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export type ComboboxProps = Assign<Omit<HtmlArkProps<'div'>, 'children'>, UseComboboxProps> & {
+export type ComboboxProps = Assign<Omit<HTMLArkProps<'div'>, 'children'>, UseComboboxProps> & {
   children?: React.ReactNode | ((props: UseComboboxReturn) => React.ReactNode)
 }
 

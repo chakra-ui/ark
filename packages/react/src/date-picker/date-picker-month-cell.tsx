@@ -2,12 +2,12 @@ import type { CellProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { DatePickerCellProvider } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerMonthCellProps = Assign<HtmlArkProps<'div'>, CellProps>
+export type DatePickerMonthCellProps = Assign<HTMLArkProps<'div'>, CellProps>
 
 export const DatePickerMonthCell = forwardRef<HTMLDivElement, DatePickerMonthCellProps>(
   (props, ref) => {

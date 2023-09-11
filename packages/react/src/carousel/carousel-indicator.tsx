@@ -2,11 +2,11 @@ import type { SlideIndicatorProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorProps = Assign<HtmlArkProps<'button'>, SlideIndicatorProps>
+export type CarouselIndicatorProps = Assign<HTMLArkProps<'button'>, SlideIndicatorProps>
 
 export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicatorProps>(
   (props, ref) => {

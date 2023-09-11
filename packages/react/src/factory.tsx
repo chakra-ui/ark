@@ -42,7 +42,7 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
-export type HtmlArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> & {
+export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> & {
   asChild?: boolean
 }
 

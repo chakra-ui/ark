@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useToggleGroupContext } from './toggle-group-context'
 
@@ -11,7 +11,7 @@ type _ToggleProps = {
   disabled?: boolean
 }
 
-export type ToggleProps = Assign<HtmlArkProps<'button'>, _ToggleProps>
+export type ToggleProps = Assign<HTMLArkProps<'button'>, _ToggleProps>
 
 export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>((props, ref) => {
   const [toggleProps, localProps] = createSplitProps<_ToggleProps>()(props, ['value', 'disabled'])

@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectLabelProps = HtmlArkProps<'label'>
+export type SelectLabelProps = HTMLArkProps<'label'>
 
 export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>((props, ref) => {
   const { labelProps } = useSelectContext()

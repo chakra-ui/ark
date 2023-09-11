@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-export type SelectOptionGroupLabelProps = Assign<HtmlArkProps<'div'>, { htmlFor: string }>
+export type SelectOptionGroupLabelProps = Assign<HTMLArkProps<'div'>, { htmlFor: string }>
 
 export const SelectOptionGroupLabel = forwardRef<HTMLDivElement, SelectOptionGroupLabelProps>(
   (props, ref) => {

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSegmentContext } from './segment-context'
 import { useSegmentGroupContext } from './segment-group-context'
 import { parts } from './segment-group.anatomy'
 
-export type SegmentLabelProps = HtmlArkProps<'span'>
+export type SegmentLabelProps = HTMLArkProps<'span'>
 
 export const SegmentLabel = forwardRef<HTMLSpanElement, SegmentLabelProps>((props, ref) => {
   const { getRadioLabelProps } = useSegmentGroupContext()

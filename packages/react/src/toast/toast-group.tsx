@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { type Placement, type Service } from '@zag-js/toast'
 import { forwardRef, type ReactNode } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useToast } from './toast-provider'
 
 export type ToastGroupProps = Assign<
-  HtmlArkProps<'div'>,
+  HTMLArkProps<'div'>,
   {
     placement: Placement
     children?: ReactNode | ((toasts: Service[]) => ReactNode)

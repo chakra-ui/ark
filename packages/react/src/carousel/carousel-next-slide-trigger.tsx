@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselNextSlideTriggerProps = HtmlArkProps<'button'>
+export type CarouselNextSlideTriggerProps = HTMLArkProps<'button'>
 
 export const CarouselNextSlideTrigger = forwardRef<
   HTMLButtonElement,

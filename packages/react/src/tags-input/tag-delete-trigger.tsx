@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
 
@@ -12,7 +12,7 @@ type _TagProps = {
   disabled?: boolean
 }
 
-export type TagDeleteTriggerProps = Assign<HtmlArkProps<'button'>, _TagProps>
+export type TagDeleteTriggerProps = Assign<HTMLArkProps<'button'>, _TagProps>
 
 export const TagDeleteTrigger = forwardRef<HTMLButtonElement, TagDeleteTriggerProps>(
   (props, ref) => {

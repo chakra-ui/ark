@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { SliderProvider, type SliderContext } from './slider-context'
 import { useSlider, type UseSliderProps } from './use-slider'
 
 export type SliderProps = Assign<
-  Assign<HtmlArkProps<'div'>, UseSliderProps>,
+  Assign<HTMLArkProps<'div'>, UseSliderProps>,
   {
     children?: ((context: SliderContext) => ReactNode) | ReactNode
   }

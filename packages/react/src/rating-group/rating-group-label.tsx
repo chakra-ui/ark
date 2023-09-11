@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useRatingGroupContext } from './rating-group-context'
 
-export type RatingGroupLabelProps = HtmlArkProps<'label'>
+export type RatingGroupLabelProps = HTMLArkProps<'label'>
 
 export const RatingGroupLabel = forwardRef<HTMLLabelElement, RatingGroupLabelProps>(
   (props, ref) => {

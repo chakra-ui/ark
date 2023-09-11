@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
 
@@ -12,7 +12,7 @@ type _TagProps = {
   disabled?: boolean
 }
 
-export type TagProps = Assign<HtmlArkProps<'div'>, _TagProps>
+export type TagProps = Assign<HTMLArkProps<'div'>, _TagProps>
 
 export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
   const [tagProps, divProps] = createSplitProps<_TagProps>()(props, ['index', 'disabled', 'value'])

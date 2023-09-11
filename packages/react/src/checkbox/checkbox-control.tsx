@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxControlProps = HtmlArkProps<'div'>
+export type CheckboxControlProps = HTMLArkProps<'div'>
 
 export const CheckboxControl = forwardRef<HTMLDivElement, CheckboxControlProps>((props, ref) => {
   const api = useCheckboxContext()

@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarFallbackProps = HtmlArkProps<'span'>
+export type AvatarFallbackProps = HTMLArkProps<'span'>
 
 export const AvatarFallback = forwardRef<HTMLSpanElement, AvatarFallbackProps>((props, ref) => {
   const { fallbackProps } = useAvatarContext()

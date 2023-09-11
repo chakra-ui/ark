@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { parts } from './date-picker.anatomy'
 
-export type DatePickerColumnHeaderProps = HtmlArkProps<'div'>
+export type DatePickerColumnHeaderProps = HTMLArkProps<'div'>
 
 export const DatePickerColumnHeader = forwardRef<HTMLDivElement, DatePickerColumnHeaderProps>(
   (props, ref) => {

@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
-export type RadioGroupProps = Assign<HtmlArkProps<'div'>, UseRadioGroupProps>
+export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const [useRadioGroupProps, divProps] = createSplitProps<UseRadioGroupProps>()(props, [

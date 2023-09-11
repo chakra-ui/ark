@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
 
-export type RangeSliderMarkerProps = Assign<HtmlArkProps<'span'>, { value: number }>
+export type RangeSliderMarkerProps = Assign<HTMLArkProps<'span'>, { value: number }>
 
 export const RangeSliderMarker = forwardRef<HTMLSpanElement, RangeSliderMarkerProps>(
   (props, ref) => {

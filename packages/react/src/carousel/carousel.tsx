@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { CarouselProvider, type CarouselContext } from './carousel-context'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 
 export type CarouselProps = Assign<
-  HtmlArkProps<'div'> & {
+  HTMLArkProps<'div'> & {
     children?: ReactNode | ((pages: CarouselContext) => ReactNode)
   },
   UseCarouselProps

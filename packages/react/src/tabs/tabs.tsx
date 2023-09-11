@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HtmlArkProps<'div'>, UseTabsProps>
+export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [

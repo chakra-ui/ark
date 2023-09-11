@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipContentProps = HtmlArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type TooltipContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const [presenceProps, tooltipContentProps] = splitPresenceProps(props)
@@ -19,7 +19,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((p
 
 TooltipContent.displayName = 'TooltipContent'
 
-const TooltipInnerContent = forwardRef<HTMLDivElement, HtmlArkProps<'div'>>(
+const TooltipInnerContent = forwardRef<HTMLDivElement, HTMLArkProps<'div'>>(
   function TooltipInnerContent(props, ref) {
     const { contentProps } = useTooltipContext()
     const mergedProps = mergeProps(contentProps, props)

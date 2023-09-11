@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputIncrementTriggerProps = HtmlArkProps<'button'>
+export type NumberInputIncrementTriggerProps = HTMLArkProps<'button'>
 
 export const NumberInputIncrementTrigger = forwardRef<
   HTMLButtonElement,

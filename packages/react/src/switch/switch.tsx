@@ -2,14 +2,14 @@ import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
 export type SwitchProps = Assign<
-  Assign<HtmlArkProps<'label'>, UseSwitchProps>,
+  Assign<HTMLArkProps<'label'>, UseSwitchProps>,
   {
     children?: ReactNode | ((pages: UseSwitchReturn) => ReactNode)
   }

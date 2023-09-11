@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
 import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 
 export type PaginationProps = Assign<
-  Assign<HtmlArkProps<'nav'>, UsePaginationProps>,
+  Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
   {
     children?: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
   }

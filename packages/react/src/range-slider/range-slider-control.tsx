@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useRangeSliderContext } from './range-slider-context'
 
-export type RangeSliderControlProps = HtmlArkProps<'div'>
+export type RangeSliderControlProps = HTMLArkProps<'div'>
 
 export const RangeSliderControl = forwardRef<HTMLDivElement, RangeSliderControlProps>(
   (props, ref) => {

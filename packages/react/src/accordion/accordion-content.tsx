@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HtmlArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionContentProps = HtmlArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type AccordionContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
   function AccordionContent(props, ref) {
@@ -20,7 +20,7 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps
   },
 )
 
-const AccordionInnerContent = forwardRef<HTMLDivElement, HtmlArkProps<'div'>>(
+const AccordionInnerContent = forwardRef<HTMLDivElement, HTMLArkProps<'div'>>(
   function AccordionInnerContent(props, ref) {
     const api = useAccordionContext()
     const accordionItem = useAccordionItemContext()
