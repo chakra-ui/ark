@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { mergeProps } from '@zag-js/core'
-import React, { Children, cloneElement, forwardRef, isValidElement } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  type ComponentPropsWithoutRef,
+} from 'react'
 import { composeRefs } from './compose-refs'
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
