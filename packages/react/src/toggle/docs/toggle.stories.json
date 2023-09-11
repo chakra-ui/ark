@@ -1,3 +1,0 @@
-{
-  "Basic": "const Basic = () => {\n  return <Toggle onChange={(e) => console.log('e', e)}>B</Toggle>\n}"
-}

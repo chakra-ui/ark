@@ -8,8 +8,12 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added `Toggle` component
 - Added `ToggleGroup` component
+
+### Changed
+
+- Revised `Comoobox` component to support multiple selection
+- Revised `Select` component to support multiple selection
 
 ## [0.11.0] - 2023-09-08
 
