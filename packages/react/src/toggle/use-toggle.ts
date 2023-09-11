@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseToggleProps = Optional<toggle.Context, 'id'>
+export interface UseToggleProps extends Optional<toggle.Context, 'id'> {}
 export type UseToggleReturn = toggle.Api
 
 export const useToggle = (props: UseToggleProps): UseToggleReturn => {

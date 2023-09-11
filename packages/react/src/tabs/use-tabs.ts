@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseTabsProps = Optional<tabs.Context, 'id'> & {
+export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
   defaultValue?: tabs.Context['value']
 }
 export type UseTabsReturn = tabs.Api

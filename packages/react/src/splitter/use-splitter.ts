@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSplitterProps = Optional<splitter.Context, 'id'> & {
+export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {
   defaultSize?: splitter.Context['size']
 }
 

@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 
-export type UseDatePickerProps = Optional<datePicker.Context, 'id'>
+export interface UseDatePickerProps extends Optional<datePicker.Context, 'id'> {}
 export type UseDatePickerReturn = datePicker.Api
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {

@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseRatingGroupProps = Optional<ratingGroup.Context, 'id'> & {
+export interface UseRatingGroupProps extends Optional<ratingGroup.Context, 'id'> {
   defaultValue?: ratingGroup.Context['value']
 }
 export type UseRatingGroupReturn = ratingGroup.Api

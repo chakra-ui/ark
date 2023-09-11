@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseAvatarProps = Optional<avatar.Context, 'id'>
+export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
 export type UseAvatarReturn = avatar.Api
 
 export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {

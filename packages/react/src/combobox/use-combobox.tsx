@@ -3,7 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { type Optional } from '../types'
 
-export type UseComboboxProps = Optional<combobox.Context, 'id'>
+export interface UseComboboxProps extends Optional<combobox.Context, 'id'> {}
 export type UseComboboxReturn = combobox.Api
 
 export const useCombobox = (props: UseComboboxProps): UseComboboxReturn => {

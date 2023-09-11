@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id'> & {
+export interface UseRangeSliderProps extends Optional<rangeSlider.Context, 'id'> {
   defaultValue?: rangeSlider.Context['value']
 }
 export type UseRangeSliderReturn = rangeSlider.Api

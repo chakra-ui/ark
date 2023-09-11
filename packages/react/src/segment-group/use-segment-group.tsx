@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSegmentGroupProps = Optional<segmentGroup.Context, 'id'> & {
+export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {
   defaultValue?: segmentGroup.Context['value']
 }
 export type UseSegmentGroupReturn = segmentGroup.Api

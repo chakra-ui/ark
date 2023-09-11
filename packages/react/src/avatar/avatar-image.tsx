@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarImageProps = ComponentPropsWithoutRef<typeof ark.img>
+export type AvatarImageProps = HTMLArkProps<'img'>
 
 export const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const { imageProps } = useAvatarContext()

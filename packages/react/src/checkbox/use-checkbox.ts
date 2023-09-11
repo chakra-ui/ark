@@ -4,7 +4,9 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & { defaultChecked?: boolean }
+export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
+  defaultChecked?: checkbox.Context['checked']
+}
 export type UseCheckboxReturn = checkbox.Api
 
 export const useCheckbox = (props: UseCheckboxProps): UseCheckboxReturn => {

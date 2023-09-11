@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSelectProps = Optional<select.Context, 'id'> & {
+export interface UseSelectProps extends Optional<select.Context, 'id'> {
   defaultValue?: select.Context['selectedOption']
 }
 export type UseSelectReturn = select.Api

@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseToggleGroupProps = Optional<toggleGroup.Context, 'id'> & {
+export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
   defaultValue?: toggleGroup.Context['value']
 }
 export type UseToggleGroupReturn = toggleGroup.Api

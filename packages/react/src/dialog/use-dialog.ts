@@ -4,7 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseDialogProps = Optional<dialog.Context, 'id'>
+export interface UseDialogProps extends Optional<dialog.Context, 'id'> {}
 export type UseDialogReturn = dialog.Api
 
 export const useDialog = (props: UseDialogProps): UseDialogReturn => {
