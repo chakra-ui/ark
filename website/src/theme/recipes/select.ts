@@ -7,6 +7,10 @@ export const select = defineRecipe({
   className: 'select',
   description: 'A select style',
   base: parts({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
     content: {
       background: 'bg.surface',
       borderRadius: 'lg',
@@ -27,7 +31,6 @@ export const select = defineRecipe({
       transitionProperty: 'base',
       transitionDuration: '100',
       width: 'full',
-
       _disabled: {
         opacity: 0.4,
         cursor: 'not-allowed',

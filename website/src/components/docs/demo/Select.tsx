@@ -1,12 +1,10 @@
+import { select } from '@/panda/recipes'
 import {
   Portal,
   Select,
-  SelectClearTrigger,
   SelectContent,
   SelectControl,
   SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
   SelectLabel,
@@ -20,30 +18,25 @@ export const DemoSelect = () => {
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
   ]
 
   return (
-    <Select items={items}>
+    <Select items={items} className={select()}>
       <SelectLabel>Framework</SelectLabel>
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a Framework" />
         </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
       </SelectControl>
       <Portal>
-        <SelectPositioner>
+        <SelectPositioner className={select()}>
           <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
-              {items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
-              ))}
-            </SelectItemGroup>
+            {items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator>✓</SelectItemIndicator>
+              </SelectItem>
+            ))}
           </SelectContent>
         </SelectPositioner>
       </Portal>

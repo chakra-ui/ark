@@ -1,14 +1,15 @@
 'use client'
+import { select } from '@/panda/recipes'
 import {
   Portal,
   Select,
   SelectContent,
   SelectItem,
-  SelectItemIndicator,
   SelectItemText,
   SelectLabel,
   SelectPositioner,
   SelectTrigger,
+  SelectValue,
 } from '@ark-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
 import { P, match } from 'ts-pattern'
@@ -39,11 +40,11 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
       label: 'React',
       value: 'react',
     },
-    { label: 'Vue', value: 'vue' },
     {
       label: 'Solid',
       value: 'solid',
     },
+    { label: 'Vue', value: 'vue' },
   ]
 
   return (
@@ -54,16 +55,18 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
       onChange={(e) => {
         window.location.href = window.location.href.replace(defaultValue.value, e.value[0])
       }}
+      className={select()}
     >
       <SelectLabel>Framework</SelectLabel>
-      <SelectTrigger>Open</SelectTrigger>
+      <SelectTrigger>
+        <SelectValue placeholder="Select a framework" />
+      </SelectTrigger>
       <Portal>
-        <SelectPositioner>
+        <SelectPositioner className={select()}>
           <SelectContent>
             {items.map((item) => (
               <SelectItem key={item.value} item={item}>
                 <SelectItemText>{item.label}</SelectItemText>
-                <SelectItemIndicator>✓</SelectItemIndicator>
               </SelectItem>
             ))}
           </SelectContent>
