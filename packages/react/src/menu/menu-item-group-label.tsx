@@ -1,16 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
 type MenuItemGroupLabelParams = { htmlFor: string }
-export type MenuItemGroupLabelProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.label>,
-  MenuItemGroupLabelParams
->
+export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGroupLabelParams>
 
 export const MenuItemGroupLabel = forwardRef<HTMLLabelElement, MenuItemGroupLabelProps>(
   (props, ref) => {

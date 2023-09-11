@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added `Toggle` component
 - Added `ToggleGroup` component
+- Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type that can be used with `asChild` prop.
 
 ### Fixed
 

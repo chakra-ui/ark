@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useRadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 
-export type RadioControlProps = ComponentPropsWithoutRef<typeof ark.div>
+export type RadioControlProps = HTMLArkProps<'div'>
 
 export const RadioControl = forwardRef<HTMLDivElement, RadioControlProps>((props, ref) => {
   const api = useRadioGroupContext()

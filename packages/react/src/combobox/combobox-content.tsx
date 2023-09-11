@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxContentProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<PresenceProps, 'children'>
+export type ComboboxContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

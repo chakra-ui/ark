@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipArrowProps = ComponentPropsWithoutRef<typeof ark.div>
+export type TooltipArrowProps = HTMLArkProps<'div'>
 
 export const TooltipArrow = forwardRef<HTMLDivElement, TooltipArrowProps>((props, ref) => {
   const { arrowProps } = useTooltipContext()

@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderThumbProps = ComponentPropsWithoutRef<typeof ark.div>
+export type SliderThumbProps = HTMLArkProps<'div'>
 
 export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, ref) => {
   const api = useSliderContext()

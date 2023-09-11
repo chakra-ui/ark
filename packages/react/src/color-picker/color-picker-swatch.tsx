@@ -1,16 +1,13 @@
 import type { ColorSwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
-export type ColorPickerSwatchProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.button>,
-  ColorSwatchProps
->
+export type ColorPickerSwatchProps = Assign<HTMLArkProps<'button'>, ColorSwatchProps>
 
 export const ColorPickerSwatch = forwardRef<HTMLButtonElement, ColorPickerSwatchProps>(
   (props, ref) => {

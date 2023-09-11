@@ -1,12 +1,12 @@
 import type { OptionProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxOptionProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, OptionProps>
+export type ComboboxOptionProps = Assign<HTMLArkProps<'div'>, OptionProps>
 
 export const ComboboxOption = forwardRef<HTMLDivElement, ComboboxOptionProps>((props, ref) => {
   const [optionProps, { children, ...liProps }] = createSplitProps<OptionProps>()(props, [

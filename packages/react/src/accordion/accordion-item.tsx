@@ -1,8 +1,8 @@
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
@@ -10,7 +10,7 @@ import { AccordionItemProvider } from './accordion-item-context'
 
 export type AccordionItemProps = ItemProps &
   Assign<
-    ComponentPropsWithoutRef<typeof ark.div>,
+    HTMLArkProps<'div'>,
     {
       children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
     }

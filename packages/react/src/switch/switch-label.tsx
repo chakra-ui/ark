@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchLabelProps = ComponentPropsWithoutRef<typeof ark.span>
+export type SwitchLabelProps = HTMLArkProps<'span'>
 
 export const SwitchLabel = forwardRef<HTMLSpanElement, SwitchLabelProps>((props, ref) => {
   const { labelProps } = useSwitchContext()

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useToggle, type UseToggleProps } from './use-toggle'
 
-export type ToggleProps = Assign<ComponentPropsWithoutRef<typeof ark.button>, UseToggleProps>
+export type ToggleProps = Assign<HTMLArkProps<'button'>, UseToggleProps>
 
 export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>((props, ref) => {
   const [useToggleProps, divProps] = createSplitProps<UseToggleProps>()(props, [

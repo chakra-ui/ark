@@ -1,15 +1,12 @@
 import type { OptionGroupLabelProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxOptionGroupLabelProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.div>,
-  OptionGroupLabelProps
->
+export type ComboboxOptionGroupLabelProps = Assign<HTMLArkProps<'div'>, OptionGroupLabelProps>
 
 export const ComboboxOptionGroupLabel = forwardRef<HTMLDivElement, ComboboxOptionGroupLabelProps>(
   (props, ref) => {
