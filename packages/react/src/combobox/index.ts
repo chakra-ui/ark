@@ -1,16 +1,19 @@
+import type { CollectionItem } from '../types'
 import { Combobox as ComboboxRoot, type ComboboxProps } from './combobox'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
 import { useComboboxContext, type ComboboxContext } from './combobox-context'
 import { ComboboxControl, type ComboboxControlProps } from './combobox-control'
 import { ComboboxInput, type ComboboxInputProps } from './combobox-input'
-import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
-import { ComboboxOption, type ComboboxOptionProps } from './combobox-option'
-import { ComboboxOptionGroup, type ComboboxOptionGroupProps } from './combobox-option-group'
+import { ComboboxItem, type ComboboxItemProps } from './combobox-item'
+import { ComboboxItemGroup, type ComboboxItemGroupProps } from './combobox-item-group'
 import {
-  ComboboxOptionGroupLabel,
-  type ComboboxOptionGroupLabelProps,
-} from './combobox-option-group-label'
+  ComboboxItemGroupLabel,
+  type ComboboxItemGroupLabelProps,
+} from './combobox-item-group-label'
+import { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combobox-item-indicator'
+import { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text'
+import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
 import { comboboxAnatomy } from './combobox.anatomy'
@@ -21,10 +24,12 @@ const Combobox = Object.assign(ComboboxRoot, {
   Content: ComboboxContent,
   Control: ComboboxControl,
   Input: ComboboxInput,
+  Item: ComboboxItem,
+  ItemGroup: ComboboxItemGroup,
+  ItemGroupLabel: ComboboxItemGroupLabel,
+  ItemIndicator: ComboboxItemIndicator,
+  ItemText: ComboboxItemText,
   Label: ComboboxLabel,
-  Option: ComboboxOption,
-  OptionGroup: ComboboxOptionGroup,
-  OptionGroupLabel: ComboboxOptionGroupLabel,
   Positioner: ComboboxPositioner,
   Trigger: ComboboxTrigger,
 })
@@ -35,25 +40,30 @@ export {
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
-  ComboboxOption,
-  ComboboxOptionGroup,
-  ComboboxOptionGroupLabel,
   ComboboxPositioner,
   ComboboxTrigger,
   comboboxAnatomy,
   useComboboxContext,
 }
 export type {
+  CollectionItem,
   ComboboxClearTriggerProps,
   ComboboxContentProps,
   ComboboxContext,
   ComboboxControlProps,
   ComboboxInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
+  ComboboxItemTextProps,
   ComboboxLabelProps,
-  ComboboxOptionGroupLabelProps,
-  ComboboxOptionGroupProps,
-  ComboboxOptionProps,
   ComboboxPositionerProps,
   ComboboxProps,
   ComboboxTriggerProps,

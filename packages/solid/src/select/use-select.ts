@@ -1,18 +1,33 @@
+import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
+import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import { type CollectionItem, type Optional } from '../types'
 
-export type UseSelectProps = Optional<select.Context, 'id'>
-export type UseSelectReturn = Accessor<select.Api<PropTypes>>
+export interface UseSelectProps<T extends CollectionItem>
+  extends CollectionOptions<T>,
+    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {}
 
-export const useSelect = (props: UseSelectProps): UseSelectReturn => {
+export type UseSelectReturn<T extends CollectionItem> = Accessor<select.Api<PropTypes, T>>
+
+export const useSelect = <T extends CollectionItem>(
+  props: UseSelectProps<T>,
+): UseSelectReturn<T> => {
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+    'isItemDisabled',
+    'itemToValue',
+    'itemToString',
+    'items',
+  ])
+  const collection = select.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps({ id: createUniqueId(), getRootNode, collection }, rest)
+
   const [state, send] = useMachine(select.machine(context), {
     context,
   })
 
-  return createMemo(() => select.connect(state, send, normalizeProps))
+  return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
 }

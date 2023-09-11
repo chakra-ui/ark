@@ -3,45 +3,43 @@ import {
   Portal,
   Select,
   SelectContent,
-  SelectOption,
+  SelectControl,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
   SelectPositioner,
   SelectTrigger,
+  SelectValue,
 } from '@ark-ui/react'
-import { FiChevronDown } from 'react-icons/fi'
 
-export const DemoSelect = () => (
-  <Select positioning={{ gutter: 4 }}>
-    {({ selectedOption, isOpen }) => (
-      <>
-        <SelectTrigger asChild>
-          <button className={select()}>
-            <span>{selectedOption?.label ?? 'Select option'}</span>
-            <SelectIcon isOpen={isOpen} />
-          </button>
+export const DemoSelect = () => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+  ]
+
+  return (
+    <Select items={items} className={select()}>
+      <SelectLabel>Framework</SelectLabel>
+      <SelectControl>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a Framework" />
         </SelectTrigger>
-        <Portal>
-          <SelectPositioner className={select()}>
-            <SelectContent>
-              <SelectOption value="react" label="React" />
-              <SelectOption value="solid" label="Solid">
-                Solid
-              </SelectOption>
-              <SelectOption value="vue" label="Vue">
-                Vue
-              </SelectOption>
-            </SelectContent>
-          </SelectPositioner>
-        </Portal>
-      </>
-    )}
-  </Select>
-)
-
-const SelectIcon = (props: { isOpen: boolean }) => {
-  const iconStyles = {
-    transform: props.isOpen ? 'rotate(-180deg)' : undefined,
-    transition: 'transform 0.2s',
-    transformOrigin: 'center',
-  }
-  return <FiChevronDown style={iconStyles} />
+      </SelectControl>
+      <Portal>
+        <SelectPositioner className={select()}>
+          <SelectContent>
+            {items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator>✓</SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
+    </Select>
+  )
 }

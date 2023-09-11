@@ -15,11 +15,6 @@
       "isRequired": false,
       "description": "Whether the switch is disabled."
     },
-    "focusable": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true` and `disabled` is passed, the switch will\nremain tabbable but not interactive"
-    },
     "form": {
       "type": "string",
       "isRequired": false,

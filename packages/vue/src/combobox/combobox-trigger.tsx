@@ -1,6 +1,5 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxTriggerProps = HTMLArkProps<'button'>
@@ -9,10 +8,10 @@ export const ComboboxTrigger = defineComponent({
   setup(_, { slots, attrs }) {
     const api = useComboboxContext()
 
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'ComboboxTrigger')
-
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

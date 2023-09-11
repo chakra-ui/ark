@@ -6,8 +6,8 @@ import { useSelectContext } from './select-context'
 export type SelectTriggerProps = HTMLArkProps<'button'>
 
 export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>((props, ref) => {
-  const { triggerProps } = useSelectContext()
-  const mergedProps = mergeProps(triggerProps, props)
+  const api = useSelectContext()
+  const mergedProps = mergeProps(api.triggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

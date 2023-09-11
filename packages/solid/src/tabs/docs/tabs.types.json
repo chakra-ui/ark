@@ -31,17 +31,12 @@
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
     "onChange": {
-      "type": "(details: { value: string | null }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Callback to be called when the selected/active tab changes"
     },
-    "onDelete": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "Callback to be called when a tab's close button is clicked"
-    },
     "onFocus": {
-      "type": "(details: { value: string | null }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Callback to be called when the focused tab changes"
     },

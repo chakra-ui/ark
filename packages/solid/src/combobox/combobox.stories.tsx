@@ -1,4 +1,4 @@
-import { For, createSignal } from 'solid-js'
+import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import {
@@ -7,15 +7,15 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+  ComboboxItemText,
   ComboboxLabel,
-  ComboboxOption,
-  ComboboxOptionGroup,
-  ComboboxOptionGroupLabel,
   ComboboxPositioner,
   ComboboxTrigger,
-  type ComboboxOptionProps,
-  type ComboboxProps,
 } from '.'
+import { ComboboxItemIndicator } from './combobox-item-indicator'
 import './combobox.css'
 
 const meta: Meta = {
@@ -24,53 +24,30 @@ const meta: Meta = {
 
 export default meta
 
-const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
-  { label: 'ReactJS', value: 'react' },
-  { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue' },
-  { label: 'AngularJS', value: 'angular', disabled: true },
-]
-
 export const Basic = () => {
-  const [options, setOptions] = createSignal(comboboxData)
-
-  const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
-    const filtered = comboboxData.filter((item) =>
-      item.label.toLowerCase().includes(value.toLowerCase()),
-    )
-    setOptions(filtered.length > 0 ? filtered : comboboxData)
-  }
-
+  const items = ['React', 'Solid', 'Vue']
   return (
-    <Combobox
-      onOpen={() => {
-        setOptions(comboboxData)
-      }}
-      onInputChange={handleInputChange}
-    >
-      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+    <Combobox items={items}>
+      <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>▼</ComboboxTrigger>
+        <ComboboxTrigger>Open</ComboboxTrigger>
         <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
-            <ComboboxOptionGroup id="framework">
-              <ComboboxOptionGroupLabel htmlFor="framework">Frameworks</ComboboxOptionGroupLabel>
-              <For each={options()}>
-                {(option) => (
-                  <ComboboxOption
-                    label={option.label}
-                    value={option.value}
-                    disabled={option?.disabled}
-                  >
-                    {option.label}
-                  </ComboboxOption>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              <For each={items}>
+                {(item) => (
+                  <ComboboxItem item={item}>
+                    <ComboboxItemText>{item}</ComboboxItemText>
+                    <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                  </ComboboxItem>
                 )}
               </For>
-            </ComboboxOptionGroup>
+            </ComboboxItemGroup>
           </ComboboxContent>
         </ComboboxPositioner>
       </Portal>

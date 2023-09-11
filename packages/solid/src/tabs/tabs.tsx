@@ -16,7 +16,6 @@ export const Tabs = (props: TabsProps) => {
     'ids',
     'loop',
     'onChange',
-    'onDelete',
     'onFocus',
     'orientation',
     'translations',

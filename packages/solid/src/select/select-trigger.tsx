@@ -6,6 +6,7 @@ export type SelectTriggerProps = HTMLArkProps<'button'>
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
   const api = useSelectContext()
-  const triggerProps = mergeProps(() => api().triggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => api().triggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

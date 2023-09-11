@@ -40,14 +40,6 @@ describe('Switch', () => {
     expect(onChange).not.toHaveBeenCalled()
   })
 
-  it('should be focusable even if disabled but focusable is true', async () => {
-    render(<ComponentUnderTest disabled focusable />)
-    const switchControl = screen.getByRole('checkbox')
-
-    await user.tab()
-    expect(switchControl).toHaveFocus()
-  })
-
   it('should show invalid attribute when invalid', async () => {
     render(<ComponentUnderTest invalid />)
     const switchControl = screen.getByRole('checkbox')

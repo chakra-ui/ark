@@ -13,13 +13,12 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
     'value',
     'disabled',
     'invalid',
-    'readOnly',
   ])
   const api = useRadioGroupContext()
   const mergedProps = mergeProps(api.getRadioProps(radioProps), localProps)
 
   return (
-    <RadioProvider value={radioProps}>
+    <RadioProvider value={props}>
       <ark.label {...mergedProps} ref={ref} />
       <input {...api.getRadioHiddenInputProps(radioProps)} />
     </RadioProvider>

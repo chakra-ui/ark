@@ -1,20 +1,18 @@
-import { defineComponent, h } from 'vue'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-/** This type is here so that the script 'check-exports' passes
- *  because in Vue we don't pass 'children' as props
- */
-export type SelectTriggerProps = Record<string, unknown>
+export type SelectTriggerProps = HTMLArkProps<'button'>
 
-export const SelectTrigger = defineComponent<SelectTriggerProps>({
+export const SelectTrigger = defineComponent({
   name: 'SelectTrigger',
   setup(_, { slots, attrs }) {
     const api = useSelectContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'SelectTrigger')
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

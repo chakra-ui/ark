@@ -2,9 +2,10 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
+import type { Assign } from '../types'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type PopoverContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

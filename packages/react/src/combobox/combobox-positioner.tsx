@@ -7,8 +7,8 @@ export type ComboboxPositionerProps = HTMLArkProps<'div'>
 
 export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(
   (props, ref) => {
-    const { positionerProps } = useComboboxContext()
-    const mergedProps = mergeProps(positionerProps, props)
+    const api = useComboboxContext()
+    const mergedProps = mergeProps(api.positionerProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -1,66 +1,68 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
+import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider, type ComboboxContext } from './combobox-context'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 
-export type ComboboxProps = Assign<
+export type ComboboxProps<T extends CollectionItem> = Assign<
   HTMLArkProps<'div'>,
-  UseComboboxProps & {
-    children: JSX.Element | ((context: ComboboxContext) => JSX.Element)
-  }
->
+  UseComboboxProps<T>
+> & {
+  children?: JSX.Element | ((context: ComboboxContext<T>) => JSX.Element)
+}
 
-export const Combobox = (props: ComboboxProps) => {
-  const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps>()(props, [
+export const Combobox = <T extends CollectionItem>(props: ComboboxProps<T>) => {
+  const [selectProps, localProps] = createSplitProps<UseComboboxProps<T>>()(props, [
     'allowCustomValue',
-    'ariaHidden',
     'autoFocus',
-    'blurOnSelect',
+    'closeOnSelect',
     'dir',
     'disabled',
-    'focusOnClear',
     'form',
     'getRootNode',
+    'highlightedValue',
     'id',
     'ids',
     'inputBehavior',
     'inputValue',
+    'inputValue',
     'invalid',
-    'isCustomValue',
+    'isItemDisabled',
+    'items',
+    'itemToString',
+    'itemToValue',
     'loop',
+    'multiple',
     'name',
+    'onChange',
     'onClose',
     'onFocusOutside',
     'onHighlight',
     'onInputChange',
     'onInputChange',
     'onInteractOutside',
-    'onInteractOutside',
     'onOpen',
     'onPointerDownOutside',
-    'onSelect',
     'openOnClick',
     'placeholder',
     'positioning',
     'readOnly',
     'selectionBehavior',
-    'selectionData',
-    'selectOnTab',
+    'selectOnBlur',
     'translations',
+    'value',
   ])
 
-  const combobox = useCombobox(useComboboxProps)
-  const rootProps = mergeProps(() => combobox().rootProps, localProps)
-
-  const getChildren = () => runIfFn(localProps.children, combobox)
+  const api = useCombobox(selectProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
-    <ComboboxProvider value={combobox}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+    <ComboboxProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </ComboboxProvider>
   )
 }

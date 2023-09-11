@@ -18,7 +18,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     'ids',
     'loop',
     'onChange',
-    'onDelete',
     'onFocus',
     'orientation',
     'translations',

@@ -11,12 +11,7 @@
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
     },
-    "modelValue": { "type": "string", "isRequired": false },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio will be readonly"
-    }
+    "modelValue": { "type": "string", "isRequired": false }
   },
   "RadioGroupProps": {
     "dir": {
@@ -64,11 +59,6 @@
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "Orientation of the radio group"
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio group will be readonly"
     },
     "value": {
       "type": "string",

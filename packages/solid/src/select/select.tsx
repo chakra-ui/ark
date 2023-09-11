@@ -1,46 +1,58 @@
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import type { Assign, CollectionItem } from '../types'
 import { SelectProvider, type SelectContext } from './select-context'
 import { useSelect, type UseSelectProps } from './use-select'
 
-export type SelectProps = Assign<
-  UseSelectProps,
-  {
-    children?: JSX.Element | ((context: SelectContext) => JSX.Element)
-  }
->
+export type SelectProps<T extends CollectionItem> = Assign<
+  HTMLArkProps<'div'>,
+  UseSelectProps<T>
+> & {
+  children?: JSX.Element | ((context: SelectContext<T>) => JSX.Element)
+}
 
-export const Select = (props: SelectProps) => {
-  const [selectParams, restProps] = createSplitProps<UseSelectProps>()(props, [
+export const Select = <T extends CollectionItem>(props: SelectProps<T>) => {
+  const [selectProps, localProps] = createSplitProps<UseSelectProps<T>>()(props, [
     'closeOnSelect',
     'dir',
     'disabled',
     'form',
     'getRootNode',
-    'highlightedOption',
+    'highlightedValue',
     'id',
     'ids',
     'invalid',
+    'isItemDisabled',
+    'items',
+    'itemToString',
+    'itemToValue',
     'loop',
+    'multiple',
     'name',
     'onChange',
     'onClose',
     'onFocusOutside',
     'onHighlight',
     'onInteractOutside',
-    'onInteractOutside',
     'onOpen',
     'onPointerDownOutside',
+    'open',
     'positioning',
     'readOnly',
-    'selectedOption',
-    'selectOnTab',
+    'selectOnBlur',
+    'value',
   ])
 
-  const api = useSelect(selectParams)
-  const getChildren = () => runIfFn(restProps.children, api)
+  const api = useSelect(selectProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return <SelectProvider value={api}>{getChildren()}</SelectProvider>
+  return (
+    <SelectProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+    </SelectProvider>
+  )
 }

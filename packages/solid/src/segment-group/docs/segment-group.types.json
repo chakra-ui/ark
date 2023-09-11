@@ -10,11 +10,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio will be readonly"
     }
   },
   "SegmentGroupProps": {
@@ -62,11 +57,6 @@
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "Orientation of the radio group"
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio group will be readonly"
     },
     "value": {
       "type": "string",

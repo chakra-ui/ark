@@ -20,7 +20,6 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, re
     'name',
     'onChange',
     'orientation',
-    'readOnly',
     'value',
   ])
   const radioGroup = useRadioGroup(useRadioGroupProps)

@@ -7,6 +7,7 @@ import { type Optional } from '../types'
 export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
   defaultValue?: accordion.Context['value']
 }
+
 export type UseAccordionReturn = accordion.Api
 
 export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {

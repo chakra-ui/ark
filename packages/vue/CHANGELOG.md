@@ -12,7 +12,9 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Revised `Combobox` component
 - Revised `Pressable` component
+- Revised `Select` component
 
 ## [0.8.0] - 2023-09-08
 
@@ -28,6 +30,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Accordion` component
 - Revised `Carousel` component
 - Revised `ColorPicker` component
+- Revised `NumberInput` component
 - Revised `HoverCard` component
 - Revised `Pagination` component
 - Revised `RangeSlider` component

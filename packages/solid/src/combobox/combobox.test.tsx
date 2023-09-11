@@ -1,49 +1,60 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
 import {
   Combobox,
+  ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
-  ComboboxOption,
   ComboboxPositioner,
   ComboboxTrigger,
-  type ComboboxOptionProps,
   type ComboboxProps,
 } from '.'
+import type { Optional } from '../types'
 
-const ComponentUnderTest = (props: Omit<ComboboxProps, 'children'>) => {
-  const options: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
-    { label: 'ReactJS', value: 'react' },
-    { label: 'SolidJS', value: 'solid' },
-    { label: 'VueJS', value: 'vue', disabled: true },
-    { label: 'AngularJS', value: 'angular' },
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
   ]
-
   return (
-    <Combobox {...props}>
-      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+    <Combobox items={items} {...props}>
+      <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger data-testid="trigger-btn">▼</ComboboxTrigger>
+        <ComboboxTrigger data-testid="trigger">Open</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
-            <For each={options}>
-              {(option) => (
-                <ComboboxOption
-                  label={option.label}
-                  value={option.value}
-                  disabled={option?.disabled}
-                >
-                  {option.label}
-                </ComboboxOption>
-              )}
-            </For>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              <For each={items}>
+                {(item) => (
+                  <ComboboxItem item={item}>
+                    <ComboboxItemText>{item.label}</ComboboxItemText>
+                    <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                  </ComboboxItem>
+                )}
+              </For>
+            </ComboboxItemGroup>
           </ComboboxContent>
         </ComboboxPositioner>
       </Portal>
@@ -58,31 +69,48 @@ describe('Combobox', () => {
 
   it('should show options on click', async () => {
     render(() => <ComponentUnderTest />)
-    expect(screen.getByRole('option', { hidden: true, name: 'ReactJS' })).not.toBeVisible()
+    expect(screen.getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
+    user.click(screen.getByTestId('trigger'))
 
-    await user.click(screen.getByTestId('trigger-btn'))
-    expect(screen.getByRole('option', { name: 'ReactJS' })).toBeVisible()
+    waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
   })
 
-  it('should show a disabled option', async () => {
+  it('should handle item selection', async () => {
     render(() => <ComponentUnderTest />)
-    expect(screen.getByRole('option', { hidden: true, name: 'ReactJS' })).not.toBeVisible()
 
-    await user.click(screen.getByTestId('trigger-btn'))
-    expect(screen.getByRole('option', { name: 'VueJS' })).toHaveAttribute('aria-disabled', 'true')
+    user.click(screen.getByTestId('trigger'))
+    await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
+
+    user.click(screen.getByRole('option', { name: 'React' }))
+
+    await waitFor(() => expect(screen.getByRole('combobox')).toHaveValue('React'))
   })
 
-  it('should call onInputChange when value changes', async () => {
-    const onInputChange = vi.fn()
+  it('should call onChange when item is selected', async () => {
+    const onChange = vi.fn()
+    render(() => <ComponentUnderTest onChange={onChange} />)
 
-    render(() => <ComponentUnderTest onInputChange={onInputChange} />)
+    user.click(screen.getByTestId('trigger'))
+    await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    const TEST_VAL = 'react'
+    user.click(screen.getByRole('option', { name: 'React' }))
 
-    const inputField = screen.getByRole('combobox')
-    await user.type(inputField, TEST_VAL)
-    expect(inputField).toHaveValue(TEST_VAL)
-    expect(onInputChange).toBeCalledWith({ value: TEST_VAL })
-    expect(onInputChange).toBeCalledTimes(TEST_VAL.length)
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should open menu when onOpen is called', async () => {
+    const onOpen = vi.fn()
+    render(() => <ComponentUnderTest onOpen={onOpen} />)
+    user.click(screen.getByTestId('trigger'))
+    await waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+  })
+
+  it('should be read-only when readOnly is true', async () => {
+    render(() => <ComponentUnderTest readOnly />)
+    user.click(screen.getByTestId('trigger'))
+
+    await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 })

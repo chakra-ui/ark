@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { useState } from 'react'
 import { Portal } from '..'
 import {
   Combobox,
@@ -7,14 +6,14 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
-  ComboboxOption,
-  ComboboxOptionGroup,
-  ComboboxOptionGroupLabel,
   ComboboxPositioner,
   ComboboxTrigger,
-  type ComboboxOptionProps,
-  type ComboboxProps,
 } from './'
 import './combobox.css'
 
@@ -27,57 +26,70 @@ const meta: Meta<ComboboxType> = {
 
 export default meta
 
-const comboboxData: Pick<ComboboxOptionProps, 'label' | 'value' | 'disabled'>[] = [
-  { label: 'ReactJS', value: 'react' },
-  { label: 'SolidJS', value: 'solid' },
-  { label: 'VueJS', value: 'vue' },
-  { label: 'AngularJS', value: 'angular', disabled: true },
-]
-
 export const Basic = () => {
-  const [options, setOptions] = useState(comboboxData)
-
-  const handleInputChange: ComboboxProps['onInputChange'] = ({ value }) => {
-    const filtered = comboboxData.filter((item) =>
-      item.label.toLowerCase().includes(value.toLowerCase()),
-    )
-    setOptions(filtered.length > 0 ? filtered : comboboxData)
-  }
-
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
   return (
-    <Combobox onInputChange={handleInputChange}>
-      {({ isInputValueEmpty, isOpen }) => (
-        <>
-          <ComboboxLabel>JS Frameworks</ComboboxLabel>
-          <ComboboxControl>
-            <ComboboxInput />
-            <ComboboxTrigger>▼</ComboboxTrigger>
-            <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-          </ComboboxControl>
-          {isInputValueEmpty && !isOpen && <div>Give me you favorite framework!</div>}
-          <Portal>
-            <ComboboxPositioner>
-              <ComboboxContent>
-                <ComboboxOptionGroup id="framework">
-                  <ComboboxOptionGroupLabel htmlFor="framework">
-                    Frameworks
-                  </ComboboxOptionGroupLabel>
-                  {options.map((item, index) => (
-                    <ComboboxOption
-                      key={`${item.value}:${index}`}
-                      label={item.label}
-                      value={item.value}
-                      disabled={item?.disabled}
-                    >
-                      {item.label}
-                    </ComboboxOption>
-                  ))}
-                </ComboboxOptionGroup>
-              </ComboboxContent>
-            </ComboboxPositioner>
-          </Portal>
-        </>
-      )}
+    <Combobox items={items}>
+      <ComboboxLabel>Framework</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>Open</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              {items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
+    </Combobox>
+  )
+}
+
+export const Multiple = () => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
+  return (
+    <Combobox items={items} multiple>
+      <ComboboxLabel>Framework</ComboboxLabel>
+      <ComboboxControl>
+        <ComboboxInput />
+        <ComboboxTrigger>Open</ComboboxTrigger>
+        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
+      </ComboboxControl>
+      <Portal>
+        <ComboboxPositioner>
+          <ComboboxContent>
+            <ComboboxItemGroup id="framework">
+              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+              {items.map((item) => (
+                <ComboboxItem key={item.value} item={item}>
+                  <ComboboxItemText>{item.label}</ComboboxItemText>
+                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                </ComboboxItem>
+              ))}
+            </ComboboxItemGroup>
+          </ComboboxContent>
+        </ComboboxPositioner>
+      </Portal>
     </Combobox>
   )
 }

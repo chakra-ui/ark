@@ -2,9 +2,10 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
+import type { Assign } from '../types'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipContentProps = HTMLArkProps<'div'> & Omit<PresenceProps, 'children'>
+export type TooltipContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const [presenceProps, tooltipContentProps] = splitPresenceProps(props)

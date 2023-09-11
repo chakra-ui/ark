@@ -13,10 +13,6 @@ export type RadioContext = {
    */
   disabled?: boolean
   /**
-   * If `true`, the radio will be readonly
-   */
-  readOnly?: boolean
-  /**
    * If `true`, the radio is marked as invalid.
    */
   invalid?: boolean
@@ -39,9 +35,6 @@ const VueProps = createVueProps<RadioProps>({
   },
   invalid: {
     type: Boolean as PropType<RadioProps['invalid']>,
-  },
-  readOnly: {
-    type: Boolean as PropType<RadioProps['readOnly']>,
   },
 })
 

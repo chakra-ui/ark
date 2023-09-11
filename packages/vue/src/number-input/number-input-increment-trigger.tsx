@@ -1,16 +1,18 @@
-import { defineComponent, h, type DefineComponent } from 'vue'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputIncrementTriggerProps = DefineComponent
+export type NumberInputIncrementTriggerProps = HTMLArkProps<'button'>
+
 export const NumberInputIncrementTrigger = defineComponent({
   name: 'NumberInputIncrementTrigger',
   setup(_, { slots, attrs }) {
     const api = useNumberInputContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'NumberInputIncrementTrigger')
 
-      return h(DefaultSlot, { ...api.value.incrementTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.incrementTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

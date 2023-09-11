@@ -1,25 +1,42 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
+import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
+import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import { type CollectionItem, type Optional } from '../types'
 
-export interface UseSelectProps extends Optional<select.Context, 'id'> {
-  defaultValue?: select.Context['selectedOption']
+export interface UseSelectProps<T extends CollectionItem>
+  extends CollectionOptions<T>,
+    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {
+  defaultValue?: select.Context<T>['value']
 }
-export type UseSelectReturn = select.Api
 
-export const useSelect = (props: UseSelectProps): UseSelectReturn => {
+export type UseSelectReturn<T extends CollectionItem> = select.Api<PropTypes, T>
+
+export const useSelect = <T extends CollectionItem>(
+  props: UseSelectProps<T>,
+): UseSelectReturn<T> => {
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+    'isItemDisabled',
+    'itemToValue',
+    'itemToString',
+    'items',
+  ])
+  const collection = select.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
+
   const initialContext = {
     id: useId(),
     getRootNode,
-    ...props,
-    selectedOption: props.defaultValue,
+    collection,
+    ...rest,
+    value: props.defaultValue,
   }
   const context = {
     ...initialContext,
-    selectedOption: props.selectedOption,
+    collection,
+    value: props.value,
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {

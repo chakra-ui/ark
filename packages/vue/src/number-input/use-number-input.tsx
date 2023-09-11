@@ -1,41 +1,44 @@
-import { connect, machine } from '@zag-js/number-input'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as numberInput from '@zag-js/number-input'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { useId } from '../utils'
-import type { NumberInputContext } from './number-input'
+import type { Optional } from '../types'
+import { generateEventMap, useId } from '../utils'
+import { emits } from './number-input.props'
 
-export const useNumberInput = <T extends ExtractPropTypes<NumberInputContext>>(
+export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
+  modelValue?: numberInput.Context['value']
+}
+export type UseNumberInputReturn = ComputedRef<numberInput.Api<PropTypes>>
+
+export const useNumberInput = (
+  props: UseNumberInputProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseNumberInputReturn => {
   const getRootNode = useEnvironmentContext()
+  const eventMap = generateEventMap(emits, emit)
+
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    numberInput.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
-      onBlur(details) {
-        emit('blur', details)
-      },
-      onChange(details) {
-        emit('change', details)
+      ...eventMap,
+      onChange: (details) => {
+        emit('change', details.value)
         emit('update:modelValue', details.value)
       },
-      onFocus(details) {
-        emit('focus', details)
-      },
-      onInvalid(details) {
-        emit('invalid', details)
-      },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => numberInput.connect(state.value, send, normalizeProps))
 }
-
-export type UseNumberInputReturn = ReturnType<typeof connect>

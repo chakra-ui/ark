@@ -1,65 +1,133 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Portal } from '@zag-js/react'
+import { vi } from 'vitest'
+import type { Optional } from '../types'
 import {
   Select,
+  SelectClearTrigger,
   SelectContent,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
   SelectLabel,
-  SelectOption,
   SelectPositioner,
   SelectTrigger,
+  SelectValue,
   type SelectProps,
 } from './'
+import { SelectControl } from './select-control'
 
-const ComponentUnderTest = (props: SelectProps) => {
-  const options = [
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
+  const items = [
     { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
-    { label: 'Angular', value: 'angular' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
   ]
-
   return (
-    <Select {...props}>
-      {({ selectedOption }) => (
-        <>
-          <SelectLabel>Framework:</SelectLabel>
-          <SelectTrigger>{selectedOption?.label ?? 'Select option'}</SelectTrigger>
-          <Portal>
-            <SelectPositioner>
-              <SelectContent>
-                {options.map((option, id) => (
-                  <SelectOption key={id} {...option}>
-                    <span>{option.label}</span>
-                    {option.value === selectedOption?.value && '✓'}
-                  </SelectOption>
-                ))}
-              </SelectContent>
-            </SelectPositioner>
-          </Portal>
-        </>
-      )}
+    <Select items={items} {...props}>
+      <SelectLabel>Framework</SelectLabel>
+      <SelectControl>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a Framework" />
+        </SelectTrigger>
+        <SelectClearTrigger>Clear</SelectClearTrigger>
+      </SelectControl>
+      <Portal>
+        <SelectPositioner>
+          <SelectContent>
+            <SelectItemGroup id="framework">
+              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+              {items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator>✓</SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
     </Select>
   )
 }
-
 describe('Select', () => {
   it('should render', async () => {
     render(<ComponentUnderTest />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    expect(trigger).toBeInTheDocument()
   })
 
-  it('should show options on click', async () => {
+  it('should handle item selection', async () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()
-    await user.click(screen.getByText('Select option'))
-    expect(screen.getByRole('option', { name: 'Angular' })).toBeVisible()
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+
+    const item = screen.getByText('React')
+    user.click(item)
+    waitFor(() => expect(trigger).toHaveTextContent('React'))
   })
 
-  it('should allow to select a option', async () => {
+  it('should close on select', async () => {
     render(<ComponentUnderTest />)
-    expect(screen.getByRole('option', { hidden: true, name: 'Angular' })).not.toBeVisible()
-    await user.click(screen.getByText('Select option'))
-    await user.click(screen.getByRole('option', { name: 'Angular' }))
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+    const item = screen.getByText('React')
+    user.click(item)
+    waitFor(() => expect(screen.queryByText('Frameworks')).not.toBeVisible())
+  })
 
-    expect(screen.queryByText('Select option')).not.toBeInTheDocument()
+  it('should be disabled when disabled is true', async () => {
+    render(<ComponentUnderTest disabled />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+
+    expect(trigger).toBeDisabled()
+  })
+
+  it('should handle multiple selection', async () => {
+    render(<ComponentUnderTest multiple />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+    const itemReact = screen.getByText('React')
+    const itemVue = screen.getByText('Vue')
+    user.click(itemReact)
+    user.click(itemVue)
+    waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
+  })
+
+  it('should call onChange when item is selected', async () => {
+    const onChange = vi.fn()
+    render(<ComponentUnderTest onChange={onChange} />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+    const item = screen.getByText('React')
+    user.click(item)
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should open menu when onOpen is called', async () => {
+    const onOpen = vi.fn()
+    render(<ComponentUnderTest onOpen={onOpen} />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+    waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+  })
+
+  it('should be read-only when readOnly is true', async () => {
+    render(<ComponentUnderTest readOnly />)
+    const trigger = screen.getByRole('button', { name: 'Framework' })
+    user.click(trigger)
+    waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 })

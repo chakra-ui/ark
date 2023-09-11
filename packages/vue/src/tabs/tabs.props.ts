@@ -32,4 +32,4 @@ export const props = {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'delete', 'focus', 'update:modelValue'])
+export const emits = declareEmits(['change', 'focus', 'update:modelValue'])

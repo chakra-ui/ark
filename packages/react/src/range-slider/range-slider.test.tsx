@@ -131,7 +131,6 @@ describe('RangeSlider', () => {
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
 
-    // why is this 2 times
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
   })
 })

@@ -22,4 +22,4 @@ export type VueProps<T> = {
   }
 }
 
-export {}
+export type CollectionItem = string | object

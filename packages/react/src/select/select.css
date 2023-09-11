@@ -6,6 +6,18 @@
   animation: fadeOut 0.2s ease-in;
 }
 
+[data-part='content'] {
+  border: 1px solid gainsboro;
+  padding: 12px;
+}
+[data-part='item'] {
+  display: flex;
+  justify-content: space-between;
+}
+[data-part='item'][data-disabled] {
+  color: silver;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

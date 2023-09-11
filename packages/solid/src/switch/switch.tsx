@@ -19,7 +19,6 @@ export const Switch = (props: SwitchProps) => {
     'checked',
     'dir',
     'disabled',
-    'focusable',
     'form',
     'getRootNode',
     'id',

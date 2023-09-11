@@ -14,7 +14,6 @@ export const Segment = forwardRef<HTMLLabelElement, SegmentProps>((props, ref) =
     'value',
     'disabled',
     'invalid',
-    'readOnly',
   ])
   const api = useSegmentGroupContext()
   const mergedProps = mergeProps(api.getRadioProps(segmentProps), localProps)
