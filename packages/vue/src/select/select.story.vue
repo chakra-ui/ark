@@ -1,27 +1,42 @@
 <script setup lang="ts">
-import { collection } from '@zag-js/select'
-import type { UnwrapRef } from 'vue'
-import { Select, SelectContent, SelectItem, SelectLabel, SelectPositioner, SelectTrigger } from './'
-import { SelectItemGroup } from './select-item-group'
-import { SelectItemGroupLabel } from './select-item-group-label'
+import {
+  Select,
+  SelectClearTrigger,
+  SelectContent,
+  SelectControl,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
+  SelectPositioner,
+  SelectTrigger,
+  SelectValue,
+} from './'
 import './select.css'
-import type { UseSelectReturn } from './use-select'
 
-const frameworks = collection({ items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }] })
+const items = ['React', 'Solid', 'Vue']
 </script>
 <template>
   <Story title="Select">
     <Variant title="Basic">
-      <Select v-slot="api: UnwrapRef<UseSelectReturn>" :collection="frameworks">
-        <SelectLabel>Framework:</SelectLabel>
-        <SelectTrigger>{{ api.hasSelectedItems ? 'XX' : 'Select option' }}</SelectTrigger>
+      <Select :items="items">
+        <SelectLabel>Framework</SelectLabel>
+        <SelectControl>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a Framework" />
+          </SelectTrigger>
+          <SelectClearTrigger>Clear</SelectClearTrigger>
+        </SelectControl>
         <Teleport to="body">
           <SelectPositioner>
             <SelectContent>
               <SelectItemGroup id="framework">
-                <SelectItemGroupLabel html-for="framework">Framework</SelectItemGroupLabel>
-                <SelectItem v-for="item in frameworks.toArray()" :key="item.value" :item="item">
-                  {{ item.value }}
+                <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+                <SelectItem v-for="item in items" :key="item" :item="item">
+                  <SelectItemText>{{ item }}</SelectItemText>
+                  <SelectItemIndicator>✓</SelectItemIndicator>
                 </SelectItem>
               </SelectItemGroup>
             </SelectContent>

@@ -10,10 +10,6 @@ export const props = {
     type: Boolean as PropType<Context['disabled']>,
     default: undefined,
   },
-  focusable: {
-    type: Boolean as PropType<Context['focusable']>,
-    default: undefined,
-  },
   form: {
     type: String as PropType<Context['form']>,
   },

@@ -1,9 +1,25 @@
+[data-part='root'] {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 [data-part='content'][data-state='open'] {
   animation: fadeIn 0.25s ease-out;
 }
-
 [data-part='content'][data-state='closed'] {
   animation: fadeOut 0.2s ease-in;
+}
+[data-part='content'] {
+  border: 1px solid gainsboro;
+  background: white;
+  padding: 12px;
+}
+[data-part='item'] {
+  display: flex;
+  justify-content: space-between;
+}
+[data-part='item'][data-disabled] {
+  color: silver;
 }
 
 @keyframes fadeIn {

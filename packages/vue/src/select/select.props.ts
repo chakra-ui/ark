@@ -7,10 +7,6 @@ export const props = {
     type: Boolean as PropType<Context['closeOnSelect']>,
     default: undefined,
   },
-  collection: {
-    type: Object as PropType<Context['collection']>,
-    required: true,
-  },
   dir: {
     type: String as PropType<Context['dir']>,
   },
