@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import { type Assign } from '../types'
 import { usePressable, type UsePressableProps } from './use-pressable'
 
-export type PressableProps = Assign<ComponentPropsWithoutRef<typeof ark.button>, UsePressableProps>
+export type PressableProps = Assign<HtmlArkProps<'button'>, UsePressableProps>
 
 export const Pressable = forwardRef<HTMLButtonElement, PressableProps>((props, ref) => {
   const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [

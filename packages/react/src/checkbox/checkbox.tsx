@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
 import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
 export type CheckboxProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.label>,
+  HtmlArkProps<'label'>,
   Assign<
     UseCheckboxProps,
     {

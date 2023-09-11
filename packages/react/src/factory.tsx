@@ -36,6 +36,10 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
+export type HtmlArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> & {
+  asChild?: boolean
+}
+
 export const jsxFactory = () => {
   const cache = new Map()
 

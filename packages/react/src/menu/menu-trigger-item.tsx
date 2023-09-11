@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useMenuTriggerItemContext } from './menu-context'
 
-export type MenuTriggerItemProps = ComponentPropsWithoutRef<typeof ark.div>
+export type MenuTriggerItemProps = HtmlArkProps<'div'>
 
 export const MenuTriggerItem = forwardRef<HTMLDivElement, MenuTriggerItemProps>((props, ref) => {
   const getTriggerItemProps = useMenuTriggerItemContext()

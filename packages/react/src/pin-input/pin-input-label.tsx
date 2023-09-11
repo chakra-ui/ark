@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputLabelProps = ComponentPropsWithoutRef<typeof ark.label>
+export type PinInputLabelProps = HtmlArkProps<'label'>
 
 export const PinInputLabel = forwardRef<HTMLLabelElement, PinInputLabelProps>((props, ref) => {
   const { labelProps } = usePinInputContext()

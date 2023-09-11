@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import type { Assign } from '../types'
 import { RadioProvider, type RadioContext } from './radio-context'
 import { useRadioGroupContext } from './radio-group-context'
 
-export type RadioProps = Assign<ComponentPropsWithoutRef<typeof ark.label>, RadioContext>
+export type RadioProps = Assign<HtmlArkProps<'label'>, RadioContext>
 
 export const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const [radioProps, localProps] = createSplitProps<RadioContext>()(props, [

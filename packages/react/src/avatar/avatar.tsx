@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import { type Assign } from '../types'
 import { AvatarProvider } from './avatar-context'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export type AvatarProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, UseAvatarProps>
+export type AvatarProps = Assign<HtmlArkProps<'div'>, UseAvatarProps>
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [

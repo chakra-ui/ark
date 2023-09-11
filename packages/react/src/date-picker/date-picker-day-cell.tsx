@@ -1,13 +1,13 @@
 import type { DayCellProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
 import { DatePickerDayCellProvider } from './date-picker-day-cell-context'
 
-export type DatePickerDayCellProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, DayCellProps>
+export type DatePickerDayCellProps = Assign<HtmlArkProps<'div'>, DayCellProps>
 
 export const DatePickerDayCell = forwardRef<HTMLDivElement, DatePickerDayCellProps>(
   (props, ref) => {

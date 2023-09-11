@@ -1,15 +1,12 @@
 import type { PageTriggerProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPageTriggerProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.button>,
-  PageTriggerProps
->
+export type PaginationPageTriggerProps = Assign<HtmlArkProps<'button'>, PageTriggerProps>
 
 export const PaginationPageTrigger = forwardRef<HTMLButtonElement, PaginationPageTriggerProps>(
   (props, ref) => {

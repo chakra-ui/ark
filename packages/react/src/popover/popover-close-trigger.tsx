@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverCloseTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
+export type PopoverCloseTriggerProps = HtmlArkProps<'button'>
 
 export const PopoverCloseTrigger = forwardRef<HTMLButtonElement, PopoverCloseTriggerProps>(
   (props, ref) => {

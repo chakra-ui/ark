@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputLabelProps = ComponentPropsWithoutRef<typeof ark.label>
+export type NumberInputLabelProps = HtmlArkProps<'label'>
 
 export const NumberInputLabel = forwardRef<HTMLLabelElement, NumberInputLabelProps>(
   (props, ref) => {

@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useDatePickerCellContext } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerMonthCellTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
+export type DatePickerMonthCellTriggerProps = HtmlArkProps<'button'>
 
 export const DatePickerMonthCellTrigger = forwardRef<
   HTMLButtonElement,

@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useDialogContext } from './dialog-context'
 
-export type DialogContainerProps = ComponentPropsWithoutRef<typeof ark.div>
+export type DialogContainerProps = HtmlArkProps<'div'>
 
 export const DialogContainer = forwardRef<HTMLDivElement, DialogContainerProps>((props, ref) => {
   const { containerProps } = useDialogContext()

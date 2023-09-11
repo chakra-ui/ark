@@ -1,16 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
 type MenuItemGroupParams = Parameters<UseMenuReturn['api']['getItemGroupProps']>[0]
-export type MenuItemGroupProps = Assign<
-  ComponentPropsWithoutRef<typeof ark.div>,
-  MenuItemGroupParams
->
+export type MenuItemGroupProps = Assign<HtmlArkProps<'div'>, MenuItemGroupParams>
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']

@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export type DialogBackdropProps = ComponentPropsWithoutRef<typeof ark.div> &
-  Omit<PresenceProps, 'children'>
+export type DialogBackdropProps = HtmlArkProps<'div'> & Omit<PresenceProps, 'children'>
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

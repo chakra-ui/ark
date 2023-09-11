@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 import { useColorPickerSwatchContext } from './color-picker-swatch-context'
 
-export type ColorPickerSwatchBackgroundProps = ComponentPropsWithoutRef<typeof ark.div>
+export type ColorPickerSwatchBackgroundProps = HtmlArkProps<'div'>
 
 export const ColorPickerSwatchBackground = forwardRef<
   HTMLDivElement,

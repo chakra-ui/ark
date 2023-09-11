@@ -1,12 +1,12 @@
 import type { GridProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, useId, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef, useId } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HtmlArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerGridProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, GridProps>
+export type DatePickerGridProps = Assign<HtmlArkProps<'div'>, GridProps>
 
 export const DatePickerGrid = forwardRef<HTMLDivElement, DatePickerGridProps>((props, ref) => {
   const [gridProps, localProps] = createSplitProps<GridProps>()(props, ['view', 'columns', 'id'])

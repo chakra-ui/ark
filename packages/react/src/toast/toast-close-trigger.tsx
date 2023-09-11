@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HtmlArkProps } from '../factory'
 import { useToastItemContext } from './toast-item-context'
 
-export type ToastCloseTriggerProps = ComponentPropsWithoutRef<typeof ark.button>
+export type ToastCloseTriggerProps = HtmlArkProps<'button'>
 
 export const ToastCloseTrigger = forwardRef<HTMLButtonElement, ToastCloseTriggerProps>(
   (props, ref) => {
