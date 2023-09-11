@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/select'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
-export type SelectItemProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, ItemProps>
+export type SelectItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
 
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])

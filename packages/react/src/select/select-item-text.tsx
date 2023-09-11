@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 import { useSelectItemContext } from './select-item-context'
 
-export type SelectItemTextProps = ComponentPropsWithoutRef<typeof ark.span>
+export type SelectItemTextProps = HTMLArkProps<'span'>
 
 export const SelectItemText = forwardRef<HTMLDivElement, SelectItemTextProps>((props, ref) => {
   const api = useSelectContext()

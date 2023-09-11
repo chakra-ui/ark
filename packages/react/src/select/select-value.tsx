@@ -1,9 +1,9 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 import { parts } from './select.anatomy'
 
-export type SelectValueProps = ComponentPropsWithoutRef<typeof ark.span>
+export type SelectValueProps = HTMLArkProps<'span'>
 
 export const SelectValue = forwardRef<HTMLSpanElement, SelectValueProps>((props, ref) => {
   const { children, placeholder, ...rest } = props

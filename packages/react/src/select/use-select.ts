@@ -1,16 +1,10 @@
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
-import type { CollectionOptions } from '@zag-js/select'
+import type { CollectionItem, CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type Assign, type Optional } from '../types'
-
-export type CollectionItem = string | Record<string, unknown>
-// export interface UseSelectProps extends Optional<select.Context, 'id'> {
-//   defaultValue?: select.Context['selectedOption']
-// }
-// export type UseSelectReturn = select.Api
 
 export type UseSelectProps<T extends CollectionItem> = Assign<
   Optional<Omit<select.Context<T>, 'collection'>, 'id'>,

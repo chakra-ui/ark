@@ -3,7 +3,7 @@ import { composeRefs } from '../compose-refs'
 import { createSplitProps } from '../create-split-props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
-export type PresenceProps = UsePresenceProps & {
+export interface PresenceProps extends UsePresenceProps {
   /**
    * Only a single child is allowed.
    */

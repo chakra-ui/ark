@@ -21,7 +21,6 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
     'defaultChecked',
     'dir',
     'disabled',
-    'focusable',
     'form',
     'getRootNode',
     'id',
