@@ -3,14 +3,9 @@ import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
+import { type Assign, type CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
-import {
-  useSelect,
-  type CollectionItem,
-  type UseSelectProps,
-  type UseSelectReturn,
-} from './use-select'
+import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 
 export type SelectProps<T extends CollectionItem> = Assign<
   HTMLArkProps<'div'>,

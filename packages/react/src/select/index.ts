@@ -1,3 +1,4 @@
+import type { CollectionItem } from '../types'
 import { Select as SelectRoot, type SelectProps } from './select'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
 import { SelectContent, type SelectContentProps } from './select-content'
@@ -49,6 +50,7 @@ export {
 }
 
 export type {
+  CollectionItem,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectControlProps,

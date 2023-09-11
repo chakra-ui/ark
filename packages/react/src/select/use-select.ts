@@ -4,9 +4,7 @@ import * as select from '@zag-js/select'
 import { useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
-
-export type CollectionItem = string | object
+import { type CollectionItem, type Optional } from '../types'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
