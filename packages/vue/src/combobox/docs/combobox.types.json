@@ -1,10 +1,6 @@
 {
   "ComboboxProps": {
-    "collection": {
-      "type": "Collection<any>",
-      "isRequired": true,
-      "description": "The collection of items"
-    },
+    "items": { "type": "any[]", "isRequired": true, "description": "The options of the select" },
     "allowCustomValue": {
       "type": "boolean",
       "isRequired": false,
@@ -70,12 +66,27 @@
       "isRequired": false,
       "description": "Whether the combobox is required"
     },
+    "isItemDisabled": {
+      "type": "(item: any) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: any) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: any) => string",
+      "isRequired": false,
+      "description": "The value of the item"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation through the items"
     },
-    "modelValue": { "type": "string", "isRequired": false },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "isRequired": false,
@@ -174,6 +185,5 @@
     }
   },
   "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxItemIndicatorProps": { "item": { "type": "any", "isRequired": false } },
   "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
