@@ -1,21 +1,20 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useComboboxContext } from './combobox-context'
 import { useComboboxItemContext } from './combobox-item-context'
 
-export type ComboboxItemIndicatorProps = HTMLArkProps<'div'>
+export type ComboboxItemTextProps = HTMLArkProps<'button'>
 
-export const ComboboxItemIndicator = defineComponent({
-  name: 'ComboboxItemIndicator',
+export const ComboboxItemText = defineComponent({
+  name: 'ComboboxItemText',
   setup(_, { slots, attrs }) {
     const api = useComboboxContext()
     const itemProps = useComboboxItemContext()
 
     return () => (
-      <ark.div {...api.value.getItemIndicatorProps(itemProps)} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <ark.span {...api.value.getItemTextProps(itemProps)} {...attrs}>
+        {slots.default?.()}
+      </ark.span>
     )
   },
 })

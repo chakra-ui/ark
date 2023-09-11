@@ -1,19 +1,16 @@
 'use client'
-import { css } from '@/panda/css'
-import { Stack } from '@/panda/jsx'
-import { select } from '@/panda/recipes'
 import {
   Portal,
   Select,
   SelectContent,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
   SelectLabel,
-  SelectOption,
   SelectPositioner,
   SelectTrigger,
 } from '@ark-ui/react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Fragment } from 'react'
-import { FiChevronDown } from 'react-icons/fi'
 import { P, match } from 'ts-pattern'
 
 type FrameworkSelect = {
@@ -37,56 +34,41 @@ export const FrameworkSelect = (props: FrameworkSelect) => {
       value: 'react',
     }))
 
-  const SelectWrapper = props.noPortal ? Fragment : Portal
+  const items = [
+    {
+      label: 'React',
+      value: 'react',
+    },
+    { label: 'Vue', value: 'vue' },
+    {
+      label: 'Solid',
+      value: 'solid',
+    },
+  ]
 
   return (
     <Select
-      defaultValue={defaultValue}
+      items={items}
+      defaultValue={[defaultValue.value]}
       positioning={{ gutter: 2, sameWidth: true }}
       onChange={(e) => {
-        if (pathName) {
-          router.push(pathName.replace(/\/(solid|vue|react)\//, `/${e?.value}/`))
-        }
+        window.location.href = window.location.href.replace(defaultValue.value, e.value[0])
       }}
     >
-      {({ selectedOption, isOpen }) => (
-        <Stack gap={{ base: '6', lg: '3' }}>
-          <SelectLabel
-            className={css({
-              fontSize: { base: 'md', lg: 'sm' },
-              lineHeight: '1.5rem',
-              fontWeight: 'semibold',
-              color: 'accent.muted',
-            })}
-          >
-            Framework
-          </SelectLabel>
-          <SelectTrigger asChild>
-            <button className={select({ size: 'xs' })}>
-              <span>{selectedOption?.label ?? 'Select option'}</span>
-              <SelectIcon isOpen={isOpen} />
-            </button>
-          </SelectTrigger>
-          <SelectWrapper>
-            <SelectPositioner className={select({ size: 'xs' })}>
-              <SelectContent>
-                <SelectOption value="react" label="React" />
-                <SelectOption value="solid" label="Solid" />
-                <SelectOption value="vue" label="Vue" />
-              </SelectContent>
-            </SelectPositioner>
-          </SelectWrapper>
-        </Stack>
-      )}
+      <SelectLabel>Framework</SelectLabel>
+      <SelectTrigger>Open</SelectTrigger>
+      <Portal>
+        <SelectPositioner>
+          <SelectContent>
+            {items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator>✓</SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
     </Select>
   )
-}
-
-const SelectIcon = (props: { isOpen: boolean }) => {
-  const iconStyles = {
-    transform: props.isOpen ? 'rotate(-180deg)' : undefined,
-    transition: 'transform 0.2s',
-    transformOrigin: 'center',
-  }
-  return <FiChevronDown style={iconStyles} />
 }

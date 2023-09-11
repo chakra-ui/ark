@@ -1,13 +1,10 @@
-import { Portal } from '@ark-ui/react'
-import { ChevronDown } from 'lucide-react'
-import { HStack, Stack } from 'styled-system/jsx'
+import { Portal, SelectItemIndicator, SelectItemText } from '@ark-ui/react'
 import { match } from 'ts-pattern'
-import { Button } from '~/components/ui/button'
 import {
   Select,
   SelectContent,
+  SelectItem,
   SelectLabel,
-  SelectOption,
   SelectPositioner,
   SelectTrigger,
 } from '~/components/ui/select'
@@ -33,48 +30,44 @@ export const FrameworkSelect = (props: Props) => {
       value: 'react',
     }))
 
+  const items = [
+    {
+      label: 'React',
+      value: 'react',
+    },
+    { label: 'Vue', value: 'vue' },
+    {
+      label: 'Solid',
+      value: 'solid',
+    },
+  ]
+
   return (
     <Select
       size={{ base: 'md', md: 'sm' }}
-      defaultValue={defaultValue}
+      items={items}
+      defaultValue={[defaultValue.value]}
       positioning={{ gutter: 2, sameWidth: true }}
       onChange={(e) => {
-        window.location.href = window.location.href.replace(defaultValue.value, e?.value ?? 'react')
+        window.location.href = window.location.href.replace(defaultValue.value, e.value[0])
       }}
     >
-      {({ selectedOption, isOpen }) => (
-        <Stack gap="3" maxW={{ md: '48' }}>
-          <SelectLabel textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">
-            Framework
-          </SelectLabel>
-          <SelectTrigger asChild>
-            <Button variant="secondary" size={{ base: 'md', md: 'sm' }}>
-              <HStack justify="space-between" flex="1" fontWeight="medium">
-                {selectedOption?.label ?? 'Select Framework'}
-                <SelectIcon isOpen={isOpen} />
-              </HStack>
-            </Button>
-          </SelectTrigger>
-          <Portal>
-            <SelectPositioner zIndex="popover">
-              <SelectContent>
-                <SelectOption value="react" label="React" />
-                <SelectOption value="solid" label="Solid" />
-                <SelectOption value="vue" label="Vue" />
-              </SelectContent>
-            </SelectPositioner>
-          </Portal>
-        </Stack>
-      )}
+      <SelectLabel textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">
+        Framework
+      </SelectLabel>
+      <SelectTrigger>Open</SelectTrigger>
+      <Portal>
+        <SelectPositioner zIndex="popover">
+          <SelectContent>
+            {items.map((item) => (
+              <SelectItem key={item.value} item={item}>
+                <SelectItemText>{item.label}</SelectItemText>
+                <SelectItemIndicator>✓</SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
     </Select>
   )
-}
-
-const SelectIcon = (props: { isOpen: boolean }) => {
-  const iconStyles = {
-    transform: props.isOpen ? 'rotate(-180deg)' : undefined,
-    transition: 'transform 0.2s',
-    transformOrigin: 'center',
-  }
-  return <ChevronDown style={iconStyles} />
 }

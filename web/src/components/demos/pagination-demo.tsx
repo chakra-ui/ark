@@ -8,7 +8,7 @@ import {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-  PaginationProps,
+  type PaginationProps,
 } from '~/components/ui/pagination'
 
 export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) => {

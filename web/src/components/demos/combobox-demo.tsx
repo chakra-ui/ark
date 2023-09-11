@@ -1,38 +1,31 @@
 import { Portal } from '@ark-ui/react'
 import { ChevronsUpDown } from 'lucide-react'
-import { useState } from 'react'
 import {
   Combobox,
   ComboboxContent,
   ComboboxControl,
   ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxItemText,
   ComboboxLabel,
-  ComboboxOption,
   ComboboxPositioner,
   ComboboxTrigger,
-  type ComboboxProps,
 } from '~/components/ui/combobox'
 import { IconButton } from '~/components/ui/icon-button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 
-const data = [
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Svelte', value: 'svelte' },
-  { label: 'Vue', value: 'vue' },
-]
-
 export const ComboboxDemo = () => {
-  const [options, setOptions] = useState(data)
-
-  const handleInputChange: ComboboxProps['onInputChange'] = (e) => {
-    const filtered = data.filter((item) => item.label.toLowerCase().includes(e.value.toLowerCase()))
-    setOptions(filtered.length > 0 ? filtered : data)
-  }
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
 
   return (
-    <Combobox onInputChange={handleInputChange}>
+    <Combobox items={items}>
       <ComboboxLabel asChild>
         <Label>JS Frameworks</Label>
       </ComboboxLabel>
@@ -49,10 +42,11 @@ export const ComboboxDemo = () => {
       <Portal>
         <ComboboxPositioner>
           <ComboboxContent>
-            {options.map((item) => (
-              <ComboboxOption key={item.value} {...item}>
-                {item.label}
-              </ComboboxOption>
+            {items.map((item) => (
+              <ComboboxItem key={item.value} item={item}>
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+                <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+              </ComboboxItem>
             ))}
           </ComboboxContent>
         </ComboboxPositioner>

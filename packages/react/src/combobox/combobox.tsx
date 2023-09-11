@@ -73,7 +73,7 @@ const ComboboxImpl = <T extends CollectionItem>(
   )
 }
 
-interface ComboboxComponent {
+export interface ComboboxComponent {
   <T extends CollectionItem>(
     props: ComboboxProps<T> & React.RefAttributes<HTMLDivElement>,
   ): JSX.Element

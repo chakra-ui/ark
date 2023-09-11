@@ -1,10 +1,11 @@
 import type { ItemProps } from '@zag-js/select'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
-export type SelectItemProps = HTMLArkProps<'div'> & ItemProps
+export type SelectItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
 
 export const SelectItem = defineComponent({
   name: 'SelectItem',

@@ -65,7 +65,7 @@ const SelectImpl = <T extends CollectionItem>(
   )
 }
 
-interface SelectComponent {
+export interface SelectComponent {
   <T extends CollectionItem>(
     props: SelectProps<T> & React.RefAttributes<HTMLDivElement>,
   ): JSX.Element

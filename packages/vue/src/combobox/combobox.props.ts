@@ -7,16 +7,12 @@ export const props = {
     type: Boolean as PropType<Context['allowCustomValue']>,
     default: undefined,
   },
-  ariaHidden: {
-    type: Boolean as PropType<Context['ariaHidden']>,
-    default: undefined,
-  },
   autoFocus: {
     type: Boolean as PropType<Context['autoFocus']>,
     default: undefined,
   },
-  blurOnSelect: {
-    type: Boolean as PropType<Context['blurOnSelect']>,
+  closeOnSelect: {
+    type: Boolean as PropType<Context['closeOnSelect']>,
     default: undefined,
   },
   dir: {
@@ -26,15 +22,14 @@ export const props = {
     type: Boolean as PropType<Context['disabled']>,
     default: undefined,
   },
-  focusOnClear: {
-    type: Boolean as PropType<Context['focusOnClear']>,
-    default: undefined,
-  },
   form: {
     type: String as PropType<Context['form']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
+  },
+  highlightedValue: {
+    type: String as PropType<Context['highlightedValue']>,
   },
   id: {
     type: String as PropType<Context['id']>,
@@ -51,9 +46,6 @@ export const props = {
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
     default: undefined,
-  },
-  isCustomValue: {
-    type: Function as PropType<Context['isCustomValue']>,
   },
   loop: {
     type: Boolean as PropType<Context['loop']>,
@@ -76,18 +68,18 @@ export const props = {
     type: Boolean as PropType<Context['readOnly']>,
     default: undefined,
   },
-  selectOnTab: {
-    type: Boolean as PropType<Context['selectOnTab']>,
-    default: undefined,
-  },
   selectionBehavior: {
     type: String as PropType<Context['selectionBehavior']>,
   },
-  selectionData: {
-    type: Object as PropType<Context['selectionData']>,
+  selectOnBlur: {
+    type: Boolean as PropType<Context['selectOnBlur']>,
+    default: undefined,
   },
   translations: {
     type: Object as PropType<Context['translations']>,
+  },
+  modelValue: {
+    type: Array as PropType<Context['value']>,
   },
 }
 export const emits = declareEmits([
@@ -99,4 +91,5 @@ export const emits = declareEmits([
   'open',
   'pointer-down-outside',
   'select',
+  'update:modelValue',
 ])

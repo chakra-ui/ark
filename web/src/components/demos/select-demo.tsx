@@ -1,54 +1,52 @@
 import { Portal } from '@ark-ui/react'
-import { ChevronDown } from 'lucide-react'
-import { HStack } from 'styled-system/jsx'
-import { Button } from '~/components/ui/button'
 import {
   Select,
+  SelectClearTrigger,
   SelectContent,
-  SelectOption,
+  SelectControl,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
   SelectPositioner,
   SelectTrigger,
-  type SelectProps,
+  SelectValue,
 } from '~/components/ui/select'
 
-export const SelectDemo = (props: SelectProps) => {
+export const SelectDemo = () => {
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
+
   return (
-    <Select positioning={{ sameWidth: true }} {...props}>
-      {({ selectedOption, isOpen }) => (
-        <>
-          <SelectTrigger asChild>
-            <Button variant="secondary" minW="252px">
-              <HStack justify="space-between" flex="1" fontWeight="medium">
-                {selectedOption?.label ?? 'Select Framework'}
-                <SelectIcon isOpen={isOpen} />
-              </HStack>
-            </Button>
-          </SelectTrigger>
-          <Portal>
-            <SelectPositioner>
-              <SelectContent>
-                <SelectOption value="react" label="React" />
-                <SelectOption value="solid" label="Solid">
-                  Solid
-                </SelectOption>
-                <SelectOption value="vue" label="Vue">
-                  Vue
-                </SelectOption>
-              </SelectContent>
-            </SelectPositioner>
-          </Portal>
-        </>
-      )}
+    <Select items={items}>
+      <SelectLabel>Framework</SelectLabel>
+      <SelectControl>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a Framework" />
+        </SelectTrigger>
+        <SelectClearTrigger>Clear</SelectClearTrigger>
+      </SelectControl>
+      <Portal>
+        <SelectPositioner>
+          <SelectContent>
+            <SelectItemGroup id="framework">
+              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+              {items.map((item) => (
+                <SelectItem key={item.value} item={item}>
+                  <SelectItemText>{item.label}</SelectItemText>
+                  <SelectItemIndicator>✓</SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
     </Select>
   )
-}
-
-const SelectIcon = (props: { isOpen: boolean }) => {
-  const iconStyles = {
-    transform: props.isOpen ? 'rotate(-180deg)' : undefined,
-    transition: 'transform 0.2s',
-    transformOrigin: 'center',
-    fontSize: '18px',
-  }
-  return <ChevronDown style={iconStyles} />
 }

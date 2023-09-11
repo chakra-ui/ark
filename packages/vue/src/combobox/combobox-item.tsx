@@ -1,10 +1,11 @@
 import type { ItemProps } from '@zag-js/combobox'
-import { defineComponent, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
+import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
+import { ComboboxItemProvider } from './combobox-item-context'
 
-export type ComboboxItemProps = HTMLArkProps<'div'> & ItemProps
+export type ComboboxItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
 
 export const ComboboxItem = defineComponent({
   name: 'ComboboxItem',
@@ -16,10 +17,13 @@ export const ComboboxItem = defineComponent({
   },
   setup(props, { slots, attrs }) {
     const api = useComboboxContext()
+    ComboboxItemProvider(props)
+
+    const itemState = computed(() => api.value.getItemState(props))
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots?.default?.(itemState)}
       </ark.div>
     )
   },
