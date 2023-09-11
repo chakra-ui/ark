@@ -140,34 +140,35 @@ export const Multiple = () => {
 //   )
 // }
 
-// export const StringItems = () => {
-//   const items = ['React', 'Solid', 'Vue']
-//   return (
-//     <Select items={items} onChange={(e) => console.log(e.items, e.value)}>
-//       {(api) => (
-//         <>
-//           <SelectLabel>Framework:</SelectLabel>
-//           <SelectTrigger>{api.valueAsString || 'Select option'}</SelectTrigger>
-//           <SelectClearTrigger>Clear</SelectClearTrigger>
-//           <Portal>
-//             <SelectPositioner>
-//               <SelectContent>
-//                 <SelectItemGroup id="framework">
-//                   <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
-//                   {items.map((item) => (
-//                     <SelectItem key={item} item={item}>
-//                       {item}
-//                     </SelectItem>
-//                   ))}
-//                 </SelectItemGroup>
-//               </SelectContent>
-//             </SelectPositioner>
-//           </Portal>
-//         </>
-//       )}
-//     </Select>
-//   )
-// }
+export const StringItems = () => {
+  const items = ['React', 'Solid', 'Vue']
+  return (
+    <Select items={items} onChange={(e) => console.log(e.items)}>
+      <SelectLabel>Framework:</SelectLabel>
+      <SelectControl>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a Framework" />
+        </SelectTrigger>
+        <SelectClearTrigger>Clear</SelectClearTrigger>
+      </SelectControl>
+      <Portal>
+        <SelectPositioner>
+          <SelectContent>
+            <SelectItemGroup id="framework">
+              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+              {items.map((item) => (
+                <SelectItem key={item} item={item}>
+                  <SelectItemText>{item}</SelectItemText>
+                  <SelectItemIndicator>✓</SelectItemIndicator>
+                </SelectItem>
+              ))}
+            </SelectItemGroup>
+          </SelectContent>
+        </SelectPositioner>
+      </Portal>
+    </Select>
+  )
+}
 
 // export const ItemsWithoutValue = () => {
 //   const items = [
