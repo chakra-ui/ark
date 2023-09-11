@@ -147,5 +147,79 @@
       "description": "Whether the pressed key should be allowed in the input.\nThe default behavior is to allow DOM floating point characters defined by /^[Ee0-9+\\-.]$/"
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
+  },
+  "NumberInputContext": {
+    "blur": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to blur the input."
+    },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the input."
+    },
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "decrement": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to decrement the value of the input by the step."
+    },
+    "decrementTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the input."
+    },
+    "increment": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to increment the value of the input by the step."
+    },
+    "incrementTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "inputProps": { "type": "Dict<any>", "isRequired": true },
+    "isFocused": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the input is focused."
+    },
+    "isInvalid": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the input is invalid."
+    },
+    "isValueEmpty": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the input value is empty."
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "scrubberProps": { "type": "Dict<any>", "isRequired": true },
+    "setToMax": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to set the value of the input to the max."
+    },
+    "setToMin": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to set the value of the input to the min."
+    },
+    "setValue": {
+      "type": "(value: string | number) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the input."
+    },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The formatted value of the input."
+    },
+    "valueAsNumber": {
+      "type": "number",
+      "isRequired": true,
+      "description": "The value of the input as a number."
+    }
   }
 }

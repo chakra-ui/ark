@@ -103,6 +103,69 @@
       "description": "Whether to select the highlighted option when the user presses Tab,\nand the menu is open."
     }
   },
+  "SelectContext": {
+    "clearSelectedOption": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the selected option"
+    },
+    "close": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to close the select"
+    },
+    "contentProps": { "type": "Dict<any>", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the select"
+    },
+    "getOptionGroupLabelProps": {
+      "type": "(props: OptionGroupLabelProps) => Dict<any>",
+      "isRequired": true
+    },
+    "getOptionGroupProps": { "type": "(props: OptionGroupProps) => Dict<any>", "isRequired": true },
+    "getOptionProps": { "type": "(props: OptionProps) => Dict<any>", "isRequired": true },
+    "getOptionState": {
+      "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isChecked: boolean\n}",
+      "isRequired": true,
+      "description": "Returns the state details of an option"
+    },
+    "hiddenSelectProps": { "type": "Dict<any>", "isRequired": true },
+    "isOpen": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the select is open"
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "open": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to open the select"
+    },
+    "positionerProps": { "type": "Dict<any>", "isRequired": true },
+    "setHighlightedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the highlighted option"
+    },
+    "setSelectedOption": {
+      "type": "(value: Option) => void",
+      "isRequired": true,
+      "description": "Function to set the selected option"
+    },
+    "triggerProps": { "type": "Dict<any>", "isRequired": true },
+    "highlightedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently highlighted option"
+    },
+    "selectedOption": {
+      "type": "Option",
+      "isRequired": false,
+      "description": "The currently selected option"
+    }
+  },
   "SelectOptionProps": {
     "label": { "type": "string", "isRequired": true },
     "value": { "type": "string", "isRequired": true },

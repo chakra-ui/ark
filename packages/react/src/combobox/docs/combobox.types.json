@@ -157,6 +157,77 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     }
   },
+  "ComboboxContext": {
+    "clearTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the combobox input value and selected value"
+    },
+    "contentProps": { "type": "Dict<any>", "isRequired": true },
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the combobox input"
+    },
+    "getOptionGroupLabelProps": {
+      "type": "(props: OptionGroupLabelProps) => Dict<any>",
+      "isRequired": true
+    },
+    "getOptionGroupProps": { "type": "(props: OptionGroupProps) => Dict<any>", "isRequired": true },
+    "getOptionProps": { "type": "(props: OptionProps) => Dict<any>", "isRequired": true },
+    "getOptionState": {
+      "type": "(props: OptionProps) => {\n  isDisabled: boolean\n  isHighlighted: boolean\n  isChecked: boolean\n}",
+      "isRequired": true,
+      "description": "Returns the state of an option"
+    },
+    "inputProps": { "type": "Dict<any>", "isRequired": true },
+    "inputValue": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The current value of the combobox input"
+    },
+    "isFocused": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the combobox is focused"
+    },
+    "isInputValueEmpty": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the combobox input is empty"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the combobox content or listbox is open"
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "positionerProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setInputValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the combobox input value"
+    },
+    "setValue": {
+      "type": "(value: string | OptionData) => void",
+      "isRequired": true,
+      "description": "Function to set the combobox value"
+    },
+    "triggerProps": { "type": "Dict<any>", "isRequired": true },
+    "focusedOption": {
+      "type": "OptionData",
+      "isRequired": false,
+      "description": "The currently focused option (by pointer or keyboard)"
+    },
+    "selectedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The currently selected option value"
+    }
+  },
   "ComboboxOptionProps": {
     "label": {
       "type": "string",
