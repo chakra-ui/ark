@@ -1,10 +1,6 @@
 {
   "SelectProps": {
-    "collection": {
-      "type": "Collection<any>",
-      "isRequired": true,
-      "description": "The item collection"
-    },
+    "items": { "type": "any[]", "isRequired": true, "description": "The options of the select" },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -49,6 +45,21 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select is invalid"
+    },
+    "isItemDisabled": {
+      "type": "(item: any) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: any) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: any) => string",
+      "isRequired": false,
+      "description": "The value of the item"
     },
     "loop": {
       "type": "boolean",
@@ -134,6 +145,5 @@
     }
   },
   "SelectItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "SelectItemIndicatorProps": { "item": { "type": "any", "isRequired": false } },
   "SelectItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }
