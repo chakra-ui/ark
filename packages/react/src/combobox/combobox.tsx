@@ -1,17 +1,24 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import { type Assign, type CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export type ComboboxProps = Assign<Omit<HTMLArkProps<'div'>, 'children'>, UseComboboxProps> & {
-  children?: React.ReactNode | ((props: UseComboboxReturn) => React.ReactNode)
+export type ComboboxProps<T extends CollectionItem> = Assign<
+  HTMLArkProps<'div'>,
+  UseComboboxProps<T>
+> & {
+  children?: ReactNode | ((state: UseComboboxReturn<T>) => ReactNode)
 }
-export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) => {
-  const [useComboboxProps, { children, ...divProps }] = createSplitProps<UseComboboxProps>()(
+
+const ComboboxImpl = <T extends CollectionItem>(
+  props: ComboboxProps<T>,
+  ref: React.Ref<HTMLDivElement>,
+) => {
+  const [useComboboxProps, { children, ...localProps }] = createSplitProps<UseComboboxProps<T>>()(
     props,
     [
       'allowCustomValue',
@@ -27,7 +34,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) =
       'ids',
       'inputBehavior',
       'inputValue',
-      'inputValue',
       'invalid',
       'isItemDisabled',
       'items',
@@ -40,7 +46,6 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) =
       'onClose',
       'onFocusOutside',
       'onHighlight',
-      'onInputChange',
       'onInputChange',
       'onInteractOutside',
       'onOpen',
@@ -55,18 +60,23 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>((props, ref) =
       'value',
     ],
   )
+  const api = useCombobox(useComboboxProps)
+  const view = runIfFn(children, api)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
-  const combobox = useCombobox(useComboboxProps)
-  const mergedProps = mergeProps(combobox.rootProps, divProps)
-
-  const view = runIfFn(children, combobox)
   return (
-    <ComboboxProvider value={combobox}>
+    <ComboboxProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
     </ComboboxProvider>
   )
-})
+}
 
-Combobox.displayName = 'Combobox'
+interface ComboboxComponent {
+  <T extends CollectionItem>(
+    props: ComboboxProps<T> & React.RefAttributes<HTMLDivElement>,
+  ): JSX.Element
+}
+
+export const Combobox = forwardRef(ComboboxImpl) as ComboboxComponent

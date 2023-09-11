@@ -1,3 +1,4 @@
+import type { CollectionItem } from '../types'
 import { Combobox as ComboboxRoot, type ComboboxProps } from './combobox'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
@@ -51,6 +52,7 @@ export {
   useComboboxContext,
 }
 export type {
+  CollectionItem,
   ComboboxClearTriggerProps,
   ComboboxContentProps,
   ComboboxContext,

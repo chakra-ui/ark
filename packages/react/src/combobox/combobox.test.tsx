@@ -20,7 +20,13 @@ import {
   type ComboboxProps,
 } from './'
 
-const ComponentUnderTest = (props: Optional<ComboboxProps, 'items'>) => {
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

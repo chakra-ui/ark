@@ -4,19 +4,13 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Assign, type Optional } from '../types'
+import { type CollectionItem, type Optional } from '../types'
 
-export type CollectionItem = string | Record<string, unknown>
-// export interface UseComboboxProps extends Optional<combobox.Context, 'id'> {}
-// export type UseComboboxReturn = combobox.Api
-
-export type UseComboboxProps<T extends CollectionItem> = Assign<
-  Optional<Omit<combobox.Context<T>, 'collection'>, 'id'>,
-  {
-    defaultValue?: combobox.Context<T>['value']
-  }
-> &
-  CollectionOptions<T>
+export interface UseComboboxProps<T extends CollectionItem>
+  extends CollectionOptions<T>,
+    Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {
+  defaultValue?: combobox.Context<T>['value']
+}
 
 export type UseComboboxReturn<T extends CollectionItem> = combobox.Api<PropTypes, T>
 

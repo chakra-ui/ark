@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
-import { ark } from '../factory'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 import { useComboboxItemContext } from './combobox-item-context'
 
-export type ComboboxItemTextProps = ComponentPropsWithoutRef<typeof ark.span>
+export type ComboboxItemTextProps = HTMLArkProps<'span'>
 
 export const ComboboxItemText = forwardRef<HTMLDivElement, ComboboxItemTextProps>((props, ref) => {
   const api = useComboboxContext()

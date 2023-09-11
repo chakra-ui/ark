@@ -20,12 +20,13 @@ import {
 } from './'
 import { SelectControl } from './select-control'
 
-interface SelectItem {
+interface Item {
   label: string
   value: string
+  disabled?: boolean
 }
 
-const ComponentUnderTest = (props: Optional<SelectProps<SelectItem>, 'items'>) => {
+const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
