@@ -5,7 +5,7 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-export type SelectContentProps = Assign<HTMLArkProps<'div'>, PresenceProps>
+export type SelectContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

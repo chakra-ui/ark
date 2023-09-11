@@ -5,7 +5,7 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxContentProps = Assign<HTMLArkProps<'div'>, PresenceProps>
+export type ComboboxContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
