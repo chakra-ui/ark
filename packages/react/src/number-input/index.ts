@@ -1,5 +1,5 @@
 import { NumberInput as NumberInputRoot, type NumberInputProps } from './number-input'
-import { useNumberInputContext } from './number-input-context'
+import { useNumberInputContext, type NumberInputContext } from './number-input-context'
 import { NumberInputControl, type NumberInputControlProps } from './number-input-control'
 import {
   NumberInputDecrementTrigger,
@@ -37,6 +37,7 @@ export {
 }
 
 export type {
+  NumberInputContext,
   NumberInputControlProps,
   NumberInputDecrementTriggerProps,
   NumberInputIncrementTriggerProps,

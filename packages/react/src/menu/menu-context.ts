@@ -1,7 +1,7 @@
 import { createContext } from '../create-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuContext = unknown // type `UseMenuReturn['api']` can't be named
+type MenuContext = unknown // type `UseMenuReturn['api']` can't be named
 
 export const [MenuProvider, useMenuContext] = createContext<MenuContext | undefined>({
   name: 'MenuContext',
@@ -10,7 +10,7 @@ export const [MenuProvider, useMenuContext] = createContext<MenuContext | undefi
   strict: false,
 })
 
-export type MenuMachineContext = unknown // type `UseMenuReturn['machine']` can't be named
+type MenuMachineContext = unknown // type `UseMenuReturn['machine']` can't be named
 
 export const [MenuMachineProvider, useMenuMachineContext] = createContext<
   MenuMachineContext | undefined
@@ -21,7 +21,7 @@ export const [MenuMachineProvider, useMenuMachineContext] = createContext<
   strict: false,
 })
 
-export type MenuTriggerItemProviderContext = () =>
+type MenuTriggerItemProviderContext = () =>
   | ReturnType<UseMenuReturn['api']['getTriggerItemProps']>
   | undefined
 

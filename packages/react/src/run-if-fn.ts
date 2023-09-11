@@ -1,4 +1,4 @@
-export type AnyFunction<Arg = unknown, ReturnValue = unknown> = (...args: Arg[]) => ReturnValue
+type AnyFunction<Arg = unknown, ReturnValue = unknown> = (...args: Arg[]) => ReturnValue
 
 const isFunction = <T = AnyFunction>(value: unknown): value is T => typeof value === 'function'
 

@@ -1,5 +1,5 @@
 import { PinInput as PinInputRoot, type PinInputProps } from './pin-input'
-import { usePinInputContext } from './pin-input-context'
+import { usePinInputContext, type PinInputContext } from './pin-input-context'
 import { PinInputControl, type PinInputControlProps } from './pin-input-control'
 import { PinInputInput, type PinInputInputProps } from './pin-input-field'
 import { PinInputLabel, type PinInputLabelProps } from './pin-input-label'
@@ -21,4 +21,10 @@ export {
   usePinInputContext,
 }
 
-export type { PinInputControlProps, PinInputInputProps, PinInputLabelProps, PinInputProps }
+export type {
+  PinInputContext,
+  PinInputControlProps,
+  PinInputInputProps,
+  PinInputLabelProps,
+  PinInputProps,
+}

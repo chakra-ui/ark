@@ -24,12 +24,12 @@ export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYear
 
 DatePickerYearSelect.displayName = 'DatePickerYearSelect'
 
-export interface YearsRange {
+interface YearsRange {
   from: number
   to: number
 }
 
-export function getYearsRange(range: YearsRange) {
+function getYearsRange(range: YearsRange) {
   const years: number[] = []
 
   for (let year = range.from; year <= range.to; year += 1) {

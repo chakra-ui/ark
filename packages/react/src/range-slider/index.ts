@@ -1,5 +1,5 @@
 import { RangeSlider as RangeSliderRoot, type RangeSliderProps } from './range-slider'
-import { useRangeSliderContext } from './range-slider-context'
+import { useRangeSliderContext, type RangeSliderContext } from './range-slider-context'
 import { RangeSliderControl, type RangeSliderControlProps } from './range-slider-control'
 import { RangeSliderLabel, type RangeSliderLabelProps } from './range-slider-label'
 import { RangeSliderMarker, type RangeSliderMarkerProps } from './range-slider-marker'
@@ -40,6 +40,7 @@ export {
 }
 
 export type {
+  RangeSliderContext,
   RangeSliderControlProps,
   RangeSliderLabelProps,
   RangeSliderMarkerGroupProps,

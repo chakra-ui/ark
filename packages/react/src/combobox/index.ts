@@ -1,7 +1,7 @@
 import { Combobox as ComboboxRoot, type ComboboxProps } from './combobox'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
-import { useComboboxContext } from './combobox-context'
+import { useComboboxContext, type ComboboxContext } from './combobox-context'
 import { ComboboxControl, type ComboboxControlProps } from './combobox-control'
 import { ComboboxInput, type ComboboxInputProps } from './combobox-input'
 import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
@@ -47,6 +47,7 @@ export {
 export type {
   ComboboxClearTriggerProps,
   ComboboxContentProps,
+  ComboboxContext,
   ComboboxControlProps,
   ComboboxInputProps,
   ComboboxLabelProps,

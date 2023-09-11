@@ -1,5 +1,5 @@
 import { Switch as SwitchRoot, type SwitchProps } from './switch'
-import { useSwitchContext } from './switch-context'
+import { useSwitchContext, type SwitchContext } from './switch-context'
 import { SwitchControl, type SwitchControlProps } from './switch-control'
 import { SwitchLabel, type SwitchLabelProps } from './switch-label'
 import { SwitchThumb, type SwitchThumbProps } from './switch-thumb'
@@ -14,4 +14,4 @@ const Switch = Object.assign(SwitchRoot, {
 
 export { Switch, SwitchControl, SwitchLabel, SwitchThumb, switchAnatomy, useSwitchContext }
 
-export type { SwitchControlProps, SwitchLabelProps, SwitchProps, SwitchThumbProps }
+export type { SwitchContext, SwitchControlProps, SwitchLabelProps, SwitchProps, SwitchThumbProps }

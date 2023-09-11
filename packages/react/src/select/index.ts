@@ -1,6 +1,6 @@
 import { Select as SelectRoot, type SelectProps } from './select'
 import { SelectContent, type SelectContentProps } from './select-content'
-import { useSelectContext } from './select-context'
+import { useSelectContext, type SelectContext } from './select-context'
 import { SelectLabel, type SelectLabelProps } from './select-label'
 import { SelectOption, type SelectOptionProps } from './select-option'
 import { SelectOptionGroup, type SelectOptionGroupProps } from './select-option-group'
@@ -38,6 +38,7 @@ export {
 
 export type {
   SelectContentProps,
+  SelectContext,
   SelectLabelProps,
   SelectOptionGroupLabelProps,
   SelectOptionGroupProps,
