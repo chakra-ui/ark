@@ -1,11 +1,9 @@
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-type ValueProps = {
+export interface SelectValueProps extends HTMLArkProps<'span'> {
   placeholder?: string
 }
-
-export type SelectValueProps = HTMLArkProps<'span'> & ValueProps
 
 export const SelectValue = (props: SelectValueProps) => {
   const api = useSelectContext()

@@ -1,16 +1,14 @@
-import type { ItemProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
+import { useComboboxItemContext } from './combobox-item-context'
 
-export type ComboboxItemIndicatorProps = Assign<HTMLArkProps<'div'>, ItemProps>
+export type ComboboxItemIndicatorProps = HTMLArkProps<'div'>
 
 export const ComboboxItemIndicator = (props: ComboboxItemIndicatorProps) => {
-  const [groupProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])
   const combobox = useComboboxContext()
-  const mergedProps = mergeProps(() => combobox().getItemIndicatorProps(groupProps), localProps)
+  const itemProps = useComboboxItemContext()
+  const mergedProps = mergeProps(() => combobox().getItemIndicatorProps(itemProps), props)
 
   return <ark.div {...mergedProps} />
 }

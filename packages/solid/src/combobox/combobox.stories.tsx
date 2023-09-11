@@ -1,4 +1,3 @@
-import { collection } from '@zag-js/combobox'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
@@ -11,10 +10,12 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
+  ComboboxItemText,
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
 } from '.'
+import { ComboboxItemIndicator } from './combobox-item-indicator'
 import './combobox.css'
 
 const meta: Meta = {
@@ -24,16 +25,13 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => {
-  const frameworks = collection({
-    items: [{ value: 'React' }, { value: 'Solid' }, { value: 'Vue' }],
-  })
-
+  const items = ['React', 'Solid', 'Vue']
   return (
-    <Combobox collection={frameworks}>
-      <ComboboxLabel>JS Frameworks</ComboboxLabel>
+    <Combobox items={items}>
+      <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput />
-        <ComboboxTrigger>▼</ComboboxTrigger>
+        <ComboboxTrigger>Open</ComboboxTrigger>
         <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
       </ComboboxControl>
       <Portal>
@@ -41,8 +39,13 @@ export const Basic = () => {
           <ComboboxContent>
             <ComboboxItemGroup id="framework">
               <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
-              <For each={frameworks.toArray()}>
-                {(item) => <ComboboxItem item={item}>{item.value}</ComboboxItem>}
+              <For each={items}>
+                {(item) => (
+                  <ComboboxItem item={item}>
+                    <ComboboxItemText>{item}</ComboboxItemText>
+                    <ComboboxItemIndicator>✓</ComboboxItemIndicator>
+                  </ComboboxItem>
+                )}
               </For>
             </ComboboxItemGroup>
           </ComboboxContent>

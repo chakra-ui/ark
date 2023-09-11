@@ -4,13 +4,18 @@ import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import { type CollectionItem, type Optional } from '../types'
 
-export type UseSelectProps = Optional<Omit<select.Context, 'collection'>, 'id'> & CollectionOptions
-export type UseSelectReturn = Accessor<select.Api<PropTypes>>
+export interface UseSelectProps<T extends CollectionItem>
+  extends CollectionOptions<T>,
+    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {}
 
-export const useSelect = (props: UseSelectProps): UseSelectReturn => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions>()(props, [
+export type UseSelectReturn<T extends CollectionItem> = Accessor<select.Api<PropTypes, T>>
+
+export const useSelect = <T extends CollectionItem>(
+  props: UseSelectProps<T>,
+): UseSelectReturn<T> => {
+  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -24,5 +29,5 @@ export const useSelect = (props: UseSelectProps): UseSelectReturn => {
     context,
   })
 
-  return createMemo(() => select.connect(state, send, normalizeProps))
+  return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
 }

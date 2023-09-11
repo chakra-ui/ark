@@ -24,15 +24,10 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const items = ['React', 'Solid', 'Vue']
   return (
     <Select items={items}>
-      <SelectLabel>Framework:</SelectLabel>
+      <SelectLabel>Framework</SelectLabel>
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a Framework" />
@@ -47,7 +42,7 @@ export const Basic = () => {
               <For each={items}>
                 {(item) => (
                   <SelectItem item={item}>
-                    <SelectItemText>{item.label}</SelectItemText>
+                    <SelectItemText>{item}</SelectItemText>
                     <SelectItemIndicator>✓</SelectItemIndicator>
                   </SelectItem>
                 )}

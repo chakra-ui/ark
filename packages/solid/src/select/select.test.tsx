@@ -20,7 +20,13 @@ import {
 } from './'
 import { SelectControl } from './select-control'
 
-const ComponentUnderTest = (props: Optional<SelectProps, 'items'>) => {
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -29,7 +35,7 @@ const ComponentUnderTest = (props: Optional<SelectProps, 'items'>) => {
   ]
   return (
     <Select items={items} {...props}>
-      <SelectLabel>Framework:</SelectLabel>
+      <SelectLabel>Framework</SelectLabel>
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a Framework" />

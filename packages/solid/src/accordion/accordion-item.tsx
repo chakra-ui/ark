@@ -10,9 +10,7 @@ import { AccordionItemProvider } from './accordion-item-context'
 
 export type AccordionItemProps = Assign<
   HTMLArkProps<'div'>,
-  {
-    value: string
-    disabled?: boolean
+  ItemProps & {
     children?: JSX.Element | ((state: () => ItemState) => JSX.Element)
   }
 >

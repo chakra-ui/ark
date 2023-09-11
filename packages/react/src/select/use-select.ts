@@ -17,7 +17,6 @@ export type UseSelectReturn<T extends CollectionItem> = select.Api<PropTypes, T>
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const getRootNode = useEnvironmentContext()
   const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
@@ -25,6 +24,7 @@ export const useSelect = <T extends CollectionItem>(
     'items',
   ])
   const collection = select.collection(collectionOptions)
+  const getRootNode = useEnvironmentContext()
 
   const initialContext = {
     id: useId(),
