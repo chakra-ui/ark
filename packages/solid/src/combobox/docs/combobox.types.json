@@ -1,10 +1,6 @@
 {
   "ComboboxProps": {
-    "collection": {
-      "type": "Collection<any>",
-      "isRequired": true,
-      "description": "The collection of items"
-    },
+    "items": { "type": "T[]", "isRequired": true, "description": "The options of the select" },
     "allowCustomValue": {
       "type": "boolean",
       "isRequired": false,
@@ -70,6 +66,21 @@
       "isRequired": false,
       "description": "Whether the combobox is required"
     },
+    "isItemDisabled": {
+      "type": "(item: T) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The value of the item"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -86,7 +97,7 @@
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails<any>) => void",
+      "type": "(details: ValueChangeDetails<T>) => void",
       "isRequired": false,
       "description": "Function called when a new item is selected"
     },
@@ -97,7 +108,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails<any>) => void",
+      "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
       "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
@@ -137,7 +148,7 @@
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
     "selectionBehavior": {
-      "type": "'clear' | 'replace' | 'preserve'",
+      "type": "'replace' | 'clear' | 'preserve'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
@@ -173,6 +184,5 @@
     }
   },
   "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxItemIndicatorProps": { "item": { "type": "any", "isRequired": false } },
   "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

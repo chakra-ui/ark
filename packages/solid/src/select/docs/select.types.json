@@ -1,6 +1,6 @@
 {
   "SelectProps": {
-    "items": { "type": "any[]", "isRequired": true, "description": "The options of the select" },
+    "items": { "type": "T[]", "isRequired": true, "description": "The options of the select" },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -47,17 +47,17 @@
       "description": "Whether the select is invalid"
     },
     "isItemDisabled": {
-      "type": "(item: any) => boolean",
+      "type": "(item: T) => boolean",
       "isRequired": false,
       "description": "Whether the item is disabled"
     },
     "itemToString": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The label of the item"
     },
     "itemToValue": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The value of the item"
     },
@@ -77,7 +77,7 @@
       "description": "The `name` attribute of the underlying select."
     },
     "onChange": {
-      "type": "(details: ValueChangeDetails<any>) => void",
+      "type": "(details: ValueChangeDetails<T>) => void",
       "isRequired": false,
       "description": "The callback fired when the selected item changes."
     },
@@ -88,7 +88,7 @@
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(details: HighlightChangeDetails<any>) => void",
+      "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted item changes."
     },
