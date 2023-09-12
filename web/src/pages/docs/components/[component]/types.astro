@@ -11,16 +11,16 @@ type Props = {
 export async function getStaticPaths() {
   const components = await getCollection('components')
   return components.map((entry) => {
-    const [framework, component] = entry.slug.split('/')
+    const [component] = entry.slug.split('/')
     return {
-      params: { framework, component },
+      params: { component },
       props: { entry },
     }
   })
 }
 
 const { entry } = Astro.props
-const types = await getEntry('types', entry.slug + '.types')
+const types = await getEntry('types', `react/${entry.slug}.types`)
 ---
 
 <ComponentDocsLayout component={entry}>

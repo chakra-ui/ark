@@ -13,13 +13,11 @@ const components = defineCollection({
 
 const stories = defineCollection({
   type: 'data',
-  // @ts-expect-error
   schema: z.record(z.string(), z.string()),
 })
 
 const types = defineCollection({
   type: 'data',
-  // @ts-expect-error
   schema: z.record(
     z.string(),
     z.record(

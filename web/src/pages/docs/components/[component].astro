@@ -16,19 +16,18 @@ export async function getStaticPaths() {
   const components = await getCollection('components')
 
   return components.map((entry) => {
-    const [framework, component] = entry.slug.split('/')
+    const [component] = entry.slug.split('/')
     return {
-      params: { framework, component },
+      params: { component },
       props: { entry, components },
     }
   })
 }
 
 const { entry } = Astro.props
-const { framework } = Astro.params
+const pages = Astro.props.components
 
 const { Content, headings } = await entry.render()
-const pages = Astro.props.components.filter((c) => c.slug.startsWith(framework ?? ''))
 ---
 
 <ComponentDocsLayout component={entry}>
@@ -36,6 +35,6 @@ const pages = Astro.props.components.filter((c) => c.slug.startsWith(framework ?
   <Article maxW="full">
     <Content />
   </Article>
-  <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/${framework}/components/`} />
+  <DocsFooter pages={pages} currentPage={entry} basePath={`/docs/components/`} />
   <TableOfContent headings={headings} />
 </ComponentDocsLayout>

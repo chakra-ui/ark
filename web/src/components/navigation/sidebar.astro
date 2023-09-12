@@ -1,12 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
-import { Box, Stack } from 'styled-system/jsx'
+import { Stack } from 'styled-system/jsx'
 import { Typography } from '../ui/typography'
 import ExternalLinks from './external-links.astro'
-import { FrameworkSelect } from './framework-select'
 import { SidebarGroup } from './sidebar-group'
 
-const { framework, component, doc } = Astro.params
+const { component, doc } = Astro.params
 
 const priority = [
   'introduction',
@@ -17,33 +16,27 @@ const priority = [
   'changelog',
 ]
 
-const docs = await getCollection('docs', ({ id }) => id.startsWith(framework ?? 'react')).then(
-  (items) =>
-    items
-      .map((item) => ({
-        id: item.data.id,
-        title: item.data.title,
-        slug: `/docs/${framework}/overview/${item.data.id}`,
-      }))
-      .sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id)),
+const docs = await getCollection('docs').then((items) =>
+  items
+    .map((item) => ({
+      id: item.data.id,
+      title: item.data.title,
+      slug: `/docs/overview/${item.data.id}`,
+    }))
+    .sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id)),
 )
 
-const components = await getCollection('components', ({ id }) =>
-  id.startsWith(framework ?? 'react'),
-).then((items) =>
+const components = await getCollection('components').then((items) =>
   items.map((item) => ({
     id: item.data.id,
     title: item.data.title,
-    slug: `/docs/${framework}/components/${item.data.id}`,
+    slug: `/docs/components/${item.data.id}`,
   })),
 )
 ---
 
 <Stack gap="8" width="full">
   <ExternalLinks />
-  <Box h="68px">
-    <FrameworkSelect framework={framework} client:load />
-  </Box>
 
   <Stack gap="3">
     <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Overview</Typography>
