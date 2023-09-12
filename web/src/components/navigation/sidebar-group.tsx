@@ -11,7 +11,7 @@ export const SidebarGroup = (props: Props) => {
     <Tabs defaultValue={currentValue} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
       <TabList>
         {items.map((item, id) => (
-          <TabTrigger key={id} value={item.id} asChild>
+          <TabTrigger key={id} value={item.id} asChild width="fit-content">
             <a href={item.slug}>{item.title}</a>
           </TabTrigger>
         ))}
