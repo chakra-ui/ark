@@ -13,4 +13,8 @@ export default defineConfig({
       theme: 'css-variables',
     },
   },
+  redirects: {
+    '/docs/[...framework]/overview/[doc]': '/docs/overview/[doc]',
+    '/docs/[...framework]/components/[...component]': '/docs/components/[component]',
+  },
 })
