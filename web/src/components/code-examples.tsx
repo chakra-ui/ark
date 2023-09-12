@@ -1,3 +1,4 @@
+import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import {
   TabContent,
@@ -27,7 +28,19 @@ export const CodeExamples = (props: Props) => {
         </TabTrigger>
         <TabIndicator />
       </TabList>
-      <Box borderBottomRadius="l3" mt="-6" bg="grayPalette.900">
+      <Box
+        borderBottomRadius="l3"
+        overflow="hidden"
+        mt="-5"
+        bg="grayPalette.900"
+        className={css({
+          '& pre': {
+            borderWidth: '0',
+            borderRadius: '0',
+            my: '0',
+          },
+        })}
+      >
         <TabContent value="react">{props.react}</TabContent>
         <TabContent value="solid">{props.solid}</TabContent>
         <TabContent value="vue">{props.vue}</TabContent>
