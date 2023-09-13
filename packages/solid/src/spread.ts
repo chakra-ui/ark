@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createMemo, mergeProps } from 'solid-js'
 import { spread as solidSpread } from 'solid-js/web'
-import { filterProps, mapProps } from './filter-props'
 import { mergeStyle } from './merge-style'
 
 const getEventKey = (key: string) => `$$${key.toLowerCase().slice(2)}`
 const hasOwn = (obj: any, key: string) => Object.prototype.hasOwnProperty.call(obj, key)
 
-export const spread = (node: HTMLElement, props: any) => {
-  const parentProps = filterProps(
-    props,
-    (key) => typeof key === 'string' && key.slice(0, 2) === 'on',
-  )
+function mapProps(
+  props: Record<string, unknown>,
+  mapper: (key: string, value: unknown) => unknown,
+): Record<string, unknown> {
+  return Object.fromEntries(Object.entries(props).map(([key, value]) => [key, mapper(key, value)]))
+}
 
+export const spread = (node: HTMLElement, props: any) => {
   const nodeEvents = Object.fromEntries(
     Object.keys(node)
       .filter((prop) => prop.startsWith('$$'))
@@ -20,16 +21,15 @@ export const spread = (node: HTMLElement, props: any) => {
       .map((prop) => [prop, node[prop]]),
   )
 
-  const composedProps = createMemo(() => {
-    return mapProps(parentProps, (key, value) => {
-      const prop = getEventKey(key)
+  const childProps = createMemo(() =>
+    mapProps(props, (key, value) => {
+      const eventKey = getEventKey(key)
 
       // event composition
-      if (hasOwn(nodeEvents, prop)) {
+      if (hasOwn(nodeEvents, eventKey)) {
         return function next(...args: unknown[]) {
-          // @ts-expect-error - fix later
-          value(...args)
-          nodeEvents[prop](...args)
+          if (typeof value === 'function') value(...args)
+          nodeEvents[eventKey](...args)
         }
       }
 
@@ -38,9 +38,17 @@ export const spread = (node: HTMLElement, props: any) => {
         return mergeStyle(node.style.cssText, value as any)
       }
 
-      return value
-    })
-  })
+      // class composition
+      if (key === 'class') {
+        return [node.className, value].filter(Boolean).join(' ')
+      }
 
-  solidSpread(node, mergeProps(props, composedProps))
+      // don't override existing child attributes
+      if (node.hasAttribute(key)) return
+
+      return value
+    }),
+  )
+
+  solidSpread(node, mergeProps(childProps))
 }

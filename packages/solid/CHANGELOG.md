@@ -15,6 +15,10 @@ description: All notable changes to this project will be documented in this file
 - Revised `Comoobox` component to support multiple selection
 - Revised `Select` component to support multiple selection
 
+### Fixed
+
+- Resolved an issue where the `asChild` property was not working as expected
+
 ## [0.11.0] - 2023-09-08
 
 ### Added
