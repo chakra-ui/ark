@@ -55,8 +55,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: 'src/setup-test.ts',
-    transformMode: {
-      web: [/\.[jt]sx?$/],
+    deps: {
+      registerNodeLoader: false,
     },
     coverage: {
       provider: 'v8',
