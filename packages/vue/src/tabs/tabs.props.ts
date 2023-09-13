@@ -1,6 +1,5 @@
 import type { Context } from '@zag-js/tabs'
 import type { PropType } from 'vue'
-import { declareEmits } from '../utils'
 
 export const props = {
   activationMode: {
@@ -32,4 +31,9 @@ export const props = {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'focus', 'update:modelValue'])
+export const emits = {
+  change: (_: Parameters<NonNullable<Context['onChange']>>[0]) => true,
+  focus: (_: Parameters<NonNullable<Context['onFocus']>>[0]) => true,
+
+  'update:modelValue': Function,
+}

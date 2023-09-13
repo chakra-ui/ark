@@ -27,7 +27,7 @@ export const useTabs = (props: UseTabsProps, emit: CallableFunction): UseTabsRet
       getRootNode,
       onFocus: (details) => emit('focus', details),
       onChange: (details) => {
-        emit('change', details.value)
+        emit('change', details)
         emit('update:modelValue', details.value)
       },
     }),

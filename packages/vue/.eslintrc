@@ -12,6 +12,14 @@
   "rules": {
     "vue/multi-word-component-names": 0,
     "vue/no-setup-props-destructure": "warn",
-    "vue/no-reserved-component-names": 0
+    "vue/no-reserved-component-names": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ]
   }
 }
