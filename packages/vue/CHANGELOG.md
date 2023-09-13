@@ -16,6 +16,10 @@ description: All notable changes to this project will be documented in this file
 - Revised `Pressable` component
 - Revised `Select` component
 
+### Fixed
+
+- Resolved an issue where the `Accordion` component would not render its content.
+
 ## [0.8.0] - 2023-09-08
 
 ### Added

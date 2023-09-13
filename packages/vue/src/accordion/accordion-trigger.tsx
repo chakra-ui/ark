@@ -9,10 +9,10 @@ export const AccordionTrigger = defineComponent({
   name: 'AccordionTrigger',
   setup(_, { attrs, slots }) {
     const api = useAccordionContext()
-    const accordionItem = useAccordionItemContext()
+    const item = useAccordionItemContext()
 
     return () => (
-      <ark.button {...api.value.getTriggerProps(accordionItem)} {...attrs}>
+      <ark.button {...api.value.getTriggerProps(item.value)} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )

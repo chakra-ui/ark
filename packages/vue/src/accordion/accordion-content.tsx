@@ -14,11 +14,14 @@ export const AccordionContent = defineComponent({
   emits,
   setup(props, { slots, attrs }) {
     const api = useAccordionContext()
-    const { value, isOpen } = useAccordionItemContext()
+    const item = useAccordionItemContext()
 
     return () => (
-      <Presence {...props} present={props.present !== undefined ? props.present : isOpen}>
-        <ark.div {...api.value.getContentProps({ value })} {...attrs}>
+      <Presence
+        {...props}
+        present={props.present !== undefined ? props.present : item.value.isOpen}
+      >
+        <ark.div {...api.value.getContentProps(item.value)} {...attrs}>
           {() => getValidChildren(slots)}
         </ark.div>
       </Presence>
