@@ -61,7 +61,7 @@ export const Playground = (props: PlaygroundProps) => {
 }
 
 const Canvas = (props: PropsWithChildren) => (
-  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} bg="bg.surface">
+  <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} bg="bg.default">
     {props.children}
   </Flex>
 )
