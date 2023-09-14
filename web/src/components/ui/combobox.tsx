@@ -14,20 +14,20 @@ export const ComboboxClearTrigger = withContext(styled(Ark.Combobox.ClearTrigger
 export const ComboboxContent = withContext(styled(Ark.Combobox.Content), 'content')
 export const ComboboxControl = withContext(styled(Ark.Combobox.Control), 'control')
 export const ComboboxInput = withContext(styled(Ark.Combobox.Input), 'input')
-export const ComboboxLabel = withContext(styled(Ark.Combobox.Label), 'label')
-export const ComboboxItem = withContext(styled(Ark.Combobox.Item), 'option')
-export const ComboboxItemGroup = withContext(styled(Ark.Combobox.ItemGroup), 'optionGroup')
+export const ComboboxItem = withContext(styled(Ark.Combobox.Item), 'item')
+export const ComboboxItemGroup = withContext(styled(Ark.Combobox.ItemGroup), 'itemGroup')
 export const ComboboxItemGroupLabel = withContext(
   styled(Ark.Combobox.ItemGroupLabel),
-  'optionGroupLabel',
+  'itemGroupLabel',
 )
-export const ComboboxPositioner = withContext(styled(Ark.Combobox.Positioner), 'positioner')
-export const ComboboxTrigger = withContext(styled(Ark.Combobox.Trigger), 'trigger')
 export const ComboboxItemIndicator = withContext(
   styled(Ark.Combobox.ItemIndicator),
   'itemIndicator',
 )
 export const ComboboxItemText = withContext(styled(Ark.Combobox.ItemText), 'itemText')
+export const ComboboxLabel = withContext(styled(Ark.Combobox.Label), 'label')
+export const ComboboxPositioner = withContext(styled(Ark.Combobox.Positioner), 'positioner')
+export const ComboboxTrigger = withContext(styled(Ark.Combobox.Trigger), 'trigger')
 
 export const Combobox = Object.assign(ComboboxRoot, {
   Root: ComboboxRoot,
