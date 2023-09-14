@@ -523,7 +523,7 @@ importers:
       '@zag-js/toast':
         specifier: 0.19.1
         version: 0.19.1
-      '@zag-js/toggle':
+      '@zag-js/toggle-group':
         specifier: 0.19.1
         version: 0.19.1
       '@zag-js/tooltip':
@@ -9082,16 +9082,6 @@ packages:
       '@zag-js/anatomy': 0.19.1
       '@zag-js/core': 0.19.1
       '@zag-js/dom-event': 0.19.1
-      '@zag-js/dom-query': 0.19.1
-      '@zag-js/types': 0.19.1
-      '@zag-js/utils': 0.19.1
-    dev: false
-
-  /@zag-js/toggle@0.19.1:
-    resolution: {integrity: sha512-XcTQ4taZL0YBIvCQCkKtuBwIz53px+ZRsE49viAaVkTdMJVR8AQdSChp3x1j/8KJDObwqVkNg80F56VFjFHCjQ==}
-    dependencies:
-      '@zag-js/anatomy': 0.19.1
-      '@zag-js/core': 0.19.1
       '@zag-js/dom-query': 0.19.1
       '@zag-js/types': 0.19.1
       '@zag-js/utils': 0.19.1

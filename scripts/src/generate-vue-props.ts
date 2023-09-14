@@ -1,6 +1,5 @@
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
-import { globby } from 'globby'
 import path, { dirname } from 'path'
 import prettier from 'prettier'
 import { Project, VariableDeclarationKind } from 'ts-morph'
@@ -18,8 +17,8 @@ const main = async () => {
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(path.join(root, 'packages', 'vue'))
 
-  const indices = await globby(['src/*'], { onlyDirectories: true })
-  // const indices = ['tooltip']
+  // const indices = await globby(['src/*'], { onlyDirectories: true })
+  const indices = ['toggle-group']
 
   await Promise.allSettled(
     indices

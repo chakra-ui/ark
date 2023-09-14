@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added `Toggle` component
+- Added `ToggleGroup` component
 
 ### Changed
 
