@@ -35,12 +35,11 @@ import { button } from 'styled-system/recipes'
 </style>
 
 <script is:inline>
-  const handleToggleClick = () => {
+  document.getElementById('themeToggle').addEventListener('click', () => {
     const element = document.documentElement
     element.classList.toggle('dark')
 
     const isDark = element.classList.contains('dark')
     localStorage.setItem('ark-ui-color-mode', isDark ? 'dark' : 'light')
-  }
-  document.getElementById('themeToggle').addEventListener('click', handleToggleClick)
+  })
 </script>
