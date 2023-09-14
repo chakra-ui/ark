@@ -1,0 +1,4 @@
+{
+  "Basic": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@ark-ui/vue'\n\nconst checked = ref(false)\n</script>\n\n<template>\n  <Switch>\n    <SwitchControl>\n      <SwitchThumb />\n    </SwitchControl>\n    <SwitchLabel>Label</SwitchLabel>\n  </Switch>\n</template>\n",
+  "Controlled": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@ark-ui/vue'\n\nconst checked = ref(false)\n</script>\n\n<template>\n  <Switch v-model=\"checked\">\n    <SwitchControl>\n      <SwitchThumb />\n    </SwitchControl>\n    <SwitchLabel>Label</SwitchLabel>\n  </Switch>\n</template>\n"
+}

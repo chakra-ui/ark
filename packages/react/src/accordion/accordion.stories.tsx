@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Accordion } from '.'
+import { Accordion } from './'
 
 type AccordionType = typeof Accordion
 

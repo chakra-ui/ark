@@ -1,5 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from '.'
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from './'
 import './splitter.css'
 
 const meta: Meta = {

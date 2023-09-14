@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Checkbox, CheckboxControl, CheckboxLabel, type CheckedState } from '.'
+import { Checkbox, CheckboxControl, CheckboxLabel, type CheckedState } from './'
 import './checkbox.css'
 
 type CheckboxType = typeof Checkbox

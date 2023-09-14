@@ -1,0 +1,4 @@
+{
+  "Basic": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template>\n  <NumberInput>\n    <NumberInputScrubber />\n    <NumberInputLabel>Label</NumberInputLabel>\n    <NumberInputInput />\n    <NumberInputControl>\n      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>\n      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>\n    </NumberInputControl>\n  </NumberInput>\n</template>\n",
+  "FractionDigits": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template>\n  <NumberInput v-model=\"val\" :minFractionDigits=\"2\" :maxFractionDigits=\"3\">\n    <NumberInputScrubber />\n    <NumberInputLabel>Label</NumberInputLabel>\n    <NumberInputInput />\n    <NumberInputControl>\n      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>\n      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>\n    </NumberInputControl>\n  </NumberInput>\n</template>\n"
+}

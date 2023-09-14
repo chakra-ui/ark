@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from '.'
+import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from './'
 import './tabs.css'
 
 const meta: Meta = {

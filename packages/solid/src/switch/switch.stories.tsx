@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '.'
+import { Switch, SwitchControl, SwitchLabel, SwitchThumb } from './'
 import './switch.css'
 
 type SwitchType = typeof Switch

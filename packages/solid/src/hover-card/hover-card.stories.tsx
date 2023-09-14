@@ -8,7 +8,7 @@ import {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
-} from '.'
+} from './'
 import './hover-card.css'
 
 const meta: Meta = {

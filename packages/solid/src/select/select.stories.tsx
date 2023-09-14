@@ -14,7 +14,7 @@ import {
   SelectPositioner,
   SelectTrigger,
   SelectValue,
-} from '.'
+} from './'
 import './select.css'
 
 const meta: Meta = {

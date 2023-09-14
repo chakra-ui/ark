@@ -19,11 +19,19 @@ export const CodeExamples = (props: Props) => {
   return (
     <Tabs size="sm" defaultValue="react" {...props}>
       <TabList bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
-        <TabTrigger value="react">React</TabTrigger>
-        <TabTrigger value="solid" disabled={!Boolean(props.solid)}>
+        <TabTrigger
+          value="react"
+          disabled={props.solid?.props.value.includes('Story not available')}
+        >
+          React
+        </TabTrigger>
+        <TabTrigger
+          value="solid"
+          disabled={props.solid?.props.value.includes('Story not available')}
+        >
           Solid
         </TabTrigger>
-        <TabTrigger value="vue" disabled={!Boolean(props.vue)}>
+        <TabTrigger value="vue" disabled={props.vue?.props.value.includes('Story not available')}>
           Vue
         </TabTrigger>
         <TabIndicator />
@@ -38,6 +46,9 @@ export const CodeExamples = (props: Props) => {
             borderWidth: '0',
             borderRadius: '0',
             my: '0',
+          },
+          '& code': {
+            p: '0',
           },
         })}
       >

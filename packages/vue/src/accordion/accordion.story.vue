@@ -1,44 +1,44 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../'
+import { Accordion } from './'
 
 const items = ref(['React', 'Solid', 'Vue'])
 const value = ref(['React'])
 </script>
 
 <template>
-  <Story>
+  <Story title="Accordion">
     <Variant title="Basic">
-      <Accordion>
-        <AccordionItem v-for="item in items" :key="item" :value="item">
-          <AccordionTrigger>{{ item }} trigger</AccordionTrigger>
-          <AccordionContent>{{ item }} content</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Accordion.Root>
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
+          <Accordion.Content>{{ item }} content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
     </Variant>
     <Variant title="Controlled">
-      <Accordion v-model="value">
-        <AccordionItem v-for="item in items" :key="item" :value="item">
-          <AccordionTrigger>{{ item }} trigger</AccordionTrigger>
-          <AccordionContent>{{ item }} content</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Accordion.Root v-model="value">
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
+          <Accordion.Content>{{ item }} content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
     </Variant>
     <Variant title="Collapsible">
-      <Accordion collapsible>
-        <AccordionItem v-for="item in items" :key="item" :value="item">
-          <AccordionTrigger>{{ item }} trigger</AccordionTrigger>
-          <AccordionContent>{{ item }} content</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Accordion.Root collapsible>
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
+          <Accordion.Content>{{ item }} content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
     </Variant>
     <Variant title="Multiple">
-      <Accordion multiple>
-        <AccordionItem v-for="item in items" :key="item" :value="item">
-          <AccordionTrigger>{{ item }} trigger</AccordionTrigger>
-          <AccordionContent>{{ item }} content</AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <Accordion.Root multiple>
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
+          <Accordion.Content>{{ item }} content</Accordion.Content>
+        </Accordion.Item>
+      </Accordion.Root>
     </Variant>
   </Story>
 </template>

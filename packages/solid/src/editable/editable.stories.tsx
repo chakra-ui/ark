@@ -9,7 +9,7 @@ import {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
-} from '.'
+} from './'
 import { useEditable } from './use-editable'
 
 const meta: Meta = {

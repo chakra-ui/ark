@@ -1,6 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '.'
+import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from './'
 
 const meta: Meta = {
   title: 'RatingGroup',

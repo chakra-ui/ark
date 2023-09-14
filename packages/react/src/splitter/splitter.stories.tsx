@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from '.'
+import { Splitter, SplitterPanel, SplitterResizeTrigger } from './'
 import './splitter.css'
 
 type SplitterType = typeof Splitter

@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { RatingGroup } from '.'
+import { RatingGroup } from './'
 
 type RatingGroupType = typeof RatingGroup
 

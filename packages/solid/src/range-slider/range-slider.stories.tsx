@@ -10,7 +10,7 @@ import {
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
-} from '.'
+} from './'
 import './range-slider.css'
 
 const meta: Meta = {

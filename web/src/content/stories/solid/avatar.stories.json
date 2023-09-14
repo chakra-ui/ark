@@ -1,4 +1,4 @@
 {
-  "Basic": "const Basic = () => (\n  <Avatar.Root>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)",
-  "Events": "const Events = () => (\n  <Avatar.Root onError={() => console.log('error')} onLoad={() => console.log('loaded')}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n)"
+  "Basic": "import { Avatar } from '@ark-ui/solid'\n\nconst Basic = () => (\n  <Avatar.Root>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)",
+  "Events": "import { Avatar } from '@ark-ui/solid'\n\nconst Events = () => (\n  <Avatar.Root onError={() => console.log('error')} onLoad={() => console.log('loaded')}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n)"
 }

@@ -11,7 +11,7 @@ import {
   ToastTitle,
   useToast,
   type ToastProviderProps,
-} from '.'
+} from './'
 import './toast.css'
 
 type ToastType = typeof Toast

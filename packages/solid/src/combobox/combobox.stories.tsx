@@ -14,7 +14,7 @@ import {
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
-} from '.'
+} from './'
 import { ComboboxItemIndicator } from './combobox-item-indicator'
 import './combobox.css'
 

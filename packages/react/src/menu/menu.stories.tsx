@@ -12,7 +12,7 @@ import {
   MenuSeparator,
   MenuTrigger,
   MenuTriggerItem,
-} from '.'
+} from './'
 import './menu.css'
 
 type MenuType = typeof Menu

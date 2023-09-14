@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Tabs } from '.'
+import { Tabs } from './'
 import './tabs.css'
 
 type TabsType = typeof Tabs

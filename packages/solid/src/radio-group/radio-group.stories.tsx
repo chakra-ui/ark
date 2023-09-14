@@ -1,6 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioLabel } from '.'
+import { Radio, RadioControl, RadioGroup, RadioGroupLabel, RadioLabel } from './'
 import './radio-group.css'
 
 const meta: Meta = {

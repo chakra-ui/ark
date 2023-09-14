@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { PinInput, PinInputControl, PinInputInput, PinInputLabel } from '.'
+import { PinInput, PinInputControl, PinInputInput, PinInputLabel } from './'
 import './pin-input.css'
 
 const meta: Meta = {

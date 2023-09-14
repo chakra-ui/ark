@@ -11,7 +11,7 @@ import {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
-} from '.'
+} from './'
 
 const meta: Meta = {
   title: 'Popover',

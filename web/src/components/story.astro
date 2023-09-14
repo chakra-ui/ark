@@ -10,10 +10,21 @@ const { id } = Astro.props
 const { component } = Astro.params
 
 const stories = await getCollection('stories', (story) => story.id.includes(component ?? ''))
-const [react, solid] = stories
+const [react, solid, vue] = stories
 ---
 
 <CodeExamples client:load>
-  <Code slot="react" code={react?.data[id] ?? ''} lang="tsx" theme="css-variables" />
-  <Code slot="solid" code={solid?.data[id] ?? ''} lang="tsx" theme="css-variables" />
+  <Code
+    slot="react"
+    code={react?.data[id] ?? 'Story not available'}
+    lang="tsx"
+    theme="css-variables"
+  />
+  <Code
+    slot="solid"
+    code={solid?.data[id] ?? 'Story not available'}
+    lang="tsx"
+    theme="css-variables"
+  />
+  <Code slot="vue" code={vue?.data[id] ?? 'Story not available'} lang="vue" theme="css-variables" />
 </CodeExamples>

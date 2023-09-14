@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Toast, useToast, type ToastProviderProps } from '.'
+import { Toast, useToast, type ToastProviderProps } from './'
 import './toast.css'
 
 type ToastType = typeof Toast
