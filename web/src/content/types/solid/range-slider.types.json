@@ -70,25 +70,25 @@
       "isRequired": false,
       "description": "The name associated with each slider thumb (when used in a form)"
     },
-    "onChange": {
-      "type": "(details: { value: number[] }) => void",
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function invoked when the slider's focused index changes"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the value of the slider changes"
     },
-    "onChangeEnd": {
-      "type": "(details: { value: number[] }) => void",
+    "onValueChangeEnd": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the slider value change is done"
     },
-    "onChangeStart": {
-      "type": "(details: { value: number[] }) => void",
+    "onValueChangeStart": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the slider value change is started"
-    },
-    "onFocusChange": {
-      "type": "(details: { index: number; value: number[] }) => void",
-      "isRequired": false,
-      "description": "Function invoked when the slider's focused index changes"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

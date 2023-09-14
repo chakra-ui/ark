@@ -85,18 +85,23 @@
       "isRequired": false,
       "description": "The number of months to display."
     },
-    "onChange": {
-      "type": "(details: { value: DateValue[] }) => void",
-      "isRequired": false,
-      "description": "Function called when the value changes."
-    },
     "onFocusChange": {
-      "type": "(details: ChangeDetails<{ focusedValue: DateValue; view: DateView }>) => void",
+      "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the focused date changes."
     },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the calendar opens or closes."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes."
+    },
     "onViewChange": {
-      "type": "(details: { view: DateView }) => void",
+      "type": "(details: ViewChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the view changes."
     },

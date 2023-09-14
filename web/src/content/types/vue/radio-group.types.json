@@ -50,8 +50,8 @@
       "isRequired": false,
       "description": "The name of the input fields in the radio\n(Useful for form submission)."
     },
-    "onChange": {
-      "type": "(details: { value: string }) => void",
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function called once a radio is checked"
     },

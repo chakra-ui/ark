@@ -31,15 +31,15 @@
       "isRequired": false,
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
-    "onChange": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the selected/active tab changes"
-    },
-    "onFocus": {
-      "type": "(details: { value: string }) => void",
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
       "description": "Callback to be called when the focused tab changes"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Callback to be called when the selected/active tab changes"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
@@ -59,8 +59,13 @@
       "isRequired": true,
       "description": "Clears the value of the tabs."
     },
-    "getContentProps": { "type": "({ value }: ContentProps) => Dict<any>", "isRequired": true },
+    "getContentProps": { "type": "(props: ContentProps) => Dict<any>", "isRequired": true },
     "getTriggerProps": { "type": "(props: TriggerProps) => Dict<any>", "isRequired": true },
+    "getTriggerState": {
+      "type": "(props: TriggerProps) => TriggerState",
+      "isRequired": true,
+      "description": "Returns the state of the trigger with the given props"
+    },
     "indicatorProps": { "type": "Dict<any>", "isRequired": true },
     "previousValues": {
       "type": "string[]",
@@ -69,9 +74,9 @@
     },
     "rootProps": { "type": "Dict<any>", "isRequired": true },
     "setIndicatorRect": {
-      "type": "(id: string | null | undefined) => void",
+      "type": "(value: string) => void",
       "isRequired": true,
-      "description": "Sets the indicator rect to the tab with the given id."
+      "description": "Sets the indicator rect to the tab with the given value"
     },
     "setValue": {
       "type": "(value: string) => void",

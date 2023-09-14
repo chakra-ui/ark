@@ -61,31 +61,40 @@
       "isRequired": false,
       "description": "The name attribute of the editable component. Used for form submission."
     },
-    "onCancel": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
-    },
-    "onChange": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the editable's value is changed"
-    },
     "onEdit": {
       "type": "() => void",
       "isRequired": false,
       "description": "The callback that is called when in the edit mode."
     },
-    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
-    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the combobox"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the combobox"
+    },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the combobox"
     },
-    "onSubmit": {
-      "type": "(details: { value: string }) => void",
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback that is called when the editable's value is changed"
+    },
+    "onValueCommit": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "The callback that is called when the editable's value is submitted."
+    },
+    "onValueRevert": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     },
     "placeholder": {
       "type": "string | { edit: string; preview: string }",

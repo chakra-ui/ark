@@ -46,29 +46,33 @@
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
     },
-    "onClose": {
-      "type": "() => void",
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the menu is closed"
+      "description": "Function called when the focus is moved outside the combobox"
     },
-    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
-    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
-    "onOpen": {
-      "type": "() => void",
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the menu is opened"
+      "description": "Function called when an interaction happens outside the combobox"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the menu opens or closes"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the combobox"
     },
     "onSelect": {
-      "type": "(details: { value: string }) => void",
+      "type": "(details: SelectionDetails) => void",
       "isRequired": false,
       "description": "Function called when a menu item is selected."
     },
     "onValueChange": {
-      "type": "(details: { name: string; value: string | string[] }) => void",
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
