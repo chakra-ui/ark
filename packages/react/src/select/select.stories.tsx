@@ -81,7 +81,7 @@ export const Advanced = () => {
 }
 
 export const Controlled = () => {
-  const [selectedItems, setSelectedItems] = useState<Item[]>([])
+  const [_, setSelectedItems] = useState<Item[]>([])
 
   const items: Item[] = [
     { label: 'React', value: 'react' },
