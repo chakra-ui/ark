@@ -21,7 +21,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -40,7 +40,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
-    "isOpen": { "type": "boolean", "isRequired": false },
+    "isOpen": { "type": "Accessor<boolean>", "isRequired": false },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -105,6 +105,20 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
+  "MenuContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  },
   "MenuItemGroupProps": {
     "id": {
       "type": "string",
@@ -119,7 +133,7 @@
       "description": "The option's name as specified in menu's `context.values` object"
     },
     "type": {
-      "type": "'radio' | 'checkbox'",
+      "type": "'checkbox' | 'radio'",
       "isRequired": true,
       "description": "Whether the option is a radio or a checkbox"
     },

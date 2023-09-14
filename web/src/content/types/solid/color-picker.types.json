@@ -11,7 +11,7 @@
       "description": "Whether the color picker is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -25,7 +25,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
     "onChange": {
       "type": "(details: ChangeDetails) => void",
@@ -53,7 +52,7 @@
     "readOnly": { "type": "boolean", "isRequired": false }
   },
   "ColorPickerChannelInputProps": {
-    "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+    "channel": { "type": "ColorChannel", "isRequired": true },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
   "ColorPickerChannelSliderTrackProps": {

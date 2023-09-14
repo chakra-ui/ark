@@ -12,7 +12,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -32,17 +32,12 @@
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
     "onChange": {
-      "type": "(details: { value: string | null }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Callback to be called when the selected/active tab changes"
     },
-    "onDelete": {
-      "type": "(details: { value: string }) => void",
-      "isRequired": false,
-      "description": "Callback to be called when a tab's close button is clicked"
-    },
     "onFocus": {
-      "type": "(details: { value: string | null }) => void",
+      "type": "(details: { value: string }) => void",
       "isRequired": false,
       "description": "Callback to be called when the focused tab changes"
     },
@@ -57,6 +52,43 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
+  },
+  "TabsContext": {
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Clears the value of the tabs."
+    },
+    "getContentProps": { "type": "({ value }: ContentProps) => Dict<any>", "isRequired": true },
+    "getTriggerProps": { "type": "(props: TriggerProps) => Dict<any>", "isRequired": true },
+    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
+    "previousValues": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The previous values of the tabs in sequence of selection."
+    },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setIndicatorRect": {
+      "type": "(id: string | null | undefined) => void",
+      "isRequired": true,
+      "description": "Sets the indicator rect to the tab with the given id."
+    },
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Sets the value of the tabs."
+    },
+    "tablistProps": { "type": "Dict<any>", "isRequired": true },
+    "focusedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the tab that is currently focused."
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the tabs."
+    }
   },
   "TabContentProps": {
     "value": { "type": "string", "isRequired": true },

@@ -5,7 +5,7 @@
       "isRequired": false,
       "description": "If `true`, the checkbox will be checked."
     },
-    "defaultChecked": { "type": "boolean", "isRequired": false },
+    "defaultChecked": { "type": "CheckedState", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -22,7 +22,7 @@
       "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

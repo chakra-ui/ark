@@ -149,8 +149,10 @@ function extractTypeExports(fileContent?: string) {
 const main = async () => {
   const framework = process.argv.slice(2)[0]
 
-  const root = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(root, 'packages', framework))
+  const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
+  process.chdir(path.join(rootDir, 'packages', framework))
+
+  const outDir = path.join(rootDir, 'web', 'src', 'content', 'types')
 
   const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
 
@@ -192,7 +194,7 @@ const main = async () => {
   )
   result.map(async ({ component, typeExports }) => {
     fs.outputFileSync(
-      path.join(component, 'docs', path.basename(component) + '.types.json'),
+      path.join(outDir, framework, path.basename(component) + '.types.json'),
       await prettier.format(JSON.stringify(typeExports), {
         ...prettierConfig,
         parser: 'json',

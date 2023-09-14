@@ -56,7 +56,7 @@
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
+      "type": "'text' | 'numeric' | 'tel' | 'decimal'",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },

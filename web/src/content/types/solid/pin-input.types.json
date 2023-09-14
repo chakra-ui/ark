@@ -26,7 +26,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -50,7 +50,6 @@
       "isRequired": false,
       "description": "If `true`, the input's value will be masked just like `type=password`"
     },
-    "modelValue": { "type": "string[]", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,

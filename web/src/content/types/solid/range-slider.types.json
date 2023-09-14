@@ -31,7 +31,7 @@
       "description": "Function that returns a human readable value for the slider thumb"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -65,7 +65,6 @@
       "isRequired": false,
       "description": "The minimum permitted steps between multiple thumbs."
     },
-    "modelValue": { "type": "number[]", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -86,6 +85,11 @@
       "isRequired": false,
       "description": "Function invoked when the slider value change is started"
     },
+    "onFocusChange": {
+      "type": "(details: { index: number; value: number[] }) => void",
+      "isRequired": false,
+      "description": "Function invoked when the slider's focused index changes"
+    },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
@@ -105,6 +109,11 @@
       "type": "'center' | 'contain'",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
+    },
+    "thumbSize": {
+      "type": "{ width: number; height: number }",
+      "isRequired": false,
+      "description": "The slider thumbs dimensions"
     },
     "value": {
       "type": "number[]",

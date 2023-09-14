@@ -36,7 +36,7 @@
       "description": "Function that returns a human readable value for the slider"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -65,7 +65,6 @@
       "isRequired": false,
       "description": "The minimum value of the slider"
     },
-    "modelValue": { "type": "number", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -110,6 +109,11 @@
       "type": "'center' | 'contain'",
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
+    },
+    "thumbSize": {
+      "type": "{ width: number; height: number }",
+      "isRequired": false,
+      "description": "The slider thumb dimensions.If not provided, the thumb size will be measured automatically."
     },
     "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
   },

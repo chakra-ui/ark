@@ -1,9 +1,62 @@
 {
   "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
+  "ToastItemContext": {
+    "closeTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "descriptionProps": { "type": "Dict<any>", "isRequired": true },
+    "dismiss": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to instantly dismiss the toast."
+    },
+    "isPaused": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the toast is paused."
+    },
+    "isRtl": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the toast is in RTL mode."
+    },
+    "isVisible": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the toast is visible."
+    },
+    "pause": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to pause the toast (keeping it visible)."
+    },
+    "placement": {
+      "type": "Placement",
+      "isRequired": true,
+      "description": "The current placement of the toast."
+    },
+    "render": {
+      "type": "() => any",
+      "isRequired": true,
+      "description": "Function render the toast in the DOM (based on the defined `render` property)"
+    },
+    "resume": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to resume the toast dismissing."
+    },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "titleProps": { "type": "Dict<any>", "isRequired": true },
+    "type": { "type": "Type", "isRequired": true, "description": "The type of the toast." },
+    "description": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The description of the toast."
+    },
+    "title": { "type": "string", "isRequired": false, "description": "The title of the toast." }
+  },
   "ToastProviderProps": {
     "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
+      "type": "Partial<Pick<ToastOptions, 'placement' | 'removeDelay' | 'duration'>>",
       "isRequired": false,
       "description": "The default options for the toast"
     },
@@ -13,7 +66,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -33,7 +86,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'right' | 'bottom' | 'left', string>",
+      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },

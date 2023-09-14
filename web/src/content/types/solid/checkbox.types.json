@@ -21,7 +21,7 @@
       "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -40,7 +40,6 @@
       "isRequired": false,
       "description": "If `true`, the checkbox is marked as invalid."
     },
-    "modelValue": { "type": "CheckedState", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,

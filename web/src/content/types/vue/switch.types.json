@@ -5,7 +5,6 @@
       "isRequired": false,
       "description": "Whether the switch is checked."
     },
-    "defaultChecked": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -46,6 +45,7 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
+    "modelValue": { "type": "boolean", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -70,38 +70,6 @@
       "type": "string | number",
       "isRequired": false,
       "description": "The value of switch input. Useful for form submission."
-    }
-  },
-  "SwitchContext": {
-    "controlProps": { "type": "Dict<any>", "isRequired": true },
-    "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
-    "isChecked": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the checkbox is checked"
-    },
-    "labelProps": { "type": "Dict<any>", "isRequired": true },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setChecked": {
-      "type": "(checked: boolean) => void",
-      "isRequired": true,
-      "description": "Function to set the checked state of the switch."
-    },
-    "thumbProps": { "type": "Dict<any>", "isRequired": true },
-    "toggleChecked": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to toggle the checked state of the checkbox"
-    },
-    "isDisabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is disabled"
-    },
-    "isFocused": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is focused"
     }
   }
 }

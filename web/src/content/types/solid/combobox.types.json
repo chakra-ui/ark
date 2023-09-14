@@ -1,24 +1,20 @@
 {
   "ComboboxProps": {
+    "items": { "type": "T[]", "isRequired": true, "description": "The options of the select" },
     "allowCustomValue": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow custom values or free values in the input"
-    },
-    "ariaHidden": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to hide all elements besides the combobox parts. Useful for accessibility"
     },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to autofocus the input on mount"
     },
-    "blurOnSelect": {
+    "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to blur the input on select"
+      "description": "Whether to close the combobox when an item is selected."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -30,20 +26,20 @@
       "isRequired": false,
       "description": "Whether the combobox is disabled"
     },
-    "focusOnClear": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to return focus to the input on click the clear button"
-    },
     "form": {
       "type": "string",
       "isRequired": false,
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "highlightedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The active item's id. Used to set the `aria-activedescendant` attribute"
     },
     "id": {
       "type": "string",
@@ -51,14 +47,14 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  option(id: string, index?: number | undefined): string\n  positioner: string\n  optionGroup(id: string | number): string\n  optionGroupLabel(id: string | number): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item(id: string, index?: number | undefined): string\n  positioner: string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'autohighlight' | 'autocomplete' | 'none'",
+      "type": "'none' | 'autocomplete' | 'autohighlight'",
       "isRequired": false,
-      "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused option is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the option and the input is updated"
+      "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
     },
     "inputValue": {
       "type": "string",
@@ -70,52 +66,66 @@
       "isRequired": false,
       "description": "Whether the combobox is required"
     },
-    "isCustomValue": {
-      "type": "(details: {\n  inputValue: string\n  previousValue: string | undefined\n}) => boolean",
+    "isItemDisabled": {
+      "type": "(item: T) => boolean",
       "isRequired": false,
-      "description": "Function called to validate the input value"
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The value of the item"
     },
     "loop": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to loop the keyboard navigation through the options"
+      "description": "Whether to loop the keyboard navigation through the items"
     },
-    "modelValue": { "type": "string", "isRequired": false },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to allow multiple selection"
+    },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
+    "onChange": {
+      "type": "(details: ValueChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "Function called when a new item is selected"
+    },
     "onClose": {
-      "type": "() => void",
+      "type": "VoidFunction",
       "isRequired": false,
       "description": "Function called when the popup is closed"
     },
     "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
     "onHighlight": {
-      "type": "(\n  details: Partial<OptionData> & { relatedTarget: HTMLElement | null },\n) => void",
+      "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
-      "description": "Function called when an options is highlighted using the pointer\nor keyboard navigation."
+      "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
     "onInputChange": {
-      "type": "(details: { value: string }) => void",
+      "type": "(details: InputValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the input's value changes"
     },
     "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
     "onOpen": {
-      "type": "() => void",
+      "type": "VoidFunction",
       "isRequired": false,
       "description": "Function called when the popup is opened"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false
-    },
-    "onSelect": {
-      "type": "(\n  details: Partial<OptionData> & { relatedTarget: HTMLElement | null },\n) => void",
-      "isRequired": false,
-      "description": "Function called when a new option is selected"
     },
     "openOnClick": {
       "type": "boolean",
@@ -130,66 +140,49 @@
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
-      "description": "The options used to dynamically position the menu"
+      "description": "The positioning options to dynamically position the menu"
     },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
-    "selectInputOnFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to select the input's text content on focus"
-    },
     "selectionBehavior": {
-      "type": "'clear' | 'set'",
+      "type": "'replace' | 'clear' | 'preserve'",
       "isRequired": false,
-      "description": "The behavior of the combobox when an option is selected"
+      "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
-    "selectionData": {
-      "type": "OptionData",
-      "isRequired": false,
-      "description": "The selected option's value"
-    },
-    "selectOnTab": {
+    "selectOnBlur": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to select the focused option when the `Tab` key is pressed"
+      "description": "Whether to select the higlighted item on interaction outside the combobox"
     },
     "translations": {
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    }
-  },
-  "ComboboxOptionProps": {
-    "label": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The label of the option. Used to populate the combobox's input when selected"
     },
     "value": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The actual value of the option"
-    },
-    "count": {
-      "type": "number",
+      "type": "string[]",
       "isRequired": false,
-      "description": "The total count of options. Used to set the `aria-setsize` attribute"
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the option is disabled"
-    },
-    "index": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The index of the option. Used to set the `aria-posinset` attribute\nand allow options with same value"
+      "description": "The keys of the selected items"
     }
   },
-  "ComboboxOptionGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxOptionGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+  "ComboboxItemProps": { "item": { "type": "any", "isRequired": false } },
+  "ComboboxContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  },
+  "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
+  "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

@@ -32,7 +32,7 @@
       "description": "Function that returns a human readable value for the slider thumb"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -86,6 +86,11 @@
       "isRequired": false,
       "description": "Function invoked when the slider value change is started"
     },
+    "onFocusChange": {
+      "type": "(details: { index: number; value: number[] }) => void",
+      "isRequired": false,
+      "description": "Function invoked when the slider's focused index changes"
+    },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
@@ -106,11 +111,99 @@
       "isRequired": false,
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
     },
+    "thumbSize": {
+      "type": "{ width: number; height: number }",
+      "isRequired": false,
+      "description": "The slider thumbs dimensions"
+    },
     "value": {
       "type": "number[]",
       "isRequired": false,
       "description": "The value of the range slider"
     }
+  },
+  "RangeSliderContext": {
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "decrement": {
+      "type": "(index: number) => void",
+      "isRequired": true,
+      "description": "Function to decrement the value of the slider at the given index."
+    },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the slider. This focuses the first thumb."
+    },
+    "getHiddenInputProps": { "type": "(index: number) => Dict<any>", "isRequired": true },
+    "getMarkerProps": { "type": "({ value }: { value: number }) => Dict<any>", "isRequired": true },
+    "getPercentValue": {
+      "type": "(percent: number) => number",
+      "isRequired": true,
+      "description": "Returns the value of the thumb at the given percent."
+    },
+    "getThumbMax": {
+      "type": "(index: number) => number",
+      "isRequired": true,
+      "description": "Returns the max value of the thumb at the given index."
+    },
+    "getThumbMin": {
+      "type": "(index: number) => number",
+      "isRequired": true,
+      "description": "Returns the min value of the thumb at the given index."
+    },
+    "getThumbPercent": {
+      "type": "(index: number) => number",
+      "isRequired": true,
+      "description": "Returns the percent of the thumb at the given index."
+    },
+    "getThumbProps": { "type": "(index: number) => Dict<any>", "isRequired": true },
+    "getThumbValue": {
+      "type": "(index: number) => number",
+      "isRequired": true,
+      "description": "Returns the value of the thumb at the given index."
+    },
+    "getValuePercent": {
+      "type": "(value: number) => number",
+      "isRequired": true,
+      "description": "Returns the percent of the thumb at the given index."
+    },
+    "increment": {
+      "type": "(index: number) => void",
+      "isRequired": true,
+      "description": "Function to increment the value of the slider at the given index."
+    },
+    "isDragging": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the slider is being dragged."
+    },
+    "isFocused": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the slider is focused."
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "markerGroupProps": { "type": "Dict<any>", "isRequired": true },
+    "outputProps": { "type": "Dict<any>", "isRequired": true },
+    "rangeProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setThumbPercent": {
+      "type": "(index: number, percent: number) => void",
+      "isRequired": true,
+      "description": "Sets the percent of the thumb at the given index."
+    },
+    "setThumbValue": {
+      "type": "(index: number, value: number) => void",
+      "isRequired": true,
+      "description": "Sets the value of the thumb at the given index."
+    },
+    "setValue": {
+      "type": "(value: number[]) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the slider."
+    },
+    "trackProps": { "type": "Dict<any>", "isRequired": true },
+    "value": { "type": "number[]", "isRequired": true, "description": "The value of the slider." }
   },
   "RangeSliderThumbProps": { "index": { "type": "number", "isRequired": true } },
   "RangeSliderMarkerProps": { "value": { "type": "number", "isRequired": true } }

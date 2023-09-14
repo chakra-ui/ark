@@ -10,12 +10,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
-    },
-    "modelValue": { "type": "string", "isRequired": false },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio will be readonly"
     }
   },
   "RadioGroupProps": {
@@ -35,7 +29,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -49,7 +43,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -64,11 +57,6 @@
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "Orientation of the radio group"
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio group will be readonly"
     },
     "value": {
       "type": "string",

@@ -26,7 +26,7 @@
       "description": "The format of the date to display in the input."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -147,6 +147,5 @@
     "value": { "type": "number", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "DatePickerPrevTriggerProps": { "view": { "type": "DateView", "isRequired": false } },
   "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
 }

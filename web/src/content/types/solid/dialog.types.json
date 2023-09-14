@@ -26,7 +26,7 @@
       "description": "Element to receive focus when the dialog is closed"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -90,6 +90,34 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
+    }
+  },
+  "DialogContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  },
+  "DialogBackdropProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
     }
   }
 }

@@ -31,7 +31,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -55,7 +55,6 @@
       "isRequired": false,
       "description": "The maximum number of characters allowed in the editable"
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,

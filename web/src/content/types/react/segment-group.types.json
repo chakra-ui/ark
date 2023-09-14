@@ -10,11 +10,19 @@
       "type": "boolean",
       "isRequired": false,
       "description": "If `true`, the radio is marked as invalid."
-    },
-    "readOnly": {
+    }
+  },
+  "SegmentContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the radio will be readonly"
+      "description": "If `true`, the radio will be disabled"
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio is marked as invalid."
     }
   },
   "SegmentGroupProps": {
@@ -35,7 +43,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -64,15 +72,44 @@
       "isRequired": false,
       "description": "Orientation of the radio group"
     },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio group will be readonly"
-    },
     "value": {
       "type": "string",
       "isRequired": false,
       "description": "The value of the checked radio"
+    }
+  },
+  "SegmentGroupContext": {
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the radio group"
+    },
+    "focus": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to focus the radio group"
+    },
+    "getRadioControlProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
+    "getRadioHiddenInputProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
+    "getRadioLabelProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
+    "getRadioProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
+    "getRadioState": {
+      "type": "(props: RadioProps) => RadioState",
+      "isRequired": true,
+      "description": "Returns the state details of a radio input"
+    },
+    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the radio group"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the radio group"
     }
   }
 }

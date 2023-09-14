@@ -41,7 +41,7 @@
       "description": "If using a custom display format, this converts the default format to the custom format."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -85,7 +85,6 @@
       "isRequired": false,
       "description": "The minimum number of fraction digits to use. Possible values are from 0 to 20"
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
