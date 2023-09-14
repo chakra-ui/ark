@@ -6,6 +6,21 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `ToggleGroup` component
+- Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type that can be used with `asChild` prop.
+
+### Changed
+
+- Revised `Comoobox` component to support multiple selection
+- Revised `Select` component to support multiple selection
+
+### Fixed
+
+- Fix issue where event callbacks that use `flushSync` did not have a stable reference, resulting in a noticable blocking re-renders.
+  > Affected components: `Slider`, `RangeSlider`, `NumberInput`, `ColorPicker`
+
 ## [0.15.0-beta.0] - 2023-09-14
 
 ### Added
@@ -252,5 +267,4 @@ description: All notable changes to this project will be documented in this file
 [0.13.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.13.0
 [0.13.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.13.1
 [0.14.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.14.0
-
 [0.15.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0-beta.0
