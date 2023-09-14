@@ -1,21 +1,7 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Combobox,
-  ComboboxClearTrigger,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxItemText,
-  ComboboxLabel,
-  ComboboxPositioner,
-  ComboboxTrigger,
-} from './'
-import { ComboboxItemIndicator } from './combobox-item-indicator'
+import { Combobox } from './'
 import './combobox.css'
 
 const meta: Meta = {
@@ -27,30 +13,30 @@ export default meta
 export const Basic = () => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Combobox items={items}>
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxControl>
-        <ComboboxInput />
-        <ComboboxTrigger>Open</ComboboxTrigger>
-        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-      </ComboboxControl>
+    <Combobox.Root items={items}>
+      <Combobox.Label>Framework</Combobox.Label>
+      <Combobox.Control>
+        <Combobox.Input />
+        <Combobox.Trigger>Open</Combobox.Trigger>
+        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      </Combobox.Control>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            <ComboboxItemGroup id="framework">
-              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.ItemGroup id="framework">
+              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
-                  <ComboboxItem item={item}>
-                    <ComboboxItemText>{item}</ComboboxItemText>
-                    <ComboboxItemIndicator>✓</ComboboxItemIndicator>
-                  </ComboboxItem>
+                  <Combobox.Item item={item}>
+                    <Combobox.ItemText>{item}</Combobox.ItemText>
+                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
                 )}
               </For>
-            </ComboboxItemGroup>
-          </ComboboxContent>
-        </ComboboxPositioner>
+            </Combobox.ItemGroup>
+          </Combobox.Content>
+        </Combobox.Positioner>
       </Portal>
-    </Combobox>
+    </Combobox.Root>
   )
 }

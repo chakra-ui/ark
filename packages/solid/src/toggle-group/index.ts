@@ -3,6 +3,7 @@ import { ToggleGroup as ToggleGroupRoot, type ToggleGroupProps } from './toggle-
 
 const ToggleGroup = Object.assign(ToggleGroupRoot, {
   Root: ToggleGroupRoot,
+  Toggle: Toggle,
 })
 
 export { Toggle, ToggleGroup }

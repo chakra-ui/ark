@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Toggle, ToggleGroup } from './'
+import { ToggleGroup } from './'
 import './toggle-group.css'
 
 type ToggleGroupType = typeof ToggleGroup
@@ -13,30 +13,29 @@ export default meta
 
 export const Basic = () => {
   return (
-    <ToggleGroup>
-      <Toggle value="a">A</Toggle>
-      <Toggle value="b">B</Toggle>
-      <Toggle value="c">C</Toggle>
-    </ToggleGroup>
+    <ToggleGroup.Root>
+      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+    </ToggleGroup.Root>
+  )
+}
+export const Initialvalue = () => {
+  return (
+    <ToggleGroup.Root defaultValue={['b']}>
+      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+    </ToggleGroup.Root>
   )
 }
 
 export const Multiple = () => {
   return (
-    <ToggleGroup multiple>
-      <Toggle value="a">A</Toggle>
-      <Toggle value="b">B</Toggle>
-      <Toggle value="c">C</Toggle>
-    </ToggleGroup>
-  )
-}
-
-export const Initialvalue = () => {
-  return (
-    <ToggleGroup defaultValue={['b']}>
-      <Toggle value="a">A</Toggle>
-      <Toggle value="b">B</Toggle>
-      <Toggle value="c">C</Toggle>
-    </ToggleGroup>
+    <ToggleGroup.Root multiple>
+      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
+      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+    </ToggleGroup.Root>
   )
 }

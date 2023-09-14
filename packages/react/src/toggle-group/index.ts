@@ -4,6 +4,7 @@ import { useToggleGroupContext, type ToggleGroupContext } from './toggle-group-c
 
 const ToggleGroup = Object.assign(ToggleGroupRoot, {
   Root: ToggleGroupRoot,
+  Toggle: Toggle,
 })
 
 export { Toggle, ToggleGroup, useToggleGroupContext }

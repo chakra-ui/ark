@@ -1,29 +1,21 @@
 ---
 id: combobox
 title: Combobox
-description: TODO
+description:
+  An intelligent input box with a dropdown for suggesting possible options.
 ---
 
 import Story from '~/components/story.astro'
 
-## Import
+## Basic Usage
 
-```ts
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxLabel,
-  ComboboxOption,
-  ComboboxOptionProps,
-  ComboboxPositioner,
-  ComboboxProps,
-  ComboboxTrigger,
-  Portal,
-} from '@ark-ui/react'
-```
+Straightforward implementation using a simple array to populate the dropdown.
 
-## Usage
+<Story id="Basic" />
 
-TBD
+## Advanced Customization
+
+Extended example that shows usage with complex item objects, including disabled
+state for certain options.
+
+<Story id="Advanced" />

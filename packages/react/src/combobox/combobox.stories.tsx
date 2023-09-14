@@ -1,20 +1,6 @@
 import type { Meta } from '@storybook/react'
-import { Portal } from '..'
-import {
-  Combobox,
-  ComboboxClearTrigger,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
-  ComboboxItemText,
-  ComboboxLabel,
-  ComboboxPositioner,
-  ComboboxTrigger,
-} from './'
+import { Portal } from '@zag-js/react'
+import { Combobox } from './'
 import './combobox.css'
 
 type ComboboxType = typeof Combobox
@@ -27,69 +13,65 @@ const meta: Meta<ComboboxType> = {
 export default meta
 
 export const Basic = () => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const items = ['React', 'Solid', 'Vue']
   return (
-    <Combobox items={items}>
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxControl>
-        <ComboboxInput />
-        <ComboboxTrigger>Open</ComboboxTrigger>
-        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-      </ComboboxControl>
+    <Combobox.Root items={items}>
+      <Combobox.Label>Framework</Combobox.Label>
+      <Combobox.Control>
+        <Combobox.Input />
+        <Combobox.Trigger>Open</Combobox.Trigger>
+        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      </Combobox.Control>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            <ComboboxItemGroup id="framework">
-              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.ItemGroup id="framework">
+              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
               {items.map((item) => (
-                <ComboboxItem key={item.value} item={item}>
-                  <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
-                </ComboboxItem>
+                <Combobox.Item key={item} item={item}>
+                  <Combobox.ItemText>{item}</Combobox.ItemText>
+                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
               ))}
-            </ComboboxItemGroup>
-          </ComboboxContent>
-        </ComboboxPositioner>
+            </Combobox.ItemGroup>
+          </Combobox.Content>
+        </Combobox.Positioner>
       </Portal>
-    </Combobox>
+    </Combobox.Root>
   )
 }
+type Item = { label: string; value: string; disabled?: boolean }
 
-export const Multiple = () => {
-  const items = [
+export const Advanced = () => {
+  const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Combobox items={items} multiple>
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxControl>
-        <ComboboxInput />
-        <ComboboxTrigger>Open</ComboboxTrigger>
-        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-      </ComboboxControl>
+    <Combobox.Root items={items}>
+      <Combobox.Label>Framework</Combobox.Label>
+      <Combobox.Control>
+        <Combobox.Input />
+        <Combobox.Trigger>Open</Combobox.Trigger>
+        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      </Combobox.Control>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            <ComboboxItemGroup id="framework">
-              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.ItemGroup id="framework">
+              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
               {items.map((item) => (
-                <ComboboxItem key={item.value} item={item}>
-                  <ComboboxItemText>{item.label}</ComboboxItemText>
-                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
-                </ComboboxItem>
+                <Combobox.Item key={item.value} item={item}>
+                  <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
               ))}
-            </ComboboxItemGroup>
-          </ComboboxContent>
-        </ComboboxPositioner>
+            </Combobox.ItemGroup>
+          </Combobox.Content>
+        </Combobox.Positioner>
       </Portal>
-    </Combobox>
+    </Combobox.Root>
   )
 }

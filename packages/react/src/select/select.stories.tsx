@@ -1,21 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
-import {
-  Select,
-  SelectClearTrigger,
-  SelectContent,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectTrigger,
-} from './'
-import { SelectControl } from './select-control'
-import { SelectValue } from './select-value'
+import { Select } from './'
 import './select.css'
 
 type SelectType = typeof Select
@@ -30,74 +16,74 @@ export default meta
 export const Basic = () => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Select items={items}>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a Framework" />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               {items.map((item) => (
-                <SelectItem key={item} item={item}>
-                  <SelectItemText>{item}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
+                <Select.Item key={item} item={item}>
+                  <Select.ItemText>{item}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
               ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }
 
+type Item = { label: string; value: string; disabled?: boolean }
+
 export const Advanced = () => {
-  const items = [
+  const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Select items={items} onChange={(e) => console.log(e.items)}>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a Framework" />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               {items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
+                <Select.Item key={item.value} item={item}>
+                  <Select.ItemText>{item.label}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
               ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }
-
-type Item = { label: string; value: string }
 
 export const Controlled = () => {
   const [selectedItems, setSelectedItems] = useState<Item[]>([])
 
-  const items = [
+  const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
@@ -105,69 +91,64 @@ export const Controlled = () => {
   ]
 
   return (
-    <>
-      <output>
-        <pre>{JSON.stringify(selectedItems, null, 2)}</pre>
-      </output>
-      <Select items={items} multiple onChange={(e) => setSelectedItems(e.items)}>
-        <SelectLabel>Framework</SelectLabel>
-        <SelectControl>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a Framework" />
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
-        <Portal>
-          <SelectPositioner>
-            <SelectContent>
-              <SelectItemGroup id="framework">
-                <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
-                {items.map((item) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText>{item.label}</SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
-        </Portal>
-      </Select>
-    </>
+    <Select.Root items={items} onChange={(e) => setSelectedItems(e.items)}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+              {items.map((item) => (
+                <Select.Item key={item.value} item={item}>
+                  <Select.ItemText>{item.label}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
+              ))}
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   )
 }
 
 export const Multiple = () => {
-  const items = [
+  const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Select items={items} multiple>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a Framework" />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items} multiple>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               {items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
+                <Select.Item key={item.value} item={item}>
+                  <Select.ItemText>{item.label}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
               ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }

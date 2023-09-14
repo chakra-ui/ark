@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import {
-  Select,
-  SelectClearTrigger,
-  SelectContent,
-  SelectControl,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectTrigger,
-  SelectValue,
-} from './'
+import { Select } from './'
 import './select.css'
 
 const items = ['React', 'Solid', 'Vue']
@@ -21,28 +7,28 @@ const items = ['React', 'Solid', 'Vue']
 <template>
   <Story title="Select">
     <Variant title="Basic">
-      <Select :items="items">
-        <SelectLabel>Framework</SelectLabel>
-        <SelectControl>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a Framework" />
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
+      <Select.Root :items="items">
+        <Select.Label>Framework</Select.Label>
+        <Select.Control>
+          <Select.Trigger>
+            <Select.Value placeholder="Select a Framework" />
+          </Select.Trigger>
+          <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        </Select.Control>
         <Teleport to="body">
-          <SelectPositioner>
-            <SelectContent>
-              <SelectItemGroup id="framework">
-                <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
-                <SelectItem v-for="item in items" :key="item" :item="item">
-                  <SelectItemText>{{ item }}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
+          <Select.Positioner>
+            <Select.Content>
+              <Select.ItemGroup id="framework">
+                <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+                <Select.Item v-for="item in items" :key="item" :item="item">
+                  <Select.ItemText>{{ item }}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
+              </Select.ItemGroup>
+            </Select.Content>
+          </Select.Positioner>
         </Teleport>
-      </Select>
+      </Select.Root>
     </Variant>
   </Story>
 </template>

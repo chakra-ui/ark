@@ -1,20 +1,6 @@
 import { For, Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Select,
-  SelectClearTrigger,
-  SelectContent,
-  SelectControl,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectTrigger,
-  SelectValue,
-} from './'
+import { Select } from './'
 import './select.css'
 
 const meta: Meta = {
@@ -26,31 +12,31 @@ export default meta
 export const Basic = () => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Select items={items}>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a Framework" />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
-                  <SelectItem item={item}>
-                    <SelectItemText>{item}</SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
+                  <Select.Item item={item}>
+                    <Select.ItemText>{item}</Select.ItemText>
+                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  </Select.Item>
                 )}
               </For>
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }

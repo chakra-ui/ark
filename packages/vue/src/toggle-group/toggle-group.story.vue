@@ -15,15 +15,15 @@ const value = ref(['b'])
         <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
       </ToggleGroup.Root>
     </Variant>
-    <Variant title="Multiple">
-      <ToggleGroup.Root multiple>
+    <Variant title="Initialvalue">
+      <ToggleGroup.Root v-model="value">
         <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
         <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
         <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
       </ToggleGroup.Root>
     </Variant>
-    <Variant title="Initialvalue">
-      <ToggleGroup.Root v-model="value">
+    <Variant title="Multiple">
+      <ToggleGroup.Root multiple>
         <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
         <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
         <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>

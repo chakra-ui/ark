@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import {
-  Combobox,
-  ComboboxClearTrigger,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
-  ComboboxItemText,
-  ComboboxLabel,
-  ComboboxPositioner,
-  ComboboxTrigger,
-} from './'
+import { Combobox } from './'
 import './combobox.css'
 
 const items = [
@@ -27,27 +13,27 @@ const items = [
 <template>
   <Story title="Combobox">
     <Variant title="Basic">
-      <Combobox :items="items">
-        <ComboboxLabel>Framework</ComboboxLabel>
-        <ComboboxControl>
-          <ComboboxInput />
-          <ComboboxTrigger>Open</ComboboxTrigger>
-          <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-        </ComboboxControl>
+      <Combobox.Root :items="items">
+        <Combobox.Label>Framework</Combobox.Label>
+        <Combobox.Control>
+          <Combobox.Input />
+          <Combobox.Trigger>Open</Combobox.Trigger>
+          <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+        </Combobox.Control>
         <Teleport to="body">
-          <ComboboxPositioner>
-            <ComboboxContent>
-              <ComboboxItemGroup id="framework">
-                <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
-                <ComboboxItem v-for="item in items" :key="item.value" :item="item">
-                  <ComboboxItemText>{{ item.label }}</ComboboxItemText>
-                  <ComboboxItemIndicator>✓</ComboboxItemIndicator>
-                </ComboboxItem>
-              </ComboboxItemGroup>
-            </ComboboxContent>
-          </ComboboxPositioner>
+          <Combobox.Positioner>
+            <Combobox.Content>
+              <Combobox.ItemGroup id="framework">
+                <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+                <Combobox.Item v-for="item in items" :key="item.value" :item="item">
+                  <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
+                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                </Combobox.Item>
+              </Combobox.ItemGroup>
+            </Combobox.Content>
+          </Combobox.Positioner>
         </Teleport>
-      </Combobox>
+      </Combobox.Root>
     </Variant>
   </Story>
 </template>
