@@ -22,7 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.11.0",
-    "rehype": "12.0.1",
+    "rehype": "13.0.1",
     "rehype-autolink-headings": "6.1.1",
     "rehype-pretty-code": "0.10.1",
     "rehype-slug": "5.1.0",
