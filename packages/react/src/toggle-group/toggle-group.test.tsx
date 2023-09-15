@@ -22,19 +22,19 @@ describe('Toggle', () => {
     expect(screen.getByText('A')).toBeChecked()
   })
 
-  it('should handle onChange', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+  it('should handle onValueChange', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     await user.click(screen.getByText('A'))
-    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ value: ['a'] }))
+    expect(onValueChange).toHaveBeenCalledWith(expect.objectContaining({ value: ['a'] }))
   })
 
   it('should handle multiple selection', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest multiple onChange={onChange} />)
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest multiple onValueChange={onValueChange} />)
     await user.click(screen.getByText('A'))
     await user.click(screen.getByText('B'))
-    expect(onChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: ['a', 'b'] }))
+    expect(onValueChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: ['a', 'b'] }))
   })
 
   it('should handle disabled state', () => {

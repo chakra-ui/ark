@@ -15,7 +15,12 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = useState(30)
   return (
-    <Slider.Root min={-50} max={50} value={value} onChange={(details) => setValue(details.value)}>
+    <Slider.Root
+      min={-50}
+      max={50}
+      value={value}
+      onValueChange={(details) => setValue(details.value)}
+    >
       <Slider.Label>Label</Slider.Label>
       <Slider.Output>{value}</Slider.Output>
       <Slider.Control>

@@ -38,14 +38,14 @@ describe('Rating Group', () => {
     expect(input).toHaveValue('1')
   })
 
-  it('should trigger onChange on click', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest value={1} onChange={onChange} max={5} />)
+  it('should trigger onValueChange on click', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest value={1} onValueChange={onValueChange} max={5} />)
 
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
     fireEvent.click(maxStarRadio)
 
-    await waitFor(() => expect(onChange).toHaveBeenNthCalledWith(1, { value: 5 }))
+    await waitFor(() => expect(onValueChange).toHaveBeenNthCalledWith(1, { value: 5 }))
   })
 
   it('should update rating on click', async () => {

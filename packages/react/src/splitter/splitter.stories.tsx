@@ -51,8 +51,8 @@ export const Events = () => (
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
-    onResizeStart={(details) => console.log('onResizeStart', details)}
-    onResizeEnd={(details) => console.log('onResizeEnd', details)}
+    onSizeChangeStart={(details) => console.log('onSizeChangeStart', details)}
+    onSizeChangeEnd={(details) => console.log('onSizeChangeEnd', details)}
   >
     <SplitterPanel id="a">A</SplitterPanel>
     <SplitterResizeTrigger id="a:b" />

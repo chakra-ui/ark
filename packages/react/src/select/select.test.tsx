@@ -118,7 +118,7 @@ describe('Select', () => {
 
   it('should open menu when onOpen is called', async () => {
     const onOpen = vi.fn()
-    render(<ComponentUnderTest onOpen={onOpen} />)
+    render(<ComponentUnderTest onOpenChange={onOpen} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
     waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))

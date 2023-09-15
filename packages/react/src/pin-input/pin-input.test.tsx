@@ -53,7 +53,7 @@ describe('PinInput', () => {
 
   it('should invoke onComplete when all inputs are filled out', async () => {
     const onComplete = vi.fn()
-    render(<Component onComplete={onComplete} />)
+    render(<Component onValueComplete={onComplete} />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
     await user.type(screen.getByLabelText('pin code 2 of 3'), '2')
@@ -81,7 +81,7 @@ describe('PinInput', () => {
 
   it('should replace last input calls onComplete correctly', async () => {
     const onComplete = vi.fn()
-    render(<Component onComplete={onComplete} />)
+    render(<Component onValueComplete={onComplete} />)
 
     const input1 = screen.getByLabelText('pin code 1 of 3')
     const input2 = screen.getByLabelText('pin code 2 of 3')

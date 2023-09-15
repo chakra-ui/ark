@@ -18,8 +18,8 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref)
     'id',
     'ids',
     'multiple',
-    'onChange',
     'onFocusChange',
+    'onValueChange',
     'orientation',
     'value',
   ])

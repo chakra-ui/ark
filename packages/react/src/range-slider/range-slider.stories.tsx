@@ -25,7 +25,7 @@ export default meta
 export const Basic = () => {
   const [values, setValues] = useState([33, 66])
   return (
-    <RangeSlider min={0} max={100} value={values} onChange={(e) => setValues(e.value)}>
+    <RangeSlider min={0} max={100} value={values} onValueChange={(e) => setValues(e.value)}>
       <RangeSliderLabel>Label</RangeSliderLabel>
       <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>

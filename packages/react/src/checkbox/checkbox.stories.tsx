@@ -23,7 +23,7 @@ export const Controlled = () => {
   const [checked, setChecked] = useState<CheckedState>(true)
   return (
     <>
-      <Checkbox checked={checked} onChange={(e) => setChecked(e.checked)}>
+      <Checkbox checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>
         <CheckboxLabel>Checkbox</CheckboxLabel>
         <CheckboxControl />
       </Checkbox>

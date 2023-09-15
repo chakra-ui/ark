@@ -21,7 +21,7 @@ export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn
   const context: numberInput.Context = {
     ...initialContext,
     value: props.value,
-    onChange: useEvent(props.onChange, { sync: true }),
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
   }
 
   const [state, send] = useMachine(numberInput.machine(initialContext), { context })

@@ -18,7 +18,13 @@ import {
 const ComponentUnderTest = (props: RangeSliderProps) => {
   const [value, setValue] = useState([-20, 20])
   return (
-    <RangeSlider min={-50} max={50} value={value} onChange={(e) => setValue(e.value)} {...props}>
+    <RangeSlider
+      min={-50}
+      max={50}
+      value={value}
+      onValueChange={(e) => setValue(e.value)}
+      {...props}
+    >
       <RangeSliderLabel>Quantity: </RangeSliderLabel>
       <RangeSliderOutput>{({ value }) => value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>

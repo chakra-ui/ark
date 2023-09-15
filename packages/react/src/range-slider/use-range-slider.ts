@@ -22,7 +22,7 @@ export const useRangeSlider = (props: UseRangeSliderProps): UseRangeSliderReturn
   const context: rangeSlider.Context = {
     ...initialContext,
     value: props.value,
-    onChange: useEvent(props.onChange, { sync: true }),
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
   }
 
   const [state, send] = useMachine(rangeSlider.machine(initialContext), {

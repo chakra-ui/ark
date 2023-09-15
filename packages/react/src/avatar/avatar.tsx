@@ -12,8 +12,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'getRootNode',
     'id',
-    'onError',
-    'onLoad',
+    'onLoadingStatusChange',
   ])
   const avatar = useAvatar(useAvatarProps)
   const mergedProps = mergeProps(avatar.rootProps, localProps)

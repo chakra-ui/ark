@@ -46,7 +46,7 @@ export const InitialValue = () => (
 export const Controlled = () => {
   const [value, setValue] = useState('react')
   return (
-    <SegmentGroup value={value} onChange={(e) => setValue(e.value)}>
+    <SegmentGroup value={value} onValueChange={(e) => setValue(e.value)}>
       <SegmentGroupIndicator />
       {options.map((option, id) => (
         <Segment key={id} value={option.id}>

@@ -18,7 +18,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, re
     'id',
     'ids',
     'name',
-    'onChange',
+    'onValueChange',
     'orientation',
     'value',
   ])
