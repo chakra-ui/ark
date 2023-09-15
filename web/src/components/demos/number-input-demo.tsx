@@ -1,30 +1,24 @@
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import {
   NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
   NumberInputIncrementTrigger,
   NumberInputInput,
-  NumberInputScrubber,
+  NumberInputLabel,
 } from '~/components/ui/number-input'
-import { Button } from '../ui/button'
 
 export const NumberInputDemo = () => {
   return (
-    <NumberInput min={-50} max={50} defaultValue="42">
-      <NumberInputScrubber />
-      <NumberInputInput />
+    <NumberInput min={0} max={5} defaultValue="3" width="2xs">
+      <NumberInputLabel>Quantity</NumberInputLabel>
       <NumberInputControl>
-        <NumberInputIncrementTrigger asChild>
-          <Button size="xs" variant="tertiary" aria-label="Increment">
-            <ChevronUp />
-          </Button>
+        <NumberInputInput />
+        <NumberInputIncrementTrigger>
+          <ChevronUpIcon />
         </NumberInputIncrementTrigger>
-        <hr />
-        <NumberInputDecrementTrigger asChild>
-          <Button px="0" size="xs" variant="tertiary" aria-label="Decrement">
-            <ChevronDown />
-          </Button>
+        <NumberInputDecrementTrigger>
+          <ChevronDownIcon />
         </NumberInputDecrementTrigger>
       </NumberInputControl>
     </NumberInput>
