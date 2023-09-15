@@ -19,7 +19,7 @@ const options = [
 export const Basic = () => {
   const [value, setValue] = createSignal('apple')
   return (
-    <RadioGroup onChange={({ value }) => setValue(value)}>
+    <RadioGroup onValueChange={({ value }) => setValue(value)}>
       <RadioGroupLabel>Fruits: {value()}</RadioGroupLabel>
       <For each={options}>
         {(option) => (
@@ -39,7 +39,7 @@ export const Basic = () => {
 export const Disabled = () => {
   const [value, setValue] = createSignal('apple')
   return (
-    <RadioGroup onChange={({ value }) => setValue(value)}>
+    <RadioGroup onValueChange={({ value }) => setValue(value)}>
       <RadioGroupLabel>Fruits: {value()}</RadioGroupLabel>
       <For each={options}>
         {(option) => (

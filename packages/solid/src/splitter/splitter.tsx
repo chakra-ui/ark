@@ -20,9 +20,9 @@ export const Splitter = (props: SplitterProps) => {
     'getRootNode',
     'id',
     'ids',
-    'onResize',
-    'onResizeEnd',
-    'onResizeStart',
+    'onSizeChange',
+    'onSizeChangeEnd',
+    'onSizeChangeStart',
     'orientation',
     'size',
   ])

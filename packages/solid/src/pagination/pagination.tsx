@@ -21,7 +21,7 @@ export const Pagination = (props: PaginationProps) => {
     'getRootNode',
     'id',
     'ids',
-    'onChange',
+    'onPageChange',
     'page',
     'pageSize',
     'siblingCount',

@@ -38,7 +38,7 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setOpen(!isOpen)}>click me</button>
-      <HoverCard open={isOpen()} onClose={() => setOpen(false)}>
+      <HoverCard open={isOpen()} onOpenChange={() => setOpen(false)}>
         <HoverCardTrigger>Hover me</HoverCardTrigger>
         <Portal>
           <HoverCardPositioner>

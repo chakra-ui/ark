@@ -36,12 +36,12 @@ describe('Tabs', () => {
   })
 
   it('should activate tab on click', async () => {
-    const onChange = vi.fn()
-    render(() => <ComponentUnderTest onChange={onChange} />)
+    const onValueChange = vi.fn()
+    render(() => <ComponentUnderTest onValueChange={onValueChange} />)
     const tab = screen.getByText('React Trigger')
 
     await user.click(tab)
-    expect(onChange).toHaveBeenCalledWith({ value: 'React' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'React' })
   })
 
   it('should not focus disabled tab', async () => {

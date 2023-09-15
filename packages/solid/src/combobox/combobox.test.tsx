@@ -86,9 +86,9 @@ describe('Combobox', () => {
     await waitFor(() => expect(screen.getByRole('combobox')).toHaveValue('React'))
   })
 
-  it('should call onChange when item is selected', async () => {
-    const onChange = vi.fn()
-    render(() => <ComponentUnderTest onChange={onChange} />)
+  it('should call onValueChange when item is selected', async () => {
+    const onValueChange = vi.fn()
+    render(() => <ComponentUnderTest onValueChange={onValueChange} />)
 
     user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
@@ -96,15 +96,15 @@ describe('Combobox', () => {
     user.click(screen.getByRole('option', { name: 'React' }))
 
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledTimes(1)
+      expect(onValueChange).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should open menu when onOpen is called', async () => {
-    const onOpen = vi.fn()
-    render(() => <ComponentUnderTest onOpen={onOpen} />)
+  it('should open menu when onOpenChange is called', async () => {
+    const onOpenChange = vi.fn()
+    render(() => <ComponentUnderTest onOpenChange={onOpenChange} />)
     user.click(screen.getByTestId('trigger'))
-    await waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {

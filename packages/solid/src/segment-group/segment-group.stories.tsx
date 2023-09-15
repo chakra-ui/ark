@@ -35,7 +35,7 @@ export const Basic = () => {
 export const Controlled = () => {
   const [value, setValue] = createSignal('react')
   return (
-    <SegmentGroup value={value()} onChange={({ value }) => setValue(value)}>
+    <SegmentGroup value={value()} onValueChange={({ value }) => setValue(value)}>
       <SegmentGroupIndicator />
       <For each={options}>
         {(option) => (
@@ -52,7 +52,7 @@ export const Controlled = () => {
 export const Disabled = () => {
   const [value, setValue] = createSignal('react')
   return (
-    <SegmentGroup value={value()} onChange={({ value }) => setValue(value)}>
+    <SegmentGroup value={value()} onValueChange={({ value }) => setValue(value)}>
       <SegmentGroupIndicator />
       <For each={options}>
         {(option) => (
