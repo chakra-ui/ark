@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Add memoization to `Select` and `Combobox` item collection to improve performance.
+
 ## [0.15.0] - 2023-09-14
 
 ### Added

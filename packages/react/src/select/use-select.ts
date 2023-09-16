@@ -1,7 +1,7 @@
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
-import { useId } from 'react'
+import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type CollectionItem, type Optional } from '../types'
@@ -23,7 +23,9 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = select.collection(collectionOptions)
+
+  const collection = useMemo(() => select.collection(collectionOptions), [collectionOptions])
+
   const getRootNode = useEnvironmentContext()
 
   const initialContext = {
