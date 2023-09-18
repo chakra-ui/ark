@@ -1,3 +1,0 @@
-{
-  "Basic": "const Basic = () => (\n  <RatingGroup.Root max={5} defaultValue={3} allowHalf>\n    <RatingGroup.Label>Label</RatingGroup.Label>\n    <RatingGroup.Control>\n      {({ sizeArray }) =>\n        sizeArray.map((index) => (\n          <RatingGroup.Rating key={index} index={index}>\n            {({ isHalf, isHighlighted }) => {\n              if (isHalf) return <IconHalf />\n              if (isHighlighted) return <IconFull />\n              return <IconEmpty />\n            }}\n          </RatingGroup.Rating>\n        ))\n      }\n    </RatingGroup.Control>\n  </RatingGroup.Root>\n)"
-}

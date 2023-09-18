@@ -1,3 +1,0 @@
-{
-  "Basic": "const Basic = () => {\n  const [value, setValue] = createSignal(30)\n  return (\n    <Slider min={-50} max={50} value={value()} onChange={(e) => setValue(e.value)}>\n      <SliderLabel>Label</SliderLabel>\n      <SliderOutput>{value}</SliderOutput>\n      <SliderControl>\n        <SliderTrack>\n          <SliderRange />\n        </SliderTrack>\n        <SliderThumb />\n      </SliderControl>\n      <SliderMarkerGroup>\n        <SliderMarker value={-30}>*</SliderMarker>\n        <SliderMarker value={0}>*</SliderMarker>\n        <SliderMarker value={30}>*</SliderMarker>\n      </SliderMarkerGroup>\n    </Slider>\n  )\n}"
-}
