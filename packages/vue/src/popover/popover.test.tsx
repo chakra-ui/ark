@@ -80,7 +80,7 @@ describe('Popover', () => {
         return () => (
           <>
             <button onClick={handleToggleClick}>toggle</button>
-            <ComponentUnderTest isOpen={isOpen.value} onOpenChangeChange={handleClose} />
+            <ComponentUnderTest isOpen={isOpen.value} onOpenChange={handleClose} />
           </>
         )
       },
