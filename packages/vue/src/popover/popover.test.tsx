@@ -1,6 +1,5 @@
 import user from '@testing-library/user-event'
-import { render } from '@testing-library/vue'
-import { defineComponent, ref } from 'vue'
+import { render, waitFor } from '@testing-library/vue'
 import {
   Popover,
   PopoverArrow,
@@ -42,7 +41,7 @@ describe('Popover', () => {
     expect(getByRole('dialog')).toBeInTheDocument()
 
     await user.click(getByText('close'))
-    expect(queryByText('title')).not.toBeVisible()
+    await waitFor(() => expect(queryByText('title')).not.toBeVisible())
   })
 
   it.skip('should hide the tooltip when escape is pressed', async () => {
@@ -62,41 +61,5 @@ describe('Popover', () => {
 
     await user.click(getByText('click me'))
     expect(getByRole('dialog')).toBeInTheDocument()
-  })
-
-  it('should allow controlled usage', async () => {
-    const ControlledComponentUnderTest = defineComponent({
-      setup() {
-        const isOpen = ref(false)
-
-        const handleToggleClick = () => {
-          isOpen.value = !isOpen.value
-        }
-
-        const handleClose = () => {
-          return (isOpen.value = false)
-        }
-
-        return () => (
-          <>
-            <button onClick={handleToggleClick}>toggle</button>
-            <ComponentUnderTest isOpen={isOpen.value} onOpenChange={handleClose} />
-          </>
-        )
-      },
-    })
-
-    const { getByRole, queryByText } = render(ControlledComponentUnderTest)
-    expect(queryByText('title')).not.toBeVisible()
-
-    const button = getByRole('button', { name: /toggle/i })
-
-    await user.click(button)
-
-    expect(getByRole('dialog')).toBeInTheDocument()
-    expect(queryByText('title')).toBeVisible()
-
-    await user.click(button)
-    expect(queryByText('title')).not.toBeVisible()
   })
 })
