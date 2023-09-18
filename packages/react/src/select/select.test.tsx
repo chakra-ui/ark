@@ -74,7 +74,7 @@ describe('Select', () => {
 
     const item = screen.getByText('React')
     user.click(item)
-    waitFor(() => expect(trigger).toHaveTextContent('React'))
+    await waitFor(() => expect(trigger).toHaveTextContent('React'))
   })
 
   it('should close on select', async () => {
@@ -83,7 +83,7 @@ describe('Select', () => {
     user.click(trigger)
     const item = screen.getByText('React')
     user.click(item)
-    waitFor(() => expect(screen.queryByText('Frameworks')).not.toBeVisible())
+    await waitFor(() => expect(screen.queryByText('Frameworks')).not.toBeVisible())
   })
 
   it('should be disabled when disabled is true', async () => {
@@ -101,7 +101,7 @@ describe('Select', () => {
     const itemVue = screen.getByText('Vue')
     user.click(itemReact)
     user.click(itemVue)
-    waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
+    await waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
   })
 
   it('should call onChange when item is selected', async () => {
@@ -121,13 +121,13 @@ describe('Select', () => {
     render(<ComponentUnderTest onOpenChange={onOpen} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
-    waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {
     render(<ComponentUnderTest readOnly />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
-    waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
+    await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 })
