@@ -1,7 +1,7 @@
 import { Portal } from '@ark-ui/react'
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import {
   Select,
-  SelectClearTrigger,
   SelectContent,
   SelectControl,
   SelectItem,
@@ -19,18 +19,17 @@ export const SelectDemo = () => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
+    { label: 'Vue', value: 'vue' },
   ]
-
   return (
-    <Select items={items}>
+    <Select positioning={{ sameWidth: true }} width="2xs" items={items}>
       <SelectLabel>Framework</SelectLabel>
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a Framework" />
+          <ChevronsUpDownIcon width="16" height="16" />
         </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
       </SelectControl>
       <Portal>
         <SelectPositioner>
@@ -40,7 +39,9 @@ export const SelectDemo = () => {
               {items.map((item) => (
                 <SelectItem key={item.value} item={item}>
                   <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
+                  <SelectItemIndicator>
+                    <CheckIcon />
+                  </SelectItemIndicator>
                 </SelectItem>
               ))}
             </SelectItemGroup>

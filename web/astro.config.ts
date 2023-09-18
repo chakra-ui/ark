@@ -14,7 +14,11 @@ export default defineConfig({
     },
   },
   redirects: {
-    '/docs/[...framework]/overview/[doc]': '/docs/overview/[doc]',
-    '/docs/[...framework]/components/[...component]': '/docs/components/[component]',
+    '/docs/react/overview/[doc]': '/docs/overview/[doc]',
+    '/docs/react/components/[component]': '/docs/components/[component]',
+    '/docs/solid/overview/[doc]': '/docs/overview/[doc]',
+    '/docs/solid/components/[component]': '/docs/components/[component]',
+    '/docs/vue/overview/[doc]': '/docs/overview/[doc]',
+    '/docs/vue/components/[component]': '/docs/components/[component]',
   },
 })

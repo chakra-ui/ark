@@ -1,37 +1,54 @@
-import { createContext, forwardRef, useContext, type ComponentType } from 'react'
+import { createContext, forwardRef, useContext, type ComponentProps, type ElementType } from 'react'
 
-type AnyProps = Record<string, unknown>
-type AnyRecipe = {
-  (props?: AnyProps): Record<string, string>
-  splitVariantProps: (props: AnyProps) => any
+type Props = Record<string, unknown>
+type Recipe = {
+  (props?: Props): Record<string, string>
+  splitVariantProps: (props: Props) => any
+}
+type Slot<R extends Recipe> = keyof ReturnType<R>
+type SlotRecipe<R extends Recipe> = Record<Slot<R>, string>
+type VariantProps<R extends Recipe> = Parameters<R>[0]
+
+export interface StyledContextProvider<T extends ElementType, R extends Recipe> {
+  (props: ComponentProps<T> & VariantProps<R>): JSX.Element
 }
 
-export const createStyleContext = <R extends AnyRecipe>(recipe: R) => {
-  const StyleContext = createContext<Record<string, string> | null>(null)
+const cx = (...args: (string | undefined)[]) => args.filter(Boolean).join(' ')
 
-  const withProvider = <T extends {}>(Component: ComponentType<T>, part?: string) => {
-    const Comp = forwardRef((props: T & Parameters<R>[0], ref) => {
-      const [variantProps, rest] = recipe.splitVariantProps(props)
-      const styles = recipe(variantProps)
+export const createStyleContext = <R extends Recipe>(recipe: R) => {
+  const StyleContext = createContext<SlotRecipe<R> | null>(null)
+
+  const withProvider = <T extends ElementType>(Component: T, slot?: Slot<R>) => {
+    const Comp = forwardRef((props: ComponentProps<T> & VariantProps<R>, ref) => {
+      const [variantProps, localProps] = recipe.splitVariantProps(props)
+      const slotRecipe = recipe(variantProps) as SlotRecipe<R>
       return (
-        <StyleContext.Provider value={styles}>
-          <Component ref={ref} className={styles?.[part ?? '']} {...rest} />
+        <StyleContext.Provider value={slotRecipe}>
+          <Component
+            ref={ref}
+            {...localProps}
+            className={cx(slotRecipe[slot ?? ''], localProps.className)}
+          />
         </StyleContext.Provider>
       )
     })
-    Comp.displayName = Component.displayName || Component.name
-    return Comp
+    // @ts-expect-error JSX.IntrinsicElements do not have a displayName but Function and Class components do
+    Comp.displayName = Component.displayName || Component.name || 'Component'
+    return Comp as unknown as StyledContextProvider<T, R>
   }
 
-  const withContext = <T extends {}>(Component: ComponentType<T>, part?: string) => {
-    if (!part) return Component
-
-    const Comp = forwardRef((props: T, ref) => {
-      const styles = useContext(StyleContext)
-      return <Component ref={ref} className={styles?.[part ?? '']} {...props} />
+  const withContext = <T extends ElementType>(Component: T, slot?: Slot<R>) => {
+    const Comp = forwardRef((props: ComponentProps<T>, ref) => {
+      const slotRecipe = useContext(StyleContext)
+      return (
+        // @ts-expect-error
+        <Component ref={ref} {...props} className={cx(slotRecipe?.[slot ?? ''], props.className)} />
+      )
     })
-    Comp.displayName = Component.displayName || Component.name
-    return Comp
+    // @ts-expect-error JSX.IntrinsicElements do not have a displayName but Function and Class components do
+    Comp.displayName = Component.displayName || Component.name || 'Component'
+
+    return Comp as unknown as T
   }
 
   return {

@@ -1,7 +1,7 @@
 import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
-import { useId } from 'react'
+import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type CollectionItem, type Optional } from '../types'
@@ -18,13 +18,19 @@ export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
   const getRootNode = useEnvironmentContext()
+
   const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
     'items',
   ])
-  const collection = combobox.collection(collectionOptions)
+
+  const collection = useMemo(
+    () => combobox.collection(collectionOptions),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    Object.values(collectionOptions),
+  )
 
   const initialContext = {
     id: useId(),

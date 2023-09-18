@@ -23,11 +23,12 @@ import { SegmentGroupDemo } from './demos/segment-group-demo'
 import { SelectDemo } from './demos/select-demo'
 import { SliderDemo } from './demos/slider-demo'
 import { SplitterDemo } from './demos/splitter-demo'
+import { SwitchDemo } from './demos/switch-demo'
 import { TabsDemo } from './demos/tabs-demo'
 import { TagsInputDemo } from './demos/tags-input-demo'
 import { ToastDemo } from './demos/toast-demo'
+import { ToggleGroupDemo } from './demos/toggle-group-demo'
 import { TooltipDemo } from './demos/tooltip-demo'
-import { SwitchDemo } from './demos/switch-demo'
 
 const { component } = Astro.params
 ---
@@ -62,6 +63,7 @@ const { component } = Astro.params
         .with('tabs', () => <TabsDemo client:load />)
         .with('tags-input', () => <TagsInputDemo client:load />)
         .with('toast', () => <ToastDemo client:load />)
+        .with('toggle-group', () => <ToggleGroupDemo client:load />)
         .with('tooltip', () => <TooltipDemo client:load />)
         .otherwise(() => <Box>No preview available for {component}</Box>)
     }

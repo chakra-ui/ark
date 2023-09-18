@@ -38,7 +38,7 @@
 | Tabs                    | 🟢    | 🟢    | 🟢  |
 | Tags Input              | 🟢    | 🟢    | 🟢  |
 | Toast                   | 🟢    | 🟢    | 🟢  |
-| Toggle                  | 🟢    | 🟢    | 🟢  |
+| ToggleGroup             | 🟢    | 🟢    | 🟢  |
 | Tooltip                 | 🟢    | 🟢    | 🟢  |
 
 ## Contributing
