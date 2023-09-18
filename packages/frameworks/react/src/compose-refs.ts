@@ -4,8 +4,8 @@ function setRef<T>(ref: PossibleRef<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value)
   } else if (ref !== null && ref !== undefined) {
-    // prettier-ignore
-    (ref as React.MutableRefObject<T>).current = value
+    // eslint-disable-next-line no-extra-semi
+    ;(ref as React.MutableRefObject<T>).current = value
   }
 }
 

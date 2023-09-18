@@ -60,9 +60,9 @@ const main = async () => {
   console.log('Generating story docs for', framework)
 
   const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(rootDir, 'packages', framework))
+  process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
 
-  const outDir = join(rootDir, 'web', 'src', 'content', 'stories')
+  const outDir = join(rootDir, 'packages', 'website', 'src', 'content', 'stories')
 
   const project = new Project({})
   project.addSourceFilesAtPaths('src/**/*.stories.tsx')
