@@ -24,7 +24,11 @@ export const useSelect = <T extends CollectionItem>(
     'items',
   ])
 
-  const collection = useMemo(() => select.collection(collectionOptions), [collectionOptions])
+  const collection = useMemo(
+    () => select.collection(collectionOptions),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    Object.values(collectionOptions),
+  )
 
   const getRootNode = useEnvironmentContext()
 
