@@ -8,7 +8,7 @@ const { withProvider, withContext } = createStyleContext(tooltip)
 export * from '@ark-ui/react/src/tooltip'
 export type TooltipProps = Ark.TooltipProps & TooltipVariantProps
 
-const TooltipRoot = withProvider(styled(Ark.Tooltip.Root), 'root')
+const TooltipRoot = withProvider(styled(Ark.Tooltip.Root))
 export const TooltipArrow = withContext(styled(Ark.Tooltip.Arrow), 'arrow')
 export const TooltipArrowTip = withContext(styled(Ark.Tooltip.ArrowTip), 'arrowTip')
 export const TooltipContent = withContext(styled(Ark.Tooltip.Content), 'content')

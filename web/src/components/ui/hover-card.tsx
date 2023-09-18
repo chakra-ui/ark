@@ -8,7 +8,7 @@ const { withProvider, withContext } = createStyleContext(hoverCard)
 export * from '@ark-ui/react/src/hover-card'
 export type HoverCardProps = Ark.HoverCardProps & HoverCardVariantProps
 
-const HoverCardRoot = withProvider(styled(Ark.HoverCard.Root), 'root')
+const HoverCardRoot = withProvider(styled(Ark.HoverCard.Root))
 export const HoverCardArrow = withContext(styled(Ark.HoverCard.Arrow), 'arrow')
 export const HoverCardArrowTip = withContext(styled(Ark.HoverCard.ArrowTip), 'arrowTip')
 export const HoverCardContent = withContext(styled(Ark.HoverCard.Content), 'content')

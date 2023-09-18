@@ -8,7 +8,7 @@ const { withProvider, withContext } = createStyleContext(menu)
 export * from '@ark-ui/react/src/menu'
 export type MenuProps = Ark.MenuProps & MenuVariantProps
 
-const MenuRoot = withProvider(styled(Ark.Menu.Root), 'root')
+const MenuRoot = withProvider(styled(Ark.Menu.Root))
 export const MenuArrow = withContext(styled(Ark.Menu.Arrow), 'arrow')
 export const MenuArrowTip = withContext(styled(Ark.Menu.ArrowTip), 'arrowTip')
 export const MenuContent = withContext(styled(Ark.Menu.Content), 'content')

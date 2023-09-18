@@ -8,7 +8,7 @@ const { withProvider, withContext } = createStyleContext(drawer)
 export * from '@ark-ui/react/src/dialog'
 export type DrawerProps = Ark.DialogProps & DrawerVariantProps
 
-const DrawerRoot = withProvider(styled(Ark.Dialog.Root), 'root')
+const DrawerRoot = withProvider(styled(Ark.Dialog.Root))
 export const DrawerBackdrop = withContext(styled(Ark.Dialog.Backdrop), 'backdrop')
 export const DrawerCloseTrigger = withContext(styled(Ark.Dialog.CloseTrigger), 'closeTrigger')
 export const DrawerContainer = withContext(styled(Ark.Dialog.Container), 'container')

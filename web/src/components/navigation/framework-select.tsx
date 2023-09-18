@@ -48,7 +48,7 @@ export const FrameworkSelect = (props: Props) => {
       items={items}
       defaultValue={[defaultValue.value]}
       positioning={{ gutter: 2, sameWidth: true }}
-      onChange={(e) => {
+      onValueChange={(e) => {
         window.location.href = window.location.href.replace(defaultValue.value, e.value[0])
       }}
     >

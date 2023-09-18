@@ -8,7 +8,7 @@ const { withProvider, withContext } = createStyleContext(colorPicker)
 export * from '@ark-ui/react/src/color-picker'
 export type ColorPickerProps = Ark.ColorPickerProps & ColorPickerVariantProps
 
-const ColorPickerRoot = withProvider(styled(Ark.ColorPicker.Root), 'root')
+const ColorPickerRoot = withProvider(styled(Ark.ColorPicker.Root))
 export const ColorPickerArea = withContext(styled(Ark.ColorPicker.Area), 'area')
 export const ColorPickerAreaGradient = withContext(
   styled(Ark.ColorPicker.AreaGradient),
@@ -21,7 +21,7 @@ export const ColorPickerChannelInput = withContext(
 )
 export const ColorPickerChannelSliderBackground = withContext(
   styled(Ark.ColorPicker.ChannelSliderBackground),
-  'channelSliderBackground',
+  'channelSliderTrackBackground',
 )
 export const ColorPickerChannelSliderThumb = withContext(
   styled(Ark.ColorPicker.ChannelSliderThumb),

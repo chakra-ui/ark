@@ -34,7 +34,7 @@ export const ComboboxDemo = () => {
   }
 
   return (
-    <Combobox width="2xs" onInputChange={handleChange} items={items}>
+    <Combobox width="2xs" onInputValueChange={handleChange} items={items}>
       <ComboboxLabel>Framework</ComboboxLabel>
       <ComboboxControl>
         <ComboboxInput placeholder="Select a Framework" asChild>
