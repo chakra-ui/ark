@@ -20,24 +20,24 @@ describe('Switch', () => {
   })
 
   it('should toggle state when clicked', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+    const onCheckedChange = vi.fn()
+    render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
     const switchControl = screen.getByRole('checkbox')
     await user.click(switchControl)
 
-    expect(onChange).toHaveBeenCalledWith({ checked: true })
+    expect(onCheckedChange).toHaveBeenCalledWith({ checked: true })
   })
 
   it('should not toggle when disabled', async () => {
-    const onChange = vi.fn()
+    const onCheckedChange = vi.fn()
 
-    render(<ComponentUnderTest onChange={onChange} disabled />)
+    render(<ComponentUnderTest onCheckedChange={onCheckedChange} disabled />)
     expect(screen.getByRole('checkbox')).toHaveAttribute('disabled')
 
     const switchControl = screen.getByRole('checkbox')
     await user.click(switchControl)
 
-    expect(onChange).not.toHaveBeenCalled()
+    expect(onCheckedChange).not.toHaveBeenCalled()
   })
 
   it('should show invalid attribute when invalid', async () => {
@@ -49,13 +49,13 @@ describe('Switch', () => {
 
   // TODO
   it.skip('should be readonly when readOnly is true', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest readOnly onChange={onChange} />)
+    const onCheckedChange = vi.fn()
+    render(<ComponentUnderTest readOnly onCheckedChange={onCheckedChange} />)
 
     const switchControl = screen.getByRole('checkbox')
 
     await user.click(switchControl)
-    expect(onChange).not.toHaveBeenCalled()
+    expect(onCheckedChange).not.toHaveBeenCalled()
   })
 
   it('should be required when required is true', async () => {

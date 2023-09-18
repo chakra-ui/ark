@@ -1,16 +1,8 @@
 {
   "SegmentProps": {
     "value": { "type": "string", "isRequired": true },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio will be disabled"
-    },
-    "invalid": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the radio is marked as invalid."
-    }
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   },
   "SegmentGroupProps": {
     "dir": {
@@ -48,8 +40,8 @@
       "isRequired": false,
       "description": "The name of the input fields in the radio\n(Useful for form submission)."
     },
-    "onChange": {
-      "type": "(details: { value: string }) => void",
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function called once a radio is checked"
     },

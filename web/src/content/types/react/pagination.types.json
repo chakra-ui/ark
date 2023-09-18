@@ -22,8 +22,8 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
-    "onChange": {
-      "type": "(details: ChangeDetails) => void",
+    "onPageChange": {
+      "type": "(details: PageChangeDetails) => void",
       "isRequired": false,
       "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },
@@ -65,12 +65,12 @@
     "nextPageTriggerProps": { "type": "Dict<any>", "isRequired": true },
     "page": { "type": "number", "isRequired": true, "description": "The current page." },
     "pageRange": {
-      "type": "{ start: number; end: number }",
+      "type": "PageRange",
       "isRequired": true,
       "description": "The page range. Represented as an object with `start` and `end` properties."
     },
     "pages": {
-      "type": "PaginationRange",
+      "type": "Pages",
       "isRequired": true,
       "description": "The page range. Represented as an array of page numbers (including ellipsis)"
     },
@@ -92,7 +92,7 @@
       "description": "Function to set the page size."
     },
     "slice": {
-      "type": "<T_1>(data: T_1[]) => T_1[]",
+      "type": "<V>(data: V[]) => V[]",
       "isRequired": true,
       "description": "Function to slice an array of data based on the current page."
     },

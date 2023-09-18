@@ -3,8 +3,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './hover-card.props'
+import { useId } from '../utils'
 
 export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
 export type UseHoverCardReturn = ComputedRef<hoverCard.Api<PropTypes>>
@@ -15,14 +14,15 @@ export const useHoverCard = (
 ): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
-  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
     hoverCard.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
+      onOpenChange(details) {
+        emit('open-change', details)
+      },
     }),
     { context },
   )

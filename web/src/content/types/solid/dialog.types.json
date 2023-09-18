@@ -50,23 +50,18 @@
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
-    "onClose": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Callback to be invoked when the dialog is closed"
-    },
     "onEsc": {
-      "type": "() => void",
+      "type": "VoidFunction",
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
     },
-    "onOpen": {
-      "type": "() => void",
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
-      "description": "Callback to be invoked when the dialog is opened"
+      "description": "Callback to be invoked when the dialog is opened or closed"
     },
     "onOutsideClick": {
-      "type": "() => void",
+      "type": "VoidFunction",
       "isRequired": false,
       "description": "Callback to be invoked when the outside is clicked"
     },

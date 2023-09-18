@@ -15,8 +15,8 @@ describe('Checkbox', () => {
   })
 
   it('should handle check and unchecked', async () => {
-    const onChange = vi.fn()
-    const { getByRole } = render(() => <ComponentUnderTest onChange={onChange} />)
+    const onCheckedChange = vi.fn()
+    const { getByRole } = render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
     const checkbox = getByRole('checkbox')
 

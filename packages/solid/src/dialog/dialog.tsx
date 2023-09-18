@@ -20,15 +20,14 @@ export const Dialog = (props: DialogProps) => {
     'ids',
     'initialFocusEl',
     'modal',
-    'onClose',
     'onEsc',
+    'onOpenChange',
     'onOutsideClick',
     'open',
     'preventScroll',
     'restoreFocus',
     'role',
     'trapFocus',
-    'onOpen',
   ])
 
   const api = useDialog(dialogParams)

@@ -88,7 +88,7 @@ export const Controlled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   const [value, setValue] = useState<string[]>([])
   return (
-    <Accordion.Root value={value} onChange={(details) => setValue(details.value)}>
+    <Accordion.Root value={value} onValueChange={(details) => setValue(details.value)}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.Trigger>{item} trigger</Accordion.Trigger>

@@ -27,13 +27,13 @@
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
-    "onChange": {
-      "type": "(details: ChangeDetails) => void",
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Handler that is called when the value changes, as the user drags."
     },
-    "onChangeEnd": {
-      "type": "(details: ChangeDetails) => void",
+    "onValueChangeEnd": {
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Handler that is called when the user stops dragging."
     },

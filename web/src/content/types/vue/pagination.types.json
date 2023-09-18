@@ -21,8 +21,8 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
-    "onChange": {
-      "type": "(details: ChangeDetails) => void",
+    "onPageChange": {
+      "type": "(details: PageChangeDetails) => void",
       "isRequired": false,
       "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },

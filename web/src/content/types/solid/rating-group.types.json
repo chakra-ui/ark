@@ -47,15 +47,15 @@
       "isRequired": false,
       "description": "The name attribute of the rating element (used in forms)."
     },
-    "onChange": {
-      "type": "(details: { value: number }) => void",
-      "isRequired": false,
-      "description": "Function to be called when the rating value changes."
-    },
-    "onHover": {
-      "type": "(details: { value: number }) => void",
+    "onHoverChange": {
+      "type": "(details: HoverChangeDetails) => void",
       "isRequired": false,
       "description": "Function to be called when the rating value is hovered."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to be called when the rating value changes."
     },
     "readOnly": {
       "type": "boolean",

@@ -12,6 +12,7 @@ export const props = {
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
+    default: undefined,
   },
   form: {
     type: String as PropType<Context['form']>,
@@ -30,27 +31,33 @@ export const props = {
   },
   invalid: {
     type: Boolean as PropType<Context['invalid']>,
+    default: undefined,
   },
   loop: {
     type: Boolean as PropType<Context['loop']>,
+    default: undefined,
   },
   multiple: {
     type: Boolean as PropType<Context['multiple']>,
+    default: undefined,
   },
   name: {
     type: String as PropType<Context['name']>,
   },
   open: {
     type: Boolean as PropType<Context['open']>,
+    default: undefined,
   },
   positioning: {
     type: Object as PropType<Context['positioning']>,
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
+    default: undefined,
   },
   selectOnBlur: {
     type: Boolean as PropType<Context['selectOnBlur']>,
+    default: undefined,
   },
   modelValue: {
     type: Array as PropType<Context['value']>,
@@ -58,12 +65,8 @@ export const props = {
 } as const
 
 export const emits = declareEmits([
-  'change',
-  'close',
-  'focus-outside',
-  'highlight',
-  'interact-outside',
-  'open',
-  'pointer-down-outside',
+  'highlight-change',
+  'open-change',
+  'value-change',
   'update:modelValue',
 ])

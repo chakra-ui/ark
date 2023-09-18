@@ -20,12 +20,12 @@ describe('Hover Card', () => {
     await waitFor(() => expect(hoverContent).not.toBeVisible())
   })
 
-  it('should invoke onOpen', async () => {
-    const onOpen = vi.fn()
-    render(ComponentUnderTest, { props: { onOpen } })
+  it('should invoke onOpenChange', async () => {
+    const onOpenChange = vi.fn()
+    render(ComponentUnderTest, { props: { onOpenChange } })
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
-    expect(onOpen).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 })

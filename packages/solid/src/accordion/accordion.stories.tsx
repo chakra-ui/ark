@@ -95,7 +95,7 @@ export const Controlled = () => {
   const [value, setValue] = createSignal<string[]>([])
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root value={value()} onChange={(details) => setValue(details.value)}>
+    <Accordion.Root value={value()} onValueChange={(details) => setValue(details.value)}>
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>

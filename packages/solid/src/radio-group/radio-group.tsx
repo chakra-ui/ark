@@ -16,7 +16,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     'id',
     'ids',
     'name',
-    'onChange',
+    'onValueChange',
     'orientation',
     'value',
   ])

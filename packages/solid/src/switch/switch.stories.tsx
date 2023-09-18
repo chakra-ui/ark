@@ -24,7 +24,7 @@ export const Basic = () => (
 export const Controlled = () => {
   const [checked, setChecked] = createSignal(false)
   return (
-    <Switch checked={checked()} onChange={(e) => setChecked(e.checked)}>
+    <Switch checked={checked()} onCheckedChange={(e) => setChecked(e.checked)}>
       <SwitchControl>
         <SwitchThumb />
       </SwitchControl>

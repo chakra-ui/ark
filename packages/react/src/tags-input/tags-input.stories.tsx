@@ -15,7 +15,7 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = useState<string[]>(['react', 'solid', 'vue'])
   return (
-    <TagsInput.Root value={value} onChange={(e) => setValue(e.values)}>
+    <TagsInput.Root value={value} onValueChange={(e) => setValue(e.value)}>
       {({ value }) => (
         <>
           <TagsInput.Label>Label</TagsInput.Label>

@@ -51,6 +51,10 @@ export const props = {
     type: Boolean as PropType<Context['loop']>,
     default: undefined,
   },
+  multiple: {
+    type: Boolean as PropType<Context['multiple']>,
+    default: undefined,
+  },
   name: {
     type: String as PropType<Context['name']>,
   },
@@ -68,12 +72,12 @@ export const props = {
     type: Boolean as PropType<Context['readOnly']>,
     default: undefined,
   },
-  selectionBehavior: {
-    type: String as PropType<Context['selectionBehavior']>,
-  },
   selectOnBlur: {
     type: Boolean as PropType<Context['selectOnBlur']>,
     default: undefined,
+  },
+  selectionBehavior: {
+    type: String as PropType<Context['selectionBehavior']>,
   },
   translations: {
     type: Object as PropType<Context['translations']>,
@@ -83,13 +87,9 @@ export const props = {
   },
 }
 export const emits = declareEmits([
-  'close',
-  'focus-outside',
-  'highlight',
-  'input-change',
-  'interact-outside',
-  'open',
-  'pointer-down-outside',
-  'select',
+  'highlight-change',
+  'input-value-change',
+  'open-change',
+  'value-change',
   'update:modelValue',
 ])

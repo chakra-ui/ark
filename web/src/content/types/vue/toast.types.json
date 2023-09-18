@@ -3,7 +3,7 @@
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
   "ToastProviderProps": {
     "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
+      "type": "Partial<Pick<ToastOptions, 'placement' | 'duration' | 'removeDelay'>>",
       "isRequired": false,
       "description": "The default options for the toast"
     },

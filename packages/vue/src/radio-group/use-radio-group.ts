@@ -19,8 +19,8 @@ export const useRadioGroup = <T extends ExtractPropTypes<RadioGroupContext>>(
       id: reactiveContext.id || useId().value,
       getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      onChange(details) {
-        emit('change', details)
+      onValueChange(details) {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
     }),

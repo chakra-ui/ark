@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <PinInput placeholder="*" onComplete={(e) => console.log(e)}>
+  <PinInput placeholder="*" onValueComplete={(e) => console.log(e)}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
       <For each={[0, 1, 2]}>{(id) => <PinInputInput index={id} />}</For>

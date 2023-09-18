@@ -96,36 +96,40 @@
       "isRequired": false,
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
-    "onChange": {
-      "type": "(details: ValueChangeDetails<T>) => void",
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when a new item is selected"
+      "description": "Function called when the focus is moved outside the combobox"
     },
-    "onClose": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function called when the popup is closed"
-    },
-    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
-    "onHighlight": {
+    "onHighlightChange": {
       "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
       "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
-    "onInputChange": {
+    "onInputValueChange": {
       "type": "(details: InputValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the input's value changes"
     },
-    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
-    "onOpen": {
-      "type": "VoidFunction",
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the combobox"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the popup is opened"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the combobox"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "Function called when a new item is selected"
     },
     "openOnClick": {
       "type": "boolean",

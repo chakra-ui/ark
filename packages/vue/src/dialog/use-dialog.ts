@@ -18,13 +18,8 @@ export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
       getRootNode,
-      onOpen() {
-        emit('open')
-        emit('update:open', true)
-      },
-      onClose() {
-        emit('close')
-        emit('update:open', false)
+      onOpenChange() {
+        emit('open-change')
       },
       onEsc() {
         emit('esc')

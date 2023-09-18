@@ -10,4 +10,4 @@ export const props = {
     type: String as PropType<Context['id']>,
   },
 }
-export const emits = declareEmits(['error', 'load'])
+export const emits = declareEmits(['loading-status-change'])

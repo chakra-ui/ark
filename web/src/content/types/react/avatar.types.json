@@ -10,8 +10,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
-    "onError": { "type": "() => void", "isRequired": false },
-    "onLoad": { "type": "() => void", "isRequired": false }
+    "onLoadingStatusChange": {
+      "type": "(details: StatusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Functional called when the image loading status changes."
+    }
   },
   "AvatarContext": {
     "fallbackProps": { "type": "Dict<any>", "isRequired": true },

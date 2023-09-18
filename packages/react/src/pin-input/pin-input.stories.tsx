@@ -11,7 +11,7 @@ const meta: Meta<PinInputType> = {
 export default meta
 
 export const Basic = () => (
-  <PinInput placeholder="*" onComplete={(e) => alert(e.valueAsString)}>
+  <PinInput placeholder="*" onValueComplete={(e) => alert(e.valueAsString)}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
       {[0, 1, 2].map((id, index) => (

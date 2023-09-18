@@ -28,8 +28,8 @@ export const useToggleGroup = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onChange: (details) => {
-        emit('change', details)
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
     }),

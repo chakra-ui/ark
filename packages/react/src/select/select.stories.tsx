@@ -91,7 +91,7 @@ export const Controlled = () => {
   ]
 
   return (
-    <Select.Root items={items} onChange={(e) => setSelectedItems(e.items)}>
+    <Select.Root items={items} onValueChange={(e) => setSelectedItems(e.items)}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>

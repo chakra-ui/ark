@@ -16,7 +16,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
     'ids',
     'loop',
     'multiple',
-    'onChange',
+    'onValueChange',
     'orientation',
     'rovingFocus',
     'value',

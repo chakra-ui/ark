@@ -25,7 +25,7 @@ export const Checkbox = (props: CheckboxProps) => {
     'ids',
     'invalid',
     'name',
-    'onChange',
+    'onCheckedChange',
     'required',
     'value',
   ])

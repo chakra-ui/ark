@@ -57,7 +57,7 @@
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
+      "type": "InputMode",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },
@@ -91,23 +91,18 @@
       "isRequired": false,
       "description": "The name attribute of the number input. Useful for form submission."
     },
-    "onBlur": {
-      "type": "(details: Value) => void",
-      "isRequired": false,
-      "description": "The value of the input when it is blurred"
-    },
-    "onChange": {
-      "type": "(details: Value) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value changes"
-    },
-    "onFocus": {
-      "type": "(details: Value & { srcElement: HTMLElement | null }) => void",
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the number input is focused"
     },
-    "onInvalid": {
-      "type": "(details: Value & { reason: ValidityState }) => void",
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function invoked when the value changes"
+    },
+    "onValueInvalid": {
+      "type": "(details: ValueInvalidDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the value overflows or underflows the min/max range"
     },

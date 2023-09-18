@@ -28,12 +28,12 @@ export const useColorPicker = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onChange(details) {
-        emit('change', details)
+      onValueChange(details) {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
-      onChangeEnd(details) {
-        emit('change-end', details)
+      onValueChangeEnd(details) {
+        emit('value-change-end', details)
       },
     }),
     { context },

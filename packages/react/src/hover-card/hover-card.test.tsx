@@ -48,7 +48,7 @@ describe('HoverCard', () => {
 
   it('should invoke onOpen', async () => {
     const onOpen = vi.fn()
-    render(<ComponentUnderTest onOpen={onOpen} />)
+    render(<ComponentUnderTest onOpenChange={onOpen} />)
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())

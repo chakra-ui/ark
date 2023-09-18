@@ -67,7 +67,7 @@ export const DisabledTab = () => (
 export const Controlled = () => {
   const [value, setValue] = createSignal<string | null>('react')
   return (
-    <Tabs value={value()} onChange={(e) => setValue(e.value)}>
+    <Tabs value={value()} onValueChange={(e) => setValue(e.value)}>
       <TabList>
         <TabTrigger value="react">React</TabTrigger>
         <TabTrigger value="vue">Vue</TabTrigger>

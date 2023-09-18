@@ -17,7 +17,7 @@ export const SegmentGroup = (props: SegmentGroupProps) => {
     'id',
     'ids',
     'name',
-    'onChange',
+    'onValueChange',
     'orientation',
     'value',
   ])

@@ -42,18 +42,18 @@ describe('Dialog', () => {
     render(Component)
   })
 
-  it('should invoke onClose if dialog is closed', async () => {
-    const onClose = vi.fn()
+  it('should invoke onOpenChange if dialog is closed', async () => {
+    const onOpenChange = vi.fn()
     const { getByText } = render(Component, {
       props: {
         open: true,
-        onClose,
+        onOpenChange,
       },
     })
 
     await user.click(getByText('Close'))
 
-    expect(onClose).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should open with external trigger', async () => {

@@ -67,7 +67,7 @@ export const Basic = () => (
 export const Controlled = () => {
   const [color, setColor] = createSignal('hsl(10, 81%, 59%)')
   return (
-    <ColorPicker value={color()} onChange={(details) => setColor(details.value)}>
+    <ColorPicker value={color()} onValueChange={(details) => setColor(details.value)}>
       <ColorPickerContent>{/* ... */}</ColorPickerContent>
     </ColorPicker>
   )

@@ -11,8 +11,7 @@ export const Avatar = (props: AvatarProps) => {
   const [params, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'getRootNode',
     'id',
-    'onError',
-    'onLoad',
+    'onLoadingStatusChange',
   ])
 
   const api = useAvatar(params)

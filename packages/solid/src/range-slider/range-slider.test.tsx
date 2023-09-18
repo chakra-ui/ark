@@ -21,7 +21,7 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
       min={-50}
       max={50}
       value={values()}
-      onChange={(e) => setValues(e.value)}
+      onValueChange={(e) => setValues(e.value)}
       {...props}
     >
       <RangeSliderLabel>Quantity: </RangeSliderLabel>

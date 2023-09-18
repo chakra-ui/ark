@@ -90,4 +90,9 @@ export const props = {
     type: String as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['blur', 'change', 'focus', 'invalid', 'update:modelValue'])
+export const emits = declareEmits([
+  'focus-change',
+  'value-change',
+  'value-invalid',
+  'update:modelValue',
+])

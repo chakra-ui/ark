@@ -47,4 +47,4 @@ export const props = {
     type: Number as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'hover', 'update:modelValue'])
+export const emits = declareEmits(['hover-change', 'value-change', 'update:modelValue'])

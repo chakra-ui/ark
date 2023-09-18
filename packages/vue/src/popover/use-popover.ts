@@ -28,11 +28,8 @@ export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
       onInteractOutside(event) {
         emit('interact-outside', event)
       },
-      onOpen() {
-        emit('open')
-      },
-      onClose() {
-        emit('close')
+      onOpenChange() {
+        emit('open-change')
       },
       onPointerDownOutside(event) {
         emit('pointer-down-outside', event)

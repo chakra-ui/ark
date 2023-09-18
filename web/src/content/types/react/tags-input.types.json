@@ -88,26 +88,35 @@
       "isRequired": false,
       "description": "The name attribute for the input. Useful for form submissions"
     },
-    "onChange": {
-      "type": "(details: { values: string[] }) => void",
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Callback fired when the tag values is updated"
+      "description": "Function called when the focus is moved outside the combobox"
     },
-    "onFocusChange": {
-      "type": "(details: { value: string | null }) => void",
+    "onHighlightChange": {
+      "type": "(details: HighlightChangeDetails) => void",
       "isRequired": false,
-      "description": "Callback fired when a tag is focused by pointer or keyboard navigation"
+      "description": "Callback fired when a tag is highlighted by pointer or keyboard navigation"
     },
-    "onFocusOutside": { "type": "(event: FocusOutsideEvent) => void", "isRequired": false },
-    "onInteractOutside": { "type": "(event: InteractOutsideEvent) => void", "isRequired": false },
-    "onInvalid": {
-      "type": "(details: { reason: ValidityState }) => void",
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
+      "description": "Function called when an interaction happens outside the combobox"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the combobox"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Callback fired when the tag values is updated"
+    },
+    "onValueInvalid": {
+      "type": "(details: ValidityChangeDetails) => void",
+      "isRequired": false,
+      "description": "Callback fired when the max tag count is reached or the `validateTag` function returns `false`"
     },
     "readOnly": {
       "type": "boolean",
@@ -120,7 +129,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "validate": {
-      "type": "(details: { inputValue: string; values: string[] }) => boolean",
+      "type": "(details: ValidateArgs) => boolean",
       "isRequired": false,
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
@@ -153,6 +162,11 @@
     "getTagDeleteTriggerProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
     "getTagInputProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
     "getTagProps": { "type": "(options: TagProps) => Dict<any>", "isRequired": true },
+    "getTagState": {
+      "type": "(props: TagProps) => TagState",
+      "isRequired": true,
+      "description": "Returns the state of a tag"
+    },
     "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
     "inputProps": { "type": "Dict<any>", "isRequired": true },
     "inputValue": {

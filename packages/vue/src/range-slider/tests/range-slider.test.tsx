@@ -86,15 +86,15 @@ describe('RangeSlider', () => {
   })
 
   // TODO
-  it.skip('should emit correct onChange events', async () => {
-    const onChange = vi.fn()
-    render(ComponentUnderTest, { props: { onChange: onChange } })
+  it.skip('should emit correct onValueChange events', async () => {
+    const onValueChange = vi.fn()
+    render(ComponentUnderTest, { props: { onValueChange: onValueChange } })
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
 
     // why is this 2 times
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(2))
   })
 })

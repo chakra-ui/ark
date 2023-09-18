@@ -56,4 +56,4 @@ export const props = {
     default: undefined,
   },
 }
-export const emits = declareEmits(['close', 'esc', 'open', 'outside-click'])
+export const emits = declareEmits(['esc', 'open-change', 'outside-click'])

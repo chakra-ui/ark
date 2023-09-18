@@ -71,4 +71,9 @@ export const props = {
     type: Number as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'change-end', 'change-start', 'update:modelValue'])
+export const emits = declareEmits([
+  'value-change',
+  'value-change-end',
+  'value-change-start',
+  'update:modelValue',
+])

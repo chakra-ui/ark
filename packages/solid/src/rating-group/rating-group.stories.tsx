@@ -89,7 +89,12 @@ export const ControlledRatingGroup = () => {
   const [value, setValue] = createSignal(0)
 
   return (
-    <RatingGroup max={5} value={value()} onChange={(details) => setValue(details.value)} allowHalf>
+    <RatingGroup
+      max={5}
+      value={value()}
+      onValueChange={(details) => setValue(details.value)}
+      allowHalf
+    >
       <RatingGroupLabel>Label</RatingGroupLabel>
       <RatingGroupControl>
         {(api) => (

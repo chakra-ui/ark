@@ -40,7 +40,7 @@ describe('Dialog', () => {
 
   it('should invoke onClose if dialog is closed', async () => {
     const onClose = vi.fn()
-    render(<ComponentUnderTest open onClose={onClose} />)
+    render(<ComponentUnderTest open onOpenChange={onClose} />)
     await user.click(screen.getByText('Close'))
 
     expect(onClose).toHaveBeenCalledTimes(1)

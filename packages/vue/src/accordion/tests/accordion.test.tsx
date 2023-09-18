@@ -64,12 +64,12 @@ describe('Accordion', () => {
     )
   })
 
-  it('should call onChange when an item is clicked', async () => {
-    const onChange = vi.fn()
-    render(ComponentUnderTest, { props: { onChange } })
+  it('should call onValueChange when an item is clicked', async () => {
+    const onValueChange = vi.fn()
+    render(ComponentUnderTest, { props: { onValueChange } })
 
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
-    expect(onChange).toHaveBeenCalled()
+    expect(onValueChange).toHaveBeenCalled()
   })
 
   it('should call onFocusChange when focus changes', async () => {

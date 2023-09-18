@@ -50,8 +50,8 @@
       "isRequired": false,
       "description": "The name of the input field in a switch\n(Useful for form submission)."
     },
-    "onChange": {
-      "type": "(details: { checked: boolean }) => void",
+    "onCheckedChange": {
+      "type": "(details: CheckedChangeDetails) => void",
       "isRequired": false,
       "description": "Function to call when the switch is clicked."
     },

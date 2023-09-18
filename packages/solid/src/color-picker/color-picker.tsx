@@ -25,8 +25,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
     'id',
     'ids',
     'name',
-    'onChange',
-    'onChangeEnd',
+    'onValueChange',
+    'onValueChangeEnd',
     'readOnly',
     'value',
   ])

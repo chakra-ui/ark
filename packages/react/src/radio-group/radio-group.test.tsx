@@ -30,21 +30,21 @@ const Component = (props: RadioGroupProps) => (
 )
 
 describe('Radio Group', () => {
-  it('should invoke onChange if another value has selected', async () => {
-    const onChange = vi.fn()
+  it('should invoke onValueChange if another value has selected', async () => {
+    const onValueChange = vi.fn()
 
-    render(<Component onChange={onChange} />)
+    render(<Component onValueChange={onValueChange} />)
 
     await user.click(screen.getByLabelText('Grapes'))
-    expect(onChange).toHaveBeenCalledWith({ value: 'grape' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'grape' })
   })
 
-  it('should not invoke onChange if option is disabled', async () => {
-    const onChange = vi.fn()
+  it('should not invoke onValueChange if option is disabled', async () => {
+    const onValueChange = vi.fn()
 
-    render(<Component onChange={onChange} />)
+    render(<Component onValueChange={onValueChange} />)
 
     await user.click(screen.getByLabelText('Mangoes'))
-    expect(onChange).not.toHaveBeenCalled()
+    expect(onValueChange).not.toHaveBeenCalled()
   })
 })

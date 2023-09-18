@@ -16,8 +16,8 @@ export const Accordion = (props: AccordionProps) => {
     'id',
     'ids',
     'multiple',
-    'onChange',
     'onFocusChange',
+    'onValueChange',
     'orientation',
     'value',
   ])

@@ -59,7 +59,7 @@ export const Controlled = () => {
       pageSize={10}
       siblingCount={2}
       page={currentPage()}
-      onChange={(details) => setCurrentPage(details.page)}
+      onPageChange={(details) => setCurrentPage(details.page)}
     >
       {/* ... */}
     </Pagination>

@@ -3,8 +3,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './range-slider.props'
+import { useId } from '../utils'
 
 export type UseRangeSliderProps = Optional<rangeSlider.Context, 'id'> & {
   modelValue?: rangeSlider.Context['value']
@@ -23,17 +22,24 @@ export const useRangeSlider = (
       value: modelValue,
     }
   })
-  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
     rangeSlider.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
-      onChange: (details) => {
-        emit('change', details.value)
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
+      },
+      onFocusChange: (details) => {
+        emit('focus-change', details)
+      },
+      onValueChangeStart: (details) => {
+        emit('value-change-start', details)
+      },
+      onValueChangeEnd: (details) => {
+        emit('value-change-end', details)
       },
     }),
     { context },

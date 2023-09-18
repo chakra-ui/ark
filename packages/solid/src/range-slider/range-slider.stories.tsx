@@ -22,7 +22,7 @@ export default meta
 export const Basic = () => {
   const [values, setValues] = createSignal([-20, 20])
   return (
-    <RangeSlider min={-50} max={50} value={values()} onChange={(e) => setValues(e.value)}>
+    <RangeSlider min={-50} max={50} value={values()} onValueChange={(e) => setValues(e.value)}>
       <RangeSliderLabel>Quantity: </RangeSliderLabel>
       <RangeSliderOutput>{(api) => api().value.join(' ')}</RangeSliderOutput>
       <RangeSliderControl>

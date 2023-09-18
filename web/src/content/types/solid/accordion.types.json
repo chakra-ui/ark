@@ -35,15 +35,15 @@
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
-    "onChange": {
-      "type": "(details: ChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback fired when the state of opened/closed accordion items changes."
-    },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
       "description": "The callback fired when the focused accordion item changes."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

@@ -25,15 +25,10 @@
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
-    "onClose": {
-      "type": "VoidFunction",
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
-      "description": "Function invoked when the hover card is closed."
-    },
-    "onOpen": {
-      "type": "VoidFunction",
-      "isRequired": false,
-      "description": "Function invoked when the hover card is opened."
+      "description": "Function called when the hover card opens or closes."
     },
     "open": {
       "type": "boolean",

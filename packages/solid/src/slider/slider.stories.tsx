@@ -22,7 +22,7 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = createSignal(30)
   return (
-    <Slider min={-50} max={50} value={value()} onChange={(e) => setValue(e.value)}>
+    <Slider min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
       <SliderLabel>Label</SliderLabel>
       <SliderOutput>{value}</SliderOutput>
       <SliderControl>

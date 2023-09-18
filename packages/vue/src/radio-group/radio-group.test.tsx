@@ -3,21 +3,21 @@ import { render } from '@testing-library/vue'
 import ComponentStory from './stories/disabled.stories.vue'
 
 describe('Radio Group', () => {
-  it('should invoke onChange if another value has selected', async () => {
-    const onChange = vi.fn()
+  it('should invoke onValueChange if another value has selected', async () => {
+    const onValueChange = vi.fn()
 
-    const { getByLabelText } = render(ComponentStory, { props: { onChange } })
+    const { getByLabelText } = render(ComponentStory, { props: { onValueChange } })
 
     await user.click(getByLabelText('Grapes'))
-    expect(onChange).toHaveBeenCalledWith({ value: 'grape' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'grape' })
   })
 
-  it('should invoke onChange if another value has selected', async () => {
-    const onChange = vi.fn()
+  it('should invoke onValueChange if another value has selected', async () => {
+    const onValueChange = vi.fn()
 
-    const { getByLabelText } = render(ComponentStory, { props: { onChange } })
+    const { getByLabelText } = render(ComponentStory, { props: { onValueChange } })
 
     await user.click(getByLabelText('Mangoes'))
-    expect(onChange).not.toHaveBeenCalled()
+    expect(onValueChange).not.toHaveBeenCalled()
   })
 })
