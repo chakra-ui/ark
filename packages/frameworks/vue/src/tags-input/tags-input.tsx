@@ -82,7 +82,7 @@ const VueTagsInputProps = createVueProps<UseTagsInputProps>({
 export const TagsInput: ComponentWithProps<Partial<UseTagsInputProps>> = defineComponent({
   name: 'TagsInput',
   props: VueTagsInputProps,
-  emits: ['change', 'update:modelValue', 'highlight', 'invalid', 'tag-update'],
+  emits: ['value-change', 'update:modelValue', 'highlight-change', 'value-invalid'],
   setup(props, { slots, attrs, emit, expose }) {
     const api = useTagsInput(emit, props)
 

@@ -1,6 +1,2 @@
 packages:
-  - 'examples/**'
-  - 'packages/*'
-  - 'scripts'
-  - 'website'
-  - 'web'
+  - 'packages/**'

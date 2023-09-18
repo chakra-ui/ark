@@ -5,7 +5,7 @@ function setRef<T>(ref: PossibleRef<T>, value: T) {
     ref(value)
   } else if (ref !== null && ref !== undefined) {
     // prettier-ignore
-    (ref as React.MutableRefObject<T>).current = value
+    ;(ref as React.MutableRefObject<T>).current = value
   }
 }
 
