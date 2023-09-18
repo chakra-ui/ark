@@ -1,3 +1,0 @@
-{
-  "Basic": "import { createEffect, createSignal } from 'solid-js'\nimport { Environment } from './environment'\nimport { useEnvironmentContext } from './environment-context'\n\nconst Basic = () => (\n  <Environment>\n    <PrintEnvironment />\n  </Environment>\n)"
-}

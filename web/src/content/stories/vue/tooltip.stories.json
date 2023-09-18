@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { Tooltip, TooltipContent, TooltipPositioner, TooltipTrigger } from '.'\n</script>\n\n<template>\n  <Tooltip>\n    <TooltipTrigger>Hover Me</TooltipTrigger>\n    <TooltipPositioner>\n      <TooltipContent>I am a tooltip!</TooltipContent>\n    </TooltipPositioner>\n  </Tooltip>\n</template>\n"
-}

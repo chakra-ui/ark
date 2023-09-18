@@ -1,5 +1,0 @@
-{
-  "Basic": "import { createSignal } from 'solid-js'\nimport { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@ark-ui/solid'\n\nconst Basic = () => (\n  <Switch>\n    <SwitchControl>\n      <SwitchThumb />\n    </SwitchControl>\n    <SwitchLabel>Label</SwitchLabel>\n  </Switch>\n)",
-  "Controlled": "import { createSignal } from 'solid-js'\nimport { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@ark-ui/solid'\n\nconst Controlled = () => {\n  const [checked, setChecked] = createSignal(false)\n  return (\n    <Switch checked={checked()} onCheckedChange={(e) => setChecked(e.checked)}>\n      <SwitchControl>\n        <SwitchThumb />\n      </SwitchControl>\n      <SwitchLabel>Label</SwitchLabel>\n    </Switch>\n  )\n}",
-  "RenderProp": "import { createSignal } from 'solid-js'\nimport { Switch, SwitchControl, SwitchLabel, SwitchThumb } from '@ark-ui/solid'\n\nconst RenderProp = () => (\n  <Switch>\n    {(api) => (\n      <>\n        <SwitchControl>\n          <SwitchThumb />\n        </SwitchControl>\n        <SwitchLabel>Feature is {api().isChecked ? 'enabled' : 'disabled'}</SwitchLabel>\n      </>\n    )}\n  </Switch>\n)"
-}

@@ -1,3 +1,0 @@
-{
-  "Basic": "import { useEffect } from 'react'\nimport Frame from 'react-frame-component'\nimport { Environment } from './environment'\nimport { useEnvironmentContext } from './environment-context'\n\nconst Basic = () => {\n  return (\n    <Frame>\n      <Environment>\n        <PrintEnvironment />\n      </Environment>\n    </Frame>\n  )\n}"
-}
