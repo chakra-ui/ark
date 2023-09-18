@@ -63,15 +63,15 @@ describe('PinInput', () => {
     expect(getByLabelText('pin code 2 of 3')).toHaveValue('')
   })
 
-  it('should invoke onComplete when all inputs are filled out', async () => {
-    const onComplete = vi.fn()
-    const { getByLabelText } = await renderOnNextTick(Component, { props: { onComplete } })
+  it('should invoke onValueComplete when all inputs are filled out', async () => {
+    const onValueComplete = vi.fn()
+    const { getByLabelText } = await renderOnNextTick(Component, { props: { onValueComplete } })
 
     await user.type(getByLabelText('pin code 1 of 3'), '1')
     await user.type(getByLabelText('pin code 2 of 3'), '2')
     await user.type(getByLabelText('pin code 3 of 3'), '3')
 
-    expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' })
+    expect(onValueComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' })
   })
 
   it('should set one-time-code for autocomplete on fields', async () => {
@@ -82,9 +82,9 @@ describe('PinInput', () => {
     expect(getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
   })
 
-  it.skip('should replace last input calls onComplete correctly', async () => {
-    const onComplete = vi.fn()
-    const { getByLabelText } = await renderOnNextTick(Component, { props: { onComplete } })
+  it.skip('should replace last input calls onValueComplete correctly', async () => {
+    const onValueComplete = vi.fn()
+    const { getByLabelText } = await renderOnNextTick(Component, { props: { onValueComplete } })
 
     const input1 = getByLabelText('pin code 1 of 3')
     const input2 = getByLabelText('pin code 2 of 3')
@@ -95,16 +95,22 @@ describe('PinInput', () => {
     await user.type(input3, '3')
 
     await waitFor(() =>
-      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
+      expect(onValueComplete).toHaveBeenCalledWith({
+        value: ['1', '2', '3'],
+        valueAsString: '123',
+      }),
     )
-    onComplete.mockClear()
+    onValueComplete.mockClear()
 
     await user.type(input3, '{selectall}{backspace}')
     await waitFor(() => expect(input3).toHaveValue(''))
 
     await user.type(input3, '3')
     await waitFor(() =>
-      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
+      expect(onValueComplete).toHaveBeenCalledWith({
+        value: ['1', '2', '3'],
+        valueAsString: '123',
+      }),
     )
   })
 })

@@ -15,12 +15,15 @@ export const useTagsInput = <T extends ExtractPropTypes<TagsInputContext>>(
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      onChange(details) {
-        emit('change', details)
-        emit('update:modelValue', details.values)
+      onValueChange(details) {
+        emit('value-change', details)
+        emit('update:modelValue', details.value)
       },
-      onInvalid(details) {
-        emit('invalid', details)
+      onValueInvalid(details) {
+        emit('value-invalid', details)
+      },
+      onHighlightChange(details) {
+        emit('highlight-change', details)
       },
     }),
   )

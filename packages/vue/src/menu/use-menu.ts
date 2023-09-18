@@ -22,17 +22,15 @@ export const useMenu = (emit: CallableFunction, context: UseCarouselContext): Us
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
       getRootNode,
-      onOpen() {
-        emit('open')
+      onOpenChange() {
+        emit('open-change')
       },
-      onClose() {
-        emit('close')
+      onSelect() {
+        emit('select')
       },
-      onSelect(details) {
-        emit('select', details)
-      },
-      onValueChange(details) {
-        emit('value-change', details)
+      onValueChange() {
+        emit('value-change')
+        emit('update:modelValue')
       },
     }),
   )

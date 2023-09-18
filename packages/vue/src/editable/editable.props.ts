@@ -68,12 +68,9 @@ export const props = {
   },
 }
 export const emits = declareEmits([
-  'cancel',
-  'change',
   'edit',
-  'focus-outside',
-  'interact-outside',
-  'pointer-down-outside',
-  'submit',
+  'value-change',
+  'value-commit',
+  'value-revert',
   'update:modelValue',
 ])

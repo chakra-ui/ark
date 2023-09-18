@@ -38,12 +38,10 @@ export const props = {
   },
   required: {
     type: Boolean as PropType<Context['required']>,
-  },
-  value: {
-    type: String as PropType<Context['value']>,
+    default: undefined,
   },
   modelValue: {
     type: Boolean as PropType<Context['checked']>,
   },
 }
-export const emits = declareEmits(['change', 'update:modelValue'])
+export const emits = declareEmits(['checked-change', 'update:modelValue'])

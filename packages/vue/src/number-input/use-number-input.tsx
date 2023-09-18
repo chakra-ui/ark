@@ -3,8 +3,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './number-input.props'
+import { useId } from '../utils'
 
 export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
   modelValue?: numberInput.Context['value']
@@ -16,7 +15,6 @@ export const useNumberInput = (
   emit: CallableFunction,
 ): UseNumberInputReturn => {
   const getRootNode = useEnvironmentContext()
-  const eventMap = generateEventMap(emits, emit)
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -31,10 +29,15 @@ export const useNumberInput = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
-      onChange: (details) => {
-        emit('change', details.value)
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
+      },
+      onFocusChange: (details) => {
+        emit('focus-change', details)
+      },
+      onValueInvalid: (details) => {
+        emit('value-invalid', details)
       },
     }),
     { context },

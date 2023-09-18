@@ -26,8 +26,8 @@ export const useSwitch = (props: UseSwitchProps, emit: CallableFunction): UseSwi
       ...context.value,
       id: context.value.id || useId().value,
       getRootNode,
-      onChange(details) {
-        emit('change', details.checked)
+      onCheckedChange(details) {
+        emit('change', details)
         emit('update:modelValue', details.checked)
       },
     }),

@@ -28,9 +28,15 @@ export const useSlider = (props: UseSliderProps, emit: CallableFunction): UseSli
       id: context.value.id ?? useId().value,
       getRootNode,
       ...eventMap,
-      onChange: (details) => {
-        emit('change', details.value)
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
+      },
+      onValueChangeStart: (details) => {
+        emit('value-change-start', details)
+      },
+      onValueChangeEnd(details) {
+        emit('value-change-end', details)
       },
     }),
     { context },

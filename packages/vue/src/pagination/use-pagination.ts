@@ -20,8 +20,8 @@ export const usePagination = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onChange: (details) => {
-        emit('change', details)
+      onPageChange: (details) => {
+        emit('page-change', details)
       },
     }),
     { context },

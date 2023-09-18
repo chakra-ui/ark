@@ -34,9 +34,15 @@ export const useSelect = (props: UseSelectProps, emit: CallableFunction): UseSel
       getRootNode,
       ...eventMap,
       collection,
-      onChange: (details) => {
-        emit('change', details.value)
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
+      },
+      onHighlightChange: (details) => {
+        emit('highlight-change', details)
+      },
+      onOpenChange: (details) => {
+        emit('open-change', details)
       },
     }),
     { context },

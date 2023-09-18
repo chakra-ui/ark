@@ -35,4 +35,4 @@ export const props = {
     type: String as PropType<Context['type']>,
   },
 } as const
-export const emits = declareEmits(['change'])
+export const emits = declareEmits(['page-change'])

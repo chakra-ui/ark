@@ -19,12 +19,12 @@ export const useRatingGroup = <T extends ExtractPropTypes<RatingGroupContext>>(
       id: reactiveContext.id || useId().value,
       getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      onChange(details) {
-        emit('change', details.value)
+      onValueChange(details) {
+        emit('change', details)
         emit('update:modelValue', details.value)
       },
-      onHover(details) {
-        emit('hover', details)
+      onHoverChange(details) {
+        emit('hover-change', details)
       },
     }),
   )

@@ -4,8 +4,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './combobox.props'
+import { useId } from '../utils'
 
 export interface UseComboboxProps
   extends CollectionOptions,
@@ -25,17 +24,24 @@ export const useCombobox = (props: UseComboboxProps, emit: CallableFunction): Us
   })
   const collection = combobox.collection({ items, itemToString, itemToValue, isItemDisabled })
   const getRootNode = useEnvironmentContext()
-  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
     combobox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
       collection,
-      onChange: (details) => {
-        emit('change', details.value)
+      onHighlightChange: (details) => {
+        emit('highlight-change', details)
+      },
+      onInputValueChange: (details) => {
+        emit('input-value-change', details)
+      },
+      onOpenChange: (details) => {
+        emit('open-change', details)
+      },
+      onValueChange: (details) => {
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
     }),

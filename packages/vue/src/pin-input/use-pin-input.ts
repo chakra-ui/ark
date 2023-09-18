@@ -19,15 +19,15 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
       id: reactiveContext.id || useId().value,
       getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
-      onChange(details) {
+      onValueChange(details) {
         emit('change', details)
-        emit('update:modelValue', Array.from(details.value))
+        emit('update:modelValue', details.value)
       },
-      onComplete(details) {
-        emit('complete', details)
+      onValueComplete(details) {
+        emit('value-complete', details)
       },
-      onInvalid(details) {
-        emit('invalid', details)
+      onValueInvalid(details) {
+        emit('value-invalid', details)
       },
     }),
   )

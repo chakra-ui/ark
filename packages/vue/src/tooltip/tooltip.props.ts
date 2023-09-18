@@ -45,4 +45,4 @@ export const props = {
     type: Object as PropType<Context['positioning']>,
   },
 }
-export const emits = declareEmits(['close', 'open'])
+export const emits = declareEmits(['open-change'])

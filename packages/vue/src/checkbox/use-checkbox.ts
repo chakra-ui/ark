@@ -10,7 +10,6 @@ export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
   context: T,
 ) => {
   const reactiveContext = reactive(context)
-
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
@@ -19,8 +18,8 @@ export const useCheckbox = <T extends ExtractPropTypes<CheckboxContext>>(
       id: reactiveContext.id || useId().value,
       getRootNode,
       checked: reactiveContext.modelValue ?? reactiveContext.checked,
-      onChange(details) {
-        emit('change', details.checked)
+      onCheckedChange(details) {
+        emit('checked-change', details)
         emit('update:checked', details.checked)
         emit('update:modelValue', details.checked)
       },

@@ -65,4 +65,9 @@ export const props = {
     type: Array as PropType<Context['value']>,
   },
 }
-export const emits = declareEmits(['change', 'complete', 'invalid', 'update:modelValue'])
+export const emits = declareEmits([
+  'value-change',
+  'value-complete',
+  'value-invalid',
+  'update:modelValue',
+])
