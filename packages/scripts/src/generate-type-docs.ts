@@ -150,7 +150,7 @@ const main = async () => {
   const framework = process.argv.slice(2)[0]
 
   const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(rootDir, 'packages', framework))
+  process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
 
   const outDir = path.join(rootDir, 'web', 'src', 'content', 'types')
 

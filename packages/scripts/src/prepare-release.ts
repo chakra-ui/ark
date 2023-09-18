@@ -29,7 +29,7 @@ const main = async () => {
   const framework = packageName.split('/')[1]
 
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(root, 'packages', framework))
+  process.chdir(path.join(root, 'packages', 'frameworks', framework))
 
   const packageJson = await fs.readJson('package.json')
   packageJson.main = 'index.cjs'

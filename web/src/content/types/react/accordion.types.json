@@ -1,0 +1,111 @@
+{
+  "AccordionProps": {
+    "collapsible": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether an accordion item can be collapsed after it has been opened."
+    },
+    "defaultValue": { "type": "string[]", "isRequired": false },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the accordion items are disabled"
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the accordion. Useful for composition."
+    },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the focused accordion item changes."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "The orientation of the accordion items."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
+    }
+  },
+  "AccordionContext": {
+    "getContentProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemState": {
+      "type": "(props: ItemProps) => ItemState",
+      "isRequired": true,
+      "description": "Gets the state of an accordion item."
+    },
+    "getTriggerProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string[]) => void",
+      "isRequired": true,
+      "description": "Sets the value of the accordion."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": true,
+      "description": "The value of the accordion"
+    },
+    "focusedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the focused accordion item."
+    }
+  },
+  "AccordionItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "AccordionItemContext": {
+    "isDisabled": { "type": "boolean", "isRequired": true },
+    "isFocused": { "type": "boolean", "isRequired": true },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "AccordionContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  }
+}

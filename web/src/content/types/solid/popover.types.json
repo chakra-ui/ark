@@ -1,0 +1,98 @@
+{
+  "PopoverProps": {
+    "autoFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to automatically set focus on the first focusable\ncontent within the popover when opened."
+    },
+    "closeOnEsc": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the popover when the escape key is pressed."
+    },
+    "closeOnInteractOutside": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the popover when the user clicks outside of the popover."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n  positioner: string\n  arrow: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the popover. Useful for composition."
+    },
+    "initialFocusEl": {
+      "type": "HTMLElement | (() => MaybeElement)",
+      "isRequired": false,
+      "description": "The element to focus on when the popover is opened."
+    },
+    "modal": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
+    },
+    "onEscapeKeyDown": {
+      "type": "(event: KeyboardEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the escape key is pressed"
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the combobox"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the combobox"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function invoked when the popover opens or closes"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the combobox"
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is open"
+    },
+    "portalled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is rendered in a portal"
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    }
+  },
+  "PopoverContentProps": {
+    "lazyMount": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting. Defaults to `false`."
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to unmount on exit. Defaults to `false`."
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "Basic": "import { ToggleGroup } from '@ark-ui/solid'\n\nconst Basic = () => {\n  return (\n    <ToggleGroup.Root>\n      <ToggleGroup.Toggle value=\"a\">A</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"b\">B</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"c\">C</ToggleGroup.Toggle>\n    </ToggleGroup.Root>\n  )\n}",
+  "Initialvalue": "import { ToggleGroup } from '@ark-ui/solid'\n\nconst Initialvalue = () => {\n  return (\n    <ToggleGroup.Root value={['b']}>\n      <ToggleGroup.Toggle value=\"a\">A</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"b\">B</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"c\">C</ToggleGroup.Toggle>\n    </ToggleGroup.Root>\n  )\n}",
+  "Multiple": "import { ToggleGroup } from '@ark-ui/solid'\n\nconst Multiple = () => {\n  return (\n    <ToggleGroup.Root>\n      <ToggleGroup.Toggle value=\"a\">A</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"b\">B</ToggleGroup.Toggle>\n      <ToggleGroup.Toggle value=\"c\">C</ToggleGroup.Toggle>\n    </ToggleGroup.Root>\n  )\n}"
+}

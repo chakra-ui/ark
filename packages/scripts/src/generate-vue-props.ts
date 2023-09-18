@@ -15,7 +15,7 @@ const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(root, 'packages', 'vue'))
+  process.chdir(path.join(root, 'packages', 'framework', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
   const indices = ['toggle-group']
