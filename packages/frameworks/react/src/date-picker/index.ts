@@ -39,7 +39,6 @@ import {
   type DatePickerYearCellTriggerProps,
 } from './date-picker-year-cell-trigger'
 import { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
-import { datePickerAnatomy } from './date-picker.anatomy'
 
 const DatePicker = Object.assign(DatePickerRoot, {
   Root: DatePickerRoot,
@@ -91,7 +90,6 @@ export {
   DatePickerYearCell,
   DatePickerYearCellTrigger,
   DatePickerYearSelect,
-  datePickerAnatomy,
   useDatePickerCellContext,
   useDatePickerContext,
   useDatePickerDayCellContext,

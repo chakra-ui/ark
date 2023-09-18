@@ -4,7 +4,6 @@ import { TabList, type TabListProps } from './tab-list'
 import { TabTrigger, type TabTriggerProps } from './tab-trigger'
 import { Tabs as TabsRoot, type TabsProps } from './tabs'
 import { useTabsContext, type TabsContext } from './tabs-context'
-import { tabsAnatomy } from './tabs.anatomy'
 
 const Tabs = Object.assign(TabsRoot, {
   Root: TabsRoot,
@@ -14,7 +13,7 @@ const Tabs = Object.assign(TabsRoot, {
   Trigger: TabTrigger,
 })
 
-export { TabContent, TabIndicator, TabList, TabTrigger, Tabs, tabsAnatomy, useTabsContext }
+export { TabContent, TabIndicator, TabList, TabTrigger, Tabs, useTabsContext }
 export type {
   TabContentProps,
   TabIndicatorProps,

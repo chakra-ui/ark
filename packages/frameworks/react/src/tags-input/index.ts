@@ -7,7 +7,6 @@ import { useTagsInputContext, type TagsInputContext } from './tags-input-context
 import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
 import { TagsInputInput, type TagsInputInputProps } from './tags-input-field'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
-import { tagsInputAnatomy } from './tags-input.anatomy'
 
 const TagsInput = Object.assign(TagsInputRoot, {
   Root: TagsInputRoot,
@@ -29,7 +28,6 @@ export {
   TagsInputControl,
   TagsInputInput,
   TagsInputLabel,
-  tagsInputAnatomy,
   useTagsInputContext,
 }
 
