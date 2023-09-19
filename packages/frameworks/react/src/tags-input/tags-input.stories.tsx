@@ -26,7 +26,7 @@ export const Basic = () => {
               </TagsInput.Item>
             ))}
           </TagsInput.Control>
-          <TagsInput.Input placeholder="Add tag" />
+          <TagsInput.Input placeholder="Add Framework" />
           <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
         </>
       )}

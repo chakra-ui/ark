@@ -4,12 +4,13 @@ import { useTagsInputContext, type TagsInputContext } from './tags-input-context
 import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
 import { TagsInputInput, type TagsInputInputProps } from './tags-input-input'
 import { TagsInputItem, type TagsInputItemProps } from './tags-input-item'
+import { useTagsInputItemContext, type TagsInputItemContext } from './tags-input-item-context'
 import {
   TagsInputItemDeleteTrigger,
   type TagsInputItemDeleteTriggerProps,
 } from './tags-input-item-delete-trigger'
-import { TagsInputItemInput, type TagsInputItemInputProps } from './tags-input-item-input.tsx'
-import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item.text'
+import { TagsInputItemInput, type TagsInputItemInputProps } from './tags-input-item-input'
+import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 
 const TagsInput = Object.assign(TagsInputRoot, {
@@ -35,6 +36,7 @@ export {
   TagsInputItemText,
   TagsInputLabel,
   useTagsInputContext,
+  useTagsInputItemContext,
 }
 
 export type {
@@ -42,6 +44,7 @@ export type {
   TagsInputContext,
   TagsInputControlProps,
   TagsInputInputProps,
+  TagsInputItemContext,
   TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
   TagsInputItemProps,

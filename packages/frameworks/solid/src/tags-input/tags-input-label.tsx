@@ -6,6 +6,7 @@ export type TagsInputLabelProps = HTMLArkProps<'label'>
 
 export const TagsInputLabel = (props: TagsInputLabelProps) => {
   const api = useTagsInputContext()
-  const labelProps = mergeProps(() => api().labelProps, props)
-  return <ark.label {...labelProps} />
+  const mergedProps = mergeProps(() => api().labelProps, props)
+
+  return <ark.label {...mergedProps} />
 }
