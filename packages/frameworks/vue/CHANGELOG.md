@@ -20,6 +20,18 @@ description: All notable changes to this project will be documented in this file
 
 - Resolved an issue where the `Accordion` component would not render its content.
 
+### Removed
+
+- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
+
+```tsx
+// before
+import { accordionAnatomy } from '@ark-ui/vue'
+// after
+import { accordionAnatomy } from '@ark-ui/anatomy' // or
+import { anatomy } from '@ark-ui/anatomy/accordion'
+```
+
 ## [0.8.0] - 2023-09-08
 
 ### Added

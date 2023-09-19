@@ -10,6 +10,18 @@ description: All notable changes to this project will be documented in this file
 
 - Add memoization to `Select` and `Combobox` item collection to improve performance.
 
+### Removed
+
+- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
+
+```tsx
+// before
+import { accordionAnatomy } from '@ark-ui/react'
+// after
+import { accordionAnatomy } from '@ark-ui/anatomy' // or
+import { anatomy } from '@ark-ui/anatomy/accordion'
+```
+
 ## [0.15.0] - 2023-09-14
 
 ### Added
@@ -258,3 +270,7 @@ description: All notable changes to this project will be documented in this file
 [0.14.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.14.0
 [0.15.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0-beta.0
 [0.15.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0
+
+```
+
+```
