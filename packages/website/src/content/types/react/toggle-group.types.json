@@ -1,8 +1,4 @@
 {
-  "ToggleProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "ToggleGroupProps": {
     "defaultValue": { "type": "string[]", "isRequired": false },
     "dir": {
@@ -79,5 +75,9 @@
       "isRequired": true,
       "description": "The value of the toggle group."
     }
+  },
+  "ToggleGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

@@ -1,8 +1,4 @@
 {
-  "ToggleProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "ToggleGroupProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -59,5 +55,9 @@
       "isRequired": false,
       "description": "The values of the toggles in the group."
     }
+  },
+  "ToggleGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }
