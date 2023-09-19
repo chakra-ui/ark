@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/hover-card'
+import * as Ark from '@ark-ui/react/hover-card'
 import { styled } from 'styled-system/jsx'
 import { hoverCard, type HoverCardVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(hoverCard)
 
-export * from '@ark-ui/react/src/hover-card'
+export * from '@ark-ui/react/hover-card'
 export type HoverCardProps = Ark.HoverCardProps & HoverCardVariantProps
 
 const HoverCardRoot = withProvider(styled(Ark.HoverCard.Root))

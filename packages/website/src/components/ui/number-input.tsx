@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/number-input'
+import * as Ark from '@ark-ui/react/number-input'
 import { styled } from 'styled-system/jsx'
 import { numberInput, type NumberInputVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(numberInput)
 
-export * from '@ark-ui/react/src/number-input'
+export * from '@ark-ui/react/number-input'
 export type NumberInputProps = Ark.NumberInputProps & NumberInputVariantProps
 
 const NumberInputRoot = withProvider(styled(Ark.NumberInput.Root), 'root')

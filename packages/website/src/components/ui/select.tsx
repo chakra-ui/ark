@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/select'
+import * as Ark from '@ark-ui/react/select'
 import { styled } from 'styled-system/jsx'
 import { select, type SelectVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(select)
 
-export * from '@ark-ui/react/src/select'
+export * from '@ark-ui/react/select'
 export type SelectProps<T extends Ark.CollectionItem> = Ark.SelectProps<T> & SelectVariantProps
 
 const SelectRoot = withProvider(styled(Ark.Select.Root), 'root')

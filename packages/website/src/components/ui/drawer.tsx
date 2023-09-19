@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/dialog'
+import * as Ark from '@ark-ui/react/dialog'
 import { styled } from 'styled-system/jsx'
 import { drawer, type DrawerVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(drawer)
 
-export * from '@ark-ui/react/src/dialog'
+export * from '@ark-ui/react/dialog'
 export type DrawerProps = Ark.DialogProps & DrawerVariantProps
 
 const DrawerRoot = withProvider(styled(Ark.Dialog.Root))
