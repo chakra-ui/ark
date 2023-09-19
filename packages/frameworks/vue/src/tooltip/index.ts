@@ -5,7 +5,6 @@ import { TooltipContent, type TooltipContentProps } from './tooltip-content'
 import { useTooltipContext } from './tooltip-context'
 import { TooltipPositioner, type TooltipPositionerProps } from './tooltip-positioner'
 import { TooltipTrigger, type TooltipTriggerProps } from './tooltip-trigger'
-import { tooltipAnatomy } from './tooltip.anatomy'
 
 const Tooltip = Object.assign(TooltipRoot, {
   Root: TooltipRoot,
@@ -23,7 +22,6 @@ export {
   TooltipContent,
   TooltipPositioner,
   TooltipTrigger,
-  tooltipAnatomy,
   useTooltipContext,
 }
 

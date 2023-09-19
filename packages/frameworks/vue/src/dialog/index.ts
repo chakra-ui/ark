@@ -7,7 +7,6 @@ import { useDialogContext } from './dialog-context'
 import { DialogDescription, type DialogDescriptionProps } from './dialog-description'
 import { DialogTitle, type DialogTitleProps } from './dialog-title'
 import { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
-import { dialogAnatomy } from './dialog.anatomy'
 
 const Dialog = Object.assign(DialogRoot, {
   Root: DialogRoot,
@@ -29,7 +28,6 @@ export {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-  dialogAnatomy,
   useDialogContext,
 }
 

@@ -38,7 +38,6 @@ import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group'
-import { colorPickerAnatomy } from './color-picker.anatomy'
 
 const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
@@ -69,7 +68,6 @@ export {
   ColorPickerSwatch,
   ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
-  colorPickerAnatomy,
   useColorPickerAreaContext,
   useColorPickerContext,
   useColorPickerSwatchContext,

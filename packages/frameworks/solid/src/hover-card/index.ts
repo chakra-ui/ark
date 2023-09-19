@@ -5,7 +5,6 @@ import { HoverCardContent, type HoverCardContentProps } from './hover-card-conte
 import { useHoverCardContext } from './hover-card-context'
 import { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card-positioner'
 import { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'
-import { hoverCardAnatomy } from './hover-card.anatomy'
 
 const HoverCard = Object.assign(HoverCardRoot, {
   Root: HoverCardRoot,
@@ -23,7 +22,6 @@ export {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
-  hoverCardAnatomy,
   useHoverCardContext,
 }
 

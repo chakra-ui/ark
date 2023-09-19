@@ -1,5 +1,5 @@
 import { RangeSlider as RangeSliderRoot, type RangeSliderProps } from './range-slider'
-import { useRangeSliderContext } from './range-slider-context'
+import { useRangeSliderContext, type RangeSliderContext } from './range-slider-context'
 import { RangeSliderControl, type RangeSliderControlProps } from './range-slider-control'
 import { RangeSliderLabel, type RangeSliderLabelProps } from './range-slider-label'
 import { RangeSliderMarker, type RangeSliderMarkerProps } from './range-slider-marker'
@@ -11,7 +11,6 @@ import { RangeSliderOutput, type RangeSliderOutputProps } from './range-slider-o
 import { RangeSliderRange, type RangeSliderRangeProps } from './range-slider-range'
 import { RangeSliderThumb, type RangeSliderThumbProps } from './range-slider-thumb'
 import { RangeSliderTrack, type RangeSliderTrackProps } from './range-slider-track'
-import { rangeSliderAnatomy } from './range-slider.anatomy'
 
 const RangeSlider = Object.assign(RangeSliderRoot, {
   Root: RangeSliderRoot,
@@ -35,11 +34,11 @@ export {
   RangeSliderRange,
   RangeSliderThumb,
   RangeSliderTrack,
-  rangeSliderAnatomy,
   useRangeSliderContext,
 }
 
 export type {
+  RangeSliderContext,
   RangeSliderControlProps,
   RangeSliderLabelProps,
   RangeSliderMarkerGroupProps,

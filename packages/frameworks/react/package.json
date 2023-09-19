@@ -29,6 +29,7 @@
     "release-it": "release-it --config ../../release-it.json"
   },
   "dependencies": {
+    "@ark-ui/anatomy": "workspace:*",
     "@zag-js/accordion": "0.20.0",
     "@zag-js/anatomy": "0.20.0",
     "@zag-js/avatar": "0.20.0",

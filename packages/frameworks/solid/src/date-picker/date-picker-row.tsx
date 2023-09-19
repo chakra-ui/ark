@@ -1,8 +1,11 @@
+import { datePickerAnatomy } from '@ark-ui/anatomy'
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { parts } from './date-picker.anatomy'
 
 export type DatePickerRowProps = HTMLArkProps<'div'>
 
-export const DatePickerRow = (props: DatePickerRowProps) => (
-  <ark.div role="row" {...parts.row.attrs} {...props} />
-)
+export const DatePickerRow = (props: DatePickerRowProps) => {
+  const mergedProps = mergeProps(() => datePickerAnatomy.build().row.attrs, props)
+
+  return <ark.div role="row" {...mergedProps} />
+}

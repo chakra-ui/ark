@@ -1,4 +1,5 @@
 import { createContext } from '../context'
 import { type UseAvatarReturn } from './use-avatar'
 
-export const [AvatarProvider, useAvatarContext] = createContext<UseAvatarReturn>('AvatarContext')
+export type AvatarContext = UseAvatarReturn
+export const [AvatarProvider, useAvatarContext] = createContext<AvatarContext>('AvatarContext')

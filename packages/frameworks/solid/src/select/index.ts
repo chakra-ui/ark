@@ -1,3 +1,4 @@
+import type { CollectionItem } from '../types'
 import { Select as SelectRoot, type SelectProps } from './select'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
 import { SelectContent, type SelectContentProps } from './select-content'
@@ -12,7 +13,6 @@ import { SelectLabel, type SelectLabelProps } from './select-label'
 import { SelectPositioner, type SelectPositionerProps } from './select-positioner'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
 import { SelectValue, type SelectValueProps } from './select-value'
-import { selectAnatomy } from './select.anatomy'
 
 const Select = Object.assign(SelectRoot, {
   Root: SelectRoot,
@@ -44,11 +44,11 @@ export {
   SelectPositioner,
   SelectTrigger,
   SelectValue,
-  selectAnatomy,
   useSelectContext,
 }
 
 export type {
+  CollectionItem,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectControlProps,

@@ -1,3 +1,4 @@
+import { selectAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
@@ -15,7 +16,7 @@ export const SelectValue = defineComponent({
     const api = useSelectContext()
 
     return () => (
-      <ark.span {...attrs}>
+      <ark.span {...selectAnatomy.build().value.attrs} {...attrs}>
         {slots.default?.() || api.value.valueAsString || props.placeholder}
       </ark.span>
     )

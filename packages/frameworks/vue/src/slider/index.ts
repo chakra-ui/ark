@@ -8,7 +8,6 @@ import { SliderOutput, type SliderOutputProps } from './slider-output'
 import { SliderRange, type SliderRangeProps } from './slider-range'
 import { SliderThumb, type SliderThumbProps } from './slider-thumb'
 import { SliderTrack, type SliderTrackProps } from './slider-track'
-import { sliderAnatomy } from './slider.anatomy'
 
 const Slider = Object.assign(SliderRoot, {
   Root: SliderRoot,
@@ -32,7 +31,6 @@ export {
   SliderRange,
   SliderThumb,
   SliderTrack,
-  sliderAnatomy,
   useSliderContext,
 }
 

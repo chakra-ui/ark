@@ -9,7 +9,6 @@ import { PopoverDescription, type PopoverDescriptionProps } from './popover-desc
 import { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 import { PopoverTitle, type PopoverTitleProps } from './popover-title'
 import { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
-import { popoverAnatomy } from './popover.anatomy'
 
 const Popover = Object.assign(PopoverRoot, {
   Root: PopoverRoot,
@@ -35,7 +34,6 @@ export {
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
-  popoverAnatomy,
   usePopoverContext,
 }
 

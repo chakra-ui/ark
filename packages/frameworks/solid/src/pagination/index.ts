@@ -1,5 +1,5 @@
 import { Pagination as PaginationRoot, type PaginationProps } from './pagination'
-import { usePaginationContext } from './pagination-context'
+import { usePaginationContext, type PaginationContext } from './pagination-context'
 import { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
 import { PaginationList, type PaginationListProps } from './pagination-list'
 import { PaginationListItem, type PaginationListItemProps } from './pagination-list-item'
@@ -12,7 +12,6 @@ import {
   PaginationPrevPageTrigger,
   type PaginationPrevPageTriggerProps,
 } from './pagination-prev-page-trigger'
-import { paginationAnatomy } from './pagination.anatomy'
 
 const Pagination = Object.assign(PaginationRoot, {
   Root: PaginationRoot,
@@ -32,10 +31,10 @@ export {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-  paginationAnatomy,
   usePaginationContext,
 }
 export type {
+  PaginationContext,
   PaginationEllipsisProps,
   PaginationListItemProps,
   PaginationListProps,

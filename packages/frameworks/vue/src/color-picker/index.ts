@@ -23,7 +23,7 @@ import {
   type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track'
 import { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
-import { useColorPickerContext, type ColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './color-picker-context'
 import {
   ColorPickerEyeDropperTrigger,
   type ColorPickerEyeDropperTriggerProps,
@@ -38,7 +38,6 @@ import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group'
-import { colorPickerAnatomy } from './color-picker.anatomy'
 
 const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
@@ -69,7 +68,6 @@ export {
   ColorPickerSwatch,
   ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
-  colorPickerAnatomy,
   useColorPickerAreaContext,
   useColorPickerContext,
   useColorPickerSwatchContext,
@@ -83,7 +81,6 @@ export type {
   ColorPickerChannelSliderThumbProps,
   ColorPickerChannelSliderTrackProps,
   ColorPickerContentProps,
-  ColorPickerContext,
   ColorPickerEyeDropperTriggerProps,
   ColorPickerProps,
   ColorPickerSwatchBackgroundProps,

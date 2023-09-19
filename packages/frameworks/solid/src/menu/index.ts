@@ -16,7 +16,6 @@ import { MenuPositioner, type MenuPositionerProps } from './menu-positioner'
 import { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 import { MenuTrigger, type MenuTriggerProps } from './menu-trigger'
 import { MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item'
-import { menuAnatomy } from './menu.anatomy'
 
 const Menu = Object.assign(MenuRoot, {
   Root: MenuRoot,
@@ -48,7 +47,6 @@ export {
   MenuSeparator,
   MenuTrigger,
   MenuTriggerItem,
-  menuAnatomy,
   useMenuContext,
 }
 

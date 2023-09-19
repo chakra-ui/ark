@@ -1,5 +1,4 @@
 import { Tooltip as TooltipRoot, type TooltipProps } from './tooltip'
-import { tooltipAnatomy } from './tooltip-anatomy'
 import { TooltipArrow, type TooltipArrowProps } from './tooltip-arrow'
 import { TooltipArrowTip, type TooltipArrowTipProps } from './tooltip-arrow-tip'
 import { TooltipContent, type TooltipContentProps } from './tooltip-content'
@@ -23,7 +22,6 @@ export {
   TooltipContent,
   TooltipPositioner,
   TooltipTrigger,
-  tooltipAnatomy,
   useTooltipContext,
 }
 

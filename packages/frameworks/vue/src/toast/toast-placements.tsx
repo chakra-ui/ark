@@ -2,7 +2,7 @@ import type { Placement } from '@zag-js/toast'
 import { Fragment, computed, defineComponent } from 'vue'
 import { useToast } from './toast-provider'
 
-export type PlacementsContext = { placements: Placement[] }
+export type ToastPlacementsProps = { placements: Placement[] }
 
 export const ToastPlacements = defineComponent({
   name: 'ToastPlacements',

@@ -8,7 +8,6 @@ import { EditableInput, type EditableInputProps } from './editable-input'
 import { EditableLabel, type EditableLabelProps } from './editable-label'
 import { EditablePreview, type EditablePreviewProps } from './editable-preview'
 import { EditableSubmitTrigger, type EditableSubmitTriggerProps } from './editable-submit-trigger'
-import { editableAnatomy } from './editable.anatomy'
 
 const Editable = Object.assign(EditableRoot, {
   Root: EditableRoot,
@@ -32,7 +31,6 @@ export {
   EditableLabel,
   EditablePreview,
   EditableSubmitTrigger,
-  editableAnatomy,
   useEditableContext,
 }
 
