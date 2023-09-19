@@ -22,9 +22,9 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
     'disabled',
   ])
 
-  const { getItemProps, getItemState } = useAccordionContext()
-  const itemState = getItemState(itemProps)
-  const mergedProps = mergeProps(getItemProps(itemProps), rest)
+  const api = useAccordionContext()
+  const itemState = api.getItemState(itemProps)
+  const mergedProps = mergeProps(api.getItemProps(itemProps), rest)
   const view = runIfFn(children, itemState)
 
   return (

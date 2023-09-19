@@ -16,8 +16,8 @@ const ComponentUnderTest = (props: AccordionProps) => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item.value} disabled={item.disabled}>
-            <Accordion.Trigger>{item.value} Trigger</Accordion.Trigger>
-            <Accordion.Content>{item.value} Content</Accordion.Content>
+            <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>

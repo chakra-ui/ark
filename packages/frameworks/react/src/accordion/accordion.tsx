@@ -23,11 +23,11 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref)
     'orientation',
     'value',
   ])
-  const accordion = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(accordion.rootProps, divProps)
+  const api = useAccordion(useAccordionProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
   return (
-    <AccordionProvider value={accordion}>
+    <AccordionProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
     </AccordionProvider>
   )

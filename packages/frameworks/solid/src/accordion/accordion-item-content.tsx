@@ -4,13 +4,13 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionContentProps = HTMLArkProps<'div'> & PresenceProps
+export type AccordionItemContentProps = HTMLArkProps<'div'> & PresenceProps
 
-export const AccordionContent = (props: AccordionContentProps) => {
+export const AccordionItemContent = (props: AccordionItemContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useAccordionContext()
   const accordionItem = useAccordionItemContext()
-  const contentProps = mergeProps(() => api().getContentProps(accordionItem), localProps)
+  const contentProps = mergeProps(() => api().getItemContentProps(accordionItem), localProps)
 
   return (
     <Presence present={accordionItem.isOpen} {...presenceProps}>

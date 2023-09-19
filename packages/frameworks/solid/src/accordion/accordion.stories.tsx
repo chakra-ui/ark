@@ -15,8 +15,8 @@ export const Basic = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -31,8 +31,8 @@ export const Initial = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -49,8 +49,8 @@ export const RenderProp = () => {
           <Accordion.Item value={item}>
             {(api) => (
               <>
-                <Accordion.Trigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.Trigger>
-                <Accordion.Content>{item} content</Accordion.Content>
+                <Accordion.ItemTrigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
+                <Accordion.ItemContent>{item} content</Accordion.ItemContent>
               </>
             )}
           </Accordion.Item>
@@ -66,8 +66,8 @@ export const Collapsible = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -82,8 +82,8 @@ export const Multiple = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -99,8 +99,8 @@ export const Controlled = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -115,8 +115,8 @@ export const Vertical = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item} disabled={item === 'panel-2'}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>
@@ -131,8 +131,8 @@ export const Disabled = () => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item} disabled={item === 'panel-2'}>
-            <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-            <Accordion.Content>{item} content</Accordion.Content>
+            <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemContent>{item} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
       </For>

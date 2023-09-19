@@ -1,30 +1,30 @@
 import { Accordion as AccordionRoot, type AccordionProps } from './accordion'
-import { AccordionContent, type AccordionContentProps } from './accordion-content'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItem, type AccordionItemProps } from './accordion-item'
+import { AccordionItemContent, type AccordionItemContentProps } from './accordion-item-content'
 import { useAccordionItemContext, type AccordionItemContext } from './accordion-item-context'
-import { AccordionTrigger, type AccordionTriggerProps } from './accordion-trigger'
+import { AccordionItemTrigger, type AccordionItemTriggerProps } from './accordion-item-trigger'
 
 const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,
-  Content: AccordionContent,
   Item: AccordionItem,
-  Trigger: AccordionTrigger,
+  ItemContent: AccordionItemContent,
+  ItemTrigger: AccordionItemTrigger,
 })
 
 export {
   Accordion,
-  AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionItemContent,
+  AccordionItemTrigger,
   useAccordionContext,
   useAccordionItemContext,
 }
 export type {
-  AccordionContentProps,
   AccordionContext,
+  AccordionItemContentProps,
   AccordionItemContext,
   AccordionItemProps,
+  AccordionItemTriggerProps,
   AccordionProps,
-  AccordionTriggerProps,
 }

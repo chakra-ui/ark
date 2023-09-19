@@ -6,10 +6,10 @@ import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export type AccordionItemContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
 
-export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
-  function AccordionContent(props, ref) {
+export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemContentProps>(
+  function AccordionItemContent(props, ref) {
     const [presenceProps, localProps] = splitPresenceProps(props)
     const api = useAccordionItemContext()
 
@@ -25,7 +25,7 @@ const AccordionInnerContent = forwardRef<HTMLDivElement, HTMLArkProps<'div'>>(
   function AccordionInnerContent(props, ref) {
     const api = useAccordionContext()
     const accordionItem = useAccordionItemContext()
-    const mergedProps = mergeProps(api.getContentProps(accordionItem), props)
+    const mergedProps = mergeProps(api.getItemContentProps(accordionItem), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -6,10 +6,10 @@ import { getValidChildren } from '../utils'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionContentProps = HTMLArkProps<'div'> & PresenceProps
+export type AccordionItemContentProps = HTMLArkProps<'div'> & PresenceProps
 
-export const AccordionContent = defineComponent({
-  name: 'AccordionContent',
+export const AccordionItemContent = defineComponent({
+  name: 'AccordionItemContent',
   props,
   emits,
   setup(props, { slots, attrs }) {
@@ -21,7 +21,7 @@ export const AccordionContent = defineComponent({
         {...props}
         present={props.present !== undefined ? props.present : item.value.isOpen}
       >
-        <ark.div {...api.value.getContentProps(item.value)} {...attrs}>
+        <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
           {() => getValidChildren(slots)}
         </ark.div>
       </Presence>
