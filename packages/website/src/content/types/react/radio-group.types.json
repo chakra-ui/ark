@@ -90,5 +90,10 @@
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "RadioGroupItemContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   }
 }

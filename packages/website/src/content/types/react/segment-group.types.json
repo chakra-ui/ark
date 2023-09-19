@@ -85,5 +85,15 @@
       "isRequired": false,
       "description": "The current value of the radio group"
     }
+  },
+  "SegmentGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "SegmentGroupItemContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   }
 }
