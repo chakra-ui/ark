@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
-import { useState } from 'react'
 import { RadioGroup } from './'
+import './radio-group.css'
 
 type RadioGroupType = typeof RadioGroup
 
@@ -11,50 +11,16 @@ const meta: Meta<RadioGroupType> = {
 
 export default meta
 
-const options = [
-  { id: 'apple', label: 'Apples' },
-  { id: 'orange', label: 'Oranges' },
-  { id: 'mango', label: 'Mangoes' },
-  { id: 'grape', label: 'Grapes' },
-]
-
 export const Basic = () => {
-  const [value, setValue] = useState('apple')
+  const frameworks = ['React', 'Solid', 'Vue']
   return (
-    <RadioGroup.Root onValueChange={({ value }) => setValue(value)}>
-      <RadioGroup.Label>Fruits: {value}</RadioGroup.Label>
-      {options.map((option, id) => (
-        <RadioGroup.Radio
-          key={id}
-          value={option.id}
-          style={{ fontWeight: option.id === value ? 'bold' : 'inherit' }}
-        >
-          <RadioGroup.RadioLabel>{option.label}</RadioGroup.RadioLabel>
-          <RadioGroup.RadioControl />
-        </RadioGroup.Radio>
-      ))}
-    </RadioGroup.Root>
-  )
-}
-
-export const Disabled = () => {
-  const [value, setValue] = useState('apple')
-  return (
-    <RadioGroup.Root onValueChange={({ value }) => setValue(value)}>
-      <RadioGroup.Label asChild>Fruits: {value}</RadioGroup.Label>
-      {options.map((option, id) => (
-        <RadioGroup.Radio
-          key={id}
-          value={option.id}
-          disabled={option.id === 'mango'}
-          style={{
-            color: option.id === 'mango' ? 'lightgray' : 'inherit',
-            fontWeight: option.id === value ? 'bold' : 'inherit',
-          }}
-        >
-          <RadioGroup.RadioLabel>{option.label}</RadioGroup.RadioLabel>
-          <RadioGroup.RadioControl />
-        </RadioGroup.Radio>
+    <RadioGroup.Root>
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
       ))}
     </RadioGroup.Root>
   )

@@ -1,35 +1,32 @@
-import { Radio, type RadioProps } from './radio'
-import { useRadioContext, type RadioContext } from './radio-context'
-import { RadioControl, type RadioControlProps } from './radio-control'
 import { RadioGroup as RadioGroupRoot, type RadioGroupProps } from './radio-group'
 import { useRadioGroupContext, type RadioGroupContext } from './radio-group-context'
+import { RadioGroupItemControl, type RadioGroupItemControlProps } from './radio-group-control'
+import { RadioGroupItem, type RadioGroupItemProps } from './radio-group-item'
+import { RadioGroupItemText, type RadioGroupItemTextProps } from './radio-group-item-text'
 import { RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label'
-import { RadioLabel, type RadioLabelProps } from './radio-label'
 
 const RadioGroup = Object.assign(RadioGroupRoot, {
   Root: RadioGroupRoot,
+  Item: RadioGroupItem,
+  ItemControl: RadioGroupItemControl,
+  ItemText: RadioGroupItemText,
   Label: RadioGroupLabel,
-  Radio: Radio,
-  RadioLabel: RadioLabel,
-  RadioControl: RadioControl,
 })
 
 export {
-  Radio,
-  RadioControl,
   RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemControl,
+  RadioGroupItemText,
   RadioGroupLabel,
-  RadioLabel,
-  useRadioContext,
   useRadioGroupContext,
 }
 
 export type {
-  RadioContext,
-  RadioControlProps,
   RadioGroupContext,
+  RadioGroupItemControlProps,
+  RadioGroupItemProps,
+  RadioGroupItemTextProps,
   RadioGroupLabelProps,
   RadioGroupProps,
-  RadioLabelProps,
-  RadioProps,
 }

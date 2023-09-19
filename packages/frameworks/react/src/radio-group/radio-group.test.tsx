@@ -1,33 +1,22 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioGroupLabel,
-  RadioLabel,
-  type RadioGroupProps,
-} from '.'
+import { RadioGroup, type RadioGroupProps } from '.'
 
-const options = [
-  { id: 'apple', label: 'Apples' },
-  { id: 'orange', label: 'Oranges' },
-  { id: 'mango', label: 'Mangoes', disabled: true },
-  { id: 'grape', label: 'Grapes' },
-]
-
-const Component = (props: RadioGroupProps) => (
-  <RadioGroup {...props}>
-    <RadioGroupLabel>Fruits</RadioGroupLabel>
-    {options.map((option, id) => (
-      <Radio key={id} value={option.id} disabled={option.disabled}>
-        <RadioLabel>{option.label}</RadioLabel>
-        <RadioControl />
-      </Radio>
-    ))}
-  </RadioGroup>
-)
+const Component = (props: RadioGroupProps) => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <RadioGroup.Root {...props}>
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
+  )
+}
 
 describe('Radio Group', () => {
   it('should invoke onValueChange if another value has selected', async () => {
