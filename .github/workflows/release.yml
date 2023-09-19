@@ -8,6 +8,7 @@ on:
         required: true
         type: choice
         options:
+          - anatomy
           - react
           - solid
           - vue
