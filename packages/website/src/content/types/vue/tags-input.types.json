@@ -66,7 +66,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  tag(opts: TagProps): string\n  tagDeleteTrigger(opts: TagProps): string\n  tagInput(opts: TagProps): string\n}>",
+      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  item(opts: ItemProps): string\n  itemDeleteTrigger(opts: ItemProps): string\n  itemInput(opts: ItemProps): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tags input. Useful for composition."
     },
@@ -159,19 +159,23 @@
       "isRequired": true,
       "description": "Function to focus the tags entry input."
     },
-    "getTagDeleteTriggerProps": {
-      "type": "(options: TagProps) => ButtonHTMLAttributes & ReservedProps",
+    "getItemDeleteTriggerProps": {
+      "type": "(options: ItemProps) => ButtonHTMLAttributes & ReservedProps",
       "isRequired": true
     },
-    "getTagInputProps": {
-      "type": "(options: TagProps) => InputHTMLAttributes & ReservedProps",
+    "getItemInputProps": {
+      "type": "(options: ItemProps) => InputHTMLAttributes & ReservedProps",
       "isRequired": true
     },
-    "getTagProps": { "type": "(options: TagProps) => Attrs<HTMLAttributes>", "isRequired": true },
-    "getTagState": {
-      "type": "(props: TagProps) => TagState",
+    "getItemProps": { "type": "(options: ItemProps) => Attrs<HTMLAttributes>", "isRequired": true },
+    "getItemState": {
+      "type": "(props: ItemProps) => ItemState",
       "isRequired": true,
       "description": "Returns the state of a tag"
+    },
+    "getItemTextProps": {
+      "type": "(options: ItemProps) => Attrs<HTMLAttributes>",
+      "isRequired": true
     },
     "hiddenInputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
     "inputProps": { "type": "InputHTMLAttributes & ReservedProps", "isRequired": true },
