@@ -2,14 +2,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioGroupLabel,
-  RadioLabel,
-  type RadioGroupProps,
-} from './'
+import { RadioGroup, type RadioGroupProps } from './'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -19,17 +12,17 @@ const options = [
 ]
 
 const ComponentUnderTest = (props: RadioGroupProps) => (
-  <RadioGroup {...props}>
-    <RadioGroupLabel>Fruits</RadioGroupLabel>
+  <RadioGroup.Root {...props}>
+    <RadioGroup.Label>Fruits</RadioGroup.Label>
     <For each={options}>
       {(option) => (
-        <Radio value={option.id} disabled={option.disabled}>
-          <RadioLabel>{option.label}</RadioLabel>
-          <RadioControl />
-        </Radio>
+        <RadioGroup.Item value={option.id} disabled={option.disabled}>
+          <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
       )}
     </For>
-  </RadioGroup>
+  </RadioGroup.Root>
 )
 
 describe('Radio Group', () => {
