@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/toast'
+import * as Ark from '@ark-ui/react/src/toast'
 import { styled } from 'styled-system/jsx'
 import { toast, type ToastVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(toast)
 
-export * from '@ark-ui/react/toast'
+export * from '@ark-ui/react/src/toast'
 export const ToastProvider = withContext(styled(Ark.Toast.Provider))
 export const ToastTitle = withContext(styled(Ark.Toast.Title), 'title')
 export type ToastProps = Ark.ToastProps & ToastVariantProps

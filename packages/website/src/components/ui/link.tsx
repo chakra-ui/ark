@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react'
+import { ark } from '@ark-ui/react/src'
 import type { ComponentPropsWithoutRef } from 'react'
 import { styled } from 'styled-system/jsx'
 import { link, type LinkVariantProps } from 'styled-system/recipes'

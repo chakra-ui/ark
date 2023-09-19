@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/combobox'
+import * as Ark from '@ark-ui/react/src/combobox'
 import { styled } from 'styled-system/jsx'
 import { combobox, type ComboboxVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(combobox)
 
-export * from '@ark-ui/react/combobox'
+export * from '@ark-ui/react/src/combobox'
 export type ComboboxProps<T extends Ark.CollectionItem> = Ark.ComboboxProps<T> &
   ComboboxVariantProps
 

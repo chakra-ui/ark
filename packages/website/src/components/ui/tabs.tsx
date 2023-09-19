@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/tabs'
+import * as Ark from '@ark-ui/react/src/tabs'
 import { styled } from 'styled-system/jsx'
 import { tabs, type TabsVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tabs)
 
-export * from '@ark-ui/react/tabs'
+export * from '@ark-ui/react/src/tabs'
 export type TabsProps = Ark.TabsProps & TabsVariantProps
 
 const TabsRoot = withProvider(styled(Ark.Tabs.Root), 'root')

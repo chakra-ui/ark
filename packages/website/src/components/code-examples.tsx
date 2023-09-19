@@ -52,7 +52,9 @@ export const CodeExamples = (props: Props) => {
           },
         })}
       >
-        <TabContent value="react">{props.react}</TabContent>
+        <TabContent value="react" style={{ marginTop: '20px !important' }}>
+          {props.react}
+        </TabContent>
         <TabContent value="solid">{props.solid}</TabContent>
         <TabContent value="vue">{props.vue}</TabContent>
       </Box>

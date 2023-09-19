@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/date-picker'
+import * as Ark from '@ark-ui/react/src/date-picker'
 import { styled } from 'styled-system/jsx'
 import { datePicker, type DatePickerVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(datePicker)
 
-export * from '@ark-ui/react/date-picker'
+export * from '@ark-ui/react/src/date-picker'
 export type DatePickerProps = Ark.DatePickerProps & DatePickerVariantProps
 
 const DatePickerRoot = withProvider(styled(Ark.DatePicker.Root))

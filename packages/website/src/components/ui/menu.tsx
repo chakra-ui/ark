@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/menu'
+import * as Ark from '@ark-ui/react/src/menu'
 import { styled } from 'styled-system/jsx'
 import { menu, type MenuVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(menu)
 
-export * from '@ark-ui/react/menu'
+export * from '@ark-ui/react/src/menu'
 export type MenuProps = Ark.MenuProps & MenuVariantProps
 
 const MenuRoot = withProvider(styled(Ark.Menu.Root))

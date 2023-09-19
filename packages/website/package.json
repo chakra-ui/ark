@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@ark-ui/react": "0.15.0",
+    "@ark-ui/react": "workspace:*",
     "@astrojs/sitemap": "3.0.0",
     "@fontsource-variable/fira-code": "5.0.8",
     "@fontsource-variable/inter": "5.0.8",
@@ -27,7 +27,7 @@
     "@astrojs/react": "3.0.2",
     "@pandacss/astro": "0.15.0",
     "@pandacss/dev": "0.15.0",
-    "@park-ui/presets": "0.12.0",
+    "@park-ui/presets": "0.13.0",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "prettier": "3.0.3",

@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/pin-input'
+import * as Ark from '@ark-ui/react/src/pin-input'
 import { styled } from 'styled-system/jsx'
 import { pinInput, type PinInputVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(pinInput)
 
-export * from '@ark-ui/react/pin-input'
+export * from '@ark-ui/react/src/pin-input'
 export type PinInputProps = Ark.PinInputProps & PinInputVariantProps
 
 const PinInputRoot = withProvider(styled(Ark.PinInput.Root), 'root')

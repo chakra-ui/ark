@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/carousel'
+import * as Ark from '@ark-ui/react/src/carousel'
 import { styled } from 'styled-system/jsx'
 import { carousel, type CarouselVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(carousel)
 
-export * from '@ark-ui/react/carousel'
+export * from '@ark-ui/react/src/carousel'
 export type CarouselProps = Ark.CarouselProps & CarouselVariantProps
 
 const CarouselRoot = withProvider(styled(Ark.Carousel.Root), 'root')

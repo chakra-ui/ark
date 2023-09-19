@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/pagination'
+import * as Ark from '@ark-ui/react/src/pagination'
 import { styled } from 'styled-system/jsx'
 import { pagination, type PaginationVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(pagination)
 
-export * from '@ark-ui/react/pagination'
+export * from '@ark-ui/react/src/pagination'
 export type PaginationProps = Ark.PaginationProps & PaginationVariantProps
 
 const PaginationRoot = withProvider(styled(Ark.Pagination.Root), 'root')

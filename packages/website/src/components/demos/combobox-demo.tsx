@@ -15,8 +15,8 @@ import {
   ComboboxPositioner,
   ComboboxTrigger,
 } from '~/components/ui/combobox'
-import { IconButton } from '~/components/ui/icon-button'
 import { Input } from '~/components/ui/input'
+import { Button } from '../ui/button'
 
 const data = [
   { label: 'React', value: 'react' },
@@ -41,9 +41,9 @@ export const ComboboxDemo = () => {
           <Input />
         </ComboboxInput>
         <ComboboxTrigger asChild>
-          <IconButton variant="link" aria-label="open" size="xs">
+          <Button variant="link" aria-label="open" size="xs" px="0">
             <ChevronsUpDownIcon />
-          </IconButton>
+          </Button>
         </ComboboxTrigger>
       </ComboboxControl>
       <Portal>
