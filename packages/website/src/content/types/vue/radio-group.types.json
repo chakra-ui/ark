@@ -13,6 +13,20 @@
     },
     "modelValue": { "type": "string", "isRequired": false }
   },
+  "RadioContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio will be disabled"
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio is marked as invalid."
+    },
+    "modelValue": { "type": "string", "isRequired": false }
+  },
   "RadioGroupProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -38,6 +52,59 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioHiddenInput(value: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the radio. Useful for composition."
+    },
+    "modelValue": { "type": "string", "isRequired": false },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the input fields in the radio\n(Useful for form submission)."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called once a radio is checked"
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "isRequired": false,
+      "description": "Orientation of the radio group"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value of the checked radio"
+    }
+  },
+  "RadioGroupContext": {
+    "id": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The unique identifier of the machine."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "If `true`, the radio group will be disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input."
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "ids": {
       "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioHiddenInput(value: string): string\n}>",

@@ -60,6 +60,13 @@
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
+  "AccordionItemContext": {
+    "isDisabled": { "type": "boolean", "isRequired": true },
+    "isFocused": { "type": "boolean", "isRequired": true },
+    "isOpen": { "type": "boolean", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "AccordionContentProps": {
     "lazyMount": {
       "type": "boolean",

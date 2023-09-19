@@ -1,5 +1,12 @@
 {
   "RatingProps": { "index": { "type": "number", "isRequired": true } },
+  "RatingContext": {
+    "isChecked": { "type": "boolean", "isRequired": true },
+    "isEqual": { "type": "boolean", "isRequired": true },
+    "isHalf": { "type": "boolean", "isRequired": true },
+    "isHighlighted": { "type": "boolean", "isRequired": true },
+    "isValueEmpty": { "type": "boolean", "isRequired": true }
+  },
   "RatingGroupProps": {
     "allowHalf": {
       "type": "boolean",

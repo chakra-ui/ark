@@ -139,6 +139,10 @@
     "id": { "type": "string", "isRequired": false },
     "view": { "type": "DateView", "isRequired": false }
   },
+  "DatePickerCellContext": {
+    "value": { "type": "number", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "DatePickerDayCellProps": {
     "value": { "type": "DateValue", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
@@ -147,6 +151,11 @@
   "DatePickerYearCellProps": {
     "value": { "type": "number", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "DatePickerDayCellContext": {
+    "value": { "type": "DateValue", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "offset": { "type": "Offset", "isRequired": false }
   },
   "DatePickerMonthCellProps": {
     "value": { "type": "number", "isRequired": true },
