@@ -1,14 +1,13 @@
-import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider } from './accordion-item-context'
+import { type Assign } from '../types'
+import { useTagsInputContext } from './tags-input-context'
+import { TagsInputItemProvider, type ItemProps, type ItemState } from './tags-input-item-context'
 
-export type AccordionItemProps = ItemProps &
+export type TagsInputItemProps = ItemProps &
   Assign<
     HTMLArkProps<'div'>,
     {
@@ -16,24 +15,24 @@ export type AccordionItemProps = ItemProps &
     }
   >
 
-export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
+export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [
-    'value',
+    'index',
     'disabled',
+    'value',
   ])
-
-  const api = useAccordionContext()
-  const itemState = api.getItemState(itemProps)
+  const api = useTagsInputContext()
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
+  const itemState = api.getItemState(itemProps)
   const view = runIfFn(children, itemState)
 
   return (
-    <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
+    <TagsInputItemProvider value={{ ...itemProps, ...itemState }}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
-    </AccordionItemProvider>
+    </TagsInputItemProvider>
   )
 })
 
-AccordionItem.displayName = 'AccordionItem'
+TagsInputItem.displayName = 'TagsInputItem'

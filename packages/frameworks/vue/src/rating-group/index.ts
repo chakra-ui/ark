@@ -1,5 +1,5 @@
 import { RatingGroup as RatingGroupRoot, type RatingGroupProps } from './rating-group'
-import { useRatingGroupContext } from './rating-group-context'
+import { useRatingGroupContext, type RatingGroupContext } from './rating-group-context'
 import { RatingGroupControl, type RatingGroupControlProps } from './rating-group-control'
 import { RatingGroupItem, type RatingGroupItemProps } from './rating-group-item'
 import { useRatingGroupItemContext, type RatingGroupItemContext } from './rating-group-item-context'
@@ -22,6 +22,7 @@ export {
 }
 
 export type {
+  RatingGroupContext,
   RatingGroupControlProps,
   RatingGroupItemContext,
   RatingGroupItemProps,

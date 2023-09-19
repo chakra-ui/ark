@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { Fragment, useState } from 'react'
 import { TagsInput } from './'
 import './tags-input.css'
 
@@ -13,51 +12,47 @@ const meta: Meta<TagsInputType> = {
 export default meta
 
 export const Basic = () => {
-  const [value, setValue] = useState<string[]>(['react', 'solid', 'vue'])
   return (
-    <TagsInput.Root value={value} onValueChange={(e) => setValue(e.value)}>
-      {({ value }) => (
+    <TagsInput.Root>
+      {(api) => (
         <>
-          <TagsInput.Label>Label</TagsInput.Label>
+          <TagsInput.Label>Frameworks</TagsInput.Label>
           <TagsInput.Control>
-            {(value ?? []).map((value, index) => (
-              <Fragment key={index}>
-                <TagsInput.Tag index={index} value={value}>
-                  <span>{value}</span>
-                  <TagsInput.TagDeleteTrigger index={index} value={value}>
-                    &#x2715;
-                  </TagsInput.TagDeleteTrigger>
-                </TagsInput.Tag>
-                <TagsInput.TagInput index={index} value={value} />
-              </Fragment>
+            {(api.value ?? []).map((value, index) => (
+              <TagsInput.Item key={index} index={index} value={value}>
+                <TagsInput.ItemInput />
+                <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+              </TagsInput.Item>
             ))}
-            <TagsInput.Input placeholder="Add tag" />
-            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
           </TagsInput.Control>
+          <TagsInput.Input placeholder="Add tag" />
+          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
         </>
       )}
     </TagsInput.Root>
   )
 }
 
-export const WithDefaultValue = () => (
-  <TagsInput.Root defaultValue={['react', 'solid', 'vue']}>
-    {({ value }) => (
-      <TagsInput.Control>
-        {(value ?? []).map((value, index) => (
-          <Fragment key={index}>
-            <TagsInput.Tag index={index} value={value}>
-              <span>{value}</span>
-              <TagsInput.TagDeleteTrigger index={index} value={value}>
-                &#x2715;
-              </TagsInput.TagDeleteTrigger>
-            </TagsInput.Tag>
-            <TagsInput.TagInput index={index} value={value} />
-          </Fragment>
-        ))}
-        <TagsInput.Input placeholder="Add tag" />
-        <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-      </TagsInput.Control>
-    )}
-  </TagsInput.Root>
-)
+export const InitialValue = () => {
+  return (
+    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']}>
+      {(api) => (
+        <>
+          <TagsInput.Label>Frameworks</TagsInput.Label>
+          <TagsInput.Control>
+            {(api.value ?? []).map((value, index) => (
+              <TagsInput.Item key={index} index={index} value={value}>
+                <TagsInput.ItemInput />
+                <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+              </TagsInput.Item>
+            ))}
+          </TagsInput.Control>
+          <TagsInput.Input placeholder="Add tag" />
+          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+        </>
+      )}
+    </TagsInput.Root>
+  )
+}
