@@ -1,13 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Toggle, ToggleGroup, type ToggleGroupProps } from './'
+import { ToggleGroup, ToggleGroupItem, type ToggleGroupProps } from './'
 
 const ComponentUnderTest = (props: ToggleGroupProps) => (
   <ToggleGroup {...props}>
-    <Toggle value="a">A</Toggle>
-    <Toggle value="b">B</Toggle>
-    <Toggle value="c">C</Toggle>
+    <ToggleGroupItem value="a">A</ToggleGroupItem>
+    <ToggleGroupItem value="b">B</ToggleGroupItem>
+    <ToggleGroupItem value="c">C</ToggleGroupItem>
   </ToggleGroup>
 )
 

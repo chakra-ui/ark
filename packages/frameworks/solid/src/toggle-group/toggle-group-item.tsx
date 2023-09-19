@@ -4,19 +4,17 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useToggleGroupContext } from './toggle-group-context'
 
-// TODO export from zag.js
-
-type _ToggleProps = {
+type ItemProps = {
   value: string
   disabled?: boolean
 }
 
-export type ToggleProps = Assign<HTMLArkProps<'button'>, _ToggleProps>
+export type ToggleGroupItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
 
-export const Toggle = (props: ToggleProps) => {
-  const [toggleProps, restProps] = createSplitProps<_ToggleProps>()(props, ['value', 'disabled'])
+export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
+  const [toggleProps, restProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const api = useToggleGroupContext()
-  const mergedProps = mergeProps(() => api().getToggleProps(toggleProps), restProps)
+  const mergedProps = mergeProps(() => api().getItemProps(toggleProps), restProps)
 
   return <ark.button {...mergedProps} />
 }

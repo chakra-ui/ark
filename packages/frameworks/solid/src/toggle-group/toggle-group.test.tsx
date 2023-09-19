@@ -1,14 +1,14 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Toggle, ToggleGroup, type ToggleGroupProps } from './'
+import { ToggleGroup, type ToggleGroupProps } from './'
 
 const ComponentUnderTest = (props: ToggleGroupProps) => (
-  <ToggleGroup {...props}>
-    <Toggle value="a">A</Toggle>
-    <Toggle value="b">B</Toggle>
-    <Toggle value="c">C</Toggle>
-  </ToggleGroup>
+  <ToggleGroup.Root {...props}>
+    <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+    <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+    <ToggleGroup.Item value="c">C</ToggleGroup.Item>
+  </ToggleGroup.Root>
 )
 
 describe('Toggle', () => {

@@ -1,27 +1,31 @@
-import { type TriggerProps } from '@zag-js/tabs'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { useToggleGroupContext } from './toggle-group-context'
 
-export type ToggleProps = Assign<HTMLArkProps<'button'>, TriggerProps>
+type ItemProps = {
+  value: string
+  disabled?: boolean
+}
 
-export const Toggle: ComponentWithProps<ToggleProps> = defineComponent({
+export type ToggleGroupItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
+
+export const ToggleGroupItem: ComponentWithProps<ToggleGroupItemProps> = defineComponent({
   name: 'Toggle',
   props: {
     value: {
-      type: String as PropType<ToggleProps['value']>,
+      type: String as PropType<ItemProps['value']>,
       required: true,
     },
     disabled: {
-      type: Boolean as PropType<ToggleProps['disabled']>,
+      type: Boolean as PropType<ItemProps['disabled']>,
     },
   },
   setup(props, { slots, attrs }) {
     const api = useToggleGroupContext()
     return () => (
-      <ark.button {...api.value.getToggleProps(props)} {...attrs}>
+      <ark.button {...api.value.getItemProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )

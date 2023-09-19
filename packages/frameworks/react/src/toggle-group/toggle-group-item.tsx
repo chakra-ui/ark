@@ -6,19 +6,19 @@ import { type Assign } from '../types'
 import { useToggleGroupContext } from './toggle-group-context'
 
 // TODO export from zag.js
-type _ToggleProps = {
+type ItemProps = {
   value: string
   disabled?: boolean
 }
 
-export type ToggleProps = Assign<HTMLArkProps<'button'>, _ToggleProps>
+export type ToggleGroupItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
 
-export const Toggle = forwardRef<HTMLButtonElement, ToggleProps>((props, ref) => {
-  const [toggleProps, localProps] = createSplitProps<_ToggleProps>()(props, ['value', 'disabled'])
+export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
+  const [toggleProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const api = useToggleGroupContext()
-  const mergedProps = mergeProps(api.getToggleProps(toggleProps), localProps)
+  const mergedProps = mergeProps(api.getItemProps(toggleProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })
 
-Toggle.displayName = 'Toggle'
+ToggleGroupItem.displayName = 'ToggleGroupItem'

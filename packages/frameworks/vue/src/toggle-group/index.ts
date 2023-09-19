@@ -1,12 +1,12 @@
-import { Toggle, type ToggleProps } from './toggle'
 import { ToggleGroup as ToggleGroupRoot, type ToggleGroupProps } from './toggle-group'
 import { useToggleGroupContext, type ToggleGroupContext } from './toggle-group-context'
+import { ToggleGroupItem, type ToggleGroupItemProps } from './toggle-group-item'
 
 const ToggleGroup = Object.assign(ToggleGroupRoot, {
   Root: ToggleGroupRoot,
-  Toggle: Toggle,
+  Item: ToggleGroupItem,
 })
 
-export { Toggle, ToggleGroup, useToggleGroupContext }
+export { ToggleGroup, ToggleGroupItem, useToggleGroupContext }
 
-export type { ToggleGroupContext, ToggleGroupProps, ToggleProps }
+export type { ToggleGroupContext, ToggleGroupItemProps, ToggleGroupProps }
