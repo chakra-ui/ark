@@ -1,14 +1,4 @@
 {
-  "TagProps": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "TagInputProps": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "TagsInputProps": {
     "addOnPaste": {
       "type": "boolean",
@@ -216,7 +206,7 @@
       "description": "The value of the tags as a string."
     }
   },
-  "TagDeleteTriggerProps": {
+  "TagsInputItemProps": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
