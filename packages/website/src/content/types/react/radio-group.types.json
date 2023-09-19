@@ -85,5 +85,10 @@
       "isRequired": false,
       "description": "The current value of the radio group"
     }
+  },
+  "RadioGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   }
 }
