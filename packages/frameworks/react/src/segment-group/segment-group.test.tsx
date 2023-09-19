@@ -1,50 +1,33 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import {
-  Segment,
-  SegmentControl,
-  SegmentGroup,
-  SegmentGroupLabel,
-  type SegmentGroupProps,
-} from './'
+import { SegmentGroup, type SegmentGroupProps } from './'
 
-import { SegmentLabel } from './segment-label'
-
-const options = [
-  { id: 'apple', label: 'Apples' },
-  { id: 'orange', label: 'Oranges' },
-  { id: 'mango', label: 'Mangoes', disabled: true },
-  { id: 'grape', label: 'Grapes' },
-]
-
-const Component = (props: SegmentGroupProps) => (
-  <SegmentGroup {...props}>
-    <SegmentGroupLabel>Fruits</SegmentGroupLabel>
-    {options.map((option, id) => (
-      <Segment key={id} value={option.id} disabled={option.disabled}>
-        <SegmentLabel>{option.label}</SegmentLabel>
-        <SegmentControl />
-      </Segment>
-    ))}
-  </SegmentGroup>
-)
-
+const ComponentUnderTest = (props: SegmentGroupProps) => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <SegmentGroup.Root {...props}>
+      <SegmentGroup.Indicator />
+      {frameworks.map((framework) => (
+        <SegmentGroup.Item key={framework} value={framework}>
+          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+        </SegmentGroup.Item>
+      ))}
+    </SegmentGroup.Root>
+  )
+}
 describe('Segment Group', () => {
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
-
-    render(<Component onValueChange={onValueChange} />)
-
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     await user.click(screen.getByLabelText('Grapes'))
     expect(onValueChange).toHaveBeenCalledWith({ value: 'grape' })
   })
 
   it('should not invoke onValueChange if option is disabled', async () => {
     const onValueChange = vi.fn()
-
-    render(<Component onValueChange={onValueChange} />)
-
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     await user.click(screen.getByLabelText('Mangoes'))
     expect(onValueChange).not.toHaveBeenCalled()
   })
