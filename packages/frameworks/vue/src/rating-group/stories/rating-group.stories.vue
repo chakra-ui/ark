@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, type UnwrapRef } from 'vue'
-import { Rating, RatingGroup, RatingGroupControl, RatingGroupLabel } from '..'
+import { RatingGroup, RatingGroupControl, RatingGroupItem, RatingGroupLabel } from '..'
 import type { RatingGroupContext } from '../rating-group-context'
 import { IconEmpty, IconFull, IconHalf } from './rating-icons'
 
@@ -16,19 +16,19 @@ const defaultRef = ref(props.defaultValue)
   <RatingGroup :max="props.max" v-model="defaultRef" allowHalf>
     <RatingGroupLabel>Label</RatingGroupLabel>
     <RatingGroupControl v-slot="{ sizeArray }: UnwrapRef<RatingGroupContext>">
-      <Rating
+      <RatingGroupItem
         v-for="idx in sizeArray"
         :key="idx"
         :index="idx"
         v-slot="{
           isHalf,
           isHighlighted,
-        }: ReturnType<UnwrapRef<RatingGroupContext>['getRatingState']>"
+        }: ReturnType<UnwrapRef<RatingGroupContext>['getItemState']>"
       >
         <IconHalf v-if="isHalf" />
         <IconFull v-else-if="isHighlighted" />
         <IconEmpty v-else />
-      </Rating>
+      </RatingGroupItem>
     </RatingGroupControl>
   </RatingGroup>
 </template>

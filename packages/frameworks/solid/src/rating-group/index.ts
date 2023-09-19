@@ -1,30 +1,30 @@
-import { Rating, type RatingProps } from './rating'
-import { useRatingContext, type RatingContext } from './rating-context'
 import { RatingGroup as RatingGroupRoot, type RatingGroupProps } from './rating-group'
 import { useRatingGroupContext } from './rating-group-context'
 import { RatingGroupControl, type RatingGroupControlProps } from './rating-group-control'
+import { RatingGroupItem, type RatingGroupItemProps } from './rating-group-item'
+import { useRatingGroupItemContext, type RatingGroupItemContext } from './rating-group-item-context'
 import { RatingGroupLabel, type RatingGroupLabelProps } from './rating-group-label'
 
 const RatingGroup = Object.assign(RatingGroupRoot, {
   Root: RatingGroupRoot,
   Control: RatingGroupControl,
   Label: RatingGroupLabel,
-  Rating: Rating,
+  Item: RatingGroupItem,
 })
 
 export {
-  Rating,
   RatingGroup,
   RatingGroupControl,
+  RatingGroupItem,
   RatingGroupLabel,
-  useRatingContext,
   useRatingGroupContext,
+  useRatingGroupItemContext,
 }
 
 export type {
-  RatingContext,
   RatingGroupControlProps,
+  RatingGroupItemContext,
+  RatingGroupItemProps,
   RatingGroupLabelProps,
   RatingGroupProps,
-  RatingProps,
 }
