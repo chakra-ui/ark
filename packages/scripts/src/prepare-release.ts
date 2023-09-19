@@ -2,6 +2,7 @@ import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { globbySync } from 'globby'
 import path, { dirname } from 'path'
+import { match } from 'ts-pattern'
 
 const generateExports = () => {
   const paths = globbySync('src/**/index.ts')
@@ -26,10 +27,14 @@ const generateKeywords = () =>
 
 const main = async () => {
   const packageName = process.argv.slice(2)[0]
-  const framework = packageName.split('/')[1]
-
+  const dirName = packageName.split('/')[1]
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(root, 'packages', 'frameworks', framework))
+
+  process.chdir(
+    match(dirName)
+      .with('anatomy', () => path.join(root, 'packages', dirName))
+      .otherwise(() => path.join(root, 'packages', 'frameworks', dirName)),
+  )
 
   const packageJson = await fs.readJson('package.json')
   packageJson.main = 'index.cjs'

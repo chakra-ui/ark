@@ -26,7 +26,7 @@
     "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
     "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
     "storybook": "histoire dev",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
     "@ark-ui/anatomy": "workspace:*",

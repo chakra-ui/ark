@@ -17,6 +17,11 @@
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
+  "scripts": {
+    "before:pack": "pnpm --filter=@ark-ui/scripts release:prepare @ark-ui/anatomy",
+    "build": "vite build",
+    "release-it": "release-it --config ../../release-it.json"
+  },
   "dependencies": {
     "@zag-js/accordion": "0.20.0",
     "@zag-js/anatomy": "0.20.0",
@@ -50,6 +55,14 @@
     "@zag-js/toast": "0.20.0",
     "@zag-js/toggle-group": "0.20.0",
     "@zag-js/tooltip": "0.20.0"
+  },
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "4.0.0",
+    "globby": "13.2.2",
+    "release-it": "16.1.5",
+    "typescript": "5.2.2",
+    "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.3"
   },
   "main": "src/index.ts"
 }

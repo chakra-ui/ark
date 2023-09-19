@@ -26,7 +26,7 @@
     "storydocs": "pnpm --filter=@ark-ui/scripts document:stories solid",
     "typedocs": "pnpm --filter=@ark-ui/scripts document:types solid",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
     "@ark-ui/anatomy": "workspace:*",
