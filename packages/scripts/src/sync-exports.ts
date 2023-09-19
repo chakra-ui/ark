@@ -1,11 +1,16 @@
+import { findUpSync } from 'find-up'
 import { copy } from 'fs-extra'
 import { globby } from 'globby'
+import path, { dirname } from 'path'
 
 /**
  * Copy all index.ts files from react to solid
  */
 const main = async () => {
-  const indices = await globby(['../packages/frameworks/react/src/**/index.ts'])
+  const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
+  process.chdir(path.join(rootDir, 'packages', 'frameworks'))
+
+  const indices = await globby(['./react/src/**/index.ts'])
   await Promise.all(indices.map((index) => copy(index, index.replace('react', 'vue'))))
 }
 

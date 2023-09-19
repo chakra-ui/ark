@@ -1,9 +1,8 @@
 import type { CheckedState } from '@zag-js/checkbox'
 import { Checkbox as CheckboxRoot, type CheckboxProps } from './checkbox'
-import { useCheckboxContext } from './checkbox-context'
+import { useCheckboxContext, type CheckboxContext } from './checkbox-context'
 import { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
 import { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'
-import { checkboxAnatomy } from './checkbox.anatomy'
 
 const Checkbox = Object.assign(CheckboxRoot, {
   Root: CheckboxRoot,
@@ -11,5 +10,11 @@ const Checkbox = Object.assign(CheckboxRoot, {
   Label: CheckboxLabel,
 })
 
-export { Checkbox, CheckboxControl, CheckboxLabel, checkboxAnatomy, useCheckboxContext }
-export type { CheckboxControlProps, CheckboxLabelProps, CheckboxProps, CheckedState }
+export { Checkbox, CheckboxControl, CheckboxLabel, useCheckboxContext }
+export type {
+  CheckboxContext,
+  CheckboxControlProps,
+  CheckboxLabelProps,
+  CheckboxProps,
+  CheckedState,
+}

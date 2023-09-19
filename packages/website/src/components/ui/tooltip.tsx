@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/tooltip'
+import * as Ark from '@ark-ui/react/tooltip'
 import { styled } from 'styled-system/jsx'
 import { tooltip, type TooltipVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tooltip)
 
-export * from '@ark-ui/react/src/tooltip'
+export * from '@ark-ui/react/tooltip'
 export type TooltipProps = Ark.TooltipProps & TooltipVariantProps
 
 const TooltipRoot = withProvider(styled(Ark.Tooltip.Root))

@@ -2,10 +2,9 @@ import { HoverCard as HoverCardRoot, type HoverCardProps } from './hover-card'
 import { HoverCardArrow, type HoverCardArrowProps } from './hover-card-arrow'
 import { HoverCardArrowTip, type HoverCardArrowTipProps } from './hover-card-arrow-tip'
 import { HoverCardContent, type HoverCardContentProps } from './hover-card-content'
-import { useHoverCardContext } from './hover-card-context'
+import { useHoverCardContext, type HoverCardContext } from './hover-card-context'
 import { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card-positioner'
 import { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'
-import { hoverCardAnatomy } from './hover-card.anatomy'
 
 const HoverCard = Object.assign(HoverCardRoot, {
   Root: HoverCardRoot,
@@ -23,7 +22,6 @@ export {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
-  hoverCardAnatomy,
   useHoverCardContext,
 }
 
@@ -31,6 +29,7 @@ export type {
   HoverCardArrowProps,
   HoverCardArrowTipProps,
   HoverCardContentProps,
+  HoverCardContext,
   HoverCardPositionerProps,
   HoverCardProps,
   HoverCardTriggerProps,

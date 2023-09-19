@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@ark-ui/react": "workspace:*",
+    "@ark-ui/react": "0.15.0",
     "@astrojs/sitemap": "3.0.0",
     "@fontsource-variable/fira-code": "5.0.8",
     "@fontsource-variable/inter": "5.0.8",

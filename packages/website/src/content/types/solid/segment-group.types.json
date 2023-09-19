@@ -4,6 +4,11 @@
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
   },
+  "SegmentContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
   "SegmentGroupProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",

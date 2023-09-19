@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/segment-group'
+import * as Ark from '@ark-ui/react/segment-group'
 import { styled } from 'styled-system/jsx'
 import { segmentGroup, type SegmentGroupVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(segmentGroup)
 
-export * from '@ark-ui/react/src/segment-group'
+export * from '@ark-ui/react/segment-group'
 export type SegmentGroupProps = Ark.SegmentGroupProps & SegmentGroupVariantProps
 
 const SegmentGroupRoot = withProvider(styled(Ark.SegmentGroup.Root), 'root')

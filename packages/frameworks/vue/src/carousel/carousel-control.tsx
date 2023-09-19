@@ -1,6 +1,6 @@
+import { carouselAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { carouselAnatomy } from './carousel.anatomy'
 
 export type CarouselControlProps = HTMLArkProps<'div'>
 

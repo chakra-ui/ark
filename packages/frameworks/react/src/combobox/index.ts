@@ -16,7 +16,6 @@ import { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-te
 import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
-import { comboboxAnatomy } from './combobox.anatomy'
 
 const Combobox = Object.assign(ComboboxRoot, {
   Root: ComboboxRoot,
@@ -48,7 +47,6 @@ export {
   ComboboxLabel,
   ComboboxPositioner,
   ComboboxTrigger,
-  comboboxAnatomy,
   useComboboxContext,
 }
 export type {

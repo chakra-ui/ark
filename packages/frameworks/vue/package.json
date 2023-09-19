@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "packages/vue"
+    "directory": "packages/frameworks/vue"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
@@ -26,9 +26,10 @@
     "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
     "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
     "storybook": "histoire dev",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
+    "@ark-ui/anatomy": "workspace:*",
     "@zag-js/accordion": "0.20.0",
     "@zag-js/anatomy": "0.20.0",
     "@zag-js/avatar": "0.20.0",

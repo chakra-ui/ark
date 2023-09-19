@@ -4,6 +4,11 @@
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
   },
+  "RadioContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
   "RadioGroupProps": {
     "dir": {
       "type": "'ltr' | 'rtl'",

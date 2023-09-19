@@ -1,6 +1,6 @@
 import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
-import { useColorPickerAreaContext } from './color-picker-area-context'
+import { useColorPickerAreaContext, type ColorPickerAreaContext } from './color-picker-area-context'
 import {
   ColorPickerAreaGradient,
   type ColorPickerAreaGradientProps,
@@ -33,12 +33,14 @@ import {
   ColorPickerSwatchBackground,
   type ColorPickerSwatchBackgroundProps,
 } from './color-picker-swatch-background'
-import { useColorPickerSwatchContext } from './color-picker-swatch-context'
+import {
+  useColorPickerSwatchContext,
+  type ColorPickerSwatchContext,
+} from './color-picker-swatch-context'
 import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group'
-import { colorPickerAnatomy } from './color-picker.anatomy'
 
 const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
@@ -69,12 +71,12 @@ export {
   ColorPickerSwatch,
   ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
-  colorPickerAnatomy,
   useColorPickerAreaContext,
   useColorPickerContext,
   useColorPickerSwatchContext,
 }
 export type {
+  ColorPickerAreaContext,
   ColorPickerAreaGradientProps,
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
@@ -87,6 +89,7 @@ export type {
   ColorPickerEyeDropperTriggerProps,
   ColorPickerProps,
   ColorPickerSwatchBackgroundProps,
+  ColorPickerSwatchContext,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
 }

@@ -1,0 +1,68 @@
+{
+  "name": "@ark-ui/anatomy",
+  "version": "0.1.0",
+  "description": "Contains all the anatomy information for the Ark UI components",
+  "keywords": [],
+  "homepage": "https://ark-ui.com",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
+    "directory": "packages/anatomy"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "scripts": {
+    "before:pack": "pnpm --filter=@ark-ui/scripts release:prepare @ark-ui/anatomy",
+    "build": "vite build",
+    "release-it": "release-it --config ../../release-it.json"
+  },
+  "dependencies": {
+    "@zag-js/accordion": "0.20.0",
+    "@zag-js/anatomy": "0.20.0",
+    "@zag-js/avatar": "0.20.0",
+    "@zag-js/carousel": "0.20.0",
+    "@zag-js/checkbox": "0.20.0",
+    "@zag-js/color-picker": "0.20.0",
+    "@zag-js/color-utils": "0.20.0",
+    "@zag-js/combobox": "0.20.0",
+    "@zag-js/date-picker": "0.20.0",
+    "@zag-js/date-utils": "0.20.0",
+    "@zag-js/dialog": "0.20.0",
+    "@zag-js/editable": "0.20.0",
+    "@zag-js/hover-card": "0.20.0",
+    "@zag-js/menu": "0.20.0",
+    "@zag-js/number-input": "0.20.0",
+    "@zag-js/pagination": "0.20.0",
+    "@zag-js/pin-input": "0.20.0",
+    "@zag-js/popover": "0.20.0",
+    "@zag-js/presence": "0.20.0",
+    "@zag-js/pressable": "0.20.0",
+    "@zag-js/radio-group": "0.20.0",
+    "@zag-js/range-slider": "0.20.0",
+    "@zag-js/rating-group": "0.20.0",
+    "@zag-js/select": "0.20.0",
+    "@zag-js/slider": "0.20.0",
+    "@zag-js/splitter": "0.20.0",
+    "@zag-js/switch": "0.20.0",
+    "@zag-js/tabs": "0.20.0",
+    "@zag-js/tags-input": "0.20.0",
+    "@zag-js/toast": "0.20.0",
+    "@zag-js/toggle-group": "0.20.0",
+    "@zag-js/tooltip": "0.20.0"
+  },
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "4.0.0",
+    "globby": "13.2.2",
+    "release-it": "16.1.5",
+    "typescript": "5.2.2",
+    "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.3"
+  },
+  "main": "src/index.ts"
+}

@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/popover'
+import * as Ark from '@ark-ui/react/popover'
 import { styled } from 'styled-system/jsx'
 import { popover, type PopoverVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(popover)
 
-export * from '@ark-ui/react/src/popover'
+export * from '@ark-ui/react/popover'
 export type PopoverProps = Ark.PopoverProps & PopoverVariantProps
 
 const PopoverRoot = withProvider(styled(Ark.Popover.Root))

@@ -4,7 +4,6 @@ import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItem, type AccordionItemProps } from './accordion-item'
 import { useAccordionItemContext, type AccordionItemContext } from './accordion-item-context'
 import { AccordionTrigger, type AccordionTriggerProps } from './accordion-trigger'
-import { accordionAnatomy } from './accordion.anatomy'
 
 const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,
@@ -18,7 +17,6 @@ export {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  accordionAnatomy,
   useAccordionContext,
   useAccordionItemContext,
 }

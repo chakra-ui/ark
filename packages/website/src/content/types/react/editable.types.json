@@ -131,5 +131,56 @@
       "isRequired": false,
       "description": "The value of the editable in both edit and preview mode"
     }
+  },
+  "EditableContext": {
+    "areaProps": { "type": "Dict<any>", "isRequired": true },
+    "cancel": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to exit edit mode, and discard any changes"
+    },
+    "cancelTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "clearValue": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to clear the value of the editable"
+    },
+    "controlProps": { "type": "Dict<any>", "isRequired": true },
+    "edit": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to enter edit mode"
+    },
+    "editTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "inputProps": { "type": "Dict<any>", "isRequired": true },
+    "isEditing": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the editable is in edit mode"
+    },
+    "isValueEmpty": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the editable value is empty"
+    },
+    "labelProps": { "type": "Dict<any>", "isRequired": true },
+    "previewProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "setValue": {
+      "type": "(value: string) => void",
+      "isRequired": true,
+      "description": "Function to set the value of the editable"
+    },
+    "submit": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to exit edit mode, and submit any changes"
+    },
+    "submitTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The current value of the editable"
+    }
   }
 }

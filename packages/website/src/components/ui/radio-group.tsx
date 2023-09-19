@@ -1,11 +1,11 @@
-import * as Ark from '@ark-ui/react/src/radio-group'
+import * as Ark from '@ark-ui/react/radio-group'
 import { styled } from 'styled-system/jsx'
 import { radioGroup, type RadioGroupVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(radioGroup)
 
-export * from '@ark-ui/react/src/radio-group'
+export * from '@ark-ui/react/radio-group'
 export type RadioGroupProps = Ark.RadioGroupProps & RadioGroupVariantProps
 
 const RadioGroupRoot = withProvider(styled(Ark.RadioGroup.Root), 'root')

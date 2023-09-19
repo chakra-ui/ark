@@ -52,6 +52,74 @@
       "description": "The amount of space between slides."
     }
   },
+  "CarouselContext": {
+    "canScrollNext": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the carousel is can scroll to the next slide"
+    },
+    "canScrollPrev": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the carousel is can scroll to the previous slide"
+    },
+    "getIndicatorProps": {
+      "type": "(props: SlideIndicatorProps) => Dict<any>",
+      "isRequired": true
+    },
+    "getSlideProps": { "type": "(props: SlideProps) => Dict<any>", "isRequired": true },
+    "getSlideState": {
+      "type": "(props: SlideProps) => SlideState",
+      "isRequired": true,
+      "description": "Returns the state of a specific slide"
+    },
+    "index": {
+      "type": "number",
+      "isRequired": true,
+      "description": "The current index of the carousel"
+    },
+    "indicatorGroupProps": { "type": "Dict<any>", "isRequired": true },
+    "isAutoplay": {
+      "type": "boolean",
+      "isRequired": true,
+      "description": "Whether the carousel is currently auto-playing"
+    },
+    "nextSlideTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "pause": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to pause autoplay"
+    },
+    "play": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to start/resume autoplay"
+    },
+    "prevSlideTriggerProps": { "type": "Dict<any>", "isRequired": true },
+    "rootProps": { "type": "Dict<any>", "isRequired": true },
+    "scrollProgress": {
+      "type": "number",
+      "isRequired": true,
+      "description": "The current scroll progress of the carousel"
+    },
+    "scrollTo": {
+      "type": "(index: number, jump?: boolean | undefined) => void",
+      "isRequired": true,
+      "description": "Function to scroll to a specific slide index"
+    },
+    "scrollToNext": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to scroll to the next slide"
+    },
+    "scrollToPrevious": {
+      "type": "() => void",
+      "isRequired": true,
+      "description": "Function to scroll to the previous slide"
+    },
+    "slideGroupProps": { "type": "Dict<any>", "isRequired": true },
+    "viewportProps": { "type": "Dict<any>", "isRequired": true }
+  },
   "CarouselSlideProps": { "index": { "type": "number", "isRequired": true } },
   "CarouselIndicatorProps": {
     "index": { "type": "number", "isRequired": true },

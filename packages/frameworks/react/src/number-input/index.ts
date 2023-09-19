@@ -12,7 +12,6 @@ import {
 } from './number-input-increment-trigger'
 import { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
 import { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
-import { numberInputAnatomy } from './number-input.anatomy'
 
 const NumberInput = Object.assign(NumberInputRoot, {
   Root: NumberInputRoot,
@@ -32,7 +31,6 @@ export {
   NumberInputInput,
   NumberInputLabel,
   NumberInputScrubber,
-  numberInputAnatomy,
   useNumberInputContext,
 }
 

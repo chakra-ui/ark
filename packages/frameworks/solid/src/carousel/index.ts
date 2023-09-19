@@ -1,5 +1,5 @@
 import { Carousel as CarouselRoot, type CarouselProps } from './carousel'
-import { useCarouselContext } from './carousel-context'
+import { useCarouselContext, type CarouselContext } from './carousel-context'
 import { CarouselControl, type CarouselControlProps } from './carousel-control'
 import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
 import {
@@ -17,7 +17,6 @@ import {
 import { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
 import { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
 import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
-import { carouselAnatomy } from './carousel.anatomy'
 
 const Carousel = Object.assign(CarouselRoot, {
   Root: CarouselRoot,
@@ -41,10 +40,10 @@ export {
   CarouselSlide,
   CarouselSlideGroup,
   CarouselViewport,
-  carouselAnatomy,
   useCarouselContext,
 }
 export type {
+  CarouselContext,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,

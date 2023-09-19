@@ -13,7 +13,6 @@ import { SelectLabel, type SelectLabelProps } from './select-label'
 import { SelectPositioner, type SelectPositionerProps } from './select-positioner'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
 import { SelectValue, type SelectValueProps } from './select-value'
-import { selectAnatomy } from './select.anatomy'
 
 const Select = Object.assign(SelectRoot, {
   Root: SelectRoot,
@@ -45,7 +44,6 @@ export {
   SelectPositioner,
   SelectTrigger,
   SelectValue,
-  selectAnatomy,
   useSelectContext,
 }
 

@@ -12,7 +12,6 @@ import {
   PaginationPrevPageTrigger,
   type PaginationPrevPageTriggerProps,
 } from './pagination-prev-page-trigger'
-import { paginationAnatomy } from './pagination.anatomy'
 
 const Pagination = Object.assign(PaginationRoot, {
   Root: PaginationRoot,
@@ -32,7 +31,6 @@ export {
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
-  paginationAnatomy,
   usePaginationContext,
 }
 export type {
