@@ -1,6 +1,6 @@
 import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
-import { useColorPickerAreaContext } from './color-picker-area-context'
+import { useColorPickerAreaContext, type ColorPickerAreaContext } from './color-picker-area-context'
 import {
   ColorPickerAreaGradient,
   type ColorPickerAreaGradientProps,
@@ -23,7 +23,7 @@ import {
   type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track'
 import { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext, type ColorPickerContext } from './color-picker-context'
 import {
   ColorPickerEyeDropperTrigger,
   type ColorPickerEyeDropperTriggerProps,
@@ -33,7 +33,10 @@ import {
   ColorPickerSwatchBackground,
   type ColorPickerSwatchBackgroundProps,
 } from './color-picker-swatch-background'
-import { useColorPickerSwatchContext } from './color-picker-swatch-context'
+import {
+  useColorPickerSwatchContext,
+  type ColorPickerSwatchContext,
+} from './color-picker-swatch-context'
 import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
@@ -73,6 +76,7 @@ export {
   useColorPickerSwatchContext,
 }
 export type {
+  ColorPickerAreaContext,
   ColorPickerAreaGradientProps,
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
@@ -81,9 +85,11 @@ export type {
   ColorPickerChannelSliderThumbProps,
   ColorPickerChannelSliderTrackProps,
   ColorPickerContentProps,
+  ColorPickerContext,
   ColorPickerEyeDropperTriggerProps,
   ColorPickerProps,
   ColorPickerSwatchBackgroundProps,
+  ColorPickerSwatchContext,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
 }

@@ -1,7 +1,7 @@
 import { Editable as EditableRoot, type EditableProps } from './editable'
 import { EditableArea, type EditableAreaProps } from './editable-area'
 import { EditableCancelTrigger, type EditableCancelTriggerProps } from './editable-cancel-trigger'
-import { useEditableContext } from './editable-context'
+import { useEditableContext, type EditableContext } from './editable-context'
 import { EditableControl, type EditableControlProps } from './editable-control'
 import { EditableEditTrigger, type EditableEditTriggerProps } from './editable-edit-trigger'
 import { EditableInput, type EditableInputProps } from './editable-input'
@@ -37,6 +37,7 @@ export {
 export type {
   EditableAreaProps,
   EditableCancelTriggerProps,
+  EditableContext,
   EditableControlProps,
   EditableEditTriggerProps,
   EditableInputProps,

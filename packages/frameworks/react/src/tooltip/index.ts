@@ -2,7 +2,7 @@ import { Tooltip as TooltipRoot, type TooltipProps } from './tooltip'
 import { TooltipArrow, type TooltipArrowProps } from './tooltip-arrow'
 import { TooltipArrowTip, type TooltipArrowTipProps } from './tooltip-arrow-tip'
 import { TooltipContent, type TooltipContentProps } from './tooltip-content'
-import { useTooltipContext } from './tooltip-context'
+import { useTooltipContext, type TooltipContext } from './tooltip-context'
 import { TooltipPositioner, type TooltipPositionerProps } from './tooltip-positioner'
 import { TooltipTrigger, type TooltipTriggerProps } from './tooltip-trigger'
 
@@ -29,6 +29,7 @@ export type {
   TooltipArrowProps,
   TooltipArrowTipProps,
   TooltipContentProps,
+  TooltipContext,
   TooltipPositionerProps,
   TooltipProps,
   TooltipTriggerProps,

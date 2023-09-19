@@ -1,5 +1,5 @@
 import { Carousel as CarouselRoot, type CarouselProps } from './carousel'
-import { useCarouselContext } from './carousel-context'
+import { useCarouselContext, type CarouselContext } from './carousel-context'
 import { CarouselControl, type CarouselControlProps } from './carousel-control'
 import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
 import {
@@ -43,6 +43,7 @@ export {
   useCarouselContext,
 }
 export type {
+  CarouselContext,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,

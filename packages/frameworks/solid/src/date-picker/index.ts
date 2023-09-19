@@ -1,5 +1,5 @@
 import { DatePicker as DatePickerRoot, type DatePickerProps } from './date-picker'
-import { useDatePickerCellContext } from './date-picker-cell-context'
+import { useDatePickerCellContext, type DatePickerCellContext } from './date-picker-cell-context'
 import {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
@@ -9,10 +9,13 @@ import {
   type DatePickerColumnHeaderProps,
 } from './date-picker-column-header'
 import { DatePickerContent, type DatePickerContentProps } from './date-picker-content'
-import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerContext, type DatePickerContext } from './date-picker-context'
 import { DatePickerControl, type DatePickerControlProps } from './date-picker-control'
 import { DatePickerDayCell, type DatePickerDayCellProps } from './date-picker-day-cell'
-import { useDatePickerDayCellContext } from './date-picker-day-cell-context'
+import {
+  useDatePickerDayCellContext,
+  type DatePickerDayCellContext,
+} from './date-picker-day-cell-context'
 import {
   DatePickerDayCellTrigger,
   type DatePickerDayCellTriggerProps,
@@ -96,10 +99,13 @@ export {
 }
 
 export type {
+  DatePickerCellContext,
   DatePickerClearTriggerProps,
   DatePickerColumnHeaderProps,
   DatePickerContentProps,
+  DatePickerContext,
   DatePickerControlProps,
+  DatePickerDayCellContext,
   DatePickerDayCellProps,
   DatePickerDayCellTriggerProps,
   DatePickerGridProps,

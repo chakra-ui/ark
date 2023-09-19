@@ -3,7 +3,7 @@ import { DialogBackdrop, type DialogBackdropProps } from './dialog-backdrop'
 import { DialogCloseTrigger, type DialogCloseTriggerProps } from './dialog-close-trigger'
 import { DialogContainer, type DialogContainerProps } from './dialog-container'
 import { DialogContent, type DialogContentProps } from './dialog-content'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext, type DialogContext } from './dialog-context'
 import { DialogDescription, type DialogDescriptionProps } from './dialog-description'
 import { DialogTitle, type DialogTitleProps } from './dialog-title'
 import { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
@@ -36,6 +36,7 @@ export type {
   DialogCloseTriggerProps,
   DialogContainerProps,
   DialogContentProps,
+  DialogContext,
   DialogDescriptionProps,
   DialogProps,
   DialogTitleProps,

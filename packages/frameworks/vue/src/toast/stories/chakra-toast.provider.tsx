@@ -8,13 +8,13 @@ import {
   ToastTitle,
 } from '..'
 import type { ToastsContext } from '../toast-group'
-import { ToastPlacements, type PlacementsContext } from '../toast-placements'
+import { ToastPlacements, type ToastPlacementsProps } from '../toast-placements'
 
 export const ChakraToastProvider = defineComponent((_, { slots }) => {
   return () => (
     <ToastProvider>
       <ToastPlacements>
-        {({ placements }: { placements: PlacementsContext['placements'] }) => (
+        {({ placements }: { placements: ToastPlacementsProps['placements'] }) => (
           <>
             {placements.map((placement) => (
               <ToastGroup placement={placement} key={placement}>

@@ -1,5 +1,5 @@
 import { Slider as SliderRoot, type SliderProps } from './slider'
-import { useSliderContext } from './slider-context'
+import { useSliderContext, type SliderContext } from './slider-context'
 import { SliderControl, type SliderControlProps } from './slider-control'
 import { SliderLabel, type SliderLabelProps } from './slider-label'
 import { SliderMarker, type SliderMarkerProps } from './slider-marker'
@@ -35,6 +35,7 @@ export {
 }
 
 export type {
+  SliderContext,
   SliderControlProps,
   SliderLabelProps,
   SliderMarkerGroupProps,

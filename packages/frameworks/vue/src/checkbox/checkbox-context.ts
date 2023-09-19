@@ -2,7 +2,7 @@ import { type connect } from '@zag-js/checkbox'
 import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
 
-export const [CheckboxProvider, useCheckboxContext] =
-  createContext<ComputedRef<ReturnType<typeof connect>>>('CheckboxContext')
+export type CheckboxContext = ComputedRef<ReturnType<typeof connect>>
 
-// TODO: export type CheckboxContext = UseCheckboxReturn
+export const [CheckboxProvider, useCheckboxContext] =
+  createContext<CheckboxContext>('CheckboxContext')

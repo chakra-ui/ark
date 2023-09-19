@@ -4,7 +4,7 @@ import { PopoverArrow, type PopoverArrowProps } from './popover-arrow'
 import { PopoverArrowTip, type PopoverArrowTipProps } from './popover-arrow-tip'
 import { PopoverCloseTrigger, type PopoverCloseTriggerProps } from './popover-close-trigger'
 import { PopoverContent, type PopoverContentProps } from './popover-content'
-import { usePopoverContext } from './popover-context'
+import { usePopoverContext, type PopoverContext } from './popover-context'
 import { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
 import { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 import { PopoverTitle, type PopoverTitleProps } from './popover-title'
@@ -43,6 +43,7 @@ export type {
   PopoverArrowTipProps,
   PopoverCloseTriggerProps,
   PopoverContentProps,
+  PopoverContext,
   PopoverDescriptionProps,
   PopoverPositionerProps,
   PopoverProps,
