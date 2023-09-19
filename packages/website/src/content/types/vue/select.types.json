@@ -1,6 +1,10 @@
 {
   "SelectProps": {
-    "items": { "type": "any[]", "isRequired": true, "description": "The options of the select" },
+    "items": {
+      "type": "any[] | readonly any[]",
+      "isRequired": true,
+      "description": "The options of the select"
+    },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
