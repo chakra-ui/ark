@@ -9,7 +9,7 @@ describe('TagsInput', () => {
 
   it('should allow to add a new item', async () => {
     render(ComponentUnderTest)
-    const input = screen.getByPlaceholderText('Add tag')
+    const input = screen.getByPlaceholderText('Add Framework')
     await user.type(input, 'angular')
     await user.keyboard('[Enter]')
 
@@ -18,7 +18,7 @@ describe('TagsInput', () => {
 
   it('should allow to add and delete a new item', async () => {
     render(ComponentUnderTest)
-    const input = screen.getByPlaceholderText('Add tag')
+    const input = screen.getByPlaceholderText('Add Framework')
     await user.type(input, 'angular')
     await user.keyboard('[Enter]')
 
@@ -32,7 +32,7 @@ describe('TagsInput', () => {
 
   it('should allow to modify an added item', async () => {
     render(ComponentUnderTest)
-    await user.type(screen.getByPlaceholderText('Add tag'), 'angular')
+    await user.type(screen.getByPlaceholderText('Add Framework'), 'angular')
     await user.keyboard('[Enter]')
 
     expect(screen.getByText('angular')).toBeInTheDocument()

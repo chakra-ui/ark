@@ -7,7 +7,12 @@ const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
 <template>
   <RadioGroup.Root>
     <RadioGroup.Label>Framework</RadioGroup.Label>
-    <RadioGroup.Item v-for="framework in frameworks" :key="framework" :value="framework">
+    <RadioGroup.Item
+      v-for="framework in frameworks"
+      :key="framework"
+      :value="framework"
+      :disabled="framework === 'Svelte'"
+    >
       <RadioGroup.ItemText>{{ framework }}</RadioGroup.ItemText>
       <RadioGroup.ItemControl />
     </RadioGroup.Item>

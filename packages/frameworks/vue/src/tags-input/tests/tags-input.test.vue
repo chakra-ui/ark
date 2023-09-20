@@ -12,7 +12,7 @@ import {
   TagsInputLabel,
 } from '../'
 
-const frameworks = ref(['React', 'Solid', 'Vue'])
+const frameworks = ref(['react', 'solid', 'vue'])
 </script>
 
 <template>
@@ -30,7 +30,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         <TagsInputItemDeleteTrigger>Delete</TagsInputItemDeleteTrigger>
       </TagsInputItem>
       <TagsInputInput placeholder="Add Framework" />
-      <TagsInputClearTrigger>Clear All</TagsInputClearTrigger>
+      <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
     </TagsInputControl>
   </TagsInput>
 </template>

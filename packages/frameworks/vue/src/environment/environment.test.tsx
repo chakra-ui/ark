@@ -4,7 +4,7 @@ import PrintEnvironment from './stories/print-environment.vue'
 
 describe('Environment', () => {
   it('should have access to the environment values', () => {
-    const { getByLabelText, debug, baseElement } = render({
+    const { getByLabelText } = render({
       components: { Environment, PrintEnvironment },
       template: `
         <Environment :value='document'>
@@ -12,8 +12,6 @@ describe('Environment', () => {
         </Environment>
       `,
     })
-
-    debug(baseElement)
 
     expect(getByLabelText('environment values').innerHTML).not.toBe('""')
   })
