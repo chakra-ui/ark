@@ -1,4 +1,6 @@
+import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/react'
+import { getParts } from '../setup-test'
 import { Avatar, type AvatarProps } from './'
 
 const ComponentUnderTest = (props: AvatarProps) => {
@@ -11,7 +13,8 @@ const ComponentUnderTest = (props: AvatarProps) => {
 }
 
 describe('Avatar', () => {
-  it('should render', async () => {
-    render(<ComponentUnderTest />)
+  it.each(getParts(avatarAnatomy))('should render part %s', async (part) => {
+    const { container } = render(<ComponentUnderTest />)
+    expect(container.querySelector(part)).toBeInTheDocument()
   })
 })

@@ -1,5 +1,7 @@
+import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import {
   Carousel,
   CarouselControl,
@@ -49,10 +51,10 @@ const ComponentUnderTest = () => {
 }
 
 describe('Carousel', () => {
-  it('should render', async () => {
-    render(<ComponentUnderTest />)
+  it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
+    const { container } = render(<ComponentUnderTest />)
+    expect(container.querySelector(part)).toBeInTheDocument()
   })
-
   it('should have the correct disabled / enabled states for control buttons', async () => {
     render(<ComponentUnderTest />)
     const prevButton = screen.getByRole('button', { name: 'Previous Slide' })

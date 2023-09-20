@@ -1,21 +1,27 @@
+import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import { Checkbox, type CheckboxProps } from './checkbox'
 import { CheckboxControl } from './checkbox-control'
+import { CheckboxIndicator } from './checkbox-indicator'
 import { CheckboxLabel } from './checkbox-label'
 
 const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
   <Checkbox {...props}>
     <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxControl data-testid="control" />
+    <CheckboxControl data-testid="control">
+      <CheckboxIndicator />
+    </CheckboxControl>
   </Checkbox>
 )
 
 describe('Checkbox', () => {
-  it('should render', async () => {
-    render(<ComponentUnderTest />)
+  it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
+    const { container } = render(<ComponentUnderTest />)
+    expect(container.querySelector(part)).toBeInTheDocument()
   })
 
   it('should handle check and unchecked', async () => {
