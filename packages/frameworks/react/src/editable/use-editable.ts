@@ -12,17 +12,17 @@ export type UseEditableReturn = editable.Api
 
 export const useEditable = (props: UseEditableProps): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()
-  const initialContext = {
+  const initialContext: editable.Context = {
     id: useId(),
     getRootNode,
     ...props,
     value: props.defaultValue,
   }
 
-  const context = {
+  const context: editable.Context = {
     ...initialContext,
     value: props.value,
-    onChange: useEvent(props.onValueChange, { sync: true }),
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
   }
 
   const [state, send] = useMachine(editable.machine(initialContext), { context })
