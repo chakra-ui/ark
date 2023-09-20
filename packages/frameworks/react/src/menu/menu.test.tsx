@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
+import { Portal } from '../'
 import {
   Menu,
   MenuContent,
@@ -14,8 +15,7 @@ import {
   MenuSeparator,
   MenuTrigger,
   MenuTriggerItem,
-} from '.'
-import { Portal } from '../'
+} from './'
 
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
@@ -35,6 +35,10 @@ describe('Menu', () => {
 
     expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
   })
+
+  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  //   expect(Menu[part]).toBeDefined()
+  // })
 
   it('should not fire onValueChange on disabled MenuItems', async () => {
     const onValueChange = vi.fn()

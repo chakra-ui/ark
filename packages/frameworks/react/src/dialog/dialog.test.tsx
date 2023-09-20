@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '../'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   Dialog,
   DialogBackdrop,
@@ -39,6 +39,10 @@ describe('Dialog', () => {
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
+    expect(Dialog[part]).toBeDefined()
   })
 
   it('should invoke onClose if dialog is closed', async () => {

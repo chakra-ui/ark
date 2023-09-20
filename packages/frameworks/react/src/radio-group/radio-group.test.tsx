@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { RadioGroup, type RadioGroupProps } from '.'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: RadioGroupProps) => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
@@ -25,6 +25,10 @@ describe('Radio Group', () => {
   it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(radioGroupAnatomy))('should export %s', async (part) => {
+    expect(RadioGroup[part]).toBeDefined()
   })
 
   it('should invoke onValueChange if another value has selected', async () => {

@@ -1,7 +1,7 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   Carousel,
   CarouselControl,
@@ -54,6 +54,10 @@ describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(carouselAnatomy))('should export %s', async (part) => {
+    expect(Carousel[part]).toBeDefined()
   })
 
   it('should have the correct disabled / enabled states for control buttons', async () => {

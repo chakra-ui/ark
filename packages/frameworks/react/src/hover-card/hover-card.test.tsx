@@ -12,7 +12,7 @@ import {
   type HoverCardProps,
 } from '.'
 import { Portal } from '../'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard openDelay={0} closeDelay={0} {...props}>
@@ -34,6 +34,10 @@ describe('HoverCard', () => {
   it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
+    expect(HoverCard[part]).toBeDefined()
   })
 
   it('should open on hover', async () => {

@@ -2,7 +2,7 @@ import { popoverAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   Popover,
   PopoverAnchor,
@@ -42,6 +42,10 @@ describe('Popover', () => {
   it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
+    expect(Popover[part]).toBeDefined()
   })
 
   it('should open and close the popover', async () => {

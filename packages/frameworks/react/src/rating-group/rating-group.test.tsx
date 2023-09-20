@@ -1,7 +1,7 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   RatingGroup,
   RatingGroupControl,
@@ -33,6 +33,10 @@ describe('Rating Group', () => {
   it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
+    expect(RatingGroup[part]).toBeDefined()
   })
 
   it('should apply default value', async () => {

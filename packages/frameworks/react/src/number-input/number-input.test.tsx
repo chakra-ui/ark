@@ -1,7 +1,7 @@
 import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   NumberInput,
   NumberInputControl,
@@ -29,6 +29,10 @@ describe('NumberInput', () => {
   it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
+    expect(NumberInput[part]).toBeDefined()
   })
 
   it('should handle wheel event when allowMouseWheel is true', async () => {

@@ -1,7 +1,9 @@
+import { rangeSliderAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
+import { getExports } from '../setup-test'
 import {
   RangeSlider,
   RangeSliderControl,
@@ -47,6 +49,10 @@ const ComponentUnderTest = (props: RangeSliderProps) => {
 describe('RangeSlider', () => {
   it('should render!', async () => {
     render(<ComponentUnderTest />)
+  })
+
+  it.each(getExports(rangeSliderAnatomy))('should export %s', async (part) => {
+    expect(RangeSlider[part]).toBeDefined()
   })
 
   it('should be possible to control it with the arrow keys', async () => {

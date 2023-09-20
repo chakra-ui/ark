@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '..'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
 import {
   Combobox,
@@ -66,6 +66,10 @@ describe('Combobox', () => {
   it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+    expect(Combobox[part]).toBeDefined()
   })
 
   it('should show options on click', async () => {

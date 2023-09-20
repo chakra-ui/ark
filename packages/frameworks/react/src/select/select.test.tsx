@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '../'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
 import {
   Select,
@@ -68,6 +68,10 @@ describe('Select', () => {
   it.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(selectAnatomy))('should export %s', async (part) => {
+    expect(Select[part]).toBeDefined()
   })
 
   it('should handle item selection', async () => {

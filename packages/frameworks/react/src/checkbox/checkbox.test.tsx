@@ -3,11 +3,8 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
-import { Checkbox, type CheckboxProps } from './checkbox'
-import { CheckboxControl } from './checkbox-control'
-import { CheckboxIndicator } from './checkbox-indicator'
-import { CheckboxLabel } from './checkbox-label'
+import { getExports, getParts } from '../setup-test'
+import { Checkbox, CheckboxControl, CheckboxIndicator, CheckboxLabel, type CheckboxProps } from './'
 
 const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
   <Checkbox {...props}>
@@ -22,6 +19,10 @@ describe('Checkbox', () => {
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
+    expect(Checkbox[part]).toBeDefined()
   })
 
   it('should handle check and unchecked', async () => {

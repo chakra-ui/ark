@@ -11,7 +11,7 @@ import {
   PaginationPrevPageTrigger,
   type PaginationProps,
 } from '.'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   <Pagination {...props}>
@@ -48,6 +48,10 @@ describe('Pagination', () => {
   it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
+    expect(Pagination[part]).toBeDefined()
   })
 
   it('should update page when item is clicked', async () => {

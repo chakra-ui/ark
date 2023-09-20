@@ -1,7 +1,7 @@
 import { sliderAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import {
   Slider,
   SliderControl,
@@ -43,6 +43,10 @@ describe('Slider', () => {
   it.each(getParts(sliderAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
+    expect(Slider[part]).toBeDefined()
   })
 
   it('should move the thumb correctly when orientated horizontal', async () => {

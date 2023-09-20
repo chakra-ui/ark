@@ -1,7 +1,7 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { TagsInput, type TagsInputProps } from './'
 
 const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
@@ -11,7 +11,7 @@ const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
         <>
           <TagsInput.Label>Frameworks</TagsInput.Label>
           <TagsInput.Control>
-            {(api.value ?? []).map((value, index) => (
+            {api.value.map((value, index) => (
               <TagsInput.Item key={index} index={index} value={value}>
                 <TagsInput.ItemInput />
                 <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -31,6 +31,10 @@ describe('TagsInput', () => {
   it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
+    expect(TagsInput[part]).toBeDefined()
   })
 
   it('should allow to add a new item', async () => {

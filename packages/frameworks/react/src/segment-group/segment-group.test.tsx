@@ -2,7 +2,7 @@ import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { SegmentGroup, type SegmentGroupProps } from './'
 
 const ComponentUnderTest = (props: SegmentGroupProps) => {
@@ -24,6 +24,10 @@ describe('Segment Group', () => {
   it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
+    expect(SegmentGroup[part]).toBeDefined()
   })
 
   it('should invoke onValueChange if another value has selected', async () => {

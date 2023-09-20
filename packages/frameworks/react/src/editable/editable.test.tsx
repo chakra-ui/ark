@@ -1,5 +1,7 @@
+import { editableAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getExports } from '../setup-test'
 import {
   Editable,
   EditableArea,
@@ -38,6 +40,10 @@ const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
 describe('Editable', () => {
   it('should render', async () => {
     render(<ComponentUnderTest />)
+  })
+
+  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
+    expect(Editable[part]).toBeDefined()
   })
 
   it('should be possible to focus the placeholder and enter a value', async () => {

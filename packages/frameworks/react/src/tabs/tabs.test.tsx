@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: TabsProps) => {
   const items = [
@@ -35,6 +35,10 @@ describe('Tabs', () => {
   it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
+    expect(Tabs[part]).toBeDefined()
   })
 
   it('should activate tab on click', async () => {

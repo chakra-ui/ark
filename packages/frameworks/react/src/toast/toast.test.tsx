@@ -1,12 +1,18 @@
+import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Toast } from './toast'
-import { ToastCloseTrigger } from './toast-close-trigger'
-import { ToastDescription } from './toast-description'
-import { ToastGroup } from './toast-group'
-import { ToastPlacements } from './toast-placements'
-import { ToastProvider, useToast, type ToastProviderProps } from './toast-provider'
-import { ToastTitle } from './toast-title'
+import { getExports } from '../setup-test'
+import {
+  Toast,
+  ToastCloseTrigger,
+  ToastDescription,
+  ToastGroup,
+  ToastPlacements,
+  ToastProvider,
+  ToastTitle,
+  useToast,
+  type ToastProviderProps,
+} from './'
 
 const ExampleToastProvider = (props: ToastProviderProps) => (
   <ToastProvider>
@@ -53,6 +59,10 @@ const renderToastComponent = () => render(<ComponentUnderTest />, { wrapper: Exa
 describe('Toast', () => {
   it('should render', async () => {
     renderToastComponent()
+  })
+
+  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
+    expect(Toast[part]).toBeDefined()
   })
 
   it('should show a toast message', async () => {
