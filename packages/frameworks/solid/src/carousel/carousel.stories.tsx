@@ -41,11 +41,7 @@ export const Basic = () => {
           <For each={images}>
             {(image, index) => (
               <CarouselSlide index={index()}>
-                <img
-                  src={image}
-                  alt=""
-                  style={{ height: '300px', width: '100%', 'object-fit': 'cover' }}
-                />
+                <img src={image} />
               </CarouselSlide>
             )}
           </For>

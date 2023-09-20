@@ -1,15 +1,5 @@
 import type { Meta } from '@storybook/react'
-import {
-  Carousel,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-} from './'
+import { Carousel } from './'
 import './carousel.css'
 
 type CarouselType = typeof Carousel
@@ -26,35 +16,29 @@ export const Basic = () => {
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',
     'https://tinyurl.com/59jxz9uu',
-    'https://tinyurl.com/6jurv23t',
-    'https://tinyurl.com/yp4rfum7',
   ]
   return (
-    <Carousel>
-      <CarouselControl>
-        <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
-        <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
-      </CarouselControl>
-      <CarouselIndicatorGroup>
+    <Carousel.Root>
+      <Carousel.Control>
+        <Carousel.PrevSlideTrigger>Previous</Carousel.PrevSlideTrigger>
+        <Carousel.NextSlideTrigger>Next</Carousel.NextSlideTrigger>
+      </Carousel.Control>
+      <Carousel.IndicatorGroup>
         {images.map((_, index) => (
-          <CarouselIndicator key={index} index={index}>
+          <Carousel.Indicator key={index} index={index}>
             {index + 1}
-          </CarouselIndicator>
+          </Carousel.Indicator>
         ))}
-      </CarouselIndicatorGroup>
-      <CarouselViewport>
-        <CarouselSlideGroup>
+      </Carousel.IndicatorGroup>
+      <Carousel.Viewport>
+        <Carousel.SlideGroup>
           {images.map((image, index) => (
-            <CarouselSlide key={index} index={index}>
-              <img
-                src={image}
-                alt=""
-                style={{ height: '300px', width: '100%', objectFit: 'cover' }}
-              />
-            </CarouselSlide>
+            <Carousel.Slide key={index} index={index}>
+              <img src={image} />
+            </Carousel.Slide>
           ))}
-        </CarouselSlideGroup>
-      </CarouselViewport>
-    </Carousel>
+        </Carousel.SlideGroup>
+      </Carousel.Viewport>
+    </Carousel.Root>
   )
 }
