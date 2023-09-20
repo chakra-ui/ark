@@ -8,35 +8,35 @@ import {
   UnderlineIcon,
 } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
-import { Toggle, ToggleGroup, type ToggleGroupProps } from '~/components/ui/toggle-group'
+import { ToggleGroup, ToggleGroupItem, type ToggleGroupProps } from '~/components/ui/toggle-group'
 
 export const ToggleGroupDemo = (props: ToggleGroupProps) => {
   return (
     <Stack direction="row" gap="3">
       <ToggleGroup multiple {...props}>
-        <Toggle value="bold" aria-label="Toggle Bold">
+        <ToggleGroupItem value="bold" aria-label="Toggle Bold">
           <BoldIcon />
-        </Toggle>
-        <Toggle value="italic" aria-label="Toggle Italic">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="italic" aria-label="Toggle Italic">
           <ItalicIcon />
-        </Toggle>
-        <Toggle value="underline" aria-label="Toggle Underline">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="underline" aria-label="Toggle Underline">
           <UnderlineIcon />
-        </Toggle>
+        </ToggleGroupItem>
       </ToggleGroup>
       <ToggleGroup defaultValue={['left']} {...props}>
-        <Toggle value="left" aria-label="Align Left">
+        <ToggleGroupItem value="left" aria-label="Align Left">
           <AlignLeftIcon />
-        </Toggle>
-        <Toggle value="center" aria-label="Align Center">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="center" aria-label="Align Center">
           <AlignRightIcon />
-        </Toggle>
-        <Toggle value="right" aria-label="Align Right">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="right" aria-label="Align Right">
           <AlignCenterIcon />
-        </Toggle>
-        <Toggle value="justify" aria-label="Align Justify">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="justify" aria-label="Align Justify">
           <AlignJustifyIcon />
-        </Toggle>
+        </ToggleGroupItem>
       </ToggleGroup>
     </Stack>
   )

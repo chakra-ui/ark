@@ -1,10 +1,4 @@
-import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioLabel,
-  type RadioGroupProps,
-} from '~/components/ui/radio-group'
+import { RadioGroup, type RadioGroupProps } from '~/components/ui/radio-group'
 
 export const RadioGroupDemo = (props: RadioGroupProps) => {
   const options = [
@@ -13,13 +7,13 @@ export const RadioGroupDemo = (props: RadioGroupProps) => {
     { id: 'vue', label: 'Vue' },
   ]
   return (
-    <RadioGroup defaultValue="react" orientation="vertical" {...props}>
+    <RadioGroup.Root defaultValue="react" orientation="vertical" {...props}>
       {options.map((option, id) => (
-        <Radio key={id} value={option.id}>
-          <RadioControl />
-          <RadioLabel>{option.label}</RadioLabel>
-        </Radio>
+        <RadioGroup.Item key={id} value={option.id}>
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+        </RadioGroup.Item>
       ))}
-    </RadioGroup>
+    </RadioGroup.Root>
   )
 }
