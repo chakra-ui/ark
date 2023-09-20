@@ -21,7 +21,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         <TagsInputLabel>Frameworks</TagsInputLabel>
         <TagsInputControl>
           <TagsInputItem
-            v-for="(value, index) in api.value ?? []"
+            v-for="(value, index) in api.value"
             :key="index"
             :index="index"
             :value="value"

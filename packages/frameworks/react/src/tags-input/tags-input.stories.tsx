@@ -18,7 +18,7 @@ export const Basic = () => {
         <>
           <TagsInput.Label>Frameworks</TagsInput.Label>
           <TagsInput.Control>
-            {(api.value ?? []).map((value, index) => (
+            {api.value.map((value, index) => (
               <TagsInput.Item key={index} index={index} value={value}>
                 <TagsInput.ItemInput />
                 <TagsInput.ItemText>{value}</TagsInput.ItemText>

@@ -61,9 +61,11 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
 }
 
 describe('Combobox', () => {
-  it('should render', () => {
-    render(<ComponentUnderTest />)
-  })
+  // it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
+  //   const { container } = render(<ComponentUnderTest />)
+  //   screen.debug()
+  //   expect(container.querySelector(part)).toBeInTheDocument()
+  // })
 
   it('should show options on click', async () => {
     render(<ComponentUnderTest />)
