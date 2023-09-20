@@ -212,11 +212,7 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "TagsInputItemContext": {
-    "id": { "type": "string", "isRequired": true },
     "index": { "type": "string | number", "isRequired": true },
-    "isDisabled": { "type": "boolean", "isRequired": true },
-    "isEditing": { "type": "boolean", "isRequired": true },
-    "isHighlighted": { "type": "boolean", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   }
