@@ -14,8 +14,8 @@ const ComponentUnderTest = (props: AccordionProps) => {
     <Accordion.Root {...props}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
-          <Accordion.Trigger>{item.value} Trigger</Accordion.Trigger>
-          <Accordion.Content>{item.value} Content</Accordion.Content>
+          <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>

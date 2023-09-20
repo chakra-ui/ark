@@ -1,50 +1,39 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioGroupLabel,
-  RadioLabel,
-  type RadioGroupProps,
-} from '.'
+import { RadioGroup, type RadioGroupProps } from '.'
 
-const options = [
-  { id: 'apple', label: 'Apples' },
-  { id: 'orange', label: 'Oranges' },
-  { id: 'mango', label: 'Mangoes', disabled: true },
-  { id: 'grape', label: 'Grapes' },
-]
-
-const Component = (props: RadioGroupProps) => (
-  <RadioGroup {...props}>
-    <RadioGroupLabel>Fruits</RadioGroupLabel>
-    {options.map((option, id) => (
-      <Radio key={id} value={option.id} disabled={option.disabled}>
-        <RadioLabel>{option.label}</RadioLabel>
-        <RadioControl />
-      </Radio>
-    ))}
-  </RadioGroup>
-)
+const ComponentUnderTest = (props: RadioGroupProps) => {
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
+  return (
+    <RadioGroup.Root {...props}>
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework} disabled={framework === 'Svelte'}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
+  )
+}
 
 describe('Radio Group', () => {
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
 
-    render(<Component onValueChange={onValueChange} />)
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    await user.click(screen.getByLabelText('Grapes'))
-    expect(onValueChange).toHaveBeenCalledWith({ value: 'grape' })
+    await user.click(screen.getByLabelText('Solid'))
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'Solid' })
   })
 
   it('should not invoke onValueChange if option is disabled', async () => {
     const onValueChange = vi.fn()
 
-    render(<Component onValueChange={onValueChange} />)
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    await user.click(screen.getByLabelText('Mangoes'))
+    await user.click(screen.getByLabelText('Svelte'))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 })

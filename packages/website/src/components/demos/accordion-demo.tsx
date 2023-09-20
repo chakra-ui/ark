@@ -1,9 +1,9 @@
 import { ChevronDown } from 'lucide-react'
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionItemContent,
+  AccordionItemTrigger,
   type AccordionProps,
 } from '~/components/ui/accordion'
 
@@ -15,16 +15,16 @@ export const AccordionDemo = (props: AccordionProps) => {
         <AccordionItem key={id} value={item}>
           {({ isOpen }) => (
             <>
-              <AccordionTrigger>
+              <AccordionItemTrigger>
                 {item}
                 <AccordionIcon isOpen={isOpen} />
-              </AccordionTrigger>
-              <AccordionContent>
+              </AccordionItemTrigger>
+              <AccordionItemContent>
                 <div>
                   Pudding donut gummies chupa chups oat cake marzipan biscuit tart. Dessert macaroon
                   ice cream bonbon jelly. Jelly topping tiramisu halvah lollipop.
                 </div>
-              </AccordionContent>
+              </AccordionItemContent>
             </>
           )}
         </AccordionItem>

@@ -1,6 +1,10 @@
 {
   "ComboboxProps": {
-    "items": { "type": "T[]", "isRequired": true, "description": "The options of the select" },
+    "items": {
+      "type": "T[] | readonly T[]",
+      "isRequired": true,
+      "description": "The options of the select"
+    },
     "allowCustomValue": {
       "type": "boolean",
       "isRequired": false,

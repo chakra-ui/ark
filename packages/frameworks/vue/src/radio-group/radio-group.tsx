@@ -1,67 +1,24 @@
-import type { Context } from '@zag-js/radio-group'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
-import { useRadioGroup } from './use-radio-group'
+import { emits, props } from './radio-group.props'
+import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
-export type RadioGroupContext = Context & {
-  modelValue?: Context['value']
-}
-export type UseRadioGroupProps = Assign<HTMLArkProps<'div'>, RadioGroupContext>
+export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
-const VueProps = createVueProps<UseRadioGroupProps>({
-  dir: {
-    type: String as PropType<UseRadioGroupProps['dir']>,
-  },
-  disabled: {
-    type: Boolean as PropType<UseRadioGroupProps['disabled']>,
-  },
-  form: {
-    type: String as PropType<UseRadioGroupProps['form']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseRadioGroupProps['getRootNode']>,
-  },
-  id: {
-    type: String as PropType<UseRadioGroupProps['id']>,
-  },
-  ids: {
-    type: Object as PropType<UseRadioGroupProps['ids']>,
-  },
-  modelValue: {
-    type: String as PropType<UseRadioGroupProps['modelValue']>,
-  },
-  name: {
-    type: String as PropType<UseRadioGroupProps['name']>,
-  },
-  orientation: {
-    type: String as PropType<UseRadioGroupProps['orientation']>,
-  },
-  readOnly: {
-    type: Boolean as PropType<UseRadioGroupProps['readOnly']>,
-  },
-  value: {
-    type: String as PropType<UseRadioGroupProps['value']>,
-  },
-})
-
-export const RadioGroup: ComponentWithProps<Partial<UseRadioGroupProps>> = defineComponent({
+export const RadioGroup = defineComponent({
   name: 'RadioGroup',
-  props: VueProps,
-  emits: ['change', 'update:modelValue'],
+  props,
+  emits,
   setup(props, { slots, attrs, emit }) {
-    const api = useRadioGroup(emit, props)
-
+    const api = useRadioGroup(props, emit)
     RadioGroupProvider(api)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots?.default?.()}
       </ark.div>
     )
   },
 })
-
-export type RadioGroupProps = Optional<RadioGroupContext, 'id'>

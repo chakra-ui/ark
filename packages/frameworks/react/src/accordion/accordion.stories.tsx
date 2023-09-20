@@ -17,8 +17,8 @@ export const Basic = () => {
     <Accordion.Root>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -31,8 +31,8 @@ export const Initial = () => {
     <Accordion.Root defaultValue={['panel-2']}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -47,8 +47,8 @@ export const RenderProp = () => {
         <Accordion.Item key={id} value={item}>
           {(api) => (
             <>
-              <Accordion.Trigger>{api.isOpen ? 'Close' : 'Open'}</Accordion.Trigger>
-              <Accordion.Content>{item} content</Accordion.Content>
+              <Accordion.ItemTrigger>{api.isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
+              <Accordion.ItemContent>{item} content</Accordion.ItemContent>
             </>
           )}
         </Accordion.Item>
@@ -62,8 +62,8 @@ export const Collapsible = () => {
     <Accordion.Root collapsible>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -76,8 +76,8 @@ export const Multiple = () => {
     <Accordion.Root multiple>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -91,8 +91,8 @@ export const Controlled = () => {
     <Accordion.Root value={value} onValueChange={(details) => setValue(details.value)}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -105,8 +105,8 @@ export const Vertical = () => {
     <Accordion.Root orientation="vertical">
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -119,8 +119,8 @@ export const Disabled = () => {
     <Accordion.Root multiple>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
-          <Accordion.Trigger>{item} trigger</Accordion.Trigger>
-          <Accordion.Content>{item} content</Accordion.Content>
+          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>

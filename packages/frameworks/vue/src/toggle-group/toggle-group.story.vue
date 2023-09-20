@@ -10,23 +10,23 @@ const value = ref(['b'])
   <Story title="Toggle Group">
     <Variant title="Basic">
       <ToggleGroup.Root>
-        <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+        <ToggleGroup.Item value="c">C</ToggleGroup.Item>
       </ToggleGroup.Root>
     </Variant>
     <Variant title="Initialvalue">
       <ToggleGroup.Root v-model="value">
-        <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+        <ToggleGroup.Item value="c">C</ToggleGroup.Item>
       </ToggleGroup.Root>
     </Variant>
     <Variant title="Multiple">
       <ToggleGroup.Root multiple>
-        <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-        <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+        <ToggleGroup.Item value="c">C</ToggleGroup.Item>
       </ToggleGroup.Root>
     </Variant>
   </Story>

@@ -21,11 +21,10 @@ export const AccordionItem = defineComponent({
   setup(props, { slots, attrs }) {
     const api = useAccordionContext()
     AccordionItemProvider(computed(() => ({ ...props, ...api.value.getItemState(props) })))
-    const itemState = computed(() => api.value.getItemState(props))
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots?.default?.(itemState)}
+        {slots?.default?.(api.value.getItemState(props))}
       </ark.div>
     )
   },

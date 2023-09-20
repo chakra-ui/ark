@@ -1,14 +1,4 @@
 {
-  "SegmentProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "invalid": { "type": "boolean", "isRequired": false }
-  },
-  "SegmentContext": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "invalid": { "type": "boolean", "isRequired": false }
-  },
   "SegmentGroupProps": {
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
@@ -37,7 +27,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  radio(value: string): string\n  radioLabel(value: string): string\n  radioControl(value: string): string\n  radioHiddenInput(value: string): string\n}>",
+      "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  item(value: string): string\n  itemLabel(value: string): string\n  itemControl(value: string): string\n  itemHiddenInput(value: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },
@@ -73,15 +63,15 @@
       "isRequired": true,
       "description": "Function to focus the radio group"
     },
-    "getRadioControlProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
-    "getRadioHiddenInputProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
-    "getRadioLabelProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
-    "getRadioProps": { "type": "(props: RadioProps) => Dict<any>", "isRequired": true },
-    "getRadioState": {
-      "type": "(props: RadioProps) => RadioState",
+    "getItemControlProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemHiddenInputProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemState": {
+      "type": "(props: ItemProps) => ItemState",
       "isRequired": true,
       "description": "Returns the state details of a radio input"
     },
+    "getItemTextProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
     "indicatorProps": { "type": "Dict<any>", "isRequired": true },
     "labelProps": { "type": "Dict<any>", "isRequired": true },
     "rootProps": { "type": "Dict<any>", "isRequired": true },
@@ -95,5 +85,15 @@
       "isRequired": false,
       "description": "The current value of the radio group"
     }
+  },
+  "SegmentGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "SegmentGroupItemContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   }
 }

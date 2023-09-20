@@ -2,14 +2,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import {
-  Segment,
-  SegmentControl,
-  SegmentGroup,
-  SegmentGroupLabel,
-  SegmentLabel,
-  type SegmentGroupProps,
-} from './'
+import { SegmentGroup, type SegmentGroupProps } from './'
 
 const options = [
   { id: 'apple', label: 'Apples' },
@@ -19,17 +12,17 @@ const options = [
 ]
 
 const ComponentUnderTest = (props: SegmentGroupProps) => (
-  <SegmentGroup {...props}>
-    <SegmentGroupLabel>Fruits</SegmentGroupLabel>
+  <SegmentGroup.Root {...props}>
+    <SegmentGroup.Label>Fruits</SegmentGroup.Label>
     <For each={options}>
       {(option) => (
-        <Segment value={option.id} disabled={option.disabled}>
-          <SegmentLabel>{option.label}</SegmentLabel>
-          <SegmentControl />
-        </Segment>
+        <SegmentGroup.Item value={option.id} disabled={option.disabled}>
+          <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+        </SegmentGroup.Item>
       )}
     </For>
-  </SegmentGroup>
+  </SegmentGroup.Root>
 )
 
 describe('Segment Group', () => {

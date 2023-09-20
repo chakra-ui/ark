@@ -8,7 +8,7 @@ import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const [groupParams, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
+  const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
     'dir',
     'disabled',
     'form',
@@ -21,7 +21,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     'value',
   ])
 
-  const api = useRadioGroup(groupParams)
+  const api = useRadioGroup(useRadioGroupProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (

@@ -58,14 +58,15 @@
     }
   },
   "AccordionContext": {
-    "getContentProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemContentProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemIndicatorProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
     "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
     "getItemState": {
       "type": "(props: ItemProps) => ItemState",
       "isRequired": true,
       "description": "Gets the state of an accordion item."
     },
-    "getTriggerProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemTriggerProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
     "rootProps": { "type": "Dict<any>", "isRequired": true },
     "setValue": {
       "type": "(value: string[]) => void",
@@ -94,7 +95,7 @@
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "AccordionContentProps": {
+  "AccordionItemContentProps": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,

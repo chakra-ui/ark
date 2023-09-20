@@ -14,9 +14,9 @@ export default meta
 export const Basic = () => {
   return (
     <ToggleGroup.Root>
-      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+      <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+      <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      <ToggleGroup.Item value="c">C</ToggleGroup.Item>
     </ToggleGroup.Root>
   )
 }
@@ -24,9 +24,9 @@ export const Basic = () => {
 export const Initialvalue = () => {
   return (
     <ToggleGroup.Root value={['b']}>
-      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+      <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+      <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      <ToggleGroup.Item value="c">C</ToggleGroup.Item>
     </ToggleGroup.Root>
   )
 }
@@ -34,9 +34,9 @@ export const Initialvalue = () => {
 export const Multiple = () => {
   return (
     <ToggleGroup.Root>
-      <ToggleGroup.Toggle value="a">A</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="b">B</ToggleGroup.Toggle>
-      <ToggleGroup.Toggle value="c">C</ToggleGroup.Toggle>
+      <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+      <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      <ToggleGroup.Item value="c">C</ToggleGroup.Item>
     </ToggleGroup.Root>
   )
 }

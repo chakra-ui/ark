@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../'
+import { Accordion, AccordionItem, AccordionItemContent, AccordionItemTrigger } from '../'
 
 const items = ref([
   { value: 'React' },
@@ -19,8 +19,8 @@ const testProps = ref<string[]>([])
       :value="item.value"
       :disabled="item.disabled"
     >
-      <AccordionTrigger>{{ item.value }} Trigger</AccordionTrigger>
-      <AccordionContent>{{ item.value }} Content</AccordionContent>
+      <AccordionItemTrigger>{{ item.value }} Trigger</AccordionItemTrigger>
+      <AccordionItemContent>{{ item.value }} Content</AccordionItemContent>
     </AccordionItem>
   </Accordion>
 </template>

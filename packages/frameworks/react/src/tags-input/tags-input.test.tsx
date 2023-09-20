@@ -1,38 +1,29 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Fragment } from 'react'
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputInput,
-  type TagsInputProps,
-} from './'
+import { TagsInput, type TagsInputProps } from './'
 
-const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => (
-  <TagsInput defaultValue={['react', 'solid', 'vue']} {...props}>
-    {({ value }) => (
-      <TagsInputControl>
-        {(value ?? []).map((value, index) => (
-          <Fragment key={index}>
-            <Tag index={index} value={value}>
-              <span>{value}</span>
-              <TagDeleteTrigger index={index} value={value}>
-                &#x2715;
-              </TagDeleteTrigger>
-            </Tag>
-            <TagInput index={index} value={value} />
-          </Fragment>
-        ))}
-        <TagsInputInput placeholder="Add tag" />
-        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-      </TagsInputControl>
-    )}
-  </TagsInput>
-)
+const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
+  return (
+    <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
+      {(api) => (
+        <>
+          <TagsInput.Label>Frameworks</TagsInput.Label>
+          <TagsInput.Control>
+            {(api.value ?? []).map((value, index) => (
+              <TagsInput.Item key={index} index={index} value={value}>
+                <TagsInput.ItemInput />
+                <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+              </TagsInput.Item>
+            ))}
+          </TagsInput.Control>
+          <TagsInput.Input placeholder="Add tag" />
+          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+        </>
+      )}
+    </TagsInput.Root>
+  )
+}
 
 describe('TagsInput', () => {
   it('should render', async () => {

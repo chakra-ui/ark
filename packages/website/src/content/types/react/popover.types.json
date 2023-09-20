@@ -93,6 +93,7 @@
     "closeTriggerProps": { "type": "Dict<any>", "isRequired": true },
     "contentProps": { "type": "Dict<any>", "isRequired": true },
     "descriptionProps": { "type": "Dict<any>", "isRequired": true },
+    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
     "isOpen": {
       "type": "boolean",
       "isRequired": true,

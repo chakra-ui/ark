@@ -16,13 +16,13 @@ export const Basic = () => (
     <RatingGroup.Control>
       {({ sizeArray }) =>
         sizeArray.map((index) => (
-          <RatingGroup.Rating key={index} index={index}>
+          <RatingGroup.Item key={index} index={index}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return <IconHalf />
               if (isHighlighted) return <IconFull />
               return <IconEmpty />
             }}
-          </RatingGroup.Rating>
+          </RatingGroup.Item>
         ))
       }
     </RatingGroup.Control>

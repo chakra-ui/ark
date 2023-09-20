@@ -1,8 +1,4 @@
 {
-  "ToggleProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "ToggleGroupProps": {
     "defaultValue": { "type": "string[]", "isRequired": false },
     "dir": {
@@ -62,7 +58,12 @@
     }
   },
   "ToggleGroupContext": {
-    "getToggleProps": { "type": "(props: ToggleProps) => Dict<any>", "isRequired": true },
+    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
+    "getItemState": {
+      "type": "(props: ItemProps) => ItemState",
+      "isRequired": true,
+      "description": "Returns the state of the toggle item."
+    },
     "rootProps": { "type": "Dict<any>", "isRequired": true },
     "setValue": {
       "type": "(values: string[]) => void",
@@ -74,5 +75,9 @@
       "isRequired": true,
       "description": "The value of the toggle group."
     }
+  },
+  "ToggleGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
   }
 }

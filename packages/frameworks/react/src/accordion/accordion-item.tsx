@@ -17,14 +17,14 @@ export type AccordionItemProps = ItemProps &
   >
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [itemProps, { children, ...rest }] = createSplitProps<ItemProps>()(props, [
+  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [
     'value',
     'disabled',
   ])
 
-  const { getItemProps, getItemState } = useAccordionContext()
-  const itemState = getItemState(itemProps)
-  const mergedProps = mergeProps(getItemProps(itemProps), rest)
+  const api = useAccordionContext()
+  const itemState = api.getItemState(itemProps)
+  const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
   const view = runIfFn(children, itemState)
 
   return (

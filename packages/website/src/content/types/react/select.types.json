@@ -1,6 +1,10 @@
 {
   "SelectProps": {
-    "items": { "type": "T[]", "isRequired": true, "description": "The options of the select" },
+    "items": {
+      "type": "T[] | readonly T[]",
+      "isRequired": true,
+      "description": "The options of the select"
+    },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -194,6 +198,7 @@
       "isRequired": true,
       "description": "The value of the combobox input"
     },
+    "indicatorProps": { "type": "WithoutRef<HTMLAttributes<HTMLElement>>", "isRequired": true },
     "isFocused": {
       "type": "boolean",
       "isRequired": true,

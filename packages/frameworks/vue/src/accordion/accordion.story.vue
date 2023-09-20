@@ -11,32 +11,32 @@ const value = ref(['React'])
     <Variant title="Basic">
       <Accordion.Root>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
-          <Accordion.Content>{{ item }} content</Accordion.Content>
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
     <Variant title="Controlled">
       <Accordion.Root v-model="value">
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
-          <Accordion.Content>{{ item }} content</Accordion.Content>
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
     <Variant title="Collapsible">
       <Accordion.Root collapsible>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
-          <Accordion.Content>{{ item }} content</Accordion.Content>
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
     <Variant title="Multiple">
       <Accordion.Root multiple>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.Trigger>{{ item }} trigger</Accordion.Trigger>
-          <Accordion.Content>{{ item }} content</Accordion.Content>
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </Variant>

@@ -1,14 +1,4 @@
 {
-  "TagProps": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "TagInputProps": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "TagsInputProps": {
     "addOnPaste": {
       "type": "boolean",
@@ -66,7 +56,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  tag(opts: TagProps): string\n  tagDeleteTrigger(opts: TagProps): string\n  tagInput(opts: TagProps): string\n}>",
+      "type": "Partial<{\n  root: string\n  input: string\n  clearBtn: string\n  label: string\n  control: string\n  item(opts: ItemProps): string\n  itemDeleteTrigger(opts: ItemProps): string\n  itemInput(opts: ItemProps): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the tags input. Useful for composition."
     },
@@ -134,7 +124,12 @@
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
   },
-  "TagDeleteTriggerProps": {
+  "TagsInputItemProps": {
+    "index": { "type": "string | number", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "TagsInputItemContext": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }

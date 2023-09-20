@@ -67,7 +67,7 @@
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "AccordionContentProps": {
+  "AccordionItemContentProps": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,

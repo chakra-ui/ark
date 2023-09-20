@@ -1,12 +1,4 @@
 {
-  "RatingProps": { "index": { "type": "number", "isRequired": true } },
-  "RatingContext": {
-    "isChecked": { "type": "boolean", "isRequired": true },
-    "isEqual": { "type": "boolean", "isRequired": true },
-    "isHalf": { "type": "boolean", "isRequired": true },
-    "isHighlighted": { "type": "boolean", "isRequired": true },
-    "isValueEmpty": { "type": "boolean", "isRequired": true }
-  },
   "RatingGroupProps": {
     "allowHalf": {
       "type": "boolean",
@@ -75,5 +67,13 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
+  },
+  "RatingGroupItemProps": { "index": { "type": "number", "isRequired": true } },
+  "RatingGroupItemContext": {
+    "isChecked": { "type": "boolean", "isRequired": true },
+    "isEqual": { "type": "boolean", "isRequired": true },
+    "isHalf": { "type": "boolean", "isRequired": true },
+    "isHighlighted": { "type": "boolean", "isRequired": true },
+    "isValueEmpty": { "type": "boolean", "isRequired": true }
   }
 }
