@@ -138,6 +138,7 @@
     }
   },
   "SelectItemProps": { "item": { "type": "any", "isRequired": false } },
+  "SelectItemContext": { "item": { "type": "any", "isRequired": false } },
   "SelectContentProps": {
     "lazyMount": {
       "type": "boolean",
