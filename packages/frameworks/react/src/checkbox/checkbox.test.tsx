@@ -20,8 +20,8 @@ const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
 
 describe('Checkbox', () => {
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
-    const { container } = render(<ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should handle check and unchecked', async () => {

@@ -1,5 +1,7 @@
+import { sliderAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import {
   Slider,
   SliderControl,
@@ -16,25 +18,31 @@ import {
 const ComponentUnderTest = (props: SliderProps) => {
   return (
     <Slider min={-50} max={50} defaultValue={0} {...props}>
-      <SliderLabel>Label</SliderLabel>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-      <SliderMarkerGroup>
-        <SliderMarker value={-30}>*</SliderMarker>
-        <SliderMarker value={0}>*</SliderMarker>
-        <SliderMarker value={30}>*</SliderMarker>
-      </SliderMarkerGroup>
+      {(api) => (
+        <>
+          <SliderLabel>Label</SliderLabel>
+          <Slider.Output>{api.value}</Slider.Output>
+          <SliderControl>
+            <SliderTrack>
+              <SliderRange />
+            </SliderTrack>
+            <SliderThumb />
+          </SliderControl>
+          <SliderMarkerGroup>
+            <SliderMarker value={-30}>*</SliderMarker>
+            <SliderMarker value={0}>*</SliderMarker>
+            <SliderMarker value={30}>*</SliderMarker>
+          </SliderMarkerGroup>
+        </>
+      )}
     </Slider>
   )
 }
 
 describe('Slider', () => {
-  it('should render!', async () => {
+  it.each(getParts(sliderAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should move the thumb correctly when orientated horizontal', async () => {

@@ -128,7 +128,6 @@ describe('RangeSlider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  // TODO
   it('should emit correct onChange events', async () => {
     const onChange = vi.fn()
     render(<ComponentUnderTest onChange={onChange} />)

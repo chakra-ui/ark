@@ -1,8 +1,8 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
+import { Portal } from '../'
 import { getParts } from '../setup-test'
 import {
   Dialog,
@@ -37,8 +37,8 @@ const ComponentUnderTest = (props: DialogProps) => (
 
 describe('Dialog', () => {
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
-    const { container } = render(<ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should invoke onClose if dialog is closed', async () => {

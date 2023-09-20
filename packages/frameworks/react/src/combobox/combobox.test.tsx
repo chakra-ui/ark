@@ -1,7 +1,9 @@
+import { comboboxAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '..'
+import { getParts } from '../setup-test'
 import type { Optional } from '../types'
 import {
   Combobox,
@@ -61,11 +63,10 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
 }
 
 describe('Combobox', () => {
-  // it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
-  //   const { container } = render(<ComponentUnderTest />)
-  //   screen.debug()
-  //   expect(container.querySelector(part)).toBeInTheDocument()
-  // })
+  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
 
   it('should show options on click', async () => {
     render(<ComponentUnderTest />)

@@ -1,5 +1,7 @@
+import { splitterAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/react'
 import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
+import { getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: SplitterProps) => (
   <Splitter
@@ -16,7 +18,8 @@ const ComponentUnderTest = (props: SplitterProps) => (
 )
 
 describe('Splitter', () => {
-  it('should render', async () => {
+  it.each(getParts(splitterAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 })

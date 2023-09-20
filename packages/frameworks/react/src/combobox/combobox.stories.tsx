@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Portal } from '@zag-js/react'
+import { Portal } from '../'
 import { Combobox } from './'
 import './combobox.css'
 

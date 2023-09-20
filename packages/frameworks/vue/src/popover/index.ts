@@ -6,6 +6,7 @@ import { PopoverCloseTrigger, type PopoverCloseTriggerProps } from './popover-cl
 import { PopoverContent, type PopoverContentProps } from './popover-content'
 import { usePopoverContext, type PopoverContext } from './popover-context'
 import { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
+import { PopoverIndicator, type PopoverIndicatorProps } from './popover-indicator'
 import { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 import { PopoverTitle, type PopoverTitleProps } from './popover-title'
 import { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
@@ -18,6 +19,7 @@ const Popover = Object.assign(PopoverRoot, {
   CloseTrigger: PopoverCloseTrigger,
   Content: PopoverContent,
   Description: PopoverDescription,
+  Indicator: PopoverIndicator,
   Positioner: PopoverPositioner,
   Title: PopoverTitle,
   Trigger: PopoverTrigger,
@@ -31,6 +33,7 @@ export {
   PopoverCloseTrigger,
   PopoverContent,
   PopoverDescription,
+  PopoverIndicator,
   PopoverPositioner,
   PopoverTitle,
   PopoverTrigger,
@@ -45,6 +48,7 @@ export type {
   PopoverContentProps,
   PopoverContext,
   PopoverDescriptionProps,
+  PopoverIndicatorProps,
   PopoverPositionerProps,
   PopoverProps,
   PopoverTitleProps,

@@ -1,13 +1,16 @@
+import { radioGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { RadioGroup, type RadioGroupProps } from '.'
+import { getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: RadioGroupProps) => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <RadioGroup.Root {...props}>
       <RadioGroup.Label>Framework</RadioGroup.Label>
+      <RadioGroup.Indicator />
       {frameworks.map((framework) => (
         <RadioGroup.Item key={framework} value={framework} disabled={framework === 'Svelte'}>
           <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
@@ -19,6 +22,11 @@ const ComponentUnderTest = (props: RadioGroupProps) => {
 }
 
 describe('Radio Group', () => {
+  it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
 

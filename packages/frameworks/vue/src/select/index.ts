@@ -4,7 +4,9 @@ import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear
 import { SelectContent, type SelectContentProps } from './select-content'
 import { useSelectContext, type SelectContext } from './select-context'
 import { SelectControl, type SelectControlProps } from './select-control'
+import { SelectIndicator, type SelectIndicatorProps } from './select-indicator'
 import { SelectItem, type SelectItemProps } from './select-item'
+import { useSelectItemContext, type SelectItemContext } from './select-item-context'
 import { SelectItemGroup, type SelectItemGroupProps } from './select-item-group'
 import { SelectItemGroupLabel, type SelectItemGroupLabelProps } from './select-item-group-label'
 import { SelectItemIndicator, type SelectItemIndicatorProps } from './select-item-indicator'
@@ -19,6 +21,7 @@ const Select = Object.assign(SelectRoot, {
   ClearTrigger: SelectClearTrigger,
   Content: SelectContent,
   Control: SelectControl,
+  Indicator: SelectIndicator,
   Item: SelectItem,
   ItemGroup: SelectItemGroup,
   ItemGroupLabel: SelectItemGroupLabel,
@@ -35,6 +38,7 @@ export {
   SelectClearTrigger,
   SelectContent,
   SelectControl,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -45,6 +49,7 @@ export {
   SelectTrigger,
   SelectValue,
   useSelectContext,
+  useSelectItemContext,
 }
 
 export type {
@@ -53,6 +58,8 @@ export type {
   SelectContentProps,
   SelectContext,
   SelectControlProps,
+  SelectIndicatorProps,
+  SelectItemContext,
   SelectItemGroupLabelProps,
   SelectItemGroupProps,
   SelectItemIndicatorProps,

@@ -1,5 +1,7 @@
+import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import {
   RatingGroup,
   RatingGroupControl,
@@ -28,6 +30,11 @@ const ComponentUnderTest = (props: RatingGroupProps) => (
 )
 
 describe('Rating Group', () => {
+  it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should apply default value', async () => {
     render(<ComponentUnderTest defaultValue={2} max={5} />)
 

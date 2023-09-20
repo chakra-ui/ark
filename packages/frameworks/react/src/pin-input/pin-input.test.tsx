@@ -1,9 +1,11 @@
+import { pinInputAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import { PinInput, PinInputControl, PinInputInput, PinInputLabel, type PinInputProps } from './'
 
-const Component = (props: PinInputProps) => (
+const ComponentUnderTest = (props: PinInputProps) => (
   <PinInput {...props}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
@@ -15,20 +17,25 @@ const Component = (props: PinInputProps) => (
 )
 
 describe('PinInput', () => {
+  it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should have the proper aria labels', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
     expect(screen.queryAllByLabelText('pin code 1 of 3')).toHaveLength(1)
     expect(screen.queryAllByLabelText('pin code 2 of 3')).toHaveLength(1)
     expect(screen.queryAllByLabelText('pin code 3 of 3')).toHaveLength(1)
   })
 
   it('should autofocus the first input', async () => {
-    render(<Component autoFocus />)
+    render(<ComponentUnderTest autoFocus />)
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })
 
   it('should move focus to the next item when enter a value', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
     await waitFor(() => expect(screen.getByLabelText('pin code 2 of 3')).toHaveFocus())
@@ -38,7 +45,7 @@ describe('PinInput', () => {
   })
 
   it('should clear the previous input when pressing backspace', async () => {
-    render(<Component />)
+    render(<ComponentUnderTest />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
     await user.type(screen.getByLabelText('pin code 2 of 3'), '2')
@@ -53,7 +60,7 @@ describe('PinInput', () => {
 
   it('should invoke onComplete when all inputs are filled out', async () => {
     const onComplete = vi.fn()
-    render(<Component onValueComplete={onComplete} />)
+    render(<ComponentUnderTest onValueComplete={onComplete} />)
 
     await user.type(screen.getByLabelText('pin code 1 of 3'), '1')
     await user.type(screen.getByLabelText('pin code 2 of 3'), '2')
@@ -65,7 +72,7 @@ describe('PinInput', () => {
   })
 
   it('should set one-time-code for autocomplete on fields', async () => {
-    render(<Component otp />)
+    render(<ComponentUnderTest otp />)
 
     expect(screen.getByLabelText('pin code 1 of 3')).toHaveAttribute(
       'autocomplete',
@@ -83,7 +90,7 @@ describe('PinInput', () => {
 
   it('should replace last input calls onComplete correctly', async () => {
     const onComplete = vi.fn()
-    render(<Component onValueComplete={onComplete} />)
+    render(<ComponentUnderTest onValueComplete={onComplete} />)
 
     const input1 = screen.getByLabelText('pin code 1 of 3')
     const input2 = screen.getByLabelText('pin code 2 of 3')
