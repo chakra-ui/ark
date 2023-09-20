@@ -1,3 +1,4 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
@@ -14,7 +15,11 @@ export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
     'invalid',
   ])
   const api = useSegmentGroupContext()
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), restProps)
+  const mergedProps = mergeProps(
+    () => api().getItemProps(itemProps),
+    segmentGroupAnatomy.build().item.attrs,
+    restProps,
+  )
 
   return (
     <SegmentProvider value={itemProps}>

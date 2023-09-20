@@ -1,7 +1,9 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import { SegmentGroup, type SegmentGroupProps } from './'
 
 const options = [
@@ -14,6 +16,7 @@ const options = [
 const ComponentUnderTest = (props: SegmentGroupProps) => (
   <SegmentGroup.Root {...props}>
     <SegmentGroup.Label>Fruits</SegmentGroup.Label>
+    <SegmentGroup.Indicator />
     <For each={options}>
       {(option) => (
         <SegmentGroup.Item value={option.id} disabled={option.disabled}>
@@ -26,8 +29,9 @@ const ComponentUnderTest = (props: SegmentGroupProps) => (
 )
 
 describe('Segment Group', () => {
-  it('should render', () => {
+  it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should invoke onValueChange if another value has selected', async () => {

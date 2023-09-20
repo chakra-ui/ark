@@ -7,7 +7,11 @@ export type SegmentGroupLabelProps = HTMLArkProps<'label'>
 
 export const SegmentGroupLabel = (props: SegmentGroupLabelProps) => {
   const api = useSegmentGroupContext()
-  const mergedProps = mergeProps(() => api().labelProps, segmentGroupAnatomy.build().label, props)
+  const mergedProps = mergeProps(
+    () => api().labelProps,
+    segmentGroupAnatomy.build().label.attrs,
+    props,
+  )
 
   return <ark.label {...mergedProps} />
 }
