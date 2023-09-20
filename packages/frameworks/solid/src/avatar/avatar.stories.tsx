@@ -16,7 +16,7 @@ export const Basic = () => (
 )
 
 export const Events = () => (
-  <Avatar.Root onError={() => console.log('error')} onLoad={() => console.log('loaded')}>
+  <Avatar.Root onLoadingStatusChange={(status) => console.log(status)}>
     <Avatar.Fallback>PA</Avatar.Fallback>
     <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
   </Avatar.Root>
