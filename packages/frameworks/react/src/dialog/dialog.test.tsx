@@ -1,8 +1,8 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
-import { Portal } from '../'
 import { getExports, getParts } from '../setup-test'
 import {
   Dialog,

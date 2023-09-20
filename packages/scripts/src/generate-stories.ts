@@ -23,13 +23,11 @@ const isComponent = (str: string) => str.charAt(0) === str.charAt(0).toUpperCase
 const extractScriptSetup = (fileContent: string): string | null => {
   const match = fileContent.match(/<script setup lang="ts">([\s\S]+?)<\/script>/)
   if (match) {
-    let content = match[1].trim()
-    content = content.replace(
-      /import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g,
-      "import {$1} from '@ark-ui/vue'",
-    )
-    content = content.replace(/^import\s+'.+\.css'\s*$/gm, '')
-    return content
+    return match[1]
+      .trim()
+      .replace(/import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g, "import {$1} from '@ark-ui/vue'")
+      .replace(/@zag-js\/react/g, '@ark-ui/react')
+      .replace(/^import\s+'.+\.css'\s*$/gm, '')
   }
   return null
 }
