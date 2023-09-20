@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { RadioGroup, type RadioGroupProps } from '.'
 
-const Component = (props: RadioGroupProps) => {
+const ComponentUnderTest = (props: RadioGroupProps) => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <RadioGroup.Root {...props}>
@@ -22,7 +22,7 @@ describe('Radio Group', () => {
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
 
-    render(<Component onValueChange={onValueChange} />)
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
     await user.click(screen.getByLabelText('Solid'))
     expect(onValueChange).toHaveBeenCalledWith({ value: 'Solid' })
@@ -31,7 +31,7 @@ describe('Radio Group', () => {
   it('should not invoke onValueChange if option is disabled', async () => {
     const onValueChange = vi.fn()
 
-    render(<Component onValueChange={onValueChange} />)
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
     await user.click(screen.getByLabelText('Svelte'))
     expect(onValueChange).not.toHaveBeenCalled()

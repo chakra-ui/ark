@@ -1,30 +1,39 @@
-import { connect, machine } from '@zag-js/radio-group'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as radioGroup from '@zag-js/radio-group'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { RadioGroupContext } from './radio-group'
 
-export const useRadioGroup = <T extends ExtractPropTypes<RadioGroupContext>>(
+export type UseRadioGroupProps = Optional<radioGroup.Context, 'id'> & {
+  modelValue?: radioGroup.Context['value']
+}
+export type UseRadioGroupReturn = ComputedRef<radioGroup.Api<PropTypes>>
+
+export const useRadioGroup = (
+  props: UseRadioGroupProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseRadioGroupReturn => {
   const getRootNode = useEnvironmentContext()
-
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    radioGroup.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
-      onValueChange(details) {
+      onValueChange: (details) => {
         emit('value-change', details)
         emit('update:modelValue', details.value)
       },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => radioGroup.connect(state.value, send, normalizeProps))
 }

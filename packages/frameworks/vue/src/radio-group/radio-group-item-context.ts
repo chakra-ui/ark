@@ -1,4 +1,5 @@
-import { createContext } from '../create-context'
+import type { ComputedRef } from 'vue'
+import { createContext } from '../context'
 
 // TODO export in zag.js
 export interface ItemProps {
@@ -16,11 +17,7 @@ export interface ItemState {
   isActive: boolean
 }
 
-export type RadioGroupItemContext = ItemProps
+export type RadioGroupItemContext = ComputedRef<ItemProps>
 
 export const [RadioGroupItemProvider, useRadioGroupItemContext] =
-  createContext<RadioGroupItemContext>({
-    name: 'RadioGroupItemContext',
-    hookName: 'useRadioGroupItemContext',
-    providerName: '<RadioGroupItemProvider />',
-  })
+  createContext<RadioGroupItemContext>('RadioGroupItemContext')

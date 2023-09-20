@@ -1,8 +1,7 @@
-import { type connect, type Context } from '@zag-js/radio-group'
-import { type ComputedRef } from 'vue'
 import { createContext } from '../context'
+import type { UseRadioGroupReturn } from './use-radio-group'
+
+export type RadioGroupContext = UseRadioGroupReturn
 
 export const [RadioGroupProvider, useRadioGroupContext] =
-  createContext<ComputedRef<ReturnType<typeof connect>>>('RadioGroupContext')
-
-export type RadioGroupContext = Context
+  createContext<RadioGroupContext>('RadioGroupContext')
