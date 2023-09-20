@@ -1,6 +1,8 @@
+import { accordionAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
 const ComponentUnderTest = (props: AccordionProps) => {
@@ -15,6 +17,7 @@ const ComponentUnderTest = (props: AccordionProps) => {
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
           <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
+          <Accordion.ItemIndicator>Icon</Accordion.ItemIndicator>
           <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
@@ -23,8 +26,9 @@ const ComponentUnderTest = (props: AccordionProps) => {
 }
 
 describe('Accordion', () => {
-  it('should render', async () => {
-    render(<ComponentUnderTest />)
+  it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
+    const { container } = render(<ComponentUnderTest />)
+    expect(container.querySelector(part)).toBeInTheDocument()
   })
 
   it('should not have an expanded item by default', async () => {

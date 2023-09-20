@@ -1,4 +1,4 @@
-export { createAnatomy } from '@zag-js/anatomy'
+export * from '@zag-js/anatomy'
 export { anatomy as accordionAnatomy } from './accordion'
 export { anatomy as avatarAnatomy } from './avatar'
 export { anatomy as carouselAnatomy } from './carousel'

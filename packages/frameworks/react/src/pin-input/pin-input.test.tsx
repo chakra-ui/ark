@@ -59,7 +59,9 @@ describe('PinInput', () => {
     await user.type(screen.getByLabelText('pin code 2 of 3'), '2')
     await user.type(screen.getByLabelText('pin code 3 of 3'), '3')
 
-    expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' })
+    await waitFor(() =>
+      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
+    )
   })
 
   it('should set one-time-code for autocomplete on fields', async () => {

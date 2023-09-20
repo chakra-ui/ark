@@ -1,3 +1,4 @@
+import type { AnatomyInstance } from '@ark-ui/anatomy'
 import '@testing-library/jest-dom'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
@@ -11,3 +12,9 @@ window.Element.prototype.scrollTo = () => {
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 
 Object.assign(global, { window, document: window.document })
+
+export const getParts = (anatomy: AnatomyInstance<string>) => {
+  return Object.values(anatomy.build()).map(
+    (x) => `[data-scope="${x.attrs['data-scope']}"][data-part="${x.attrs['data-part']}"]`,
+  )
+}
