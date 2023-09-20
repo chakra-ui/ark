@@ -26,7 +26,6 @@ const extractScriptSetup = (fileContent: string): string | null => {
     return match[1]
       .trim()
       .replace(/import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g, "import {$1} from '@ark-ui/vue'")
-      .replace(/@zag-js\/react/g, '@ark-ui/react')
       .replace(/^import\s+'.+\.css'\s*$/gm, '')
   }
   return null
@@ -79,24 +78,32 @@ const main = async () => {
             /import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g,
             `import {$1} from '@ark-ui/${framework}'`,
           )
+          .replace(/@zag-js\/react/g, '@ark-ui/react')
 
         if (!importText.includes('.css') && !importText.includes('storybook')) {
           imports += importText + '\n'
         }
       })
 
-      sourceFile.getExportedDeclarations().forEach((decls) => {
-        decls.forEach((decl) => {
-          match(decl)
-            .when(Node.isVariableDeclaration, (node) => {
+      const exportedDeclarations = sourceFile.getExportedDeclarations().values()
+
+      for (const decls of exportedDeclarations) {
+        for (const decl of decls) {
+          await match(decl)
+            .when(Node.isVariableDeclaration, async (node) => {
               const name = node.getName()
               if (!isComponent(name)) return
               const code = `${imports}\nconst ${name} = ${node.getInitializer()?.getText()}`
-              stories[name] = code
+              const content = await prettier.format(code, {
+                ...prettierConfig,
+                plugins: ['prettier-plugin-organize-imports'],
+                parser: 'typescript',
+              })
+              stories[name] = content
             })
             .run()
-        })
-      })
+        }
+      }
 
       const outPath = join(outDir, framework, `${component}.stories.json`)
       return outputFile(outPath, await format(stories))
