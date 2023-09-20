@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Add memoization to `Select` and `Combobox` item collection to improve performance.
 
+### Fixed
+
+- Resolved an issue when controlling the `Editable` component.
+
 ### Removed
 
 - Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
