@@ -10,7 +10,7 @@ export type AccordionProps = Ark.AccordionProps & AccordionVariantProps
 
 const AccordionRoot = withProvider(styled(Ark.Accordion.Root), 'root')
 export const AccordionItem = withContext(styled(Ark.Accordion.Item), 'item')
-export const AccordionItemContent = withContext(styled(Ark.Accordion.ItemContent), 'item')
+export const AccordionItemContent = withContext(styled(Ark.Accordion.ItemContent), 'content')
 export const AccordionItemTrigger = withContext(styled(Ark.Accordion.ItemTrigger), 'trigger')
 
 export const Accordion = Object.assign(AccordionRoot, {
