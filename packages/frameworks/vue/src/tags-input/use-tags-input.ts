@@ -1,20 +1,33 @@
-import { connect, machine } from '@zag-js/tags-input'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes, type UnwrapRef } from 'vue'
+import * as tagsInput from '@zag-js/tags-input'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
+import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { TagsInputContext } from './tags-input'
 
-export const useTagsInput = <T extends ExtractPropTypes<TagsInputContext>>(
+export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
+  modelValue?: tagsInput.Context['value']
+}
+export type UseTagsInputReturn = ComputedRef<tagsInput.Api<PropTypes>>
+
+export const useTagsInput = (
+  props: UseTagsInputProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+): UseTagsInputReturn => {
+  const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
+    tagsInput.machine({
+      ...context.value,
+      id: context.value.id ?? useId().value,
+      getRootNode,
       onValueChange(details) {
         emit('value-change', details)
         emit('update:modelValue', details.value)
@@ -26,9 +39,8 @@ export const useTagsInput = <T extends ExtractPropTypes<TagsInputContext>>(
         emit('highlight-change', details)
       },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => tagsInput.connect(state.value, send, normalizeProps))
 }
-
-export type UseTagsInputReturn = UnwrapRef<ReturnType<typeof useTagsInput>>

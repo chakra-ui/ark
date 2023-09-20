@@ -27,7 +27,7 @@ export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((pro
   const view = runIfFn(children, itemState)
 
   return (
-    <TagsInputItemProvider value={{ ...itemProps, ...itemState }}>
+    <TagsInputItemProvider value={itemProps}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
