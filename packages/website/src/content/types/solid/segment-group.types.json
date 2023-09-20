@@ -50,5 +50,15 @@
       "isRequired": false,
       "description": "The value of the checked radio"
     }
+  },
+  "SegmentGroupItemProps": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "SegmentGroupItemContext": {
+    "value": { "type": "string", "isRequired": true },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
   }
 }
