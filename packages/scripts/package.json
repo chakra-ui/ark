@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.2",
-    "@types/node": "18.17.17",
+    "@types/node": "18.17.18",
     "@types/prettier": "2.7.3",
     "ts-node": "10.9.1",
     "typescript": "5.2.2"
