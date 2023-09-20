@@ -1,12 +1,15 @@
+import { selectAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
+import { Portal } from '../'
+import { getParts } from '../setup-test'
 import type { Optional } from '../types'
 import {
   Select,
   SelectClearTrigger,
   SelectContent,
+  SelectIndicator,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -39,6 +42,7 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
       <SelectControl>
         <SelectTrigger>
           <SelectValue placeholder="Select a Framework" />
+          <SelectIndicator />
         </SelectTrigger>
         <SelectClearTrigger>Clear</SelectClearTrigger>
       </SelectControl>
@@ -61,10 +65,9 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
   )
 }
 describe('Select', () => {
-  it('should render', async () => {
+  it.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
-    expect(trigger).toBeInTheDocument()
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should handle item selection', async () => {

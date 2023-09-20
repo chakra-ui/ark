@@ -1,3 +1,4 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
@@ -26,7 +27,11 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
       ['value', 'disabled', 'invalid'],
     )
     const api = useSegmentGroupContext()
-    const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
+    const mergedProps = mergeProps(
+      api.getItemProps(itemProps),
+      segmentGroupAnatomy.build().item.attrs,
+      localProps,
+    )
     const itemState = api.getItemState(itemProps)
     const view = runIfFn(children, itemState)
 

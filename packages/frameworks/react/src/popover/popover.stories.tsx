@@ -13,6 +13,7 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from './'
+import { PopoverIndicator } from './popover-indicator'
 import './popover.css'
 
 type PopoverType = typeof Popover
@@ -26,7 +27,9 @@ export default meta
 
 export const Basic = () => (
   <Popover>
-    <PopoverTrigger>Click Me</PopoverTrigger>
+    <PopoverTrigger>
+      Click Me <PopoverIndicator>Indicator</PopoverIndicator>
+    </PopoverTrigger>
     <Portal>
       <PopoverPositioner>
         <PopoverContent>

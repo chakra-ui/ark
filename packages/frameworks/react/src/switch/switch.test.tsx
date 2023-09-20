@@ -1,6 +1,8 @@
+import { switchAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
+import { getParts } from '../setup-test'
 import { Switch, SwitchControl, SwitchLabel, SwitchThumb, type SwitchProps } from './'
 
 const ComponentUnderTest = (props: SwitchProps) => {
@@ -15,8 +17,9 @@ const ComponentUnderTest = (props: SwitchProps) => {
 }
 
 describe('Switch', () => {
-  it('should render', async () => {
+  it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should toggle state when clicked', async () => {
@@ -45,17 +48,6 @@ describe('Switch', () => {
     const switchControl = screen.getByRole('checkbox')
 
     expect(switchControl).toHaveAttribute('aria-invalid', 'true')
-  })
-
-  // TODO
-  it.skip('should be readonly when readOnly is true', async () => {
-    const onCheckedChange = vi.fn()
-    render(<ComponentUnderTest readOnly onCheckedChange={onCheckedChange} />)
-
-    const switchControl = screen.getByRole('checkbox')
-
-    await user.click(switchControl)
-    expect(onCheckedChange).not.toHaveBeenCalled()
   })
 
   it('should be required when required is true', async () => {

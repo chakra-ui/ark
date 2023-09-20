@@ -52,9 +52,10 @@ const ComponentUnderTest = () => {
 
 describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
-    const { container } = render(<ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
+
   it('should have the correct disabled / enabled states for control buttons', async () => {
     render(<ComponentUnderTest />)
     const prevButton = screen.getByRole('button', { name: 'Previous Slide' })

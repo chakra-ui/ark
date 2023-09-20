@@ -1,3 +1,4 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
@@ -10,7 +11,11 @@ export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupIt
   (props, ref) => {
     const api = useSegmentGroupContext()
     const itemProps = useSegmentGroupItemContext()
-    const mergedProps = mergeProps(api.getItemControlProps(itemProps), props)
+    const mergedProps = mergeProps(
+      api.getItemControlProps(itemProps),
+      segmentGroupAnatomy.build().itemControl.attrs,
+      props,
+    )
 
     return <ark.div {...mergedProps} ref={ref} />
   },

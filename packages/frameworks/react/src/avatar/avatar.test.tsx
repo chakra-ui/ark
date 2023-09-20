@@ -14,7 +14,7 @@ const ComponentUnderTest = (props: AvatarProps) => {
 
 describe('Avatar', () => {
   it.each(getParts(avatarAnatomy))('should render part %s', async (part) => {
-    const { container } = render(<ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 })

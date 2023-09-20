@@ -1,43 +1,55 @@
+import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import {
   Pagination,
   PaginationEllipsis,
   PaginationList,
+  PaginationListItem,
   PaginationNextPageTrigger,
   PaginationPageTrigger,
   PaginationPrevPageTrigger,
   type PaginationProps,
 } from '.'
+import { getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   <Pagination {...props}>
     {({ pages }) => (
       <PaginationList>
-        <PaginationPrevPageTrigger>
-          Previous <span className="visually-hidden">Page</span>
-        </PaginationPrevPageTrigger>
+        <PaginationListItem>
+          <PaginationPrevPageTrigger>
+            Previous <span className="visually-hidden">Page</span>
+          </PaginationPrevPageTrigger>
+        </PaginationListItem>
 
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationPageTrigger key={index} {...page}>
-              {page.value}
-            </PaginationPageTrigger>
+            <PaginationListItem key={index}>
+              <PaginationPageTrigger {...page}>{page.value}</PaginationPageTrigger>
+            </PaginationListItem>
           ) : (
-            <PaginationEllipsis key={index} index={index}>
-              &#8230;
-            </PaginationEllipsis>
+            <PaginationListItem key={index}>
+              <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
+            </PaginationListItem>
           ),
         )}
-        <PaginationNextPageTrigger>
-          Next <span className="visually-hidden">Page</span>
-        </PaginationNextPageTrigger>
+        <PaginationListItem>
+          <PaginationNextPageTrigger>
+            Next <span className="visually-hidden">Page</span>
+          </PaginationNextPageTrigger>
+        </PaginationListItem>
       </PaginationList>
     )}
   </Pagination>
 )
 
 describe('Pagination', () => {
+  it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest count={100} pageSize={10} />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should update page when item is clicked', async () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     const pageTwoLink = screen.getByLabelText('page 2')

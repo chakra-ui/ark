@@ -1,5 +1,7 @@
+import { tooltipAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import {
   Tooltip,
   TooltipArrow,
@@ -23,6 +25,11 @@ const ComponentUnderTest = (props: TooltipProps) => (
 )
 
 describe('Tooltip', () => {
+  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
     render(<ComponentUnderTest />)
 

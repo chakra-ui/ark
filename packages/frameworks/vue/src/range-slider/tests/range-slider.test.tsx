@@ -85,16 +85,13 @@ describe('RangeSlider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  // TODO
-  it.skip('should emit correct onValueChange events', async () => {
+  it('should emit correct onValueChange events', async () => {
     const onValueChange = vi.fn()
     render(ComponentUnderTest, { props: { onValueChange: onValueChange } })
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
-
-    // why is this 2 times
-    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 })

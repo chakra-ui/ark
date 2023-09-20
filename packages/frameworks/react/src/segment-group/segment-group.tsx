@@ -24,11 +24,15 @@ export const SegmentGroup = forwardRef<HTMLDivElement, SegmentGroupProps>((props
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
-  const mergedProps = mergeProps(segmentGroup.rootProps, divProps)
+  const mergedProps = mergeProps(
+    segmentGroup.rootProps,
+    segmentGroupAnatomy.build().root.attrs,
+    divProps,
+  )
 
   return (
     <SegmentGroupProvider value={segmentGroup}>
-      <ark.div {...mergedProps} {...segmentGroupAnatomy.build().root.attrs} ref={ref} />
+      <ark.div {...mergedProps} ref={ref} />
     </SegmentGroupProvider>
   )
 })

@@ -1,8 +1,11 @@
+import { popoverAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
+import { getParts } from '../setup-test'
 import {
   Popover,
+  PopoverAnchor,
   PopoverArrow,
   PopoverArrowTip,
   PopoverCloseTrigger,
@@ -13,10 +16,15 @@ import {
   PopoverTrigger,
   type PopoverProps,
 } from './'
+import { PopoverIndicator } from './popover-indicator'
 
 const ComponentUnderTest = (props: PopoverProps) => (
   <Popover {...props}>
-    <PopoverTrigger>click me</PopoverTrigger>
+    <PopoverTrigger>
+      click me
+      <PopoverIndicator />
+    </PopoverTrigger>
+    <PopoverAnchor>Anchor</PopoverAnchor>
     <PopoverPositioner>
       <PopoverArrow>
         <PopoverArrowTip />
@@ -31,6 +39,11 @@ const ComponentUnderTest = (props: PopoverProps) => (
 )
 
 describe('Popover', () => {
+  it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should open and close the popover', async () => {
     render(<ComponentUnderTest />)
 

@@ -1,5 +1,7 @@
+import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import {
   NumberInput,
   NumberInputControl,
@@ -7,6 +9,7 @@ import {
   NumberInputIncrementTrigger,
   NumberInputInput,
   NumberInputLabel,
+  NumberInputScrubber,
   type NumberInputProps,
 } from './'
 
@@ -14,6 +17,7 @@ const ComponentUnderTest = (props: NumberInputProps) => (
   <NumberInput {...props}>
     <NumberInputLabel>Label</NumberInputLabel>
     <NumberInputInput />
+    <NumberInputScrubber />
     <NumberInputControl>
       <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
       <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
@@ -22,11 +26,9 @@ const ComponentUnderTest = (props: NumberInputProps) => (
 )
 
 describe('NumberInput', () => {
-  it('should render', () => {
+  it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
-    expect(screen.getByText('Label')).toBeInTheDocument()
-    expect(screen.getByText('-1')).toBeInTheDocument()
-    expect(screen.getByText('+1')).toBeInTheDocument()
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should handle wheel event when allowMouseWheel is true', async () => {

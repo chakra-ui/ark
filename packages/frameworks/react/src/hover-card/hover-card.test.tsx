@@ -1,6 +1,6 @@
+import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
 import {
   HoverCard,
@@ -11,6 +11,8 @@ import {
   HoverCardTrigger,
   type HoverCardProps,
 } from '.'
+import { Portal } from '../'
+import { getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard openDelay={0} closeDelay={0} {...props}>
@@ -29,8 +31,9 @@ const ComponentUnderTest = (props: HoverCardProps) => (
 )
 
 describe('HoverCard', () => {
-  it('should render', async () => {
+  it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should open on hover', async () => {

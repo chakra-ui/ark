@@ -5,12 +5,12 @@ import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
+import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
 export type TagsInputProps = Assign<
   Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
   {
-    children?: ReactNode | ((pages: UseTagsInputProps) => ReactNode)
+    children?: ReactNode | ((pages: UseTagsInputReturn) => ReactNode)
   }
 >
 

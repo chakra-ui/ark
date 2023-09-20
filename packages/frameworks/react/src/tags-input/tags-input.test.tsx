@@ -1,5 +1,7 @@
+import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import { TagsInput, type TagsInputProps } from './'
 
 const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
@@ -26,8 +28,9 @@ const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
 }
 
 describe('TagsInput', () => {
-  it('should render', async () => {
+  it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should allow to add a new item', async () => {

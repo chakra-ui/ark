@@ -1,7 +1,9 @@
+import { tabsAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
+import { getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: TabsProps) => {
   const items = [
@@ -30,8 +32,9 @@ const ComponentUnderTest = (props: TabsProps) => {
 }
 
 describe('Tabs', () => {
-  it('should render', async () => {
+  it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should activate tab on click', async () => {
