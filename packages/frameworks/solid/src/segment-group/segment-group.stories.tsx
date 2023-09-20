@@ -1,6 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Segment, SegmentControl, SegmentGroup, SegmentGroupIndicator, SegmentLabel } from './'
+import { SegmentGroup } from './'
 import './segment-group.css'
 
 const meta: Meta = {
@@ -9,59 +9,54 @@ const meta: Meta = {
 
 export default meta
 
-const options = [
-  { id: 'react', label: 'React' },
-  { id: 'solid', label: 'Solid' },
-  { id: 'svelte', label: 'Svelte' },
-  { id: 'vue', label: 'Vue' },
-]
-
 export const Basic = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
   return (
-    <SegmentGroup>
-      <SegmentGroupIndicator />
-      <For each={options}>
-        {(option) => (
-          <Segment value={option.id}>
-            <SegmentLabel>{option.label}</SegmentLabel>
-            <SegmentControl />
-          </Segment>
+    <SegmentGroup.Root>
+      <SegmentGroup.Indicator />
+      <For each={frameworks}>
+        {(framework) => (
+          <SegmentGroup.Item value={framework}>
+            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemControl />
+          </SegmentGroup.Item>
         )}
       </For>
-    </SegmentGroup>
+    </SegmentGroup.Root>
   )
 }
 
 export const Controlled = () => {
-  const [value, setValue] = createSignal('react')
+  const frameworks = ['React', 'Solid', 'Vue']
+  const [value, setValue] = createSignal('React')
   return (
-    <SegmentGroup value={value()} onValueChange={({ value }) => setValue(value)}>
-      <SegmentGroupIndicator />
-      <For each={options}>
-        {(option) => (
-          <Segment value={option.id}>
-            <SegmentLabel>{option.label}</SegmentLabel>
-            <SegmentControl />
-          </Segment>
+    <SegmentGroup.Root value={value()} onValueChange={(e) => setValue(e.value)}>
+      <SegmentGroup.Indicator />
+      <For each={frameworks}>
+        {(framework) => (
+          <SegmentGroup.Item value={framework}>
+            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemControl />
+          </SegmentGroup.Item>
         )}
       </For>
-    </SegmentGroup>
+    </SegmentGroup.Root>
   )
 }
 
 export const Disabled = () => {
-  const [value, setValue] = createSignal('react')
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
-    <SegmentGroup value={value()} onValueChange={({ value }) => setValue(value)}>
-      <SegmentGroupIndicator />
-      <For each={options}>
-        {(option) => (
-          <Segment value={option.id} disabled={option.id === 'svelte'}>
-            <SegmentLabel>{option.label}</SegmentLabel>
-            <SegmentControl />
-          </Segment>
+    <SegmentGroup.Root>
+      <SegmentGroup.Indicator />
+      <For each={frameworks}>
+        {(framework) => (
+          <SegmentGroup.Item value={framework} disabled={framework === 'Svelte'}>
+            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemControl />
+          </SegmentGroup.Item>
         )}
       </For>
-    </SegmentGroup>
+    </SegmentGroup.Root>
   )
 }
