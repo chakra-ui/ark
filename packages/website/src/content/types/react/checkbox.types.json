@@ -61,47 +61,5 @@
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
     }
-  },
-  "CheckboxContext": {
-    "checkedState": {
-      "type": "CheckedState",
-      "isRequired": true,
-      "description": "The checked state of the checkbox"
-    },
-    "controlProps": { "type": "Dict<any>", "isRequired": true },
-    "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
-    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
-    "isChecked": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the checkbox is checked"
-    },
-    "isIndeterminate": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the checkbox is indeterminate"
-    },
-    "labelProps": { "type": "Dict<any>", "isRequired": true },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setChecked": {
-      "type": "(checked: CheckedState) => void",
-      "isRequired": true,
-      "description": "Function to set the checked state of the checkbox"
-    },
-    "toggleChecked": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to toggle the checked state of the checkbox"
-    },
-    "isDisabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is disabled"
-    },
-    "isFocused": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is focused"
-    }
   }
 }

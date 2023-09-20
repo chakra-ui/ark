@@ -132,13 +132,5 @@
       "isRequired": false,
       "description": "Whether the target should not receive focus on press."
     }
-  },
-  "UsePressableReturn": {
-    "isPressed": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the element is pressed."
-    },
-    "pressableProps": { "type": "Dict<any>", "isRequired": true }
   }
 }

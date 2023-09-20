@@ -52,46 +52,7 @@
       "description": "The value of the checked radio"
     }
   },
-  "RadioGroupContext": {
-    "clearValue": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to clear the value of the radio group"
-    },
-    "focus": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to focus the radio group"
-    },
-    "getItemControlProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
-    "getItemHiddenInputProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
-    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
-    "getItemState": {
-      "type": "(props: ItemProps) => ItemState",
-      "isRequired": true,
-      "description": "Returns the state details of a radio input"
-    },
-    "getItemTextProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
-    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
-    "labelProps": { "type": "Dict<any>", "isRequired": true },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setValue": {
-      "type": "(value: string) => void",
-      "isRequired": true,
-      "description": "Function to set the value of the radio group"
-    },
-    "value": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The current value of the radio group"
-    }
-  },
   "RadioGroupItemProps": {
-    "value": { "type": "string", "isRequired": true },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "invalid": { "type": "boolean", "isRequired": false }
-  },
-  "RadioGroupItemContext": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }

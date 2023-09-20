@@ -68,12 +68,5 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "RatingGroupItemProps": { "index": { "type": "number", "isRequired": true } },
-  "RatingGroupItemContext": {
-    "isChecked": { "type": "boolean", "isRequired": true },
-    "isEqual": { "type": "boolean", "isRequired": true },
-    "isHalf": { "type": "boolean", "isRequired": true },
-    "isHighlighted": { "type": "boolean", "isRequired": true },
-    "isValueEmpty": { "type": "boolean", "isRequired": true }
-  }
+  "RatingGroupItemProps": { "index": { "type": "number", "isRequired": true } }
 }

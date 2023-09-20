@@ -57,25 +57,6 @@
       "description": "The values of the toggles in the group."
     }
   },
-  "ToggleGroupContext": {
-    "getItemProps": { "type": "(props: ItemProps) => Dict<any>", "isRequired": true },
-    "getItemState": {
-      "type": "(props: ItemProps) => ItemState",
-      "isRequired": true,
-      "description": "Returns the state of the toggle item."
-    },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setValue": {
-      "type": "(values: string[]) => void",
-      "isRequired": true,
-      "description": "Function to set the value of the toggle group."
-    },
-    "value": {
-      "type": "string[]",
-      "isRequired": true,
-      "description": "The value of the toggle group."
-    }
-  },
   "ToggleGroupItemProps": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }

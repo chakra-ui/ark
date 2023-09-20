@@ -79,12 +79,16 @@ async function extractPropertiesOfTypeName(
       results[(typeStatement as any).name.getText()] = Object.fromEntries(
         Object.entries(properties)
           .sort(([aName], [bName]) => aName.localeCompare(bName))
-          .sort(([, a], [, b]) => (a.isRequired === b.isRequired ? 0 : a.isRequired ? -1 : 1)),
+          .sort(([, a], [, b]) => (a.isRequired === b.isRequired ? 0 : a.isRequired ? -1 : 1))
+          .filter(([name]) => !name.endsWith('Context')),
       )
     }
   }
 
-  return Object.keys(results).length ? results : null
+  // Only document types that are component props
+  const foo = Object.fromEntries(Object.entries(results).filter(([key]) => key.endsWith('Props')))
+
+  return Object.keys(foo).length ? results : null
 }
 
 async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {

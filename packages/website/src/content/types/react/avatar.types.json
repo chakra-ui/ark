@@ -15,35 +15,5 @@
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
     }
-  },
-  "AvatarContext": {
-    "fallbackProps": { "type": "Dict<any>", "isRequired": true },
-    "imageProps": { "type": "Dict<any>", "isRequired": true },
-    "isLoaded": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the image is loaded."
-    },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setError": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to set error state."
-    },
-    "setLoaded": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to set loaded state."
-    },
-    "setSrc": {
-      "type": "(src: string) => void",
-      "isRequired": true,
-      "description": "Function to set new src."
-    },
-    "showFallback": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the fallback is shown."
-    }
   }
 }

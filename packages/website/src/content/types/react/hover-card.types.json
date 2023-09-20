@@ -46,33 +46,6 @@
       "description": "The user provided options used to position the popover content"
     }
   },
-  "HoverCardContext": {
-    "arrowProps": { "type": "Dict<any>", "isRequired": true },
-    "arrowTipProps": { "type": "Dict<any>", "isRequired": true },
-    "close": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to close the hover card"
-    },
-    "contentProps": { "type": "Dict<any>", "isRequired": true },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the hover card is open"
-    },
-    "open": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to open the hover card"
-    },
-    "positionerProps": { "type": "Dict<any>", "isRequired": true },
-    "setPositioning": {
-      "type": "(options?: Partial<PositioningOptions> | undefined) => void",
-      "isRequired": true,
-      "description": "Function to reposition the popover"
-    },
-    "triggerProps": { "type": "Dict<any>", "isRequired": true }
-  },
   "HoverCardContentProps": {
     "lazyMount": {
       "type": "boolean",

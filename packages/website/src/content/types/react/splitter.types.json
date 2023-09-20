@@ -47,49 +47,6 @@
       "description": "The size data of the panels"
     }
   },
-  "SplitterContext": {
-    "getPanelProps": { "type": "(props: PanelProps) => Dict<any>", "isRequired": true },
-    "getResizeTriggerProps": {
-      "type": "(props: ResizeTriggerProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getResizeTriggerState": {
-      "type": "(props: ResizeTriggerProps) => ResizeTriggerState",
-      "isRequired": true,
-      "description": "Returns the state details for a resize trigger."
-    },
-    "isDragging": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the splitter is being dragged."
-    },
-    "isFocused": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the splitter is focused."
-    },
-    "rootProps": { "type": "Dict<any>", "isRequired": true },
-    "setSize": {
-      "type": "(id: PanelId, size: number) => void",
-      "isRequired": true,
-      "description": "Function to set the size of a panel."
-    },
-    "setToMaxSize": {
-      "type": "(id: PanelId) => void",
-      "isRequired": true,
-      "description": "Function to set a panel to its maximum size."
-    },
-    "setToMinSize": {
-      "type": "(id: PanelId) => void",
-      "isRequired": true,
-      "description": "Function to set a panel to its minimum size."
-    },
-    "bounds": {
-      "type": "PanelBounds",
-      "isRequired": false,
-      "description": "The bounds of the currently dragged splitter handle."
-    }
-  },
   "SplitterPanelProps": {
     "id": { "type": "PanelId", "isRequired": true },
     "snapSize": { "type": "number", "isRequired": false }

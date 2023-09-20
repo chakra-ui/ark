@@ -1,59 +1,6 @@
 {
   "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
   "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
-  "ToastItemContext": {
-    "closeTriggerProps": { "type": "ButtonHTMLAttributes & ReservedProps", "isRequired": true },
-    "descriptionProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "dismiss": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to instantly dismiss the toast."
-    },
-    "isPaused": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the toast is paused."
-    },
-    "isRtl": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the toast is in RTL mode."
-    },
-    "isVisible": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the toast is visible."
-    },
-    "pause": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to pause the toast (keeping it visible)."
-    },
-    "placement": {
-      "type": "Placement",
-      "isRequired": true,
-      "description": "The current placement of the toast."
-    },
-    "render": {
-      "type": "() => any",
-      "isRequired": true,
-      "description": "Function render the toast in the DOM (based on the defined `render` property)"
-    },
-    "resume": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to resume the toast dismissing."
-    },
-    "rootProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "titleProps": { "type": "Attrs<HTMLAttributes>", "isRequired": true },
-    "type": { "type": "Type", "isRequired": true, "description": "The type of the toast." },
-    "description": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The description of the toast."
-    },
-    "title": { "type": "string", "isRequired": false, "description": "The title of the toast." }
-  },
   "ToastProviderProps": {
     "defaultOptions": {
       "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",

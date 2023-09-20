@@ -87,30 +87,6 @@
       "description": "Whether to trap focus inside the dialog when it's opened"
     }
   },
-  "DialogContext": {
-    "backdropProps": { "type": "Dict<any>", "isRequired": true },
-    "close": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to close the dialog"
-    },
-    "closeTriggerProps": { "type": "Dict<any>", "isRequired": true },
-    "containerProps": { "type": "Dict<any>", "isRequired": true },
-    "contentProps": { "type": "Dict<any>", "isRequired": true },
-    "descriptionProps": { "type": "Dict<any>", "isRequired": true },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the dialog is open"
-    },
-    "open": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to open the dialog"
-    },
-    "titleProps": { "type": "Dict<any>", "isRequired": true },
-    "triggerProps": { "type": "Dict<any>", "isRequired": true }
-  },
   "DialogContentProps": {
     "lazyMount": {
       "type": "boolean",

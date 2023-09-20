@@ -47,15 +47,7 @@
     "xChannel": { "type": "ColorChannel", "isRequired": true },
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
-  "ColorPickerAreaContext": {
-    "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true }
-  },
   "ColorPickerSwatchProps": {
-    "value": { "type": "string | Color", "isRequired": true },
-    "readOnly": { "type": "boolean", "isRequired": false }
-  },
-  "ColorPickerSwatchContext": {
     "value": { "type": "string | Color", "isRequired": true },
     "readOnly": { "type": "boolean", "isRequired": false }
   },

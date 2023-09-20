@@ -81,43 +81,6 @@
       "description": "The user provided options used to position the popover content"
     }
   },
-  "PopoverContext": {
-    "anchorProps": { "type": "Dict<any>", "isRequired": true },
-    "arrowProps": { "type": "Dict<any>", "isRequired": true },
-    "arrowTipProps": { "type": "Dict<any>", "isRequired": true },
-    "close": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to close the popover"
-    },
-    "closeTriggerProps": { "type": "Dict<any>", "isRequired": true },
-    "contentProps": { "type": "Dict<any>", "isRequired": true },
-    "descriptionProps": { "type": "Dict<any>", "isRequired": true },
-    "indicatorProps": { "type": "Dict<any>", "isRequired": true },
-    "isOpen": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the popover is open"
-    },
-    "open": {
-      "type": "() => void",
-      "isRequired": true,
-      "description": "Function to open the popover"
-    },
-    "portalled": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the popover is portalled"
-    },
-    "positionerProps": { "type": "Dict<any>", "isRequired": true },
-    "setPositioning": {
-      "type": "(options?: Partial<PositioningOptions> | undefined) => void",
-      "isRequired": true,
-      "description": "Function to reposition the popover"
-    },
-    "titleProps": { "type": "Dict<any>", "isRequired": true },
-    "triggerProps": { "type": "Dict<any>", "isRequired": true }
-  },
   "PopoverContentProps": {
     "lazyMount": {
       "type": "boolean",

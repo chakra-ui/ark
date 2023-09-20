@@ -168,6 +168,5 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "MenuOptionItemState": { "isActive": { "type": "boolean", "isRequired": true } },
   "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
 }

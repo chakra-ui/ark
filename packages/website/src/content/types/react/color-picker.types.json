@@ -44,93 +44,11 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The current color value" }
   },
-  "ColorPickerContext": {
-    "alpha": {
-      "type": "number",
-      "isRequired": true,
-      "description": "The alpha value of the color"
-    },
-    "channels": {
-      "type": "[ColorChannel, ColorChannel, ColorChannel]",
-      "isRequired": true,
-      "description": "The current color channels of the color"
-    },
-    "contentProps": { "type": "Dict<any>", "isRequired": true },
-    "eyeDropperTriggerProps": { "type": "Dict<any>", "isRequired": true },
-    "getAreaGradientProps": { "type": "(props: ColorAreaProps) => Dict<any>", "isRequired": true },
-    "getAreaProps": { "type": "(props: ColorAreaProps) => Dict<any>", "isRequired": true },
-    "getAreaThumbProps": { "type": "(props: ColorAreaProps) => Dict<any>", "isRequired": true },
-    "getChannelInputProps": {
-      "type": "(props: ColorChannelInputProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getChannelSliderBackgroundProps": {
-      "type": "(props: ColorChannelProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getChannelSliderThumbProps": {
-      "type": "(props: ColorChannelProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getChannelSliderTrackProps": {
-      "type": "(props: ColorChannelProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getSwatchBackgroundProps": {
-      "type": "(props: ColorSwatchProps) => Dict<any>",
-      "isRequired": true
-    },
-    "getSwatchProps": { "type": "(props: ColorSwatchProps) => Dict<any>", "isRequired": true },
-    "hiddenInputProps": { "type": "Dict<any>", "isRequired": true },
-    "isDragging": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the color picker is being dragged"
-    },
-    "setAlpha": {
-      "type": "(value: number) => void",
-      "isRequired": true,
-      "description": "Function to set the color alpha"
-    },
-    "setChannelValue": {
-      "type": "(channel: ColorChannel, value: number) => void",
-      "isRequired": true,
-      "description": "Function to set the color value of a specific channel"
-    },
-    "setColor": {
-      "type": "(value: string | Color) => void",
-      "isRequired": true,
-      "description": "Function to set the color value"
-    },
-    "setFormat": {
-      "type": "(format: ColorFormat) => void",
-      "isRequired": true,
-      "description": "Function to set the color format"
-    },
-    "value": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The current color value (as a string)"
-    },
-    "valueAsColor": {
-      "type": "Color",
-      "isRequired": true,
-      "description": "The current color value (as a Color object)"
-    }
-  },
   "ColorPickerAreaProps": {
     "xChannel": { "type": "ColorChannel", "isRequired": true },
     "yChannel": { "type": "ColorChannel", "isRequired": true }
   },
-  "ColorPickerAreaContext": {
-    "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true }
-  },
   "ColorPickerSwatchProps": {
-    "value": { "type": "string | Color", "isRequired": true },
-    "readOnly": { "type": "boolean", "isRequired": false }
-  },
-  "ColorPickerSwatchContext": {
     "value": { "type": "string | Color", "isRequired": true },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
