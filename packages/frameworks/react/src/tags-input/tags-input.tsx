@@ -7,12 +7,13 @@ import { type Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
-export type TagsInputProps = Assign<
-  Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
-  {
-    children?: ReactNode | ((pages: UseTagsInputReturn) => ReactNode)
-  }
->
+export interface TagsInputProps
+  extends Assign<
+    Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
+    {
+      children?: ReactNode | ((pages: UseTagsInputReturn) => ReactNode)
+    }
+  > {}
 
 export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, ref) => {
   const [useTagsInputProps, { children, ...inputProps }] = createSplitProps<UseTagsInputProps>()(
