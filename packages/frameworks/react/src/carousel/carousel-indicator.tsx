@@ -6,7 +6,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorProps = Assign<HTMLArkProps<'button'>, SlideIndicatorProps>
+export interface CarouselIndicatorProps
+  extends Assign<HTMLArkProps<'button'>, SlideIndicatorProps> {}
 
 export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicatorProps>(
   (props, ref) => {
@@ -15,8 +16,8 @@ export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicator
       'index',
     ])
 
-    const { getIndicatorProps } = useCarouselContext()
-    const mergedProps = mergeProps(getIndicatorProps(indicatorProps), buttonProps)
+    const api = useCarouselContext()
+    const mergedProps = mergeProps(api.getIndicatorProps(indicatorProps), buttonProps)
 
     return <ark.button {...mergedProps} ref={ref} />
   },
