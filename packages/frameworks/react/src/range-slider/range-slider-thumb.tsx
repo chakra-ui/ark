@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
 
-export type RangeSliderThumbProps = Assign<HTMLArkProps<'div'>, { index: number }>
+export interface RangeSliderThumbProps extends Assign<HTMLArkProps<'div'>, { index: number }> {}
 
 export const RangeSliderThumb = forwardRef<HTMLDivElement, RangeSliderThumbProps>((props, ref) => {
   const { index, ...localProps } = props

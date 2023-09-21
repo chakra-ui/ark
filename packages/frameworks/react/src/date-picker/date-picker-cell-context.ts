@@ -1,7 +1,7 @@
 import type { CellProps } from '@zag-js/date-picker'
 import { createContext } from '../create-context'
 
-export type DatePickerCellContext = CellProps
+export interface DatePickerCellContext extends CellProps {}
 
 export const [DatePickerCellProvider, useDatePickerCellContext] =
   createContext<DatePickerCellContext>({

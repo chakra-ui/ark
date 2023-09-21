@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverCloseTriggerProps = HTMLArkProps<'button'>
+export interface PopoverCloseTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PopoverCloseTrigger = forwardRef<HTMLButtonElement, PopoverCloseTriggerProps>(
   (props, ref) => {
-    const { closeTriggerProps } = usePopoverContext()
-    const mergedProps = mergeProps(closeTriggerProps, props)
+    const api = usePopoverContext()
+    const mergedProps = mergeProps(api.closeTriggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxLabelProps = HTMLArkProps<'span'>
+export interface CheckboxLabelProps extends HTMLArkProps<'span'> {}
 
 export const CheckboxLabel = forwardRef<HTMLSpanElement, CheckboxLabelProps>((props, ref) => {
-  const { labelProps } = useCheckboxContext()
-  const mergedProps = mergeProps(labelProps, props)
+  const api = useCheckboxContext()
+  const mergedProps = mergeProps(api.labelProps, props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

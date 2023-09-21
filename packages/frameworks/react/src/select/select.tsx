@@ -7,12 +7,13 @@ import { type Assign, type CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
 import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 
-export type SelectProps<T extends CollectionItem> = Assign<
-  HTMLArkProps<'div'>,
-  UseSelectProps<T>
-> & {
-  children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
-}
+export interface SelectProps<T extends CollectionItem>
+  extends Assign<
+    HTMLArkProps<'div'>,
+    UseSelectProps<T> & {
+      children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
+    }
+  > {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectProps<T>,

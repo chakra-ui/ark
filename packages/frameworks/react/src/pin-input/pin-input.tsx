@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
-export type PinInputProps = Assign<HTMLArkProps<'div'>, UsePinInputProps>
+export interface PinInputProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
 export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) => {
   const [usePinInputProps, divProps] = createSplitProps<UsePinInputProps>()(props, [

@@ -7,13 +7,14 @@ import type { Assign } from '../types'
 import { DatePickerCellProvider } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerMonthCellProps = Assign<HTMLArkProps<'div'>, CellProps>
+export interface DatePickerMonthCellProps extends Assign<HTMLArkProps<'div'>, CellProps> {}
 
 export const DatePickerMonthCell = forwardRef<HTMLDivElement, DatePickerMonthCellProps>(
   (props, ref) => {
-    const { getMonthCellProps } = useDatePickerContext()
+    const api = useDatePickerContext()
+
     const [cellProps, localProps] = createSplitProps<CellProps>()(props, ['value', 'disabled'])
-    const mergedProps = mergeProps(getMonthCellProps(cellProps), localProps)
+    const mergedProps = mergeProps(api.getMonthCellProps(cellProps), localProps)
 
     return (
       <DatePickerCellProvider value={cellProps}>

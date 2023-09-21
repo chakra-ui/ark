@@ -6,7 +6,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelInputProps = Assign<ColorChannelInputProps, HTMLArkProps<'input'>>
+export interface ColorPickerChannelInputProps
+  extends Assign<ColorChannelInputProps, HTMLArkProps<'input'>> {}
 
 export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerChannelInputProps>(
   (props, ref) => {
@@ -14,8 +15,8 @@ export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerC
       'channel',
       'orientation',
     ])
-    const { getChannelInputProps } = useColorPickerContext()
-    const mergedProps = mergeProps(getChannelInputProps(channelProps), inputProps)
+    const api = useColorPickerContext()
+    const mergedProps = mergeProps(api.getChannelInputProps(channelProps), inputProps)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

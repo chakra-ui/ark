@@ -7,12 +7,13 @@ import { type Assign } from '../types'
 import { EditableProvider, type EditableContext } from './editable-context'
 import { useEditable, type UseEditableProps } from './use-editable'
 
-export type EditableProps = Assign<
-  Omit<HTMLArkProps<'div'>, 'children'> & {
-    children?: ReactNode | ((pages: EditableContext) => ReactNode)
-  },
-  UseEditableProps
->
+export interface EditableProps
+  extends Assign<
+    Omit<HTMLArkProps<'div'>, 'children'> & {
+      children?: ReactNode | ((pages: EditableContext) => ReactNode)
+    },
+    UseEditableProps
+  > {}
 
 export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) => {
   const [useEditableProps, { children, ...divProps }] = createSplitProps<UseEditableProps>()(
@@ -47,13 +48,13 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) =
       'value',
     ],
   )
-  const editable = useEditable(useEditableProps)
-  const mergedProps = mergeProps(editable.rootProps, divProps)
+  const api = useEditable(useEditableProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
-  const view = runIfFn(children, editable)
+  const view = runIfFn(children, api)
 
   return (
-    <EditableProvider value={editable}>
+    <EditableProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>

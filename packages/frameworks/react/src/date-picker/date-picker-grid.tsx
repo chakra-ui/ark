@@ -6,12 +6,16 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerGridProps = Assign<HTMLArkProps<'div'>, GridProps>
+export interface DatePickerGridProps extends Assign<HTMLArkProps<'div'>, GridProps> {}
 
 export const DatePickerGrid = forwardRef<HTMLDivElement, DatePickerGridProps>((props, ref) => {
   const [gridProps, localProps] = createSplitProps<GridProps>()(props, ['view', 'columns', 'id'])
-  const { getGridProps, view } = useDatePickerContext()
-  const mergedProps = mergeProps(getGridProps({ view, id: useId(), ...gridProps }), localProps)
+
+  const api = useDatePickerContext()
+  const mergedProps = mergeProps(
+    api.getGridProps({ view: api.view, id: useId(), ...gridProps }),
+    localProps,
+  )
 
   return <ark.div {...mergedProps} ref={ref} />
 })

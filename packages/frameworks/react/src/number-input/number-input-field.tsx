@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputInputProps = HTMLArkProps<'input'>
+export interface NumberInputInputProps extends HTMLArkProps<'input'> {}
 
 export const NumberInputInput = forwardRef<HTMLInputElement, NumberInputInputProps>(
   (props, ref) => {
-    const { inputProps } = useNumberInputContext()
-    const mergedProps = mergeProps(inputProps, props)
+    const api = useNumberInputContext()
+    const mergedProps = mergeProps(api.inputProps, props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

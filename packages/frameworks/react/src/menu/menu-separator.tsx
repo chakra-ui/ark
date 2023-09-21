@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuSeparatorProps = HTMLArkProps<'hr'>
+export interface MenuSeparatorProps extends HTMLArkProps<'hr'> {}
 
 export const MenuSeparator = forwardRef<HTMLHRElement, MenuSeparatorProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']

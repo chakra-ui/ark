@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardPositionerProps = HTMLArkProps<'div'>
+export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardPositioner = forwardRef<HTMLDivElement, HoverCardPositionerProps>(
   (props, ref) => {
-    const { positionerProps } = useHoverCardContext()
-    const mergedProps = mergeProps(positionerProps, props)
+    const api = useHoverCardContext()
+    const mergedProps = mergeProps(api.positionerProps, props)
     return <ark.div {...mergedProps} ref={ref} />
   },
 )

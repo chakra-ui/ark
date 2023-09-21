@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { usePressable, type UsePressableProps } from './use-pressable'
 
-export type PressableProps = Assign<HTMLArkProps<'button'>, UsePressableProps>
+export interface PressableProps extends Assign<HTMLArkProps<'button'>, UsePressableProps> {}
 
 export const Pressable = forwardRef<HTMLButtonElement, PressableProps>((props, ref) => {
   const [usePressableProps, divProps] = createSplitProps<UsePressableProps>()(props, [
@@ -23,8 +23,9 @@ export const Pressable = forwardRef<HTMLButtonElement, PressableProps>((props, r
     'onPressUp',
     'preventFocusOnPress',
   ])
-  const { pressableProps } = usePressable(usePressableProps)
-  const mergedProps = mergeProps(pressableProps, divProps)
+
+  const api = usePressable(usePressableProps)
+  const mergedProps = mergeProps(api.pressableProps, divProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

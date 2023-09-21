@@ -6,7 +6,8 @@ import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
-export type MenuContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export interface MenuContentProps
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

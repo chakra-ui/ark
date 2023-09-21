@@ -4,17 +4,16 @@ import { type Assign } from '../types'
 import { ColorPickerProvider, type ColorPickerContext } from './color-picker-context'
 import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 
-export type ColorPickerProps = Assign<
-  UseColorPickerProps,
-  {
-    children?: ReactNode | ((props: ColorPickerContext) => ReactNode)
-  }
->
+export interface ColorPickerProps
+  extends Assign<
+    UseColorPickerProps,
+    { children?: ReactNode | ((props: ColorPickerContext) => ReactNode) }
+  > {}
 
 export const ColorPicker = (props: ColorPickerProps) => {
   const { children, ...useColorPickerProps } = props
-  const colorPicker = useColorPicker(useColorPickerProps)
-  const view = runIfFn(children, colorPicker)
+  const api = useColorPicker(useColorPickerProps)
+  const view = runIfFn(children, api)
 
-  return <ColorPickerProvider value={colorPicker}>{view}</ColorPickerProvider>
+  return <ColorPickerProvider value={api}>{view}</ColorPickerProvider>
 }

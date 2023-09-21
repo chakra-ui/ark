@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { NumberInputProvider } from './number-input-context'
 import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
+export interface NumberInputProps extends Assign<HTMLArkProps<'div'>, UseNumberInputProps> {}
 
 export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
   const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
@@ -41,11 +41,11 @@ export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, 
     'validateCharacter',
     'value',
   ])
-  const pinInput = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(pinInput.rootProps, divProps)
+  const api = useNumberInput(useNumberInputProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
   return (
-    <NumberInputProvider value={pinInput}>
+    <NumberInputProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
     </NumberInputProvider>
   )

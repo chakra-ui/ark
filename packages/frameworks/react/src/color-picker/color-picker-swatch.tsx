@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
-export type ColorPickerSwatchProps = Assign<HTMLArkProps<'button'>, ColorSwatchProps>
+export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'button'>, ColorSwatchProps> {}
 
 export const ColorPickerSwatch = forwardRef<HTMLButtonElement, ColorPickerSwatchProps>(
   (props, ref) => {
@@ -15,8 +15,8 @@ export const ColorPickerSwatch = forwardRef<HTMLButtonElement, ColorPickerSwatch
       'readOnly',
       'value',
     ])
-    const { getSwatchProps } = useColorPickerContext()
-    const mergedProps = mergeProps(getSwatchProps(colorSwatchProps), localProps)
+    const api = useColorPickerContext()
+    const mergedProps = mergeProps(api.getSwatchProps(colorSwatchProps), localProps)
 
     return (
       <ColorPickerSwatchProvider value={colorSwatchProps}>

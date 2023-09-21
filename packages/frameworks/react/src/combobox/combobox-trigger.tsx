@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxTriggerProps = HTMLArkProps<'button'>
+export interface ComboboxTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, ComboboxTriggerProps>((props, ref) => {
   const api = useComboboxContext()

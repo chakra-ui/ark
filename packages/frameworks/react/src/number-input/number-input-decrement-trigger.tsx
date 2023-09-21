@@ -3,14 +3,14 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputDecrementTriggerProps = HTMLArkProps<'button'>
+export interface NumberInputDecrementTriggerProps extends HTMLArkProps<'button'> {}
 
 export const NumberInputDecrementTrigger = forwardRef<
   HTMLButtonElement,
   NumberInputDecrementTriggerProps
 >((props, ref) => {
-  const { decrementTriggerProps } = useNumberInputContext()
-  const mergedProps = mergeProps(decrementTriggerProps, props)
+  const api = useNumberInputContext()
+  const mergedProps = mergeProps(api.decrementTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

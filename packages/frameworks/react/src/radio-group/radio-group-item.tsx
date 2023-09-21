@@ -11,13 +11,12 @@ import {
   type RadioGroupItemContext,
 } from './radio-group-item-context'
 
-export type RadioGroupItemProps = Assign<
-  HTMLArkProps<'label'>,
-  {
-    children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
-  }
-> &
-  RadioGroupItemContext
+export interface RadioGroupItemProps
+  extends Assign<
+      HTMLArkProps<'label'>,
+      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+    >,
+    RadioGroupItemContext {}
 
 export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<RadioGroupItemContext>()(

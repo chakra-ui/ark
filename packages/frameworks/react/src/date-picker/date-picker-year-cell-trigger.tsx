@@ -4,15 +4,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerCellContext } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerYearCellTriggerProps = HTMLArkProps<'button'>
+export interface DatePickerYearCellTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DatePickerYearCellTrigger = forwardRef<
   HTMLButtonElement,
   DatePickerYearCellTriggerProps
 >((props, ref) => {
-  const { getYearCellTriggerProps } = useDatePickerContext()
+  const api = useDatePickerContext()
   const cellProps = useDatePickerCellContext()
-  const mergedProps = mergeProps(getYearCellTriggerProps(cellProps), props)
+  const mergedProps = mergeProps(api.getYearCellTriggerProps(cellProps), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })
