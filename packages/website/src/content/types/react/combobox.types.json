@@ -1,5 +1,5 @@
 {
-  "ComboboxProps": {
+  "Root": {
     "items": {
       "type": "T[] | readonly T[]",
       "isRequired": true,
@@ -9,6 +9,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow custom values or free values in the input"
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
     },
     "autoFocus": {
       "type": "boolean",
@@ -177,21 +182,99 @@
       "description": "The keys of the selected items"
     }
   },
-  "ComboboxItemProps": { "item": { "type": "any", "isRequired": false } },
-  "ComboboxContentProps": {
+  "Item": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
+  "Input": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether to enable lazy mounting"
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether to unmount on exit."
     }
   },
-  "ComboboxItemGroupProps": { "id": { "type": "string", "isRequired": true } },
-  "ComboboxItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Trigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemGroup": {
+    "id": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ClearTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemGroupLabel": {
+    "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  }
 }

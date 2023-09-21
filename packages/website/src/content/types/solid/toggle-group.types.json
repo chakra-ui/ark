@@ -1,5 +1,6 @@
 {
-  "ToggleGroupProps": {
+  "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -56,8 +57,9 @@
       "description": "The values of the toggles in the group."
     }
   },
-  "ToggleGroupItemProps": {
+  "Item": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   }
 }

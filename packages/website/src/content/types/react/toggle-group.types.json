@@ -1,5 +1,10 @@
 {
-  "ToggleGroupProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "defaultValue": { "type": "string[]", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -57,8 +62,13 @@
       "description": "The values of the toggles in the group."
     }
   },
-  "ToggleGroupItemProps": {
+  "Item": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "disabled": { "type": "boolean", "isRequired": false }
   }
 }

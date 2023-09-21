@@ -18,7 +18,7 @@ export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) =
         <>
           <PaginationList>
             <PaginationPrevPageTrigger asChild>
-              <IconButton variant="tertiary" aria-label="Next Page">
+              <IconButton variant="ghost" aria-label="Next Page">
                 <ChevronLeft />
               </IconButton>
             </PaginationPrevPageTrigger>
@@ -26,7 +26,7 @@ export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) =
             {pages.map((page, index) =>
               page.type === 'page' ? (
                 <PaginationPageTrigger key={index} {...page} asChild>
-                  <Button variant="secondary">{page.value}</Button>
+                  <Button variant="outline">{page.value}</Button>
                 </PaginationPageTrigger>
               ) : (
                 <PaginationEllipsis key={index} index={index}>
@@ -36,7 +36,7 @@ export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) =
             )}
 
             <PaginationNextPageTrigger asChild>
-              <IconButton variant="tertiary" aria-label="Next Page">
+              <IconButton variant="ghost" aria-label="Next Page">
                 <ChevronRight />
               </IconButton>
             </PaginationNextPageTrigger>

@@ -66,7 +66,7 @@ const DemoToastWrapper = () => {
 
   return (
     <Button
-      variant="secondary"
+      variant="outline"
       onClick={() => {
         toast.create({
           title: 'Hello',

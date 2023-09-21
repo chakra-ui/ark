@@ -5,6 +5,7 @@ import { globby } from 'globby'
 import path, { dirname } from 'path'
 import prettier from 'prettier'
 import ts from 'typescript'
+import voca from 'voca'
 
 type TypeProperties = Record<
   string,
@@ -184,10 +185,16 @@ const main = async () => {
           .map((x) =>
             Object.fromEntries(
               Object.entries(x)
-                .map((y) => [
-                  y[0],
-                  Object.fromEntries(Object.entries(y[1]).filter((z) => z[0] !== 'asChild')),
-                ])
+                .map((y) => [y[0].replace('Props', ''), Object.fromEntries(Object.entries(y[1]))])
+                .map((x) => {
+                  // Rename Type from e.g. AccordionItemContentProps to ItemContent
+                  const shortName = (x[0] as string).replace(
+                    voca.titleCase(component.split('/').pop()).replace('-', ''),
+                    '',
+                  )
+                  const newName = voca.isEmpty(shortName) ? 'Root' : shortName
+                  return [newName, Object.fromEntries(Object.entries(x[1]))]
+                })
                 .filter((y) => Object.keys(y[1]).length !== 0),
             ),
           )

@@ -1,5 +1,10 @@
 {
-  "SegmentGroupProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -52,9 +57,42 @@
       "description": "The value of the checked radio"
     }
   },
-  "SegmentGroupItemProps": {
+  "Item": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ItemControl": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
   }
 }

@@ -1,5 +1,10 @@
 {
-  "CheckboxProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -60,6 +65,27 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
     }
   }
 }

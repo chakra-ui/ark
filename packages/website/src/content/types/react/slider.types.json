@@ -1,5 +1,5 @@
 {
-  "SliderProps": {
+  "Root": {
     "aria-label": {
       "type": "string",
       "isRequired": false,
@@ -9,6 +9,11 @@
       "type": "string",
       "isRequired": false,
       "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
     },
     "defaultValue": { "type": "number", "isRequired": false },
     "dir": {
@@ -118,5 +123,61 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
   },
-  "SliderMarkerProps": { "value": { "type": "number", "isRequired": true } }
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Range": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Thumb": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Track": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Marker": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Output": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "MarkerGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  }
 }

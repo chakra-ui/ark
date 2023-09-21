@@ -1,5 +1,5 @@
 {
-  "ColorPickerProps": {
+  "Root": {
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -44,20 +44,30 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The current color value" }
   },
-  "ColorPickerAreaProps": {
+  "Area": {
     "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true }
+    "yChannel": { "type": "ColorChannel", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "ColorPickerSwatchProps": {
+  "Swatch": {
     "value": { "type": "string | Color", "isRequired": true },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "ColorPickerChannelInputProps": {
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "AreaGradient": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelInput": {
     "channel": { "type": "ExtendedColorChannel", "isRequired": true },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "ColorPickerChannelSliderTrackProps": {
+  "SwatchBackground": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelSliderTrack": {
     "channel": { "type": "ColorChannel", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
-  }
+  },
+  "ChannelSliderBackground": { "asChild": { "type": "boolean", "isRequired": false } }
 }

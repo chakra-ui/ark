@@ -1,5 +1,5 @@
 {
-  "PresenceProps": {
+  "Root": {
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,

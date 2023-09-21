@@ -19,7 +19,7 @@ import {
 export const PopoverDemo = (props: PopoverProps) => (
   <Popover portalled {...props}>
     <PopoverTrigger asChild>
-      <Button variant="secondary">Open Popover</Button>
+      <Button variant="outline">Open Popover</Button>
     </PopoverTrigger>
     <Portal>
       <PopoverPositioner>
@@ -35,7 +35,7 @@ export const PopoverDemo = (props: PopoverProps) => (
           </Stack>
           <Box position="absolute" top="1" right="1">
             <PopoverCloseTrigger asChild>
-              <IconButton aria-label="Close Popover" variant="tertiary" size="sm">
+              <IconButton aria-label="Close Popover" variant="ghost" size="sm">
                 <X />
               </IconButton>
             </PopoverCloseTrigger>

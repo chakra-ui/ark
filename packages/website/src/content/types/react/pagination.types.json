@@ -1,6 +1,11 @@
 {
-  "PaginationProps": {
+  "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    },
     "defaultPage": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -49,9 +54,49 @@
       "description": "The type of the trigger element"
     }
   },
-  "PaginationEllipsisProps": { "index": { "type": "number", "isRequired": true } },
-  "PaginationPageTriggerProps": {
+  "List": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "Ellipsis": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "ListItem": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "PageTrigger": {
     "type": { "type": "'page'", "isRequired": true },
-    "value": { "type": "number", "isRequired": true }
+    "value": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "NextPageTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
+  },
+  "PrevPageTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+    }
   }
 }

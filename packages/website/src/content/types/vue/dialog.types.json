@@ -1,5 +1,5 @@
 {
-  "DialogProps": {
+  "Root": {
     "aria-label": {
       "type": "string",
       "isRequired": false,
@@ -87,7 +87,9 @@
       "description": "Whether to trap focus inside the dialog when it's opened"
     }
   },
-  "DialogContentProps": {
+  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -101,7 +103,9 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "DialogBackdropProps": {
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Backdrop": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -114,5 +118,8 @@
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
-  }
+  },
+  "Container": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

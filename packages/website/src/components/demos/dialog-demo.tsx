@@ -18,7 +18,7 @@ export const DialogDemo = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Open dialog</Button>
+        <Button variant="outline">Open dialog</Button>
       </DialogTrigger>
       <Portal>
         <DialogBackdrop />
@@ -31,7 +31,7 @@ export const DialogDemo = () => {
               </Stack>
               <Stack gap="3" direction="row" width="full">
                 <DialogCloseTrigger asChild>
-                  <Button variant="secondary" width="full">
+                  <Button variant="outline" width="full">
                     Cancel
                   </Button>
                 </DialogCloseTrigger>
@@ -39,7 +39,7 @@ export const DialogDemo = () => {
               </Stack>
             </Stack>
             <DialogCloseTrigger asChild position="absolute" top="2" right="2">
-              <IconButton aria-label="Close Dialog" variant="tertiary" size="sm">
+              <IconButton aria-label="Close Dialog" variant="ghost" size="sm">
                 <X />
               </IconButton>
             </DialogCloseTrigger>
