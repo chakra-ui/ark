@@ -25,7 +25,7 @@ export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
   const context: dialog.Context = {
     ...initialContext,
     open: props.open,
-    onOpenChange: useEvent(props.onOpenChange),
+    onOpenChange: useEvent(props.onOpenChange, { sync: true }),
     onEsc: useEvent(props.onEsc),
     onOutsideClick: useEvent(props.onOutsideClick),
   }
