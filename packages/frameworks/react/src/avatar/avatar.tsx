@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { AvatarProvider } from './avatar-context'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export type AvatarProps = Assign<HTMLArkProps<'div'>, UseAvatarProps>
+export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
@@ -14,11 +14,11 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     'id',
     'onLoadingStatusChange',
   ])
-  const avatar = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(avatar.rootProps, localProps)
+  const api = useAvatar(useAvatarProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
-    <AvatarProvider value={avatar}>
+    <AvatarProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
     </AvatarProvider>
   )
