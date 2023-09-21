@@ -1,5 +1,10 @@
 {
-  "AvatarProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
@@ -14,6 +19,20 @@
       "type": "(details: StatusChangeDetails) => void",
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
+    }
+  },
+  "Image": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Fallback": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   }
 }

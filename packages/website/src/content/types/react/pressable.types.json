@@ -1,9 +1,14 @@
 {
-  "PressableProps": {
+  "Root": {
     "allowTextSelectionOnPress": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether text selection should be enabled on the pressable element."
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     },
     "cancelOnPointerExit": {
       "type": "boolean",
@@ -66,7 +71,7 @@
       "description": "Whether the target should not receive focus on press."
     }
   },
-  "UsePressableProps": {
+  "Use": {
     "allowTextSelectionOnPress": {
       "type": "boolean",
       "isRequired": false,

@@ -1,5 +1,5 @@
 {
-  "TagsInputProps": {
+  "Root": {
     "addOnPaste": {
       "type": "boolean",
       "isRequired": false,
@@ -125,9 +125,16 @@
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
   },
-  "TagsInputItemProps": {
+  "Item": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
-  }
+  },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemInput": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

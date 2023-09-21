@@ -1,5 +1,6 @@
 {
-  "AvatarProps": {
+  "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -15,5 +16,7 @@
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
     }
-  }
+  },
+  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } }
 }

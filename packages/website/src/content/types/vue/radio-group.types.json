@@ -1,5 +1,5 @@
 {
-  "RadioGroupProps": {
+  "Root": {
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -52,9 +52,13 @@
       "description": "The value of the checked radio"
     }
   },
-  "RadioGroupItemProps": {
+  "Item": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
-  }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemControl": { "asChild": { "type": "boolean", "isRequired": false } }
 }

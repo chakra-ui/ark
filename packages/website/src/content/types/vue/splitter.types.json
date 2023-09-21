@@ -1,5 +1,5 @@
 {
-  "SplitterProps": {
+  "Root": {
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -46,11 +46,11 @@
       "description": "The size data of the panels"
     }
   },
-  "SplitterPanelProps": {
+  "Panel": {
     "id": { "type": "PanelId", "isRequired": true },
     "snapSize": { "type": "number", "isRequired": false }
   },
-  "SplitterResizeTriggerProps": {
+  "ResizeTrigger": {
     "id": {
       "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
       "isRequired": true

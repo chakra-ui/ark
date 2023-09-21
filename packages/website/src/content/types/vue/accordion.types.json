@@ -1,5 +1,5 @@
 {
-  "AccordionProps": {
+  "Root": {
     "collapsible": {
       "type": "boolean",
       "isRequired": false,
@@ -57,7 +57,9 @@
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
-  "AccordionItemContentProps": {
+  "Item": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemContent": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -70,5 +72,7 @@
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
-  }
+  },
+  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

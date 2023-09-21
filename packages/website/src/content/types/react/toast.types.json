@@ -1,7 +1,28 @@
 {
-  "ToastProps": { "toast": { "type": "Service", "isRequired": true } },
-  "ToastGroupProps": { "placement": { "type": "Placement", "isRequired": true } },
-  "ToastProviderProps": {
+  "Root": {
+    "toast": { "type": "Service", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Group": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Title": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Provider": {
     "defaultOptions": {
       "type": "Partial<Pick<ToastOptions, 'placement' | 'duration' | 'removeDelay'>>",
       "isRequired": false,
@@ -51,6 +72,20 @@
       "type": "number",
       "isRequired": false,
       "description": "The z-index applied to each toast group"
+    }
+  },
+  "Description": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "CloseTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   }
 }

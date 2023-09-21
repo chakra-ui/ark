@@ -1,5 +1,10 @@
 {
-  "SwitchProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -74,6 +79,27 @@
       "type": "string | number",
       "isRequired": false,
       "description": "The value of switch input. Useful for form submission."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Thumb": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   }
 }

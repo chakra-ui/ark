@@ -1,5 +1,5 @@
 {
-  "TooltipProps": {
+  "Root": {
     "aria-label": {
       "type": "string",
       "isRequired": false,
@@ -62,7 +62,9 @@
       "description": "The user provided options used to position the popover content"
     }
   },
-  "TooltipContentProps": {
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -75,5 +77,8 @@
       "isRequired": false,
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
-  }
+  },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } }
 }

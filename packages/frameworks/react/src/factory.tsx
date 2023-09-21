@@ -43,6 +43,9 @@ const withAsChild = (Component: React.ElementType) => {
 }
 
 export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> & {
+  /**
+   * Render as a different element type.
+   */
   asChild?: boolean
 }
 

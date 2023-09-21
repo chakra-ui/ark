@@ -1,5 +1,10 @@
 {
-  "ToggleGroupProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
@@ -61,8 +66,13 @@
       "description": "The values of the toggles in the group."
     }
   },
-  "ToggleGroupItemProps": {
+  "Item": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "disabled": { "type": "boolean", "isRequired": false }
   }
 }

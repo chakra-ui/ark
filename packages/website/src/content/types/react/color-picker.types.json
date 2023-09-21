@@ -1,5 +1,5 @@
 {
-  "ColorPickerProps": {
+  "Root": {
     "defaultValue": {
       "type": "string",
       "isRequired": false,
@@ -48,20 +48,96 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The current color value" }
   },
-  "ColorPickerAreaProps": {
+  "Area": {
     "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true }
+    "yChannel": { "type": "ColorChannel", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
-  "ColorPickerSwatchProps": {
+  "Swatch": {
     "value": { "type": "string | Color", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "ColorPickerChannelInputProps": {
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "AreaThumb": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "SwatchGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "AreaGradient": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ChannelInput": {
     "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "ColorPickerChannelSliderTrackProps": {
+  "SwatchBackground": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "EyeDropperTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ChannelSliderThumb": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ChannelSliderTrack": {
     "channel": { "type": "ColorChannel", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "orientation": { "type": "Orientation", "isRequired": false }
+  },
+  "ChannelSliderBackground": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   }
 }

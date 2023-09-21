@@ -1,9 +1,14 @@
 {
-  "RatingGroupProps": {
+  "Root": {
     "allowHalf": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow half stars."
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     },
     "autoFocus": {
       "type": "boolean",
@@ -73,5 +78,26 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "RatingGroupItemProps": { "index": { "type": "number", "isRequired": true } }
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

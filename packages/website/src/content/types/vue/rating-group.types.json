@@ -1,5 +1,5 @@
 {
-  "RatingGroupProps": {
+  "Root": {
     "allowHalf": {
       "type": "boolean",
       "isRequired": false,
@@ -69,5 +69,10 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "RatingGroupItemProps": { "index": { "type": "number", "isRequired": true } }
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

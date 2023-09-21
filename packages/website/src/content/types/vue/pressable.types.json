@@ -1,5 +1,5 @@
 {
-  "PressableProps": {
+  "Root": {
     "allowTextSelectionOnPress": {
       "type": "boolean",
       "isRequired": false,
@@ -66,7 +66,7 @@
       "description": "Whether the target should not receive focus on press."
     }
   },
-  "UsePressableProps": {
+  "Use": {
     "allowTextSelectionOnPress": {
       "type": "boolean",
       "isRequired": false,

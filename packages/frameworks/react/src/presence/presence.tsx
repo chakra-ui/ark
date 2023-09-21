@@ -9,11 +9,13 @@ export interface PresenceProps extends UsePresenceProps {
    */
   children: ReactElement
   /**
-   * Whether to enable lazy mounting. Defaults to `false`.
+   * Whether to enable lazy mounting
+   * @default false
    */
   lazyMount?: boolean
   /**
-   * Whether to unmount on exit. Defaults to `false`.
+   * Whether to unmount on exit.
+   * @default false
    */
   unmountOnExit?: boolean
 }

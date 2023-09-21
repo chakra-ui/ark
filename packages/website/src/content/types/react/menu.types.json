@@ -1,5 +1,5 @@
 {
-  "MenuProps": {
+  "Root": {
     "anchorPoint": {
       "type": "Point",
       "isRequired": false,
@@ -87,11 +87,16 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "MenuItemProps": {
+  "Item": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the menu item option."
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     },
     "closeOnSelect": {
       "type": "boolean",
@@ -109,28 +114,66 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "MenuContentProps": {
+  "Arrow": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether to enable lazy mounting"
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether to unmount on exit."
     }
   },
-  "MenuItemGroupProps": {
+  "Trigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ArrowTip": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemGroup": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   },
-  "MenuOptionItemProps": {
+  "Separator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "OptionItem": {
     "name": {
       "type": "string",
       "isRequired": true,
@@ -142,6 +185,11 @@
       "description": "Whether the option is a radio or a checkbox"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -168,5 +216,33 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TriggerItem": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ContextTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemGroupLabel": {
+    "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

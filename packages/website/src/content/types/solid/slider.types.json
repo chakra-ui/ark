@@ -1,5 +1,5 @@
 {
-  "SliderProps": {
+  "Root": {
     "aria-label": {
       "type": "string",
       "isRequired": false,
@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -117,5 +118,15 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
   },
-  "SliderMarkerProps": { "value": { "type": "number", "isRequired": true } }
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Range": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Track": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Marker": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "Output": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "MarkerGroup": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -1,5 +1,5 @@
 {
-  "PinInputProps": {
+  "Root": {
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -107,5 +107,10 @@
       "description": "The value of the the pin input."
     }
   },
-  "PinInputInputProps": { "index": { "type": "number", "isRequired": true } }
+  "Input": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

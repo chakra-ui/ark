@@ -1,5 +1,5 @@
 {
-  "NumberInputProps": {
+  "Root": {
     "allowMouseWheel": {
       "type": "boolean",
       "isRequired": false,
@@ -9,6 +9,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     },
     "clampValueOnBlur": {
       "type": "boolean",
@@ -146,5 +151,47 @@
       "description": "Whether the pressed key should be allowed in the input.\nThe default behavior is to allow DOM floating point characters defined by /^[Ee0-9+\\-.]$/"
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
+  },
+  "Input": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Scrubber": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "DecrementTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "IncrementTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   }
 }

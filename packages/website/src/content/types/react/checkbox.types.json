@@ -1,5 +1,10 @@
 {
-  "CheckboxProps": {
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -64,6 +69,27 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   }
 }

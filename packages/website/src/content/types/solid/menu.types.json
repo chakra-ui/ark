@@ -1,5 +1,5 @@
 {
-  "MenuProps": {
+  "Root": {
     "anchorPoint": {
       "type": "Point",
       "isRequired": false,
@@ -87,12 +87,13 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "MenuItemProps": {
+  "Item": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the menu item option."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -109,7 +110,9 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "MenuContentProps": {
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -123,14 +126,18 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "MenuItemGroupProps": {
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
-    }
+    },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "MenuOptionItemProps": {
+  "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "OptionItem": {
     "name": {
       "type": "string",
       "isRequired": true,
@@ -142,6 +149,7 @@
       "description": "Whether the option is a radio or a checkbox"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -168,5 +176,11 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "MenuItemGroupLabelProps": { "htmlFor": { "type": "string", "isRequired": true } }
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TriggerItem": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ContextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroupLabel": {
+    "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  }
 }

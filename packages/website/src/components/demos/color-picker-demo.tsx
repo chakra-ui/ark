@@ -47,7 +47,7 @@ export const ColorPickerDemo = () => {
 
               <HStack gap="3">
                 <ColorPickerEyeDropperTrigger asChild>
-                  <IconButton size="xs" variant="secondary" aria-label="Pick color">
+                  <IconButton size="xs" variant="outline" aria-label="Pick color">
                     <Pipette />
                   </IconButton>
                 </ColorPickerEyeDropperTrigger>

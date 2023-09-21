@@ -1,10 +1,11 @@
 {
-  "TabsProps": {
+  "Root": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -52,8 +53,10 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   },
-  "TabContentProps": {
+  "TabList": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TabContent": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "isRequired": false,
@@ -67,8 +70,10 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "TabTriggerProps": {
+  "TabTrigger": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
-  }
+  },
+  "TabIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

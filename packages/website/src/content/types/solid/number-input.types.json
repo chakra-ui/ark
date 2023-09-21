@@ -1,5 +1,5 @@
 {
-  "NumberInputProps": {
+  "Root": {
     "allowMouseWheel": {
       "type": "boolean",
       "isRequired": false,
@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "isRequired": false,
@@ -141,5 +142,11 @@
       "description": "Whether the pressed key should be allowed in the input.\nThe default behavior is to allow DOM floating point characters defined by /^[Ee0-9+\\-.]$/"
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
-  }
+  },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

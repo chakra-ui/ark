@@ -29,7 +29,7 @@ export const MenuDemo = () => {
   return (
     <Menu>
       <MenuTrigger asChild>
-        <Button variant="secondary">Open menu</Button>
+        <Button variant="outline">Open menu</Button>
       </MenuTrigger>
       <Portal>
         <MenuPositioner>

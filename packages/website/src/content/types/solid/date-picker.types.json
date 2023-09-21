@@ -1,5 +1,5 @@
 {
-  "DatePickerProps": {
+  "Root": {
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -134,23 +134,47 @@
     "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
     "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
   },
-  "DatePickerGridProps": {
+  "Row": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Grid": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "columns": { "type": "number", "isRequired": false },
     "id": { "type": "string", "isRequired": false },
     "view": { "type": "DateView", "isRequired": false }
   },
-  "DatePickerDayCellProps": {
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DayCell": {
     "value": { "type": "DateValue", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "offset": { "type": "Offset", "isRequired": false }
   },
-  "DatePickerYearCellProps": {
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RowGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "YearCell": {
     "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "DatePickerMonthCellProps": {
+  "MonthCell": {
     "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   },
-  "DatePickerViewTriggerProps": { "view": { "type": "DateView", "isRequired": false } }
+  "RowHeader": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "YearSelect": { "asChild": { "type": "boolean", "isRequired": false } },
+  "MonthSelect": { "asChild": { "type": "boolean", "isRequired": false } },
+  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ViewTrigger": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "view": { "type": "DateView", "isRequired": false }
+  },
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ColumnHeader": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DayCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "YearCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "MonthCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

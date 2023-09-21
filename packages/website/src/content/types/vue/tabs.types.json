@@ -1,5 +1,5 @@
 {
-  "TabsProps": {
+  "Root": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
       "isRequired": false,
@@ -53,9 +53,14 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   },
-  "TabContentProps": { "value": { "type": "string", "isRequired": true } },
-  "TabTriggerProps": {
+  "TabList": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TabContent": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "TabTrigger": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }
-  }
+  },
+  "TabIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }
