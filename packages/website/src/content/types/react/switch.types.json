@@ -5,7 +5,11 @@
       "isRequired": false,
       "description": "Whether the switch is checked."
     },
-    "defaultChecked": { "type": "boolean", "isRequired": false },
+    "defaultChecked": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial checked state of the switch."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

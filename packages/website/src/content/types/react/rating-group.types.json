@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "Whether to autofocus the rating."
     },
-    "defaultValue": { "type": "number", "isRequired": false },
+    "defaultValue": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial value of the rating group."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

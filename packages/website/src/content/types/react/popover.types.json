@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the popover."
+    },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,

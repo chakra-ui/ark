@@ -1,6 +1,10 @@
 {
   "SplitterProps": {
-    "defaultSize": { "type": "PanelSizeData[]", "isRequired": false },
+    "defaultSize": {
+      "type": "PanelSizeData[]",
+      "isRequired": false,
+      "description": "The initial size of the splitter."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
-    "defaultValue": { "type": "number[]", "isRequired": false },
+    "defaultValue": {
+      "type": "number[]",
+      "isRequired": false,
+      "description": "The initial value of the range slider."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

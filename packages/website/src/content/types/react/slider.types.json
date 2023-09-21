@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
     },
-    "defaultValue": { "type": "number", "isRequired": false },
+    "defaultValue": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial value of the slider."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "Whether the select should close after an item is selected"
     },
-    "defaultValue": { "type": "string[]", "isRequired": false },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the select."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

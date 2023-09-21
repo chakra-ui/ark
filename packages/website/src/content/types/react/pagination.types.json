@@ -1,7 +1,11 @@
 {
   "PaginationProps": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
-    "defaultPage": { "type": "number", "isRequired": false },
+    "defaultPage": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial page of the pagination."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

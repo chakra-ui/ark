@@ -15,7 +15,11 @@
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
-    "defaultValue": { "type": "string", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the number input."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

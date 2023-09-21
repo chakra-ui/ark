@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "Whether to blur the input when the value is complete"
     },
-    "defaultValue": { "type": "string[]", "isRequired": false },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the pin input."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

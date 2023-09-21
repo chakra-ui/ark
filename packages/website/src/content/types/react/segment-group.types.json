@@ -1,6 +1,10 @@
 {
   "SegmentGroupProps": {
-    "defaultValue": { "type": "string", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the segment group."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
