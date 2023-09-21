@@ -1,20 +1,35 @@
 import * as dialog from '@zag-js/dialog'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
-export interface UseDialogProps extends Optional<dialog.Context, 'id'> {}
-export type UseDialogReturn = dialog.Api
+export interface UseDialogProps extends Optional<dialog.Context, 'id'> {
+  /**
+   * The initial open state of the dialog.
+   */
+  defaultOpen?: dialog.Context['open']
+}
 
-export const useDialog = (props: UseDialogProps): UseDialogReturn => {
-  const getRootNode = useEnvironmentContext()
-  const context = {
+export interface UseDialogReturn extends dialog.Api<PropTypes> {}
+
+export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
+  const initialContext: dialog.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
+    open: props.defaultOpen ?? props.open,
   }
 
-  const [state, send] = useMachine(dialog.machine(context), { context })
+  const context: dialog.Context = {
+    ...initialContext,
+    open: props.open,
+    onOpenChange: useEvent(props.onOpenChange),
+    onEsc: useEvent(props.onEsc),
+    onOutsideClick: useEvent(props.onOutsideClick),
+  }
+
+  const [state, send] = useMachine(dialog.machine(initialContext), { context })
   return dialog.connect(state, send, normalizeProps)
 }

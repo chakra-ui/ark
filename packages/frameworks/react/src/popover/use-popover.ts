@@ -1,18 +1,31 @@
 import * as popover from '@zag-js/popover'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
-export interface UsePopoverProps extends Optional<popover.Context, 'id'> {}
-export type UsePopoverReturn = popover.Api
+export interface UsePopoverProps extends Optional<popover.Context, 'id'> {
+  /**
+   * The initial open state of the popover.
+   */
+  defaultOpen?: popover.Context['open']
+}
 
-export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
-  const getRootNode = useEnvironmentContext()
-  const context = {
+export interface UsePopoverReturn extends popover.Api<PropTypes> {}
+
+export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
+  const initialContext: popover.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
+    open: props.defaultOpen ?? props.open,
+  }
+
+  const context: popover.Context = {
+    ...initialContext,
+    open: props.open,
+    onOpenChange: useEvent(props.onOpenChange),
   }
 
   const [state, send] = useMachine(popover.machine(context), { context })

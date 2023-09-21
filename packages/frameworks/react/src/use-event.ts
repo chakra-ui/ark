@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback } from 'react'
-import { flushSync } from 'react-dom'
 import { useLatestRef } from './use-latest-ref'
 
 type AnyFunction = (...args: any[]) => any
@@ -22,7 +21,7 @@ export function useEvent<T extends AnyFunction>(callback: T | undefined, opts: O
 
   return useCallback(
     (...args: any[]) => {
-      if (sync) return flushSync(() => callbackRef.current?.(...args))
+      if (sync) return queueMicrotask(() => callbackRef.current?.(...args))
       return callbackRef.current?.(...args)
     },
     [sync, callbackRef],

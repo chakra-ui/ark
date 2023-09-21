@@ -5,14 +5,18 @@ import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type CollectionItem, type Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<select.Context<T>, 'id'>, 'collection'> {
+  /**
+   * The initial value of the select.
+   */
   defaultValue?: select.Context<T>['value']
 }
 
-export type UseSelectReturn<T extends CollectionItem> = select.Api<PropTypes, T>
+export interface UseSelectReturn<T extends CollectionItem> extends select.Api<PropTypes, T> {}
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
@@ -30,19 +34,21 @@ export const useSelect = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
-  const getRootNode = useEnvironmentContext()
-
-  const initialContext = {
+  const initialContext: select.Context<T> = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     collection,
     ...rest,
     value: props.defaultValue,
   }
-  const context = {
+
+  const context: select.Context<T> = {
     ...initialContext,
     collection,
     value: props.value,
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
+    onHighlightChange: useEvent(props.onHighlightChange),
+    onOpenChange: useEvent(props.onOpenChange),
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {

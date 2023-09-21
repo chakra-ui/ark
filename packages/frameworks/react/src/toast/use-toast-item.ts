@@ -1,8 +1,11 @@
-import { normalizeProps, useActor } from '@zag-js/react'
+import { normalizeProps, useActor, type PropTypes } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
 
-export type UseToastItemProps = { toast: toast.Service }
-export type UseToastItemReturn = toast.Api
+export interface UseToastItemProps {
+  toast: toast.Service
+}
+
+export interface UseToastItemReturn extends toast.Api<PropTypes> {}
 
 export const useToastItem = (props: UseToastItemProps): UseToastItemReturn => {
   const [state, send] = useActor(props.toast)
