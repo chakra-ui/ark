@@ -6,7 +6,7 @@ import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
+export interface AccordionProps extends Assign<HTMLArkProps<'div'>, UseAccordionProps> {}
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
   const [useAccordionProps, divProps] = createSplitProps<UseAccordionProps>()(props, [
