@@ -29,6 +29,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
       'orientation',
       'slidesPerView',
       'spacing',
+      'defaultIndex',
     ],
   )
   const carousel = useCarousel(useCarouselProps)
