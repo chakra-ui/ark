@@ -25,7 +25,7 @@ export const useCheckbox = (props: UseCheckboxProps = {}): UseCheckboxReturn => 
   const context: checkbox.Context = {
     ...initialContext,
     checked: props.checked,
-    onCheckedChange: useEvent(props.onCheckedChange),
+    onCheckedChange: useEvent(props.onCheckedChange, { sync: true }),
   }
 
   const [state, send] = useMachine(checkbox.machine(initialContext), { context })
