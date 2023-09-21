@@ -5,7 +5,11 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultSize": { "type": "PanelSizeData[]", "isRequired": false },
+    "defaultSize": {
+      "type": "PanelSizeData[]",
+      "isRequired": false,
+      "description": "The initial size of the splitter."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

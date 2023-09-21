@@ -1,26 +1,33 @@
 import * as pinInput from '@zag-js/pin-input'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
+  /**
+   * The initial value of the pin input.
+   */
   defaultValue?: pinInput.Context['value']
 }
-export type UsePinInputReturn = pinInput.Api
 
-export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
-  const getRootNode = useEnvironmentContext()
-  const initialContext = {
+export interface UsePinInputReturn extends pinInput.Api<PropTypes> {}
+
+export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => {
+  const initialContext: pinInput.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ?? [],
   }
 
-  const context = {
+  const context: pinInput.Context = {
     ...initialContext,
     value: props.value,
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
+    onValueComplete: useEvent(props.onValueComplete),
+    onValueInvalid: useEvent(props.onValueInvalid),
   }
 
   const [state, send] = useMachine(pinInput.machine(initialContext), { context })

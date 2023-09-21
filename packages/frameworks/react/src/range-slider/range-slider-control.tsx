@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useRangeSliderContext } from './range-slider-context'
 
-export type RangeSliderControlProps = HTMLArkProps<'div'>
+export interface RangeSliderControlProps extends HTMLArkProps<'div'> {}
 
 export const RangeSliderControl = forwardRef<HTMLDivElement, RangeSliderControlProps>(
   (props, ref) => {
-    const { controlProps } = useRangeSliderContext()
-    const mergedProps = mergeProps(controlProps, props)
+    const api = useRangeSliderContext()
+    const mergedProps = mergeProps(api.controlProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

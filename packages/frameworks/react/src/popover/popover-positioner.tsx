@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverPositionerProps = HTMLArkProps<'div'>
+export interface PopoverPositionerProps extends HTMLArkProps<'div'> {}
 
 export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>(
   (props, ref) => {
-    const { positionerProps } = usePopoverContext()
-    const mergedProps = mergeProps(positionerProps, props)
+    const api = usePopoverContext()
+    const mergedProps = mergeProps(api.positionerProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

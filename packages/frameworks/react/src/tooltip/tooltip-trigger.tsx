@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipTriggerProps = HTMLArkProps<'button'>
+export interface TooltipTriggerProps extends HTMLArkProps<'button'> {}
 
 export const TooltipTrigger = forwardRef<HTMLButtonElement, TooltipTriggerProps>((props, ref) => {
-  const { triggerProps } = useTooltipContext()
-  const mergedProps = mergeProps(triggerProps, props)
+  const api = useTooltipContext()
+  const mergedProps = mergeProps(api.triggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

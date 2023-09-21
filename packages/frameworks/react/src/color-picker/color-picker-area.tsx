@@ -7,15 +7,16 @@ import type { Assign } from '../types'
 import { ColorPickerAreaProvider } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerAreaProps = Assign<HTMLArkProps<'div'>, ColorAreaProps>
+export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, ColorAreaProps> {}
 
 export const ColorPickerArea = forwardRef<HTMLDivElement, ColorPickerAreaProps>((props, ref) => {
   const [channelProps, divprops] = createSplitProps<ColorAreaProps>()(props, [
     'xChannel',
     'yChannel',
   ])
-  const { getAreaProps } = useColorPickerContext()
-  const mergedProps = mergeProps(getAreaProps(channelProps), divprops)
+
+  const api = useColorPickerContext()
+  const mergedProps = mergeProps(api.getAreaProps(channelProps), divprops)
 
   return (
     <ColorPickerAreaProvider value={channelProps}>

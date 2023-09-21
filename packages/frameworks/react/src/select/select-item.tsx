@@ -8,16 +8,16 @@ import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
-export type SelectItemProps = Assign<
-  HTMLArkProps<'div'>,
-  {
-    children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
-  }
-> &
-  ItemProps
+export interface SelectItemProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+    >,
+    ItemProps {}
 
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, ['item'])
+
   const api = useSelectContext()
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
 

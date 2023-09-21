@@ -7,7 +7,8 @@ import type { Assign } from '../types'
 import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderTrackProps = Assign<HTMLArkProps<'div'>, ColorChannelProps>
+export interface ColorPickerChannelSliderTrackProps
+  extends Assign<HTMLArkProps<'div'>, ColorChannelProps> {}
 
 export const ColorPickerChannelSliderTrack = forwardRef<
   HTMLDivElement,
@@ -17,8 +18,8 @@ export const ColorPickerChannelSliderTrack = forwardRef<
     'channel',
     'orientation',
   ])
-  const { getChannelSliderTrackProps } = useColorPickerContext()
-  const mergedProps = mergeProps(getChannelSliderTrackProps(channelProps), localProps)
+  const api = useColorPickerContext()
+  const mergedProps = mergeProps(api.getChannelSliderTrackProps(channelProps), localProps)
 
   return (
     <ColorPickerChannelSliderProvider value={channelProps}>

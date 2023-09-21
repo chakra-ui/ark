@@ -25,7 +25,11 @@
       "isRequired": false,
       "description": "Whether to close the combobox when an item is selected."
     },
-    "defaultValue": { "type": "string[]", "isRequired": false },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "the initial value of the combobox"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

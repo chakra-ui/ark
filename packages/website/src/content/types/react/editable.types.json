@@ -15,7 +15,11 @@
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
     },
-    "defaultValue": { "type": "string", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the editable."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

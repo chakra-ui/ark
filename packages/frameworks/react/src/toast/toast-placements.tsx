@@ -3,14 +3,14 @@ import { type ReactNode } from 'react'
 import { runIfFn } from '../run-if-fn'
 import { useToast } from './toast-provider'
 
-export type ToastPlacementsProps = {
+export interface ToastPlacementsProps {
   children: (placements: Placement[]) => ReactNode
 }
 
 export const ToastPlacements = (props: ToastPlacementsProps) => {
   const { children } = props
-  const { toastsByPlacement } = useToast()
-  const view = runIfFn(children, Object.keys(toastsByPlacement) as Placement[])
+  const api = useToast()
+  const view = runIfFn(children, Object.keys(api.toastsByPlacement) as Placement[])
 
   return <>{view}</>
 }

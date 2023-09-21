@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuContextTriggerProps = HTMLArkProps<'button'>
+export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const MenuContextTrigger = forwardRef<HTMLButtonElement, MenuContextTriggerProps>(
   (props, ref) => {

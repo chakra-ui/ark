@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerYearSelectProps = HTMLArkProps<'select'>
+export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
 
 export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYearSelectProps>(
   (props, ref) => {
-    const { yearSelectProps } = useDatePickerContext()
-    const mergedProps = mergeProps(yearSelectProps, props)
+    const api = useDatePickerContext()
+    const mergedProps = mergeProps(api.yearSelectProps, props)
 
     return (
       <ark.select {...mergedProps} ref={ref}>

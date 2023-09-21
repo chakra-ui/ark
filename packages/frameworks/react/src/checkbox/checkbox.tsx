@@ -7,15 +7,16 @@ import { type Assign } from '../types'
 import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
 import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
-export type CheckboxProps = Assign<
-  HTMLArkProps<'label'>,
-  Assign<
-    UseCheckboxProps,
-    {
-      children?: ReactNode | ((pages: CheckboxContext) => ReactNode)
-    }
-  >
->
+export interface CheckboxProps
+  extends Assign<
+    HTMLArkProps<'label'>,
+    Assign<
+      UseCheckboxProps,
+      {
+        children?: ReactNode | ((pages: CheckboxContext) => ReactNode)
+      }
+    >
+  > {}
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const [useCheckboxProps, { children, ...labelProps }] = createSplitProps<UseCheckboxProps>()(

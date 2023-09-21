@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxPositionerProps = HTMLArkProps<'div'>
+export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(
   (props, ref) => {

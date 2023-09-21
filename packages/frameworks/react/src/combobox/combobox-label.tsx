@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxLabelProps = HTMLArkProps<'label'>
+export interface ComboboxLabelProps extends HTMLArkProps<'label'> {}
 
 export const ComboboxLabel = forwardRef<HTMLLabelElement, ComboboxLabelProps>((props, ref) => {
   const api = useComboboxContext()

@@ -7,12 +7,13 @@ import { type Assign, type CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export type ComboboxProps<T extends CollectionItem> = Assign<
-  HTMLArkProps<'div'>,
-  UseComboboxProps<T>
-> & {
-  children?: ReactNode | ((state: UseComboboxReturn<T>) => ReactNode)
-}
+export interface ComboboxProps<T extends CollectionItem>
+  extends Assign<
+    HTMLArkProps<'div'>,
+    UseComboboxProps<T> & {
+      children?: ReactNode | ((state: UseComboboxReturn<T>) => ReactNode)
+    }
+  > {}
 
 const ComboboxImpl = <T extends CollectionItem>(
   props: ComboboxProps<T>,

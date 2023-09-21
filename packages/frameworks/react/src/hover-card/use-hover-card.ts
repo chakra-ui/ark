@@ -1,18 +1,31 @@
 import * as hoverCard from '@zag-js/hover-card'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
-export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {}
-export type UseHoverCardReturn = hoverCard.Api
+export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {
+  /**
+   * The initial open state of the hover card.
+   */
+  defaultOpen?: hoverCard.Context['open']
+}
 
-export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
-  const getRootNode = useEnvironmentContext()
-  const context = {
+export interface UseHoverCardReturn extends hoverCard.Api<PropTypes> {}
+
+export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn => {
+  const initialContext: hoverCard.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
+    open: props.defaultOpen ?? props.open,
+  }
+
+  const context: hoverCard.Context = {
+    ...initialContext,
+    open: props.open,
+    onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
   const [state, send] = useMachine(hoverCard.machine(context), { context })

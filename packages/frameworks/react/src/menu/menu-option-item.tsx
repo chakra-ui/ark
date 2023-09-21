@@ -8,14 +8,17 @@ import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
 
-export type MenuOptionItemState = { isActive: boolean }
+export interface MenuOptionItemState {
+  isActive: boolean
+}
 
-export type MenuOptionItemProps = Assign<
-  HTMLArkProps<'div'>,
-  OptionItemProps & {
-    children?: ReactNode | ((state: MenuOptionItemState) => ReactNode)
-  }
->
+export interface MenuOptionItemProps
+  extends Assign<
+    HTMLArkProps<'div'>,
+    OptionItemProps & {
+      children?: ReactNode | ((state: MenuOptionItemState) => ReactNode)
+    }
+  > {}
 
 export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
@@ -30,7 +33,7 @@ export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((p
     'onCheckedChange',
   ])
 
-  const view = runIfFn(children, { isActive: api?.isOptionChecked(optionProps) ?? false })
+  const view = runIfFn(children, { isActive: !!api?.isOptionChecked(optionProps) })
   const mergedProps = mergeProps(api?.getOptionItemProps(optionProps) ?? {}, divProps)
 
   return (

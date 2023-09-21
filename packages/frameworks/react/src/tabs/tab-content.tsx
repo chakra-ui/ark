@@ -7,7 +7,7 @@ import { splitPresenceProps } from '../presence'
 import { TabPresence, type TabPresenceProps } from './tab-presence'
 import { useTabsContext } from './tabs-context'
 
-export type TabContentProps = InnerTabContentProps & Omit<TabPresenceProps, 'children'>
+export interface TabContentProps extends InnerTabContentProps, Omit<TabPresenceProps, 'children'> {}
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [presenceProps, tabContentProps] = splitPresenceProps(props)
@@ -26,8 +26,8 @@ type InnerTabContentProps = HTMLArkProps<'div'> & ContentProps
 
 const InnerTabContent = forwardRef<HTMLDivElement, InnerTabContentProps>((props, ref) => {
   const [tabContentProps, divProps] = createSplitProps<ContentProps>()(props, ['value'])
-  const { getContentProps } = useTabsContext()
-  const mergedProps = mergeProps(getContentProps(tabContentProps), divProps)
+  const api = useTabsContext()
+  const mergedProps = mergeProps(api.getContentProps(tabContentProps), divProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

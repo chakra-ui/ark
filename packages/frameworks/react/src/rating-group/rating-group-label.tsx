@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useRatingGroupContext } from './rating-group-context'
 
-export type RatingGroupLabelProps = HTMLArkProps<'label'>
+export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 
 export const RatingGroupLabel = forwardRef<HTMLLabelElement, RatingGroupLabelProps>(
   (props, ref) => {
-    const { labelProps } = useRatingGroupContext()
-    const mergedProps = mergeProps(labelProps, props)
+    const api = useRatingGroupContext()
+    const mergedProps = mergeProps(api.labelProps, props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },

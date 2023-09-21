@@ -6,7 +6,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxItemGroupProps = Assign<HTMLArkProps<'div'>, ItemGroupProps>
+export interface ComboboxItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>(
   (props, ref) => {

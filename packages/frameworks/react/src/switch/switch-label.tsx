@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchLabelProps = HTMLArkProps<'span'>
+export interface SwitchLabelProps extends HTMLArkProps<'span'> {}
 
 export const SwitchLabel = forwardRef<HTMLSpanElement, SwitchLabelProps>((props, ref) => {
-  const { labelProps } = useSwitchContext()
-  const mergedProps = mergeProps(labelProps, props)
+  const api = useSwitchContext()
+  const mergedProps = mergeProps(api.labelProps, props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

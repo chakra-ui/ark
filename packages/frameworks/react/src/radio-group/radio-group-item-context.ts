@@ -16,7 +16,7 @@ export interface ItemState {
   isActive: boolean
 }
 
-export type RadioGroupItemContext = ItemProps
+export interface RadioGroupItemContext extends ItemProps {}
 
 export const [RadioGroupItemProvider, useRadioGroupItemContext] =
   createContext<RadioGroupItemContext>({

@@ -12,18 +12,19 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
-type MenuState = {
+interface MenuState {
   isOpen: boolean
   onClose: () => void
 }
 
-export type MenuProps = Assign<
-  UseMenuProps,
-  {
-    children?: ReactNode | ((state: MenuState) => ReactNode)
-    isOpen?: boolean
-  }
->
+export interface MenuProps
+  extends Assign<
+    UseMenuProps,
+    {
+      children?: ReactNode | ((state: MenuState) => ReactNode)
+      isOpen?: boolean
+    }
+  > {}
 
 export const Menu = (props: MenuProps) => {
   const [menuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(props, [

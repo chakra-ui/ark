@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultValue": { "type": "string", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the tabs."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

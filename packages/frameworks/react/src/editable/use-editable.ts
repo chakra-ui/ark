@@ -1,20 +1,24 @@
 import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
+import type { PropTypes } from '@zag-js/types'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseEditableProps extends Optional<editable.Context, 'id'> {
+  /**
+   * The initial value of the editable.
+   */
   defaultValue?: editable.Context['value']
 }
-export type UseEditableReturn = editable.Api
 
-export const useEditable = (props: UseEditableProps): UseEditableReturn => {
-  const getRootNode = useEnvironmentContext()
+export interface UseEditableReturn extends editable.Api<PropTypes> {}
+
+export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => {
   const initialContext: editable.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,
   }
@@ -23,6 +27,9 @@ export const useEditable = (props: UseEditableProps): UseEditableReturn => {
     ...initialContext,
     value: props.value,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
+    onEdit: useEvent(props.onEdit),
+    onValueCommit: useEvent(props.onValueCommit),
+    onValueRevert: useEvent(props.onValueRevert),
   }
 
   const [state, send] = useMachine(editable.machine(initialContext), { context })

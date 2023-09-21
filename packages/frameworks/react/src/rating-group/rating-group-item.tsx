@@ -7,15 +7,17 @@ import type { Assign } from '../types'
 import { useRatingGroupContext } from './rating-group-context'
 import { RatingGroupItemProvider, type RatingGroupItemContext } from './rating-group-item-context'
 
-export type RatingGroupItemProps = Assign<
-  HTMLArkProps<'span'>,
-  ItemProps & {
-    children: (state: RatingGroupItemContext) => ReactNode | ReactNode
-  }
->
+export interface RatingGroupItemProps
+  extends Assign<
+    HTMLArkProps<'span'>,
+    ItemProps & {
+      children: (state: RatingGroupItemContext) => ReactNode | ReactNode
+    }
+  > {}
 
 export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
   const { children, index, ...divProps } = props
+
   const api = useRatingGroupContext()
   const itemState = api.getItemState({ index })
   const mergedProps = mergeProps(api.getItemProps({ index }), divProps)

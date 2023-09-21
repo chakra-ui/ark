@@ -15,7 +15,11 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultValue": { "type": "number[]", "isRequired": false },
+    "defaultValue": {
+      "type": "number[]",
+      "isRequired": false,
+      "description": "The initial value of the range slider."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

@@ -5,7 +5,8 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { useDialogContext } from './dialog-context'
 
-export type DialogContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export interface DialogContentProps
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

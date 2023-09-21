@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - Add memoization to `Select` and `Combobox` item collection to improve performance.
+- Ensure all event callbacks have a stable reference
 
 ### Fixed
 

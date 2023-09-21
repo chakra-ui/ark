@@ -10,6 +10,11 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
+    "defaultIndex": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial selected index of the carousel."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

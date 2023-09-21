@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputScrubberProps = HTMLArkProps<'div'>
+export interface NumberInputScrubberProps extends HTMLArkProps<'div'> {}
 
 export const NumberInputScrubber = forwardRef<HTMLDivElement, NumberInputScrubberProps>(
   (props, ref) => {
-    const { scrubberProps } = useNumberInputContext()
-    const mergedProps = mergeProps(scrubberProps, props)
+    const api = useNumberInputContext()
+    const mergedProps = mergeProps(api.scrubberProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

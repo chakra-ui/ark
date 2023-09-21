@@ -5,6 +5,11 @@
       "isRequired": false,
       "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the hover card."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

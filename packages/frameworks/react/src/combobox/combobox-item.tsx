@@ -8,7 +8,8 @@ import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxItemProvider } from './combobox-item-context'
 
-export type ComboboxItemProps = Assign<ComponentPropsWithoutRef<typeof ark.div>, ItemProps>
+export interface ComboboxItemProps
+  extends Assign<ComponentPropsWithoutRef<typeof ark.div>, ItemProps> {}
 
 export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, ['item'])

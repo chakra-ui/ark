@@ -4,15 +4,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 import { useColorPickerSwatchContext } from './color-picker-swatch-context'
 
-export type ColorPickerSwatchBackgroundProps = HTMLArkProps<'div'>
+export interface ColorPickerSwatchBackgroundProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerSwatchBackground = forwardRef<
   HTMLDivElement,
   ColorPickerSwatchBackgroundProps
 >((props, ref) => {
-  const { getSwatchBackgroundProps } = useColorPickerContext()
+  const api = useColorPickerContext()
   const colorSwatchProps = useColorPickerSwatchContext()
-  const mergedProps = mergeProps(getSwatchBackgroundProps(colorSwatchProps), props)
+  const mergedProps = mergeProps(api.getSwatchBackgroundProps(colorSwatchProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

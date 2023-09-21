@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselViewportProps = HTMLArkProps<'div'>
+export interface CarouselViewportProps extends HTMLArkProps<'div'> {}
 
 export const CarouselViewport = forwardRef<HTMLDivElement, CarouselViewportProps>((props, ref) => {
-  const { viewportProps } = useCarouselContext()
-  const mergedProps = mergeProps(viewportProps, props)
+  const api = useCarouselContext()
+  const mergedProps = mergeProps(api.viewportProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

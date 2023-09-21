@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the dialog."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

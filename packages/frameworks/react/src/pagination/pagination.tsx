@@ -7,12 +7,11 @@ import { type Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
 import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 
-export type PaginationProps = Assign<
-  Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
-  {
-    children?: ReactNode | ((pages: UsePaginationReturn) => ReactNode)
-  }
->
+export interface PaginationProps
+  extends Assign<
+    Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
+    { children?: ReactNode | ((pages: UsePaginationReturn) => ReactNode) }
+  > {}
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
   const [paginationProps, { children, ...navProps }] = createSplitProps<UsePaginationProps>()(
@@ -32,12 +31,13 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
       'type',
     ],
   )
-  const pagination = usePagination(paginationProps)
-  const view = runIfFn(children, pagination)
-  const mergedProps = mergeProps(pagination.rootProps, navProps)
+
+  const api = usePagination(paginationProps)
+  const view = runIfFn(children, api)
+  const mergedProps = mergeProps(api.rootProps, navProps)
 
   return (
-    <PaginationProvider value={pagination}>
+    <PaginationProvider value={api}>
       <ark.nav {...mergedProps} ref={ref}>
         {view}
       </ark.nav>

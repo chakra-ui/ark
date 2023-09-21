@@ -1,26 +1,31 @@
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import * as toggleGroup from '@zag-js/toggle-group'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
+  /**
+   * The initial value of the toggle group.
+   */
   defaultValue?: toggleGroup.Context['value']
 }
-export type UseToggleGroupReturn = toggleGroup.Api
+
+export interface UseToggleGroupReturn extends toggleGroup.Api<PropTypes> {}
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
-  const getRootNode = useEnvironmentContext()
-  const initialContext = {
+  const initialContext: toggleGroup.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,
   }
 
-  const context = {
+  const context: toggleGroup.Context = {
     ...initialContext,
     value: props.value,
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
   }
 
   const [state, send] = useMachine(toggleGroup.machine(initialContext), {

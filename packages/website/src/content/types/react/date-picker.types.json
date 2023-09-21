@@ -1,5 +1,10 @@
 {
   "Root": {
+    "defaultValue": {
+      "type": "DateValue[]",
+      "isRequired": false,
+      "description": "The initial value of the date picker"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

@@ -6,7 +6,8 @@ import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export interface AccordionItemContentProps
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
 
 export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemContentProps>(
   function AccordionItemContent(props, ref) {

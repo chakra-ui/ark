@@ -6,20 +6,19 @@ import { type Assign } from '../types'
 import { useRangeSliderContext } from './range-slider-context'
 import { type UseRangeSliderReturn } from './use-range-slider'
 
-export type RangeSliderOutputProps = Assign<
-  HTMLArkProps<'output'>,
-  {
-    children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode
-  }
->
+export interface RangeSliderOutputProps
+  extends Assign<
+    HTMLArkProps<'output'>,
+    { children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode }
+  > {}
 
 export const RangeSliderOutput = forwardRef<HTMLOutputElement, RangeSliderOutputProps>(
   (props, ref) => {
     const { children, ...rest } = props
-    const rangeSlider = useRangeSliderContext()
-    const mergedProps = mergeProps(rangeSlider.outputProps, rest)
+    const api = useRangeSliderContext()
+    const mergedProps = mergeProps(api.outputProps, rest)
 
-    const view = runIfFn(children, rangeSlider)
+    const view = runIfFn(children, api)
 
     return (
       <ark.output {...mergedProps} ref={ref}>

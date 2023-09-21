@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
+export interface RatingGroupProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
 export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, ref) => {
   const [useRatingProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
@@ -27,6 +27,7 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
     'translations',
     'value',
   ])
+
   const api = useRatingGroup(useRatingProps)
   const mergedProps = mergeProps(api.rootProps, inputProps)
 

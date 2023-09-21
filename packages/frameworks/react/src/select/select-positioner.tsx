@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectPositionerProps = HTMLArkProps<'div'>
+export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>((props, ref) => {
   const api = useSelectContext()

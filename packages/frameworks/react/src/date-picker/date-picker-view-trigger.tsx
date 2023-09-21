@@ -6,14 +6,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerViewTriggerProps = Assign<HTMLArkProps<'button'>, ViewProps>
+export interface DatePickerViewTriggerProps extends Assign<HTMLArkProps<'button'>, ViewProps> {}
 
 export const DatePickerViewTrigger = forwardRef<HTMLButtonElement, DatePickerViewTriggerProps>(
   (props, ref) => {
     const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['view'])
-    const { getViewTriggerProps, view } = useDatePickerContext()
+
+    const api = useDatePickerContext()
     const mergedProps = mergeProps(
-      getViewTriggerProps({ view: viewProps.view ?? view }),
+      api.getViewTriggerProps({ view: viewProps.view ?? api.view }),
       localProps,
     )
 

@@ -1,6 +1,10 @@
 {
   "Root": {
-    "defaultValue": { "type": "string", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the color picker."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

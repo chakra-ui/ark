@@ -1,22 +1,28 @@
 import { useMemo, useRef, type ReactNode } from 'react'
+import { runIfFn } from '../run-if-fn'
 import { EnvironmentProvider } from './environment-context'
 
-export type EnvironmentProps = {
+export type RootNode = ShadowRoot | Document | Node
+
+export interface EnvironmentProps {
   children?: ReactNode
-  value?: ShadowRoot | Document | Node
+  value?: RootNode | (() => RootNode)
 }
 
 export const Environment = (props: EnvironmentProps) => {
   const { value, children } = props
   const ref = useRef<HTMLSpanElement>(null)
 
-  const currentEnv = useMemo(() => () => value ?? ref.current?.ownerDocument ?? document, [value])
+  const getRootNode = useMemo(() => {
+    return () => runIfFn(value) ?? ref.current?.ownerDocument ?? document
+  }, [value])
+
   const showSpan = !value
 
   return (
-    <EnvironmentProvider value={currentEnv}>
+    <EnvironmentProvider value={getRootNode}>
       {children}
-      {showSpan && <span hidden ref={ref} />}
+      {showSpan && <span data-ark-env="" hidden ref={ref} />}
     </EnvironmentProvider>
   )
 }

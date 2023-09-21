@@ -3,14 +3,14 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPrevPageTriggerProps = HTMLArkProps<'button'>
+export interface PaginationPrevPageTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PaginationPrevPageTrigger = forwardRef<
   HTMLButtonElement,
   PaginationPrevPageTriggerProps
 >((props, ref) => {
-  const { prevPageTriggerProps } = usePaginationContext()
-  const mergedProps = mergeProps(prevPageTriggerProps, props)
+  const api = usePaginationContext()
+  const mergedProps = mergeProps(api.prevPageTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

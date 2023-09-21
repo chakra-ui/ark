@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableInputProps = HTMLArkProps<'input'>
+export interface EditableInputProps extends HTMLArkProps<'input'> {}
 
 export const EditableInput = forwardRef<HTMLInputElement, EditableInputProps>((props, ref) => {
-  const { inputProps } = useEditableContext()
-  const mergedProps = mergeProps(inputProps, props)
+  const api = useEditableContext()
+  const mergedProps = mergeProps(api.inputProps, props)
 
   return <ark.input {...mergedProps} ref={ref} />
 })

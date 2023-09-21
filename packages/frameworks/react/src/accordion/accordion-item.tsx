@@ -8,13 +8,12 @@ import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
-export type AccordionItemProps = ItemProps &
-  Assign<
-    HTMLArkProps<'div'>,
-    {
-      children?: React.ReactNode | ((props: ItemState) => React.ReactNode)
-    }
-  >
+export interface AccordionItemProps
+  extends ItemProps,
+    Assign<
+      HTMLArkProps<'div'>,
+      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+    > {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [

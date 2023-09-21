@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarFallbackProps = HTMLArkProps<'span'>
+export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
 
 export const AvatarFallback = forwardRef<HTMLSpanElement, AvatarFallbackProps>((props, ref) => {
-  const { fallbackProps } = useAvatarContext()
-  const mergedProps = mergeProps(fallbackProps, props)
+  const api = useAvatarContext()
+  const mergedProps = mergeProps(api.fallbackProps, props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

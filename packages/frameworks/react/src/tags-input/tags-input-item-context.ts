@@ -6,6 +6,7 @@ export interface ItemProps {
   value: string
   disabled?: boolean
 }
+
 export interface ItemState {
   id: string
   isEditing: boolean
@@ -13,7 +14,8 @@ export interface ItemState {
   isDisabled: boolean
 }
 
-export type TagsInputItemContext = ItemProps
+export interface TagsInputItemContext extends ItemProps {}
+
 export const [TagsInputItemProvider, useTagsInputItemContext] = createContext<TagsInputItemContext>(
   {
     name: 'TagsInputItemContext',

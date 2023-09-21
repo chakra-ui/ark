@@ -10,7 +10,11 @@
       "isRequired": false,
       "description": "If `true`, the checkbox will be checked."
     },
-    "defaultChecked": { "type": "CheckedState", "isRequired": false },
+    "defaultChecked": {
+      "type": "CheckedState",
+      "isRequired": false,
+      "description": "The initial checked state of the checkbox."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,

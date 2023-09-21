@@ -7,14 +7,14 @@ import type { Assign } from '../types'
 import { DatePickerCellProvider } from './date-picker-cell-context'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerYearCellProps = Assign<HTMLArkProps<'div'>, CellProps>
+export interface DatePickerYearCellProps extends Assign<HTMLArkProps<'div'>, CellProps> {}
 
 export const DatePickerYearCell = forwardRef<HTMLDivElement, DatePickerYearCellProps>(
   (props, ref) => {
-    const { getYearCellProps } = useDatePickerContext()
+    const api = useDatePickerContext()
     const [cellProps, localProps] = createSplitProps<CellProps>()(props, ['value', 'disabled'])
 
-    const mergedProps = mergeProps(getYearCellProps(cellProps), localProps)
+    const mergedProps = mergeProps(api.getYearCellProps(cellProps), localProps)
 
     return (
       <DatePickerCellProvider value={cellProps}>

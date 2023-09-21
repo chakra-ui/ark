@@ -6,10 +6,11 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-export type SelectItemGroupProps = Assign<HTMLArkProps<'div'>, ItemGroupProps>
+export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const SelectItemGroup = forwardRef<HTMLDivElement, SelectItemGroupProps>((props, ref) => {
   const [itemPropsProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
+
   const api = useSelectContext()
   const mergedProps = mergeProps(api.getItemGroupProps(itemPropsProps), localProps)
 

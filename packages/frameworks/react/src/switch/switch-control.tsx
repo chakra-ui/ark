@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchControlProps = HTMLArkProps<'span'>
+export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 
 export const SwitchControl = forwardRef<HTMLSpanElement, SwitchControlProps>((props, ref) => {
   const api = useSwitchContext()

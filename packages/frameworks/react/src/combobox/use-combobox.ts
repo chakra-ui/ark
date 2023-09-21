@@ -5,21 +5,23 @@ import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type CollectionItem, type Optional } from '../types'
+import { useEvent } from '../use-event'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {
+  /**
+   * the initial value of the combobox
+   */
   defaultValue?: combobox.Context<T>['value']
 }
 
-export type UseComboboxReturn<T extends CollectionItem> = combobox.Api<PropTypes, T>
+export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Api<PropTypes, T> {}
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const getRootNode = useEnvironmentContext()
-
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -32,17 +34,22 @@ export const useCombobox = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
-  const initialContext = {
+  const initialContext: combobox.Context<T> = {
     id: useId(),
-    getRootNode,
+    getRootNode: useEnvironmentContext(),
     collection,
-    ...rest,
+    ...comboboxProps,
     value: props.defaultValue,
   }
-  const context = {
+
+  const context: combobox.Context<T> = {
     ...initialContext,
     collection,
     value: props.value,
+    onValueChange: useEvent(props.onValueChange, { sync: true }),
+    onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
+    onHighlightChange: useEvent(props.onHighlightChange),
+    onOpenChange: useEvent(props.onOpenChange),
   }
 
   const [state, send] = useMachine(combobox.machine(initialContext), {

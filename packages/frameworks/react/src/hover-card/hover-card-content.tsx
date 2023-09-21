@@ -5,7 +5,8 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export interface HoverCardContentProps
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

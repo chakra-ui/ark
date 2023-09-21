@@ -11,12 +11,13 @@ import {
   type UseRangeSliderReturn,
 } from './use-range-slider'
 
-export type RangeSliderProps = Assign<
-  HTMLArkProps<'div'>,
-  UseRangeSliderProps & {
-    children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode
-  }
->
+export interface RangeSliderProps
+  extends Assign<
+    HTMLArkProps<'div'>,
+    UseRangeSliderProps & {
+      children?: ((api: UseRangeSliderReturn) => ReactNode) | ReactNode
+    }
+  > {}
 
 export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>((props, ref) => {
   const [useRangeSliderProps, { children, ...divProps }] = createSplitProps<UseRangeSliderProps>()(
@@ -50,12 +51,12 @@ export const RangeSlider = forwardRef<HTMLDivElement, RangeSliderProps>((props, 
       'value',
     ],
   )
-  const slider = useRangeSlider(useRangeSliderProps)
-  const mergedProps = mergeProps(slider.rootProps, divProps)
+  const api = useRangeSlider(useRangeSliderProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
-  const view = runIfFn(children, slider)
+  const view = runIfFn(children, api)
   return (
-    <RangeSliderProvider value={slider}>
+    <RangeSliderProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>

@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
+export interface RadioGroupProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const [useRadioGroupProps, divProps] = createSplitProps<UseRadioGroupProps>()(props, [
@@ -22,11 +22,12 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>((props, re
     'orientation',
     'value',
   ])
-  const radioGroup = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(radioGroup.rootProps, divProps)
+
+  const api = useRadioGroup(useRadioGroupProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
   return (
-    <RadioGroupProvider value={radioGroup}>
+    <RadioGroupProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
     </RadioGroupProvider>
   )

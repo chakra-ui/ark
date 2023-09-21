@@ -6,7 +6,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationPageTriggerProps = Assign<HTMLArkProps<'button'>, PageTriggerProps>
+export interface PaginationPageTriggerProps
+  extends Assign<HTMLArkProps<'button'>, PageTriggerProps> {}
 
 export const PaginationPageTrigger = forwardRef<HTMLButtonElement, PaginationPageTriggerProps>(
   (props, ref) => {
@@ -15,8 +16,8 @@ export const PaginationPageTrigger = forwardRef<HTMLButtonElement, PaginationPag
       'value',
     ])
 
-    const { getPageTriggerProps } = usePaginationContext()
-    const mergedProps = mergeProps(getPageTriggerProps(paginationProps), localProps)
+    const api = usePaginationContext()
+    const mergedProps = mergeProps(api.getPageTriggerProps(paginationProps), localProps)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

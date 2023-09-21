@@ -15,7 +15,7 @@ export interface ItemState {
   isActive: boolean
 }
 
-export type SegmentGroupItemContext = ItemProps
+export interface SegmentGroupItemContext extends ItemProps {}
 
 export const [SegmentGroupItemProvider, useSegmentGroupItemContext] =
   createContext<SegmentGroupItemContext>({

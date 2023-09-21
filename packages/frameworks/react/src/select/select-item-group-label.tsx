@@ -6,7 +6,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
-export type SelectItemGroupLabelProps = Assign<HTMLArkProps<'div'>, ItemGroupLabelProps>
+export interface SelectItemGroupLabelProps
+  extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
 
 export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(
   (props, ref) => {

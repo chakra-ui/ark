@@ -6,7 +6,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
-export type SplitterResizeTriggerProps = Assign<HTMLArkProps<'button'>, ResizeTriggerProps>
+export interface SplitterResizeTriggerProps
+  extends Assign<HTMLArkProps<'button'>, ResizeTriggerProps> {}
 
 export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>(
   (props, ref) => {
@@ -15,8 +16,8 @@ export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResiz
       'id',
       'step',
     ])
-    const { getResizeTriggerProps } = useSplitterContext()
-    const mergedProps = mergeProps(getResizeTriggerProps(triggerProps), restProps)
+    const api = useSplitterContext()
+    const mergedProps = mergeProps(api.getResizeTriggerProps(triggerProps), restProps)
     return <ark.button ref={ref} {...mergedProps} />
   },
 )
