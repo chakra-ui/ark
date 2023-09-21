@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchThumbProps = HTMLArkProps<'span'>
+export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
 export const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>((props, ref) => {
-  const { thumbProps } = useSwitchContext()
-  const mergedProps = mergeProps(thumbProps, props)
+  const api = useSwitchContext()
+  const mergedProps = mergeProps(api.thumbProps, props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

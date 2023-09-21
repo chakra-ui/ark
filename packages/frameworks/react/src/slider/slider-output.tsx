@@ -5,20 +5,22 @@ import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useSliderContext, type SliderContext } from './slider-context'
 
-export type SliderOutputProps = Assign<
-  HTMLArkProps<'output'>,
-  { children?: ((context: SliderContext) => React.ReactNode) | React.ReactNode }
->
+export interface SliderOutputProps
+  extends Assign<
+    HTMLArkProps<'output'>,
+    { children?: ((context: SliderContext) => React.ReactNode) | React.ReactNode }
+  > {}
 
 export const SliderOutput = forwardRef<HTMLOutputElement, SliderOutputProps>((props, ref) => {
   const { children, ...restProps } = props
-  const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.outputProps, restProps)
-  const view = runIfFn(children, slider)
+
+  const api = useSliderContext()
+  const mergedProps = mergeProps(api.outputProps, restProps)
+  const view = runIfFn(children, api)
 
   return (
     <ark.output {...mergedProps} ref={ref}>
-      {view ?? slider.value}
+      {view ?? api.value}
     </ark.output>
   )
 })

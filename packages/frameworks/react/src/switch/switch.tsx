@@ -8,12 +8,11 @@ import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
-export type SwitchProps = Assign<
-  Assign<HTMLArkProps<'label'>, UseSwitchProps>,
-  {
-    children?: ReactNode | ((pages: UseSwitchReturn) => ReactNode)
-  }
->
+export interface SwitchProps
+  extends Assign<
+    Assign<HTMLArkProps<'label'>, UseSwitchProps>,
+    { children?: ReactNode | ((pages: UseSwitchReturn) => ReactNode) }
+  > {}
 
 export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const [switchProps, { children, ...labelProps }] = createSplitProps<UseSwitchProps>()(props, [
@@ -33,6 +32,7 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
     'required',
     'value',
   ])
+
   const api = useSwitch(switchProps)
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, labelProps)

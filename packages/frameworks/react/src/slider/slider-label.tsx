@@ -3,11 +3,11 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderLabelProps = HTMLArkProps<'label'>
+export interface SliderLabelProps extends HTMLArkProps<'label'> {}
 
 export const SliderLabel = forwardRef<HTMLLabelElement, SliderLabelProps>((props, ref) => {
-  const { labelProps } = useSliderContext()
-  const mergedProps = mergeProps(labelProps, props)
+  const api = useSliderContext()
+  const mergedProps = mergeProps(api.labelProps, props)
   return <ark.label {...mergedProps} ref={ref} />
 })
 

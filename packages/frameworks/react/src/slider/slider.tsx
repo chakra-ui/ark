@@ -7,12 +7,11 @@ import { type Assign } from '../types'
 import { SliderProvider, type SliderContext } from './slider-context'
 import { useSlider, type UseSliderProps } from './use-slider'
 
-export type SliderProps = Assign<
-  Assign<HTMLArkProps<'div'>, UseSliderProps>,
-  {
-    children?: ((context: SliderContext) => ReactNode) | ReactNode
-  }
->
+export interface SliderProps
+  extends Assign<
+    Assign<HTMLArkProps<'div'>, UseSliderProps>,
+    { children?: ((context: SliderContext) => ReactNode) | ReactNode }
+  > {}
 
 export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const { children, ...restProps } = props

@@ -3,12 +3,12 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerGroupProps = HTMLArkProps<'div'>
+export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
 export const SliderMarkerGroup = forwardRef<HTMLDivElement, SliderMarkerGroupProps>(
   (props, ref) => {
-    const { markerGroupProps } = useSliderContext()
-    const mergedProps = mergeProps(markerGroupProps, props)
+    const api = useSliderContext()
+    const mergedProps = mergeProps(api.markerGroupProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

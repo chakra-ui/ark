@@ -8,12 +8,13 @@ import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
 
-export type SplitterProps = Assign<
-  HTMLArkProps<'div'>,
-  UseSplitterProps & {
-    children?: ReactNode | ((state: UseSplitterReturn) => ReactNode)
-  }
->
+export interface SplitterProps
+  extends Assign<
+    HTMLArkProps<'div'>,
+    UseSplitterProps & {
+      children?: ReactNode | ((state: UseSplitterReturn) => ReactNode)
+    }
+  > {}
 
 export const Splitter = forwardRef<HTMLDivElement, SplitterProps>((props, ref) => {
   const [useSplitterProps, { children, ...divProps }] = createSplitProps<UseSplitterProps>()(
@@ -31,12 +32,12 @@ export const Splitter = forwardRef<HTMLDivElement, SplitterProps>((props, ref) =
       'size',
     ],
   )
-  const splitter = useSplitter(useSplitterProps)
-  const mergedProps = mergeProps(splitter.rootProps, divProps)
-  const view = runIfFn(children, splitter)
+  const api = useSplitter(useSplitterProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
+  const view = runIfFn(children, api)
 
   return (
-    <SplitterProvider value={splitter}>
+    <SplitterProvider value={api}>
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
