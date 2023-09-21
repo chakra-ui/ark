@@ -5,7 +5,8 @@ import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipContentProps = Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>>
+export interface TooltipContentProps
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const [presenceProps, tooltipContentProps] = splitPresenceProps(props)
@@ -22,8 +23,8 @@ TooltipContent.displayName = 'TooltipContent'
 
 const TooltipInnerContent = forwardRef<HTMLDivElement, HTMLArkProps<'div'>>(
   function TooltipInnerContent(props, ref) {
-    const { contentProps } = useTooltipContext()
-    const mergedProps = mergeProps(contentProps, props)
+    const api = useTooltipContext()
+    const mergedProps = mergeProps(api.contentProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

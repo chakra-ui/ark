@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { ToastItemProvider } from './toast-item-context'
 import { useToastItem, type UseToastItemProps } from './use-toast-item'
 
-export type ToastProps = Assign<HTMLArkProps<'div'>, UseToastItemProps>
+export interface ToastProps extends Assign<HTMLArkProps<'div'>, UseToastItemProps> {}
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const [useToastItemProps, { children, ...divProps }] = createSplitProps<UseToastItemProps>()(
