@@ -25,7 +25,7 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
   const context: popover.Context = {
     ...initialContext,
     open: props.open,
-    onOpenChange: useEvent(props.onOpenChange),
+    onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
   const [state, send] = useMachine(popover.machine(context), { context })
