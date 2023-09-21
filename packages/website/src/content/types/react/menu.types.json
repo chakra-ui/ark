@@ -96,7 +96,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "closeOnSelect": {
       "type": "boolean",
@@ -118,14 +118,14 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Content": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "lazyMount": {
       "type": "boolean",
@@ -144,14 +144,14 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ArrowTip": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ItemGroup": {
@@ -163,14 +163,14 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Separator": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "OptionItem": {
@@ -188,7 +188,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "closeOnSelect": {
       "type": "boolean",
@@ -220,21 +220,21 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "TriggerItem": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ContextTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ItemGroupLabel": {
@@ -242,7 +242,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   }
 }

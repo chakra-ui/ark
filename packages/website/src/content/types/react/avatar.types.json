@@ -3,7 +3,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
@@ -25,14 +25,14 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Fallback": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   }
 }

@@ -3,7 +3,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "defaultValue": { "type": "string", "isRequired": false },
     "dir": {
@@ -62,7 +62,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
@@ -71,28 +71,28 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ItemText": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Indicator": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "ItemControl": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   }
 }

@@ -13,7 +13,7 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     },
     "defaultValue": { "type": "number", "isRequired": false },
     "dir": {
@@ -127,28 +127,28 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Range": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Thumb": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Track": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Marker": {
@@ -156,28 +156,28 @@
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Output": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "Control": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   },
   "MarkerGroup": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Render as a different element type. Learn more about it at [our guide]\n{@link \nhttps://ark-ui.com/docs/overview/as-child-prop\n}"
+      "description": "Render as a different element type."
     }
   }
 }
