@@ -6,7 +6,7 @@ import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps> {}
 
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const [useTabsProps, divProps] = createSplitProps<UseTabsProps>()(props, [
@@ -23,11 +23,12 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     'translations',
     'value',
   ])
-  const tabs = useTabs(useTabsProps)
-  const mergedProps = mergeProps(tabs.rootProps, divProps)
+
+  const api = useTabs(useTabsProps)
+  const mergedProps = mergeProps(api.rootProps, divProps)
 
   return (
-    <TabsProvider value={tabs}>
+    <TabsProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
     </TabsProvider>
   )
