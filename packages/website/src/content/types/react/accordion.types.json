@@ -7,6 +7,7 @@
     },
     "collapsible": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
@@ -17,6 +18,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -42,6 +44,7 @@
     },
     "multiple": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
@@ -83,6 +86,7 @@
     },
     "lazyMount": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
@@ -90,6 +94,7 @@
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }

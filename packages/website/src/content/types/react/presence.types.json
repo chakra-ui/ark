@@ -2,6 +2,7 @@
   "Root": {
     "lazyMount": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
@@ -9,6 +10,7 @@
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }

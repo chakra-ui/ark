@@ -3,11 +3,13 @@
     "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -33,6 +35,7 @@
     },
     "multiple": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },

@@ -7,17 +7,20 @@
     },
     "allowOverflow": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
     "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -28,6 +31,7 @@
     },
     "focusInputOnChange": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to focus input when the value changes"
     },
@@ -58,6 +62,7 @@
     },
     "inputMode": {
       "type": "InputMode",
+      "defaultValue": "\"decimal\"",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },
@@ -113,6 +118,7 @@
     },
     "pattern": {
       "type": "string",
+      "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
       "isRequired": false,
       "description": "The pattern used to check the <input> element's value against"
     },

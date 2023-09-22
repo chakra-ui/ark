@@ -3,6 +3,7 @@
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -44,6 +45,7 @@
     },
     "type": {
       "type": "'link' | 'button'",
+      "defaultValue": "\"button\"",
       "isRequired": false,
       "description": "The type of the trigger element"
     }

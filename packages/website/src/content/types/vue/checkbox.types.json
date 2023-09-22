@@ -7,6 +7,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -58,6 +59,7 @@
     },
     "value": {
       "type": "string",
+      "defaultValue": "\"on\"",
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
     }

@@ -7,6 +7,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -137,7 +138,12 @@
     },
     "timeZone": { "type": "string", "isRequired": false, "description": "The time zone to use" },
     "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
-    "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
+    "view": {
+      "type": "DateView",
+      "defaultValue": "\"day\"",
+      "isRequired": false,
+      "description": "The view of the calendar"
+    }
   },
   "Row": {
     "asChild": {

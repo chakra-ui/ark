@@ -17,6 +17,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -48,6 +49,7 @@
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
+      "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the carousel."
     },

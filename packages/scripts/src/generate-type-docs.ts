@@ -59,8 +59,10 @@ async function extractPropertiesOfTypeName(
       const nonNullableType = type.getNonNullableType()
       const typeName = typeChecker.typeToString(nonNullableType)
       const isRequired = nonNullableType === type && typeName !== 'any'
-      const defaultValueType = type.getDefault()
-      const defaultValue = defaultValueType ? typeChecker.typeToString(defaultValueType) : undefined
+
+      const defaultValue = property.getJsDocTags().filter((tag) => tag.name === 'default')[0]
+        ?.text?.[0].text
+
       if (shouldIgnoreProperty(property)) {
         continue
       }
@@ -97,7 +99,6 @@ async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSea
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
   const basePath = path.dirname(tsConfigPath)
   const { fileNames, options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, basePath)
-
   const program = ts.createProgram(fileNames, options)
   const sourceFiles = program.getSourceFiles()
 

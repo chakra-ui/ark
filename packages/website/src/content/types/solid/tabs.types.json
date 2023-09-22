@@ -2,12 +2,14 @@
   "Root": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
+      "defaultValue": "\"automatic\"",
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
     "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -28,6 +30,7 @@
     },
     "loop": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
@@ -43,6 +46,7 @@
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
+      "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
     },

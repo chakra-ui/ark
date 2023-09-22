@@ -37,11 +37,13 @@
     },
     "isOpen": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Control the open state of the popover."
     },
     "modal": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
@@ -77,6 +79,7 @@
     },
     "portalled": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether the popover is rendered in a portal"
     },

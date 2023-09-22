@@ -22,16 +22,19 @@
     },
     "blurBehavior": {
       "type": "'clear' | 'add'",
+      "defaultValue": "\"none\"",
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
     "delimiter": {
       "type": "string",
+      "defaultValue": "\",\" (aka COMMA)",
       "isRequired": false,
       "description": "The character that serves has:\n- event key to trigger the addition of a new tag\n- character used to split tags when pasting into the input"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
