@@ -1,4 +1,4 @@
-import { For, Show } from 'solid-js'
+import { Index, Show } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import {
@@ -66,68 +66,70 @@ export const Basic = () => (
               <Show when={api().view === 'day'}>
                 <DatePickerGrid>
                   <DatePickerRowHeader>
-                    <For each={api().weekDays}>
+                    <Index each={api().weekDays}>
                       {(day) => (
-                        <DatePickerColumnHeader aria-label={day.long}>
-                          {day.narrow}
+                        <DatePickerColumnHeader aria-label={day().long}>
+                          {day().narrow}
                         </DatePickerColumnHeader>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowHeader>
                   <DatePickerRowGroup>
-                    <For each={api().weeks}>
+                    <Index each={api().weeks}>
                       {(week) => (
                         <DatePickerRow>
-                          <For each={week}>
+                          <Index each={week()}>
                             {(day) => (
-                              <DatePickerDayCell value={day}>
-                                <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                              <DatePickerDayCell value={day()}>
+                                <DatePickerDayCellTrigger>{day().day}</DatePickerDayCellTrigger>
                               </DatePickerDayCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
               <Show when={api().view === 'month'}>
                 <DatePickerGrid>
                   <DatePickerRowGroup>
-                    <For each={api().getMonthsGrid({ columns: 4, format: 'long' })}>
+                    <Index each={api().getMonthsGrid({ columns: 4, format: 'long' })}>
                       {(months) => (
                         <DatePickerRow>
-                          <For each={months}>
+                          <Index each={months()}>
                             {(month) => (
-                              <DatePickerMonthCell value={month.value}>
+                              <DatePickerMonthCell value={month().value}>
                                 <DatePickerMonthCellTrigger>
-                                  {month.label}
+                                  {month().label}
                                 </DatePickerMonthCellTrigger>
                               </DatePickerMonthCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
               <Show when={api().view === 'year'}>
                 <DatePickerGrid>
                   <DatePickerRowGroup>
-                    <For each={api().getYearsGrid({ columns: 4 })}>
+                    <Index each={api().getYearsGrid({ columns: 4 })}>
                       {(years) => (
                         <DatePickerRow>
-                          <For each={years}>
+                          <Index each={years()}>
                             {(year) => (
-                              <DatePickerYearCell value={year.value}>
-                                <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
+                              <DatePickerYearCell value={year().value}>
+                                <DatePickerYearCellTrigger>
+                                  {year().label}
+                                </DatePickerYearCellTrigger>
                               </DatePickerYearCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
@@ -175,68 +177,70 @@ export const RangeWithSingleGrid = () => (
               <Show when={api().view === 'day'}>
                 <DatePickerGrid>
                   <DatePickerRowHeader>
-                    <For each={api().weekDays}>
+                    <Index each={api().weekDays}>
                       {(day) => (
-                        <DatePickerColumnHeader aria-label={day.long}>
-                          {day.narrow}
+                        <DatePickerColumnHeader aria-label={day().long}>
+                          {day().narrow}
                         </DatePickerColumnHeader>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowHeader>
                   <DatePickerRowGroup>
-                    <For each={api().weeks}>
+                    <Index each={api().weeks}>
                       {(week) => (
                         <DatePickerRow>
-                          <For each={week}>
+                          <Index each={week()}>
                             {(day) => (
-                              <DatePickerDayCell value={day}>
-                                <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                              <DatePickerDayCell value={day()}>
+                                <DatePickerDayCellTrigger>{day().day}</DatePickerDayCellTrigger>
                               </DatePickerDayCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
               <Show when={api().view === 'month'}>
                 <DatePickerGrid>
                   <DatePickerRowGroup>
-                    <For each={api().getMonthsGrid({ columns: 4, format: 'short' })}>
+                    <Index each={api().getMonthsGrid({ columns: 4, format: 'short' })}>
                       {(months) => (
                         <DatePickerRow>
-                          <For each={months}>
+                          <Index each={months()}>
                             {(month) => (
-                              <DatePickerMonthCell value={month.value}>
+                              <DatePickerMonthCell value={month().value}>
                                 <DatePickerMonthCellTrigger>
-                                  {month.label}
+                                  {month().label}
                                 </DatePickerMonthCellTrigger>
                               </DatePickerMonthCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
               <Show when={api().view === 'year'}>
                 <DatePickerGrid>
                   <DatePickerRowGroup>
-                    <For each={api().getYearsGrid({ columns: 4 })}>
+                    <Index each={api().getYearsGrid({ columns: 4 })}>
                       {(years) => (
                         <DatePickerRow>
-                          <For each={years}>
+                          <Index each={years()}>
                             {(year) => (
-                              <DatePickerYearCell value={year.value}>
-                                <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
+                              <DatePickerYearCell value={year().value}>
+                                <DatePickerYearCellTrigger>
+                                  {year().label}
+                                </DatePickerYearCellTrigger>
                               </DatePickerYearCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </Show>
@@ -270,55 +274,57 @@ export const RangeWithTwoGrids = () => (
               <div style={{ display: 'flex', 'justify-content': 'space-between', gap: '24px' }}>
                 <DatePickerGrid>
                   <DatePickerRowHeader>
-                    <For each={api().weekDays}>
+                    <Index each={api().weekDays}>
                       {(day) => (
-                        <DatePickerColumnHeader aria-label={day.long}>
-                          {day.narrow}
+                        <DatePickerColumnHeader aria-label={day().long}>
+                          {day().narrow}
                         </DatePickerColumnHeader>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowHeader>
                   <DatePickerRowGroup>
-                    <For each={api().weeks}>
-                      {(week) => (
-                        <DatePickerRow>
-                          <For each={week}>
-                            {(day) => (
-                              <DatePickerDayCell value={day}>
-                                <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                              </DatePickerDayCell>
-                            )}
-                          </For>
-                        </DatePickerRow>
-                      )}
-                    </For>
+                    <Index each={api().weeks}>
+                      {(week) => {
+                        return (
+                          <DatePickerRow>
+                            <Index each={week()}>
+                              {(day) => (
+                                <DatePickerDayCell value={day()}>
+                                  <DatePickerDayCellTrigger>{day().day}</DatePickerDayCellTrigger>
+                                </DatePickerDayCell>
+                              )}
+                            </Index>
+                          </DatePickerRow>
+                        )
+                      }}
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
 
                 <DatePickerGrid>
                   <DatePickerRowHeader>
-                    <For each={api().weekDays}>
+                    <Index each={api().weekDays}>
                       {(day) => (
-                        <DatePickerColumnHeader aria-label={day.long}>
-                          {day.narrow}
+                        <DatePickerColumnHeader aria-label={day().long}>
+                          {day().narrow}
                         </DatePickerColumnHeader>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowHeader>
                   <DatePickerRowGroup>
-                    <For each={api().getOffset(1).weeks}>
+                    <Index each={api().getOffset(1).weeks}>
                       {(week) => (
                         <DatePickerRow>
-                          <For each={week}>
+                          <Index each={week()}>
                             {(day) => (
-                              <DatePickerDayCell value={day} offset={api().getOffset(1)}>
-                                <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
+                              <DatePickerDayCell value={day()} offset={api().getOffset(1)}>
+                                <DatePickerDayCellTrigger>{day().day}</DatePickerDayCellTrigger>
                               </DatePickerDayCell>
                             )}
-                          </For>
+                          </Index>
                         </DatePickerRow>
                       )}
-                    </For>
+                    </Index>
                   </DatePickerRowGroup>
                 </DatePickerGrid>
               </div>
