@@ -59,7 +59,7 @@
   "devDependencies": {
     "@release-it/keep-a-changelog": "4.0.0",
     "globby": "13.2.2",
-    "release-it": "16.1.5",
+    "release-it": "16.2.0",
     "typescript": "5.2.2",
     "vite": "4.4.9",
     "vite-plugin-dts": "3.5.4"

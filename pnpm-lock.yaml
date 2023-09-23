@@ -143,13 +143,13 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.5)
+        version: 4.0.0(release-it@16.2.0)
       globby:
         specifier: 13.2.2
         version: 13.2.2
       release-it:
-        specifier: 16.1.5
-        version: 16.1.5
+        specifier: 16.2.0
+        version: 16.2.0(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -273,7 +273,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.5)
+        version: 4.0.0(release-it@16.2.0)
       '@storybook/addon-a11y':
         specifier: 7.4.4
         version: 7.4.4(@types/react-dom@18.2.7)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
@@ -353,8 +353,8 @@ importers:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       release-it:
-        specifier: 16.1.5
-        version: 16.1.5
+        specifier: 16.2.0
+        version: 16.2.0(typescript@5.2.2)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -478,7 +478,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.5)
+        version: 4.0.0(release-it@16.2.0)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.7.12)
@@ -537,8 +537,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 16.1.5
-        version: 16.1.5
+        specifier: 16.2.0
+        version: 16.2.0(typescript@5.2.2)
       solid-js:
         specifier: 1.7.12
         version: 1.7.12
@@ -671,7 +671,7 @@ importers:
         version: 0.17.1(histoire@0.17.0)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.1.5)
+        version: 4.0.0(release-it@16.2.0)
       '@testing-library/dom':
         specifier: 9.3.3
         version: 9.3.3
@@ -724,8 +724,8 @@ importers:
         specifier: 22.1.0
         version: 22.1.0
       release-it:
-        specifier: 16.1.5
-        version: 16.1.5
+        specifier: 16.2.0
+        version: 16.2.0(typescript@5.2.2)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -1171,7 +1171,7 @@ packages:
     resolution: {integrity: sha512-/KKIMG4UEL35WmI9OlvMhurwtytjvXoFcGNrOvyG9zIzA8YmPjVtIZUf7b05+TPO7G7/GEmLHDaoCgACHl9hhA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/highlight': 7.22.10
+      '@babel/highlight': 7.22.20
       chalk: 2.4.2
     dev: true
 
@@ -1534,15 +1534,6 @@ packages:
       '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/highlight@7.22.10:
-    resolution: {integrity: sha512-78aUtVcT7MUscr0K5mIEnkwxPE0MaxkR5RxRwuHaQ+JuU5AmTPhY+do2mdzVTnIJJpyBglql2pehuBIWHug+WQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.22.20
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-    dev: true
 
   /@babel/highlight@7.22.20:
     resolution: {integrity: sha512-dkdMCN3py0+ksCgYmGG8jKeGA/8Tk+gJwSYYlFGxG5lmhfKNoAy004YpLxpS1W2J8m/EK2Ew+yOs9pVRwO89mg==}
@@ -5263,14 +5254,14 @@ packages:
       '@babel/runtime': 7.22.15
     dev: true
 
-  /@release-it/keep-a-changelog@4.0.0(release-it@16.1.5):
+  /@release-it/keep-a-changelog@4.0.0(release-it@16.2.0):
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
       release-it: ^16.0.0
     dependencies:
       detect-newline: 4.0.0
-      release-it: 16.1.5
+      release-it: 16.2.0(typescript@5.2.2)
       string-template: 1.0.0
     dev: true
 
@@ -10664,16 +10655,6 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /cosmiconfig@8.2.0:
-    resolution: {integrity: sha512-3rTMnFJA1tCOPwRxtgF4wd7Ab2qvDbL8jX+3smjIbS4HlZBagTlpERbdN7iAbWlrfxE3M8c27kTwTawQ7st+OQ==}
-    engines: {node: '>=14'}
-    dependencies:
-      import-fresh: 3.3.0
-      js-yaml: 4.1.0
-      parse-json: 5.2.0
-      path-type: 4.0.0
-    dev: true
-
   /cosmiconfig@8.3.6(typescript@5.2.2):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
@@ -12864,8 +12845,8 @@ packages:
       - supports-color
     dev: true
 
-  /https-proxy-agent@7.0.1:
-    resolution: {integrity: sha512-Eun8zV0kcYS1g19r78osiQLEFIRspRUDd9tIfBCTBPBeMieF/EsJNL8VI3xOIdYRDEkjQnqOYPsZ2DsWsVsFwQ==}
+  /https-proxy-agent@7.0.2:
+    resolution: {integrity: sha512-NmLNjm6ucYwtcUmL7JQC1ZQ57LmHP4lT15FQ8D61nak1rO6DH+fz5qNK2Ap5UN4ZapYICE3/0KodcLYSPsPbaA==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
@@ -12975,8 +12956,8 @@ packages:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
     dev: true
 
-  /inquirer@9.2.10:
-    resolution: {integrity: sha512-tVVNFIXU8qNHoULiazz612GFl+yqNfjMTbLuViNJE/d860Qxrd3NMrse8dm40VUQLOQeULvaQF8lpAhvysjeyA==}
+  /inquirer@9.2.11:
+    resolution: {integrity: sha512-B2LafrnnhbRzCWfAdOXisUzL89Kg8cVJlYmhqoi3flSiV/TveO+nsXwgKr9h9PIo+J1hz7nBSk6gegRIMBBf7g==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@ljharb/through': 2.3.9
@@ -15472,8 +15453,8 @@ packages:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
 
-  /pac-proxy-agent@7.0.0:
-    resolution: {integrity: sha512-t4tRAMx0uphnZrio0S0Jw9zg3oDbz1zVhQ/Vy18FjLfP1XOLNUEjaVxYCYRI6NS+BsMBXKIzV6cTLOkO9AtywA==}
+  /pac-proxy-agent@7.0.1:
+    resolution: {integrity: sha512-ASV8yU4LLKBAjqIPMbrgtaKIvxQri/yh2OpI+S6hVa9JRkUI3Y3NPFbfngDtY7oFtSMD3w31Xns89mDa3Feo5A==}
     engines: {node: '>= 14'}
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
@@ -15481,9 +15462,9 @@ packages:
       debug: 4.3.4
       get-uri: 6.0.1
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       pac-resolver: 7.0.0
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -15997,8 +15978,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /promise.allsettled@1.0.6:
-    resolution: {integrity: sha512-22wJUOD3zswWFqgwjNHa1965LvqTX87WPu/lreY2KSd7SVcERfuZ4GfUaOnJNnvtoIv2yXT/W00YIGMetXtFXg==}
+  /promise.allsettled@1.0.7:
+    resolution: {integrity: sha512-hezvKvQQmsFkOdrZfYxUxkyxl8mgFQeT259Ajj9PXdbg9VzBCWrItOev72JyWxkCD5VSSqAeHmlN3tWx4DlmsA==}
     engines: {node: '>= 0.4'}
     dependencies:
       array.prototype.map: 1.0.5
@@ -16043,18 +16024,18 @@ packages:
       ipaddr.js: 1.9.1
     dev: true
 
-  /proxy-agent@6.3.0:
-    resolution: {integrity: sha512-0LdR757eTj/JfuU7TL2YCuAZnxWXu3tkJbg4Oq3geW/qFNT/32T0sp2HnZ9O0lMR4q3vwAt0+xCA8SR0WAD0og==}
+  /proxy-agent@6.3.1:
+    resolution: {integrity: sha512-Rb5RVBy1iyqOtNl15Cw/llpeLH8bsb37gM1FUfKQ+Wck6xHlbAhWGUFiTRHtkjqGTA5pSHz6+0hrPW/oECihPQ==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
       debug: 4.3.4
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       lru-cache: 7.18.3
-      pac-proxy-agent: 7.0.0
+      pac-proxy-agent: 7.0.1
       proxy-from-env: 1.1.0
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -16546,8 +16527,8 @@ packages:
       rehype-stringify: 9.0.4
       unified: 10.1.2
 
-  /release-it@16.1.5:
-    resolution: {integrity: sha512-w/zCljPZBSYcCwR9fjDB1zaYwie1CAQganUrwNqjtXacXhrrsS5E6dDUNLcxm2ypu8GWAgZNMJfuBJqIO2E7fA==}
+  /release-it@16.2.0(typescript@5.2.2):
+    resolution: {integrity: sha512-cemAN6GVk7RBhZiOCcxv/qJky5wTqxbZjQlfotgPnKlGQjugoJvsIpILtgbhITpYlUxQTgx3ddizY7YeaIqt6Q==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
@@ -16555,12 +16536,12 @@ packages:
       '@octokit/rest': 19.0.13
       async-retry: 1.3.3
       chalk: 5.3.0
-      cosmiconfig: 8.2.0
+      cosmiconfig: 8.3.6(typescript@5.2.2)
       execa: 7.2.0
       git-url-parse: 13.1.0
       globby: 13.2.2
       got: 13.0.0
-      inquirer: 9.2.10
+      inquirer: 9.2.11
       is-ci: 3.0.1
       issue-parser: 6.0.0
       lodash: 4.17.21
@@ -16570,8 +16551,8 @@ packages:
       open: 9.1.0
       ora: 7.0.1
       os-name: 5.1.0
-      promise.allsettled: 1.0.6
-      proxy-agent: 6.3.0
+      promise.allsettled: 1.0.7
+      proxy-agent: 6.3.1
       semver: 7.5.4
       shelljs: 0.8.5
       update-notifier: 6.0.2
@@ -16581,6 +16562,7 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+      - typescript
     dev: true
 
   /remark-external-links@8.0.0:
@@ -17142,8 +17124,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /socks-proxy-agent@8.0.1:
-    resolution: {integrity: sha512-59EjPbbgg8U3x62hhKOFVAmySQUcfRQ4C7Q/D5sEHnZTQRrQlNKINks44DMR1gwXp0p4LaVIeccX2KHTTcHVqQ==}
+  /socks-proxy-agent@8.0.2:
+    resolution: {integrity: sha512-8zuqoLv1aP/66PHF5TqwJ7Czm3Yv32urJQHrVyhD7mmA6d61Zv8cIXQYPTWwmg6qlupnPvs/QKDmfa4P/qct2g==}
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
