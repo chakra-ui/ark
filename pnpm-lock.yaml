@@ -806,8 +806,8 @@ importers:
         specifier: 5.0.8
         version: 5.0.8
       astro:
-        specifier: 3.1.1
-        version: 3.1.1(@types/node@20.4.7)
+        specifier: 3.1.2
+        version: 3.1.2(@types/node@20.4.7)
       lucide-react:
         specifier: 0.279.0
         version: 0.279.0(react@18.2.0)
@@ -826,13 +826,13 @@ importers:
     devDependencies:
       '@astrojs/mdx':
         specifier: 1.1.0
-        version: 1.1.0(astro@3.1.1)
+        version: 1.1.0(astro@3.1.2)
       '@astrojs/react':
         specifier: 3.0.2
         version: 3.0.2(@types/react-dom@18.2.7)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
       '@pandacss/astro':
         specifier: 0.15.1
-        version: 0.15.1(astro@3.1.1)(ts-node@10.9.1)(typescript@5.2.2)
+        version: 0.15.1(astro@3.1.2)(ts-node@10.9.1)(typescript@5.2.2)
       '@pandacss/dev':
         specifier: 0.15.1
         version: 0.15.1(@internationalized/date@3.5.0)(@types/node@20.4.7)(@types/react-dom@18.2.7)(@types/react@18.2.22)(typescript@5.2.2)
@@ -1015,13 +1015,13 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/markdown-remark@3.2.0(astro@3.1.1):
+  /@astrojs/markdown-remark@3.2.0(astro@3.1.2):
     resolution: {integrity: sha512-jigyLfefUZPKgVmmraCkVpdUuFH1R3SrpgQO13axsgwLDBgkggaQpNR5Ag4O9PDualeBtbdt30aYSfvnBKx9Hg==}
     peerDependencies:
       astro: ^3.1.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.1.1(@types/node@20.4.7)
+      astro: 3.1.2(@types/node@20.4.7)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -1038,16 +1038,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/mdx@1.1.0(astro@3.1.1):
+  /@astrojs/mdx@1.1.0(astro@3.1.2):
     resolution: {integrity: sha512-rmLZBw3CUCkp+5blBJloV2EqJGRaJTraJygWMfCvrLcCA3vzhwzACnVQKdUDlts8EEr6V6+HXYVqi46AVEfobg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.1.0
     dependencies:
-      '@astrojs/markdown-remark': 3.2.0(astro@3.1.1)
+      '@astrojs/markdown-remark': 3.2.0(astro@3.1.2)
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.1.1(@types/node@20.4.7)
+      astro: 3.1.2(@types/node@20.4.7)
       es-module-lexer: 1.3.1
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -1139,8 +1139,8 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/telemetry@3.0.1:
-    resolution: {integrity: sha512-7zJMuikRDQ0LLLivteu0+y4pqdgznrChFiRrY3qmKlOEkLWD1T3u1a5M970lvpErP7Vgh4P298JBPjv8LTj+sw==}
+  /@astrojs/telemetry@3.0.2:
+    resolution: {integrity: sha512-ef+jqCkqopCzjGfsMsr+8p56Nj6F9ZzouWcWZt+dKsqbRccI3c8K3jfkLcdq4AyfFZtKBDB6N4ZuI68g33oiOg==}
     engines: {node: '>=18.14.1'}
     dependencies:
       ci-info: 3.8.0
@@ -1499,11 +1499,6 @@ packages:
   /@babel/helper-validator-option@7.22.15:
     resolution: {integrity: sha512-bMn7RmyFjY/mdECUbgn9eoSY4vqvacUnS9i9vGAGttgFWesO6B4CYWA7XlpbWgBt71iv/hfbPlynohStqnu5hA==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/helper-validator-option@7.22.5:
-    resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
-    engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-wrap-function@7.22.9:
     resolution: {integrity: sha512-sZ+QzfauuUEfxSEjKFmi3qDSHgLsTPK/pEpoD/qonZKOtTPTLbf59oabPQ4rKekt9lFcj/hTZaOhWwFYrgjk+Q==}
@@ -2622,7 +2617,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.10
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.5
+      '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.10)
       '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.10)
       '@babel/plugin-transform-typescript': 7.22.10(@babel/core@7.22.10)
@@ -2636,7 +2631,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.20
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.5
+      '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.20)
       '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.20)
       '@babel/plugin-transform-typescript': 7.22.10(@babel/core@7.22.20)
@@ -4131,13 +4126,13 @@ packages:
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
     dev: true
 
-  /@pandacss/astro@0.15.1(astro@3.1.1)(ts-node@10.9.1)(typescript@5.2.2):
+  /@pandacss/astro@0.15.1(astro@3.1.2)(ts-node@10.9.1)(typescript@5.2.2):
     resolution: {integrity: sha512-ep7UyH+0dpiHJzhoYnd3U0Bkx3KeKQ4DJim4FkIFBpvs+OWLoIr0+S8a11AzlCIQ4+FCbfZPHZfAPGEM/HnOxA==}
     peerDependencies:
       astro: '>=2.x'
     dependencies:
       '@pandacss/postcss': 0.15.1(typescript@5.2.2)
-      astro: 3.1.1(@types/node@20.4.7)
+      astro: 3.1.2(@types/node@20.4.7)
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)(ts-node@10.9.1)
@@ -9655,15 +9650,15 @@ packages:
       - terser
     dev: true
 
-  /astro@3.1.1(@types/node@20.4.7):
-    resolution: {integrity: sha512-KLtzCcLiQEsoWHJO0vQ5QZ/9/80P3cUuBeIkl87YezRkzs3Am0kuzfeGLumb6OOcrR2W0AZGlVlS0ub+q/yiaA==}
+  /astro@3.1.2(@types/node@20.4.7):
+    resolution: {integrity: sha512-9rlKyk6Qmw50Pc188+ey7JAEYBsJGh5an46AXGPMHIdEkH6YOc4b2z9Rr+TNF8QmM/U+C2ZQFRVQyCKU4i8/pg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.1.0
       '@astrojs/internal-helpers': 0.2.0
-      '@astrojs/markdown-remark': 3.2.0(astro@3.1.1)
-      '@astrojs/telemetry': 3.0.1
+      '@astrojs/markdown-remark': 3.2.0(astro@3.1.2)
+      '@astrojs/telemetry': 3.0.2
       '@babel/core': 7.22.20
       '@babel/generator': 7.22.15
       '@babel/parser': 7.22.16
@@ -17173,7 +17168,7 @@ packages:
       solid-js: ^1.3
     dependencies:
       '@babel/generator': 7.22.15
-      '@babel/helper-module-imports': 7.22.5
+      '@babel/helper-module-imports': 7.22.15
       '@babel/types': 7.22.19
       solid-js: 1.7.12
     dev: true
