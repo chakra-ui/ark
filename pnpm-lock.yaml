@@ -320,8 +320,8 @@ importers:
         specifier: 6.7.2
         version: 6.7.2(eslint@8.50.0)(typescript@5.2.2)
       '@vitejs/plugin-react':
-        specifier: 4.0.4
-        version: 4.0.4(vite@4.4.9)
+        specifier: 4.1.0
+        version: 4.1.0(vite@4.4.9)
       '@vitest/coverage-v8':
         specifier: 0.34.3
         version: 0.34.3(vitest@0.34.3)
@@ -1107,7 +1107,7 @@ packages:
     dependencies:
       '@types/react': 18.2.22
       '@types/react-dom': 18.2.7
-      '@vitejs/plugin-react': 4.0.4(vite@4.4.9)
+      '@vitejs/plugin-react': 4.1.0(vite@4.4.9)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       ultrahtml: 1.5.2
@@ -2295,16 +2295,6 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
-  /@babel/plugin-transform-react-jsx-self@7.22.5(@babel/core@7.22.10):
-    resolution: {integrity: sha512-nTh2ogNUtxbiSbxaT4Ds6aXnXEipHweN9YRgOX/oNXdf0cCrGn/+2LozFa3lnPV5D90MkjhgckCPBrsoSc1a7g==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.10
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
   /@babel/plugin-transform-react-jsx-self@7.22.5(@babel/core@7.22.20):
     resolution: {integrity: sha512-nTh2ogNUtxbiSbxaT4Ds6aXnXEipHweN9YRgOX/oNXdf0cCrGn/+2LozFa3lnPV5D90MkjhgckCPBrsoSc1a7g==}
     engines: {node: '>=6.9.0'}
@@ -2312,16 +2302,6 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.20
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
-
-  /@babel/plugin-transform-react-jsx-source@7.22.5(@babel/core@7.22.10):
-    resolution: {integrity: sha512-yIiRO6yobeEIaI0RTbIr8iAK9FcBHLtZq0S89ZPjDLQXBA4xvghaKqI0etp/tF3htTM0sazJKKLz9oEiGRtu7w==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.10
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
 
@@ -2627,7 +2607,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.20
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.5
+      '@babel/helper-validator-option': 7.22.15
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.20)
       '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.20)
       '@babel/plugin-transform-typescript': 7.22.10(@babel/core@7.22.20)
@@ -7196,15 +7176,16 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-react@4.0.4(vite@4.4.9):
-    resolution: {integrity: sha512-7wU921ABnNYkETiMaZy7XqpueMnpu5VxvVps13MjmCo+utBdD79sZzrApHawHtVX66cCJQQTXFcjH0y9dSUK8g==}
+  /@vitejs/plugin-react@4.1.0(vite@4.4.9):
+    resolution: {integrity: sha512-rM0SqazU9iqPUraQ2JlIvReeaxOoRj6n+PzB1C0cBzIbd8qP336nC39/R9yPi3wVcah7E7j/kdU1uCUqMEU4OQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0
     dependencies:
-      '@babel/core': 7.22.10
-      '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.10)
-      '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.10)
+      '@babel/core': 7.22.20
+      '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.20)
+      '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.20)
+      '@types/babel__core': 7.20.2
       react-refresh: 0.14.0
       vite: 4.4.9(@types/node@20.4.7)
     transitivePeerDependencies:
