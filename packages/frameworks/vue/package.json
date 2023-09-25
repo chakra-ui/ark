@@ -80,7 +80,7 @@
     "eslint": "8.50.0",
     "eslint-plugin-vue": "9.17.0",
     "globby": "13.2.2",
-    "histoire": "0.17.0",
+    "histoire": "0.17.2",
     "jsdom": "22.1.0",
     "release-it": "16.2.0",
     "resize-observer-polyfill": "1.5.1",

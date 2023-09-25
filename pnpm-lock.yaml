@@ -668,7 +668,7 @@ importers:
     devDependencies:
       '@histoire/plugin-vue':
         specifier: 0.17.1
-        version: 0.17.1(histoire@0.17.0)(vite@4.4.9)(vue@3.3.4)
+        version: 0.17.1(histoire@0.17.2)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
         version: 4.0.0(release-it@16.2.0)
@@ -718,8 +718,8 @@ importers:
         specifier: 13.2.2
         version: 13.2.2
       histoire:
-        specifier: 0.17.0
-        version: 0.17.0(@types/node@20.4.7)(vite@4.4.9)
+        specifier: 0.17.2
+        version: 0.17.2(@types/node@20.4.7)(vite@4.4.9)
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3656,7 +3656,7 @@ packages:
       - vite
     dev: true
 
-  /@histoire/plugin-vue@0.17.1(histoire@0.17.0)(vite@4.4.9)(vue@3.3.4):
+  /@histoire/plugin-vue@0.17.1(histoire@0.17.2)(vite@4.4.9)(vue@3.3.4):
     resolution: {integrity: sha512-p9MkCy1Ohe0RkAwpTB6XcOoAhlSsONBSWorhVukwi4HnIMUsPbTjOVkLfKhALW9QtVux+7reWXRocJdLECNwGA==}
     peerDependencies:
       histoire: ^0.17.0
@@ -3667,7 +3667,7 @@ packages:
       '@histoire/vendors': 0.17.0
       change-case: 4.1.2
       globby: 13.2.2
-      histoire: 0.17.0(@types/node@20.4.7)(vite@4.4.9)
+      histoire: 0.17.2(@types/node@20.4.7)(vite@4.4.9)
       launch-editor: 2.6.0
       pathe: 0.2.0
       vue: 3.3.4
@@ -12689,8 +12689,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /histoire@0.17.0(@types/node@20.4.7)(vite@4.4.9):
-    resolution: {integrity: sha512-q5fX2yAiw1vjlC0xaEcm8uqiJzdKmItozyNa24ujFVD+YjKpBE1R6tl/zpUIfqOBgpifMgh7xQD5uU4ZFd7v/g==}
+  /histoire@0.17.2(@types/node@20.4.7)(vite@4.4.9):
+    resolution: {integrity: sha512-Mz+4AWBs+P2TeopXJ0qG4ZsrpuLggNPNF3yG4Q8yg8kXcd6a9DXUWuEElYbglod/xP5XB8efaDy2nibLTybJzg==}
     hasBin: true
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0
@@ -12712,7 +12712,7 @@ packages:
       fs-extra: 10.1.0
       globby: 13.2.2
       gray-matter: 4.0.3
-      jiti: 1.19.1
+      jiti: 1.20.0
       jsdom: 20.0.3
       markdown-it: 12.3.2
       markdown-it-anchor: 8.6.7(@types/markdown-it@12.2.3)(markdown-it@12.3.2)
@@ -12726,7 +12726,7 @@ packages:
       shiki-es: 0.2.0
       sirv: 2.0.3
       vite: 4.4.9(@types/node@20.4.7)
-      vite-node: 0.28.4(@types/node@20.4.7)
+      vite-node: 0.34.3(@types/node@20.4.7)
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
@@ -13598,11 +13598,6 @@ packages:
       jest-util: 29.6.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
-    dev: true
-
-  /jiti@1.19.1:
-    resolution: {integrity: sha512-oVhqoRDaBXf7sjkll95LHVS6Myyyb1zaunVwk4Z0+WPSW4gjS0pl01zYKHScTuyEhQsFxV5L4DR5r+YqSyqyyg==}
-    hasBin: true
     dev: true
 
   /jiti@1.20.0:
@@ -18486,30 +18481,6 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  /vite-node@0.28.4(@types/node@20.4.7):
-    resolution: {integrity: sha512-KM0Q0uSG/xHHKOJvVHc5xDBabgt0l70y7/lWTR7Q0pR5/MrYxadT+y32cJOE65FfjGmJgxpVEEY+69btJgcXOQ==}
-    engines: {node: '>=v14.16.0'}
-    hasBin: true
-    dependencies:
-      cac: 6.7.14
-      debug: 4.3.4
-      mlly: 1.4.0
-      pathe: 1.1.1
-      picocolors: 1.0.0
-      source-map: 0.6.1
-      source-map-support: 0.5.21
-      vite: 4.4.9(@types/node@20.4.7)
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-    dev: true
-
   /vite-node@0.34.2(@types/node@18.17.17):
     resolution: {integrity: sha512-JtW249Zm3FB+F7pQfH56uWSdlltCo1IOkZW5oHBzeQo0iX4jtC7o1t9aILMGd9kVekXBP2lfJBEQt9rBh07ebA==}
     engines: {node: '>=v14.18.0'}
@@ -18543,6 +18514,28 @@ packages:
       pathe: 1.1.1
       picocolors: 1.0.0
       vite: 4.4.9(@types/node@18.17.17)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /vite-node@0.34.3(@types/node@20.4.7):
+    resolution: {integrity: sha512-+0TzJf1g0tYXj6tR2vEyiA42OPq68QkRZCu/ERSo2PtsDJfBpDyEfuKbRvLmZqi/CgC7SCBtyC+WjTGNMRIaig==}
+    engines: {node: '>=v14.18.0'}
+    hasBin: true
+    dependencies:
+      cac: 6.7.14
+      debug: 4.3.4
+      mlly: 1.4.0
+      pathe: 1.1.1
+      picocolors: 1.0.0
+      vite: 4.4.9(@types/node@20.4.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
