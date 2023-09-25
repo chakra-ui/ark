@@ -1,4 +1,4 @@
-import { createSignal, For } from 'solid-js'
+import { createSignal, Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import {
   RangeSlider,
@@ -29,7 +29,7 @@ export const Basic = () => {
         <RangeSliderTrack>
           <RangeSliderRange />
         </RangeSliderTrack>
-        <For each={values()}>{(_, i) => <RangeSliderThumb index={i()} />}</For>
+        <Index each={values()}>{(_, i) => <RangeSliderThumb index={i} />}</Index>
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
         <RangeSliderMarker value={-30}>*</RangeSliderMarker>

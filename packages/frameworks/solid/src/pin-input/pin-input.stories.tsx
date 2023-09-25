@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { PinInput, PinInputControl, PinInputInput, PinInputLabel } from './'
 import './pin-input.css'
@@ -13,7 +13,7 @@ export const Basic = () => (
   <PinInput placeholder="*" onValueComplete={(e) => console.log(e)}>
     <PinInputLabel>Label</PinInputLabel>
     <PinInputControl>
-      <For each={[0, 1, 2]}>{(id) => <PinInputInput index={id} />}</For>
+      <Index each={[0, 1, 2]}>{(id) => <PinInputInput index={id()} />}</Index>
     </PinInputControl>
   </PinInput>
 )

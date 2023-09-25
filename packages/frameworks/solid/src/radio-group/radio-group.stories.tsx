@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { RadioGroup } from './'
 import './radio-group.css'
@@ -15,14 +15,14 @@ export const Basic = () => {
   return (
     <RadioGroup.Root>
       <RadioGroup.Label>Framework</RadioGroup.Label>
-      <For each={frameworks}>
+      <Index each={frameworks}>
         {(framework) => (
-          <RadioGroup.Item value={framework}>
-            <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.Item value={framework()}>
+            <RadioGroup.ItemText>{framework()}</RadioGroup.ItemText>
             <RadioGroup.ItemControl />
           </RadioGroup.Item>
         )}
-      </For>
+      </Index>
     </RadioGroup.Root>
   )
 }

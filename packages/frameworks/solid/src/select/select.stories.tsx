@@ -1,4 +1,4 @@
-import { For, Portal } from 'solid-js/web'
+import { Index, Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Select } from './'
 import './select.css'
@@ -26,14 +26,14 @@ export const Basic = () => {
           <Select.Content>
             <Select.ItemGroup id="framework">
               <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
-              <For each={items}>
+              <Index each={items}>
                 {(item) => (
-                  <Select.Item item={item}>
-                    <Select.ItemText>{item}</Select.ItemText>
+                  <Select.Item item={item()}>
+                    <Select.ItemText>{item()}</Select.ItemText>
                     <Select.ItemIndicator>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
-              </For>
+              </Index>
             </Select.ItemGroup>
           </Select.Content>
         </Select.Positioner>

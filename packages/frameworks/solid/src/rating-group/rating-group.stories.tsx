@@ -1,4 +1,4 @@
-import { For, createSignal } from 'solid-js'
+import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { RatingGroup, RatingGroupControl, RatingGroupItem, RatingGroupLabel } from './'
 
@@ -13,9 +13,9 @@ export const Basic = () => (
     <RatingGroupLabel>GroupLabel</RatingGroupLabel>
     <RatingGroupControl>
       {(api) => (
-        <For each={api().sizeArray}>
+        <Index each={api().sizeArray}>
           {(index) => (
-            <RatingGroupItem index={index}>
+            <RatingGroupItem index={index()}>
               {(api) => {
                 if (api.isHalf) return <IconHalf />
                 if (api.isHighlighted) return <IconFull />
@@ -23,7 +23,7 @@ export const Basic = () => (
               }}
             </RatingGroupItem>
           )}
-        </For>
+        </Index>
       )}
     </RatingGroupControl>
   </RatingGroup>
@@ -98,9 +98,9 @@ export const ControlledRatingGroup = () => {
       <RatingGroupLabel>Label</RatingGroupLabel>
       <RatingGroupControl>
         {(api) => (
-          <For each={api().sizeArray}>
+          <Index each={api().sizeArray}>
             {(index) => (
-              <RatingGroupItem index={index}>
+              <RatingGroupItem index={index()}>
                 {(api) => {
                   if (api.isHalf) return <IconHalf />
                   if (api.isHighlighted) return <IconFull />
@@ -108,7 +108,7 @@ export const ControlledRatingGroup = () => {
                 }}
               </RatingGroupItem>
             )}
-          </For>
+          </Index>
         )}
       </RatingGroupControl>
     </RatingGroup>

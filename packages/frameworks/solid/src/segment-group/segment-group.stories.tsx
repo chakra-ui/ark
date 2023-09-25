@@ -1,4 +1,4 @@
-import { For, createSignal } from 'solid-js'
+import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { SegmentGroup } from './'
 import './segment-group.css'
@@ -14,14 +14,14 @@ export const Basic = () => {
   return (
     <SegmentGroup.Root>
       <SegmentGroup.Indicator />
-      <For each={frameworks}>
+      <Index each={frameworks}>
         {(framework) => (
-          <SegmentGroup.Item value={framework}>
-            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.Item value={framework()}>
+            <SegmentGroup.ItemText>{framework()}</SegmentGroup.ItemText>
             <SegmentGroup.ItemControl />
           </SegmentGroup.Item>
         )}
-      </For>
+      </Index>
     </SegmentGroup.Root>
   )
 }
@@ -32,14 +32,14 @@ export const Controlled = () => {
   return (
     <SegmentGroup.Root value={value()} onValueChange={(e) => setValue(e.value)}>
       <SegmentGroup.Indicator />
-      <For each={frameworks}>
+      <Index each={frameworks}>
         {(framework) => (
-          <SegmentGroup.Item value={framework}>
-            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.Item value={framework()}>
+            <SegmentGroup.ItemText>{framework()}</SegmentGroup.ItemText>
             <SegmentGroup.ItemControl />
           </SegmentGroup.Item>
         )}
-      </For>
+      </Index>
     </SegmentGroup.Root>
   )
 }
@@ -49,14 +49,14 @@ export const Disabled = () => {
   return (
     <SegmentGroup.Root>
       <SegmentGroup.Indicator />
-      <For each={frameworks}>
+      <Index each={frameworks}>
         {(framework) => (
-          <SegmentGroup.Item value={framework} disabled={framework === 'Svelte'}>
-            <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.Item value={framework()} disabled={framework() === 'Svelte'}>
+            <SegmentGroup.ItemText>{framework()}</SegmentGroup.ItemText>
             <SegmentGroup.ItemControl />
           </SegmentGroup.Item>
         )}
-      </For>
+      </Index>
     </SegmentGroup.Root>
   )
 }

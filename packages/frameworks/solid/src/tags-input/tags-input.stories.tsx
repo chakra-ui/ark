@@ -1,4 +1,4 @@
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { TagsInput } from './'
 import './tags-input.css'
@@ -15,15 +15,15 @@ export const Basic = () => (
       <>
         <TagsInput.Label>Frameworks</TagsInput.Label>
         <TagsInput.Control>
-          <For each={api().value}>
+          <Index each={api().value}>
             {(value, index) => (
-              <TagsInput.Item index={index()} value={value}>
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
+              <TagsInput.Item index={index} value={value()}>
+                <TagsInput.ItemText>{value()}</TagsInput.ItemText>
                 <TagsInput.ItemInput />
                 <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
               </TagsInput.Item>
             )}
-          </For>
+          </Index>
           <TagsInput.Input placeholder="Add Framework" />
           <TagsInput.ClearTrigger>Clear All</TagsInput.ClearTrigger>
         </TagsInput.Control>

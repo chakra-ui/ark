@@ -1,4 +1,4 @@
-import { For, createSignal } from 'solid-js'
+import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import {
   Carousel,
@@ -34,17 +34,17 @@ export const Basic = () => {
         <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
       </CarouselControl>
       <CarouselIndicatorGroup>
-        <For each={images}>{(_, index) => <CarouselIndicator index={index()} />}</For>
+        <Index each={images}>{(_, index) => <CarouselIndicator index={index} />}</Index>
       </CarouselIndicatorGroup>
       <CarouselViewport>
         <CarouselSlideGroup>
-          <For each={images}>
+          <Index each={images}>
             {(image, index) => (
-              <CarouselSlide index={index()}>
-                <img src={image} />
+              <CarouselSlide index={index}>
+                <img src={image()} />
               </CarouselSlide>
             )}
-          </For>
+          </Index>
         </CarouselSlideGroup>
       </CarouselViewport>
     </Carousel>
@@ -70,17 +70,13 @@ export const Controlled = () => {
         </CarouselControl>
         <CarouselViewport>
           <CarouselSlideGroup>
-            <For each={images}>
+            <Index each={images}>
               {(image, index) => (
-                <CarouselSlide index={index()}>
-                  <img
-                    src={image}
-                    alt=""
-                    style={{ height: '300px', width: '100%', 'object-fit': 'cover' }}
-                  />
+                <CarouselSlide index={index}>
+                  <img src={image()} />
                 </CarouselSlide>
               )}
-            </For>
+            </Index>
           </CarouselSlideGroup>
         </CarouselViewport>
       </Carousel>

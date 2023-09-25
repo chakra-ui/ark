@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { For } from 'solid-js'
+import { Index } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
@@ -11,9 +11,9 @@ export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
 
   return (
     <ark.select {...mergedProps}>
-      <For each={getYearsRange({ from: 1_000, to: 4_000 })}>
-        {(year) => <option value={year}>{year}</option>}
-      </For>
+      <Index each={getYearsRange({ from: 1_000, to: 4_000 })}>
+        {(year) => <option value={year()}>{year()}</option>}
+      </Index>
     </ark.select>
   )
 }
