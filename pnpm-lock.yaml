@@ -157,8 +157,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.4
-        version: 3.5.4(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
+        specifier: 3.6.0
+        version: 3.6.0(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
 
   packages/frameworks/react:
     dependencies:
@@ -368,8 +368,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.4
-        version: 3.5.4(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
+        specifier: 3.6.0
+        version: 3.6.0(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
       vitest:
         specifier: 0.34.3
         version: 0.34.3(jsdom@22.1.0)
@@ -558,8 +558,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.4
-        version: 3.5.4(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
+        specifier: 3.6.0
+        version: 3.6.0(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
       vite-plugin-solid:
         specifier: 2.7.0
         version: 2.7.0(solid-js@1.7.12)(vite@4.4.9)
@@ -736,8 +736,8 @@ importers:
         specifier: 4.4.9
         version: 4.4.9(@types/node@20.4.7)
       vite-plugin-dts:
-        specifier: 3.5.4
-        version: 3.5.4(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
+        specifier: 3.6.0
+        version: 3.6.0(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9)
       vitest:
         specifier: 0.34.3
         version: 0.34.3(jsdom@22.1.0)
@@ -18528,8 +18528,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@3.5.4(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9):
-    resolution: {integrity: sha512-BJLBj1Vg9kV7ZMXAULT9UGogrElwz5s+k8TzC7LsFkHv5Jy90OWnHKUp8qm7sypu2pkF5pTJ5McUuHudnT0Imw==}
+  /vite-plugin-dts@3.6.0(@types/node@20.4.7)(typescript@5.2.2)(vite@4.4.9):
+    resolution: {integrity: sha512-doxhDRFJCZD2sGjIp4V800nm8Y19GvmwckjG5vYPuiqJ7OBjc9NlW1Vp9Gkyh2aXlUs1jTDRH/lxWfcsPLOQHg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'

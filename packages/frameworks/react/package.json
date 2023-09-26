@@ -99,7 +99,7 @@
     "storybook": "7.4.5",
     "typescript": "5.2.2",
     "vite": "4.4.9",
-    "vite-plugin-dts": "3.5.4",
+    "vite-plugin-dts": "3.6.0",
     "vitest": "0.34.3"
   },
   "peerDependencies": {
