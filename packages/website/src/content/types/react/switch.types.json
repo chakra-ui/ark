@@ -66,11 +66,6 @@
       "isRequired": false,
       "description": "Function to call when the switch is clicked."
     },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the switch will be readonly"
-    },
     "required": {
       "type": "boolean",
       "isRequired": false,
