@@ -32,10 +32,6 @@ export const props = {
   name: {
     type: String as PropType<Context['name']>,
   },
-  readOnly: {
-    type: Boolean as PropType<Context['readOnly']>,
-    default: undefined,
-  },
   required: {
     type: Boolean as PropType<Context['required']>,
     default: undefined,

@@ -209,28 +209,28 @@ describe('Menu', () => {
                 <MenuItemGroup id="radio-group">
                   <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
                   <MenuOptionItem name="framework" type="radio" value="react">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} React</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} React</>}
                   </MenuOptionItem>
                   <MenuOptionItem name="framework" type="radio" value="solid">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} Solid</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} Solid</>}
                   </MenuOptionItem>
                   <MenuOptionItem name="framework" type="radio" value="vue">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} Vue</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
                   </MenuOptionItem>
                 </MenuItemGroup>
                 <MenuItemGroup id="checkbox-group">
                   <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
                   <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} zag-js</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} zag-js</>}
                   </MenuOptionItem>
                   <MenuOptionItem name="libraries" type="checkbox" value="ark">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} ark</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} ark</>}
                   </MenuOptionItem>
                   <MenuOptionItem name="libraries" type="checkbox" value="panda">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} panda</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} panda</>}
                   </MenuOptionItem>
                   <MenuOptionItem name="libraries" type="checkbox" value="chakra">
-                    {({ isActive }) => <>{isActive ? '✅' : ''} chakra</>}
+                    {({ isChecked }) => <>{isChecked ? '✅' : ''} chakra</>}
                   </MenuOptionItem>
                 </MenuItemGroup>
               </MenuContent>

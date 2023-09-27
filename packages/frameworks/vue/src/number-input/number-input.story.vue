@@ -10,6 +10,7 @@ import {
   NumberInputScrubber,
 } from '.'
 import './number-input.css'
+
 const val = ref('1.00')
 </script>
 
@@ -28,7 +29,10 @@ const val = ref('1.00')
     </Variant>
 
     <Variant title="FractionDigits">
-      <NumberInput v-model="val" :minFractionDigits="2" :maxFractionDigits="3">
+      <NumberInput
+        v-model="val"
+        :formatOptions="{ minimumFractionDigits: 2, maximumFractionDigits: 3 }"
+      >
         <NumberInputScrubber />
         <NumberInputLabel>Label</NumberInputLabel>
         <NumberInputInput />

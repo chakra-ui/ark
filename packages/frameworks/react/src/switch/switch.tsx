@@ -28,7 +28,6 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
     'label',
     'name',
     'onCheckedChange',
-    'readOnly',
     'required',
     'value',
   ])

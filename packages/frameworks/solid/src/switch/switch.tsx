@@ -27,7 +27,6 @@ export const Switch = (props: SwitchProps) => {
     'label',
     'name',
     'onCheckedChange',
-    'readOnly',
     'required',
     'value',
   ])

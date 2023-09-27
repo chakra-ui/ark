@@ -56,7 +56,7 @@ export const MenuOptionItem: ComponentWithProps<MenuOptionItemProps> = defineCom
     const api = useMenuContext()
 
     const optionCheckedComputed = computed(() =>
-      api.value.isOptionChecked(menuOptionItemProps.value),
+      api.value.getOptionItemState(menuOptionItemProps.value),
     )
 
     expose({

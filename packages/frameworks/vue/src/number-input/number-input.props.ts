@@ -29,8 +29,8 @@ export const props = {
   form: {
     type: String as PropType<Context['form']>,
   },
-  format: {
-    type: Function as PropType<Context['format']>,
+  formatOptions: {
+    type: Object as PropType<Context['formatOptions']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -48,23 +48,17 @@ export const props = {
     type: Boolean as PropType<Context['invalid']>,
     default: undefined,
   },
+  locale: {
+    type: String as PropType<Context['locale']>,
+  },
   max: {
     type: Number as PropType<Context['max']>,
-  },
-  maxFractionDigits: {
-    type: Number as PropType<Context['maxFractionDigits']>,
   },
   min: {
     type: Number as PropType<Context['min']>,
   },
-  minFractionDigits: {
-    type: Number as PropType<Context['minFractionDigits']>,
-  },
   name: {
     type: String as PropType<Context['name']>,
-  },
-  parse: {
-    type: Function as PropType<Context['parse']>,
   },
   pattern: {
     type: String as PropType<Context['pattern']>,
@@ -82,9 +76,6 @@ export const props = {
   },
   translations: {
     type: Object as PropType<Context['translations']>,
-  },
-  validateCharacter: {
-    type: Function as PropType<Context['validateCharacter']>,
   },
   modelValue: {
     type: String as PropType<Context['value']>,

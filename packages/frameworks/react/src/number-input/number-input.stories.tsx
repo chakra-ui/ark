@@ -36,7 +36,10 @@ export const MouseWheel = () => (
 )
 
 export const FractionDigits = () => (
-  <NumberInput.Root minFractionDigits={2} maxFractionDigits={4} defaultValue="1.00">
+  <NumberInput.Root
+    formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }}
+    defaultValue="1.00"
+  >
     <NumberInput.Scrubber />
     <NumberInput.Label>Label</NumberInput.Label>
     <NumberInput.Input />

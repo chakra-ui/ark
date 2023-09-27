@@ -5,12 +5,12 @@
       "isRequired": false,
       "description": "Human readable label for the dialog, in event the dialog title is not rendered"
     },
-    "closeOnEsc": {
+    "closeOnEscapeKeyDown": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to close the dialog when the escape key is pressed"
     },
-    "closeOnOutsideClick": {
+    "closeOnInteractOutside": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
@@ -51,20 +51,30 @@
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
-    "onEsc": {
-      "type": "VoidFunction",
+    "onEscapeKeyDown": {
+      "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the combobox"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the combobox"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
       "description": "Callback to be invoked when the dialog is opened or closed"
     },
-    "onOutsideClick": {
-      "type": "VoidFunction",
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Callback to be invoked when the outside is clicked"
+      "description": "Function called when the pointer is pressed down outside the combobox"
     },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
     "preventScroll": {

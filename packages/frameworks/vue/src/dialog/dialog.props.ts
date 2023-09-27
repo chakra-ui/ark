@@ -6,12 +6,12 @@ export const props = {
   'aria-label': {
     type: String as PropType<Context['aria-label']>,
   },
-  closeOnEsc: {
-    type: Boolean as PropType<Context['closeOnEsc']>,
+  closeOnEscapeKeyDown: {
+    type: Boolean as PropType<Context['closeOnEscapeKeyDown']>,
     default: undefined,
   },
-  closeOnOutsideClick: {
-    type: Boolean as PropType<Context['closeOnOutsideClick']>,
+  closeOnInteractOutside: {
+    type: Boolean as PropType<Context['closeOnInteractOutside']>,
     default: undefined,
   },
   dir: {
@@ -56,4 +56,4 @@ export const props = {
     default: undefined,
   },
 }
-export const emits = declareEmits(['esc', 'open-change', 'outside-click'])
+export const emits = declareEmits(['escape-key-down', 'open-change'])

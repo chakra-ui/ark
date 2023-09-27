@@ -15,12 +15,12 @@ const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
-  process.chdir(path.join(root, 'packages', 'framework', 'vue'))
+  process.chdir(path.join(root, 'packages', 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
-  const indices = ['toggle-group']
+  const indices = ['dialog']
 
-  await Promise.allSettled(
+  await Promise.all(
     indices
       .map((path) => path.split('/').pop() ?? '')
       .filter((index) => !['environment'].includes(index))
@@ -30,7 +30,7 @@ const main = async () => {
           `./node_modules/@zag-js/${component}/src/${component}.types.ts`,
         )
 
-        const publicContextTypeAlias = sourceFile.getTypeAliasOrThrow('PublicContext')
+        const publicContextTypeAlias = sourceFile.getTypeAliasOrThrow('UserDefinedContext')
         const publicContextType = publicContextTypeAlias.getType()
         const publicContextProperties = publicContextType
           .getProperties()
