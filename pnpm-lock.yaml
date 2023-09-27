@@ -143,13 +143,13 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.0)
+        version: 4.0.0(release-it@16.2.1)
       globby:
         specifier: 13.2.2
         version: 13.2.2
       release-it:
-        specifier: 16.2.0
-        version: 16.2.0(typescript@5.2.2)
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -273,7 +273,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.0)
+        version: 4.0.0(release-it@16.2.1)
       '@storybook/addon-a11y':
         specifier: 7.4.5
         version: 7.4.5(@types/react-dom@18.2.8)(@types/react@18.2.23)(react-dom@18.2.0)(react@18.2.0)
@@ -353,8 +353,8 @@ importers:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       release-it:
-        specifier: 16.2.0
-        version: 16.2.0(typescript@5.2.2)
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -478,7 +478,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.0)
+        version: 4.0.0(release-it@16.2.1)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.7.12)
@@ -537,8 +537,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 16.2.0
-        version: 16.2.0(typescript@5.2.2)
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
       solid-js:
         specifier: 1.7.12
         version: 1.7.12
@@ -671,7 +671,7 @@ importers:
         version: 0.17.1(histoire@0.17.2)(vite@4.4.9)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.0)
+        version: 4.0.0(release-it@16.2.1)
       '@testing-library/dom':
         specifier: 9.3.3
         version: 9.3.3
@@ -724,8 +724,8 @@ importers:
         specifier: 22.1.0
         version: 22.1.0
       release-it:
-        specifier: 16.2.0
-        version: 16.2.0(typescript@5.2.2)
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -5240,14 +5240,14 @@ packages:
       '@babel/runtime': 7.22.15
     dev: true
 
-  /@release-it/keep-a-changelog@4.0.0(release-it@16.2.0):
+  /@release-it/keep-a-changelog@4.0.0(release-it@16.2.1):
     resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
     engines: {node: '>=16'}
     peerDependencies:
       release-it: ^16.0.0
     dependencies:
       detect-newline: 4.0.0
-      release-it: 16.2.0(typescript@5.2.2)
+      release-it: 16.2.1(typescript@5.2.2)
       string-template: 1.0.0
     dev: true
 
@@ -16511,8 +16511,8 @@ packages:
       rehype-stringify: 9.0.4
       unified: 10.1.2
 
-  /release-it@16.2.0(typescript@5.2.2):
-    resolution: {integrity: sha512-cemAN6GVk7RBhZiOCcxv/qJky5wTqxbZjQlfotgPnKlGQjugoJvsIpILtgbhITpYlUxQTgx3ddizY7YeaIqt6Q==}
+  /release-it@16.2.1(typescript@5.2.2):
+    resolution: {integrity: sha512-+bHiKPqkpld+NaiW+K/2WsjaHgfPB00J6uk8a+g8QyuBtzfFoMVe+GKsfaDO5ztEHRrSg+7luoXzd8IfvPNPig==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
