@@ -1,18 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
-import {
-  Popover,
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverArrowTip,
-  PopoverCloseTrigger,
-  PopoverContent,
-  PopoverDescription,
-  PopoverPositioner,
-  PopoverTitle,
-  PopoverTrigger,
-} from './'
+import { Popover } from './'
 import { PopoverIndicator } from './popover-indicator'
 import './popover.css'
 
@@ -26,20 +15,20 @@ const meta: Meta<PopoverType> = {
 export default meta
 
 export const Basic = () => (
-  <Popover>
-    <PopoverTrigger>
+  <Popover.Root>
+    <Popover.Trigger>
       Click Me <PopoverIndicator>Indicator</PopoverIndicator>
-    </PopoverTrigger>
+    </Popover.Trigger>
     <Portal>
-      <PopoverPositioner>
-        <PopoverContent>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Positioner>
     </Portal>
-  </Popover>
+  </Popover.Root>
 )
 
 export const Controlled = () => {
@@ -47,87 +36,87 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
-      <Popover open={isOpen}>
-        <PopoverAnchor>Anchor</PopoverAnchor>
+      <Popover.Root open={isOpen}>
+        <Popover.Anchor>Anchor</Popover.Anchor>
         <Portal>
-          <PopoverPositioner>
-            <PopoverContent>
-              <PopoverTitle>Title</PopoverTitle>
-              <PopoverDescription>Description</PopoverDescription>
-              <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-            </PopoverContent>
-          </PopoverPositioner>
+          <Popover.Positioner>
+            <Popover.Content>
+              <Popover.Title>Title</Popover.Title>
+              <Popover.Description>Description</Popover.Description>
+              <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+            </Popover.Content>
+          </Popover.Positioner>
         </Portal>
-      </Popover>
+      </Popover.Root>
     </>
   )
 }
 
 export const RenderFn = () => (
-  <Popover>
+  <Popover.Root>
     {({ isOpen }) => (
       <>
-        <PopoverTrigger>Click Me</PopoverTrigger>
+        <Popover.Trigger>Click Me</Popover.Trigger>
         <Portal>
-          <PopoverPositioner>
-            <PopoverContent>
-              <PopoverTitle>Title</PopoverTitle>
-              <PopoverDescription>Description: {isOpen.toString()}</PopoverDescription>
-              <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-            </PopoverContent>
-          </PopoverPositioner>
+          <Popover.Positioner>
+            <Popover.Content>
+              <Popover.Title>Title</Popover.Title>
+              <Popover.Description>Description: {isOpen.toString()}</Popover.Description>
+              <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+            </Popover.Content>
+          </Popover.Positioner>
         </Portal>
       </>
     )}
-  </Popover>
+  </Popover.Root>
 )
 
 export const Arrow = () => (
-  <Popover>
-    <PopoverTrigger>Click Me</PopoverTrigger>
+  <Popover.Root>
+    <Popover.Trigger>Click Me</Popover.Trigger>
     <Portal>
-      <PopoverPositioner>
-        <PopoverContent>
-          <PopoverArrow>
-            <PopoverArrowTip />
-          </PopoverArrow>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Arrow>
+            <Popover.ArrowTip />
+          </Popover.Arrow>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Positioner>
     </Portal>
-  </Popover>
+  </Popover.Root>
 )
 
 export const Positioning = () => (
-  <Popover
+  <Popover.Root
     positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
   >
-    <PopoverTrigger>Click Me</PopoverTrigger>
+    <Popover.Trigger>Click Me</Popover.Trigger>
     <Portal>
-      <PopoverPositioner>
-        <PopoverContent>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Positioner>
     </Portal>
-  </Popover>
+  </Popover.Root>
 )
 
 export const CloseBehavior = () => (
-  <Popover closeOnEsc closeOnInteractOutside>
-    <PopoverTrigger>Click Me</PopoverTrigger>
+  <Popover.Root closeOnEsc closeOnInteractOutside>
+    <Popover.Trigger>Click Me</Popover.Trigger>
     <Portal>
-      <PopoverPositioner>
-        <PopoverContent>
-          <PopoverTitle>Title</PopoverTitle>
-          <PopoverDescription>Description</PopoverDescription>
-          <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-        </PopoverContent>
-      </PopoverPositioner>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Positioner>
     </Portal>
-  </Popover>
+  </Popover.Root>
 )

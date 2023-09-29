@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { PinInput, PinInputControl, PinInputInput, PinInputLabel } from './'
+import { PinInput } from './'
 
 type PinInputType = typeof PinInput
 
@@ -11,12 +11,12 @@ const meta: Meta<PinInputType> = {
 export default meta
 
 export const Basic = () => (
-  <PinInput placeholder="*" onValueComplete={(e) => alert(e.valueAsString)}>
-    <PinInputLabel>Label</PinInputLabel>
-    <PinInputControl>
+  <PinInput.Root placeholder="*" onValueComplete={(e) => alert(e.valueAsString)}>
+    <PinInput.Label>Label</PinInput.Label>
+    <PinInput.Control>
       {[0, 1, 2].map((id, index) => (
-        <PinInputInput key={id} index={index} />
+        <PinInput.Input key={id} index={index} />
       ))}
-    </PinInputControl>
-  </PinInput>
+    </PinInput.Control>
+  </PinInput.Root>
 )

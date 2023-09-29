@@ -1,30 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
-import {
-  DatePicker,
-  DatePickerClearTrigger,
-  DatePickerColumnHeader,
-  DatePickerContent,
-  DatePickerControl,
-  DatePickerDayCell,
-  DatePickerDayCellTrigger,
-  DatePickerGrid,
-  DatePickerInput,
-  DatePickerMonthCell,
-  DatePickerMonthCellTrigger,
-  DatePickerMonthSelect,
-  DatePickerNextTrigger,
-  DatePickerPositioner,
-  DatePickerPrevTrigger,
-  DatePickerRow,
-  DatePickerRowGroup,
-  DatePickerRowHeader,
-  DatePickerTrigger,
-  DatePickerViewTrigger,
-  DatePickerYearCell,
-  DatePickerYearCellTrigger,
-  DatePickerYearSelect,
-} from './'
+import { DatePicker } from './'
 import './date-picker.css'
 
 type DatePickerType = typeof DatePicker
@@ -37,242 +13,242 @@ const meta: Meta<DatePickerType> = {
 export default meta
 
 export const Basic = () => (
-  <DatePicker>
+  <DatePicker.Root>
     {(api) => (
       <>
-        <DatePickerControl>
+        <DatePicker.Control>
           <span>View mode: {api.view}</span>
-          <DatePickerInput />
-          <DatePickerTrigger>🗓</DatePickerTrigger>
-          <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
-        </DatePickerControl>
+          <DatePicker.Input />
+          <DatePicker.Trigger>🗓</DatePicker.Trigger>
+          <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+        </DatePicker.Control>
         <Portal>
-          <DatePickerPositioner>
-            <DatePickerContent>
-              <DatePickerYearSelect />
-              <DatePickerMonthSelect />
+          <DatePicker.Positioner>
+            <DatePicker.Content>
+              <DatePicker.YearSelect />
+              <DatePicker.MonthSelect />
               <div>
-                <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                <DatePickerViewTrigger>
+                <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger>
                   {api.view === 'day' && api.visibleRangeText.start}
                   {api.view === 'month' && api.visibleRange.start.year}
                   {api.view === 'year' && `${api.getDecade().start} - ${api.getDecade().end}`}
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+                </DatePicker.ViewTrigger>
+                <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
               </div>
               {api.view === 'day' && (
-                <DatePickerGrid>
-                  <DatePickerRowHeader>
+                <DatePicker.Grid>
+                  <DatePicker.RowHeader>
                     {api.weekDays.map((day, i) => (
-                      <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      <DatePicker.ColumnHeader key={i} aria-label={day.long}>
                         {day.narrow}
-                      </DatePickerColumnHeader>
+                      </DatePicker.ColumnHeader>
                     ))}
-                  </DatePickerRowHeader>
-                  <DatePickerRowGroup>
+                  </DatePicker.RowHeader>
+                  <DatePicker.RowGroup>
                     {api.weeks.map((week, id) => (
-                      <DatePickerRow key={id}>
+                      <DatePicker.Row key={id}>
                         {week.map((day, id) => (
-                          <DatePickerDayCell key={id} value={day}>
-                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                          </DatePickerDayCell>
+                          <DatePicker.DayCell key={id} value={day}>
+                            <DatePicker.DayCellTrigger>{day.day}</DatePicker.DayCellTrigger>
+                          </DatePicker.DayCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
               {api.view === 'month' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
+                <DatePicker.Grid>
+                  <DatePicker.RowGroup>
                     {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
-                      <DatePickerRow key={row}>
+                      <DatePicker.Row key={row}>
                         {months.map((month, index) => (
-                          <DatePickerMonthCell key={index} value={month.value}>
-                            <DatePickerMonthCellTrigger>{month.label}</DatePickerMonthCellTrigger>
-                          </DatePickerMonthCell>
+                          <DatePicker.MonthCell key={index} value={month.value}>
+                            <DatePicker.MonthCellTrigger>{month.label}</DatePicker.MonthCellTrigger>
+                          </DatePicker.MonthCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
               {api.view === 'year' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
+                <DatePicker.Grid>
+                  <DatePicker.RowGroup>
                     {api.getYearsGrid({ columns: 4 }).map((years, row) => (
-                      <DatePickerRow key={row}>
+                      <DatePicker.Row key={row}>
                         {years.map((year, index) => (
-                          <DatePickerYearCell key={index} value={year.value}>
-                            <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
-                          </DatePickerYearCell>
+                          <DatePicker.YearCell key={index} value={year.value}>
+                            <DatePicker.YearCellTrigger>{year.label}</DatePicker.YearCellTrigger>
+                          </DatePicker.YearCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
-            </DatePickerContent>
-          </DatePickerPositioner>
+            </DatePicker.Content>
+          </DatePicker.Positioner>
         </Portal>
       </>
     )}
-  </DatePicker>
+  </DatePicker.Root>
 )
 
 export const RangeWithSingleGrid = () => (
-  <DatePicker selectionMode="range">
+  <DatePicker.Root selectionMode="range">
     {(api) => (
       <>
-        <DatePickerControl>
+        <DatePicker.Control>
           <span>View mode: {api.view}</span>
-          <DatePickerInput />
-          <DatePickerTrigger>🗓</DatePickerTrigger>
-          <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
-        </DatePickerControl>
+          <DatePicker.Input />
+          <DatePicker.Trigger>🗓</DatePicker.Trigger>
+          <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+        </DatePicker.Control>
         <Portal>
-          <DatePickerPositioner>
-            <DatePickerContent>
-              <DatePickerYearSelect />
-              <DatePickerMonthSelect />
+          <DatePicker.Positioner>
+            <DatePicker.Content>
+              <DatePicker.YearSelect />
+              <DatePicker.MonthSelect />
               <div>
-                <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
-                <DatePickerViewTrigger>
+                <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
+                <DatePicker.ViewTrigger>
                   {api.view === 'day' && api.visibleRangeText.start}
                   {api.view === 'month' && api.visibleRange.start.year}
                   {api.view === 'year' && `${api.getDecade().start} - ${api.getDecade().end}`}
-                </DatePickerViewTrigger>
-                <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+                </DatePicker.ViewTrigger>
+                <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
               </div>
               {api.view === 'day' && (
-                <DatePickerGrid>
-                  <DatePickerRowHeader>
+                <DatePicker.Grid>
+                  <DatePicker.RowHeader>
                     {api.weekDays.map((day, i) => (
-                      <DatePickerColumnHeader key={i} aria-label={day.long}>
+                      <DatePicker.ColumnHeader key={i} aria-label={day.long}>
                         {day.narrow}
-                      </DatePickerColumnHeader>
+                      </DatePicker.ColumnHeader>
                     ))}
-                  </DatePickerRowHeader>
-                  <DatePickerRowGroup>
+                  </DatePicker.RowHeader>
+                  <DatePicker.RowGroup>
                     {api.weeks.map((week, id) => (
-                      <DatePickerRow key={id}>
+                      <DatePicker.Row key={id}>
                         {week.map((day, id) => (
-                          <DatePickerDayCell key={id} value={day}>
-                            <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                          </DatePickerDayCell>
+                          <DatePicker.DayCell key={id} value={day}>
+                            <DatePicker.DayCellTrigger>{day.day}</DatePicker.DayCellTrigger>
+                          </DatePicker.DayCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
               {api.view === 'month' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
+                <DatePicker.Grid>
+                  <DatePicker.RowGroup>
                     {api.getMonthsGrid({ columns: 4, format: 'short' }).map((months, row) => (
-                      <DatePickerRow key={row}>
+                      <DatePicker.Row key={row}>
                         {months.map((month, index) => (
-                          <DatePickerMonthCell key={index} value={month.value}>
-                            <DatePickerMonthCellTrigger>{month.label}</DatePickerMonthCellTrigger>
-                          </DatePickerMonthCell>
+                          <DatePicker.MonthCell key={index} value={month.value}>
+                            <DatePicker.MonthCellTrigger>{month.label}</DatePicker.MonthCellTrigger>
+                          </DatePicker.MonthCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
               {api.view === 'year' && (
-                <DatePickerGrid>
-                  <DatePickerRowGroup>
+                <DatePicker.Grid>
+                  <DatePicker.RowGroup>
                     {api.getYearsGrid({ columns: 4 }).map((years, row) => (
-                      <DatePickerRow key={row}>
+                      <DatePicker.Row key={row}>
                         {years.map((year, index) => (
-                          <DatePickerYearCell key={index} value={year.value}>
-                            <DatePickerYearCellTrigger>{year.label}</DatePickerYearCellTrigger>
-                          </DatePickerYearCell>
+                          <DatePicker.YearCell key={index} value={year.value}>
+                            <DatePicker.YearCellTrigger>{year.label}</DatePicker.YearCellTrigger>
+                          </DatePicker.YearCell>
                         ))}
-                      </DatePickerRow>
+                      </DatePicker.Row>
                     ))}
-                  </DatePickerRowGroup>
-                </DatePickerGrid>
+                  </DatePicker.RowGroup>
+                </DatePicker.Grid>
               )}
-            </DatePickerContent>
-          </DatePickerPositioner>
+            </DatePicker.Content>
+          </DatePicker.Positioner>
         </Portal>
       </>
     )}
-  </DatePicker>
+  </DatePicker.Root>
 )
 
 export const RangeWithTwoGrids = () => (
-  <DatePicker selectionMode="range" numOfMonths={2}>
+  <DatePicker.Root selectionMode="range" numOfMonths={2}>
     {(api) => {
       const offset = api.getOffset(1)
       return (
         <>
-          <DatePickerControl>
+          <DatePicker.Control>
             <span>View mode: {api.view}</span>
-            <DatePickerInput />
-            <DatePickerTrigger>🗓</DatePickerTrigger>
-            <DatePickerClearTrigger>Clear</DatePickerClearTrigger>
-          </DatePickerControl>
+            <DatePicker.Input />
+            <DatePicker.Trigger>🗓</DatePicker.Trigger>
+            <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
+          </DatePicker.Control>
           <Portal>
-            <DatePickerPositioner>
-              <DatePickerContent>
+            <DatePicker.Positioner>
+              <DatePicker.Content>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <DatePickerPrevTrigger>Prev</DatePickerPrevTrigger>
+                  <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
                   <time>{api.visibleRangeText.start}</time>
                   <time>{api.visibleRangeText.end}</time>
-                  <DatePickerNextTrigger>Next</DatePickerNextTrigger>
+                  <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-                  <DatePickerGrid>
-                    <DatePickerRowHeader>
+                  <DatePicker.Grid>
+                    <DatePicker.RowHeader>
                       {api.weekDays.map((day, i) => (
-                        <DatePickerColumnHeader key={i} aria-label={day.long}>
+                        <DatePicker.ColumnHeader key={i} aria-label={day.long}>
                           {day.narrow}
-                        </DatePickerColumnHeader>
+                        </DatePicker.ColumnHeader>
                       ))}
-                    </DatePickerRowHeader>
-                    <DatePickerRowGroup>
+                    </DatePicker.RowHeader>
+                    <DatePicker.RowGroup>
                       {api.weeks.map((week, id) => (
-                        <DatePickerRow key={id}>
+                        <DatePicker.Row key={id}>
                           {week.map((day, id) => (
-                            <DatePickerDayCell key={id} value={day}>
-                              <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                            </DatePickerDayCell>
+                            <DatePicker.DayCell key={id} value={day}>
+                              <DatePicker.DayCellTrigger>{day.day}</DatePicker.DayCellTrigger>
+                            </DatePicker.DayCell>
                           ))}
-                        </DatePickerRow>
+                        </DatePicker.Row>
                       ))}
-                    </DatePickerRowGroup>
-                  </DatePickerGrid>
+                    </DatePicker.RowGroup>
+                  </DatePicker.Grid>
 
-                  <DatePickerGrid>
-                    <DatePickerRowHeader>
+                  <DatePicker.Grid>
+                    <DatePicker.RowHeader>
                       {api.weekDays.map((day, i) => (
-                        <DatePickerColumnHeader key={i} aria-label={day.long}>
+                        <DatePicker.ColumnHeader key={i} aria-label={day.long}>
                           {day.narrow}
-                        </DatePickerColumnHeader>
+                        </DatePicker.ColumnHeader>
                       ))}
-                    </DatePickerRowHeader>
-                    <DatePickerRowGroup>
+                    </DatePicker.RowHeader>
+                    <DatePicker.RowGroup>
                       {offset.weeks.map((week, id) => (
-                        <DatePickerRow key={id}>
+                        <DatePicker.Row key={id}>
                           {week.map((day, id) => (
-                            <DatePickerDayCell key={id} value={day} offset={offset}>
-                              <DatePickerDayCellTrigger>{day.day}</DatePickerDayCellTrigger>
-                            </DatePickerDayCell>
+                            <DatePicker.DayCell key={id} value={day} offset={offset}>
+                              <DatePicker.DayCellTrigger>{day.day}</DatePicker.DayCellTrigger>
+                            </DatePicker.DayCell>
                           ))}
-                        </DatePickerRow>
+                        </DatePicker.Row>
                       ))}
-                    </DatePickerRowGroup>
-                  </DatePickerGrid>
+                    </DatePicker.RowGroup>
+                  </DatePicker.Grid>
                 </div>
-              </DatePickerContent>
-            </DatePickerPositioner>
+              </DatePicker.Content>
+            </DatePicker.Positioner>
           </Portal>
         </>
       )
     }}
-  </DatePicker>
+  </DatePicker.Root>
 )

@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Pressable } from './pressable'
+import { Pressable } from './'
 
 type PressableType = typeof Pressable
 
@@ -11,5 +11,5 @@ const meta: Meta<PressableType> = {
 export default meta
 
 export const Basic = () => {
-  return <Pressable onPress={() => console.log('onPress')}>Pressable</Pressable>
+  return <Pressable.Root onPress={() => console.log('onPress')}>Pressable</Pressable.Root>
 }

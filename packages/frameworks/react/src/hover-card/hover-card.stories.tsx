@@ -1,14 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
-import {
-  HoverCard,
-  HoverCardArrow,
-  HoverCardArrowTip,
-  HoverCardContent,
-  HoverCardPositioner,
-  HoverCardTrigger,
-} from './'
+import { HoverCard } from './'
 import './hover-card.css'
 
 type HoverCardType = typeof HoverCard
@@ -21,19 +14,19 @@ const meta: Meta<HoverCardType> = {
 export default meta
 
 export const Basic = () => (
-  <HoverCard>
-    <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCard.Root>
+    <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>
-      <HoverCardPositioner>
-        <HoverCardContent>
-          <HoverCardArrow>
-            <HoverCardArrowTip />
-          </HoverCardArrow>
+      <HoverCard.Positioner>
+        <HoverCard.Content>
+          <HoverCard.Arrow>
+            <HoverCard.ArrowTip />
+          </HoverCard.Arrow>
           Content
-        </HoverCardContent>
-      </HoverCardPositioner>
+        </HoverCard.Content>
+      </HoverCard.Positioner>
     </Portal>
-  </HoverCard>
+  </HoverCard.Root>
 )
 
 export const Controlled = () => {
@@ -41,55 +34,55 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setOpen(!isOpen)}>click me</button>
-      <HoverCard open={isOpen} onOpenChange={() => setOpen(false)}>
-        <HoverCardTrigger>Hover me</HoverCardTrigger>
+      <HoverCard.Root open={isOpen} onOpenChange={() => setOpen(false)}>
+        <HoverCard.Trigger>Hover me</HoverCard.Trigger>
         <Portal>
-          <HoverCardPositioner>
-            <HoverCardContent>
-              <HoverCardArrow>
-                <HoverCardArrowTip />
-              </HoverCardArrow>
+          <HoverCard.Positioner>
+            <HoverCard.Content>
+              <HoverCard.Arrow>
+                <HoverCard.ArrowTip />
+              </HoverCard.Arrow>
               Content
-            </HoverCardContent>
-          </HoverCardPositioner>
+            </HoverCard.Content>
+          </HoverCard.Positioner>
         </Portal>
-      </HoverCard>
+      </HoverCard.Root>
     </>
   )
 }
 
 export const Positioning = () => (
-  <HoverCard positioning={{ placement: 'right', gutter: 12 }}>
-    <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>
+    <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>
-      <HoverCardPositioner>
-        <HoverCardContent>
-          <HoverCardArrow>
-            <HoverCardArrowTip />
-          </HoverCardArrow>
+      <HoverCard.Positioner>
+        <HoverCard.Content>
+          <HoverCard.Arrow>
+            <HoverCard.ArrowTip />
+          </HoverCard.Arrow>
           Content
-        </HoverCardContent>
-      </HoverCardPositioner>
+        </HoverCard.Content>
+      </HoverCard.Positioner>
     </Portal>
-  </HoverCard>
+  </HoverCard.Root>
 )
 
 export const RenderProp = () => (
-  <HoverCard>
+  <HoverCard.Root>
     {(api) => (
       <>
-        <HoverCardTrigger>Hover me {api.isOpen ? '▲' : '▼'} </HoverCardTrigger>
+        <HoverCard.Trigger>Hover me {api.isOpen ? '▲' : '▼'} </HoverCard.Trigger>
         <Portal>
-          <HoverCardPositioner>
-            <HoverCardContent>
-              <HoverCardArrow>
-                <HoverCardArrowTip />
-              </HoverCardArrow>
+          <HoverCard.Positioner>
+            <HoverCard.Content>
+              <HoverCard.Arrow>
+                <HoverCard.ArrowTip />
+              </HoverCard.Arrow>
               Content
-            </HoverCardContent>
-          </HoverCardPositioner>
+            </HoverCard.Content>
+          </HoverCard.Positioner>
         </Portal>
       </>
     )}
-  </HoverCard>
+  </HoverCard.Root>
 )

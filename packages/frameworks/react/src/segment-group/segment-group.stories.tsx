@@ -27,40 +27,40 @@ export const Basic = () => {
 }
 
 // export const InitialValue = () => (
-//   <SegmentGroup defaultValue="react">
-//     <SegmentGroupIndicator />
+//   <SegmentGroup.Root defaultValue="react">
+//     <SegmentGroup.Indicator />
 //     {options.map((option, id) => (
-//       <Segment key={id} value={option.id}>
-//         <SegmentLabel>{option.label}</SegmentLabel>
-//         <SegmentControl />
-//       </Segment>
+//       <SegmentGroup.Item key={id} value={option.id}>
+//         <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
+//         <SegmentGroup.ItemControl />
+//       </SegmentGroup.Item>
 //     ))}
-//   </SegmentGroup>
+//   </SegmentGroup.Root>
 // )
 
 // export const Controlled = () => {
 //   const [value, setValue] = useState('react')
 //   return (
-//     <SegmentGroup value={value} onValueChange={(e) => setValue(e.value)}>
-//       <SegmentGroupIndicator />
+//     <SegmentGroup.Root value={value} onValueChange={(e) => setValue(e.value)}>
+//       <SegmentGroup.Indicator />
 //       {options.map((option, id) => (
-//         <Segment key={id} value={option.id}>
-//           <SegmentLabel>{option.label}</SegmentLabel>
-//           <SegmentControl />
-//         </Segment>
+//         <SegmentGroup.Item key={id} value={option.id}>
+//           <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
+//           <SegmentGroup.ItemControl />
+//         </SegmentGroup.Item>
 //       ))}
-//     </SegmentGroup>
+//     </SegmentGroup.Root>
 //   )
 // }
 
 // export const Disabled = () => (
-//   <SegmentGroup defaultValue="react">
-//     <SegmentGroupIndicator />
+//   <SegmentGroup.Root defaultValue="react">
+//     <SegmentGroup.Indicator />
 //     {options.map((option, id) => (
-//       <Segment key={id} value={option.id} disabled={option.id === 'svelte'}>
-//         <SegmentLabel>{option.label}</SegmentLabel>
-//         <SegmentControl />
-//       </Segment>
+//       <SegmentGroup.Item key={id} value={option.id} disabled={option.id === 'svelte'}>
+//         <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
+//         <SegmentGroup.ItemControl />
+//       </SegmentGroup.Item>
 //     ))}
-//   </SegmentGroup>
+//   </SegmentGroup.Root>
 // )
