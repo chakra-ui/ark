@@ -1,16 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from './'
+import { Slider } from './'
 import './slider.css'
 
 const meta: Meta = {
@@ -22,20 +12,20 @@ export default meta
 export const Basic = () => {
   const [value, setValue] = createSignal(30)
   return (
-    <Slider min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-      <SliderMarkerGroup>
-        <SliderMarker value={-30}>*</SliderMarker>
-        <SliderMarker value={0}>*</SliderMarker>
-        <SliderMarker value={30}>*</SliderMarker>
-      </SliderMarkerGroup>
-    </Slider>
+    <Slider.Root min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.Output>{value}</Slider.Output>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={-30}>*</Slider.Marker>
+        <Slider.Marker value={0}>*</Slider.Marker>
+        <Slider.Marker value={30}>*</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }

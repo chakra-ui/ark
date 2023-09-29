@@ -1,17 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Popover,
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverArrowTip,
-  PopoverCloseTrigger,
-  PopoverContent,
-  PopoverDescription,
-  PopoverPositioner,
-  PopoverTitle,
-  PopoverTrigger,
-} from './'
+import { Popover } from './'
 
 const meta: Meta = {
   title: 'Popover',
@@ -20,20 +9,20 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Popover>
-    <PopoverTrigger>Open Popover</PopoverTrigger>
-    <PopoverPositioner>
-      <PopoverContent>
-        <PopoverArrow>
-          <PopoverArrowTip />
-        </PopoverArrow>
-        <PopoverTitle>Title</PopoverTitle>
-        <PopoverDescription>Description</PopoverDescription>
+  <Popover.Root>
+    <Popover.Trigger>Open Popover</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Content>
+        <Popover.Arrow>
+          <Popover.ArrowTip />
+        </Popover.Arrow>
+        <Popover.Title>Title</Popover.Title>
+        <Popover.Description>Description</Popover.Description>
         <input type="text" />
-        <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-      </PopoverContent>
-    </PopoverPositioner>
-  </Popover>
+        <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+      </Popover.Content>
+    </Popover.Positioner>
+  </Popover.Root>
 )
 
 export const Controlled = () => {
@@ -41,20 +30,20 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen((prev) => !prev)}>click me</button>
-      <Popover open={isOpen()}>
-        <PopoverAnchor>Anchor</PopoverAnchor>
-        <PopoverPositioner>
-          <PopoverContent>
-            <PopoverArrow>
-              <PopoverArrowTip />
-            </PopoverArrow>
-            <PopoverTitle>Title</PopoverTitle>
-            <PopoverDescription>Description</PopoverDescription>
+      <Popover.Root open={isOpen()}>
+        <Popover.Anchor>Anchor</Popover.Anchor>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Arrow>
+              <Popover.ArrowTip />
+            </Popover.Arrow>
+            <Popover.Title>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
             <input type="text" />
-            <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-          </PopoverContent>
-        </PopoverPositioner>
-      </Popover>
+            <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Popover.Root>
     </>
   )
 }

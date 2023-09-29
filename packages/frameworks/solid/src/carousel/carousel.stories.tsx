@@ -1,16 +1,6 @@
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Carousel,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-} from './'
+import { Carousel } from './'
 import './carousel.css'
 
 const meta: Meta = {
@@ -28,26 +18,26 @@ export const Basic = () => {
     'https://tinyurl.com/yp4rfum7',
   ]
   return (
-    <Carousel>
-      <CarouselControl>
-        <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
-        <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
-      </CarouselControl>
-      <CarouselIndicatorGroup>
-        <Index each={images}>{(_, index) => <CarouselIndicator index={index} />}</Index>
-      </CarouselIndicatorGroup>
-      <CarouselViewport>
-        <CarouselSlideGroup>
+    <Carousel.Root>
+      <Carousel.Control>
+        <Carousel.PrevSlideTrigger>Previous</Carousel.PrevSlideTrigger>
+        <Carousel.NextSlideTrigger>Next</Carousel.NextSlideTrigger>
+      </Carousel.Control>
+      <Carousel.IndicatorGroup>
+        <Index each={images}>{(_, index) => <Carousel.Indicator index={index} />}</Index>
+      </Carousel.IndicatorGroup>
+      <Carousel.Viewport>
+        <Carousel.SlideGroup>
           <Index each={images}>
             {(image, index) => (
-              <CarouselSlide index={index}>
+              <Carousel.Slide index={index}>
                 <img src={image()} />
-              </CarouselSlide>
+              </Carousel.Slide>
             )}
           </Index>
-        </CarouselSlideGroup>
-      </CarouselViewport>
-    </Carousel>
+        </Carousel.SlideGroup>
+      </Carousel.Viewport>
+    </Carousel.Root>
   )
 }
 
@@ -63,23 +53,26 @@ export const Controlled = () => {
 
   return (
     <>
-      <Carousel index={currentIndex()} onSlideChange={(details) => setCurrentIndex(details.index)}>
-        <CarouselControl>
-          <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
-          <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
-        </CarouselControl>
-        <CarouselViewport>
-          <CarouselSlideGroup>
+      <Carousel.Root
+        index={currentIndex()}
+        onSlideChange={(details) => setCurrentIndex(details.index)}
+      >
+        <Carousel.Control>
+          <Carousel.PrevSlideTrigger>Previous</Carousel.PrevSlideTrigger>
+          <Carousel.NextSlideTrigger>Next</Carousel.NextSlideTrigger>
+        </Carousel.Control>
+        <Carousel.Viewport>
+          <Carousel.SlideGroup>
             <Index each={images}>
               {(image, index) => (
-                <CarouselSlide index={index}>
+                <Carousel.Slide index={index}>
                   <img src={image()} />
-                </CarouselSlide>
+                </Carousel.Slide>
               )}
             </Index>
-          </CarouselSlideGroup>
-        </CarouselViewport>
-      </Carousel>
+          </Carousel.SlideGroup>
+        </Carousel.Viewport>
+      </Carousel.Root>
     </>
   )
 }

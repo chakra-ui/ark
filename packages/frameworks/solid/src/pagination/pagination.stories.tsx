@@ -1,14 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
-} from './'
+import { Pagination } from './'
 import './pagination.css'
 
 const meta: Meta = {
@@ -18,43 +10,43 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Pagination count={5000} pageSize={10} siblingCount={2}>
+  <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
     {(api) => (
-      <PaginationList>
-        <PaginationListItem>
-          <PaginationPrevPageTrigger>
+      <Pagination.List>
+        <Pagination.ListItem>
+          <Pagination.PrevPageTrigger>
             Previous <span class="visually-hidden">Page</span>
-          </PaginationPrevPageTrigger>
-        </PaginationListItem>
+          </Pagination.PrevPageTrigger>
+        </Pagination.ListItem>
 
         <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
-              <PaginationListItem>
-                <PaginationPageTrigger value={page.value}>{page.value}</PaginationPageTrigger>
-              </PaginationListItem>
+              <Pagination.ListItem>
+                <Pagination.PageTrigger value={page.value}>{page.value}</Pagination.PageTrigger>
+              </Pagination.ListItem>
             ) : (
-              <PaginationListItem>
-                <PaginationEllipsis index={index()}>&#8230;</PaginationEllipsis>
-              </PaginationListItem>
+              <Pagination.ListItem>
+                <Pagination.Ellipsis index={index()}>&#8230;</Pagination.Ellipsis>
+              </Pagination.ListItem>
             )
           }
         </For>
-        <PaginationListItem>
-          <PaginationNextPageTrigger>
+        <Pagination.ListItem>
+          <Pagination.NextPageTrigger>
             Next <span class="visually-hidden">Page</span>
-          </PaginationNextPageTrigger>
-        </PaginationListItem>
-      </PaginationList>
+          </Pagination.NextPageTrigger>
+        </Pagination.ListItem>
+      </Pagination.List>
     )}
-  </Pagination>
+  </Pagination.Root>
 )
 
 export const Controlled = () => {
   const [currentPage, setCurrentPage] = createSignal(1)
 
   return (
-    <Pagination
+    <Pagination.Root
       count={5000}
       pageSize={10}
       siblingCount={2}
@@ -62,13 +54,13 @@ export const Controlled = () => {
       onPageChange={(details) => setCurrentPage(details.page)}
     >
       {/* ... */}
-    </Pagination>
+    </Pagination.Root>
   )
 }
 
 export const Customized = () => {
   return (
-    <Pagination
+    <Pagination.Root
       count={5000}
       pageSize={20}
       siblingCount={3}
@@ -80,6 +72,6 @@ export const Customized = () => {
       }}
     >
       {/* ... */}
-    </Pagination>
+    </Pagination.Root>
   )
 }

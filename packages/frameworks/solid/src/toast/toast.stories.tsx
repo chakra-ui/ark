@@ -1,17 +1,7 @@
 import { children } from 'solid-js'
 import { For } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Toast,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastGroup,
-  ToastPlacements,
-  ToastProvider,
-  ToastTitle,
-  useToast,
-  type ToastProviderProps,
-} from './'
+import { Toast, useToast, type ToastProviderProps } from './'
 import './toast.css'
 
 type ToastType = typeof Toast
@@ -33,30 +23,30 @@ export default meta
 export const AppToastProvider = (props: ToastProviderProps) => {
   const getChildren = children(() => props.children)
   return (
-    <ToastProvider {...props}>
-      <ToastPlacements>
+    <Toast.Provider {...props}>
+      <Toast.Placements>
         {(placements) => (
           <For each={placements()}>
             {(placement) => (
-              <ToastGroup placement={placement}>
+              <Toast.Group placement={placement}>
                 {(toasts) => (
                   <For each={toasts()}>
                     {(toast) => (
-                      <Toast toast={toast}>
-                        <ToastTitle />
-                        <ToastDescription />
-                        <ToastCloseTrigger>Close</ToastCloseTrigger>
-                      </Toast>
+                      <Toast.Root toast={toast}>
+                        <Toast.Title />
+                        <Toast.Description />
+                        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+                      </Toast.Root>
                     )}
                   </For>
                 )}
-              </ToastGroup>
+              </Toast.Group>
             )}
           </For>
         )}
-      </ToastPlacements>
+      </Toast.Placements>
       {getChildren()}
-    </ToastProvider>
+    </Toast.Provider>
   )
 }
 export const App = () => <AppToastProvider>{/* Your App */}</AppToastProvider>

@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Presence } from './presence'
+import { Presence } from './'
 import './presence.css'
 
 type PresenceType = typeof Presence
@@ -17,9 +17,9 @@ export const Basic = () => {
   return (
     <div>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()}>
+      <Presence.Root present={present()}>
         <div class="box">Hidden and Hidden</div>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }
@@ -28,9 +28,9 @@ export const LazyMount = () => {
   return (
     <div>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()} lazyMount>
+      <Presence.Root present={present()} lazyMount>
         <div class="box">Unmounted and Hidden</div>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }
@@ -40,9 +40,9 @@ export const UnmountOnExit = () => {
   return (
     <div>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()} unmountOnExit>
+      <Presence.Root present={present()} unmountOnExit>
         <div class="box">Hidden and Unmounted on Exit</div>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }
@@ -52,9 +52,9 @@ export const LazyMountAndUnmountOnExit = () => {
   return (
     <div>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()} lazyMount unmountOnExit>
+      <Presence.Root present={present()} lazyMount unmountOnExit>
         <div class="box">Lazy Mount and Unmounted on Exit</div>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }
