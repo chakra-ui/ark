@@ -1,0 +1,72 @@
+```tsx
+function Demo() {
+  return (
+    <ColorPicker.Root>
+      <ColorPicker.Label>Color</ColorPicker.Label>
+      <ColorPicker.Control>
+        <ColorPicker.ChannelInput channel="hex" />
+        <ColorPicker.ChannelInput channel="alpha" />
+        <ColorPicker.Trigger>
+          <ColorPicker.Swatch />
+          <ColorPicker.TransparencyGrid />
+        </ColorPicker.Trigger>
+        <ColorPicker.ClearTrigger />
+      </ColorPicker.Control>
+      <Portal>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.SwatchGroup>
+              <ColorPicker.SwatchItem>
+                <ColorPicker.Swatch value="red.300" />
+                <ColorPicker.TransparencyGrid />
+              </ColorPicker.SwatchItem>
+            </ColorPicker.SwatchGroup>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.ChannelSlider channel="alpha">
+              <ColorPicker.TransparencyGrid />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.EyeDropperTrigger>
+              Pick color
+            </ColorPicker.EyeDropperTrigger>
+            <ColorPicker.View format="rgb">
+              <ColorPicker.ChannelInput channel="red" />
+              <ColorPicker.ChannelInput channel="green" />
+              <ColorPicker.ChannelInput channel="blue" />
+              <ColorPicker.ChannelInput channel="alpha" />
+            </ColorPicker.View>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </Portal>
+    </ColorPicker.Root>
+  )
+}
+```
+
+```tsx
+<ColorPicker.View format="hex">
+  <ColorPickerChannelInput channel="hex" />
+  <ColorPickerChannelInput channel="alpha" />
+</ColorPicker.View>
+```
+
+```tsx
+<ColorPicker.View format="rgb">
+  <ColorPickerChannelInput channel="red" />
+  <ColorPickerChannelInput channel="green" />
+  <ColorPickerChannelInput channel="blue" />
+  <ColorPickerChannelInput channel="alpha" />
+</ColorPicker.View>
+```
+
+```tsx
+<ColorPicker.View format="hsl">
+  <ColorPickerChannelInput channel="hue" />
+  <ColorPickerChannelInput channel="saturation" />
+  <ColorPickerChannelInput channel="lightness" />
+  <ColorPickerChannelInput channel="alpha" />
+</ColorPicker.View>
+```
