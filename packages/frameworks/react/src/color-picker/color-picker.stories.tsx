@@ -1,20 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import {
-  ColorPicker,
-  ColorPickerArea,
-  ColorPickerAreaGradient,
-  ColorPickerAreaThumb,
-  ColorPickerChannelInput,
-  ColorPickerChannelSliderBackground,
-  ColorPickerChannelSliderThumb,
-  ColorPickerChannelSliderTrack,
-  ColorPickerContent,
-  ColorPickerEyeDropperTrigger,
-  ColorPickerSwatch,
-  ColorPickerSwatchBackground,
-  ColorPickerSwatchGroup,
-} from './'
+import { ColorPicker } from './'
 import './color-picker.css'
 
 type ColorPickerType = typeof ColorPicker
@@ -27,56 +13,56 @@ const meta: Meta<ColorPickerType> = {
 export default meta
 
 export const Basic = () => (
-  <ColorPicker defaultValue="hsl(10, 81%, 59%)">
+  <ColorPicker.Root defaultValue="hsl(10, 81%, 59%)">
     {(api) => {
       const [hue, saturation, lightness] = api.channels
       return (
-        <ColorPickerContent>
+        <ColorPicker.Content>
           <output>
-            <ColorPickerSwatch value={api.value} readOnly />
+            <ColorPicker.Swatch value={api.value} readOnly />
           </output>
-          <ColorPickerArea xChannel={saturation} yChannel={lightness}>
-            <ColorPickerAreaGradient />
-            <ColorPickerAreaThumb />
-          </ColorPickerArea>
+          <ColorPicker.Area xChannel={saturation} yChannel={lightness}>
+            <ColorPicker.AreaGradient />
+            <ColorPicker.AreaThumb />
+          </ColorPicker.Area>
 
-          <ColorPickerChannelSliderTrack channel={hue}>
-            <ColorPickerChannelSliderBackground />
-            <ColorPickerChannelSliderThumb />
-          </ColorPickerChannelSliderTrack>
+          <ColorPicker.ChannelSliderTrack channel={hue}>
+            <ColorPicker.ChannelSliderBackground />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSliderTrack>
 
-          <ColorPickerChannelSliderTrack channel="alpha">
-            <ColorPickerChannelSliderBackground />
-            <ColorPickerChannelSliderThumb />
-          </ColorPickerChannelSliderTrack>
+          <ColorPicker.ChannelSliderTrack channel="alpha">
+            <ColorPicker.ChannelSliderBackground />
+            <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSliderTrack>
 
-          <ColorPickerChannelInput channel={hue} />
-          <ColorPickerChannelInput channel={saturation} />
-          <ColorPickerChannelInput channel={lightness} />
-          <ColorPickerChannelInput channel="alpha" />
+          <ColorPicker.ChannelInput channel={hue} />
+          <ColorPicker.ChannelInput channel={saturation} />
+          <ColorPicker.ChannelInput channel={lightness} />
+          <ColorPicker.ChannelInput channel="alpha" />
 
-          <ColorPickerSwatchGroup>
-            <ColorPickerSwatch value="#123123">
-              <ColorPickerSwatchBackground />
-            </ColorPickerSwatch>
-            <ColorPickerSwatch value="#ff1321">
-              <ColorPickerSwatchBackground />
-            </ColorPickerSwatch>
-          </ColorPickerSwatchGroup>
+          <ColorPicker.SwatchGroup>
+            <ColorPicker.Swatch value="#123123">
+              <ColorPicker.SwatchBackground />
+            </ColorPicker.Swatch>
+            <ColorPicker.Swatch value="#ff1321">
+              <ColorPicker.SwatchBackground />
+            </ColorPicker.Swatch>
+          </ColorPicker.SwatchGroup>
 
-          <ColorPickerEyeDropperTrigger>Pick color</ColorPickerEyeDropperTrigger>
-        </ColorPickerContent>
+          <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
+        </ColorPicker.Content>
       )
     }}
-  </ColorPicker>
+  </ColorPicker.Root>
 )
 
 export const Controlled = () => {
   const [color, setColor] = useState('hsl(10, 81%, 59%)')
 
   return (
-    <ColorPicker value={color} onValueChange={(details) => setColor(details.value)}>
-      <ColorPickerContent>{/* ... */}</ColorPickerContent>
-    </ColorPicker>
+    <ColorPicker.Root value={color} onValueChange={(details) => setColor(details.value)}>
+      <ColorPicker.Content>{/* ... */}</ColorPicker.Content>
+    </ColorPicker.Root>
   )
 }

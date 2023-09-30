@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from './'
+import { Splitter } from './'
 import './splitter.css'
 
 type SplitterType = typeof Splitter
@@ -12,20 +12,20 @@ const meta: Meta<SplitterType> = {
 export default meta
 
 export const Basic = () => (
-  <Splitter
+  <Splitter.Root
     defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
   >
-    <SplitterPanel id="a">A</SplitterPanel>
-    <SplitterResizeTrigger id="a:b" />
-    <SplitterPanel id="b">B</SplitterPanel>
-  </Splitter>
+    <Splitter.Panel id="a">A</Splitter.Panel>
+    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.Panel id="b">B</Splitter.Panel>
+  </Splitter.Root>
 )
 
 export const RenderProp = () => (
-  <Splitter
+  <Splitter.Root
     defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
@@ -33,20 +33,20 @@ export const RenderProp = () => (
   >
     {(api) => (
       <>
-        <SplitterPanel id="a">
+        <Splitter.Panel id="a">
           <button onClick={() => api.setSize('a', 10)}>Set to 10%</button>
-        </SplitterPanel>
-        <SplitterResizeTrigger id="a:b" />
-        <SplitterPanel id="b">
+        </Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b" />
+        <Splitter.Panel id="b">
           <button onClick={() => api.setSize('b', 10)}>Set to 10%</button>
-        </SplitterPanel>
+        </Splitter.Panel>
       </>
     )}
-  </Splitter>
+  </Splitter.Root>
 )
 
 export const Events = () => (
-  <Splitter
+  <Splitter.Root
     defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
@@ -54,22 +54,22 @@ export const Events = () => (
     onSizeChangeStart={(details) => console.log('onSizeChangeStart', details)}
     onSizeChangeEnd={(details) => console.log('onSizeChangeEnd', details)}
   >
-    <SplitterPanel id="a">A</SplitterPanel>
-    <SplitterResizeTrigger id="a:b" />
-    <SplitterPanel id="b">B</SplitterPanel>
-  </Splitter>
+    <Splitter.Panel id="a">A</Splitter.Panel>
+    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.Panel id="b">B</Splitter.Panel>
+  </Splitter.Root>
 )
 
 export const Vertical = () => (
-  <Splitter
+  <Splitter.Root
     orientation="vertical"
     defaultSize={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
   >
-    <SplitterPanel id="a">A</SplitterPanel>
-    <SplitterResizeTrigger id="a:b" />
-    <SplitterPanel id="b">B</SplitterPanel>
-  </Splitter>
+    <Splitter.Panel id="a">A</Splitter.Panel>
+    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.Panel id="b">B</Splitter.Panel>
+  </Splitter.Root>
 )

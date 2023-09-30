@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useEffect } from 'react'
 import Frame from 'react-frame-component'
-import { Environment } from './environment'
+import { Environment } from './'
 import { useEnvironmentContext } from './environment-context'
 
 type EnvironmentType = typeof Environment
@@ -26,9 +26,9 @@ const PrintEnvironment = () => {
 export const Basic = () => {
   return (
     <Frame>
-      <Environment>
+      <Environment.Root>
         <PrintEnvironment />
-      </Environment>
+      </Environment.Root>
     </Frame>
   )
 }

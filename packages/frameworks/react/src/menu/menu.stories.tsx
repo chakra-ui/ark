@@ -1,18 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuItemGroup,
-  MenuItemGroupLabel,
-  MenuOptionItem,
-  MenuPositioner,
-  MenuSeparator,
-  MenuTrigger,
-  MenuTriggerItem,
-} from './'
+import { Menu } from './'
 import './menu.css'
 
 type MenuType = typeof Menu
@@ -25,43 +14,43 @@ const meta: Meta<MenuType> = {
 export default meta
 
 export const Basic = () => (
-  <Menu>
-    <MenuTrigger>Open menu</MenuTrigger>
+  <Menu.Root>
+    <Menu.Trigger>Open menu</Menu.Trigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItem id="search">Search</MenuItem>
-          <MenuItem id="undo">Undo</MenuItem>
-          <MenuItem id="delivery" disabled>
+      <Menu.Positioner>
+        <Menu.Content>
+          <Menu.Item id="search">Search</Menu.Item>
+          <Menu.Item id="undo">Undo</Menu.Item>
+          <Menu.Item id="delivery" disabled>
             Delivery
-          </MenuItem>
-          <MenuItem id="unlink">Unlink</MenuItem>
-        </MenuContent>
-      </MenuPositioner>
+          </Menu.Item>
+          <Menu.Item id="unlink">Unlink</Menu.Item>
+        </Menu.Content>
+      </Menu.Positioner>
     </Portal>
-  </Menu>
+  </Menu.Root>
 )
 
 export const Group = () => (
-  <Menu>
-    <MenuTrigger>Open menu</MenuTrigger>
+  <Menu.Root>
+    <Menu.Trigger>Open menu</Menu.Trigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItemGroup id="group-1">
-            <MenuItemGroupLabel htmlFor="group-1">Group 1</MenuItemGroupLabel>
-            <MenuItem id="share">Share...</MenuItem>
-            <MenuItem id="move">Move...</MenuItem>
-          </MenuItemGroup>
-          <MenuItemGroup id="group-2">
-            <MenuItemGroupLabel htmlFor="group-2">Group 2</MenuItemGroupLabel>
-            <MenuItem id="rename">Rename...</MenuItem>
-            <MenuItem id="delete">Delete...</MenuItem>
-          </MenuItemGroup>
-        </MenuContent>
-      </MenuPositioner>
+      <Menu.Positioner>
+        <Menu.Content>
+          <Menu.ItemGroup id="group-1">
+            <Menu.ItemGroupLabel htmlFor="group-1">Group 1</Menu.ItemGroupLabel>
+            <Menu.Item id="share">Share...</Menu.Item>
+            <Menu.Item id="move">Move...</Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.ItemGroup id="group-2">
+            <Menu.ItemGroupLabel htmlFor="group-2">Group 2</Menu.ItemGroupLabel>
+            <Menu.Item id="rename">Rename...</Menu.Item>
+            <Menu.Item id="delete">Delete...</Menu.Item>
+          </Menu.ItemGroup>
+        </Menu.Content>
+      </Menu.Positioner>
     </Portal>
-  </Menu>
+  </Menu.Root>
 )
 
 export const Options = () => {
@@ -70,7 +59,7 @@ export const Options = () => {
     libraries: [],
   })
   return (
-    <Menu
+    <Menu.Root
       value={value}
       onValueChange={(data) => {
         setValue((prev) => ({
@@ -79,68 +68,68 @@ export const Options = () => {
         }))
       }}
     >
-      <MenuTrigger>Open menu</MenuTrigger>
+      <Menu.Trigger>Open menu</Menu.Trigger>
       <Portal>
-        <MenuPositioner>
-          <MenuContent>
-            <MenuItemGroup id="radio-group">
-              <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
-              <MenuOptionItem name="framework" type="radio" value="react">
+        <Menu.Positioner>
+          <Menu.Content>
+            <Menu.ItemGroup id="radio-group">
+              <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+              <Menu.OptionItem name="framework" type="radio" value="react">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} React</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="solid">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="framework" type="radio" value="solid">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} Solid</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="vue">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="framework" type="radio" value="vue">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
-              </MenuOptionItem>
-            </MenuItemGroup>
-            <MenuItemGroup id="checkbox-group">
-              <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
-              <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
+              </Menu.OptionItem>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup id="checkbox-group">
+              <Menu.ItemGroupLabel htmlFor="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
+              <Menu.OptionItem name="libraries" type="checkbox" value="zag-js">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} zag-js</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="ark">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="libraries" type="checkbox" value="ark">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} ark</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="panda">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="libraries" type="checkbox" value="panda">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} panda</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="chakra">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="libraries" type="checkbox" value="chakra">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} chakra</>}
-              </MenuOptionItem>
-            </MenuItemGroup>
-          </MenuContent>
-        </MenuPositioner>
+              </Menu.OptionItem>
+            </Menu.ItemGroup>
+          </Menu.Content>
+        </Menu.Positioner>
       </Portal>
-    </Menu>
+    </Menu.Root>
   )
 }
 
 export const SubMenu = () => (
-  <Menu>
-    <MenuTrigger>Open menu</MenuTrigger>
+  <Menu.Root>
+    <Menu.Trigger>Open menu</Menu.Trigger>
     <Portal>
-      <MenuPositioner>
-        <MenuContent>
-          <MenuItem id="new-tab">New Tab...</MenuItem>
-          <MenuItem id="new-win">New Window...</MenuItem>
-          <MenuSeparator />
+      <Menu.Positioner>
+        <Menu.Content>
+          <Menu.Item id="new-tab">New Tab...</Menu.Item>
+          <Menu.Item id="new-win">New Window...</Menu.Item>
+          <Menu.Separator />
           <Menu>
-            <MenuTriggerItem>Share &gt;</MenuTriggerItem>
+            <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
             <Portal>
-              <MenuPositioner>
-                <MenuContent>
-                  <MenuItem id="twitter">Twitter</MenuItem>
-                  <MenuItem id="message">Message</MenuItem>
-                </MenuContent>
-              </MenuPositioner>
+              <Menu.Positioner>
+                <Menu.Content>
+                  <Menu.Item id="twitter">Twitter</Menu.Item>
+                  <Menu.Item id="message">Message</Menu.Item>
+                </Menu.Content>
+              </Menu.Positioner>
             </Portal>
           </Menu>
-        </MenuContent>
-      </MenuPositioner>
+        </Menu.Content>
+      </Menu.Positioner>
     </Portal>
-  </Menu>
+  </Menu.Root>
 )
 
 export const ComplexSubMenu = () => {
@@ -149,7 +138,7 @@ export const ComplexSubMenu = () => {
     libraries: [],
   })
   return (
-    <Menu
+    <Menu.Root
       value={value}
       onValueChange={(data) => {
         setValue((prev) => ({
@@ -158,36 +147,36 @@ export const ComplexSubMenu = () => {
         }))
       }}
     >
-      <MenuTrigger>Open menu</MenuTrigger>
+      <Menu.Trigger>Open menu</Menu.Trigger>
       <Portal>
-        <MenuPositioner>
-          <MenuContent>
-            <MenuItemGroup id="radio-group">
-              <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
-              <MenuOptionItem name="framework" type="radio" value="react">
+        <Menu.Positioner>
+          <Menu.Content>
+            <Menu.ItemGroup id="radio-group">
+              <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+              <Menu.OptionItem name="framework" type="radio" value="react">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} React</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="solid">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="framework" type="radio" value="solid">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} Solid</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="vue">
+              </Menu.OptionItem>
+              <Menu.OptionItem name="framework" type="radio" value="vue">
                 {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
-              </MenuOptionItem>
-            </MenuItemGroup>
+              </Menu.OptionItem>
+            </Menu.ItemGroup>
             <Menu>
-              <MenuTriggerItem>Share &gt;</MenuTriggerItem>
+              <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
               <Portal>
-                <MenuPositioner>
-                  <MenuContent>
-                    <MenuItem id="twitter">Twitter</MenuItem>
-                    <MenuItem id="message">Message</MenuItem>
-                  </MenuContent>
-                </MenuPositioner>
+                <Menu.Positioner>
+                  <Menu.Content>
+                    <Menu.Item id="twitter">Twitter</Menu.Item>
+                    <Menu.Item id="message">Message</Menu.Item>
+                  </Menu.Content>
+                </Menu.Positioner>
               </Portal>
             </Menu>
-          </MenuContent>
-        </MenuPositioner>
+          </Menu.Content>
+        </Menu.Positioner>
       </Portal>
-    </Menu>
+    </Menu.Root>
   )
 }

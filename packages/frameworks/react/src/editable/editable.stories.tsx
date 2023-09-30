@@ -1,15 +1,5 @@
 import type { Meta } from '@storybook/react'
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableControl,
-  EditableEditTrigger,
-  EditableInput,
-  EditableLabel,
-  EditablePreview,
-  EditableSubmitTrigger,
-} from './'
+import { Editable } from './'
 
 type EditableType = typeof Editable
 
@@ -21,35 +11,35 @@ const meta: Meta<EditableType> = {
 export default meta
 
 export const Basic = () => (
-  <Editable placeholder="Placeholder" activationMode="dblclick">
-    <EditableLabel>Label</EditableLabel>
-    <EditableArea>
-      <EditableInput />
-      <EditablePreview />
-    </EditableArea>
-  </Editable>
+  <Editable.Root placeholder="Placeholder" activationMode="dblclick">
+    <Editable.Label>Label</Editable.Label>
+    <Editable.Area>
+      <Editable.Input />
+      <Editable.Preview />
+    </Editable.Area>
+  </Editable.Root>
 )
 
 export const CustomControls = () => (
-  <Editable activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
+  <Editable.Root activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
     {(state) => (
       <>
-        <EditableLabel>Label</EditableLabel>
-        <EditableArea>
-          <EditableInput />
-          <EditablePreview />
-        </EditableArea>
-        <EditableControl>
+        <Editable.Label>Label</Editable.Label>
+        <Editable.Area>
+          <Editable.Input />
+          <Editable.Preview />
+        </Editable.Area>
+        <Editable.Control>
           {state.isEditing ? (
             <>
-              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
-              <EditableCancelTrigger>Cancel</EditableCancelTrigger>
+              <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+              <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>Edit</EditableEditTrigger>
+            <Editable.EditTrigger>Edit</Editable.EditTrigger>
           )}
-        </EditableControl>
+        </Editable.Control>
       </>
     )}
-  </Editable>
+  </Editable.Root>
 )

@@ -1,17 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { Portal } from '@zag-js/react'
 import { useState } from 'react'
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from './'
-import './dialog.css'
+import { Dialog } from './'
+import './Dialog.css'
 
 type DialogType = typeof Dialog
 
@@ -23,19 +14,19 @@ const meta: Meta<DialogType> = {
 export default meta
 
 export const Basic = () => (
-  <Dialog>
-    <DialogTrigger>Open Dialog</DialogTrigger>
+  <Dialog.Root>
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
-      <DialogBackdrop />
-      <DialogContainer>
-        <DialogContent>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>Dialog Description</DialogDescription>
-          <DialogCloseTrigger>Close</DialogCloseTrigger>
-        </DialogContent>
-      </DialogContainer>
+      <Dialog.Backdrop />
+      <Dialog.Container>
+        <Dialog.Content>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description>Dialog Description</Dialog.Description>
+          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+        </Dialog.Content>
+      </Dialog.Container>
     </Portal>
-  </Dialog>
+  </Dialog.Root>
 )
 
 export const Controlled = () => {
@@ -43,55 +34,55 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Open Dialog</button>
-      <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
+      <Dialog.Root open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <Portal>
-          <DialogBackdrop />
-          <DialogContainer>
-            <DialogContent>
-              <DialogTitle>Dialog Title</DialogTitle>
-              <DialogDescription>Dialog Description</DialogDescription>
-              <DialogCloseTrigger>Close</DialogCloseTrigger>
-            </DialogContent>
-          </DialogContainer>
+          <Dialog.Backdrop />
+          <Dialog.Container>
+            <Dialog.Content>
+              <Dialog.Title>Dialog Title</Dialog.Title>
+              <Dialog.Description>Dialog Description</Dialog.Description>
+              <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+            </Dialog.Content>
+          </Dialog.Container>
         </Portal>
-      </Dialog>
+      </Dialog.Root>
     </>
   )
 }
 
 export const LazyMount = () => (
-  <Dialog>
-    <DialogTrigger>Open Dialog</DialogTrigger>
+  <Dialog.Root>
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
-      <DialogBackdrop />
-      <DialogContainer>
-        <DialogContent lazyMount unmountOnExit>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>Dialog Description</DialogDescription>
-          <DialogCloseTrigger>Close</DialogCloseTrigger>
-        </DialogContent>
-      </DialogContainer>
+      <Dialog.Backdrop />
+      <Dialog.Container>
+        <Dialog.Content lazyMount unmountOnExit>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description>Dialog Description</Dialog.Description>
+          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+        </Dialog.Content>
+      </Dialog.Container>
     </Portal>
-  </Dialog>
+  </Dialog.Root>
 )
 
 export const RenderFn = () => (
-  <Dialog>
+  <Dialog.Root>
     {({ isOpen }) => (
       <>
-        <DialogTrigger>Open Dialog</DialogTrigger>
+        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Portal>
-          <DialogBackdrop />
-          <DialogContainer>
-            <DialogContent>
-              <DialogTitle>Dialog Title</DialogTitle>
-              <DialogDescription>Dialog Description</DialogDescription>
-              <DialogCloseTrigger>Close</DialogCloseTrigger>
-            </DialogContent>
-          </DialogContainer>
+          <Dialog.Backdrop />
+          <Dialog.Container>
+            <Dialog.Content>
+              <Dialog.Title>Dialog Title</Dialog.Title>
+              <Dialog.Description>Dialog Description</Dialog.Description>
+              <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+            </Dialog.Content>
+          </Dialog.Container>
         </Portal>
         <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
       </>
     )}
-  </Dialog>
+  </Dialog.Root>
 )

@@ -1,14 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
-} from './'
+import { Pagination } from './'
 import './pagination.css'
 
 type PaginationType = typeof Pagination
@@ -21,36 +13,36 @@ const meta: Meta<PaginationType> = {
 export default meta
 
 export const Basic = () => (
-  <Pagination defaultPage={2} count={5000} pageSize={10} siblingCount={2}>
+  <Pagination.Root defaultPage={2} count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
-      <PaginationList>
-        <PaginationListItem>
-          <PaginationPrevPageTrigger>Previous Page</PaginationPrevPageTrigger>
-        </PaginationListItem>
+      <Pagination.List>
+        <Pagination.ListItem>
+          <Pagination.PrevPageTrigger>Previous Page</Pagination.PrevPageTrigger>
+        </Pagination.ListItem>
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationListItem key={index}>
-              <PaginationPageTrigger {...page}>{page.value}</PaginationPageTrigger>
-            </PaginationListItem>
+            <Pagination.ListItem key={index}>
+              <Pagination.PageTrigger {...page}>{page.value}</Pagination.PageTrigger>
+            </Pagination.ListItem>
           ) : (
-            <PaginationListItem key={index}>
-              <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
-            </PaginationListItem>
+            <Pagination.ListItem key={index}>
+              <Pagination.Ellipsis index={index}>&#8230;</Pagination.Ellipsis>
+            </Pagination.ListItem>
           ),
         )}
-        <PaginationListItem>
-          <PaginationNextPageTrigger>Next Page</PaginationNextPageTrigger>
-        </PaginationListItem>
-      </PaginationList>
+        <Pagination.ListItem>
+          <Pagination.NextPageTrigger>Next Page</Pagination.NextPageTrigger>
+        </Pagination.ListItem>
+      </Pagination.List>
     )}
-  </Pagination>
+  </Pagination.Root>
 )
 
 export const Controlled = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   return (
-    <Pagination
+    <Pagination.Root
       count={5000}
       pageSize={10}
       siblingCount={2}
@@ -58,12 +50,12 @@ export const Controlled = () => {
       onPageChange={(details) => setCurrentPage(details.page)}
     >
       {/* ... */}
-    </Pagination>
+    </Pagination.Root>
   )
 }
 
 export const Customized = () => (
-  <Pagination
+  <Pagination.Root
     count={5000}
     pageSize={20}
     siblingCount={3}
@@ -75,5 +67,5 @@ export const Customized = () => (
     }}
   >
     {/* ... */}
-  </Pagination>
+  </Pagination.Root>
 )
