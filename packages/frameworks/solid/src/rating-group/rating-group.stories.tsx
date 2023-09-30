@@ -1,6 +1,6 @@
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { RatingGroup, RatingGroupControl, RatingGroupItem, RatingGroupLabel } from './'
+import { RatingGroup } from './'
 
 const meta: Meta = {
   title: 'RatingGroup',
@@ -9,24 +9,24 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup max={5} value={1} allowHalf>
-    <RatingGroupLabel>GroupLabel</RatingGroupLabel>
-    <RatingGroupControl>
+  <RatingGroup.Root max={5} value={1} allowHalf>
+    <RatingGroup.Label>GroupLabel</RatingGroup.Label>
+    <RatingGroup.Control>
       {(api) => (
         <Index each={api().sizeArray}>
           {(index) => (
-            <RatingGroupItem index={index()}>
+            <RatingGroup.Item index={index()}>
               {(api) => {
                 if (api.isHalf) return <IconHalf />
                 if (api.isHighlighted) return <IconFull />
                 return <IconEmpty />
               }}
-            </RatingGroupItem>
+            </RatingGroup.Item>
           )}
         </Index>
       )}
-    </RatingGroupControl>
-  </RatingGroup>
+    </RatingGroup.Control>
+  </RatingGroup.Root>
 )
 
 const IconHalf = () => (
@@ -89,28 +89,28 @@ export const ControlledRatingGroup = () => {
   const [value, setValue] = createSignal(0)
 
   return (
-    <RatingGroup
+    <RatingGroup.Root
       max={5}
       value={value()}
       onValueChange={(details) => setValue(details.value)}
       allowHalf
     >
-      <RatingGroupLabel>Label</RatingGroupLabel>
-      <RatingGroupControl>
+      <RatingGroup.Label>Label</RatingGroup.Label>
+      <RatingGroup.Control>
         {(api) => (
           <Index each={api().sizeArray}>
             {(index) => (
-              <RatingGroupItem index={index()}>
+              <RatingGroup.Item index={index()}>
                 {(api) => {
                   if (api.isHalf) return <IconHalf />
                   if (api.isHighlighted) return <IconFull />
                   return <IconEmpty />
                 }}
-              </RatingGroupItem>
+              </RatingGroup.Item>
             )}
           </Index>
         )}
-      </RatingGroupControl>
-    </RatingGroup>
+      </RatingGroup.Control>
+    </RatingGroup.Root>
   )
 }

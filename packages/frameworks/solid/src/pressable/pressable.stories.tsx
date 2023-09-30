@@ -1,5 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
-import { Pressable } from './pressable'
+import { Pressable } from './'
 
 const meta: Meta = {
   title: 'Pressable',
@@ -8,5 +8,5 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => {
-  return <Pressable onPress={() => console.log('onPress')}>Pressable</Pressable>
+  return <Pressable.Root onPress={() => console.log('onPress')}>Pressable</Pressable.Root>
 }

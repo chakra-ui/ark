@@ -1,14 +1,7 @@
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
-  TooltipContent,
-  TooltipPositioner,
-  TooltipTrigger,
-} from './'
+import { Tooltip } from './'
 import './tooltip.css'
 
 type TooltipType = typeof Tooltip
@@ -21,14 +14,14 @@ const meta: Meta<TooltipType> = {
 export default meta
 
 export const Basic = () => (
-  <Tooltip>
-    <TooltipTrigger>Hover Me</TooltipTrigger>
+  <Tooltip.Root>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
-      <TooltipPositioner>
-        <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
+      <Tooltip.Positioner>
+        <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+      </Tooltip.Positioner>
     </Portal>
-  </Tooltip>
+  </Tooltip.Root>
 )
 
 export const Controlled = () => {
@@ -36,52 +29,52 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(!isOpen())}>Toggle</button>
-      <Tooltip open={isOpen()}>
-        <TooltipTrigger>Hover Me</TooltipTrigger>
+      <Tooltip.Root open={isOpen()}>
+        <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
         <Portal>
-          <TooltipPositioner>
-            <TooltipContent>I am a tooltip!</TooltipContent>
-          </TooltipPositioner>
+          <Tooltip.Positioner>
+            <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+          </Tooltip.Positioner>
         </Portal>
-      </Tooltip>
+      </Tooltip.Root>
     </>
   )
 }
 
 export const Arrow = () => (
-  <Tooltip>
-    <TooltipTrigger>Hove Me</TooltipTrigger>
+  <Tooltip.Root>
+    <Tooltip.Trigger>Hove Me</Tooltip.Trigger>
     <Portal>
-      <TooltipPositioner>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
+      <Tooltip.Positioner>
+        <Tooltip.Arrow>
+          <Tooltip.ArrowTip />
+        </Tooltip.Arrow>
+        <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+      </Tooltip.Positioner>
     </Portal>
-  </Tooltip>
+  </Tooltip.Root>
 )
 
 export const Timings = () => (
-  <Tooltip closeDelay={0} openDelay={0}>
-    <TooltipTrigger>Hover Me</TooltipTrigger>
+  <Tooltip.Root closeDelay={0} openDelay={0}>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
-      <TooltipPositioner>
-        <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
+      <Tooltip.Positioner>
+        <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+      </Tooltip.Positioner>
     </Portal>
-  </Tooltip>
+  </Tooltip.Root>
 )
 
 export const Positioning = () => (
-  <Tooltip
+  <Tooltip.Root
     positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
   >
-    <TooltipTrigger>Hover Me</TooltipTrigger>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
-      <TooltipPositioner>
-        <TooltipContent>I am a tooltip!</TooltipContent>
-      </TooltipPositioner>
+      <Tooltip.Positioner>
+        <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+      </Tooltip.Positioner>
     </Portal>
-  </Tooltip>
+  </Tooltip.Root>
 )

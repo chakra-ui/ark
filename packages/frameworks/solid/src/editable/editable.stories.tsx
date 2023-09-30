@@ -1,15 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableControl,
-  EditableEditTrigger,
-  EditableInput,
-  EditableLabel,
-  EditablePreview,
-  EditableSubmitTrigger,
-} from './'
+import { Editable } from './'
 import { useEditable } from './use-editable'
 
 const meta: Meta = {
@@ -39,25 +29,25 @@ export const Hook = () => {
 }
 
 export const Basic = () => (
-  <Editable placeholder="Enter">
+  <Editable.Root placeholder="Enter">
     {(api) => (
       <>
-        <EditableLabel>Label</EditableLabel>
-        <EditableArea>
-          <EditableInput />
-          <EditablePreview />
-        </EditableArea>
-        <EditableControl>
+        <Editable.Label>Label</Editable.Label>
+        <Editable.Area>
+          <Editable.Input />
+          <Editable.Preview />
+        </Editable.Area>
+        <Editable.Control>
           {api().isEditing ? (
             <>
-              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
-              <EditableCancelTrigger>Canvel</EditableCancelTrigger>
+              <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+              <Editable.CancelTrigger>Canvel</Editable.CancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>Edit</EditableEditTrigger>
+            <Editable.EditTrigger>Edit</Editable.EditTrigger>
           )}
-        </EditableControl>
+        </Editable.Control>
       </>
     )}
-  </Editable>
+  </Editable.Root>
 )

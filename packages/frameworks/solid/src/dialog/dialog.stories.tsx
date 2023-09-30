@@ -1,15 +1,6 @@
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from './'
+import { Dialog } from './'
 import './dialog.css'
 
 const meta: Meta = {
@@ -20,45 +11,45 @@ export default meta
 
 export const Basic = () => {
   return (
-    <Dialog>
-      <DialogTrigger>Open Dialog</DialogTrigger>
+    <Dialog.Root>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Portal>
-        <DialogBackdrop />
-        <DialogContainer>
-          <DialogContent>
-            <DialogTitle>Dialog Title</DialogTitle>
-            <DialogDescription>Dialog Description</DialogDescription>
+        <Dialog.Backdrop />
+        <Dialog.Container>
+          <Dialog.Content>
+            <Dialog.Title>Dialog Title</Dialog.Title>
+            <Dialog.Description>Dialog Description</Dialog.Description>
             <div>
               <input placeholder="Enter name..." />
               <button>Save</button>
             </div>
-            <DialogCloseTrigger>Close</DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
+            <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+          </Dialog.Content>
+        </Dialog.Container>
       </Portal>
-    </Dialog>
+    </Dialog.Root>
   )
 }
 
 export const DialogWithRenderFn = () => {
   return (
-    <Dialog>
+    <Dialog.Root>
       {(api) => (
         <>
-          <DialogTrigger>Open Dialog</DialogTrigger>
+          <Dialog.Trigger>Open Dialog</Dialog.Trigger>
           <Portal>
-            <DialogBackdrop />
-            <DialogContainer>
-              <DialogContent>
-                <DialogTitle>Dialog Title</DialogTitle>
-                <DialogDescription>Dialog Description</DialogDescription>
-                <DialogCloseTrigger>Close</DialogCloseTrigger>
-              </DialogContent>
-            </DialogContainer>
+            <Dialog.Backdrop />
+            <Dialog.Container>
+              <Dialog.Content>
+                <Dialog.Title>Dialog Title</Dialog.Title>
+                <Dialog.Description>Dialog Description</Dialog.Description>
+                <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+              </Dialog.Content>
+            </Dialog.Container>
           </Portal>
           <p>Dialog is {api().isOpen ? 'open' : 'closed'}</p>
         </>
       )}
-    </Dialog>
+    </Dialog.Root>
   )
 }

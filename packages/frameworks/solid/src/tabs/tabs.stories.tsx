@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { TabContent, TabIndicator, TabList, Tabs, TabTrigger } from './'
+import { Tabs } from './'
 import './tabs.css'
 
 const meta: Meta = {
@@ -10,98 +10,98 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Tabs>
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue">Vue</TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+  <Tabs.Root>
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
 
 export const InitialTab = () => (
-  <Tabs value="react">
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue">Vue</TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+  <Tabs.Root value="react">
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
 
 export const Indicator = () => (
-  <Tabs>
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue">Vue</TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-      <TabIndicator />
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+  <Tabs.Root>
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+      <Tabs.Indicator />
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
 
 export const DisabledTab = () => (
-  <Tabs value="react">
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue" disabled>
+  <Tabs.Root value="react">
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue" disabled>
         Vue
-      </TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+      </Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
 
 export const Controlled = () => {
   const [value, setValue] = createSignal<string | null>('react')
   return (
-    <Tabs value={value()} onValueChange={(e) => setValue(e.value)}>
-      <TabList>
-        <TabTrigger value="react">React</TabTrigger>
-        <TabTrigger value="vue">Vue</TabTrigger>
-        <TabTrigger value="solid">Solid</TabTrigger>
-      </TabList>
-      <TabContent value="react">React Content</TabContent>
-      <TabContent value="vue">Vue Content</TabContent>
-      <TabContent value="solid">Solid Content</TabContent>
-    </Tabs>
+    <Tabs.Root value={value()} onValueChange={(e) => setValue(e.value)}>
+      <Tabs.List>
+        <Tabs.Trigger value="react">React</Tabs.Trigger>
+        <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+        <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="react">React Content</Tabs.Content>
+      <Tabs.Content value="vue">Vue Content</Tabs.Content>
+      <Tabs.Content value="solid">Solid Content</Tabs.Content>
+    </Tabs.Root>
   )
 }
 
 export const Vertical = () => (
-  <Tabs orientation="vertical" value="react">
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue">Vue</TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+  <Tabs.Root orientation="vertical" value="react">
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
 
 export const Manual = () => (
-  <Tabs activationMode="manual" value="react">
-    <TabList>
-      <TabTrigger value="react">React</TabTrigger>
-      <TabTrigger value="vue">Vue</TabTrigger>
-      <TabTrigger value="solid">Solid</TabTrigger>
-    </TabList>
-    <TabContent value="react">React Content</TabContent>
-    <TabContent value="vue">Vue Content</TabContent>
-    <TabContent value="solid">Solid Content</TabContent>
-  </Tabs>
+  <Tabs.Root activationMode="manual" value="react">
+    <Tabs.List>
+      <Tabs.Trigger value="react">React</Tabs.Trigger>
+      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+  </Tabs.Root>
 )
