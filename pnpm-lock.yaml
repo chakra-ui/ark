@@ -495,8 +495,8 @@ importers:
         specifier: 7.4.5
         version: 7.4.5(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/testing-library':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.2.2
+        version: 0.2.2
       '@testing-library/dom':
         specifier: 9.3.3
         version: 9.3.3
@@ -6390,11 +6390,11 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/testing-library@0.2.1:
-    resolution: {integrity: sha512-AdbfLCm1C2nEFrhA3ScdicfW6Fjcorehr6RlGwECMiWwaXisnP971Wd4psqtWxlAqQo4tYBZ0f6rJ3J78JLtsg==}
+  /@storybook/testing-library@0.2.2:
+    resolution: {integrity: sha512-L8sXFJUHmrlyU2BsWWZGuAjv39Jl1uAqUHdxmN42JY15M4+XCMjGlArdCCjDe1wpTSW6USYISA9axjZojgtvnw==}
     dependencies:
       '@testing-library/dom': 9.3.3
-      '@testing-library/user-event': 14.4.3(@testing-library/dom@9.3.3)
+      '@testing-library/user-event': 14.5.1(@testing-library/dom@9.3.3)
       ts-dedent: 2.2.0
     dev: true
 
@@ -6526,15 +6526,6 @@ packages:
       '@types/react-dom': 18.2.8
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /@testing-library/user-event@14.4.3(@testing-library/dom@9.3.3):
-    resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
-    engines: {node: '>=12', npm: '>=6'}
-    peerDependencies:
-      '@testing-library/dom': '>=7.21.4'
-    dependencies:
-      '@testing-library/dom': 9.3.3
     dev: true
 
   /@testing-library/user-event@14.5.1(@testing-library/dom@9.3.3):
