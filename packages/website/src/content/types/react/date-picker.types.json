@@ -42,7 +42,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 7 more ...; positioner: string; }>",
+      "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
     },
@@ -152,16 +152,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Grid": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "columns": { "type": "number", "isRequired": false },
-    "id": { "type": "string", "isRequired": false },
-    "view": { "type": "DateView", "isRequired": false }
-  },
   "Input": {
     "asChild": {
       "type": "boolean",
@@ -183,16 +173,6 @@
       "description": "Render as a different element type."
     }
   },
-  "DayCell": {
-    "value": { "type": "DateValue", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false }
-  },
   "Trigger": {
     "asChild": {
       "type": "boolean",
@@ -206,24 +186,6 @@
       "isRequired": false,
       "description": "Render as a different element type."
     }
-  },
-  "YearCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "MonthCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
   },
   "RowHeader": {
     "asChild": {
