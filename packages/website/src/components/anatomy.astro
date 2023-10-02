@@ -1,0 +1,10 @@
+---
+import { AnatomyImage } from './anatomy-image'
+
+interface Props {
+  id: string
+}
+const { id } = Astro.props
+---
+
+<AnatomyImage id={id} client:load />
