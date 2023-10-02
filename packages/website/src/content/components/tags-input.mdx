@@ -8,7 +8,33 @@ description:
   input element.
 ---
 
+import Anatomy from '~/components/anatomy.astro'
 import Story from '~/components/story.astro'
+
+## Anatomy
+
+To set up the tags input correctly, you'll need to understand its anatomy and
+how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="tags-input" />
+
+On a high level, the tags input consists of:
+
+- **Root**: The root container for the tags input.
+- **Label**: The accessible label for the tags input textbox.
+- **Control**: The container for the tags and the input's textbox.
+- **Tag**: The element that represents a tag.
+- **Input**: The textbox for adding new tags.
+- **Hidden Input**: The hidden input that holds the value of the tags input.
+  Used within forms.
+- **Clear Button**: The button that clears all tags.
+
+Each tag consists of:
+
+- **Tag Input**: The input element that is used to edit a tag.
+- **Tag Delete Button**: The button to delete a tag.
 
 ## Import
 

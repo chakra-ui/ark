@@ -7,7 +7,24 @@ description:
   where you need to offer users tips or help text.
 ---
 
+import Anatomy from '~/components/anatomy.astro'
 import Story from '~/components/story.astro'
+
+## Anatomy
+
+To set up the tooltip correctly, you'll need to understand its anatomy and how
+we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="tooltip" />
+
+On a high level, the tooltip consists of:
+
+- **Trigger**: The trigger for the tooltip.
+- **Positioner**: The element that dynamically positions the tooltip.
+- **Arrow**: The arrow that points to the trigger.
+- **Content**: The element that houses the content of the tooltip.
 
 ## Usage
 
