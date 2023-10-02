@@ -3,7 +3,7 @@ import { Box } from 'styled-system/jsx'
 
 import { allComponents as Anatomies, createGradient } from '@zag-js/anatomy-icons'
 
-export const AnatomyImage = ({ id }: { id: string }) => {
+export const AnatomyImage = ({ id }: { id: keyof typeof Anatomies }) => {
   const Anatomy = Anatomies[id]
 
   return (
