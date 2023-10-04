@@ -11,12 +11,12 @@ const meta: Meta<RatingGroupType> = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup.Root max={5} defaultValue={3} allowHalf>
+  <RatingGroup.Root count={5} defaultValue={3} allowHalf>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ sizeArray }) =>
-        sizeArray.map((index) => (
-          <RatingGroup.Item key={index} index={index}>
+      {({ items }) =>
+        items.map((item) => (
+          <RatingGroup.Item key={item} index={item}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return <IconHalf />
               if (isHighlighted) return <IconFull />

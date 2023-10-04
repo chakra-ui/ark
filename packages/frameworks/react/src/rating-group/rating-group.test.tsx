@@ -14,9 +14,9 @@ const ComponentUnderTest = (props: RatingGroupProps) => (
   <RatingGroup {...props}>
     <RatingGroupLabel>GroupLabel</RatingGroupLabel>
     <RatingGroupControl>
-      {({ sizeArray }) =>
-        sizeArray.map((index) => (
-          <RatingGroupItem key={index} index={index}>
+      {({ items }) =>
+        items.map((item) => (
+          <RatingGroupItem key={item} index={item}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return 'half'
               if (isHighlighted) return 'highlighted'
@@ -40,7 +40,7 @@ describe('Rating Group', () => {
   })
 
   it('should apply default value', async () => {
-    render(<ComponentUnderTest defaultValue={2} max={5} />)
+    render(<ComponentUnderTest defaultValue={2} count={5} />)
 
     const input = screen.getByRole('textbox', { hidden: true })
 
@@ -48,7 +48,7 @@ describe('Rating Group', () => {
   })
 
   it('should apply value', async () => {
-    render(<ComponentUnderTest value={1} defaultValue={2} max={5} />)
+    render(<ComponentUnderTest value={1} defaultValue={2} count={5} />)
 
     const input = screen.getByRole('textbox', { hidden: true })
 
@@ -57,7 +57,7 @@ describe('Rating Group', () => {
 
   it('should trigger onValueChange on click', async () => {
     const onValueChange = vi.fn()
-    render(<ComponentUnderTest value={1} onValueChange={onValueChange} max={5} />)
+    render(<ComponentUnderTest value={1} onValueChange={onValueChange} count={5} />)
 
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
     fireEvent.click(maxStarRadio)
@@ -66,7 +66,7 @@ describe('Rating Group', () => {
   })
 
   it('should update rating on click', async () => {
-    render(<ComponentUnderTest defaultValue={0} max={5} />)
+    render(<ComponentUnderTest defaultValue={0} count={5} />)
 
     const input = screen.getByRole('textbox', { hidden: true })
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })

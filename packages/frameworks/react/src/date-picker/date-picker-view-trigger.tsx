@@ -11,7 +11,6 @@ export interface DatePickerViewTriggerProps extends Assign<HTMLArkProps<'button'
 export const DatePickerViewTrigger = forwardRef<HTMLButtonElement, DatePickerViewTriggerProps>(
   (props, ref) => {
     const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['view'])
-
     const api = useDatePickerContext()
     const mergedProps = mergeProps(
       api.getViewTriggerProps({ view: viewProps.view ?? api.view }),

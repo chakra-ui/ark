@@ -22,6 +22,7 @@ import {
 } from './date-picker-day-cell-trigger'
 import { DatePickerGrid, type DatePickerGridProps } from './date-picker-grid'
 import { DatePickerInput, type DatePickerInputProps } from './date-picker-input'
+import { DatePickerLabel, type DatePickerLabelProps } from './date-picker-label'
 import { DatePickerMonthCell, type DatePickerMonthCellProps } from './date-picker-month-cell'
 import {
   DatePickerMonthCellTrigger,
@@ -45,6 +46,7 @@ import { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-pic
 
 const DatePicker = Object.assign(DatePickerRoot, {
   Root: DatePickerRoot,
+  Label: DatePickerLabel,
   ClearTrigger: DatePickerClearTrigger,
   ColumnHeader: DatePickerColumnHeader,
   Content: DatePickerContent,
@@ -110,6 +112,7 @@ export type {
   DatePickerDayCellTriggerProps,
   DatePickerGridProps,
   DatePickerInputProps,
+  DatePickerLabelProps,
   DatePickerMonthCellProps,
   DatePickerMonthCellTriggerProps,
   DatePickerMonthSelectProps,
