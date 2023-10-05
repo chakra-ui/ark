@@ -24,7 +24,7 @@
     "ts-pattern": "5.0.5"
   },
   "devDependencies": {
-    "@astrojs/mdx": "1.1.0",
+    "@astrojs/mdx": "1.1.1",
     "@astrojs/react": "3.0.3",
     "@pandacss/astro": "0.15.5",
     "@pandacss/dev": "0.15.5",
