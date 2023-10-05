@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "1.1.0",
-    "@astrojs/react": "3.0.2",
+    "@astrojs/react": "3.0.3",
     "@pandacss/astro": "0.15.5",
     "@pandacss/dev": "0.15.5",
     "@park-ui/presets": "0.15.0",
