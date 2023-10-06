@@ -3,12 +3,12 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { useDatePickerViewContext } from './date-picker-view-context'
 
-export interface DatePickerViewTriggerProps extends HTMLArkProps<'button'> {}
+export interface DatePickerViewControlProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerViewTrigger = (props: DatePickerViewTriggerProps) => {
+export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
-  const mergedProps = mergeProps(api().getViewTriggerProps(viewProps), props)
+  const mergedProps = mergeProps(api().getViewControlProps(viewProps), props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.div {...mergedProps} />
 }

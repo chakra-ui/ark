@@ -9,11 +9,11 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup.Root max={5} value={1} allowHalf>
+  <RatingGroup.Root count={5} value={1} allowHalf>
     <RatingGroup.Label>GroupLabel</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
-        <Index each={api().sizeArray}>
+        <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
               {(api) => {
@@ -90,7 +90,7 @@ export const ControlledRatingGroup = () => {
 
   return (
     <RatingGroup.Root
-      max={5}
+      count={5}
       value={value()}
       onValueChange={(details) => setValue(details.value)}
       allowHalf
@@ -98,7 +98,7 @@ export const ControlledRatingGroup = () => {
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>
         {(api) => (
-          <Index each={api().sizeArray}>
+          <Index each={api().items}>
             {(index) => (
               <RatingGroup.Item index={index()}>
                 {(api) => {
