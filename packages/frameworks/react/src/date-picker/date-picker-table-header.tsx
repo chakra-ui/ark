@@ -4,17 +4,16 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { useDatePickerTableContext } from './date-picker-table-context'
 
-export interface DatePickerTableHeaderProps extends HTMLArkProps<'thead'> {}
+export interface DatePickerTableHeaderProps extends HTMLArkProps<'th'> {}
 
-export const DatePickerTableHeader = forwardRef<
-  HTMLTableSectionElement,
-  DatePickerTableHeaderProps
->((props, ref) => {
-  const api = useDatePickerContext()
-  const tableProps = useDatePickerTableContext()
-  const mergedProps = mergeProps(api.getTableHeaderProps(tableProps), props)
+export const DatePickerTableHeader = forwardRef<HTMLTableCellElement, DatePickerTableHeaderProps>(
+  (props, ref) => {
+    const api = useDatePickerContext()
+    const tableProps = useDatePickerTableContext()
+    const mergedProps = mergeProps(api.getTableHeaderProps(tableProps), props)
 
-  return <ark.thead {...mergedProps} ref={ref} />
-})
+    return <ark.th {...mergedProps} data-scope="date-picker" data-part="table-header" ref={ref} />
+  },
+)
 
 DatePickerTableHeader.displayName = 'DatePickerTableHeader'

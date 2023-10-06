@@ -4,9 +4,9 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { useDatePickerTableContext } from './date-picker-table-context'
 
-export interface DatePickerTableBodyProps extends HTMLArkProps<'tr'> {}
+export interface DatePickerTableRowProps extends HTMLArkProps<'tr'> {}
 
-export const DatePickerTableBody = forwardRef<HTMLTableRowElement, DatePickerTableBodyProps>(
+export const DatePickerTableRow = forwardRef<HTMLTableRowElement, DatePickerTableRowProps>(
   (props, ref) => {
     const api = useDatePickerContext()
     const tableProps = useDatePickerTableContext()
@@ -16,4 +16,4 @@ export const DatePickerTableBody = forwardRef<HTMLTableRowElement, DatePickerTab
   },
 )
 
-DatePickerTableBody.displayName = 'DatePickerTableBody'
+DatePickerTableRow.displayName = 'DatePickerTableRow'
