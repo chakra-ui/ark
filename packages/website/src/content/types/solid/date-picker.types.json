@@ -37,7 +37,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 7 more ...; positioner: string; }>",
+      "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
     },
@@ -141,33 +141,11 @@
     }
   },
   "Row": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Grid": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "columns": { "type": "number", "isRequired": false },
-    "id": { "type": "string", "isRequired": false },
-    "view": { "type": "DateView", "isRequired": false }
-  },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "DayCell": {
-    "value": { "type": "DateValue", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false }
-  },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "RowGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "YearCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "MonthCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "RowHeader": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "YearSelect": { "asChild": { "type": "boolean", "isRequired": false } },
