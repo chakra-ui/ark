@@ -1,10 +1,16 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
-import { getExports } from '../setup-test'
+import { render } from '@testing-library/react'
+import { getExports, getParts } from '../setup-test'
 import { DatePicker } from './'
+import { Basic as ComponentUnderTest } from './date-picker.stories'
 
 describe('Date Picker', () => {
-  it.skip.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
-    // @ts-expect-error TODO
+  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
     expect(DatePicker[part]).toBeDefined()
+  })
+
+  it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 })

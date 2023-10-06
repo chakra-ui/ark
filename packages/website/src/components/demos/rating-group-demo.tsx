@@ -3,10 +3,10 @@ import { RatingGroup } from '~/components/ui/rating-group'
 
 export const RatingGroupDemo = (props: RatingGroupVariantProps) => {
   return (
-    <RatingGroup.Root {...props} max={5} defaultValue={3} allowHalf={false}>
+    <RatingGroup.Root {...props} count={5} defaultValue={3} allowHalf={false}>
       <RatingGroup.Control>
-        {({ sizeArray }) =>
-          sizeArray.map((index) => (
+        {({ items }) =>
+          items.map((index) => (
             <RatingGroup.Item key={index} index={index}>
               {({ isHalf }) => <Icon isHalf={isHalf} />}
             </RatingGroup.Item>

@@ -11,6 +11,7 @@ export const Tooltip = (props: TooltipProps) => {
     'closeDelay',
     'closeOnEsc',
     'closeOnPointerDown',
+    'dir',
     'disabled',
     'getRootNode',
     'id',

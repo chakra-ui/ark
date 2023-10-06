@@ -42,7 +42,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 7 more ...; positioner: string; }>",
+      "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
     },
@@ -145,22 +145,13 @@
       "description": "The view of the calendar"
     }
   },
-  "Row": {
+  "View": {
+    "view": { "type": "DateView", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
-  },
-  "Grid": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "columns": { "type": "number", "isRequired": false },
-    "id": { "type": "string", "isRequired": false },
-    "view": { "type": "DateView", "isRequired": false }
   },
   "Input": {
     "asChild": {
@@ -168,6 +159,21 @@
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Table": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "columns": { "type": "number", "isRequired": false }
   },
   "Content": {
     "asChild": {
@@ -183,16 +189,6 @@
       "description": "Render as a different element type."
     }
   },
-  "DayCell": {
-    "value": { "type": "DateValue", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false }
-  },
   "Trigger": {
     "asChild": {
       "type": "boolean",
@@ -200,32 +196,39 @@
       "description": "Render as a different element type."
     }
   },
-  "RowGroup": {
+  "TableRow": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "YearCell": {
-    "value": { "type": "number", "isRequired": true },
+  "RangeText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TableBody": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TableCell": {
+    "value": { "type": "number | DateValue", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "disabled": { "type": "boolean", "isRequired": false }
+    "columns": { "type": "number", "isRequired": false },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "visibleRange": { "type": "VisibleRange", "isRequired": false }
   },
-  "MonthCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "RowHeader": {
+  "TableHead": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -265,16 +268,28 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "view": { "type": "DateView", "isRequired": false }
+    }
+  },
+  "TableHeader": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ViewControl": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
   "ViewTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "view": { "type": "DateView", "isRequired": false }
+    }
   },
   "ClearTrigger": {
     "asChild": {
@@ -283,28 +298,7 @@
       "description": "Render as a different element type."
     }
   },
-  "ColumnHeader": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "DayCellTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "YearCellTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "MonthCellTrigger": {
+  "TableCellTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

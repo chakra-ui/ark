@@ -11,6 +11,11 @@
       "isRequired": false,
       "description": "Whether to autofocus the rating."
     },
+    "count": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The total number of ratings."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -42,7 +47,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the rating. Useful for composition."
     },
-    "max": { "type": "number", "isRequired": false, "description": "The maximum rating value." },
     "name": {
       "type": "string",
       "isRequired": false,

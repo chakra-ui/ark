@@ -30,8 +30,8 @@ export const props = {
   ids: {
     type: Object as PropType<Context['ids']>,
   },
-  max: {
-    type: Number as PropType<Context['max']>,
+  count: {
+    type: Number as PropType<Context['count']>,
   },
   name: {
     type: String as PropType<Context['name']>,
