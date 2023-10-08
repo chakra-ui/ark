@@ -800,11 +800,11 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       '@fontsource-variable/fira-code':
-        specifier: 5.0.12
-        version: 5.0.12
+        specifier: 5.0.13
+        version: 5.0.13
       '@fontsource-variable/inter':
-        specifier: 5.0.12
-        version: 5.0.12
+        specifier: 5.0.13
+        version: 5.0.13
       '@zag-js/anatomy-icons':
         specifier: 0.23.0
         version: 0.23.0(react@18.2.0)(typescript@5.2.2)
@@ -3585,12 +3585,12 @@ packages:
   /@floating-ui/utils@0.1.4:
     resolution: {integrity: sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==}
 
-  /@fontsource-variable/fira-code@5.0.12:
-    resolution: {integrity: sha512-erKDrCZqB8sslk91tlKyqDdek60A9/Luv94QWC3QXhyviCYLJItAH3QKY+50W4L4SvavB+ZXsEpD6CmL17C1lg==}
+  /@fontsource-variable/fira-code@5.0.13:
+    resolution: {integrity: sha512-dzmEk2tuvUcz/pcf9vhSir8K8G7fIdmJA7E5t1MTD/2s0vjbBDVCqYr4gC84L8c/XzmwtXg56GhY6rcl91JFRA==}
     dev: false
 
-  /@fontsource-variable/inter@5.0.12:
-    resolution: {integrity: sha512-BuYkYLsvqLnWlXeyUvo6HpcAAgiOpIeQeVXWuxTNrJWr3NpuY5mWzizCxHnHD2gWLZOSOx0GkBqhQl7Oh6zTUQ==}
+  /@fontsource-variable/inter@5.0.13:
+    resolution: {integrity: sha512-mb2WyZ2rHeqIG8aqGJIvLBOmo4sg2x7SHlsE6PUhwxbOicVzO59EZwSGtzNO3FmchuDPFVAxzcXYcR5B6jE6Qw==}
     dev: false
 
   /@histoire/app@0.17.0(vite@4.4.11):
