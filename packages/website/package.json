@@ -20,7 +20,7 @@
     "lucide-react": "0.284.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "shiki": "0.14.4",
+    "shiki": "0.14.5",
     "ts-pattern": "5.0.5"
   },
   "devDependencies": {
