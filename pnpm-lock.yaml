@@ -821,8 +821,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       shiki:
-        specifier: 0.14.4
-        version: 0.14.4
+        specifier: 0.14.5
+        version: 0.14.5
       ts-pattern:
         specifier: 5.0.5
         version: 5.0.5
@@ -1010,7 +1010,7 @@ packages:
       remark-parse: 10.0.2
       remark-rehype: 10.1.0
       remark-smartypants: 2.0.0
-      shiki: 0.14.4
+      shiki: 0.14.5
       unified: 10.1.2
       unist-util-visit: 4.1.2
       vfile: 5.3.7
@@ -1034,7 +1034,7 @@ packages:
       remark-parse: 10.0.2
       remark-rehype: 10.1.0
       remark-smartypants: 2.0.0
-      shiki: 0.14.4
+      shiki: 0.14.5
       unified: 10.1.2
       unist-util-visit: 4.1.2
       vfile: 5.3.7
@@ -1057,7 +1057,7 @@ packages:
       remark-parse: 10.0.2
       remark-rehype: 10.1.0
       remark-smartypants: 2.0.0
-      shiki: 0.14.4
+      shiki: 0.14.5
       unified: 10.1.2
       unist-util-visit: 4.1.2
       vfile: 5.3.7
@@ -9712,7 +9712,7 @@ packages:
       rehype: 12.0.1
       semver: 7.5.4
       server-destroy: 1.0.1
-      shiki: 0.14.4
+      shiki: 0.14.5
       string-width: 5.1.2
       strip-ansi: 7.1.0
       tsconfig-resolver: 3.0.1
@@ -9784,7 +9784,7 @@ packages:
       resolve: 1.22.6
       semver: 7.5.4
       server-destroy: 1.0.1
-      shiki: 0.14.4
+      shiki: 0.14.5
       string-width: 6.1.0
       strip-ansi: 7.1.0
       tsconfig-resolver: 3.0.1
@@ -17062,8 +17062,8 @@ packages:
     resolution: {integrity: sha512-RbRMD+IuJJseSZljDdne9ThrUYrwBwJR04FvN4VXpfsU3MNID5VJGHLAD5je/HGThCyEKNgH+nEkSFEWKD7C3Q==}
     dev: true
 
-  /shiki@0.14.4:
-    resolution: {integrity: sha512-IXCRip2IQzKwxArNNq1S+On4KPML3Yyn8Zzs/xRgcgOWIr8ntIK3IKzjFPfjy/7kt9ZMjc+FItfqHRBg8b6tNQ==}
+  /shiki@0.14.5:
+    resolution: {integrity: sha512-1gCAYOcmCFONmErGTrS1fjzJLA7MGZmKzrBNX7apqSwhyITJg2O102uFzXUeBxNnEkDA9vHIKLyeKq0V083vIw==}
     dependencies:
       ansi-sequence-parser: 1.1.1
       jsonc-parser: 3.2.0
