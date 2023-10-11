@@ -1,22 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ToastItemProvider } from './toast-item-context'
-import { useToastItem, type UseToastItemProps } from './use-toast-item'
+import { useToastContext } from './toast-context'
 
-export type ToastProps = Assign<HTMLArkProps<'div'>, UseToastItemProps>
+export type ToastProps = HTMLArkProps<'li'>
 
 export const Toast = (props: ToastProps) => {
-  const [toastParams, localProps] = createSplitProps<UseToastItemProps>()(props, ['toast'])
+  const api = useToastContext()
+  const mergedProps = mergeProps(() => api().rootProps, props)
 
-  const api = useToastItem(toastParams)
-  const rootProps = mergeProps(() => api().rootProps, localProps)
-  const customToast = api().render()
-
-  return (
-    <ToastItemProvider value={api}>
-      <ark.div {...rootProps}>{customToast || props.children}</ark.div>
-    </ToastItemProvider>
-  )
+  return <ark.li {...mergedProps} />
 }
