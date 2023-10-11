@@ -92,7 +92,7 @@
     "typescript": "5.2.2",
     "vite": "4.4.11",
     "vite-plugin-dts": "3.6.0",
-    "vite-plugin-solid": "2.7.0",
+    "vite-plugin-solid": "2.7.1",
     "vitest": "0.34.2"
   },
   "peerDependencies": {
