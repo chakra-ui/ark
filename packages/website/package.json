@@ -6,6 +6,7 @@
     "prepare": "panda codegen --silent",
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "panda codegen --silent",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
