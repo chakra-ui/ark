@@ -1,45 +1,31 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
-  type PaginationProps,
-} from '.'
+import { Pagination, type PaginationProps } from '.'
 import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
   <Pagination {...props}>
     {({ pages }) => (
-      <PaginationList>
-        <PaginationListItem>
-          <PaginationPrevPageTrigger>
-            Previous <span className="visually-hidden">Page</span>
-          </PaginationPrevPageTrigger>
-        </PaginationListItem>
-
+      <>
+        <Pagination.PrevTrigger>
+          Previous <span className="visually-hidden">Page</span>
+        </Pagination.PrevTrigger>
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <PaginationListItem key={index}>
-              <PaginationPageTrigger {...page}>{page.value}</PaginationPageTrigger>
-            </PaginationListItem>
+            <Pagination.Item key={index} {...page}>
+              {page.value}
+            </Pagination.Item>
           ) : (
-            <PaginationListItem key={index}>
-              <PaginationEllipsis index={index}>&#8230;</PaginationEllipsis>
-            </PaginationListItem>
+            <Pagination.Ellipsis key={index} index={index}>
+              &#8230;
+            </Pagination.Ellipsis>
           ),
         )}
-        <PaginationListItem>
-          <PaginationNextPageTrigger>
-            Next <span className="visually-hidden">Page</span>
-          </PaginationNextPageTrigger>
-        </PaginationListItem>
-      </PaginationList>
+        <Pagination.NextTrigger>
+          Next <span className="visually-hidden">Page</span>
+        </Pagination.NextTrigger>
+      </>
     )}
   </Pagination>
 )

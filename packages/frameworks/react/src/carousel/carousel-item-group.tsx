@@ -3,15 +3,15 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export interface CarouselSlideGroupProps extends HTMLArkProps<'div'> {}
+export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 
-export const CarouselSlideGroup = forwardRef<HTMLDivElement, CarouselSlideGroupProps>(
+export const CarouselItemGroup = forwardRef<HTMLDivElement, CarouselItemGroupProps>(
   (props, ref) => {
     const api = useCarouselContext()
-    const mergedProps = mergeProps(api.slideGroupProps, props)
+    const mergedProps = mergeProps(api.itemGroupProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
 
-CarouselSlideGroup.displayName = 'CarouselSlideGroup'
+CarouselItemGroup.displayName = 'CarouselItemGroup'
