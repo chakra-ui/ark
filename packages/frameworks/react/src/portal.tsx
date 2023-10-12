@@ -1,6 +1,6 @@
 import { Children, type PropsWithChildren, type RefObject } from 'react'
 import { createPortal } from 'react-dom'
-import { useEnvironmentContext } from '../environment'
+import { useEnvironmentContext } from './environment'
 
 export interface PortalProps {
   disabled?: boolean
