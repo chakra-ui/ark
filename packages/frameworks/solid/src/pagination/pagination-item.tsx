@@ -5,18 +5,17 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-type PaginationPageTriggerParams = {
+type PaginationItemParams = {
   children: JSX.Element
   value: number
 }
 
-export type PaginationPageTriggerProps = Assign<HTMLArkProps<'li'>, PaginationPageTriggerParams>
+export type PaginationItemProps = Assign<HTMLArkProps<'li'>, PaginationItemParams>
 
-export const PaginationPageTrigger = (props: PaginationPageTriggerProps) => {
-  const [itemParams, liProps] = createSplitProps<Omit<PaginationPageTriggerParams, 'children'>>()(
-    props,
-    ['value'],
-  )
+export const PaginationItem = (props: PaginationItemProps) => {
+  const [itemParams, liProps] = createSplitProps<Omit<PaginationItemParams, 'children'>>()(props, [
+    'value',
+  ])
   const pagination = usePaginationContext()
 
   const getChildren = children(() => props.children)
@@ -25,7 +24,7 @@ export const PaginationPageTrigger = (props: PaginationPageTriggerProps) => {
     if (children instanceof HTMLElement) {
       spread(
         children,
-        pagination().getPageTriggerProps({
+        pagination().getItemProps({
           type: 'page',
           value: itemParams.value,
         }),

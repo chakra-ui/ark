@@ -3,14 +3,15 @@ import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
+export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerSwatchGroup = forwardRef<HTMLDivElement, ColorPickerSwatchGroupProps>(
+export const ColorPickerPositioner = forwardRef<HTMLDivElement, ColorPickerPositionerProps>(
   (props, ref) => {
     const api = useColorPickerContext()
-    const mergedProps = mergeProps(api.swatchGroupProps, props)
+    const mergedProps = mergeProps(api.positionerProps, props)
+
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
 
-ColorPickerSwatchGroup.displayName = 'ColorPickerSwatchGroup'
+ColorPickerPositioner.displayName = 'ColorPickerPositioner'
