@@ -3,13 +3,13 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselSlideProps = Assign<HTMLArkProps<'div'>, { index: number }>
+export type CarouselItemProps = Assign<HTMLArkProps<'div'>, { index: number }>
 
-export const CarouselSlide = defineComponent({
-  name: 'CarouselSlide',
+export const CarouselItem = defineComponent({
+  name: 'CarouselItem',
   props: {
     index: {
-      type: Number as PropType<CarouselSlideProps['index']>,
+      type: Number as PropType<CarouselItemProps['index']>,
       required: true,
     },
   },
@@ -17,7 +17,7 @@ export const CarouselSlide = defineComponent({
     const api = useCarouselContext()
 
     return () => (
-      <ark.div {...api.value.getSlideProps(props)} {...attrs}>
+      <ark.div {...api.value.getItemProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

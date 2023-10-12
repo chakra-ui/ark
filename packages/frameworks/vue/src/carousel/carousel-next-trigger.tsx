@@ -2,17 +2,17 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselSlideGroupProps = HTMLArkProps<'div'>
+export type CarouselNextTriggerProps = HTMLArkProps<'button'>
 
-export const CarouselSlideGroup = defineComponent({
-  name: 'CarouselSlideGroup',
+export const CarouselNextTrigger = defineComponent({
+  name: 'CarouselNextTrigger',
   setup(_, { slots, attrs }) {
     const api = useCarouselContext()
 
     return () => (
-      <ark.div {...api.value.slideGroupProps} {...attrs}>
+      <ark.button {...api.value.nextTriggerProps} {...attrs}>
         {slots.default?.()}
-      </ark.div>
+      </ark.button>
     )
   },
 })

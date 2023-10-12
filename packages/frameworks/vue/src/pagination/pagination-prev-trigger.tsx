@@ -3,15 +3,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationNextPageTriggerProps = HTMLArkProps<'button'>
+export type PaginationPrevTriggerProps = HTMLArkProps<'button'>
 
-export const PaginationNextPageTrigger: ComponentWithProps<PaginationNextPageTriggerProps> =
+export const PaginationPrevTrigger: ComponentWithProps<PaginationPrevTriggerProps> =
   defineComponent({
-    name: 'PaginationNextPageTrigger',
+    name: 'PaginationPrevTrigger',
     setup(_, { slots, attrs }) {
       const api = usePaginationContext()
       return () => (
-        <ark.button {...api.value.nextPageTriggerProps} {...attrs}>
+        <ark.button {...api.value.prevTriggerProps} {...attrs}>
           {() => getValidChildren(slots)}
         </ark.button>
       )
