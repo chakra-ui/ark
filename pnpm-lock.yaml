@@ -8141,6 +8141,17 @@ packages:
     resolution: {integrity: sha512-55X8kZiv78xNEnM4LSErphz3ClKlqxfJB/AdSu6SX5v/Na/NlxVBtTIssuv0EVQCBnN72h08zft06boDpWvVtQ==}
     dev: false
 
+  /@zag-js/file-upload@0.22.0:
+    resolution: {integrity: sha512-GllSDkqLDpU44vf4y9+u18fAKo7FOwG1CYfy/vsO/6gqjikybcs8K0lt3r1XcTkn2numOUtUkde9Ghrjj/XHgg==}
+    dependencies:
+      '@zag-js/anatomy': 0.22.0
+      '@zag-js/core': 0.22.0
+      '@zag-js/dom-query': 0.22.0
+      '@zag-js/types': 0.22.0
+      '@zag-js/utils': 0.22.0
+      '@zag-js/visually-hidden': 0.22.0
+    dev: false
+
   /@zag-js/form-utils@0.12.0:
     resolution: {integrity: sha512-Kp4JwhDg4kZoA3kw+7Hkf9yKyA9x2h6bP3S112JglSMFLNm6DzHEc4AUKAvVg8VUe+PiQ+MNKVQJZYcWX0eGpw==}
     dependencies:
