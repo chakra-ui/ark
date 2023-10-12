@@ -13,14 +13,15 @@ export default meta
 
 export const Basic = () => {
   return (
-    <ColorPicker.Root>
+    <ColorPicker.Root defaultValue="hsl(0, 100%, 50%)">
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />
         <ColorPicker.ChannelInput channel="alpha" />
         <ColorPicker.Trigger>
-          <ColorPicker.Swatch value="red" />
-          <ColorPicker.TransparencyGrid size="10px" />
+          <ColorPicker.Swatch value="red">
+            <ColorPicker.TransparencyGrid size="10px" />
+          </ColorPicker.Swatch>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
       <ColorPicker.Positioner>
@@ -29,16 +30,28 @@ export const Basic = () => {
             <ColorPicker.AreaBackground />
             <ColorPicker.AreaThumb />
           </ColorPicker.Area>
-          <ColorPicker.ChannelSlider channel="alpha">
+          <ColorPicker.ChannelSlider channel="hue">
             <ColorPicker.ChannelSliderTrack />
             <ColorPicker.ChannelSliderThumb />
+          </ColorPicker.ChannelSlider>
+          <ColorPicker.ChannelSlider channel="alpha">
             <ColorPicker.TransparencyGrid size="16px" />
+            <ColorPicker.ChannelSliderTrack />
+            <ColorPicker.ChannelSliderThumb />
           </ColorPicker.ChannelSlider>
           <ColorPicker.SwatchGroup>
-            <ColorPicker.Swatch value="red" />
-            <ColorPicker.Swatch value="green" />
-            <ColorPicker.Swatch value="blue" />
+            <ColorPicker.SwatchTrigger value="red">
+              <ColorPicker.Swatch value="red" />
+            </ColorPicker.SwatchTrigger>
+            <ColorPicker.SwatchTrigger value="blue">
+              <ColorPicker.Swatch value="blue" />
+            </ColorPicker.SwatchTrigger>
+            <ColorPicker.SwatchTrigger value="green">
+              <ColorPicker.Swatch value="green" />
+            </ColorPicker.SwatchTrigger>
           </ColorPicker.SwatchGroup>
+          <ColorPicker.ChannelInput channel="hex" />
+          <ColorPicker.ChannelInput channel="alpha" />
           <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
