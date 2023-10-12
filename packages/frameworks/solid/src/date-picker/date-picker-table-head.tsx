@@ -8,7 +8,7 @@ export interface DatePickerTableHeadProps extends HTMLArkProps<'thead'> {}
 export const DatePickerTableHead = (props: DatePickerTableHeadProps) => {
   const api = useDatePickerContext()
   const tableProps = useDatePickerTableContext()
-  const mergedProps = mergeProps(api().getTableHeadProps(tableProps), props)
+  const mergedProps = mergeProps(() => api().getTableHeadProps(tableProps), props)
 
   return <ark.thead {...mergedProps} />
 }

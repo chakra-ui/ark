@@ -8,7 +8,7 @@ export interface DatePickerViewControlProps extends HTMLArkProps<'div'> {}
 export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
-  const mergedProps = mergeProps(api().getViewControlProps(viewProps), props)
+  const mergedProps = mergeProps(() => api().getViewControlProps(viewProps), props)
 
   return <ark.div {...mergedProps} />
 }
