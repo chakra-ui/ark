@@ -8,7 +8,7 @@ interface Props {
 export const SidebarGroup = (props: Props) => {
   const { items, currentValue } = props
   return (
-    <Tabs defaultValue={currentValue} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
+    <Tabs defaultValue={currentValue} orientation="vertical" size="sm">
       <TabList>
         {items.map((item, id) => (
           <TabTrigger key={id} value={item.id} asChild width="fit-content">

@@ -39,11 +39,11 @@ const components = await getCollection('components').then((items) =>
   <ExternalLinks />
 
   <Stack gap="3">
-    <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Overview</Typography>
+    <Typography textStyle={{ base: 'sm', md: 'sm' }} fontWeight="bold">Overview</Typography>
     <SidebarGroup items={docs} currentValue={doc} client:load />
   </Stack>
   <Stack gap="3">
-    <Typography textStyle={{ base: 'md', md: 'sm' }} fontWeight="bold">Components</Typography>
+    <Typography textStyle={{ base: 'sm', md: 'sm' }} fontWeight="bold">Components</Typography>
     <SidebarGroup items={components} currentValue={component} client:load />
   </Stack>
 </Stack>
