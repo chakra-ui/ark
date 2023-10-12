@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
-import { Portal } from '@zag-js/react'
 import { useState } from 'react'
+import { Portal } from '../portal'
 import { Menu } from './'
 import './menu.css'
 

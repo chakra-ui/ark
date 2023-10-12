@@ -1,7 +1,6 @@
 import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Portal } from '@zag-js/react'
 import { vi } from 'vitest'
 import {
   HoverCard,
@@ -12,6 +11,7 @@ import {
   HoverCardTrigger,
   type HoverCardProps,
 } from '.'
+import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
