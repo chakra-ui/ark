@@ -17,13 +17,19 @@ export const Basic = () => (
       <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
     </FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
-    {/* <FileUpload.ItemGroup>
-      <FileUpload.Item>
-        <FileUpload.ItemName>File name</FileUpload.ItemName>
-        {/* <FileUpload.ItemSize>File size</FileUpload.ItemSize>}
-        <FileUpload.ItemDeleteTrigger>Remove</FileUpload.ItemDeleteTrigger>
-      </FileUpload.Item>
-    </FileUpload.ItemGroup> */}
+    <FileUpload.ItemGroup>
+      {(api) =>
+        api.files.map((file) => (
+          <FileUpload.Item key={file.id}>
+            <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
+            {/* <FileUpload.ItemSize>{file.size}</FileUpload.ItemSize> */}
+            {/* <FileUpload.ItemDeleteTrigger onClick={() => api.removeFile(file.id)}> */}
+            {/* Remove */}
+            {/* </FileUpload.ItemDeleteTrigger> */}
+          </FileUpload.Item>
+        ))
+      }
+    </FileUpload.ItemGroup>
   </FileUpload.Root>
 )
 
