@@ -80,6 +80,9 @@ importers:
       '@zag-js/editable':
         specifier: 0.23.0
         version: 0.23.0
+      '@zag-js/file-upload':
+        specifier: 0.23.0
+        version: 0.23.0
       '@zag-js/hover-card':
         specifier: 0.23.0
         version: 0.23.0
@@ -202,6 +205,9 @@ importers:
         specifier: 0.23.0
         version: 0.23.0
       '@zag-js/editable':
+        specifier: 0.23.0
+        version: 0.23.0
+      '@zag-js/file-upload':
         specifier: 0.23.0
         version: 0.23.0
       '@zag-js/hover-card':
@@ -8141,15 +8147,20 @@ packages:
     resolution: {integrity: sha512-55X8kZiv78xNEnM4LSErphz3ClKlqxfJB/AdSu6SX5v/Na/NlxVBtTIssuv0EVQCBnN72h08zft06boDpWvVtQ==}
     dev: false
 
-  /@zag-js/file-upload@0.22.0:
-    resolution: {integrity: sha512-GllSDkqLDpU44vf4y9+u18fAKo7FOwG1CYfy/vsO/6gqjikybcs8K0lt3r1XcTkn2numOUtUkde9Ghrjj/XHgg==}
+  /@zag-js/file-upload@0.23.0:
+    resolution: {integrity: sha512-+XCufFi2jpTCAl+ZPfMDWi75tZAoU8YDvpHV8SKZrunqlg1P3vjKLN0EMzq4n33G7wouA7ujVkuHVqew/HwszQ==}
     dependencies:
-      '@zag-js/anatomy': 0.22.0
-      '@zag-js/core': 0.22.0
-      '@zag-js/dom-query': 0.22.0
-      '@zag-js/types': 0.22.0
-      '@zag-js/utils': 0.22.0
-      '@zag-js/visually-hidden': 0.22.0
+      '@zag-js/anatomy': 0.23.0
+      '@zag-js/core': 0.23.0
+      '@zag-js/dom-query': 0.23.0
+      '@zag-js/file-utils': 0.23.0
+      '@zag-js/types': 0.23.0
+      '@zag-js/utils': 0.23.0
+      '@zag-js/visually-hidden': 0.23.0
+    dev: false
+
+  /@zag-js/file-utils@0.23.0:
+    resolution: {integrity: sha512-c3hhIG1W24z6hNGoqtV2x3K8vP2A07rkf5BCEdCvBPJEuKv5WLDoB2KRz325bM0MDi82zsCGS2HawpoYzcWEWA==}
     dev: false
 
   /@zag-js/form-utils@0.12.0:
