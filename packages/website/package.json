@@ -16,7 +16,7 @@
     "@astrojs/sitemap": "3.0.1",
     "@fontsource-variable/fira-code": "5.0.13",
     "@fontsource-variable/inter": "5.0.13",
-    "@zag-js/anatomy-icons": "0.23.0",
+    "@zag-js/anatomy-icons": "0.24.0",
     "astro": "3.2.4",
     "lucide-react": "0.286.0",
     "react": "18.2.0",
