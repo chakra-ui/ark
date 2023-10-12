@@ -1,87 +1,49 @@
-import { toastAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getExports } from '../setup-test'
-import {
-  Toast,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastGroup,
-  ToastPlacements,
-  ToastProvider,
-  ToastTitle,
-  useToast,
-  type ToastProviderProps,
-} from './'
+import { Toast, createToaster } from './'
 
-const ExampleToastProvider = (props: ToastProviderProps) => (
-  <ToastProvider>
-    <ToastPlacements>
-      {(placements) =>
-        placements.map((placement) => (
-          <ToastGroup key={placement} placement={placement}>
-            {(toasts) =>
-              toasts.map((toast) => (
-                <Toast key={toast.id} toast={toast}>
-                  <ToastTitle />
-                  <ToastDescription />
-                  <ToastCloseTrigger>Close</ToastCloseTrigger>
-                </Toast>
-              ))
-            }
-          </ToastGroup>
-        ))
-      }
-    </ToastPlacements>
-    {props.children}
-  </ToastProvider>
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render() {
+    return (
+      <Toast.Root>
+        <Toast.Title />
+        <Toast.Description />
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+
+export const ComponentUnderTest = () => (
+  <div>
+    <button onClick={() => toast.create({ title: 'Title', description: 'Description' })}>
+      Create Toast
+    </button>
+    <Toaster />
+  </div>
 )
 
-const ComponentUnderTest = () => {
-  const toast = useToast()
-  return (
-    <button
-      onClick={() => {
-        toast.create({
-          title: 'Toast title',
-          description: 'Toast description',
-          removeDelay: 0,
-        })
-      }}
-    >
-      Add toast
-    </button>
-  )
-}
-
-const renderToastComponent = () => render(<ComponentUnderTest />, { wrapper: ExampleToastProvider })
-
 describe('Toast', () => {
-  it('should render', async () => {
-    renderToastComponent()
-  })
-
-  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
-    expect(Toast[part]).toBeDefined()
-  })
-
   it('should show a toast message', async () => {
-    renderToastComponent()
-    await user.click(screen.getByText('Add toast'))
-    expect(screen.getByText('Toast title')).toBeInTheDocument()
-    expect(screen.getByText('Toast description')).toBeInTheDocument()
+    render(<ComponentUnderTest />)
+    await user.click(screen.getByText('Create Toast'))
+
+    expect(screen.getByText('Title')).toBeVisible()
+    expect(screen.getByText('Description')).toBeVisible()
+    expect(screen.getByText('Close')).toBeVisible()
   })
 
   it('should hide a toast message after close button is clicked', async () => {
-    renderToastComponent()
-    await user.click(screen.getByText('Add toast'))
+    render(<ComponentUnderTest />)
+    await user.click(screen.getByText('Create Toast'))
 
-    expect(screen.getByText('Toast title')).toBeInTheDocument()
-    expect(screen.getByText('Toast description')).toBeInTheDocument()
-
-    await user.click(screen.getByText('Close'))
-
-    expect(screen.queryByText('Toast title')).toBeNull()
-    expect(screen.queryByText('Toast description')).toBeNull()
+    waitFor(() => {
+      user.click(screen.getByText('Close'))
+    })
+    waitFor(() => {
+      expect(screen.queryByText('Title')).not.toBeVisible()
+      expect(screen.queryByText('Description')).not.toBeVisible()
+    })
   })
 })

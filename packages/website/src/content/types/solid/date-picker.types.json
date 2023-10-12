@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -37,7 +38,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ grid(id: string): string; header: string; content: string; cellTrigger(id: string): string; prevTrigger(view: DateView): string; nextTrigger(view: DateView): string; ... 7 more ...; positioner: string; }>",
+      "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
     },
@@ -140,47 +141,38 @@
       "description": "The view of the calendar"
     }
   },
-  "Row": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Grid": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "columns": { "type": "number", "isRequired": false },
-    "id": { "type": "string", "isRequired": false },
-    "view": { "type": "DateView", "isRequired": false }
+  "View": {
+    "view": { "type": "DateView", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Table": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "columns": { "type": "number", "isRequired": false }
+  },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "DayCell": {
-    "value": { "type": "DateValue", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "offset": { "type": "Offset", "isRequired": false }
-  },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "RowGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "YearCell": {
-    "value": { "type": "number", "isRequired": true },
+  "TableRow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "RangeText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TableBody": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TableCell": {
+    "value": { "type": "number | DateValue", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
+    "columns": { "type": "number", "isRequired": false },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "visibleRange": { "type": "VisibleRange", "isRequired": false }
   },
-  "MonthCell": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "RowHeader": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TableHead": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "YearSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "MonthSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ViewTrigger": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "view": { "type": "DateView", "isRequired": false }
-  },
+  "TableHeader": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ViewControl": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ViewTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ColumnHeader": { "asChild": { "type": "boolean", "isRequired": false } },
-  "DayCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "YearCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MonthCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "TableCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

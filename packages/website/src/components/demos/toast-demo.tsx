@@ -1,82 +1,45 @@
-import { Portal } from '@ark-ui/react'
-import { X } from 'lucide-react'
-import { Box, Stack } from 'styled-system/jsx'
-import { Button } from '~/components/ui/button'
-import { IconButton } from '~/components/ui/icon-button'
-import {
-  Toast,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastGroup,
-  ToastPlacements,
-  ToastProvider,
-  ToastTitle,
-  useToast,
-} from '~/components/ui/toast'
+import { createToaster } from '@ark-ui/react'
+import { XIcon } from 'lucide-react'
+import { Box } from 'styled-system/jsx'
+import { Toast, ToastCloseTrigger, ToastDescription, ToastTitle } from '~/components/ui/toast'
+import { Button } from '../ui/button'
+import { IconButton } from '../ui/icon-button'
+
+const [Toaster, toast] = createToaster({
+  placement: 'bottom-end',
+  max: 1,
+  render() {
+    return (
+      <Toast>
+        <ToastTitle />
+        <ToastDescription />
+        <Box position="absolute" top="3" right="3">
+          <ToastCloseTrigger asChild>
+            <IconButton size="sm" variant="link" aria-label="Close Toast">
+              <XIcon />
+            </IconButton>
+          </ToastCloseTrigger>
+        </Box>
+      </Toast>
+    )
+  },
+})
 
 export const ToastDemo = () => {
   return (
-    <ToastProvider max={1}>
-      <Portal>
-        <ToastPlacements>
-          {(placements) =>
-            placements.map((placement) => (
-              <ToastGroup key={placement} placement={placement}>
-                {(toasts) =>
-                  toasts.map((toast) => (
-                    <Toast key={toast.id} toast={toast}>
-                      <Stack gap="4">
-                        <Stack gap="1">
-                          <ToastTitle />
-                          <ToastDescription />
-                        </Stack>
-                        <Stack direction="row" gap="3">
-                          <ToastCloseTrigger asChild>
-                            <Button variant="link" size="sm">
-                              Dismiss
-                            </Button>
-                          </ToastCloseTrigger>
-                          <Button variant="link" size="sm">
-                            Show
-                          </Button>
-                        </Stack>
-                      </Stack>
-                      <Box position="absolute" top="3" right="3">
-                        <ToastCloseTrigger asChild>
-                          <IconButton size="sm" variant="link" aria-label="Close Toast">
-                            <X />
-                          </IconButton>
-                        </ToastCloseTrigger>
-                      </Box>
-                    </Toast>
-                  ))
-                }
-              </ToastGroup>
-            ))
-          }
-        </ToastPlacements>
-      </Portal>
-      <DemoToastWrapper />
-    </ToastProvider>
-  )
-}
-
-const DemoToastWrapper = () => {
-  const toast = useToast()
-
-  return (
-    <Button
-      variant="outline"
-      onClick={() => {
-        toast.create({
-          title: 'Hello',
-          description: "I'm a toast",
-          placement: 'bottom-end',
-          removeDelay: 0,
-        })
-      }}
-    >
-      Add toast
-    </Button>
+    <>
+      <Button
+        variant="outline"
+        onClick={() => {
+          toast.create({
+            title: 'Hello',
+            description: "I'm a toast",
+          })
+        }}
+      >
+        Add toast
+      </Button>
+      <Toaster />
+    </>
   )
 }

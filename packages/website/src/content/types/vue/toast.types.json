@@ -1,12 +1,11 @@
 {
-  "Root": { "toast": { "type": "Service", "isRequired": true } },
-  "Group": { "placement": { "type": "Placement", "isRequired": true } },
+  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Provider": {
-    "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'removeDelay' | 'placement' | 'duration'>>",
-      "isRequired": false,
-      "description": "The default options for the toast"
+  "Createer": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "render": {
+      "type": "(\n  api: ComputedRef<MachineApi<PropTypes>>,\n) => VNode<RendererNode, RendererElement, { [key: string]: any }>",
+      "isRequired": true
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -55,7 +54,6 @@
       "description": "The z-index applied to each toast group"
     }
   },
-  "Placements": { "placements": { "type": "Placement[]", "isRequired": true } },
   "Description": { "asChild": { "type": "boolean", "isRequired": false } },
   "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

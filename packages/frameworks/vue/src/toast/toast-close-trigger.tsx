@@ -1,19 +1,18 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
-import { useToastItemContext } from './toast-item-context'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { useToastContext } from './toast-context'
 
 export type ToastCloseTriggerProps = HTMLArkProps<'button'>
 
 export const ToastCloseTrigger = defineComponent({
   name: 'ToastCloseTrigger',
   setup(_, { slots, attrs }) {
-    const api = useToastItemContext()
+    const api = useToastContext()
 
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'DialogTrigger')
-
-      return h(DefaultSlot, { ...api.value.closeTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.closeTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

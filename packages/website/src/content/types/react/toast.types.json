@@ -1,14 +1,5 @@
 {
   "Root": {
-    "toast": { "type": "Service", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Group": {
-    "placement": { "type": "Placement", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -22,12 +13,9 @@
       "description": "Render as a different element type."
     }
   },
-  "Provider": {
-    "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'placement' | 'duration' | 'removeDelay'>>",
-      "isRequired": false,
-      "description": "The default options for the toast"
-    },
+  "Createer": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "render": { "type": "(api: MachineApi<PropTypes>) => Element", "isRequired": true },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -55,7 +43,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },

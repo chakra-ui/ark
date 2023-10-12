@@ -1,18 +1,18 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useToastItemContext } from './toast-item-context'
+import { useToastContext } from './toast-context'
 
-export interface ToastTitleProps extends HTMLArkProps<'h3'> {}
+export interface ToastTitleProps extends HTMLArkProps<'div'> {}
 
-export const ToastTitle = forwardRef<HTMLHeadingElement, ToastTitleProps>((props, ref) => {
-  const api = useToastItemContext()
+export const ToastTitle = forwardRef<HTMLDivElement, ToastTitleProps>((props, ref) => {
+  const api = useToastContext()
   const mergedProps = mergeProps(api.titleProps, props)
 
   return (
-    <ark.h3 {...mergedProps} ref={ref}>
+    <ark.div {...mergedProps} ref={ref}>
       {api.title}
-    </ark.h3>
+    </ark.div>
   )
 })
 

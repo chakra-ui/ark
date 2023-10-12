@@ -3,7 +3,7 @@ import type { ContainerProperties } from 'styled-system/patterns'
 
 export default defineConfig({
   preflight: true,
-  presets: ['@pandacss/dev/presets', '@park-ui/presets'],
+  presets: ['@pandacss/preset-base', '@park-ui/presets'],
   include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
   exclude: [],
   jsxFramework: 'react',

@@ -1,20 +1,9 @@
 {
-  "Root": {
-    "toast": { "type": "Service", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "Group": {
-    "placement": { "type": "Placement", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "label": { "type": "string", "isRequired": false }
-  },
+  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Provider": {
-    "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'placement' | 'duration' | 'removeDelay'>>",
-      "isRequired": false,
-      "description": "The default options for the toast"
-    },
+  "Createer": {
+    "placement": { "type": "Placement", "isRequired": true },
+    "render": { "type": "(api: Accessor<MachineApi<PropTypes>>) => Element", "isRequired": true },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",

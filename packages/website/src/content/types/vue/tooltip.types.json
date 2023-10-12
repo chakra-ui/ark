@@ -20,6 +20,12 @@
       "isRequired": false,
       "description": "Whether to close the tooltip on pointerdown."
     },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

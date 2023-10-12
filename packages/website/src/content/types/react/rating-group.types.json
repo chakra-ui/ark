@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to autofocus the rating."
     },
+    "count": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The total number of ratings."
+    },
     "defaultValue": {
       "type": "number",
       "isRequired": false,
@@ -51,7 +56,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the rating. Useful for composition."
     },
-    "max": { "type": "number", "isRequired": false, "description": "The maximum rating value." },
     "name": {
       "type": "string",
       "isRequired": false,

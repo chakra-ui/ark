@@ -1,15 +1,21 @@
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { DatePickerProvider } from './date-picker-context'
 import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 
-export type DatePickerProps = UseDatePickerProps & {
-  children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element)
-}
+export type DatePickerProps = Assign<
+  HTMLArkProps<'div'>,
+  UseDatePickerProps & {
+    children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element)
+  }
+>
 
 export const DatePicker = (props: DatePickerProps) => {
-  const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(props, [
+  const [datePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(props, [
     'dir',
     'disabled',
     'fixedWeeks',
@@ -42,8 +48,13 @@ export const DatePicker = (props: DatePickerProps) => {
     'view',
   ])
 
-  const api = useDatePicker(useDatePickerProps)
+  const api = useDatePicker(datePickerProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
-  return <DatePickerProvider value={api}>{getChildren()}</DatePickerProvider>
+  return (
+    <DatePickerProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+    </DatePickerProvider>
+  )
 }
