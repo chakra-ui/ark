@@ -1,19 +1,23 @@
 import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
-import { useColorPickerAreaContext, type ColorPickerAreaContext } from './color-picker-area-context'
 import {
-  ColorPickerAreaGradient,
-  type ColorPickerAreaGradientProps,
-} from './color-picker-area-gradient'
+  ColorPickerAreaBackground,
+  type ColorPickerAreaBackgroundProps,
+} from './color-picker-area-background'
+import { useColorPickerAreaContext, type ColorPickerAreaContext } from './color-picker-area-context'
 import { ColorPickerAreaThumb, type ColorPickerAreaThumbProps } from './color-picker-area-thumb'
 import {
   ColorPickerChannelInput,
   type ColorPickerChannelInputProps,
 } from './color-picker-channel-input'
 import {
-  ColorPickerChannelSliderBackground,
-  type ColorPickerChannelSliderBackgroundProps,
-} from './color-picker-channel-slider-background'
+  ColorPickerChannelSlider,
+  type ColorPickerChannelSliderProps,
+} from './color-picker-channel-slider'
+import {
+  useColorPickerChannelSliderContext,
+  type ColorPickerChannelSliderContext,
+} from './color-picker-channel-slider-context'
 import {
   ColorPickerChannelSliderThumb,
   type ColorPickerChannelSliderThumbProps,
@@ -24,72 +28,91 @@ import {
 } from './color-picker-channel-slider-track'
 import { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
 import { useColorPickerContext, type ColorPickerContext } from './color-picker-context'
+import { ColorPickerControl, type ColorPickerControlProps } from './color-picker-control'
 import {
   ColorPickerEyeDropperTrigger,
   type ColorPickerEyeDropperTriggerProps,
 } from './color-picker-eye-dropper-trigger'
+import { ColorPickerLabel, type ColorPickerLabelProps } from './color-picker-label'
+import { ColorPickerPositioner, type ColorPickerPositionerProps } from './color-picker-positioner'
 import { ColorPickerSwatch, type ColorPickerSwatchProps } from './color-picker-swatch'
-import {
-  ColorPickerSwatchBackground,
-  type ColorPickerSwatchBackgroundProps,
-} from './color-picker-swatch-background'
-import {
-  useColorPickerSwatchContext,
-  type ColorPickerSwatchContext,
-} from './color-picker-swatch-context'
 import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group'
+import {
+  ColorPickerSwatchTrigger,
+  type ColorPickerSwatchTriggerProps,
+} from './color-picker-swatch-trigger'
+import {
+  ColorPickerTransparencyGrid,
+  type ColorPickerTransparencyGridProps,
+} from './color-picker-transparency-grid'
+import { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker-trigger'
 
 const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
   Area: ColorPickerArea,
-  AreaGradient: ColorPickerAreaGradient,
+  AreaBackground: ColorPickerAreaBackground,
   AreaThumb: ColorPickerAreaThumb,
   ChannelInput: ColorPickerChannelInput,
-  ChannelSliderBackground: ColorPickerChannelSliderBackground,
+  ChannelSlider: ColorPickerChannelSlider,
   ChannelSliderThumb: ColorPickerChannelSliderThumb,
   ChannelSliderTrack: ColorPickerChannelSliderTrack,
   Content: ColorPickerContent,
+  Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
+  Label: ColorPickerLabel,
+  Positioner: ColorPickerPositioner,
   Swatch: ColorPickerSwatch,
-  SwatchBackground: ColorPickerSwatchBackground,
   SwatchGroup: ColorPickerSwatchGroup,
+  SwatchTrigger: ColorPickerSwatchTrigger,
+  TransparencyGrid: ColorPickerTransparencyGrid,
+  Trigger: ColorPickerTrigger,
 })
 export {
   ColorPicker,
   ColorPickerArea,
-  ColorPickerAreaGradient,
+  ColorPickerAreaBackground,
   ColorPickerAreaThumb,
   ColorPickerChannelInput,
-  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSlider,
   ColorPickerChannelSliderThumb,
   ColorPickerChannelSliderTrack,
   ColorPickerContent,
+  ColorPickerControl,
   ColorPickerEyeDropperTrigger,
+  ColorPickerLabel,
+  ColorPickerPositioner,
   ColorPickerSwatch,
-  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
+  ColorPickerSwatchTrigger,
+  ColorPickerTransparencyGrid,
+  ColorPickerTrigger,
   useColorPickerAreaContext,
+  useColorPickerChannelSliderContext,
   useColorPickerContext,
-  useColorPickerSwatchContext,
 }
 export type {
+  ColorPickerAreaBackgroundProps,
   ColorPickerAreaContext,
-  ColorPickerAreaGradientProps,
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
-  ColorPickerChannelSliderBackgroundProps,
+  ColorPickerChannelSliderContext,
+  ColorPickerChannelSliderProps,
   ColorPickerChannelSliderThumbProps,
   ColorPickerChannelSliderTrackProps,
   ColorPickerContentProps,
   ColorPickerContext,
+  ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,
+  ColorPickerLabelProps,
+  ColorPickerPositionerProps,
   ColorPickerProps,
-  ColorPickerSwatchBackgroundProps,
-  ColorPickerSwatchContext,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
+  ColorPickerSwatchTriggerProps,
+  ColorPickerTransparencyGridProps,
+  ColorPickerTriggerProps,
 }
