@@ -1,36 +1,16 @@
-import { children, createEffect, type JSX } from 'solid-js'
-import { spread } from 'solid-js/web'
+import type { ItemProps } from '@zag-js/pagination'
+import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-type PaginationItemParams = {
-  children: JSX.Element
-  value: number
-}
-
-export type PaginationItemProps = Assign<HTMLArkProps<'li'>, PaginationItemParams>
+export type PaginationItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
 
 export const PaginationItem = (props: PaginationItemProps) => {
-  const [itemParams, liProps] = createSplitProps<Omit<PaginationItemParams, 'children'>>()(props, [
-    'value',
-  ])
-  const pagination = usePaginationContext()
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
+  const api = usePaginationContext()
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 
-  const getChildren = children(() => props.children)
-  createEffect(() => {
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      spread(
-        children,
-        pagination().getItemProps({
-          type: 'page',
-          value: itemParams.value,
-        }),
-      )
-    }
-  })
-
-  return <ark.li {...liProps}>{getChildren()}</ark.li>
+  return <ark.button {...mergedProps} />
 }

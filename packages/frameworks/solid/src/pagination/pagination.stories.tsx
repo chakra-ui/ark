@@ -16,11 +16,10 @@ export const Basic = () => (
         <Pagination.PrevTrigger>
           Previous <span class="visually-hidden">Page</span>
         </Pagination.PrevTrigger>
-
         <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
-              <Pagination.Item value={page.value}>{page.value}</Pagination.Item>
+              <Pagination.Item {...page}>{page.value}</Pagination.Item>
             ) : (
               <Pagination.Ellipsis index={index()}>&#8230;</Pagination.Ellipsis>
             )
