@@ -12,7 +12,7 @@
     },
     "build": {
       "outputs": ["dist/**"],
-      "dependsOn": ["^build", "panda"],
+      "dependsOn": ["^build"],
       "cache": false
     },
     "lint": {

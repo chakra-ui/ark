@@ -6,6 +6,7 @@
     "predev": "panda",
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "panda",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
