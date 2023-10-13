@@ -1,5 +1,5 @@
+import type { ContainerProperties } from '@ark-ui/styled-system/patterns'
 import { defineConfig } from '@pandacss/dev'
-import type { ContainerProperties } from 'styled-system/patterns'
 
 export default defineConfig({
   preflight: true,
@@ -7,7 +7,8 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
   exclude: [],
   jsxFramework: 'react',
-  outdir: 'styled-system',
+  outdir: '@ark-ui/styled-system',
+  emitPackage: true,
   staticCss: {
     recipes: {
       switchRecipe: [{ size: ['*'] }],

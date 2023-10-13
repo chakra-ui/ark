@@ -1,6 +1,6 @@
 import { Portal } from '@ark-ui/react'
+import { HStack, Stack, styled } from '@ark-ui/styled-system/jsx'
 import { MapPin } from 'lucide-react'
-import { HStack, Stack, styled } from 'styled-system/jsx'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import {
   HoverCard,

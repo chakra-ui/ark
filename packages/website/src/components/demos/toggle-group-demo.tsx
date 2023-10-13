@@ -1,3 +1,4 @@
+import { Stack } from '@ark-ui/styled-system/jsx'
 import {
   AlignCenterIcon,
   AlignJustifyIcon,
@@ -7,7 +8,6 @@ import {
   ItalicIcon,
   UnderlineIcon,
 } from 'lucide-react'
-import { Stack } from 'styled-system/jsx'
 import { ToggleGroup, ToggleGroupItem, type ToggleGroupProps } from '~/components/ui/toggle-group'
 
 export const ToggleGroupDemo = (props: ToggleGroupProps) => {

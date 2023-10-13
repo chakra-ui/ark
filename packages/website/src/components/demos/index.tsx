@@ -1,6 +1,6 @@
 'use client'
+import { Flex } from '@ark-ui/styled-system/jsx'
 import React, { Suspense, type ComponentType, type PropsWithChildren } from 'react'
-import { Flex } from 'styled-system/jsx'
 import { match } from 'ts-pattern'
 
 type PlaygroundProps = {

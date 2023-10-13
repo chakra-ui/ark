@@ -1,7 +1,7 @@
 import { ark } from '@ark-ui/react'
+import { styled } from '@ark-ui/styled-system/jsx'
+import { table, type TableVariantProps } from '@ark-ui/styled-system/recipes'
 import type { ComponentPropsWithoutRef } from 'react'
-import { styled } from 'styled-system/jsx'
-import { table, type TableVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(table)

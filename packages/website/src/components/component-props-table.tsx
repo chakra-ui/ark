@@ -1,7 +1,7 @@
 import { Portal } from '@ark-ui/react'
+import { HStack, Stack } from '@ark-ui/styled-system/jsx'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
-import { HStack, Stack } from 'styled-system/jsx'
 import { Button } from './ui/button'
 import { Code } from './ui/code'
 import { Icon } from './ui/icon'

@@ -1,4 +1,4 @@
-import { Box } from 'styled-system/jsx'
+import { Box } from '@ark-ui/styled-system/jsx'
 import {
   TabContent,
   TabIndicator,

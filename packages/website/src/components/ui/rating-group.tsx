@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/rating-group'
-import { styled } from 'styled-system/jsx'
-import { ratingGroup, type RatingGroupVariantProps } from 'styled-system/recipes'
+import { styled } from '@ark-ui/styled-system/jsx'
+import { ratingGroup, type RatingGroupVariantProps } from '@ark-ui/styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(ratingGroup)

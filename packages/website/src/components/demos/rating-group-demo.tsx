@@ -1,4 +1,4 @@
-import { type RatingGroupVariantProps } from 'styled-system/recipes'
+import { type RatingGroupVariantProps } from '@ark-ui/styled-system/recipes'
 import { RatingGroup } from '~/components/ui/rating-group'
 
 export const RatingGroupDemo = (props: RatingGroupVariantProps) => {
