@@ -1,72 +1,56 @@
 <script setup lang="ts">
-import { ref, type UnwrapRef } from 'vue'
-import {
-  ColorPicker,
-  ColorPickerArea,
-  ColorPickerAreaGradient,
-  ColorPickerAreaThumb,
-  ColorPickerChannelInput,
-  ColorPickerChannelSliderBackground,
-  ColorPickerChannelSliderThumb,
-  ColorPickerChannelSliderTrack,
-  ColorPickerContent,
-  ColorPickerEyeDropperTrigger,
-  ColorPickerSwatch,
-  ColorPickerSwatchBackground,
-  ColorPickerSwatchGroup,
-  type ColorPickerContext,
-} from './'
+import { ref } from 'vue'
+import { ColorPicker } from './'
 import './color-picker.css'
 
-const colorPickerValue = ref('hsla(200, 81%, 59%, 0.5)')
+const value = ref('hsl(0, 100%, 50%)')
 </script>
 <template>
   <Story title="ColorPicker">
     <Variant title="Basic">
-      <ColorPicker
-        v-model="colorPickerValue"
-        v-slot="{ channels: [hue, saturation, lightness], value }: UnwrapRef<ColorPickerContext>"
-      >
-        <ColorPickerContent>
-          <output>
-            <div>Color: {{ value }}</div>
-          </output>
-          <ColorPickerArea :xChannel="saturation" :yChannel="lightness">
-            <ColorPickerAreaGradient />
-            <ColorPickerAreaThumb />
-          </ColorPickerArea>
-
-          <ColorPickerSwatch :value="value" readOnly />
-
-          <ColorPickerChannelSliderTrack :channel="hue">
-            <ColorPickerChannelSliderBackground />
-            <ColorPickerChannelSliderThumb />
-          </ColorPickerChannelSliderTrack>
-
-          <ColorPickerChannelSliderTrack channel="alpha">
-            <ColorPickerChannelSliderBackground />
-            <ColorPickerChannelSliderThumb />
-          </ColorPickerChannelSliderTrack>
-
-          <ColorPickerChannelInput :channel="hue" />
-          <ColorPickerChannelInput :channel="saturation" />
-          <ColorPickerChannelInput :channel="lightness" />
-
-          <ColorPickerChannelInput channel="alpha" />
-          <ColorPickerChannelInput channel="hue" />
-
-          <ColorPickerSwatchGroup>
-            <ColorPickerSwatch value="#123123">
-              <ColorPickerSwatchBackground />
-            </ColorPickerSwatch>
-            <ColorPickerSwatch value="#ff1321">
-              <ColorPickerSwatchBackground />
-            </ColorPickerSwatch>
-          </ColorPickerSwatchGroup>
-
-          <ColorPickerEyeDropperTrigger> Pick color </ColorPickerEyeDropperTrigger>
-        </ColorPickerContent>
-      </ColorPicker>
+      <ColorPicker.Root v-model="value">
+        <ColorPicker.Label>Color</ColorPicker.Label>
+        <ColorPicker.Control>
+          <ColorPicker.ChannelInput channel="hex" />
+          <ColorPicker.ChannelInput channel="alpha" />
+          <ColorPicker.Trigger>
+            <ColorPicker.Swatch value="red">
+              <ColorPicker.TransparencyGrid size="10px" />
+            </ColorPicker.Swatch>
+          </ColorPicker.Trigger>
+        </ColorPicker.Control>
+        <ColorPicker.Positioner>
+          <ColorPicker.Content>
+            <ColorPicker.Area>
+              <ColorPicker.AreaBackground />
+              <ColorPicker.AreaThumb />
+            </ColorPicker.Area>
+            <ColorPicker.ChannelSlider channel="hue">
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.ChannelSlider channel="alpha">
+              <ColorPicker.TransparencyGrid size="16px" />
+              <ColorPicker.ChannelSliderTrack />
+              <ColorPicker.ChannelSliderThumb />
+            </ColorPicker.ChannelSlider>
+            <ColorPicker.SwatchGroup>
+              <ColorPicker.SwatchTrigger value="red">
+                <ColorPicker.Swatch value="red" />
+              </ColorPicker.SwatchTrigger>
+              <ColorPicker.SwatchTrigger value="blue">
+                <ColorPicker.Swatch value="blue" />
+              </ColorPicker.SwatchTrigger>
+              <ColorPicker.SwatchTrigger value="green">
+                <ColorPicker.Swatch value="green" />
+              </ColorPicker.SwatchTrigger>
+            </ColorPicker.SwatchGroup>
+            <ColorPicker.ChannelInput channel="hex" />
+            <ColorPicker.ChannelInput channel="alpha" />
+            <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
+          </ColorPicker.Content>
+        </ColorPicker.Positioner>
+      </ColorPicker.Root>
     </Variant>
   </Story>
 </template>

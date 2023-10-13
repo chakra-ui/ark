@@ -1,60 +1,59 @@
-import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { ColorPicker } from './'
 import './color-picker.css'
 
-const meta: Meta = {
+type ColorPickerType = typeof ColorPicker
+
+const meta: Meta<ColorPickerType> = {
   title: 'ColorPicker',
+  component: ColorPicker,
 }
 
 export default meta
 
-export const Basic = () => (
-  <ColorPicker.Root value="hsla(10, 81%, 59%, 1)">
-    {(api) => {
-      const [hue, saturation, lightness] = api().channels
-      return (
+export const Basic = () => {
+  return (
+    <ColorPicker.Root value="hsl(0, 100%, 50%)">
+      <ColorPicker.Label>Color</ColorPicker.Label>
+      <ColorPicker.Control>
+        <ColorPicker.ChannelInput channel="hex" />
+        <ColorPicker.ChannelInput channel="alpha" />
+        <ColorPicker.Trigger>
+          <ColorPicker.TransparencyGrid size="10px" />
+          <ColorPicker.Swatch value="red"></ColorPicker.Swatch>
+        </ColorPicker.Trigger>
+      </ColorPicker.Control>
+      <ColorPicker.Positioner>
         <ColorPicker.Content>
-          <ColorPicker.Area xChannel={saturation} yChannel={lightness}>
-            <ColorPicker.AreaGradient />
+          <ColorPicker.Area>
+            <ColorPicker.AreaBackground />
             <ColorPicker.AreaThumb />
           </ColorPicker.Area>
-
-          <ColorPicker.ChannelSliderTrack channel={hue}>
-            <ColorPicker.ChannelSliderBackground />
+          <ColorPicker.ChannelSlider channel="hue">
+            <ColorPicker.ChannelSliderTrack />
             <ColorPicker.ChannelSliderThumb />
-          </ColorPicker.ChannelSliderTrack>
-
-          <ColorPicker.ChannelSliderTrack channel="alpha">
-            <ColorPicker.ChannelSliderBackground />
+          </ColorPicker.ChannelSlider>
+          <ColorPicker.ChannelSlider channel="alpha">
+            <ColorPicker.TransparencyGrid size="16px" />
+            <ColorPicker.ChannelSliderTrack />
             <ColorPicker.ChannelSliderThumb />
-          </ColorPicker.ChannelSliderTrack>
-
-          <ColorPicker.ChannelInput channel={hue} />
-          <ColorPicker.ChannelInput channel={saturation} />
-          <ColorPicker.ChannelInput channel={lightness} />
-          <ColorPicker.ChannelInput channel="alpha" />
-
+          </ColorPicker.ChannelSlider>
           <ColorPicker.SwatchGroup>
-            <ColorPicker.Swatch value="hsla(153, 46%, 13%, 1)">
-              <ColorPicker.SwatchBackground />
-            </ColorPicker.Swatch>
-            <ColorPicker.Swatch value="hsla(356, 100%, 54%, 1)">
-              <ColorPicker.SwatchBackground />
-            </ColorPicker.Swatch>
+            <ColorPicker.SwatchTrigger value="red">
+              <ColorPicker.Swatch value="red" />
+            </ColorPicker.SwatchTrigger>
+            <ColorPicker.SwatchTrigger value="blue">
+              <ColorPicker.Swatch value="blue" />
+            </ColorPicker.SwatchTrigger>
+            <ColorPicker.SwatchTrigger value="green">
+              <ColorPicker.Swatch value="green" />
+            </ColorPicker.SwatchTrigger>
           </ColorPicker.SwatchGroup>
+          <ColorPicker.ChannelInput channel="hex" />
+          <ColorPicker.ChannelInput channel="alpha" />
           <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
         </ColorPicker.Content>
-      )
-    }}
-  </ColorPicker.Root>
-)
-
-export const Controlled = () => {
-  const [color, setColor] = createSignal('hsl(10, 81%, 59%)')
-  return (
-    <ColorPicker.Root value={color()} onValueChange={(details) => setColor(details.value)}>
-      <ColorPicker.Content>{/* ... */}</ColorPicker.Content>
+      </ColorPicker.Positioner>
     </ColorPicker.Root>
   )
 }

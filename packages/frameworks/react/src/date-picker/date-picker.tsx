@@ -40,6 +40,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, re
       'onOpenChange',
       'onValueChange',
       'onViewChange',
+      'open',
       'parse',
       'positioning',
       'readOnly',

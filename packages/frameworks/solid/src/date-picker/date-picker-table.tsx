@@ -18,7 +18,7 @@ export const DatePickerTable = (props: DatePickerTableProps) => {
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
   const tableProps = { columns, id: createUniqueId(), ...viewProps }
-  const mergedProps = mergeProps(api().getTableProps(tableProps), localProps)
+  const mergedProps = mergeProps(() => api().getTableProps(tableProps), localProps)
 
   return (
     <DatePickerTableProvider value={tableProps}>

@@ -27,7 +27,7 @@ export const props = {
     default: undefined,
   },
   modelValue: {
-    type: String as PropType<Context['value']>,
+    type: String,
   },
 }
 export const emits = declareEmits(['value-change', 'value-change-end', 'update:modelValue'])

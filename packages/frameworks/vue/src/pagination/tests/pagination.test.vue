@@ -2,30 +2,24 @@
 import {
   Pagination,
   PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
+  PaginationNextTrigger,
+  PaginationItem,
+  PaginationPrevTrigger,
 } from '../'
 </script>
 <template>
   <Pagination v-slot="{ pages }" :count="5000" :page-size="10" :sibling-count="2">
-    <PaginationList>
-      <PaginationPrevPageTrigger>
-        Previous <span className="visually-hidden">Page</span>
-      </PaginationPrevPageTrigger>
-      <template v-for="(page, index) in pages">
-        <PaginationPageTrigger v-if="page.type === 'page'" :key="page" :value="page.value">
-          {{ page.value }}
-        </PaginationPageTrigger>
-        <PaginationEllipsis v-else :key="index" :index="index"> &#8230; </PaginationEllipsis>
-      </template>
-      <PaginationListItem>
-        <PaginationNextPageTrigger>
-          Next <span className="visually-hidden">Page</span>
-        </PaginationNextPageTrigger>
-      </PaginationListItem>
-    </PaginationList>
+    <PaginationPrevTrigger>
+      Previous <span className="visually-hidden">Page</span>
+    </PaginationPrevTrigger>
+    <template v-for="(page, index) in pages">
+      <PaginationItem v-if="page.type === 'page'" :key="page" :value="page.value">
+        {{ page.value }}
+      </PaginationItem>
+      <PaginationEllipsis v-else :key="index" :index="index"> &#8230; </PaginationEllipsis>
+    </template>
+    <PaginationNextTrigger>
+      Next <span className="visually-hidden">Page</span>
+    </PaginationNextTrigger>
   </Pagination>
 </template>

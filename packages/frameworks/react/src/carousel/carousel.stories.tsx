@@ -20,8 +20,8 @@ export const Basic = () => {
   return (
     <Carousel.Root>
       <Carousel.Control>
-        <Carousel.PrevSlideTrigger>Previous</Carousel.PrevSlideTrigger>
-        <Carousel.NextSlideTrigger>Next</Carousel.NextSlideTrigger>
+        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup>
         {images.map((_, index) => (
@@ -31,13 +31,13 @@ export const Basic = () => {
         ))}
       </Carousel.IndicatorGroup>
       <Carousel.Viewport>
-        <Carousel.SlideGroup>
+        <Carousel.ItemGroup>
           {images.map((image, index) => (
-            <Carousel.Slide key={index} index={index}>
+            <Carousel.Item key={index} index={index}>
               <img src={image} />
-            </Carousel.Slide>
+            </Carousel.Item>
           ))}
-        </Carousel.SlideGroup>
+        </Carousel.ItemGroup>
       </Carousel.Viewport>
     </Carousel.Root>
   )
