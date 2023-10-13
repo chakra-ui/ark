@@ -57,6 +57,10 @@
   "Item": { "index": { "type": "number", "isRequired": true } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Viewport": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": {
+    "index": { "type": "number", "isRequired": true },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  },
   "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
   "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
