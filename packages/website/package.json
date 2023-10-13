@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "prepare": "pnpm panda",
+    "preinstall": "panda",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

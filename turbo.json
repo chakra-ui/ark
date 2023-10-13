@@ -7,8 +7,12 @@
     "storydocs": {
       "cache": false
     },
+    "panda": {
+      "cache": false
+    },
     "build": {
-      "outputs": ["dist/**", ".next/**"],
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build", "panda"],
       "cache": false
     },
     "lint": {
