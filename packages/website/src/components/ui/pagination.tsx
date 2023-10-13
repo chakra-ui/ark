@@ -10,24 +10,24 @@ export type PaginationProps = Ark.PaginationProps & PaginationVariantProps
 
 const PaginationRoot = withProvider(styled(Ark.Pagination.Root), 'root')
 export const PaginationEllipsis = withContext(styled(Ark.Pagination.Ellipsis), 'ellipsis')
-export const PaginationList = withContext(styled(Ark.Pagination.List), 'list')
-export const PaginationListItem = withContext(styled(Ark.Pagination.ListItem), 'listItem')
-export const PaginationNextPageTrigger = withContext(
-  styled(Ark.Pagination.NextPageTrigger),
+// export const PaginationList = withContext(styled(Ark.Pagination.List), 'list')
+// export const PaginationListItem = withContext(styled(Ark.Pagination.ListItem), 'listItem')
+export const PaginationNextTrigger = withContext(
+  styled(Ark.Pagination.NextTrigger),
   'nextPageTrigger',
 )
-export const PaginationPageTrigger = withContext(styled(Ark.Pagination.PageTrigger), 'pageTrigger')
-export const PaginationPrevPageTrigger = withContext(
-  styled(Ark.Pagination.PrevPageTrigger),
+export const PaginationItem = withContext(styled(Ark.Pagination.Item), 'pageTrigger')
+export const PaginationPrevTrigger = withContext(
+  styled(Ark.Pagination.PrevTrigger),
   'prevPageTrigger',
 )
 
 export const Pagination = Object.assign(PaginationRoot, {
   Root: PaginationRoot,
   Ellipsis: PaginationEllipsis,
-  List: PaginationList,
-  ListItem: PaginationListItem,
-  NextPageTrigger: PaginationNextPageTrigger,
-  PageTrigger: PaginationPageTrigger,
-  PrevPageTrigger: PaginationPrevPageTrigger,
+  // List: PaginationList,
+  // ListItem: PaginationListItem,
+  NextTrigger: PaginationNextTrigger,
+  Item: PaginationItem,
+  PrevTrigger: PaginationPrevTrigger,
 })

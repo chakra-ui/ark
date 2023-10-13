@@ -1,19 +1,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import {
-  Carousel,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-  type CarouselProps,
-} from '~/components/ui/carousel'
+import { Carousel, type CarouselProps } from '~/components/ui/carousel'
 import { IconButton } from '~/components/ui/icon-button'
 
-export const CarouselDemo = (props: Omit<CarouselProps, 'children'>) => {
+export const CarouselDemo = (props: CarouselProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',
@@ -22,37 +11,41 @@ export const CarouselDemo = (props: Omit<CarouselProps, 'children'>) => {
     'https://tinyurl.com/yp4rfum7',
   ]
   return (
-    <Carousel {...props}>
-      <CarouselViewport>
-        <CarouselSlideGroup>
+    <Carousel.Root {...props}>
+      <Carousel.Viewport>
+        <Carousel.ItemGroup>
           {images.map((image, index) => (
-            <CarouselSlide key={index} index={index}>
+            <Carousel.Item key={index} index={index}>
               <img
                 src={image}
                 alt={`Slide Image ${index}`}
                 style={{ height: '398px', width: '100%', objectFit: 'cover' }}
               />
-            </CarouselSlide>
+            </Carousel.Item>
           ))}
-        </CarouselSlideGroup>
-        <CarouselControl>
-          <CarouselPrevSlideTrigger asChild>
+        </Carousel.ItemGroup>
+        <Carousel.Control>
+          <Carousel.PrevTrigger asChild>
             <IconButton size="sm" variant="link" aria-label="Previous Slide">
               <ChevronLeft />
             </IconButton>
-          </CarouselPrevSlideTrigger>
-          <CarouselIndicatorGroup>
+          </Carousel.PrevTrigger>
+          <Carousel.IndicatorGroup>
             {images.map((_, index) => (
-              <CarouselIndicator key={index} index={index} aria-label={`Goto slide ${index + 1}`} />
+              <Carousel.Indicator
+                key={index}
+                index={index}
+                aria-label={`Goto slide ${index + 1}`}
+              />
             ))}
-          </CarouselIndicatorGroup>
-          <CarouselNextSlideTrigger asChild>
+          </Carousel.IndicatorGroup>
+          <Carousel.NextTrigger asChild>
             <IconButton size="sm" variant="link" aria-label="Next Slide">
               <ChevronRight />
             </IconButton>
-          </CarouselNextSlideTrigger>
-        </CarouselControl>
-      </CarouselViewport>
-    </Carousel>
+          </Carousel.NextTrigger>
+        </Carousel.Control>
+      </Carousel.Viewport>
+    </Carousel.Root>
   )
 }
