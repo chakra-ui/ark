@@ -19,7 +19,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevPageTrigger: string\n  nextPageTrigger: string\n  pageTrigger(page: number): string\n}>",
+      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevTrigger: string\n  nextTrigger: string\n  item(page: number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -51,16 +51,14 @@
       "description": "The type of the trigger element"
     }
   },
-  "List": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Item": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Ellipsis": {
     "index": { "type": "number", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
-  "ListItem": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PageTrigger": {
-    "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "NextPageTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PrevPageTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

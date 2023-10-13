@@ -54,15 +54,11 @@
       "description": "The amount of space between slides."
     }
   },
-  "Slide": { "index": { "type": "number", "isRequired": true } },
+  "Item": { "index": { "type": "number", "isRequired": true } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Viewport": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": {
-    "index": { "type": "number", "isRequired": true },
-    "readOnly": { "type": "boolean", "isRequired": false }
-  },
-  "SlideGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "IndicatorGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NextSlideTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PrevSlideTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IndicatorGroup": { "asChild": { "type": "boolean", "isRequired": false } }
 }

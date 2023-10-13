@@ -111,6 +111,11 @@
       "isRequired": false,
       "description": "Function called when the view changes."
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the datepicker is open"
+    },
     "parse": {
       "type": "(value: string) => DateValue[]",
       "isRequired": false,
