@@ -11,9 +11,8 @@
       "cache": false
     },
     "build": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^build"],
-      "cache": false
+      "outputs": ["dist/**", "styled-system/**"],
+      "dependsOn": ["^build"]
     },
     "lint": {
       "outputs": []
