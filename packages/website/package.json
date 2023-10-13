@@ -3,7 +3,6 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "predev": "pnpm run panda",
     "dev": "astro dev",
     "start": "astro dev",
     "prebuild": "pnpm run panda",
