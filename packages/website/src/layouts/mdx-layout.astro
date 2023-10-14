@@ -2,14 +2,13 @@
 import type { MarkdownHeading } from 'astro'
 import { Box, Container, Flex, HStack, Stack } from '@ark-ui/styled-system/jsx'
 import Breadcrumbs from '~/components/navigation/breadcrumbs.astro'
-// import DocsFooter from '~/components/navigation/docs-footer.astro'
 import { MobileSidebarContainer } from '~/components/navigation/mobile-sidebar-container'
 import Navbar from '~/components/navigation/navbar.astro'
 import Sidebar from '~/components/navigation/sidebar.astro'
-// import { TableOfContent } from '~/components/navigation/toc'
 import Layout from './base-layout.astro'
 import { layout } from './layout.recipe'
 import { TableOfContent } from '~/components/toc'
+import DocsFooter from '~/components/docs-footer.astro'
 
 interface Props {
   title: string
@@ -23,18 +22,7 @@ const styles = layout()
 
 <Layout title={title} description={description}>
   <header class={styles.header}>
-    <Navbar borderBottomWidth="1px">
-      <Box display={{ base: 'block', md: 'none' }}>
-        <Container py="1">
-          <HStack gap="2">
-            <MobileSidebarContainer client:load>
-              <Sidebar />
-            </MobileSidebarContainer>
-            <Breadcrumbs />
-          </HStack>
-        </Container>
-      </Box>
-    </Navbar>
+    <Navbar />
   </header>
   <nav class={styles.nav} id="sidebar">
     <Sidebar />
@@ -45,7 +33,7 @@ const styles = layout()
       <Container maxW="51rem" minWidth="0">
         <Stack gap="12">
           <slot />
-          <!-- <DocsFooter /> -->
+          <DocsFooter />
         </Stack>
       </Container>
       <Box display={{ base: 'none', lg: 'block' }} flex="0 0 240px">

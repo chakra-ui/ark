@@ -2,7 +2,7 @@
 import { css } from '@ark-ui/styled-system/css'
 import { Box, Container, HStack } from '@ark-ui/styled-system/jsx'
 import ColorModeButton from '../color-mode-button.astro'
-import Logo from '../logo.astro'
+import { Logo } from '../logo'
 import Breadcrumbs from './breadcrumbs.astro'
 import { MobileSidebarContainer } from './mobile-sidebar-container'
 import Sidebar from './sidebar.astro'
@@ -17,14 +17,14 @@ import Sidebar from './sidebar.astro'
       <HStack justify="space-between" gap="8" h="18">
         <HStack gap="10">
           <a href="/" aria-label="Back to Home">
-            <Logo />
+            <Logo height="28" />
           </a>
         </HStack>
         <ColorModeButton />
       </HStack>
     </Container>
   </Box>
-  <Box borderBottomWidth="1px" display={{ base: 'block', lg: 'none' }}>
+  <Box borderBottomWidth="1px" display={{ base: 'block', md: 'none' }}>
     <Container py="1">
       <HStack gap="2">
         <MobileSidebarContainer client:load>
