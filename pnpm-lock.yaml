@@ -815,8 +815,8 @@ importers:
         specifier: 0.16.0
         version: 0.16.0(astro@3.3.0)(ts-node@10.9.1)(typescript@5.2.2)
       '@pandacss/dev':
-        specifier: 0.15.5
-        version: 0.15.5(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2)
+        specifier: 0.16.0
+        version: 0.16.0(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2)
       '@park-ui/presets':
         specifier: 0.18.0
         version: 0.18.0(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2)
@@ -4046,6 +4046,41 @@ packages:
       - typescript
     dev: false
 
+  /@pandacss/dev@0.16.0(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2):
+    resolution: {integrity: sha512-LCDLM9zlq61NPAPeD14qk9ri3flUJY8WyihTPyFb93C5tkYTQY+l7xk1NyrtBwEc48/5NDg17wNPeCgv6KvSVQ==}
+    hasBin: true
+    dependencies:
+      '@clack/prompts': 0.6.3
+      '@pandacss/config': 0.16.0
+      '@pandacss/error': 0.16.0
+      '@pandacss/logger': 0.16.0
+      '@pandacss/node': 0.16.0(typescript@5.2.2)
+      '@pandacss/postcss': 0.16.0(typescript@5.2.2)
+      '@pandacss/preset-panda': 0.16.0
+      '@pandacss/shared': 0.16.0
+      '@pandacss/studio': 0.16.0(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2)
+      '@pandacss/token-dictionary': 0.16.0
+      '@pandacss/types': 0.16.0
+      cac: 6.7.14
+      pathe: 1.1.1
+      perfect-debounce: 1.0.0
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
   /@pandacss/error@0.15.5:
     resolution: {integrity: sha512-bPt3LoJT0WH3t+yA6HkkDKeBvDAFpxIEYKQRQc0xb91zwBuTS80egB8ZDOktMcd281rNFOPW/X6trVr7I7lf8Q==}
     dev: false
@@ -4318,6 +4353,39 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       vite: 4.4.9(@types/node@20.5.1)
+    transitivePeerDependencies:
+      - '@internationalized/date'
+      - '@types/node'
+      - '@types/react'
+      - '@types/react-dom'
+      - jsdom
+      - less
+      - lightningcss
+      - sass
+      - sharp
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - typescript
+    dev: false
+
+  /@pandacss/studio@0.16.0(@internationalized/date@3.5.0)(@types/node@20.5.1)(@types/react-dom@18.2.13)(@types/react@18.2.28)(typescript@5.2.2):
+    resolution: {integrity: sha512-XadiHCXDCzkfGvnY64SEgcEBPW9x3FHsyI/0XMFzr0t1vZ4MRszQ6szMb0lb60PzSKuNI0VNlcbHelsHHOwcrw==}
+    dependencies:
+      '@ark-ui/react': 0.9.0(@internationalized/date@3.5.0)(react-dom@18.2.0)(react@18.2.0)
+      '@astrojs/react': 2.2.1(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+      '@pandacss/config': 0.16.0
+      '@pandacss/logger': 0.16.0
+      '@pandacss/node': 0.16.0(typescript@5.2.2)
+      '@pandacss/shared': 0.16.0
+      '@pandacss/token-dictionary': 0.16.0
+      '@pandacss/types': 0.16.0
+      astro: 2.9.6(@types/node@20.5.1)
+      javascript-stringify: 2.1.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      vite: 4.4.11(@types/node@20.5.1)
     transitivePeerDependencies:
       - '@internationalized/date'
       - '@types/node'
