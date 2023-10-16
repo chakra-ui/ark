@@ -16,7 +16,7 @@ import {
   ComboboxTrigger,
 } from '~/components/ui/combobox'
 import { Input } from '~/components/ui/input'
-import { Button } from '../ui/button'
+import { Button } from '../components/ui/button'
 
 const data = [
   { label: 'React', value: 'react' },
