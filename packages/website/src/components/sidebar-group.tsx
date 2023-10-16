@@ -24,7 +24,12 @@ export const SidebarGroup = (props: Props) => {
   return (
     <SegmentGroup.Root value={active} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
       {items.map((item, id) => (
-        <a key={id} href={item.href} style={{ display: 'flex', width: 'fit-content' }}>
+        <a
+          key={id}
+          href={item.href}
+          style={{ display: 'flex', width: 'fit-content' }}
+          onClick={() => setActive(item.href)}
+        >
           <SegmentGroup.Item value={item.href} data-orientation="vertical">
             <SegmentGroup.ItemControl />
             <SegmentGroup.ItemText>{item.title}</SegmentGroup.ItemText>
