@@ -7,10 +7,13 @@ import Hero from '~/components/marketing/hero.astro'
 import Highlights from '~/components/marketing/highlights.astro'
 import Navbar from '~/components/marketing/navbar.astro'
 import Universe from '~/components/marketing/universe.astro'
-import Baselayout from '~/layouts/base-layout.astro'
+import Baselayout from '~/layouts/base.layout.astro'
 ---
 
-<Baselayout>
+<Baselayout
+  title="Home"
+  description="A headless component library for building reusable, scalable design systems that works for a wide range of JS frameworks."
+>
   <Box
     minH="100%"
     position="relative"

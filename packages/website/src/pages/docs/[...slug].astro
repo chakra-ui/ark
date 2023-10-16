@@ -1,13 +1,11 @@
 ---
 import { ark } from '@ark-ui/react'
+import { styled } from '@ark-ui/styled-system/jsx'
+import { article } from '@ark-ui/styled-system/recipes'
 import { type CollectionEntry } from 'astro:content'
 import path from 'path'
-import { article } from '@ark-ui/styled-system/recipes'
 import DocsHero from '~/components/docs-hero.astro'
-// import Pre from '~/components/pre.astro'
-// import { Code } from '~/components/ui'
-import DocsLayout from '~/layouts/mdx-layout.astro'
-import { styled } from '@ark-ui/styled-system/jsx'
+import DocsLayout from '~/layouts/docs.layout.astro'
 import { getAllCollections } from '~/lib/page-control'
 
 type Props = {
