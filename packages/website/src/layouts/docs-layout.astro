@@ -1,12 +1,9 @@
 ---
 import { Box, Container, Flex, Stack } from '@ark-ui/styled-system/jsx'
 import type { MarkdownHeading } from 'astro'
-import DocsFooter from '~/components/navigation/docs-footer.astro'
-import Navbar from '~/components/navigation/navbar.astro'
-import Sidebar from '~/components/navigation/sidebar.astro'
-import { TableOfContent } from '~/components/navigation/table-of-content'
-import Layout from './layout.astro'
+import { Footer, Navbar, Sidebar, TableOfContent } from '~/components/docs/navigation'
 import { layout } from './docs-layout.recipe'
+import Layout from './layout.astro'
 
 interface Props {
   title: string
@@ -31,7 +28,7 @@ const styles = layout()
       <Container maxW="51rem" minWidth="0">
         <Stack gap="12">
           <slot />
-          <DocsFooter />
+          <Footer />
         </Stack>
       </Container>
       <Box display={{ base: 'none', lg: 'block' }} flex="0 0 240px">

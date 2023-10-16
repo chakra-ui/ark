@@ -2,8 +2,8 @@ import { Portal } from '@ark-ui/react'
 import { Stack } from '@ark-ui/styled-system/jsx'
 import { Menu, X } from 'lucide-react'
 import type { PropsWithChildren } from 'react'
-import { Logo } from '../logo.tsx'
-import { Button } from '../ui/button'
+import { Logo } from '~/components/logo'
+import { Button } from '~/components/ui/button'
 import {
   Drawer,
   DrawerBackdrop,
@@ -11,8 +11,8 @@ import {
   DrawerContainer,
   DrawerContent,
   DrawerTrigger,
-} from '../ui/drawer'
-import { IconButton } from '../ui/icon-button'
+} from '~/components/ui/drawer'
+import { IconButton } from '~/components/ui/icon-button'
 
 export const MobileSidebarContainer = (props: PropsWithChildren) => (
   <Drawer placement="left">
