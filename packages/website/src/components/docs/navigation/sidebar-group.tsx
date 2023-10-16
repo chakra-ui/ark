@@ -27,7 +27,7 @@ export const SidebarGroup = (props: Props) => {
         <a
           key={id}
           href={item.href}
-          style={{ display: 'flex', width: 'fit-content' }}
+          style={{ display: 'flex', width: 'fit-content', textTransform: 'capitalize' }}
           onClick={() => setActive(item.href)}
         >
           <SegmentGroup.Item value={item.href} data-orientation="vertical">

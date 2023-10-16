@@ -1,21 +1,21 @@
 ---
 import { Box, Container } from '@ark-ui/styled-system/jsx'
-import type { CollectionEntry } from 'astro:content'
 import { Heading, Text } from '~/components/ui'
 import { Prose } from '../ui/prose'
 
 interface Props {
-  entry: CollectionEntry<'overview' | 'components'>
+  title: string
+  description: string
 }
 
-const { entry } = Astro.props
+const { title, description } = Astro.props
 ---
 
 <Box bg={{ base: 'gray.50', _dark: 'black' }} borderBottomWidth="1px" position="relative">
   <Container maxW="66rem" py={{ base: '16', md: '24' }}>
     <Prose css={{ '&> :first-child': { mt: '0' } }}>
-      <Heading as="h1" fontWeight="bold">{entry.data.title}</Heading>
-      <Text className="lead" color="fg.emphasized">{entry.data.description}</Text>
+      <Heading as="h1" fontWeight="bold">{title}</Heading>
+      <Text className="lead" color="fg.emphasized">{description}</Text>
     </Prose>
   </Container>
   <!-- 

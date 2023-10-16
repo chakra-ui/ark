@@ -41,7 +41,17 @@ const overview = defineCollection({
   }),
 })
 
+const changelog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+  }),
+})
+
 export const collections = {
+  changelog,
   components,
   overview,
   stories,

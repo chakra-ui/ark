@@ -18,8 +18,9 @@ const getOverviewPages = async () => {
 export const getAllCollections = async () => {
   const overviewPages = await getOverviewPages()
   const componentPages = await getCollection('components')
+  const changelogPages = await getCollection('changelog')
 
-  return [...overviewPages, ...componentPages]
+  return [...overviewPages, ...componentPages, ...changelogPages]
 }
 
 const getCurrentPageIndex = async (pathname?: string) => {
@@ -60,6 +61,7 @@ type Sitemap = {
 export const getSitemap = async (): Promise<Sitemap> => {
   const overviewPages = await getOverviewPages()
   const componentPages = await getCollection('components')
+  const changelogPages = await getCollection('changelog')
 
   return [
     {
@@ -73,6 +75,13 @@ export const getSitemap = async (): Promise<Sitemap> => {
       title: 'Components',
       items: componentPages.map((item) => ({
         title: item.data.title,
+        href: path.join('/docs', item.collection, item.data.id),
+      })),
+    },
+    {
+      title: 'Changelog',
+      items: changelogPages.map((item) => ({
+        title: item.data.id,
         href: path.join('/docs', item.collection, item.data.id),
       })),
     },

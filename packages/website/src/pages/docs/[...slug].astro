@@ -7,7 +7,7 @@ import DocsLayout from '~/layouts/docs-layout.astro'
 import { getAllCollections } from '~/lib/page-control'
 
 type Props = {
-  entry: CollectionEntry<'components' | 'overview'>
+  entry: CollectionEntry<'components' | 'overview' | 'changelog'>
 }
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ const { Content, headings } = await entry.render()
 ---
 
 <DocsLayout title={entry.data.title} description={entry.data.description} headings={headings}>
-  <DocsHero slot="hero" entry={entry} />
+  <DocsHero slot="hero" title={entry.data.title} description={entry.data.description} />
   <Prose css={{ maxWidth: 'full', '&> :first-child': { mt: '0' } }}>
     <Content />
   </Prose>

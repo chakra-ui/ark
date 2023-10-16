@@ -33,7 +33,10 @@ const useScrollSpy = (selectors: string[]) => {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const elements = selectors.map((selector) => document.querySelector(selector))
+    const elements = selectors.map((selector) =>
+      document.querySelector(`[id='${selector.replace('#', '')}']`),
+    )
+
     observer.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
