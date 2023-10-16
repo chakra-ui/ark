@@ -1,33 +1,24 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { HStack, Stack } from '@ark-ui/styled-system/jsx'
 import { button } from '@ark-ui/styled-system/recipes'
-import { Typography } from '../ui/typography'
+import { Text } from '~/components/ui'
+import { getNextPage, getPreviousPage } from '~/lib/page-control'
 
-type Props = {
-  basePath: string
-  currentPage: CollectionEntry<'components'> | CollectionEntry<'docs'>
-  pages: CollectionEntry<'components'>[] | CollectionEntry<'docs'>[]
-}
-
-const { currentPage, pages, basePath } = Astro.props
-
-const index = pages.findIndex((page) => page.id === currentPage.id)
-const prevPage = pages[index - 1]
-const nextPage = pages[index + 1]
+const prevPage = await getPreviousPage(Astro.params.slug)
+const nextPage = await getNextPage(Astro.params.slug)
 ---
 
-<Stack width="full" gap="6" mt="12">
-  <HStack justify="space-between" width="full">
+<Stack gap="6">
+  <HStack justify="space-between">
     {
       prevPage && (
         <Stack gap="3">
-          <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
+          <Text color="fg.subtle" fontWeight="semibold" textStyle="sm">
             Previous
-          </Typography>
-          <a href={basePath + prevPage.data.id} class={button({ variant: 'link', size: 'lg' })}>
-            <ArrowLeft /> {prevPage.data.title}
+          </Text>
+          <a href={prevPage.href} class={button({ variant: 'link', size: 'lg' })}>
+            <ArrowLeft /> {prevPage.name}
           </a>
         </Stack>
       )
@@ -35,12 +26,11 @@ const nextPage = pages[index + 1]
     {
       nextPage && (
         <Stack gap="3" style={{ marginLeft: 'auto' }}>
-          <Typography color="fg.subtle" fontWeight="semibold" textStyle="sm">
+          <Text color="fg.subtle" fontWeight="semibold" textStyle="sm">
             Next
-          </Typography>
-
-          <a href={basePath + nextPage.data.id} class={button({ variant: 'link', size: 'lg' })}>
-            {nextPage.data.title} <ArrowRight />
+          </Text>
+          <a href={nextPage.href} class={button({ variant: 'link', size: 'lg' })}>
+            {nextPage.name} <ArrowRight />
           </a>
         </Stack>
       )

@@ -2,18 +2,18 @@ import { Portal } from '@ark-ui/react'
 import { HStack, Stack } from '@ark-ui/styled-system/jsx'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
-import { Button } from './ui/button'
-import { Code } from './ui/code'
-import { Icon } from './ui/icon'
+import { Button } from '../ui/button'
+import { Code } from '../ui/code'
+import { Icon } from '../ui/icon'
 import {
   Popover,
   PopoverContent,
   PopoverDescription,
   PopoverPositioner,
   PopoverTrigger,
-} from './ui/popover'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
-import { Heading } from './ui/typography'
+} from '../ui/popover'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
+import { Heading } from '../ui/typography'
 
 type Props = {
   types: CollectionEntry<'types'>

@@ -1,22 +1,42 @@
-import { TabIndicator, TabList, TabTrigger, Tabs } from '../ui/tabs'
+import { useEffect, useState } from 'react'
+import { SegmentGroup } from '~/components/ui/segment-group'
 
 interface Props {
-  items: { id: string; slug: string; title: string }[]
-  currentValue?: string
+  items: { href: string; title: string; label?: string }[]
+  activeItem?: string | null
 }
 
 export const SidebarGroup = (props: Props) => {
-  const { items, currentValue } = props
+  const { items = [], activeItem } = props
+  const [active, setActive] = useState<string>()
+
+  useEffect(() => {
+    if (activeItem) {
+      setActive(activeItem)
+      return
+    }
+    document.addEventListener('astro:after-swap', () => {
+      setActive(window.location.pathname)
+    })
+    setActive(window.location.pathname)
+  }, [activeItem])
+
   return (
-    <Tabs defaultValue={currentValue} orientation="vertical" size="sm">
-      <TabList>
-        {items.map((item, id) => (
-          <TabTrigger key={id} value={item.id} asChild width="fit-content">
-            <a href={item.slug}>{item.title}</a>
-          </TabTrigger>
-        ))}
-        <TabIndicator />
-      </TabList>
-    </Tabs>
+    <SegmentGroup.Root value={active} orientation="vertical" size={{ base: 'md', md: 'sm' }}>
+      {items.map((item, id) => (
+        <a
+          key={id}
+          href={item.href}
+          style={{ display: 'flex', width: 'fit-content' }}
+          onClick={() => setActive(item.href)}
+        >
+          <SegmentGroup.Item value={item.href} data-orientation="vertical">
+            <SegmentGroup.ItemControl />
+            <SegmentGroup.ItemText>{item.title}</SegmentGroup.ItemText>
+          </SegmentGroup.Item>
+        </a>
+      ))}
+      <SegmentGroup.Indicator hidden={!items.some((entry) => entry.href === active)} />
+    </SegmentGroup.Root>
   )
 }

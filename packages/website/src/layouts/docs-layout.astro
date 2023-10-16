@@ -1,12 +1,12 @@
 ---
 import { Box, Container, Flex, Stack } from '@ark-ui/styled-system/jsx'
 import type { MarkdownHeading } from 'astro'
-import DocsFooter from '~/components/docs-footer.astro'
+import DocsFooter from '~/components/navigation/docs-footer.astro'
 import Navbar from '~/components/navigation/navbar.astro'
 import Sidebar from '~/components/navigation/sidebar.astro'
-import { TableOfContent } from '~/components/toc'
-import BaseLayout from './base.layout.astro'
-import { layout } from './layout.recipe'
+import { TableOfContent } from '~/components/navigation/table-of-content'
+import Layout from './layout.astro'
+import { layout } from './docs-layout.recipe'
 
 interface Props {
   title: string
@@ -18,7 +18,7 @@ const { title, description, headings } = Astro.props
 const styles = layout()
 ---
 
-<BaseLayout title={title} description={description}>
+<Layout title={title} description={description}>
   <header class={styles.header}>
     <Navbar />
   </header>
@@ -41,7 +41,7 @@ const styles = layout()
       </Box>
     </Flex>
   </main>
-</BaseLayout>
+</Layout>
 
 <script>
   const restoreScrollPosition = () => {
