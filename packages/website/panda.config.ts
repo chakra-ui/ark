@@ -1,8 +1,18 @@
 import { defineConfig } from '@pandacss/dev'
+import typographyPreset from 'pandacss-preset-typography'
 
 export default defineConfig({
   preflight: true,
-  presets: ['@pandacss/preset-base', '@park-ui/presets'],
+  presets: [
+    '@pandacss/preset-base',
+    '@park-ui/presets',
+    typographyPreset({
+      recipe: {
+        sizes: ['base'],
+        notProse: true,
+      },
+    }),
+  ],
   include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
   exclude: [],
   jsxFramework: 'react',
@@ -32,6 +42,13 @@ export default defineConfig({
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1',
+      },
+      article: {
+        '--colors-prose-body': 'colors.fg.muted',
+        '--colors-prose-heading': 'colors.fg.default',
+        '--colors-prose-bold': 'colors.fg.default',
+        '--colors-prose-link': 'colors.fg.default',
+        '--colors-prose-code': 'colors.fg.muted',
       },
       'pre, code': {
         fontFamily: 'Fira Code Variable!',

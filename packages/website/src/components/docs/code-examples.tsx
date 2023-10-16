@@ -1,4 +1,3 @@
-import { css } from '@ark-ui/styled-system/css'
 import { Box } from '@ark-ui/styled-system/jsx'
 import {
   TabContent,
@@ -17,7 +16,7 @@ type Props = TabsProps & {
 
 export const CodeExamples = (props: Props) => {
   return (
-    <Tabs size="sm" defaultValue="react" {...props}>
+    <Tabs size="sm" defaultValue="react" {...props} className="not-prose">
       <TabList bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
         <TabTrigger
           value="react"
@@ -36,27 +35,16 @@ export const CodeExamples = (props: Props) => {
         </TabTrigger>
         <TabIndicator />
       </TabList>
-      <Box
-        borderBottomRadius="l3"
-        overflow="hidden"
-        mt="-5"
-        bg="grayPalette.900"
-        className={css({
-          '& pre': {
-            borderWidth: '0',
-            borderRadius: '0',
-            my: '0',
-          },
-          '& code': {
-            p: '0',
-          },
-        })}
-      >
-        <TabContent value="react" style={{ marginTop: '20px !important' }}>
+      <Box borderBottomRadius="l3" overflow="hidden" bg="grayPalette.900">
+        <TabContent value="react" p="4">
           {props.react}
         </TabContent>
-        <TabContent value="solid">{props.solid}</TabContent>
-        <TabContent value="vue">{props.vue}</TabContent>
+        <TabContent value="solid" p="4">
+          {props.solid}
+        </TabContent>
+        <TabContent value="vue" p="4">
+          {props.vue}
+        </TabContent>
       </Box>
     </Tabs>
   )
