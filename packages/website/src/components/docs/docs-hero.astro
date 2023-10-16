@@ -1,0 +1,25 @@
+---
+import { Box, Container } from '@ark-ui/styled-system/jsx'
+import { article } from '@ark-ui/styled-system/recipes'
+import type { CollectionEntry } from 'astro:content'
+import { Heading, Text } from '~/components/ui'
+
+interface Props {
+  entry: CollectionEntry<'overview' | 'components'>
+}
+
+const { entry } = Astro.props
+---
+
+<Box bg={{ base: 'gray.50', _dark: 'black' }} borderBottomWidth="1px" position="relative">
+  <Container maxW="66rem" py={{ base: '16', md: '24' }}>
+    <article class={article()}>
+      <Heading as="h1" fontWeight="bold">{entry.data.title}</Heading>
+      <Text className="lead" color="fg.emphasized">{entry.data.description}</Text>
+    </article>
+    <!-- 
+    <Box position="absolute" bottom="0">
+      <DocsHeroTabs client:load />
+    </Box> -->
+  </Container>
+</Box>

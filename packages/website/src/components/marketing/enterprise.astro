@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Box, Container, Flex, Stack } from '@ark-ui/styled-system/jsx'
 import { button } from '@ark-ui/styled-system/recipes'
 import { match } from 'ts-pattern'
-import { Heading, Typography } from '../ui/typography'
+import { Heading, Typography } from '~/components/ui/typography'
 import ReactIcon from './icons/fill/react.astro'
 import SolidIcon from './icons/fill/solid.astro'
 import VueIcon from './icons/fill/vue.astro'
@@ -11,7 +11,7 @@ import ArkIcon from './icons/fill/ark.astro'
 ---
 
 <Box bg="bg.subtle">
-  <Container py={{ base: '16', md: '24' }}>
+  <Container py={{ base: '16', md: '24' }} maxW="7xl">
     <Stack direction={{ base: 'column', md: 'row' }} gap={{ base: '12', md: '16' }}>
       <Stack gap={{ base: '8', md: '10' }} alignItems="start">
         <Stack gap={{ base: '4', md: '5' }} maxW="3xl">

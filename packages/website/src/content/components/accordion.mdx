@@ -4,8 +4,9 @@ title: Accordion
 description: A collapsible component that displays content in a vertical stack.
 ---
 
-import Anatomy from '~/components/anatomy.astro'
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+
+<ComponentPreview />
 
 ## Anatomy
 
@@ -16,11 +17,13 @@ we name its parts.
 
 <Anatomy id="accordion" />
 
-## Usage
-
 Let's start with a basic Accordion component:
 
-<Story id="Basic" />
+<Story id="Basic" highlight="line3-9" />
+
+```tsx
+<Accordion.Root coollapisble />
+```
 
 ## Setting an Initial Panel
 

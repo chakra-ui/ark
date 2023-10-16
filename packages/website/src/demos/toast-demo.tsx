@@ -2,8 +2,8 @@ import { createToaster } from '@ark-ui/react'
 import { Box } from '@ark-ui/styled-system/jsx'
 import { XIcon } from 'lucide-react'
 import { Toast, ToastCloseTrigger, ToastDescription, ToastTitle } from '~/components/ui/toast'
-import { Button } from '../ui/button'
-import { IconButton } from '../ui/icon-button'
+import { Button } from '../components/ui/button'
+import { IconButton } from '../components/ui/icon-button'
 
 const [Toaster, toast] = createToaster({
   placement: 'bottom-end',

@@ -1,4 +1,3 @@
-import type { ContainerProperties } from '@ark-ui/styled-system/patterns'
 import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
@@ -118,11 +117,11 @@ export default defineConfig({
   patterns: {
     extend: {
       container: {
-        transform(props: ContainerProperties) {
+        // @ts-ignore
+        transform(props: StyledPprops) {
           return {
             position: 'relative',
             width: '100%',
-            maxWidth: '7xl',
             mx: 'auto',
             px: { base: '4', md: '6' },
             ...props,

@@ -2,7 +2,7 @@
 import { css } from '@ark-ui/styled-system/css'
 import { Box, Container, Flex, Stack } from '@ark-ui/styled-system/jsx'
 import { match } from 'ts-pattern'
-import { Heading, Typography } from '../ui/typography'
+import { Heading, Typography } from '~/components/ui/typography'
 import React from './icons/react.astro'
 import Solid from './icons/solid.astro'
 import Vue from './icons/vue.astro'
@@ -34,7 +34,7 @@ import Js from './icons/js.astro'
   backgroundRepeat="repeat-x"
   width="full"
 >
-  <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }}>
+  <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }} maxW="7xl">
     <Stack direction="row" align="center" width="full" justify="space-evenly">
       {
         [

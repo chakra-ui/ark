@@ -1,7 +1,7 @@
 ---
 import { Container, Stack } from '@ark-ui/styled-system/jsx'
-import Logo from '../logo.astro'
-import { Typography } from '../ui/typography'
+import { Logo } from '../logo'
+import { Typography } from '~/components/ui/typography'
 
 const resources = [
   {
@@ -24,7 +24,7 @@ const resources = [
 ---
 
 <footer role="contentinfo">
-  <Container py="12">
+  <Container py="12" maxW="7xl">
     <Stack direction={{ base: 'column-reverse', md: 'row' }} justify="space-between" gap="8">
       <Stack gap={{ base: '1', md: '6' }} direction={{ base: 'column', md: 'row' }} align="start">
         <Logo height="24px" />

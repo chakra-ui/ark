@@ -1,0 +1,7 @@
+---
+import Playground from './playground.astro'
+
+const componentId = Astro.params.slug?.split('/').pop()
+---
+
+<Playground component={componentId} />
