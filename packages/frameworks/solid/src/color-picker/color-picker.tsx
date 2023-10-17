@@ -20,11 +20,9 @@ export type ColorPickerProps = Assign<
 
 export const ColorPicker = (props: ColorPickerProps) => {
   const [colorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(props, [
-    'alphaFormat',
     'autoFocus',
     'dir',
     'disabled',
-    'format',
     'getRootNode',
     'id',
     'ids',

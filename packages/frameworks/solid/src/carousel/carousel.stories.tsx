@@ -55,7 +55,7 @@ export const Controlled = () => {
     <>
       <Carousel.Root
         index={currentIndex()}
-        onSlideChange={(details) => setCurrentIndex(details.index)}
+        onIndexChange={(details) => setCurrentIndex(details.index)}
       >
         <Carousel.Control>
           <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>

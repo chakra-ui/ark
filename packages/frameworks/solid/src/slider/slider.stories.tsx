@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => {
-  const [value, setValue] = createSignal(30)
+  const [value, setValue] = createSignal([30])
   return (
     <Slider.Root min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
       <Slider.Label>Label</Slider.Label>
@@ -19,7 +19,7 @@ export const Basic = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb />
+        <Slider.Thumb index={0} />
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={-30}>*</Slider.Marker>

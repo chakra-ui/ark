@@ -6,6 +6,7 @@ export type SliderLabelProps = HTMLArkProps<'label'>
 
 export const SliderLabel = (props: SliderLabelProps) => {
   const api = useSliderContext()
-  const labelProps = mergeProps(() => api().labelProps, props)
-  return <ark.label {...labelProps} />
+  const mergedProps = mergeProps(() => api().labelProps, props)
+
+  return <ark.label {...mergedProps} />
 }

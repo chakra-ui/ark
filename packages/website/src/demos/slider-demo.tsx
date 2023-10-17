@@ -11,12 +11,12 @@ import {
 
 export const SliderDemo = (props: SliderProps) => {
   return (
-    <Slider min={0} max={100} defaultValue={33} {...props}>
+    <Slider min={0} max={100} defaultValue={[33]} {...props}>
       <SliderControl>
         <SliderTrack>
           <SliderRange />
         </SliderTrack>
-        <SliderThumb />
+        <SliderThumb index={0} />
       </SliderControl>
       <SliderMarkerGroup>
         <SliderMarker value={25}>25</SliderMarker>

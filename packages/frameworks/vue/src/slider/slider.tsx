@@ -16,12 +16,9 @@ export const Slider = defineComponent({
     SliderProvider(api)
 
     return () => (
-      <>
-        <ark.div {...api.value.rootProps} {...attrs}>
-          {slots?.default?.(api.value)}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
+      <ark.div {...api.value.rootProps} {...attrs}>
+        {slots?.default?.(api.value)}
+      </ark.div>
     )
   },
 })

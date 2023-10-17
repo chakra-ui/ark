@@ -3,21 +3,11 @@ import type { PropType } from 'vue'
 import { declareEmits } from '../utils'
 
 export const props = {
-  'aria-label': {
-    type: String as PropType<Context['aria-label']>,
-  },
-  'aria-labelledby': {
-    type: String as PropType<Context['aria-labelledby']>,
-  },
   dir: {
     type: String as PropType<Context['dir']>,
   },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
-    default: undefined,
-  },
-  focusThumbOnChange: {
-    type: Boolean as PropType<Context['focusThumbOnChange']>,
     default: undefined,
   },
   form: {
@@ -68,7 +58,7 @@ export const props = {
     type: Object as PropType<Context['thumbSize']>,
   },
   modelValue: {
-    type: Number as PropType<Context['value']>,
+    type: Array<number> as PropType<Context['value']>,
   },
 }
 export const emits = declareEmits([

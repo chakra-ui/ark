@@ -17,7 +17,6 @@ import { PaginationDemo } from '~/demos/pagination-demo'
 import { PinInputDemo } from '~/demos/pin-input-demo'
 import { PopoverDemo } from '~/demos/popover-demo'
 import { RadioGroupDemo } from '~/demos/radio-group-demo'
-import { RangeSliderDemo } from '~/demos/range-slider-demo'
 import { RatingGroupDemo } from '~/demos/rating-group-demo'
 import { SegmentGroupDemo } from '~/demos/segment-group-demo'
 import { SelectDemo } from '~/demos/select-demo'
@@ -61,7 +60,6 @@ const { component } = Astro.props
         .with('pin-input', () => <PinInputDemo client:load />)
         .with('popover', () => <PopoverDemo client:load />)
         .with('radio-group', () => <RadioGroupDemo client:load />)
-        .with('range-slider', () => <RangeSliderDemo client:load />)
         .with('rating-group', () => <RatingGroupDemo client:load />)
         .with('segment-group', () => <SegmentGroupDemo client:load />)
         .with('select', () => <SelectDemo client:load />)

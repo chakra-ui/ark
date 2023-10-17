@@ -4,7 +4,7 @@ import {
   Dialog,
   DialogBackdrop,
   DialogCloseTrigger,
-  DialogContainer,
+  DialogPositioner,
   DialogContent,
   DialogDescription,
   DialogTitle,
@@ -18,7 +18,7 @@ import {
     </DialogTrigger>
     <Teleport to="body">
       <DialogBackdrop />
-      <DialogContainer>
+      <DialogPositioner>
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>
@@ -30,7 +30,7 @@ import {
             <button>close</button>
           </DialogCloseTrigger>
         </DialogContent>
-      </DialogContainer>
+      </DialogPositioner>
     </Teleport>
   </Dialog>
 </template>

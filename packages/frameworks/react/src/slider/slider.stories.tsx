@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Slider } from './'
+import { Slider } from '.'
 import './slider.css'
 
 type SliderType = typeof Slider
@@ -13,21 +13,18 @@ const meta: Meta<SliderType> = {
 export default meta
 
 export const Basic = () => {
-  const [value, setValue] = useState(30)
+  const [values, setValues] = useState([33, 66])
   return (
-    <Slider.Root
-      min={-50}
-      max={50}
-      value={value}
-      onValueChange={(details) => setValue(details.value)}
-    >
+    <Slider.Root min={0} max={100} value={values} onValueChange={(e) => setValues(e.value)}>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{value}</Slider.Output>
+      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb />
+        {values.map((_, index) => (
+          <Slider.Thumb key={index} index={index} />
+        ))}
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={-30}>*</Slider.Marker>
@@ -39,12 +36,21 @@ export const Basic = () => {
 }
 
 export const WithDefaultValue = () => (
-  <Slider.Root min={-50} max={50} defaultValue={42}>
+  <Slider.Root min={0} max={100} defaultValue={[33, 66]}>
+    <Slider.Label>Label</Slider.Label>
+    <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
     <Slider.Control>
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb />
+      {[0, 1].map((_, index) => (
+        <Slider.Thumb key={index} index={index} />
+      ))}
     </Slider.Control>
+    <Slider.MarkerGroup>
+      <Slider.Marker value={-30}>*</Slider.Marker>
+      <Slider.Marker value={0}>*</Slider.Marker>
+      <Slider.Marker value={30}>*</Slider.Marker>
+    </Slider.MarkerGroup>
   </Slider.Root>
 )

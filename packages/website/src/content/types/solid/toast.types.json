@@ -2,13 +2,26 @@
   "Root": { "asChild": { "type": "boolean", "isRequired": false } },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },
   "Createer": {
-    "placement": { "type": "Placement", "isRequired": true },
-    "render": { "type": "(api: Accessor<MachineApi<PropTypes>>) => Element", "isRequired": true },
+    "placement": {
+      "type": "Placement",
+      "isRequired": true,
+      "description": "The placement of the toast"
+    },
+    "render": {
+      "type": "(api: MachineApi<PropTypes>) => Element",
+      "isRequired": true,
+      "description": "Custom function to render the toast element."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
+    },
+    "duration": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration the toast will be visible"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -44,6 +57,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to pause toast when the user leaves the browser tab"
+    },
+    "removeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
     },
     "zIndex": {
       "type": "number",

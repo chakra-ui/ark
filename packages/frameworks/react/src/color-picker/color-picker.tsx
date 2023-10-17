@@ -17,12 +17,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>((props, 
   const [colorPickerProps, { children, ...localProps }] = createSplitProps<UseColorPickerProps>()(
     props,
     [
-      'alphaFormat',
       'autoFocus',
       'defaultValue',
       'dir',
       'disabled',
-      'format',
       'getRootNode',
       'id',
       'ids',

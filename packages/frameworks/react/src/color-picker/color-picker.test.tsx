@@ -1,10 +1,9 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
+import { ColorPicker } from '../'
 import { getExports } from '../setup-test'
-// import { ColorPicker } from '../'
 
 describe('ColorPicker', () => {
-  // TODO enable with zag 25
-  it.skip.each(getExports(colorPickerAnatomy))('should export %s', async () => {
-    // expect(ColorPicker[part]).toBeDefined()
+  it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
+    expect(ColorPicker[part]).toBeDefined()
   })
 })

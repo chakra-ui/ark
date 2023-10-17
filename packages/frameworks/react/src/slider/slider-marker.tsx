@@ -8,7 +8,6 @@ export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, { value:
 
 export const SliderMarker = forwardRef<HTMLSpanElement, SliderMarkerProps>((props, ref) => {
   const { value, ...spanProps } = props
-
   const api = useSliderContext()
   const mergedProps = mergeProps(api.getMarkerProps({ value }), spanProps)
 

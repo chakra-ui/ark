@@ -4,12 +4,17 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
 
-type MarkerParams = { value: number }
-export type SliderMarkerProps = Assign<HTMLArkProps<'span'>, MarkerParams>
+// TODO export in Zag.js
+interface MarkerProps {
+  value: number
+}
+
+export type SliderMarkerProps = Assign<HTMLArkProps<'span'>, MarkerProps>
 
 export const SliderMarker = (props: SliderMarkerProps) => {
-  const [markerParams, restProps] = createSplitProps<MarkerParams>()(props, ['value'])
+  const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
   const api = useSliderContext()
-  const markerProps = mergeProps(() => api().getMarkerProps(markerParams), restProps)
-  return <ark.span {...markerProps} />
+  const mergedProps = mergeProps(() => api().getMarkerProps(markerProps), localProps)
+
+  return <ark.span {...mergedProps} />
 }

@@ -15,17 +15,13 @@ export const Basic = () => {
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />
-        <Dialog.Container>
+        <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Title>Dialog Title</Dialog.Title>
             <Dialog.Description>Dialog Description</Dialog.Description>
-            <div>
-              <input placeholder="Enter name..." />
-              <button>Save</button>
-            </div>
             <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
           </Dialog.Content>
-        </Dialog.Container>
+        </Dialog.Positioner>
       </Portal>
     </Dialog.Root>
   )
@@ -39,13 +35,13 @@ export const DialogWithRenderFn = () => {
           <Dialog.Trigger>Open Dialog</Dialog.Trigger>
           <Portal>
             <Dialog.Backdrop />
-            <Dialog.Container>
+            <Dialog.Positioner>
               <Dialog.Content>
                 <Dialog.Title>Dialog Title</Dialog.Title>
                 <Dialog.Description>Dialog Description</Dialog.Description>
                 <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
               </Dialog.Content>
-            </Dialog.Container>
+            </Dialog.Positioner>
           </Portal>
           <p>Dialog is {api().isOpen ? 'open' : 'closed'}</p>
         </>
