@@ -42,7 +42,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  trigger: string\n  container: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
+      "type": "Partial<{\n  trigger: string\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the dialog. Useful for composition."
     },

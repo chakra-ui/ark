@@ -1,11 +1,5 @@
 {
   "Root": {
-    "alphaFormat": {
-      "type": "'decimal' | 'percent'",
-      "defaultValue": "\"decimal\"",
-      "isRequired": false,
-      "description": "The alpha format to use (decimal, percent)"
-    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -20,12 +14,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is disabled"
-    },
-    "format": {
-      "type": "ColorFormat",
-      "defaultValue": "\"hsl\"",
-      "isRequired": false,
-      "description": "The color format to use (rgb, hsl, hsb)"
     },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
