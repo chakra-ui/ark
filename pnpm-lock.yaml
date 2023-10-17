@@ -231,9 +231,6 @@ importers:
       '@zag-js/radio-group':
         specifier: 0.25.0
         version: 0.25.0
-      '@zag-js/range-slider':
-        specifier: 0.24.0
-        version: 0.24.0
       '@zag-js/rating-group':
         specifier: 0.25.0
         version: 0.25.0
