@@ -16,7 +16,7 @@ export const Carousel = (props: CarouselProps) => {
     'ids',
     'index',
     'loop',
-    'onSlideChange',
+    'onIndexChange',
     'orientation',
     'slidesPerView',
     'spacing',

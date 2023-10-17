@@ -4,7 +4,7 @@ import {
   Dialog,
   DialogBackdrop,
   DialogCloseTrigger,
-  DialogContainer,
+  DialogPositioner,
   DialogContent,
   DialogDescription,
   DialogTitle,
@@ -22,7 +22,7 @@ const handleOpen = () => {
   <Dialog v-model:open="open">
     <Teleport to="body">
       <DialogBackdrop />
-      <DialogContainer data-testid="dialog-container">
+      <DialogPositioner data-testid="dialog-Positioner">
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>
@@ -34,7 +34,7 @@ const handleOpen = () => {
             <button>close</button>
           </DialogCloseTrigger>
         </DialogContent>
-      </DialogContainer>
+      </DialogPositioner>
     </Teleport>
   </Dialog>
 </template>

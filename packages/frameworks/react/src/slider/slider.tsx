@@ -4,24 +4,24 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { SliderProvider, type SliderContext } from './slider-context'
-import { useSlider, type UseSliderProps } from './use-slider'
+import { SliderProvider } from './slider-context'
+import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 
 export interface SliderProps
   extends Assign<
-    Assign<HTMLArkProps<'div'>, UseSliderProps>,
-    { children?: ((context: SliderContext) => ReactNode) | ReactNode }
+    HTMLArkProps<'div'>,
+    UseSliderProps & {
+      children?: ((api: UseSliderReturn) => ReactNode) | ReactNode
+    }
   > {}
 
 export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
-  const { children, ...restProps } = props
-  const [useSliderProps, divProps] = createSplitProps<UseSliderProps>()(restProps, [
+  const [useSliderProps, { children, ...divProps }] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
     'defaultValue',
     'dir',
     'disabled',
-    'focusThumbOnChange',
     'form',
     'getAriaValueText',
     'getRootNode',
@@ -30,10 +30,11 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
     'invalid',
     'max',
     'min',
+    'minStepsBetweenThumbs',
     'name',
+    'onFocusChange',
     'onValueChange',
     'onValueChangeEnd',
-    'onValueChangeStart',
     'orientation',
     'origin',
     'readOnly',
@@ -52,7 +53,6 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
       <ark.div {...mergedProps} ref={ref}>
         {view}
       </ark.div>
-      <input {...api.hiddenInputProps} />
     </SliderProvider>
   )
 })

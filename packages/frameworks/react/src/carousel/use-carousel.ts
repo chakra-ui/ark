@@ -25,7 +25,7 @@ export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => 
   const context: carousel.Context = {
     ...initialContext,
     index: props.index,
-    onSlideChange: useEvent(props.onSlideChange, { sync: true }),
+    onIndexChange: useEvent(props.onIndexChange, { sync: true }),
   }
 
   const [state, send] = useMachine(carousel.machine(initialContext), { context })

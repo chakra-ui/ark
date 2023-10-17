@@ -21,7 +21,8 @@ type GroupContext = Parameters<(typeof toast)['group']['machine']>[0]
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'defaultOptions'> {
   placement: toast.Placement
-  render: (api: ComputedRef<toast.Api>) => VNode
+  // TODO improve typings
+  render: (api: any) => VNode
 }
 
 // TODO improve typings
@@ -29,7 +30,7 @@ export type CreateToasterReturn = [any, ComputedRef<toast.GroupApi<PropTypes>>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, render, ...rest } = props
-  const service = toast.group.machine({ id: '1', defaultOptions: { placement }, ...rest }).start()
+  const service = toast.group.machine({ id: '1', placement, ...rest }).start()
   let api = computed(() => toast.group.connect(service.getState(), service.send, normalizeProps))
 
   const Toaster = defineComponent({
@@ -72,6 +73,6 @@ export const ToastProviderFactory = defineComponent({
 
     ToastProvider(api)
 
-    return () => <Fragment>{api.value.render() || props.render(api)}</Fragment>
+    return () => <Fragment>{props.render(api)}</Fragment>
   },
 })

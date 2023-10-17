@@ -13,7 +13,7 @@ import {
   type SliderProps,
 } from '../'
 
-const sliderValue = ref<SliderProps['modelValue']>(0)
+const sliderValue = ref([0])
 </script>
 <template>
   <Slider :min="-50" :max="50" v-model="sliderValue">
@@ -23,7 +23,7 @@ const sliderValue = ref<SliderProps['modelValue']>(0)
       <SliderTrack>
         <SliderRange />
       </SliderTrack>
-      <SliderThumb />
+      <SliderThumb :index="0" />
     </SliderControl>
     <SliderMarkerGroup>
       <SliderMarker :value="-30">-30</SliderMarker>

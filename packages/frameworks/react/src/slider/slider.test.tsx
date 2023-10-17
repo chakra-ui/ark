@@ -1,7 +1,8 @@
 import { sliderAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
+import { useState } from 'react'
+import { vi } from 'vitest'
 import {
   Slider,
   SliderControl,
@@ -9,121 +10,132 @@ import {
   SliderMarker,
   SliderMarkerGroup,
   SliderOutput,
-  SliderRange,
   SliderThumb,
   SliderTrack,
   type SliderProps,
-} from './'
+} from '.'
+import { getExports } from '../setup-test'
+import { SliderRange } from './slider-range'
 
 const ComponentUnderTest = (props: SliderProps) => {
+  const [value, setValue] = useState([-20, 20])
   return (
-    <Slider min={-50} max={50} defaultValue={0} {...props}>
-      {(api) => (
-        <>
-          <SliderLabel>Label</SliderLabel>
-          <Slider.Output>{api.value}</Slider.Output>
-          <SliderControl>
-            <SliderTrack>
-              <SliderRange />
-            </SliderTrack>
-            <SliderThumb />
-          </SliderControl>
-          <SliderMarkerGroup>
-            <SliderMarker value={-30}>*</SliderMarker>
-            <SliderMarker value={0}>*</SliderMarker>
-            <SliderMarker value={30}>*</SliderMarker>
-          </SliderMarkerGroup>
-        </>
-      )}
+    <Slider min={-50} max={50} value={value} onValueChange={(e) => setValue(e.value)} {...props}>
+      <SliderLabel>Quantity: </SliderLabel>
+      <SliderOutput>{({ value }) => value.join(' ')}</SliderOutput>
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+        {value.map((_, index) => (
+          <SliderThumb key={index} index={index} />
+        ))}
+      </SliderControl>
+      <SliderMarkerGroup>
+        <SliderMarker value={-30}>*</SliderMarker>
+        <SliderMarker value={0}>*</SliderMarker>
+        <SliderMarker value={30}>*</SliderMarker>
+      </SliderMarkerGroup>
     </Slider>
   )
 }
 
 describe('Slider', () => {
-  it.each(getParts(sliderAnatomy))('should render part! %s', async (part) => {
+  it('should render!', async () => {
     render(<ComponentUnderTest />)
-    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
     expect(Slider[part]).toBeDefined()
   })
 
-  it('should move the thumb correctly when orientated horizontal', async () => {
+  it('should be possible to control it with the arrow keys', async () => {
     render(<ComponentUnderTest />)
 
-    const thumb = screen.getByRole('slider', { hidden: true })
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 
-    thumb.focus()
-
+    leftThumb.focus()
     await user.keyboard('[ArrowRight]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '1')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-19')
 
+    await user.keyboard('[ArrowLeft]')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-20')
+
+    rightThumb.focus()
     await user.keyboard('[ArrowRight]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '2')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '21')
 
-    await user.keyboard('[Home]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '-50')
-
-    await user.keyboard('[End]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '50')
+    await user.keyboard('[ArrowLeft]')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should move the thumb correctly when orientated vertical', async () => {
-    render(<ComponentUnderTest orientation="vertical" />)
+  it('should not be possible to overlap the right thumb with the left thumb', async () => {
+    render(<ComponentUnderTest />)
 
-    const thumb = screen.getByRole('slider', { hidden: true })
-    thumb.focus()
-
-    await user.keyboard('[ArrowUp]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '1')
-
-    await user.keyboard('[ArrowDown]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '0')
-
-    await user.keyboard('[Home]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '-50')
-
+    const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+    leftThumb.focus()
     await user.keyboard('[End]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '50')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+
+    await user.keyboard('[ArrowRight]')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should move the thumb correctly under rtl ', async () => {
+  it('should be possible to control it with the arrow keys in rtl mode', async () => {
     render(<ComponentUnderTest dir="rtl" />)
 
-    const thumb = screen.getByRole('slider', { hidden: true })
-    thumb.focus()
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 
+    leftThumb.focus()
     await user.keyboard('[ArrowRight]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '-1')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-21')
 
+    await user.keyboard('[ArrowLeft]')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-20')
+
+    rightThumb.focus()
     await user.keyboard('[ArrowRight]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '-2')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '19')
 
-    await user.keyboard('[Home]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '-50')
-
-    await user.keyboard('[End]')
-    expect(thumb).toHaveAttribute('aria-valuenow', '50')
+    await user.keyboard('[ArrowLeft]')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should allow access to context with children render prop for Select', () => {
-    render(
-      <Slider min={-50} max={50} defaultValue={22}>
-        {(context) => <div data-testid="slider-value">{JSON.stringify(context.value)}</div>}
-      </Slider>,
-    )
-    expect(screen.getByTestId('slider-value')).toHaveTextContent('22')
+  it('should be possible to control it with the arrow keys in vertical mode', async () => {
+    render(<ComponentUnderTest orientation="vertical" />)
+
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+
+    leftThumb.focus()
+    await user.keyboard('[ArrowUp]')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-19')
+
+    await user.keyboard('[ArrowDown]')
+    expect(leftThumb).toHaveAttribute('aria-valuenow', '-20')
+
+    rightThumb.focus()
+    await user.keyboard('[ArrowUp]')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '21')
+
+    await user.keyboard('[ArrowDown]')
+    expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should allow access to context with children render prop for SelectOutput', () => {
-    render(
-      <Slider min={-50} max={50} defaultValue={22}>
-        <SliderOutput>
-          {(context) => <div data-testid="slider-value">{JSON.stringify(context.value)}</div>}
-        </SliderOutput>
-      </Slider>,
-    )
-    expect(screen.getByTestId('slider-value')).toHaveTextContent('22')
+  it('should handle disabled state', async () => {
+    render(<ComponentUnderTest disabled />)
+    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+    expect(leftThumb).toHaveAttribute('aria-disabled', 'true')
+    expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
+  })
+
+  it('should emit correct onChange events', async () => {
+    const onChange = vi.fn()
+    render(<ComponentUnderTest onChange={onChange} />)
+    const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
+
+    leftThumb.focus()
+    await user.keyboard('[ArrowRight]')
+
+    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
   })
 })

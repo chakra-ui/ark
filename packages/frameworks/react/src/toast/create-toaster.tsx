@@ -18,7 +18,7 @@ export type CreateToasterReturn = [React.ElementType, toast.GroupApi<PropTypes>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, render, ...rest } = props
-  const service = toast.group.machine({ id: '1', defaultOptions: { placement }, ...rest }).start()
+  const service = toast.group.machine({ id: '1', placement, ...rest }).start()
   let api = toast.group.connect(service.getState(), service.send, normalizeProps)
 
   const Toaster = forwardRef<HTMLOListElement, HTMLArkProps<'ol'>>((props, ref) => {
@@ -57,5 +57,6 @@ interface ToastProviderFactoryProps {
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
   const [state, send] = useActor(props.toast)
   const api = toast.connect(state, send, normalizeProps)
-  return <ToastProvider value={api}>{api.render() || props.render(api)}</ToastProvider>
+
+  return <ToastProvider value={api}>{props.render(api)}</ToastProvider>
 }

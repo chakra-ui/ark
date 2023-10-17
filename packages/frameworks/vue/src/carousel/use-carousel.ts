@@ -17,8 +17,8 @@ export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): Us
       id: useId().value,
       getRootNode,
       ...context.value,
-      onSlideChange: (details) => {
-        emit('slide-change', details)
+      onIndexChange: (details) => {
+        emit('index-change', details)
       },
     }),
     { context },

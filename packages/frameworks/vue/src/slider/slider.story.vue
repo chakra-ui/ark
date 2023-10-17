@@ -10,11 +10,10 @@ import {
   SliderRange,
   SliderThumb,
   SliderTrack,
-  type SliderProps,
 } from '../'
 import './slider.css'
 
-const sliderValue = ref<SliderProps['modelValue']>(30)
+const sliderValue = ref([30])
 </script>
 <template>
   <Story title="Slider">

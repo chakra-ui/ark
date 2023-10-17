@@ -20,7 +20,6 @@ export const Slider = (props: SliderProps) => {
     'aria-labelledby',
     'dir',
     'disabled',
-    'focusThumbOnChange',
     'form',
     'getAriaValueText',
     'getRootNode',
@@ -29,10 +28,11 @@ export const Slider = (props: SliderProps) => {
     'invalid',
     'max',
     'min',
+    'minStepsBetweenThumbs',
     'name',
+    'onFocusChange',
     'onValueChange',
     'onValueChangeEnd',
-    'onValueChangeStart',
     'orientation',
     'origin',
     'readOnly',
@@ -49,7 +49,6 @@ export const Slider = (props: SliderProps) => {
   return (
     <SliderProvider value={api}>
       <ark.div {...mergedProps}>{getChildren()}</ark.div>
-      <input {...api().hiddenInputProps} />
     </SliderProvider>
   )
 }

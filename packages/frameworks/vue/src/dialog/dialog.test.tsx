@@ -5,9 +5,9 @@ import {
   Dialog,
   DialogBackdrop,
   DialogCloseTrigger,
-  DialogContainer,
   DialogContent,
   DialogDescription,
+  DialogPositioner,
   DialogTitle,
   DialogTrigger,
   type DialogProps,
@@ -21,7 +21,7 @@ const Component = (props: DialogProps) => (
     </DialogTrigger>
     <Teleport to="body">
       <DialogBackdrop />
-      <DialogContainer />
+      <DialogPositioner />
       <DialogContent>
         <DialogTitle>Dialog title</DialogTitle>
         <DialogDescription>Dialog description</DialogDescription>
@@ -60,11 +60,11 @@ describe('Dialog', () => {
     const { getByText, getByTestId } = render(ControlledComponent)
 
     const controlButton = getByText<HTMLButtonElement>('Toggle Dialog')
-    const dialogContainer = getByTestId('dialog-container')
+    const dialogPositioner = getByTestId('dialog-Positioner')
 
-    expect(dialogContainer).not.toBeVisible()
+    expect(dialogPositioner).not.toBeVisible()
 
     await user.click(controlButton)
-    expect(dialogContainer).toBeVisible()
+    expect(dialogPositioner).toBeVisible()
   })
 })

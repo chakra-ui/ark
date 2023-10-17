@@ -5,9 +5,9 @@ import {
   Dialog,
   DialogBackdrop,
   DialogCloseTrigger,
-  DialogContainer,
   DialogContent,
   DialogDescription,
+  DialogPositioner,
   DialogTitle,
   DialogTrigger,
   type DialogProps,
@@ -18,17 +18,13 @@ const ComponentUnderTest = (props: DialogProps) => (
     <DialogTrigger>Open Dialog</DialogTrigger>
     <Portal>
       <DialogBackdrop />
-      <DialogContainer>
+      <DialogPositioner>
         <DialogContent>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogDescription>Dialog Description</DialogDescription>
-          <div>
-            <input placeholder="Enter name..." />
-            <button>Save</button>
-          </div>
           <DialogCloseTrigger>Close</DialogCloseTrigger>
         </DialogContent>
-      </DialogContainer>
+      </DialogPositioner>
     </Portal>
   </Dialog>
 )
