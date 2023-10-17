@@ -42,7 +42,7 @@
       "isRequired": false,
       "description": "Whether the carousel should loop around."
     },
-    "onSlideChange": {
+    "onIndexChange": {
       "type": "(details: SlideChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the slide changes."
