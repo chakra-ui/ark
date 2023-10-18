@@ -162,13 +162,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Value": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Content": {
     "asChild": {
       "type": "boolean",
@@ -220,6 +213,13 @@
   },
   "ItemGroup": {
     "id": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ValueText": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
