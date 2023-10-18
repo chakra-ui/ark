@@ -9,10 +9,6 @@ export const ToastDescription = defineComponent({
   setup(_, { attrs }) {
     const api = useToastContext()
 
-    return () => (
-      <ark.div {...api.value.descriptionProps} {...attrs}>
-        {api.value.description}
-      </ark.div>
-    )
+    return () => <ark.div {...api.value.descriptionProps} {...attrs} />
   },
 })

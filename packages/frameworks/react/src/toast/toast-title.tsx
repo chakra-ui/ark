@@ -9,11 +9,7 @@ export const ToastTitle = forwardRef<HTMLDivElement, ToastTitleProps>((props, re
   const api = useToastContext()
   const mergedProps = mergeProps(api.titleProps, props)
 
-  return (
-    <ark.div {...mergedProps} ref={ref}>
-      {api.title}
-    </ark.div>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 ToastTitle.displayName = 'ToastTitle'

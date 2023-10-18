@@ -10,11 +10,11 @@ export default meta
 
 const [Toaster, toast] = createToaster({
   placement: 'top-end',
-  render() {
+  render(toast) {
     return (
       <Toast.Root>
-        <Toast.Title />
-        <Toast.Description />
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
         <Toast.CloseTrigger>Close</Toast.CloseTrigger>
       </Toast.Root>
     )
