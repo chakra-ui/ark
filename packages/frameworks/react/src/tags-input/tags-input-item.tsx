@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/react'
+import type { ItemProps, ItemState } from '@zag-js/tags-input'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
-import { TagsInputItemProvider, type ItemProps, type ItemState } from './tags-input-item-context'
+import { TagsInputItemProvider } from './tags-input-item-context'
 
 export interface TagsInputItemProps
   extends ItemProps,

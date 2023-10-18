@@ -28,6 +28,7 @@ export {
   SliderMarker,
   SliderMarkerGroup,
   SliderOutput,
+  SliderRange,
   SliderThumb,
   SliderTrack,
   useSliderContext,
