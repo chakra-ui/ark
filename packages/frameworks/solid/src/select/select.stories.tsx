@@ -16,7 +16,7 @@ export const Basic = () => {
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.Value placeholder="Select a Framework" />
+          <Select.ValueText placeholder="Select a Framework" />
           <Select.Indicator />
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>

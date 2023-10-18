@@ -14,7 +14,7 @@ import { SelectItemText, type SelectItemTextProps } from './select-item-text'
 import { SelectLabel, type SelectLabelProps } from './select-label'
 import { SelectPositioner, type SelectPositionerProps } from './select-positioner'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
-import { SelectValue, type SelectValueProps } from './select-value'
+import { SelectValueText, type SelectValueTextProps } from './select-value-text'
 
 const Select = Object.assign(SelectRoot, {
   Root: SelectRoot,
@@ -30,7 +30,7 @@ const Select = Object.assign(SelectRoot, {
   Label: SelectLabel,
   Positioner: SelectPositioner,
   Trigger: SelectTrigger,
-  Value: SelectValue,
+  ValueText: SelectValueText,
 })
 
 export {
@@ -47,7 +47,7 @@ export {
   SelectLabel,
   SelectPositioner,
   SelectTrigger,
-  SelectValue,
+  SelectValueText,
   useSelectContext,
   useSelectItemContext,
 }
@@ -69,5 +69,5 @@ export type {
   SelectPositionerProps,
   SelectProps,
   SelectTriggerProps,
-  SelectValueProps,
+  SelectValueTextProps,
 }
