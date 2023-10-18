@@ -15,5 +15,10 @@ export const SegmentGroupItemControl = (props: SegmentGroupItemControlProps) => 
     props,
   )
 
-  return <ark.div {...mergedProps} />
+  return (
+    <>
+      <ark.div {...mergedProps} />
+      <input {...api().getItemHiddenInputProps(itemProps)} />
+    </>
+  )
 }
