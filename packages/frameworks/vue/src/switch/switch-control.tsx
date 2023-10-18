@@ -11,9 +11,12 @@ export const SwitchControl: ComponentWithProps<SwitchControlProps> = defineCompo
     const api = useSwitchContext()
 
     return () => (
-      <ark.span {...api.value.controlProps} {...attrs}>
-        {slots.default?.()}
-      </ark.span>
+      <>
+        <ark.span {...api.value.controlProps} {...attrs}>
+          {slots.default?.()}
+        </ark.span>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })

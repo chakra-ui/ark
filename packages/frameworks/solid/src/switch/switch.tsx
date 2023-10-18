@@ -37,7 +37,6 @@ export const Switch = (props: SwitchProps) => {
   return (
     <SwitchProvider value={api}>
       <ark.label {...mergedProps}>{getChildren()}</ark.label>
-      <input {...api().hiddenInputProps} />
     </SwitchProvider>
   )
 }
