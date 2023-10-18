@@ -47,7 +47,6 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
       <ark.label {...mergedProps} ref={ref}>
         {view}
       </ark.label>
-      <input {...api.hiddenInputProps} />
     </CheckboxProvider>
   )
 })

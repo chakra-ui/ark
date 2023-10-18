@@ -79,7 +79,6 @@ export const Checkbox: ComponentWithProps<Partial<UseCheckboxProps>> = defineCom
         <ark.label {...api.value.rootProps} {...attrs}>
           {slots.default?.(api.value)}
         </ark.label>
-        <input {...api.value.hiddenInputProps} />
       </>
     )
   },
