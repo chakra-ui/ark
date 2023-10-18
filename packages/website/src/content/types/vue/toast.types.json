@@ -8,9 +8,8 @@
       "description": "The placement of the toast"
     },
     "render": {
-      "type": "(api: any) => VNode<RendererNode, RendererElement, { [key: string]: any }>",
-      "isRequired": true,
-      "description": "Custom function to render the toast element."
+      "type": "(\n  api: MachineApi<PropTypes>,\n) => VNode<RendererNode, RendererElement, { [key: string]: any }>",
+      "isRequired": true
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
