@@ -32,7 +32,6 @@ export const RatingGroup = (props: RatingGroupProps) => {
   return (
     <RatingGroupProvider value={api}>
       <ark.div {...mergedProps} />
-      <input {...api().hiddenInputProps} />
     </RatingGroupProvider>
   )
 }

@@ -34,7 +34,6 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
   return (
     <RatingGroupProvider value={api}>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...api.hiddenInputProps} />
     </RatingGroupProvider>
   )
 })

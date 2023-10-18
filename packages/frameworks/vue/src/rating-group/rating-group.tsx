@@ -71,7 +71,6 @@ export const RatingGroup: ComponentWithProps<Partial<UseRatingGroupProps>> = def
         <ark.div {...api.value.rootProps} {...attrs}>
           {slots.default?.(api.value)}
         </ark.div>
-        <input {...api.value.hiddenInputProps} />
       </>
     )
   },

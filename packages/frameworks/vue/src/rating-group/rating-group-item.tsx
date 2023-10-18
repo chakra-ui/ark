@@ -22,9 +22,12 @@ export const RatingGroupItem: ComponentWithProps<RatingGroupItemProps> = defineC
     RatingGroupItemProvider(itemState)
 
     return () => (
-      <ark.span {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(itemState.value)}
-      </ark.span>
+      <>
+        <ark.span {...api.value.getItemProps(props)} {...attrs}>
+          {slots.default?.(itemState.value)}
+        </ark.span>
+        <input {...api.value.hiddenInputProps} />
+      </>
     )
   },
 })
