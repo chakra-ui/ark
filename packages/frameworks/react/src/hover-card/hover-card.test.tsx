@@ -2,32 +2,24 @@ import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import {
-  HoverCard,
-  HoverCardArrow,
-  HoverCardArrowTip,
-  HoverCardContent,
-  HoverCardPositioner,
-  HoverCardTrigger,
-  type HoverCardProps,
-} from '.'
+import { HoverCard, type HoverCardProps } from '..'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
-  <HoverCard openDelay={0} closeDelay={0} {...props}>
-    <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
+    <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>
-      <HoverCardPositioner>
-        <HoverCardContent>
-          <HoverCardArrow>
-            <HoverCardArrowTip />
-          </HoverCardArrow>
+      <HoverCard.Positioner>
+        <HoverCard.Content>
+          <HoverCard.Arrow>
+            <HoverCard.ArrowTip />
+          </HoverCard.Arrow>
           Content
-        </HoverCardContent>
-      </HoverCardPositioner>
+        </HoverCard.Content>
+      </HoverCard.Positioner>
     </Portal>
-  </HoverCard>
+  </HoverCard.Root>
 )
 
 describe('HoverCard', () => {

@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Switch, SwitchControl, SwitchLabel, SwitchThumb, type SwitchProps } from './'
+import { Switch, type SwitchProps } from './'
 
 const ComponentUnderTest = (props: SwitchProps) => {
   return (
-    <Switch {...props}>
-      <SwitchControl>
-        <SwitchThumb />
-      </SwitchControl>
-      <SwitchLabel>Label</SwitchLabel>
-    </Switch>
+    <Switch.Root {...props}>
+      <Switch.Control>
+        <Switch.Thumb />
+      </Switch.Control>
+      <Switch.Label>Label</Switch.Label>
+    </Switch.Root>
   )
 }
 
