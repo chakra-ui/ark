@@ -10,7 +10,7 @@
   "plugins": {
     "@release-it/keep-a-changelog": {
       "addUnreleased": true,
-      "filename": "./packages/website/src/content/changelog/${name}.mdx"
+      "filename": "CHANGELOG.md"
     }
   },
   "npm": {
