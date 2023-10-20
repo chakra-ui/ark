@@ -1,19 +1,20 @@
 import { render } from '@solidjs/testing-library'
-import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
+import { Splitter, type SplitterProps } from './'
+
 const ComponentUnderTest = (props: SplitterProps) => (
-  <Splitter
+  <Splitter.Root
     size={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
     {...props}
   >
-    <SplitterPanel id="a">A</SplitterPanel>
-    <SplitterResizeTrigger id="a:b">
+    <Splitter.Panel id="a">A</Splitter.Panel>
+    <Splitter.ResizeTrigger id="a:b">
       <div class="bar" />
-    </SplitterResizeTrigger>
-    <SplitterPanel id="b">B</SplitterPanel>
-  </Splitter>
+    </Splitter.ResizeTrigger>
+    <Splitter.Panel id="b">B</Splitter.Panel>
+  </Splitter.Root>
 )
 
 describe('Splitter', () => {

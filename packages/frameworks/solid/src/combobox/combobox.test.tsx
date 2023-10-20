@@ -2,23 +2,8 @@ import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
-import {
-  Combobox,
-  ComboboxClearTrigger,
-  ComboboxContent,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
-  ComboboxItemIndicator,
-  ComboboxItemText,
-  ComboboxLabel,
-  ComboboxPositioner,
-  ComboboxTrigger,
-  type ComboboxProps,
-} from '.'
 import type { Optional } from '../types'
+import { Combobox, type ComboboxProps } from './'
 
 interface Item {
   label: string
@@ -34,31 +19,31 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Combobox items={items} {...props}>
-      <ComboboxLabel>Framework</ComboboxLabel>
-      <ComboboxControl>
-        <ComboboxInput />
-        <ComboboxTrigger data-testid="trigger">Open</ComboboxTrigger>
-        <ComboboxClearTrigger>Clear</ComboboxClearTrigger>
-      </ComboboxControl>
+    <Combobox.Root items={items} {...props}>
+      <Combobox.Label>Framework</Combobox.Label>
+      <Combobox.Control>
+        <Combobox.Input />
+        <Combobox.Trigger data-testid="trigger">Open</Combobox.Trigger>
+        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
+      </Combobox.Control>
       <Portal>
-        <ComboboxPositioner>
-          <ComboboxContent>
-            <ComboboxItemGroup id="framework">
-              <ComboboxItemGroupLabel htmlFor="framework">Frameworks</ComboboxItemGroupLabel>
+        <Combobox.Positioner>
+          <Combobox.Content>
+            <Combobox.ItemGroup id="framework">
+              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
-                  <ComboboxItem item={item}>
-                    <ComboboxItemText>{item.label}</ComboboxItemText>
-                    <ComboboxItemIndicator>✓</ComboboxItemIndicator>
-                  </ComboboxItem>
+                  <Combobox.Item item={item}>
+                    <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
                 )}
               </For>
-            </ComboboxItemGroup>
-          </ComboboxContent>
-        </ComboboxPositioner>
+            </Combobox.ItemGroup>
+          </Combobox.Content>
+        </Combobox.Positioner>
       </Portal>
-    </Combobox>
+    </Combobox.Root>
   )
 }
 
