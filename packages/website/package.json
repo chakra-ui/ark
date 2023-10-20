@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "panda codegen",
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "panda codegen",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
