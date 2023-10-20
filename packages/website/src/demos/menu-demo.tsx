@@ -1,5 +1,4 @@
 import { Portal } from '@ark-ui/react'
-import { HStack } from '@ark-ui/styled-system/jsx'
 import {
   ChevronRight,
   CreditCard,
@@ -11,6 +10,7 @@ import {
   User,
   UserPlus,
 } from 'lucide-react'
+import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui/button'
 import {
   Menu,

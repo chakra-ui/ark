@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/tags-input'
-import { styled } from '@ark-ui/styled-system/jsx'
-import { tagsInput, type TagsInputVariantProps } from '@ark-ui/styled-system/recipes'
+import { styled } from 'styled-system/jsx'
+import { tagsInput, type TagsInputVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tagsInput)

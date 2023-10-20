@@ -1,6 +1,6 @@
 import { createToaster } from '@ark-ui/react'
-import { Box } from '@ark-ui/styled-system/jsx'
 import { XIcon } from 'lucide-react'
+import { Box } from 'styled-system/jsx'
 import { Toast, ToastCloseTrigger, ToastDescription, ToastTitle } from '~/components/ui/toast'
 import { Button } from '../components/ui/button'
 import { IconButton } from '../components/ui/icon-button'

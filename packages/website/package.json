@@ -3,12 +3,12 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "panda codegen",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "panda": "panda codegen"
+    "astro": "astro"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",

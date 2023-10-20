@@ -1,4 +1,4 @@
-import { HStack } from '@ark-ui/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 
 type Props = {

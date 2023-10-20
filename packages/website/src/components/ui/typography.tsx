@@ -1,5 +1,5 @@
-import { styled, type HTMLStyledProps } from '@ark-ui/styled-system/jsx'
 import type { PropsWithChildren } from 'react'
+import { styled, type HTMLStyledProps } from 'styled-system/jsx'
 
 type TagVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 
