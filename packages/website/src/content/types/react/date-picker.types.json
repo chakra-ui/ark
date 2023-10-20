@@ -21,11 +21,7 @@
       "isRequired": false,
       "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
     },
-    "focusedValue": {
-      "type": "DateValue",
-      "isRequired": false,
-      "description": "The focused date."
-    },
+    "focusedValue": { "type": "string", "isRequired": false, "description": "The focused date." },
     "format": {
       "type": "(date: DateValue[]) => string",
       "isRequired": false,
