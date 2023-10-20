@@ -157,7 +157,7 @@ importers:
   packages/frameworks/react:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: workspace:*
+        specifier: 1.0.0-beta.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.26.0
@@ -365,7 +365,7 @@ importers:
   packages/frameworks/solid:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: workspace:*
+        specifier: 1.0.0-beta.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.26.0

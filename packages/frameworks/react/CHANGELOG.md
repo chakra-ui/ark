@@ -6,6 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Parsed `focusedValue` in `DatePicker`
+
+### Fixed
+
+- Resolved an issue with `@ark-ui/anatomy`
+
 ## [1.0.0-beta.0] - 2023-10-20
 
 ### Changed
