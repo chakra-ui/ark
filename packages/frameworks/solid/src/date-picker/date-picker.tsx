@@ -38,6 +38,7 @@ export const DatePicker = (props: DatePickerProps) => {
     'onOpenChange',
     'onValueChange',
     'onViewChange',
+    'open',
     'parse',
     'positioning',
     'readOnly',

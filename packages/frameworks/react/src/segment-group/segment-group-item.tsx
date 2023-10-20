@@ -41,7 +41,6 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
         <ark.label {...mergedProps} ref={ref}>
           {view}
         </ark.label>
-        <input {...api.getItemHiddenInputProps(itemProps)} />
       </SegmentGroupItemProvider>
     )
   },

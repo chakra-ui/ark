@@ -1,17 +1,17 @@
 import { mergeProps, normalizeProps, useActor, type PropTypes } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
-import { Index, Show, createEffect, createMemo, onCleanup, type Accessor, type JSX } from 'solid-js'
+import { Index, createEffect, createMemo, onCleanup, type Accessor, type JSX } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 
 // TODO simplify types after next zag.js upgrade
-type GroupContext = Parameters<(typeof toast)['group']['machine']>[0]
+type GroupContext = Partial<toast.GroupMachineContext>
 
-export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'defaultOptions'> {
+export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
-  render: (api: Accessor<toast.Api>) => JSX.Element
+  render: (api: toast.Api<PropTypes>) => JSX.Element
 }
 
 export type CreateToasterReturn = [
@@ -20,8 +20,8 @@ export type CreateToasterReturn = [
 ]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
-  const { placement, render, ...rest } = props
-  const service = toast.group.machine({ id: '1', defaultOptions: { placement }, ...rest }).start()
+  const { placement, ...rest } = props
+  const service = toast.group.machine({ id: '1', placement, ...rest }).start()
   const [state, send] = useActor(service)
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
 
@@ -38,7 +38,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     return (
       <ark.ol {...mergedProps}>
         <Index each={api().toastsByPlacement[placement]}>
-          {(toast) => <ToastProviderFactory toast={toast()} render={render} />}
+          {(toast) => <ToastProviderFactory service={toast()} />}
         </Index>
       </ark.ol>
     )
@@ -48,19 +48,12 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
 }
 
 interface ToastProviderFactoryProps {
-  toast: toast.Service
-  render: (api: Accessor<toast.Api>) => JSX.Element
+  service: toast.Service
 }
 
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
-  const [state, send] = useActor(props.toast)
-  const api = createMemo(() => toast.connect(state, send, normalizeProps))
+  const [state, send] = useActor(props.service)
+  const api = toast.connect(state, send, normalizeProps)
 
-  return (
-    <ToastProvider value={api}>
-      <Show when={state.context.render} fallback={props.render(api)}>
-        {api().render()}
-      </Show>
-    </ToastProvider>
-  )
+  return <ToastProvider value={createMemo(() => api)}>{state.context.render?.(api)}</ToastProvider>
 }

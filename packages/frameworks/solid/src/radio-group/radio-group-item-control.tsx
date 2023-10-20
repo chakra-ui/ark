@@ -10,5 +10,10 @@ export const RadioGroupItemControl = (props: RadioGroupItemControlProps) => {
   const itemProps = useRadioGroupItemContext()
   const mergedProps = mergeProps(() => api().getItemControlProps(itemProps), props)
 
-  return <ark.div {...mergedProps} />
+  return (
+    <>
+      <ark.div {...mergedProps} />
+      <input {...api().getItemHiddenInputProps(itemProps)} />
+    </>
+  )
 }

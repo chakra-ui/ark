@@ -20,6 +20,7 @@ export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlP
         <ark.div {...mergedProps} ref={ref}>
           {view}
         </ark.div>
+        <input {...api.hiddenInputProps} />
       </>
     )
   },

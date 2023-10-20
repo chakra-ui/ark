@@ -1,15 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
+import type { ItemProps } from '@zag-js/toggle-group'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useToggleGroupContext } from './toggle-group-context'
 
-type ItemProps = {
-  value: string
-  disabled?: boolean
-}
-
-export type ToggleGroupItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
+export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
 export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
   const [toggleProps, restProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])

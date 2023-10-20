@@ -1,8 +1,9 @@
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import type { HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
+import { type Assign } from '../types'
 import { ColorPickerProvider } from './color-picker-context'
 import {
   useColorPicker,
@@ -18,20 +19,35 @@ export type ColorPickerProps = Assign<
 >
 
 export const ColorPicker = (props: ColorPickerProps) => {
-  const [useColorPickerProps, restProps] = createSplitProps<UseColorPickerProps>()(props, [
+  const [colorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(props, [
+    'autoFocus',
     'dir',
     'disabled',
     'getRootNode',
     'id',
     'ids',
+    'initialFocusEl',
     'name',
+    'name',
+    'onFocusOutside',
+    'onInteractOutside',
+    'onOpenChange',
+    'onPointerDownOutside',
     'onValueChange',
     'onValueChangeEnd',
+    'open',
+    'positioning',
     'readOnly',
     'value',
   ])
-  const api = useColorPicker(useColorPickerProps)
-  const getChildren = () => runIfFn(restProps.children, api)
+  const api = useColorPicker(colorPickerProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return <ColorPickerProvider value={api}>{getChildren()}</ColorPickerProvider>
+  return (
+    <ColorPickerProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <input {...api().hiddenInputProps} />
+    </ColorPickerProvider>
+  )
 }

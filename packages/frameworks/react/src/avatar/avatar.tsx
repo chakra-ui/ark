@@ -10,6 +10,7 @@ export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps>
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
+    'dir',
     'getRootNode',
     'id',
     'onLoadingStatusChange',

@@ -2,17 +2,7 @@ import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import {
-  Carousel,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-} from './'
+import { Carousel } from './'
 
 const ComponentUnderTest = () => {
   const images = [
@@ -21,32 +11,28 @@ const ComponentUnderTest = () => {
     'https://tinyurl.com/59jxz9uu',
   ]
   return (
-    <Carousel>
-      <CarouselControl>
-        <CarouselPrevSlideTrigger>Previous</CarouselPrevSlideTrigger>
-        <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
-      </CarouselControl>
-      <CarouselViewport>
-        <CarouselSlideGroup>
-          {images.map((image, index) => (
-            <CarouselSlide key={index} index={index} data-testid="slide">
-              <img
-                src={image}
-                alt={`image-${index}`}
-                style={{ height: '300px', width: '100%', objectFit: 'cover' }}
-              />
-            </CarouselSlide>
-          ))}
-        </CarouselSlideGroup>
-      </CarouselViewport>
-      <CarouselIndicatorGroup data-testid="indicator-group">
+    <Carousel.Root>
+      <Carousel.Control>
+        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+      </Carousel.Control>
+      <Carousel.IndicatorGroup>
         {images.map((_, index) => (
-          <CarouselIndicator key={index} index={index} data-testid="indicator">
+          <Carousel.Indicator key={index} index={index} data-testid="indicator">
             {index + 1}
-          </CarouselIndicator>
+          </Carousel.Indicator>
         ))}
-      </CarouselIndicatorGroup>
-    </Carousel>
+      </Carousel.IndicatorGroup>
+      <Carousel.Viewport>
+        <Carousel.ItemGroup>
+          {images.map((image, index) => (
+            <Carousel.Item key={index} index={index} data-testid="item">
+              <img src={image} />
+            </Carousel.Item>
+          ))}
+        </Carousel.ItemGroup>
+      </Carousel.Viewport>
+    </Carousel.Root>
   )
 }
 
@@ -80,21 +66,19 @@ describe('Carousel', () => {
     expect(nextButton).toBeDisabled()
   })
 
-  describe('indicators', () => {
-    it('goes to the indicated slide on indicator click', async () => {
-      const { getAllByTestId } = render(<ComponentUnderTest />)
-      const indicators = getAllByTestId('indicator')
-      const slides = getAllByTestId('slide')
+  it('goes to the indicated slide on indicator click', async () => {
+    const { getAllByTestId } = render(<ComponentUnderTest />)
+    const indicators = getAllByTestId('indicator')
+    const slides = getAllByTestId('item')
 
-      expect(slides[0]).toHaveAttribute('data-current', '')
-      expect(indicators[0]).toHaveAttribute('data-current', '')
+    expect(slides[0]).toHaveAttribute('data-current', '')
+    expect(indicators[0]).toHaveAttribute('data-current', '')
 
-      await user.click(indicators[2])
+    await user.click(indicators[2])
 
-      expect(indicators[0]).not.toHaveAttribute('data-current', '')
-      expect(slides[0]).not.toHaveAttribute('data-current', '')
-      expect(indicators[2]).toHaveAttribute('data-current', '')
-      expect(slides[2]).toHaveAttribute('data-current', '')
-    })
+    expect(indicators[0]).not.toHaveAttribute('data-current', '')
+    expect(slides[0]).not.toHaveAttribute('data-current', '')
+    expect(indicators[2]).toHaveAttribute('data-current', '')
+    expect(slides[2]).toHaveAttribute('data-current', '')
   })
 })

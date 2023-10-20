@@ -6,6 +6,7 @@ export type SliderControlProps = HTMLArkProps<'div'>
 
 export const SliderControl = (props: SliderControlProps) => {
   const api = useSliderContext()
-  const controlProps = mergeProps(() => api().controlProps, props)
-  return <ark.div {...controlProps} />
+  const mergedProps = mergeProps(() => api().controlProps, props)
+
+  return <ark.div {...mergedProps} />
 }

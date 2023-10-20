@@ -32,9 +32,6 @@ export const useSlider = (props: UseSliderProps, emit: CallableFunction): UseSli
         emit('value-change', details)
         emit('update:modelValue', details.value)
       },
-      onValueChangeStart: (details) => {
-        emit('value-change-start', details)
-      },
       onValueChangeEnd(details) {
         emit('value-change-end', details)
       },

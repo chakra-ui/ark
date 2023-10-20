@@ -12,7 +12,7 @@ export const DatePickerTableHeader = forwardRef<HTMLTableCellElement, DatePicker
     const tableProps = useDatePickerTableContext()
     const mergedProps = mergeProps(api.getTableHeaderProps(tableProps), props)
 
-    return <ark.th {...mergedProps} data-scope="date-picker" data-part="table-header" ref={ref} />
+    return <ark.th {...mergedProps} ref={ref} />
   },
 )
 

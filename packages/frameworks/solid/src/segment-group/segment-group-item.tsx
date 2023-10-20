@@ -24,7 +24,6 @@ export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
   return (
     <SegmentProvider value={itemProps}>
       <ark.label {...mergedProps} />
-      <input {...api().getItemHiddenInputProps(itemProps)} />
     </SegmentProvider>
   )
 }

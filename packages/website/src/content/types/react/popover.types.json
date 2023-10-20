@@ -20,6 +20,12 @@
       "isRequired": false,
       "description": "The initial open state of the popover."
     },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,

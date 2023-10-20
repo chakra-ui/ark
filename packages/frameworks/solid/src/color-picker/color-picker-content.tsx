@@ -2,11 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerContentProps = HTMLArkProps<'div'>
+export interface ColorPickerContentProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerContent = (props: ColorPickerContentProps) => {
-  const colorPicker = useColorPickerContext()
-  const contentProps = mergeProps(() => colorPicker().contentProps, props)
+  const api = useColorPickerContext()
+  const mergedProps = mergeProps(() => api().contentProps, props)
 
-  return <ark.div {...contentProps} />
+  return <ark.div {...mergedProps} />
 }

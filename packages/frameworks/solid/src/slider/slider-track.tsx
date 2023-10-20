@@ -5,7 +5,8 @@ import { useSliderContext } from './slider-context'
 export type SliderTrackProps = HTMLArkProps<'div'>
 
 export const SliderTrack = (props: SliderTrackProps) => {
-  const slider = useSliderContext()
-  const trackProps = mergeProps(() => slider().trackProps, props)
-  return <ark.div {...trackProps} />
+  const api = useSliderContext()
+  const mergedProps = mergeProps(() => api().trackProps, props)
+
+  return <ark.div {...mergedProps} />
 }

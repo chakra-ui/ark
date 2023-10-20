@@ -36,7 +36,6 @@ export const Checkbox = (props: CheckboxProps) => {
   return (
     <CheckboxProvider value={api}>
       <ark.label {...mergedProps}>{getChildren()}</ark.label>
-      <input {...api().hiddenInputProps} />
     </CheckboxProvider>
   )
 }

@@ -9,6 +9,7 @@ export type AvatarProps = Assign<HTMLArkProps<'div'>, UseAvatarProps>
 
 export const Avatar = (props: AvatarProps) => {
   const [params, localProps] = createSplitProps<UseAvatarProps>()(props, [
+    'dir',
     'getRootNode',
     'id',
     'onLoadingStatusChange',

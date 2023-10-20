@@ -5,7 +5,8 @@ import { useCarouselContext } from './carousel-context'
 export type CarouselIndicatorGroupProps = HTMLArkProps<'div'>
 
 export const CarouselIndicatorGroup = (props: CarouselIndicatorGroupProps) => {
-  const carousel = useCarouselContext()
-  const indicatorGroupProps = mergeProps(() => carousel().indicatorGroupProps, props)
-  return <ark.div {...indicatorGroupProps} />
+  const api = useCarouselContext()
+  const mergedProps = mergeProps(() => api().indicatorGroupProps, props)
+
+  return <ark.div {...mergedProps} />
 }

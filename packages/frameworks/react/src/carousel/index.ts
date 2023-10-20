@@ -6,16 +6,10 @@ import {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
-import {
-  CarouselNextSlideTrigger,
-  type CarouselNextSlideTriggerProps,
-} from './carousel-next-slide-trigger'
-import {
-  CarouselPrevSlideTrigger,
-  type CarouselPrevSlideTriggerProps,
-} from './carousel-prev-slide-trigger'
-import { CarouselSlide, type CarouselSlideProps } from './carousel-slide'
-import { CarouselSlideGroup, type CarouselSlideGroupProps } from './carousel-slide-group'
+import { CarouselItem, type CarouselItemProps } from './carousel-item'
+import { CarouselItemGroup, type CarouselItemGroupProps } from './carousel-item-group'
+import { CarouselNextTrigger, type CarouselNextTriggerProps } from './carousel-next-trigger'
+import { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-prev-trigger'
 import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
 
 const Carousel = Object.assign(CarouselRoot, {
@@ -23,10 +17,10 @@ const Carousel = Object.assign(CarouselRoot, {
   Control: CarouselControl,
   Indicator: CarouselIndicator,
   IndicatorGroup: CarouselIndicatorGroup,
-  NextSlideTrigger: CarouselNextSlideTrigger,
-  PrevSlideTrigger: CarouselPrevSlideTrigger,
-  Slide: CarouselSlide,
-  SlideGroup: CarouselSlideGroup,
+  NextTrigger: CarouselNextTrigger,
+  PrevTrigger: CarouselPrevTrigger,
+  Item: CarouselItem,
+  ItemGroup: CarouselItemGroup,
   Viewport: CarouselViewport,
 })
 
@@ -35,10 +29,10 @@ export {
   CarouselControl,
   CarouselIndicator,
   CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
+  CarouselItem,
+  CarouselItemGroup,
+  CarouselNextTrigger,
+  CarouselPrevTrigger,
   CarouselViewport,
   useCarouselContext,
 }
@@ -47,10 +41,10 @@ export type {
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
-  CarouselNextSlideTriggerProps,
-  CarouselPrevSlideTriggerProps,
+  CarouselItemGroupProps,
+  CarouselItemProps,
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
   CarouselProps,
-  CarouselSlideGroupProps,
-  CarouselSlideProps,
   CarouselViewportProps,
 }

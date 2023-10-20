@@ -1,5 +1,5 @@
 import { HStack } from 'styled-system/jsx'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 
 type Props = {
   contributors: { name: string; avatar: string }[]

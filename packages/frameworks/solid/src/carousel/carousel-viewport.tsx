@@ -5,7 +5,8 @@ import { useCarouselContext } from './carousel-context'
 export type CarouselViewportProps = HTMLArkProps<'span'>
 
 export const CarouselViewport = (props: CarouselViewportProps) => {
-  const carousel = useCarouselContext()
-  const viewportProps = mergeProps(() => carousel().viewportProps, props)
-  return <ark.div {...viewportProps} />
+  const api = useCarouselContext()
+  const mergedProps = mergeProps(() => api().viewportProps, props)
+
+  return <ark.div {...mergedProps} />
 }

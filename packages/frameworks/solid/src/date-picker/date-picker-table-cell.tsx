@@ -26,7 +26,7 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
     // @ts-expect-error use filter guard
   }[viewProps.view](cellProps)
 
-  const mergedProps = mergeProps(tableCellProps, localProps)
+  const mergedProps = mergeProps(() => tableCellProps, localProps)
 
   return (
     <DatePickerTableCellProvider value={cellProps}>

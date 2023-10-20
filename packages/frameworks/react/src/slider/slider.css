@@ -1,8 +1,7 @@
 [data-scope='slider'][data-part='thumb'] {
   background: blue;
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
+  width: 20px;
+  height: 20px;
 }
 
 [data-scope='slider'][data-part='track'] {

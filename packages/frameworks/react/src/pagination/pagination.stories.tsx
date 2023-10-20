@@ -15,25 +15,21 @@ export default meta
 export const Basic = () => (
   <Pagination.Root defaultPage={2} count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
-      <Pagination.List>
-        <Pagination.ListItem>
-          <Pagination.PrevPageTrigger>Previous Page</Pagination.PrevPageTrigger>
-        </Pagination.ListItem>
+      <>
+        <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
         {pages.map((page, index) =>
           page.type === 'page' ? (
-            <Pagination.ListItem key={index}>
-              <Pagination.PageTrigger {...page}>{page.value}</Pagination.PageTrigger>
-            </Pagination.ListItem>
+            <Pagination.Item key={index} {...page}>
+              {page.value}
+            </Pagination.Item>
           ) : (
-            <Pagination.ListItem key={index}>
-              <Pagination.Ellipsis index={index}>&#8230;</Pagination.Ellipsis>
-            </Pagination.ListItem>
+            <Pagination.Ellipsis key={index} index={index}>
+              &#8230;
+            </Pagination.Ellipsis>
           ),
         )}
-        <Pagination.ListItem>
-          <Pagination.NextPageTrigger>Next Page</Pagination.NextPageTrigger>
-        </Pagination.ListItem>
-      </Pagination.List>
+        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+      </>
     )}
   </Pagination.Root>
 )
@@ -61,9 +57,9 @@ export const Customized = () => (
     siblingCount={3}
     dir="ltr"
     translations={{
-      nextPageTriggerLabel: 'Next',
-      prevPageTriggerLabel: 'Prev',
-      pageTriggerLabel: (details) => `Page ${details.page}`,
+      nextTriggerLabel: 'Next',
+      prevTriggerLabel: 'Prev',
+      itemLabel: (details) => `Page ${details.page}`,
     }}
   >
     {/* ... */}

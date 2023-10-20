@@ -18,13 +18,13 @@ export const Basic = () => (
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />
-      <Dialog.Container>
+      <Dialog.Positioner>
         <Dialog.Content>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
           <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
         </Dialog.Content>
-      </Dialog.Container>
+      </Dialog.Positioner>
     </Portal>
   </Dialog.Root>
 )
@@ -37,13 +37,13 @@ export const Controlled = () => {
       <Dialog.Root open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <Portal>
           <Dialog.Backdrop />
-          <Dialog.Container>
+          <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Title>Dialog Title</Dialog.Title>
               <Dialog.Description>Dialog Description</Dialog.Description>
               <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
             </Dialog.Content>
-          </Dialog.Container>
+          </Dialog.Positioner>
         </Portal>
       </Dialog.Root>
     </>
@@ -55,13 +55,13 @@ export const LazyMount = () => (
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />
-      <Dialog.Container>
+      <Dialog.Positioner>
         <Dialog.Content lazyMount unmountOnExit>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
           <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
         </Dialog.Content>
-      </Dialog.Container>
+      </Dialog.Positioner>
     </Portal>
   </Dialog.Root>
 )
@@ -73,13 +73,13 @@ export const RenderFn = () => (
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Portal>
           <Dialog.Backdrop />
-          <Dialog.Container>
+          <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Title>Dialog Title</Dialog.Title>
               <Dialog.Description>Dialog Description</Dialog.Description>
               <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
             </Dialog.Content>
-          </Dialog.Container>
+          </Dialog.Positioner>
         </Portal>
         <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
       </>

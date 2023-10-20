@@ -32,7 +32,16 @@ const types = defineCollection({
   ),
 })
 
-const docs = defineCollection({
+const overview = defineCollection({
+  type: 'content',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+  }),
+})
+
+const changelog = defineCollection({
   type: 'content',
   schema: z.object({
     id: z.string(),
@@ -42,8 +51,9 @@ const docs = defineCollection({
 })
 
 export const collections = {
+  changelog,
   components,
-  docs,
+  overview,
   stories,
   types,
 }

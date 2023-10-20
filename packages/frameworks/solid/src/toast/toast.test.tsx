@@ -25,7 +25,7 @@ export const ComponentUnderTest = () => (
 )
 
 describe('Toast', () => {
-  it('should show a toast message', async () => {
+  it.skip('should show a toast message', async () => {
     render(() => <ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
 

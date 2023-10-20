@@ -8,5 +8,10 @@ export const SwitchControl = (props: SwitchControlProps) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.span {...mergedProps} />
+  return (
+    <>
+      <ark.span {...mergedProps} />
+      <input {...api().hiddenInputProps} />
+    </>
+  )
 }

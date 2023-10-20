@@ -10,6 +10,7 @@ export const Popover = (props: PopoverProps) => {
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
+    'dir',
     'getRootNode',
     'id',
     'ids',

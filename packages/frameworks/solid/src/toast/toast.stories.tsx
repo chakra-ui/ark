@@ -13,11 +13,11 @@ export default meta
 
 const [Toaster, toast] = createToaster({
   placement: 'top-end',
-  render() {
+  render(toast) {
     return (
       <Toast.Root>
-        <Toast.Title />
-        <Toast.Description />
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
         <Toast.CloseTrigger>Close</Toast.CloseTrigger>
       </Toast.Root>
     )
@@ -27,31 +27,6 @@ const [Toaster, toast] = createToaster({
 export const Basic = () => (
   <>
     <button onClick={() => toast().create({ title: 'Title', description: 'Description' })}>
-      Toast
-    </button>
-    <Toaster />
-  </>
-)
-
-export const Custom = () => (
-  <>
-    <button
-      onClick={() =>
-        toast().create({
-          title: 'Title',
-          description: 'Description',
-          render: () => {
-            return (
-              <Toast.Root>
-                <Toast.Title />
-                <Toast.Description />
-                <Toast.CloseTrigger>asdfasdfasdf</Toast.CloseTrigger>
-              </Toast.Root>
-            )
-          },
-        })
-      }
-    >
       Toast
     </button>
     <Toaster />

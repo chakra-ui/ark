@@ -1,8 +1,9 @@
+import type { ItemProps } from '@zag-js/radio-group'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useRadioGroupContext } from './radio-group-context'
-import { RadioGroupItemProvider, type ItemProps } from './radio-group-item-context'
+import { RadioGroupItemProvider } from './radio-group-item-context'
 
 export type RadioGroupItemProps = Assign<HTMLArkProps<'label'>, ItemProps>
 
@@ -28,12 +29,9 @@ export const RadioGroupItem = defineComponent({
     RadioGroupItemProvider(computed(() => props))
 
     return () => (
-      <>
-        <ark.label {...api.value.getItemProps(props)} {...attrs}>
-          {() => slots?.default?.(api.value.getItemState(props))}
-        </ark.label>
-        <input {...api.value.getItemHiddenInputProps(props)} />
-      </>
+      <ark.label {...api.value.getItemProps(props)} {...attrs}>
+        {() => slots?.default?.(api.value.getItemState(props))}
+      </ark.label>
     )
   },
 })

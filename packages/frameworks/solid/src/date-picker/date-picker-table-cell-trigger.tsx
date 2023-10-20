@@ -18,7 +18,7 @@ export const DatePickerTableCellTrigger = (props: DatePickerTableCellTriggerProp
     // @ts-expect-error value is number filter
   }[viewProps.view](cellProps)
 
-  const mergedProps = mergeProps(triggerProps, props)
+  const mergedProps = mergeProps(() => triggerProps, props)
 
   return <ark.button {...mergedProps} />
 }

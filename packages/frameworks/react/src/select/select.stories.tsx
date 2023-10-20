@@ -20,7 +20,7 @@ export const Basic = () => {
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.Value placeholder="Select a Framework" />
+          <Select.ValueText placeholder="Select a Framework" />
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -57,7 +57,7 @@ export const Advanced = () => {
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.Value placeholder="Select a Framework" />
+          <Select.ValueText placeholder="Select a Framework" />
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -95,7 +95,7 @@ export const Controlled = () => {
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.Value placeholder="Select a Framework" />
+          <Select.ValueText placeholder="Select a Framework" />
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -130,7 +130,7 @@ export const Multiple = () => {
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.Value placeholder="Select a Framework" />
+          <Select.ValueText placeholder="Select a Framework" />
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>

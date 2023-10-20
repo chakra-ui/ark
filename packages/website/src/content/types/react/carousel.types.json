@@ -42,7 +42,7 @@
       "isRequired": false,
       "description": "Whether the carousel should loop around."
     },
-    "onSlideChange": {
+    "onIndexChange": {
       "type": "(details: SlideChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the slide changes."
@@ -64,7 +64,7 @@
       "description": "The amount of space between slides."
     }
   },
-  "Slide": {
+  "Item": {
     "index": { "type": "number", "isRequired": true },
     "asChild": {
       "type": "boolean",
@@ -95,7 +95,21 @@
     },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "SlideGroup": {
+  "ItemGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "NextTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "PrevTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -103,20 +117,6 @@
     }
   },
   "IndicatorGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "NextSlideTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "PrevSlideTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

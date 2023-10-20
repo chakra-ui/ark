@@ -8,12 +8,7 @@ export const ToastTitle = defineComponent({
   name: 'ToastTitle',
   setup(_, { attrs }) {
     const api = useToastContext()
-    console.log({ api })
 
-    return () => (
-      <ark.div {...api.value.titleProps} {...attrs}>
-        {api.value.title}
-      </ark.div>
-    )
+    return () => <ark.div {...api.value.titleProps} {...attrs} />
   },
 })

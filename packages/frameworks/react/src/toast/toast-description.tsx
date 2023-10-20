@@ -9,11 +9,7 @@ export const ToastDescription = forwardRef<HTMLDivElement, ToastDescriptionProps
   const api = useToastContext()
   const mergedProps = mergeProps(api.descriptionProps, props)
 
-  return (
-    <ark.div {...mergedProps} ref={ref}>
-      {api.description}
-    </ark.div>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 ToastDescription.displayName = 'ToastDescription'

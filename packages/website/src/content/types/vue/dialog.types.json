@@ -37,7 +37,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  trigger: string\n  container: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
+      "type": "Partial<{\n  trigger: string\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the dialog. Useful for composition."
     },
@@ -131,7 +131,7 @@
       "description": "Whether to unmount on exit. Defaults to `false`."
     }
   },
-  "Container": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Description": { "asChild": { "type": "boolean", "isRequired": false } },
   "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

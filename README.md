@@ -29,7 +29,6 @@
 | Popover                 | 🟢    | 🟢    | 🟢  |
 | Pressable               | 🟢    | 🟢    | 🟢  |
 | Radio Group             | 🟢    | 🟢    | 🟢  |
-| Range Slider            | 🟢    | 🟢    | 🟢  |
 | Rating                  | 🟢    | 🟢    | 🟢  |
 | Select                  | 🟢    | 🟢    | 🟢  |
 | Segment Group           | 🟢    | 🟢    | ⚪  |

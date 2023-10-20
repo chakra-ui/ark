@@ -18,7 +18,7 @@ import {
   SelectLabel,
   SelectPositioner,
   SelectTrigger,
-  SelectValue,
+  SelectValueText,
   type SelectProps,
 } from './'
 import { SelectControl } from './select-control'
@@ -41,7 +41,7 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
       <SelectLabel>Framework</SelectLabel>
       <SelectControl>
         <SelectTrigger>
-          <SelectValue placeholder="Select a Framework" />
+          <SelectValueText placeholder="Select a Framework" />
           <SelectIndicator />
         </SelectTrigger>
         <SelectClearTrigger>Clear</SelectClearTrigger>
