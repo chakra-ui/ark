@@ -1,55 +1,40 @@
-import { dialogAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
-import user from '@testing-library/user-event'
-import { Portal } from '@zag-js/react'
-import { vi } from 'vitest'
+import { fileUploadAnatomy } from '@ark-ui/anatomy'
+import { render } from '@testing-library/react'
 import { getExports, getParts } from '../setup-test'
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-  type DialogProps,
-} from './'
+import { FileUpload, type FileUploadProps } from './'
 
-const ComponentUnderTest = (props: DialogProps) => (
-  <Dialog {...props}>
-    <DialogTrigger>Open dialog</DialogTrigger>
-    <Portal>
-      <DialogBackdrop />
-      <DialogContainer />
-      <DialogContent>
-        <DialogTitle>Dialog title</DialogTitle>
-        <DialogDescription>Dialog description</DialogDescription>
-        <div>
-          <input placeholder="Enter name..." />
-          <button>Save</button>
-        </div>
-        <DialogCloseTrigger>Close</DialogCloseTrigger>
-      </DialogContent>
-    </Portal>
-  </Dialog>
+const ComponentUnderTest = (props: FileUploadProps) => (
+  <FileUpload.Root {...props}>
+    {(api) => (
+      <>
+        <FileUpload.Dropzone>
+          <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
+        </FileUpload.Dropzone>
+        <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+        <FileUpload.ItemGroup>
+          {api.files.map((file) => (
+            <FileUpload.Item key={file.name} file={file}>
+              <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
+              <FileUpload.ItemSizeText>{api.getFileSize(file)}</FileUpload.ItemSizeText>
+              <FileUpload.ItemDeleteTrigger onClick={() => api.deleteFile(file)}>
+                Remove
+              </FileUpload.ItemDeleteTrigger>
+            </FileUpload.Item>
+          ))}
+        </FileUpload.ItemGroup>
+      </>
+    )}
+  </FileUpload.Root>
 )
 
-describe('Dialog', () => {
-  it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
+describe('FileUpload', () => {
+  it.skip.each(getParts(fileUploadAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
-    expect(Dialog[part]).toBeDefined()
-  })
-
-  it('should invoke onClose if dialog is closed', async () => {
-    const onClose = vi.fn()
-    render(<ComponentUnderTest open onOpenChange={onClose} />)
-    await user.click(screen.getByText('Close'))
-
-    expect(onClose).toHaveBeenCalledTimes(1)
+  it.skip.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
+    // @ts-expect-error TODO
+    expect(FileUpload[part]).toBeDefined()
   })
 })

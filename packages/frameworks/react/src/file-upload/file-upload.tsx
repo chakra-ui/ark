@@ -10,7 +10,9 @@ import { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from
 export interface FileUploadProps
   extends Assign<
     HTMLArkProps<'div'>,
-    UseFileUploadProps & { children?: ((api: UseFileUploadReturn) => ReactNode) | ReactNode }
+    UseFileUploadProps & {
+      children?: ((api: UseFileUploadReturn) => ReactNode) | ReactNode
+    }
   > {}
 
 export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>((props, ref) => {

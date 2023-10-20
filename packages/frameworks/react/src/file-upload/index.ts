@@ -8,6 +8,10 @@ import {
 } from './file-upload-item-delete-trigger'
 import { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-upload-item-group'
 import { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
+import {
+  FileUploadItemSizeText,
+  type FileUploadItemSizeTextProps,
+} from './file-upload-item-size-text'
 import { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
 import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
 
@@ -19,6 +23,7 @@ const FileUpload = Object.assign(FileUploadRoot, {
   ItemGroup: FileUploadItemGroup,
   Item: FileUploadItem,
   ItemName: FileUploadItemName,
+  ItemSizeText: FileUploadItemSizeText,
   ItemDeleteTrigger: FileUploadItemDeleteTrigger,
 })
 
@@ -29,6 +34,7 @@ export {
   FileUploadItemDeleteTrigger,
   FileUploadItemGroup,
   FileUploadItemName,
+  FileUploadItemSizeText,
   FileUploadLabel,
   FileUploadTrigger,
   useFileUploadContext,
@@ -41,6 +47,7 @@ export type {
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
   FileUploadItemProps,
+  FileUploadItemSizeTextProps,
   FileUploadLabelProps,
   FileUploadProps,
   FileUploadTriggerProps,
