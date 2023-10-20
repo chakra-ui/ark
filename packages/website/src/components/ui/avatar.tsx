@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/avatar'
-import { styled } from '@ark-ui/styled-system/jsx'
-import { avatar, type AvatarVariantProps } from '@ark-ui/styled-system/recipes'
+import { styled } from 'styled-system/jsx'
+import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(avatar)

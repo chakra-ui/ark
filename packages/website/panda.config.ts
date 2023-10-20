@@ -16,8 +16,7 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
   exclude: [],
   jsxFramework: 'react',
-  outdir: '@ark-ui/styled-system',
-  emitPackage: true,
+  outdir: 'styled-system',
   staticCss: {
     recipes: {
       switchRecipe: [{ size: ['*'] }],

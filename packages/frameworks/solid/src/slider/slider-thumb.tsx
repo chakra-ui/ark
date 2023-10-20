@@ -1,13 +1,9 @@
+import type { ThumbProps } from '@zag-js/slider'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
-
-// TODO export in Zag.js
-interface ThumbProps {
-  index: number
-}
 
 export type SliderThumbProps = Assign<HTMLArkProps<'div'>, ThumbProps>
 

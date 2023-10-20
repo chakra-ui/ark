@@ -1,4 +1,4 @@
-import { sva } from '@ark-ui/styled-system/css'
+import { sva } from 'styled-system/css'
 
 export const layout = sva({
   slots: ['header', 'nav', 'main', 'footer'],

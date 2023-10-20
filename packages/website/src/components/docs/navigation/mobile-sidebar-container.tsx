@@ -1,7 +1,7 @@
 import { Portal } from '@ark-ui/react'
-import { Stack } from '@ark-ui/styled-system/jsx'
 import { Menu, X } from 'lucide-react'
 import type { PropsWithChildren } from 'react'
+import { Stack } from 'styled-system/jsx'
 import { Logo } from '~/components/logo'
 import { Button } from '~/components/ui/button'
 import {

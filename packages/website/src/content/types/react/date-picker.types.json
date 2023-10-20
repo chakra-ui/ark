@@ -1,7 +1,7 @@
 {
   "Root": {
     "defaultValue": {
-      "type": "DateValue[]",
+      "type": "string[]",
       "isRequired": false,
       "description": "The initial value of the date picker"
     },
@@ -142,7 +142,11 @@
       "description": "The first day of the week.\n `0` - Sunday\n `1` - Monday\n `2` - Tuesday\n `3` - Wednesday\n `4` - Thursday\n `5` - Friday\n `6` - Saturday"
     },
     "timeZone": { "type": "string", "isRequired": false, "description": "The time zone to use" },
-    "value": { "type": "DateValue[]", "isRequired": false, "description": "The selected date(s)." },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The value of the date picker"
+    },
     "view": {
       "type": "DateView",
       "defaultValue": "\"day\"",

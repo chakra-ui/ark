@@ -7,21 +7,11 @@
     "storydocs": {
       "cache": false
     },
-    "panda": {
-      "cache": false
-    },
     "build": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^build"]
+      "outputs": ["dist/**", "styled-system/**"]
     },
-    "lint": {
-      "outputs": []
-    },
-    "test:ci": {
-      "outputs": []
-    },
-    "typecheck": {
-      "outputs": []
-    }
+    "lint": {},
+    "test:ci": {},
+    "typecheck": {}
   }
 }

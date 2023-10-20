@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/toast'
-import { styled } from '@ark-ui/styled-system/jsx'
-import { toast, type ToastVariantProps } from '@ark-ui/styled-system/recipes'
+import { styled } from 'styled-system/jsx'
+import { toast, type ToastVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 export * from '@ark-ui/react/src/toast'

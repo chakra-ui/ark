@@ -1,5 +1,5 @@
-import { styled, type HTMLStyledProps } from '@ark-ui/styled-system/jsx'
-import { heading } from '@ark-ui/styled-system/recipes'
+import { styled, type HTMLStyledProps } from 'styled-system/jsx'
+import { heading } from 'styled-system/recipes'
 
 type As = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 

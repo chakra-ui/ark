@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/toggle-group'
-import { styled } from '@ark-ui/styled-system/jsx'
-import { toggleGroup, type ToggleGroupVariantProps } from '@ark-ui/styled-system/recipes'
+import { styled } from 'styled-system/jsx'
+import { toggleGroup, type ToggleGroupVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(toggleGroup)

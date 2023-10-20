@@ -15,6 +15,12 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,

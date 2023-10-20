@@ -1,6 +1,6 @@
 import * as Ark from '@ark-ui/react/src/select'
-import { styled } from '@ark-ui/styled-system/jsx'
-import { select, type SelectVariantProps } from '@ark-ui/styled-system/recipes'
+import { styled } from 'styled-system/jsx'
+import { select, type SelectVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(select)
@@ -20,7 +20,7 @@ export const SelectItemText = withContext(styled(Ark.Select.ItemText), 'itemText
 export const SelectLabel = withContext(styled(Ark.Select.Label), 'label')
 export const SelectPositioner = withContext(styled(Ark.Select.Positioner), 'positioner')
 export const SelectTrigger = withContext(styled(Ark.Select.Trigger), 'trigger')
-export const SelectValue = withContext(styled(Ark.Select.Value), 'value')
+export const SelectValue = withContext(styled(Ark.Select.ValueText), 'value')
 
 export const Select = Object.assign(SelectRoot, {
   Root: SelectRoot,

@@ -1,6 +1,6 @@
-import { css } from '@ark-ui/styled-system/css'
-import { Box } from '@ark-ui/styled-system/jsx'
 import { allComponents as Anatomies, createGradient } from '@zag-js/anatomy-icons'
+import { css } from 'styled-system/css'
+import { Box } from 'styled-system/jsx'
 
 export const AnatomyImage = ({ id }: { id: keyof typeof Anatomies }) => {
   const Anatomy = Anatomies[id]
