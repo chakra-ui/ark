@@ -543,8 +543,8 @@ importers:
         specifier: 3.6.0
         version: 3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11)
       vite-plugin-solid:
-        specifier: 2.7.1
-        version: 2.7.1(solid-js@1.8.1)(vite@4.4.11)
+        specifier: 2.7.2
+        version: 2.7.2(solid-js@1.8.1)(vite@4.4.11)
       vitest:
         specifier: 0.34.2
         version: 0.34.2(jsdom@22.1.0)
@@ -12046,6 +12046,7 @@ packages:
 
   /fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
+    requiresBuild: true
 
   /fs-extra@10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
@@ -18866,8 +18867,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-solid@2.7.1(solid-js@1.8.1)(vite@4.4.11):
-    resolution: {integrity: sha512-1rTuJdsDqCZiAWfiEkUeRRz4MaxWhqzgJ6PURN+bBSp4uACA/esgYN9Un++YE+xeXUOHlOwTF+VSdvieEcMz0w==}
+  /vite-plugin-solid@2.7.2(solid-js@1.8.1)(vite@4.4.11):
+    resolution: {integrity: sha512-GV2SMLAibOoXe76i02AsjAg7sbm/0lngBlERvJKVN67HOrJsHcWgkt0R6sfGLDJuFkv2aBe14Zm4vJcNME+7zw==}
     peerDependencies:
       solid-js: ^1.7.2
       vite: ^3.0.0 || ^4.0.0
