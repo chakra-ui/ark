@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-beta.1] - 2023-10-20
+
 ### Added
 
 - Parsed `focusedValue` in `DatePicker`
