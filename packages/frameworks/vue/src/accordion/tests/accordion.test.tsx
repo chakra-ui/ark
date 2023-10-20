@@ -80,8 +80,7 @@ describe('Accordion', () => {
     expect(onFocusChange).toHaveBeenCalled()
   })
 
-  // TODO @segunadebayo
-  it.skip('should render text direction based on dir prop', async () => {
+  it('should render text direction based on dir prop', async () => {
     render(ComponentUnderTest, { props: { dir: 'rtl' } })
     expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('dir', 'rtl')
   })

@@ -3,6 +3,9 @@ import type { PropType } from 'vue'
 import { declareEmits } from '../utils'
 
 export const props = {
+  dir: {
+    type: String as PropType<Context['dir']>,
+  },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
   },

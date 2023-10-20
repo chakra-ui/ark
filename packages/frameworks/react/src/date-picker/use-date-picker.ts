@@ -5,11 +5,15 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseDatePickerProps extends Optional<datePicker.Context, 'id'> {
+export interface UseDatePickerProps extends Optional<Omit<datePicker.Context, 'value'>, 'id'> {
   /**
    * The initial value of the date picker
    */
-  defaultValue?: datePicker.Context['value']
+  defaultValue?: string[]
+  /**
+   * The value of the date picker
+   */
+  value?: string[]
 }
 
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
@@ -19,12 +23,12 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    value: props.defaultValue,
+    value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
   }
 
   const context: datePicker.Context = {
     ...initialContext,
-    value: props.value,
+    value: props.value ? datePicker.parse(props.value) : undefined,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
     onFocusChange: useEvent(props.onFocusChange),
     onViewChange: useEvent(props.onViewChange),

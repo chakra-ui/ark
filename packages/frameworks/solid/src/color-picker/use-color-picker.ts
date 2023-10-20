@@ -11,7 +11,6 @@ export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const [local, rest] = splitProps(props, ['value'])
-
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
     () => ({
@@ -22,5 +21,6 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     rest,
   )
   const [state, send] = useMachine(colorPicker.machine(context), { context })
+
   return createMemo(() => colorPicker.connect(state, send, normalizeProps))
 }
