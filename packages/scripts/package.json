@@ -23,7 +23,7 @@
     "voca": "1.4.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "11.0.2",
+    "@types/fs-extra": "11.0.3",
     "@types/node": "18.18.5",
     "@types/prettier": "2.7.3",
     "ts-node": "10.9.1",
