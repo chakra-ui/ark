@@ -1,11 +1,11 @@
-[data-scope=file-upload][data-part='root'] {
+[data-scope='file-upload'][data-part='root'] {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 80%;
 }
 
-[data-scope=file-upload][data-part='dropzone'] {
+[data-scope='file-upload'][data-part='dropzone'] {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -18,7 +18,7 @@
   padding-inline-end: var(--space-2);
 }
 
-[data-scope=file-upload][data-part='trigger'] {
+[data-scope='file-upload'][data-part='trigger'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -33,13 +33,13 @@
   color: var(--colors-white);
 }
 
-[data-scope=file-upload][data-part='item-group'] {
+[data-scope='file-upload'][data-part='item-group'] {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-[data-scope=file-upload][data-part='item'] {
+[data-scope='file-upload'][data-part='item'] {
   display: flex;
   align-items: center;
   flex-direction: row;
