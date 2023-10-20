@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { Pressable } from '.'\n\nconst handlePress = () => console.log('onPress')\n</script>\n\n<template><Pressable @press=\"handlePress\">Pressable</Pressable></template>\n"
-}

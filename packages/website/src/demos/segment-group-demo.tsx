@@ -9,7 +9,7 @@ export const SegmentGroupDemo = (props: SegmentGroupProps) => {
   return (
     <SegmentGroup.Root defaultValue="react" {...props}>
       {options.map((option, id) => (
-        <SegmentGroup.Item key={id} value={option.id} data-orientation={orientation}>
+        <SegmentGroup.Item key={id} value={option.id}>
           <SegmentGroup.ItemControl />
           <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
         </SegmentGroup.Item>

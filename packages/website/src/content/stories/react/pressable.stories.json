@@ -1,3 +1,0 @@
-{
-  "Basic": "import { Pressable } from '@ark-ui/react'\n\nconst Basic = () => {\n  return <Pressable.Root onPress={() => console.log('onPress')}>Pressable</Pressable.Root>\n}\n"
-}
