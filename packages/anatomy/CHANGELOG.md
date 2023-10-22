@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+Add File Upload anatomy
+
 ## [1.0.0-beta.0] - 2023-10-20
 
 Prepare for major release

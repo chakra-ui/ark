@@ -2,31 +2,25 @@ import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import {
-  RatingGroup,
-  RatingGroupControl,
-  RatingGroupItem,
-  RatingGroupLabel,
-  type RatingGroupProps,
-} from './'
+import { RatingGroup, type RatingGroupProps } from './'
 
 const ComponentUnderTest = (props: RatingGroupProps) => (
-  <RatingGroup {...props}>
-    <RatingGroupLabel>GroupLabel</RatingGroupLabel>
-    <RatingGroupControl>
+  <RatingGroup.Root {...props}>
+    <RatingGroup.Label>GroupLabel</RatingGroup.Label>
+    <RatingGroup.Control>
       {({ items }) =>
         items.map((item) => (
-          <RatingGroupItem key={item} index={item}>
+          <RatingGroup.Item key={item} index={item}>
             {({ isHalf, isHighlighted }) => {
               if (isHalf) return 'half'
               if (isHighlighted) return 'highlighted'
               return 'empty'
             }}
-          </RatingGroupItem>
+          </RatingGroup.Item>
         ))
       }
-    </RatingGroupControl>
-  </RatingGroup>
+    </RatingGroup.Control>
+  </RatingGroup.Root>
 )
 
 describe('Rating Group', () => {

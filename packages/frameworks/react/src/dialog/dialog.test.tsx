@@ -4,35 +4,25 @@ import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContent,
-  DialogDescription,
-  DialogPositioner,
-  DialogTitle,
-  DialogTrigger,
-  type DialogProps,
-} from './'
+import { Dialog, type DialogProps } from './'
 
 const ComponentUnderTest = (props: DialogProps) => (
-  <Dialog {...props}>
-    <DialogTrigger>Open dialog</DialogTrigger>
+  <Dialog.Root {...props}>
+    <Dialog.Trigger>Open dialog</Dialog.Trigger>
     <Portal>
-      <DialogBackdrop />
-      <DialogPositioner />
-      <DialogContent>
-        <DialogTitle>Dialog title</DialogTitle>
-        <DialogDescription>Dialog description</DialogDescription>
+      <Dialog.Backdrop />
+      <Dialog.Positioner />
+      <Dialog.Content>
+        <Dialog.Title>Dialog title</Dialog.Title>
+        <Dialog.Description>Dialog description</Dialog.Description>
         <div>
           <input placeholder="Enter name..." />
           <button>Save</button>
         </div>
-        <DialogCloseTrigger>Close</DialogCloseTrigger>
-      </DialogContent>
+        <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+      </Dialog.Content>
     </Portal>
-  </Dialog>
+  </Dialog.Root>
 )
 
 describe('Dialog', () => {

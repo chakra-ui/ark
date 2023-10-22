@@ -3,40 +3,35 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderOutput,
-  SliderThumb,
-  SliderTrack,
-  type SliderProps,
-} from '.'
 import { getExports } from '../setup-test'
-import { SliderRange } from './slider-range'
+import { Slider, type SliderProps } from './'
 
 const ComponentUnderTest = (props: SliderProps) => {
   const [value, setValue] = useState([-20, 20])
   return (
-    <Slider min={-50} max={50} value={value} onValueChange={(e) => setValue(e.value)} {...props}>
-      <SliderLabel>Quantity: </SliderLabel>
-      <SliderOutput>{({ value }) => value.join(' ')}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
+    <Slider.Root
+      min={-50}
+      max={50}
+      value={value}
+      onValueChange={(e) => setValue(e.value)}
+      {...props}
+    >
+      <Slider.Label>Quantity: </Slider.Label>
+      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
         {value.map((_, index) => (
-          <SliderThumb key={index} index={index} />
+          <Slider.Thumb key={index} index={index} />
         ))}
-      </SliderControl>
-      <SliderMarkerGroup>
-        <SliderMarker value={-30}>*</SliderMarker>
-        <SliderMarker value={0}>*</SliderMarker>
-        <SliderMarker value={30}>*</SliderMarker>
-      </SliderMarkerGroup>
-    </Slider>
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={-30}>*</Slider.Marker>
+        <Slider.Marker value={0}>*</Slider.Marker>
+        <Slider.Marker value={30}>*</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 

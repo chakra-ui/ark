@@ -2,8 +2,8 @@ import { tabsAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
 import { getExports, getParts } from '../setup-test'
+import { Tabs, type TabsProps } from './'
 
 const ComponentUnderTest = (props: TabsProps) => {
   const items = [
@@ -13,21 +13,21 @@ const ComponentUnderTest = (props: TabsProps) => {
     { value: 'Vue' },
   ]
   return (
-    <Tabs {...props}>
-      <TabList>
+    <Tabs.Root {...props}>
+      <Tabs.List>
         {items.map((item, id) => (
-          <TabTrigger key={id} value={item.value} disabled={item.disabled}>
+          <Tabs.Trigger key={id} value={item.value} disabled={item.disabled}>
             {item.value} Trigger
-          </TabTrigger>
+          </Tabs.Trigger>
         ))}
-        <TabIndicator />
-      </TabList>
+        <Tabs.Indicator />
+      </Tabs.List>
       {items.map((item, id) => (
-        <TabContent key={id} value={item.value}>
+        <Tabs.Content key={id} value={item.value}>
           {item.value} Content
-        </TabContent>
+        </Tabs.Content>
       ))}
-    </Tabs>
+    </Tabs.Root>
   )
 }
 

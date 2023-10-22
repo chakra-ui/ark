@@ -5,23 +5,7 @@ import { vi } from 'vitest'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
-import {
-  Select,
-  SelectClearTrigger,
-  SelectContent,
-  SelectIndicator,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectTrigger,
-  SelectValueText,
-  type SelectProps,
-} from './'
-import { SelectControl } from './select-control'
+import { Select, type SelectProps } from './'
 
 interface Item {
   label: string
@@ -37,31 +21,31 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Select items={items} {...props}>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger>
-          <SelectValueText placeholder="Select a Framework" />
-          <SelectIndicator />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items} {...props}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Select a Framework" />
+          <Select.Indicator />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               {items.map((item) => (
-                <SelectItem key={item.value} item={item}>
-                  <SelectItemText>{item.label}</SelectItemText>
-                  <SelectItemIndicator>✓</SelectItemIndicator>
-                </SelectItem>
+                <Select.Item key={item.value} item={item}>
+                  <Select.ItemText>{item.label}</Select.ItemText>
+                  <Select.ItemIndicator>✓</Select.ItemIndicator>
+                </Select.Item>
               ))}
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }
 describe('Select', () => {
