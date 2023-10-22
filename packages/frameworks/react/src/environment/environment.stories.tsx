@@ -1,8 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useEffect } from 'react'
 import Frame from 'react-frame-component'
-import { Environment } from './'
-import { useEnvironmentContext } from './environment-context'
+import { Environment, useEnvironmentContext } from './'
 
 type EnvironmentType = typeof Environment
 

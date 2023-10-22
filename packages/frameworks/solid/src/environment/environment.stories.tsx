@@ -1,7 +1,6 @@
 import { createEffect, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Environment } from './'
-import { useEnvironmentContext } from './environment-context'
+import { Environment, useEnvironmentContext } from './'
 
 const meta: Meta = {
   title: 'Environment',
