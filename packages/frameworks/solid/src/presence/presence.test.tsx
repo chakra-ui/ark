@@ -1,16 +1,16 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
-import { Presence, type PresenceProps } from './presence'
+import { Presence, type PresenceProps } from './'
 
 const ComponentUnderTest = (props: Omit<PresenceProps, 'present' | 'children'>) => {
   const [present, setPresent] = createSignal(false)
   return (
     <div>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()} {...props}>
+      <Presence.Root present={present()} {...props}>
         <span data-testid="box">I am a red box</span>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }

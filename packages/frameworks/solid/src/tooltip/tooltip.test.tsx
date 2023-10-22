@@ -1,25 +1,17 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
-  TooltipContent,
-  TooltipPositioner,
-  TooltipTrigger,
-  type TooltipProps,
-} from './'
+import { Tooltip, type TooltipProps } from './'
 
 const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
-  <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>hover me</TooltipTrigger>
-    <TooltipPositioner>
-      <TooltipArrow>
-        <TooltipArrowTip />
-      </TooltipArrow>
-      <TooltipContent>content</TooltipContent>
-    </TooltipPositioner>
-  </Tooltip>
+  <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
+    <Tooltip.Trigger>hover me</Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Arrow>
+        <Tooltip.ArrowTip />
+      </Tooltip.Arrow>
+      <Tooltip.Content>content</Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
 )
 
 describe('Tooltip', () => {

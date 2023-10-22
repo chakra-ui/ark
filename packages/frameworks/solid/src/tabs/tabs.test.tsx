@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import { TabContent, TabIndicator, TabList, TabTrigger, Tabs, type TabsProps } from '.'
+import { Tabs, type TabsProps } from './'
 
 const ComponentUnderTest = (props: TabsProps) => {
   const items = [
@@ -12,21 +12,21 @@ const ComponentUnderTest = (props: TabsProps) => {
     { value: 'Vue' },
   ]
   return (
-    <Tabs {...props}>
-      <TabList>
+    <Tabs.Root {...props}>
+      <Tabs.List>
         <For each={items}>
           {(item) => (
-            <TabTrigger value={item.value} disabled={item.disabled}>
+            <Tabs.Trigger value={item.value} disabled={item.disabled}>
               {item.value} Trigger
-            </TabTrigger>
+            </Tabs.Trigger>
           )}
         </For>
-        <TabIndicator />
-      </TabList>
+        <Tabs.Indicator />
+      </Tabs.List>
       <For each={items}>
-        {(item) => <TabContent value={item.value}>{item.value} Content</TabContent>}
+        {(item) => <Tabs.Content value={item.value}>{item.value} Content</Tabs.Content>}
       </For>
-    </Tabs>
+    </Tabs.Root>
   )
 }
 
