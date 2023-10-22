@@ -2,27 +2,18 @@ import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputIncrementTrigger,
-  NumberInputInput,
-  NumberInputLabel,
-  NumberInputScrubber,
-  type NumberInputProps,
-} from './'
+import { NumberInput, type NumberInputProps } from './'
 
 const ComponentUnderTest = (props: NumberInputProps) => (
-  <NumberInput {...props}>
-    <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputInput />
-    <NumberInputScrubber />
-    <NumberInputControl>
-      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
-    </NumberInputControl>
-  </NumberInput>
+  <NumberInput.Root {...props}>
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Scrubber />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
 )
 
 describe('NumberInput', () => {

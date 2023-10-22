@@ -1,11 +1,11 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { Pagination, type PaginationProps } from '.'
 import { getParts } from '../setup-test'
+import { Pagination, type PaginationProps } from './'
 
 const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
-  <Pagination {...props}>
+  <Pagination.Root {...props}>
     {({ pages }) => (
       <>
         <Pagination.PrevTrigger>
@@ -27,7 +27,7 @@ const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
         </Pagination.NextTrigger>
       </>
     )}
-  </Pagination>
+  </Pagination.Root>
 )
 
 describe('Pagination', () => {

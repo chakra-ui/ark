@@ -3,17 +3,17 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { PinInput, PinInputControl, PinInputInput, PinInputLabel, type PinInputProps } from './'
+import { PinInput, type PinInputProps } from './'
 
 const ComponentUnderTest = (props: PinInputProps) => (
-  <PinInput {...props}>
-    <PinInputLabel>Label</PinInputLabel>
-    <PinInputControl>
+  <PinInput.Root {...props}>
+    <PinInput.Label>Label</PinInput.Label>
+    <PinInput.Control>
       {[0, 1, 2].map((id, index) => (
-        <PinInputInput key={id} index={index} />
+        <PinInput.Input key={id} index={index} />
       ))}
-    </PinInputControl>
-  </PinInput>
+    </PinInput.Control>
+  </PinInput.Root>
 )
 
 describe('PinInput', () => {

@@ -2,8 +2,8 @@ import { radioGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { RadioGroup, type RadioGroupProps } from '.'
 import { getExports, getParts } from '../setup-test'
+import { RadioGroup, type RadioGroupProps } from './'
 
 const ComponentUnderTest = (props: RadioGroupProps) => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']

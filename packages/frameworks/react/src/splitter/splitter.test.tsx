@@ -1,20 +1,20 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/react'
-import { Splitter, SplitterPanel, SplitterResizeTrigger, type SplitterProps } from '.'
 import { getExports, getParts } from '../setup-test'
+import { Splitter, type SplitterProps } from './'
 
 const ComponentUnderTest = (props: SplitterProps) => (
-  <Splitter
+  <Splitter.Root
     size={[
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
     {...props}
   >
-    <SplitterPanel id="a">A</SplitterPanel>
-    <SplitterResizeTrigger id="a:b" />
-    <SplitterPanel id="b">B</SplitterPanel>
-  </Splitter>
+    <Splitter.Panel id="a">A</Splitter.Panel>
+    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.Panel id="b">B</Splitter.Panel>
+  </Splitter.Root>
 )
 
 describe('Splitter', () => {
