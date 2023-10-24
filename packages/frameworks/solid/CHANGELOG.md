@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-beta.2] - 2023-10-24
+
 ### Changed
 
 - Replaced `vite` with `rollup-preset-solid` for bundling.
