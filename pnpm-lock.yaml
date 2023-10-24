@@ -155,7 +155,7 @@ importers:
         version: 4.4.11(@types/node@20.5.1)
       vite-plugin-dts:
         specifier: 3.6.0
-        version: 3.6.0(@types/node@20.5.1)(rollup@4.1.4)(typescript@5.2.2)(vite@4.4.11)
+        version: 3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11)
 
   packages/frameworks/react:
     dependencies:
@@ -360,7 +360,215 @@ importers:
         version: 4.4.11(@types/node@20.5.1)
       vite-plugin-dts:
         specifier: 3.6.0
-        version: 3.6.0(@types/node@20.5.1)(rollup@4.1.4)(typescript@5.2.2)(vite@4.4.11)
+        version: 3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11)
+      vitest:
+        specifier: 0.34.6
+        version: 0.34.6(jsdom@22.1.0)
+
+  packages/frameworks/react/dist:
+    dependencies:
+      '@ark-ui/anatomy':
+        specifier: 1.0.0-beta.0
+        version: link:../../../anatomy
+      '@zag-js/accordion':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/anatomy':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/avatar':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/carousel':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/checkbox':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/color-picker':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/color-utils':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/combobox':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/core':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/date-picker':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/date-utils':
+        specifier: 0.26.0
+        version: 0.26.0(@internationalized/date@3.5.0)
+      '@zag-js/dialog':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/editable':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/hover-card':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/menu':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/number-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/pagination':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/pin-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/popover':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/presence':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/radio-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/rating-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/react':
+        specifier: 0.26.0
+        version: 0.26.0(react-dom@18.2.0)(react@18.2.0)
+      '@zag-js/select':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/slider':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/splitter':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/switch':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tabs':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tags-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/toast':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/toggle-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tooltip':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/types':
+        specifier: 0.26.0
+        version: 0.26.0
+    devDependencies:
+      '@release-it/keep-a-changelog':
+        specifier: 4.0.0
+        version: 4.0.0(release-it@16.2.1)
+      '@storybook/addon-a11y':
+        specifier: 7.5.1
+        version: 7.5.1(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/addon-essentials':
+        specifier: 7.5.1
+        version: 7.5.1(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/addons':
+        specifier: 7.5.1
+        version: 7.5.1(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/react':
+        specifier: 7.5.1
+        version: 7.5.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+      '@storybook/react-vite':
+        specifier: 7.5.1
+        version: 7.5.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(vite@4.4.11)
+      '@testing-library/dom':
+        specifier: 9.3.3
+        version: 9.3.3
+      '@testing-library/jest-dom':
+        specifier: 6.1.4
+        version: 6.1.4(vitest@0.34.6)
+      '@testing-library/react':
+        specifier: 14.0.0
+        version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: 14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
+      '@types/jsdom':
+        specifier: 21.1.4
+        version: 21.1.4
+      '@types/react':
+        specifier: 18.2.28
+        version: 18.2.28
+      '@types/react-dom':
+        specifier: 18.2.13
+        version: 18.2.13
+      '@types/testing-library__jest-dom':
+        specifier: 5.14.9
+        version: 5.14.9
+      '@typescript-eslint/eslint-plugin':
+        specifier: 6.8.0
+        version: 6.8.0(@typescript-eslint/parser@6.8.0)(eslint@8.51.0)(typescript@5.2.2)
+      '@typescript-eslint/parser':
+        specifier: 6.8.0
+        version: 6.8.0(eslint@8.51.0)(typescript@5.2.2)
+      '@vitejs/plugin-react':
+        specifier: 4.1.0
+        version: 4.1.0(vite@4.4.11)
+      '@vitest/coverage-v8':
+        specifier: 0.34.6
+        version: 0.34.6(vitest@0.34.6)
+      eslint:
+        specifier: 8.51.0
+        version: 8.51.0
+      eslint-plugin-react:
+        specifier: 7.33.2
+        version: 7.33.2(eslint@8.51.0)
+      eslint-plugin-react-hooks:
+        specifier: 4.6.0
+        version: 4.6.0(eslint@8.51.0)
+      globby:
+        specifier: 13.2.2
+        version: 13.2.2
+      jsdom:
+        specifier: 22.1.0
+        version: 22.1.0
+      lucide-react:
+        specifier: 0.288.0
+        version: 0.288.0(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-frame-component:
+        specifier: 5.2.6
+        version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+      release-it:
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
+      resize-observer-polyfill:
+        specifier: 1.5.1
+        version: 1.5.1
+      storybook:
+        specifier: 7.5.1
+        version: 7.5.1
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+      vite:
+        specifier: 4.4.11
+        version: 4.4.11(@types/node@20.5.1)
+      vite-plugin-dts:
+        specifier: 3.6.0
+        version: 3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11)
       vitest:
         specifier: 0.34.6
         version: 0.34.6(jsdom@22.1.0)
@@ -548,9 +756,196 @@ importers:
       vite:
         specifier: 4.4.11
         version: 4.4.11(@types/node@20.5.1)
-      vite-plugin-dts:
-        specifier: 3.6.0
-        version: 3.6.0(@types/node@20.5.1)(rollup@4.1.4)(typescript@5.2.2)(vite@4.4.11)
+      vite-plugin-solid:
+        specifier: 2.7.2
+        version: 2.7.2(solid-js@1.8.1)(vite@4.4.11)
+      vitest:
+        specifier: 0.34.2
+        version: 0.34.2(jsdom@22.1.0)
+
+  packages/frameworks/solid/dist:
+    dependencies:
+      '@ark-ui/anatomy':
+        specifier: 1.0.0-beta.0
+        version: link:../../../anatomy
+      '@zag-js/accordion':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/anatomy':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/avatar':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/carousel':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/checkbox':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/color-picker':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/combobox':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/date-picker':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/dialog':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/editable':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/hover-card':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/menu':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/number-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/pagination':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/pin-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/popover':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/presence':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/radio-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/rating-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/select':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/slider':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/solid':
+        specifier: 0.26.0
+        version: 0.26.0(solid-js@1.8.1)
+      '@zag-js/splitter':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/switch':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tabs':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tags-input':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/toast':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/toggle-group':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/tooltip':
+        specifier: 0.26.0
+        version: 0.26.0
+      '@zag-js/types':
+        specifier: 0.26.0
+        version: 0.26.0
+    devDependencies:
+      '@release-it/keep-a-changelog':
+        specifier: 4.0.0
+        version: 4.0.0(release-it@16.2.1)
+      '@solidjs/testing-library':
+        specifier: 0.8.4
+        version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.8.1)
+      '@storybook/addon-essentials':
+        specifier: 7.5.1
+        version: 7.5.1(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/addon-interactions':
+        specifier: 7.5.1
+        version: 7.5.1(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/addon-links':
+        specifier: 7.5.1
+        version: 7.5.1(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/blocks':
+        specifier: 7.5.1
+        version: 7.5.1(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/testing-library':
+        specifier: 0.2.2
+        version: 0.2.2
+      '@testing-library/dom':
+        specifier: 9.3.3
+        version: 9.3.3
+      '@testing-library/jest-dom':
+        specifier: 6.1.4
+        version: 6.1.4(vitest@0.34.2)
+      '@testing-library/user-event':
+        specifier: 14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
+      '@types/jsdom':
+        specifier: 21.1.4
+        version: 21.1.4
+      '@types/testing-library__jest-dom':
+        specifier: 5.14.9
+        version: 5.14.9
+      '@typescript-eslint/eslint-plugin':
+        specifier: 6.8.0
+        version: 6.8.0(@typescript-eslint/parser@6.8.0)(eslint@8.51.0)(typescript@5.2.2)
+      '@typescript-eslint/parser':
+        specifier: 6.8.0
+        version: 6.8.0(eslint@8.51.0)(typescript@5.2.2)
+      '@vitest/coverage-v8':
+        specifier: 0.34.3
+        version: 0.34.3(vitest@0.34.2)
+      eslint:
+        specifier: 8.51.0
+        version: 8.51.0
+      globby:
+        specifier: 13.2.2
+        version: 13.2.2
+      jsdom:
+        specifier: 22.1.0
+        version: 22.1.0
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      release-it:
+        specifier: 16.2.1
+        version: 16.2.1(typescript@5.2.2)
+      rollup:
+        specifier: 4.1.4
+        version: 4.1.4
+      rollup-preset-solid:
+        specifier: 2.0.1
+        version: 2.0.1
+      solid-js:
+        specifier: 1.8.1
+        version: 1.8.1
+      storybook:
+        specifier: 7.5.1
+        version: 7.5.1
+      storybook-solidjs:
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2(babel-preset-solid@1.8.0)(solid-js@1.8.1)
+      storybook-solidjs-vite:
+        specifier: 1.0.0-beta.2
+        version: 1.0.0-beta.2(typescript@5.2.2)(vite@4.4.11)
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+      vite:
+        specifier: 4.4.11
+        version: 4.4.11(@types/node@20.5.1)
       vite-plugin-solid:
         specifier: 2.7.2
         version: 2.7.2(solid-js@1.8.1)(vite@4.4.11)
@@ -722,7 +1117,7 @@ importers:
         version: 4.4.11(@types/node@20.5.1)
       vite-plugin-dts:
         specifier: 3.6.0
-        version: 3.6.0(@types/node@20.5.1)(rollup@4.1.4)(typescript@5.2.2)(vite@4.4.11)
+        version: 3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11)
       vitest:
         specifier: 0.34.6
         version: 0.34.6(jsdom@22.1.0)
@@ -780,7 +1175,7 @@ importers:
     dependencies:
       '@ark-ui/react':
         specifier: workspace:*
-        version: link:../frameworks/react
+        version: link:../frameworks/react/dist
       '@astrojs/mdx':
         specifier: 1.1.2
         version: 1.1.2(astro@3.3.0)
@@ -5146,21 +5541,6 @@ packages:
       rollup: 3.29.4
     dev: true
 
-  /@rollup/pluginutils@5.0.5(rollup@4.1.4):
-    resolution: {integrity: sha512-6aEYR910NyP73oHiJglti74iRyOwgFU4x3meH/H8OJx6Ry0j6cOVZ5X/wTvub7G7Ao6qaHBEaNsV3GLJkSsF+Q==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      '@types/estree': 1.0.2
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-      rollup: 4.1.4
-    dev: true
-
   /@rollup/rollup-android-arm-eabi@4.1.4:
     resolution: {integrity: sha512-WlzkuFvpKl6CLFdc3V6ESPt7gq5Vrimd2Yv9IzKXdOpgbH4cdDSS1JLiACX8toygihtH5OlxyQzhXOph7Ovlpw==}
     cpu: [arm]
@@ -6287,7 +6667,7 @@ packages:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0(typescript@5.2.2)(vite@4.4.11)
-      '@rollup/pluginutils': 5.0.5(rollup@4.1.4)
+      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
       '@storybook/builder-vite': 7.5.1(typescript@5.2.2)(vite@4.4.11)
       '@storybook/react': 7.5.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
       '@vitejs/plugin-react': 3.1.0(vite@4.4.11)
@@ -19295,7 +19675,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@3.6.0(@types/node@20.5.1)(rollup@4.1.4)(typescript@5.2.2)(vite@4.4.11):
+  /vite-plugin-dts@3.6.0(@types/node@20.5.1)(typescript@5.2.2)(vite@4.4.11):
     resolution: {integrity: sha512-doxhDRFJCZD2sGjIp4V800nm8Y19GvmwckjG5vYPuiqJ7OBjc9NlW1Vp9Gkyh2aXlUs1jTDRH/lxWfcsPLOQHg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -19306,7 +19686,7 @@ packages:
         optional: true
     dependencies:
       '@microsoft/api-extractor': 7.38.0(@types/node@20.5.1)
-      '@rollup/pluginutils': 5.0.5(rollup@4.1.4)
+      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
       '@vue/language-core': 1.8.19(typescript@5.2.2)
       debug: 4.3.4
       kolorist: 1.8.0
