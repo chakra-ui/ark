@@ -18,10 +18,12 @@ export interface PresenceProps extends UsePresenceProps {
    * @default false
    */
   unmountOnExit?: boolean
+
+  fallback?: ReactElement
 }
 
 export const Presence = (props: PresenceProps) => {
-  const [presenceProps, { children, lazyMount, unmountOnExit }] =
+  const [presenceProps, { children, lazyMount, fallback, unmountOnExit }] =
     createSplitProps<UsePresenceProps>()(props, ['present', 'onExitComplete'])
   const api = usePresence(presenceProps)
   const wasEverPresent = useRef(false)
@@ -34,7 +36,7 @@ export const Presence = (props: PresenceProps) => {
     (!api.isPresent && !wasEverPresent.current && lazyMount) ||
     (unmountOnExit && !api.isPresent && wasEverPresent.current)
   ) {
-    return null
+    return fallback
   }
 
   const onlyChild = Children.only(children)

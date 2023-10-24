@@ -13,7 +13,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((p
   const api = usePopoverContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <PopoverInnerContent ref={ref} {...localProps} />
     </Presence>
   )

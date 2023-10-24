@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Removed
+
+- Removed `RangeSlider` component. Please use `Slider` instead.
+
 ## [1.0.0-beta.1] - 2023-10-20
 
 ### Added
