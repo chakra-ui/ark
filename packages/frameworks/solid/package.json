@@ -17,8 +17,28 @@
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "solid": "./source/index.jsx",
+      "import": "./esm/index.js",
+      "browser": {
+        "import": "./esm/index.js",
+        "require": "./cjs/index.js"
+      },
+      "require": "./cjs/index.js",
+      "node": "./cjs/index.js"
+    }
+  },
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "./"
+  ],
   "scripts": {
-    "build": "vite build",
+    "build": "rollup -c",
     "lint": "eslint --ext .ts,.tsx src",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
@@ -83,18 +103,18 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "16.2.1",
+    "rollup": "4.1.4",
+    "rollup-preset-solid": "2.0.1",
     "solid-js": "1.8.1",
     "storybook": "7.5.1",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
     "typescript": "5.2.2",
     "vite": "4.4.11",
-    "vite-plugin-dts": "3.6.0",
     "vite-plugin-solid": "2.7.2",
     "vitest": "0.34.2"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
-  },
-  "main": "src/index.ts"
+  }
 }
