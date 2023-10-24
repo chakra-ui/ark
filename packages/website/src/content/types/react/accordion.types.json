@@ -84,6 +84,10 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
+    "fallback": {
+      "type": "ReactElement<any, string | JSXElementConstructor<any>>",
+      "isRequired": false
+    },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
