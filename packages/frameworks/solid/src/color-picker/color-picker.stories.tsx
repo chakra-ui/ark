@@ -18,6 +18,7 @@ export const Basic = () => {
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />
         <ColorPicker.ChannelInput channel="alpha" />
+        <ColorPicker.ValueText />
         <ColorPicker.Trigger>
           <ColorPicker.TransparencyGrid size="10px" />
           <ColorPicker.Swatch value="red"></ColorPicker.Swatch>

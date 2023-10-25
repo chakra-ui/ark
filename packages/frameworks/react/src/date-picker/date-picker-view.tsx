@@ -1,3 +1,4 @@
+import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
@@ -24,7 +25,12 @@ export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((p
 
   return (
     <DatePickerViewProvider value={viewProps}>
-      <ark.div {...localProps} ref={ref} hidden={api.view !== viewProps.view}>
+      <ark.div
+        hidden={api.view !== viewProps.view}
+        {...datePickerAnatomy.build().view.attrs}
+        {...localProps}
+        ref={ref}
+      >
         {view}
       </ark.div>
     </DatePickerViewProvider>
