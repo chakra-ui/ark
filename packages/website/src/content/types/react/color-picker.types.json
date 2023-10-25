@@ -145,6 +145,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ValueText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Positioner": {
     "asChild": {
       "type": "boolean",
@@ -186,6 +193,14 @@
     }
   },
   "AreaBackground": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TransparencyGrid": {
+    "size": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
