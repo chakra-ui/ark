@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.0.0-beta.1] - 2023-10-25
+
 ### Added
 
 - Extended `ColorPicker` with part `valueText`
