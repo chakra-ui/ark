@@ -1,6 +1,10 @@
 ## [Unreleased]
 
-Add File Upload anatomy
+### Added
+
+- Extended `ColorPicker` with part `valueText`
+- Extended `DatePicker` with part `view`
+- Added `FileUpload` anatomy
 
 ## [1.0.0-beta.0] - 2023-10-20
 
