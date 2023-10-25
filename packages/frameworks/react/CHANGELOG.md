@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-beta.2] - 2023-10-25
+
 ### Added
 
 - Added `ValueText` to the `ColorPicker` component
