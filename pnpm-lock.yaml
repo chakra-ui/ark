@@ -818,8 +818,8 @@ importers:
         specifier: 0.289.0
         version: 0.289.0(react@18.2.0)
       pandacss-preset-typography:
-        specifier: 0.1.4
-        version: 0.1.4(@pandacss/dev@0.0.0-dev-20231025190231)
+        specifier: 0.1.5
+        version: 0.1.5(@pandacss/dev@0.0.0-dev-20231025190231)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -15414,8 +15414,8 @@ packages:
     resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
     dev: true
 
-  /pandacss-preset-typography@0.1.4(@pandacss/dev@0.0.0-dev-20231025190231):
-    resolution: {integrity: sha512-mVhxgoqhYHrrKh14dZGbycj38PcoIMzvOaBP06slFXKIVNAc3USbGb3dVz/h/5a3Jt7WUEuZ1VVMGnzsc5Jq1w==}
+  /pandacss-preset-typography@0.1.5(@pandacss/dev@0.0.0-dev-20231025190231):
+    resolution: {integrity: sha512-M1J21seZ1pSaE4gXHmghK6xUWV0RmL0xBYNL8J12pA7X8hwwOPX0TWlB9u1F6J5Uf1pF0x/IoPfl5DgKOFcKSQ==}
     peerDependencies:
       '@pandacss/dev': '>=0.9.0'
     dependencies:
