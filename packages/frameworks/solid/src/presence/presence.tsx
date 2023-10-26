@@ -3,7 +3,7 @@ import { spread } from 'solid-js/web'
 import { createSplitProps } from '../create-split-props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
-export type PresenceProps = UsePresenceProps & {
+export interface PresenceProps extends UsePresenceProps {
   /**
    * Whether to enable lazy mounting. Defaults to `false`.
    */
@@ -16,6 +16,10 @@ export type PresenceProps = UsePresenceProps & {
    * The children to render.
    */
   children?: JSXElement
+  /**
+   * A fallback to render the component is not present.
+   */
+  fallback?: JSXElement
 }
 
 export const Presence = (props: PresenceProps) => {
@@ -46,7 +50,7 @@ export const Presence = (props: PresenceProps) => {
     <>
       {(!api().isPresent && !wasEverPresent() && localProps.lazyMount) ||
       (localProps.unmountOnExit && !api().isPresent && wasEverPresent())
-        ? null
+        ? props.fallback
         : getChildren()}
     </>
   )
