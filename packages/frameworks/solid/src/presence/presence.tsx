@@ -50,7 +50,7 @@ export const Presence = (props: PresenceProps) => {
     <>
       {(!api().isPresent && !wasEverPresent() && localProps.lazyMount) ||
       (localProps.unmountOnExit && !api().isPresent && wasEverPresent())
-        ? props.fallback
+        ? localProps.fallback
         : getChildren()}
     </>
   )
