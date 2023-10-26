@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react'
+import { useState } from 'react'
 import { SegmentGroup } from './'
 import './segment-group.css'
 
@@ -26,41 +27,49 @@ export const Basic = () => {
   )
 }
 
-// export const InitialValue = () => (
-//   <SegmentGroup.Root defaultValue="react">
-//     <SegmentGroup.Indicator />
-//     {options.map((option, id) => (
-//       <SegmentGroup.Item key={id} value={option.id}>
-//         <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
-//         <SegmentGroup.ItemControl />
-//       </SegmentGroup.Item>
-//     ))}
-//   </SegmentGroup.Root>
-// )
+export const InitialValue = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <SegmentGroup.Root defaultValue="React">
+      <SegmentGroup.Indicator />
+      {frameworks.map((framework) => (
+        <SegmentGroup.Item key={framework} value={framework}>
+          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+        </SegmentGroup.Item>
+      ))}
+    </SegmentGroup.Root>
+  )
+}
 
-// export const Controlled = () => {
-//   const [value, setValue] = useState('react')
-//   return (
-//     <SegmentGroup.Root value={value} onValueChange={(e) => setValue(e.value)}>
-//       <SegmentGroup.Indicator />
-//       {options.map((option, id) => (
-//         <SegmentGroup.Item key={id} value={option.id}>
-//           <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
-//           <SegmentGroup.ItemControl />
-//         </SegmentGroup.Item>
-//       ))}
-//     </SegmentGroup.Root>
-//   )
-// }
+export const Controlled = () => {
+  const [value, setValue] = useState('React')
 
-// export const Disabled = () => (
-//   <SegmentGroup.Root defaultValue="react">
-//     <SegmentGroup.Indicator />
-//     {options.map((option, id) => (
-//       <SegmentGroup.Item key={id} value={option.id} disabled={option.id === 'svelte'}>
-//         <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
-//         <SegmentGroup.ItemControl />
-//       </SegmentGroup.Item>
-//     ))}
-//   </SegmentGroup.Root>
-// )
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <SegmentGroup.Root value={value} onValueChange={(e) => setValue(e.value)}>
+      <SegmentGroup.Indicator />
+      {frameworks.map((framework) => (
+        <SegmentGroup.Item key={framework} value={framework}>
+          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+        </SegmentGroup.Item>
+      ))}
+    </SegmentGroup.Root>
+  )
+}
+
+export const Disabled = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <SegmentGroup.Root defaultValue="React">
+      <SegmentGroup.Indicator />
+      {frameworks.map((framework) => (
+        <SegmentGroup.Item key={framework} value={framework} disabled={framework === 'Solid'}>
+          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemControl />
+        </SegmentGroup.Item>
+      ))}
+    </SegmentGroup.Root>
+  )
+}
