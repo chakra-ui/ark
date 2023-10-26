@@ -112,7 +112,7 @@
     "typescript": "5.2.2",
     "vite": "4.5.0",
     "vite-plugin-solid": "2.7.2",
-    "vitest": "0.34.2"
+    "vitest": "0.34.6"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
