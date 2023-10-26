@@ -85,7 +85,7 @@
     "typescript": "5.2.2",
     "vite": "4.5.0",
     "vite-plugin-dts": "3.6.1",
-    "vitest": "0.34.6",
+    "vitest": "0.34.2",
     "vue": "3.3.4"
   },
   "peerDependencies": {
