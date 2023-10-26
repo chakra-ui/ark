@@ -7,7 +7,9 @@ import { splitPresenceProps } from '../presence'
 import { TabPresence, type TabPresenceProps } from './tab-presence'
 import { useTabsContext } from './tabs-context'
 
-export interface TabContentProps extends InnerTabContentProps, Omit<TabPresenceProps, 'children'> {}
+export interface TabContentProps
+  extends InnerTabContentProps,
+    Omit<TabPresenceProps, 'children' | 'fallback'> {}
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [presenceProps, tabContentProps] = splitPresenceProps(props)

@@ -9,12 +9,12 @@ interface TransparancyGridProps {
   size: string
 }
 
-export interface ColorPickerTransparencyGridPrps
+export interface ColorPickerTransparencyGridProps
   extends Assign<HTMLArkProps<'div'>, TransparancyGridProps> {}
 
 export const ColorPickerTransparencyGrid = forwardRef<
   HTMLDivElement,
-  ColorPickerTransparencyGridPrps
+  ColorPickerTransparencyGridProps
 >((props, ref) => {
   const [gridProps, localProps] = createSplitProps<TransparancyGridProps>()(props, ['size'])
   const api = useColorPickerContext()

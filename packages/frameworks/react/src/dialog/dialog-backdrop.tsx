@@ -6,14 +6,14 @@ import type { Assign } from '../types'
 import { useDialogContext } from './dialog-context'
 
 export interface DialogBackdropProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useDialogContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.backdropProps} />}>
       <DialogInnerBackdrop ref={ref} {...localProps} />
     </Presence>
   )

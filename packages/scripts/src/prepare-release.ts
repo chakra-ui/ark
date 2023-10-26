@@ -37,11 +37,14 @@ const main = async () => {
   )
 
   const packageJson = await fs.readJson('package.json')
-  packageJson.main = 'index.cjs'
-  packageJson.module = 'index.mjs'
-  packageJson.types = 'index.d.ts'
-  packageJson.files = ['./']
-  packageJson.exports = generateExports()
+  //  Note: At the time Solid does not support path imports like vue or react
+  if (dirName !== 'solid') {
+    packageJson.main = 'index.cjs'
+    packageJson.module = 'index.mjs'
+    packageJson.types = 'index.d.ts'
+    packageJson.files = ['./']
+    packageJson.exports = generateExports()
+  }
   packageJson.keywords = generateKeywords()
 
   await fs.writeJson('dist/package.json', packageJson, { spaces: 2 })

@@ -7,15 +7,20 @@ import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemContentProps>(
   function AccordionItemContent(props, ref) {
     const [presenceProps, localProps] = splitPresenceProps(props)
-    const api = useAccordionItemContext()
+    const api = useAccordionContext()
+    const item = useAccordionItemContext()
 
     return (
-      <Presence present={api.isOpen} {...presenceProps}>
+      <Presence
+        present={item.isOpen}
+        {...presenceProps}
+        fallback={<div {...api.getItemContentProps(item)} />}
+      >
         <AccordionInnerContent ref={ref} {...localProps} />
       </Presence>
     )

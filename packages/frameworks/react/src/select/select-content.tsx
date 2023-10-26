@@ -6,14 +6,14 @@ import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 
 export interface SelectContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useSelectContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <SelectInnerContent ref={ref} {...localProps} />
     </Presence>
   )

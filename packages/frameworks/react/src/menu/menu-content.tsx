@@ -7,14 +7,14 @@ import { useMenuContext } from './menu-context'
 import type { UseMenuReturn } from './use-menu'
 
 export interface MenuContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useMenuContext() as UseMenuReturn['api']
 
   return (
-    <Presence present={api?.isOpen} {...presenceProps}>
+    <Presence present={api?.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <MenuInnerContent ref={ref} {...localProps} />
     </Presence>
   )

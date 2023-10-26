@@ -6,14 +6,14 @@ import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useComboboxContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <ComboboxInnerContent ref={ref} {...localProps} />
     </Presence>
   )
