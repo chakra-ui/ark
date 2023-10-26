@@ -6,7 +6,7 @@ import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>(
   (props, ref) => {
@@ -14,7 +14,7 @@ export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentPro
     const api = useDatePickerContext()
 
     return (
-      <Presence present={api.isOpen} {...presenceProps}>
+      <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
         <DatePickerInnerContent ref={ref} {...localProps} />
       </Presence>
     )

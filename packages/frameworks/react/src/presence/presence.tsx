@@ -18,7 +18,9 @@ export interface PresenceProps extends UsePresenceProps {
    * @default false
    */
   unmountOnExit?: boolean
-
+  /**
+   * A fallback to render the component is not present.
+   */
   fallback?: ReactElement
 }
 

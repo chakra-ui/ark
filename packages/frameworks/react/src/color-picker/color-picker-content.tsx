@@ -6,7 +6,7 @@ import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentProps>(
   (props, ref) => {
@@ -14,7 +14,7 @@ export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentP
     const api = useColorPickerContext()
 
     return (
-      <Presence present={api.isOpen} {...presenceProps}>
+      <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
         <ColorPickerInnerContent ref={ref} {...localProps} />
       </Presence>
     )
