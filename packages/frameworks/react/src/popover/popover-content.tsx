@@ -6,14 +6,14 @@ import type { Assign } from '../types'
 import { usePopoverContext } from './popover-context'
 
 export interface PopoverContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = usePopoverContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <PopoverInnerContent ref={ref} {...localProps} />
     </Presence>
   )

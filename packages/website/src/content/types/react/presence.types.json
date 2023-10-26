@@ -1,5 +1,10 @@
 {
   "Root": {
+    "fallback": {
+      "type": "ReactElement<any, string | JSXElementConstructor<any>>",
+      "isRequired": false,
+      "description": "A fallback to render the component is not present."
+    },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",

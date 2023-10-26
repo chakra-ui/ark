@@ -6,14 +6,14 @@ import type { Assign } from '../types'
 import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const [presenceProps, tooltipContentProps] = splitPresenceProps(props)
   const api = useTooltipContext()
 
   return (
-    <Presence present={api.isOpen} {...presenceProps}>
+    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
       <TooltipInnerContent ref={ref} {...tooltipContentProps} />
     </Presence>
   )
