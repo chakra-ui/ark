@@ -27,7 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.8.0",
     "@commitlint/config-conventional": "17.8.0",
-    "concurrently": "8.2.1",
+    "concurrently": "8.2.2",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
