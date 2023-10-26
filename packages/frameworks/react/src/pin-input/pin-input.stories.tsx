@@ -21,7 +21,7 @@ export const Basic = () => (
   </PinInput.Root>
 )
 
-export const DefaultValue = () => (
+export const InitialValue = () => (
   <PinInput.Root defaultValue={['1', '2', '3']}>
     <PinInput.Label>Label</PinInput.Label>
     <PinInput.Control>

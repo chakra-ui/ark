@@ -25,3 +25,50 @@ export const Basic = () => {
     </RadioGroup.Root>
   )
 }
+
+export const Disabled = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <RadioGroup.Root disabled>
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
+  )
+}
+
+export const InitialValue = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <RadioGroup.Root defaultValue="Solid">
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
+  )
+}
+
+export const OnChange = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <RadioGroup.Root
+      onChange={(details) => console.log((details.target as HTMLInputElement).value)}
+    >
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      {frameworks.map((framework) => (
+        <RadioGroup.Item key={framework} value={framework}>
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemControl />
+        </RadioGroup.Item>
+      ))}
+    </RadioGroup.Root>
+  )
+}

@@ -43,7 +43,7 @@ export const Portalled = () => (
   </Popover.Root>
 )
 
-export const OnEvent = () => {
+export const OnOpenChange = () => {
   return (
     <Popover.Root onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
       <Popover.Trigger>
