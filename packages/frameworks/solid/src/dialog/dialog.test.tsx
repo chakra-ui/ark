@@ -1,32 +1,22 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Portal } from 'solid-js/web'
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContent,
-  DialogDescription,
-  DialogPositioner,
-  DialogTitle,
-  DialogTrigger,
-  type DialogProps,
-} from './'
+import { Dialog, type DialogProps } from './'
 
 const ComponentUnderTest = (props: DialogProps) => (
-  <Dialog {...props}>
-    <DialogTrigger>Open Dialog</DialogTrigger>
+  <Dialog.Root {...props}>
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
-      <DialogBackdrop />
-      <DialogPositioner>
-        <DialogContent>
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogDescription>Dialog Description</DialogDescription>
-          <DialogCloseTrigger>Close</DialogCloseTrigger>
-        </DialogContent>
-      </DialogPositioner>
+      <Dialog.Backdrop />
+      <Dialog.Positioner>
+        <Dialog.Content>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description>Dialog Description</Dialog.Description>
+          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+        </Dialog.Content>
+      </Dialog.Positioner>
     </Portal>
-  </Dialog>
+  </Dialog.Root>
 )
 
 describe('Dialog', () => {

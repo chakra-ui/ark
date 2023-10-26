@@ -1,1 +1,3 @@
-export { anatomy } from '@zag-js/date-picker'
+import { anatomy as _ } from '@zag-js/date-picker'
+
+export const anatomy = _.extendWith('view')

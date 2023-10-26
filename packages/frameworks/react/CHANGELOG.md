@@ -1,14 +1,24 @@
 ---
 id: changelog
 name: Changelog
-description: All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to and this project adheres to Semantic Versioning.
+description: All notable changes to this project will be documented in this file.
 ---
 
 ## [Unreleased]
 
-### Removed
+### Added
 
-- Removed `RangeSlider` component. Please use `Slider` instead.
+- Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
+
+## [1.0.0-beta.2] - 2023-10-25
+
+### Added
+
+- Added `ValueText` to the `ColorPicker` component
+
+### Fixed
+
+- Added missing data attributes to `DatePickerView` component
 
 ## [1.0.0-beta.1] - 2023-10-20
 

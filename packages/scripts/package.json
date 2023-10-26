@@ -12,7 +12,7 @@
     "vue:props": "ts-node src/generate-vue-props.ts"
   },
   "dependencies": {
-    "@types/voca": "1.4.3",
+    "@types/voca": "1.4.4",
     "find-up": "6.3.0",
     "fs-extra": "11.1.1",
     "globby": "13.2.2",
@@ -23,7 +23,7 @@
     "voca": "1.4.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "11.0.2",
+    "@types/fs-extra": "11.0.3",
     "@types/node": "18.18.5",
     "@types/prettier": "2.7.3",
     "ts-node": "10.9.1",

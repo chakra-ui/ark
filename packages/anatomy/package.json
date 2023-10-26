@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/anatomy",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Contains all the anatomy information for the Ark UI components",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -35,6 +35,7 @@
     "@zag-js/date-utils": "0.26.0",
     "@zag-js/dialog": "0.26.0",
     "@zag-js/editable": "0.26.0",
+    "@zag-js/file-upload": "0.26.0",
     "@zag-js/hover-card": "0.26.0",
     "@zag-js/menu": "0.26.0",
     "@zag-js/number-input": "0.26.0",

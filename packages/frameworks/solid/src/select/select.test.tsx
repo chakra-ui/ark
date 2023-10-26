@@ -3,22 +3,7 @@ import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
 import type { Optional } from '../types'
-import {
-  Select,
-  SelectClearTrigger,
-  SelectContent,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectTrigger,
-  SelectValueText,
-  type SelectProps,
-} from './'
-import { SelectControl } from './select-control'
+import { Select, type SelectProps } from './'
 
 interface Item {
   label: string
@@ -34,32 +19,32 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Select items={items} {...props}>
-      <SelectLabel>Framework</SelectLabel>
-      <SelectControl>
-        <SelectTrigger data-testid="trigger">
-          <SelectValueText placeholder="Select a Framework" />
-        </SelectTrigger>
-        <SelectClearTrigger>Clear</SelectClearTrigger>
-      </SelectControl>
+    <Select.Root items={items} {...props}>
+      <Select.Label>Framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger data-testid="trigger">
+          <Select.ValueText placeholder="Select a Framework" />
+        </Select.Trigger>
+        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      </Select.Control>
       <Portal>
-        <SelectPositioner>
-          <SelectContent>
-            <SelectItemGroup id="framework">
-              <SelectItemGroupLabel htmlFor="framework">Frameworks</SelectItemGroupLabel>
+        <Select.Positioner>
+          <Select.Content>
+            <Select.ItemGroup id="framework">
+              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
-                  <SelectItem item={item}>
-                    <SelectItemText>{item.label}</SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
+                  <Select.Item item={item}>
+                    <Select.ItemText>{item.label}</Select.ItemText>
+                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  </Select.Item>
                 )}
               </For>
-            </SelectItemGroup>
-          </SelectContent>
-        </SelectPositioner>
+            </Select.ItemGroup>
+          </Select.Content>
+        </Select.Positioner>
       </Portal>
-    </Select>
+    </Select.Root>
   )
 }
 describe('Select', () => {

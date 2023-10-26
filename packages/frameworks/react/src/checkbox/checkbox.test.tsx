@@ -4,15 +4,15 @@ import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Checkbox, CheckboxControl, CheckboxIndicator, CheckboxLabel, type CheckboxProps } from './'
+import { Checkbox, type CheckboxProps } from './'
 
 const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
-  <Checkbox {...props}>
-    <CheckboxLabel>Checkbox</CheckboxLabel>
-    <CheckboxControl data-testid="control">
-      <CheckboxIndicator />
-    </CheckboxControl>
-  </Checkbox>
+  <Checkbox.Root {...props}>
+    <Checkbox.Label>Checkbox</Checkbox.Label>
+    <Checkbox.Control data-testid="control">
+      <Checkbox.Indicator />
+    </Checkbox.Control>
+  </Checkbox.Root>
 )
 
 describe('Checkbox', () => {

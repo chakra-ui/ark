@@ -3,34 +3,22 @@ import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
-import {
-  Menu,
-  MenuContent,
-  MenuContextTrigger,
-  MenuItem,
-  MenuItemGroup,
-  MenuItemGroupLabel,
-  MenuOptionItem,
-  MenuPositioner,
-  MenuSeparator,
-  MenuTrigger,
-  MenuTriggerItem,
-} from './'
+import { Menu } from './'
 
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(
-      <Menu>
-        <MenuTrigger>Open menu</MenuTrigger>
-        <MenuContent>
-          <MenuItem id="search">Search</MenuItem>
-          <MenuItem id="undo">Undo</MenuItem>
-          <MenuItem id="delivery" disabled>
+      <Menu.Root>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Content>
+          <Menu.Item id="search">Search</Menu.Item>
+          <Menu.Item id="undo">Undo</Menu.Item>
+          <Menu.Item id="delivery" disabled>
             Delivery
-          </MenuItem>
-          <MenuItem id="unlink">Unlink</MenuItem>
-        </MenuContent>
-      </Menu>,
+          </Menu.Item>
+          <Menu.Item id="unlink">Unlink</Menu.Item>
+        </Menu.Content>
+      </Menu.Root>,
     )
 
     expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
@@ -44,17 +32,17 @@ describe('Menu', () => {
     const onValueChange = vi.fn()
 
     render(
-      <Menu onValueChange={onValueChange}>
-        <MenuTrigger>Open menu</MenuTrigger>
-        <MenuContent>
-          <MenuItem id="search">Search</MenuItem>
-          <MenuItem id="undo">Undo</MenuItem>
-          <MenuItem id="delivery" disabled>
+      <Menu.Root onValueChange={onValueChange}>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Content>
+          <Menu.Item id="search">Search</Menu.Item>
+          <Menu.Item id="undo">Undo</Menu.Item>
+          <Menu.Item id="delivery" disabled>
             Delivery
-          </MenuItem>
-          <MenuItem id="unlink">Unlink</MenuItem>
-        </MenuContent>
-      </Menu>,
+          </Menu.Item>
+          <Menu.Item id="unlink">Unlink</Menu.Item>
+        </Menu.Content>
+      </Menu.Root>,
     )
 
     await user.click(screen.getByText('Delivery'))
@@ -64,21 +52,21 @@ describe('Menu', () => {
 
   it('should apply correct role to MenuItemGroup', async () => {
     render(
-      <Menu>
-        <MenuTrigger>Open menu</MenuTrigger>
-        <MenuContent>
-          <MenuItemGroup id="group-1">
-            <MenuItemGroupLabel htmlFor="group-1">Group 1</MenuItemGroupLabel>
-            <MenuItem id="share">Share...</MenuItem>
-            <MenuItem id="move">Move...</MenuItem>
-          </MenuItemGroup>
-          <MenuItemGroup id="group-2">
-            <MenuItemGroupLabel htmlFor="group-2">Group 2</MenuItemGroupLabel>
-            <MenuItem id="rename">Rename...</MenuItem>
-            <MenuItem id="delete">Delete...</MenuItem>
-          </MenuItemGroup>
-        </MenuContent>
-      </Menu>,
+      <Menu.Root>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Content>
+          <Menu.ItemGroup id="group-1">
+            <Menu.ItemGroupLabel htmlFor="group-1">Group 1</Menu.ItemGroupLabel>
+            <Menu.Item id="share">Share...</Menu.Item>
+            <Menu.Item id="move">Move...</Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.ItemGroup id="group-2">
+            <Menu.ItemGroupLabel htmlFor="group-2">Group 2</Menu.ItemGroupLabel>
+            <Menu.Item id="rename">Rename...</Menu.Item>
+            <Menu.Item id="delete">Delete...</Menu.Item>
+          </Menu.ItemGroup>
+        </Menu.Content>
+      </Menu.Root>,
     )
 
     const button = screen.getByRole('button', { name: /open menu/i })
@@ -91,19 +79,19 @@ describe('Menu', () => {
 
   it('should expose internal state as render prop', async () => {
     render(
-      <Menu>
+      <Menu.Root>
         {({ isOpen }) => (
           <>
-            <MenuTrigger>{isOpen ? 'Close' : 'Open'} menu</MenuTrigger>
-            <MenuContent>
-              <MenuItem id="download">Download</MenuItem>
-              <MenuItem id="copy" onClick={() => alert('Kagebunshin')}>
+            <Menu.Trigger>{isOpen ? 'Close' : 'Open'} menu</Menu.Trigger>
+            <Menu.Content>
+              <Menu.Item id="download">Download</Menu.Item>
+              <Menu.Item id="copy" onClick={() => alert('Kagebunshin')}>
                 Create a Copy
-              </MenuItem>
-            </MenuContent>
+              </Menu.Item>
+            </Menu.Content>
           </>
         )}
-      </Menu>,
+      </Menu.Root>,
     )
 
     const button = screen.getByRole('button', { name: /open menu/i })
@@ -117,13 +105,13 @@ describe('Menu', () => {
 
   it('should accept a custom placement', async () => {
     render(
-      <Menu dir="rtl" positioning={{ placement: 'left-start' }}>
-        <MenuTrigger>Open menu</MenuTrigger>
-        <MenuContent>
-          <MenuItem id="1">Pick me</MenuItem>
-          <MenuItem id="2">No no, pick me</MenuItem>
-        </MenuContent>
-      </Menu>,
+      <Menu.Root dir="rtl" positioning={{ placement: 'left-start' }}>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Content>
+          <Menu.Item id="1">Pick me</Menu.Item>
+          <Menu.Item id="2">No no, pick me</Menu.Item>
+        </Menu.Content>
+      </Menu.Root>,
     )
 
     const button = screen.getByRole('button', { name: /open menu/i })
@@ -136,10 +124,10 @@ describe('Menu', () => {
   describe('ContextMenu', () => {
     it('should open on context menu', async () => {
       render(
-        <Menu>
-          <MenuContextTrigger>Open menu</MenuContextTrigger>
-          <MenuContent>menu content</MenuContent>
-        </Menu>,
+        <Menu.Root>
+          <Menu.ContextTrigger>Open menu</Menu.ContextTrigger>
+          <Menu.Content>menu content</Menu.Content>
+        </Menu.Root>,
       )
 
       const button = screen.getByRole('button', { name: /open menu/i })
@@ -151,29 +139,29 @@ describe('Menu', () => {
   describe('NestedMenu', () => {
     it('should open on nested menu', async () => {
       render(
-        <Menu>
-          <MenuTrigger>Open menu</MenuTrigger>
+        <Menu.Root>
+          <Menu.Trigger>Open menu</Menu.Trigger>
           <Portal>
-            <MenuPositioner>
-              <MenuContent>
+            <Menu.Positioner>
+              <Menu.Content>
                 <span>main menu content</span>
-                <MenuSeparator />
-                <Menu>
-                  <MenuTriggerItem>Share...</MenuTriggerItem>
+                <Menu.Separator />
+                <Menu.Root>
+                  <Menu.TriggerItem>Share...</Menu.TriggerItem>
                   <Portal>
-                    <MenuPositioner>
-                      <MenuContent>
+                    <Menu.Positioner>
+                      <Menu.Content>
                         <span>nested menu content</span>
-                        <MenuItem id="twitter">Twitter</MenuItem>
-                        <MenuItem id="message">Message</MenuItem>
-                      </MenuContent>
-                    </MenuPositioner>
+                        <Menu.Item id="twitter">Twitter</Menu.Item>
+                        <Menu.Item id="message">Message</Menu.Item>
+                      </Menu.Content>
+                    </Menu.Positioner>
                   </Portal>
-                </Menu>
-              </MenuContent>
-            </MenuPositioner>
+                </Menu.Root>
+              </Menu.Content>
+            </Menu.Positioner>
           </Portal>
-        </Menu>,
+        </Menu.Root>,
       )
 
       const button = screen.getByRole('button', { name: /open menu/i })
@@ -193,7 +181,7 @@ describe('Menu', () => {
         libraries: [],
       })
       return (
-        <Menu
+        <Menu.Root
           value={value}
           onValueChange={(data) => {
             setValue((prev) => ({
@@ -202,41 +190,41 @@ describe('Menu', () => {
             }))
           }}
         >
-          <MenuTrigger>Open menu</MenuTrigger>
+          <Menu.Trigger>Open menu</Menu.Trigger>
           <Portal>
-            <MenuPositioner>
-              <MenuContent>
-                <MenuItemGroup id="radio-group">
-                  <MenuItemGroupLabel htmlFor="radio-group">Radio Group</MenuItemGroupLabel>
-                  <MenuOptionItem name="framework" type="radio" value="react">
+            <Menu.Positioner>
+              <Menu.Content>
+                <Menu.ItemGroup id="radio-group">
+                  <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+                  <Menu.OptionItem name="framework" type="radio" value="react">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} React</>}
-                  </MenuOptionItem>
-                  <MenuOptionItem name="framework" type="radio" value="solid">
+                  </Menu.OptionItem>
+                  <Menu.OptionItem name="framework" type="radio" value="solid">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} Solid</>}
-                  </MenuOptionItem>
-                  <MenuOptionItem name="framework" type="radio" value="vue">
+                  </Menu.OptionItem>
+                  <Menu.OptionItem name="framework" type="radio" value="vue">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
-                  </MenuOptionItem>
-                </MenuItemGroup>
-                <MenuItemGroup id="checkbox-group">
-                  <MenuItemGroupLabel htmlFor="checkbox-group">Checkbox Group</MenuItemGroupLabel>
-                  <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
+                  </Menu.OptionItem>
+                </Menu.ItemGroup>
+                <Menu.ItemGroup id="checkbox-group">
+                  <Menu.ItemGroupLabel htmlFor="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
+                  <Menu.OptionItem name="libraries" type="checkbox" value="zag-js">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} zag-js</>}
-                  </MenuOptionItem>
-                  <MenuOptionItem name="libraries" type="checkbox" value="ark">
+                  </Menu.OptionItem>
+                  <Menu.OptionItem name="libraries" type="checkbox" value="ark">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} ark</>}
-                  </MenuOptionItem>
-                  <MenuOptionItem name="libraries" type="checkbox" value="panda">
+                  </Menu.OptionItem>
+                  <Menu.OptionItem name="libraries" type="checkbox" value="panda">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} panda</>}
-                  </MenuOptionItem>
-                  <MenuOptionItem name="libraries" type="checkbox" value="chakra">
+                  </Menu.OptionItem>
+                  <Menu.OptionItem name="libraries" type="checkbox" value="chakra">
                     {({ isChecked }) => <>{isChecked ? '✅' : ''} chakra</>}
-                  </MenuOptionItem>
-                </MenuItemGroup>
-              </MenuContent>
-            </MenuPositioner>
+                  </Menu.OptionItem>
+                </Menu.ItemGroup>
+              </Menu.Content>
+            </Menu.Positioner>
           </Portal>
-        </Menu>
+        </Menu.Root>
       )
     }
 
@@ -270,13 +258,13 @@ describe('Menu', () => {
 
   it('should control the open state', async () => {
     render(
-      <Menu isOpen>
-        <MenuPositioner>
-          <MenuContent>
+      <Menu.Root isOpen>
+        <Menu.Positioner>
+          <Menu.Content>
             <span>main menu content</span>
-          </MenuContent>
-        </MenuPositioner>
-      </Menu>,
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>,
     )
     const text = await screen.findByText('main menu content')
     expect(text).toBeVisible()

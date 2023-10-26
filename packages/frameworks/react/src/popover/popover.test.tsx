@@ -3,39 +3,26 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { getExports, getParts } from '../setup-test'
-import {
-  Popover,
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverArrowTip,
-  PopoverCloseTrigger,
-  PopoverContent,
-  PopoverDescription,
-  PopoverPositioner,
-  PopoverTitle,
-  PopoverTrigger,
-  type PopoverProps,
-} from './'
-import { PopoverIndicator } from './popover-indicator'
+import { Popover, type PopoverProps } from './'
 
 const ComponentUnderTest = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger>
+  <Popover.Root {...props}>
+    <Popover.Trigger>
       click me
-      <PopoverIndicator />
-    </PopoverTrigger>
-    <PopoverAnchor>Anchor</PopoverAnchor>
-    <PopoverPositioner>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
-      <PopoverContent>
-        <PopoverTitle>title</PopoverTitle>
-        <PopoverDescription>description</PopoverDescription>
-        <PopoverCloseTrigger>close</PopoverCloseTrigger>
-      </PopoverContent>
-    </PopoverPositioner>
-  </Popover>
+      <Popover.Indicator />
+    </Popover.Trigger>
+    <Popover.Anchor>Anchor</Popover.Anchor>
+    <Popover.Positioner>
+      <Popover.Arrow>
+        <Popover.ArrowTip />
+      </Popover.Arrow>
+      <Popover.Content>
+        <Popover.Title>title</Popover.Title>
+        <Popover.Description>description</Popover.Description>
+        <Popover.CloseTrigger>close</Popover.CloseTrigger>
+      </Popover.Content>
+    </Popover.Positioner>
+  </Popover.Root>
 )
 
 describe('Popover', () => {

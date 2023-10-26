@@ -2,39 +2,29 @@ import { editableAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports } from '../setup-test'
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableControl,
-  EditableEditTrigger,
-  EditableInput,
-  EditablePreview,
-  EditableSubmitTrigger,
-  type EditableProps,
-} from './'
+import { Editable, type EditableProps } from './'
 
 const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
-  <Editable placeholder="Placeholder" {...props}>
+  <Editable.Root placeholder="Placeholder" {...props}>
     {({ isEditing }) => (
       <>
-        <EditableArea>
-          <EditableInput />
-          <EditablePreview />
-        </EditableArea>
-        <EditableControl>
+        <Editable.Area>
+          <Editable.Input />
+          <Editable.Preview />
+        </Editable.Area>
+        <Editable.Control>
           {isEditing ? (
             <>
-              <EditableSubmitTrigger>Save</EditableSubmitTrigger>
-              <EditableCancelTrigger>Cancel</EditableCancelTrigger>
+              <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+              <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
             </>
           ) : (
-            <EditableEditTrigger>Edit</EditableEditTrigger>
+            <Editable.EditTrigger>Edit</Editable.EditTrigger>
           )}
-        </EditableControl>
+        </Editable.Control>
       </>
     )}
-  </Editable>
+  </Editable.Root>
 )
 
 describe('Editable', () => {

@@ -1,4 +1,6 @@
+import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
@@ -18,10 +20,11 @@ export const DatePickerView = (props: DatePickerViewProps) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])
   const api = useDatePickerContext()
   const getChildren = () => runIfFn(localProps.children, api)
+  const mergedProps = mergeProps(() => datePickerAnatomy.build().view.attrs, localProps)
 
   return (
     <DatePickerViewProvider value={viewProps}>
-      <ark.div {...localProps} hidden={api().view !== viewProps.view}>
+      <ark.div {...mergedProps} hidden={api().view !== viewProps.view}>
         {getChildren()}
       </ark.div>
     </DatePickerViewProvider>

@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
-import { Presence, type PresenceProps } from './presence'
+import { Presence, type PresenceProps } from './'
 
 const ComponentUnderTest = (props: Omit<PresenceProps, 'present' | 'children'>) => {
   const [present, setPresent] = useState(false)
   return (
     <div>
       <button onClick={() => setPresent(!present)}>Toggle</button>
-      <Presence present={present} {...props}>
+      <Presence.Root present={present} {...props}>
         <span data-testid="box">I am a red box</span>
-      </Presence>
+      </Presence.Root>
     </div>
   )
 }
