@@ -1,18 +1,17 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Button } from '~/components/ui/button'
-import { IconButton } from '~/components/ui/icon-button'
-import { Pagination, type PaginationProps } from '~/components/ui/pagination'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { Button, IconButton, Pagination } from '~/components/ui'
 
-export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) => {
+export const Demo = () => {
   return (
-    <Pagination {...props} count={90} pageSize={10} siblingCount={1} defaultPage={2}>
+    <Pagination.Root count={90} pageSize={10} siblingCount={1} defaultPage={2}>
       {({ pages }) => (
         <>
           <Pagination.PrevTrigger asChild>
             <IconButton variant="ghost" aria-label="Next Page">
-              <ChevronLeft />
+              <ChevronLeftIcon />
             </IconButton>
           </Pagination.PrevTrigger>
+
           {pages.map((page, index) =>
             page.type === 'page' ? (
               <Pagination.Item key={index} {...page} asChild>
@@ -26,11 +25,11 @@ export const PaginationDemo = (props: Omit<PaginationProps, 'page' | 'count'>) =
           )}
           <Pagination.NextTrigger asChild>
             <IconButton variant="ghost" aria-label="Next Page">
-              <ChevronRight />
+              <ChevronRightIcon />
             </IconButton>
           </Pagination.NextTrigger>
         </>
       )}
-    </Pagination>
+    </Pagination.Root>
   )
 }

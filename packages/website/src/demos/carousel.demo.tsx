@@ -1,8 +1,7 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Carousel, type CarouselProps } from '~/components/ui/carousel'
-import { IconButton } from '~/components/ui/icon-button'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { Carousel, IconButton, type CarouselProps } from '~/components/ui'
 
-export const CarouselDemo = (props: CarouselProps) => {
+export const Demo = (props: CarouselProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',
@@ -27,7 +26,7 @@ export const CarouselDemo = (props: CarouselProps) => {
         <Carousel.Control>
           <Carousel.PrevTrigger asChild>
             <IconButton size="sm" variant="link" aria-label="Previous Slide">
-              <ChevronLeft />
+              <ChevronLeftIcon />
             </IconButton>
           </Carousel.PrevTrigger>
           <Carousel.IndicatorGroup>
@@ -41,7 +40,7 @@ export const CarouselDemo = (props: CarouselProps) => {
           </Carousel.IndicatorGroup>
           <Carousel.NextTrigger asChild>
             <IconButton size="sm" variant="link" aria-label="Next Slide">
-              <ChevronRight />
+              <ChevronRightIcon />
             </IconButton>
           </Carousel.NextTrigger>
         </Carousel.Control>

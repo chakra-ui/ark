@@ -2,6 +2,7 @@ import { Portal } from '@ark-ui/react'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
+import { Heading } from '~/components/ui'
 import { Button } from '~/components/ui/button'
 import { Code } from '~/components/ui/code'
 import { Icon } from '~/components/ui/icon'
@@ -20,7 +21,6 @@ import {
   TableHeader,
   TableRow,
 } from '~/components/ui/table'
-import { Heading } from '~/components/ui/typography'
 
 type Props = {
   types: CollectionEntry<'types'>

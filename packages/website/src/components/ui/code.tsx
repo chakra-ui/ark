@@ -1,7 +1,6 @@
-import { ark } from '@ark-ui/react/src'
-import type { ComponentPropsWithoutRef } from 'react'
+import { ark, type HTMLArkProps } from '@ark-ui/react'
 import { styled } from 'styled-system/jsx'
 import { code, type CodeVariantProps } from 'styled-system/recipes'
 
-export type CodeProps = CodeVariantProps & ComponentPropsWithoutRef<typeof ark.code>
-export const Code = styled(ark.div, code)
+export type CodeProps = CodeVariantProps & HTMLArkProps<'code'>
+export const Code = styled(ark.code, code)
