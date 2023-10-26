@@ -21,49 +21,25 @@ we name its parts.
 
 <Anatomy id="pin-input" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  PinInput,
-  PinInputControl,
-  PinInputInput,
-  PinInputLabel,
-} from '@ark-ui/react'
-```
+The PinInput component consists of the `PinInput.Control` `PinInput.Input` and
+`PinInput.Label` components. Combine them as desired to fit your design system.
 
-## Usage
-
-The PinInput component consists of the `PinInputControl` `PinInputInput` and
-`PinInputLabel` components. Combine them as desired to fit your design system.
-
-```tsx
-<PinInput>
-  <PinInputLabel>Label</PinInputLabel>
-  <PinInputControl>
-    <PinInputInput index={0} />
-    <PinInputInput index={1} />
-    <PinInputInput index={2} />
-  </PinInputControl>
-</PinInput>
-```
+<Story id="Basic" />
 
 ### Setting a default value
 
 To set the initial value of the pin input, set the `defaultValue` prop.
 
-```tsx
-<PinInput defaultValue="123">{/*...*/}</PinInput>
-```
+<Story id="DefaultValue" />
 
 ### Changing the placeholder
 
 To customize the default pin input placeholder `○` for each input, pass the
 placeholder prop and set it to your desired value.
 
-```tsx
-<PinInput placeholder="*">{/*...*/}</PinInput>
-```
+<Story id="Customized" />
 
 ### Blur on complete
 
@@ -71,9 +47,7 @@ By default, the last input maintains focus when filled, and we invoke the
 `onComplete` callback. To blur the last input when the user completes the input,
 set the prop `blurOnComplete` to `true`.
 
-```tsx
-<PinInput blurOnComplete>{/*...*/}</PinInput>
-```
+<Story id="Blurred" />
 
 ### Using OTP mode
 
@@ -81,9 +55,7 @@ To trigger smartphone OTP auto-suggestion, it is recommended to set the
 `autocomplete` attribute to "one-time-code". The pin input component provides
 support for this automatically when you set the `otp` prop to true.
 
-```tsx
-<PinInput otp>{/*...*/}</PinInput>
-```
+<Story id="OTPMode" />
 
 ### Securing the text input
 
@@ -91,9 +63,7 @@ When collecting private or sensitive information using the pin input, you might
 need to mask the value entered, similar to `<input type="password"/>`. Pass the
 `mask` prop to `true`.
 
-```tsx
-<PinInput mask>{/*...*/}</PinInput>
-```
+<Story id="WithMask" />
 
 ### Listening for changes
 
