@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
 
+### Changed
+
+- Improved accessibility of all disclosure components when lazy mounting is enabled.
+
 ## [1.0.0-beta.2] - 2023-10-25
 
 ### Added

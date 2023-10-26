@@ -7,7 +7,8 @@ import type { Assign } from '../types'
 import { TabPresence, type TabPresenceProps } from './tab-presence'
 import { useTabsContext } from './tabs-context'
 
-export type TabContentProps = Assign<HTMLArkProps<'div'>, ContentProps> & TabPresenceProps
+export type TabContentProps = Assign<HTMLArkProps<'div'>, ContentProps> &
+  Omit<TabPresenceProps, 'fallback'>
 
 export const TabContent = (props: TabContentProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

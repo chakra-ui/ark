@@ -24,7 +24,6 @@ export const Basic = () => (
         <Popover.Content>
           <Popover.Title>Title</Popover.Title>
           <Popover.Description>Description</Popover.Description>
-          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
         </Popover.Content>
       </Popover.Positioner>
     </Portal>
