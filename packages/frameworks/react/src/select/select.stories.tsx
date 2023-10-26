@@ -80,18 +80,15 @@ export const Advanced = () => {
   )
 }
 
-export const Controlled = () => {
-  const [_, setSelectedItems] = useState<Item[]>([])
-
+export const Multiple = () => {
   const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
-
   return (
-    <Select.Root items={items} onValueChange={(e) => setSelectedItems(e.items)}>
+    <Select.Root items={items} multiple>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -118,15 +115,18 @@ export const Controlled = () => {
   )
 }
 
-export const Multiple = () => {
+export const Controlled = () => {
+  const [_, setSelectedItems] = useState<Item[]>([])
+
   const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
+
   return (
-    <Select.Root items={items} multiple>
+    <Select.Root items={items} onValueChange={(e) => setSelectedItems(e.items)}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
