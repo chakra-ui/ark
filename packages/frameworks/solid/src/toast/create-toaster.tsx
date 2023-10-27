@@ -6,7 +6,6 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 
-// TODO simplify types after next zag.js upgrade
 type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
