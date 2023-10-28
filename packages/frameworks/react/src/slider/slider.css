@@ -10,6 +10,11 @@
   flex: 1;
 }
 
+[data-scope='slider'][data-part='range'] {
+  background: orange;
+  height: inherit;
+}
+
 [data-scope='slider'][data-part='control'] {
   position: relative;
   align-items: center;
