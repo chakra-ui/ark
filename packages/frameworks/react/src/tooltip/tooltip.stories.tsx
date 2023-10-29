@@ -59,7 +59,7 @@ export const RenderFn = () => (
 
 export const Arrow = () => (
   <Tooltip.Root>
-    <Tooltip.Trigger>Hove Me</Tooltip.Trigger>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>
         <Tooltip.Content>
