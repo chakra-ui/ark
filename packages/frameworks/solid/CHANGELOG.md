@@ -8,6 +8,10 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added `FileUpload` component
+
+### Added
+
 - Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
 - Added `ValueText` to the `ColorPicker` component
 
