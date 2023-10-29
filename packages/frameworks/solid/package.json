@@ -60,6 +60,7 @@
     "@zag-js/date-picker": "0.26.0",
     "@zag-js/dialog": "0.26.0",
     "@zag-js/editable": "0.26.0",
+    "@zag-js/file-upload": "0.26.0",
     "@zag-js/hover-card": "0.26.0",
     "@zag-js/menu": "0.26.0",
     "@zag-js/number-input": "0.26.0",

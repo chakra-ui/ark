@@ -400,6 +400,9 @@ importers:
       '@zag-js/editable':
         specifier: 0.26.0
         version: 0.26.0
+      '@zag-js/file-upload':
+        specifier: 0.26.0
+        version: 0.26.0
       '@zag-js/hover-card':
         specifier: 0.26.0
         version: 0.26.0
