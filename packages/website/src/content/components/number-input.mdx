@@ -1,9 +1,7 @@
 ---
 id: number-input
 title: Number Input
-description:
-  The number input provides controls for editing, incrementing or decrementing
-  numeric values using the keyboard or pointer.
+description: A field that allows user input of numeric values.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -66,10 +64,15 @@ range.
 ### Adjusting the precision of the value
 
 In some cases, you might need the value to be rounded to specific decimal
-points. Pass the precision prop and set it to the number of decimal points.
+points. Pass the `formatOptions` prop and provide `maximumFractionDigits` or
+`minimumFractionDigits`.
 
 ```tsx
-<NumberInput precision={3}>{/*...*/}</NumberInput>
+<NumberInput
+  formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }}
+>
+  {/*...*/}
+</NumberInput>
 ```
 
 ### Scrubbing the input value

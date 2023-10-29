@@ -2,7 +2,7 @@
 import { css } from 'styled-system/css'
 import { Box, Container, Flex, Stack } from 'styled-system/jsx'
 import { match } from 'ts-pattern'
-import { Heading, Typography } from '~/components/ui/typography'
+import { Heading, Text } from '~/components/ui'
 import React from './icons/react.astro'
 import Solid from './icons/solid.astro'
 import Vue from './icons/vue.astro'
@@ -71,9 +71,9 @@ import Js from './icons/js.astro'
 </Box>
 <Container pb={{ base: '16', md: '24' }}>
   <Stack align="center" gap={{ base: '8', md: '10' }}>
-    <Typography color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="3xl">
+    <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="3xl">
       Utilizing state machines, Ark UI substantially cuts down on errors while ensuring predictable
       behavior in every component. Develop with confidence.
-    </Typography>
+    </Text>
   </Stack>
 </Container>

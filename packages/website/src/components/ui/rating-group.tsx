@@ -11,7 +11,7 @@ export type RatingGroupProps = Ark.RatingGroupProps & RatingGroupVariantProps
 const RatingGroupRoot = withProvider(styled(Ark.RatingGroup.Root), 'root')
 export const RatingGroupControl = withContext(styled(Ark.RatingGroup.Control), 'control')
 export const RatingGroupLabel = withContext(styled(Ark.RatingGroup.Label), 'label')
-export const RatingGroupItem = withContext(styled(Ark.RatingGroup.Item), 'rating')
+export const RatingGroupItem = withContext(styled(Ark.RatingGroup.Item), 'item')
 
 export const RatingGroup = Object.assign(RatingGroupRoot, {
   Root: RatingGroupRoot,
