@@ -53,3 +53,11 @@
 [data-scope='slider'][data-part='marker'][data-state='under-value'] {
   color: blue;
 }
+
+[data-scope='slider'][data-part='marker'][data-state='at-value'] {
+  color: green;
+}
+
+[data-scope='slider'][data-part='marker'][data-state='over-value'] {
+  color: red;
+}
