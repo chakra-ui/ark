@@ -117,6 +117,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemPreview": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ItemSizeText": {
     "asChild": {
       "type": "boolean",
