@@ -22,20 +22,20 @@ we name its parts.
 
 <Story id="Basic" />
 
-### Setting a default value
+## Setting a default value
 
 To set the initial value of the pin input, set the `defaultValue` prop.
 
 <Story id="InitialValue" />
 
-### Changing the placeholder
+## Changing the placeholder
 
 To customize the default pin input placeholder `○` for each input, pass the
 placeholder prop and set it to your desired value.
 
 <Story id="Customized" />
 
-### Blur on complete
+## Blur on complete
 
 By default, the last input maintains focus when filled, and we invoke the
 `onValueComplete` callback. To blur the last input when the user completes the
@@ -43,7 +43,7 @@ input, set the prop `blurOnComplete` to `true`.
 
 <Story id="Blurred" />
 
-### Using OTP mode
+## Using OTP mode
 
 To trigger smartphone OTP auto-suggestion, it is recommended to set the
 `autocomplete` attribute to "one-time-code". The pin input component provides
@@ -51,7 +51,7 @@ support for this automatically when you set the `otp` prop to true.
 
 <Story id="OTPMode" />
 
-### Securing the text input
+## Securing the text input
 
 When collecting private or sensitive information using the pin input, you might
 need to mask the value entered, similar to `<input type="password"/>`. Pass the
@@ -59,7 +59,7 @@ need to mask the value entered, similar to `<input type="password"/>`. Pass the
 
 <Story id="WithMask" />
 
-### Listening for changes
+## Listening for changes
 
 The pin input component invokes several callback functions when the user enters:
 
