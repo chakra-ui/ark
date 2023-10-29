@@ -26,6 +26,10 @@ const extractScriptSetup = (fileContent: string): string | null => {
     return match[1]
       .trim()
       .replace(/import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g, "import {$1} from '@ark-ui/vue'")
+      .replace(
+        /import\s+\{\sPortal\s\}\sfrom\s'..\/portal'/g,
+        "import { Portal } from '@ark-ui/vue'",
+      )
       .replace(/^import\s+'.+\.css'\s*$/gm, '')
   }
   return null
@@ -77,6 +81,10 @@ const main = async () => {
           .replace(
             /import\s+\{([^\}]+)\}\s+from\s+'\.\/'/g,
             `import {$1} from '@ark-ui/${framework}'`,
+          )
+          .replace(
+            /import\s+\{\sPortal\s\}\sfrom\s'..\/portal'/g,
+            `import { Portal } from '@ark-ui/${framework}'`,
           )
           .replace(/@zag-js\/react/g, '@ark-ui/react')
 
