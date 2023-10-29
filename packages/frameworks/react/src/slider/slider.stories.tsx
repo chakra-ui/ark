@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Slider } from '.'
+import { Slider } from './'
 import './slider.css'
 
 type SliderType = typeof Slider
