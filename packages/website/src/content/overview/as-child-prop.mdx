@@ -14,26 +14,26 @@ the `asChild` prop.
 
 ## Usage
 
-Consider a component like `MenuTrigger`, which also supports the `asChild` prop.
+Consider a component like `Menu.Trigger`, which also supports the `asChild` prop.
 
 ### Default Behavior
 
-By default, the original `MenuTrigger` component will be rendered with its
+By default, the original `Menu.Trigger` component will be rendered with its
 default appearance and behavior:
 
 ```jsx
-<MenuTrigger>Open Menu</MenuTrigger>
+<Menu.Trigger>Open Menu</Menu.Trigger>
 ```
 
 ### Customizing with asChild
 
-To replace the default `MenuTrigger` with a custom child element (e.g., a
+To replace the default `Menu.Trigger` with a custom child element (e.g., a
 Button), set the `asChild` prop to true and pass the custom child element:
 
 ```jsx
-<MenuTrigger asChild>
+<Menu.Trigger asChild>
   <Button>Open Menu</Button>
-</MenuTrigger>
+</Menu.Trigger>
 ```
 
 When using the `asChild` prop, the library ensures that the custom child element
@@ -49,6 +49,6 @@ If you pass multiple children, the component may not render correctly.
 ## Summary
 
 The `asChild` prop provides a convenient way to customize the appearance and
-behavior of components in Ark UI, such as MenuTrigger. Use the `asChild` prop to
+behavior of components in Ark UI, such as `Menu.Trigger`. Use the `asChild` prop to
 replace the original component with a custom child element, and the library will
 take care of merging and forwarding props and refs as needed.

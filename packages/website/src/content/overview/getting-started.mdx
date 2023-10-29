@@ -27,22 +27,13 @@ demonstrate how to create a `Slider` component using Ark UI.
 
 ### Step 1: Import the Components
 
-Every component in Ark UI is modular, meaning each part of a component can be
-imported and used independently. The preferred and most efficient way to import
-components is directly from the top level, which leverages modern bundlers'
-tree-shaking capabilities.
+The preferred and most efficient way to import components is directly from the
+top level, which leverages modern bundlers' tree-shaking capabilities.
 
 Here's how you can import components directly from the top level:
 
 ```jsx
-import {
-  Slider,
-  SliderLabel,
-  SliderControl,
-  SliderThumb,
-  SliderTrack,
-  SliderRange,
-} from '@ark-ui/react'
+import { Slider } from '@ark-ui/react'
 ```
 
 This method is recommended for most applications as tree-shaking will
@@ -54,30 +45,23 @@ times or if you're using an older bundler that doesn't support tree-shaking, you
 can opt for path-based imports:
 
 ```jsx
-import {
-  Slider,
-  SliderLabel,
-  SliderControl,
-  SliderThumb,
-  SliderTrack,
-  SliderRange,
-} from '@ark-ui/react/slider'
+import { Slider } from '@ark-ui/react/slider'
 ```
 
 Regardless of the import method, once the components are imported, you can
-utilize them in your application:
+utilize them in your application via dot notation:
 
 ```jsx
 export const MySlider = () => (
-  <Slider>
-    <SliderLabel>Label</SliderLabel>
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb />
-    </SliderControl>
-  </Slider>
+  <Slider.Root>
+    <Slider.Label>Label</Slider.Label>
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb />
+    </Slider.Control>
+  </Slider.Root>
 )
 ```
 
@@ -102,6 +86,11 @@ Here's an example showing how to add styles to the `Slider` component:
   background: silver;
   height: 8px;
   flex: 1;
+}
+
+[data-scope='slider'][data-part='range'] {
+  background: orange;
+  height: inherit;
 }
 
 [data-scope='slider'][data-part='control'] {
