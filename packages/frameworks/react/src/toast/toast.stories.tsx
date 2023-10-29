@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import { Toast, createToaster } from '.'
+import { Toast, createToaster } from './'
 import './toast.css'
 
 const meta: Meta = {

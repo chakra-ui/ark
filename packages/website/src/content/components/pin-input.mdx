@@ -20,9 +20,6 @@ we name its parts.
 
 ## Getting Started
 
-The PinInput component consists of the `PinInput.Control` `PinInput.Input` and
-`PinInput.Label` components. Combine them as desired to fit your design system.
-
 <Story id="Basic" />
 
 ### Setting a default value
@@ -41,8 +38,8 @@ placeholder prop and set it to your desired value.
 ### Blur on complete
 
 By default, the last input maintains focus when filled, and we invoke the
-`onComplete` callback. To blur the last input when the user completes the input,
-set the prop `blurOnComplete` to `true`.
+`onValueComplete` callback. To blur the last input when the user completes the
+input, set the prop `blurOnComplete` to `true`.
 
 <Story id="Blurred" />
 
@@ -66,8 +63,8 @@ need to mask the value entered, similar to `<input type="password"/>`. Pass the
 
 The pin input component invokes several callback functions when the user enters:
 
-- `onChange` — Callback invoked when the value is changed.
-- `onComplete` — Callback invoked when all fields have been completed (by typing
-  or pasting).
-- `onInvalid` — Callback invoked when an invalid value is entered into the
+- `onValueChange` — Callback invoked when the value is changed.
+- `onValueComplete` — Callback invoked when all fields have been completed (by
+  typing or pasting).
+- `onValueInvalid` — Callback invoked when an invalid value is entered into the
   input. An invalid value is any value that doesn't match the specified "type".

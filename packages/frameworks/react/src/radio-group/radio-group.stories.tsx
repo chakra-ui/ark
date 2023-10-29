@@ -59,9 +59,7 @@ export const InitialValue = () => {
 export const OnChange = () => {
   const frameworks = ['React', 'Solid', 'Vue']
   return (
-    <RadioGroup.Root
-      onChange={(details) => console.log((details.target as HTMLInputElement).value)}
-    >
+    <RadioGroup.Root onValueChange={(details) => console.log(details.value)}>
       <RadioGroup.Label>Framework</RadioGroup.Label>
       {frameworks.map((framework) => (
         <RadioGroup.Item key={framework} value={framework}>

@@ -73,7 +73,7 @@ export const Controlled = () => {
     <RatingGroup.Root
       count={5}
       value={value}
-      onChange={(details) => setValue(parseFloat((details.target as HTMLInputElement).value))}
+      onValueChange={(details) => setValue(details.value)}
       allowHalf
     >
       <RatingGroup.Label>Label</RatingGroup.Label>
