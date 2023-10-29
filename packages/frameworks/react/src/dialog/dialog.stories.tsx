@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Portal } from '../portal'
 import { Dialog } from './'
-import './Dialog.css'
+import './dialog.css'
 
 type DialogType = typeof Dialog
 
