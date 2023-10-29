@@ -1,7 +1,7 @@
 ---
 import { ChevronRight } from 'lucide-react'
 import { Box, HStack } from 'styled-system/jsx'
-import { Typography } from '~/components/ui/typography'
+import { Text } from '~/components/ui'
 
 const crumbs = Astro.url.pathname
   .split('/')
@@ -17,7 +17,7 @@ const props = Astro.props
   {
     crumbs?.map((crumb, index, arr) => (
       <Fragment key={index}>
-        <Typography
+        <Text
           as="span"
           textStyle="sm"
           color="fg.subtle"
@@ -26,7 +26,7 @@ const props = Astro.props
           _last={{ color: 'fg.emphasized' }}
         >
           {crumb}
-        </Typography>
+        </Text>
         {arr.length - 1 !== index && (
           <Box color="fg.subtle">
             <ChevronRight size="16" />

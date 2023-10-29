@@ -12,15 +12,14 @@ const TagsInputRoot = withProvider(styled(Ark.TagsInput.Root), 'root')
 export const TagsInputClearTrigger = withContext(styled(Ark.TagsInput.ClearTrigger), 'clearTrigger')
 export const TagsInputControl = withContext(styled(Ark.TagsInput.Control), 'control')
 export const TagsInputInput = withContext(styled(Ark.TagsInput.Input), 'input')
-export const TagsInputLabel = withContext(styled(Ark.TagsInput.Label), 'label')
-export const TagsInputItem = withContext(styled(Ark.TagsInput.Item), 'tag')
-export const TagsInputItemInput = withContext(styled(Ark.TagsInput.ItemInput), 'tagInput')
-export const TagsInputItemText = withContext(styled(Ark.TagsInput.ItemText))
-
+export const TagsInputItem = withContext(styled(Ark.TagsInput.Item), 'item')
 export const TagsInputItemDeleteTrigger = withContext(
   styled(Ark.TagsInput.ItemDeleteTrigger),
-  'tagDeleteTrigger',
+  'itemDeleteTrigger',
 )
+export const TagsInputItemInput = withContext(styled(Ark.TagsInput.ItemInput), 'itemInput')
+export const TagsInputItemText = withContext(styled(Ark.TagsInput.ItemText), 'itemText')
+export const TagsInputLabel = withContext(styled(Ark.TagsInput.Label), 'label')
 
 export const TagsInput = Object.assign(TagsInputRoot, {
   Root: TagsInputRoot,

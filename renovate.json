@@ -10,5 +10,6 @@
       "groupName": "@zag-js",
       "matchPackagePatterns": ["@zag-js/*"]
     }
-  ]
+  ],
+  "ignoreDeps": ["vitest"]
 }

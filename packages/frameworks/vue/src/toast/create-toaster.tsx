@@ -15,15 +15,13 @@ import { ark } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 
-// TODO simplify types after next zag.js upgrade
-type GroupContext = Parameters<(typeof toast)['group']['machine']>[0]
+type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
   render: (api: toast.Api<PropTypes>) => VNode
 }
 
-// TODO improve typings
 export type CreateToasterReturn = [any, ComputedRef<toast.GroupApi<PropTypes>>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {

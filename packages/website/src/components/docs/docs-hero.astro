@@ -11,7 +11,7 @@ interface Props {
 const { title, description } = Astro.props
 ---
 
-<Box bg={{ base: 'gray.50', _dark: 'black' }} borderBottomWidth="1px" position="relative">
+<Box borderBottomWidth="1px" bg={{ base: 'gray.2', _dark: 'black.a2' }}>
   <Container maxW="66rem" py={{ base: '16', md: '24' }}>
     <Prose css={{ '&> :first-child': { mt: '0' } }}>
       <Heading as="h1" fontWeight="bold">{title}</Heading>

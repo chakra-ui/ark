@@ -1,7 +1,7 @@
 ---
 import { Braces, Keyboard, Orbit, Paintbrush } from 'lucide-react'
 import { Box, Container, Flex, Grid, Stack } from 'styled-system/jsx'
-import { Heading, Typography } from '~/components/ui/typography'
+import { Heading, Text } from '~/components/ui'
 import { CodeExamples } from './code-examples'
 import { react, solid, vue } from './examples'
 import { Code } from 'astro:components'
@@ -61,7 +61,7 @@ const features = [
                 <Heading textStyle="lg" fontWeight="semibold">
                   {feature.title}
                 </Heading>
-                <Typography color="fg.muted">{feature.description}</Typography>
+                <Text color="fg.muted">{feature.description}</Text>
               </Stack>
             </Stack>
           ))
