@@ -14,6 +14,8 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - Improved accessibility of all disclosure components when lazy mounting is enabled.
+- Renamed `htmlFor` prop to `for` in `MenuItemGroupLabel`,
+  `ComboboxItemGroupLabel` and `SelectItemGroupLabel` component
 
 ### Fixed
 

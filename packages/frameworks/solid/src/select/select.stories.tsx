@@ -25,7 +25,7 @@ export const Basic = () => {
         <Select.Positioner>
           <Select.Content>
             <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+              <Select.ItemGroupLabel for="framework">Frameworks</Select.ItemGroupLabel>
               <Index each={items}>
                 {(item) => (
                   <Select.Item item={item()}>
