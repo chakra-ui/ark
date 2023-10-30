@@ -17,72 +17,25 @@ how we name its parts.
 
 <Anatomy id="radio-group" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  RadioGroup,
-  Radio,
-  RadioControl,
-  RadioGroupLabel,
-  RadioLabel,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The RadioGroup component consists of the `RadioControl`, `Radio`,
-`RadioGroupLabel` and `RadioLabel` components. Combine them as desired to fit
-your design system.
-
-```tsx
-<RadioGroup>
-  <RadioGroupLabel>Fruits</RadioGroupLabel>
-  {[
-    { id: 'apple', label: 'Apples' },
-    { id: 'orange', label: 'Oranges' },
-    { id: 'mango', label: 'Mangoes' },
-    { id: 'grape', label: 'Grapes' },
-  ].map((option, id) => (
-    <Radio key={id} value={option.id}>
-      <RadioLabel>{option.label}</RadioLabel>
-      <RadioControl />
-    </Radio>
-  ))}
-</RadioGroup>
-```
-
-### Disabling the radio group
+## Disabling the radio group
 
 To make a radio group disabled, set the `disabled` prop to `true`.
 
-```tsx
-<RadioGroup disabled>{/*...*/}</RadioGroup>
-```
+<Story id="Disabled" />
 
-### Making the radio group readonly
-
-To make a radio group readonly, set the `readOnly` prop to `true`.
-
-```tsx
-<RadioGroup readOnly>{/*...*/}</RadioGroup>
-```
-
-### Setting the initial value
+## Setting the initial value
 
 To set the radio group's initial value, set the `defaultValue` prop to the value
 of the radio item to be selected by default.
 
-```tsx
-<RadioGroup defaultValue="apple">{/*...*/}</RadioGroup>
-```
+<Story id="InitialValue" />
 
-### Listening for changes
+## Listening for changes
 
-When the radio group value changes, the `onChange` callback is invoked.
+When the radio group value changes, the `onValueChange` callback is invoked.
 
-```tsx
-<RadioGroup onChange={(details) => console.log(details.value)}>
-  {/*...*/}
-</RadioGroup>
-```
+<Story id="OnChange" />

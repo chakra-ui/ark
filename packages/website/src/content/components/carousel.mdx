@@ -8,7 +8,7 @@ import { Story, ComponentPreview } from '~/components/docs'
 
 <ComponentPreview />
 
-## Basic Usage
+## Getting Started
 
 Here's an example of how to use the Carousel component with a set of images:
 
@@ -17,43 +17,14 @@ Here's an example of how to use the Carousel component with a set of images:
 ## Controlled Carousel
 
 To create a controlled Carousel component, you can manage the state of the
-carousel using the `index` prop and update it when the `onSlideChange` event
+carousel using the `index` prop and update it when the `onIndexChange` event
 handler is called:
 
-```tsx
-const ControlledCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const handleSlideChange = (details) => {
-    setCurrentIndex(details.index)
-  }
-
-  return (
-    <Carousel index={currentIndex} onSlideChange={handleSlideChange}>
-      {/* ... */}
-    </Carousel>
-  )
-}
-```
+<Story id="Controlled" />
 
 ## Customizing the Carousel
 
-You can customize the Carousel component by setting various props such as
-`align`, `loop`, `slidesPerView`, and `spacing`. Here's an example of a
-customized Carousel:
+You can customize the Carousel component by setting various props. Here's an
+example of a customized Carousel:
 
-```tsx
-const CustomCarousel = () => {
-  return (
-    <Carousel
-      align="center"
-      loop={true}
-      slidesPerView={2}
-      spacing="16px"
-      orientation="horizontal"
-    >
-      {/* ... */}
-    </Carousel>
-  )
-}
-```
+<Story id="Customized" />

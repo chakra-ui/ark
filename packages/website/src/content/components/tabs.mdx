@@ -19,20 +19,6 @@ name its parts.
 
 ## Usage
 
-To get started, import the necessary components from the package:
-
-```tsx
-import {
-  Tabs,
-  TabList,
-  TabTrigger,
-  TabContent,
-  TabIndicator,
-} from '@ark-ui/react'
-```
-
-Here are some examples of how to use the Tabs component:
-
 <Story id="Basic" />
 
 ## Initial Tab
@@ -43,7 +29,8 @@ To set a default tab on initial render, use the `defaultValue` prop:
 
 ## Tab Indicator
 
-To provide a visual cue for the selected tab, use the `TabIndicator` component:
+To provide a visual cue for the selected tab, use the `Tabs.Indicator`
+component:
 
 <Story id="Indicator" />
 
@@ -52,7 +39,7 @@ To provide a visual cue for the selected tab, use the `TabIndicator` component:
 Lazy mounting is a feature that allows the content of a tab to be rendered only
 when the tab is first activated. This is useful for performance optimization,
 especially when tab content is large or complex. To enable lazy mounting, use
-the `lazyMount` prop on the `TabContent` component.
+the `lazyMount` prop on the `Tabs.Content` component.
 
 In addition, the `unmountOnExit` prop can be used in conjunction with
 `lazyMount` to unmount the tab content when the tab is deactivated, freeing up
@@ -62,14 +49,15 @@ resources. The next time the tab is activated, its content will be re-rendered.
 
 ## Disabled Tab
 
-To disable a tab, simply pass the `disabled` prop to the `TabTrigger` component:
+To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger`
+component:
 
 <Story id="DisabledTab" />
 
 ## Controlled Tabs
 
 To create a controlled Tabs component, manage the current selected tab using the
-`value` prop and update it when the `onChange` event handler is called:
+`value` prop and update it when the `onValueChange` event handler is called:
 
 <Story id="Controlled" />
 
