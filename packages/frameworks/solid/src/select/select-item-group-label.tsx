@@ -8,7 +8,7 @@ import { useSelectContext } from './select-context'
 export type SelectItemGroupLabelProps = Assign<HTMLArkProps<'div'>, ItemGroupLabelProps>
 
 export const SelectItemGroupLabel = (props: SelectItemGroupLabelProps) => {
-  const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['htmlFor'])
+  const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['for'])
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().getItemGroupLabelProps(labelProps), localProps)
 

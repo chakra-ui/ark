@@ -4,14 +4,14 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 
-type MenuItemGroupLabelParams = { htmlFor: string }
+type MenuItemGroupLabelParams = { for: string }
 export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, MenuItemGroupLabelParams>
 
 export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
 
   const [itemGroupLabelProps, localProps] = createSplitProps<MenuItemGroupLabelParams>()(props, [
-    'htmlFor',
+    'for',
   ])
 
   const labelProps = mergeProps(

@@ -8,7 +8,7 @@ import { useComboboxContext } from './combobox-context'
 export type ComboboxItemGroupLabelProps = Assign<HTMLArkProps<'div'>, ItemGroupLabelProps>
 
 export const ComboboxItemGroupLabel = (props: ComboboxItemGroupLabelProps) => {
-  const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['htmlFor'])
+  const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['for'])
   const api = useComboboxContext()
   const mergedProps = mergeProps(() => api().getItemGroupLabelProps(labelProps), localProps)
 
