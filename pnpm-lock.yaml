@@ -809,8 +809,8 @@ importers:
         specifier: 18.2.14
         version: 18.2.14
       '@zag-js/anatomy-icons':
-        specifier: 0.26.0
-        version: 0.26.0(react@18.2.0)(typescript@5.2.2)
+        specifier: 0.27.0
+        version: 0.27.0(react@18.2.0)(typescript@5.2.2)
       astro:
         specifier: 3.4.0
         version: 3.4.0(@types/node@18.18.5)(typescript@5.2.2)
@@ -7728,8 +7728,8 @@ packages:
       '@zag-js/utils': 0.26.0
     dev: false
 
-  /@zag-js/anatomy-icons@0.26.0(react@18.2.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-I1MdZZDYkcLhx2sna9jsiyd7YmVJf77DSn44UuRiZTdB0MPQGYok5dYCAXScw9S3B8yIyvbsRZJ8SW4Z7VQQ9A==}
+  /@zag-js/anatomy-icons@0.27.0(react@18.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-JBTKPTLtvXmwAQpz8C/RgZVj2V8i7Z0miKw1WJr59CoTIRIQkeDg3oGxuXOBBF6g1ggEbRHd3x8J5O4rzWL+DA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
