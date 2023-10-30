@@ -17,91 +17,41 @@ we name its parts.
 
 <Anatomy id="editable" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableControl,
-  EditableEditTrigger,
-  EditableInput,
-  EditableLabel,
-  EditablePreview,
-  EditableSubmitTrigger,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The Editable component consists of the `EditableArea`, `EditableCancelTrigger`,
-`EditableControl`, `EditableEditTrigger`, `EditableInput`, `EditableLabel`,
-`EditablePreview` and `EditableSubmitTrigger` components.
-
-```tsx
-<Editable placeholder="Placeholder">
-  <EditableLabel>Label</EditableLabel>
-  <EditableArea>
-    <EditableInput />
-    <EditablePreview />
-  </EditableArea>
-</Editable>
-```
-
-### Using custom controls
+## Using custom controls
 
 In some cases, you might need to use custom controls to toggle the edit and read
 mode. We use the render prop pattern to provide access to the internal state of
 the component.
 
-```tsx
-<Editable placeholder="Placeholder">
-  {(state) => (
-    <>
-      <EditableLabel>Editable Label</EditableLabel>
-      <EditableArea>
-        <EditableInput />
-        <EditablePreview />
-      </EditableArea>
-      <EditableControl>
-        {state.isEditing ? (
-          <>
-            <EditableSubmitTrigger>Save</EditableSubmitTrigger>
-            <EditableCancelTrigger>Cancel</EditableCancelTrigger>
-          </>
-        ) : (
-          <EditableEditTrigger>Edit</EditableEditTrigger>
-        )}
-      </EditableControl>
-    </>
-  )}
-</Editable>
-```
+<Story id="CustomControls" />
 
-### Auto-resizing the editable
+## Auto-resizing the editable
 
 To auto-grow the editable as the content changes, set the `autoResize` prop to
 `true`.
 
 ```tsx
-<Editable placeholder="Placeholder" autoResize>
+<Editable.Root placeholder="Placeholder" autoResize>
   {/*...*/}
-</Editable>
+</Editable.Root>
 ```
 
-#### Setting a maxWidth
+## Setting a maxWidth
 
 It is a common pattern to set a maximum of the editable as it auto-grows. To
 achieve this, set the `maxWidth` prop to the desired value.
 
 ```tsx
-<Editable placeholder="Placeholder" autoResize maxWidth="320px">
+<Editable.Root placeholder="Placeholder" autoResize maxWidth="320px">
   {/*...*/}
-</Editable>
+</Editable.Root>
 ```
 
-### Editing with double click
+## Editing with double click
 
 The editable supports two modes of activating the "edit" state:
 
@@ -111,7 +61,7 @@ The editable supports two modes of activating the "edit" state:
 To change the mode to double-click, pass the prop `activationMode="dblclick"`.
 
 ```tsx
-<Editable placeholder="Placeholder" activationMode="dblclick">
+<Editable.Root placeholder="Placeholder" activationMode="dblclick">
   {/*...*/}
-</Editable>
+</Editable.Root>
 ```

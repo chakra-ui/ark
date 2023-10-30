@@ -17,33 +17,9 @@ we name its parts.
 
 <Anatomy id="tooltip" />
 
-## Usage
-
-Start by importing the necessary components from the package:
-
-```tsx
-import {
-  Portal,
-  Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
-  TooltipContent,
-  TooltipPositioner,
-  TooltipPresence,
-  TooltipTrigger,
-} from '@ark-ui/react'
-```
-
-Here is a basic example:
+## Getting Started
 
 <Story id="Basic" />
-
-## Using a Render Function
-
-For more control over the Tooltip's functionality, you can use a function as a
-child, which provides access to the Tooltip API:
-
-<Story id="RenderFn" />
 
 ## Controlled Tooltip
 
@@ -52,10 +28,17 @@ tooltip is open using the `open` prop:
 
 <Story id="Controlled" />
 
+## Using a Render Function
+
+For more control over the Tooltip's functionality, you can use a function as a
+child, which provides access to the Tooltip API:
+
+<Story id="RenderFn" />
+
 ## Adding an Arrow
 
 To display an arrow pointing to the trigger from the tooltip, use the
-`TooltipArrow` and `TooltipArrowTip` components:
+`Tooltip.Arrow` and `Tooltip.ArrowTip` components:
 
 <Story id="Arrow" />
 

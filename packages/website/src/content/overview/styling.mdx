@@ -17,16 +17,16 @@ proves particularly beneficial when using Ark UI in conjunction with a CSS
 styling framework, such as `Tailwind` or `Bootstrap`.
 
 ```tsx
-<Tabs>
-  <TabList className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
-    <TabTrigger
+<Tabs.Root>
+  <Tabs.List className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+    <Tabs.Trigger
       value="react"
       className="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg"
     >
       React
-    </TabTrigger>
-  </TabList>
-</Tabs>
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs.Root>
 ```
 
 ## Using Inline Styles
@@ -37,8 +37,8 @@ that user-defined inline styles merge correctly with any pre-existing inline
 styles from the component framework.
 
 ```tsx
-<Tabs>
-  <TabList
+<Tabs.Root>
+  <Tabs.List
     style={{
       display: 'flex',
       flexWrap: 'wrap',
@@ -49,7 +49,7 @@ styles from the component framework.
       borderBottom: '1px solid #e5e7eb',
     }}
   >
-    <TabTrigger
+    <Tabs.Trigger
       value="react"
       style={{
         display: 'inline-block',
@@ -62,9 +62,9 @@ styles from the component framework.
       }}
     >
       React
-    </TabTrigger>
-  </TabList>
-</Tabs>
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs.Root>
 ```
 
 ## Using CSS Selectors
@@ -76,17 +76,17 @@ these selectors.
 For instance, the `Tabs` component renders the following markup:
 
 ```tsx
-<Tabs data-scope="tabs" data-part="root">
-  <TabList data-scope="tabs" data-part="tablist">
-    <TabTrigger data-scope="tabs" data-part="trigger" value="react">
+<Tabs.Root data-scope="tabs" data-part="root">
+  <Tabs.List data-scope="tabs" data-part="Tabs.List">
+    <Tabs.Trigger data-scope="tabs" data-part="trigger" value="react">
       React
-    </TabTrigger>
-  </TabList>
-</Tabs>
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs.Root>
 ```
 
 With these selectors, it's possible to write CSS that targets specific component
-parts like `TabsTrigger` and `TabList`.
+parts like `Tabs.Trigger` and `Tabs.List`.
 
 ```css
 [data-scope='tabs'][data-part='tablist'] {
@@ -114,18 +114,18 @@ parts like `TabsTrigger` and `TabList`.
 The `asChild` prop offers an additional layer of customization by enabling you
 to replace the default element with your own custom child element, such as a
 `Button` or `List`. This proves exceptionally valuable when you're integrating
-Ark UI with an existing UI library, for instance,` Chakra UI`.
+Ark UI with an existing UI library, for instance, `Chakra UI`.
 
 ```tsx
-<Tabs>
-  <TabList asChild>
+<Tabs.Root>
+  <Tabs.List asChild>
     <List>
-      <TabTrigger value="react" asChild>
+      <Tabs.Trigger value="react" asChild>
         <Button>React</Button>
-      </TabTrigger>
+      </Tabs.Trigger>
     </List>
-  </TabList>
-</Tabs>
+  </Tabs.List>
+</Tabs.Root>
 ```
 
 With `asChild`, the default markup of Ark UI components can be substituted with

@@ -1,94 +1,69 @@
-export const react = `import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/react'
+export const react = `import { Slider } from '@ark-ui/react'
 import { useState } from 'react'
   
 export const MySlider = () => {
-  const [value, setValue] = useState(30)
+  const [value, setValue] = useState([30])
     
   return (
-    <Slider
+    <Slider.Root
       min={-50}
       max={50}
       value={value}
-      onChange={(e) => setValue(e.value)}
+      onValueChange={(e) => setValue(e.value)}
     >
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-    </Slider>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.Output>{value}</Slider.Output>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb />
+      </Slider.Control>
+    </Slider.Root>
   )
 }`
 
-export const solid = `import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/solid'
+export const solid = `import { Slider } from '@ark-ui/solid'
 import { createSignal } from 'solid-js'
 
 export const MySlider = () => {
-  const [value, setValue] = createSignal(30)
+  const [value, setValue] = createSignal([30])
 
   return (
-    <Slider
+    <Slider.Root
       min={-50}
       max={50}
       value={value()}
-      onChange={(e) => setValue(e.value)}
+      onValueChange={(e) => setValue(e.value)}
     >
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-    </Slider>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.Output>{value}</Slider.Output>
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb />
+      </Slider.Control>
+    </Slider.Root>
   )
 }`
 
 export const vue = `<script setup lang="ts">
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderProps,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/vue'
+import { Slider } from '@ark-ui/vue'
 import { ref } from 'vue'
 
-const sliderValue = ref<SliderProps['modelValue']>(30)
+const sliderValue = ref<SliderProps['modelValue']>([30])
 </script>
 
 <template>
-  <Slider :min="-50" :max="50" v-model="sliderValue">
-    <SliderLabel>Label</SliderLabel>
-    <SliderOutput>{{ sliderValue }}</SliderOutput>
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb />
-    </SliderControl>
-  </Slider>
+  <Slider.Root :min="-50" :max="50" v-model="sliderValue">
+    <Slider.Label>Label</Slider.Label>
+    <Slider.Output>{{ sliderValue }}</Slider.Output>
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb />
+    </Slider.Control>
+  </Slider.Root>
 </template>`

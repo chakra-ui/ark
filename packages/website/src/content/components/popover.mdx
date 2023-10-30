@@ -18,144 +18,59 @@ we name its parts.
 
 <Anatomy id="popover" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  Popover,
-  PopoverArrow,
-  PopoverCloseTrigger,
-  PopoverContent,
-  PopoverDescription,
-  PopoverArrowTip,
-  PopoverPositioner,
-  PopoverTitle,
-  PopoverTrigger,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The Popover component consists of the `PopoverTrigger`, `PopoverPositioner`,
-`PopoverContent`, `PopoverTitle`, `PopoverDescription`, `PopoverArrow`,
-`PopoverArrowTip`, `PopoverCloseTrigger`, components.
-
-Note that the `PopoverTrigger` and `PopoverCloseTrigger` components accept a
-single JSX element which will receive all necessary props to add the event
-listeners and attributes to ensure the desired accessibility.
-
-```tsx
-<Popover>
-  <PopoverTrigger>Open Popover</PopoverTrigger>
-  <PopoverPositioner>
-    <PopoverContent>
-      <PopoverTitle>Title</PopoverTitle>
-      <PopoverDescription>Description</PopoverDescription>
-      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-    </PopoverContent>
-  </PopoverPositioner>
-</Popover>
-```
-
-### Adding an arrow
-
-To render an arrow within the popover, render the component `PopoverArrow` and
-`PopoverArrowTip` as children of `PopoverPositioner`.
-
-```tsx
-<Popover>
-  <PopoverTrigger>Open Popover</PopoverTrigger>
-  <PopoverPositioner>
-    <PopoverContent>
-      <PopoverArrow>
-        <PopoverArrowTip />
-      </PopoverArrow>
-      <PopoverTitle>Title</PopoverTitle>
-      <PopoverDescription>Description</PopoverDescription>
-      <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-    </PopoverContent>
-  </PopoverPositioner>
-</Popover>
-```
-
-### Using a Portal
+## Using a Portal
 
 By default, the popover is rendered in the same DOM hierarchy as the trigger. To
 render the popover within a portal, set the `portalled` prop to `true`.
 
-```tsx
-<Popover portalled>
-  <PopoverTrigger>Open Popover</PopoverTrigger>
-  <Portal>
-    <PopoverPositioner>
-      <PopoverContent>
-        <PopoverTitle>Title</PopoverTitle>
-        <PopoverDescription>Description</PopoverDescription>
-        <PopoverCloseTrigger>Close</PopoverCloseTrigger>
-      </PopoverContent>
-    </PopoverPositioner>
-  </Portal>
-</Popover>
-```
+> Note: This requires that you render the component within a `Portal` based on
+> the framework you use.
 
-### Modifying the close behavior
+<Story id="Portalled" />
+
+## Adding an arrow
+
+To render an arrow within the popover, render the component `Popover.Arrow` and
+`Popover.ArrowTip` as children of `Popover.Positioner`.
+
+<Story id="Arrow" />
+
+## Listening for open and close events
+
+When the popover is opened or closed, we invoke the `onOpenChange` callback.
+
+<Story id="OnOpenChange" />
+
+## Control the open state
+
+Use the `isOpen` prop to control the open state of the popover.
+
+<Story id="Controlled" />
+
+## Modifying the close behavior
 
 The popover is designed to close on blur and when the <kbd>esc</kbd> key is
 pressed.
 
 To prevent it from closing on blur (clicking or focusing outside), pass the
-`closeOnBlur` prop and set it to `false`.
-
-```tsx
-<Popover closeOnBlur={false}>{/*...*/}</Popover>
-```
+`closeOnInteractOutside` prop and set it to `false`.
 
 To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
 `closeOnEsc` prop and set it to `false`.
 
-```tsx
-<Popover closeOnEsc={false}>{/*...*/}</Popover>
-```
+<Story id="CloseBehavior" />
 
-### Changing the placement
+## Changing the placement
 
 To change the placement of the popover, set the `positioning` prop.
 
-```tsx
-<Popover
-  positioning={{
-    placement: 'top-start',
-  }}
->
-  {/*...*/}
-</Popover>
-```
+<Story id="Positioning" />
 
-### Listening for open and close events
-
-When the popover is opened or closed, we invoke the `onOpenChange` callback.
-
-```tsx
-<Popover onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
-  {/*...*/}
-</Popover>
-```
-
-### Control the open state
-
-Use the `isOpen` prop to control the open state of the popover.
-
-```tsx
-const [isOpen, setIsOpen] = React.useState(false)
-return (
-  <>
-    <button onClick={() => setIsOpen((open) => !open)}>Toggle Popover
-    <Popover isOpen={isOpen}>{/*...*/}</Popover>
-  </>
-)
-```
-
-### Changing the modality
+## Changing the modality
 
 In some cases, you might want the popover to be modal. This means that it'll:
 
@@ -167,6 +82,4 @@ In some cases, you might want the popover to be modal. This means that it'll:
 To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
 we set the `portalled` attribute to `true` as well.
 
-```tsx
-<Popover modal>{/*...*/}</Popover>
-```
+<Story id="Modal" />
