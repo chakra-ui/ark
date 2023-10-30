@@ -128,7 +128,7 @@
   "Thumb": { "index": { "type": "number", "isRequired": true } },
   "Track": { "asChild": { "type": "boolean", "isRequired": false } },
   "Marker": { "value": { "type": "number", "isRequired": true } },
-  "Output": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "MarkerGroup": { "asChild": { "type": "boolean", "isRequired": false } }
 }

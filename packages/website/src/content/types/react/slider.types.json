@@ -169,14 +169,14 @@
       "description": "Render as a different element type."
     }
   },
-  "Output": {
+  "Control": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "Control": {
+  "ValueText": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
