@@ -4,7 +4,7 @@ import { type Assign } from '../types'
 import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'label'>, { htmlFor: string }>
+export type MenuItemGroupLabelProps = Assign<HTMLArkProps<'div'>, { htmlFor: string }>
 
 export const MenuItemGroupLabel: ComponentWithProps<MenuItemGroupLabelProps> = defineComponent({
   name: 'MenuItemGroupLabel',
@@ -18,9 +18,9 @@ export const MenuItemGroupLabel: ComponentWithProps<MenuItemGroupLabelProps> = d
     const api = useMenuContext()
 
     return () => (
-      <ark.label {...api.value.getItemGroupLabelProps({ htmlFor: props.htmlFor })} {...attrs}>
+      <ark.div {...api.value.getItemGroupLabelProps(props)} {...attrs}>
         {() => getValidChildren(slots)}
-      </ark.label>
+      </ark.div>
     )
   },
 })

@@ -9,12 +9,49 @@ description:
 
 ### Added
 
+- Added support to lazy mount the `DatePicker` and `ColorPicker` components
+  using the `Presence` component
+- Added `ValueText` to the `ColorPicker` component
+
+### Changed
+
+- Improved accessibility of all disclosure components when lazy mounting is
+  enabled.
+- Renamed `htmlFor` prop to `for` in `MenuItemGroupLabel`,
+  `ComboboxItemGroupLabel` and `SelectItemGroupLabel` component
+
+### Fixed
+
+- Added missing data attributes to `DatePickerView` component
+
+## [1.0.0-beta.2] - 2023-10-24
+
+### Changed
+
+- Replaced `vite` with `rollup-preset-solid` for bundling.
+
+## [1.0.0-beta.1] - 2023-10-20
+
+### Added
+
+- Parsed `focusedValue` in `DatePicker`
+
+### Fixed
+
+- Resolved an issue with `@ark-ui/anatomy`
+
+## [1.0.0-beta.0] - 2023-10-20
+
+### Added
+
 - Added `ToggleGroup` component
 
 ### Changed
 
 - Revised `Comoobox` component to support multiple selection
 - Revised `Select` component to support multiple selection
+- Renamed `htmlFor` prop to `for` in `MenuItemGroupLabel`,
+  `ComboboxItemGroupLabel` and `SelectItemGroupLabel` component
 
 ### Fixed
 

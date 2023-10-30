@@ -31,7 +31,7 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
         <Select.Positioner>
           <Select.Content>
             <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+              <Select.ItemGroupLabel for="framework">Frameworks</Select.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Select.Item item={item}>
