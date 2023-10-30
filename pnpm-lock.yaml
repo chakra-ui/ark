@@ -45,8 +45,8 @@ importers:
   packages/anatomy:
     dependencies:
       '@zag-js/accordion':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/anatomy':
         specifier: 0.27.0
         version: 0.27.0
@@ -66,8 +66,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/combobox':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/date-picker':
         specifier: 0.27.0
         version: 0.27.0
@@ -111,8 +111,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/select':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/slider':
         specifier: 0.27.0
         version: 0.27.0
@@ -135,8 +135,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/tooltip':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
@@ -163,8 +163,8 @@ importers:
         specifier: 1.0.0-beta.1
         version: link:../../anatomy
       '@zag-js/accordion':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/anatomy':
         specifier: 0.27.0
         version: 0.27.0
@@ -184,8 +184,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/combobox':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/core':
         specifier: 0.27.0
         version: 0.27.0
@@ -229,11 +229,11 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/react':
-        specifier: 0.26.0
-        version: 0.26.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.27.0
+        version: 0.27.0(react-dom@18.2.0)(react@18.2.0)
       '@zag-js/select':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/slider':
         specifier: 0.27.0
         version: 0.27.0
@@ -256,8 +256,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/tooltip':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/types':
         specifier: 0.27.0
         version: 0.27.0
@@ -371,8 +371,8 @@ importers:
         specifier: 1.0.0-beta.1
         version: link:../../anatomy
       '@zag-js/accordion':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/anatomy':
         specifier: 0.27.0
         version: 0.27.0
@@ -389,8 +389,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/combobox':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/date-picker':
         specifier: 0.27.0
         version: 0.27.0
@@ -428,8 +428,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/select':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/slider':
         specifier: 0.27.0
         version: 0.27.0
@@ -455,8 +455,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/tooltip':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/types':
         specifier: 0.27.0
         version: 0.27.0
@@ -561,8 +561,8 @@ importers:
         specifier: workspace:*
         version: link:../../anatomy
       '@zag-js/accordion':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/anatomy':
         specifier: 0.27.0
         version: 0.27.0
@@ -579,8 +579,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/combobox':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/dialog':
         specifier: 0.27.0
         version: 0.27.0
@@ -615,8 +615,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/select':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/slider':
         specifier: 0.27.0
         version: 0.27.0
@@ -639,8 +639,8 @@ importers:
         specifier: 0.27.0
         version: 0.27.0
       '@zag-js/tooltip':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.27.0
+        version: 0.27.0
       '@zag-js/types':
         specifier: 0.27.0
         version: 0.27.0
@@ -7728,6 +7728,17 @@ packages:
       '@zag-js/utils': 0.26.0
     dev: false
 
+  /@zag-js/accordion@0.27.0:
+    resolution: {integrity: sha512-ko3WDkZcvM6o/9Zeww5/GqvffxvhzcViByzNVEgU8FaIdg/T2yEjDOBI9fy3iJXCD4/vIpKoQt1jj/4aQhSwwg==}
+    dependencies:
+      '@zag-js/anatomy': 0.27.0
+      '@zag-js/core': 0.27.0
+      '@zag-js/dom-event': 0.27.0
+      '@zag-js/dom-query': 0.27.0
+      '@zag-js/types': 0.27.0
+      '@zag-js/utils': 0.27.0
+    dev: false
+
   /@zag-js/anatomy-icons@0.27.0(react@18.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-JBTKPTLtvXmwAQpz8C/RgZVj2V8i7Z0miKw1WJr59CoTIRIQkeDg3oGxuXOBBF6g1ggEbRHd3x8J5O4rzWL+DA==}
     peerDependencies:
@@ -7893,6 +7904,10 @@ packages:
     resolution: {integrity: sha512-lD+KMtcFST8t8W1gOY4vdo8i3AUpPmgnllN/15D2JjbsfSgDlpAKMgycRu6g4wZO660qw4uMGoTwvtd4GEBK1g==}
     dev: false
 
+  /@zag-js/collection@0.27.0:
+    resolution: {integrity: sha512-pyLqhejs208ayn/KjFtiUAlLGiNLyzCT9Ol2nX1HK9Rrymj0d+0r9uXcv6hZPPJepzBkJ3Fj7xb93VikL9XIHQ==}
+    dev: false
+
   /@zag-js/color-picker@0.12.0:
     resolution: {integrity: sha512-8XmhQVm9eaN5j8gtuqQ0AOiOCqrHS400SDDbMl82jDuc286sAAJJ3R/XCoSfJg7humODAZq0wCUvT05+J/MUPA==}
     dependencies:
@@ -7989,6 +8004,22 @@ packages:
       '@zag-js/popper': 0.26.0
       '@zag-js/types': 0.26.0
       '@zag-js/utils': 0.26.0
+    dev: false
+
+  /@zag-js/combobox@0.27.0:
+    resolution: {integrity: sha512-s2sGX++fQHGXtnM0J05YAYBbTOfrdS9uVdiHOyEz7D+F/pvj84Wx5YCbb+CSfHwB27Ib85x6aeotecK5O9sokQ==}
+    dependencies:
+      '@zag-js/anatomy': 0.27.0
+      '@zag-js/aria-hidden': 0.27.0
+      '@zag-js/collection': 0.27.0
+      '@zag-js/core': 0.27.0
+      '@zag-js/dismissable': 0.27.0
+      '@zag-js/dom-event': 0.27.0
+      '@zag-js/dom-query': 0.27.0
+      '@zag-js/mutation-observer': 0.27.0
+      '@zag-js/popper': 0.27.0
+      '@zag-js/types': 0.27.0
+      '@zag-js/utils': 0.27.0
     dev: false
 
   /@zag-js/core@0.12.0:
@@ -8790,15 +8821,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@zag-js/react@0.26.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-PEZm+qRhL162PFbKwMNpnULsN6OGmqqp0cT31T2lMpGUY98bPMy9e4iWyqvrwMroJyr67Cak3/GZ3l5qMEJNNA==}
+  /@zag-js/react@0.27.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-dbVpQVPV6RpvUv60kgzyQxTIdUXItqqmMCQeFhY9RqKF9df2/UP75+virU0uak/+dVjIgDej12MkbK+ByejOPg==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
     dependencies:
-      '@zag-js/core': 0.26.0
-      '@zag-js/store': 0.26.0
-      '@zag-js/types': 0.26.0
+      '@zag-js/core': 0.27.0
+      '@zag-js/store': 0.27.0
+      '@zag-js/types': 0.27.0
       proxy-compare: 2.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -8867,6 +8898,24 @@ packages:
       '@zag-js/types': 0.26.0
       '@zag-js/utils': 0.26.0
       '@zag-js/visually-hidden': 0.26.0
+    dev: false
+
+  /@zag-js/select@0.27.0:
+    resolution: {integrity: sha512-CScv3OGb4yzw8JuXV1hdixIjh/K8vuXo2/yAIfDTm3NJnIZ6NgkhSfn3+N+94S6vyT4cZJegDNGeeGzjt73KRA==}
+    dependencies:
+      '@zag-js/anatomy': 0.27.0
+      '@zag-js/collection': 0.27.0
+      '@zag-js/core': 0.27.0
+      '@zag-js/dismissable': 0.27.0
+      '@zag-js/dom-event': 0.27.0
+      '@zag-js/dom-query': 0.27.0
+      '@zag-js/form-utils': 0.27.0
+      '@zag-js/mutation-observer': 0.27.0
+      '@zag-js/popper': 0.27.0
+      '@zag-js/tabbable': 0.27.0
+      '@zag-js/types': 0.27.0
+      '@zag-js/utils': 0.27.0
+      '@zag-js/visually-hidden': 0.27.0
     dev: false
 
   /@zag-js/slider@0.12.0:
@@ -9211,6 +9260,18 @@ packages:
       '@zag-js/popper': 0.26.0
       '@zag-js/types': 0.26.0
       '@zag-js/utils': 0.26.0
+    dev: false
+
+  /@zag-js/tooltip@0.27.0:
+    resolution: {integrity: sha512-NIM7EW2FfoXDIXOWhs1s5cTh09hbh0aIqhP/WwYmcDcTdK+RJDbInDPeLlxJ4+iDWPV/B4x1dWyoHAnGh93+zg==}
+    dependencies:
+      '@zag-js/anatomy': 0.27.0
+      '@zag-js/core': 0.27.0
+      '@zag-js/dom-event': 0.27.0
+      '@zag-js/dom-query': 0.27.0
+      '@zag-js/popper': 0.27.0
+      '@zag-js/types': 0.27.0
+      '@zag-js/utils': 0.27.0
     dev: false
 
   /@zag-js/types@0.12.0:
