@@ -174,7 +174,7 @@
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
+    "for": { "type": "string", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   }
 }
