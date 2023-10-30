@@ -17,33 +17,14 @@ how we name its parts.
 
 <Anatomy id="dialog" />
 
-## Usage
-
-Begin by importing the necessary components from the package:
-
-```tsx
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  DialogPresence,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from '@ark-ui/react'
-```
-
-Here is a basic example:
+## Getting Started
 
 <Story id="Basic" />
 
 ## Controlled Dialog
 
 To create a controlled Dialog component, manage the state of the dialog using
-the `open` and `onClose` props:
+the `open` and `onOpenChange` props:
 
 <Story id="Controlled" />
 
@@ -52,7 +33,7 @@ the `open` and `onClose` props:
 Lazy mounting is a feature that allows the content of a dialog to be rendered
 only when the dialog is first opened. This is useful for performance
 optimization, especially when dialog content is large or complex. To enable lazy
-mounting, use the `lazyMount` prop on the `DialogContent` component.
+mounting, use the `lazyMount` prop on the `Dialog.Content` component.
 
 In addition, the `unmountOnExit` prop can be used in conjunction with
 `lazyMount` to unmount the dialog content when the Dialog is closed, freeing up

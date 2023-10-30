@@ -17,55 +17,9 @@ how we name its parts.
 
 <Anatomy id="tags-input" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputInput,
-  TagsInputLabel,
-} from '@ark-ui/react'
-```
-
-## Usage
-
-The TagsInput component consists of the `Tag`, `TagInput`, `TagsInputControl`,
-`TagsInputInput`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
-`TagsInputLabel` components. Combine them as desired to fit your design system.
-
-Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
-single JSX element which will receive all necessary props to add the event
-listeners and attributes to ensure the desired accessibility.
-
-```tsx
-<TagsInput>
-  {({ value }) => (
-    <>
-      <TagsInputLabel>Label</TagsInputLabel>
-      <TagsInputControl>
-        {(value ?? []).map((value, index) => (
-          <Fragment key={index}>
-            <Tag index={index} value={value}>
-              <span>{value}</span>
-              <TagDeleteTrigger index={index} value={value}>
-                x
-              </TagDeleteTrigger>
-            </Tag>
-            <TagInput index={index} value={value} />
-          </Fragment>
-        ))}
-        <TagsInputInput placeholder="Add tag" />
-        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-      </TagsInputControl>
-    </>
-  )}
-</TagsInput>
-```
+<Story id="Basic" />
 
 ## Navigating and Editing tags
 
@@ -83,9 +37,7 @@ focus in on any tag:
 
 To set the initial tag values, set the `defaultValue` prop.
 
-```tsx
-<TagsInput defaultValue={['foo', 'bar']}>{/*...*/}</TagsInput>
-```
+<Story id="InitialValue" />
 
 ## Limiting the number of tags
 
@@ -95,11 +47,7 @@ to the limit you want. The default value is `Infinity`.
 When the tag reaches the limit, new tags cannot be added except the
 `allowOverflow` prop is set to `true`.
 
-```tsx
-<TagsInput max={3} allowOverflow>
-  {/*...*/}
-</TagsInput>
-```
+<Story id="MaxWithOverflow" />
 
 ## Validating Tags
 
@@ -109,15 +57,7 @@ accept or reject a tag.
 A common use-case for validating tags is preventing duplicates or validating the
 data type.
 
-```tsx
-<TagsInput
-  validate={(details) => {
-    return !details.values.includes(details.inputValue)
-  }}
->
-  {/*...*/}
-</TagsInput>
-```
+<Story id="Validated" />
 
 ## Blur behavior
 
@@ -127,9 +67,7 @@ should take by passing the `blurBehavior` prop.
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
 
-```tsx
-<TagsInput blurBehavior="add">{/*...*/}</TagsInput>
-```
+<Story id="BlurBehavior" />
 
 ## Paste behavior
 
@@ -141,11 +79,7 @@ When a value is pasted, the component will:
 - check if the value is a valid tag based on the `validate` option
 - split the value by the `delimiter` option passed
 
-```jsx {3}
-<TagsInput addOnPaste delimiter=",">
-  {/*...*/}
-</TagsInput>
-```
+<Story id="PasteBehavior" />
 
 ## Disable tag editing
 
@@ -153,32 +87,16 @@ by default the tags can be edited by double-clicking on the tag or focusing on
 them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
 `allowEditTag={false}`
 
-```tsx
-<TagsInput allowEditTag={false}>{/*...*/}</TagsInput>
-```
+<Story id="DisabledEditing" />
 
 ## Events
 
 During the lifetime of the tags input interaction, here's a list of events we
 emit:
 
-- `onChange` — invoked when the tag value changes.
-- `onHighlight` — invoked when a tag has visual focus.
-- `onInvalid` — invoked when the max tag count is reached or the `validate`
+- `onValueChange` — invoked when the tag value changes.
+- `onHighlightChange` — invoked when a tag has visual focus.
+- `onValueInvalid` — invoked when the max tag count is reached or the `validate`
   function returns `false`.
 
-```tsx
-<TagsInput
-  onChange={(details) => {
-    console.log('tags changed to:', details.values)
-  }}
-  onHighlight={(details) => {
-    console.log('highlighted tag:', details.value)
-  }}
-  onInvalid={(details) => {
-    console.log('Invalid!', details.reason)
-  }}
->
-  {/*...*/}
-</TagsInput>
-```
+<Story id="OnEvent" />

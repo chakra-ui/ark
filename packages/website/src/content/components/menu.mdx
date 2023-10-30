@@ -17,177 +17,52 @@ name its parts.
 
 <Anatomy id="menu" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  Menu,
-  MenuArrow,
-  MenuArrowTip,
-  MenuContent,
-  MenuContextTrigger,
-  MenuItem,
-  MenuItemGroup,
-  MenuItemGroupLabel,
-  MenuOptionItem,
-  MenuPositioner,
-  MenuSeparator,
-  MenuTrigger,
-  MenuTriggerItem,
-  Portal,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The Menu component consists of the `MenuArrow`, `MenuArrowTip`, `MenuContent`,
-`MenuContextTrigger`, `MenuItem`, `MenuItemGroup`, `MenuItemGroupLabel`,
-`MenuOptionItem`, `MenuPositioner`, `MenuSeparator`, `MenuTrigger` and
-`MenuTriggerItem` components. Combine them as desired to fit your design system.
-
-Note that the `MenuTrigger` and `MenuContextTrigger` components accept a single
-JSX element which will receive all necessary props to add the event listeners
-and attributes to ensure the desired accessibility.
-
-```tsx
-<Menu>
-  <MenuTrigger>Open menu</MenuTrigger>
-  <Portal>
-    <MenuPositioner>
-      <MenuContent>
-        <MenuItem id="edit">Edit</MenuItem>
-        <MenuItem id="delete">Delete</MenuItem>
-        <MenuItem id="export">Export</MenuItem>
-        <MenuItem id="duplicate">Duplicate</MenuItem>
-      </MenuContent>
-    </MenuPositioner>
-  </Portal>
-</Menu>
-```
-
-### Listening to item selection
+## Listening to item selection
 
 Pass the `onSelect` prop to the Menu component to perform some custom logic when
 an item is selected. The callback is invoked with the `id` of the item.
 
-```tsx
-<Menu onSelect={(id) => console.log(id)}>{/*...*/}</Menu>
-```
+<Story id="Controlled" />
 
-### Grouping menu items
+## Grouping menu items
 
 When the number of menu items gets much, it might be useful to group related
-menu items. To achieve this, render the `MenuItemGroup` component around the
-`MenuItem` components. The `MenuItemGroupLabel` component can be used to add a
+menu items. To achieve this, render the `Menu.ItemGroup` component around the
+`Menu.Item` components. The `Menu.ItemGroupLabel` component can be used to add a
 label to the group.
 
-```tsx {8,9,12,13,14,17}
-<Menu>
-  <MenuTrigger>Open menu</MenuTrigger>
-  <Portal>
-    <MenuPositioner>
-      <MenuContent>
-        <MenuItemGroup id="accounts">
-          <MenuItemGroupLabel htmlFor="accounts">Accounts</MenuItemGroupLabel>
-          <MenuItem id="private">Private</MenuItem>
-          <MenuItem id="work">Work</MenuItem>
-        </MenuItemGroup>
-        <MenuItemGroup id="actions">
-          <MenuItemGroupLabel htmlFor="actions">Action</MenuItemGroupLabel>
-          <MenuItem id="rename">Rename</MenuItem>
-          <MenuItem id="delete">Delete</MenuItem>
-        </MenuItemGroup>
-      </MenuContent>
-    </MenuPositioner>
-  </Portal>
-</Menu>
-```
+<Story id="Group" />
 
-### Separating menu items
+## Separating menu items
 
-To separate menu items, render the `MenuSeparator` component.
+To separate menu items, render the `Menu.Separator` component.
 
-```tsx {10}
-<Menu>
-  <MenuTrigger>Open menu</MenuTrigger>
-  <Portal>
-    <MenuPositioner>
-      <MenuContent>
-        <MenuItem id="edit">Edit</MenuItem>
-        <MenuItem id="delete">Delete</MenuItem>
-        <MenuSeparator />
-        <MenuItem id="export">Export</MenuItem>
-        <MenuItem id="duplicate">Duplicate</MenuItem>
-      </MenuContent>
-    </MenuPositioner>
-  </Portal>
-</Menu>
-```
+<Story id="Separator" />
 
-### Context menu
+## Context menu
 
 To show the menu when a trigger element is right-clicked, use the
-`MenuContextTrigger` component.
+`Menu.ContextTrigger` component.
 
 Context menus are also opened during a long-press of roughly `700ms` when the
 pointer is pen or touch.
 
-```tsx {2-8}
-<Menu>
-  <MenuContextTrigger>
-    <div
-      style={{ width: '100%', height: '20rem', border: '1px solid lightgray' }}
-    >
-      Some content
-    </div>
-  </MenuContextTrigger>
-  <Portal>
-    <MenuPositioner>
-      <MenuContent>
-        <MenuItem id="edit">Edit</MenuItem>
-        <MenuItem id="delete">Delete</MenuItem>
-        <MenuItem id="export">Export</MenuItem>
-        <MenuItem id="duplicate">Duplicate</MenuItem>
-      </MenuContent>
-    </MenuPositioner>
-  </Portal>
-</Menu>
-```
+<Story id="ContextMenu" />
 
-### Nested menu
+## Nested menu
 
 To show a nested menu, render another `Menu` component and use the
-`MenuTriggerItem` component to open the submenu.
+`Menu.TriggerItem` component to open the submenu.
 
-```tsx {11-20}
-<Menu>
-  <MenuTrigger>Open menu</MenuTrigger>
-  <Portal>
-    <MenuPositioner>
-      <MenuContent>
-        <MenuItem id="new-tab">New Tab...</MenuItem>
-        <MenuItem id="new-win">New Window...</MenuItem>
-        <MenuSeparator />
-        <Menu>
-          <MenuTriggerItem>Share &gt;</MenuTriggerItem>
-          <Portal>
-            <MenuPositioner>
-              <MenuContent>
-                <MenuItem id="twitter">Twitter</MenuItem>
-                <MenuItem id="message">Message</MenuItem>
-              </MenuContent>
-            </MenuPositioner>
-          </Portal>
-        </Menu>
-      </MenuContent>
-    </MenuPositioner>
-  </Portal>
-</Menu>
-```
+<Story id="SubMenu" />
 
-### Checkbox and Radio option items
+## Checkbox and Radio option items
 
-To show a checkbox or radio option item, use the `MenuOptionItem` component.
+To show a checkbox or radio option item, use the `Menu.OptionItem` component.
 Depending on the `type` prop, the item will be rendered as a checkbox or radio
 option item. The `name` prop is used to group the items together, and the
 `value` prop is used to identify the item.
@@ -195,62 +70,4 @@ option item. The `name` prop is used to group the items together, and the
 To manage the state of the option items pass the `value` and `onValueChange`
 props to the `Menu` component.
 
-```tsx
-export const Options = () => {
-  const [value, setValue] = React.useState<Record<string, string | string[]>>({
-    framework: '',
-    libraries: [],
-  })
-
-  return (
-    <Menu
-      value={value}
-      onValueChange={(data) => {
-        setValue((prev) => ({
-          ...prev,
-          [data.name]: data.value,
-        }))
-      }}
-    >
-      <MenuTrigger>Open menu</MenuTrigger>
-      <Portal>
-        <MenuPositioner>
-          <MenuContent>
-            <MenuItemGroup id="radio-group">
-              <MenuItemGroupLabel htmlFor="radio-group">
-                Radio Group
-              </MenuItemGroupLabel>
-              <MenuOptionItem name="framework" type="radio" value="react">
-                {(d) => <>{d.isActive ? '✅' : ''} React</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="solid">
-                {(d) => <>{d.isActive ? '✅' : ''} Solid</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="framework" type="radio" value="vue">
-                {(d) => <>{d.isActive ? '✅' : ''} Vue</>}
-              </MenuOptionItem>
-            </MenuItemGroup>
-            <MenuItemGroup id="checkbox-group">
-              <MenuItemGroupLabel htmlFor="checkbox-group">
-                Checkbox Group
-              </MenuItemGroupLabel>
-              <MenuOptionItem name="libraries" type="checkbox" value="zag-js">
-                {(d) => <>{d.isActive ? '✅' : ''} zag-js</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="ark">
-                {(d) => <>{d.isActive ? '✅' : ''} ark</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="panda">
-                {(d) => <>{d.isActive ? '✅' : ''} panda</>}
-              </MenuOptionItem>
-              <MenuOptionItem name="libraries" type="checkbox" value="chakra">
-                {(d) => <>{d.isActive ? '✅' : ''} chakra</>}
-              </MenuOptionItem>
-            </MenuItemGroup>
-          </MenuContent>
-        </MenuPositioner>
-      </Portal>
-    </Menu>
-  )
-}
-```
+<Story id="Options" />

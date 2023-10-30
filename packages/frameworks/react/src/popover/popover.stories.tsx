@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Portal } from '../portal'
 import { Popover } from './'
-import { PopoverIndicator } from './popover-indicator'
 import './popover.css'
 
 type PopoverType = typeof Popover
@@ -17,7 +16,21 @@ export default meta
 export const Basic = () => (
   <Popover.Root>
     <Popover.Trigger>
-      Click Me <PopoverIndicator>Indicator</PopoverIndicator>
+      Click Me <Popover.Indicator>Indicator</Popover.Indicator>
+    </Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Content>
+        <Popover.Title>Title</Popover.Title>
+        <Popover.Description>Description</Popover.Description>
+      </Popover.Content>
+    </Popover.Positioner>
+  </Popover.Root>
+)
+
+export const Portalled = () => (
+  <Popover.Root portalled>
+    <Popover.Trigger>
+      Click Me <Popover.Indicator>Indicator</Popover.Indicator>
     </Popover.Trigger>
     <Portal>
       <Popover.Positioner>
@@ -29,6 +42,24 @@ export const Basic = () => (
     </Portal>
   </Popover.Root>
 )
+
+export const OnOpenChange = () => {
+  return (
+    <Popover.Root onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
+      <Popover.Trigger>
+        Click Me <Popover.Indicator>Indicator</Popover.Indicator>
+      </Popover.Trigger>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Title>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
+    </Popover.Root>
+  )
+}
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -88,6 +119,21 @@ export const Arrow = () => (
   </Popover.Root>
 )
 
+export const CloseBehavior = () => (
+  <Popover.Root closeOnEsc={false} closeOnInteractOutside={false}>
+    <Popover.Trigger>Click Me</Popover.Trigger>
+    <Portal>
+      <Popover.Positioner>
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Positioner>
+    </Portal>
+  </Popover.Root>
+)
+
 export const Positioning = () => (
   <Popover.Root
     positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
@@ -105,8 +151,8 @@ export const Positioning = () => (
   </Popover.Root>
 )
 
-export const CloseBehavior = () => (
-  <Popover.Root closeOnEsc closeOnInteractOutside>
+export const Modal = () => (
+  <Popover.Root modal>
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Portal>
       <Popover.Positioner>
