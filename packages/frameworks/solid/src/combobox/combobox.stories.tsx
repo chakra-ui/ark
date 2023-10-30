@@ -24,7 +24,7 @@ export const Basic = () => {
         <Combobox.Positioner>
           <Combobox.Content>
             <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+              <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Combobox.Item item={item}>

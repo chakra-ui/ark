@@ -60,12 +60,12 @@ export const Group = () => (
       <Menu.Positioner>
         <Menu.Content>
           <Menu.ItemGroup id="group-1">
-            <Menu.ItemGroupLabel htmlFor="group-1">Group 1</Menu.ItemGroupLabel>
+            <Menu.ItemGroupLabel for="group-1">Group 1</Menu.ItemGroupLabel>
             <Menu.Item id="share">Share...</Menu.Item>
             <Menu.Item id="move">Move...</Menu.Item>
           </Menu.ItemGroup>
           <Menu.ItemGroup id="group-2">
-            <Menu.ItemGroupLabel htmlFor="group-2">Group 2</Menu.ItemGroupLabel>
+            <Menu.ItemGroupLabel for="group-2">Group 2</Menu.ItemGroupLabel>
             <Menu.Item id="rename">Rename...</Menu.Item>
             <Menu.Item id="delete">Delete...</Menu.Item>
           </Menu.ItemGroup>
@@ -95,7 +95,7 @@ export const Options = () => {
         <Menu.Positioner>
           <Menu.Content>
             <Menu.ItemGroup id="radio-group">
-              <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+              <Menu.ItemGroupLabel for="radio-group">Radio Group</Menu.ItemGroupLabel>
               <Menu.OptionItem name="framework" type="radio" value="react">
                 {(itemState) => <>{itemState().isChecked ? '✅' : ''} React</>}
               </Menu.OptionItem>
@@ -107,7 +107,7 @@ export const Options = () => {
               </Menu.OptionItem>
             </Menu.ItemGroup>
             <Menu.ItemGroup id="checkbox-group">
-              <Menu.ItemGroupLabel htmlFor="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
+              <Menu.ItemGroupLabel for="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
               <Menu.OptionItem name="libraries" type="checkbox" value="zag-js">
                 {(itemState) => <>{itemState().isChecked ? '✅' : ''} zag-js</>}
               </Menu.OptionItem>
