@@ -24,7 +24,7 @@
     "@types/react-dom": "18.2.14",
     "@zag-js/anatomy-icons": "0.27.1",
     "astro": "3.4.0",
-    "lucide-react": "0.290.0",
+    "lucide-react": "0.291.0",
     "pandacss-preset-typography": "0.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
