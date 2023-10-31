@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-beta.4] - 2023-10-31
+
 ### Fixed
 
 - Resolved an accessibility issue with `Select`
