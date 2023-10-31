@@ -16,6 +16,7 @@ export type DatePickerProps = Assign<
 
 export const DatePicker = (props: DatePickerProps) => {
   const [datePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(props, [
+    'closeOnSelect',
     'dir',
     'disabled',
     'fixedWeeks',
@@ -24,7 +25,6 @@ export const DatePicker = (props: DatePickerProps) => {
     'getRootNode',
     'id',
     'ids',
-    'inline',
     'isDateUnavailable',
     'isDateUnavailable',
     'locale',

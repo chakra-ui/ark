@@ -17,6 +17,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, re
   const [datePickerProps, { children, ...localProps }] = createSplitProps<UseDatePickerProps>()(
     props,
     [
+      'closeOnSelect',
       'defaultValue',
       'dir',
       'disabled',
@@ -26,7 +27,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, re
       'getRootNode',
       'id',
       'ids',
-      'inline',
       'isDateUnavailable',
       'isDateUnavailable',
       'locale',

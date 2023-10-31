@@ -1,6 +1,12 @@
 {
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
+    "closeOnSelect": {
+      "type": "boolean",
+      "defaultValue": "true",
+      "isRequired": false,
+      "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -37,11 +43,6 @@
       "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
       "isRequired": false,
       "description": "The ids of the elements in the date picker. Useful for composition."
-    },
-    "inline": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the calendar should be displayed inline."
     },
     "isDateUnavailable": {
       "type": "(date: DateValue, locale: string) => boolean",

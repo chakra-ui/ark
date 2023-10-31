@@ -14,7 +14,7 @@ export const Basic = () => {
   return (
     <Slider.Root min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{value}</Slider.Output>
+      <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
