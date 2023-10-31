@@ -664,8 +664,8 @@ importers:
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
       '@testing-library/vue':
-        specifier: 7.0.0
-        version: 7.0.0(@vue/compiler-sfc@3.3.7)(vue@3.3.4)
+        specifier: 8.0.0
+        version: 8.0.0(@vue/compiler-sfc@3.3.7)(vue@3.3.4)
       '@types/jsdom':
         specifier: 21.1.4
         version: 21.1.4
@@ -6640,8 +6640,8 @@ packages:
       '@testing-library/dom': 9.3.3
     dev: true
 
-  /@testing-library/vue@7.0.0(@vue/compiler-sfc@3.3.7)(vue@3.3.4):
-    resolution: {integrity: sha512-JU/q93HGo2qdm1dCgWymkeQlfpC0/0/DBZ2nAHgEAsVZxX11xVIxT7gbXdI7HACQpUbsUWt1zABGU075Fzt9XQ==}
+  /@testing-library/vue@8.0.0(@vue/compiler-sfc@3.3.7)(vue@3.3.4):
+    resolution: {integrity: sha512-SP0qEY/SGpdT9+bPuHxYD3P/HCG0ZY8GlGJocVqdLn9EojbdQu69x06trJi1V7RW9tAZai/wwy+ZFcRsTp47kg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vue/compiler-sfc': '>= 3'
