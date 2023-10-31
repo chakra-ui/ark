@@ -12,7 +12,7 @@ export const MySlider = () => {
       onValueChange={(e) => setValue(e.value)}
     >
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{value}</Slider.Output>
+      <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -37,7 +37,7 @@ export const MySlider = () => {
       onValueChange={(e) => setValue(e.value)}
     >
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{value}</Slider.Output>
+      <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -58,7 +58,7 @@ const sliderValue = ref<SliderProps['modelValue']>([30])
 <template>
   <Slider.Root :min="-50" :max="50" v-model="sliderValue">
     <Slider.Label>Label</Slider.Label>
-    <Slider.Output>{{ sliderValue }}</Slider.Output>
+    <Slider.ValueText>{{ sliderValue }}</Slider.ValueText>
     <Slider.Control>
       <Slider.Track>
         <Slider.Range />

@@ -6,18 +6,17 @@ import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
 import { type UseSliderReturn } from './use-slider'
 
-export type SliderOutputProps = Assign<
-  HTMLArkProps<'output'>,
+export type SliderValueTextProps = Assign<
+  HTMLArkProps<'div'>,
   {
     children?: ((pages: UseSliderReturn) => JSX.Element) | JSX.Element
   }
 >
 
-export const SliderOutput = (props: SliderOutputProps) => {
-  const slider = useSliderContext()
+export const SliderValueText = (props: SliderValueTextProps) => {
+  const api = useSliderContext()
+  const getChildren = () => runIfFn(props.children, api)
+  const mergedProps = mergeProps(() => api().valueTextProps, props)
 
-  const getChildren = () => runIfFn(props.children, slider)
-  const outputProps = mergeProps(() => slider().outputProps, props)
-
-  return <ark.output {...outputProps}>{getChildren()}</ark.output>
+  return <ark.div {...mergedProps}>{getChildren()}</ark.div>
 }

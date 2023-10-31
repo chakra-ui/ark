@@ -22,7 +22,7 @@
     "@park-ui/panda-preset": "0.21.0-0",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
-    "@zag-js/anatomy-icons": "0.27.0",
+    "@zag-js/anatomy-icons": "0.27.1",
     "astro": "3.4.0",
     "lucide-react": "0.291.0",
     "pandacss-preset-typography": "0.1.5",
