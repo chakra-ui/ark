@@ -66,7 +66,7 @@
     "@testing-library/dom": "9.3.3",
     "@testing-library/jest-dom": "6.1.4",
     "@testing-library/user-event": "14.5.1",
-    "@testing-library/vue": "7.0.0",
+    "@testing-library/vue": "8.0.0",
     "@types/jsdom": "21.1.4",
     "@types/testing-library__jest-dom": "5.14.9",
     "@vitejs/plugin-vue": "4.4.0",
