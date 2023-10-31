@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an accessibility issue with `Select`
+
 ## [1.0.0-beta.3] - 2023-10-26
 
 ### Added

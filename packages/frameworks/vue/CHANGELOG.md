@@ -21,6 +21,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue where the `Accordion` component would not render its content.
+- Resolved an accessibility issue with `Select`
 
 ### Removed
 
