@@ -31,23 +31,30 @@ export const Basic = () => (
   </Menu.Root>
 )
 
-export const Controlled = () => (
-  <Menu.Root onSelect={(id) => console.log(id)}>
-    <Menu.Trigger>Open menu</Menu.Trigger>
-    <Portal>
-      <Menu.Positioner>
-        <Menu.Content>
-          <Menu.Item id="search">Search</Menu.Item>
-          <Menu.Item id="undo">Undo</Menu.Item>
-          <Menu.Item id="delivery" disabled>
-            Delivery
-          </Menu.Item>
-          <Menu.Item id="unlink">Unlink</Menu.Item>
-        </Menu.Content>
-      </Menu.Positioner>
-    </Portal>
-  </Menu.Root>
-)
+export const Controlled = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(!isOpen)}>Trigger from the outside</button>
+      <Menu.Root isOpen={isOpen} onSelect={(id) => console.log(id)}>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Portal>
+          <Menu.Positioner>
+            <Menu.Content>
+              <Menu.Item id="search">Search</Menu.Item>
+              <Menu.Item id="undo">Undo</Menu.Item>
+              <Menu.Item id="delivery" disabled>
+                Delivery
+              </Menu.Item>
+              <Menu.Item id="unlink">Unlink</Menu.Item>
+            </Menu.Content>
+          </Menu.Positioner>
+        </Portal>
+      </Menu.Root>
+    </>
+  )
+}
 
 export const Group = () => (
   <Menu.Root>

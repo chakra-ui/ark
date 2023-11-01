@@ -40,6 +40,7 @@ export const Basic = () => {
     </Combobox.Root>
   )
 }
+
 type Item = { label: string; value: string; disabled?: boolean }
 
 export const Advanced = () => {

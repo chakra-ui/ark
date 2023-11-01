@@ -1,12 +1,15 @@
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
+import { runIfFn } from '../run-if-fn'
 import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
-export type PopoverProps = UsePopoverProps & { children: JSX.Element }
+export type PopoverProps = UsePopoverProps & {
+  children: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
+}
 
 export const Popover = (props: PopoverProps) => {
-  const [usePopoverProps, restProps] = createSplitProps<UsePopoverProps>()(props, [
+  const [popoverProps, localProps] = createSplitProps<UsePopoverProps>()(props, [
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
@@ -26,7 +29,8 @@ export const Popover = (props: PopoverProps) => {
     'positioning',
   ])
 
-  const api = usePopover(usePopoverProps)
+  const api = usePopover(popoverProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return <PopoverProvider value={api}>{restProps.children}</PopoverProvider>
+  return <PopoverProvider value={api}>{getChildren()}</PopoverProvider>
 }

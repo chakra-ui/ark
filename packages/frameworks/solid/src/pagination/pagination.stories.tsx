@@ -3,8 +3,11 @@ import type { Meta } from 'storybook-solidjs'
 import { Pagination } from './'
 import './pagination.css'
 
-const meta: Meta = {
+type PaginationType = typeof Pagination
+
+const meta: Meta<PaginationType> = {
   title: 'Pagination',
+  component: Pagination,
 }
 
 export default meta
@@ -13,9 +16,7 @@ export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
     {(api) => (
       <>
-        <Pagination.PrevTrigger>
-          Previous <span class="visually-hidden">Page</span>
-        </Pagination.PrevTrigger>
+        <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
         <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
@@ -25,9 +26,7 @@ export const Basic = () => (
             )
           }
         </For>
-        <Pagination.NextTrigger>
-          Next <span class="visually-hidden">Page</span>
-        </Pagination.NextTrigger>
+        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
       </>
     )}
   </Pagination.Root>
@@ -44,7 +43,21 @@ export const Controlled = () => {
       page={currentPage()}
       onPageChange={(details) => setCurrentPage(details.page)}
     >
-      {/* ... */}
+      {(api) => (
+        <>
+          <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+          <For each={api().pages}>
+            {(page, index) =>
+              page.type === 'page' ? (
+                <Pagination.Item {...page}>{page.value}</Pagination.Item>
+              ) : (
+                <Pagination.Ellipsis index={index()}>&#8230;</Pagination.Ellipsis>
+              )
+            }
+          </For>
+          <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+        </>
+      )}
     </Pagination.Root>
   )
 }
@@ -62,7 +75,21 @@ export const Customized = () => {
         itemLabel: (details) => `Page ${details.page}`,
       }}
     >
-      {/* ... */}
+      {(api) => (
+        <>
+          <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+          <For each={api().pages}>
+            {(page, index) =>
+              page.type === 'page' ? (
+                <Pagination.Item {...page}>{page.value}</Pagination.Item>
+              ) : (
+                <Pagination.Ellipsis index={index()}>&#8230;</Pagination.Ellipsis>
+              )
+            }
+          </For>
+          <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+        </>
+      )}
     </Pagination.Root>
   )
 }
