@@ -780,7 +780,7 @@ importers:
         version: link:../frameworks/react
       '@astrojs/mdx':
         specifier: 1.1.3
-        version: 1.1.3(astro@3.4.0)
+        version: 1.1.3(astro@3.4.2)
       '@astrojs/react':
         specifier: 3.0.4
         version: 3.0.4(@types/react-dom@18.2.14)(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)(vite@4.5.0)
@@ -795,7 +795,7 @@ importers:
         version: 5.0.15
       '@pandacss/astro':
         specifier: 0.17.5
-        version: 0.17.5(astro@3.4.0)(typescript@5.2.2)
+        version: 0.17.5(astro@3.4.2)(typescript@5.2.2)
       '@pandacss/dev':
         specifier: 0.17.5
         version: 0.17.5(@internationalized/date@3.5.0)(@types/node@18.18.8)(@types/react-dom@18.2.14)(@types/react@18.2.33)(typescript@5.2.2)
@@ -812,8 +812,8 @@ importers:
         specifier: 0.27.1
         version: 0.27.1(react@18.2.0)(typescript@5.2.2)
       astro:
-        specifier: 3.4.0
-        version: 3.4.0(@types/node@18.18.8)(typescript@5.2.2)
+        specifier: 3.4.2
+        version: 3.4.2(@types/node@18.18.8)(typescript@5.2.2)
       lucide-react:
         specifier: 0.291.0
         version: 0.291.0(react@18.2.0)
@@ -998,13 +998,13 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/markdown-remark@3.3.0(astro@3.4.0):
+  /@astrojs/markdown-remark@3.3.0(astro@3.4.2):
     resolution: {integrity: sha512-ezFzEiZygc/ASe2Eul9v1yrTbNGqSbR348UGNXQ4Dtkx8MYRwfiBfmPm6VnEdfIGkW+bi5qIUReKfc7mPVUkIg==}
     peerDependencies:
       astro: ^3.3.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.4.0(@types/node@18.18.8)(typescript@5.2.2)
+      astro: 3.4.2(@types/node@18.18.8)(typescript@5.2.2)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -1022,16 +1022,16 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@1.1.3(astro@3.4.0):
+  /@astrojs/mdx@1.1.3(astro@3.4.2):
     resolution: {integrity: sha512-5U5l6bCmywF2IOO8T7oIeStrRB16cxlGCz02U2akpEkLw93dmn5QcHjr4Cwem0bSKROEjYqZ7DxN8t8YAAV2qA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.3.4
     dependencies:
-      '@astrojs/markdown-remark': 3.3.0(astro@3.4.0)
+      '@astrojs/markdown-remark': 3.3.0(astro@3.4.2)
       '@mdx-js/mdx': 2.3.0
       acorn: 8.10.0
-      astro: 3.4.0(@types/node@18.18.8)(typescript@5.2.2)
+      astro: 3.4.2(@types/node@18.18.8)(typescript@5.2.2)
       es-module-lexer: 1.3.1
       estree-util-visit: 1.2.1
       github-slugger: 2.0.0
@@ -3926,13 +3926,13 @@ packages:
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
     dev: true
 
-  /@pandacss/astro@0.17.5(astro@3.4.0)(typescript@5.2.2):
+  /@pandacss/astro@0.17.5(astro@3.4.2)(typescript@5.2.2):
     resolution: {integrity: sha512-8dslgJRLU8qwSd9EJRIaSdZJsNsNnbr5AXvexhmkDK2VYJjd5Z84t80ESlb+lxXmv5T3AjtcObzXnQIH47+J2A==}
     peerDependencies:
       astro: '>=2.x'
     dependencies:
       '@pandacss/postcss': 0.17.5(typescript@5.2.2)
-      astro: 3.4.0(@types/node@18.18.8)(typescript@5.2.2)
+      astro: 3.4.2(@types/node@18.18.8)(typescript@5.2.2)
       autoprefixer: 10.4.16(postcss@8.4.31)
       postcss: 8.4.31
       postcss-load-config: 4.0.1(postcss@8.4.31)
@@ -9769,14 +9769,14 @@ packages:
       - terser
     dev: false
 
-  /astro@3.4.0(@types/node@18.18.8)(typescript@5.2.2):
-    resolution: {integrity: sha512-nTOFxrPOnmACl8noTPkRJkaEOMx4wZy4QCLB2aDL3Lm+AiEaVcgH7YQ4GpCl72zSNXp/A7hGdUgcXbC4XYHOCQ==}
+  /astro@3.4.2(@types/node@18.18.8)(typescript@5.2.2):
+    resolution: {integrity: sha512-t+EjGXvmr8/x/3punIC7aGHwaseRYV4uWVaEcffUXFpGRv6z7UNffQwjyyuPjWbDj2pOPquKhQE1GnfK0V4ZNw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.2.0
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 3.3.0(astro@3.4.0)
+      '@astrojs/markdown-remark': 3.3.0(astro@3.4.2)
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.23.2
       '@babel/generator': 7.23.0
@@ -9808,6 +9808,7 @@ packages:
       js-yaml: 4.1.0
       kleur: 4.1.5
       magic-string: 0.30.5
+      mdast-util-to-hast: 12.3.0
       mime: 3.0.0
       ora: 7.0.1
       p-limit: 4.0.0
@@ -9830,7 +9831,7 @@ packages:
       vitefu: 0.2.5(vite@4.5.0)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
-      zod: 3.21.1
+      zod: 3.22.4
     optionalDependencies:
       sharp: 0.32.6
     transitivePeerDependencies:
@@ -20085,10 +20086,6 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
-
-  /zod@3.21.1:
-    resolution: {integrity: sha512-+dTu2m6gmCbO9Ahm4ZBDapx2O6ZY9QSPXst2WXjcznPMwf2YNpn3RevLx4KkZp1OPW/ouFcoBtBzFz/LeY69oA==}
-    dev: false
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
