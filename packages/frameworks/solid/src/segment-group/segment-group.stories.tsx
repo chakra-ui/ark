@@ -3,8 +3,11 @@ import type { Meta } from 'storybook-solidjs'
 import { SegmentGroup } from './'
 import './segment-group.css'
 
-const meta: Meta = {
+type SegmentGroupType = typeof SegmentGroup
+
+const meta: Meta<SegmentGroupType> = {
   title: 'SegmentGroup',
+  component: SegmentGroup,
 }
 
 export default meta
@@ -13,6 +16,23 @@ export const Basic = () => {
   const frameworks = ['React', 'Solid', 'Vue']
   return (
     <SegmentGroup.Root>
+      <SegmentGroup.Indicator />
+      <Index each={frameworks}>
+        {(framework) => (
+          <SegmentGroup.Item value={framework()}>
+            <SegmentGroup.ItemText>{framework()}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemControl />
+          </SegmentGroup.Item>
+        )}
+      </Index>
+    </SegmentGroup.Root>
+  )
+}
+
+export const InitialValue = () => {
+  const frameworks = ['React', 'Solid', 'Vue']
+  return (
+    <SegmentGroup.Root value="React">
       <SegmentGroup.Indicator />
       <Index each={frameworks}>
         {(framework) => (
