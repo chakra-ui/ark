@@ -14,7 +14,6 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((p
   if (presenceApi.isUnmounted) {
     return null
   }
-
   return <div {...mergedProps} {...presenceApi.getPresenceProps(ref)} />
 })
 

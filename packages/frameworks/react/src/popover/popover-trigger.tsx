@@ -11,9 +11,11 @@ export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>
   const presence = usePresenceContext()
 
   const mergedProps = mergeProps(
-    api.triggerProps,
+    {
+      ...api.triggerProps,
+      'aria-controls': presence.isUnmounted ? undefined : api.triggerProps['aria-controls'],
+    },
     props,
-    presence.isUnmounted ? { 'aria-controls': undefined } : {},
   )
 
   return <ark.button {...mergedProps} ref={ref} />

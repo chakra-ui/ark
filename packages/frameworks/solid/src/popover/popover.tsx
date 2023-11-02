@@ -1,15 +1,22 @@
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { PopoverProvider } from './popover-context'
 import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
-export type PopoverProps = UsePopoverProps & {
+export interface PopoverProps extends UsePopoverProps, UsePresenceProps {
   children: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
 }
 
 export const Popover = (props: PopoverProps) => {
-  const [popoverProps, localProps] = createSplitProps<UsePopoverProps>()(props, [
+  const [presenceProps, popoverProps] = splitPresenceProps(props)
+  const [usePopoverProps, localProps] = createSplitProps<UsePopoverProps>()(popoverProps, [
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
@@ -28,9 +35,13 @@ export const Popover = (props: PopoverProps) => {
     'portalled',
     'positioning',
   ])
-
-  const api = usePopover(popoverProps)
+  const api = usePopover(usePopoverProps)
+  const presenceApi = usePresence(presenceProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
-  return <PopoverProvider value={api}>{getChildren()}</PopoverProvider>
+  return (
+    <PopoverProvider value={api}>
+      <PresenceProvider value={presenceApi}>{getChildren()}</PresenceProvider>
+    </PopoverProvider>
+  )
 }
