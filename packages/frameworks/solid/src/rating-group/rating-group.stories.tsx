@@ -9,17 +9,14 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup.Root count={5} value={1}>
+  <RatingGroup.Root count={5}>
     <RatingGroup.Label>GroupLabel</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
             </RatingGroup.Item>
           )}
         </Index>
@@ -36,11 +33,9 @@ export const HalfRatings = () => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHalf) return <IconHalf />
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) =>
+                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+              }
             </RatingGroup.Item>
           )}
         </Index>
@@ -50,17 +45,16 @@ export const HalfRatings = () => (
 )
 
 export const InitialValue = () => (
-  <RatingGroup.Root count={5} value={2} readOnly>
+  <RatingGroup.Root count={5} value={2}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) =>
+                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+              }
             </RatingGroup.Item>
           )}
         </Index>
@@ -85,11 +79,9 @@ export const Controlled = () => {
           <Index each={api().items}>
             {(index) => (
               <RatingGroup.Item index={index()}>
-                {(api) => {
-                  if (api.isHalf) return <IconHalf />
-                  if (api.isHighlighted) return <IconFull />
-                  return <IconEmpty />
-                }}
+                {(api) =>
+                  api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+                }
               </RatingGroup.Item>
             )}
           </Index>
@@ -107,10 +99,7 @@ export const Disabled = () => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
             </RatingGroup.Item>
           )}
         </Index>
@@ -127,10 +116,7 @@ export const ReadOnly = () => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
             </RatingGroup.Item>
           )}
         </Index>
@@ -147,10 +133,7 @@ export const FormUsage = () => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
             </RatingGroup.Item>
           )}
         </Index>
