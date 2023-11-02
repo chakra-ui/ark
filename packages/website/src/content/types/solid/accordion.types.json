@@ -69,15 +69,17 @@
     "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether to enable lazy mounting"
     },
     "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether to unmount on exit."
     }
   },
   "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
