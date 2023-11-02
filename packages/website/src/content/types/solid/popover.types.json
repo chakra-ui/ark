@@ -41,6 +41,12 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "defaultValue": "false",
@@ -52,6 +58,7 @@
       "isRequired": false,
       "description": "Function called when the escape key is pressed"
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -87,20 +94,7 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
-    }
-  },
-  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Anchor": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
@@ -109,6 +103,10 @@
       "description": "Whether to unmount on exit."
     }
   },
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Anchor": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
