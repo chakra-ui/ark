@@ -64,7 +64,7 @@ export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <button onClick={() => setIsOpen(!isOpen())}>Toggle</button>
       <Popover.Root open={isOpen()}>
         <Popover.Anchor>Anchor</Popover.Anchor>
         <Portal>
