@@ -49,6 +49,5 @@ export const usePresence = (props: UsePresenceProps) => {
     getPresenceProps,
     isPresent: api.isPresent,
     isUnmounted,
-    ref: api.setNode,
   }
 }

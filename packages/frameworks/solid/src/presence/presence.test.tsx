@@ -6,12 +6,12 @@ import { Presence, type PresenceProps } from './'
 const ComponentUnderTest = (props: Omit<PresenceProps, 'present' | 'children'>) => {
   const [present, setPresent] = createSignal(false)
   return (
-    <div>
+    <>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence.Root present={present()} {...props}>
-        <span data-testid="box">I am a red box</span>
-      </Presence.Root>
-    </div>
+      <Presence present={present()} {...props} data-testid="box">
+        I am a red box
+      </Presence>
+    </>
   )
 }
 
