@@ -41,9 +41,24 @@ export const Controlled = () => {
   )
 }
 
+export const RenderFn = () => (
+  <Tooltip.Root>
+    {(api) => (
+      <>
+        <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
+        <Portal>
+          <Tooltip.Positioner>
+            <Tooltip.Content>This tooltip is open: {api().isOpen.toString()}</Tooltip.Content>
+          </Tooltip.Positioner>
+        </Portal>
+      </>
+    )}
+  </Tooltip.Root>
+)
+
 export const Arrow = () => (
   <Tooltip.Root>
-    <Tooltip.Trigger>Hove Me</Tooltip.Trigger>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>
         <Tooltip.Arrow>

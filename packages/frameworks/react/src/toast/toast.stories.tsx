@@ -2,10 +2,12 @@ import type { Meta } from '@storybook/react'
 import { Toast, createToaster } from './'
 import './toast.css'
 
-const meta: Meta = {
-  title: 'Toast',
-}
+type ToastType = typeof Toast
 
+const meta: Meta<ToastType> = {
+  title: 'Toast',
+  component: Toast,
+}
 export default meta
 
 export const Basic = () => {

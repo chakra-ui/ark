@@ -6,6 +6,12 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue that the `RatingGroup` was not updating correctly when the `value` prop was changed.
+
+## [1.0.0-beta.3] - 2023-10-31
+
 ### Added
 
 - Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
@@ -20,6 +26,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Added missing data attributes to `DatePickerView` component
+- Resolved an accessibility issue with `Select`
 
 ## [1.0.0-beta.2] - 2023-10-24
 

@@ -13,10 +13,10 @@ const meta: Meta<PaginationType> = {
 export default meta
 
 export const Basic = () => (
-  <Pagination.Root defaultPage={2} count={5000} pageSize={10} siblingCount={2}>
+  <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
     {({ pages }) => (
       <>
-        <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
+        <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
         {pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>

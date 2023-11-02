@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import type { Color } from '@zag-js/color-picker'
 import { useState } from 'react'
 import { ColorPicker } from './'
 import './color-picker.css'
@@ -65,14 +64,10 @@ export const Basic = () => {
 export const Controlled = () => {
   const [currentValue, setCurrentValue] = useState('hsl(0, 100%, 50%)')
 
-  const handleValueChange = (details: { value: Color; valueAsString: string }) => {
-    setCurrentValue(details.valueAsString)
-  }
-
   return (
     <ColorPicker.Root
       value={currentValue}
-      onValueChange={handleValueChange}
+      onValueChange={(details) => setCurrentValue(details.valueAsString)}
       defaultValue="hsl(0, 100%, 50%)"
     >
       <ColorPicker.Label>Color</ColorPicker.Label>

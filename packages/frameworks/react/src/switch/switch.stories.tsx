@@ -13,6 +13,15 @@ const meta: Meta<SwitchType> = {
 export default meta
 
 export const Basic = () => (
+  <Switch.Root>
+    <Switch.Control>
+      <Switch.Thumb />
+    </Switch.Control>
+    <Switch.Label>Label</Switch.Label>
+  </Switch.Root>
+)
+
+export const InitialValue = () => (
   <Switch.Root defaultChecked>
     <Switch.Control>
       <Switch.Thumb />

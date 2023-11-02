@@ -4,10 +4,10 @@ import { SliderControl, type SliderControlProps } from './slider-control'
 import { SliderLabel, type SliderLabelProps } from './slider-label'
 import { SliderMarker, type SliderMarkerProps } from './slider-marker'
 import { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
-import { SliderOutput, type SliderOutputProps } from './slider-output'
 import { SliderRange, type SliderRangeProps } from './slider-range'
 import { SliderThumb, type SliderThumbProps } from './slider-thumb'
 import { SliderTrack, type SliderTrackProps } from './slider-track'
+import { SliderValueText, type SliderValueTextProps } from './slider-value-text'
 
 const Slider = Object.assign(SliderRoot, {
   Root: SliderRoot,
@@ -15,10 +15,10 @@ const Slider = Object.assign(SliderRoot, {
   Label: SliderLabel,
   Marker: SliderMarker,
   MarkerGroup: SliderMarkerGroup,
-  Output: SliderOutput,
   Range: SliderRange,
   Thumb: SliderThumb,
   Track: SliderTrack,
+  ValueText: SliderValueText,
 })
 
 export {
@@ -27,10 +27,10 @@ export {
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
-  SliderOutput,
   SliderRange,
   SliderThumb,
   SliderTrack,
+  SliderValueText,
   useSliderContext,
 }
 
@@ -40,9 +40,9 @@ export type {
   SliderLabelProps,
   SliderMarkerGroupProps,
   SliderMarkerProps,
-  SliderOutputProps,
   SliderProps,
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderValueTextProps,
 }

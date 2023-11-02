@@ -9,18 +9,131 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup.Root count={5} value={1} allowHalf>
+  <RatingGroup.Root count={5}>
     <RatingGroup.Label>GroupLabel</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
         <Index each={api().items}>
           {(index) => (
             <RatingGroup.Item index={index()}>
-              {(api) => {
-                if (api.isHalf) return <IconHalf />
-                if (api.isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
+            </RatingGroup.Item>
+          )}
+        </Index>
+      )}
+    </RatingGroup.Control>
+  </RatingGroup.Root>
+)
+
+export const HalfRatings = () => (
+  <RatingGroup.Root count={5} value={3} allowHalf>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
+      {(api) => (
+        <Index each={api().items}>
+          {(index) => (
+            <RatingGroup.Item index={index()}>
+              {(api) =>
+                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+              }
+            </RatingGroup.Item>
+          )}
+        </Index>
+      )}
+    </RatingGroup.Control>
+  </RatingGroup.Root>
+)
+
+export const InitialValue = () => (
+  <RatingGroup.Root count={5} value={2}>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
+      {(api) => (
+        <Index each={api().items}>
+          {(index) => (
+            <RatingGroup.Item index={index()}>
+              {(api) =>
+                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+              }
+            </RatingGroup.Item>
+          )}
+        </Index>
+      )}
+    </RatingGroup.Control>
+  </RatingGroup.Root>
+)
+
+export const Controlled = () => {
+  const [value, setValue] = createSignal(0)
+
+  return (
+    <RatingGroup.Root
+      count={5}
+      value={value()}
+      onValueChange={(details) => setValue(details.value)}
+      allowHalf
+    >
+      <RatingGroup.Label>Label</RatingGroup.Label>
+      <RatingGroup.Control>
+        {(api) => (
+          <Index each={api().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                {(api) =>
+                  api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
+                }
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Control>
+    </RatingGroup.Root>
+  )
+}
+
+export const Disabled = () => (
+  <RatingGroup.Root count={5} value={3} disabled>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
+      {(api) => (
+        <Index each={api().items}>
+          {(index) => (
+            <RatingGroup.Item index={index()}>
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
+            </RatingGroup.Item>
+          )}
+        </Index>
+      )}
+    </RatingGroup.Control>
+  </RatingGroup.Root>
+)
+
+export const ReadOnly = () => (
+  <RatingGroup.Root count={5} value={3} readOnly>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
+      {(api) => (
+        <Index each={api().items}>
+          {(index) => (
+            <RatingGroup.Item index={index()}>
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
+            </RatingGroup.Item>
+          )}
+        </Index>
+      )}
+    </RatingGroup.Control>
+  </RatingGroup.Root>
+)
+
+export const FormUsage = () => (
+  <RatingGroup.Root name="my-rating" count={5} value={3}>
+    <RatingGroup.Label>Label</RatingGroup.Label>
+    <RatingGroup.Control>
+      {(api) => (
+        <Index each={api().items}>
+          {(index) => (
+            <RatingGroup.Item index={index()}>
+              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
             </RatingGroup.Item>
           )}
         </Index>
@@ -34,7 +147,7 @@ const IconHalf = () => (
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#ffb400',
     }}
   >
@@ -58,7 +171,7 @@ const IconEmpty = () => (
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#bdbdbd',
     }}
   >
@@ -74,7 +187,7 @@ const IconFull = () => (
     viewBox="0 0 273 260"
     data-part="star"
     style={{
-      width: '1em',
+      width: '1.25rem',
       color: '#ffb400',
     }}
   >
@@ -84,33 +197,3 @@ const IconFull = () => (
     ></path>
   </svg>
 )
-
-export const ControlledRatingGroup = () => {
-  const [value, setValue] = createSignal(0)
-
-  return (
-    <RatingGroup.Root
-      count={5}
-      value={value()}
-      onValueChange={(details) => setValue(details.value)}
-      allowHalf
-    >
-      <RatingGroup.Label>Label</RatingGroup.Label>
-      <RatingGroup.Control>
-        {(api) => (
-          <Index each={api().items}>
-            {(index) => (
-              <RatingGroup.Item index={index()}>
-                {(api) => {
-                  if (api.isHalf) return <IconHalf />
-                  if (api.isHighlighted) return <IconFull />
-                  return <IconEmpty />
-                }}
-              </RatingGroup.Item>
-            )}
-          </Index>
-        )}
-      </RatingGroup.Control>
-    </RatingGroup.Root>
-  )
-}

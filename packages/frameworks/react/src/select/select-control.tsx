@@ -9,7 +9,17 @@ export const SelectControl = forwardRef<HTMLDivElement, SelectControlProps>((pro
   const api = useSelectContext()
   const mergedProps = mergeProps(api.controlProps, props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <>
+      <ark.div {...mergedProps} ref={ref} />
+      <select {...api.hiddenSelectProps}>
+        {api.collection.toArray().map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </>
+  )
 })
-
 SelectControl.displayName = 'SelectControl'

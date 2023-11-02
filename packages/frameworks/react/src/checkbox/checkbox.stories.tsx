@@ -22,12 +22,10 @@ export const Basic = () => (
 export const Controlled = () => {
   const [checked, setChecked] = useState<CheckedState>(true)
   return (
-    <>
-      <Checkbox.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>
-        <Checkbox.Label>Checkbox</Checkbox.Label>
-        <Checkbox.Control />
-      </Checkbox.Root>
-    </>
+    <Checkbox.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>
+      <Checkbox.Label>Checkbox</Checkbox.Label>
+      <Checkbox.Control />
+    </Checkbox.Root>
   )
 }
 

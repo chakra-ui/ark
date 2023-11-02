@@ -117,7 +117,7 @@ export const Vertical = () => {
 export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root multiple>
+    <Accordion.Root>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
           <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>

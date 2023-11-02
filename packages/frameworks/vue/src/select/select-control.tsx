@@ -10,9 +10,18 @@ export const SelectControl = defineComponent({
     const api = useSelectContext()
 
     return () => (
-      <ark.div {...api.value.controlProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        <ark.div {...api.value.controlProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+        <select {...api.value.hiddenSelectProps}>
+          {api.value.collection.toArray().map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </>
     )
   },
 })

@@ -1,5 +1,6 @@
 import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
@@ -16,12 +17,12 @@ export type RatingGroupItemProps = Assign<
 >
 
 export const RatingGroupItem = (props: RatingGroupItemProps) => {
-  const [ratingParams, restProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
   const api = useRatingGroupContext()
-  const itemState = api().getItemState(ratingParams)
-  const mergedProps = mergeProps(() => api().getItemProps(ratingParams), restProps)
+  const itemState = createMemo(() => api().getItemState(itemProps))
+  const getChildren = () => runIfFn(localProps.children, itemState)
 
-  const getChildren = () => runIfFn(restProps.children, itemState)
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 
   return (
     <RatingGroupItemProvider value={itemState}>
