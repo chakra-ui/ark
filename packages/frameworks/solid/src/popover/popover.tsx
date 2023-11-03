@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
@@ -36,13 +37,12 @@ export const Popover = (props: PopoverProps) => {
     'positioning',
   ])
   const api = usePopover(usePopoverProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <PopoverProvider value={api}>
-      <PresenceProvider value={() => usePresence({ ...presenceProps, present: api().isOpen })()}>
-        {getChildren()}
-      </PresenceProvider>
+      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
     </PopoverProvider>
   )
 }
