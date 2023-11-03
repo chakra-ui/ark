@@ -2,6 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { ColorPickerProvider, type ColorPickerContext } from './color-picker-context'
@@ -9,14 +15,15 @@ import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 
 export interface ColorPickerProps
   extends Assign<
-    UseColorPickerProps,
-    { children?: ReactNode | ((props: ColorPickerContext) => ReactNode) }
-  > {}
+      UseColorPickerProps,
+      { children?: ReactNode | ((props: ColorPickerContext) => ReactNode) }
+    >,
+    UsePresenceProps {}
 
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>((props, ref) => {
-  const [colorPickerProps, { children, ...localProps }] = createSplitProps<UseColorPickerProps>()(
-    props,
-    [
+  const [presenceProps, colorPickerProps] = splitPresenceProps(props)
+  const [useColorPickerProps, { children, ...localProps }] =
+    createSplitProps<UseColorPickerProps>()(colorPickerProps, [
       'autoFocus',
       'defaultValue',
       'dir',
@@ -37,18 +44,20 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>((props, 
       'positioning',
       'readOnly',
       'value',
-    ],
-  )
-  const api = useColorPicker(colorPickerProps)
+    ])
+  const api = useColorPicker(useColorPickerProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
     <ColorPickerProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
-      <input {...api.hiddenInputProps} />
+      <PresenceProvider value={presenceApi}>
+        <ark.div {...mergedProps} ref={ref}>
+          {view}
+        </ark.div>
+        <input {...api.hiddenInputProps} />
+      </PresenceProvider>
     </ColorPickerProvider>
   )
 })
