@@ -76,14 +76,7 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "ItemContent": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "disabled": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -97,6 +90,13 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
+    }
+  },
+  "ItemContent": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   },
   "ItemTrigger": {
