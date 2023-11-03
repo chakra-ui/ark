@@ -39,7 +39,10 @@ export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => 
 
   watch(nodeRef, () => {
     if (nodeRef.value) {
-      api.value.setNode(nodeRef.value.$el)
+      const node = nodeRef.value.$el ? nodeRef.value.$el : nodeRef.value
+      if (node) {
+        api.value.setNode(node)
+      }
     }
   })
 
