@@ -19,9 +19,15 @@ export const Basic = () => (
       <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
       <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="react">React Content</Tabs.Content>
-    <Tabs.Content value="vue">Vue Content</Tabs.Content>
-    <Tabs.Content value="solid">Solid Content</Tabs.Content>
+    <Tabs.Content value="react" lazyMount unmountOnExit>
+      React Content
+    </Tabs.Content>
+    <Tabs.Content value="vue" lazyMount unmountOnExit>
+      Vue Content
+    </Tabs.Content>
+    <Tabs.Content value="solid" lazyMount unmountOnExit>
+      Solid Content
+    </Tabs.Content>
   </Tabs.Root>
 )
 

@@ -5,7 +5,13 @@ import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Tabs, type TabsProps } from './'
 
-const ComponentUnderTest = (props: TabsProps) => {
+interface Props extends TabsProps {
+  lazyMount?: boolean
+  unmountOnExit?: boolean
+}
+
+const ComponentUnderTest = (props: Props) => {
+  const { lazyMount, unmountOnExit, ...rest } = props
   const items = [
     { value: 'React' },
     { value: 'Solid' },
@@ -13,7 +19,7 @@ const ComponentUnderTest = (props: TabsProps) => {
     { value: 'Vue' },
   ]
   return (
-    <Tabs.Root {...props}>
+    <Tabs.Root {...rest}>
       <Tabs.List>
         {items.map((item, id) => (
           <Tabs.Trigger key={id} value={item.value} disabled={item.disabled}>
@@ -23,7 +29,12 @@ const ComponentUnderTest = (props: TabsProps) => {
         <Tabs.Indicator />
       </Tabs.List>
       {items.map((item, id) => (
-        <Tabs.Content key={id} value={item.value}>
+        <Tabs.Content
+          key={id}
+          value={item.value}
+          lazyMount={lazyMount}
+          unmountOnExit={unmountOnExit}
+        >
           {item.value} Content
         </Tabs.Content>
       ))}
@@ -111,5 +122,22 @@ describe('Tabs', () => {
   it('should render the content of tab when active', async () => {
     render(<ComponentUnderTest defaultValue="React" />)
     expect(screen.getByText('React Content')).toBeVisible()
+  })
+
+  it('should lazy mount a tab', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByText('React Trigger'))
+    expect(screen.queryByText('React Content')).toBeInTheDocument()
+  })
+
+  it('should lazy mount and unmount on exit a tab', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByText('React Trigger'))
+    expect(screen.queryByText('React Content')).toBeVisible()
+
+    await user.click(screen.getByText('Solid Trigger'))
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
   })
 })
