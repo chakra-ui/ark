@@ -1,5 +1,5 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports } from '../setup-test'
 import { Editable, type EditableProps } from './'
@@ -65,7 +65,7 @@ describe('Editable', () => {
     await user.type(input, 'Solid')
     await user.click(screen.getByText('Save'))
 
-    expect(await screen.findByText('Solid')).toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {
