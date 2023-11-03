@@ -9,11 +9,11 @@ export interface PopoverContentProps extends HTMLArkProps<'div'> {}
 export const PopoverContent = (props: PopoverContentProps) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().contentProps, presenceApi().presenceProps, props)
+  const mergedProps = mergeProps(() => api().contentProps, props)
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} {...presenceApi().presenceProps} />
     </Show>
   )
 }

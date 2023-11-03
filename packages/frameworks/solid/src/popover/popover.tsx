@@ -36,12 +36,13 @@ export const Popover = (props: PopoverProps) => {
     'positioning',
   ])
   const api = usePopover(usePopoverProps)
-  const presenceApi = usePresence(presenceProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <PopoverProvider value={api}>
-      <PresenceProvider value={presenceApi}>{getChildren()}</PresenceProvider>
+      <PresenceProvider value={() => usePresence({ ...presenceProps, present: api().isOpen })()}>
+        {getChildren()}
+      </PresenceProvider>
     </PopoverProvider>
   )
 }

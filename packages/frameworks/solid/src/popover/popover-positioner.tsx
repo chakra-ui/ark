@@ -9,7 +9,7 @@ export type PopoverPositionerProps = HTMLArkProps<'div'>
 export const PopoverPositioner = (props: PopoverPositionerProps) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().positionerProps, presenceApi().presenceProps, props)
+  const mergedProps = mergeProps(() => api().positionerProps, props)
 
   return (
     <Show when={!presenceApi().isUnmounted}>
