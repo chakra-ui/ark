@@ -10,7 +10,7 @@ const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
     <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>
-      <HoverCard.Positioner>
+      <HoverCard.Positioner data-testid="positioner">
         <HoverCard.Content>
           <HoverCard.Arrow>
             <HoverCard.ArrowTip />
@@ -52,5 +52,24 @@ describe('HoverCard', () => {
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
     expect(onOpen).toHaveBeenCalledTimes(1)
+  })
+
+  it('should lazy mount', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.hover(screen.getByText('Hover me'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.hover(screen.getByText('Hover me'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.unhover(screen.getByText('Hover me'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

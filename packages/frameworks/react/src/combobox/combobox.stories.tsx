@@ -15,7 +15,7 @@ export default meta
 export const Basic = () => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Combobox.Root items={items}>
+    <Combobox.Root items={items} lazyMount unmountOnExit>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
