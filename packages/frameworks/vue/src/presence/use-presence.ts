@@ -5,7 +5,20 @@ import type { Optional } from '../types'
 import { generateEventMap } from '../utils'
 import { emits } from './presence.props'
 
-export type UsePresenceProps = Optional<presence.Context, 'present'>
+export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
+  /**
+   * Whether to enable lazy mounting
+   * @default false
+   */
+  lazyMount?: boolean
+  /**
+   * Whether to unmount on exit.
+   * @default false
+   */
+  unmountOnExit?: boolean
+}
+
+export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => {
   const context = ref(props)
