@@ -76,6 +76,12 @@
       "isRequired": false,
       "description": "The value of the item"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -91,6 +97,7 @@
       "isRequired": false,
       "description": "The `name` attribute of the underlying select."
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -131,6 +138,7 @@
       "isRequired": false,
       "description": "The positioning options of the menu."
     },
+    "present": { "type": "boolean", "isRequired": false },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -140,6 +148,12 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to select the highlighted item when the user presses Tab,\nand the menu is open."
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": {
       "type": "string[]",
@@ -167,20 +181,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Control": {
