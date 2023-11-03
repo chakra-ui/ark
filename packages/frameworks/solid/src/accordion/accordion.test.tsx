@@ -3,10 +3,14 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
+import { splitPresenceProps, type UsePresenceProps } from '../presence'
 import { getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
-const ComponentUnderTest = (props: AccordionProps) => {
+interface Props extends AccordionProps, UsePresenceProps {}
+
+const ComponentUnderTest = (props: Props) => {
+  const [presenceProps, accordionProps] = splitPresenceProps(props)
   const items = [
     { value: 'React' },
     { value: 'Solid' },
@@ -14,10 +18,10 @@ const ComponentUnderTest = (props: AccordionProps) => {
     { value: 'Vue' },
   ]
   return (
-    <Accordion.Root {...props}>
+    <Accordion.Root {...accordionProps}>
       <For each={items}>
         {(item) => (
-          <Accordion.Item value={item.value} disabled={item.disabled}>
+          <Accordion.Item value={item.value} disabled={item.disabled} {...presenceProps}>
             <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
             <Accordion.ItemIndicator />
             <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
@@ -165,5 +169,27 @@ describe('Accordion', () => {
 
     await user.type(firstTrigger, '{tab}')
     expect(secondTrigger).toHaveFocus()
+  })
+
+  it('should lazy mount an accordion item', async () => {
+    render(() => <ComponentUnderTest lazyMount collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeVisible()
+  })
+
+  it('should lazy mount and unmount on exit an accordion item', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
   })
 })
