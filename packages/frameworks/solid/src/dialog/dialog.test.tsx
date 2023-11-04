@@ -37,8 +37,6 @@ describe('Dialog', () => {
   it('should be able to lazy mount', async () => {
     render(() => <ComponentUnderTest lazyMount />)
 
-    screen.debug()
-
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
     expect(screen.queryByRole('dialog')).toBeInTheDocument()
