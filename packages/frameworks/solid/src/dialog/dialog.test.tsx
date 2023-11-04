@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { Portal } from 'solid-js/web'
 import { Dialog, type DialogProps } from './'
 
-const ComponentUnderTest = (props: DialogProps) => (
+const ComponentUnderTest = (props: Omit<DialogProps, 'children'>) => (
   <Dialog.Root {...props}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
@@ -32,5 +32,31 @@ describe('Dialog', () => {
 
     await user.click(screen.getByText('Close'))
     expect(await screen.findByText('Dialog Title')).not.toBeVisible()
+  })
+
+  it('should be able to lazy mount', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+
+    screen.debug()
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
+    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+
+    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit />)
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
+    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 })
