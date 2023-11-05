@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { splitPresenceProps, type UsePresenceProps } from '../presence'
+import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
@@ -31,8 +31,10 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
-    <AccordionProvider value={{ ...api, ...presenceProps }}>
-      <ark.div {...mergedProps} ref={ref} />
+    <AccordionProvider value={api}>
+      <PresencePropsProvider value={presenceProps}>
+        <ark.div {...mergedProps} ref={ref} />
+      </PresencePropsProvider>
     </AccordionProvider>
   )
 })
