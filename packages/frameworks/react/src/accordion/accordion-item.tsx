@@ -3,12 +3,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import {
-  PresenceProvider,
-  splitPresenceProps,
-  usePresence,
-  type UsePresenceProps,
-} from '../presence'
+import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
@@ -19,26 +14,24 @@ export interface AccordionItemProps
     Assign<
       HTMLArkProps<'div'>,
       { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
-    >,
-    UsePresenceProps {}
+    > {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [presenceProps, accordionItemProps] = splitPresenceProps(props)
-  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(
-    accordionItemProps,
-    ['value', 'disabled'],
-  )
+  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [
+    'value',
+    'disabled',
+  ])
 
   const api = useAccordionContext()
+  const [presenceProps] = splitPresenceProps(api)
   const itemState = api.getItemState(itemProps)
-  const presenceApi = usePresence({ ...presenceProps, present: itemState.isOpen })
-
+  const itemPresenceApi = usePresence({ ...presenceProps, present: itemState.isOpen })
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
   const view = runIfFn(children, itemState)
 
   return (
     <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
-      <PresenceProvider value={presenceApi}>
+      <PresenceProvider value={itemPresenceApi}>
         <ark.div {...mergedProps} ref={ref}>
           {view}
         </ark.div>

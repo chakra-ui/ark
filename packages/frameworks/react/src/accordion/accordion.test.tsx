@@ -5,13 +5,7 @@ import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
-interface Props extends AccordionProps {
-  lazyMount?: boolean
-  unmountOnExit?: boolean
-}
-
-const ComponentUnderTest = (props: Props) => {
-  const { lazyMount, unmountOnExit, ...rest } = props
+const ComponentUnderTest = (props: AccordionProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },
@@ -19,15 +13,9 @@ const ComponentUnderTest = (props: Props) => {
     { value: 'Vue' },
   ]
   return (
-    <Accordion.Root {...rest}>
+    <Accordion.Root {...props}>
       {items.map((item, id) => (
-        <Accordion.Item
-          key={id}
-          value={item.value}
-          disabled={item.disabled}
-          lazyMount={lazyMount}
-          unmountOnExit={unmountOnExit}
-        >
+        <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
           <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
           <Accordion.ItemIndicator>Icon</Accordion.ItemIndicator>
           <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
