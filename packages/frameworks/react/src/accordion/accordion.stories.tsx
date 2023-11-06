@@ -14,7 +14,7 @@ export default meta
 export const Basic = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root lazyMount>
+    <Accordion.Root>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.ItemTrigger>{item} Trigger</Accordion.ItemTrigger>

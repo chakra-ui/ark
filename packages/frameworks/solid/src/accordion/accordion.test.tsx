@@ -3,14 +3,10 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import { splitPresenceProps, type UsePresenceProps } from '../presence'
 import { getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
-interface Props extends AccordionProps, UsePresenceProps {}
-
-const ComponentUnderTest = (props: Props) => {
-  const [presenceProps, accordionProps] = splitPresenceProps(props)
+const ComponentUnderTest = (props: AccordionProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },
@@ -18,10 +14,10 @@ const ComponentUnderTest = (props: Props) => {
     { value: 'Vue' },
   ]
   return (
-    <Accordion.Root {...accordionProps}>
+    <Accordion.Root {...props}>
       <For each={items}>
         {(item) => (
-          <Accordion.Item value={item.value} disabled={item.disabled} {...presenceProps}>
+          <Accordion.Item value={item.value} disabled={item.disabled}>
             <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
             <Accordion.ItemIndicator />
             <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
