@@ -20,7 +20,7 @@
     "@pandacss/astro": "0.17.5",
     "@pandacss/dev": "0.17.5",
     "@park-ui/panda-preset": "0.21.0",
-    "@types/react": "18.2.34",
+    "@types/react": "18.2.35",
     "@types/react-dom": "18.2.14",
     "@zag-js/anatomy-icons": "0.27.1",
     "astro": "3.4.3",
