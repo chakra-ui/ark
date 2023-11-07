@@ -29,7 +29,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
 
   return (
     <PresenceProvider value={presenceApi}>
-      {presenceApi.isUnmounted ? null : <ark.div {...mergedProps} ref={ref} />}
+      {presenceApi.isUnmounted ? null : <ark.div {...mergedProps} />}
     </PresenceProvider>
   )
 })
