@@ -17,7 +17,7 @@ describe('Checkbox', () => {
 
   it('should handle check and unchecked', async () => {
     const onCheckedChange = vi.fn()
-    const { getByRole } = render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} />)
+    const { getByRole } = render(ComponentUnderTest, { props: { onCheckedChange } })
 
     const checkbox = getByRole('checkbox')
 
@@ -47,7 +47,7 @@ describe('Checkbox', () => {
   })
 
   it('should handle indeterminate state from example', async () => {
-    const { getByTestId } = render(() => <ComponentUnderTest modelValue={'indeterminate'} />)
+    const { getByTestId } = render(ComponentUnderTest, { props: { modelValue: 'indeterminate' } })
     expect(getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 })
