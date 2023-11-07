@@ -98,7 +98,7 @@ describe('Select', () => {
     user.click(trigger)
     const item = screen.getByText('React', { ignore: 'option' })
     user.click(item)
-    waitFor(() => {
+    await waitFor(() => {
       expect(onChange).toHaveBeenCalledTimes(1)
     })
   })
