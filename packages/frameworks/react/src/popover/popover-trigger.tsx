@@ -8,12 +8,11 @@ export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>((props, ref) => {
   const api = usePopoverContext()
-  const presence = usePresenceContext()
-
+  const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
     {
       ...api.triggerProps,
-      'aria-controls': presence.isUnmounted ? undefined : api.triggerProps['aria-controls'],
+      'aria-controls': presenceApi.isUnmounted ? undefined : api.triggerProps['aria-controls'],
     },
     props,
   )
