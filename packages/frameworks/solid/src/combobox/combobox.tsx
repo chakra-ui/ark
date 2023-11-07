@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {

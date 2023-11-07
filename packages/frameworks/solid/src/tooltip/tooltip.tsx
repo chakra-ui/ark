@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
   PresenceProvider,
@@ -12,7 +12,7 @@ import { TooltipProvider } from './tooltip-context'
 import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
 export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
-  children: JSX.Element | ((api: UseTooltipReturn) => JSX.Element)
+  children?: JSX.Element | ((api: UseTooltipReturn) => JSX.Element)
 }
 
 export const Tooltip = (props: TooltipProps) => {

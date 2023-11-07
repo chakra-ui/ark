@@ -4,7 +4,7 @@ import { Portal } from 'solid-js/web'
 import { vi } from 'vitest'
 import { HoverCard, type HoverCardProps } from '..'
 
-const ComponentUnderTest = (props: Omit<HoverCardProps, 'children'>) => (
+const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
     <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>

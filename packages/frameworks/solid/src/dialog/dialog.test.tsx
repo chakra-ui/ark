@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { Portal } from 'solid-js/web'
 import { Dialog, type DialogProps } from './'
 
-const ComponentUnderTest = (props: Omit<DialogProps, 'children'>) => (
+const ComponentUnderTest = (props: DialogProps) => (
   <Dialog.Root {...props}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>

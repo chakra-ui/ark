@@ -2,11 +2,14 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
+import type { Assign } from '../types'
 import { useRatingGroupContext, type RatingGroupContext } from './rating-group-context'
 
-export interface RatingGroupControlProps extends Omit<HTMLArkProps<'div'>, 'children'> {
-  children?: ReactNode | ((context: RatingGroupContext) => ReactNode)
-}
+export interface RatingGroupControlProps
+  extends Assign<
+    HTMLArkProps<'div'>,
+    { children?: ReactNode | ((props: RatingGroupContext) => ReactNode) }
+  > {}
 
 export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlProps>(
   (props, ref) => {

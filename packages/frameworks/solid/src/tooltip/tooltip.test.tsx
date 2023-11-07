@@ -2,7 +2,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Tooltip, type TooltipProps } from './'
 
-const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
+const ComponentUnderTest = (props: TooltipProps) => (
   <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
     <Tooltip.Trigger>hover me</Tooltip.Trigger>
     <Tooltip.Positioner>

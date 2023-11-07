@@ -1,7 +1,6 @@
 import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
-import { type JSX } from 'solid-js/jsx-runtime'
+import { createMemo, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -12,7 +11,7 @@ import { RatingGroupItemProvider, type RatingGroupItemContext } from './rating-g
 export type RatingGroupItemProps = Assign<
   HTMLArkProps<'span'>,
   ItemProps & {
-    children: (state: RatingGroupItemContext) => JSX.Element | JSX.Element
+    children?: (state: RatingGroupItemContext) => JSX.Element | JSX.Element
   }
 >
 

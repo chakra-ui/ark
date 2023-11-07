@@ -12,7 +12,7 @@ import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 
 export interface DialogProps extends UseDialogProps, UsePresenceProps {
-  children: JSX.Element | ((api: UseDialogReturn) => JSX.Element)
+  children?: JSX.Element | ((api: UseDialogReturn) => JSX.Element)
 }
 
 export const Dialog = (props: DialogProps) => {

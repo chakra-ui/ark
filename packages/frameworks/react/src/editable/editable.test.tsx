@@ -4,7 +4,7 @@ import user from '@testing-library/user-event'
 import { getExports } from '../setup-test'
 import { Editable, type EditableProps } from './'
 
-const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
+const ComponentUnderTest = (props: EditableProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
     {({ isEditing }) => (
       <>

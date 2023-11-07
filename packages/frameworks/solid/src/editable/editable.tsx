@@ -10,7 +10,7 @@ import { useEditable, type UseEditableProps } from './use-editable'
 export type EditableProps = Assign<
   HTMLArkProps<'div'>,
   UseEditableProps & {
-    children: JSX.Element | ((api: EditableContext) => JSX.Element)
+    children?: JSX.Element | ((api: EditableContext) => JSX.Element)
   }
 >
 

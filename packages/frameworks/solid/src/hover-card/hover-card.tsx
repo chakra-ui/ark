@@ -12,7 +12,7 @@ import { HoverCardProvider } from './hover-card-context'
 import { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
 
 export interface HoverCardProps extends UseHoverCardProps, UsePresenceProps {
-  children: JSX.Element | ((api: UseHoverCardReturn) => JSX.Element)
+  children?: JSX.Element | ((api: UseHoverCardReturn) => JSX.Element)
 }
 export const HoverCard = (props: HoverCardProps) => {
   const [presenceProps, hoverCardProps] = splitPresenceProps(props)
