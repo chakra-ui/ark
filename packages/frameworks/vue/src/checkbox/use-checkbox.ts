@@ -6,7 +6,7 @@ import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
-  modelValue?: checkbox.Context['checked']
+  modelValue?: checkbox.Context['value']
 }
 
 export type UseCheckboxReturn = ComputedRef<checkbox.Api<PropTypes>>
