@@ -1,21 +1,30 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import type { Assign, CollectionItem } from '../types'
-import { ComboboxProvider, type ComboboxContext } from './combobox-context'
-import { useCombobox, type UseComboboxProps } from './use-combobox'
+import { ComboboxProvider } from './combobox-context'
+import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export type ComboboxProps<T extends CollectionItem> = Assign<
-  HTMLArkProps<'div'>,
-  UseComboboxProps<T>
-> & {
-  children?: JSX.Element | ((context: ComboboxContext<T>) => JSX.Element)
-}
+export interface ComboboxProps<T extends CollectionItem>
+  extends Assign<
+      HTMLArkProps<'div'>,
+      UseComboboxProps<T> & {
+        children?: JSX.Element | ((state: UseComboboxReturn<T>) => JSX.Element)
+      }
+    >,
+    UsePresenceProps {}
 
 export const Combobox = <T extends CollectionItem>(props: ComboboxProps<T>) => {
-  const [selectProps, localProps] = createSplitProps<UseComboboxProps<T>>()(props, [
+  const [presenceProps, comboboxProps] = splitPresenceProps(props)
+  const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
     'allowCustomValue',
     'autoFocus',
     'closeOnSelect',
@@ -54,13 +63,16 @@ export const Combobox = <T extends CollectionItem>(props: ComboboxProps<T>) => {
     'value',
   ])
 
-  const api = useCombobox(selectProps)
+  const api = useCombobox(useComboboxProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <ComboboxProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <PresenceProvider value={apiPresence}>
+        <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      </PresenceProvider>
     </ComboboxProvider>
   )
 }

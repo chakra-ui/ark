@@ -1,5 +1,11 @@
 import { useCallback, useEffect, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useEffectOnce } from '../use-effect-once'
@@ -19,15 +25,17 @@ interface MenuState {
 
 export interface MenuProps
   extends Assign<
-    UseMenuProps,
-    {
-      children?: ReactNode | ((state: MenuState) => ReactNode)
-      isOpen?: boolean
-    }
-  > {}
+      UseMenuProps,
+      {
+        children?: ReactNode | ((state: MenuState) => ReactNode)
+        isOpen?: boolean
+      }
+    >,
+    UsePresenceProps {}
 
 export const Menu = (props: MenuProps) => {
-  const [menuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(props, [
+  const [presenceProps, menuProps] = splitPresenceProps(props)
+  const [useMenuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
@@ -50,8 +58,8 @@ export const Menu = (props: MenuProps) => {
   const parentApi = useMenuContext() as UseMenuReturn['api']
   const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
 
-  const { api, machine } = useMenu(menuProps)
-
+  const { api, machine } = useMenu(useMenuProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
   const view = runIfFn<ReactNode, MenuState>(children, {
     isOpen: api.isOpen,
     onClose: api.close,
@@ -76,7 +84,9 @@ export const Menu = (props: MenuProps) => {
   return (
     <MenuTriggerItemProvider value={getTriggerItemProps}>
       <MenuMachineProvider value={machine}>
-        <MenuProvider value={api}>{view}</MenuProvider>
+        <MenuProvider value={api}>
+          <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+        </MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>
   )

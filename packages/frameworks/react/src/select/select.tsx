@@ -2,6 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign, type CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
@@ -9,18 +15,20 @@ import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-sele
 
 export interface SelectProps<T extends CollectionItem>
   extends Assign<
-    HTMLArkProps<'div'>,
-    UseSelectProps<T> & {
-      children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
-    }
-  > {}
+      HTMLArkProps<'div'>,
+      UseSelectProps<T> & {
+        children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
+      }
+    >,
+    UsePresenceProps {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ) => {
+  const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, { children, ...localProps }] = createSplitProps<UseSelectProps<T>>()(
-    props,
+    selectProps,
     [
       'closeOnSelect',
       'defaultValue',
@@ -53,14 +61,17 @@ const SelectImpl = <T extends CollectionItem>(
     ],
   )
   const api = useSelect(useSelectProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
     <SelectProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+      <PresenceProvider value={presenceApi}>
+        <ark.div {...mergedProps} ref={ref}>
+          {view}
+        </ark.div>
+      </PresenceProvider>
     </SelectProvider>
   )
 }

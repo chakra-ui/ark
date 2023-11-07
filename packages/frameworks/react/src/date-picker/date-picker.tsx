@@ -2,6 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { DatePickerProvider, type DatePickerContext } from './date-picker-context'
@@ -9,13 +15,15 @@ import { useDatePicker, type UseDatePickerProps } from './use-date-picker'
 
 export interface DatePickerProps
   extends Assign<
-    UseDatePickerProps,
-    { children?: ReactNode | ((props: DatePickerContext) => ReactNode) }
-  > {}
+      UseDatePickerProps,
+      { children?: ReactNode | ((props: DatePickerContext) => ReactNode) }
+    >,
+    UsePresenceProps {}
 
 export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, ref) => {
-  const [datePickerProps, { children, ...localProps }] = createSplitProps<UseDatePickerProps>()(
-    props,
+  const [presenceProps, datePickerProps] = splitPresenceProps(props)
+  const [useDatePickerProps, { children, ...localProps }] = createSplitProps<UseDatePickerProps>()(
+    datePickerProps,
     [
       'closeOnSelect',
       'defaultValue',
@@ -51,15 +59,18 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, re
       'view',
     ],
   )
-  const api = useDatePicker(datePickerProps)
+  const api = useDatePicker(useDatePickerProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
     <DatePickerProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+      <PresenceProvider value={presenceApi}>
+        <ark.div {...mergedProps} ref={ref}>
+          {view}
+        </ark.div>
+      </PresenceProvider>
     </DatePickerProvider>
   )
 })

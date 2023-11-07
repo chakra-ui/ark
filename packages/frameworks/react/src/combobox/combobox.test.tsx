@@ -29,7 +29,7 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
         <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner data-testid="positioner">
           <Combobox.Content>
             <Combobox.ItemGroup id="framework">
               <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
@@ -102,5 +102,24 @@ describe('Combobox', () => {
     user.click(screen.getByTestId('trigger'))
 
     await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
+  })
+
+  it('should be able to lazy mount its items', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should be able to lazy mount and unmount its items', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

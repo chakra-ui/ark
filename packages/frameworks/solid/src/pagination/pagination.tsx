@@ -10,7 +10,7 @@ import { usePagination, type UsePaginationProps, type UsePaginationReturn } from
 export type PaginationProps = Assign<
   HTMLArkProps<'nav'>,
   UsePaginationProps & {
-    children: JSX.Element | ((pages: UsePaginationReturn) => JSX.Element)
+    children?: JSX.Element | ((pages: UsePaginationReturn) => JSX.Element)
   }
 >
 

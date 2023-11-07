@@ -1,11 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverPositionerProps = HTMLArkProps<'div'>
 
 export const PopoverPositioner = (props: PopoverPositionerProps) => {
   const api = usePopoverContext()
-  const positionerProps = mergeProps(() => api().positionerProps, props)
-  return <ark.div {...positionerProps} />
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(() => api().positionerProps, props)
+
+  return (
+    <Show when={!presenceApi().isUnmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
+  )
 }

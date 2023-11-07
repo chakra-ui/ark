@@ -4,7 +4,7 @@ import user from '@testing-library/user-event'
 import { getParts } from '../setup-test'
 import { Pagination, type PaginationProps } from './'
 
-const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
+const ComponentUnderTest = (props: PaginationProps) => (
   <Pagination.Root {...props}>
     {({ pages }) => (
       <>

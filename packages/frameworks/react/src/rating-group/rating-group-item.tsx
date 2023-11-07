@@ -11,7 +11,7 @@ export interface RatingGroupItemProps
   extends Assign<
     HTMLArkProps<'span'>,
     ItemProps & {
-      children: (state: RatingGroupItemContext) => ReactNode | ReactNode
+      children?: (state: RatingGroupItemContext) => ReactNode | ReactNode
     }
   > {}
 

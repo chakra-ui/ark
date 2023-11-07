@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { Presence, type PresenceProps } from './'
 
-const ComponentUnderTest = (props: Omit<PresenceProps, 'present' | 'children'>) => {
+const ComponentUnderTest = (props: PresenceProps) => {
   const [present, setPresent] = useState(false)
   return (
     <div>

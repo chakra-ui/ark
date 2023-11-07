@@ -24,7 +24,7 @@ describe('Menu', () => {
     expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  // it.each(getExports(menuAnatomy))('should export %s', async (part) => {
   //   expect(Menu[part]).toBeDefined()
   // })
 

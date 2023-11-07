@@ -1,20 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
-import type { Assign } from '../types'
+import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export interface DialogBackdropProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'fallback'>> {}
+export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 
 export const DialogBackdrop = (props: DialogBackdropProps) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useDialogContext()
-  const mergedProps = mergeProps(() => api().backdropProps, localProps)
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(() => api().backdropProps, props)
 
   return (
-    <Presence present={api().isOpen} {...presenceProps} fallback={<div {...api().backdropProps} />}>
+    <Show when={!presenceApi().isUnmounted}>
       <ark.div {...mergedProps} />
-    </Presence>
+    </Show>
   )
 }
