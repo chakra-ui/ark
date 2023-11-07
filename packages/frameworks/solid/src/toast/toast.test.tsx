@@ -4,11 +4,11 @@ import { Toast, createToaster } from './'
 
 const [Toaster, toast] = createToaster({
   placement: 'top-end',
-  render() {
+  render(toast) {
     return (
       <Toast.Root>
-        <Toast.Title />
-        <Toast.Description />
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
         <Toast.CloseTrigger>Close</Toast.CloseTrigger>
       </Toast.Root>
     )
@@ -25,19 +25,16 @@ export const ComponentUnderTest = () => (
 )
 
 describe('Toast', () => {
-  it.skip('should show a toast message', async () => {
+  it('should show and hide a toast message', async () => {
     render(() => <ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
 
-    expect(screen.getByText('Title')).toBeVisible()
-    expect(screen.getByText('Description')).toBeVisible()
-    expect(screen.getByText('Close')).toBeVisible()
-  })
+    await waitFor(() => expect(screen.queryByText('Title')).toBeVisible())
+    await waitFor(() => expect(screen.queryByText('Description')).toBeVisible())
 
-  it.skip('should hide a toast message after close button is clicked', async () => {
-    render(() => <ComponentUnderTest />)
-    await user.click(screen.getByText('Create Toast'))
-    await waitFor(() => user.click(screen.getByText('Close')))
-    await waitFor(() => expect(screen.queryByText('Title')).not.toBeVisible())
+    await user.click(screen.getByText('Close'))
+
+    await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
+    await waitFor(() => expect(screen.queryByText('Description')).not.toBeInTheDocument())
   })
 })
