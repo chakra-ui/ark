@@ -12,7 +12,7 @@ import { PopoverProvider } from './popover-context'
 import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
 export interface PopoverProps extends UsePopoverProps, UsePresenceProps {
-  children: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
+  children?: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
 }
 
 export const Popover = (props: PopoverProps) => {

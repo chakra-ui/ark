@@ -46,6 +46,11 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
   })
 
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    expect(screen.getByRole('button', { name: 'Open Dialog' })).not.toHaveAttribute('aria-controls')
+  })
+
   it('should lazy mount and unmount on exit', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
 

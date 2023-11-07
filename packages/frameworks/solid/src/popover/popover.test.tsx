@@ -1,8 +1,8 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { useState } from 'react'
-import { getExports, getParts } from '../setup-test'
+import { createSignal } from 'solid-js'
+import { getParts } from '../setup-test'
 import { Popover, type PopoverProps } from './'
 
 const ComponentUnderTest = (props: PopoverProps) => (
@@ -27,16 +27,12 @@ const ComponentUnderTest = (props: PopoverProps) => (
 
 describe('Popover', () => {
   it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
-    expect(Popover[part]).toBeDefined()
-  })
-
   it('should open and close the popover', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
     expect(screen.getByRole('dialog')).toBeInTheDocument()
@@ -46,7 +42,7 @@ describe('Popover', () => {
   })
 
   it.skip('should hide the popover when escape is pressed', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
     expect(screen.getByRole('dialog')).toBeInTheDocument()
@@ -56,7 +52,7 @@ describe('Popover', () => {
   })
 
   it('should focus the first focusable element', async () => {
-    render(<ComponentUnderTest />)
+    render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
     expect(screen.getByRole('dialog')).toBeInTheDocument()
@@ -64,16 +60,16 @@ describe('Popover', () => {
 
   it('should allow controlled usage', async () => {
     const ControlledComponentUnderTest = (props: PopoverProps) => {
-      const [open, setOpen] = useState(false)
+      const [open, setOpen] = createSignal(false)
       return (
         <>
           <button onClick={() => setOpen((prev) => !prev)}>toggle</button>
-          <ComponentUnderTest {...props} open={open} />
+          <ComponentUnderTest {...props} open={open()} />
         </>
       )
     }
 
-    render(<ControlledComponentUnderTest />)
+    render(() => <ControlledComponentUnderTest />)
     expect(screen.queryByText('title')).not.toBeVisible()
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
@@ -85,12 +81,12 @@ describe('Popover', () => {
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
-    render(<ComponentUnderTest lazyMount />)
+    render(() => <ComponentUnderTest lazyMount />)
     expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
   })
 
   it('should be able to lazy mount', async () => {
-    render(<ComponentUnderTest lazyMount />)
+    render(() => <ComponentUnderTest lazyMount />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'click me' }))
