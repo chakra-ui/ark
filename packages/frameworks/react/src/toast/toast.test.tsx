@@ -38,10 +38,10 @@ describe('Toast', () => {
     render(<ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
 
-    waitFor(() => {
+    await waitFor(() => {
       user.click(screen.getByText('Close'))
     })
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.queryByText('Title')).not.toBeVisible()
       expect(screen.queryByText('Description')).not.toBeVisible()
     })

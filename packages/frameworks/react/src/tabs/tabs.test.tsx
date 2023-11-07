@@ -89,19 +89,19 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 
-    await user.click(lastTab)
-    waitFor(() => expect(lastTab).toHaveFocus())
+    user.click(lastTab)
+    await waitFor(() => expect(lastTab).toHaveFocus())
 
-    await user.keyboard('[ArrowRight]')
-    waitFor(() => expect(firstTab).toHaveFocus())
+    user.keyboard('[ArrowRight]')
+    await waitFor(() => expect(firstTab).toHaveFocus())
   })
 
   it('should not loop focus if loop is false', async () => {
     render(<ComponentUnderTest loop={false} />)
     const lastTab = screen.getByText('Vue Trigger')
 
-    await user.click(lastTab)
-    waitFor(() => expect(lastTab).toHaveFocus())
+    user.click(lastTab)
+    await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
     expect(lastTab).toHaveFocus()
@@ -112,11 +112,11 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const secondTab = screen.getByText('Solid Trigger')
 
-    await user.click(firstTab)
-    waitFor(() => expect(firstTab).toHaveFocus())
+    user.click(firstTab)
+    await waitFor(() => expect(firstTab).toHaveFocus())
 
-    await user.keyboard('[ArrowDown]')
-    waitFor(() => expect(secondTab).toHaveFocus())
+    user.keyboard('[ArrowDown]')
+    await waitFor(() => expect(secondTab).toHaveFocus())
   })
 
   it('should render the content of tab when active', async () => {
