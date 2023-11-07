@@ -178,6 +178,15 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).not.toBeVisible()
   })
 
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    const trigger = screen.getByRole('button', { name: 'React Trigger' })
+    expect(trigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(trigger)
+    expect(trigger).toHaveAttribute('aria-controls')
+  })
+
   it('should lazy mount and unmount on exit an accordion item', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit collapsible />)
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
