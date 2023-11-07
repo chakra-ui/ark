@@ -37,7 +37,7 @@ export const props = {
     default: undefined,
   },
   modelValue: {
-    type: String as PropType<Context['value']>,
+    type: String as PropType<Context['checked']>,
   },
 }
 export const emits = declareEmits(['checked-change', 'update:modelValue'])
