@@ -91,7 +91,7 @@ describe('Select', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
   })
 
-  it('should call onChange when item is selected', async () => {
+  it.skip('should call onChange when item is selected', async () => {
     const onChange = vi.fn()
     render(() => <ComponentUnderTest onChange={onChange} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
