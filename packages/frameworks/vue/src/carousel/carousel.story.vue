@@ -1,15 +1,6 @@
 <script setup lang="ts">
-import {
-  Carousel,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
-  CarouselViewport,
-} from './'
+import { ref } from 'vue'
+import { Carousel } from './'
 import './carousel.css'
 
 const images = [
@@ -19,32 +10,87 @@ const images = [
   'https://tinyurl.com/6jurv23t',
   'https://tinyurl.com/yp4rfum7',
 ]
+const index = ref(0)
 </script>
 <template>
   <Story title="Carousel">
     <Variant title="Basic">
-      <Carousel>
-        <CarouselControl>
-          <CarouselPrevSlideTrigger>Prev</CarouselPrevSlideTrigger>
-          <CarouselNextSlideTrigger>Next</CarouselNextSlideTrigger>
-        </CarouselControl>
-        <CarouselViewport>
-          <CarouselSlideGroup>
-            <CarouselSlide v-for="(image, idx) in images" :key="idx" :index="idx">
+      <Carousel.Root>
+        <Carousel.Control>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        </Carousel.Control>
+        <Carousel.IndicatorGroup>
+          <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx">
+            {{ idx + 1 }}
+          </Carousel.Indicator>
+        </Carousel.IndicatorGroup>
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
               <img
                 :src="image"
                 alt=""
                 :style="{ height: '300px', width: '100%', objectFit: 'cover' }"
               />
-            </CarouselSlide>
-          </CarouselSlideGroup>
-        </CarouselViewport>
-        <CarouselIndicatorGroup>
-          <CarouselIndicator v-for="(_, idx) in images" :key="idx" :index="idx">
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+      </Carousel.Root>
+    </Variant>
+    <Variant title="Controlled">
+      <Carousel.Root v-model="index">
+        <Carousel.Control>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        </Carousel.Control>
+        <Carousel.IndicatorGroup>
+          <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx">
             {{ idx + 1 }}
-          </CarouselIndicator>
-        </CarouselIndicatorGroup>
-      </Carousel>
+          </Carousel.Indicator>
+        </Carousel.IndicatorGroup>
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
+              <img
+                :src="image"
+                alt=""
+                :style="{ height: '300px', width: '100%', objectFit: 'cover' }"
+              />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+      </Carousel.Root>
+    </Variant>
+    <Variant title="Customized">
+      <Carousel.Root
+        :align="'center'"
+        loop
+        :slides-per-view="2"
+        spacing="16px"
+        orientation="horizontal"
+      >
+        <Carousel.Control>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        </Carousel.Control>
+        <Carousel.IndicatorGroup>
+          <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx">
+            {{ idx + 1 }}
+          </Carousel.Indicator>
+        </Carousel.IndicatorGroup>
+        <Carousel.Viewport>
+          <Carousel.ItemGroup>
+            <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
+              <img
+                :src="image"
+                alt=""
+                :style="{ height: '300px', width: '100%', objectFit: 'cover' }"
+              />
+            </Carousel.Item>
+          </Carousel.ItemGroup>
+        </Carousel.Viewport>
+      </Carousel.Root>
     </Variant>
   </Story>
 </template>

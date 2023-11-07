@@ -1,9 +1,10 @@
+import type { ItemProps } from '@zag-js/carousel'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselItemProps = Assign<HTMLArkProps<'div'>, { index: number }>
+export type CarouselItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
 
 export const CarouselItem = defineComponent({
   name: 'CarouselItem',
