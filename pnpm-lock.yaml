@@ -730,8 +730,8 @@ importers:
   packages/scripts:
     dependencies:
       '@types/voca':
-        specifier: 1.4.4
-        version: 1.4.4
+        specifier: 1.4.5
+        version: 1.4.5
       find-up:
         specifier: 6.3.0
         version: 6.3.0
@@ -7115,8 +7115,8 @@ packages:
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
     dev: false
 
-  /@types/voca@1.4.4:
-    resolution: {integrity: sha512-zX7G807CmADY3FsrXVDu+O7AQeT1CEX5xy725znIPRr2djsPhTw6Lae71QKid29k1ei1RNd7YMwc26ZkLxU+Ow==}
+  /@types/voca@1.4.5:
+    resolution: {integrity: sha512-GaPq2U8tWosTT+gBTXIPSWrW3q2ok2ohWpq3xF8mREFJ1gZrfjZUrkbt34GKbN8KGfM2NSCZzYzX/1IEcOvE9w==}
     dev: false
 
   /@types/yargs-parser@21.0.1:
