@@ -31,16 +31,9 @@ describe('Toast', () => {
 
     expect(screen.getByText('Title')).toBeVisible()
     expect(screen.getByText('Description')).toBeVisible()
-    expect(screen.getByText('Close')).toBeVisible()
-  })
 
-  it('should hide a toast message after close button is clicked', async () => {
-    render(<ComponentUnderTest />)
-    await user.click(screen.getByText('Create Toast'))
+    await user.click(screen.getByText('Close'))
 
-    await waitFor(() => {
-      user.click(screen.getByText('Close'))
-    })
     await waitFor(() => {
       expect(screen.queryByText('Title')).not.toBeVisible()
       expect(screen.queryByText('Description')).not.toBeVisible()
