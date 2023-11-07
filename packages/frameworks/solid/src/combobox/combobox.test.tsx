@@ -57,7 +57,7 @@ describe('Combobox', () => {
     expect(screen.getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
     user.click(screen.getByTestId('trigger'))
 
-    waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
+    await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
   })
 
   it('should handle item selection', async () => {
