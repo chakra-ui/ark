@@ -27,6 +27,7 @@ export const props = {
   },
   orientation: {
     type: String as PropType<Context['orientation']>,
+    default: 'horizontal',
   },
   slidesPerView: {
     type: String as PropType<Context['slidesPerView']>,
