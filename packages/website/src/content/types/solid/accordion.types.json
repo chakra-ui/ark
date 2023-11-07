@@ -33,12 +33,19 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "multiple": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
@@ -54,6 +61,13 @@
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
     "value": {
       "type": "string[]",
       "isRequired": false,
@@ -63,21 +77,7 @@
   "Item": {
     "value": { "type": "string", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
