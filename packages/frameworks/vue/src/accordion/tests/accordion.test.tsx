@@ -6,8 +6,8 @@ import ComponentUnderTest from './accordion.test.vue'
 
 describe('Accordion', () => {
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
-    const { container } = render(ComponentUnderTest)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(ComponentUnderTest)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should render', async () => {
