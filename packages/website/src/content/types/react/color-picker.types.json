@@ -1,5 +1,10 @@
 {
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,

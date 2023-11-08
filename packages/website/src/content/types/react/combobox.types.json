@@ -202,7 +202,11 @@
     }
   },
   "Item": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "item": { "type": "any", "isRequired": false }
   },
   "Input": {
