@@ -1,19 +1,18 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useSliderContext } from './slider-context'
 
-export type SliderValueTextProps = HTMLArkProps<'div'>
+export type SliderValueTextProps = HTMLArkProps<'span'>
 
-export const SliderValueText: ComponentWithProps<SliderValueTextProps> = defineComponent({
+export const SliderValueText = defineComponent({
   name: 'SliderValueText',
   setup(_, { slots, attrs }) {
     const api = useSliderContext()
 
     return () => (
-      <ark.div {...api.value.valueTextProps} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <ark.span {...api.value.valueTextProps} {...attrs}>
+        {slots.default?.() || api.value.value.join(', ')}
+      </ark.span>
     )
   },
 })

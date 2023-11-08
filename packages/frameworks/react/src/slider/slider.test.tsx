@@ -17,7 +17,7 @@ const ComponentUnderTest = (props: SliderProps) => {
       {...props}
     >
       <Slider.Label>Quantity: </Slider.Label>
-      <Slider.ValueText>{({ value }) => value.join(' ')}</Slider.ValueText>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
