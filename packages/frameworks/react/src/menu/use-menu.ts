@@ -5,7 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseMenuProps extends Optional<menu.Context, 'id'> {}
+export interface UseMenuProps extends Optional<menu.Context, 'id'> {
+  open?: boolean
+}
 
 export interface UseMenuReturn {
   machine: ReturnType<typeof menu.machine>

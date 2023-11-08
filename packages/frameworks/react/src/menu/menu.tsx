@@ -1,4 +1,4 @@
-import { useCallback, useEffect, type ReactNode } from 'react'
+import { useCallback, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import {
   PresenceProvider,
@@ -17,19 +17,13 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
-interface MenuState {
-  isOpen: boolean
-  onClose: () => void
-}
-
 export interface MenuProps extends UseMenuProps, UsePresenceProps {
-  children?: ReactNode | ((state: MenuState) => ReactNode)
-  isOpen?: boolean
+  children?: ReactNode | ((api: UseMenuReturn['api']) => ReactNode)
 }
 
 export const Menu = (props: MenuProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
-  const [useMenuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(menuProps, [
+  const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
@@ -45,20 +39,16 @@ export const Menu = (props: MenuProps) => {
     'onPointerDownOutside',
     'onSelect',
     'onValueChange',
+    'open',
     'positioning',
     'value',
   ])
 
   const parentApi = useMenuContext() as UseMenuReturn['api']
   const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
-
   const { api, machine } = useMenu(useMenuProps)
   const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
-  // TODO segun
-  const view = runIfFn(children, {
-    isOpen: api.isOpen,
-    onClose: api.close,
-  })
+  const view = runIfFn(localProps.children, api)
 
   useEffectOnce(() => {
     if (!parentMachine) return
@@ -66,16 +56,11 @@ export const Menu = (props: MenuProps) => {
     api.setParent(parentMachine)
   })
 
-  useEffect(() => {
-    if (isOpen && !api.isOpen) {
-      api.open()
-    }
-  }, [isOpen, api])
-
   const getTriggerItemProps = useCallback(
     () => parentApi.getTriggerItemProps(api),
     [api, parentApi],
   )
+
   return (
     <MenuTriggerItemProvider value={getTriggerItemProps}>
       <MenuMachineProvider value={machine}>

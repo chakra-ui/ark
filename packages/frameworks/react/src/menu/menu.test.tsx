@@ -258,7 +258,7 @@ describe('Menu', () => {
 
   it('should control the open state', async () => {
     render(
-      <Menu.Root isOpen>
+      <Menu.Root open>
         <Menu.Positioner>
           <Menu.Content>
             <span>main menu content</span>
