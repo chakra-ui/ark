@@ -30,10 +30,10 @@ export const MenuOptionItem = (props: MenuOptionItemProps) => {
     'onCheckedChange',
   ])
 
-  const itemProps = mergeProps(() => menu().getOptionItemProps(optionProps), localProps)
+  const mergedProps = mergeProps(() => menu().getOptionItemProps(optionProps), localProps)
   const itemState = createMemo(() => menu().getOptionItemState(optionProps))
 
   const getChildren = () => runIfFn(localProps.children, itemState)
 
-  return <ark.div {...itemProps}>{getChildren()}</ark.div>
+  return <ark.div {...mergedProps}>{getChildren()}</ark.div>
 }

@@ -6,6 +6,7 @@ export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const MenuArrowTip = (props: MenuArrowTipProps) => {
   const menu = useMenuContext()
-  const arrowTipProps = mergeProps(() => menu?.().arrowTipProps, props)
-  return <ark.div {...arrowTipProps} />
+  const mergedProps = mergeProps(() => menu?.().arrowTipProps, props)
+
+  return <ark.div {...mergedProps} />
 }

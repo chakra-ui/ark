@@ -6,6 +6,7 @@ export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
   const menu = useMenuContext()
-  const triggerProps = mergeProps(() => menu?.().contextTriggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => menu?.().contextTriggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

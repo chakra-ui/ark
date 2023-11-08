@@ -23,11 +23,11 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
   ])
 
   const api = useToggleGroup(groupParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (
     <ToggleGroupProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...mergedProps} />
     </ToggleGroupProvider>
   )
 }

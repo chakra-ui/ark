@@ -6,6 +6,7 @@ export interface PopoverDescriptionProps extends HTMLArkProps<'div'> {}
 
 export const PopoverDescription = (props: PopoverDescriptionProps) => {
   const api = usePopoverContext()
-  const descriptionProps = mergeProps(() => api().descriptionProps, props)
-  return <ark.div {...descriptionProps} />
+  const mergedProps = mergeProps(() => api().descriptionProps, props)
+
+  return <ark.div {...mergedProps} />
 }

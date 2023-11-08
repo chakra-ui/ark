@@ -6,6 +6,7 @@ export interface EditableControlProps extends HTMLArkProps<'div'> {}
 
 export const EditableControl = (props: EditableControlProps) => {
   const editable = useEditableContext()
-  const controlProps = mergeProps(() => editable().controlProps, props)
-  return <ark.div {...controlProps} />
+  const mergedProps = mergeProps(() => editable().controlProps, props)
+
+  return <ark.div {...mergedProps} />
 }

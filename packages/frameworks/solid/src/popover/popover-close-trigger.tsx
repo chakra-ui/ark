@@ -6,6 +6,7 @@ export interface PopoverCloseTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PopoverCloseTrigger = (props: PopoverCloseTriggerProps) => {
   const api = usePopoverContext()
-  const triggerProps = mergeProps(() => api().closeTriggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => api().closeTriggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

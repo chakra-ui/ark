@@ -6,6 +6,7 @@ export interface HoverCardTriggerProps extends HTMLArkProps<'button'> {}
 
 export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
   const hoverCard = useHoverCardContext()
-  const triggerProps = mergeProps(() => hoverCard().triggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => hoverCard().triggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

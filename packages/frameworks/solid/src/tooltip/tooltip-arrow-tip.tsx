@@ -6,6 +6,7 @@ export interface TooltipArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const TooltipArrowTip = (props: TooltipArrowTipProps) => {
   const api = useTooltipContext()
-  const arrowTipProps = mergeProps(() => api().arrowTipProps, props)
-  return <ark.div {...arrowTipProps} />
+  const mergedProps = mergeProps(() => api().arrowTipProps, props)
+
+  return <ark.div {...mergedProps} />
 }

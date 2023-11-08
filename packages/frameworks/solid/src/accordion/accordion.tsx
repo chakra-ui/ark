@@ -26,12 +26,12 @@ export const Accordion = (props: AccordionProps) => {
     'value',
   ])
   const api = useAccordion(useAccordionProps)
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <AccordionProvider value={api}>
       <PresencePropsProvider value={presenceProps}>
-        <ark.div {...rootProps} />
+        <ark.div {...mergedProps} />
       </PresencePropsProvider>
     </AccordionProvider>
   )

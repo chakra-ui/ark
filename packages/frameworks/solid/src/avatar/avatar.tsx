@@ -16,11 +16,11 @@ export const Avatar = (props: AvatarProps) => {
   ])
 
   const api = useAvatar(params)
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <AvatarProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...mergedProps} />
     </AvatarProvider>
   )
 }

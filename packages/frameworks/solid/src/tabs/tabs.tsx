@@ -25,12 +25,12 @@ export const Tabs = (props: TabsProps) => {
   ])
 
   const api = useTabs(tabsParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (
     <TabsProvider value={api}>
       <PresencePropsProvider value={presenceProps}>
-        <ark.div {...rootProps} />
+        <ark.div {...mergedProps} />
       </PresencePropsProvider>
     </TabsProvider>
   )

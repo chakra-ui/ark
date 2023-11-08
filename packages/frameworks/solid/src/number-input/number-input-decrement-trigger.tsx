@@ -6,6 +6,7 @@ export interface NumberInputDecrementTriggerProps extends HTMLArkProps<'button'>
 
 export const NumberInputDecrementTrigger = (props: NumberInputDecrementTriggerProps) => {
   const api = useNumberInputContext()
-  const triggerProps = mergeProps(() => api().decrementTriggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => api().decrementTriggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

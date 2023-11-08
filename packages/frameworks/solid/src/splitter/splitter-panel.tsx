@@ -13,7 +13,7 @@ export const SplitterPanel = (props: SplitterPanelProps) => {
   const [panelParams, restProps] = createSplitProps<PanelParams>()(props, ['id', 'snapSize'])
 
   const api = useSplitterContext()
-  const panelProps = mergeProps(() => api().getPanelProps(panelParams), restProps)
+  const mergedProps = mergeProps(() => api().getPanelProps(panelParams), restProps)
 
-  return <ark.div {...panelProps} />
+  return <ark.div {...mergedProps} />
 }

@@ -31,11 +31,11 @@ export const Splitter = (props: SplitterProps) => {
 
   const api = useSplitter(splitterParams)
   const getChildren = () => runIfFn(localProps.children, api)
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <SplitterProvider value={api}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </SplitterProvider>
   )
 }

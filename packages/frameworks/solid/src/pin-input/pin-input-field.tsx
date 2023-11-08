@@ -10,7 +10,7 @@ export const PinInputInput = (props: PinInputInputProps) => {
   const [inputParams, localProps] = splitProps(props, ['index'])
 
   const api = usePinInputContext()
-  const inputProps = mergeProps(() => api().getInputProps(inputParams), localProps)
+  const mergedProps = mergeProps(() => api().getInputProps(inputParams), localProps)
 
-  return <ark.input {...inputProps} />
+  return <ark.input {...mergedProps} />
 }

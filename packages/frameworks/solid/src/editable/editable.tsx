@@ -51,13 +51,13 @@ export const Editable = (props: EditableProps) => {
   const editable = useEditable(useEditableProps)
 
   const [childrenProps, localProps] = splitProps(restProps, ['children'])
-  const rootProps = mergeProps(() => editable().rootProps, localProps)
+  const mergedProps = mergeProps(() => editable().rootProps, localProps)
 
   const getChildren = () => runIfFn(childrenProps.children, editable)
 
   return (
     <EditableProvider value={editable}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </EditableProvider>
   )
 }

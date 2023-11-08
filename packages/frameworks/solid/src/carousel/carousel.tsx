@@ -33,12 +33,12 @@ export const Carousel = (props: CarouselProps) => {
     'spacing',
   ])
   const api = useCarousel(useCarouselProps)
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <CarouselProvider value={api}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </CarouselProvider>
   )
 }
