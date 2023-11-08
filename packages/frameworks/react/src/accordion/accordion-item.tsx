@@ -27,7 +27,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   const presenceApi = usePresence({ ...presenceProps, present: itemState.isOpen })
 
   return (
-    <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
+    <AccordionItemProvider value={itemProps}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps} ref={ref}>
           {view}

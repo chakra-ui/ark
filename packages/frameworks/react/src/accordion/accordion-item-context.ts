@@ -1,7 +1,7 @@
-import type { ItemProps, ItemState } from '@zag-js/accordion'
+import type { ItemProps } from '@zag-js/accordion'
 import { createContext } from '../create-context'
 
-export interface AccordionItemContext extends ItemProps, ItemState {}
+export interface AccordionItemContext extends ItemProps {}
 
 export const [AccordionItemProvider, useAccordionItemContext] = createContext<AccordionItemContext>(
   {
