@@ -103,6 +103,7 @@
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
+  "View": { "format": { "type": "ColorFormat", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
