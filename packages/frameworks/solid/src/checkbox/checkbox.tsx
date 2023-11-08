@@ -4,15 +4,15 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
-import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
+import { CheckboxProvider } from './checkbox-context'
+import { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 
 export interface CheckboxProps
   extends Assign<
     Assign<
       HTMLArkProps<'label'>,
       {
-        children?: JSX.Element | ((context: CheckboxContext) => JSX.Element)
+        children?: JSX.Element | ((api: UseCheckboxReturn) => JSX.Element)
       }
     >,
     UseCheckboxProps

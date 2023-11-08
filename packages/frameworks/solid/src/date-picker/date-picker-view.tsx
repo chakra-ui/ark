@@ -13,7 +13,7 @@ import type { UseDatePickerReturn } from './use-date-picker'
 export interface DatePickerViewProps
   extends Assign<
       HTMLArkProps<'div'>,
-      { children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element) }
+      { children?: JSX.Element | ((api: UseDatePickerReturn) => JSX.Element) }
     >,
     Required<ViewProps> {}
 

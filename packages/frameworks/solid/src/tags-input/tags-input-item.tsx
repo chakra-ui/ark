@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ItemProps, ItemState } from '@zag-js/tags-input'
-import { type JSX } from 'solid-js'
+import { type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -11,7 +11,7 @@ import { TagsInputItemProvider } from './tags-input-item-context'
 export interface TagsInputItemProps
   extends Assign<
       HTMLArkProps<'div'>,
-      { children?: JSX.Element | ((state: () => ItemState) => JSX.Element) }
+      { children?: JSX.Element | ((state: Accessor<ItemState>) => JSX.Element) }
     >,
     ItemProps {}
 

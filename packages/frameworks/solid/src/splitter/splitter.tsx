@@ -11,9 +11,7 @@ export interface SplitterProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
-      {
-        children?: JSX.Element | ((pages: UseSplitterReturn) => JSX.Element)
-      }
+      { children?: JSX.Element | ((api: UseSplitterReturn) => JSX.Element) }
     >,
     UseSplitterProps
   > {}

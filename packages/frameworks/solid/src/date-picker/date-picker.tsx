@@ -17,7 +17,7 @@ export interface DatePickerProps
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        { children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element) }
+        { children?: JSX.Element | ((api: UseDatePickerReturn) => JSX.Element) }
       >,
       UseDatePickerProps
     >,

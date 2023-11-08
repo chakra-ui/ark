@@ -4,14 +4,14 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { SwitchProvider, type SwitchContext } from './switch-context'
-import { useSwitch, type UseSwitchProps } from './use-switch'
+import { SwitchProvider } from './switch-context'
+import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
 export interface SwitchProps
   extends Assign<
     Assign<
       HTMLArkProps<'label'>,
-      { children?: JSX.Element | ((context: SwitchContext) => JSX.Element) }
+      { children?: JSX.Element | ((api: UseSwitchReturn) => JSX.Element) }
     >,
     UseSwitchProps
   > {}

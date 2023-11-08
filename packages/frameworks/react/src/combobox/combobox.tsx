@@ -17,9 +17,7 @@ export interface ComboboxProps<T extends CollectionItem>
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        {
-          children?: ReactNode | ((api: UseComboboxReturn<T>) => ReactNode)
-        }
+        { children?: ReactNode | ((api: UseComboboxReturn<T>) => ReactNode) }
       >,
       UseComboboxProps<T>
     >,

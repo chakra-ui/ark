@@ -11,7 +11,7 @@ export interface PaginationProps
   extends Assign<
     Assign<
       HTMLArkProps<'nav'>,
-      { children?: JSX.Element | ((pages: UsePaginationReturn) => JSX.Element) }
+      { children?: JSX.Element | ((api: UsePaginationReturn) => JSX.Element) }
     >,
     UsePaginationProps
   > {}
@@ -32,16 +32,13 @@ export const Pagination = (props: PaginationProps) => {
   ])
 
   const [childrenProps, localProps] = splitProps(restProps, ['children'])
-
   const api = usePagination(paginationParams)
-
   const getChildren = () => runIfFn(childrenProps.children, api)
-
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <PaginationProvider value={api}>
-      <ark.nav {...rootProps}>{getChildren()}</ark.nav>
+      <ark.nav {...mergedProps}>{getChildren()}</ark.nav>
     </PaginationProvider>
   )
 }

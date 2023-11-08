@@ -11,9 +11,7 @@ export interface TagsInputProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
-      {
-        children?: (pages: UseTagsInputReturn) => JSX.Element | JSX.Element
-      }
+      { children?: JSX.Element | ((api: UseTagsInputReturn) => JSX.Element) }
     >,
     UseTagsInputProps
   > {}

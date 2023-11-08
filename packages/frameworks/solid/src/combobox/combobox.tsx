@@ -17,9 +17,7 @@ export interface ComboboxProps<T extends CollectionItem>
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        {
-          children?: JSX.Element | ((state: UseComboboxReturn<T>) => JSX.Element)
-        }
+        { children?: JSX.Element | ((api: UseComboboxReturn<T>) => JSX.Element) }
       >,
       UseComboboxProps<T>
     >,

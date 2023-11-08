@@ -1,6 +1,6 @@
 import { type ItemProps, type ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
+import { type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, usePresencePropsContext } from '../presence'
@@ -11,23 +11,23 @@ import { AccordionItemProvider } from './accordion-item-context'
 
 export interface AccordionItemProps
   extends Assign<
-    HTMLArkProps<'div'>,
-    ItemProps & {
-      children?: JSX.Element | ((state: () => ItemState) => JSX.Element)
-    }
-  > {}
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((state: Accessor<ItemState>) => JSX.Element) }
+    >,
+    ItemProps {}
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const api = useAccordionContext()
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
   const presenceProps = usePresencePropsContext()
-  const itemState = mergeProps(() => api().getItemState(itemProps), itemProps)
-  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: itemState.isOpen })))
+  const presenceApi = usePresence(
+    mergeProps(presenceProps, () => ({ present: api().getItemState(itemProps).isOpen })),
+  )
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
   const getChildren = () => runIfFn(localProps.children, () => api().getItemState(itemProps))
 
   return (
-    <AccordionItemProvider value={itemState}>
+    <AccordionItemProvider value={itemProps}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps}>{getChildren()}</ark.div>
       </PresenceProvider>

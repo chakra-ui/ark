@@ -21,7 +21,7 @@ export interface ColorPickerProps
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        { children?: JSX.Element | ((state: UseColorPickerReturn) => JSX.Element) }
+        { children?: JSX.Element | ((api: UseColorPickerReturn) => JSX.Element) }
       >,
       UseColorPickerProps
     >,

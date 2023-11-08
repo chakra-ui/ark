@@ -17,9 +17,7 @@ export interface SelectProps<T extends CollectionItem>
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        {
-          children?: JSX.Element | ((state: UseSelectReturn<T>) => JSX.Element)
-        }
+        { children?: JSX.Element | ((api: UseSelectReturn<T>) => JSX.Element) }
       >,
       UseSelectProps<T>
     >,

@@ -11,9 +11,7 @@ export interface SliderProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
-      {
-        children?: ((api: UseSliderReturn) => JSX.Element) | JSX.Element
-      }
+      { children?: JSX.Element | ((api: UseSliderReturn) => JSX.Element) }
     >,
     UseSliderProps
   > {}
