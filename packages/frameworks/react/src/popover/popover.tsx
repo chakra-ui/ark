@@ -3,16 +3,12 @@ import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { PopoverProvider, type PopoverContext } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { PopoverProvider } from './popover-context'
+import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
-export interface PopoverProps
-  extends Assign<
-      UsePopoverProps,
-      { children?: ReactNode | ((props: PopoverContext) => ReactNode) }
-    >,
-    UsePresenceProps {}
+export interface PopoverProps extends UsePopoverProps, UsePresenceProps {
+  children?: ReactNode | ((api: UsePopoverReturn) => ReactNode)
+}
 
 export const Popover = (props: PopoverProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)

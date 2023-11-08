@@ -9,10 +9,13 @@ import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from '.
 
 export interface TagsInputProps
   extends Assign<
-    Assign<HTMLArkProps<'input'>, UseTagsInputProps>,
-    {
-      children?: ReactNode | ((pages: UseTagsInputReturn) => ReactNode)
-    }
+    Assign<
+      HTMLArkProps<'input'>,
+      {
+        children?: ReactNode | ((api: UseTagsInputReturn) => ReactNode)
+      }
+    >,
+    UseTagsInputProps
   > {}
 
 export const TagsInput = forwardRef<HTMLInputElement, TagsInputProps>((props, ref) => {

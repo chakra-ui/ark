@@ -9,8 +9,11 @@ import { usePagination, type UsePaginationProps, type UsePaginationReturn } from
 
 export interface PaginationProps
   extends Assign<
-    Assign<HTMLArkProps<'nav'>, UsePaginationProps>,
-    { children?: ReactNode | ((pages: UsePaginationReturn) => ReactNode) }
+    Assign<
+      HTMLArkProps<'nav'>,
+      { children?: ReactNode | ((api: UsePaginationReturn) => ReactNode) }
+    >,
+    UsePaginationProps
   > {}
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {

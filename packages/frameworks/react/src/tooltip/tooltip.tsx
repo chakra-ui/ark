@@ -3,16 +3,12 @@ import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { TooltipProvider, type TooltipContext } from './tooltip-context'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { TooltipProvider } from './tooltip-context'
+import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
-export interface TooltipProps
-  extends Assign<
-      UseTooltipProps,
-      { children?: ReactNode | ((props: TooltipContext) => ReactNode) }
-    >,
-    UsePresenceProps {}
+export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
+  children?: ReactNode | ((api: UseTooltipReturn) => ReactNode)
+}
 
 export const Tooltip = (props: TooltipProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)

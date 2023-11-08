@@ -10,13 +10,13 @@ import {
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { DatePickerProvider, type DatePickerContext } from './date-picker-context'
-import { useDatePicker, type UseDatePickerProps } from './use-date-picker'
+import { DatePickerProvider } from './date-picker-context'
+import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 
 export interface DatePickerProps
   extends Assign<
       UseDatePickerProps,
-      { children?: ReactNode | ((props: DatePickerContext) => ReactNode) }
+      { children?: ReactNode | ((api: UseDatePickerReturn) => ReactNode) }
     >,
     UsePresenceProps {}
 

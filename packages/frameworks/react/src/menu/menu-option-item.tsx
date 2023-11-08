@@ -10,11 +10,12 @@ import { type UseMenuReturn } from './use-menu'
 
 export interface MenuOptionItemProps
   extends Assign<
-    HTMLArkProps<'div'>,
-    OptionItemProps & {
-      children?: ReactNode | ((state: OptionItemState) => ReactNode)
-    }
-  > {}
+      HTMLArkProps<'div'>,
+      {
+        children?: ReactNode | ((state: OptionItemState) => ReactNode)
+      }
+    >,
+    OptionItemProps {}
 
 export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']

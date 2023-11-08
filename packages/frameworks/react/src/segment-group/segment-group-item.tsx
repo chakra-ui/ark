@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -15,7 +15,7 @@ import { parts } from './segment-group.anatomy'
 export interface SegmentGroupItemProps
   extends Assign<
       HTMLArkProps<'label'>,
-      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+      { children?: ReactNode | ((state: ItemState) => ReactNode) }
     >,
     SegmentGroupItemContext {}
 

@@ -8,8 +8,8 @@ import { type UseSliderReturn } from './use-slider'
 
 export interface SliderValueTextProps
   extends Assign<
-    HTMLArkProps<'output'>,
-    { children?: ((api: UseSliderReturn) => ReactNode) | ReactNode }
+    HTMLArkProps<'div'>,
+    { children?: ReactNode | ((api: UseSliderReturn) => ReactNode) }
   > {}
 
 export const SliderValueText = forwardRef<HTMLDivElement, SliderValueTextProps>((props, ref) => {

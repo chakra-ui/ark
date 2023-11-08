@@ -7,7 +7,6 @@ import {
   type UsePresenceProps,
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
 import { useEffectOnce } from '../use-effect-once'
 import {
   MenuMachineProvider,
@@ -23,15 +22,10 @@ interface MenuState {
   onClose: () => void
 }
 
-export interface MenuProps
-  extends Assign<
-      UseMenuProps,
-      {
-        children?: ReactNode | ((state: MenuState) => ReactNode)
-        isOpen?: boolean
-      }
-    >,
-    UsePresenceProps {}
+export interface MenuProps extends UseMenuProps, UsePresenceProps {
+  children?: ReactNode | ((state: MenuState) => ReactNode)
+  isOpen?: boolean
+}
 
 export const Menu = (props: MenuProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
@@ -60,7 +54,8 @@ export const Menu = (props: MenuProps) => {
 
   const { api, machine } = useMenu(useMenuProps)
   const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
-  const view = runIfFn<ReactNode, MenuState>(children, {
+  // TODO segun
+  const view = runIfFn(children, {
     isOpen: api.isOpen,
     onClose: api.close,
   })

@@ -9,10 +9,13 @@ import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slid
 
 export interface SliderProps
   extends Assign<
-    HTMLArkProps<'div'>,
-    UseSliderProps & {
-      children?: ((api: UseSliderReturn) => ReactNode) | ReactNode
-    }
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: ReactNode | ((api: UseSliderReturn) => ReactNode)
+      }
+    >,
+    UseSliderProps
   > {}
 
 export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {

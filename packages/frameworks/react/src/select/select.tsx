@@ -15,10 +15,13 @@ import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-sele
 
 export interface SelectProps<T extends CollectionItem>
   extends Assign<
-      HTMLArkProps<'div'>,
-      UseSelectProps<T> & {
-        children?: ReactNode | ((state: UseSelectReturn<T>) => ReactNode)
-      }
+      Assign<
+        HTMLArkProps<'div'>,
+        {
+          children?: ReactNode | ((api: UseSelectReturn<T>) => ReactNode)
+        }
+      >,
+      UseSelectProps<T>
     >,
     UsePresenceProps {}
 

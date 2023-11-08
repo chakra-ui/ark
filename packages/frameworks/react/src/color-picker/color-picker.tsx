@@ -10,13 +10,17 @@ import {
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { ColorPickerProvider, type ColorPickerContext } from './color-picker-context'
-import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
+import { ColorPickerProvider } from './color-picker-context'
+import {
+  useColorPicker,
+  type UseColorPickerProps,
+  type UseColorPickerReturn,
+} from './use-color-picker'
 
 export interface ColorPickerProps
   extends Assign<
       UseColorPickerProps,
-      { children?: ReactNode | ((props: ColorPickerContext) => ReactNode) }
+      { children?: ReactNode | ((api: UseColorPickerReturn) => ReactNode) }
     >,
     UsePresenceProps {}
 
