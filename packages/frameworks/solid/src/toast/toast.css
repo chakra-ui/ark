@@ -1,4 +1,4 @@
-[data-part='root'] {
+[data-scope='toast'][data-part='root'] {
   padding: 8px 12px;
   background: white;
   box-shadow:
@@ -7,15 +7,15 @@
   border-radius: 4px;
 }
 
-[data-part='root'][data-state='open'] {
+[data-scope='toast'][data-part='root'][data-state='open'] {
   animation: toast-enter 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
 }
 
-[data-part='root'][data-state='closed'] {
+[data-scope='toast'][data-part='root'][data-state='closed'] {
   animation: toast-exit var(--remove-delay) forwards cubic-bezier(0.06, 0.71, 0.55, 1);
 }
 
-[data-part='root'][data-type='success'] {
+[data-scope='toast'][data-part='root'][data-type='success'] {
   background: green;
   color: white;
 }

@@ -9,11 +9,11 @@
   margin: 0;
 }
 
-[data-part='content'][data-state='open'] {
+[data-scope='combobox'][data-part='content'][data-state='open'] {
   animation: fadeIn 0.25s ease-out;
 }
 
-[data-part='content'][data-state='closed'] {
+[data-scope='combobox'][data-part='content'][data-state='closed'] {
   animation: fadeOut 0.2s ease-in;
 }
 
