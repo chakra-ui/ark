@@ -41,7 +41,6 @@
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
-    "isOpen": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -84,6 +83,7 @@
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
+    "open": { "type": "boolean", "isRequired": false },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
