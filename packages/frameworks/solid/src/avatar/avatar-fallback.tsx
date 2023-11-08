@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarFallbackProps = HTMLArkProps<'span'>
+export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
 
 export const AvatarFallback = (props: AvatarFallbackProps) => {
   const avatar = useAvatarContext()

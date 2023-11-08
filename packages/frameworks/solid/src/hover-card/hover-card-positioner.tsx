@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardPositionerProps = HTMLArkProps<'div'>
+export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardPositioner = (props: HoverCardPositionerProps) => {
   const api = useHoverCardContext()

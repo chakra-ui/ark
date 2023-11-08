@@ -16,7 +16,7 @@ export interface UsePresenceProps extends Optional<presence.Context, 'present'> 
   unmountOnExit?: boolean
 }
 
-export type UsePresenceReturn = ReturnType<typeof usePresence>
+export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: UsePresenceProps) => {
   const [localProps, machineProps] = splitProps(props, ['lazyMount', 'unmountOnExit'])

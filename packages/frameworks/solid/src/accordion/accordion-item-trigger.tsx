@@ -4,7 +4,7 @@ import { usePresenceContext } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemTriggerProps = HTMLArkProps<'button'>
+export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
 export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const api = useAccordionContext()

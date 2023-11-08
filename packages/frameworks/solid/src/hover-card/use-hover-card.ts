@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
-export type UseHoverCardReturn = Accessor<hoverCard.Api<PropTypes>>
+export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {}
+export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()

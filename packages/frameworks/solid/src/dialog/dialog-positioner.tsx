@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export type DialogPositionerProps = HTMLArkProps<'div'>
+export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 
 export const DialogPositioner = (props: DialogPositionerProps) => {
   const api = useDialogContext()

@@ -1,9 +1,14 @@
-import { mergeProps } from '@zag-js/solid'
+import * as menu from '@zag-js/menu'
+import { mergeProps, type PropTypes } from '@zag-js/solid'
 import { createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -13,18 +18,10 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps } from './use-menu'
 
-export type MenuState = {
-  isOpen?: boolean
-  onClose?: () => void
+export interface MenuProps extends UseMenuProps, UsePresenceProps {
+  // TODO simplify this
+  children?: JSX.Element | ((api: Accessor<menu.Api<PropTypes>>) => JSX.Element)
 }
-
-export type MenuProps = Assign<
-  UseMenuProps,
-  {
-    children?: JSX.Element | ((state: Accessor<MenuState>) => JSX.Element)
-    isOpen?: Accessor<boolean>
-  }
->
 
 export const Menu = (props: MenuProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
@@ -44,6 +41,7 @@ export const Menu = (props: MenuProps) => {
     'onPointerDownOutside',
     'onSelect',
     'onValueChange',
+    'open',
     'positioning',
     'value',
   ])
@@ -61,19 +59,9 @@ export const Menu = (props: MenuProps) => {
     menu().api().setParent(parentMachine())
   })
 
-  createEffect(() => {
-    if (!localProps.isOpen) return
-    localProps.isOpen?.() ? menu().api().open() : menu().api().close()
-  })
-
   const triggerItemContext = createMemo(() => parentMenu?.().getTriggerItemProps(menu().api()))
   const machineContext = () => menu().machine
-
-  const getChildren = () =>
-    runIfFn(localProps.children, () => ({
-      isOpen: menu?.().api().isOpen,
-      onClose: menu?.().api().close,
-    }))
+  const getChildren = () => runIfFn(localProps.children, menu().api)
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>

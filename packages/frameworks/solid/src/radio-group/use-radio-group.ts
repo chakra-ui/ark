@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseRadioGroupProps = Optional<radio.Context, 'id'>
-export type UseRadioGroupReturn = Accessor<radio.Api<PropTypes>>
+export interface UseRadioGroupProps extends Optional<radio.Context, 'id'> {}
+export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}
 
 export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn => {
   const getRootNode = useEnvironmentContext()

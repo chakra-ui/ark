@@ -5,12 +5,11 @@ import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useRatingGroupContext, type RatingGroupContext } from './rating-group-context'
 
-export type RatingGroupControlProps = Assign<
-  HTMLArkProps<'div'>,
-  {
-    children?: JSX.Element | ((context: RatingGroupContext) => JSX.Element)
-  }
->
+export interface RatingGroupControlProps
+  extends Assign<
+    HTMLArkProps<'div'>,
+    { children?: JSX.Element | ((context: RatingGroupContext) => JSX.Element) }
+  > {}
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const api = useRatingGroupContext()

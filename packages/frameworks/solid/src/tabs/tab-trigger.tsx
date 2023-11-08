@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
-export type TabTriggerProps = Assign<HTMLArkProps<'button'>, TriggerProps>
+export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
 
 export const TabTrigger = (props: TabTriggerProps) => {
   const [tabParams, restProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])

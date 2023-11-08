@@ -10,12 +10,13 @@ import { useDatePickerContext } from './date-picker-context'
 import { DatePickerViewProvider } from './date-picker-view-context'
 import type { UseDatePickerReturn } from './use-date-picker'
 
-export type DatePickerViewProps = Assign<
-  HTMLArkProps<'div'>,
-  Required<ViewProps> & {
-    children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element)
-  }
->
+export interface DatePickerViewProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element) }
+    >,
+    Required<ViewProps> {}
+
 export const DatePickerView = (props: DatePickerViewProps) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])
   const api = useDatePickerContext()

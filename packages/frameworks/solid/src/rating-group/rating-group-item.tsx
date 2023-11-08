@@ -8,12 +8,14 @@ import type { Assign } from '../types'
 import { useRatingGroupContext } from './rating-group-context'
 import { RatingGroupItemProvider, type RatingGroupItemContext } from './rating-group-item-context'
 
-export type RatingGroupItemProps = Assign<
-  HTMLArkProps<'span'>,
-  ItemProps & {
-    children?: (state: RatingGroupItemContext) => JSX.Element | JSX.Element
-  }
->
+export interface RatingGroupItemProps
+  extends Assign<
+      HTMLArkProps<'span'>,
+      {
+        children?: (state: RatingGroupItemContext) => JSX.Element | JSX.Element
+      }
+    >,
+    ItemProps {}
 
 export const RatingGroupItem = (props: RatingGroupItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])

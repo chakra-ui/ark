@@ -1,7 +1,7 @@
 import type { ItemProps } from '@zag-js/select'
 import { createContext } from '../create-context'
 
-export type SelectItemContext = ItemProps
+export interface SelectItemContext extends ItemProps {}
 
 export const [SelectItemProvider, useSelectItemContext] = createContext<SelectItemContext>({
   hookName: 'useSelectItemContext',

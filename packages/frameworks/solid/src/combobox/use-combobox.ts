@@ -10,7 +10,8 @@ export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {}
 
-export type UseComboboxReturn<T extends CollectionItem> = Accessor<combobox.Api<PropTypes, T>>
+export interface UseComboboxReturn<T extends CollectionItem>
+  extends Accessor<combobox.Api<PropTypes, T>> {}
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,

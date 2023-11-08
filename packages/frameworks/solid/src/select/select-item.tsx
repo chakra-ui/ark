@@ -8,12 +8,12 @@ import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
-export type SelectItemProps = Assign<
-  HTMLArkProps<'div'>,
-  ItemProps & {
-    children?: JSX.Element | ((state: () => ItemState) => JSX.Element)
-  }
->
+export interface SelectItemProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((state: () => ItemState) => JSX.Element) }
+    >,
+    ItemProps {}
 
 export const SelectItem = (props: SelectItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])

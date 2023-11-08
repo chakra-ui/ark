@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxPositionerProps = HTMLArkProps<'div'>
+export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxPositioner = (props: ComboboxPositionerProps) => {
   const api = useComboboxContext()

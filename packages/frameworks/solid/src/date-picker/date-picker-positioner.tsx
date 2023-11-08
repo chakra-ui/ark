@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './date-picker-context'
 
-export type DatePickerPositionerProps = HTMLArkProps<'div'>
+export interface DatePickerPositionerProps extends HTMLArkProps<'div'> {}
 
 export const DatePickerPositioner = (props: DatePickerPositionerProps) => {
   const api = useDatePickerContext()

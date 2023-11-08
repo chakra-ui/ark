@@ -8,12 +8,12 @@ import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxItemProvider } from './combobox-item-context'
 
-export type ComboboxItemProps = Assign<
-  HTMLArkProps<'div'>,
-  ItemProps & {
-    children?: JSX.Element | ((state: () => ItemState) => JSX.Element)
-  }
->
+export interface ComboboxItemProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((state: () => ItemState) => JSX.Element) }
+    >,
+    ItemProps {}
 
 export const ComboboxItem = (props: ComboboxItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])

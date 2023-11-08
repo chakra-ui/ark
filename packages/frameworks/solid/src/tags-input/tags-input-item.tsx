@@ -8,12 +8,12 @@ import type { Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
 import { TagsInputItemProvider } from './tags-input-item-context'
 
-export type TagsInputItemProps = Assign<
-  HTMLArkProps<'div'>,
-  ItemProps & {
-    children?: JSX.Element | ((state: () => ItemState) => JSX.Element)
-  }
->
+export interface TagsInputItemProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((state: () => ItemState) => JSX.Element) }
+    >,
+    ItemProps {}
 
 export const TagsInputItem = (props: TagsInputItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

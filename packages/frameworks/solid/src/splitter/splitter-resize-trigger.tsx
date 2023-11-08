@@ -7,7 +7,7 @@ import { useSplitterContext } from './splitter-context'
 
 type TriggerParams = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
 
-export type SplitterResizeTriggerProps = Assign<HTMLArkProps<'button'>, TriggerParams>
+export interface SplitterResizeTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerParams> {}
 
 export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
   const api = useSplitterContext()

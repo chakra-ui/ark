@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useSelectContext } from './select-context'
 
-export type SelectPositionerProps = HTMLArkProps<'div'>
+export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = (props: SelectPositionerProps) => {
   const api = useSelectContext()

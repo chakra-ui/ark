@@ -7,7 +7,7 @@ import { useSplitterContext } from './splitter-context'
 
 type PanelParams = Parameters<ReturnType<typeof connect>['getPanelProps']>[0]
 
-export type SplitterPanelProps = Assign<HTMLArkProps<'div'>, PanelParams>
+export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, PanelParams> {}
 
 export const SplitterPanel = (props: SplitterPanelProps) => {
   const [panelParams, restProps] = createSplitProps<PanelParams>()(props, ['id', 'snapSize'])

@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipPositionerProps = HTMLArkProps<'div'>
+export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
 
 export const TooltipPositioner = (props: TooltipPositionerProps) => {
   const api = useTooltipContext()

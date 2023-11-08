@@ -9,7 +9,7 @@ type MenuItemGroupParams = Parameters<
   ReturnType<ReturnType<UseMenuReturn>['api']>['getItemGroupProps']
 >[0]
 
-export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
+export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, MenuItemGroupParams> {}
 
 export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const menu = useMenuContext()
