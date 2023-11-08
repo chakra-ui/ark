@@ -52,8 +52,10 @@ export const Basic = () => {
               <ColorPicker.Swatch value="green" />
             </ColorPicker.SwatchTrigger>
           </ColorPicker.SwatchGroup>
-          <ColorPicker.ChannelInput channel="hex" />
-          <ColorPicker.ChannelInput channel="alpha" />
+          <ColorPicker.View format="rgba">
+            <ColorPicker.ChannelInput channel="hex" />
+            <ColorPicker.ChannelInput channel="alpha" />
+          </ColorPicker.View>
           <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
