@@ -85,7 +85,7 @@ describe('NumberInput', () => {
     })
   })
 
-  it.skip('should handle min and max fraction digits', async () => {
+  it('should handle min and max fraction digits', async () => {
     render(
       <ComponentUnderTest
         defaultValue="1.00"

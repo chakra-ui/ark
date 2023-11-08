@@ -45,16 +45,6 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
-    render(<ComponentUnderTest />)
-
-    await user.click(screen.getByText('click me'))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
-
-    await user.keyboard('[Escape]')
-    expect(screen.queryByText('title')).not.toBeVisible()
-  })
-
   it('should focus the first focusable element', async () => {
     render(<ComponentUnderTest />)
 
