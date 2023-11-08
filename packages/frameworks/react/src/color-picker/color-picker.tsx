@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import {
   PresenceProvider,
   splitPresenceProps,
@@ -19,8 +19,11 @@ import {
 
 export interface ColorPickerProps
   extends Assign<
-      UseColorPickerProps,
-      { children?: ReactNode | ((api: UseColorPickerReturn) => ReactNode) }
+      Assign<
+        HTMLArkProps<'div'>,
+        { children?: ReactNode | ((api: UseColorPickerReturn) => ReactNode) }
+      >,
+      UseColorPickerProps
     >,
     UsePresenceProps {}
 

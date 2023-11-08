@@ -7,12 +7,16 @@ import type { Assign } from '../types'
 import { EditableProvider, type EditableContext } from './editable-context'
 import { useEditable, type UseEditableProps } from './use-editable'
 
-export type EditableProps = Assign<
-  HTMLArkProps<'div'>,
-  UseEditableProps & {
-    children?: JSX.Element | ((api: EditableContext) => JSX.Element)
-  }
->
+export interface EditableProps
+  extends Assign<
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: JSX.Element | ((api: EditableContext) => JSX.Element)
+      }
+    >,
+    UseEditableProps
+  > {}
 
 export const Editable = (props: EditableProps) => {
   const [useEditableProps, restProps] = createSplitProps<UseEditableProps>()(props, [

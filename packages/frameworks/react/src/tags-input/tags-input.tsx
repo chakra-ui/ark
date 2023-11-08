@@ -10,7 +10,7 @@ import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from '.
 export interface TagsInputProps
   extends Assign<
     Assign<
-      HTMLArkProps<'input'>,
+      HTMLArkProps<'div'>,
       {
         children?: ReactNode | ((api: UseTagsInputReturn) => ReactNode)
       }

@@ -19,10 +19,11 @@ import {
 
 export interface ColorPickerProps
   extends Assign<
-      HTMLArkProps<'div'>,
-      UseColorPickerProps & {
-        children?: JSX.Element | ((state: UseColorPickerReturn) => JSX.Element)
-      }
+      Assign<
+        HTMLArkProps<'div'>,
+        { children?: JSX.Element | ((state: UseColorPickerReturn) => JSX.Element) }
+      >,
+      UseColorPickerProps
     >,
     UsePresenceProps {}
 

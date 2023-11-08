@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import {
   PresenceProvider,
   splitPresenceProps,
@@ -15,8 +15,11 @@ import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from
 
 export interface DatePickerProps
   extends Assign<
-      UseDatePickerProps,
-      { children?: ReactNode | ((api: UseDatePickerReturn) => ReactNode) }
+      Assign<
+        HTMLArkProps<'div'>,
+        { children?: ReactNode | ((api: UseDatePickerReturn) => ReactNode) }
+      >,
+      UseDatePickerProps
     >,
     UsePresenceProps {}
 

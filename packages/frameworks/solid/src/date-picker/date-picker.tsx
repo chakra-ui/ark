@@ -15,10 +15,11 @@ import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from
 
 export interface DatePickerProps
   extends Assign<
-      HTMLArkProps<'div'>,
-      UseDatePickerProps & {
-        children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element)
-      }
+      Assign<
+        HTMLArkProps<'div'>,
+        { children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element) }
+      >,
+      UseDatePickerProps
     >,
     UsePresenceProps {}
 

@@ -7,12 +7,16 @@ import type { Assign } from '../types'
 import { SliderProvider } from './slider-context'
 import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 
-export type SliderProps = Assign<
-  HTMLArkProps<'div'>,
-  UseSliderProps & {
-    children?: ((api: UseSliderReturn) => JSX.Element) | JSX.Element
-  }
->
+export interface SliderProps
+  extends Assign<
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: ((api: UseSliderReturn) => JSX.Element) | JSX.Element
+      }
+    >,
+    UseSliderProps
+  > {}
 
 export const Slider = (props: SliderProps) => {
   const [sliderParams, restProps] = createSplitProps<UseSliderProps>()(props, [

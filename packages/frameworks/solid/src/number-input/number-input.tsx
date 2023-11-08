@@ -36,14 +36,12 @@ export const NumberInput = (props: NumberInputProps) => {
     'translations',
     'value',
   ])
-
   const api = useNumberInput(useNumberInputProps)
-
-  const rootProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <NumberInputProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...mergedProps} />
     </NumberInputProvider>
   )
 }

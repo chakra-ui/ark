@@ -15,10 +15,13 @@ import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './us
 
 export interface ComboboxProps<T extends CollectionItem>
   extends Assign<
-      HTMLArkProps<'div'>,
-      UseComboboxProps<T> & {
-        children?: JSX.Element | ((state: UseComboboxReturn<T>) => JSX.Element)
-      }
+      Assign<
+        HTMLArkProps<'div'>,
+        {
+          children?: JSX.Element | ((state: UseComboboxReturn<T>) => JSX.Element)
+        }
+      >,
+      UseComboboxProps<T>
     >,
     UsePresenceProps {}
 
