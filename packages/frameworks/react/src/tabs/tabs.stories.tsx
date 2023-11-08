@@ -19,15 +19,9 @@ export const Basic = () => (
       <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
       <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="react" lazyMount unmountOnExit>
-      React Content
-    </Tabs.Content>
-    <Tabs.Content value="vue" lazyMount unmountOnExit>
-      Vue Content
-    </Tabs.Content>
-    <Tabs.Content value="solid" lazyMount unmountOnExit>
-      Solid Content
-    </Tabs.Content>
+    <Tabs.Content value="react">React Content</Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
   </Tabs.Root>
 )
 
@@ -59,7 +53,7 @@ export const Indicator = () => (
 )
 
 export const LazyMount = () => (
-  <Tabs.Root>
+  <Tabs.Root lazyMount unmountOnExit>
     <Tabs.List>
       <Tabs.Trigger value="react">React</Tabs.Trigger>
       <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
@@ -67,12 +61,8 @@ export const LazyMount = () => (
       <Tabs.Indicator />
     </Tabs.List>
     <Tabs.Content value="react">React Content</Tabs.Content>
-    <Tabs.Content value="vue" lazyMount>
-      Vue Content
-    </Tabs.Content>
-    <Tabs.Content value="solid" lazyMount unmountOnExit>
-      Solid Content
-    </Tabs.Content>
+    <Tabs.Content value="vue">Vue Content</Tabs.Content>
+    <Tabs.Content value="solid">Solid Content</Tabs.Content>
   </Tabs.Root>
 )
 
