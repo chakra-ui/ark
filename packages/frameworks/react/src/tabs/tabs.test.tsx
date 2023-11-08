@@ -5,13 +5,7 @@ import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Tabs, type TabsProps } from './'
 
-interface Props extends TabsProps {
-  lazyMount?: boolean
-  unmountOnExit?: boolean
-}
-
-const ComponentUnderTest = (props: Props) => {
-  const { lazyMount, unmountOnExit, ...rest } = props
+const ComponentUnderTest = (props: TabsProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },
@@ -19,7 +13,7 @@ const ComponentUnderTest = (props: Props) => {
     { value: 'Vue' },
   ]
   return (
-    <Tabs.Root {...rest}>
+    <Tabs.Root {...props}>
       <Tabs.List>
         {items.map((item, id) => (
           <Tabs.Trigger key={id} value={item.value} disabled={item.disabled}>
@@ -29,12 +23,7 @@ const ComponentUnderTest = (props: Props) => {
         <Tabs.Indicator />
       </Tabs.List>
       {items.map((item, id) => (
-        <Tabs.Content
-          key={id}
-          value={item.value}
-          lazyMount={lazyMount}
-          unmountOnExit={unmountOnExit}
-        >
+        <Tabs.Content key={id} value={item.value}>
           {item.value} Content
         </Tabs.Content>
       ))}
