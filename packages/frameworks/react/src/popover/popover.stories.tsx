@@ -14,7 +14,7 @@ const meta: Meta<PopoverType> = {
 export default meta
 
 export const Basic = () => (
-  <Popover.Root lazyMount unmountOnExit>
+  <Popover.Root>
     <Popover.Trigger>
       Click Me <Popover.Indicator>Indicator</Popover.Indicator>
     </Popover.Trigger>
