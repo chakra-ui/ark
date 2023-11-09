@@ -15,8 +15,6 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((pro
     return null
   }
 
-  console.log(presenceApi.getPresenceProps(ref))
-
   return <ark.div {...mergedProps} />
 })
 

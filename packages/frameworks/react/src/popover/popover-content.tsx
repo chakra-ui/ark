@@ -15,8 +15,6 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((p
     return null
   }
 
-  console.log(presenceApi.getPresenceProps(ref))
-
   return <ark.div {...mergedProps} />
 })
 
