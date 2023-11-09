@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
 
 ## [1.0.0] - 2023-11-09
 
