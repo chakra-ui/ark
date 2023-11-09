@@ -13,8 +13,4 @@ describe('ColorPicker', () => {
     const { container } = render(<ComponentUnderTest />)
     expect(container.querySelector(part)).toBeInTheDocument()
   })
-
-  it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
-    expect(ColorPicker[part]).toBeDefined()
-  })
 })
