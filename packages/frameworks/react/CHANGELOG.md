@@ -20,69 +20,6 @@ We are happy to announce the release of `@ark-ui/react@1.0.0`. This release incl
 
 With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
-## [1.0.0-beta.5] - 2023-11-09
-
-- Integrate latest `@zag-js` packages
-
-## [1.0.0-beta.4] - 2023-10-31
-
-### Fixed
-
-- Resolved an accessibility issue with `Select`
-
-## [1.0.0-beta.3] - 2023-10-26
-
-### Added
-
-- Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
-
-### Changed
-
-- Improved accessibility of all disclosure components when lazy mounting is enabled.
-
-## [1.0.0-beta.2] - 2023-10-25
-
-### Added
-
-- Added `ValueText` to the `ColorPicker` component
-
-### Fixed
-
-- Added missing data attributes to `DatePickerView` component
-
-## [1.0.0-beta.1] - 2023-10-20
-
-### Added
-
-- Parsed `focusedValue` in `DatePicker`
-
-### Fixed
-
-- Resolved an issue with `@ark-ui/anatomy`
-
-## [1.0.0-beta.0] - 2023-10-20
-
-### Changed
-
-- Add memoization to `Select` and `Combobox` item collection to improve performance.
-- Ensure all event callbacks have a stable reference
-
-### Fixed
-
-- Resolved an issue when controlling the `Editable` component.
-
-### Removed
-
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
-
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/react'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
-```
-
 ## [0.15.0] - 2023-09-14
 
 ### Added
