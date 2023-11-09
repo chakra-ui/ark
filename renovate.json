@@ -11,5 +11,5 @@
       "matchPackagePatterns": ["@zag-js/*"]
     }
   ],
-  "ignoreDeps": ["vitest", "@types/node", "@park-ui/panda-preset"]
+  "ignoreDeps": ["vitest", "@types/node"]
 }

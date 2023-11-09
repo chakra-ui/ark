@@ -48,5 +48,9 @@ import { button } from 'styled-system/recipes'
     })
   }
 
+  // Runs on initial navigation
+  registerColorModeToggle()
+
+  // Runs on view transitions navigation
   document.addEventListener('astro:after-swap', registerColorModeToggle)
 </script>
