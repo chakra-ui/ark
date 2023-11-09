@@ -1,5 +1,7 @@
+import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import { Toast, createToaster } from './'
 
 const [Toaster, toast] = createToaster({
@@ -25,6 +27,17 @@ export const ComponentUnderTest = () => (
 )
 
 describe('Toast', () => {
+  it.each(getParts(toastAnatomy))('should render part %s', async (part) => {
+    render(() => (
+      <Toast.Root>
+        <Toast.Title>Title</Toast.Title>
+        <Toast.Description>Description</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    ))
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should show and hide a toast message', async () => {
     render(() => <ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
