@@ -256,8 +256,7 @@ describe('Menu', () => {
     })
   })
 
-  // TODO enable with next zagjs release
-  it.skip('should control the open state', async () => {
+  it('should control the open state', async () => {
     render(
       <Menu.Root open>
         <Menu.Positioner>
