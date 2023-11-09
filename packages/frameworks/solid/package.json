@@ -78,7 +78,8 @@
     "@zag-js/toast": "0.28.0",
     "@zag-js/toggle-group": "0.28.0",
     "@zag-js/tooltip": "0.28.0",
-    "@zag-js/types": "0.28.0"
+    "@zag-js/types": "0.28.0",
+    "resize-observer-polyfill": "1.5.1"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "4.0.0",

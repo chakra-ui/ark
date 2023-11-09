@@ -454,6 +454,9 @@ importers:
       '@zag-js/types':
         specifier: 0.28.0
         version: 0.28.0
+      resize-observer-polyfill:
+        specifier: 1.5.1
+        version: 1.5.1
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 4.0.0
@@ -17213,7 +17216,6 @@ packages:
 
   /resize-observer-polyfill@1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
-    dev: true
 
   /resolve-alpn@1.2.1:
     resolution: {integrity: sha512-0a1F4l73/ZFZOakJnQ3FvkJ2+gSTQWz/r2KE5OdDY0TxPm5h4GkqkWWfM47T7HsbnOtcJVEF4epCVy6u7Q3K+g==}
