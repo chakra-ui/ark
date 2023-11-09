@@ -6,6 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+We are happy to announce the release of `@ark-ui/react@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
+
+### Highlights
+
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Resolved various bugs and addressed accessibility issues across all components.
+
 ## [1.0.0-beta.5] - 2023-11-09
 
 - Integrate latest `@zag-js` packages
