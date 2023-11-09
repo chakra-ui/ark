@@ -1,9 +1,9 @@
-[data-part='page-trigger'][data-selected] {
+[data-scope='pagination'][data-part='page-trigger'][data-selected] {
   background-color: aqua;
 }
 
-[data-part='prev-item'][data-disabled],
-[data-part='next-item'][data-disabled] {
+[data-scope='pagination'][data-part='prev-item'][data-disabled],
+[data-scope='pagination'][data-part='next-item'][data-disabled] {
   cursor: not-allowed;
   opacity: 0.4;
 }

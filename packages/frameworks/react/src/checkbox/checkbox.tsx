@@ -4,22 +4,22 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { CheckboxProvider, type CheckboxContext } from './checkbox-context'
-import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
+import { CheckboxProvider } from './checkbox-context'
+import { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 
 export interface CheckboxProps
   extends Assign<
-    HTMLArkProps<'label'>,
     Assign<
-      UseCheckboxProps,
+      HTMLArkProps<'label'>,
       {
-        children?: ReactNode | ((pages: CheckboxContext) => ReactNode)
+        children?: ReactNode | ((api: UseCheckboxReturn) => ReactNode)
       }
-    >
+    >,
+    UseCheckboxProps
   > {}
 
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
-  const [useCheckboxProps, { children, ...labelProps }] = createSplitProps<UseCheckboxProps>()(
+  const [useCheckboxProps, { children, ...localProps }] = createSplitProps<UseCheckboxProps>()(
     props,
     [
       'checked',
@@ -38,8 +38,7 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
     ],
   )
   const api = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(api.rootProps, labelProps)
-
+  const mergedProps = mergeProps(api.rootProps, localProps)
   const view = runIfFn(children, api)
 
   return (

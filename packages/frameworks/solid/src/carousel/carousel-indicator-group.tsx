@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorGroupProps = HTMLArkProps<'div'>
+export interface CarouselIndicatorGroupProps extends HTMLArkProps<'div'> {}
 
 export const CarouselIndicatorGroup = (props: CarouselIndicatorGroupProps) => {
   const api = useCarouselContext()

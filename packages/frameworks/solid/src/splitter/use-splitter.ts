@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSplitterProps = Optional<splitter.Context, 'id'>
-export type UseSplitterReturn = Accessor<splitter.Api<PropTypes>>
+export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {}
+export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
   const getRootNode = useEnvironmentContext()

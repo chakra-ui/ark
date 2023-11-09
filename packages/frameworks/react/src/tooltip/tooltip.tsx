@@ -1,16 +1,24 @@
 import { type ReactNode } from 'react'
+import type { UsePresenceProps } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
+import { splitPresenceProps } from '../presence/split-presence-props'
 import { runIfFn } from '../run-if-fn'
-import { TooltipProvider, type TooltipContext } from './tooltip-context'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { TooltipProvider } from './tooltip-context'
+import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
-export interface TooltipProps extends UseTooltipProps {
-  children?: ReactNode | ((props: TooltipContext) => ReactNode)
+export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
+  children?: ReactNode | ((api: UseTooltipReturn) => ReactNode)
 }
 
 export const Tooltip = (props: TooltipProps) => {
-  const { children, ...useTooltipProps } = props
-  const api = useTooltip(useTooltipProps)
+  const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
+  const api = useTooltip(localProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
   const view = runIfFn(children, api)
 
-  return <TooltipProvider value={api}>{view}</TooltipProvider>
+  return (
+    <TooltipProvider value={api}>
+      <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+    </TooltipProvider>
+  )
 }

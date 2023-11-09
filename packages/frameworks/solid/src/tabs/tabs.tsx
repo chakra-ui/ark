@@ -1,14 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
 
 export const Tabs = (props: TabsProps) => {
-  const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(props, [
+  const [presenceProps, tabsProps] = splitPresenceProps(props)
+  const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
     'dir',
     'getRootNode',
@@ -23,11 +25,13 @@ export const Tabs = (props: TabsProps) => {
   ])
 
   const api = useTabs(tabsParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (
     <TabsProvider value={api}>
-      <ark.div {...rootProps} />
+      <PresencePropsProvider value={presenceProps}>
+        <ark.div {...mergedProps} />
+      </PresencePropsProvider>
     </TabsProvider>
   )
 }

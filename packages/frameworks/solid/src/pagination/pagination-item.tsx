@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
+export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
 export const PaginationItem = (props: PaginationItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])

@@ -31,7 +31,7 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
       <Portal>
-        <Select.Positioner>
+        <Select.Positioner data-testid="positioner">
           <Select.Content>
             <Select.ItemGroup id="framework">
               <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
@@ -102,7 +102,7 @@ describe('Select', () => {
     user.click(trigger)
     const item = screen.getByText('React', { ignore: 'option' })
     user.click(item)
-    waitFor(() => {
+    await waitFor(() => {
       expect(onChange).toHaveBeenCalledTimes(1)
     })
   })
@@ -120,5 +120,24 @@ describe('Select', () => {
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
     await waitFor(() => expect(screen.queryByText('React', { ignore: 'option' })).not.toBeVisible())
+  })
+
+  it('should be able to lazy mount its items', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should be able to lazy mount and unmount its items', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

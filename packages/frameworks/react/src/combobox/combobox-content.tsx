@@ -1,31 +1,21 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
-import type { Assign } from '../types'
+import { usePresenceContext } from '../presence'
 import { useComboboxContext } from './combobox-context'
 
-export interface ComboboxContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children' | 'fallback'>> {}
+export interface ComboboxContentProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useComboboxContext()
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(api.contentProps, presenceApi.getPresenceProps(ref), props)
 
-  return (
-    <Presence present={api.isOpen} {...presenceProps} fallback={<div {...api.contentProps} />}>
-      <ComboboxInnerContent ref={ref} {...localProps} />
-    </Presence>
-  )
+  if (presenceApi.isUnmounted) {
+    return null
+  }
+
+  return <ark.div {...mergedProps} />
 })
 
 ComboboxContent.displayName = 'ComboboxContent'
-
-const ComboboxInnerContent = forwardRef<HTMLDivElement, ComboboxContentProps>(
-  function ComboboxInnerContent(props, ref) {
-    const api = useComboboxContext()
-    const mergedProps = mergeProps(api.contentProps, props)
-
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)

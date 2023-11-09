@@ -1,7 +1,7 @@
 {
   "Root": {
     "align": {
-      "type": "'center' | 'end' | 'start'",
+      "type": "'center' | 'start' | 'end'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
@@ -22,7 +22,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

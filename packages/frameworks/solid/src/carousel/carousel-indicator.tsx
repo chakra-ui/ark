@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorProps = Assign<HTMLArkProps<'button'>, IndicatorProps>
+export interface CarouselIndicatorProps extends Assign<HTMLArkProps<'button'>, IndicatorProps> {}
 
 export const CarouselIndicator = (props: CarouselIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, [

@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseCarouselProps = Optional<carousel.Context, 'id'>
-export type UseCarouselReturn = Accessor<carousel.Api<PropTypes>>
+export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}
+export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()

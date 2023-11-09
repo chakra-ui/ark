@@ -12,18 +12,18 @@
     "vue:props": "ts-node src/generate-vue-props.ts"
   },
   "dependencies": {
-    "@types/voca": "1.4.4",
+    "@types/voca": "1.4.5",
     "find-up": "6.3.0",
     "fs-extra": "11.1.1",
     "globby": "13.2.2",
-    "pkg-dir": "7.0.0",
+    "pkg-dir": "8.0.0",
     "prettier": "3.0.3",
     "ts-morph": "20.0.0",
     "ts-pattern": "5.0.5",
     "voca": "1.4.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "11.0.3",
+    "@types/fs-extra": "11.0.4",
     "@types/node": "18.18.8",
     "@types/prettier": "2.7.3",
     "ts-node": "10.9.1",

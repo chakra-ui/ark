@@ -2,20 +2,30 @@ import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { DatePickerProvider } from './date-picker-context'
 import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 
-export type DatePickerProps = Assign<
-  HTMLArkProps<'div'>,
-  UseDatePickerProps & {
-    children?: JSX.Element | ((state: UseDatePickerReturn) => JSX.Element)
-  }
->
+export interface DatePickerProps
+  extends Assign<
+      Assign<
+        HTMLArkProps<'div'>,
+        { children?: JSX.Element | ((api: UseDatePickerReturn) => JSX.Element) }
+      >,
+      UseDatePickerProps
+    >,
+    UsePresenceProps {}
 
 export const DatePicker = (props: DatePickerProps) => {
-  const [datePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(props, [
+  const [presenceProps, datePickerProps] = splitPresenceProps(props)
+  const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',
     'dir',
     'disabled',
@@ -48,14 +58,16 @@ export const DatePicker = (props: DatePickerProps) => {
     'value',
     'view',
   ])
-
-  const api = useDatePicker(datePickerProps)
+  const api = useDatePicker(useDatePickerProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <DatePickerProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <PresenceProvider value={apiPresence}>
+        <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      </PresenceProvider>
     </DatePickerProvider>
   )
 }

@@ -15,47 +15,45 @@ export default meta
 export const Basic = () => {
   const [present, setPresent] = useState(false)
   return (
-    <div>
+    <>
       <button onClick={() => setPresent(!present)}>Toggle</button>
-      <Presence.Root present={present}>
-        <div className="box">Hidden and Hidden</div>
-      </Presence.Root>
-    </div>
+      <Presence present={present}>Hidden and Hidden</Presence>
+    </>
   )
 }
 
 export const LazyMount = () => {
   const [present, setPresent] = useState(false)
   return (
-    <div>
+    <>
       <button onClick={() => setPresent(!present)}>Toggle</button>
-      <Presence.Root present={present} lazyMount>
-        <div className="box">Unmounted and Hidden</div>
-      </Presence.Root>
-    </div>
+      <Presence present={present} lazyMount>
+        Unmounted and Hidden
+      </Presence>
+    </>
   )
 }
 
 export const UnmountOnExit = () => {
   const [present, setPresent] = useState(false)
   return (
-    <div>
+    <>
       <button onClick={() => setPresent(!present)}>Toggle</button>
-      <Presence.Root present={present} unmountOnExit>
-        <div className="box">Hidden and Unmounted on Exit</div>
-      </Presence.Root>
-    </div>
+      <Presence present={present} unmountOnExit>
+        Hidden and Unmounted on Exit
+      </Presence>
+    </>
   )
 }
 
 export const LazyMountAndUnmountOnExit = () => {
   const [present, setPresent] = useState(false)
   return (
-    <div>
+    <>
       <button onClick={() => setPresent(!present)}>Toggle</button>
-      <Presence.Root present={present} lazyMount unmountOnExit>
-        <div className="box">Lazy Mount and Unmounted on Exit</div>
-      </Presence.Root>
-    </div>
+      <Presence present={present} lazyMount unmountOnExit>
+        Lazy Mount and Unmounted on Exit
+      </Presence>
+    </>
   )
 }

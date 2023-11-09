@@ -1,12 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxPositionerProps = HTMLArkProps<'div'>
+export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxPositioner = (props: ComboboxPositionerProps) => {
-  const combobox = useComboboxContext()
-  const mergedProps = mergeProps(() => combobox().positionerProps, props)
+  const api = useComboboxContext()
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(() => api().positionerProps, props)
 
-  return <ark.div {...mergedProps} />
+  return (
+    <Show when={!presenceApi().isUnmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
+  )
 }

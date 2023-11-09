@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxIndicatorProps = HTMLArkProps<'div'>
+export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const CheckboxIndicator = (props: CheckboxIndicatorProps) => {
   const api = useCheckboxContext()

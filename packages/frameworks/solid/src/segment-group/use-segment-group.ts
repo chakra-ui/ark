@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseSegmentGroupProps = Optional<segment.Context, 'id'>
-export type UseSegmentGroupReturn = Accessor<segment.Api<PropTypes>>
+export interface UseSegmentGroupProps extends Optional<segment.Context, 'id'> {}
+export interface UseSegmentGroupReturn extends Accessor<segment.Api<PropTypes>> {}
 
 export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupReturn => {
   const getRootNode = useEnvironmentContext()

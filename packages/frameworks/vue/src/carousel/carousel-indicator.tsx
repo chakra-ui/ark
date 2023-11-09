@@ -13,8 +13,8 @@ export const CarouselIndicator = defineComponent({
       type: Number as PropType<CarouselIndicatorProps['index']>,
       required: true,
     },
-    readonly: {
-      type: Boolean as PropType<CarouselIndicatorProps['readonly']>,
+    readOnly: {
+      type: Boolean as PropType<CarouselIndicatorProps['readOnly']>,
       default: false,
     },
   },

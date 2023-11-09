@@ -1,20 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
-import type { Assign } from '../types'
+import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './date-picker-context'
 
-export interface DatePickerContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'fallback'>> {}
+export interface DatePickerContentProps extends HTMLArkProps<'div'> {}
 
 export const DatePickerContent = (props: DatePickerContentProps) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().contentProps, localProps)
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(
+    () => api().contentProps,
+    () => presenceApi().presenceProps,
+    props,
+  )
 
   return (
-    <Presence present={api().isOpen} {...presenceProps} fallback={<div {...api().contentProps} />}>
+    <Show when={!presenceApi().isUnmounted}>
       <ark.div {...mergedProps} />
-    </Presence>
+    </Show>
   )
 }

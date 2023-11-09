@@ -46,6 +46,12 @@
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "isRequired": false,
@@ -56,6 +62,7 @@
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -77,6 +84,7 @@
       "description": "Function called when the pointer is pressed down outside the combobox"
     },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
+    "present": { "type": "boolean", "isRequired": false },
     "preventScroll": {
       "type": "boolean",
       "isRequired": false,
@@ -97,40 +105,18 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Backdrop": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
+  "Backdrop": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Description": { "asChild": { "type": "boolean", "isRequired": false } },
   "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }

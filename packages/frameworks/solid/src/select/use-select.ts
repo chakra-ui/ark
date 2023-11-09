@@ -10,7 +10,8 @@ export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<select.Context<T>, 'id'>, 'collection'> {}
 
-export type UseSelectReturn<T extends CollectionItem> = Accessor<select.Api<PropTypes, T>>
+export interface UseSelectReturn<T extends CollectionItem>
+  extends Accessor<select.Api<PropTypes, T>> {}
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,

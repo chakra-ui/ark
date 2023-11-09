@@ -73,10 +73,10 @@ describe('Tabs', () => {
     const lastTab = screen.getByText('Vue Trigger')
 
     await user.click(lastTab)
-    waitFor(() => expect(lastTab).toHaveFocus())
+    await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
-    waitFor(() => expect(firstTab).toHaveFocus())
+    await waitFor(() => expect(firstTab).toHaveFocus())
   })
 
   it('should not loop focus if loop is false', async () => {
@@ -84,7 +84,7 @@ describe('Tabs', () => {
     const lastTab = screen.getByText('Vue Trigger')
 
     await user.click(lastTab)
-    waitFor(() => expect(lastTab).toHaveFocus())
+    await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
     expect(lastTab).toHaveFocus()
@@ -96,14 +96,30 @@ describe('Tabs', () => {
     const secondTab = screen.getByText('Solid Trigger')
 
     await user.click(firstTab)
-    waitFor(() => expect(firstTab).toHaveFocus())
+    await waitFor(() => expect(firstTab).toHaveFocus())
 
     await user.keyboard('[ArrowDown]')
-    waitFor(() => expect(secondTab).toHaveFocus())
+    await waitFor(() => expect(secondTab).toHaveFocus())
   })
 
   it('should render the content of tab when active', async () => {
     render(() => <ComponentUnderTest value="React" />)
     expect(screen.getByText('React Content')).toBeVisible()
+  })
+  it('should lazy mount a tab', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByText('React Trigger'))
+    expect(screen.queryByText('React Content')).toBeInTheDocument()
+  })
+
+  it('should lazy mount and unmount on exit a tab', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByText('React Trigger'))
+    expect(screen.queryByText('React Content')).toBeVisible()
+
+    await user.click(screen.getByText('Solid Trigger'))
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
   })
 })

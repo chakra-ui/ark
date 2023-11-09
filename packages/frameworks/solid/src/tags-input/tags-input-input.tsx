@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputInputProps = HTMLArkProps<'input'>
+export interface TagsInputInputProps extends HTMLArkProps<'input'> {}
 
 export const TagsInputInput = (props: TagsInputInputProps) => {
   const api = useTagsInputContext()

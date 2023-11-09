@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseEditableProps = Optional<editable.Context, 'id'>
-export type UseEditableReturn = Accessor<editable.Api<PropTypes>>
+export interface UseEditableProps extends Optional<editable.Context, 'id'> {}
+export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 
 export const useEditable = (props: UseEditableProps) => {
   const getRootNode = useEnvironmentContext()

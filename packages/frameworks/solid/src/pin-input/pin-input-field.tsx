@@ -4,13 +4,13 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputInputProps = Assign<HTMLArkProps<'input'>, { index: number }>
+export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, { index: number }> {}
 
 export const PinInputInput = (props: PinInputInputProps) => {
   const [inputParams, localProps] = splitProps(props, ['index'])
 
   const api = usePinInputContext()
-  const inputProps = mergeProps(() => api().getInputProps(inputParams), localProps)
+  const mergedProps = mergeProps(() => api().getInputProps(inputParams), localProps)
 
-  return <ark.input {...inputProps} />
+  return <ark.input {...mergedProps} />
 }

@@ -1,10 +1,10 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Pagination, type PaginationProps } from './'
 
-const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
+const ComponentUnderTest = (props: PaginationProps) => (
   <Pagination.Root {...props}>
     {({ pages }) => (
       <>
@@ -36,9 +36,9 @@ describe('Pagination', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  // it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
-  //   expect(Pagination[part]).toBeDefined()
-  // })
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
+    expect(Pagination[part]).toBeDefined()
+  })
 
   it('should update page when item is clicked', async () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)

@@ -4,14 +4,17 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { EditableProvider, type EditableContext } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { EditableProvider } from './editable-context'
+import { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 
 export interface EditableProps
   extends Assign<
-    Omit<HTMLArkProps<'div'>, 'children'> & {
-      children?: ReactNode | ((pages: EditableContext) => ReactNode)
-    },
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: ReactNode | ((api: UseEditableReturn) => ReactNode)
+      }
+    >,
     UseEditableProps
   > {}
 

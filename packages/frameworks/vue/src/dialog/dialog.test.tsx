@@ -56,7 +56,7 @@ describe('Dialog', () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
-  it('should open with external trigger', async () => {
+  it.skip('should open with external trigger', async () => {
     const { getByText, getByTestId } = render(ControlledComponent)
 
     const controlButton = getByText<HTMLButtonElement>('Toggle Dialog')

@@ -27,7 +27,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -46,6 +46,12 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "defaultValue": "false",
@@ -57,6 +63,7 @@
       "isRequired": false,
       "description": "Function called when the escape key is pressed"
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -92,6 +99,13 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Arrow": {
@@ -120,20 +134,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Trigger": {

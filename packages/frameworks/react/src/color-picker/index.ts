@@ -50,6 +50,7 @@ import {
 } from './color-picker-transparency-grid'
 import { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker-trigger'
 import { ColorPickerValueText, type ColorPickerValueTextProps } from './color-picker-value-text'
+import { ColorPickerView, type ColorPickerViewProps } from './color-picker-view'
 
 const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
@@ -71,6 +72,7 @@ const ColorPicker = Object.assign(ColorPickerRoot, {
   TransparencyGrid: ColorPickerTransparencyGrid,
   Trigger: ColorPickerTrigger,
   ValueText: ColorPickerValueText,
+  View: ColorPickerView,
 })
 export {
   ColorPicker,
@@ -119,4 +121,5 @@ export type {
   ColorPickerTransparencyGridProps,
   ColorPickerTriggerProps,
   ColorPickerValueTextProps,
+  ColorPickerViewProps,
 }
