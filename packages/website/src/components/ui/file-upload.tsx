@@ -1,4 +1,4 @@
-import * as Ark from '@ark-ui/react/src/carousel'
+import * as Ark from '@ark-ui/react/src/file-upload'
 import { styled } from 'styled-system/jsx'
 import { fileUpload, type FileUploadVariantProps } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
