@@ -116,7 +116,14 @@
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
-  "View": { "format": { "type": "ColorFormat", "isRequired": true } },
+  "View": {
+    "format": { "type": "ColorFormat", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Label": {
     "asChild": {
       "type": "boolean",
