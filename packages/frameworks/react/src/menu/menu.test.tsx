@@ -269,4 +269,43 @@ describe('Menu', () => {
     const text = await screen.findByText('main menu content')
     expect(text).toBeVisible()
   })
+
+  it('should be able to lazy mount its items', async () => {
+    render(
+      <Menu.Root lazyMount>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Positioner data-testid="positioner">
+          <Menu.Content>
+            <span>main menu content</span>
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>,
+    )
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should be able to lazy mount and unmount its items', async () => {
+    render(
+      <Menu.Root lazyMount unmountOnExit>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Positioner data-testid="positioner">
+          <Menu.Content>
+            <span>main menu content</span>
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>,
+    )
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }))
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+  })
 })
