@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+- Integrate latest `@zag-js` packages
+
 ## [1.0.0-beta.4] - 2023-10-31
 
 ### Fixed
