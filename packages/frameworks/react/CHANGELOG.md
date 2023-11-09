@@ -14,6 +14,10 @@ We are happy to announce the release of `@ark-ui/react@1.0.0`. This release incl
 - Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
 - Resolved various bugs and addressed accessibility issues across all components.
 
+### Stability and Support
+
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
+
 ## [1.0.0-beta.5] - 2023-11-09
 
 - Integrate latest `@zag-js` packages
