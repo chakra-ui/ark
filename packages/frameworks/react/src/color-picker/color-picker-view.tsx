@@ -1,14 +1,28 @@
+import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import type { ColorFormat } from '@zag-js/color-picker'
-import { type PropsWithChildren } from 'react'
+import { forwardRef } from 'react'
+import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export interface ColorPickerViewProps extends PropsWithChildren {
+export interface ColorPickerViewProps extends HTMLArkProps<'div'> {
   format: ColorFormat
 }
 
-export const ColorPickerView = (props: ColorPickerViewProps) => {
+export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
   const api = useColorPickerContext()
 
-  // TODO @segunadebayo
-  return api.format === props.format ? <>{props.children}</> : null
-}
+  if (api.format !== props.format) {
+    return null
+  }
+
+  return (
+    <ark.div
+      ref={ref}
+      data-format={props.format}
+      {...colorPickerAnatomy.build().view.attrs}
+      {...props}
+    />
+  )
+})
+
+ColorPickerView.displayName = 'ColorPickerView'

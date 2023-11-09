@@ -49,6 +49,11 @@ const value = ref('hsl(0, 100%, 50%)')
               <ColorPicker.ChannelInput channel="hex" />
               <ColorPicker.ChannelInput channel="alpha" />
             </ColorPicker.View>
+            <ColorPicker.View format="hsla">
+              <ColorPicker.ChannelInput channel="hue" />
+              <ColorPicker.ChannelInput channel="saturation" />
+              <ColorPicker.ChannelInput channel="lightness" />
+            </ColorPicker.View>
             <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
           </ColorPicker.Content>
         </ColorPicker.Positioner>
