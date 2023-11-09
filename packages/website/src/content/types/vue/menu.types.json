@@ -77,6 +77,7 @@
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
+    "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
