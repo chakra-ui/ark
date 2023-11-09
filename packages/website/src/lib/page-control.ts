@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content'
-import path from 'path'
+import path from 'node:path'
 
 const getOverviewPages = async () => {
   const priority = [

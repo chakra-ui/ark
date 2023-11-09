@@ -1,4 +1,4 @@
 {
   "Basic": "import { Avatar } from '@ark-ui/solid'\n\nconst Basic = () => (\n  <Avatar.Root>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n",
-  "Events": "import { Avatar } from '@ark-ui/solid'\n\nconst Events = () => (\n  <Avatar.Root onLoadingStatusChange={(status) => console.log(status)}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n"
+  "Events": "import { Avatar } from '@ark-ui/solid'\n\nconst Events = () => (\n  <Avatar.Root onLoadingStatusChange={(details) => console.log(details.status)}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n"
 }

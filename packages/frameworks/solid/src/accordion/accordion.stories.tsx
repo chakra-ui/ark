@@ -2,8 +2,11 @@ import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Accordion } from './'
 
-const meta: Meta = {
+type AccordionType = typeof Accordion
+
+const meta: Meta<AccordionType> = {
   title: 'Accordion',
+  component: Accordion,
 }
 
 export default meta
@@ -16,6 +19,7 @@ export const Basic = () => {
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>{item()} trigger</Accordion.ItemTrigger>
+            <Accordion.ItemIndicator>Icon</Accordion.ItemIndicator>
             <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
           </Accordion.Item>
         )}
@@ -27,7 +31,7 @@ export const Basic = () => {
 export const Initial = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root value={['panel-1']}>
+    <Accordion.Root value={['panel-2']}>
       <Index each={items}>
         {(item) => (
           <Accordion.Item value={item()}>

@@ -1,8 +1,15 @@
+import { accordionAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
+import { getParts } from '../../setup-test'
 import ComponentUnderTest from './accordion.test.vue'
 
 describe('Accordion', () => {
+  it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
+    render(ComponentUnderTest)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
   it('should render', async () => {
     render(ComponentUnderTest)
   })

@@ -6,7 +6,7 @@ import {
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
-  SliderOutput,
+  SliderValueText,
   SliderRange,
   SliderThumb,
   SliderTrack,
@@ -20,6 +20,7 @@ const sliderValue = ref([30])
     <Variant title="Basic">
       <Slider>
         <SliderLabel>Label</SliderLabel>
+        <SliderValueText />
         <SliderControl>
           <SliderTrack>
             <SliderRange />
@@ -36,7 +37,7 @@ const sliderValue = ref([30])
     <Variant title="Controlled">
       <Slider :min="-50" :max="50" v-model="sliderValue">
         <SliderLabel>Label</SliderLabel>
-        <SliderOutput>{{ sliderValue }}</SliderOutput>
+        <SliderValueText />
         <SliderControl>
           <SliderTrack>
             <SliderRange />

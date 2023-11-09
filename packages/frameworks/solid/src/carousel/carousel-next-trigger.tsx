@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselNextTriggerProps = HTMLArkProps<'button'>
+export interface CarouselNextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const CarouselNextTrigger = (props: CarouselNextTriggerProps) => {
   const api = useCarouselContext()

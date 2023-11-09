@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 
-export type SegmentGroupLabelProps = HTMLArkProps<'label'>
+export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
 
 export const SegmentGroupLabel = (props: SegmentGroupLabelProps) => {
   const api = useSegmentGroupContext()

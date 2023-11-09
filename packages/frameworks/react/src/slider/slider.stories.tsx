@@ -16,7 +16,7 @@ export const Basic = () => {
   return (
     <Slider>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -31,7 +31,7 @@ export const WithMarks = () => {
   return (
     <Slider.Root>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -51,7 +51,7 @@ export const WithMarks = () => {
 export const InitialValue = () => (
   <Slider.Root defaultValue={[42]}>
     <Slider.Label>Label</Slider.Label>
-    <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+    <Slider.ValueText />
     <Slider.Control>
       <Slider.Track>
         <Slider.Range />
@@ -70,7 +70,7 @@ export const MinMax = () => {
   return (
     <Slider min={-10} max={10}>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -85,7 +85,7 @@ export const Step = () => {
   return (
     <Slider step={0.01} min={5} max={10}>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -103,7 +103,7 @@ export const OnEvent = () => {
       onValueChangeEnd={(details) => console.log(details.value)}
     >
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -118,7 +118,7 @@ export const Vertical = () => {
   return (
     <Slider orientation="vertical">
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -133,7 +133,7 @@ export const CenterOrigin = () => {
   return (
     <Slider origin="center">
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -149,7 +149,7 @@ export const Advanced = () => {
   return (
     <Slider.Root min={-50} max={50} value={values} onValueChange={(e) => setValues(e.value)}>
       <Slider.Label>Label</Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />

@@ -20,6 +20,7 @@ export const Basic = () => {
     </ToggleGroup.Root>
   )
 }
+
 export const InitialValue = () => {
   return (
     <ToggleGroup.Root defaultValue={['b']}>

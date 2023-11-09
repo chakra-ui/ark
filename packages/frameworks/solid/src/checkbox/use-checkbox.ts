@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseCheckboxProps = Optional<checkbox.Context, 'id'>
-export type UseCheckboxReturn = Accessor<checkbox.Api<PropTypes>>
+export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {}
+export interface UseCheckboxReturn extends Accessor<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (props: UseCheckboxProps): UseCheckboxReturn => {
   const getRootNode = useEnvironmentContext()

@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useRadioGroupContext } from './radio-group-context'
 import { useRadioGroupItemContext } from './radio-group-item-context'
 
-export type RadioGroupItemTextProps = HTMLArkProps<'span'>
+export interface RadioGroupItemTextProps extends HTMLArkProps<'span'> {}
 
 export const RadioGroupItemText = (props: RadioGroupItemTextProps) => {
   const api = useRadioGroupContext()

@@ -24,7 +24,7 @@ describe('Menu', () => {
     expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  // it.each(getExports(menuAnatomy))('should export %s', async (part) => {
   //   expect(Menu[part]).toBeDefined()
   // })
 
@@ -258,7 +258,7 @@ describe('Menu', () => {
 
   it('should control the open state', async () => {
     render(
-      <Menu.Root isOpen>
+      <Menu.Root open>
         <Menu.Positioner>
           <Menu.Content>
             <span>main menu content</span>
@@ -268,5 +268,25 @@ describe('Menu', () => {
     )
     const text = await screen.findByText('main menu content')
     expect(text).toBeVisible()
+  })
+
+  it('should be able to lazy mount', async () => {
+    render(
+      <Menu.Root lazyMount>
+        <Menu.Trigger>Open menu</Menu.Trigger>
+        <Menu.Positioner data-testid="positioner">
+          <Menu.Content>
+            <span>content</span>
+          </Menu.Content>
+        </Menu.Positioner>
+      </Menu.Root>,
+    )
+    const menutrigger = screen.getByRole('button', { name: 'Open menu' })
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    expect(menutrigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(menutrigger)
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(menutrigger).toHaveAttribute('aria-controls')
   })
 })

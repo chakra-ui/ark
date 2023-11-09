@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 import { useSegmentGroupItemContext } from './segment-group-item-context'
 
-export type SegmentGroupItemTextProps = HTMLArkProps<'span'>
+export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
 
 export const SegmentGroupItemText = (props: SegmentGroupItemTextProps) => {
   const api = useSegmentGroupContext()

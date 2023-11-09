@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import type { Color } from '@zag-js/color-picker'
 import { useState } from 'react'
 import { ColorPicker } from './'
 import './color-picker.css'
@@ -53,8 +52,15 @@ export const Basic = () => {
               <ColorPicker.Swatch value="green" />
             </ColorPicker.SwatchTrigger>
           </ColorPicker.SwatchGroup>
-          <ColorPicker.ChannelInput channel="hex" />
-          <ColorPicker.ChannelInput channel="alpha" />
+          <ColorPicker.View format="rgba">
+            <ColorPicker.ChannelInput channel="hex" />
+            <ColorPicker.ChannelInput channel="alpha" />
+          </ColorPicker.View>
+          <ColorPicker.View format="hsla">
+            <ColorPicker.ChannelInput channel="hue" />
+            <ColorPicker.ChannelInput channel="saturation" />
+            <ColorPicker.ChannelInput channel="lightness" />
+          </ColorPicker.View>
           <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
         </ColorPicker.Content>
       </ColorPicker.Positioner>
@@ -65,14 +71,10 @@ export const Basic = () => {
 export const Controlled = () => {
   const [currentValue, setCurrentValue] = useState('hsl(0, 100%, 50%)')
 
-  const handleValueChange = (details: { value: Color; valueAsString: string }) => {
-    setCurrentValue(details.valueAsString)
-  }
-
   return (
     <ColorPicker.Root
       value={currentValue}
-      onValueChange={handleValueChange}
+      onValueChange={(details) => setCurrentValue(details.valueAsString)}
       defaultValue="hsl(0, 100%, 50%)"
     >
       <ColorPicker.Label>Color</ColorPicker.Label>

@@ -3,8 +3,11 @@ import type { Meta } from 'storybook-solidjs'
 import { Checkbox, type CheckedState } from './'
 import './checkbox.css'
 
-const meta: Meta = {
+type CheckboxType = typeof Checkbox
+
+const meta: Meta<CheckboxType> = {
   title: 'Checkbox',
+  component: Checkbox,
 }
 
 export default meta
@@ -19,12 +22,10 @@ export const Basic = () => (
 export const Controlled = () => {
   const [checked, setChecked] = createSignal<CheckedState>(true)
   return (
-    <>
-      <Checkbox.Root checked={checked()} onCheckedChange={(e) => setChecked(e.checked)}>
-        <Checkbox.Label>Checkbox</Checkbox.Label>
-        <Checkbox.Control />
-      </Checkbox.Root>
-    </>
+    <Checkbox.Root checked={checked()} onCheckedChange={(e) => setChecked(e.checked)}>
+      <Checkbox.Label>Checkbox</Checkbox.Label>
+      <Checkbox.Control />
+    </Checkbox.Root>
   )
 }
 

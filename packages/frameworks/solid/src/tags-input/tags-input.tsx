@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -7,11 +7,14 @@ import type { Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
-export type TagsInputChildren = {
-  children: (pages: UseTagsInputReturn) => JSX.Element | JSX.Element
-}
-
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps & TagsInputChildren>
+export interface TagsInputProps
+  extends Assign<
+    Assign<
+      HTMLArkProps<'div'>,
+      { children?: JSX.Element | ((api: UseTagsInputReturn) => JSX.Element) }
+    >,
+    UseTagsInputProps
+  > {}
 
 export const TagsInput = (props: TagsInputProps) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [

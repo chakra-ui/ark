@@ -1,7 +1,12 @@
-import { useCallback, useEffect, type ReactNode } from 'react'
+import { useCallback, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
 import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
 import { useEffectOnce } from '../use-effect-once'
 import {
   MenuMachineProvider,
@@ -12,22 +17,13 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
-interface MenuState {
-  isOpen: boolean
-  onClose: () => void
+export interface MenuProps extends UseMenuProps, UsePresenceProps {
+  children?: ReactNode | ((api: UseMenuReturn['api']) => ReactNode)
 }
 
-export interface MenuProps
-  extends Assign<
-    UseMenuProps,
-    {
-      children?: ReactNode | ((state: MenuState) => ReactNode)
-      isOpen?: boolean
-    }
-  > {}
-
 export const Menu = (props: MenuProps) => {
-  const [menuProps, { children, isOpen }] = createSplitProps<UseMenuProps>()(props, [
+  const [presenceProps, menuProps] = splitPresenceProps(props)
+  const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
@@ -43,19 +39,16 @@ export const Menu = (props: MenuProps) => {
     'onPointerDownOutside',
     'onSelect',
     'onValueChange',
+    'open',
     'positioning',
     'value',
   ])
 
   const parentApi = useMenuContext() as UseMenuReturn['api']
   const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
-
-  const { api, machine } = useMenu(menuProps)
-
-  const view = runIfFn<ReactNode, MenuState>(children, {
-    isOpen: api.isOpen,
-    onClose: api.close,
-  })
+  const { api, machine } = useMenu(useMenuProps)
+  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const view = runIfFn(localProps.children, api)
 
   useEffectOnce(() => {
     if (!parentMachine) return
@@ -63,20 +56,17 @@ export const Menu = (props: MenuProps) => {
     api.setParent(parentMachine)
   })
 
-  useEffect(() => {
-    if (isOpen && !api.isOpen) {
-      api.open()
-    }
-  }, [isOpen, api])
-
   const getTriggerItemProps = useCallback(
     () => parentApi.getTriggerItemProps(api),
     [api, parentApi],
   )
+
   return (
     <MenuTriggerItemProvider value={getTriggerItemProps}>
       <MenuMachineProvider value={machine}>
-        <MenuProvider value={api}>{view}</MenuProvider>
+        <MenuProvider value={api}>
+          <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+        </MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>
   )

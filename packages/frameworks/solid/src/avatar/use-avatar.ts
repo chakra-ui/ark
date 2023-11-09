@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseAvatarProps = Optional<avatar.Context, 'id'>
-export type UseAvatarReturn = Accessor<avatar.Api<PropTypes>>
+export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
+export interface UseAvatarReturn extends Accessor<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
   const getRootNode = useEnvironmentContext()

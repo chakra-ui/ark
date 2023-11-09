@@ -5,7 +5,7 @@ import type { Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
+export interface RatingGroupProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
 export const RatingGroup = (props: RatingGroupProps) => {
   const [ratingParams, localProps] = createSplitProps<UseRatingGroupProps>()(props, [

@@ -47,10 +47,6 @@ export const Basic = () => {
 export const Controlled = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const handleSlideChange = (details: { index: number }) => {
-    setCurrentIndex(details.index)
-  }
-
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',
@@ -58,7 +54,7 @@ export const Controlled = () => {
   ]
 
   return (
-    <Carousel.Root index={currentIndex} onIndexChange={handleSlideChange}>
+    <Carousel.Root index={currentIndex} onIndexChange={(details) => setCurrentIndex(details.index)}>
       <Carousel.Control>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
         <Carousel.NextTrigger>Next</Carousel.NextTrigger>

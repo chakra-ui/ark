@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseNumberInputProps = Optional<numberInput.Context, 'id'>
-export type UseNumberInputReturn = Accessor<numberInput.Api<PropTypes>>
+export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {}
+export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
   const getRootNode = useEnvironmentContext()

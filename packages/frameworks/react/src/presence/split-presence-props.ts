@@ -1,8 +1,8 @@
 import { createSplitProps } from '../create-split-props'
-import type { PresenceProps } from './presence'
+import type { UsePresenceProps } from './use-presence'
 
-export function splitPresenceProps<T>(props: T & Omit<PresenceProps, 'children'>) {
-  return createSplitProps<Omit<PresenceProps, 'children' | 'fallback'>>()(props, [
+export function splitPresenceProps<T>(props: T & UsePresenceProps) {
+  return createSplitProps<UsePresenceProps>()(props, [
     'lazyMount',
     'onExitComplete',
     'present',

@@ -1,5 +1,10 @@
 {
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -21,7 +26,7 @@
       "description": "Whether the color picker is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -40,7 +45,14 @@
       "isRequired": false,
       "description": "The initial focus element when the color picker is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -81,10 +93,17 @@
       "isRequired": false,
       "description": "The positioning options for the color picker"
     },
+    "present": { "type": "boolean", "isRequired": false },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is read-only"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": { "type": "string", "isRequired": false }
   },
@@ -96,6 +115,14 @@
     },
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
+  },
+  "View": {
+    "format": { "type": "ColorFormat", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
   "Label": {
     "asChild": {
@@ -122,20 +149,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Control": {

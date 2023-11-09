@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useCallback } from 'react'
-import { useLatestRef } from './use-latest-ref'
+import { useCallback, useRef } from 'react'
 
 type AnyFunction = (...args: any[]) => any
 
@@ -26,4 +25,10 @@ export function useEvent<T extends AnyFunction>(callback: T | undefined, opts: O
     },
     [sync, callbackRef],
   ) as T
+}
+
+function useLatestRef<T>(value: T) {
+  const ref = useRef(value)
+  ref.current = value
+  return ref
 }

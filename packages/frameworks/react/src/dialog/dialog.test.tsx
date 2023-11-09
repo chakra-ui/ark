@@ -42,4 +42,31 @@ describe('Dialog', () => {
 
     expect(onClose).toHaveBeenCalledTimes(1)
   })
+
+  it('should be able to lazy mount', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open dialog' }))
+    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.getByRole('button', { name: 'Open dialog' })).not.toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open dialog' }))
+    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
 })

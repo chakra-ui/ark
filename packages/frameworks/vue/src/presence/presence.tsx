@@ -1,56 +1,35 @@
-import { cloneVNode, defineComponent, ref, watch, withDirectives } from 'vue'
-import { emits, props } from './presence.props'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
-export type PresenceProps = UsePresenceProps & {
-  /**
-   * Whether to enable lazy mounting. Defaults to `false`.
-   */
-  lazyMount?: boolean
-  /**
-   * Whether to unmount on exit. Defaults to `false`.
-   */
-  unmountOnExit?: boolean
-}
+export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
 export const Presence = defineComponent({
-  props,
-  emits,
-  setup(props, { slots, emit }) {
+  name: 'Presence',
+  props: {
+    present: {
+      type: Boolean,
+      default: undefined,
+    },
+    lazyMount: {
+      type: Boolean,
+      default: undefined,
+    },
+    unmountOnExit: {
+      type: Boolean,
+      default: undefined,
+    },
+  },
+  emits: [],
+  setup(props, { slots, attrs, emit }) {
     const api = usePresence(props, emit)
-    const wasEverPresent = ref(false)
 
-    watch(
-      () => api.value.isPresent,
-      (newValue) => {
-        if (newValue) {
-          wasEverPresent.value = true
-        }
-      },
-    )
-
-    const setRef = {
-      mounted(el: HTMLElement) {
-        api.value.setNode(el)
-      },
-    }
-
-    return () => {
-      const originalVNode = slots.default ? slots.default()[0] : null
-
-      if (
-        !originalVNode ||
-        (!api.value.isPresent && !wasEverPresent.value && props.lazyMount) ||
-        (props.unmountOnExit && !api.value.isPresent && wasEverPresent.value)
-      ) {
-        return null
-      }
-
-      const clonedVNode = cloneVNode(originalVNode, {
-        ['data-state']: props.present ? 'open' : 'closed',
-        ['hidden']: !api.value.isPresent,
-      })
-      return withDirectives(clonedVNode, [[setRef]])
-    }
+    return () =>
+      api.value.isUnmounted ? null : (
+        <ark.div {...attrs} {...api.value.presenceProps} data-scope="presence" data-part="root">
+          {slots?.default?.()}
+        </ark.div>
+      )
   },
 })

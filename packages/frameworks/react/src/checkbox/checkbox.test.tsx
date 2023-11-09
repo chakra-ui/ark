@@ -6,7 +6,7 @@ import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Checkbox, type CheckboxProps } from './'
 
-const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
+const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
     <Checkbox.Control data-testid="control">

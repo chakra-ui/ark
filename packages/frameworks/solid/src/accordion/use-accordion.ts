@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseAccordionProps = Optional<accordion.Context, 'id'>
-export type UseAccordionReturn = Accessor<accordion.Api<PropTypes>>
+export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {}
+export interface UseAccordionReturn extends Accessor<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {
   const getRootNode = useEnvironmentContext()

@@ -1,11 +1,22 @@
 import { mergeProps } from '@zag-js/solid'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { CarouselProvider } from './carousel-context'
-import { useCarousel, type UseCarouselProps } from './use-carousel'
+import { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
 
-export type CarouselProps = Assign<HTMLArkProps<'div'>, UseCarouselProps>
+export interface CarouselProps
+  extends Assign<
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: JSX.Element | ((api: UseCarouselReturn) => JSX.Element)
+      }
+    >,
+    UseCarouselProps
+  > {}
 
 export const Carousel = (props: CarouselProps) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
@@ -21,11 +32,13 @@ export const Carousel = (props: CarouselProps) => {
     'slidesPerView',
     'spacing',
   ])
-  const carousel = useCarousel(useCarouselProps)
-  const rootProps = mergeProps(() => carousel().rootProps, localProps)
+  const api = useCarousel(useCarouselProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
+
   return (
-    <CarouselProvider value={carousel}>
-      <ark.div {...rootProps} />
+    <CarouselProvider value={api}>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </CarouselProvider>
   )
 }
