@@ -20,67 +20,6 @@ We are happy to announce the release of `@ark-ui/solid@1.0.0`. This release incl
 
 With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/solid`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
-## [1.0.0-beta.3] - 2023-10-31
-
-### Added
-
-- Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
-- Added `ValueText` to the `ColorPicker` component
-
-### Changed
-
-- Improved accessibility of all disclosure components when lazy mounting is enabled.
-- Renamed `htmlFor` prop to `for` in `MenuItemGroupLabel`,
-  `ComboboxItemGroupLabel` and `SelectItemGroupLabel` component
-
-### Fixed
-
-- Added missing data attributes to `DatePickerView` component
-- Resolved an accessibility issue with `Select`
-
-## [1.0.0-beta.2] - 2023-10-24
-
-### Changed
-
-- Replaced `vite` with `rollup-preset-solid` for bundling.
-
-## [1.0.0-beta.1] - 2023-10-20
-
-### Added
-
-- Parsed `focusedValue` in `DatePicker`
-
-### Fixed
-
-- Resolved an issue with `@ark-ui/anatomy`
-
-## [1.0.0-beta.0] - 2023-10-20
-
-### Added
-
-- Added `ToggleGroup` component
-
-### Changed
-
-- Revised `Comoobox` component to support multiple selection
-- Revised `Select` component to support multiple selection
-
-### Fixed
-
-- Resolved an issue where the `asChild` property was not working as expected
-
-### Removed
-
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
-
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/solid'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
-```
-
 ## [0.11.0] - 2023-09-08
 
 ### Added
