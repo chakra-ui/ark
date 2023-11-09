@@ -55,7 +55,7 @@ export const Controlled = () => {
 
 export const LazyMount = () => {
   return (
-    <Dialog.Root lazyMount>
+    <Dialog.Root lazyMount unmountOnExit>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Dialog.Backdrop />
       <Dialog.Positioner>

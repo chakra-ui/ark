@@ -50,11 +50,11 @@
 }
 
 [data-scope='dialog'][data-part='content'][data-state='open'] {
-  animation: scaleIn 0.25s ease-out;
+  animation: scaleIn 0.5s ease-out;
 }
 
 [data-scope='dialog'][data-part='content'][data-state='closed'] {
-  animation: scaleOut 0.2s ease-in;
+  animation: scaleOut 0.5s ease-in;
 }
 
 [data-scope='dialog'][data-part='close-trigger'] {
