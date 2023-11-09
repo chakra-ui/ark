@@ -35,6 +35,28 @@ describe('Checkbox', () => {
     expect(checkbox).toBeChecked()
   })
 
+  it('should handle check', async () => {
+    const spyChange = vi.fn()
+
+    render(<ComponentUnderTest onCheckedChange={spyChange} />)
+
+    await user.click(screen.getByRole('checkbox'))
+    expect(spyChange).toHaveBeenCalledWith({ checked: true })
+  })
+
+  // TODO fix text @segunadebayo onChange vs onCheckedChange
+  it.skip('should handle check and unchecked', async () => {
+    const spyChange = vi.fn()
+
+    render(<ComponentUnderTest onCheckedChange={spyChange} />)
+
+    await user.click(screen.getByRole('checkbox'))
+    expect(spyChange).toHaveBeenCalledWith({ checked: true })
+
+    await user.click(screen.getByRole('checkbox'))
+    expect(spyChange).toHaveBeenCalledWith({ checked: false })
+  })
+
   it('should handle indeterminate state properly', async () => {
     render(<ComponentUnderTest checked="indeterminate" />)
     expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
