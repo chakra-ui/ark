@@ -42,10 +42,9 @@ describe('Editable', () => {
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(() => <ComponentUnderTest activationMode="dblclick" />)
     await user.dblClick(screen.getByText('Placeholder'))
-    const input = screen.getByRole('textbox')
 
-    await user.clear(input)
-    await user.type(input, 'React')
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'React')
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
@@ -55,9 +54,8 @@ describe('Editable', () => {
 
     await user.dblClick(screen.getByText('React'))
 
-    const input = screen.getByRole('textbox')
-    await user.clear(input)
-    await user.type(input, 'Solid')
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'Solid')
     await user.click(screen.getByText('Save'))
 
     await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
