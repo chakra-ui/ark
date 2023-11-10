@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/solid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
