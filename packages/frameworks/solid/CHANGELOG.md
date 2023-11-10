@@ -6,6 +6,11 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
+
 ## [1.0.0] - 2023-11-09
 
 We are happy to announce the release of `@ark-ui/solid@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.

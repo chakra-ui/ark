@@ -2,6 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
+  PresencePropsProvider,
   PresenceProvider,
   splitPresenceProps,
   usePresence,
@@ -46,7 +47,9 @@ export const Dialog = (props: DialogProps) => {
 
   return (
     <DialogProvider value={api}>
-      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      <PresencePropsProvider value={presenceProps}>
+        <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      </PresencePropsProvider>
     </DialogProvider>
   )
 }
