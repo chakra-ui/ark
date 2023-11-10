@@ -1,5 +1,5 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
@@ -35,26 +35,15 @@ describe('Checkbox', () => {
     expect(checkbox).toBeChecked()
   })
 
-  it('should handle check', async () => {
-    const spyChange = vi.fn()
+  it('should invoke onCheckedChange', async () => {
+    const onCheckedChange = vi.fn()
+    render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
-    render(<ComponentUnderTest onCheckedChange={spyChange} />)
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
 
-    await user.click(screen.getByRole('checkbox'))
-    expect(spyChange).toHaveBeenCalledWith({ checked: true })
-  })
-
-  // TODO fix text @segunadebayo onChange vs onCheckedChange
-  it.skip('should handle check and unchecked', async () => {
-    const spyChange = vi.fn()
-
-    render(<ComponentUnderTest onCheckedChange={spyChange} />)
-
-    await user.click(screen.getByRole('checkbox'))
-    expect(spyChange).toHaveBeenCalledWith({ checked: true })
-
-    await user.click(screen.getByRole('checkbox'))
-    expect(spyChange).toHaveBeenCalledWith({ checked: false })
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {
