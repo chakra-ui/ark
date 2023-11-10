@@ -10,6 +10,9 @@ description: All notable changes to this project will be documented in this file
 
 - Resolved an issue where the `Dialog` component would not animate on exit.
 - Resolved various issues for `Menu` when lazy mounted.
+- Resolved an issue where `MenuTrigger` could still work even when disabled.
+- Resolved an issue where components like `Dialog`, `Popover` etc would not invoke `onExitComplete`
+- Fixed an issue where placement of the `Combobox` could be incorrect when lazy mounted.
 
 ## [1.0.0] - 2023-11-09
 
