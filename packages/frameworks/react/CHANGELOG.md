@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.1] - 2023-11-10
+
 ### Fixed
 
 - Resolved an issue where the `Dialog` component would not animate on exit.
