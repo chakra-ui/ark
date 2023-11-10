@@ -47,12 +47,12 @@
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -62,7 +62,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
@@ -103,6 +103,7 @@
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
+  "View": { "format": { "type": "ColorFormat", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },

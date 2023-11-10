@@ -1,11 +1,11 @@
-[data-part='root'] {
+[data-scope='checkbox'][data-part='root'] {
   display: flex;
   flex-direction: row;
   cursor: pointer;
   gap: 8px;
 }
 
-[data-part='control'] {
+[data-scope='checkbox'][data-part='control'] {
   border: 2px solid;
   border-radius: 9999px;
   display: flex;
@@ -15,12 +15,12 @@
   height: 16px;
 }
 
-[data-part='control'][data-state='checked'] {
+[data-scope='checkbox'][data-part='control'][data-state='checked'] {
   background: black;
   color: white;
 }
 
-[data-part='control'][data-state='indeterminate'] {
+[data-scope='checkbox'][data-part='control'][data-state='indeterminate'] {
   background: blue;
   color: white;
 }

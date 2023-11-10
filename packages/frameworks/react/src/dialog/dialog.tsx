@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
-import { PresenceProvider, usePresence } from '../presence'
+import { PresencePropsProvider, PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
 import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'
@@ -18,7 +18,9 @@ export const Dialog = (props: DialogProps) => {
 
   return (
     <DialogProvider value={api}>
-      <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+      <PresencePropsProvider value={presenceProps}>
+        <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+      </PresencePropsProvider>
     </DialogProvider>
   )
 }

@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
-import { getExports } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Slider, type SliderProps } from './'
 
 const ComponentUnderTest = (props: SliderProps) => {
@@ -36,12 +36,13 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it('should render!', async () => {
-    render(<ComponentUnderTest />)
-  })
-
   it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
     expect(Slider[part]).toBeDefined()
+  })
+
+  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it('should be possible to control it with the arrow keys', async () => {

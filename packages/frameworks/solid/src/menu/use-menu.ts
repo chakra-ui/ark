@@ -4,9 +4,7 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export interface UseMenuProps extends Optional<menu.Context, 'id'> {
-  open?: boolean
-}
+export interface UseMenuProps extends Optional<menu.Context, 'id'> {}
 
 export type UseMenuReturn = () => {
   machine: ReturnType<typeof menu.machine>

@@ -1,20 +1,129 @@
 ---
 id: styling
-title: Styling Components
+title: Styling
 description:
-  Ark UI is a headless component library that's compatible with any styling
+  Ark UI is a headless component library that is compatible with any styling
   solution. This guide demonstrates how to style components.
 ---
 
-Ark UI doesn't include built-in styling. Nevertheless, it provides a flexible
-and customizable approach to style components based on your specific needs. In
-this guide, we'll use a simple `Tabs` component as an example.
+Ark UI doesn't include built-in styling and is compatible with any styling
+solution you prefer. In this guide, we'll use a simple `Tabs` component as an
+example.
 
-## Using Class Names
+## Overview
 
-Class names offer a versatile means to style your components. This approach
+### Styling parts
+
+Every component part is assigned a `data-scope` and `data-part` attribute. The
+`data-scope` represents the component name, the `data-part` represents the name
+of the part.
+
+> This was built to mirror the upcoming
+> [CSS Scopes Specification](https://drafts.csswg.org/css-cascade-6/#example-463550a5)
+
+### Styling states
+
+Most interactive components have a `data-*` attribute that represents the
+current state of the component.
+
+For instance, the tab trigger and content element will have a `data-selected`
+attribute when their `value` match the current active tab.
+
+We extensively provide data attributes like `data-disabled`, `data-readonly`,
+`data-focus`, `data-orientation` and so on, to help you style the component
+based on its state.
+
+## Using Panda CSS
+
+Panda is a delightful, build-time CSS-in-JS framework that's designed to work
+seamlessly with Ark UI. It's the recommended styling solution for Ark UI.
+
+> Learn more about Panda CSS at [panda-css.com](https://panda-css.com).
+
+### The styled factory
+
+Panda CSS provides a `styled` function that enables you to style component parts
+with ease. You can also leverage the `css` function to create simple styles.
+
+```tsx
+import { Tabs } from '@ark-ui/react'
+import { styled } from 'styled-system/jsx' // panda generated directory
+
+// using the styled function
+const TabTrigger = styled(Tabs.Trigger, {
+  base: {
+    bg: 'gray.100',
+    borderWidth: '1px',
+    paddingTop: '3',
+  },
+  variants: {
+    // ... define variants of your tab
+  },
+})
+
+// using the css function
+const listClassName = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  fontSize: '14px',
+  fontWeight: 'medium',
+  textAlign: 'center',
+  color: '#374151',
+  borderBottomWidth: '1px',
+  borderBottomColor: 'gray.200',
+})
+
+const Demo = () => (
+  <Tabs.Root>
+    <Tabs.List className={listClassName}>
+      <TabTrigger value="react" />
+    </Tabs.List>
+    {/* … */}
+  </Tabs.Root>
+)
+```
+
+### Using slot recipes
+
+Panda provides the idea of slot recipes, which are a collection of styles that
+can be applied to different parts of a component. Slot recipes are defined using
+the `cva` function provided by Panda.
+
+```tsx
+import { Tabs } from '@ark-ui/react'
+import { sva } from 'styled-system/css' // panda generated directory
+
+const tabStyle = sva({
+  slots: ['list', 'trigger'],
+  base: {
+    // base styles for Tabs.List
+    list: {},
+    // base styles for Tabs.Trigger
+    trigger: {},
+  },
+  variants: {
+    // variant styles
+  },
+})
+
+const Demo = () => {
+  const styles = tabStyle()
+  return (
+    <Tabs.Root>
+      <Tabs.List className={styles.list}>
+        <Tab.Trigger className={styles.trigger} value="react" />
+      </Tabs.List>
+      {/* … */}
+    </Tabs.Root>
+  )
+}
+```
+
+## Using Utility Classes
+
+Utility classes offer a versatile means to style your components. This approach
 proves particularly beneficial when using Ark UI in conjunction with a CSS
-styling framework, such as `Tailwind` or `Bootstrap`.
+styling framework, such as Tailwind, UnoCSS or Bootstrap.
 
 ```tsx
 <Tabs.Root>
@@ -32,9 +141,10 @@ styling framework, such as `Tailwind` or `Bootstrap`.
 ## Using Inline Styles
 
 Inline styles can also be used, although they're typically not recommended due
-to potential conflicts and maintainability issues. Nonetheless, Ark UI ensures
-that user-defined inline styles merge correctly with any pre-existing inline
-styles from the component framework.
+to potential conflicts and maintainability issues.
+
+> Ark UI ensures that user-defined inline styles merge correctly with any
+> built-in inline styles.
 
 ```tsx
 <Tabs.Root>
@@ -67,29 +177,27 @@ styles from the component framework.
 </Tabs.Root>
 ```
 
-## Using CSS Selectors
+## Using CSS
 
-Ark UI automatically assigns a `data-scope` and `data-part` attribute to every
-component and component part. You can use these attributes to specify CSS for
-these selectors.
+As described earlier, you can use the provided `data-scope` and `data-part`
+attribute to every component part to style them with ease.
 
-For instance, the `Tabs` component renders the following markup:
+Here's a simplified markup for the `Tabs` component:
 
-```tsx
-<Tabs.Root data-scope="tabs" data-part="root">
-  <Tabs.List data-scope="tabs" data-part="Tabs.List">
-    <Tabs.Trigger data-scope="tabs" data-part="trigger" value="react">
+```html
+<div data-scope="tabs" data-part="root">
+  <div role="tablist" data-scope="tabs" data-part="list">
+    <button role="tab" data-scope="tabs" data-part="trigger" data-value="react">
       React
-    </Tabs.Trigger>
-  </Tabs.List>
-</Tabs.Root>
+    </button>
+  </div>
+</div>
 ```
 
-With these selectors, it's possible to write CSS that targets specific component
-parts like `Tabs.Trigger` and `Tabs.List`.
+Here's an example of styling the `Tabs.List` and `Tabs.Trigger` parts using CSS
 
 ```css
-[data-scope='tabs'][data-part='tablist'] {
+[data-scope='tabs'][data-part='list'] {
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
@@ -109,33 +217,36 @@ parts like `Tabs.Trigger` and `Tabs.List`.
 }
 ```
 
-## Using the asChild Prop
+## Component Library
 
-The `asChild` prop offers an additional layer of customization by enabling you
-to replace the default element with your own custom child element, such as a
-`Button` or `List`. This proves exceptionally valuable when you're integrating
-Ark UI with an existing UI library, for instance, `Chakra UI`.
+When using Ark UI with a component library, such as Chakra UI or Material UI,
+you can use the `asChild` prop to swap the rendered element with your own while
+retaining the original functionality.
+
+> Note: If you're using React, it's important to ensure the element implements
+> the `React.forwardRef` API to ensure the ref is forwarded correctly.
 
 ```tsx
-<Tabs.Root>
-  <Tabs.List asChild>
-    <List>
-      <Tabs.Trigger value="react" asChild>
-        <Button>React</Button>
-      </Tabs.Trigger>
-    </List>
-  </Tabs.List>
-</Tabs.Root>
-```
+import { Tabs } from '@ark-ui/react'
+import { Button } from '@chakra-ui/react'
 
-With `asChild`, the default markup of Ark UI components can be substituted with
-elements from your existing library, granting you full control over the
-rendering and style of your UI components. This, in turn, ensures your styling
-and component architecture remains consistent across your application.
+const Demo = () => (
+  <Tabs.Root>
+    <Tabs.List asChild>
+      <List>
+        <Tabs.Trigger value="react" asChild>
+          <Button variant="outline">React</Button>
+        </Tabs.Trigger>
+      </List>
+    </Tabs.List>
+  </Tabs.Root>
+)
+```
 
 ## Conclusion
 
 Styling in Ark UI is intentionally unopinionated to provide you with the maximum
-flexibility you need to adapt the components to your own design system. Whether
-you're using class names, inline styles, CSS selectors, or integrating Ark UI
-with an existing UI library, the choice is yours.
+flexibility you need to adapt the components to your own design system.
+
+Whether you're using class names, inline styles, CSS selectors, or integrating
+Ark UI with an existing UI library, the choice is yours.

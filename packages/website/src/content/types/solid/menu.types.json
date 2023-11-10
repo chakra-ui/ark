@@ -56,12 +56,12 @@
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -71,7 +71,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onSelect": {
       "type": "(details: SelectionDetails) => void",
@@ -83,7 +83,7 @@
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
-    "open": { "type": "boolean", "isRequired": false },
+    "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
