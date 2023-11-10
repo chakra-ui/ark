@@ -60,7 +60,7 @@ export default defineConfig({
         '--astro-code-color-background': 'colors.grayPalette.900',
         '--astro-code-token-constant': 'colors.coral.300',
         '--astro-code-token-string': 'colors.yellow.100',
-        '--astro-code-token-comment': 'colors.grayPalette.700',
+        '--astro-code-token-comment': 'colors.grayPalette.500',
         '--astro-code-token-keyword': 'colors.coral.300',
         '--astro-code-token-parameter': 'colors.grayPalette.600',
         '--astro-code-token-function': 'colors.grayPalette.300',
