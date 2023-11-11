@@ -36,13 +36,13 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
-    expect(Slider[part]).toBeDefined()
-  })
-
   it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
+    expect(Slider[part]).toBeDefined()
   })
 
   it('should be possible to control it with the arrow keys', async () => {
@@ -124,14 +124,14 @@ describe('Slider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it('should emit correct onChange events', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+  it('should emit correct onValueChange events', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
 
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 })

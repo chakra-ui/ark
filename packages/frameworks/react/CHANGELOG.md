@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `FileUpload` component
+
 ## [1.0.1] - 2023-11-10
 
 ### Fixed
