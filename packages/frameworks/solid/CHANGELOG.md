@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `FileUpload` component
+
 ### Fixed
 
 - Resolved an issue where `Dialog.CloseTrigger` had `data-part` as `trigger` instead of `close-trigger`.
