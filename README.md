@@ -20,7 +20,7 @@
 | Combobox / Autocomplete | 🟢    | 🟢    | 🟢  |
 | Editable                | 🟢    | 🟢    | 🟢  |
 | Environment             | 🟢    | 🟢    | 🟢  |
-| File Upload             | ⚪    | ⚪    | ⚪  |
+| File Upload             | 🟢    | ⚪    | ⚪  |
 | Hover Card              | 🟢    | 🟢    | 🟢  |
 | Menu                    | 🟢    | 🟢    | 🟢  |
 | Number Input            | 🟢    | 🟢    | 🟢  |
