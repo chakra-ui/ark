@@ -1,7 +1,9 @@
+import { comboboxAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
+import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
 import { Combobox, type ComboboxProps } from './'
 
@@ -48,8 +50,13 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
 }
 
 describe('Combobox', () => {
-  it('should render', () => {
+  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+    expect(Combobox[part]).toBeDefined()
   })
 
   it('should show options on click', async () => {

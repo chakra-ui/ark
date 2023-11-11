@@ -2,9 +2,9 @@ import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { HoverCard, type HoverCardProps } from '..'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
+import { HoverCard, type HoverCardProps } from './'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>

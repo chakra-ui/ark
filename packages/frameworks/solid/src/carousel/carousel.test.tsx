@@ -2,7 +2,7 @@ import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Carousel, type CarouselProps } from './'
 
 const ComponentUnderTest = (props: CarouselProps) => {
@@ -45,6 +45,10 @@ describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(carouselAnatomy))('should export %s', async (part) => {
+    expect(Carousel[part]).toBeDefined()
   })
 
   it('should have the correct disabled / enabled states for control buttons', async () => {
