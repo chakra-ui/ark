@@ -107,7 +107,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
+      "type": "'numeric' | 'alphabetic' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
