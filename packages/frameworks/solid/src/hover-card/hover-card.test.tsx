@@ -45,13 +45,13 @@ describe('HoverCard', () => {
     await waitFor(() => expect(hoverContent).not.toBeVisible())
   })
 
-  it('should invoke onOpen', async () => {
-    const onOpen = vi.fn()
-    render(() => <ComponentUnderTest onOpenChange={onOpen} />)
+  it('should invoke onOpenChange', async () => {
+    const onOpenChange = vi.fn()
+    render(() => <ComponentUnderTest onOpenChange={onOpenChange} />)
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
-    expect(onOpen).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should lazy mount', async () => {
