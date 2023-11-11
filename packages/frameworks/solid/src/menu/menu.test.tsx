@@ -4,7 +4,7 @@ import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
+import { getParts } from '../setup-test'
 import { Menu, type MenuProps } from './'
 
 const ComponentUnderTest = (props: MenuProps) => (
@@ -30,9 +30,9 @@ describe('Menu', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
+  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  //   expect(Menu[part]).toBeDefined()
+  // })
 
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(() => <ComponentUnderTest />)
