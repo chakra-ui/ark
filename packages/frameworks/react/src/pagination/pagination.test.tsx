@@ -44,6 +44,7 @@ describe('Pagination', () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     const pageTwoLink = screen.getByLabelText('page 2')
     expect(pageTwoLink).not.toHaveAttribute('aria-current', 'page')
+
     await user.click(pageTwoLink)
     expect(pageTwoLink).toHaveAttribute('aria-current', 'page')
   })
@@ -52,6 +53,7 @@ describe('Pagination', () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     const pageOneLink = screen.getByLabelText('page 1')
     expect(pageOneLink).toHaveAttribute('aria-current', 'page')
+
     const nextPageLink = screen.getByText(/next/i)
     await user.click(nextPageLink)
     const pageTwoLink = screen.getByLabelText('page 2')

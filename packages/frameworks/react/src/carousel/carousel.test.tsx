@@ -2,16 +2,16 @@ import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { Carousel } from './'
+import { Carousel, type CarouselProps } from './'
 
-const ComponentUnderTest = () => {
+const ComponentUnderTest = (props: CarouselProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',
     'https://tinyurl.com/59jxz9uu',
   ]
   return (
-    <Carousel.Root>
+    <Carousel.Root {...props}>
       <Carousel.Control>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
         <Carousel.NextTrigger>Next</Carousel.NextTrigger>

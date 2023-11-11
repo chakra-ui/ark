@@ -2,7 +2,7 @@ import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { TagsInput, type TagsInputProps } from './'
 
 const ComponentUnderTest = (props: TagsInputProps) => {
@@ -34,6 +34,10 @@ describe('TagsInput', () => {
   it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
+    expect(TagsInput[part]).toBeDefined()
   })
 
   it('should allow to add a new item', async () => {

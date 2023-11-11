@@ -1,6 +1,8 @@
+import { toggleGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
+import { getExports, getParts } from '../setup-test'
 import { ToggleGroup, type ToggleGroupProps } from './'
 
 const ComponentUnderTest = (props: ToggleGroupProps) => (
@@ -12,9 +14,13 @@ const ComponentUnderTest = (props: ToggleGroupProps) => (
 )
 
 describe('Toggle', () => {
-  it('should render', () => {
+  it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    expect(screen.getByText('B')).toBeInTheDocument()
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
+    expect(ToggleGroup[part]).toBeDefined()
   })
 
   it('should handle default value', () => {

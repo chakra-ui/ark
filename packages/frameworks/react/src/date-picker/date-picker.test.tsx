@@ -5,12 +5,12 @@ import { DatePicker } from './'
 import { Basic as ComponentUnderTest } from './date-picker.stories'
 
 describe('Date Picker', () => {
-  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
-    expect(DatePicker[part]).toBeDefined()
-  })
-
   it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
+    expect(DatePicker[part]).toBeDefined()
   })
 })

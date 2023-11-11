@@ -1,8 +1,10 @@
+import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Portal } from 'solid-js/web'
 import { vi } from 'vitest'
-import { HoverCard, type HoverCardProps } from '..'
+import { getExports, getParts } from '../setup-test'
+import { HoverCard, type HoverCardProps } from './'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
@@ -21,6 +23,15 @@ const ComponentUnderTest = (props: HoverCardProps) => (
 )
 
 describe('HoverCard', () => {
+  it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
+    render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
+    expect(HoverCard[part]).toBeDefined()
+  })
+
   it('should open on hover', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -34,13 +45,13 @@ describe('HoverCard', () => {
     await waitFor(() => expect(hoverContent).not.toBeVisible())
   })
 
-  it('should invoke onOpen', async () => {
-    const onOpen = vi.fn()
-    render(() => <ComponentUnderTest onOpenChange={onOpen} />)
+  it('should invoke onOpenChange', async () => {
+    const onOpenChange = vi.fn()
+    render(() => <ComponentUnderTest onOpenChange={onOpenChange} />)
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
-    expect(onOpen).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should lazy mount', async () => {

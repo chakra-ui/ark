@@ -47,7 +47,7 @@ describe('Tabs', () => {
     const tab = screen.getByText('React Trigger')
 
     await user.click(tab)
-    expect(onValueChange).toHaveBeenNthCalledWith(1, { value: 'React' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'React' })
   })
 
   it('should not focus disabled tab', async () => {
@@ -116,6 +116,7 @@ describe('Tabs', () => {
   it('should lazy mount a tab', async () => {
     render(<ComponentUnderTest lazyMount />)
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+
     await user.click(screen.getByText('React Trigger'))
     expect(screen.queryByText('React Content')).toBeInTheDocument()
   })
@@ -123,6 +124,7 @@ describe('Tabs', () => {
   it('should lazy mount and unmount on exit a tab', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+
     await user.click(screen.getByText('React Trigger'))
     expect(screen.queryByText('React Content')).toBeVisible()
 
