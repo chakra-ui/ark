@@ -81,7 +81,7 @@
     "@zag-js/types": "0.29.0"
   },
   "devDependencies": {
-    "@release-it/keep-a-changelog": "4.0.0",
+    "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.4",
     "@storybook/addon-essentials": "7.5.3",
     "@storybook/addon-interactions": "7.5.3",
