@@ -8,9 +8,9 @@ const ComponentUnderTest = (props: PresenceProps) => {
   return (
     <>
       <button onClick={() => setPresent(!present())}>Toggle</button>
-      <Presence present={present()} {...props} data-testid="box">
+      <Presence.Root present={present()} {...props} data-testid="box">
         I am a red box
-      </Presence>
+      </Presence.Root>
     </>
   )
 }

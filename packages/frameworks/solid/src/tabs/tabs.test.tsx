@@ -1,7 +1,9 @@
+import { tabsAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
+import { getExports, getParts } from '../setup-test'
 import { Tabs, type TabsProps } from './'
 
 const ComponentUnderTest = (props: TabsProps) => {
@@ -31,8 +33,13 @@ const ComponentUnderTest = (props: TabsProps) => {
 }
 
 describe('Tabs', () => {
-  it('should render', async () => {
+  it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
+    expect(Tabs[part]).toBeDefined()
   })
 
   it('should activate tab on click', async () => {
@@ -72,10 +79,10 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 
-    await user.click(lastTab)
+    user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
-    await user.keyboard('[ArrowRight]')
+    user.keyboard('[ArrowRight]')
     await waitFor(() => expect(firstTab).toHaveFocus())
   })
 
@@ -83,7 +90,7 @@ describe('Tabs', () => {
     render(() => <ComponentUnderTest loop={false} />)
     const lastTab = screen.getByText('Vue Trigger')
 
-    await user.click(lastTab)
+    user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
@@ -95,10 +102,10 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const secondTab = screen.getByText('Solid Trigger')
 
-    await user.click(firstTab)
+    user.click(firstTab)
     await waitFor(() => expect(firstTab).toHaveFocus())
 
-    await user.keyboard('[ArrowDown]')
+    user.keyboard('[ArrowDown]')
     await waitFor(() => expect(secondTab).toHaveFocus())
   })
 
@@ -106,9 +113,11 @@ describe('Tabs', () => {
     render(() => <ComponentUnderTest value="React" />)
     expect(screen.getByText('React Content')).toBeVisible()
   })
+
   it('should lazy mount a tab', async () => {
     render(() => <ComponentUnderTest lazyMount />)
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+
     await user.click(screen.getByText('React Trigger'))
     expect(screen.queryByText('React Content')).toBeInTheDocument()
   })
@@ -116,6 +125,7 @@ describe('Tabs', () => {
   it('should lazy mount and unmount on exit a tab', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+
     await user.click(screen.getByText('React Trigger'))
     expect(screen.queryByText('React Content')).toBeVisible()
 

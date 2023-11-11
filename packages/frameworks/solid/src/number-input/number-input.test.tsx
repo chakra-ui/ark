@@ -1,7 +1,7 @@
 import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { NumberInput, type NumberInputProps } from './'
 
 const ComponentUnderTest = (props: NumberInputProps) => (
@@ -20,6 +20,10 @@ describe('NumberInput', () => {
   it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
+    expect(NumberInput[part]).toBeDefined()
   })
 
   it('should handle wheel event when allowMouseWheel is true', async () => {
@@ -74,6 +78,26 @@ describe('NumberInput', () => {
     const input = screen.getByRole('spinbutton')
     await waitFor(() => {
       expect(input).toHaveValue('5')
+    })
+  })
+
+  it.skip('should handle min and max fraction digits', async () => {
+    render(() => (
+      <ComponentUnderTest
+        value="1.00"
+        formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }}
+      />
+    ))
+    const input = screen.getByRole('spinbutton')
+    await waitFor(() => {
+      expect(input).toHaveValue('1.00')
+    })
+    await user.clear(input)
+    await user.type(input, '1.1234')
+    input.blur()
+
+    await waitFor(() => {
+      expect(input).toHaveValue('1.123')
     })
   })
 })

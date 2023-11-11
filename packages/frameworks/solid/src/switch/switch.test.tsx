@@ -2,7 +2,7 @@ import { switchAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Switch, type SwitchProps } from './'
 
 const ComponentUnderTest = (props: SwitchProps) => {
@@ -20,6 +20,10 @@ describe('Switch', () => {
   it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(switchAnatomy))('should export %s', async (part) => {
+    expect(Switch[part]).toBeDefined()
   })
 
   it('should toggle state when clicked', async () => {
