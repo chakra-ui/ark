@@ -3,7 +3,7 @@ import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { PinInput, type PinInputProps } from './'
 
 const ComponentUnderTest = (props: PinInputProps) => (
@@ -19,6 +19,10 @@ describe('PinInput', () => {
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
+    expect(PinInput[part]).toBeDefined()
   })
 
   it('should have the proper aria labels', async () => {

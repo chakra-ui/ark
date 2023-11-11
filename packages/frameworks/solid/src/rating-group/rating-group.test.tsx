@@ -2,7 +2,7 @@ import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { Index } from 'solid-js'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { RatingGroup, type RatingGroupProps } from './'
 
 const ComponentUnderTest = (props: RatingGroupProps) => (
@@ -30,6 +30,10 @@ describe('Rating Group', () => {
   it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
+    expect(RatingGroup[part]).toBeDefined()
   })
 
   it('should apply default value', async () => {

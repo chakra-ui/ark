@@ -2,14 +2,16 @@ import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Pagination, type PaginationProps } from './'
 
 const ComponentUnderTest = (props: PaginationProps) => (
   <Pagination.Root {...props}>
     {(api) => (
       <>
-        <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+        <Pagination.PrevTrigger>
+          Previous <span class="visually-hidden">Page</span>
+        </Pagination.PrevTrigger>
         <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
@@ -19,7 +21,9 @@ const ComponentUnderTest = (props: PaginationProps) => (
             )
           }
         </For>
-        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
+        <Pagination.NextTrigger>
+          Next <span class="visually-hidden">Page</span>
+        </Pagination.NextTrigger>
       </>
     )}
   </Pagination.Root>
@@ -29,6 +33,10 @@ describe('Pagination', () => {
   it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest count={100} pageSize={10} />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
+    expect(Pagination[part]).toBeDefined()
   })
 
   it('should update page when item is clicked', async () => {
