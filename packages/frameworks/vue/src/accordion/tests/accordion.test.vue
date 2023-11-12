@@ -20,7 +20,7 @@ const testProps = ref<string[]>([])
       :disabled="item.disabled"
     >
       <Accordion.ItemTrigger>
-        {{ item }} trigger
+        {{ item.value }} Trigger
         <Accordion.ItemIndicator>{{ '>' }}</Accordion.ItemIndicator>
       </Accordion.ItemTrigger>
       <Accordion.ItemContent>{{ item.value }} Content</Accordion.ItemContent>
