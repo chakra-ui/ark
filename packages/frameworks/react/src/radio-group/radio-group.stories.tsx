@@ -16,6 +16,7 @@ export const Basic = () => {
   return (
     <RadioGroup.Root>
       <RadioGroup.Label>Framework</RadioGroup.Label>
+      <RadioGroup.Indicator />
       {frameworks.map((framework) => (
         <RadioGroup.Item key={framework} value={framework}>
           <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>

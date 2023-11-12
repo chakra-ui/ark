@@ -16,6 +16,7 @@ export const Basic = () => (
   <Checkbox.Root>
     <Checkbox.Label>Checkbox</Checkbox.Label>
     <Checkbox.Control />
+    <Checkbox.Indicator>Indicator</Checkbox.Indicator>
   </Checkbox.Root>
 )
 
