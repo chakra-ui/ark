@@ -65,7 +65,7 @@ export const InitialValue = () => {
   )
 }
 
-export const OnChange = () => {
+export const OnEvent = () => {
   const frameworks = ['React', 'Solid', 'Vue']
   return (
     <RadioGroup.Root onValueChange={(details) => console.log(details.value)}>
