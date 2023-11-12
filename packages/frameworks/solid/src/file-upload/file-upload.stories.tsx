@@ -27,9 +27,7 @@ export const Basic = () => (
                 <FileUpload.ItemPreview />
                 <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
                 <FileUpload.ItemSizeText>{api().getFileSize(file)}</FileUpload.ItemSizeText>
-                <FileUpload.ItemDeleteTrigger onClick={() => api().deleteFile(file)}>
-                  Remove
-                </FileUpload.ItemDeleteTrigger>
+                <FileUpload.ItemDeleteTrigger>Remove</FileUpload.ItemDeleteTrigger>
               </FileUpload.Item>
             )}
           </For>
