@@ -10,11 +10,11 @@ export const FileUploadItemPreview = defineComponent({
   name: 'FileUploadItemPreview',
   setup(_, { slots, attrs }) {
     const api = useFileUploadContext()
-    const item = useFileUploadItemContext() as ItemPreviewProps
+    const item = useFileUploadItemContext()
 
     try {
       return () => (
-        <ark.img {...api.value.getItemPreviewProps(item)} {...attrs}>
+        <ark.img {...api.value.getItemPreviewProps(item.value as ItemPreviewProps)} {...attrs}>
           {slots.default?.()}
         </ark.img>
       )
