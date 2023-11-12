@@ -4,6 +4,7 @@ import { MenuArrowTip, type MenuArrowTipProps } from './menu-arrow-tip'
 import { MenuContent, type MenuContentProps } from './menu-content'
 import { useMenuContext } from './menu-context'
 import { MenuContextTrigger, type MenuContextTriggerProps } from './menu-context-trigger'
+import { MenuIndicator, type MenuIndicatorProps } from './menu-indicator'
 import { MenuItem, type MenuItemProps } from './menu-item'
 import { MenuItemGroup, type MenuItemGroupProps } from './menu-item-group'
 import { MenuItemGroupLabel, type MenuItemGroupLabelProps } from './menu-item-group-label'
@@ -19,6 +20,7 @@ const Menu = Object.assign(MenuRoot, {
   ArrowTip: MenuArrowTip,
   Content: MenuContent,
   ContextTrigger: MenuContextTrigger,
+  Indicator: MenuIndicator,
   Item: MenuItem,
   ItemGroup: MenuItemGroup,
   ItemGroupLabel: MenuItemGroupLabel,
@@ -35,6 +37,7 @@ export {
   MenuArrowTip,
   MenuContent,
   MenuContextTrigger,
+  MenuIndicator,
   MenuItem,
   MenuItemGroup,
   MenuItemGroupLabel,
@@ -51,6 +54,7 @@ export type {
   MenuArrowTipProps,
   MenuContentProps,
   MenuContextTriggerProps,
+  MenuIndicatorProps,
   MenuItemGroupLabelProps,
   MenuItemGroupProps,
   MenuItemProps,

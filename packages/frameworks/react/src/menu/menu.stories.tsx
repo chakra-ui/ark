@@ -15,7 +15,10 @@ export default meta
 
 export const Basic = () => (
   <Menu.Root>
-    <Menu.Trigger>Open menu</Menu.Trigger>
+    <Menu.Trigger>
+      Open menu
+      <Menu.Indicator>▾</Menu.Indicator>
+    </Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
         <Menu.Item id="search">Search</Menu.Item>
