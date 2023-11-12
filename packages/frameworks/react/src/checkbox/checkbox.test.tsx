@@ -1,17 +1,16 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Checkbox, type CheckboxProps } from './'
 
-const ComponentUnderTest = (props: Omit<CheckboxProps, 'children'>) => (
+const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
-    <Checkbox.Control data-testid="control">
-      <Checkbox.Indicator />
-    </Checkbox.Control>
+    <Checkbox.Control data-testid="control" />
+    <Checkbox.Indicator>Indicator</Checkbox.Indicator>
   </Checkbox.Root>
 )
 
@@ -33,6 +32,17 @@ describe('Checkbox', () => {
 
     await user.click(checkbox)
     expect(checkbox).toBeChecked()
+  })
+
+  it('should invoke onCheckedChange', async () => {
+    const onCheckedChange = vi.fn()
+    render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
+
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
+
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {

@@ -2,46 +2,31 @@
 id: color-picker
 title: Color Picker
 description:
-  The Color Picker is a versatile and feature-rich color selection tool for your
-  applications. It provides support for different color spaces, user
-  interaction, and accessibility.
+  A component that allows users to select a color from a color picker.
 ---
 
-import { Story, ComponentPreview } from '~/components/docs'
+import { Anatomy, Story, ComponentPreview } from '~/components/docs'
 
 <ComponentPreview />
 
-## Usage
+## Anatomy
 
-To get started, import the necessary components from the package:
+To set up the color picker correctly, you'll need to understand its anatomy and
+how we name its parts.
 
-```tsx
-import {
-  ColorPicker,
-  ColorPickerArea,
-  ColorPickerAreaGradient,
-  ColorPickerAreaThumb,
-  ColorPickerChannelInput,
-  ColorPickerChannelSliderBackground,
-  ColorPickerChannelSliderThumb,
-  ColorPickerChannelSliderTrack,
-  ColorPickerContent,
-  ColorPickerEyeDropperTrigger,
-  ColorPickerSwatch,
-  ColorPickerSwatchBackground,
-  ColorPickerSwatchGroup,
-} from '@ark-ui/react'
-```
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-Here is an example of how to use the Color Picker component:
+<Anatomy id="color-picker" />
+
+## Getting Started
 
 <Story id="Basic" />
 
 ## Controlled Color Picker
 
 To create a controlled Color Picker component, manage the state of the current
-coclor using the `value` prop and update it when the `onChange` event handler is
-called:
+color using the `value` prop and update it when the `onValueChange` event
+handler is called:
 
 <Story id="Controlled" />
 

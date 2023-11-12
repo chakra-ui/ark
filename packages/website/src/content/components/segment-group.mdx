@@ -1,10 +1,7 @@
 ---
 id: segment-group
 title: Segment Group
-description:
-  The SegmentGroup component offers an effective way to organize and navigate
-  between multiple sections within a single view. It provides a clear and
-  compact option to improve usability and accessibility.
+description: Organizes and navigates between sections in a view.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -20,21 +17,7 @@ and how we name its parts.
 
 <Anatomy id="segmented-control" />
 
-## Usage
-
-Start by importing the necessary components from the package:
-
-```tsx
-import {
-  Segment,
-  SegmentControl,
-  SegmentGroup,
-  SegmentGroupIndicator,
-  SegmentLabel,
-} from '@ark-ui/react'
-```
-
-Here are some examples of how to use the SegmentGroup component:
+## Getting Started
 
 <Story id="Basic" />
 
@@ -44,24 +27,24 @@ To set a default segment on initial render, use the `defaultValue` prop:
 
 <Story id="InitialValue" />
 
-## Controlled SegmentGroup
+## Controlled Segment Group
 
 To create a controlled SegmentGroup component, manage the current selected
-segment using the `value` prop and update it when the `onChange` event handler
-is called:
+segment using the `value` prop and update it when the `onValueChange` event
+handler is called:
 
 <Story id="Controlled" />
 
 ## Disabled Segment
 
-To disable a segment, simply pass the `disabled` prop to the `Segment`
+To disable a segment, simply pass the `disabled` prop to the `SegmentGroup.Item`
 component:
 
 <Story id="Disabled" />
 
 ## Conclusion
 
-The SegmentGroup component provides a versatile and adaptable solution for
+The Segment Group component provides a versatile and adaptable solution for
 introducing segmented navigation to your applications. With a broad variety of
 customization options and features, it can cater to various use cases and
 designs.

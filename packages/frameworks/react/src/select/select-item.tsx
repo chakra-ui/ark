@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps, ItemState } from '@zag-js/select'
-import { forwardRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -9,10 +9,7 @@ import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
 export interface SelectItemProps
-  extends Assign<
-      HTMLArkProps<'div'>,
-      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
-    >,
+  extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
     ItemProps {}
 
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {

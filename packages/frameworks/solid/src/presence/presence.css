@@ -1,15 +1,15 @@
-.box {
+[data-scope='presence'][data-part='root'] {
   background-color: brown;
   color: white;
   padding: 24px;
   max-width: fit-content;
 }
 
-.box[data-state='open'] {
+[data-scope='presence'][data-part='root'][data-state='open'] {
   animation: fadeIn 0.25s ease-out;
 }
 
-.box[data-state='closed'] {
+[data-scope='presence'][data-part='root'][data-state='closed'] {
   animation: fadeOut 0.5s ease-in;
 }
 

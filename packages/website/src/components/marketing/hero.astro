@@ -2,7 +2,7 @@
 import { css } from 'styled-system/css'
 import { Box, Container, HStack, Stack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
-import { Heading, Typography } from '~/components/ui/typography'
+import { Heading, Text } from '~/components/ui'
 import ReactIcon from './icons/react.astro'
 import SolidIcon from './icons/solid.astro'
 import VueIcon from './icons/vue.astro'
@@ -22,10 +22,10 @@ import VueIcon from './icons/vue.astro'
         Fully <span class={css({ color: 'accent.default' })}>customizable</span> and{' '}
         <span class={css({ color: 'accent.default' })}>accessible</span> UI components
       </Heading>
-      <Typography textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
+      <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
         Ark UI is a headless library for building reusable, scalable Design Systems that works for a
         wide range of JS frameworks.
-      </Typography>
+      </Text>
       <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
         <a href="/docs/overview/introduction" class={button({ size: { base: 'xl', md: '2xl' } })}
           >Get Started</a
@@ -38,15 +38,15 @@ import VueIcon from './icons/vue.astro'
       <HStack gap="10">
         <HStack>
           <ReactIcon />
-          <Typography color="fg.muted">React</Typography>
+          <Text color="fg.muted">React</Text>
         </HStack>
         <HStack>
           <SolidIcon />
-          <Typography color="fg.muted">Solid</Typography>
+          <Text color="fg.muted">Solid</Text>
         </HStack>
         <HStack>
           <VueIcon />
-          <Typography color="fg.muted">Vue</Typography>
+          <Text color="fg.muted">Vue</Text>
         </HStack>
       </HStack>
     </Stack>

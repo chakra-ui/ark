@@ -16,8 +16,10 @@ const ComponentUnderTest = (props: AccordionProps) => {
     <Accordion.Root {...props}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
-          <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
-          <Accordion.ItemIndicator>Icon</Accordion.ItemIndicator>
+          <Accordion.ItemTrigger>
+            {item.value} Trigger
+            <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
           <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
         </Accordion.Item>
       ))}
@@ -166,5 +168,36 @@ describe('Accordion', () => {
 
     await user.type(firstTrigger, '{tab}')
     expect(secondTrigger).toHaveFocus()
+  })
+
+  it('should lazy mount an accordion item', async () => {
+    render(<ComponentUnderTest lazyMount collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeVisible()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    const trigger = screen.getByRole('button', { name: 'React Trigger' })
+    expect(trigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(trigger)
+    expect(trigger).toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit an accordion item', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
   })
 })

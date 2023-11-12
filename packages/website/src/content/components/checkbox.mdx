@@ -1,9 +1,7 @@
 ---
 id: checkbox
 title: Checkbox
-description:
-  The Checkbox is a widely used input component for toggling between checked and
-  unchecked states. It supports basic, controlled, and indeterminate states.
+description: A control element that allows for multiple selections within a set.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -19,23 +17,15 @@ we name its parts.
 
 <Anatomy id="checkbox" />
 
-## Usage
-
-To get started, import the necessary components from the package:
-
-```tsx
-import { Checkbox, CheckboxLabel, CheckboxControl } from '@ark-ui/react'
-```
-
-Here is an example of how to use the Checkbox component:
+## Getting Started
 
 <Story id="Basic" />
 
 ## Controlled Checkbox
 
 To create a controlled Checkbox component, manage the state of the checked
-status using the `checked` prop and update it when the `onChange` event handler
-is called:
+status using the `checked` prop and update it when the `onCheckedChange` event
+handler is called:
 
 <Story id="Controlled" />
 

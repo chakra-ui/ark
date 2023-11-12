@@ -5,7 +5,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
-export type PaginationEllipsisProps = Assign<HTMLArkProps<'div'>, EllipsisProps>
+export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
 
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const [ellipsisProps, restProps] = createSplitProps<EllipsisProps>()(props, ['index'])

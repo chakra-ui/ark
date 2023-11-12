@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Portal } from '../portal'
 import { Dialog } from './'
-import './Dialog.css'
+import './dialog.css'
 
 type DialogType = typeof Dialog
 
@@ -51,12 +51,12 @@ export const Controlled = () => {
 }
 
 export const LazyMount = () => (
-  <Dialog.Root>
+  <Dialog.Root lazyMount unmountOnExit onExitComplete={() => console.log('onExitComplete invoked')}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />
       <Dialog.Positioner>
-        <Dialog.Content lazyMount unmountOnExit>
+        <Dialog.Content>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
           <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>

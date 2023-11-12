@@ -1,9 +1,7 @@
 ---
 id: number-input
 title: Number Input
-description:
-  The number input provides controls for editing, incrementing or decrementing
-  numeric values using the keyboard or pointer.
+description: A field that allows user input of numeric values.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -19,86 +17,41 @@ how we name its parts.
 
 <Anatomy id="number-input" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputInput,
-  NumberInputIncrementTrigger,
-  NumberInputLabel,
-  NumberInputScrubber,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The NumberInput component consists of the `NumberInputLabel`,
-`NumberInputControl`, `NumberInputInput`, `NumberInputDecrementTrigger`,
-`NumberInputIncrementTrigger`, `NumberInputScrubber`, components.
-
-```tsx
-<NumberInput>
-  <NumberInputScrubber />
-  <NumberInputLabel>Label</NumberInputLabel>
-  <NumberInputInput />
-  <NumberInputControl>
-    <NumberInputDecrementTrigger>-</NumberInputDecrementTrigger>
-    <NumberInputIncrementTrigger>+</NumberInputIncrementTrigger>
-  </NumberInputControl>
-</NumberInput>
-```
-
-### Setting a minimum and maximum value
+## Setting a minimum and maximum value
 
 Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
 By default, the input will restrict the value to stay within the specified
 range.
 
-```tsx
-<NumberInput min={0} max={10}>
-  {/*...*/}
-</NumberInput>
-```
+<Story id="MinMax" />
 
-### Adjusting the precision of the value
+## Adjusting the precision of the value
 
 In some cases, you might need the value to be rounded to specific decimal
-points. Pass the precision prop and set it to the number of decimal points.
+points. Set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
+`maximumFractionDigits` or `minimumFractionDigits`.
 
-```tsx
-<NumberInput precision={3}>{/*...*/}</NumberInput>
-```
+<Story id="FractionDigits" />
 
-### Scrubbing the input value
+## Scrubbing the input value
 
 The NumberInput supports the scrubber interaction pattern. To use this pattern,
-render the `NumberInputScrubber` component. It uses the Pointer lock API and
+render the `Number.InputScrubber` component. It uses the Pointer lock API and
 tracks the pointer movement. It also renders a virtual cursor which mimics the
 real cursor's pointer.
 
-```tsx {2}
-<NumberInput>
-  <NumberInputScrubber />
-  <NumberInputLabel>Label</NumberInputLabel>
-  <NumberInputInput />
-  <NumberInputControl>
-    <NumberInputDecrementTrigger>-</NumberInputDecrementTrigger>
-    <NumberInputIncrementTrigger>+</NumberInputIncrementTrigger>
-  </NumberInputControl>
-</NumberInput>
-```
+<Story id="Scrubber" />
 
 ## Using the mousewheel to change value
 
 The NumberInput exposes a way to increment/decrement the value using the mouse
 wheel event. To activate this, set the `allowMouseWheel` prop to `true`.
 
-```tsx
-<NumberInput allowMouseWheel>{/*...*/}</NumberInput>
-```
+<Story id="MouseWheel" />
 
 ## Clamp value when user blurs the input
 
@@ -108,29 +61,17 @@ of the input.
 
 To disable this behavior, pass `clampValueOnBlur` and set to `false`.
 
-```tsx
-<NumberInput clampValueOnBlur={false}>{/*...*/}</NumberInput>
-```
+<Story id="NoClamp" />
 
 ## Usage within forms
 
 To use the number input within forms, set the `name` prop.
 
-```tsx
-<NumberInput name="quantity">{/*...*/}</NumberInput>
-```
+<Story id="FormUsage" />
 
 ## Format and parse value
 
-To apply custom formatting to the input's value, use the exposed `format` and
-`parse` functions. For example, to format the input's value to currency, here's
-how to achieve it:
+To apply custom formatting to the input's value, set the `formatOptions` and
+provide `Intl.NumberFormatOptions` such as `style` and `currency`.
 
-```tsx
-<NumberInput
-  format={(value) => `$${value}`}
-  parse={(value) => value.replace(/\$/g, '')}
->
-  {/*...*/}
-</NumberInput>
-```
+<Story id="Formatted" />

@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UsePinInputProps = Optional<pinInput.Context, 'id'>
-export type UsePinInputReturn = Accessor<pinInput.Api<PropTypes>>
+export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {}
+export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}
 
 export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
   const getRootNode = useEnvironmentContext()

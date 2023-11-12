@@ -1,12 +1,23 @@
-import { type JSX } from 'solid-js/jsx-runtime'
+import { mergeProps } from '@zag-js/solid'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
+import {
+  PresenceProvider,
+  splitPresenceProps,
+  usePresence,
+  type UsePresenceProps,
+} from '../presence'
+import { runIfFn } from '../run-if-fn'
 import { TooltipProvider } from './tooltip-context'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
-export type TooltipProps = UseTooltipProps & { children: JSX.Element }
+export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
+  children?: JSX.Element | ((api: UseTooltipReturn) => JSX.Element)
+}
 
 export const Tooltip = (props: TooltipProps) => {
-  const [useTooltipProps, restProps] = createSplitProps<UseTooltipProps>()(props, [
+  const [presenceProps, tooltipProps] = splitPresenceProps(props)
+  const [useTooltipProps, localProps] = createSplitProps<UseTooltipProps>()(tooltipProps, [
     'aria-label',
     'closeDelay',
     'closeOnEsc',
@@ -24,6 +35,12 @@ export const Tooltip = (props: TooltipProps) => {
   ])
 
   const api = useTooltip(useTooltipProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const getChildren = () => runIfFn(localProps.children, api)
 
-  return <TooltipProvider value={api} {...restProps} />
+  return (
+    <TooltipProvider value={api}>
+      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+    </TooltipProvider>
+  )
 }

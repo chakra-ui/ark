@@ -2,15 +2,15 @@ import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { HoverCard, type HoverCardProps } from '..'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
+import { HoverCard, type HoverCardProps } from './'
 
 const ComponentUnderTest = (props: HoverCardProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
     <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>
-      <HoverCard.Positioner>
+      <HoverCard.Positioner data-testid="positioner">
         <HoverCard.Content>
           <HoverCard.Arrow>
             <HoverCard.ArrowTip />
@@ -45,12 +45,31 @@ describe('HoverCard', () => {
     await waitFor(() => expect(hoverContent).not.toBeVisible())
   })
 
-  it('should invoke onOpen', async () => {
-    const onOpen = vi.fn()
-    render(<ComponentUnderTest onOpenChange={onOpen} />)
+  it('should invoke onOpenChange', async () => {
+    const onOpenChange = vi.fn()
+    render(<ComponentUnderTest onOpenChange={onOpenChange} />)
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
-    expect(onOpen).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
+  })
+
+  it('should lazy mount', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.hover(screen.getByText('Hover me'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.hover(screen.getByText('Hover me'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.unhover(screen.getByText('Hover me'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

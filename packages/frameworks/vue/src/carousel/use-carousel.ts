@@ -14,9 +14,9 @@ export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): Us
 
   const [state, send] = useMachine(
     carousel.machine({
-      id: useId().value,
-      getRootNode,
       ...context.value,
+      id: context.value.id ?? useId().value,
+      getRootNode,
       onIndexChange: (details) => {
         emit('index-change', details)
       },

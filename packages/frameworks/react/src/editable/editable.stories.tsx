@@ -21,7 +21,7 @@ export const Basic = () => (
 )
 
 export const CustomControls = () => (
-  <Editable.Root activationMode="dblclick" placeholder="enter a value" defaultValue="Chakra">
+  <Editable.Root placeholder="enter a value" defaultValue="Chakra">
     {(state) => (
       <>
         <Editable.Label>Label</Editable.Label>

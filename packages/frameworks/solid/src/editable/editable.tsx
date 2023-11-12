@@ -4,15 +4,19 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { EditableProvider, type EditableContext } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { EditableProvider } from './editable-context'
+import { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 
-export type EditableProps = Assign<
-  HTMLArkProps<'div'>,
-  UseEditableProps & {
-    children: JSX.Element | ((api: EditableContext) => JSX.Element)
-  }
->
+export interface EditableProps
+  extends Assign<
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: JSX.Element | ((api: UseEditableReturn) => JSX.Element)
+      }
+    >,
+    UseEditableProps
+  > {}
 
 export const Editable = (props: EditableProps) => {
   const [useEditableProps, restProps] = createSplitProps<UseEditableProps>()(props, [
@@ -47,13 +51,13 @@ export const Editable = (props: EditableProps) => {
   const editable = useEditable(useEditableProps)
 
   const [childrenProps, localProps] = splitProps(restProps, ['children'])
-  const rootProps = mergeProps(() => editable().rootProps, localProps)
+  const mergedProps = mergeProps(() => editable().rootProps, localProps)
 
   const getChildren = () => runIfFn(childrenProps.children, editable)
 
   return (
     <EditableProvider value={editable}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </EditableProvider>
   )
 }

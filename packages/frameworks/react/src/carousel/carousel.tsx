@@ -4,14 +4,17 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { CarouselProvider, type CarouselContext } from './carousel-context'
-import { useCarousel, type UseCarouselProps } from './use-carousel'
+import { CarouselProvider } from './carousel-context'
+import { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
 
 export interface CarouselProps
   extends Assign<
-    HTMLArkProps<'div'> & {
-      children?: ReactNode | ((pages: CarouselContext) => ReactNode)
-    },
+    Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: ReactNode | ((api: UseCarouselReturn) => ReactNode)
+      }
+    >,
     UseCarouselProps
   > {}
 

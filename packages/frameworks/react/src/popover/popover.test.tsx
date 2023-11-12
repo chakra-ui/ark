@@ -12,7 +12,7 @@ const ComponentUnderTest = (props: PopoverProps) => (
       <Popover.Indicator />
     </Popover.Trigger>
     <Popover.Anchor>Anchor</Popover.Anchor>
-    <Popover.Positioner>
+    <Popover.Positioner data-testid="positioner">
       <Popover.Arrow>
         <Popover.ArrowTip />
       </Popover.Arrow>
@@ -45,7 +45,7 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
+  it('should hide the popover when escape is pressed', async () => {
     render(<ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
@@ -82,5 +82,21 @@ describe('Popover', () => {
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
     expect(screen.queryByText('title')).not.toBeVisible()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
+  })
+
+  it('should be able to lazy mount', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'click me' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'close' }))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
   })
 })

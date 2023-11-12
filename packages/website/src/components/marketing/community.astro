@@ -1,7 +1,7 @@
 ---
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
-import { Heading, Typography } from '~/components/ui/typography'
+import { Heading, Text } from '~/components/ui'
 import { Contributors } from './contributors'
 
 const contributors = [
@@ -34,7 +34,7 @@ const contributors = [
     avatar: 'https://avatars.githubusercontent.com/u/10008963?v=4',
   },
   {
-    name: 'Esther Adebyo',
+    name: 'Esther Adebayo',
     avatar: 'https://avatars.githubusercontent.com/u/53586167?v=4',
   },
 ]
@@ -56,10 +56,10 @@ const contributors = [
       <Stack gap="8">
         <Stack gap="5" maxW="3xl">
           <Heading as="h2" textStyle="3xl">Join the Ark UI Community</Heading>
-          <Typography textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
+          <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
             For insights, support, and updates, connect on Discord. For real-time news, follow us on
             Twitter.
-          </Typography>
+          </Text>
         </Stack>
         <Contributors contributors={contributors} client:load />
       </Stack>
@@ -73,7 +73,7 @@ const contributors = [
         </a>
         <a
           class={button({ size: { base: 'lg', md: 'xl' } })}
-          href="https://discord.com/invite/dQHfcWF"
+          href="https://discord.gg/ww6HE5xaZ2"
           target="_blank"
           rel="noopener noreferrer">Join Discord</a
         >

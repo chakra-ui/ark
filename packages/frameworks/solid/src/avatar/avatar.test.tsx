@@ -1,6 +1,6 @@
 import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Avatar, type AvatarProps } from './'
 
 const ComponentUnderTest = (props: AvatarProps) => {
@@ -16,5 +16,9 @@ describe('Avatar', () => {
   it.each(getParts(avatarAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(avatarAnatomy))('should export %s', async (part) => {
+    expect(Avatar[part]).toBeDefined()
   })
 })

@@ -1,7 +1,6 @@
-import { Button, type ButtonProps } from './button'
+import { ark } from '@ark-ui/react'
+import { styled } from 'styled-system/jsx'
+import { iconButton } from 'styled-system/recipes'
 
-export type IconButtonProps = ButtonProps & { 'aria-label': string }
-
-export const IconButton = (props: IconButtonProps) => {
-  return <Button px="0" {...props} />
-}
+export type IconButtonProps = typeof IconButton & { 'aria-label': string }
+export const IconButton = styled(ark.button, iconButton)

@@ -5,7 +5,7 @@ import type { Assign } from '../types'
 import { ToggleGroupProvider } from './toggle-group-context'
 import { useToggleGroup, type UseToggleGroupProps } from './use-toggle-group'
 
-export type ToggleGroupProps = Assign<HTMLArkProps<'div'>, UseToggleGroupProps>
+export interface ToggleGroupProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 
 export const ToggleGroup = (props: ToggleGroupProps) => {
   const [groupParams, restProps] = createSplitProps<UseToggleGroupProps>()(props, [
@@ -23,11 +23,11 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
   ])
 
   const api = useToggleGroup(groupParams)
-  const rootProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (
     <ToggleGroupProvider value={api}>
-      <ark.div {...rootProps} />
+      <ark.div {...mergedProps} />
     </ToggleGroupProvider>
   )
 }

@@ -26,6 +26,13 @@
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
@@ -45,24 +52,17 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
-    }
-  },
-  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
     "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether to unmount on exit."
     }
   },
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } }

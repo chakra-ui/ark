@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Accordion } from './'
+import './accordion.css'
 
 const items = ref(['React', 'Solid', 'Vue'])
 const value = ref(['React'])
@@ -11,15 +12,26 @@ const value = ref(['React'])
     <Variant title="Basic">
       <Accordion.Root>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.ItemTrigger>
+            {{ item }} trigger
+            <Accordion.ItemIndicator>{{ '>' }}</Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    </Variant>
+    <Variant title="Initial">
+      <Accordion.Root :modelValue="['Solid']">
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
           <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
-    <Variant title="Controlled">
-      <Accordion.Root v-model="value">
-        <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+    <Variant title="RenderProp">
+      <Accordion.Root>
+        <Accordion.Item v-for="item in items" :key="item" :value="item" v-slot="{ isOpen }">
+          <Accordion.ItemTrigger>{{ isOpen ? 'Close' : 'Open' }}</Accordion.ItemTrigger>
           <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>
@@ -35,6 +47,35 @@ const value = ref(['React'])
     <Variant title="Multiple">
       <Accordion.Root multiple>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    </Variant>
+    <Variant title="Controlled">
+      <Accordion.Root v-model="value">
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    </Variant>
+    <Variant title="Vertical">
+      <Accordion.Root orientation="vertical">
+        <Accordion.Item v-for="item in items" :key="item" :value="item">
+          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
+          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
+    </Variant>
+    <Variant title="Disabled">
+      <Accordion.Root>
+        <Accordion.Item
+          v-for="item in items"
+          :key="item"
+          :value="item"
+          :disabled="item === 'Solid'"
+        >
           <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>

@@ -6,11 +6,6 @@
   display: flex;
 }
 
-[data-scope='tabs'][data-part='tablist'][data-orientation='vertical'] {
-  display: flex;
-  flex-direction: column;
-}
-
 [data-scope='tabs'][data-part='tablist'] {
   margin: 0 0 -0.1em;
   overflow: visible;
@@ -36,17 +31,17 @@
   color: inherit;
 }
 
-[data-scope='tabs'][data-part='trigger'][data-selected] {
+[data-scope='tabs'][data-part='trigger'][data-state='active'] {
   border-radius: 0;
   background: hsl(220, 43%, 99%);
   outline: 0;
 }
 
-[data-scope='tabs'][data-part='trigger'][data-selected]:not(:focus):not(:hover)::before {
+[data-scope='tabs'][data-part='trigger'][data-state='active']:not(:focus):not(:hover)::before {
   border-top: 5px solid hsl(218, 96%, 48%);
 }
 
-[data-scope='tabs'][data-part='trigger'][data-selected]::after {
+[data-scope='tabs'][data-part='trigger'][data-state='active']::after {
   position: absolute;
   z-index: 3;
   bottom: -1px;
@@ -65,7 +60,7 @@
 
 [data-scope='tabs'][data-part='trigger']:hover::before,
 [data-scope='tabs'][data-part='trigger']:focus::before,
-[data-scope='tabs'][data-part='trigger'][data-selected]::before {
+[data-scope='tabs'][data-part='trigger'][data-state='active']::before {
   position: absolute;
   bottom: 100%;
   right: -1px;

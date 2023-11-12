@@ -52,7 +52,7 @@ describe('NumberInput', () => {
     })
   })
 
-  it('should  allow value to exceed max when allowOverflow is true', async () => {
+  it('should allow value to exceed max when allowOverflow is true', async () => {
     render(<ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
     const input = screen.getByRole('spinbutton')
     expect(input).toHaveValue('15')
@@ -85,7 +85,7 @@ describe('NumberInput', () => {
     })
   })
 
-  it.skip('should handle min and max fraction digits', async () => {
+  it('should handle min and max fraction digits', async () => {
     render(
       <ComponentUnderTest
         defaultValue="1.00"

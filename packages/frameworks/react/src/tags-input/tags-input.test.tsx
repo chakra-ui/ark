@@ -4,7 +4,7 @@ import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
 import { TagsInput, type TagsInputProps } from './'
 
-const ComponentUnderTest = (props: Omit<TagsInputProps, 'children'>) => {
+const ComponentUnderTest = (props: TagsInputProps) => {
   return (
     <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       {(api) => (

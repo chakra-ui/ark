@@ -1,8 +1,7 @@
 ---
 id: rating-group
 title: Rating Group
-description:
-  The RatingGroup allows a user to add and remove ratings for an item.
+description: Allows users to rate items using a set of icons.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -18,129 +17,44 @@ name its parts.
 
 <Anatomy id="rating-group" />
 
-## Import
+## Getting Started
 
-```ts
-import {
-  Rating,
-  RatingGroup,
-  RatingGroupControl,
-  RatingGroupLabel,
-} from '@ark-ui/react'
-```
+<Story id="Basic" />
 
-## Usage
-
-The RatingGroup component consists of the `RatingGroup`, `RatingGroupControl`
-and `RatingGroupLabel` components.
-
-```tsx
-<RatingGroup max={5} defaultValue={3}>
-  <RatingGroupLabel>Label</RatingGroupLabel>
-  <RatingGroupControl>
-    {({ sizeArray }) =>
-      sizeArray.map((index) => (
-        <Rating key={index} index={index}>
-          {({ isHighlighted }) => {
-            if (isHighlighted) return <IconFull />
-            return <IconEmpty />
-          }}
-        </Rating>
-      ))
-    }
-  </RatingGroupControl>
-</RatingGroup>
-```
-
-### Using half ratings
+## Using half ratings
 
 Allow `0.5` value steps by setting the `allowHalf` prop to `true`. Ensure to
 render the correct icon if the `isHalf` value is set in the Rating components
 render callback.
 
-```tsx
-<RatingGroup max={5} defaultValue={3} allowHalf>
-  <RatingGroupLabel>Label</RatingGroupLabel>
-  <RatingGroupControl>
-    {({ sizeArray }) =>
-      sizeArray.map((index) => (
-        <Rating key={index} index={index}>
-          {({ isHalf, isHighlighted }) => {
-            if (isHalf) return <IconHalf />
-            if (isHighlighted) return <IconFull />
-            return <IconEmpty />
-          }}
-        </Rating>
-      ))
-    }
-  </RatingGroupControl>
-</RatingGroup>
-```
+<Story id="HalfRatings" />
 
-### Using a default value
+## Using a default value
 
-```tsx
-<RatingGroup max={5} defaultValue={3}>
-  {/*..*/}
-  </RatingGroupControl>
-```
+<Story id="InitialValue" />
 
-### Controlled
+## Controlled
 
-When using the `RatingGroup` component, you can use the `value` and `onChange`
-props to control the state.
+When using the `RatingGroup` component, you can use the `value` and
+`onValueChange` props to control the state.
 
-```tsx
-const ControlledRatingGroup = () => {
-  const [value, setValue] = React.useState(0)
+<Story id="Controlled" />
 
-  return (
-    <RatingGroup
-      max={5}
-      value={value}
-      onChange={(details) => setValue(details.value)}
-      allowHalf
-    >
-      <RatingGroupLabel>Label</RatingGroupLabel>
-      <RatingGroupControl>
-        {({ sizeArray }) =>
-          sizeArray.map((index) => (
-            <Rating key={index} index={index}>
-              {({ isHalf, isHighlighted }) => {
-                if (isHalf) return <IconHalf />
-                if (isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
-            </Rating>
-          ))
-        }
-      </RatingGroupControl>
-    </RatingGroup>
-  )
-}
-```
-
-### Disabling the rating group
+## Disabling the rating group
 
 To make the rating group disabled, set the `disabled` prop to `true`.
 
-```tsx
-<RatingGroup disabled>{/*...*/}</RatingGroup>
-```
+<Story id="Disabled" />
 
-### Readonly rating group
+## Readonly rating group
 
-To make the rating group readonly, set the `readonly` prop to `true`.
+To make the rating group readonly, set the `readOnly` prop to `true`.
 
-```tsx
-<RatingGroup readonly>{/*...*/}</RatingGroup>
-```
+<Story id="ReadOnly" />
 
-### Usage within forms
+## Usage within forms
 
 To use the rating group within forms, pass the prop `name`. It will render a
 hidden input and ensure the value changes get propagated to the form correctly.
 
-```tsx
-<RatingGroup name="my-rating">{/*...*/}</RatingGroup>
-```
+<Story id="FormUsage" />

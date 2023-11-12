@@ -2,19 +2,15 @@
 id: environment
 title: Environment
 description:
-  Configure all Ark UI components for a custom environment like iframe, Shadow
-  DOM or Electron.
+  Setup components for a custom environment like IFrames, Shadow DOM or an
+  Electron context.
 ---
 
 import { Story, ComponentPreview } from '~/components/docs'
 
 <ComponentPreview />
 
-## Import
-
-```ts
-import { Environment, useEnvironmentContext } from '@ark-ui/react'
-```
+## Explanation
 
 Internally, we use
 [Zag.js](https://zagjs.com/overview/composition#custom-window-environment),
@@ -31,22 +27,25 @@ default with this Environment component.
 > In shadow DOM, the root node can be derived from calling
 > `element.getRootNode()` method on any element.
 
-## Usage
+## Getting Started
 
 When targeting a custom environment like an iframe, Shadow DOM or Electron, you
 can render the Environment component to provide the environment context to all
 Ark UI child components.
 
 ```tsx
+import { Environment, useEnvironmentContext } from '@ark-ui/react'
 import { useCallback, type ReactNode } from 'react'
 
 export const App = (props: { children: ReactNode }) => {
   const getRootNode = useCallback(() => document, [])
-  return <Environment value={getRootNode}>{props.children}</Environment>
+  return (
+    <Environment.Root value={getRootNode}>{props.children}</Environment.Root>
+  )
 }
 ```
 
-### Consuming the environment context
+## Consuming the environment context
 
 You can use the `useEnvironmentContext` hook to consume the environment context.
 

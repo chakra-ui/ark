@@ -9,14 +9,12 @@ type MenuItemGroupParams = Parameters<
   ReturnType<ReturnType<UseMenuReturn>['api']>['getItemGroupProps']
 >[0]
 
-export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, MenuItemGroupParams>
+export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, MenuItemGroupParams> {}
 
 export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const menu = useMenuContext()
-
   const [itemGroupProps, localProps] = createSplitProps<MenuItemGroupParams>()(props, ['id'])
+  const mergedProps = mergeProps(() => menu?.().getItemGroupProps(itemGroupProps), localProps)
 
-  const groupProps = mergeProps(() => menu?.().getItemGroupProps(itemGroupProps), localProps)
-
-  return <ark.div {...groupProps} />
+  return <ark.div {...mergedProps} />
 }

@@ -1,19 +1,35 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getExports } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Editable, type EditableProps } from './'
 
-const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
+const ComponentUnderTest = (props: EditableProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
-    {({ isEditing }) => (
+    <Editable.Label>Label</Editable.Label>
+    <Editable.Area>
+      <Editable.Input />
+      <Editable.Preview />
+    </Editable.Area>
+    <Editable.Control>
+      <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+      <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
+      <Editable.EditTrigger>Edit</Editable.EditTrigger>
+    </Editable.Control>
+  </Editable.Root>
+)
+
+const ControlledComponentUnderTest = (props: EditableProps) => (
+  <Editable.Root placeholder="Placeholder" {...props}>
+    {(api) => (
       <>
+        <Editable.Label>Label</Editable.Label>
         <Editable.Area>
           <Editable.Input />
           <Editable.Preview />
         </Editable.Area>
         <Editable.Control>
-          {isEditing ? (
+          {api.isEditing ? (
             <>
               <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
               <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
@@ -28,16 +44,21 @@ const ComponentUnderTest = (props: Omit<EditableProps, 'children'>) => (
 )
 
 describe('Editable', () => {
-  it('should render', async () => {
+  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(editableAnatomy))('should export %s', async (part) => {
     expect(Editable[part]).toBeDefined()
   })
 
+  it('should render controlled component', async () => {
+    render(<ControlledComponentUnderTest />)
+  })
+
   it('should be possible to focus the placeholder and enter a value', async () => {
-    render(<ComponentUnderTest />)
+    render(<ControlledComponentUnderTest />)
     screen.getByText('Placeholder').focus()
     await user.type(screen.getByLabelText('editable input'), 'React')
 
@@ -45,31 +66,29 @@ describe('Editable', () => {
   })
 
   it('should be possible to dbl click the placeholder to enter a value', async () => {
-    render(<ComponentUnderTest activationMode="dblclick" />)
+    render(<ControlledComponentUnderTest activationMode="dblclick" />)
     await user.dblClick(screen.getByText('Placeholder'))
-    const input = screen.getByRole('textbox')
 
-    await user.clear(input)
-    await user.type(input, 'React')
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'React')
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
   it('should be possible to edit an existing value', async () => {
-    render(<ComponentUnderTest activationMode="dblclick" defaultValue="React" />)
+    render(<ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
 
-    const input = screen.getByRole('textbox')
-    await user.clear(input)
-    await user.type(input, 'Solid')
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'Solid')
     await user.click(screen.getByText('Save'))
 
-    expect(await screen.findByText('Solid')).toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {
-    render(<ComponentUnderTest activationMode="dblclick" />)
+    render(<ControlledComponentUnderTest activationMode="dblclick" />)
 
     await user.dblClick(screen.getByText('Placeholder'))
 

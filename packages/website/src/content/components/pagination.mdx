@@ -1,10 +1,7 @@
 ---
 id: pagination
 title: Pagination
-description:
-  The Pagination component allows you to navigate through large sets of data by
-  dividing it into smaller chunks, making it easier for users to browse through
-  your application.
+description: A navigation component that allows users to browse through pages.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -20,31 +17,15 @@ how we name its parts.
 
 <Anatomy id="pagination" />
 
-## Basic Usage
-
-First, import the required components from the package:
-
-```ts
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
-} from '@ark-ui/react'
-```
-
-Here's an example of how to use the Pagination component:
+## Getting Started
 
 <Story id="Basic" />
 
 ## Controlled Pagination
 
 To create a controlled Pagination component, manage the state of the current
-page using the `page` prop and update it when the `onChange` event handler is
-called:
+page using the `page` prop and update it when the `onPageChange` event handler
+is called:
 
 <Story id="Controlled" />
 

@@ -22,7 +22,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,21 +41,27 @@
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
-    "isOpen": { "type": "boolean", "isRequired": false },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
     },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -65,7 +71,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onSelect": {
       "type": "(details: SelectionDetails) => void",
@@ -77,10 +83,18 @@
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
+    "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The options used to dynamically position the menu"
+    },
+    "present": { "type": "boolean", "isRequired": false },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": {
       "type": "Record<string, string | string[]>",
@@ -127,20 +141,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Trigger": {
@@ -202,11 +202,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the menu item is disabled"
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the menu item option."
     },
     "onCheckedChange": {
       "type": "(checked: boolean) => void",

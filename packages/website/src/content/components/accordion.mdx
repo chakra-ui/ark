@@ -17,13 +17,9 @@ we name its parts.
 
 <Anatomy id="accordion" />
 
-Let's start with a basic Accordion component:
+## Getting Started
 
-<Story id="Basic" highlight="line3-9" />
-
-```tsx
-<Accordion.Root coollapisble />
-```
+<Story id="Basic" />
 
 ## Setting an Initial Panel
 
@@ -55,8 +51,8 @@ For an Accordion that allows multiple panels to be open at once, use the
 ## Controlled Accordion
 
 To create a controlled Accordion component, manage the state of the currently
-opened panels using the `value` prop and update it when the `onChange` event
-handler is called:
+opened panels using the `value` prop and update it when the `onValueChange`
+event handler is called:
 
 <Story id="Controlled" />
 
@@ -68,6 +64,6 @@ To display the Accordion in a vertical orientation, use the `orientation` prop:
 
 ## Disabling an Accordion Item
 
-To disable an AccordionItem, use the `disabled` prop:
+To disable an Accordion.Item, use the `disabled` prop:
 
 <Story id="Disabled" />

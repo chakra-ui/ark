@@ -1,7 +1,15 @@
 [data-scope='dialog'][data-part='backdrop'] {
-  background-color: rgba(0, 0, 0, 0.44);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   inset: 0px;
+}
+
+[data-scope='dialog'][data-part='backdrop'][data-state='open'] {
+  animation: fadeIn 0.25s ease-out;
+}
+
+[data-scope='dialog'][data-part='backdrop'][data-state='closed'] {
+  animation: fadeOut 0.2s ease-in;
 }
 
 [data-scope='dialog'][data-part='container'] {
@@ -41,21 +49,54 @@
   position: relative;
 }
 
+[data-scope='dialog'][data-part='content'][data-state='open'] {
+  animation: scaleIn 0.25s ease-out;
+}
+
+[data-scope='dialog'][data-part='content'][data-state='closed'] {
+  animation: scaleOut 0.2s ease-in;
+}
+
 [data-scope='dialog'][data-part='close-trigger'] {
-  font-family: inherit;
-  height: 25px;
-  width: 25px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(87, 70, 175);
   position: absolute;
   top: 10px;
   right: 10px;
-  border-radius: 100%;
 }
 
 [data-scope='dialog'][data-part='close-trigger']:focus {
   outline: 2px blue solid;
   outline-offset: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    scale: 0.8;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes scaleOut {
+  to {
+    scale: 0.8;
+  }
 }

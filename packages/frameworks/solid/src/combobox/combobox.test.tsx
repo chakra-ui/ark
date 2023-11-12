@@ -1,7 +1,9 @@
+import { comboboxAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
+import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
 import { Combobox, type ComboboxProps } from './'
 
@@ -27,10 +29,10 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
         <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
       </Combobox.Control>
       <Portal>
-        <Combobox.Positioner>
+        <Combobox.Positioner data-testid="positioner">
           <Combobox.Content>
             <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+              <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Combobox.Item item={item}>
@@ -48,8 +50,13 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
 }
 
 describe('Combobox', () => {
-  it('should render', () => {
+  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+    expect(Combobox[part]).toBeDefined()
   })
 
   it('should show options on click', async () => {
@@ -57,7 +64,7 @@ describe('Combobox', () => {
     expect(screen.getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
     user.click(screen.getByTestId('trigger'))
 
-    waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
+    await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
   })
 
   it('should handle item selection', async () => {
@@ -97,5 +104,24 @@ describe('Combobox', () => {
     user.click(screen.getByTestId('trigger'))
 
     await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
+  })
+
+  it('should be able to lazy mount its items', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should be able to lazy mount and unmount its items', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByTestId('trigger'))
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

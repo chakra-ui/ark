@@ -1,5 +1,7 @@
+import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { getParts } from '../setup-test'
 import { Toast, createToaster } from './'
 
 const [Toaster, toast] = createToaster({
@@ -25,25 +27,25 @@ export const ComponentUnderTest = () => (
 )
 
 describe('Toast', () => {
-  it('should show a toast message', async () => {
+  it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
-    await user.click(screen.getByText('Create Toast'))
-
-    expect(screen.getByText('Title')).toBeVisible()
-    expect(screen.getByText('Description')).toBeVisible()
-    expect(screen.getByText('Close')).toBeVisible()
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it('should hide a toast message after close button is clicked', async () => {
+  // it.skip.each(getExports(toastAnatomy))('should export %s', async (part) => {
+  //   expect(Toast[part]).toBeDefined()
+  // })
+
+  it('should show and hide a toast message', async () => {
     render(<ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
 
-    waitFor(() => {
-      user.click(screen.getByText('Close'))
-    })
-    waitFor(() => {
-      expect(screen.queryByText('Title')).not.toBeVisible()
-      expect(screen.queryByText('Description')).not.toBeVisible()
-    })
+    await waitFor(() => expect(screen.queryByText('Title')).toBeVisible())
+    await waitFor(() => expect(screen.queryByText('Description')).toBeVisible())
+
+    await user.click(screen.getByText('Close'))
+
+    await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
+    await waitFor(() => expect(screen.queryByText('Description')).not.toBeInTheDocument())
   })
 })

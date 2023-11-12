@@ -1,10 +1,10 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Pagination, type PaginationProps } from './'
 
-const ComponentUnderTest = (props: Omit<PaginationProps, 'children'>) => (
+const ComponentUnderTest = (props: PaginationProps) => (
   <Pagination.Root {...props}>
     {({ pages }) => (
       <>
@@ -36,14 +36,15 @@ describe('Pagination', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  // it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
-  //   expect(Pagination[part]).toBeDefined()
-  // })
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
+    expect(Pagination[part]).toBeDefined()
+  })
 
   it('should update page when item is clicked', async () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     const pageTwoLink = screen.getByLabelText('page 2')
     expect(pageTwoLink).not.toHaveAttribute('aria-current', 'page')
+
     await user.click(pageTwoLink)
     expect(pageTwoLink).toHaveAttribute('aria-current', 'page')
   })
@@ -52,6 +53,7 @@ describe('Pagination', () => {
     render(<ComponentUnderTest count={100} pageSize={10} />)
     const pageOneLink = screen.getByLabelText('page 1')
     expect(pageOneLink).toHaveAttribute('aria-current', 'page')
+
     const nextPageLink = screen.getByText(/next/i)
     await user.click(nextPageLink)
     const pageTwoLink = screen.getByLabelText('page 2')

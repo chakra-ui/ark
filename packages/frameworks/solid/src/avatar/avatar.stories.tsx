@@ -2,8 +2,11 @@ import type { Meta } from 'storybook-solidjs'
 import { Avatar } from './'
 import './avatar.css'
 
-const meta: Meta = {
+type AvatarType = typeof Avatar.Root
+
+const meta: Meta<AvatarType> = {
   title: 'Avatar',
+  component: Avatar.Root,
 }
 
 export default meta
@@ -16,7 +19,7 @@ export const Basic = () => (
 )
 
 export const Events = () => (
-  <Avatar.Root onLoadingStatusChange={(status) => console.log(status)}>
+  <Avatar.Root onLoadingStatusChange={(details) => console.log(details.status)}>
     <Avatar.Fallback>PA</Avatar.Fallback>
     <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
   </Avatar.Root>

@@ -1,6 +1,5 @@
 name: 'Bug Report'
-description: 'File a bug report'
-labels: [bug]
+description: 'Submit a bug report'
 body:
   - type: 'markdown'
     attributes:
@@ -21,18 +20,18 @@ body:
   - type: 'input'
     id: 'reproduction'
     attributes:
-      label: 'Link to Reproduction'
+      label: 'Link to Reproduction (or Detailed Explanation)'
       description: |
-        A link to a CodeSandbox or Git repository which demonstrates the bug
-      placeholder: 'https://'
+        Provide a link to a CodeSandbox or Git repository which demonstrates the bug. If a link is not available, give a detailed explanation of the setup.
+      placeholder: 'https:// or detailed setup explanation'
     validations:
       required: true
   - type: 'textarea'
     id: 'steps'
     attributes:
-      label: 'Steps to reproduce'
+      label: 'Steps to Reproduce'
       description: |
-        Explain how to cause the issue in the provided reproduction.
+        Explain how to trigger the issue in the provided reproduction.
       placeholder: |
         1. Go to '...'
         2. Click on '...'
@@ -44,15 +43,15 @@ body:
     id: 'ark-version'
     attributes:
       label: 'Ark UI Version'
-      description: 'The version of Ark UI you use.'
-      placeholder: '1.0.0'
+      description: 'The version of Ark UI you are using.'
+      placeholder: 'e.g., 1.0.0'
     validations:
       required: true
   - type: 'checkboxes'
     id: 'framework'
     attributes:
       label: 'Framework'
-      description: 'The framework that that is in use'
+      description: 'The framework in use (select all that apply)'
       options:
         - label: 'React'
         - label: 'Solid'
@@ -61,12 +60,11 @@ body:
     id: 'browser'
     attributes:
       label: 'Browser'
-      description: 'The browser(s) this issue occurred with.'
-      placeholder: 'Google Chrome 93'
+      description: 'The browser(s) where this issue occurred (please specify version).'
+      placeholder: 'e.g., Google Chrome, Firefox'
   - type: 'textarea'
     id: 'additional-information'
     attributes:
       label: 'Additional Information'
       description: |
-        Use this section to provide any additional information you might have
-        like screenshots, notes, or links to ideas.
+        Provide any additional information that might be helpful, such as screenshots, logs, error messages, or the impact of the bug. Links to relevant discussions or ideas are also welcome.

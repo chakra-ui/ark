@@ -1,9 +1,7 @@
 ---
 id: splitter
 title: Splitter
-description:
-  The Splitter is a flexible and dynamic component that allows division of the
-  screen or a section into multiple resizable areas.
+description: A component that divides your interface into resizable sections
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -21,14 +19,6 @@ we name its parts.
 
 ## Getting Started
 
-Start by importing the necessary components from the package:
-
-```tsx
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from '@ark-ui/react'
-```
-
-Here is a basic example:
-
 <Story id="Basic" />
 
 ## Using Render Props
@@ -41,8 +31,9 @@ of the panels programmatically:
 
 ## Handling Events
 
-Splitter also provides `onResizeStart` and `onResizeEnd` events which can be
-useful to perform some actions during the start and end of the resizing process:
+Splitter also provides `onSizeChangeStart` and `onSizeChangeEnd` events which
+can be useful to perform some actions during the start and end of the resizing
+process:
 
 <Story id="Events" />
 

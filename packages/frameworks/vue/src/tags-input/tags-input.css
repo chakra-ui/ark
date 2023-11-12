@@ -1,4 +1,4 @@
-[data-part='tag'] {
+[data-scope='tags-input'][data-part='tag'] {
   background-color: khaki;
   border-radius: 4px;
   padding: 0 8px;
@@ -6,6 +6,6 @@
   margin-right: 8px;
 }
 
-[data-part='tag'][data-selected] {
+[data-scope='tags-input'][data-part='tag'][data-selected] {
   background-color: aqua;
 }

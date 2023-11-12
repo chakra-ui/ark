@@ -6,7 +6,8 @@ import type { Assign } from '../types'
 import { useSegmentGroupContext } from './segment-group-context'
 import { SegmentProvider, type SegmentGroupItemContext } from './segment-group-item-context'
 
-export type SegmentGroupItemProps = Assign<HTMLArkProps<'label'>, SegmentGroupItemContext>
+export interface SegmentGroupItemProps
+  extends Assign<HTMLArkProps<'label'>, SegmentGroupItemContext> {}
 
 export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
   const [itemProps, restProps] = createSplitProps<SegmentGroupItemContext>()(props, [

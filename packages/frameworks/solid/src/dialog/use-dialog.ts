@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseDialogProps = Optional<dialog.Context, 'id'>
-export type UseDialogReturn = Accessor<dialog.Api<PropTypes>>
+export interface UseDialogProps extends Optional<dialog.Context, 'id'> {}
+export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps): UseDialogReturn => {
   const getRootNode = useEnvironmentContext()

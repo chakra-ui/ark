@@ -6,11 +6,10 @@ import {
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
-  SliderOutput,
   SliderRange,
   SliderThumb,
   SliderTrack,
-  type SliderProps,
+  SliderValueText,
 } from '../'
 
 const sliderValue = ref([0])
@@ -18,7 +17,7 @@ const sliderValue = ref([0])
 <template>
   <Slider :min="-50" :max="50" v-model="sliderValue">
     <SliderLabel>Label</SliderLabel>
-    <SliderOutput>{{ sliderValue }}</SliderOutput>
+    <SliderValueText />>
     <SliderControl>
       <SliderTrack>
         <SliderRange />

@@ -3,7 +3,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
 const ComponentUnderTest = (props: AccordionProps) => {
@@ -18,8 +18,10 @@ const ComponentUnderTest = (props: AccordionProps) => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item.value} disabled={item.disabled}>
-            <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
-            <Accordion.ItemIndicator />
+            <Accordion.ItemTrigger>
+              {item.value} Trigger
+              <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
             <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
           </Accordion.Item>
         )}
@@ -32,6 +34,10 @@ describe('Accordion', () => {
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
     const { container } = render(() => <ComponentUnderTest />)
     expect(container.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
+    expect(Accordion[part]).toBeDefined()
   })
 
   it('should not have an expanded item by default', async () => {
@@ -165,5 +171,36 @@ describe('Accordion', () => {
 
     await user.type(firstTrigger, '{tab}')
     expect(secondTrigger).toHaveFocus()
+  })
+
+  it('should lazy mount an accordion item', async () => {
+    render(() => <ComponentUnderTest lazyMount collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeVisible()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    const trigger = screen.getByRole('button', { name: 'React Trigger' })
+    expect(trigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(trigger)
+    expect(trigger).toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit an accordion item', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit collapsible />)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
   })
 })

@@ -1,8 +1,10 @@
+import { tooltipAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { getExports, getParts } from '../setup-test'
 import { Tooltip, type TooltipProps } from './'
 
-const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
+const ComponentUnderTest = (props: TooltipProps) => (
   <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
     <Tooltip.Trigger>hover me</Tooltip.Trigger>
     <Tooltip.Positioner>
@@ -15,6 +17,15 @@ const ComponentUnderTest = (props: Omit<TooltipProps, 'children'>) => (
 )
 
 describe('Tooltip', () => {
+  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
+    render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
+    expect(Tooltip[part]).toBeDefined()
+  })
+
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -72,5 +83,29 @@ describe('Tooltip', () => {
 
     const tooltipContent = screen.getByText('content')
     expect(tooltipContent).toHaveStyle({ 'pointer-events': 'none' })
+  })
+
+  it('should lazy render the tooltip', async () => {
+    render(() => <ComponentUnderTest lazyMount />)
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+
+    const tooltipTrigger = screen.getByText('hover me')
+    await user.hover(tooltipTrigger)
+
+    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+
+    await user.keyboard('[Escape]')
+    expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeVisible()
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(() => <ComponentUnderTest lazyMount unmountOnExit />)
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+
+    const tooltipTrigger = screen.getByText('hover me')
+    await user.hover(tooltipTrigger)
+
+    await user.keyboard('[Escape]')
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 })

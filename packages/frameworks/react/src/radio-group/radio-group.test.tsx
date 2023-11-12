@@ -6,14 +6,19 @@ import { getExports, getParts } from '../setup-test'
 import { RadioGroup, type RadioGroupProps } from './'
 
 const ComponentUnderTest = (props: RadioGroupProps) => {
-  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
   return (
     <RadioGroup.Root {...props}>
       <RadioGroup.Label>Framework</RadioGroup.Label>
       <RadioGroup.Indicator />
-      {frameworks.map((framework) => (
-        <RadioGroup.Item key={framework} value={framework} disabled={framework === 'Svelte'}>
-          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+      {items.map((item) => (
+        <RadioGroup.Item key={item.value} value={item.value} disabled={item.disabled}>
+          <RadioGroup.ItemText>{item.label}</RadioGroup.ItemText>
           <RadioGroup.ItemControl />
         </RadioGroup.Item>
       ))}
@@ -37,7 +42,7 @@ describe('Radio Group', () => {
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
     await user.click(screen.getByLabelText('Solid'))
-    expect(onValueChange).toHaveBeenCalledWith({ value: 'Solid' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'solid' })
   })
 
   it('should not invoke onValueChange if option is disabled', async () => {

@@ -1,52 +1,51 @@
+import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
-import { Menu } from './'
+import { getParts } from '../setup-test'
+import { Menu, type MenuProps } from './'
+
+const ComponentUnderTest = (props: MenuProps) => (
+  <Menu.Root {...props}>
+    <Menu.Trigger>Open menu</Menu.Trigger>
+    <Menu.Positioner data-testid="positioner">
+      <Menu.Content>
+        <span>main menu content</span>
+        <Menu.Item id="search">Search</Menu.Item>
+        <Menu.Item id="undo">Undo</Menu.Item>
+        <Menu.Item id="delivery" disabled>
+          Delivery
+        </Menu.Item>
+        <Menu.Item id="unlink">Unlink</Menu.Item>
+      </Menu.Content>
+    </Menu.Positioner>
+  </Menu.Root>
+)
 
 describe('Menu', () => {
-  it('should set correct aria attributes on disabled MenuItems', () => {
-    render(
-      <Menu.Root>
-        <Menu.Trigger>Open menu</Menu.Trigger>
-        <Menu.Content>
-          <Menu.Item id="search">Search</Menu.Item>
-          <Menu.Item id="undo">Undo</Menu.Item>
-          <Menu.Item id="delivery" disabled>
-            Delivery
-          </Menu.Item>
-          <Menu.Item id="unlink">Unlink</Menu.Item>
-        </Menu.Content>
-      </Menu.Root>,
-    )
-
-    expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
+  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
   //   expect(Menu[part]).toBeDefined()
   // })
 
+  it('should set correct aria attributes on disabled MenuItems', () => {
+    render(<ComponentUnderTest />)
+
+    expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
+  })
+
   it('should not fire onValueChange on disabled MenuItems', async () => {
     const onValueChange = vi.fn()
 
-    render(
-      <Menu.Root onValueChange={onValueChange}>
-        <Menu.Trigger>Open menu</Menu.Trigger>
-        <Menu.Content>
-          <Menu.Item id="search">Search</Menu.Item>
-          <Menu.Item id="undo">Undo</Menu.Item>
-          <Menu.Item id="delivery" disabled>
-            Delivery
-          </Menu.Item>
-          <Menu.Item id="unlink">Unlink</Menu.Item>
-        </Menu.Content>
-      </Menu.Root>,
-    )
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
     await user.click(screen.getByText('Delivery'))
-
     expect(onValueChange).not.toHaveBeenCalled()
   })
 
@@ -104,21 +103,32 @@ describe('Menu', () => {
   })
 
   it('should accept a custom placement', async () => {
-    render(
-      <Menu.Root dir="rtl" positioning={{ placement: 'left-start' }}>
-        <Menu.Trigger>Open menu</Menu.Trigger>
-        <Menu.Content>
-          <Menu.Item id="1">Pick me</Menu.Item>
-          <Menu.Item id="2">No no, pick me</Menu.Item>
-        </Menu.Content>
-      </Menu.Root>,
-    )
+    render(<ComponentUnderTest dir="rtl" positioning={{ placement: 'left-start' }} />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
     await user.click(button)
 
     const menuList = screen.getByRole('menu')
     expect(menuList.getAttribute('data-placement')).toEqual('left-start')
+  })
+
+  it('should control the open state', async () => {
+    render(<ComponentUnderTest open />)
+
+    const text = await screen.findByText('main menu content')
+    expect(text).toBeVisible()
+  })
+
+  it('should be able to lazy mount', async () => {
+    render(<ComponentUnderTest lazyMount />)
+
+    const menutrigger = screen.getByRole('button', { name: 'Open menu' })
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    expect(menutrigger).not.toHaveAttribute('aria-controls')
+
+    await user.click(menutrigger)
+    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(menutrigger).toHaveAttribute('aria-controls')
   })
 
   describe('ContextMenu', () => {
@@ -254,19 +264,5 @@ describe('Menu', () => {
       await waitFor(() => expect(checkboxButton1).toHaveAttribute('aria-checked', 'true'))
       await waitFor(() => expect(checkboxButton2).toHaveAttribute('aria-checked', 'true'))
     })
-  })
-
-  it('should control the open state', async () => {
-    render(
-      <Menu.Root isOpen>
-        <Menu.Positioner>
-          <Menu.Content>
-            <span>main menu content</span>
-          </Menu.Content>
-        </Menu.Positioner>
-      </Menu.Root>,
-    )
-    const text = await screen.findByText('main menu content')
-    expect(text).toBeVisible()
   })
 })

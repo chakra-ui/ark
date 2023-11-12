@@ -20,7 +20,7 @@ export const SelectItemText = withContext(styled(Ark.Select.ItemText), 'itemText
 export const SelectLabel = withContext(styled(Ark.Select.Label), 'label')
 export const SelectPositioner = withContext(styled(Ark.Select.Positioner), 'positioner')
 export const SelectTrigger = withContext(styled(Ark.Select.Trigger), 'trigger')
-export const SelectValue = withContext(styled(Ark.Select.ValueText), 'value')
+export const SelectValueText = withContext(styled(Ark.Select.ValueText), 'valueText')
 
 export const Select = Object.assign(SelectRoot, {
   Root: SelectRoot,
@@ -35,5 +35,5 @@ export const Select = Object.assign(SelectRoot, {
   Label: SelectLabel,
   Positioner: SelectPositioner,
   Trigger: SelectTrigger,
-  Value: SelectValue,
+  ValueText: SelectValueText,
 })

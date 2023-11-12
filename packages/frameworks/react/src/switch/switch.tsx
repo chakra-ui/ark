@@ -10,8 +10,8 @@ import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-swit
 
 export interface SwitchProps
   extends Assign<
-    Assign<HTMLArkProps<'label'>, UseSwitchProps>,
-    { children?: ReactNode | ((pages: UseSwitchReturn) => ReactNode) }
+    Assign<HTMLArkProps<'label'>, { children?: ReactNode | ((api: UseSwitchReturn) => ReactNode) }>,
+    UseSwitchProps
   > {}
 
 export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {

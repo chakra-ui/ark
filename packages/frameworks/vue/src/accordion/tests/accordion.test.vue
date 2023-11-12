@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Accordion, AccordionItem, AccordionItemContent, AccordionItemTrigger } from '../'
+import { Accordion } from '../'
 
 const items = ref([
   { value: 'React' },
@@ -13,14 +13,17 @@ const testProps = ref<string[]>([])
 
 <template>
   <Accordion v-model="testProps">
-    <AccordionItem
+    <Accordion.Item
       v-for="item in items"
       :key="item.value"
       :value="item.value"
       :disabled="item.disabled"
     >
-      <AccordionItemTrigger>{{ item.value }} Trigger</AccordionItemTrigger>
-      <AccordionItemContent>{{ item.value }} Content</AccordionItemContent>
-    </AccordionItem>
+      <Accordion.ItemTrigger>
+        {{ item.value }} Trigger
+        <Accordion.ItemIndicator>{{ '>' }}</Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>{{ item.value }} Content</Accordion.ItemContent>
+    </Accordion.Item>
   </Accordion>
 </template>

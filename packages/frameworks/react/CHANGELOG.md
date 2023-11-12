@@ -6,58 +6,33 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
-## [1.0.0-beta.3] - 2023-10-26
-
 ### Added
 
-- Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
+- Added `FileUpload` component
 
-### Changed
-
-- Improved accessibility of all disclosure components when lazy mounting is enabled.
-
-## [1.0.0-beta.2] - 2023-10-25
-
-### Added
-
-- Added `ValueText` to the `ColorPicker` component
+## [1.0.1] - 2023-11-10
 
 ### Fixed
 
-- Added missing data attributes to `DatePickerView` component
+- Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
+- Resolved an issue where `MenuTrigger` could still work even when disabled.
+- Resolved an issue where components like `Dialog`, `Popover` etc would not invoke `onExitComplete`
+- Fixed an issue where placement of the `Combobox` could be incorrect when lazy mounted.
 
-## [1.0.0-beta.1] - 2023-10-20
+## [1.0.0] - 2023-11-09
 
-### Added
+We are happy to announce the release of `@ark-ui/react@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
 
-- Parsed `focusedValue` in `DatePicker`
+### Highlights
 
-### Fixed
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Resolved various bugs and addressed accessibility issues across all components.
 
-- Resolved an issue with `@ark-ui/anatomy`
+### Stability and Support
 
-## [1.0.0-beta.0] - 2023-10-20
-
-### Changed
-
-- Add memoization to `Select` and `Combobox` item collection to improve performance.
-- Ensure all event callbacks have a stable reference
-
-### Fixed
-
-- Resolved an issue when controlling the `Editable` component.
-
-### Removed
-
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
-
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/react'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
-```
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
 ## [0.15.0] - 2023-09-14
 
@@ -193,7 +168,7 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/tabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/src/srctabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
 
 ## [0.7.0] - 2023-06-23
 

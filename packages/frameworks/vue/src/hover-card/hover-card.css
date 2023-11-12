@@ -1,15 +1,15 @@
-[data-part='trigger'] {
+[data-scope='hover-card'][data-part='trigger'] {
   text-decoration: none;
 }
 
-[data-part='content'] {
+[data-scope='hover-card'][data-part='content'] {
   padding: 0.5rem;
   border: 1px solid lightgray;
   background: white;
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
 }
 
-[data-part='arrow'] {
+[data-scope='hover-card'][data-part='arrow'] {
   --arrow-background: white;
   --arrow-size: 8px;
 }

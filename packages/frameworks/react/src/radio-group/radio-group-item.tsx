@@ -1,6 +1,6 @@
 import type { ItemProps, ItemState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -11,7 +11,7 @@ import { RadioGroupItemProvider } from './radio-group-item-context'
 export interface RadioGroupItemProps
   extends Assign<
       HTMLArkProps<'label'>,
-      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+      { children?: ReactNode | ((state: ItemState) => ReactNode) }
     >,
     ItemProps {}
 

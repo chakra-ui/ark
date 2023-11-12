@@ -8,59 +8,35 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added support to lazy mount the `DatePicker` and `ColorPicker` components using the `Presence` component
-- Added `ValueText` to the `ColorPicker` component
-
-### Changed
-
-- Improved accessibility of all disclosure components when lazy mounting is enabled.
+- Added `FileUpload` component
 
 ### Fixed
 
-- Added missing data attributes to `DatePickerView` component
+- Resolved an issue where `Dialog.CloseTrigger` had `data-part` as `trigger` instead of `close-trigger`.
 
-## [1.0.0-beta.2] - 2023-10-24
-
-### Changed
-
-- Replaced `vite` with `rollup-preset-solid` for bundling.
-
-## [1.0.0-beta.1] - 2023-10-20
-
-### Added
-
-- Parsed `focusedValue` in `DatePicker`
+## [1.0.1] - 2023-11-10
 
 ### Fixed
 
-- Resolved an issue with `@ark-ui/anatomy`
+- Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
+- Resolved an issue where `MenuTrigger` could still work even when disabled.
+- Resolved an issue where components like `Dialog`, `Popover` etc would not invoke `onExitComplete`
+- Fixed an issue where placement of the `Combobox` could be incorrect when lazy mounted.
 
-## [1.0.0-beta.0] - 2023-10-20
+## [1.0.0] - 2023-11-09
 
-### Added
+We are happy to announce the release of `@ark-ui/solid@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
 
-- Added `ToggleGroup` component
+### Highlights
 
-### Changed
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Resolved various bugs and addressed accessibility issues across all components.
 
-- Revised `Comoobox` component to support multiple selection
-- Revised `Select` component to support multiple selection
+### Stability and Support
 
-### Fixed
-
-- Resolved an issue where the `asChild` property was not working as expected
-
-### Removed
-
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
-
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/solid'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
-```
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/solid`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
 ## [0.11.0] - 2023-09-08
 

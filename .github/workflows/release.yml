@@ -88,7 +88,7 @@ jobs:
           payload: |
             {
               "package_name": "@ark-ui/${{ github.event.inputs.package }}",
-              "changelog_url": "https://ark-ui.com/docs/${{ github.event.inputs.package }}/overview/changelog"
+              "changelog_url": "https://ark-ui.com/docs/changelog/${{ github.event.inputs.package }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

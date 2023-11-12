@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
-import { getExports } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Slider, type SliderProps } from './'
 
 const ComponentUnderTest = (props: SliderProps) => {
@@ -17,7 +17,7 @@ const ComponentUnderTest = (props: SliderProps) => {
       {...props}
     >
       <Slider.Label>Quantity: </Slider.Label>
-      <Slider.Output>{({ value }) => value.join(' ')}</Slider.Output>
+      <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
@@ -36,8 +36,9 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it('should render!', async () => {
+  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
@@ -123,14 +124,14 @@ describe('Slider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it('should emit correct onChange events', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+  it('should emit correct onValueChange events', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
 
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 })

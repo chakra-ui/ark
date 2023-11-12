@@ -36,16 +36,23 @@
       "isRequired": false,
       "description": "The initial focus element when the color picker is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
+    "onExitComplete": { "type": "() => void", "isRequired": false },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -55,7 +62,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
@@ -77,10 +84,17 @@
       "isRequired": false,
       "description": "The positioning options for the color picker"
     },
+    "present": { "type": "boolean", "isRequired": false },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is read-only"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": { "type": "string", "isRequired": false }
   },
@@ -89,6 +103,7 @@
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
+  "View": { "format": { "type": "ColorFormat", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
@@ -99,21 +114,7 @@
       "description": "Whether to include the alpha channel in the color"
     }
   },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
