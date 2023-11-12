@@ -12,6 +12,7 @@ const items = ['React', 'Solid', 'Vue']
         <Select.Control>
           <Select.Trigger>
             <Select.ValueText placeholder="Select a Framework" />
+            <Select.Indicator>▼</Select.Indicator>
           </Select.Trigger>
           <Select.ClearTrigger>Clear</Select.ClearTrigger>
         </Select.Control>

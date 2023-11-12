@@ -29,6 +29,10 @@
   margin-left: 200px;
 }
 
+[data-scope='popover'][data-part='indicator'][data-state='open'] {
+  rotate: 90deg;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

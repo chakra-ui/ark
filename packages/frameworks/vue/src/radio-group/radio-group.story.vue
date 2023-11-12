@@ -11,6 +11,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
     <Variant title="Basic">
       <RadioGroup.Root>
         <RadioGroup.Label>Framework</RadioGroup.Label>
+        <RadioGroup.Indicator />
         <RadioGroup.Item v-for="framework in frameworks" :key="framework" :value="framework">
           <RadioGroup.ItemText>{{ framework }}</RadioGroup.ItemText>
           <RadioGroup.ItemControl />
