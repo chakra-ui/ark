@@ -8,18 +8,16 @@ export interface FileUploadItemPreviewProps extends HTMLArkProps<'img'> {}
 
 export const FileUploadItemPreview = defineComponent({
   name: 'FileUploadItemPreview',
-  setup(_, { slots, attrs }) {
+  setup(_, { attrs }) {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
 
     try {
-      return () => (
-        <ark.img {...api.value.getItemPreviewProps(item.value as ItemPreviewProps)} {...attrs}>
-          {slots.default?.()}
-        </ark.img>
-      )
+      const previewProps = api.value.getItemPreviewProps(item.value as ItemPreviewProps)
+
+      return () => <ark.img {...previewProps} {...attrs} />
     } catch (e) {
-      return () => <ark.div />
+      return () => null
     }
   },
 })
