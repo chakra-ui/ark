@@ -139,8 +139,8 @@ importers:
         version: 0.29.0
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.1)
+        specifier: 5.0.0
+        version: 5.0.0(release-it@16.2.1)
       globby:
         specifier: 13.2.2
         version: 13.2.2
@@ -263,8 +263,8 @@ importers:
         version: 0.29.0
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.1)
+        specifier: 5.0.0
+        version: 5.0.0(release-it@16.2.1)
       '@storybook/addon-a11y':
         specifier: 7.5.3
         version: 7.5.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -462,8 +462,8 @@ importers:
         version: 0.29.0
     devDependencies:
       '@release-it/keep-a-changelog':
-        specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.1)
+        specifier: 5.0.0
+        version: 5.0.0(release-it@16.2.1)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.8.5)
@@ -655,8 +655,8 @@ importers:
         specifier: 0.17.4
         version: 0.17.4(histoire@0.17.4)(vite@4.5.0)(vue@3.3.4)
       '@release-it/keep-a-changelog':
-        specifier: 4.0.0
-        version: 4.0.0(release-it@16.2.1)
+        specifier: 5.0.0
+        version: 5.0.0(release-it@16.2.1)
       '@testing-library/dom':
         specifier: 9.3.3
         version: 9.3.3
@@ -5084,11 +5084,11 @@ packages:
       '@babel/runtime': 7.23.2
     dev: true
 
-  /@release-it/keep-a-changelog@4.0.0(release-it@16.2.1):
-    resolution: {integrity: sha512-a3n6RkBaYGf2qK2Yz/FkHDkpJjLYtMvpoZBIGfOz1zmv+918YU3In9zjoBJn4f2PldIW5yTWuk81hMYAdgPFww==}
-    engines: {node: '>=16'}
+  /@release-it/keep-a-changelog@5.0.0(release-it@16.2.1):
+    resolution: {integrity: sha512-Y1xqZe50jqK8qKlzEfGLVTjSkn57e/QlQMXHhKRWGgsv8Qy/X0LN1CJphoskZu7p7sAD3RihxhXrjJhRPE4JcA==}
+    engines: {node: '>=18'}
     peerDependencies:
-      release-it: ^16.0.0
+      release-it: ^17.0.0
     dependencies:
       detect-newline: 4.0.1
       release-it: 16.2.1(typescript@5.2.2)

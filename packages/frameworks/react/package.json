@@ -65,7 +65,7 @@
     "@zag-js/types": "0.29.0"
   },
   "devDependencies": {
-    "@release-it/keep-a-changelog": "4.0.0",
+    "@release-it/keep-a-changelog": "5.0.0",
     "@storybook/addon-a11y": "7.5.3",
     "@storybook/addon-essentials": "7.5.3",
     "@storybook/addons": "7.5.3",
