@@ -16,7 +16,7 @@ export default meta
 export const Basic = () => (
   <Popover.Root>
     <Popover.Trigger>
-      Click Me <Popover.Indicator>Indicator</Popover.Indicator>
+      Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
     </Popover.Trigger>
     <Popover.Positioner>
       <Popover.Content>
@@ -30,7 +30,7 @@ export const Basic = () => (
 export const Portalled = () => (
   <Popover.Root portalled>
     <Popover.Trigger>
-      Click Me <Popover.Indicator>Indicator</Popover.Indicator>
+      Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
     </Popover.Trigger>
     <Portal>
       <Popover.Positioner>
@@ -47,7 +47,7 @@ export const OnOpenChange = () => {
   return (
     <Popover.Root onOpenChange={(open) => alert(open ? 'opened' : 'closed')}>
       <Popover.Trigger>
-        Click Me <Popover.Indicator>Indicator</Popover.Indicator>
+        Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
       </Popover.Trigger>
       <Popover.Positioner>
         <Popover.Content>

@@ -9,9 +9,8 @@ import { Checkbox, type CheckboxProps } from './'
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
-    <Checkbox.Control data-testid="control">
-      <Checkbox.Indicator />
-    </Checkbox.Control>
+    <Checkbox.Control data-testid="control" />
+    <Checkbox.Indicator>Indicator</Checkbox.Indicator>
   </Checkbox.Root>
 )
 
