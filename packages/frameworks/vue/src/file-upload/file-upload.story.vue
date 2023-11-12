@@ -6,7 +6,7 @@ import './file-upload.css'
 <template>
   <Story title="File Upload">
     <Variant title="Basic">
-      <FileUpload.Root #default="api" :maxFiles="1">
+      <FileUpload.Root #default="api">
         <FileUpload.Dropzone>
           <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
         </FileUpload.Dropzone>

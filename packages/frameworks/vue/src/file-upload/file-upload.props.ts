@@ -17,13 +17,16 @@ export const props = {
     default: undefined,
   },
   files: {
-    type: Object as PropType<Context['files']>,
+    type: Array as PropType<Context['files']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
   },
   id: {
     type: String as PropType<Context['id']>,
+  },
+  isValidFile: {
+    type: Function as PropType<Context['isValidFile']>,
   },
   maxFiles: {
     type: Number as PropType<Context['maxFiles']>,
