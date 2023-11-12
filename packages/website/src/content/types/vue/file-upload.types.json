@@ -1,0 +1,84 @@
+{
+  "Root": {
+    "accept": {
+      "type": "string | Record<string, string[]>",
+      "isRequired": false,
+      "description": "The accept file types"
+    },
+    "allowDrop": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to allow drag and drop in the dropzone element"
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the file input is disabled"
+    },
+    "files": {
+      "type": "File[]",
+      "isRequired": false,
+      "description": "The current value of the file input"
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "isValidFile": {
+      "type": "(file: File) => boolean",
+      "isRequired": false,
+      "description": "Function to validate a file"
+    },
+    "locale": {
+      "type": "string",
+      "defaultValue": "\"en-US\"",
+      "isRequired": false,
+      "description": "The current locale. Based on the BCP 47 definition."
+    },
+    "maxFiles": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The maximum number of files"
+    },
+    "maxFileSize": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The maximum file size in bytes"
+    },
+    "minFileSize": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The minimum file size in bytes"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name of the underlying file input"
+    },
+    "onFilesChange": {
+      "type": "(details: FileChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes"
+    }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreview": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+}
