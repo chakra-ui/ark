@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { HStack } from 'styled-system/jsx'
+import { Badge } from '~/components/ui'
 import { SegmentGroup } from '~/components/ui/segment-group'
 
 interface Props {
@@ -32,7 +34,12 @@ export const SidebarGroup = (props: Props) => {
         >
           <SegmentGroup.Item value={item.href} data-orientation="vertical">
             <SegmentGroup.ItemControl />
-            <SegmentGroup.ItemText>{item.title}</SegmentGroup.ItemText>
+            <SegmentGroup.ItemText>
+              <HStack gap="2">
+                {item.title}
+                {item.label && <Badge size="sm">{item.label}</Badge>}
+              </HStack>
+            </SegmentGroup.ItemText>
           </SegmentGroup.Item>
         </a>
       ))}
