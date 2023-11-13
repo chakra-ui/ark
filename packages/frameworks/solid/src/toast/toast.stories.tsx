@@ -14,13 +14,13 @@ export default meta
 export const Basic = () => {
   const [Toaster, toast] = createToaster({
     placement: 'top-end',
-    duration: 200,
+    duration: 1000,
     removeDelay: 5000,
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )
@@ -43,8 +43,8 @@ export const Customized = () => {
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )
@@ -78,8 +78,8 @@ export const CustomRender = () => {
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )

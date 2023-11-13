@@ -18,7 +18,7 @@ type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
-  render: (api: toast.Api<PropTypes>) => JSX.Element
+  render: (api: Accessor<toast.Api<PropTypes>>) => JSX.Element
 }
 
 export type CreateToasterReturn = [
@@ -28,6 +28,7 @@ export type CreateToasterReturn = [
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const [groupProps] = splitProps(props, ['placement'])
+  // @ts-expect-error type mismatch
   const service = toast.group.machine({ id: '1', ...props }).start()
   const [state, send] = useActor(service)
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
@@ -60,7 +61,8 @@ interface ToastProviderFactoryProps {
 
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
   const [state, send] = useActor(props.service)
-  const api = toast.connect(state, send, normalizeProps)
+  const api = createMemo(() => toast.connect(state, send, normalizeProps))
 
-  return <ToastProvider value={createMemo(() => api)}>{state.context.render?.(api)}</ToastProvider>
+  // @ts-expect-error type mismatch
+  return <ToastProvider value={api}>{state.context.render?.(api)}</ToastProvider>
 }
