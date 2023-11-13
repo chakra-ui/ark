@@ -86,7 +86,7 @@
     "eslint": "8.53.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "globby": "13.2.2",
+    "globby": "14.0.0",
     "jsdom": "22.1.0",
     "lucide-react": "0.292.0",
     "react": "18.2.0",
