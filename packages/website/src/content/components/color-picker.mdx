@@ -7,10 +7,13 @@ label: Preview
 ---
 
 import { Anatomy, Story, ComponentPreview } from '~/components/docs'
-import { PreviewWarning } from '~/components/docs/preview-warning'
+import { InfoBanner } from '~/components/docs/info-banner'
 import ComponentTypes from '~/components/docs/component-types.astro'
 
-<PreviewWarning />
+<InfoBanner
+  title="Preview Component"
+  description="The API for this component is not stable yet and may change in the future."
+/>
 
 <ComponentPreview />
 

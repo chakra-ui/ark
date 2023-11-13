@@ -1,17 +1,15 @@
 ---
 id: vanilla
 title: Vanilla
-description:
-  Ark UI is a headless component library that is compatible with any styling
-  solution. This guide demonstrates how to style components.
+description: Use CSS classes or inline styles to style Ark UI components.
 ---
 
-## Using CSS
+## Using CSS Classes
 
-As described earlier, you can use the provided `data-scope` and `data-part`
-attribute to every component part to style them with ease.
+As previously discussed, you can utilize the `data-scope` and `data-part`
+attributes assigned to each component part for easy styling.
 
-Here's a simplified markup for the `Tabs` component:
+Below is a simplified markup for the `Tabs` component:
 
 ```html
 <div data-scope="tabs" data-part="root">
@@ -23,7 +21,8 @@ Here's a simplified markup for the `Tabs` component:
 </div>
 ```
 
-Here's an example of styling the `Tabs.List` and `Tabs.Trigger` parts using CSS
+To demonstrate, here is how you can style the `Tabs.List` and `Tabs.Trigger`
+parts using CSS:
 
 ```css
 [data-scope='tabs'][data-part='list'] {
@@ -48,10 +47,10 @@ Here's an example of styling the `Tabs.List` and `Tabs.Trigger` parts using CSS
 
 ## Using Inline Styles
 
-Inline styles can also be used, although they're typically not recommended due
-to potential conflicts and maintainability issues.
+Although it's possible to use inline styles, this approach is generally not
+recommended due to potential conflicts and maintainability issues.
 
-> Ark UI ensures that user-defined inline styles merge correctly with any
+> Ark UI ensures that user-defined inline styles are correctly merged with any
 > built-in inline styles.
 
 ```tsx
@@ -84,3 +83,8 @@ to potential conflicts and maintainability issues.
   </Tabs.List>
 </Tabs.Root>
 ```
+
+---
+
+This revised version maintains the original content's intent while enhancing
+readability and clarity.
