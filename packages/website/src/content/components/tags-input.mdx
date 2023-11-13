@@ -5,6 +5,7 @@ description: A component that allows users to add tags to an input field.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,11 +18,14 @@ how we name its parts.
 
 <Anatomy id="tags-input" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `TagsInput` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Navigating and Editing tags
+### Navigating and Editing tags
 
 When the input has an empty value or the caret is at the start position, the
 tags can be selected by using the arrow left and arrow right keys. When "visual"
@@ -33,13 +37,13 @@ focus in on any tag:
 - Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that
   has _visual_ focus.
 
-## Setting the initial tags
+### Setting the initial tags
 
 To set the initial tag values, set the `defaultValue` prop.
 
 <Story id="InitialValue" />
 
-## Limiting the number of tags
+### Limiting the number of tags
 
 To limit the number of tags within the component, you can set the `max` property
 to the limit you want. The default value is `Infinity`.
@@ -49,7 +53,7 @@ When the tag reaches the limit, new tags cannot be added except the
 
 <Story id="MaxWithOverflow" />
 
-## Validating Tags
+### Validating Tags
 
 Before a tag is added, the `validate` function is called to determine whether to
 accept or reject a tag.
@@ -59,7 +63,7 @@ data type.
 
 <Story id="Validated" />
 
-## Blur behavior
+### Blur behavior
 
 When the tags input is blurred, you can configure the action the component
 should take by passing the `blurBehavior` prop.
@@ -69,7 +73,7 @@ should take by passing the `blurBehavior` prop.
 
 <Story id="BlurBehavior" />
 
-## Paste behavior
+### Paste behavior
 
 To add a tag when a arbitrary value is pasted in the input element, pass the
 `addOnPaste` prop.
@@ -81,7 +85,7 @@ When a value is pasted, the component will:
 
 <Story id="PasteBehavior" />
 
-## Disable tag editing
+### Disable tag editing
 
 by default the tags can be edited by double-clicking on the tag or focusing on
 them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
@@ -89,7 +93,7 @@ them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
 
 <Story id="DisabledEditing" />
 
-## Events
+### Events
 
 During the lifetime of the tags input interaction, here's a list of events we
 emit:
@@ -100,3 +104,7 @@ emit:
   function returns `false`.
 
 <Story id="OnEvent" />
+
+## API Reference
+
+<ComponentTypes />

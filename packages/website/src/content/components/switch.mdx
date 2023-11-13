@@ -5,6 +5,7 @@ description: A control element that allows for a binary selection.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,18 +18,21 @@ name its parts.
 
 <Anatomy id="switch" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Switch` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Controlled Switch
+### Controlled Switch
 
 For a controlled Switch component, the state of the toggle is managed using the
 checked prop, and updates when the `onCheckedChange` event handler is called:
 
 <Story id="Controlled" />
 
-## Render Prop Usage
+### Render Prop Usage
 
 The Switch component also allows for a render prop, granting direct access to
 its internal state. This enables you to dynamically adjust and customize aspects
@@ -36,10 +40,6 @@ of the component based on its current state:
 
 <Story id="RenderProp" />
 
-## Conclusion
+## API Reference
 
-The Switch component provides a straightforward, intuitive solution for
-incorporating toggle functionality into your applications. With its flexibility
-for both controlled and uncontrolled scenarios and provision for dynamic
-customization through its render prop, it can accommodate various use cases
-effectively.
+<ComponentTypes />

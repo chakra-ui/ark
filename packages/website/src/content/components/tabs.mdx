@@ -5,6 +5,7 @@ description: Flexible navigation tool with various modes and features.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,24 +18,27 @@ name its parts.
 
 <Anatomy id="tabs" />
 
-## Usage
+## Examples
+
+Learn how to use the `Tabs` component in your project. Let's take a look at the
+most basic example:
 
 <Story id="Basic" />
 
-## Initial Tab
+### Initial Tab
 
 To set a default tab on initial render, use the `defaultValue` prop:
 
 <Story id="InitialTab" />
 
-## Tab Indicator
+### Tab Indicator
 
 To provide a visual cue for the selected tab, use the `Tabs.Indicator`
 component:
 
 <Story id="Indicator" />
 
-## Lazy Mounting
+### Lazy Mounting
 
 Lazy mounting is a feature that allows the content of a tab to be rendered only
 when the tab is first activated. This is useful for performance optimization,
@@ -47,28 +51,28 @@ resources. The next time the tab is activated, its content will be re-rendered.
 
 <Story id="LazyMount" />
 
-## Disabled Tab
+### Disabled Tab
 
 To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger`
 component:
 
 <Story id="DisabledTab" />
 
-## Controlled Tabs
+### Controlled Tabs
 
 To create a controlled Tabs component, manage the current selected tab using the
 `value` prop and update it when the `onValueChange` event handler is called:
 
 <Story id="Controlled" />
 
-## Vertical Tabs
+### Vertical Tabs
 
 The default orientation of the tabs is `horizontal`. To change the orientation,
 set the `orientation` prop to `vertical`.
 
 <Story id="Vertical" />
 
-## Manual Activation
+### Manual Activation
 
 By default, the tab can be selected when it receives focus from either the
 keyboard or pointer interaction. This is called automatic tab activation.
@@ -79,8 +83,6 @@ In contrast, manual tab activation means the tab is selected with the
 
 <Story id="Manual" />
 
-## Conclusion
+## API Reference
 
-The Tabs component offers a comprehensive and flexible solution for adding
-tabbed navigation to your applications. With a wide variety of customization
-options and features, it can accommodate various use cases and designs.
+<ComponentTypes />

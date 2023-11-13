@@ -5,6 +5,7 @@ description: A component that divides your interface into resizable sections
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,11 +18,14 @@ we name its parts.
 
 <Anatomy id="splitter" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Splitter` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Using Render Props
+### Using Render Props
 
 The Splitter component allows you to pass a function as a child to gain direct
 access to its API. This provides more control and allows you to modify the size
@@ -29,7 +33,7 @@ of the panels programmatically:
 
 <Story id="RenderProp" />
 
-## Handling Events
+### Handling Events
 
 Splitter also provides `onSizeChangeStart` and `onSizeChangeEnd` events which
 can be useful to perform some actions during the start and end of the resizing
@@ -37,16 +41,13 @@ process:
 
 <Story id="Events" />
 
-## Vertical Splitter
+### Vertical Splitter
 
 By default, the Splitter component is horizontal. If you need a vertical
 splitter, use the `orientation` prop:
 
 <Story id="Vertical" />
 
-## Conclusion
+## API Reference
 
-The Splitter component provides an intuitive way to divide your user interface
-into multiple resizable sections. With the use of its API, event handlers, and
-props, you can achieve a high level of control and customization, accommodating
-a wide range of design and functionality needs.
+<ComponentTypes />

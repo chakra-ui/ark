@@ -5,6 +5,7 @@ description: A modal window that appears on top of the main content.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,18 +18,21 @@ how we name its parts.
 
 <Anatomy id="dialog" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Dialog` component in your project. Let's take a look at
+the most basic example
 
 <Story id="Basic" />
 
-## Controlled Dialog
+### Controlled Dialog
 
 To create a controlled Dialog component, manage the state of the dialog using
 the `open` and `onOpenChange` props:
 
 <Story id="Controlled" />
 
-## Lazy Mounting
+### Lazy Mounting
 
 Lazy mounting is a feature that allows the content of a dialog to be rendered
 only when the dialog is first opened. This is useful for performance
@@ -42,17 +46,13 @@ re-rendered.
 
 <Story id="LazyMount" />
 
-## Using Render Function
+### Using Render Function
 
 The Dialog component supports the use of a render function as a child for more
 control. This allows access to dialog states like `isOpen`:
 
 <Story id="RenderFn" />
 
-## Conclusion
+## API Reference
 
-The Dialog component provides a feature-rich interface for creating dialog
-windows in your applications. It provides flexibility through a variety of props
-and configurations, accommodating different design requirements and use cases.
-From simple modals to complex, state-controlled dialogs, the Dialog component is
-a versatile tool in a developer's toolkit.
+<ComponentTypes />

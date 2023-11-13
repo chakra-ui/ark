@@ -5,6 +5,7 @@ description: A slideshow component that cycles through elements.
 ---
 
 import { Anatomy, Story, ComponentPreview } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,13 +18,14 @@ we name its parts.
 
 <Anatomy id="carousel" />
 
-## Getting Started
+## Examples
 
-Here's an example of how to use the Carousel component with a set of images:
+Learn how to use the `Caorusel` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Controlled Carousel
+### Controlled Carousel
 
 To create a controlled Carousel component, you can manage the state of the
 carousel using the `index` prop and update it when the `onIndexChange` event
@@ -31,9 +33,13 @@ handler is called:
 
 <Story id="Controlled" />
 
-## Customizing the Carousel
+### Customizing the Carousel
 
 You can customize the Carousel component by setting various props. Here's an
 example of a customized Carousel:
 
 <Story id="Customized" />
+
+## API Reference
+
+<ComponentTypes />

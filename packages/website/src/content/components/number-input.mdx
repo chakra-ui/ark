@@ -5,6 +5,7 @@ description: A field that allows user input of numeric values.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,11 +18,14 @@ how we name its parts.
 
 <Anatomy id="number-input" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `NumberInput` component in your project. Let's take a look
+at the most basic example:
 
 <Story id="Basic" />
 
-## Setting a minimum and maximum value
+### Setting a minimum and maximum value
 
 Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
 By default, the input will restrict the value to stay within the specified
@@ -29,7 +33,7 @@ range.
 
 <Story id="MinMax" />
 
-## Adjusting the precision of the value
+### Adjusting the precision of the value
 
 In some cases, you might need the value to be rounded to specific decimal
 points. Set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
@@ -37,7 +41,7 @@ points. Set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
 
 <Story id="FractionDigits" />
 
-## Scrubbing the input value
+### Scrubbing the input value
 
 The NumberInput supports the scrubber interaction pattern. To use this pattern,
 render the `Number.InputScrubber` component. It uses the Pointer lock API and
@@ -46,14 +50,14 @@ real cursor's pointer.
 
 <Story id="Scrubber" />
 
-## Using the mousewheel to change value
+### Using the mousewheel to change value
 
 The NumberInput exposes a way to increment/decrement the value using the mouse
 wheel event. To activate this, set the `allowMouseWheel` prop to `true`.
 
 <Story id="MouseWheel" />
 
-## Clamp value when user blurs the input
+### Clamp value when user blurs the input
 
 In most cases, users can type custom values in the input field. If the typed
 value is greater than the max, the value is reset to max when the user blur out
@@ -63,15 +67,19 @@ To disable this behavior, pass `clampValueOnBlur` and set to `false`.
 
 <Story id="NoClamp" />
 
-## Usage within forms
+### Usage within forms
 
 To use the number input within forms, set the `name` prop.
 
 <Story id="FormUsage" />
 
-## Format and parse value
+### Format and parse value
 
 To apply custom formatting to the input's value, set the `formatOptions` and
 provide `Intl.NumberFormatOptions` such as `style` and `currency`.
 
 <Story id="Formatted" />
+
+## API Reference
+
+<ComponentTypes />

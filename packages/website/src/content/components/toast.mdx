@@ -6,6 +6,7 @@ description:
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -18,7 +19,7 @@ name its parts.
 
 <Anatomy id="toast" />
 
-## Getting Started
+## Examples
 
 To use the Toast component in your application, you need to set it up using the
 `createToaster` hook. This hook manages the placement and grouping of toasts,
@@ -29,7 +30,7 @@ notification.
 
 <Story id="Basic" />
 
-## Configuring Toast
+### Configuring Toast
 
 To configure the Toast component, you can pass various options to the
 `toast.create` method. These options include `title`, `description`, `type`,
@@ -37,7 +38,7 @@ To configure the Toast component, you can pass various options to the
 
 <Story id="Customized" />
 
-## Custom Rendered Toast
+### Custom Rendered Toast
 
 For cases where you need more flexibility in rendering, the Toast component
 offers the ability to use a custom render function. This allows you to customize
@@ -45,9 +46,6 @@ the content of the toast:
 
 <Story id="CustomRender" />
 
-## Conclusion
+## API Reference
 
-The Toast component provides an intuitive and versatile solution for conveying
-information to users in your applications. With its support for custom render
-functions and flexible configuration, it presents a wide array of design
-possibilities and use cases.
+<ComponentTypes />

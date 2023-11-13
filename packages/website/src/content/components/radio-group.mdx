@@ -5,6 +5,7 @@ description: Allows single selection from multiple options.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,25 +18,32 @@ how we name its parts.
 
 <Anatomy id="radio-group" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `RadioGroup` component in your project. Let's take a look
+at the most basic example:
 
 <Story id="Basic" />
 
-## Disabling the radio group
+### Disabling the radio group
 
 To make a radio group disabled, set the `disabled` prop to `true`.
 
 <Story id="Disabled" />
 
-## Setting the initial value
+### Setting the initial value
 
 To set the radio group's initial value, set the `defaultValue` prop to the value
 of the radio item to be selected by default.
 
 <Story id="InitialValue" />
 
-## Listening for changes
+### Listening for changes
 
 When the radio group value changes, the `onValueChange` callback is invoked.
 
 <Story id="OnEvent" />
+
+## API Reference
+
+<ComponentTypes />

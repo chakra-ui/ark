@@ -6,6 +6,7 @@ description:
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -18,11 +19,14 @@ we name its parts.
 
 <Anatomy id="popover" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Popover` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Using a Portal
+### Using a Portal
 
 By default, the popover is rendered in the same DOM hierarchy as the trigger. To
 render the popover within a portal, set the `portalled` prop to `true`.
@@ -32,26 +36,26 @@ render the popover within a portal, set the `portalled` prop to `true`.
 
 <Story id="Portalled" />
 
-## Adding an arrow
+### Adding an arrow
 
 To render an arrow within the popover, render the component `Popover.Arrow` and
 `Popover.ArrowTip` as children of `Popover.Positioner`.
 
 <Story id="Arrow" />
 
-## Listening for open and close events
+### Listening for open and close events
 
 When the popover is opened or closed, we invoke the `onOpenChange` callback.
 
 <Story id="OnOpenChange" />
 
-## Control the open state
+### Control the open state
 
 Use the `isOpen` prop to control the open state of the popover.
 
 <Story id="Controlled" />
 
-## Modifying the close behavior
+### Modifying the close behavior
 
 The popover is designed to close on blur and when the <kbd>esc</kbd> key is
 pressed.
@@ -64,13 +68,13 @@ To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
 
 <Story id="CloseBehavior" />
 
-## Changing the placement
+### Changing the placement
 
 To change the placement of the popover, set the `positioning` prop.
 
 <Story id="Positioning" />
 
-## Changing the modality
+### Changing the modality
 
 In some cases, you might want the popover to be modal. This means that it'll:
 
@@ -83,3 +87,7 @@ To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
 we set the `portalled` attribute to `true` as well.
 
 <Story id="Modal" />
+
+## API Reference
+
+<ComponentTypes />

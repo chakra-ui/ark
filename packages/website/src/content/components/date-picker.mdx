@@ -5,6 +5,7 @@ description: A component that allows users to select a date from a calendar.
 ---
 
 import { Anatomy, Story, ComponentPreview } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,13 +18,14 @@ how we name its parts.
 
 <Anatomy id="date-picker" />
 
-## Getting Started
+## Examples
 
-Here is an example of how to use the Date Picker component:
+Learn how to use the `DatePicker` component in your project. Let's take a look
+at the most basic example
 
 <Story id="Basic" />
 
-## Range Selection with Single Grid
+### Range Selection with Single Grid
 
 To create a Date Picker that allows a range selection, set the `selectionMode`
 prop to "range". This renders a single grid view where the user can select a
@@ -31,7 +33,7 @@ start and end date:
 
 <Story id="RangeWithSingleGrid" />
 
-## Range Selection with Two Grids
+### Range Selection with Two Grids
 
 In some cases, you might want to display two consecutive months at the same time
 to facilitate a broader range selection. This can be achieved by setting the
@@ -39,9 +41,6 @@ to facilitate a broader range selection. This can be achieved by setting the
 
 <Story id="RangeWithTwoGrids" />
 
-## Conclusion
+## API Reference
 
-The Date Picker component provides a versatile solution for date selection needs
-in your applications. With support for different view modes, single and range
-date selection, and the ability to render multiple grids, it offers a wide range
-of customization and usability options.
+<ComponentTypes />
