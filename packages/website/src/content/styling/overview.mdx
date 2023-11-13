@@ -4,38 +4,38 @@ title: Overview
 description: Learn how to style Ark UI components.
 ---
 
-Ark UI is a headless component library that is compatible with any styling
-solution. And therefore compatible with any styling solution.
+Ark UI is a headless component library compatible with any styling solution,
+offering broad flexibility and integration options.
 
-## Styling parts
+## Styling Parts
 
-Every component part is assigned a `data-scope` and `data-part` attribute. The
-`data-scope` represents the component name, the `data-part` represents the name
-of the part.
+Each component part in Ark UI is designated with `data-scope` and `data-part`
+attributes. The `data-scope` attribute identifies the component, while
+`data-part` specifies the individual part of the component.
 
-> This was built to mirror the upcoming
-> [CSS Scopes Specification](https://drafts.csswg.org/css-cascade-6/#example-463550a5)
+> This approach aligns with the upcoming
+> [CSS Scopes Specification](https://drafts.csswg.org/css-cascade-6/#example-463550a5).
 
-## Styling states
+## Styling States
 
-Most interactive components have a `data-*` attribute that represents the
-current state of the component.
+Interactive components in Ark UI often include `data-*` attributes to reflect
+their current state.
 
-For instance, the tab trigger and content element will have a `data-selected`
-attribute when their `value` match the current active tab.
+For example, tab trigger and content elements will have a `data-selected`
+attribute when their `value` aligns with the active tab.
 
-We extensively provide data attributes like `data-disabled`, `data-readonly`,
-`data-focus`, `data-orientation` and so on, to help you style the component
-based on its state.
+Additional attributes like `data-disabled`, `data-readonly`, `data-focus`,
+`data-orientation`, etc., are provided to facilitate styling based on component
+state.
 
-## Component Library
+## Integrating with Component Libraries
 
-When using Ark UI with a component library, such as Chakra UI or Material UI,
-you can use the `asChild` prop to swap the rendered element with your own while
-retaining the original functionality.
+When integrating Ark UI with component libraries such as Chakra UI or Material
+UI, the `asChild` prop allows for swapping Ark UI elements with those from your
+chosen library while preserving their original functionality.
 
-> Note: If you're using React, it's important to ensure the element implements
-> the `React.forwardRef` API to ensure the ref is forwarded correctly.
+> Important: For React users, ensure that your element supports the
+> `React.forwardRef` API. This is crucial for correctly forwarding the ref.
 
 ```tsx
 import { Tabs } from '@ark-ui/react'
