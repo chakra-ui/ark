@@ -1,0 +1,91 @@
+---
+id: panda
+title: Panda
+description:
+  Ark UI is a headless component library that is compatible with any styling
+  solution. This guide demonstrates how to style components.
+---
+
+Panda is a delightful, build-time CSS-in-JS framework that's designed to work
+seamlessly with Ark UI. It's the recommended styling solution for Ark UI.
+
+> Learn more about Panda CSS at [panda-css.com](https://panda-css.com).
+
+### The styled factory
+
+Panda CSS provides a `styled` function that enables you to style component parts
+with ease. You can also leverage the `css` function to create simple styles.
+
+```tsx
+import { Tabs } from '@ark-ui/react'
+import { styled } from 'styled-system/jsx' // panda generated directory
+
+// using the styled function
+const TabTrigger = styled(Tabs.Trigger, {
+  base: {
+    bg: 'gray.100',
+    borderWidth: '1px',
+    paddingTop: '3',
+  },
+  variants: {
+    // ... define variants of your tab
+  },
+})
+
+// using the css function
+const listClassName = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  fontSize: '14px',
+  fontWeight: 'medium',
+  textAlign: 'center',
+  color: '#374151',
+  borderBottomWidth: '1px',
+  borderBottomColor: 'gray.200',
+})
+
+const Demo = () => (
+  <Tabs.Root>
+    <Tabs.List className={listClassName}>
+      <TabTrigger value="react" />
+    </Tabs.List>
+    {/* … */}
+  </Tabs.Root>
+)
+```
+
+### Using slot recipes
+
+Panda provides the idea of slot recipes, which are a collection of styles that
+can be applied to different parts of a component. Slot recipes are defined using
+the `cva` function provided by Panda.
+
+```tsx
+import { Tabs } from '@ark-ui/react'
+import { sva } from 'styled-system/css' // panda generated directory
+
+const tabStyle = sva({
+  slots: ['list', 'trigger'],
+  base: {
+    // base styles for Tabs.List
+    list: {},
+    // base styles for Tabs.Trigger
+    trigger: {},
+  },
+  variants: {
+    // variant styles
+  },
+})
+
+const Demo = () => {
+  const styles = tabStyle()
+  return (
+    <Tabs.Root>
+      <Tabs.List className={styles.list}>
+        <Tab.Trigger className={styles.trigger} value="react" />
+      </Tabs.List>
+      {/* … */}
+    </Tabs.Root>
+  )
+}
+```
