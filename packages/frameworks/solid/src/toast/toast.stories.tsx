@@ -14,6 +14,8 @@ export default meta
 export const Basic = () => {
   const [Toaster, toast] = createToaster({
     placement: 'top-end',
+    duration: 200,
+    removeDelay: 5000,
     render(toast) {
       return (
         <Toast.Root>
