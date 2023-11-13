@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Added `FileUpload` component
 
+### Fixed
+
+- Resolved an issue where the `Toast` component would throw a warning when multiple toasts were rendered at the same time.
+
 ## [1.0.1] - 2023-11-10
 
 ### Fixed

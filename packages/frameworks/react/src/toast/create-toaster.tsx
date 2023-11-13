@@ -37,7 +37,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     return (
       <ark.ol {...mergedProps} ref={ref}>
         {toasts.map((toast) => (
-          <ToastProviderFactory key={service.id} service={toast} />
+          <ToastProviderFactory key={toast.id} service={toast} />
         ))}
       </ark.ol>
     )
