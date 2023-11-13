@@ -1,20 +1,20 @@
 ---
 id: panda
 title: Panda
-description:
-  Ark UI is a headless component library that is compatible with any styling
-  solution. This guide demonstrates how to style components.
+description: Write type-safe styles with ease using Panda CSS
 ---
 
-Panda is a delightful, build-time CSS-in-JS framework that's designed to work
-seamlessly with Ark UI. It's the recommended styling solution for Ark UI.
+Panda CSS is a delightful, build-time CSS-in-JS framework designed to integrate
+seamlessly with Ark UI, offering an optimal styling solution for Ark UI
+components.
 
-> Learn more about Panda CSS at [panda-css.com](https://panda-css.com).
+> Discover more about Panda CSS at [panda-css.com](https://panda-css.com).
 
-### The styled factory
+## Styled Factory
 
-Panda CSS provides a `styled` function that enables you to style component parts
-with ease. You can also leverage the `css` function to create simple styles.
+Panda CSS features a `styled` function, simplifying the process of styling
+component parts. Additionally, you can use the `css` function for crafting
+straightforward styles.
 
 ```tsx
 import { Tabs } from '@ark-ui/react'
@@ -28,7 +28,7 @@ const TabTrigger = styled(Tabs.Trigger, {
     paddingTop: '3',
   },
   variants: {
-    // ... define variants of your tab
+    // ... define your tab variants here
   },
 })
 
@@ -49,22 +49,22 @@ const Demo = () => (
     <Tabs.List className={listClassName}>
       <TabTrigger value="react" />
     </Tabs.List>
-    {/* … */}
+    {/* … other components */}
   </Tabs.Root>
 )
 ```
 
-### Using slot recipes
+## Slot Recipes
 
-Panda provides the idea of slot recipes, which are a collection of styles that
-can be applied to different parts of a component. Slot recipes are defined using
-the `cva` function provided by Panda.
+Panda introduces 'slot recipes', a concept involving a set of styles applicable
+to various component parts. These slot recipes are created using Panda's `cva`
+function.
 
 ```tsx
 import { Tabs } from '@ark-ui/react'
-import { sva } from 'styled-system/css' // panda generated directory
+import { cva } from 'styled-system/css' // panda generated directory
 
-const tabStyle = sva({
+const tabStyle = cva({
   slots: ['list', 'trigger'],
   base: {
     // base styles for Tabs.List
@@ -73,7 +73,7 @@ const tabStyle = sva({
     trigger: {},
   },
   variants: {
-    // variant styles
+    // define your variant styles here
   },
 })
 
@@ -84,7 +84,7 @@ const Demo = () => {
       <Tabs.List className={styles.list}>
         <Tab.Trigger className={styles.trigger} value="react" />
       </Tabs.List>
-      {/* … */}
+      {/* … additional components */}
     </Tabs.Root>
   )
 }
