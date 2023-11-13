@@ -14,7 +14,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 
-type GroupContext = Partial<toast.GroupMachineContext>
+interface Toast extends Accessor<toast.Api<PropTypes>> {}
+interface GroupContext extends Partial<toast.GroupMachineContext<Toast>> {}
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
@@ -23,15 +24,14 @@ export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, '
 
 export type CreateToasterReturn = [
   (props: HTMLArkProps<'ol'>) => JSX.Element,
-  Accessor<toast.GroupApi<PropTypes>>,
+  Accessor<toast.GroupApi<PropTypes, Toast>>,
 ]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const [groupProps] = splitProps(props, ['placement'])
-  // @ts-expect-error type mismatch
   const service = toast.group.machine({ id: '1', ...props }).start()
   const [state, send] = useActor(service)
-  const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
+  const api = createMemo(() => toast.group.connect<PropTypes, Toast>(state, send, normalizeProps))
 
   const Toaster = (props: HTMLArkProps<'ol'>) => {
     const getRootNode = useEnvironmentContext()
@@ -56,13 +56,12 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
 }
 
 interface ToastProviderFactoryProps {
-  service: toast.Service
+  service: toast.Service<Toast>
 }
 
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
   const [state, send] = useActor(props.service)
   const api = createMemo(() => toast.connect(state, send, normalizeProps))
 
-  // @ts-expect-error type mismatch
   return <ToastProvider value={api}>{state.context.render?.(api)}</ToastProvider>
 }

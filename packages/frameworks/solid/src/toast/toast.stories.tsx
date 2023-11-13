@@ -93,9 +93,9 @@ export const CustomRender = () => {
           toast().create({
             title: 'Please checkout',
             render: (toast) => (
-              <div>
-                {toast.title} <a href="https://ark-ui.com">Ark UI</a>
-              </div>
+              <Toast.Root>
+                {toast().title} <a href="https://ark-ui.com">Ark UI</a>
+              </Toast.Root>
             ),
           })
         }
