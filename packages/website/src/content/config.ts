@@ -12,6 +12,15 @@ const components = defineCollection({
   }),
 })
 
+const styling = defineCollection({
+  type: 'content',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+  }),
+})
+
 const stories = defineCollection({
   type: 'data',
   schema: z.record(z.string(), z.string()),
@@ -56,5 +65,6 @@ export const collections = {
   components,
   overview,
   stories,
+  styling,
   types,
 }

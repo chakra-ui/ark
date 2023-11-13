@@ -1,0 +1,33 @@
+---
+id: tailwind
+title: Tailwind
+description: Rapidly build modern websites without ever leaving your HTML.
+---
+
+## Utilizing Utility Classes
+
+Utility classes provide a flexible way to style your components. This method is
+especially effective when integrating Ark UI with CSS frameworks like
+[Tailwind CSS](https://tailwindcss.com/), [UnoCSS](https://unocss.dev/), or
+[Bootrap](https://getbootstrap.com/). These frameworks offer an extensive range
+of utility classes that can significantly speed up the development process and
+enhance the design consistency of your project.
+
+### Example with Tailwind CSS
+
+Tailwind CSS is known for its utility-first approach, offering a wide array of
+classes for various styling needs. Below is an example demonstrating how to use
+Tailwind CSS classes with the Ark UI `Tabs` component:
+
+```tsx
+<Tabs.Root>
+  <Tabs.List className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+    <Tabs.Trigger
+      value="react"
+      className="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg border-b border-gray-200"
+    >
+      React
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs.Root>
+```
