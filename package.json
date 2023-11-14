@@ -47,5 +47,5 @@
       "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
-  "packageManager": "pnpm@8.10.3"
+  "packageManager": "pnpm@8.10.4"
 }
