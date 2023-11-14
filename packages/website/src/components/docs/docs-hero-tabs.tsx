@@ -1,16 +1,16 @@
-import { TabIndicator, TabList, TabTrigger, Tabs } from '~/components/ui'
+import { Tabs } from '~/components/ui'
 
 export const DocsHeroTabs = () => {
   return (
-    <Tabs defaultValue="Overview" mb="-1px" variant="outline" size="lg">
-      <TabList>
+    <Tabs.Root defaultValue="Overview" mb="-1px" variant="outline" size="lg">
+      <Tabs.List>
         {['Overview', 'Anatomy', 'API'].map((item, id) => (
-          <TabTrigger key={id} value={item}>
+          <Tabs.Trigger key={id} value={item}>
             {item}
-          </TabTrigger>
+          </Tabs.Trigger>
         ))}
-        <TabIndicator />
-      </TabList>
-    </Tabs>
+        <Tabs.Indicator />
+      </Tabs.List>
+    </Tabs.Root>
   )
 }

@@ -1,5 +1,5 @@
 import { HStack } from 'styled-system/jsx'
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
+import { Avatar } from '~/components/ui/avatar'
 
 type Props = {
   contributors: { name: string; avatar: string }[]
@@ -10,7 +10,7 @@ export const Contributors = (props: Props) => {
   return (
     <HStack gap="0">
       {contributors.map((contributor, id) => (
-        <Avatar
+        <Avatar.Root
           key={id}
           _first={{ marginStart: '0' }}
           marginStart={{ base: '-3', md: '-4' }}
@@ -19,9 +19,9 @@ export const Contributors = (props: Props) => {
           borderWidth="2px"
           borderColor="border.emphasized"
         >
-          <AvatarFallback>...</AvatarFallback>
-          <AvatarImage src={contributor.avatar} alt={contributor.name} />
-        </Avatar>
+          <Avatar.Fallback>...</Avatar.Fallback>
+          <Avatar.Image src={contributor.avatar} alt={contributor.name} />
+        </Avatar.Root>
       ))}
     </HStack>
   )

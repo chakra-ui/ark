@@ -2,12 +2,7 @@ import { Portal } from '@ark-ui/react'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
-import { Heading } from '~/components/ui'
-import { Button } from '~/components/ui/button'
-import { Code } from '~/components/ui/code'
-import { Icon } from '~/components/ui/icon'
-import { Popover } from '~/components/ui/popover'
-import { Table } from '~/components/ui/table'
+import { Button, Code, Heading, Icon, Popover, Table } from '~/components/ui'
 
 type Props = {
   types: CollectionEntry<'types'>
