@@ -1,4 +1,4 @@
-import { createToaster } from '@ark-ui/react/src/toast'
+import { createToaster } from '@ark-ui/react'
 import { XIcon } from 'lucide-react'
 import { Button, IconButton, Toast } from '~/components/ui'
 
