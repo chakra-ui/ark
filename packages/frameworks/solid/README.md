@@ -1,47 +1,46 @@
-# @ark-ui/solid
+# Welcome to Ark UI
 
-`@ark-ui/solid` is an open-source UI component library designed to make building high-quality, accessible web applications easier. The library focuses on providing low-level UI components with an emphasis on accessibility, customization, and developer experience.
+Ark UI is a headless, open-source UI library with over 30+ components designed for building reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering dedciated packages for each supported framework.
 
-## Key Features
+## Supported Frameworks
 
-- **Accessible**: Components in Ark UI are designed with accessibility in mind, adhering to WAI-ARIA design patterns and handling implementation details such as aria and role attributes, focus management, and keyboard navigation.
-- **Headless**: Components are shipped without styles, giving developers full control over styling.
-- **Customizable**: The open component architecture allows for customization and customization, providing granular access to each component part.
-- **Powered by state machines**: Predictable, simplified, and robust component behavior.
-- **Developer Experience**: The library provides a fully-typed API with a consistent and predictable experience.
+Ark UI is available for the following JavaScript frameworks:
+
+- **React**: `@ark-ui/react`
+- **Solid**: `@ark-ui/solid`
+- **Vue**: `@ark-ui/vue`
 
 ## Available Components
 
-At the moment, `@ark-ui/solid`offers the following components:
-
-- [Accordion](https://ark-ui.com/docs/solid/components/accordion)
-- [Avatar](https://ark-ui.com/docs/solid/components/avatar)
-- [Carousel](https://ark-ui.com/docs/solid/components/carousel)
-- [Checkbox](https://ark-ui.com/docs/solid/components/checkbox)
-- [Color Picker](https://ark-ui.com/docs/solid/components/color-picker)
-- [Combobox](https://ark-ui.com/docs/solid/components/combobox)
-- [Date Picker](https://ark-ui.com/docs/solid/components/date-picker)
-- [Dialog](https://ark-ui.com/docs/solid/components/dialog)
-- [Editable](https://ark-ui.com/docs/solid/components/editable)
-- [Hover Card](https://ark-ui.com/docs/solid/components/hover-card)
-- [Menu](https://ark-ui.com/docs/solid/components/menu)
-- [Number Input](https://ark-ui.com/docs/solid/components/number-input)
-- [Pagination](https://ark-ui.com/docs/solid/components/pagination)
-- [Pin Input](https://ark-ui.com/docs/solid/components/pin-input)
-- [Popover](https://ark-ui.com/docs/solid/components/popover)
-- [Pressable](https://ark-ui.com/docs/solid/components/pressable)
-- [Radio Group](https://ark-ui.com/docs/solid/components/radio-group)
-- [Range Slider](https://ark-ui.com/docs/solid/components/range-slider)
-- [Rating Group](https://ark-ui.com/docs/solid/components/rating-group)
-- [Segment Group](https://ark-ui.com/docs/solid/components/segment-group)
-- [Select](https://ark-ui.com/docs/solid/components/select)
-- [Slider](https://ark-ui.com/docs/solid/components/slider)
-- [Splitter](https://ark-ui.com/docs/solid/components/splitter)
-- [Switch](https://ark-ui.com/docs/solid/components/switch)
-- [Tabs](https://ark-ui.com/docs/solid/components/tabs)
-- [Tags Input](https://ark-ui.com/docs/solid/components/tags-input)
-- [Toast](https://ark-ui.com/docs/solid/components/toast)
-- [Tooltip](https://ark-ui.com/docs/solid/components/tooltip)
+- [Accordion](https://ark-ui.com/docs/components/accordion)
+- [Avatar](https://ark-ui.com/docs/components/avatar)
+- [Carousel](https://ark-ui.com/docs/components/carousel)
+- [Checkbox](https://ark-ui.com/docs/components/checkbox)
+- [Color Picker](https://ark-ui.com/docs/components/color-picker)
+- [Combobox](https://ark-ui.com/docs/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/components/date-picker)
+- [Dialog](https://ark-ui.com/docs/components/dialog)
+- [Editable](https://ark-ui.com/docs/components/editable)
+- [File Upload](https://ark-ui.com/docs/components/file-upload)
+- [Hover Card](https://ark-ui.com/docs/components/hover-card)
+- [Menu](https://ark-ui.com/docs/components/menu)
+- [Number Input](https://ark-ui.com/docs/components/number-input)
+- [Pagination](https://ark-ui.com/docs/components/pagination)
+- [Pin Input](https://ark-ui.com/docs/components/pin-input)
+- [Popover](https://ark-ui.com/docs/components/popover)
+- [Radio Group](https://ark-ui.com/docs/components/radio-group)
+- [Range Slider](https://ark-ui.com/docs/components/slider)
+- [Rating Group](https://ark-ui.com/docs/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/components/segment-group)
+- [Select](https://ark-ui.com/docs/components/select)
+- [Slider](https://ark-ui.com/docs/components/slider)
+- [Splitter](https://ark-ui.com/docs/components/splitter)
+- [Switch](https://ark-ui.com/docs/components/switch)
+- [Tabs](https://ark-ui.com/docs/components/tabs)
+- [Tags Input](https://ark-ui.com/docs/components/tags-input)
+- [Toast](https://ark-ui.com/docs/components/toast)
+- [Toggle Group](https://ark-ui.com/docs/components/toggle-group)
+- [Tooltip](https://ark-ui.com/docs/components/tooltip)
 
 ## Installation
 
@@ -95,10 +94,14 @@ export const MySlider = () => {
 
 For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).
 
+## Roadmap
+
+You can request, vote for, and check upcoming features on our [roadmap](https://ark-ui.canny.io/).
+
 ## Contribution
 
-We welcome contributions to `@ark-ui/solid`. Please read our [contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to contribute.
+We welcome contributions to Ark UI. Please read our [contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to contribute.
 
-## Licence
+## License
 
 This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).
