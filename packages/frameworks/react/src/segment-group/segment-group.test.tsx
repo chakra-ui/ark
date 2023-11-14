@@ -6,20 +6,26 @@ import { getExports, getParts } from '../setup-test'
 import { SegmentGroup, type SegmentGroupProps } from './'
 
 const ComponentUnderTest = (props: SegmentGroupProps) => {
-  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
+  const items = [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ]
   return (
     <SegmentGroup.Root {...props}>
       <SegmentGroup.Label>Framework</SegmentGroup.Label>
       <SegmentGroup.Indicator />
-      {frameworks.map((framework) => (
-        <SegmentGroup.Item key={framework} value={framework} disabled={framework === 'Svelte'}>
-          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
+      {items.map((item) => (
+        <SegmentGroup.Item key={item.value} value={item.value} disabled={item.disabled}>
+          <SegmentGroup.ItemText>{item.label}</SegmentGroup.ItemText>
           <SegmentGroup.ItemControl />
         </SegmentGroup.Item>
       ))}
     </SegmentGroup.Root>
   )
 }
+
 describe('Segment Group', () => {
   it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
@@ -33,13 +39,15 @@ describe('Segment Group', () => {
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
+
     await user.click(screen.getByLabelText('Solid'))
-    expect(onValueChange).toHaveBeenCalledWith({ value: 'Solid' })
+    expect(onValueChange).toHaveBeenCalledWith({ value: 'solid' })
   })
 
   it('should not invoke onValueChange if option is disabled', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
+
     await user.click(screen.getByLabelText('Svelte'))
     expect(onValueChange).not.toHaveBeenCalled()
   })

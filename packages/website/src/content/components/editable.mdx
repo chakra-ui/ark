@@ -5,6 +5,7 @@ description: A component that allows users to edit text in place.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,11 +18,14 @@ we name its parts.
 
 <Anatomy id="editable" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Editable` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Using custom controls
+### Using custom controls
 
 In some cases, you might need to use custom controls to toggle the edit and read
 mode. We use the render prop pattern to provide access to the internal state of
@@ -29,7 +33,7 @@ the component.
 
 <Story id="CustomControls" />
 
-## Auto-resizing the editable
+### Auto-resizing the editable
 
 To auto-grow the editable as the content changes, set the `autoResize` prop to
 `true`.
@@ -40,7 +44,7 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to
 </Editable.Root>
 ```
 
-## Setting a maxWidth
+### Setting a maxWidth
 
 It is a common pattern to set a maximum of the editable as it auto-grows. To
 achieve this, set the `maxWidth` prop to the desired value.
@@ -51,7 +55,7 @@ achieve this, set the `maxWidth` prop to the desired value.
 </Editable.Root>
 ```
 
-## Editing with double click
+### Editing with double click
 
 The editable supports two modes of activating the "edit" state:
 
@@ -65,3 +69,7 @@ To change the mode to double-click, pass the prop `activationMode="dblclick"`.
   {/*...*/}
 </Editable.Root>
 ```
+
+## API Reference
+
+<ComponentTypes />

@@ -1,4 +1,4 @@
-import { RadioGroup, type RadioGroupProps } from '~/components/ui/radio-group'
+import { RadioGroup, type RadioGroupProps } from '~/components/ui'
 
 export const Demo = (props: RadioGroupProps) => {
   const options = [

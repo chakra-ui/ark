@@ -1,7 +1,9 @@
+import { sliderAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index, createSignal } from 'solid-js'
 import { vi } from 'vitest'
+import { getExports, getParts } from '../setup-test'
 import { Slider, type SliderProps } from './'
 
 const ComponentUnderTest = (props: SliderProps) => {
@@ -32,8 +34,13 @@ const ComponentUnderTest = (props: SliderProps) => {
 }
 
 describe('Slider', () => {
-  it('should render!', async () => {
+  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
+    expect(Slider[part]).toBeDefined()
   })
 
   it('should be possible to control it with the arrow keys', async () => {
@@ -115,14 +122,14 @@ describe('Slider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it('should emit correct onChange events', async () => {
-    const onChange = vi.fn()
-    render(() => <ComponentUnderTest onValueChange={onChange} />)
+  it('should emit correct onValueChange events', async () => {
+    const onValueChange = vi.fn()
+    render(() => <ComponentUnderTest onValueChange={onValueChange} />)
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()
     await user.keyboard('[ArrowRight]')
 
-    await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 })

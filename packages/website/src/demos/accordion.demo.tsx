@@ -4,7 +4,7 @@ import { Accordion, type AccordionProps } from '~/components/ui'
 export const Demo = (props: AccordionProps) => {
   const items = ['React', 'Solid', 'Vue']
   return (
-    <Accordion defaultValue={['React']} multiple {...props}>
+    <Accordion.Root defaultValue={['React']} multiple {...props}>
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.ItemTrigger>
@@ -21,6 +21,6 @@ export const Demo = (props: AccordionProps) => {
           </Accordion.ItemContent>
         </Accordion.Item>
       ))}
-    </Accordion>
+    </Accordion.Root>
   )
 }

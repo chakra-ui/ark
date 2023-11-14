@@ -2,14 +2,7 @@ import { getCollection } from 'astro:content'
 import path from 'node:path'
 
 const getOverviewPages = async () => {
-  const priority = [
-    'introduction',
-    'getting-started',
-    'as-child-prop',
-    'styling',
-    'animation',
-    'changelog',
-  ]
+  const priority = ['introduction', 'getting-started', 'as-child-prop', 'animation']
   return getCollection('overview').then((items) =>
     items.sort((a, b) => priority.indexOf(a.slug) - priority.indexOf(b.slug)),
   )
@@ -17,10 +10,11 @@ const getOverviewPages = async () => {
 
 export const getAllCollections = async () => {
   const overviewPages = await getOverviewPages()
+  const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
 
-  return [...overviewPages, ...componentPages, ...changelogPages]
+  return [...overviewPages, ...stylingPages, ...componentPages, ...changelogPages]
 }
 
 const getCurrentPageIndex = async (pathname?: string) => {
@@ -60,6 +54,7 @@ type Sitemap = {
 
 export const getSitemap = async (): Promise<Sitemap> => {
   const overviewPages = await getOverviewPages()
+  const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
 
@@ -72,10 +67,18 @@ export const getSitemap = async (): Promise<Sitemap> => {
       })),
     },
     {
+      title: 'Styling',
+      items: stylingPages.map((item) => ({
+        title: item.data.title,
+        href: path.join('/docs', item.collection, item.data.id),
+      })),
+    },
+    {
       title: 'Components',
       items: componentPages.map((item) => ({
         title: item.data.title,
         href: path.join('/docs', item.collection, item.data.id),
+        label: item.data.label,
       })),
     },
     {

@@ -3,7 +3,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
 const ComponentUnderTest = (props: AccordionProps) => {
@@ -18,8 +18,10 @@ const ComponentUnderTest = (props: AccordionProps) => {
       <For each={items}>
         {(item) => (
           <Accordion.Item value={item.value} disabled={item.disabled}>
-            <Accordion.ItemTrigger>{item.value} Trigger</Accordion.ItemTrigger>
-            <Accordion.ItemIndicator />
+            <Accordion.ItemTrigger>
+              {item.value} Trigger
+              <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
             <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
           </Accordion.Item>
         )}
@@ -32,6 +34,10 @@ describe('Accordion', () => {
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
     const { container } = render(() => <ComponentUnderTest />)
     expect(container.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
+    expect(Accordion[part]).toBeDefined()
   })
 
   it('should not have an expanded item by default', async () => {

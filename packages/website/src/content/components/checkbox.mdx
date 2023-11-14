@@ -5,6 +5,7 @@ description: A control element that allows for multiple selections within a set.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,11 +18,14 @@ we name its parts.
 
 <Anatomy id="checkbox" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Checkbox` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Controlled Checkbox
+### Controlled Checkbox
 
 To create a controlled Checkbox component, manage the state of the checked
 status using the `checked` prop and update it when the `onCheckedChange` event
@@ -29,7 +33,7 @@ handler is called:
 
 <Story id="Controlled" />
 
-## Indeterminate Checkbox
+### Indeterminate Checkbox
 
 In some cases, you may need a checkbox to represent a state that is neither
 checked nor unchecked, known as the indeterminate state. This can be achieved by
@@ -37,7 +41,7 @@ setting the `checked` prop to `indeterminate`:
 
 <Story id="Indeterminate" />
 
-## Render Prop Usage
+### Render Prop Usage
 
 For cases where you need more flexibility in rendering, the Checkbox component
 offers the use of a render prop. The render prop function gives you access to
@@ -45,9 +49,6 @@ the checkbox's API, allowing you to customize the checkbox control's rendering:
 
 <Story id="RenderProp" />
 
-## Conclusion
+## API Reference
 
-The Checkbox component provides a robust and flexible solution for toggleable
-input needs in your applications. With its support for controlled and
-indeterminate states, as well as custom render props, it offers a wide range of
-design possibilities and use cases.
+<ComponentTypes />

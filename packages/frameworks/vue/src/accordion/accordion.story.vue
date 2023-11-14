@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Accordion } from './'
+import './accordion.css'
 
 const items = ref(['React', 'Solid', 'Vue'])
 const value = ref(['React'])
@@ -11,8 +12,10 @@ const value = ref(['React'])
     <Variant title="Basic">
       <Accordion.Root>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemIndicator>Icon</Accordion.ItemIndicator>
+          <Accordion.ItemTrigger>
+            {{ item }} trigger
+            <Accordion.ItemIndicator>{{ '>' }}</Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
           <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
         </Accordion.Item>
       </Accordion.Root>

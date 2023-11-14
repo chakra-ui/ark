@@ -16,6 +16,7 @@ export const Basic = () => {
   return (
     <RadioGroup.Root>
       <RadioGroup.Label>Framework</RadioGroup.Label>
+      <RadioGroup.Indicator />
       {frameworks.map((framework) => (
         <RadioGroup.Item key={framework} value={framework}>
           <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
@@ -56,7 +57,7 @@ export const InitialValue = () => {
   )
 }
 
-export const OnChange = () => {
+export const OnEvent = () => {
   const frameworks = ['React', 'Solid', 'Vue']
   return (
     <RadioGroup.Root onValueChange={(details) => console.log(details.value)}>

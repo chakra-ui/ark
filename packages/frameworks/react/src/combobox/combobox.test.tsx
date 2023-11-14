@@ -90,11 +90,11 @@ describe('Combobox', () => {
     })
   })
 
-  it('should open menu when onOpen is called', async () => {
-    const onOpen = vi.fn()
-    render(<ComponentUnderTest onOpenChange={onOpen} />)
+  it('should open menu when onOpenChange is called', async () => {
+    const onOpenChange = vi.fn()
+    render(<ComponentUnderTest onOpenChange={onOpenChange} />)
     user.click(screen.getByTestId('trigger'))
-    await waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {

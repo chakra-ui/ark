@@ -1,17 +1,16 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@solidjs/testing-library'
+import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
 import { vi } from 'vitest'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Checkbox, type CheckboxProps } from './'
 
 const ComponentUnderTest = (props: CheckboxProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
-    <Checkbox.Control data-testid="control">
-      <Checkbox.Indicator />
-    </Checkbox.Control>
+    <Checkbox.Control data-testid="control" />
+    <Checkbox.Indicator>Indicator</Checkbox.Indicator>
   </Checkbox.Root>
 )
 
@@ -21,12 +20,27 @@ describe('Checkbox', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
+  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
+    expect(Checkbox[part]).toBeDefined()
+  })
+
   it('should handle check and unchecked', async () => {
     const onChange = vi.fn()
     render(() => <ComponentUnderTest onChange={onChange} />)
     const checkbox = screen.getByRole('checkbox')
     await user.click(checkbox)
     expect(checkbox).toBeChecked()
+  })
+
+  it('should invoke onCheckedChange', async () => {
+    const onCheckedChange = vi.fn()
+    render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} />)
+
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
+
+    fireEvent.click(screen.getByRole('checkbox'))
+    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {

@@ -5,6 +5,7 @@ description: A collapsible component that displays content in a vertical stack.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,38 +18,41 @@ we name its parts.
 
 <Anatomy id="accordion" />
 
-## Getting Started
+## Examples
+
+Learn how to use the `Accordion` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Setting an Initial Panel
+### Setting an Initial Panel
 
 To set an initial panel to be open upon rendering, use the `defaultValue` prop:
 
 <Story id="Initial" />
 
-## Using Render Props
+### Using Render Props
 
 For more control over the Accordion's functionality, you can use a function as a
 child, which provides access to the Accordion API:
 
 <Story id="RenderProp" />
 
-## Making the Accordion Collapsible
+### Making the Accordion Collapsible
 
 For a collapsible Accordion where all panels can be closed simultaneously, use
 the `collapsible` prop:
 
 <Story id="Collapsible" />
 
-## Opening Multiple Panels
+### Opening Multiple Panels
 
 For an Accordion that allows multiple panels to be open at once, use the
 `multiple` prop:
 
 <Story id="Multiple" />
 
-## Controlled Accordion
+### Controlled Accordion
 
 To create a controlled Accordion component, manage the state of the currently
 opened panels using the `value` prop and update it when the `onValueChange`
@@ -56,14 +60,18 @@ event handler is called:
 
 <Story id="Controlled" />
 
-## Changing the Orientation
+### Changing the Orientation
 
 To display the Accordion in a vertical orientation, use the `orientation` prop:
 
 <Story id="Vertical" />
 
-## Disabling an Accordion Item
+### Disabling an Accordion Item
 
 To disable an Accordion.Item, use the `disabled` prop:
 
 <Story id="Disabled" />
+
+## API Reference
+
+<ComponentTypes />

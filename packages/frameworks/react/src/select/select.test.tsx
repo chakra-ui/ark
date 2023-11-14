@@ -26,7 +26,7 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator />
+          <Select.Indicator>▼</Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -107,12 +107,12 @@ describe('Select', () => {
     })
   })
 
-  it('should open menu when onOpen is called', async () => {
-    const onOpen = vi.fn()
-    render(<ComponentUnderTest onOpenChange={onOpen} />)
+  it('should open menu when onOpenChange is called', async () => {
+    const onOpenChange = vi.fn()
+    render(<ComponentUnderTest onOpenChange={onOpenChange} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
-    await waitFor(() => expect(onOpen).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {

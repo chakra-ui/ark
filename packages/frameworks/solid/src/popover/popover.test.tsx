@@ -2,7 +2,7 @@ import { popoverAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Popover, type PopoverProps } from './'
 
 const ComponentUnderTest = (props: PopoverProps) => (
@@ -31,6 +31,10 @@ describe('Popover', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
+  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
+    expect(Popover[part]).toBeDefined()
+  })
+
   it('should open and close the popover', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -41,7 +45,7 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
+  it('should hide the popover when escape is pressed', async () => {
     render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))

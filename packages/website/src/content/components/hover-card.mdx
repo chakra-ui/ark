@@ -5,6 +5,7 @@ description: A card that appears when a user hovers over an element.
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
 
@@ -17,27 +18,28 @@ how we name its parts.
 
 <Anatomy id="hover-card" />
 
-## Getting Started
+## Examples
 
-Here is an example of how to use the `HoverCard` component:
+Learn how to use the `HoverCard` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Controlled HoverCard
+### Controlled HoverCard
 
 The controlled `HoverCard` component provides an interface for managing the
 state of the hover card using the `open` and `onOpenChange` props:
 
 <Story id="Controlled" />
 
-## Custom Positioning
+### Custom Positioning
 
 The `HoverCard` component can be customized in its placement and distance from
 the trigger element through the `positioning` prop:
 
 <Story id="Positioning" />
 
-## Render Prop Usage
+### Render Prop Usage
 
 The `HoverCard` component can also accept a render prop, giving the user more
 control over rendering behavior. This is useful for dynamically updating the
@@ -45,9 +47,6 @@ trigger based on the state of the `HoverCard`:
 
 <Story id="RenderProp" />
 
-## Conclusion
+## API Reference
 
-The `HoverCard` component is an intuitive and powerful tool for displaying
-contextual information in your applications. With its range of features and high
-degree of customizability, it can meet a wide variety of design and
-functionality requirements.
+<ComponentTypes />

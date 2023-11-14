@@ -1,12 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { ComponentPropsTable } from './component-props-table'
 
-type Props = {
-  types: CollectionEntry<'types'>
-}
-
-const { types } = Astro.props
+const componentId = Astro.params.slug?.split('/').pop()
+const types = await getCollection('types', (item) => item.id.includes(componentId ?? ''))
 ---
 
-<ComponentPropsTable types={types} client:load />
+<ComponentPropsTable types={types[0]} client:load />

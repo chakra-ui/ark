@@ -2,25 +2,7 @@ import { Portal } from '@ark-ui/react'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
-import { Heading } from '~/components/ui'
-import { Button } from '~/components/ui/button'
-import { Code } from '~/components/ui/code'
-import { Icon } from '~/components/ui/icon'
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverPositioner,
-  PopoverTrigger,
-} from '~/components/ui/popover'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '~/components/ui/table'
+import { Button, Code, Heading, Icon, Popover, Table } from '~/components/ui'
 
 type Props = {
   types: CollectionEntry<'types'>
@@ -28,55 +10,53 @@ type Props = {
 
 export const ComponentPropsTable = (props: Props) => {
   const { types } = props
+
   return (
-    <Stack gap="6">
-      <Heading as="h1" textStyle="2xl">
-        API Reference
-      </Heading>
+    <Stack gap="6" className="not-prose">
       {Object.entries(types.data).map(([key, properties]) => (
-        <Stack key={key} gap="4">
+        <Stack key={key} gap="4" className="not-prose">
           <Heading textStyle="xl" fontWeight="semibold">
             {key}
           </Heading>
-          <Table variant="outline" size="sm">
-            <TableHeader>
-              <TableRow>
-                <TableHead>Prop</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Default</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+          <Table.Root variant="outline" size="sm">
+            <Table.Header>
+              <Table.Row>
+                <Table.Head>Prop</Table.Head>
+                <Table.Head>Type</Table.Head>
+                <Table.Head>Default</Table.Head>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
               {Object.entries(properties).map(([name, property]) => (
-                <TableRow key={key}>
-                  <TableCell width="40">
+                <Table.Row key={key}>
+                  <Table.Cell width="40">
                     <HStack>
                       <Code size="sm" color="accent.default">
                         {name}
                         {property.isRequired && <AsteriskIcon size="10" />}
                       </Code>
                       {property.description && (
-                        <Popover portalled>
-                          <PopoverTrigger asChild>
+                        <Popover.Root portalled>
+                          <Popover.Trigger asChild>
                             <Button size="xs" px="0" variant="link" color="fg.subtle">
                               <HelpCircle />
                             </Button>
-                          </PopoverTrigger>
+                          </Popover.Trigger>
                           <Portal>
-                            <PopoverPositioner>
-                              <PopoverContent>
-                                <PopoverDescription>{property.description}</PopoverDescription>
-                              </PopoverContent>
-                            </PopoverPositioner>
+                            <Popover.Positioner>
+                              <Popover.Content>
+                                <Popover.Description>{property.description}</Popover.Description>
+                              </Popover.Content>
+                            </Popover.Positioner>
                           </Portal>
-                        </Popover>
+                        </Popover.Root>
                       )}
                     </HStack>
-                  </TableCell>
-                  <TableCell height="auto">
+                  </Table.Cell>
+                  <Table.Cell height="auto">
                     <Code size="sm">{property.type}</Code>
-                  </TableCell>
-                  <TableCell width="12" textAlign="center">
+                  </Table.Cell>
+                  <Table.Cell width="12" textAlign="center">
                     {property.defaultValue ? (
                       <Code size="sm">{property.defaultValue}</Code>
                     ) : (
@@ -84,11 +64,11 @@ export const ComponentPropsTable = (props: Props) => {
                         <MinusIcon />
                       </Icon>
                     )}
-                  </TableCell>
-                </TableRow>
+                  </Table.Cell>
+                </Table.Row>
               ))}
-            </TableBody>
-          </Table>
+            </Table.Body>
+          </Table.Root>
         </Stack>
       ))}
     </Stack>

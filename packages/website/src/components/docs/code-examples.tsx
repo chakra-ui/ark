@@ -1,12 +1,5 @@
 import { Box } from 'styled-system/jsx'
-import {
-  TabContent,
-  TabIndicator,
-  TabList,
-  TabTrigger,
-  Tabs,
-  type TabsProps,
-} from '~/components/ui/tabs'
+import { Tabs, type TabsProps } from '~/components/ui/tabs'
 
 type Props = TabsProps & {
   react?: JSX.Element
@@ -16,36 +9,36 @@ type Props = TabsProps & {
 
 export const CodeExamples = (props: Props) => {
   return (
-    <Tabs size="sm" defaultValue="react" {...props} className="not-prose">
-      <TabList bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
-        <TabTrigger
+    <Tabs.Root size="sm" defaultValue="react" {...props} className="not-prose">
+      <Tabs.List bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
+        <Tabs.Trigger
           value="react"
           disabled={props.solid?.props.value.includes('Story not available')}
         >
           React
-        </TabTrigger>
-        <TabTrigger
+        </Tabs.Trigger>
+        <Tabs.Trigger
           value="solid"
           disabled={props.solid?.props.value.includes('Story not available')}
         >
           Solid
-        </TabTrigger>
-        <TabTrigger value="vue" disabled={props.vue?.props.value.includes('Story not available')}>
+        </Tabs.Trigger>
+        <Tabs.Trigger value="vue" disabled={props.vue?.props.value.includes('Story not available')}>
           Vue
-        </TabTrigger>
-        <TabIndicator />
-      </TabList>
+        </Tabs.Trigger>
+        <Tabs.Indicator />
+      </Tabs.List>
       <Box borderBottomRadius="l3" overflow="hidden" bg="grayPalette.900">
-        <TabContent value="react" p="4">
+        <Tabs.Content value="react" p="4">
           {props.react}
-        </TabContent>
-        <TabContent value="solid" p="4">
+        </Tabs.Content>
+        <Tabs.Content value="solid" p="4">
           {props.solid}
-        </TabContent>
-        <TabContent value="vue" p="4">
+        </Tabs.Content>
+        <Tabs.Content value="vue" p="4">
           {props.vue}
-        </TabContent>
+        </Tabs.Content>
       </Box>
-    </Tabs>
+    </Tabs.Root>
   )
 }
