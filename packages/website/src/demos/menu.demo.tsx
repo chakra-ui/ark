@@ -55,7 +55,7 @@ export const Demo = (props: MenuProps) => {
               <Menu.TriggerItem justifyContent="space-between">
                 <HStack gap="2">
                   <UserPlusIcon />
-                  Inivte member
+                  Invite member
                 </HStack>
                 <ChevronRightIcon />
               </Menu.TriggerItem>
