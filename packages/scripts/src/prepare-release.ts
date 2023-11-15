@@ -2,19 +2,32 @@ import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { globbySync } from 'globby'
 import path, { dirname } from 'path'
-import { match } from 'ts-pattern'
+import { P, match } from 'ts-pattern'
 
-const generateExports = () => {
-  const paths = globbySync('src/**/index.ts')
+const generateExports = (dirName: string) => {
+  const paths = globbySync(['src/**/index.ts', 'src/index.tsx'])
   const exports: Record<string, unknown> = {}
 
   for (const p of paths) {
-    const keyPath = p.replace('src', '.').replace('/index.ts', '')
-    exports[keyPath] = {
-      types: `${keyPath}/index.d.ts`,
-      import: `${keyPath}/index.mjs`,
-      require: `${keyPath}/index.cjs`,
-    }
+    const keyPath = p.replace('src', '.').replace(/\/index.tsx?/, '')
+    exports[keyPath] = match({ dirName, keyPath })
+      .with({ dirName: 'solid', keyPath: '.' }, () => ({
+        types: './types/index.d.ts',
+        solid: './source/index.jsx',
+        import: './esm/index.js',
+        browser: { import: './esm/index.js', require: './cjs/index.js' },
+        require: './cjs/index.js',
+        node: './cjs/index.js',
+      }))
+      .with({ dirName: 'solid', keyPath: P.string }, ({ keyPath }) => ({
+        types: `./types/${keyPath.replace('./', '')}/index.d.ts`,
+        solid: `./source/${keyPath.replace('./', '')}/index.jsx`,
+      }))
+      .otherwise(() => ({
+        types: `${keyPath}/index.d.ts`,
+        import: `${keyPath}/index.mjs`,
+        require: `${keyPath}/index.cjs`,
+      }))
   }
   exports['./package.json'] = './package.json'
   return exports
@@ -37,14 +50,21 @@ const main = async () => {
   )
 
   const packageJson = await fs.readJson('package.json')
-  //  Note: At the time Solid does not support path imports like vue or react
-  if (dirName !== 'solid') {
-    packageJson.main = 'index.cjs'
-    packageJson.module = 'index.mjs'
-    packageJson.types = 'index.d.ts'
-    packageJson.files = ['./']
-    packageJson.exports = generateExports()
-  }
+
+  match(dirName)
+    .with('solid', () => {
+      packageJson.main = 'cjs/index.js'
+      packageJson.module = 'esm/index.js'
+      packageJson.types = 'types/index.d.ts'
+    })
+    .otherwise(() => {
+      packageJson.main = 'index.cjs'
+      packageJson.module = 'index.mjs'
+      packageJson.types = 'index.d.ts'
+    })
+
+  packageJson.files = ['./']
+  packageJson.exports = generateExports(dirName)
   packageJson.keywords = generateKeywords()
 
   await fs.writeJson('dist/package.json', packageJson, { spaces: 2 })
