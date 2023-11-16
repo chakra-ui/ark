@@ -100,6 +100,7 @@
     "eslint": "8.53.0",
     "globby": "14.0.0",
     "jsdom": "22.1.0",
+    "lucide-solid": "0.292.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "17.0.0",

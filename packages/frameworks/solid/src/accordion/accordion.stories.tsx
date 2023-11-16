@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from 'lucide-solid'
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Accordion } from './'
@@ -13,33 +14,20 @@ const meta: Meta<AccordionType> = {
 export default meta
 
 export const Basic = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root>
-      <Index each={items}>
+    <Accordion.Root value={['React']}>
+      <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>
-              {item()} trigger
-              <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+              What is {item()}?
+              <Accordion.ItemIndicator>
+                <ChevronDownIcon />
+              </Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
-            <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
-          </Accordion.Item>
-        )}
-      </Index>
-    </Accordion.Root>
-  )
-}
-
-export const Initial = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
-  return (
-    <Accordion.Root value={['panel-2']}>
-      <Index each={items}>
-        {(item) => (
-          <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger>{item()} trigger</Accordion.ItemTrigger>
-            <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
+            <Accordion.ItemContent>
+              {item()} is a JavaScript library for building user interfaces.
+            </Accordion.ItemContent>
           </Accordion.Item>
         )}
       </Index>
@@ -67,14 +55,20 @@ export const RenderProp = () => {
   )
 }
 export const Collapsible = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root collapsible>
-      <Index each={items}>
+    <Accordion.Root value={['React']} collapsible>
+      <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger>{item()} trigger</Accordion.ItemTrigger>
-            <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
+            <Accordion.ItemTrigger>
+              What is {item()}?
+              <Accordion.ItemIndicator>
+                <ChevronDownIcon />
+              </Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+              {item()} is a JavaScript library for building user interfaces.
+            </Accordion.ItemContent>
           </Accordion.Item>
         )}
       </Index>
@@ -83,14 +77,20 @@ export const Collapsible = () => {
 }
 
 export const Multiple = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root multiple>
-      <Index each={items}>
+    <Accordion.Root value={['React']} multiple>
+      <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger>{item()} trigger</Accordion.ItemTrigger>
-            <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
+            <Accordion.ItemTrigger>
+              What is {item()}?
+              <Accordion.ItemIndicator>
+                <ChevronDownIcon />
+              </Accordion.ItemIndicator>
+            </Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+              {item()} is a JavaScript library for building user interfaces.
+            </Accordion.ItemContent>
           </Accordion.Item>
         )}
       </Index>

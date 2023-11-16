@@ -1,9 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { type CollectionEntry } from 'astro:content'
 import path from 'path'
 import { match } from 'ts-pattern'
 import DocsHero from '~/components/docs/docs-hero.astro'
 import { InfoBanner } from '~/components/docs/info-banner'
+import Pre from '~/components/docs/pre.astro'
+import { Code, Link } from '~/components/ui'
 import { Prose } from '~/components/ui/prose'
 import DocsLayout from '~/layouts/docs-layout.astro'
 import { getAllCollections } from '~/lib/page-control'
@@ -48,6 +50,6 @@ const { Content, headings } = await entry.render()
         )
         .otherwise(() => null)
     }
-    <Content />
+    <Content components={{ pre: Pre, code: Code, a: Link }} />
   </Prose>
 </DocsLayout>
