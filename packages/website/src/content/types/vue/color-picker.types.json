@@ -1,9 +1,9 @@
 {
   "Root": {
-    "autoFocus": {
+    "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to automatically set focus on the first focusable\ncontent within the color picker when opened."
+      "description": "Whether to close the color picker when a swatch is selected"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -14,6 +14,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is disabled"
+    },
+    "format": {
+      "type": "ColorFormat",
+      "isRequired": false,
+      "description": "The color format to use"
     },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
@@ -41,6 +46,11 @@
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
       "description": "Function called when the focus is moved outside the component"
+    },
+    "onFormatChange": {
+      "type": "(details: FormatChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the color format changes"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
