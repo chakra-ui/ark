@@ -14,7 +14,7 @@ export default meta
 
 export const Basic = () => {
   return (
-    <ColorPicker.Root defaultValue="hsl(0, 100%, 50%)">
+    <ColorPicker.Root defaultValue="hsl(0, 100%, 50%)" format="hsla">
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

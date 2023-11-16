@@ -17,10 +17,12 @@ export const Demo = (props: TabsProps) => {
         ))}
         <Tabs.Indicator />
       </Tabs.List>
-      <Tabs.Content value="react">&nbsp;</Tabs.Content>
-      <Tabs.Content value="solid">&nbsp;</Tabs.Content>
-      <Tabs.Content value="svelte">&nbsp;</Tabs.Content>
-      <Tabs.Content value="vue">&nbsp;</Tabs.Content>
+      <Tabs.Content value="react">Are you familiar with React? You can try out Solid.</Tabs.Content>
+      <Tabs.Content value="solid">
+        Are you familiar with Solid? You can try out Svelte.
+      </Tabs.Content>
+      <Tabs.Content value="svelte">Are you familiar with Svelte? You can try out Vue.</Tabs.Content>
+      <Tabs.Content value="vue">Are you familiar with Vue? You can try out React.</Tabs.Content>
     </Tabs.Root>
   )
 }

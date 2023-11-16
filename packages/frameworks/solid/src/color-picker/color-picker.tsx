@@ -32,9 +32,10 @@ export const ColorPicker = (props: ColorPickerProps) => {
   const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(
     colorPickerProps,
     [
-      'autoFocus',
+      'closeOnSelect',
       'dir',
       'disabled',
+      'format',
       'getRootNode',
       'id',
       'ids',
@@ -42,6 +43,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
       'name',
       'name',
       'onFocusOutside',
+      'onFormatChange',
       'onInteractOutside',
       'onOpenChange',
       'onPointerDownOutside',

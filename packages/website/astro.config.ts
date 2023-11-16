@@ -8,8 +8,6 @@ export default defineConfig({
   site: 'https://ark-ui.com',
   integrations: [react(), pandacss(), mdx(), sitemap()],
   markdown: {
-    shikiConfig: {
-      theme: 'css-variables',
-    },
+    syntaxHighlight: false,
   },
 })

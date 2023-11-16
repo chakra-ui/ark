@@ -1,77 +1,119 @@
 ---
 id: accordion
 title: Accordion
-description: A collapsible component that displays content in a vertical stack.
+description: A collapsible component for displaying content in a vertical stack.
 ---
 
-import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import { Anatomy, Story } from '~/components/docs'
 import ComponentTypes from '~/components/docs/component-types.astro'
 
-<ComponentPreview />
+## Usage
+
+```tsx live story=Basic
+<Accordion.Root defaultValue={['React']}>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>
+          {item} is a JavaScript library focused on building user interfaces.
+        </div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
 
 ## Anatomy
 
-To set up the accordion correctly, you'll need to understand its anatomy and how
-we name its parts.
+Understanding the Accordion's anatomy is crucial for proper setup:
 
-> Each part includes a `data-part` attribute to help identify them in the DOM.
+> Each component part is marked with a `data-part` attribute for easy DOM
+> identification.
 
 <Anatomy id="accordion" />
 
 ## Examples
 
-Learn how to use the `Accordion` component in your project. Let's take a look at
-the most basic example:
+### Collapsible Panels
 
-<Story id="Basic" />
+To create a collapsible Accordion where all panels can be closed simultaneously,
+utilize the `collapsible` prop:
 
-### Setting an Initial Panel
+```tsx live story=Collapsible
+<Accordion.Root defaultValue={['React']} collapsible>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>{item} is a JavaScript library for building user interfaces.</div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
 
-To set an initial panel to be open upon rendering, use the `defaultValue` prop:
+### Multiple Panels Open
 
-<Story id="Initial" />
+For an Accordion that allows keeping multiple panels open, apply the `multiple`
+prop:
 
-### Using Render Props
+```tsx live story=Multiple
+<Accordion.Root defaultValue={['React']} multiple>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>{item} is a JavaScript library for building user interfaces.</div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
 
-For more control over the Accordion's functionality, you can use a function as a
-child, which provides access to the Accordion API:
+### Accessing the Accordion API
+
+For advanced control, access the Accordion API using a function as a child
+component:
 
 <Story id="RenderProp" />
 
-### Making the Accordion Collapsible
-
-For a collapsible Accordion where all panels can be closed simultaneously, use
-the `collapsible` prop:
-
-<Story id="Collapsible" />
-
-### Opening Multiple Panels
-
-For an Accordion that allows multiple panels to be open at once, use the
-`multiple` prop:
-
-<Story id="Multiple" />
-
 ### Controlled Accordion
 
-To create a controlled Accordion component, manage the state of the currently
-opened panels using the `value` prop and update it when the `onValueChange`
-event handler is called:
+To manage the Accordion's state, use the `value` prop and update it with the
+`onValueChange` event:
 
 <Story id="Controlled" />
 
-### Changing the Orientation
+### Changing Orientation
 
-To display the Accordion in a vertical orientation, use the `orientation` prop:
+Set the Accordion's orientation to vertical with the `orientation` prop:
 
 <Story id="Vertical" />
 
 ### Disabling an Accordion Item
 
-To disable an Accordion.Item, use the `disabled` prop:
+Disable any Accordion Item using the `disabled` prop:
 
 <Story id="Disabled" />
 
 ## API Reference
+
+Explore our detailed API Reference for further customization:
 
 <ComponentTypes />

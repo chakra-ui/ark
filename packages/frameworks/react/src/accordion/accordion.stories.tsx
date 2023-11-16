@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react'
+import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Accordion } from './'
 import './accordion.css'
@@ -13,30 +14,19 @@ const meta: Meta<AccordionType> = {
 export default meta
 
 export const Basic = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root>
-      {items.map((item, id) => (
+    <Accordion.Root defaultValue={['React']}>
+      {['React', 'Solid', 'Vue'].map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.ItemTrigger>
-            {item} Trigger
-            <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+            What is {item}?
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
-        </Accordion.Item>
-      ))}
-    </Accordion.Root>
-  )
-}
-
-export const Initial = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
-  return (
-    <Accordion.Root defaultValue={['panel-2']}>
-      {items.map((item, id) => (
-        <Accordion.Item key={id} value={item}>
-          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
+          <Accordion.ItemContent>
+            {item} is a JavaScript library for building user interfaces.
+          </Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -61,13 +51,19 @@ export const RenderProp = () => {
   )
 }
 export const Collapsible = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root collapsible>
-      {items.map((item, id) => (
+    <Accordion.Root defaultValue={['React']} collapsible>
+      {['React', 'Solid', 'Vue'].map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
+          <Accordion.ItemTrigger>
+            {item}
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>
+            {item} is a JavaScript library for building user interfaces.
+          </Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>
@@ -75,13 +71,19 @@ export const Collapsible = () => {
 }
 
 export const Multiple = () => {
-  const items = ['panel-1', 'panel-2', 'panel-3']
   return (
-    <Accordion.Root multiple>
-      {items.map((item, id) => (
+    <Accordion.Root defaultValue={['React']} multiple>
+      {['React', 'Solid', 'Vue'].map((item, id) => (
         <Accordion.Item key={id} value={item}>
-          <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{item} content</Accordion.ItemContent>
+          <Accordion.ItemTrigger>
+            {item}
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>
+            {item} is a JavaScript library for building user interfaces.
+          </Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>

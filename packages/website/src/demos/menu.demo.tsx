@@ -1,3 +1,4 @@
+import { Portal } from '@ark-ui/react'
 import {
   ChevronRightIcon,
   CreditCardIcon,
@@ -55,31 +56,33 @@ export const Demo = (props: MenuProps) => {
               <Menu.TriggerItem justifyContent="space-between">
                 <HStack gap="2">
                   <UserPlusIcon />
-                  Inivte member
+                  Invite member
                 </HStack>
                 <ChevronRightIcon />
               </Menu.TriggerItem>
-              <Menu.Positioner>
-                <Menu.Content>
-                  <Menu.Item id="email">
-                    <HStack gap="2">
-                      <MailIcon /> Email
-                    </HStack>
-                  </Menu.Item>
-                  <Menu.Item id="message">
-                    <HStack gap="2">
-                      <MessageSquareIcon /> Message
-                    </HStack>
-                  </Menu.Item>
-                  <Menu.Separator />
-                  <Menu.Item id="other">
-                    <HStack gap="2">
-                      <PlusCircleIcon />
-                      More Options...
-                    </HStack>
-                  </Menu.Item>
-                </Menu.Content>
-              </Menu.Positioner>
+              <Portal>
+                <Menu.Positioner>
+                  <Menu.Content>
+                    <Menu.Item id="email">
+                      <HStack gap="2">
+                        <MailIcon /> Email
+                      </HStack>
+                    </Menu.Item>
+                    <Menu.Item id="message">
+                      <HStack gap="2">
+                        <MessageSquareIcon /> Message
+                      </HStack>
+                    </Menu.Item>
+                    <Menu.Separator />
+                    <Menu.Item id="other">
+                      <HStack gap="2">
+                        <PlusCircleIcon />
+                        More Options...
+                      </HStack>
+                    </Menu.Item>
+                  </Menu.Content>
+                </Menu.Positioner>
+              </Portal>
             </Menu.Root>
             <Menu.Separator />
             <Menu.Item id="logout">

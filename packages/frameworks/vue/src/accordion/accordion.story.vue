@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { Accordion } from './'
 import './accordion.css'
@@ -13,18 +14,12 @@ const value = ref(['React'])
       <Accordion.Root>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
           <Accordion.ItemTrigger>
-            {{ item }} trigger
-            <Accordion.ItemIndicator>{{ '>' }}</Accordion.ItemIndicator>
+            What is {{ item }}?
+            <Accordion.ItemIndicator><ChevronDownIcon /></Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
-        </Accordion.Item>
-      </Accordion.Root>
-    </Variant>
-    <Variant title="Initial">
-      <Accordion.Root :modelValue="['Solid']">
-        <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+          <Accordion.ItemContent
+            >{{ item }} is a JavaScript library for building user interfaces.</Accordion.ItemContent
+          >
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
@@ -39,16 +34,26 @@ const value = ref(['React'])
     <Variant title="Collapsible">
       <Accordion.Root collapsible>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+          <Accordion.ItemTrigger>
+            What is {{ item }}?
+            <Accordion.ItemIndicator><ChevronDownIcon /></Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent
+            >{{ item }} is a JavaScript library for building user interfaces.</Accordion.ItemContent
+          >
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
     <Variant title="Multiple">
       <Accordion.Root multiple>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
-          <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
-          <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
+          <Accordion.ItemTrigger>
+            What is {{ item }}?
+            <Accordion.ItemIndicator><ChevronDownIcon /></Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent
+            >{{ item }} is a JavaScript library for building user interfaces.</Accordion.ItemContent
+          >
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
