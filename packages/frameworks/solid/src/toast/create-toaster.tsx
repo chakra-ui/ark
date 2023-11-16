@@ -4,27 +4,26 @@ import { Index, createEffect, createMemo, onCleanup, type Accessor, type JSX } f
 import { useEnvironmentContext } from '../environment'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
-import { ToastProvider } from './toast-context'
+import { ToastProvider, type Options } from './toast-context'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
-  render: (api: toast.Api<PropTypes>) => JSX.Element
+  render: (api: Accessor<toast.Api<PropTypes, Options>>) => JSX.Element
 }
 
 export type CreateToasterReturn = [
   (props: HTMLArkProps<'ol'>) => JSX.Element,
-  Accessor<toast.GroupApi<PropTypes>>,
+  Accessor<toast.GroupApi<PropTypes, Options>>,
 ]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
-  const { placement, ...rest } = props
-  const service = toast.group.machine({ id: '1', placement, ...rest }).start()
+  const service = toast.group.machine<Options>({ id: '1', ...props }).start()
   const [state, send] = useActor(service)
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
 
-  const Toaster = (props: HTMLArkProps<'ol'>) => {
+  const Toaster = (toasterProps: HTMLArkProps<'ol'>) => {
     const getRootNode = useEnvironmentContext()
 
     createEffect(() => {
@@ -32,11 +31,14 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
       onCleanup(() => service.stop())
     })
 
-    const mergedProps = mergeProps(() => api().getGroupProps({ placement }), props)
+    const mergedProps = mergeProps(
+      () => api().getGroupProps({ placement: props.placement }),
+      toasterProps,
+    )
 
     return (
       <ark.ol {...mergedProps}>
-        <Index each={api().toastsByPlacement[placement]}>
+        <Index each={api().toastsByPlacement[props.placement]}>
           {(toast) => <ToastProviderFactory service={toast()} />}
         </Index>
       </ark.ol>
@@ -47,12 +49,12 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
 }
 
 interface ToastProviderFactoryProps {
-  service: toast.Service
+  service: toast.Service<Options>
 }
 
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
   const [state, send] = useActor(props.service)
-  const api = toast.connect(state, send, normalizeProps)
+  const api = createMemo(() => toast.connect(state, send, normalizeProps))
 
-  return <ToastProvider value={createMemo(() => api)}>{state.context.render?.(api)}</ToastProvider>
+  return <ToastProvider value={api}>{state.context.render?.(api)}</ToastProvider>
 }

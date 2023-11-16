@@ -17,8 +17,8 @@ export const Basic = () => {
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )
@@ -41,8 +41,8 @@ export const Customized = () => {
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )
@@ -76,8 +76,8 @@ export const CustomRender = () => {
     render(toast) {
       return (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>
       )
@@ -92,7 +92,7 @@ export const CustomRender = () => {
             title: 'Please checkout',
             render: (toast) => (
               <div>
-                {toast.title} <a href="https://ark-ui.com">Ark UI</a>
+                {toast().title} <a href="https://ark-ui.com">Ark UI</a>
               </div>
             ),
           })

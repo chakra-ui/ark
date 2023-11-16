@@ -12,7 +12,38 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
-- Resolved an issue where `Dialog.CloseTrigger` had `data-part` as `trigger` instead of `close-trigger`.
+- Resolved a problem where the `Dialog.CloseTrigger` was assigned to the wrong `data-part`.
+- Fixed various issues for the `Toast` component that were caused by the API not being wrapped in an `Accessor`.
+
+```jsx
+// before
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+
+// after
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast().title}</Toast.Title>
+        <Toast.Description>{toast().description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+```
 
 ## [1.0.1] - 2023-11-10
 
@@ -208,3 +239,7 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.0
 [0.10.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.1
 [0.11.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.11.0
+
+```
+
+```
