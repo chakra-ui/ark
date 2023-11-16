@@ -1,10 +1,10 @@
 {
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
-    "autoFocus": {
+    "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to automatically set focus on the first focusable\ncontent within the color picker when opened."
+      "description": "Whether to close the color picker when a swatch is selected"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -15,6 +15,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is disabled"
+    },
+    "format": {
+      "type": "ColorFormat",
+      "isRequired": false,
+      "description": "The color format to use"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -48,6 +53,11 @@
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
       "description": "Function called when the focus is moved outside the component"
+    },
+    "onFormatChange": {
+      "type": "(details: FormatChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the color format changes"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
@@ -129,16 +139,32 @@
     "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
+  "FormatSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSlider": {
     "channel": { "type": "ColorChannel", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
+  "FormatTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "SwatchTrigger": {
-    "value": { "type": "string | Color", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the swatch trigger is disabled"
+    }
   },
   "AreaBackground": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchIndicator": {
+    "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "respectAlpha": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to include the alpha channel in the color"
+    }
+  },
   "TransparencyGrid": {
     "size": { "type": "string", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
