@@ -4,15 +4,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-interface TransparancyGridProps {
+interface TransparencyGridProps {
   size: string
 }
 
 export interface ColorPickerTransparencyGridProps
-  extends Assign<HTMLArkProps<'div'>, TransparancyGridProps> {}
+  extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
 
 export const ColorPickerTransparencyGrid = (props: ColorPickerTransparencyGridProps) => {
-  const [gridProps, localProps] = createSplitProps<TransparancyGridProps>()(props, ['size'])
+  const [gridProps, localProps] = createSplitProps<TransparencyGridProps>()(props, ['size'])
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getTransparencyGridProps(gridProps), localProps)
 
