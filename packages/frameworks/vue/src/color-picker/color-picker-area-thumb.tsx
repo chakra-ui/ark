@@ -4,7 +4,7 @@ import type { ComponentWithProps } from '../utils'
 import { useColorPickerAreaContext } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerAreaThumbProps = HTMLArkProps<'div'>
+export interface ColorPickerAreaThumbProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerAreaThumb: ComponentWithProps<ColorPickerAreaThumbProps> = defineComponent({
   name: 'ColorPickerAreaThumb',

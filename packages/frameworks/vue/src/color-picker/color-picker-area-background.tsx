@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerAreaContext } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerAreaBackgroundProps = HTMLArkProps<'div'>
+export interface ColorPickerAreaBackgroundProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerAreaBackground = defineComponent({
   name: 'ColorPickerAreaBackground',

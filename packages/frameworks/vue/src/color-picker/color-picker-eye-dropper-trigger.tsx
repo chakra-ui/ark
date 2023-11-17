@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerEyeDropperTriggerProps = HTMLArkProps<'button'>
+export interface ColorPickerEyeDropperTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ColorPickerEyeDropperTrigger = defineComponent({
   name: 'ColorPickerEyeDropperTrigger',

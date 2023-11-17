@@ -4,7 +4,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelInputProps = Assign<HTMLArkProps<'input'>, ChannelInputProps>
+export interface ColorPickerChannelInputProps
+  extends Assign<HTMLArkProps<'input'>, ChannelInputProps> {}
 
 export const ColorPickerChannelInput = defineComponent({
   name: 'ColorPickerChannelInput',

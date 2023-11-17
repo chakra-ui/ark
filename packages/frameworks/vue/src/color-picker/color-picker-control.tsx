@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerControlProps = HTMLArkProps<'div'>
+export interface ColorPickerControlProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerControl = defineComponent({
   name: 'ColorPickerControl',

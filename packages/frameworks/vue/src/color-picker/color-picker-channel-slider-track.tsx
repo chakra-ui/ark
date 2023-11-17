@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderTrackProps = HTMLArkProps<'div'>
+export interface ColorPickerChannelSliderTrackProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerChannelSliderTrack = defineComponent({
   name: 'ColorPickerChannelSliderTrack',

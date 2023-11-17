@@ -18,6 +18,8 @@ export const useColorPicker = (
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
+    console.log('context computed')
+    console.log(modelValue)
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,
