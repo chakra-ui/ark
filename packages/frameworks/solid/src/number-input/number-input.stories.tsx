@@ -113,3 +113,20 @@ export const Formatted = () => (
     </NumberInput.Control>
   </NumberInput.Root>
 )
+
+export const RenderFn = () => (
+  <NumberInput.Root>
+    {(api) => (
+      <>
+        <NumberInput.Scrubber />
+        <NumberInput.Label>Label</NumberInput.Label>
+        <NumberInput.Input />
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+          <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+        </NumberInput.Control>
+        <div>Value: {api().valueAsNumber}</div>
+      </>
+    )}
+  </NumberInput.Root>
+)
