@@ -25,8 +25,8 @@
     "website": "pnpm --filter=@ark-ui/website"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.4.1",
-    "@commitlint/config-conventional": "18.4.0",
+    "@commitlint/cli": "18.4.2",
+    "@commitlint/config-conventional": "18.4.2",
     "concurrently": "8.2.2",
     "husky": "8.0.3",
     "lint-staged": "15.1.0",
@@ -47,5 +47,5 @@
       "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
-  "packageManager": "pnpm@8.10.3"
+  "packageManager": "pnpm@8.10.5"
 }

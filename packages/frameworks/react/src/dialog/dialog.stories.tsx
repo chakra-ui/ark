@@ -34,7 +34,7 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Open Dialog</button>
-      <Dialog.Root open={isOpen} onOpenChange={() => setIsOpen(false)}>
+      <Dialog.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
         <Portal>
           <Dialog.Backdrop />
           <Dialog.Positioner>

@@ -33,6 +33,14 @@ import {
   ColorPickerEyeDropperTrigger,
   type ColorPickerEyeDropperTriggerProps,
 } from './color-picker-eye-dropper-trigger'
+import {
+  ColorPickerFormatSelect,
+  type ColorPickerFormatSelectProps,
+} from './color-picker-format-select'
+import {
+  ColorPickerFormatTrigger,
+  type ColorPickerFormatTriggerProps,
+} from './color-picker-format-trigger'
 import { ColorPickerLabel, type ColorPickerLabelProps } from './color-picker-label'
 import { ColorPickerPositioner, type ColorPickerPositionerProps } from './color-picker-positioner'
 import { ColorPickerSwatch, type ColorPickerSwatchProps } from './color-picker-swatch'
@@ -40,6 +48,10 @@ import {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group'
+import {
+  ColorPickerSwatchIndicator,
+  type ColorPickerSwatchIndicatorProps,
+} from './color-picker-swatch-indicator'
 import {
   ColorPickerSwatchTrigger,
   type ColorPickerSwatchTriggerProps,
@@ -64,10 +76,13 @@ const ColorPicker = Object.assign(ColorPickerRoot, {
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
+  FormatTrigger: ColorPickerFormatTrigger,
+  FormatSelect: ColorPickerFormatSelect,
   Label: ColorPickerLabel,
   Positioner: ColorPickerPositioner,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
+  SwatchIndicator: ColorPickerSwatchIndicator,
   SwatchTrigger: ColorPickerSwatchTrigger,
   TransparencyGrid: ColorPickerTransparencyGrid,
   Trigger: ColorPickerTrigger,
@@ -86,14 +101,18 @@ export {
   ColorPickerContent,
   ColorPickerControl,
   ColorPickerEyeDropperTrigger,
+  ColorPickerFormatSelect,
+  ColorPickerFormatTrigger,
   ColorPickerLabel,
   ColorPickerPositioner,
   ColorPickerSwatch,
   ColorPickerSwatchGroup,
+  ColorPickerSwatchIndicator,
   ColorPickerSwatchTrigger,
   ColorPickerTransparencyGrid,
   ColorPickerTrigger,
   ColorPickerValueText,
+  ColorPickerView,
   useColorPickerAreaContext,
   useColorPickerChannelSliderContext,
   useColorPickerContext,
@@ -112,10 +131,13 @@ export type {
   ColorPickerContext,
   ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,
+  ColorPickerFormatSelectProps,
+  ColorPickerFormatTriggerProps,
   ColorPickerLabelProps,
   ColorPickerPositionerProps,
   ColorPickerProps,
   ColorPickerSwatchGroupProps,
+  ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchProps,
   ColorPickerSwatchTriggerProps,
   ColorPickerTransparencyGridProps,

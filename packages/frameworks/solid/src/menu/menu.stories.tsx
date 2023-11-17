@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js'
+import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Menu } from './'
 import './menu.css'
@@ -118,13 +119,14 @@ export const SubMenu = () => (
         <Menu.Separator />
         <Menu>
           <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
-
-          <Menu.Positioner>
-            <Menu.Content>
-              <Menu.Item id="twitter">Twitter</Menu.Item>
-              <Menu.Item id="message">Message</Menu.Item>
-            </Menu.Content>
-          </Menu.Positioner>
+          <Portal>
+            <Menu.Positioner>
+              <Menu.Content>
+                <Menu.Item id="twitter">Twitter</Menu.Item>
+                <Menu.Item id="message">Message</Menu.Item>
+              </Menu.Content>
+            </Menu.Positioner>
+          </Portal>
         </Menu>
       </Menu.Content>
     </Menu.Positioner>
@@ -213,14 +215,15 @@ export const ComplexSubMenu = () => {
             </Menu.OptionItem>
           </Menu.ItemGroup>
           <Menu>
-            <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
-
-            <Menu.Positioner>
-              <Menu.Content>
-                <Menu.Item id="twitter">Twitter</Menu.Item>
-                <Menu.Item id="message">Message</Menu.Item>
-              </Menu.Content>
-            </Menu.Positioner>
+            <Portal>
+              <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
+              <Menu.Positioner>
+                <Menu.Content>
+                  <Menu.Item id="twitter">Twitter</Menu.Item>
+                  <Menu.Item id="message">Message</Menu.Item>
+                </Menu.Content>
+              </Menu.Positioner>
+            </Portal>
           </Menu>
         </Menu.Content>
       </Menu.Positioner>
