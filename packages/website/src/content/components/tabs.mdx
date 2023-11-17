@@ -65,6 +65,51 @@ To create a controlled Tabs component, manage the current selected tab using the
 
 <Story id="Controlled" />
 
+### Router Controlled Tabs
+
+When using frameworks like Next.js, Remix, or React Router, controlling the
+active tabs based on the URL can be useful.
+
+To achieve this, you need to do two things:
+
+- Set the `value` prop to the current URL path.
+- Listen to the `onValueChange` event and update the URL path.
+
+Here's an example using Remix Router
+
+```tsx
+import { Tabs } from '@ark-ui/react/tabs'
+import { useLocation, useNavigate, Link } from '@remix-run/react'
+
+export default function App() {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const lastPathFragment = pathname.substring(pathname.lastIndexOf('/') + 1)
+  const activeTab = lastPathFragment.length > 0 ? lastPathFragment : 'homepage'
+
+  return (
+    <Tabs.Root
+      value={activeTab}
+      onValueChange={({ value }) => {
+        navigate(`/${value === 'home' ? '' : value}`)
+      }}
+    >
+      <Tabs.List>
+        <Tabs.Trigger asChild value="home">
+          <Link to="">Home</Link>
+        </Tabs.Trigger>
+        <Tabs.Trigger asChild value="page-1">
+          <Link to="page-1">Page 1</Link>
+        </Tabs.Trigger>
+        <Tabs.Trigger asChild value="page-2">
+          <Link to="page-2">Page 2</Link>
+        </Tabs.Trigger>
+      </Tabs.List>
+    </Tabs.Root>
+  )
+}
+```
+
 ### Vertical Tabs
 
 The default orientation of the tabs is `horizontal`. To change the orientation,
