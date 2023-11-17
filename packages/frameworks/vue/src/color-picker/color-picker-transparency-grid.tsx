@@ -2,11 +2,11 @@ import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
-interface TransparancyGridProps {
+interface TransparencyGridProps {
   size: string
 }
 
-export type ColorPickerTransparencyGridProps = HTMLArkProps<'div'> & TransparancyGridProps
+export type ColorPickerTransparencyGridProps = HTMLArkProps<'div'> & TransparencyGridProps
 
 export const ColorPickerTransparencyGrid = defineComponent({
   name: 'ColorPickerTransparencyGrid',
