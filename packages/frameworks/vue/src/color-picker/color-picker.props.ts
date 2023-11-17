@@ -15,7 +15,7 @@ export const props = {
     default: undefined,
   },
   format: {
-    type: Object as PropType<Context['format']>,
+    type: String as PropType<Context['format']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
