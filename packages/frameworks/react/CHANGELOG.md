@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added render function to the `NumberInput` component
 - Added `FileUpload` component
 
 ### Fixed
