@@ -8,11 +8,12 @@ const value = ref('hsl(0, 100%, 50%)')
 <template>
   <Story title="ColorPicker">
     <Variant title="Basic">
-      <ColorPicker.Root :modelValue="value">
+      <ColorPicker.Root :modelValue="value" :format="'hsla'">
         <ColorPicker.Label>Color</ColorPicker.Label>
         <ColorPicker.Control>
           <ColorPicker.ChannelInput channel="hex" />
           <ColorPicker.ChannelInput channel="alpha" />
+          <ColorPicker.ValueText />
           <ColorPicker.Trigger>
             <ColorPicker.Swatch value="red">
               <ColorPicker.TransparencyGrid size="10px" />
@@ -45,8 +46,15 @@ const value = ref('hsl(0, 100%, 50%)')
                 <ColorPicker.Swatch value="green" />
               </ColorPicker.SwatchTrigger>
             </ColorPicker.SwatchGroup>
-            <ColorPicker.ChannelInput channel="hex" />
-            <ColorPicker.ChannelInput channel="alpha" />
+            <ColorPicker.View format="rgba">
+              <ColorPicker.ChannelInput channel="hex" />
+              <ColorPicker.ChannelInput channel="alpha" />
+            </ColorPicker.View>
+            <ColorPicker.View format="hsla">
+              <ColorPicker.ChannelInput channel="hue" />
+              <ColorPicker.ChannelInput channel="saturation" />
+              <ColorPicker.ChannelInput channel="lightness" />
+            </ColorPicker.View>
             <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
           </ColorPicker.Content>
         </ColorPicker.Positioner>
@@ -56,11 +64,13 @@ const value = ref('hsl(0, 100%, 50%)')
       <ColorPicker.Root
         v-model="value"
         @value-change="(details) => (value = details.valueAsString)"
+        format="hsla"
       >
         <ColorPicker.Label>Color</ColorPicker.Label>
         <ColorPicker.Control>
           <ColorPicker.ChannelInput channel="hex" />
           <ColorPicker.ChannelInput channel="alpha" />
+          <ColorPicker.ValueText />
           <ColorPicker.Trigger>
             <ColorPicker.Swatch value="red">
               <ColorPicker.TransparencyGrid size="10px" />
