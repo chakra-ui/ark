@@ -3,12 +3,12 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-interface TransparancyGridProps {
+interface TransparencyGridProps {
   size: string
 }
 
 export interface ColorPickerTransparencyGridProps
-  extends Assign<HTMLArkProps<'div'>, TransparancyGridProps> {}
+  extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
 
 export const ColorPickerTransparencyGrid = defineComponent({
   name: 'ColorPickerTransparencyGrid',
