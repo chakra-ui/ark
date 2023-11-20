@@ -158,7 +158,10 @@
   },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "hiddenInputProps": { "type": "HTMLArkProps<'select'>", "isRequired": false }
+  },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
