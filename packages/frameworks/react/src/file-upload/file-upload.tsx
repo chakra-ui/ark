@@ -35,10 +35,8 @@ export const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>((props, re
       'onFilesChange',
     ],
   )
-
   const api = useFileUpload(useFileUploadProps)
   const mergedProps = mergeProps(api.rootProps, divProps)
-
   const view = runIfFn(children, api)
 
   return (
