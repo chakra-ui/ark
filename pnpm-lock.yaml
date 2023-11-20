@@ -343,6 +343,9 @@ importers:
       react-frame-component:
         specifier: 5.2.6
         version: 5.2.6(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+      react-hook-form:
+        specifier: 7.48.2
+        version: 7.48.2(react@18.2.0)
       release-it:
         specifier: 17.0.0
         version: 17.0.0(typescript@5.2.2)
@@ -17273,6 +17276,15 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
+  /react-hook-form@7.48.2(react@18.2.0):
+    resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: true
 
   /react-inspector@6.0.2(react@18.2.0):

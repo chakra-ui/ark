@@ -8,7 +8,13 @@
 
 [data-scope='select'][data-part='content'] {
   border: 1px solid gainsboro;
+  background: white;
+  z-index: 1;
   padding: 12px;
+}
+
+[data-scope='select'][data-part='item-group-label'] {
+  font-weight: bold;
 }
 
 [data-scope='select'][data-part='item'] {
@@ -18,6 +24,16 @@
 
 [data-scope='select'][data-part='item'][data-disabled] {
   color: silver;
+}
+
+[data-scope='select'][data-part='trigger'] {
+  display: inline-flex;
+  gap: 8px;
+}
+
+[data-scope='select'][data-part='trigger'] svg {
+  width: 1em;
+  height: 1em;
 }
 
 @keyframes fadeIn {

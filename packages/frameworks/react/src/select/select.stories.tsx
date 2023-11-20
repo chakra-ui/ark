@@ -1,5 +1,7 @@
 import type { Meta } from '@storybook/react'
+import { ChevronDownIcon, ChevronsDownUpIcon } from 'lucide-react'
 import { useState } from 'react'
+import { Controller, useForm, type SubmitHandler } from 'react-hook-form'
 import { Portal } from '../portal'
 import { Select } from './'
 import './select.css'
@@ -21,7 +23,9 @@ export const Basic = () => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator>▼</Select.Indicator>
+          <Select.Indicator>
+            <ChevronDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -44,9 +48,8 @@ export const Basic = () => {
   )
 }
 
-type Item = { label: string; value: string; disabled?: boolean }
-
 export const Advanced = () => {
+  type Item = { label: string; value: string; disabled?: boolean }
   const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -59,6 +62,9 @@ export const Advanced = () => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
+          <Select.Indicator>
+            <ChevronDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -82,6 +88,7 @@ export const Advanced = () => {
 }
 
 export const Multiple = () => {
+  type Item = { label: string; value: string; disabled?: boolean }
   const items: Item[] = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -94,6 +101,9 @@ export const Multiple = () => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
+          <Select.Indicator>
+            <ChevronDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -117,6 +127,7 @@ export const Multiple = () => {
 }
 
 export const Controlled = () => {
+  type Item = { label: string; value: string; disabled?: boolean }
   const [_, setSelectedItems] = useState<Item[]>([])
 
   const items: Item[] = [
@@ -132,6 +143,9 @@ export const Controlled = () => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
+          <Select.Indicator>
+            <ChevronDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -151,5 +165,52 @@ export const Controlled = () => {
         </Select.Positioner>
       </Portal>
     </Select.Root>
+  )
+}
+
+export const FormLibrary = () => {
+  type Inputs = {
+    framework: string
+  }
+  const items = ['React', 'Solid', 'Vue']
+  const { control, handleSubmit } = useForm<Inputs>()
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="framework"
+        control={control}
+        render={({ field }) => (
+          <Select.Root onValueChange={(e) => field.onChange(e?.value)} items={items}>
+            <Select.Label>Framework</Select.Label>
+            <Select.Control>
+              <Select.Trigger>
+                <Select.ValueText placeholder="Select a Framework" />
+                <Select.Indicator>
+                  <ChevronsDownUpIcon />
+                </Select.Indicator>
+              </Select.Trigger>
+              <Select.ClearTrigger>Clear</Select.ClearTrigger>
+            </Select.Control>
+            <Select.Positioner>
+              <Select.Content>
+                <Select.ItemGroup id="framework">
+                  <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+                  {items.map((item) => (
+                    <Select.Item key={item} item={item}>
+                      <Select.ItemText>{item}</Select.ItemText>
+                      <Select.ItemIndicator>✓</Select.ItemIndicator>
+                    </Select.Item>
+                  ))}
+                </Select.ItemGroup>
+              </Select.Content>
+            </Select.Positioner>
+          </Select.Root>
+        )}
+      />
+      <button type="submit">Submit</button>
+    </form>
   )
 }
