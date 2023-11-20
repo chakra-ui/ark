@@ -1,5 +1,5 @@
 import { type SwatchProps } from '@zag-js/color-picker'
-import { defineComponent, toRefs, type PropType } from 'vue'
+import { defineComponent, reactive, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
@@ -21,7 +21,7 @@ export const ColorPickerSwatch = defineComponent({
   },
   setup(props, { slots, attrs }) {
     const api = useColorPickerContext()
-    ColorPickerSwatchProvider(toRefs(props))
+    ColorPickerSwatchProvider(reactive(props))
 
     return () => (
       <ark.button {...api.value.getSwatchProps(props)} {...attrs}>
