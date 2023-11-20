@@ -1,3 +1,4 @@
+import { ColorFormat } from '@zag-js/color-picker'
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { ColorPicker } from './'
@@ -13,8 +14,14 @@ const meta: Meta<ColorPickerType> = {
 export default meta
 
 export const Basic = () => {
+  const [format, setFormat] = createSignal<ColorFormat>('rgba')
+
   return (
-    <ColorPicker.Root value="hsl(0, 100%, 50%)">
+    <ColorPicker.Root
+      value="hsl(0, 100%, 50%)"
+      format={format()}
+      onFormatChange={(e) => setFormat(e.format)}
+    >
       {(api) => (
         <>
           <ColorPicker.Label>Color</ColorPicker.Label>
@@ -44,7 +51,9 @@ export const Basic = () => {
               </ColorPicker.ChannelSlider>
               <ColorPicker.SwatchGroup>
                 <ColorPicker.SwatchTrigger value="red">
-                  <ColorPicker.Swatch value="red" />
+                  <ColorPicker.Swatch value="red">
+                    <ColorPicker.SwatchIndicator value="red" />
+                  </ColorPicker.Swatch>
                 </ColorPicker.SwatchTrigger>
                 <ColorPicker.SwatchTrigger value="blue">
                   <ColorPicker.Swatch value="blue" />

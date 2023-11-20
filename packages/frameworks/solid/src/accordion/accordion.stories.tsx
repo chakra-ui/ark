@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from 'lucide-solid'
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Accordion } from './'
@@ -20,10 +19,7 @@ export const Basic = () => {
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>
-              What is {item()}?
-              <Accordion.ItemIndicator>
-                <ChevronDownIcon />
-              </Accordion.ItemIndicator>
+              What is {item()}?<Accordion.ItemIndicator>▼</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               {item()} is a JavaScript library for building user interfaces.
@@ -61,10 +57,7 @@ export const Collapsible = () => {
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>
-              What is {item()}?
-              <Accordion.ItemIndicator>
-                <ChevronDownIcon />
-              </Accordion.ItemIndicator>
+              What is {item()}?<Accordion.ItemIndicator>▼</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               {item()} is a JavaScript library for building user interfaces.
@@ -83,10 +76,7 @@ export const Multiple = () => {
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>
-              What is {item()}?
-              <Accordion.ItemIndicator>
-                <ChevronDownIcon />
-              </Accordion.ItemIndicator>
+              What is {item()}?<Accordion.ItemIndicator>▼</Accordion.ItemIndicator>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               {item()} is a JavaScript library for building user interfaces.

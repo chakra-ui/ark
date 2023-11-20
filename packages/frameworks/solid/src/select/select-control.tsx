@@ -3,7 +3,9 @@ import { Index } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export interface SelectControlProps extends HTMLArkProps<'div'> {}
+export interface SelectControlProps extends HTMLArkProps<'div'> {
+  hiddenInputProps?: HTMLArkProps<'select'>
+}
 
 export const SelectControl = (props: SelectControlProps) => {
   const api = useSelectContext()

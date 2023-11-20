@@ -175,7 +175,7 @@ export const FormLibrary = () => {
   const items = ['React', 'Solid', 'Vue']
   const { control, handleSubmit } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data, null, 4))
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

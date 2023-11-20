@@ -82,6 +82,8 @@
     "@zag-js/types": "0.30.0"
   },
   "devDependencies": {
+    "@felte/solid": "1.2.11",
+    "@modular-forms/solid": "0.20.0",
     "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.4",
     "@storybook/addon-essentials": "7.5.3",
@@ -89,6 +91,7 @@
     "@storybook/addon-links": "7.5.3",
     "@storybook/blocks": "7.5.3",
     "@storybook/testing-library": "0.2.2",
+    "@tanstack/solid-form": "0.9.0",
     "@testing-library/dom": "9.3.3",
     "@testing-library/jest-dom": "6.1.4",
     "@testing-library/user-event": "14.5.1",
@@ -100,7 +103,6 @@
     "eslint": "8.54.0",
     "globby": "14.0.0",
     "jsdom": "22.1.0",
-    "lucide-solid": "0.292.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "17.0.0",
