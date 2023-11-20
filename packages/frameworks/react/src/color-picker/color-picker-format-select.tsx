@@ -9,8 +9,15 @@ export const ColorPickerFormatSelect = forwardRef<HTMLSelectElement, ColorPicker
   (props, ref) => {
     const api = useColorPickerContext()
     const mergedProps = mergeProps(api.formatSelectProps, props)
-
-    return <ark.select {...mergedProps} ref={ref} />
+    return (
+      <ark.select {...mergedProps} ref={ref}>
+        {['rgba', 'hsla', 'hsba'].map((format) => (
+          <ark.option key={format} value={format}>
+            {format}
+          </ark.option>
+        ))}
+      </ark.select>
+    )
   },
 )
 

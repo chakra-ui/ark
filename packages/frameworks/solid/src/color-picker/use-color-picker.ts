@@ -5,6 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+  /**
+   * The current value of the color picker.
+   */
   value?: string
 }
 export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}

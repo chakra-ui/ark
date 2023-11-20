@@ -1,3 +1,4 @@
+import type { ColorFormat } from '@zag-js/color-picker'
 import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
 import {
@@ -118,6 +119,7 @@ export {
   useColorPickerContext,
 }
 export type {
+  ColorFormat,
   ColorPickerAreaBackgroundProps,
   ColorPickerAreaContext,
   ColorPickerAreaProps,

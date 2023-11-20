@@ -1,13 +1,10 @@
+import type { TransparencyGridProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
-
-interface TransparencyGridProps {
-  size: string
-}
 
 export interface ColorPickerTransparencyGridProps
   extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}

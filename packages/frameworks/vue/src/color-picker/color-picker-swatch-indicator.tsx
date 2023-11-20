@@ -1,27 +1,20 @@
 import { type SwatchProps } from '@zag-js/color-picker'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerSwatchContext } from './color-picker-swatch-context'
 
 export type ColorPickerSwatchIndicatorProps = Assign<HTMLArkProps<'div'>, SwatchProps>
 
 export const ColorPickerSwatchIndicator = defineComponent({
   name: 'ColorPickerSwatchIndicator',
-  props: {
-    value: {
-      type: [String, Object] as PropType<SwatchProps['value']>,
-      required: true,
-    },
-    respectAlpha: {
-      type: [String, Object] as PropType<SwatchProps['respectAlpha']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+  setup(_, { slots, attrs }) {
     const api = useColorPickerContext()
+    const swatchProps = useColorPickerSwatchContext()
 
     return () => (
-      <ark.div {...api.value.getSwatchIndicatorProps(props)} {...attrs}>
+      <ark.div {...api.value.getSwatchIndicatorProps(swatchProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

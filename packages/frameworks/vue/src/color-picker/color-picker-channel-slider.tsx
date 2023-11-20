@@ -1,5 +1,5 @@
 import type { ChannelProps } from '@zag-js/color-picker'
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, toRefs, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
@@ -18,16 +18,11 @@ export const ColorPickerChannelSlider = defineComponent({
     },
   },
   setup(props, { slots, attrs }) {
-    const channelProps = computed<ChannelProps>(() => ({
-      channel: props.channel,
-      orientation: props.orientation,
-    }))
-
     const api = useColorPickerContext()
-    ColorPickerChannelSliderProvider(channelProps)
+    ColorPickerChannelSliderProvider(toRefs(props))
 
     return () => (
-      <ark.div {...api.value.getChannelSliderProps(channelProps.value)} {...attrs}>
+      <ark.div {...api.value.getChannelSliderProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
