@@ -160,8 +160,8 @@
     }
   },
   "TransparencyGrid": {
-    "size": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false },
+    "size": { "type": "string", "isRequired": false }
   },
   "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
