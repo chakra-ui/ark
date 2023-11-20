@@ -37,6 +37,14 @@ export const ColorPickerEyeDropperTrigger = withContext(
   styled(Ark.ColorPicker.EyeDropperTrigger),
   'eyeDropperTrigger',
 )
+// export const ColorPickerFormatTrigger = withContext(
+//   styled(Ark.ColorPicker.FormatTrigger),
+//   'formatTrigger',
+// )
+// export const ColorPickerFormatSelect = withContext(
+//   styled(Ark.ColorPicker.FormatSelect),
+//   'formatSelect',
+// )
 export const ColorPickerLabel = withContext(styled(Ark.ColorPicker.Label), 'label')
 export const ColorPickerPositioner = withContext(styled(Ark.ColorPicker.Positioner), 'positioner')
 export const ColorPickerSwatch = withContext(styled(Ark.ColorPicker.Swatch), 'swatch')
@@ -48,11 +56,17 @@ export const ColorPickerSwatchTrigger = withContext(
   styled(Ark.ColorPicker.SwatchTrigger),
   'swatchTrigger',
 )
+// export const ColorPickerSwatchIndicator = withContext(
+//   styled(Ark.ColorPicker.SwatchIndicator),
+//   'swatchIndicator',
+// )
 export const ColorPickerTransparencyGrid = withContext(
   styled(Ark.ColorPicker.TransparencyGrid),
   'transparencyGrid',
 )
 export const ColorPickerTrigger = withContext(styled(Ark.ColorPicker.Trigger), 'trigger')
+export const ColorPickerValueText = withContext(styled(Ark.ColorPicker.ValueText), 'valueText')
+export const ColorPickerView = withContext(styled(Ark.ColorPicker.View), 'view')
 
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Root: ColorPickerRoot,
@@ -66,11 +80,16 @@ export const ColorPicker = Object.assign(ColorPickerRoot, {
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
+  // FormatTrigger: ColorPickerFormatTrigger,
+  // FormatSelect: ColorPickerFormatSelect,
   Label: ColorPickerLabel,
   Positioner: ColorPickerPositioner,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
+  // SwatchIndicator: ColorPickerSwatchIndicator,
   SwatchTrigger: ColorPickerSwatchTrigger,
   TransparencyGrid: ColorPickerTransparencyGrid,
   Trigger: ColorPickerTrigger,
+  ValueText: ColorPickerValueText,
+  View: ColorPickerView,
 })
