@@ -21,7 +21,7 @@
     "@pandacss/dev": "0.18.3",
     "@park-ui/panda-preset": "0.23.0",
     "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
+    "@types/react-dom": "18.2.16",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.30.0",
     "astro": "3.4.3",
