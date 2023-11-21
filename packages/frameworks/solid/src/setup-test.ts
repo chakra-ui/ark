@@ -13,3 +13,4 @@ export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
 }
 
 global.ResizeObserver = ResizeObserver
+global.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
