@@ -2,10 +2,11 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
+import type { Assign } from '../types'
 import { getValidChildren } from '../utils'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface ColorPickerContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
 export const ColorPickerContent = defineComponent({
   name: 'ColorPickerContent',

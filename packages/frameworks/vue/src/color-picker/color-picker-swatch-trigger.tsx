@@ -4,7 +4,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerSwatchTriggerProps = Assign<HTMLArkProps<'button'>, SwatchTriggerProps>
+export interface ColorPickerSwatchTriggerProps
+  extends Assign<HTMLArkProps<'button'>, SwatchTriggerProps> {}
 
 export const ColorPickerSwatchTrigger = defineComponent({
   name: 'ColorPickerSwatchTrigger',

@@ -5,10 +5,10 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseColorPickerProps = Optional<Omit<colorPicker.Context, 'value'>, 'id'> & {
+export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
   modelValue?: string
 }
-export type UseColorPickerReturn = ComputedRef<colorPicker.Api<PropTypes>>
+export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (
   props: UseColorPickerProps,
@@ -18,7 +18,6 @@ export const useColorPicker = (
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
-    console.log('###', modelValue)
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,

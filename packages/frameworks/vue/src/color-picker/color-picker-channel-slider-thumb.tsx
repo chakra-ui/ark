@@ -4,7 +4,7 @@ import type { ComponentWithProps } from '../utils'
 import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderThumbProps = HTMLArkProps<'div'>
+export interface ColorPickerChannelSliderThumbProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerChannelSliderThumb: ComponentWithProps<ColorPickerChannelSliderThumbProps> =
   defineComponent({

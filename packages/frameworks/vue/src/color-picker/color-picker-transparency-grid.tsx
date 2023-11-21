@@ -1,9 +1,11 @@
 import type { TransparencyGridProps } from '@zag-js/color-picker'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerTransparencyGridProps = HTMLArkProps<'div'> & TransparencyGridProps
+export interface ColorPickerTransparencyGridProps
+  extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
 
 export const ColorPickerTransparencyGrid = defineComponent({
   name: 'ColorPickerTransparencyGrid',

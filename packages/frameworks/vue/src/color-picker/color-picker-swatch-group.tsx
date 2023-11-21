@@ -2,7 +2,7 @@ import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 
-export type ColorPickerSwatchGroupProps = HTMLArkProps<'div'>
+export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerSwatchGroup = defineComponent({
   name: 'ColorPickerSwatchGroup',
