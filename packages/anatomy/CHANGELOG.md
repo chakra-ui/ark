@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.1.0] - 2023-11-21
+
 ### Changed
 
 - Added `FileUpload` anatomy
