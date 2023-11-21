@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { useState } from 'react'
 import { Slider } from './'
 import './slider.css'
 
@@ -24,6 +23,27 @@ export const Basic = () => {
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
     </Slider>
+  )
+}
+
+export const Range = () => {
+  return (
+    <Slider.Root min={-50} max={50} defaultValue={[-10, 20]}>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.ValueText />
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={-30}>*</Slider.Marker>
+        <Slider.Marker value={0}>*</Slider.Marker>
+        <Slider.Marker value={30}>*</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 
@@ -141,28 +161,5 @@ export const CenterOrigin = () => {
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
     </Slider>
-  )
-}
-
-export const Advanced = () => {
-  const [values, setValues] = useState([-10, 20])
-  return (
-    <Slider.Root min={-50} max={50} value={values} onValueChange={(e) => setValues(e.value)}>
-      <Slider.Label>Label</Slider.Label>
-      <Slider.ValueText />
-      <Slider.Control>
-        <Slider.Track>
-          <Slider.Range />
-        </Slider.Track>
-        {values.map((_, index) => (
-          <Slider.Thumb key={index} index={index} />
-        ))}
-      </Slider.Control>
-      <Slider.MarkerGroup>
-        <Slider.Marker value={-30}>*</Slider.Marker>
-        <Slider.Marker value={0}>*</Slider.Marker>
-        <Slider.Marker value={30}>*</Slider.Marker>
-      </Slider.MarkerGroup>
-    </Slider.Root>
   )
 }
