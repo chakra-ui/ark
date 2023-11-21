@@ -19,3 +19,8 @@
   background: black;
   color: white;
 }
+
+[data-scope='checkbox'][data-part='control'][data-state='indeterminate'] {
+  background: blue;
+  color: white;
+}
