@@ -20,6 +20,7 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxProps) =
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
       getRootNode,
+      // @ts-ignore TODO: there should be a better option
       checked: reactiveContext.modelValue ?? reactiveContext.checked,
       onCheckedChange(details) {
         emit('checked-change', details)
@@ -35,6 +36,7 @@ export const useCheckbox = (emit: CallableFunction, context: UseCheckboxProps) =
     (newValue, previousValue) => {
       if (newValue == undefined) return
       if (newValue !== previousValue) {
+        // @ts-ignore
         api.value.setChecked(newValue)
       }
     },
