@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerGroupProps = HTMLArkProps<'div'>
+export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
 export const SliderMarkerGroup = defineComponent({
   name: 'SliderMarkerGroup',

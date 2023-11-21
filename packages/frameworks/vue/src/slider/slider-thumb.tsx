@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
 
-export type SliderThumbProps = Assign<HTMLArkProps<'div'>, ThumbProps>
+export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
 
 export const SliderThumb = defineComponent({
   name: 'SliderThumb',

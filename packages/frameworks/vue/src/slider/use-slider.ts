@@ -6,10 +6,10 @@ import type { Optional } from '../types'
 import { generateEventMap, useId } from '../utils'
 import { emits } from './slider.props'
 
-export type UseSliderProps = Optional<slider.Context, 'id'> & {
+export interface UseSliderProps extends Optional<slider.Context, 'id'> {
   modelValue?: slider.Context['value']
 }
-export type UseSliderReturn = ComputedRef<slider.Api<PropTypes>>
+export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: UseSliderProps, emit: CallableFunction): UseSliderReturn => {
   const getRootNode = useEnvironmentContext()

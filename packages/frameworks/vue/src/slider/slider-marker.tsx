@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerProps = Assign<HTMLArkProps<'span'>, MarkerProps>
+export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
 
 export const SliderMarker = defineComponent({
   name: 'SliderMarker',
