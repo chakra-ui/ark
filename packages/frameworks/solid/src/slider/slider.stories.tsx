@@ -1,4 +1,3 @@
-import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Slider } from './'
 import './slider.css'
@@ -24,6 +23,27 @@ export const Basic = () => {
         <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider>
+  )
+}
+
+export const Range = () => {
+  return (
+    <Slider.Root min={-50} max={50} value={[-10, 20]}>
+      <Slider.Label>Label</Slider.Label>
+      <Slider.ValueText />
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={-30}>*</Slider.Marker>
+        <Slider.Marker value={0}>*</Slider.Marker>
+        <Slider.Marker value={30}>*</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 
@@ -141,26 +161,5 @@ export const CenterOrigin = () => {
         <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider>
-  )
-}
-
-export const Advanced = () => {
-  const [values, setValues] = createSignal([-10, 20])
-  return (
-    <Slider.Root min={-50} max={50} value={values()} onValueChange={(e) => setValues(e.value)}>
-      <Slider.Label>Label</Slider.Label>
-      <Slider.ValueText />
-      <Slider.Control>
-        <Slider.Track>
-          <Slider.Range />
-        </Slider.Track>
-        <Index each={values()}>{(_value, index) => <Slider.Thumb index={index} />}</Index>
-      </Slider.Control>
-      <Slider.MarkerGroup>
-        <Slider.Marker value={-30}>*</Slider.Marker>
-        <Slider.Marker value={0}>*</Slider.Marker>
-        <Slider.Marker value={30}>*</Slider.Marker>
-      </Slider.MarkerGroup>
-    </Slider.Root>
   )
 }

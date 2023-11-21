@@ -2,10 +2,9 @@ import type { MarkerProps } from '@zag-js/slider'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren } from '../utils'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerProps = Assign<HTMLArkProps<'span'>, MarkerProps>
+export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
 
 export const SliderMarker = defineComponent({
   name: 'SliderMarker',
@@ -20,7 +19,7 @@ export const SliderMarker = defineComponent({
 
     return () => (
       <ark.span {...api.value.getMarkerProps({ value: props.value })} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.span>
     )
   },

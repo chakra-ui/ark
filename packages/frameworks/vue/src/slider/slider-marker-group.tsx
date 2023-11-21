@@ -1,9 +1,8 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerGroupProps = HTMLArkProps<'div'>
+export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
 export const SliderMarkerGroup = defineComponent({
   name: 'SliderMarkerGroup',
@@ -12,7 +11,7 @@ export const SliderMarkerGroup = defineComponent({
 
     return () => (
       <ark.div {...api.value.markerGroupProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

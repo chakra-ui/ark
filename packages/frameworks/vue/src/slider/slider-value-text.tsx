@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderValueTextProps = HTMLArkProps<'span'>
+export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
 
 export const SliderValueText = defineComponent({
   name: 'SliderValueText',

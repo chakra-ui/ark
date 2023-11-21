@@ -1,33 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-  SliderValueText,
-} from '../'
+import { Slider } from '../'
 
-const sliderValue = ref([0])
+const sliderValue = ref([-20, 20])
 </script>
 <template>
-  <Slider :min="-50" :max="50" v-model="sliderValue">
-    <SliderLabel>Label</SliderLabel>
-    <SliderValueText />>
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb :index="0" />
-    </SliderControl>
-    <SliderMarkerGroup>
-      <SliderMarker :value="-30">-30</SliderMarker>
-      <SliderMarker :value="0">0</SliderMarker>
-      <SliderMarker :value="30">30</SliderMarker>
-    </SliderMarkerGroup>
-  </Slider>
+  <Slider.Root :min="-50" :max="50" v-model="sliderValue">
+    <Slider.Label>Quantity: </Slider.Label>
+    <Slider.ValueText />
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb v-for="(_, index) in sliderValue" :key="index" :index="index" />
+    </Slider.Control>
+    <Slider.MarkerGroup>
+      <Slider.Marker :value="-30">*</Slider.Marker>
+      <Slider.Marker :value="0">*</Slider.Marker>
+      <Slider.Marker :value="30">*</Slider.Marker>
+    </Slider.MarkerGroup>
+  </Slider.Root>
 </template>
