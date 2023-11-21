@@ -41,7 +41,7 @@
       "isRequired": false,
       "description": "If `true`, the checkbox is marked as invalid."
     },
-    "modelValue": { "type": "CheckedState", "isRequired": false },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
