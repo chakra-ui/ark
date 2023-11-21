@@ -14,61 +14,64 @@ export const ComponentPropsTable = (props: Props) => {
   return (
     <Stack gap="6" className="not-prose">
       {Object.entries(types.data).map(([key, properties]) => (
-        <Stack key={key} gap="4" className="not-prose" overflowX="auto">
+        <Stack key={key} gap="4" className="not-prose">
           <Heading textStyle="xl" fontWeight="semibold">
             {key}
           </Heading>
-          <Table.Root variant="outline" size="sm">
-            <Table.Header>
-              <Table.Row>
-                <Table.Head>Prop</Table.Head>
-                <Table.Head>Type</Table.Head>
-                <Table.Head>Default</Table.Head>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {Object.entries(properties).map(([name, property]) => (
-                <Table.Row key={key}>
-                  <Table.Cell width="40">
-                    <HStack>
-                      <Code size="sm" color="accent.default">
-                        {name}
-                        {property.isRequired && <AsteriskIcon size="10" />}
-                      </Code>
-                      {property.description && (
-                        <Popover.Root portalled>
-                          <Popover.Trigger asChild>
-                            <Button size="xs" px="0" variant="link" color="fg.subtle">
-                              <HelpCircle />
-                            </Button>
-                          </Popover.Trigger>
-                          <Portal>
-                            <Popover.Positioner>
-                              <Popover.Content>
-                                <Popover.Description>{property.description}</Popover.Description>
-                              </Popover.Content>
-                            </Popover.Positioner>
-                          </Portal>
-                        </Popover.Root>
-                      )}
-                    </HStack>
-                  </Table.Cell>
-                  <Table.Cell height="auto">
-                    <Code size="sm">{property.type}</Code>
-                  </Table.Cell>
-                  <Table.Cell width="12" textAlign="center">
-                    {property.defaultValue ? (
-                      <Code size="sm">{property.defaultValue}</Code>
-                    ) : (
-                      <Icon size="xs" color="fg.muted">
-                        <MinusIcon />
-                      </Icon>
-                    )}
-                  </Table.Cell>
+
+          <Stack overflowX="auto">
+            <Table.Root variant="outline" size="sm">
+              <Table.Header>
+                <Table.Row>
+                  <Table.Head>Prop</Table.Head>
+                  <Table.Head>Type</Table.Head>
+                  <Table.Head>Default</Table.Head>
                 </Table.Row>
-              ))}
-            </Table.Body>
-          </Table.Root>
+              </Table.Header>
+              <Table.Body>
+                {Object.entries(properties).map(([name, property]) => (
+                  <Table.Row key={key}>
+                    <Table.Cell width="40">
+                      <HStack>
+                        <Code size="sm" color="accent.default">
+                          {name}
+                          {property.isRequired && <AsteriskIcon size="10" />}
+                        </Code>
+                        {property.description && (
+                          <Popover.Root portalled>
+                            <Popover.Trigger asChild>
+                              <Button size="xs" px="0" variant="link" color="fg.subtle">
+                                <HelpCircle />
+                              </Button>
+                            </Popover.Trigger>
+                            <Portal>
+                              <Popover.Positioner>
+                                <Popover.Content>
+                                  <Popover.Description>{property.description}</Popover.Description>
+                                </Popover.Content>
+                              </Popover.Positioner>
+                            </Portal>
+                          </Popover.Root>
+                        )}
+                      </HStack>
+                    </Table.Cell>
+                    <Table.Cell height="auto">
+                      <Code size="sm">{property.type}</Code>
+                    </Table.Cell>
+                    <Table.Cell width="12" textAlign="center">
+                      {property.defaultValue ? (
+                        <Code size="sm">{property.defaultValue}</Code>
+                      ) : (
+                        <Icon size="xs" color="fg.muted">
+                          <MinusIcon />
+                        </Icon>
+                      )}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </Stack>
         </Stack>
       ))}
     </Stack>
