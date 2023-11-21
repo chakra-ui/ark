@@ -12,7 +12,7 @@ export const FileUploadItemDeleteTrigger = defineComponent({
     const item = useFileUploadItemContext()
 
     return () => (
-      <ark.div {...api.value.getItemDeleteTriggerProps(item.value)} {...attrs}>
+      <ark.div {...api.value.getItemDeleteTriggerProps(item)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

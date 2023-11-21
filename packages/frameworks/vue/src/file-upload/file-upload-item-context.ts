@@ -1,9 +1,7 @@
-import { type ItemPreviewProps } from '@zag-js/file-upload'
-import type { ComputedRef } from 'vue'
+import { type ItemProps } from '@zag-js/file-upload'
 import { createContext } from '../context'
-import { type Optional } from '../types'
 
-export interface FileUploadItemContext extends ComputedRef<Optional<ItemPreviewProps, 'url'>> {}
+export interface FileUploadItemContext extends ItemProps {}
 
 export const [FileUploadItemProvider, useFileUploadItemContext] =
   createContext<FileUploadItemContext>('FileUploadItemContext')

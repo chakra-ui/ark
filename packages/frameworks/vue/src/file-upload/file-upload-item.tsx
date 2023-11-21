@@ -1,4 +1,4 @@
-import { computed, defineComponent } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useFileUploadContext } from './file-upload-context'
@@ -10,17 +10,13 @@ export const FileUploadItem = defineComponent({
   name: 'FileUploadItem',
   props: {
     file: {
-      type: Object as () => File,
+      type: Object as PropType<FileUploadItemContext['file']>,
       required: true,
-    },
-    url: {
-      type: String,
-      required: false,
     },
   },
   setup(props, { slots, attrs }) {
     const api = useFileUploadContext()
-    FileUploadItemProvider(computed(() => ({ ...props, ...api.value.getItemProps(props) })))
+    FileUploadItemProvider(props)
 
     return () => (
       <ark.li {...api.value.getItemProps(props)} {...attrs}>

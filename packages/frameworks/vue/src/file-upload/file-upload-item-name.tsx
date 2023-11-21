@@ -12,8 +12,8 @@ export const FileUploadItemName = defineComponent({
     const item = useFileUploadItemContext()
 
     return () => (
-      <ark.div {...api.value.getItemNameProps(item.value)} {...attrs}>
-        {slots.default?.()}
+      <ark.div {...api.value.getItemNameProps(item)} {...attrs}>
+        {slots.default?.() || item.file.name}
       </ark.div>
     )
   },
