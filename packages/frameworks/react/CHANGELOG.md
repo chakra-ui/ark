@@ -11,7 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Added render function to the `NumberInput` component
 - Added `FileUpload` component
 
-## Changed
+### Changed
 
 - Revised the `ColorPicker` component. Check out the [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
 

@@ -12,6 +12,49 @@ description:
 - Added render function to the `NumberInput` component
 - Added `FileUpload` component
 
+### Changed
+
+- Revised the `ColorPicker` component. Check out the
+  [documentation](https://ark-ui.com/docs/components/color-picker) for more
+  information.
+
+### Fixed
+
+- Resolved a problem where the `Dialog.CloseTrigger` was assigned to the wrong
+  `data-part`.
+- Fixed various issues for the `Toast` component that were caused by the API not
+  being wrapped in an `Accessor`.
+
+```jsx
+// before
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+
+// after
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast().title}</Toast.Title>
+        <Toast.Description>{toast().description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+```
+
 ## [1.0.1] - 2023-11-10
 
 ### Fixed
