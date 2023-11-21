@@ -2,15 +2,15 @@
 
 ### Changed
 
-- Updated to latest `@zag-js`
+- Added `FileUpload` anatomy
+- Extended `ColorPicker` with `formatTrigger`, `formatSelect` and `swatchIndicator` parts
 
 ## [1.0.0] - 2023-11-09
 
 ### Added
 
-- Extended `ColorPicker` with part `view` and `valueText`
-- Extended `DatePicker` with part `view`
-- Added `FileUpload` anatomy
+- Extended `ColorPicker` with `view` and `valueText` parts.
+- Extended `DatePicker` with `view` part.
 
 ## [0.1.0] - 2023-09-19
 
