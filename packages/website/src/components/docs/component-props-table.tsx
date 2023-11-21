@@ -14,7 +14,7 @@ export const ComponentPropsTable = (props: Props) => {
   return (
     <Stack gap="6" className="not-prose">
       {Object.entries(types.data).map(([key, properties]) => (
-        <Stack key={key} gap="4" className="not-prose">
+        <Stack key={key} gap="4" className="not-prose" overflowX="auto">
           <Heading textStyle="xl" fontWeight="semibold">
             {key}
           </Heading>
