@@ -76,7 +76,7 @@
     "@testing-library/react": "14.1.2",
     "@testing-library/user-event": "14.5.1",
     "@types/jsdom": "21.1.6",
-    "@types/react": "18.2.37",
+    "@types/react": "18.2.38",
     "@types/react-dom": "18.2.16",
     "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/eslint-plugin": "6.12.0",
