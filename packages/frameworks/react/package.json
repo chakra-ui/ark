@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/react",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
