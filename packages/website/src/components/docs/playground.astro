@@ -11,6 +11,7 @@ import {
   DatePicker,
   Dialog,
   Editable,
+  FileUpload,
   HoverCard,
   Menu,
   NumberInput,
@@ -34,7 +35,7 @@ const { component } = Astro.props
 ---
 
 <Flex
-  bg="bg.default"
+  bg="bg.canvas"
   minH="40"
   borderRadius="lg"
   borderWidth="1px"
@@ -54,6 +55,7 @@ const { component } = Astro.props
         .with('date-picker', () => <DatePicker client:load />)
         .with('dialog', () => <Dialog client:load />)
         .with('editable', () => <Editable client:load />)
+        .with('file-upload', () => <FileUpload client:load />)
         .with('hover-card', () => <HoverCard client:load />)
         .with('menu', () => <Menu client:load />)
         .with('number-input', () => <NumberInput client:load />)

@@ -1,6 +1,7 @@
 import { defineConfig } from '@pandacss/dev'
 import { createPreset } from '@park-ui/panda-preset'
 import typographyPreset from 'pandacss-preset-typography'
+import { fileUpload } from '~/file-upload.recipe'
 
 export default defineConfig({
   preflight: true,
@@ -21,6 +22,7 @@ export default defineConfig({
   staticCss: {
     recipes: {
       switchRecipe: [{ size: ['*'] }],
+      fileUpload: ['*'],
     },
   },
   globalCss: {
@@ -128,6 +130,9 @@ export default defineConfig({
             accent: { value: { base: '{colors.coral.500}', _dark: '{colors.coral.500}' } },
           },
         },
+      },
+      slotRecipes: {
+        fileUpload,
       },
     },
   },

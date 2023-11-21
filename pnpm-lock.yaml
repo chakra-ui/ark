@@ -787,6 +787,9 @@ importers:
 
   packages/website:
     dependencies:
+      '@ark-ui/anatomy':
+        specifier: workspace:1.0.0
+        version: link:../anatomy
       '@ark-ui/react':
         specifier: workspace:*
         version: link:../frameworks/react
