@@ -14,9 +14,7 @@ export default meta
 export const Basic = () => (
   <FileUpload.Root maxFiles={5}>
     <FileUpload.Label>File Upload</FileUpload.Label>
-    <FileUpload.Dropzone>
-      <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
-    </FileUpload.Dropzone>
+    <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
     <FileUpload.ItemGroup>
       {(files) =>

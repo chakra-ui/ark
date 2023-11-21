@@ -1,8 +1,7 @@
-import { type ItemPreviewProps } from '@zag-js/file-upload'
+import { type ItemProps } from '@zag-js/file-upload'
 import { createContext } from '../create-context'
-import { type Optional } from '../types'
 
-export interface FileUploadItemContext extends Optional<ItemPreviewProps, 'url'> {}
+export interface FileUploadItemContext extends ItemProps {}
 
 export const [FileUploadItemProvider, useFileUploadItemContext] =
   createContext<FileUploadItemContext>({

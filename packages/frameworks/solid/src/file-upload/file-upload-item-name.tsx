@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { children } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { useFileUploadContext } from './file-upload-context'
 import { useFileUploadItemContext } from './file-upload-item-context'
@@ -7,8 +8,9 @@ export interface FileUploadItemNameProps extends HTMLArkProps<'div'> {}
 
 export const FileUploadItemName = (props: FileUploadItemNameProps) => {
   const api = useFileUploadContext()
-  const itemProps = useFileUploadItemContext()
-  const mergedProps = mergeProps(() => api().getItemNameProps(itemProps), props)
+  const item = useFileUploadItemContext()
+  const mergedProps = mergeProps(() => api().getItemNameProps(item), props)
+  const getChildren = children(() => props.children)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps}>{getChildren() || item.file.name}</ark.div>
 }
