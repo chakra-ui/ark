@@ -14,7 +14,7 @@ export const ColorPickerChannelSliderThumb: ComponentWithProps<ColorPickerChanne
       const sliderProps = useColorPickerChannelSliderContext()
 
       return () => (
-        <ark.div {...api.value.getChannelSliderThumbProps(sliderProps.value)} {...attrs}>
+        <ark.div {...api.value.getChannelSliderThumbProps(sliderProps)} {...attrs}>
           {slots.default?.()}
         </ark.div>
       )

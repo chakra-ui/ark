@@ -13,23 +13,22 @@ export default meta
 
 export const Basic = () => (
   <FileUpload.Root maxFiles={5}>
-    {(api) => (
-      <>
-        <FileUpload.Dropzone>
-          <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
-        </FileUpload.Dropzone>
-        <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
-        <FileUpload.ItemGroup>
-          {api.files.map((file) => (
-            <FileUpload.Item key={file.name} file={file}>
-              <FileUpload.ItemPreview />
-              <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
-              <FileUpload.ItemSizeText>{api.getFileSize(file)}</FileUpload.ItemSizeText>
-              <FileUpload.ItemDeleteTrigger>Remove</FileUpload.ItemDeleteTrigger>
-            </FileUpload.Item>
-          ))}
-        </FileUpload.ItemGroup>
-      </>
-    )}
+    <FileUpload.Label>File Upload</FileUpload.Label>
+    <FileUpload.Dropzone>
+      <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
+    </FileUpload.Dropzone>
+    <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+    <FileUpload.ItemGroup>
+      {(files) =>
+        files.map((file, id) => (
+          <FileUpload.Item key={id} file={file}>
+            <FileUpload.ItemPreview />
+            <FileUpload.ItemName />
+            <FileUpload.ItemSizeText />
+            <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+          </FileUpload.Item>
+        ))
+      }
+    </FileUpload.ItemGroup>
   </FileUpload.Root>
 )

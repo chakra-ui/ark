@@ -11,6 +11,10 @@ description: All notable changes to this project will be documented in this file
 - Added render function to the `NumberInput` component
 - Added `FileUpload` component
 
+## Changed
+
+- Revised the `ColorPicker` component. Check out the [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
+
 ### Fixed
 
 - Resolved an issue where the `Toast` component would throw a warning when multiple toasts were rendered at the same time.

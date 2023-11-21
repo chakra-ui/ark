@@ -6,7 +6,6 @@ import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}
-
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {

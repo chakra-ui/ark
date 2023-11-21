@@ -8,11 +8,16 @@ export interface FileUploadItemNameProps extends HTMLArkProps<'div'> {}
 
 export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameProps>(
   (props, ref) => {
+    const { children, ...rest } = props
     const api = useFileUploadContext()
-    const itemProps = useFileUploadItemContext()
-    const mergedProps = mergeProps(api.getItemNameProps(itemProps), props)
+    const item = useFileUploadItemContext()
+    const mergedProps = mergeProps(api.getItemNameProps(item), rest)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <ark.div {...mergedProps} ref={ref}>
+        {children || item.file.name}
+      </ark.div>
+    )
   },
 )
 

@@ -20,35 +20,35 @@ Ark UI is available for the following JavaScript frameworks:
 
 ## Available Components
 
-- [Accordion](https://ark-ui.com/docs/components/accordion)
-- [Avatar](https://ark-ui.com/docs/components/avatar)
-- [Carousel](https://ark-ui.com/docs/components/carousel)
-- [Checkbox](https://ark-ui.com/docs/components/checkbox)
-- [Color Picker](https://ark-ui.com/docs/components/color-picker)
-- [Combobox](https://ark-ui.com/docs/components/combobox)
-- [Date Picker](https://ark-ui.com/docs/components/date-picker)
-- [Dialog](https://ark-ui.com/docs/components/dialog)
-- [Editable](https://ark-ui.com/docs/components/editable)
-- [File Upload](https://ark-ui.com/docs/components/file-upload)
-- [Hover Card](https://ark-ui.com/docs/components/hover-card)
-- [Menu](https://ark-ui.com/docs/components/menu)
-- [Number Input](https://ark-ui.com/docs/components/number-input)
-- [Pagination](https://ark-ui.com/docs/components/pagination)
-- [Pin Input](https://ark-ui.com/docs/components/pin-input)
-- [Popover](https://ark-ui.com/docs/components/popover)
-- [Radio Group](https://ark-ui.com/docs/components/radio-group)
-- [Range Slider](https://ark-ui.com/docs/components/slider)
-- [Rating Group](https://ark-ui.com/docs/components/rating-group)
-- [Segment Group](https://ark-ui.com/docs/components/segment-group)
-- [Select](https://ark-ui.com/docs/components/select)
-- [Slider](https://ark-ui.com/docs/components/slider)
-- [Splitter](https://ark-ui.com/docs/components/splitter)
-- [Switch](https://ark-ui.com/docs/components/switch)
-- [Tabs](https://ark-ui.com/docs/components/tabs)
-- [Tags Input](https://ark-ui.com/docs/components/tags-input)
-- [Toast](https://ark-ui.com/docs/components/toast)
-- [Toggle Group](https://ark-ui.com/docs/components/toggle-group)
-- [Tooltip](https://ark-ui.com/docs/components/tooltip)
+[Accordion](https://ark-ui.com/docs/components/accordion),
+[Avatar](https://ark-ui.com/docs/components/avatar),
+[Carousel](https://ark-ui.com/docs/components/carousel),
+[Checkbox](https://ark-ui.com/docs/components/checkbox),
+[Color Picker](https://ark-ui.com/docs/components/color-picker),
+[Combobox](https://ark-ui.com/docs/components/combobox),
+[Date Picker](https://ark-ui.com/docs/components/date-picker),
+[Dialog](https://ark-ui.com/docs/components/dialog),
+[Editable](https://ark-ui.com/docs/components/editable),
+[File Upload](https://ark-ui.com/docs/components/file-upload),
+[Hover Card](https://ark-ui.com/docs/components/hover-card),
+[Menu](https://ark-ui.com/docs/components/menu),
+[Number Input](https://ark-ui.com/docs/components/number-input),
+[Pagination](https://ark-ui.com/docs/components/pagination),
+[Pin Input](https://ark-ui.com/docs/components/pin-input),
+[Popover](https://ark-ui.com/docs/components/popover),
+[Radio Group](https://ark-ui.com/docs/components/radio-group),
+[Range Slider](https://ark-ui.com/docs/components/slider),
+[Rating Group](https://ark-ui.com/docs/components/rating-group),
+[Segment Group](https://ark-ui.com/docs/components/segment-group),
+[Select](https://ark-ui.com/docs/components/select),
+[Slider](https://ark-ui.com/docs/components/slider),
+[Splitter](https://ark-ui.com/docs/components/splitter),
+[Switch](https://ark-ui.com/docs/components/switch),
+[Tabs](https://ark-ui.com/docs/components/tabs),
+[Tags Input](https://ark-ui.com/docs/components/tags-input),
+[Toast](https://ark-ui.com/docs/components/toast),
+[Toggle Group](https://ark-ui.com/docs/components/toggle-group),
+[Tooltip](https://ark-ui.com/docs/components/tooltip)
 
 ## Documentation
 

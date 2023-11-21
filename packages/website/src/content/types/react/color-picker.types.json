@@ -115,7 +115,11 @@
       "isRequired": false,
       "description": "Whether to unmount on exit."
     },
-    "value": { "type": "string", "isRequired": false }
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the color picker."
+    }
   },
   "Area": {
     "asChild": {
@@ -256,25 +260,19 @@
     }
   },
   "SwatchIndicator": {
-    "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TransparencyGrid": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "respectAlpha": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to include the alpha channel in the color"
-    }
-  },
-  "TransparencyGrid": {
-    "size": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "size": { "type": "string", "isRequired": false }
   },
   "EyeDropperTrigger": {
     "asChild": {

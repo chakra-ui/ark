@@ -8,11 +8,16 @@ export interface FileUploadItemSizeTextProps extends HTMLArkProps<'div'> {}
 
 export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemSizeTextProps>(
   (props, ref) => {
+    const { children, ...rest } = props
     const api = useFileUploadContext()
-    const itemProps = useFileUploadItemContext()
-    const mergedProps = mergeProps(api.getItemSizeTextProps(itemProps), props)
+    const item = useFileUploadItemContext()
+    const mergedProps = mergeProps(api.getItemSizeTextProps(item), rest)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <ark.div {...mergedProps} ref={ref}>
+        {children || api.getFileSize(item.file)}
+      </ark.div>
+    )
   },
 )
 

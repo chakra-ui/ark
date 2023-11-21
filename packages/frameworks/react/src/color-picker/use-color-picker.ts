@@ -10,12 +10,15 @@ export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 
    * The initial value of the color picker.
    */
   defaultValue?: string
+  /**
+   * The current value of the color picker.
+   */
   value?: string
 }
 
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
-export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerReturn => {
+export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const initialContext: colorPicker.Context = {
     id: useId(),
     getRootNode: useEnvironmentContext(),

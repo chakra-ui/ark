@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { ColorPicker } from './'
 import './color-picker.css'
 
-const value = ref('hsl(0, 100%, 50%)')
+const value = ref('#eb5e41')
 </script>
 <template>
   <Story title="ColorPicker">
@@ -73,7 +73,7 @@ const value = ref('hsl(0, 100%, 50%)')
           <ColorPicker.ValueText />
           <ColorPicker.Trigger>
             <ColorPicker.Swatch value="red">
-              <ColorPicker.TransparencyGrid size="10px" />
+              <ColorPicker.TransparencyGrid />
             </ColorPicker.Swatch>
           </ColorPicker.Trigger>
         </ColorPicker.Control>
@@ -88,19 +88,25 @@ const value = ref('hsl(0, 100%, 50%)')
               <ColorPicker.ChannelSliderThumb />
             </ColorPicker.ChannelSlider>
             <ColorPicker.ChannelSlider channel="alpha">
-              <ColorPicker.TransparencyGrid size="16px" />
+              <ColorPicker.TransparencyGrid />
               <ColorPicker.ChannelSliderTrack />
               <ColorPicker.ChannelSliderThumb />
             </ColorPicker.ChannelSlider>
             <ColorPicker.SwatchGroup>
               <ColorPicker.SwatchTrigger value="red">
-                <ColorPicker.Swatch value="red" />
+                <ColorPicker.Swatch value="red">
+                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
+                </ColorPicker.Swatch>
               </ColorPicker.SwatchTrigger>
               <ColorPicker.SwatchTrigger value="blue">
-                <ColorPicker.Swatch value="blue" />
+                <ColorPicker.Swatch value="blue">
+                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
+                </ColorPicker.Swatch>
               </ColorPicker.SwatchTrigger>
               <ColorPicker.SwatchTrigger value="green">
-                <ColorPicker.Swatch value="green" />
+                <ColorPicker.Swatch value="green">
+                  <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
+                </ColorPicker.Swatch>
               </ColorPicker.SwatchTrigger>
             </ColorPicker.SwatchGroup>
             <ColorPicker.View format="rgba">

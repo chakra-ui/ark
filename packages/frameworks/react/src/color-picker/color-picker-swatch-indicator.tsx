@@ -1,23 +1,18 @@
-import type { SwatchProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerSwatchContext } from './color-picker-swatch-context'
 
-export interface ColorPickerSwatchIndicatorProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {}
+export interface ColorPickerSwatchIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerSwatchIndicator = forwardRef<
   HTMLDivElement,
   ColorPickerSwatchIndicatorProps
 >((props, ref) => {
-  const [triggerProps, localProps] = createSplitProps<SwatchProps>()(props, [
-    'value',
-    'respectAlpha',
-  ])
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(api.getSwatchIndicatorProps(triggerProps), localProps)
+  const swatchProps = useColorPickerSwatchContext()
+  const mergedProps = mergeProps(api.getSwatchIndicatorProps(swatchProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

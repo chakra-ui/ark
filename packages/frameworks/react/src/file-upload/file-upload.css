@@ -51,3 +51,10 @@
   background: var(--colors-bg-subtle);
   border-width: 1px;
 }
+
+[data-scope='file-upload'][data-part='item-preview'] {
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
