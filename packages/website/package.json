@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "workspace:1.0.0",
+    "@ark-ui/anatomy": "1.1.0",
     "@ark-ui/react": "workspace:*",
     "@astrojs/mdx": "1.1.5",
     "@astrojs/react": "3.0.5",
