@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry } from 'astro:content'
-import path from 'path'
+import { pathJoin } from '~/lib/path-join'
 import { match } from 'ts-pattern'
 import DocsHero from '~/components/docs/docs-hero.astro'
 import { InfoBanner } from '~/components/docs/info-banner'
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   const collections = await getAllCollections()
 
   return collections.map((entry) => ({
-    params: { slug: path.join(entry.collection, entry.data.id) },
+    params: { slug: pathJoin(entry.collection, entry.data.id) },
     props: { entry },
   }))
 }
