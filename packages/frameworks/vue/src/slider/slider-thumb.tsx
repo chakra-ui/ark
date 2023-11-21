@@ -1,11 +1,8 @@
-import { defineComponent } from 'vue'
+import type { ThumbProps } from '@zag-js/slider'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSliderContext } from './slider-context'
-
-interface ThumbProps {
-  index: number
-}
 
 export type SliderThumbProps = Assign<HTMLArkProps<'div'>, ThumbProps>
 
@@ -13,7 +10,7 @@ export const SliderThumb = defineComponent({
   name: 'SliderThumb',
   props: {
     index: {
-      type: Number,
+      type: Number as PropType<ThumbProps['index']>,
       required: true,
     },
   },
