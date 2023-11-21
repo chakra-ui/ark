@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { ColorPicker } from './'
 import './color-picker.css'
 
-const value = ref('#eb5e41')
+const value = ref('hsl(20, 100%, 50%)')
 </script>
 <template>
   <Story title="Color Picker">

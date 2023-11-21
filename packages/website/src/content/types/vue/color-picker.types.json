@@ -94,7 +94,6 @@
     }
   },
   "Area": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
@@ -109,7 +108,6 @@
     }
   },
   "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -138,7 +136,6 @@
   "FormatSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSlider": {
     "channel": { "type": "ColorChannel", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
   "FormatTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
@@ -159,10 +156,7 @@
       "description": "Whether to include the alpha channel in the color"
     }
   },
-  "TransparencyGrid": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "size": { "type": "string", "isRequired": false }
-  },
+  "TransparencyGrid": { "size": { "type": "string", "isRequired": false } },
   "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSliderTrack": { "asChild": { "type": "boolean", "isRequired": false } }
