@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   const collections = await getAllCollections()
 
   return collections.map((entry) => ({
-    params: { slug: path.join(entry.collection, entry.data.id) },
+    params: { slug: path.posix.join(entry.collection, entry.data.id) },
     props: { entry },
   }))
 }

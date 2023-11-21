@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content'
-import path from 'node:path'
+import path from 'path'
 
 const getOverviewPages = async () => {
   const priority = ['introduction', 'getting-started', 'as-child-prop', 'animation']
@@ -29,7 +29,7 @@ export const getPreviousPage = async (pathname?: string) => {
 
   const item = collections[index - 1]
   return item
-    ? { href: path.join('/docs', item.collection, item.data.id), name: item.data.title }
+    ? { href: path.posix.join('/docs', item.collection, item.data.id), name: item.data.title }
     : null
 }
 
@@ -39,7 +39,7 @@ export const getNextPage = async (pathname?: string) => {
 
   const item = collections[index + 1]
   return item
-    ? { href: path.join('/docs', item.collection, item.data.id), name: item.data.title }
+    ? { href: path.posix.join('/docs', item.collection, item.data.id), name: item.data.title }
     : null
 }
 
@@ -63,21 +63,21 @@ export const getSitemap = async (): Promise<Sitemap> => {
       title: 'Overview',
       items: overviewPages.map((item) => ({
         title: item.data.title,
-        href: path.join('/docs', item.collection, item.data.id),
+        href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
     {
       title: 'Styling',
       items: stylingPages.map((item) => ({
         title: item.data.title,
-        href: path.join('/docs', item.collection, item.data.id),
+        href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
     {
       title: 'Components',
       items: componentPages.map((item) => ({
         title: item.data.title,
-        href: path.join('/docs', item.collection, item.data.id),
+        href: path.posix.join('/docs', item.collection, item.data.id),
         label: item.data.status,
       })),
     },
@@ -85,7 +85,7 @@ export const getSitemap = async (): Promise<Sitemap> => {
       title: 'Changelog',
       items: changelogPages.map((item) => ({
         title: item.data.id,
-        href: path.join('/docs', item.collection, item.data.id),
+        href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
   ]
