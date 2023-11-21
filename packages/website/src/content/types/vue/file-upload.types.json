@@ -73,6 +73,7 @@
       "description": "Function called when the value changes"
     }
   },
+  "Item": { "file": { "type": "File", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
