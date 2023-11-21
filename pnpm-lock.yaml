@@ -293,8 +293,8 @@ importers:
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
       '@types/jsdom':
-        specifier: 21.1.5
-        version: 21.1.5
+        specifier: 21.1.6
+        version: 21.1.6
       '@types/react':
         specifier: 18.2.37
         version: 18.2.37
@@ -495,8 +495,8 @@ importers:
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
       '@types/jsdom':
-        specifier: 21.1.5
-        version: 21.1.5
+        specifier: 21.1.6
+        version: 21.1.6
       '@types/testing-library__jest-dom':
         specifier: 5.14.9
         version: 5.14.9
@@ -676,8 +676,8 @@ importers:
         specifier: 8.0.1
         version: 8.0.1(@vue/compiler-sfc@3.3.7)(vue@3.3.4)
       '@types/jsdom':
-        specifier: 21.1.5
-        version: 21.1.5
+        specifier: 21.1.6
+        version: 21.1.6
       '@types/testing-library__jest-dom':
         specifier: 5.14.9
         version: 5.14.9
@@ -7724,8 +7724,8 @@ packages:
       pretty-format: 29.7.0
     dev: true
 
-  /@types/jsdom@21.1.5:
-    resolution: {integrity: sha512-sBK/3YjS3uuPj+HzZyhB4GGTnFmk0mdyQfhzZ/sqs9ciyG41QJdZZdwcPa6OfW97OTNTwl5tBAsfEOm/dui9pQ==}
+  /@types/jsdom@21.1.6:
+    resolution: {integrity: sha512-/7kkMsC+/kMs7gAYmmBR9P0vGTnOoLhQhyhQJSlXGI5bzTHp6xdo0TtKWQAsz6pmSAeVqKSbqeyP6hytqr9FDw==}
     dependencies:
       '@types/node': 18.18.8
       '@types/tough-cookie': 4.0.3
