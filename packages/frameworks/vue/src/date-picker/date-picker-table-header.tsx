@@ -1,0 +1,20 @@
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerTableContext } from './date-picker-table-context'
+
+export interface DatePickerTableHeaderProps extends HTMLArkProps<'th'> {}
+
+export const DatePickerTableHeader = defineComponent({
+  name: 'DatePickerTableHeader',
+  setup(_, { attrs, slots }) {
+    const api = useDatePickerContext()
+    const table = useDatePickerTableContext()
+
+    return () => (
+      <ark.th {...api.value.getTableHeaderProps(table)} {...attrs}>
+        {slots.default?.()}
+      </ark.th>
+    )
+  },
+})
