@@ -5,11 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseCheckboxProps = Optional<checkbox.Context, 'id'> & {
+export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
   modelValue?: checkbox.Context['value']
 }
 
-export type UseCheckboxReturn = ComputedRef<checkbox.Api<PropTypes>>
+export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (emit: CallableFunction, context: UseCheckboxProps) => {
   const reactiveContext = reactive(context)

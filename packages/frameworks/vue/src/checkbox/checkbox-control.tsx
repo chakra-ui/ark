@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { useCheckboxContext } from './checkbox-context'
 
-export type CheckboxControlProps = HTMLArkProps<'div'>
+export interface CheckboxControlProps extends HTMLArkProps<'div'> {}
 
 export const CheckboxControl: ComponentWithProps<CheckboxControlProps> = defineComponent({
   name: 'CheckboxControl',
