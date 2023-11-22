@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarImageProps = HTMLArkProps<'img'>
+export interface AvatarImageProps extends HTMLArkProps<'img'> {}
 
 export const AvatarImage: ComponentWithProps<AvatarImageProps> = defineComponent({
   name: 'AvatarImage',

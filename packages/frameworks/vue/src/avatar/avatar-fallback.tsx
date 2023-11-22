@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { ComponentWithProps } from '../utils'
 import { useAvatarContext } from './avatar-context'
 
-export type AvatarFallbackProps = HTMLArkProps<'span'>
+export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
 
 export const AvatarFallback: ComponentWithProps<AvatarFallbackProps> = defineComponent({
   name: 'AvatarFallback',

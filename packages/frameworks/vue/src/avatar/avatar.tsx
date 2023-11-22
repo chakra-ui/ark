@@ -5,7 +5,7 @@ import { AvatarProvider } from './avatar-context'
 import { emits, props } from './avatar.props'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export type AvatarProps = Assign<HTMLArkProps<'div'>, UseAvatarProps>
+export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
 export const Avatar = defineComponent({
   name: 'Avatar',
