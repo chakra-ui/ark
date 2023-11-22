@@ -6,7 +6,7 @@ import { getValidChildren } from '../utils'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface AccordionItemContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const AccordionItemContent = defineComponent({
   name: 'AccordionItemContent',

@@ -4,7 +4,7 @@ import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider, type AccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemProps = Assign<AccordionItemContext, HTMLArkProps<'div'>>
+export interface AccordionItemProps extends Assign<AccordionItemContext, HTMLArkProps<'div'>> {}
 
 export const AccordionItem = defineComponent({
   name: 'AccordionItem',

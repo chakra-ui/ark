@@ -5,10 +5,10 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseAccordionProps = Optional<accordion.Context, 'id'> & {
+export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
   modelValue?: accordion.Context['value']
 }
-export type UseAccordionReturn = ComputedRef<accordion.Api<PropTypes>>
+export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (
   props: UseAccordionProps,

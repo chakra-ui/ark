@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemTriggerProps = HTMLArkProps<'button'>
+export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
 export const AccordionItemTrigger = defineComponent({
   name: 'AccordionItemTrigger',

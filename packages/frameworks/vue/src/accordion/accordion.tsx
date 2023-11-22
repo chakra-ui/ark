@@ -5,7 +5,7 @@ import { AccordionProvider } from './accordion-context'
 import { emits, props } from './accordion.props'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
+export interface AccordionProps extends Assign<HTMLArkProps<'div'>, UseAccordionProps> {}
 
 export const Accordion = defineComponent({
   name: 'Accordion',
