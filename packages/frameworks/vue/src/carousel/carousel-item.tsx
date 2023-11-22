@@ -4,7 +4,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
+export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const CarouselItem = defineComponent({
   name: 'CarouselItem',

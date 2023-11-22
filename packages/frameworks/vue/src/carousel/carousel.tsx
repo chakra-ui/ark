@@ -5,7 +5,7 @@ import { CarouselProvider } from './carousel-context'
 import { emits, props } from './carousel.props'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 
-export type CarouselProps = Assign<HTMLArkProps<'div'>, UseCarouselProps>
+export interface CarouselProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
 
 export const Carousel = defineComponent({
   name: 'Carousel',

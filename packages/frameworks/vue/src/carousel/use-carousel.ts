@@ -5,8 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseCarouselProps = Optional<carousel.Context, 'id'>
-export type UseCarouselReturn = ComputedRef<carousel.Api<PropTypes>>
+export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}
+export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()

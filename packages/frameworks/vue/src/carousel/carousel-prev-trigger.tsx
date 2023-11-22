@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselPrevTriggerProps = HTMLArkProps<'button'>
+export interface CarouselPrevTriggerProps extends HTMLArkProps<'button'> {}
 
 export const CarouselPrevTrigger = defineComponent({
   name: 'CarouselPrevTrigger',

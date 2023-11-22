@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselItemGroupProps = HTMLArkProps<'div'>
+export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 
 export const CarouselItemGroup = defineComponent({
   name: 'CarouselItemGroup',
