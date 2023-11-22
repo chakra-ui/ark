@@ -19,7 +19,7 @@ export const DatePicker = defineComponent({
     return () => (
       // <Presence {...props} present={props.present !== undefined ? props.present : api.value.isOpen}>
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api)}
+        {slots.default?.(api.value)}
       </ark.div>
       // </Presence>
     )

@@ -24,7 +24,7 @@ export const DatePickerTable = defineComponent({
 
     return () => (
       <ark.table {...api.value.getTableProps(props)} {...attrs}>
-        {slots.default?.(api)}
+        {slots.default?.(api.value)}
       </ark.table>
     )
   },

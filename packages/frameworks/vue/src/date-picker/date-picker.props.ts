@@ -73,6 +73,7 @@ export const props = {
   },
   view: {
     type: String as PropType<Context['view']>,
+    default: 'day',
   },
 }
 export const emits = declareEmits([

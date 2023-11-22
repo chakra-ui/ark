@@ -1,5 +1,4 @@
 import type { DayTableCellProps, TableCellProps } from '@zag-js/date-picker'
-import type { ComputedRef } from 'vue'
 import { createContext } from '../context'
 
 type Union<T, U> = {
@@ -8,7 +7,7 @@ type Union<T, U> = {
 
 type CellProps = Union<DayTableCellProps, TableCellProps>
 
-export interface DatePickerTableCellContext extends ComputedRef<CellProps> {}
+export interface DatePickerTableCellContext extends CellProps {}
 
 export const [DatePickerTableCellProvider, useDatePickerTableCellContext] =
   createContext<DatePickerTableCellContext>('DatePickerTableCellContext')
