@@ -1,7 +1,7 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getParts } from '../setup-test'
-import { Basic as ComponentUnderTest } from './date-picker.stories'
+import { getParts } from '../../setup-test'
+import ComponentUnderTest from './date-picker.test.vue'
 
 describe('Date Picker', () => {
   it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
