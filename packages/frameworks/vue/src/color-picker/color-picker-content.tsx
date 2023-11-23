@@ -3,7 +3,6 @@ import { ark, type HTMLArkProps } from '../factory'
 import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import type { Assign } from '../types'
-import { getValidChildren } from '../utils'
 import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
@@ -18,7 +17,7 @@ export const ColorPickerContent = defineComponent({
     return () => (
       <Presence {...props} present={props.present !== undefined ? props.present : api.value.isOpen}>
         <ark.div {...api.value.contentProps} {...attrs}>
-          {() => getValidChildren(slots)}
+          {slots.default?.()}
         </ark.div>
       </Presence>
     )
