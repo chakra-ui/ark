@@ -13,7 +13,7 @@ export default meta
 
 export const Basic = () => {
   return (
-    <Slider>
+    <Slider.Root>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -22,7 +22,7 @@ export const Basic = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
 
@@ -88,7 +88,7 @@ export const InitialValue = () => (
 
 export const MinMax = () => {
   return (
-    <Slider min={-10} max={10}>
+    <Slider.Root min={-10} max={10}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -97,13 +97,13 @@ export const MinMax = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
 
 export const Step = () => {
   return (
-    <Slider step={0.01} min={5} max={10}>
+    <Slider.Root step={0.01} min={5} max={10}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -112,13 +112,13 @@ export const Step = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
 
 export const OnEvent = () => {
   return (
-    <Slider
+    <Slider.Root
       onValueChange={(details) => console.log(details.value)}
       onValueChangeEnd={(details) => console.log(details.value)}
     >
@@ -130,13 +130,13 @@ export const OnEvent = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
 
 export const Vertical = () => {
   return (
-    <Slider orientation="vertical">
+    <Slider.Root orientation="vertical">
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -145,13 +145,13 @@ export const Vertical = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
 
 export const CenterOrigin = () => {
   return (
-    <Slider origin="center">
+    <Slider.Root origin="center">
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -160,6 +160,6 @@ export const CenterOrigin = () => {
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
       </Slider.Control>
-    </Slider>
+    </Slider.Root>
   )
 }
