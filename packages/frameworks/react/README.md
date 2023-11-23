@@ -62,22 +62,35 @@ To use a component from `@ark-ui/react`, import it and include it in your applic
 
 ```tsx
 import { Slider, type SliderProps } from '@ark-ui/react'
+import { useState } from 'react'
 
-export const MySlider = (props: SliderProps) => (
-  <Slider.Root min={0} max={100} defaultValue={[33]} {...props}>
-    <Slider.Control>
-      <Slider.Track>
-        <Slider.Range />
-      </Slider.Track>
-      <Slider.Thumb index={0} />
-    </Slider.Control>
-    <Slider.MarkerGroup>
-      <Slider.Marker value={25}>25</Slider.Marker>
-      <Slider.Marker value={50}>50</Slider.Marker>
-      <Slider.Marker value={75}>75</Slider.Marker>
-    </Slider.MarkerGroup>
-  </Slider.Root>
-)
+export const MySlider = (props: SliderProps) => {
+  const [value, setValue] = useState([42])
+
+  return (
+    <Slider.Root
+      min={0}
+      max={100}
+      value={value}
+      onValueChange={(e) => setValue(e.value)}
+      {...props}
+    >
+      <Slider.Label>Label</Slider.Label>
+      <Slider.ValueText />
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb key={0} index={0} />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={25}>25</Slider.Marker>
+        <Slider.Marker value={50}>50</Slider.Marker>
+        <Slider.Marker value={75}>75</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
+  )
+}
 ```
 
 ## Documentation

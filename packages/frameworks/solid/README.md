@@ -61,31 +61,34 @@ yarn add @ark-ui/solid
 To use a component from `@ark-ui/solid`, import it and include it in your application:
 
 ```tsx
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/solid'
+import { Slider, type SliderProps } from '@ark-ui/solid'
 import { createSignal } from 'solid-js'
 
-export const MySlider = () => {
-  const [value, setValue] = createSignal(30)
+export const MySlider = (props: SliderProps) => {
+  const [value, setValue] = createSignal([42])
 
   return (
-    <Slider min={-50} max={50} value={value()} onChange={(e) => setValue(e.value)}>
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-    </Slider>
+    <Slider.Root
+      min={0}
+      max={100}
+      value={value()}
+      onValueChange={(e) => setValue(e.value)}
+      {...props}
+    >
+      <Slider.Label>Label</Slider.Label>
+      <Slider.ValueText />
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb index={0} />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={25}>25</Slider.Marker>
+        <Slider.Marker value={50}>50</Slider.Marker>
+        <Slider.Marker value={75}>75</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 ```

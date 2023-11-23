@@ -61,36 +61,27 @@ To use a component from `@ark-ui/vue`, import it and include it in your applicat
 
 ```vue
 <script setup lang="ts">
+import { Slider, type SliderProps } from '@ark-ui/vue'
 import { ref } from 'vue'
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-  type SliderProps,
-} from '@ark-ui/vue'
 
-const sliderValue = ref<SliderProps['modelValue']>(30)
+const sliderValue = ref<SliderProps['modelValue']>([42])
 </script>
 <template>
-  <Slider :min="-50" :max="50" v-model="sliderValue">
-    <SliderLabel>Label</SliderLabel>
-    <SliderValueText />
-    <SliderControl>
-      <SliderTrack>
-        <SliderRange />
-      </SliderTrack>
-      <SliderThumb />
-    </SliderControl>
-    <SliderMarkerGroup>
-      <SliderMarker :value="25">25</SliderMarker>
-      <SliderMarker :value="50">50</SliderMarker>
-      <SliderMarker :value="75">75</SliderMarker>
-    </SliderMarkerGroup>
-  </Slider>
+  <Slider.Root :min="0" :max="100" v-model="sliderValue">
+    <Slider.Label>Label</Slider.Label>
+    <Slider.ValueText />
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb :key="0" :index="0" />
+    </Slider.Control>
+    <Slider.MarkerGroup>
+      <Slider.Marker :value="25">25</Slider.Marker>
+      <Slider.Marker :value="50">50</Slider.Marker>
+      <Slider.Marker :value="75">75</Slider.Marker>
+    </Slider.MarkerGroup>
+  </Slider.Root>
 </template>
 ```
 
