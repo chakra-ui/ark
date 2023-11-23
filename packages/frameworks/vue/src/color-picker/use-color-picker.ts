@@ -24,6 +24,8 @@ export const useColorPicker = (
     }
   })
 
+  console.log(context.value)
+
   const [state, send] = useMachine(
     colorPicker.machine({
       ...context.value,
@@ -36,6 +38,10 @@ export const useColorPicker = (
         emit('open-change', details)
       },
       onValueChange(details) {
+        console.log('value change')
+        console.log(details)
+        // console.log('value')
+        // console.log(details.value)
         emit('value-change', details)
         emit('update:modelValue', details.value)
       },
