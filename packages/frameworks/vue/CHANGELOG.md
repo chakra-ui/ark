@@ -16,8 +16,12 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Revised `Accordion` component
+- Revised `Avatar` component
+- Revised `Carousel` component
+- Revised `Checkbox` component
+- Revised `ColorPicker` component
 - Revised `Combobox` component
-- Revised `Pressable` component
 - Revised `Select` component
 
 ### Fixed
@@ -36,6 +40,8 @@ import { accordionAnatomy } from '@ark-ui/vue'
 import { accordionAnatomy } from '@ark-ui/anatomy' // or
 import { anatomy } from '@ark-ui/anatomy/accordion'
 ```
+
+- Removed `Pressable` component
 
 ## [0.8.0] - 2023-09-08
 
