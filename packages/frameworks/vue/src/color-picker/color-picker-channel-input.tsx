@@ -26,11 +26,21 @@ export const ColorPickerChannelInput = defineComponent({
       orientation: props.orientation,
     }))
 
+    try {
+      console.log('channel input', api.value)
+      console.log('try', api.value.getChannelInputProps(channelProps.value))
+    } catch (error) {
+      /* empty */
+    }
+
     const inputProps = computed(() => ({
       ...api.value.getChannelInputProps(channelProps.value),
       modelValue: api.value.value,
     }))
 
-    return () => <ark.input {...inputProps.value} {...attrs} />
+    console.log('input props', { ...inputProps.value })
+
+    // return () => <ark.input {...inputProps.value} {...attrs} />
+    return () => <ark.input placeholder="testttt" {...attrs} />
   },
 })

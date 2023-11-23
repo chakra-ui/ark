@@ -11,7 +11,7 @@ const value = ref('hsl(20, 100%, 50%)')
       <ColorPicker.Root #default="api" :modelValue="'#eb5e41'">
         <ColorPicker.Label>Color</ColorPicker.Label>
         <ColorPicker.Control>
-          <!-- <ColorPicker.ChannelInput channel="hex" /> -->
+          <ColorPicker.ChannelInput channel="hex" />
           <!-- <ColorPicker.ChannelInput channel="alpha" /> -->
           <ColorPicker.ValueText />
           <ColorPicker.Trigger>
