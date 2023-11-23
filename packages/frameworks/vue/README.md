@@ -30,6 +30,7 @@ Ark UI is available for the following JavaScript frameworks:
 - [Radio Group](https://ark-ui.com/docs/components/radio-group)
 - [Range Slider](https://ark-ui.com/docs/components/slider)
 - [Rating Group](https://ark-ui.com/docs/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/components/segment-group)
 - [Select](https://ark-ui.com/docs/components/select)
 - [Slider](https://ark-ui.com/docs/components/slider)
 - [Splitter](https://ark-ui.com/docs/components/splitter)
