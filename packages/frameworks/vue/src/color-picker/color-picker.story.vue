@@ -11,8 +11,8 @@ const value = ref('hsl(20, 100%, 50%)')
       <ColorPicker.Root #default="api" :modelValue="'#eb5e41'">
         <ColorPicker.Label>Color</ColorPicker.Label>
         <ColorPicker.Control>
-          <ColorPicker.ChannelInput channel="hex" />
-          <ColorPicker.ChannelInput channel="alpha" />
+          <!-- <ColorPicker.ChannelInput channel="hex" /> -->
+          <!-- <ColorPicker.ChannelInput channel="alpha" /> -->
           <ColorPicker.ValueText />
           <ColorPicker.Trigger>
             <ColorPicker.TransparencyGrid />
@@ -54,13 +54,15 @@ const value = ref('hsl(20, 100%, 50%)')
               </ColorPicker.SwatchTrigger>
             </ColorPicker.SwatchGroup>
             <ColorPicker.View format="rgba">
-              <ColorPicker.ChannelInput channel="hex" />
-              <ColorPicker.ChannelInput channel="alpha" />
+              rgba view
+              <!-- <ColorPicker.ChannelInput channel="hex" />
+              <ColorPicker.ChannelInput channel="alpha" /> -->
             </ColorPicker.View>
             <ColorPicker.View format="hsla">
-              <ColorPicker.ChannelInput channel="hue" />
+              hsla view
+              <!-- <ColorPicker.ChannelInput channel="hue" />
               <ColorPicker.ChannelInput channel="saturation" />
-              <ColorPicker.ChannelInput channel="lightness" />
+              <ColorPicker.ChannelInput channel="lightness" /> -->
             </ColorPicker.View>
             <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
           </ColorPicker.Content>
