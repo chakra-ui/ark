@@ -78,7 +78,7 @@
     "eslint": "8.54.0",
     "eslint-plugin-vue": "9.18.1",
     "globby": "14.0.0",
-    "histoire": "0.17.5",
+    "histoire": "0.17.6",
     "lucide-vue-next": "0.293.0",
     "jsdom": "22.1.0",
     "release-it": "17.0.0",
