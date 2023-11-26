@@ -11,8 +11,10 @@ export const ColorPickerFormatSelect = defineComponent({
 
     return () => (
       <ark.select {...api.value.formatSelectProps} {...attrs}>
-        {['hex', 'rgb', 'hsl'].map((format) => (
-          <ark.option value={format}>{format}</ark.option>
+        {['rgba', 'hsla', 'hsba'].map((format) => (
+          <ark.option key={format} value={format}>
+            {format}
+          </ark.option>
         ))}
       </ark.select>
     )
