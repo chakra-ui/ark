@@ -3,7 +3,8 @@ import { createContext } from '../create-context'
 
 export interface RadioGroupItemContext extends ItemProps {}
 
-export const [RadioProvider, useRadioGroupItemContext] = createContext<RadioGroupItemContext>({
-  hookName: 'useRadioGroupItemContext',
-  providerName: '<RadioProvider />',
-})
+export const [RadioGroupItemProvider, useRadioGroupItemContext] =
+  createContext<RadioGroupItemContext>({
+    hookName: 'useRadioGroupItemContext',
+    providerName: '<RadioGroupItemProvider />',
+  })

@@ -13,6 +13,7 @@ export default meta
 
 export const Basic = () => {
   const frameworks = ['React', 'Solid', 'Vue']
+
   return (
     <RadioGroup.Root>
       <RadioGroup.Label>Framework</RadioGroup.Label>
@@ -29,6 +30,7 @@ export const Basic = () => {
 
 export const Disabled = () => {
   const frameworks = ['React', 'Solid', 'Vue']
+
   return (
     <RadioGroup.Root disabled>
       <RadioGroup.Label>Framework</RadioGroup.Label>
@@ -44,6 +46,7 @@ export const Disabled = () => {
 
 export const InitialValue = () => {
   const frameworks = ['React', 'Solid', 'Vue']
+
   return (
     <RadioGroup.Root defaultValue="Solid">
       <RadioGroup.Label>Framework</RadioGroup.Label>
@@ -59,6 +62,7 @@ export const InitialValue = () => {
 
 export const OnEvent = () => {
   const frameworks = ['React', 'Solid', 'Vue']
+
   return (
     <RadioGroup.Root onValueChange={(details) => console.log(details.value)}>
       <RadioGroup.Label>Framework</RadioGroup.Label>

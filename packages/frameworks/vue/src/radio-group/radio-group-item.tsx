@@ -5,7 +5,7 @@ import type { Assign } from '../types'
 import { useRadioGroupContext } from './radio-group-context'
 import { RadioGroupItemProvider } from './radio-group-item-context'
 
-export type RadioGroupItemProps = Assign<HTMLArkProps<'label'>, ItemProps>
+export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
 export const RadioGroupItem = defineComponent({
   name: 'RadioGroupItem',
