@@ -15,7 +15,7 @@ import {
 export interface SegmentGroupItemProps
   extends Assign<
       HTMLArkProps<'label'>,
-      { children?: ReactNode | ((state: ItemState) => ReactNode) }
+      { children?: ((state: ItemState) => ReactNode) | ReactNode }
     >,
     SegmentGroupItemContext {}
 
@@ -37,7 +37,7 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const view = runIfFn(children, itemState)
 
     return (
-      <SegmentGroupItemProvider value={props}>
+      <SegmentGroupItemProvider value={itemProps}>
         <ark.label {...mergedProps} ref={ref}>
           {view}
         </ark.label>

@@ -10,7 +10,7 @@ import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 export interface SegmentGroupProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
 export const SegmentGroup = forwardRef<HTMLDivElement, SegmentGroupProps>((props, ref) => {
-  const [useSegmentGroupProps, divProps] = createSplitProps<UseSegmentGroupProps>()(props, [
+  const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'defaultValue',
     'dir',
     'disabled',
@@ -27,7 +27,7 @@ export const SegmentGroup = forwardRef<HTMLDivElement, SegmentGroupProps>((props
   const mergedProps = mergeProps(
     api.rootProps,
     segmentGroupAnatomy.build().root.attrs as Record<string, string>,
-    divProps,
+    localProps,
   )
 
   return (
