@@ -18,15 +18,11 @@ export const useColorPicker = (
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
-    console.log('context', modelValue)
-    modelValue ? console.log('parsed', colorPicker.parse(modelValue)) : null
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,
     }
   })
-
-  console.log('context value', context.value)
 
   const [state, send] = useMachine(
     colorPicker.machine({
@@ -40,7 +36,6 @@ export const useColorPicker = (
         emit('open-change', details)
       },
       onValueChange(details) {
-        console.log('value change', details)
         emit('value-change', details)
         emit('update:modelValue', details.valueAsString)
       },
