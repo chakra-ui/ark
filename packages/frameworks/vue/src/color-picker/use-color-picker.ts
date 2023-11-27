@@ -42,7 +42,7 @@ export const useColorPicker = (
       onValueChange(details) {
         console.log('value change', details)
         emit('value-change', details)
-        emit('update:modelValue', details.value)
+        emit('update:modelValue', details.valueAsString)
       },
       onValueChangeEnd(details) {
         emit('value-change-end', details)
