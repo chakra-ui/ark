@@ -1,3 +1,5 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
+import type { ItemState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
@@ -7,10 +9,8 @@ import type { Assign } from '../types'
 import { useSegmentGroupContext } from './segment-group-context'
 import {
   SegmentGroupItemProvider,
-  type ItemState,
   type SegmentGroupItemContext,
 } from './segment-group-item-context'
-import { parts } from './segment-group.anatomy'
 
 export interface SegmentGroupItemProps
   extends Assign<
@@ -29,7 +29,7 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const api = useSegmentGroupContext()
     const mergedProps = mergeProps(
       api.getItemProps(itemProps),
-      parts.item.attrs as Record<string, string>,
+      segmentGroupAnatomy.build().item.attrs as Record<string, string>,
       localProps,
     )
 
