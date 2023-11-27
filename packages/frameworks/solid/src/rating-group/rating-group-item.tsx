@@ -19,14 +19,15 @@ export interface RatingGroupItemProps
 
 export const RatingGroupItem = (props: RatingGroupItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+
   const api = useRatingGroupContext()
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
+
   const itemState = createMemo(() => api().getItemState(itemProps))
   const getChildren = () => runIfFn(localProps.children, itemState)
 
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
-
   return (
-    <RatingGroupItemProvider value={itemState}>
+    <RatingGroupItemProvider value={itemProps}>
       <ark.span {...mergedProps}>{getChildren()}</ark.span>
     </RatingGroupItemProvider>
   )

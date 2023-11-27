@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import React from 'react'
+import { useState } from 'react'
 import { RatingGroup } from './'
 
 type RatingGroupType = typeof RatingGroup
@@ -67,7 +67,7 @@ export const InitialValue = () => (
 )
 
 export const Controlled = () => {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = useState(0)
 
   return (
     <RatingGroup.Root

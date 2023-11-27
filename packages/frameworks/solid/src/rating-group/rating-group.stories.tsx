@@ -9,8 +9,8 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <RatingGroup.Root count={5}>
-    <RatingGroup.Label>GroupLabel</RatingGroup.Label>
+  <RatingGroup.Root count={5} value={3}>
+    <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
         <Index each={api().items}>
@@ -45,7 +45,7 @@ export const HalfRatings = () => (
 )
 
 export const InitialValue = () => (
-  <RatingGroup.Root count={5} value={2}>
+  <RatingGroup.Root count={5} value={2} readOnly>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (

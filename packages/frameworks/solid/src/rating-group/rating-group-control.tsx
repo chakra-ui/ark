@@ -14,8 +14,9 @@ export interface RatingGroupControlProps
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const api = useRatingGroupContext()
-  const getChildren = () => runIfFn(props.children, api)
   const mergedProps = mergeProps(() => api().controlProps, props)
+
+  const getChildren = () => runIfFn(props.children, api)
 
   return (
     <>

@@ -1,8 +1,7 @@
-import { type ItemState } from '@zag-js/rating-group'
-import type { Accessor } from 'solid-js'
+import { type ItemProps } from '@zag-js/rating-group'
 import { createContext } from '../create-context'
 
-export interface RatingGroupItemContext extends Accessor<ItemState> {}
+export interface RatingGroupItemContext extends ItemProps {}
 
 export const [RatingGroupItemProvider, useRatingGroupItemContext] =
   createContext<RatingGroupItemContext>({
