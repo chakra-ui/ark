@@ -33,13 +33,17 @@ start and end date:
 
 <Story id="RangeWithSingleGrid" />
 
-### Range Selection with Two Grids
+### Standalone Date Picker
 
-In some cases, you might want to display two consecutive months at the same time
-to facilitate a broader range selection. This can be achieved by setting the
-`numOfMonths` prop to `2`:
+In some cases, you might want to display a non-dismissable date picker. This can
+be achieved by setting the `open` prop to `true` and `closeOnSelect` prop to
+`false`.
 
-<Story id="RangeWithTwoGrids" />
+Additionaly, you may want to display two consecutive months at the same time to
+facilitate a broader range selection. You can do it by setting the `numOfMonths`
+prop to `2`:
+
+<Story id="Standalone" />
 
 ## API Reference
 
