@@ -32,7 +32,7 @@ export const Combobox = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },

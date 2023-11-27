@@ -17,7 +17,7 @@ export const Switch = defineComponent({
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.label>
     )
   },

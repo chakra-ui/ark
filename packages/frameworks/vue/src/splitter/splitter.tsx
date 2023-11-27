@@ -1,7 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren } from '../utils'
 import { SplitterProvider } from './splitter-context'
 import { emits, props } from './splitter.props'
 import { useSplitter, type UseSplitterProps } from './use-splitter'
@@ -18,7 +17,7 @@ export const Splitter = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

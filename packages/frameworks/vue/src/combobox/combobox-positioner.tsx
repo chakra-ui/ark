@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxPositionerProps = HTMLArkProps<'div'>
@@ -12,7 +11,7 @@ export const ComboboxPositioner = defineComponent({
 
     return () => (
       <ark.ul {...api.value.positionerProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.ul>
     )
   },

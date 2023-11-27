@@ -12,7 +12,7 @@ export const RatingGroupControl: ComponentWithProps<RatingGroupControlProps> = d
 
     return () => (
       <ark.div {...api.value.controlProps} {...attrs}>
-        {slots.default?.({ ...api.value })}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },

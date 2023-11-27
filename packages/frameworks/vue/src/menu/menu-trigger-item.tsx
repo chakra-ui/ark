@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useMenuTriggerItemContext } from './menu-context'
 
 export type MenuTriggerItemProps = HTMLArkProps<'div'>
@@ -12,7 +12,7 @@ export const MenuTriggerItem: ComponentWithProps<MenuTriggerItemProps> = defineC
 
     return () => (
       <ark.div {...getTriggerItemProps()} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

@@ -1,6 +1,5 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useEditableContext } from './editable-context'
 
 export type EditableInputProps = HTMLArkProps<'input'>
@@ -17,7 +16,7 @@ export const EditableInput = defineComponent({
 
     return () => (
       <ark.input {...inputProps.value} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.input>
     )
   },

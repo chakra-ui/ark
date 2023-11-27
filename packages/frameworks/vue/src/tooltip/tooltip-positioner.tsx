@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipPositionerProps = HTMLArkProps<'div'>
@@ -12,7 +11,7 @@ export const TooltipPositioner = defineComponent({
 
     return () => (
       <ark.div {...api.value.positionerProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

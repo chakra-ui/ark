@@ -1,6 +1,5 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
 export type ComboboxInputProps = HTMLArkProps<'input'>
@@ -17,7 +16,7 @@ export const ComboboxInput = defineComponent({
 
     return () => (
       <ark.input {...inputProps.value} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.input>
     )
   },

@@ -17,7 +17,7 @@ export const RadioGroup = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.()}
+        {slots.default?.()}
       </ark.div>
     )
   },

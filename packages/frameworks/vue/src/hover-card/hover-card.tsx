@@ -15,6 +15,6 @@ export const HoverCard = defineComponent({
     const api = useHoverCard(props, emit)
     HoverCardProvider(api)
 
-    return () => slots?.default?.(api.value)
+    return () => slots.default?.(api.value)
   },
 })

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { usePopoverContext } from './popover-context'
 
 export type PopoverArrowProps = HTMLArkProps<'div'>
@@ -12,7 +12,7 @@ export const PopoverArrow: ComponentWithProps<PopoverArrowProps> = defineCompone
 
     return () => (
       <ark.div {...api.value.arrowProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

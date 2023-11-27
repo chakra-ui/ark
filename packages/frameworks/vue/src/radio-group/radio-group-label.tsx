@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useRadioGroupContext } from './radio-group-context'
 
 export type RadioGroupLabelProps = HTMLArkProps<'label'>
@@ -12,7 +12,7 @@ export const RadioGroupLabel: ComponentWithProps<RadioGroupLabelProps> = defineC
 
     return () => (
       <ark.label {...groupApi.value.labelProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.label>
     )
   },

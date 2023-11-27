@@ -30,7 +30,7 @@ export const RadioGroupItem = defineComponent({
 
     return () => (
       <ark.label {...api.value.getItemProps(props)} {...attrs}>
-        {() => slots?.default?.(api.value.getItemState(props))}
+        {slots.default?.(api.value.getItemState(props))}
       </ark.label>
     )
   },

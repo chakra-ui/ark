@@ -23,7 +23,7 @@ export const ComboboxItem = defineComponent({
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots?.default?.(itemState)}
+        {slots.default?.(itemState)}
       </ark.div>
     )
   },

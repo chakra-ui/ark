@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputLabelProps = HTMLArkProps<'label'>
@@ -12,7 +12,7 @@ export const NumberInputLabel: ComponentWithProps<NumberInputLabelProps> = defin
 
     return () => (
       <ark.label {...api.value.labelProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.label>
     )
   },
