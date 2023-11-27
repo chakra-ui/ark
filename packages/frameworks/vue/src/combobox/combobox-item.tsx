@@ -5,7 +5,7 @@ import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxItemProvider } from './combobox-item-context'
 
-export type ComboboxItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
+export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const ComboboxItem = defineComponent({
   name: 'ComboboxItem',

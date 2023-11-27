@@ -1,6 +1,7 @@
 import type { ItemProps } from '@zag-js/combobox'
 import { createContext } from '../context'
 
-export type ComboboxItemContext = ItemProps
+export interface ComboboxItemContext extends ItemProps {}
+
 export const [ComboboxItemProvider, useComboboxItemContext] =
   createContext<ComboboxItemContext>('ComboboxItemContext')
