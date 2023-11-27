@@ -8,35 +8,6 @@ import { SegmentGroupItemProvider } from './segment-group-item-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
-// export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>(
-//   (props, ref) => {
-//     const [itemProps, { children, ...localProps }] = createSplitProps<SegmentGroupItemContext>()(
-//       props,
-//       ['value', 'disabled', 'invalid'],
-//     )
-
-//     const api = useSegmentGroupContext()
-//     const mergedProps = mergeProps(
-//       api.getItemProps(itemProps),
-//       parts.item.attrs as Record<string, string>,
-//       localProps,
-//     )
-
-//     const itemState = api.getItemState(itemProps)
-//     const view = runIfFn(children, itemState)
-
-//     return (
-//       <SegmentGroupItemProvider value={props}>
-//         <ark.label {...mergedProps} ref={ref}>
-//           {view}
-//         </ark.label>
-//       </SegmentGroupItemProvider>
-//     )
-//   },
-// )
-
-// SegmentGroupItem.displayName = 'SegmentGroupItem'
-
 export const SegmentGroupItem = defineComponent({
   name: 'SegmentGroupItem',
   props: {
