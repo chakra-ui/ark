@@ -48,7 +48,7 @@ describe('Accordion', () => {
     )
   })
 
-  it.skip('should disable all items when disabled is true', async () => {
+  it('should disable all items when disabled is true', async () => {
     render(ComponentUnderTest, { props: { disabled: true } })
     expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('disabled')
   })
