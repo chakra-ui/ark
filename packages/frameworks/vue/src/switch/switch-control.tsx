@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchControlProps = HTMLArkProps<'span'>
+export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 
-export const SwitchControl: ComponentWithProps<SwitchControlProps> = defineComponent({
+export const SwitchControl = defineComponent({
   name: 'SwitchControl',
   setup(_, { slots, attrs }) {
     const api = useSwitchContext()
