@@ -17,7 +17,7 @@ export interface SwitchProps
   > {}
 
 export const Switch = (props: SwitchProps) => {
-  const [switchProps, labelProps] = createSplitProps<UseSwitchProps>()(props, [
+  const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'dir',
     'disabled',
@@ -33,7 +33,8 @@ export const Switch = (props: SwitchProps) => {
     'value',
   ])
   const api = useSwitch(switchProps)
-  const mergedProps = mergeProps(() => api().rootProps, labelProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+
   const getChildren = () => runIfFn(props.children, api)
 
   return (
