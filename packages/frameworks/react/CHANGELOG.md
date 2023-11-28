@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
+
 ## [1.1.0] - 2023-11-21
 
 ### Added

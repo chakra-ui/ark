@@ -55,7 +55,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>((props, 
       'value',
     ])
   const api = useColorPicker(useColorPickerProps)
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 

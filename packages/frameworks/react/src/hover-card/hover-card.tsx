@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/react'
 import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
@@ -13,7 +14,7 @@ export interface HoverCardProps extends UseHoverCardProps, UsePresenceProps {
 export const HoverCard = (props: HoverCardProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const api = useHoverCard(localProps)
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
 
   return (

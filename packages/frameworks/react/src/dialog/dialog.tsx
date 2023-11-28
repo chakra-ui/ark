@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/core'
 import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
 import { PresencePropsProvider, PresenceProvider, usePresence } from '../presence'
@@ -13,7 +14,7 @@ export interface DialogProps extends UseDialogProps, UsePresenceProps {
 export const Dialog = (props: DialogProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const api = useDialog(localProps)
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
 
   return (

@@ -1,3 +1,4 @@
+import { mergeProps } from '@zag-js/react'
 import { useCallback, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import {
@@ -47,7 +48,7 @@ export const Menu = (props: MenuProps) => {
   const parentApi = useMenuContext() as UseMenuReturn['api']
   const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
   const { api, machine } = useMenu(useMenuProps)
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(localProps.children, api)
 
   useEffectOnce(() => {
