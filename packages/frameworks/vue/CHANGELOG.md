@@ -23,6 +23,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `ColorPicker` component
 - Revised `Combobox` component
 - Revised `RadioGroup` component
+- Revised `RatingGroup` component
 - Revised `Select` component
 
 ### Fixed
