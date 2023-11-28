@@ -1,35 +1,44 @@
-import { connect, machine } from '@zag-js/rating-group'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as rating from '@zag-js/rating-group'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { RatingGroupContext } from './rating-group'
 
-export const useRatingGroup = <T extends ExtractPropTypes<RatingGroupContext>>(
+export interface UseRatingGroupProps extends Optional<rating.Context, 'id'> {
+  modelValue?: rating.Context['value']
+}
+
+export interface UseRatingGroupReturn extends ComputedRef<rating.Api<PropTypes>> {}
+
+export const useRatingGroup = (
+  props: UseRatingGroupProps,
   emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
+): UseRatingGroupReturn => {
   const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    rating.machine({
+      ...context.value,
+      id: context.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onValueChange(details) {
-        emit('change', details)
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
       onHoverChange(details) {
         emit('hover-change', details)
       },
     }),
+    { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => rating.connect(state.value, send, normalizeProps))
 }
-
-export type UseRatingGroupReturn = ReturnType<typeof useRatingGroup>

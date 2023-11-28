@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useRatingGroupContext } from './rating-group-context'
 
-export type RatingGroupLabelProps = HTMLArkProps<'label'>
+export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const RatingGroupLabel: ComponentWithProps<RatingGroupLabelProps> = defineComponent({
+export const RatingGroupLabel = defineComponent({
   name: 'RatingGroupLabel',
   setup(_, { slots, attrs }) {
     const api = useRatingGroupContext()
