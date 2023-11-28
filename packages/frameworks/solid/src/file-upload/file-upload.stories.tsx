@@ -22,7 +22,7 @@ export const Basic = () => (
         <For each={files()}>
           {(file) => (
             <FileUpload.Item file={file}>
-              <FileUpload.ItemPreview />
+              <FileUpload.ItemPreviewImage />
               <FileUpload.ItemName />
               <FileUpload.ItemSizeText />
               <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>

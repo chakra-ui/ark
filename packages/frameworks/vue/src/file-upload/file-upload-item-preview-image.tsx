@@ -3,10 +3,10 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useFileUploadContext } from './file-upload-context'
 import { useFileUploadItemContext } from './file-upload-item-context'
 
-export interface FileUploadItemPreviewProps extends HTMLArkProps<'img'> {}
+export interface FileUploadItemPreviewImageProps extends HTMLArkProps<'img'> {}
 
-export const FileUploadItemPreview = defineComponent({
-  name: 'FileUploadItemPreview',
+export const FileUploadItemPreviewImage = defineComponent({
+  name: 'FileUploadItemPreviewImage',
   setup(_, { attrs }) {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()

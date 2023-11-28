@@ -17,7 +17,7 @@ const ComponentUnderTest = (props: FileUploadProps) => (
           <FileUpload.ItemGroup>
             {api.files.map((file) => (
               <FileUpload.Item key={file.name} file={file}>
-                <FileUpload.ItemPreview />
+                <FileUpload.ItemPreviewImage />
                 <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
                 <FileUpload.ItemSizeText>{api.getFileSize(file)}</FileUpload.ItemSizeText>
                 <FileUpload.ItemDeleteTrigger onClick={() => api.deleteFile(file)}>

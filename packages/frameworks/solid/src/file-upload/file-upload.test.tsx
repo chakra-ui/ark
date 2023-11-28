@@ -20,7 +20,7 @@ const ComponentUnderTest = (props: FileUploadProps) => (
             <For each={api().files}>
               {(file) => (
                 <FileUpload.Item file={file}>
-                  <FileUpload.ItemPreview />
+                  <FileUpload.ItemPreviewImage />
                   <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
                   <FileUpload.ItemSizeText>{api().getFileSize(file)}</FileUpload.ItemSizeText>
                   <FileUpload.ItemDeleteTrigger onClick={() => api().deleteFile(file)}>
