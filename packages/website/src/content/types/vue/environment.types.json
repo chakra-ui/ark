@@ -1,1 +1,1 @@
-{ "Root": { "value": { "type": "ShadowRoot | Node | Document", "isRequired": false } } }
+{ "Root": { "value": { "type": "Node | Document | ShadowRoot", "isRequired": false } } }

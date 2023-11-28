@@ -32,7 +32,7 @@
       "description": "Whether the tooltip is disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | Document | ShadowRoot",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
