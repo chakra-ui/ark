@@ -121,14 +121,14 @@
       "description": "Render as a different element type."
     }
   },
-  "ItemPreview": {
+  "ItemSizeText": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "ItemSizeText": {
+  "ItemPreviewImage": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

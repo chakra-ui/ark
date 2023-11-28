@@ -79,7 +79,7 @@
   "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemPreview": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreviewImage": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }
