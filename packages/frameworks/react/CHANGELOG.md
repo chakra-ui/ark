@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Added an explicit return type for the `Portal` component to resolve an issue with online code editors.
 - Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
 
 ## [1.1.0] - 2023-11-21
