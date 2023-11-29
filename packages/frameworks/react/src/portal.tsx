@@ -1,4 +1,10 @@
-import { Children, type PropsWithChildren, type RefObject } from 'react'
+import {
+  Children,
+  type PropsWithChildren,
+  type ReactNode,
+  type ReactPortal,
+  type RefObject,
+} from 'react'
 import { createPortal } from 'react-dom'
 import { useEnvironmentContext } from './environment'
 
@@ -9,7 +15,9 @@ export interface PortalProps {
 
 const isServer = typeof window === 'undefined'
 
-export const Portal = (props: PropsWithChildren<PortalProps>) => {
+export const Portal = (
+  props: PropsWithChildren<PortalProps>,
+): ReactPortal[] | ReactNode | null | undefined => {
   const { children, container, disabled } = props
   const getRootNode = useEnvironmentContext()
 
