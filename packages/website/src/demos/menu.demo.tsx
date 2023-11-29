@@ -67,12 +67,14 @@ export const Demo = (props: MenuProps) => {
                   <Menu.Content>
                     <Menu.Item id="email">
                       <HStack gap="2">
-                        <MailIcon /> Email
+                        <MailIcon />
+                        Email
                       </HStack>
                     </Menu.Item>
                     <Menu.Item id="message">
                       <HStack gap="2">
-                        <MessageSquareIcon /> Message
+                        <MessageSquareIcon />
+                        Message
                       </HStack>
                     </Menu.Item>
                     <Menu.Separator />
