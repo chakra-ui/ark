@@ -13,7 +13,7 @@ const meta: Meta<SegmentGroupType> = {
 export default meta
 
 export const Basic = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <SegmentGroup.Root>
       <SegmentGroup.Indicator />
@@ -28,7 +28,7 @@ export const Basic = () => {
 }
 
 export const InitialValue = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <SegmentGroup.Root defaultValue="React">
       <SegmentGroup.Indicator />
@@ -43,9 +43,8 @@ export const InitialValue = () => {
 }
 
 export const Controlled = () => {
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   const [value, setValue] = useState('React')
-
-  const frameworks = ['React', 'Solid', 'Vue']
   return (
     <SegmentGroup.Root value={value} onValueChange={(e) => setValue(e.value)}>
       <SegmentGroup.Indicator />
@@ -60,12 +59,12 @@ export const Controlled = () => {
 }
 
 export const Disabled = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <SegmentGroup.Root defaultValue="React">
       <SegmentGroup.Indicator />
       {frameworks.map((framework) => (
-        <SegmentGroup.Item key={framework} value={framework} disabled={framework === 'Solid'}>
+        <SegmentGroup.Item key={framework} value={framework} disabled={framework === 'Svelte'}>
           <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
           <SegmentGroup.ItemControl />
         </SegmentGroup.Item>

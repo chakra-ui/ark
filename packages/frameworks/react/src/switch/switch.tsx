@@ -15,7 +15,7 @@ export interface SwitchProps
   > {}
 
 export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
-  const [switchProps, { children, ...labelProps }] = createSplitProps<UseSwitchProps>()(props, [
+  const [switchProps, { children, ...localProps }] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'defaultChecked',
     'dir',
@@ -33,8 +33,9 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
   ])
 
   const api = useSwitch(switchProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
+
   const view = runIfFn(children, api)
-  const mergedProps = mergeProps(api.rootProps, labelProps)
 
   return (
     <SwitchProvider value={api}>

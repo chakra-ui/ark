@@ -2,7 +2,7 @@ import type { GroupProps } from '@zag-js/menu'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export type MenuItemGroupProps = Assign<HTMLArkProps<'div'>, GroupProps>
@@ -25,7 +25,7 @@ export const MenuItemGroup: ComponentWithProps<MenuItemGroupProps> = defineCompo
         })}
         {...attrs}
       >
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

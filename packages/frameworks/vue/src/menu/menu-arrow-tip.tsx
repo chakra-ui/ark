@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export type MenuArrowTipProps = HTMLArkProps<'div'>
@@ -12,7 +12,7 @@ export const MenuArrowTip: ComponentWithProps<MenuArrowTipProps> = defineCompone
 
     return () => (
       <ark.div {...api.value.arrowTipProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

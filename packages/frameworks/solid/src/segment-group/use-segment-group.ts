@@ -9,6 +9,7 @@ export interface UseSegmentGroupReturn extends Accessor<segment.Api<PropTypes>> 
 
 export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
   const [state, send] = useMachine(segment.machine(context), { context })
 

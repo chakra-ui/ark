@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { useDialogContext } from './dialog-context'
 
 export type DialogDescriptionProps = HTMLArkProps<'p'>
@@ -12,7 +12,7 @@ export const DialogDescription: ComponentWithProps<DialogDescriptionProps> = def
 
     return () => (
       <ark.p {...api.value.descriptionProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.p>
     )
   },

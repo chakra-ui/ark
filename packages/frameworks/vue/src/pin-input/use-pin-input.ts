@@ -20,7 +20,7 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
       getRootNode,
       value: reactiveContext.modelValue ?? reactiveContext.value,
       onValueChange(details) {
-        emit('change', details)
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
       onValueComplete(details) {

@@ -13,6 +13,6 @@ export const Tooltip = defineComponent({
     const api = useTooltip(props, emit)
     TooltipProvider(api)
 
-    return () => slots?.default?.()
+    return () => slots.default?.()
   },
 })

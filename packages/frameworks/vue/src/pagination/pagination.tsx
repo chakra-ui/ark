@@ -17,7 +17,7 @@ export const Pagination = defineComponent({
 
     return () => (
       <ark.nav {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
+        {slots.default?.(api.value)}
       </ark.nav>
     )
   },

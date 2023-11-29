@@ -7,7 +7,7 @@ import { RatingGroup, type RatingGroupProps } from './'
 
 const ComponentUnderTest = (props: RatingGroupProps) => (
   <RatingGroup.Root {...props}>
-    <RatingGroup.Label>GroupLabel</RatingGroup.Label>
+    <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       {(api) => (
         <Index each={api().items}>

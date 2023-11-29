@@ -24,16 +24,20 @@ export const useColorPicker = (
     }
   })
 
-  console.log(context.value)
-
   const [state, send] = useMachine(
     colorPicker.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
+      onFormatChange(details) {
+        emit('format-change', details)
+      },
+      onOpenChange(details) {
+        emit('open-change', details)
+      },
       onValueChange(details) {
         emit('value-change', details)
-        emit('update:modelValue', details.value)
+        emit('update:modelValue', details.valueAsString)
       },
       onValueChangeEnd(details) {
         emit('value-change-end', details)

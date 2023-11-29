@@ -14,9 +14,9 @@ export interface RatingGroupControlProps
 
 export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlProps>(
   (props, ref) => {
-    const { children, ...divProps } = props
+    const { children, ...localProps } = props
     const api = useRatingGroupContext()
-    const mergedProps = mergeProps(api.controlProps, divProps)
+    const mergedProps = mergeProps(api.controlProps, localProps)
     const view = runIfFn(children, api)
 
     return (

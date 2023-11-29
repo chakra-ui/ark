@@ -10,6 +10,7 @@ export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+
   const [state, send] = useMachine(rating.machine(context), { context })
 
   return createMemo(() => rating.connect(state, send, normalizeProps))

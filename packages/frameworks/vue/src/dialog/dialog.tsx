@@ -19,7 +19,7 @@ export const Dialog: ComponentWithProps<Partial<UseDialogProps>> = defineCompone
 
     DialogProvider(api)
 
-    return () => slots?.default?.(api.value)
+    return () => slots.default?.(api.value)
   },
 })
 

@@ -13,7 +13,7 @@ const meta: Meta<SegmentGroupType> = {
 export default meta
 
 export const Basic = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <SegmentGroup.Root>
       <SegmentGroup.Indicator />
@@ -30,7 +30,7 @@ export const Basic = () => {
 }
 
 export const InitialValue = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
     <SegmentGroup.Root value="React">
       <SegmentGroup.Indicator />
@@ -47,7 +47,7 @@ export const InitialValue = () => {
 }
 
 export const Controlled = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   const [value, setValue] = createSignal('React')
   return (
     <SegmentGroup.Root value={value()} onValueChange={(e) => setValue(e.value)}>
@@ -67,7 +67,7 @@ export const Controlled = () => {
 export const Disabled = () => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
   return (
-    <SegmentGroup.Root>
+    <SegmentGroup.Root value={'React'}>
       <SegmentGroup.Indicator />
       <Index each={frameworks}>
         {(framework) => (

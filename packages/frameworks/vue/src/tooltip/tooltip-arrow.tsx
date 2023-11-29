@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useTooltipContext } from './tooltip-context'
 
 export type TooltipArrowProps = HTMLArkProps<'div'>
@@ -12,7 +11,7 @@ export const TooltipArrow = defineComponent({
 
     return () => (
       <ark.div {...api.value.arrowProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useNumberInputContext } from './number-input-context'
 
 export type NumberInputControlProps = HTMLArkProps<'div'>
@@ -12,7 +11,7 @@ export const NumberInputControl = defineComponent({
 
     return () => (
       <ark.div {...api.value.controlProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

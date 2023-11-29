@@ -9,7 +9,7 @@ import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 export interface RatingGroupProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
 export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, ref) => {
-  const [useRatingProps, inputProps] = createSplitProps<UseRatingGroupProps>()(props, [
+  const [useRatingProps, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',
     'count',
@@ -29,7 +29,7 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
   ])
 
   const api = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(api.rootProps, inputProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
     <RatingGroupProvider value={api}>

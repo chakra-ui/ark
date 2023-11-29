@@ -15,7 +15,7 @@ const ComponentUnderTest = (props: RadioGroupProps) => {
   ]
   return (
     <RadioGroup.Root {...props}>
-      <RadioGroup.Label>Fruits</RadioGroup.Label>
+      <RadioGroup.Label>Framework</RadioGroup.Label>
       <RadioGroup.Indicator />
       <For each={items}>
         {(item) => (

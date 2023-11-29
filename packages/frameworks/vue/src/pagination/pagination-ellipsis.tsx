@@ -1,7 +1,7 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { type ComponentWithProps } from '../utils'
 import { usePaginationContext } from './pagination-context'
 
 export type PaginationEllipsisProps = Assign<HTMLArkProps<'div'>, { index: number }>
@@ -19,7 +19,7 @@ export const PaginationEllipsis: ComponentWithProps<PaginationEllipsisProps> = d
 
     return () => (
       <ark.div {...api.value.getEllipsisProps({ index: props.index })} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

@@ -1,6 +1,5 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useSelectContext } from './select-context'
 import { useSelectItemContext } from './select-item-context'
 
@@ -14,7 +13,7 @@ export const SelectItemIndicator = defineComponent({
 
     return () => (
       <ark.div {...api.value.getItemIndicatorProps(itemProps)} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },

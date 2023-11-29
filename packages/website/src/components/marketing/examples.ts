@@ -17,7 +17,7 @@ export const MySlider = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb />
+        <Slider.Thumb key={0} index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -42,7 +42,7 @@ export const MySlider = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -63,7 +63,7 @@ const sliderValue = ref<SliderProps['modelValue']>([30])
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb />
+      <Slider.Thumb :key="0" :index="0" />
     </Slider.Control>
   </Slider.Root>
 </template>`

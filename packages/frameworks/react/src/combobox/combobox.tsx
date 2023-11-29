@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef, type JSX, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -71,7 +71,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     ],
   )
   const api = useCombobox(useComboboxProps)
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 

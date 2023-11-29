@@ -9,7 +9,7 @@ export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
   const api = useDialogContext()
   const presenceProps = usePresencePropsContext()
-  const presenceApi = usePresence({ ...presenceProps, present: api.isOpen })
+  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const mergedProps = mergeProps(api.backdropProps, presenceApi.getPresenceProps(ref), props)
 
   if (presenceApi.isUnmounted) {

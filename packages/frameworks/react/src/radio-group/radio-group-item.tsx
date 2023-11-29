@@ -11,7 +11,7 @@ import { RadioGroupItemProvider } from './radio-group-item-context'
 export interface RadioGroupItemProps
   extends Assign<
       HTMLArkProps<'label'>,
-      { children?: ReactNode | ((state: ItemState) => ReactNode) }
+      { children?: ((state: ItemState) => ReactNode) | ReactNode }
     >,
     ItemProps {}
 

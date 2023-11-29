@@ -1,14 +1,15 @@
-import { connect, machine, type Api, type Context } from '@zag-js/switch'
+import * as zagSwitch from '@zag-js/switch'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseSwitchProps = Optional<Context, 'id'> & {
-  modelValue?: Context['checked']
+export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
+  modelValue?: zagSwitch.Context['checked']
 }
-export type UseSwitchReturn = ComputedRef<Api<PropTypes>>
+
+export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps, emit: CallableFunction): UseSwitchReturn => {
   const getRootNode = useEnvironmentContext()
@@ -22,17 +23,17 @@ export const useSwitch = (props: UseSwitchProps, emit: CallableFunction): UseSwi
   })
 
   const [state, send] = useMachine(
-    machine({
+    zagSwitch.machine({
       ...context.value,
       id: context.value.id || useId().value,
       getRootNode,
       onCheckedChange(details) {
-        emit('change', details)
+        emit('checked-change', details)
         emit('update:modelValue', details.checked)
       },
     }),
     { context },
   )
 
-  return computed(() => connect(state.value, send, normalizeProps))
+  return computed(() => zagSwitch.connect(state.value, send, normalizeProps))
 }

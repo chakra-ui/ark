@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { SegmentGroup } from './'
 import './segment-group.css'
 
-const frameworks = ref(['React', 'Solid', 'Vue'])
+const frameworks = ref(['React', 'Solid', 'Svelte', 'Vue'])
 const value = ref('React')
 </script>
 
@@ -43,7 +43,7 @@ const value = ref('React')
           v-for="framework in frameworks"
           :key="framework"
           :value="framework"
-          :disabled="framework === 'Solid'"
+          :disabled="framework === 'Svelte'"
         >
           <SegmentGroup.ItemText>{{ framework }}</SegmentGroup.ItemText>
           <SegmentGroup.ItemControl />

@@ -5,10 +5,10 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseRadioGroupProps = Optional<radioGroup.Context, 'id'> & {
+export interface UseRadioGroupProps extends Optional<radioGroup.Context, 'id'> {
   modelValue?: radioGroup.Context['value']
 }
-export type UseRadioGroupReturn = ComputedRef<radioGroup.Api<PropTypes>>
+export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
 
 export const useRadioGroup = (
   props: UseRadioGroupProps,
@@ -22,6 +22,7 @@ export const useRadioGroup = (
       value: modelValue,
     }
   })
+
   const [state, send] = useMachine(
     radioGroup.machine({
       ...context.value,

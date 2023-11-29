@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { RadioGroup } from '../'
 
-const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
+const items = ref([
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+  { label: 'Svelte', value: 'svelte', disabled: true },
+])
 </script>
 
 <template>
@@ -9,12 +15,12 @@ const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
     <RadioGroup.Label>Framework</RadioGroup.Label>
     <RadioGroup.Indicator />
     <RadioGroup.Item
-      v-for="framework in frameworks"
-      :key="framework"
-      :value="framework"
-      :disabled="framework === 'Svelte'"
+      v-for="item in items"
+      :key="item.value"
+      :value="item.value"
+      :disabled="item.disabled"
     >
-      <RadioGroup.ItemText>{{ framework }}</RadioGroup.ItemText>
+      <RadioGroup.ItemText>{{ item.label }}</RadioGroup.ItemText>
       <RadioGroup.ItemControl />
     </RadioGroup.Item>
   </RadioGroup.Root>

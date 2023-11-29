@@ -24,7 +24,7 @@ export const AccordionItem = defineComponent({
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots?.default?.(api.value.getItemState(props))}
+        {slots.default?.(api.value.getItemState(props))}
       </ark.div>
     )
   },

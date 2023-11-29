@@ -32,6 +32,7 @@ export const InitialValue = () => (
 
 export const Controlled = () => {
   const [checked, setChecked] = useState(false)
+
   return (
     <Switch.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>
       <Switch.Control>
