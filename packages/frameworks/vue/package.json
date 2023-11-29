@@ -79,7 +79,7 @@
     "eslint-plugin-vue": "9.18.1",
     "globby": "14.0.0",
     "histoire": "0.17.6",
-    "lucide-vue-next": "0.293.0",
+    "lucide-vue-next": "0.294.0",
     "jsdom": "23.0.0",
     "release-it": "17.0.0",
     "resize-observer-polyfill": "1.5.1",

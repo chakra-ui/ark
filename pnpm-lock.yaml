@@ -715,8 +715,8 @@ importers:
         specifier: 23.0.0
         version: 23.0.0
       lucide-vue-next:
-        specifier: 0.293.0
-        version: 0.293.0(vue@3.3.4)
+        specifier: 0.294.0
+        version: 0.294.0(vue@3.3.4)
       release-it:
         specifier: 17.0.0
         version: 17.0.0(typescript@5.3.2)
@@ -14664,8 +14664,8 @@ packages:
       solid-js: 1.8.6
     dev: true
 
-  /lucide-vue-next@0.293.0(vue@3.3.4):
-    resolution: {integrity: sha512-9q+XOtpU7BF9Vv8r2icm0pgUHaY91gQKLTK5swzgli4dZikOPoW3b+2zYdJyMMpSgFksGrgGy4IWb4GzJLFE4g==}
+  /lucide-vue-next@0.294.0(vue@3.3.4):
+    resolution: {integrity: sha512-bcUuGyLJoq9ExyozROMezdaczK2loP3emYb8PvS7HhZ56rUJVOv5hJgTmWfrfr8vJE7J69ImoMyPTwmUHF198w==}
     peerDependencies:
       vue: '>=3.0.1'
     dependencies:
