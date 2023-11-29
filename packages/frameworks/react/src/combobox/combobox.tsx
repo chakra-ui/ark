@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef, type JSX, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
