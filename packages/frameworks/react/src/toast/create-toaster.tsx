@@ -1,6 +1,6 @@
 import { mergeProps, normalizeProps, useActor, type PropTypes } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
-import React, { forwardRef, useEffect } from 'react'
+import { forwardRef, useEffect, type JSX } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'

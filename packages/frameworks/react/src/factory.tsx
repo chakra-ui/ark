@@ -7,6 +7,7 @@ import React, {
   forwardRef,
   isValidElement,
   type ComponentPropsWithoutRef,
+  type JSX,
 } from 'react'
 import { composeRefs } from './compose-refs'
 
