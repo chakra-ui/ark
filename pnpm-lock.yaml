@@ -332,8 +332,8 @@ importers:
         specifier: 23.0.0
         version: 23.0.0
       lucide-react:
-        specifier: 0.293.0
-        version: 0.293.0(react@18.2.0)
+        specifier: 0.294.0
+        version: 0.294.0(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -836,8 +836,8 @@ importers:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
       lucide-react:
-        specifier: 0.293.0
-        version: 0.293.0(react@18.2.0)
+        specifier: 0.294.0
+        version: 0.294.0(react@18.2.0)
       pandacss-preset-typography:
         specifier: 0.1.5
         version: 0.1.5(@pandacss/dev@0.19.0)
@@ -9904,6 +9904,19 @@ packages:
       validate-html-nesting: 1.2.2
     dev: true
 
+  /babel-plugin-jsx-dom-expressions@0.37.2(@babel/core@7.23.3):
+    resolution: {integrity: sha512-u3VKB+On86cYSLAbw9j0m0X8ZejL4MR7oG7TRlrMQ/y1mauR/ZpM2xkiOPZEUlzHLo1GYGlTdP9s5D3XuA6iSQ==}
+    peerDependencies:
+      '@babel/core': ^7.20.12
+    dependencies:
+      '@babel/core': 7.23.3
+      '@babel/helper-module-imports': 7.18.6
+      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.23.3)
+      '@babel/types': 7.23.3
+      html-entities: 2.3.3
+      validate-html-nesting: 1.2.2
+    dev: true
+
   /babel-plugin-polyfill-corejs2@0.4.6(@babel/core@7.23.2):
     resolution: {integrity: sha512-jhHiWVZIlnPbEUKSSNb9YoWcQGdlTLq7z1GHL4AjFxaoOUMuuEVJ+Y4pAaQUGOGk93YsVCKPbqbfw3m0SM6H8Q==}
     peerDependencies:
@@ -9983,6 +9996,15 @@ packages:
     dependencies:
       '@babel/core': 7.23.2
       babel-plugin-jsx-dom-expressions: 0.37.2(@babel/core@7.23.2)
+    dev: true
+
+  /babel-preset-solid@1.8.0(@babel/core@7.23.3):
+    resolution: {integrity: sha512-TCsC3kTNYRi+0/mHYFvC2VsSq++GZPFyHF3QTP7L37TXaVFD0HZQPyLQnf+waOGPHQuAhKXo0GEQziquSwBAVw==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.23.3
+      babel-plugin-jsx-dom-expressions: 0.37.2(@babel/core@7.23.3)
     dev: true
 
   /bail@2.0.2:
@@ -14649,8 +14671,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lucide-react@0.293.0(react@18.2.0):
-    resolution: {integrity: sha512-g3AN0EYITCpAjNgLHrKrFWvIJzZy0Y9OPBaonyKw1cM+nZE6piOM+TiuQdYfha7oa76TMiDaWXQHE44CEqsrzw==}
+  /lucide-react@0.294.0(react@18.2.0):
+    resolution: {integrity: sha512-V7o0/VECSGbLHn3/1O67FUgBwWB+hmzshrgDVRJQhMh8uj5D3HBuIvhuAmQTtlupILSplwIZg5FTc4tTKMA2SA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -18077,7 +18099,7 @@ packages:
       babel-preset-solid: ^1.6.6
       solid-js: ^1.6.6
     dependencies:
-      babel-preset-solid: 1.8.0(@babel/core@7.23.2)
+      babel-preset-solid: 1.8.0(@babel/core@7.23.3)
       solid-js: 1.8.6
     dev: true
 
