@@ -284,8 +284,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.4
-        version: 6.1.4(vitest@0.34.6)
+        specifier: 6.1.5
+        version: 6.1.5(vitest@0.34.6)
       '@testing-library/react':
         specifier: 14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -489,8 +489,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.4
-        version: 6.1.4(vitest@0.34.2)
+        specifier: 6.1.5
+        version: 6.1.5(vitest@0.34.2)
       '@testing-library/user-event':
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
@@ -667,8 +667,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.4
-        version: 6.1.4(vitest@0.34.6)
+        specifier: 6.1.5
+        version: 6.1.5(vitest@0.34.6)
       '@testing-library/user-event':
         specifier: 14.5.1
         version: 14.5.1(@testing-library/dom@9.3.3)
@@ -7335,8 +7335,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom@6.1.4(vitest@0.34.2):
-    resolution: {integrity: sha512-wpoYrCYwSZ5/AxcrjLxJmCU6I5QAJXslEeSiMQqaWmP2Kzpd1LvF/qxmAIW2qposULGWq2gw30GgVNFLSc2Jnw==}
+  /@testing-library/jest-dom@6.1.5(vitest@0.34.2):
+    resolution: {integrity: sha512-3y04JLW+EceVPy2Em3VwNr95dOKqA8DhR0RJHhHKDZNYXcVXnEK7WIrpj4eYU8SVt/qYZ2aRWt/WgQ+grNES8g==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
@@ -7364,8 +7364,8 @@ packages:
       vitest: 0.34.2(jsdom@23.0.1)
     dev: true
 
-  /@testing-library/jest-dom@6.1.4(vitest@0.34.6):
-    resolution: {integrity: sha512-wpoYrCYwSZ5/AxcrjLxJmCU6I5QAJXslEeSiMQqaWmP2Kzpd1LvF/qxmAIW2qposULGWq2gw30GgVNFLSc2Jnw==}
+  /@testing-library/jest-dom@6.1.5(vitest@0.34.6):
+    resolution: {integrity: sha512-3y04JLW+EceVPy2Em3VwNr95dOKqA8DhR0RJHhHKDZNYXcVXnEK7WIrpj4eYU8SVt/qYZ2aRWt/WgQ+grNES8g==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
