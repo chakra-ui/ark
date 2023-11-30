@@ -154,8 +154,8 @@ importers:
         specifier: 5.0.4
         version: 5.0.4(@types/node@18.18.8)
       vite-plugin-dts:
-        specifier: 3.6.3
-        version: 3.6.3(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
+        specifier: 3.6.4
+        version: 3.6.4(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
 
   packages/frameworks/react:
     dependencies:
@@ -362,8 +362,8 @@ importers:
         specifier: 5.0.4
         version: 5.0.4(@types/node@18.18.8)
       vite-plugin-dts:
-        specifier: 3.6.3
-        version: 3.6.3(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
+        specifier: 3.6.4
+        version: 3.6.4(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
       vitest:
         specifier: 0.34.6
         version: 0.34.6(jsdom@23.0.0)
@@ -730,8 +730,8 @@ importers:
         specifier: 5.0.4
         version: 5.0.4(@types/node@18.18.8)
       vite-plugin-dts:
-        specifier: 3.6.3
-        version: 3.6.3(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
+        specifier: 3.6.4
+        version: 3.6.4(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4)
       vitest:
         specifier: 0.34.6
         version: 0.34.6(jsdom@23.0.0)
@@ -16508,11 +16508,6 @@ packages:
       pump: 2.0.1
     dev: true
 
-  /punycode@2.3.0:
-    resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
-    engines: {node: '>=6'}
-    dev: true
-
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
@@ -18287,7 +18282,7 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       psl: 1.9.0
-      punycode: 2.3.0
+      punycode: 2.3.1
       universalify: 0.2.0
       url-parse: 1.5.10
     dev: true
@@ -18300,7 +18295,7 @@ packages:
     resolution: {integrity: sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==}
     engines: {node: '>=12'}
     dependencies:
-      punycode: 2.3.0
+      punycode: 2.3.1
     dev: true
 
   /tr46@5.0.0:
@@ -18941,7 +18936,7 @@ packages:
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
-      punycode: 2.3.0
+      punycode: 2.3.1
     dev: true
 
   /url-join@5.0.0:
@@ -19185,8 +19180,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-dts@3.6.3(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4):
-    resolution: {integrity: sha512-NyRvgobl15rYj65coi/gH7UAEH+CpSjh539DbGb40DfOTZSvDLNYTzc8CK4460W+LqXuMK7+U3JAxRB3ksrNPw==}
+  /vite-plugin-dts@3.6.4(@types/node@18.18.8)(typescript@5.3.2)(vite@5.0.4):
+    resolution: {integrity: sha512-yOVhUI/kQhtS6lCXRYYLv2UUf9bftcwQK9ROxCX2ul17poLQs02ctWX7+vXB8GPRzH8VCK3jebEFtPqqijXx6w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
