@@ -1,11 +1,11 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
 import { usePinInputContext } from './pin-input-context'
 
-export type PinInputInputProps = HTMLArkProps<'input'> & { index: number }
+export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, { index: number }> {}
 
-export const PinInputInput: ComponentWithProps<PinInputInputProps> = defineComponent({
+export const PinInputInput = defineComponent({
   name: 'PinInputInput',
   props: {
     index: {
@@ -16,11 +16,6 @@ export const PinInputInput: ComponentWithProps<PinInputInputProps> = defineCompo
   setup(props, { attrs }) {
     const api = usePinInputContext()
 
-    const inputProps = computed(() => ({
-      ...api.value.getInputProps({ index: props.index }),
-      modelValue: api.value.value[props.index] ?? '',
-    }))
-
-    return () => <ark.input {...inputProps.value} {...attrs} />
+    return () => <ark.input {...api.value.getInputProps({ index: props.index })} {...attrs} />
   },
 })
