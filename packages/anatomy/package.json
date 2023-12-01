@@ -60,8 +60,8 @@
     "globby": "14.0.0",
     "release-it": "17.0.0",
     "typescript": "5.3.2",
-    "vite": "5.0.2",
-    "vite-plugin-dts": "3.6.3"
+    "vite": "5.0.4",
+    "vite-plugin-dts": "3.6.4"
   },
   "main": "src/index.ts"
 }

@@ -39,13 +39,15 @@ export const Demo = (props: MenuProps) => {
             </Menu.Item>
             <Menu.Item id="billing">
               <HStack gap="2">
-                <CreditCardIcon /> Billing
+                <CreditCardIcon />
+                Billing
               </HStack>
             </Menu.Item>
             <Menu.Item id="settings">
               <HStack gap="6" justify="space-between" flex="1">
                 <HStack gap="2">
-                  <SettingsIcon /> Settings
+                  <SettingsIcon />
+                  Settings
                 </HStack>
                 <Text as="span" color="fg.subtle" textStyle="xs">
                   ⌘,
@@ -65,12 +67,14 @@ export const Demo = (props: MenuProps) => {
                   <Menu.Content>
                     <Menu.Item id="email">
                       <HStack gap="2">
-                        <MailIcon /> Email
+                        <MailIcon />
+                        Email
                       </HStack>
                     </Menu.Item>
                     <Menu.Item id="message">
                       <HStack gap="2">
-                        <MessageSquareIcon /> Message
+                        <MessageSquareIcon />
+                        Message
                       </HStack>
                     </Menu.Item>
                     <Menu.Separator />
