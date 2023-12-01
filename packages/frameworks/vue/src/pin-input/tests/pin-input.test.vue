@@ -6,9 +6,7 @@ import { PinInput } from '../'
   <PinInput.Root>
     <PinInput.Label>Label</PinInput.Label>
     <PinInput.Control>
-      <PinInput.Input :key="0" :index="0" />
-      <PinInput.Input :key="1" :index="1" />
-      <PinInput.Input :key="2" :index="2" />
+      <PinInput.Input v-for="id in [0, 1, 2]" :key="id" :index="id" />
     </PinInput.Control>
   </PinInput.Root>
 </template>
