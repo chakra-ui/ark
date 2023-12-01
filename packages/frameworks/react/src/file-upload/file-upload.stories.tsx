@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react'
+import { FileIcon } from 'lucide-react'
 import { FileUpload } from './'
 import './file-upload.css'
 
@@ -20,7 +21,12 @@ export const Basic = () => (
       {(files) =>
         files.map((file, id) => (
           <FileUpload.Item key={id} file={file}>
-            <FileUpload.ItemPreviewImage />
+            <FileUpload.ItemPreview type="image/*">
+              <FileUpload.ItemPreviewImage />
+            </FileUpload.ItemPreview>
+            <FileUpload.ItemPreview type=".*">
+              <FileIcon />
+            </FileUpload.ItemPreview>
             <FileUpload.ItemName />
             <FileUpload.ItemSizeText />
             <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>

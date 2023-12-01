@@ -12,11 +12,7 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
   const [url, setUrl] = createSignal<string>('')
   api().createFileUrl(item.file, (url) => setUrl(url))
 
-  try {
-    const mergedProps = mergeProps(api().getItemPreviewProps({ ...item, url: url() }), props)
-    return <ark.img {...mergedProps} />
-  } catch (e) {
-    // TODO We could render a fallback component
-    return null
-  }
+  const mergedProps = mergeProps(api().getItemPreviewImageProps({ ...item, url: url() }), props)
+
+  return <ark.img {...mergedProps} />
 }

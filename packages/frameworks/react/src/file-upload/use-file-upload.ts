@@ -17,7 +17,8 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
 
   const context: fileUpload.Context = {
     ...initialContext,
-    isValidFile: useEvent(props.isValidFile),
+    onFileAccept: useEvent(props.onFileAccept),
+    onFileReject: useEvent(props.onFileReject),
     onFilesChange: useEvent(props.onFilesChange, { sync: true }),
   }
 

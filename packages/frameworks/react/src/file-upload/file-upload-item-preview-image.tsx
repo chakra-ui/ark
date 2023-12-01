@@ -13,19 +13,13 @@ export const FileUploadItemPreviewImage = forwardRef<
   const [url, setUrl] = useState<string>('')
   const api = useFileUploadContext()
   const item = useFileUploadItemContext()
+  const mergedProps = mergeProps(api.getItemPreviewImageProps({ ...item, url }), props)
 
   useEffect(() => {
     api.createFileUrl(item.file, (url) => setUrl(url))
   }, [item, api])
 
-  // TODO It works but maybe there is a cleaner way to do this
-  try {
-    const mergedProps = mergeProps(api.getItemPreviewProps({ ...item, url }), props)
-    return <ark.img {...mergedProps} ref={ref} />
-  } catch (e) {
-    // TODO We could render a fallback component
-    return null
-  }
+  return <ark.img {...mergedProps} ref={ref} />
 })
 
 FileUploadItemPreviewImage.displayName = 'FileUploadItemPreviewImage'

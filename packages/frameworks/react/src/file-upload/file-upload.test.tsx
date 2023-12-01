@@ -1,5 +1,6 @@
 import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/react'
+import { FileIcon } from 'lucide-react'
 import { getExports, getParts } from '../setup-test'
 import { FileUpload, type FileUploadProps } from './'
 
@@ -17,6 +18,12 @@ const ComponentUnderTest = (props: FileUploadProps) => (
           <FileUpload.ItemGroup>
             {api.files.map((file) => (
               <FileUpload.Item key={file.name} file={file}>
+                <FileUpload.ItemPreview type="image/*">
+                  <FileUpload.ItemPreviewImage />
+                </FileUpload.ItemPreview>
+                <FileUpload.ItemPreview>
+                  <FileIcon />
+                </FileUpload.ItemPreview>
                 <FileUpload.ItemPreviewImage />
                 <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
                 <FileUpload.ItemSizeText>{api.getFileSize(file)}</FileUpload.ItemSizeText>

@@ -8,6 +8,7 @@ import {
 } from './file-upload-item-delete-trigger'
 import { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-upload-item-group'
 import { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
+import { FileUploadItemPreview, type FileUploadItemPreviewProps } from './file-upload-item-preview'
 import {
   FileUploadItemPreviewImage,
   type FileUploadItemPreviewImageProps,
@@ -26,6 +27,7 @@ const FileUpload = Object.assign(FileUploadRoot, {
   ItemDeleteTrigger: FileUploadItemDeleteTrigger,
   ItemGroup: FileUploadItemGroup,
   ItemName: FileUploadItemName,
+  ItemPreview: FileUploadItemPreview,
   ItemPreviewImage: FileUploadItemPreviewImage,
   ItemSizeText: FileUploadItemSizeText,
   Label: FileUploadLabel,
@@ -53,6 +55,7 @@ export type {
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
   FileUploadItemPreviewImageProps,
+  FileUploadItemPreviewProps,
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
   FileUploadLabelProps,
