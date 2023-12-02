@@ -8,9 +8,10 @@ import { usePaginationContext } from './pagination-context'
 export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
 
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
-  const [ellipsisProps, restProps] = createSplitProps<EllipsisProps>()(props, ['index'])
+  const [ellipsisProps, localProps] = createSplitProps<EllipsisProps>()(props, ['index'])
+
   const api = usePaginationContext()
-  const mergedProps = mergeProps(() => api().getEllipsisProps(ellipsisProps), restProps)
+  const mergedProps = mergeProps(() => api().getEllipsisProps(ellipsisProps), localProps)
 
   return <ark.div {...mergedProps} />
 }
