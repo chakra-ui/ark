@@ -10,6 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added an explicit return type for the `Portal` component to resolve an issue with online code editors.
 - Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
+- Resolved an issue where the `ark` function would log a warning when the `asChild` prop was set to `false`.
 
 ## [1.1.0] - 2023-11-21
 
