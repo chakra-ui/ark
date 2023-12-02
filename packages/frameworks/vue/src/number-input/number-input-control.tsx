@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputControlProps = HTMLArkProps<'div'>
+export interface NumberInputControlProps extends HTMLArkProps<'div'> {}
 
 export const NumberInputControl = defineComponent({
   name: 'NumberInputControl',
