@@ -812,8 +812,8 @@ importers:
         specifier: 0.20.1
         version: 0.20.1(astro@3.4.3)(typescript@5.3.2)
       '@pandacss/dev':
-        specifier: 0.19.0
-        version: 0.19.0(typescript@5.3.2)
+        specifier: 0.20.1
+        version: 0.20.1(typescript@5.3.2)
       '@park-ui/panda-preset':
         specifier: 0.25.0
         version: 0.25.0(@internationalized/date@3.5.0)(typescript@5.3.2)
@@ -840,7 +840,7 @@ importers:
         version: 0.294.0(react@18.2.0)
       pandacss-preset-typography:
         specifier: 0.1.5
-        version: 0.1.5(@pandacss/dev@0.19.0)
+        version: 0.1.5(@pandacss/dev@0.20.1)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -4865,6 +4865,28 @@ packages:
       '@pandacss/shared': 0.19.0
       '@pandacss/token-dictionary': 0.19.0
       '@pandacss/types': 0.19.0
+      cac: 6.7.14
+      pathe: 1.1.1
+      perfect-debounce: 1.0.0
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
+    dev: false
+
+  /@pandacss/dev@0.20.1(typescript@5.3.2):
+    resolution: {integrity: sha512-5yeLio+MaQPaxyKOoTbFfhWJrmYkvTLQ//tMtJr8byl7bujb0k4ugCNLimBnsOIfkNNzikeg9HKomgcd+X51Vg==}
+    hasBin: true
+    dependencies:
+      '@clack/prompts': 0.6.3
+      '@pandacss/config': 0.20.1
+      '@pandacss/error': 0.20.1
+      '@pandacss/logger': 0.20.1
+      '@pandacss/node': 0.20.1(typescript@5.3.2)
+      '@pandacss/postcss': 0.20.1(typescript@5.3.2)
+      '@pandacss/preset-panda': 0.20.1
+      '@pandacss/shared': 0.20.1
+      '@pandacss/token-dictionary': 0.20.1
+      '@pandacss/types': 0.20.1
       cac: 6.7.14
       pathe: 1.1.1
       perfect-debounce: 1.0.0
@@ -15606,12 +15628,12 @@ packages:
     resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
     dev: true
 
-  /pandacss-preset-typography@0.1.5(@pandacss/dev@0.19.0):
+  /pandacss-preset-typography@0.1.5(@pandacss/dev@0.20.1):
     resolution: {integrity: sha512-M1J21seZ1pSaE4gXHmghK6xUWV0RmL0xBYNL8J12pA7X8hwwOPX0TWlB9u1F6J5Uf1pF0x/IoPfl5DgKOFcKSQ==}
     peerDependencies:
       '@pandacss/dev': '>=0.9.0'
     dependencies:
-      '@pandacss/dev': 0.19.0(typescript@5.3.2)
+      '@pandacss/dev': 0.20.1(typescript@5.3.2)
       '@tailwindcss/typography': 0.5.10(tailwindcss@3.3.3)
       tailwindcss: 3.3.3
     transitivePeerDependencies:
