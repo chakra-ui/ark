@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Pagination } from './';
-import './pagination.css';
+import { Pagination } from './'
+import './pagination.css'
 </script>
 
 <template>
