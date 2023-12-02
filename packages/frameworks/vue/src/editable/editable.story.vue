@@ -1,50 +1,35 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableInput,
-  EditableLabel,
-  EditablePreview,
-  EditableSubmitTrigger,
-  EditableControl,
-  EditableEditTrigger,
-} from './'
+import { Editable } from './'
 const value = ref('Chakra')
 </script>
 
 <template>
   <Story title="Editable">
     <Variant title="Basic">
-      <Editable placeholder="Placeholder" activationMode="dblclick">
-        <EditableLabel>Label</EditableLabel>
-        <EditableArea>
-          <EditableInput />
-          <EditablePreview />
-        </EditableArea>
-      </Editable>
+      <Editable.Root placeholder="Placeholder" activationMode="dblclick">
+        <Editable.Label>Label</Editable.Label>
+        <Editable.Area>
+          <Editable.Input />
+          <Editable.Preview />
+        </Editable.Area>
+      </Editable.Root>
     </Variant>
-    <Variant title="Controlled">
-      <Editable
-        activationMode="dblclick"
-        placeholder="enter a value"
-        v-model="value"
-        v-slot="{ isEditing }"
-      >
-        <EditableLabel>Label</EditableLabel>
-        <EditableArea>
-          <EditableInput data-testid="edit-input" />
-          <EditablePreview />
-        </EditableArea>
-        <EditableControl v-if="isEditing">
-          <EditableSubmitTrigger>Save</EditableSubmitTrigger>
-          <EditableCancelTrigger>Cancel</EditableCancelTrigger>
-        </EditableControl>
-        <EditableControl v-else>
-          <EditableEditTrigger>Edit</EditableEditTrigger>
-        </EditableControl>
-      </Editable>
+    <Variant title="CustomControls">
+      <Editable.Root placeholder="enter a value" v-model="value" v-slot="{ isEditing }">
+        <Editable.Label>Label</Editable.Label>
+        <Editable.Area>
+          <Editable.Input />
+          <Editable.Preview />
+        </Editable.Area>
+        <Editable.Control v-if="isEditing">
+          <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+          <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
+        </Editable.Control>
+        <Editable.Control v-else>
+          <Editable.EditTrigger>Edit</Editable.EditTrigger>
+        </Editable.Control>
+      </Editable.Root>
     </Variant>
   </Story>
 </template>

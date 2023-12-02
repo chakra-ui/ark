@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableAreaProps = HTMLArkProps<'div'>
+export interface EditableAreaProps extends HTMLArkProps<'div'> {}
 
 export const EditableArea = defineComponent({
   name: 'EditableArea',
