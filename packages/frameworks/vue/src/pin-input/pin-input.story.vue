@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PinInput } from './'
+import './pin-input.css'
 </script>
 
 <template>

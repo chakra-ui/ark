@@ -9,7 +9,7 @@ import { usePinInput, type UsePinInputProps } from './use-pin-input'
 export interface PinInputProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
 export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) => {
-  const [usePinInputProps, divProps] = createSplitProps<UsePinInputProps>()(props, [
+  const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',
     'defaultValue',
@@ -34,7 +34,7 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) =
     'value',
   ])
   const api = usePinInput(usePinInputProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
     <PinInputProvider value={api}>
