@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "3.0.3",
     "@fontsource-variable/fira-code": "5.0.15",
     "@fontsource-variable/inter": "5.0.15",
-    "@pandacss/astro": "0.19.0",
+    "@pandacss/astro": "0.20.1",
     "@pandacss/dev": "0.19.0",
     "@park-ui/panda-preset": "0.25.0",
     "@types/react": "18.2.40",
