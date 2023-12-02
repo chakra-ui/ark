@@ -23,6 +23,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `ColorPicker` component
 - Revised `Combobox` component
 - Revised `Editable` component
+- Revised `NumberInput` component
 - Revised `Pagination` component
 - Revised `PinInput` component
 - Revised `RadioGroup` component
