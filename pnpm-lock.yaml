@@ -763,8 +763,8 @@ importers:
         specifier: 20.0.0
         version: 20.0.0
       ts-pattern:
-        specifier: 5.0.5
-        version: 5.0.5
+        specifier: 5.0.6
+        version: 5.0.6
       voca:
         specifier: 1.4.1
         version: 1.4.1
@@ -851,8 +851,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5(react-dom@18.2.0)(react@18.2.0)
       ts-pattern:
-        specifier: 5.0.5
-        version: 5.0.5
+        specifier: 5.0.6
+        version: 5.0.6
 
 packages:
 
@@ -18164,6 +18164,10 @@ packages:
 
   /ts-pattern@5.0.5:
     resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
+    dev: false
+
+  /ts-pattern@5.0.6:
+    resolution: {integrity: sha512-Y+jOjihlFriWzcBjncPCf2/am+Hgz7LtsWs77pWg5vQQKLQj07oNrJryo/wK2G0ndNaoVn2ownFMeoeAuReu3Q==}
     dev: false
 
   /tsconfck@2.1.2(typescript@5.3.2):
