@@ -34,7 +34,7 @@
     "prettier-plugin-astro": "0.12.2",
     "prettier-plugin-organize-imports": "3.2.4",
     "react": "18.2.0",
-    "turbo": "1.10.16",
+    "turbo": "1.11.0",
     "typescript": "5.3.2"
   },
   "commitlint": {
