@@ -37,10 +37,10 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
-    "isValidFile": {
-      "type": "(file: File) => boolean",
+    "ids": {
+      "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item(id: string): string\n  itemName(id: string): string\n  itemSizeText(id: string): string\n  itemPreview(id: string): string\n}>",
       "isRequired": false,
-      "description": "Function to validate a file"
+      "description": "The ids of the elements. Useful for composition."
     },
     "locale": {
       "type": "string",
@@ -68,10 +68,30 @@
       "isRequired": false,
       "description": "The name of the underlying file input"
     },
+    "onFileAccept": {
+      "type": "(details: FileAcceptDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the file is accepted"
+    },
+    "onFileReject": {
+      "type": "(details: FileRejectDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the file is rejected"
+    },
     "onFilesChange": {
       "type": "(details: FileChangeDetails) => void",
       "isRequired": false,
-      "description": "Function called when the value changes"
+      "description": "Function called when the value changes, whether accepted or rejected"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "The localized messages to use."
+    },
+    "validate": {
+      "type": "(file: File) => FileError[] | null",
+      "isRequired": false,
+      "description": "Function to validate a file"
     }
   },
   "Item": {
@@ -83,6 +103,15 @@
   "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreview": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "type": {
+      "type": "string",
+      "defaultValue": "'.*'",
+      "isRequired": false,
+      "description": "The file type to match against. Matches all file types by default."
+    }
+  },
   "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemPreviewImage": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
