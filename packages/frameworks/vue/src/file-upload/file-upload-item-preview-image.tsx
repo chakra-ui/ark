@@ -14,11 +14,7 @@ export const FileUploadItemPreviewImage = defineComponent({
 
     api.value.createFileUrl(item.file, (src) => (url.value = src))
 
-    try {
-      const previewProps = api.value.getItemPreviewProps({ ...item, url: url.value })
-      return () => <ark.img {...previewProps} {...attrs} />
-    } catch (e) {
-      return () => null
-    }
+    const previewProps = api.value.getItemPreviewImageProps({ ...item, url: url.value })
+    return () => <ark.img {...previewProps} {...attrs} />
   },
 })

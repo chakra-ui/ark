@@ -24,7 +24,12 @@ export const useFileUpload = (
       onFilesChange: (details) => {
         emit('files-change', details)
       },
-      isValidFile: context.value.isValidFile,
+      onFileAccept: (details) => {
+        emit('file-accept', details)
+      },
+      onFileReject(details) {
+        emit('file-reject', details)
+      },
     }),
     { context },
   )
