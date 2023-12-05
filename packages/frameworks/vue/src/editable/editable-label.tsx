@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableLabelProps = HTMLArkProps<'label'>
+export interface EditableLabelProps extends HTMLArkProps<'label'> {}
 
 export const EditableLabel = defineComponent({
   name: 'EditableLabel',

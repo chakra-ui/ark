@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { splitProps, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -19,7 +19,7 @@ export interface EditableProps
   > {}
 
 export const Editable = (props: EditableProps) => {
-  const [useEditableProps, restProps] = createSplitProps<UseEditableProps>()(props, [
+  const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
     'dir',
@@ -48,15 +48,12 @@ export const Editable = (props: EditableProps) => {
     'value',
   ])
 
-  const editable = useEditable(useEditableProps)
-
-  const [childrenProps, localProps] = splitProps(restProps, ['children'])
-  const mergedProps = mergeProps(() => editable().rootProps, localProps)
-
-  const getChildren = () => runIfFn(childrenProps.children, editable)
+  const api = useEditable(useEditableProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
-    <EditableProvider value={editable}>
+    <EditableProvider value={api}>
       <ark.div {...mergedProps}>{getChildren()}</ark.div>
     </EditableProvider>
   )

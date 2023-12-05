@@ -5,10 +5,10 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseNumberInputProps = Optional<numberInput.Context, 'id'> & {
+export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {
   modelValue?: numberInput.Context['value']
 }
-export type UseNumberInputReturn = ComputedRef<numberInput.Api<PropTypes>>
+export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (
   props: UseNumberInputProps,

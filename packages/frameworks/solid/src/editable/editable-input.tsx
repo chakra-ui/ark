@@ -5,8 +5,8 @@ import { useEditableContext } from './editable-context'
 export interface EditableInputProps extends HTMLArkProps<'input'> {}
 
 export const EditableInput = (props: EditableInputProps) => {
-  const editable = useEditableContext()
-  const mergedProps = mergeProps(() => editable().inputProps, props)
+  const api = useEditableContext()
+  const mergedProps = mergeProps(() => api().inputProps, props)
 
   return <ark.input {...mergedProps} />
 }

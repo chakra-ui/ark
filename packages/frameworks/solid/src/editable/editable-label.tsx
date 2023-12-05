@@ -5,8 +5,8 @@ import { useEditableContext } from './editable-context'
 export interface EditableLabelProps extends HTMLArkProps<'label'> {}
 
 export const EditableLabel = (props: EditableLabelProps) => {
-  const editable = useEditableContext()
-  const mergedProps = mergeProps(() => editable().labelProps, props)
+  const api = useEditableContext()
+  const mergedProps = mergeProps(() => api().labelProps, props)
 
   return <ark.label {...mergedProps} />
 }

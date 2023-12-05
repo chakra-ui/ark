@@ -5,11 +5,11 @@ import {
   NumberInputDecrementTrigger,
   type NumberInputDecrementTriggerProps,
 } from './number-input-decrement-trigger'
-import { NumberInputInput, type NumberInputInputProps } from './number-input-field'
 import {
   NumberInputIncrementTrigger,
   type NumberInputIncrementTriggerProps,
 } from './number-input-increment-trigger'
+import { NumberInputInput, type NumberInputInputProps } from './number-input-input'
 import { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
 import { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
 

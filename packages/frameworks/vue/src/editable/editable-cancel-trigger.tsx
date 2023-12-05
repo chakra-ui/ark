@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableCancelTriggerProps = HTMLArkProps<'button'>
+export interface EditableCancelTriggerProps extends HTMLArkProps<'button'> {}
 
 export const EditableCancelTrigger = defineComponent({
   name: 'EditableCancelTrigger',
