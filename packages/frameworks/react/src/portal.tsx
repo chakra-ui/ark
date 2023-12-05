@@ -21,7 +21,8 @@ export const Portal = (
   const { children, container, disabled } = props
   const getRootNode = useEnvironmentContext()
 
-  if (isServer || disabled) return children
+  if (isServer) return null
+  if (disabled) return children
 
   const doc = getRootNode?.().ownerDocument ?? document
   const mountNode = container?.current ?? doc.body
