@@ -1,7 +1,7 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getParts } from '../setup-test'
+import { getExports, getParts } from '../setup-test'
 import { Toast, createToaster } from './'
 
 const [Toaster, toast] = createToaster({
@@ -27,14 +27,16 @@ export const ComponentUnderTest = () => (
 )
 
 describe('Toast', () => {
-  it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    await user.click(screen.getByText('Create Toast'))
     expect(document.querySelector(part)).toBeInTheDocument()
+    await user.click(screen.getByText('Close'))
   })
 
-  // it.skip.each(getExports(toastAnatomy))('should export %s', async (part) => {
-  //   expect(Toast[part]).toBeDefined()
-  // })
+  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
+    expect(Toast[part]).toBeDefined()
+  })
 
   it('should show and hide a toast message', async () => {
     render(<ComponentUnderTest />)
