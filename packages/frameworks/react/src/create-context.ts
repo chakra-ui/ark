@@ -1,3 +1,4 @@
+'use client'
 import { createContext as createReactContext, useContext as useReactContext } from 'react'
 
 interface CreateContextOptions<T> {

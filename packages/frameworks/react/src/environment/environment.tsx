@@ -1,3 +1,4 @@
+'use client'
 import { useMemo, useRef, type ReactNode } from 'react'
 import { runIfFn } from '../run-if-fn'
 import { EnvironmentProvider } from './environment-context'
