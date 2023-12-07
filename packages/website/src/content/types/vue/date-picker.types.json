@@ -62,11 +62,6 @@
       "isRequired": false,
       "description": "The maximum date that can be selected."
     },
-    "messages": {
-      "type": "IntlMessages",
-      "isRequired": false,
-      "description": "The localized messages to use."
-    },
     "min": {
       "type": "DateValue",
       "isRequired": false,
@@ -139,6 +134,11 @@
       "description": "The first day of the week.\n `0` - Sunday\n `1` - Monday\n `2` - Tuesday\n `3` - Wednesday\n `4` - Thursday\n `5` - Friday\n `6` - Saturday"
     },
     "timeZone": { "type": "string", "isRequired": false, "description": "The time zone to use" },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "The localized messages to use."
+    },
     "view": {
       "type": "DateView",
       "defaultValue": "\"day\"",
