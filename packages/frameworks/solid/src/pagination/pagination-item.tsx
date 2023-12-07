@@ -9,6 +9,7 @@ export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, Item
 
 export const PaginationItem = (props: PaginationItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
+
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 

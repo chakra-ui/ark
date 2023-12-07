@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { PinInput } from './'
+import './pin-input.css'
 
 type PinInputType = typeof PinInput
 

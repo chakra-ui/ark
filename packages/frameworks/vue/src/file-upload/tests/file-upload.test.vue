@@ -13,7 +13,7 @@ const testProps = ref<string[]>([])
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
     <FileUpload.ItemGroup>
       <FileUpload.Item v-for="file in api.files" :key="file.name as string" :file="file">
-        <FileUpload.ItemPreview />
+        <FileUpload.ItemPreviewImage />
         <FileUpload.ItemName>{{ file.name }}</FileUpload.ItemName>
         <FileUpload.ItemSizeText>{{ api.getFileSize(file) }}</FileUpload.ItemSizeText>
         <FileUpload.ItemDeleteTrigger>Remove</FileUpload.ItemDeleteTrigger>

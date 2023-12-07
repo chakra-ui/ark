@@ -5,10 +5,11 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseEditableProps = Optional<editable.Context, 'id'> & {
+export interface UseEditableProps extends Optional<editable.Context, 'id'> {
   modelValue?: editable.Context['value']
 }
-export type UseEditableReturn = ComputedRef<editable.Api<PropTypes>>
+
+export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
 export const useEditable = (props: UseEditableProps, emit: CallableFunction): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()

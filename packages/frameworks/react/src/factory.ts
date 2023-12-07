@@ -4,6 +4,7 @@ import { mergeProps } from '@zag-js/core'
 import React, {
   Children,
   cloneElement,
+  createElement,
   forwardRef,
   isValidElement,
   type ComponentPropsWithoutRef,
@@ -24,11 +25,10 @@ const withAsChild = (Component: React.ElementType) => {
     const { asChild, children, ...restProps } = props
 
     if (!asChild) {
-      return <Component {...props} ref={ref} />
+      return createElement(Component, { ...restProps, ref }, children)
     }
 
     const onlyChild = Children.only(children)
-
     return isValidElement(onlyChild)
       ? cloneElement(onlyChild, {
           ...mergeProps(restProps, onlyChild.props as any),

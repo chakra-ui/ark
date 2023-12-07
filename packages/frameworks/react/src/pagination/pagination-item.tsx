@@ -9,7 +9,8 @@ import { usePaginationContext } from './pagination-context'
 export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
 export const PaginationItem = forwardRef<HTMLButtonElement, PaginationItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['type', 'value'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
+
   const api = usePaginationContext()
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
 

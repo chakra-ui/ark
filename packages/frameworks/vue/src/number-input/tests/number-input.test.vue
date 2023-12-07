@@ -1,23 +1,15 @@
 <script lang="ts" setup>
-import {
-  NumberInput,
-  NumberInputControl,
-  NumberInputDecrementTrigger,
-  NumberInputIncrementTrigger,
-  NumberInputInput,
-  NumberInputLabel,
-  NumberInputScrubber,
-} from '..'
+import { NumberInput } from '../'
 </script>
 
 <template>
-  <NumberInput>
-    <NumberInputScrubber />
-    <NumberInputLabel>Label</NumberInputLabel>
-    <NumberInputInput />
-    <NumberInputControl>
-      <NumberInputDecrementTrigger>-1</NumberInputDecrementTrigger>
-      <NumberInputIncrementTrigger>+1</NumberInputIncrementTrigger>
-    </NumberInputControl>
-  </NumberInput>
+  <NumberInput.Root>
+    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Input />
+    <NumberInput.Scrubber />
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
+      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
+    </NumberInput.Control>
+  </NumberInput.Root>
 </template>

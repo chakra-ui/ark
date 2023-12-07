@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { splitProps, type JSX } from 'solid-js'
+import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -17,7 +17,7 @@ export interface PaginationProps
   > {}
 
 export const Pagination = (props: PaginationProps) => {
-  const [paginationParams, restProps] = createSplitProps<UsePaginationProps>()(props, [
+  const [paginationParams, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'dir',
     'getRootNode',
@@ -31,10 +31,9 @@ export const Pagination = (props: PaginationProps) => {
     'type',
   ])
 
-  const [childrenProps, localProps] = splitProps(restProps, ['children'])
   const api = usePagination(paginationParams)
-  const getChildren = () => runIfFn(childrenProps.children, api)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <PaginationProvider value={api}>

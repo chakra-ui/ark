@@ -56,8 +56,16 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "unmountOnExit": {
       "type": "boolean",
       "defaultValue": "false",

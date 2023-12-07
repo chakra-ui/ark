@@ -57,7 +57,11 @@
       "description": "Whether to enable lazy mounting"
     },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -103,7 +107,11 @@
       "isRequired": false,
       "description": "The positioning options for the color picker"
     },
-    "present": { "type": "boolean", "isRequired": false },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
