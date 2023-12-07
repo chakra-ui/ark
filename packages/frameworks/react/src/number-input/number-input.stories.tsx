@@ -36,7 +36,7 @@ export const MinMax = () => (
 
 export const FractionDigits = () => (
   <NumberInput.Root
-    formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }}
+    formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }}
     defaultValue="1.00"
   >
     <NumberInput.Scrubber />

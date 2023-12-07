@@ -6,6 +6,18 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added the `ToastGroup` component.
+
+### Changed
+
+- Revised the `FileUpload` component. Check out the [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
+
+### Fixed
+
+- Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
+
 ## [1.1.0] - 2023-11-21
 
 ### Added

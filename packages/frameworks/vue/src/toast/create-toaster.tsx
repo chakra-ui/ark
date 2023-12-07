@@ -11,9 +11,9 @@ import {
   type VNode,
 } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { ark } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
+import { ToastGroup } from './toast-group'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 
@@ -44,11 +44,11 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
       })
 
       return () => (
-        <ark.ol {...api.value.getGroupProps({ placement })} {...attrs}>
+        <ToastGroup {...api.value.getGroupProps({ placement })} {...attrs}>
           {(api.value.toastsByPlacement[placement] ?? []).map((toast) => (
             <ToastProviderFactory key={toast.id} service={toast} />
           ))}
-        </ark.ol>
+        </ToastGroup>
       )
     },
   })

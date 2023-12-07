@@ -23,9 +23,8 @@ export interface NumberInputProps
   > {}
 
 export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
-  const [useNumberInputProps, { children, ...divProps }] = createSplitProps<UseNumberInputProps>()(
-    props,
-    [
+  const [useNumberInputProps, { children, ...localProps }] =
+    createSplitProps<UseNumberInputProps>()(props, [
       'allowMouseWheel',
       'allowOverflow',
       'clampValueOnBlur',
@@ -53,10 +52,9 @@ export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, 
       'step',
       'translations',
       'value',
-    ],
-  )
+    ])
   const api = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   const view = runIfFn(children, api)
 

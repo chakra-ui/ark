@@ -1,38 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import {
-  Editable,
-  EditableArea,
-  EditableCancelTrigger,
-  EditableControl,
-  EditableEditTrigger,
-  EditableInput,
-  EditableLabel,
-  EditablePreview,
-  EditableSubmitTrigger,
-} from '../'
-
-// For editable.test.tsx
-const testProps = ref<string>('')
+import { Editable } from '../'
 </script>
+
 <template>
-  <Editable
-    activationMode="dblclick"
-    placeholder="Placeholder"
-    v-model="testProps"
-    v-slot="{ isEditing }"
-  >
-    <EditableLabel>Label</EditableLabel>
-    <EditableArea>
-      <EditableInput data-testid="edit-input" />
-      <EditablePreview />
-    </EditableArea>
-    <EditableControl v-if="isEditing">
-      <EditableSubmitTrigger> Save </EditableSubmitTrigger>
-      <EditableCancelTrigger> Cancel </EditableCancelTrigger>
-    </EditableControl>
-    <EditableControl v-else>
-      <EditableEditTrigger> Edit </EditableEditTrigger>
-    </EditableControl>
-  </Editable>
+  <Editable.Root placeholder="Placeholder">
+    <Editable.Label>Label</Editable.Label>
+    <Editable.Area>
+      <Editable.Input />
+      <Editable.Preview />
+    </Editable.Area>
+    <Editable.Control>
+      <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+      <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
+      <Editable.EditTrigger>Edit</Editable.EditTrigger>
+    </Editable.Control>
+  </Editable.Root>
 </template>

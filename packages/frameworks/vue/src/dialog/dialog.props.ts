@@ -15,7 +15,7 @@ export const props = {
     default: undefined,
   },
   dir: {
-    type: Object as PropType<Context['dir']>,
+    type: String as PropType<Context['dir']>,
   },
   finalFocusEl: {
     type: Object as PropType<Context['finalFocusEl']>,
@@ -49,7 +49,7 @@ export const props = {
     default: undefined,
   },
   role: {
-    type: Object as PropType<Context['role']>,
+    type: String as PropType<Context['role']>,
   },
   trapFocus: {
     type: Boolean as PropType<Context['trapFocus']>,

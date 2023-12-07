@@ -17,7 +17,7 @@ export interface PaginationProps
   > {}
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
-  const [paginationProps, { children, ...navProps }] = createSplitProps<UsePaginationProps>()(
+  const [paginationProps, { children, ...localProps }] = createSplitProps<UsePaginationProps>()(
     props,
     [
       'count',
@@ -36,8 +36,9 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
   )
 
   const api = usePagination(paginationProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
+
   const view = runIfFn(children, api)
-  const mergedProps = mergeProps(api.rootProps, navProps)
 
   return (
     <PaginationProvider value={api}>

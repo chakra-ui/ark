@@ -6,3 +6,6 @@ contact_links:
   - name: Questions & Discussions
     url: https://github.com/chakra-ui/ark/discussions
     about: Ask questions and discuss topics with other devlopers
+  - name: Consult with the Maintainers (60m)
+    url: https://calendly.com/chakra-ui/technical-consulting-60m
+    about: Discuss your technical questions or feature request with the Ark UI Maintainers

@@ -24,13 +24,17 @@ export const FileUpload = (props: FileUploadProps) => {
     'files',
     'getRootNode',
     'id',
-    'isValidFile',
+    'ids',
     'locale',
     'maxFiles',
     'maxFileSize',
     'minFileSize',
     'name',
+    'onFileAccept',
+    'onFileReject',
     'onFilesChange',
+    'translations',
+    'validate',
   ])
 
   const api = useFileUpload(fileUploadProps)

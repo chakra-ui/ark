@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableSubmitTriggerProps = HTMLArkProps<'button'>
+export interface EditableSubmitTriggerProps extends HTMLArkProps<'button'> {}
 
 export const EditableSubmitTrigger = defineComponent({
   name: 'EditableSubmitTrigger',

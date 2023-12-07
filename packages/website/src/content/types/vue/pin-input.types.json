@@ -108,10 +108,7 @@
       "description": "The value of the the pin input."
     }
   },
-  "Input": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
+  "Input": { "index": { "type": "number", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }
