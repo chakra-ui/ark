@@ -5,8 +5,8 @@ import { useEditableContext } from './editable-context'
 export interface EditableSubmitTriggerProps extends HTMLArkProps<'button'> {}
 
 export const EditableSubmitTrigger = (props: EditableSubmitTriggerProps) => {
-  const dialog = useEditableContext()
-  const mergedProps = mergeProps(() => dialog().submitTriggerProps, props)
+  const api = useEditableContext()
+  const mergedProps = mergeProps(() => api().submitTriggerProps, props)
 
   return <ark.button {...mergedProps} />
 }

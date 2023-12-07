@@ -52,7 +52,7 @@
   border-width: 1px;
 }
 
-[data-scope='file-upload'][data-part='item-preview'] {
+[data-scope='file-upload'][data-part='item-preview-image'] {
   aspect-ratio: 1;
   object-fit: cover;
   width: 40px;

@@ -22,7 +22,7 @@ export const Basic = () => (
 
 export const CustomControls = () => (
   <Editable.Root placeholder="enter a value" defaultValue="Chakra">
-    {(state) => (
+    {(api) => (
       <>
         <Editable.Label>Label</Editable.Label>
         <Editable.Area>
@@ -30,7 +30,7 @@ export const CustomControls = () => (
           <Editable.Preview />
         </Editable.Area>
         <Editable.Control>
-          {state.isEditing ? (
+          {api.isEditing ? (
             <>
               <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
               <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>

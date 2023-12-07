@@ -2,9 +2,10 @@ import { mergeProps, normalizeProps, useActor, type PropTypes } from '@zag-js/so
 import * as toast from '@zag-js/toast'
 import { Index, createEffect, createMemo, onCleanup, type Accessor, type JSX } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { ark, type HTMLArkProps } from '../factory'
+import { type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider, type Options } from './toast-context'
+import { ToastGroup } from './toast-group'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 
@@ -37,11 +38,11 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     )
 
     return (
-      <ark.ol {...mergedProps}>
+      <ToastGroup {...mergedProps}>
         <Index each={api().toastsByPlacement[props.placement]}>
           {(toast) => <ToastProviderFactory service={toast()} />}
         </Index>
-      </ark.ol>
+      </ToastGroup>
     )
   }
 

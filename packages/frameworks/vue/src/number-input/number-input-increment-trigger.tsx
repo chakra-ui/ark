@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useNumberInputContext } from './number-input-context'
 
-export type NumberInputIncrementTriggerProps = HTMLArkProps<'button'>
+export interface NumberInputIncrementTriggerProps extends HTMLArkProps<'button'> {}
 
 export const NumberInputIncrementTrigger = defineComponent({
   name: 'NumberInputIncrementTrigger',

@@ -19,7 +19,7 @@ export interface EditableProps
   > {}
 
 export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) => {
-  const [useEditableProps, { children, ...divProps }] = createSplitProps<UseEditableProps>()(
+  const [useEditableProps, { children, ...localProps }] = createSplitProps<UseEditableProps>()(
     props,
     [
       'activationMode',
@@ -52,7 +52,7 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) =
     ],
   )
   const api = useEditable(useEditableProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   const view = runIfFn(children, api)
 

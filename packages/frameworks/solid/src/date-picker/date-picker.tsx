@@ -39,7 +39,6 @@ export const DatePicker = (props: DatePickerProps) => {
     'isDateUnavailable',
     'locale',
     'max',
-    'messages',
     'min',
     'modal',
     'name',
@@ -55,6 +54,7 @@ export const DatePicker = (props: DatePickerProps) => {
     'selectionMode',
     'startOfWeek',
     'timeZone',
+    'translations',
     'value',
     'view',
   ])

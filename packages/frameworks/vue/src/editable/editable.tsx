@@ -5,7 +5,7 @@ import { EditableProvider } from './editable-context'
 import { emits, props } from './editable.props'
 import { useEditable, type UseEditableProps } from './use-editable'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
+export interface EditableProps extends Assign<HTMLArkProps<'div'>, UseEditableProps> {}
 
 export const Editable = defineComponent({
   name: 'Editable',

@@ -10,6 +10,10 @@ import { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-uploa
 import { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
 import { FileUploadItemPreview, type FileUploadItemPreviewProps } from './file-upload-item-preview'
 import {
+  FileUploadItemPreviewImage,
+  type FileUploadItemPreviewImageProps,
+} from './file-upload-item-preview-image'
+import {
   FileUploadItemSizeText,
   type FileUploadItemSizeTextProps,
 } from './file-upload-item-size-text'
@@ -19,14 +23,15 @@ import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-tr
 const FileUpload = Object.assign(FileUploadRoot, {
   Root: FileUploadRoot,
   Dropzone: FileUploadDropzone,
-  Label: FileUploadLabel,
-  Trigger: FileUploadTrigger,
-  ItemGroup: FileUploadItemGroup,
   Item: FileUploadItem,
+  ItemDeleteTrigger: FileUploadItemDeleteTrigger,
+  ItemGroup: FileUploadItemGroup,
   ItemName: FileUploadItemName,
   ItemPreview: FileUploadItemPreview,
+  ItemPreviewImage: FileUploadItemPreviewImage,
   ItemSizeText: FileUploadItemSizeText,
-  ItemDeleteTrigger: FileUploadItemDeleteTrigger,
+  Label: FileUploadLabel,
+  Trigger: FileUploadTrigger,
 })
 
 export {
@@ -36,7 +41,7 @@ export {
   FileUploadItemDeleteTrigger,
   FileUploadItemGroup,
   FileUploadItemName,
-  FileUploadItemPreview,
+  FileUploadItemPreviewImage,
   FileUploadItemSizeText,
   FileUploadLabel,
   FileUploadTrigger,
@@ -49,6 +54,7 @@ export type {
   FileUploadItemDeleteTriggerProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
+  FileUploadItemPreviewImageProps,
   FileUploadItemPreviewProps,
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
