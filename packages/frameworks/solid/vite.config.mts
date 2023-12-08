@@ -9,7 +9,11 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: 'src/setup-test.ts',
     deps: {
-      registerNodeLoader: false,
+      optimizer: {
+        web: {
+          include: ['solid-js'],
+        },
+      },
     },
     coverage: {
       provider: 'v8',
