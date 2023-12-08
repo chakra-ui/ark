@@ -103,7 +103,7 @@
     "lucide-solid": "0.294.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "release-it": "17.0.0",
+    "release-it": "17.0.1",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.6.1",
     "rollup-preset-solid": "2.0.1",
