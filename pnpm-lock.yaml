@@ -775,9 +775,6 @@ importers:
       '@types/node':
         specifier: 18.18.8
         version: 18.18.8
-      '@types/prettier':
-        specifier: 2.7.3
-        version: 2.7.3
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@types/node@18.18.8)(typescript@5.3.3)
@@ -7842,10 +7839,6 @@ packages:
 
   /@types/normalize-package-data@2.4.2:
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
-    dev: true
-
-  /@types/prettier@2.7.3:
-    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: true
 
   /@types/pretty-hrtime@1.0.3:
