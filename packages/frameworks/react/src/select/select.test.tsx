@@ -95,15 +95,15 @@ describe('Select', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
   })
 
-  it('should call onChange when item is selected', async () => {
-    const onChange = vi.fn()
-    render(<ComponentUnderTest onChange={onChange} />)
+  it('should call onValueChange when item is selected', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
     user.click(trigger)
     const item = screen.getByText('React', { ignore: 'option' })
     user.click(item)
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledTimes(1)
+      expect(onValueChange).toHaveBeenCalledTimes(1)
     })
   })
 
