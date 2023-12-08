@@ -26,7 +26,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/node": "18.18.8",
     "@types/prettier": "2.7.3",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "typescript": "5.3.3"
   }
 }
