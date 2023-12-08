@@ -140,13 +140,13 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
-        version: 5.0.0(release-it@17.0.0)
+        version: 5.0.0(release-it@17.0.1)
       globby:
         specifier: 14.0.0
         version: 14.0.0
       release-it:
-        specifier: 17.0.0
-        version: 17.0.0(typescript@5.3.3)
+        specifier: 17.0.1
+        version: 17.0.1(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -264,7 +264,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
-        version: 5.0.0(release-it@17.0.0)
+        version: 5.0.0(release-it@17.0.1)
       '@storybook/addon-a11y':
         specifier: 7.6.4
         version: 7.6.4
@@ -347,8 +347,8 @@ importers:
         specifier: 7.48.2
         version: 7.48.2(react@18.2.0)
       release-it:
-        specifier: 17.0.0
-        version: 17.0.0(typescript@5.3.3)
+        specifier: 17.0.1
+        version: 17.0.1(typescript@5.3.3)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -466,7 +466,7 @@ importers:
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
-        version: 5.0.0(release-it@17.0.0)
+        version: 5.0.0(release-it@17.0.1)
       '@solidjs/testing-library':
         specifier: 0.8.4
         version: 0.8.4(@solidjs/router@0.9.1)(solid-js@1.8.7)
@@ -528,8 +528,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       release-it:
-        specifier: 17.0.0
-        version: 17.0.0(typescript@5.3.3)
+        specifier: 17.0.1
+        version: 17.0.1(typescript@5.3.3)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -662,7 +662,7 @@ importers:
         version: 0.17.6(histoire@0.17.6)(vite@5.0.6)(vue@3.3.4)
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
-        version: 5.0.0(release-it@17.0.0)
+        version: 5.0.0(release-it@17.0.1)
       '@testing-library/dom':
         specifier: 9.3.3
         version: 9.3.3
@@ -718,8 +718,8 @@ importers:
         specifier: 0.294.0
         version: 0.294.0(vue@3.3.4)
       release-it:
-        specifier: 17.0.0
-        version: 17.0.0(typescript@5.3.3)
+        specifier: 17.0.1
+        version: 17.0.1(typescript@5.3.3)
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -6009,14 +6009,14 @@ packages:
       '@babel/runtime': 7.23.2
     dev: true
 
-  /@release-it/keep-a-changelog@5.0.0(release-it@17.0.0):
+  /@release-it/keep-a-changelog@5.0.0(release-it@17.0.1):
     resolution: {integrity: sha512-Y1xqZe50jqK8qKlzEfGLVTjSkn57e/QlQMXHhKRWGgsv8Qy/X0LN1CJphoskZu7p7sAD3RihxhXrjJhRPE4JcA==}
     engines: {node: '>=18'}
     peerDependencies:
       release-it: ^17.0.0
     dependencies:
       detect-newline: 4.0.1
-      release-it: 17.0.0(typescript@5.3.3)
+      release-it: 17.0.1(typescript@5.3.3)
       string-template: 1.0.0
     dev: true
 
@@ -13423,7 +13423,6 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
-    dev: false
 
   /hast-util-from-html@2.0.1:
     resolution: {integrity: sha512-RXQBLMl9kjKVNkJTIO6bZyb2n+cUH8LFaSSzo82jiLT6Tfc+Pt7VQCS+/h3YwG4jaNE2TA2sdJisGWR+aJrp0g==}
@@ -14002,7 +14001,6 @@ packages:
     resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
     dependencies:
       hasown: 2.0.0
-    dev: false
 
   /is-date-object@1.0.5:
     resolution: {integrity: sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==}
@@ -17624,8 +17622,8 @@ packages:
       unified: 11.0.4
     dev: false
 
-  /release-it@17.0.0(typescript@5.3.3):
-    resolution: {integrity: sha512-1A1sSQy8VXuAJcslZGhKtOD/LVBuf1sH4XqhKsQuh+2EIksC2STx/MdKmVE86jFd/zorHTXOpl7Lr/isD0dDrg==}
+  /release-it@17.0.1(typescript@5.3.3):
+    resolution: {integrity: sha512-XHeirIW8ptkkrH1+uCg+ditclZJbSKeovrtIb42v3s2S/icF2xCTwFHpbvAKQGqBVJ5Zm49If8bwsryi247KdQ==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -17784,7 +17782,7 @@ packages:
   /resolve@1.19.0:
     resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}
     dependencies:
-      is-core-module: 2.13.0
+      is-core-module: 2.13.1
       path-parse: 1.0.7
     dev: true
 
@@ -17792,7 +17790,7 @@ packages:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
     hasBin: true
     dependencies:
-      is-core-module: 2.13.0
+      is-core-module: 2.13.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -17800,7 +17798,7 @@ packages:
     resolution: {integrity: sha512-U7WjGVG9sH8tvjW5SmGbQuui75FiyjAX72HX15DwBBwF9dNiQZRQAg9nnPhYy+TUnE0+VcrttuvNI8oSxZcocA==}
     hasBin: true
     dependencies:
-      is-core-module: 2.13.0
+      is-core-module: 2.13.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
