@@ -714,6 +714,12 @@ importers:
       eslint:
         specifier: 8.55.0
         version: 8.55.0
+      eslint-plugin-jest-dom:
+        specifier: 5.1.0
+        version: 5.1.0(@testing-library/dom@9.3.3)(eslint@8.55.0)
+      eslint-plugin-testing-library:
+        specifier: 6.2.0
+        version: 6.2.0(eslint@8.55.0)(typescript@5.3.3)
       eslint-plugin-vue:
         specifier: 9.19.2
         version: 9.19.2(eslint@8.55.0)
