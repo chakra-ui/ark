@@ -27,6 +27,7 @@ const ComponentUnderTest = (props: MenuProps) => (
 describe('Menu', () => {
   it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -96,10 +97,10 @@ describe('Menu', () => {
     const button = screen.getByRole('button', { name: /open menu/i })
 
     await user.click(button)
-    await waitFor(() => expect(screen.getByText(/close menu/i)).toBeInTheDocument())
+    await screen.findByText(/close menu/i)
 
     await user.click(button)
-    await waitFor(() => expect(screen.getByText(/open menu/i)).toBeInTheDocument())
+    await screen.findByText(/open menu/i)
   })
 
   it('should accept a custom placement', async () => {
@@ -109,7 +110,7 @@ describe('Menu', () => {
     await user.click(button)
 
     const menuList = screen.getByRole('menu')
-    expect(menuList.getAttribute('data-placement')).toEqual('left-start')
+    expect(menuList).toHaveAttribute('data-placement', 'left-start')
   })
 
   it('should control the open state', async () => {
@@ -127,7 +128,7 @@ describe('Menu', () => {
     expect(menutrigger).not.toHaveAttribute('aria-controls')
 
     await user.click(menutrigger)
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
     expect(menutrigger).toHaveAttribute('aria-controls')
   })
 
@@ -141,6 +142,7 @@ describe('Menu', () => {
       )
 
       const button = screen.getByRole('button', { name: /open menu/i })
+
       fireEvent.contextMenu(button)
       await waitFor(() => expect(screen.getByText(/menu content/i)).toBeVisible())
     })
@@ -175,10 +177,12 @@ describe('Menu', () => {
       )
 
       const button = screen.getByRole('button', { name: /open menu/i })
+
       await user.click(button)
       await waitFor(() => expect(screen.getByText(/main menu content/i)).toBeVisible())
 
       const nestedButton = screen.getByText(/Share/i)
+
       await user.click(nestedButton)
       await waitFor(() => expect(screen.getByText(/nested menu content/i)).toBeVisible())
     })
@@ -240,6 +244,7 @@ describe('Menu', () => {
 
     it('should select a radio option', async () => {
       render(<ComponentUnderTest />)
+
       const menuButton = screen.getByRole('button', { name: /open menu/i })
       await user.click(menuButton)
 
@@ -250,6 +255,7 @@ describe('Menu', () => {
 
     it('should select a checkbox option', async () => {
       render(<ComponentUnderTest />)
+
       const menuButton = screen.getByRole('button', { name: /open menu/i })
       await user.click(menuButton)
 

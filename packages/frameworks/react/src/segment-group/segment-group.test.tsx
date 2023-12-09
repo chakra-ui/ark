@@ -29,6 +29,7 @@ const ComponentUnderTest = (props: SegmentGroupProps) => {
 describe('Segment Group', () => {
   it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

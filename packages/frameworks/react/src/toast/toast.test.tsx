@@ -30,6 +30,8 @@ describe('Toast', () => {
   it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
+
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
     await user.click(screen.getByText('Close'))
   })
@@ -40,6 +42,7 @@ describe('Toast', () => {
 
   it('should show and hide a toast message', async () => {
     render(<ComponentUnderTest />)
+
     await user.click(screen.getByText('Create Toast'))
 
     await waitFor(() => expect(screen.queryByText('Title')).toBeVisible())

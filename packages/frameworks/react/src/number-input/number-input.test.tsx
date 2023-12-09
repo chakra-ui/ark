@@ -19,6 +19,7 @@ const ComponentUnderTest = (props: NumberInputProps) => (
 describe('NumberInput', () => {
   it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -28,10 +29,13 @@ describe('NumberInput', () => {
 
   it('should handle wheel event when allowMouseWheel is true', async () => {
     render(<ComponentUnderTest allowMouseWheel />)
+
     const input = screen.getByRole('spinbutton')
+
     act(() => {
       input.focus()
     })
+
     fireEvent.wheel(input, { deltaY: -1 })
 
     await waitFor(() => {
@@ -41,10 +45,13 @@ describe('NumberInput', () => {
 
   it('should clamp value on blur when clampValueOnBlur is true', async () => {
     render(<ComponentUnderTest clampValueOnBlur min={0} max={10} defaultValue="15" />)
+
     const input = screen.getByRole('spinbutton')
+
     act(() => {
       input.focus()
     })
+
     fireEvent.blur(input)
 
     await waitFor(() => {
@@ -54,7 +61,9 @@ describe('NumberInput', () => {
 
   it('should allow value to exceed max when allowOverflow is true', async () => {
     render(<ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
+
     const input = screen.getByRole('spinbutton')
+
     expect(input).toHaveValue('15')
   })
 
@@ -67,6 +76,7 @@ describe('NumberInput', () => {
         defaultValue="5"
       />,
     )
+
     const input = screen.getByRole('spinbutton')
 
     await waitFor(() => {
@@ -76,10 +86,13 @@ describe('NumberInput', () => {
 
   it('should increment value by step when using increment button', async () => {
     render(<ComponentUnderTest step={5} defaultValue="0" />)
+
     const incrementBtn = screen.getByText('+1')
+
     await user.click(incrementBtn)
 
     const input = screen.getByRole('spinbutton')
+
     await waitFor(() => {
       expect(input).toHaveValue('5')
     })
@@ -92,12 +105,16 @@ describe('NumberInput', () => {
         formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }}
       />,
     )
+
     const input = screen.getByRole('spinbutton')
+
     await waitFor(() => {
       expect(input).toHaveValue('1.00')
     })
+
     await user.clear(input)
     await user.type(input, '1.1234')
+
     fireEvent.blur(input)
 
     await waitFor(() => {
