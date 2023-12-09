@@ -33,6 +33,7 @@ describe('spread', () => {
   it('should merge events', async () => {
     const onClickParent = vi.fn()
     const onClickChild = vi.fn()
+
     render(() => (
       <ark.div data-testid="parent" onClick={onClickParent} asChild>
         <ark.span data-testid="child" onClick={onClickChild} />
