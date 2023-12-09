@@ -25,6 +25,7 @@ const ComponentUnderTest = (props: DialogProps) => (
 describe('Dialog', () => {
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -42,12 +43,12 @@ describe('Dialog', () => {
     expect(await screen.findByText('Dialog Title')).not.toBeVisible()
   })
 
-  it('should invoke onClose if dialog is closed', async () => {
-    const onClose = vi.fn()
-    render(<ComponentUnderTest open onOpenChange={onClose} />)
-    await user.click(screen.getByText('Close'))
+  it('should invoke onOpenChange if dialog is closed', async () => {
+    const onOpenChange = vi.fn()
+    render(<ComponentUnderTest open onOpenChange={onOpenChange} />)
 
-    expect(onClose).toHaveBeenCalledTimes(1)
+    await user.click(screen.getByText('Close'))
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should be able to lazy mount', async () => {
@@ -55,7 +56,7 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
@@ -63,6 +64,7 @@ describe('Dialog', () => {
 
   it('should not have aria-controls if lazy mounted', async () => {
     render(<ComponentUnderTest lazyMount />)
+
     expect(screen.getByRole('button', { name: 'Open Dialog' })).not.toHaveAttribute('aria-controls')
   })
 
@@ -71,7 +73,7 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
