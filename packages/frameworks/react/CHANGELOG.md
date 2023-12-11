@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added the `ToastGroup` component.
+- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 
