@@ -13,7 +13,12 @@ import './file-upload.css'
         <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
         <FileUpload.ItemGroup v-slot="files">
           <FileUpload.Item v-for="file in files" :file="file" :key="file">
-            <FileUpload.ItemPreview />
+            <FileUpload.ItemPreview type="image/*">
+              <FileUpload.ItemPreviewImage />
+            </FileUpload.ItemPreview>
+            <FileUpload.ItemPreview type=".*">
+              <div>Generic Icon</div>
+            </FileUpload.ItemPreview>
             <FileUpload.ItemName />
             <FileUpload.ItemSizeText />
             <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>

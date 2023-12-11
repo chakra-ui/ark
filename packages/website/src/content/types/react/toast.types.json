@@ -6,6 +6,13 @@
       "description": "Render as a different element type."
     }
   },
+  "Group": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Title": {
     "asChild": {
       "type": "boolean",

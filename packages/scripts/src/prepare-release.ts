@@ -16,6 +16,11 @@ const generateExports = () => {
       require: `${keyPath}/index.cjs`,
     }
   }
+  exports['./factory'] = {
+    types: './factory/factory.d.ts',
+    import: './factory.mjs',
+    require: './factory.cjs',
+  }
   exports['./package.json'] = './package.json'
   return exports
 }

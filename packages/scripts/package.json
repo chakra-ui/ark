@@ -4,12 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "exports:check": "ts-node src/check-exports.ts",
-    "exports:sync": "ts-node src/sync-exports.ts",
-    "document:types": "ts-node src/generate-type-docs.ts",
-    "document:stories": "ts-node src/generate-stories.ts",
-    "release:prepare": "ts-node src/prepare-release.ts",
-    "vue:props": "ts-node src/generate-vue-props.ts"
+    "exports:check": "node --loader ts-node/esm src/check-exports.ts",
+    "exports:sync": "node --loader ts-node/esm src/sync-exports.ts",
+    "document:types": "node --loader ts-node/esm src/generate-type-docs.ts",
+    "document:stories": "node --loader ts-node/esm src/generate-stories.ts",
+    "release:prepare": "node --loader ts-node/esm src/prepare-release.ts",
+    "vue:props": "node --loader ts-node/esm src/generate-vue-props.ts"
   },
   "dependencies": {
     "@types/voca": "1.4.5",
@@ -17,16 +17,15 @@
     "fs-extra": "11.2.0",
     "globby": "14.0.0",
     "pkg-dir": "8.0.0",
-    "prettier": "3.1.0",
-    "ts-morph": "20.0.0",
+    "prettier": "3.1.1",
+    "ts-morph": "21.0.1",
     "ts-pattern": "5.0.6",
     "voca": "1.4.1"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
     "@types/node": "18.18.8",
-    "@types/prettier": "2.7.3",
-    "ts-node": "10.9.1",
-    "typescript": "5.3.2"
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
   }
 }

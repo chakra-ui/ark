@@ -45,7 +45,11 @@
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
@@ -61,7 +65,11 @@
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
-    "present": { "type": "boolean", "isRequired": false },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "unmountOnExit": {
       "type": "boolean",
       "defaultValue": "false",
