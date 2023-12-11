@@ -21,6 +21,7 @@ description: All notable changes to this project will be documented in this file
 - Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
 - Resolved an issue where the `ark` function would log a warning when the `asChild` prop was set to `false`.
 - Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
+- Fixed an issue with hydration mismatch in the `Portal` component.
 
 ## [1.1.0] - 2023-11-21
 
