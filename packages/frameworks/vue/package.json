@@ -84,7 +84,7 @@
     "release-it": "17.0.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.3.3",
-    "vite": "5.0.7",
+    "vite": "5.0.8",
     "vite-plugin-dts": "3.6.4",
     "vitest": "0.34.6",
     "vue": "3.3.4"
