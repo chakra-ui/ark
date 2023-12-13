@@ -17,6 +17,7 @@ const ComponentUnderTest = (props: CheckboxProps) => (
 describe('Checkbox', () => {
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -38,15 +39,18 @@ describe('Checkbox', () => {
     const onCheckedChange = vi.fn()
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
-    fireEvent.click(screen.getByRole('checkbox'))
-    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
+    const checkbox = screen.getByRole('checkbox')
 
-    fireEvent.click(screen.getByRole('checkbox'))
-    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
+    fireEvent.click(checkbox)
+    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
+
+    fireEvent.click(checkbox)
+    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {
     render(<ComponentUnderTest checked="indeterminate" />)
+
     expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 
@@ -63,8 +67,11 @@ describe('Checkbox', () => {
 
     render(<ControlledComponentUnderTest />)
 
-    expect(screen.getByRole('checkbox')).not.toBeChecked()
+    const checkbox = screen.getByRole('checkbox')
+
+    expect(checkbox).not.toBeChecked()
+
     await user.click(screen.getByText('set checked'))
-    await waitFor(() => expect(screen.getByRole('checkbox')).toBeChecked())
+    await waitFor(() => expect(checkbox).toBeChecked())
   })
 })

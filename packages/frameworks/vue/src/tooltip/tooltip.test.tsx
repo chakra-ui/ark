@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import {
   Tooltip,
   TooltipArrow,
@@ -24,46 +24,46 @@ const Component = (props: TooltipProps) => (
 
 describe('Tooltip', () => {
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
-    const { getByText, getByRole, queryByText } = render(Component)
+    render(Component)
 
-    const tooltipTrigger = getByText('hover me')
+    const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    expect(getByRole('tooltip')).toBeInTheDocument()
+    expect(screen.getByRole('tooltip')).toBeInTheDocument()
 
     await user.unhover(tooltipTrigger)
 
-    expect(queryByText('content')).not.toBeVisible()
+    expect(screen.queryByText('content')).not.toBeVisible()
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
-    const { getByText, findByRole } = render(Component, {
+    render(Component, {
       props: {
         disabled: false,
       },
     })
 
-    const tooltipTrigger = getByText('hover me')
+    const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    await findByRole('tooltip')
-    expect(getByText('hover me')).toBeVisible()
+    await screen.findByRole('tooltip')
+    expect(screen.getByText('hover me')).toBeVisible()
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
-    const { getByText, findByRole, getByRole } = render(Component, {
+    render(Component, {
       props: {
         closeOnEsc: false,
       },
     })
 
-    const tooltipTrigger = getByText('hover me')
+    const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    await findByRole('tooltip')
-    expect(getByText('content')).toBeInTheDocument()
+    await screen.findByRole('tooltip')
+    expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(getByRole('tooltip')).toBeInTheDocument()
+    expect(screen.getByRole('tooltip')).toBeInTheDocument()
   })
 })

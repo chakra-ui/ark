@@ -50,6 +50,7 @@ const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
 describe('Combobox', () => {
   it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -60,19 +61,18 @@ describe('Combobox', () => {
   it('should show options on click', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByRole('option', { hidden: true, name: 'React' })).not.toBeVisible()
-    user.click(screen.getByTestId('trigger'))
 
+    await user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
   })
 
   it('should handle item selection', async () => {
     render(<ComponentUnderTest />)
 
-    user.click(screen.getByTestId('trigger'))
+    await user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    user.click(screen.getByRole('option', { name: 'React' }))
-
+    await user.click(screen.getByRole('option', { name: 'React' }))
     await waitFor(() => expect(screen.getByRole('combobox')).toHaveValue('React'))
   })
 
@@ -80,11 +80,10 @@ describe('Combobox', () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    user.click(screen.getByTestId('trigger'))
+    await user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    user.click(screen.getByRole('option', { name: 'React' }))
-
+    await user.click(screen.getByRole('option', { name: 'React' }))
     await waitFor(() => {
       expect(onValueChange).toHaveBeenCalledTimes(1)
     })
@@ -93,14 +92,15 @@ describe('Combobox', () => {
   it('should open menu when onOpenChange is called', async () => {
     const onOpenChange = vi.fn()
     render(<ComponentUnderTest onOpenChange={onOpenChange} />)
-    user.click(screen.getByTestId('trigger'))
+
+    await user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {
     render(<ComponentUnderTest readOnly />)
-    user.click(screen.getByTestId('trigger'))
 
+    await user.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 
@@ -109,7 +109,7 @@ describe('Combobox', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    await screen.findByTestId('positioner')
   })
 
   it('should be able to lazy mount and unmount its items', async () => {
@@ -117,9 +117,9 @@ describe('Combobox', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    await screen.findByTestId('positioner')
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

@@ -25,6 +25,7 @@ const ComponentUnderTest = (props: DialogProps) => (
 describe('Dialog', () => {
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -55,7 +56,7 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
@@ -71,7 +72,7 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()

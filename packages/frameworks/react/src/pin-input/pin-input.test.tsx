@@ -19,6 +19,7 @@ const ComponentUnderTest = (props: PinInputProps) => (
 describe('PinInput', () => {
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -28,6 +29,7 @@ describe('PinInput', () => {
 
   it('should have the proper aria labels', async () => {
     render(<ComponentUnderTest />)
+
     expect(screen.queryAllByLabelText('pin code 1 of 3')).toHaveLength(1)
     expect(screen.queryAllByLabelText('pin code 2 of 3')).toHaveLength(1)
     expect(screen.queryAllByLabelText('pin code 3 of 3')).toHaveLength(1)
@@ -35,6 +37,7 @@ describe('PinInput', () => {
 
   it('should autofocus the first input', async () => {
     render(<ComponentUnderTest autoFocus />)
+
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })
 

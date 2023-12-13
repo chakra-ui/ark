@@ -1,6 +1,6 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import { getParts } from '../../setup-test'
 import ComponentUnderTest from './checkbox.test.vue'
 import ControlledComponentUnderTest from './controlled-checkbox.test.vue'
@@ -8,6 +8,7 @@ import ControlledComponentUnderTest from './controlled-checkbox.test.vue'
 describe('Checkbox', () => {
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -17,24 +18,24 @@ describe('Checkbox', () => {
 
   it('should handle check and unchecked', async () => {
     const onCheckedChange = vi.fn()
-    const { getByRole } = render(ComponentUnderTest, { props: { onCheckedChange } })
+    render(ComponentUnderTest, { props: { onCheckedChange } })
 
-    const checkbox = getByRole('checkbox')
+    const checkbox = screen.getByRole('checkbox')
 
     await user.click(checkbox)
     expect(checkbox).toBeChecked()
   })
 
   it('should allow controlled usage', async () => {
-    const { getByRole, getByText } = render(ControlledComponentUnderTest)
+    render(ControlledComponentUnderTest)
 
-    expect(getByRole('checkbox')).not.toBeChecked()
-    await user.click(getByText('set checked'))
-    expect(getByRole('checkbox')).toBeChecked()
+    expect(screen.getByRole('checkbox')).not.toBeChecked()
+    await user.click(screen.getByText('set checked'))
+    expect(screen.getByRole('checkbox')).toBeChecked()
   })
 
   it('should handle indeterminate state from example', async () => {
-    const { getByTestId } = render(ComponentUnderTest, { props: { modelValue: 'indeterminate' } })
-    expect(getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
+    render(ComponentUnderTest, { props: { modelValue: 'indeterminate' } })
+    expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 })

@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, waitFor } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import {
   Popover,
   PopoverArrow,
@@ -35,31 +35,31 @@ const ComponentUnderTest = (props: PopoverProps) => (
 
 describe('Popover', () => {
   it('should open and close the popover', async () => {
-    const { getByRole, getByText, queryByText } = render(ComponentUnderTest)
+    render(ComponentUnderTest)
 
-    await user.click(getByText('click me'))
-    expect(getByRole('dialog')).toBeInTheDocument()
+    await user.click(screen.getByText('click me'))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
-    await user.click(getByText('close'))
-    await waitFor(() => expect(queryByText('title')).not.toBeVisible())
+    await user.click(screen.getByText('close'))
+    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
   it.skip('should hide the tooltip when escape is pressed', async () => {
-    const { getByRole, getByText, queryByText } = render(ComponentUnderTest, {
+    render(ComponentUnderTest, {
       props: { closeOnEsc: true },
     })
 
-    await user.click(getByText('click me'))
-    expect(getByRole('dialog')).toBeInTheDocument()
+    await user.click(screen.getByText('click me'))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(queryByText('title')).not.toBeVisible()
+    expect(screen.queryByText('title')).not.toBeVisible()
   })
 
   it('should focus the first focusable element', async () => {
-    const { getByRole, getByText } = render(ComponentUnderTest)
+    render(ComponentUnderTest)
 
-    await user.click(getByText('click me'))
-    expect(getByRole('dialog')).toBeInTheDocument()
+    await user.click(screen.getByText('click me'))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })
