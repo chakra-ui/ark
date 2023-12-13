@@ -7,18 +7,18 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { useEnvironmentContext } from './environment'
+import { useIsServer } from './use-is-server'
 
 export interface PortalProps {
   disabled?: boolean
   container?: RefObject<HTMLElement>
 }
 
-const isServer = typeof window === 'undefined'
-
 export const Portal = (
   props: PropsWithChildren<PortalProps>,
 ): ReactPortal[] | ReactNode | null | undefined => {
   const { children, container, disabled } = props
+  const isServer = useIsServer()
   const getRootNode = useEnvironmentContext()
 
   if (isServer || disabled) return children

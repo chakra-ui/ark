@@ -35,6 +35,7 @@ const ComponentUnderTest = (props: TabsProps) => {
 describe('Tabs', () => {
   it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -79,10 +80,10 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 
-    user.click(lastTab)
+    await user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
-    user.keyboard('[ArrowRight]')
+    await user.keyboard('[ArrowRight]')
     await waitFor(() => expect(firstTab).toHaveFocus())
   })
 
@@ -90,7 +91,7 @@ describe('Tabs', () => {
     render(() => <ComponentUnderTest loop={false} />)
     const lastTab = screen.getByText('Vue Trigger')
 
-    user.click(lastTab)
+    await user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
@@ -102,10 +103,10 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const secondTab = screen.getByText('Solid Trigger')
 
-    user.click(firstTab)
+    await user.click(firstTab)
     await waitFor(() => expect(firstTab).toHaveFocus())
 
-    user.keyboard('[ArrowDown]')
+    await user.keyboard('[ArrowDown]')
     await waitFor(() => expect(secondTab).toHaveFocus())
   })
 
@@ -119,7 +120,7 @@ describe('Tabs', () => {
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByText('React Trigger'))
-    expect(screen.queryByText('React Content')).toBeInTheDocument()
+    expect(screen.getByText('React Content')).toBeInTheDocument()
   })
 
   it('should lazy mount and unmount on exit a tab', async () => {

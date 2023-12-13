@@ -32,6 +32,7 @@ const ComponentUnderTest = (props: PaginationProps) => (
 describe('Pagination', () => {
   it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest count={100} pageSize={10} />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

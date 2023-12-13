@@ -19,6 +19,7 @@ const ComponentUnderTest = (props: SwitchProps) => {
 describe('Switch', () => {
   it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -39,7 +40,7 @@ describe('Switch', () => {
     const onCheckedChange = vi.fn()
 
     render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} disabled />)
-    expect(screen.getByRole('checkbox')).toHaveAttribute('disabled')
+    expect(screen.getByRole('checkbox')).toBeDisabled()
 
     const switchControl = screen.getByRole('checkbox')
     await user.click(switchControl)
@@ -58,6 +59,6 @@ describe('Switch', () => {
     render(() => <ComponentUnderTest required />)
     const switchControl = screen.getByRole('checkbox')
 
-    expect(switchControl).toHaveAttribute('required')
+    expect(switchControl).toBeRequired()
   })
 })

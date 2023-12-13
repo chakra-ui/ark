@@ -17,6 +17,7 @@ const ComponentUnderTest = (props: CheckboxProps) => (
 describe('Checkbox', () => {
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -37,10 +38,10 @@ describe('Checkbox', () => {
     render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
     fireEvent.click(screen.getByRole('checkbox'))
-    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
+    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
 
     fireEvent.click(screen.getByRole('checkbox'))
-    waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
+    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {

@@ -12,5 +12,5 @@
       "matchPackagePatterns": ["@zag-js/*"]
     }
   ],
-  "ignoreDeps": ["vitest", "@types/node"]
+  "ignoreDeps": ["@types/node"]
 }

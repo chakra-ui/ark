@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import { Teleport } from 'vue'
 import {
   Dialog,
@@ -44,23 +44,23 @@ describe('Dialog', () => {
 
   it('should invoke onOpenChange if dialog is closed', async () => {
     const onOpenChange = vi.fn()
-    const { getByText } = render(Component, {
+    render(Component, {
       props: {
         open: true,
         onOpenChange,
       },
     })
 
-    await user.click(getByText('Close'))
+    await user.click(screen.getByText('Close'))
 
     expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it.skip('should open with external trigger', async () => {
-    const { getByText, getByTestId } = render(ControlledComponent)
+    render(ControlledComponent)
 
-    const controlButton = getByText<HTMLButtonElement>('Toggle Dialog')
-    const dialogPositioner = getByTestId('dialog-Positioner')
+    const controlButton = screen.getByText<HTMLButtonElement>('Toggle Dialog')
+    const dialogPositioner = screen.getByTestId('dialog-Positioner')
 
     expect(dialogPositioner).not.toBeVisible()
 

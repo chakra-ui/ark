@@ -56,13 +56,13 @@ export const Select = <T extends CollectionItem>(props: SelectProps<T>) => {
   ])
 
   const api = useSelect(useSelectProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const presenceApi = usePresence(mergeProps(() => ({ present: api().isOpen }), presenceProps))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <SelectProvider value={api}>
-      <PresenceProvider value={apiPresence}>
+      <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps}>{getChildren()}</ark.div>
       </PresenceProvider>
     </SelectProvider>

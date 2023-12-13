@@ -19,6 +19,7 @@ const ComponentUnderTest = (props: SwitchProps) => {
 describe('Switch', () => {
   it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -29,6 +30,7 @@ describe('Switch', () => {
   it('should toggle state when clicked', async () => {
     const onCheckedChange = vi.fn()
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
+
     const switchControl = screen.getByRole('checkbox')
     await user.click(switchControl)
 
@@ -39,7 +41,8 @@ describe('Switch', () => {
     const onCheckedChange = vi.fn()
 
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} disabled />)
-    expect(screen.getByRole('checkbox')).toHaveAttribute('disabled')
+
+    expect(screen.getByRole('checkbox')).toBeDisabled()
 
     const switchControl = screen.getByRole('checkbox')
     await user.click(switchControl)
@@ -49,6 +52,7 @@ describe('Switch', () => {
 
   it('should show invalid attribute when invalid', async () => {
     render(<ComponentUnderTest invalid />)
+
     const switchControl = screen.getByRole('checkbox')
 
     expect(switchControl).toHaveAttribute('aria-invalid', 'true')
@@ -56,8 +60,9 @@ describe('Switch', () => {
 
   it('should be required when required is true', async () => {
     render(<ComponentUnderTest required />)
+
     const switchControl = screen.getByRole('checkbox')
 
-    expect(switchControl).toHaveAttribute('required')
+    expect(switchControl).toBeRequired()
   })
 })

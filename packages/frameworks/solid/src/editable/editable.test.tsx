@@ -1,5 +1,5 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@solidjs/testing-library'
+import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
 import { Editable, type EditableProps } from './'
@@ -46,6 +46,7 @@ const ControlledComponentUnderTest = (props: EditableProps) => (
 describe('Editable', () => {
   it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -84,7 +85,7 @@ describe('Editable', () => {
     await user.type(screen.getByRole('textbox'), 'Solid')
     await user.click(screen.getByText('Save'))
 
-    await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
+    await screen.findByText('Solid')
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {
