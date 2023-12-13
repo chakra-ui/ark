@@ -4,7 +4,7 @@ import { globbySync } from 'globby'
 import path, { dirname } from 'path'
 import { match } from 'ts-pattern'
 
-const generateExports = () => {
+const generateExports = (dirName: string) => {
   const paths = globbySync('src/**/index.ts')
   const exports: Record<string, unknown> = {}
 
@@ -17,10 +17,19 @@ const generateExports = () => {
     }
   }
   exports['./factory'] = {
-    types: './factory/factory.d.ts',
+    types: './factory.d.ts',
     import: './factory.mjs',
     require: './factory.cjs',
   }
+
+  if (dirName === 'react') {
+    exports['./portal'] = {
+      types: './portal.d.ts',
+      import: './portal.mjs',
+      require: './portal.cjs',
+    }
+  }
+
   exports['./package.json'] = './package.json'
   return exports
 }
@@ -48,7 +57,7 @@ const main = async () => {
     packageJson.module = 'index.mjs'
     packageJson.types = 'index.d.ts'
     packageJson.files = ['./']
-    packageJson.exports = generateExports()
+    packageJson.exports = generateExports(dirName)
   }
   packageJson.keywords = generateKeywords()
 
