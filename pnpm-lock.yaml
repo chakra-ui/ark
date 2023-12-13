@@ -160,7 +160,7 @@ importers:
   packages/frameworks/react:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 1.1.0
+        specifier: 1.2.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.31.1
@@ -377,7 +377,7 @@ importers:
   packages/frameworks/solid:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 1.1.0
+        specifier: 1.2.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.31.1
@@ -579,7 +579,7 @@ importers:
   packages/frameworks/vue:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 1.1.0
+        specifier: 1.2.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.31.1
@@ -803,7 +803,7 @@ importers:
   packages/website:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 1.1.0
+        specifier: 1.2.0
         version: link:../anatomy
       '@ark-ui/react':
         specifier: workspace:*
