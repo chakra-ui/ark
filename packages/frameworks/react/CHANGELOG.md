@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.2.0] - 2023-12-13
+
 ### Added
 
 - Added the `ToastGroup` component.
