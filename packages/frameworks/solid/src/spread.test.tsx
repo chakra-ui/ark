@@ -33,6 +33,7 @@ describe('spread', () => {
   it('should merge events', async () => {
     const onClickParent = vi.fn()
     const onClickChild = vi.fn()
+
     render(() => (
       <ark.div data-testid="parent" onClick={onClickParent} asChild>
         <ark.span data-testid="child" onClick={onClickChild} />
@@ -48,8 +49,8 @@ describe('spread', () => {
     render(ComponentUnderTest)
 
     const child = screen.getByTestId('child')
-    expect(child.style.background).toBe('red')
-    expect(child.style.color).toBe('blue')
+    expect(child).toHaveStyle({ background: 'red' })
+    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
     expect(child).toHaveClass('child parent')
   })
 

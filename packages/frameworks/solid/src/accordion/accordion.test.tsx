@@ -32,8 +32,9 @@ const ComponentUnderTest = (props: AccordionProps) => {
 
 describe('Accordion', () => {
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
-    const { container } = render(() => <ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+    render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
@@ -77,7 +78,7 @@ describe('Accordion', () => {
 
   it('should disable all items when disabled is true', async () => {
     render(() => <ComponentUnderTest disabled={true} />)
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('disabled')
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toBeDisabled()
   })
 
   it('should allow multiple items to be expanded when multiple is true', async () => {

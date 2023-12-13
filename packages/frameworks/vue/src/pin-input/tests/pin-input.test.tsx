@@ -9,16 +9,17 @@ import ComponentUnderTest from './pin-input.test.vue'
 type RenderFuncParams = Parameters<typeof render>
 
 async function renderOnNextTick(TestComponent: RenderFuncParams[0], options?: RenderFuncParams[1]) {
-  const renderReturnOptions = render(TestComponent, options)
+  const view = render(TestComponent, options)
 
   await nextTick()
 
-  return renderReturnOptions
+  return view
 }
 
 describe('PinInput', () => {
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

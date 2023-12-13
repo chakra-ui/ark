@@ -16,6 +16,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Resolved a problem where `Select.Indicator` was assigned to the wrong `data-part`.
 - Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
 
 ## [1.1.0] - 2023-11-21

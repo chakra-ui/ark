@@ -38,6 +38,7 @@ const ComponentUnderTest = (props: SliderProps) => {
 describe('Slider', () => {
   it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -119,7 +120,9 @@ describe('Slider', () => {
 
   it('should handle disabled state', async () => {
     render(<ComponentUnderTest disabled />)
+
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+
     expect(leftThumb).toHaveAttribute('aria-disabled', 'true')
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
@@ -127,6 +130,7 @@ describe('Slider', () => {
   it('should emit correct onValueChange events', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
+
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
 
     leftThumb.focus()

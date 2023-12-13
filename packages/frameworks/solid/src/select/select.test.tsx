@@ -1,5 +1,5 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@solidjs/testing-library'
+import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
@@ -51,8 +51,9 @@ const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
   )
 }
 describe('Select', () => {
-  it.skip.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -63,19 +64,22 @@ describe('Select', () => {
   it.skip('should handle item selection', async () => {
     render(() => <ComponentUnderTest />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    await user.click(trigger)
 
     const item = screen.getByText('React', { ignore: 'option' })
-    user.click(item)
+    await user.click(item)
     await waitFor(() => expect(trigger).toHaveTextContent('React'))
   })
 
   it('should close on select', async () => {
     render(() => <ComponentUnderTest />)
+
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    fireEvent.click(trigger)
+
     const item = screen.getByText('React', { ignore: 'option' })
-    user.click(item)
+    fireEvent.click(item)
+
     await waitFor(() => expect(screen.queryByText('Frameworks')).not.toBeVisible())
   })
 
@@ -89,23 +93,26 @@ describe('Select', () => {
   it('should handle multiple selection', async () => {
     render(() => <ComponentUnderTest multiple />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    await user.click(trigger)
     const itemReact = screen.getByText('React', { ignore: 'option' })
     const itemVue = screen.getByText('Vue', { ignore: 'option' })
-    user.click(itemReact)
-    user.click(itemVue)
+    await user.click(itemReact)
+    await user.click(itemVue)
     await waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
   })
 
-  it.skip('should call onChange when item is selected', async () => {
-    const onChange = vi.fn()
-    render(() => <ComponentUnderTest onChange={onChange} />)
+  it.skip('should call onValueChange when item is selected', async () => {
+    const onValueChange = vi.fn()
+    render(() => <ComponentUnderTest onValueChange={onValueChange} />)
+
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    await user.click(trigger)
+
     const item = screen.getByText('React', { ignore: 'option' })
-    user.click(item)
+    await user.click(item)
+
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledTimes(1)
+      expect(onValueChange).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -113,14 +120,14 @@ describe('Select', () => {
     const onOpenChange = vi.fn()
     render(() => <ComponentUnderTest onOpenChange={onOpenChange} />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    await user.click(trigger)
     await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {
     render(() => <ComponentUnderTest readOnly />)
     const trigger = screen.getByRole('button', { name: 'Framework' })
-    user.click(trigger)
+    await user.click(trigger)
     await waitFor(() => expect(screen.queryByText('React', { ignore: 'option' })).not.toBeVisible())
   })
 
@@ -129,7 +136,7 @@ describe('Select', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it.skip('should be able to lazy mount and unmount its items', async () => {
@@ -137,7 +144,7 @@ describe('Select', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()

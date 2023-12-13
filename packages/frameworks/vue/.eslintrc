@@ -4,7 +4,14 @@
     "plugin:vue/vue3-essential",
     "eslint:recommended",
     "@vue/eslint-config-typescript",
-    "@vue/eslint-config-prettier"
+    "@vue/eslint-config-prettier",
+    "plugin:jest-dom/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
   ],
   "parserOptions": {
     "ecmaVersion": "latest"

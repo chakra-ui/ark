@@ -28,6 +28,7 @@ const ComponentUnderTest = (props: PopoverProps) => (
 describe('Popover', () => {
   it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -94,9 +95,9 @@ describe('Popover', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'click me' }))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'close' }))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 })

@@ -1,5 +1,5 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
 import { Editable, type EditableProps } from './'
@@ -46,6 +46,7 @@ const ControlledComponentUnderTest = (props: EditableProps) => (
 describe('Editable', () => {
   it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -59,16 +60,17 @@ describe('Editable', () => {
 
   it('should be possible to focus the placeholder and enter a value', async () => {
     render(<ControlledComponentUnderTest />)
-    screen.getByText('Placeholder').focus()
-    await user.type(screen.getByLabelText('editable input'), 'React')
 
+    screen.getByText('Placeholder').focus()
+
+    await user.type(screen.getByLabelText('editable input'), 'React')
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" />)
-    await user.dblClick(screen.getByText('Placeholder'))
 
+    await user.dblClick(screen.getByText('Placeholder'))
     await user.clear(screen.getByRole('textbox'))
     await user.type(screen.getByRole('textbox'), 'React')
 
@@ -79,12 +81,11 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
-
     await user.clear(screen.getByRole('textbox'))
     await user.type(screen.getByRole('textbox'), 'Solid')
     await user.click(screen.getByText('Save'))
 
-    await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
+    await screen.findByText('Solid')
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {

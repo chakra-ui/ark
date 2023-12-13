@@ -16,6 +16,7 @@ const ComponentUnderTest = (props: ToggleGroupProps) => (
 describe('Toggle', () => {
   it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -25,12 +26,14 @@ describe('Toggle', () => {
 
   it('should handle default value', () => {
     render(<ComponentUnderTest defaultValue={['a']} />)
+
     expect(screen.getByText('A')).toBeChecked()
   })
 
   it('should handle onValueChange', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
+
     await user.click(screen.getByText('A'))
     expect(onValueChange).toHaveBeenCalledWith(expect.objectContaining({ value: ['a'] }))
   })
@@ -38,6 +41,7 @@ describe('Toggle', () => {
   it('should handle multiple selection', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest multiple onValueChange={onValueChange} />)
+
     await user.click(screen.getByText('A'))
     await user.click(screen.getByText('B'))
     expect(onValueChange).toHaveBeenLastCalledWith(expect.objectContaining({ value: ['a', 'b'] }))
@@ -45,6 +49,7 @@ describe('Toggle', () => {
 
   it('should handle disabled state', () => {
     render(<ComponentUnderTest disabled />)
+
     expect(screen.getByText('A')).toBeDisabled()
     expect(screen.getByText('B')).toBeDisabled()
     expect(screen.getByText('C')).toBeDisabled()
@@ -52,6 +57,7 @@ describe('Toggle', () => {
 
   it('should loop focus by default', async () => {
     render(<ComponentUnderTest />)
+
     const firstToggle = screen.getByText('A')
     const lastToggle = screen.getByText('C')
 
@@ -64,6 +70,7 @@ describe('Toggle', () => {
 
   it('should not loop focus if disabled', async () => {
     render(<ComponentUnderTest loop={false} />)
+
     const firstToggle = screen.getByText('A')
     const lastToggle = screen.getByText('C')
 

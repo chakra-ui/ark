@@ -27,7 +27,7 @@ describe('TagsInput', () => {
     await user.keyboard('[ArrowLeft]')
     await user.keyboard('[Delete]')
 
-    expect(screen.queryByText('angular')).toBeNull()
+    expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
 
   it('should allow to modify an added item', async () => {
@@ -58,8 +58,8 @@ describe('TagsInput', () => {
     expect(screen.getByText('vue')).toBeInTheDocument()
     await user.click(screen.getByText('Clear all'))
 
-    expect(screen.queryByText('react')).toBeNull()
-    expect(screen.queryByText('solid')).toBeNull()
-    expect(screen.queryByText('vue')).toBeNull()
+    expect(screen.queryByText('react')).not.toBeInTheDocument()
+    expect(screen.queryByText('solid')).not.toBeInTheDocument()
+    expect(screen.queryByText('vue')).not.toBeInTheDocument()
   })
 })

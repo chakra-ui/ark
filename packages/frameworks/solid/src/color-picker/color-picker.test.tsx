@@ -5,10 +5,10 @@ import { ColorPicker } from './'
 import { Basic as ComponentUnderTest } from './color-picker.stories'
 
 describe('ColorPicker', () => {
-  // TODO update story with new parts
-  it.skip.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
-    const { container } = render(() => <ComponentUnderTest />)
-    expect(container.querySelector(part)).toBeInTheDocument()
+  it.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
+    render(() => <ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
