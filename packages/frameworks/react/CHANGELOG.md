@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.2.1] - 2023-12-13
+
 ### Fixed
 
 - Resolved an issue where the `ark` factory type was not being exported correctly.
