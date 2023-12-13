@@ -35,9 +35,6 @@ export const props = {
   max: {
     type: Object as PropType<Context['max']>,
   },
-  messages: {
-    type: Object as PropType<Context['messages']>,
-  },
   min: {
     type: Object as PropType<Context['min']>,
   },
