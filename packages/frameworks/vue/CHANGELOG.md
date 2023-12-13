@@ -13,6 +13,7 @@ description: All notable changes to this project will be documented in this file
 - Added `ToggleGroup` component
 - Added `ValueText` to the `ColorPicker` component
 - Added support to lazy mount the `ColorPicker` component using the `Presence` component
+- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 
