@@ -74,6 +74,7 @@ describe('Menu', () => {
     await user.click(button)
 
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
+    // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('Group 1').nextElementSibling).toBe(screen.getByText('Share...'))
   })
 
