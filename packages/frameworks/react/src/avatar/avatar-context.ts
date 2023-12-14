@@ -1,3 +1,4 @@
+'use client'
 import { createContext } from '../create-context'
 import { type UseAvatarReturn } from './use-avatar'
 

@@ -1,3 +1,4 @@
+'use client'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
