@@ -102,7 +102,7 @@
     "eslint-plugin-testing-library": "6.2.0",
     "globby": "14.0.0",
     "jsdom": "23.0.1",
-    "lucide-solid": "0.294.0",
+    "lucide-solid": "0.295.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "17.0.1",
