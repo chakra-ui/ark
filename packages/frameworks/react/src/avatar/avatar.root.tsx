@@ -6,9 +6,9 @@ import { type Assign } from '../types'
 import { AvatarProvider } from './avatar-context'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'dir',
     'getRootNode',
@@ -25,4 +25,4 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   )
 })
 
-Avatar.displayName = 'Avatar'
+AvatarRoot.displayName = 'AvatarRoot'
