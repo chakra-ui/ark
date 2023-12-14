@@ -10,6 +10,10 @@
     {
       "groupName": "@zag-js",
       "matchPackagePatterns": ["@zag-js/*"]
+    },
+    {
+      "groupName": "lucide-icons",
+      "matchPackagePrefixes": ["lucide"]
     }
   ],
   "ignoreDeps": ["@types/node"]
