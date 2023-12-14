@@ -830,8 +830,8 @@ importers:
         specifier: 0.21.0
         version: 0.21.0(typescript@5.3.3)
       '@park-ui/panda-preset':
-        specifier: 0.26.0
-        version: 0.26.0(@internationalized/date@3.5.0)(typescript@5.3.3)
+        specifier: 0.26.1
+        version: 0.26.1(@internationalized/date@3.5.0)(typescript@5.3.3)
       '@types/react':
         specifier: 18.2.42
         version: 18.2.42
@@ -5361,8 +5361,8 @@ packages:
     resolution: {integrity: sha512-VT431rj3Xms4yHDjseZiLmntg16IbicU/7GmRWB1pTCMbEuQCC8v23nK6DYke+DGsMc9W7ujNntQbyw5OgBsNg==}
     dev: false
 
-  /@park-ui/panda-preset@0.26.0(@internationalized/date@3.5.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-0e/aqtf9M5PwNEGRzn9WvelcWtw/3X+Ls9JGweWljD2UB/cxxueEWJh7jZjbet/RccrsZ2XWqd9yq5KL4mQKHg==}
+  /@park-ui/panda-preset@0.26.1(@internationalized/date@3.5.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-K044KW/PXiVR7gW+8SW9nGtLr2UR8bxa+EbQWWHjlDGcannDPgygmo9Papyx1csZhe8VNad7ilDBAEzuThT62A==}
     dependencies:
       '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.0)
       '@pandacss/dev': 0.21.0(typescript@5.3.3)
