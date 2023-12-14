@@ -531,8 +531,8 @@ importers:
         specifier: 23.0.1
         version: 23.0.1
       lucide-solid:
-        specifier: 0.294.0
-        version: 0.294.0(solid-js@1.8.7)
+        specifier: 0.295.0
+        version: 0.295.0(solid-js@1.8.7)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -14578,8 +14578,8 @@ packages:
     dependencies:
       react: 18.2.0
 
-  /lucide-solid@0.294.0(solid-js@1.8.7):
-    resolution: {integrity: sha512-xPjNuRTdor83YouH0I3S6RklHUd3EGeLOtOTxerz8inkkO/bScjNaL+34YN1b1QJ6FNykTuh7y554XWJZP0r+A==}
+  /lucide-solid@0.295.0(solid-js@1.8.7):
+    resolution: {integrity: sha512-vEcQMReNNy+oUxLLejgHMwV5RoWL8zSJxAOcaPKt1j3UXWYnINY9aSl0I1Vg2BlvQHqt/6wkYT4duZrCdwid6A==}
     peerDependencies:
       solid-js: ^1.4.7
     dependencies:
