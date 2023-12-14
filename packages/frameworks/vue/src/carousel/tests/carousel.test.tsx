@@ -7,6 +7,7 @@ import ComponentUnderTest from './carousel.test.vue'
 describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -35,9 +36,9 @@ describe('Carousel', () => {
   })
 
   it('goes to the indicated slide on indicator click', async () => {
-    const { getAllByTestId } = render(ComponentUnderTest)
-    const indicators = getAllByTestId('indicator')
-    const slides = getAllByTestId('item')
+    render(ComponentUnderTest)
+    const indicators = screen.getAllByTestId('indicator')
+    const slides = screen.getAllByTestId('item')
 
     expect(slides[0]).toHaveAttribute('data-current', '')
     expect(indicators[0]).toHaveAttribute('data-current', '')

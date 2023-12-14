@@ -6,7 +6,7 @@ export interface SelectIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SelectIndicator = (props: SelectIndicatorProps) => {
   const api = useSelectContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().indicatorProps, props)
 
   return <ark.div {...mergedProps} />
 }

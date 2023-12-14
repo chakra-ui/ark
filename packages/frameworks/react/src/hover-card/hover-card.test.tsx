@@ -25,6 +25,7 @@ const ComponentUnderTest = (props: HoverCardProps) => (
 describe('HoverCard', () => {
   it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -48,6 +49,7 @@ describe('HoverCard', () => {
   it('should invoke onOpenChange', async () => {
     const onOpenChange = vi.fn()
     render(<ComponentUnderTest onOpenChange={onOpenChange} />)
+
     await user.hover(screen.getByText('Hover me'))
 
     await waitFor(() => expect(screen.getByText('Content')).toBeVisible())
@@ -56,18 +58,20 @@ describe('HoverCard', () => {
 
   it('should lazy mount', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
+
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it('should lazy mount and unmount on exit', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
+
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.unhover(screen.getByText('Hover me'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

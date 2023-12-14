@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/anatomy",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Contains all the anatomy information for the Ark UI components",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -58,9 +58,9 @@
   "devDependencies": {
     "@release-it/keep-a-changelog": "5.0.0",
     "globby": "14.0.0",
-    "release-it": "17.0.0",
+    "release-it": "17.0.1",
     "typescript": "5.3.3",
-    "vite": "5.0.6",
+    "vite": "5.0.8",
     "vite-plugin-dts": "3.6.4"
   },
   "main": "src/index.ts"

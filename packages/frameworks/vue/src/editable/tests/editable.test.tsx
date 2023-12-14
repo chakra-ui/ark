@@ -1,6 +1,6 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen, waitFor } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import { getParts } from '../../setup-test'
 import ControlledComponentUnderTest from './controlled-editable.test.vue'
 import ComponentUnderTest from './editable.test.vue'
@@ -8,6 +8,7 @@ import ComponentUnderTest from './editable.test.vue'
 describe('Editable', () => {
   it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -44,7 +45,7 @@ describe('Editable', () => {
     await user.type(screen.getByRole('textbox'), 'Solid')
     await user.click(screen.getByText('Save'))
 
-    await waitFor(() => expect(screen.queryByText('Solid')).toBeInTheDocument())
+    await screen.findByText('Solid')
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {

@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.2.0] - 2023-12-13
+
 ### Added
 
 - Added the `ToastGroup` component.
@@ -16,6 +18,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Resolved a problem where `Select.Indicator` was assigned to the wrong `data-part`.
 - Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
 
 ## [1.1.0] - 2023-11-21

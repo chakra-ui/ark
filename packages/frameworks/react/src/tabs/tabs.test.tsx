@@ -34,6 +34,7 @@ const ComponentUnderTest = (props: TabsProps) => {
 describe('Tabs', () => {
   it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -44,6 +45,7 @@ describe('Tabs', () => {
   it('should activate tab on click', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
+
     const tab = screen.getByText('React Trigger')
 
     await user.click(tab)
@@ -52,6 +54,7 @@ describe('Tabs', () => {
 
   it('should not focus disabled tab', async () => {
     render(<ComponentUnderTest />)
+
     const disabledTab = screen.getByText('Svelte Trigger')
     const disabledContent = screen.getByText('Svelte Content')
 
@@ -78,18 +81,19 @@ describe('Tabs', () => {
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 
-    user.click(lastTab)
+    await user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
-    user.keyboard('[ArrowRight]')
+    await user.keyboard('[ArrowRight]')
     await waitFor(() => expect(firstTab).toHaveFocus())
   })
 
   it('should not loop focus if loop is false', async () => {
     render(<ComponentUnderTest loop={false} />)
+
     const lastTab = screen.getByText('Vue Trigger')
 
-    user.click(lastTab)
+    await user.click(lastTab)
     await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
@@ -98,31 +102,35 @@ describe('Tabs', () => {
 
   it('should handle orientation', async () => {
     render(<ComponentUnderTest orientation="vertical" />)
+
     const firstTab = screen.getByText('React Trigger')
     const secondTab = screen.getByText('Solid Trigger')
 
-    user.click(firstTab)
+    await user.click(firstTab)
     await waitFor(() => expect(firstTab).toHaveFocus())
 
-    user.keyboard('[ArrowDown]')
+    await user.keyboard('[ArrowDown]')
     await waitFor(() => expect(secondTab).toHaveFocus())
   })
 
   it('should render the content of tab when active', async () => {
     render(<ComponentUnderTest defaultValue="React" />)
+
     expect(screen.getByText('React Content')).toBeVisible()
   })
 
   it('should lazy mount a tab', async () => {
     render(<ComponentUnderTest lazyMount />)
+
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByText('React Trigger'))
-    expect(screen.queryByText('React Content')).toBeInTheDocument()
+    expect(screen.getByText('React Content')).toBeInTheDocument()
   })
 
   it('should lazy mount and unmount on exit a tab', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
+
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByText('React Trigger'))

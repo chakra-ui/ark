@@ -7,6 +7,7 @@ import { Basic as ComponentUnderTest } from './date-picker.stories'
 describe('Date Picker', () => {
   it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
     render(<ComponentUnderTest />)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

@@ -6,6 +6,7 @@ import ComponentUnderTest from './color-picker.test.vue'
 describe('ColorPicker', () => {
   it.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 })

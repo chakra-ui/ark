@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.2.0] - 2023-12-13
+
+### Changed
+
+- Updated `@zag-js`
+
 ## [1.1.0] - 2023-11-21
 
 ### Changed
