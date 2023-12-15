@@ -104,6 +104,9 @@ importers:
       '@zag-js/presence':
         specifier: 0.31.1
         version: 0.31.1
+      '@zag-js/progress':
+        specifier: 0.31.1
+        version: 0.31.1
       '@zag-js/radio-group':
         specifier: 0.31.1
         version: 0.31.1
@@ -8832,6 +8835,16 @@ packages:
     dependencies:
       '@zag-js/core': 0.31.1
       '@zag-js/types': 0.31.1
+    dev: false
+
+  /@zag-js/progress@0.31.1:
+    resolution: {integrity: sha512-r1OZkiBvw6glLr94bR4EFsetm40iUWkb1Gn7STmyPboeBbSfHxIj24j6YONb7hxNkvrtUUTSkMSltBtx6i2ZAA==}
+    dependencies:
+      '@zag-js/anatomy': 0.31.1
+      '@zag-js/core': 0.31.1
+      '@zag-js/dom-query': 0.31.1
+      '@zag-js/types': 0.31.1
+      '@zag-js/utils': 0.31.1
     dev: false
 
   /@zag-js/radio-group@0.31.1:

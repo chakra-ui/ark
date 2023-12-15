@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- Added `Progress` anatomy
+
 ## [1.2.0] - 2023-12-13
 
 ### Changed
