@@ -47,7 +47,7 @@ describe('Tooltip', () => {
     await user.hover(tooltipTrigger)
 
     await screen.findByRole('tooltip')
-    expect(screen.getByText('hover me')).toBeInTheDocument()
+    expect(screen.getByText('hover me')).toBeVisible()
   })
 
   it('should hide the tooltip when escape is pressed', async () => {
