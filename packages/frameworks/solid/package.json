@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/solid",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -49,7 +49,7 @@
     "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "1.1.0",
+    "@ark-ui/anatomy": "1.2.0",
     "@zag-js/accordion": "0.31.1",
     "@zag-js/avatar": "0.31.1",
     "@zag-js/carousel": "0.31.1",
@@ -102,7 +102,7 @@
     "eslint-plugin-testing-library": "6.2.0",
     "globby": "14.0.0",
     "jsdom": "23.0.1",
-    "lucide-solid": "0.294.0",
+    "lucide-solid": "0.295.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "release-it": "17.0.1",
@@ -114,7 +114,7 @@
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
     "typescript": "5.3.3",
-    "vite": "5.0.8",
+    "vite": "5.0.9",
     "vite-plugin-solid": "2.8.0",
     "vitest": "0.34.2"
   },
