@@ -1,0 +1,57 @@
+[data-scope='progress'][data-part='root'] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* We should consider adding some div grouping track and range for vertical prop like in slider */
+[data-scope='progress'][data-part='control'] {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+[data-scope='progress'][data-part='control'][data-orientation='vertical'] {
+  height: 20rem;
+  width: 8px;
+  flex-direction: column;
+}
+
+[data-scope='progress'][data-part='track'] {
+  background: silver;
+  height: 8px;
+  flex: 1;
+}
+
+[data-scope='progress'][data-part='track'][data-orientation='horizontal'] {
+  height: 8px;
+}
+
+[data-scope='progress'][data-part='track'][data-orientation='vertical'] {
+  width: 8px;
+}
+
+[data-scope='progress'][data-part='range'] {
+  background: orange;
+}
+
+[data-scope='progress'][data-part='range'][data-orientation='horizontal'] {
+  height: inherit;
+}
+
+[data-scope='progress'][data-part='range'][data-orientation='vertical'] {
+  width: inherit;
+}
+
+[data-scope='progress'][data-part='circle'] {
+  --size: 100px;
+}
+
+[data-scope='progress'][data-part='circle-track'] {
+  --thickness: 10px;
+  fill: silver;
+}
+
+[data-scope='progress'][data-part='circle-range'] {
+  fill: orange;
+}
