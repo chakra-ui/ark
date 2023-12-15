@@ -5,8 +5,9 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTooltipProps = Optional<tooltip.Context, 'id'>
-export type UseTooltipReturn = ComputedRef<tooltip.Api<PropTypes>>
+export interface UseTooltipProps extends Optional<tooltip.Context, 'id'> {}
+
+export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseTooltipReturn => {
   const reactiveContext = reactive(props)

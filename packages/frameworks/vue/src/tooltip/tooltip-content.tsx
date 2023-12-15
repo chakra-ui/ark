@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface TooltipContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const TooltipContent = defineComponent({
   name: 'TooltipContent',

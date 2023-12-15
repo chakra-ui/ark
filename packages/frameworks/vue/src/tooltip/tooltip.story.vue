@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Tooltip } from '.'
 import { ref } from 'vue'
+import { Tooltip } from './'
 import './tooltip.css'
 
 const isOpen = ref(false)
