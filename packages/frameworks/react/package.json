@@ -50,6 +50,7 @@
     "@zag-js/pin-input": "0.31.1",
     "@zag-js/popover": "0.31.1",
     "@zag-js/presence": "0.31.1",
+    "@zag-js/progress": "0.31.1",
     "@zag-js/radio-group": "0.31.1",
     "@zag-js/rating-group": "0.31.1",
     "@zag-js/react": "0.31.1",

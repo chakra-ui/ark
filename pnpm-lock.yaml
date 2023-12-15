@@ -225,6 +225,9 @@ importers:
       '@zag-js/presence':
         specifier: 0.31.1
         version: 0.31.1
+      '@zag-js/progress':
+        specifier: 0.31.1
+        version: 0.31.1
       '@zag-js/radio-group':
         specifier: 0.31.1
         version: 0.31.1
