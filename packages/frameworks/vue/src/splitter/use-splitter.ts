@@ -5,12 +5,13 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseSplitterProps = Optional<splitter.Context, 'id'>
-export type UseSplitterReturn = ComputedRef<splitter.Api<PropTypes>>
+export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {}
+
+export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps, emit: CallableFunction): UseSplitterReturn => {
-  const getRootNode = useEnvironmentContext()
   const context = ref(props)
+  const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     splitter.machine({

@@ -8,10 +8,12 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Revised `Splitter` component
 - Revised `Tooltip` component
 
 ### Fixed
 
+- Added a missing slot with machine api in `Splitter`
 - Resolved an issue where `Tooltip` component would not handle open control state
 - Added a missing slot with machine api in `Tooltip`
 
