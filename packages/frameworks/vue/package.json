@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/vue",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [],
   "homepage": "https://ark-ui.com",
@@ -29,7 +29,7 @@
     "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "1.1.0",
+    "@ark-ui/anatomy": "1.2.0",
     "@zag-js/accordion": "0.31.1",
     "@zag-js/avatar": "0.31.1",
     "@zag-js/carousel": "0.31.1",
@@ -82,11 +82,11 @@
     "globby": "14.0.0",
     "histoire": "0.17.6",
     "jsdom": "23.0.1",
-    "lucide-vue-next": "0.294.0",
+    "lucide-vue-next": "0.295.0",
     "release-it": "17.0.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.3.3",
-    "vite": "5.0.8",
+    "vite": "5.0.9",
     "vite-plugin-dts": "3.6.4",
     "vitest": "0.34.6",
     "vue": "3.3.4"
