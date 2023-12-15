@@ -6,6 +6,12 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Revised `Tooltip` component
+
+### Fixed
+
 - Resolved an issue where `Tooltip` component would not handle open control state
 - Added a missing slot with machine api in `Tooltip`
 
