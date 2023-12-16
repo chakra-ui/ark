@@ -813,7 +813,7 @@ importers:
         version: link:../frameworks/react
       '@astrojs/mdx':
         specifier: 2.0.1
-        version: 2.0.1(astro@4.0.5)
+        version: 2.0.1(astro@4.0.6)
       '@astrojs/react':
         specifier: 3.0.7
         version: 3.0.7(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)(vite@5.0.9)
@@ -828,7 +828,7 @@ importers:
         version: 5.0.16
       '@pandacss/astro':
         specifier: 0.22.1
-        version: 0.22.1(astro@4.0.5)(postcss@8.4.32)(typescript@5.3.3)
+        version: 0.22.1(astro@4.0.6)(postcss@8.4.32)(typescript@5.3.3)
       '@pandacss/dev':
         specifier: 0.22.1
         version: 0.22.1(typescript@5.3.3)
@@ -848,8 +848,8 @@ importers:
         specifier: 0.31.1
         version: 0.31.1(react@18.2.0)(typescript@5.3.3)
       astro:
-        specifier: 4.0.5
-        version: 4.0.5(@types/node@18.18.8)(typescript@5.3.3)
+        specifier: 4.0.6
+        version: 4.0.6(@types/node@18.18.8)(typescript@5.3.3)
       cheerio:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
@@ -974,8 +974,8 @@ packages:
     resolution: {integrity: sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==}
     dev: true
 
-  /@astrojs/compiler@2.3.2:
-    resolution: {integrity: sha512-jkY7bCVxl27KeZsSxIZ+pqACe+g8VQUdTiSJRj/sXYdIaZlW3ZMq4qF2M17P/oDt3LBq0zLNwQr4Cb7fSpRGxQ==}
+  /@astrojs/compiler@2.3.4:
+    resolution: {integrity: sha512-33/YtWoBCE0cBUNy1kh78FCDXBoBANX87ShgATlAHECYbG2+buNTAgq4Xgz4t5NgnEHPN21GIBC2Mvvwisoutw==}
     dev: false
 
   /@astrojs/internal-helpers@0.2.1:
@@ -1003,7 +1003,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.1(astro@4.0.5):
+  /@astrojs/mdx@2.0.1(astro@4.0.6):
     resolution: {integrity: sha512-lWbiNoVV/6DO8hAf6eZmcN28hY/herif9eglw2PXZ5lEPoRu175BvBtuNTt9rH9YA/Ldm5mkNXhvMWNEnMqJkw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -1012,7 +1012,7 @@ packages:
       '@astrojs/markdown-remark': 4.0.1
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.0.5(@types/node@18.18.8)(typescript@5.3.3)
+      astro: 4.0.6(@types/node@18.18.8)(typescript@5.3.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -4971,13 +4971,13 @@ packages:
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
     dev: true
 
-  /@pandacss/astro@0.22.1(astro@4.0.5)(postcss@8.4.32)(typescript@5.3.3):
+  /@pandacss/astro@0.22.1(astro@4.0.6)(postcss@8.4.32)(typescript@5.3.3):
     resolution: {integrity: sha512-SDk9ArNX01MSOdU3px9u+P1LFsrbR4yuDchVz8+7dPFppkLK7GwsscfBtokMTrF32KH+x5nIqa5fmXlWhakk9Q==}
     peerDependencies:
       astro: '>=2.x'
     dependencies:
       '@pandacss/postcss': 0.22.1(typescript@5.3.3)
-      astro: 4.0.5(@types/node@18.18.8)(typescript@5.3.3)
+      astro: 4.0.6(@types/node@18.18.8)(typescript@5.3.3)
       postcss-load-config: 4.0.1(postcss@8.4.32)
     transitivePeerDependencies:
       - jsdom
@@ -9239,12 +9239,12 @@ packages:
     hasBin: true
     dev: false
 
-  /astro@4.0.5(@types/node@18.18.8)(typescript@5.3.3):
-    resolution: {integrity: sha512-OTiTEiXYdXTkVJXNNKIWdYG1z2wpTST+92Qcldm36x91Pe4fKpLxeuRloy5cW175oHi8lvXytgG3Gl3VBP18RQ==}
+  /astro@4.0.6(@types/node@18.18.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-P7CfFqWKzkJozzF6IoOC6qoI2ONndV8P3ULhGDgMiXPL7xVkWI5haTBSpyrcjBx643tVXspIRsSV/v+Cx+CjGw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 2.3.2
+      '@astrojs/compiler': 2.3.4
       '@astrojs/internal-helpers': 0.2.1
       '@astrojs/markdown-remark': 4.0.1
       '@astrojs/telemetry': 3.0.4
