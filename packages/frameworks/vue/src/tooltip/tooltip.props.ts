@@ -17,6 +17,9 @@ export const props = {
     type: Boolean as PropType<Context['closeOnPointerDown']>,
     default: undefined,
   },
+  dir: {
+    type: String as PropType<Context['dir']>,
+  },
   disabled: {
     type: Boolean as PropType<Context['disabled']>,
     default: undefined,

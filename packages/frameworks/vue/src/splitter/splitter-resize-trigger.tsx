@@ -4,7 +4,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
-export type SplitterResizeTriggerProps = Assign<HTMLArkProps<'button'>, ResizeTriggerProps>
+export interface SplitterResizeTriggerProps
+  extends Assign<HTMLArkProps<'button'>, ResizeTriggerProps> {}
 
 export const SplitterResizeTrigger = defineComponent({
   name: 'SplitterResizeTrigger',

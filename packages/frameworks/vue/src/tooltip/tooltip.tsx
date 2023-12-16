@@ -3,7 +3,7 @@ import { TooltipProvider } from './tooltip-context'
 import { emits, props } from './tooltip.props'
 import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
-export type TooltipProps = UseTooltipProps
+export interface TooltipProps extends UseTooltipProps {}
 
 export const Tooltip = defineComponent({
   name: 'Tooltip',
@@ -13,6 +13,6 @@ export const Tooltip = defineComponent({
     const api = useTooltip(props, emit)
     TooltipProvider(api)
 
-    return () => slots.default?.()
+    return () => slots.default?.(api.value)
   },
 })

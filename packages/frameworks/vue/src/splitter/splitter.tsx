@@ -5,7 +5,7 @@ import { SplitterProvider } from './splitter-context'
 import { emits, props } from './splitter.props'
 import { useSplitter, type UseSplitterProps } from './use-splitter'
 
-export type SplitterProps = Assign<HTMLArkProps<'div'>, UseSplitterProps>
+export interface SplitterProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
 
 export const Splitter = defineComponent({
   name: 'Splitter',
@@ -17,7 +17,7 @@ export const Splitter = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.()}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
