@@ -232,6 +232,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
+    },
+    "placeholder": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Text to display when no value is selected."
     }
   },
   "Positioner": {

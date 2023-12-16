@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Splitter, SplitterPanel, SplitterResizeTrigger } from './'
+import { Splitter } from './'
 import './splitter.css'
 
 const size = ref([
@@ -11,29 +11,40 @@ const size = ref([
 <template>
   <Story title="Splitter">
     <Variant title="Basic">
-      <Splitter :size="size">
-        <SplitterPanel id="a">A</SplitterPanel>
-        <SplitterResizeTrigger id="a:b" />
-        <SplitterPanel id="b">B</SplitterPanel>
-      </Splitter>
+      <Splitter.Root :size="size">
+        <Splitter.Panel id="a">A</Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b" />
+        <Splitter.Panel id="b">B</Splitter.Panel>
+      </Splitter.Root>
+    </Variant>
+    <Variant title="RenderProp">
+      <Splitter.Root :size="size" v-slot="api">
+        <Splitter.Panel id="a">
+          <button @click="api.setSize('a', 10)">Set A to 10%</button>
+        </Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b" />
+        <Splitter.Panel id="b">
+          <button @click="api.setSize('b', 10)">Set B to 10%</button>
+        </Splitter.Panel>
+      </Splitter.Root>
     </Variant>
     <Variant title="Events">
-      <Splitter
+      <Splitter.Root
         :size="size"
-        on-resize-start="() => console.log('onResizeStart')"
-        on-resize-end="() => console.log('onResizeEnd')"
+        @size-change-start="(details) => console.log('onSizeChangeStart', details)"
+        @size-change-end="(details) => console.log('onSizeChangeEnd', details)"
       >
-        <SplitterPanel id="a">A</SplitterPanel>
-        <SplitterResizeTrigger id="a:b" />
-        <SplitterPanel id="b">B</SplitterPanel>
-      </Splitter>
+        <Splitter.Panel id="a">A</Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b" />
+        <Splitter.Panel id="b">B</Splitter.Panel>
+      </Splitter.Root>
     </Variant>
     <Variant title="Vertical">
-      <Splitter :size="size" orientation="vertical">
-        <SplitterPanel id="a">A</SplitterPanel>
-        <SplitterResizeTrigger id="a:b" />
-        <SplitterPanel id="b">B</SplitterPanel>
-      </Splitter>
+      <Splitter.Root :size="size" orientation="vertical">
+        <Splitter.Panel id="a">A</Splitter.Panel>
+        <Splitter.ResizeTrigger id="a:b" />
+        <Splitter.Panel id="b">B</Splitter.Panel>
+      </Splitter.Root>
     </Variant>
   </Story>
 </template>

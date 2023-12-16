@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Added missing `placeholder` prop to `SelectValueTextProps` type.
+
 ## [1.2.1] - 2023-12-13
 
 ### Fixed
