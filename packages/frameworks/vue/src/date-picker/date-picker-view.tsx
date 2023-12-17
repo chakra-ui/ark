@@ -12,6 +12,7 @@ export const DatePickerView = defineComponent({
   props: {
     view: {
       type: String as PropType<Required<ViewProps>['view']>,
+      required: true,
     },
   },
   setup(props, { slots, attrs }) {
