@@ -36,6 +36,7 @@
     "@zag-js/checkbox": "0.31.1",
     "@zag-js/color-picker": "0.31.1",
     "@zag-js/combobox": "0.31.1",
+    "@zag-js/date-picker": "0.31.1",
     "@zag-js/dialog": "0.31.1",
     "@zag-js/editable": "0.31.1",
     "@zag-js/file-upload": "0.31.1",

@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `DatePicker` component
+
 ### Changed
 
 - Revised `Splitter` component
