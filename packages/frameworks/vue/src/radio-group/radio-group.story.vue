@@ -18,6 +18,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         </RadioGroup.Item>
       </RadioGroup.Root>
     </Variant>
+
     <Variant title="Disabled">
       <RadioGroup.Root disabled>
         <RadioGroup.Label>Framework</RadioGroup.Label>
@@ -28,6 +29,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         </RadioGroup.Item>
       </RadioGroup.Root>
     </Variant>
+
     <Variant title="InitialValue">
       <RadioGroup.Root model-value="Solid">
         <RadioGroup.Label>Framework</RadioGroup.Label>
@@ -38,6 +40,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         </RadioGroup.Item>
       </RadioGroup.Root>
     </Variant>
+
     <Variant title="OnEvent">
       <RadioGroup.Root @value-change="(details) => console.log(details.value)">
         <RadioGroup.Label>Framework</RadioGroup.Label>

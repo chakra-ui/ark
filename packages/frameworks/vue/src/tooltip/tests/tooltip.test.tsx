@@ -1,34 +1,18 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Tooltip, type TooltipProps } from './'
-
-const ComponentUnderTest = (props: TooltipProps) => (
-  <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
-    <Tooltip.Trigger>hover me</Tooltip.Trigger>
-    <Tooltip.Positioner>
-      <Tooltip.Arrow>
-        <Tooltip.ArrowTip />
-      </Tooltip.Arrow>
-      <Tooltip.Content>content</Tooltip.Content>
-    </Tooltip.Positioner>
-  </Tooltip.Root>
-)
+import { render, screen } from '@testing-library/vue'
+import { getParts } from '../../setup-test'
+import ComponentUnderTest from './tooltip.test.vue'
 
 describe('Tooltip', () => {
   it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
+    render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
-    expect(Tooltip[part]).toBeDefined()
-  })
-
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
-    render(<ComponentUnderTest />)
+    render(ComponentUnderTest)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -41,7 +25,11 @@ describe('Tooltip', () => {
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
-    render(<ComponentUnderTest disabled={false} />)
+    render(ComponentUnderTest, {
+      props: {
+        disabled: false,
+      },
+    })
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -51,7 +39,11 @@ describe('Tooltip', () => {
   })
 
   it('should hide the tooltip when escape is pressed', async () => {
-    render(<ComponentUnderTest closeOnEsc />)
+    render(ComponentUnderTest, {
+      props: {
+        closeOnEsc: true,
+      },
+    })
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -64,7 +56,11 @@ describe('Tooltip', () => {
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
-    render(<ComponentUnderTest closeOnEsc={false} />)
+    render(ComponentUnderTest, {
+      props: {
+        closeOnEsc: false,
+      },
+    })
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -77,7 +73,11 @@ describe('Tooltip', () => {
   })
 
   it('should have pointer-events none style if interactive is set to false', async () => {
-    render(<ComponentUnderTest interactive={false} />)
+    render(ComponentUnderTest, {
+      props: {
+        interactive: false,
+      },
+    })
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -87,7 +87,12 @@ describe('Tooltip', () => {
   })
 
   it('should lazy render the tooltip', async () => {
-    render(<ComponentUnderTest lazyMount />)
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+      },
+    })
+
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
 
     const tooltipTrigger = screen.getByText('hover me')
@@ -100,7 +105,13 @@ describe('Tooltip', () => {
   })
 
   it('should lazy mount and unmount on exit', async () => {
-    render(<ComponentUnderTest lazyMount unmountOnExit />)
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+        unmountOnExit: true,
+      },
+    })
+
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
 
     const tooltipTrigger = screen.getByText('hover me')

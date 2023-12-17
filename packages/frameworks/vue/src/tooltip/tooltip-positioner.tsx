@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipPositionerProps = HTMLArkProps<'div'>
+export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
 
 export const TooltipPositioner = defineComponent({
   name: 'TooltipPositioner',

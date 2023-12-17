@@ -15,6 +15,7 @@ const value = ref('Chakra')
         </Editable.Area>
       </Editable.Root>
     </Variant>
+
     <Variant title="CustomControls">
       <Editable.Root placeholder="enter a value" v-model="value" v-slot="{ isEditing }">
         <Editable.Label>Label</Editable.Label>

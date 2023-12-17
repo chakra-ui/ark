@@ -6,6 +6,21 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Revised `Splitter` component
+- Revised `Tooltip` component
+- Revised `Tabs` component types
+- Revised `TagsInput` component
+- Revised `ToggleGroup` component
+
+### Fixed
+
+- Added a missing slot with machine api in `Splitter`
+- Added a missing slot with machine api in `Tabs`
+- Added a missing slot with machine api in `Tooltip`
+- Resolved an issue where `Tooltip` component would not handle open control state
+
 ## [0.9.0] - 2023-12-14
 
 ### Added
@@ -15,7 +30,7 @@ description: All notable changes to this project will be documented in this file
 - Added `ToggleGroup` component
 - Added `ValueText` to the `ColorPicker` component
 - Added support to lazy mount the `ColorPicker` component using the `Presence` component
-- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
+- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 

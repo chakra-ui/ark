@@ -23,6 +23,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="RenderProp">
       <Accordion.Root>
         <Accordion.Item v-for="item in items" :key="item" :value="item" v-slot="{ isOpen }">
@@ -31,6 +32,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="Collapsible">
       <Accordion.Root collapsible>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
@@ -44,6 +46,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="Multiple">
       <Accordion.Root multiple>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
@@ -57,6 +60,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="Controlled">
       <Accordion.Root v-model="value">
         <Accordion.Item v-for="item in items" :key="item" :value="item">
@@ -65,6 +69,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="Vertical">
       <Accordion.Root orientation="vertical">
         <Accordion.Item v-for="item in items" :key="item" :value="item">
@@ -73,6 +78,7 @@ const value = ref(['React'])
         </Accordion.Item>
       </Accordion.Root>
     </Variant>
+
     <Variant title="Disabled">
       <Accordion.Root>
         <Accordion.Item
