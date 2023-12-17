@@ -3,8 +3,9 @@ import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
+import type { Assign } from '../types'
 
-export interface MenuOptionItemProps extends HTMLArkProps<'div'>, OptionItemProps {}
+export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
 export const MenuOptionItem: ComponentWithProps<MenuOptionItemProps> = defineComponent({
   name: 'MenuOptionItem',

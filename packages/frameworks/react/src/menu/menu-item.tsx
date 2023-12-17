@@ -20,8 +20,6 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   const api = useMenuContext() as UseMenuReturn['api']
   const mergedProps = mergeProps(api?.getItemProps(menuItemProps) ?? {}, buttonProps)
 
-  console.log(mergedProps)
-
   return <ark.div {...mergedProps} ref={ref} />
 })
 

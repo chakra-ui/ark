@@ -55,7 +55,6 @@ export type {
   MenuItemGroupProps,
   MenuItemProps,
   MenuOptionItemProps,
-  MenuOptionItemState,
   MenuPositionerProps,
   MenuProps,
   MenuSeparatorProps,

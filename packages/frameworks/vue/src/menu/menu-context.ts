@@ -1,3 +1,4 @@
+import type { ComputedRef } from 'vue'
 import { createContext } from '../context'
 import { type UseMenuReturn } from './use-menu'
 
@@ -10,9 +11,9 @@ export type MenuMachineContext = UseMenuReturn['machine']
 export const [MenuMachineProvider, useMenuMachineContext] =
   createContext<MenuMachineContext>('MenuMachineContext')
 
-export type MenuTriggerItemProviderContext = () =>
-  | ReturnType<UseMenuReturn['api']['value']['getTriggerItemProps']>
-  | undefined
+export type MenuTriggerItemProviderContext = ComputedRef<
+  ReturnType<UseMenuReturn['api']['value']['getTriggerItemProps']> | undefined
+>
 
 export const [MenuTriggerItemProvider, useMenuTriggerItemContext] =
   createContext<MenuTriggerItemProviderContext>('MenuTriggerItemContext')

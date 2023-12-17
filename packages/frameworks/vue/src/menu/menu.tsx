@@ -28,9 +28,7 @@ export const Menu: ComponentWithProps<UseMenuProps> = defineComponent({
       api.value.setParent(parentMachine)
     })
 
-    const getTriggerItemProps = computed(() => () => parentApi.value.getTriggerItemProps(api.value))
-
-    MenuTriggerItemProvider(getTriggerItemProps.value)
+    MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 
     MenuMachineProvider(machine)
 

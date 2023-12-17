@@ -8,12 +8,11 @@ export const MenuContextTrigger = defineComponent({
   name: 'MenuContextTrigger',
   setup(_, { slots, attrs }) {
     const api = useMenuContext()
-    return () => {
-      return (
-        <ark.button {...api.value.contextTriggerProps} {...attrs}>
-          {slots.default?.()}
-        </ark.button>
-      )
-    }
+
+    return () => (
+      <ark.button {...api.value.contextTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

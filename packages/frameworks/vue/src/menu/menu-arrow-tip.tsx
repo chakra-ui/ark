@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export type MenuArrowTipProps = HTMLArkProps<'div'>
+export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const MenuArrowTip: ComponentWithProps<MenuArrowTipProps> = defineComponent({
   name: 'MenuArrowTip',

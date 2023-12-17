@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export type MenuPositionerProps = HTMLArkProps<'div'>
+export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
 export const MenuPositioner: ComponentWithProps<MenuPositionerProps> = defineComponent({
   name: 'MenuPositioner',
