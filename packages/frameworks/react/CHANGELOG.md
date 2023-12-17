@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Added missing `placeholder` prop to `SelectValueTextProps` type.
+- Changed `PopoverDescriptionProps` type from `div` to `p`
 
 ## [1.2.1] - 2023-12-13
 
