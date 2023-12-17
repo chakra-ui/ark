@@ -11,6 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Splitter` component
 - Revised `Tooltip` component
 - Revised `Tabs` component types
+- Revised `TagsInput` component
 
 ### Fixed
 

@@ -1,36 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputInput,
-  TagsInputItem,
-  TagsInputItemDeleteTrigger,
-  TagsInputItemInput,
-  TagsInputItemText,
-  TagsInputLabel,
-} from '../'
+import { TagsInput } from '../'
 
 const frameworks = ref(['react', 'solid', 'vue'])
 </script>
 
 <template>
-  <TagsInput v-slot="api" v-model="frameworks">
-    <TagsInputLabel>Frameworks</TagsInputLabel>
-    <TagsInputControl>
-      <TagsInputItem
-        v-for="(value, index) in api.value ?? []"
+  <TagsInput.Root v-slot="api" v-model="frameworks">
+    <TagsInput.Label>Frameworks</TagsInput.Label>
+    <TagsInput.Control>
+      <TagsInput.Item
+        v-for="(value, index) in api.value"
         :key="index"
         :index="index"
         :value="value"
       >
-        <TagsInputItemInput />
-        <TagsInputItemText>{{ value }}</TagsInputItemText>
-        <TagsInputItemDeleteTrigger>Delete</TagsInputItemDeleteTrigger>
-      </TagsInputItem>
-      <TagsInputInput placeholder="Add Framework" />
-      <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-    </TagsInputControl>
-  </TagsInput>
+        <TagsInput.ItemInput />
+        <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
+        <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+      </TagsInput.Item>
+      <TagsInput.Input placeholder="Add tag" />
+      <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+    </TagsInput.Control>
+  </TagsInput.Root>
 </template>
