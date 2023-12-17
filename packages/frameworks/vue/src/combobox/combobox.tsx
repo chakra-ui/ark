@@ -1,6 +1,6 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { type UsePresenceProps } from '../presence'
 import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
@@ -13,45 +13,25 @@ export interface ComboboxProps<T extends CollectionItem>
 export const Combobox = defineComponent({
   name: 'Combobox',
   props: {
-    present: {
-      type: Boolean as PropType<UsePresenceProps['present']>,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-      default: false,
-    },
-    unmountOnExit: {
-      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-      default: false,
-    },
     ...props,
     items: {
-      type: Array as PropType<UseComboboxProps<T>['items']>,
+      type: Array as PropType<UseComboboxProps<any>['items']>,
       required: true,
     },
     itemToString: {
-      type: Function as PropType<UseComboboxProps<T>['itemToString']>,
+      type: Function as PropType<UseComboboxProps<any>['itemToString']>,
     },
     itemToValue: {
-      type: Function as PropType<UseComboboxProps<T>['itemToValue']>,
+      type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
     },
     isItemDisabled: {
-      type: Function as PropType<UseComboboxProps<T>['isItemDisabled']>,
+      type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
     },
   },
   emits,
   setup(props, { slots, attrs, emit }) {
-    const presenceProps = computed(() => ({
-      present: props.present,
-      lazyMount: props.lazyMount,
-      unmountOnExit: props.unmountOnExit,
-    }))
-
     const api = useCombobox(props, emit)
-    const presenceApi = usePresence({ ...presenceProps.value, present: api.value.isOpen }, emit)
     ComboboxProvider(api)
-    PresenceProvider(presenceApi)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>

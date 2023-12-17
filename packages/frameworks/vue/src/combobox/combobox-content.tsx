@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { usePresenceContext, usePresencePropsContext } from '../presence'
+import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useComboboxContext } from './combobox-context'
 
-export interface ComboboxContentProps extends HTMLArkProps<'div'> {}
+export interface ComboboxContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const ComboboxContent = defineComponent({
   name: 'ComboboxContent',
@@ -12,17 +12,13 @@ export const ComboboxContent = defineComponent({
   emits,
   setup(props, { slots, attrs }) {
     const api = useComboboxContext()
-    const presenceApi = usePresenceContext()
-    const presenceProps = usePresencePropsContext()
-
-    if (presenceApi.value.isUnmounted) {
-      return () => null
-    }
 
     return () => (
-      <ark.div {...api.value.contentProps} {...presenceProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <Presence {...props} present={props.present !== undefined ? props.present : api.value.isOpen}>
+        <ark.div {...api.value.contentProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      </Presence>
     )
   },
 })

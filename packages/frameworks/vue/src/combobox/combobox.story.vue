@@ -16,7 +16,7 @@ const advancedItems = ref([
 <template>
   <Story title="Combobox">
     <Variant title="Basic">
-      <Combobox.Root :items="basicItems" lazyMount unmountOnExit>
+      <Combobox.Root :items="basicItems">
         <Combobox.Label>Framework</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />
