@@ -5,6 +5,7 @@ import './color-picker.css'
 
 const value = ref('hsl(20, 100%, 50%)')
 </script>
+
 <template>
   <Story title="Color Picker">
     <Variant title="Basic">
@@ -67,6 +68,7 @@ const value = ref('hsl(20, 100%, 50%)')
         </ColorPicker.Positioner>
       </ColorPicker.Root>
     </Variant>
+
     <Variant title="Controlled">
       <ColorPicker.Root
         #default="api"

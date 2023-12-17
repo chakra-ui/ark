@@ -32,12 +32,14 @@ watch(parentChecked, (parentVal) => {
         <Checkbox.Control />
       </Checkbox.Root>
     </Variant>
+
     <Variant title="Controlled">
       <Checkbox.Root v-model="checked">
         <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control />
       </Checkbox.Root>
     </Variant>
+
     <Variant title="Indeterminate">
       <div style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px">
         <Checkbox.Root v-model="parentChecked">
@@ -63,6 +65,7 @@ watch(parentChecked, (parentVal) => {
         </div>
       </div>
     </Variant>
+
     <Variant title="RenderProp">
       <Checkbox.Root v-slot="{ isChecked }">
         <Checkbox.Label>Checkbox</Checkbox.Label>

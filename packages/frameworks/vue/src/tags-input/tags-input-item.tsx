@@ -5,10 +5,10 @@ import type { Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
 import { TagsInputItemProvider } from './tags-input-item-context'
 
-export type TagsInputItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
+export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const TagsInputItem = defineComponent({
-  name: 'Tag',
+  name: 'TagsInputItem',
   props: {
     index: {
       type: [String, Number] as PropType<ItemProps['index']>,

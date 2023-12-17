@@ -1,61 +1,117 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Tabs, TabTrigger, TabList, TabIndicator, TabContent } from './'
+import { Tabs } from './'
 import './tabs.css'
+
 const value = ref('react')
 </script>
+
 <template>
   <Story title="Tabs">
     <Variant title="Basic">
-      <Tabs>
-        <TabList>
-          <TabTrigger value="react">React</TabTrigger>
-          <TabTrigger value="vue">Vue</TabTrigger>
-          <TabTrigger value="solid">Solid</TabTrigger>
-          <TabIndicator />
-        </TabList>
-        <TabContent value="react">React Content</TabContent>
-        <TabContent value="vue">Vue Content</TabContent>
-        <TabContent value="solid">Solid Content</TabContent>
-      </Tabs>
+      <Tabs.Root>
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
     </Variant>
+
     <Variant title="InitialTab">
-      <Tabs v-model="value">
-        <TabList>
-          <TabTrigger value="react">React</TabTrigger>
-          <TabTrigger value="vue">Vue</TabTrigger>
-          <TabTrigger value="solid">Solid</TabTrigger>
-          <TabIndicator />
-        </TabList>
-        <TabContent value="react">React Content</TabContent>
-        <TabContent value="vue">Vue Content</TabContent>
-        <TabContent value="solid">Solid Content</TabContent>
-      </Tabs>
+      <Tabs.Root v-model="value">
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
     </Variant>
-    <Variant title="Disabled">
-      <Tabs v-model="value">
-        <TabList>
-          <TabTrigger value="react">React</TabTrigger>
-          <TabTrigger value="vue" disabled>Vue</TabTrigger>
-          <TabTrigger value="solid">Solid</TabTrigger>
-        </TabList>
-        <TabContent value="react">React Content</TabContent>
-        <TabContent value="vue">Vue Content</TabContent>
-        <TabContent value="solid">Solid Content</TabContent>
-      </Tabs>
+
+    <Variant title="Indicator">
+      <Tabs.Root>
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+          <Tabs.Indicator />
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
     </Variant>
-    <Variant title="Vertical" orientation="vertical">
-      <Tabs v-model="value" orientation="vertical">
-        <TabList>
-          <TabTrigger value="react">React</TabTrigger>
-          <TabTrigger value="vue">Vue</TabTrigger>
-          <TabTrigger value="solid">Solid</TabTrigger>
-          <TabIndicator />
-        </TabList>
-        <TabContent value="react">React Content</TabContent>
-        <TabContent value="vue">Vue Content</TabContent>
-        <TabContent value="solid">Solid Content</TabContent>
-      </Tabs>
+
+    <Variant title="LazyMount">
+      <Tabs.Root lazyMount unmountOnExit>
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+          <Tabs.Indicator />
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
+    </Variant>
+
+    <Variant title="DisabledTab">
+      <Tabs.Root defaultValue="react">
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue" disabled>Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
+    </Variant>
+
+    <Variant title="Controlled">
+      <Tabs.Root v-model="value">
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
+    </Variant>
+
+    <Variant title="Vertical">
+      <Tabs.Root v-model="value" orientation="vertical">
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
+    </Variant>
+
+    <Variant title="Manual">
+      <Tabs.Root v-model="value" activationMode="manual">
+        <Tabs.List>
+          <Tabs.Trigger value="react">React</Tabs.Trigger>
+          <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
+          <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="react">React Content</Tabs.Content>
+        <Tabs.Content value="vue">Vue Content</Tabs.Content>
+        <Tabs.Content value="solid">Solid Content</Tabs.Content>
+      </Tabs.Root>
     </Variant>
   </Story>
 </template>

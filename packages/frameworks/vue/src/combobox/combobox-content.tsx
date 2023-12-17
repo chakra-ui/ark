@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface ComboboxContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const ComboboxContent = defineComponent({
   name: 'ComboboxContent',

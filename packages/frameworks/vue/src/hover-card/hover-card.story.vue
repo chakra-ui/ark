@@ -9,6 +9,7 @@ import {
 } from '.'
 import './hover-card.css'
 </script>
+
 <template>
   <Story title="Hover Card">
     <Variant title="Basic">

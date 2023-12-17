@@ -15,6 +15,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="MinMax">
       <NumberInput.Root :min="0" :max="10">
         <NumberInput.Scrubber />
@@ -26,6 +27,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="FractionDigits">
       <NumberInput.Root
         :formatOptions="{ minimumFractionDigits: 2, maximumFractionDigits: 3 }"
@@ -40,6 +42,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="Scrubber">
       <NumberInput.Root>
         <NumberInput.Scrubber />
@@ -51,6 +54,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="MouseWheel">
       <NumberInput.Root allowMouseWheel>
         <NumberInput.Scrubber />
@@ -62,6 +66,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="NoClamp">
       <NumberInput.Root :clampValueOnBlur="false">
         <NumberInput.Scrubber />
@@ -73,6 +78,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="FormUsage">
       <NumberInput.Root name="quantity">
         <NumberInput.Scrubber />
@@ -84,6 +90,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="Formatted">
       <NumberInput.Root :formatOptions="{ style: 'currency', currency: 'USD' }">
         <NumberInput.Scrubber />
@@ -95,6 +102,7 @@ import './number-input.css'
         </NumberInput.Control>
       </NumberInput.Root>
     </Variant>
+
     <Variant title="RenderFn">
       <NumberInput.Root v-slot="{ valueAsNumber }">
         <NumberInput.Scrubber />
