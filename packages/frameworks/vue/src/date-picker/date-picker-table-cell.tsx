@@ -19,7 +19,7 @@ export const DatePickerTableCell = defineComponent({
       type: Boolean as PropType<DatePickerTableCellContext['disabled']>,
     },
     value: {
-      type: Object as PropType<DatePickerTableCellContext['value']>,
+      type: [Number, Object] as PropType<DatePickerTableCellContext['value']>,
       required: true,
     },
     visibleRange: {
