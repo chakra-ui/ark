@@ -18,6 +18,7 @@ Ark UI is available for the following JavaScript frameworks:
 - [Checkbox](https://ark-ui.com/docs/components/checkbox)
 - [Color Picker](https://ark-ui.com/docs/components/color-picker)
 - [Combobox](https://ark-ui.com/docs/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/components/date-picker)
 - [Dialog](https://ark-ui.com/docs/components/dialog)
 - [Editable](https://ark-ui.com/docs/components/editable)
 - [File Upload](https://ark-ui.com/docs/components/file-upload)
