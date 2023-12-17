@@ -203,7 +203,31 @@
   "Item": { "item": { "type": "any", "isRequired": false } },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    }
+  },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
