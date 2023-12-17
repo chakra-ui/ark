@@ -20,6 +20,7 @@ export const DatePickerTableCell = defineComponent({
     },
     value: {
       type: Object as PropType<DatePickerTableCellContext['value']>,
+      required: true,
     },
     visibleRange: {
       type: Object as PropType<DatePickerTableCellContext['visibleRange']>,
@@ -28,6 +29,7 @@ export const DatePickerTableCell = defineComponent({
   setup(props, { slots, attrs }) {
     const api = useDatePickerContext()
     const view = useDatePickerViewContext()
+    // @ts-ignore
     DatePickerTableCellProvider(reactive(props))
 
     const tableCellProps = computed(() => {
