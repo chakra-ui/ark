@@ -12,6 +12,7 @@ const images = [
 ]
 const index = ref(0)
 </script>
+
 <template>
   <Story title="Carousel">
     <Variant title="Basic">
@@ -38,6 +39,7 @@ const index = ref(0)
         </Carousel.Viewport>
       </Carousel.Root>
     </Variant>
+
     <Variant title="Controlled">
       <Carousel.Root v-model="index">
         <Carousel.Control>
@@ -62,6 +64,7 @@ const index = ref(0)
         </Carousel.Viewport>
       </Carousel.Root>
     </Variant>
+
     <Variant title="Customized">
       <Carousel.Root
         :align="'center'"

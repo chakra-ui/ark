@@ -14,18 +14,21 @@ const isPresent = ref(false)
         <Presence :present="isPresent">Hidden and Hidden </Presence>
       </div>
     </Variant>
+
     <Variant title="LazyMount">
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent" lazyMount>Hidden and Hidden </Presence>
       </div>
     </Variant>
+
     <Variant title="UnmountOnExit">
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>
         <Presence :present="isPresent" unmountOnExit>Hidden and Unmounted on Exit </Presence>
       </div>
     </Variant>
+
     <Variant title="LazyMountAndUnmountOnExit">
       <div>
         <button @click="isPresent = !isPresent">Toggle</button>

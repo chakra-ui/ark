@@ -17,6 +17,7 @@ import './pagination.css'
         <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
       </Pagination.Root>
     </Variant>
+
     <Variant title="Customized">
       <Pagination.Root
         v-slot="{ pages }"
