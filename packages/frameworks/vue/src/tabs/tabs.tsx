@@ -1,11 +1,12 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import type { UsePresenceProps } from '../presence'
 import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { emits, props } from './tabs.props'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
 
 export const Tabs = defineComponent({
   name: 'Tabs',
@@ -17,10 +18,7 @@ export const Tabs = defineComponent({
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.({
-          selectedValue: api.value.value,
-          focusedValue: api.value.focusedValue,
-        })}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
