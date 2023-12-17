@@ -9,9 +9,11 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added `DatePicker` component
+- Added `modelValue` for `Dialog` component
 
 ### Changed
 
+- Revised `Dialog` component stories and tests
 - Revised `Splitter` component
 - Revised `Tooltip` component
 - Revised `Tabs` component types
