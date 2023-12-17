@@ -12,6 +12,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `Tooltip` component
 - Revised `Tabs` component types
 - Revised `TagsInput` component
+- Revised `ToggleGroup` component
 
 ### Fixed
 
