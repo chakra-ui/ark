@@ -38,6 +38,7 @@ const advancedItems = ref([
         </Teleport>
       </Combobox.Root>
     </Variant>
+
     <Variant title="Advanced">
       <Combobox.Root :items="advancedItems">
         <Combobox.Label>Framework</Combobox.Label>
