@@ -17,13 +17,11 @@ export const ComboboxItem = defineComponent({
   },
   setup(props, { slots, attrs }) {
     const api = useComboboxContext()
-    ComboboxItemProvider(props)
-
-    const itemState = computed(() => api.value.getItemState(props))
+    ComboboxItemProvider(computed(() => props))
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(itemState)}
+        {slots.default?.(api.value.getItemState(props))}
       </ark.div>
     )
   },

@@ -11,10 +11,6 @@ describe('Combobox', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it('should render', async () => {
-    render(ComponentUnderTest)
-  })
-
   it('should show options on click', async () => {
     render(ComponentUnderTest)
 

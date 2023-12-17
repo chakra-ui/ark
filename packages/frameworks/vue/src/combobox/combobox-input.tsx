@@ -11,7 +11,7 @@ export const ComboboxInput = defineComponent({
 
     const inputProps = computed(() => ({
       ...api.value.inputProps,
-      modelValue: api.value.inputValue || '',
+      modelValue: api.value.inputValue,
     }))
 
     return () => (
