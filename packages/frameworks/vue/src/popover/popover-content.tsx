@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface PopoverContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const PopoverContent = defineComponent({
   name: 'PopoverContent',
