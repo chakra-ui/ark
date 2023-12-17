@@ -19,6 +19,7 @@ description: All notable changes to this project will be documented in this file
 - Added a missing slot with machine api in `Splitter`
 - Added a missing slot with machine api in `Tabs`
 - Added a missing slot with machine api in `Tooltip`
+- Fixed `Combobox.ItemText` type from `button` to `span`
 - Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14
