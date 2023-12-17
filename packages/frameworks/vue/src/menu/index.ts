@@ -7,11 +7,7 @@ import { MenuContextTrigger, type MenuContextTriggerProps } from './menu-context
 import { MenuItem, type MenuItemProps } from './menu-item'
 import { MenuItemGroup, type MenuItemGroupProps } from './menu-item-group'
 import { MenuItemGroupLabel, type MenuItemGroupLabelProps } from './menu-item-group-label'
-import {
-  MenuOptionItem,
-  type MenuOptionItemProps,
-  type MenuOptionItemState,
-} from './menu-option-item'
+import { MenuOptionItem, type MenuOptionItemProps } from './menu-option-item'
 import { MenuPositioner, type MenuPositionerProps } from './menu-positioner'
 import { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 import { MenuTrigger, type MenuTriggerProps } from './menu-trigger'

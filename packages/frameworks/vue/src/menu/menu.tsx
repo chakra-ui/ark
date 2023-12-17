@@ -1,9 +1,5 @@
-/* eslint-disable vue/no-reserved-component-names */
-
-import type { Context } from '@zag-js/menu'
-import { computed, defineComponent, onMounted, type PropType } from 'vue'
-import type { Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
+import { computed, defineComponent, onMounted } from 'vue'
+import { type ComponentWithProps } from '../utils'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -11,75 +7,24 @@ import {
   useMenuContext,
   useMenuMachineContext,
 } from './menu-context'
-import { useMenu } from './use-menu'
+import { emits, props } from './menu.props'
+import { useMenu, type UseMenuProps } from './use-menu'
 
-export type MenuState = {
-  isOpen: boolean
-  onClose: () => void
-}
+export interface MenuProps extends UseMenuProps {}
 
-export type UseMenuProps = Context & { isOpen?: boolean }
-
-const VueProps = createVueProps<UseMenuProps>({
-  anchorPoint: {
-    type: Object as PropType<UseMenuProps['anchorPoint']>,
-  },
-  'aria-label': {
-    type: String as PropType<UseMenuProps['aria-label']>,
-  },
-  closeOnSelect: {
-    type: Boolean as PropType<UseMenuProps['closeOnSelect']>,
-    default: true,
-  },
-  dir: {
-    type: String as PropType<UseMenuProps['dir']>,
-  },
-  getRootNode: {
-    type: Function as PropType<UseMenuProps['getRootNode']>,
-  },
-  id: {
-    type: String as PropType<UseMenuProps['id']>,
-  },
-  ids: {
-    type: Object as PropType<UseMenuProps['ids']>,
-  },
-  isOpen: {
-    type: Boolean as PropType<UseMenuProps['isOpen']>,
-    default: false,
-  },
-  loop: {
-    type: Boolean as PropType<UseMenuProps['loop']>,
-  },
-  positioning: {
-    type: Object as PropType<UseMenuProps['positioning']>,
-  },
-  value: {
-    type: Object as PropType<UseMenuProps['value']>,
-  },
-})
-
-export const Menu: ComponentWithProps<Partial<UseMenuProps>> = defineComponent({
+export const Menu: ComponentWithProps<UseMenuProps> = defineComponent({
   name: 'Menu',
-  props: VueProps,
-  emits: ['close', 'open', 'select', 'value-change'],
-  setup(props, { slots, emit, expose }) {
-    const { api, menuMachine } = useMenu(emit, props as MenuProps)
+  props,
+  emits,
+  setup(props, { slots, emit }) {
+    const { api, machine } = useMenu(props, emit)
 
-    const parentApi = useMenuContext(undefined)
-    const parentMachine = useMenuMachineContext(undefined)
-
-    const exposeProps = computed<MenuState>(() => ({
-      isOpen: api.value.isOpen,
-      onClose: api.value.close,
-    }))
+    const parentApi = useMenuContext()
+    const parentMachine = useMenuMachineContext()
 
     onMounted(() => {
-      if (props.isOpen && !api.value.isOpen) {
-        api.value.open()
-      }
-
       if (!parentMachine) return
-      parentApi.value.setChild(menuMachine)
+      parentApi.value.setChild(machine)
       api.value.setParent(parentMachine)
     })
 
@@ -87,16 +32,12 @@ export const Menu: ComponentWithProps<Partial<UseMenuProps>> = defineComponent({
 
     MenuTriggerItemProvider(getTriggerItemProps.value)
 
-    MenuMachineProvider(menuMachine)
+    MenuMachineProvider(machine)
 
     MenuProvider(api)
 
-    expose({
-      context: exposeProps,
-    })
-
-    return () => slots.default?.({ isOpen: api.value.isOpen, close: api.value.close })
+    return () => {
+      return slots.default?.(api.value)
+    }
   },
 })
-
-export type MenuProps = Optional<UseMenuProps, 'id'>

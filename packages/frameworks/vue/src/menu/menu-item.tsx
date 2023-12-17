@@ -5,7 +5,7 @@ import { type Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export type MenuItemProps = Assign<HTMLArkProps<'button'>, ItemProps>
+export interface MenuItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
 export const MenuItem: ComponentWithProps<MenuItemProps> = defineComponent({
   name: 'MenuItem',
@@ -22,23 +22,16 @@ export const MenuItem: ComponentWithProps<MenuItemProps> = defineComponent({
     },
     closeOnSelect: {
       type: Boolean as PropType<MenuItemProps['closeOnSelect']>,
+      default: undefined,
     },
   },
   setup(props, { slots, attrs }) {
     const api = useMenuContext()
 
     return () => (
-      <ark.button
-        {...api.value.getItemProps({
-          id: props.id,
-          disabled: props.disabled,
-          valueText: props.valueText,
-          closeOnSelect: props.closeOnSelect,
-        })}
-        {...attrs}
-      >
+      <ark.div {...api.value.getItemProps(props)} {...attrs}>
         {slots.default?.()}
-      </ark.button>
+      </ark.div>
     )
   },
 })
