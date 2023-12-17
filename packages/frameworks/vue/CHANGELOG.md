@@ -10,10 +10,12 @@ description: All notable changes to this project will be documented in this file
 
 - Added `DatePicker` component
 - Added `modelValue` for `Dialog` component
+- Added `modelValue` for `HoverCard` component
 
 ### Changed
 
 - Revised `Dialog` component stories and tests
+- Revised `HoverCard` component stories and tests
 - Revised `Splitter` component
 - Revised `Tooltip` component
 - Revised `Tabs` component types
