@@ -5,7 +5,7 @@ import { type Assign } from '../types'
 import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export interface MenuItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
+export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const MenuItem: ComponentWithProps<MenuItemProps> = defineComponent({
   name: 'MenuItem',

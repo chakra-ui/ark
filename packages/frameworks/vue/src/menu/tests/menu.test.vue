@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Menu } from '..'
+import { Menu } from '../'
 
 defineProps({
   lazyMount: Boolean

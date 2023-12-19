@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Menu } from '..'
+import { Menu } from '../'
 
 const value = ref({
   framework: '',

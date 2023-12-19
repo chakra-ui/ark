@@ -29,13 +29,13 @@ export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuRet
       ...context.value,
       id: context.value.id || useId().value,
       getRootNode,
-      onOpenChange(details) {
+      onOpenChange: (details) => {
         emit('open-change', details)
       },
-      onSelect(details) {
+      onSelect: (details) => {
         emit('select', details)
       },
-      onValueChange(details) {
+      onValueChange: (details) => {
         emit('value-change', details)
         emit('update:modelValue', details.value)
       },
