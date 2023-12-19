@@ -15,7 +15,7 @@ export const AccordionItem = defineComponent({
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: undefined,
     },
   },
   setup(props, { slots, attrs }) {
