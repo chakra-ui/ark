@@ -25,6 +25,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="Controlled">
       <button @click="isOpen = !isOpen">Trigger from the outside</button>
       <Menu.Root :open="isOpen" @select="(id) => console.log(id)">
@@ -39,6 +40,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="Group">
       <Menu.Root>
         <Menu.Trigger>Open menu</Menu.Trigger>
@@ -58,6 +60,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="Separator">
       <Menu.Root>
         <Menu.Trigger>Open menu</Menu.Trigger>
@@ -72,6 +75,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="ContextMenu">
       <Menu.Root>
         <Menu.ContextTrigger>
@@ -89,6 +93,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="SubMenu">
       <Menu.Root>
         <Menu.Trigger>Open menu</Menu.Trigger>
@@ -110,6 +115,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="Options">
       <Menu.Root v-model="value">
         <Menu.Trigger>Open menu</Menu.Trigger>
@@ -161,6 +167,7 @@ const value = ref({
         </Menu.Positioner>
       </Menu.Root>
     </Variant>
+
     <Variant title="ComplexSubMenu">
       <Menu.Root v-model="value">
         <Menu.Trigger>Open menu</Menu.Trigger>
