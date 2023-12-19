@@ -6,7 +6,7 @@ import ComponentUnderTest from './tooltip.test.vue'
 
 describe('Tooltip', () => {
   it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
+    render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
