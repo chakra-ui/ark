@@ -5,12 +5,13 @@ import {
   defineComponent,
   onMounted,
   onUnmounted,
-  toRef,
+  type Component,
   type ComputedRef,
   type PropType,
   type VNode,
 } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 import { ToastGroup } from './toast-group'
@@ -22,19 +23,18 @@ export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, '
   render: (api: toast.Api<PropTypes>) => VNode
 }
 
-export type CreateToasterReturn = [any, ComputedRef<toast.GroupApi<PropTypes>>]
+export type CreateToasterReturn = [Component, ComputedRef<toast.GroupApi<PropTypes>>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, ...rest } = props
   const service = toast.group.machine({ id: '1', placement, ...rest }).start()
   let api = computed(() => toast.group.connect(service.getState(), service.send, normalizeProps))
 
-  const Toaster = defineComponent({
-    name: 'Toaster',
-    setup(_, { attrs }) {
+  const Toaster = defineComponent<HTMLArkProps<'ol'>>(
+    (_, { attrs }) => {
+      const getRootNode = useEnvironmentContext()
       const [state, send] = useActor(service)
       api = computed(() => toast.group.connect(state.value, send, normalizeProps))
-      const getRootNode = useEnvironmentContext()
 
       onMounted(() => {
         service.setContext({ getRootNode })
@@ -51,7 +51,10 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
         </ToastGroup>
       )
     },
-  })
+    {
+      name: 'Toaster',
+    },
+  )
 
   return [Toaster, api]
 }
@@ -62,12 +65,11 @@ export const ToastProviderFactory = defineComponent({
     service: { type: Object as PropType<toast.Service>, required: true },
   },
   setup(props) {
-    const service = toRef(props, 'service')
-    const [state, send] = useActor(service.value)
+    const [state, send] = useActor(props.service)
     const api = computed(() => toast.connect(state.value, send, normalizeProps))
 
     ToastProvider(api)
 
-    return () => <>{state.value.context.render?.(api.value)}</>
+    return () => state.value.context.render?.(api.value)
   },
 })
