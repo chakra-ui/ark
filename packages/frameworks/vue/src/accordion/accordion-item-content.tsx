@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { defineComponent, watch } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
@@ -16,14 +16,18 @@ export const AccordionItemContent = defineComponent({
     const item = useAccordionItemContext()
     const presenceApi = usePresenceContext()
 
-    if (presenceApi.value.isUnmounted) {
-      return () => null
-    }
+    watch(presenceApi, (newValue) => {
+      console.log('accordion-item-content', newValue)
+    })
 
     return () => (
-      <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
 })

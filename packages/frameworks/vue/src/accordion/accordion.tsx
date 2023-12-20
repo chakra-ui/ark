@@ -30,14 +30,14 @@ export const Accordion = defineComponent({
   emits,
   setup(props, { slots, attrs, emit }) {
     const api = useAccordion(props, emit)
+
+    const presenceProps = computed(() => ({
+      present: props.present,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
     AccordionProvider(api)
-    PresencePropsProvider(
-      computed(() => ({
-        present: props.present,
-        lazyMount: props.lazyMount,
-        unmountOnExit: props.unmountOnExit,
-      })).value,
-    )
+    PresencePropsProvider(presenceProps as any)
 
     console.log('Accordion', api.value)
     console.log('disabled', computed(() => props.disabled).value)

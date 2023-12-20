@@ -1,6 +1,6 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, ref, watch, type VNodeRef } from 'vue'
+import { computed, ref, watch, type Ref, type VNodeRef } from 'vue'
 import type { Optional } from '../types'
 import { generateEventMap } from '../utils'
 import { emits } from './presence.props'
@@ -20,13 +20,14 @@ export interface UsePresenceProps extends Optional<presence.Context, 'present'> 
 
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => {
-  const context = ref(props)
+export const usePresence = (props: Ref<UsePresenceProps>, emit: CallableFunction) => {
   const wasEverPresent = ref(false)
   const eventMap = generateEventMap(emits, emit)
   const nodeRef = ref<VNodeRef | null>(null)
 
-  const [state, send] = useMachine(presence.machine({ ...context.value, ...eventMap }), { context })
+  const [state, send] = useMachine(presence.machine({ ...props.value, ...eventMap }), {
+    context: props,
+  })
   const api = computed(() => presence.connect(state.value, send, normalizeProps))
 
   watch(
@@ -49,12 +50,12 @@ export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => 
   return computed(() => ({
     isPresent: api.value.isPresent,
     isUnmounted:
-      (!api.value.isPresent && !wasEverPresent.value && props.lazyMount) ||
-      (props.unmountOnExit && !api.value.isPresent && wasEverPresent.value),
+      (!api.value.isPresent && !wasEverPresent.value && props?.value?.lazyMount) ||
+      (props?.value?.unmountOnExit && !api.value?.isPresent && wasEverPresent.value),
     presenceProps: {
       ref: nodeRef,
       hidden: !api.value.isPresent,
-      'data-state': context.value.present ? 'open' : 'closed',
+      'data-state': props?.value?.present ? 'open' : 'closed',
     },
   }))
 }
