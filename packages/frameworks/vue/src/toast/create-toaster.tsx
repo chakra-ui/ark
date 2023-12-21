@@ -5,6 +5,7 @@ import {
   defineComponent,
   onMounted,
   onUnmounted,
+  toRef,
   type Component,
   type ComputedRef,
   type PropType,
@@ -62,7 +63,8 @@ export const ToastProviderFactory = defineComponent({
     service: { type: Object as PropType<toast.Service>, required: true },
   },
   setup(props) {
-    const [state, send] = useActor(props.service)
+    const service = toRef(props, 'service')
+    const [state, send] = useActor(service.value)
     const api = computed(() => toast.connect(state.value, send, normalizeProps))
 
     ToastProvider(api)
