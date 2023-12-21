@@ -1,6 +1,5 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 interface ItemGroupLabelProps {
@@ -9,7 +8,7 @@ interface ItemGroupLabelProps {
 
 export interface MenuItemGroupLabelProps extends HTMLArkProps<'div'>, ItemGroupLabelProps {}
 
-export const MenuItemGroupLabel: ComponentWithProps<MenuItemGroupLabelProps> = defineComponent({
+export const MenuItemGroupLabel = defineComponent({
   name: 'MenuItemGroupLabel',
   props: {
     htmlFor: {

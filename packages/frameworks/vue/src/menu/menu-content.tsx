@@ -4,11 +4,10 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
-import type { ComponentWithProps } from '../utils'
 
 export interface MenuContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
-export const MenuContent: ComponentWithProps<MenuContentProps> = defineComponent({
+export const MenuContent = defineComponent({
   name: 'MenuContent',
   props,
   emits,

@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const MenuArrowTip: ComponentWithProps<MenuArrowTipProps> = defineComponent({
+export const MenuArrowTip = defineComponent({
   name: 'MenuArrowTip',
   setup(_, { slots, attrs }) {
     const api = useMenuContext()

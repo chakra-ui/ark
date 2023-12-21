@@ -1,5 +1,4 @@
 import { computed, defineComponent, onMounted } from 'vue'
-import { type ComponentWithProps } from '../utils'
 import {
   MenuMachineProvider,
   MenuProvider,
@@ -12,7 +11,7 @@ import { useMenu, type UseMenuProps } from './use-menu'
 
 export interface MenuProps extends UseMenuProps {}
 
-export const Menu: ComponentWithProps<UseMenuProps> = defineComponent({
+export const Menu = defineComponent({
   name: 'Menu',
   props,
   emits,

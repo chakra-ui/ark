@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
 export interface MenuSeparatorProps extends HTMLArkProps<'hr'> {}
 
-export const MenuSeparator: ComponentWithProps<MenuSeparatorProps> = defineComponent({
+export const MenuSeparator = defineComponent({
   name: 'MenuSeparator',
   setup(_, { attrs }) {
     const api = useMenuContext()

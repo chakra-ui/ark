@@ -1,13 +1,12 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
-import { useMenuContext } from './menu-context'
 import type { Assign } from '../types'
+import { useMenuContext } from './menu-context'
 
 export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
-export const MenuOptionItem: ComponentWithProps<MenuOptionItemProps> = defineComponent({
+export const MenuOptionItem = defineComponent({
   name: 'MenuOptionItem',
   props: {
     id: {
