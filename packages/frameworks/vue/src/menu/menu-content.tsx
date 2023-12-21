@@ -2,9 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
+import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 
-export type MenuContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface MenuContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
 export const MenuContent = defineComponent({
   name: 'MenuContent',
