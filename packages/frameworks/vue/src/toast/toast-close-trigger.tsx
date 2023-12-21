@@ -4,8 +4,9 @@ import { useToastContext } from './toast-context'
 
 export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ToastCloseTrigger = defineComponent<ToastCloseTriggerProps>(
-  (_, { attrs, slots }) => {
+export const ToastCloseTrigger = defineComponent({
+  name: 'ToastCloseTrigger',
+  setup(_, { attrs, slots }) {
     const api = useToastContext()
 
     return () => (
@@ -14,7 +15,4 @@ export const ToastCloseTrigger = defineComponent<ToastCloseTriggerProps>(
       </ark.button>
     )
   },
-  {
-    name: 'ToastCloseTrigger',
-  },
-)
+})
