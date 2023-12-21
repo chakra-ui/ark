@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "5.0.0",
-    "@solidjs/testing-library": "0.8.4",
+    "@solidjs/testing-library": "0.8.5",
     "@storybook/addon-essentials": "7.6.5",
     "@storybook/addon-interactions": "7.6.5",
     "@storybook/addon-links": "7.6.5",

@@ -477,8 +477,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(release-it@17.0.1)
       '@solidjs/testing-library':
-        specifier: 0.8.4
-        version: 0.8.4(@solidjs/router@0.9.1)(solid-js@1.8.7)
+        specifier: 0.8.5
+        version: 0.8.5(@solidjs/router@0.9.1)(solid-js@1.8.7)
       '@storybook/addon-essentials':
         specifier: 7.6.5
         version: 7.6.5(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -6136,8 +6136,8 @@ packages:
       solid-js: 1.8.7
     dev: true
 
-  /@solidjs/testing-library@0.8.4(@solidjs/router@0.9.1)(solid-js@1.8.7):
-    resolution: {integrity: sha512-HHCAlBd4P4TY03tXmoBwTO6FFM7w33LeT8Skab941eLO9l5RN7OxKEBw2fiMYvSFL2h2U7L4+W5N03iC8GbB6Q==}
+  /@solidjs/testing-library@0.8.5(@solidjs/router@0.9.1)(solid-js@1.8.7):
+    resolution: {integrity: sha512-L9TowCoqdRQGB8ikODh9uHXrYTjCUZseVUG0tIVa836//qeSqXP4m0BKG66v9Zp1y1wRxok5qUW97GwrtEBMcw==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@solidjs/router': '>=0.6.0'
@@ -19372,7 +19372,7 @@ packages:
       '@types/node': 20.8.9
       esbuild: 0.19.8
       postcss: 8.4.32
-      rollup: 4.9.1
+      rollup: 4.9.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
