@@ -37,7 +37,7 @@ export const Accordion = defineComponent({
       unmountOnExit: props.unmountOnExit,
     }))
     AccordionProvider(api)
-    PresencePropsProvider(presenceProps as any)
+    PresencePropsProvider(presenceProps)
 
     console.log('Accordion', api.value)
     console.log('disabled', computed(() => props.disabled).value)
