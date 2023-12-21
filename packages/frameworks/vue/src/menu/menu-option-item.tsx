@@ -14,9 +14,11 @@ export const MenuOptionItem = defineComponent({
     },
     disabled: {
       type: Boolean as PropType<MenuOptionItemProps['disabled']>,
+      default: undefined,
     },
     valueText: {
       type: String as PropType<MenuOptionItemProps['valueText']>,
+      default: undefined,
     },
     closeOnSelect: {
       type: Boolean as PropType<MenuOptionItemProps['closeOnSelect']>,

@@ -130,7 +130,7 @@ const value = ref({
                 {{ isChecked ? '✅' : '' }} Solid
               </Menu.OptionItem>
               <Menu.OptionItem name="framework" type="radio" value="vue" v-slot="{ isChecked }">
-                {{ isChecked ? '✅' : '' }} Solid
+                {{ isChecked ? '✅' : '' }} Vue
               </Menu.OptionItem>
             </Menu.ItemGroup>
             <Menu.ItemGroup id="checkbox-group">
