@@ -5,6 +5,7 @@ import './slider.css'
 
 const sliderValue = ref([-10, 20])
 </script>
+
 <template>
   <Story title="Slider">
     <Variant title="Basic">
@@ -19,6 +20,7 @@ const sliderValue = ref([-10, 20])
         </Slider.Control>
       </Slider.Root>
     </Variant>
+
     <Variant title="Range">
       <Slider.Root :min="-50" :max="50" v-model="sliderValue">
         <Slider.Label>Label</Slider.Label>
@@ -37,6 +39,7 @@ const sliderValue = ref([-10, 20])
         </Slider.MarkerGroup>
       </Slider.Root>
     </Variant>
+
     <Variant title="WithMarks">
       <Slider.Root>
         <Slider.Label>Label</Slider.Label>
@@ -55,6 +58,7 @@ const sliderValue = ref([-10, 20])
         </Slider.MarkerGroup>
       </Slider.Root>
     </Variant>
+
     <Variant title="InitialValue">
       <Slider.Root :model-value="[42]">
         <Slider.Label>Label</Slider.Label>
@@ -72,6 +76,7 @@ const sliderValue = ref([-10, 20])
         </Slider.MarkerGroup>
       </Slider.Root>
     </Variant>
+
     <Variant title="MinMax">
       <Slider.Root :min="-10" :max="10">
         <Slider.Label>Label</Slider.Label>
@@ -84,6 +89,7 @@ const sliderValue = ref([-10, 20])
         </Slider.Control>
       </Slider.Root>
     </Variant>
+
     <Variant title="Step">
       <Slider.Root :step="0.01" :min="5" :max="10">
         <Slider.Label>Label</Slider.Label>
@@ -96,6 +102,7 @@ const sliderValue = ref([-10, 20])
         </Slider.Control>
       </Slider.Root>
     </Variant>
+
     <Variant title="OnEvent">
       <Slider.Root
         @value-change="(details) => console.log(details.value)"
@@ -111,6 +118,7 @@ const sliderValue = ref([-10, 20])
         </Slider.Control>
       </Slider.Root>
     </Variant>
+
     <Variant title="Vertical">
       <Slider.Root orientation="vertical">
         <Slider.Label>Label</Slider.Label>
@@ -123,6 +131,7 @@ const sliderValue = ref([-10, 20])
         </Slider.Control>
       </Slider.Root>
     </Variant>
+
     <Variant title="CenterOrigin">
       <Slider.Root origin="center">
         <Slider.Label>Label</Slider.Label>

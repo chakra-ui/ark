@@ -1,36 +1,39 @@
-import { connect, machine } from '@zag-js/dialog'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import * as dialog from '@zag-js/dialog'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, reactive, watch, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { DialogProps } from './dialog'
 
-export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export interface UseDialogProps extends Optional<dialog.Context, 'id'> {
+  modelValue?: dialog.Context['open']
+}
 
+export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
+
+export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
   const getRootNode = useEnvironmentContext()
+  const reactiveContext = reactive(props)
 
   const [state, send] = useMachine(
-    machine({
+    dialog.machine({
       ...reactiveContext,
       id: reactiveContext.id || useId().value,
       getRootNode,
-      onOpenChange() {
-        emit('open-change')
+      onOpenChange: (details) => {
+        emit('open-change', details)
+        emit('update:modelValue', details.open)
       },
-      onEsc() {
-        emit('esc')
+      onEscapeKeyDown: (details) => {
+        emit('escape-key-down', details)
       },
-      onOutsideClick() {
-        emit('outside-click')
+      onInteractOutside: (details) => {
+        emit('interact-outside', details)
       },
     }),
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
+  const api = computed(() => dialog.connect(state.value, send, normalizeProps))
 
   watch(
     () => reactiveContext.open,
@@ -46,5 +49,3 @@ export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
 
   return api
 }
-
-export type UseDialogReturn = ReturnType<typeof connect>

@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxControlProps = HTMLArkProps<'div'>
+export interface ComboboxControlProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxControl: ComponentWithProps<ComboboxControlProps> = defineComponent({
+export const ComboboxControl = defineComponent({
   name: 'ComboboxControl',
   setup(_, { slots, attrs }) {
     const api = useComboboxContext()

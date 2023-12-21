@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useDialogContext } from './dialog-context'
 
-export type DialogBackdropProps = HTMLArkProps<'div'> & PresenceProps
+export interface DialogBackdropProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const DialogBackdrop = defineComponent({
   name: 'DialogBackdrop',

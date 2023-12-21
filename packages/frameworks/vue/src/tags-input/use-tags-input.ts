@@ -5,16 +5,17 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTagsInputProps = Optional<tagsInput.Context, 'id'> & {
+export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
   modelValue?: tagsInput.Context['value']
 }
-export type UseTagsInputReturn = ComputedRef<tagsInput.Api<PropTypes>>
+export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
 export const useTagsInput = (
   props: UseTagsInputProps,
   emit: CallableFunction,
 ): UseTagsInputReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {

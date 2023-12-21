@@ -18,7 +18,7 @@ export const AccordionItem = defineComponent({
     },
     disabled: {
       type: Boolean as PropType<ItemProps['disabled']>,
-      default: false,
+      default: undefined,
     },
   },
   emits,

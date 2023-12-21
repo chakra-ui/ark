@@ -27,6 +27,12 @@
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loop": {
       "type": "boolean",
       "defaultValue": "true",
@@ -34,6 +40,11 @@
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
     "modelValue": { "type": "string", "isRequired": false },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
@@ -50,18 +61,26 @@
       "isRequired": false,
       "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
     },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "translations": {
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   },
   "TabList": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TabContent": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
+  "TabContent": { "value": { "type": "string", "isRequired": true } },
   "TabTrigger": {
     "value": { "type": "string", "isRequired": true },
     "disabled": { "type": "boolean", "isRequired": false }

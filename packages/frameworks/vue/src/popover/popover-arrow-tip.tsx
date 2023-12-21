@@ -1,11 +1,10 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverArrowTipProps = HTMLArkProps<'div'>
+export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const PopoverArrowTip: ComponentWithProps<PopoverArrowTipProps> = defineComponent({
+export const PopoverArrowTip = defineComponent({
   name: 'PopoverArrowTip',
   setup(_, { slots, attrs }) {
     const api = usePopoverContext()

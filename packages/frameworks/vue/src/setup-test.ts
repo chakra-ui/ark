@@ -9,6 +9,9 @@ window.ResizeObserver = ResizeObserver
 window.Element.prototype.scrollTo = () => {
   // no-op
 }
+window.Element.prototype.scrollIntoView = () => {
+  // noop
+}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 

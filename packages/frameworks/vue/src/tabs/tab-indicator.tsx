@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTabsContext } from './tabs-context'
 
-export type TabIndicatorProps = HTMLArkProps<'div'>
+export interface TabIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const TabIndicator = defineComponent({
   name: 'TabIndicator',

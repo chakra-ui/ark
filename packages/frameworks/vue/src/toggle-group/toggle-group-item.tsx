@@ -2,13 +2,12 @@ import type { ItemProps } from '@zag-js/toggle-group'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { type ComponentWithProps } from '../utils'
 import { useToggleGroupContext } from './toggle-group-context'
 
 export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
-export const ToggleGroupItem: ComponentWithProps<ToggleGroupItemProps> = defineComponent({
-  name: 'Toggle',
+export const ToggleGroupItem = defineComponent({
+  name: 'ToggleGroupItem',
   props: {
     value: {
       type: String as PropType<ItemProps['value']>,

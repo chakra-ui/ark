@@ -6,16 +6,31 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `DatePicker` component
+- Added `modelValue` for `Dialog` component
+- Added `modelValue` for `HoverCard` component
+- Added `modelValue` for `Popover` component
+
 ### Changed
 
+- Revised `Dialog` component stories and tests
+- Revised `HoverCard` component stories and tests
+- Revised `Popover` component stories and tests
 - Revised `Splitter` component
 - Revised `Tooltip` component
+- Revised `Tabs` component types
+- Revised `TagsInput` component
+- Revised `ToggleGroup` component
 
 ### Fixed
 
 - Added a missing slot with machine api in `Splitter`
-- Resolved an issue where `Tooltip` component would not handle open control state
+- Added a missing slot with machine api in `Tabs`
 - Added a missing slot with machine api in `Tooltip`
+- Fixed `Combobox.ItemText` type from `button` to `span`
+- Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14
 

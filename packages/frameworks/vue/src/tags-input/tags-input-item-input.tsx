@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 import { useTagsInputItemContext } from './tags-input-item-context'
 
-export type TagsInputItemInputProps = HTMLArkProps<'input'>
+export interface TagsInputItemInputProps extends HTMLArkProps<'input'> {}
 
 export const TagsInputItemInput = defineComponent({
   name: 'TagsInputItemInput',

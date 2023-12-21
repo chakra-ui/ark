@@ -5,14 +5,17 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseHoverCardProps = Optional<hoverCard.Context, 'id'>
-export type UseHoverCardReturn = ComputedRef<hoverCard.Api<PropTypes>>
+export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {
+  modelValue?: hoverCard.Context['open']
+}
+export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (
   props: UseHoverCardProps,
   emit: CallableFunction,
 ): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = ref(props)
 
   const [state, send] = useMachine(
@@ -20,11 +23,13 @@ export const useHoverCard = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onOpenChange(details) {
+      onOpenChange: (details) => {
         emit('open-change', details)
+        emit('update:modelValue', details.open)
       },
     }),
     { context },
   )
+
   return computed(() => hoverCard.connect(state.value, send, normalizeProps))
 }

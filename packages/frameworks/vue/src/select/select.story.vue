@@ -4,6 +4,7 @@ import './select.css'
 
 const items = ['React', 'Solid', 'Vue']
 </script>
+
 <template>
   <Story title="Select">
     <Variant title="Basic">

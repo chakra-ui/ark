@@ -56,14 +56,14 @@ const Demo = () => (
 ## Slot Recipes
 
 Panda introduces 'slot recipes', a concept involving a set of styles applicable
-to various component parts. These slot recipes are created using Panda's `cva`
+to various component parts. These slot recipes are created using Panda's `sva`
 function.
 
 ```tsx
 import { Tabs } from '@ark-ui/react'
-import { cva } from 'styled-system/css' // panda generated directory
+import { sva } from 'styled-system/css' // panda generated directory
 
-const tabStyle = cva({
+const tabStyle = sva({
   slots: ['list', 'trigger'],
   base: {
     // base styles for Tabs.List
