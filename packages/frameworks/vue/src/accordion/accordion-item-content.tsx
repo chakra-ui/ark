@@ -1,4 +1,4 @@
-import { defineComponent, watch } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
@@ -15,10 +15,6 @@ export const AccordionItemContent = defineComponent({
     const api = useAccordionContext()
     const item = useAccordionItemContext()
     const presenceApi = usePresenceContext()
-
-    watch(presenceApi, (newValue) => {
-      console.log('accordion-item-content', newValue)
-    })
 
     return () => (
       <>

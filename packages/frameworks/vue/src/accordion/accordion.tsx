@@ -39,9 +39,6 @@ export const Accordion = defineComponent({
     AccordionProvider(api)
     PresencePropsProvider(presenceProps)
 
-    console.log('Accordion', api.value)
-    console.log('disabled', computed(() => props.disabled).value)
-
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
         {slots.default?.(api.value)}

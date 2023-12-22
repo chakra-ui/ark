@@ -30,9 +30,7 @@ export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => 
         emit('exit-complete')
       },
     }),
-    {
-      context,
-    },
+    { context },
   )
   const api = computed(() => presence.connect(state.value, send, normalizeProps))
 
