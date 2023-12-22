@@ -17,11 +17,13 @@ description: All notable changes to this project will be documented in this file
 
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
+- Revised `Menu` component
 - Revised `Popover` component stories and tests
 - Revised `Splitter` component
 - Revised `Tooltip` component
 - Revised `Tabs` component types
 - Revised `TagsInput` component
+- Revised `Toast` component
 - Revised `ToggleGroup` component
 
 ### Fixed
@@ -30,6 +32,7 @@ description: All notable changes to this project will be documented in this file
 - Added a missing slot with machine api in `Tabs`
 - Added a missing slot with machine api in `Tooltip`
 - Fixed `Combobox.ItemText` type from `button` to `span`
+- Fixed `Toast` render bugs
 - Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14
