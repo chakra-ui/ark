@@ -1,7 +1,8 @@
 import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { HoverCard } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './hover-card.test.vue'
 
 describe('Hover Card', () => {
@@ -9,6 +10,10 @@ describe('Hover Card', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
+    expect(HoverCard[part]).toBeDefined()
   })
 
   it('should open on hover', async () => {

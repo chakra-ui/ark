@@ -1,7 +1,8 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Menu } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ContextMenuComponentUnderTest from './context-menu.test.vue'
 import MenuItemGroupComponentUnderTest from './menu-item-group.test.vue'
 import ComponentUnderTest from './menu.test.vue'
@@ -13,6 +14,10 @@ describe('Menu', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
+    expect(Menu[part]).toBeDefined()
   })
 
   it('should set correct aria attributes on disabled MenuItems', () => {

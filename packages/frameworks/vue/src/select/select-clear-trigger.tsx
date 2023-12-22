@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectClearTriggerProps = HTMLArkProps<'button'>
+export interface SelectClearTriggerProps extends HTMLArkProps<'button'> {}
 
 export const SelectClearTrigger = defineComponent({
   name: 'SelectClearTrigger',

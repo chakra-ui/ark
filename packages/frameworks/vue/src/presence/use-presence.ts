@@ -2,8 +2,6 @@ import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, ref, watch, type Ref, type VNodeRef } from 'vue'
 import type { Optional } from '../types'
-import { generateEventMap } from '../utils'
-import { emits } from './presence.props'
 
 export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
   /**
@@ -22,10 +20,15 @@ export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: Ref<UsePresenceProps>, emit: CallableFunction) => {
   const wasEverPresent = ref(false)
-  const eventMap = generateEventMap(emits, emit)
   const nodeRef = ref<VNodeRef | null>(null)
 
-  const [state, send] = useMachine(presence.machine({ ...props.value, ...eventMap }), {
+  const [state, send] = useMachine(
+    presence.machine({
+      ...props.value, 
+      onExitComplete: () => {
+        emit('exit-complete')
+      },
+    }), {
     context: props,
   })
   const api = computed(() => presence.connect(state.value, send, normalizeProps))

@@ -63,6 +63,8 @@ export const props = {
 export const emits = declareEmits([
   'escape-key-down',
   'open-change',
+  'focus-outside',
   'interact-outside',
+  'pointer-down-outside',
   'update:modelValue',
 ])

@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useSelectContext } from './select-context'
 
-export type SelectContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface SelectContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const SelectContent = defineComponent({
   name: 'SelectContent',

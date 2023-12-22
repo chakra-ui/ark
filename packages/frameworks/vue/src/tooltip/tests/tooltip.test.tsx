@@ -1,7 +1,8 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Tooltip } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './tooltip.test.vue'
 
 describe('Tooltip', () => {
@@ -9,6 +10,10 @@ describe('Tooltip', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
+    expect(Tooltip[part]).toBeDefined()
   })
 
   it('should show the tooltip on pointerover and close on pointer leave', async () => {

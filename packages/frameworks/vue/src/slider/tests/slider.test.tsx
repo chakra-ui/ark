@@ -1,7 +1,8 @@
 import { sliderAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Slider } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './slider.test.vue'
 
 describe('Slider', () => {
@@ -9,6 +10,10 @@ describe('Slider', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
+    expect(Slider[part]).toBeDefined()
   })
 
   it('should be possible to control it with the arrow keys', async () => {

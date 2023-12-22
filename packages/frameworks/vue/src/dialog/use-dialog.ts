@@ -27,8 +27,14 @@ export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
       onEscapeKeyDown: (details) => {
         emit('escape-key-down', details)
       },
+      onFocusOutside: (details) => {
+        emit('focus-outside', details)
+      },
       onInteractOutside: (details) => {
         emit('interact-outside', details)
+      },
+      onPointerDownOutside: (details) => {
+        emit('pointer-down-outside', details)
       },
     }),
   )

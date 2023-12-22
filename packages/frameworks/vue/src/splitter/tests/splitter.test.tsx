@@ -1,6 +1,7 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Splitter } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './splitter.test.vue'
 
 describe('Splitter', () => {
@@ -8,5 +9,9 @@ describe('Splitter', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(splitterAnatomy))('should export %s', async (part) => {
+    expect(Splitter[part]).toBeDefined()
   })
 })

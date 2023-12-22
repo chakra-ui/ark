@@ -3,7 +3,8 @@ import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
 import { nextTick } from 'vue'
-import { getParts } from '../../setup-test'
+import { PinInput } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './pin-input.test.vue'
 
 type RenderFuncParams = Parameters<typeof render>
@@ -21,6 +22,10 @@ describe('PinInput', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
+    expect(PinInput[part]).toBeDefined()
   })
 
   it('should have the proper aria labels', async () => {

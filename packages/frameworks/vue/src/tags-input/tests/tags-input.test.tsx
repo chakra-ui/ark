@@ -1,7 +1,8 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { TagsInput } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './tags-input.test.vue'
 
 describe('TagsInput', () => {
@@ -9,6 +10,10 @@ describe('TagsInput', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
+    expect(TagsInput[part]).toBeDefined()
   })
 
   it('should allow to add a new item', async () => {
