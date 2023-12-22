@@ -11,7 +11,7 @@ const value = ref(['React'])
 <template>
   <Story title="Accordion">
     <Variant title="Basic">
-      <Accordion.Root>
+      <Accordion.Root lazy-mount unmount-on-exit>
         <Accordion.Item v-for="item in items" :key="item" :value="item">
           <Accordion.ItemTrigger>
             What is {{ item }}?

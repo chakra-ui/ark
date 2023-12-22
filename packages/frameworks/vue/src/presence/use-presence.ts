@@ -54,12 +54,12 @@ export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => 
   return computed(() => ({
     isPresent: api.value.isPresent,
     isUnmounted:
-      (!api.value.isPresent && !wasEverPresent.value && props.lazyMount) ||
-      (props.unmountOnExit && !api.value.isPresent && wasEverPresent.value),
+      (!api.value.isPresent && !wasEverPresent.value && context.value.lazyMount) ||
+      (context.value?.unmountOnExit && !api.value?.isPresent && wasEverPresent.value),
     presenceProps: {
       ref: nodeRef,
       hidden: !api.value.isPresent,
-      'data-state': context.value.present ? 'open' : 'closed',
+      'data-state': context.value?.present ? 'open' : 'closed',
     },
   }))
 }
