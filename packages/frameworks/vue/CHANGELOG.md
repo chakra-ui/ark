@@ -38,6 +38,7 @@ description: All notable changes to this project will be documented in this file
 - Fixed `Combobox.ItemText` type from `button` to `span`
 - Fixed `Toast` render bugs
 - Resolved an issue where `Tooltip` component would not handle open control state
+- Rewritten presence logic in `Accordion`
 
 ## [0.9.0] - 2023-12-14
 
