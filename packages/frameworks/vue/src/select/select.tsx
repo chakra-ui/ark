@@ -1,28 +1,29 @@
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import type { Assign, CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
 import { emits, props } from './select.props'
 import { useSelect, type UseSelectProps } from './use-select'
 
-export type SelectProps = Assign<HTMLArkProps<'div'>, UseSelectProps>
+export interface SelectProps<T extends CollectionItem>
+  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>> {}
 
 export const Select = defineComponent({
   name: 'Select',
   props: {
     ...props,
     items: {
-      type: Array as PropType<UseSelectProps['items']>,
+      type: Array as PropType<UseSelectProps<any>['items']>,
       required: true,
     },
     itemToString: {
-      type: Function as PropType<UseSelectProps['itemToString']>,
+      type: Function as PropType<UseSelectProps<any>['itemToString']>,
     },
     itemToValue: {
-      type: Function as PropType<UseSelectProps['itemToValue']>,
+      type: Function as PropType<UseSelectProps<any>['itemToValue']>,
     },
     isItemDisabled: {
-      type: Function as PropType<UseSelectProps['isItemDisabled']>,
+      type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
     },
   },
   emits,

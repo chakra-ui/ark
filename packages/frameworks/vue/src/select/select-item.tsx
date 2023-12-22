@@ -5,7 +5,7 @@ import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
 import { SelectItemProvider } from './select-item-context'
 
-export type SelectItemProps = Assign<HTMLArkProps<'div'>, ItemProps>
+export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const SelectItem = defineComponent({
   name: 'SelectItem',

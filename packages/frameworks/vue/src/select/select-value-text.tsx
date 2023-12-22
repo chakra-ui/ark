@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectValueTextProps = HTMLArkProps<'span'>
+export interface SelectValueTextProps extends HTMLArkProps<'span'> {}
 
 export const SelectValueText = defineComponent({
   name: 'SelectValueText',

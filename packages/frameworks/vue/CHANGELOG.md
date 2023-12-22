@@ -19,6 +19,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `HoverCard` component stories and tests
 - Revised `Menu` component
 - Revised `Popover` component stories and tests
+- Revised `Select` component stories and types
 - Revised `Splitter` component
 - Revised `Tooltip` component
 - Revised `Tabs` component types
