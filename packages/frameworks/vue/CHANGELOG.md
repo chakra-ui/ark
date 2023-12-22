@@ -32,6 +32,9 @@ description: All notable changes to this project will be documented in this file
 - Added a missing slot with machine api in `Splitter`
 - Added a missing slot with machine api in `Tabs`
 - Added a missing slot with machine api in `Tooltip`
+- Added missing emits in `Dialog`
+- Added missing emits in `Presence`
+- Added missing emits in `Slider`
 - Fixed `Combobox.ItemText` type from `button` to `span`
 - Fixed `Toast` render bugs
 - Resolved an issue where `Tooltip` component would not handle open control state

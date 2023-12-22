@@ -4,8 +4,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { CollectionItem, Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './select.props'
+import { useId } from '../utils'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -31,14 +30,12 @@ export const useSelect = <T extends CollectionItem>(
     }
   })
   const collection = select.collection({ items, itemToString, itemToValue, isItemDisabled })
-  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
     select.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
       collection,
       onValueChange: (details) => {
         emit('value-change', details)
