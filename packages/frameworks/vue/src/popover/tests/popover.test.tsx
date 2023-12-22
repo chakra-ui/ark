@@ -57,16 +57,6 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
   })
 
-  it.skip('should not have aria-controls if lazy mounted', async () => {
-    render(ComponentUnderTest, {
-      props: {
-        lazyMount: true,
-      },
-    })
-
-    expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
-  })
-
   it.skip('should be able to lazy mount', async () => {
     render(ComponentUnderTest, {
       props: {
@@ -81,5 +71,15 @@ describe('Popover', () => {
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it.skip('should not have aria-controls if lazy mounted', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+      },
+    })
+
+    expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
   })
 })

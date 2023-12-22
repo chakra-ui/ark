@@ -51,7 +51,7 @@ describe('Dialog', () => {
   //   expect(dialogPositioner).toBeVisible()
   // })
 
-  it.skip('should be able to lazy mount', async () => {
+  it('should be able to lazy mount', async () => {
     render(ComponentUnderTest, {
       props: {
         lazyMount: true,
@@ -77,7 +77,7 @@ describe('Dialog', () => {
     expect(screen.getByRole('button', { name: 'Open Dialog' })).not.toHaveAttribute('aria-controls')
   })
 
-  it.skip('should lazy mount and unmount on exit', async () => {
+  it('should lazy mount and unmount on exit', async () => {
     render(ComponentUnderTest, {
       props: {
         lazyMount: true,
