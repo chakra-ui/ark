@@ -1,7 +1,8 @@
 import { switchAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Switch } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './switch.test.vue'
 
 describe('Switch', () => {
@@ -9,6 +10,10 @@ describe('Switch', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(switchAnatomy))('should export %s', async (part) => {
+    expect(Switch[part]).toBeDefined()
   })
 
   it('should toggle state when clicked', async () => {

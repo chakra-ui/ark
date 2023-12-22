@@ -1,7 +1,8 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Editable } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ControlledComponentUnderTest from './controlled-editable.test.vue'
 import ComponentUnderTest from './editable.test.vue'
 
@@ -10,6 +11,10 @@ describe('Editable', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
+    expect(Editable[part]).toBeDefined()
   })
 
   it('should render controlled component', async () => {

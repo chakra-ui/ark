@@ -1,7 +1,8 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Dialog } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './dialog.test.vue'
 
 describe('Dialog', () => {
@@ -9,6 +10,10 @@ describe('Dialog', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
+    expect(Dialog[part]).toBeDefined()
   })
 
   it('should show dialog content when opened', async () => {

@@ -1,7 +1,8 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Popover } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ControlledComponentUnderTest from './controlled-popover.test.vue'
 import ComponentUnderTest from './popover.test.vue'
 
@@ -10,6 +11,10 @@ describe('Popover', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
+    expect(Popover[part]).toBeDefined()
   })
 
   it('should open and close the popover', async () => {

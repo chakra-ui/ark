@@ -1,7 +1,8 @@
 import { comboboxAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Combobox } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './combobox.test.vue'
 
 describe('Combobox', () => {
@@ -9,6 +10,10 @@ describe('Combobox', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+    expect(Combobox[part]).toBeDefined()
   })
 
   it('should show options on click', async () => {

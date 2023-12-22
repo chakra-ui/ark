@@ -2,7 +2,8 @@ import { tabsAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { getParts } from '../../setup-test'
+import { Tabs } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './tabs.test.vue'
 
 describe('Tabs', () => {
@@ -10,6 +11,10 @@ describe('Tabs', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
+    expect(Tabs[part]).toBeDefined()
   })
 
   it('should activate tab on click', async () => {
