@@ -225,6 +225,9 @@ importers:
       '@zag-js/presence':
         specifier: 0.31.1
         version: 0.31.1
+      '@zag-js/progress':
+        specifier: 0.31.1
+        version: 0.31.1
       '@zag-js/radio-group':
         specifier: 0.31.1
         version: 0.31.1
@@ -433,6 +436,9 @@ importers:
       '@zag-js/presence':
         specifier: 0.31.1
         version: 0.31.1
+      '@zag-js/progress':
+        specifier: 0.31.1
+        version: 0.31.1
       '@zag-js/radio-group':
         specifier: 0.31.1
         version: 0.31.1
@@ -633,6 +639,9 @@ importers:
         specifier: 0.31.1
         version: 0.31.1
       '@zag-js/presence':
+        specifier: 0.31.1
+        version: 0.31.1
+      '@zag-js/progress':
         specifier: 0.31.1
         version: 0.31.1
       '@zag-js/radio-group':
@@ -19360,7 +19369,7 @@ packages:
       '@types/node': 20.8.9
       esbuild: 0.19.8
       postcss: 8.4.32
-      rollup: 4.9.1
+      rollup: 4.9.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
