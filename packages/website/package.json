@@ -19,7 +19,7 @@
     "@fontsource-variable/fira-code": "5.0.16",
     "@fontsource-variable/inter": "5.0.16",
     "@pandacss/astro": "0.22.1",
-    "@pandacss/dev": "0.22.1",
+    "@pandacss/dev": "0.23.0",
     "@park-ui/panda-preset": "0.27.0",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.18",
