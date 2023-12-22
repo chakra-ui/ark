@@ -6,6 +6,7 @@ import {
   onMounted,
   onUnmounted,
   toRef,
+  type Component,
   type ComputedRef,
   type PropType,
   type VNode,
@@ -22,7 +23,7 @@ export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, '
   render: (api: toast.Api<PropTypes>) => VNode
 }
 
-export type CreateToasterReturn = [any, ComputedRef<toast.GroupApi<PropTypes>>]
+export type CreateToasterReturn = [Component, ComputedRef<toast.GroupApi<PropTypes>>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, ...rest } = props
@@ -32,9 +33,9 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
   const Toaster = defineComponent({
     name: 'Toaster',
     setup(_, { attrs }) {
+      const getRootNode = useEnvironmentContext()
       const [state, send] = useActor(service)
       api = computed(() => toast.group.connect(state.value, send, normalizeProps))
-      const getRootNode = useEnvironmentContext()
 
       onMounted(() => {
         service.setContext({ getRootNode })
@@ -68,6 +69,6 @@ export const ToastProviderFactory = defineComponent({
 
     ToastProvider(api)
 
-    return () => <>{state.value.context.render?.(api.value)}</>
+    return () => state.value.context.render?.(api.value)
   },
 })

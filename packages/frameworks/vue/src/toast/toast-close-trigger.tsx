@@ -2,11 +2,11 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useToastContext } from './toast-context'
 
-export type ToastCloseTriggerProps = HTMLArkProps<'button'>
+export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ToastCloseTrigger = defineComponent({
   name: 'ToastCloseTrigger',
-  setup(_, { slots, attrs }) {
+  setup(_, { attrs, slots }) {
     const api = useToastContext()
 
     return () => (

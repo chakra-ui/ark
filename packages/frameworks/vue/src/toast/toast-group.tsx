@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 
-export type ToastGroupProps = HTMLArkProps<'ol'>
+export interface ToastGroupProps extends HTMLArkProps<'ol'> {}
 
 export const ToastGroup = defineComponent({
   name: 'ToastGroup',
-  setup(_, { attrs }) {
-    return () => <ark.ol {...attrs} />
+  setup(_, { attrs, slots }) {
+    return () => <ark.ol {...attrs}>{slots.default?.()}</ark.ol>
   },
 })
