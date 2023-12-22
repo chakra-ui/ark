@@ -3,7 +3,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 import { useTagsInputItemContext } from './tags-input-item-context'
 
-export type TagsInputItemDeleteTriggerProps = HTMLArkProps<'button'>
+export interface TagsInputItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
 
 export const TagsInputItemDeleteTrigger = defineComponent({
   name: 'TagsInputItemDeleteTrigger',

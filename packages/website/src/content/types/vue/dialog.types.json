@@ -27,7 +27,7 @@
       "description": "Element to receive focus when the dialog is closed"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -46,15 +46,27 @@
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
+    "modelValue": { "type": "boolean", "isRequired": false },
     "onEscapeKeyDown": {
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
@@ -77,6 +89,11 @@
       "description": "Function called when the pointer is pressed down outside the component"
     },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "preventScroll": {
       "type": "boolean",
       "isRequired": false,
@@ -97,6 +114,12 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },

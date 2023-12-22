@@ -1,43 +1,63 @@
 import * as menu from '@zag-js/menu'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
-import { computed, reactive, type ComputedRef } from 'vue'
+import { computed, watch, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseCarouselContext = Optional<menu.Context, 'id'>
-
-export type UseMenuReturn = {
-  api: ComputedRef<menu.Api<PropTypes>>
-  menuMachine: ReturnType<typeof menu.machine>
+export interface UseMenuProps extends Optional<menu.Context, 'id'> {
+  modelValue?: menu.Context['value']
 }
 
-export const useMenu = (emit: CallableFunction, context: UseCarouselContext): UseMenuReturn => {
-  const reactiveContext = reactive(context)
+export interface UseMenuReturn {
+  api: ComputedRef<menu.Api<PropTypes>>
+  machine: ReturnType<typeof menu.machine>
+}
 
+export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuReturn => {
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
   const getRootNode = useEnvironmentContext()
 
-  const [state, send, menuMachine] = useMachine(
+  const [state, send, machine] = useMachine(
     menu.machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...context.value,
+      id: context.value.id || useId().value,
       getRootNode,
-      onOpenChange() {
-        emit('open-change')
+      onOpenChange: (details) => {
+        emit('open-change', details)
       },
-      onSelect() {
-        emit('select')
+      onSelect: (details) => {
+        emit('select', details)
       },
-      onValueChange() {
-        emit('value-change')
-        emit('update:modelValue')
+      onValueChange: (details) => {
+        emit('value-change', details)
+        emit('update:modelValue', details.value)
       },
     }),
   )
+
+  watch(
+    () => context.value.open,
+    (value) => {
+      if (value === undefined) return
+      if (value) {
+        api.value.open()
+      } else {
+        api.value.close()
+      }
+    },
+  )
+
   const api = computed(() => menu.connect(state.value, send, normalizeProps))
 
   return {
     api,
-    menuMachine,
+    machine,
   }
 }

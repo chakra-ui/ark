@@ -16,6 +16,7 @@ const isOpen = ref(false)
         </Tooltip.Positioner>
       </Tooltip.Root>
     </Variant>
+
     <Variant title="Controlled">
       <button @click="isOpen = !isOpen">Toggle</button>
       <Tooltip.Root :open="isOpen">
@@ -25,6 +26,7 @@ const isOpen = ref(false)
         </Tooltip.Positioner>
       </Tooltip.Root>
     </Variant>
+
     <Variant title="RenderFn">
       <Tooltip.Root v-slot="{ isOpen }">
         <Tooltip.Trigger>Hover Me, isOpen {{ isOpen.toString() }}</Tooltip.Trigger>
@@ -33,6 +35,7 @@ const isOpen = ref(false)
         </Tooltip.Positioner>
       </Tooltip.Root>
     </Variant>
+
     <Variant title="Arrow">
       <Tooltip.Root>
         <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
@@ -46,6 +49,7 @@ const isOpen = ref(false)
         </Tooltip.Positioner>
       </Tooltip.Root>
     </Variant>
+
     <Variant title="Timings">
       <Tooltip.Root :closeDelay="0" :openDelay="0">
         <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
@@ -54,6 +58,7 @@ const isOpen = ref(false)
         </Tooltip.Positioner>
       </Tooltip.Root>
     </Variant>
+
     <Variant title="Positioning">
       <Tooltip.Root
         :positioning="{

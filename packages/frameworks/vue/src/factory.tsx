@@ -65,7 +65,7 @@ export function withAsChild(__component: RenderFunctionArgs) {
     },
     setup(props, { attrs, slots }) {
       const instance = getCurrentInstance()
-      if (!props.asChild) return () => <__component {...attrs}>{slots.default?.()}</__component>
+      if (!props.asChild) return () => h(__component, { ...attrs }, slots.default?.())
       else {
         return () => {
           let children = slots.default?.()

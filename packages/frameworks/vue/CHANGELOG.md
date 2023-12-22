@@ -6,16 +6,39 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `DatePicker` component
+- Added `modelValue` for `Dialog` component
+- Added `modelValue` for `HoverCard` component
+- Added `modelValue` for `Popover` component
+
 ### Changed
 
+- Revised `Dialog` component stories and tests
+- Revised `HoverCard` component stories and tests
+- Revised `Menu` component
+- Revised `Popover` component stories and tests
+- Revised `Select` component stories and types
 - Revised `Splitter` component
 - Revised `Tooltip` component
+- Revised `Tabs` component types
+- Revised `TagsInput` component
+- Revised `Toast` component
+- Revised `ToggleGroup` component
 
 ### Fixed
 
 - Added a missing slot with machine api in `Splitter`
-- Resolved an issue where `Tooltip` component would not handle open control state
+- Added a missing slot with machine api in `Tabs`
 - Added a missing slot with machine api in `Tooltip`
+- Added missing emits in `Dialog`
+- Added missing emits in `Presence`
+- Added missing emits in `Slider`
+- Fixed `Combobox.ItemText` type from `button` to `span`
+- Fixed `Toast` render bugs
+- Resolved an issue where `Tooltip` component would not handle open control state
+- Rewritten presence logic in `Accordion`
 
 ## [0.9.0] - 2023-12-14
 

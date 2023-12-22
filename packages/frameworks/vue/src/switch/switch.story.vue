@@ -16,6 +16,7 @@ const checked = ref(false)
         <Switch.Label>Label</Switch.Label>
       </Switch.Root>
     </Variant>
+
     <Variant title="InitialValue">
       <Switch.Root :model-value="true">
         <Switch.Control>
@@ -24,6 +25,7 @@ const checked = ref(false)
         <Switch.Label>Label</Switch.Label>
       </Switch.Root>
     </Variant>
+
     <Variant title="Controlled">
       <Switch.Root v-model="checked">
         <Switch.Control>
@@ -32,6 +34,7 @@ const checked = ref(false)
         <Switch.Label>Label</Switch.Label>
       </Switch.Root>
     </Variant>
+
     <Variant title="Disabled">
       <Switch.Root disabled>
         <Switch.Control>
@@ -40,6 +43,7 @@ const checked = ref(false)
         <Switch.Label>Label</Switch.Label>
       </Switch.Root>
     </Variant>
+
     <Variant title="RenderProp">
       <Switch.Root #default="api">
         <Switch.Control>

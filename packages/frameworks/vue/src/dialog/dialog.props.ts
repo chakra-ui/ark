@@ -18,7 +18,7 @@ export const props = {
     type: String as PropType<Context['dir']>,
   },
   finalFocusEl: {
-    type: Object as PropType<Context['finalFocusEl']>,
+    type: [Function, Object] as PropType<Context['finalFocusEl']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -30,7 +30,7 @@ export const props = {
     type: Object as PropType<Context['ids']>,
   },
   initialFocusEl: {
-    type: Object as PropType<Context['initialFocusEl']>,
+    type: [Function, Object] as PropType<Context['initialFocusEl']>,
   },
   modal: {
     type: Boolean as PropType<Context['modal']>,
@@ -55,5 +55,16 @@ export const props = {
     type: Boolean as PropType<Context['trapFocus']>,
     default: undefined,
   },
+  modelValue: {
+    type: Boolean as PropType<Context['open']>,
+    default: undefined,
+  },
 }
-export const emits = declareEmits(['escape-key-down', 'open-change'])
+export const emits = declareEmits([
+  'escape-key-down',
+  'open-change',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
+  'update:modelValue',
+])

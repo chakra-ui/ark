@@ -1,12 +1,12 @@
 import type { ItemGroupProps } from '@zag-js/combobox'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxItemGroupProps = HTMLArkProps<'div'> & ItemGroupProps
+export interface ComboboxItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
-export const ComboboxItemGroup: ComponentWithProps<ComboboxItemGroupProps> = defineComponent({
+export const ComboboxItemGroup = defineComponent({
   name: 'ComboboxItemGroup',
   props: {
     id: {

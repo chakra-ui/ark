@@ -1,18 +1,18 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDialogContext } from './dialog-context'
 
-export type DialogTriggerProps = HTMLArkProps<'button'>
+export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DialogTrigger = defineComponent({
   name: 'DialogTrigger',
   setup(_, { slots, attrs }) {
     const api = useDialogContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'DialogTrigger')
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

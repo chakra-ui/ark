@@ -24,6 +24,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="HalfRatings">
       <RatingGroup.Root :count="5" :model-value="3" allowHalf>
         <RatingGroup.Label>Label</RatingGroup.Label>
@@ -41,6 +42,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="InitialValue">
       <RatingGroup.Root :count="5" :model-value="2" readOnly>
         <RatingGroup.Label>Label</RatingGroup.Label>
@@ -57,6 +59,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="Controlled">
       <RatingGroup.Root :count="5" v-model="value" allowHalf>
         <RatingGroup.Label>Label</RatingGroup.Label>
@@ -74,6 +77,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="Disabled">
       <RatingGroup.Root :count="5" :model-value="3" disabled>
         <RatingGroup.Label>Label</RatingGroup.Label>
@@ -90,6 +94,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="ReadOnly">
       <RatingGroup.Root :count="5" :model-value="3" readOnly>
         <RatingGroup.Label>Label</RatingGroup.Label>
@@ -106,6 +111,7 @@ const value = ref(0)
         </RatingGroup.Control>
       </RatingGroup.Root>
     </Variant>
+
     <Variant title="FormUsage">
       <RatingGroup.Root name="my-rating" :count="5" :model-value="3">
         <RatingGroup.Label>Label</RatingGroup.Label>

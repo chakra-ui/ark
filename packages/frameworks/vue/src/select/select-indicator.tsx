@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectIndicatorProps = HTMLArkProps<'div'>
+export interface SelectIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SelectIndicator = defineComponent({
   name: 'SelectIndicator',

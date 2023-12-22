@@ -1,12 +1,12 @@
 import { type ContentProps } from '@zag-js/tabs'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
-export type TabContentProps = HTMLArkProps<'div'> & ContentProps
+export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
-export const TabContent: ComponentWithProps<TabContentProps> = defineComponent({
+export const TabContent = defineComponent({
   name: 'TabContent',
   props: {
     value: {

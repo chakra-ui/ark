@@ -1,18 +1,18 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverTriggerProps = HTMLArkProps<'button'>
+export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PopoverTrigger = defineComponent({
   name: 'PopoverTrigger',
   setup(_, { slots, attrs }) {
     const api = usePopoverContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'PopoverTrigger')
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.triggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
 })

@@ -8,6 +8,7 @@ const size = ref([
   { id: 'b', size: 50 },
 ])
 </script>
+
 <template>
   <Story title="Splitter">
     <Variant title="Basic">
@@ -17,6 +18,7 @@ const size = ref([
         <Splitter.Panel id="b">B</Splitter.Panel>
       </Splitter.Root>
     </Variant>
+
     <Variant title="RenderProp">
       <Splitter.Root :size="size" v-slot="api">
         <Splitter.Panel id="a">
@@ -28,6 +30,7 @@ const size = ref([
         </Splitter.Panel>
       </Splitter.Root>
     </Variant>
+
     <Variant title="Events">
       <Splitter.Root
         :size="size"
@@ -39,6 +42,7 @@ const size = ref([
         <Splitter.Panel id="b">B</Splitter.Panel>
       </Splitter.Root>
     </Variant>
+
     <Variant title="Vertical">
       <Splitter.Root :size="size" orientation="vertical">
         <Splitter.Panel id="a">A</Splitter.Panel>

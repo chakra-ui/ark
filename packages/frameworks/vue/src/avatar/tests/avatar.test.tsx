@@ -1,6 +1,7 @@
 import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Avatar } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './avatar.test.vue'
 
 describe('Avatar', () => {
@@ -10,7 +11,7 @@ describe('Avatar', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it('should render', async () => {
-    render(ComponentUnderTest)
+  it.each(getExports(avatarAnatomy))('should export %s', async (part) => {
+    expect(Avatar[part]).toBeDefined()
   })
 })

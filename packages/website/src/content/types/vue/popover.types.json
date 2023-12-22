@@ -22,7 +22,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,18 +41,13 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
-    "isOpen": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Control the open state of the popover."
-    },
     "modal": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
+    "modelValue": { "type": "boolean", "isRequired": false },
     "onEscapeKeyDown": {
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,

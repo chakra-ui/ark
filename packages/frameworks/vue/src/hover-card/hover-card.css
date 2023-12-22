@@ -13,3 +13,33 @@
   --arrow-background: white;
   --arrow-size: 8px;
 }
+
+[data-scope='hover-card'][data-part='content'][data-state='open'] {
+  animation: fadeIn 0.25s ease-out;
+}
+
+[data-scope='hover-card'][data-part='content'][data-state='closed'] {
+  animation: fadeOut 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

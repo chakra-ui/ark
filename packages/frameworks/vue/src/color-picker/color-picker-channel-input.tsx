@@ -18,7 +18,7 @@ export const ColorPickerChannelInput = defineComponent({
       type: String as PropType<ChannelInputProps['orientation']>,
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { slots, attrs }) {
     const api = useColorPickerContext()
 
     const channelProps = computed(() => ({
@@ -26,6 +26,10 @@ export const ColorPickerChannelInput = defineComponent({
       orientation: props.orientation,
     }))
 
-    return () => <ark.input {...api.value.getChannelInputProps(channelProps.value)} {...attrs} />
+    return () => (
+      <ark.input {...api.value.getChannelInputProps(channelProps.value)} {...attrs}>
+        {slots.default?.()}
+      </ark.input>
+    )
   },
 })

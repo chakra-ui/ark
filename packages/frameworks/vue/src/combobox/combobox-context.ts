@@ -1,6 +1,8 @@
 import { createContext } from '../context'
+import type { CollectionItem } from '../types'
 import { type UseComboboxReturn } from './use-combobox'
 
-export type ComboboxContext = UseComboboxReturn
+export interface ComboboxContext<T extends CollectionItem> extends UseComboboxReturn<T> {}
+
 export const [ComboboxProvider, useComboboxContext] =
-  createContext<ComboboxContext>('ComboboxContext')
+  createContext<ComboboxContext<any>>('ComboboxContext')

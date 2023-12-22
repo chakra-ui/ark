@@ -43,4 +43,11 @@ export const props = {
     type: Object as PropType<Context['positioning']>,
   },
 }
-export const emits = declareEmits(['open-change'])
+export const emits = declareEmits([
+  'escape-key-down',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
+  'open-change',
+  'update:modelValue',
+])

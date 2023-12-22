@@ -1,60 +1,44 @@
-import { connect, machine } from '@zag-js/popover'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import * as popover from '@zag-js/popover'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { PopoverContext } from './popover'
 
-export const usePopover = <T extends ExtractPropTypes<PopoverContext>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
-
-  const getRootNode = useEnvironmentContext()
-
-  const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
-      getRootNode,
-      open: reactiveContext.isOpen,
-      onEscapeKeyDown(event) {
-        emit('escape-key-down', event)
-      },
-      onFocusOutside(event) {
-        emit('focus-outside', event)
-      },
-      onInteractOutside(event) {
-        emit('interact-outside', event)
-      },
-      onOpenChange() {
-        emit('open-change')
-      },
-      onPointerDownOutside(event) {
-        emit('pointer-down-outside', event)
-      },
-    }),
-  )
-
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.isOpen,
-    (curr, prev) => {
-      if (curr == null || curr === prev) return
-
-      if (curr && !state.value.matches('open')) {
-        api.value.open()
-        return
-      } else if (!curr && !state.value.matches('closed')) {
-        api.value.close()
-        return
-      }
-    },
-  )
-
-  return api
+export interface UsePopoverProps extends Optional<popover.Context, 'id'> {
+  modelValue?: popover.Context['open']
 }
 
-export type UsePopoverReturn = ReturnType<typeof connect>
+export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
+
+export const usePopover = (props: UsePopoverProps, emit: CallableFunction) => {
+  const getRootNode = useEnvironmentContext()
+  const context = ref(props)
+
+  const [state, send] = useMachine(
+    popover.machine({
+      ...context.value,
+      id: context.value.id || useId().value,
+      getRootNode,
+      onOpenChange: (details) => {
+        emit('open-change', details)
+        emit('update:modelValue', details.open)
+      },
+      onEscapeKeyDown: (details) => {
+        emit('escape-key-down', details)
+      },
+      onFocusOutside: (details) => {
+        emit('focus-outside', details)
+      },
+      onInteractOutside: (details) => {
+        emit('interact-outside', details)
+      },
+      onPointerDownOutside: (details) => {
+        emit('pointer-down-outside', details)
+      },
+    }),
+    { context },
+  )
+
+  return computed(() => popover.connect(state.value, send, normalizeProps))
+}

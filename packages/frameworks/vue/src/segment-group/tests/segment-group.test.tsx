@@ -1,7 +1,8 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { SegmentGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './segment-group.test.vue'
 
 describe('Segment Group', () => {
@@ -9,6 +10,10 @@ describe('Segment Group', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
+    expect(SegmentGroup[part]).toBeDefined()
   })
 
   it('should invoke onValueChange if another value has selected', async () => {

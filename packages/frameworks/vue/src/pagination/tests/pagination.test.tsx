@@ -1,7 +1,8 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Pagination } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './pagination.test.vue'
 
 describe('Pagination', () => {
@@ -9,6 +10,10 @@ describe('Pagination', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
+    expect(Pagination[part]).toBeDefined()
   })
 
   it('should update page when item is clicked', async () => {

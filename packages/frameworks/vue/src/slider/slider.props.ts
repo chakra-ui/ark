@@ -62,8 +62,8 @@ export const props = {
   },
 }
 export const emits = declareEmits([
-  'value-change',
+  'focus-change',
   'value-change-end',
-  'value-change-start',
+  'value-change',
   'update:modelValue',
 ])

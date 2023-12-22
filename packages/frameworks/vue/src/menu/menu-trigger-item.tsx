@@ -1,17 +1,16 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useMenuTriggerItemContext } from './menu-context'
 
-export type MenuTriggerItemProps = HTMLArkProps<'div'>
+export interface MenuTriggerItemProps extends HTMLArkProps<'div'> {}
 
-export const MenuTriggerItem: ComponentWithProps<MenuTriggerItemProps> = defineComponent({
+export const MenuTriggerItem = defineComponent({
   name: 'MenuTriggerItem',
   setup(_, { slots, attrs }) {
-    const getTriggerItemProps = useMenuTriggerItemContext()
+    const triggerItemProps = useMenuTriggerItemContext()
 
     return () => (
-      <ark.div {...getTriggerItemProps()} {...attrs}>
+      <ark.div {...triggerItemProps.value} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

@@ -4,7 +4,7 @@ import { Presence, type PresenceProps } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface HoverCardContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const HoverCardContent = defineComponent({
   name: 'HoverCardContent',

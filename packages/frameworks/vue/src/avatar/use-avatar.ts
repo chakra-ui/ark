@@ -17,8 +17,8 @@ export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAva
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onLoadingStatusChange: (loadingStatus) => {
-        emit('loading-status-change', loadingStatus)
+      onLoadingStatusChange: (details) => {
+        emit('loading-status-change', details)
       },
     }),
     { context },

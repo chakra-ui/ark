@@ -28,5 +28,9 @@ export const props = {
   positioning: {
     type: Object as PropType<Context['positioning']>,
   },
+  modelValue: {
+    type: Boolean as PropType<Context['open']>,
+    default: undefined,
+  },
 }
-export const emits = declareEmits(['open-change'])
+export const emits = declareEmits(['open-change', 'update:modelValue'])

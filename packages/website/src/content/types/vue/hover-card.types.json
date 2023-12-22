@@ -12,7 +12,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -26,6 +26,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
     },
+    "modelValue": { "type": "boolean", "isRequired": false },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,

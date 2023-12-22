@@ -1,7 +1,7 @@
 {
   "Root": {
     "items": {
-      "type": "any[] | readonly any[]",
+      "type": "T[] | readonly T[]",
       "isRequired": true,
       "description": "The options of the select"
     },
@@ -27,7 +27,7 @@
       "description": "The associate form of the underlying select."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -52,17 +52,17 @@
       "description": "Whether the select is invalid"
     },
     "isItemDisabled": {
-      "type": "(item: any) => boolean",
+      "type": "(item: T) => boolean",
       "isRequired": false,
       "description": "Whether the item is disabled"
     },
     "itemToString": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The label of the item"
     },
     "itemToValue": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The value of the item"
     },
@@ -88,7 +88,7 @@
       "description": "Function called when the focus is moved outside the component"
     },
     "onHighlightChange": {
-      "type": "(details: HighlightChangeDetails<any>) => void",
+      "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
       "description": "The callback fired when the highlighted item changes."
     },
@@ -108,7 +108,7 @@
       "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
-      "type": "(details: ValueChangeDetails<any>) => void",
+      "type": "(details: ValueChangeDetails<T>) => void",
       "isRequired": false,
       "description": "The callback fired when the selected item changes."
     },
@@ -169,16 +169,10 @@
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroup": {
-    "id": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
+  "ItemGroup": { "id": { "type": "string", "isRequired": true } },
   "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  }
+  "ItemGroupLabel": { "htmlFor": { "type": "string", "isRequired": true } }
 }

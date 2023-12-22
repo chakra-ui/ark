@@ -29,5 +29,6 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
   }
 
   const [state, send] = useMachine(hoverCard.machine(context), { context })
+
   return hoverCard.connect(state, send, normalizeProps)
 }
