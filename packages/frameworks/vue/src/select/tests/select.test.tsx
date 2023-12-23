@@ -99,22 +99,22 @@ describe('Select', () => {
     await waitFor(() => expect(screen.queryByText('React', { ignore: 'option' })).not.toBeVisible())
   })
 
-  it.skip('should be able to lazy mount its items', async () => {
+  it('should be able to lazy mount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
   })
 
-  it.skip('should be able to lazy mount and unmount its items', async () => {
+  it('should be able to lazy mount and unmount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
   })
 })

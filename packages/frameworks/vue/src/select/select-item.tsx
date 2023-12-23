@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/select'
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSelectContext } from './select-context'
@@ -19,11 +19,9 @@ export const SelectItem = defineComponent({
     const api = useSelectContext()
     SelectItemProvider(props)
 
-    const itemState = computed(() => api.value.getItemState(props))
-
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(itemState)}
+        {slots.default?.(api.value.getItemState(props))}
       </ark.div>
     )
   },
