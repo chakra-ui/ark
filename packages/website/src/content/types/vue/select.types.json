@@ -141,7 +141,6 @@
   "Item": { "item": { "type": "any", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -170,7 +169,14 @@
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": { "id": { "type": "string", "isRequired": true } },
-  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ValueText": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "placeholder": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Text to display when no value is selected."
+    }
+  },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
