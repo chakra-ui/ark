@@ -6,15 +6,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
 
-export const SliderThumb = defineComponent({
-  name: 'SliderThumb',
-  props: {
-    index: {
-      type: Number as PropType<ThumbProps['index']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SliderThumb = defineComponent<SliderThumbProps>(
+  (props, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -26,4 +19,13 @@ export const SliderThumb = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'SliderThumb',
+    props: {
+      index: {
+        type: Number as PropType<ThumbProps['index']>,
+        required: true,
+      },
+    },
+  },
+)
