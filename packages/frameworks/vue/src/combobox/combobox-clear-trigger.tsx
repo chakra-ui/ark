@@ -4,8 +4,8 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ComboboxClearTrigger = defineComponent({
-  setup(_, { slots, attrs }) {
+export const ComboboxClearTrigger = defineComponent<ComboboxClearTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -14,4 +14,5 @@ export const ComboboxClearTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {},
+)
