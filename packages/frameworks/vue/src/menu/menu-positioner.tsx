@@ -4,9 +4,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
-export const MenuPositioner = defineComponent({
-  name: 'MenuPositioner',
-  setup(_, { slots, attrs }) {
+export const MenuPositioner = defineComponent<MenuPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const MenuPositioner = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuPositioner',
+  },
+)

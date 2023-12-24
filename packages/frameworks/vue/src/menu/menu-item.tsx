@@ -6,27 +6,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const MenuItem = defineComponent({
-  name: 'MenuItem',
-  props: {
-    id: {
-      type: String as PropType<MenuItemProps['id']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<MenuItemProps['disabled']>,
-      default: undefined,
-    },
-    valueText: {
-      type: String as PropType<MenuItemProps['valueText']>,
-      default: undefined,
-    },
-    closeOnSelect: {
-      type: Boolean as PropType<MenuItemProps['closeOnSelect']>,
-      default: undefined,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const MenuItem = defineComponent<MenuItemProps>(
+  (props, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -35,4 +16,25 @@ export const MenuItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuItem',
+    props: {
+      id: {
+        type: String as PropType<MenuItemProps['id']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<MenuItemProps['disabled']>,
+        default: undefined,
+      },
+      valueText: {
+        type: String as PropType<MenuItemProps['valueText']>,
+        default: undefined,
+      },
+      closeOnSelect: {
+        type: Boolean as PropType<MenuItemProps['closeOnSelect']>,
+        default: undefined,
+      },
+    },
+  },
+)
