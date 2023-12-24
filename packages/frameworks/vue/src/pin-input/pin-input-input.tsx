@@ -5,17 +5,19 @@ import { usePinInputContext } from './pin-input-context'
 
 export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, { index: number }> {}
 
-export const PinInputInput = defineComponent({
-  name: 'PinInputInput',
-  props: {
-    index: {
-      type: Number as PropType<PinInputInputProps['index']>,
-      required: true,
-    },
-  },
-  setup(props, { attrs }) {
+export const PinInputInput = defineComponent<PinInputInputProps>(
+  (props, { attrs }) => {
     const api = usePinInputContext()
 
     return () => <ark.input {...api.value.getInputProps({ index: props.index })} {...attrs} />
   },
-})
+  {
+    name: 'PinInputInput',
+    props: {
+      index: {
+        type: Number as PropType<PinInputInputProps['index']>,
+        required: true,
+      },
+    },
+  },
+)

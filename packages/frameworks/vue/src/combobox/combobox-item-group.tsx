@@ -6,15 +6,8 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
-export const ComboboxItemGroup = defineComponent({
-  name: 'ComboboxItemGroup',
-  props: {
-    id: {
-      type: String as PropType<ComboboxItemGroupProps['id']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ComboboxItemGroup = defineComponent<ComboboxItemGroupProps>(
+  (props, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -23,4 +16,13 @@ export const ComboboxItemGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ComboboxItemGroup',
+    props: {
+      id: {
+        type: String as PropType<ComboboxItemGroupProps['id']>,
+        required: true,
+      },
+    },
+  },
+)

@@ -5,9 +5,8 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const AccordionItemIndicator = defineComponent({
-  name: 'AccordionItemIndicator',
-  setup(_, { attrs, slots }) {
+export const AccordionItemIndicator = defineComponent<AccordionItemIndicatorProps>(
+  (_, { attrs, slots }) => {
     const api = useAccordionContext()
     const item = useAccordionItemContext()
 
@@ -17,4 +16,7 @@ export const AccordionItemIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'AccordionItemIndicator',
+  },
+)

@@ -6,15 +6,8 @@ import { FileUploadItemProvider, type FileUploadItemContext } from './file-uploa
 
 export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, FileUploadItemContext> {}
 
-export const FileUploadItem = defineComponent({
-  name: 'FileUploadItem',
-  props: {
-    file: {
-      type: Object as PropType<FileUploadItemContext['file']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const FileUploadItem = defineComponent<FileUploadItemProps>(
+  (props, { slots, attrs }) => {
     const api = useFileUploadContext()
     FileUploadItemProvider(props)
 
@@ -24,4 +17,13 @@ export const FileUploadItem = defineComponent({
       </ark.li>
     )
   },
-})
+  {
+    name: 'FileUploadItem',
+    props: {
+      file: {
+        type: Object as PropType<FileUploadItemContext['file']>,
+        required: true,
+      },
+    },
+  },
+)

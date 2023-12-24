@@ -6,11 +6,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogBackdropProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const DialogBackdrop = defineComponent({
-  name: 'DialogBackdrop',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const DialogBackdrop = defineComponent<DialogBackdropProps>(
+  (props, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const DialogBackdrop = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'DialogBackdrop',
+    props,
+    emits,
+  },
+)

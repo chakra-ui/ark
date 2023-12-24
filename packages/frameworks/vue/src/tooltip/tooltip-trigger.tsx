@@ -4,9 +4,8 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipTriggerProps extends HTMLArkProps<'button'> {}
 
-export const TooltipTrigger = defineComponent({
-  name: 'TooltipTrigger',
-  setup(_, { slots, attrs }) {
+export const TooltipTrigger = defineComponent<TooltipTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useTooltipContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TooltipTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'TooltipTrigger',
+  },
+)

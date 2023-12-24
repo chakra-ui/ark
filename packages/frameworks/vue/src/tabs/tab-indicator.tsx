@@ -4,9 +4,8 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const TabIndicator = defineComponent({
-  name: 'TabIndicator',
-  setup(_, { slots, attrs }) {
+export const TabIndicator = defineComponent<TabIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useTabsContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TabIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TabIndicator',
+  },
+)

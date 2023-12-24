@@ -5,9 +5,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerAreaBackgroundProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerAreaBackground = defineComponent({
-  name: 'ColorPickerAreaBackground',
-  setup(_, { slots, attrs }) {
+export const ColorPickerAreaBackground = defineComponent<ColorPickerAreaBackgroundProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
     const areaProps = useColorPickerAreaContext()
 
@@ -17,4 +16,7 @@ export const ColorPickerAreaBackground = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerAreaBackground',
+  },
+)

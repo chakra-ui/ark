@@ -4,9 +4,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
 
-export const SliderValueText = defineComponent({
-  name: 'SliderValueText',
-  setup(_, { slots, attrs }) {
+export const SliderValueText = defineComponent<SliderValueTextProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SliderValueText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SliderValueText',
+  },
+)

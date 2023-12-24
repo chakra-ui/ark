@@ -4,9 +4,8 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const TooltipArrowTip = defineComponent({
-  name: 'TooltipArrowTip',
-  setup(_, { slots, attrs }) {
+export const TooltipArrowTip = defineComponent<TooltipArrowTipProps>(
+  (_, { slots, attrs }) => {
     const api = useTooltipContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TooltipArrowTip = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TooltipArrowTip',
+  },
+)

@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerTrigger = defineComponent({
-  name: 'DatePickerTrigger',
-  setup(_, { attrs, slots }) {
+export const DatePickerTrigger = defineComponent<DatePickerTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DatePickerTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DatePickerTrigger',
+  },
+)

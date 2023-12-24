@@ -4,9 +4,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderLabelProps extends HTMLArkProps<'label'> {}
 
-export const SliderLabel = defineComponent({
-  name: 'SliderLabel',
-  setup(_, { slots, attrs }) {
+export const SliderLabel = defineComponent<SliderLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SliderLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'SliderLabel',
+  },
+)

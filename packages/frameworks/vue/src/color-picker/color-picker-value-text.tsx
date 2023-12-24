@@ -5,14 +5,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerValueTextProps extends HTMLArkProps<'span'> {}
 
-export const ColorPickerValueText = defineComponent({
-  name: 'ColorPickerValueText',
-  props: {
-    placeholder: {
-      type: String,
-    },
-  },
-  setup(_, { slots, attrs }) {
+export const ColorPickerValueText = defineComponent<ColorPickerValueTextProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -21,4 +15,12 @@ export const ColorPickerValueText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'ColorPickerValueText',
+    props: {
+      placeholder: {
+        type: String,
+      },
+    },
+  },
+)

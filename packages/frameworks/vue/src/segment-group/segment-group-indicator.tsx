@@ -5,9 +5,8 @@ import { useSegmentGroupContext } from './segment-group-context'
 
 export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const SegmentGroupIndicator = defineComponent({
-  name: 'SegmentGroupIndicator',
-  setup(_, { slots, attrs }) {
+export const SegmentGroupIndicator = defineComponent<SegmentGroupIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useSegmentGroupContext()
 
     return () => (
@@ -20,4 +19,7 @@ export const SegmentGroupIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SegmentGroupIndicator',
+  },
+)

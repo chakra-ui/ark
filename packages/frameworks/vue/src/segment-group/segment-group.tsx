@@ -8,11 +8,8 @@ import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 
 export interface SegmentGroupProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
-export const SegmentGroup = defineComponent({
-  name: 'SegmentGroup',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const SegmentGroup = defineComponent<SegmentGroupProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useSegmentGroup(props, emit)
     SegmentGroupProvider(api)
 
@@ -22,4 +19,9 @@ export const SegmentGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SegmentGroup',
+    props,
+    emits,
+  },
+)

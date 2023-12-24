@@ -10,25 +10,8 @@ export interface AccordionProps
   extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
     UsePresenceProps {}
 
-export const Accordion = defineComponent({
-  name: 'Accordion',
-  props: {
-    ...props,
-    present: {
-      type: Boolean as PropType<UsePresenceProps['present']>,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-      default: false,
-    },
-    unmountOnExit: {
-      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-      default: false,
-    },
-  },
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Accordion = defineComponent<AccordionProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useAccordion(props, emit)
 
     const presenceProps = computed(() => ({
@@ -45,4 +28,23 @@ export const Accordion = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Accordion',
+    props: {
+      ...props,
+      present: {
+        type: Boolean as PropType<UsePresenceProps['present']>,
+        default: undefined,
+      },
+      lazyMount: {
+        type: Boolean as PropType<UsePresenceProps['lazyMount']>,
+        default: false,
+      },
+      unmountOnExit: {
+        type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
+        default: false,
+      },
+    },
+    emits,
+  },
+)

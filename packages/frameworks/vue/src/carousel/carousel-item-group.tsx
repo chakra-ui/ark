@@ -4,9 +4,8 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 
-export const CarouselItemGroup = defineComponent({
-  name: 'CarouselItemGroup',
-  setup(_, { slots, attrs }) {
+export const CarouselItemGroup = defineComponent<CarouselItemGroupProps>(
+  (_, { slots, attrs }) => {
     const api = useCarouselContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const CarouselItemGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'CarouselItemGroup',
+  },
+)

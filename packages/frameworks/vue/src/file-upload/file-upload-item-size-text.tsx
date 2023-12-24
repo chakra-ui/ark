@@ -5,9 +5,8 @@ import { useFileUploadItemContext } from './file-upload-item-context'
 
 export interface FileUploadItemSizeTextProps extends HTMLArkProps<'div'> {}
 
-export const FileUploadItemSizeText = defineComponent({
-  name: 'FileUploadItemSizeText',
-  setup(_, { slots, attrs }) {
+export const FileUploadItemSizeText = defineComponent<FileUploadItemSizeTextProps>(
+  (_, { slots, attrs }) => {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
 
@@ -17,4 +16,7 @@ export const FileUploadItemSizeText = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'FileUploadItemSizeText',
+  },
+)

@@ -11,11 +11,8 @@ import { useMenu, type UseMenuProps } from './use-menu'
 
 export interface MenuProps extends UseMenuProps {}
 
-export const Menu = defineComponent({
-  name: 'Menu',
-  props,
-  emits,
-  setup(props, { slots, emit }) {
+export const Menu = defineComponent<MenuProps>(
+  (props, { slots, emit }) => {
     const { api, machine } = useMenu(props, emit)
 
     const parentApi = useMenuContext()
@@ -37,4 +34,9 @@ export const Menu = defineComponent({
       return slots.default?.(api.value)
     }
   },
-})
+  {
+    name: 'Menu',
+    props,
+    emits,
+  },
+)

@@ -6,15 +6,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, GroupProps> {}
 
-export const MenuItemGroup = defineComponent({
-  name: 'MenuItemGroup',
-  props: {
-    id: {
-      type: String as PropType<MenuItemGroupProps['id']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const MenuItemGroup = defineComponent<MenuItemGroupProps>(
+  (props, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -23,4 +16,13 @@ export const MenuItemGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuItemGroup',
+    props: {
+      id: {
+        type: String as PropType<MenuItemGroupProps['id']>,
+        required: true,
+      },
+    },
+  },
+)

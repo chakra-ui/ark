@@ -4,9 +4,8 @@ import { useRadioGroupContext } from './radio-group-context'
 
 export interface RadioGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const RadioGroupIndicator = defineComponent({
-  name: 'RadioGroupIndicator',
-  setup(_, { slots, attrs }) {
+export const RadioGroupIndicator = defineComponent<RadioGroupIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useRadioGroupContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const RadioGroupIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'RadioGroupIndicator',
+  },
+)

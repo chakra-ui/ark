@@ -7,11 +7,8 @@ import { useFileUpload, type UseFileUploadProps } from './use-file-upload'
 
 export interface FileUploadProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
 
-export const FileUpload = defineComponent({
-  name: 'FileUpload',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const FileUpload = defineComponent<FileUploadProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useFileUpload(props, emit)
     FileUploadProvider(api)
 
@@ -21,4 +18,9 @@ export const FileUpload = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'FileUpload',
+    props,
+    emits,
+  },
+)

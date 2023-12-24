@@ -5,9 +5,8 @@ import { useDatePickerTableContext } from './date-picker-table-context'
 
 export interface DatePickerTableHeadProps extends HTMLArkProps<'thead'> {}
 
-export const DatePickerTableHead = defineComponent({
-  name: 'DatePickerTableHead',
-  setup(_, { attrs, slots }) {
+export const DatePickerTableHead = defineComponent<DatePickerTableHeadProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
     const table = useDatePickerTableContext()
 
@@ -17,4 +16,7 @@ export const DatePickerTableHead = defineComponent({
       </ark.thead>
     )
   },
-})
+  {
+    name: 'DatePickerTableHead',
+  },
+)

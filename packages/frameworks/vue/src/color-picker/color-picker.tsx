@@ -7,11 +7,8 @@ import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 
 export interface ColorPickerProps extends Assign<HTMLArkProps<'div'>, UseColorPickerProps> {}
 
-export const ColorPicker = defineComponent({
-  name: 'ColorPicker',
-  props,
-  emits,
-  setup(props, { slots, emit, attrs }) {
+export const ColorPicker = defineComponent<ColorPickerProps>(
+  (props, { slots, emit, attrs }) => {
     const api = useColorPicker(props, emit)
     ColorPickerProvider(api)
 
@@ -24,4 +21,9 @@ export const ColorPicker = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'ColorPicker',
+    props,
+    emits,
+  },
+)

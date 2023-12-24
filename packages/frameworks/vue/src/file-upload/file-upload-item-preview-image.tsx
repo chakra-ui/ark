@@ -5,9 +5,8 @@ import { useFileUploadItemContext } from './file-upload-item-context'
 
 export interface FileUploadItemPreviewImageProps extends HTMLArkProps<'img'> {}
 
-export const FileUploadItemPreviewImage = defineComponent({
-  name: 'FileUploadItemPreviewImage',
-  setup(_, { attrs }) {
+export const FileUploadItemPreviewImage = defineComponent<FileUploadItemPreviewImageProps>(
+  (_, { attrs }) => {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
     const url = ref<string>('')
@@ -17,4 +16,7 @@ export const FileUploadItemPreviewImage = defineComponent({
     const previewProps = api.value.getItemPreviewImageProps({ ...item, url: url.value })
     return () => <ark.img {...previewProps} {...attrs} />
   },
-})
+  {
+    name: 'FileUploadItemPreviewImage',
+  },
+)

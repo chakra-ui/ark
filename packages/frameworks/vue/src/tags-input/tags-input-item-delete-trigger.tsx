@@ -5,9 +5,8 @@ import { useTagsInputItemContext } from './tags-input-item-context'
 
 export interface TagsInputItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
 
-export const TagsInputItemDeleteTrigger = defineComponent({
-  name: 'TagsInputItemDeleteTrigger',
-  setup(_, { slots, attrs }) {
+export const TagsInputItemDeleteTrigger = defineComponent<TagsInputItemDeleteTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useTagsInputContext()
     const itemProps = useTagsInputItemContext()
 
@@ -17,4 +16,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'TagsInputItemDeleteTrigger',
+  },
+)

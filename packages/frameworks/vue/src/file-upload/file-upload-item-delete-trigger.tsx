@@ -5,9 +5,8 @@ import { useFileUploadItemContext } from './file-upload-item-context'
 
 export interface FileUploadItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
 
-export const FileUploadItemDeleteTrigger = defineComponent({
-  name: 'FileUploadItemDeleteTrigger',
-  setup(_, { slots, attrs }) {
+export const FileUploadItemDeleteTrigger = defineComponent<FileUploadItemDeleteTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
 
@@ -17,4 +16,7 @@ export const FileUploadItemDeleteTrigger = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'FileUploadItemDeleteTrigger',
+  },
+)

@@ -6,11 +6,8 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const PopoverContent = defineComponent({
-  name: 'PopoverContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const PopoverContent = defineComponent<PopoverContentProps>(
+  (props, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const PopoverContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'PopoverContent',
+    props,
+    emits,
+  },
+)

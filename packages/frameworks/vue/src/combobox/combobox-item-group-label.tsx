@@ -7,15 +7,8 @@ import { useComboboxContext } from './combobox-context'
 export interface ComboboxItemGroupLabelProps
   extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
 
-export const ComboboxItemGroupLabel = defineComponent({
-  name: 'ComboboxItemGroupLabel',
-  props: {
-    htmlFor: {
-      type: String as PropType<ComboboxItemGroupLabelProps['htmlFor']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ComboboxItemGroupLabel = defineComponent<ComboboxItemGroupLabelProps>(
+  (props, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -24,4 +17,13 @@ export const ComboboxItemGroupLabel = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ComboboxItemGroupLabel',
+    props: {
+      htmlFor: {
+        type: String as PropType<ComboboxItemGroupLabelProps['htmlFor']>,
+        required: true,
+      },
+    },
+  },
+)

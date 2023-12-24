@@ -4,9 +4,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerFormatSelectProps extends HTMLArkProps<'button'> {}
 
-export const ColorPickerFormatSelect = defineComponent({
-  name: 'ColorPickerFormatSelect',
-  setup(_, { attrs }) {
+export const ColorPickerFormatSelect = defineComponent<ColorPickerFormatSelectProps>(
+  (_, { attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -19,4 +18,7 @@ export const ColorPickerFormatSelect = defineComponent({
       </ark.select>
     )
   },
-})
+  {
+    name: 'ColorPickerFormatSelect',
+  },
+)

@@ -7,17 +7,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
 
-export const ColorPickerArea = defineComponent({
-  name: 'ColorPickerArea',
-  props: {
-    xChannel: {
-      type: String as PropType<ColorPickerAreaProps['xChannel']>,
-    },
-    yChannel: {
-      type: String as PropType<ColorPickerAreaProps['yChannel']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ColorPickerArea = defineComponent<ColorPickerAreaProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
     const areaProps = computed<AreaProps>(() => ({
       xChannel: props.xChannel,
@@ -31,4 +22,15 @@ export const ColorPickerArea = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerArea',
+    props: {
+      xChannel: {
+        type: String as PropType<ColorPickerAreaProps['xChannel']>,
+      },
+      yChannel: {
+        type: String as PropType<ColorPickerAreaProps['yChannel']>,
+      },
+    },
+  },
+)

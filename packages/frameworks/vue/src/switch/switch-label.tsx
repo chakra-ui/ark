@@ -4,9 +4,8 @@ import { useSwitchContext } from './switch-context'
 
 export interface SwitchLabelProps extends HTMLArkProps<'span'> {}
 
-export const SwitchLabel = defineComponent({
-  name: 'SwitchLabel',
-  setup(_, { slots, attrs }) {
+export const SwitchLabel = defineComponent<SwitchLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useSwitchContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SwitchLabel = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SwitchLabel',
+  },
+)

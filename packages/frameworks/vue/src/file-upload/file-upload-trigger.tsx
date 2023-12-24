@@ -4,9 +4,8 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadTriggerProps extends HTMLArkProps<'button'> {}
 
-export const FileUploadTrigger = defineComponent({
-  name: 'FileUploadTrigger',
-  setup(_, { slots, attrs }) {
+export const FileUploadTrigger = defineComponent<FileUploadTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useFileUploadContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const FileUploadTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'FileUploadTrigger',
+  },
+)

@@ -7,11 +7,8 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
 
-export const AccordionItemContent = defineComponent({
-  name: 'AccordionItemContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
+  (props, { slots, attrs }) => {
     const api = useAccordionContext()
     const item = useAccordionItemContext()
     const presenceApi = usePresenceContext()
@@ -26,4 +23,9 @@ export const AccordionItemContent = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'AccordionItemContent',
+    props,
+    emits,
+  },
+)

@@ -4,9 +4,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderControlProps extends HTMLArkProps<'div'> {}
 
-export const SliderControl = defineComponent({
-  name: 'SliderControl',
-  setup(_, { slots, attrs }) {
+export const SliderControl = defineComponent<SliderControlProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SliderControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SliderControl',
+  },
+)

@@ -5,9 +5,8 @@ import { useSegmentGroupContext } from './segment-group-context'
 
 export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const SegmentGroupLabel = defineComponent({
-  name: 'SegmentGroupLabel',
-  setup(_, { slots, attrs }) {
+export const SegmentGroupLabel = defineComponent<SegmentGroupLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useSegmentGroupContext()
 
     return () => (
@@ -16,4 +15,7 @@ export const SegmentGroupLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'SegmentGroupLabel',
+  },
+)

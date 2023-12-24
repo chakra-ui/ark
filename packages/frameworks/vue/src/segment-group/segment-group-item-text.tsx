@@ -6,9 +6,8 @@ import { useSegmentGroupItemContext } from './segment-group-item-context'
 
 export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
 
-export const SegmentGroupItemText = defineComponent({
-  name: 'SegmentGroupItemText',
-  setup(_, { slots, attrs }) {
+export const SegmentGroupItemText = defineComponent<SegmentGroupItemTextProps>(
+  (_, { slots, attrs }) => {
     const api = useSegmentGroupContext()
     const itemProps = useSegmentGroupItemContext()
 
@@ -22,4 +21,7 @@ export const SegmentGroupItemText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SegmentGroupItemText',
+  },
+)

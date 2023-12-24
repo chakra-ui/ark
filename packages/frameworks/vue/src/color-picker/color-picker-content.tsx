@@ -7,11 +7,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
-export const ColorPickerContent = defineComponent({
-  name: 'ColorPickerContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const ColorPickerContent = defineComponent<ColorPickerContentProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -22,4 +19,9 @@ export const ColorPickerContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'ColorPickerContent',
+    props,
+    emits,
+  },
+)

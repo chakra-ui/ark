@@ -7,11 +7,8 @@ import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
 export interface PinInputProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
-export const PinInput = defineComponent({
-  name: 'PinInput',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const PinInput = defineComponent<PinInputProps>(
+  (props, { slots, attrs, emit }) => {
     const api = usePinInput(props, emit)
     PinInputProvider(api)
 
@@ -24,4 +21,9 @@ export const PinInput = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'PinInput',
+    props,
+    emits,
+  },
+)
