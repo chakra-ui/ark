@@ -4,9 +4,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogCloseTrigger = defineComponent({
-  name: 'DialogCloseTrigger',
-  setup(_, { slots, attrs }) {
+export const DialogCloseTrigger = defineComponent<DialogCloseTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DialogCloseTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DialogCloseTrigger',
+  },
+)

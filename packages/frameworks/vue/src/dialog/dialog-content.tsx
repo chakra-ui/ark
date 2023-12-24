@@ -6,11 +6,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const DialogContent = defineComponent({
-  name: 'DialogContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const DialogContent = defineComponent<DialogContentProps>(
+  (props, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const DialogContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'DialogContent',
+    props,
+    emits,
+  },
+)

@@ -4,9 +4,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogTrigger = defineComponent({
-  name: 'DialogTrigger',
-  setup(_, { slots, attrs }) {
+export const DialogTrigger = defineComponent<DialogTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DialogTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DialogTrigger',
+  },
+)

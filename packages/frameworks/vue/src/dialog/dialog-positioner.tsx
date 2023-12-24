@@ -4,9 +4,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 
-export const DialogPositioner = defineComponent({
-  name: 'DialogPositioner',
-  setup(_, { slots, attrs }) {
+export const DialogPositioner = defineComponent<DialogPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DialogPositioner = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DialogPositioner',
+  },
+)
