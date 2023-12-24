@@ -7,11 +7,8 @@ import { useSwitch, type UseSwitchProps } from './use-switch'
 
 export interface SwitchProps extends Assign<HTMLArkProps<'div'>, UseSwitchProps> {}
 
-export const Switch = defineComponent({
-  name: 'Switch',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Switch = defineComponent<SwitchProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useSwitch(props, emit)
     SwitchProvider(api)
 
@@ -21,4 +18,9 @@ export const Switch = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'Switch',
+    props,
+    emits,
+  },
+)
