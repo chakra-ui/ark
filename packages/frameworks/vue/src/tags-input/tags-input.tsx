@@ -7,11 +7,8 @@ import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
 
 export interface TagsInputProps extends Assign<HTMLArkProps<'div'>, UseTagsInputProps> {}
 
-export const TagsInput = defineComponent({
-  name: 'TagsInput',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const TagsInput = defineComponent<TagsInputProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useTagsInput(props, emit)
     TagsInputProvider(api)
 
@@ -24,4 +21,9 @@ export const TagsInput = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'TagsInput',
+    props,
+    emits,
+  },
+)

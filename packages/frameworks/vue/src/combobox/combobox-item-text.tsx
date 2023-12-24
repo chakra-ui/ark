@@ -5,9 +5,8 @@ import { useComboboxItemContext } from './combobox-item-context'
 
 export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
 
-export const ComboboxItemText = defineComponent({
-  name: 'ComboboxItemText',
-  setup(_, { slots, attrs }) {
+export const ComboboxItemText = defineComponent<ComboboxItemTextProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
     const itemProps = useComboboxItemContext()
 
@@ -17,4 +16,7 @@ export const ComboboxItemText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'ComboboxItemText',
+  },
+)

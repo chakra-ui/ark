@@ -7,15 +7,8 @@ import { DatePickerViewProvider } from './date-picker-view-context'
 
 export interface DatePickerViewProps extends HTMLArkProps<'div'>, Required<ViewProps> {}
 
-export const DatePickerView = defineComponent({
-  name: 'DatePickerView',
-  props: {
-    view: {
-      type: String as PropType<Required<ViewProps>['view']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const DatePickerView = defineComponent<DatePickerViewProps>(
+  (props, { slots, attrs }) => {
     const api = useDatePickerContext()
     const reactiveProps = reactive(props)
     DatePickerViewProvider(reactiveProps)
@@ -30,4 +23,13 @@ export const DatePickerView = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DatePickerView',
+    props: {
+      view: {
+        type: String as PropType<Required<ViewProps>['view']>,
+        required: true,
+      },
+    },
+  },
+)

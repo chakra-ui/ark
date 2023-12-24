@@ -7,22 +7,8 @@ import { TagsInputItemProvider } from './tags-input-item-context'
 
 export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const TagsInputItem = defineComponent({
-  name: 'TagsInputItem',
-  props: {
-    index: {
-      type: [String, Number] as PropType<ItemProps['index']>,
-      required: true,
-    },
-    value: {
-      type: String as PropType<ItemProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<ItemProps['disabled']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const TagsInputItem = defineComponent<TagsInputItemProps>(
+  (props, { slots, attrs }) => {
     const api = useTagsInputContext()
     TagsInputItemProvider(computed(() => props))
 
@@ -32,4 +18,20 @@ export const TagsInputItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TagsInputItem',
+    props: {
+      index: {
+        type: [String, Number] as PropType<ItemProps['index']>,
+        required: true,
+      },
+      value: {
+        type: String as PropType<ItemProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<ItemProps['disabled']>,
+      },
+    },
+  },
+)

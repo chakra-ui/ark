@@ -4,9 +4,8 @@ import { useTagsInputContext } from './tags-input-context'
 
 export interface TagsInputClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const TagsInputClearTrigger = defineComponent({
-  name: 'TagsInputClearTrigger',
-  setup(_, { attrs, slots }) {
+export const TagsInputClearTrigger = defineComponent<TagsInputClearTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useTagsInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TagsInputClearTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'TagsInputClearTrigger',
+  },
+)

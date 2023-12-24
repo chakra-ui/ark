@@ -4,9 +4,8 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxPositioner = defineComponent({
-  name: 'ComboboxPositioner',
-  setup(_, { slots, attrs }) {
+export const ComboboxPositioner = defineComponent<ComboboxPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ComboboxPositioner = defineComponent({
       </ark.ul>
     )
   },
-})
+  {
+    name: 'ComboboxPositioner',
+  },
+)

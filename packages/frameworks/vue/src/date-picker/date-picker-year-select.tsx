@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
 
-export const DatePickerYearSelect = defineComponent({
-  name: 'DatePickerYearSelect',
-  setup(_, { attrs }) {
+export const DatePickerYearSelect = defineComponent<DatePickerYearSelectProps>(
+  (_, { attrs }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -19,7 +18,10 @@ export const DatePickerYearSelect = defineComponent({
       </ark.select>
     )
   },
-})
+  {
+    name: 'DatePickerYearSelect',
+  },
+)
 
 interface YearsRange {
   from: number

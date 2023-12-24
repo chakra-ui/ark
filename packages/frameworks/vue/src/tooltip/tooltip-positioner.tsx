@@ -4,9 +4,8 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
 
-export const TooltipPositioner = defineComponent({
-  name: 'TooltipPositioner',
-  setup(_, { slots, attrs }) {
+export const TooltipPositioner = defineComponent<TooltipPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useTooltipContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TooltipPositioner = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TooltipPositioner',
+  },
+)

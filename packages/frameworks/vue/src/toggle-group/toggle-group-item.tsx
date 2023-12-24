@@ -6,18 +6,8 @@ import { useToggleGroupContext } from './toggle-group-context'
 
 export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
-export const ToggleGroupItem = defineComponent({
-  name: 'ToggleGroupItem',
-  props: {
-    value: {
-      type: String as PropType<ItemProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<ItemProps['disabled']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ToggleGroupItem = defineComponent<ToggleGroupItemProps>(
+  (props, { slots, attrs }) => {
     const api = useToggleGroupContext()
 
     return () => (
@@ -26,4 +16,16 @@ export const ToggleGroupItem = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'ToggleGroupItem',
+    props: {
+      value: {
+        type: String as PropType<ItemProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<ItemProps['disabled']>,
+      },
+    },
+  },
+)

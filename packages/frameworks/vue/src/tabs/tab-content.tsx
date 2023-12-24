@@ -6,15 +6,8 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
-export const TabContent = defineComponent({
-  name: 'TabContent',
-  props: {
-    value: {
-      type: String as PropType<TabContentProps['value']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const TabContent = defineComponent<TabContentProps>(
+  (props, { slots, attrs }) => {
     const api = useTabsContext()
 
     return () => (
@@ -23,4 +16,13 @@ export const TabContent = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TabContent',
+    props: {
+      value: {
+        type: String as PropType<TabContentProps['value']>,
+        required: true,
+      },
+    },
+  },
+)

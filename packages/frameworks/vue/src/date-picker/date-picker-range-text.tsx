@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerRangeText = defineComponent({
-  name: 'DatePickerRangeText',
-  setup(_, { attrs }) {
+export const DatePickerRangeText = defineComponent<DatePickerRangeTextProps>(
+  (_, { attrs }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DatePickerRangeText = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DatePickerRangeText',
+  },
+)

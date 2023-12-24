@@ -4,9 +4,8 @@ import { usePaginationContext } from './pagination-context'
 
 export interface PaginationNextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PaginationNextTrigger = defineComponent({
-  name: 'PaginationNextTrigger',
-  setup(_, { slots, attrs }) {
+export const PaginationNextTrigger = defineComponent<PaginationNextTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = usePaginationContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PaginationNextTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'PaginationNextTrigger',
+  },
+)

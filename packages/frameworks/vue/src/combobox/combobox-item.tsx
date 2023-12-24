@@ -7,15 +7,8 @@ import { ComboboxItemProvider } from './combobox-item-context'
 
 export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const ComboboxItem = defineComponent({
-  name: 'ComboboxItem',
-  props: {
-    item: {
-      type: Object as PropType<ComboboxItemProps['item']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ComboboxItem = defineComponent<ComboboxItemProps>(
+  (props, { slots, attrs }) => {
     const api = useComboboxContext()
     ComboboxItemProvider(computed(() => props))
 
@@ -25,4 +18,13 @@ export const ComboboxItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ComboboxItem',
+    props: {
+      item: {
+        type: Object as PropType<ComboboxItemProps['item']>,
+        required: true,
+      },
+    },
+  },
+)

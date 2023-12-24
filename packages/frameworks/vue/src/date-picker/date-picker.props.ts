@@ -72,7 +72,7 @@ export const props = {
     type: String as PropType<Context['view']>,
     default: 'day',
   },
-}
+} as const
 export const emits = declareEmits([
   'focus-change',
   'value-change',

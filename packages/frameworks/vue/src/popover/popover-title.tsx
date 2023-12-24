@@ -4,9 +4,8 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverTitleProps extends HTMLArkProps<'div'> {}
 
-export const PopoverTitle = defineComponent({
-  name: 'PopoverTitle',
-  setup(_, { slots, attrs }) {
+export const PopoverTitle = defineComponent<PopoverTitleProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PopoverTitle = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'PopoverTitle',
+  },
+)

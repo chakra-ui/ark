@@ -4,9 +4,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogDescriptionProps extends HTMLArkProps<'p'> {}
 
-export const DialogDescription = defineComponent({
-  name: 'DialogDescription',
-  setup(_, { slots, attrs }) {
+export const DialogDescription = defineComponent<DialogDescriptionProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DialogDescription = defineComponent({
       </ark.p>
     )
   },
-})
+  {
+    name: 'DialogDescription',
+  },
+)

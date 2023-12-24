@@ -4,9 +4,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerEyeDropperTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ColorPickerEyeDropperTrigger = defineComponent({
-  name: 'ColorPickerEyeDropperTrigger',
-  setup(_, { slots, attrs }) {
+export const ColorPickerEyeDropperTrigger = defineComponent<ColorPickerEyeDropperTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
     return () => (
       <ark.button {...api.value.eyeDropperTriggerProps} {...attrs}>
@@ -14,4 +13,7 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'ColorPickerEyeDropperTrigger',
+  },
+)

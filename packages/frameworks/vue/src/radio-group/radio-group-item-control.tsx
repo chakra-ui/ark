@@ -5,9 +5,8 @@ import { useRadioGroupItemContext } from './radio-group-item-context'
 
 export interface RadioGroupItemControlProps extends HTMLArkProps<'div'> {}
 
-export const RadioGroupItemControl = defineComponent({
-  name: 'RadioGroupItemControl',
-  setup(_, { slots, attrs }) {
+export const RadioGroupItemControl = defineComponent<RadioGroupItemControlProps>(
+  (_, { slots, attrs }) => {
     const api = useRadioGroupContext()
     const itemProps = useRadioGroupItemContext()
 
@@ -20,4 +19,7 @@ export const RadioGroupItemControl = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'RadioGroupItemControl',
+  },
+)

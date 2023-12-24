@@ -7,11 +7,8 @@ import { useNumberInput, type UseNumberInputProps } from './use-number-input'
 
 export interface NumberInputProps extends Assign<HTMLArkProps<'div'>, UseNumberInputProps> {}
 
-export const NumberInput = defineComponent({
-  name: 'NumberInput',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const NumberInput = defineComponent<NumberInputProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useNumberInput(props, emit)
     NumberInputProvider(api)
 
@@ -21,4 +18,9 @@ export const NumberInput = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'NumberInput',
+    props,
+    emits,
+  },
+)

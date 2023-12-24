@@ -6,11 +6,8 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const ComboboxContent = defineComponent({
-  name: 'ComboboxContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const ComboboxContent = defineComponent<ComboboxContentProps>(
+  (props, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const ComboboxContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'ComboboxContent',
+    props,
+    emits,
+  },
+)

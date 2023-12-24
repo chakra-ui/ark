@@ -4,9 +4,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const MenuArrowTip = defineComponent({
-  name: 'MenuArrowTip',
-  setup(_, { slots, attrs }) {
+export const MenuArrowTip = defineComponent<MenuArrowTipProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const MenuArrowTip = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuArrowTip',
+  },
+)

@@ -7,15 +7,8 @@ import { RatingGroupItemProvider } from './rating-group-item-context'
 
 export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemProps> {}
 
-export const RatingGroupItem = defineComponent({
-  name: 'RatingGroupItem',
-  props: {
-    index: {
-      type: Number as PropType<ItemProps['index']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const RatingGroupItem = defineComponent<RatingGroupItemProps>(
+  (props, { slots, attrs }) => {
     const api = useRatingGroupContext()
     const itemState = computed(() => api.value.getItemState(props))
     RatingGroupItemProvider(computed(() => props))
@@ -26,4 +19,13 @@ export const RatingGroupItem = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'RatingGroupItem',
+    props: {
+      index: {
+        type: Number as PropType<ItemProps['index']>,
+        required: true,
+      },
+    },
+  },
+)

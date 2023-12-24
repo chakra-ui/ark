@@ -6,16 +6,8 @@ import { useSplitterContext } from './splitter-context'
 
 export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, PanelProps> {}
 
-export const SplitterPanel = defineComponent({
-  name: 'SplitterPanel',
-  props: {
-    id: {
-      type: [String, Number] as PropType<SplitterPanelProps['id']>,
-      required: true,
-    },
-    snapSize: Number as PropType<SplitterPanelProps['snapSize']>,
-  },
-  setup(props, { slots, attrs }) {
+export const SplitterPanel = defineComponent<SplitterPanelProps>(
+  (props, { slots, attrs }) => {
     const api = useSplitterContext()
 
     return () => (
@@ -24,4 +16,14 @@ export const SplitterPanel = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SplitterPanel',
+    props: {
+      id: {
+        type: [String, Number] as PropType<SplitterPanelProps['id']>,
+        required: true,
+      },
+      snapSize: Number as PropType<SplitterPanelProps['snapSize']>,
+    },
+  },
+)

@@ -4,9 +4,8 @@ import { useRatingGroupContext } from './rating-group-context'
 
 export interface RatingGroupControlProps extends HTMLArkProps<'div'> {}
 
-export const RatingGroupControl = defineComponent({
-  name: 'RatingGroupControl',
-  setup(_, { slots, attrs }) {
+export const RatingGroupControl = defineComponent<RatingGroupControlProps>(
+  (_, { slots, attrs }) => {
     const api = useRatingGroupContext()
 
     return () => (
@@ -18,4 +17,7 @@ export const RatingGroupControl = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'RatingGroupControl',
+  },
+)

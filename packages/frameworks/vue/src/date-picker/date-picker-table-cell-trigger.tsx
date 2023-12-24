@@ -6,9 +6,8 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerTableCellTrigger = defineComponent({
-  name: 'DatePickerTableCellTrigger',
-  setup(_, { slots, attrs }) {
+export const DatePickerTableCellTrigger = defineComponent<DatePickerTableCellTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useDatePickerContext()
     const cell = useDatePickerTableCellContext()
     const view = useDatePickerViewContext()
@@ -28,4 +27,7 @@ export const DatePickerTableCellTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DatePickerTableCellTrigger',
+  },
+)

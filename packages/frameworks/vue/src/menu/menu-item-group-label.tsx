@@ -8,15 +8,8 @@ interface ItemGroupLabelProps {
 
 export interface MenuItemGroupLabelProps extends HTMLArkProps<'div'>, ItemGroupLabelProps {}
 
-export const MenuItemGroupLabel = defineComponent({
-  name: 'MenuItemGroupLabel',
-  props: {
-    htmlFor: {
-      type: String as PropType<MenuItemGroupLabelProps['htmlFor']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const MenuItemGroupLabel = defineComponent<MenuItemGroupLabelProps>(
+  (props, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -25,4 +18,13 @@ export const MenuItemGroupLabel = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuItemGroupLabel',
+    props: {
+      htmlFor: {
+        type: String as PropType<MenuItemGroupLabelProps['htmlFor']>,
+        required: true,
+      },
+    },
+  },
+)

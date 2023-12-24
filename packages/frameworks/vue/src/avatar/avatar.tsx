@@ -7,11 +7,8 @@ import { useAvatar, type UseAvatarProps } from './use-avatar'
 
 export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const Avatar = defineComponent({
-  name: 'Avatar',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Avatar = defineComponent<AvatarProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useAvatar(props, emit)
     AvatarProvider(api)
 
@@ -21,4 +18,9 @@ export const Avatar = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Avatar',
+    props,
+    emits,
+  },
+)

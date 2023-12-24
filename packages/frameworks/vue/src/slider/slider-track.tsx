@@ -4,9 +4,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderTrackProps extends HTMLArkProps<'div'> {}
 
-export const SliderTrack = defineComponent({
-  name: 'SliderTrack',
-  setup(_, { slots, attrs }) {
+export const SliderTrack = defineComponent<SliderTrackProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SliderTrack = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SliderTrack',
+  },
+)

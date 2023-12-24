@@ -6,19 +6,8 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselIndicatorProps extends Assign<HTMLArkProps<'button'>, IndicatorProps> {}
 
-export const CarouselIndicator = defineComponent({
-  name: 'CarouselIndicator',
-  props: {
-    index: {
-      type: Number as PropType<CarouselIndicatorProps['index']>,
-      required: true,
-    },
-    readOnly: {
-      type: Boolean as PropType<CarouselIndicatorProps['readOnly']>,
-      default: false,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const CarouselIndicator = defineComponent<CarouselIndicatorProps>(
+  (props, { slots, attrs }) => {
     const api = useCarouselContext()
 
     return () => (
@@ -27,4 +16,17 @@ export const CarouselIndicator = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'CarouselIndicator',
+    props: {
+      index: {
+        type: Number as PropType<CarouselIndicatorProps['index']>,
+        required: true,
+      },
+      readOnly: {
+        type: Boolean as PropType<CarouselIndicatorProps['readOnly']>,
+        default: false,
+      },
+    },
+  },
+)

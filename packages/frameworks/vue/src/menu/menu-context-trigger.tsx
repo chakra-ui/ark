@@ -4,9 +4,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuContextTrigger = defineComponent({
-  name: 'MenuContextTrigger',
-  setup(_, { slots, attrs }) {
+export const MenuContextTrigger = defineComponent<MenuContextTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const MenuContextTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'MenuContextTrigger',
+  },
+)

@@ -4,9 +4,8 @@ import { usePaginationContext } from './pagination-context'
 
 export interface PaginationPrevTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PaginationPrevTrigger = defineComponent({
-  name: 'PaginationPrevTrigger',
-  setup(_, { slots, attrs }) {
+export const PaginationPrevTrigger = defineComponent<PaginationPrevTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = usePaginationContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PaginationPrevTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'PaginationPrevTrigger',
+  },
+)

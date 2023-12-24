@@ -4,9 +4,8 @@ import { useTagsInputContext } from './tags-input-context'
 
 export interface TagsInputInputProps extends HTMLArkProps<'input'> {}
 
-export const TagsInputInput = defineComponent({
-  name: 'TagsInputInput',
-  setup(_, { attrs }) {
+export const TagsInputInput = defineComponent<TagsInputInputProps>(
+  (_, { attrs }) => {
     const api = useTagsInputContext()
 
     const inputProps = computed(() => ({
@@ -16,4 +15,7 @@ export const TagsInputInput = defineComponent({
 
     return () => <ark.input {...inputProps.value} {...attrs} />
   },
-})
+  {
+    name: 'TagsInputInput',
+  },
+)

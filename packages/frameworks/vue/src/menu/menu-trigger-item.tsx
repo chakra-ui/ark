@@ -4,9 +4,8 @@ import { useMenuTriggerItemContext } from './menu-context'
 
 export interface MenuTriggerItemProps extends HTMLArkProps<'div'> {}
 
-export const MenuTriggerItem = defineComponent({
-  name: 'MenuTriggerItem',
-  setup(_, { slots, attrs }) {
+export const MenuTriggerItem = defineComponent<MenuTriggerItemProps>(
+  (_, { slots, attrs }) => {
     const triggerItemProps = useMenuTriggerItemContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const MenuTriggerItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuTriggerItem',
+  },
+)

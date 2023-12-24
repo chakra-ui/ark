@@ -8,24 +8,8 @@ import { SegmentGroupItemProvider } from './segment-group-item-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
-export const SegmentGroupItem = defineComponent({
-  name: 'SegmentGroupItem',
-  props: {
-    value: {
-      type: String as PropType<ItemProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<ItemProps['disabled']>,
-      default: undefined,
-    },
-    invalid: {
-      type: Boolean as PropType<ItemProps['invalid']>,
-      default: undefined,
-    },
-  },
-
-  setup(props, { slots, attrs }) {
+export const SegmentGroupItem = defineComponent<SegmentGroupItemProps>(
+  (props, { slots, attrs }) => {
     const api = useSegmentGroupContext()
     SegmentGroupItemProvider(computed(() => props))
 
@@ -39,4 +23,21 @@ export const SegmentGroupItem = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'SegmentGroupItem',
+    props: {
+      value: {
+        type: String as PropType<ItemProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<ItemProps['disabled']>,
+        default: undefined,
+      },
+      invalid: {
+        type: Boolean as PropType<ItemProps['invalid']>,
+        default: undefined,
+      },
+    },
+  },
+)

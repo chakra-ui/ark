@@ -6,15 +6,8 @@ import { usePaginationContext } from './pagination-context'
 
 export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
 
-export const PaginationEllipsis = defineComponent({
-  name: 'PaginationEllipsis',
-  props: {
-    index: {
-      type: Number as PropType<EllipsisProps['index']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const PaginationEllipsis = defineComponent<PaginationEllipsisProps>(
+  (props, { slots, attrs }) => {
     const api = usePaginationContext()
 
     return () => (
@@ -23,4 +16,13 @@ export const PaginationEllipsis = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'PaginationEllipsis',
+    props: {
+      index: {
+        type: Number as PropType<EllipsisProps['index']>,
+        required: true,
+      },
+    },
+  },
+)

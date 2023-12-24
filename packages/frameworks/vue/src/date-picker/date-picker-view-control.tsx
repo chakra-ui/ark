@@ -5,9 +5,8 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerViewControlProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerViewControl = defineComponent({
-  name: 'DatePickerViewControl',
-  setup(_, { attrs, slots }) {
+export const DatePickerViewControl = defineComponent<DatePickerViewControlProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
     const view = useDatePickerViewContext()
 
@@ -17,4 +16,7 @@ export const DatePickerViewControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DatePickerViewControl',
+  },
+)

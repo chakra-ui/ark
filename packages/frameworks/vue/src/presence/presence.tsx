@@ -6,24 +6,8 @@ import { usePresence, type UsePresenceProps } from './use-presence'
 
 export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
-export const Presence = defineComponent({
-  name: 'Presence',
-  props: {
-    present: {
-      type: Boolean as PropType<UsePresenceProps['present']>,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-      default: undefined,
-    },
-    unmountOnExit: {
-      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-      default: undefined,
-    },
-  },
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Presence = defineComponent<PresenceProps>(
+  (props, { slots, attrs, emit }) => {
     const api = usePresence(props, emit)
 
     return () =>
@@ -33,4 +17,22 @@ export const Presence = defineComponent({
         </ark.div>
       )
   },
-})
+  {
+    name: 'Presence',
+    props: {
+      present: {
+        type: Boolean as PropType<UsePresenceProps['present']>,
+        default: undefined,
+      },
+      lazyMount: {
+        type: Boolean as PropType<UsePresenceProps['lazyMount']>,
+        default: undefined,
+      },
+      unmountOnExit: {
+        type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
+        default: undefined,
+      },
+    },
+    emits,
+  },
+)

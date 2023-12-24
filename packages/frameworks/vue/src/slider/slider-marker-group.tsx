@@ -4,9 +4,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
-export const SliderMarkerGroup = defineComponent({
-  name: 'SliderMarkerGroup',
-  setup(_, { slots, attrs }) {
+export const SliderMarkerGroup = defineComponent<SliderMarkerGroupProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SliderMarkerGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SliderMarkerGroup',
+  },
+)
