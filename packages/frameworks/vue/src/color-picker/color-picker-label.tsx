@@ -4,9 +4,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerLabelProps extends HTMLArkProps<'label'> {}
 
-export const ColorPickerLabel = defineComponent({
-  name: 'ColorPickerLabel',
-  setup(_, { slots, attrs }) {
+export const ColorPickerLabel = defineComponent<ColorPickerLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ColorPickerLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'ColorPickerLabel',
+  },
+)

@@ -5,9 +5,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerChannelSliderTrackProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerChannelSliderTrack = defineComponent({
-  name: 'ColorPickerChannelSliderTrack',
-  setup(_, { slots, attrs }) {
+export const ColorPickerChannelSliderTrack = defineComponent<ColorPickerChannelSliderTrackProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
     const sliderProps = useColorPickerChannelSliderContext()
 
@@ -17,4 +16,7 @@ export const ColorPickerChannelSliderTrack = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerChannelSliderTrack',
+  },
+)
