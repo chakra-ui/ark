@@ -6,11 +6,8 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const TooltipContent = defineComponent({
-  name: 'TooltipContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const TooltipContent = defineComponent<TooltipContentProps>(
+  (props, { slots, attrs }) => {
     const api = useTooltipContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const TooltipContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'TooltipContent',
+    props,
+    emits,
+  },
+)
