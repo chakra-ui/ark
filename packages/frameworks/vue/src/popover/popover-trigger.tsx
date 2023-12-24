@@ -4,9 +4,8 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PopoverTrigger = defineComponent({
-  name: 'PopoverTrigger',
-  setup(_, { slots, attrs }) {
+export const PopoverTrigger = defineComponent<PopoverTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PopoverTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'PopoverTrigger',
+  },
+)

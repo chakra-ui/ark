@@ -4,9 +4,8 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const PopoverArrowTip = defineComponent({
-  name: 'PopoverArrowTip',
-  setup(_, { slots, attrs }) {
+export const PopoverArrowTip = defineComponent<PopoverArrowTipProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PopoverArrowTip = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'PopoverArrowTip',
+  },
+)
