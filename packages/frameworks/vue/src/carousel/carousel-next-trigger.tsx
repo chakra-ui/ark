@@ -4,9 +4,8 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselNextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const CarouselNextTrigger = defineComponent({
-  name: 'CarouselNextTrigger',
-  setup(_, { slots, attrs }) {
+export const CarouselNextTrigger = defineComponent<CarouselNextTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useCarouselContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const CarouselNextTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'CarouselNextTrigger',
+  },
+)
