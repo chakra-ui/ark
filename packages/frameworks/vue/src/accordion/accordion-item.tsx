@@ -9,20 +9,8 @@ import { AccordionItemProvider } from './accordion-item-context'
 
 export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const AccordionItem = defineComponent({
-  name: 'AccordionItem',
-  props: {
-    value: {
-      type: String as PropType<ItemProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<ItemProps['disabled']>,
-      default: undefined,
-    },
-  },
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const AccordionItem = defineComponent<AccordionItemProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useAccordionContext()
     const itemState = computed(() => api.value.getItemState(props))
 
@@ -43,4 +31,18 @@ export const AccordionItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'AccordionItem',
+    props: {
+      value: {
+        type: String as PropType<ItemProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<ItemProps['disabled']>,
+        default: undefined,
+      },
+    },
+    emits,
+  },
+)
