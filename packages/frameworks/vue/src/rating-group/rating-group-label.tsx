@@ -4,9 +4,8 @@ import { useRatingGroupContext } from './rating-group-context'
 
 export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const RatingGroupLabel = defineComponent({
-  name: 'RatingGroupLabel',
-  setup(_, { slots, attrs }) {
+export const RatingGroupLabel = defineComponent<RatingGroupLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useRatingGroupContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const RatingGroupLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'RatingGroupLabel',
+  },
+)
