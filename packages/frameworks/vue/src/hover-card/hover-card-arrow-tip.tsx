@@ -4,9 +4,8 @@ import { useHoverCardContext } from './hover-card-context'
 
 export interface HoverCardArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const HoverCardArrowTip = defineComponent({
-  name: 'HoverCardArrowTip',
-  setup(_, { slots, attrs }) {
+export const HoverCardArrowTip = defineComponent<HoverCardArrowTipProps>(
+  (_, { slots, attrs }) => {
     const api = useHoverCardContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const HoverCardArrowTip = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'HoverCardArrowTip',
+  },
+)

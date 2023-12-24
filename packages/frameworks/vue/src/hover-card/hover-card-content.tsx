@@ -6,11 +6,8 @@ import { useHoverCardContext } from './hover-card-context'
 
 export interface HoverCardContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
-export const HoverCardContent = defineComponent({
-  name: 'HoverCardContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const HoverCardContent = defineComponent<HoverCardContentProps>(
+  (props, { slots, attrs }) => {
     const api = useHoverCardContext()
 
     return () => (
@@ -21,4 +18,9 @@ export const HoverCardContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'HoverCardContent',
+    props,
+    emits,
+  },
+)
