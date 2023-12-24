@@ -5,9 +5,8 @@ import { useFileUploadItemContext } from './file-upload-item-context'
 
 export interface FileUploadItemNameProps extends HTMLArkProps<'div'> {}
 
-export const FileUploadItemName = defineComponent({
-  name: 'FileUploadItemName',
-  setup(_, { slots, attrs }) {
+export const FileUploadItemName = defineComponent<FileUploadItemNameProps>(
+  (_, { slots, attrs }) => {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
 
@@ -17,4 +16,7 @@ export const FileUploadItemName = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'FileUploadItemName',
+  },
+)
