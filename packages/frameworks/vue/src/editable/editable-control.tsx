@@ -4,9 +4,8 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableControlProps extends HTMLArkProps<'div'> {}
 
-export const EditableControl = defineComponent({
-  name: 'EditableControl',
-  setup(_, { slots, attrs }) {
+export const EditableControl = defineComponent<EditableControlProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditableControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'EditableControl',
+  },
+)

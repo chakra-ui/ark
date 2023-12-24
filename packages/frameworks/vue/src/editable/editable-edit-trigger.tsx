@@ -4,9 +4,8 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableEditTriggerProps extends HTMLArkProps<'button'> {}
 
-export const EditableEditTrigger = defineComponent({
-  name: 'EditableEditTrigger',
-  setup(_, { slots, attrs }) {
+export const EditableEditTrigger = defineComponent<EditableEditTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditableEditTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'EditableEditTrigger',
+  },
+)
