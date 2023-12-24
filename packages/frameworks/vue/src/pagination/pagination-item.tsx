@@ -6,15 +6,8 @@ import { usePaginationContext } from './pagination-context'
 
 export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
-export const PaginationItem = defineComponent({
-  name: 'PaginationItem',
-  props: {
-    value: {
-      type: Number as PropType<ItemProps['value']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const PaginationItem = defineComponent<PaginationItemProps>(
+  (props, { slots, attrs }) => {
     const api = usePaginationContext()
 
     return () => (
@@ -23,4 +16,17 @@ export const PaginationItem = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'PaginationItem',
+    props: {
+      type: {
+        type: String as PropType<ItemProps['type']>,
+        default: 'page',
+      },
+      value: {
+        type: Number as PropType<ItemProps['value']>,
+        required: true,
+      },
+    },
+  },
+)
