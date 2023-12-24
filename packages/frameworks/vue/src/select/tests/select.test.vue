@@ -9,6 +9,7 @@ const items = [
   { label: 'Svelte', value: 'svelte', disabled: true },
 ]
 </script>
+
 <template>
   <Select.Root :items="items" :openDelay="0" :closeDelay="0">
     <Select.Label>Framework</Select.Label>

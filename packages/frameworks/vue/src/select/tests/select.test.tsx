@@ -101,20 +101,20 @@ describe('Select', () => {
 
   it('should be able to lazy mount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it('should be able to lazy mount and unmount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Framework' }))
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })
