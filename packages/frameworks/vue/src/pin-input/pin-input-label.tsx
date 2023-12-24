@@ -4,9 +4,8 @@ import { usePinInputContext } from './pin-input-context'
 
 export interface PinInputLabelProps extends HTMLArkProps<'label'> {}
 
-export const PinInputLabel = defineComponent({
-  name: 'PinInputLabel',
-  setup(_, { slots, attrs }) {
+export const PinInputLabel = defineComponent<PinInputLabelProps>(
+  (_, { slots, attrs }) => {
     const api = usePinInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PinInputLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'PinInputLabel',
+  },
+)
