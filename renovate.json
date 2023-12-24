@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+  "extends": ["config:base", ":semanticCommitTypeAll(chore)", "schedule:earlyMondays"],
   "labels": ["dependencies"],
   "packageRules": [
     {
@@ -8,8 +8,12 @@
       "automerge": true
     },
     {
-      "groupName": "@zag-js",
-      "matchPackagePatterns": ["@zag-js/*"]
+      "extends": "monorepo:zag-js",
+      "schedule": "at any time"
+    },
+    {
+      "extends": "monorepo:panda-css",
+      "schedule": "at any time"
     },
     {
       "groupName": "lucide-icons",
