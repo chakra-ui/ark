@@ -4,9 +4,8 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputLabelProps extends HTMLArkProps<'label'> {}
 
-export const NumberInputLabel = defineComponent({
-  name: 'NumberInputLabel',
-  setup(_, { slots, attrs }) {
+export const NumberInputLabel = defineComponent<NumberInputLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useNumberInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const NumberInputLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'NumberInputLabel',
+  },
+)

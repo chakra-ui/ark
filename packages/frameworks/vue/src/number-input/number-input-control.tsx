@@ -4,9 +4,8 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputControlProps extends HTMLArkProps<'div'> {}
 
-export const NumberInputControl = defineComponent({
-  name: 'NumberInputControl',
-  setup(_, { slots, attrs }) {
+export const NumberInputControl = defineComponent<NumberInputControlProps>(
+  (_, { slots, attrs }) => {
     const api = useNumberInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const NumberInputControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'NumberInputControl',
+  },
+)

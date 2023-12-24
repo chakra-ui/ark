@@ -4,9 +4,8 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputIncrementTriggerProps extends HTMLArkProps<'button'> {}
 
-export const NumberInputIncrementTrigger = defineComponent({
-  name: 'NumberInputIncrementTrigger',
-  setup(_, { slots, attrs }) {
+export const NumberInputIncrementTrigger = defineComponent<NumberInputIncrementTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useNumberInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const NumberInputIncrementTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'NumberInputIncrementTrigger',
+  },
+)
