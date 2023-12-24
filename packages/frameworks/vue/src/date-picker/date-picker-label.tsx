@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerLabelProps extends HTMLArkProps<'label'> {}
 
-export const DatePickerLabel = defineComponent({
-  name: 'DatePickerLabel',
-  setup(_, { attrs, slots }) {
+export const DatePickerLabel = defineComponent<DatePickerLabelProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DatePickerLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'DatePickerLabel',
+  },
+)

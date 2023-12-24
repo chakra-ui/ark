@@ -9,24 +9,8 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerTableCellProps extends HTMLArkProps<'td'>, DatePickerTableCellContext {}
 
-export const DatePickerTableCell = defineComponent({
-  name: 'DatePickerTableCell',
-  props: {
-    columns: {
-      type: Number as PropType<DatePickerTableCellContext['columns']>,
-    },
-    disabled: {
-      type: Boolean as PropType<DatePickerTableCellContext['disabled']>,
-    },
-    value: {
-      type: [Number, Object] as PropType<DatePickerTableCellContext['value']>,
-      required: true,
-    },
-    visibleRange: {
-      type: Object as PropType<DatePickerTableCellContext['visibleRange']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
+  (props, { slots, attrs }) => {
     const api = useDatePickerContext()
     const view = useDatePickerViewContext()
     // @ts-ignore
@@ -47,4 +31,22 @@ export const DatePickerTableCell = defineComponent({
       </ark.td>
     )
   },
-})
+  {
+    name: 'DatePickerTableCell',
+    props: {
+      columns: {
+        type: Number as PropType<DatePickerTableCellContext['columns']>,
+      },
+      disabled: {
+        type: Boolean as PropType<DatePickerTableCellContext['disabled']>,
+      },
+      value: {
+        type: [Number, Object] as PropType<DatePickerTableCellContext['value']>,
+        required: true,
+      },
+      visibleRange: {
+        type: Object as PropType<DatePickerTableCellContext['visibleRange']>,
+      },
+    },
+  },
+)

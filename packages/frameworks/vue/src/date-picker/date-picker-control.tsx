@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerControlProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerControl = defineComponent({
-  name: 'DatePickerControl',
-  setup(_, { attrs, slots }) {
+export const DatePickerControl = defineComponent<DatePickerControlProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DatePickerControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DatePickerControl',
+  },
+)

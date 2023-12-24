@@ -10,14 +10,8 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 export interface DatePickerTableProps
   extends Assign<HTMLArkProps<'table'>, Pick<TableProps, 'columns'>> {}
 
-export const DatePickerTable = defineComponent({
-  name: 'DatePickerTable',
-  props: {
-    columns: {
-      type: Number as PropType<TableProps['columns']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const DatePickerTable = defineComponent<DatePickerTableProps>(
+  (props, { slots, attrs }) => {
     const api = useDatePickerContext()
     const view = useDatePickerViewContext()
     DatePickerTableProvider(reactive({ ...props, id: useId().value, ...view }))
@@ -28,4 +22,12 @@ export const DatePickerTable = defineComponent({
       </ark.table>
     )
   },
-})
+  {
+    name: 'DatePickerTable',
+    props: {
+      columns: {
+        type: Number as PropType<TableProps['columns']>,
+      },
+    },
+  },
+)

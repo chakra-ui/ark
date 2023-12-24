@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerPositionerProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerPositioner = defineComponent({
-  name: 'DatePickerPositioner',
-  setup(_, { attrs, slots }) {
+export const DatePickerPositioner = defineComponent<DatePickerPositionerProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
 
     // if (presenceApi.isUnmounted) {
@@ -19,4 +18,7 @@ export const DatePickerPositioner = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'DatePickerPositioner',
+  },
+)

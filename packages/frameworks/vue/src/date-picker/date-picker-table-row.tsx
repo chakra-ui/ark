@@ -5,9 +5,8 @@ import { useDatePickerTableContext } from './date-picker-table-context'
 
 export interface DatePickerTableRowProps extends HTMLArkProps<'tr'> {}
 
-export const DatePickerTableRow = defineComponent({
-  name: 'DatePickerTableRow',
-  setup(_, { attrs, slots }) {
+export const DatePickerTableRow = defineComponent<DatePickerTableRowProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
     const table = useDatePickerTableContext()
 
@@ -17,4 +16,7 @@ export const DatePickerTableRow = defineComponent({
       </ark.tr>
     )
   },
-})
+  {
+    name: 'DatePickerTableRow',
+  },
+)

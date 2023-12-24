@@ -5,9 +5,8 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerNextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerNextTrigger = defineComponent({
-  name: 'DatePickerNextTrigger',
-  setup(_, { attrs, slots }) {
+export const DatePickerNextTrigger = defineComponent<DatePickerNextTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
     const view = useDatePickerViewContext()
 
@@ -17,4 +16,7 @@ export const DatePickerNextTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DatePickerNextTrigger',
+  },
+)
