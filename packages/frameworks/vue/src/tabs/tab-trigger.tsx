@@ -6,18 +6,8 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
 
-export const TabTrigger = defineComponent({
-  name: 'TabTrigger',
-  props: {
-    value: {
-      type: String as PropType<TabTriggerProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: Boolean as PropType<TabTriggerProps['disabled']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const TabTrigger = defineComponent<TabTriggerProps>(
+  (props, { slots, attrs }) => {
     const api = useTabsContext()
 
     return () => (
@@ -26,4 +16,16 @@ export const TabTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'TabTrigger',
+    props: {
+      value: {
+        type: String as PropType<TabTriggerProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: Boolean as PropType<TabTriggerProps['disabled']>,
+      },
+    },
+  },
+)

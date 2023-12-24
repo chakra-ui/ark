@@ -4,9 +4,8 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabListProps extends HTMLArkProps<'div'> {}
 
-export const TabList = defineComponent({
-  name: 'TabList',
-  setup(_, { slots, attrs }) {
+export const TabList = defineComponent<TabListProps>(
+  (_, { slots, attrs }) => {
     const api = useTabsContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TabList = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TabList',
+  },
+)
