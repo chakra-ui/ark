@@ -4,9 +4,8 @@ import { useSelectContext } from './select-context'
 
 export interface SelectClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const SelectClearTrigger = defineComponent({
-  name: 'SelectClearTrigger',
-  setup(_, { slots, attrs }) {
+export const SelectClearTrigger = defineComponent<SelectClearTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SelectClearTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'SelectClearTrigger',
+  },
+)

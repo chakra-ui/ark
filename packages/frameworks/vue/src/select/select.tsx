@@ -1,12 +1,15 @@
-import { defineComponent, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
 import { emits, props } from './select.props'
 import { useSelect, type UseSelectProps } from './use-select'
 
 export interface SelectProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>> {}
+  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
+    UsePresenceProps {}
 
 export const Select = defineComponent({
   name: 'Select',
@@ -25,11 +28,35 @@ export const Select = defineComponent({
     isItemDisabled: {
       type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
     },
+    present: {
+      type: Boolean as PropType<UsePresenceProps['present']>,
+      default: undefined,
+    },
+    lazyMount: {
+      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
+      default: false,
+    },
+    unmountOnExit: {
+      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
+      default: false,
+    },
   },
-  emits,
+  emits: {
+    ...emits,
+    ...presenceEmits,
+  },
   setup(props, { slots, attrs, emit }) {
     const api = useSelect(props, emit)
+
+    const presenceProps = computed(() => ({
+      present: props.present || api.value.isOpen,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
+    // TODO: fix type
+    const presenceApi = usePresence(presenceProps as any, emit)
     SelectProvider(api)
+    PresenceProvider(presenceApi)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>

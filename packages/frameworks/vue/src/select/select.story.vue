@@ -11,6 +11,8 @@ const advancedItems = ref([
   { label: 'Vue', value: 'vue' },
   { label: 'Svelte', value: 'svelte', disabled: true },
 ])
+
+const value = ref(['vue'])
 </script>
 
 <template>
@@ -100,7 +102,7 @@ const advancedItems = ref([
     </Variant>
 
     <Variant title="Controlled">
-      <Select.Root :items="advancedItems" @value-change="(details) => console.log(details.items)">
+      <Select.Root :items="advancedItems" v-model="value">
         <Select.Label>Framework</Select.Label>
         <Select.Control>
           <Select.Trigger>
