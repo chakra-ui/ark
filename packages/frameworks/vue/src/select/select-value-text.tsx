@@ -10,14 +10,8 @@ export interface SelectValueTextProps extends HTMLArkProps<'span'> {
   placeholder?: string
 }
 
-export const SelectValueText = defineComponent({
-  name: 'SelectValueText',
-  props: {
-    placeholder: {
-      type: String,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SelectValueText = defineComponent<SelectValueTextProps>(
+  (props, { slots, attrs }) => {
     const api = useSelectContext()
 
     return () => (
@@ -26,4 +20,12 @@ export const SelectValueText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SelectValueText',
+    props: {
+      placeholder: {
+        type: String,
+      },
+    },
+  },
+)

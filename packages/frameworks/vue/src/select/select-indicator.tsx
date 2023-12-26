@@ -4,9 +4,8 @@ import { useSelectContext } from './select-context'
 
 export interface SelectIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const SelectIndicator = defineComponent({
-  name: 'SelectIndicator',
-  setup(_, { slots, attrs }) {
+export const SelectIndicator = defineComponent<SelectIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SelectIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SelectIndicator',
+  },
+)

@@ -7,11 +7,8 @@ import { useSelectContext } from './select-context'
 
 export interface SelectContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
-export const SelectContent = defineComponent({
-  name: 'SelectContent',
-  props,
-  emits,
-  setup(_, { slots, attrs }) {
+export const SelectContent = defineComponent<SelectContentProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
     const presenceApi = usePresenceContext()
 
@@ -25,4 +22,9 @@ export const SelectContent = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'SelectContent',
+    props,
+    emits,
+  },
+)

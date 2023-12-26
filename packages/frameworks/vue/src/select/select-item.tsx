@@ -7,15 +7,8 @@ import { SelectItemProvider } from './select-item-context'
 
 export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const SelectItem = defineComponent({
-  name: 'SelectItem',
-  props: {
-    item: {
-      type: Object as PropType<SelectItemProps['item']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SelectItem = defineComponent<SelectItemProps>(
+  (props, { slots, attrs }) => {
     const api = useSelectContext()
     SelectItemProvider(props)
 
@@ -25,4 +18,13 @@ export const SelectItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SelectItem',
+    props: {
+      item: {
+        type: Object as PropType<SelectItemProps['item']>,
+        required: true,
+      },
+    },
+  },
+)

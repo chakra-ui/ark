@@ -5,9 +5,8 @@ import { useSelectContext } from './select-context'
 
 export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
-export const SelectPositioner = defineComponent({
-  name: 'SelectPositioner',
-  setup(_, { slots, attrs }) {
+export const SelectPositioner = defineComponent<SelectPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
     const presenceApi = usePresenceContext()
 
@@ -21,4 +20,7 @@ export const SelectPositioner = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'SelectPositioner',
+  },
+)

@@ -7,15 +7,8 @@ import { useSelectContext } from './select-context'
 export interface SelectItemGroupLabelProps
   extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
 
-export const SelectItemGroupLabel = defineComponent({
-  name: 'SelectItemGroupLabel',
-  props: {
-    htmlFor: {
-      type: String as PropType<SelectItemGroupLabelProps['htmlFor']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SelectItemGroupLabel = defineComponent<SelectItemGroupLabelProps>(
+  (props, { slots, attrs }) => {
     const api = useSelectContext()
 
     return () => (
@@ -24,4 +17,13 @@ export const SelectItemGroupLabel = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'SelectItemGroupLabel',
+    props: {
+      htmlFor: {
+        type: String as PropType<SelectItemGroupLabelProps['htmlFor']>,
+        required: true,
+      },
+    },
+  },
+)
