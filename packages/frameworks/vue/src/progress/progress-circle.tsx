@@ -5,10 +5,14 @@ import { useProgressContext } from './progress-context'
 export interface ProgressCircleProps extends HTMLArkProps<'svg'> {}
 
 export const ProgressCircle = defineComponent<ProgressCircleProps>(
-  (_, { attrs }) => {
+  (_, { slots, attrs }) => {
     const api = useProgressContext()
 
-    return () => <ark.svg {...api.value.circleProps} {...attrs} />
+    return () => (
+      <ark.svg {...api.value.circleProps} {...attrs}>
+        {slots.default?.()}
+      </ark.svg>
+    )
   },
   {
     name: 'ProgressCircle',
