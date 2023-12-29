@@ -8,7 +8,14 @@ export interface ProgressCircleRangeProps extends HTMLArkProps<'circle'> {}
 export const ProgressCircleRange = forwardRef<SVGCircleElement, ProgressCircleRangeProps>(
   (props) => {
     const api = useProgressContext()
-    const mergedProps = mergeProps(api.circleRangeProps, props)
+    const mergedProps = mergeProps(api.circleRangeProps, props, {
+      style: {
+        // @ts-expect-error missing until new zag release
+        cx: '50px',
+        cy: '50px',
+        r: '42px',
+      },
+    })
 
     return <ark.circle {...mergedProps} />
   },
