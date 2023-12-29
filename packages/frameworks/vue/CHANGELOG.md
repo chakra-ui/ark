@@ -15,6 +15,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Rewritten all components `defineComponent` to Function Signature (without combobox and select)
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
 - Revised `Menu` component

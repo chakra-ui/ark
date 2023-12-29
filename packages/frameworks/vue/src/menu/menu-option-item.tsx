@@ -6,39 +6,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
-export const MenuOptionItem = defineComponent({
-  name: 'MenuOptionItem',
-  props: {
-    id: {
-      type: String as PropType<MenuOptionItemProps['id']>,
-    },
-    disabled: {
-      type: Boolean as PropType<MenuOptionItemProps['disabled']>,
-      default: undefined,
-    },
-    valueText: {
-      type: String as PropType<MenuOptionItemProps['valueText']>,
-      default: undefined,
-    },
-    closeOnSelect: {
-      type: Boolean as PropType<MenuOptionItemProps['closeOnSelect']>,
-      default: undefined,
-    },
-    name: {
-      type: String as PropType<MenuOptionItemProps['name']>,
-      required: true,
-    },
-    type: {
-      type: String as PropType<MenuOptionItemProps['type']>,
-      required: true,
-    },
-    value: {
-      type: String as PropType<MenuOptionItemProps['value']>,
-      required: true,
-    },
-  },
-  emits: ['checked-change'],
-  setup(props, { slots, attrs, emit }) {
+export const MenuOptionItem = defineComponent<MenuOptionItemProps>(
+  (props, { slots, attrs, emit }) => {
     const menuOptionItemProps = computed<OptionItemProps>(() => ({
       ...props,
       onCheckedChange(checked) {
@@ -54,4 +23,37 @@ export const MenuOptionItem = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuOptionItem',
+    props: {
+      id: {
+        type: String as PropType<MenuOptionItemProps['id']>,
+      },
+      disabled: {
+        type: Boolean as PropType<MenuOptionItemProps['disabled']>,
+        default: undefined,
+      },
+      valueText: {
+        type: String as PropType<MenuOptionItemProps['valueText']>,
+        default: undefined,
+      },
+      closeOnSelect: {
+        type: Boolean as PropType<MenuOptionItemProps['closeOnSelect']>,
+        default: undefined,
+      },
+      name: {
+        type: String as PropType<MenuOptionItemProps['name']>,
+        required: true,
+      },
+      type: {
+        type: String as PropType<MenuOptionItemProps['type']>,
+        required: true,
+      },
+      value: {
+        type: String as PropType<MenuOptionItemProps['value']>,
+        required: true,
+      },
+    },
+    emits: ['checked-change'],
+  },
+)

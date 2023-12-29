@@ -4,9 +4,8 @@ import { useEditableContext } from './editable-context'
 
 export interface EditablePreviewProps extends HTMLArkProps<'span'> {}
 
-export const EditablePreview = defineComponent({
-  name: 'EditablePreview',
-  setup(_, { slots, attrs }) {
+export const EditablePreview = defineComponent<EditablePreviewProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditablePreview = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'EditablePreview',
+  },
+)

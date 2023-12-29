@@ -9,15 +9,8 @@ export interface ColorPickerViewProps {
   format: ColorFormat
 }
 
-export const ColorPickerView = defineComponent({
-  name: 'ColorPickerView',
-  props: {
-    format: {
-      type: String as PropType<ColorPickerViewProps['format']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ColorPickerView = defineComponent<ColorPickerViewProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
     return () =>
       api.value.format === props.format ? (
@@ -26,4 +19,13 @@ export const ColorPickerView = defineComponent({
         </ark.div>
       ) : null
   },
-})
+  {
+    name: 'ColorPickerView',
+    props: {
+      format: {
+        type: String as PropType<ColorPickerViewProps['format']>,
+        required: true,
+      },
+    },
+  },
+)

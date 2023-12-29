@@ -4,9 +4,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerControlProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerControl = defineComponent({
-  name: 'ColorPickerControl',
-  setup(_, { slots, attrs }) {
+export const ColorPickerControl = defineComponent<ColorPickerControlProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ColorPickerControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerControl',
+  },
+)

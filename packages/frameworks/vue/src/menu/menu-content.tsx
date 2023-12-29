@@ -7,11 +7,8 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
-export const MenuContent = defineComponent({
-  name: 'MenuContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const MenuContent = defineComponent<MenuContentProps>(
+  (props, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -22,4 +19,9 @@ export const MenuContent = defineComponent({
       </Presence>
     )
   },
-})
+  {
+    name: 'MenuContent',
+    props,
+    emits,
+  },
+)

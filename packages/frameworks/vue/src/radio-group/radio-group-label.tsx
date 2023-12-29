@@ -4,9 +4,8 @@ import { useRadioGroupContext } from './radio-group-context'
 
 export interface RadioGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const RadioGroupLabel = defineComponent({
-  name: 'RadioGroupLabel',
-  setup(_, { slots, attrs }) {
+export const RadioGroupLabel = defineComponent<RadioGroupLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useRadioGroupContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const RadioGroupLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'RadioGroupLabel',
+  },
+)

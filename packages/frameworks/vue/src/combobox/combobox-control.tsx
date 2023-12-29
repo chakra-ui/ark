@@ -4,9 +4,8 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxControlProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxControl = defineComponent({
-  name: 'ComboboxControl',
-  setup(_, { slots, attrs }) {
+export const ComboboxControl = defineComponent<ComboboxControlProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ComboboxControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ComboboxControl',
+  },
+)

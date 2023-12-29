@@ -4,13 +4,15 @@ import { ark, type HTMLArkProps } from '../factory'
 
 export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerSwatchGroup = defineComponent({
-  name: 'ColorPickerSwatchGroup',
-  setup(_, { slots, attrs }) {
+export const ColorPickerSwatchGroup = defineComponent<ColorPickerSwatchGroupProps>(
+  (_, { slots, attrs }) => {
     return () => (
       <ark.div {...colorPickerAnatomy.build().swatchGroup.attrs} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerSwatchGroup',
+  },
+)

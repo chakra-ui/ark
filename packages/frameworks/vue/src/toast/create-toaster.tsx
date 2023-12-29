@@ -12,6 +12,7 @@ import {
   type VNode,
 } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
 import { ToastProvider } from './toast-context'
 import { ToastGroup } from './toast-group'
@@ -30,9 +31,8 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
   const service = toast.group.machine({ id: '1', placement, ...rest }).start()
   let api = computed(() => toast.group.connect(service.getState(), service.send, normalizeProps))
 
-  const Toaster = defineComponent({
-    name: 'Toaster',
-    setup(_, { attrs }) {
+  const Toaster = defineComponent<HTMLArkProps<'ol'>>(
+    (_, { attrs }) => {
       const getRootNode = useEnvironmentContext()
       const [state, send] = useActor(service)
       api = computed(() => toast.group.connect(state.value, send, normalizeProps))
@@ -52,7 +52,10 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
         </ToastGroup>
       )
     },
-  })
+    {
+      name: 'Toaster',
+    },
+  )
 
   return [Toaster, api]
 }

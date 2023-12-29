@@ -11,15 +11,8 @@ export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'> {
   type?: string
 }
 
-export const FileUploadItemPreview = defineComponent({
-  name: 'FileUploadItemPreview',
-  props: {
-    type: {
-      type: String,
-      default: '.*',
-    },
-  },
-  setup(props, { attrs, slots }) {
+export const FileUploadItemPreview = defineComponent<FileUploadItemPreviewProps>(
+  (props, { attrs, slots }) => {
     const api = useFileUploadContext()
     const item = useFileUploadItemContext()
 
@@ -30,4 +23,13 @@ export const FileUploadItemPreview = defineComponent({
         </ark.div>
       )
   },
-})
+  {
+    name: 'FileUploadItemPreview',
+    props: {
+      type: {
+        type: String,
+        default: '.*',
+      },
+    },
+  },
+)

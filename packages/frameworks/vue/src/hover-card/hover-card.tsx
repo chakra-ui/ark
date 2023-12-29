@@ -7,14 +7,16 @@ import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
 export interface HoverCardProps extends Assign<HTMLArkProps<'div'>, UseHoverCardProps> {}
 
-export const HoverCard = defineComponent({
-  name: 'HoverCard',
-  props,
-  emits,
-  setup(props, { slots, emit }) {
+export const HoverCard = defineComponent<HoverCardProps>(
+  (props, { slots, emit }) => {
     const api = useHoverCard(props, emit)
     HoverCardProvider(api)
 
     return () => slots.default?.(api.value)
   },
-})
+  {
+    name: 'HoverCard',
+    props,
+    emits,
+  },
+)

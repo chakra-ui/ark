@@ -4,9 +4,8 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
 
-export const FileUploadItemGroup = defineComponent({
-  name: 'FileUploadItemGroup',
-  setup(_, { slots, attrs }) {
+export const FileUploadItemGroup = defineComponent<FileUploadItemGroupProps>(
+  (_, { slots, attrs }) => {
     const api = useFileUploadContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const FileUploadItemGroup = defineComponent({
       </ark.ul>
     )
   },
-})
+  {
+    name: 'FileUploadItemGroup',
+  },
+)

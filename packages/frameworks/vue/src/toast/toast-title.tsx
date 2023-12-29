@@ -4,9 +4,8 @@ import { useToastContext } from './toast-context'
 
 export interface ToastTitleProps extends HTMLArkProps<'div'> {}
 
-export const ToastTitle = defineComponent({
-  name: 'ToastTitle',
-  setup(_, { attrs, slots }) {
+export const ToastTitle = defineComponent<ToastTitleProps>(
+  (_, { attrs, slots }) => {
     const api = useToastContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ToastTitle = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ToastTitle',
+  },
+)

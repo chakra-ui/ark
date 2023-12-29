@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Select } from '../'
+import { ChevronDownIcon } from 'lucide-vue-next'
 
-const items = ref([
+const items = [
   { label: 'React', value: 'react' },
   { label: 'Solid', value: 'solid' },
   { label: 'Vue', value: 'vue' },
   { label: 'Svelte', value: 'svelte', disabled: true },
-])
+]
 </script>
 
 <template>
-  <Select.Root :items="items">
+  <Select.Root :items="items" :openDelay="0" :closeDelay="0">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>
         <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>▼</Select.Indicator>
+        <Select.Indicator>
+          <ChevronDownIcon />
+        </Select.Indicator>
       </Select.Trigger>
       <Select.ClearTrigger>Clear</Select.ClearTrigger>
     </Select.Control>

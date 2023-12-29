@@ -4,9 +4,8 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogTitleProps extends HTMLArkProps<'h2'> {}
 
-export const DialogTitle = defineComponent({
-  name: 'DialogTitle',
-  setup(_, { slots, attrs }) {
+export const DialogTitle = defineComponent<DialogTitleProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DialogTitle = defineComponent({
       </ark.h2>
     )
   },
-})
+  {
+    name: 'DialogTitle',
+  },
+)

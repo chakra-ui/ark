@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerClearTrigger = defineComponent({
-  name: 'DatePickerClearTrigger',
-  setup(_, { attrs, slots }) {
+export const DatePickerClearTrigger = defineComponent<DatePickerClearTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const DatePickerClearTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'DatePickerClearTrigger',
+  },
+)

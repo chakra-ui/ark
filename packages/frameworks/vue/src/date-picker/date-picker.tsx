@@ -8,11 +8,8 @@ import { useDatePicker, type UseDatePickerProps } from './use-date-picker'
 export interface DatePickerProps extends Assign<HTMLArkProps<'div'>, UseDatePickerProps> {}
 // UsePresenceProps {}
 
-export const DatePicker = defineComponent({
-  name: 'DatePicker',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const DatePicker = defineComponent<DatePickerProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useDatePicker(props, emit)
     DatePickerProvider(api)
 
@@ -24,4 +21,9 @@ export const DatePicker = defineComponent({
       // </Presence>
     )
   },
-})
+  {
+    name: 'DatePicker',
+    props,
+    emits,
+  },
+)

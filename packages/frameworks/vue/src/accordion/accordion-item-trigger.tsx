@@ -6,9 +6,8 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
-export const AccordionItemTrigger = defineComponent({
-  name: 'AccordionItemTrigger',
-  setup(_, { attrs, slots }) {
+export const AccordionItemTrigger = defineComponent<AccordionItemTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useAccordionContext()
     const item = useAccordionItemContext()
     const presenceApi = usePresenceContext()
@@ -26,4 +25,7 @@ export const AccordionItemTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'AccordionItemTrigger',
+  },
+)

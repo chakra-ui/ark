@@ -7,14 +7,8 @@ import { useColorPickerContext } from './color-picker-context'
 export interface ColorPickerTransparencyGridProps
   extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
 
-export const ColorPickerTransparencyGrid = defineComponent({
-  name: 'ColorPickerTransparencyGrid',
-  props: {
-    size: {
-      type: String as PropType<ColorPickerTransparencyGridProps['size']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ColorPickerTransparencyGrid = defineComponent<ColorPickerTransparencyGridProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -23,4 +17,12 @@ export const ColorPickerTransparencyGrid = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerTransparencyGrid',
+    props: {
+      size: {
+        type: String as PropType<ColorPickerTransparencyGridProps['size']>,
+      },
+    },
+  },
+)

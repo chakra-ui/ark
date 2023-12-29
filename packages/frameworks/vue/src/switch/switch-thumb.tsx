@@ -4,9 +4,8 @@ import { useSwitchContext } from './switch-context'
 
 export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
-export const SwitchThumb = defineComponent({
-  name: 'SwitchThumb',
-  setup(_, { slots, attrs }) {
+export const SwitchThumb = defineComponent<SwitchThumbProps>(
+  (_, { slots, attrs }) => {
     const api = useSwitchContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SwitchThumb = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SwitchThumb',
+  },
+)

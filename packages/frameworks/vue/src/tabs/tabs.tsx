@@ -8,11 +8,8 @@ import { useTabs, type UseTabsProps } from './use-tabs'
 
 export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
 
-export const Tabs = defineComponent({
-  name: 'Tabs',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Tabs = defineComponent<TabsProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useTabs(props, emit)
     TabsProvider(api)
 
@@ -22,4 +19,9 @@ export const Tabs = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Tabs',
+    props,
+    emits,
+  },
+)

@@ -6,9 +6,8 @@ import { useSegmentGroupItemContext } from './segment-group-item-context'
 
 export interface SegmentGroupItemControlProps extends HTMLArkProps<'div'> {}
 
-export const SegmentGroupItemControl = defineComponent({
-  name: 'SegmentGroupItemControl',
-  setup(_, { slots, attrs }) {
+export const SegmentGroupItemControl = defineComponent<SegmentGroupItemControlProps>(
+  (_, { slots, attrs }) => {
     const api = useSegmentGroupContext()
     const itemProps = useSegmentGroupItemContext()
 
@@ -25,4 +24,7 @@ export const SegmentGroupItemControl = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'SegmentGroupItemControl',
+  },
+)

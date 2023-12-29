@@ -4,9 +4,8 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerMonthSelectProps extends HTMLArkProps<'select'> {}
 
-export const DatePickerMonthSelect = defineComponent({
-  name: 'DatePickerMonthSelect',
-  setup(_, { attrs }) {
+export const DatePickerMonthSelect = defineComponent<DatePickerMonthSelectProps>(
+  (_, { attrs }) => {
     const api = useDatePickerContext()
 
     return () => (
@@ -19,4 +18,7 @@ export const DatePickerMonthSelect = defineComponent({
       </ark.select>
     )
   },
-})
+  {
+    name: 'DatePickerMonthSelect',
+  },
+)

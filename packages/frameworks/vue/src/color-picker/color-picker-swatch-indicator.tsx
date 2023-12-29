@@ -7,9 +7,8 @@ import { useColorPickerSwatchContext } from './color-picker-swatch-context'
 
 export interface ColorPickerSwatchIndicatorProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {}
 
-export const ColorPickerSwatchIndicator = defineComponent({
-  name: 'ColorPickerSwatchIndicator',
-  setup(_, { slots, attrs }) {
+export const ColorPickerSwatchIndicator = defineComponent<ColorPickerSwatchIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
     const swatchProps = useColorPickerSwatchContext()
 
@@ -19,4 +18,7 @@ export const ColorPickerSwatchIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerSwatchIndicator',
+  },
+)

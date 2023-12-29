@@ -7,11 +7,8 @@ import { useSlider, type UseSliderProps } from './use-slider'
 
 export interface SliderProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
 
-export const Slider = defineComponent({
-  name: 'Slider',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Slider = defineComponent<SliderProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useSlider(props, emit)
     SliderProvider(api)
 
@@ -21,4 +18,9 @@ export const Slider = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Slider',
+    props,
+    emits,
+  },
+)

@@ -4,9 +4,8 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ColorPickerTrigger = defineComponent({
-  name: 'ColorPickerTrigger',
-  setup(_, { slots, attrs }) {
+export const ColorPickerTrigger = defineComponent<ColorPickerTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ColorPickerTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'ColorPickerTrigger',
+  },
+)

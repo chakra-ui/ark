@@ -5,9 +5,8 @@ import { useComboboxItemContext } from './combobox-item-context'
 
 export interface ComboboxItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxItemIndicator = defineComponent({
-  name: 'ComboboxItemIndicator',
-  setup(_, { slots, attrs }) {
+export const ComboboxItemIndicator = defineComponent<ComboboxItemIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
     const itemProps = useComboboxItemContext()
 
@@ -17,4 +16,7 @@ export const ComboboxItemIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'ComboboxItemIndicator',
+  },
+)

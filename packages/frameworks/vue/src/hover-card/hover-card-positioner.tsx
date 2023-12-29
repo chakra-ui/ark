@@ -4,9 +4,8 @@ import { useHoverCardContext } from './hover-card-context'
 
 export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
 
-export const HoverCardPositioner = defineComponent({
-  name: 'HoverCardPositioner',
-  setup(_, { slots, attrs }) {
+export const HoverCardPositioner = defineComponent<HoverCardPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useHoverCardContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const HoverCardPositioner = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'HoverCardPositioner',
+  },
+)

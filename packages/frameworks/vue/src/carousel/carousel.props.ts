@@ -35,5 +35,5 @@ export const props = {
   spacing: {
     type: String as PropType<Context['spacing']>,
   },
-}
+} as const
 export const emits = declareEmits(['index-change'])
