@@ -1,7 +1,7 @@
 {
   "Root": {
     "align": {
-      "type": "'start' | 'center' | 'end'",
+      "type": "'start' | 'end' | 'center'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
