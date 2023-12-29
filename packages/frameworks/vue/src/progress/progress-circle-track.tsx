@@ -8,15 +8,7 @@ export const ProgressCircleTrack = defineComponent<ProgressCircleTrackProps>(
   (_, { attrs }) => {
     const api = useProgressContext()
 
-    const style = {
-      style: {
-        cx: '50px',
-        cy: '50px',
-        r: '42px',
-      },
-    }
-
-    return () => <ark.circle {...api.value.circleTrackProps} {...attrs} {...style} />
+    return () => <ark.circle {...api.value.circleTrackProps} {...attrs} />
   },
   {
     name: 'ProgressCircleTrack',
