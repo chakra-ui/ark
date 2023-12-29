@@ -12,9 +12,8 @@ const ComponentUnderTest = (props: ProgressProps) => (
       <Progress.Range />
     </Progress.Track>
     <Progress.Circle>
-      <Progress.CircleTrack>
-        <Progress.CircleRange />
-      </Progress.CircleTrack>
+      <Progress.CircleTrack />
+      <Progress.CircleRange />
     </Progress.Circle>
   </Progress.Root>
 )
