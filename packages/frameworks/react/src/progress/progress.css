@@ -45,13 +45,13 @@
 
 [data-scope='progress'][data-part='circle'] {
   --size: 100px;
+  --thickness: 10px;
 }
 
 [data-scope='progress'][data-part='circle-track'] {
-  --thickness: 10px;
-  fill: silver;
+  stroke: silver;
 }
 
 [data-scope='progress'][data-part='circle-range'] {
-  fill: orange;
+  stroke: orange;
 }
