@@ -28,6 +28,7 @@ Ark UI is available for the following JavaScript frameworks:
 - [Pagination](https://ark-ui.com/docs/components/pagination)
 - [Pin Input](https://ark-ui.com/docs/components/pin-input)
 - [Popover](https://ark-ui.com/docs/components/popover)
+- [Progress](https://ark-ui.com/docs/components/progress)
 - [Radio Group](https://ark-ui.com/docs/components/radio-group)
 - [Range Slider](https://ark-ui.com/docs/components/slider)
 - [Rating Group](https://ark-ui.com/docs/components/rating-group)
