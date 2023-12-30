@@ -67,7 +67,7 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
   })
 
-  it.skip('should not have aria-controls if lazy mounted', async () => {
+  it('should not have aria-controls if lazy mounted', async () => {
     render(ComponentUnderTest, {
       props: {
         lazyMount: true,
