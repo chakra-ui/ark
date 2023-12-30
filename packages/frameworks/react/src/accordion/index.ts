@@ -1,5 +1,6 @@
 import { Accordion as AccordionRoot, type AccordionProps } from './accordion'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
+import { AccordionDebug, type AccordionDebugProps } from './accordion-debug'
 import { AccordionItem, type AccordionItemProps } from './accordion-item'
 import { AccordionItemContent, type AccordionItemContentProps } from './accordion-item-content'
 import { useAccordionItemContext, type AccordionItemContext } from './accordion-item-context'
@@ -11,6 +12,7 @@ import { AccordionItemTrigger, type AccordionItemTriggerProps } from './accordio
 
 const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,
+  Debug: AccordionDebug,
   Item: AccordionItem,
   ItemContent: AccordionItemContent,
   ItemIndicator: AccordionItemIndicator,
@@ -19,6 +21,7 @@ const Accordion = Object.assign(AccordionRoot, {
 
 export {
   Accordion,
+  AccordionDebug,
   AccordionItem,
   AccordionItemContent,
   AccordionItemIndicator,
@@ -28,6 +31,7 @@ export {
 }
 export type {
   AccordionContext,
+  AccordionDebugProps,
   AccordionItemContentProps,
   AccordionItemContext,
   AccordionItemIndicatorProps,
