@@ -39,10 +39,12 @@ description: All notable changes to this project will be documented in this file
 - Fixed `Combobox.ItemText` type from `button` to `span`
 - Fixed `Combobox.Positioner` tag from `ul` to `div`
 - Fixed `Dialog.Trigger` aria-controls bug
+- Fixed `Popover.Trigger` aria-controls bug
 - Fixed `Toast` render bugs
 - Fixed lazy mounting in `Accordion`
 - Fixed lazy mounting in `Combobox`
 - Fixed lazy mounting in `HoverCard`
+- Fixed lazy mounting in `Popover`
 - Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14
