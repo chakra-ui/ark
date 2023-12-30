@@ -147,4 +147,45 @@ describe('Accordion', () => {
     await user.type(firstTrigger, '{tab}')
     expect(secondTrigger).toHaveFocus()
   })
+
+  it('should lazy mount an accordion item', async () => {
+    render(ComponentUnderTest, { props: { lazyMount: true, collapsible: true } })
+
+    const button = screen.getByRole('button', { name: 'React Trigger' })
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(button)
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(button)
+
+    expect(screen.queryByText('React Content')).not.toBeVisible()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(ComponentUnderTest, { props: { lazyMount: true } })
+
+    const button = screen.getByRole('button', { name: 'React Trigger' })
+
+    expect(button).not.toHaveAttribute('aria-controls')
+
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit an accordion item', async () => {
+    render(ComponentUnderTest, {
+      props: { lazyMount: true, unmountOnExit: true, collapsible: true },
+    })
+
+    const button = screen.getByRole('button', { name: 'React Trigger' })
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(button)
+
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(button)
+
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+  })
 })
