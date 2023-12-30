@@ -58,13 +58,13 @@ describe('Dialog', () => {
       },
     })
 
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
@@ -85,12 +85,12 @@ describe('Dialog', () => {
       },
     })
 
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

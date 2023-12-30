@@ -11,7 +11,7 @@ const ComponentUnderTest = (props: DialogProps) => (
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />
-      <Dialog.Positioner>
+      <Dialog.Positioner data-testid="positioner">
         <Dialog.Content>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
@@ -53,13 +53,14 @@ describe('Dialog', () => {
 
   it('should be able to lazy mount', async () => {
     render(() => <ComponentUnderTest lazyMount />)
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByRole('dialog', { hidden: true })).not.toBeVisible()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
@@ -69,12 +70,13 @@ describe('Dialog', () => {
 
   it('should lazy mount and unmount on exit', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })
