@@ -12,7 +12,10 @@ export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
   defaultValue?: accordion.Context['value']
 }
 
-export interface UseAccordionReturn extends accordion.Api<PropTypes> {}
+export interface UseAccordionReturn {
+  api: accordion.Api<PropTypes>
+  machine: ReturnType<typeof accordion.machine>
+}
 
 export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
   const initialContext: accordion.Context = {
@@ -29,6 +32,8 @@ export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn 
     onValueChange: useEvent(props.onValueChange),
   }
 
-  const [state, send] = useMachine(accordion.machine(initialContext), { context })
-  return accordion.connect(state, send, normalizeProps)
+  const [state, send, machine] = useMachine(accordion.machine(initialContext), { context })
+  const api = accordion.connect(state, send, normalizeProps)
+
+  return { api, machine }
 }

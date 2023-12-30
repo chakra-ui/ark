@@ -4,7 +4,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
 import type { Assign } from '../types'
-import { AccordionProvider } from './accordion-context'
+import { AccordionMachineProvider, AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
 export interface AccordionProps
@@ -27,15 +27,17 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>((props, ref)
     'orientation',
     'value',
   ])
-  const api = useAccordion(useAccordionProps)
+  const { api, machine } = useAccordion(useAccordionProps)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
-    <AccordionProvider value={api}>
-      <PresencePropsProvider value={presenceProps}>
-        <ark.div {...mergedProps} ref={ref} />
-      </PresencePropsProvider>
-    </AccordionProvider>
+    <AccordionMachineProvider value={machine}>
+      <AccordionProvider value={api}>
+        <PresencePropsProvider value={presenceProps}>
+          <ark.div {...mergedProps} ref={ref} />
+        </PresencePropsProvider>
+      </AccordionProvider>
+    </AccordionMachineProvider>
   )
 })
 
