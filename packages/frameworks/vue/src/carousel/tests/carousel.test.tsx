@@ -1,9 +1,20 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
+import { nextTick } from 'vue'
 import { Carousel } from '../'
 import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './carousel.test.vue'
+
+type RenderFuncParams = Parameters<typeof render>
+
+async function renderOnNextTick(TestComponent: RenderFuncParams[0], options?: RenderFuncParams[1]) {
+  const view = render(TestComponent, options)
+
+  await nextTick()
+
+  return view
+}
 
 describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
@@ -16,8 +27,8 @@ describe('Carousel', () => {
     expect(Carousel[part]).toBeDefined()
   })
 
-  it.skip('should have the correct disabled / enabled states for control buttons', async () => {
-    render(ComponentUnderTest)
+  it('should have the correct disabled / enabled states for control buttons', async () => {
+    await renderOnNextTick(ComponentUnderTest)
     const prevButton = screen.getByRole('button', { name: 'Previous Slide' })
     const nextButton = screen.getByRole('button', { name: 'Next Slide' })
 
@@ -37,7 +48,7 @@ describe('Carousel', () => {
   })
 
   it('goes to the indicated slide on indicator click', async () => {
-    render(ComponentUnderTest)
+    await renderOnNextTick(ComponentUnderTest)
     const indicators = screen.getAllByTestId('indicator')
     const slides = screen.getAllByTestId('item')
 
