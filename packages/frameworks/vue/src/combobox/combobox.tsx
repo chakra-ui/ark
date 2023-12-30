@@ -1,6 +1,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { props as presenceProps } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
@@ -14,6 +15,7 @@ export const Combobox = defineComponent({
   name: 'Combobox',
   props: {
     ...props,
+    ...presenceProps,
     items: {
       type: Array as PropType<UseComboboxProps<any>['items']>,
       required: true,
@@ -26,18 +28,6 @@ export const Combobox = defineComponent({
     },
     isItemDisabled: {
       type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
-    },
-    present: {
-      type: Boolean as PropType<UsePresenceProps['present']>,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-      default: false,
-    },
-    unmountOnExit: {
-      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-      default: false,
     },
   },
   emits,

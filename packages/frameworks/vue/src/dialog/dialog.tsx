@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
-import { props as presenceProps } from '../presence/presence.props'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import { DialogProvider } from './dialog-context'
 import { emits, props } from './dialog.props'
 import { useDialog, type UseDialogProps } from './use-dialog'
@@ -31,6 +31,9 @@ export const Dialog = defineComponent<DialogProps>(
       ...props,
       ...presenceProps,
     },
-    emits,
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
   },
 )
