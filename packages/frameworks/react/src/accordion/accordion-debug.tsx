@@ -1,3 +1,6 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext, useAccordionMachineContext } from './accordion-context'
