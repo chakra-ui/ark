@@ -1,7 +1,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
-import { props as presenceProps } from '../presence/presence.props'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
@@ -30,7 +30,10 @@ export const Combobox = defineComponent({
       type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
     },
   },
-  emits,
+  emits: {
+    ...emits,
+    ...presenceEmits,
+  },
   setup(props, { slots, attrs, emit }) {
     const api = useCombobox(props, emit)
 
