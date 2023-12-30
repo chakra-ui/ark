@@ -1,3 +1,5 @@
+import { declareEmits } from '../utils'
+
 export const props = {
   present: {
     type: Boolean,
@@ -6,3 +8,5 @@ export const props = {
   lazyMount: Boolean,
   unmountOnExit: Boolean,
 }
+
+export const emits = declareEmits(['exit-complete'])
