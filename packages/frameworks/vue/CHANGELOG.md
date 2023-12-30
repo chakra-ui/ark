@@ -37,9 +37,13 @@ description: All notable changes to this project will be documented in this file
 - Added missing emits in `Presence`
 - Added missing emits in `Slider`
 - Fixed `Combobox.ItemText` type from `button` to `span`
+- Fixed `Combobox.Positioner` tag from `ul` to `div`
+- Fixed `Dialog.Trigger` aria-controls bug
 - Fixed `Toast` render bugs
+- Fixed lazy mounting in `Accordion`
+- Fixed lazy mounting in `Combobox`
+- Fixed lazy mounting in `HoverCard`
 - Resolved an issue where `Tooltip` component would not handle open control state
-- Rewritten presence logic in `Accordion`
 
 ## [0.9.0] - 2023-12-14
 
