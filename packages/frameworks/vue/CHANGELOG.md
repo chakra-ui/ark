@@ -30,21 +30,22 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
-- Added a missing slot with machine api in `Splitter`
-- Added a missing slot with machine api in `Tabs`
-- Added a missing slot with machine api in `Tooltip`
-- Added missing emits in `Dialog`
-- Added missing emits in `Presence`
-- Added missing emits in `Slider`
+- Added a missing slot with machine api in `Splitter` component
+- Added a missing slot with machine api in `Tabs` component
+- Added a missing slot with machine api in `Tooltip` component
+- Added missing emits in `Dialog` component
+- Added missing emits in `Presence` component
+- Added missing emits in `Slider` component
 - Fixed `Combobox.ItemText` type from `button` to `span`
 - Fixed `Combobox.Positioner` tag from `ul` to `div`
 - Fixed `Dialog.Trigger` aria-controls bug
 - Fixed `Popover.Trigger` aria-controls bug
-- Fixed `Toast` render bugs
-- Fixed lazy mounting in `Accordion`
-- Fixed lazy mounting in `Combobox`
-- Fixed lazy mounting in `HoverCard`
-- Fixed lazy mounting in `Popover`
+- Fixed `Toast` component render bugs
+- Fixed lazy mounting in `Accordion` component
+- Fixed lazy mounting in `Combobox` component
+- Fixed lazy mounting in `HoverCard` component
+- Fixed lazy mounting in `Popover` component
+- Fixed lazy mounting in `Tabs` component
 - Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14
