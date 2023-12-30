@@ -8,6 +8,7 @@ import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
+import type { UseAccordionReturn } from './use-accordion'
 
 export interface AccordionItemProps
   extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
@@ -18,7 +19,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
     'value',
     'disabled',
   ])
-  const api = useAccordionContext()
+  const api = useAccordionContext() as UseAccordionReturn['api']
   const itemState = api.getItemState(itemProps)
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
   const view = runIfFn(children, itemState)

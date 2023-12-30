@@ -4,12 +4,13 @@ import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
+import type { UseAccordionReturn } from './use-accordion'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
 export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>(
   (props, ref) => {
-    const api = useAccordionContext()
+    const api = useAccordionContext() as UseAccordionReturn['api']
     const accordionItem = useAccordionItemContext()
     const presenceApi = usePresenceContext()
     const triggerProps = api.getItemTriggerProps(accordionItem)
