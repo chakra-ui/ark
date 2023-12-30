@@ -16,6 +16,7 @@ export default meta
 export const Basic = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
+      <Accordion.Debug />
       {['React', 'Solid', 'Vue'].map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.ItemTrigger>
