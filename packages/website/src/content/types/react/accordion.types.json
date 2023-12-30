@@ -100,6 +100,13 @@
     },
     "disabled": { "type": "boolean", "isRequired": false }
   },
+  "Debug": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ItemContent": {
     "asChild": {
       "type": "boolean",
