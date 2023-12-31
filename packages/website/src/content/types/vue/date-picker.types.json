@@ -52,6 +52,12 @@
       "isRequired": false,
       "description": "Returns whether a date of the calendar is available."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "locale": {
       "type": "string",
       "isRequired": false,
@@ -82,6 +88,11 @@
       "type": "number",
       "isRequired": false,
       "description": "The number of months to display."
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
@@ -118,6 +129,11 @@
       "isRequired": false,
       "description": "The user provided options used to position the date picker content"
     },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -138,6 +154,12 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "The localized messages to use."
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "view": {
       "type": "DateView",
