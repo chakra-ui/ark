@@ -13,12 +13,12 @@ const ComponentUnderTest = (props: ColorPickerProps) => (
           <ColorPicker.ChannelInput channel="hex" />
           <ColorPicker.ChannelInput channel="alpha" />
           <ColorPicker.ValueText />
-          <ColorPicker.Trigger>
+          <ColorPicker.Trigger data-testid="trigger">
             <ColorPicker.TransparencyGrid />
             <ColorPicker.Swatch value={api.value} />
           </ColorPicker.Trigger>
         </ColorPicker.Control>
-        <ColorPicker.Positioner>
+        <ColorPicker.Positioner data-testid="positioner">
           <ColorPicker.Content>
             <ColorPicker.FormatTrigger>Toggle ColorFormat</ColorPicker.FormatTrigger>
             <ColorPicker.FormatSelect />
