@@ -13,11 +13,11 @@ export const ColorPickerView = defineComponent<ColorPickerViewProps>(
   (props, { slots, attrs }) => {
     const api = useColorPickerContext()
     return () =>
-      api.value.format === props.format ? (
+      api.value.format !== props.format ? null : (
         <ark.div data-format={props.format} {...colorPickerAnatomy.build().view.attrs} {...attrs}>
           {slots.default?.()}
         </ark.div>
-      ) : null
+      )
   },
   {
     name: 'ColorPickerView',

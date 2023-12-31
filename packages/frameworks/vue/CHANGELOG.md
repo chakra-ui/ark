@@ -15,6 +15,9 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Changed `ColorPicker.Swatch` tag from `button` to `div`
+- Changed `Combobox.ItemText` type from `button` to `span`
+- Changed `Combobox.Positioner` tag from `ul` to `div`
 - Rewritten all components `defineComponent` to Function Signature (without combobox and select)
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
@@ -36,12 +39,11 @@ description: All notable changes to this project will be documented in this file
 - Added missing emits in `Dialog` component
 - Added missing emits in `Presence` component
 - Added missing emits in `Slider` component
-- Fixed `Combobox.ItemText` type from `button` to `span`
-- Fixed `Combobox.Positioner` tag from `ul` to `div`
 - Fixed `Dialog.Trigger` aria-controls bug
 - Fixed `Popover.Trigger` aria-controls bug
 - Fixed `Toast` component render bugs
 - Fixed lazy mounting in `Accordion` component
+- Fixed lazy mounting in `ColorPicker` component
 - Fixed lazy mounting in `Combobox` component
 - Fixed lazy mounting in `HoverCard` component
 - Fixed lazy mounting in `Popover` component
