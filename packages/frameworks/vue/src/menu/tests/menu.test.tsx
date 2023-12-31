@@ -1,7 +1,6 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-// import { Menu } from '../'
 import { getParts } from '../../setup-test'
 import ContextMenuComponentUnderTest from './context-menu.test.vue'
 import MenuItemGroupComponentUnderTest from './menu-item-group.test.vue'
@@ -92,15 +91,48 @@ describe('Menu', () => {
   it('should be able to lazy mount', async () => {
     render(ComponentUnderTest, {
       props: {
-        lazyMount: false,
+        lazyMount: true,
       },
     })
-    expect(screen.queryByRole('menu')).not.toBeInTheDocument()
-    const menutrigger = screen.getByRole('button', { name: 'Open menu' })
-    // expect(menutrigger).not.toHaveAttribute('aria-controls')
-    await user.click(menutrigger)
-    expect(screen.getByRole('menu')).toBeInTheDocument()
-    expect(menutrigger).toHaveAttribute('aria-controls')
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    const trigger = screen.getByRole('button', { name: 'Open menu' })
+
+    await user.click(trigger)
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(trigger)
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+      },
+    })
+
+    expect(screen.getByRole('button', { name: 'Open menu' })).not.toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        lazyMount: true,
+        unmountOnExit: true,
+      },
+    })
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    const trigger = screen.getByRole('button', { name: 'Open menu' })
+
+    await user.click(trigger)
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(trigger)
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 
   describe('ContextMenu', () => {
