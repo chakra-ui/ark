@@ -12,7 +12,7 @@ import { DatePicker } from '../'
       <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
     <Teleport to="body">
-      <DatePicker.Positioner>
+      <DatePicker.Positioner data-testid="positioner">
         <DatePicker.Content>
           <DatePicker.YearSelect />
           <DatePicker.MonthSelect />
