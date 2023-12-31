@@ -46,6 +46,7 @@ description: All notable changes to this project will be documented in this file
 - Fixed lazy mounting in `ColorPicker` component
 - Fixed lazy mounting in `Combobox` component
 - Fixed lazy mounting in `HoverCard` component
+- Fixed lazy mounting in `Menu` component
 - Fixed lazy mounting in `Popover` component
 - Fixed lazy mounting in `Tabs` component
 - Resolved an issue where `Tooltip` component would not handle open control state
