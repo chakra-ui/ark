@@ -709,8 +709,8 @@ importers:
         specifier: 5.14.9
         version: 5.14.9
       '@vitejs/plugin-vue':
-        specifier: 4.6.2
-        version: 4.6.2(vite@5.0.10)(vue@3.3.13)
+        specifier: 5.0.2
+        version: 5.0.2(vite@5.0.10)(vue@3.3.13)
       '@vitejs/plugin-vue-jsx':
         specifier: 3.1.0
         version: 3.1.0(vite@5.0.10)(vue@3.3.13)
@@ -8216,11 +8216,11 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue@4.6.2(vite@5.0.10)(vue@3.3.13):
-    resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  /@vitejs/plugin-vue@5.0.2(vite@5.0.10)(vue@3.3.13):
+    resolution: {integrity: sha512-kEjJHrLb5ePBvjD0SPZwJlw1QTRcjjCA9sB5VyfonoXVBxTS7TMnqL6EkLt1Eu61RDeiuZ/WN9Hf6PxXhPI2uA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
-      vite: ^4.0.0 || ^5.0.0
+      vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
       vite: 5.0.10(@types/node@18.18.8)
@@ -19458,7 +19458,7 @@ packages:
       '@types/node': 20.8.9
       esbuild: 0.19.8
       postcss: 8.4.32
-      rollup: 4.9.2
+      rollup: 4.9.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
