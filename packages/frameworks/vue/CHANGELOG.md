@@ -15,7 +15,11 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Rewritten all components `defineComponent` to Function Signature (without combobox and select)
+- Changed `ColorPicker.Swatch` tag from `button` to `div`
+- Changed `Combobox.ItemText` type from `button` to `span`
+- Changed `Combobox.Positioner` tag from `ul` to `div`
+- Rewritten all components `defineComponent` to Function Signature (without `Combobox.Root` and `Select.Root`)
+- Rewritten all components underlying Presence logic
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
 - Revised `Menu` component
@@ -30,16 +34,24 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
-- Added a missing slot with machine api in `Splitter`
-- Added a missing slot with machine api in `Tabs`
-- Added a missing slot with machine api in `Tooltip`
-- Added missing emits in `Dialog`
-- Added missing emits in `Presence`
-- Added missing emits in `Slider`
-- Fixed `Combobox.ItemText` type from `button` to `span`
-- Fixed `Toast` render bugs
+- Added a missing slot with machine api in `Splitter` component
+- Added a missing slot with machine api in `Tabs` component
+- Added a missing slot with machine api in `Tooltip` component
+- Added missing emits in `Dialog` component
+- Added missing emits in `Presence` component
+- Added missing emits in `Slider` component
+- Fixed `Dialog.Trigger` aria-controls bug
+- Fixed `Menu.Trigger` aria-controls bug
+- Fixed `Popover.Trigger` aria-controls bug
+- Fixed `Toast` component render bugs
+- Fixed lazy mounting in `Accordion` component
+- Fixed lazy mounting in `ColorPicker` component
+- Fixed lazy mounting in `Combobox` component
+- Fixed lazy mounting in `HoverCard` component
+- Fixed lazy mounting in `Menu` component
+- Fixed lazy mounting in `Popover` component
+- Fixed lazy mounting in `Tabs` component
 - Resolved an issue where `Tooltip` component would not handle open control state
-- Rewritten presence logic in `Accordion`
 
 ## [0.9.0] - 2023-12-14
 

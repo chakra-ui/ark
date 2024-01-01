@@ -1,7 +1,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
-import { emits as presenceEmits } from '../presence/presence.props'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
 import { SelectProvider } from './select-context'
 import { emits, props } from './select.props'
@@ -15,6 +15,7 @@ export const Select = defineComponent({
   name: 'Select',
   props: {
     ...props,
+    ...presenceProps,
     items: {
       type: Array as PropType<UseSelectProps<any>['items']>,
       required: true,
@@ -27,18 +28,6 @@ export const Select = defineComponent({
     },
     isItemDisabled: {
       type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
-    },
-    present: {
-      type: Boolean as PropType<UsePresenceProps['present']>,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-      default: false,
-    },
-    unmountOnExit: {
-      type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-      default: false,
     },
   },
   emits: {

@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerPositionerProps extends HTMLArkProps<'div'> {}
@@ -7,15 +8,16 @@ export interface DatePickerPositionerProps extends HTMLArkProps<'div'> {}
 export const DatePickerPositioner = defineComponent<DatePickerPositionerProps>(
   (_, { attrs, slots }) => {
     const api = useDatePickerContext()
-
-    // if (presenceApi.isUnmounted) {
-    //   return null
-    // }
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
   {
