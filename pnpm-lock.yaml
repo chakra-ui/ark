@@ -27,8 +27,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1
       prettier-plugin-astro:
-        specifier: 0.12.2
-        version: 0.12.2
+        specifier: 0.12.3
+        version: 0.12.3
       prettier-plugin-organize-imports:
         specifier: 3.2.4
         version: 3.2.4(prettier@3.1.1)(typescript@5.3.3)
@@ -16310,8 +16310,8 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
-  /prettier-plugin-astro@0.12.2:
-    resolution: {integrity: sha512-1OXSEht27zrnX7rCa0bEpLdspeumFW4hnj4+JzPuG5bRlSOAhD0rbXBNZfRD9q0Qbr00EcCcnjd6k6M8q+GfTA==}
+  /prettier-plugin-astro@0.12.3:
+    resolution: {integrity: sha512-GthUSu3zCvmtVyqlArosez0xE08vSJ0R1sWurxIWpABaCkNGYFANoUdFkqmIo54EV2uPLGcVJzOucWvCjPBWvg==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@astrojs/compiler': 1.8.2
@@ -19369,7 +19369,7 @@ packages:
       '@types/node': 20.8.9
       esbuild: 0.19.8
       postcss: 8.4.32
-      rollup: 4.9.1
+      rollup: 4.9.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
