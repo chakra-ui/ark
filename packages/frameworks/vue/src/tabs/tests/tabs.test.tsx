@@ -95,7 +95,7 @@ describe('Tabs', () => {
     expect(screen.getByText('React Content')).toBeVisible()
   })
 
-  it.skip('should lazy mount a tab', async () => {
+  it('should lazy mount a tab', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
 
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
@@ -104,7 +104,7 @@ describe('Tabs', () => {
     expect(screen.getByText('React Content')).toBeInTheDocument()
   })
 
-  it.skip('should lazy mount and unmount on exit a tab', async () => {
+  it('should lazy mount and unmount on exit a tab', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
 
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()

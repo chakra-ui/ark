@@ -64,7 +64,7 @@ describe('Combobox', () => {
     await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 
-  it.skip('should be able to lazy mount its items', async () => {
+  it('should be able to lazy mount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
@@ -72,7 +72,7 @@ describe('Combobox', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
-  it.skip('should be able to lazy mount and unmount its items', async () => {
+  it('should be able to lazy mount and unmount its items', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 

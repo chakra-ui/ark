@@ -56,7 +56,7 @@ describe('HoverCard', () => {
   })
 
   it('should lazy mount', async () => {
-    render(() => <ComponentUnderTest lazyMount unmountOnExit />)
+    render(() => <ComponentUnderTest lazyMount />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))

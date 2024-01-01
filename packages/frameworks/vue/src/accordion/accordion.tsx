@@ -1,6 +1,7 @@
-import { computed, defineComponent, type PropType } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresencePropsProvider, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { emits, props } from './accordion.props'
@@ -32,19 +33,11 @@ export const Accordion = defineComponent<AccordionProps>(
     name: 'Accordion',
     props: {
       ...props,
-      present: {
-        type: Boolean as PropType<UsePresenceProps['present']>,
-        default: undefined,
-      },
-      lazyMount: {
-        type: Boolean as PropType<UsePresenceProps['lazyMount']>,
-        default: false,
-      },
-      unmountOnExit: {
-        type: Boolean as PropType<UsePresenceProps['unmountOnExit']>,
-        default: false,
-      },
+      ...presenceProps,
     },
-    emits,
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
   },
 )

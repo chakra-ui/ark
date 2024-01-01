@@ -1,19 +1,35 @@
 import { type ContentProps } from '@zag-js/tabs'
-import { defineComponent, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { PresenceProvider, usePresence, usePresencePropsContext } from '../presence'
+import { emits } from '../presence/presence.props'
 import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
 export const TabContent = defineComponent<TabContentProps>(
-  (props, { slots, attrs }) => {
+  (props, { slots, attrs, emit }) => {
     const api = useTabsContext()
+    const presenceProps = usePresencePropsContext()
+
+    const usePresenceProps = computed(() => ({
+      ...presenceProps.value,
+      present: api.value.value === props.value,
+    }))
+    // TODO: there should be a better way
+    const presenceApi = usePresence(usePresenceProps as any, emit)
+
+    PresenceProvider(presenceApi)
 
     return () => (
-      <ark.div {...api.value.getContentProps(props)} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.getContentProps(props)} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
   {
@@ -24,5 +40,6 @@ export const TabContent = defineComponent<TabContentProps>(
         required: true,
       },
     },
+    emits,
   },
 )

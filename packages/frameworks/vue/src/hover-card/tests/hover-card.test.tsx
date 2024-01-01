@@ -39,7 +39,7 @@ describe('Hover Card', () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
-  it.skip('should lazy mount', async () => {
+  it('should lazy mount', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true } })
 
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
@@ -48,7 +48,7 @@ describe('Hover Card', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
-  it.skip('should lazy mount and unmount on exit', async () => {
+  it('should lazy mount and unmount on exit', async () => {
     render(ComponentUnderTest, { props: { lazyMount: true, unmountOnExit: true } })
 
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()

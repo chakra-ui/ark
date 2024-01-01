@@ -1,6 +1,7 @@
-import { defineComponent, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type UsePresenceProps } from '../presence'
+import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
@@ -14,6 +15,7 @@ export const Combobox = defineComponent({
   name: 'Combobox',
   props: {
     ...props,
+    ...presenceProps,
     items: {
       type: Array as PropType<UseComboboxProps<any>['items']>,
       required: true,
@@ -28,10 +30,24 @@ export const Combobox = defineComponent({
       type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
     },
   },
-  emits,
+  emits: {
+    ...emits,
+    ...presenceEmits,
+  },
   setup(props, { slots, attrs, emit }) {
     const api = useCombobox(props, emit)
+
+    const isOpen = computed(() => api.value.isOpen)
+
+    const presenceProps = computed(() => ({
+      present: props.present || isOpen.value,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
+    const presenceApi = usePresence(presenceProps as any, emit)
+
     ComboboxProvider(api)
+    PresenceProvider(presenceApi)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>

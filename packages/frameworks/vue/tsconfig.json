@@ -3,6 +3,7 @@
   "compilerOptions": {
     "noImplicitThis": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "types": ["vitest/globals"]
   },
   "include": ["src"]

@@ -41,6 +41,12 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "defaultValue": "false",
@@ -52,6 +58,11 @@
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
       "description": "Function called when the escape key is pressed"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
@@ -88,6 +99,17 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },

@@ -1,16 +1,12 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Menu } from '../'
-
-defineProps({
-  lazyMount: Boolean
-})
 </script>
 
 <template>
   <Menu.Root v-slot="{ isOpen }">
     <Menu.Trigger>{{ isOpen ? 'Close' : 'Open' }} menu</Menu.Trigger>
     <Menu.Positioner data-testid="positioner">
-      <Menu.Content :lazy-mount="$props.lazyMount">
+      <Menu.Content>
         <span>main menu content</span>
         <Menu.Item id="search">Search</Menu.Item>
         <Menu.Item id="undo">Undo</Menu.Item>
