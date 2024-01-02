@@ -4,9 +4,9 @@ import './date-picker.css'
 </script>
 
 <template>
-  <Story title="Date Picker">
+  <Story title="Date Range Picker">
     <Variant title="Basic">
-      <DatePicker.Root>
+      <DatePicker.Root selection-mode="range">
         <DatePicker.Label>Label</DatePicker.Label>
         <DatePicker.Control>
           <DatePicker.Input />
@@ -100,8 +100,14 @@ import './date-picker.css'
     </Variant>
 
     <Variant title="Standalone">
-      <DatePicker.Root open :close-on-select="false">
-        <DatePicker.View view="day" #default="api">
+      <DatePicker.Root
+        open
+        :num-of-months="2"
+        selection-mode="range"
+        :close-on-select="false"
+        #default="api"
+      >
+        <DatePicker.View view="day">
           <DatePicker.ViewControl>
             <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
             <DatePicker.ViewTrigger>
@@ -109,22 +115,47 @@ import './date-picker.css'
             </DatePicker.ViewTrigger>
             <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
           </DatePicker.ViewControl>
-          <DatePicker.Table>
-            <DatePicker.TableHead>
-              <DatePicker.TableRow>
-                <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">{{
-                  weekDay.short
-                }}</DatePicker.TableHeader>
-              </DatePicker.TableRow>
-            </DatePicker.TableHead>
-            <DatePicker.TableBody>
-              <DatePicker.TableRow v-for="(week, id) in api.weeks" :key="id">
-                <DatePicker.TableCell v-for="(day, id) in week" :key="id" :value="day">
-                  <DatePicker.TableCellTrigger>{{ day.day }}</DatePicker.TableCellTrigger>
-                </DatePicker.TableCell>
-              </DatePicker.TableRow>
-            </DatePicker.TableBody>
-          </DatePicker.Table>
+          <div style="display: flex; gap: 24px">
+            <DatePicker.Table>
+              <DatePicker.TableHead>
+                <DatePicker.TableRow>
+                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">{{
+                    weekDay.short
+                  }}</DatePicker.TableHeader>
+                </DatePicker.TableRow>
+              </DatePicker.TableHead>
+              <DatePicker.TableBody>
+                <DatePicker.TableRow v-for="(week, id) in api.weeks" :key="id">
+                  <DatePicker.TableCell v-for="(day, id) in week" :key="id" :value="day">
+                    <DatePicker.TableCellTrigger>{{ day.day }}</DatePicker.TableCellTrigger>
+                  </DatePicker.TableCell>
+                </DatePicker.TableRow>
+              </DatePicker.TableBody>
+            </DatePicker.Table>
+            <!-- 2nd month -->
+            <DatePicker.Table>
+              <DatePicker.TableHead>
+                <DatePicker.TableRow>
+                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">{{
+                    weekDay.short
+                  }}</DatePicker.TableHeader>
+                </DatePicker.TableRow>
+              </DatePicker.TableHead>
+              <DatePicker.TableBody>
+                <DatePicker.TableRow v-for="(week, id) in offset" :key="id">
+                  <!-- TODO: make working standalone -->
+                  <!-- <DatePicker.TableCell
+                    v-for="(day, id) in week"
+                    :key="id"
+                    :value="day"
+                    :visible-range="offset.visibleRange"
+                  >
+                    <DatePicker.TableCellTrigger>{{ day.day }}</DatePicker.TableCellTrigger>
+                  </DatePicker.TableCell> -->
+                </DatePicker.TableRow>
+              </DatePicker.TableBody>
+            </DatePicker.Table>
+          </div>
         </DatePicker.View>
       </DatePicker.Root>
     </Variant>
