@@ -1,6 +1,6 @@
 import * as dialog from '@zag-js/dialog'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
-import { computed, reactive, watch, type ComputedRef } from 'vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
@@ -13,12 +13,12 @@ export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
   const getRootNode = useEnvironmentContext()
-  const reactiveContext = reactive(props)
+  const context = ref(props)
 
   const [state, send] = useMachine(
     dialog.machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...context.value,
+      id: context.value.id || useId().value,
       getRootNode,
       onOpenChange: (details) => {
         emit('open-change', details)
@@ -37,21 +37,8 @@ export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
         emit('pointer-down-outside', details)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => dialog.connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.open,
-    (value) => {
-      if (value == undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
-    },
-  )
-
-  return api
+  return computed(() => dialog.connect(state.value, send, normalizeProps))
 }
