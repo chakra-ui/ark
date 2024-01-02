@@ -20,6 +20,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
     'getRootNode',
     'id',
     'max',
+    'min',
     'orientation',
     'translations',
     'value',
