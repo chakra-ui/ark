@@ -4,9 +4,9 @@ import './slider.css'
 </script>
 
 <template>
-  <Story title="Slider">
+  <Story title="RangeSlider">
     <Variant title="Basic">
-      <Slider.Root>
+      <Slider.Root :model-value="[5, 10]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -14,12 +14,13 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
 
     <Variant title="WithMarks">
-      <Slider.Root>
+      <Slider.Root :model-value="[10, 60]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -27,6 +28,7 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
         <Slider.MarkerGroup>
           <Slider.Marker :value="0">0</Slider.Marker>
@@ -38,7 +40,7 @@ import './slider.css'
     </Variant>
 
     <Variant title="InitialValue">
-      <Slider.Root :model-value="[42]">
+      <Slider.Root :model-value="[9, 42]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -46,6 +48,7 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
         <Slider.MarkerGroup>
           <Slider.Marker :value="0">*</Slider.Marker>
@@ -56,7 +59,7 @@ import './slider.css'
     </Variant>
 
     <Variant title="MinMax">
-      <Slider.Root :min="-10" :max="10">
+      <Slider.Root :min="-10" :max="10" :model-value="[-5, 5]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -64,12 +67,13 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
 
     <Variant title="Step">
-      <Slider.Root :step="0.01" :min="5" :max="10">
+      <Slider.Root :step="0.01" :min="5" :max="10" :model-value="[7.5, 8]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -77,12 +81,14 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
 
     <Variant title="OnEvent">
       <Slider.Root
+        :model-value="[5, 10]"
         @value-change="(details) => console.log(details.value)"
         @value-change-end="(details) => console.log(details.value)"
       >
@@ -93,12 +99,13 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
 
     <Variant title="Vertical">
-      <Slider.Root orientation="vertical">
+      <Slider.Root orientation="vertical" :model-value="[5, 60]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -106,12 +113,13 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
 
-    <Variant title="CenterOrigin">
-      <Slider.Root origin="center">
+    <Variant title="ThumbOverlap">
+      <Slider.Root :minStepsBetweenThumbs="1" :model-value="[5, 60]">
         <Slider.Label>Label</Slider.Label>
         <Slider.ValueText />
         <Slider.Control>
@@ -119,6 +127,7 @@ import './slider.css'
             <Slider.Range />
           </Slider.Track>
           <Slider.Thumb :key="0" :index="0" />
+          <Slider.Thumb :key="1" :index="1" />
         </Slider.Control>
       </Slider.Root>
     </Variant>
