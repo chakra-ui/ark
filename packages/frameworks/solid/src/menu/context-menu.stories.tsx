@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react'
+import type { Meta } from 'storybook-solidjs'
 import { Menu } from './'
 import './menu.css'
 

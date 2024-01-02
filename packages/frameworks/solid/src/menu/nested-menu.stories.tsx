@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react'
-import { useState } from 'react'
-import { Portal } from '../portal'
+import { createSignal } from 'solid-js'
+import { Portal } from 'solid-js/web'
+import type { Meta } from 'storybook-solidjs'
 import { Menu } from './'
 import './menu.css'
 
@@ -38,13 +38,13 @@ export const Basic = () => (
 )
 
 export const Advanced = () => {
-  const [value, setValue] = useState<Record<string, string | string[]>>({
+  const [value, setValue] = createSignal<Record<string, string | string[]>>({
     framework: '',
     libraries: [],
   })
   return (
     <Menu.Root
-      value={value}
+      value={value()}
       onValueChange={(data) => {
         setValue((prev) => ({
           ...prev,
@@ -52,24 +52,24 @@ export const Advanced = () => {
         }))
       }}
     >
-      <Menu.Trigger>Open menu</Menu.Trigger>
+      <Menu.Trigger>Open menu</Menu.Trigger>{' '}
       <Menu.Positioner>
         <Menu.Content>
           <Menu.ItemGroup id="radio-group">
-            <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+            <Menu.ItemGroupLabel for="radio-group">Radio Group</Menu.ItemGroupLabel>
             <Menu.OptionItem name="framework" type="radio" value="react">
-              {({ isChecked }) => <>{isChecked ? '✅' : ''} React</>}
+              {(itemState) => <>{itemState().isChecked ? '✅' : ''} React</>}
             </Menu.OptionItem>
             <Menu.OptionItem name="framework" type="radio" value="solid">
-              {({ isChecked }) => <>{isChecked ? '✅' : ''} Solid</>}
+              {(itemState) => <>{itemState().isChecked ? '✅' : ''} Solid</>}
             </Menu.OptionItem>
             <Menu.OptionItem name="framework" type="radio" value="vue">
-              {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
+              {(itemState) => <>{itemState().isChecked ? '✅' : ''} Vue</>}
             </Menu.OptionItem>
           </Menu.ItemGroup>
           <Menu>
-            <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
             <Portal>
+              <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
               <Menu.Positioner>
                 <Menu.Content>
                   <Menu.Item id="twitter">Twitter</Menu.Item>
