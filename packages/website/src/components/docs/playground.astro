@@ -9,6 +9,7 @@ import {
   ColorPicker,
   Combobox,
   DatePicker,
+  DateRangePicker,
   Dialog,
   Editable,
   FileUpload,
@@ -53,6 +54,7 @@ const { component } = Astro.props
         .with('color-picker', () => <ColorPicker client:load />)
         .with('combobox', () => <Combobox client:load />)
         .with('date-picker', () => <DatePicker client:load />)
+        .with('date-range-picker', () => <DateRangePicker client:load />)
         .with('dialog', () => <Dialog client:load />)
         .with('editable', () => <Editable client:load />)
         .with('file-upload', () => <FileUpload client:load />)
