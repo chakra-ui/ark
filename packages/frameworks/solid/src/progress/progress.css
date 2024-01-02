@@ -43,9 +43,31 @@
   width: inherit;
 }
 
+[data-scope='progress'][data-part='range'][data-state='indeterminate'] {
+  width: 210%;
+  background: orange;
+  animation: 1s cubic-bezier(0.694, 0.0482, 0.335, 1) 0s infinite normal none running
+    linearAnimation;
+}
+
+@keyframes linearAnimation {
+  from {
+    transform: scaleX(1) translateX(var(--translate-x));
+  }
+  to {
+    transform: scaleX(0) translateX(var(--translate-x));
+  }
+}
+
 [data-scope='progress'][data-part='circle'] {
   --size: 100px;
   --thickness: 10px;
+}
+
+[data-scope='progress'][data-part='circle'][data-state='indeterminate'] {
+  width: 210%;
+  background: orange;
+  animation: spin 2s linear infinite;
 }
 
 [data-scope='progress'][data-part='circle-track'] {
@@ -54,4 +76,30 @@
 
 [data-scope='progress'][data-part='circle-range'] {
   stroke: orange;
+}
+
+[data-scope='progress'][data-part='circle-range'][data-state='indeterminate'] {
+  width: 210%;
+  background: orange;
+  animation: circleAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circleAnimation {
+  from {
+    stroke-dasharray: 1, 400;
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dasharray: 400, 400;
+    stroke-dashoffset: -260;
+  }
 }
