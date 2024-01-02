@@ -1,37 +1,40 @@
 ---
-import { Box, Flex } from 'styled-system/jsx'
-import { match } from 'ts-pattern'
+import { Box, Flex } from 'styled-system/jsx';
+import { match } from 'ts-pattern';
 import {
-  Accordion,
-  Avatar,
-  Carousel,
-  Checkbox,
-  ColorPicker,
-  Combobox,
-  DatePicker,
-  DateRangePicker,
-  Dialog,
-  Editable,
-  FileUpload,
-  HoverCard,
-  Menu,
-  NumberInput,
-  Pagination,
-  PinInput,
-  Popover,
-  RadioGroup,
-  RatingGroup,
-  SegmentGroup,
-  Select,
-  Slider,
-  Splitter,
-  Switch,
-  Tabs,
-  TagsInput,
-  Toast,
-  ToggleGroup,
-  Tooltip,
-} from '~/demos'
+Accordion,
+Avatar,
+Carousel,
+Checkbox,
+ColorPicker,
+Combobox,
+ContextMenu,
+DatePicker,
+DateRangePicker,
+Dialog,
+Editable,
+FileUpload,
+HoverCard,
+Menu,
+NestedMenu,
+NumberInput,
+Pagination,
+PinInput,
+Popover,
+RadioGroup,
+RangeSlider,
+RatingGroup,
+SegmentGroup,
+Select,
+Slider,
+Splitter,
+Switch,
+Tabs,
+TagsInput,
+Toast,
+ToggleGroup,
+Tooltip,
+} from '~/demos';
 const { component } = Astro.props
 ---
 
@@ -51,20 +54,25 @@ const { component } = Astro.props
         .with('avatar', () => <Avatar client:load />)
         .with('carousel', () => <Carousel client:load />)
         .with('checkbox', () => <Checkbox client:load />)
+        // .with('circular-progress', () => <CircularProgress client:load />)
         .with('color-picker', () => <ColorPicker client:load />)
         .with('combobox', () => <Combobox client:load />)
+        .with('context-menu', () => <ContextMenu client:load />)
         .with('date-picker', () => <DatePicker client:load />)
         .with('date-range-picker', () => <DateRangePicker client:load />)
         .with('dialog', () => <Dialog client:load />)
         .with('editable', () => <Editable client:load />)
         .with('file-upload', () => <FileUpload client:load />)
         .with('hover-card', () => <HoverCard client:load />)
+        // .with('linear-progress', () => <LinearProgress client:load />)
         .with('menu', () => <Menu client:load />)
+        .with('nested-menu', () => <NestedMenu client:load />)
         .with('number-input', () => <NumberInput client:load />)
         .with('pagination', () => <Pagination client:load />)
         .with('pin-input', () => <PinInput client:load />)
         .with('popover', () => <Popover client:load />)
         .with('radio-group', () => <RadioGroup client:load />)
+        .with('range-slider', () => <RangeSlider client:load />)
         .with('rating-group', () => <RatingGroup client:load />)
         .with('segment-group', () => <SegmentGroup client:load />)
         .with('select', () => <Select client:load />)
