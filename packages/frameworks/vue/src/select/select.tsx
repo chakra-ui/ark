@@ -42,8 +42,7 @@ export const Select = defineComponent({
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    // TODO: fix type
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
     SelectProvider(api)
     PresenceProvider(presenceApi)
 

@@ -60,7 +60,7 @@ export const useSelect = <T extends CollectionItem>(
     () => props.items,
     (value) => {
       // FIXME: blocked by zagjs setItems types
-      api.value.collection.setItems(value as any)
+      api.value.collection.setItems(value)
     },
   )
 

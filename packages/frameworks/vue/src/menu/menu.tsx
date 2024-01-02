@@ -33,7 +33,7 @@ export const Menu = defineComponent<MenuProps>(
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 
