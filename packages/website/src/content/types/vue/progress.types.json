@@ -21,6 +21,11 @@
       "isRequired": false,
       "description": "The maximum allowed value of the progress bar."
     },
+    "min": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The minimum allowed value of the progress bar."
+    },
     "modelValue": { "type": "number", "isRequired": false },
     "orientation": {
       "type": "Orientation",
@@ -43,6 +48,7 @@
   "Range": { "asChild": { "type": "boolean", "isRequired": false } },
   "Track": { "asChild": { "type": "boolean", "isRequired": false } },
   "Circle": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "state": { "type": "ProgressState", "isRequired": true } },
   "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "CircleRange": { "asChild": { "type": "boolean", "isRequired": false } },
   "CircleTrack": { "asChild": { "type": "boolean", "isRequired": false } }
