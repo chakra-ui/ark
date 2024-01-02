@@ -1,6 +1,6 @@
 ---
-id: menu
-title: Menu
+id: nested-menu
+title: Nested Menu
 description: A list of options that appears when a user interacts with a button.
 ---
 
@@ -20,39 +20,10 @@ name its parts.
 
 ## Examples
 
-Learn how to use the `Menu` component in your project. Let's take a look at the
-most basic example:
-
-<Story id="Basic" />
-
-### Listening to item selection
-
-Pass the `onSelect` prop to the Menu component to perform some custom logic when
-an item is selected. The callback is invoked with the `id` of the item.
-
-<Story id="Controlled" />
-
-### Grouping menu items
-
-When the number of menu items gets much, it might be useful to group related
-menu items. To achieve this, render the `Menu.ItemGroup` component around the
-`Menu.Item` components. The `Menu.ItemGroupLabel` component can be used to add a
-label to the group.
-
-<Story id="Group" />
-
-### Separating menu items
-
-To separate menu items, render the `Menu.Separator` component.
-
-<Story id="Separator" />
-
-### Nested menu
-
 To show a nested menu, render another `Menu` component and use the
 `Menu.TriggerItem` component to open the submenu.
 
-<Story id="SubMenu" />
+<Story id="Basic" />
 
 ### Checkbox and Radio option items
 
@@ -64,7 +35,7 @@ option item. The `name` prop is used to group the items together, and the
 To manage the state of the option items pass the `value` and `onValueChange`
 props to the `Menu` component.
 
-<Story id="Options" />
+<Story id="Advanced" />
 
 ## API Reference
 
