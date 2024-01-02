@@ -5,7 +5,9 @@ import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
-export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {}
+export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {
+  readOnly?: SwatchProps['respectAlpha']
+}
 
 export const ColorPickerSwatch = defineComponent<ColorPickerSwatchProps>(
   (props, { slots, attrs }) => {
