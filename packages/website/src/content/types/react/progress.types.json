@@ -31,6 +31,11 @@
       "isRequired": false,
       "description": "The maximum allowed value of the progress bar."
     },
+    "min": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The minimum allowed value of the progress bar."
+    },
     "orientation": {
       "type": "Orientation",
       "defaultValue": "\"horizontal\"",
@@ -70,6 +75,14 @@
     }
   },
   "Circle": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Indicator": {
+    "state": { "type": "ProgressState", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
