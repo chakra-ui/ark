@@ -65,7 +65,6 @@ export const ValueText = () => (
   >
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="indeterminate" />
     <Progress.Circle>
       <Progress.CircleTrack />
       <Progress.CircleRange />
