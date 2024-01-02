@@ -5,7 +5,7 @@ import './slider.css'
 type SliderType = typeof Slider
 
 const meta: Meta<SliderType> = {
-  title: 'Slider',
+  title: 'RangeSlider',
   component: Slider,
 }
 
@@ -13,7 +13,7 @@ export default meta
 
 export const Basic = () => {
   return (
-    <Slider.Root>
+    <Slider.Root defaultValue={[5, 10]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -21,6 +21,7 @@ export const Basic = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -28,7 +29,7 @@ export const Basic = () => {
 
 export const WithMarks = () => {
   return (
-    <Slider.Root>
+    <Slider.Root defaultValue={[10, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -36,6 +37,7 @@ export const WithMarks = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={0}>0</Slider.Marker>
@@ -48,7 +50,7 @@ export const WithMarks = () => {
 }
 
 export const InitialValue = () => (
-  <Slider.Root defaultValue={[42]}>
+  <Slider.Root defaultValue={[9, 42]}>
     <Slider.Label>Label</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>
@@ -56,6 +58,7 @@ export const InitialValue = () => (
         <Slider.Range />
       </Slider.Track>
       <Slider.Thumb key={0} index={0} />
+      <Slider.Thumb key={1} index={1} />
     </Slider.Control>
     <Slider.MarkerGroup>
       <Slider.Marker value={0}>*</Slider.Marker>
@@ -67,7 +70,7 @@ export const InitialValue = () => (
 
 export const MinMax = () => {
   return (
-    <Slider.Root min={-10} max={10}>
+    <Slider.Root min={-10} max={10} defaultValue={[-5, 5]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -75,6 +78,7 @@ export const MinMax = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -82,7 +86,7 @@ export const MinMax = () => {
 
 export const Step = () => {
   return (
-    <Slider.Root step={0.01} min={5} max={10}>
+    <Slider.Root step={0.01} min={5} max={10} defaultValue={[7.5, 8]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -90,6 +94,7 @@ export const Step = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -98,6 +103,7 @@ export const Step = () => {
 export const OnEvent = () => {
   return (
     <Slider.Root
+      defaultValue={[5, 10]}
       onValueChange={(details) => console.log(details.value)}
       onValueChangeEnd={(details) => console.log(details.value)}
     >
@@ -108,6 +114,7 @@ export const OnEvent = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -115,7 +122,7 @@ export const OnEvent = () => {
 
 export const Vertical = () => {
   return (
-    <Slider.Root orientation="vertical">
+    <Slider.Root orientation="vertical" defaultValue={[5, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -123,14 +130,15 @@ export const Vertical = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
 }
 
-export const CenterOrigin = () => {
+export const ThumbOverlap = () => {
   return (
-    <Slider.Root origin="center">
+    <Slider.Root minStepsBetweenThumbs={1} defaultValue={[5, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -138,6 +146,7 @@ export const CenterOrigin = () => {
           <Slider.Range />
         </Slider.Track>
         <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb key={1} index={1} />
       </Slider.Control>
     </Slider.Root>
   )
