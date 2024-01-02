@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added the `Progress` component.
+
 ### Fixed
 
 - Added missing `placeholder` prop to `SelectValueTextProps` type.
