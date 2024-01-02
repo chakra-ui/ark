@@ -18,7 +18,7 @@ export const Popover = defineComponent<PopoverProps>(
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     PopoverProvider(api)
     PresenceProvider(presenceApi)

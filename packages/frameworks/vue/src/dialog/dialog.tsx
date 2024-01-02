@@ -18,7 +18,7 @@ export const Dialog = defineComponent<DialogProps>(
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     DialogProvider(api)
     PresenceProvider(presenceApi)

@@ -19,8 +19,7 @@ export const AccordionItem = defineComponent<AccordionItemProps>(
       ...presenceProps.value,
       present: itemState.value.isOpen,
     }))
-    // TODO: there should be a better way
-    const presenceApi = usePresence(usePresenceProps as any, emit)
+    const presenceApi = usePresence(usePresenceProps, emit)
 
     AccordionItemProvider(computed(() => props))
     PresenceProvider(presenceApi)

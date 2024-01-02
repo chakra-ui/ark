@@ -22,7 +22,7 @@ export const ColorPicker = defineComponent<ColorPickerProps>(
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     ColorPickerProvider(api)
     PresenceProvider(presenceApi)

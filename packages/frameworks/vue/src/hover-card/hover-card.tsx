@@ -1,13 +1,11 @@
 import { computed, defineComponent } from 'vue'
-import { type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import type { Assign } from '../types'
 import { HoverCardProvider } from './hover-card-context'
 import { emits, props } from './hover-card.props'
 import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
-export interface HoverCardProps extends Assign<HTMLArkProps<'div'>, UseHoverCardProps> {}
+export interface HoverCardProps extends UseHoverCardProps, UsePresenceProps {}
 
 export const HoverCard = defineComponent<HoverCardProps>(
   (props, { slots, emit }) => {
@@ -20,7 +18,7 @@ export const HoverCard = defineComponent<HoverCardProps>(
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     HoverCardProvider(api)
     PresenceProvider(presenceApi)

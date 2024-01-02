@@ -1,6 +1,6 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, ref, watch, type VNodeRef } from 'vue'
+import { computed, ref, watch, type MaybeRef, type VNodeRef } from 'vue'
 import type { Optional } from '../types'
 
 export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
@@ -18,7 +18,7 @@ export interface UsePresenceProps extends Optional<presence.Context, 'present'> 
 
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: UsePresenceProps, emit: CallableFunction) => {
+export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: CallableFunction) => {
   const context = ref(props)
   const wasEverPresent = ref(false)
   const nodeRef = ref<VNodeRef | null>(null)
