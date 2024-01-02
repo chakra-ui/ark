@@ -15,6 +15,9 @@ export const props = {
   max: {
     type: Number as PropType<Context['max']>,
   },
+  min: {
+    type: Number as PropType<Context['min']>,
+  },
   orientation: {
     type: String as PropType<Context['orientation']>,
   },
