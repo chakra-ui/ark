@@ -1,6 +1,6 @@
 ---
-id: slider
-title: Slider
+id: range-slider
+title: Range Slider
 description: A control element that allows for a range of selections.
 ---
 
@@ -20,8 +20,11 @@ name its parts.
 
 ## Examples
 
-Learn how to use the `Slider` component in your project. Let's take a look at
-the most basic example:
+You can use the `Slider` component as a range slider by setting the `value` with
+an array of two numbers.
+
+The first number is the start of the range, and the second number is the end of
+the range.
 
 <Story id="Basic" />
 
@@ -82,12 +85,13 @@ increment/decrement its value.
 
 <Story id="Vertical" />
 
-### Changing the origin
+### Preventing thumb overlap
 
-By default, the slider's origin is at the start of the track. To change the
-origin to the center of the track, set the `origin` prop to `center`.
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
 
-<Story id="CenterOrigin" />
+<Story id="ThumbOverlap" />
 
 ## API Reference
 
