@@ -22,6 +22,7 @@ export const Progress = (props: ProgressProps) => {
     'getRootNode',
     'id',
     'max',
+    'min',
     'orientation',
     'translations',
     'value',
