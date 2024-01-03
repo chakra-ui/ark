@@ -1,5 +1,5 @@
-import type { Meta } from '@storybook/react'
-import { Slider } from './'
+import type { Meta } from 'storybook-solidjs'
+import { Slider } from '../'
 import './slider.css'
 
 type SliderType = typeof Slider
@@ -13,15 +13,15 @@ export default meta
 
 export const Basic = () => {
   return (
-    <Slider.Root defaultValue={[5, 10]}>
+    <Slider.Root value={[5, 10]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -29,15 +29,15 @@ export const Basic = () => {
 
 export const WithMarks = () => {
   return (
-    <Slider.Root defaultValue={[10, 60]}>
+    <Slider.Root value={[10, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={0}>0</Slider.Marker>
@@ -50,15 +50,15 @@ export const WithMarks = () => {
 }
 
 export const InitialValue = () => (
-  <Slider.Root defaultValue={[9, 42]}>
+  <Slider.Root value={[9, 42]}>
     <Slider.Label>Label</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb key={0} index={0} />
-      <Slider.Thumb key={1} index={1} />
+      <Slider.Thumb index={0} />
+      <Slider.Thumb index={1} />
     </Slider.Control>
     <Slider.MarkerGroup>
       <Slider.Marker value={0}>*</Slider.Marker>
@@ -70,15 +70,15 @@ export const InitialValue = () => (
 
 export const MinMax = () => {
   return (
-    <Slider.Root min={-10} max={10} defaultValue={[-5, 5]}>
+    <Slider.Root min={-10} max={10} value={[-5, 5]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -86,15 +86,15 @@ export const MinMax = () => {
 
 export const Step = () => {
   return (
-    <Slider.Root step={0.01} min={5} max={10} defaultValue={[7.5, 8]}>
+    <Slider.Root step={0.01} min={5} max={10} value={[7.5, 8]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -103,7 +103,7 @@ export const Step = () => {
 export const OnEvent = () => {
   return (
     <Slider.Root
-      defaultValue={[5, 10]}
+      value={[5, 10]}
       onValueChange={(details) => console.log(details.value)}
       onValueChangeEnd={(details) => console.log(details.value)}
     >
@@ -113,8 +113,8 @@ export const OnEvent = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -122,15 +122,15 @@ export const OnEvent = () => {
 
 export const Vertical = () => {
   return (
-    <Slider.Root orientation="vertical" defaultValue={[5, 60]}>
+    <Slider.Root orientation="vertical" value={[5, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -138,15 +138,15 @@ export const Vertical = () => {
 
 export const ThumbOverlap = () => {
   return (
-    <Slider.Root minStepsBetweenThumbs={1} defaultValue={[5, 60]}>
+    <Slider.Root minStepsBetweenThumbs={1} value={[5, 60]}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
-        <Slider.Thumb key={1} index={1} />
+        <Slider.Thumb index={0} />
+        <Slider.Thumb index={1} />
       </Slider.Control>
     </Slider.Root>
   )
