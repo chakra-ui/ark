@@ -1,6 +1,5 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "closeDelay": {
       "type": "number",
       "isRequired": false,
