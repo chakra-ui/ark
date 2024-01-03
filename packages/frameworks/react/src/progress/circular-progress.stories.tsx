@@ -5,7 +5,7 @@ import './progress.css'
 type ProgressType = typeof Progress
 
 const meta: Meta<ProgressType> = {
-  title: 'Progress',
+  title: 'CircularProgress',
   component: Progress,
 }
 
@@ -16,34 +16,15 @@ export const Basic = () => (
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
     <Progress.Indicator state="loading" />
-    <Progress.Track>
-      <Progress.Range />
-    </Progress.Track>
+    <Progress.Circle>
+      <Progress.CircleTrack />
+      <Progress.CircleRange />
+    </Progress.Circle>
   </Progress.Root>
 )
 
 export const InitialValue = () => (
   <Progress.Root defaultValue={70}>
-    <Progress.Label>Label</Progress.Label>
-    <Progress.ValueText />
-    <Progress.Track>
-      <Progress.Range />
-    </Progress.Track>
-  </Progress.Root>
-)
-
-export const Max = () => (
-  <Progress.Root defaultValue={20} max={30}>
-    <Progress.Label>Label</Progress.Label>
-    <Progress.ValueText />
-    <Progress.Track>
-      <Progress.Range />
-    </Progress.Track>
-  </Progress.Root>
-)
-
-export const Circular = () => (
-  <Progress.Root defaultValue={40}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
     <Progress.Circle>
@@ -53,12 +34,40 @@ export const Circular = () => (
   </Progress.Root>
 )
 
-export const Vertical = () => (
-  <Progress.Root orientation="vertical">
+export const MinMax = () => (
+  <Progress.Root defaultValue={20} min={10} max={30}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Track>
-      <Progress.Range />
-    </Progress.Track>
+    <Progress.Circle>
+      <Progress.CircleTrack />
+      <Progress.CircleRange />
+    </Progress.Circle>
+  </Progress.Root>
+)
+
+export const Indeterminate = () => (
+  <Progress.Root>
+    <Progress.Label>Label</Progress.Label>
+    <Progress.ValueText />
+    <Progress.Indicator state="indeterminate" />
+    <Progress.Circle>
+      <Progress.CircleTrack />
+      <Progress.CircleRange />
+    </Progress.Circle>
+  </Progress.Root>
+)
+
+export const ValueText = () => (
+  <Progress.Root
+    translations={{
+      value: ({ value, max }) => (value == null ? 'Loading...' : `${value} of ${max} items loaded`),
+    }}
+  >
+    <Progress.Label>Label</Progress.Label>
+    <Progress.ValueText />
+    <Progress.Circle>
+      <Progress.CircleTrack />
+      <Progress.CircleRange />
+    </Progress.Circle>
   </Progress.Root>
 )

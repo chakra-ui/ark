@@ -1,6 +1,6 @@
 ---
-id: progress
-title: Progress
+id: linear-progress
+title: Progress - Linear
 description: An element that shows either determinate or indeterminate progress.
 status: preview
 ---
@@ -17,7 +17,7 @@ we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
-{/* <Anatomy id="progress" /> */}
+<Anatomy id="linear-progress" />
 
 ## Examples
 
@@ -32,14 +32,32 @@ To set the progress's initial value, set the `defaultValue` prop to a number.
 
 <Story id="InitialValue" />
 
-### Specifying the maximum
+### Specifying the minimum and maximum
 
 By default, the maximum is `100`. If that's not what you want, you can easily
-specify a different bound by changing the value of the `max` prop.
+specify a different bound by changing the value of the `max` prop. You can do
+the same with the minimum value by setting the `min` prop.
 
-For example, to show the user a progress to `30`, you can use:
+For example, to show the user a progress from `10` to `30`, you can use:
 
-<Story id="Max" />
+<Story id="MinMax" />
+
+### Using the indeterminate state
+
+The progress component is determinate by default, with the value and max set to
+50 and 100 respectively.
+
+Set the `state` to `indeterminate` in `Progress.Indicator`:
+
+<Story id="Indeterminate" />
+
+### Showing a value text
+
+Progress bars can only be interpreted by sighted users. To include a text
+description to support assistive technologies like screen readers, use the
+`value` part in `translations`.
+
+<Story id="ValueText" />
 
 ### Changing the orientation
 
@@ -51,16 +69,6 @@ to vertical, set the orientation property in the machine's context to vertical.
 
 <Story id="Vertical" />
 
-### Using as a circular progress
-
-You can use the `Progress` component as a circular progress by replacing
-`Progress.Track` and `Progress.Range` with `Progress.CircleTrack` and
-`Progress.CircleRange`.
-
-Remember to add `Progress.Circle` as a container for range and track.
-
-<Story id="Range" />
-
 ## API Reference
 
-<ComponentTypes />
+<ComponentTypes id="progress" />

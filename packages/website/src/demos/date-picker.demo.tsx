@@ -3,7 +3,7 @@ import { Button, DatePicker, IconButton, Input, type DatePickerProps } from '~/c
 
 export const Demo = (props: DatePickerProps) => {
   return (
-    <DatePicker.Root positioning={{ sameWidth: true }} startOfWeek={1} selectionMode="range">
+    <DatePicker.Root positioning={{ sameWidth: true }} startOfWeek={1}>
       <DatePicker.Label>Date Picker</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input asChild>
