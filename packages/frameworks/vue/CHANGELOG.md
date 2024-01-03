@@ -19,6 +19,7 @@ description: All notable changes to this project will be documented in this file
 - Changed `ColorPicker.Swatch` tag from `button` to `div`
 - Changed `Combobox.ItemText` type from `button` to `span`
 - Changed `Combobox.Positioner` tag from `ul` to `div`
+- Changed `Popover.Description` tag from `div` to `p`
 - Rewritten all components `defineComponent` to Function Signature (without `Combobox.Root` and `Select.Root`)
 - Rewritten all components underlying Presence logic
 - Revised `Dialog` component stories and tests

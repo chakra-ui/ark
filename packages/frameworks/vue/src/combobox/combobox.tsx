@@ -44,7 +44,7 @@ export const Combobox = defineComponent({
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    const presenceApi = usePresence(presenceProps as any, emit)
+    const presenceApi = usePresence(presenceProps, emit)
 
     ComboboxProvider(api)
     PresenceProvider(presenceApi)

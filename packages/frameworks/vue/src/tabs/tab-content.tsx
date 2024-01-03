@@ -17,8 +17,7 @@ export const TabContent = defineComponent<TabContentProps>(
       ...presenceProps.value,
       present: api.value.value === props.value,
     }))
-    // TODO: there should be a better way
-    const presenceApi = usePresence(usePresenceProps as any, emit)
+    const presenceApi = usePresence(usePresenceProps, emit)
 
     PresenceProvider(presenceApi)
 

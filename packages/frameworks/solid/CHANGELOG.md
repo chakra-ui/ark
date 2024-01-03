@@ -6,7 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
 - Added the `Progress` component.
+
+### Changed
+
+- Changed `Popover.Description` tag from `div` to `p`
+- Changed `PopoverDescriptionProps` type from `div` to `p`
 
 ## [1.2.0] - 2023-12-13
 
