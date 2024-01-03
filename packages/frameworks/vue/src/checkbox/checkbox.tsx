@@ -9,7 +9,7 @@ export interface CheckboxProps extends Assign<HTMLArkProps<'label'>, UseCheckbox
 
 export const Checkbox = defineComponent<CheckboxProps>(
   (props, { slots, attrs, emit }) => {
-    const api = useCheckbox(emit, props)
+    const api = useCheckbox(props, emit)
     CheckboxProvider(api)
 
     return () => (

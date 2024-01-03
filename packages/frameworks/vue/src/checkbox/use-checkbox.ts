@@ -11,7 +11,7 @@ export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
 
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
-export const useCheckbox = (emit: CallableFunction, context: UseCheckboxProps) => {
+export const useCheckbox = (context: UseCheckboxProps, emit: CallableFunction) => {
   const reactiveContext = reactive(context)
   const getRootNode = useEnvironmentContext()
 
