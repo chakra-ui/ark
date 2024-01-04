@@ -91,7 +91,7 @@
     "vite": "5.0.10",
     "vite-plugin-dts": "3.7.0",
     "vitest": "0.34.6",
-    "vue": "3.4.3"
+    "vue": "3.4.5"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
