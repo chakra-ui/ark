@@ -5,6 +5,7 @@ import { declareEmits } from '../utils'
 export const props = {
   checked: {
     type: String as PropType<Context['checked']>,
+    default: undefined,
   },
   dir: {
     type: String as PropType<Context['dir']>,
@@ -36,8 +37,8 @@ export const props = {
     type: Boolean as PropType<Context['required']>,
     default: undefined,
   },
-  modelValue: {
-    type: String as PropType<Context['value']>,
+  defaultChecked: {
+    type: [Boolean, String] as PropType<Context['checked']>,
   },
 }
-export const emits = declareEmits(['checked-change', 'update:modelValue'])
+export const emits = declareEmits(['checked-change', 'update:checked'])
