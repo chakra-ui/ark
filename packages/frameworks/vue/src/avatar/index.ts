@@ -1,5 +1,5 @@
 // import { Avatar as AvatarRoot, type AvatarProps } from './avatar'
-import AvatarRoot, { type AvatarProps } from './Avatar.vue'
+import AvatarRoot, { type AvatarProps } from './AvatarRoot.vue'
 import { useAvatarContext, type AvatarContext } from './avatar-context'
 // import { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
 import AvatarFallback, { type AvatarFallbackProps } from './AvatarFallback.vue'
