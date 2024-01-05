@@ -2,7 +2,7 @@ import type { Context } from '@zag-js/avatar'
 import type { PropType } from 'vue'
 import { declareEmits } from '../utils'
 
-export const props = {
+export const componentProps = {
   dir: {
     type: String as PropType<Context['dir']>,
   },

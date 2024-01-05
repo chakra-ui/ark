@@ -3,10 +3,10 @@ import type { VNode } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { AvatarProvider } from './avatar-context'
-import { props as avProps } from './avatar.props' // Name change was needed to not have double props
+import { componentProps } from './avatar.props' // Name change was needed to not have double props
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-const props = defineProps(avProps)
+const props = defineProps(componentProps)
 
 const emit = defineEmits<{
   'loading-status-change': []
@@ -18,8 +18,6 @@ defineSlots<{
 
 const api = useAvatar(props, emit)
 AvatarProvider(api)
-
-console.log('avatar emits', emit)
 </script>
 
 <script lang="ts">
