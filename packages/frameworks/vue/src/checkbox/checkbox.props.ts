@@ -4,7 +4,7 @@ import { declareEmits } from '../utils'
 
 export const props = {
   checked: {
-    type: String as PropType<Context['checked']>,
+    type: [Boolean, String] as PropType<Context['checked']>,
     default: undefined,
   },
   dir: {
