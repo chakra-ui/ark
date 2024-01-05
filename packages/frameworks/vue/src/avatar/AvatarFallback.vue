@@ -7,13 +7,7 @@ defineSlots<{
   default?: VNode[]
 }>()
 
-defineOptions({
-  inheritAttrs: false,
-})
-// Im still a bit confused on this inheritAttrs, since it seems like my IDE still sees props from the Avatar Root component like dir etc.
-
-const props = defineProps<AvatarFallbackProps>()
-console.log('fallback props', props)
+defineProps<AvatarFallbackProps>()
 const api = useAvatarContext()
 </script>
 
