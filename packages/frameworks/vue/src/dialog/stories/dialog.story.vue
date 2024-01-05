@@ -9,7 +9,7 @@ const open = ref(false)
 <template>
   <Story title="Dialog">
     <Variant title="Basic">
-      <Dialog.Root>
+      <Dialog.Root default-open>
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Teleport to="body">
           <Dialog.Backdrop />
@@ -26,7 +26,7 @@ const open = ref(false)
 
     <Variant title="Controlled">
       <button @click="() => (open = true)">Open Dialog</button>
-      <Dialog.Root v-model="open">
+      <Dialog.Root v-model:open="open">
         <Teleport to="body">
           <Dialog.Backdrop />
           <Dialog.Positioner>

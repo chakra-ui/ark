@@ -55,9 +55,8 @@ export const props = {
     type: Boolean as PropType<Context['trapFocus']>,
     default: undefined,
   },
-  modelValue: {
+  defaultOpen: {
     type: Boolean as PropType<Context['open']>,
-    default: undefined,
   },
 }
 export const emits = declareEmits([
@@ -66,5 +65,5 @@ export const emits = declareEmits([
   'focus-outside',
   'interact-outside',
   'pointer-down-outside',
-  'update:modelValue',
+  'update:open',
 ])

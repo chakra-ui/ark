@@ -1,28 +1,33 @@
 import * as dialog from '@zag-js/dialog'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
-import { computed, reactive, watch, type ComputedRef } from 'vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UseDialogProps extends Optional<dialog.Context, 'id'> {
-  modelValue?: dialog.Context['open']
+  /**
+   * The initial open state of the dialog.
+   */
+  defaultOpen?: dialog.Context['open']
+  'onUpdate:open'?: (open: dialog.OpenChangeDetails['open']) => void
 }
 
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
+  const context = ref(props)
   const getRootNode = useEnvironmentContext()
-  const reactiveContext = reactive(props)
 
   const [state, send] = useMachine(
     dialog.machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+      ...context.value,
+      id: context.value.id || useId().value,
+      open: props.open ?? props.defaultOpen,
       getRootNode,
       onOpenChange: (details) => {
         emit('open-change', details)
-        emit('update:modelValue', details.open)
+        emit('update:open', details.open)
       },
       onEscapeKeyDown: (details) => {
         emit('escape-key-down', details)
@@ -37,21 +42,8 @@ export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
         emit('pointer-down-outside', details)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => dialog.connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.open,
-    (value) => {
-      if (value == undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
-    },
-  )
-
-  return api
+  return computed(() => dialog.connect(state.value, send, normalizeProps))
 }
