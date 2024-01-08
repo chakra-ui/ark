@@ -24,7 +24,7 @@ export const useCheckbox = (props: UseCheckboxProps, emit: CallableFunction) => 
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      checked: props.defaultChecked,
+      checked: props.checked ?? props.defaultChecked,
       onCheckedChange(details) {
         emit('checked-change', details)
         emit('update:checked', details.checked)
