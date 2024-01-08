@@ -74,7 +74,7 @@
     "@vitejs/plugin-vue": "5.0.2",
     "@vitejs/plugin-vue-jsx": "3.1.0",
     "@vitest/coverage-v8": "0.34.6",
-    "@vue/compiler-sfc": "3.4.3",
+    "@vue/compiler-sfc": "3.4.5",
     "@vue/eslint-config-prettier": "9.0.0",
     "@vue/eslint-config-typescript": "12.0.0",
     "eslint": "8.56.0",
@@ -91,7 +91,7 @@
     "vite": "5.0.10",
     "vite-plugin-dts": "3.7.0",
     "vitest": "0.34.6",
-    "vue": "3.4.3"
+    "vue": "3.4.5"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
