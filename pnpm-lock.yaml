@@ -344,8 +344,8 @@ importers:
         specifier: 23.0.1
         version: 23.0.1
       lucide-react:
-        specifier: 0.303.0
-        version: 0.303.0(react@18.2.0)
+        specifier: 0.307.0
+        version: 0.307.0(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -540,8 +540,8 @@ importers:
         specifier: 23.0.1
         version: 23.0.1
       lucide-solid:
-        specifier: 0.303.0
-        version: 0.303.0(solid-js@1.8.8)
+        specifier: 0.307.0
+        version: 0.307.0(solid-js@1.8.8)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -748,8 +748,8 @@ importers:
         specifier: 23.0.1
         version: 23.0.1
       lucide-vue-next:
-        specifier: 0.303.0
-        version: 0.303.0(vue@3.4.5)
+        specifier: 0.307.0
+        version: 0.307.0(vue@3.4.5)
       release-it:
         specifier: 17.0.1
         version: 17.0.1(typescript@5.3.3)
@@ -866,8 +866,8 @@ importers:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
       lucide-react:
-        specifier: 0.303.0
-        version: 0.303.0(react@18.2.0)
+        specifier: 0.307.0
+        version: 0.307.0(react@18.2.0)
       pandacss-preset-typography:
         specifier: 0.1.5
         version: 0.1.5(@pandacss/dev@0.25.0)
@@ -15066,23 +15066,23 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lucide-react@0.303.0(react@18.2.0):
-    resolution: {integrity: sha512-B0B9T3dLEFBYPCUlnUS1mvAhW1craSbF9HO+JfBjAtpFUJ7gMIqmEwNSclikY3RiN2OnCkj/V1ReAQpaHae8Bg==}
+  /lucide-react@0.307.0(react@18.2.0):
+    resolution: {integrity: sha512-+vZ+vUiWPZTMnLHURg4aoIaz6NHOWXVVcVd8iLROu1k4LbyjcnHIKmbjXHCmulz7XAYLWRVXzhJJgIr+Aq3vOg==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
 
-  /lucide-solid@0.303.0(solid-js@1.8.8):
-    resolution: {integrity: sha512-KRL32q7JbZrmGefDMpLtKR5rsYz7f7jA6Vza+gNfluFUC1AGTjPge8N7jRT9611nC/wG0paHWB0t4jLOo581NQ==}
+  /lucide-solid@0.307.0(solid-js@1.8.8):
+    resolution: {integrity: sha512-cI3PH5pgQfty3CvFY4gct8YK8xlSJhvgyaI/EqnrEQB7XdLcIvOl76yctRSFXyvKlE7qJRfm3bnjxonOB17sUQ==}
     peerDependencies:
       solid-js: ^1.4.7
     dependencies:
       solid-js: 1.8.8
     dev: true
 
-  /lucide-vue-next@0.303.0(vue@3.4.5):
-    resolution: {integrity: sha512-UyWxeqxrm5iIp4Tlovh90lfKoXKpwhwxOb4eFTtTBfJ59Y8R5f6vOFPiYwPf+K4InvZ4BntcIzswtGoDeSfBmg==}
+  /lucide-vue-next@0.307.0(vue@3.4.5):
+    resolution: {integrity: sha512-3SMO5OoP3+FtxMJz3DMEb0Saz+1KfgP/hLySyE8gmtnU7xb1aAcbilAG7/a9bk2zyiGkbxjZwAbaJVClM4UKPg==}
     peerDependencies:
       vue: '>=3.0.1'
     dependencies:
