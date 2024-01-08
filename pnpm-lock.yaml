@@ -290,8 +290,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.6
-        version: 6.1.6(vitest@0.34.6)
+        specifier: 6.2.0
+        version: 6.2.0(vitest@0.34.6)
       '@testing-library/react':
         specifier: 14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -504,8 +504,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.6
-        version: 6.1.6(vitest@0.34.2)
+        specifier: 6.2.0
+        version: 6.2.0(vitest@0.34.2)
       '@testing-library/user-event':
         specifier: 14.5.2
         version: 14.5.2(@testing-library/dom@9.3.3)
@@ -694,8 +694,8 @@ importers:
         specifier: 9.3.3
         version: 9.3.3
       '@testing-library/jest-dom':
-        specifier: 6.1.6
-        version: 6.1.6(vitest@0.34.6)
+        specifier: 6.2.0
+        version: 6.2.0(vitest@0.34.6)
       '@testing-library/user-event':
         specifier: 14.5.2
         version: 14.5.2(@testing-library/dom@9.3.3)
@@ -846,7 +846,7 @@ importers:
         version: 0.25.0(typescript@5.3.3)
       '@park-ui/panda-preset':
         specifier: 0.27.0
-        version: 0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.25.0)(@pandacss/types@0.24.2)
+        version: 0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.25.0)(@pandacss/types@0.25.0)
       '@types/react':
         specifier: 18.2.46
         version: 18.2.46
@@ -5375,15 +5375,11 @@ packages:
       ts-pattern: 5.0.5
     dev: false
 
-  /@pandacss/types@0.24.2:
-    resolution: {integrity: sha512-lE56EFKLapVKA6c6YShSq8s1CyiiGk6IMDpTOFQyvd0q0y1lnpHti1wdW0ZQCPrxB2lvQ1x29bXT/x4NauMiLw==}
-    dev: false
-
   /@pandacss/types@0.25.0:
     resolution: {integrity: sha512-59K5yAILCemzi2y3uyxcd42DiP3+ahjUa3FcFXzCImROPdPoXMR49QVv4yPYoG0wYxMHeA+RDtJVaAV43bwHnw==}
     dev: false
 
-  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.25.0)(@pandacss/types@0.24.2):
+  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.25.0)(@pandacss/types@0.25.0):
     resolution: {integrity: sha512-NLUCug6y4d3CZp7QAz9PzZYAPjRVB/OIk9t6b83T8gnB6RqpQDevYT4Kdl7Am7SbjePwzqlm9WX+/HgUlL4Zkg==}
     peerDependencies:
       '@pandacss/dev': '>0.22.0'
@@ -5391,7 +5387,7 @@ packages:
     dependencies:
       '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.0)
       '@pandacss/dev': 0.25.0(typescript@5.3.3)
-      '@pandacss/types': 0.24.2
+      '@pandacss/types': 0.25.0
       '@radix-ui/colors': 3.0.0
       deepmerge: 4.3.1
       ts-pattern: 5.0.6
@@ -7410,8 +7406,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom@6.1.6(vitest@0.34.2):
-    resolution: {integrity: sha512-YwuiOdYEcxhfC2u5iNKlvg2Q5MgbutovP6drq7J1HrCbvR+G58BbtoCoq+L/kNlrNFsu2Kt3jaFAviLVxYHJZg==}
+  /@testing-library/jest-dom@6.2.0(vitest@0.34.2):
+    resolution: {integrity: sha512-+BVQlJ9cmEn5RDMUS8c2+TU6giLvzaHZ8sU/x0Jj7fk+6/46wPdwlgOPcpxS17CjcanBi/3VmGMqVr2rmbUmNw==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
@@ -7433,14 +7429,14 @@ packages:
       aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
-      dom-accessibility-api: 0.5.16
+      dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
       vitest: 0.34.2(jsdom@23.0.1)
     dev: true
 
-  /@testing-library/jest-dom@6.1.6(vitest@0.34.6):
-    resolution: {integrity: sha512-YwuiOdYEcxhfC2u5iNKlvg2Q5MgbutovP6drq7J1HrCbvR+G58BbtoCoq+L/kNlrNFsu2Kt3jaFAviLVxYHJZg==}
+  /@testing-library/jest-dom@6.2.0(vitest@0.34.6):
+    resolution: {integrity: sha512-+BVQlJ9cmEn5RDMUS8c2+TU6giLvzaHZ8sU/x0Jj7fk+6/46wPdwlgOPcpxS17CjcanBi/3VmGMqVr2rmbUmNw==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
     peerDependencies:
       '@jest/globals': '>= 28'
@@ -7462,7 +7458,7 @@ packages:
       aria-query: 5.3.0
       chalk: 3.0.0
       css.escape: 1.5.1
-      dom-accessibility-api: 0.5.16
+      dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
       vitest: 0.34.6(jsdom@23.0.1)
@@ -11643,6 +11639,10 @@ packages:
 
   /dom-accessibility-api@0.5.16:
     resolution: {integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==}
+    dev: true
+
+  /dom-accessibility-api@0.6.3:
+    resolution: {integrity: sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==}
     dev: true
 
   /dom-serializer@2.0.0:
