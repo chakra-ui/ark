@@ -9,7 +9,7 @@ const open = ref(false)
 <template>
   <Story title="Dialog">
     <Variant title="Basic">
-      <Dialog.Root default-open>
+      <Dialog.Root>
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Teleport to="body">
           <Dialog.Backdrop />
