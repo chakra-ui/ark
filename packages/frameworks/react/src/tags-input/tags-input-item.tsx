@@ -6,7 +6,6 @@ import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
-import { TagsInputItemProvider } from './tags-input-item-context'
 
 export interface TagsInputItemProps
   extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
@@ -25,11 +24,9 @@ export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((pro
   const view = runIfFn(children, itemState)
 
   return (
-    <TagsInputItemProvider value={itemProps}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
-    </TagsInputItemProvider>
+    <ark.div {...mergedProps} ref={ref}>
+      {view}
+    </ark.div>
   )
 })
 

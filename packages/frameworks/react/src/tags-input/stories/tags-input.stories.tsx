@@ -1,5 +1,7 @@
 import type { Meta } from '@storybook/react'
+import { Fragment } from 'react'
 import { TagsInput } from '../'
+import { TagsInputItemProvider } from '../tags-input-item-context'
 import './tags-input.css'
 
 type TagsInputType = typeof TagsInput
@@ -19,11 +21,13 @@ export const Basic = () => {
           <TagsInput.Label>Frameworks</TagsInput.Label>
           <TagsInput.Control>
             {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
+              <Fragment key={index}>
+                <TagsInput.Item index={index} value={value}>
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+                <TagsInput.ItemInput index={index} value={value} />
+              </Fragment>
             ))}
           </TagsInput.Control>
           <TagsInput.Input placeholder="Add Framework" />
@@ -42,11 +46,13 @@ export const InitialValue = () => {
           <TagsInput.Label>Frameworks</TagsInput.Label>
           <TagsInput.Control>
             {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
+              <TagsInputItemProvider key={index} value={{ index, value }}>
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
                 <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
+              </TagsInputItemProvider>
             ))}
           </TagsInput.Control>
           <TagsInput.Input placeholder="Add tag" />
