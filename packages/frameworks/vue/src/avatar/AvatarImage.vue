@@ -1,14 +1,15 @@
+<script lang="ts">
+import { type HTMLArkProps } from '../factory'
+export interface AvatarImageProps extends /* @vue-ignore */ HTMLArkProps<'img'> {}
+</script>
+
 <script setup lang="ts">
-import { ark, type HTMLArkProps } from '../factory'
+import { ark } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
 defineProps<AvatarImageProps>()
 
 const api = useAvatarContext()
-</script>
-
-<script lang="ts">
-export interface AvatarImageProps extends /* @vue-ignore */ HTMLArkProps<'img'> {}
 </script>
 
 <template>

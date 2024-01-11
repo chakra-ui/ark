@@ -1,19 +1,19 @@
+<script lang="ts">
+import { type HTMLArkProps } from '../factory'
+export interface AvatarFallbackProps extends /* @vue-ignore */ HTMLArkProps<'span'> {}
+// have to add the vue-ignore when using the interface as props type. https://github.com/vuejs/core/issues/8286#issuecomment-1545659320
+</script>
+
 <script setup lang="ts">
-import type { VNode } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
 defineSlots<{
-  default?: VNode[]
+  default?: (props: any) => any
 }>()
 
 defineProps<AvatarFallbackProps>()
-const api = useAvatarContext()
-</script>
-
-<script lang="ts">
-export interface AvatarFallbackProps extends /* @vue-ignore */ HTMLArkProps<'span'> {}
-// have to add the vue-ignore when using the interface as props type.
+const api = useAvatarContext() // Since we are getting the api from `useAvatarContext` we don't need to pass `api` as slot prop.
 </script>
 
 <template>
