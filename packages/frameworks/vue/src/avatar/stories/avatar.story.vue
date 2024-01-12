@@ -13,7 +13,7 @@ import './avatar.css'
     </Variant>
 
     <Variant title="Events">
-      <Avatar @loading-status-change="(status) => console.log(status)">
+      <Avatar @loading-status-change="(details) => console.log(details)">
         <Avatar.Fallback>PA</Avatar.Fallback>
         <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
       </Avatar>
