@@ -13,7 +13,7 @@ function mapProps(
   return Object.fromEntries(Object.entries(props).map(([key, value]) => [key, mapper(key, value)]))
 }
 
-export const spread = (node: HTMLElement, props: any) => {
+export const spread = (node: HTMLElement | SVGElement, props: any) => {
   const nodeEvents = Object.fromEntries(
     Object.keys(node)
       .filter((prop) => prop.startsWith('$$'))
@@ -40,7 +40,8 @@ export const spread = (node: HTMLElement, props: any) => {
 
       // class composition
       if (key === 'class') {
-        return [node.className, value].filter(Boolean).join(' ')
+        const nodeClass = node instanceof SVGElement ? node.getAttribute('class') : node.className
+        return [nodeClass, value].filter(Boolean).join(' ')
       }
 
       // don't override existing child attributes
@@ -50,5 +51,5 @@ export const spread = (node: HTMLElement, props: any) => {
     }),
   )
 
-  solidSpread(node, mergeProps(childProps))
+  solidSpread(node, mergeProps(childProps), node instanceof SVGElement)
 }

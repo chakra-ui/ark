@@ -22,6 +22,25 @@ const ComponentUnderTest = () => (
   </ark.div>
 )
 
+const SvgComponentUnderTest = () => (
+  <ark.div
+    id="parent"
+    data-part="parent"
+    data-testid="parent"
+    class="parent"
+    style="background: red"
+    asChild
+  >
+    <ark.svg
+      id="child"
+      data-part="child"
+      data-testid="child"
+      class="child"
+      style="color: blue"
+    ></ark.svg>
+  </ark.div>
+)
+
 describe('spread', () => {
   it('should render only the child', () => {
     render(ComponentUnderTest)
@@ -47,6 +66,15 @@ describe('spread', () => {
 
   it('should merge styles and classes', () => {
     render(ComponentUnderTest)
+
+    const child = screen.getByTestId('child')
+    expect(child).toHaveStyle({ background: 'red' })
+    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
+    expect(child).toHaveClass('child parent')
+  })
+
+  it('should merge svg styles and classes', () => {
+    render(SvgComponentUnderTest)
 
     const child = screen.getByTestId('child')
     expect(child).toHaveStyle({ background: 'red' })

@@ -8,7 +8,7 @@ export const cloneElement = (child: JSX.Element, spreadProps: () => Record<strin
 
   createEffect(() => {
     const children = getChildren()
-    if (children instanceof HTMLElement) {
+    if (children instanceof HTMLElement || children instanceof SVGElement) {
       spread(children, spreadProps())
     }
   })
