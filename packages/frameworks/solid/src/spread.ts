@@ -21,6 +21,8 @@ export const spread = (node: HTMLElement | SVGElement, props: any) => {
       .map((prop) => [prop, node[prop]]),
   )
 
+  const isSVG = node instanceof SVGElement
+
   const childProps = createMemo(() =>
     mapProps(props, (key, value) => {
       const eventKey = getEventKey(key)
@@ -40,8 +42,7 @@ export const spread = (node: HTMLElement | SVGElement, props: any) => {
 
       // class composition
       if (key === 'class') {
-        const nodeClass = node instanceof SVGElement ? node.getAttribute('class') : node.className
-        return [nodeClass, value].filter(Boolean).join(' ')
+        return [node.classList.toString(), value].filter(Boolean).join(' ')
       }
 
       // don't override existing child attributes
@@ -51,5 +52,5 @@ export const spread = (node: HTMLElement | SVGElement, props: any) => {
     }),
   )
 
-  solidSpread(node, mergeProps(childProps), node instanceof SVGElement)
+  solidSpread(node, mergeProps(childProps), isSVG)
 }

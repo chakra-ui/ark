@@ -94,7 +94,7 @@ describe('Ark Factory', () => {
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
   })
 
-  it('should merge styles and classes for svgs', async () => {
+  it('should merge classes for svgs', async () => {
     render(() => (
       <ark.div data-testid="parent" class="parent" asChild>
         <svg viewBox="0 0 0 24" fill="none" data-testid="child" class="child">
