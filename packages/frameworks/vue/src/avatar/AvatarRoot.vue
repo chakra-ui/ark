@@ -13,9 +13,8 @@ import { useAvatar } from './use-avatar'
 
 const props = defineProps(avatarProps)
 const emit = defineEmits<AvatarEmits>()
-
 defineSlots<{
-  default?: (props: any) => any
+  default(): any
 }>()
 
 const api = useAvatar(props, emit)

@@ -8,11 +8,11 @@ export interface AvatarFallbackProps extends /* @vue-ignore */ HTMLArkProps<'spa
 import { ark } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
+defineProps<AvatarFallbackProps>()
 defineSlots<{
-  default?: (props: any) => any
+  default(): any
 }>()
 
-defineProps<AvatarFallbackProps>()
 const api = useAvatarContext() // Since we are getting the api from `useAvatarContext` we don't need to pass `api` as slot prop.
 </script>
 
