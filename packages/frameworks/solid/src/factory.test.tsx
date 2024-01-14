@@ -1,7 +1,9 @@
-import { render, screen } from '@solidjs/testing-library'
+import { fireEvent, render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { createSignal } from 'solid-js'
 import { vi } from 'vitest'
 import { ark } from './factory'
+import { As } from './polymorphic'
 
 const ComponentUnderTest = () => (
   <ark.div
@@ -12,7 +14,8 @@ const ComponentUnderTest = () => (
     style={{ background: 'red' }}
     asChild
   >
-    <ark.span
+    <As
+      component={ark.span}
       id="child"
       data-part="child"
       data-testid="child"
@@ -20,7 +23,7 @@ const ComponentUnderTest = () => (
       style={{ color: 'blue' }}
     >
       Ark UI
-    </ark.span>
+    </As>
   </ark.div>
 )
 
@@ -53,7 +56,7 @@ describe('Ark Factory', () => {
     const onClickChild = vi.fn()
     render(() => (
       <ark.div data-testid="parent" onClick={onClickParent} asChild>
-        <ark.span data-testid="child" onClick={onClickChild} />
+        <As component={ark.span} data-testid="child" onClick={onClickChild} />
       </ark.div>
     ))
     await user.click(screen.getByTestId('child'))
@@ -64,9 +67,9 @@ describe('Ark Factory', () => {
   it('should propagate asChild', async () => {
     render(() => (
       <ark.div data-testid="parent" asChild>
-        <ark.span asChild>
-          <ark.span>Ark UI</ark.span>
-        </ark.span>
+        <As component={ark.span} asChild>
+          <As component={ark.span}>Ark UI</As>
+        </As>
       </ark.div>
     ))
     expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
@@ -75,9 +78,9 @@ describe('Ark Factory', () => {
   it('should stop propagate asChild', async () => {
     render(() => (
       <ark.div data-testid="parent" asChild>
-        <ark.span asChild={false}>
+        <As component={ark.span} asChild={false}>
           <ark.span>Ark UI</ark.span>
-        </ark.span>
+        </As>
       </ark.div>
     ))
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
@@ -86,9 +89,9 @@ describe('Ark Factory', () => {
   it('should stop propagate asChild', async () => {
     render(() => (
       <ark.div data-testid="parent" asChild>
-        <ark.span asChild={false}>
+        <As component={ark.span} asChild={false}>
           <ark.span>Ark UI</ark.span>
-        </ark.span>
+        </As>
       </ark.div>
     ))
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
@@ -97,12 +100,57 @@ describe('Ark Factory', () => {
   it('should merge classes for svgs', async () => {
     render(() => (
       <ark.div data-testid="parent" class="parent" asChild>
-        <svg viewBox="0 0 0 24" fill="none" data-testid="child" class="child">
+        <As component="svg" viewBox="0 0 0 24" fill="none" data-testid="child" class="child">
           <path d="M0 0h24v24H0z" />
-        </svg>
+        </As>
       </ark.div>
     ))
     const child = screen.getByTestId('child')
     expect(child).toHaveClass('child parent')
+  })
+
+  it('should merge props after updates', async () => {
+    render(() => {
+      const [parentCount, setParentCount] = createSignal(0)
+      const [childCount, setChildCount] = createSignal(0)
+
+      const parentClass = () => `parent parent-count-${parentCount()}`
+      const childClass = () => `child child-count-${childCount()}`
+
+      return (
+        <ark.div
+          data-testid="parent"
+          class={parentClass()}
+          onClick={() => {
+            setParentCount((c) => c + 1)
+          }}
+          asChild
+        >
+          <As
+            component="svg"
+            viewBox="0 0 0 24"
+            fill="none"
+            data-testid="child"
+            class={childClass()}
+            onClick={() => {
+              setChildCount((c) => c + 1)
+            }}
+          >
+            <path d="M0 0h24v24H0z" />
+          </As>
+        </ark.div>
+      )
+    })
+
+    const child = screen.getByTestId('child')
+    expect(child).toHaveClass('parent parent-count-0 child child-count-0')
+
+    fireEvent.click(child)
+
+    expect(child).toHaveClass('parent parent-count-1 child child-count-1')
+
+    fireEvent.click(child)
+
+    expect(child).toHaveClass('parent parent-count-2 child child-count-2')
   })
 })

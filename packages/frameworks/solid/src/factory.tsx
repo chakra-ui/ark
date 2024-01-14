@@ -1,15 +1,6 @@
-import {
-  children,
-  createEffect,
-  splitProps,
-  type Component,
-  type ComponentProps,
-  type JSX,
-  type ParentProps,
-} from 'solid-js'
+import { type Component, type ComponentProps, type JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import { spread } from './spread'
-import { ssrSpread } from './ssr-spread'
+import { Polymorphic, type PolymorphicProps } from './polymorphic'
 
 type ElementType = keyof JSX.IntrinsicElements
 type AsChildProps = {
@@ -21,28 +12,9 @@ type JsxElements = {
 type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
 type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
 
-function withAsChild(Component: ElementType) {
-  return function jsx(props: ParentProps<AsChildProps>) {
-    const [localProps, restProps] = splitProps(props, ['asChild', 'children'])
-
-    if (!localProps.asChild) {
-      return (
-        <Dynamic component={Component} {...restProps}>
-          {localProps.children}
-        </Dynamic>
-      )
-    }
-
-    const getChildren = children(() => ssrSpread(localProps.children, restProps))
-
-    createEffect(() => {
-      const children = getChildren()
-      if (children instanceof HTMLElement || children instanceof SVGElement) {
-        spread(children, restProps)
-      }
-    })
-
-    return getChildren
+function withAsChild<C extends ElementType>(Component: C) {
+  return function jsx(props: PolymorphicProps<C>) {
+    return <Dynamic component={Polymorphic} as={Component} {...props} />
   }
 }
 
