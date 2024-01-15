@@ -1,7 +1,7 @@
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
-import { createMemo, createUniqueId, type Accessor, createEffect } from 'solid-js'
+import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
 import { type CollectionItem, type Optional } from '../types'
@@ -26,12 +26,6 @@ export const useSelect = <T extends CollectionItem>(
   const getRootNode = useEnvironmentContext()
   const context = () =>
     mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
-
-  createEffect(() => {
-    console.log('collectionOptions', collectionOptions.items)
-    console.log('collection', collection().nodes)
-    console.log('context', context().collection.nodes)
-  })
   const [state, send] = useMachine(select.machine(context), {
     context,
   })
