@@ -28,8 +28,8 @@ export default defineConfig({
     },
     globals: true,
     environment: 'jsdom',
-    transformMode: {
-      web: [/.[tj]sx$/],
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
     },
   },
   build: {
