@@ -12,7 +12,7 @@ description: All notable changes to this project will be documented in this file
 - Added `Progress` component
 - Added `modelValue` for `Dialog` component
 - Added `v-model:open` for `HoverCard` component
-- Added `modelValue` for `Popover` component
+- Added `v-model:open` for `Popover` component
 
 ### Changed
 
