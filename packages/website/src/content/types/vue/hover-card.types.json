@@ -8,7 +8,7 @@
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial open state of the dialog."
+      "description": "The initial open state of the hover card."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
