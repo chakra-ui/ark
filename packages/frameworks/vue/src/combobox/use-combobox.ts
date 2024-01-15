@@ -21,23 +21,20 @@ export const useCombobox = <T extends CollectionItem>(
 ): UseComboboxReturn<T> => {
   const getRootNode = useEnvironmentContext()
 
-  const { items, itemToString, itemToValue, isItemDisabled, ...comboboxProps } = props
   const context = computed(() => {
-    const { modelValue, ...rest } = comboboxProps
+    const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
     return {
       ...rest,
+      collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
     }
   })
-
-  const collection = combobox.collection({ items, itemToString, itemToValue, isItemDisabled })
 
   const [state, send] = useMachine(
     combobox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      collection,
       onHighlightChange: (details) => {
         emit('highlight-change', details)
       },
@@ -54,5 +51,6 @@ export const useCombobox = <T extends CollectionItem>(
     }),
     { context },
   )
+
   return computed(() => combobox.connect(state.value, send, normalizeProps))
 }

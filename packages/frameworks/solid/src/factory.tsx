@@ -37,7 +37,7 @@ function withAsChild(Component: ElementType) {
 
     createEffect(() => {
       const children = getChildren()
-      if (children instanceof HTMLElement) {
+      if (children instanceof HTMLElement || children instanceof SVGElement) {
         spread(children, restProps)
       }
     })

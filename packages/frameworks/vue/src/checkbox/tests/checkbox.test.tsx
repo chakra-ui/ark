@@ -36,7 +36,7 @@ describe('Checkbox', () => {
   })
 
   it('should handle indeterminate state from example', async () => {
-    render(ComponentUnderTest, { props: { modelValue: 'indeterminate' } })
+    render(ComponentUnderTest, { props: { checked: 'indeterminate' } })
     expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 })

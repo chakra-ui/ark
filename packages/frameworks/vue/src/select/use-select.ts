@@ -1,7 +1,7 @@
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
-import { computed, watch, type ComputedRef } from 'vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import type { CollectionItem, Optional } from '../types'
 import { useId } from '../utils'
@@ -23,6 +23,7 @@ export const useSelect = <T extends CollectionItem>(
     const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
     return {
       ...rest,
+      collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
     }
   })
@@ -34,12 +35,6 @@ export const useSelect = <T extends CollectionItem>(
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      collection: select.collection({
-        items: props.items,
-        itemToString: props.itemToString,
-        itemToValue: props.itemToValue,
-        isItemDisabled: props.isItemDisabled,
-      }),
       onValueChange: (details) => {
         emit('value-change', details)
         emit('update:modelValue', details.value)
@@ -54,14 +49,5 @@ export const useSelect = <T extends CollectionItem>(
     { context },
   )
 
-  const api = computed(() => select.connect(state.value, send, normalizeProps))
-
-  watch(
-    () => props.items,
-    (value) => {
-      api.value.collection.setItems(value)
-    },
-  )
-
-  return api
+  return computed(() => select.connect(state.value, send, normalizeProps))
 }
