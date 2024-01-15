@@ -1,40 +1,36 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { Checkbox, type CheckedState } from '../'
 import './checkbox.css'
 
 const checked = ref<CheckedState>(false)
-const parentChecked = ref<CheckedState>(false)
-const childCheckedItems = reactive([false, false])
-
-watch(childCheckedItems, (items) => {
-  parentChecked.value = items.every(Boolean)
-    ? true
-    : items.indexOf(true) < 0
-    ? false
-    : 'indeterminate'
-})
-
-watch(parentChecked, (parentVal) => {
-  if (parentVal === 'indeterminate') return
-  childCheckedItems.map((_, idx) => {
-    childCheckedItems[idx] = parentVal
-  })
-  return
+const childCheckedItems = ref([false, false])
+const parentChecked = computed({
+  get() {
+    return childCheckedItems.value.every(Boolean)
+      ? true
+      : childCheckedItems.value.some(Boolean)
+        ? 'indeterminate'
+        : false
+  },
+  set(val: CheckedState) {
+    if (val === 'indeterminate') return
+    childCheckedItems.value = childCheckedItems.value.map(() => val)
+  },
 })
 </script>
 
 <template>
   <Story title="Checkbox">
     <Variant title="Basic">
-      <Checkbox.Root defaultChecked>
+      <Checkbox.Root default-checked>
         <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control />
       </Checkbox.Root>
     </Variant>
 
     <Variant title="Controlled">
-      <Checkbox.Root v-model="checked">
+      <Checkbox.Root v-model:checked="checked">
         <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control />
       </Checkbox.Root>
@@ -42,23 +38,23 @@ watch(parentChecked, (parentVal) => {
 
     <Variant title="Indeterminate">
       <div style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px">
-        <Checkbox.Root v-model="parentChecked">
-          <Checkbox.Control data-testid="parent-control">
-            <span v-if="parentChecked === true">✓</span>
-            <span v-else-if="parentChecked === 'indeterminate'">-</span>
+        <Checkbox.Root v-model:checked="parentChecked" v-slot="{ isChecked, isIndeterminate }">
+          <Checkbox.Control>
+            <span v-if="isChecked">✓</span>
+            <span v-if="isIndeterminate">-</span>
           </Checkbox.Control>
           <Checkbox.Label> Parent Checkbox</Checkbox.Label>
         </Checkbox.Root>
         <div style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px">
-          <Checkbox.Root v-model="childCheckedItems[0]">
+          <Checkbox.Root v-model:checked="childCheckedItems[0]" v-slot="{ isChecked }">
             <Checkbox.Control>
-              <span v-if="childCheckedItems[0]">✓</span>
+              <span v-if="isChecked">✓</span>
             </Checkbox.Control>
             <Checkbox.Label> Child One Checkbox</Checkbox.Label>
           </Checkbox.Root>
-          <Checkbox.Root v-model="childCheckedItems[1]">
+          <Checkbox.Root v-model:checked="childCheckedItems[1]" v-slot="{ isChecked }">
             <Checkbox.Control>
-              <span v-if="childCheckedItems[1]">✓</span>
+              <span v-if="isChecked">✓</span>
             </Checkbox.Control>
             <Checkbox.Label>Child Two Checkbox</Checkbox.Label>
           </Checkbox.Root>
@@ -67,10 +63,11 @@ watch(parentChecked, (parentVal) => {
     </Variant>
 
     <Variant title="RenderProp">
-      <Checkbox.Root v-slot="{ isChecked }">
+      <Checkbox.Root v-slot="{ isChecked, isIndeterminate }">
         <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control>
           <span v-if="isChecked">✓</span>
+          <span v-if="isIndeterminate">-</span>
         </Checkbox.Control>
       </Checkbox.Root>
     </Variant>

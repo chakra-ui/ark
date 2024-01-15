@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -98,7 +99,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'alphanumeric' | 'numeric' | 'alphabetic'",
+      "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
@@ -108,7 +109,10 @@
       "description": "The value of the the pin input."
     }
   },
-  "Input": { "index": { "type": "number", "isRequired": true } },
+  "Input": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

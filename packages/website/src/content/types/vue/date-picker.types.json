@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "defaultValue": "true",
@@ -174,7 +175,10 @@
   },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Table": { "columns": { "type": "number", "isRequired": false } },
+  "Table": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "columns": { "type": "number", "isRequired": false }
+  },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },

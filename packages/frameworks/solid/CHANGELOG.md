@@ -15,6 +15,10 @@ description: All notable changes to this project will be documented in this file
 - Changed `Popover.Description` tag from `div` to `p`
 - Changed `PopoverDescriptionProps` type from `div` to `p`
 
+### Fixed
+
+- Resolved an issue that `asChild` did not work properly with `svg` elements.
+
 ## [1.2.0] - 2023-12-13
 
 ### Added

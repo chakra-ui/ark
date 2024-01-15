@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the dialog."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -57,7 +62,6 @@
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
-    "modelValue": { "type": "boolean", "isRequired": false },
     "onEscapeKeyDown": {
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
@@ -88,6 +92,7 @@
       "isRequired": false,
       "description": "Function called when the pointer is pressed down outside the component"
     },
+    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
     "present": {
       "type": "boolean",
