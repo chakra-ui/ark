@@ -287,8 +287,8 @@ importers:
         specifier: 7.6.7
         version: 7.6.7(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(vite@5.0.11)
       '@testing-library/dom':
-        specifier: 9.3.3
-        version: 9.3.3
+        specifier: 9.3.4
+        version: 9.3.4
       '@testing-library/jest-dom':
         specifier: 6.2.0
         version: 6.2.0(vitest@0.34.6)
@@ -297,7 +297,7 @@ importers:
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       '@testing-library/user-event':
         specifier: 14.5.2
-        version: 14.5.2(@testing-library/dom@9.3.3)
+        version: 14.5.2(@testing-library/dom@9.3.4)
       '@types/jsdom':
         specifier: 21.1.6
         version: 21.1.6
@@ -327,7 +327,7 @@ importers:
         version: 8.56.0
       eslint-plugin-jest-dom:
         specifier: 5.1.0
-        version: 5.1.0(@testing-library/dom@9.3.3)(eslint@8.56.0)
+        version: 5.1.0(@testing-library/dom@9.3.4)(eslint@8.56.0)
       eslint-plugin-react:
         specifier: 7.33.2
         version: 7.33.2(eslint@8.56.0)
@@ -501,14 +501,14 @@ importers:
         specifier: 0.2.2
         version: 0.2.2
       '@testing-library/dom':
-        specifier: 9.3.3
-        version: 9.3.3
+        specifier: 9.3.4
+        version: 9.3.4
       '@testing-library/jest-dom':
         specifier: 6.2.0
         version: 6.2.0(vitest@0.34.2)
       '@testing-library/user-event':
         specifier: 14.5.2
-        version: 14.5.2(@testing-library/dom@9.3.3)
+        version: 14.5.2(@testing-library/dom@9.3.4)
       '@types/jsdom':
         specifier: 21.1.6
         version: 21.1.6
@@ -529,7 +529,7 @@ importers:
         version: 8.56.0
       eslint-plugin-jest-dom:
         specifier: 5.1.0
-        version: 5.1.0(@testing-library/dom@9.3.3)(eslint@8.56.0)
+        version: 5.1.0(@testing-library/dom@9.3.4)(eslint@8.56.0)
       eslint-plugin-testing-library:
         specifier: 6.2.0
         version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
@@ -691,14 +691,14 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(release-it@17.0.1)
       '@testing-library/dom':
-        specifier: 9.3.3
-        version: 9.3.3
+        specifier: 9.3.4
+        version: 9.3.4
       '@testing-library/jest-dom':
         specifier: 6.2.0
         version: 6.2.0(vitest@0.34.6)
       '@testing-library/user-event':
         specifier: 14.5.2
-        version: 14.5.2(@testing-library/dom@9.3.3)
+        version: 14.5.2(@testing-library/dom@9.3.4)
       '@testing-library/vue':
         specifier: 8.0.1
         version: 8.0.1(@vue/compiler-sfc@3.4.5)(vue@3.4.5)
@@ -731,7 +731,7 @@ importers:
         version: 8.56.0
       eslint-plugin-jest-dom:
         specifier: 5.1.0
-        version: 5.1.0(@testing-library/dom@9.3.3)(eslint@8.56.0)
+        version: 5.1.0(@testing-library/dom@9.3.4)(eslint@8.56.0)
       eslint-plugin-testing-library:
         specifier: 6.2.0
         version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
@@ -6420,7 +6420,7 @@ packages:
       solid-js: '>=1.0.0'
     dependencies:
       '@solidjs/router': 0.9.1(solid-js@1.8.8)
-      '@testing-library/dom': 9.3.3
+      '@testing-library/dom': 9.3.4
       solid-js: 1.8.8
     dev: true
 
@@ -7262,8 +7262,8 @@ packages:
   /@storybook/testing-library@0.2.2:
     resolution: {integrity: sha512-L8sXFJUHmrlyU2BsWWZGuAjv39Jl1uAqUHdxmN42JY15M4+XCMjGlArdCCjDe1wpTSW6USYISA9axjZojgtvnw==}
     dependencies:
-      '@testing-library/dom': 9.3.3
-      '@testing-library/user-event': 14.5.2(@testing-library/dom@9.3.3)
+      '@testing-library/dom': 9.3.4
+      '@testing-library/user-event': 14.5.2(@testing-library/dom@9.3.4)
       ts-dedent: 2.2.0
     dev: true
 
@@ -7455,8 +7455,8 @@ packages:
       tailwindcss: 3.3.3
     dev: false
 
-  /@testing-library/dom@9.3.3:
-    resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
+  /@testing-library/dom@9.3.4:
+    resolution: {integrity: sha512-FlS4ZWlp97iiNWig0Muq8p+3rVDjRiYE+YKGbAqXOu9nwJFFOdL00kFpz42M+4huzYi86vAK1sOOfyOG45muIQ==}
     engines: {node: '>=14'}
     dependencies:
       '@babel/code-frame': 7.23.5
@@ -7535,19 +7535,19 @@ packages:
       react-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.23.2
-      '@testing-library/dom': 9.3.3
+      '@testing-library/dom': 9.3.4
       '@types/react-dom': 18.2.18
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@testing-library/user-event@14.5.2(@testing-library/dom@9.3.3):
+  /@testing-library/user-event@14.5.2(@testing-library/dom@9.3.4):
     resolution: {integrity: sha512-YAh82Wh4TIrxYLmfGcixwD18oIjyC1pFQC2Y01F2lzV2HTMiYrI0nze0FD0ocB//CKS/7jIUgae+adPqxK5yCQ==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@testing-library/dom': 9.3.3
+      '@testing-library/dom': 9.3.4
     dev: true
 
   /@testing-library/vue@8.0.1(@vue/compiler-sfc@3.4.5)(vue@3.4.5):
@@ -7558,7 +7558,7 @@ packages:
       vue: '>= 3'
     dependencies:
       '@babel/runtime': 7.23.2
-      '@testing-library/dom': 9.3.3
+      '@testing-library/dom': 9.3.4
       '@vue/compiler-sfc': 3.4.5
       '@vue/test-utils': 2.4.1(vue@3.4.5)
       vue: 3.4.5(typescript@5.3.3)
@@ -12449,7 +12449,7 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-plugin-jest-dom@5.1.0(@testing-library/dom@9.3.3)(eslint@8.56.0):
+  /eslint-plugin-jest-dom@5.1.0(@testing-library/dom@9.3.4)(eslint@8.56.0):
     resolution: {integrity: sha512-JIXZp+E/h/aGlP/rQc4tuOejiHlZXg65qw8JAJMIJA5VsdjOkss/SYcRSqBrQuEOytEM8JvngUjcz31d1RrCrA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6', yarn: '>=1'}
     peerDependencies:
@@ -12460,7 +12460,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.23.2
-      '@testing-library/dom': 9.3.3
+      '@testing-library/dom': 9.3.4
       eslint: 8.56.0
       requireindex: 1.2.0
     dev: true
