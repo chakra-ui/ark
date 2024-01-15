@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Teleport, ref } from 'vue'
+import { ref } from 'vue'
 import { HoverCard } from '../'
 import './hover-card.css'
 
@@ -26,7 +26,7 @@ const open = ref(false)
 
     <Variant title="Controlled">
       <button @click="() => (open = true)">Open Dialog</button>
-      <HoverCard.Root v-model="open">
+      <HoverCard.Root v-model:open="open">
         <HoverCard.Trigger>Hover me</HoverCard.Trigger>
         <Teleport to="body">
           <HoverCard.Positioner>
