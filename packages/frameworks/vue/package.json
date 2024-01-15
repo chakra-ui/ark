@@ -82,7 +82,7 @@
     "eslint-plugin-testing-library": "6.2.0",
     "eslint-plugin-vue": "9.20.1",
     "globby": "14.0.0",
-    "histoire": "0.17.6",
+    "histoire": "0.17.8",
     "jsdom": "23.0.1",
     "lucide-vue-next": "0.309.0",
     "release-it": "17.0.1",
