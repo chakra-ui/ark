@@ -1,6 +1,5 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -60,7 +59,6 @@
   },
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   }
 }

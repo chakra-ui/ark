@@ -1,7 +1,4 @@
 {
-  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Group": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
   "Createer": {
     "placement": {
       "type": "Placement",
@@ -84,7 +81,5 @@
       "isRequired": false,
       "description": "The z-index applied to each toast group"
     }
-  },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

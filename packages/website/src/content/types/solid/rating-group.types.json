@@ -5,7 +5,6 @@
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -74,10 +73,5 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "Item": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Item": { "index": { "type": "number", "isRequired": true } }
 }
