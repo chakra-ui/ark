@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the popover."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -53,7 +58,6 @@
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
-    "modelValue": { "type": "boolean", "isRequired": false },
     "onEscapeKeyDown": {
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
@@ -84,6 +88,7 @@
       "isRequired": false,
       "description": "Function called when the pointer is pressed down outside the component"
     },
+    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": {
       "type": "boolean",
       "isRequired": false,
