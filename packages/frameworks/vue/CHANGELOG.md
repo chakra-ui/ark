@@ -14,6 +14,7 @@ description: All notable changes to this project will be documented in this file
 - Added `v-model:open` for `Dialog` component
 - Added `v-model:open` for `HoverCard` component
 - Added `v-model:open` for `Popover` component
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
 
 ### Changed
 

@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added the `Progress` component.
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
 
 ### Changed
 
