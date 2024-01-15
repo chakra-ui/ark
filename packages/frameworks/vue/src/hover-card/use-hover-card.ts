@@ -7,7 +7,7 @@ import { useId } from '../utils'
 
 export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {
   /**
-   * The initial open state of the dialog.
+   * The initial open state of the hover card.
    */
   defaultOpen?: hoverCard.Context['open']
   'onUpdate:open'?: (open: hoverCard.OpenChangeDetails['open']) => void
