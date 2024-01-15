@@ -65,7 +65,7 @@
   "devDependencies": {
     "@histoire/plugin-vue": "0.17.6",
     "@release-it/keep-a-changelog": "5.0.0",
-    "@testing-library/dom": "9.3.3",
+    "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.2.0",
     "@testing-library/user-event": "14.5.2",
     "@testing-library/vue": "8.0.1",
