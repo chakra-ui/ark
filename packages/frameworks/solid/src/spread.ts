@@ -42,6 +42,9 @@ export const spread = (node: HTMLElement | SVGElement, props: any) => {
 
       // class composition
       if (key === 'class') {
+        // console.log('spread.ts class', node.classList.toString())
+        // console.log('spread.ts value', value)
+
         return [node.classList.toString(), value].filter(Boolean).join(' ')
       }
 

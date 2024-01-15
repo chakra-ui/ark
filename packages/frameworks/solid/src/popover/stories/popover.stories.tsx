@@ -15,13 +15,13 @@ export default meta
 
 export const Basic = () => (
   <Popover.Root>
-    <Popover.Trigger>
-      Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
+    <Popover.Trigger as={Button} onClick={() => console.log('outside click')}>
+      Button
     </Popover.Trigger>
-    <Popover.Positioner>
+    <Popover.Positioner style={{ background: 'red' }}>
       <Popover.Content>
         <Popover.Title>Title</Popover.Title>
-        <Popover.Description>Description</Popover.Description>
+        <Popover.Description as={Button}>"Description</Popover.Description>
       </Popover.Content>
     </Popover.Positioner>
   </Popover.Root>

@@ -1,5 +1,6 @@
-import { render, screen } from '@solidjs/testing-library'
+import { fireEvent, render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { createSignal } from 'solid-js'
 import { vi } from 'vitest'
 import { ark } from './factory'
 
@@ -104,5 +105,90 @@ describe('Ark Factory', () => {
     ))
     const child = screen.getByTestId('child')
     expect(child).toHaveClass('child parent')
+  })
+
+  it('should merge props after updates', async () => {
+    render(() => {
+      const [parentCount, setParentCount] = createSignal(0)
+      const [childCount, setChildCount] = createSignal(0)
+
+      const parentClass = () => `parent parent-count-${parentCount()}`
+      const childClass = () => `child child-count-${childCount()}`
+
+      return (
+        <ark.div
+          data-testid="parent"
+          class={parentClass()}
+          onClick={() => {
+            setParentCount((c) => c + 1)
+          }}
+          asChild
+        >
+          <svg
+            viewBox="0 0 0 24"
+            fill="none"
+            data-testid="child"
+            class={childClass()}
+            onClick={() => {
+              setChildCount((c) => c + 1)
+            }}
+          >
+            <path d="M0 0h24v24H0z" />
+          </svg>
+        </ark.div>
+      )
+    })
+
+    const child = screen.getByTestId('child')
+    expect(child).toHaveClass('parent parent-count-0 child child-count-0')
+
+    screen.debug()
+
+    fireEvent.click(child)
+
+    screen.debug()
+
+    // screen.debug()
+
+    // expect(child).toHaveClass('parent parent-count-1 child child-count-1')
+
+    // fireEvent.click(child)
+
+    // expect(child).toHaveClass('parent parent-count-2 child child-count-2')
+  })
+
+  it.only('should do sth correct', async () => {
+    render(() => {
+      const [parentCount, setParentCount] = createSignal(0)
+      const [childCount, setChildCount] = createSignal(0)
+      return (
+        <ark.div
+          data-testid="parent"
+          data-parent-count={parentCount()}
+          class="parent"
+          asChild
+          onClick={() => {
+            setParentCount((c) => c + 1)
+          }}
+        >
+          <ark.div
+            data-testid="child"
+            data-child-count={childCount()}
+            class="child"
+            onClick={() => {
+              setChildCount((c) => c + 1)
+            }}
+          >
+            Counter
+          </ark.div>
+        </ark.div>
+      )
+    })
+    screen.debug()
+    const child = screen.getByTestId('child')
+    console.log('-----')
+
+    fireEvent.click(child)
+    screen.debug()
   })
 })

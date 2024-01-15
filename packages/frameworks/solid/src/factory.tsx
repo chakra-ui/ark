@@ -1,6 +1,4 @@
 import {
-  children,
-  createEffect,
   splitProps,
   type Component,
   type ComponentProps,
@@ -8,41 +6,30 @@ import {
   type ParentProps,
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import { spread } from './spread'
-import { ssrSpread } from './ssr-spread'
 
 type ElementType = keyof JSX.IntrinsicElements
-type AsChildProps = {
+type AsChildProps<E extends Component | ElementType> = {
   asChild?: boolean
+  as?: E
 }
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
 }
 type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
-type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
+
+interface AsChildComponentProps<E extends ElementType> {
+  <T extends Component | ElementType>(props: ComponentProps<E> & AsChildProps<T>): JSX.Element
+}
 
 function withAsChild(Component: ElementType) {
   return function jsx(props: ParentProps<AsChildProps>) {
-    const [localProps, restProps] = splitProps(props, ['asChild', 'children'])
+    const [localProps, restProps] = splitProps(props, ['as', 'children'])
 
-    if (!localProps.asChild) {
-      return (
-        <Dynamic component={Component} {...restProps}>
-          {localProps.children}
-        </Dynamic>
-      )
-    }
-
-    const getChildren = children(() => ssrSpread(localProps.children, restProps))
-
-    createEffect(() => {
-      const children = getChildren()
-      if (children instanceof HTMLElement || children instanceof SVGElement) {
-        spread(children, restProps)
-      }
-    })
-
-    return getChildren
+    return (
+      <Dynamic component={localProps.as || Component} {...restProps}>
+        {localProps.children}
+      </Dynamic>
+    )
   }
 }
 
