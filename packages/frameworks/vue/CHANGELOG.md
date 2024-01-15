@@ -10,7 +10,8 @@ description: All notable changes to this project will be documented in this file
 
 - Added `DatePicker` component
 - Added `Progress` component
-- Added `modelValue` for `Dialog` component
+- Added `v-model:checked` for `Checkbox` component
+- Added `v-model:open` for `Dialog` component
 - Added `modelValue` for `HoverCard` component
 - Added `modelValue` for `Popover` component
 
@@ -20,7 +21,7 @@ description: All notable changes to this project will be documented in this file
 - Changed `Combobox.ItemText` type from `button` to `span`
 - Changed `Combobox.Positioner` tag from `ul` to `div`
 - Changed `Popover.Description` tag from `div` to `p`
-- Rewritten all components `defineComponent` to Function Signature (without `Combobox.Root` and `Select.Root`)
+- Rewritten all components `defineComponent` to Function Signature
 - Rewritten all components underlying Presence logic
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
