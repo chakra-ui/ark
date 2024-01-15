@@ -12,8 +12,8 @@ description: All notable changes to this project will be documented in this file
 - Added `Progress` component
 - Added `v-model:checked` for `Checkbox` component
 - Added `v-model:open` for `Dialog` component
-- Added `modelValue` for `HoverCard` component
-- Added `modelValue` for `Popover` component
+- Added `v-model:open` for `HoverCard` component
+- Added `v-model:open` for `Popover` component
 
 ### Changed
 

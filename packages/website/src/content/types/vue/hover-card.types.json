@@ -5,6 +5,11 @@
       "isRequired": false,
       "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the hover card."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -32,7 +37,6 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "modelValue": { "type": "boolean", "isRequired": false },
     "onExitComplete": {
       "type": "() => void",
       "isRequired": false,
@@ -43,6 +47,7 @@
       "isRequired": false,
       "description": "Function called when the hover card opens or closes."
     },
+    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": {
       "type": "boolean",
       "isRequired": false,

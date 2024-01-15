@@ -6,7 +6,11 @@ import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UsePopoverProps extends Optional<popover.Context, 'id'> {
-  modelValue?: popover.Context['open']
+  /**
+   * The initial open state of the popover.
+   */
+  defaultOpen?: popover.Context['open']
+  'onUpdate:open'?: (open: popover.OpenChangeDetails['open']) => void
 }
 
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
@@ -19,10 +23,11 @@ export const usePopover = (props: UsePopoverProps, emit: CallableFunction) => {
     popover.machine({
       ...context.value,
       id: context.value.id || useId().value,
+      open: props.open ?? props.defaultOpen,
       getRootNode,
       onOpenChange: (details) => {
         emit('open-change', details)
-        emit('update:modelValue', details.open)
+        emit('update:open', details.open)
       },
       onEscapeKeyDown: (details) => {
         emit('escape-key-down', details)

@@ -53,7 +53,7 @@ const open = ref(false)
     <Variant title="Controlled">
       <Fragment>
         <button @click="() => (open = !open)">toggle</button>
-        <Popover.Root v-model="open">
+        <Popover.Root v-model:open="open">
           <Popover.Anchor>Anchor</Popover.Anchor>
           <Popover.Positioner>
             <Popover.Content>
