@@ -11,6 +11,8 @@ export interface SelectProps<T extends CollectionItem>
   extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
     UsePresenceProps {}
 
+// TOOD: #2011 this is a bad workaround but should work for now
+// function signature doesn't really support more complicated generics
 export const Select = defineComponent<SelectProps<CollectionItem>>(
   (props, { slots, attrs, emit }) => {
     const api = useSelect(props, emit)

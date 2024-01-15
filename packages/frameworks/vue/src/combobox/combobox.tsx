@@ -7,6 +7,8 @@ import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 
+// TOOD: #2011 this is a bad workaround but should work for now
+// function signature doesn't really support more complicated generics
 export interface ComboboxProps<T extends CollectionItem>
   extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
     UsePresenceProps {}
