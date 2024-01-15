@@ -1,3 +1,7 @@
+import type {
+  FocusChangeDetails as AccordionFocusChangeDetails,
+  ValueChangeDetails as AccordionValueChangeDetails,
+} from '@zag-js/accordion'
 import { Accordion as AccordionRoot, type AccordionProps } from './accordion'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItem, type AccordionItemProps } from './accordion-item'
@@ -28,10 +32,12 @@ export {
 }
 export type {
   AccordionContext,
+  AccordionFocusChangeDetails,
   AccordionItemContentProps,
   AccordionItemContext,
   AccordionItemIndicatorProps,
   AccordionItemProps,
   AccordionItemTriggerProps,
   AccordionProps,
+  AccordionValueChangeDetails,
 }

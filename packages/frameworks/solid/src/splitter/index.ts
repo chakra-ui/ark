@@ -1,3 +1,4 @@
+import type { SizeChangeDetails as SplitterSizeChangeDetails } from '@zag-js/splitter'
 import { Splitter as SplitterRoot, type SplitterProps } from './splitter'
 import { useSplitterContext, type SplitterContext } from './splitter-context'
 import { SplitterPanel, type SplitterPanelProps } from './splitter-panel'
@@ -10,4 +11,10 @@ const Splitter = Object.assign(SplitterRoot, {
 })
 
 export { Splitter, SplitterPanel, SplitterResizeTrigger, useSplitterContext }
-export type { SplitterContext, SplitterPanelProps, SplitterProps, SplitterResizeTriggerProps }
+export type {
+  SplitterContext,
+  SplitterPanelProps,
+  SplitterProps,
+  SplitterResizeTriggerProps,
+  SplitterSizeChangeDetails,
+}

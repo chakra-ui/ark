@@ -1,3 +1,4 @@
+import type { OpenChangeDetails as PopoverOpenChangeDetails } from '@zag-js/popover'
 import { Popover as PopoverRoot, type PopoverProps } from './popover'
 import { PopoverAnchor, type PopoverAnchorProps } from './popover-anchor'
 import { PopoverArrow, type PopoverArrowProps } from './popover-arrow'
@@ -49,6 +50,7 @@ export type {
   PopoverContext,
   PopoverDescriptionProps,
   PopoverIndicatorProps,
+  PopoverOpenChangeDetails,
   PopoverPositionerProps,
   PopoverProps,
   PopoverTitleProps,

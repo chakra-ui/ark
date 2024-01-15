@@ -1,3 +1,7 @@
+import type {
+  FocusChangeDetails as TabsFocusChangeDetails,
+  ValueChangeDetails as TabsValueChangeDetails,
+} from '@zag-js/tabs'
 import { TabContent, type TabContentProps } from './tab-content'
 import { TabIndicator, type TabIndicatorProps } from './tab-indicator'
 import { TabList, type TabListProps } from './tab-list'
@@ -20,5 +24,7 @@ export type {
   TabListProps,
   TabTriggerProps,
   TabsContext,
+  TabsFocusChangeDetails,
   TabsProps,
+  TabsValueChangeDetails,
 }

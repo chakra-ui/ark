@@ -1,3 +1,4 @@
+import type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
 import { Editable as EditableRoot, type EditableProps } from './editable'
 import { EditableArea, type EditableAreaProps } from './editable-area'
 import { EditableCancelTrigger, type EditableCancelTriggerProps } from './editable-cancel-trigger'
@@ -45,4 +46,5 @@ export type {
   EditablePreviewProps,
   EditableProps,
   EditableSubmitTriggerProps,
+  EditableValueChangeDetails,
 }
