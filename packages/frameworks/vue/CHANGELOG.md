@@ -11,7 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Added `DatePicker` component
 - Added `Progress` component
 - Added `modelValue` for `Dialog` component
-- Added `modelValue` for `HoverCard` component
+- Added `v-model:open` for `HoverCard` component
 - Added `modelValue` for `Popover` component
 
 ### Changed
