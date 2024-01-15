@@ -13,7 +13,7 @@
   "dependencies": {
     "@ark-ui/anatomy": "1.2.0",
     "@ark-ui/react": "workspace:*",
-    "@astrojs/mdx": "2.0.3",
+    "@astrojs/mdx": "2.0.4",
     "@astrojs/react": "3.0.9",
     "@astrojs/sitemap": "3.0.4",
     "@fontsource-variable/fira-code": "5.0.16",
