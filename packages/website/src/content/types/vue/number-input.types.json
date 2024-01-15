@@ -11,6 +11,7 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",

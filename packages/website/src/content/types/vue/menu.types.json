@@ -117,6 +117,7 @@
       "isRequired": true,
       "description": "The `id` of the menu item option."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -135,6 +136,7 @@
   },
   "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -165,7 +167,8 @@
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
-    }
+    },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
   "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
   "OptionItem": {
@@ -175,11 +178,12 @@
       "description": "The option's name as specified in menu's `context.values` object"
     },
     "type": {
-      "type": "'radio' | 'checkbox'",
+      "type": "'checkbox' | 'radio'",
       "isRequired": true,
       "description": "Whether the option is a radio or a checkbox"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,

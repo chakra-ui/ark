@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
