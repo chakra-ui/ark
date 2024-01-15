@@ -824,8 +824,8 @@ importers:
         specifier: workspace:*
         version: link:../frameworks/react
       '@astrojs/mdx':
-        specifier: 2.0.3
-        version: 2.0.3(astro@4.1.1)
+        specifier: 2.0.4
+        version: 2.0.4(astro@4.1.1)
       '@astrojs/react':
         specifier: 3.0.9
         version: 3.0.9(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(vite@5.0.11)
@@ -846,7 +846,7 @@ importers:
         version: 0.26.2(typescript@5.3.3)
       '@park-ui/panda-preset':
         specifier: 0.27.0
-        version: 0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.26.2)(@pandacss/types@0.26.1)
+        version: 0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.26.2)(@pandacss/types@0.26.2)
       '@types/react':
         specifier: 18.2.47
         version: 18.2.47
@@ -1015,8 +1015,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.3(astro@4.1.1):
-    resolution: {integrity: sha512-wFjQX5CihU5B4UAQNwc2R48ph0flpc6/yvDCFANE0agtgI2+BaVcAjuW0EhGOQCZ65dQDqnFKE0lvGs7EADYpg==}
+  /@astrojs/mdx@2.0.4(astro@4.1.1):
+    resolution: {integrity: sha512-8q8p7AfiGa6CEKUEEWDLZ7HsfonmZlzx8HITZp8eJnkh+n6mmD9vQTpuFNjJc3hiiMEEKLGTIjOUGAU4aGBkrA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
@@ -5544,15 +5544,11 @@ packages:
     resolution: {integrity: sha512-59K5yAILCemzi2y3uyxcd42DiP3+ahjUa3FcFXzCImROPdPoXMR49QVv4yPYoG0wYxMHeA+RDtJVaAV43bwHnw==}
     dev: false
 
-  /@pandacss/types@0.26.1:
-    resolution: {integrity: sha512-ZnkTcvBGulSpqHANayxxDW7Q9JNUVhDGxAv3fQTO/mRSLzs5WK7p3RpC9J27R2OewdShmtl2jx8bJi8Dcb05KA==}
-    dev: false
-
   /@pandacss/types@0.26.2:
     resolution: {integrity: sha512-jLDeTOt3QsHeC3qPod5a0HMGOlLlVzxGIw/uWuwBlVOPFyJ5FAPYYX0+J4ryyy9CObw0YtP6TS5WbvSsxKfZwQ==}
     dev: false
 
-  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.26.2)(@pandacss/types@0.26.1):
+  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.0)(@pandacss/dev@0.26.2)(@pandacss/types@0.26.2):
     resolution: {integrity: sha512-NLUCug6y4d3CZp7QAz9PzZYAPjRVB/OIk9t6b83T8gnB6RqpQDevYT4Kdl7Am7SbjePwzqlm9WX+/HgUlL4Zkg==}
     peerDependencies:
       '@pandacss/dev': '>0.22.0'
@@ -5560,7 +5556,7 @@ packages:
     dependencies:
       '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.0)
       '@pandacss/dev': 0.26.2(typescript@5.3.3)
-      '@pandacss/types': 0.26.1
+      '@pandacss/types': 0.26.2
       '@radix-ui/colors': 3.0.0
       deepmerge: 4.3.1
       ts-pattern: 5.0.6
