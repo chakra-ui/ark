@@ -11,30 +11,8 @@ export interface ComboboxProps<T extends CollectionItem>
   extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
     UsePresenceProps {}
 
-export const Combobox = defineComponent({
-  name: 'Combobox',
-  props: {
-    ...props,
-    ...presenceProps,
-    items: {
-      type: Array as PropType<UseComboboxProps<any>['items']>,
-      required: true,
-    },
-    itemToString: {
-      type: Function as PropType<UseComboboxProps<any>['itemToString']>,
-    },
-    itemToValue: {
-      type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
-    },
-    isItemDisabled: {
-      type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
-    },
-  },
-  emits: {
-    ...emits,
-    ...presenceEmits,
-  },
-  setup(props, { slots, attrs, emit }) {
+export const Combobox = defineComponent<ComboboxProps<CollectionItem>>(
+  (props, { slots, attrs, emit }) => {
     const api = useCombobox(props, emit)
 
     const isOpen = computed(() => api.value.isOpen)
@@ -55,4 +33,28 @@ export const Combobox = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Combobox',
+    props: {
+      ...props,
+      ...presenceProps,
+      items: {
+        type: Array as PropType<UseComboboxProps<any>['items']>,
+        required: true,
+      },
+      itemToString: {
+        type: Function as PropType<UseComboboxProps<any>['itemToString']>,
+      },
+      itemToValue: {
+        type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
+      },
+      isItemDisabled: {
+        type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
+      },
+    },
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
+  },
+)

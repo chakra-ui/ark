@@ -11,30 +11,8 @@ export interface SelectProps<T extends CollectionItem>
   extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
     UsePresenceProps {}
 
-export const Select = defineComponent({
-  name: 'Select',
-  props: {
-    ...props,
-    ...presenceProps,
-    items: {
-      type: Array as PropType<UseSelectProps<any>['items']>,
-      required: true,
-    },
-    itemToString: {
-      type: Function as PropType<UseSelectProps<any>['itemToString']>,
-    },
-    itemToValue: {
-      type: Function as PropType<UseSelectProps<any>['itemToValue']>,
-    },
-    isItemDisabled: {
-      type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
-    },
-  },
-  emits: {
-    ...emits,
-    ...presenceEmits,
-  },
-  setup(props, { slots, attrs, emit }) {
+export const Select = defineComponent<SelectProps<CollectionItem>>(
+  (props, { slots, attrs, emit }) => {
     const api = useSelect(props, emit)
 
     const presenceProps = computed(() => ({
@@ -52,4 +30,28 @@ export const Select = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Select',
+    props: {
+      ...props,
+      ...presenceProps,
+      items: {
+        type: Array as PropType<UseSelectProps<any>['items']>,
+        required: true,
+      },
+      itemToString: {
+        type: Function as PropType<UseSelectProps<any>['itemToString']>,
+      },
+      itemToValue: {
+        type: Function as PropType<UseSelectProps<any>['itemToValue']>,
+      },
+      isItemDisabled: {
+        type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
+      },
+    },
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
+  },
+)
