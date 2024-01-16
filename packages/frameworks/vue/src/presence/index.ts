@@ -1,4 +1,5 @@
-import { Presence as PresenceRoot, type PresenceProps } from './presence'
+// import { Presence as PresenceRoot, type PresenceProps } from './presence'
+import PresenceRoot, { type PresenceProps } from './PresenceRoot.vue'
 import { PresenceProvider, usePresenceContext, type PresenceContext } from './presence-context'
 import {
   PresencePropsProvider,

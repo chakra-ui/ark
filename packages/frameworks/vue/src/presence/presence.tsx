@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { props } from './presence.props'
+import { presenceProps } from './presence.props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
 export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
@@ -19,6 +19,6 @@ export const Presence = defineComponent<PresenceProps>(
   },
   {
     name: 'Presence',
-    props,
+    props: presenceProps,
   },
 )
