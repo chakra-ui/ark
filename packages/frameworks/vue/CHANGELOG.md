@@ -54,6 +54,7 @@ description: All notable changes to this project will be documented in this file
 - Fixed lazy mounting in `Menu` component
 - Fixed lazy mounting in `Popover` component
 - Fixed lazy mounting in `Tabs` component
+- Fixed multiple rerenders on `Select` component using search params
 - Resolved an issue where `Tooltip` component would not handle open control state
 
 ## [0.9.0] - 2023-12-14

@@ -11,9 +11,10 @@ description:
 
 - Added `DatePicker` component
 - Added `Progress` component
-- Added `modelValue` for `Dialog` component
-- Added `modelValue` for `HoverCard` component
-- Added `modelValue` for `Popover` component
+- Added `v-model:checked` for `Checkbox` component
+- Added `v-model:open` for `Dialog` component
+- Added `v-model:open` for `HoverCard` component
+- Added `v-model:open` for `Popover` component
 
 ### Changed
 
@@ -21,8 +22,7 @@ description:
 - Changed `Combobox.ItemText` type from `button` to `span`
 - Changed `Combobox.Positioner` tag from `ul` to `div`
 - Changed `Popover.Description` tag from `div` to `p`
-- Rewritten all components `defineComponent` to Function Signature (without
-  `Combobox.Root` and `Select.Root`)
+- Rewritten all components `defineComponent` to Function Signature
 - Rewritten all components underlying Presence logic
 - Revised `Dialog` component stories and tests
 - Revised `HoverCard` component stories and tests
@@ -55,6 +55,7 @@ description:
 - Fixed lazy mounting in `Menu` component
 - Fixed lazy mounting in `Popover` component
 - Fixed lazy mounting in `Tabs` component
+- Fixed multiple rerenders on `Select` component using search params
 - Resolved an issue where `Tooltip` component would not handle open control
   state
 

@@ -14,6 +14,7 @@ description: All notable changes to this project will be documented in this file
 
 - Added missing `placeholder` prop to `SelectValueTextProps` type.
 - Changed `PopoverDescriptionProps` type from `div` to `p`
+- Fixed multiple rerenders on `Select` component with Next.js or Remix `useSearchParams`
 
 ## [1.2.1] - 2023-12-13
 
@@ -26,7 +27,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added the `ToastGroup` component.
-- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
+- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 

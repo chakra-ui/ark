@@ -17,6 +17,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Fixed multiple rerenders on `Select` component using search params
 - Resolved an issue that `asChild` did not work properly with `svg` elements.
 
 ## [1.2.0] - 2023-12-13
