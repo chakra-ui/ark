@@ -23,15 +23,16 @@ export {
   HoverCardContent,
   HoverCardPositioner,
   HoverCardTrigger,
-  useHoverCardContext
+  useHoverCardContext,
 }
 
 export type {
   HoverCardArrowProps,
   HoverCardArrowTipProps,
-  HoverCardContentProps, HoverCardContext, HoverCardOpenChangeDetails, HoverCardPositionerProps,
+  HoverCardContentProps,
+  HoverCardContext,
+  HoverCardOpenChangeDetails,
+  HoverCardPositionerProps,
   HoverCardProps,
-  HoverCardTriggerProps
-}
-HoverCardTriggerProps,
+  HoverCardTriggerProps,
 }
