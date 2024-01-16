@@ -4,7 +4,6 @@ import type { PropType } from 'vue'
 export const avatarProps = {
   /** The document's text/writing direction. */
   dir: {
-    default: 'ltr',
     type: String as PropType<Context['dir']>,
   },
   /** A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron. */
