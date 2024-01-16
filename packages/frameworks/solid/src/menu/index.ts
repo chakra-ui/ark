@@ -1,3 +1,7 @@
+import type {
+  OpenChangeDetails as MenuOpenChangeDetails,
+  ValueChangeDetails as MenuValueChangeDetails,
+} from '@zag-js/menu'
 import { Menu as MenuRoot, type MenuProps } from './menu'
 import { MenuArrow, type MenuArrowProps } from './menu-arrow'
 import { MenuArrowTip, type MenuArrowTipProps } from './menu-arrow-tip'
@@ -54,10 +58,12 @@ export type {
   MenuItemGroupLabelProps,
   MenuItemGroupProps,
   MenuItemProps,
+  MenuOpenChangeDetails,
   MenuOptionItemProps,
   MenuPositionerProps,
   MenuProps,
   MenuSeparatorProps,
   MenuTriggerItemProps,
   MenuTriggerProps,
+  MenuValueChangeDetails,
 }

@@ -1,3 +1,4 @@
+import type { OpenChangeDetails as DialogOpenChangeDetails } from '@zag-js/dialog'
 import { Dialog as DialogRoot, type DialogProps } from './dialog'
 import { DialogBackdrop, type DialogBackdropProps } from './dialog-backdrop'
 import { DialogCloseTrigger, type DialogCloseTriggerProps } from './dialog-close-trigger'
@@ -28,17 +29,16 @@ export {
   DialogPositioner,
   DialogTitle,
   DialogTrigger,
-  useDialogContext,
+  useDialogContext
 }
 
 export type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps,
-  DialogContext,
-  DialogDescriptionProps,
-  DialogPositionerProps,
+  DialogContentProps, DialogContext,
+  DialogDescriptionProps, DialogOpenChangeDetails, DialogPositionerProps,
   DialogProps,
   DialogTitleProps,
-  DialogTriggerProps,
+  DialogTriggerProps
 }
+

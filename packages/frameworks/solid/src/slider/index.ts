@@ -1,3 +1,7 @@
+import type {
+  FocusChangeDetails as SliderFocusChangeDetails,
+  ValueChangeDetails as SliderValueChangeDetails,
+} from '@zag-js/slider'
 import { Slider as SliderRoot, type SliderProps } from './slider'
 import { useSliderContext, type SliderContext } from './slider-context'
 import { SliderControl, type SliderControlProps } from './slider-control'
@@ -37,6 +41,7 @@ export {
 export type {
   SliderContext,
   SliderControlProps,
+  SliderFocusChangeDetails,
   SliderLabelProps,
   SliderMarkerGroupProps,
   SliderMarkerProps,
@@ -44,5 +49,6 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderValueChangeDetails,
   SliderValueTextProps,
 }

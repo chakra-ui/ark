@@ -1,3 +1,4 @@
+import type { OpenChangeDetails as TooltipOpenChangeDetails } from '@zag-js/tooltip'
 import { Tooltip as TooltipRoot, type TooltipProps } from './tooltip'
 import { TooltipArrow, type TooltipArrowProps } from './tooltip-arrow'
 import { TooltipArrowTip, type TooltipArrowTipProps } from './tooltip-arrow-tip'
@@ -30,6 +31,7 @@ export type {
   TooltipArrowTipProps,
   TooltipContentProps,
   TooltipContext,
+  TooltipOpenChangeDetails,
   TooltipPositionerProps,
   TooltipProps,
   TooltipTriggerProps,
