@@ -923,19 +923,19 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(@internationalized/date@3.5.1)(solid-js@1.8.11)
       '@solidjs/meta':
-        specifier: ^0.29.3
+        specifier: 0.29.3
         version: 0.29.3(solid-js@1.8.11)
       '@solidjs/router':
-        specifier: ^0.10.9
+        specifier: 0.10.9
         version: 0.10.9(solid-js@1.8.11)
       '@solidjs/start':
-        specifier: ^0.4.10
+        specifier: 0.4.10
         version: 0.4.10(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.11)
       solid-js:
-        specifier: ^1.8.11
+        specifier: 1.8.11
         version: 1.8.11
       vinxi:
-        specifier: ^0.1.4
+        specifier: 0.1.4
         version: 0.1.4(@types/node@20.10.3)(preact@10.19.3)
 
 packages:
