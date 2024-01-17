@@ -920,8 +920,8 @@ importers:
   templates/solid-start:
     dependencies:
       '@ark-ui/solid':
-        specifier: ^1.3.0
-        version: 1.3.0(@internationalized/date@3.5.1)(solid-js@1.8.11)
+        specifier: 1.2.0
+        version: 1.2.0(@internationalized/date@3.5.1)(solid-js@1.8.11)
       '@solidjs/meta':
         specifier: ^0.29.3
         version: 0.29.3(solid-js@1.8.11)
@@ -936,7 +936,7 @@ importers:
         version: 1.8.11
       vinxi:
         specifier: ^0.1.4
-        version: 0.1.4(preact@10.19.3)
+        version: 0.1.4(@types/node@20.10.3)(preact@10.19.3)
 
 packages:
 
@@ -1007,82 +1007,42 @@ packages:
       - '@internationalized/date'
     dev: false
 
-  /@ark-ui/anatomy@1.3.0(@internationalized/date@3.5.1):
-    resolution: {integrity: sha512-1yG2MrzUlix6KthjQMCNiHnkXrWwEdFAX6D+HqGJaNu0XvaGul2J+wDNtjsdX+gxiWu1nXXEEOAWlFVYMUf65w==}
-    dependencies:
-      '@zag-js/accordion': 0.32.1
-      '@zag-js/anatomy': 0.32.1
-      '@zag-js/avatar': 0.32.1
-      '@zag-js/carousel': 0.32.1
-      '@zag-js/checkbox': 0.32.1
-      '@zag-js/color-picker': 0.32.1
-      '@zag-js/color-utils': 0.32.1
-      '@zag-js/combobox': 0.32.1
-      '@zag-js/date-picker': 0.32.1
-      '@zag-js/date-utils': 0.32.1(@internationalized/date@3.5.1)
-      '@zag-js/dialog': 0.32.1
-      '@zag-js/editable': 0.32.1
-      '@zag-js/file-upload': 0.32.1
-      '@zag-js/hover-card': 0.32.1
-      '@zag-js/menu': 0.32.1
-      '@zag-js/number-input': 0.32.1
-      '@zag-js/pagination': 0.32.1
-      '@zag-js/pin-input': 0.32.1
-      '@zag-js/popover': 0.32.1
-      '@zag-js/presence': 0.32.1
-      '@zag-js/progress': 0.32.1
-      '@zag-js/radio-group': 0.32.1
-      '@zag-js/rating-group': 0.32.1
-      '@zag-js/select': 0.32.1
-      '@zag-js/slider': 0.32.1
-      '@zag-js/splitter': 0.32.1
-      '@zag-js/switch': 0.32.1
-      '@zag-js/tabs': 0.32.1
-      '@zag-js/tags-input': 0.32.1
-      '@zag-js/toast': 0.32.1
-      '@zag-js/toggle-group': 0.32.1
-      '@zag-js/tooltip': 0.32.1
-    transitivePeerDependencies:
-      - '@internationalized/date'
-    dev: false
-
-  /@ark-ui/solid@1.3.0(@internationalized/date@3.5.1)(solid-js@1.8.11):
-    resolution: {integrity: sha512-1+6JFD1cAbKXDl5GUZJpQ66kPywO4jCpzR3bdu7A0JB/cn2Nu1grmhyTmV8mhu+nodPpmk2Jhc8RGAFZ9q+tfA==}
+  /@ark-ui/solid@1.2.0(@internationalized/date@3.5.1)(solid-js@1.8.11):
+    resolution: {integrity: sha512-Krljv8DIEFr6VbxFsxsU9akKS0sVIKHx+XwbMFyCWoVLHRSGFlUtszLCP6v3sgv4VNPNl7nrQSCLcf915HPINA==}
     peerDependencies:
       solid-js: '>=1.6.0'
     dependencies:
-      '@ark-ui/anatomy': 1.3.0(@internationalized/date@3.5.1)
-      '@zag-js/accordion': 0.32.1
-      '@zag-js/avatar': 0.32.1
-      '@zag-js/carousel': 0.32.1
-      '@zag-js/checkbox': 0.32.1
-      '@zag-js/color-picker': 0.32.1
-      '@zag-js/combobox': 0.32.1
-      '@zag-js/date-picker': 0.32.1
-      '@zag-js/dialog': 0.32.1
-      '@zag-js/editable': 0.32.1
-      '@zag-js/file-upload': 0.32.1
-      '@zag-js/hover-card': 0.32.1
-      '@zag-js/menu': 0.32.1
-      '@zag-js/number-input': 0.32.1
-      '@zag-js/pagination': 0.32.1
-      '@zag-js/pin-input': 0.32.1
-      '@zag-js/popover': 0.32.1
-      '@zag-js/presence': 0.32.1
-      '@zag-js/progress': 0.32.1
-      '@zag-js/radio-group': 0.32.1
-      '@zag-js/rating-group': 0.32.1
-      '@zag-js/select': 0.32.1
-      '@zag-js/slider': 0.32.1
-      '@zag-js/solid': 0.32.1(solid-js@1.8.11)
-      '@zag-js/splitter': 0.32.1
-      '@zag-js/switch': 0.32.1
-      '@zag-js/tabs': 0.32.1
-      '@zag-js/tags-input': 0.32.1
-      '@zag-js/toast': 0.32.1
-      '@zag-js/toggle-group': 0.32.1
-      '@zag-js/tooltip': 0.32.1
-      '@zag-js/types': 0.32.1
+      '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.1)
+      '@zag-js/accordion': 0.31.1
+      '@zag-js/avatar': 0.31.1
+      '@zag-js/carousel': 0.31.1
+      '@zag-js/checkbox': 0.31.1
+      '@zag-js/color-picker': 0.31.1
+      '@zag-js/combobox': 0.31.1
+      '@zag-js/date-picker': 0.31.1
+      '@zag-js/dialog': 0.31.1
+      '@zag-js/editable': 0.31.1
+      '@zag-js/file-upload': 0.31.1
+      '@zag-js/hover-card': 0.31.1
+      '@zag-js/menu': 0.31.1
+      '@zag-js/number-input': 0.31.1
+      '@zag-js/pagination': 0.31.1
+      '@zag-js/pin-input': 0.31.1
+      '@zag-js/popover': 0.31.1
+      '@zag-js/presence': 0.31.1
+      '@zag-js/radio-group': 0.31.1
+      '@zag-js/rating-group': 0.31.1
+      '@zag-js/select': 0.31.1
+      '@zag-js/slider': 0.31.1
+      '@zag-js/solid': 0.31.1(solid-js@1.8.11)
+      '@zag-js/splitter': 0.31.1
+      '@zag-js/switch': 0.31.1
+      '@zag-js/tabs': 0.31.1
+      '@zag-js/tags-input': 0.31.1
+      '@zag-js/toast': 0.31.1
+      '@zag-js/toggle-group': 0.31.1
+      '@zag-js/tooltip': 0.31.1
+      '@zag-js/types': 0.31.1
       solid-js: 1.8.11
     transitivePeerDependencies:
       - '@internationalized/date'
@@ -4639,7 +4599,7 @@ packages:
       magic-string: 0.30.5
       node-html-parser: 6.1.12
       resolve: 1.22.8
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
     transitivePeerDependencies:
       - preact
       - supports-color
@@ -4673,7 +4633,7 @@ packages:
       '@prefresh/utils': 1.2.0
       '@rollup/pluginutils': 4.2.1
       preact: 10.19.3
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -5458,7 +5418,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 4.9.5
-    dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.5:
     resolution: {integrity: sha512-idWaG8xeSRCfRq9KpRysDHJ/rEHBEXcHuJ82XY0yYFIWnLMjZv9vF/7DOq8djQ2n3Lk6+3qfSH8AqlmHlmi1MA==}
@@ -6416,7 +6375,7 @@ packages:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0(typescript@5.3.3)(vite@5.0.11)
-      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@4.9.5)
       '@storybook/builder-vite': 7.6.8(typescript@5.3.3)(vite@5.0.11)
       '@storybook/react': 7.6.8(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
       '@vitejs/plugin-react': 3.1.0(vite@5.0.11)
@@ -7566,7 +7525,7 @@ packages:
       magicast: 0.2.11
       recast: 0.23.4
       tslib: 2.6.2
-      vinxi: 0.1.4(preact@10.19.3)
+      vinxi: 0.1.4(@types/node@20.10.3)(preact@10.19.3)
     dev: false
 
   /@vinxi/server-components@0.1.2(vinxi@0.1.4):
@@ -7581,7 +7540,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.4
-      vinxi: 0.1.4(preact@10.19.3)
+      vinxi: 0.1.4(@types/node@20.10.3)(preact@10.19.3)
     dev: false
 
   /@vinxi/server-functions@0.1.2(vinxi@0.1.4):
@@ -7596,7 +7555,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.4
-      vinxi: 0.1.4(preact@10.19.3)
+      vinxi: 0.1.4(@types/node@20.10.3)(preact@10.19.3)
     dev: false
 
   /@vitejs/plugin-react@3.1.0(vite@5.0.11):
@@ -8877,6 +8836,18 @@ packages:
       '@zag-js/numeric-range': 0.32.1
       '@zag-js/types': 0.32.1
       '@zag-js/utils': 0.32.1
+    dev: false
+
+  /@zag-js/solid@0.31.1(solid-js@1.8.11):
+    resolution: {integrity: sha512-N3/Fp4rUJhWdQYJ/PHkO00KWFojjHeanPIIT/tHZBsnDJn4TUw4zfOwVD+WIw3FwhX7RrBH5lXqKsQ6DFPBwPg==}
+    peerDependencies:
+      solid-js: '>=1.1.3'
+    dependencies:
+      '@zag-js/core': 0.31.1
+      '@zag-js/store': 0.31.1
+      '@zag-js/types': 0.31.1
+      hyphenate-style-name: 1.0.4
+      solid-js: 1.8.11
     dev: false
 
   /@zag-js/solid@0.32.1(solid-js@1.8.11):
@@ -20149,7 +20120,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vinxi@0.1.4(preact@10.19.3):
+  /vinxi@0.1.4(@types/node@20.10.3)(preact@10.19.3):
     resolution: {integrity: sha512-zzruTAdUijdOH60+oU/DwZV+4QALAMErPLtqKZfsz3XKTw5xjOyKnFlwJuppniR71+UQzR+qJHI5/M38V8XYbg==}
     hasBin: true
     dependencies:
@@ -20194,7 +20165,7 @@ packages:
       unenv: 1.9.0
       unimport: 3.7.1(rollup@4.9.5)
       unstorage: 1.10.1
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
       ws: 8.16.0
       zod: 3.22.4
     transitivePeerDependencies:
@@ -20305,7 +20276,7 @@ packages:
         optional: true
     dependencies:
       '@microsoft/api-extractor': 7.39.0(@types/node@20.10.3)
-      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@4.9.5)
       '@vue/language-core': 1.8.27(typescript@5.3.3)
       debug: 4.3.4
       kolorist: 1.8.0
@@ -20336,7 +20307,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       sirv: 2.0.4
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -20360,7 +20331,7 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       sirv: 2.0.4
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.10.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -20379,7 +20350,7 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.11
       solid-refresh: 0.5.3(solid-js@1.8.11)
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
@@ -20398,12 +20369,12 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.11
       solid-refresh: 0.5.3(solid-js@1.8.11)
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.10.3)
       vitefu: 0.2.5(vite@5.0.11)
     transitivePeerDependencies:
       - supports-color
 
-  /vite@4.5.0:
+  /vite@4.5.0(@types/node@20.10.3):
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -20431,6 +20402,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.10.3
       esbuild: 0.18.20
       postcss: 8.4.33
       rollup: 3.29.4
@@ -20473,40 +20445,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
-
-  /vite@5.0.11:
-    resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.19.11
-      postcss: 8.4.33
-      rollup: 4.9.5
-    optionalDependencies:
-      fsevents: 2.3.3
 
   /vite@5.0.11(@types/node@20.10.3):
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
@@ -20551,7 +20489,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.5.0
+      vite: 4.5.0(@types/node@20.10.3)
     dev: false
 
   /vitefu@0.2.5(vite@5.0.11):
@@ -20562,7 +20500,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.10.3)
 
   /vitest@0.34.2(jsdom@23.0.1):
     resolution: {integrity: sha512-WgaIvBbjsSYMq/oiMlXUI7KflELmzM43BEvkdC/8b5CAod4ryAiY2z8uR6Crbi5Pjnu5oOmhKa9sy7uk6paBxQ==}
