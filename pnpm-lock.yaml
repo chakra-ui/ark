@@ -164,7 +164,7 @@ importers:
     dependencies:
       '@ark-ui/anatomy':
         specifier: 1.2.0
-        version: link:../../anatomy
+        version: 1.2.0(@internationalized/date@3.5.1)
       '@zag-js/accordion':
         specifier: 0.32.1
         version: 0.32.1
@@ -384,7 +384,7 @@ importers:
     dependencies:
       '@ark-ui/anatomy':
         specifier: 1.2.0
-        version: link:../../anatomy
+        version: 1.2.0(@internationalized/date@3.5.1)
       '@zag-js/accordion':
         specifier: 0.32.1
         version: 0.32.1
@@ -588,7 +588,7 @@ importers:
   packages/frameworks/vue:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 1.2.0
+        specifier: 1.3.0
         version: link:../../anatomy
       '@zag-js/accordion':
         specifier: 0.32.1
@@ -819,7 +819,7 @@ importers:
     dependencies:
       '@ark-ui/anatomy':
         specifier: 1.2.0
-        version: link:../anatomy
+        version: 1.2.0(@internationalized/date@3.5.1)
       '@ark-ui/react':
         specifier: workspace:*
         version: link:../frameworks/react
@@ -846,7 +846,7 @@ importers:
         version: 0.27.2(typescript@5.3.3)
       '@park-ui/panda-preset':
         specifier: 0.27.0
-        version: 0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.2)(@pandacss/types@0.27.1)
+        version: 0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.2)(@pandacss/types@0.27.2)
       '@types/react':
         specifier: 18.2.47
         version: 18.2.47
@@ -4482,20 +4482,8 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
 
-  /@internationalized/date@3.5.0:
-    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
-    dependencies:
-      '@swc/helpers': 0.5.3
-    dev: false
-
   /@internationalized/date@3.5.1:
     resolution: {integrity: sha512-LUQIfwU9e+Fmutc/DpRTGXSdgYZLBegi4wygCWDSVmUdLTaMHsQyASDiJtREwanwKuQLq0hY76fCJ9J/9I2xOQ==}
-    dependencies:
-      '@swc/helpers': 0.5.3
-    dev: false
-
-  /@internationalized/number@3.4.0:
-    resolution: {integrity: sha512-8TvotW3qVDHC4uv/BVoN6Qx0Dm8clHY1/vpH+dh+XRiPW/9NVpKn1P8d1A+WLphWrMwyqyWXI7uWehJPviaeIw==}
     dependencies:
       '@swc/helpers': 0.5.3
     dev: false
@@ -5377,15 +5365,11 @@ packages:
     resolution: {integrity: sha512-59K5yAILCemzi2y3uyxcd42DiP3+ahjUa3FcFXzCImROPdPoXMR49QVv4yPYoG0wYxMHeA+RDtJVaAV43bwHnw==}
     dev: false
 
-  /@pandacss/types@0.27.1:
-    resolution: {integrity: sha512-7PGSvxOwFrKtqHJ9K4JPRk081xnjnW/lE9TIHZm3tHZmdKl7oOtJQs7j9syf1cksl0w66YwEIxeYTcaFJ9KdBw==}
-    dev: false
-
   /@pandacss/types@0.27.2:
     resolution: {integrity: sha512-9BFfAcRI+VuM03sYAhlz9JZlCXSa/IIbe/Z/VlYs346TFMee8wbp/8t5tCPoJRcCnnhWJgGoNQamLvfizZfGzg==}
     dev: false
 
-  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.2)(@pandacss/types@0.27.1):
+  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.2)(@pandacss/types@0.27.2):
     resolution: {integrity: sha512-NLUCug6y4d3CZp7QAz9PzZYAPjRVB/OIk9t6b83T8gnB6RqpQDevYT4Kdl7Am7SbjePwzqlm9WX+/HgUlL4Zkg==}
     peerDependencies:
       '@pandacss/dev': '>0.22.0'
@@ -5393,7 +5377,7 @@ packages:
     dependencies:
       '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.1)
       '@pandacss/dev': 0.27.2(typescript@5.3.3)
-      '@pandacss/types': 0.27.1
+      '@pandacss/types': 0.27.2
       '@radix-ui/colors': 3.0.0
       deepmerge: 4.3.1
       ts-pattern: 5.0.6
@@ -8832,10 +8816,10 @@ packages:
   /@zag-js/date-picker@0.31.1:
     resolution: {integrity: sha512-oEAiJmb4dO3HwJp+AzEvB4EdONMqdMmhYHlYQNJ8o9inM4cOT4Q5X6S+Fqlcu6IlXft5JrYmHCazCMGZsW1Uag==}
     dependencies:
-      '@internationalized/date': 3.5.0
+      '@internationalized/date': 3.5.1
       '@zag-js/anatomy': 0.31.1
       '@zag-js/core': 0.31.1
-      '@zag-js/date-utils': 0.31.1(@internationalized/date@3.5.0)
+      '@zag-js/date-utils': 0.31.1(@internationalized/date@3.5.1)
       '@zag-js/dismissable': 0.31.1
       '@zag-js/dom-event': 0.31.1
       '@zag-js/dom-query': 0.31.1
@@ -8863,14 +8847,6 @@ packages:
       '@zag-js/text-selection': 0.32.1
       '@zag-js/types': 0.32.1
       '@zag-js/utils': 0.32.1
-    dev: false
-
-  /@zag-js/date-utils@0.31.1(@internationalized/date@3.5.0):
-    resolution: {integrity: sha512-Oa0+AMeE3EnSJx9Tbhr+VDJTKl7Vl+AGFEWcp10rTr8SGRArktHhZTqrEceKB+jv6bW9ljYUUKgJOunA1iSTJQ==}
-    peerDependencies:
-      '@internationalized/date': '>=3.0.0'
-    dependencies:
-      '@internationalized/date': 3.5.0
     dev: false
 
   /@zag-js/date-utils@0.31.1(@internationalized/date@3.5.1):
@@ -9138,7 +9114,7 @@ packages:
   /@zag-js/number-input@0.31.1:
     resolution: {integrity: sha512-vwwovLsJaeRKfT5ywsAHTJ7v/ZuzqpmUZHHAZ/u2Acrn4LtQq5Kc5LLuXSEb6g3QaTJoi9BlmBDZwd8/ScQdng==}
     dependencies:
-      '@internationalized/number': 3.4.0
+      '@internationalized/number': 3.5.0
       '@zag-js/anatomy': 0.31.1
       '@zag-js/core': 0.31.1
       '@zag-js/dom-event': 0.31.1
