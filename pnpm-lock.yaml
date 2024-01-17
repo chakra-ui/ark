@@ -920,7 +920,7 @@ importers:
   templates/solid-start:
     dependencies:
       '@ark-ui/solid':
-        specifier: workspace:*
+        specifier: ^1.3.0
         version: link:../../packages/frameworks/solid
       '@solidjs/meta':
         specifier: ^0.29.3
