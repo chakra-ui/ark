@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "biome check --apply ./src",
+    "format:check": "biome check ./src"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",

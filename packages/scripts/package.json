@@ -9,7 +9,9 @@
     "document:types": "node --loader ts-node/esm src/generate-type-docs.ts",
     "document:stories": "node --loader ts-node/esm src/generate-stories.ts",
     "release:prepare": "node --loader ts-node/esm src/prepare-release.ts",
-    "vue:props": "node --loader ts-node/esm src/generate-vue-props.ts"
+    "vue:props": "node --loader ts-node/esm src/generate-vue-props.ts",
+    "format": "biome check --apply ./src",
+    "format:check": "biome check ./src"
   },
   "dependencies": {
     "@types/voca": "1.4.5",

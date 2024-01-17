@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "eslint --ext .ts,.tsx src",
+    "format": "biome check --apply ./src",
+    "format:check": "biome check ./src",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
