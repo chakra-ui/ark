@@ -23,6 +23,9 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
     },
     css: false,
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
+    },
   },
   resolve: {
     conditions: ['development', 'browser'],
