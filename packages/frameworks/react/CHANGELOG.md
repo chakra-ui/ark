@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Refactored `Progress` component to use `div` instead of `nav`.
+
 ## [1.3.0] - 2024-01-17
 
 ### Added

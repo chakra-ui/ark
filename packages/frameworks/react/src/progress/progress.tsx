@@ -33,9 +33,9 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
 
   return (
     <ProgressProvider value={api}>
-      <ark.nav {...mergedProps} ref={ref}>
+      <ark.div {...mergedProps} ref={ref}>
         {view}
-      </ark.nav>
+      </ark.div>
     </ProgressProvider>
   )
 })
