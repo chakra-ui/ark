@@ -2,7 +2,7 @@
   "Root": { "asChild": { "type": "boolean", "isRequired": false } },
   "Group": { "asChild": { "type": "boolean", "isRequired": false } },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Creator": {
+  "Createer": {
     "placement": {
       "type": "Placement",
       "isRequired": true,

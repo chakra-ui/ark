@@ -20,7 +20,7 @@
       "description": "Render as a different element type."
     }
   },
-  "Creator": {
+  "Createer": {
     "placement": {
       "type": "Placement",
       "isRequired": true,
