@@ -28,6 +28,5 @@
       "matchPackagePrefixes": ["lucide"]
     }
   ],
-  // @ark-ui/solid is ignored because its downgraded version is needed in solid start template
   "ignoreDeps": ["@types/node", "@ark-ui/solid"]
 }
