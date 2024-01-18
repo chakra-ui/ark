@@ -18,6 +18,7 @@ const Tabs = Object.assign(TabsRoot, {
 })
 
 export { TabContent, TabIndicator, TabList, TabTrigger, Tabs, useTabsContext }
+
 export type {
   TabContentProps,
   TabIndicatorProps,
