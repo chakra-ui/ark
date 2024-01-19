@@ -1,4 +1,12 @@
 {
+  "Item": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "item": { "type": "any", "isRequired": false }
+  },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -208,14 +216,6 @@
       "isRequired": false,
       "description": "The keys of the selected items"
     }
-  },
-  "Item": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "item": { "type": "any", "isRequired": false }
   },
   "Input": {
     "asChild": {
