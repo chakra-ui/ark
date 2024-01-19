@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { TagsInput } from '../'
 import './tags-input.css'
 
-type TagsInputType = typeof TagsInput
-
-const meta: Meta<TagsInputType> = {
+const meta: Meta = {
   title: 'TagsInput',
-  component: TagsInput,
 }
 
 export default meta

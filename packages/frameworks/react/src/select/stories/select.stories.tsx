@@ -6,11 +6,8 @@ import { Select } from '../'
 import { Portal } from '../../portal'
 import './select.css'
 
-type SelectType = typeof Select
-
-const meta: Meta<SelectType> = {
+const meta: Meta = {
   title: 'Select',
-  component: Select,
 }
 
 export default meta

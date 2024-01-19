@@ -4,11 +4,8 @@ import { Menu } from '../'
 import { Portal } from '../../portal'
 import './menu.css'
 
-type MenuType = typeof Menu
-
-const meta: Meta<MenuType> = {
+const meta: Meta = {
   title: 'NestedMenu',
-  component: Menu,
 }
 
 export default meta

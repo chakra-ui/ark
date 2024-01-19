@@ -4,11 +4,8 @@ import { HoverCard } from '../'
 import { Portal } from '../../portal'
 import './hover-card.css'
 
-type HoverCardType = typeof HoverCard
-
-const meta: Meta<HoverCardType> = {
+const meta: Meta = {
   title: 'HoverCard',
-  component: HoverCard,
 }
 
 export default meta
