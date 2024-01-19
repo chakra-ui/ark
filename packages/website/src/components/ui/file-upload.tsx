@@ -18,10 +18,10 @@ const FileUploadItemDeleteTrigger = withContext(
 )
 const FileUploadItemGroup = withContext(styled(Ark.FileUpload.ItemGroup), 'itemGroup')
 const FileUploadItemName = withContext(styled(Ark.FileUpload.ItemName), 'itemName')
-// TODO rename part
+const FileUploadItemPreview = withContext(styled(Ark.FileUpload.ItemPreview), 'itemPreview')
 const FileUploadItemPreviewImage = withContext(
   styled(Ark.FileUpload.ItemPreviewImage),
-  'itemPreview',
+  'itemPreviewImage',
 )
 const FileUploadItemSizeText = withContext(styled(Ark.FileUpload.ItemSizeText), 'itemSizeText')
 const FileUploadLabel = withContext(styled(Ark.FileUpload.Label), 'label')
@@ -33,6 +33,7 @@ export const FileUpload = Object.assign(FileUploadRoot, {
   ItemDeleteTrigger: FileUploadItemDeleteTrigger,
   ItemGroup: FileUploadItemGroup,
   ItemName: FileUploadItemName,
+  ItemPreview: FileUploadItemPreview,
   ItemPreviewImage: FileUploadItemPreviewImage,
   ItemSizeText: FileUploadItemSizeText,
   Label: FileUploadLabel,

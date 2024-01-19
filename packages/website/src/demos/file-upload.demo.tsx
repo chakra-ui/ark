@@ -14,7 +14,9 @@ export const Demo = (props: FileUploadProps) => (
       {(files) =>
         files.map((file, id) => (
           <FileUpload.Item key={id} file={file}>
-            <FileUpload.ItemPreviewImage />
+            <FileUpload.ItemPreview type="image/*">
+              <FileUpload.ItemPreviewImage />
+            </FileUpload.ItemPreview>
             <FileUpload.ItemName />
             <FileUpload.ItemSizeText />
             <FileUpload.ItemDeleteTrigger asChild>
