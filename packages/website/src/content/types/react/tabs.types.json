@@ -1,4 +1,11 @@
 {
+  "TabList": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
@@ -87,13 +94,6 @@
       "description": "Whether to unmount on exit."
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
-  },
-  "TabList": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
   },
   "TabContent": {
     "value": { "type": "string", "isRequired": true },

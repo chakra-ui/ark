@@ -1,4 +1,13 @@
 {
+  "Item": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -90,15 +99,6 @@
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
     }
-  },
-  "Item": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
   },
   "ItemContent": {
     "asChild": {
