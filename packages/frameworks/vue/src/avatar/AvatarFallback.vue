@@ -9,15 +9,15 @@ import { ark } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
 defineProps<AvatarFallbackProps>()
-defineSlots<{
+const slots = defineSlots<{
   default(): any
 }>()
 
-const api = useAvatarContext() // Since we are getting the api from `useAvatarContext` we don't need to pass `api` as slot prop.
+const api = useAvatarContext()
 </script>
 
 <template>
   <ark.span v-bind="api.fallbackProps">
-    <slot v-if="$slots.default" />
+    <slot v-if="slots.default()" />
   </ark.span>
 </template>

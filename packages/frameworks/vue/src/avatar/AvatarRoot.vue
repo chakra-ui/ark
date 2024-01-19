@@ -1,19 +1,20 @@
 <script lang="ts">
-import { type UseAvatarProps } from './use-avatar'
+import { type AvatarProps } from './avatar.props'
 import { type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootProps
+  extends /* @vue-ignore */ Assign<HTMLArkProps<'div'>, AvatarProps> {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { AvatarProvider } from './avatar-context'
-import { avatarProps, type AvatarEmits } from './avatar.props' // Name change was needed to not have double props
+import { type AvatarEmits } from './avatar.props'
 import { useAvatar } from './use-avatar'
 
-const props = defineProps(avatarProps)
+const props = defineProps<AvatarRootProps>()
 const emit = defineEmits<AvatarEmits>()
-defineSlots<{
+const slots = defineSlots<{
   default(): any
 }>()
 
@@ -23,6 +24,6 @@ AvatarProvider(api)
 
 <template>
   <ark.div v-bind="api.rootProps">
-    <slot v-if="$slots.default" />
+    <slot v-if="slots.default()" />
   </ark.div>
 </template>
