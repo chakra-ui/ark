@@ -2,9 +2,9 @@ import { carouselAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { Carousel, type CarouselProps } from './'
+import { Carousel, type CarouselRootProps } from './'
 
-const ComponentUnderTest = (props: CarouselProps) => {
+const ComponentUnderTest = (props: CarouselRootProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',

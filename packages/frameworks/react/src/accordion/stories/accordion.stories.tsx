@@ -4,11 +4,8 @@ import { useState } from 'react'
 import { Accordion } from '../'
 import './accordion.css'
 
-type AccordionType = typeof Accordion
-
-const meta: Meta<AccordionType> = {
+const meta: Meta = {
   title: 'Accordion',
-  component: Accordion,
 }
 
 export default meta
