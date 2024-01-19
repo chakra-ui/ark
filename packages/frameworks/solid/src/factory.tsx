@@ -1,67 +1,52 @@
 import {
-  children,
-  createEffect,
   splitProps,
   type Component,
   type ComponentProps,
   type JSX,
-  type ParentProps,
+  type ValidComponent,
 } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import { spread } from './spread'
-import { ssrSpread } from './ssr-spread'
 
-type ElementType = keyof JSX.IntrinsicElements
-type AsChildProps = {
-  asChild?: boolean
+type AsProps = {
+  as?: ValidComponent
 }
+
+type PolymorphicProps<T extends ValidComponent, P = ComponentProps<T>> = {
+  [K in keyof P]: P[K]
+} & AsProps
+
 type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
+  [E in keyof JSX.IntrinsicElements]: AsForwardRefComponent<E>
 }
-type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
-type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
 
-function withAsChild(Component: ElementType) {
-  return function jsx(props: ParentProps<AsChildProps>) {
-    const [localProps, restProps] = splitProps(props, ['asChild', 'children'])
+type AsForwardRefComponent<E extends ElementType> = Component<AsComponentProps<E>>
+type AsComponentProps<E extends ElementType> = ComponentProps<E> & AsProps
+type ElementType = keyof JSX.IntrinsicElements
 
-    if (!localProps.asChild) {
-      return (
-        <Dynamic component={Component} {...restProps}>
-          {localProps.children}
-        </Dynamic>
-      )
-    }
-
-    const getChildren = children(() => ssrSpread(localProps.children, restProps))
-
-    createEffect(() => {
-      const children = getChildren()
-      if (children instanceof HTMLElement || children instanceof SVGElement) {
-        spread(children, restProps)
-      }
-    })
-
-    return getChildren
+export const withAsProp = <T extends ValidComponent>(Component: T) => {
+  const Polymorphic = (props: PolymorphicProps<T>) => {
+    const [localProps, otherProps] = splitProps(props as PolymorphicProps<ValidComponent>, ['as'])
+    return <Dynamic component={localProps.as || Component} {...otherProps} />
   }
+  return Polymorphic
 }
 
 function jsxFactory() {
   const cache = new Map()
 
-  return new Proxy(withAsChild, {
+  return new Proxy(withAsProp, {
     apply(target, thisArg, argArray) {
-      return withAsChild(argArray[0])
+      return withAsProp(argArray[0])
     },
     get(_, element) {
       const asElement = element as ElementType
       if (!cache.has(asElement)) {
-        cache.set(asElement, withAsChild(asElement))
+        cache.set(asElement, withAsProp(asElement))
       }
       return cache.get(asElement)
     },
   }) as unknown as JsxElements
 }
 
-export type HTMLArkProps<T extends ElementType> = AsChildComponentProps<T>
+export type HTMLArkProps<T extends ElementType> = AsComponentProps<T>
 export const ark = jsxFactory()
