@@ -1,28 +1,13 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
+import { props } from './presence.props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
 export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
-export const Presence = defineComponent({
-  name: 'Presence',
-  props: {
-    present: {
-      type: Boolean,
-      default: undefined,
-    },
-    lazyMount: {
-      type: Boolean,
-      default: undefined,
-    },
-    unmountOnExit: {
-      type: Boolean,
-      default: undefined,
-    },
-  },
-  emits: [],
-  setup(props, { slots, attrs, emit }) {
+export const Presence = defineComponent<PresenceProps>(
+  (props, { slots, attrs, emit }) => {
     const api = usePresence(props, emit)
 
     return () =>
@@ -32,4 +17,8 @@ export const Presence = defineComponent({
         </ark.div>
       )
   },
-})
+  {
+    name: 'Presence',
+    props,
+  },
+)

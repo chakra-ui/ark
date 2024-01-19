@@ -1,13 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverArrowTipProps = HTMLArkProps<'div'>
+export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const PopoverArrowTip: ComponentWithProps<PopoverArrowTipProps> = defineComponent({
-  name: 'PopoverArrowTip',
-  setup(_, { slots, attrs }) {
+export const PopoverArrowTip = defineComponent<PopoverArrowTipProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -16,4 +14,7 @@ export const PopoverArrowTip: ComponentWithProps<PopoverArrowTipProps> = defineC
       </ark.div>
     )
   },
-})
+  {
+    name: 'PopoverArrowTip',
+  },
+)

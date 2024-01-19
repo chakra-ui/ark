@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -32,7 +33,7 @@
       "description": "Function that returns a human readable value for the slider thumb"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -125,9 +126,15 @@
   },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Range": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Thumb": { "index": { "type": "number", "isRequired": true } },
+  "Thumb": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Track": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Marker": { "value": { "type": "number", "isRequired": true } },
+  "Marker": {
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "MarkerGroup": { "asChild": { "type": "boolean", "isRequired": false } }

@@ -7,18 +7,8 @@ import { useColorPickerContext } from './color-picker-context'
 export interface ColorPickerSwatchTriggerProps
   extends Assign<HTMLArkProps<'button'>, SwatchTriggerProps> {}
 
-export const ColorPickerSwatchTrigger = defineComponent({
-  name: 'ColorPickerSwatchTrigger',
-  props: {
-    value: {
-      type: [String, Object] as PropType<SwatchTriggerProps['value']>,
-      required: true,
-    },
-    disabled: {
-      type: [String, Object] as PropType<SwatchTriggerProps['disabled']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ColorPickerSwatchTrigger = defineComponent<ColorPickerSwatchTriggerProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
 
     return () => (
@@ -27,4 +17,16 @@ export const ColorPickerSwatchTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'ColorPickerSwatchTrigger',
+    props: {
+      value: {
+        type: [String, Object] as PropType<SwatchTriggerProps['value']>,
+        required: true,
+      },
+      disabled: {
+        type: [String, Object] as PropType<SwatchTriggerProps['disabled']>,
+      },
+    },
+  },
+)

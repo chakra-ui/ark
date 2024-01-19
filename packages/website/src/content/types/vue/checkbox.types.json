@@ -1,9 +1,15 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
       "description": "If `true`, the checkbox will be checked."
+    },
+    "defaultChecked": {
+      "type": "CheckedState",
+      "isRequired": false,
+      "description": "The initial checked state of the checkbox."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -22,7 +28,7 @@
       "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,7 +47,6 @@
       "isRequired": false,
       "description": "If `true`, the checkbox is marked as invalid."
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -52,6 +57,7 @@
       "isRequired": false,
       "description": "The callback invoked when the checked state of the `Checkbox` changes."
     },
+    "onUpdate:checked": { "type": "(checked: CheckedState) => void", "isRequired": false },
     "required": {
       "type": "boolean",
       "isRequired": false,

@@ -85,11 +85,6 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
   })
 
-  it('should not have aria-controls if lazy mounted', async () => {
-    render(<ComponentUnderTest lazyMount />)
-    expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
-  })
-
   it('should be able to lazy mount', async () => {
     render(<ComponentUnderTest lazyMount />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
@@ -99,5 +94,22 @@ describe('Popover', () => {
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
+  })
+
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(<ComponentUnderTest lazyMount />)
+    expect(screen.getByRole('button', { name: 'click me' })).not.toHaveAttribute('aria-controls')
+  })
+
+  it('should lazy mount and unmount on exit', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit />)
+
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'click me' }))
+    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'close' }))
+    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

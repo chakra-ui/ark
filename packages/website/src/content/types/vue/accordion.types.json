@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
@@ -18,7 +19,7 @@
       "description": "Whether the accordion items are disabled"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -32,12 +33,23 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
@@ -54,26 +66,6 @@
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
-    "value": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The `id` of the accordion item that is currently being opened."
-    }
-  },
-  "Item": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemContent": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "present": {
       "type": "boolean",
       "isRequired": false,
@@ -84,8 +76,19 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
     }
   },
+  "Item": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
+  "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -1,50 +1,49 @@
-import { connect, machine } from '@zag-js/dialog'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, watch, type ExtractPropTypes } from 'vue'
+import * as dialog from '@zag-js/dialog'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { DialogProps } from './dialog'
 
-export const useDialog = <T extends ExtractPropTypes<DialogProps>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export interface UseDialogProps extends Optional<dialog.Context, 'id'> {
+  /**
+   * The initial open state of the dialog.
+   */
+  defaultOpen?: dialog.Context['open']
+  'onUpdate:open'?: (open: dialog.OpenChangeDetails['open']) => void
+}
 
+export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
+
+export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
+  const context = ref(props)
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    dialog.machine({
+      ...context.value,
+      id: context.value.id || useId().value,
+      open: props.open ?? props.defaultOpen,
       getRootNode,
-      onOpenChange() {
-        emit('open-change')
+      onOpenChange: (details) => {
+        emit('open-change', details)
+        emit('update:open', details.open)
       },
-      onEsc() {
-        emit('esc')
+      onEscapeKeyDown: (details) => {
+        emit('escape-key-down', details)
       },
-      onOutsideClick() {
-        emit('outside-click')
+      onFocusOutside: (details) => {
+        emit('focus-outside', details)
+      },
+      onInteractOutside: (details) => {
+        emit('interact-outside', details)
+      },
+      onPointerDownOutside: (details) => {
+        emit('pointer-down-outside', details)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.open,
-    (value) => {
-      if (value == undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
-    },
-  )
-
-  return api
+  return computed(() => dialog.connect(state.value, send, normalizeProps))
 }
-
-export type UseDialogReturn = ReturnType<typeof connect>

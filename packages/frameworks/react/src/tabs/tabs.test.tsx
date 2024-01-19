@@ -78,6 +78,7 @@ describe('Tabs', () => {
 
   it('should loop focus by default', async () => {
     render(<ComponentUnderTest />)
+
     const firstTab = screen.getByText('React Trigger')
     const lastTab = screen.getByText('Vue Trigger')
 

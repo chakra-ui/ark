@@ -1,6 +1,7 @@
 import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { FileUpload } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './file-upload.test.vue'
 
 describe('FileUpload', () => {
@@ -8,5 +9,9 @@ describe('FileUpload', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
+    expect(FileUpload[part]).toBeDefined()
   })
 })

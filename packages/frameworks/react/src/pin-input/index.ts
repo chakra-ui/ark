@@ -1,3 +1,7 @@
+import type {
+  ValueChangeDetails as PinInputValueChangeDetails,
+  ValueInvalidDetails as PinInputValueInvalidDetails,
+} from '@zag-js/pin-input'
 import { PinInput as PinInputRoot, type PinInputProps } from './pin-input'
 import { usePinInputContext, type PinInputContext } from './pin-input-context'
 import { PinInputControl, type PinInputControlProps } from './pin-input-control'
@@ -19,4 +23,6 @@ export type {
   PinInputInputProps,
   PinInputLabelProps,
   PinInputProps,
+  PinInputValueChangeDetails,
+  PinInputValueInvalidDetails,
 }

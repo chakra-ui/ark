@@ -1,34 +1,33 @@
-import { defineComponent, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
+import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
+import type { Assign, CollectionItem } from '../types'
 import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 
-export type ComboboxProps = Assign<HTMLArkProps<'div'>, UseComboboxProps>
+// TOOD: #2011 this is a bad workaround but should work for now
+// function signature doesn't really support more complicated generics
+export interface ComboboxProps<T extends CollectionItem>
+  extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
+    UsePresenceProps {}
 
-export const Combobox = defineComponent({
-  name: 'Combobox',
-  props: {
-    ...props,
-    items: {
-      type: Array as PropType<UseComboboxProps['items']>,
-      required: true,
-    },
-    itemToString: {
-      type: Function as PropType<UseComboboxProps['itemToString']>,
-    },
-    itemToValue: {
-      type: Function as PropType<UseComboboxProps['itemToValue']>,
-    },
-    isItemDisabled: {
-      type: Function as PropType<UseComboboxProps['isItemDisabled']>,
-    },
-  },
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Combobox = defineComponent<ComboboxProps<CollectionItem>>(
+  (props, { slots, attrs, emit }) => {
     const api = useCombobox(props, emit)
+
+    const isOpen = computed(() => api.value.isOpen)
+
+    const presenceProps = computed(() => ({
+      present: props.present || isOpen.value,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
+    const presenceApi = usePresence(presenceProps, emit)
+
     ComboboxProvider(api)
+    PresenceProvider(presenceApi)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
@@ -36,4 +35,28 @@ export const Combobox = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'Combobox',
+    props: {
+      ...props,
+      ...presenceProps,
+      items: {
+        type: Array as PropType<UseComboboxProps<any>['items']>,
+        required: true,
+      },
+      itemToString: {
+        type: Function as PropType<UseComboboxProps<any>['itemToString']>,
+      },
+      itemToValue: {
+        type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
+      },
+      isItemDisabled: {
+        type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
+      },
+    },
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
+  },
+)

@@ -1,13 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { useMenuContext } from './menu-context'
 
-export type MenuArrowProps = HTMLArkProps<'div'>
+export interface MenuArrowProps extends HTMLArkProps<'div'> {}
 
-export const MenuArrow: ComponentWithProps<MenuArrowProps> = defineComponent({
-  name: 'MenuArrow',
-  setup(_, { slots, attrs }) {
+export const MenuArrow = defineComponent<MenuArrowProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
 
     return () => (
@@ -16,4 +14,7 @@ export const MenuArrow: ComponentWithProps<MenuArrowProps> = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'MenuArrow',
+  },
+)

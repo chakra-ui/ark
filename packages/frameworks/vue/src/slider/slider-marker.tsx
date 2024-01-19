@@ -6,15 +6,8 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
 
-export const SliderMarker = defineComponent({
-  name: 'SliderMarker',
-  props: {
-    value: {
-      type: Number as PropType<MarkerProps['value']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SliderMarker = defineComponent<SliderMarkerProps>(
+  (props, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
@@ -23,4 +16,13 @@ export const SliderMarker = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SliderMarker',
+    props: {
+      value: {
+        type: Number as PropType<MarkerProps['value']>,
+        required: true,
+      },
+    },
+  },
+)

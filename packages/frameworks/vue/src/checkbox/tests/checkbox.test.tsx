@@ -1,7 +1,8 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { Checkbox } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './checkbox.test.vue'
 import ControlledComponentUnderTest from './controlled-checkbox.test.vue'
 
@@ -12,8 +13,8 @@ describe('Checkbox', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it('should render', async () => {
-    render(ComponentUnderTest)
+  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
+    expect(Checkbox[part]).toBeDefined()
   })
 
   it('should handle check and unchecked', async () => {
@@ -35,7 +36,7 @@ describe('Checkbox', () => {
   })
 
   it('should handle indeterminate state from example', async () => {
-    render(ComponentUnderTest, { props: { modelValue: 'indeterminate' } })
+    render(ComponentUnderTest, { props: { checked: 'indeterminate' } })
     expect(screen.getByTestId('control')).toHaveAttribute('data-state', 'indeterminate')
   })
 })

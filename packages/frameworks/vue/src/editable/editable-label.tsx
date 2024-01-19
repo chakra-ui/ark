@@ -4,9 +4,8 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableLabelProps extends HTMLArkProps<'label'> {}
 
-export const EditableLabel = defineComponent({
-  name: 'EditableLabel',
-  setup(_, { slots, attrs }) {
+export const EditableLabel = defineComponent<EditableLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditableLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'EditableLabel',
+  },
+)

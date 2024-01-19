@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the dialog."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -27,7 +32,7 @@
       "description": "Element to receive focus when the dialog is closed"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -46,6 +51,12 @@
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
       "isRequired": false,
@@ -55,6 +66,11 @@
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
@@ -76,7 +92,13 @@
       "isRequired": false,
       "description": "Function called when the pointer is pressed down outside the component"
     },
+    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "preventScroll": {
       "type": "boolean",
       "isRequired": false,
@@ -97,6 +119,12 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Title": { "asChild": { "type": "boolean", "isRequired": false } },

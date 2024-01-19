@@ -5,28 +5,32 @@ import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 
-export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'button'>, SwatchProps> {}
+export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {
+  readOnly?: SwatchProps['respectAlpha']
+}
 
-export const ColorPickerSwatch = defineComponent({
-  name: 'ColorPickerSwatch',
-  props: {
-    readOnly: {
-      type: Boolean as PropType<SwatchProps['respectAlpha']>,
-      default: undefined,
-    },
-    value: {
-      type: [String, Object] as PropType<SwatchProps['value']>,
-      required: true,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const ColorPickerSwatch = defineComponent<ColorPickerSwatchProps>(
+  (props, { slots, attrs }) => {
     const api = useColorPickerContext()
     ColorPickerSwatchProvider(reactive(props))
 
     return () => (
-      <ark.button {...api.value.getSwatchProps(props)} {...attrs}>
+      <ark.div {...api.value.getSwatchProps(props)} {...attrs}>
         {slots.default?.()}
-      </ark.button>
+      </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerSwatch',
+    props: {
+      readOnly: {
+        type: Boolean as PropType<SwatchProps['respectAlpha']>,
+        default: undefined,
+      },
+      value: {
+        type: [String, Object] as PropType<SwatchProps['value']>,
+        required: true,
+      },
+    },
+  },
+)

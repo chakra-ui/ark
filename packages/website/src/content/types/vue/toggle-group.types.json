@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -12,7 +13,7 @@
       "description": "Whether the toggle is disabled."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -60,6 +61,7 @@
   },
   "Item": {
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   }
 }

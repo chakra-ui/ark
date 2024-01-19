@@ -11,6 +11,7 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",
@@ -45,7 +46,7 @@
       "description": "The options to pass to the `Intl.NumberFormat` constructor"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

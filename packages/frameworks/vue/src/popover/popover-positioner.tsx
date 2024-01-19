@@ -1,19 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverPositionerProps = HTMLArkProps<'div'>
+export interface PopoverPositionerProps extends HTMLArkProps<'div'> {}
 
-export const PopoverPositioner: ComponentWithProps<PopoverPositionerProps> = defineComponent({
-  name: 'PopoverPositioner',
-  setup(_, { slots, attrs }) {
+export const PopoverPositioner = defineComponent<PopoverPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'PopoverPositioner',
+  },
+)

@@ -4,9 +4,8 @@ import { usePinInputContext } from './pin-input-context'
 
 export interface PinInputControlProps extends HTMLArkProps<'div'> {}
 
-export const PinInputControl = defineComponent({
-  name: 'PinInputControl',
-  setup(_, { slots, attrs }) {
+export const PinInputControl = defineComponent<PinInputControlProps>(
+  (_, { slots, attrs }) => {
     const api = usePinInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PinInputControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'PinInputControl',
+  },
+)

@@ -1,6 +1,7 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { RatingGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './rating-group.test.vue'
 
 describe('Rating Group', () => {
@@ -8,6 +9,10 @@ describe('Rating Group', () => {
     render(ComponentUnderTest)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
+    expect(RatingGroup[part]).toBeDefined()
   })
 
   it('should apply default value', async () => {

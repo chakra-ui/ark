@@ -1,18 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useSelectContext } from './select-context'
 
-export type SelectPositionerProps = HTMLArkProps<'div'>
+export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
-export const SelectPositioner = defineComponent({
-  name: 'SelectPositioner',
-  setup(_, { slots, attrs }) {
+export const SelectPositioner = defineComponent<SelectPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'SelectPositioner',
+  },
+)

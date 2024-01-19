@@ -6,6 +6,66 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.10.0] - 2024-01-17
+
+### Added
+
+- Added `DatePicker` component
+- Added `Progress` component
+- Added `v-model:checked` for `Checkbox` component
+- Added `v-model:open` for `Dialog` component
+- Added `v-model:open` for `HoverCard` component
+- Added `v-model:open` for `Popover` component
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+
+### Changed
+
+- Changed `ColorPicker.Swatch` tag from `button` to `div`
+- Changed `Combobox.ItemText` type from `button` to `span`
+- Changed `Combobox.Positioner` tag from `ul` to `div`
+- Changed `Popover.Description` tag from `div` to `p`
+- Rewritten all components `defineComponent` to Function Signature
+- Rewritten all components underlying Presence logic
+- Revised `Dialog` component stories and tests
+- Revised `HoverCard` component stories and tests
+- Revised `Menu` component
+- Revised `Popover` component stories and tests
+- Revised `Select` component stories and types
+- Revised `Splitter` component
+- Revised `Tooltip` component
+- Revised `Tabs` component types
+- Revised `TagsInput` component
+- Revised `Toast` component
+- Revised `ToggleGroup` component
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+
+### Fixed
+
+- Added a missing slot with machine api in `Splitter` component
+- Added a missing slot with machine api in `Tabs` component
+- Added a missing slot with machine api in `Tooltip` component
+- Added missing emits in `Dialog` component
+- Added missing emits in `Presence` component
+- Added missing emits in `Slider` component
+- Fixed `Dialog.Trigger` aria-controls bug
+- Fixed `Menu.Trigger` aria-controls bug
+- Fixed `Popover.Trigger` aria-controls bug
+- Fixed `Toast` component render bugs
+- Fixed lazy mounting in `Accordion` component
+- Fixed lazy mounting in `ColorPicker` component
+- Fixed lazy mounting in `Combobox` component
+- Fixed lazy mounting in `HoverCard` component
+- Fixed lazy mounting in `Menu` component
+- Fixed lazy mounting in `Popover` component
+- Fixed lazy mounting in `Tabs` component
+- Fixed multiple rerenders on `Select` component using search params
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using controlled context
+- Resolved an issue where `Tooltip` component would not handle open control state
+- Resolved an issue that `Menu` option item could not be activated by keyboard
+
 ## [0.9.0] - 2023-12-14
 
 ### Added
@@ -15,7 +75,7 @@ description: All notable changes to this project will be documented in this file
 - Added `ToggleGroup` component
 - Added `ValueText` to the `ColorPicker` component
 - Added support to lazy mount the `ColorPicker` component using the `Presence` component
-- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
+- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 

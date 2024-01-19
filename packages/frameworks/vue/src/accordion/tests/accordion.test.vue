@@ -8,11 +8,10 @@ const items = ref([
   { value: 'Svelte', disabled: true },
   { value: 'Vue' },
 ])
-const testProps = ref<string[]>([])
 </script>
 
 <template>
-  <Accordion v-model="testProps">
+  <Accordion.Root>
     <Accordion.Item
       v-for="item in items"
       :key="item.value"
@@ -25,5 +24,5 @@ const testProps = ref<string[]>([])
       </Accordion.ItemTrigger>
       <Accordion.ItemContent>{{ item.value }} Content</Accordion.ItemContent>
     </Accordion.Item>
-  </Accordion>
+  </Accordion.Root>
 </template>

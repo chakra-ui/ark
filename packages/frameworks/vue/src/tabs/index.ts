@@ -1,3 +1,7 @@
+import type {
+  FocusChangeDetails as TabsFocusChangeDetails,
+  ValueChangeDetails as TabsValueChangeDetails,
+} from '@zag-js/tabs'
 import { TabContent, type TabContentProps } from './tab-content'
 import { TabIndicator, type TabIndicatorProps } from './tab-indicator'
 import { TabList, type TabListProps } from './tab-list'
@@ -14,11 +18,14 @@ const Tabs = Object.assign(TabsRoot, {
 })
 
 export { TabContent, TabIndicator, TabList, TabTrigger, Tabs, useTabsContext }
+
 export type {
   TabContentProps,
   TabIndicatorProps,
   TabListProps,
   TabTriggerProps,
   TabsContext,
+  TabsFocusChangeDetails,
   TabsProps,
+  TabsValueChangeDetails,
 }

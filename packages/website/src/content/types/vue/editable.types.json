@@ -6,6 +6,7 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
@@ -33,7 +34,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },

@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useToastContext } from './toast-context'
 
-export type ToastProps = HTMLArkProps<'li'>
+export interface ToastProps extends HTMLArkProps<'li'> {}
 
-export const Toast = defineComponent({
-  name: 'Toast',
-  setup(_, { attrs, slots }) {
+export const Toast = defineComponent<ToastProps>(
+  (_, { attrs, slots }) => {
     const api = useToastContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const Toast = defineComponent({
       </ark.li>
     )
   },
-})
+  {
+    name: 'Toast',
+  },
+)

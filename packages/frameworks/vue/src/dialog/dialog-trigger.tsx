@@ -1,18 +1,29 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { computed, defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export type DialogTriggerProps = HTMLArkProps<'button'>
+export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogTrigger = defineComponent({
-  name: 'DialogTrigger',
-  setup(_, { slots, attrs }) {
+export const DialogTrigger = defineComponent<DialogTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'DialogTrigger')
+    const presenceApi = usePresenceContext()
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    const triggerProps = computed(() => ({
+      ...api.value.triggerProps,
+      'aria-controls': presenceApi.value.isUnmounted
+        ? undefined
+        : api.value.triggerProps['aria-controls'],
+    }))
+
+    return () => (
+      <ark.button {...triggerProps.value} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'DialogTrigger',
+  },
+)

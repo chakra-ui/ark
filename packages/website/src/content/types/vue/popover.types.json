@@ -15,6 +15,11 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the popover."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -22,7 +27,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,11 +46,11 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
-    "isOpen": {
+    "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
-      "description": "Control the open state of the popover."
+      "description": "Whether to enable lazy mounting"
     },
     "modal": {
       "type": "boolean",
@@ -57,6 +62,11 @@
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
       "description": "Function called when the escape key is pressed"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
@@ -78,6 +88,7 @@
       "isRequired": false,
       "description": "Function called when the pointer is pressed down outside the component"
     },
+    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": {
       "type": "boolean",
       "isRequired": false,
@@ -93,6 +104,17 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },

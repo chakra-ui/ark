@@ -5,16 +5,18 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseToggleGroupProps = Optional<toggleGroup.Context, 'id'> & {
+export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
   modelValue?: toggleGroup.Context['value']
 }
-export type UseToggleGroupReturn = ComputedRef<toggleGroup.Api<PropTypes>>
+
+export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTypes>> {}
 
 export const useToggleGroup = (
   props: UseToggleGroupProps,
   emit: CallableFunction,
 ): UseToggleGroupReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {

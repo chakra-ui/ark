@@ -1,18 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerPositioner = defineComponent({
-  name: 'ColorPickerPositioner',
-  setup(_, { slots, attrs }) {
+export const ColorPickerPositioner = defineComponent<ColorPickerPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'ColorPickerPositioner',
+  },
+)

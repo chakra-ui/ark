@@ -4,9 +4,8 @@ import { useSwitchContext } from './switch-context'
 
 export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 
-export const SwitchControl = defineComponent({
-  name: 'SwitchControl',
-  setup(_, { slots, attrs }) {
+export const SwitchControl = defineComponent<SwitchControlProps>(
+  (_, { slots, attrs }) => {
     const api = useSwitchContext()
 
     return () => (
@@ -18,4 +17,7 @@ export const SwitchControl = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'SwitchControl',
+  },
+)

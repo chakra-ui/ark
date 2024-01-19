@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverIndicatorProps = HTMLArkProps<'div'>
+export interface PopoverIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const PopoverIndicator = defineComponent({
-  name: 'PopoverIndicator',
-  setup(_, { slots, attrs }) {
+export const PopoverIndicator = defineComponent<PopoverIndicatorProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const PopoverIndicator = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'PopoverIndicator',
+  },
+)

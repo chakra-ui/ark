@@ -8,6 +8,7 @@ export interface HoverCardArrowProps extends HTMLArkProps<'div'> {}
 export const HoverCardArrow = forwardRef<HTMLDivElement, HoverCardArrowProps>((props, ref) => {
   const api = useHoverCardContext()
   const mergedProps = mergeProps(api.arrowProps, props)
+
   return <ark.div {...mergedProps} ref={ref} />
 })
 

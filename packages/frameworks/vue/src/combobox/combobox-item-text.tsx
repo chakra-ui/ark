@@ -3,18 +3,20 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 import { useComboboxItemContext } from './combobox-item-context'
 
-export type ComboboxItemTextProps = HTMLArkProps<'button'>
+export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
 
-export const ComboboxItemText = defineComponent({
-  name: 'ComboboxItemText',
-  setup(_, { slots, attrs }) {
+export const ComboboxItemText = defineComponent<ComboboxItemTextProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
     const itemProps = useComboboxItemContext()
 
     return () => (
-      <ark.span {...api.value.getItemTextProps(itemProps)} {...attrs}>
+      <ark.span {...api.value.getItemTextProps(itemProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.span>
     )
   },
-})
+  {
+    name: 'ComboboxItemText',
+  },
+)

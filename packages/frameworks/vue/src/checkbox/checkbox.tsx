@@ -7,12 +7,9 @@ import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 
 export interface CheckboxProps extends Assign<HTMLArkProps<'label'>, UseCheckboxProps> {}
 
-export const Checkbox = defineComponent({
-  name: 'Checkbox',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useCheckbox(emit, props)
+export const Checkbox = defineComponent<CheckboxProps>(
+  (props, { slots, attrs, emit }) => {
+    const api = useCheckbox(props, emit)
     CheckboxProvider(api)
 
     return () => (
@@ -21,4 +18,9 @@ export const Checkbox = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'Checkbox',
+    props,
+    emits,
+  },
+)

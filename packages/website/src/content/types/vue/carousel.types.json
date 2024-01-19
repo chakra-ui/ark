@@ -1,10 +1,11 @@
 {
   "Root": {
     "align": {
-      "type": "'start' | 'center' | 'end'",
+      "type": "'end' | 'start' | 'center'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -12,7 +13,7 @@
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -54,11 +55,15 @@
       "description": "The amount of space between slides."
     }
   },
-  "Item": { "index": { "type": "number", "isRequired": true } },
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Viewport": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": {
     "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
   "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },

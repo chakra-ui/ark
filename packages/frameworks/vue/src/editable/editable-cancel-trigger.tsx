@@ -4,9 +4,8 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableCancelTriggerProps extends HTMLArkProps<'button'> {}
 
-export const EditableCancelTrigger = defineComponent({
-  name: 'EditableCancelTrigger',
-  setup(_, { slots, attrs }) {
+export const EditableCancelTrigger = defineComponent<EditableCancelTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditableCancelTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'EditableCancelTrigger',
+  },
+)

@@ -1,18 +1,29 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { computed, defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useMenuContext } from './menu-context'
 
-export type MenuTriggerProps = HTMLArkProps<'button'>
+export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuTrigger = defineComponent({
-  name: 'MenuTrigger',
-  setup(_, { slots, attrs }) {
+export const MenuTrigger = defineComponent<MenuTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'MenuTrigger')
+    const presenceApi = usePresenceContext()
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    const triggerProps = computed(() => ({
+      ...api.value.triggerProps,
+      'aria-controls': presenceApi.value.isUnmounted
+        ? undefined
+        : api.value.triggerProps['aria-controls'],
+    }))
+
+    return () => (
+      <ark.button {...triggerProps.value} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'MenuTrigger',
+  },
+)

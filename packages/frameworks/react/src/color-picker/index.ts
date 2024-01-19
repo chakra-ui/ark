@@ -1,4 +1,9 @@
-import type { ColorFormat } from '@zag-js/color-picker'
+import type {
+  ColorFormat,
+  FormatChangeDetails as ColorPickerFormatChangeDetails,
+  OpenChangeDetails as ColorPickerOpenChangeDetails,
+  ValueChangeDetails as ColorPickerValueChangeDetails,
+} from '@zag-js/color-picker'
 import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
 import {
@@ -133,9 +138,11 @@ export type {
   ColorPickerContext,
   ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,
+  ColorPickerFormatChangeDetails,
   ColorPickerFormatSelectProps,
   ColorPickerFormatTriggerProps,
   ColorPickerLabelProps,
+  ColorPickerOpenChangeDetails,
   ColorPickerPositionerProps,
   ColorPickerProps,
   ColorPickerSwatchGroupProps,
@@ -144,6 +151,7 @@ export type {
   ColorPickerSwatchTriggerProps,
   ColorPickerTransparencyGridProps,
   ColorPickerTriggerProps,
+  ColorPickerValueChangeDetails,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
 }

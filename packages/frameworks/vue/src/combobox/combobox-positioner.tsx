@@ -1,18 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxPositionerProps = HTMLArkProps<'div'>
+export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxPositioner = defineComponent({
-  name: 'ComboboxPositioner',
-  setup(_, { slots, attrs }) {
+export const ComboboxPositioner = defineComponent<ComboboxPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.ul {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.ul>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'ComboboxPositioner',
+  },
+)

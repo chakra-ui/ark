@@ -1,18 +1,29 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { computed, defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverTriggerProps = HTMLArkProps<'button'>
+export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PopoverTrigger = defineComponent({
-  name: 'PopoverTrigger',
-  setup(_, { slots, attrs }) {
+export const PopoverTrigger = defineComponent<PopoverTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'PopoverTrigger')
+    const presenceApi = usePresenceContext()
 
-      return h(DefaultSlot, { ...api.value.triggerProps, ...attrs })
-    }
+    const triggerProps = computed(() => ({
+      ...api.value.triggerProps,
+      'aria-controls': presenceApi.value.isUnmounted
+        ? undefined
+        : api.value.triggerProps['aria-controls'],
+    }))
+
+    return () => (
+      <ark.button {...triggerProps.value} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'PopoverTrigger',
+  },
+)

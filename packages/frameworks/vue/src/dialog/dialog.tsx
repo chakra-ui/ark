@@ -1,26 +1,39 @@
-/* eslint-disable vue/no-reserved-component-names */
-
-import { type Context as DialogContext } from '@zag-js/dialog'
-import { defineComponent } from 'vue'
-import type { Optional } from '../types'
-import { type ComponentWithProps } from '../utils'
+import { computed, defineComponent } from 'vue'
+import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import { DialogProvider } from './dialog-context'
-import { props } from './dialog.props'
-import { useDialog } from './use-dialog'
+import { emits, props } from './dialog.props'
+import { useDialog, type UseDialogProps } from './use-dialog'
 
-export type UseDialogProps = DialogContext
+export interface DialogProps extends UseDialogProps, UsePresenceProps {}
 
-export const Dialog: ComponentWithProps<Partial<UseDialogProps>> = defineComponent({
-  name: 'Dialog',
-  props,
-  emits: ['close', 'outside-click', 'esc', 'update:open'],
-  setup(props, { slots, emit }) {
-    const api = useDialog(emit, props as UseDialogProps)
+export const Dialog = defineComponent<DialogProps>(
+  (props, { slots, emit }) => {
+    const api = useDialog(props, emit)
+
+    const isOpen = computed(() => api.value.isOpen)
+
+    const presenceProps = computed(() => ({
+      present: props.present || isOpen.value,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
+    const presenceApi = usePresence(presenceProps, emit)
 
     DialogProvider(api)
+    PresenceProvider(presenceApi)
 
     return () => slots.default?.(api.value)
   },
-})
-
-export type DialogProps = Optional<UseDialogProps, 'id'>
+  {
+    name: 'Dialog',
+    props: {
+      ...props,
+      ...presenceProps,
+    },
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
+  },
+)

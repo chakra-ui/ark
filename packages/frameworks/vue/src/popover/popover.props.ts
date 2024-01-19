@@ -42,5 +42,15 @@ export const props = {
   positioning: {
     type: Object as PropType<Context['positioning']>,
   },
+  defaultOpen: {
+    type: Boolean as PropType<Context['open']>,
+  },
 }
-export const emits = declareEmits(['open-change'])
+export const emits = declareEmits([
+  'escape-key-down',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
+  'open-change',
+  'update:open',
+])

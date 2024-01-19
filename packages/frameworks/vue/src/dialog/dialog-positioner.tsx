@@ -1,19 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
+import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export type DialogPositionerProps = HTMLArkProps<'div'>
+export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 
-export const DialogPositioner: ComponentWithProps<DialogPositionerProps> = defineComponent({
-  name: 'DialogPositioner',
-  setup(_, { slots, attrs }) {
+export const DialogPositioner = defineComponent<DialogPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'DialogPositioner',
+  },
+)

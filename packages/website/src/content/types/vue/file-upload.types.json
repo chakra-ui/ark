@@ -10,6 +10,7 @@
       "isRequired": false,
       "description": "Whether to allow drag and drop in the dropzone element"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -27,7 +28,7 @@
       "description": "The current value of the file input"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -93,7 +94,10 @@
       "description": "Function to validate a file"
     }
   },
-  "Item": { "file": { "type": "File", "isRequired": true } },
+  "Item": {
+    "file": { "type": "File", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },

@@ -1,27 +1,41 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { PresencePropsProvider, type UsePresenceProps } from '../presence'
+import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { emits, props } from './tabs.props'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export type TabsProps = Assign<HTMLArkProps<'div'>, UseTabsProps>
+export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
 
-export const Tabs = defineComponent({
-  name: 'Tabs',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const Tabs = defineComponent<TabsProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useTabs(props, emit)
+
+    const presenceProps = computed(() => ({
+      present: props.present,
+      lazyMount: props.lazyMount,
+      unmountOnExit: props.unmountOnExit,
+    }))
     TabsProvider(api)
+    PresencePropsProvider(presenceProps)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.({
-          selectedValue: api.value.value,
-          focusedValue: api.value.focusedValue,
-        })}
+        {slots.default?.(api.value)}
       </ark.div>
     )
   },
-})
+  {
+    name: 'Tabs',
+    props: {
+      ...props,
+      ...presenceProps,
+    },
+    emits: {
+      ...emits,
+      ...presenceEmits,
+    },
+  },
+)

@@ -7,11 +7,8 @@ import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
 export interface RadioGroupProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 
-export const RadioGroup = defineComponent({
-  name: 'RadioGroup',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const RadioGroup = defineComponent<RadioGroupProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useRadioGroup(props, emit)
     RadioGroupProvider(api)
 
@@ -21,4 +18,9 @@ export const RadioGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'RadioGroup',
+    props,
+    emits,
+  },
+)

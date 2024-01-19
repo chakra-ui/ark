@@ -1,3 +1,4 @@
+import type { StatusChangeDetails as AvatarStatusChangeDetails } from '@zag-js/avatar'
 import { Avatar as AvatarRoot, type AvatarProps } from './avatar'
 import { useAvatarContext, type AvatarContext } from './avatar-context'
 import { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
@@ -10,4 +11,10 @@ const Avatar = Object.assign(AvatarRoot, {
 })
 
 export { Avatar, AvatarFallback, AvatarImage, useAvatarContext }
-export type { AvatarContext, AvatarFallbackProps, AvatarImageProps, AvatarProps }
+export type {
+  AvatarContext,
+  AvatarFallbackProps,
+  AvatarImageProps,
+  AvatarProps,
+  AvatarStatusChangeDetails,
+}

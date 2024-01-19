@@ -4,23 +4,11 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
-export type SplitterResizeTriggerProps = Assign<HTMLArkProps<'button'>, ResizeTriggerProps>
+export interface SplitterResizeTriggerProps
+  extends Assign<HTMLArkProps<'button'>, ResizeTriggerProps> {}
 
-export const SplitterResizeTrigger = defineComponent({
-  name: 'SplitterResizeTrigger',
-  props: {
-    id: {
-      type: String as PropType<SplitterResizeTriggerProps['id']>,
-      required: true,
-    },
-    step: {
-      type: Number as PropType<SplitterResizeTriggerProps['step']>,
-    },
-    disabled: {
-      type: Boolean as PropType<SplitterResizeTriggerProps['disabled']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
+export const SplitterResizeTrigger = defineComponent<SplitterResizeTriggerProps>(
+  (props, { slots, attrs }) => {
     const api = useSplitterContext()
 
     return () => (
@@ -29,4 +17,19 @@ export const SplitterResizeTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'SplitterResizeTrigger',
+    props: {
+      id: {
+        type: String as PropType<SplitterResizeTriggerProps['id']>,
+        required: true,
+      },
+      step: {
+        type: Number as PropType<SplitterResizeTriggerProps['step']>,
+      },
+      disabled: {
+        type: Boolean as PropType<SplitterResizeTriggerProps['disabled']>,
+      },
+    },
+  },
+)

@@ -7,11 +7,8 @@ import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
 export interface RatingGroupProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
-export const RatingGroup = defineComponent({
-  name: 'RatingGroup',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
+export const RatingGroup = defineComponent<RatingGroupProps>(
+  (props, { slots, attrs, emit }) => {
     const api = useRatingGroup(props, emit)
     RatingGroupProvider(api)
 
@@ -21,4 +18,9 @@ export const RatingGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'RatingGroup',
+    props,
+    emits,
+  },
+)

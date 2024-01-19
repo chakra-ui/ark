@@ -4,9 +4,8 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
 
-export const FileUploadDropzone = defineComponent({
-  name: 'FileUploadDropzone',
-  setup(_, { attrs, slots }) {
+export const FileUploadDropzone = defineComponent<FileUploadDropzoneProps>(
+  (_, { attrs, slots }) => {
     const api = useFileUploadContext()
 
     return () => (
@@ -18,4 +17,7 @@ export const FileUploadDropzone = defineComponent({
       </>
     )
   },
-})
+  {
+    name: 'FileUploadDropzone',
+  },
+)

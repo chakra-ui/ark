@@ -1,13 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type ComponentWithProps } from '../utils'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverAnchorProps = HTMLArkProps<'div'>
+export interface PopoverAnchorProps extends HTMLArkProps<'div'> {}
 
-export const PopoverAnchor: ComponentWithProps<PopoverAnchorProps> = defineComponent({
-  name: 'PopoverAnchor',
-  setup(_, { slots, attrs }) {
+export const PopoverAnchor = defineComponent<PopoverAnchorProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
@@ -16,4 +14,7 @@ export const PopoverAnchor: ComponentWithProps<PopoverAnchorProps> = defineCompo
       </ark.div>
     )
   },
-})
+  {
+    name: 'PopoverAnchor',
+  },
+)

@@ -1,29 +1,30 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { Presence, type PresenceProps } from '../presence'
-import { emits, props } from '../presence/presence.props'
+import { usePresenceContext } from '../presence'
+import { emits } from '../presence/presence.props'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export interface AccordionItemContentProps extends HTMLArkProps<'div'>, PresenceProps {}
+export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
 
-export const AccordionItemContent = defineComponent({
-  name: 'AccordionItemContent',
-  props,
-  emits,
-  setup(props, { slots, attrs }) {
+export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
+  (_, { slots, attrs }) => {
     const api = useAccordionContext()
     const item = useAccordionItemContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <Presence
-        {...props}
-        present={props.present !== undefined ? props.present : item.value.isOpen}
-      >
-        <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
-          {slots.default?.()}
-        </ark.div>
-      </Presence>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'AccordionItemContent',
+    emits,
+  },
+)

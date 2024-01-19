@@ -7,11 +7,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: 'src/setup-test.ts',
+    setupFiles: ['src/setup-test.ts'],
     deps: {
       optimizer: {
         web: {
-          include: ['solid-js'],
+          exclude: ['solid-js'],
         },
       },
     },
@@ -23,8 +23,8 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
     },
     css: false,
-  },
-  resolve: {
-    conditions: ['development', 'browser'],
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
+    },
   },
 })

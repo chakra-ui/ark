@@ -4,9 +4,8 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputScrubberProps extends HTMLArkProps<'div'> {}
 
-export const NumberInputScrubber = defineComponent({
-  name: 'NumberInputScrubber',
-  setup(_, { slots, attrs }) {
+export const NumberInputScrubber = defineComponent<NumberInputScrubberProps>(
+  (_, { slots, attrs }) => {
     const api = useNumberInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const NumberInputScrubber = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'NumberInputScrubber',
+  },
+)

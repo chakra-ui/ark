@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectLabelProps = HTMLArkProps<'label'>
+export interface SelectLabelProps extends HTMLArkProps<'label'> {}
 
-export const SelectLabel = defineComponent({
-  name: 'SelectLabel',
-  setup(_, { slots, attrs }) {
+export const SelectLabel = defineComponent<SelectLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const SelectLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'SelectLabel',
+  },
+)

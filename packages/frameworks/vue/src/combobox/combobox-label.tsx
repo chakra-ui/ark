@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxLabelProps = HTMLArkProps<'label'>
+export interface ComboboxLabelProps extends HTMLArkProps<'label'> {}
 
-export const ComboboxLabel = defineComponent({
-  name: 'ComboboxLabel',
-  setup(_, { slots, attrs }) {
+export const ComboboxLabel = defineComponent<ComboboxLabelProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const ComboboxLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'ComboboxLabel',
+  },
+)

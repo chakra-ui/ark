@@ -5,6 +5,7 @@
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -32,7 +33,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -74,7 +75,10 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "Item": { "index": { "type": "number", "isRequired": true } },
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

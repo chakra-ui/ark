@@ -2,10 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
-export type ComboboxClearTriggerProps = HTMLArkProps<'button'>
+export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ComboboxClearTrigger = defineComponent({
-  setup(_, { slots, attrs }) {
+export const ComboboxClearTrigger = defineComponent<ComboboxClearTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useComboboxContext()
 
     return () => (
@@ -14,4 +14,5 @@ export const ComboboxClearTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {},
+)

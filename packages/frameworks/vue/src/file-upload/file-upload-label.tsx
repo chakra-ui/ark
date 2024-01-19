@@ -4,9 +4,8 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadLabelProps extends HTMLArkProps<'label'> {}
 
-export const FileUploadLabel = defineComponent({
-  name: 'FileUploadLabel',
-  setup(_, { attrs, slots }) {
+export const FileUploadLabel = defineComponent<FileUploadLabelProps>(
+  (_, { attrs, slots }) => {
     const api = useFileUploadContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const FileUploadLabel = defineComponent({
       </ark.label>
     )
   },
-})
+  {
+    name: 'FileUploadLabel',
+  },
+)
