@@ -2,9 +2,9 @@ import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { ColorPicker, type ColorPickerProps } from './'
+import { ColorPicker, type ColorPickerRootProps } from './'
 
-const ComponentUnderTest = (props: ColorPickerProps) => (
+const ComponentUnderTest = (props: ColorPickerRootProps) => (
   <ColorPicker.Root defaultValue="#eb5e41" {...props}>
     {(api) => (
       <>
