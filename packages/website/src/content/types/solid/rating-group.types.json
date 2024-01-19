@@ -5,7 +5,7 @@
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -76,8 +76,8 @@
   },
   "Item": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

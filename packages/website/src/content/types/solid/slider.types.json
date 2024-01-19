@@ -10,7 +10,7 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -123,18 +123,18 @@
       "description": "The value of the range slider"
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Range": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Range": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Thumb": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Track": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Track": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Marker": {
     "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MarkerGroup": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ValueText": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "MarkerGroup": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

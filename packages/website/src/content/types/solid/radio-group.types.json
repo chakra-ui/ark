@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -55,12 +55,12 @@
   },
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemControl": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemText": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Indicator": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemControl": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

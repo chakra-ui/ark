@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -23,6 +23,6 @@
       "description": "Functional called when the image loading status changes."
     }
   },
-  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Image": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Fallback": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "defaultValue": "true",
@@ -171,36 +171,36 @@
   },
   "View": {
     "view": { "type": "DateView", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Table": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "columns": { "type": "number", "isRequired": false }
   },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TableRow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "RangeText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TableBody": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TableRow": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "RangeText": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TableBody": { "as": { "type": "ValidComponent", "isRequired": false } },
   "TableCell": {
     "value": { "type": "number | DateValue", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "columns": { "type": "number", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "visibleRange": { "type": "VisibleRange", "isRequired": false }
   },
-  "TableHead": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "YearSelect": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MonthSelect": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TableHeader": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ViewControl": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ViewTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TableCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "TableHead": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "YearSelect": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "MonthSelect": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "NextTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "PrevTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TableHeader": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ViewControl": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ViewTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ClearTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TableCellTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }
