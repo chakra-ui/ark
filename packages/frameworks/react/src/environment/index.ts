@@ -1,9 +1,9 @@
-import { Environment as EnvironmentRoot, type EnvironmentProps } from './environment'
+import { EnvironmentRoot, type EnvironmentProps } from './environment'
 import { useEnvironmentContext, type EnvironmentContext } from './environment-context'
 
-const Environment = Object.assign(EnvironmentRoot, {
+export const Environment = {
   Root: EnvironmentRoot,
-})
+}
 
 export { Environment, useEnvironmentContext }
 export type { EnvironmentContext, EnvironmentProps }

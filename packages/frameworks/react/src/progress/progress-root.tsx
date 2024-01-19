@@ -7,13 +7,13 @@ import { type Assign } from '../types'
 import { ProgressProvider } from './progress-context'
 import { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
 
-export interface ProgressProps
+export interface ProgressRootProps
   extends Assign<
     Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((api: UseProgressReturn) => ReactNode) }>,
     UseProgressProps
   > {}
 
-export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) => {
+export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props, ref) => {
   const [progressProps, { children, ...localProps }] = createSplitProps<UseProgressProps>()(props, [
     'defaultValue',
     'dir',
@@ -40,4 +40,4 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
   )
 })
 
-Progress.displayName = 'Progress'
+ProgressRoot.displayName = 'ProgressRoot'

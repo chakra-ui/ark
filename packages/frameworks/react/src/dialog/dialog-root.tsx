@@ -7,11 +7,11 @@ import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 
-export interface DialogProps extends UseDialogProps, UsePresenceProps {
+export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
   children?: ReactNode | ((api: UseDialogReturn) => ReactNode)
 }
 
-export const Dialog = (props: DialogProps) => {
+export const DialogRoot = (props: DialogRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const api = useDialog(localProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))

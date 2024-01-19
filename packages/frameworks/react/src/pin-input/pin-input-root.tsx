@@ -6,9 +6,9 @@ import { type Assign } from '../types'
 import { PinInputProvider } from './pin-input-context'
 import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
-export interface PinInputProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
+export interface PinInputRootProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
-export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) => {
+export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props, ref) => {
   const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',
@@ -44,4 +44,4 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) =
   )
 })
 
-PinInput.displayName = 'PinInput'
+PinInputRoot.displayName = 'PinInputRoot'

@@ -7,11 +7,11 @@ import { runIfFn } from '../run-if-fn'
 import { PopoverProvider } from './popover-context'
 import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
-export interface PopoverProps extends UsePopoverProps, UsePresenceProps {
+export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {
   children?: ReactNode | ((api: UsePopoverReturn) => ReactNode)
 }
 
-export const Popover = (props: PopoverProps) => {
+export const PopoverRoot = (props: PopoverRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const api = usePopover(localProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))

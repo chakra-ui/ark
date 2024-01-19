@@ -7,7 +7,7 @@ import { type Assign } from '../types'
 import { EditableProvider } from './editable-context'
 import { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 
-export interface EditableProps
+export interface EditableRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -18,7 +18,7 @@ export interface EditableProps
     UseEditableProps
   > {}
 
-export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) => {
+export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props, ref) => {
   const [useEditableProps, { children, ...localProps }] = createSplitProps<UseEditableProps>()(
     props,
     [
@@ -65,4 +65,4 @@ export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) =
   )
 })
 
-Editable.displayName = 'Editable'
+EditableRoot.displayName = 'EditableRoot'

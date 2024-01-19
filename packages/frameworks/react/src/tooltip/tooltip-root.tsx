@@ -7,11 +7,11 @@ import { runIfFn } from '../run-if-fn'
 import { TooltipProvider } from './tooltip-context'
 import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
-export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
+export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
   children?: ReactNode | ((api: UseTooltipReturn) => ReactNode)
 }
 
-export const Tooltip = (props: TooltipProps) => {
+export const TooltipRoot = (props: TooltipRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const api = useTooltip(localProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))

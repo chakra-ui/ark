@@ -3,7 +3,6 @@ import type {
   FileChangeDetails as FileUploadFileChangeDetails,
   FileRejectDetails as FileUploadFileRejectDetails,
 } from '@zag-js/file-upload'
-import { FileUpload as FileUploadRoot, type FileUploadProps } from './file-upload'
 import { useFileUploadContext, type FileUploadContext } from './file-upload-context'
 import { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
 import { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
@@ -23,9 +22,10 @@ import {
   type FileUploadItemSizeTextProps,
 } from './file-upload-item-size-text'
 import { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
+import { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
 import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
 
-const FileUpload = Object.assign(FileUploadRoot, {
+export const FileUpload = {
   Root: FileUploadRoot,
   Dropzone: FileUploadDropzone,
   Item: FileUploadItem,
@@ -37,10 +37,9 @@ const FileUpload = Object.assign(FileUploadRoot, {
   ItemSizeText: FileUploadItemSizeText,
   Label: FileUploadLabel,
   Trigger: FileUploadTrigger,
-})
+}
 
 export {
-  FileUpload,
   FileUploadDropzone,
   FileUploadItem,
   FileUploadItemDeleteTrigger,
@@ -49,6 +48,7 @@ export {
   FileUploadItemPreviewImage,
   FileUploadItemSizeText,
   FileUploadLabel,
+  FileUploadRoot,
   FileUploadTrigger,
   useFileUploadContext,
 }
@@ -67,6 +67,6 @@ export type {
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
   FileUploadLabelProps,
-  FileUploadProps,
+  FileUploadRootProps,
   FileUploadTriggerProps,
 }

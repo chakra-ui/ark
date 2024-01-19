@@ -1,4 +1,4 @@
-import { Presence as PresenceRoot, type PresenceProps } from './presence'
+import { PresenceRoot, type PresenceProps } from './presence'
 import { PresenceProvider, usePresenceContext, type PresenceContext } from './presence-context'
 import {
   PresencePropsProvider,
@@ -8,9 +8,9 @@ import {
 import { splitPresenceProps } from './split-presence-props'
 import { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence'
 
-const Presence = Object.assign(PresenceRoot, {
+export const Presence = {
   Root: PresenceRoot,
-})
+}
 
 export {
   Presence,

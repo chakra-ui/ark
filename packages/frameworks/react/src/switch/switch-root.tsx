@@ -8,13 +8,13 @@ import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
-export interface SwitchProps
+export interface SwitchRootProps
   extends Assign<
     Assign<HTMLArkProps<'label'>, { children?: ReactNode | ((api: UseSwitchReturn) => ReactNode) }>,
     UseSwitchProps
   > {}
 
-export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
+export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
   const [switchProps, { children, ...localProps }] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'defaultChecked',
@@ -46,4 +46,4 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
   )
 })
 
-Switch.displayName = 'Switch'
+SwitchRoot.displayName = 'SwitchRoot'

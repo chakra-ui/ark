@@ -18,11 +18,11 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 
-export interface MenuProps extends UseMenuProps, UsePresenceProps {
+export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
   children?: ReactNode | ((api: UseMenuReturn['api']) => ReactNode)
 }
 
-export const Menu = (props: MenuProps) => {
+export const MenuRoot = (props: MenuRootProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
   const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',
