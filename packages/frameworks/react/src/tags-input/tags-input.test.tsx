@@ -2,9 +2,9 @@ import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { TagsInput, type TagsInputProps } from './'
+import { TagsInput, type TagsInputRootProps } from './'
 
-const ComponentUnderTest = (props: TagsInputProps) => {
+const ComponentUnderTest = (props: TagsInputRootProps) => {
   return (
     <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       {(api) => (

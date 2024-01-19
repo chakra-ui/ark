@@ -2,9 +2,9 @@ import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/react'
 import { FileIcon } from 'lucide-react'
 import { getExports, getParts } from '../setup-test'
-import { FileUpload, type FileUploadProps } from './'
+import { FileUpload, type FileUploadRootProps } from './'
 
-const ComponentUnderTest = (props: FileUploadProps) => (
+const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     {(api) => {
       if (api.files.length < 1) api.setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])

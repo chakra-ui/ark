@@ -4,7 +4,6 @@ import type {
   ValueChangeDetails as SelectValueChangeDetails,
 } from '@zag-js/select'
 import type { CollectionItem } from '../types'
-import { SelectRoot, type SelectProps } from './select'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
 import { SelectContent, type SelectContentProps } from './select-content'
 import { useSelectContext, type SelectContext } from './select-context'
@@ -18,6 +17,7 @@ import { SelectItemIndicator, type SelectItemIndicatorProps } from './select-ite
 import { SelectItemText, type SelectItemTextProps } from './select-item-text'
 import { SelectLabel, type SelectLabelProps } from './select-label'
 import { SelectPositioner, type SelectPositionerProps } from './select-positioner'
+import { SelectRoot, type SelectRootProps } from './select-root'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
 import { SelectValueText, type SelectValueTextProps } from './select-value-text'
 
@@ -39,7 +39,6 @@ export const Select = {
 }
 
 export {
-  Select,
   SelectClearTrigger,
   SelectContent,
   SelectControl,
@@ -51,6 +50,7 @@ export {
   SelectItemText,
   SelectLabel,
   SelectPositioner,
+  SelectRoot,
   SelectTrigger,
   SelectValueText,
   useSelectContext,
@@ -74,7 +74,7 @@ export type {
   SelectLabelProps,
   SelectOpenChangeDetails,
   SelectPositionerProps,
-  SelectProps,
+  SelectRootProps,
   SelectTriggerProps,
   SelectValueChangeDetails,
   SelectValueTextProps,

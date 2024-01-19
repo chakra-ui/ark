@@ -1,4 +1,4 @@
-import { PresenceRoot, type PresenceProps } from './presence'
+import { Presence, type PresenceProps } from './presence'
 import { PresenceProvider, usePresenceContext, type PresenceContext } from './presence-context'
 import {
   PresencePropsProvider,
@@ -7,10 +7,6 @@ import {
 } from './presence-props-context'
 import { splitPresenceProps } from './split-presence-props'
 import { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence'
-
-export const Presence = {
-  Root: PresenceRoot,
-}
 
 export {
   Presence,

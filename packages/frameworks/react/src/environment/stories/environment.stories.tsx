@@ -22,9 +22,9 @@ const PrintEnvironment = () => {
 export const Basic = () => {
   return (
     <Frame>
-      <Environment.Root>
+      <Environment>
         <PrintEnvironment />
-      </Environment.Root>
+      </Environment>
     </Frame>
   )
 }

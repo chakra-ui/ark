@@ -3,9 +3,9 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { ToggleGroup, type ToggleGroupProps } from './'
+import { ToggleGroup, type ToggleGroupRootProps } from './'
 
-const ComponentUnderTest = (props: ToggleGroupProps) => (
+const ComponentUnderTest = (props: ToggleGroupRootProps) => (
   <ToggleGroup.Root {...props}>
     <ToggleGroup.Item value="a">A</ToggleGroup.Item>
     <ToggleGroup.Item value="b">B</ToggleGroup.Item>

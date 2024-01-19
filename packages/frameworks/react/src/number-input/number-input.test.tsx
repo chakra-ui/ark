@@ -2,9 +2,9 @@ import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { NumberInput, type NumberInputProps } from './'
+import { NumberInput, type NumberInputRootProps } from './'
 
-const ComponentUnderTest = (props: NumberInputProps) => (
+const ComponentUnderTest = (props: NumberInputRootProps) => (
   <NumberInput.Root {...props}>
     <NumberInput.Label>Label</NumberInput.Label>
     <NumberInput.Input />

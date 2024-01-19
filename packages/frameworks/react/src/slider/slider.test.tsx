@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Slider, type SliderProps } from './'
+import { Slider, type SliderRootProps } from './'
 
-const ComponentUnderTest = (props: SliderProps) => {
+const ComponentUnderTest = (props: SliderRootProps) => {
   const [value, setValue] = useState([-20, 20])
   return (
     <Slider.Root

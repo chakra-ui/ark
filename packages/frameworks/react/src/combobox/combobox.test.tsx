@@ -5,7 +5,7 @@ import { vi } from 'vitest'
 import { Portal } from '..'
 import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
-import { Combobox, type ComboboxProps } from './'
+import { Combobox, type ComboboxRootProps } from './'
 
 interface Item {
   label: string
@@ -13,7 +13,7 @@ interface Item {
   disabled?: boolean
 }
 
-const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
+const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
