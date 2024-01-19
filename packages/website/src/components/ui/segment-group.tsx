@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(segmentGroup)
 
 export * from '@ark-ui/react/src/segment-group'
-export type SegmentGroupProps = Ark.SegmentGroupProps & SegmentGroupVariantProps
+export type SegmentGroupProps = Ark.SegmentGroupRootProps & SegmentGroupVariantProps
 
 const SegmentGroupRoot = withProvider(styled(Ark.SegmentGroup.Root), 'root')
 export const SegmentGroupLabel = withContext(styled(Ark.SegmentGroup.Label), 'label')

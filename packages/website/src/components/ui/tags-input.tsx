@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(tagsInput)
 
 export * from '@ark-ui/react/src/tags-input'
-export type TagsInputProps = Ark.TagsInputProps & TagsInputVariantProps
+export type TagsInputProps = Ark.TagsInputRootProps & TagsInputVariantProps
 
 const TagsInputRoot = withProvider(styled(Ark.TagsInput.Root), 'root')
 export const TagsInputClearTrigger = withContext(styled(Ark.TagsInput.ClearTrigger), 'clearTrigger')

@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(splitter)
 
 export * from '@ark-ui/react/src/splitter'
-export type SplitterProps = Ark.SplitterProps & SplitterVariantProps
+export type SplitterProps = Ark.SplitterRootProps & SplitterVariantProps
 
 const SplitterRoot = withProvider(styled(Ark.Splitter.Root), 'root')
 export const SplitterPanel = withContext(styled(Ark.Splitter.Panel), 'panel')

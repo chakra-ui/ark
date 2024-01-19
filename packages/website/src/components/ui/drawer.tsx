@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(drawer)
 
-export type DrawerProps = Ark.DialogProps & DrawerVariantProps
+export type DrawerProps = Ark.DialogRootProps & DrawerVariantProps
 
 const DrawerRoot = withProvider(styled(Ark.Dialog.Root))
 export const DrawerBackdrop = withContext(styled(Ark.Dialog.Backdrop), 'backdrop')

@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(numberInput)
 
 export * from '@ark-ui/react/src/number-input'
-export type NumberInputProps = Ark.NumberInputProps & NumberInputVariantProps
+export type NumberInputProps = Ark.NumberInputRootProps & NumberInputVariantProps
 
 const NumberInputRoot = withProvider(styled(Ark.NumberInput.Root), 'root')
 export const NumberInputControl = withContext(styled(Ark.NumberInput.Control), 'control')
