@@ -1,6 +1,6 @@
 import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
-import { computed, type ComputedRef } from 'vue'
+import { computed, ref, type ComputedRef, type MaybeRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
 import { useId } from '../utils'
 
@@ -39,10 +39,6 @@ export interface UseAccordionProps {
    * The orientation of the accordion items.
    */
   orientation?: accordion.Context['orientation']
-  /**
-   * The `id` of the accordion item that is currently being opened.
-   */
-  modelValue?: accordion.Context['value']
 }
 
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
@@ -50,13 +46,14 @@ export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>
 export const useAccordion = (
   props: UseAccordionProps,
   emit: CallableFunction,
+  modelValue: MaybeRef<accordion.Context['value']>,
 ): UseAccordionReturn => {
   const getRootNode = useEnvironmentContext()
+  const modelValueRef = ref(modelValue)
   const context = computed(() => {
-    const { modelValue, ...rest } = props
     return {
-      ...rest,
-      value: modelValue,
+      ...props,
+      value: modelValueRef.value,
     }
   })
 

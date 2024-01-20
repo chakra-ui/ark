@@ -42,7 +42,7 @@ export const props = {
 }
 export const emits = declareEmits(['focus-change', 'value-change', 'update:modelValue'])
 
-export type AccordionEmits = {
+export type AccordionRootEmits = {
   /**
    * The callback fired when the focused accordion item changes.
    */
@@ -51,8 +51,9 @@ export type AccordionEmits = {
    * The callback fired when the state of opened/closed accordion items changes.
    */
   valueChange: [value: ValueChangeDetails]
-  /**
-   * The callback fired when the state of opened/closed accordion items changes.
-   */
-  'update:modelValue': [value: string[]]
 } & PresenceEmits
+
+/**
+ * The `id` of the accordion item that is currently being opened.
+ */
+export type AccordionRootModelValue = Context['value']
