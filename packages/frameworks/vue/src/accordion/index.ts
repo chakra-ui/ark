@@ -8,6 +8,7 @@ import {
   type AccordionItemIndicatorProps,
 } from './accordion-item-indicator'
 import { AccordionItemTrigger, type AccordionItemTriggerProps } from './accordion-item-trigger'
+import type { AccordionRootProps } from './accordion.props'
 
 const Accordion = Object.assign(AccordionRoot, {
   Root: AccordionRoot,
@@ -34,4 +35,5 @@ export type {
   AccordionItemProps,
   AccordionItemTriggerProps,
   AccordionProps,
+  AccordionRootProps,
 }

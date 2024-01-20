@@ -1,17 +1,12 @@
 import { computed, defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import { PresencePropsProvider, type UsePresenceProps } from '../presence'
+import { ark } from '../factory'
+import { PresencePropsProvider } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
-import { emits, props } from './accordion.props'
-import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { emits, props, type AccordionRootProps } from './accordion.props'
+import { useAccordion } from './use-accordion'
 
-export interface AccordionProps
-  extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
-    UsePresenceProps {}
-
-export const Accordion = defineComponent<AccordionProps>(
+export const Accordion = defineComponent<AccordionRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useAccordion(props, emit)
 

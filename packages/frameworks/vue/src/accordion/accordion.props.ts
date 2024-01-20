@@ -2,6 +2,12 @@ import type { Context } from '@zag-js/accordion'
 import type { PropType } from 'vue'
 import { declareEmits } from '../utils'
 
+import type { UsePresenceProps } from '../presence/use-presence'
+import type { BaseProps } from '../types'
+import type { UseAccordionProps } from './use-accordion'
+
+export interface AccordionRootProps extends BaseProps, UseAccordionProps, UsePresenceProps {}
+
 export const props = {
   collapsible: {
     type: Boolean as PropType<Context['collapsible']>,
