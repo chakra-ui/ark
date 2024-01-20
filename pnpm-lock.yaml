@@ -744,9 +744,6 @@ importers:
       jsdom:
         specifier: 23.0.1
         version: 23.0.1
-      lucide-vue-next:
-        specifier: 0.309.0
-        version: 0.309.0(vue@3.4.14)
       release-it:
         specifier: 17.0.1
         version: 17.0.1(typescript@5.3.3)
@@ -14840,14 +14837,6 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-
-  /lucide-vue-next@0.309.0(vue@3.4.14):
-    resolution: {integrity: sha512-MRrJOV1uyAxHaCqqgwRcLN/8CwlKCwuz7MNdWo2OG/jjrGI+7wLJeJOYJ8lp/61Fps3Mat/k7+0WIskwbGhqTA==}
-    peerDependencies:
-      vue: '>=3.0.1'
-    dependencies:
-      vue: 3.4.14(typescript@5.3.3)
-    dev: true
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
