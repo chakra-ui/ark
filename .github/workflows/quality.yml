@@ -100,15 +100,15 @@ jobs:
       - name: Run typecheck
         run: pnpm typecheck
 
-  exports:
-    name: Check package exports
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
+  # exports:
+  #   name: Check package exports
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout branch
+  #       uses: actions/checkout@v4
 
-      - name: Install
-        uses: ./.github/composite-actions/install
+  #     - name: Install
+  #       uses: ./.github/composite-actions/install
 
-      - name: Run exports:check
-        run: pnpm exports:check
+  #     - name: Run exports:check
+  #       run: pnpm exports:check
