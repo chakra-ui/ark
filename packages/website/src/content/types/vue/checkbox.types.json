@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -68,5 +69,8 @@
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
     }
-  }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

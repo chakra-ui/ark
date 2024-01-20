@@ -5,6 +5,7 @@
       "isRequired": true,
       "description": "The options of the select"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -160,8 +161,13 @@
       "description": "The keys of the selected items"
     }
   },
-  "Item": { "item": { "type": "any", "isRequired": false } },
+  "Item": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -185,13 +191,27 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "ItemGroup": { "id": { "type": "string", "isRequired": true } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": {
+    "id": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "ValueText": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "placeholder": {
       "type": "string",
       "isRequired": false,
       "description": "Text to display when no value is selected."
     }
   },
-  "ItemGroupLabel": { "htmlFor": { "type": "string", "isRequired": true } }
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroupLabel": {
+    "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  }
 }

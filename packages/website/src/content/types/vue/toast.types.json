@@ -1,4 +1,7 @@
 {
+  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Group": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
   "Createer": {
     "placement": {
       "type": "Placement",
@@ -47,7 +50,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
@@ -81,5 +84,7 @@
       "isRequired": false,
       "description": "The z-index applied to each toast group"
     }
-  }
+  },
+  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

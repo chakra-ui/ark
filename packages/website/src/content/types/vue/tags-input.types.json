@@ -15,6 +15,7 @@
       "isRequired": false,
       "description": "Whether to allow tags to exceed max. In this case,\nwe'll attach `data-invalid` to the root"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -131,6 +132,14 @@
   "Item": {
     "index": { "type": "string | number", "isRequired": true },
     "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
-  }
+  },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemInput": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }
