@@ -1,7 +1,16 @@
-import { defineComponent, h, type Component, type IntrinsicElementAttributes } from 'vue'
+import {
+  defineComponent,
+  h,
+  type AllowedComponentProps,
+  type ComponentCustomProps,
+  type ExtractPropTypes,
+  type IntrinsicElementAttributes,
+  type VNodeProps,
+} from 'vue'
 import { Dynamic } from './dynamic'
 
 type DOMElements = keyof IntrinsicElementAttributes
+type ElementType = Parameters<typeof h>[0]
 
 export interface PolimoprhicProps {
   /**
@@ -10,7 +19,28 @@ export interface PolimoprhicProps {
   asChild?: boolean
 }
 
-const withAsChild = (component: Component) => {
+export type AsChildComponent<
+  Component extends ElementType,
+  P extends Record<string, unknown> = Record<never, never>,
+> = {
+  new (): {
+    $props: AllowedComponentProps &
+      ComponentCustomProps &
+      VNodeProps &
+      ExtractPropTypes<Component> &
+      (Component extends keyof IntrinsicElementAttributes
+        ? IntrinsicElementAttributes[Component]
+        : Record<never, never>) &
+      P &
+      PolimoprhicProps
+  }
+}
+
+export type HTMLPolymorphicComponents = {
+  [E in DOMElements]: AsChildComponent<E>
+}
+
+const withAsChild = (component: ElementType) => {
   const Polimoprhic = defineComponent({
     name: 'Polimoprhic',
     inheritAttrs: false,
@@ -28,10 +58,6 @@ const withAsChild = (component: Component) => {
   return Polimoprhic
 }
 
-export type HTMLPolymorphicComponents = {
-  [E in DOMElements]: any // TODO: fix this
-}
-
 export function jsxFactory() {
   const cache = new Map()
 
@@ -40,7 +66,7 @@ export function jsxFactory() {
       return withAsChild(argArray[0])
     },
     get(_, element) {
-      const asElement = element as unknown as Component
+      const asElement = element as unknown as ElementType
       if (!cache.has(asElement)) {
         cache.set(asElement, withAsChild(asElement))
       }
