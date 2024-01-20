@@ -40,6 +40,17 @@ export type HTMLPolymorphicComponents = {
   [E in DOMElements]: AsChildComponent<E>
 }
 
+export type HTMLPolymorphicProps<T extends ElementType> = Omit<
+  // If T is the keyof a DOM element (i.e. `img`) then need to obtain that element's attribute object to extract props.
+  // Otherwise, return T which could be a component (`DefineComponent` definition)
+  ExtractPropTypes<T extends DOMElements ? IntrinsicElementAttributes[T] : T>,
+  'ref'
+> & {
+  asChild?: boolean
+}
+
+export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
+
 const withAsChild = (component: ElementType) => {
   const Polimoprhic = defineComponent({
     name: 'Polimoprhic',
