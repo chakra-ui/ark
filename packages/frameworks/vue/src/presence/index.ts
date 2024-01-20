@@ -1,11 +1,12 @@
 // import { Presence as PresenceRoot, type PresenceProps } from './presence'
-import PresenceRoot, { type PresenceProps } from './PresenceRoot.vue'
+import PresenceRoot from './PresenceRoot.vue'
 import { PresenceProvider, usePresenceContext, type PresenceContext } from './presence-context'
 import {
   PresencePropsProvider,
   usePresencePropsContext,
   type PresencePropsContext,
 } from './presence-props-context'
+import type { PresenceProps } from './presence.props'
 import { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence'
 
 const Presence = Object.assign(PresenceRoot, {

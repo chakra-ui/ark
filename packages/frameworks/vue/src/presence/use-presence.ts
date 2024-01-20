@@ -1,9 +1,13 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { computed, ref, watch, type MaybeRef, type VNodeRef } from 'vue'
-import type { Optional } from '../types'
 
-export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
+export interface UsePresenceProps {
+  /**
+   * Whether the node is present (controlled by the user).
+   * @default undefined
+   */
+  present?: presence.Context['present']
   /**
    * Whether to enable lazy mounting
    * @default false

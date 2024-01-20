@@ -1,17 +1,17 @@
-<script lang="ts">
-import { type HTMLArkProps } from '../factory'
-import { type UsePresenceProps } from './use-presence'
-import type { Assign } from '../types'
-export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
-</script>
-
 <script setup lang="ts">
+import { withDefaults } from 'vue'
 import { ark } from '../factory'
 import { usePresence } from './use-presence'
-import { presenceProps, type PresenceEmits } from './presence.props'
+import type { PresenceEmits, PresenceProps } from './presence.props'
 
-const props = defineProps(presenceProps)
+const props = withDefaults(defineProps<PresenceProps>(), {
+  lazyMount: false,
+  unmountOnExit: false,
+})
 const emit = defineEmits<PresenceEmits>()
+const slots = defineSlots<{
+  default(): any
+}>()
 
 const api = usePresence(props, emit)
 </script>
@@ -23,6 +23,6 @@ const api = usePresence(props, emit)
     data-scope="presence"
     data-part="root"
   >
-    <slot v-if="$slots.default" />
+    <slot v-if="slots.default()" />
   </ark.div>
 </template>
