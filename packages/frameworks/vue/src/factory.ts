@@ -1,16 +1,13 @@
-import { mergeProps } from '@zag-js/vue'
 import {
-  Fragment,
-  cloneVNode,
   defineComponent,
   h,
   type AllowedComponentProps,
   type ComponentCustomProps,
   type ExtractPropTypes,
   type IntrinsicElementAttributes,
-  type VNode,
   type VNodeProps,
 } from 'vue'
+import { Dynamic } from './dynamic'
 
 type DOMElements = keyof IntrinsicElementAttributes
 type ElementType = Parameters<typeof h>[0]
@@ -44,8 +41,8 @@ export type HTMLPolymorphicComponents = {
 }
 
 const withAsChild = (component: ElementType) => {
-  const AsChildComponent = defineComponent({
-    name: 'AsChildComponent',
+  const Polimoprhic = defineComponent({
+    name: 'Polimoprhic',
     inheritAttrs: false,
     props: {
       asChild: {
@@ -54,36 +51,11 @@ const withAsChild = (component: ElementType) => {
       },
     },
     setup(props, { attrs, slots }) {
-      if (!slots.default) return null
       if (!props.asChild) return () => h(component, { ...attrs }, slots.default?.())
-      const childrens = renderSlotFragments(slots.default())
-      const [firstChildren, ...otherChildren] = childrens
-
-      if (Object.keys(attrs).length > 0) {
-        delete firstChildren.props?.ref
-        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})
-        const cloned = cloneVNode(firstChildren, mergedProps)
-        for (const prop in mergedProps) {
-          if (prop.startsWith('on')) {
-            cloned.props ||= {}
-            cloned.props[prop] = mergedProps[prop]
-          }
-        }
-        return childrens.length === 1 ? cloned : [cloned, ...otherChildren]
-      }
-      return childrens
+      return () => h(Dynamic, attrs, { default: slots.default })
     },
   })
-  return AsChildComponent
-}
-
-function renderSlotFragments(children?: VNode[]): VNode[] {
-  if (!children) return []
-  return children.flatMap((child) => {
-    if (child.type === Fragment) return renderSlotFragments(child.children as VNode[])
-
-    return [child]
-  })
+  return Polimoprhic
 }
 
 export function jsxFactory() {
