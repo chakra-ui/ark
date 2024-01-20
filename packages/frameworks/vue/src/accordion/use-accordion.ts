@@ -66,10 +66,10 @@ export const useAccordion = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onFocusChange: (details) => {
-        emit('focus-change', details)
+        emit('focusChange', details)
       },
       onValueChange: (details) => {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
     }),

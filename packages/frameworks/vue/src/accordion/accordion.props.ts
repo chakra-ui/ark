@@ -1,12 +1,12 @@
-import type { Context } from '@zag-js/accordion'
+import type { Context, FocusChangeDetails, ValueChangeDetails } from '@zag-js/accordion'
 import type { PropType } from 'vue'
 import { declareEmits } from '../utils'
 
-import type { UsePresenceProps } from '../presence/use-presence'
+import type { PresenceEmits, PresenceProps } from '../presence/presence.props'
 import type { BaseProps } from '../types'
 import type { UseAccordionProps } from './use-accordion'
 
-export interface AccordionRootProps extends BaseProps, UseAccordionProps, UsePresenceProps {}
+export interface AccordionRootProps extends BaseProps, UseAccordionProps, PresenceProps {}
 
 export const props = {
   collapsible: {
@@ -41,3 +41,18 @@ export const props = {
   },
 }
 export const emits = declareEmits(['focus-change', 'value-change', 'update:modelValue'])
+
+export type AccordionEmits = {
+  /**
+   * The callback fired when the focused accordion item changes.
+   */
+  focusChange: [details: FocusChangeDetails]
+  /**
+   * The callback fired when the state of opened/closed accordion items changes.
+   */
+  valueChange: [value: ValueChangeDetails]
+  /**
+   * The callback fired when the state of opened/closed accordion items changes.
+   */
+  'update:modelValue': [value: string[]]
+} & PresenceEmits

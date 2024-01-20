@@ -62,7 +62,11 @@ const value = ref(['React'])
     </Variant>
 
     <Variant title="Controlled">
-      <Accordion.Root v-model="value">
+      <Accordion.Root
+        v-model="value"
+        @focus-change="(details) => console.log('focus changed', details.value)"
+        @value-change="(value) => console.log('value changed', value)"
+      >
         <Accordion.Item v-for="item in items" :key="item" :value="item">
           <Accordion.ItemTrigger>{{ item }} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
