@@ -343,9 +343,6 @@ importers:
       jsdom:
         specifier: 23.0.1
         version: 23.0.1
-      lucide-react:
-        specifier: 0.309.0
-        version: 0.309.0(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -14837,6 +14834,7 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
