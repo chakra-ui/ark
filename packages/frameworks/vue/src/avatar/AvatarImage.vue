@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ark } from '../factory'
+import type { BaseProps } from '../types'
 import { useAvatarContext } from './avatar-context'
-import type { AvatarImageProps } from './avatar.props'
+
+export interface AvatarImageProps extends BaseProps {}
 
 defineProps<AvatarImageProps>()
 

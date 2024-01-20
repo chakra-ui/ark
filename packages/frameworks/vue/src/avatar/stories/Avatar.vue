@@ -2,7 +2,8 @@
 import { useForwardPropsEmits } from 'radix-vue'
 import { computed } from 'vue'
 import { AvatarFallback, AvatarImage, AvatarRoot } from '../'
-import type { AvatarEmits, AvatarRootProps } from '../avatar.props'
+import type { AvatarRootProps } from '../AvatarRoot.vue'
+import type { AvatarEmits } from '../avatar.emits'
 
 export interface AvatarProps extends AvatarRootProps {
   src?: string

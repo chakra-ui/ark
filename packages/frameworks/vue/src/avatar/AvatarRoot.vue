@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ark } from '../factory'
+import type { BaseProps } from '../types'
 import { AvatarProvider } from './avatar-context'
-import type { AvatarEmits, AvatarRootProps } from './avatar.props'
-import { useAvatar } from './use-avatar'
+import type { AvatarEmits } from './avatar.emits'
+import { useAvatar, type UseAvatarProps } from './use-avatar'
+
+export interface AvatarRootProps extends BaseProps, UseAvatarProps {}
 
 const props = defineProps<AvatarRootProps>()
 const emit = defineEmits<AvatarEmits>()
+
 const slots = defineSlots<{
   default(): any
 }>()

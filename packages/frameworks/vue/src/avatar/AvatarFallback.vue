@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ark } from '../factory'
+import type { BaseProps } from '../types'
 import { useAvatarContext } from './avatar-context'
-import type { AvatarFallbackProps } from './avatar.props'
+
+export interface AvatarFallbackProps extends BaseProps {}
 
 defineProps<AvatarFallbackProps>()
 const slots = defineSlots<{
