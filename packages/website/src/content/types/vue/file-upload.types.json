@@ -10,7 +10,6 @@
       "isRequired": false,
       "description": "Whether to allow drag and drop in the dropzone element"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -94,25 +93,13 @@
       "description": "Function to validate a file"
     }
   },
-  "Item": {
-    "file": { "type": "File", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Item": { "file": { "type": "File", "isRequired": true } },
   "ItemPreview": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "type": {
       "type": "string",
       "defaultValue": "'.*'",
       "isRequired": false,
       "description": "The file type to match against. Matches all file types by default."
     }
-  },
-  "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemPreviewImage": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

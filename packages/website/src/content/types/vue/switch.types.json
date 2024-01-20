@@ -1,6 +1,5 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -69,8 +68,5 @@
       "isRequired": false,
       "description": "The value of switch input. Useful for form submission."
     }
-  },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

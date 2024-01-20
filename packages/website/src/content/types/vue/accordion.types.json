@@ -1,6 +1,5 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
@@ -85,10 +84,6 @@
   },
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

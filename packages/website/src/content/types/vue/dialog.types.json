@@ -127,9 +127,7 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -153,9 +151,7 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Backdrop": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
@@ -178,8 +174,5 @@
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }
-  },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

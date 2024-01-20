@@ -1,6 +1,5 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -22,7 +21,5 @@
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
     }
-  },
-  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }
