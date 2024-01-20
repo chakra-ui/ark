@@ -1,15 +1,7 @@
-<script lang="ts">
-import { type AvatarProps } from './avatar.props'
-import { type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-export interface AvatarRootProps
-  extends /* @vue-ignore */ Assign<HTMLArkProps<'div'>, AvatarProps> {}
-</script>
-
 <script setup lang="ts">
 import { ark } from '../factory'
 import { AvatarProvider } from './avatar-context'
-import { type AvatarEmits } from './avatar.props'
+import type { AvatarEmits, AvatarRootProps } from './avatar.props'
 import { useAvatar } from './use-avatar'
 
 const props = defineProps<AvatarRootProps>()

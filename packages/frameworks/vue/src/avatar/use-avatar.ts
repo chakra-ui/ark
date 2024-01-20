@@ -2,15 +2,28 @@ import * as avatar from '@zag-js/avatar'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, ref, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
+export interface UseAvatarProps {
+  /**
+   * The document's text/writing direction.
+   */
+  dir?: avatar.Context['dir']
+  /**
+   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+   */
+  getRootNode?: avatar.Context['getRootNode']
+  /**
+   * The unique identifier of the machine.
+   */
+  id?: avatar.Context['id']
+}
+
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
-export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAvatarReturn => {
+export const useAvatar = (props: any, emit: CallableFunction): UseAvatarReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = ref(props)
+  const context = ref<UseAvatarProps>(props)
 
   const [state, send] = useMachine(
     avatar.machine({

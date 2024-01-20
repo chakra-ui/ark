@@ -1,19 +1,10 @@
-import type { Context, StatusChangeDetails } from '@zag-js/avatar'
+import type { StatusChangeDetails } from '@zag-js/avatar'
+import type { BaseProps } from '../types'
+import type { UseAvatarProps } from './use-avatar'
 
-export interface AvatarProps {
-  /**
-   * The document's text/writing direction.
-   */
-  dir?: Context['dir']
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: Context['getRootNode']
-  /**
-   * The unique identifier of the machine.
-   */
-  id?: Context['id']
-}
+export interface AvatarRootProps extends BaseProps, UseAvatarProps {}
+export interface AvatarImageProps extends BaseProps {} // not sure why adding src and alt prop breaks the AvatarImage component
+export interface AvatarFallbackProps extends BaseProps {}
 
 export type AvatarEmits = {
   /** Functional called when the image loading status changes. */
