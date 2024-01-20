@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
-import { FileIcon } from 'lucide-react'
 import { FileUpload } from '../'
 import './file-upload.css'
+import { FileIcon } from './icons'
 
 type FileUploadType = typeof FileUpload
 

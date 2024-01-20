@@ -1,3 +1,8 @@
+import type {
+  HighlightChangeDetails as TagsInputHighlightChangeDetails,
+  ValidityChangeDetails as TagsInputValidityChangeDetails,
+  ValueChangeDetails as TagsInputValueChangeDetails,
+} from '@zag-js/tags-input'
 import { TagsInput as TagsInputRoot, type TagsInputProps } from './tags-input'
 import { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
 import { useTagsInputContext, type TagsInputContext } from './tags-input-context'
@@ -43,6 +48,7 @@ export type {
   TagsInputClearTriggerProps,
   TagsInputContext,
   TagsInputControlProps,
+  TagsInputHighlightChangeDetails,
   TagsInputInputProps,
   TagsInputItemContext,
   TagsInputItemDeleteTriggerProps,
@@ -51,4 +57,6 @@ export type {
   TagsInputItemTextProps,
   TagsInputLabelProps,
   TagsInputProps,
+  TagsInputValidityChangeDetails,
+  TagsInputValueChangeDetails,
 }

@@ -1,3 +1,9 @@
+import type {
+  FocusChangeDetails as DatePickerFocusChangeDetails,
+  OpenChangeDetails as DatePickerOpenChangeDetails,
+  ValueChangeDetails as DatePickerValueChangeDetails,
+  ViewChangeDetails as DatePickerViewChangeDetails,
+} from '@zag-js/date-picker'
 import { DatePicker as DatePickerRoot, type DatePickerProps } from './date-picker'
 import {
   DatePickerClearTrigger,
@@ -96,10 +102,12 @@ export type {
   DatePickerContentProps,
   DatePickerContext,
   DatePickerControlProps,
+  DatePickerFocusChangeDetails,
   DatePickerInputProps,
   DatePickerLabelProps,
   DatePickerMonthSelectProps,
   DatePickerNextTriggerProps,
+  DatePickerOpenChangeDetails,
   DatePickerPositionerProps,
   DatePickerPrevTriggerProps,
   DatePickerProps,
@@ -114,6 +122,8 @@ export type {
   DatePickerTableProps,
   DatePickerTableRowProps,
   DatePickerTriggerProps,
+  DatePickerValueChangeDetails,
+  DatePickerViewChangeDetails,
   DatePickerViewContext,
   DatePickerViewControlProps,
   DatePickerViewProps,

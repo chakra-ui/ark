@@ -1,3 +1,9 @@
+import type {
+  HighlightChangeDetails as ComboboxHighlightChangeDetails,
+  InputValueChangeDetails as ComboboxInputValueChangeDetails,
+  OpenChangeDetails as ComboboxOpenChangeDetails,
+  ValueChangeDetails as ComboboxValueChangeDetails,
+} from '@zag-js/combobox'
 import type { CollectionItem } from '../types'
 import { Combobox as ComboboxRoot, type ComboboxProps } from './combobox'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
@@ -55,14 +61,18 @@ export type {
   ComboboxContentProps,
   ComboboxContext,
   ComboboxControlProps,
+  ComboboxHighlightChangeDetails,
   ComboboxInputProps,
+  ComboboxInputValueChangeDetails,
   ComboboxItemGroupLabelProps,
   ComboboxItemGroupProps,
   ComboboxItemIndicatorProps,
   ComboboxItemProps,
   ComboboxItemTextProps,
   ComboboxLabelProps,
+  ComboboxOpenChangeDetails,
   ComboboxPositionerProps,
   ComboboxProps,
   ComboboxTriggerProps,
+  ComboboxValueChangeDetails,
 }

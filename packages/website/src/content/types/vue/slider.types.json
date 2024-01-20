@@ -94,7 +94,7 @@
       "description": "The orientation of the slider"
     },
     "origin": {
-      "type": "'start' | 'center'",
+      "type": "'center' | 'start'",
       "isRequired": false,
       "description": "- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
     },

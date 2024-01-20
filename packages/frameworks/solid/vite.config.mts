@@ -11,7 +11,7 @@ export default defineConfig({
     deps: {
       optimizer: {
         web: {
-          include: ['solid-js'],
+          exclude: ['solid-js'],
         },
       },
     },
@@ -23,8 +23,8 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
     },
     css: false,
-  },
-  resolve: {
-    conditions: ['development', 'browser'],
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
+    },
   },
 })

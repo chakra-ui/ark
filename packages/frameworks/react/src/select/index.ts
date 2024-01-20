@@ -1,3 +1,8 @@
+import type {
+  HighlightChangeDetails as SelectHighlightChangeDetails,
+  OpenChangeDetails as SelectOpenChangeDetails,
+  ValueChangeDetails as SelectValueChangeDetails,
+} from '@zag-js/select'
 import type { CollectionItem } from '../types'
 import { Select as SelectRoot, type SelectProps } from './select'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
@@ -58,6 +63,7 @@ export type {
   SelectContentProps,
   SelectContext,
   SelectControlProps,
+  SelectHighlightChangeDetails,
   SelectIndicatorProps,
   SelectItemContext,
   SelectItemGroupLabelProps,
@@ -66,8 +72,10 @@ export type {
   SelectItemProps,
   SelectItemTextProps,
   SelectLabelProps,
+  SelectOpenChangeDetails,
   SelectPositionerProps,
   SelectProps,
   SelectTriggerProps,
+  SelectValueChangeDetails,
   SelectValueTextProps,
 }

@@ -1,3 +1,8 @@
+import type {
+  FileAcceptDetails as FileUploadFileAcceptDetails,
+  FileChangeDetails as FileUploadFileChangeDetails,
+  FileRejectDetails as FileUploadFileRejectDetails,
+} from '@zag-js/file-upload'
 import { FileUpload as FileUploadRoot, type FileUploadProps } from './file-upload'
 import { useFileUploadContext, type FileUploadContext } from './file-upload-context'
 import { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
@@ -51,6 +56,9 @@ export {
 export type {
   FileUploadContext,
   FileUploadDropzoneProps,
+  FileUploadFileAcceptDetails,
+  FileUploadFileChangeDetails,
+  FileUploadFileRejectDetails,
   FileUploadItemDeleteTriggerProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,

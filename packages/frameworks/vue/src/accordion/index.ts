@@ -1,4 +1,7 @@
-// import { Accordion as AccordionRoot, type AccordionProps } from './accordion'
+import type {
+  FocusChangeDetails as AccordionFocusChangeDetails,
+  ValueChangeDetails as AccordionValueChangeDetails,
+} from '@zag-js/accordion'
 import AccordionRoot from './AccordionRoot.vue'
 import { useAccordionContext, type AccordionContext } from './accordion-context'
 import { AccordionItem, type AccordionItemProps } from './accordion-item'
@@ -34,6 +37,7 @@ export {
 }
 export type {
   AccordionContext,
+  AccordionFocusChangeDetails,
   AccordionItemContentProps,
   AccordionItemContext,
   AccordionItemIndicatorProps,
@@ -42,4 +46,5 @@ export type {
   AccordionRootEmits,
   AccordionRootModelValue,
   AccordionRootProps,
+  AccordionValueChangeDetails,
 }

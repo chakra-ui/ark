@@ -6,14 +6,32 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Refactored `Progress` component to use `div` instead of `nav`.
+
+## [1.3.0] - 2024-01-17
+
 ### Added
 
 - Added the `Progress` component.
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+- Redesign `Portal` component to support `getRootNode` and `disabled` props
+
+### Changed
+
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
 
 ### Fixed
 
 - Added missing `placeholder` prop to `SelectValueTextProps` type.
 - Changed `PopoverDescriptionProps` type from `div` to `p`
+- Fixed multiple rerenders on `Select` component with Next.js or Remix `useSearchParams`
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using controlled context
+- Resolved an issue that `Menu` option item could not be activated by keyboard
 
 ## [1.2.1] - 2023-12-13
 
@@ -26,7 +44,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added the `ToastGroup` component.
-- Added entrypoint for the  `ark` factory at `@ark-ui/react/factory`
+- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
 
 ### Changed
 

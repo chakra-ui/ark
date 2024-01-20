@@ -7,14 +7,34 @@ description:
 
 ## [Unreleased]
 
+## [1.3.0] - 2024-01-17
+
 ### Added
 
 - Added the `Progress` component.
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or
+  `DialogOpenChangeDetails`
 
 ### Changed
 
 - Changed `Popover.Description` tag from `div` to `p`
 - Changed `PopoverDescriptionProps` type from `div` to `p`
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`,
+  `SegmentGroup`, and `Tabs`.
+
+### Fixed
+
+- Fixed multiple rerenders on `Select` component using search params
+- Fixed reactivity with collection in `Select` and `Combobox` components
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in
+  combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the
+  menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using
+  controlled context
+- Resolved an issue that `asChild` did not work properly with `svg` elements.
+- Resolved an issue that `Menu` option item could not be activated by keyboard
 
 ## [1.2.0] - 2023-12-13
 

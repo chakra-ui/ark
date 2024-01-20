@@ -1,3 +1,4 @@
+import type { ValueChangeDetails as RadioGroupValueChangeDetails } from '@zag-js/radio-group'
 import { RadioGroup as RadioGroupRoot, type RadioGroupProps } from './radio-group'
 import { useRadioGroupContext, type RadioGroupContext } from './radio-group-context'
 import { RadioGroupIndicator, type RadioGroupIndicatorProps } from './radio-group-indicator'
@@ -35,4 +36,5 @@ export type {
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
   RadioGroupProps,
+  RadioGroupValueChangeDetails,
 }

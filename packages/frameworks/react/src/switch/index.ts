@@ -1,3 +1,4 @@
+import type { CheckedChangeDetails as SwitchCheckedChangeDetails } from '@zag-js/switch'
 import { Switch as SwitchRoot, type SwitchProps } from './switch'
 import { useSwitchContext, type SwitchContext } from './switch-context'
 import { SwitchControl, type SwitchControlProps } from './switch-control'
@@ -13,4 +14,11 @@ const Switch = Object.assign(SwitchRoot, {
 
 export { Switch, SwitchControl, SwitchLabel, SwitchThumb, useSwitchContext }
 
-export type { SwitchContext, SwitchControlProps, SwitchLabelProps, SwitchProps, SwitchThumbProps }
+export type {
+  SwitchCheckedChangeDetails,
+  SwitchContext,
+  SwitchControlProps,
+  SwitchLabelProps,
+  SwitchProps,
+  SwitchThumbProps,
+}

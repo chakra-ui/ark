@@ -1,3 +1,7 @@
+import type {
+  ItemLabelDetails as PaginationItemLabelDetails,
+  PageChangeDetails as PaginationPageChangeDetails,
+} from '@zag-js/pagination'
 import { Pagination as PaginationRoot, type PaginationProps } from './pagination'
 import { usePaginationContext, type PaginationContext } from './pagination-context'
 import { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
@@ -24,8 +28,10 @@ export {
 export type {
   PaginationContext,
   PaginationEllipsisProps,
+  PaginationItemLabelDetails,
   PaginationItemProps,
   PaginationNextTriggerProps,
+  PaginationPageChangeDetails,
   PaginationPrevTriggerProps,
   PaginationProps,
 }

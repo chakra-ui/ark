@@ -1,3 +1,4 @@
+import type { OpenChangeDetails as HoverCardOpenChangeDetails } from '@zag-js/color-picker'
 import { HoverCard as HoverCardRoot, type HoverCardProps } from './hover-card'
 import { HoverCardArrow, type HoverCardArrowProps } from './hover-card-arrow'
 import { HoverCardArrowTip, type HoverCardArrowTipProps } from './hover-card-arrow-tip'
@@ -30,6 +31,7 @@ export type {
   HoverCardArrowTipProps,
   HoverCardContentProps,
   HoverCardContext,
+  HoverCardOpenChangeDetails,
   HoverCardPositionerProps,
   HoverCardProps,
   HoverCardTriggerProps,

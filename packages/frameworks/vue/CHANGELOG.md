@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.10.0] - 2024-01-17
+
 ### Added
 
 - Added `DatePicker` component
@@ -14,6 +16,8 @@ description: All notable changes to this project will be documented in this file
 - Added `v-model:open` for `Dialog` component
 - Added `v-model:open` for `HoverCard` component
 - Added `v-model:open` for `Popover` component
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
 
 ### Changed
 
@@ -34,6 +38,7 @@ description: All notable changes to this project will be documented in this file
 - Revised `TagsInput` component
 - Revised `Toast` component
 - Revised `ToggleGroup` component
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
 
 ### Fixed
 
@@ -54,7 +59,12 @@ description: All notable changes to this project will be documented in this file
 - Fixed lazy mounting in `Menu` component
 - Fixed lazy mounting in `Popover` component
 - Fixed lazy mounting in `Tabs` component
+- Fixed multiple rerenders on `Select` component using search params
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using controlled context
 - Resolved an issue where `Tooltip` component would not handle open control state
+- Resolved an issue that `Menu` option item could not be activated by keyboard
 
 ## [0.9.0] - 2023-12-14
 
