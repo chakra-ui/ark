@@ -45,7 +45,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'link' | 'button'",
+      "type": "'button' | 'link'",
       "defaultValue": "\"button\"",
       "isRequired": false,
       "description": "The type of the trigger element"

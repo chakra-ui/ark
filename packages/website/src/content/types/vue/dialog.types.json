@@ -67,11 +67,6 @@
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -96,8 +91,9 @@
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
     "present": {
       "type": "boolean",
+      "defaultValue": "undefined",
       "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the node is present (controlled by the user)."
     },
     "preventScroll": {
       "type": "boolean",
@@ -136,15 +132,11 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "present": {
       "type": "boolean",
+      "defaultValue": "undefined",
       "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the node is present (controlled by the user)."
     },
     "unmountOnExit": {
       "type": "boolean",
@@ -162,15 +154,11 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "present": {
       "type": "boolean",
+      "defaultValue": "undefined",
       "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the node is present (controlled by the user)."
     },
     "unmountOnExit": {
       "type": "boolean",

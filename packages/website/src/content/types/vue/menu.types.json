@@ -53,11 +53,6 @@
       "description": "Whether to loop the keyboard navigation."
     },
     "modelValue": { "type": "Record<string, string | string[]>", "isRequired": false },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
@@ -96,8 +91,9 @@
     },
     "present": {
       "type": "boolean",
+      "defaultValue": "undefined",
       "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the node is present (controlled by the user)."
     },
     "unmountOnExit": {
       "type": "boolean",
@@ -136,22 +132,22 @@
   },
   "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
     "present": {
       "type": "boolean",
+      "defaultValue": "undefined",
       "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the node is present (controlled by the user)."
     },
     "unmountOnExit": {
       "type": "boolean",
