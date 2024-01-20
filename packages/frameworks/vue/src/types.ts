@@ -23,3 +23,10 @@ export type VueProps<T> = {
 }
 
 export type CollectionItem = string | object
+
+export type BaseProps = {
+  /**
+   * Render as a different element type.
+   */
+  asChild?: boolean | undefined
+}
