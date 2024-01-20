@@ -539,9 +539,6 @@ importers:
       jsdom:
         specifier: 23.0.1
         version: 23.0.1
-      lucide-solid:
-        specifier: 0.309.0
-        version: 0.309.0(solid-js@1.8.11)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -14843,14 +14840,6 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-
-  /lucide-solid@0.309.0(solid-js@1.8.11):
-    resolution: {integrity: sha512-JrXbvMdE9eywW/iEVXTDZvrYXQBIrYcQzB9wGJ8hIZjxY552l1SOsA0NKi1SJlg4pTtHGakmtX3xPKyuwphCfQ==}
-    peerDependencies:
-      solid-js: ^1.4.7
-    dependencies:
-      solid-js: 1.8.11
-    dev: true
 
   /lucide-vue-next@0.309.0(vue@3.4.14):
     resolution: {integrity: sha512-MRrJOV1uyAxHaCqqgwRcLN/8CwlKCwuz7MNdWo2OG/jjrGI+7wLJeJOYJ8lp/61Fps3Mat/k7+0WIskwbGhqTA==}
