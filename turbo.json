@@ -1,18 +1,18 @@
 {
-	"$schema": "https://turborepo.org/schema.json",
-	"pipeline": {
-		"typedocs": {
-			"cache": false
-		},
-		"storydocs": {
-			"cache": false
-		},
-		"build": {
-			"outputs": ["dist/**", "styled-system/**"]
-		},
-		"lint": {},
-		"test:ci": {},
-		"typecheck": {},
-		"format": {}
-	}
+  "$schema": "https://turborepo.org/schema.json",
+  "pipeline": {
+    "typedocs": {
+      "cache": false
+    },
+    "storydocs": {
+      "cache": false
+    },
+    "build": {
+      "outputs": ["dist/**", "styled-system/**"]
+    },
+    "lint": {},
+    "test:ci": {},
+    "typecheck": {},
+    "format": {}
+  }
 }
