@@ -1,9 +1,6 @@
-import { fileUploadAnatomy } from '@ark-ui/anatomy'
-import { render } from '@testing-library/react'
-import { getExports, getParts } from '../setup-test'
-import { FileUpload, type FileUploadProps } from './'
+import { FileUpload, type FileUploadProps } from '../'
 
-const ComponentUnderTest = (props: FileUploadProps) => (
+export const ComponentUnderTest = (props: FileUploadProps) => (
   <FileUpload.Root {...props}>
     {(api) => {
       if (api.files.length < 1) api.setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
@@ -35,15 +32,3 @@ const ComponentUnderTest = (props: FileUploadProps) => (
     }}
   </FileUpload.Root>
 )
-
-describe('FileUpload', () => {
-  it.each(getParts(fileUploadAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
-    expect(FileUpload[part]).toBeDefined()
-  })
-})
