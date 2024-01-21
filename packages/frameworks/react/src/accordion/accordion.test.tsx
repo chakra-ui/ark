@@ -1,7 +1,8 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
+import { describe, vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import { Accordion, type AccordionProps } from './'
 
@@ -27,15 +28,26 @@ const ComponentUnderTest = (props: AccordionProps) => {
   )
 }
 
-describe('Accordion', () => {
+describe('Accordion / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
+
+  render(<ComponentUnderTest />)
+
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
     expect(Accordion[part]).toBeDefined()
+  })
+})
+
+describe('Accordion', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should not have an expanded item by default', async () => {
