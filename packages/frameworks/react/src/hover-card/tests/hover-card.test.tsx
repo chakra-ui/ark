@@ -1,36 +1,32 @@
 import { hoverCardAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Portal } from '../portal'
-import { getExports, getParts } from '../setup-test'
-import { HoverCard, type HoverCardProps } from './'
+import { HoverCard } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: HoverCardProps) => (
-  <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
-    <HoverCard.Trigger>Hover me</HoverCard.Trigger>
-    <Portal>
-      <HoverCard.Positioner data-testid="positioner">
-        <HoverCard.Content>
-          <HoverCard.Arrow>
-            <HoverCard.ArrowTip />
-          </HoverCard.Arrow>
-          Content
-        </HoverCard.Content>
-      </HoverCard.Positioner>
-    </Portal>
-  </HoverCard.Root>
-)
+describe('HoverCard / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('HoverCard', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
     expect(HoverCard[part]).toBeDefined()
+  })
+})
+
+describe('HoverCard', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should open on hover', async () => {
