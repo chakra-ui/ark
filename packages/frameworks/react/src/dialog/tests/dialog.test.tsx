@@ -1,36 +1,32 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Portal } from '../portal'
-import { getExports, getParts } from '../setup-test'
-import { Dialog, type DialogProps } from './'
+import { Dialog } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: DialogProps) => (
-  <Dialog.Root {...props}>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner data-testid="positioner">
-        <Dialog.Content>
-          <Dialog.Title>Dialog Title</Dialog.Title>
-          <Dialog.Description>Dialog Description</Dialog.Description>
-          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Portal>
-  </Dialog.Root>
-)
+describe('Dialog / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Dialog', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
     expect(Dialog[part]).toBeDefined()
+  })
+})
+
+describe('Dialog', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should show dialog content when opened', async () => {
