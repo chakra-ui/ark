@@ -1,50 +1,31 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Carousel, type CarouselProps } from './'
+import { Carousel } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: CarouselProps) => {
-  const images = [
-    'https://tinyurl.com/5b6ka8jd',
-    'https://tinyurl.com/7rmccdn5',
-    'https://tinyurl.com/59jxz9uu',
-  ]
-  return (
-    <Carousel.Root {...props}>
-      <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
-      </Carousel.Control>
-      <Carousel.IndicatorGroup>
-        {images.map((_, index) => (
-          <Carousel.Indicator key={index} index={index} data-testid="indicator">
-            {index + 1}
-          </Carousel.Indicator>
-        ))}
-      </Carousel.IndicatorGroup>
-      <Carousel.Viewport>
-        <Carousel.ItemGroup>
-          {images.map((image, index) => (
-            <Carousel.Item key={index} index={index} data-testid="item">
-              <img src={image} />
-            </Carousel.Item>
-          ))}
-        </Carousel.ItemGroup>
-      </Carousel.Viewport>
-    </Carousel.Root>
-  )
-}
+describe('Date Picker / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Carousel', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(carouselAnatomy))('should export %s', async (part) => {
     expect(Carousel[part]).toBeDefined()
+  })
+})
+
+describe('Carousel', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should have the correct disabled / enabled states for control buttons', async () => {
