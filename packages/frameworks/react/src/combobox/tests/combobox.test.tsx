@@ -1,61 +1,32 @@
 import { comboboxAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Portal } from '..'
-import { getExports, getParts } from '../setup-test'
-import type { Optional } from '../types'
-import { Combobox, type ComboboxProps } from './'
+import { Combobox } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-interface Item {
-  label: string
-  value: string
-  disabled?: boolean
-}
+describe('Combobox / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
-  return (
-    <Combobox.Root items={items} {...props}>
-      <Combobox.Label>Framework</Combobox.Label>
-      <Combobox.Control>
-        <Combobox.Input data-testid="input" />
-        <Combobox.Trigger data-testid="trigger">Open</Combobox.Trigger>
-        <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
-      </Combobox.Control>
-      <Portal>
-        <Combobox.Positioner data-testid="positioner">
-          <Combobox.Content>
-            <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
-              {items.map((item) => (
-                <Combobox.Item key={item.value} item={item}>
-                  <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
-          </Combobox.Content>
-        </Combobox.Positioner>
-      </Portal>
-    </Combobox.Root>
-  )
-}
+  render(<ComponentUnderTest />)
 
-describe('Combobox', () => {
   it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
     expect(Combobox[part]).toBeDefined()
+  })
+})
+
+describe('Combobox', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should show options on click', async () => {
