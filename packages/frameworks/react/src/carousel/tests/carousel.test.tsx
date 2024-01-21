@@ -6,7 +6,7 @@ import { Carousel } from '../'
 import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Date Picker / Parts & Exports', () => {
+describe('Carousel / Parts & Exports', () => {
   afterAll(() => {
     cleanup()
   })

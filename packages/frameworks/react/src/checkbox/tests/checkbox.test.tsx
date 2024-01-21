@@ -1,28 +1,33 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { useState } from 'react'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { Checkbox, type CheckboxProps } from './'
+import { Checkbox } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
+import { ControlledComponentUnderTest } from './controlled'
 
-const ComponentUnderTest = (props: CheckboxProps) => (
-  <Checkbox.Root {...props}>
-    <Checkbox.Label>Checkbox</Checkbox.Label>
-    <Checkbox.Control data-testid="control" />
-    <Checkbox.Indicator>Indicator</Checkbox.Indicator>
-  </Checkbox.Root>
-)
+describe('Checkbox / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Checkbox', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
     expect(Checkbox[part]).toBeDefined()
+  })
+})
+
+describe('Checkbox', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should handle check and unchecked', async () => {
@@ -55,16 +60,6 @@ describe('Checkbox', () => {
   })
 
   it('should allow controlled usage', async () => {
-    const ControlledComponentUnderTest = () => {
-      const [checked, setChecked] = useState(false)
-      return (
-        <>
-          <button onClick={() => setChecked(true)}>set checked</button>
-          <ComponentUnderTest checked={checked} />
-        </>
-      )
-    }
-
     render(<ControlledComponentUnderTest />)
 
     const checkbox = screen.getByRole('checkbox')
