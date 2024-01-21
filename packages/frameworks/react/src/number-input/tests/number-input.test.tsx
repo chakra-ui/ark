@@ -6,7 +6,7 @@ import { NumberInput } from '../'
 import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Carousel / Parts & Exports', () => {
+describe('NumberInput / Parts & Exports', () => {
   afterAll(() => {
     cleanup()
   })
