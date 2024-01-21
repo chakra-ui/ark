@@ -1,5 +1,6 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
@@ -109,15 +110,26 @@ const ComponentUnderTest = (props: DatePickerProps) => (
   </DatePicker.Root>
 )
 
-describe('Date Picker', () => {
+describe('Date Picker / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
+
+  render(<ComponentUnderTest />)
+
   it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
     expect(DatePicker[part]).toBeDefined()
+  })
+})
+
+describe('Date Picker', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should be able to lazy mount', async () => {
