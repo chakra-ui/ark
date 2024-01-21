@@ -11,7 +11,7 @@ import { NestedMenuComponentUnderTest } from './nested-menu'
 import { OptionGroupsComponentUnderTest } from './option-groups'
 import { RenderPropComponentUnderTest } from './render-prop'
 
-describe.skip('Carousel / Parts & Exports', () => {
+describe.skip('Menu / Parts & Exports', () => {
   afterAll(() => {
     cleanup()
   })

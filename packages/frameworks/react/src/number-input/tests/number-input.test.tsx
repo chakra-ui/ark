@@ -1,30 +1,31 @@
 import { numberInputAnatomy } from '@ark-ui/anatomy'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { NumberInput, type NumberInputProps } from './'
+import { NumberInput } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: NumberInputProps) => (
-  <NumberInput.Root {...props}>
-    <NumberInput.Label>Label</NumberInput.Label>
-    <NumberInput.Input />
-    <NumberInput.Scrubber />
-    <NumberInput.Control>
-      <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
-      <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
-    </NumberInput.Control>
-  </NumberInput.Root>
-)
+describe('Carousel / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('NumberInput', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
     expect(NumberInput[part]).toBeDefined()
+  })
+})
+
+describe('NumberInput', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should handle wheel event when allowMouseWheel is true', async () => {
