@@ -1,57 +1,32 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Editable, type EditableProps } from './'
+import { Editable } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
+import { ControlledComponentUnderTest } from './controlled'
 
-const ComponentUnderTest = (props: EditableProps) => (
-  <Editable.Root placeholder="Placeholder" {...props}>
-    <Editable.Label>Label</Editable.Label>
-    <Editable.Area>
-      <Editable.Input />
-      <Editable.Preview />
-    </Editable.Area>
-    <Editable.Control>
-      <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
-      <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
-      <Editable.EditTrigger>Edit</Editable.EditTrigger>
-    </Editable.Control>
-  </Editable.Root>
-)
+describe('Editable / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-const ControlledComponentUnderTest = (props: EditableProps) => (
-  <Editable.Root placeholder="Placeholder" {...props}>
-    {(api) => (
-      <>
-        <Editable.Label>Label</Editable.Label>
-        <Editable.Area>
-          <Editable.Input />
-          <Editable.Preview />
-        </Editable.Area>
-        <Editable.Control>
-          {api.isEditing ? (
-            <>
-              <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
-              <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
-            </>
-          ) : (
-            <Editable.EditTrigger>Edit</Editable.EditTrigger>
-          )}
-        </Editable.Control>
-      </>
-    )}
-  </Editable.Root>
-)
+  render(<ComponentUnderTest />)
 
-describe('Editable', () => {
   it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(editableAnatomy))('should export %s', async (part) => {
     expect(Editable[part]).toBeDefined()
+  })
+})
+
+describe('Editable', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should render controlled component', async () => {
