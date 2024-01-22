@@ -1,5 +1,4 @@
 import type { OpenChangeDetails as PopoverOpenChangeDetails } from '@zag-js/popover'
-import { Popover as PopoverRoot, type PopoverProps } from './popover'
 import { PopoverAnchor, type PopoverAnchorProps } from './popover-anchor'
 import { PopoverArrow, type PopoverArrowProps } from './popover-arrow'
 import { PopoverArrowTip, type PopoverArrowTipProps } from './popover-arrow-tip'
@@ -9,10 +8,11 @@ import { usePopoverContext, type PopoverContext } from './popover-context'
 import { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
 import { PopoverIndicator, type PopoverIndicatorProps } from './popover-indicator'
 import { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
+import { PopoverRoot, type PopoverRootProps } from './popover-root'
 import { PopoverTitle, type PopoverTitleProps } from './popover-title'
 import { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
 
-const Popover = Object.assign(PopoverRoot, {
+export const Popover = {
   Root: PopoverRoot,
   Anchor: PopoverAnchor,
   Arrow: PopoverArrow,
@@ -24,10 +24,9 @@ const Popover = Object.assign(PopoverRoot, {
   Positioner: PopoverPositioner,
   Title: PopoverTitle,
   Trigger: PopoverTrigger,
-})
+}
 
 export {
-  Popover,
   PopoverAnchor,
   PopoverArrow,
   PopoverArrowTip,
@@ -36,6 +35,7 @@ export {
   PopoverDescription,
   PopoverIndicator,
   PopoverPositioner,
+  PopoverRoot,
   PopoverTitle,
   PopoverTrigger,
   usePopoverContext,
@@ -52,7 +52,7 @@ export type {
   PopoverIndicatorProps,
   PopoverOpenChangeDetails,
   PopoverPositionerProps,
-  PopoverProps,
+  PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
 }

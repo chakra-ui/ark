@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
-import { HoverCard, type HoverCardProps } from './'
+import { HoverCard, type HoverCardRootProps } from './'
 
-const ComponentUnderTest = (props: HoverCardProps) => (
+const ComponentUnderTest = (props: HoverCardRootProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>
     <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Portal>

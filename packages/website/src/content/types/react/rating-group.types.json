@@ -1,4 +1,12 @@
 {
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "allowHalf": {
       "type": "boolean",
@@ -82,14 +90,6 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
-  },
-  "Item": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
   },
   "Label": {
     "asChild": {

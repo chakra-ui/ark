@@ -1,14 +1,11 @@
-import { ChevronDownIcon } from 'lucide-solid'
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Accordion } from '../'
 import './accordion.css'
+import { ChevronDownIcon } from './icons'
 
-type AccordionType = typeof Accordion
-
-const meta: Meta<AccordionType> = {
+const meta: Meta = {
   title: 'Accordion',
-  component: Accordion,
 }
 
 export default meta

@@ -4,11 +4,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Dialog } from '../'
 import './dialog.css'
 
-type DialogType = typeof Dialog
-
-const meta: Meta<DialogType> = {
+const meta: Meta = {
   title: 'Dialog',
-  component: Dialog,
 }
 
 export default meta

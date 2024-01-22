@@ -2,9 +2,9 @@ import { tooltipAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { Tooltip, type TooltipProps } from './'
+import { Tooltip, type TooltipRootProps } from './'
 
-const ComponentUnderTest = (props: TooltipProps) => (
+const ComponentUnderTest = (props: TooltipRootProps) => (
   <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
     <Tooltip.Trigger>hover me</Tooltip.Trigger>
     <Tooltip.Positioner>

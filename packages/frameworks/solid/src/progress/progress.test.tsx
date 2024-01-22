@@ -1,9 +1,9 @@
 import { progressAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import { getExports, getParts } from '../setup-test'
-import { Progress, type ProgressProps } from './'
+import { Progress, type ProgressRootProps } from './'
 
-const ComponentUnderTest = (props: ProgressProps) => (
+const ComponentUnderTest = (props: ProgressRootProps) => (
   <Progress.Root {...props}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />

@@ -1,4 +1,5 @@
 {
+  "Area": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
@@ -135,7 +136,6 @@
       "description": "The value of the editable in both edit and preview mode"
     }
   },
-  "Area": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Control": { "as": { "type": "ValidComponent", "isRequired": false } },

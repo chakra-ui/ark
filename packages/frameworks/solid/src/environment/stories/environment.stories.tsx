@@ -2,11 +2,8 @@ import { createEffect, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Environment, useEnvironmentContext } from '../'
 
-type EnvironmentType = typeof Environment
-
-const meta: Meta<EnvironmentType> = {
+const meta: Meta = {
   title: 'Environment',
-  component: Environment,
 }
 
 export default meta
@@ -24,7 +21,7 @@ const PrintEnvironment = () => {
 }
 
 export const Basic = () => (
-  <Environment.Root>
+  <Environment>
     <PrintEnvironment />
-  </Environment.Root>
+  </Environment>
 )

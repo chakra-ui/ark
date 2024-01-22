@@ -3,9 +3,9 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
 import { getExports, getParts } from '../setup-test'
-import { TagsInput, type TagsInputProps } from './'
+import { TagsInput, type TagsInputRootProps } from './'
 
-const ComponentUnderTest = (props: TagsInputProps) => {
+const ComponentUnderTest = (props: TagsInputRootProps) => {
   return (
     <TagsInput.Root value={['react', 'solid', 'vue']} {...props}>
       {(api) => (

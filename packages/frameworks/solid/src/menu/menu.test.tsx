@@ -5,9 +5,9 @@ import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { vi } from 'vitest'
 import { getParts } from '../setup-test'
-import { Menu, type MenuProps } from './'
+import { Menu, type MenuRootProps } from './'
 
-const ComponentUnderTest = (props: MenuProps) => (
+const ComponentUnderTest = (props: MenuRootProps) => (
   <Menu.Root {...props}>
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner data-testid="positioner">

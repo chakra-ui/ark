@@ -2,9 +2,9 @@ import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { Pagination, type PaginationProps } from './'
+import { Pagination, type PaginationRootProps } from './'
 
-const ComponentUnderTest = (props: PaginationProps) => (
+const ComponentUnderTest = (props: PaginationRootProps) => (
   <Pagination.Root {...props}>
     {({ pages }) => (
       <>

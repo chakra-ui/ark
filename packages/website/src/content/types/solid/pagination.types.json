@@ -1,4 +1,9 @@
 {
+  "Item": {
+    "type": { "type": "'page'", "isRequired": true },
+    "value": { "type": "number", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false }
+  },
   "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
     "as": { "type": "ValidComponent", "isRequired": false },
@@ -50,11 +55,6 @@
       "isRequired": false,
       "description": "The type of the trigger element"
     }
-  },
-  "Item": {
-    "type": { "type": "'page'", "isRequired": true },
-    "value": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
   },
   "Ellipsis": {
     "index": { "type": "number", "isRequired": true },

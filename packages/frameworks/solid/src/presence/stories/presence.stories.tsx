@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Presence } from '../'
 import './presence.css'
 
-type PresenceType = typeof Presence
-
-const meta: Meta<PresenceType> = {
+const meta: Meta = {
   title: 'Presence',
-  component: Presence,
 }
 
 export default meta

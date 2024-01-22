@@ -1,4 +1,27 @@
 {
+  "Item": {
+    "id": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The `id` of the menu item option."
+    },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    }
+  },
   "Root": {
     "anchorPoint": {
       "type": "Point",
@@ -108,29 +131,6 @@
       "type": "Record<string, string | string[]>",
       "isRequired": false,
       "description": "The values of radios and checkboxes in the menu."
-    }
-  },
-  "Item": {
-    "id": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The `id` of the menu item option."
-    },
-    "as": { "type": "ValidComponent", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
   "Arrow": { "as": { "type": "ValidComponent", "isRequired": false } },

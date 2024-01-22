@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
 import { getParts } from '../setup-test'
-import { Menu, type MenuProps } from './'
+import { Menu, type MenuRootProps } from './'
 
-const ComponentUnderTest = (props: MenuProps) => (
+const ComponentUnderTest = (props: MenuRootProps) => (
   <Menu.Root {...props}>
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner data-testid="positioner">

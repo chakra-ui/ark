@@ -1,4 +1,8 @@
 {
+  "Item": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -199,10 +203,6 @@
       "isRequired": false,
       "description": "The keys of the selected items"
     }
-  },
-  "Item": {
-    "as": { "type": "ValidComponent", "isRequired": false },
-    "item": { "type": "any", "isRequired": false }
   },
   "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },

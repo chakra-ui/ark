@@ -1,14 +1,11 @@
 import type { Meta } from '@storybook/react'
-import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Accordion } from '../'
 import './accordion.css'
+import { ChevronDownIcon } from './icons'
 
-type AccordionType = typeof Accordion
-
-const meta: Meta<AccordionType> = {
+const meta: Meta = {
   title: 'Accordion',
-  component: Accordion,
 }
 
 export default meta

@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Portal } from '../portal'
 import { getExports, getParts } from '../setup-test'
-import { Dialog, type DialogProps } from './'
+import { Dialog, type DialogRootProps } from './'
 
-const ComponentUnderTest = (props: DialogProps) => (
+const ComponentUnderTest = (props: DialogRootProps) => (
   <Dialog.Root {...props}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>

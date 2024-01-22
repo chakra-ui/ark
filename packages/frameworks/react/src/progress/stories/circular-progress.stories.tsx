@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { Progress } from '../'
 import './progress.css'
 
-type ProgressType = typeof Progress
-
-const meta: Meta<ProgressType> = {
+const meta: Meta = {
   title: 'CircularProgress',
-  component: Progress,
 }
 
 export default meta

@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Menu } from '../'
 import './menu.css'
 
-type MenuType = typeof Menu
-
-const meta: Meta<MenuType> = {
+const meta: Meta = {
   title: 'Menu',
-  component: Menu,
 }
 
 export default meta

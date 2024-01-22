@@ -1,4 +1,11 @@
 {
+  "Area": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
@@ -142,13 +149,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of the editable in both edit and preview mode"
-    }
-  },
-  "Area": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   },
   "Input": {

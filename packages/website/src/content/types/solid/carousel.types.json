@@ -1,4 +1,8 @@
 {
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false }
+  },
   "Root": {
     "align": {
       "type": "'start' | 'end' | 'center'",
@@ -54,10 +58,6 @@
       "isRequired": false,
       "description": "The amount of space between slides."
     }
-  },
-  "Item": {
-    "index": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
   },
   "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Viewport": { "as": { "type": "ValidComponent", "isRequired": false } },

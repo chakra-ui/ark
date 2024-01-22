@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { SegmentGroup } from '../'
 import './segment-group.css'
 
-type SegmentGroupType = typeof SegmentGroup
-
-const meta: Meta<SegmentGroupType> = {
+const meta: Meta = {
   title: 'SegmentGroup',
-  component: SegmentGroup,
 }
 
 export default meta

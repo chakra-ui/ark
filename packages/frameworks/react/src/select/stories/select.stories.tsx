@@ -1,16 +1,13 @@
 import type { Meta } from '@storybook/react'
-import { ChevronDownIcon, ChevronsDownUpIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, useForm, type SubmitHandler } from 'react-hook-form'
 import { Select } from '../'
 import { Portal } from '../../portal'
+import { ChevronDownIcon, ChevronsDownUpIcon } from './icons'
 import './select.css'
 
-type SelectType = typeof Select
-
-const meta: Meta<SelectType> = {
+const meta: Meta = {
   title: 'Select',
-  component: Select,
 }
 
 export default meta

@@ -3,9 +3,9 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
 import { getExports, getParts } from '../setup-test'
-import { Popover, type PopoverProps } from './'
+import { Popover, type PopoverRootProps } from './'
 
-const ComponentUnderTest = (props: PopoverProps) => (
+const ComponentUnderTest = (props: PopoverRootProps) => (
   <Popover.Root {...props}>
     <Popover.Trigger>
       click me
@@ -64,7 +64,7 @@ describe('Popover', () => {
   })
 
   it('should allow controlled usage', async () => {
-    const ControlledComponentUnderTest = (props: PopoverProps) => {
+    const ControlledComponentUnderTest = (props: PopoverRootProps) => {
       const [open, setOpen] = createSignal(false)
       return (
         <>

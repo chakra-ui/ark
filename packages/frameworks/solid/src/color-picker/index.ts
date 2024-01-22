@@ -4,7 +4,6 @@ import type {
   OpenChangeDetails as ColorPickerOpenChangeDetails,
   ValueChangeDetails as ColorPickerValueChangeDetails,
 } from '@zag-js/color-picker'
-import { ColorPicker as ColorPickerRoot, type ColorPickerProps } from './color-picker'
 import { ColorPickerArea, type ColorPickerAreaProps } from './color-picker-area'
 import {
   ColorPickerAreaBackground,
@@ -49,6 +48,7 @@ import {
 } from './color-picker-format-trigger'
 import { ColorPickerLabel, type ColorPickerLabelProps } from './color-picker-label'
 import { ColorPickerPositioner, type ColorPickerPositionerProps } from './color-picker-positioner'
+import { ColorPickerRoot, type ColorPickerRootProps } from './color-picker-root'
 import { ColorPickerSwatch, type ColorPickerSwatchProps } from './color-picker-swatch'
 import {
   ColorPickerSwatchGroup,
@@ -70,7 +70,7 @@ import { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker
 import { ColorPickerValueText, type ColorPickerValueTextProps } from './color-picker-value-text'
 import { ColorPickerView, type ColorPickerViewProps } from './color-picker-view'
 
-const ColorPicker = Object.assign(ColorPickerRoot, {
+export const ColorPicker = {
   Root: ColorPickerRoot,
   Area: ColorPickerArea,
   AreaBackground: ColorPickerAreaBackground,
@@ -94,9 +94,9 @@ const ColorPicker = Object.assign(ColorPickerRoot, {
   Trigger: ColorPickerTrigger,
   ValueText: ColorPickerValueText,
   View: ColorPickerView,
-})
+}
+
 export {
-  ColorPicker,
   ColorPickerArea,
   ColorPickerAreaBackground,
   ColorPickerAreaThumb,
@@ -111,6 +111,7 @@ export {
   ColorPickerFormatTrigger,
   ColorPickerLabel,
   ColorPickerPositioner,
+  ColorPickerRoot,
   ColorPickerSwatch,
   ColorPickerSwatchGroup,
   ColorPickerSwatchIndicator,
@@ -144,7 +145,7 @@ export type {
   ColorPickerLabelProps,
   ColorPickerOpenChangeDetails,
   ColorPickerPositionerProps,
-  ColorPickerProps,
+  ColorPickerRootProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchProps,

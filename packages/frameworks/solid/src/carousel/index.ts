@@ -1,5 +1,4 @@
 import type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
-import { Carousel as CarouselRoot, type CarouselProps } from './carousel'
 import { useCarouselContext, type CarouselContext } from './carousel-context'
 import { CarouselControl, type CarouselControlProps } from './carousel-control'
 import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
@@ -7,13 +6,14 @@ import {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
+import { CarouselItem, type CarouselItemProps } from './carousel-item'
+import { CarouselItemGroup, type CarouselItemGroupProps } from './carousel-item-group'
 import { CarouselNextTrigger, type CarouselNextTriggerProps } from './carousel-next-trigger'
 import { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-prev-trigger'
-import { CarouselItem, type CarouselItemProps } from './carousel-slide'
-import { CarouselItemGroup, type CarouselItemGroupProps } from './carousel-slide-group'
+import { CarouselRoot, type CarouselRootProps } from './carousel-root'
 import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
 
-const Carousel = Object.assign(CarouselRoot, {
+export const Carousel = {
   Root: CarouselRoot,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
@@ -23,10 +23,9 @@ const Carousel = Object.assign(CarouselRoot, {
   Item: CarouselItem,
   ItemGroup: CarouselItemGroup,
   Viewport: CarouselViewport,
-})
+}
 
 export {
-  Carousel,
   CarouselControl,
   CarouselIndicator,
   CarouselIndicatorGroup,
@@ -34,6 +33,7 @@ export {
   CarouselItemGroup,
   CarouselNextTrigger,
   CarouselPrevTrigger,
+  CarouselRoot,
   CarouselViewport,
   useCarouselContext,
 }
@@ -46,7 +46,7 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselProps,
+  CarouselRootProps,
   CarouselSlideChangeDetails,
   CarouselViewportProps,
 }

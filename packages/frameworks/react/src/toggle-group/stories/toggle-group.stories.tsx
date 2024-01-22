@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { ToggleGroup } from '../'
 import './toggle-group.css'
 
-type ToggleGroupType = typeof ToggleGroup
-
-const meta: Meta<ToggleGroupType> = {
+const meta: Meta = {
   title: 'ToggleGroup',
-  component: ToggleGroup,
 }
 
 export default meta

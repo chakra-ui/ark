@@ -1,4 +1,9 @@
 {
+  "Area": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "xChannel": { "type": "ColorChannel", "isRequired": false },
+    "yChannel": { "type": "ColorChannel", "isRequired": false }
+  },
   "Root": {
     "as": { "type": "ValidComponent", "isRequired": false },
     "closeOnSelect": {
@@ -119,11 +124,6 @@
       "isRequired": false,
       "description": "The current value of the color picker."
     }
-  },
-  "Area": {
-    "as": { "type": "ValidComponent", "isRequired": false },
-    "xChannel": { "type": "ColorChannel", "isRequired": false },
-    "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
   "View": { "format": { "type": "ColorFormat", "isRequired": true } },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },

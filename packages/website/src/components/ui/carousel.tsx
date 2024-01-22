@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(carousel)
 
 export * from '@ark-ui/react/src/carousel'
-export type CarouselProps = Ark.CarouselProps & CarouselVariantProps
+export type CarouselProps = Ark.CarouselRootProps & CarouselVariantProps
 
 const CarouselRoot = withProvider(styled(Ark.Carousel.Root), 'root')
 export const CarouselControl = withContext(styled(Ark.Carousel.Control), 'control')

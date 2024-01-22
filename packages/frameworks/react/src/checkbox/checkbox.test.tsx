@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Checkbox, type CheckboxProps } from './'
+import { Checkbox, type CheckboxRootProps } from './'
 
-const ComponentUnderTest = (props: CheckboxProps) => (
+const ComponentUnderTest = (props: CheckboxRootProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
     <Checkbox.Control data-testid="control" />

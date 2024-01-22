@@ -1,4 +1,5 @@
 {
+  "TabList": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Root": {
     "activationMode": {
       "type": "'manual' | 'automatic'",
@@ -79,7 +80,6 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   },
-  "TabList": { "as": { "type": "ValidComponent", "isRequired": false } },
   "TabContent": {
     "value": { "type": "string", "isRequired": true },
     "as": { "type": "ValidComponent", "isRequired": false }

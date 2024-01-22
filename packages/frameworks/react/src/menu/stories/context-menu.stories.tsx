@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { Menu } from '../'
 import './menu.css'
 
-type MenuType = typeof Menu
-
-const meta: Meta<MenuType> = {
+const meta: Meta = {
   title: 'ContextMenu',
-  component: Menu,
 }
 
 export default meta

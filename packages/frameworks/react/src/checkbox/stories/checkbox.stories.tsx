@@ -1,13 +1,10 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Checkbox, type CheckedState } from '../'
+import { Checkbox, type CheckboxState } from '../'
 import './checkbox.css'
 
-type CheckboxType = typeof Checkbox
-
-const meta: Meta<CheckboxType> = {
+const meta: Meta = {
   title: 'Checkbox',
-  component: Checkbox,
 }
 
 export default meta
@@ -21,7 +18,7 @@ export const Basic = () => (
 )
 
 export const Controlled = () => {
-  const [checked, setChecked] = useState<CheckedState>(true)
+  const [checked, setChecked] = useState<CheckboxState>(true)
   return (
     <Checkbox.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>
       <Checkbox.Label>Checkbox</Checkbox.Label>

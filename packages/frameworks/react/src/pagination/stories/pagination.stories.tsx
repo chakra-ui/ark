@@ -3,11 +3,8 @@ import { useState } from 'react'
 import { Pagination } from '../'
 import './pagination.css'
 
-type PaginationType = typeof Pagination
-
-const meta: Meta<PaginationType> = {
+const meta: Meta = {
   title: 'Pagination',
-  component: Pagination,
 }
 
 export default meta
