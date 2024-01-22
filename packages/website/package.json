@@ -20,7 +20,7 @@
     "@fontsource-variable/inter": "5.0.16",
     "@pandacss/dev": "0.27.3",
     "@park-ui/panda-preset": "0.27.0",
-    "@types/react": "18.2.47",
+    "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.32.1",
