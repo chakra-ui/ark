@@ -1,5 +1,4 @@
 import type { AnatomyInstance } from '@ark-ui/anatomy'
-import '@testing-library/jest-dom'
 import ResizeObserver from 'resize-observer-polyfill'
 
 export const getParts = (anatomy: AnatomyInstance<string>) => {
