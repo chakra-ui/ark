@@ -833,8 +833,8 @@ importers:
         specifier: 0.27.3
         version: 0.27.3(typescript@5.3.3)
       '@park-ui/panda-preset':
-        specifier: 0.27.0
-        version: 0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.3)(@pandacss/types@0.27.3)
+        specifier: 0.29.0
+        version: 0.29.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.3)(@pandacss/types@0.27.3)
       '@types/react':
         specifier: 18.2.48
         version: 18.2.48
@@ -991,6 +991,45 @@ packages:
       '@zag-js/toast': 0.31.1
       '@zag-js/toggle-group': 0.31.1
       '@zag-js/tooltip': 0.31.1
+    transitivePeerDependencies:
+      - '@internationalized/date'
+    dev: false
+
+  /@ark-ui/anatomy@1.3.0(@internationalized/date@3.5.1):
+    resolution: {integrity: sha512-1yG2MrzUlix6KthjQMCNiHnkXrWwEdFAX6D+HqGJaNu0XvaGul2J+wDNtjsdX+gxiWu1nXXEEOAWlFVYMUf65w==}
+    dependencies:
+      '@zag-js/accordion': 0.32.1
+      '@zag-js/anatomy': 0.32.1
+      '@zag-js/avatar': 0.32.1
+      '@zag-js/carousel': 0.32.1
+      '@zag-js/checkbox': 0.32.1
+      '@zag-js/color-picker': 0.32.1
+      '@zag-js/color-utils': 0.32.1
+      '@zag-js/combobox': 0.32.1
+      '@zag-js/date-picker': 0.32.1
+      '@zag-js/date-utils': 0.32.1(@internationalized/date@3.5.1)
+      '@zag-js/dialog': 0.32.1
+      '@zag-js/editable': 0.32.1
+      '@zag-js/file-upload': 0.32.1
+      '@zag-js/hover-card': 0.32.1
+      '@zag-js/menu': 0.32.1
+      '@zag-js/number-input': 0.32.1
+      '@zag-js/pagination': 0.32.1
+      '@zag-js/pin-input': 0.32.1
+      '@zag-js/popover': 0.32.1
+      '@zag-js/presence': 0.32.1
+      '@zag-js/progress': 0.32.1
+      '@zag-js/radio-group': 0.32.1
+      '@zag-js/rating-group': 0.32.1
+      '@zag-js/select': 0.32.1
+      '@zag-js/slider': 0.32.1
+      '@zag-js/splitter': 0.32.1
+      '@zag-js/switch': 0.32.1
+      '@zag-js/tabs': 0.32.1
+      '@zag-js/tags-input': 0.32.1
+      '@zag-js/toast': 0.32.1
+      '@zag-js/toggle-group': 0.32.1
+      '@zag-js/tooltip': 0.32.1
     transitivePeerDependencies:
       - '@internationalized/date'
     dev: false
@@ -4525,12 +4564,6 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
 
-  /@internationalized/date@3.5.0:
-    resolution: {integrity: sha512-nw0Q+oRkizBWMioseI8+2TeUPEyopJVz5YxoYVzR0W1v+2YytiYah7s/ot35F149q/xAg4F1gT/6eTd+tsUpFQ==}
-    dependencies:
-      '@swc/helpers': 0.5.3
-    dev: false
-
   /@internationalized/date@3.5.1:
     resolution: {integrity: sha512-LUQIfwU9e+Fmutc/DpRTGXSdgYZLBegi4wygCWDSVmUdLTaMHsQyASDiJtREwanwKuQLq0hY76fCJ9J/9I2xOQ==}
     dependencies:
@@ -5417,13 +5450,13 @@ packages:
       '@parcel/watcher-win32-x64': 2.4.0
     dev: false
 
-  /@park-ui/panda-preset@0.27.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.3)(@pandacss/types@0.27.3):
-    resolution: {integrity: sha512-NLUCug6y4d3CZp7QAz9PzZYAPjRVB/OIk9t6b83T8gnB6RqpQDevYT4Kdl7Am7SbjePwzqlm9WX+/HgUlL4Zkg==}
+  /@park-ui/panda-preset@0.29.0(@internationalized/date@3.5.1)(@pandacss/dev@0.27.3)(@pandacss/types@0.27.3):
+    resolution: {integrity: sha512-Epq3iXtfX6ORcJ4doRuQUXZ9utmj6NEslHw6sPDzTcxGCFKQJdS6FDsyTiufkTtphPYa7UML2jKczDouNg3L+g==}
     peerDependencies:
       '@pandacss/dev': '>0.22.0'
       '@pandacss/types': '>0.22.0'
     dependencies:
-      '@ark-ui/anatomy': 1.2.0(@internationalized/date@3.5.1)
+      '@ark-ui/anatomy': 1.3.0(@internationalized/date@3.5.1)
       '@pandacss/dev': 0.27.3(typescript@5.3.3)
       '@pandacss/types': 0.27.3
       '@radix-ui/colors': 3.0.0
@@ -9145,10 +9178,10 @@ packages:
   /@zag-js/date-picker@0.31.1:
     resolution: {integrity: sha512-oEAiJmb4dO3HwJp+AzEvB4EdONMqdMmhYHlYQNJ8o9inM4cOT4Q5X6S+Fqlcu6IlXft5JrYmHCazCMGZsW1Uag==}
     dependencies:
-      '@internationalized/date': 3.5.0
+      '@internationalized/date': 3.5.1
       '@zag-js/anatomy': 0.31.1
       '@zag-js/core': 0.31.1
-      '@zag-js/date-utils': 0.31.1(@internationalized/date@3.5.0)
+      '@zag-js/date-utils': 0.31.1(@internationalized/date@3.5.1)
       '@zag-js/dismissable': 0.31.1
       '@zag-js/dom-event': 0.31.1
       '@zag-js/dom-query': 0.31.1
@@ -9176,14 +9209,6 @@ packages:
       '@zag-js/text-selection': 0.32.1
       '@zag-js/types': 0.32.1
       '@zag-js/utils': 0.32.1
-    dev: false
-
-  /@zag-js/date-utils@0.31.1(@internationalized/date@3.5.0):
-    resolution: {integrity: sha512-Oa0+AMeE3EnSJx9Tbhr+VDJTKl7Vl+AGFEWcp10rTr8SGRArktHhZTqrEceKB+jv6bW9ljYUUKgJOunA1iSTJQ==}
-    peerDependencies:
-      '@internationalized/date': '>=3.0.0'
-    dependencies:
-      '@internationalized/date': 3.5.0
     dev: false
 
   /@zag-js/date-utils@0.31.1(@internationalized/date@3.5.1):
