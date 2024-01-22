@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { type ReactNode, forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { ProgressProvider } from './progress-context'
-import { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
+import { type UseProgressProps, type UseProgressReturn, useProgress } from './use-progress'
 
 export interface ProgressProps
   extends Assign<
@@ -33,9 +33,9 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) =
 
   return (
     <ProgressProvider value={api}>
-      <ark.nav {...mergedProps} ref={ref}>
+      <ark.div {...mergedProps} ref={ref}>
         {view}
-      </ark.nav>
+      </ark.div>
     </ProgressProvider>
   )
 })

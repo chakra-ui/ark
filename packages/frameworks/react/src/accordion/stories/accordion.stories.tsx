@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react'
-import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Accordion } from '../'
 import './accordion.css'
+import { ChevronDownIcon } from './icons'
 
 type AccordionType = typeof Accordion
 
