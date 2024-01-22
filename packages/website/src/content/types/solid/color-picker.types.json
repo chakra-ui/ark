@@ -1,4 +1,9 @@
 {
+  "Area": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "xChannel": { "type": "ColorChannel", "isRequired": false },
+    "yChannel": { "type": "ColorChannel", "isRequired": false }
+  },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
@@ -119,11 +124,6 @@
       "isRequired": false,
       "description": "The current value of the color picker."
     }
-  },
-  "Area": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "xChannel": { "type": "ColorChannel", "isRequired": false },
-    "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
   "View": { "format": { "type": "ColorFormat", "isRequired": true } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
