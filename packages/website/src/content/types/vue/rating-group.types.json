@@ -1,88 +1,84 @@
 {
   "Root": {
     "allowHalf": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
-    "asChild": { "type": "boolean;", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether to autofocus the rating."
     },
     "count": {
-      "type": "number;",
+      "type": "number",
       "isRequired": false,
       "description": "The total number of ratings."
     },
     "dir": {
-      "type": "\"ltr\" | \"rtl\";",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "disabled": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether the rating is disabled."
     },
     "form": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document;",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string;\n  label: string;\n  hiddenInput: string;\n  control: string;\n  rating(id: string): string;\n}>;",
+      "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the rating. Useful for composition."
     },
-    "modelValue": { "type": "number;", "isRequired": false },
+    "modelValue": { "type": "number", "isRequired": false },
     "name": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The name attribute of the rating element (used in forms)."
     },
     "onHoverChange": {
-      "type": "(details: HoverChangeDetails) => void;",
+      "type": "(details: HoverChangeDetails) => void",
       "isRequired": false,
       "description": "Function to be called when the rating value is hovered."
     },
     "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void;",
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function to be called when the rating value changes."
     },
     "readOnly": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether the rating is readonly."
     },
     "translations": {
-      "type": "IntlTranslations;",
+      "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
-    "value": {
-      "type": "number;",
-      "isRequired": false,
-      "description": "The current rating value."
-    }
+    "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
   "Item": {
-    "index": { "type": "number;", "isRequired": true },
-    "asChild": { "type": "boolean;", "isRequired": false }
+    "index": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "Label": { "asChild": { "type": "boolean;", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean;", "isRequired": false } }
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }
