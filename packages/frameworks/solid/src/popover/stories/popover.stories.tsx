@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { createSignal, splitProps, type JSX } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Popover } from '../'
@@ -13,9 +13,22 @@ const meta: Meta<PopoverType> = {
 
 export default meta
 
+interface ButtonVariantProps {
+  variant?: 'primary' | 'secondary' | 'tertiary'
+}
+
+export interface ButtonProps
+  extends ButtonVariantProps,
+    JSX.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export const Button = (props: ButtonProps) => {
+  const [variantProps, buttonProps] = splitProps(props, ['variant'])
+  return <button data-variant={variantProps.variant} {...buttonProps} />
+}
+
 export const Basic = () => (
   <Popover.Root>
-    <Popover.Trigger>
+    <Popover.Trigger as={Button}>
       Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
     </Popover.Trigger>
     <Popover.Positioner>
