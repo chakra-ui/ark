@@ -1,13 +1,10 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
-import { Checkbox, type CheckedState } from '../'
+import { Checkbox, type CheckboxState } from '../'
 import './checkbox.css'
 
-type CheckboxType = typeof Checkbox
-
-const meta: Meta<CheckboxType> = {
+const meta: Meta = {
   title: 'Checkbox',
-  component: Checkbox,
 }
 
 export default meta
@@ -21,7 +18,7 @@ export const Basic = () => (
 )
 
 export const Controlled = () => {
-  const [checked, setChecked] = createSignal<CheckedState>(true)
+  const [checked, setChecked] = createSignal<CheckboxState>(true)
   return (
     <Checkbox.Root checked={checked()} onCheckedChange={(e) => setChecked(e.checked)}>
       <Checkbox.Label>Checkbox</Checkbox.Label>

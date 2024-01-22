@@ -5,7 +5,7 @@ import { For, Portal } from 'solid-js/web'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
 import type { Optional } from '../types'
-import { Select, type SelectProps } from './'
+import { Select, type SelectRootProps } from './'
 
 interface Item {
   label: string
@@ -13,7 +13,7 @@ interface Item {
   disabled?: boolean
 }
 
-const ComponentUnderTest = (props: Optional<SelectProps<Item>, 'items'>) => {
+const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

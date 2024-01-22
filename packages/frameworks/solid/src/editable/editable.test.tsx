@@ -2,9 +2,9 @@ import { editableAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { Editable, type EditableProps } from './'
+import { Editable, type EditableRootProps } from './'
 
-const ComponentUnderTest = (props: EditableProps) => (
+const ComponentUnderTest = (props: EditableRootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
     <Editable.Label>Label</Editable.Label>
     <Editable.Area>
@@ -19,7 +19,7 @@ const ComponentUnderTest = (props: EditableProps) => (
   </Editable.Root>
 )
 
-const ControlledComponentUnderTest = (props: EditableProps) => (
+const ControlledComponentUnderTest = (props: EditableRootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
     {(api) => (
       <>

@@ -1,5 +1,4 @@
 import type { ValueChangeDetails as SegmentGroupValueChangeDetails } from '@zag-js/radio-group'
-import { SegmentGroup as SegmentGroupRoot, type SegmentGroupProps } from './segment-group'
 import { useSegmentGroupContext, type SegmentGroupContext } from './segment-group-context'
 import { SegmentGroupIndicator, type SegmentGroupIndicatorProps } from './segment-group-indicator'
 import { SegmentGroupItem, type SegmentGroupItemProps } from './segment-group-item'
@@ -13,23 +12,24 @@ import {
 } from './segment-group-item-control'
 import { SegmentGroupItemText, type SegmentGroupItemTextProps } from './segment-group-item-text'
 import { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
+import { SegmentGroupRoot, type SegmentGroupRootProps } from './segment-group-root'
 
-const SegmentGroup = Object.assign(SegmentGroupRoot, {
+export const SegmentGroup = {
   Root: SegmentGroupRoot,
   Indicator: SegmentGroupIndicator,
   Item: SegmentGroupItem,
   ItemControl: SegmentGroupItemControl,
   ItemText: SegmentGroupItemText,
   Label: SegmentGroupLabel,
-})
+}
 
 export {
-  SegmentGroup,
   SegmentGroupIndicator,
   SegmentGroupItem,
   SegmentGroupItemControl,
   SegmentGroupItemText,
   SegmentGroupLabel,
+  SegmentGroupRoot,
   useSegmentGroupContext,
   useSegmentGroupItemContext,
 }
@@ -42,6 +42,6 @@ export type {
   SegmentGroupItemProps,
   SegmentGroupItemTextProps,
   SegmentGroupLabelProps,
-  SegmentGroupProps,
+  SegmentGroupRootProps,
   SegmentGroupValueChangeDetails,
 }

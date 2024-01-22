@@ -4,11 +4,8 @@ import type { Meta } from 'storybook-solidjs'
 import { HoverCard } from '../'
 import './hover-card.css'
 
-type HoverCardType = typeof HoverCard
-
-const meta: Meta<HoverCardType> = {
+const meta: Meta = {
   title: 'HoverCard',
-  component: HoverCard,
 }
 
 export default meta

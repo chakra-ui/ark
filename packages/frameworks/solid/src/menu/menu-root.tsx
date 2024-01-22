@@ -18,12 +18,11 @@ import {
 } from './menu-context'
 import { useMenu, type UseMenuProps } from './use-menu'
 
-export interface MenuProps extends UseMenuProps, UsePresenceProps {
-  // TODO simplify this
+export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
   children?: JSX.Element | ((api: Accessor<menu.Api<PropTypes>>) => JSX.Element)
 }
 
-export const Menu = (props: MenuProps) => {
+export const MenuRoot = (props: MenuRootProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
   const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
     'anchorPoint',

@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { CheckboxProvider } from './checkbox-context'
 import { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 
-export interface CheckboxProps
+export interface CheckboxRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'label'>,
@@ -18,7 +18,7 @@ export interface CheckboxProps
     UseCheckboxProps
   > {}
 
-export const Checkbox = (props: CheckboxProps) => {
+export const CheckboxRoot = (props: CheckboxRootProps) => {
   const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [
     'checked',
     'dir',

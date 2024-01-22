@@ -1,9 +1,9 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
 import { getExports, getParts } from '../setup-test'
-import { Splitter, type SplitterProps } from './'
+import { Splitter, type SplitterRootProps } from './'
 
-const ComponentUnderTest = (props: SplitterProps) => (
+const ComponentUnderTest = (props: SplitterRootProps) => (
   <Splitter.Root
     size={[
       { id: 'a', size: 50 },

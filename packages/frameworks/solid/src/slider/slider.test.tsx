@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { Index, createSignal } from 'solid-js'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Slider, type SliderProps } from './'
+import { Slider, type SliderRootProps } from './'
 
-const ComponentUnderTest = (props: SliderProps) => {
+const ComponentUnderTest = (props: SliderRootProps) => {
   const [value, setValue] = createSignal([-20, 20])
   return (
     <Slider.Root

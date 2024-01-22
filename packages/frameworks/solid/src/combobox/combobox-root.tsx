@@ -10,22 +10,24 @@ import {
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import type { Assign, CollectionItem } from '../types'
-import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
+import { ComboboxProvider } from './combobox-context'
+import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export interface SelectProps<T extends CollectionItem>
+export interface ComboboxRootProps<T extends CollectionItem>
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        { children?: JSX.Element | ((api: UseSelectReturn<T>) => JSX.Element) }
+        { children?: JSX.Element | ((api: UseComboboxReturn<T>) => JSX.Element) }
       >,
-      UseSelectProps<T>
+      UseComboboxProps<T>
     >,
     UsePresenceProps {}
 
-export const Select = <T extends CollectionItem>(props: SelectProps<T>) => {
-  const [presenceProps, selectProps] = splitPresenceProps(props)
-  const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
+export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<T>) => {
+  const [presenceProps, comboboxProps] = splitPresenceProps(props)
+  const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
+    'allowCustomValue',
+    'autoFocus',
     'closeOnSelect',
     'dir',
     'disabled',
@@ -34,6 +36,8 @@ export const Select = <T extends CollectionItem>(props: SelectProps<T>) => {
     'highlightedValue',
     'id',
     'ids',
+    'inputBehavior',
+    'inputValue',
     'invalid',
     'isItemDisabled',
     'items',
@@ -44,27 +48,32 @@ export const Select = <T extends CollectionItem>(props: SelectProps<T>) => {
     'name',
     'onFocusOutside',
     'onHighlightChange',
+    'onInputValueChange',
     'onInteractOutside',
+    'onOpenChange',
     'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
-    'open',
+    'openOnClick',
+    'placeholder',
     'positioning',
     'readOnly',
+    'selectionBehavior',
     'selectOnBlur',
+    'translations',
     'value',
   ])
 
-  const api = useSelect(useSelectProps)
-  const presenceApi = usePresence(mergeProps(() => ({ present: api().isOpen }), presenceProps))
+  const api = useCombobox(useComboboxProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
   const getChildren = () => runIfFn(localProps.children, api)
 
   return (
-    <SelectProvider value={api}>
-      <PresenceProvider value={presenceApi}>
+    <ComboboxProvider value={api}>
+      <PresenceProvider value={apiPresence}>
         <ark.div {...mergedProps}>{getChildren()}</ark.div>
       </PresenceProvider>
-    </SelectProvider>
+    </ComboboxProvider>
   )
 }

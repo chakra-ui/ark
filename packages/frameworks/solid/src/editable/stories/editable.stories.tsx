@@ -1,11 +1,8 @@
 import type { Meta } from 'storybook-solidjs'
 import { Editable } from '../'
 
-type EditableType = typeof Editable
-
-const meta: Meta<EditableType> = {
+const meta: Meta = {
   title: 'Editable',
-  component: Editable,
 }
 
 export default meta

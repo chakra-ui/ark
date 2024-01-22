@@ -16,9 +16,9 @@ const PrintEnvironment = () => {
 }
 
 const ComponentUnderTest = () => (
-  <Environment.Root value={document}>
+  <Environment value={document}>
     <PrintEnvironment />
-  </Environment.Root>
+  </Environment>
 )
 
 describe('Environment', () => {

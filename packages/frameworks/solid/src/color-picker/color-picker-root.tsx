@@ -17,7 +17,7 @@ import {
   type UseColorPickerReturn,
 } from './use-color-picker'
 
-export interface ColorPickerProps
+export interface ColorPickerRootProps
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
@@ -27,7 +27,7 @@ export interface ColorPickerProps
     >,
     UsePresenceProps {}
 
-export const ColorPicker = (props: ColorPickerProps) => {
+export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
   const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(
     colorPickerProps,

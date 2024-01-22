@@ -2,9 +2,9 @@ import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { useToastContext } from './toast-context'
 
-export interface ToastProps extends HTMLArkProps<'li'> {}
+export interface ToastRootProps extends HTMLArkProps<'li'> {}
 
-export const Toast = (props: ToastProps) => {
+export const ToastRoot = (props: ToastRootProps) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().rootProps, props)
 

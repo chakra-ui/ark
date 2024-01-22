@@ -6,9 +6,11 @@ import type { Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
+export interface TabsRootProps
+  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
+    UsePresenceProps {}
 
-export const Tabs = (props: TabsProps) => {
+export const TabsRoot = (props: TabsRootProps) => {
   const [presenceProps, tabsProps] = splitPresenceProps(props)
   const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',

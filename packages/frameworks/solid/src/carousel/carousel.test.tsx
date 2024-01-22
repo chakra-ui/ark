@@ -3,9 +3,9 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
 import { getExports, getParts } from '../setup-test'
-import { Carousel, type CarouselProps } from './'
+import { Carousel, type CarouselRootProps } from './'
 
-const ComponentUnderTest = (props: CarouselProps) => {
+const ComponentUnderTest = (props: CarouselRootProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',

@@ -6,11 +6,11 @@ import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export interface AccordionProps
+export interface AccordionRootProps
   extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
     UsePresenceProps {}
 
-export const Accordion = (props: AccordionProps) => {
+export const AccordionRoot = (props: AccordionRootProps) => {
   const [presenceProps, accordionProps] = splitPresenceProps(props)
   const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
     'collapsible',

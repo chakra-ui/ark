@@ -4,11 +4,8 @@ import { Accordion } from '../'
 import './accordion.css'
 import { ChevronDownIcon } from './icons'
 
-type AccordionType = typeof Accordion
-
-const meta: Meta<AccordionType> = {
+const meta: Meta = {
   title: 'Accordion',
-  component: Accordion,
 }
 
 export default meta

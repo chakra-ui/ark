@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Progress } from '../'
 import './progress.css'
 
-type ProgressType = typeof Progress
-
-const meta: Meta<ProgressType> = {
+const meta: Meta = {
   title: 'LinearProgress',
-  component: Progress,
 }
 
 export default meta

@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { CarouselProvider } from './carousel-context'
 import { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
 
-export interface CarouselProps
+export interface CarouselRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -18,7 +18,7 @@ export interface CarouselProps
     UseCarouselProps
   > {}
 
-export const Carousel = (props: CarouselProps) => {
+export const CarouselRoot = (props: CarouselRootProps) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
     'align',
     'dir',

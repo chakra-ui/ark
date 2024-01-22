@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { FileUploadProvider } from './file-upload-context'
 import { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
 
-export interface FileUploadProps
+export interface FileUploadRootProps
   extends Assign<
     HTMLArkProps<'div'>,
     UseFileUploadProps & {
@@ -15,7 +15,7 @@ export interface FileUploadProps
     }
   > {}
 
-export const FileUpload = (props: FileUploadProps) => {
+export const FileUploadRoot = (props: FileUploadRootProps) => {
   const [fileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
     'allowDrop',

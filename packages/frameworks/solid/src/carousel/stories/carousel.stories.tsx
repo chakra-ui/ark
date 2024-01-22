@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Carousel } from '../'
 import './carousel.css'
 
-type CarouselType = typeof Carousel
-
-const meta: Meta<CarouselType> = {
+const meta: Meta = {
   title: 'Carousel',
-  component: Carousel,
 }
 
 export default meta

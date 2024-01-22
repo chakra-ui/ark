@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
-export interface TagsInputProps
+export interface TagsInputRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -16,7 +16,7 @@ export interface TagsInputProps
     UseTagsInputProps
   > {}
 
-export const TagsInput = (props: TagsInputProps) => {
+export const TagsInputRoot = (props: TagsInputRootProps) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowEditTag',
