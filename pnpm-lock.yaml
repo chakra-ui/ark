@@ -341,8 +341,8 @@ importers:
         specifier: 14.0.0
         version: 14.0.0
       jsdom:
-        specifier: 23.0.1
-        version: 23.0.1
+        specifier: 24.0.0
+        version: 24.0.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -375,7 +375,7 @@ importers:
         version: 3.7.1(@types/node@20.10.3)(typescript@5.3.3)(vite@5.0.12)
       vitest:
         specifier: 1.2.1
-        version: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
+        version: 1.2.1(@types/node@20.10.3)(jsdom@24.0.0)
 
   packages/frameworks/solid:
     dependencies:
@@ -534,8 +534,8 @@ importers:
         specifier: 14.0.0
         version: 14.0.0
       jsdom:
-        specifier: 23.0.1
-        version: 23.0.1
+        specifier: 24.0.0
+        version: 24.0.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -577,7 +577,7 @@ importers:
         version: 2.8.2(solid-js@1.8.11)(vite@5.0.12)
       vitest:
         specifier: 1.2.1
-        version: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
+        version: 1.2.1(@types/node@20.10.3)(jsdom@24.0.0)
 
   packages/frameworks/vue:
     dependencies:
@@ -739,8 +739,8 @@ importers:
         specifier: 0.17.8
         version: 0.17.8(@types/node@20.10.3)(vite@5.0.12)
       jsdom:
-        specifier: 23.0.1
-        version: 23.0.1
+        specifier: 24.0.0
+        version: 24.0.0
       release-it:
         specifier: 17.0.1
         version: 17.0.1(typescript@5.3.3)
@@ -758,7 +758,7 @@ importers:
         version: 3.7.1(@types/node@20.10.3)(typescript@5.3.3)(vite@5.0.12)
       vitest:
         specifier: 1.2.1
-        version: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
+        version: 1.2.1(@types/node@20.10.3)(jsdom@24.0.0)
       vue:
         specifier: 3.4.15
         version: 3.4.15(typescript@5.3.3)
@@ -3491,15 +3491,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/types@7.23.5:
-    resolution: {integrity: sha512-ON5kSOJwVO6xXVRTvOI0eOnWe7VdUcIpsovGo9U/Br4Ie4UVFQTboO2cYnDhAGU6Fp+UxSiT+pMft0SMHfuq6w==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.23.4
-      '@babel/helper-validator-identifier': 7.22.20
-      to-fast-properties: 2.0.0
-    dev: true
 
   /@babel/types@7.23.6:
     resolution: {integrity: sha512-+uarb83brBzPKN38NX1MkB6vb6+mwvR6amUulqAE7ccQw1pEl+bCia9TbdG1lsnFP7lZySvUn37CHyXQdfTwzg==}
@@ -7696,7 +7687,7 @@ packages:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
-      vitest: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
+      vitest: 1.2.1(@types/node@20.10.3)(jsdom@24.0.0)
     dev: true
 
   /@testing-library/react@14.1.2(react-dom@18.2.0)(react@18.2.0):
@@ -8598,7 +8589,7 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
+      vitest: 1.2.1(@types/node@20.10.3)(jsdom@24.0.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11736,9 +11727,9 @@ packages:
       cssom: 0.3.8
     dev: true
 
-  /cssstyle@3.0.0:
-    resolution: {integrity: sha512-N4u2ABATi3Qplzf0hWbVCdjenim8F3ojEXpBDF5hBpjzW182MjNGLqfmQ0SkSPeQ+V86ZXgeH8aXj6kayd4jgg==}
-    engines: {node: '>=14'}
+  /cssstyle@4.0.1:
+    resolution: {integrity: sha512-8ZYiJ3A/3OkDd093CBT/0UKDWry7ak4BdPTFP2+QEP7cmhouyq/Up709ASSj2cK02BbZiMgk7kYjZNS4QP5qrQ==}
+    engines: {node: '>=18'}
     dependencies:
       rrweb-cssom: 0.6.0
     dev: true
@@ -15410,8 +15401,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jsdom@23.0.1:
-    resolution: {integrity: sha512-2i27vgvlUsGEBO9+/kJQRbtqtm+191b5zAZrU/UezVmnC2dlDAFLgDYJvAEi94T4kjsRKkezEtLQTgsNEsW2lQ==}
+  /jsdom@24.0.0:
+    resolution: {integrity: sha512-UDS2NayCvmXSXVP6mpTj+73JnNQadZlr9N68189xib2tx5Mls7swlTNao26IoHv46BZJFvXygyRtyXd1feAk1A==}
     engines: {node: '>=18'}
     peerDependencies:
       canvas: ^2.11.2
@@ -15419,7 +15410,7 @@ packages:
       canvas:
         optional: true
     dependencies:
-      cssstyle: 3.0.0
+      cssstyle: 4.0.1
       data-urls: 5.0.0
       decimal.js: 10.4.3
       form-data: 4.0.0
@@ -15438,7 +15429,7 @@ packages:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
-      ws: 8.14.2
+      ws: 8.16.0
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -21503,7 +21494,7 @@ packages:
     dependencies:
       vite: 5.0.12(@types/node@20.10.3)
 
-  /vitest@1.2.1(@types/node@20.10.3)(jsdom@23.0.1):
+  /vitest@1.2.1(@types/node@20.10.3)(jsdom@24.0.0):
     resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -21539,7 +21530,7 @@ packages:
       chai: 4.3.10
       debug: 4.3.4
       execa: 8.0.1
-      jsdom: 23.0.1
+      jsdom: 24.0.0
       local-pkg: 0.5.0
       magic-string: 0.30.5
       pathe: 1.1.1
@@ -21941,6 +21932,19 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  /ws@8.16.0:
+    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
 
   /xdg-basedir@5.1.0:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
