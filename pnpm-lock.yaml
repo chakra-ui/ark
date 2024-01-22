@@ -573,13 +573,8 @@ importers:
         specifier: 5.0.12
         version: 5.0.12(@types/node@20.11.5)
       vite-plugin-solid:
-<<<<<<< Updated upstream
-        specifier: 2.8.2
-        version: 2.8.2(solid-js@1.8.11)(vite@5.0.12)
-=======
         specifier: 2.8.3
-        version: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.11)
->>>>>>> Stashed changes
+        version: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12)
       vitest:
         specifier: 1.2.1
         version: 1.2.1(@types/node@20.11.5)(jsdom@24.0.0)
@@ -923,21 +918,13 @@ importers:
         version: 0.10.9(solid-js@1.8.11)
       '@solidjs/start':
         specifier: 0.4.10
-<<<<<<< Updated upstream
-        version: 0.4.10(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12)
-=======
-        version: 0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.11)
->>>>>>> Stashed changes
+        version: 0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12)
       solid-js:
         specifier: 1.8.11
         version: 1.8.11
       vinxi:
         specifier: 0.1.4
-<<<<<<< Updated upstream
-        version: 0.1.4(@types/node@20.11.5)(preact@10.19.3)
-=======
-        version: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.10.3)(preact@10.19.3)
->>>>>>> Stashed changes
+        version: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
 
 packages:
 
@@ -6571,11 +6558,7 @@ packages:
       solid-js: 1.8.11
     dev: false
 
-<<<<<<< Updated upstream
-  /@solidjs/start@0.4.10(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12):
-=======
-  /@solidjs/start@0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.11):
->>>>>>> Stashed changes
+  /@solidjs/start@0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12):
     resolution: {integrity: sha512-pokRoUm6ZibtgytzIs3OhhsjdfRIXlun7mokSClEStjXMvuHzAGBowuwkxKgOOwsLGFh4nXxp/l+H57EPgQq4A==}
     dependencies:
       '@vinxi/plugin-directives': 0.1.2(vinxi@0.1.4)
@@ -6589,13 +6572,8 @@ packages:
       shikiji: 0.9.19
       source-map-js: 1.0.2
       terracotta: 1.0.4(seroval@1.0.4)(solid-js@1.8.11)
-<<<<<<< Updated upstream
       vite-plugin-inspect: 0.7.42(vite@5.0.12)
-      vite-plugin-solid: 2.8.2(solid-js@1.8.11)(vite@5.0.12)
-=======
-      vite-plugin-inspect: 0.7.42(vite@5.0.11)
-      vite-plugin-solid: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.11)
->>>>>>> Stashed changes
+      vite-plugin-solid: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - '@testing-library/jest-dom'
@@ -6887,11 +6865,7 @@ packages:
       - supports-color
     dev: true
 
-<<<<<<< Updated upstream
   /@storybook/builder-vite@8.0.0-alpha.13(typescript@5.3.3)(vite@5.0.12):
-=======
-  /@storybook/builder-vite@8.0.0-alpha.13(typescript@5.3.3)(vite@5.0.11):
->>>>>>> Stashed changes
     resolution: {integrity: sha512-eoLCDNVMXZwfpDD8uSPtczdbxc1LNMBZrOUN86xxPlaxjFUSOdCGgOdkjIKf0uk3zj4fxcndH7/+kdNdvbpkLA==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -7211,11 +7185,7 @@ packages:
     resolution: {integrity: sha512-u+BWrP7PC0Z+TjnuU8WFcfb5GYS+h16BXKnwR5LLLG0AmeWHuln8cgPWt7LpCIkLTvMWNSc7rnvIcvgisorkhQ==}
     dependencies:
       '@storybook/csf-tools': 8.0.0-alpha.13
-<<<<<<< Updated upstream
       unplugin: 1.5.1
-=======
-      unplugin: 1.6.0
->>>>>>> Stashed changes
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7351,11 +7321,7 @@ packages:
       '@storybook/csf': 0.1.2
       '@storybook/global': 5.0.0
       '@storybook/types': 8.0.0-alpha.13
-<<<<<<< Updated upstream
       '@types/qs': 6.9.10
-=======
-      '@types/qs': 6.9.11
->>>>>>> Stashed changes
       dequal: 2.0.3
       lodash: 4.17.21
       memoizerific: 1.11.3
@@ -7710,12 +7676,7 @@ packages:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
-<<<<<<< Updated upstream
       vitest: 1.2.1(@types/node@20.11.5)(jsdom@24.0.0)
-    dev: true
-=======
-      vitest: 1.2.1(@types/node@20.10.3)(jsdom@23.0.1)
->>>>>>> Stashed changes
 
   /@testing-library/react@14.1.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-z4p7DVBTPjKM5qDZ0t5ZjzkpSNb+fZy1u6bzO7kk8oeGagpPCAtgh4cx1syrfp7a+QWkM021jGqjJaxJJnXAZg==}
@@ -8449,11 +8410,7 @@ packages:
       - supports-color
     dev: false
 
-<<<<<<< Updated upstream
-  /@vinxi/devtools@0.1.1(@babel/core@7.23.5)(preact@10.19.3)(vite@4.5.0):
-=======
-  /@vinxi/devtools@0.1.1(@babel/core@7.23.7)(@testing-library/jest-dom@6.2.0)(preact@10.19.3)(vite@4.5.0):
->>>>>>> Stashed changes
+  /@vinxi/devtools@0.1.1(@babel/core@7.23.5)(@testing-library/jest-dom@6.2.0)(preact@10.19.3)(vite@4.5.0):
     resolution: {integrity: sha512-/A7X1hoNBsgC2n7nKOWbIa4cTt9dJq9nehyLGdNxgjEcGzbsaJrofUDrFLt+0YJlyb7OOhFEPYHRCat3tsrytw==}
     dependencies:
       '@preact/preset-vite': 2.8.1(@babel/core@7.23.5)(preact@10.19.3)(vite@4.5.0)
@@ -8461,13 +8418,8 @@ packages:
       birpc: 0.2.14
       solid-js: 1.8.11
       vite-plugin-inspect: 0.7.42(vite@4.5.0)
-<<<<<<< Updated upstream
-      vite-plugin-solid: 2.8.2(solid-js@1.8.11)(vite@4.5.0)
-      ws: 8.14.2
-=======
       vite-plugin-solid: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@4.5.0)
-      ws: 8.16.0
->>>>>>> Stashed changes
+      ws: 8.14.2
     transitivePeerDependencies:
       - '@babel/core'
       - '@nuxt/kit'
@@ -8517,11 +8469,7 @@ packages:
       magicast: 0.2.11
       recast: 0.23.4
       tslib: 2.6.2
-<<<<<<< Updated upstream
-      vinxi: 0.1.4(@types/node@20.11.5)(preact@10.19.3)
-=======
-      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.10.3)(preact@10.19.3)
->>>>>>> Stashed changes
+      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
     dev: false
 
   /@vinxi/server-components@0.1.2(vinxi@0.1.4):
@@ -8536,11 +8484,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.4
-<<<<<<< Updated upstream
-      vinxi: 0.1.4(@types/node@20.11.5)(preact@10.19.3)
-=======
-      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.10.3)(preact@10.19.3)
->>>>>>> Stashed changes
+      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
     dev: false
 
   /@vinxi/server-functions@0.1.2(vinxi@0.1.4):
@@ -8555,11 +8499,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.4
-<<<<<<< Updated upstream
-      vinxi: 0.1.4(@types/node@20.11.5)(preact@10.19.3)
-=======
-      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.10.3)(preact@10.19.3)
->>>>>>> Stashed changes
+      vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
     dev: false
 
   /@vitejs/plugin-react@3.1.0(vite@5.0.12):
@@ -8648,12 +8588,7 @@ packages:
     dependencies:
       '@vitest/spy': 1.2.1
       '@vitest/utils': 1.2.1
-<<<<<<< Updated upstream
       chai: 4.3.10
-    dev: true
-=======
-      chai: 4.4.1
->>>>>>> Stashed changes
 
   /@vitest/runner@1.2.1:
     resolution: {integrity: sha512-zc2dP5LQpzNzbpaBt7OeYAvmIsRS1KpZQw4G3WM/yqSV1cQKNKwLGmnm79GyZZjMhQGlRcSFMImLjZaUQvNVZQ==}
@@ -19606,11 +19541,7 @@ packages:
     resolution: {integrity: sha512-dD+VMYC5fBBQNesVb+mjB0LOkZIf100SQFbjAt9/sDstNUvc5ce3yZwLYXzgcOc7jcSMkrBu/cZNRzEM4YIAyw==}
     engines: {node: ^14.18 || >=16}
     dependencies:
-<<<<<<< Updated upstream
       '@storybook/builder-vite': 8.0.0-alpha.13(typescript@5.3.3)(vite@5.0.12)
-=======
-      '@storybook/builder-vite': 8.0.0-alpha.13(typescript@5.3.3)(vite@5.0.11)
->>>>>>> Stashed changes
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -20124,14 +20055,8 @@ packages:
     resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
     dev: true
 
-<<<<<<< Updated upstream
   /tinybench@2.5.1:
     resolution: {integrity: sha512-65NKvSuAVDP/n4CqH+a9w2kTlLReS9vhsAP06MWx+/89nMinJyB2icyl58RIcqCmIggpojIGeuJGhjU1aGMBSg==}
-    dev: true
-=======
-  /tinybench@2.6.0:
-    resolution: {integrity: sha512-N8hW3PG/3aOoZAN5V/NSAEDz0ZixDSSt5b/a05iqtpgfLWMSVuCo7w0k2vVvEjdrIoeGqZzweX2WlyioNIHchA==}
->>>>>>> Stashed changes
 
   /tinypool@0.8.2:
     resolution: {integrity: sha512-SUszKYe5wgsxnNOVlBYO6IC+8VGWdVGZWAqUxp3UErNBtptZvWbwyUOyzNL59zigz2rCA92QiL3wvG+JDSdJdQ==}
@@ -21121,11 +21046,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-<<<<<<< Updated upstream
-  /vinxi@0.1.4(@types/node@20.11.5)(preact@10.19.3):
-=======
-  /vinxi@0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.10.3)(preact@10.19.3):
->>>>>>> Stashed changes
+  /vinxi@0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3):
     resolution: {integrity: sha512-zzruTAdUijdOH60+oU/DwZV+4QALAMErPLtqKZfsz3XKTw5xjOyKnFlwJuppniR71+UQzR+qJHI5/M38V8XYbg==}
     hasBin: true
     dependencies:
@@ -21135,11 +21056,7 @@ packages:
       '@types/micromatch': 4.0.6
       '@types/serve-static': 1.15.5
       '@types/ws': 8.5.10
-<<<<<<< Updated upstream
-      '@vinxi/devtools': 0.1.1(@babel/core@7.23.5)(preact@10.19.3)(vite@4.5.0)
-=======
-      '@vinxi/devtools': 0.1.1(@babel/core@7.23.7)(@testing-library/jest-dom@6.2.0)(preact@10.19.3)(vite@4.5.0)
->>>>>>> Stashed changes
+      '@vinxi/devtools': 0.1.1(@babel/core@7.23.5)(@testing-library/jest-dom@6.2.0)(preact@10.19.3)(vite@4.5.0)
       '@vinxi/listhen': 1.5.6
       boxen: 7.1.1
       c12: 1.6.1
@@ -21323,73 +21240,44 @@ packages:
       - supports-color
     dev: false
 
-<<<<<<< Updated upstream
-  /vite-plugin-solid@2.8.2(solid-js@1.8.11)(vite@4.5.0):
-    resolution: {integrity: sha512-HcvMs6DTxBaO4kE3psnirPQBCUUdYeQkCNKuB2TpEkJsxb6BGP6/7qkbbCSMxn25PyNdjvzVi1WXi0ou8KPgHw==}
-=======
   /vite-plugin-solid@2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@4.5.0):
     resolution: {integrity: sha512-BpHrSSrrK8gqZQicOC2UvOX7UwNyNHx9rVyYKKqGhvfR9KGGumbJyCCkwCg/nWaA8uTA/NafIPvhDPL53sfsPg==}
->>>>>>> Stashed changes
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-<<<<<<< Updated upstream
       '@babel/core': 7.23.5
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.5)
-=======
-      '@babel/core': 7.23.7
-      '@babel/preset-typescript': 7.23.3(@babel/core@7.23.7)
       '@testing-library/jest-dom': 6.2.0(vitest@1.2.1)
->>>>>>> Stashed changes
       '@types/babel__core': 7.20.5
       babel-preset-solid: 1.8.6(@babel/core@7.23.5)
       merge-anything: 5.1.7
       solid-js: 1.8.11
       solid-refresh: 0.6.3(solid-js@1.8.11)
-<<<<<<< Updated upstream
       vite: 4.5.0(@types/node@20.11.5)
-=======
-      vite: 4.5.0(@types/node@20.10.3)
->>>>>>> Stashed changes
       vitefu: 0.2.5(vite@4.5.0)
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-<<<<<<< Updated upstream
-  /vite-plugin-solid@2.8.2(solid-js@1.8.11)(vite@5.0.12):
-    resolution: {integrity: sha512-HcvMs6DTxBaO4kE3psnirPQBCUUdYeQkCNKuB2TpEkJsxb6BGP6/7qkbbCSMxn25PyNdjvzVi1WXi0ou8KPgHw==}
-=======
-  /vite-plugin-solid@2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.11):
+  /vite-plugin-solid@2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12):
     resolution: {integrity: sha512-BpHrSSrrK8gqZQicOC2UvOX7UwNyNHx9rVyYKKqGhvfR9KGGumbJyCCkwCg/nWaA8uTA/NafIPvhDPL53sfsPg==}
->>>>>>> Stashed changes
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-<<<<<<< Updated upstream
       '@babel/core': 7.23.5
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.5)
-=======
-      '@babel/core': 7.23.7
-      '@babel/preset-typescript': 7.23.3(@babel/core@7.23.7)
       '@testing-library/jest-dom': 6.2.0(vitest@1.2.1)
->>>>>>> Stashed changes
       '@types/babel__core': 7.20.5
       babel-preset-solid: 1.8.6(@babel/core@7.23.5)
       merge-anything: 5.1.7
       solid-js: 1.8.11
       solid-refresh: 0.6.3(solid-js@1.8.11)
-<<<<<<< Updated upstream
       vite: 5.0.12(@types/node@20.11.5)
       vitefu: 0.2.5(vite@5.0.12)
-=======
-      vite: 5.0.11(@types/node@20.10.3)
-      vitefu: 0.2.5(vite@5.0.11)
->>>>>>> Stashed changes
     transitivePeerDependencies:
       - supports-color
 
@@ -21929,7 +21817,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /xdg-basedir@5.1.0:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
