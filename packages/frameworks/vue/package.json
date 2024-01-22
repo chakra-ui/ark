@@ -88,7 +88,7 @@
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.3.3",
     "vite": "5.0.12",
-    "vite-plugin-dts": "3.7.0",
+    "vite-plugin-dts": "3.7.1",
     "vitest": "1.2.1",
     "vue": "3.4.14"
   },
