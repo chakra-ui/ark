@@ -1,151 +1,145 @@
 {
   "Root": {
     "allowMouseWheel": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow mouse wheel to change the value"
     },
     "allowOverflow": {
-      "type": "boolean;",
+      "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "asChild": { "type": "boolean;", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
-      "type": "boolean;",
+      "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
     "dir": {
-      "type": "\"ltr\" | \"rtl\";",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "disabled": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether the number input is disabled."
     },
     "focusInputOnChange": {
-      "type": "boolean;",
+      "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to focus input when the value changes"
     },
     "form": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The associate form of the input element."
     },
     "formatOptions": {
-      "type": "NumberFormatOptions;",
+      "type": "NumberFormatOptions",
       "isRequired": false,
       "description": "The options to pass to the `Intl.NumberFormat` constructor"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document;",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string;\n  label: string;\n  input: string;\n  incrementTrigger: string;\n  decrementTrigger: string;\n  scrubber: string;\n}>;",
+      "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "InputMode;",
+      "type": "InputMode",
       "defaultValue": "\"decimal\"",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },
     "invalid": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether the number input value is invalid."
     },
     "locale": {
-      "type": "string;",
+      "type": "string",
       "defaultValue": "\"en-US\"",
       "isRequired": false,
       "description": "The current locale. Based on the BCP 47 definition."
     },
     "max": {
-      "type": "number;",
+      "type": "number",
       "isRequired": false,
       "description": "The maximum value of the number input"
     },
     "min": {
-      "type": "number;",
+      "type": "number",
       "isRequired": false,
       "description": "The minimum value of the number input"
     },
-    "modelValue": { "type": "string;", "isRequired": false },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
-      "type": "string;",
+      "type": "string",
       "isRequired": false,
       "description": "The name attribute of the number input. Useful for form submission."
     },
     "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void;",
+      "type": "(details: FocusChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the number input is focused"
     },
     "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void;",
+      "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the value changes"
     },
     "onValueInvalid": {
-      "type": "(details: ValueInvalidDetails) => void;",
+      "type": "(details: ValueInvalidDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the value overflows or underflows the min/max range"
     },
     "pattern": {
-      "type": "string;",
+      "type": "string",
       "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
       "isRequired": false,
       "description": "The pattern used to check the <input> element's value against"
     },
     "readOnly": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether the number input is readonly"
     },
     "spinOnPress": {
-      "type": "boolean;",
+      "type": "boolean",
       "isRequired": false,
       "description": "Whether to spin the value when the increment/decrement button is pressed"
     },
     "step": {
-      "type": "number;",
+      "type": "number",
       "isRequired": false,
       "description": "The amount to increment or decrement the value by"
     },
     "translations": {
-      "type": "IntlTranslations;",
+      "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
-    "value": {
-      "type": "string;",
-      "isRequired": false,
-      "description": "The value of the input"
-    }
+    "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
   },
-  "Input": { "asChild": { "type": "boolean;", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean;", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean;", "isRequired": false } },
-  "Scrubber": { "asChild": { "type": "boolean;", "isRequired": false } },
-  "DecrementTrigger": {
-    "asChild": { "type": "boolean;", "isRequired": false }
-  },
-  "IncrementTrigger": { "asChild": { "type": "boolean;", "isRequired": false } }
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }
