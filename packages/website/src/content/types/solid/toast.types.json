@@ -1,90 +1,90 @@
 {
-  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Group": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Root": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "Group": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "Title": { "asChild": { "type": "boolean;", "isRequired": false } },
   "Createer": {
     "placement": {
-      "type": "Placement",
+      "type": "Placement;",
       "isRequired": true,
       "description": "The placement of the toast"
     },
     "render": {
-      "type": "(api: Accessor<MachineApi<PropTypes, Options>>) => Element",
+      "type": "(\n  api: Accessor<MachineApi<PropTypes, Options>>,\n) => Element;",
       "isRequired": true
     },
-    "count": { "type": "number", "isRequired": false },
+    "count": { "type": "number;", "isRequired": false },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "\"ltr\" | \"rtl\";",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "doc": {
-      "type": "Document",
+      "type": "Document;",
       "isRequired": false,
       "description": "The owner document of the machine."
     },
     "duration": {
-      "type": "number",
+      "type": "number;",
       "isRequired": false,
       "description": "The duration the toast will be visible"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => Node | ShadowRoot | Document;",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "gutter": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The gutter or spacing between toasts"
     },
     "id": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
     "max": {
-      "type": "number",
+      "type": "number;",
       "isRequired": false,
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | Record<\"top\" | \"bottom\" | \"left\" | \"right\", string>;",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
     "pauseOnInteraction": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to pause the toast when interacted with"
     },
     "pauseOnPageIdle": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to pause toast when the user leaves the browser tab"
     },
     "pointerdownNode": {
-      "type": "HTMLElement",
+      "type": "HTMLElement;",
       "isRequired": false,
       "description": "The related target when the element is blurred.\nUsed as a polyfill for `e.relatedTarget`"
     },
     "removeDelay": {
-      "type": "number",
+      "type": "number;",
       "isRequired": false,
       "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
     },
     "rootNode": {
-      "type": "ShadowRoot",
+      "type": "ShadowRoot;",
       "isRequired": false,
       "description": "The root node of the machine. Useful for shadow DOM."
     },
     "zIndex": {
-      "type": "number",
+      "type": "number;",
       "isRequired": false,
       "description": "The z-index applied to each toast group"
     }
   },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Description": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "CloseTrigger": { "asChild": { "type": "boolean;", "isRequired": false } }
 }

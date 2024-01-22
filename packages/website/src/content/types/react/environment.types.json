@@ -1,1 +1,5 @@
-{ "Root": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } } }
+{
+  "Root": {
+    "value": { "type": "RootNode | (() => RootNode);", "isRequired": false }
+  }
+}
