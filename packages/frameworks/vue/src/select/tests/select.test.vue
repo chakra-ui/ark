@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Select } from '../'
-import { ChevronDownIcon } from 'lucide-vue-next'
 
 const items = [
   { label: 'React', value: 'react' },
@@ -16,9 +15,7 @@ const items = [
     <Select.Control>
       <Select.Trigger>
         <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>
-          <ChevronDownIcon />
-        </Select.Indicator>
+        <Select.Indicator> ChevronDownIcon </Select.Indicator>
       </Select.Trigger>
       <Select.ClearTrigger>Clear</Select.ClearTrigger>
     </Select.Control>
