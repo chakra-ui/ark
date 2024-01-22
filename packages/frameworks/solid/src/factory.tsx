@@ -1,31 +1,28 @@
-import {
-  splitProps,
-  type Component,
-  type ComponentProps,
-  type JSX,
-  type ValidComponent,
-} from 'solid-js'
+import { splitProps, type ComponentProps, type JSX, type ValidComponent } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
+import type { Assign } from './types'
 
-type AsProps = {
-  as?: ValidComponent
+type AsProps<T extends ValidComponent = ValidComponent> = {
+  as?: T
 }
-
-type PolymorphicProps<T extends ValidComponent, P = ComponentProps<T>> = {
-  [K in keyof P]: P[K]
-} & AsProps
 
 type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: AsForwardRefComponent<E>
+  [E in keyof JSX.IntrinsicElements]: PolymorphicComponent<E>
 }
 
-type AsForwardRefComponent<E extends ElementType> = Component<AsComponentProps<E>>
 type AsComponentProps<E extends ElementType> = ComponentProps<E> & AsProps
+
 type ElementType = keyof JSX.IntrinsicElements
 
+export type PolymorphicComponent<T extends ValidComponent> = {
+  <K extends ValidComponent = T>(
+    props: Assign<Assign<ComponentProps<T>, ComponentProps<K>>, AsProps<K>>,
+  ): JSX.Element
+}
+
 export const withAsProp = <T extends ValidComponent>(Component: T) => {
-  const Polymorphic = (props: PolymorphicProps<T>) => {
-    const [localProps, otherProps] = splitProps(props as PolymorphicProps<ValidComponent>, ['as'])
+  const Polymorphic: PolymorphicComponent<T> = (props) => {
+    const [localProps, otherProps] = splitProps(props as AsProps, ['as'])
     return <Dynamic component={localProps.as || Component} {...otherProps} />
   }
   return Polymorphic
