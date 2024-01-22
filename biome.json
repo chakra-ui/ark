@@ -16,5 +16,10 @@
     "formatter": {
       "enabled": false
     }
+  },
+  "json": {
+    "formatter": {
+      "enabled": false
+    }
   }
 }
