@@ -7,7 +7,7 @@ import { type Assign } from '../types'
 import { ProgressProvider } from './progress-context'
 import { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
 
-export interface ProgressProps
+export interface ProgressRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -16,7 +16,7 @@ export interface ProgressProps
     UseProgressProps
   > {}
 
-export const Progress = (props: ProgressProps) => {
+export const ProgressRoot = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
     'dir',
     'getRootNode',

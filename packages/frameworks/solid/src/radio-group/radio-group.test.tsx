@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { For } from 'solid-js'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { RadioGroup, type RadioGroupProps } from './'
+import { RadioGroup, type RadioGroupRootProps } from './'
 
-const ComponentUnderTest = (props: RadioGroupProps) => {
+const ComponentUnderTest = (props: RadioGroupRootProps) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

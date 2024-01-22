@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { FileUpload } from '../'
 import './file-upload.css'
 
-type FileUploadType = typeof FileUpload
-
-const meta: Meta<FileUploadType> = {
+const meta: Meta = {
   title: 'FileUpload',
-  component: FileUpload,
 }
 
 export default meta

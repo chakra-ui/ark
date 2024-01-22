@@ -5,9 +5,9 @@ import type { Assign } from '../types'
 import { AvatarProvider } from './avatar-context'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const Avatar = (props: AvatarProps) => {
+export const AvatarRoot = (props: AvatarRootProps) => {
   const [params, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'dir',
     'getRootNode',

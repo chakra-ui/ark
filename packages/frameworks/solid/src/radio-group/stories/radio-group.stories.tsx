@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { RadioGroup } from '../'
 import './radio-group.css'
 
-type RadioGroupType = typeof RadioGroup
-
-const meta: Meta<RadioGroupType> = {
+const meta: Meta = {
   title: 'RadioGroup',
-  component: RadioGroup,
 }
 
 export default meta

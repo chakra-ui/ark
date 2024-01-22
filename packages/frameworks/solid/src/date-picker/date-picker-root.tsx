@@ -13,7 +13,7 @@ import type { Assign } from '../types'
 import { DatePickerProvider } from './date-picker-context'
 import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 
-export interface DatePickerProps
+export interface DatePickerRootProps
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
@@ -23,7 +23,7 @@ export interface DatePickerProps
     >,
     UsePresenceProps {}
 
-export const DatePicker = (props: DatePickerProps) => {
+export const DatePickerRoot = (props: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
   const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',

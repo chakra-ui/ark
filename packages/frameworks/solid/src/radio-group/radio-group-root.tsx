@@ -5,9 +5,9 @@ import type { Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
-export interface RadioGroupProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
+export interface RadioGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 
-export const RadioGroup = (props: RadioGroupProps) => {
+export const RadioGroupRoot = (props: RadioGroupRootProps) => {
   const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
     'dir',
     'disabled',

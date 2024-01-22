@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
-export interface SwitchProps
+export interface SwitchRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'label'>,
@@ -16,7 +16,7 @@ export interface SwitchProps
     UseSwitchProps
   > {}
 
-export const Switch = (props: SwitchProps) => {
+export const SwitchRoot = (props: SwitchRootProps) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'dir',

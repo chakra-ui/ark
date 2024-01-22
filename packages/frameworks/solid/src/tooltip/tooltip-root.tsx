@@ -11,11 +11,11 @@ import { runIfFn } from '../run-if-fn'
 import { TooltipProvider } from './tooltip-context'
 import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 
-export interface TooltipProps extends UseTooltipProps, UsePresenceProps {
+export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
   children?: JSX.Element | ((api: UseTooltipReturn) => JSX.Element)
 }
 
-export const Tooltip = (props: TooltipProps) => {
+export const TooltipRoot = (props: TooltipRootProps) => {
   const [presenceProps, tooltipProps] = splitPresenceProps(props)
   const [useTooltipProps, localProps] = createSplitProps<UseTooltipProps>()(tooltipProps, [
     'aria-label',

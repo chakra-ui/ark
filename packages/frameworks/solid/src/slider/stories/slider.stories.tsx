@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Slider } from '../'
 import './slider.css'
 
-type SliderType = typeof Slider
-
-const meta: Meta<SliderType> = {
+const meta: Meta = {
   title: 'Slider',
-  component: Slider,
 }
 
 export default meta

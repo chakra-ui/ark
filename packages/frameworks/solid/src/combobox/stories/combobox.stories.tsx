@@ -4,11 +4,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Combobox } from '../'
 import './combobox.css'
 
-type ComboboxType = typeof Combobox
-
-const meta: Meta<ComboboxType> = {
+const meta: Meta = {
   title: 'Combobox',
-  component: Combobox,
 }
 
 export default meta

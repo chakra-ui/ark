@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Toast, createToaster } from '../'
 import './toast.css'
 
-type ToastType = typeof Toast
-
-const meta: Meta<ToastType> = {
+const meta: Meta = {
   title: 'Toast',
-  component: Toast,
 }
 
 export default meta

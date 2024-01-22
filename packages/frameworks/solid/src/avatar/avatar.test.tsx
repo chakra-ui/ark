@@ -1,9 +1,9 @@
 import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
 import { getExports, getParts } from '../setup-test'
-import { Avatar, type AvatarProps } from './'
+import { Avatar, type AvatarRootProps } from './'
 
-const ComponentUnderTest = (props: AvatarProps) => {
+const ComponentUnderTest = (props: AvatarRootProps) => {
   return (
     <Avatar.Root {...props}>
       <Avatar.Fallback>PA</Avatar.Fallback>

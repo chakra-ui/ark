@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Avatar } from '../'
 import './avatar.css'
 
-type AvatarType = typeof Avatar.Root
-
-const meta: Meta<AvatarType> = {
+const meta: Meta = {
   title: 'Avatar',
-  component: Avatar.Root,
 }
 
 export default meta

@@ -4,11 +4,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Popover } from '../'
 import './popover.css'
 
-type PopoverType = typeof Popover
-
-const meta: Meta<PopoverType> = {
+const meta: Meta = {
   title: 'Popover',
-  component: Popover,
 }
 
 export default meta

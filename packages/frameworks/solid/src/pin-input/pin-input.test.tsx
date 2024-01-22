@@ -4,9 +4,9 @@ import user from '@testing-library/user-event'
 import { Index } from 'solid-js'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { PinInput, type PinInputProps } from './'
+import { PinInput, type PinInputRootProps } from './'
 
-const ComponentUnderTest = (props: PinInputProps) => (
+const ComponentUnderTest = (props: PinInputRootProps) => (
   <PinInput.Root {...props}>
     <PinInput.Label>Label</PinInput.Label>
     <PinInput.Control>

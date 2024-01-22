@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { PinInput } from '../'
 import './pin-input.css'
 
-type PinInputType = typeof PinInput
-
-const meta: Meta<PinInputType> = {
+const meta: Meta = {
   title: 'PinInput',
-  component: PinInput,
 }
 
 export default meta

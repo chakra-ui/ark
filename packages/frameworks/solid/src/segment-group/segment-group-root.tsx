@@ -6,9 +6,9 @@ import type { Assign } from '../types'
 import { SegmentGroupProvider } from './segment-group-context'
 import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 
-export interface SegmentGroupProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
+export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
-export const SegmentGroup = (props: SegmentGroupProps) => {
+export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
   const [groupParams, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'dir',
     'disabled',

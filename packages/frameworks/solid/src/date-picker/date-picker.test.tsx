@@ -3,9 +3,9 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Portal } from 'solid-js/web'
 import { getExports, getParts } from '../setup-test'
-import { DatePicker, type DatePickerProps } from './'
+import { DatePicker, type DatePickerRootProps } from './'
 
-const ComponentUnderTest = (props: DatePickerProps) => (
+const ComponentUnderTest = (props: DatePickerRootProps) => (
   <DatePicker.Root {...props}>
     <DatePicker.Label>Label</DatePicker.Label>
     <DatePicker.Control>

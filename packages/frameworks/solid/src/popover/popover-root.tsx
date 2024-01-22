@@ -11,11 +11,11 @@ import { runIfFn } from '../run-if-fn'
 import { PopoverProvider } from './popover-context'
 import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
 
-export interface PopoverProps extends UsePopoverProps, UsePresenceProps {
+export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {
   children?: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
 }
 
-export const Popover = (props: PopoverProps) => {
+export const PopoverRoot = (props: PopoverRootProps) => {
   const [presenceProps, popoverProps] = splitPresenceProps(props)
   const [usePopoverProps, localProps] = createSplitProps<UsePopoverProps>()(popoverProps, [
     'autoFocus',

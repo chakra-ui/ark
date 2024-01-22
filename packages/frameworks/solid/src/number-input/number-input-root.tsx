@@ -11,7 +11,7 @@ import {
   type UseNumberInputReturn,
 } from './use-number-input'
 
-export interface NumberInputProps
+export interface NumberInputRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -22,7 +22,7 @@ export interface NumberInputProps
     UseNumberInputProps
   > {}
 
-export const NumberInput = (props: NumberInputProps) => {
+export const NumberInputRoot = (props: NumberInputRootProps) => {
   const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',

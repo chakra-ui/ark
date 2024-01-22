@@ -7,7 +7,7 @@ import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
 
-export interface SplitterProps
+export interface SplitterRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -16,7 +16,7 @@ export interface SplitterProps
     UseSplitterProps
   > {}
 
-export const Splitter = (props: SplitterProps) => {
+export const SplitterRoot = (props: SplitterRootProps) => {
   const [splitterParams, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'dir',
     'getRootNode',
