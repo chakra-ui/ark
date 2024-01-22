@@ -11,5 +11,10 @@
   },
   "formatter": {
     "enabled": false
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": false
+    }
   }
 }
