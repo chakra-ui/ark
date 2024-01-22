@@ -9,8 +9,9 @@
     "build": "turbo run build --filter='!./templates/**'",
     "exports:check": "pnpm scripts exports:check",
     "exports:sync": "pnpm scripts exports:sync",
-    "format": "turbo run format",
-    "format:check": "turbo run format:check",
+    "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
+    "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
+    "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
     "document": "concurrently 'pnpm:document:*'",
@@ -30,6 +31,9 @@
     "concurrently": "8.2.2",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
+    "prettier": "3.2.2",
+    "prettier-plugin-astro": "0.12.3",
+    "prettier-plugin-organize-imports": "3.2.4",
     "react": "18.2.0",
     "turbo": "1.11.3",
     "typescript": "5.3.3"
@@ -41,7 +45,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json}": [
-      "pnpm format -- --linter-enabled=false --no-errors-on-unmatched"
+      "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
   "packageManager": "pnpm@8.14.1"

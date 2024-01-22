@@ -9,8 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "biome check --apply ./src",
-    "format:check": "biome check ./src"
+    "lint": "biome lint ./src",
+    "lint:fix": "biome lint --apply ./src"
   },
   "dependencies": {
     "@ark-ui/anatomy": "1.3.0",
