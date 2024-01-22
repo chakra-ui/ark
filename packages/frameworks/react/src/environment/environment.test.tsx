@@ -17,9 +17,9 @@ const PrintEnvironment = () => {
 describe('Environment', () => {
   it('should have access to the environment values', async () => {
     const ComponentUnderTest = () => (
-      <Environment.Root value={document}>
+      <Environment value={document}>
         <PrintEnvironment />
-      </Environment.Root>
+      </Environment>
     )
     render(<ComponentUnderTest />)
 

@@ -1,11 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { Editable } from '../'
 
-type EditableType = typeof Editable
-
-const meta: Meta<EditableType> = {
+const meta: Meta = {
   title: 'Editable',
-  component: Editable,
 }
 
 export default meta

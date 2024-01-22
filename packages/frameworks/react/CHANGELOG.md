@@ -8,6 +8,18 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+Breaking Changes:
+
+```tsx
+// before
+import type { MaschineProps } from '@ark-ui/react'
+
+// after
+import type { MaschineRootProps } from '@ark-ui/react'
+```
+
+### Changed
+
 - Refactored `Progress` component to use `div` instead of `nav`.
 
 ## [1.3.0] - 2024-01-17

@@ -10,72 +10,65 @@ import {
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { DatePickerProvider } from './date-picker-context'
-import { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
+import { ColorPickerProvider } from './color-picker-context'
+import {
+  useColorPicker,
+  type UseColorPickerProps,
+  type UseColorPickerReturn,
+} from './use-color-picker'
 
-export interface DatePickerProps
+export interface ColorPickerRootProps
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        { children?: ReactNode | ((api: UseDatePickerReturn) => ReactNode) }
+        { children?: ReactNode | ((api: UseColorPickerReturn) => ReactNode) }
       >,
-      UseDatePickerProps
+      UseColorPickerProps
     >,
     UsePresenceProps {}
 
-export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>((props, ref) => {
-  const [presenceProps, datePickerProps] = splitPresenceProps(props)
-  const [useDatePickerProps, { children, ...localProps }] = createSplitProps<UseDatePickerProps>()(
-    datePickerProps,
-    [
+export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
+  const [presenceProps, colorPickerProps] = splitPresenceProps(props)
+  const [useColorPickerProps, { children, ...localProps }] =
+    createSplitProps<UseColorPickerProps>()(colorPickerProps, [
       'closeOnSelect',
       'defaultValue',
       'dir',
       'disabled',
-      'fixedWeeks',
-      'focusedValue',
       'format',
       'getRootNode',
       'id',
       'ids',
-      'isDateUnavailable',
-      'isDateUnavailable',
-      'locale',
-      'max',
-      'min',
-      'modal',
+      'initialFocusEl',
       'name',
-      'numOfMonths',
-      'onFocusChange',
+      'name',
+      'onFocusOutside',
+      'onFormatChange',
+      'onInteractOutside',
       'onOpenChange',
+      'onPointerDownOutside',
       'onValueChange',
-      'onViewChange',
+      'onValueChangeEnd',
       'open',
-      'parse',
       'positioning',
       'readOnly',
-      'selectionMode',
-      'startOfWeek',
-      'timeZone',
-      'translations',
       'value',
-      'view',
-    ],
-  )
-  const api = useDatePicker(useDatePickerProps)
+    ])
+  const api = useColorPicker(useColorPickerProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
-    <DatePickerProvider value={api}>
+    <ColorPickerProvider value={api}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps} ref={ref}>
           {view}
         </ark.div>
+        <input {...api.hiddenInputProps} />
       </PresenceProvider>
-    </DatePickerProvider>
+    </ColorPickerProvider>
   )
 })
 
-DatePicker.displayName = 'DatePicker'
+ColorPickerRoot.displayName = 'ColorPickerRoot'

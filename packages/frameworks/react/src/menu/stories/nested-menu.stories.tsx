@@ -4,11 +4,8 @@ import { Menu } from '../'
 import { Portal } from '../../portal'
 import './menu.css'
 
-type MenuType = typeof Menu
-
-const meta: Meta<MenuType> = {
+const meta: Meta = {
   title: 'NestedMenu',
-  component: Menu,
 }
 
 export default meta
@@ -21,7 +18,7 @@ export const Basic = () => (
         <Menu.Item id="new-tab">New Tab...</Menu.Item>
         <Menu.Item id="new-win">New Window...</Menu.Item>
         <Menu.Separator />
-        <Menu>
+        <Menu.Root>
           <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
           <Portal>
             <Menu.Positioner>
@@ -31,7 +28,7 @@ export const Basic = () => (
               </Menu.Content>
             </Menu.Positioner>
           </Portal>
-        </Menu>
+        </Menu.Root>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
@@ -67,7 +64,7 @@ export const Advanced = () => {
               {({ isChecked }) => <>{isChecked ? '✅' : ''} Vue</>}
             </Menu.OptionItem>
           </Menu.ItemGroup>
-          <Menu>
+          <Menu.Root>
             <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
             <Portal>
               <Menu.Positioner>
@@ -77,7 +74,7 @@ export const Advanced = () => {
                 </Menu.Content>
               </Menu.Positioner>
             </Portal>
-          </Menu>
+          </Menu.Root>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

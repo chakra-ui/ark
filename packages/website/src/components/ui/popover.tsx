@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(popover)
 
 export * from '@ark-ui/react/src/popover'
-export type PopoverProps = Ark.PopoverProps & PopoverVariantProps
+export type PopoverProps = Ark.PopoverRootProps & PopoverVariantProps
 
 const PopoverRoot = withProvider(styled(Ark.Popover.Root))
 export const PopoverAnchor = withContext(styled(Ark.Popover.Anchor), 'anchor')

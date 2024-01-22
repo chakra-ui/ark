@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(switchRecipe)
 
 export * from '@ark-ui/react/src/switch'
-export type SwitchProps = Ark.SwitchProps & SwitchRecipeVariantProps
+export type SwitchProps = Ark.SwitchRootProps & SwitchRecipeVariantProps
 
 const SwitchRoot = withProvider(styled(Ark.Switch.Root), 'root')
 export const SwitchControl = withContext(styled(Ark.Switch.Control), 'control')

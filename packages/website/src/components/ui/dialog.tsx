@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(dialog)
 
 export * from '@ark-ui/react/src/dialog'
-export type DialogProps = Ark.DialogProps & DialogVariantProps
+export type DialogProps = Ark.DialogRootProps & DialogVariantProps
 
 const DialogRoot = withProvider(styled(Ark.Dialog.Root))
 export const DialogBackdrop = withContext(styled(Ark.Dialog.Backdrop), 'backdrop')

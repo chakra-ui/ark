@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { RatingGroup } from '../'
 
-type RatingGroupType = typeof RatingGroup
-
-const meta: Meta<RatingGroupType> = {
+const meta: Meta = {
   title: 'RatingGroup',
-  component: RatingGroup,
 }
 
 export default meta

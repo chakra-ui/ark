@@ -1,4 +1,14 @@
 {
+  "Item": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": { "type": "boolean", "isRequired": false },
+    "invalid": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -61,16 +71,6 @@
       "isRequired": false,
       "description": "The value of the checked radio"
     }
-  },
-  "Item": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false },
-    "invalid": { "type": "boolean", "isRequired": false }
   },
   "Label": {
     "asChild": {

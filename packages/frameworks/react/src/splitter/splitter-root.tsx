@@ -8,7 +8,7 @@ import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
 
-export interface SplitterProps
+export interface SplitterRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -19,7 +19,7 @@ export interface SplitterProps
     UseSplitterProps
   > {}
 
-export const Splitter = forwardRef<HTMLDivElement, SplitterProps>((props, ref) => {
+export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
   const [useSplitterProps, { children, ...divProps }] = createSplitProps<UseSplitterProps>()(
     props,
     [
@@ -48,4 +48,4 @@ export const Splitter = forwardRef<HTMLDivElement, SplitterProps>((props, ref) =
   )
 })
 
-Splitter.displayName = 'Splitter'
+SplitterRoot.displayName = 'SplitterRoot'

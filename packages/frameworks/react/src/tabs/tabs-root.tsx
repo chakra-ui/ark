@@ -7,9 +7,11 @@ import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
-export interface TabsProps extends Assign<HTMLArkProps<'div'>, UseTabsProps>, UsePresenceProps {}
+export interface TabsRootProps
+  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
+    UsePresenceProps {}
 
-export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
   const [presenceProps, tabsProps] = splitPresenceProps(props)
   const [useTabsProps, localprops] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
@@ -37,4 +39,4 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   )
 })
 
-Tabs.displayName = 'Tabs'
+TabsRoot.displayName = 'TabsRoot'

@@ -7,7 +7,7 @@ import { type Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
 import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 
-export interface PaginationProps
+export interface PaginationRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'nav'>,
@@ -16,7 +16,7 @@ export interface PaginationProps
     UsePaginationProps
   > {}
 
-export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
+export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
   const [paginationProps, { children, ...localProps }] = createSplitProps<UsePaginationProps>()(
     props,
     [
@@ -49,4 +49,4 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
   )
 })
 
-Pagination.displayName = 'Pagination'
+PaginationRoot.displayName = 'PaginationRoot'

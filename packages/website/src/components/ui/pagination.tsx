@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(pagination)
 
 export * from '@ark-ui/react/src/pagination'
-export type PaginationProps = Ark.PaginationProps & PaginationVariantProps
+export type PaginationProps = Ark.PaginationRootProps & PaginationVariantProps
 
 const PaginationRoot = withProvider(styled(Ark.Pagination.Root), 'root')
 export const PaginationEllipsis = withContext(styled(Ark.Pagination.Ellipsis), 'ellipsis')

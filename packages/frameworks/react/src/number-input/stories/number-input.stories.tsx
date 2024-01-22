@@ -2,11 +2,8 @@ import type { Meta } from '@storybook/react'
 import { NumberInput } from '../'
 import './number-input.css'
 
-type NumberInputType = typeof NumberInput.Root
-
-const meta: Meta<NumberInputType> = {
+const meta: Meta = {
   title: 'NumberInput',
-  component: NumberInput.Root,
 }
 
 export default meta

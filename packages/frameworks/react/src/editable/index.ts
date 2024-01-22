@@ -1,5 +1,4 @@
 import type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
-import { Editable as EditableRoot, type EditableProps } from './editable'
 import { EditableArea, type EditableAreaProps } from './editable-area'
 import { EditableCancelTrigger, type EditableCancelTriggerProps } from './editable-cancel-trigger'
 import { useEditableContext, type EditableContext } from './editable-context'
@@ -8,9 +7,10 @@ import { EditableEditTrigger, type EditableEditTriggerProps } from './editable-e
 import { EditableInput, type EditableInputProps } from './editable-input'
 import { EditableLabel, type EditableLabelProps } from './editable-label'
 import { EditablePreview, type EditablePreviewProps } from './editable-preview'
+import { EditableRoot, type EditableRootProps } from './editable-root'
 import { EditableSubmitTrigger, type EditableSubmitTriggerProps } from './editable-submit-trigger'
 
-const Editable = Object.assign(EditableRoot, {
+export const Editable = {
   Root: EditableRoot,
   Area: EditableArea,
   CancelTrigger: EditableCancelTrigger,
@@ -20,10 +20,9 @@ const Editable = Object.assign(EditableRoot, {
   Label: EditableLabel,
   Preview: EditablePreview,
   SubmitTrigger: EditableSubmitTrigger,
-})
+}
 
 export {
-  Editable,
   EditableArea,
   EditableCancelTrigger,
   EditableControl,
@@ -31,6 +30,7 @@ export {
   EditableInput,
   EditableLabel,
   EditablePreview,
+  EditableRoot,
   EditableSubmitTrigger,
   useEditableContext,
 }
@@ -44,7 +44,7 @@ export type {
   EditableInputProps,
   EditableLabelProps,
   EditablePreviewProps,
-  EditableProps,
+  EditableRootProps,
   EditableSubmitTriggerProps,
   EditableValueChangeDetails,
 }

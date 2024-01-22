@@ -2,9 +2,9 @@ import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { RatingGroup, type RatingGroupProps } from './'
+import { RatingGroup, type RatingGroupRootProps } from './'
 
-const ComponentUnderTest = (props: RatingGroupProps) => (
+const ComponentUnderTest = (props: RatingGroupRootProps) => (
   <RatingGroup.Root {...props}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>

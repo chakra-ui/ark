@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(checkbox)
 
 export * from '@ark-ui/react/src/checkbox'
-export type CheckboxProps = Ark.CheckboxProps & CheckboxVariantProps
+export type CheckboxProps = Ark.CheckboxRootProps & CheckboxVariantProps
 
 const CheckboxRoot = withProvider(styled(Ark.Checkbox.Root), 'root')
 export const CheckboxControl = withContext(styled(Ark.Checkbox.Control), 'control')

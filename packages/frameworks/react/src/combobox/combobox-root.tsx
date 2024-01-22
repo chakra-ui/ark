@@ -10,27 +10,29 @@ import {
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
 import { type Assign, type CollectionItem } from '../types'
-import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
+import { ComboboxProvider } from './combobox-context'
+import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 
-export interface SelectProps<T extends CollectionItem>
+export interface ComboboxRootProps<T extends CollectionItem>
   extends Assign<
       Assign<
         HTMLArkProps<'div'>,
-        { children?: ReactNode | ((api: UseSelectReturn<T>) => ReactNode) }
+        { children?: ReactNode | ((api: UseComboboxReturn<T>) => ReactNode) }
       >,
-      UseSelectProps<T>
+      UseComboboxProps<T>
     >,
     UsePresenceProps {}
 
-const SelectImpl = <T extends CollectionItem>(
-  props: SelectProps<T>,
+const ComboboxImpl = <T extends CollectionItem>(
+  props: ComboboxRootProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ) => {
-  const [presenceProps, selectProps] = splitPresenceProps(props)
-  const [useSelectProps, { children, ...localProps }] = createSplitProps<UseSelectProps<T>>()(
-    selectProps,
+  const [presenceProps, comboboxProps] = splitPresenceProps(props)
+  const [useComboboxProps, { children, ...localProps }] = createSplitProps<UseComboboxProps<T>>()(
+    comboboxProps,
     [
+      'allowCustomValue',
+      'autoFocus',
       'closeOnSelect',
       'defaultValue',
       'dir',
@@ -40,6 +42,8 @@ const SelectImpl = <T extends CollectionItem>(
       'highlightedValue',
       'id',
       'ids',
+      'inputBehavior',
+      'inputValue',
       'invalid',
       'isItemDisabled',
       'items',
@@ -50,37 +54,42 @@ const SelectImpl = <T extends CollectionItem>(
       'name',
       'onFocusOutside',
       'onHighlightChange',
+      'onInputValueChange',
       'onInteractOutside',
+      'onOpenChange',
       'onOpenChange',
       'onPointerDownOutside',
       'onValueChange',
-      'open',
+      'openOnClick',
+      'placeholder',
       'positioning',
       'readOnly',
+      'selectionBehavior',
       'selectOnBlur',
+      'translations',
       'value',
     ],
   )
-  const api = useSelect(useSelectProps)
+  const api = useCombobox(useComboboxProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
   const view = runIfFn(children, api)
   const mergedProps = mergeProps(api.rootProps, localProps)
 
   return (
-    <SelectProvider value={api}>
+    <ComboboxProvider value={api}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps} ref={ref}>
           {view}
         </ark.div>
       </PresenceProvider>
-    </SelectProvider>
+    </ComboboxProvider>
   )
 }
 
-export interface SelectComponent {
+export interface ComboboxComponent {
   <T extends CollectionItem>(
-    props: SelectProps<T> & React.RefAttributes<HTMLDivElement>,
+    props: ComboboxRootProps<T> & React.RefAttributes<HTMLDivElement>,
   ): JSX.Element
 }
 
-export const Select = forwardRef(SelectImpl) as SelectComponent
+export const ComboboxRoot = forwardRef(ComboboxImpl) as ComboboxComponent

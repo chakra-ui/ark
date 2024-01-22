@@ -7,7 +7,7 @@ import { type Assign } from '../types'
 import { SliderProvider } from './slider-context'
 import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 
-export interface SliderProps
+export interface SliderRootProps
   extends Assign<
     Assign<
       HTMLArkProps<'div'>,
@@ -18,7 +18,7 @@ export interface SliderProps
     UseSliderProps
   > {}
 
-export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
   const [useSliderProps, { children, ...divProps }] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
@@ -60,4 +60,4 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   )
 })
 
-Slider.displayName = 'Slider'
+SliderRoot.displayName = 'SliderRoot'

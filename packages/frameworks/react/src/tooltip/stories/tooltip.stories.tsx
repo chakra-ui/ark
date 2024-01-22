@@ -3,11 +3,8 @@ import { useState } from 'react'
 import { Tooltip } from '../'
 import './tooltip.css'
 
-type TooltipType = typeof Tooltip
-
-const meta: Meta<TooltipType> = {
+const meta: Meta = {
   title: 'Tooltip',
-  component: Tooltip,
 }
 
 export default meta

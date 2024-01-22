@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Accordion, type AccordionProps } from './'
+import { Accordion, type AccordionRootProps } from './'
 
-const ComponentUnderTest = (props: AccordionProps) => {
+const ComponentUnderTest = (props: AccordionRootProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },

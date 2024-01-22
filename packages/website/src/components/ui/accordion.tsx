@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(accordion)
 
 export * from '@ark-ui/react/src/accordion'
-export type AccordionProps = Ark.AccordionProps & AccordionVariantProps
+export type AccordionProps = Ark.AccordionRootProps & AccordionVariantProps
 
 const AccordionRoot = withProvider(styled(Ark.Accordion.Root), 'root')
 export const AccordionItem = withContext(styled(Ark.Accordion.Item), 'item')

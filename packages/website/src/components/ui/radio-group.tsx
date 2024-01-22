@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(radioGroup)
 
 export * from '@ark-ui/react/src/radio-group'
-export type RadioGroupProps = Ark.RadioGroupProps & RadioGroupVariantProps
+export type RadioGroupProps = Ark.RadioGroupRootProps & RadioGroupVariantProps
 
 const RadioGroupRoot = withProvider(styled(Ark.RadioGroup.Root), 'root')
 export const RadioGroupIndicator = withContext(styled(Ark.RadioGroup.Indicator), 'indicator')
