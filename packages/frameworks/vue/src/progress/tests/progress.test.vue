@@ -6,7 +6,7 @@ import { Progress } from '../'
   <Progress.Root>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="loading" />
+    <Progress.View state="loading" />
     <Progress.Track>
       <Progress.Range />
     </Progress.Track>

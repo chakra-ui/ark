@@ -6,21 +6,46 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
+
 ### Changed
 
-Breaking Changes:
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
 
-```tsx
-// before
-import type { MaschineProps } from '@ark-ui/react'
-
-// after
-import type { MaschineRootProps } from '@ark-ui/react'
+```diff
+- import type { AvatarProps } from "@ark-ui/react"
++ import type { AvatarRootProps } from "@ark-ui/react"
 ```
 
-### Changed
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
 
-- Refactored `Progress` component to use `div` instead of `nav`.
+```diff
+- <Presence.Root>...</Presence.Root>
++ <Presence>...</Presence>
+```
+
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+
+- Added the `ItemPreview` component to the `TagsInput` component. See the example below:
+
+```diff
+<TagsInput.Item key={index} index={index} value={value}>
++  <TagsInput.ItemPreview>
+    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
++ </TagsInput.ItemPreview>
+  <TagsInput.ItemInput />
+</TagsInput.Item>
+```
+
+- Refactored the `Progress` component to use `div` elements instead of `nav` for semantic correctness.
+
+### Fixed
+
+- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
 
 ## [1.3.0] - 2024-01-17
 
@@ -357,6 +382,14 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 [0.14.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.14.0
 [0.15.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0-beta.0
 [0.15.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0
+
+```
+
+```
+
+```
+
+```
 
 ```
 

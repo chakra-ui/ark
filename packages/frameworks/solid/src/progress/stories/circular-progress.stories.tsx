@@ -12,7 +12,7 @@ export const Basic = () => (
   <Progress.Root>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="loading" />
+    <Progress.View state="loading" />
     <Progress.Circle>
       <Progress.CircleTrack />
       <Progress.CircleRange />
@@ -46,7 +46,7 @@ export const Indeterminate = () => (
   <Progress.Root>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="indeterminate" />
+    <Progress.View state="indeterminate" />
     <Progress.Circle>
       <Progress.CircleTrack />
       <Progress.CircleRange />

@@ -15,9 +15,11 @@ const ComponentUnderTest = (props: TagsInputRootProps) => {
             <Index each={api().value}>
               {(value, index) => (
                 <TagsInput.Item index={index} value={value()}>
+                  <TagsInput.ItemPreview>
+                    <TagsInput.ItemText>{value()}</TagsInput.ItemText>
+                    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                  </TagsInput.ItemPreview>
                   <TagsInput.ItemInput />
-                  <TagsInput.ItemText>{value()}</TagsInput.ItemText>
-                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
                 </TagsInput.Item>
               )}
             </Index>
