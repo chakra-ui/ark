@@ -53,6 +53,14 @@
       "description": "The current value of the progress bar."
     }
   },
+  "View": {
+    "state": { "type": "ProgressState", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Label": {
     "asChild": {
       "type": "boolean",
@@ -75,14 +83,6 @@
     }
   },
   "Circle": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "state": { "type": "ProgressState", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
