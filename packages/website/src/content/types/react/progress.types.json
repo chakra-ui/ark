@@ -81,14 +81,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Indicator": {
-    "state": { "type": "ProgressState", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "ValueText": {
     "asChild": {
       "type": "boolean",
