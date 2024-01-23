@@ -105,4 +105,9 @@ describe('Ark Factory', () => {
     const child = screen.getByTestId('child')
     expect(child).toHaveClass('child parent')
   })
+
+  it('should use as', async () => {
+    render(() => <ark.div as="h1">Ark UI</ark.div>)
+    expect(screen.getByText('Ark UI').tagName).toBe('H1')
+  })
 })

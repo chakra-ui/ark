@@ -82,4 +82,9 @@ describe('Ark Factory', () => {
     )
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
   })
+
+  it('should use as', async () => {
+    render(<ark.div as="h1">Ark UI</ark.div>)
+    expect(screen.getByText('Ark UI').tagName).toBe('H1')
+  })
 })

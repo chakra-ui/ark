@@ -51,7 +51,7 @@ export type HTMLPolymorphicProps<T extends ElementType> = Omit<
 
 export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
 
-const withAsChild = (component: ElementType) => {
+const withAs = (component: ElementType) => {
   const Polimoprhic = defineComponent({
     name: 'Polimoprhic',
     inheritAttrs: false,
@@ -60,10 +60,15 @@ const withAsChild = (component: ElementType) => {
         type: Boolean,
         default: false,
       },
+      as: {
+        type: String as () => ElementType,
+        default: component,
+      },
     },
     setup(props, { attrs, slots }) {
-      if (!props.asChild) return () => h(component, { ...attrs }, slots.default?.())
-      return () => h(Dynamic, attrs, { default: slots.default })
+      if (props.asChild) return () => h(Dynamic, attrs, { default: slots.default })
+      if (props.as) return () => h(props.as, { ...attrs }, slots.default?.())
+      return () => h(component, { ...attrs }, slots.default?.())
     },
   })
   return Polimoprhic
@@ -72,14 +77,14 @@ const withAsChild = (component: ElementType) => {
 export function jsxFactory() {
   const cache = new Map()
 
-  const factory = new Proxy(withAsChild, {
+  const factory = new Proxy(withAs, {
     apply(target, thisArg, argArray) {
-      return withAsChild(argArray[0])
+      return withAs(argArray[0])
     },
     get(_, element) {
       const asElement = element as unknown as ElementType
       if (!cache.has(asElement)) {
-        cache.set(asElement, withAsChild(asElement))
+        cache.set(asElement, withAs(asElement))
       }
       return cache.get(asElement)
     },

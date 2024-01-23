@@ -18,23 +18,28 @@ type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoti
 >
 type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & {
   asChild?: boolean
+  as?: React.ElementType
 }
 
-const withAsChild = (Component: React.ElementType) => {
+const withAs = (Component: React.ElementType) => {
   const Comp = forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
-    const { asChild, children, ...restProps } = props
+    const { as, asChild, children, ...restProps } = props
 
-    if (!asChild) {
-      return createElement(Component, { ...restProps, ref }, children)
+    if (asChild) {
+      const onlyChild = Children.only(children)
+      return isValidElement(onlyChild)
+        ? cloneElement(onlyChild, {
+            ...mergeProps(restProps, onlyChild.props as any),
+            ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
+          })
+        : null
     }
 
-    const onlyChild = Children.only(children)
-    return isValidElement(onlyChild)
-      ? cloneElement(onlyChild, {
-          ...mergeProps(restProps, onlyChild.props as any),
-          ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
-        })
-      : null
+    if (as) {
+      return createElement(as, { ...restProps, ref }, children)
+    }
+
+    return createElement(Component, { ...restProps, ref }, children)
   })
 
   // @ts-expect-error - it exists
@@ -53,14 +58,14 @@ export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentProps
 export const jsxFactory = () => {
   const cache = new Map()
 
-  return new Proxy(withAsChild, {
+  return new Proxy(withAs, {
     apply(target, thisArg, argArray) {
-      return withAsChild(argArray[0])
+      return withAs(argArray[0])
     },
     get(_, element) {
       const asElement = element as React.ElementType
       if (!cache.has(asElement)) {
-        cache.set(asElement, withAsChild(asElement))
+        cache.set(asElement, withAs(asElement))
       }
       return cache.get(asElement)
     },

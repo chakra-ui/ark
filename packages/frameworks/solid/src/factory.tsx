@@ -14,6 +14,7 @@ import { ssrSpread } from './ssr-spread'
 type ElementType = keyof JSX.IntrinsicElements
 type AsChildProps = {
   asChild?: boolean
+  as?: ElementType
 }
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: AsChildForwardRefComponent<E>
@@ -21,42 +22,50 @@ type JsxElements = {
 type AsChildForwardRefComponent<E extends ElementType> = Component<AsChildComponentProps<E>>
 type AsChildComponentProps<E extends ElementType> = ComponentProps<E> & AsChildProps
 
-function withAsChild(Component: ElementType) {
+function withAs(Component: ElementType) {
   return function jsx(props: ParentProps<AsChildProps>) {
-    const [localProps, restProps] = splitProps(props, ['asChild', 'children'])
+    const [localProps, restProps] = splitProps(props, ['asChild', 'as', 'children'])
 
-    if (!localProps.asChild) {
+    if (localProps.asChild) {
+      const getChildren = children(() => ssrSpread(localProps.children, restProps))
+
+      createEffect(() => {
+        const children = getChildren()
+        if (children instanceof HTMLElement || children instanceof SVGElement) {
+          spread(children, restProps)
+        }
+      })
+
+      return getChildren
+    }
+
+    if (localProps.as) {
       return (
-        <Dynamic component={Component} {...restProps}>
+        <Dynamic component={localProps.as} {...restProps}>
           {localProps.children}
         </Dynamic>
       )
     }
 
-    const getChildren = children(() => ssrSpread(localProps.children, restProps))
-
-    createEffect(() => {
-      const children = getChildren()
-      if (children instanceof HTMLElement || children instanceof SVGElement) {
-        spread(children, restProps)
-      }
-    })
-
-    return getChildren
+    return (
+      <Dynamic component={Component} {...restProps}>
+        {localProps.children}
+      </Dynamic>
+    )
   }
 }
 
 function jsxFactory() {
   const cache = new Map()
 
-  return new Proxy(withAsChild, {
+  return new Proxy(withAs, {
     apply(target, thisArg, argArray) {
-      return withAsChild(argArray[0])
+      return withAs(argArray[0])
     },
     get(_, element) {
       const asElement = element as ElementType
       if (!cache.has(asElement)) {
-        cache.set(asElement, withAsChild(asElement))
+        cache.set(asElement, withAs(asElement))
       }
       return cache.get(asElement)
     },
