@@ -9,7 +9,6 @@ import './progress.css'
       <Progress.Root>
         <Progress.Label>Label</Progress.Label>
         <Progress.ValueText />
-        <Progress.View state="loading" />
         <Progress.Circle>
           <Progress.CircleTrack />
           <Progress.CircleRange />
@@ -40,10 +39,9 @@ import './progress.css'
     </Variant>
 
     <Variant title="Indeterminate">
-      <Progress.Root>
+      <Progress.Root :value="null">
         <Progress.Label>Label</Progress.Label>
         <Progress.ValueText />
-        <Progress.View state="indeterminate" />
         <Progress.Circle>
           <Progress.CircleTrack />
           <Progress.CircleRange />
