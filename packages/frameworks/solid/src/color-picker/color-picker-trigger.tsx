@@ -4,7 +4,7 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ColorPickerTrigger: ArkComponent<'button'> = (props: ColorPickerTriggerProps) => {
+export const ColorPickerTrigger: ArkComponent<'button'> = (props) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 

@@ -7,7 +7,7 @@ import { usePresence, type UsePresenceProps } from './use-presence'
 
 export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
-export const Presence: ArkComponent<'div', UsePresenceProps> = (props: PresenceProps) => {
+export const Presence: ArkComponent<'div', UsePresenceProps> = (props) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
   const api = usePresence(presenceProps)
   const mergedProps = mergeProps(() => api().presenceProps, localProps)

@@ -4,7 +4,7 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxInputProps extends HTMLArkProps<'input'> {}
 
-export const ComboboxInput: ArkComponent<'input'> = (props: ComboboxInputProps) => {
+export const ComboboxInput: ArkComponent<'input'> = (props) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().inputProps, props)
 

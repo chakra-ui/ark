@@ -5,7 +5,7 @@ import { useComboboxItemContext } from './combobox-item-context'
 
 export interface ComboboxItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxItemIndicator: ArkComponent<'div'> = (props: ComboboxItemIndicatorProps) => {
+export const ComboboxItemIndicator: ArkComponent<'div'> = (props) => {
   const combobox = useComboboxContext()
   const itemProps = useComboboxItemContext()
   const mergedProps = mergeProps(() => combobox().getItemIndicatorProps(itemProps), props)

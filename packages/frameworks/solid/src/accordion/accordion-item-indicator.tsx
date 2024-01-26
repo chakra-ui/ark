@@ -5,7 +5,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const AccordionItemIndicator: ArkComponent<'div'> = (props: AccordionItemIndicatorProps) => {
+export const AccordionItemIndicator: ArkComponent<'div'> = (props) => {
   const api = useAccordionContext()
   const itemParams = useAccordionItemContext()
   const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemParams), props)

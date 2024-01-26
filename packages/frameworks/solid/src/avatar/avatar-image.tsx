@@ -4,7 +4,7 @@ import { useAvatarContext } from './avatar-context'
 
 export interface AvatarImageProps extends HTMLArkProps<'img'> {}
 
-export const AvatarImage: ArkComponent<'img'> = (props: AvatarImageProps) => {
+export const AvatarImage: ArkComponent<'img'> = (props) => {
   const avatar = useAvatarContext()
   const mergedProps = mergeProps(() => avatar().imageProps, props)
 

@@ -4,7 +4,7 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipTriggerProps extends HTMLArkProps<'button'> {}
 
-export const TooltipTrigger: ArkComponent<'button'> = (props: TooltipTriggerProps) => {
+export const TooltipTrigger: ArkComponent<'button'> = (props) => {
   const api = useTooltipContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 

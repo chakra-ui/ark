@@ -6,7 +6,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 
-export const DialogPositioner: ArkComponent<'div'> = (props: DialogPositionerProps) => {
+export const DialogPositioner: ArkComponent<'div'> = (props) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(() => api().positionerProps, props)

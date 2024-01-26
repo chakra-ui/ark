@@ -7,7 +7,7 @@ import { useToggleGroupContext } from './toggle-group-context'
 
 export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
-export const ToggleGroupItem: ArkComponent<'button', ItemProps> = (props: ToggleGroupItemProps) => {
+export const ToggleGroupItem: ArkComponent<'button', ItemProps> = (props) => {
   const [toggleProps, restProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const api = useToggleGroupContext()
   const mergedProps = mergeProps(() => api().getItemProps(toggleProps), restProps)

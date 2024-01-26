@@ -4,7 +4,7 @@ import { useEditableContext } from './editable-context'
 
 export interface EditablePreviewProps extends HTMLArkProps<'span'> {}
 
-export const EditablePreview: ArkComponent<'span'> = (props: EditablePreviewProps) => {
+export const EditablePreview: ArkComponent<'span'> = (props) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().previewProps, props)
 

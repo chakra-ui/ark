@@ -4,7 +4,7 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputLabelProps extends HTMLArkProps<'label'> {}
 
-export const NumberInputLabel: ArkComponent<'label'> = (props: NumberInputLabelProps) => {
+export const NumberInputLabel: ArkComponent<'label'> = (props) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

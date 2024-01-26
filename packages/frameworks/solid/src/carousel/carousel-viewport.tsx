@@ -4,7 +4,7 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselViewportProps extends HTMLArkProps<'span'> {}
 
-export const CarouselViewport: ArkComponent<'span'> = (props: CarouselViewportProps) => {
+export const CarouselViewport: ArkComponent<'span'> = (props) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().viewportProps, props)
 

@@ -6,7 +6,7 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerPositioner: ArkComponent<'div'> = (props: ColorPickerPositionerProps) => {
+export const ColorPickerPositioner: ArkComponent<'div'> = (props) => {
   const api = useColorPickerContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(() => api().positionerProps, props)

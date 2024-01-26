@@ -5,7 +5,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderValueTextProps extends HTMLArkProps<'div'> {}
 
-export const SliderValueText: ArkComponent<'div'> = (props: SliderValueTextProps) => {
+export const SliderValueText: ArkComponent<'div'> = (props) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().valueTextProps, props)
   const getChildren = children(() => props.children)

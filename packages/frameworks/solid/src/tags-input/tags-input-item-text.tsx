@@ -5,7 +5,7 @@ import { useTagsInputItemContext } from './tags-input-item-context'
 
 export interface TagsInputItemTextProps extends HTMLArkProps<'span'> {}
 
-export const TagsInputItemText: ArkComponent<'span'> = (props: TagsInputItemTextProps) => {
+export const TagsInputItemText: ArkComponent<'span'> = (props) => {
   const api = useTagsInputContext()
   const itemProps = useTagsInputItemContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)

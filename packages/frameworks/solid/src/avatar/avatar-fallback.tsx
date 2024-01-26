@@ -4,7 +4,7 @@ import { useAvatarContext } from './avatar-context'
 
 export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
 
-export const AvatarFallback: ArkComponent<'span'> = (props: AvatarFallbackProps) => {
+export const AvatarFallback: ArkComponent<'span'> = (props) => {
   const avatar = useAvatarContext()
   const mergedProps = mergeProps(() => avatar().fallbackProps, props)
 

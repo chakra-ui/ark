@@ -9,7 +9,7 @@ type PanelParams = Parameters<ReturnType<typeof connect>['getPanelProps']>[0]
 
 export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, PanelParams> {}
 
-export const SplitterPanel: ArkComponent<'div', PanelParams> = (props: SplitterPanelProps) => {
+export const SplitterPanel: ArkComponent<'div', PanelParams> = (props) => {
   const [panelParams, restProps] = createSplitProps<PanelParams>()(props, ['id', 'snapSize'])
 
   const api = useSplitterContext()

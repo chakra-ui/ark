@@ -4,7 +4,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderTrackProps extends HTMLArkProps<'div'> {}
 
-export const SliderTrack: ArkComponent<'div'> = (props: SliderTrackProps) => {
+export const SliderTrack: ArkComponent<'div'> = (props) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().trackProps, props)
 

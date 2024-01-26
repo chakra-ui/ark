@@ -5,7 +5,7 @@ import { useSegmentGroupContext } from './segment-group-context'
 
 export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const SegmentGroupLabel: ArkComponent<'label'> = (props: SegmentGroupLabelProps) => {
+export const SegmentGroupLabel: ArkComponent<'label'> = (props) => {
   const api = useSegmentGroupContext()
   const mergedProps = mergeProps(
     () => api().labelProps,

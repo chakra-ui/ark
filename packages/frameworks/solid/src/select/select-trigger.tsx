@@ -4,7 +4,7 @@ import { useSelectContext } from './select-context'
 
 export interface SelectTriggerProps extends HTMLArkProps<'button'> {}
 
-export const SelectTrigger: ArkComponent<'button'> = (props: SelectTriggerProps) => {
+export const SelectTrigger: ArkComponent<'button'> = (props) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 

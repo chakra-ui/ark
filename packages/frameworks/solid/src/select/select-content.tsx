@@ -6,7 +6,7 @@ import { useSelectContext } from './select-context'
 
 export interface SelectContentProps extends HTMLArkProps<'div'> {}
 
-export const SelectContent: ArkComponent<'div'> = (props: SelectContentProps) => {
+export const SelectContent: ArkComponent<'div'> = (props) => {
   const api = useSelectContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

@@ -7,7 +7,7 @@ import { usePaginationContext } from './pagination-context'
 
 export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
-export const PaginationItem: ArkComponent<'button', ItemProps> = (props: PaginationItemProps) => {
+export const PaginationItem: ArkComponent<'button', ItemProps> = (props) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
 
   const api = usePaginationContext()

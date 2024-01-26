@@ -9,7 +9,7 @@ import { FileUploadItemProvider } from './file-upload-item-context'
 
 export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
 
-export const FileUploadItem: ArkComponent<'li', ItemProps> = (props: FileUploadItemProps) => {
+export const FileUploadItem: ArkComponent<'li', ItemProps> = (props) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['file'])
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)

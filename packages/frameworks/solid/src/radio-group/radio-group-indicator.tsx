@@ -4,7 +4,7 @@ import { useRadioGroupContext } from './radio-group-context'
 
 export interface RadioGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const RadioGroupIndicator: ArkComponent<'div'> = (props: RadioGroupIndicatorProps) => {
+export const RadioGroupIndicator: ArkComponent<'div'> = (props) => {
   const api = useRadioGroupContext()
   const mergedProps = mergeProps(() => api().indicatorProps, props)
 

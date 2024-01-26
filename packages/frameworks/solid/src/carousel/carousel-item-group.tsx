@@ -4,7 +4,7 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 
-export const CarouselItemGroup: ArkComponent<'div'> = (props: CarouselItemGroupProps) => {
+export const CarouselItemGroup: ArkComponent<'div'> = (props) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().itemGroupProps, props)
 

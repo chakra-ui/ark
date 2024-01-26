@@ -4,7 +4,7 @@ import { useSwitchContext } from './switch-context'
 
 export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 
-export const SwitchControl: ArkComponent<'span'> = (props: SwitchControlProps) => {
+export const SwitchControl: ArkComponent<'span'> = (props) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 

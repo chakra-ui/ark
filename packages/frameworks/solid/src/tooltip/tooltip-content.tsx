@@ -6,7 +6,7 @@ import { useTooltipContext } from './tooltip-context'
 
 export interface TooltipContentProps extends HTMLArkProps<'div'> {}
 
-export const TooltipContent: ArkComponent<'div'> = (props: TooltipContentProps) => {
+export const TooltipContent: ArkComponent<'div'> = (props) => {
   const api = useTooltipContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

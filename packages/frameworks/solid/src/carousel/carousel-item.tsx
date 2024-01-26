@@ -7,7 +7,7 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const CarouselItem: ArkComponent<'div', ItemProps> = (props: CarouselItemProps) => {
+export const CarouselItem: ArkComponent<'div', ItemProps> = (props) => {
   const [slideParams, localProps] = createSplitProps<ItemProps>()(props, ['index'])
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getItemProps(slideParams), localProps)

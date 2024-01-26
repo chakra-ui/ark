@@ -4,7 +4,7 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const TabIndicator: ArkComponent<'div'> = (props: TabIndicatorProps) => {
+export const TabIndicator: ArkComponent<'div'> = (props) => {
   const api = useTabsContext()
   const mergedProps = mergeProps(() => api().indicatorProps, props)
 

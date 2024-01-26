@@ -4,7 +4,7 @@ import { useToastContext } from './toast-context'
 
 export interface ToastRootProps extends HTMLArkProps<'li'> {}
 
-export const ToastRoot: ArkComponent<'li'> = (props: ToastRootProps) => {
+export const ToastRoot: ArkComponent<'li'> = (props) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().rootProps, props)
 

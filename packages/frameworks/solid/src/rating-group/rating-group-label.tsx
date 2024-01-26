@@ -4,7 +4,7 @@ import { useRatingGroupContext } from './rating-group-context'
 
 export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 
-export const RatingGroupLabel: ArkComponent<'label'> = (props: RatingGroupLabelProps) => {
+export const RatingGroupLabel: ArkComponent<'label'> = (props) => {
   const api = useRatingGroupContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

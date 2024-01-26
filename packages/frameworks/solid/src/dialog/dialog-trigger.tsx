@@ -5,7 +5,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogTrigger: ArkComponent<'button'> = (props: DialogTriggerProps) => {
+export const DialogTrigger: ArkComponent<'button'> = (props) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

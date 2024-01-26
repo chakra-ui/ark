@@ -6,7 +6,7 @@ import { useSegmentGroupItemContext } from './segment-group-item-context'
 
 export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
 
-export const SegmentGroupItemText: ArkComponent<'span'> = (props: SegmentGroupItemTextProps) => {
+export const SegmentGroupItemText: ArkComponent<'span'> = (props) => {
   const api = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemContext()
   const mergedProps = mergeProps(

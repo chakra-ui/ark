@@ -4,7 +4,7 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxLabelProps extends HTMLArkProps<'label'> {}
 
-export const ComboboxLabel: ArkComponent<'label'> = (props: ComboboxLabelProps) => {
+export const ComboboxLabel: ArkComponent<'label'> = (props) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().labelProps, props)
 

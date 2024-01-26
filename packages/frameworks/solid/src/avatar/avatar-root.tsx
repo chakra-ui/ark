@@ -7,7 +7,7 @@ import { useAvatar, type UseAvatarProps } from './use-avatar'
 
 export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const AvatarRoot: ArkComponent<'div', UseAvatarProps> = (props: AvatarRootProps) => {
+export const AvatarRoot: ArkComponent<'div', UseAvatarProps> = (props) => {
   const [params, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'dir',
     'getRootNode',

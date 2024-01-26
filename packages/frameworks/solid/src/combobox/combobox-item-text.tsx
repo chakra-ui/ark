@@ -5,7 +5,7 @@ import { useComboboxItemContext } from './combobox-item-context'
 
 export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
 
-export const ComboboxItemText: ArkComponent<'span'> = (props: ComboboxItemTextProps) => {
+export const ComboboxItemText: ArkComponent<'span'> = (props) => {
   const api = useComboboxContext()
   const itemProps = useComboboxItemContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)

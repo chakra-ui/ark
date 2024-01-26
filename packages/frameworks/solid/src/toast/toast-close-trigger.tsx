@@ -4,7 +4,7 @@ import { useToastContext } from './toast-context'
 
 export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ToastCloseTrigger: ArkComponent<'button'> = (props: ToastCloseTriggerProps) => {
+export const ToastCloseTrigger: ArkComponent<'button'> = (props) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().closeTriggerProps, props)
 

@@ -4,7 +4,7 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerLabelProps extends HTMLArkProps<'label'> {}
 
-export const ColorPickerLabel: ArkComponent<'label'> = (props: ColorPickerLabelProps) => {
+export const ColorPickerLabel: ArkComponent<'label'> = (props) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

@@ -4,7 +4,7 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuContextTrigger: ArkComponent<'button'> = (props: MenuContextTriggerProps) => {
+export const MenuContextTrigger: ArkComponent<'button'> = (props) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().contextTriggerProps, props)
 

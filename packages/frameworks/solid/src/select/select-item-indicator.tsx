@@ -5,7 +5,7 @@ import { useSelectItemContext } from './select-item-context'
 
 export interface SelectItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const SelectItemIndicator: ArkComponent<'div'> = (props: SelectItemIndicatorProps) => {
+export const SelectItemIndicator: ArkComponent<'div'> = (props) => {
   const api = useSelectContext()
   const itemProps = useSelectItemContext()
   const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemProps), props)

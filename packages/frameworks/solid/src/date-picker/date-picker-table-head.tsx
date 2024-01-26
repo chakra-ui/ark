@@ -5,7 +5,7 @@ import { useDatePickerTableContext } from './date-picker-table-context'
 
 export interface DatePickerTableHeadProps extends HTMLArkProps<'thead'> {}
 
-export const DatePickerTableHead: ArkComponent<'thead'> = (props: DatePickerTableHeadProps) => {
+export const DatePickerTableHead: ArkComponent<'thead'> = (props) => {
   const api = useDatePickerContext()
   const tableProps = useDatePickerTableContext()
   const mergedProps = mergeProps(() => api().getTableHeadProps(tableProps), props)

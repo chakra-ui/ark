@@ -6,7 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
-export const AccordionItemTrigger: ArkComponent<'button'> = (props: AccordionItemTriggerProps) => {
+export const AccordionItemTrigger: ArkComponent<'button'> = (props) => {
   const api = useAccordionContext()
   const item = useAccordionItemContext()
   const presenceApi = usePresenceContext()
