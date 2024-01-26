@@ -5,27 +5,29 @@ import type { Assign } from './types'
 type AsProps<T extends ValidComponent = ValidComponent> = {
   as?: T
 }
-
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: ArkComponent<E>
 }
-
-type AsComponentProps<E extends ElementType> = ComponentProps<E> & AsProps
-
 type ElementType = keyof JSX.IntrinsicElements
 
+export type HTMLArkProps<E extends ElementType> = ComponentProps<E> & AsProps
+
+export type ArkComponentProps<
+  T extends ValidComponent,
+  K extends ValidComponent,
+  P extends object,
+> = Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>
+
 export type ArkComponent<T extends ValidComponent, P extends object = {}> = {
-  <K extends ValidComponent = T>(
-    props: Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>,
-  ): JSX.Element
+  <K extends ValidComponent = T>(props: ArkComponentProps<T, K, P>): JSX.Element
 }
 
 export const withAsProp = <T extends ValidComponent>(Component: T) => {
-  const Polymorphic: ArkComponent<T> = (props) => {
+  const ArkComponent: ArkComponent<T> = (props) => {
     const [localProps, otherProps] = splitProps(props as AsProps, ['as'])
     return <Dynamic component={localProps.as || Component} {...otherProps} />
   }
-  return Polymorphic
+  return ArkComponent
 }
 
 function jsxFactory() {
@@ -45,5 +47,4 @@ function jsxFactory() {
   }) as unknown as JsxElements
 }
 
-export type HTMLArkProps<T extends ElementType> = AsComponentProps<T>
 export const ark = jsxFactory()

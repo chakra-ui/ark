@@ -9,7 +9,7 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Avatar.Root as="a" href="google.com" onLoadingStatusChange={(e) => console.log(e)}>
+  <Avatar.Root>
     <Avatar.Fallback>PA</Avatar.Fallback>
     <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
   </Avatar.Root>

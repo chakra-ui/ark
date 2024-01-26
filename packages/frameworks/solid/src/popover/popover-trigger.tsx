@@ -3,11 +3,9 @@ import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './popover-context'
 
-export interface PopoverTriggerProps extends HTMLArkProps<'button'> {
-  variant?: 'a' | 'b' | 'c'
-}
+export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PopoverTrigger: ArkComponent<'button', { variant?: 'a' | 'b' | 'c' }> = (props) => {
+export const PopoverTrigger: ArkComponent<'button'> = (props) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
