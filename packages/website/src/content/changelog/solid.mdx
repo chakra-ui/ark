@@ -14,6 +14,14 @@ description:
 
 ### Changed
 
+- **Breaking Change**: Renamed the `asChild` to `as` prop. The `as` prop now
+  accepts a native HTML element or a custom component. For example:
+
+```diff
+- <Popover.Trigger asChild><Button>Open</Button></Popover.Trigger>
++ <Popover.Trigger as={<Button>Open</Button>} />
+```
+
 - **Breaking Change**: Renamed the root types for all components to
   `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
 

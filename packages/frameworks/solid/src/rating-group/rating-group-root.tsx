@@ -1,13 +1,15 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
 export interface RatingGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
-export const RatingGroupRoot = (props: RatingGroupRootProps) => {
+export const RatingGroupRoot: ArkComponent<'div', UseRatingGroupProps> = (
+  props: RatingGroupRootProps,
+) => {
   const [useRatingProps, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
     'allowHalf',
     'autoFocus',

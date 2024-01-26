@@ -1,7 +1,7 @@
 {
   "Item": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
   "Root": {
     "align": {
@@ -9,7 +9,7 @@
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -59,15 +59,15 @@
       "description": "The amount of space between slides."
     }
   },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Viewport": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Viewport": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Indicator": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "IndicatorGroup": { "asChild": { "type": "boolean", "isRequired": false } }
+  "ItemGroup": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "NextTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "PrevTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "IndicatorGroup": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

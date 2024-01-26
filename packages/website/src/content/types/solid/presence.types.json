@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
       "defaultValue": "false",

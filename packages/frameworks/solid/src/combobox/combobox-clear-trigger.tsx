@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ComboboxClearTrigger = (props: ComboboxClearTriggerProps) => {
+export const ComboboxClearTrigger: ArkComponent<'button'> = (props: ComboboxClearTriggerProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().clearTriggerProps, props)
 

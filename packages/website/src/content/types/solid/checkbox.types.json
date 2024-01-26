@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -64,7 +64,7 @@
       "description": "The value of checkbox input. Useful for form submission."
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Indicator": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

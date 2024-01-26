@@ -1,7 +1,7 @@
 {
-  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Group": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Root": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Group": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Title": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Createer": {
     "placement": {
       "type": "Placement",
@@ -85,6 +85,6 @@
       "description": "The z-index applied to each toast group"
     }
   },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Description": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "CloseTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }
