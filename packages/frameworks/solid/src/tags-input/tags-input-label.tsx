@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
 export interface TagsInputLabelProps extends HTMLArkProps<'label'> {}
 
-export const TagsInputLabel = (props: TagsInputLabelProps) => {
+export const TagsInputLabel: ArkComponent<'label'> = (props: TagsInputLabelProps) => {
   const api = useTagsInputContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

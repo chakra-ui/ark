@@ -1,11 +1,11 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 
 export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
+export const SegmentGroupIndicator: ArkComponent<'div'> = (props: SegmentGroupIndicatorProps) => {
   const api = useSegmentGroupContext()
   const mergedProps = mergeProps(
     () => api().indicatorProps,

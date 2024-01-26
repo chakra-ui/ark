@@ -1,12 +1,12 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSegmentGroupContext } from './segment-group-context'
 import { useSegmentGroupItemContext } from './segment-group-item-context'
 
 export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
 
-export const SegmentGroupItemText = (props: SegmentGroupItemTextProps) => {
+export const SegmentGroupItemText: ArkComponent<'span'> = (props: SegmentGroupItemTextProps) => {
   const api = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemContext()
   const mergedProps = mergeProps(
