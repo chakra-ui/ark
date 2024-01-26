@@ -14,16 +14,16 @@ type ElementType = keyof JSX.IntrinsicElements
 export type HTMLArkProps<E extends ElementType> = JSX.IntrinsicElements[E] & AsProps
 
 export type ArkComponentProps<
-  T extends ValidComponent,
+  E extends ElementType,
   K extends ValidComponent,
   P extends object,
-> = Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>
+> = Assign<Assign<ComponentProps<E>, ComponentProps<K>>, Assign<AsProps<K>, P>>
 
-export type ArkComponent<T extends ValidComponent, P extends object = object> = {
-  <K extends ValidComponent = T>(props: ArkComponentProps<T, K, P>): JSX.Element
+export type ArkComponent<E extends ElementType, P extends object = object> = {
+  <C extends ValidComponent = E>(props: ArkComponentProps<E, C, P>): JSX.Element
 }
 
-export const withAsProp = <T extends ValidComponent>(Component: T) => {
+export const withAsProp = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
     const [localProps, otherProps] = splitProps(props as AsProps, ['as'])
     return <Dynamic component={localProps.as || Component} {...otherProps} />
