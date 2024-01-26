@@ -18,7 +18,7 @@ export interface ButtonProps
   extends ButtonVariantProps,
     JSX.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const [variantProps, buttonProps] = splitProps(props, ['variant'])
   return <button data-variant={variantProps.variant} class="btn" {...buttonProps} />
 }

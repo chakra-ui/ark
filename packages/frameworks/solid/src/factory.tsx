@@ -7,21 +7,21 @@ type AsProps<T extends ValidComponent = ValidComponent> = {
 }
 
 type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: PolymorphicComponent<E>
+  [E in keyof JSX.IntrinsicElements]: ArkComponent<E>
 }
 
 type AsComponentProps<E extends ElementType> = ComponentProps<E> & AsProps
 
 type ElementType = keyof JSX.IntrinsicElements
 
-export type PolymorphicComponent<T extends ValidComponent> = {
+export type ArkComponent<T extends ValidComponent, P extends object = {}> = {
   <K extends ValidComponent = T>(
-    props: Assign<Assign<ComponentProps<T>, ComponentProps<K>>, AsProps<K>>,
+    props: Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>,
   ): JSX.Element
 }
 
 export const withAsProp = <T extends ValidComponent>(Component: T) => {
-  const Polymorphic: PolymorphicComponent<T> = (props) => {
+  const Polymorphic: ArkComponent<T> = (props) => {
     const [localProps, otherProps] = splitProps(props as AsProps, ['as'])
     return <Dynamic component={localProps.as || Component} {...otherProps} />
   }
