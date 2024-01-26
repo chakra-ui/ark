@@ -19,7 +19,7 @@ export type ArkComponentProps<
   P extends object,
 > = Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>
 
-export type ArkComponent<T extends ValidComponent, P extends object = {}> = {
+export type ArkComponent<T extends ValidComponent, P extends object = object> = {
   <K extends ValidComponent = T>(props: ArkComponentProps<T, K, P>): JSX.Element
 }
 
