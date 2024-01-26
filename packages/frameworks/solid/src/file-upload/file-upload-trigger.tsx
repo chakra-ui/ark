@@ -4,7 +4,7 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadTriggerProps extends HTMLArkProps<'button'> {}
 
-export const FileUploadTrigger: ArkComponent<'button'> = (props) => {
+export const FileUploadTrigger: ArkComponent<'button'> = (props: FileUploadTriggerProps) => {
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 

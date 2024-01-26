@@ -8,7 +8,9 @@ import { useColorPickerContext } from './color-picker-context'
 export interface ColorPickerChannelInputProps
   extends Assign<HTMLArkProps<'input'>, ChannelInputProps> {}
 
-export const ColorPickerChannelInput: ArkComponent<'input', ChannelInputProps> = (props) => {
+export const ColorPickerChannelInput: ArkComponent<'input', ChannelInputProps> = (
+  props: ColorPickerChannelInputProps,
+) => {
   const [channelProps, inputProps] = createSplitProps<ChannelInputProps>()(props, [
     'channel',
     'orientation',

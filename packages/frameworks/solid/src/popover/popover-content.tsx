@@ -6,7 +6,7 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverContentProps extends HTMLArkProps<'div'> {}
 
-export const PopoverContent: ArkComponent<'div'> = (props) => {
+export const PopoverContent: ArkComponent<'div'> = (props: PopoverContentProps) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

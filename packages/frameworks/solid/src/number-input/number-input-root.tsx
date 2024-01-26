@@ -17,7 +17,7 @@ interface ElementProps extends UseNumberInputProps {
 
 export interface NumberInputRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const NumberInputRoot: ArkComponent<'div', ElementProps> = (props) => {
+export const NumberInputRoot: ArkComponent<'div', ElementProps> = (props: NumberInputRootProps) => {
   const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
     'allowMouseWheel',
     'allowOverflow',

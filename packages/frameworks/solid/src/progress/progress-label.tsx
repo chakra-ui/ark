@@ -4,7 +4,7 @@ import { useProgressContext } from './progress-context'
 
 export interface ProgressLabelProps extends HTMLArkProps<'label'> {}
 
-export const ProgressLabel: ArkComponent<'label'> = (props) => {
+export const ProgressLabel: ArkComponent<'label'> = (props: ProgressLabelProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

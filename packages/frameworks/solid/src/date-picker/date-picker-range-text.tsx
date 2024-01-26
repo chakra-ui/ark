@@ -4,7 +4,7 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerRangeText: ArkComponent<'div'> = (props) => {
+export const DatePickerRangeText: ArkComponent<'div'> = (props: DatePickerRangeTextProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().rangeTextProps, props)
 

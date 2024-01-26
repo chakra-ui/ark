@@ -4,7 +4,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogTitleProps extends HTMLArkProps<'h2'> {}
 
-export const DialogTitle: ArkComponent<'h2'> = (props) => {
+export const DialogTitle: ArkComponent<'h2'> = (props: DialogTitleProps) => {
   const dialog = useDialogContext()
   const mergedProps = mergeProps(() => dialog().titleProps, props)
 

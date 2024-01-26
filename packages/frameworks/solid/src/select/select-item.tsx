@@ -14,7 +14,7 @@ interface ElementProps extends ItemProps {
 
 export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const SelectItem: ArkComponent<'div', ElementProps> = (props: SelectItemProps) => {
+export const SelectItem: ArkComponent<'div', SelectItemProps> = (props: SelectItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)

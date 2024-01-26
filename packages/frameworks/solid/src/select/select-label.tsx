@@ -4,7 +4,7 @@ import { useSelectContext } from './select-context'
 
 export interface SelectLabelProps extends HTMLArkProps<'label'> {}
 
-export const SelectLabel: ArkComponent<'label'> = (props) => {
+export const SelectLabel: ArkComponent<'label'> = (props: SelectLabelProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

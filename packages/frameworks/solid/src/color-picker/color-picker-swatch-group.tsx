@@ -4,7 +4,7 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerSwatchGroup: ArkComponent<'div'> = (props) => {
+export const ColorPickerSwatchGroup: ArkComponent<'div'> = (props: ColorPickerSwatchGroupProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().swatchGroupProps, props)
 

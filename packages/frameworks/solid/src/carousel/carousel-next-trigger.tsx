@@ -4,7 +4,7 @@ import { useCarouselContext } from './carousel-context'
 
 export interface CarouselNextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const CarouselNextTrigger: ArkComponent<'button'> = (props) => {
+export const CarouselNextTrigger: ArkComponent<'button'> = (props: CarouselNextTriggerProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().nextTriggerProps, props)
 

@@ -4,7 +4,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderRangeProps extends HTMLArkProps<'div'> {}
 
-export const SliderRange: ArkComponent<'div'> = (props) => {
+export const SliderRange: ArkComponent<'div'> = (props: SliderRangeProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().rangeProps, props)
 

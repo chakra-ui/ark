@@ -4,7 +4,7 @@ import { useNumberInputContext } from './number-input-context'
 
 export interface NumberInputScrubberProps extends HTMLArkProps<'div'> {}
 
-export const NumberInputScrubber: ArkComponent<'div'> = (props) => {
+export const NumberInputScrubber: ArkComponent<'div'> = (props: NumberInputScrubberProps) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().scrubberProps, props)
 

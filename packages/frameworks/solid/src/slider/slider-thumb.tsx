@@ -7,7 +7,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
 
-export const SliderThumb: ArkComponent<'div', ThumbProps> = (props) => {
+export const SliderThumb: ArkComponent<'div', ThumbProps> = (props: SliderThumbProps) => {
   const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index'])
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().getThumbProps(thumbProps), localProps)

@@ -13,7 +13,9 @@ interface ElementProps extends UseFileUploadProps {
 
 export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const FileUploadRoot: ArkComponent<'div', ElementProps> = (props: FileUploadRootProps) => {
+export const FileUploadRoot: ArkComponent<'div', FileUploadRootProps> = (
+  props: FileUploadRootProps,
+) => {
   const [fileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
     'allowDrop',

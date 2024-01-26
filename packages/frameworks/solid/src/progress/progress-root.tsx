@@ -13,7 +13,7 @@ interface ElementProps extends UseProgressProps {
 
 export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const ProgressRoot: ArkComponent<'div', ElementProps> = (props: ProgressRootProps) => {
+export const ProgressRoot: ArkComponent<'div', ProgressRootProps> = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
     'dir',
     'getRootNode',

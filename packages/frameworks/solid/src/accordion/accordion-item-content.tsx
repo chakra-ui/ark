@@ -7,7 +7,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
 
-export const AccordionItemContent: ArkComponent<'div'> = (props) => {
+export const AccordionItemContent: ArkComponent<'div'> = (props: AccordionItemContentProps) => {
   const api = useAccordionContext()
   const accordionItem = useAccordionItemContext()
   const presenceApi = usePresenceContext()

@@ -4,7 +4,7 @@ import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
 
-export const FileUploadDropzone: ArkComponent<'div'> = (props) => {
+export const FileUploadDropzone: ArkComponent<'div'> = (props: FileUploadDropzoneProps) => {
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().dropzoneProps, props)
 

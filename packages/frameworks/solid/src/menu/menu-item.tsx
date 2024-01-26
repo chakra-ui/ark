@@ -7,7 +7,7 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const MenuItem: ArkComponent<'div', ItemProps> = (props) => {
+export const MenuItem: ArkComponent<'div', ItemProps> = (props: MenuItemProps) => {
   const menu = useMenuContext()
   const [itemParams, restProps] = createSplitProps<ItemProps>()(props, [
     'id',

@@ -4,7 +4,7 @@ import { useSwitchContext } from './switch-context'
 
 export interface SwitchLabelProps extends HTMLArkProps<'span'> {}
 
-export const SwitchLabel: ArkComponent<'span'> = (props) => {
+export const SwitchLabel: ArkComponent<'span'> = (props: SwitchLabelProps) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

@@ -9,7 +9,7 @@ import { useTabsContext } from './tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
-export const TabContent: ArkComponent<'div', ContentProps> = (props) => {
+export const TabContent: ArkComponent<'div', ContentProps> = (props: TabContentProps) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
   const api = useTabsContext()
   const presenceProps = usePresencePropsContext()

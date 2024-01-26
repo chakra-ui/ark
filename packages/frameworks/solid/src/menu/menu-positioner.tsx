@@ -6,7 +6,7 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
-export const MenuPositioner: ArkComponent<'div'> = (props) => {
+export const MenuPositioner: ArkComponent<'div'> = (props: MenuPositionerProps) => {
   const api = useMenuContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(() => api().positionerProps, props)

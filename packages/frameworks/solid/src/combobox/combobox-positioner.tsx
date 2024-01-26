@@ -6,7 +6,7 @@ import { useComboboxContext } from './combobox-context'
 
 export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
-export const ComboboxPositioner: ArkComponent<'div'> = (props) => {
+export const ComboboxPositioner: ArkComponent<'div'> = (props: ComboboxPositionerProps) => {
   const api = useComboboxContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(() => api().positionerProps, props)

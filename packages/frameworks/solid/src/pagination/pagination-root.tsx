@@ -13,7 +13,9 @@ interface ElementProps extends UsePaginationProps {
 
 export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, ElementProps> {}
 
-export const PaginationRoot: ArkComponent<'nav', ElementProps> = (props: PaginationRootProps) => {
+export const PaginationRoot: ArkComponent<'nav', PaginationRootProps> = (
+  props: PaginationRootProps,
+) => {
   const [paginationParams, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'dir',

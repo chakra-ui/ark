@@ -7,7 +7,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
 
-export const SliderMarker: ArkComponent<'span', MarkerProps> = (props) => {
+export const SliderMarker: ArkComponent<'span', MarkerProps> = (props: SliderMarkerProps) => {
   const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().getMarkerProps(markerProps), localProps)

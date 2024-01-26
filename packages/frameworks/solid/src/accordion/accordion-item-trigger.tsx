@@ -6,7 +6,7 @@ import { useAccordionItemContext } from './accordion-item-context'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
-export const AccordionItemTrigger: ArkComponent<'button'> = (props) => {
+export const AccordionItemTrigger: ArkComponent<'button'> = (props: AccordionItemTriggerProps) => {
   const api = useAccordionContext()
   const item = useAccordionItemContext()
   const presenceApi = usePresenceContext()
@@ -17,6 +17,5 @@ export const AccordionItemTrigger: ArkComponent<'button'> = (props) => {
     props,
   )
 
-  // @ts-expect-error we want aria-controls to be null to remove them if the popover if lazy mounted
   return <ark.button {...mergedProps} />
 }

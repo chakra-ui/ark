@@ -6,7 +6,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 
-export const DialogBackdrop: ArkComponent<'div'> = (props) => {
+export const DialogBackdrop: ArkComponent<'div'> = (props: DialogBackdropProps) => {
   const api = useDialogContext()
   const presenceProps = usePresencePropsContext()
   const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))

@@ -5,7 +5,7 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerViewControlProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerViewControl: ArkComponent<'div'> = (props) => {
+export const DatePickerViewControl: ArkComponent<'div'> = (props: DatePickerViewControlProps) => {
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
   const mergedProps = mergeProps(() => api().getViewControlProps(viewProps), props)

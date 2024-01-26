@@ -4,7 +4,7 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableEditTriggerProps extends HTMLArkProps<'button'> {}
 
-export const EditableEditTrigger: ArkComponent<'button'> = (props) => {
+export const EditableEditTrigger: ArkComponent<'button'> = (props: EditableEditTriggerProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().editTriggerProps, props)
 

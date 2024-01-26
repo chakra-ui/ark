@@ -4,7 +4,7 @@ import { useMenuTriggerItemContext } from './menu-context'
 
 export interface MenuTriggerItemProps extends HTMLArkProps<'div'> {}
 
-export const MenuTriggerItem: ArkComponent<'div'> = (props) => {
+export const MenuTriggerItem: ArkComponent<'div'> = (props: MenuTriggerItemProps) => {
   const getTriggerItemProps = useMenuTriggerItemContext()
   const mergedProps = mergeProps(() => getTriggerItemProps?.(), props)
 

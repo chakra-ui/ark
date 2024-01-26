@@ -13,7 +13,7 @@ interface ElementProps extends UseSwitchProps {
 
 export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, ElementProps> {}
 
-export const SwitchRoot: ArkComponent<'label', ElementProps> = (props: SwitchRootProps) => {
+export const SwitchRoot: ArkComponent<'label', SwitchRootProps> = (props: SwitchRootProps) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'dir',

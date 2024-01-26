@@ -4,7 +4,7 @@ import { usePopoverContext } from './popover-context'
 
 export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}
 
-export const PopoverArrowTip: ArkComponent<'div'> = (props) => {
+export const PopoverArrowTip: ArkComponent<'div'> = (props: PopoverArrowTipProps) => {
   const popover = usePopoverContext()
   const mergedProps = mergeProps(() => popover().arrowTipProps, props)
 

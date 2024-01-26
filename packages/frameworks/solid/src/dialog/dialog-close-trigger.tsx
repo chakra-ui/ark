@@ -4,7 +4,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogCloseTrigger: ArkComponent<'button'> = (props) => {
+export const DialogCloseTrigger: ArkComponent<'button'> = (props: DialogCloseTriggerProps) => {
   const dialog = useDialogContext()
   const mergedProps = mergeProps(() => dialog().closeTriggerProps, props)
 

@@ -6,7 +6,7 @@ import { useFileUploadItemContext } from './file-upload-item-context'
 
 export interface FileUploadItemSizeTextProps extends HTMLArkProps<'div'> {}
 
-export const FileUploadItemSizeText: ArkComponent<'div'> = (props) => {
+export const FileUploadItemSizeText: ArkComponent<'div'> = (props: FileUploadItemSizeTextProps) => {
   const api = useFileUploadContext()
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemSizeTextProps(item), props)

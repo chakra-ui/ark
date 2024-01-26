@@ -14,7 +14,9 @@ interface ElementProps extends ItemProps {
 
 export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ElementProps> {}
 
-export const RadioGroupItem: ArkComponent<'label', ElementProps> = (props: RadioGroupItemProps) => {
+export const RadioGroupItem: ArkComponent<'label', RadioGroupItemProps> = (
+  props: RadioGroupItemProps,
+) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
     'value',
     'disabled',

@@ -5,7 +5,7 @@ import { useSelectItemContext } from './select-item-context'
 
 export interface SelectItemTextProps extends HTMLArkProps<'span'> {}
 
-export const SelectItemText: ArkComponent<'span'> = (props) => {
+export const SelectItemText: ArkComponent<'span'> = (props: SelectItemTextProps) => {
   const api = useSelectContext()
   const itemProps = useSelectItemContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)

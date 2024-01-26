@@ -5,7 +5,7 @@ import { useDialogContext } from './dialog-context'
 
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogTrigger: ArkComponent<'button'> = (props) => {
+export const DialogTrigger: ArkComponent<'button'> = (props: DialogTriggerProps) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
@@ -14,6 +14,5 @@ export const DialogTrigger: ArkComponent<'button'> = (props) => {
     props,
   )
 
-  // @ts-expect-error we want aria-controls to be null to remove them if the popover if lazy mounted
   return <ark.button {...mergedProps} />
 }

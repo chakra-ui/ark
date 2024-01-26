@@ -13,7 +13,9 @@ interface ElementProps extends OptionItemProps {
 
 export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const MenuOptionItem: ArkComponent<'div', ElementProps> = (props: MenuOptionItemProps) => {
+export const MenuOptionItem: ArkComponent<'div', MenuOptionItemProps> = (
+  props: MenuOptionItemProps,
+) => {
   const menu = useMenuContext()
 
   const [optionProps, localProps] = createSplitProps<OptionItemProps>()(props, [

@@ -8,7 +8,7 @@ import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
 
-export const ColorPickerArea: ArkComponent<'div', AreaProps> = (props) => {
+export const ColorPickerArea: ArkComponent<'div', AreaProps> = (props: ColorPickerAreaProps) => {
   const [channelProps, divprops] = createSplitProps<AreaProps>()(props, ['xChannel', 'yChannel'])
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getAreaProps(channelProps), divprops)

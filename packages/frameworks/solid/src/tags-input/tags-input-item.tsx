@@ -14,7 +14,9 @@ interface ElementProps extends ItemProps {
 
 export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const TagsInputItem: ArkComponent<'div', ElementProps> = (props: TagsInputItemProps) => {
+export const TagsInputItem: ArkComponent<'div', TagsInputItemProps> = (
+  props: TagsInputItemProps,
+) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
     'disabled',
     'index',

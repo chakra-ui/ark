@@ -7,7 +7,7 @@ import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
 export interface PinInputRootProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
-export const PinInputRoot: ArkComponent<'div', UsePinInputProps> = (props) => {
+export const PinInputRoot: ArkComponent<'div', UsePinInputProps> = (props: PinInputRootProps) => {
   const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
     'autoFocus',
     'blurOnComplete',

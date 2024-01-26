@@ -5,7 +5,7 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuTrigger: ArkComponent<'button'> = (props) => {
+export const MenuTrigger: ArkComponent<'button'> = (props: MenuTriggerProps) => {
   const api = useMenuContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
@@ -14,6 +14,5 @@ export const MenuTrigger: ArkComponent<'button'> = (props) => {
     props,
   )
 
-  // @ts-expect-error we want aria-controls to be null to remove them if the popover if lazy mounted
   return <ark.button {...mergedProps} />
 }

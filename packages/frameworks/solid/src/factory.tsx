@@ -11,7 +11,7 @@ type JsxElements = {
 }
 type ElementType = keyof JSX.IntrinsicElements
 
-export type HTMLArkProps<E extends ElementType> = ComponentProps<E> & AsProps
+export type HTMLArkProps<E extends ElementType> = JSX.IntrinsicElements[E] & AsProps
 
 export type ArkComponentProps<
   T extends ValidComponent,
@@ -19,10 +19,7 @@ export type ArkComponentProps<
   P extends object,
 > = Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>
 
-export type ArkComponent<
-  T extends ValidComponent,
-  P extends object = ComponentProps<T> & AsProps,
-> = {
+export type ArkComponent<T extends ValidComponent, P extends object = {}> = {
   <K extends ValidComponent = T>(props: ArkComponentProps<T, K, P>): JSX.Element
 }
 

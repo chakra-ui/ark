@@ -4,7 +4,7 @@ import { useEditableContext } from './editable-context'
 
 export interface EditableControlProps extends HTMLArkProps<'div'> {}
 
-export const EditableControl: ArkComponent<'div'> = (props) => {
+export const EditableControl: ArkComponent<'div'> = (props: EditableControlProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 

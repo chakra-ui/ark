@@ -4,7 +4,7 @@ import { useMenuContext } from './menu-context'
 
 export interface MenuSeparatorProps extends HTMLArkProps<'hr'> {}
 
-export const MenuSeparator: ArkComponent<'hr'> = (props) => {
+export const MenuSeparator: ArkComponent<'hr'> = (props: MenuSeparatorProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().separatorProps, props)
 

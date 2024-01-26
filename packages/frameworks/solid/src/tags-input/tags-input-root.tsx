@@ -13,7 +13,7 @@ interface ElementProps extends UseTagsInputProps {
 
 export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const TagsInputRoot: ArkComponent<'div', ElementProps> = (props) => {
+export const TagsInputRoot: ArkComponent<'div', ElementProps> = (props: TagsInputRootProps) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowEditTag',

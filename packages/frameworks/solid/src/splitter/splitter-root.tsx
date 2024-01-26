@@ -13,7 +13,7 @@ interface ElementProps extends UseSplitterProps {
 
 export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const SplitterRoot: ArkComponent<'div', ElementProps> = (props: SplitterRootProps) => {
+export const SplitterRoot: ArkComponent<'div', SplitterRootProps> = (props: SplitterRootProps) => {
   const [splitterParams, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'dir',
     'getRootNode',

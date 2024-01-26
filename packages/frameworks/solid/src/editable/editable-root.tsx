@@ -13,7 +13,7 @@ interface ElementProps extends UseEditableProps {
 
 export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const EditableRoot: ArkComponent<'div', ElementProps> = (props: EditableRootProps) => {
+export const EditableRoot: ArkComponent<'div', EditableRootProps> = (props: EditableRootProps) => {
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',

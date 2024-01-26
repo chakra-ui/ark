@@ -13,7 +13,7 @@ interface ElementProps extends UseSliderProps {
 
 export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const SliderRoot: ArkComponent<'div', ElementProps> = (props: SliderRootProps) => {
+export const SliderRoot: ArkComponent<'div', SliderRootProps> = (props: SliderRootProps) => {
   const [sliderParams, restProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',

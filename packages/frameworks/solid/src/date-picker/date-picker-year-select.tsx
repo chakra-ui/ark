@@ -4,7 +4,7 @@ import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
 
-export const DatePickerYearSelect: ArkComponent<'select'> = (props) => {
+export const DatePickerYearSelect: ArkComponent<'select'> = (props: DatePickerYearSelectProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().yearSelectProps, props)
 

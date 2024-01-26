@@ -4,7 +4,7 @@ import { useSliderContext } from './slider-context'
 
 export interface SliderLabelProps extends HTMLArkProps<'label'> {}
 
-export const SliderLabel: ArkComponent<'label'> = (props) => {
+export const SliderLabel: ArkComponent<'label'> = (props: SliderLabelProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

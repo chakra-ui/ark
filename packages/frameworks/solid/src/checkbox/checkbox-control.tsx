@@ -4,7 +4,7 @@ import { useCheckboxContext } from './checkbox-context'
 
 export interface CheckboxControlProps extends HTMLArkProps<'div'> {}
 
-export const CheckboxControl: ArkComponent<'div'> = (props) => {
+export const CheckboxControl: ArkComponent<'div'> = (props: CheckboxControlProps) => {
   const api = useCheckboxContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
   return (

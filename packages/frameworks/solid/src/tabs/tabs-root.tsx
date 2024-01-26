@@ -10,7 +10,7 @@ interface ElementProps extends UseTabsProps, UsePresenceProps {}
 
 export interface TabsRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const TabsRoot: ArkComponent<'div', ElementProps> = (props: TabsRootProps) => {
+export const TabsRoot: ArkComponent<'div', TabsRootProps> = (props: TabsRootProps) => {
   const [presenceProps, tabsProps] = splitPresenceProps(props)
   const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',

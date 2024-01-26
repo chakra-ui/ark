@@ -5,7 +5,7 @@ import { useProgressContext } from './progress-context'
 
 export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
 
-export const ProgressValueText: ArkComponent<'span'> = (props) => {
+export const ProgressValueText: ArkComponent<'span'> = (props: ProgressValueTextProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().valueTextProps, props)
 
