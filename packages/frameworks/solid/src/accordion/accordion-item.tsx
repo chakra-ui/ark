@@ -1,4 +1,4 @@
-import { type ItemProps, type ItemState } from '@zag-js/accordion'
+import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
 import { type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
