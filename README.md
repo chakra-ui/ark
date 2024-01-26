@@ -66,11 +66,3 @@ We welcome contributions to Ark UI. Please read our [contributing guidelines](ht
 ## License
 
 This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).
-
-extends Assign<HTMLArkProps<(._)>, (._)> \{\}
-
-export const (.\*?(?=\W))
-
-extends Assign<HTMLArkProps<$1>, $2> {}
-
-export const $3: ArkProps<$1, $2>
