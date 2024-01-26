@@ -1,22 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { TagsInputProvider } from './tags-input-context'
 import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 
-export interface TagsInputRootProps
-  extends Assign<
-    Assign<
-      HTMLArkProps<'div'>,
-      { children?: JSX.Element | ((api: UseTagsInputReturn) => JSX.Element) }
-    >,
-    UseTagsInputProps
-  > {}
+interface ElementProps extends UseTagsInputProps {
+  children?: JSX.Element | ((api: UseTagsInputReturn) => JSX.Element)
+}
 
-export const TagsInputRoot = (props: TagsInputRootProps) => {
+export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+
+export const TagsInputRoot: ArkComponent<'div', ElementProps> = (props) => {
   const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowEditTag',

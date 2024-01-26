@@ -14,5 +14,6 @@ export const PopoverTrigger: ArkComponent<'button'> = (props) => {
     props,
   )
 
+  // @ts-expect-error we want aria-controls to be null to remove them if the popover if lazy mounted
   return <ark.button {...mergedProps} />
 }

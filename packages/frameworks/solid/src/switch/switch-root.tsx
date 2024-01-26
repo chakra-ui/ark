@@ -1,22 +1,19 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SwitchProvider } from './switch-context'
 import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 
-export interface SwitchRootProps
-  extends Assign<
-    Assign<
-      HTMLArkProps<'label'>,
-      { children?: JSX.Element | ((api: UseSwitchReturn) => JSX.Element) }
-    >,
-    UseSwitchProps
-  > {}
+interface ElementProps extends UseSwitchProps {
+  children?: JSX.Element | ((api: UseSwitchReturn) => JSX.Element)
+}
 
-export const SwitchRoot = (props: SwitchRootProps) => {
+export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, ElementProps> {}
+
+export const SwitchRoot: ArkComponent<'label', ElementProps> = (props: SwitchRootProps) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'dir',

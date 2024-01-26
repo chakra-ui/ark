@@ -5,6 +5,7 @@ import type { Assign } from './types'
 type AsProps<T extends ValidComponent = ValidComponent> = {
   as?: T
 }
+
 type JsxElements = {
   [E in keyof JSX.IntrinsicElements]: ArkComponent<E>
 }
@@ -18,7 +19,10 @@ export type ArkComponentProps<
   P extends object,
 > = Assign<Assign<ComponentProps<T>, ComponentProps<K>>, Assign<AsProps<K>, P>>
 
-export type ArkComponent<T extends ValidComponent, P extends object = {}> = {
+export type ArkComponent<
+  T extends ValidComponent,
+  P extends object = ComponentProps<T> & AsProps,
+> = {
   <K extends ValidComponent = T>(props: ArkComponentProps<T, K, P>): JSX.Element
 }
 
