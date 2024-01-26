@@ -1,26 +1,26 @@
-import type { IndicatorProps } from '@zag-js/progress'
+import type { ViewProps } from '@zag-js/progress'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useProgressContext } from './progress-context'
 
-export interface ProgressIndicatorProps extends Assign<HTMLArkProps<'span'>, IndicatorProps> {}
+export interface ProgressViewProps extends Assign<HTMLArkProps<'span'>, ViewProps> {}
 
-export const ProgressIndicator = defineComponent<ProgressIndicatorProps>(
+export const ProgressView = defineComponent<ProgressViewProps>(
   (props, { slots, attrs }) => {
     const api = useProgressContext()
 
     return () => (
-      <ark.span {...api.value.getIndicatorProps(props)} {...attrs}>
+      <ark.span {...api.value.getViewProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.span>
     )
   },
   {
-    name: 'ProgressIndicator',
+    name: 'ProgressView',
     props: {
       state: {
-        type: String as PropType<IndicatorProps['state']>,
+        type: String as PropType<ViewProps['state']>,
         default: 'indeterminate',
       },
     },

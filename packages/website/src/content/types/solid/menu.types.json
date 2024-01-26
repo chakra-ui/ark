@@ -169,6 +169,11 @@
       "isRequired": false,
       "description": "Whether the menu item is disabled"
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the menu item option."
+    },
     "onCheckedChange": {
       "type": "(checked: boolean) => void",
       "isRequired": false,

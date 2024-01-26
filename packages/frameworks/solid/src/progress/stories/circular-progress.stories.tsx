@@ -12,7 +12,6 @@ export const Basic = () => (
   <Progress.Root>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="loading" />
     <Progress.Circle>
       <Progress.CircleTrack />
       <Progress.CircleRange />
@@ -43,10 +42,9 @@ export const MinMax = () => (
 )
 
 export const Indeterminate = () => (
-  <Progress.Root>
+  <Progress.Root value={null}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="indeterminate" />
     <Progress.Circle>
       <Progress.CircleTrack />
       <Progress.CircleRange />
@@ -57,7 +55,10 @@ export const Indeterminate = () => (
 export const ValueText = () => (
   <Progress.Root
     translations={{
-      value: ({ value, max }) => (value == null ? 'Loading...' : `${value} of ${max} items loaded`),
+      value({ value, max }) {
+        if (value === null) return 'Loading...'
+        return `${value} of ${max} items loaded`
+      },
     }}
   >
     <Progress.Label>Label</Progress.Label>

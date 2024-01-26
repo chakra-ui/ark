@@ -18,9 +18,11 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
             :index="index"
             :value="value"
           >
+            <TagsInput.ItemPreview>
+              <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
+              <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+            </TagsInput.ItemPreview>
             <TagsInput.ItemInput />
-            <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
-            <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
           </TagsInput.Item>
           <TagsInput.Input placeholder="Add Framework" />
           <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>

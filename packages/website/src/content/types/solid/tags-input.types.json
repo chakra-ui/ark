@@ -139,6 +139,7 @@
   "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemText": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemInput": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemPreview": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ClearTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemDeleteTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

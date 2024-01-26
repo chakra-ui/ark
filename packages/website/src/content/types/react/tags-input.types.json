@@ -182,6 +182,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemPreview": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ClearTrigger": {
     "asChild": {
       "type": "boolean",

@@ -15,6 +15,7 @@ import {
   type TagsInputItemDeleteTriggerProps,
 } from './tags-input-item-delete-trigger'
 import { TagsInputItemInput, type TagsInputItemInputProps } from './tags-input-item-input'
+import { TagsInputItemPreview, type TagsInputItemPreviewProps } from './tags-input-item-preview'
 import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 
@@ -24,6 +25,7 @@ const TagsInput = Object.assign(TagsInputRoot, {
   Control: TagsInputControl,
   Input: TagsInputInput,
   Item: TagsInputItem,
+  ItemPreview: TagsInputItemPreview,
   ItemDeleteTrigger: TagsInputItemDeleteTrigger,
   ItemInput: TagsInputItemInput,
   ItemText: TagsInputItemText,
@@ -38,6 +40,7 @@ export {
   TagsInputItem,
   TagsInputItemDeleteTrigger,
   TagsInputItemInput,
+  TagsInputItemPreview,
   TagsInputItemText,
   TagsInputLabel,
   useTagsInputContext,
@@ -53,6 +56,7 @@ export type {
   TagsInputItemContext,
   TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
   TagsInputItemProps,
   TagsInputItemTextProps,
   TagsInputLabelProps,

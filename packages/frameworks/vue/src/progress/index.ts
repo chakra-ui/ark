@@ -3,11 +3,11 @@ import { ProgressCircle, type ProgressCircleProps } from './progress-circle'
 import { ProgressCircleRange, type ProgressCircleRangeProps } from './progress-circle-range'
 import { ProgressCircleTrack, type ProgressCircleTrackProps } from './progress-circle-track'
 import { useProgressContext, type ProgressContext } from './progress-context'
-import { ProgressIndicator, type ProgressIndicatorProps } from './progress-indicator'
 import { ProgressLabel, type ProgressLabelProps } from './progress-label'
 import { ProgressRange, type ProgressRangeProps } from './progress-range'
 import { ProgressTrack, type ProgressTrackProps } from './progress-track'
 import { ProgressValueText, type ProgressValueTextProps } from './progress-value-text'
+import { ProgressView, type ProgressViewProps } from './progress-view'
 
 const Progress = Object.assign(ProgressRoot, {
   Root: ProgressRoot,
@@ -15,7 +15,7 @@ const Progress = Object.assign(ProgressRoot, {
   Track: ProgressTrack,
   Range: ProgressRange,
   ValueText: ProgressValueText,
-  Indicator: ProgressIndicator,
+  View: ProgressView,
   Circle: ProgressCircle,
   CircleTrack: ProgressCircleTrack,
   CircleRange: ProgressCircleRange,
@@ -26,11 +26,11 @@ export {
   ProgressCircle,
   ProgressCircleRange,
   ProgressCircleTrack,
-  ProgressIndicator,
   ProgressLabel,
   ProgressRange,
   ProgressTrack,
   ProgressValueText,
+  ProgressView,
   useProgressContext,
 }
 export type {
@@ -38,10 +38,10 @@ export type {
   ProgressCircleRangeProps,
   ProgressCircleTrackProps,
   ProgressContext,
-  ProgressIndicatorProps,
   ProgressLabelProps,
   ProgressProps,
   ProgressRangeProps,
   ProgressTrackProps,
   ProgressValueTextProps,
+  ProgressViewProps,
 }
