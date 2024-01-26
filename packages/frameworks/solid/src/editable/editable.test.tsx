@@ -73,7 +73,7 @@ describe('Editable', () => {
     await user.clear(screen.getByRole('textbox'))
     await user.type(screen.getByRole('textbox'), 'React', { delay: 20 })
 
-    expect(screen.findByText('React')).toBeInTheDocument()
+    await screen.findByText('React')
   })
 
   it('should be possible to edit an existing value', async () => {
@@ -86,7 +86,7 @@ describe('Editable', () => {
     await user.type(screen.getByRole('textbox'), 'Solid', { delay: 20 })
     await user.click(screen.getByText('Save'))
 
-    expect(screen.findByText('Solid')).toBeInTheDocument()
+    await screen.findByText('Solid')
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {
