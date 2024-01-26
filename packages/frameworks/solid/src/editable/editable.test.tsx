@@ -1,5 +1,5 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@solidjs/testing-library'
+import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
 import { Editable, type EditableRootProps } from './'
@@ -73,7 +73,7 @@ describe('Editable', () => {
     await user.clear(screen.getByRole('textbox'))
     await user.type(screen.getByRole('textbox'), 'React', { delay: 20 })
 
-    await waitFor(() => expect(screen.getByText('React')).toBeInTheDocument())
+    expect(screen.findByText('React')).toBeInTheDocument()
   })
 
   it('should be possible to edit an existing value', async () => {
@@ -86,7 +86,7 @@ describe('Editable', () => {
     await user.type(screen.getByRole('textbox'), 'Solid', { delay: 20 })
     await user.click(screen.getByText('Save'))
 
-    await waitFor(() => expect(screen.getByText('Solid')).toBeInTheDocument())
+    expect(screen.findByText('Solid')).toBeInTheDocument()
   })
 
   it('should be possible to hide input if click EditableCancelTrigger ', async () => {
