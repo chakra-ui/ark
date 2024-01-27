@@ -4,11 +4,8 @@ import { Popover } from '../'
 import { Portal } from '../../portal'
 import './popover.css'
 
-type PopoverType = typeof Popover
-
-const meta: Meta<PopoverType> = {
+const meta: Meta = {
   title: 'Popover',
-  component: Popover,
 }
 
 export default meta

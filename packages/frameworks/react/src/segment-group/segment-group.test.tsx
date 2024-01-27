@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { SegmentGroup, type SegmentGroupProps } from './'
+import { SegmentGroup, type SegmentGroupRootProps } from './'
 
-const ComponentUnderTest = (props: SegmentGroupProps) => {
+const ComponentUnderTest = (props: SegmentGroupRootProps) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

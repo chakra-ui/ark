@@ -3,7 +3,6 @@ import type {
   ValidityChangeDetails as TagsInputValidityChangeDetails,
   ValueChangeDetails as TagsInputValueChangeDetails,
 } from '@zag-js/tags-input'
-import { TagsInput as TagsInputRoot, type TagsInputProps } from './tags-input'
 import { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
 import { useTagsInputContext, type TagsInputContext } from './tags-input-context'
 import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
@@ -15,31 +14,35 @@ import {
   type TagsInputItemDeleteTriggerProps,
 } from './tags-input-item-delete-trigger'
 import { TagsInputItemInput, type TagsInputItemInputProps } from './tags-input-item-input'
+import { TagsInputItemPreview, type TagsInputItemPreviewProps } from './tags-input-item-preview'
 import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
+import { TagsInputRoot, type TagsInputRootProps } from './tags-input-root'
 
-const TagsInput = Object.assign(TagsInputRoot, {
+export const TagsInput = {
   Root: TagsInputRoot,
   ClearTrigger: TagsInputClearTrigger,
   Control: TagsInputControl,
   Input: TagsInputInput,
   Item: TagsInputItem,
+  ItemPreview: TagsInputItemPreview,
   ItemDeleteTrigger: TagsInputItemDeleteTrigger,
   ItemInput: TagsInputItemInput,
   ItemText: TagsInputItemText,
   Label: TagsInputLabel,
-})
+}
 
 export {
-  TagsInput,
   TagsInputClearTrigger,
   TagsInputControl,
   TagsInputInput,
   TagsInputItem,
   TagsInputItemDeleteTrigger,
   TagsInputItemInput,
+  TagsInputItemPreview,
   TagsInputItemText,
   TagsInputLabel,
+  TagsInputRoot,
   useTagsInputContext,
   useTagsInputItemContext,
 }
@@ -53,10 +56,11 @@ export type {
   TagsInputItemContext,
   TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
   TagsInputItemProps,
   TagsInputItemTextProps,
   TagsInputLabelProps,
-  TagsInputProps,
+  TagsInputRootProps,
   TagsInputValidityChangeDetails,
   TagsInputValueChangeDetails,
 }

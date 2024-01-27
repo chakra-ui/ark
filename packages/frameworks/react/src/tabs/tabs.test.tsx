@@ -3,9 +3,9 @@ import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { getExports, getParts } from '../setup-test'
-import { Tabs, type TabsProps } from './'
+import { Tabs, type TabsRootProps } from './'
 
-const ComponentUnderTest = (props: TabsProps) => {
+const ComponentUnderTest = (props: TabsRootProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },

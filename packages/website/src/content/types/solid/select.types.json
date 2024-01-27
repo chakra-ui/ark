@@ -1,4 +1,8 @@
 {
+  "Item": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -159,10 +163,6 @@
       "isRequired": false,
       "description": "The keys of the selected items"
     }
-  },
-  "Item": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "item": { "type": "any", "isRequired": false }
   },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },

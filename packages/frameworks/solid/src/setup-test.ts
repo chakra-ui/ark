@@ -1,5 +1,4 @@
 import type { AnatomyInstance } from '@ark-ui/anatomy'
-import '@testing-library/jest-dom'
 import ResizeObserver from 'resize-observer-polyfill'
 
 export const getParts = (anatomy: AnatomyInstance<string>) => {
@@ -14,3 +13,6 @@ export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
 
 global.ResizeObserver = ResizeObserver
 global.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
+global.Element.prototype.scrollIntoView = () => {
+  // no-op
+}

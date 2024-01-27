@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Splitter } from '../'
 import './splitter.css'
 
-type SplitterType = typeof Splitter
-
-const meta: Meta<SplitterType> = {
+const meta: Meta = {
   title: 'Splitter',
-  component: Splitter,
 }
 
 export default meta

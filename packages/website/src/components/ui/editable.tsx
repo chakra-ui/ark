@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(editable)
 
 export * from '@ark-ui/react/src/editable'
-export type EditableProps = Ark.EditableProps & EditableVariantProps
+export type EditableProps = Ark.EditableRootProps & EditableVariantProps
 
 const EditableRoot = withProvider(styled(Ark.Editable.Root), 'root')
 export const EditableArea = withContext(styled(Ark.Editable.Area), 'area')

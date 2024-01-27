@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { TagsInput } from '../'
 import './tags-input.css'
 
-type TagsInputType = typeof TagsInput
-
-const meta: Meta<TagsInputType> = {
+const meta: Meta = {
   title: 'TagsInput',
-  component: TagsInput,
 }
 
 export default meta
@@ -21,9 +18,11 @@ export const Basic = () => (
           <Index each={api().value}>
             {(value, index) => (
               <TagsInput.Item index={index} value={value()}>
-                <TagsInput.ItemText>{value()}</TagsInput.ItemText>
+                <TagsInput.ItemPreview>
+                  <TagsInput.ItemText>{value()}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.ItemPreview>
                 <TagsInput.ItemInput />
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
               </TagsInput.Item>
             )}
           </Index>

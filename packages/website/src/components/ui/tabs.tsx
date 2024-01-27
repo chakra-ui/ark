@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(tabs)
 
 export * from '@ark-ui/react/src/tabs'
-export type TabsProps = Ark.TabsProps & TabsVariantProps
+export type TabsProps = Ark.TabsRootProps & TabsVariantProps
 
 const TabsRoot = withProvider(styled(Ark.Tabs.Root), 'root')
 export const TabContent = withContext(styled(Ark.Tabs.Content), 'content')

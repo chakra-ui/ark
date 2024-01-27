@@ -6,15 +6,7 @@ export default defineConfig({
   plugins: [solid()],
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: 'src/setup-test.ts',
-    deps: {
-      optimizer: {
-        web: {
-          exclude: ['solid-js'],
-        },
-      },
-    },
+    setupFiles: ['src/setup-test.ts'],
     coverage: {
       provider: 'v8',
       all: true,
@@ -23,8 +15,5 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
     },
     css: false,
-    testTransformMode: {
-      web: ['/.[tj]sx$/'],
-    },
   },
 })

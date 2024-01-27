@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(pinInput)
 
 export * from '@ark-ui/react/src/pin-input'
-export type PinInputProps = Ark.PinInputProps & PinInputVariantProps
+export type PinInputProps = Ark.PinInputRootProps & PinInputVariantProps
 
 const PinInputRoot = withProvider(styled(Ark.PinInput.Root), 'root')
 export const PinInputControl = withContext(styled(Ark.PinInput.Control), 'control')

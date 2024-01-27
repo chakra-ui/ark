@@ -3,11 +3,8 @@ import { Combobox } from '../'
 import { Portal } from '../../portal'
 import './combobox.css'
 
-type ComboboxType = typeof Combobox
-
-const meta: Meta<ComboboxType> = {
+const meta: Meta = {
   title: 'Combobox',
-  component: Combobox,
 }
 
 export default meta

@@ -2,9 +2,9 @@ import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
 import { For } from 'solid-js'
 import { getParts } from '../setup-test'
-import { FileUpload, type FileUploadProps } from './'
+import { FileUpload, type FileUploadRootProps } from './'
 
-const ComponentUnderTest = (props: FileUploadProps) => (
+const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     {(api) => {
       if (api().files.length < 1)

@@ -1,13 +1,13 @@
 import { progressAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import { getExports, getParts } from '../setup-test'
-import { Progress, type ProgressProps } from './'
+import { Progress, type ProgressRootProps } from './'
 
-const ComponentUnderTest = (props: ProgressProps) => (
+const ComponentUnderTest = (props: ProgressRootProps) => (
   <Progress.Root {...props}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="loading" />
+    <Progress.View state="loading" />
     <Progress.Track>
       <Progress.Range />
     </Progress.Track>

@@ -2,27 +2,27 @@ import type {
   ItemLabelDetails as PaginationItemLabelDetails,
   PageChangeDetails as PaginationPageChangeDetails,
 } from '@zag-js/pagination'
-import { Pagination as PaginationRoot, type PaginationProps } from './pagination'
 import { usePaginationContext, type PaginationContext } from './pagination-context'
 import { PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis'
 import { PaginationItem, type PaginationItemProps } from './pagination-item'
 import { PaginationNextTrigger, type PaginationNextTriggerProps } from './pagination-next-trigger'
 import { PaginationPrevTrigger, type PaginationPrevTriggerProps } from './pagination-prev-trigger'
+import { PaginationRoot, type PaginationRootProps } from './pagination-root'
 
-const Pagination = Object.assign(PaginationRoot, {
+export const Pagination = {
   Root: PaginationRoot,
   Ellipsis: PaginationEllipsis,
   Item: PaginationItem,
   NextTrigger: PaginationNextTrigger,
   PrevTrigger: PaginationPrevTrigger,
-})
+}
 
 export {
-  Pagination,
   PaginationEllipsis,
   PaginationItem,
   PaginationNextTrigger,
   PaginationPrevTrigger,
+  PaginationRoot,
   usePaginationContext,
 }
 export type {
@@ -33,5 +33,5 @@ export type {
   PaginationNextTriggerProps,
   PaginationPageChangeDetails,
   PaginationPrevTriggerProps,
-  PaginationProps,
+  PaginationRootProps,
 }

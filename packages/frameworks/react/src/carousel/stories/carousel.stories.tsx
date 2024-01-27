@@ -3,11 +3,8 @@ import { useState } from 'react'
 import { Carousel } from '../'
 import './carousel.css'
 
-type CarouselType = typeof Carousel
-
-const meta: Meta<CarouselType> = {
+const meta: Meta = {
   title: 'Carousel',
-  component: Carousel,
 }
 
 export default meta

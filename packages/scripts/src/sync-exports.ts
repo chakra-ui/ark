@@ -11,7 +11,7 @@ const main = async () => {
   process.chdir(path.join(rootDir, 'packages', 'frameworks'))
 
   const indices = await globby(['./react/src/**/index.ts'])
-  await Promise.all(indices.map((index) => copy(index, index.replace('react', 'vue'))))
+  await Promise.all(indices.map((index) => copy(index, index.replace('react', 'solid'))))
 }
 
 main().catch((err) => {

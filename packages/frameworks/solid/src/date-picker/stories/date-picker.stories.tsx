@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { DatePicker } from '../'
 import './date-picker.css'
 
-type DatePickerType = typeof DatePicker
-
-const meta: Meta<DatePickerType> = {
+const meta: Meta = {
   title: 'DatePicker',
-  component: DatePicker,
 }
 
 export default meta

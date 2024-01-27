@@ -3,7 +3,6 @@ import type {
   ValueChangeDetails as NumberInputValueChangeDetails,
   ValueInvalidDetails as NumberInputValueInvalidDetails,
 } from '@zag-js/number-input'
-import { NumberInput as NumberInputRoot, type NumberInputProps } from './number-input'
 import { useNumberInputContext, type NumberInputContext } from './number-input-context'
 import { NumberInputControl, type NumberInputControlProps } from './number-input-control'
 import {
@@ -16,9 +15,10 @@ import {
 } from './number-input-increment-trigger'
 import { NumberInputInput, type NumberInputInputProps } from './number-input-input'
 import { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
+import { NumberInputRoot, type NumberInputRootProps } from './number-input-root'
 import { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
 
-const NumberInput = Object.assign(NumberInputRoot, {
+export const NumberInput = {
   Root: NumberInputRoot,
   Control: NumberInputControl,
   DecrementTrigger: NumberInputDecrementTrigger,
@@ -26,15 +26,15 @@ const NumberInput = Object.assign(NumberInputRoot, {
   IncrementTrigger: NumberInputIncrementTrigger,
   Label: NumberInputLabel,
   Scrubber: NumberInputScrubber,
-})
+}
 
 export {
-  NumberInput,
   NumberInputControl,
   NumberInputDecrementTrigger,
   NumberInputIncrementTrigger,
   NumberInputInput,
   NumberInputLabel,
+  NumberInputRoot,
   NumberInputScrubber,
   useNumberInputContext,
 }
@@ -47,7 +47,7 @@ export type {
   NumberInputIncrementTriggerProps,
   NumberInputInputProps,
   NumberInputLabelProps,
-  NumberInputProps,
+  NumberInputRootProps,
   NumberInputScrubberProps,
   NumberInputValueChangeDetails,
   NumberInputValueInvalidDetails,

@@ -3,11 +3,8 @@ import { useState } from 'react'
 import { Switch } from '../'
 import './switch.css'
 
-type SwitchType = typeof Switch
-
-const meta: Meta<SwitchType> = {
+const meta: Meta = {
   title: 'Switch',
-  component: Switch,
 }
 
 export default meta

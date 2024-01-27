@@ -2,11 +2,8 @@ import type { Meta } from 'storybook-solidjs'
 import { Progress } from '../'
 import './progress.css'
 
-type ProgressType = typeof Progress
-
-const meta: Meta<ProgressType> = {
+const meta: Meta = {
   title: 'LinearProgress',
-  component: Progress,
 }
 
 export default meta
@@ -15,7 +12,6 @@ export const Basic = () => (
   <Progress.Root>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="loading" />
     <Progress.Track>
       <Progress.Range />
     </Progress.Track>
@@ -43,10 +39,9 @@ export const MinMax = () => (
 )
 
 export const Indeterminate = () => (
-  <Progress.Root>
+  <Progress.Root value={null}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
-    <Progress.Indicator state="indeterminate" />
     <Progress.Track>
       <Progress.Range />
     </Progress.Track>
@@ -56,7 +51,10 @@ export const Indeterminate = () => (
 export const ValueText = () => (
   <Progress.Root
     translations={{
-      value: ({ value, max }) => (value == null ? 'Loading...' : `${value} of ${max} items loaded`),
+      value({ value, max }) {
+        if (value === null) return 'Loading...'
+        return `${value} of ${max} items loaded`
+      },
     }}
   >
     <Progress.Label>Label</Progress.Label>

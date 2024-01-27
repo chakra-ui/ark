@@ -1,4 +1,12 @@
 {
+  "Item": {
+    "file": { "type": "File", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "accept": {
       "type": "string | Record<string, string[]>",
@@ -96,14 +104,6 @@
       "type": "(file: File) => FileError[] | null",
       "isRequired": false,
       "description": "Function to validate a file"
-    }
-  },
-  "Item": {
-    "file": { "type": "File", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   },
   "Label": {

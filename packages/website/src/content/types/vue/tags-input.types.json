@@ -140,6 +140,7 @@
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemInput": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreview": { "asChild": { "type": "boolean", "isRequired": false } },
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

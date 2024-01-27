@@ -3,11 +3,8 @@ import { FileUpload } from '../'
 import './file-upload.css'
 import { FileIcon } from './icons'
 
-type FileUploadType = typeof FileUpload
-
-const meta: Meta<FileUploadType> = {
+const meta: Meta = {
   title: 'FileUpload',
-  component: FileUpload,
 }
 
 export default meta

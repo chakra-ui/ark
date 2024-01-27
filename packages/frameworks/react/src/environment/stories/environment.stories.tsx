@@ -3,11 +3,8 @@ import { useEffect } from 'react'
 import Frame from 'react-frame-component'
 import { Environment, useEnvironmentContext } from '../'
 
-type EnvironmentType = typeof Environment
-
-const meta: Meta<EnvironmentType> = {
+const meta: Meta = {
   title: 'Environment',
-  component: Environment,
 }
 
 export default meta
@@ -25,9 +22,9 @@ const PrintEnvironment = () => {
 export const Basic = () => {
   return (
     <Frame>
-      <Environment.Root>
+      <Environment>
         <PrintEnvironment />
-      </Environment.Root>
+      </Environment>
     </Frame>
   )
 }

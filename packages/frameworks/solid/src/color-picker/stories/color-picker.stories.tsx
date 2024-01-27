@@ -3,11 +3,8 @@ import type { Meta } from 'storybook-solidjs'
 import { ColorPicker } from '../'
 import './color-picker.css'
 
-type ColorPickerType = typeof ColorPicker
-
-const meta: Meta<ColorPickerType> = {
+const meta: Meta = {
   title: 'ColorPicker',
-  component: ColorPicker,
 }
 
 export default meta

@@ -6,7 +6,7 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(slider)
 
 export * from '@ark-ui/react/src/slider'
-export type SliderProps = Ark.SliderProps & SliderVariantProps
+export type SliderProps = Ark.SliderRootProps & SliderVariantProps
 
 const SliderRoot = withProvider(styled(Ark.Slider.Root), 'root')
 export const SliderControl = withContext(styled(Ark.Slider.Control), 'control')

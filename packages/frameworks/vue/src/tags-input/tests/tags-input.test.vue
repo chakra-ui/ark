@@ -15,9 +15,11 @@ const frameworks = ref(['react', 'solid', 'vue'])
         :index="index"
         :value="value"
       >
+        <TagsInput.ItemPreview>
+          <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
+          <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+        </TagsInput.ItemPreview>
         <TagsInput.ItemInput />
-        <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
-        <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
       </TagsInput.Item>
       <TagsInput.Input placeholder="Add tag" />
       <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>

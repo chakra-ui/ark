@@ -2,9 +2,9 @@ import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { getExports, getParts } from '../setup-test'
-import { TagsInput, type TagsInputProps } from './'
+import { TagsInput, type TagsInputRootProps } from './'
 
-const ComponentUnderTest = (props: TagsInputProps) => {
+const ComponentUnderTest = (props: TagsInputRootProps) => {
   return (
     <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       {(api) => (
@@ -13,9 +13,11 @@ const ComponentUnderTest = (props: TagsInputProps) => {
           <TagsInput.Control>
             {api.value.map((value, index) => (
               <TagsInput.Item key={index} index={index} value={value}>
+                <TagsInput.ItemPreview>
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.ItemPreview>
                 <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
               </TagsInput.Item>
             ))}
           </TagsInput.Control>

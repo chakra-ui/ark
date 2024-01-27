@@ -3,11 +3,8 @@ import { DatePicker } from '../'
 import { Portal } from '../../portal'
 import './date-picker.css'
 
-type DatePickerType = typeof DatePicker
-
-const meta: Meta<DatePickerType> = {
+const meta: Meta = {
   title: 'DateRangePicker',
-  component: DatePicker,
 }
 
 export default meta

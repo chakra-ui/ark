@@ -44,14 +44,14 @@
       "description": "The current value of the progress bar."
     }
   },
+  "View": {
+    "state": { "type": "ProgressState", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Range": { "asChild": { "type": "boolean", "isRequired": false } },
   "Track": { "asChild": { "type": "boolean", "isRequired": false } },
   "Circle": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": {
-    "state": { "type": "ProgressState", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
   "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "CircleRange": { "asChild": { "type": "boolean", "isRequired": false } },
   "CircleTrack": { "asChild": { "type": "boolean", "isRequired": false } }
