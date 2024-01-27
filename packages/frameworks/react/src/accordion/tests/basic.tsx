@@ -1,6 +1,6 @@
-import { Accordion, type AccordionProps } from '../'
+import { Accordion, type AccordionRootProps } from '../'
 
-export const ComponentUnderTest = (props: AccordionProps) => {
+export const ComponentUnderTest = (props: AccordionRootProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },

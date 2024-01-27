@@ -1,6 +1,6 @@
-import { Checkbox, type CheckboxProps } from '../'
+import { Checkbox, type CheckboxRootProps } from '../'
 
-export const ComponentUnderTest = (props: CheckboxProps) => (
+export const ComponentUnderTest = (props: CheckboxRootProps) => (
   <Checkbox.Root {...props}>
     <Checkbox.Label>Checkbox</Checkbox.Label>
     <Checkbox.Control data-testid="control" />

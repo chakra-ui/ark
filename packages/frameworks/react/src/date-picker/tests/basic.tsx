@@ -1,7 +1,7 @@
-import { DatePicker, type DatePickerProps } from '../'
+import { DatePicker, type DatePickerRootProps } from '../'
 import { Portal } from '../../portal'
 
-export const ComponentUnderTest = (props: DatePickerProps) => (
+export const ComponentUnderTest = (props: DatePickerRootProps) => (
   <DatePicker.Root {...props}>
     <DatePicker.Label>Label</DatePicker.Label>
     <DatePicker.Control>

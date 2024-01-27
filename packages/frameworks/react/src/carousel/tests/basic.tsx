@@ -1,6 +1,6 @@
-import { Carousel, type CarouselProps } from '../'
+import { Carousel, type CarouselRootProps } from '../'
 
-export const ComponentUnderTest = (props: CarouselProps) => {
+export const ComponentUnderTest = (props: CarouselRootProps) => {
   const images = [
     'https://tinyurl.com/5b6ka8jd',
     'https://tinyurl.com/7rmccdn5',

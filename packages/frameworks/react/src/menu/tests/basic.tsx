@@ -1,6 +1,6 @@
-import { Menu, type MenuProps } from '../'
+import { Menu, type MenuRootProps } from '../'
 
-export const ComponentUnderTest = (props: MenuProps) => (
+export const ComponentUnderTest = (props: MenuRootProps) => (
   <Menu.Root {...props}>
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner data-testid="positioner">

@@ -1,4 +1,4 @@
-import { Combobox, type ComboboxProps } from '../'
+import { Combobox, type ComboboxRootProps } from '../'
 import { Portal } from '../../portal'
 import type { Optional } from '../../types'
 
@@ -8,7 +8,7 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<ComboboxProps<Item>, 'items'>) => {
+export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

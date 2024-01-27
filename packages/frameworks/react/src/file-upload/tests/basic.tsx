@@ -1,6 +1,6 @@
-import { FileUpload, type FileUploadProps } from '../'
+import { FileUpload, type FileUploadRootProps } from '../'
 
-export const ComponentUnderTest = (props: FileUploadProps) => (
+export const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     {(api) => {
       if (api.files.length < 1) api.setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])

@@ -1,7 +1,7 @@
-import { Dialog, type DialogProps } from '../'
+import { Dialog, type DialogRootProps } from '../'
 import { Portal } from '../../portal'
 
-export const ComponentUnderTest = (props: DialogProps) => (
+export const ComponentUnderTest = (props: DialogRootProps) => (
   <Dialog.Root {...props}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>

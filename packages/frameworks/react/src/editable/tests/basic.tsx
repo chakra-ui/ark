@@ -1,6 +1,6 @@
-import { Editable, type EditableProps } from '../'
+import { Editable, type EditableRootProps } from '../'
 
-export const ComponentUnderTest = (props: EditableProps) => (
+export const ComponentUnderTest = (props: EditableRootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
     <Editable.Label>Label</Editable.Label>
     <Editable.Area>
