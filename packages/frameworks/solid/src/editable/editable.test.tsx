@@ -71,9 +71,9 @@ describe('Editable', () => {
     await user.dblClick(screen.getByText('Placeholder'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'React')
+    await user.type(screen.getByRole('textbox'), 'React', { delay: 20 })
 
-    expect(await screen.findByText('React')).toBeInTheDocument()
+    await screen.findByText('React')
   })
 
   it('should be possible to edit an existing value', async () => {
@@ -82,7 +82,8 @@ describe('Editable', () => {
     await user.dblClick(screen.getByText('React'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'Solid')
+
+    await user.type(screen.getByRole('textbox'), 'Solid', { delay: 20 })
     await user.click(screen.getByText('Save'))
 
     await screen.findByText('Solid')

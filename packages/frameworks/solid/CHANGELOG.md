@@ -8,27 +8,40 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
+- Updated `@zag-js` dependencies to their latest versions, enhancing performance
+  for all components.
 
 ### Changed
 
-- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+- **Breaking Change**: Renamed the `asChild` to `as` prop. The `as` prop now
+  accepts a native HTML element or a custom component. For example:
+
+```diff
+- <Popover.Trigger asChild><Button>Open</Button></Popover.Trigger>
++ <Popover.Trigger as={<Button>Open</Button>} />
+```
+
+- **Breaking Change**: Renamed the root types for all components to
+  `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
 
 ```diff
 - import type { AvatarProps } from "@ark-ui/solid"
 + import type { AvatarRootProps } from "@ark-ui/solid"
 ```
 
-- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
+- **Breaking Change**: Removed the `.Root` suffix for provider component like
+  `Presence` and `Environment`.
 
 ```diff
 - <Presence.Root>...</Presence.Root>
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress`
+  component to more accurately reflect its functionality.
 
-- Added the `ItemPreview` component to the `TagsInput` component. See the example below:
+- Added the `ItemPreview` component to the `TagsInput` component. See the
+  example below:
 
 ```diff
 <TagsInput.Item index={index} value={value()}>
@@ -42,8 +55,11 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
-- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
-- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
+- Fixed an issue on touch devices where selecting an item within `Combobox`,
+  `Menu`, or `Select` triggered a click event on the element behind the
+  portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead
+  of populating them one per input.
 
 ## [1.3.0] - 2024-01-17
 

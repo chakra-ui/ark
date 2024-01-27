@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
 export interface EditableAreaProps extends HTMLArkProps<'div'> {}
 
-export const EditableArea = (props: EditableAreaProps) => {
+export const EditableArea: ArkComponent<'div'> = (props: EditableAreaProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().areaProps, props)
 

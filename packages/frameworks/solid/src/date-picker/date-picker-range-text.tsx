@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerRangeText = (props: DatePickerRangeTextProps) => {
+export const DatePickerRangeText: ArkComponent<'div'> = (props: DatePickerRangeTextProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().rangeTextProps, props)
 

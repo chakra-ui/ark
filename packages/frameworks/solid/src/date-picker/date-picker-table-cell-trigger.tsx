@@ -1,12 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { useDatePickerTableCellContext } from './date-picker-table-cell-context'
 import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerTableCellTrigger = (props: DatePickerTableCellTriggerProps) => {
+export const DatePickerTableCellTrigger: ArkComponent<'button'> = (
+  props: DatePickerTableCellTriggerProps,
+) => {
   const api = useDatePickerContext()
   const cellProps = useDatePickerTableCellContext()
   const viewProps = useDatePickerViewContext()

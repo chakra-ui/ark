@@ -1,16 +1,15 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
 import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
-export interface AccordionRootProps
-  extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
-    UsePresenceProps {}
+interface ElementProps extends UseAccordionProps, UsePresenceProps {}
+export interface AccordionRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const AccordionRoot = (props: AccordionRootProps) => {
+export const AccordionRoot: ArkComponent<'div', ElementProps> = (props: AccordionRootProps) => {
   const [presenceProps, accordionProps] = splitPresenceProps(props)
   const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
     'collapsible',

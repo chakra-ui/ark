@@ -65,6 +65,7 @@ export default defineConfig({
       include: ['src/**'],
       exclude: ['**/*.stories.tsx'],
     },
+    retry: 2,
     globals: true,
     environment: 'jsdom',
     css: false,

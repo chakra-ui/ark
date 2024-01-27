@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { usePaginationContext } from './pagination-context'
 
 export interface PaginationPrevTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
+export const PaginationPrevTrigger: ArkComponent<'button'> = (
+  props: PaginationPrevTriggerProps,
+) => {
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().prevTriggerProps, props)
 

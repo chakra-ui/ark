@@ -1,6 +1,6 @@
 {
   "Item": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "item": { "type": "any", "isRequired": false }
   },
   "Root": {
@@ -9,7 +9,7 @@
       "isRequired": true,
       "description": "The options of the select"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -164,25 +164,25 @@
       "description": "The keys of the selected items"
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemText": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Indicator": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemGroup": {
     "id": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
   "ValueText": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "placeholder": { "type": "string", "isRequired": false }
   },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ClearTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemIndicator": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemGroupLabel": {
     "for": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   }
 }

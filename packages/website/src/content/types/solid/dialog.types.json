@@ -121,11 +121,11 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Backdrop": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Title": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Backdrop": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Description": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "CloseTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

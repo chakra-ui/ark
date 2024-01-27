@@ -1,13 +1,13 @@
 import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 
 export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
-export const MenuItem = (props: MenuItemProps) => {
+export const MenuItem: ArkComponent<'div', ItemProps> = (props: MenuItemProps) => {
   const menu = useMenuContext()
   const [itemParams, restProps] = createSplitProps<ItemProps>()(props, [
     'id',
