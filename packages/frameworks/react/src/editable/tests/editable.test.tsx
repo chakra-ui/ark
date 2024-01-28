@@ -49,7 +49,7 @@ describe('Editable', () => {
     await user.clear(screen.getByRole('textbox'))
     await user.type(screen.getByRole('textbox'), 'React')
 
-    expect(await screen.findByText('React')).toBeInTheDocument()
+    await screen.findByText('React')
   })
 
   it('should be possible to edit an existing value', async () => {
