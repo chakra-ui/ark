@@ -5,7 +5,6 @@ import type {
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
 import type { CollectionItem } from '../types'
-import { Combobox as ComboboxRoot, type ComboboxProps } from './combobox'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
 import { useComboboxContext, type ComboboxContext } from './combobox-context'
@@ -21,9 +20,10 @@ import { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combob
 import { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text'
 import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
+import { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
 
-const Combobox = Object.assign(ComboboxRoot, {
+export const Combobox = {
   Root: ComboboxRoot,
   ClearTrigger: ComboboxClearTrigger,
   Content: ComboboxContent,
@@ -37,10 +37,9 @@ const Combobox = Object.assign(ComboboxRoot, {
   Label: ComboboxLabel,
   Positioner: ComboboxPositioner,
   Trigger: ComboboxTrigger,
-})
+}
 
 export {
-  Combobox,
   ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
@@ -52,6 +51,7 @@ export {
   ComboboxItemText,
   ComboboxLabel,
   ComboboxPositioner,
+  ComboboxRoot,
   ComboboxTrigger,
   useComboboxContext,
 }
@@ -72,7 +72,7 @@ export type {
   ComboboxLabelProps,
   ComboboxOpenChangeDetails,
   ComboboxPositionerProps,
-  ComboboxProps,
+  ComboboxRootProps,
   ComboboxTriggerProps,
   ComboboxValueChangeDetails,
 }

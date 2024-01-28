@@ -1,4 +1,10 @@
 {
+  "Item": {
+    "index": { "type": "string | number", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
     "addOnPaste": {
       "type": "boolean",
@@ -128,12 +134,6 @@
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
-  },
-  "Item": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
   },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },

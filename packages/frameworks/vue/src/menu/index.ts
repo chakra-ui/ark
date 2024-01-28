@@ -2,7 +2,6 @@ import type {
   OpenChangeDetails as MenuOpenChangeDetails,
   ValueChangeDetails as MenuValueChangeDetails,
 } from '@zag-js/menu'
-import { Menu as MenuRoot, type MenuProps } from './menu'
 import { MenuArrow, type MenuArrowProps } from './menu-arrow'
 import { MenuArrowTip, type MenuArrowTipProps } from './menu-arrow-tip'
 import { MenuContent, type MenuContentProps } from './menu-content'
@@ -13,11 +12,12 @@ import { MenuItemGroup, type MenuItemGroupProps } from './menu-item-group'
 import { MenuItemGroupLabel, type MenuItemGroupLabelProps } from './menu-item-group-label'
 import { MenuOptionItem, type MenuOptionItemProps } from './menu-option-item'
 import { MenuPositioner, type MenuPositionerProps } from './menu-positioner'
+import { MenuRoot, type MenuRootProps } from './menu-root'
 import { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 import { MenuTrigger, type MenuTriggerProps } from './menu-trigger'
 import { MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item'
 
-const Menu = Object.assign(MenuRoot, {
+export const Menu = {
   Root: MenuRoot,
   Arrow: MenuArrow,
   ArrowTip: MenuArrowTip,
@@ -31,10 +31,9 @@ const Menu = Object.assign(MenuRoot, {
   Separator: MenuSeparator,
   Trigger: MenuTrigger,
   TriggerItem: MenuTriggerItem,
-})
+}
 
 export {
-  Menu,
   MenuArrow,
   MenuArrowTip,
   MenuContent,
@@ -44,6 +43,7 @@ export {
   MenuItemGroupLabel,
   MenuOptionItem,
   MenuPositioner,
+  MenuRoot,
   MenuSeparator,
   MenuTrigger,
   MenuTriggerItem,
@@ -61,7 +61,7 @@ export type {
   MenuOpenChangeDetails,
   MenuOptionItemProps,
   MenuPositionerProps,
-  MenuProps,
+  MenuRootProps,
   MenuSeparatorProps,
   MenuTriggerItemProps,
   MenuTriggerProps,

@@ -1,15 +1,15 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { TooltipProvider } from './tooltip-context'
-import { emits, props } from './tooltip.props'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { DialogProvider } from './dialog-context'
+import { emits, props } from './dialog.props'
+import { useDialog, type UseDialogProps } from './use-dialog'
 
-export interface TooltipProps extends UseTooltipProps, UsePresenceProps {}
+export interface DialogRootProps extends UseDialogProps, UsePresenceProps {}
 
-export const Tooltip = defineComponent<TooltipProps>(
+export const DialogRoot = defineComponent<DialogRootProps>(
   (props, { slots, emit }) => {
-    const api = useTooltip(props, emit)
+    const api = useDialog(props, emit)
 
     const isOpen = computed(() => api.value.isOpen)
 
@@ -20,13 +20,13 @@ export const Tooltip = defineComponent<TooltipProps>(
     }))
     const presenceApi = usePresence(presenceProps, emit)
 
-    TooltipProvider(api)
+    DialogProvider(api)
     PresenceProvider(presenceApi)
 
     return () => slots.default?.(api.value)
   },
   {
-    name: 'Tooltip',
+    name: 'DialogRoot',
     props: {
       ...props,
       ...presenceProps,

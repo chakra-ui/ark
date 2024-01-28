@@ -6,9 +6,9 @@ import { SegmentGroupProvider } from './segment-group-context'
 import { emits, props } from './segment-group.props'
 import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 
-export interface SegmentGroupProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
+export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
-export const SegmentGroup = defineComponent<SegmentGroupProps>(
+export const SegmentGroupRoot = defineComponent<SegmentGroupRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useSegmentGroup(props, emit)
     SegmentGroupProvider(api)
@@ -20,7 +20,7 @@ export const SegmentGroup = defineComponent<SegmentGroupProps>(
     )
   },
   {
-    name: 'SegmentGroup',
+    name: 'SegmentGroupRoot',
     props,
     emits,
   },

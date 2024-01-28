@@ -5,9 +5,9 @@ import { PopoverProvider } from './popover-context'
 import { emits, props } from './popover.props'
 import { usePopover, type UsePopoverProps } from './use-popover'
 
-export interface PopoverProps extends UsePopoverProps, UsePresenceProps {}
+export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {}
 
-export const Popover = defineComponent<PopoverProps>(
+export const PopoverRoot = defineComponent<PopoverRootProps>(
   (props, { slots, emit }) => {
     const api = usePopover(props, emit)
 
@@ -26,7 +26,7 @@ export const Popover = defineComponent<PopoverProps>(
     return () => slots.default?.(api.value)
   },
   {
-    name: 'Popover',
+    name: 'PopoverRoot',
     props: {
       ...props,
       ...presenceProps,

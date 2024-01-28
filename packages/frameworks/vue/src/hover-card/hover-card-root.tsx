@@ -1,15 +1,15 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { DialogProvider } from './dialog-context'
-import { emits, props } from './dialog.props'
-import { useDialog, type UseDialogProps } from './use-dialog'
+import { HoverCardProvider } from './hover-card-context'
+import { emits, props } from './hover-card.props'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
 
-export interface DialogProps extends UseDialogProps, UsePresenceProps {}
+export interface HoverCardRootProps extends UseHoverCardProps, UsePresenceProps {}
 
-export const Dialog = defineComponent<DialogProps>(
+export const HoverCardRoot = defineComponent<HoverCardRootProps>(
   (props, { slots, emit }) => {
-    const api = useDialog(props, emit)
+    const api = useHoverCard(props, emit)
 
     const isOpen = computed(() => api.value.isOpen)
 
@@ -20,13 +20,13 @@ export const Dialog = defineComponent<DialogProps>(
     }))
     const presenceApi = usePresence(presenceProps, emit)
 
-    DialogProvider(api)
+    HoverCardProvider(api)
     PresenceProvider(presenceApi)
 
     return () => slots.default?.(api.value)
   },
   {
-    name: 'Dialog',
+    name: 'HoverCardRoot',
     props: {
       ...props,
       ...presenceProps,

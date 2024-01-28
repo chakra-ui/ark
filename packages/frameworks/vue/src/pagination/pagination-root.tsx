@@ -5,9 +5,9 @@ import { PaginationProvider } from './pagination-context'
 import { emits, props } from './pagination.props'
 import { usePagination, type UsePaginationProps } from './use-pagination'
 
-export interface PaginationProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
+export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
 
-export const Pagination = defineComponent<PaginationProps>(
+export const PaginationRoot = defineComponent<PaginationRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = usePagination(props, emit)
     PaginationProvider(api)
@@ -19,7 +19,7 @@ export const Pagination = defineComponent<PaginationProps>(
     )
   },
   {
-    name: 'Pagination',
+    name: 'PaginationRoot',
     props,
     emits,
   },

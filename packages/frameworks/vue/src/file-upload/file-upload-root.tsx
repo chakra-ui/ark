@@ -5,9 +5,9 @@ import { FileUploadProvider } from './file-upload-context'
 import { emits, props } from './file-upload.props'
 import { useFileUpload, type UseFileUploadProps } from './use-file-upload'
 
-export interface FileUploadProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
+export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
 
-export const FileUpload = defineComponent<FileUploadProps>(
+export const FileUploadRoot = defineComponent<FileUploadRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useFileUpload(props, emit)
     FileUploadProvider(api)
@@ -19,7 +19,7 @@ export const FileUpload = defineComponent<FileUploadProps>(
     )
   },
   {
-    name: 'FileUpload',
+    name: 'FileUploadRoot',
     props,
     emits,
   },
