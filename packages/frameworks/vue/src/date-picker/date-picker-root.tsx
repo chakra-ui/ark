@@ -2,18 +2,18 @@ import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import type { Assign } from '../types'
-import { ColorPickerProvider } from './color-picker-context'
-import { emits, props } from './color-picker.props'
-import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
+import { type Assign } from '../types'
+import { DatePickerProvider } from './date-picker-context'
+import { emits, props } from './date-picker.props'
+import { useDatePicker, type UseDatePickerProps } from './use-date-picker'
 
-export interface ColorPickerProps
-  extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
+export interface DatePickerRootProps
+  extends Assign<HTMLArkProps<'div'>, UseDatePickerProps>,
     UsePresenceProps {}
 
-export const ColorPicker = defineComponent<ColorPickerProps>(
-  (props, { slots, emit, attrs }) => {
-    const api = useColorPicker(props, emit)
+export const DatePickerRoot = defineComponent<DatePickerRootProps>(
+  (props, { slots, attrs, emit }) => {
+    const api = useDatePicker(props, emit)
 
     const isOpen = computed(() => api.value.isOpen)
 
@@ -24,20 +24,17 @@ export const ColorPicker = defineComponent<ColorPickerProps>(
     }))
     const presenceApi = usePresence(presenceProps, emit)
 
-    ColorPickerProvider(api)
+    DatePickerProvider(api)
     PresenceProvider(presenceApi)
 
     return () => (
-      <>
-        <ark.div {...api.value.rootProps} {...attrs}>
-          {slots.default?.(api.value)}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
+      <ark.div {...api.value.rootProps} {...attrs}>
+        {slots.default?.(api.value)}
+      </ark.div>
     )
   },
   {
-    name: 'ColorPicker',
+    name: 'DatePickerRoot',
     props: {
       ...props,
       ...presenceProps,

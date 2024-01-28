@@ -5,9 +5,9 @@ import { ProgressProvider } from './progress-context'
 import { emits, props } from './progress.props'
 import { useProgress, type UseProgressProps } from './use-progress'
 
-export interface ProgressProps extends Assign<HTMLArkProps<'div'>, UseProgressProps> {}
+export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgressProps> {}
 
-export const Progress = defineComponent<ProgressProps>(
+export const ProgressRoot = defineComponent<ProgressRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useProgress(props, emit)
     ProgressProvider(api)
@@ -19,7 +19,7 @@ export const Progress = defineComponent<ProgressProps>(
     )
   },
   {
-    name: 'Progress',
+    name: 'ProgressRoot',
     props,
     emits,
   },

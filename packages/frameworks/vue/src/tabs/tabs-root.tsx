@@ -2,25 +2,25 @@ import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresencePropsProvider, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import type { Assign } from '../types'
-import { AccordionProvider } from './accordion-context'
-import { emits, props } from './accordion.props'
-import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { type Assign } from '../types'
+import { TabsProvider } from './tabs-context'
+import { emits, props } from './tabs.props'
+import { useTabs, type UseTabsProps } from './use-tabs'
 
-export interface AccordionProps
-  extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
+export interface TabsRootProps
+  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
     UsePresenceProps {}
 
-export const Accordion = defineComponent<AccordionProps>(
+export const TabsRoot = defineComponent<TabsRootProps>(
   (props, { slots, attrs, emit }) => {
-    const api = useAccordion(props, emit)
+    const api = useTabs(props, emit)
 
     const presenceProps = computed(() => ({
       present: props.present,
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    AccordionProvider(api)
+    TabsProvider(api)
     PresencePropsProvider(presenceProps)
 
     return () => (
@@ -30,7 +30,7 @@ export const Accordion = defineComponent<AccordionProps>(
     )
   },
   {
-    name: 'Accordion',
+    name: 'TabsRoot',
     props: {
       ...props,
       ...presenceProps,

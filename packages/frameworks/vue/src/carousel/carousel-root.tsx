@@ -5,9 +5,9 @@ import { CarouselProvider } from './carousel-context'
 import { emits, props } from './carousel.props'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 
-export interface CarouselProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
+export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
 
-export const Carousel = defineComponent<CarouselProps>(
+export const CarouselRoot = defineComponent<CarouselRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useCarousel(props, emit)
     CarouselProvider(api)
@@ -19,7 +19,7 @@ export const Carousel = defineComponent<CarouselProps>(
     )
   },
   {
-    name: 'Carousel',
+    name: 'CarouselRoot',
     props,
     emits,
   },

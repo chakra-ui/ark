@@ -4,7 +4,6 @@ import type {
   ValueChangeDetails as DatePickerValueChangeDetails,
   ViewChangeDetails as DatePickerViewChangeDetails,
 } from '@zag-js/date-picker'
-import { DatePicker as DatePickerRoot, type DatePickerProps } from './date-picker'
 import {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
@@ -19,6 +18,7 @@ import { DatePickerNextTrigger, type DatePickerNextTriggerProps } from './date-p
 import { DatePickerPositioner, type DatePickerPositionerProps } from './date-picker-positioner'
 import { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
 import { DatePickerRangeText, type DatePickerRangeTextProps } from './date-picker-range-text'
+import { DatePickerRoot, type DatePickerRootProps } from './date-picker-root'
 import { DatePickerTable, type DatePickerTableProps } from './date-picker-table'
 import { DatePickerTableBody, type DatePickerTableBodyProps } from './date-picker-table-body'
 import { DatePickerTableCell, type DatePickerTableCellProps } from './date-picker-table-cell'
@@ -41,7 +41,7 @@ import { DatePickerViewControl, type DatePickerViewControlProps } from './date-p
 import { DatePickerViewTrigger, type DatePickerViewTriggerProps } from './date-picker-view-trigger'
 import { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
 
-const DatePicker = Object.assign(DatePickerRoot, {
+export const DatePicker = {
   Root: DatePickerRoot,
   ClearTrigger: DatePickerClearTrigger,
   Content: DatePickerContent,
@@ -65,10 +65,9 @@ const DatePicker = Object.assign(DatePickerRoot, {
   ViewControl: DatePickerViewControl,
   ViewTrigger: DatePickerViewTrigger,
   YearSelect: DatePickerYearSelect,
-})
+}
 
 export {
-  DatePicker,
   DatePickerClearTrigger,
   DatePickerContent,
   DatePickerControl,
@@ -79,6 +78,7 @@ export {
   DatePickerPositioner,
   DatePickerPrevTrigger,
   DatePickerRangeText,
+  DatePickerRoot,
   DatePickerTable,
   DatePickerTableBody,
   DatePickerTableCell,
@@ -110,8 +110,8 @@ export type {
   DatePickerOpenChangeDetails,
   DatePickerPositionerProps,
   DatePickerPrevTriggerProps,
-  DatePickerProps,
   DatePickerRangeTextProps,
+  DatePickerRootProps,
   DatePickerTableBodyProps,
   DatePickerTableCellContext,
   DatePickerTableCellProps,

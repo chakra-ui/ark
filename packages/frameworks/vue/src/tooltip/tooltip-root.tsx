@@ -1,15 +1,15 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { HoverCardProvider } from './hover-card-context'
-import { emits, props } from './hover-card.props'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { TooltipProvider } from './tooltip-context'
+import { emits, props } from './tooltip.props'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
 
-export interface HoverCardProps extends UseHoverCardProps, UsePresenceProps {}
+export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {}
 
-export const HoverCard = defineComponent<HoverCardProps>(
+export const TooltipRoot = defineComponent<TooltipRootProps>(
   (props, { slots, emit }) => {
-    const api = useHoverCard(props, emit)
+    const api = useTooltip(props, emit)
 
     const isOpen = computed(() => api.value.isOpen)
 
@@ -20,13 +20,13 @@ export const HoverCard = defineComponent<HoverCardProps>(
     }))
     const presenceApi = usePresence(presenceProps, emit)
 
-    HoverCardProvider(api)
+    TooltipProvider(api)
     PresenceProvider(presenceApi)
 
     return () => slots.default?.(api.value)
   },
   {
-    name: 'HoverCard',
+    name: 'TooltipRoot',
     props: {
       ...props,
       ...presenceProps,

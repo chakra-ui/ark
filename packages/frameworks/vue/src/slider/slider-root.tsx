@@ -5,9 +5,9 @@ import { SliderProvider } from './slider-context'
 import { emits, props } from './slider.props'
 import { useSlider, type UseSliderProps } from './use-slider'
 
-export interface SliderProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
+export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
 
-export const Slider = defineComponent<SliderProps>(
+export const SliderRoot = defineComponent<SliderRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useSlider(props, emit)
     SliderProvider(api)
@@ -19,7 +19,7 @@ export const Slider = defineComponent<SliderProps>(
     )
   },
   {
-    name: 'Slider',
+    name: 'SliderRoot',
     props,
     emits,
   },

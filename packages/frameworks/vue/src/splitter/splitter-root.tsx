@@ -5,9 +5,9 @@ import { SplitterProvider } from './splitter-context'
 import { emits, props } from './splitter.props'
 import { useSplitter, type UseSplitterProps } from './use-splitter'
 
-export interface SplitterProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
+export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
 
-export const Splitter = defineComponent<SplitterProps>(
+export const SplitterRoot = defineComponent<SplitterRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useSplitter(props, emit)
     SplitterProvider(api)
@@ -19,7 +19,7 @@ export const Splitter = defineComponent<SplitterProps>(
     )
   },
   {
-    name: 'Splitter',
+    name: 'SplitterRoot',
     props,
     emits,
   },

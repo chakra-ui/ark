@@ -3,27 +3,30 @@ import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import type { Assign, CollectionItem } from '../types'
-import { SelectProvider } from './select-context'
-import { emits, props } from './select.props'
-import { useSelect, type UseSelectProps } from './use-select'
-
-export interface SelectProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
-    UsePresenceProps {}
+import { ComboboxProvider } from './combobox-context'
+import { emits, props } from './combobox.props'
+import { useCombobox, type UseComboboxProps } from './use-combobox'
 
 // TOOD: #2011 this is a bad workaround but should work for now
 // function signature doesn't really support more complicated generics
-export const Select = defineComponent<SelectProps<CollectionItem>>(
+export interface ComboboxRootProps<T extends CollectionItem>
+  extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
+    UsePresenceProps {}
+
+export const ComboboxRoot = defineComponent<ComboboxRootProps<CollectionItem>>(
   (props, { slots, attrs, emit }) => {
-    const api = useSelect(props, emit)
+    const api = useCombobox(props, emit)
+
+    const isOpen = computed(() => api.value.isOpen)
 
     const presenceProps = computed(() => ({
-      present: props.present || api.value.isOpen,
+      present: props.present || isOpen.value,
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
     const presenceApi = usePresence(presenceProps, emit)
-    SelectProvider(api)
+
+    ComboboxProvider(api)
     PresenceProvider(presenceApi)
 
     return () => (
@@ -33,22 +36,22 @@ export const Select = defineComponent<SelectProps<CollectionItem>>(
     )
   },
   {
-    name: 'Select',
+    name: 'ComboboxRoot',
     props: {
       ...props,
       ...presenceProps,
       items: {
-        type: Array as PropType<UseSelectProps<any>['items']>,
+        type: Array as PropType<UseComboboxProps<any>['items']>,
         required: true,
       },
       itemToString: {
-        type: Function as PropType<UseSelectProps<any>['itemToString']>,
+        type: Function as PropType<UseComboboxProps<any>['itemToString']>,
       },
       itemToValue: {
-        type: Function as PropType<UseSelectProps<any>['itemToValue']>,
+        type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
       },
       isItemDisabled: {
-        type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
+        type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
       },
     },
     emits: {

@@ -5,9 +5,9 @@ import { RatingGroupProvider } from './rating-group-context'
 import { emits, props } from './rating-group.props'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
 
-export interface RatingGroupProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
+export interface RatingGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
-export const RatingGroup = defineComponent<RatingGroupProps>(
+export const RatingGroupRoot = defineComponent<RatingGroupRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useRatingGroup(props, emit)
     RatingGroupProvider(api)
@@ -19,7 +19,7 @@ export const RatingGroup = defineComponent<RatingGroupProps>(
     )
   },
   {
-    name: 'RatingGroup',
+    name: 'RatingGroupRoot',
     props,
     emits,
   },

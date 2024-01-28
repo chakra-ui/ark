@@ -5,9 +5,9 @@ import { PinInputProvider } from './pin-input-context'
 import { emits, props } from './pin-input.props'
 import { usePinInput, type UsePinInputProps } from './use-pin-input'
 
-export interface PinInputProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
+export interface PinInputRootProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
 
-export const PinInput = defineComponent<PinInputProps>(
+export const PinInputRoot = defineComponent<PinInputRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = usePinInput(props, emit)
     PinInputProvider(api)
@@ -22,7 +22,7 @@ export const PinInput = defineComponent<PinInputProps>(
     )
   },
   {
-    name: 'PinInput',
+    name: 'PinInputRoot',
     props,
     emits,
   },

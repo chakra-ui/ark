@@ -5,9 +5,9 @@ import { ToggleGroupProvider } from './toggle-group-context'
 import { emits, props } from './toggle-group.props'
 import { useToggleGroup, type UseToggleGroupProps } from './use-toggle-group'
 
-export interface ToggleGroupProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
+export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 
-export const ToggleGroup = defineComponent<ToggleGroupProps>(
+export const ToggleGroupRoot = defineComponent<ToggleGroupRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useToggleGroup(props, emit)
     ToggleGroupProvider(api)
@@ -19,7 +19,7 @@ export const ToggleGroup = defineComponent<ToggleGroupProps>(
     )
   },
   {
-    name: 'ToggleGroup',
+    name: 'ToggleGroupRoot',
     props,
     emits,
   },

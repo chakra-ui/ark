@@ -11,9 +11,9 @@ import {
 import { emits, props } from './menu.props'
 import { useMenu, type UseMenuProps } from './use-menu'
 
-export interface MenuProps extends UseMenuProps, UsePresenceProps {}
+export interface MenuRootProps extends UseMenuProps, UsePresenceProps {}
 
-export const Menu = defineComponent<MenuProps>(
+export const MenuRoot = defineComponent<MenuRootProps>(
   (props, { slots, emit }) => {
     const { api, machine } = useMenu(props, emit)
 
@@ -48,7 +48,7 @@ export const Menu = defineComponent<MenuProps>(
     }
   },
   {
-    name: 'Menu',
+    name: 'MenuRoot',
     props: {
       ...props,
       ...presenceProps,

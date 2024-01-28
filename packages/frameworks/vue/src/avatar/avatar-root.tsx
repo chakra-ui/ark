@@ -5,9 +5,9 @@ import { AvatarProvider } from './avatar-context'
 import { emits, props } from './avatar.props'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
 
-export interface AvatarProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const Avatar = defineComponent<AvatarProps>(
+export const AvatarRoot = defineComponent<AvatarRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useAvatar(props, emit)
     AvatarProvider(api)
@@ -19,7 +19,7 @@ export const Avatar = defineComponent<AvatarProps>(
     )
   },
   {
-    name: 'Avatar',
+    name: 'AvatarRoot',
     props,
     emits,
   },
