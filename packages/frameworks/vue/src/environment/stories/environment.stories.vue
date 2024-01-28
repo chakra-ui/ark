@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import PrintEnvironment from './print-environment.vue'
-import { Environment } from '../environment'
+import { Environment } from '../'
 import { ark } from '../../factory'
+import PrintEnvironment from './print-environment.vue'
 </script>
 
 <template>
