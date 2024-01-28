@@ -136,10 +136,8 @@ describe('Menu', () => {
   })
 
   describe('OptionGroups', () => {
-    render(() => <OptionGroupsComponentUnderTest />)
-
     it('should select a radio option', async () => {
-      render(() => <ComponentUnderTest />)
+      render(() => <OptionGroupsComponentUnderTest />)
       const menuButton = screen.getByRole('button', { name: /open menu/i })
       await user.click(menuButton)
 
@@ -149,7 +147,7 @@ describe('Menu', () => {
     })
 
     it('should select a checkbox option', async () => {
-      render(() => <ComponentUnderTest />)
+      render(() => <OptionGroupsComponentUnderTest />)
       const menuButton = screen.getByRole('button', { name: /open menu/i })
       await user.click(menuButton)
 
