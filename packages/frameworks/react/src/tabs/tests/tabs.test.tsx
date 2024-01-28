@@ -1,45 +1,32 @@
 import { tabsAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { Tabs, type TabsRootProps } from './'
+import { Tabs } from '..'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: TabsRootProps) => {
-  const items = [
-    { value: 'React' },
-    { value: 'Solid' },
-    { value: 'Svelte', disabled: true },
-    { value: 'Vue' },
-  ]
-  return (
-    <Tabs.Root {...props}>
-      <Tabs.List>
-        {items.map((item, id) => (
-          <Tabs.Trigger key={id} value={item.value} disabled={item.disabled}>
-            {item.value} Trigger
-          </Tabs.Trigger>
-        ))}
-        <Tabs.Indicator />
-      </Tabs.List>
-      {items.map((item, id) => (
-        <Tabs.Content key={id} value={item.value}>
-          {item.value} Content
-        </Tabs.Content>
-      ))}
-    </Tabs.Root>
-  )
-}
+describe('Tabs / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Tabs', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
     expect(Tabs[part]).toBeDefined()
+  })
+})
+
+describe('Tabs', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should activate tab on click', async () => {

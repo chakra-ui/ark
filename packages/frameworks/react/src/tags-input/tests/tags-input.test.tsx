@@ -1,43 +1,31 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { TagsInput, type TagsInputRootProps } from './'
+import { TagsInput } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: TagsInputRootProps) => {
-  return (
-    <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemPreview>
-                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-                </TagsInput.ItemPreview>
-                <TagsInput.ItemInput />
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add tag" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
-    </TagsInput.Root>
-  )
-}
+describe('TagsInput / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('TagsInput', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
     expect(TagsInput[part]).toBeDefined()
+  })
+})
+
+describe('TagsInput', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should allow to add a new item', async () => {

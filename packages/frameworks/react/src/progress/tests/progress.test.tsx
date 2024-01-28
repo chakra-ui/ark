@@ -1,32 +1,30 @@
 import { progressAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
-import { getExports, getParts } from '../setup-test'
-import { Progress, type ProgressRootProps } from './'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
+import { Progress } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: ProgressRootProps) => (
-  <Progress.Root {...props}>
-    <Progress.Label>Label</Progress.Label>
-    <Progress.ValueText />
-    <Progress.View state="loading" />
-    <Progress.Track>
-      <Progress.Range />
-    </Progress.Track>
-    <Progress.Circle>
-      <Progress.CircleTrack />
-      <Progress.CircleRange />
-    </Progress.Circle>
-  </Progress.Root>
-)
+describe('Progress / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Progress', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(progressAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(progressAnatomy))('should export %s', async (part) => {
     expect(Progress[part]).toBeDefined()
+  })
+})
+
+describe('Progress', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should handle default value', async () => {

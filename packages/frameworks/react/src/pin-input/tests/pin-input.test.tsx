@@ -1,30 +1,32 @@
 import { pinInputAnatomy } from '@ark-ui/anatomy'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { PinInput, type PinInputRootProps } from './'
+import { PinInput } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: PinInputRootProps) => (
-  <PinInput.Root {...props}>
-    <PinInput.Label>Label</PinInput.Label>
-    <PinInput.Control>
-      {[0, 1, 2].map((id, index) => (
-        <PinInput.Input key={id} index={index} />
-      ))}
-    </PinInput.Control>
-  </PinInput.Root>
-)
+describe('PinInput / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('PinInput', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
     expect(PinInput[part]).toBeDefined()
+  })
+})
+
+describe('PinInput', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should have the proper aria labels', async () => {

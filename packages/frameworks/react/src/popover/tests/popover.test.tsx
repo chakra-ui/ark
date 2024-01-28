@@ -1,39 +1,32 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { useState } from 'react'
-import { getExports, getParts } from '../setup-test'
-import { Popover, type PopoverRootProps } from './'
+import { Popover } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
+import { ControlledComponentUnderTest } from './controlled'
 
-const ComponentUnderTest = (props: PopoverRootProps) => (
-  <Popover.Root {...props}>
-    <Popover.Trigger>
-      click me
-      <Popover.Indicator />
-    </Popover.Trigger>
-    <Popover.Anchor>Anchor</Popover.Anchor>
-    <Popover.Positioner data-testid="positioner">
-      <Popover.Arrow>
-        <Popover.ArrowTip />
-      </Popover.Arrow>
-      <Popover.Content>
-        <Popover.Title>title</Popover.Title>
-        <Popover.Description>description</Popover.Description>
-        <Popover.CloseTrigger>close</Popover.CloseTrigger>
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-)
+describe('Popover / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Popover', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
     expect(Popover[part]).toBeDefined()
+  })
+})
+
+describe('Popover', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should open and close the popover', async () => {
@@ -54,16 +47,6 @@ describe('Popover', () => {
   })
 
   it('should allow controlled usage', async () => {
-    const ControlledComponentUnderTest = (props: PopoverRootProps) => {
-      const [open, setOpen] = useState(false)
-      return (
-        <>
-          <button onClick={() => setOpen((prev) => !prev)}>toggle</button>
-          <ComponentUnderTest {...props} open={open} />
-        </>
-      )
-    }
-
     render(<ControlledComponentUnderTest />)
     expect(screen.queryByText('title')).not.toBeVisible()
 

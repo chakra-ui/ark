@@ -1,37 +1,31 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { RatingGroup, type RatingGroupRootProps } from './'
+import { RatingGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: RatingGroupRootProps) => (
-  <RatingGroup.Root {...props}>
-    <RatingGroup.Label>Label</RatingGroup.Label>
-    <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHalf, isHighlighted }) => {
-              if (isHalf) return 'half'
-              if (isHighlighted) return 'highlighted'
-              return 'empty'
-            }}
-          </RatingGroup.Item>
-        ))
-      }
-    </RatingGroup.Control>
-  </RatingGroup.Root>
-)
+describe('Rating Group / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Rating Group', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
     expect(RatingGroup[part]).toBeDefined()
+  })
+})
+
+describe('Rating Group', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should apply default value', async () => {

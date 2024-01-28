@@ -1,44 +1,31 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Pagination, type PaginationRootProps } from './'
+import { Pagination } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: PaginationRootProps) => (
-  <Pagination.Root {...props}>
-    {({ pages }) => (
-      <>
-        <Pagination.PrevTrigger>
-          Previous <span className="visually-hidden">Page</span>
-        </Pagination.PrevTrigger>
-        {pages.map((page, index) =>
-          page.type === 'page' ? (
-            <Pagination.Item key={index} {...page}>
-              {page.value}
-            </Pagination.Item>
-          ) : (
-            <Pagination.Ellipsis key={index} index={index}>
-              &#8230;
-            </Pagination.Ellipsis>
-          ),
-        )}
-        <Pagination.NextTrigger>
-          Next <span className="visually-hidden">Page</span>
-        </Pagination.NextTrigger>
-      </>
-    )}
-  </Pagination.Root>
-)
+describe('Pagination / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Pagination', () => {
+  render(<ComponentUnderTest count={100} pageSize={10} />)
+
   it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest count={100} pageSize={10} />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
     expect(Pagination[part]).toBeDefined()
+  })
+})
+
+describe('Pagination', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should update page when item is clicked', async () => {

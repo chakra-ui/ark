@@ -1,30 +1,31 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Tooltip, type TooltipRootProps } from './'
+import { Tooltip } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: TooltipRootProps) => (
-  <Tooltip.Root openDelay={0} closeDelay={0} {...props}>
-    <Tooltip.Trigger>hover me</Tooltip.Trigger>
-    <Tooltip.Positioner>
-      <Tooltip.Arrow>
-        <Tooltip.ArrowTip />
-      </Tooltip.Arrow>
-      <Tooltip.Content>content</Tooltip.Content>
-    </Tooltip.Positioner>
-  </Tooltip.Root>
-)
+describe('Tooltip / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Tooltip', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
     expect(Tooltip[part]).toBeDefined()
+  })
+})
+
+describe('Tooltip', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should show the tooltip on pointerover and close on pointer leave', async () => {

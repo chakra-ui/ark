@@ -1,30 +1,32 @@
 import { switchAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { Switch, type SwitchRootProps } from './'
+import { Switch } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: SwitchRootProps) => {
-  return (
-    <Switch.Root {...props}>
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label>Label</Switch.Label>
-    </Switch.Root>
-  )
-}
+describe('Switch / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Switch', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(switchAnatomy))('should export %s', async (part) => {
     expect(Switch[part]).toBeDefined()
+  })
+})
+
+describe('Switch', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should toggle state when clicked', async () => {

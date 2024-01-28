@@ -1,34 +1,19 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '../setup-test'
-import { Toast, createToaster } from './'
+import { Toast } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const [Toaster, toast] = createToaster({
-  placement: 'top-end',
-  render(toast) {
-    return (
-      <Toast.Root>
-        <Toast.Title>{toast.title}</Toast.Title>
-        <Toast.Description>{toast.description}</Toast.Description>
-        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
-      </Toast.Root>
-    )
-  },
-})
+describe('Toast / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-export const ComponentUnderTest = () => (
-  <div>
-    <button onClick={() => toast.create({ title: 'Title', description: 'Description' })}>
-      Create Toast
-    </button>
-    <Toaster />
-  </div>
-)
+  render(<ComponentUnderTest />)
 
-describe('Toast', () => {
   it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))
 
     // eslint-disable-next-line testing-library/no-node-access
@@ -38,6 +23,12 @@ describe('Toast', () => {
 
   it.each(getExports(toastAnatomy))('should export %s', async (part) => {
     expect(Toast[part]).toBeDefined()
+  })
+})
+
+describe('Toast', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should show and hide a toast message', async () => {

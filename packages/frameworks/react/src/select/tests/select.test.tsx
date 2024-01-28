@@ -1,62 +1,32 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { Portal } from '../portal'
-import { getExports, getParts } from '../setup-test'
-import type { Optional } from '../types'
-import { Select, type SelectRootProps } from './'
+import { Select } from '..'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-interface Item {
-  label: string
-  value: string
-  disabled?: boolean
-}
+describe('Select / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items'>) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
-  return (
-    <Select.Root items={items} {...props}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator>▼</Select.Indicator>
-        </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
-      </Select.Control>
-      <Portal>
-        <Select.Positioner data-testid="positioner">
-          <Select.Content>
-            <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
-              {items.map((item) => (
-                <Select.Item key={item.value} item={item}>
-                  <Select.ItemText>{item.label}</Select.ItemText>
-                  <Select.ItemIndicator>✓</Select.ItemIndicator>
-                </Select.Item>
-              ))}
-            </Select.ItemGroup>
-          </Select.Content>
-        </Select.Positioner>
-      </Portal>
-    </Select.Root>
-  )
-}
-describe('Select', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(selectAnatomy))('should export %s', async (part) => {
     expect(Select[part]).toBeDefined()
+  })
+})
+
+describe('Select', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should handle item selection', async () => {

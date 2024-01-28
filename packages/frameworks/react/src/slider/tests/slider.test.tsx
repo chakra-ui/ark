@@ -1,49 +1,32 @@
 import { sliderAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { useState } from 'react'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { Slider, type SliderRootProps } from './'
+import { Slider } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: SliderRootProps) => {
-  const [value, setValue] = useState([-20, 20])
-  return (
-    <Slider.Root
-      min={-50}
-      max={50}
-      value={value}
-      onValueChange={(e) => setValue(e.value)}
-      {...props}
-    >
-      <Slider.Label>Quantity: </Slider.Label>
-      <Slider.ValueText />
-      <Slider.Control>
-        <Slider.Track>
-          <Slider.Range />
-        </Slider.Track>
-        {value.map((_, index) => (
-          <Slider.Thumb key={index} index={index} />
-        ))}
-      </Slider.Control>
-      <Slider.MarkerGroup>
-        <Slider.Marker value={-30}>*</Slider.Marker>
-        <Slider.Marker value={0}>*</Slider.Marker>
-        <Slider.Marker value={30}>*</Slider.Marker>
-      </Slider.MarkerGroup>
-    </Slider.Root>
-  )
-}
+describe('Slider / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Slider', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
     expect(Slider[part]).toBeDefined()
+  })
+})
+
+describe('Slider', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should be possible to control it with the arrow keys', async () => {

@@ -1,27 +1,32 @@
 import { toggleGroupAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { ToggleGroup, type ToggleGroupRootProps } from './'
+import { ToggleGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: ToggleGroupRootProps) => (
-  <ToggleGroup.Root {...props}>
-    <ToggleGroup.Item value="a">A</ToggleGroup.Item>
-    <ToggleGroup.Item value="b">B</ToggleGroup.Item>
-    <ToggleGroup.Item value="c">C</ToggleGroup.Item>
-  </ToggleGroup.Root>
-)
+describe('ToggleGroup / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('ToggleGroup', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
     expect(ToggleGroup[part]).toBeDefined()
+  })
+})
+
+describe('ToggleGroup', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should handle default value', () => {

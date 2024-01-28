@@ -1,40 +1,32 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@testing-library/react'
+// eslint-disable-next-line testing-library/no-manual-cleanup
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '../setup-test'
-import { SegmentGroup, type SegmentGroupRootProps } from './'
+import { SegmentGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
+import { ComponentUnderTest } from './basic'
 
-const ComponentUnderTest = (props: SegmentGroupRootProps) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
-  return (
-    <SegmentGroup.Root {...props}>
-      <SegmentGroup.Label>Framework</SegmentGroup.Label>
-      <SegmentGroup.Indicator />
-      {items.map((item) => (
-        <SegmentGroup.Item key={item.value} value={item.value} disabled={item.disabled}>
-          <SegmentGroup.ItemText>{item.label}</SegmentGroup.ItemText>
-          <SegmentGroup.ItemControl />
-        </SegmentGroup.Item>
-      ))}
-    </SegmentGroup.Root>
-  )
-}
+describe('Segment Group / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-describe('Segment Group', () => {
+  render(<ComponentUnderTest />)
+
   it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
   it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
     expect(SegmentGroup[part]).toBeDefined()
+  })
+})
+
+describe('Segment Group', () => {
+  afterEach(() => {
+    cleanup()
   })
 
   it('should invoke onValueChange if another value has selected', async () => {
