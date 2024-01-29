@@ -1,6 +1,16 @@
 ## [Unreleased]
 
+### Addded
+
+- Added the `ItemPreview` part to the `TagsInput` component.
+
+### Changed
+
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+
 ## [1.3.0] - 2024-01-17
+
+### Added
 
 - Added `Progress` anatomy
 
