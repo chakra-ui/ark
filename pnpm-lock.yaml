@@ -679,8 +679,8 @@ importers:
         version: 0.33.2(vue@3.4.15)
     devDependencies:
       '@histoire/plugin-vue':
-        specifier: 0.17.8
-        version: 0.17.8(histoire@0.17.8)(vite@5.0.12)(vue@3.4.15)
+        specifier: 0.17.9
+        version: 0.17.9(histoire@0.17.8)(vite@5.0.12)(vue@3.4.15)
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
         version: 5.0.0(release-it@17.0.1)
@@ -4470,20 +4470,36 @@ packages:
       - vite
     dev: true
 
-  /@histoire/plugin-vue@0.17.8(histoire@0.17.8)(vite@5.0.12)(vue@3.4.15):
-    resolution: {integrity: sha512-h9lFruxt/zV8pcta+u63HJpEi3syRKbaPJt5fSghuRbjHoxIvHQ9gdRJzNl/ToXGndletQF++oKlFleYZhDBug==}
+  /@histoire/controls@0.17.9(vite@5.0.12):
+    resolution: {integrity: sha512-1f1cE1NZ2emzGMRnGfAb/gCKDtBT3bUZzj3aAcDmhm3MA2Vy5tGYSb9j+KuTTj7+exhOrKefmedr9a0q1/5g2w==}
+    dependencies:
+      '@codemirror/commands': 6.3.0
+      '@codemirror/lang-json': 6.0.1
+      '@codemirror/language': 6.9.2
+      '@codemirror/lint': 6.4.2
+      '@codemirror/state': 6.3.1
+      '@codemirror/theme-one-dark': 6.1.2
+      '@codemirror/view': 6.22.0
+      '@histoire/shared': 0.17.9(vite@5.0.12)
+      '@histoire/vendors': 0.17.8
+    transitivePeerDependencies:
+      - vite
+    dev: true
+
+  /@histoire/plugin-vue@0.17.9(histoire@0.17.8)(vite@5.0.12)(vue@3.4.15):
+    resolution: {integrity: sha512-iN/DEx7CSmYg9ho35zYB5laXuQ5kgBjG/5FH6hskI24hBhWzrUbPU9fynXBpBHwlAxX6r1mn2ngOVN1OW79CBw==}
     peerDependencies:
-      histoire: ^0.17.8
+      histoire: ^0.17.9
       vue: ^3.2.47
     dependencies:
-      '@histoire/controls': 0.17.8(vite@5.0.12)
-      '@histoire/shared': 0.17.8(vite@5.0.12)
+      '@histoire/controls': 0.17.9(vite@5.0.12)
+      '@histoire/shared': 0.17.9(vite@5.0.12)
       '@histoire/vendors': 0.17.8
       change-case: 4.1.2
       globby: 13.2.2
       histoire: 0.17.8(@types/node@20.11.5)(vite@5.0.12)
       launch-editor: 2.6.1
-      pathe: 1.1.1
+      pathe: 1.1.2
       vue: 3.4.15(typescript@5.3.3)
     transitivePeerDependencies:
       - vite
@@ -4493,6 +4509,20 @@ packages:
     resolution: {integrity: sha512-S2lQlob5tilxHqNhCyKIzk7fNj7/owyp4ISC50sX+xFymdu34ZEY3HtvGuC5TG2hV9lVEXEc+jmilSney79csg==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0
+    dependencies:
+      '@histoire/vendors': 0.17.8
+      '@types/fs-extra': 9.0.13
+      '@types/markdown-it': 12.2.3
+      chokidar: 3.5.3
+      pathe: 1.1.2
+      picocolors: 1.0.0
+      vite: 5.0.12(@types/node@20.11.5)
+    dev: true
+
+  /@histoire/shared@0.17.9(vite@5.0.12):
+    resolution: {integrity: sha512-E/l4EzYc69/bOImUnvfi7h4/DHGl1rc96lkuMYulL5hjRjuNhSy5AlN5bG0nkVOG4RVIAnLGevMaMi207wtvLw==}
+    peerDependencies:
+      vite: ^2.9.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
       '@histoire/vendors': 0.17.8
       '@types/fs-extra': 9.0.13
