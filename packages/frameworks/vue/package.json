@@ -84,7 +84,7 @@
     "globby": "14.0.0",
     "histoire": "0.17.9",
     "jsdom": "24.0.0",
-    "release-it": "17.0.1",
+    "release-it": "17.0.3",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.3.3",
     "vite": "5.0.12",
