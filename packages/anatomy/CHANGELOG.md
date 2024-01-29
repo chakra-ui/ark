@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [2.0.0] - 2024-01-29
+
 ### Addded
 
 - Added the `ItemPreview` part to the `TagsInput` component.
