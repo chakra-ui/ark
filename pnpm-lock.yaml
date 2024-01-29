@@ -140,6 +140,9 @@ importers:
       '@zag-js/tooltip':
         specifier: 0.34.0
         version: 0.34.0
+      '@zag-js/tree-view':
+        specifier: 0.34.0
+        version: 0.34.0
     devDependencies:
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
@@ -10571,6 +10574,18 @@ packages:
       '@zag-js/dom-event': 0.34.0
       '@zag-js/dom-query': 0.34.0
       '@zag-js/popper': 0.34.0
+      '@zag-js/types': 0.34.0
+      '@zag-js/utils': 0.34.0
+    dev: false
+
+  /@zag-js/tree-view@0.34.0:
+    resolution: {integrity: sha512-T+BuX/9UQq2i0olY7gUCPfFea4kZLpnau9l4ls341+S9KVe6n36IAlMhHm/1BjZkIvjGkkjCaguoaAkNWh2OUw==}
+    dependencies:
+      '@zag-js/anatomy': 0.34.0
+      '@zag-js/core': 0.34.0
+      '@zag-js/dom-event': 0.34.0
+      '@zag-js/dom-query': 0.34.0
+      '@zag-js/mutation-observer': 0.34.0
       '@zag-js/types': 0.34.0
       '@zag-js/utils': 0.34.0
     dev: false

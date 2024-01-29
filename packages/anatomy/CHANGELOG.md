@@ -1,8 +1,12 @@
 ## [Unreleased]
 
+### Added
+
+- Added `TreeView` anatomy
+
 ## [2.0.0] - 2024-01-29
 
-### Addded
+### Added
 
 - Added the `ItemPreview` part to the `TagsInput` component.
 

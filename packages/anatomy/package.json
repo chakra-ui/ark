@@ -54,7 +54,8 @@
     "@zag-js/tags-input": "0.34.0",
     "@zag-js/toast": "0.34.0",
     "@zag-js/toggle-group": "0.34.0",
-    "@zag-js/tooltip": "0.34.0"
+    "@zag-js/tooltip": "0.34.0",
+    "@zag-js/tree-view": "0.34.0"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "5.0.0",
