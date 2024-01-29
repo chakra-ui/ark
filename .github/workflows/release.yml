@@ -83,7 +83,7 @@ jobs:
 
       - name: Notification
         if: github.event.inputs.preRelease == 'skip'
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
             {
