@@ -82,7 +82,7 @@
     "eslint-plugin-testing-library": "6.2.0",
     "eslint-plugin-vue": "9.20.1",
     "globby": "14.0.0",
-    "histoire": "0.17.8",
+    "histoire": "0.17.9",
     "jsdom": "24.0.0",
     "release-it": "17.0.1",
     "resize-observer-polyfill": "1.5.1",
