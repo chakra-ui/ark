@@ -917,8 +917,8 @@ importers:
         specifier: 0.10.10
         version: 0.10.10(solid-js@1.8.11)
       '@solidjs/start':
-        specifier: 0.4.10
-        version: 0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12)
+        specifier: 0.4.11
+        version: 0.4.11(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12)
       solid-js:
         specifier: 1.8.11
         version: 1.8.11
@@ -6612,13 +6612,13 @@ packages:
       solid-js: 1.8.11
     dev: false
 
-  /@solidjs/start@0.4.10(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12):
-    resolution: {integrity: sha512-pokRoUm6ZibtgytzIs3OhhsjdfRIXlun7mokSClEStjXMvuHzAGBowuwkxKgOOwsLGFh4nXxp/l+H57EPgQq4A==}
+  /@solidjs/start@0.4.11(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vinxi@0.1.4)(vite@5.0.12):
+    resolution: {integrity: sha512-UdOiUwwM2C0nf7EzCyWT+Jx2UZWSzwir0+JMtazGWSgft1k1qF81UroAR6PzcrC/TyhvW+XVz73dMAP310oSVA==}
     dependencies:
-      '@vinxi/plugin-directives': 0.1.2(vinxi@0.1.4)
-      '@vinxi/server-components': 0.1.2(vinxi@0.1.4)
-      '@vinxi/server-functions': 0.1.2(vinxi@0.1.4)
-      defu: 6.1.3
+      '@vinxi/plugin-directives': 0.1.3(vinxi@0.1.4)
+      '@vinxi/server-components': 0.1.3(vinxi@0.1.4)
+      '@vinxi/server-functions': 0.1.4(vinxi@0.1.4)
+      defu: 6.1.4
       error-stack-parser: 2.1.4
       html-to-image: 1.11.11
       seroval: 1.0.4
@@ -6627,7 +6627,7 @@ packages:
       source-map-js: 1.0.2
       terracotta: 1.0.4(seroval@1.0.4)(solid-js@1.8.11)
       vite-plugin-inspect: 0.7.42(vite@5.0.12)
-      vite-plugin-solid: 2.8.3(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12)
+      vite-plugin-solid: 2.9.1(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - '@testing-library/jest-dom'
@@ -8508,10 +8508,10 @@ packages:
       uqr: 0.1.2
     dev: false
 
-  /@vinxi/plugin-directives@0.1.2(vinxi@0.1.4):
-    resolution: {integrity: sha512-27WU7fsKt6EfCRPrLX0XN7D7XSbojbDpG7+LG+zjGrFrgRWGnnRnL9+zFMz26mkD4dD3Nxsi1QUB46OR+YyEqA==}
+  /@vinxi/plugin-directives@0.1.3(vinxi@0.1.4):
+    resolution: {integrity: sha512-gXCvemIQIxEjUlJRUyQUAoL9lT6iY39uEZXCFzONYRIelnI2PJ1DyAz44ieCdOdAVCWBYKwyYVG5jZRYaV26pQ==}
     peerDependencies:
-      vinxi: ^0.1.4
+      vinxi: ^0.1.5
     dependencies:
       '@babel/parser': 7.23.6
       acorn: 8.11.3
@@ -8525,12 +8525,12 @@ packages:
       vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
     dev: false
 
-  /@vinxi/server-components@0.1.2(vinxi@0.1.4):
-    resolution: {integrity: sha512-s48B7cNFNMZZp3LddEMw8WKOL/OSHKAI+2oH3rREzdo9UJmByQE962W6Y4Aib1kowdNZWTzg+ukQ/1oavwazlQ==}
+  /@vinxi/server-components@0.1.3(vinxi@0.1.4):
+    resolution: {integrity: sha512-QcvNeu0y1SZewg5QzK/zRdho8gJz99MlMLfda1aWIfYFHWWaOr7zMFbXsZh0Qcs7PYx0gHvqUXNLUmUW3/2XWg==}
     peerDependencies:
-      vinxi: ^0.1.4
+      vinxi: ^0.1.5
     dependencies:
-      '@vinxi/plugin-directives': 0.1.2(vinxi@0.1.4)
+      '@vinxi/plugin-directives': 0.1.3(vinxi@0.1.4)
       acorn: 8.11.3
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.11.3)
@@ -8540,12 +8540,12 @@ packages:
       vinxi: 0.1.4(@testing-library/jest-dom@6.2.0)(@types/node@20.11.5)(preact@10.19.3)
     dev: false
 
-  /@vinxi/server-functions@0.1.2(vinxi@0.1.4):
-    resolution: {integrity: sha512-KhKn8DnsbTu6Ea1JhXbanet8SBiuEmJ+/FLV3+c5++Z3STg+XkfQodCIzH9T05b3xlh/d40iDOK1gnv2ubqAQg==}
+  /@vinxi/server-functions@0.1.4(vinxi@0.1.4):
+    resolution: {integrity: sha512-ZysR6zlcZ4xYBKUm6Q/oNhjjwUZXaLFLbXwIy9Q2SgcXJ74cUWQ0/EDz/WePhHgQ32NMiv2fPURBvN+XDzBO8g==}
     peerDependencies:
-      vinxi: ^0.1.4
+      vinxi: ^0.1.9
     dependencies:
-      '@vinxi/plugin-directives': 0.1.2(vinxi@0.1.4)
+      '@vinxi/plugin-directives': 0.1.3(vinxi@0.1.4)
       acorn: 8.11.3
       acorn-loose: 8.4.0
       acorn-typescript: 1.4.13(acorn@8.11.3)
@@ -21559,6 +21559,30 @@ packages:
       vitefu: 0.2.5(vite@5.0.12)
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vite-plugin-solid@2.9.1(@testing-library/jest-dom@6.2.0)(solid-js@1.8.11)(vite@5.0.12):
+    resolution: {integrity: sha512-RC4hj+lbvljw57BbMGDApvEOPEh14lwrr/GeXRLNQLcR1qnOdzOwwTSFy13Gj/6FNIZpBEl0bWPU+VYFawrqUw==}
+    peerDependencies:
+      '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
+      solid-js: ^1.7.2
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      '@testing-library/jest-dom':
+        optional: true
+    dependencies:
+      '@babel/core': 7.23.5
+      '@testing-library/jest-dom': 6.2.0(vitest@1.2.1)
+      '@types/babel__core': 7.20.5
+      babel-preset-solid: 1.8.6(@babel/core@7.23.5)
+      merge-anything: 5.1.7
+      solid-js: 1.8.11
+      solid-refresh: 0.6.3(solid-js@1.8.11)
+      vite: 5.0.12(@types/node@20.11.5)
+      vitefu: 0.2.5(vite@5.0.12)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /vite@4.5.0(@types/node@20.11.5):
     resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
