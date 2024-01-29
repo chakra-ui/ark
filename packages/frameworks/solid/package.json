@@ -49,7 +49,7 @@
     "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "2.0.0",
+    "@ark-ui/anatomy": "2.1.0",
     "@zag-js/accordion": "0.34.0",
     "@zag-js/avatar": "0.34.0",
     "@zag-js/carousel": "0.34.0",
@@ -80,6 +80,7 @@
     "@zag-js/toast": "0.34.0",
     "@zag-js/toggle-group": "0.34.0",
     "@zag-js/tooltip": "0.34.0",
+    "@zag-js/tree-view": "0.34.0",
     "@zag-js/types": "0.34.0"
   },
   "devDependencies": {
