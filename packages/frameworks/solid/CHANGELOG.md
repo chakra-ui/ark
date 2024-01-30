@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue that for some components the types were not being generated correctly.
+
 ## [2.0.0] - 2024-01-30
 
 ### Added

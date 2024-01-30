@@ -8,16 +8,10 @@ import { RadioGroupItemText, type RadioGroupItemTextProps } from './radio-group-
 import { RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label'
 import { RadioGroupRoot, type RadioGroupRootProps } from './radio-group-root'
 
-export const RadioGroup = {
-  Root: RadioGroupRoot,
-  Indicator: RadioGroupIndicator,
-  Item: RadioGroupItem,
-  ItemControl: RadioGroupItemControl,
-  ItemText: RadioGroupItemText,
-  Label: RadioGroupLabel,
-}
+export * as RadioGroup from './radio-group'
 
 export {
+  RadioGroupIndicator,
   RadioGroupItem,
   RadioGroupItemControl,
   RadioGroupItemText,

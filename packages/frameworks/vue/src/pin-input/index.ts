@@ -8,12 +8,7 @@ import { PinInputInput, type PinInputInputProps } from './pin-input-input'
 import { PinInputLabel, type PinInputLabelProps } from './pin-input-label'
 import { PinInputRoot, type PinInputRootProps } from './pin-input-root'
 
-export const PinInput = {
-  Root: PinInputRoot,
-  Control: PinInputControl,
-  Input: PinInputInput,
-  Label: PinInputLabel,
-}
+export * as PinInput from './pin-input'
 
 export { PinInputControl, PinInputInput, PinInputLabel, PinInputRoot, usePinInputContext }
 

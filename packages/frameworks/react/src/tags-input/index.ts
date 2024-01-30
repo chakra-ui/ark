@@ -19,18 +19,7 @@ import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-ite
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 import { TagsInputRoot, type TagsInputRootProps } from './tags-input-root'
 
-export const TagsInput = {
-  Root: TagsInputRoot,
-  ClearTrigger: TagsInputClearTrigger,
-  Control: TagsInputControl,
-  Input: TagsInputInput,
-  Item: TagsInputItem,
-  ItemPreview: TagsInputItemPreview,
-  ItemDeleteTrigger: TagsInputItemDeleteTrigger,
-  ItemInput: TagsInputItemInput,
-  ItemText: TagsInputItemText,
-  Label: TagsInputLabel,
-}
+export * as TagsInput from './tags-input'
 
 export {
   TagsInputClearTrigger,

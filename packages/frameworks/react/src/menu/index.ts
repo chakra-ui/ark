@@ -17,21 +17,7 @@ import { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 import { MenuTrigger, type MenuTriggerProps } from './menu-trigger'
 import { MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item'
 
-export const Menu = {
-  Root: MenuRoot,
-  Arrow: MenuArrow,
-  ArrowTip: MenuArrowTip,
-  Content: MenuContent,
-  ContextTrigger: MenuContextTrigger,
-  Item: MenuItem,
-  ItemGroup: MenuItemGroup,
-  ItemGroupLabel: MenuItemGroupLabel,
-  OptionItem: MenuOptionItem,
-  Positioner: MenuPositioner,
-  Separator: MenuSeparator,
-  Trigger: MenuTrigger,
-  TriggerItem: MenuTriggerItem,
-}
+export * as Menu from './menu'
 
 export {
   MenuArrow,

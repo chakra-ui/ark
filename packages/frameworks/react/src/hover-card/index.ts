@@ -7,14 +7,7 @@ import { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card
 import { HoverCardRoot, type HoverCardRootProps } from './hover-card-root'
 import { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'
 
-export const HoverCard = {
-  Root: HoverCardRoot,
-  Arrow: HoverCardArrow,
-  ArrowTip: HoverCardArrowTip,
-  Content: HoverCardContent,
-  Positioner: HoverCardPositioner,
-  Trigger: HoverCardTrigger,
-}
+export * as HoverCard from './hover-card'
 
 export {
   HoverCardArrow,

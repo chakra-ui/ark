@@ -13,17 +13,7 @@ import { SliderThumb, type SliderThumbProps } from './slider-thumb'
 import { SliderTrack, type SliderTrackProps } from './slider-track'
 import { SliderValueText, type SliderValueTextProps } from './slider-value-text'
 
-export const Slider = {
-  Root: SliderRoot,
-  Control: SliderControl,
-  Label: SliderLabel,
-  Marker: SliderMarker,
-  MarkerGroup: SliderMarkerGroup,
-  Range: SliderRange,
-  Thumb: SliderThumb,
-  Track: SliderTrack,
-  ValueText: SliderValueText,
-}
+export * as Slider from './slider'
 
 export {
   SliderControl,

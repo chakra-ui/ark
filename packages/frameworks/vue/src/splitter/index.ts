@@ -4,13 +4,10 @@ import { SplitterPanel, type SplitterPanelProps } from './splitter-panel'
 import { SplitterResizeTrigger, type SplitterResizeTriggerProps } from './splitter-resize-trigger'
 import { SplitterRoot, type SplitterRootProps } from './splitter-root'
 
-export const Splitter = {
-  Root: SplitterRoot,
-  Panel: SplitterPanel,
-  ResizeTrigger: SplitterResizeTrigger,
-}
+export * as Splitter from './splitter'
 
 export { SplitterPanel, SplitterResizeTrigger, SplitterRoot, useSplitterContext }
+
 export type {
   SplitterContext,
   SplitterPanelProps,

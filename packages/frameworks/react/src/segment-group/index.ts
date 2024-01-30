@@ -14,14 +14,7 @@ import { SegmentGroupItemText, type SegmentGroupItemTextProps } from './segment-
 import { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
 import { SegmentGroupRoot, type SegmentGroupRootProps } from './segment-group-root'
 
-export const SegmentGroup = {
-  Root: SegmentGroupRoot,
-  Indicator: SegmentGroupIndicator,
-  Item: SegmentGroupItem,
-  ItemControl: SegmentGroupItemControl,
-  ItemText: SegmentGroupItemText,
-  Label: SegmentGroupLabel,
-}
+export * as SegmentGroup from './segment-group'
 
 export {
   SegmentGroupIndicator,

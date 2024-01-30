@@ -41,31 +41,7 @@ import { DatePickerViewControl, type DatePickerViewControlProps } from './date-p
 import { DatePickerViewTrigger, type DatePickerViewTriggerProps } from './date-picker-view-trigger'
 import { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
 
-export const DatePicker = {
-  Root: DatePickerRoot,
-  ClearTrigger: DatePickerClearTrigger,
-  Content: DatePickerContent,
-  Control: DatePickerControl,
-  Input: DatePickerInput,
-  Label: DatePickerLabel,
-  MonthSelect: DatePickerMonthSelect,
-  NextTrigger: DatePickerNextTrigger,
-  Positioner: DatePickerPositioner,
-  PrevTrigger: DatePickerPrevTrigger,
-  RangeText: DatePickerRangeText,
-  Table: DatePickerTable,
-  TableBody: DatePickerTableBody,
-  TableCell: DatePickerTableCell,
-  TableCellTrigger: DatePickerTableCellTrigger,
-  TableHead: DatePickerTableHead,
-  TableHeader: DatePickerTableHeader,
-  TableRow: DatePickerTableRow,
-  Trigger: DatePickerTrigger,
-  View: DatePickerView,
-  ViewControl: DatePickerViewControl,
-  ViewTrigger: DatePickerViewTrigger,
-  YearSelect: DatePickerYearSelect,
-}
+export * as DatePicker from './date-picker'
 
 export {
   DatePickerClearTrigger,

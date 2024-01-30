@@ -23,21 +23,7 @@ import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-pos
 import { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
 
-export const Combobox = {
-  Root: ComboboxRoot,
-  ClearTrigger: ComboboxClearTrigger,
-  Content: ComboboxContent,
-  Control: ComboboxControl,
-  Input: ComboboxInput,
-  Item: ComboboxItem,
-  ItemGroup: ComboboxItemGroup,
-  ItemGroupLabel: ComboboxItemGroupLabel,
-  ItemIndicator: ComboboxItemIndicator,
-  ItemText: ComboboxItemText,
-  Label: ComboboxLabel,
-  Positioner: ComboboxPositioner,
-  Trigger: ComboboxTrigger,
-}
+export * as Combobox from './combobox'
 
 export {
   ComboboxClearTrigger,

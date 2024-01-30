@@ -9,12 +9,7 @@ import { useRatingGroupItemContext, type RatingGroupItemContext } from './rating
 import { RatingGroupLabel, type RatingGroupLabelProps } from './rating-group-label'
 import { RatingGroupRoot, type RatingGroupRootProps } from './rating-group-root'
 
-export const RatingGroup = {
-  Root: RatingGroupRoot,
-  Control: RatingGroupControl,
-  Label: RatingGroupLabel,
-  Item: RatingGroupItem,
-}
+export * as RatingGroup from './rating-group'
 
 export {
   RatingGroupControl,

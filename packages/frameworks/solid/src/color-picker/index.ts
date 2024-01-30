@@ -70,31 +70,7 @@ import { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker
 import { ColorPickerValueText, type ColorPickerValueTextProps } from './color-picker-value-text'
 import { ColorPickerView, type ColorPickerViewProps } from './color-picker-view'
 
-export const ColorPicker = {
-  Root: ColorPickerRoot,
-  Area: ColorPickerArea,
-  AreaBackground: ColorPickerAreaBackground,
-  AreaThumb: ColorPickerAreaThumb,
-  ChannelInput: ColorPickerChannelInput,
-  ChannelSlider: ColorPickerChannelSlider,
-  ChannelSliderThumb: ColorPickerChannelSliderThumb,
-  ChannelSliderTrack: ColorPickerChannelSliderTrack,
-  Content: ColorPickerContent,
-  Control: ColorPickerControl,
-  EyeDropperTrigger: ColorPickerEyeDropperTrigger,
-  FormatTrigger: ColorPickerFormatTrigger,
-  FormatSelect: ColorPickerFormatSelect,
-  Label: ColorPickerLabel,
-  Positioner: ColorPickerPositioner,
-  Swatch: ColorPickerSwatch,
-  SwatchGroup: ColorPickerSwatchGroup,
-  SwatchIndicator: ColorPickerSwatchIndicator,
-  SwatchTrigger: ColorPickerSwatchTrigger,
-  TransparencyGrid: ColorPickerTransparencyGrid,
-  Trigger: ColorPickerTrigger,
-  ValueText: ColorPickerValueText,
-  View: ColorPickerView,
-}
+export * as ColorPicker from './color-picker'
 
 export {
   ColorPickerArea,

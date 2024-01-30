@@ -3,6 +3,7 @@
 
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
+import path from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
@@ -37,10 +38,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].cjs',
-          banner: (x) =>
-            ['index.cjs', 'factory.cjs', 'compose-refs.cjs'].includes(x.fileName)
-              ? ''
-              : `'use client';`,
+          banner: (x) => renderBanner(x.fileName),
         },
         {
           format: 'es',
@@ -48,10 +46,7 @@ export default defineConfig({
           preserveModulesRoot: 'src',
           exports: 'named',
           entryFileNames: '[name].mjs',
-          banner: (x) =>
-            ['index.mjs', 'factory.mjs', 'compose-refs.mjs'].includes(x.fileName)
-              ? ''
-              : `'use client';`,
+          banner: (x) => renderBanner(x.fileName),
         },
       ],
     },
@@ -71,3 +66,18 @@ export default defineConfig({
     css: false,
   },
 })
+
+const renderBanner = (fileName: string) => {
+  const file = path.parse(fileName)
+  if (isBarrelComponent(file) || isSpecialFile(file)) {
+    return ''
+  }
+  return `'use client';`
+}
+
+// e.g Avatar.tsx, Accordion.tsx
+const isBarrelComponent = (file: path.ParsedPath) =>
+  file.name === file.dir && !['presence', 'environment'].includes(file.dir)
+
+const isSpecialFile = (file: path.ParsedPath) =>
+  ['index', 'factory', 'compose-refs'].includes(file.name)

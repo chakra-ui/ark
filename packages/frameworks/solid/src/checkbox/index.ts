@@ -8,12 +8,7 @@ import { CheckboxIndicator, type CheckboxIndicatorProps } from './checkbox-indic
 import { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'
 import { CheckboxRoot, type CheckboxRootProps } from './checkbox-root'
 
-export const Checkbox = {
-  Root: CheckboxRoot,
-  Control: CheckboxControl,
-  Label: CheckboxLabel,
-  Indicator: CheckboxIndicator,
-}
+export * as Checkbox from './checkbox'
 
 export { CheckboxControl, CheckboxIndicator, CheckboxLabel, CheckboxRoot, useCheckboxContext }
 

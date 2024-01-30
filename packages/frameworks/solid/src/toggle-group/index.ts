@@ -3,10 +3,7 @@ import { useToggleGroupContext, type ToggleGroupContext } from './toggle-group-c
 import { ToggleGroupItem, type ToggleGroupItemProps } from './toggle-group-item'
 import { ToggleGroupRoot, type ToggleGroupRootProps } from './toggle-group-root'
 
-export const ToggleGroup = {
-  Root: ToggleGroupRoot,
-  Item: ToggleGroupItem,
-}
+export * as ToggleGroup from './toggle-group'
 
 export { ToggleGroupItem, ToggleGroupRoot, useToggleGroupContext }
 

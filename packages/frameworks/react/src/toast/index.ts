@@ -5,13 +5,7 @@ import { ToastGroup, type ToastGroupProps } from './toast-group'
 import { ToastRoot, type ToastRootProps } from './toast-root'
 import { ToastTitle, type ToastTitleProps } from './toast-title'
 
-export const Toast = {
-  Root: ToastRoot,
-  CloseTrigger: ToastCloseTrigger,
-  Description: ToastDescription,
-  Group: ToastGroup,
-  Title: ToastTitle,
-}
+export * as Toast from './toast'
 
 export { createToaster, ToastCloseTrigger, ToastDescription, ToastGroup, ToastRoot, ToastTitle }
 

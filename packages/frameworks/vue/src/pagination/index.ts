@@ -9,13 +9,7 @@ import { PaginationNextTrigger, type PaginationNextTriggerProps } from './pagina
 import { PaginationPrevTrigger, type PaginationPrevTriggerProps } from './pagination-prev-trigger'
 import { PaginationRoot, type PaginationRootProps } from './pagination-root'
 
-export const Pagination = {
-  Root: PaginationRoot,
-  Ellipsis: PaginationEllipsis,
-  Item: PaginationItem,
-  NextTrigger: PaginationNextTrigger,
-  PrevTrigger: PaginationPrevTrigger,
-}
+export * as Pagination from './pagination'
 
 export {
   PaginationEllipsis,

@@ -25,19 +25,7 @@ import { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
 import { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
 import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
 
-export const FileUpload = {
-  Root: FileUploadRoot,
-  Dropzone: FileUploadDropzone,
-  Item: FileUploadItem,
-  ItemDeleteTrigger: FileUploadItemDeleteTrigger,
-  ItemGroup: FileUploadItemGroup,
-  ItemName: FileUploadItemName,
-  ItemPreview: FileUploadItemPreview,
-  ItemPreviewImage: FileUploadItemPreviewImage,
-  ItemSizeText: FileUploadItemSizeText,
-  Label: FileUploadLabel,
-  Trigger: FileUploadTrigger,
-}
+export * as FileUpload from './file-upload'
 
 export {
   FileUploadDropzone,
@@ -45,6 +33,7 @@ export {
   FileUploadItemDeleteTrigger,
   FileUploadItemGroup,
   FileUploadItemName,
+  FileUploadItemPreview,
   FileUploadItemPreviewImage,
   FileUploadItemSizeText,
   FileUploadLabel,

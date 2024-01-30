@@ -1,6 +1,6 @@
 import type {
   CheckedChangeDetails as CheckboxCheckedChangeDetails,
-  CheckedState,
+  CheckedState as CheckboxState,
 } from '@zag-js/checkbox'
 import { useCheckboxContext, type CheckboxContext } from './checkbox-context'
 import { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
@@ -8,14 +8,10 @@ import { CheckboxIndicator, type CheckboxIndicatorProps } from './checkbox-indic
 import { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'
 import { CheckboxRoot, type CheckboxRootProps } from './checkbox-root'
 
-export const Checkbox = {
-  Root: CheckboxRoot,
-  Control: CheckboxControl,
-  Label: CheckboxLabel,
-  Indicator: CheckboxIndicator,
-}
+export * as Checkbox from './checkbox'
 
 export { CheckboxControl, CheckboxIndicator, CheckboxLabel, CheckboxRoot, useCheckboxContext }
+
 export type {
   CheckboxCheckedChangeDetails,
   CheckboxContext,
@@ -23,5 +19,5 @@ export type {
   CheckboxIndicatorProps,
   CheckboxLabelProps,
   CheckboxRootProps,
-  CheckedState,
+  CheckboxState,
 }

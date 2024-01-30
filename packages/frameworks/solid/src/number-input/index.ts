@@ -18,15 +18,7 @@ import { NumberInputLabel, type NumberInputLabelProps } from './number-input-lab
 import { NumberInputRoot, type NumberInputRootProps } from './number-input-root'
 import { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
 
-export const NumberInput = {
-  Root: NumberInputRoot,
-  Control: NumberInputControl,
-  DecrementTrigger: NumberInputDecrementTrigger,
-  Input: NumberInputInput,
-  IncrementTrigger: NumberInputIncrementTrigger,
-  Label: NumberInputLabel,
-  Scrubber: NumberInputScrubber,
-}
+export * as NumberInput from './number-input'
 
 export {
   NumberInputControl,

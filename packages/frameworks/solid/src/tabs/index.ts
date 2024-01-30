@@ -9,13 +9,7 @@ import { TabTrigger, type TabTriggerProps } from './tab-trigger'
 import { useTabsContext, type TabsContext } from './tabs-context'
 import { TabsRoot, type TabsRootProps } from './tabs-root'
 
-export const Tabs = {
-  Root: TabsRoot,
-  Content: TabContent,
-  Indicator: TabIndicator,
-  List: TabList,
-  Trigger: TabTrigger,
-}
+export * as Tabs from './tabs'
 
 export { TabContent, TabIndicator, TabList, TabTrigger, TabsRoot, useTabsContext }
 

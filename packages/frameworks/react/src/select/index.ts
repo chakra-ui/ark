@@ -21,22 +21,7 @@ import { SelectRoot, type SelectRootProps } from './select-root'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
 import { SelectValueText, type SelectValueTextProps } from './select-value-text'
 
-export const Select = {
-  Root: SelectRoot,
-  ClearTrigger: SelectClearTrigger,
-  Content: SelectContent,
-  Control: SelectControl,
-  Indicator: SelectIndicator,
-  Item: SelectItem,
-  ItemGroup: SelectItemGroup,
-  ItemGroupLabel: SelectItemGroupLabel,
-  ItemIndicator: SelectItemIndicator,
-  ItemText: SelectItemText,
-  Label: SelectLabel,
-  Positioner: SelectPositioner,
-  Trigger: SelectTrigger,
-  ValueText: SelectValueText,
-}
+export * as Select from './select'
 
 export {
   SelectClearTrigger,

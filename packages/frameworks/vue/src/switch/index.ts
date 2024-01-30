@@ -5,12 +5,7 @@ import { SwitchLabel, type SwitchLabelProps } from './switch-label'
 import { SwitchRoot, type SwitchRootProps } from './switch-root'
 import { SwitchThumb, type SwitchThumbProps } from './switch-thumb'
 
-export const Switch = {
-  Root: SwitchRoot,
-  Control: SwitchControl,
-  Label: SwitchLabel,
-  Thumb: SwitchThumb,
-}
+export * as Switch from './switch'
 
 export { SwitchControl, SwitchLabel, SwitchRoot, SwitchThumb, useSwitchContext }
 

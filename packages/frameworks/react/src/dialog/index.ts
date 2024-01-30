@@ -9,16 +9,7 @@ import { DialogRoot, type DialogRootProps } from './dialog-root'
 import { DialogTitle, type DialogTitleProps } from './dialog-title'
 import { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
 
-export const Dialog = {
-  Root: DialogRoot,
-  Backdrop: DialogBackdrop,
-  CloseTrigger: DialogCloseTrigger,
-  Content: DialogContent,
-  Description: DialogDescription,
-  Positioner: DialogPositioner,
-  Title: DialogTitle,
-  Trigger: DialogTrigger,
-}
+export * as Dialog from './dialog'
 
 export {
   DialogBackdrop,

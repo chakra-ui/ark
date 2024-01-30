@@ -13,17 +13,7 @@ import { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-p
 import { CarouselRoot, type CarouselRootProps } from './carousel-root'
 import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
 
-export const Carousel = {
-  Root: CarouselRoot,
-  Control: CarouselControl,
-  Indicator: CarouselIndicator,
-  IndicatorGroup: CarouselIndicatorGroup,
-  NextTrigger: CarouselNextTrigger,
-  PrevTrigger: CarouselPrevTrigger,
-  Item: CarouselItem,
-  ItemGroup: CarouselItemGroup,
-  Viewport: CarouselViewport,
-}
+export * as Carousel from './carousel'
 
 export {
   CarouselControl,

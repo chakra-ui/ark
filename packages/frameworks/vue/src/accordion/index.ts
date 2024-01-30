@@ -13,13 +13,7 @@ import {
 import { AccordionItemTrigger, type AccordionItemTriggerProps } from './accordion-item-trigger'
 import { AccordionRoot, type AccordionRootProps } from './accordion-root'
 
-export const Accordion = {
-  Root: AccordionRoot,
-  Item: AccordionItem,
-  ItemContent: AccordionItemContent,
-  ItemIndicator: AccordionItemIndicator,
-  ItemTrigger: AccordionItemTrigger,
-}
+export * as Accordion from './accordion'
 
 export {
   AccordionItem,
@@ -30,6 +24,7 @@ export {
   useAccordionContext,
   useAccordionItemContext,
 }
+
 export type {
   AccordionContext,
   AccordionFocusChangeDetails,

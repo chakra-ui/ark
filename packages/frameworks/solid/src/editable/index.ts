@@ -10,17 +10,7 @@ import { EditablePreview, type EditablePreviewProps } from './editable-preview'
 import { EditableRoot, type EditableRootProps } from './editable-root'
 import { EditableSubmitTrigger, type EditableSubmitTriggerProps } from './editable-submit-trigger'
 
-export const Editable = {
-  Root: EditableRoot,
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Label: EditableLabel,
-  Preview: EditablePreview,
-  SubmitTrigger: EditableSubmitTrigger,
-}
+export * as Editable from './editable'
 
 export {
   EditableArea,

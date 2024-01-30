@@ -19,19 +19,7 @@ import { TreeViewLabel, type TreeViewLabelProps } from './tree-view-label'
 import { TreeViewRoot, type TreeViewRootProps } from './tree-view-root'
 import { TreeViewTree, type TreeViewTreeProps } from './tree-view-tree'
 
-export const TreeView = {
-  Root: TreeViewRoot,
-  Label: TreeViewLabel,
-  Tree: TreeViewTree,
-  Branch: TreeViewBranch,
-  Item: TreeViewItem,
-  ItemText: TreeViewItemText,
-  BranchContent: TreeViewBranchContent,
-  BranchControl: TreeViewBranchControl,
-  BranchTrigger: TreeViewBranchTrigger,
-  BranchIndicator: TreeViewBranchIndicator,
-  BranchText: TreeViewBranchText,
-}
+export * as TreeView from './tree-view'
 
 export {
   TreeViewBranch,

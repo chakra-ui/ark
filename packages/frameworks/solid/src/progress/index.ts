@@ -9,17 +9,7 @@ import { ProgressTrack, type ProgressTrackProps } from './progress-track'
 import { ProgressValueText, type ProgressValueTextProps } from './progress-value-text'
 import { ProgressView, type ProgressViewProps } from './progress-view'
 
-export const Progress = {
-  Root: ProgressRoot,
-  Label: ProgressLabel,
-  Track: ProgressTrack,
-  Range: ProgressRange,
-  ValueText: ProgressValueText,
-  View: ProgressView,
-  Circle: ProgressCircle,
-  CircleTrack: ProgressCircleTrack,
-  CircleRange: ProgressCircleRange,
-}
+export * as Progress from './progress'
 
 export {
   ProgressCircle,

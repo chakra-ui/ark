@@ -7,14 +7,7 @@ import { TooltipPositioner, type TooltipPositionerProps } from './tooltip-positi
 import { TooltipRoot, type TooltipRootProps } from './tooltip-root'
 import { TooltipTrigger, type TooltipTriggerProps } from './tooltip-trigger'
 
-export const Tooltip = {
-  Root: TooltipRoot,
-  Arrow: TooltipArrow,
-  ArrowTip: TooltipArrowTip,
-  Content: TooltipContent,
-  Positioner: TooltipPositioner,
-  Trigger: TooltipTrigger,
-}
+export * as Tooltip from './tooltip'
 
 export {
   TooltipArrow,
