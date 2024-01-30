@@ -40,7 +40,7 @@ const advancedItems = ref([
     </Variant>
 
     <Variant title="Advanced">
-      <Combobox.Root :items="advancedItems">
+      <Combobox.Root :items="advancedItems" multiple>
         <Combobox.Label>Framework</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />

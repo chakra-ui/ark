@@ -48,7 +48,7 @@ export const Advanced = () => {
     { label: 'Svelte', value: 'svelte', disabled: true },
   ]
   return (
-    <Combobox.Root items={items}>
+    <Combobox.Root items={items} multiple>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
