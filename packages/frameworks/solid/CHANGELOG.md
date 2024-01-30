@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance
   for all components.
 
