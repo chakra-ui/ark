@@ -14,6 +14,13 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       staticImport: true,
+      exclude: [
+        '**/*.stories.tsx',
+        '**/*.test.tsx',
+        '**/tests/*',
+        '**/stories/*',
+        '**/setup-test.ts',
+      ],
     }),
     react(),
   ],
