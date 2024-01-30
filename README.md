@@ -49,7 +49,8 @@ Ark UI is available for the following JavaScript frameworks:
 [Tags Input](https://ark-ui.com/docs/components/tags-input),
 [Toast](https://ark-ui.com/docs/components/toast),
 [Toggle Group](https://ark-ui.com/docs/components/toggle-group),
-[Tooltip](https://ark-ui.com/docs/components/tooltip)
+[Tooltip](https://ark-ui.com/docs/components/tooltip),
+[Tree View](https://ark-ui.com/docs/components/tree-view)
 
 ## Documentation
 
