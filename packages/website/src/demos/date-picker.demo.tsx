@@ -1,9 +1,9 @@
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
-import { Button, DatePicker, IconButton, Input, type DatePickerProps } from '~/components/ui'
+import { Button, DatePicker, IconButton, Input } from '~/components/ui'
 
-export const Demo = (props: DatePickerProps) => {
+export const Demo = (props: DatePicker.RootProps) => {
   return (
-    <DatePicker.Root positioning={{ sameWidth: true }} startOfWeek={1}>
+    <DatePicker.Root {...props} positioning={{ sameWidth: true }} startOfWeek={1}>
       <DatePicker.Label>Date Picker</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input asChild>

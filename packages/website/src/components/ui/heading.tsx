@@ -1,15 +1,17 @@
-import { styled, type HTMLStyledProps } from 'styled-system/jsx'
-import { heading } from 'styled-system/recipes'
+import { useMemo } from 'react'
+import { styled, type HTMLStyledProps, type StyledComponent } from 'styled-system/jsx'
+import { text, type TextVariantProps } from 'styled-system/recipes'
 
 type As = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 export type HeadingProps = {
   as?: As
-} & HTMLStyledProps<As>
+} & TextVariantProps &
+  HTMLStyledProps<As>
 
 export const Heading = (props: HeadingProps) => {
-  const { as = 'h2', ...rest } = props
-  const Component = styled(as, heading)
+  const { as = 'h2', variant = 'heading', ...localProps } = props
+  const Dynamic = useMemo(() => styled(as, text) as StyledComponent<As>, [as])
 
-  return <Component {...rest} />
+  return <Dynamic {...localProps} />
 }

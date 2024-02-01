@@ -1,7 +1,7 @@
 import { XIcon } from 'lucide-react'
-import { Button, IconButton, TagsInput, type TagsInputProps } from '~/components/ui'
+import { Button, IconButton, TagsInput } from '~/components/ui'
 
-export const Demo = (props: TagsInputProps) => {
+export const Demo = (props: TagsInput.RootProps) => {
   return (
     <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']} maxW="xs" {...props}>
       {(api) => (

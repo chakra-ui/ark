@@ -10,18 +10,16 @@ export const Contributors = (props: Props) => {
   return (
     <HStack gap="0">
       {contributors.map((contributor, id) => (
-        <Avatar.Root
+        <Avatar
+          src={contributor.avatar}
+          name={contributor.name}
           key={id}
           _first={{ marginStart: '0' }}
           marginStart={{ base: '-3', md: '-4' }}
-          width={{ base: '12', md: '14' }}
-          height={{ base: '12', md: '14' }}
+          size="xl"
           borderWidth="2px"
           borderColor="border.emphasized"
-        >
-          <Avatar.Fallback>...</Avatar.Fallback>
-          <Avatar.Image src={contributor.avatar} alt={contributor.name} />
-        </Avatar.Root>
+        />
       ))}
     </HStack>
   )

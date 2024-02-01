@@ -1,33 +1,71 @@
-import * as Ark from '@ark-ui/react/src/number-input'
-import { styled } from 'styled-system/jsx'
+import {
+  NumberInput as ArkNumberInput,
+  type NumberInputRootProps,
+} from '@ark-ui/react/src/number-input'
+import { forwardRef, type ReactNode } from 'react'
+import { css, cx } from 'styled-system/css'
+import { splitCssProps } from 'styled-system/jsx'
 import { numberInput, type NumberInputVariantProps } from 'styled-system/recipes'
-import { createStyleContext } from '~/lib/create-style-context'
+import type { Assign, JsxStyleProps } from 'styled-system/types'
 
-const { withProvider, withContext } = createStyleContext(numberInput)
+export interface NumberInputProps
+  extends Assign<JsxStyleProps, NumberInputRootProps>,
+    NumberInputVariantProps {
+  children?: ReactNode
+}
 
-export * from '@ark-ui/react/src/number-input'
-export type NumberInputProps = Ark.NumberInputRootProps & NumberInputVariantProps
+export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
+  const [variantProps, numberInputProps] = numberInput.splitVariantProps(props)
+  const [cssProps, localProps] = splitCssProps(numberInputProps)
+  const { children, className, ...rootProps } = localProps
+  const styles = numberInput(variantProps)
 
-const NumberInputRoot = withProvider(styled(Ark.NumberInput.Root), 'root')
-export const NumberInputControl = withContext(styled(Ark.NumberInput.Control), 'control')
-export const NumberInputDecrementTrigger = withContext(
-  styled(Ark.NumberInput.DecrementTrigger),
-  'decrementTrigger',
-)
-export const NumberInputInput = withContext(styled(Ark.NumberInput.Input), 'input')
-export const NumberInputIncrementTrigger = withContext(
-  styled(Ark.NumberInput.IncrementTrigger),
-  'incrementTrigger',
-)
-export const NumberInputLabel = withContext(styled(Ark.NumberInput.Label), 'label')
-export const NumberInputScrubber = withContext(styled(Ark.NumberInput.Scrubber), 'scrubber')
-
-export const NumberInput = Object.assign(NumberInputRoot, {
-  Root: NumberInputRoot,
-  Control: NumberInputControl,
-  DecrementTrigger: NumberInputDecrementTrigger,
-  Input: NumberInputInput,
-  IncrementTrigger: NumberInputIncrementTrigger,
-  Label: NumberInputLabel,
-  Scrubber: NumberInputScrubber,
+  return (
+    <ArkNumberInput.Root
+      ref={ref}
+      className={cx(styles.root, css(cssProps), className)}
+      {...rootProps}
+    >
+      {children && <ArkNumberInput.Label className={styles.label}>{children}</ArkNumberInput.Label>}
+      <ArkNumberInput.Control className={styles.control}>
+        <ArkNumberInput.Input className={styles.input} />
+        <ArkNumberInput.IncrementTrigger className={styles.incrementTrigger}>
+          <ChevronUpIcon />
+        </ArkNumberInput.IncrementTrigger>
+        <ArkNumberInput.DecrementTrigger className={styles.decrementTrigger}>
+          <ChevronDownIcon />
+        </ArkNumberInput.DecrementTrigger>
+      </ArkNumberInput.Control>
+    </ArkNumberInput.Root>
+  )
 })
+
+NumberInput.displayName = 'NumberInput'
+
+const ChevronUpIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <title>Chevron Up Icon</title>
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m18 15l-6-6l-6 6"
+    />
+  </svg>
+)
+
+const ChevronDownIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <title>Chevron Down Icon</title>
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m6 9l6 6l6-6"
+    />
+  </svg>
+)

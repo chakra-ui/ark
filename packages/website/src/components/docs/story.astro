@@ -15,17 +15,20 @@ const [react, solid, vue] = stories
 ---
 
 <CodeExamples client:load>
+   <!-- @ts-expect-error -->
   <Code
     slot="react"
     code={react?.data[id] ?? 'Story not available'}
     lang="tsx"
     theme="css-variables"
   />
+   <!-- @ts-expect-error -->
   <Code
     slot="solid"
     code={solid?.data[id] ?? 'Story not available'}
     lang="tsx"
     theme="css-variables"
   />
+   <!-- @ts-expect-error -->
   <Code slot="vue" code={vue?.data[id] ?? 'Story not available'} lang="vue" theme="css-variables" />
 </CodeExamples>

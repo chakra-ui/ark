@@ -1,7 +1,7 @@
-import { ark } from '@ark-ui/react'
-import type { ComponentPropsWithoutRef } from 'react'
+import { ark } from '@ark-ui/react/src/factory'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { textarea, type TextareaVariantProps } from 'styled-system/recipes'
+import { textarea } from 'styled-system/recipes'
 
-export type TextareaProps = TextareaVariantProps & ComponentPropsWithoutRef<typeof ark.textarea>
 export const Textarea = styled(ark.textarea, textarea)
+export interface TextareaProps extends ComponentProps<typeof Textarea> {}

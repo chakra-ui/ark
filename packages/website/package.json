@@ -8,29 +8,32 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "typecheck": "astro check --minimumSeverity error"
   },
   "dependencies": {
     "@ark-ui/anatomy": "2.1.0",
     "@ark-ui/react": "workspace:*",
-    "@astrojs/mdx": "2.1.0",
+    "@astrojs/check": "0.4.1",
+    "@astrojs/mdx": "2.1.1",
     "@astrojs/react": "3.0.9",
     "@astrojs/sitemap": "3.0.5",
     "@fontsource-variable/fira-code": "5.0.16",
     "@fontsource-variable/inter": "5.0.16",
-    "@pandacss/dev": "0.28.0",
-    "@park-ui/panda-preset": "0.31.0",
-    "@types/react": "18.2.48",
+    "@pandacss/dev": "0.29.1",
+    "@park-ui/panda-preset": "0.33.0",
+    "@types/react": "18.2.50",
     "@types/react-dom": "18.2.18",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.34.0",
-    "astro": "4.2.6",
+    "astro": "4.2.8",
     "cheerio": "1.0.0-rc.12",
-    "lucide-react": "0.317.0",
+    "lucide-react": "0.320.0",
     "pandacss-preset-typography": "0.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-live": "4.1.5",
-    "ts-pattern": "5.0.6"
+    "ts-pattern": "5.0.6",
+    "typescript": "5.3.3"
   }
 }

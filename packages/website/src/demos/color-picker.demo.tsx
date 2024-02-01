@@ -2,9 +2,9 @@ import { PipetteIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
 import { ColorPicker, IconButton, Input, Text } from '~/components/ui'
 
-export const Demo = () => {
+export const Demo = (props: ColorPicker.RootProps) => {
   return (
-    <ColorPicker.Root>
+    <ColorPicker.Root {...props}>
       {(api) => (
         <>
           <ColorPicker.Label>Color Picker</ColorPicker.Label>
@@ -52,7 +52,7 @@ export const Demo = () => {
                   </ColorPicker.ChannelInput>
                 </HStack>
                 <Stack gap="1.5">
-                  <Text textStyle="xs" fontWeight="medium" color="fg.default">
+                  <Text size="xs" fontWeight="medium" color="fg.default">
                     Saved Colors
                   </Text>
                   <ColorPicker.SwatchGroup>

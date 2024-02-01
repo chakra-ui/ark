@@ -36,21 +36,25 @@ const [react, solid, vue] = stories
             collapsed={storyId === 'Basic'}
             client:load
           >
+          <!-- @ts-expect-error -->
             <Code
               code={react?.data[storyId] ?? 'Story not available'}
               lang="tsx"
               theme="css-variables"
               slot="react"
-            />
+            />   
+            <!-- @ts-expect-error -->
             <Code
               code={solid?.data[storyId] ?? 'Story not available'}
               lang="tsx"
               theme="css-variables"
               slot="solid"
             />
+            <!-- @ts-expect-error -->
             <Code
               code={vue?.data[storyId] ?? 'Story not available'}
               lang="vue"
+          
               theme="css-variables"
               slot="vue"
             />
@@ -63,6 +67,7 @@ const [react, solid, vue] = stories
             <LivePreview code={code} client:load />
           </Box>
           <CodePreview code={code} client:load>
+            <!-- @ts-expect-error -->
             <Code code={code} lang="tsx" theme="css-variables" />
           </CodePreview>
         </>
@@ -74,11 +79,13 @@ const [react, solid, vue] = stories
           }}
           client:load
         >
+         <!-- @ts-expect-error -->
           <Code code={code} lang="tsx" theme="css-variables" slot="react" />
         </CodePreviewTabs>
       ))
       .otherwise(() => (
         <CodePreview code={code} client:load>
+          <!-- @ts-expect-error -->
           <Code code={code} lang="tsx" theme="css-variables" />
         </CodePreview>
       ))

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { HStack } from 'styled-system/jsx'
-import { Badge } from '~/components/ui'
-import { SegmentGroup } from '~/components/ui/segment-group'
+import { Badge, SegmentGroup } from '~/components/ui'
 
 interface Props {
   items: { href: string; title: string; label?: string }[]

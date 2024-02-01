@@ -1,37 +1,27 @@
-import * as Ark from '@ark-ui/react/src/editable'
+import { Editable } from '@ark-ui/react/src/editable'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { editable, type EditableVariantProps } from 'styled-system/recipes'
+import { editable } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(editable)
 
-export * from '@ark-ui/react/src/editable'
-export type EditableProps = Ark.EditableRootProps & EditableVariantProps
+export const Root = withProvider(styled(Editable.Root), 'root')
+export const Area = withContext(styled(Editable.Area), 'area')
+export const CancelTrigger = withContext(styled(Editable.CancelTrigger), 'cancelTrigger')
+export const Control = withContext(styled(Editable.Control), 'control')
+export const EditTrigger = withContext(styled(Editable.EditTrigger), 'editTrigger')
+export const Input = withContext(styled(Editable.Input), 'input')
+export const Label = withContext(styled(Editable.Label), 'label')
+export const Preview = withContext(styled(Editable.Preview), 'preview')
+export const SubmitTrigger = withContext(styled(Editable.SubmitTrigger), 'submitTrigger')
 
-const EditableRoot = withProvider(styled(Ark.Editable.Root), 'root')
-export const EditableArea = withContext(styled(Ark.Editable.Area), 'area')
-export const EditableCancelTrigger = withContext(
-  styled(Ark.Editable.CancelTrigger),
-  'cancelTrigger',
-)
-export const EditableControl = withContext(styled(Ark.Editable.Control), 'control')
-export const EditableEditTrigger = withContext(styled(Ark.Editable.EditTrigger), 'editTrigger')
-export const EditableInput = withContext(styled(Ark.Editable.Input), 'input')
-export const EditableLabel = withContext(styled(Ark.Editable.Label), 'label')
-export const EditablePreview = withContext(styled(Ark.Editable.Preview), 'preview')
-export const EditableSubmitTrigger = withContext(
-  styled(Ark.Editable.SubmitTrigger),
-  'submitTrigger',
-)
-
-export const Editable = Object.assign(EditableRoot, {
-  Root: EditableRoot,
-  Area: EditableArea,
-  CancelTrigger: EditableCancelTrigger,
-  Control: EditableControl,
-  EditTrigger: EditableEditTrigger,
-  Input: EditableInput,
-  Label: EditableLabel,
-  Preview: EditablePreview,
-  SubmitTrigger: EditableSubmitTrigger,
-})
+export interface RootProps extends ComponentProps<typeof Root> {}
+export interface AreaProps extends ComponentProps<typeof Area> {}
+export interface CancelTriggerProps extends ComponentProps<typeof CancelTrigger> {}
+export interface ControlProps extends ComponentProps<typeof Control> {}
+export interface EditTriggerProps extends ComponentProps<typeof EditTrigger> {}
+export interface InputProps extends ComponentProps<typeof Input> {}
+export interface LabelProps extends ComponentProps<typeof Label> {}
+export interface PreviewProps extends ComponentProps<typeof Preview> {}
+export interface SubmitTriggerProps extends ComponentProps<typeof SubmitTrigger> {}

@@ -1,9 +1,9 @@
 import { Portal } from '@ark-ui/react'
 import { XIcon } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
-import { Button, Dialog, IconButton, type DialogProps } from '~/components/ui'
+import { Button, Dialog, IconButton } from '~/components/ui'
 
-export const Demo = (props: DialogProps) => {
+export const Demo = (props: Dialog.RootProps) => {
   return (
     <Dialog.Root {...props}>
       <Dialog.Trigger asChild>

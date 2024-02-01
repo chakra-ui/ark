@@ -1,28 +1,21 @@
-import * as Ark from '@ark-ui/react/src/segment-group'
+import { SegmentGroup } from '@ark-ui/react/src/segment-group'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { segmentGroup, type SegmentGroupVariantProps } from 'styled-system/recipes'
+import { segmentGroup } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(segmentGroup)
 
-export * from '@ark-ui/react/src/segment-group'
-export type SegmentGroupProps = Ark.SegmentGroupRootProps & SegmentGroupVariantProps
+export const Root = withProvider(styled(SegmentGroup.Root), 'root')
+export const Indicator = withContext(styled(SegmentGroup.Indicator), 'indicator')
+export const Item = withContext(styled(SegmentGroup.Item), 'item')
+export const ItemControl = withContext(styled(SegmentGroup.ItemControl), 'itemControl')
+export const ItemText = withContext(styled(SegmentGroup.ItemText), 'itemText')
+export const Label = withContext(styled(SegmentGroup.Label), 'label')
 
-const SegmentGroupRoot = withProvider(styled(Ark.SegmentGroup.Root), 'root')
-export const SegmentGroupLabel = withContext(styled(Ark.SegmentGroup.Label), 'label')
-export const SegmentGroupIndicator = withContext(styled(Ark.SegmentGroup.Indicator), 'indicator')
-export const SegmentGroupItem = withContext(styled(Ark.SegmentGroup.Item), 'item')
-export const SegmentGroupItemText = withContext(styled(Ark.SegmentGroup.ItemText), 'itemText')
-export const SegmentGroupItemControl = withContext(
-  styled(Ark.SegmentGroup.ItemControl),
-  'itemControl',
-)
-
-export const SegmentGroup = Object.assign(SegmentGroupRoot, {
-  Root: SegmentGroupRoot,
-  Indicator: SegmentGroupIndicator,
-  Item: SegmentGroupItem,
-  ItemControl: SegmentGroupItemControl,
-  ItemText: SegmentGroupItemText,
-  Label: SegmentGroupLabel,
-})
+export interface RootProps extends ComponentProps<typeof Root> {}
+export interface IndicatorProps extends ComponentProps<typeof Indicator> {}
+export interface ItemProps extends ComponentProps<typeof Item> {}
+export interface ItemControlProps extends ComponentProps<typeof ItemControl> {}
+export interface ItemTextProps extends ComponentProps<typeof ItemText> {}
+export interface LabelProps extends ComponentProps<typeof Label> {}
