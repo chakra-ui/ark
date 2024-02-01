@@ -2,7 +2,7 @@ import { Portal } from '@ark-ui/react'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { Select } from '~/components/ui'
 
-export const Demo = (props: Select.RootProps) => {
+export const Demo = (props: Omit<Select.RootProps, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

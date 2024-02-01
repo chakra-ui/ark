@@ -10,7 +10,7 @@ const data = [
   { label: 'Vue', value: 'vue' },
 ]
 
-export const Demo = (props: Combobox.RootProps) => {
+export const Demo = (props: Omit<Combobox.RootProps, 'items'>) => {
   const [items, setItems] = useState(data)
 
   const handleChange = (e: ComboboxInputValueChangeDetails) => {

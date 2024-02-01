@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "typecheck": "astro check --minimumSeverity error"
   },
   "dependencies": {
     "@ark-ui/anatomy": "2.1.0",

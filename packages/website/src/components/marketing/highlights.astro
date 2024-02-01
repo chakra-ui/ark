@@ -70,8 +70,11 @@ const features = [
     </Stack>
     <Box>
       <CodeExamples client:load>
+        <!-- @ts-expect-error -->
         <Code slot="react" code={react} lang="tsx" theme="css-variables" />
+        <!-- @ts-expect-error -->
         <Code slot="solid" code={solid} lang="tsx" theme="css-variables" />
+        <!-- @ts-expect-error -->
         <Code slot="vue" code={vue} lang="vue" theme="css-variables" />
       </CodeExamples>
     </Box>
