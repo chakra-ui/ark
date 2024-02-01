@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
@@ -7,6 +7,7 @@ export interface SelectControlProps extends HTMLArkProps<'div'> {}
 export const SelectControl = defineComponent<SelectControlProps>(
   (_, { slots, attrs }) => {
     const api = useSelectContext()
+    const isValueEmpty = computed(() => api.value.value.length === 0)
 
     return () => (
       <>
@@ -14,6 +15,7 @@ export const SelectControl = defineComponent<SelectControlProps>(
           {slots.default?.()}
         </ark.div>
         <select {...api.value.hiddenSelectProps}>
+          {isValueEmpty.value && <option value="" />}
           {api.value.collection.toArray().map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

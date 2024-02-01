@@ -15,6 +15,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue that for some components the types were not being generated correctly.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
 
 ## [2.0.0] - 2024-01-30
 

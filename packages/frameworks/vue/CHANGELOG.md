@@ -46,6 +46,7 @@ description: All notable changes to this project will be documented in this file
 
 - Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
 - Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
 
 ## [0.10.0] - 2024-01-17
 
