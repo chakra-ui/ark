@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Exported `SelectionDetails` type for `Menu` component
+
 ## [2.0.1] - 2024-01-30
 
 ### Fixed
