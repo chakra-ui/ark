@@ -8,9 +8,9 @@ import {
   UnderlineIcon,
 } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
-import { ToggleGroup, type ToggleGroupProps } from '~/components/ui'
+import { ToggleGroup } from '~/components/ui'
 
-export const Demo = (props: ToggleGroupProps) => {
+export const Demo = (props: ToggleGroup.RootProps) => {
   return (
     <Stack
       direction={props.orientation === 'horizontal' ? 'row' : 'column'}

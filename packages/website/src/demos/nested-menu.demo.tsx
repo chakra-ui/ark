@@ -11,9 +11,9 @@ import {
   UserPlusIcon,
 } from 'lucide-react'
 import { HStack } from 'styled-system/jsx'
-import { Button, Menu, Text, type MenuProps } from '~/components/ui'
+import { Button, Menu, Text } from '~/components/ui'
 
-export const Demo = (props: MenuProps) => {
+export const Demo = (props: Menu.RootProps) => {
   return (
     <Menu.Root {...props}>
       <Menu.Trigger asChild>

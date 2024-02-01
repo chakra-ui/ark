@@ -1,6 +1,6 @@
-import { Menu, type MenuProps } from '~/components/ui'
+import { Menu } from '~/components/ui'
 
-export const Demo = (props: MenuProps) => {
+export const Demo = (props: Menu.RootProps) => {
   return (
     <Menu.Root {...props}>
       <Menu.ContextTrigger>

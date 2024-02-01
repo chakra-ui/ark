@@ -1,7 +1,7 @@
 import { Box } from 'styled-system/jsx'
-import { Tabs, type TabsProps } from '~/components/ui/tabs'
+import { Tabs } from '~/components/ui'
 
-type Props = TabsProps & {
+type Props = Tabs.RootProps & {
   react?: JSX.Element
   solid?: JSX.Element
   vue?: JSX.Element

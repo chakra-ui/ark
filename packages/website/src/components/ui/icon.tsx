@@ -1,5 +1,5 @@
-import { ark } from '@ark-ui/react'
-import type { ReactElement } from 'react'
+import { ark } from '@ark-ui/react/src/factory'
+import { forwardRef, type ReactElement } from 'react'
 import { styled, type HTMLStyledProps } from 'styled-system/jsx'
 import { icon, type IconVariantProps } from 'styled-system/recipes'
 
@@ -7,8 +7,8 @@ export interface IconProps extends IconVariantProps, HTMLStyledProps<'svg'> {
   children: ReactElement
 }
 
-const StyledIcon = styled(ark.svg, icon)
+export const Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
+  return <StyledIcon ref={ref} asChild {...props} />
+})
 
-export const Icon = (props: IconProps) => {
-  return <StyledIcon asChild {...props} />
-}
+const StyledIcon = styled(ark.svg, icon)

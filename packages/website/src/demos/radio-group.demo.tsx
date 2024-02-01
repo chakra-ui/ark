@@ -1,6 +1,6 @@
-import { RadioGroup, type RadioGroupProps } from '~/components/ui'
+import { RadioGroup } from '~/components/ui'
 
-export const Demo = (props: RadioGroupProps) => {
+export const Demo = (props: RadioGroup.RootProps) => {
   const options = [
     { id: 'react', label: 'React' },
     { id: 'solid', label: 'Solid' },

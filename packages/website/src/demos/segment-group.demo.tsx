@@ -1,6 +1,6 @@
-import { SegmentGroup, type SegmentGroupProps } from '~/components/ui'
+import { SegmentGroup } from '~/components/ui'
 
-export const Demo = (props: SegmentGroupProps) => {
+export const Demo = (props: SegmentGroup.RootProps) => {
   const options = [
     { id: 'react', label: 'React' },
     { id: 'solid', label: 'Solid' },

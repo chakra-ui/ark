@@ -1,31 +1,50 @@
-import * as Ark from '@ark-ui/react/src/slider'
-import { styled } from 'styled-system/jsx'
+import { Slider as ArkSlider, type SliderRootProps } from '@ark-ui/react/src/slider'
+import { forwardRef, type ReactNode } from 'react'
+import { css, cx } from 'styled-system/css'
+import { splitCssProps } from 'styled-system/jsx'
 import { slider, type SliderVariantProps } from 'styled-system/recipes'
-import { createStyleContext } from '~/lib/create-style-context'
+import type { Assign, JsxStyleProps } from 'styled-system/types'
 
-const { withProvider, withContext } = createStyleContext(slider)
+export interface SliderProps extends Assign<JsxStyleProps, SliderRootProps>, SliderVariantProps {
+  children?: ReactNode
+  marks?: {
+    value: number
+    label?: ReactNode
+  }[]
+}
 
-export * from '@ark-ui/react/src/slider'
-export type SliderProps = Ark.SliderRootProps & SliderVariantProps
+export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+  const [variantProps, sliderProps] = slider.splitVariantProps(props)
+  const [cssProps, localProps] = splitCssProps(sliderProps)
+  const { children, className, ...rootProps } = localProps
+  const styles = slider(variantProps)
 
-const SliderRoot = withProvider(styled(Ark.Slider.Root), 'root')
-export const SliderControl = withContext(styled(Ark.Slider.Control), 'control')
-export const SliderLabel = withContext(styled(Ark.Slider.Label), 'label')
-export const SliderMarker = withContext(styled(Ark.Slider.Marker), 'marker')
-export const SliderMarkerGroup = withContext(styled(Ark.Slider.MarkerGroup), 'markerGroup')
-export const SliderOutput = withContext(styled(Ark.Slider.ValueText), 'output')
-export const SliderRange = withContext(styled(Ark.Slider.Range), 'range')
-export const SliderThumb = withContext(styled(Ark.Slider.Thumb), 'thumb')
-export const SliderTrack = withContext(styled(Ark.Slider.Track), 'track')
-
-export const Slider = Object.assign(SliderRoot, {
-  Root: SliderRoot,
-  Control: SliderControl,
-  Label: SliderLabel,
-  Marker: SliderMarker,
-  MarkerGroup: SliderMarkerGroup,
-  Output: SliderOutput,
-  Range: SliderRange,
-  Thumb: SliderThumb,
-  Track: SliderTrack,
+  return (
+    <ArkSlider.Root ref={ref} className={cx(styles.root, css(cssProps), className)} {...rootProps}>
+      {(api) => (
+        <>
+          {children && <ArkSlider.Label className={styles.label}>{children}</ArkSlider.Label>}
+          <ArkSlider.Control className={styles.control}>
+            <ArkSlider.Track className={styles.track}>
+              <ArkSlider.Range className={styles.range} />
+            </ArkSlider.Track>
+            {api.value.map((_, index) => (
+              <ArkSlider.Thumb key={index} index={index} className={styles.thumb} />
+            ))}
+          </ArkSlider.Control>
+          {props.marks && (
+            <ArkSlider.MarkerGroup className={styles.markerGroup}>
+              {props.marks.map((mark) => (
+                <ArkSlider.Marker key={mark.value} value={mark.value} className={styles.marker}>
+                  {mark.label}
+                </ArkSlider.Marker>
+              ))}
+            </ArkSlider.MarkerGroup>
+          )}
+        </>
+      )}
+    </ArkSlider.Root>
+  )
 })
+
+Slider.displayName = 'Slider'

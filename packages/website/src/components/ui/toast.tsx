@@ -1,21 +1,19 @@
-import * as Ark from '@ark-ui/react/src/toast'
+import { Toast } from '@ark-ui/react/src/toast'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { toast, type ToastVariantProps } from 'styled-system/recipes'
+import { toast } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(toast)
 
-export * from '@ark-ui/react/src/toast'
-export type ToastProps = Ark.ToastRootProps & ToastVariantProps
+export const Root = withProvider(styled(Toast.Root), 'root')
+export const CloseTrigger = withContext(styled(Toast.CloseTrigger), 'closeTrigger')
+export const Description = withContext(styled(Toast.Description), 'description')
+export const Group = withContext(styled(Toast.Group), 'group')
+export const Title = withContext(styled(Toast.Title), 'title')
 
-const ToastRoot = withProvider(styled(Ark.Toast.Root), 'root')
-export const ToastTitle = withContext(styled(Ark.Toast.Title), 'title')
-export const ToastDescription = withContext(styled(Ark.Toast.Description), 'description')
-export const ToastCloseTrigger = withContext(styled(Ark.Toast.CloseTrigger), 'closeTrigger')
-
-export const Toast = Object.assign(ToastRoot, {
-  Root: ToastRoot,
-  Title: ToastTitle,
-  Description: ToastDescription,
-  CloseTrigger: ToastCloseTrigger,
-})
+export interface RootProps extends ComponentProps<typeof Root> {}
+export interface CloseTriggerProps extends ComponentProps<typeof CloseTrigger> {}
+export interface DescriptionProps extends ComponentProps<typeof Description> {}
+export interface GroupProps extends ComponentProps<typeof Group> {}
+export interface TitleProps extends ComponentProps<typeof Title> {}

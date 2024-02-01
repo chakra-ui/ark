@@ -1,6 +1,6 @@
-import { Tabs, type TabsProps } from '~/components/ui'
+import { Tabs } from '~/components/ui'
 
-export const Demo = (props: TabsProps) => {
+export const Demo = (props: Tabs.RootProps) => {
   const options = [
     { id: 'react', label: 'React' },
     { id: 'solid', label: 'Solid' },
@@ -17,12 +17,10 @@ export const Demo = (props: TabsProps) => {
         ))}
         <Tabs.Indicator />
       </Tabs.List>
-      <Tabs.Content value="react">Are you familiar with React? You can try out Solid.</Tabs.Content>
-      <Tabs.Content value="solid">
-        Are you familiar with Solid? You can try out Svelte.
-      </Tabs.Content>
-      <Tabs.Content value="svelte">Are you familiar with Svelte? You can try out Vue.</Tabs.Content>
-      <Tabs.Content value="vue">Are you familiar with Vue? You can try out React.</Tabs.Content>
+      <Tabs.Content value="react">Know React? Check out Solid!</Tabs.Content>
+      <Tabs.Content value="solid">Know Solid? Check out Svelte!</Tabs.Content>
+      <Tabs.Content value="svelte">Know Svelte? Check out Vue!</Tabs.Content>
+      <Tabs.Content value="vue">Know Vue? Check out React!</Tabs.Content>
     </Tabs.Root>
   )
 }
