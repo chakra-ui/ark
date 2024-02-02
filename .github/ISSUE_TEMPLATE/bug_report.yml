@@ -22,8 +22,7 @@ body:
     attributes:
       label: 'Link to Reproduction (or Detailed Explanation)'
       description: |
-        Provide a link to a CodeSandbox or Git repository which demonstrates the bug. If a link is not available, give a detailed explanation of the setup.
-      placeholder: 'https:// or detailed setup explanation'
+        Use https://codesandbox.io/p/devbox/ark-ui-react-issue-template-7hspkh as a starting point to create a reproduction. Issues without a reproduction will be closed.
     validations:
       required: true
   - type: 'textarea'
