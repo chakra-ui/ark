@@ -19,6 +19,7 @@
     "document:stories": "turbo run storydocs",
     "react": "pnpm --filter=@ark-ui/react",
     "solid": "pnpm --filter=@ark-ui/solid",
+    "svelte": "pnpm --filter=@ark-ui/svelte",
     "vue": "pnpm --filter=@ark-ui/vue",
     "anatomy": "pnpm --filter=@ark-ui/anatomy",
     "scripts": "pnpm --filter=@ark-ui/scripts",
