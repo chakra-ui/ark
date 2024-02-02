@@ -54,9 +54,6 @@ export const ComboboxRoot = defineComponent<ComboboxRootProps<CollectionItem>>(
         type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
       },
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

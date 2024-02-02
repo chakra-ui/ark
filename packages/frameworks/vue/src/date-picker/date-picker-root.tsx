@@ -39,9 +39,6 @@ export const DatePickerRoot = defineComponent<DatePickerRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

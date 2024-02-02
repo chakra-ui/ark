@@ -31,9 +31,6 @@ export const HoverCardRoot = defineComponent<HoverCardRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

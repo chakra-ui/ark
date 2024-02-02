@@ -35,9 +35,6 @@ export const AccordionRoot = defineComponent<AccordionRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

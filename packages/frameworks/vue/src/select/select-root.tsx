@@ -51,9 +51,6 @@ export const SelectRoot = defineComponent<SelectRootProps<CollectionItem>>(
         type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
       },
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

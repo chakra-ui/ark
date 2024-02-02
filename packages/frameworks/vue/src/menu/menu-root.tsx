@@ -53,9 +53,6 @@ export const MenuRoot = defineComponent<MenuRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )
