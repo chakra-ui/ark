@@ -44,6 +44,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Fixed an issue where emitted event caused "not declared" warning
 - Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
 - Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
 - Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
