@@ -35,6 +35,9 @@ export const props = {
   min: {
     type: Number as PropType<Context['min']>,
   },
+  minStepsBetweenThumbs: {
+    type: Number as PropType<Context['minStepsBetweenThumbs']>,
+  },
   name: {
     type: String as PropType<Context['name']>,
   },
