@@ -10,7 +10,10 @@ const { id } = Astro.props
 const { slug } = Astro.params
 
 const component = slug?.split('/').pop()
-const stories = await getCollection('stories', (story) => story.id.includes(component ?? ''))
+const stories = await getCollection('stories', (story) => {
+  const storyId = story.id?.split('/').pop()?.split('.stories')[0]
+  return storyId === (component ?? '')
+})
 const [react, solid, vue] = stories
 ---
 
