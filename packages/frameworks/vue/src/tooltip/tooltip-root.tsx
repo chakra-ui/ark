@@ -31,9 +31,6 @@ export const TooltipRoot = defineComponent<TooltipRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

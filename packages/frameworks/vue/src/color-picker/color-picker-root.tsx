@@ -42,9 +42,6 @@ export const ColorPickerRoot = defineComponent<ColorPickerRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )

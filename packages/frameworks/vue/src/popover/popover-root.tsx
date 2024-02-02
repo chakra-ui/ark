@@ -31,9 +31,6 @@ export const PopoverRoot = defineComponent<PopoverRootProps>(
       ...props,
       ...presenceProps,
     },
-    emits: {
-      ...emits,
-      ...presenceEmits,
-    },
+    emits: [...emits, ...presenceEmits],
   },
 )
