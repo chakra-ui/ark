@@ -4,7 +4,7 @@ import { Tabs } from '../'
 import './tabs.css'
 
 const meta: Meta = {
-  title: 'Tabs',
+  title: 'Components / Tabs',
 }
 
 export default meta

@@ -3,7 +3,7 @@ import { NumberInput } from '../'
 import './number-input.css'
 
 const meta: Meta = {
-  title: 'NumberInput',
+  title: 'Components / Number Input',
 }
 
 export default meta

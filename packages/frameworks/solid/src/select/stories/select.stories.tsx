@@ -5,7 +5,7 @@ import { Select } from '../'
 import './select.css'
 
 const meta: Meta = {
-  title: 'Select',
+  title: 'Components / Select',
 }
 
 export default meta

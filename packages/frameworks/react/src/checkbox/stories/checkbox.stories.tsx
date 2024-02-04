@@ -4,7 +4,7 @@ import { Checkbox, type CheckboxState } from '../'
 import './checkbox.css'
 
 const meta: Meta = {
-  title: 'Checkbox',
+  title: 'Components / Checkbox',
 }
 
 export default meta

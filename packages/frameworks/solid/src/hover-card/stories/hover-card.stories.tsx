@@ -5,7 +5,7 @@ import { HoverCard } from '../'
 import './hover-card.css'
 
 const meta: Meta = {
-  title: 'HoverCard',
+  title: 'Components / Hover Card',
 }
 
 export default meta

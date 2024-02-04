@@ -4,7 +4,7 @@ import { SegmentGroup } from '../'
 import './segment-group.css'
 
 const meta: Meta = {
-  title: 'SegmentGroup',
+  title: 'Components / Segment Group',
 }
 
 export default meta

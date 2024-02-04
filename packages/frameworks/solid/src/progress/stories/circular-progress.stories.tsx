@@ -3,7 +3,7 @@ import { Progress } from '../'
 import './progress.css'
 
 const meta: Meta = {
-  title: 'CircularProgress',
+  title: 'Components / Progress / Circular',
 }
 
 export default meta

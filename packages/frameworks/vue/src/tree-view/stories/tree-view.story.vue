@@ -3,7 +3,7 @@ import { TreeView } from '../'
 </script>
 
 <template>
-  <Story title="TreeView">
+  <Story title="Tree View">
     <Variant title="Basic">
       <TreeView.Root>
         <TreeView.Label>My Documents</TreeView.Label>

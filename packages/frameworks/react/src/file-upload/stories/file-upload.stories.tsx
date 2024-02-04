@@ -4,7 +4,7 @@ import './file-upload.css'
 import { FileIcon } from './icons'
 
 const meta: Meta = {
-  title: 'FileUpload',
+  title: 'Components / File Upload',
 }
 
 export default meta

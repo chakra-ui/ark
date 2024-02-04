@@ -5,7 +5,7 @@ import { Dialog } from '../'
 import './dialog.css'
 
 const meta: Meta = {
-  title: 'Dialog',
+  title: 'Components / Dialog',
 }
 
 export default meta

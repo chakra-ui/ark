@@ -3,7 +3,7 @@ import { Splitter } from '../'
 import './splitter.css'
 
 const meta: Meta = {
-  title: 'Splitter',
+  title: 'Components / Splitter',
 }
 
 export default meta

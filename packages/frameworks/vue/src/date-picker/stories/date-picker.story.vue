@@ -4,7 +4,7 @@ import './date-picker.css'
 </script>
 
 <template>
-  <Story title="Date Picker">
+  <Story title="Date Picker / Single">
     <Variant title="Basic">
       <DatePicker.Root>
         <DatePicker.Label>Label</DatePicker.Label>

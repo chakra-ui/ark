@@ -5,7 +5,7 @@ import './accordion.css'
 import { ChevronDownIcon } from './icons'
 
 const meta: Meta = {
-  title: 'Accordion',
+  title: 'Components / Accordion',
 }
 
 export default meta

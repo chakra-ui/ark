@@ -4,7 +4,7 @@ import { Carousel } from '../'
 import './carousel.css'
 
 const meta: Meta = {
-  title: 'Carousel',
+  title: 'Components / Carousel',
 }
 
 export default meta

@@ -3,7 +3,7 @@ import { Avatar } from '../'
 import './avatar.css'
 
 const meta: Meta = {
-  title: 'Avatar',
+  title: 'Components / Avatar',
 }
 
 export default meta

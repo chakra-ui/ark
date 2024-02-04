@@ -4,7 +4,7 @@ import { Portal } from '../../portal'
 import './date-picker.css'
 
 const meta: Meta = {
-  title: 'DateRangePicker',
+  title: 'Components / Date Picker / Range',
 }
 
 export default meta

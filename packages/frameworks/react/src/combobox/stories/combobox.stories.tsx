@@ -4,7 +4,7 @@ import { Portal } from '../../portal'
 import './combobox.css'
 
 const meta: Meta = {
-  title: 'Combobox',
+  title: 'Components / Combobox',
 }
 
 export default meta

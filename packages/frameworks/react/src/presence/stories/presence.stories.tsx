@@ -4,7 +4,7 @@ import { Presence } from '../'
 import './presence.css'
 
 const meta: Meta = {
-  title: 'Presence',
+  title: 'Components / Presence',
 }
 
 export default meta

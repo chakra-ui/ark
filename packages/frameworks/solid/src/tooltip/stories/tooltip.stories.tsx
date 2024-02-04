@@ -5,7 +5,7 @@ import { Tooltip } from '../'
 import './tooltip.css'
 
 const meta: Meta = {
-  title: 'Tooltip',
+  title: 'Components / Tooltip',
 }
 
 export default meta

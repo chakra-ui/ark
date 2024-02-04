@@ -5,7 +5,7 @@ import { Popover } from '../'
 import './popover.css'
 
 const meta: Meta = {
-  title: 'Popover',
+  title: 'Components / Popover',
 }
 
 export default meta

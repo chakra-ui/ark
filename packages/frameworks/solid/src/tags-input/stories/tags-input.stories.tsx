@@ -4,7 +4,7 @@ import { TagsInput } from '../'
 import './tags-input.css'
 
 const meta: Meta = {
-  title: 'TagsInput',
+  title: 'Components / Tags Input',
 }
 
 export default meta

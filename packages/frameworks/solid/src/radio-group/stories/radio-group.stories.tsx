@@ -4,7 +4,7 @@ import { RadioGroup } from '../'
 import './radio-group.css'
 
 const meta: Meta = {
-  title: 'RadioGroup',
+  title: 'Components / Radio Group',
 }
 
 export default meta

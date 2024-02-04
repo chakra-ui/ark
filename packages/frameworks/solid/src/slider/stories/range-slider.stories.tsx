@@ -3,7 +3,7 @@ import { Slider } from '../'
 import './slider.css'
 
 const meta: Meta = {
-  title: 'RangeSlider',
+  title: 'Components / Slider / Range',
 }
 
 export default meta

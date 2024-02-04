@@ -10,7 +10,7 @@ const value = ref({
 </script>
 
 <template>
-  <Story title="Menu - Nested">
+  <Story title="Menu / Nested">
     <Variant title="Basic">
       <Menu.Root>
         <Menu.Trigger>Open menu</Menu.Trigger>

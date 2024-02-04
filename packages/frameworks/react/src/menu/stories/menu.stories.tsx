@@ -4,7 +4,7 @@ import { Menu } from '../'
 import './menu.css'
 
 const meta: Meta = {
-  title: 'Menu',
+  title: 'Components / Menu / Menu',
 }
 
 export default meta

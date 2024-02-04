@@ -3,7 +3,7 @@ import { Toast, createToaster } from '../'
 import './toast.css'
 
 const meta: Meta = {
-  title: 'Toast',
+  title: 'Components / Toast',
 }
 export default meta
 

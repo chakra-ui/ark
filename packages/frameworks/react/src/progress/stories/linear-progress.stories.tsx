@@ -3,7 +3,7 @@ import { Progress } from '../'
 import './progress.css'
 
 const meta: Meta = {
-  title: 'LinearProgress',
+  title: 'Components / Progress / Linear',
 }
 
 export default meta

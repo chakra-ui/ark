@@ -4,7 +4,7 @@ import { DatePicker } from '../'
 import './date-picker.css'
 
 const meta: Meta = {
-  title: 'DatePicker',
+  title: 'Components / Date Picker/ Single',
 }
 
 export default meta

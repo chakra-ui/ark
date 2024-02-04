@@ -4,7 +4,7 @@ import './slider.css'
 </script>
 
 <template>
-  <Story title="RangeSlider">
+  <Story title="Slider / Range">
     <Variant title="Basic">
       <Slider.Root :model-value="[5, 10]">
         <Slider.Label>Label</Slider.Label>

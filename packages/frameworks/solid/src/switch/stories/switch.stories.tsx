@@ -4,7 +4,7 @@ import { Switch } from '../'
 import './switch.css'
 
 const meta: Meta = {
-  title: 'Switch',
+  title: 'Components / Switch',
 }
 
 export default meta

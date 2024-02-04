@@ -4,7 +4,7 @@ import { Pagination } from '../'
 import './pagination.css'
 
 const meta: Meta = {
-  title: 'Pagination',
+  title: 'Components / Pagination',
 }
 
 export default meta

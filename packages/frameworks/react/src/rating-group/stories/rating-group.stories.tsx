@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { RatingGroup } from '../'
 
 const meta: Meta = {
-  title: 'RatingGroup',
+  title: 'Components / Rating Group',
 }
 
 export default meta

@@ -4,7 +4,7 @@ import Frame from 'react-frame-component'
 import { Environment, useEnvironmentContext } from '../'
 
 const meta: Meta = {
-  title: 'Environment',
+  title: 'Components / Environment',
 }
 
 export default meta

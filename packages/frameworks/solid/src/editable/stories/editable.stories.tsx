@@ -2,7 +2,7 @@ import type { Meta } from 'storybook-solidjs'
 import { Editable } from '../'
 
 const meta: Meta = {
-  title: 'Editable',
+  title: 'Components / Editable',
 }
 
 export default meta

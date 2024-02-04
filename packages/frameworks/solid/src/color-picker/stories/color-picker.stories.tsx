@@ -4,7 +4,7 @@ import { ColorPicker } from '../'
 import './color-picker.css'
 
 const meta: Meta = {
-  title: 'ColorPicker',
+  title: 'Components / Color Picker',
 }
 
 export default meta

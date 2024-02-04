@@ -5,7 +5,7 @@ import { Portal } from '../../portal'
 import './menu.css'
 
 const meta: Meta = {
-  title: 'NestedMenu',
+  title: 'Components / Menu / Nested',
 }
 
 export default meta

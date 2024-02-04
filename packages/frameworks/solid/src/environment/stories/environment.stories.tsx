@@ -3,7 +3,7 @@ import type { Meta } from 'storybook-solidjs'
 import { Environment, useEnvironmentContext } from '../'
 
 const meta: Meta = {
-  title: 'Environment',
+  title: 'Components / Environment',
 }
 
 export default meta

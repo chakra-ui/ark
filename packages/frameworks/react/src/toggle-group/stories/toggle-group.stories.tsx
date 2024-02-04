@@ -3,7 +3,7 @@ import { ToggleGroup } from '../'
 import './toggle-group.css'
 
 const meta: Meta = {
-  title: 'ToggleGroup',
+  title: 'Components / Toggle Group',
 }
 
 export default meta

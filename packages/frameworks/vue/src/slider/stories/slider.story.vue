@@ -4,7 +4,7 @@ import './slider.css'
 </script>
 
 <template>
-  <Story title="Slider">
+  <Story title="Slider / Slider">
     <Variant title="Basic">
       <Slider.Root>
         <Slider.Label>Label</Slider.Label>

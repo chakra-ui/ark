@@ -3,7 +3,7 @@ import { PinInput } from '../'
 import './pin-input.css'
 
 const meta: Meta = {
-  title: 'PinInput',
+  title: 'Components / Pin Input',
 }
 
 export default meta

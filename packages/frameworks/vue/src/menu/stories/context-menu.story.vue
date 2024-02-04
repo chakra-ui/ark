@@ -4,7 +4,7 @@ import './menu.css'
 </script>
 
 <template>
-  <Story title="Menu - Context">
+  <Story title="Menu / Context">
     <Variant title="Basic">
       <Menu.Root>
         <Menu.ContextTrigger>

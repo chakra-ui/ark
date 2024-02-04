@@ -11,7 +11,7 @@ const value = ref({
 </script>
 
 <template>
-  <Story title="Menu">
+  <Story title="Menu / Menu">
     <Variant title="Basic">
       <Menu.Root lazyMount closeOnSelect>
         <Menu.Trigger>Open menu</Menu.Trigger>

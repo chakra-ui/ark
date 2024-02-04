@@ -4,7 +4,7 @@ import './date-picker.css'
 </script>
 
 <template>
-  <Story title="Date Range Picker">
+  <Story title="Date Picker / Range">
     <Variant title="Basic">
       <DatePicker.Root selection-mode="range">
         <DatePicker.Label>Label</DatePicker.Label>

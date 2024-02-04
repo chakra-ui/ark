@@ -3,7 +3,7 @@ import type { Meta } from 'storybook-solidjs'
 import { RatingGroup } from '../'
 
 const meta: Meta = {
-  title: 'RatingGroup',
+  title: 'Components / Rating Group',
 }
 
 export default meta

@@ -2,7 +2,7 @@ import type { Meta } from 'storybook-solidjs'
 import { TreeView } from '../'
 
 const meta: Meta = {
-  title: 'TreeView',
+  title: 'Components / Tree View',
 }
 
 export default meta

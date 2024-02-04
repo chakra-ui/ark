@@ -4,7 +4,7 @@ import './progress.css'
 </script>
 
 <template>
-  <Story title="Progress - Circular">
+  <Story title="Progress / Circular">
     <Variant title="Basic">
       <Progress.Root>
         <Progress.Label>Label</Progress.Label>
