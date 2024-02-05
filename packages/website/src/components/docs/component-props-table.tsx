@@ -15,22 +15,21 @@ export const ComponentPropsTable = (props: Props) => {
     <Stack gap="6" className="not-prose">
       {Object.entries(types.data).map(([key, properties]) => (
         <Stack key={key} gap="4" className="not-prose">
-          <Heading textStyle="xl" fontWeight="semibold">
+          <Heading textStyle="xl" fontWeight="semibold" color="fg.default">
             {key}
           </Heading>
-
           <Stack overflowX="auto">
             <Table.Root variant="outline" size="sm">
-              <Table.Header>
+              <Table.Head>
                 <Table.Row>
-                  <Table.Head>Prop</Table.Head>
-                  <Table.Head>Type</Table.Head>
-                  <Table.Head>Default</Table.Head>
+                  <Table.Header>Prop</Table.Header>
+                  <Table.Header>Type</Table.Header>
+                  <Table.Header>Default</Table.Header>
                 </Table.Row>
-              </Table.Header>
+              </Table.Head>
               <Table.Body>
                 {Object.entries(properties).map(([name, property]) => (
-                  <Table.Row key={key}>
+                  <Table.Row key={name}>
                     <Table.Cell width="40">
                       <HStack>
                         <Code size="sm" color="accent.default">
