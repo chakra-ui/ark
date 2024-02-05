@@ -12,7 +12,7 @@
     "@ark-ui/react": "workspace:*",
     "@types/node": "20.11.5",
     "@types/react-dom": "18.2.18",
-    "@types/react": "18.2.48",
+    "@types/react": "18.2.52",
     "eslint-config-next": "14.1.0",
     "eslint": "8.56.0",
     "next": "14.1.0",
