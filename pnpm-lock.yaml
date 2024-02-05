@@ -489,8 +489,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(release-it@17.0.3)
       '@solidjs/testing-library':
-        specifier: 0.8.5
-        version: 0.8.5(@solidjs/router@0.10.10)(solid-js@1.8.12)
+        specifier: 0.8.6
+        version: 0.8.6(@solidjs/router@0.10.10)(solid-js@1.8.12)
       '@storybook/addon-essentials':
         specifier: 7.6.10
         version: 7.6.10(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
@@ -5615,11 +5615,11 @@ packages:
       - vite
     dev: false
 
-  /@solidjs/testing-library@0.8.5(@solidjs/router@0.10.10)(solid-js@1.8.12):
-    resolution: {integrity: sha512-L9TowCoqdRQGB8ikODh9uHXrYTjCUZseVUG0tIVa836//qeSqXP4m0BKG66v9Zp1y1wRxok5qUW97GwrtEBMcw==}
+  /@solidjs/testing-library@0.8.6(@solidjs/router@0.10.10)(solid-js@1.8.12):
+    resolution: {integrity: sha512-MnDGfUw38SjE+lmCDZ44HeZq5WbDU7s/BTa7uvqv55GKatddoWiJmHanUAbuEtmwMdEv+fFQQzftkqrFXEn1BQ==}
     engines: {node: '>= 14'}
     peerDependencies:
-      '@solidjs/router': '>=0.6.0'
+      '@solidjs/router': '>=0.9.0'
       solid-js: '>=1.0.0'
     dependencies:
       '@solidjs/router': 0.10.10(solid-js@1.8.12)
@@ -9790,6 +9790,7 @@ packages:
 
   /b4a@1.6.4:
     resolution: {integrity: sha512-fpWrvyVHEKyeEvbKZTVOeZF3VSKKWtJxFIxX/jaVPf+cLbGUSitjb49pHLqPV2BUNNZ0LcoeEGfE/YCpyDYHIw==}
+    requiresBuild: true
     dev: false
 
   /babel-core@7.0.0-bridge.0(@babel/core@7.23.9):
@@ -12567,6 +12568,7 @@ packages:
 
   /fast-fifo@1.3.2:
     resolution: {integrity: sha512-/d9sfos4yxzpwkDkuN7k2SqFKtYNmCTzgfEpz82x34IM9/zc8KGxQoXg1liNC/izpRM/MBdt44Nmx41ZWqk+FQ==}
+    requiresBuild: true
     dev: false
 
   /fast-glob@3.3.2:
@@ -17706,6 +17708,7 @@ packages:
 
   /queue-tick@1.0.1:
     resolution: {integrity: sha512-kJt5qhMxoszgU/62PLP1CJytzd2NKetjSRnyuj31fDd3Rlcz3fzlFdFLD1SItunPwyqEOkca6GbV612BWfaBag==}
+    requiresBuild: true
     dev: false
 
   /quick-lru@4.0.1:
@@ -19121,6 +19124,7 @@ packages:
 
   /streamx@2.15.6:
     resolution: {integrity: sha512-q+vQL4AAz+FdfT137VF69Cc/APqUbxy+MDOImRrMvchJpigHj9GksgDU2LYbO9rx7RX6osWgxJB2WxhYv4SZAw==}
+    requiresBuild: true
     dependencies:
       fast-fifo: 1.3.2
       queue-tick: 1.0.1
