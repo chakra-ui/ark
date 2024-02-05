@@ -26,7 +26,7 @@
     "@types/react-dom": "18.2.18",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.34.0",
-    "astro": "4.2.8",
+    "astro": "4.3.2",
     "cheerio": "1.0.0-rc.12",
     "lucide-react": "0.320.0",
     "pandacss-preset-typography": "0.1.5",
