@@ -956,8 +956,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.2(svelte@5.0.0-next.45)(vite@5.0.12)
       '@types/eslint':
-        specifier: 8.56.0
-        version: 8.56.0
+        specifier: 8.56.2
+        version: 8.56.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.0.0
         version: 6.20.0(@typescript-eslint/parser@6.20.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -6961,8 +6961,8 @@ packages:
     resolution: {integrity: sha512-AjwI4MvWx3HAOaZqYsjKWyEObT9lcVV0Y0V8nXo6cXzN8ZiMxVhf6F3d/UNvXVGKrEzL/Dluc5p+y9GkzlTWig==}
     dev: true
 
-  /@types/eslint@8.56.0:
-    resolution: {integrity: sha512-FlsN0p4FhuYRjIxpbdXovvHQhtlG05O1GG/RNWvdAxTboR438IOTwmrY/vLA+Xfgg06BTkP045M3vpFwTMv1dg==}
+  /@types/eslint@8.56.2:
+    resolution: {integrity: sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
