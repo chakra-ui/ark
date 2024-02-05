@@ -881,8 +881,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-live:
-        specifier: 4.1.5
-        version: 4.1.5(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.1.6
+        version: 4.1.6(react-dom@18.2.0)(react@18.2.0)
       ts-pattern:
         specifier: 5.0.6
         version: 5.0.6
@@ -17852,8 +17852,8 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
-  /react-live@4.1.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ul3Zwvqvh6KTg8j7xGCT26+c8J9vQ+LFUrZCbrrrzEExuVB/39s1GKG3NsywnL+aGAjpfnUTaVCe7KlKIvVPiw==}
+  /react-live@4.1.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2oq3MADi3rupqZcdoHMrV9p+Eg/92BDds278ZuoOz8d68qw6ct0xZxX89MRxeChrnFHy1XPr8BVknDJNJNdvVw==}
     engines: {node: '>= 0.12.0', npm: '>= 2.0.0'}
     peerDependencies:
       react: '>=18.0.0'
