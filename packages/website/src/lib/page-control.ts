@@ -78,7 +78,7 @@ export const getSitemap = async (): Promise<Sitemap> => {
       items: componentPages.map((item) => ({
         title: item.data.title,
         href: path.posix.join('/docs', item.collection, item.data.id),
-        label: item.data.status,
+        label: item.data.label,
       })),
     },
     {

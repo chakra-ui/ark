@@ -34,13 +34,13 @@ const { Content, headings } = await entry.render()
       match(entry)
         .with({ collection: 'components' }, ({ data }) =>
           match(data)
-            .with({ status: 'preview' }, () => (
+            .with({ label: 'preview' }, () => (
               <InfoBanner
                 title="Preview Component"
                 description="Please note, the API of this component is currently in a preview phase and is subject to change."
               />
             ))
-            .with({ status: 'upcoming' }, () => (
+            .with({ label: 'upcoming' }, () => (
               <InfoBanner
                 title="Upcoming Component"
                 description="Please note that this component will only be available in the next minor release."
