@@ -95,7 +95,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-frame-component": "5.2.6",
-    "react-hook-form": "7.49.3",
+    "react-hook-form": "7.50.0",
     "release-it": "17.0.3",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "7.6.10",
