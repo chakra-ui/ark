@@ -1,12 +1,8 @@
 ---
 import { css } from 'styled-system/css'
-import { Box, Container, Flex, Stack } from 'styled-system/jsx'
-import { match } from 'ts-pattern'
+import { Box, Container, Stack } from 'styled-system/jsx'
 import { Heading, Text } from '~/components/ui'
-import React from './icons/react.astro'
-import Solid from './icons/solid.astro'
-import Vue from './icons/vue.astro'
-import Js from './icons/js.astro'
+import UniverseIcon from './universe-icon.astro'
 ---
 
 <Box
@@ -36,36 +32,11 @@ import Js from './icons/js.astro'
 >
   <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }} maxW="7xl">
     <Stack direction="row" align="center" width="full" justify="space-evenly">
-      {
-        [
-          { framework: 'React', icon: React },
-          { framework: 'Vue', icon: Vue },
-          { framework: 'Ark', icon: React },
-          { framework: 'Solid', icon: Solid },
-          { framework: 'JS', icon: Js },
-        ].map((item, id) =>
-          match(item)
-            .with({ framework: 'Ark' }, () => <Box width="358px" height="358px" />)
-            .otherwise(() => (
-              <Flex
-                borderRadius="full"
-                justify="center"
-                align="center"
-                borderWidth="2px"
-                borderColor={{
-                  base: '#F6E1DB',
-                  _dark: '#391915',
-                }}
-                bg="bg.canvas"
-                width="24"
-                height="24"
-                display={{ base: 'none', md: 'flex' }}
-              >
-                {<item.icon width="48" />}
-              </Flex>
-            )),
-        )
-      }
+      <UniverseIcon framework="react" />
+      <UniverseIcon framework="vue" />
+      <Box width="358px" height="358px" />
+      <UniverseIcon framework="solid" />
+      <UniverseIcon framework="js" />
     </Stack>
   </Container>
 </Box>

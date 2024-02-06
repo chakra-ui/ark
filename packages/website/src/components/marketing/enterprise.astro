@@ -2,12 +2,11 @@
 import { ArrowRight } from 'lucide-react'
 import { Box, Container, Flex, Stack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
-import { match } from 'ts-pattern'
 import { Heading, Text } from '~/components/ui'
+import ArkIcon from './icons/fill/ark.astro'
 import ReactIcon from './icons/fill/react.astro'
 import SolidIcon from './icons/fill/solid.astro'
 import VueIcon from './icons/fill/vue.astro'
-import ArkIcon from './icons/fill/ark.astro'
 ---
 
 <Box bg="bg.subtle">
@@ -36,16 +35,10 @@ import ArkIcon from './icons/fill/ark.astro'
           gridTemplateColumns={{ base: 'repeat(4, 64px)', md: 'repeat(2, 80px)' }}
           gap="3"
         >
-          {
-            ['React', 'Vue', 'Ark', 'Solid'].map((name) =>
-              match(name)
-                .with('React', () => <ReactIcon key={name} />)
-                .with('Vue', () => <VueIcon key={name} />)
-                .with('Solid', () => <SolidIcon key={name} />)
-                .with('Ark', () => <ArkIcon key={name} />)
-                .run(),
-            )
-          }
+          <ReactIcon  />
+          <VueIcon />
+          <SolidIcon  />
+          <ArkIcon  />
         </Box>
       </Flex>
     </Stack>
