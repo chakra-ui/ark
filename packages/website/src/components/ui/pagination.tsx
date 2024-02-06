@@ -1,4 +1,4 @@
-import { Pagination as ArkPagination, type PaginationRootProps } from '@ark-ui/react/src/pagination'
+import { Pagination as ArkPagination, type PaginationRootProps } from '@ark-ui/react/pagination'
 import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
@@ -33,7 +33,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
           </ArkPagination.PrevTrigger>
           {pages.map((page, index) =>
             page.type === 'page' ? (
-              <ArkPagination.Item className={styles.item} key={page.value} {...page} asChild>
+              <ArkPagination.Item className={styles.item} key={index} {...page} asChild>
                 <Button variant="outline">{page.value}</Button>
               </ArkPagination.Item>
             ) : (
