@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Exported `SelectionDetails` type for `Menu` component
 
+### Changed
+
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+
 ### Fixed
 
 - Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.

@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Exported `SelectionDetails` type for `Menu` component
 
+### Changed
+
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+
 ## [2.0.1] - 2024-01-30
 
 ### Fixed

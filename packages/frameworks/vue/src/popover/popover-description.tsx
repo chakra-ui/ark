@@ -2,16 +2,16 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export interface PopoverDescriptionProps extends HTMLArkProps<'p'> {}
+export interface PopoverDescriptionProps extends HTMLArkProps<'div'> {}
 
 export const PopoverDescription = defineComponent<PopoverDescriptionProps>(
   (_, { slots, attrs }) => {
     const api = usePopoverContext()
 
     return () => (
-      <ark.p {...api.value.descriptionProps} {...attrs}>
+      <ark.div {...api.value.descriptionProps} {...attrs}>
         {slots.default?.()}
-      </ark.p>
+      </ark.div>
     )
   },
   {

@@ -42,6 +42,10 @@ description: All notable changes to this project will be documented in this file
 </TagsInput.Item>
 ```
 
+### Changed
+
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+
 ### Fixed
 
 - Added the missing `minStepsBetweenThumbs` prop to `Slider` component.
