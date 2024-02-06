@@ -14,7 +14,7 @@ const convertToEventName = (value: string): string => {
 const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
-  const root = dirname(findUpSync('pnpm-lock.yaml')!)
+  const root = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(root, 'packages', 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
@@ -84,14 +84,14 @@ const main = async () => {
                       const propType = isFunction
                         ? 'Function'
                         : type.isBoolean()
-                        ? 'Boolean'
-                        : type.isString() || type.isUnion()
-                        ? 'String'
-                        : type.isNumber()
-                        ? 'Number'
-                        : type.isArray()
-                        ? 'Array'
-                        : 'Object'
+                          ? 'Boolean'
+                          : type.isString() || type.isUnion()
+                            ? 'String'
+                            : type.isNumber()
+                              ? 'Number'
+                              : type.isArray()
+                                ? 'Array'
+                                : 'Object'
 
                       writer.writeLine(`'${name}': {`)
                       writer.indent(() => {

@@ -60,7 +60,7 @@ const main = async () => {
   const framework = process.argv.slice(2)[0]
   console.log('Generating story docs for', framework)
 
-  const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
+  const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
 
   const outDir = join(rootDir, 'packages', 'website', 'src', 'content', 'stories')
