@@ -1,15 +1,6 @@
 import { createContext } from '../create-context'
 import { type UseTreeViewReturn } from './use-tree-view'
 
-// TODO: remove after zag release
-export interface ItemProps {
-  depth: number
-  id: string
-  disabled?: boolean
-}
-
-export interface BranchProps extends ItemProps {}
-
 export interface ItemState {
   id: string
   isDisabled: boolean

@@ -19,7 +19,7 @@ export interface TreeViewRootProps
   > {}
 
 export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props, ref) => {
-  const [useTreeViewProps, { children, ...divProps }] = createSplitProps<UseTreeViewProps>()(
+  const [useTreeViewProps, { children, ...localProps }] = createSplitProps<UseTreeViewProps>()(
     props,
     [
       'defaultFocusedId',
@@ -37,7 +37,7 @@ export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props
     ],
   )
   const api = useTreeView(useTreeViewProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
+  const mergedProps = mergeProps(api.rootProps, localProps)
 
   const view = runIfFn(children, api)
 

@@ -5,7 +5,7 @@ import { TreeView } from '../'
 import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('TreeView / Parts & Exports', () => {
+describe('TreeView', () => {
   afterAll(() => {
     cleanup()
   })
@@ -21,9 +21,3 @@ describe('TreeView / Parts & Exports', () => {
     expect(TreeView[part]).toBeDefined()
   })
 })
-
-// describe('TreeView', () => {
-//   afterEach(() => {
-//     cleanup()
-//   })
-// })
