@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [0.11.0] - 2024-02-08
+
 ### Added
 
 - Added `TreeView` component
