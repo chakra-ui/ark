@@ -7,10 +7,14 @@ description:
 
 ## [Unreleased]
 
+## [0.11.0] - 2024-02-08
+
 ### Added
 
+- Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance
   for all components.
+- Exported `SelectionDetails` type for `Menu` component
 
 ### Changed
 
@@ -46,13 +50,20 @@ description:
 </TagsInput.Item>
 ```
 
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to
+  allow for multiple paragraphs.
+
 ### Fixed
 
+- Added the missing `minStepsBetweenThumbs` prop to `Slider` component.
+- Fixed an issue where emitted event caused "not declared" warning
 - Fixed an issue on touch devices where selecting an item within `Combobox`,
   `Menu`, or `Select` triggered a click event on the element behind the
   portalled content.
 - Fixed an issue in `PinInput` where pasting a value filled all inputs instead
   of populating them one per input.
+- Fix issue where `Select` component submits its first option when used in a
+  form, even if there is no value selected.
 
 ## [0.10.0] - 2024-01-17
 
