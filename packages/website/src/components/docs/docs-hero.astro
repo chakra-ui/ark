@@ -14,7 +14,7 @@ const { title, description } = Astro.props
 <Box borderBottomWidth="1px" bg={{ base: 'gray.2', _dark: 'black.a2' }}>
   <Container maxW="66rem" py={{ base: '16', md: '24' }}>
     <Prose css={{ '&> :first-child': { mt: '0' } }}>
-      <Heading as="h1" fontWeight="bold">{title}</Heading>
+      <Heading as="h1" fontWeight="bold">{title === "Introduction" ? "Welcome to Ark UI" : title}</Heading>
       <Text className="lead" color="fg.emphasized">{description}</Text>
     </Prose>
   </Container>
