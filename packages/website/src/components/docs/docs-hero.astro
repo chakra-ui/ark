@@ -1,21 +1,65 @@
 ---
-import { Box, Container } from 'styled-system/jsx'
-import { Heading, Text } from '~/components/ui'
+import { BookOpen } from 'lucide-react'
+import { Box, Container, Flex } from 'styled-system/jsx'
+import { Heading, IconButton, Link, Text } from '~/components/ui'
 import { Prose } from '../ui/prose'
 
 interface Props {
+  id?: string
   title: string
   description: string
 }
 
-const { title, description } = Astro.props
+const { id, title, description } = Astro.props
 ---
 
 <Box borderBottomWidth="1px" bg={{ base: 'gray.2', _dark: 'black.a2' }}>
   <Container maxW="66rem" py={{ base: '16', md: '24' }}>
     <Prose css={{ '&> :first-child': { mt: '0' } }}>
-      <Heading as="h1" fontWeight="bold">{title === "Introduction" ? "Welcome to Ark UI" : title}</Heading>
+      <Heading as="h1" fontWeight="bold"
+        >{title === 'Introduction' ? 'Welcome to Ark UI' : title}</Heading
+      >
       <Text className="lead" color="fg.emphasized">{description}</Text>
     </Prose>
+    {
+      id && (
+        <>
+          <a href={`https://zagjs.com/components/react/${id}`}>
+            <IconButton px="2">
+              <BookOpen size="16" /> Zag documentation
+            </IconButton>
+          </a>
+          <Link
+            href={`https://zagjs.com/components/react/${id}`}
+            target="_blank"
+            fontWeight="medium"
+            textStyle="sm"
+            width="fit-content"
+            color="fg.muted"
+            _currentPage={{
+              color: 'accent.default',
+              _hover: {
+                color: 'accent.default',
+              },
+            }}
+            textDecoration="none"
+            _hover={{ color: 'fg.muted' }}
+          >
+            <Flex
+              align="center"
+              justify="center"
+              bg="bg.subtle"
+              borderWidth="1px"
+              borderRadius="l2"
+              width="6"
+              height="6"
+            >
+              {<BookOpen size="16" />}
+            </Flex>
+            Zag documentation
+          </Link>
+        </>
+      )
+    }
   </Container>
 </Box>

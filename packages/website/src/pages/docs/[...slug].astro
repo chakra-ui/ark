@@ -36,7 +36,12 @@ const banner = match(entry).with({ collection: 'components' }, ({ data }) =>
 ---
 
 <DocsLayout title={entry.data.title} description={entry.data.description} headings={headings}>
-  <DocsHero slot="hero" title={entry.data.title} description={entry.data.description} />
+  <DocsHero
+    slot="hero"
+    id={entry.collection === 'components' ? entry.data.id : undefined}
+    title={entry.data.title}
+    description={entry.data.description}
+  />
   <Prose css={{ maxWidth: 'full', '&> :first-child': { mt: '0' } }}>
     {banner && <InfoBanner title={banner.title} description={banner.description} />}
     <Content components={{ pre: Pre, code: Code, a: Link }} />
