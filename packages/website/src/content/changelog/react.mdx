@@ -7,6 +7,8 @@ description:
 
 ## [Unreleased]
 
+## [2.0.2] - 2024-02-10
+
 ### Added
 
 - Exported `SelectionDetails` type for `Menu` component
@@ -15,9 +17,12 @@ description:
 
 - Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to
   allow for multiple paragraphs.
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility
+  reasons.
 
 ### Fixed
 
+- Fix issue where `@types/react@18.2.8` broke current typings in `Portal`
 - Fix issue where `Select` component submits its first option when used in a
   form, even if there is no value selected.
 

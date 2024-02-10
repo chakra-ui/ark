@@ -17,6 +17,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Fix issue where `@types/react@18.2.8` broke current typings in `Portal`
 - Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
 
 ## [2.0.1] - 2024-01-30
