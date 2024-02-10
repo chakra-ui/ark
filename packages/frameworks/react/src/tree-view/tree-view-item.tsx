@@ -1,3 +1,4 @@
+// import type { ItemProps, ItemState } from '@zag-js/tree-view'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'

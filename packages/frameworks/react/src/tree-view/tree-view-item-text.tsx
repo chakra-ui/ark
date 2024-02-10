@@ -1,3 +1,4 @@
+// import type { ItemProps } from '@zag-js/tree-view'
 import { treeViewAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
@@ -9,7 +10,11 @@ import { useTreeViewContext, type ItemProps } from './tree-view-context'
 export interface TreeViewItemTextProps extends Assign<HTMLArkProps<'span'>, ItemProps> {}
 
 export const TreeViewItemText = forwardRef<HTMLSpanElement, TreeViewItemTextProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['depth', 'id', 'disabled'])
+  const [itemProps, { ...localProps }] = createSplitProps<ItemProps>()(props, [
+    'depth',
+    'id',
+    'disabled',
+  ])
   const api = useTreeViewContext()
   const mergedProps = mergeProps(
     api.getItemProps(itemProps),

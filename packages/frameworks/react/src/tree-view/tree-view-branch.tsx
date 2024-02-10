@@ -1,27 +1,28 @@
+// import type { BranchProps, BranchState } from '@zag-js/tree-view'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import {
-  TreeViewBranchProvider,
-  type BranchProps,
-  type BranchState,
-} from './tree-view-branch-context'
-import { useTreeViewContext } from './tree-view-context'
+import { useTreeViewContext, type BranchProps, type BranchState } from './tree-view-context'
 
 export interface TreeViewBranchProps
   extends Assign<
-    Assign<HTMLArkProps<'li'>, { children?: ReactNode | ((state: BranchState) => ReactNode) }>,
+    Assign<
+      HTMLArkProps<'li'>,
+      {
+        children?: ReactNode | ((state: BranchState) => ReactNode)
+      }
+    >,
     BranchProps
   > {}
 
 export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
   const [branchProps, { children, ...localProps }] = createSplitProps<BranchProps>()(props, [
     'depth',
-    'disabled',
     'id',
+    'disabled',
   ])
   const api = useTreeViewContext()
   const mergedProps = mergeProps(api.getBranchProps(branchProps), localProps)
@@ -29,11 +30,9 @@ export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((pr
   const view = runIfFn(children, branchState)
 
   return (
-    <TreeViewBranchProvider value={branchProps}>
-      <ark.li {...mergedProps} ref={ref}>
-        {view}
-      </ark.li>
-    </TreeViewBranchProvider>
+    <ark.li {...mergedProps} ref={ref}>
+      {view}
+    </ark.li>
   )
 })
 

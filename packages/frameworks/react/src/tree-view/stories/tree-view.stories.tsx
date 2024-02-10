@@ -13,21 +13,28 @@ export const Basic = () => {
       <TreeView.Label>My Documents</TreeView.Label>
       <TreeView.Tree>
         <TreeView.Branch id="node_modules" depth={1}>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>📂 node_modules</TreeView.BranchText>
+          <TreeView.BranchControl id="node_modules" depth={1}>
+            <TreeView.BranchText id="node_modules" depth={1}>
+              📂 node_modules
+            </TreeView.BranchText>
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
+
+          <TreeView.BranchContent id="node_modules" depth={1}>
             <TreeView.Item id="node_modules/zag-js" depth={2}>
               📄 zag-js
             </TreeView.Item>
             <TreeView.Item id="node_modules/pandacss" depth={2}>
               📄 panda
             </TreeView.Item>
+
             <TreeView.Branch id="node_modules/@types" depth={2}>
-              <TreeView.BranchControl>
-                <TreeView.BranchText>📂 @types</TreeView.BranchText>
+              <TreeView.BranchControl id="node_modules/@types" depth={2}>
+                <TreeView.BranchText id="node_modules/@types" depth={2}>
+                  📂 @types
+                </TreeView.BranchText>
               </TreeView.BranchControl>
-              <TreeView.BranchContent>
+
+              <TreeView.BranchContent id="node_modules/@types" depth={2}>
                 <TreeView.Item id="node_modules/@types/react" depth={3}>
                   📄 react
                 </TreeView.Item>
@@ -38,11 +45,15 @@ export const Basic = () => {
             </TreeView.Branch>
           </TreeView.BranchContent>
         </TreeView.Branch>
+
         <TreeView.Branch id="src" depth={1}>
-          <TreeView.BranchControl>
-            <TreeView.BranchText>📂 src</TreeView.BranchText>
+          <TreeView.BranchControl id="src" depth={1}>
+            <TreeView.BranchText id="src" depth={1}>
+              📂 src
+            </TreeView.BranchText>
           </TreeView.BranchControl>
-          <TreeView.BranchContent>
+
+          <TreeView.BranchContent id="src" depth={1}>
             <TreeView.Item id="src/app.tsx" depth={2}>
               📄 app.tsx
             </TreeView.Item>
@@ -51,6 +62,16 @@ export const Basic = () => {
             </TreeView.Item>
           </TreeView.BranchContent>
         </TreeView.Branch>
+
+        <TreeView.Item id="panda.config" depth={1}>
+          📄 panda.config.ts
+        </TreeView.Item>
+        <TreeView.Item id="package.json" depth={1}>
+          📄 package.json
+        </TreeView.Item>
+        <TreeView.Item id="renovate.json" depth={1}>
+          📄 renovate.json
+        </TreeView.Item>
         <TreeView.Item id="readme.md" depth={1}>
           📄 README.md
         </TreeView.Item>
