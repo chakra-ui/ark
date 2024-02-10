@@ -15,6 +15,7 @@ import {
   Editable,
   FileUpload,
   HoverCard,
+  Progress,
   Menu,
   NestedMenu,
   NumberInput,
@@ -54,7 +55,7 @@ const { component } = Astro.props
         .with('avatar', () => <Avatar client:load />)
         .with('carousel', () => <Carousel client:load />)
         .with('checkbox', () => <Checkbox client:load />)
-        // .with('circular-progress', () => <CircularProgress client:load />)
+        .with('circular-progress', () => <Progress type="circular" client:load />)
         .with('color-picker', () => <ColorPicker client:load />)
         .with('combobox', () => <Combobox client:load />)
         .with('context-menu', () => <ContextMenu client:load />)
@@ -64,7 +65,7 @@ const { component } = Astro.props
         .with('editable', () => <Editable client:load />)
         .with('file-upload', () => <FileUpload client:load />)
         .with('hover-card', () => <HoverCard client:load />)
-        // .with('linear-progress', () => <LinearProgress client:load />)
+        .with('linear-progress', () => <Progress client:load />)
         .with('menu', () => <Menu client:load />)
         .with('nested-menu', () => <NestedMenu client:load />)
         .with('number-input', () => <NumberInput client:load />)
