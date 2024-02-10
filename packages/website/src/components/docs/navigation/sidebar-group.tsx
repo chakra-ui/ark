@@ -3,7 +3,7 @@ import { HStack } from 'styled-system/jsx'
 import { Badge, SegmentGroup } from '~/components/ui'
 
 interface Props {
-  items: { href: string; title: string; label?: string }[]
+  items: { href: string; title: string; depth?: number; label?: string }[]
   activeItem?: string | null
 }
 
@@ -31,7 +31,11 @@ export const SidebarGroup = (props: Props) => {
           style={{ display: 'flex', width: 'fit-content', textTransform: 'capitalize' }}
           onClick={() => setActive(item.href)}
         >
-          <SegmentGroup.Item value={item.href} data-orientation="vertical">
+          <SegmentGroup.Item
+            value={item.href}
+            style={{ paddingLeft: item?.depth > 2 ? '32px' : undefined }}
+            data-orientation="vertical"
+          >
             <SegmentGroup.ItemControl />
             <SegmentGroup.ItemText>
               <HStack gap="2">

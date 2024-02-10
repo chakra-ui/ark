@@ -11,8 +11,8 @@ interface Props {
 export const TableOfContent = (props: Props) => {
   const { headings = [] } = props
   const items = headings
-    .filter((heading) => heading.depth === 2)
-    .map((heading) => ({ title: heading.text, href: '#' + heading.slug }))
+    .filter((heading) => heading.depth === 2 || heading.depth === 3)
+    .map((heading) => ({ title: heading.text, href: '#' + heading.slug, depth: heading.depth }))
 
   const activeItem = useScrollSpy(items.map((item) => item.href))
   return (
