@@ -114,53 +114,38 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "BranchText": {
-    "depth": { "type": "number", "isRequired": true },
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
+    }
   },
   "BranchContent": {
-    "depth": { "type": "number", "isRequired": true },
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
+    }
   },
   "BranchControl": {
-    "depth": { "type": "number", "isRequired": true },
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
+    }
   },
   "BranchTrigger": {
-    "depth": { "type": "number", "isRequired": true },
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
+    }
   },
   "BranchIndicator": {
-    "depth": { "type": "number", "isRequired": true },
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
+    }
   }
 }
