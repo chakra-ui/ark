@@ -8,12 +8,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Improve support for controlled open state in `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component
-
-### Changed
-
-- [BREAKING] Change date picker from `inputProps` to `getInputProps` to support multiple inputs.
-- Added a new prop `getPresetTriggerProps` to support custom trigger for common date presets (e.g. Last 7 days, Last 30 days, etc.)
 
 ### Fixed
 

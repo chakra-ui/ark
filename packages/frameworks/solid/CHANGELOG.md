@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Exported `SelectionDetails` type for `Menu` component
 - Improve support for controlled open state in `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component
 
