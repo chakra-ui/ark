@@ -8,6 +8,12 @@ const components = defineCollection({
     description: z.string(),
     specification: z.string().optional(),
     label: z.string().optional(),
+    resources: z
+      .object({
+        zag: z.string().optional(),
+        w3c: z.string().optional(),
+      })
+      .optional(),
     stories: reference('stories').optional(),
     types: reference('types').optional(),
   }),

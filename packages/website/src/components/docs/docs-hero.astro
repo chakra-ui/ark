@@ -11,7 +11,8 @@ type Props = {
 
 const { entry } = Astro.props
 
-const isComponent = entry.collection === 'components'
+const isComponent =
+  entry.collection === 'components' && !['environment', 'presence'].includes(entry.data.id)
 ---
 
 <Box borderBottomWidth="1px" bg={{ base: 'gray.2', _dark: 'black.a2' }}>
@@ -25,14 +26,19 @@ const isComponent = entry.collection === 'components'
     {
       isComponent && (
         <HStack gap="3">
-          <a href={`https://zagjs.com/components/react/${entry.data.id}`} target="_blank">
-            <Badge borderRadius="l2">
-              <FileTextIcon />
-              Zag.js Reference
-            </Badge>
-          </a>
-          {entry.data.specification && (
-            <a href={entry.data.specification} target="_blank">
+          {entry.data.resources?.zag && (
+            <a
+              href={`https://zagjs.com/components/react/${entry.data.resources.zag}`}
+              target="_blank"
+            >
+              <Badge borderRadius="l2">
+                <FileTextIcon />
+                Zag.js Reference
+              </Badge>
+            </a>
+          )}
+          {entry.data.resources?.w3c && (
+            <a href={entry.data.resources.w3c} target="_blank">
               <Badge borderRadius="l2">
                 <EyeIcon />
                 W3C Specification
