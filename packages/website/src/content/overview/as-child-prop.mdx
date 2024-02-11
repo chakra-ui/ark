@@ -47,6 +47,10 @@ composed with the child's ref and passed down correctly.
 When using the `asChild` prop, ensure that you only pass a single child element.
 If you pass multiple children, the component may not render correctly.
 
+Some components may have specific requirements for the child element, such as
+the `Checkbox.Root`, `RadioGroup.Item` and `Switch.Root` component, which
+requires a `label` element to be passed as a child element.
+
 ## Summary
 
 The `asChild` prop provides a convenient way to customize the appearance and
