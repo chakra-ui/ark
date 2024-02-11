@@ -21,6 +21,16 @@ name its parts.
 
 <Anatomy id="switch" />
 
+### Design impact on the asChild property
+
+The `Switch.Root` element of the switch is a `label` element. This is because
+the switch is a form control and should be associated with a label to provide
+context and meaning to the user. Otherwise, the HTML and accessibility structure
+will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element
+> is the direct child of the `Switch.Root` component.
+
 ## Examples
 
 Learn how to use the `Switch` component in your project. Let's take a look at

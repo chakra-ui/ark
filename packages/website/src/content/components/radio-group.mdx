@@ -21,6 +21,16 @@ how we name its parts.
 
 <Anatomy id="radio-group" />
 
+### Design impact on the asChild property
+
+The `RadioGroup.Item` element of the radio group is a `label` element. This is
+because the radio group is a form control and should be associated with a label
+to provide context and meaning to the user. Otherwise, the HTML and
+accessibility structure will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element
+> is the direct child of the `RadioGroup.Item` component.
+
 ## Examples
 
 Learn how to use the `RadioGroup` component in your project. Let's take a look
