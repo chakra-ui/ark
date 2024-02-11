@@ -1,3 +1,3 @@
-import { atom } from 'nanostores'
+import { persistentAtom } from '@nanostores/persistent'
 
-export const selectedFramework = atom('vue')
+export const selectedFramework = persistentAtom<string>('ark-ui-framework', 'react')
