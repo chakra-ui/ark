@@ -93,6 +93,11 @@
       "isRequired": false,
       "description": "Whether the popover is open"
     },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the popover is controlled by the user"
+    },
     "portalled": {
       "type": "boolean",
       "defaultValue": "true",
