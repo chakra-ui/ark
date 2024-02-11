@@ -6,6 +6,25 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Improve support for controlled open state in `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component
+
+### Changed
+
+- [BREAKING] Change date picker from `inputProps` to `getInputProps` to support multiple inputs.
+- Added a new prop `getPresetTriggerProps` to support custom trigger for common date presets (e.g. Last 7 days, Last 30 days, etc.)
+
+### Fixed
+
+- Fix issue where positioned components don't respond to window resizing.
+- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
+- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
+- Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
+- Fix issue in the `Editable` where cannot delete text when `maxLength` reached
+- Fix issue in the `Select` where item group's label `id` pointed to the wrong element
+- Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
+
 ## [2.0.2] - 2024-02-10
 
 ### Added

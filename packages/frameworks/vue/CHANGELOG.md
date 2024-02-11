@@ -6,9 +6,23 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Improve support for controlled open state in `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component
+
 ### Changed
 
 - Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+
+### Fixed
+
+- Fix issue where positioned components don't respond to window resizing.
+- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
+- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
+- Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
+- Fix issue in the `Editable` where cannot delete text when `maxLength` reached
+- Fix issue in the `Select` where item group's label `id` pointed to the wrong element
+- Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
 
 ## [0.11.0] - 2024-02-08
 
