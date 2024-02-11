@@ -5,9 +5,9 @@ import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useTreeViewContext, type BranchProps } from './tree-view-context'
 
-export interface TreeViewBranchTriggerProps extends Assign<HTMLArkProps<'button'>, BranchProps> {}
+export interface TreeViewBranchTriggerProps extends Assign<HTMLArkProps<'div'>, BranchProps> {}
 
-export const TreeViewBranchTrigger: ArkComponent<'button', BranchProps> = (
+export const TreeViewBranchTrigger: ArkComponent<'div', BranchProps> = (
   props: TreeViewBranchTriggerProps,
 ) => {
   const [branchProps, localProps] = createSplitProps<BranchProps>()(props, [
@@ -18,5 +18,5 @@ export const TreeViewBranchTrigger: ArkComponent<'button', BranchProps> = (
   const api = useTreeViewContext()
   const mergedProps = mergeProps(() => api().getBranchTriggerProps(branchProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.div {...mergedProps} />
 }

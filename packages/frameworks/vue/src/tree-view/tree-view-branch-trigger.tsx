@@ -4,16 +4,16 @@ import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useTreeViewContext, type BranchProps } from './tree-view-context'
 
-export interface TreeViewBranchTriggerProps extends Assign<HTMLArkProps<'button'>, BranchProps> {}
+export interface TreeViewBranchTriggerProps extends Assign<HTMLArkProps<'div'>, BranchProps> {}
 
 export const TreeViewBranchTrigger = defineComponent<TreeViewBranchTriggerProps>(
   (props, { slots, attrs }) => {
     const api = useTreeViewContext()
 
     return () => (
-      <ark.button {...api.value.getBranchTriggerProps(props)} {...attrs}>
+      <ark.div {...api.value.getBranchTriggerProps(props)} {...attrs}>
         {slots.default?.()}
-      </ark.button>
+      </ark.div>
     )
   },
   {

@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+
 ## [0.11.0] - 2024-02-08
 
 ### Added
