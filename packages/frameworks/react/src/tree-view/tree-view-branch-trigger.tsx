@@ -4,15 +4,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useTreeViewBranchContext } from './tree-view-branch-context'
 import { useTreeViewContext } from './tree-view-context'
 
-export interface TreeViewBranchTriggerProps extends HTMLArkProps<'button'> {}
+export interface TreeViewBranchTriggerProps extends HTMLArkProps<'div'> {}
 
-export const TreeViewBranchTrigger = forwardRef<HTMLButtonElement, TreeViewBranchTriggerProps>(
+export const TreeViewBranchTrigger = forwardRef<HTMLDivElement, TreeViewBranchTriggerProps>(
   (props, ref) => {
     const api = useTreeViewContext()
     const branchProps = useTreeViewBranchContext()
     const mergedProps = mergeProps(api.getBranchTriggerProps(branchProps), props)
 
-    return <ark.button {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

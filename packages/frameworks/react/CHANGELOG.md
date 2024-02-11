@@ -13,6 +13,7 @@ description: All notable changes to this project will be documented in this file
 ### Changed
 
 - Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
 
 ### Fixed
 
