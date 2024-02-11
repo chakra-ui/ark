@@ -1,21 +1,55 @@
 ---
-import { Box, Container } from 'styled-system/jsx'
-import { Heading, Text } from '~/components/ui'
+import type { CollectionEntry } from 'astro:content'
+import { EyeIcon, FileTextIcon, PenLineIcon } from 'lucide-react'
+import { Box, Container, HStack } from 'styled-system/jsx'
+import { Badge, Heading, Text } from '~/components/ui'
 import { Prose } from '../ui/prose'
 
-interface Props {
-  title: string
-  description: string
+type Props = {
+  entry: CollectionEntry<'components' | 'overview' | 'changelog'>
 }
 
-const { title, description } = Astro.props
+const { entry } = Astro.props
+
+const isComponent = entry.collection === 'components'
 ---
 
 <Box borderBottomWidth="1px" bg={{ base: 'gray.2', _dark: 'black.a2' }}>
   <Container maxW="66rem" py={{ base: '16', md: '24' }}>
     <Prose css={{ '&> :first-child': { mt: '0' } }}>
-      <Heading as="h1" fontWeight="bold">{title === "Introduction" ? "Welcome to Ark UI" : title}</Heading>
-      <Text className="lead" color="fg.emphasized">{description}</Text>
+      <Heading as="h1" fontWeight="bold"
+        >{entry.data.title === 'Introduction' ? 'Welcome to Ark UI' : entry.data.title}</Heading
+      >
+      <Text className="lead" color="fg.emphasized">{entry.data.description}</Text>
     </Prose>
+    {
+      isComponent && (
+        <HStack gap="3">
+          <a href={`https://zagjs.com/components/react/${entry.data.id}`} target="_blank">
+            <Badge borderRadius="l2">
+              <FileTextIcon />
+              Zag.js Reference
+            </Badge>
+          </a>
+          {entry.data.specification && (
+            <a href={entry.data.specification} target="_blank">
+              <Badge borderRadius="l2">
+                <EyeIcon />
+                W3C Specification
+              </Badge>
+            </a>
+          )}
+          <a
+            href={`https://github.com/chakra-ui/ark/issues/new?assignees=&labels=&projects=&template=bug_report.yml&title=[${entry.data.title}]%20Issue`}
+            target="_blank"
+          >
+            <Badge borderRadius="l2">
+              <PenLineIcon />
+              Feedback
+            </Badge>
+          </a>
+        </HStack>
+      )
+    }
   </Container>
 </Box>

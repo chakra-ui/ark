@@ -6,6 +6,7 @@ const components = defineCollection({
     id: z.string(),
     title: z.string(),
     description: z.string(),
+    specification: z.string().optional(),
     label: z.string().optional(),
     stories: reference('stories').optional(),
     types: reference('types').optional(),
