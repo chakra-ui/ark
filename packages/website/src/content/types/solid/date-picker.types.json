@@ -178,7 +178,10 @@
     "view": { "type": "DateView", "isRequired": true },
     "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Input": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "index": { "type": "number", "isRequired": false }
+  },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Table": {
     "as": { "type": "ValidComponent", "isRequired": false },

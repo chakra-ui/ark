@@ -178,7 +178,10 @@
     "view": { "type": "DateView", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "index": { "type": "number", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Table": {
     "asChild": { "type": "boolean", "isRequired": false },
