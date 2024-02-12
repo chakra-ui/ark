@@ -14,7 +14,7 @@
   "dependencies": {
     "@ark-ui/anatomy": "2.1.0",
     "@ark-ui/react": "workspace:*",
-    "@astrojs/check": "0.4.1",
+    "@astrojs/check": "0.5.2",
     "@astrojs/mdx": "2.1.1",
     "@astrojs/react": "3.0.9",
     "@astrojs/sitemap": "3.0.5",
