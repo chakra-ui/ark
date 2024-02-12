@@ -935,8 +935,8 @@ importers:
         specifier: 0.11.3
         version: 0.11.3(solid-js@1.8.12)
       '@solidjs/start':
-        specifier: 0.5.0
-        version: 0.5.0(solid-js@1.8.12)(vinxi@0.2.1)(vite@5.0.12)
+        specifier: 0.5.4
+        version: 0.5.4(solid-js@1.8.12)(vinxi@0.2.1)(vite@5.0.12)
       solid-js:
         specifier: 1.8.12
         version: 1.8.12
@@ -5581,8 +5581,8 @@ packages:
       solid-js: 1.8.12
     dev: false
 
-  /@solidjs/start@0.5.0(solid-js@1.8.12)(vinxi@0.2.1)(vite@5.0.12):
-    resolution: {integrity: sha512-JoKYAvwje/ctecxAH9LkDxWMsIIzd8PsOdrA3qLlqpa5lpeO/Hi65LUHDnSa2Xp2ZjPYNfAttQFNY1EojEaRWQ==}
+  /@solidjs/start@0.5.4(solid-js@1.8.12)(vinxi@0.2.1)(vite@5.0.12):
+    resolution: {integrity: sha512-et6fu8GPRlzPz1nE0jJrB4QWEqKNzCMh62+FbmnZjOHA0eUldy47Aniki5RO6288eX5Oj4S6BWnvYcu1/iWkMw==}
     dependencies:
       '@vinxi/plugin-directives': 0.2.0(vinxi@0.2.1)
       '@vinxi/server-components': 0.2.0(vinxi@0.2.1)
