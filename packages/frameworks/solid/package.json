@@ -108,7 +108,7 @@
     "react-dom": "18.2.0",
     "release-it": "17.0.3",
     "resize-observer-polyfill": "1.5.1",
-    "rollup": "4.9.6",
+    "rollup": "4.10.0",
     "rollup-preset-solid": "2.0.1",
     "solid-js": "1.8.14",
     "storybook": "7.6.14",
