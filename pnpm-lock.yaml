@@ -706,8 +706,8 @@ importers:
         specifier: 14.5.2
         version: 14.5.2(@testing-library/dom@9.3.4)
       '@testing-library/vue':
-        specifier: 8.0.1
-        version: 8.0.1(@vue/compiler-sfc@3.4.15)(vue@3.4.15)
+        specifier: 8.0.2
+        version: 8.0.2(@vue/compiler-sfc@3.4.15)(vue@3.4.15)
       '@types/jsdom':
         specifier: 21.1.6
         version: 21.1.6
@@ -6797,12 +6797,15 @@ packages:
       '@testing-library/dom': 9.3.4
     dev: true
 
-  /@testing-library/vue@8.0.1(@vue/compiler-sfc@3.4.15)(vue@3.4.15):
-    resolution: {integrity: sha512-l51ZEpjTQ6glq3wM+asQ1GbKJMGcxwgHEygETx0aCRN4TjFEGvMZy4YdWKs/y7bu4bmLrxcxhbEPP7iPSW/2OQ==}
+  /@testing-library/vue@8.0.2(@vue/compiler-sfc@3.4.15)(vue@3.4.15):
+    resolution: {integrity: sha512-A8wWX+qQn0o0izpQWnGCpwQt8wAdpsVP8vPP2h5Q/jcGhZ5yKXz9PPUqhQv+45LTFaWlyRf8bArTVaB/KFFd5A==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vue/compiler-sfc': '>= 3'
       vue: '>= 3'
+    peerDependenciesMeta:
+      '@vue/compiler-sfc':
+        optional: true
     dependencies:
       '@babel/runtime': 7.23.9
       '@testing-library/dom': 9.3.4
