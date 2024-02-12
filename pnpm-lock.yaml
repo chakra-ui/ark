@@ -869,8 +869,8 @@ importers:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
       lucide-react:
-        specifier: 0.323.0
-        version: 0.323.0(react@18.2.0)
+        specifier: 0.325.0
+        version: 0.325.0(react@18.2.0)
       pandacss-preset-typography:
         specifier: 0.1.5
         version: 0.1.5(@pandacss/dev@0.30.2)
@@ -15102,8 +15102,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lucide-react@0.323.0(react@18.2.0):
-    resolution: {integrity: sha512-rTXZFILl2Y4d1SG9p1Mdcf17AcPvPvpc/egFIzUrp7IUy60MUQo3Oi1mu8LGYXUVwuRZYsSMt3csHRW5mAovJg==}
+  /lucide-react@0.325.0(react@18.2.0):
+    resolution: {integrity: sha512-/H6IPtPMQUwXjHTFylCYBq/j8J3AJKG5Uil3mcm1E58wKkCfoKVzJH7toZU3U20wJrL7dP51dNX3yLgAPod+qQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
