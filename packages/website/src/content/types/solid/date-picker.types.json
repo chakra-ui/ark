@@ -210,5 +210,9 @@
   "ViewControl": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ViewTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ClearTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "PresetTrigger": {
+    "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false }
+  },
   "TableCellTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }
