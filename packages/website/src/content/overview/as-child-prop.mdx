@@ -9,8 +9,13 @@ description: Customize component rendering with the asChild prop
 Ark UI offers a flexible way to render components using the `asChild` prop. This
 prop allows you to replace the default component with a custom child element
 while maintaining the necessary behavior, such as event handling, and passing
-down props and refs. Every component that is exported in Ark UI has support for
-the `asChild` prop.
+down props and refs.
+
+Every component that is exported in Ark UI has support for the `asChild` prop.
+
+> **Note:** When using the `asChild` prop, be sure that the element you're
+> rendering matches the tag name of the original component. Changing the
+> underlying tags might affect the accessibility and functionality.
 
 ## Usage
 
