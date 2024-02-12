@@ -424,6 +424,9 @@ importers:
       '@zag-js/hover-card':
         specifier: 0.34.0
         version: 0.34.0
+      '@zag-js/i18n-utils':
+        specifier: 0.34.0
+        version: 0.34.0
       '@zag-js/menu':
         specifier: 0.34.0
         version: 0.34.0
