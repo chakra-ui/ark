@@ -148,8 +148,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(release-it@17.0.3)
       globby:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       release-it:
         specifier: 17.0.3
         version: 17.0.3(typescript@5.3.3)
@@ -344,8 +344,8 @@ importers:
         specifier: 6.2.0
         version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
       globby:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       jsdom:
         specifier: 24.0.0
         version: 24.0.0
@@ -540,8 +540,8 @@ importers:
         specifier: 6.2.0
         version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
       globby:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       jsdom:
         specifier: 24.0.0
         version: 24.0.0
@@ -745,8 +745,8 @@ importers:
         specifier: 9.21.1
         version: 9.21.1(eslint@8.56.0)
       globby:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       histoire:
         specifier: 0.17.9
         version: 0.17.9(@types/node@20.11.5)(vite@5.0.12)
@@ -787,8 +787,8 @@ importers:
         specifier: 11.2.0
         version: 11.2.0
       globby:
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: 14.0.1
+        version: 14.0.1
       pkg-dir:
         specifier: 8.0.0
         version: 8.0.0
@@ -5560,6 +5560,11 @@ packages:
 
   /@sindresorhus/merge-streams@1.0.0:
     resolution: {integrity: sha512-rUV5WyJrJLoloD4NDN1V1+LDMDWOa4OTsT4yYJwQNpTU6FWxkxHpL7eu4w+DmiH8x/EAM1otkPE1+LaspIbplw==}
+    engines: {node: '>=18'}
+    dev: true
+
+  /@sindresorhus/merge-streams@2.1.0:
+    resolution: {integrity: sha512-g3/sYJWXTAf3Ce861z4/mW9jDxN7hoNHZMEyhd3Zh7GKQPiovWNttzhRW2BeGPwPxPpLDKumL6Sg056VAMjdkg==}
     engines: {node: '>=18'}
 
   /@solidjs/meta@0.29.3(solid-js@1.8.12):
@@ -13127,6 +13132,18 @@ packages:
       path-type: 5.0.0
       slash: 5.1.0
       unicorn-magic: 0.1.0
+    dev: true
+
+  /globby@14.0.1:
+    resolution: {integrity: sha512-jOMLD2Z7MAhyG8aJpNOpmziMOP4rPLcc95oQPKXBazW82z+CEgPFBQvEpRUa1KeIMUJo4Wsm+q6uzO/Q/4BksQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@sindresorhus/merge-streams': 2.1.0
+      fast-glob: 3.3.2
+      ignore: 5.3.1
+      path-type: 5.0.0
+      slash: 5.1.0
+      unicorn-magic: 0.1.0
 
   /globrex@0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
@@ -16177,7 +16194,7 @@ packages:
       estree-walker: 3.0.3
       etag: 1.8.1
       fs-extra: 11.2.0
-      globby: 14.0.0
+      globby: 14.0.1
       gzip-size: 7.0.0
       h3: 1.10.1
       hookable: 5.5.3
