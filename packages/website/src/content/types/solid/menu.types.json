@@ -1,4 +1,27 @@
 {
+  "Item": {
+    "id": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The `id` of the menu item option."
+    },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    }
+  },
   "Root": {
     "anchorPoint": {
       "type": "Point",
@@ -17,6 +40,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -40,21 +64,31 @@
       "isRequired": false,
       "description": "The ids of the elements in the menu. Useful for composition."
     },
-    "isOpen": { "type": "Accessor<boolean>", "isRequired": false },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -64,7 +98,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onSelect": {
       "type": "(details: SelectionDetails) => void",
@@ -76,10 +110,22 @@
       "isRequired": false,
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
+    "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The options used to dynamically position the menu"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": {
       "type": "Record<string, string | string[]>",
@@ -87,56 +133,19 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "Item": {
-    "id": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The `id` of the menu item option."
-    },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
-    }
-  },
-  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Arrow": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ArrowTip": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemGroup": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
     },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Separator": { "as": { "type": "ValidComponent", "isRequired": false } },
   "OptionItem": {
     "name": {
       "type": "string",
@@ -149,7 +158,7 @@
       "description": "Whether the option is a radio or a checkbox"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -176,11 +185,11 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "TriggerItem": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ContextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TriggerItem": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ContextTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "for": { "type": "string", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false }
   }
 }

@@ -1,46 +1,72 @@
+import { editableAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { fireEvent, render } from '@testing-library/vue'
-import CustomControlStory from './editable.test.vue'
+import { render, screen } from '@testing-library/vue'
+import { Editable } from '../'
+import { getExports, getParts } from '../../setup-test'
+import ControlledComponentUnderTest from './controlled-editable.test.vue'
+import ComponentUnderTest from './editable.test.vue'
 
 describe('Editable', () => {
-  it('should render', () => {
-    render(CustomControlStory)
+  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
+    render(ComponentUnderTest)
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
+
+  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
+    expect(Editable[part]).toBeDefined()
+  })
+
+  it('should render controlled component', async () => {
+    render(ControlledComponentUnderTest)
+  })
+
+  it('should be possible to focus the placeholder and enter a value', async () => {
+    render(ControlledComponentUnderTest)
+    screen.getByText('Placeholder').focus()
+    await user.type(screen.getByLabelText('editable input'), 'React')
+
+    expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
   it('should be possible to dbl click the placeholder to enter a value', async () => {
-    const { getByTestId, findByText, container } = render(CustomControlStory)
+    render(ControlledComponentUnderTest, { props: { activationMode: 'dblclick' } })
+    await user.dblClick(screen.getByText('Placeholder'))
 
-    const input = getByTestId('edit-input')
-    const preview = container.querySelector('[data-part="preview"]')
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'React')
 
-    if (preview) {
-      await user.dblClick(preview)
-    }
-    expect(input).toBeVisible()
-
-    await user.type(input, 'React')
-
-    expect(input).toHaveValue('React')
-
-    await fireEvent.click(window)
-
-    const previewWithText = await findByText('React')
-
-    expect(previewWithText).toBeInTheDocument()
+    expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it('should be possible to edit a value', async () => {
-    const { getByRole, findByText, getByText } = render(CustomControlStory, {
-      props: { modelValue: 'React' },
+  it('should be possible to edit an existing value', async () => {
+    render(ControlledComponentUnderTest, {
+      props: { activationMode: 'dblclick', modelValue: 'React' },
     })
 
-    await user.dblClick(getByText('React'))
+    await user.dblClick(screen.getByText('React'))
 
-    const input = getByRole('textbox')
-    await user.clear(input)
-    await user.type(input, 'Solid')
-    await user.click(getByText('Save'))
+    await user.clear(screen.getByRole('textbox'))
+    await user.type(screen.getByRole('textbox'), 'Solid')
+    await user.click(screen.getByText('Save'))
 
-    expect(await findByText('Solid')).toBeInTheDocument()
+    await screen.findByText('Solid')
+  })
+
+  it('should be possible to hide input if click EditableCancelTrigger ', async () => {
+    render(ControlledComponentUnderTest, { props: { activationMode: 'dblclick' } })
+
+    await user.dblClick(screen.getByText('Placeholder'))
+
+    const input = screen.getByRole('textbox')
+    expect(input).not.toHaveAttribute('hidden', '')
+
+    const editableCancelTriggerButton = screen.getByRole('button', {
+      name: 'cancel',
+    })
+
+    await user.click(editableCancelTriggerButton)
+
+    expect(input).toHaveAttribute('hidden', '')
   })
 })

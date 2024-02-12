@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -12,6 +13,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -26,7 +28,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -97,7 +99,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'alphanumeric' | 'numeric' | 'alphabetic'",
+      "type": "'numeric' | 'alphabetic' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },

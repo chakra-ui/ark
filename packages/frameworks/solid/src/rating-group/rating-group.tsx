@@ -1,38 +1,6 @@
-import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { RatingGroupProvider } from './rating-group-context'
-import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
+import { RatingGroupControl as Control } from './rating-group-control'
+import { RatingGroupItem as Item } from './rating-group-item'
+import { RatingGroupLabel as Label } from './rating-group-label'
+import { RatingGroupRoot as Root } from './rating-group-root'
 
-export type RatingGroupProps = Assign<HTMLArkProps<'div'>, UseRatingGroupProps>
-
-export const RatingGroup = (props: RatingGroupProps) => {
-  const [ratingParams, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
-    'allowHalf',
-    'autoFocus',
-    'dir',
-    'disabled',
-    'form',
-    'getRootNode',
-    'id',
-    'ids',
-    'max',
-    'name',
-    'onHoverChange',
-    'onValueChange',
-    'readOnly',
-    'translations',
-    'value',
-  ])
-
-  const api = useRatingGroup(ratingParams)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
-
-  return (
-    <RatingGroupProvider value={api}>
-      <ark.div {...mergedProps} />
-      <input {...api().hiddenInputProps} />
-    </RatingGroupProvider>
-  )
-}
+export { Control, Item, Label, Root }

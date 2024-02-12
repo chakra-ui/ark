@@ -1,48 +1,44 @@
-import { Slider as SliderRoot, type SliderProps } from './slider'
+import type {
+  FocusChangeDetails as SliderFocusChangeDetails,
+  ValueChangeDetails as SliderValueChangeDetails,
+} from '@zag-js/slider'
 import { useSliderContext, type SliderContext } from './slider-context'
 import { SliderControl, type SliderControlProps } from './slider-control'
 import { SliderLabel, type SliderLabelProps } from './slider-label'
 import { SliderMarker, type SliderMarkerProps } from './slider-marker'
 import { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
-import { SliderOutput, type SliderOutputProps } from './slider-output'
 import { SliderRange, type SliderRangeProps } from './slider-range'
+import { SliderRoot, type SliderRootProps } from './slider-root'
 import { SliderThumb, type SliderThumbProps } from './slider-thumb'
 import { SliderTrack, type SliderTrackProps } from './slider-track'
+import { SliderValueText, type SliderValueTextProps } from './slider-value-text'
 
-const Slider = Object.assign(SliderRoot, {
-  Root: SliderRoot,
-  Control: SliderControl,
-  Label: SliderLabel,
-  Marker: SliderMarker,
-  MarkerGroup: SliderMarkerGroup,
-  Output: SliderOutput,
-  Range: SliderRange,
-  Thumb: SliderThumb,
-  Track: SliderTrack,
-})
+export * as Slider from './slider'
 
 export {
-  Slider,
   SliderControl,
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
-  SliderOutput,
   SliderRange,
+  SliderRoot,
   SliderThumb,
   SliderTrack,
+  SliderValueText,
   useSliderContext,
 }
 
 export type {
   SliderContext,
   SliderControlProps,
+  SliderFocusChangeDetails,
   SliderLabelProps,
   SliderMarkerGroupProps,
   SliderMarkerProps,
-  SliderOutputProps,
-  SliderProps,
   SliderRangeProps,
+  SliderRootProps,
   SliderThumbProps,
   SliderTrackProps,
+  SliderValueChangeDetails,
+  SliderValueTextProps,
 }

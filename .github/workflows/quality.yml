@@ -24,6 +24,8 @@ jobs:
 
   docs:
     name: Docs
+    # This workflow doesn't work on forks
+    if: github.repository == 'chakra-ui/ark'
     runs-on: ubuntu-latest
 
     permissions:
@@ -39,7 +41,7 @@ jobs:
       - name: Generate docs
         run: pnpm document
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'docs: update types and storydocs'
 
@@ -57,19 +59,19 @@ jobs:
         run: pnpm test
 
       - name: Upload /react coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: react
 
       - name: Upload /solid coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: solid
 
       - name: Upload /vue coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: vue

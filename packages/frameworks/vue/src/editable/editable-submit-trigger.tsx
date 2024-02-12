@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useEditableContext } from './editable-context'
 
-export type EditableSubmitTriggerProps = HTMLArkProps<'button'>
+export interface EditableSubmitTriggerProps extends HTMLArkProps<'button'> {}
 
-export const EditableSubmitTrigger = defineComponent({
-  name: 'EditableSubmitTrigger',
-  setup(_, { slots, attrs }) {
+export const EditableSubmitTrigger = defineComponent<EditableSubmitTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useEditableContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const EditableSubmitTrigger = defineComponent({
       </ark.button>
     )
   },
-})
+  {
+    name: 'EditableSubmitTrigger',
+  },
+)

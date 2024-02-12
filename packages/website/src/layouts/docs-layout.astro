@@ -1,32 +1,45 @@
 ---
-import { Box, Container, Flex } from 'styled-system/jsx'
-import Navbar from '~/components/navigation/navbar.astro'
-import Sidebar from '~/components/navigation/sidebar.astro'
-import BaseLayout from './base-layout.astro'
+import type { MarkdownHeading } from 'astro'
+import { Box, Container, Flex, Stack } from 'styled-system/jsx'
+import { Footer, Navbar, Sidebar } from '~/components/docs/navigation'
+import { TableOfContent } from '~/components/docs/navigation/table-of-content'
+import { layout } from './docs-layout.recipe'
+import Layout from './layout.astro'
+
+interface Props {
+  title: string
+  description?: string
+  headings?: MarkdownHeading[]
+}
+
+const { title, description, headings } = Astro.props
+const styles = layout()
 ---
 
-<BaseLayout>
-  <Navbar />
-  <Container flex="1">
-    <Flex
-      id="sidebar"
-      display={{ base: 'none', lg: 'flex' }}
-      position="fixed"
-      width="60"
-      top="18"
-      py="10"
-      bottom="0"
-      overflowY="auto"
-    >
-      <Sidebar />
-    </Flex>
-    <Flex flex="1" pl={{ base: 'none', lg: '72' }}>
-      <Box width={{ base: 'full', xl: '2xl' }} py="10">
-        <slot />
+<Layout title={title} description={description}>
+  <header class={styles.header}>
+    <Navbar />
+  </header>
+  <nav class={styles.nav} id="sidebar">
+    <Sidebar />
+  </nav>
+  <main class={styles.main}>
+    <slot name="hero" />
+    <Flex justify="space-between" py="12" position="relative">
+      <Container maxW="51rem" minWidth="0">
+        <Stack gap="12">
+          <slot />
+          <Footer />
+        </Stack>
+      </Container>
+      <Box display={{ base: 'none', lg: 'block' }} flex="0 0 240px">
+        <Box position="sticky" top="28" right="0" ps="8">
+          <TableOfContent headings={headings} client:load />
+        </Box>
       </Box>
     </Flex>
-  </Container>
-</BaseLayout>
+  </main>
+</Layout>
 
 <script>
   const restoreScrollPosition = () => {

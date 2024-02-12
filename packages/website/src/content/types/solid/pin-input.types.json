@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -13,6 +13,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -97,7 +98,7 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'numeric' | 'alphanumeric' | 'alphabetic'",
+      "type": "'numeric' | 'alphabetic' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
     },
@@ -109,8 +110,8 @@
   },
   "Input": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

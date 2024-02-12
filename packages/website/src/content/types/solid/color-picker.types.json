@@ -1,6 +1,16 @@
 {
+  "Area": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "xChannel": { "type": "ColorChannel", "isRequired": false },
+    "yChannel": { "type": "ColorChannel", "isRequired": false }
+  },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the color picker when a swatch is selected"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "isRequired": false,
@@ -10,6 +20,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is disabled"
+    },
+    "format": {
+      "type": "ColorFormat",
+      "isRequired": false,
+      "description": "The color format to use"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -22,11 +37,52 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
+      "type": "Partial<{\n  root: string\n  control: string\n  trigger: string\n  label: string\n  input: string\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
+    "initialFocusEl": {
+      "type": "HTMLElement | (() => MaybeElement)",
+      "isRequired": false,
+      "description": "The initial focus element when the color picker is opened."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "onFormatChange": {
+      "type": "(details: FormatChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the color format changes"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the user opens or closes the color picker."
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
@@ -37,39 +93,87 @@
       "isRequired": false,
       "description": "Handler that is called when the user stops dragging."
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the color picker is open"
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options for the color picker"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is read-only"
     },
-    "value": { "type": "string", "isRequired": false, "description": "The current color value" }
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the color picker."
+    }
   },
-  "Area": {
-    "xChannel": { "type": "ColorChannel", "isRequired": true },
-    "yChannel": { "type": "ColorChannel", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
+  "View": { "format": { "type": "ColorFormat", "isRequired": true } },
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Swatch": {
-    "value": { "type": "string | Color", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "readOnly": { "type": "boolean", "isRequired": false }
+    "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "respectAlpha": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to include the alpha channel in the color"
+    }
   },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "AreaGradient": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "AreaThumb": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ValueText": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "placeholder": { "type": "string", "isRequired": false }
+  },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "SwatchGroup": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ChannelInput": {
-    "channel": { "type": "ColorChannel", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "SwatchBackground": { "asChild": { "type": "boolean", "isRequired": false } },
-  "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ChannelSliderTrack": {
+  "FormatSelect": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ChannelSlider": {
     "channel": { "type": "ColorChannel", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "ChannelSliderBackground": { "asChild": { "type": "boolean", "isRequired": false } }
+  "FormatTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "SwatchTrigger": {
+    "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the swatch trigger is disabled"
+    }
+  },
+  "AreaBackground": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "SwatchIndicator": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "TransparencyGrid": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "size": { "type": "string", "isRequired": false }
+  },
+  "EyeDropperTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ChannelSliderThumb": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ChannelSliderTrack": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

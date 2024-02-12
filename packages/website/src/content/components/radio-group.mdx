@@ -1,79 +1,62 @@
 ---
 id: radio-group
 title: Radio Group
-description:
-  A radio group allows users to make a single choice from a selected number of
-  options.
+description: Allows single selection from multiple options.
+resources:
+  zag: radio-group
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/radio/
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Import
+<ComponentPreview />
 
-```ts
-import {
-  RadioGroup,
-  Radio,
-  RadioControl,
-  RadioGroupLabel,
-  RadioLabel,
-} from '@ark-ui/react'
-```
+## Anatomy
 
-## Usage
+To set up the radio group correctly, you'll need to understand its anatomy and
+how we name its parts.
 
-The RadioGroup component consists of the `RadioControl`, `Radio`,
-`RadioGroupLabel` and `RadioLabel` components. Combine them as desired to fit
-your design system.
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-```tsx
-<RadioGroup>
-  <RadioGroupLabel>Fruits</RadioGroupLabel>
-  {[
-    { id: 'apple', label: 'Apples' },
-    { id: 'orange', label: 'Oranges' },
-    { id: 'mango', label: 'Mangoes' },
-    { id: 'grape', label: 'Grapes' },
-  ].map((option, id) => (
-    <Radio key={id} value={option.id}>
-      <RadioLabel>{option.label}</RadioLabel>
-      <RadioControl />
-    </Radio>
-  ))}
-</RadioGroup>
-```
+<Anatomy id="radio-group" />
+
+### Design impact on the asChild property
+
+The `RadioGroup.Item` element of the radio group is a `label` element. This is
+because the radio group is a form control and should be associated with a label
+to provide context and meaning to the user. Otherwise, the HTML and
+accessibility structure will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element
+> is the direct child of the `RadioGroup.Item` component.
+
+## Examples
+
+Learn how to use the `RadioGroup` component in your project. Let's take a look
+at the most basic example:
+
+<Story id="Basic" />
 
 ### Disabling the radio group
 
 To make a radio group disabled, set the `disabled` prop to `true`.
 
-```tsx
-<RadioGroup disabled>{/*...*/}</RadioGroup>
-```
-
-### Making the radio group readonly
-
-To make a radio group readonly, set the `readOnly` prop to `true`.
-
-```tsx
-<RadioGroup readOnly>{/*...*/}</RadioGroup>
-```
+<Story id="Disabled" />
 
 ### Setting the initial value
 
 To set the radio group's initial value, set the `defaultValue` prop to the value
 of the radio item to be selected by default.
 
-```tsx
-<RadioGroup defaultValue="apple">{/*...*/}</RadioGroup>
-```
+<Story id="InitialValue" />
 
 ### Listening for changes
 
-When the radio group value changes, the `onChange` callback is invoked.
+When the radio group value changes, the `onValueChange` callback is invoked.
 
-```tsx
-<RadioGroup onChange={(details) => console.log(details.value)}>
-  {/*...*/}
-</RadioGroup>
-```
+<Story id="OnEvent" />
+
+## API Reference
+
+<ComponentTypes />

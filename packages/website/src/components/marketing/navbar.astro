@@ -1,10 +1,10 @@
 ---
-import { Github } from 'lucide-react'
 import { css, cx } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
+import { Github } from 'lucide-react'
 import ColorModeButton from '../color-mode-button.astro'
-import Logo from '../logo.astro'
+import { Logo } from '../logo'
 ---
 
 <nav role="navigation" class={css({ position: 'sticky', top: '0', zIndex: 'docked' })}>
@@ -55,8 +55,9 @@ import Logo from '../logo.astro'
       </HStack>
       <HStack gap="1">
         <a
+          aria-label="Github repository"
           href="https://github.com/chakra-ui/ark"
-          class={cx(css({ px: 0 }), button({ variant: 'tertiary', size: 'sm' }))}
+          class={cx(css({ px: 0 }), button({ variant: 'ghost', size: 'sm' }))}
         >
           <Github />
         </a>

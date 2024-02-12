@@ -1,68 +1,10 @@
-/* eslint-disable vue/no-reserved-component-names */
+import { DialogBackdrop as Backdrop } from './dialog-backdrop'
+import { DialogCloseTrigger as CloseTrigger } from './dialog-close-trigger'
+import { DialogContent as Content } from './dialog-content'
+import { DialogDescription as Description } from './dialog-description'
+import { DialogPositioner as Positioner } from './dialog-positioner'
+import { DialogRoot as Root } from './dialog-root'
+import { DialogTitle as Title } from './dialog-title'
+import { DialogTrigger as Trigger } from './dialog-trigger'
 
-import { type Context as DialogContext } from '@zag-js/dialog'
-import { defineComponent, type PropType } from 'vue'
-import type { Optional } from '../types'
-import { createVueProps, type ComponentWithProps } from '../utils'
-import { DialogProvider } from './dialog-context'
-import { useDialog } from './use-dialog'
-
-export type UseDialogProps = DialogContext
-
-const VueDialogProps = createVueProps<UseDialogProps>({
-  id: {
-    type: String as PropType<UseDialogProps['id']>,
-  },
-  ids: {
-    type: Object as PropType<UseDialogProps['ids']>,
-  },
-  trapFocus: {
-    type: Boolean as PropType<UseDialogProps['trapFocus']>,
-  },
-  preventScroll: {
-    type: Boolean as PropType<UseDialogProps['preventScroll']>,
-  },
-  modal: {
-    type: Boolean as PropType<UseDialogProps['modal']>,
-  },
-  initialFocusEl: {
-    type: Object as PropType<UseDialogProps['initialFocusEl']>,
-  },
-  finalFocusEl: {
-    type: Object as PropType<UseDialogProps['finalFocusEl']>,
-  },
-  restoreFocus: {
-    type: Boolean as PropType<UseDialogProps['restoreFocus']>,
-  },
-  closeOnOutsideClick: {
-    type: Boolean as PropType<UseDialogProps['closeOnOutsideClick']>,
-    default: true,
-  },
-  closeOnEsc: {
-    type: Boolean as PropType<UseDialogProps['closeOnEsc']>,
-  },
-  'aria-label': {
-    type: String as PropType<UseDialogProps['aria-label']>,
-  },
-  role: {
-    type: String as PropType<UseDialogProps['role']>,
-  },
-  open: {
-    type: Boolean as PropType<UseDialogProps['open']>,
-  },
-})
-
-export const Dialog: ComponentWithProps<Partial<UseDialogProps>> = defineComponent({
-  name: 'Dialog',
-  props: VueDialogProps,
-  emits: ['close', 'outside-click', 'esc', 'update:open'],
-  setup(props, { slots, emit }) {
-    const api = useDialog(emit, props as UseDialogProps)
-
-    DialogProvider(api)
-
-    return () => slots?.default?.(api.value)
-  },
-})
-
-export type DialogProps = Optional<UseDialogProps, 'id'>
+export { Backdrop, CloseTrigger, Content, Description, Positioner, Root, Title, Trigger }

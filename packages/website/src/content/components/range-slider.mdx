@@ -1,49 +1,52 @@
 ---
 id: range-slider
 title: Range Slider
-description:
-  A range slider is a multi-thumb slider used to select a range between two
-  numbers.
+description: A control element that allows for a range of selections.
+resources:
+  zag: range-slider
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Import
+<ComponentPreview />
 
-```ts
-import {
-  RangeSlider,
-  RangeSliderControl,
-  RangeSliderLabel,
-  RangeSliderMarker,
-  RangeSliderMarkerGroup,
-  RangeSliderOutput,
-  RangeSliderRange,
-  RangeSliderThumb,
-  RangeSliderTrack,
-} from '@ark-ui/react'
-```
+## Anatomy
 
-## Usage
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
 
-The Range Slider component consists of the `RangeSliderControl`,
-`RangeSliderLabel`, `RangeSliderMarker`, `RangeSliderMarkerGroup`,
-`RangeSliderOutput`, `RangeSliderRange`, `RangeSliderThumb` and
-`RangeSliderTrack` components. Combine them as desired to fit your design
-system.
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-```tsx
-<RangeSlider>
-  <RangeSliderLabel>Label</RangeSliderLabel>
-  <RangeSliderControl>
-    <RangeSliderTrack>
-      <RangeSliderRange />
-    </RangeSliderTrack>
-    <RangeSliderThumb index={0} />
-    <RangeSliderThumb index={1} />
-  </RangeSliderControl>
-</RangeSlider>
-```
+<Anatomy id="slider" />
+
+## Examples
+
+You can use the `Slider` component as a range slider by setting the `value` with
+an array of two numbers.
+
+The first number is the start of the range, and the second number is the end of
+the range.
+
+<Story id="Basic" />
+
+### Adding slider marks
+
+You can add marks to the slider track by using the `Slider.MarkerGroup` and
+`Slider.Marker` components.
+
+Position the `Slider.Marker` components relative to the track by providing the
+`value` prop.
+
+<Story id="WithMarks" />
+
+### Setting the initial value
+
+To set the slider's initial value, set the `defaultValue` prop to the array of
+numbers.
+
+<Story id="InitialValue" />
 
 ### Specifying the minimum and maximum
 
@@ -53,11 +56,7 @@ want, you can easily specify different bounds by changing the values of the
 
 For example, to ask the user for a value between `-10` and `10`, you can use:
 
-```tsx
-<RangeSlider min={-10} max={10}>
-  {/*...*/}
-</RangeSlider>
-```
+<Story id="MinMax" />
 
 ### Setting the value's granularity
 
@@ -67,35 +66,14 @@ integer. You can change the step attribute to control the granularity.
 For example, If you need a value between `5` and `10`, accurate to two decimal
 places, you should set the value of step to `0.01`:
 
-```tsx
-<RangeSlider step={0.01} min={5} max={10}>
-  {/*...*/}
-</RangeSlider>
-```
-
-### Preventing thumb overlap
-
-By default, the range slider thumbs are allowed to overlap when their values are
-equal. To prevent this, set the prop `minStepsBetweenThumbs` to avoid thumbs
-with equal values.
-
-```tsx
-<RangeSlider minStepsBetweenThumbs={1}>{/*...*/}</RangeSlider>
-```
+<Story id="Step" />
 
 ### Listening for changes
 
-When the slider value changes, the `onChange` and `onChangeEnd` callbacks are
-invoked. You can use this to setup custom behaviors in your app.
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to set up custom behaviors in your app.
 
-```tsx
-<RangeSlider
-  onChange={(value) => console.log(value)}
-  onChangeEnd={(value) => console.log(value)}
->
-  {/*...*/}
-</RangeSlider>
-```
+<Story id="OnEvent" />
 
 ### Changing the orientation
 
@@ -108,6 +86,16 @@ increment/decrement its value.
 > Don't forget to change the styles of the vertical slider by specifying its
 > height
 
-```tsx
-<RangeSlider orientation="vertical">{/*...*/}</RangeSlider>
-```
+<Story id="Vertical" />
+
+### Preventing thumb overlap
+
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
+
+<Story id="ThumbOverlap" />
+
+## API Reference
+
+<ComponentTypes id="slider" />

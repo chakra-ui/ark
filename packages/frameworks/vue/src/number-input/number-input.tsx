@@ -1,24 +1,9 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { NumberInputProvider } from './number-input-context'
-import { emits, props } from './number-input.props'
-import { useNumberInput, type UseNumberInputProps } from './use-number-input'
+import { NumberInputControl as Control } from './number-input-control'
+import { NumberInputDecrementTrigger as DecrementTrigger } from './number-input-decrement-trigger'
+import { NumberInputIncrementTrigger as IncrementTrigger } from './number-input-increment-trigger'
+import { NumberInputInput as Input } from './number-input-input'
+import { NumberInputLabel as Label } from './number-input-label'
+import { NumberInputRoot as Root } from './number-input-root'
+import { NumberInputScrubber as Scrubber } from './number-input-scrubber'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
-
-export const NumberInput = defineComponent({
-  name: 'NumberInput',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useNumberInput(props, emit)
-    NumberInputProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
-      </ark.div>
-    )
-  },
-})
+export { Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }

@@ -1,0 +1,17 @@
+{
+  "name": "Ark UI Documentation",
+  "description": "A headless component library for building reusable, scalable design systems that works for a wide range of JS frameworks.",
+  "short_name": "Ark UI",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

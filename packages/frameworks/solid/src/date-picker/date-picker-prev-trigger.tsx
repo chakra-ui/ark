@@ -1,15 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerViewContext } from './date-picker-view-context'
 
-export type DatePickerPrevTriggerProps = HTMLArkProps<'button'>
+export interface DatePickerPrevTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DatePickerPrevTrigger = (props: DatePickerPrevTriggerProps) => {
-  const datePicker = useDatePickerContext()
-  const mergedProps = mergeProps(
-    datePicker().getPrevTriggerProps({ view: datePicker().view }),
-    props,
-  )
+export const DatePickerPrevTrigger: ArkComponent<'button'> = (
+  props: DatePickerPrevTriggerProps,
+) => {
+  const api = useDatePickerContext()
+  const viewProps = useDatePickerViewContext()
+  const mergedProps = mergeProps(() => api().getPrevTriggerProps(viewProps), props)
 
   return <ark.button {...mergedProps} />
 }

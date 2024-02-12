@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 
-export type TagsInputControlProps = HTMLArkProps<'div'>
+export interface TagsInputControlProps extends HTMLArkProps<'div'> {}
 
-export const TagsInputControl = defineComponent({
-  name: 'TagsInputControl',
-  setup(_, { slots, attrs }) {
+export const TagsInputControl = defineComponent<TagsInputControlProps>(
+  (_, { slots, attrs }) => {
     const api = useTagsInputContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const TagsInputControl = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'TagsInputControl',
+  },
+)

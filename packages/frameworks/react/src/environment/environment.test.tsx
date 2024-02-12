@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { useEffect, useState } from 'react'
-import { Environment, useEnvironmentContext } from '.'
-import { type EnvironmentContext } from './environment-context'
+import { Environment, useEnvironmentContext, type EnvironmentContext } from './'
 
 const PrintEnvironment = () => {
   const getRootNode = useEnvironmentContext()

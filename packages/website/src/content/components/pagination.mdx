@@ -1,43 +1,41 @@
 ---
 id: pagination
 title: Pagination
-description:
-  The Pagination component allows you to navigate through large sets of data by
-  dividing it into smaller chunks, making it easier for users to browse through
-  your application.
+description: A navigation component that allows users to browse through pages.
+resources:
+  zag: pagination
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Basic Usage
+<ComponentPreview />
 
-First, import the required components from the package:
+## Anatomy
 
-```ts
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationList,
-  PaginationListItem,
-  PaginationNextPageTrigger,
-  PaginationPageTrigger,
-  PaginationPrevPageTrigger,
-} from '@ark-ui/react'
-```
+To set up the pagination correctly, you'll need to understand its anatomy and
+how we name its parts.
 
-Here's an example of how to use the Pagination component:
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="pagination" />
+
+## Examples
+
+Learn how to use the `Pagination` component in your project. Let's take a look
+at the most basic example:
 
 <Story id="Basic" />
 
-## Controlled Pagination
+### Controlled Pagination
 
 To create a controlled Pagination component, manage the state of the current
-page using the `page` prop and update it when the `onChange` event handler is
-called:
+page using the `page` prop and update it when the `onPageChange` event handler
+is called:
 
 <Story id="Controlled" />
 
-## Customizing Pagination
+### Customizing Pagination
 
 You can customize the Pagination component by setting various props such as
 `dir`, `pageSize`, `siblingCount`, and `translations`. Here's an example of a
@@ -45,8 +43,6 @@ customized Pagination:
 
 <Story id="Customized" />
 
-## Conclusion
+## API Reference
 
-The Pagination component offers an intuitive and flexible solution for managing
-paginated content in your applications. With its extensive set of features and
-customization options, it can accommodate a wide range of use cases and designs.
+<ComponentTypes />

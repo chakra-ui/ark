@@ -1,54 +1,9 @@
-import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, type UseNumberInputProps } from './use-number-input'
+import { NumberInputControl as Control } from './number-input-control'
+import { NumberInputDecrementTrigger as DecrementTrigger } from './number-input-decrement-trigger'
+import { NumberInputIncrementTrigger as IncrementTrigger } from './number-input-increment-trigger'
+import { NumberInputInput as Input } from './number-input-input'
+import { NumberInputLabel as Label } from './number-input-label'
+import { NumberInputRoot as Root } from './number-input-root'
+import { NumberInputScrubber as Scrubber } from './number-input-scrubber'
 
-export interface NumberInputProps extends Assign<HTMLArkProps<'div'>, UseNumberInputProps> {}
-
-export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
-  const [useNumberInputProps, divProps] = createSplitProps<UseNumberInputProps>()(props, [
-    'allowMouseWheel',
-    'allowOverflow',
-    'clampValueOnBlur',
-    'defaultValue',
-    'dir',
-    'disabled',
-    'focusInputOnChange',
-    'form',
-    'format',
-    'getRootNode',
-    'id',
-    'ids',
-    'inputMode',
-    'invalid',
-    'max',
-    'maxFractionDigits',
-    'min',
-    'minFractionDigits',
-    'name',
-    'onFocusChange',
-    'onValueChange',
-    'onValueInvalid',
-    'parse',
-    'pattern',
-    'readOnly',
-    'spinOnPress',
-    'step',
-    'translations',
-    'validateCharacter',
-    'value',
-  ])
-  const api = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
-
-  return (
-    <NumberInputProvider value={api}>
-      <ark.div {...mergedProps} ref={ref} />
-    </NumberInputProvider>
-  )
-})
-
-NumberInput.displayName = 'NumberInput'
+export { Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }

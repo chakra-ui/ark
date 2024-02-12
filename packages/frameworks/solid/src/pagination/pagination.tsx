@@ -1,45 +1,7 @@
-import { mergeProps } from '@zag-js/solid'
-import { splitProps, type JSX } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { PaginationProvider } from './pagination-context'
-import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
+import { PaginationEllipsis as Ellipsis } from './pagination-ellipsis'
+import { PaginationItem as Item } from './pagination-item'
+import { PaginationNextTrigger as NextTrigger } from './pagination-next-trigger'
+import { PaginationPrevTrigger as PrevTrigger } from './pagination-prev-trigger'
+import { PaginationRoot as Root } from './pagination-root'
 
-export type PaginationProps = Assign<
-  HTMLArkProps<'nav'>,
-  UsePaginationProps & {
-    children: JSX.Element | ((pages: UsePaginationReturn) => JSX.Element)
-  }
->
-
-export const Pagination = (props: PaginationProps) => {
-  const [paginationParams, restProps] = createSplitProps<UsePaginationProps>()(props, [
-    'count',
-    'dir',
-    'getRootNode',
-    'id',
-    'ids',
-    'onPageChange',
-    'page',
-    'pageSize',
-    'siblingCount',
-    'translations',
-    'type',
-  ])
-
-  const [childrenProps, localProps] = splitProps(restProps, ['children'])
-
-  const api = usePagination(paginationParams)
-
-  const getChildren = () => runIfFn(childrenProps.children, api)
-
-  const rootProps = mergeProps(() => api().rootProps, localProps)
-
-  return (
-    <PaginationProvider value={api}>
-      <ark.nav {...rootProps}>{getChildren()}</ark.nav>
-    </PaginationProvider>
-  )
-}
+export { Ellipsis, Item, NextTrigger, PrevTrigger, Root }

@@ -1,7 +1,7 @@
-import { ark } from '@ark-ui/react/src'
-import type { ComponentPropsWithoutRef } from 'react'
+import { ark } from '@ark-ui/react/src/factory'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { code, type CodeVariantProps } from 'styled-system/recipes'
+import { code } from 'styled-system/recipes'
 
-export type CodeProps = CodeVariantProps & ComponentPropsWithoutRef<typeof ark.code>
-export const Code = styled(ark.div, code)
+export const Code = styled(ark.code, code)
+export interface CodeProps extends ComponentProps<typeof Code> {}

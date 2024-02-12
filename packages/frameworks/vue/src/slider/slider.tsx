@@ -1,27 +1,11 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { SliderProvider } from './slider-context'
-import { emits, props } from './slider.props'
-import { useSlider, type UseSliderProps } from './use-slider'
+import { SliderControl as Control } from './slider-control'
+import { SliderLabel as Label } from './slider-label'
+import { SliderMarker as Marker } from './slider-marker'
+import { SliderMarkerGroup as MarkerGroup } from './slider-marker-group'
+import { SliderRange as Range } from './slider-range'
+import { SliderRoot as Root } from './slider-root'
+import { SliderThumb as Thumb } from './slider-thumb'
+import { SliderTrack as Track } from './slider-track'
+import { SliderValueText as ValueText } from './slider-value-text'
 
-export type SliderProps = Assign<HTMLArkProps<'div'>, UseSliderProps>
-
-export const Slider = defineComponent({
-  name: 'Slider',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useSlider(props, emit)
-    SliderProvider(api)
-
-    return () => (
-      <>
-        <ark.div {...api.value.rootProps} {...attrs}>
-          {slots?.default?.(api.value)}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
-    )
-  },
-})
+export { Control, Label, Marker, MarkerGroup, Range, Root, Thumb, Track, ValueText }

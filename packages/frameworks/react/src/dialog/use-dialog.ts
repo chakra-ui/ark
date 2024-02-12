@@ -26,8 +26,8 @@ export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
     ...initialContext,
     open: props.open,
     onOpenChange: useEvent(props.onOpenChange, { sync: true }),
-    onEsc: useEvent(props.onEsc),
-    onOutsideClick: useEvent(props.onOutsideClick),
+    onEscapeKeyDown: useEvent(props.onEscapeKeyDown),
+    onInteractOutside: useEvent(props.onInteractOutside),
   }
 
   const [state, send] = useMachine(dialog.machine(initialContext), { context })

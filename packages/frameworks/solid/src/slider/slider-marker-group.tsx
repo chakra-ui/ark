@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
-export type SliderMarkerGroupProps = HTMLArkProps<'div'>
+export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
-export const SliderMarkerGroup = (props: SliderMarkerGroupProps) => {
+export const SliderMarkerGroup: ArkComponent<'div'> = (props: SliderMarkerGroupProps) => {
   const api = useSliderContext()
-  const markerGroupProps = mergeProps(() => api().markerGroupProps, props)
-  return <ark.div {...markerGroupProps} />
+  const mergedProps = mergeProps(() => api().markerGroupProps, props)
+
+  return <ark.div {...mergedProps} />
 }

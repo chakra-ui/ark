@@ -1,16 +1,8 @@
-import { type ReactNode } from 'react'
-import { runIfFn } from '../run-if-fn'
-import { TooltipProvider, type TooltipContext } from './tooltip-context'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { TooltipArrow as Arrow } from './tooltip-arrow'
+import { TooltipArrowTip as ArrowTip } from './tooltip-arrow-tip'
+import { TooltipContent as Content } from './tooltip-content'
+import { TooltipPositioner as Positioner } from './tooltip-positioner'
+import { TooltipRoot as Root } from './tooltip-root'
+import { TooltipTrigger as Trigger } from './tooltip-trigger'
 
-export interface TooltipProps extends UseTooltipProps {
-  children?: ReactNode | ((props: TooltipContext) => ReactNode)
-}
-
-export const Tooltip = (props: TooltipProps) => {
-  const { children, ...useTooltipProps } = props
-  const api = useTooltip(useTooltipProps)
-  const view = runIfFn(children, api)
-
-  return <TooltipProvider value={api}>{view}</TooltipProvider>
-}
+export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }

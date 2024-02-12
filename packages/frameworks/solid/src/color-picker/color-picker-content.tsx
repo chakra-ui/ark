@@ -1,12 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { Show } from 'solid-js'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerContentProps = HTMLArkProps<'div'>
+export interface ColorPickerContentProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerContent = (props: ColorPickerContentProps) => {
-  const colorPicker = useColorPickerContext()
-  const contentProps = mergeProps(() => colorPicker().contentProps, props)
+export const ColorPickerContent: ArkComponent<'div'> = (props: ColorPickerContentProps) => {
+  const api = useColorPickerContext()
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(
+    () => api().contentProps,
+    () => presenceApi().presenceProps,
+    props,
+  )
 
-  return <ark.div {...contentProps} />
+  return (
+    <Show when={!presenceApi().isUnmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
+  )
 }

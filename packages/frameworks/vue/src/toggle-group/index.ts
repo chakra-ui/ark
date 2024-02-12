@@ -1,12 +1,15 @@
-import { ToggleGroup as ToggleGroupRoot, type ToggleGroupProps } from './toggle-group'
+import type { ValueChangeDetails as ToggleGroupValueChangeDetails } from '@zag-js/toggle-group'
 import { useToggleGroupContext, type ToggleGroupContext } from './toggle-group-context'
 import { ToggleGroupItem, type ToggleGroupItemProps } from './toggle-group-item'
+import { ToggleGroupRoot, type ToggleGroupRootProps } from './toggle-group-root'
 
-const ToggleGroup = Object.assign(ToggleGroupRoot, {
-  Root: ToggleGroupRoot,
-  Item: ToggleGroupItem,
-})
+export * as ToggleGroup from './toggle-group'
 
-export { ToggleGroup, ToggleGroupItem, useToggleGroupContext }
+export { ToggleGroupItem, ToggleGroupRoot, useToggleGroupContext }
 
-export type { ToggleGroupContext, ToggleGroupItemProps, ToggleGroupProps }
+export type {
+  ToggleGroupContext,
+  ToggleGroupItemProps,
+  ToggleGroupRootProps,
+  ToggleGroupValueChangeDetails,
+}

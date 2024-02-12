@@ -1,0 +1,40 @@
+[data-scope='combobox'][data-part='option'][data-highlighted] {
+  background-color: greenyellow;
+}
+
+[data-scope='combobox'][data-part='content'] {
+  list-style-type: none;
+  max-width: 240px;
+  padding: 0;
+  margin: 0;
+}
+
+[data-scope='combobox'][data-part='content'][data-state='open'] {
+  animation: fadeIn 0.25s ease-out;
+}
+
+[data-scope='combobox'][data-part='content'][data-state='closed'] {
+  animation: fadeOut 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

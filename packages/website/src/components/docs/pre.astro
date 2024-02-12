@@ -1,0 +1,93 @@
+---
+import { Code } from 'astro/components'
+import * as cheerio from 'cheerio'
+import { Box } from 'styled-system/jsx'
+import { P, match } from 'ts-pattern'
+import { CodePreview } from './code-preview'
+import { CodePreviewTabs } from './code-preview-tabs'
+import { LivePreview } from './live-preview'
+import { getCollection } from 'astro:content'
+
+const html = await Astro.slots.render('default')
+const code = cheerio.load(html).root().text().trim()
+
+const component = Astro.params.slug?.split('/').pop()
+const storyId = html.match(/story=([^"]+)"/)?.[1] ?? ''
+
+const stories = await getCollection('stories', (story) => story.id.includes(component ?? ''))
+const [react, solid, vue] = stories
+---
+
+<Box borderRadius="l3" overflow="hidden" borderWidth="1px" className="not-prose">
+  {
+    match(html)
+      .with(P.string.includes('metastring="live story='), () => (
+        <>
+          <Box p={{ base: '4', md: '6' }} borderBottomWidth="1px">
+            <LivePreview code={code} client:load />
+          </Box>
+          <CodePreviewTabs
+            tabs={{
+              react: { label: 'React', code: code },
+              solid: { label: 'Solid', code: code },
+              vue: { label: 'Vue', code: code },
+            }}
+            expandable
+            collapsed={storyId === 'Basic'}
+            client:load
+          >
+          <!-- @ts-expect-error -->
+            <Code
+              code={react?.data[storyId] ?? 'Story not available'}
+              lang="tsx"
+              theme="css-variables"
+              slot="react"
+            />   
+            <!-- @ts-expect-error -->
+            <Code
+              code={solid?.data[storyId] ?? 'Story not available'}
+              lang="tsx"
+              theme="css-variables"
+              slot="solid"
+            />
+            <!-- @ts-expect-error -->
+            <Code
+              code={vue?.data[storyId] ?? 'Story not available'}
+              lang="vue"
+          
+              theme="css-variables"
+              slot="vue"
+            />
+          </CodePreviewTabs>
+        </>
+      ))
+      .with(P.string.includes('metastring="live"'), () => (
+        <>
+          <Box p={{ base: '4', md: '6' }} borderBottomWidth="1px">
+            <LivePreview code={code} client:load />
+          </Box>
+          <CodePreview code={code} client:load>
+            <!-- @ts-expect-error -->
+            <Code code={code} lang="tsx" theme="css-variables" />
+          </CodePreview>
+        </>
+      ))
+      .with(P.string.includes('metastring="multi"'), () => (
+        <CodePreviewTabs
+          tabs={{
+            react: { label: 'React', code: code },
+          }}
+          client:load
+        >
+         <!-- @ts-expect-error -->
+          <Code code={code} lang="tsx" theme="css-variables" slot="react" />
+        </CodePreviewTabs>
+      ))
+      .otherwise(() => (
+        <CodePreview code={code} client:load>
+          <!-- @ts-expect-error -->
+          <Code code={code} lang="tsx" theme="css-variables" />
+        </CodePreview>
+      ))
+  }
+</Box>

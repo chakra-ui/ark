@@ -1,19 +1,26 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
+import { usePresenceContext } from '../presence'
 import { useMenuContext } from './menu-context'
 
-export type MenuPositionerProps = HTMLArkProps<'div'>
+export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
-export const MenuPositioner: ComponentWithProps<MenuPositionerProps> = defineComponent({
-  name: 'MenuPositioner',
-  setup(_, { slots, attrs }) {
+export const MenuPositioner = defineComponent<MenuPositionerProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
+    const presenceApi = usePresenceContext()
 
     return () => (
-      <ark.div {...api.value.positionerProps} {...attrs}>
-        {() => getValidChildren(slots)}
-      </ark.div>
+      <>
+        {presenceApi.value.isUnmounted ? null : (
+          <ark.div {...api.value.positionerProps} {...attrs}>
+            {slots.default?.()}
+          </ark.div>
+        )}
+      </>
     )
   },
-})
+  {
+    name: 'MenuPositioner',
+  },
+)

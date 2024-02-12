@@ -1,35 +1,193 @@
 ---
 id: changelog
 name: Changelog
-description: All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to and this project adheres to Semantic Versioning.
+description: All notable changes to this project will be documented in this file.
 ---
 
 ## [Unreleased]
 
 ### Added
 
-- Added `ToggleGroup` component
+- Exported `SelectionDetails` type for `Menu` component
 
 ### Changed
 
-- Revised `Comoobox` component to support multiple selection
-- Revised `Select` component to support multiple selection
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+
+## [2.0.1] - 2024-01-30
 
 ### Fixed
 
-- Resolved an issue where the `asChild` property was not working as expected
+- Resolved an issue that for some components the types were not being generated correctly.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
 
-### Removed
+## [2.0.0] - 2024-01-30
 
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
+### Added
 
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/solid'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
+- Added `TreeView` component
+- Updated `@zag-js` dependencies to their latest versions, enhancing performance
+  for all components.
+
+### Changed
+
+- **Breaking Change**: Renamed the `asChild` to `as` prop. The `as` prop now
+  accepts a native HTML element or a custom component. For example:
+
+```diff
+- <Popover.Trigger asChild><Button>Open</Button></Popover.Trigger>
++ <Popover.Trigger as={<Button>Open</Button>} />
 ```
+
+- **Breaking Change**: Renamed the root types for all components to
+  `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+
+```diff
+- import type { AvatarProps } from "@ark-ui/solid"
++ import type { AvatarRootProps } from "@ark-ui/solid"
+```
+
+- **Breaking Change**: Removed the `.Root` suffix for provider component like
+  `Presence` and `Environment`.
+
+```diff
+- <Presence.Root>...</Presence.Root>
++ <Presence>...</Presence>
+```
+
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress`
+  component to more accurately reflect its functionality.
+
+- Added the `ItemPreview` component to the `TagsInput` component. See the
+  example below:
+
+```diff
+<TagsInput.Item index={index} value={value()}>
++  <TagsInput.ItemPreview>
+    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
++ </TagsInput.ItemPreview>
+  <TagsInput.ItemInput />
+</TagsInput.Item>
+```
+
+### Fixed
+
+- Fixed an issue on touch devices where selecting an item within `Combobox`,
+  `Menu`, or `Select` triggered a click event on the element behind the
+  portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead
+  of populating them one per input.
+
+## [1.3.0] - 2024-01-17
+
+### Added
+
+- Added the `Progress` component.
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+
+### Changed
+
+- Changed `Popover.Description` tag from `div` to `p`
+- Changed `PopoverDescriptionProps` type from `div` to `p`
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+
+### Fixed
+
+- Fixed multiple rerenders on `Select` component using search params
+- Fixed reactivity with collection in `Select` and `Combobox` components
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using controlled context
+- Resolved an issue that `asChild` did not work properly with `svg` elements.
+- Resolved an issue that `Menu` option item could not be activated by keyboard
+
+## [1.2.0] - 2023-12-13
+
+### Added
+
+- Added the `ToastGroup` component.
+
+### Changed
+
+- Revised the `FileUpload` component. Check out the [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
+
+### Fixed
+
+- Resolved a problem where `Select.Indicator` was assigned to the wrong `data-part`.
+- Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
+
+## [1.1.0] - 2023-11-21
+
+### Added
+
+- Added render function to the `NumberInput` component
+- Added `FileUpload` component
+
+### Changed
+
+- Revised the `ColorPicker` component. Check out the [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
+
+### Fixed
+
+- Resolved a problem where the `Dialog.CloseTrigger` was assigned to the wrong `data-part`.
+- Fixed various issues for the `Toast` component that were caused by the API not being wrapped in an `Accessor`.
+
+```jsx
+// before
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast.title}</Toast.Title>
+        <Toast.Description>{toast.description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+
+// after
+const [Toaster, toast] = createToaster({
+  placement: 'top-end',
+  render(toast) {
+    return (
+      <Toast.Root>
+        <Toast.Title>{toast().title}</Toast.Title>
+        <Toast.Description>{toast().description}</Toast.Description>
+        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+      </Toast.Root>
+    )
+  },
+})
+```
+
+## [1.0.1] - 2023-11-10
+
+### Fixed
+
+- Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
+- Resolved an issue where `MenuTrigger` could still work even when disabled.
+- Resolved an issue where components like `Dialog`, `Popover` etc would not invoke `onExitComplete`
+- Fixed an issue where placement of the `Combobox` could be incorrect when lazy mounted.
+
+## [1.0.0] - 2023-11-09
+
+We are happy to announce the release of `@ark-ui/solid@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
+
+### Highlights
+
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Resolved various bugs and addressed accessibility issues across all components.
+
+### Stability and Support
+
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/solid`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
 ## [0.11.0] - 2023-09-08
 
@@ -201,3 +359,7 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 [0.10.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.0
 [0.10.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.10.1
 [0.11.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/solid@0.11.0
+
+```
+
+```

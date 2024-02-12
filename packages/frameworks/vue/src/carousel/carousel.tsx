@@ -1,24 +1,21 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { CarouselProvider } from './carousel-context'
-import { emits, props } from './carousel.props'
-import { useCarousel, type UseCarouselProps } from './use-carousel'
+import { CarouselControl as Control } from './carousel-control'
+import { CarouselIndicator as Indicator } from './carousel-indicator'
+import { CarouselIndicatorGroup as IndicatorGroup } from './carousel-indicator-group'
+import { CarouselItem as Item } from './carousel-item'
+import { CarouselItemGroup as ItemGroup } from './carousel-item-group'
+import { CarouselNextTrigger as NextTrigger } from './carousel-next-trigger'
+import { CarouselPrevTrigger as PrevTrigger } from './carousel-prev-trigger'
+import { CarouselRoot as Root } from './carousel-root'
+import { CarouselViewport as Viewport } from './carousel-viewport'
 
-export type CarouselProps = Assign<HTMLArkProps<'div'>, UseCarouselProps>
-
-export const Carousel = defineComponent({
-  name: 'Carousel',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useCarousel(props, emit)
-    CarouselProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.({ ...api.value })}
-      </ark.div>
-    )
-  },
-})
+export {
+  Control,
+  Indicator,
+  IndicatorGroup,
+  Item,
+  ItemGroup,
+  NextTrigger,
+  PrevTrigger,
+  Root,
+  Viewport,
+}

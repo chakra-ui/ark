@@ -9,10 +9,10 @@ import { useSelectContext } from './select-context'
 export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const SelectItemGroup = forwardRef<HTMLDivElement, SelectItemGroupProps>((props, ref) => {
-  const [itemPropsProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
+  const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
 
   const api = useSelectContext()
-  const mergedProps = mergeProps(api.getItemGroupProps(itemPropsProps), localProps)
+  const mergedProps = mergeProps(api.getItemGroupProps(itemGroupProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

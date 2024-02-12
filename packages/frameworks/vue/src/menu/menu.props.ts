@@ -38,5 +38,8 @@ export const props = {
   modelValue: {
     type: Object as PropType<Context['value']>,
   },
+  open: {
+    type: Boolean as PropType<Context['open']>,
+  },
 }
 export const emits = declareEmits(['open-change', 'select', 'value-change', 'update:modelValue'])

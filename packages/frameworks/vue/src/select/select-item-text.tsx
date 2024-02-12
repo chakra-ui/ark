@@ -3,11 +3,10 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 import { useSelectItemContext } from './select-item-context'
 
-export type SelectItemTextProps = HTMLArkProps<'button'>
+export interface SelectItemTextProps extends HTMLArkProps<'span'> {}
 
-export const SelectItemText = defineComponent({
-  name: 'SelectItemText',
-  setup(_, { slots, attrs }) {
+export const SelectItemText = defineComponent<SelectItemTextProps>(
+  (_, { slots, attrs }) => {
     const api = useSelectContext()
     const itemProps = useSelectItemContext()
 
@@ -17,4 +16,7 @@ export const SelectItemText = defineComponent({
       </ark.span>
     )
   },
-})
+  {
+    name: 'SelectItemText',
+  },
+)

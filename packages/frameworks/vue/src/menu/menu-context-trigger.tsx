@@ -1,18 +1,20 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './menu-context'
 
-export type MenuContextTriggerProps = HTMLArkProps<'button'>
+export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuContextTrigger = defineComponent({
-  name: 'MenuContextTrigger',
-  setup(_, { slots, attrs }) {
+export const MenuContextTrigger = defineComponent<MenuContextTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useMenuContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'MenuContextTrigger')
 
-      return h(DefaultSlot, { ...api.value.contextTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.contextTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'MenuContextTrigger',
+  },
+)

@@ -1,6 +1,7 @@
-import type { ComponentPropsWithoutRef } from 'react'
+import { ark } from '@ark-ui/react/src/factory'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { badge, type BadgeVariantProps } from 'styled-system/recipes'
+import { badge } from 'styled-system/recipes'
 
-export type BadgeProps = BadgeVariantProps & ComponentPropsWithoutRef<'div'>
-export const Badge = styled('div', badge)
+export const Badge = styled(ark.div, badge)
+export interface BadgeProps extends ComponentProps<typeof Badge> {}

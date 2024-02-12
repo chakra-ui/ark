@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchThumbProps = HTMLArkProps<'span'>
+export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
-export const SwitchThumb = (props: SwitchThumbProps) => {
-  const checkbox = useSwitchContext()
-  const thumbProps = mergeProps(() => checkbox().thumbProps, props)
-  return <ark.span {...thumbProps} />
+export const SwitchThumb: ArkComponent<'span'> = (props: SwitchThumbProps) => {
+  const api = useSwitchContext()
+  const mergedProps = mergeProps(() => api().thumbProps, props)
+
+  return <ark.span {...mergedProps} />
 }

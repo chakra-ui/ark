@@ -1,20 +1,5 @@
+import type { ItemProps } from '@zag-js/radio-group'
 import { createContext } from '../create-context'
-
-// TODO export in zag.js
-export interface ItemProps {
-  value: string
-  disabled?: boolean
-  invalid?: boolean
-}
-
-export interface ItemState {
-  isInvalid: boolean
-  isDisabled: boolean
-  isChecked: boolean
-  isFocused: boolean
-  isHovered: boolean
-  isActive: boolean
-}
 
 export interface RadioGroupItemContext extends ItemProps {}
 

@@ -1,0 +1,37 @@
+---
+import { css } from 'styled-system/css'
+import { Box, Container, HStack } from 'styled-system/jsx'
+import ColorModeButton from '~/components/color-mode-button.astro'
+import { Logo } from '~/components/logo'
+import Breadcrumbs from './breadcrumbs.astro'
+import { MobileSidebarContainer } from './mobile-sidebar-container'
+import Sidebar from './sidebar.astro'
+---
+
+<nav
+  role="navigation"
+  class={css({ position: 'sticky', top: '0', zIndex: 'sticky', bg: 'bg.default' })}
+>
+  <Box borderBottomWidth="1px" position="relative">
+    <Container>
+      <HStack justify="space-between" gap="8" h="18">
+        <HStack gap="10">
+          <a href="/" aria-label="Back to Home">
+            <Logo height="28" />
+          </a>
+        </HStack>
+        <ColorModeButton />
+      </HStack>
+    </Container>
+  </Box>
+  <Box borderBottomWidth="1px" display={{ base: 'block', md: 'none' }}>
+    <Container py="1">
+      <HStack gap="2">
+        <MobileSidebarContainer client:load>
+          <Sidebar />
+        </MobileSidebarContainer>
+        <Breadcrumbs />
+      </HStack>
+    </Container>
+  </Box>
+</nav>

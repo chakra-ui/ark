@@ -1,0 +1,40 @@
+---
+import { Flex } from 'styled-system/jsx'
+import React from './icons/react.astro'
+import Solid from './icons/solid.astro'
+import Vue from './icons/vue.astro'
+import Js from './icons/js.astro'
+import { match } from 'ts-pattern'
+
+interface Props {
+    framework: 'react' | 'vue' | 'js' | 'solid'
+}
+
+const { framework } = Astro.props;
+
+const Icon = match(framework)
+    .with('react', () => React)
+    .with('js', ()=> Js)
+    .with("solid", () => Solid)
+    .with("vue", ()=> Vue)
+    .otherwise(() => "")
+
+---
+
+
+<Flex
+    borderRadius="full"
+    justify="center"
+    align="center"
+    borderWidth="2px"
+    borderColor={{
+        base: '#F6E1DB',
+        _dark: '#391915',
+    }}
+    bg="bg.canvas"
+    width="24"
+    height="24"
+    display={{ base: 'none', md: 'flex' }}
+    >
+    <Icon width="48" />
+</Flex>

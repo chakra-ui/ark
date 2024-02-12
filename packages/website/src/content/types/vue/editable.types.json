@@ -1,10 +1,13 @@
 {
+  "Area": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
+      "defaultValue": "\"focus\"",
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
@@ -12,6 +15,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -31,7 +35,7 @@
       "description": "The associate form of the underlying input."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -69,17 +73,17 @@
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
@@ -118,6 +122,7 @@
     },
     "submitMode": {
       "type": "SubmitMode",
+      "defaultValue": "\"enter\"",
       "isRequired": false,
       "description": "The action that triggers submit in the edit mode:\n\n- \"enter\" - Trigger submit when the enter key is pressed\n- \"blur\" - Trigger submit when the editable is blurred\n- \"none\" - No action will trigger submit. You need to use the submit button\n- \"both\" - Pressing `Enter` and blurring the input will trigger submit"
     },
@@ -132,7 +137,6 @@
       "description": "The value of the editable in both edit and preview mode"
     }
   },
-  "Area": { "asChild": { "type": "boolean", "isRequired": false } },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },

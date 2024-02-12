@@ -10,7 +10,8 @@ export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<select.Context<T>, 'id'>, 'collection'> {}
 
-export type UseSelectReturn<T extends CollectionItem> = Accessor<select.Api<PropTypes, T>>
+export interface UseSelectReturn<T extends CollectionItem>
+  extends Accessor<select.Api<PropTypes, T>> {}
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
@@ -21,11 +22,11 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = select.collection(collectionOptions)
+  const collection = () => select.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode, collection }, rest)
-
-  const [state, send] = useMachine(select.machine(context), {
+  const context = () =>
+    mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
+  const [state, send] = useMachine(select.machine(context()), {
     context,
   })
 

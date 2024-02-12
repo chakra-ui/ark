@@ -1,17 +1,13 @@
-import * as Ark from '@ark-ui/react/src/toggle-group'
+import { ToggleGroup } from '@ark-ui/react/src/toggle-group'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { toggleGroup, type ToggleGroupVariantProps } from 'styled-system/recipes'
+import { toggleGroup } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(toggleGroup)
 
-export * from '@ark-ui/react/src/toggle-group'
-export type ToggleGroupProps = Ark.ToggleGroupProps & ToggleGroupVariantProps
+export const Root = withProvider(styled(ToggleGroup.Root), 'root')
+export const Item = withContext(styled(ToggleGroup.Item), 'item')
 
-const ToggleGroupRoot = withProvider(styled(Ark.ToggleGroup.Root), 'root')
-export const ToggleGroupItem = withContext(styled(Ark.ToggleGroup.Item), 'toggle')
-
-export const ToggleGroup = Object.assign(ToggleGroupRoot, {
-  Root: ToggleGroupRoot,
-  Item: ToggleGroupItem,
-})
+export interface RootProps extends ComponentProps<typeof Root> {}
+export interface ItemProps extends ComponentProps<typeof Item> {}

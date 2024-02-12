@@ -301,3 +301,8 @@ panda
 
 styled-system
 .astro
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+vite.config.mts.timestamp-*

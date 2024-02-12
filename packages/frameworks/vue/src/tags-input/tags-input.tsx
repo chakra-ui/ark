@@ -1,27 +1,23 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { TagsInputProvider } from './tags-input-context'
-import { emits, props } from './tags-input.props'
-import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
+import { TagsInputClearTrigger as ClearTrigger } from './tags-input-clear-trigger'
+import { TagsInputControl as Control } from './tags-input-control'
+import { TagsInputInput as Input } from './tags-input-input'
+import { TagsInputItem as Item } from './tags-input-item'
+import { TagsInputItemDeleteTrigger as ItemDeleteTrigger } from './tags-input-item-delete-trigger'
+import { TagsInputItemInput as ItemInput } from './tags-input-item-input'
+import { TagsInputItemPreview as ItemPreview } from './tags-input-item-preview'
+import { TagsInputItemText as ItemText } from './tags-input-item-text'
+import { TagsInputLabel as Label } from './tags-input-label'
+import { TagsInputRoot as Root } from './tags-input-root'
 
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps>
-
-export const TagsInput = defineComponent({
-  name: 'TagsInput',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useTagsInput(props, emit)
-    TagsInputProvider(api)
-
-    return () => (
-      <>
-        <ark.div {...api.value.rootProps} {...attrs}>
-          {slots?.default?.(api.value)}
-        </ark.div>
-        <input {...api.value.hiddenInputProps} />
-      </>
-    )
-  },
-})
+export {
+  ClearTrigger,
+  Control,
+  Input,
+  Item,
+  ItemDeleteTrigger,
+  ItemInput,
+  ItemPreview,
+  ItemText,
+  Label,
+  Root,
+}

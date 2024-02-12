@@ -1,23 +1,22 @@
-import type { ColorChannelProps } from '@zag-js/color-picker'
+import type { ChannelInputProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelInputProps = Assign<HTMLArkProps<'input'>, ColorChannelProps>
+export interface ColorPickerChannelInputProps
+  extends Assign<HTMLArkProps<'input'>, ChannelInputProps> {}
 
-export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => {
-  const [channelProps, restProps] = createSplitProps<ColorChannelProps>()(props, [
+export const ColorPickerChannelInput: ArkComponent<'input', ChannelInputProps> = (
+  props: ColorPickerChannelInputProps,
+) => {
+  const [channelProps, inputProps] = createSplitProps<ChannelInputProps>()(props, [
     'channel',
     'orientation',
   ])
+  const api = useColorPickerContext()
+  const mergedProps = mergeProps(() => api().getChannelInputProps(channelProps), inputProps)
 
-  const colorPicker = useColorPickerContext()
-  const channelInputProps = mergeProps(
-    () => colorPicker().getChannelInputProps(channelProps),
-    restProps,
-  )
-
-  return <ark.input {...channelInputProps} />
+  return <ark.input {...mergedProps} />
 }

@@ -11,7 +11,6 @@ export const ColorPickerChannelSliderThumb = forwardRef<
   ColorPickerChannelSliderThumbProps
 >((props, ref) => {
   const sliderContext = useColorPickerChannelSliderContext()
-
   const api = useColorPickerContext()
   const mergedProps = mergeProps(api.getChannelSliderThumbProps(sliderContext), props)
 

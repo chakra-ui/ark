@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
-import { useToastItemContext } from './toast-item-context'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { useToastContext } from './toast-context'
 
-export type ToastDescriptionProps = HTMLArkProps<'p'>
+export interface ToastDescriptionProps extends HTMLArkProps<'div'> {}
 
-export const ToastDescription = (props: ToastDescriptionProps) => {
-  const api = useToastItemContext()
-  const descriptionProps = mergeProps(() => api().descriptionProps, props)
+export const ToastDescription: ArkComponent<'div'> = (props: ToastDescriptionProps) => {
+  const api = useToastContext()
+  const mergedProps = mergeProps(() => api().descriptionProps, props)
 
-  return <ark.p {...descriptionProps}>{api().description}</ark.p>
+  return <ark.div {...mergedProps} />
 }

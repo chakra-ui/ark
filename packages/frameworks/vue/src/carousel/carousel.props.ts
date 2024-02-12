@@ -27,6 +27,7 @@ export const props = {
   },
   orientation: {
     type: String as PropType<Context['orientation']>,
+    default: 'horizontal',
   },
   slidesPerView: {
     type: String as PropType<Context['slidesPerView']>,
@@ -34,5 +35,5 @@ export const props = {
   spacing: {
     type: String as PropType<Context['spacing']>,
   },
-}
-export const emits = declareEmits(['slide-change'])
+} as const
+export const emits = declareEmits(['index-change'])

@@ -11,6 +11,9 @@ export const props = {
     type: Boolean as PropType<Context['autoFocus']>,
     default: undefined,
   },
+  count: {
+    type: Number as PropType<Context['count']>,
+  },
   dir: {
     type: String as PropType<Context['dir']>,
   },
@@ -29,9 +32,6 @@ export const props = {
   },
   ids: {
     type: Object as PropType<Context['ids']>,
-  },
-  max: {
-    type: Number as PropType<Context['max']>,
   },
   name: {
     type: String as PropType<Context['name']>,

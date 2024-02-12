@@ -1,4 +1,4 @@
-import type { ColorAreaProps } from '@zag-js/color-picker'
+import type { AreaProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
@@ -7,14 +7,10 @@ import type { Assign } from '../types'
 import { ColorPickerAreaProvider } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, ColorAreaProps> {}
+export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
 
 export const ColorPickerArea = forwardRef<HTMLDivElement, ColorPickerAreaProps>((props, ref) => {
-  const [channelProps, divprops] = createSplitProps<ColorAreaProps>()(props, [
-    'xChannel',
-    'yChannel',
-  ])
-
+  const [channelProps, divprops] = createSplitProps<AreaProps>()(props, ['xChannel', 'yChannel'])
   const api = useColorPickerContext()
   const mergedProps = mergeProps(api.getAreaProps(channelProps), divprops)
 

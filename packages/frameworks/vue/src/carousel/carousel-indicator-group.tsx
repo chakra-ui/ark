@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselIndicatorGroupProps = HTMLArkProps<'div'>
+export interface CarouselIndicatorGroupProps extends HTMLArkProps<'div'> {}
 
-export const CarouselIndicatorGroup = defineComponent({
-  name: 'CarouselIndicatorGroup',
-  setup(_, { slots, attrs }) {
+export const CarouselIndicatorGroup = defineComponent<CarouselIndicatorGroupProps>(
+  (_, { slots, attrs }) => {
     const api = useCarouselContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const CarouselIndicatorGroup = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'CarouselIndicatorGroup',
+  },
+)

@@ -1,4 +1,14 @@
 {
+  "Item": {
+    "index": { "type": "string | number", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
     "addOnPaste": {
       "type": "boolean",
@@ -27,6 +37,7 @@
     },
     "blurBehavior": {
       "type": "'clear' | 'add'",
+      "defaultValue": "\"none\"",
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
@@ -37,11 +48,13 @@
     },
     "delimiter": {
       "type": "string",
+      "defaultValue": "\",\" (aka COMMA)",
       "isRequired": false,
       "description": "The character that serves has:\n- event key to trigger the addition of a new tag\n- character used to split tags when pasting into the input"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -56,7 +69,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -90,7 +103,7 @@
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onHighlightChange": {
       "type": "(details: HighlightChangeDetails) => void",
@@ -100,12 +113,12 @@
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
@@ -133,16 +146,6 @@
       "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
     },
     "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
-  },
-  "Item": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
   },
   "Input": {
     "asChild": {
@@ -173,6 +176,13 @@
     }
   },
   "ItemInput": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemPreview": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

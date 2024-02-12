@@ -1,0 +1,26 @@
+[data-scope='checkbox'][data-part='root'] {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  gap: 8px;
+}
+
+[data-scope='checkbox'][data-part='control'] {
+  border: 2px solid;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+[data-scope='checkbox'][data-part='control'][data-state='checked'] {
+  background: black;
+  color: white;
+}
+
+[data-scope='checkbox'][data-part='control'][data-state='indeterminate'] {
+  background: blue;
+  color: white;
+}

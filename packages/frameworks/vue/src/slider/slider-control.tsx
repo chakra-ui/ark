@@ -1,19 +1,20 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren } from '../utils'
 import { useSliderContext } from './slider-context'
 
-export type SliderControlProps = HTMLArkProps<'div'>
+export interface SliderControlProps extends HTMLArkProps<'div'> {}
 
-export const SliderControl = defineComponent({
-  name: 'SliderControl',
-  setup(_, { slots, attrs }) {
+export const SliderControl = defineComponent<SliderControlProps>(
+  (_, { slots, attrs }) => {
     const api = useSliderContext()
 
     return () => (
       <ark.div {...api.value.controlProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.div>
     )
   },
-})
+  {
+    name: 'SliderControl',
+  },
+)

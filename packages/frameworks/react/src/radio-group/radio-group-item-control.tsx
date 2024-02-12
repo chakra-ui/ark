@@ -12,7 +12,12 @@ export const RadioGroupItemControl = forwardRef<HTMLDivElement, RadioGroupItemCo
     const itemProps = useRadioGroupItemContext()
     const mergedProps = mergeProps(api.getItemControlProps(itemProps), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <>
+        <ark.div {...mergedProps} ref={ref} />
+        <input {...api.getItemHiddenInputProps(itemProps)} />
+      </>
+    )
   },
 )
 

@@ -1,53 +1,20 @@
-import { children, createEffect, createSignal, type JSXElement } from 'solid-js'
-import { spread } from 'solid-js/web'
-import { createSplitProps } from '../create-split-props'
+import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import type { Assign } from '../types'
+import { splitPresenceProps } from './split-presence-props'
 import { usePresence, type UsePresenceProps } from './use-presence'
 
-export type PresenceProps = UsePresenceProps & {
-  /**
-   * Whether to enable lazy mounting. Defaults to `false`.
-   */
-  lazyMount?: boolean
-  /**
-   * Whether to unmount on exit. Defaults to `false`.
-   */
-  unmountOnExit?: boolean
-  /**
-   * The children to render.
-   */
-  children?: JSXElement
-}
+export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
-export const Presence = (props: PresenceProps) => {
-  const [presenceProps, localProps] = createSplitProps<UsePresenceProps>()(props, [
-    'onExitComplete',
-    'present',
-  ])
+export const Presence: ArkComponent<'div', UsePresenceProps> = (props: PresenceProps) => {
+  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = usePresence(presenceProps)
-  const [wasEverPresent, setWasEverPresent] = createSignal(false)
-
-  const getChildren = children(() => props.children)
-
-  createEffect(() => {
-    const isPresent = api().isPresent
-    if (isPresent) setWasEverPresent(true)
-
-    const children = getChildren()
-    if (children instanceof HTMLElement) {
-      api().setNode(children)
-      spread(children, {
-        ['data-state']: presenceProps.present ? 'open' : 'closed',
-        hidden: !api().isPresent,
-      })
-    }
-  })
+  const mergedProps = mergeProps(() => api().presenceProps, localProps)
 
   return (
-    <>
-      {(!api().isPresent && !wasEverPresent() && localProps.lazyMount) ||
-      (localProps.unmountOnExit && !api().isPresent && wasEverPresent())
-        ? null
-        : getChildren()}
-    </>
+    <Show when={!api().isUnmounted}>
+      <ark.div {...mergedProps} data-scope="presence" data-part="root" />
+    </Show>
   )
 }

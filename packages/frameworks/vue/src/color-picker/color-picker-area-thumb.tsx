@@ -1,14 +1,12 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
 import { useColorPickerAreaContext } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerAreaThumbProps = HTMLArkProps<'div'>
+export interface ColorPickerAreaThumbProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerAreaThumb: ComponentWithProps<ColorPickerAreaThumbProps> = defineComponent({
-  name: 'ColorPickerAreaThumb',
-  setup(_, { slots, attrs }) {
+export const ColorPickerAreaThumb = defineComponent<ColorPickerAreaThumbProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
     const areaProps = useColorPickerAreaContext()
 
@@ -18,4 +16,7 @@ export const ColorPickerAreaThumb: ComponentWithProps<ColorPickerAreaThumbProps>
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerAreaThumb',
+  },
+)

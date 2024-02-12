@@ -1,19 +1,20 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { getValidChildren, type ComponentWithProps } from '../utils'
 import { useDialogContext } from './dialog-context'
 
-export type DialogDescriptionProps = HTMLArkProps<'p'>
+export interface DialogDescriptionProps extends HTMLArkProps<'div'> {}
 
-export const DialogDescription: ComponentWithProps<DialogDescriptionProps> = defineComponent({
-  name: 'DialogDescription',
-  setup(_, { slots, attrs }) {
+export const DialogDescription = defineComponent<DialogDescriptionProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
 
     return () => (
       <ark.p {...api.value.descriptionProps} {...attrs}>
-        {() => getValidChildren(slots)}
+        {slots.default?.()}
       </ark.p>
     )
   },
-})
+  {
+    name: 'DialogDescription',
+  },
+)

@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipArrowProps = HTMLArkProps<'div'>
+export interface TooltipArrowProps extends HTMLArkProps<'div'> {}
 
-export const TooltipArrow = (props: TooltipArrowProps) => {
+export const TooltipArrow: ArkComponent<'div'> = (props: TooltipArrowProps) => {
   const tooltip = useTooltipContext()
-  const arrowProps = mergeProps(() => tooltip().arrowProps, props)
-  return <ark.div {...arrowProps} />
+  const mergedProps = mergeProps(() => tooltip().arrowProps, props)
+
+  return <ark.div {...mergedProps} />
 }

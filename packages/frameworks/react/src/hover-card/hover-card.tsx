@@ -1,19 +1,8 @@
-import { type ReactNode } from 'react'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { HoverCardProvider, type HoverCardContext } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { HoverCardArrow as Arrow } from './hover-card-arrow'
+import { HoverCardArrowTip as ArrowTip } from './hover-card-arrow-tip'
+import { HoverCardContent as Content } from './hover-card-content'
+import { HoverCardPositioner as Positioner } from './hover-card-positioner'
+import { HoverCardRoot as Root } from './hover-card-root'
+import { HoverCardTrigger as Trigger } from './hover-card-trigger'
 
-export interface HoverCardProps
-  extends Assign<
-    UseHoverCardProps,
-    { children?: ReactNode | ((props: HoverCardContext) => ReactNode) }
-  > {}
-
-export const HoverCard = (props: HoverCardProps) => {
-  const { children, ...useHoverCardProps } = props
-  const api = useHoverCard(useHoverCardProps)
-  const view = runIfFn(children, api)
-
-  return <HoverCardProvider value={api}>{view}</HoverCardProvider>
-}
+export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }

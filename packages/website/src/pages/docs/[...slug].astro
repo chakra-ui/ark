@@ -1,0 +1,44 @@
+---
+import { type CollectionEntry } from 'astro:content'
+import path from 'path'
+import { match } from 'ts-pattern'
+import DocsHero from '~/components/docs/docs-hero.astro'
+import { InfoBanner } from '~/components/docs/info-banner'
+import Pre from '~/components/docs/pre.astro'
+import { Code, Link } from '~/components/ui'
+import { Prose } from '~/components/ui/prose'
+import DocsLayout from '~/layouts/docs-layout.astro'
+import { getAllCollections } from '~/lib/page-control'
+
+type Props = {
+  entry: CollectionEntry<'components' | 'overview' | 'changelog'>
+}
+
+export async function getStaticPaths() {
+  const collections = await getAllCollections()
+
+  return collections.map((entry) => ({
+    params: { slug: path.posix.join(entry.collection, entry.data.id) },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+
+const { Content, headings } = await entry.render()
+
+const banner = match(entry).with({ collection: 'components' }, ({ data }) => 
+  match(data)
+    .with({ label: 'preview' }, () => ({title:"Preview Component", description:"Please note, the API of this component is currently in a preview phase and is subject to change."}))
+    .with({ label: 'upcoming' }, () => ({title:"Upcoming Component", description:"Please note that this component will only be available in the next minor release."}))
+    .otherwise(() => null)
+).otherwise(() => null)
+---
+
+<DocsLayout title={entry.data.title} description={entry.data.description} headings={headings}>
+  <DocsHero slot="hero" entry={entry} />
+  <Prose css={{ maxWidth: 'full', '&> :first-child': { mt: '0' } }}>
+    {banner && <InfoBanner title={banner.title} description={banner.description} />}
+    <Content components={{ pre: Pre, code: Code, a: Link }} />
+  </Prose>
+</DocsLayout>

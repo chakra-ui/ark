@@ -1,54 +1,64 @@
-import { createContext, forwardRef, useContext, type ComponentProps, type ElementType } from 'react'
+import {
+  createContext,
+  createElement,
+  forwardRef,
+  useContext,
+  type ComponentProps,
+  type ElementType,
+  type JSX,
+} from 'react'
 
-type Props = Record<string, unknown>
-type Recipe = {
-  (props?: Props): Record<string, string>
-  splitVariantProps: (props: Props) => any
+type GenericProps = Record<string, unknown>
+type StyleRecipe = {
+  (props?: GenericProps): Record<string, string>
+  // biome-ignore lint/suspicious/noExplicitAny: this is a generic type
+  splitVariantProps: (props: GenericProps) => any
 }
-type Slot<R extends Recipe> = keyof ReturnType<R>
-type SlotRecipe<R extends Recipe> = Record<Slot<R>, string>
-type VariantProps<R extends Recipe> = Parameters<R>[0]
-
-export interface StyledContextProvider<T extends ElementType, R extends Recipe> {
-  (props: ComponentProps<T> & VariantProps<R>): JSX.Element
-}
+type StyleSlot<R extends StyleRecipe> = keyof ReturnType<R>
+type StyleSlotRecipe<R extends StyleRecipe> = Record<StyleSlot<R>, string>
+type StyleVariantProps<R extends StyleRecipe> = Parameters<R>[0]
+type CombineProps<T, U> = Omit<T, keyof U> & U
 
 const cx = (...args: (string | undefined)[]) => args.filter(Boolean).join(' ')
 
-export const createStyleContext = <R extends Recipe>(recipe: R) => {
-  const StyleContext = createContext<SlotRecipe<R> | null>(null)
+export interface ComponentVariants<T extends ElementType, R extends StyleRecipe> {
+  (props: CombineProps<ComponentProps<T>, StyleVariantProps<R>>): JSX.Element
+}
 
-  const withProvider = <T extends ElementType>(Component: T, slot?: Slot<R>) => {
-    const Comp = forwardRef((props: ComponentProps<T> & VariantProps<R>, ref) => {
-      const [variantProps, localProps] = recipe.splitVariantProps(props)
-      const slotRecipe = recipe(variantProps) as SlotRecipe<R>
+export const createStyleContext = <R extends StyleRecipe>(recipe: R) => {
+  const StyleContext = createContext<StyleSlotRecipe<R> | null>(null)
+
+  const withProvider = <T extends ElementType>(
+    Component: T,
+    slot?: StyleSlot<R>,
+  ): ComponentVariants<T, R> => {
+    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+      const [variantProps, otherProps] = recipe.splitVariantProps(props)
+      const slotStyles = recipe(variantProps) as StyleSlotRecipe<R>
       return (
-        <StyleContext.Provider value={slotRecipe}>
+        <StyleContext.Provider value={slotStyles}>
           <Component
             ref={ref}
-            {...localProps}
-            className={cx(slotRecipe[slot ?? ''], localProps.className)}
+            {...otherProps}
+            className={cx(slotStyles[slot ?? ''], otherProps.className)}
           />
         </StyleContext.Provider>
       )
     })
-    // @ts-expect-error JSX.IntrinsicElements do not have a displayName but Function and Class components do
-    Comp.displayName = Component.displayName || Component.name || 'Component'
-    return Comp as unknown as StyledContextProvider<T, R>
+    return StyledComponent as unknown as ComponentVariants<T, R>
   }
 
-  const withContext = <T extends ElementType>(Component: T, slot?: Slot<R>) => {
-    const Comp = forwardRef((props: ComponentProps<T>, ref) => {
-      const slotRecipe = useContext(StyleContext)
-      return (
-        // @ts-expect-error
-        <Component ref={ref} {...props} className={cx(slotRecipe?.[slot ?? ''], props.className)} />
-      )
+  const withContext = <T extends ElementType>(Component: T, slot?: StyleSlot<R>): T => {
+    if (!slot) return Component
+    const StyledComponent = forwardRef((props: ComponentProps<T>, ref) => {
+      const slotStyles = useContext(StyleContext)
+      return createElement(Component, {
+        ...props,
+        className: cx(slotStyles?.[slot ?? ''], props.className),
+        ref,
+      })
     })
-    // @ts-expect-error JSX.IntrinsicElements do not have a displayName but Function and Class components do
-    Comp.displayName = Component.displayName || Component.name || 'Component'
-
-    return Comp as unknown as T
+    return StyledComponent as unknown as T
   }
 
   return {

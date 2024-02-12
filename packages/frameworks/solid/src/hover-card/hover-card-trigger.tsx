@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useHoverCardContext } from './hover-card-context'
 
-export type HoverCardTriggerProps = HTMLArkProps<'button'>
+export interface HoverCardTriggerProps extends HTMLArkProps<'button'> {}
 
-export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
+export const HoverCardTrigger: ArkComponent<'button'> = (props: HoverCardTriggerProps) => {
   const hoverCard = useHoverCardContext()
-  const triggerProps = mergeProps(() => hoverCard().triggerProps, props)
-  return <ark.button {...triggerProps} />
+  const mergedProps = mergeProps(() => hoverCard().triggerProps, props)
+
+  return <ark.button {...mergedProps} />
 }

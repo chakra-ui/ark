@@ -1,24 +1,8 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { RadioGroupProvider } from './radio-group-context'
-import { emits, props } from './radio-group.props'
-import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
+import { RadioGroupIndicator as Indicator } from './radio-group-indicator'
+import { RadioGroupItem as Item } from './radio-group-item'
+import { RadioGroupItemControl as ItemControl } from './radio-group-item-control'
+import { RadioGroupItemText as ItemText } from './radio-group-item-text'
+import { RadioGroupLabel as Label } from './radio-group-label'
+import { RadioGroupRoot as Root } from './radio-group-root'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
-
-export const RadioGroup = defineComponent({
-  name: 'RadioGroup',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useRadioGroup(props, emit)
-    RadioGroupProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.()}
-      </ark.div>
-    )
-  },
-})
+export { Indicator, Item, ItemControl, ItemText, Label, Root }

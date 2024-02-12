@@ -1,26 +1,33 @@
-import { connect, machine } from '@zag-js/pin-input'
-import { normalizeProps, useMachine } from '@zag-js/vue'
-import { computed, reactive, type ExtractPropTypes } from 'vue'
+import * as pinInput from '@zag-js/pin-input'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
+import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
+import type { Optional } from '../types'
 import { useId } from '../utils'
-import type { PinInputContext } from './pin-input'
 
-export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
-  emit: CallableFunction,
-  context: T,
-) => {
-  const reactiveContext = reactive(context)
+export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
+  modelValue?: pinInput.Context['value']
+}
 
+export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
+
+export const usePinInput = (props: UsePinInputProps, emit: CallableFunction) => {
   const getRootNode = useEnvironmentContext()
+  const context = computed(() => {
+    const { modelValue, ...rest } = props
+    return {
+      ...rest,
+      value: modelValue,
+    }
+  })
 
   const [state, send] = useMachine(
-    machine({
-      ...reactiveContext,
-      id: reactiveContext.id || useId().value,
+    pinInput.machine({
+      ...context.value,
+      id: context.value.id || useId().value,
       getRootNode,
-      value: reactiveContext.modelValue ?? reactiveContext.value,
       onValueChange(details) {
-        emit('change', details)
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
       onValueComplete(details) {
@@ -30,11 +37,8 @@ export const usePinInput = <T extends ExtractPropTypes<PinInputContext>>(
         emit('value-invalid', details)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => connect(state.value, send, normalizeProps))
-
-  return api
+  return computed(() => pinInput.connect(state.value, send, normalizeProps))
 }
-
-export type UsePinInputReturn = ReturnType<typeof connect>

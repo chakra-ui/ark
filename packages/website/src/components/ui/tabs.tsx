@@ -1,23 +1,19 @@
-import * as Ark from '@ark-ui/react/src/tabs'
+import { Tabs } from '@ark-ui/react/src/tabs'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
-import { tabs, type TabsVariantProps } from 'styled-system/recipes'
+import { tabs } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tabs)
 
-export * from '@ark-ui/react/src/tabs'
-export type TabsProps = Ark.TabsProps & TabsVariantProps
+export const Root = withProvider(styled(Tabs.Root), 'root')
+export const Content = withContext(styled(Tabs.Content), 'content')
+export const Indicator = withContext(styled(Tabs.Indicator), 'indicator')
+export const List = withContext(styled(Tabs.List), 'list')
+export const Trigger = withContext(styled(Tabs.Trigger), 'trigger')
 
-const TabsRoot = withProvider(styled(Ark.Tabs.Root), 'root')
-export const TabContent = withContext(styled(Ark.Tabs.Content), 'content')
-export const TabIndicator = withContext(styled(Ark.Tabs.Indicator), 'indicator')
-export const TabList = withContext(styled(Ark.Tabs.List), 'list')
-export const TabTrigger = withContext(styled(Ark.Tabs.Trigger), 'trigger')
-
-export const Tabs = Object.assign(TabsRoot, {
-  Root: TabsRoot,
-  Content: TabContent,
-  Indicator: TabIndicator,
-  List: TabList,
-  Trigger: TabTrigger,
-})
+export interface RootProps extends ComponentProps<typeof Root> {}
+export interface ContentProps extends ComponentProps<typeof Content> {}
+export interface IndicatorProps extends ComponentProps<typeof Indicator> {}
+export interface ListProps extends ComponentProps<typeof List> {}
+export interface TriggerProps extends ComponentProps<typeof Trigger> {}

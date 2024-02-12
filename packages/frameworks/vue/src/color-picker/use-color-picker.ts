@@ -5,21 +5,22 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseColorPickerProps = Optional<colorPicker.Context, 'id'> & {
-  modelValue?: colorPicker.Context['value']
+export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+  modelValue?: string
 }
-export type UseColorPickerReturn = ComputedRef<colorPicker.Api<PropTypes>>
+export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (
   props: UseColorPickerProps,
   emit: CallableFunction,
 ): UseColorPickerReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ? colorPicker.parse(modelValue) : undefined,
     }
   })
 
@@ -28,9 +29,15 @@ export const useColorPicker = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
+      onFormatChange(details) {
+        emit('format-change', details)
+      },
+      onOpenChange(details) {
+        emit('open-change', details)
+      },
       onValueChange(details) {
         emit('value-change', details)
-        emit('update:modelValue', details.value)
+        emit('update:modelValue', details.valueAsString)
       },
       onValueChangeEnd(details) {
         emit('value-change-end', details)

@@ -1,0 +1,5 @@
+{
+  "Basic": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template><button @click=\"createBasicToast\">Toast</button> <BasicToaster /></template>\n",
+  "Customized": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template><button @click=\"createCustomizedToast\">Toast</button> <CustomizedToaster /></template>\n",
+  "CustomRender": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template><button @click=\"createCustomRenderToast\">Toast</button> <CustomRenderToaster /></template>\n"
+}

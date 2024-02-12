@@ -1,47 +1,48 @@
-# @ark-ui/react
+# Welcome to Ark UI
 
-`@ark-ui/react` is an open-source UI component library designed to make building high-quality, accessible web applications easier. The library focuses on providing low-level UI components with an emphasis on accessibility, customization, and developer experience.
+Ark UI is a headless, open-source UI library with over 30+ components designed for building reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering dedciated packages for each supported framework.
 
-## Key Features
+## Supported Frameworks
 
-- **Accessible**: Components in Ark UI are designed with accessibility in mind, adhering to WAI-ARIA design patterns and handling implementation details such as aria and role attributes, focus management, and keyboard navigation.
-- **Headless**: Components are shipped without styles, giving developers full control over styling.
-- **Customizable**: The open component architecture allows for customization and customization, providing granular access to each component part.
-- **Powered by state machines**: Predictable, simplified, and robust component behavior.
-- **Developer Experience**: The library provides a fully-typed API with a consistent and predictable experience.
+Ark UI is available for the following JavaScript frameworks:
+
+- **React**: `@ark-ui/react`
+- **Solid**: `@ark-ui/solid`
+- **Vue**: `@ark-ui/vue`
 
 ## Available Components
 
-At the moment, `@ark-ui/react`offers the following components:
-
-- [Accordion](https://ark-ui.com/docs/react/components/accordion)
-- [Avatar](https://ark-ui.com/docs/react/components/avatar)
-- [Carousel](https://ark-ui.com/docs/react/components/carousel)
-- [Checkbox](https://ark-ui.com/docs/react/components/checkbox)
-- [Color Picker](https://ark-ui.com/docs/react/components/color-picker)
-- [Combobox](https://ark-ui.com/docs/react/components/combobox)
-- [Date Picker](https://ark-ui.com/docs/react/components/date-picker)
-- [Dialog](https://ark-ui.com/docs/react/components/dialog)
-- [Editable](https://ark-ui.com/docs/react/components/editable)
-- [Hover Card](https://ark-ui.com/docs/react/components/hover-card)
-- [Menu](https://ark-ui.com/docs/react/components/menu)
-- [Number Input](https://ark-ui.com/docs/react/components/number-input)
-- [Pagination](https://ark-ui.com/docs/react/components/pagination)
-- [Pin Input](https://ark-ui.com/docs/react/components/pin-input)
-- [Popover](https://ark-ui.com/docs/react/components/popover)
-- [Pressable](https://ark-ui.com/docs/react/components/pressable)
-- [Radio Group](https://ark-ui.com/docs/react/components/radio-group)
-- [Range Slider](https://ark-ui.com/docs/react/components/range-slider)
-- [Rating Group](https://ark-ui.com/docs/react/components/rating-group)
-- [Segment Group](https://ark-ui.com/docs/react/components/segment-group)
-- [Select](https://ark-ui.com/docs/react/components/select)
-- [Slider](https://ark-ui.com/docs/react/components/slider)
-- [Splitter](https://ark-ui.com/docs/react/components/splitter)
-- [Switch](https://ark-ui.com/docs/react/components/switch)
-- [Tabs](https://ark-ui.com/docs/react/components/tabs)
-- [Tags Input](https://ark-ui.com/docs/react/components/tags-input)
-- [Toast](https://ark-ui.com/docs/react/components/toast)
-- [Tooltip](https://ark-ui.com/docs/react/components/tooltip)
+- [Accordion](https://ark-ui.com/docs/components/accordion)
+- [Avatar](https://ark-ui.com/docs/components/avatar)
+- [Carousel](https://ark-ui.com/docs/components/carousel)
+- [Checkbox](https://ark-ui.com/docs/components/checkbox)
+- [Color Picker](https://ark-ui.com/docs/components/color-picker)
+- [Combobox](https://ark-ui.com/docs/components/combobox)
+- [Date Picker](https://ark-ui.com/docs/components/date-picker)
+- [Dialog](https://ark-ui.com/docs/components/dialog)
+- [Editable](https://ark-ui.com/docs/components/editable)
+- [File Upload](https://ark-ui.com/docs/components/file-upload)
+- [Hover Card](https://ark-ui.com/docs/components/hover-card)
+- [Menu](https://ark-ui.com/docs/components/menu)
+- [Number Input](https://ark-ui.com/docs/components/number-input)
+- [Pagination](https://ark-ui.com/docs/components/pagination)
+- [Pin Input](https://ark-ui.com/docs/components/pin-input)
+- [Popover](https://ark-ui.com/docs/components/popover)
+- [Progress](https://ark-ui.com/docs/components/progress)
+- [Radio Group](https://ark-ui.com/docs/components/radio-group)
+- [Range Slider](https://ark-ui.com/docs/components/slider)
+- [Rating Group](https://ark-ui.com/docs/components/rating-group)
+- [Segment Group](https://ark-ui.com/docs/components/segment-group)
+- [Select](https://ark-ui.com/docs/components/select)
+- [Slider](https://ark-ui.com/docs/components/slider)
+- [Splitter](https://ark-ui.com/docs/components/splitter)
+- [Switch](https://ark-ui.com/docs/components/switch)
+- [Tabs](https://ark-ui.com/docs/components/tabs)
+- [Tags Input](https://ark-ui.com/docs/components/tags-input)
+- [Toast](https://ark-ui.com/docs/components/toast)
+- [Toggle Group](https://ark-ui.com/docs/components/toggle-group)
+- [Tooltip](https://ark-ui.com/docs/components/tooltip)
+- [Tree View](https://ark-ui.com/docs/components/tree-view)
 
 ## Installation
 
@@ -62,31 +63,34 @@ yarn add @ark-ui/react
 To use a component from `@ark-ui/react`, import it and include it in your application:
 
 ```tsx
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/react'
+import { Slider, type SliderProps } from '@ark-ui/react'
 import { useState } from 'react'
 
-export const MySlider = () => {
-  const [value, setValue] = useState(30)
+export const MySlider = (props: SliderProps) => {
+  const [value, setValue] = useState([42])
 
   return (
-    <Slider min={-50} max={50} value={value} onChange={(e) => setValue(e.value)}>
-      <SliderLabel>Label</SliderLabel>
-      <SliderOutput>{value}</SliderOutput>
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
-        </SliderTrack>
-        <SliderThumb />
-      </SliderControl>
-    </Slider>
+    <Slider.Root
+      min={0}
+      max={100}
+      value={value}
+      onValueChange={(e) => setValue(e.value)}
+      {...props}
+    >
+      <Slider.Label>Label</Slider.Label>
+      <Slider.ValueText />
+      <Slider.Control>
+        <Slider.Track>
+          <Slider.Range />
+        </Slider.Track>
+        <Slider.Thumb key={0} index={0} />
+      </Slider.Control>
+      <Slider.MarkerGroup>
+        <Slider.Marker value={25}>25</Slider.Marker>
+        <Slider.Marker value={50}>50</Slider.Marker>
+        <Slider.Marker value={75}>75</Slider.Marker>
+      </Slider.MarkerGroup>
+    </Slider.Root>
   )
 }
 ```
@@ -95,10 +99,14 @@ export const MySlider = () => {
 
 For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).
 
+## Roadmap
+
+You can request, vote for, and check upcoming features on our [roadmap](https://ark-ui.canny.io/).
+
 ## Contribution
 
-We welcome contributions to `@ark-ui/react`. Please read our [contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to contribute.
+We welcome contributions to Ark UI. Please read our [contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to contribute.
 
-## Licence
+## License
 
 This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).

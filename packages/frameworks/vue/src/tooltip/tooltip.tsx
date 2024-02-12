@@ -1,18 +1,8 @@
-import { defineComponent } from 'vue'
-import { TooltipProvider } from './tooltip-context'
-import { emits, props } from './tooltip.props'
-import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { TooltipArrow as Arrow } from './tooltip-arrow'
+import { TooltipArrowTip as ArrowTip } from './tooltip-arrow-tip'
+import { TooltipContent as Content } from './tooltip-content'
+import { TooltipPositioner as Positioner } from './tooltip-positioner'
+import { TooltipRoot as Root } from './tooltip-root'
+import { TooltipTrigger as Trigger } from './tooltip-trigger'
 
-export type TooltipProps = UseTooltipProps
-
-export const Tooltip = defineComponent({
-  name: 'Tooltip',
-  props,
-  emits,
-  setup(props, { slots, emit }) {
-    const api = useTooltip(props, emit)
-    TooltipProvider(api)
-
-    return () => slots?.default?.()
-  },
-})
+export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }

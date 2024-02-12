@@ -1,31 +1,25 @@
-import { type JSX } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
-import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { PopoverAnchor as Anchor } from './popover-anchor'
+import { PopoverArrow as Arrow } from './popover-arrow'
+import { PopoverArrowTip as ArrowTip } from './popover-arrow-tip'
+import { PopoverCloseTrigger as CloseTrigger } from './popover-close-trigger'
+import { PopoverContent as Content } from './popover-content'
+import { PopoverDescription as Description } from './popover-description'
+import { PopoverIndicator as Indicator } from './popover-indicator'
+import { PopoverPositioner as Positioner } from './popover-positioner'
+import { PopoverRoot as Root } from './popover-root'
+import { PopoverTitle as Title } from './popover-title'
+import { PopoverTrigger as Trigger } from './popover-trigger'
 
-export type PopoverProps = UsePopoverProps & { children: JSX.Element }
-
-export const Popover = (props: PopoverProps) => {
-  const [usePopoverProps, restProps] = createSplitProps<UsePopoverProps>()(props, [
-    'autoFocus',
-    'closeOnEsc',
-    'closeOnInteractOutside',
-    'getRootNode',
-    'id',
-    'ids',
-    'initialFocusEl',
-    'modal',
-    'onEscapeKeyDown',
-    'onFocusOutside',
-    'onInteractOutside',
-    'onOpenChange',
-    'onPointerDownOutside',
-    'open',
-    'portalled',
-    'positioning',
-  ])
-
-  const api = usePopover(usePopoverProps)
-
-  return <PopoverProvider value={api}>{restProps.children}</PopoverProvider>
+export {
+  Anchor,
+  Arrow,
+  ArrowTip,
+  CloseTrigger,
+  Content,
+  Description,
+  Indicator,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 }

@@ -1,39 +1,31 @@
-import { defineComponent, type PropType } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { SelectProvider } from './select-context'
-import { emits, props } from './select.props'
-import { useSelect, type UseSelectProps } from './use-select'
+import { SelectClearTrigger as ClearTrigger } from './select-clear-trigger'
+import { SelectContent as Content } from './select-content'
+import { SelectControl as Control } from './select-control'
+import { SelectIndicator as Indicator } from './select-indicator'
+import { SelectItem as Item } from './select-item'
+import { SelectItemGroup as ItemGroup } from './select-item-group'
+import { SelectItemGroupLabel as ItemGroupLabel } from './select-item-group-label'
+import { SelectItemIndicator as ItemIndicator } from './select-item-indicator'
+import { SelectItemText as ItemText } from './select-item-text'
+import { SelectLabel as Label } from './select-label'
+import { SelectPositioner as Positioner } from './select-positioner'
+import { SelectRoot as Root } from './select-root'
+import { SelectTrigger as Trigger } from './select-trigger'
+import { SelectValueText as ValueText } from './select-value-text'
 
-export type SelectProps = Assign<HTMLArkProps<'div'>, UseSelectProps>
-
-export const Select = defineComponent({
-  name: 'Select',
-  props: {
-    ...props,
-    items: {
-      type: Array as PropType<UseSelectProps['items']>,
-      required: true,
-    },
-    itemToString: {
-      type: Function as PropType<UseSelectProps['itemToString']>,
-    },
-    itemToValue: {
-      type: Function as PropType<UseSelectProps['itemToValue']>,
-    },
-    isItemDisabled: {
-      type: Function as PropType<UseSelectProps['isItemDisabled']>,
-    },
-  },
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useSelect(props, emit)
-    SelectProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
-      </ark.div>
-    )
-  },
-})
+export {
+  ClearTrigger,
+  Content,
+  Control,
+  Indicator,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemIndicator,
+  ItemText,
+  Label,
+  Positioner,
+  Root,
+  Trigger,
+  ValueText,
+}

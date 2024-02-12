@@ -1,13 +1,11 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchThumbProps = HTMLArkProps<'span'>
+export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
-export const SwitchThumb: ComponentWithProps<SwitchThumbProps> = defineComponent({
-  name: 'SwitchThumb',
-  setup(_, { slots, attrs }) {
+export const SwitchThumb = defineComponent<SwitchThumbProps>(
+  (_, { slots, attrs }) => {
     const api = useSwitchContext()
 
     return () => (
@@ -16,4 +14,7 @@ export const SwitchThumb: ComponentWithProps<SwitchThumbProps> = defineComponent
       </ark.span>
     )
   },
-})
+  {
+    name: 'SwitchThumb',
+  },
+)

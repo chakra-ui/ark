@@ -1,10 +1,10 @@
 ---
-import Code from 'astro/components/Code.astro'
 import { Braces, Keyboard, Orbit, Paintbrush } from 'lucide-react'
 import { Box, Container, Flex, Grid, Stack } from 'styled-system/jsx'
-import { Heading, Typography } from '../ui/typography'
+import { Heading, Text } from '~/components/ui'
 import { CodeExamples } from './code-examples'
 import { react, solid, vue } from './examples'
+import { Code } from 'astro:components'
 
 const features = [
   {
@@ -34,7 +34,7 @@ const features = [
 ]
 ---
 
-<Container py={{ base: '16', md: '24' }}>
+<Container py={{ base: '16', md: '24' }} maxW="7xl">
   <Grid columns={{ base: 1, md: 2 }} gap={{ base: '16', lg: '24' }}>
     <Stack width="full" gap={{ base: '10', md: '12' }}>
       <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
@@ -61,7 +61,7 @@ const features = [
                 <Heading textStyle="lg" fontWeight="semibold">
                   {feature.title}
                 </Heading>
-                <Typography color="fg.muted">{feature.description}</Typography>
+                <Text color="fg.muted">{feature.description}</Text>
               </Stack>
             </Stack>
           ))
@@ -70,8 +70,11 @@ const features = [
     </Stack>
     <Box>
       <CodeExamples client:load>
+        <!-- @ts-expect-error -->
         <Code slot="react" code={react} lang="tsx" theme="css-variables" />
+        <!-- @ts-expect-error -->
         <Code slot="solid" code={solid} lang="tsx" theme="css-variables" />
+        <!-- @ts-expect-error -->
         <Code slot="vue" code={vue} lang="vue" theme="css-variables" />
       </CodeExamples>
     </Box>

@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
-export type SelectClearTriggerProps = HTMLArkProps<'button'>
+export interface SelectClearTriggerProps extends HTMLArkProps<'button'> {}
 
-export const SelectClearTrigger = (props: SelectClearTriggerProps) => {
+export const SelectClearTrigger: ArkComponent<'button'> = (props: SelectClearTriggerProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().clearTriggerProps, props)
 

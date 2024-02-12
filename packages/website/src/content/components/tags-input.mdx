@@ -1,66 +1,33 @@
 ---
 id: tags-input
 title: Tags Input
-description:
-  Tag inputs render tags inside an input, followed by an actual text input. By
-  default, tags are added when text is typed in the input field and the Enter or
-  Comma key is pressed. Throughout the interaction, DOM focus remains on the
-  input element.
+description: A component that allows users to add tags to an input field.
+resources:
+  zag: tags-input
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Import
+<ComponentPreview />
 
-```ts
-import {
-  Tag,
-  TagDeleteTrigger,
-  TagInput,
-  TagsInput,
-  TagsInputClearTrigger,
-  TagsInputControl,
-  TagsInputInput,
-  TagsInputLabel,
-} from '@ark-ui/react'
-```
+## Anatomy
 
-## Usage
+To set up the tags input correctly, you'll need to understand its anatomy and
+how we name its parts.
 
-The TagsInput component consists of the `Tag`, `TagInput`, `TagsInputControl`,
-`TagsInputInput`, `TagsInputClearTrigger`, `TagDeleteTrigger` and
-`TagsInputLabel` components. Combine them as desired to fit your design system.
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-Note that the `TagsInputClearTrigger` and `TagDeleteTrigger` components accept a
-single JSX element which will receive all necessary props to add the event
-listeners and attributes to ensure the desired accessibility.
+<Anatomy id="tags-input" />
 
-```tsx
-<TagsInput>
-  {({ value }) => (
-    <>
-      <TagsInputLabel>Label</TagsInputLabel>
-      <TagsInputControl>
-        {(value ?? []).map((value, index) => (
-          <Fragment key={index}>
-            <Tag index={index} value={value}>
-              <span>{value}</span>
-              <TagDeleteTrigger index={index} value={value}>
-                x
-              </TagDeleteTrigger>
-            </Tag>
-            <TagInput index={index} value={value} />
-          </Fragment>
-        ))}
-        <TagsInputInput placeholder="Add tag" />
-        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-      </TagsInputControl>
-    </>
-  )}
-</TagsInput>
-```
+## Examples
 
-## Navigating and Editing tags
+Learn how to use the `TagsInput` component in your project. Let's take a look at
+the most basic example:
+
+<Story id="Basic" />
+
+### Navigating and Editing tags
 
 When the input has an empty value or the caret is at the start position, the
 tags can be selected by using the arrow left and arrow right keys. When "visual"
@@ -72,15 +39,13 @@ focus in on any tag:
 - Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that
   has _visual_ focus.
 
-## Setting the initial tags
+### Setting the initial tags
 
 To set the initial tag values, set the `defaultValue` prop.
 
-```tsx
-<TagsInput defaultValue={['foo', 'bar']}>{/*...*/}</TagsInput>
-```
+<Story id="InitialValue" />
 
-## Limiting the number of tags
+### Limiting the number of tags
 
 To limit the number of tags within the component, you can set the `max` property
 to the limit you want. The default value is `Infinity`.
@@ -88,13 +53,9 @@ to the limit you want. The default value is `Infinity`.
 When the tag reaches the limit, new tags cannot be added except the
 `allowOverflow` prop is set to `true`.
 
-```tsx
-<TagsInput max={3} allowOverflow>
-  {/*...*/}
-</TagsInput>
-```
+<Story id="MaxWithOverflow" />
 
-## Validating Tags
+### Validating Tags
 
 Before a tag is added, the `validate` function is called to determine whether to
 accept or reject a tag.
@@ -102,17 +63,9 @@ accept or reject a tag.
 A common use-case for validating tags is preventing duplicates or validating the
 data type.
 
-```tsx
-<TagsInput
-  validate={(details) => {
-    return !details.values.includes(details.inputValue)
-  }}
->
-  {/*...*/}
-</TagsInput>
-```
+<Story id="Validated" />
 
-## Blur behavior
+### Blur behavior
 
 When the tags input is blurred, you can configure the action the component
 should take by passing the `blurBehavior` prop.
@@ -120,11 +73,9 @@ should take by passing the `blurBehavior` prop.
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
 
-```tsx
-<TagsInput blurBehavior="add">{/*...*/}</TagsInput>
-```
+<Story id="BlurBehavior" />
 
-## Paste behavior
+### Paste behavior
 
 To add a tag when a arbitrary value is pasted in the input element, pass the
 `addOnPaste` prop.
@@ -134,44 +85,28 @@ When a value is pasted, the component will:
 - check if the value is a valid tag based on the `validate` option
 - split the value by the `delimiter` option passed
 
-```jsx {3}
-<TagsInput addOnPaste delimiter=",">
-  {/*...*/}
-</TagsInput>
-```
+<Story id="PasteBehavior" />
 
-## Disable tag editing
+### Disable tag editing
 
 by default the tags can be edited by double-clicking on the tag or focusing on
 them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
 `allowEditTag={false}`
 
-```tsx
-<TagsInput allowEditTag={false}>{/*...*/}</TagsInput>
-```
+<Story id="DisabledEditing" />
 
-## Events
+### Events
 
 During the lifetime of the tags input interaction, here's a list of events we
 emit:
 
-- `onChange` — invoked when the tag value changes.
-- `onHighlight` — invoked when a tag has visual focus.
-- `onInvalid` — invoked when the max tag count is reached or the `validate`
+- `onValueChange` — invoked when the tag value changes.
+- `onHighlightChange` — invoked when a tag has visual focus.
+- `onValueInvalid` — invoked when the max tag count is reached or the `validate`
   function returns `false`.
 
-```tsx
-<TagsInput
-  onChange={(details) => {
-    console.log('tags changed to:', details.values)
-  }}
-  onHighlight={(details) => {
-    console.log('highlighted tag:', details.value)
-  }}
-  onInvalid={(details) => {
-    console.log('Invalid!', details.reason)
-  }}
->
-  {/*...*/}
-</TagsInput>
-```
+<Story id="OnEvent" />
+
+## API Reference
+
+<ComponentTypes />

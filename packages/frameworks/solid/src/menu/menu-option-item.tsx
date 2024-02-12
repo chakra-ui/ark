@@ -1,27 +1,24 @@
-import { type connect } from '@zag-js/menu'
+import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 
-export type MenuOptionItemState = { isActive: boolean }
+interface ElementProps extends OptionItemProps {
+  children?: JSX.Element | ((state: Accessor<OptionItemState>) => JSX.Element)
+}
 
-export type MenuOptionItemParams = Parameters<ReturnType<typeof connect>['getOptionItemProps']>[0]
+export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export type MenuOptionItemProps = Assign<
-  HTMLArkProps<'div'>,
-  MenuOptionItemParams & {
-    children?: JSX.Element | ((state: Accessor<MenuOptionItemState>) => JSX.Element)
-  }
->
-
-export const MenuOptionItem = (props: MenuOptionItemProps) => {
+export const MenuOptionItem: ArkComponent<'div', MenuOptionItemProps> = (
+  props: MenuOptionItemProps,
+) => {
   const menu = useMenuContext()
 
-  const [optionProps, localProps] = createSplitProps<MenuOptionItemParams>()(props, [
+  const [optionProps, localProps] = createSplitProps<OptionItemProps>()(props, [
     'id',
     'disabled',
     'valueText',
@@ -32,11 +29,10 @@ export const MenuOptionItem = (props: MenuOptionItemProps) => {
     'onCheckedChange',
   ])
 
-  const itemProps = mergeProps(() => menu?.().getOptionItemProps(optionProps), localProps)
-
-  const itemState = createMemo(() => ({ isActive: menu?.().isOptionChecked(optionProps) ?? false }))
+  const mergedProps = mergeProps(() => menu().getOptionItemProps(optionProps), localProps)
+  const itemState = createMemo(() => menu().getOptionItemState(optionProps))
 
   const getChildren = () => runIfFn(localProps.children, itemState)
 
-  return <ark.div {...itemProps}>{getChildren()}</ark.div>
+  return <ark.div {...mergedProps}>{getChildren()}</ark.div>
 }

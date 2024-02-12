@@ -1,13 +1,20 @@
 {
+  "Item": {
+    "type": { "type": "'page'", "isRequired": true },
+    "value": { "type": "number", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -17,7 +24,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevPageTrigger: string\n  nextPageTrigger: string\n  pageTrigger(page: number): string\n}>",
+      "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevTrigger: string\n  nextTrigger: string\n  item(page: number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
@@ -44,18 +51,15 @@
     },
     "type": {
       "type": "'link' | 'button'",
+      "defaultValue": "\"button\"",
       "isRequired": false,
       "description": "The type of the trigger element"
     }
   },
-  "List": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Ellipsis": { "index": { "type": "number", "isRequired": true } },
-  "ListItem": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PageTrigger": {
-    "type": { "type": "'page'", "isRequired": true },
-    "value": { "type": "number", "isRequired": true },
+  "Ellipsis": {
+    "index": { "type": "number", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
-  "NextPageTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "PrevPageTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

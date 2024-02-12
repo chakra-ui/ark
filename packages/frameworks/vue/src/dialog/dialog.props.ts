@@ -6,19 +6,19 @@ export const props = {
   'aria-label': {
     type: String as PropType<Context['aria-label']>,
   },
-  closeOnEsc: {
-    type: Boolean as PropType<Context['closeOnEsc']>,
+  closeOnEscapeKeyDown: {
+    type: Boolean as PropType<Context['closeOnEscapeKeyDown']>,
     default: undefined,
   },
-  closeOnOutsideClick: {
-    type: Boolean as PropType<Context['closeOnOutsideClick']>,
+  closeOnInteractOutside: {
+    type: Boolean as PropType<Context['closeOnInteractOutside']>,
     default: undefined,
   },
   dir: {
-    type: Object as PropType<Context['dir']>,
+    type: String as PropType<Context['dir']>,
   },
   finalFocusEl: {
-    type: Object as PropType<Context['finalFocusEl']>,
+    type: [Function, Object] as PropType<Context['finalFocusEl']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -30,7 +30,7 @@ export const props = {
     type: Object as PropType<Context['ids']>,
   },
   initialFocusEl: {
-    type: Object as PropType<Context['initialFocusEl']>,
+    type: [Function, Object] as PropType<Context['initialFocusEl']>,
   },
   modal: {
     type: Boolean as PropType<Context['modal']>,
@@ -49,11 +49,21 @@ export const props = {
     default: undefined,
   },
   role: {
-    type: Object as PropType<Context['role']>,
+    type: String as PropType<Context['role']>,
   },
   trapFocus: {
     type: Boolean as PropType<Context['trapFocus']>,
     default: undefined,
   },
+  defaultOpen: {
+    type: Boolean as PropType<Context['open']>,
+  },
 }
-export const emits = declareEmits(['esc', 'open-change', 'outside-click'])
+export const emits = declareEmits([
+  'escape-key-down',
+  'open-change',
+  'focus-outside',
+  'interact-outside',
+  'pointer-down-outside',
+  'update:open',
+])

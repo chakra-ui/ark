@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Tabs, TabTrigger, TabList, TabIndicator, TabContent } from '../'
+import { Tabs } from '../'
 
 const items = ref([
   { value: 'React' },
@@ -10,19 +10,19 @@ const items = ref([
 ])
 </script>
 <template>
-  <Tabs>
-    <TabList>
-      <TabTrigger
-        v-for="item in items"
-        :key="item.value"
+  <Tabs.Root>
+    <Tabs.List>
+      <Tabs.Trigger
+        v-for="(item, idx) in items"
+        :key="idx"
         :value="item.value"
         :disabled="item.disabled"
-        >{{ item.value }} Trigger</TabTrigger
+        >{{ item.value }} Trigger</Tabs.Trigger
       >
-      <TabIndicator />
-    </TabList>
-    <TabContent v-for="item in items" :key="item.value" :value="item.value">
-      {{ item.value }} Content</TabContent
+      <Tabs.Indicator />
+    </Tabs.List>
+    <Tabs.Content v-for="(item, idx) in items" :key="idx" :value="item.value">
+      {{ item.value }} Content</Tabs.Content
     >
-  </Tabs>
+  </Tabs.Root>
 </template>

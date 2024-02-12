@@ -1,9 +1,20 @@
 import { defineConfig } from '@pandacss/dev'
-import type { ContainerProperties } from 'styled-system/patterns'
+import { createPreset } from '@park-ui/panda-preset'
+import typographyPreset from 'pandacss-preset-typography'
 
 export default defineConfig({
   preflight: true,
-  presets: ['@pandacss/dev/presets', '@park-ui/presets'],
+  validation: 'none',
+  presets: [
+    '@pandacss/preset-base',
+    createPreset({ grayColor: 'sand', accentColor: 'orange' }),
+    typographyPreset({
+      recipe: {
+        sizes: ['base'],
+        notProse: true,
+      },
+    }),
+  ],
   include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
   exclude: [],
   jsxFramework: 'react',
@@ -33,6 +44,13 @@ export default defineConfig({
         flexDirection: 'column',
         flexGrow: '1',
       },
+      article: {
+        '--colors-prose-body': 'colors.fg.muted',
+        '--colors-prose-heading': 'colors.fg.default',
+        '--colors-prose-bold': 'colors.fg.default',
+        '--colors-prose-link': 'colors.fg.default',
+        '--colors-prose-code': 'colors.fg.muted',
+      },
       'pre, code': {
         fontFamily: 'Fira Code Variable!',
       },
@@ -43,7 +61,7 @@ export default defineConfig({
         '--astro-code-color-background': 'colors.grayPalette.900',
         '--astro-code-token-constant': 'colors.coral.300',
         '--astro-code-token-string': 'colors.yellow.100',
-        '--astro-code-token-comment': 'colors.grayPalette.700',
+        '--astro-code-token-comment': 'colors.grayPalette.500',
         '--astro-code-token-keyword': 'colors.coral.300',
         '--astro-code-token-parameter': 'colors.grayPalette.600',
         '--astro-code-token-function': 'colors.grayPalette.300',
@@ -117,11 +135,11 @@ export default defineConfig({
   patterns: {
     extend: {
       container: {
-        transform(props: ContainerProperties) {
+        // @ts-ignore
+        transform(props: StyledPprops) {
           return {
             position: 'relative',
             width: '100%',
-            maxWidth: '7xl',
             mx: 'auto',
             px: { base: '4', md: '6' },
             ...props,

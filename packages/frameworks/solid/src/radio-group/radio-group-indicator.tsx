@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useRadioGroupContext } from './radio-group-context'
 
-export type RadioGroupIndicatorProps = HTMLArkProps<'div'>
+export interface RadioGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const RadioGroupIndicator = (props: RadioGroupIndicatorProps) => {
+export const RadioGroupIndicator: ArkComponent<'div'> = (props: RadioGroupIndicatorProps) => {
   const api = useRadioGroupContext()
   const mergedProps = mergeProps(() => api().indicatorProps, props)
 

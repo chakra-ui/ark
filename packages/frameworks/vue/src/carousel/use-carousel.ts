@@ -5,8 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseCarouselProps = Optional<carousel.Context, 'id'>
-export type UseCarouselReturn = ComputedRef<carousel.Api<PropTypes>>
+export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}
+export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()
@@ -14,11 +14,11 @@ export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): Us
 
   const [state, send] = useMachine(
     carousel.machine({
-      id: useId().value,
-      getRootNode,
       ...context.value,
-      onSlideChange: (details) => {
-        emit('slide-change', details)
+      id: context.value.id ?? useId().value,
+      getRootNode,
+      onIndexChange: (details) => {
+        emit('index-change', details)
       },
     }),
     { context },

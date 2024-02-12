@@ -1,5 +1,7 @@
+import { segmentGroupAnatomy } from '@ark-ui/anatomy'
+import type { ItemState } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
@@ -7,15 +9,13 @@ import type { Assign } from '../types'
 import { useSegmentGroupContext } from './segment-group-context'
 import {
   SegmentGroupItemProvider,
-  type ItemState,
   type SegmentGroupItemContext,
 } from './segment-group-item-context'
-import { parts } from './segment-group.anatomy'
 
 export interface SegmentGroupItemProps
   extends Assign<
       HTMLArkProps<'label'>,
-      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
+      { children?: ((state: ItemState) => ReactNode) | ReactNode }
     >,
     SegmentGroupItemContext {}
 
@@ -29,7 +29,7 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const api = useSegmentGroupContext()
     const mergedProps = mergeProps(
       api.getItemProps(itemProps),
-      parts.item.attrs as Record<string, string>,
+      segmentGroupAnatomy.build().item.attrs as Record<string, string>,
       localProps,
     )
 
@@ -37,11 +37,10 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const view = runIfFn(children, itemState)
 
     return (
-      <SegmentGroupItemProvider value={props}>
+      <SegmentGroupItemProvider value={itemProps}>
         <ark.label {...mergedProps} ref={ref}>
           {view}
         </ark.label>
-        <input {...api.getItemHiddenInputProps(itemProps)} />
       </SegmentGroupItemProvider>
     )
   },

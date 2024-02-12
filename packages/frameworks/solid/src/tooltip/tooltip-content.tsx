@@ -1,18 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
+import { Show } from 'solid-js'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useTooltipContext } from './tooltip-context'
 
-export type TooltipContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface TooltipContentProps extends HTMLArkProps<'div'> {}
 
-export const TooltipContent = (props: TooltipContentProps) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
+export const TooltipContent: ArkComponent<'div'> = (props: TooltipContentProps) => {
   const api = useTooltipContext()
-  const contentProps = mergeProps(() => api().contentProps, localProps)
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(
+    () => api().contentProps,
+    () => presenceApi().presenceProps,
+    props,
+  )
 
   return (
-    <Presence present={api().isOpen} {...presenceProps}>
-      <ark.div {...contentProps} />
-    </Presence>
+    <Show when={!presenceApi().isUnmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
   )
 }

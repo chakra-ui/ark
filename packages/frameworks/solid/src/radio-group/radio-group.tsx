@@ -1,32 +1,8 @@
-import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { RadioGroupProvider } from './radio-group-context'
-import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
+import { RadioGroupIndicator as Indicator } from './radio-group-indicator'
+import { RadioGroupItem as Item } from './radio-group-item'
+import { RadioGroupItemControl as ItemControl } from './radio-group-item-control'
+import { RadioGroupItemText as ItemText } from './radio-group-item-text'
+import { RadioGroupLabel as Label } from './radio-group-label'
+import { RadioGroupRoot as Root } from './radio-group-root'
 
-export type RadioGroupProps = Assign<HTMLArkProps<'div'>, UseRadioGroupProps>
-
-export const RadioGroup = (props: RadioGroupProps) => {
-  const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
-    'dir',
-    'disabled',
-    'form',
-    'getRootNode',
-    'id',
-    'ids',
-    'name',
-    'onValueChange',
-    'orientation',
-    'value',
-  ])
-
-  const api = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
-
-  return (
-    <RadioGroupProvider value={api}>
-      <ark.div {...mergedProps} />
-    </RadioGroupProvider>
-  )
-}
+export { Indicator, Item, ItemControl, ItemText, Label, Root }

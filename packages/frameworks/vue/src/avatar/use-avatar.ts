@@ -5,8 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseAvatarProps = Optional<avatar.Context, 'id'>
-export type UseAvatarReturn = ComputedRef<avatar.Api<PropTypes>>
+export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
+export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAvatarReturn => {
   const getRootNode = useEnvironmentContext()
@@ -17,8 +17,8 @@ export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAva
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onLoadingStatusChange: (loadingStatus) => {
-        emit('loading-status-change', loadingStatus)
+      onLoadingStatusChange: (details) => {
+        emit('loading-status-change', details)
       },
     }),
     { context },

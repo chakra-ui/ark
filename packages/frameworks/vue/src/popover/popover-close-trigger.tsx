@@ -1,18 +1,20 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePopoverContext } from './popover-context'
 
-export type PopoverCloseTriggerProps = HTMLArkProps<'button'>
+export interface PopoverCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const PopoverCloseTrigger = defineComponent({
-  name: 'PopoverCloseTrigger',
-  setup(_, { slots, attrs }) {
+export const PopoverCloseTrigger = defineComponent<PopoverCloseTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = usePopoverContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'PopoverCloseTrigger')
 
-      return h(DefaultSlot, { ...api.value.closeTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.closeTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'PopoverCloseTrigger',
+  },
+)

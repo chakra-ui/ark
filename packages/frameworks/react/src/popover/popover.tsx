@@ -1,20 +1,25 @@
-import { type ReactNode } from 'react'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { PopoverProvider, type PopoverContext } from './popover-context'
-import { usePopover, type UsePopoverProps } from './use-popover'
+import { PopoverAnchor as Anchor } from './popover-anchor'
+import { PopoverArrow as Arrow } from './popover-arrow'
+import { PopoverArrowTip as ArrowTip } from './popover-arrow-tip'
+import { PopoverCloseTrigger as CloseTrigger } from './popover-close-trigger'
+import { PopoverContent as Content } from './popover-content'
+import { PopoverDescription as Description } from './popover-description'
+import { PopoverIndicator as Indicator } from './popover-indicator'
+import { PopoverPositioner as Positioner } from './popover-positioner'
+import { PopoverRoot as Root } from './popover-root'
+import { PopoverTitle as Title } from './popover-title'
+import { PopoverTrigger as Trigger } from './popover-trigger'
 
-export interface PopoverProps
-  extends Assign<
-    UsePopoverProps,
-    { children?: ReactNode | ((props: PopoverContext) => ReactNode) }
-  > {}
-
-export const Popover = (props: PopoverProps) => {
-  const { children, ...usePopoverProps } = props
-
-  const api = usePopover(usePopoverProps)
-  const view = runIfFn(children, api)
-
-  return <PopoverProvider value={api}>{view}</PopoverProvider>
+export {
+  Anchor,
+  Arrow,
+  ArrowTip,
+  CloseTrigger,
+  Content,
+  Description,
+  Indicator,
+  Positioner,
+  Root,
+  Title,
+  Trigger,
 }

@@ -1,18 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
+import { Show } from 'solid-js'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useMenuContext } from './menu-context'
 
-export type MenuContentProps = HTMLArkProps<'div'> & PresenceProps
+export interface MenuContentProps extends HTMLArkProps<'div'> {}
 
-export const MenuContent = (props: MenuContentProps) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
+export const MenuContent: ArkComponent<'div'> = (props: MenuContentProps) => {
   const api = useMenuContext()
-  const mergedProps = mergeProps(() => api?.().contentProps, localProps)
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(
+    () => api().contentProps,
+    () => presenceApi().presenceProps,
+    props,
+  )
 
   return (
-    <Presence present={api?.().isOpen} {...presenceProps}>
+    <Show when={!presenceApi().isUnmounted}>
       <ark.div {...mergedProps} />
-    </Presence>
+    </Show>
   )
 }

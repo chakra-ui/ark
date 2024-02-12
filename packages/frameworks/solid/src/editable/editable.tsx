@@ -1,59 +1,11 @@
-import { mergeProps } from '@zag-js/solid'
-import { splitProps, type JSX } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { EditableProvider, type EditableContext } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { EditableArea as Area } from './editable-area'
+import { EditableCancelTrigger as CancelTrigger } from './editable-cancel-trigger'
+import { EditableControl as Control } from './editable-control'
+import { EditableEditTrigger as EditTrigger } from './editable-edit-trigger'
+import { EditableInput as Input } from './editable-input'
+import { EditableLabel as Label } from './editable-label'
+import { EditablePreview as Preview } from './editable-preview'
+import { EditableRoot as Root } from './editable-root'
+import { EditableSubmitTrigger as SubmitTrigger } from './editable-submit-trigger'
 
-export type EditableProps = Assign<
-  HTMLArkProps<'div'>,
-  UseEditableProps & {
-    children: JSX.Element | ((api: EditableContext) => JSX.Element)
-  }
->
-
-export const Editable = (props: EditableProps) => {
-  const [useEditableProps, restProps] = createSplitProps<UseEditableProps>()(props, [
-    'activationMode',
-    'autoResize',
-    'dir',
-    'disabled',
-    'finalFocusEl',
-    'form',
-    'getRootNode',
-    'id',
-    'ids',
-    'invalid',
-    'maxLength',
-    'name',
-    'onEdit',
-    'onFocusOutside',
-    'onInteractOutside',
-    'onPointerDownOutside',
-    'onValueChange',
-    'onValueCommit',
-    'onValueRevert',
-    'placeholder',
-    'readOnly',
-    'selectOnFocus',
-    'startWithEditView',
-    'submitMode',
-    'translations',
-    'value',
-  ])
-
-  const editable = useEditable(useEditableProps)
-
-  const [childrenProps, localProps] = splitProps(restProps, ['children'])
-  const rootProps = mergeProps(() => editable().rootProps, localProps)
-
-  const getChildren = () => runIfFn(childrenProps.children, editable)
-
-  return (
-    <EditableProvider value={editable}>
-      <ark.div {...rootProps}>{getChildren()}</ark.div>
-    </EditableProvider>
-  )
-}
+export { Area, CancelTrigger, Control, EditTrigger, Input, Label, Preview, Root, SubmitTrigger }

@@ -1,20 +1,8 @@
-import { defineComponent } from 'vue'
-import { type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { HoverCardProvider } from './hover-card-context'
-import { emits, props } from './hover-card.props'
-import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { HoverCardArrow as Arrow } from './hover-card-arrow'
+import { HoverCardArrowTip as ArrowTip } from './hover-card-arrow-tip'
+import { HoverCardContent as Content } from './hover-card-content'
+import { HoverCardPositioner as Positioner } from './hover-card-positioner'
+import { HoverCardRoot as Root } from './hover-card-root'
+import { HoverCardTrigger as Trigger } from './hover-card-trigger'
 
-export type HoverCardProps = Assign<HTMLArkProps<'div'>, UseHoverCardProps>
-
-export const HoverCard = defineComponent({
-  name: 'HoverCard',
-  props,
-  emits,
-  setup(props, { slots, emit }) {
-    const api = useHoverCard(props, emit)
-    HoverCardProvider(api)
-
-    return () => slots?.default?.(api.value)
-  },
-})
+export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }

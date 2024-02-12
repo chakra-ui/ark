@@ -1,74 +1,49 @@
 ---
 id: slider
 title: Slider
-description:
-  A slider allows users to make selections from a range of values. Think of it
-  as a custom `<input type='range'/>` with the ability to achieve custom styling
-  and accessibility.
+description: A control element that allows for a range of selections.
+resources:
+  zag: slider
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/slider/
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Import
+<ComponentPreview />
 
-```ts
-import {
-  Slider,
-  SliderControl,
-  SliderLabel,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderOutput,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-} from '@ark-ui/react'
-```
+## Anatomy
 
-## Usage
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
 
-The Slider component consists of the `SliderControl`, `SliderLabel`,
-`SliderMarker`, `SliderMarkerGroup`, `SliderOutput`, `SliderRange`,
-`SliderThumb`, and `SliderTrack` components. Combine them as desired to fit your
-design system.
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-```tsx
-<Slider>
-  <SliderLabel>Label</SliderLabel>
-  <SliderControl>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </SliderControl>
-</Slider>
-```
+<Anatomy id="slider" />
+
+## Examples
+
+Learn how to use the `Slider` component in your project. Let's take a look at
+the most basic example:
+
+<Story id="Basic" />
 
 ### Adding slider marks
 
-You can add marks to the slider track by using the `SliderMarkerGroup` and
-`SliderMarker` components.
+You can add marks to the slider track by using the `Slider.MarkerGroup` and
+`Slider.Marker` components.
 
-Position the `SliderMarker` components relative to the track by providing the
+Position the `Slider.Marker` components relative to the track by providing the
 `value` prop.
 
-```tsx
-<Slider>
-  <SliderControl>
-    <SliderTrack>
-      <SliderRange />
-    </SliderTrack>
-    <SliderThumb />
-  </SliderControl>
-  <SliderMarkerGroup>
-    <SliderMarker value={0}>0</SliderMarker>
-    <SliderMarker value={25}>25</SliderMarker>
-    <SliderMarker value={50}>50</SliderMarker>
-    <SliderMarker value={75}>75</SliderMarker>
-    <SliderMarker value={100}>100</SliderMarker>
-  </SliderMarkerGroup>
-</Slider>
-```
+<Story id="WithMarks" />
+
+### Setting the initial value
+
+To set the slider's initial value, set the `defaultValue` prop to the array of
+numbers.
+
+<Story id="InitialValue" />
 
 ### Specifying the minimum and maximum
 
@@ -78,11 +53,7 @@ want, you can easily specify different bounds by changing the values of the
 
 For example, to ask the user for a value between `-10` and `10`, you can use:
 
-```tsx
-<Slider min={-10} max={10}>
-  {/*...*/}
-</Slider>
-```
+<Story id="MinMax" />
 
 ### Setting the value's granularity
 
@@ -92,25 +63,14 @@ integer. You can change the step attribute to control the granularity.
 For example, If you need a value between `5` and `10`, accurate to two decimal
 places, you should set the value of step to `0.01`:
 
-```tsx
-<Slider step={0.01} min={5} max={10}>
-  {/*...*/}
-</Slider>
-```
+<Story id="Step" />
 
 ### Listening for changes
 
-When the slider value changes, the `onChange` and `onChangeEnd` callbacks are
-invoked. You can use this to set up custom behaviors in your app.
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to set up custom behaviors in your app.
 
-```tsx
-<Slider
-  onChange={(value) => console.log(value)}
-  onChangeEnd={(value) => console.log(value)}
->
-  {/*...*/}
-</Slider>
-```
+<Story id="OnEvent" />
 
 ### Changing the orientation
 
@@ -123,6 +83,15 @@ increment/decrement its value.
 > Don't forget to change the styles of the vertical slider by specifying its
 > height
 
-```tsx
-<Slider orientation="vertical">{/*...*/}</Slider>
-```
+<Story id="Vertical" />
+
+### Changing the origin
+
+By default, the slider's origin is at the start of the track. To change the
+origin to the center of the track, set the `origin` prop to `center`.
+
+<Story id="CenterOrigin" />
+
+## API Reference
+
+<ComponentTypes id="slider" />

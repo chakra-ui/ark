@@ -10,7 +10,8 @@ export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {}
 
-export type UseComboboxReturn<T extends CollectionItem> = Accessor<combobox.Api<PropTypes, T>>
+export interface UseComboboxReturn<T extends CollectionItem>
+  extends Accessor<combobox.Api<PropTypes, T>> {}
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
@@ -21,11 +22,12 @@ export const useCombobox = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = combobox.collection(collectionOptions)
+  const collection = () => combobox.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode, collection }, rest)
+  const context = () =>
+    mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
 
-  const [state, send] = useMachine(combobox.machine(context), {
+  const [state, send] = useMachine(combobox.machine(context()), {
     context,
   })
 

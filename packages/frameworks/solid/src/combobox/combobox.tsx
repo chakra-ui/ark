@@ -1,66 +1,29 @@
-import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign, CollectionItem } from '../types'
-import { ComboboxProvider, type ComboboxContext } from './combobox-context'
-import { useCombobox, type UseComboboxProps } from './use-combobox'
+import { ComboboxClearTrigger as ClearTrigger } from './combobox-clear-trigger'
+import { ComboboxContent as Content } from './combobox-content'
+import { ComboboxControl as Control } from './combobox-control'
+import { ComboboxInput as Input } from './combobox-input'
+import { ComboboxItem as Item } from './combobox-item'
+import { ComboboxItemGroup as ItemGroup } from './combobox-item-group'
+import { ComboboxItemGroupLabel as ItemGroupLabel } from './combobox-item-group-label'
+import { ComboboxItemIndicator as ItemIndicator } from './combobox-item-indicator'
+import { ComboboxItemText as ItemText } from './combobox-item-text'
+import { ComboboxLabel as Label } from './combobox-label'
+import { ComboboxPositioner as Positioner } from './combobox-positioner'
+import { ComboboxRoot as Root } from './combobox-root'
+import { ComboboxTrigger as Trigger } from './combobox-trigger'
 
-export type ComboboxProps<T extends CollectionItem> = Assign<
-  HTMLArkProps<'div'>,
-  UseComboboxProps<T>
-> & {
-  children?: JSX.Element | ((context: ComboboxContext<T>) => JSX.Element)
-}
-
-export const Combobox = <T extends CollectionItem>(props: ComboboxProps<T>) => {
-  const [selectProps, localProps] = createSplitProps<UseComboboxProps<T>>()(props, [
-    'allowCustomValue',
-    'autoFocus',
-    'closeOnSelect',
-    'dir',
-    'disabled',
-    'form',
-    'getRootNode',
-    'highlightedValue',
-    'id',
-    'ids',
-    'inputBehavior',
-    'inputValue',
-    'invalid',
-    'isItemDisabled',
-    'items',
-    'itemToString',
-    'itemToValue',
-    'loop',
-    'multiple',
-    'name',
-    'onFocusOutside',
-    'onHighlightChange',
-    'onInputValueChange',
-    'onInteractOutside',
-    'onOpenChange',
-    'onOpenChange',
-    'onPointerDownOutside',
-    'onValueChange',
-    'openOnClick',
-    'placeholder',
-    'positioning',
-    'readOnly',
-    'selectionBehavior',
-    'selectOnBlur',
-    'translations',
-    'value',
-  ])
-
-  const api = useCombobox(selectProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
-
-  return (
-    <ComboboxProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
-    </ComboboxProvider>
-  )
+export {
+  ClearTrigger,
+  Content,
+  Control,
+  Input,
+  Item,
+  ItemGroup,
+  ItemGroupLabel,
+  ItemIndicator,
+  ItemText,
+  Label,
+  Positioner,
+  Root,
+  Trigger,
 }

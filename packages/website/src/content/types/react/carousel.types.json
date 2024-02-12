@@ -1,4 +1,12 @@
 {
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "align": {
       "type": "'center' | 'end' | 'start'",
@@ -17,11 +25,12 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -41,13 +50,14 @@
       "isRequired": false,
       "description": "Whether the carousel should loop around."
     },
-    "onSlideChange": {
+    "onIndexChange": {
       "type": "(details: SlideChangeDetails) => void",
       "isRequired": false,
       "description": "Function called when the slide changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
+      "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the carousel."
     },
@@ -60,14 +70,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The amount of space between slides."
-    }
-  },
-  "Slide": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   },
   "Control": {
@@ -93,7 +95,21 @@
     },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "SlideGroup": {
+  "ItemGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "NextTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "PrevTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -101,20 +117,6 @@
     }
   },
   "IndicatorGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "NextSlideTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "PrevSlideTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

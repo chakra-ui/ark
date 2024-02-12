@@ -1,37 +1,10 @@
-import { type JSX } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
-import { runIfFn } from '../run-if-fn'
-import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
+import { DialogBackdrop as Backdrop } from './dialog-backdrop'
+import { DialogCloseTrigger as CloseTrigger } from './dialog-close-trigger'
+import { DialogContent as Content } from './dialog-content'
+import { DialogDescription as Description } from './dialog-description'
+import { DialogPositioner as Positioner } from './dialog-positioner'
+import { DialogRoot as Root } from './dialog-root'
+import { DialogTitle as Title } from './dialog-title'
+import { DialogTrigger as Trigger } from './dialog-trigger'
 
-export type DialogProps = UseDialogProps & {
-  children?: JSX.Element | ((state: UseDialogReturn) => JSX.Element)
-}
-
-export const Dialog = (props: DialogProps) => {
-  const [dialogParams, localProps] = createSplitProps<UseDialogProps>()(props, [
-    'aria-label',
-    'closeOnEsc',
-    'closeOnOutsideClick',
-    'dir',
-    'finalFocusEl',
-    'getRootNode',
-    'id',
-    'ids',
-    'initialFocusEl',
-    'modal',
-    'onEsc',
-    'onOpenChange',
-    'onOutsideClick',
-    'open',
-    'preventScroll',
-    'restoreFocus',
-    'role',
-    'trapFocus',
-  ])
-
-  const api = useDialog(dialogParams)
-  const getChildren = () => runIfFn(localProps.children, api)
-
-  return <DialogProvider value={api}>{getChildren()}</DialogProvider>
-}
+export { Backdrop, CloseTrigger, Content, Description, Positioner, Root, Title, Trigger }

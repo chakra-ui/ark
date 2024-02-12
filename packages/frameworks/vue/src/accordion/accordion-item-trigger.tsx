@@ -1,20 +1,31 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
+import { usePresenceContext } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
-export type AccordionItemTriggerProps = HTMLArkProps<'button'>
+export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
-export const AccordionItemTrigger = defineComponent({
-  name: 'AccordionItemTrigger',
-  setup(_, { attrs, slots }) {
+export const AccordionItemTrigger = defineComponent<AccordionItemTriggerProps>(
+  (_, { attrs, slots }) => {
     const api = useAccordionContext()
     const item = useAccordionItemContext()
+    const presenceApi = usePresenceContext()
+    const triggerProps = computed(() => api.value.getItemTriggerProps(item.value))
+
+    const ariaProps = computed(() => ({
+      'aria-controls': presenceApi.value.isUnmounted
+        ? undefined
+        : triggerProps.value['aria-controls'],
+    }))
 
     return () => (
-      <ark.button {...api.value.getItemTriggerProps(item.value)} {...attrs}>
+      <ark.button {...triggerProps.value} {...ariaProps.value} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )
   },
-})
+  {
+    name: 'AccordionItemTrigger',
+  },
+)

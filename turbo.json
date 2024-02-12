@@ -8,17 +8,10 @@
       "cache": false
     },
     "build": {
-      "outputs": ["dist/**", ".next/**"],
-      "cache": false
+      "outputs": ["dist/**", "styled-system/**"]
     },
-    "lint": {
-      "outputs": []
-    },
-    "test:ci": {
-      "outputs": []
-    },
-    "typecheck": {
-      "outputs": []
-    }
+    "lint": {},
+    "test:ci": {},
+    "typecheck": {}
   }
 }

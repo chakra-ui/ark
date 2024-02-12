@@ -1,10 +1,10 @@
-import { render } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import { Environment } from './environment'
 import PrintEnvironment from './stories/print-environment.vue'
 
 describe('Environment', () => {
   it('should have access to the environment values', () => {
-    const { getByLabelText } = render({
+    render({
       components: { Environment, PrintEnvironment },
       template: `
         <Environment :value='document'>
@@ -13,6 +13,6 @@ describe('Environment', () => {
       `,
     })
 
-    expect(getByLabelText('environment values').innerHTML).not.toBe('""')
+    expect(screen.getByLabelText('environment values').innerHTML).not.toBe('""')
   })
 })

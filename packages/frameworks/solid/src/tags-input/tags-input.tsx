@@ -1,57 +1,23 @@
-import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
+import { TagsInputClearTrigger as ClearTrigger } from './tags-input-clear-trigger'
+import { TagsInputControl as Control } from './tags-input-control'
+import { TagsInputInput as Input } from './tags-input-input'
+import { TagsInputItem as Item } from './tags-input-item'
+import { TagsInputItemDeleteTrigger as ItemDeleteTrigger } from './tags-input-item-delete-trigger'
+import { TagsInputItemInput as ItemInput } from './tags-input-item-input'
+import { TagsInputItemPreview as ItemPreview } from './tags-input-item-preview'
+import { TagsInputItemText as ItemText } from './tags-input-item-text'
+import { TagsInputLabel as Label } from './tags-input-label'
+import { TagsInputRoot as Root } from './tags-input-root'
 
-export type TagsInputChildren = {
-  children: (pages: UseTagsInputReturn) => JSX.Element | JSX.Element
-}
-
-export type TagsInputProps = Assign<HTMLArkProps<'div'>, UseTagsInputProps & TagsInputChildren>
-
-export const TagsInput = (props: TagsInputProps) => {
-  const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [
-    'addOnPaste',
-    'allowEditTag',
-    'allowOverflow',
-    'autoFocus',
-    'blurBehavior',
-    'delimiter',
-    'dir',
-    'disabled',
-    'form',
-    'getRootNode',
-    'id',
-    'ids',
-    'inputValue',
-    'invalid',
-    'max',
-    'maxLength',
-    'name',
-    'onFocusOutside',
-    'onHighlightChange',
-    'onInteractOutside',
-    'onPointerDownOutside',
-    'onValueChange',
-    'onValueInvalid',
-    'readOnly',
-    'translations',
-    'validate',
-    'value',
-  ])
-
-  const api = useTagsInput(tagsInputParams)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
-  const getChildren = () => runIfFn(restProps.children, api)
-
-  return (
-    <TagsInputProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
-      <input {...api().hiddenInputProps} />
-    </TagsInputProvider>
-  )
+export {
+  ClearTrigger,
+  Control,
+  Input,
+  Item,
+  ItemDeleteTrigger,
+  ItemInput,
+  ItemPreview,
+  ItemText,
+  Label,
+  Root,
 }

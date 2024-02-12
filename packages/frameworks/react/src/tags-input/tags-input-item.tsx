@@ -1,18 +1,16 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import type { ItemProps, ItemState } from '@zag-js/tags-input'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './tags-input-context'
-import { TagsInputItemProvider, type ItemProps, type ItemState } from './tags-input-item-context'
+import { TagsInputItemProvider } from './tags-input-item-context'
 
 export interface TagsInputItemProps
-  extends ItemProps,
-    Assign<
-      HTMLArkProps<'div'>,
-      { children?: React.ReactNode | ((props: ItemState) => React.ReactNode) }
-    > {}
+  extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
+    ItemProps {}
 
 export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [

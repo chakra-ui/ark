@@ -2,56 +2,47 @@
 id: carousel
 title: Carousel
 description: A slideshow component that cycles through elements.
+resources:
+  zag: carousel
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, Story, ComponentPreview } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Basic Usage
+<ComponentPreview />
 
-Here's an example of how to use the Carousel component with a set of images:
+## Anatomy
+
+To set up the carousel correctly, you'll need to understand its anatomy and how
+we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="carousel" />
+
+## Examples
+
+Learn how to use the `Caorusel` component in your project. Let's take a look at
+the most basic example:
 
 <Story id="Basic" />
 
-## Controlled Carousel
+### Controlled Carousel
 
 To create a controlled Carousel component, you can manage the state of the
-carousel using the `index` prop and update it when the `onSlideChange` event
+carousel using the `index` prop and update it when the `onIndexChange` event
 handler is called:
 
-```tsx
-const ControlledCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+<Story id="Controlled" />
 
-  const handleSlideChange = (details) => {
-    setCurrentIndex(details.index)
-  }
+### Customizing the Carousel
 
-  return (
-    <Carousel index={currentIndex} onSlideChange={handleSlideChange}>
-      {/* ... */}
-    </Carousel>
-  )
-}
-```
+You can customize the Carousel component by setting various props. Here's an
+example of a customized Carousel:
 
-## Customizing the Carousel
+<Story id="Customized" />
 
-You can customize the Carousel component by setting various props such as
-`align`, `loop`, `slidesPerView`, and `spacing`. Here's an example of a
-customized Carousel:
+## API Reference
 
-```tsx
-const CustomCarousel = () => {
-  return (
-    <Carousel
-      align="center"
-      loop={true}
-      slidesPerView={2}
-      spacing="16px"
-      orientation="horizontal"
-    >
-      {/* ... */}
-    </Carousel>
-  )
-}
-```
+<ComponentTypes />

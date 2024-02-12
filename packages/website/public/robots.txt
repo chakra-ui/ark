@@ -6,4 +6,4 @@ Allow: /
 Host: https://ark-ui.com
 
 # Sitemaps
-Sitemap: https://ark-ui.com/sitemap.xml
+Sitemap: https://ark-ui.com/sitemap-index.xml

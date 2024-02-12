@@ -2,11 +2,10 @@ import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export type CarouselViewportProps = HTMLArkProps<'div'>
+export interface CarouselViewportProps extends HTMLArkProps<'div'> {}
 
-export const CarouselViewport = defineComponent({
-  name: 'CarouselViewport',
-  setup(_, { slots, attrs }) {
+export const CarouselViewport = defineComponent<CarouselViewportProps>(
+  (_, { slots, attrs }) => {
     const api = useCarouselContext()
 
     return () => (
@@ -15,4 +14,7 @@ export const CarouselViewport = defineComponent({
       </ark.div>
     )
   },
-})
+  {
+    name: 'CarouselViewport',
+  },
+)

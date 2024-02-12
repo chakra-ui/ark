@@ -1,27 +1,16 @@
-import type { ColorChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderTrackProps = Assign<HTMLArkProps<'div'>, ColorChannelProps>
+export interface ColorPickerChannelSliderTrackProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerChannelSliderTrack = (props: ColorPickerChannelSliderTrackProps) => {
-  const [colorChannelProps, localProps] = createSplitProps<ColorChannelProps>()(props, [
-    'channel',
-    'orientation',
-  ])
+export const ColorPickerChannelSliderTrack: ArkComponent<'div'> = (
+  props: ColorPickerChannelSliderTrackProps,
+) => {
+  const sliderContext = useColorPickerChannelSliderContext()
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(
-    () => api().getChannelSliderTrackProps(colorChannelProps),
-    localProps,
-  )
+  const mergedProps = mergeProps(() => api().getChannelSliderTrackProps(sliderContext), props)
 
-  return (
-    <ColorPickerChannelSliderProvider value={colorChannelProps}>
-      <ark.div {...mergedProps} />
-    </ColorPickerChannelSliderProvider>
-  )
+  return <ark.div {...mergedProps} />
 }

@@ -1,18 +1,20 @@
-import { defineComponent, h } from 'vue'
-import type { HTMLArkProps } from '../factory'
-import { useUniqueChild } from '../utils'
+import { defineComponent } from 'vue'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDialogContext } from './dialog-context'
 
-export type DialogCloseTriggerProps = HTMLArkProps<'button'>
+export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogCloseTrigger = defineComponent({
-  name: 'DialogCloseTrigger',
-  setup(_, { slots, attrs }) {
+export const DialogCloseTrigger = defineComponent<DialogCloseTriggerProps>(
+  (_, { slots, attrs }) => {
     const api = useDialogContext()
-    return () => {
-      const DefaultSlot = useUniqueChild(slots, 'DialogCloseTrigger')
 
-      return h(DefaultSlot, { ...api.value.closeTriggerProps, ...attrs })
-    }
+    return () => (
+      <ark.button {...api.value.closeTriggerProps} {...attrs}>
+        {slots.default?.()}
+      </ark.button>
+    )
   },
-})
+  {
+    name: 'DialogCloseTrigger',
+  },
+)

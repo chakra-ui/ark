@@ -3,7 +3,7 @@ import { type UseMenuReturn } from './use-menu'
 
 export type MenuContext = () => ReturnType<ReturnType<UseMenuReturn>['api']>
 
-export const [MenuProvider, useMenuContext] = createContext<MenuContext | undefined>({
+export const [MenuProvider, useMenuContext] = createContext<MenuContext>({
   hookName: 'useMenuContext',
   providerName: '<MenuProvider />',
   strict: false,

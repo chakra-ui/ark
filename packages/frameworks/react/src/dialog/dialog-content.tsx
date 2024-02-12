@@ -1,31 +1,21 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { Presence, splitPresenceProps, type PresenceProps } from '../presence'
-import type { Assign } from '../types'
+import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
-export interface DialogContentProps
-  extends Assign<HTMLArkProps<'div'>, Omit<PresenceProps, 'children'>> {}
+export interface DialogContentProps extends HTMLArkProps<'div'> {}
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
   const api = useDialogContext()
+  const presenceApi = usePresenceContext()
+  const mergedProps = mergeProps(api.contentProps, presenceApi.getPresenceProps(ref), props)
 
-  return (
-    <Presence present={api.isOpen} {...presenceProps}>
-      <DialogInnerContent ref={ref} {...localProps} />
-    </Presence>
-  )
+  if (presenceApi.isUnmounted) {
+    return null
+  }
+
+  return <ark.div {...mergedProps} />
 })
 
 DialogContent.displayName = 'DialogContent'
-
-const DialogInnerContent = forwardRef<HTMLDivElement, DialogContentProps>(
-  function DialogInnerContent(props, ref) {
-    const api = useDialogContext()
-    const mergedProps = mergeProps(api.contentProps, props)
-
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)

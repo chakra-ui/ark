@@ -1,19 +1,20 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { ComponentWithProps } from '../utils'
-import { useToastItemContext } from './toast-item-context'
+import { useToastContext } from './toast-context'
 
-export type ToastTitleProps = HTMLArkProps<'h3'>
+export interface ToastTitleProps extends HTMLArkProps<'div'> {}
 
-export const ToastTitle: ComponentWithProps<ToastTitleProps> = defineComponent({
-  name: 'ToastTitle',
-  setup(_, { attrs }) {
-    const api = useToastItemContext()
+export const ToastTitle = defineComponent<ToastTitleProps>(
+  (_, { attrs, slots }) => {
+    const api = useToastContext()
 
     return () => (
-      <ark.h3 {...api.value.titleProps} {...attrs}>
-        {api.value.title}
-      </ark.h3>
+      <ark.div {...api.value.titleProps} {...attrs}>
+        {slots.default?.()}
+      </ark.div>
     )
   },
-})
+  {
+    name: 'ToastTitle',
+  },
+)

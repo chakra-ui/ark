@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
 import { useSwitchContext } from './switch-context'
 
-export type SwitchLabelProps = HTMLArkProps<'span'>
+export interface SwitchLabelProps extends HTMLArkProps<'span'> {}
 
-export const SwitchLabel = (props: SwitchLabelProps) => {
-  const checkbox = useSwitchContext()
-  const labelProps = mergeProps(() => checkbox().labelProps, props)
-  return <ark.span {...labelProps} />
+export const SwitchLabel: ArkComponent<'span'> = (props: SwitchLabelProps) => {
+  const api = useSwitchContext()
+  const mergedProps = mergeProps(() => api().labelProps, props)
+
+  return <ark.span {...mergedProps} />
 }

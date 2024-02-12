@@ -5,8 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UsePaginationProps = Optional<pagination.Context, 'id'>
-export type UsePaginationReturn = ComputedRef<pagination.Api<PropTypes>>
+export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
+export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (
   props: UsePaginationProps,

@@ -1,13 +1,20 @@
 {
+  "Item": {
+    "value": { "type": "string", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "disabled": { "type": "boolean", "isRequired": false }
+  },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "collapsible": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -31,10 +38,22 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "multiple": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
@@ -51,32 +70,24 @@
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
     "value": {
       "type": "string[]",
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
-  "Item": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "ItemContent": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
-    }
-  },
-  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  "ItemContent": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ItemIndicator": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

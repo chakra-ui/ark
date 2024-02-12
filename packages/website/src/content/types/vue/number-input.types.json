@@ -7,16 +7,20 @@
     },
     "allowOverflow": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -27,6 +31,7 @@
     },
     "focusInputOnChange": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to focus input when the value changes"
     },
@@ -35,13 +40,13 @@
       "isRequired": false,
       "description": "The associate form of the input element."
     },
-    "format": {
-      "type": "(value: string) => string | number",
+    "formatOptions": {
+      "type": "NumberFormatOptions",
       "isRequired": false,
-      "description": "If using a custom display format, this converts the default format to the custom format."
+      "description": "The options to pass to the `Intl.NumberFormat` constructor"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -57,6 +62,7 @@
     },
     "inputMode": {
       "type": "InputMode",
+      "defaultValue": "\"decimal\"",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
     },
@@ -65,25 +71,21 @@
       "isRequired": false,
       "description": "Whether the number input value is invalid."
     },
+    "locale": {
+      "type": "string",
+      "defaultValue": "\"en-US\"",
+      "isRequired": false,
+      "description": "The current locale. Based on the BCP 47 definition."
+    },
     "max": {
       "type": "number",
       "isRequired": false,
       "description": "The maximum value of the number input"
     },
-    "maxFractionDigits": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The maximum number of fraction digits to use. Possible values are from 0 to 20;"
-    },
     "min": {
       "type": "number",
       "isRequired": false,
       "description": "The minimum value of the number input"
-    },
-    "minFractionDigits": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The minimum number of fraction digits to use. Possible values are from 0 to 20"
     },
     "modelValue": { "type": "string", "isRequired": false },
     "name": {
@@ -106,13 +108,9 @@
       "isRequired": false,
       "description": "Function invoked when the value overflows or underflows the min/max range"
     },
-    "parse": {
-      "type": "(value: string) => string",
-      "isRequired": false,
-      "description": "If using a custom display format, this converts the custom format to a format `parseFloat` understands."
-    },
     "pattern": {
       "type": "string",
+      "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
       "isRequired": false,
       "description": "The pattern used to check the <input> element's value against"
     },
@@ -135,11 +133,6 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    },
-    "validateCharacter": {
-      "type": "(char: string) => boolean",
-      "isRequired": false,
-      "description": "Whether the pressed key should be allowed in the input.\nThe default behavior is to allow DOM floating point characters defined by /^[Ee0-9+\\-.]$/"
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
   },

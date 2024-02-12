@@ -1,24 +1,4 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { ToggleGroupProvider } from './toggle-group-context'
-import { emits, props } from './toggle-group.props'
-import { useToggleGroup, type UseToggleGroupProps } from './use-toggle-group'
+import { ToggleGroupItem as Item } from './toggle-group-item'
+import { ToggleGroupRoot as Root } from './toggle-group-root'
 
-export type ToggleGroupProps = Assign<HTMLArkProps<'div'>, UseToggleGroupProps>
-
-export const ToggleGroup = defineComponent({
-  name: 'ToggleGroup',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useToggleGroup(props, emit)
-    ToggleGroupProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
-    )
-  },
-})
+export { Item, Root }

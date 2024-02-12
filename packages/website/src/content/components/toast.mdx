@@ -2,75 +2,52 @@
 id: toast
 title: Toast
 description:
-  The Toast component is an easy-to-use, flexible solution for displaying
-  unobtrusive notifications or simple messages in your application.
+  A message that appears on the screen to provide feedback on an action.
+resources:
+  zag: toast
 ---
 
-import Story from '~/components/story.astro'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
 
-## Usage
+<ComponentPreview />
 
-To get started, import the necessary components from the package:
+## Anatomy
 
-```tsx
-import {
-  Toast,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastGroup,
-  ToastPlacements,
-  ToastProvider,
-  ToastTitle,
-  useToast,
-} from '@ark-ui/react'
-```
+To set up the toast correctly, you'll need to understand its anatomy and how we
+name its parts.
 
-## Setup
+> Each part includes a `data-part` attribute to help identify them in the DOM.
 
-To setup the Toast environment in your application, create a `AppToastProivder`.
-This provider manages the placement and grouping of toasts.
+<Anatomy id="toast" />
 
-<Story id="AppToastProvider" />
+## Examples
 
-Next, wrap your application in the `AppToastProvider`:
+To use the Toast component in your application, you need to set it up using the
+`createToaster` hook. This hook manages the placement and grouping of toasts,
+and provides a `toast` object needed to create toast notification.
 
-<Story id="App" />
+To create a basic Toast, use the `toast.create` method to display a
+notification.
 
-## Basic Toast
+<Story id="Basic" />
 
-You can create a basic Toast by using the `useToast` hook. This hook gives you
-access to the `toast.create` method, which you can call to display a toast
-notification:
-
-<Story id="SimpleToast" />
-
-## Configuring Toast
+### Configuring Toast
 
 To configure the Toast component, you can pass various options to the
 `toast.create` method. These options include `title`, `description`, `type`,
-`placement`, `duration`, and `removeDelay`:
+`duration`, and `removeDelay`:
 
-<Story id="ConfigureToast" />
+<Story id="Customized" />
 
-## Custom Rendered Toast
+### Custom Rendered Toast
 
 For cases where you need more flexibility in rendering, the Toast component
 offers the ability to use a custom render function. This allows you to customize
 the content of the toast:
 
-<Story id="CustomRenderToast" />
+<Story id="CustomRender" />
 
-## Default Options
+## API Reference
 
-You can also provide default options for all toasts in your application by
-passing a `defaultOptions` prop to the `ToastProvider`. This prop should be an
-object with the same keys as the options object that you pass to `toast.create`:
-
-<Story id="DefaultOptions" />
-
-## Conclusion
-
-The Toast component provides an intuitive and versatile solution for conveying
-information to users in your applications. With its support for default options,
-custom render functions, and flexible configuration, it presents a wide array of
-design possibilities and use cases.
+<ComponentTypes />

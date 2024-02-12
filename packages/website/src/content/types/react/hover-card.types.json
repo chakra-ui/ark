@@ -12,11 +12,12 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -29,6 +30,17 @@
       "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the popover. Useful for composition."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -49,6 +61,17 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Arrow": {
@@ -63,18 +86,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Trigger": {

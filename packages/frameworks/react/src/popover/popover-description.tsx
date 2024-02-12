@@ -10,7 +10,7 @@ export const PopoverDescription = forwardRef<HTMLParagraphElement, PopoverDescri
     const api = usePopoverContext()
     const mergedProps = mergeProps(api.descriptionProps, props)
 
-    return <ark.p {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

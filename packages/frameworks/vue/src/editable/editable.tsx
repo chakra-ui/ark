@@ -1,24 +1,11 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { EditableProvider } from './editable-context'
-import { emits, props } from './editable.props'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { EditableArea as Area } from './editable-area'
+import { EditableCancelTrigger as CancelTrigger } from './editable-cancel-trigger'
+import { EditableControl as Control } from './editable-control'
+import { EditableEditTrigger as EditTrigger } from './editable-edit-trigger'
+import { EditableInput as Input } from './editable-input'
+import { EditableLabel as Label } from './editable-label'
+import { EditablePreview as Preview } from './editable-preview'
+import { EditableRoot as Root } from './editable-root'
+import { EditableSubmitTrigger as SubmitTrigger } from './editable-submit-trigger'
 
-export type EditableProps = Assign<HTMLArkProps<'div'>, UseEditableProps>
-
-export const Editable = defineComponent({
-  name: 'Editable',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useEditable(props, emit)
-    EditableProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {() => slots?.default?.(api.value)}
-      </ark.div>
-    )
-  },
-})
+export { Area, CancelTrigger, Control, EditTrigger, Input, Label, Preview, Root, SubmitTrigger }

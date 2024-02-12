@@ -1,21 +1,15 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useToastItemContext } from './toast-item-context'
+import { useToastContext } from './toast-context'
 
-export interface ToastDescriptionProps extends HTMLArkProps<'p'> {}
+export interface ToastDescriptionProps extends HTMLArkProps<'div'> {}
 
-export const ToastDescription = forwardRef<HTMLParagraphElement, ToastDescriptionProps>(
-  (props, ref) => {
-    const api = useToastItemContext()
-    const mergedProps = mergeProps(api.descriptionProps, props)
+export const ToastDescription = forwardRef<HTMLDivElement, ToastDescriptionProps>((props, ref) => {
+  const api = useToastContext()
+  const mergedProps = mergeProps(api.descriptionProps, props)
 
-    return (
-      <ark.p {...mergedProps} ref={ref}>
-        {api.description}
-      </ark.p>
-    )
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
 
 ToastDescription.displayName = 'ToastDescription'

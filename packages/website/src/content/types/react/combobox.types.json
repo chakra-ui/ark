@@ -1,4 +1,12 @@
 {
+  "Item": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "item": { "type": "any", "isRequired": false }
+  },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -32,6 +40,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -46,7 +55,7 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -95,6 +104,12 @@
       "isRequired": false,
       "description": "The value of the item"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loop": {
       "type": "boolean",
       "isRequired": false,
@@ -110,10 +125,15 @@
       "isRequired": false,
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onHighlightChange": {
       "type": "(details: HighlightChangeDetails<T>) => void",
@@ -128,7 +148,7 @@
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -138,7 +158,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails<T>) => void",
@@ -160,6 +180,11 @@
       "isRequired": false,
       "description": "The positioning options to dynamically position the menu"
     },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -180,15 +205,17 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
     "value": {
       "type": "string[]",
       "isRequired": false,
       "description": "The keys of the selected items"
     }
-  },
-  "Item": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "item": { "type": "any", "isRequired": false }
   },
   "Input": {
     "asChild": {
@@ -209,18 +236,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     }
   },
   "Control": {

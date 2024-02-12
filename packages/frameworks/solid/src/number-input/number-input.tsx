@@ -1,52 +1,9 @@
-import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { NumberInputProvider } from './number-input-context'
-import { useNumberInput, type UseNumberInputProps } from './use-number-input'
+import { NumberInputControl as Control } from './number-input-control'
+import { NumberInputDecrementTrigger as DecrementTrigger } from './number-input-decrement-trigger'
+import { NumberInputIncrementTrigger as IncrementTrigger } from './number-input-increment-trigger'
+import { NumberInputInput as Input } from './number-input-input'
+import { NumberInputLabel as Label } from './number-input-label'
+import { NumberInputRoot as Root } from './number-input-root'
+import { NumberInputScrubber as Scrubber } from './number-input-scrubber'
 
-export type NumberInputProps = Assign<HTMLArkProps<'div'>, UseNumberInputProps>
-
-export const NumberInput = (props: NumberInputProps) => {
-  const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
-    'allowMouseWheel',
-    'allowOverflow',
-    'clampValueOnBlur',
-    'dir',
-    'disabled',
-    'focusInputOnChange',
-    'form',
-    'format',
-    'getRootNode',
-    'id',
-    'ids',
-    'inputMode',
-    'invalid',
-    'max',
-    'maxFractionDigits',
-    'min',
-    'minFractionDigits',
-    'name',
-    'onFocusChange',
-    'onValueChange',
-    'onValueInvalid',
-    'parse',
-    'pattern',
-    'readOnly',
-    'spinOnPress',
-    'step',
-    'translations',
-    'validateCharacter',
-    'value',
-  ])
-
-  const api = useNumberInput(useNumberInputProps)
-
-  const rootProps = mergeProps(() => api().rootProps, localProps)
-
-  return (
-    <NumberInputProvider value={api}>
-      <ark.div {...rootProps} />
-    </NumberInputProvider>
-  )
-}
+export { Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }

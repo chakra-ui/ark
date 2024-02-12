@@ -1,128 +1,108 @@
-import { DatePicker as DatePickerRoot, type DatePickerProps } from './date-picker'
-import { useDatePickerCellContext, type DatePickerCellContext } from './date-picker-cell-context'
+import type {
+  FocusChangeDetails as DatePickerFocusChangeDetails,
+  OpenChangeDetails as DatePickerOpenChangeDetails,
+  ValueChangeDetails as DatePickerValueChangeDetails,
+  ViewChangeDetails as DatePickerViewChangeDetails,
+} from '@zag-js/date-picker'
 import {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
 } from './date-picker-clear-trigger'
-import {
-  DatePickerColumnHeader,
-  type DatePickerColumnHeaderProps,
-} from './date-picker-column-header'
 import { DatePickerContent, type DatePickerContentProps } from './date-picker-content'
 import { useDatePickerContext, type DatePickerContext } from './date-picker-context'
 import { DatePickerControl, type DatePickerControlProps } from './date-picker-control'
-import { DatePickerDayCell, type DatePickerDayCellProps } from './date-picker-day-cell'
-import {
-  useDatePickerDayCellContext,
-  type DatePickerDayCellContext,
-} from './date-picker-day-cell-context'
-import {
-  DatePickerDayCellTrigger,
-  type DatePickerDayCellTriggerProps,
-} from './date-picker-day-cell-trigger'
-import { DatePickerGrid, type DatePickerGridProps } from './date-picker-grid'
 import { DatePickerInput, type DatePickerInputProps } from './date-picker-input'
-import { DatePickerMonthCell, type DatePickerMonthCellProps } from './date-picker-month-cell'
-import {
-  DatePickerMonthCellTrigger,
-  type DatePickerMonthCellTriggerProps,
-} from './date-picker-month-cell-trigger'
+import { DatePickerLabel, type DatePickerLabelProps } from './date-picker-label'
 import { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
 import { DatePickerNextTrigger, type DatePickerNextTriggerProps } from './date-picker-next-trigger'
 import { DatePickerPositioner, type DatePickerPositionerProps } from './date-picker-positioner'
 import { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
-import { DatePickerRow, type DatePickerRowProps } from './date-picker-row'
-import { DatePickerRowGroup, type DatePickerRowGroupProps } from './date-picker-row-group'
-import { DatePickerRowHeader, type DatePickerRowHeaderProps } from './date-picker-row-header'
-import { DatePickerTrigger, type DatePickerTriggerProps } from './date-picker-trigger'
-import { DatePickerViewTrigger, type DatePickerViewTriggerProps } from './date-picker-view-trigger'
-import { DatePickerYearCell, type DatePickerYearCellProps } from './date-picker-year-cell'
+import { DatePickerRangeText, type DatePickerRangeTextProps } from './date-picker-range-text'
+import { DatePickerRoot, type DatePickerRootProps } from './date-picker-root'
+import { DatePickerTable, type DatePickerTableProps } from './date-picker-table'
+import { DatePickerTableBody, type DatePickerTableBodyProps } from './date-picker-table-body'
+import { DatePickerTableCell, type DatePickerTableCellProps } from './date-picker-table-cell'
 import {
-  DatePickerYearCellTrigger,
-  type DatePickerYearCellTriggerProps,
-} from './date-picker-year-cell-trigger'
+  useDatePickerTableCellContext,
+  type DatePickerTableCellContext,
+} from './date-picker-table-cell-context'
+import {
+  DatePickerTableCellTrigger,
+  type DatePickerTableCellTriggerProps,
+} from './date-picker-table-cell-trigger'
+import { useDatePickerTableContext, type DatePickerTableContext } from './date-picker-table-context'
+import { DatePickerTableHead, type DatePickerTableHeadProps } from './date-picker-table-head'
+import { DatePickerTableHeader, type DatePickerTableHeaderProps } from './date-picker-table-header'
+import { DatePickerTableRow, type DatePickerTableRowProps } from './date-picker-table-row'
+import { DatePickerTrigger, type DatePickerTriggerProps } from './date-picker-trigger'
+import { DatePickerView, type DatePickerViewProps } from './date-picker-view'
+import { useDatePickerViewContext, type DatePickerViewContext } from './date-picker-view-context'
+import { DatePickerViewControl, type DatePickerViewControlProps } from './date-picker-view-control'
+import { DatePickerViewTrigger, type DatePickerViewTriggerProps } from './date-picker-view-trigger'
 import { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
 
-const DatePicker = Object.assign(DatePickerRoot, {
-  Root: DatePickerRoot,
-  ClearTrigger: DatePickerClearTrigger,
-  ColumnHeader: DatePickerColumnHeader,
-  Content: DatePickerContent,
-  Control: DatePickerControl,
-  DayCell: DatePickerDayCell,
-  DayCellTrigger: DatePickerDayCellTrigger,
-  Grid: DatePickerGrid,
-  Input: DatePickerInput,
-  MonthCell: DatePickerMonthCell,
-  MonthCellTrigger: DatePickerMonthCellTrigger,
-  MonthSelect: DatePickerMonthSelect,
-  NextTrigger: DatePickerNextTrigger,
-  Positioner: DatePickerPositioner,
-  PrevTrigger: DatePickerPrevTrigger,
-  Row: DatePickerRow,
-  RowGroup: DatePickerRowGroup,
-  RowHeader: DatePickerRowHeader,
-  Trigger: DatePickerTrigger,
-  ViewTrigger: DatePickerViewTrigger,
-  YearCell: DatePickerYearCell,
-  YearCellTrigger: DatePickerYearCellTrigger,
-  YearSelect: DatePickerYearSelect,
-})
+export * as DatePicker from './date-picker'
 
 export {
-  DatePicker,
   DatePickerClearTrigger,
-  DatePickerColumnHeader,
   DatePickerContent,
   DatePickerControl,
-  DatePickerDayCell,
-  DatePickerDayCellTrigger,
-  DatePickerGrid,
   DatePickerInput,
-  DatePickerMonthCell,
-  DatePickerMonthCellTrigger,
+  DatePickerLabel,
   DatePickerMonthSelect,
   DatePickerNextTrigger,
   DatePickerPositioner,
   DatePickerPrevTrigger,
-  DatePickerRow,
-  DatePickerRowGroup,
-  DatePickerRowHeader,
+  DatePickerRangeText,
+  DatePickerRoot,
+  DatePickerTable,
+  DatePickerTableBody,
+  DatePickerTableCell,
+  DatePickerTableCellTrigger,
+  DatePickerTableHead,
+  DatePickerTableHeader,
+  DatePickerTableRow,
   DatePickerTrigger,
+  DatePickerView,
+  DatePickerViewControl,
   DatePickerViewTrigger,
-  DatePickerYearCell,
-  DatePickerYearCellTrigger,
   DatePickerYearSelect,
-  useDatePickerCellContext,
   useDatePickerContext,
-  useDatePickerDayCellContext,
+  useDatePickerTableCellContext,
+  useDatePickerTableContext,
+  useDatePickerViewContext,
 }
 
 export type {
-  DatePickerCellContext,
   DatePickerClearTriggerProps,
-  DatePickerColumnHeaderProps,
   DatePickerContentProps,
   DatePickerContext,
   DatePickerControlProps,
-  DatePickerDayCellContext,
-  DatePickerDayCellProps,
-  DatePickerDayCellTriggerProps,
-  DatePickerGridProps,
+  DatePickerFocusChangeDetails,
   DatePickerInputProps,
-  DatePickerMonthCellProps,
-  DatePickerMonthCellTriggerProps,
+  DatePickerLabelProps,
   DatePickerMonthSelectProps,
   DatePickerNextTriggerProps,
+  DatePickerOpenChangeDetails,
   DatePickerPositionerProps,
   DatePickerPrevTriggerProps,
-  DatePickerProps,
-  DatePickerRowGroupProps,
-  DatePickerRowHeaderProps,
-  DatePickerRowProps,
+  DatePickerRangeTextProps,
+  DatePickerRootProps,
+  DatePickerTableBodyProps,
+  DatePickerTableCellContext,
+  DatePickerTableCellProps,
+  DatePickerTableCellTriggerProps,
+  DatePickerTableContext,
+  DatePickerTableHeadProps,
+  DatePickerTableHeaderProps,
+  DatePickerTableProps,
+  DatePickerTableRowProps,
   DatePickerTriggerProps,
+  DatePickerValueChangeDetails,
+  DatePickerViewChangeDetails,
+  DatePickerViewContext,
+  DatePickerViewControlProps,
+  DatePickerViewProps,
   DatePickerViewTriggerProps,
-  DatePickerYearCellProps,
-  DatePickerYearCellTriggerProps,
   DatePickerYearSelectProps,
 }

@@ -15,6 +15,12 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -35,8 +41,15 @@
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "modal": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
     },
@@ -45,15 +58,20 @@
       "isRequired": false,
       "description": "Function called when the escape key is pressed"
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -63,7 +81,7 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "open": {
       "type": "boolean",
@@ -72,6 +90,7 @@
     },
     "portalled": {
       "type": "boolean",
+      "defaultValue": "true",
       "isRequired": false,
       "description": "Whether the popover is rendered in a portal"
     },
@@ -79,30 +98,27 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
-    }
-  },
-  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Anchor": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "lazyMount": {
+    },
+    "present": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether the node is present (controlled by the user)"
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
     "unmountOnExit": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Arrow": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Title": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Anchor": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "ArrowTip": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Indicator": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Description": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "CloseTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

@@ -1,36 +1,22 @@
-import type { ColorChannelProps } from '@zag-js/color-picker'
-import { computed, defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
+import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerChannelSliderTrackProps = HTMLArkProps<'div'> & ColorChannelProps
+export interface ColorPickerChannelSliderTrackProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerChannelSliderTrack = defineComponent({
-  name: 'ColorPickerChannelSliderTrack',
-  props: {
-    channel: {
-      type: String as PropType<ColorPickerChannelSliderTrackProps['channel']>,
-      required: true,
-    },
-    orientation: {
-      type: String as PropType<ColorPickerChannelSliderTrackProps['orientation']>,
-    },
-  },
-  setup(props, { slots, attrs }) {
-    const channelProps = computed<ColorChannelProps>(() => ({
-      channel: props.channel,
-      orientation: props.orientation,
-    }))
-
+export const ColorPickerChannelSliderTrack = defineComponent<ColorPickerChannelSliderTrackProps>(
+  (_, { slots, attrs }) => {
     const api = useColorPickerContext()
-    ColorPickerChannelSliderProvider(channelProps)
+    const sliderProps = useColorPickerChannelSliderContext()
 
     return () => (
-      <ark.div {...api.value.getChannelSliderTrackProps(channelProps.value)} {...attrs}>
-        <ark.div {...api.value.getChannelSliderBackgroundProps(channelProps.value)} />
+      <ark.div {...api.value.getChannelSliderTrackProps(sliderProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
   },
-})
+  {
+    name: 'ColorPickerChannelSliderTrack',
+  },
+)

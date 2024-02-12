@@ -1,3 +1,0 @@
-{
-  "Basic": "import { Pressable } from './pressable'\n\nconst Basic = () => {\n  return <Pressable onPress={() => console.log('onPress')}>Pressable</Pressable>\n}\n"
-}

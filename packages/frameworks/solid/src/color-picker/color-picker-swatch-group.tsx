@@ -1,11 +1,12 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { ark, type HTMLArkProps } from '../factory'
+import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { useColorPickerContext } from './color-picker-context'
 
-export type ColorPickerSwatchGroupProps = HTMLArkProps<'div'>
+export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
 
-export const ColorPickerSwatchGroup = (props: ColorPickerSwatchGroupProps) => {
-  const mergedProps = mergeProps(() => colorPickerAnatomy.build().swatchGroup.attrs, props)
+export const ColorPickerSwatchGroup: ArkComponent<'div'> = (props: ColorPickerSwatchGroupProps) => {
+  const api = useColorPickerContext()
+  const mergedProps = mergeProps(() => api().swatchGroupProps, props)
 
   return <ark.div {...mergedProps} />
 }

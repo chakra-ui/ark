@@ -1,25 +1,19 @@
 <script setup lang="ts">
-import {
-  HoverCard,
-  HoverCardArrow,
-  HoverCardArrowTip,
-  HoverCardContent,
-  HoverCardPositioner,
-  HoverCardTrigger,
-} from '..'
+import { HoverCard } from '../'
 </script>
+
 <template>
-  <HoverCard :open-delay="0" :close-delay="0">
-    <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCard.Root :openDelay="0" :closeDelay="0">
+    <HoverCard.Trigger>Hover me</HoverCard.Trigger>
     <Teleport to="body">
-      <HoverCardPositioner>
-        <HoverCardContent>
-          <HoverCardArrow>
-            <HoverCardArrowTip />
-          </HoverCardArrow>
+      <HoverCard.Positioner data-testid="positioner">
+        <HoverCard.Content>
+          <HoverCard.Arrow>
+            <HoverCard.ArrowTip />
+          </HoverCard.Arrow>
           Content
-        </HoverCardContent>
-      </HoverCardPositioner>
+        </HoverCard.Content>
+      </HoverCard.Positioner>
     </Teleport>
-  </HoverCard>
+  </HoverCard.Root>
 </template>

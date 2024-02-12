@@ -1,0 +1,3 @@
+[data-scope='date-picker'][data-part='control'] {
+  width: fit-content;
+}

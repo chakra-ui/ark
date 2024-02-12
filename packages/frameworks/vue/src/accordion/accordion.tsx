@@ -1,24 +1,7 @@
-import { defineComponent } from 'vue'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { AccordionProvider } from './accordion-context'
-import { emits, props } from './accordion.props'
-import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { AccordionItem as Item } from './accordion-item'
+import { AccordionItemContent as ItemContent } from './accordion-item-content'
+import { AccordionItemIndicator as ItemIndicator } from './accordion-item-indicator'
+import { AccordionItemTrigger as ItemTrigger } from './accordion-item-trigger'
+import { AccordionRoot as Root } from './accordion-root'
 
-export type AccordionProps = Assign<HTMLArkProps<'div'>, UseAccordionProps>
-
-export const Accordion = defineComponent({
-  name: 'Accordion',
-  props,
-  emits,
-  setup(props, { slots, attrs, emit }) {
-    const api = useAccordion(props, emit)
-    AccordionProvider(api)
-
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots?.default?.(api.value)}
-      </ark.div>
-    )
-  },
-})
+export { Item, ItemContent, ItemIndicator, ItemTrigger, Root }

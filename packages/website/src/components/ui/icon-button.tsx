@@ -1,7 +1,7 @@
-import { Button, type ButtonProps } from './button'
+import { ark } from '@ark-ui/react/src/factory'
+import type { ComponentProps } from 'react'
+import { styled } from 'styled-system/jsx'
+import { iconButton } from 'styled-system/recipes'
 
-export type IconButtonProps = ButtonProps & { 'aria-label': string }
-
-export const IconButton = (props: IconButtonProps) => {
-  return <Button px="0" {...props} />
-}
+export const IconButton = styled(ark.button, iconButton)
+export interface IconButtonProps extends ComponentProps<typeof IconButton> {}

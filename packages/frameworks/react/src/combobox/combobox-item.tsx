@@ -1,15 +1,16 @@
-import type { ItemProps } from '@zag-js/combobox'
+import type { ItemProps, ItemState } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
-import { ark } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxItemProvider } from './combobox-item-context'
 
 export interface ComboboxItemProps
-  extends Assign<ComponentPropsWithoutRef<typeof ark.div>, ItemProps> {}
+  extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
+    ItemProps {}
 
 export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props, ref) => {
   const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, ['item'])

@@ -13,6 +13,13 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       staticImport: true,
+      exclude: [
+        '**/*.stories.tsx',
+        '**/*.test.tsx',
+        '**/tests/*',
+        '**/stories/*',
+        '**/setup-test.ts',
+      ],
     }),
     Vue(),
     VueJsx(),
@@ -28,8 +35,8 @@ export default defineConfig({
     },
     globals: true,
     environment: 'jsdom',
-    transformMode: {
-      web: [/.[tj]sx$/],
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
     },
   },
   build: {

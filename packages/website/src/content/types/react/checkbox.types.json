@@ -17,6 +17,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -31,7 +32,7 @@
       "description": "The id of the form that the checkbox belongs to."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -67,6 +68,7 @@
     },
     "value": {
       "type": "string",
+      "defaultValue": "\"on\"",
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
     }

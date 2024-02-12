@@ -1,5 +1,7 @@
 import { createContext } from '../context'
+import type { CollectionItem } from '../types'
 import { type UseSelectReturn } from './use-select'
 
-export type SelectContext = UseSelectReturn
-export const [SelectProvider, useSelectContext] = createContext<SelectContext>('SelectContext')
+export interface SelectContext<T extends CollectionItem> extends UseSelectReturn<T> {}
+
+export const [SelectProvider, useSelectContext] = createContext<SelectContext<any>>('SelectContext')

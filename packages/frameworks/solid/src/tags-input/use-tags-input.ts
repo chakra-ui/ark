@@ -4,8 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseTagsInputProps = Optional<tagsInput.Context, 'id'>
-export type UseTagsInputReturn = Accessor<tagsInput.Api<PropTypes>>
+export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {}
+export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
 
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const getRootNode = useEnvironmentContext()

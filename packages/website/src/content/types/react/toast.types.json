@@ -1,6 +1,5 @@
 {
   "Root": {
-    "toast": { "type": "Service", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -8,7 +7,6 @@
     }
   },
   "Group": {
-    "placement": { "type": "Placement", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -22,19 +20,32 @@
       "description": "Render as a different element type."
     }
   },
-  "Provider": {
-    "defaultOptions": {
-      "type": "Partial<Pick<ToastOptions, 'placement' | 'duration' | 'removeDelay'>>",
-      "isRequired": false,
-      "description": "The default options for the toast"
+  "Createer": {
+    "placement": {
+      "type": "Placement",
+      "isRequired": true,
+      "description": "The placement of the toast"
     },
+    "render": { "type": "(api: MachineApi<PropTypes>) => Element", "isRequired": true },
+    "count": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
+    "doc": {
+      "type": "Document",
+      "isRequired": false,
+      "description": "The owner document of the machine."
+    },
+    "duration": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration the toast will be visible"
+    },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -54,7 +65,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
@@ -67,6 +78,21 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to pause toast when the user leaves the browser tab"
+    },
+    "pointerdownNode": {
+      "type": "HTMLElement",
+      "isRequired": false,
+      "description": "The related target when the element is blurred.\nUsed as a polyfill for `e.relatedTarget`"
+    },
+    "removeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
+    },
+    "rootNode": {
+      "type": "ShadowRoot",
+      "isRequired": false,
+      "description": "The root node of the machine. Useful for shadow DOM."
     },
     "zIndex": {
       "type": "number",

@@ -1,55 +1,11 @@
-import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { SliderProvider } from './slider-context'
-import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
+import { SliderControl as Control } from './slider-control'
+import { SliderLabel as Label } from './slider-label'
+import { SliderMarker as Marker } from './slider-marker'
+import { SliderMarkerGroup as MarkerGroup } from './slider-marker-group'
+import { SliderRange as Range } from './slider-range'
+import { SliderRoot as Root } from './slider-root'
+import { SliderThumb as Thumb } from './slider-thumb'
+import { SliderTrack as Track } from './slider-track'
+import { SliderValueText as ValueText } from './slider-value-text'
 
-export type SliderProps = Assign<
-  HTMLArkProps<'div'>,
-  UseSliderProps & {
-    children?: ((api: UseSliderReturn) => JSX.Element) | JSX.Element
-  }
->
-
-export const Slider = (props: SliderProps) => {
-  const [sliderParams, restProps] = createSplitProps<UseSliderProps>()(props, [
-    'aria-label',
-    'aria-labelledby',
-    'dir',
-    'disabled',
-    'focusThumbOnChange',
-    'form',
-    'getAriaValueText',
-    'getRootNode',
-    'id',
-    'ids',
-    'invalid',
-    'max',
-    'min',
-    'name',
-    'onValueChange',
-    'onValueChangeEnd',
-    'onValueChangeStart',
-    'orientation',
-    'origin',
-    'readOnly',
-    'step',
-    'thumbAlignment',
-    'thumbAlignment',
-    'thumbSize',
-    'value',
-  ])
-  const api = useSlider(sliderParams)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
-  const getChildren = () => runIfFn(restProps.children, api)
-
-  return (
-    <SliderProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
-      <input {...api().hiddenInputProps} />
-    </SliderProvider>
-  )
-}
+export { Control, Label, Marker, MarkerGroup, Range, Root, Thumb, Track, ValueText }

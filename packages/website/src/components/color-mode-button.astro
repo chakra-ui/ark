@@ -3,7 +3,11 @@ import { css, cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
 ---
 
-<button id="themeToggle" class={cx(css({ px: '0' }), button({ variant: 'tertiary', size: 'sm' }))}>
+<button
+  id="themeToggle"
+  class={cx(css({ px: '0' }), button({ variant: 'ghost', size: 'sm' }))}
+  aria-label="Toggle Color Scheme"
+>
   <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       class="sun"
@@ -35,11 +39,18 @@ import { button } from 'styled-system/recipes'
 </style>
 
 <script is:inline>
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    const element = document.documentElement
-    element.classList.toggle('dark')
+  const registerColorModeToggle = () => {
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const classList = document.documentElement.classList
+      classList.toggle('dark')
+      const isDark = classList.contains('dark')
+      localStorage.setItem('ark-ui-color-mode', isDark ? 'dark' : 'light')
+    })
+  }
 
-    const isDark = element.classList.contains('dark')
-    localStorage.setItem('ark-ui-color-mode', isDark ? 'dark' : 'light')
-  })
+  // Runs on initial navigation
+  registerColorModeToggle()
+
+  // Runs on view transitions navigation
+  document.addEventListener('astro:after-swap', registerColorModeToggle)
 </script>

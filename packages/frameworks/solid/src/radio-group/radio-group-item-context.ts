@@ -1,23 +1,10 @@
+import type { ItemProps } from '@zag-js/radio-group'
 import { createContext } from '../create-context'
 
-export interface ItemProps {
-  value: string
-  disabled?: boolean
-  invalid?: boolean
-}
+export interface RadioGroupItemContext extends ItemProps {}
 
-export interface ItemState {
-  isInvalid: boolean
-  isDisabled: boolean
-  isChecked: boolean
-  isFocused: boolean
-  isHovered: boolean
-  isActive: boolean
-}
-
-export type RadioGroupItemContext = ItemProps
-
-export const [RadioProvider, useRadioGroupItemContext] = createContext<RadioGroupItemContext>({
-  hookName: 'useRadioGroupItemContext',
-  providerName: '<RadioProvider />',
-})
+export const [RadioGroupItemProvider, useRadioGroupItemContext] =
+  createContext<RadioGroupItemContext>({
+    hookName: 'useRadioGroupItemContext',
+    providerName: '<RadioGroupItemProvider />',
+  })

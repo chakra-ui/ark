@@ -1,31 +1,163 @@
 ---
 id: changelog
 name: Changelog
-description: All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to and this project adheres to Semantic Versioning.
+description: All notable changes to this project will be documented in this file.
 ---
 
 ## [Unreleased]
 
+## [2.0.2] - 2024-02-10
+
+### Added
+
+- Exported `SelectionDetails` type for `Menu` component
+
 ### Changed
 
-- Add memoization to `Select` and `Combobox` item collection to improve performance.
-- Ensure all event callbacks have a stable reference
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
 
 ### Fixed
 
-- Resolved an issue when controlling the `Editable` component.
+- Fix issue where `@types/react@18.2.8` broke current typings in `Portal`
+- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
 
-### Removed
+## [2.0.1] - 2024-01-30
 
-- Removed anatomy exports. These exports are now available in `@ark-ui/anatomy`.
+### Fixed
 
-```tsx
-// before
-import { accordionAnatomy } from '@ark-ui/react'
-// after
-import { accordionAnatomy } from '@ark-ui/anatomy' // or
-import { anatomy } from '@ark-ui/anatomy/accordion'
+- Resolved an issue that for some components the types were not being generated correctly.
+
+## [2.0.0] - 2024-01-30
+
+### Added
+
+- Added `TreeView` component
+- Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
+
+### Changed
+
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+
+```diff
+- import type { AvatarProps } from "@ark-ui/react"
++ import type { AvatarRootProps } from "@ark-ui/react"
 ```
+
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
+
+```diff
+- <Presence.Root>...</Presence.Root>
++ <Presence>...</Presence>
+```
+
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+
+- Added the `ItemPreview` component to the `TagsInput` component. See the example below:
+
+```diff
+<TagsInput.Item key={index} index={index} value={value}>
++  <TagsInput.ItemPreview>
+    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
++ </TagsInput.ItemPreview>
+  <TagsInput.ItemInput />
+</TagsInput.Item>
+```
+
+- Refactored the `Progress` component to use `div` elements instead of `nav` for semantic correctness.
+
+### Fixed
+
+- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
+
+## [1.3.0] - 2024-01-17
+
+### Added
+
+- Added the `Progress` component.
+- Added `valueAsString` to `onValueChange` in `DatePicker` callback details
+- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+- Redesign `Portal` component to support `getRootNode` and `disabled` props
+
+### Changed
+
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+
+### Fixed
+
+- Added missing `placeholder` prop to `SelectValueTextProps` type.
+- Changed `PopoverDescriptionProps` type from `div` to `p`
+- Fixed multiple rerenders on `Select` component with Next.js or Remix `useSearchParams`
+- Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
+- Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
+- Fixed the issue where `DatePicker` initial value isn't set when using controlled context
+- Resolved an issue that `Menu` option item could not be activated by keyboard
+
+## [1.2.1] - 2023-12-13
+
+### Fixed
+
+- Resolved an issue where the `ark` factory type was not being exported correctly.
+
+## [1.2.0] - 2023-12-13
+
+### Added
+
+- Added the `ToastGroup` component.
+- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
+
+### Changed
+
+- Revised the `FileUpload` component. Check out the [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
+
+### Fixed
+
+- Added an explicit return type for the `Portal` component to resolve an issue with online code editors.
+- Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
+- Resolved an issue where the `ark` function would log a warning when the `asChild` prop was set to `false`.
+- Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
+- Fixed an issue with hydration mismatch in the `Portal` component.
+
+## [1.1.0] - 2023-11-21
+
+### Added
+
+- Added render function to the `NumberInput` component
+- Added `FileUpload` component
+
+### Changed
+
+- Revised the `ColorPicker` component. Check out the [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
+
+### Fixed
+
+- Resolved an issue where the `Toast` component would throw a warning when multiple toasts were rendered at the same time.
+
+## [1.0.1] - 2023-11-10
+
+### Fixed
+
+- Resolved an issue where the `Dialog` component would not animate on exit.
+- Resolved various issues for `Menu` when lazy mounted.
+- Resolved an issue where `MenuTrigger` could still work even when disabled.
+- Resolved an issue where components like `Dialog`, `Popover` etc would not invoke `onExitComplete`
+- Fixed an issue where placement of the `Combobox` could be incorrect when lazy mounted.
+
+## [1.0.0] - 2023-11-09
+
+We are happy to announce the release of `@ark-ui/react@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
+
+### Highlights
+
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Resolved various bugs and addressed accessibility issues across all components.
+
+### Stability and Support
+
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
 
 ## [0.15.0] - 2023-09-14
 
@@ -161,7 +293,7 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/tabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/src/srctabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
 
 ## [0.7.0] - 2023-06-23
 
@@ -275,6 +407,14 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 [0.14.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.14.0
 [0.15.0-beta.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0-beta.0
 [0.15.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/react@0.15.0
+
+```
+
+```
+
+```
+
+```
 
 ```
 

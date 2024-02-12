@@ -1,65 +1,11 @@
-import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import { type Assign } from '../types'
-import { EditableProvider, type EditableContext } from './editable-context'
-import { useEditable, type UseEditableProps } from './use-editable'
+import { EditableArea as Area } from './editable-area'
+import { EditableCancelTrigger as CancelTrigger } from './editable-cancel-trigger'
+import { EditableControl as Control } from './editable-control'
+import { EditableEditTrigger as EditTrigger } from './editable-edit-trigger'
+import { EditableInput as Input } from './editable-input'
+import { EditableLabel as Label } from './editable-label'
+import { EditablePreview as Preview } from './editable-preview'
+import { EditableRoot as Root } from './editable-root'
+import { EditableSubmitTrigger as SubmitTrigger } from './editable-submit-trigger'
 
-export interface EditableProps
-  extends Assign<
-    Omit<HTMLArkProps<'div'>, 'children'> & {
-      children?: ReactNode | ((pages: EditableContext) => ReactNode)
-    },
-    UseEditableProps
-  > {}
-
-export const Editable = forwardRef<HTMLDivElement, EditableProps>((props, ref) => {
-  const [useEditableProps, { children, ...divProps }] = createSplitProps<UseEditableProps>()(
-    props,
-    [
-      'activationMode',
-      'autoResize',
-      'defaultValue',
-      'dir',
-      'disabled',
-      'finalFocusEl',
-      'form',
-      'getRootNode',
-      'id',
-      'ids',
-      'invalid',
-      'maxLength',
-      'name',
-      'onEdit',
-      'onFocusOutside',
-      'onInteractOutside',
-      'onPointerDownOutside',
-      'onValueChange',
-      'onValueCommit',
-      'onValueRevert',
-      'placeholder',
-      'readOnly',
-      'selectOnFocus',
-      'startWithEditView',
-      'submitMode',
-      'translations',
-      'value',
-    ],
-  )
-  const api = useEditable(useEditableProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
-
-  const view = runIfFn(children, api)
-
-  return (
-    <EditableProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
-    </EditableProvider>
-  )
-})
-
-Editable.displayName = 'Editable'
+export { Area, CancelTrigger, Control, EditTrigger, Input, Label, Preview, Root, SubmitTrigger }

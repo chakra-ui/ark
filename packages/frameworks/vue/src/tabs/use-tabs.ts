@@ -5,13 +5,14 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export type UseTabsProps = Optional<tabs.Context, 'id'> & {
+export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
   modelValue?: tabs.Context['value']
 }
-export type UseTabsReturn = ComputedRef<tabs.Api<PropTypes>>
+export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps, emit: CallableFunction): UseTabsReturn => {
   const getRootNode = useEnvironmentContext()
+
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -25,9 +26,11 @@ export const useTabs = (props: UseTabsProps, emit: CallableFunction): UseTabsRet
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onFocusChange: (details) => emit('focus-change', details),
+      onFocusChange: (details) => {
+        emit('focus-change', details)
+      },
       onValueChange: (details) => {
-        emit('value-change', details.value)
+        emit('value-change', details)
         emit('update:modelValue', details.value)
       },
     }),

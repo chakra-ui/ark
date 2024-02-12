@@ -1,29 +1,7 @@
-import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
-import { ToastItemProvider } from './toast-item-context'
-import { useToastItem, type UseToastItemProps } from './use-toast-item'
+import { ToastCloseTrigger as CloseTrigger } from './toast-close-trigger'
+import { ToastDescription as Description } from './toast-description'
+import { ToastGroup as Group } from './toast-group'
+import { ToastRoot as Root } from './toast-root'
+import { ToastTitle as Title } from './toast-title'
 
-export interface ToastProps extends Assign<HTMLArkProps<'div'>, UseToastItemProps> {}
-
-export const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
-  const [useToastItemProps, { children, ...divProps }] = createSplitProps<UseToastItemProps>()(
-    props,
-    ['toast'],
-  )
-  const api = useToastItem(useToastItemProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
-  const customToast = api.render()
-
-  return (
-    <ToastItemProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {customToast || children}
-      </ark.div>
-    </ToastItemProvider>
-  )
-})
-
-Toast.displayName = 'Toast'
+export { CloseTrigger, Description, Group, Root, Title }

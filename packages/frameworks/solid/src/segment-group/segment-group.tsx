@@ -1,37 +1,8 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
-import { mergeProps } from '@zag-js/solid'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { SegmentGroupProvider } from './segment-group-context'
-import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
+import { SegmentGroupIndicator as Indicator } from './segment-group-indicator'
+import { SegmentGroupItem as Item } from './segment-group-item'
+import { SegmentGroupItemControl as ItemControl } from './segment-group-item-control'
+import { SegmentGroupItemText as ItemText } from './segment-group-item-text'
+import { SegmentGroupLabel as Label } from './segment-group-label'
+import { SegmentGroupRoot as Root } from './segment-group-root'
 
-export type SegmentGroupProps = Assign<HTMLArkProps<'div'>, UseSegmentGroupProps>
-
-export const SegmentGroup = (props: SegmentGroupProps) => {
-  const [groupParams, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
-    'dir',
-    'disabled',
-    'form',
-    'getRootNode',
-    'id',
-    'ids',
-    'name',
-    'onValueChange',
-    'orientation',
-    'value',
-  ])
-
-  const api = useSegmentGroup(groupParams)
-  const mergedProps = mergeProps(
-    () => api().rootProps,
-    segmentGroupAnatomy.build().root.attrs,
-    localProps,
-  )
-
-  return (
-    <SegmentGroupProvider value={api}>
-      <ark.div {...mergedProps} />
-    </SegmentGroupProvider>
-  )
-}
+export { Indicator, Item, ItemControl, ItemText, Label, Root }

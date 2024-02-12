@@ -1,15 +1,29 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
-import { createMemo, createUniqueId, type Accessor } from 'solid-js'
+import { createMemo, createUniqueId, splitProps, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export type UseColorPickerProps = Optional<colorPicker.Context, 'id'>
-export type UseColorPickerReturn = Accessor<colorPicker.Api<PropTypes>>
+export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+  /**
+   * The current value of the color picker.
+   */
+  value?: string
+}
+export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
+  const [local, rest] = splitProps(props, ['value'])
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps(
+    () => ({
+      id: createUniqueId(),
+      getRootNode,
+      value: local.value ? colorPicker.parse(local.value) : undefined,
+    }),
+    rest,
+  )
   const [state, send] = useMachine(colorPicker.machine(context), { context })
+
   return createMemo(() => colorPicker.connect(state, send, normalizeProps))
 }

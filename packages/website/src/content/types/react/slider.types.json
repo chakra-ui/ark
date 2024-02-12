@@ -1,14 +1,14 @@
 {
   "Root": {
     "aria-label": {
-      "type": "string",
+      "type": "string[]",
       "isRequired": false,
-      "description": "The aria-label of the slider. Useful for providing an accessible name to the slider"
+      "description": "The aria-label of each slider thumb. Useful for providing an accessible name to the slider"
     },
     "aria-labelledby": {
-      "type": "string",
+      "type": "string[]",
       "isRequired": false,
-      "description": "The `id` of the element that labels the slider. Useful for providing an accessible name to the slider"
+      "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
     "asChild": {
       "type": "boolean",
@@ -16,12 +16,13 @@
       "description": "Render as a different element type."
     },
     "defaultValue": {
-      "type": "number",
+      "type": "number[]",
       "isRequired": false,
-      "description": "The initial value of the slider."
+      "description": "The initial value of the slider slider."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -30,23 +31,18 @@
       "isRequired": false,
       "description": "Whether the slider is disabled"
     },
-    "focusThumbOnChange": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to focus the slider thumb after interaction (scrub and keyboard)"
-    },
     "form": {
       "type": "string",
       "isRequired": false,
       "description": "The associate form of the underlying input element."
     },
     "getAriaValueText": {
-      "type": "(value: number) => string",
+      "type": "(value: number, index: number) => string",
       "isRequired": false,
-      "description": "Function that returns a human readable value for the slider"
+      "description": "Function that returns a human readable value for the slider thumb"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -56,14 +52,14 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  root: string\n  thumb: string\n  control: string\n  track: string\n  range: string\n  label: string\n  output: string\n  hiddenInput: string\n}>",
+      "type": "Partial<{\n  root: string\n  thumb(index: number): string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker(index: number): string\n}>",
       "isRequired": false,
-      "description": "The ids of the elements in the slider. Useful for composition."
+      "description": "The ids of the elements in the range slider. Useful for composition."
     },
     "invalid": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether the slider value is invalid"
+      "description": "Whether the slider is invalid"
     },
     "max": {
       "type": "number",
@@ -75,10 +71,20 @@
       "isRequired": false,
       "description": "The minimum value of the slider"
     },
+    "minStepsBetweenThumbs": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The minimum permitted steps between multiple thumbs."
+    },
     "name": {
       "type": "string",
       "isRequired": false,
-      "description": "The name associated with the slider (when used in a form)"
+      "description": "The name associated with each slider thumb (when used in a form)"
+    },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function invoked when the slider's focused index changes"
     },
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
@@ -89,11 +95,6 @@
       "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
       "description": "Function invoked when the slider value change is done"
-    },
-    "onValueChangeStart": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the slider value change is started"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
@@ -121,11 +122,15 @@
       "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
     },
     "thumbSize": {
-      "type": "Size",
+      "type": "{ width: number; height: number }",
       "isRequired": false,
-      "description": "The slider thumb dimensions.If not provided, the thumb size will be measured automatically."
+      "description": "The slider thumbs dimensions"
     },
-    "value": { "type": "number", "isRequired": false, "description": "The value of the slider" }
+    "value": {
+      "type": "number[]",
+      "isRequired": false,
+      "description": "The value of the range slider"
+    }
   },
   "Label": {
     "asChild": {
@@ -142,6 +147,7 @@
     }
   },
   "Thumb": {
+    "index": { "type": "number", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -163,14 +169,14 @@
       "description": "Render as a different element type."
     }
   },
-  "Output": {
+  "Control": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "Control": {
+  "ValueText": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

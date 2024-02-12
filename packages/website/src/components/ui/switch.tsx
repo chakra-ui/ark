@@ -1,21 +1,30 @@
-import * as Ark from '@ark-ui/react/src/switch'
-import { styled } from 'styled-system/jsx'
+import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/src/switch'
+import { forwardRef, type ReactNode } from 'react'
+import { css, cx } from 'styled-system/css'
+import { splitCssProps } from 'styled-system/jsx'
 import { switchRecipe, type SwitchRecipeVariantProps } from 'styled-system/recipes'
-import { createStyleContext } from '~/lib/create-style-context'
+import type { Assign, JsxStyleProps } from 'styled-system/types'
 
-const { withProvider, withContext } = createStyleContext(switchRecipe)
+export interface SwitchProps
+  extends Assign<JsxStyleProps, SwitchRootProps>,
+    SwitchRecipeVariantProps {
+  children?: ReactNode
+}
 
-export * from '@ark-ui/react/src/switch'
-export type SwitchProps = Ark.SwitchProps & SwitchRecipeVariantProps
+export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
+  const [variantProps, switchProps] = switchRecipe.splitVariantProps(props)
+  const [cssProps, localProps] = splitCssProps(switchProps)
+  const { children, className, ...rootProps } = localProps
+  const styles = switchRecipe(variantProps)
 
-const SwitchRoot = withProvider(styled(Ark.Switch.Root), 'root')
-export const SwitchControl = withContext(styled(Ark.Switch.Control), 'control')
-export const SwitchLabel = withContext(styled(Ark.Switch.Label), 'label')
-export const SwitchThumb = withContext(styled(Ark.Switch.Thumb), 'thumb')
-
-export const Switch = Object.assign(SwitchRoot, {
-  Root: SwitchRoot,
-  Control: SwitchControl,
-  Label: SwitchLabel,
-  Thumb: SwitchThumb,
+  return (
+    <ArkSwitch.Root ref={ref} className={cx(styles.root, css(cssProps), className)} {...rootProps}>
+      <ArkSwitch.Control className={styles.control}>
+        <ArkSwitch.Thumb className={styles.thumb} />
+      </ArkSwitch.Control>
+      {children && <ArkSwitch.Label className={styles.label}>{children}</ArkSwitch.Label>}
+    </ArkSwitch.Root>
+  )
 })
+
+Switch.displayName = 'Switch'

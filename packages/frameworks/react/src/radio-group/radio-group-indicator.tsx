@@ -1,4 +1,3 @@
-import { radioGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
@@ -11,7 +10,7 @@ export const RadioGroupIndicator = forwardRef<HTMLDivElement, RadioGroupIndicato
     const api = useRadioGroupContext()
     const mergedProps = mergeProps(api.indicatorProps, props)
 
-    return <ark.div {...mergedProps} {...radioGroupAnatomy.build().indicator.attrs} ref={ref} />
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

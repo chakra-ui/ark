@@ -1,7 +1,11 @@
 {
+  "Item": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
   "Root": {
     "items": {
-      "type": "any[] | readonly any[]",
+      "type": "T[] | readonly T[]",
       "isRequired": true,
       "description": "The options of the select"
     },
@@ -10,6 +14,7 @@
       "isRequired": false,
       "description": "Whether to allow custom values or free values in the input"
     },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -22,6 +27,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -36,7 +42,7 @@
       "description": "The associate form of the combobox."
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -56,7 +62,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autohighlight' | 'autocomplete'",
+      "type": "'none' | 'autocomplete' | 'autohighlight'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
     },
@@ -71,19 +77,25 @@
       "description": "Whether the combobox is required"
     },
     "isItemDisabled": {
-      "type": "(item: any) => boolean",
+      "type": "(item: T) => boolean",
       "isRequired": false,
       "description": "Whether the item is disabled"
     },
     "itemToString": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The label of the item"
     },
     "itemToValue": {
-      "type": "(item: any) => string",
+      "type": "(item: T) => string",
       "isRequired": false,
       "description": "The value of the item"
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
     },
     "loop": {
       "type": "boolean",
@@ -101,13 +113,18 @@
       "isRequired": false,
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onFocusOutside": {
       "type": "(event: FocusOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the focus is moved outside the combobox"
+      "description": "Function called when the focus is moved outside the component"
     },
     "onHighlightChange": {
-      "type": "(details: HighlightChangeDetails<any>) => void",
+      "type": "(details: HighlightChangeDetails<T>) => void",
       "isRequired": false,
       "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
     },
@@ -119,7 +136,7 @@
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when an interaction happens outside the combobox"
+      "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
@@ -129,10 +146,10 @@
     "onPointerDownOutside": {
       "type": "(event: PointerDownOutsideEvent) => void",
       "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the combobox"
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "onValueChange": {
-      "type": "(details: ValueChangeDetails<any>) => void",
+      "type": "(details: ValueChangeDetails<T>) => void",
       "isRequired": false,
       "description": "Function called when a new item is selected"
     },
@@ -150,6 +167,11 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The positioning options to dynamically position the menu"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
     },
     "readOnly": {
       "type": "boolean",
@@ -171,28 +193,43 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
     "value": {
       "type": "string[]",
       "isRequired": false,
       "description": "The keys of the selected items"
     }
   },
-  "Item": { "item": { "type": "any", "isRequired": false } },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": {
     "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "present": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },

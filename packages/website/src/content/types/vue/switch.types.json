@@ -1,5 +1,6 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -7,6 +8,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -21,7 +23,7 @@
       "description": "The id of the form that the switch belongs to"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -56,11 +58,6 @@
       "isRequired": false,
       "description": "Function to call when the switch is clicked."
     },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the switch will be readonly"
-    },
     "required": {
       "type": "boolean",
       "isRequired": false,
@@ -68,6 +65,7 @@
     },
     "value": {
       "type": "string | number",
+      "defaultValue": "\"on\"",
       "isRequired": false,
       "description": "The value of switch input. Useful for form submission."
     }

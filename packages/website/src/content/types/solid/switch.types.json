@@ -1,6 +1,6 @@
 {
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "as": { "type": "ValidComponent", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -8,6 +8,7 @@
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
@@ -56,11 +57,6 @@
       "isRequired": false,
       "description": "Function to call when the switch is clicked."
     },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the switch will be readonly"
-    },
     "required": {
       "type": "boolean",
       "isRequired": false,
@@ -68,11 +64,12 @@
     },
     "value": {
       "type": "string | number",
+      "defaultValue": "\"on\"",
       "isRequired": false,
       "description": "The value of switch input. Useful for form submission."
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Thumb": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Control": { "as": { "type": "ValidComponent", "isRequired": false } }
 }

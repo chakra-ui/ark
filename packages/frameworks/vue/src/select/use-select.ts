@@ -3,37 +3,38 @@ import * as select from '@zag-js/select'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import type { Optional } from '../types'
-import { generateEventMap, useId } from '../utils'
-import { emits } from './select.props'
+import type { CollectionItem, Optional } from '../types'
+import { useId } from '../utils'
 
-export interface UseSelectProps
-  extends CollectionOptions,
-    Omit<Optional<select.Context, 'id'>, 'collection'> {
-  modelValue?: select.Context['value']
+export interface UseSelectProps<T extends CollectionItem>
+  extends CollectionOptions<T>,
+    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {
+  modelValue?: select.Context<T>['value']
 }
-export type UseSelectReturn = ComputedRef<select.Api<PropTypes>>
 
-export const useSelect = (props: UseSelectProps, emit: CallableFunction): UseSelectReturn => {
-  const { items, itemToString, itemToValue, isItemDisabled, ...selectProps } = props
+export interface UseSelectReturn<T extends CollectionItem>
+  extends ComputedRef<select.Api<PropTypes, T>> {}
+
+export const useSelect = <T extends CollectionItem>(
+  props: UseSelectProps<T>,
+  emit: CallableFunction,
+): UseSelectReturn<T> => {
   const context = computed(() => {
-    const { modelValue, ...rest } = selectProps
+    const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
     return {
       ...rest,
+      collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
     }
   })
-  const collection = select.collection({ items, itemToString, itemToValue, isItemDisabled })
+
   const getRootNode = useEnvironmentContext()
-  const eventMap = generateEventMap(emits, emit)
 
   const [state, send] = useMachine(
     select.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      ...eventMap,
-      collection,
       onValueChange: (details) => {
         emit('value-change', details)
         emit('update:modelValue', details.value)
@@ -47,5 +48,6 @@ export const useSelect = (props: UseSelectProps, emit: CallableFunction): UseSel
     }),
     { context },
   )
+
   return computed(() => select.connect(state.value, send, normalizeProps))
 }

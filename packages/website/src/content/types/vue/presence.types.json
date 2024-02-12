@@ -1,16 +1,51 @@
 {
   "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "lazyMount": {
       "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether to enable lazy mounting. Defaults to `false`."
+      "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": { "type": "() => void", "isRequired": false },
-    "present": { "type": "boolean", "isRequired": false },
-    "unmountOnExit": {
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "present": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to unmount on exit. Defaults to `false`."
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    }
+  },
+  "Use": {
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   }
 }
