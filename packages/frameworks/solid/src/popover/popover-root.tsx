@@ -33,6 +33,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'onOpenChange',
     'onPointerDownOutside',
     'open',
+    'open.controlled',
     'portalled',
     'positioning',
   ])

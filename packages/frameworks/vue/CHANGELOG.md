@@ -10,7 +10,7 @@ description: All notable changes to this project will be documented in this file
 
 - Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Add the `DatePicker.PresetTrigger` component
-- Improve support for controlled open state in `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component
+- Add `open.controlled` prop in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` component to improve a controlled state
 
 ### Changed
 

@@ -30,6 +30,7 @@ export const TooltipRoot = (props: TooltipRootProps) => {
     'interactive',
     'onOpenChange',
     'open',
+    'open.controlled',
     'openDelay',
     'positioning',
   ])
