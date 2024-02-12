@@ -11,7 +11,7 @@ interface InputProps {
 
 export interface DatePickerInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}
 
-export const DatePickerInput: ArkComponent<'input'> = (props: DatePickerInputProps) => {
+export const DatePickerInput: ArkComponent<'input', InputProps> = (props: DatePickerInputProps) => {
   const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().getInputProps(inputProps), localProps)
