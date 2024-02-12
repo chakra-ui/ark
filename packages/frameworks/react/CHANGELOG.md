@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added new `LocaleProvider` component to provide locale context to all components that require it.
+
 ## [2.0.2] - 2024-02-10
 
 ### Added

@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Exported `SelectionDetails` type for `Menu` component
+- Added new `LocaleProvider` component to provide locale context to all components that require it.
 
 ### Changed
 
