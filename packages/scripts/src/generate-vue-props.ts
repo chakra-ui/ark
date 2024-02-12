@@ -84,14 +84,14 @@ const main = async () => {
                       const propType = isFunction
                         ? 'Function'
                         : type.isBoolean()
-                        ? 'Boolean'
-                        : type.isString() || type.isUnion()
-                        ? 'String'
-                        : type.isNumber()
-                        ? 'Number'
-                        : type.isArray()
-                        ? 'Array'
-                        : 'Object'
+                          ? 'Boolean'
+                          : type.isString() || type.isUnion()
+                            ? 'String'
+                            : type.isNumber()
+                              ? 'Number'
+                              : type.isArray()
+                                ? 'Array'
+                                : 'Object'
 
                       writer.writeLine(`'${name}': {`)
                       writer.indent(() => {

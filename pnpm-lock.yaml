@@ -210,6 +210,9 @@ importers:
       '@zag-js/hover-card':
         specifier: 0.34.0
         version: 0.34.0
+      '@zag-js/i18n-utils':
+        specifier: 0.34.0
+        version: 0.34.0
       '@zag-js/menu':
         specifier: 0.34.0
         version: 0.34.0
@@ -419,6 +422,9 @@ importers:
         specifier: 0.34.0
         version: 0.34.0
       '@zag-js/hover-card':
+        specifier: 0.34.0
+        version: 0.34.0
+      '@zag-js/i18n-utils':
         specifier: 0.34.0
         version: 0.34.0
       '@zag-js/menu':
@@ -8812,6 +8818,12 @@ packages:
       '@zag-js/popper': 0.34.0
       '@zag-js/types': 0.34.0
       '@zag-js/utils': 0.34.0
+    dev: false
+
+  /@zag-js/i18n-utils@0.34.0:
+    resolution: {integrity: sha512-yPSFDMssz74EmfwkmFtZXyX7qElk6CTFNTIVRxUd4oEJ2stsHdVYXc2Czg8Xmh8RyCW9HYHWSb20QtQ3SSecQw==}
+    dependencies:
+      '@zag-js/dom-query': 0.34.0
     dev: false
 
   /@zag-js/interact-outside@0.31.1:
