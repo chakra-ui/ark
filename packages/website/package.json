@@ -28,7 +28,7 @@
     "@zag-js/anatomy-icons": "0.34.0",
     "astro": "4.3.2",
     "cheerio": "1.0.0-rc.12",
-    "lucide-react": "0.323.0",
+    "lucide-react": "0.325.0",
     "pandacss-preset-typography": "0.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
