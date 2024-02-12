@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { isRTL, trackLocale, type Locale, type LocaleOptions } from '@zag-js/i18n-utils'
 import { useEffect, useState } from 'react'
 import { useEnvironmentContext } from '../environment'
@@ -23,9 +22,8 @@ export const LocaleProvider = (props: LocaleProviderProps) => {
 
   useEffect(() =>
     trackLocale({
-      immediate: true,
       locale: localeProps,
-      getRootNode: getRootNode as any,
+      getRootNode,
       onLocaleChange(locale) {
         setLocale(locale.locale)
       },
