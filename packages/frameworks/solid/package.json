@@ -54,6 +54,8 @@
     "@zag-js/avatar": "0.36.0",
     "@zag-js/carousel": "0.36.0",
     "@zag-js/checkbox": "0.36.0",
+    "@zag-js/clipboard": "0.36.0",
+    "@zag-js/collapsible": "0.36.0",
     "@zag-js/color-picker": "0.36.0",
     "@zag-js/combobox": "0.36.0",
     "@zag-js/date-picker": "0.36.0",

@@ -180,6 +180,12 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.36.0
         version: 0.36.0
+      '@zag-js/clipboard':
+        specifier: 0.36.0
+        version: 0.36.0
+      '@zag-js/collapsible':
+        specifier: 0.36.0
+        version: 0.36.0
       '@zag-js/color-picker':
         specifier: 0.36.0
         version: 0.36.0
@@ -403,6 +409,12 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.36.0
         version: 0.36.0
+      '@zag-js/clipboard':
+        specifier: 0.36.0
+        version: 0.36.0
+      '@zag-js/collapsible':
+        specifier: 0.36.0
+        version: 0.36.0
       '@zag-js/color-picker':
         specifier: 0.36.0
         version: 0.36.0
@@ -611,6 +623,12 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.36.0
         version: 0.36.0
+      '@zag-js/clipboard':
+        specifier: 0.36.0
+        version: 0.36.0
+      '@zag-js/collapsible':
+        specifier: 0.36.0
+        version: 0.36.0
       '@zag-js/color-picker':
         specifier: 0.36.0
         version: 0.36.0
@@ -630,6 +648,9 @@ importers:
         specifier: 0.36.0
         version: 0.36.0
       '@zag-js/hover-card':
+        specifier: 0.36.0
+        version: 0.36.0
+      '@zag-js/i18n-utils':
         specifier: 0.36.0
         version: 0.36.0
       '@zag-js/menu':
@@ -8449,6 +8470,26 @@ packages:
       '@zag-js/types': 0.36.0
       '@zag-js/utils': 0.36.0
       '@zag-js/visually-hidden': 0.36.0
+    dev: false
+
+  /@zag-js/clipboard@0.36.0:
+    resolution: {integrity: sha512-NPkurMmH1dOLMAGqrO8HJdHSM/pQxQ+WUnIMrs2u2LY9jGix9IiFKohFrEqyKPAliyBtE+BWDoxhnGU61uWizw==}
+    dependencies:
+      '@zag-js/anatomy': 0.36.0
+      '@zag-js/core': 0.36.0
+      '@zag-js/dom-query': 0.36.0
+      '@zag-js/types': 0.36.0
+      '@zag-js/utils': 0.36.0
+    dev: false
+
+  /@zag-js/collapsible@0.36.0:
+    resolution: {integrity: sha512-6LCcP37MK6utbroDLTefWyHS1nnOEDtd9DsOqMtNMPY8FboaHD9pVxNmh1/GfQkBlOEgSMq5Rpnqq6Uo2ksCSw==}
+    dependencies:
+      '@zag-js/anatomy': 0.36.0
+      '@zag-js/core': 0.36.0
+      '@zag-js/dom-query': 0.36.0
+      '@zag-js/types': 0.36.0
+      '@zag-js/utils': 0.36.0
     dev: false
 
   /@zag-js/collection@0.31.1:
