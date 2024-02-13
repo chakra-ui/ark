@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UsePopoverProps extends Optional<popover.Context, 'id'> {
+export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
   /**
    * The initial open state of the popover.
    */

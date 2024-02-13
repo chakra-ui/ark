@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {
+export interface UseHoverCardProps
+  extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {
   /**
    * The initial open state of the hover card.
    */

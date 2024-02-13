@@ -4,7 +4,8 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {}
+export interface UseHoverCardProps
+  extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {}
 export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {

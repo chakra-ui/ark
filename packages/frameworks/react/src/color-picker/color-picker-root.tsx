@@ -50,7 +50,6 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
       'onValueChange',
       'onValueChangeEnd',
       'open',
-      'open.controlled',
       'positioning',
       'readOnly',
       'value',

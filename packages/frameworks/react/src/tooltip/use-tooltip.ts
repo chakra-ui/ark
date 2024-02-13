@@ -5,8 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseTooltipProps extends Optional<tooltip.Context, 'id'> {}
-
+export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {}
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {

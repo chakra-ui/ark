@@ -55,7 +55,6 @@ const SelectImpl = <T extends CollectionItem>(
       'onPointerDownOutside',
       'onValueChange',
       'open',
-      'open.controlled',
       'positioning',
       'readOnly',
       'selectOnBlur',
