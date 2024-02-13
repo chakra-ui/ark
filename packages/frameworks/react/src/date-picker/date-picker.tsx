@@ -6,6 +6,7 @@ import { DatePickerLabel as Label } from './date-picker-label'
 import { DatePickerMonthSelect as MonthSelect } from './date-picker-month-select'
 import { DatePickerNextTrigger as NextTrigger } from './date-picker-next-trigger'
 import { DatePickerPositioner as Positioner } from './date-picker-positioner'
+import { DatePickerPresetTrigger as PresetTrigger } from './date-picker-preset-trigger'
 import { DatePickerPrevTrigger as PrevTrigger } from './date-picker-prev-trigger'
 import { DatePickerRangeText as RangeText } from './date-picker-range-text'
 import { DatePickerRoot as Root } from './date-picker-root'
@@ -31,6 +32,7 @@ export {
   MonthSelect,
   NextTrigger,
   Positioner,
+  PresetTrigger,
   PrevTrigger,
   RangeText,
   Root,
