@@ -98,7 +98,6 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/user-event": "14.5.2",
     "@types/jsdom": "21.1.6",
-    "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@vitest/coverage-v8": "1.2.2",
