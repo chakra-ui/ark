@@ -8,7 +8,7 @@ import { useId } from '../utils'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {
+    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
   modelValue?: select.Context<T>['value']
 }
 
@@ -25,6 +25,7 @@ export const useSelect = <T extends CollectionItem>(
       ...rest,
       collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
+      'open.controlled': props.open,
     }
   })
 

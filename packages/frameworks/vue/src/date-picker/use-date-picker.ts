@@ -6,7 +6,7 @@ import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue'>, 'id'> {
+  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue' | 'open.controlled'>, 'id'> {
   /**
    * The focused date.
    */
@@ -27,6 +27,7 @@ export const useDatePicker = (
       ...rest,
       value: modelValue,
       focusedValue,
+      'open.controlled': props.open,
     }
   })
 

@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseMenuProps extends Optional<menu.Context, 'id'> {
+export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {
   modelValue?: menu.Context['value']
 }
 
@@ -20,6 +20,7 @@ export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuRet
     return {
       ...rest,
       value: modelValue,
+      'open.controlled': props.open,
     }
   })
   const getRootNode = useEnvironmentContext()

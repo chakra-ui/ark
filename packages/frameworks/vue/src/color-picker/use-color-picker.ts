@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+export interface UseColorPickerProps
+  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
   modelValue?: string
 }
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
@@ -21,6 +22,7 @@ export const useColorPicker = (
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,
+      'open.controlled': props.open,
     }
   })
 
