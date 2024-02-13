@@ -41,7 +41,6 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onSelect',
     'onValueChange',
     'open',
-    'open.controlled',
     'positioning',
     'value',
   ])

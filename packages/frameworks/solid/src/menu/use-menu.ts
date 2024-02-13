@@ -4,7 +4,7 @@ import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export interface UseMenuProps extends Optional<menu.Context, 'id'> {}
+export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 
 export type UseMenuReturn = () => {
   machine: ReturnType<typeof menu.machine>
@@ -13,7 +13,10 @@ export type UseMenuReturn = () => {
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps(
+    { id: createUniqueId(), getRootNode, 'open.controlled': props.open },
+    props,
+  )
   const [state, send, machine] = useMachine(menu.machine(context), { context })
 
   return createMemo(() => ({

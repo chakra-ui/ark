@@ -4,7 +4,8 @@ import { createMemo, createUniqueId, splitProps, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
-export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+export interface UseColorPickerProps
+  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
   /**
    * The current value of the color picker.
    */
@@ -20,6 +21,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
       id: createUniqueId(),
       getRootNode,
       value: local.value ? colorPicker.parse(local.value) : undefined,
+      'open.controlled': props.open,
     }),
     rest,
   )
