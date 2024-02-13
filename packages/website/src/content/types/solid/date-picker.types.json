@@ -25,7 +25,7 @@
     },
     "focusedValue": { "type": "string", "isRequired": false, "description": "The focused date." },
     "format": {
-      "type": "(date: DateValue[]) => string",
+      "type": "(date: DateValue) => string",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -115,8 +115,13 @@
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the datepicker open state is controlled by the user"
+    },
     "parse": {
-      "type": "(value: string) => DateValue[]",
+      "type": "(value: string) => DateValue",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
