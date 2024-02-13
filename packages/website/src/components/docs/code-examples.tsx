@@ -2,7 +2,7 @@ import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui'
 
 import { useStore } from '@nanostores/react'
-import { selectedFramework } from '~/stores/frameworkSelect.store'
+import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
 
 type Props = Tabs.RootProps & {
   react?: JSX.Element
@@ -16,7 +16,7 @@ export const CodeExamples = (props: Props) => {
     <Tabs.Root
       size="sm"
       value={$selectedFramework}
-      onValueChange={(e) => selectedFramework.set(e.value)}
+      onValueChange={(e) => selectedFramework.set(e.value as SelectedFramework)}
       {...props}
       className="not-prose"
     >

@@ -3,7 +3,7 @@ import { ToggleGroup } from '~/components/ui'
 import { Text } from '~/components/ui/text'
 
 import { useStore } from '@nanostores/react'
-import { selectedFramework } from '~/stores/frameworkSelect.store'
+import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
 
 export const FrameworkToggleGroup = (props: ToggleGroup.RootProps) => {
   const $selectedFramework = useStore(selectedFramework)
@@ -22,7 +22,7 @@ export const FrameworkToggleGroup = (props: ToggleGroup.RootProps) => {
       >
         <ToggleGroup.Root
           value={[$selectedFramework]}
-          onValueChange={(e) => selectedFramework.set(e.value[0])}
+          onValueChange={(e) => selectedFramework.set(e.value[0] as SelectedFramework)}
           {...props}
         >
           <ToggleGroup.Item value="react" aria-label="Toggle React">

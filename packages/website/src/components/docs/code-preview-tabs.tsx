@@ -5,7 +5,7 @@ import { Button } from '~/components/ui'
 import { CodePreview } from './code-preview'
 
 import { useStore } from '@nanostores/react'
-import { selectedFramework } from '~/stores/frameworkSelect.store'
+import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
 
 interface Props {
   code?: string
@@ -23,7 +23,10 @@ export const CodePreviewTabs = (props: PropsWithChildren<Props>) => {
   const $selectedFramework = useStore(selectedFramework)
 
   return (
-    <Tabs.Root value={$selectedFramework} onValueChange={(e) => selectedFramework.set(e.value)}>
+    <Tabs.Root
+      value={$selectedFramework}
+      onValueChange={(e) => selectedFramework.set(e.value as SelectedFramework)}
+    >
       <HStack justifyContent="space-between" p="1">
         <Tabs.List>
           {Object.entries(props.tabs).map(([key, value]) => (
