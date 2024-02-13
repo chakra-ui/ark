@@ -9,7 +9,7 @@ import { useEvent } from '../use-event'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {
+    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
   /**
    * The initial value of the select.
    */
@@ -40,6 +40,7 @@ export const useSelect = <T extends CollectionItem>(
     collection,
     ...rest,
     value: props.defaultValue,
+    'open.controlled': props.open,
   }
 
   const context: select.Context<T> = {

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseColorPickerProps extends Optional<Omit<colorPicker.Context, 'value'>, 'id'> {
+export interface UseColorPickerProps
+  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
   /**
    * The initial value of the color picker.
    */
@@ -24,6 +25,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,
+    'open.controlled': props.open,
   }
 
   const context: colorPicker.Context = {

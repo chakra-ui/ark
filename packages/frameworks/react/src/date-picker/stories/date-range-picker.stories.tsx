@@ -14,7 +14,8 @@ export const Basic = () => {
     <DatePicker.Root selectionMode="range">
       <DatePicker.Label>Label</DatePicker.Label>
       <DatePicker.Control>
-        <DatePicker.Input />
+        <DatePicker.Input index={0} />
+        <DatePicker.Input index={1} />
         <DatePicker.Trigger>📅</DatePicker.Trigger>
         <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>

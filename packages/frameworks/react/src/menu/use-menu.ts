@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseMenuProps extends Optional<menu.Context, 'id'> {}
+export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 
 export interface UseMenuReturn {
   machine: ReturnType<typeof menu.machine>
@@ -20,6 +20,7 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
     onOpenChange: useEvent(props.onOpenChange),
     onSelect: useEvent(props.onSelect),
     onValueChange: useEvent(props.onValueChange, { sync: true }),
+    'open.controlled': props.open,
   }
 
   const [state, send, machine] = useMachine(menu.machine(context), { context })
