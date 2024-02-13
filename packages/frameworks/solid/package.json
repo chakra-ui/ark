@@ -50,7 +50,6 @@
   },
   "dependencies": {
     "@ark-ui/anatomy": "2.1.0",
-    "@zag-js/i18n-utils": "0.36.0",
     "@zag-js/accordion": "0.36.0",
     "@zag-js/avatar": "0.36.0",
     "@zag-js/carousel": "0.36.0",
@@ -62,6 +61,7 @@
     "@zag-js/editable": "0.36.0",
     "@zag-js/file-upload": "0.36.0",
     "@zag-js/hover-card": "0.36.0",
+    "@zag-js/i18n-utils": "0.36.0",
     "@zag-js/menu": "0.36.0",
     "@zag-js/number-input": "0.36.0",
     "@zag-js/pagination": "0.36.0",
