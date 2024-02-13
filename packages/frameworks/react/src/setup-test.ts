@@ -2,8 +2,11 @@ import type { AnatomyInstance } from '@ark-ui/anatomy'
 import '@testing-library/jest-dom'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
+import { vi } from 'vitest'
 
 const { window } = new JSDOM()
+
+vi.stubGlobal('ResizeObserver', ResizeObserver)
 
 window.ResizeObserver = ResizeObserver
 window.Element.prototype.scrollTo = () => {
