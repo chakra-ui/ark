@@ -8,7 +8,7 @@ import { type CollectionItem, type Optional } from '../types'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection'> {}
+    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {}
 
 export interface UseSelectReturn<T extends CollectionItem>
   extends Accessor<select.Api<PropTypes, T>> {}
@@ -25,7 +25,15 @@ export const useSelect = <T extends CollectionItem>(
   const collection = () => select.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
   const context = () =>
-    mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
+    mergeProps(
+      {
+        id: createUniqueId(),
+        getRootNode,
+        collection: collection(),
+        'open.controlled': props.open !== undefined,
+      },
+      rest,
+    )
   const [state, send] = useMachine(select.machine(context()), {
     context,
   })

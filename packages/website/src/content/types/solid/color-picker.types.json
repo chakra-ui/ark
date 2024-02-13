@@ -98,11 +98,6 @@
       "isRequired": false,
       "description": "Whether the color picker is open"
     },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the color picker open state is controlled by the user"
-    },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,

@@ -1,12 +1,8 @@
+import type { InputProps } from '@zag-js/date-picker'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
-
-// TODO: remove after zag is updated
-interface InputProps {
-  index?: number
-}
 
 export interface DatePickerInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}
 

@@ -52,9 +52,6 @@ export const props = {
   },
   open: {
     type: Boolean as PropType<Context['open']>,
-  },
-  'open.controlled': {
-    type: Boolean as PropType<Context['open.controlled']>,
     default: undefined,
   },
   positioning: {

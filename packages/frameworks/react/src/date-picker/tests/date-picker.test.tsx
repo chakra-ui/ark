@@ -51,4 +51,25 @@ describe('Date Picker', () => {
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   }, 10000)
+
+  it('should be fully controlled (true)', async () => {
+    render(<ComponentUnderTest open={true} />)
+
+    const closeButton = screen.getByRole('button', { name: 'Close calendar' })
+
+    expect(closeButton).toBeVisible()
+
+    await user.click(closeButton)
+    expect(closeButton).toBeVisible()
+  })
+
+  it('should be fully controlled (false)', async () => {
+    render(<ComponentUnderTest open={false} />)
+
+    const closeButton = screen.queryByRole('button', { name: 'Close calendar' })
+    expect(closeButton).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open calendar' }))
+    expect(closeButton).not.toBeInTheDocument()
+  })
 })

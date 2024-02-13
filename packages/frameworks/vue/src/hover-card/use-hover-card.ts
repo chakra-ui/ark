@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseHoverCardProps extends Optional<hoverCard.Context, 'id'> {
+export interface UseHoverCardProps
+  extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {
   /**
    * The initial open state of the hover card.
    */
@@ -27,6 +28,7 @@ export const useHoverCard = (
       id: context.value.id ?? useId().value,
       open: props.open ?? props.defaultOpen,
       getRootNode,
+      'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
         emit('update:open', details.open)

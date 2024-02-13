@@ -115,11 +115,6 @@
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the datepicker open state is controlled by the user"
-    },
     "parse": {
       "type": "(value: string) => DateValue",
       "isRequired": false,

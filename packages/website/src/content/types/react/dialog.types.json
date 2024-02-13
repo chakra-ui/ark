@@ -93,11 +93,6 @@
       "description": "Function called when the pointer is pressed down outside the component"
     },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the dialog is controlled by the user"
-    },
     "present": {
       "type": "boolean",
       "isRequired": false,

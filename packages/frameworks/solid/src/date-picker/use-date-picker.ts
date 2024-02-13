@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue'>, 'id'> {
+  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue' | 'open.controlled'>, 'id'> {
   /**
    * The focused date.
    */
@@ -26,6 +26,7 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
       getRootNode,
       focusedValue: local.focusedValue ? datePicker.parse(local.focusedValue) : undefined,
       value: local.value ? datePicker.parse(local.value) : undefined,
+      'open.controlled': props.open !== undefined,
     }),
     rest,
   )

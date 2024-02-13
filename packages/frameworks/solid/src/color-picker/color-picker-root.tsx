@@ -46,7 +46,6 @@ export const ColorPickerRoot: ArkComponent<'div', ElementProps> = (props: ColorP
       'onValueChange',
       'onValueChangeEnd',
       'open',
-      'open.controlled',
       'positioning',
       'readOnly',
       'value',

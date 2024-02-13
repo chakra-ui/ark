@@ -94,11 +94,6 @@
     },
     "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the dialog is controlled by the user"
-    },
     "present": {
       "type": "boolean",
       "isRequired": false,

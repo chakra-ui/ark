@@ -35,10 +35,6 @@ export const props = {
     type: Boolean as PropType<Context['open']>,
     default: undefined,
   },
-  'open.controlled': {
-    type: Boolean as PropType<Context['open.controlled']>,
-    default: undefined,
-  },
   portalled: {
     type: Boolean as PropType<Context['portalled']>,
     default: undefined,

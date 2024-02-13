@@ -47,11 +47,6 @@
       "isRequired": false,
       "description": "Whether the hover card is open"
     },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the hover card is controlled by the user"
-    },
     "openDelay": {
       "type": "number",
       "isRequired": false,
