@@ -2,7 +2,7 @@ import { TreeView, type TreeViewRootProps } from '../'
 
 export const ComponentUnderTest = (props: TreeViewRootProps) => {
   return (
-    <TreeView.Root>
+    <TreeView.Root {...props}>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
         <TreeView.Item id="1.0">
