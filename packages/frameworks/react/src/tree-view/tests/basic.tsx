@@ -11,10 +11,9 @@ export const ComponentUnderTest = (props: TreeViewRootProps) => {
         </TreeView.Item>
         <TreeView.Branch id="2.0">
           <TreeView.BranchControl>
-            <TreeView.BranchTrigger>
-              <TreeView.BranchText>2.0</TreeView.BranchText>
-              <TreeView.BranchIndicator>↕️</TreeView.BranchIndicator>
-            </TreeView.BranchTrigger>
+            <TreeView.BranchTrigger>↕️</TreeView.BranchTrigger>
+            <TreeView.BranchText>2.0</TreeView.BranchText>
+            <TreeView.BranchIndicator>↕️</TreeView.BranchIndicator>
           </TreeView.BranchControl>
           <TreeView.BranchContent>
             <TreeView.Item id="2.1">
