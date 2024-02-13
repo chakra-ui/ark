@@ -17,7 +17,7 @@ export const Basic = () => {
         <Clipboard.Input />
         <Clipboard.Trigger>
           Copy
-          <Clipboard.Indicator copied={false}>
+          <Clipboard.Indicator copied={true}>
             <CheckIcon />
           </Clipboard.Indicator>
           <Clipboard.Indicator copied={false}>
