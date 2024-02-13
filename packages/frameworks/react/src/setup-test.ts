@@ -13,6 +13,14 @@ window.Element.prototype.scrollIntoView = () => {}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 
+Object.defineProperty(window, 'navigator', {
+  value: {
+    clipboard: {
+      writeText: vi.fn(),
+    },
+  },
+})
+
 Object.assign(global, { window, document: window.document })
 
 export const getParts = (anatomy: AnatomyInstance<string>) => {
