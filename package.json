@@ -29,12 +29,12 @@
     "@commitlint/config-conventional": "18.6.0",
     "concurrently": "8.2.2",
     "husky": "9.0.10",
-    "lint-staged": "15.2.1",
+    "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "prettier-plugin-organize-imports": "3.2.4",
     "react": "18.2.0",
-    "turbo": "1.12.2",
+    "turbo": "1.12.3",
     "typescript": "5.3.3"
   },
   "commitlint": {

@@ -25,7 +25,7 @@ const isComponent =
     </Prose>
     {
       isComponent && (
-        <HStack gap="3">
+        <HStack gap="3" flexWrap="wrap">
           {entry.data.resources?.zag && (
             <a
               href={`https://zagjs.com/components/react/${entry.data.resources.zag}`}
