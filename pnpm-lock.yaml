@@ -172,8 +172,8 @@ importers:
   packages/frameworks/react:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 2.1.0
-        version: link:../../anatomy
+        specifier: 2.2.0
+        version: 2.2.0(@internationalized/date@3.5.1)
       '@zag-js/accordion':
         specifier: 0.36.1
         version: 0.36.1
@@ -398,8 +398,8 @@ importers:
   packages/frameworks/solid:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 2.1.0
-        version: link:../../anatomy
+        specifier: 2.2.0
+        version: 2.2.0(@internationalized/date@3.5.1)
       '@zag-js/accordion':
         specifier: 0.36.1
         version: 0.36.1
@@ -612,8 +612,8 @@ importers:
   packages/frameworks/vue:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 2.1.0
-        version: link:../../anatomy
+        specifier: 2.2.0
+        version: 2.2.0(@internationalized/date@3.5.1)
       '@zag-js/accordion':
         specifier: 0.36.1
         version: 0.36.1
@@ -851,8 +851,8 @@ importers:
   packages/website:
     dependencies:
       '@ark-ui/anatomy':
-        specifier: 2.1.0
-        version: link:../anatomy
+        specifier: 2.2.0
+        version: 2.2.0(@internationalized/date@3.5.1)
       '@ark-ui/react':
         specifier: workspace:*
         version: link:../frameworks/react
@@ -1120,6 +1120,48 @@ packages:
       '@zag-js/toggle-group': 0.34.0
       '@zag-js/tooltip': 0.34.0
       '@zag-js/tree-view': 0.34.0
+    transitivePeerDependencies:
+      - '@internationalized/date'
+    dev: false
+
+  /@ark-ui/anatomy@2.2.0(@internationalized/date@3.5.1):
+    resolution: {integrity: sha512-EOXgUd7F8XwyCQTjY7BkJKNi7ejO+zpzLF3dfvimCuEUM0/WgO0R+Yb7osk2SSlWGf3SfE+DxhJ4n9SKWVBHDQ==}
+    dependencies:
+      '@zag-js/accordion': 0.36.1
+      '@zag-js/anatomy': 0.36.1
+      '@zag-js/avatar': 0.36.1
+      '@zag-js/carousel': 0.36.1
+      '@zag-js/checkbox': 0.36.1
+      '@zag-js/clipboard': 0.36.1
+      '@zag-js/collapsible': 0.36.1
+      '@zag-js/color-picker': 0.36.1
+      '@zag-js/color-utils': 0.36.1
+      '@zag-js/combobox': 0.36.1
+      '@zag-js/date-picker': 0.36.1
+      '@zag-js/date-utils': 0.36.1(@internationalized/date@3.5.1)
+      '@zag-js/dialog': 0.36.1
+      '@zag-js/editable': 0.36.1
+      '@zag-js/file-upload': 0.36.1
+      '@zag-js/hover-card': 0.36.1
+      '@zag-js/menu': 0.36.1
+      '@zag-js/number-input': 0.36.1
+      '@zag-js/pagination': 0.36.1
+      '@zag-js/pin-input': 0.36.1
+      '@zag-js/popover': 0.36.1
+      '@zag-js/presence': 0.36.1
+      '@zag-js/progress': 0.36.1
+      '@zag-js/radio-group': 0.36.1
+      '@zag-js/rating-group': 0.36.1
+      '@zag-js/select': 0.36.1
+      '@zag-js/slider': 0.36.1
+      '@zag-js/splitter': 0.36.1
+      '@zag-js/switch': 0.36.1
+      '@zag-js/tabs': 0.36.1
+      '@zag-js/tags-input': 0.36.1
+      '@zag-js/toast': 0.36.1
+      '@zag-js/toggle-group': 0.36.1
+      '@zag-js/tooltip': 0.36.1
+      '@zag-js/tree-view': 0.36.1
     transitivePeerDependencies:
       - '@internationalized/date'
     dev: false
