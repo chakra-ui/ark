@@ -20,6 +20,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Prevent calling interaction outside when scrollbar is clicked.
 - Fix issue where positioned components don't respond to window resizing.
 - Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
 - Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
