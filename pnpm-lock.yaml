@@ -59,6 +59,12 @@ importers:
       '@zag-js/checkbox':
         specifier: 0.36.1
         version: 0.36.1
+      '@zag-js/clipboard':
+        specifier: 0.36.1
+        version: 0.36.1
+      '@zag-js/collapsible':
+        specifier: 0.36.1
+        version: 0.36.1
       '@zag-js/color-picker':
         specifier: 0.36.1
         version: 0.36.1
