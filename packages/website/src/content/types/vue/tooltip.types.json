@@ -68,6 +68,11 @@
       "isRequired": false,
       "description": "Whether the tooltip is open"
     },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is controlled by the user"
+    },
     "openDelay": {
       "type": "number",
       "isRequired": false,

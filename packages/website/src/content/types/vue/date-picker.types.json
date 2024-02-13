@@ -29,7 +29,7 @@
       "description": "The focused date."
     },
     "format": {
-      "type": "(date: DateValue[]) => string",
+      "type": "(date: DateValue) => string",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -120,8 +120,13 @@
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the datepicker open state is controlled by the user"
+    },
     "parse": {
-      "type": "(value: string) => DateValue[]",
+      "type": "(value: string) => DateValue",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -173,7 +178,10 @@
     "view": { "type": "DateView", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "index": { "type": "number", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Table": {
     "asChild": { "type": "boolean", "isRequired": false },
@@ -202,5 +210,9 @@
   "ViewControl": { "asChild": { "type": "boolean", "isRequired": false } },
   "ViewTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PresetTrigger": {
+    "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
   "TableCellTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -112,6 +112,11 @@
       "description": "Callback to be called when the menu values change (for radios and checkboxes)."
     },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu's open state is controlled by the user"
+    },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,

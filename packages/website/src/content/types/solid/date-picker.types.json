@@ -25,7 +25,7 @@
     },
     "focusedValue": { "type": "string", "isRequired": false, "description": "The focused date." },
     "format": {
-      "type": "(date: DateValue[]) => string",
+      "type": "(date: DateValue) => string",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -115,8 +115,13 @@
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
+    "open.controlled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the datepicker open state is controlled by the user"
+    },
     "parse": {
-      "type": "(value: string) => DateValue[]",
+      "type": "(value: string) => DateValue",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -173,7 +178,10 @@
     "view": { "type": "DateView", "isRequired": true },
     "as": { "type": "ValidComponent", "isRequired": false }
   },
-  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Input": {
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "index": { "type": "number", "isRequired": false }
+  },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Table": {
     "as": { "type": "ValidComponent", "isRequired": false },
@@ -202,5 +210,9 @@
   "ViewControl": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ViewTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
   "ClearTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "PresetTrigger": {
+    "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
+    "as": { "type": "ValidComponent", "isRequired": false }
+  },
   "TableCellTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
 }
