@@ -13,6 +13,7 @@ export const TreeViewBranchIndicator: ArkComponent<'div'> = (
   const branchProps = useTreeViewBranchContext()
   const mergedProps = mergeProps(
     () => api().getBranchProps(branchProps),
+    // TODO use api.getBranchIndicatorProps() when available
     treeViewAnatomy.build().branchIndicator.attrs,
     props,
   )

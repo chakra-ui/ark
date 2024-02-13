@@ -9,7 +9,6 @@ export const ComponentUnderTest = (props: DatePickerRootProps) => (
       <DatePicker.Trigger>📅</DatePicker.Trigger>
       <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
-    <DatePicker.PresetTrigger value="last7Days">Last 7 days</DatePicker.PresetTrigger>
     <Portal>
       <DatePicker.Positioner data-testid="positioner">
         <DatePicker.Content>

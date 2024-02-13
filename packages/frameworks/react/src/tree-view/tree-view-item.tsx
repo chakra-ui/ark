@@ -1,10 +1,11 @@
 import { mergeProps } from '@zag-js/react'
+import type { ItemState } from '@zag-js/tree-view'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useTreeViewContext, type ItemState } from './tree-view-context'
+import { useTreeViewContext } from './tree-view-context'
 import { useTreeViewDepthContext } from './tree-view-depth-context'
 import { TreeViewItemProvider, type ItemProps } from './tree-view-item-context'
 
@@ -28,7 +29,6 @@ export const TreeViewItem = forwardRef<HTMLLIElement, TreeViewItemProps>((props,
   const depth = useTreeViewDepthContext()
   const itemProps = { id, disabled, depth }
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
-
   const itemState = api.getItemState(itemProps)
   const view = runIfFn(children, itemState)
 

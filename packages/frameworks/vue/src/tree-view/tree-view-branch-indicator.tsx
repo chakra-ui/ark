@@ -14,6 +14,7 @@ export const TreeViewBranchIndicator = defineComponent<TreeViewBranchIndicatorPr
     return () => (
       <ark.div
         {...api.value.getBranchProps(branchProps)}
+        // TODO replace with api.getBranchIndicatorProps() when available
         {...treeViewAnatomy.build().branchIndicator.attrs}
         {...attrs}
       >
