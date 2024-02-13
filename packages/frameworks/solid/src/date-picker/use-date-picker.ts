@@ -26,6 +26,7 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
       getRootNode,
       focusedValue: local.focusedValue ? datePicker.parse(local.focusedValue) : undefined,
       value: local.value ? datePicker.parse(local.value) : undefined,
+      'open.controlled': props.open !== undefined,
     }),
     rest,
   )

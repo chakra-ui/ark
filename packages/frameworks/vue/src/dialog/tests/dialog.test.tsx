@@ -94,16 +94,29 @@ describe('Dialog', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 
-  it('should be fully controlled', async () => {
+  it('should be fully controlled (true)', async () => {
     render(ComponentUnderTest, {
       props: {
         open: true,
       },
     })
 
-    expect(screen.getByTestId('positioner')).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Close' })).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.getByTestId('positioner')).toBeVisible()
+    expect(screen.queryByRole('button', { name: 'Close' })).toBeVisible()
+  })
+
+  it('should be fully controlled (false)', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        open: false,
+      },
+    })
+
+    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
+    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
   })
 })

@@ -21,7 +21,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
       id: createUniqueId(),
       getRootNode,
       value: local.value ? colorPicker.parse(local.value) : undefined,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
     }),
     rest,
   )

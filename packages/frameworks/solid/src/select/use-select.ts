@@ -30,7 +30,7 @@ export const useSelect = <T extends CollectionItem>(
         id: createUniqueId(),
         getRootNode,
         collection: collection(),
-        'open.controlled': props.open,
+        'open.controlled': props.open !== undefined,
       },
       rest,
     )

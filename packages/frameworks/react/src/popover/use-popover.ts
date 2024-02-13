@@ -20,6 +20,7 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.defaultOpen ?? props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: popover.Context = {

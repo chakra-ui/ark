@@ -21,6 +21,7 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.defaultOpen ?? props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: hoverCard.Context = {

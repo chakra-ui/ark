@@ -10,7 +10,7 @@ export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 export const useDialog = (props: UseDialogProps): UseDialogReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open },
+    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
     props,
   )
   const [state, send] = useMachine(dialog.machine(context), { context })

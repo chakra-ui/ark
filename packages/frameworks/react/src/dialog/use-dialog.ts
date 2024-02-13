@@ -20,7 +20,7 @@ export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.defaultOpen ?? props.open,
-    'open.controlled': props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: dialog.Context = {

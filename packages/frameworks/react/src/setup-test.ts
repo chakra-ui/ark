@@ -8,11 +8,8 @@ const { window } = new JSDOM()
 
 vi.stubGlobal('ResizeObserver', ResizeObserver)
 window.ResizeObserver = ResizeObserver
-
 window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}
-
-window.res
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 

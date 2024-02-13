@@ -40,7 +40,7 @@ export const useSelect = <T extends CollectionItem>(
     collection,
     ...rest,
     value: props.defaultValue,
-    'open.controlled': props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: select.Context<T> = {

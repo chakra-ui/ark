@@ -25,7 +25,7 @@ export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
       getRootNode,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
         emit('update:open', details.open)

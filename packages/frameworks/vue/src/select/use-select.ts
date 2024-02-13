@@ -25,7 +25,7 @@ export const useSelect = <T extends CollectionItem>(
       ...rest,
       collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
     }
   })
 

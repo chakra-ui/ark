@@ -27,7 +27,7 @@ export const useDatePicker = (
       ...rest,
       value: modelValue,
       focusedValue,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
     }
   })
 

@@ -30,7 +30,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     ...props,
     focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
     value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
-    'open.controlled': props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: datePicker.Context = {

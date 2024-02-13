@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UsePopoverProps extends Optional<popover.Context, 'id'> {
+export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
   /**
    * The initial open state of the popover.
    */
@@ -25,6 +25,7 @@ export const usePopover = (props: UsePopoverProps, emit: CallableFunction) => {
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
       getRootNode,
+      'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
         emit('update:open', details.open)

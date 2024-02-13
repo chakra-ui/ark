@@ -20,7 +20,7 @@ export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuRet
     return {
       ...rest,
       value: modelValue,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
     }
   })
   const getRootNode = useEnvironmentContext()

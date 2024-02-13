@@ -20,7 +20,7 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
     onOpenChange: useEvent(props.onOpenChange),
     onSelect: useEvent(props.onSelect),
     onValueChange: useEvent(props.onValueChange, { sync: true }),
-    'open.controlled': props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const [state, send, machine] = useMachine(menu.machine(context), { context })

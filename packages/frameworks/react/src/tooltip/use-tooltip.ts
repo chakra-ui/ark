@@ -13,6 +13,7 @@ export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: tooltip.Context = {

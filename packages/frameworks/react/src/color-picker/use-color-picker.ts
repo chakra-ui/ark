@@ -25,7 +25,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,
-    'open.controlled': props.open,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: colorPicker.Context = {

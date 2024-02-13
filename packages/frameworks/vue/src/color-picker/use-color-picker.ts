@@ -22,7 +22,7 @@ export const useColorPicker = (
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,
-      'open.controlled': props.open,
+      'open.controlled': props.open !== undefined,
     }
   })
 
