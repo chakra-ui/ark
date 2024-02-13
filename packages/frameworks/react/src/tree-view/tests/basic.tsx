@@ -6,6 +6,7 @@ export const ComponentUnderTest = (props: TreeViewRootProps) => {
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
         <TreeView.Item id="1.0">
+          <TreeView.ItemIndicator>🌳</TreeView.ItemIndicator>
           <TreeView.ItemText>1.0</TreeView.ItemText>
         </TreeView.Item>
         <TreeView.Branch id="2.0">
