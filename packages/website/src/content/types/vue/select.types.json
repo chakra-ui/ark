@@ -133,11 +133,6 @@
       "isRequired": false,
       "description": "Whether the select menu is open"
     },
-    "open.controlled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select's open state is controlled by the user"
-    },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,
