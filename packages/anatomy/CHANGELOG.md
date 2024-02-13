@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [2.2.0] - 2024-02-13
+
 ### Added
 
 - Added `Clipboard` anatomy
