@@ -3,20 +3,20 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useTreeViewContext } from './tree-view-context'
 import { useTreeViewItemContext } from './tree-view-item-context'
 
-export interface TreeViewItemTextProps extends HTMLArkProps<'span'> {}
+export interface TreeViewItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const TreeViewItemText = defineComponent<TreeViewItemTextProps>(
+export const TreeViewItemIndicator = defineComponent<TreeViewItemIndicatorProps>(
   (_, { slots, attrs }) => {
     const api = useTreeViewContext()
     const itemProps = useTreeViewItemContext()
 
     return () => (
-      <ark.span {...api.value.getItemTextProps(itemProps)} {...attrs}>
+      <ark.div {...api.value.getItemIndicatorProps(itemProps)} {...attrs}>
         {slots.default?.()}
-      </ark.span>
+      </ark.div>
     )
   },
   {
-    name: 'TreeViewItemText',
+    name: 'TreeViewItemIndicator',
   },
 )

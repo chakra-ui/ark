@@ -1,35 +1,22 @@
-// import type { BranchProps } from '@zag-js/tree-view'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { useTreeViewContext, type BranchProps } from './tree-view-context'
+import { useTreeViewBranchContext } from './tree-view-branch-context'
+import { useTreeViewContext } from './tree-view-context'
 
-export interface TreeViewBranchTextProps extends Assign<HTMLArkProps<'span'>, BranchProps> {}
+export interface TreeViewBranchTextProps extends HTMLArkProps<'span'> {}
 
 export const TreeViewBranchText = defineComponent<TreeViewBranchTextProps>(
-  (props, { slots, attrs }) => {
+  (_, { slots, attrs }) => {
     const api = useTreeViewContext()
+    const branchProps = useTreeViewBranchContext()
 
     return () => (
-      <ark.span {...api.value.getBranchTextProps(props)} {...attrs}>
+      <ark.span {...api.value.getBranchTextProps(branchProps)} {...attrs}>
         {slots.default?.()}
       </ark.span>
     )
   },
   {
     name: 'TreeViewBranchText',
-    props: {
-      depth: {
-        type: Number as PropType<TreeViewBranchTextProps['depth']>,
-        required: true,
-      },
-      id: {
-        type: String as PropType<TreeViewBranchTextProps['id']>,
-        required: true,
-      },
-      disabled: {
-        type: Boolean as PropType<TreeViewBranchTextProps['disabled']>,
-      },
-    },
   },
 )

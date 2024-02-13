@@ -1,19 +1,19 @@
-// import type { BranchProps } from '@zag-js/tree-view'
 import { treeViewAnatomy } from '@ark-ui/anatomy'
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
-import { useTreeViewContext, type BranchProps } from './tree-view-context'
+import { useTreeViewBranchContext } from './tree-view-branch-context'
+import { useTreeViewContext } from './tree-view-context'
 
-export interface TreeViewBranchIndicatorProps extends Assign<HTMLArkProps<'div'>, BranchProps> {}
+export interface TreeViewBranchIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const TreeViewBranchIndicator = defineComponent<TreeViewBranchIndicatorProps>(
-  (props, { slots, attrs }) => {
+  (_, { slots, attrs }) => {
     const api = useTreeViewContext()
+    const branchProps = useTreeViewBranchContext()
 
     return () => (
       <ark.div
-        {...api.value.getBranchProps(props)}
+        {...api.value.getBranchProps(branchProps)}
         {...treeViewAnatomy.build().branchIndicator.attrs}
         {...attrs}
       >
@@ -23,18 +23,5 @@ export const TreeViewBranchIndicator = defineComponent<TreeViewBranchIndicatorPr
   },
   {
     name: 'TreeViewBranchIndicator',
-    props: {
-      depth: {
-        type: Number as PropType<TreeViewBranchIndicatorProps['depth']>,
-        required: true,
-      },
-      id: {
-        type: String as PropType<TreeViewBranchIndicatorProps['id']>,
-        required: true,
-      },
-      disabled: {
-        type: Boolean as PropType<TreeViewBranchIndicatorProps['disabled']>,
-      },
-    },
   },
 )
