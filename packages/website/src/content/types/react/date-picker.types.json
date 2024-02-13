@@ -336,6 +336,14 @@
       "description": "Render as a different element type."
     }
   },
+  "PresetTrigger": {
+    "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "TableCellTrigger": {
     "asChild": {
       "type": "boolean",
