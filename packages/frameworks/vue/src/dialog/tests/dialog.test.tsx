@@ -93,4 +93,17 @@ describe('Dialog', () => {
     await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
+
+  it('should be fully controlled', async () => {
+    render(ComponentUnderTest, {
+      props: {
+        open: true,
+      },
+    })
+
+    expect(screen.getByTestId('positioner')).toBeVisible()
+
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+    expect(screen.getByTestId('positioner')).toBeVisible()
+  })
 })
