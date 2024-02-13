@@ -11,7 +11,6 @@ export const TreeViewBranchIndicator = forwardRef<HTMLDivElement, TreeViewBranch
   (props, ref) => {
     const api = useTreeViewContext()
     const branchProps = useTreeViewBranchContext()
-
     const mergedProps = mergeProps(
       api.getBranchProps(branchProps),
       treeViewAnatomy.build().branchIndicator.attrs as Record<string, string>,
