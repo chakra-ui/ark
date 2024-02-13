@@ -14,7 +14,6 @@ export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerP
     const [presetTriggerProps, localProps] = createSplitProps<PresetTriggerProps>()(props, [
       'value',
     ])
-
     const api = useDatePickerContext()
     const mergedProps = mergeProps(api.getPresetTriggerProps(presetTriggerProps), localProps)
 

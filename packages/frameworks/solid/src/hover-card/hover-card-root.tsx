@@ -24,6 +24,7 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
     'ids',
     'onOpenChange',
     'open',
+    'open.controlled',
     'openDelay',
     'positioning',
   ])

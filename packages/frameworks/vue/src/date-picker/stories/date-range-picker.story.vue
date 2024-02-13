@@ -9,10 +9,12 @@ import './date-picker.css'
       <DatePicker.Root selection-mode="range">
         <DatePicker.Label>Label</DatePicker.Label>
         <DatePicker.Control>
-          <DatePicker.Input />
+          <DatePicker.Input :index="0" />
+          <DatePicker.Input :index="1" />
           <DatePicker.Trigger>📅</DatePicker.Trigger>
           <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
         </DatePicker.Control>
+        <DatePicker.PresetTrigger value="last7Days">Last 7 days</DatePicker.PresetTrigger>
         <Teleport to="body">
           <DatePicker.Positioner>
             <DatePicker.Content>

@@ -196,7 +196,8 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    }
+    },
+    "index": { "type": "number", "isRequired": false }
   },
   "Label": {
     "asChild": {

@@ -32,14 +32,18 @@ export const props = {
     type: Boolean as PropType<Context['loop']>,
     default: undefined,
   },
+  open: {
+    type: Boolean as PropType<Context['open']>,
+  },
+  'open.controlled': {
+    type: Boolean as PropType<Context['open.controlled']>,
+    default: undefined,
+  },
   positioning: {
     type: Object as PropType<Context['positioning']>,
   },
   modelValue: {
     type: Object as PropType<Context['value']>,
-  },
-  open: {
-    type: Boolean as PropType<Context['open']>,
   },
 }
 export const emits = declareEmits(['open-change', 'select', 'value-change', 'update:modelValue'])

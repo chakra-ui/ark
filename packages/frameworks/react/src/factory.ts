@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { mergeProps } from '@zag-js/core'
+import { mergeProps } from '@zag-js/react'
 import React, {
   Children,
   cloneElement,

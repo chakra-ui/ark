@@ -8,7 +8,6 @@ const { window } = new JSDOM()
 
 vi.stubGlobal('ResizeObserver', ResizeObserver)
 
-window.ResizeObserver = ResizeObserver
 window.Element.prototype.scrollTo = () => {
   // no-op
 }

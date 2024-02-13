@@ -22,6 +22,10 @@ export const props = {
     type: Boolean as PropType<Context['open']>,
     default: undefined,
   },
+  'open.controlled': {
+    type: Boolean as PropType<Context['open.controlled']>,
+    default: undefined,
+  },
   openDelay: {
     type: Number as PropType<Context['openDelay']>,
   },

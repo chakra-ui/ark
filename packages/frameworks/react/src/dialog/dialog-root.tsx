@@ -1,4 +1,4 @@
-import { mergeProps } from '@zag-js/core'
+import { mergeProps } from '@zag-js/react'
 import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
 import { PresencePropsProvider, PresenceProvider, usePresence } from '../presence'

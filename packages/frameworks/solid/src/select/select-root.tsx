@@ -49,6 +49,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'onPointerDownOutside',
     'onValueChange',
     'open',
+    'open.controlled',
     'positioning',
     'readOnly',
     'selectOnBlur',
