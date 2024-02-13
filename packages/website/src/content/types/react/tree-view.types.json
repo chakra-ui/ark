@@ -136,6 +136,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "BranchIndicator": {
     "asChild": {
       "type": "boolean",
