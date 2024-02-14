@@ -18,7 +18,7 @@ const main = async () => {
   process.chdir(path.join(root, 'packages', 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
-  const indices = ['dialog']
+  const indices = ['clipboard']
 
   await Promise.all(
     indices
