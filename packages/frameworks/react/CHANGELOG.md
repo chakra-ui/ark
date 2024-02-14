@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where the `Clipboard` component was missing a specifier in the `@ark-ui/react` package.
+
 ## [2.1.0] - 2024-02-14
 
 ### Added
