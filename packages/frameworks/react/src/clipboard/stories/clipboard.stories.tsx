@@ -16,11 +16,7 @@ export const Basic = () => {
       <Clipboard.Control>
         <Clipboard.Input />
         <Clipboard.Trigger>
-          Copy
-          <Clipboard.Indicator copied={true}>
-            <CheckIcon />
-          </Clipboard.Indicator>
-          <Clipboard.Indicator copied={false}>
+          <Clipboard.Indicator copied={<CheckIcon />}>
             <ClipboardCopyIcon />
           </Clipboard.Indicator>
         </Clipboard.Trigger>

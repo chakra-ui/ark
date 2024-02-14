@@ -1,21 +1,24 @@
-import type { IndicatorProps } from '@zag-js/clipboard'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { createSplitProps } from '../create-split-props'
+import { forwardRef, type ReactNode } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import type { Assign } from '../types'
 import { useClipboardContext } from './clipboard-context'
 
-export interface ClipboardIndicatorProps extends Assign<HTMLArkProps<'div'>, IndicatorProps> {}
+export interface ClipboardIndicatorProps extends HTMLArkProps<'div'> {
+  copied?: ReactNode
+}
 
 export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorProps>(
   (props, ref) => {
-    const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['copied'])
+    const { children, copied, ...localProps } = props
     const api = useClipboardContext()
-    const mergedProps = mergeProps(api.getIndicatorProps(indicatorProps), localProps)
+    const mergedProps = mergeProps(api.getIndicatorProps({ copied: api.isCopied }), localProps)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <ark.div {...mergedProps} ref={ref}>
+        {api.isCopied ? copied : children}
+      </ark.div>
+    )
   },
 )
 
-ClipboardIndicator.displayName = 'ClipboardIndicator'
+ClipboardIndicator.displayName = 'Clipb oardIndicator'

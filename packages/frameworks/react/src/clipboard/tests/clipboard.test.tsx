@@ -12,11 +12,7 @@ const ComponentUnderTest = () => (
     <Clipboard.Control>
       <Clipboard.Input />
       <Clipboard.Trigger>
-        Copy
-        <Clipboard.Indicator copied={false}>
-          <CheckIcon />
-        </Clipboard.Indicator>
-        <Clipboard.Indicator copied={false}>
+        <Clipboard.Indicator copied={<CheckIcon />}>
           <ClipboardCopyIcon />
         </Clipboard.Indicator>
       </Clipboard.Trigger>
