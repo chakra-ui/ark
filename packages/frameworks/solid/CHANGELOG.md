@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-02-14
+
 ### Added
 
 - Introduced `Clipboard` component. Refer to the [documentation](https://ark-ui.com/docs/components/clipboard) for details.
