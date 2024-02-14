@@ -33,7 +33,9 @@ export const RenderFn = () => {
           <Clipboard.Label>Copy this link</Clipboard.Label>
           <Clipboard.Control>
             <Clipboard.Input />
-            <Clipboard.Trigger>{api.isCopied ? 'Copied' : 'Copy'}</Clipboard.Trigger>
+            <Clipboard.Trigger>
+              {api.isCopied ? <CheckIcon /> : <ClipboardCopyIcon />}
+            </Clipboard.Trigger>
           </Clipboard.Control>
         </>
       )}
