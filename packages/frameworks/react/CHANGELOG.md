@@ -8,32 +8,43 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added new `LocaleProvider` component to provide locale context to all components that require it.
-- Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
-- Add the `DatePicker.PresetTrigger` component
-- Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
+- Introduced `Clipboard` component. Refer to the [documentation](https://ark-ui.com/docs/components/clipboard) for details.
+- Implemented programmable control over the open state for `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip`.
+- Added a `PresetTrigger` part to the `DatePicker` component, enabling custom triggers for common date presets (e.g., Last 7 days, Last 30 days).
+- Enhanced the `DatePicker.Control` component to support multiple inputs by introducing an optional `index` attribute to `DatePicker.Input`. Example usage:
+
+```jsx
+<DatePicker.Control>
+  <DatePicker.Input index={0} />
+  <DatePicker.Input index={1} />
+</DatePicker.Control>
+```
+
+### Changed
+
+- Refined the `TreeView` component API for streamlined component usage. See the [documentation](https://ark-ui.com/docs/components/tree-view) for details.
 
 ### Fixed
 
-- Prevent calling interaction outside when scrollbar is clicked.
-- Fix issue where positioned components don't respond to window resizing.
-- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
-- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
-- Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
-- Fix issue in the `Editable` where cannot delete text when `maxLength` reached
-- Fix issue in the `Select` where item group's label `id` pointed to the wrong element
-- Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
+- Resolved unintentional interactions when clicking the scrollbar.
+- Addressed an issue where positioned components failed to adjust to window resizing.
+- Corrected a behavior where restoring scroll position triggered a smooth scroll effect back to the starting point.
+- Rectified a problem in `Combobox`, `Menu`, and `Select` where scrolling into view inadvertently scrolled the body element.
+- Fixed a discrepancy in `DatePicker` regarding the incorrect display of weeks when setting `startOfWeek`.
+- Solved an issue in the `Editable` preventing text deletion upon reaching `maxLength`.
+- Corrected an issue in the `Select` where an item group's label `id` was misdirected.
+- Adjusted `Select` to use the correct `id` for the `aria-activedescendant` attribute.
 
 ## [2.0.2] - 2024-02-10
 
 ### Added
 
-- Exported `SelectionDetails` type for `Menu` component
+- Exported `SelectionDetails` type for the `Menu` component.
 
 ### Changed
 
-- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
-- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+- Updated `Dialog.Description` and `Popover.Description` elements from `p` to `div` for better paragraph handling.
+- Altered `TreeView.BranchTrigger` element from `button` to `div` for accessibility enhancements.
 
 ### Fixed
 
