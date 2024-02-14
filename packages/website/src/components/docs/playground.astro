@@ -6,6 +6,7 @@ import {
   Avatar,
   Carousel,
   Checkbox,
+  Clipboard,
   ColorPicker,
   Combobox,
   ContextMenu,
@@ -56,6 +57,7 @@ const { component } = Astro.props
         .with('carousel', () => <Carousel client:load />)
         .with('checkbox', () => <Checkbox client:load />)
         .with('circular-progress', () => <Progress type="circular" client:load />)
+        .with('clipboard', () => <Clipboard client:load />)
         .with('color-picker', () => <ColorPicker client:load />)
         .with('combobox', () => <Combobox client:load />)
         .with('context-menu', () => <ContextMenu client:load />)
