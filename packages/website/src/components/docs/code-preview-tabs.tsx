@@ -4,6 +4,9 @@ import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui'
 import { CodePreview } from './code-preview'
 
+import { useStore } from '@nanostores/react'
+import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
+
 interface Props {
   code?: string
   tabs: Record<
@@ -17,11 +20,13 @@ interface Props {
 export const CodePreviewTabs = (props: PropsWithChildren<Props>) => {
   const { expandable } = props
   const [collapsed, setCollapsed] = useState(props.collapsed)
-  const tabs = Object.entries(props.tabs)
-  const [value, setValue] = useState(tabs[0][0])
+  const $selectedFramework = useStore(selectedFramework)
 
   return (
-    <Tabs.Root value={value} onValueChange={(e) => setValue(e.value)}>
+    <Tabs.Root
+      value={$selectedFramework}
+      onValueChange={(e) => selectedFramework.set(e.value as SelectedFramework)}
+    >
       <HStack justifyContent="space-between" p="1">
         <Tabs.List>
           {Object.entries(props.tabs).map(([key, value]) => (

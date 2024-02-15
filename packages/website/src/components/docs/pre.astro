@@ -34,7 +34,7 @@ const [react, solid, vue] = stories
             }}
             expandable
             collapsed={storyId === 'Basic'}
-            client:load
+            client:only="react"
           >
           <!-- @ts-expect-error -->
             <Code

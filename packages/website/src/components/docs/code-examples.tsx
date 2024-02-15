@@ -1,6 +1,9 @@
 import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui'
 
+import { useStore } from '@nanostores/react'
+import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
+
 type Props = Tabs.RootProps & {
   react?: JSX.Element
   solid?: JSX.Element
@@ -8,8 +11,15 @@ type Props = Tabs.RootProps & {
 }
 
 export const CodeExamples = (props: Props) => {
+  const $selectedFramework = useStore(selectedFramework)
   return (
-    <Tabs.Root size="sm" defaultValue="react" {...props} className="not-prose">
+    <Tabs.Root
+      size="sm"
+      value={$selectedFramework}
+      onValueChange={(e) => selectedFramework.set(e.value as SelectedFramework)}
+      {...props}
+      className="not-prose"
+    >
       <Tabs.List bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
         <Tabs.Trigger
           value="react"

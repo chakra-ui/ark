@@ -14,7 +14,7 @@ const stories = await getCollection('stories', (story) => story.id.includes(`/${
 const [react, solid, vue] = stories
 ---
 
-<CodeExamples client:load>
+<CodeExamples client:only="react">
   <!-- @ts-expect-error -->
   <Code
     slot="react"
