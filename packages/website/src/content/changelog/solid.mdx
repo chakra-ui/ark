@@ -7,6 +7,49 @@ description:
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-02-14
+
+### Added
+
+- Introduced `Clipboard` component. Refer to the [documentation](https://ark-ui.com/docs/components/clipboard) for details.
+- Implemented programmable control over the open state for `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip`.
+- Exported `SelectionDetails` type for the `Menu` component.
+- Added a `PresetTrigger` part to the `DatePicker` component, enabling custom triggers for common date presets (e.g., Last 7 days, Last 30 days).
+- Enhanced the `DatePicker.Control` component to support multiple inputs by introducing an optional `index` attribute to `DatePicker.Input`. Example usage:
+
+```jsx
+<DatePicker.Control>
+  <DatePicker.Input index={0} />
+  <DatePicker.Input index={1} />
+</DatePicker.Control>
+```
+
+### Changed
+
+- Refined the `TreeView` component API for streamlined component usage. See the [documentation](https://ark-ui.com/docs/components/tree-view) for details.
+- Updated `Dialog.Description` and `Popover.Description` elements from `p` to `div` for better paragraph handling.
+- Altered `TreeView.BranchTrigger` element from `button` to `div` for accessibility enhancements.
+
+### Fixed
+
+- Resolved unintentional interactions when clicking the scrollbar.
+- Addressed an issue where positioned components failed to adjust to window resizing.
+- Corrected a behavior where restoring scroll position triggered a smooth scroll effect back to the starting point.
+- Rectified a problem in `Combobox`, `Menu`, and `Select` where scrolling into view inadvertently scrolled the body element.
+- Fixed a discrepancy in `DatePicker` regarding the incorrect display of weeks when setting `startOfWeek`.
+- Solved an issue in the `Editable` preventing text deletion upon reaching `maxLength`.
+- Corrected an issue in the `Select` where an item group's label `id` was misdirected.
+- Adjusted `Select` to use the correct `id` for the `aria-activedescendant` attribute.
+
+## [2.0.1] - 2024-01-30
+
+### Fixed
+
+- Resolved an issue that for some components the types were not being generated
+  correctly.
+- Fix issue where `Select` component submits its first option when used in a
+  form, even if there is no value selected.
+
 ## [2.0.0] - 2024-01-30
 
 ### Added

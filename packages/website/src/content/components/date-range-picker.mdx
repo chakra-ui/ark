@@ -3,6 +3,8 @@ id: date-range-picker
 title: Date Range Picker
 description:
   A component that allows users to select a date range from a calendar.
+resources:
+  zag: date-range-picker
 ---
 
 import { Anatomy, Story, ComponentPreview } from '~/components/docs'
@@ -36,6 +38,9 @@ be achieved by setting the `open` prop to `true` and `closeOnSelect` prop to
 Additionaly, you may want to display two consecutive months at the same time to
 facilitate a broader range selection. You can do it by setting the `numOfMonths`
 prop to `2`:
+
+> Important to note that standalone date picker doesn't use the `Portal`,
+> `Positioner` and `Content` components.
 
 <Story id="Standalone" />
 

@@ -6,7 +6,7 @@ import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue'>, 'id'> {
+  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue' | 'open.controlled'>, 'id'> {
   /**
    * The initial value of the date picker
    */
@@ -30,6 +30,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     ...props,
     focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
     value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: datePicker.Context = {

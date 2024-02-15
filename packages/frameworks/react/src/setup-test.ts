@@ -2,18 +2,24 @@ import type { AnatomyInstance } from '@ark-ui/anatomy'
 import '@testing-library/jest-dom'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
+import { vi } from 'vitest'
 
 const { window } = new JSDOM()
 
+vi.stubGlobal('ResizeObserver', ResizeObserver)
 window.ResizeObserver = ResizeObserver
-window.Element.prototype.scrollTo = () => {
-  // no-op
-}
-window.Element.prototype.scrollIntoView = () => {
-  // no-op
-}
+window.Element.prototype.scrollTo = () => {}
+window.Element.prototype.scrollIntoView = () => {}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
+
+Object.defineProperty(window, 'navigator', {
+  value: {
+    clipboard: {
+      writeText: vi.fn(),
+    },
+  },
+})
 
 Object.assign(global, { window, document: window.document })
 

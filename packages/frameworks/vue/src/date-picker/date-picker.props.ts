@@ -52,6 +52,7 @@ export const props = {
   },
   open: {
     type: Boolean as PropType<Context['open']>,
+    default: undefined,
   },
   positioning: {
     type: Object as PropType<Context['positioning']>,

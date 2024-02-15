@@ -1,6 +1,6 @@
 import { treeViewAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { TreeView } from '../'
+import { TreeView } from '..'
 import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './tree-view.test.vue'
 

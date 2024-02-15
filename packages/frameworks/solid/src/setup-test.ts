@@ -1,5 +1,6 @@
 import type { AnatomyInstance } from '@ark-ui/anatomy'
 import ResizeObserver from 'resize-observer-polyfill'
+import { vi } from 'vitest'
 
 export const getParts = (anatomy: AnatomyInstance<string>) => {
   return Object.values(anatomy.build()).map(
@@ -11,8 +12,17 @@ export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
   return anatomy.keys().map((x) => (x.charAt(0).toUpperCase() + x.slice(1)) as Capitalize<T>)
 }
 
+global.document.execCommand = () => true
 global.ResizeObserver = ResizeObserver
 global.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 global.Element.prototype.scrollIntoView = () => {
   // no-op
 }
+
+Object.defineProperty(window, 'navigator', {
+  value: {
+    clipboard: {
+      writeText: vi.fn(),
+    },
+  },
+})

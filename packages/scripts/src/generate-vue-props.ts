@@ -18,7 +18,7 @@ const main = async () => {
   process.chdir(path.join(root, 'packages', 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
-  const indices = ['dialog']
+  const indices = ['clipboard']
 
   await Promise.all(
     indices
@@ -84,14 +84,14 @@ const main = async () => {
                       const propType = isFunction
                         ? 'Function'
                         : type.isBoolean()
-                        ? 'Boolean'
-                        : type.isString() || type.isUnion()
-                        ? 'String'
-                        : type.isNumber()
-                        ? 'Number'
-                        : type.isArray()
-                        ? 'Array'
-                        : 'Object'
+                          ? 'Boolean'
+                          : type.isString() || type.isUnion()
+                            ? 'String'
+                            : type.isNumber()
+                              ? 'Number'
+                              : type.isArray()
+                                ? 'Array'
+                                : 'Object'
 
                       writer.writeLine(`'${name}': {`)
                       writer.indent(() => {

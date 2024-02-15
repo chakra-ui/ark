@@ -34,7 +34,7 @@
     },
     "focusedValue": { "type": "string", "isRequired": false, "description": "The focused date." },
     "format": {
-      "type": "(date: DateValue[]) => string",
+      "type": "(date: DateValue) => string",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -125,7 +125,7 @@
       "description": "Whether the datepicker is open"
     },
     "parse": {
-      "type": "(value: string) => DateValue[]",
+      "type": "(value: string) => DateValue",
       "isRequired": false,
       "description": "The format of the date to display in the input."
     },
@@ -191,7 +191,8 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    }
+    },
+    "index": { "type": "number", "isRequired": false }
   },
   "Label": {
     "asChild": {
@@ -325,6 +326,14 @@
     }
   },
   "ClearTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "PresetTrigger": {
+    "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

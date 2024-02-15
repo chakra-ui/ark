@@ -16,6 +16,10 @@ import { DatePickerLabel, type DatePickerLabelProps } from './date-picker-label'
 import { DatePickerMonthSelect, type DatePickerMonthSelectProps } from './date-picker-month-select'
 import { DatePickerNextTrigger, type DatePickerNextTriggerProps } from './date-picker-next-trigger'
 import { DatePickerPositioner, type DatePickerPositionerProps } from './date-picker-positioner'
+import {
+  DatePickerPresetTrigger,
+  type DatePickerPresetTriggerProps,
+} from './date-picker-preset-trigger'
 import { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
 import { DatePickerRangeText, type DatePickerRangeTextProps } from './date-picker-range-text'
 import { DatePickerRoot, type DatePickerRootProps } from './date-picker-root'
@@ -52,6 +56,7 @@ export {
   DatePickerMonthSelect,
   DatePickerNextTrigger,
   DatePickerPositioner,
+  DatePickerPresetTrigger,
   DatePickerPrevTrigger,
   DatePickerRangeText,
   DatePickerRoot,
@@ -85,6 +90,7 @@ export type {
   DatePickerNextTriggerProps,
   DatePickerOpenChangeDetails,
   DatePickerPositionerProps,
+  DatePickerPresetTriggerProps,
   DatePickerPrevTriggerProps,
   DatePickerRangeTextProps,
   DatePickerRootProps,

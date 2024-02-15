@@ -2,6 +2,9 @@
 id: checkbox
 title: Checkbox
 description: A control element that allows for multiple selections within a set.
+resources:
+  zag: checkbox
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -17,6 +20,16 @@ we name its parts.
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="checkbox" />
+
+### Design impact on the asChild property
+
+The `Checkbox.Root` element of the checkbox is a `label` element. This is
+because the checkbox is a form control and should be associated with a label to
+provide context and meaning to the user. Otherwise, the HTML and accessibility
+structure will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element
+> is the direct child of the `Checkbox.Root` component.
 
 ## Examples
 

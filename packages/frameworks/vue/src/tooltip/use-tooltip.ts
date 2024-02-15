@@ -5,8 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseTooltipProps extends Optional<tooltip.Context, 'id'> {}
-
+export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {}
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseTooltipReturn => {
@@ -18,6 +17,7 @@ export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseT
       ...reactiveContext,
       id: reactiveContext.id ?? useId().value,
       getRootNode,
+      'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
       },

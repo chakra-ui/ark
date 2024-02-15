@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [2.2.0] - 2024-02-13
+
+### Added
+
+- Added `Clipboard` anatomy
+- Added `Collapsible` anatomy
+
 ## [2.1.0] - 2024-01-29
 
 ### Added

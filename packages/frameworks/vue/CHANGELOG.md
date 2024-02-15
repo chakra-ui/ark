@@ -8,6 +8,29 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
+- Add the `DatePicker.PresetTrigger` component
+- Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
+
+### Changed
+
+- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+
+### Fixed
+
+- Prevent calling interaction outside when scrollbar is clicked.
+- Fix issue where positioned components don't respond to window resizing.
+- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
+- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
+- Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
+- Fix issue in the `Editable` where cannot delete text when `maxLength` reached
+- Fix issue in the `Select` where item group's label `id` pointed to the wrong element
+- Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
+
+## [0.11.0] - 2024-02-08
+
+### Added
+
 - Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
 - Exported `SelectionDetails` type for `Menu` component
@@ -41,8 +64,6 @@ description: All notable changes to this project will be documented in this file
   <TagsInput.ItemInput />
 </TagsInput.Item>
 ```
-
-### Changed
 
 - Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
 

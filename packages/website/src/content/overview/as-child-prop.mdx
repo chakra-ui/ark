@@ -9,8 +9,13 @@ description: Customize component rendering with the asChild prop
 Ark UI offers a flexible way to render components using the `asChild` prop. This
 prop allows you to replace the default component with a custom child element
 while maintaining the necessary behavior, such as event handling, and passing
-down props and refs. Every component that is exported in Ark UI has support for
-the `asChild` prop.
+down props and refs.
+
+Every component that is exported in Ark UI has support for the `asChild` prop.
+
+> **Note:** When using the `asChild` prop, be sure that the element you're
+> rendering matches the tag name of the original component. Changing the
+> underlying tags might affect the accessibility and functionality.
 
 ## Usage
 
@@ -46,6 +51,10 @@ composed with the child's ref and passed down correctly.
 
 When using the `asChild` prop, ensure that you only pass a single child element.
 If you pass multiple children, the component may not render correctly.
+
+Some components may have specific requirements for the child element, such as
+the `Checkbox.Root`, `RadioGroup.Item` and `Switch.Root` component, which
+requires a `label` element to be passed as a child element.
 
 ## Summary
 

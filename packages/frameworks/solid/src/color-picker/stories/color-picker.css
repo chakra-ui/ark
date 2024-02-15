@@ -19,6 +19,10 @@
   background: white;
 }
 
+[data-scope='color-picker'][data-part='value-text'] {
+  min-width: fit-content;
+}
+
 [data-scope='color-picker'][data-part='content']:not(:is([hidden])) {
   display: flex;
   flex-direction: column;

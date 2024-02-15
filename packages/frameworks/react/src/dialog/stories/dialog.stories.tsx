@@ -11,7 +11,7 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Dialog.Root>
+  <Dialog.Root open={false}>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />

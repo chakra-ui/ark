@@ -2,6 +2,9 @@
 id: radio-group
 title: Radio Group
 description: Allows single selection from multiple options.
+resources:
+  zag: radio-group
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/radio/
 ---
 
 import { Anatomy, ComponentPreview, Story } from '~/components/docs'
@@ -17,6 +20,16 @@ how we name its parts.
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
 <Anatomy id="radio-group" />
+
+### Design impact on the asChild property
+
+The `RadioGroup.Item` element of the radio group is a `label` element. This is
+because the radio group is a form control and should be associated with a label
+to provide context and meaning to the user. Otherwise, the HTML and
+accessibility structure will be invalid.
+
+> If you need to use the `asChild` property, make sure that the `label` element
+> is the direct child of the `RadioGroup.Item` component.
 
 ## Examples
 

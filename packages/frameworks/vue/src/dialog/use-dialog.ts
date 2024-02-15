@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseDialogProps extends Optional<dialog.Context, 'id'> {
+export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'open.controlled'> {
   /**
    * The initial open state of the dialog.
    */
@@ -25,6 +25,7 @@ export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
       getRootNode,
+      'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
         emit('update:open', details.open)

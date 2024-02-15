@@ -24,6 +24,8 @@ jobs:
 
   docs:
     name: Docs
+    # This workflow doesn't work on forks
+    if: github.repository == 'chakra-ui/ark'
     runs-on: ubuntu-latest
 
     permissions:

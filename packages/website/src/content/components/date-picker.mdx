@@ -2,6 +2,8 @@
 id: date-picker
 title: Date Picker
 description: A component that allows users to select a date from a calendar.
+resources:
+  zag: date-picker
 ---
 
 import { Anatomy, Story, ComponentPreview } from '~/components/docs'
@@ -30,6 +32,9 @@ at the most basic example
 In some cases, you might want to display a non-dismissable date picker. This can
 be achieved by setting the `open` prop to `true` and `closeOnSelect` prop to
 `false`.
+
+> Important to note that standalone date picker doesn't use the `Portal`,
+> `Positioner` and `Content` components.
 
 <Story id="Standalone" />
 
