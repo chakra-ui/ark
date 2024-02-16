@@ -5,7 +5,7 @@ import path, { dirname } from 'path'
 import { match } from 'ts-pattern'
 
 const generateExports = (dirName: string) => {
-  const paths = globbySync('src/**/index.ts')
+  const paths = globbySync('src/**/index.ts{x}')
   const exports: Record<string, unknown> = {}
 
   for (const p of paths) {
