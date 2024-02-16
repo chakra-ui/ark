@@ -1,24 +1,8 @@
 import { Clipboard } from '@ark-ui/react/src/clipboard'
 import type { ComponentProps } from 'react'
-import { sva } from 'styled-system/css'
 import { styled } from 'styled-system/jsx'
+import { clipboard } from 'styled-system/recipes'
 import { createStyleContext } from '~/lib/create-style-context'
-
-// TODO replace with park ui later
-export const clipboard = sva({
-  slots: ['root', 'control', 'indicator', 'input', 'label', 'trigger'],
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1.5',
-    },
-    control: {
-      display: 'flex',
-      gap: '3',
-    },
-  },
-})
 
 const { withProvider, withContext } = createStyleContext(clipboard)
 

@@ -36,6 +36,7 @@ import {
   Toast,
   ToggleGroup,
   Tooltip,
+  TreeView
 } from '~/demos'
 const { component } = Astro.props
 ---
@@ -87,6 +88,7 @@ const { component } = Astro.props
         .with('toast', () => <Toast client:load />)
         .with('toggle-group', () => <ToggleGroup client:load />)
         .with('tooltip', () => <Tooltip client:load />)
+        .with('tree-view', () => <TreeView client:load />)
         .otherwise(() => <Box>No preview available for {component}</Box>)
     }
   </Flex>

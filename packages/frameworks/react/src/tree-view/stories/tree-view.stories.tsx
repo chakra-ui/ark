@@ -17,10 +17,8 @@ export const Basic = () => {
         </TreeView.Item>
         <TreeView.Branch id="2.0">
           <TreeView.BranchControl>
-            <TreeView.BranchTrigger>
-              <TreeView.BranchText>2.0</TreeView.BranchText>
-              <TreeView.BranchIndicator>↕️</TreeView.BranchIndicator>
-            </TreeView.BranchTrigger>
+            <TreeView.BranchIndicator>↕️</TreeView.BranchIndicator>
+            <TreeView.BranchText>2.0</TreeView.BranchText>
           </TreeView.BranchControl>
           <TreeView.BranchContent>
             <TreeView.Item id="2.1">
