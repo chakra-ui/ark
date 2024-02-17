@@ -1,17 +1,16 @@
+import { useStore } from '@nanostores/react'
 import { Stack } from 'styled-system/jsx'
 import { ToggleGroup } from '~/components/ui'
 import { Text } from '~/components/ui/text'
-import { ReactIcon, SolidIcon, VueIcon } from './icons'
-
-import { useStore } from '@nanostores/react'
 import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
+import { ReactIcon, SolidIcon, VueIcon } from './icons'
 
 export const FrameworkToggleGroup = (props: ToggleGroup.RootProps) => {
   const $selectedFramework = useStore(selectedFramework)
   return (
     <>
       <Text textStyle={{ base: 'md', md: 'sm' }} fontWeight="semibold">
-        Select the framework for the code examples:
+        Framework
       </Text>
       <Stack
         direction={props.orientation === 'horizontal' ? 'row' : 'column'}
