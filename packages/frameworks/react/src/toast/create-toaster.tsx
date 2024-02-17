@@ -14,7 +14,7 @@ export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, '
   render: (api: toast.Api<PropTypes>) => JSX.Element
 }
 
-export type CreateToasterReturn = [React.ElementType, toast.GroupApi<PropTypes>]
+export type CreateToasterReturn = [React.FC<HTMLArkProps<'ol'>>, toast.GroupApi<PropTypes>]
 
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, ...rest } = props

@@ -6,6 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Update the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
+
+### Added
+
+### Changed
+
 ## [2.1.1] - 2024-02-14
 
 ### Fixed
