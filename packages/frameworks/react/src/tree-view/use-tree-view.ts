@@ -7,9 +7,9 @@ import { useEvent } from '../use-event'
 
 export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
   /**
-   * The initial focused index of the tree view.
+   * The initial selected ids of the tree view.
    */
-  defaultFocusedId?: treeView.Context['focusedId']
+  defaultSelectedIds?: treeView.Context['selectedIds']
 }
 
 export interface UseTreeViewReturn extends treeView.Api<PropTypes> {}
@@ -18,7 +18,7 @@ export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => 
   const initialContext: treeView.Context = {
     id: useId(),
     getRootNode: useEnvironmentContext(),
-    focusedId: props.defaultFocusedId,
+    selectedIds: props.defaultSelectedIds,
     ...props,
   }
 
