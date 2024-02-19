@@ -109,7 +109,7 @@
     "jsdom": "24.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "release-it": "17.0.3",
+    "release-it": "17.1.1",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.10.0",
     "rollup-preset-solid": "2.0.1",
