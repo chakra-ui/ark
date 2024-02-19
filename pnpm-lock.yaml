@@ -974,8 +974,8 @@ importers:
         specifier: 0.12.3
         version: 0.12.3(solid-js@1.8.15)
       '@solidjs/start':
-        specifier: 0.5.4
-        version: 0.5.4(solid-js@1.8.15)(vinxi@0.2.1)(vite@5.1.3)
+        specifier: 0.5.9
+        version: 0.5.9(solid-js@1.8.15)(vinxi@0.2.1)(vite@5.1.3)
       solid-js:
         specifier: 1.8.15
         version: 1.8.15
@@ -5759,8 +5759,8 @@ packages:
       solid-js: 1.8.15
     dev: false
 
-  /@solidjs/start@0.5.4(solid-js@1.8.15)(vinxi@0.2.1)(vite@5.1.3):
-    resolution: {integrity: sha512-et6fu8GPRlzPz1nE0jJrB4QWEqKNzCMh62+FbmnZjOHA0eUldy47Aniki5RO6288eX5Oj4S6BWnvYcu1/iWkMw==}
+  /@solidjs/start@0.5.9(solid-js@1.8.15)(vinxi@0.2.1)(vite@5.1.3):
+    resolution: {integrity: sha512-NNDmre4EYPQ6ZklfFZl1s4uvmGhsC61CMkOxcdfWS3+KAS0GpF52my7IztApKw4h+adLFbBy3qkF7qi8aCfcjw==}
     dependencies:
       '@vinxi/plugin-directives': 0.2.0(vinxi@0.2.1)
       '@vinxi/server-components': 0.2.0(vinxi@0.2.1)
@@ -6058,7 +6058,7 @@ packages:
       express: 4.18.2
       find-cache-dir: 3.3.2
       fs-extra: 11.2.0
-      magic-string: 0.30.6
+      magic-string: 0.30.7
       rollup: 3.29.4
       typescript: 5.3.3
       vite: 5.1.3(@types/node@20.11.5)
@@ -7770,7 +7770,7 @@ packages:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.3.3)
       eslint: 8.56.0
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -22078,7 +22078,7 @@ packages:
     dependencies:
       '@volar/typescript': 1.11.1
       '@vue/language-core': 1.8.27(typescript@5.3.3)
-      semver: 7.5.4
+      semver: 7.6.0
       typescript: 5.3.3
     dev: true
 
