@@ -28,7 +28,7 @@
     "@commitlint/cli": "18.6.0",
     "@commitlint/config-conventional": "18.6.0",
     "concurrently": "8.2.2",
-    "husky": "9.0.10",
+    "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
