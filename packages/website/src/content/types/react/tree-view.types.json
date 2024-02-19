@@ -14,10 +14,10 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultFocusedId": {
-      "type": "string",
+    "defaultSelectedIds": {
+      "type": "Set<string>",
       "isRequired": false,
-      "description": "The initial focused index of the tree view."
+      "description": "The initial selected ids of the tree view."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
