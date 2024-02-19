@@ -19,7 +19,7 @@
     "pkg-dir": "8.0.0",
     "prettier": "3.2.5",
     "ts-morph": "21.0.1",
-    "ts-pattern": "5.0.6",
+    "ts-pattern": "5.0.8",
     "voca": "1.4.1"
   },
   "devDependencies": {
