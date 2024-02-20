@@ -26,27 +26,26 @@ export const TreeView = forwardRef<HTMLDivElement, TreeViewProps>((props, ref) =
   const { data, className, ...rootProps } = localProps
   const styles = treeView()
 
-  const renderChild = (child: Child) => (
-    <ArkTreeView.Branch key={child.id} id={child.id} className={styles.branch}>
-      <ArkTreeView.BranchControl className={styles.branchControl}>
-        <ArkTreeView.BranchIndicator className={styles.branchIndicator}>
-          <ChevronRightIcon />
-        </ArkTreeView.BranchIndicator>
-        <ArkTreeView.BranchText className={styles.branchText}>{child.name}</ArkTreeView.BranchText>
-      </ArkTreeView.BranchControl>
-      <ArkTreeView.BranchContent className={styles.branchContent}>
-        {child.children?.map((child) =>
-          child.children ? (
-            renderChild(child)
-          ) : (
-            <ArkTreeView.Item key={child.id} id={child.id} className={styles.item}>
-              <ArkTreeView.ItemText className={styles.itemText}>{child.name}</ArkTreeView.ItemText>
-            </ArkTreeView.Item>
-          ),
-        )}
-      </ArkTreeView.BranchContent>
-    </ArkTreeView.Branch>
-  )
+  const renderChild = (child: Child) =>
+    child.children ? (
+      <ArkTreeView.Branch key={child.id} id={child.id} className={styles.branch}>
+        <ArkTreeView.BranchControl className={styles.branchControl}>
+          <ArkTreeView.BranchIndicator className={styles.branchIndicator}>
+            <ChevronRightIcon />
+          </ArkTreeView.BranchIndicator>
+          <ArkTreeView.BranchText className={styles.branchText}>
+            {child.name}
+          </ArkTreeView.BranchText>
+        </ArkTreeView.BranchControl>
+        <ArkTreeView.BranchContent className={styles.branchContent}>
+          {child.children.map(renderChild)}
+        </ArkTreeView.BranchContent>
+      </ArkTreeView.Branch>
+    ) : (
+      <ArkTreeView.Item key={child.id} id={child.id} className={styles.item}>
+        <ArkTreeView.ItemText className={styles.itemText}>{child.name}</ArkTreeView.ItemText>
+      </ArkTreeView.Item>
+    )
 
   return (
     <ArkTreeView.Root

@@ -34,7 +34,7 @@ const size = ref([
     <Variant title="Events">
       <Splitter.Root
         :size="size"
-        @size-change-start="(details) => console.log('onSizeChangeStart', details)"
+        @size-change="(details) => console.log('onSizeChange', details)"
         @size-change-end="(details) => console.log('onSizeChangeEnd', details)"
       >
         <Splitter.Panel id="a">A</Splitter.Panel>

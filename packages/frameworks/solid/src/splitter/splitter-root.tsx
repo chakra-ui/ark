@@ -21,7 +21,6 @@ export const SplitterRoot: ArkComponent<'div', SplitterRootProps> = (props: Spli
     'ids',
     'onSizeChange',
     'onSizeChangeEnd',
-    'onSizeChangeStart',
     'orientation',
     'size',
   ])
