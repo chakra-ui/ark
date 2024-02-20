@@ -10,6 +10,10 @@ export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
    * The initial selected ids of the tree view.
    */
   defaultSelectedIds?: treeView.Context['selectedIds']
+  /**
+   * The initial expanded ids of the tree view.
+   */
+  defaultExpandedIds?: treeView.Context['expandedIds']
 }
 
 export interface UseTreeViewReturn extends treeView.Api<PropTypes> {}
@@ -19,12 +23,12 @@ export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => 
     id: useId(),
     getRootNode: useEnvironmentContext(),
     selectedIds: props.defaultSelectedIds,
+    expandedIds: props.defaultExpandedIds,
     ...props,
   }
 
   const context: treeView.Context = {
     ...initialContext,
-    focusedId: props.focusedId,
     onFocusChange: useEvent(props.onFocusChange, { sync: true }),
     onExpandedChange: useEvent(props.onExpandedChange),
     onSelectionChange: useEvent(props.onSelectionChange),

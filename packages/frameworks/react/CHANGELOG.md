@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added support for `defaultExpandedIds` to `TreeView` component.
+
 ### Fixed
 
 - Updated the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
