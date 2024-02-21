@@ -6,6 +6,7 @@ import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {}
+
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps, emit: CallableFunction): UseSplitterReturn => {
@@ -19,6 +20,9 @@ export const useSplitter = (props: UseSplitterProps, emit: CallableFunction): Us
       getRootNode,
       onSizeChange: (details) => {
         emit('size-change', details)
+      },
+      onSizeChangeStart: (details) => {
+        emit('size-change-start', details)
       },
       onSizeChangeEnd(details) {
         emit('size-change-end', details)

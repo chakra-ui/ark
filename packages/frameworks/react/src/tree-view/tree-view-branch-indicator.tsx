@@ -1,3 +1,4 @@
+import { treeViewAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
@@ -10,7 +11,12 @@ export const TreeViewBranchIndicator = forwardRef<HTMLDivElement, TreeViewBranch
   (props, ref) => {
     const api = useTreeViewContext()
     const branchProps = useTreeViewBranchContext()
-    const mergedProps = mergeProps(api.getBranchIndicatorProps(branchProps), props)
+    const mergedProps = mergeProps(
+      api.getBranchProps(branchProps),
+      // TODO use api.getBranchIndicatorProps() when available
+      treeViewAnatomy.build().branchIndicator.attrs as Record<string, string>,
+      props,
+    )
 
     return <ark.div {...mergedProps} ref={ref} />
   },

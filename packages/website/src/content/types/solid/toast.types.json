@@ -19,6 +19,11 @@
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
+    "doc": {
+      "type": "Document",
+      "isRequired": false,
+      "description": "The owner document of the machine."
+    },
     "duration": {
       "type": "number",
       "isRequired": false,
@@ -59,10 +64,20 @@
       "isRequired": false,
       "description": "Whether to pause toast when the user leaves the browser tab"
     },
+    "pointerdownNode": {
+      "type": "HTMLElement",
+      "isRequired": false,
+      "description": "The related target when the element is blurred.\nUsed as a polyfill for `e.relatedTarget`"
+    },
     "removeDelay": {
       "type": "number",
       "isRequired": false,
       "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
+    },
+    "rootNode": {
+      "type": "ShadowRoot",
+      "isRequired": false,
+      "description": "The root node of the machine. Useful for shadow DOM."
     },
     "zIndex": {
       "type": "number",

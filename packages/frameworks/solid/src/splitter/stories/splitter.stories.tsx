@@ -48,7 +48,7 @@ export const Events = () => (
       { id: 'a', size: 50 },
       { id: 'b', size: 50 },
     ]}
-    onSizeChange={(details) => console.log('onSizeChange', details)}
+    onSizeChangeStart={(details) => console.log('onSizeChangeStart', details)}
     onSizeChangeEnd={(details) => console.log('onSizeChangeEnd', details)}
   >
     <Splitter.Panel id="a">A</Splitter.Panel>
