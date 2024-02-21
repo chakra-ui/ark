@@ -165,18 +165,6 @@
       "description": "Render as a different element type."
     }
   },
-  "ItemGroup": {
-    "id": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The `id` of the element that provides accessibility label to the option group"
-    },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Separator": {
     "asChild": {
       "type": "boolean",

@@ -1,12 +1,16 @@
 {
   "Item": {
-    "id": { "type": "string", "isRequired": true },
+    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "disabled": { "type": "boolean", "isRequired": false }
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the item or branch is disabled"
+    }
   },
   "Root": {
     "asChild": {
@@ -15,12 +19,12 @@
       "description": "Render as a different element type."
     },
     "defaultExpandedIds": {
-      "type": "Set<string>",
+      "type": "string[]",
       "isRequired": false,
       "description": "The initial expanded ids of the tree view."
     },
     "defaultSelectedIds": {
-      "type": "Set<string>",
+      "type": "string[]",
       "isRequired": false,
       "description": "The initial selected ids of the tree view."
     },
@@ -31,7 +35,7 @@
       "description": "The document's text/writing direction."
     },
     "expandedIds": {
-      "type": "Set<string>",
+      "type": "string[]",
       "isRequired": false,
       "description": "The id of the expanded nodes"
     },
@@ -72,7 +76,7 @@
       "description": "Whether clicking on a branch should open it or not"
     },
     "selectedIds": {
-      "type": "Set<string>",
+      "type": "string[]",
       "isRequired": false,
       "description": "The id of the selected nodes"
     },
@@ -98,13 +102,17 @@
     }
   },
   "Branch": {
-    "id": { "type": "string", "isRequired": true },
+    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "disabled": { "type": "boolean", "isRequired": false }
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the item or branch is disabled"
+    }
   },
   "ItemText": {
     "asChild": {

@@ -162,14 +162,6 @@
   },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroup": {
-    "id": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The `id` of the element that provides accessibility label to the option group"
-    },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
   "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
   "OptionItem": {
     "name": {

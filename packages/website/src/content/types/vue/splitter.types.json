@@ -32,11 +32,6 @@
       "isRequired": false,
       "description": "Function called when the splitter resize ends."
     },
-    "onSizeChangeStart": {
-      "type": "(details: SizeChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the splitter resize starts."
-    },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
