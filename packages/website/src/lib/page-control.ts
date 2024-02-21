@@ -43,85 +43,73 @@ export const getNextPage = async (pathname?: string) => {
     : null
 }
 
-interface Child {
+interface Item {
   id: string
+  name: string
   href?: string
-  title: string
-  label?: string
-  children?: Child[]
+  items?: Item[]
 }
 
-interface Sitemap {
-  label: string
-  children: Child[]
-}
-
-export const getSitemap = async (): Promise<Sitemap> => {
+export const getSitemap = async (): Promise<Item[]> => {
   const overviewPages = await getOverviewPages()
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
 
-  return {
-    label: 'Site navigation',
-    children: [
-      {
-        id: 'overview',
-        title: 'Overview',
-        children: overviewPages.map((item) => ({
-          id: item.data.id,
-          title: item.data.title,
-          href: path.posix.join('/docs', item.collection, item.data.id),
-        })),
-      },
-      {
-        id: 'styling',
-        title: 'Styling',
-        href: '/docs/styling',
-        children: stylingPages.map((item) => ({
-          id: item.data.id,
-          title: item.data.title,
-          href: path.posix.join('/docs', item.collection, item.data.id),
-        })),
-      },
-      {
-        id: 'components',
-        title: 'Components',
-        href: '/docs/components',
-        children: [
-          ...componentPages
-            .filter((item) => !item.id.startsWith('progress'))
+  return [
+    {
+      id: 'overview',
+      name: 'Overview',
+      items: overviewPages.map((item) => ({
+        id: item.data.id,
+        name: item.data.title,
+        href: path.posix.join('/docs', item.collection, item.data.id),
+      })),
+    },
+    {
+      id: 'styling',
+      name: 'Styling',
+      href: '/docs/styling',
+      items: stylingPages.map((item) => ({
+        id: item.data.id,
+        name: item.data.title,
+        href: path.posix.join('/docs', item.collection, item.data.id),
+      })),
+    },
+    {
+      id: 'components',
+      name: 'Components',
+      items: [
+        ...componentPages
+          .filter((item) => !item.id.startsWith('progress'))
+          .map((item) => ({
+            id: item.data.id,
+            name: item.data.title,
+            href: path.posix.join('/docs', item.collection, item.data.id),
+            label: item.data.label,
+          })),
+        {
+          id: 'progress',
+          name: 'Progress',
+          items: componentPages
+            .filter((item) => item.id.startsWith('progress'))
             .map((item) => ({
               id: item.data.id,
-              title: item.data.title,
+              name: item.data.title,
               href: path.posix.join('/docs', item.collection, item.data.id),
               label: item.data.label,
             })),
-          {
-            id: 'progress',
-            title: 'Progress',
-            href: '/docs/components/progress',
-            children: componentPages
-              .filter((item) => item.id.startsWith('progress'))
-              .map((item) => ({
-                id: item.data.id,
-                title: item.data.title,
-                href: path.posix.join('/docs', item.collection, item.data.id),
-                label: item.data.label,
-              })),
-          },
-        ].sort((a, b) => a.title.localeCompare(b.title)),
-      },
-      {
-        id: 'changelog',
-        title: 'Changelog',
-        href: '/docs/changelog',
-        children: changelogPages.map((item) => ({
-          id: item.data.id,
-          title: item.data.id,
-          href: path.posix.join('/docs', item.collection, item.data.id),
-        })),
-      },
-    ],
-  }
+        },
+      ].sort((a, b) => a.name.localeCompare(b.name)),
+    },
+    {
+      id: 'changelog',
+      name: 'Changelog',
+      items: changelogPages.map((item) => ({
+        id: item.data.id,
+        name: item.data.id,
+        href: path.posix.join('/docs', item.collection, item.data.id),
+      })),
+    },
+  ]
 }

@@ -4,10 +4,10 @@ import { getSitemap } from '~/lib/page-control'
 import ExternalLinks from './external-links.astro'
 import { SidebarNavigation } from './sidebar-navigation'
 
-const sitemap = await getSitemap()
+const items = await getSitemap()
 ---
 
 <Stack gap="6">
   <ExternalLinks />
-  <SidebarNavigation data={sitemap} transition:persist client:load />
+  <SidebarNavigation items={items} transition:persist client:load />
  </Stack>
