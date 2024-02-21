@@ -31,6 +31,7 @@ export const SidebarNavigation = (props: SidebarNavigationProps) => {
     if (item.items) {
       return (
         <li key={item.name}>
+          {/* @ts-expect-error */}
           <div className={styles.header} data-depth={depth} style={{ '--depth': depth }}>
             <Icon size="sm">
               <ChevronRightIcon />
@@ -49,6 +50,7 @@ export const SidebarNavigation = (props: SidebarNavigationProps) => {
           href={item.href}
           className={styles.link}
           aria-current={item.href === currentPath ? 'page' : undefined}
+          // @ts-expect-error wtf react
           style={{ '--depth': depth }}
         >
           {item.name}
