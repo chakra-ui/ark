@@ -1,12 +1,8 @@
 {
   "Item": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
+    "id": { "type": "string", "isRequired": true },
     "as": { "type": "ValidComponent", "isRequired": false },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the item or branch is disabled"
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "Root": {
     "as": { "type": "ValidComponent", "isRequired": false },
@@ -17,7 +13,7 @@
       "description": "The document's text/writing direction."
     },
     "expandedIds": {
-      "type": "string[]",
+      "type": "Set<string>",
       "isRequired": false,
       "description": "The id of the expanded nodes"
     },
@@ -58,7 +54,7 @@
       "description": "Whether clicking on a branch should open it or not"
     },
     "selectedIds": {
-      "type": "string[]",
+      "type": "Set<string>",
       "isRequired": false,
       "description": "The id of the selected nodes"
     },
@@ -72,13 +68,9 @@
   "Tree": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Branch": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
+    "id": { "type": "string", "isRequired": true },
     "as": { "type": "ValidComponent", "isRequired": false },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the item or branch is disabled"
-    }
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "ItemText": { "as": { "type": "ValidComponent", "isRequired": false } },
   "BranchText": { "as": { "type": "ValidComponent", "isRequired": false } },
