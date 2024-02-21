@@ -39,6 +39,7 @@
     "@zag-js/color-picker": "dev",
     "@zag-js/color-utils": "dev",
     "@zag-js/combobox": "dev",
+    "@zag-js/core": "dev",
     "@zag-js/date-picker": "dev",
     "@zag-js/date-utils": "dev",
     "@zag-js/dialog": "dev",
