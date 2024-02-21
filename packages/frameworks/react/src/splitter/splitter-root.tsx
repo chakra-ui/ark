@@ -30,6 +30,7 @@ export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props
       'ids',
       'onSizeChange',
       'onSizeChangeEnd',
+      'onSizeChangeStart',
       'orientation',
       'size',
     ],

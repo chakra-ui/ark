@@ -1,13 +1,23 @@
 ---
 import { Stack } from 'styled-system/jsx'
+import { Text } from '~/components/ui/text'
 import { getSitemap } from '~/lib/page-control'
 import ExternalLinks from './external-links.astro'
-import { SidebarNavigation } from './sidebar-navigation'
+import { SidebarGroup } from './sidebar-group'
 
 const sitemap = await getSitemap()
 ---
 
 <Stack gap="8">
   <ExternalLinks />
-  <SidebarNavigation data={sitemap} client:idle   transition:persist/>
+  {
+    sitemap.map((entry) => (
+      <Stack gap="3">
+        <Text textStyle={{ base: 'md', md: 'sm' }} fontWeight="semibold" textTransform="capitalize">
+          {entry.title}
+        </Text>
+        <SidebarGroup items={entry.items} client:load transition:persist />
+      </Stack>
+    ))
+  }
 </Stack>
