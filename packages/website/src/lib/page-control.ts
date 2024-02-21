@@ -43,14 +43,18 @@ export const getNextPage = async (pathname?: string) => {
     : null
 }
 
-type Sitemap = {
+interface Child {
+  id: string
+  href?: string
   title: string
-  items: {
-    title: string
-    href: string
-    label?: string
-  }[]
-}[]
+  label?: string
+  children?: Child[]
+}
+
+interface Sitemap {
+  label: string
+  children: Child[]
+}
 
 export const getSitemap = async (): Promise<Sitemap> => {
   const overviewPages = await getOverviewPages()
@@ -58,35 +62,66 @@ export const getSitemap = async (): Promise<Sitemap> => {
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
 
-  return [
-    {
-      title: 'Overview',
-      items: overviewPages.map((item) => ({
-        title: item.data.title,
-        href: path.posix.join('/docs', item.collection, item.data.id),
-      })),
-    },
-    {
-      title: 'Styling',
-      items: stylingPages.map((item) => ({
-        title: item.data.title,
-        href: path.posix.join('/docs', item.collection, item.data.id),
-      })),
-    },
-    {
-      title: 'Components',
-      items: componentPages.map((item) => ({
-        title: item.data.title,
-        href: path.posix.join('/docs', item.collection, item.data.id),
-        label: item.data.label,
-      })),
-    },
-    {
-      title: 'Changelog',
-      items: changelogPages.map((item) => ({
-        title: item.data.id,
-        href: path.posix.join('/docs', item.collection, item.data.id),
-      })),
-    },
-  ]
+  return {
+    label: 'Site navigation',
+    children: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        children: overviewPages.map((item) => ({
+          id: item.data.id,
+          title: item.data.title,
+          href: path.posix.join('/docs', item.collection, item.data.id),
+        })),
+      },
+      {
+        id: 'styling',
+        title: 'Styling',
+        href: '/docs/styling',
+        children: stylingPages.map((item) => ({
+          id: item.data.id,
+          title: item.data.title,
+          href: path.posix.join('/docs', item.collection, item.data.id),
+        })),
+      },
+      {
+        id: 'components',
+        title: 'Components',
+        href: '/docs/components',
+        children: [
+          ...componentPages
+            .filter((item) => !item.id.startsWith('progress'))
+            .map((item) => ({
+              id: item.data.id,
+              title: item.data.title,
+              href: path.posix.join('/docs', item.collection, item.data.id),
+              label: item.data.label,
+            })),
+          {
+            id: 'progress',
+            title: 'Progress',
+            href: '/docs/components/progress',
+            children: componentPages
+              .filter((item) => item.id.startsWith('progress'))
+              .map((item) => ({
+                id: item.data.id,
+                title: item.data.title,
+                href: path.posix.join('/docs', item.collection, item.data.id),
+                label: item.data.label,
+              })),
+          },
+        ].sort((a, b) => a.title.localeCompare(b.title)),
+      },
+      {
+        id: 'changelog',
+        title: 'Changelog',
+        href: '/docs/changelog',
+        children: changelogPages.map((item) => ({
+          id: item.data.id,
+          title: item.data.id,
+          href: path.posix.join('/docs', item.collection, item.data.id),
+        })),
+      },
+    ],
+  }
 }

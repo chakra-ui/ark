@@ -1,5 +1,5 @@
 ---
-import { Stack } from 'styled-system/jsx'
+import { Stack } from 'styled-system/jsx/stack'
 import { getSitemap } from '~/lib/page-control'
 import ExternalLinks from './external-links.astro'
 import { SidebarNavigation } from './sidebar-navigation'
@@ -7,7 +7,7 @@ import { SidebarNavigation } from './sidebar-navigation'
 const sitemap = await getSitemap()
 ---
 
-<Stack gap="8">
+<Stack gap="6">
   <ExternalLinks />
-  <SidebarNavigation data={sitemap} client:idle   transition:persist/>
-</Stack>
+  <SidebarNavigation data={sitemap} transition:persist client:load />
+ </Stack>
