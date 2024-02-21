@@ -14,6 +14,7 @@ description: All notable changes to this project will be documented in this file
 
 - Updated the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
 - Updated `TreeView` to use `defaultSelectedIds` instead of `defaultFocusedId`
+- Fixed an issue with using `factory` in a Next.js project.
 
 ## [2.1.1] - 2024-02-14
 
