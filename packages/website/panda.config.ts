@@ -113,6 +113,16 @@ export default defineConfig({
           18: { value: '4.5rem' },
         },
       },
+      keyframes: {
+        'slide-down': {
+          from: { opacity: '0.01', height: '0' },
+          to: { opacity: '1', height: 'var(--height)' },
+        },
+        'slide-up': {
+          from: { opacity: '1', height: 'var(--height)' },
+          to: { opacity: '0.01', height: '0' },
+        },
+      },
       semanticTokens: {
         colors: {
           accent: {

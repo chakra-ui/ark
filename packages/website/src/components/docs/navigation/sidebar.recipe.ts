@@ -1,7 +1,7 @@
 import { sva } from 'styled-system/css'
 
 export const recipe = sva({
-  slots: ['root', 'list', 'item', 'header', 'link'],
+  slots: ['root', 'list', 'item', 'header', 'link', 'content'],
   base: {
     root: {
       display: 'flex',
@@ -73,6 +73,7 @@ export const recipe = sva({
       transitionDuration: 'normal',
       transitionProperty: 'background, color',
       transitionTimingFunction: 'default',
+      width: 'full',
       _hover: {
         background: 'gray.a2',
         color: 'fg.default',
@@ -81,6 +82,14 @@ export const recipe = sva({
         ps: '1',
         fontWeight: 'semibold',
         color: 'fg.default',
+      },
+    },
+    content: {
+      _open: {
+        animation: 'slide-down 250ms {easings.emphasized-in}',
+      },
+      _closed: {
+        animation: 'slide-up 200ms {easings.emphasized-out}',
       },
     },
   },

@@ -1,3 +1,4 @@
+import { Collapsible } from '@ark-ui/react/src/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Icon } from '~/components/ui'
@@ -31,16 +32,24 @@ export const SidebarNavigation = (props: SidebarNavigationProps) => {
     if (item.items) {
       return (
         <li key={item.name}>
-          {/* @ts-expect-error */}
-          <div className={styles.header} data-depth={depth} style={{ '--depth': depth }}>
-            <Icon size="sm">
-              <ChevronRightIcon />
-            </Icon>
-            <span>{item.name}</span>
-          </div>
-          <ul key={item.id} data-depth={depth} className={styles.list}>
-            {item.items.map((i) => renderItem(i, depth + 1))}
-          </ul>
+          <Collapsible.Root>
+            <Collapsible.Trigger
+              className={styles.header}
+              data-depth={depth}
+              // @ts-expect-error
+              style={{ '--depth': depth }}
+            >
+              <Icon size="sm">
+                <ChevronRightIcon />
+              </Icon>
+              <span>{item.name}</span>
+            </Collapsible.Trigger>
+            <Collapsible.Content className={styles.content}>
+              <ul key={item.id} data-depth={depth} className={styles.list}>
+                {item.items.map((i) => renderItem(i, depth + 1))}
+              </ul>
+            </Collapsible.Content>
+          </Collapsible.Root>
         </li>
       )
     }
@@ -50,7 +59,7 @@ export const SidebarNavigation = (props: SidebarNavigationProps) => {
           href={item.href}
           className={styles.link}
           aria-current={item.href === currentPath ? 'page' : undefined}
-          // @ts-expect-error wtf react
+          // @ts-expect-error
           style={{ '--depth': depth }}
         >
           {item.name}
