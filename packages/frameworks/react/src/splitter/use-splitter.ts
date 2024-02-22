@@ -27,7 +27,6 @@ export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
     size: props.size,
     onSizeChange: useEvent(props.onSizeChange, { sync: true }),
     onSizeChangeEnd: useEvent(props.onSizeChangeEnd),
-    onSizeChangeStart: useEvent(props.onSizeChangeStart),
   }
 
   const [state, send] = useMachine(splitter.machine(initialContext), { context })
