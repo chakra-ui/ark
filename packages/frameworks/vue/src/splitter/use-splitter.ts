@@ -21,9 +21,6 @@ export const useSplitter = (props: UseSplitterProps, emit: CallableFunction): Us
       onSizeChange: (details) => {
         emit('size-change', details)
       },
-      onSizeChangeStart: (details) => {
-        emit('size-change-start', details)
-      },
       onSizeChangeEnd(details) {
         emit('size-change-end', details)
       },

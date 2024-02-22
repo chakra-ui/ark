@@ -1,4 +1,3 @@
-import { treeViewAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { useTreeViewBranchContext } from './tree-view-branch-context'
@@ -12,12 +11,7 @@ export const TreeViewBranchIndicator = defineComponent<TreeViewBranchIndicatorPr
     const branchProps = useTreeViewBranchContext()
 
     return () => (
-      <ark.div
-        {...api.value.getBranchProps(branchProps)}
-        // TODO replace with api.getBranchIndicatorProps() when available
-        {...treeViewAnatomy.build().branchIndicator.attrs}
-        {...attrs}
-      >
+      <ark.div {...api.value.getBranchIndicatorProps(branchProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
