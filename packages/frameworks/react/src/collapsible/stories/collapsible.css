@@ -1,25 +1,24 @@
-
 @keyframes slideDown {
-    from {
-      opacity: 0.01;
-      height: 0;
-    }
-    to {
-      opacity: 1;
-      height: var(--height);
-    }
+  from {
+    opacity: 0.01;
+    height: 0;
   }
-  
-  @keyframes slideUp {
-    from {
-      opacity: 1;
-      height: var(--height);
-    }
-    to {
-      opacity: 0.01;
-      height: 0;
-    }
+  to {
+    opacity: 1;
+    height: var(--height);
   }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    height: var(--height);
+  }
+  to {
+    opacity: 0.01;
+    height: 0;
+  }
+}
   
   [data-scope="collapsible"][data-part="content"] {
     overflow: hidden;

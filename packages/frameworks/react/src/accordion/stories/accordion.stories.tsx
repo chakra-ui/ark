@@ -129,3 +129,23 @@ export const Disabled = () => {
     </Accordion.Root>
   )
 }
+
+export const LazyMount = () => {
+  return (
+    <Accordion.Root lazyMount collapsible>
+      {['React', 'Solid', 'Vue'].map((item, id) => (
+        <Accordion.Item key={id} value={item}>
+          <Accordion.ItemTrigger>
+            What is {item}?
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>
+            {item} is a JavaScript library for building user interfaces.
+          </Accordion.ItemContent>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  )
+}

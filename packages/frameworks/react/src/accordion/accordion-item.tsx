@@ -1,9 +1,10 @@
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
+import { Collapsible } from '../collapsible'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence, usePresencePropsContext } from '../presence'
+import { type HTMLArkProps } from '../factory'
+import { useRenderStrategyContext } from '../render-strategy'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
@@ -20,19 +21,23 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   ])
   const api = useAccordionContext()
   const itemState = api.getItemState(itemProps)
+  const itemContentProps = api.getItemContentProps(itemProps)
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
+  const renderStrategyProps = useRenderStrategyContext()
   const view = runIfFn(children, itemState)
-
-  const presenceProps = usePresencePropsContext()
-  const presenceApi = usePresence({ ...presenceProps, present: itemState.isOpen })
 
   return (
     <AccordionItemProvider value={itemProps}>
-      <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps} ref={ref}>
-          {view}
-        </ark.div>
-      </PresenceProvider>
+      {/* @ts-expect-error dir is not properly typed */}
+      <Collapsible.Root
+        ref={ref}
+        open={itemState.isOpen}
+        ids={{ content: itemContentProps.id }}
+        {...renderStrategyProps}
+        {...mergedProps}
+      >
+        {view}
+      </Collapsible.Root>
     </AccordionItemProvider>
   )
 })

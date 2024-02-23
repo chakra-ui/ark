@@ -1,5 +1,5 @@
 import * as collapsible from '@zag-js/collapsible'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId, useRef } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
@@ -23,15 +23,12 @@ export interface UseCollapsibleProps
   unmountOnExit?: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type UseCollapsibleReturn = any
-
-// export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
-//   /**
-//    * Whether the content is unmounted
-//    */
-//   isUnmounted: boolean
-// }
+export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
+  /**
+   * Whether the content is unmounted
+   */
+  isUnmounted?: boolean
+}
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const { lazyMount, unmountOnExit } = props
@@ -54,13 +51,13 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   const [state, send] = useMachine(collapsible.machine(initialContext), { context })
   const api = collapsible.connect(state, send, normalizeProps)
 
-  if (api.isOpen) {
+  if (api.isVisible) {
     wasEverPresent.current = true
   }
 
   const isUnmounted =
-    (!api.isOpen && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.isOpen && wasEverPresent.current)
+    (!api.isVisible && !wasEverPresent.current && lazyMount) ||
+    (unmountOnExit && !api.isVisible && wasEverPresent.current)
 
   return { ...api, isUnmounted }
 }

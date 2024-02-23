@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { ark, type HTMLArkProps } from '../factory'
-import { usePresenceContext } from '../presence'
+import { Collapsible } from '../collapsible'
+import { type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
@@ -11,18 +11,10 @@ export const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemCont
   (props, ref) => {
     const api = useAccordionContext()
     const accordionItem = useAccordionItemContext()
-    const presenceApi = usePresenceContext()
-    const mergedProps = mergeProps(
-      api.getItemContentProps(accordionItem),
-      presenceApi.getPresenceProps(ref),
-      props,
-    )
+    const { hidden: _, ...itemContentProps } = api.getItemContentProps(accordionItem)
+    const mergedProps = mergeProps(itemContentProps, props)
 
-    if (presenceApi.isUnmounted) {
-      return null
-    }
-
-    return <ark.div {...mergedProps} />
+    return <Collapsible.Content ref={ref} {...mergedProps} />
   },
 )
 
