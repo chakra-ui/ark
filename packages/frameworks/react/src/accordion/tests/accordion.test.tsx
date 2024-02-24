@@ -1,163 +1,170 @@
+import { accordionAnatomy } from '@ark-ui/anatomy'
 // eslint-disable-next-line testing-library/no-manual-cleanup
-import { render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { describe } from 'vitest'
+import { describe, vi } from 'vitest'
+import { Accordion } from '../'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-// describe('Accordion / Parts & Exports', () => {
-//   afterAll(() => {
-//     cleanup()
-//   })
+describe('Accordion / Parts & Exports', () => {
+  afterAll(() => {
+    cleanup()
+  })
 
-//   render(<ComponentUnderTest />)
+  render(<ComponentUnderTest />)
 
-//   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
-//     // eslint-disable-next-line testing-library/no-node-access
-//     expect(document.querySelector(part)).toBeInTheDocument()
-//   })
+  it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.querySelector(part)).toBeInTheDocument()
+  })
 
-//   it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
-//     expect(Accordion[part]).toBeDefined()
-//   })
-// })
+  it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
+    expect(Accordion[part]).toBeDefined()
+  })
+})
 
 describe('Accordion', () => {
-  // it('should not have an expanded item by default', async () => {
-  //   render(<ComponentUnderTest />)
+  afterEach(() => {
+    cleanup()
+  })
 
-  //   expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
-  //     'aria-expanded',
-  //     'false',
-  //   )
-  // })
+  it('should not have an expanded item by default', async () => {
+    render(<ComponentUnderTest />)
 
-  // it('should open item specified in defaultValue', async () => {
-  //   render(<ComponentUnderTest defaultValue={['Solid']} />)
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+  })
 
-  //   expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute(
-  //     'aria-expanded',
-  //     'true',
-  //   )
-  // })
+  it('should open item specified in defaultValue', async () => {
+    render(<ComponentUnderTest defaultValue={['Solid']} />)
 
-  // it('should collapse an expanded item when collapsible is true', async () => {
-  //   render(<ComponentUnderTest collapsible />)
+    expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should collapse an expanded item when collapsible is true', async () => {
+    render(<ComponentUnderTest collapsible />)
 
-  //   await user.click(button)
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  //   expect(button).toHaveAttribute('aria-expanded', 'true')
+    await user.click(button)
 
-  //   await user.click(button)
+    expect(button).toHaveAttribute('aria-expanded', 'true')
 
-  //   expect(button).toHaveAttribute('aria-expanded', 'false')
-  // })
+    await user.click(button)
 
-  // it('should disable all items when disabled is true', async () => {
-  //   render(<ComponentUnderTest disabled />)
+    expect(button).toHaveAttribute('aria-expanded', 'false')
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should disable all items when disabled is true', async () => {
+    render(<ComponentUnderTest disabled />)
 
-  //   expect(button).toBeDisabled()
-  // })
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  // it('should allow multiple items to be expanded when multiple is true', async () => {
-  //   render(<ComponentUnderTest multiple />)
+    expect(button).toBeDisabled()
+  })
 
-  //   const reactButton = screen.getByRole('button', { name: 'React Trigger' })
-  //   const vueButton = screen.getByRole('button', { name: 'Vue Trigger' })
+  it('should allow multiple items to be expanded when multiple is true', async () => {
+    render(<ComponentUnderTest multiple />)
 
-  //   await user.click(reactButton)
-  //   await user.click(vueButton)
+    const reactButton = screen.getByRole('button', { name: 'React Trigger' })
+    const vueButton = screen.getByRole('button', { name: 'Vue Trigger' })
 
-  //   expect(reactButton).toHaveAttribute('aria-expanded', 'true')
-  //   expect(vueButton).toHaveAttribute('aria-expanded', 'true')
-  // })
+    await user.click(reactButton)
+    await user.click(vueButton)
 
-  // it('should call onValueChange when an item is clicked', async () => {
-  //   const onValueChange = vi.fn()
-  //   render(<ComponentUnderTest onValueChange={onValueChange} />)
+    expect(reactButton).toHaveAttribute('aria-expanded', 'true')
+    expect(vueButton).toHaveAttribute('aria-expanded', 'true')
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should call onValueChange when an item is clicked', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-  //   await user.click(button)
-  //   expect(onValueChange).toHaveBeenCalled()
-  // })
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  // it('should call onFocusChange when focus changes', async () => {
-  //   const onFocusChange = vi.fn()
-  //   render(<ComponentUnderTest onFocusChange={onFocusChange} />)
+    await user.click(button)
+    expect(onValueChange).toHaveBeenCalled()
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should call onFocusChange when focus changes', async () => {
+    const onFocusChange = vi.fn()
+    render(<ComponentUnderTest onFocusChange={onFocusChange} />)
 
-  //   button.focus()
-  //   expect(await screen.findByRole('button', { name: 'React Trigger' })).toHaveFocus()
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  //   expect(onFocusChange).toHaveBeenCalled()
-  // })
+    button.focus()
+    expect(await screen.findByRole('button', { name: 'React Trigger' })).toHaveFocus()
 
-  // it('should render text direction based on dir prop', async () => {
-  //   render(<ComponentUnderTest dir="rtl" />)
+    expect(onFocusChange).toHaveBeenCalled()
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should render text direction based on dir prop', async () => {
+    render(<ComponentUnderTest dir="rtl" />)
 
-  //   expect(button).toHaveAttribute('dir', 'rtl')
-  // })
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  // it('should focus the next/previous item on arrow up & down', async () => {
-  //   render(<ComponentUnderTest />)
+    expect(button).toHaveAttribute('dir', 'rtl')
+  })
 
-  //   const firstButton = screen.getByRole('button', { name: 'React Trigger' })
-  //   const secondButton = screen.getByRole('button', { name: 'Solid Trigger' })
+  it('should focus the next/previous item on arrow up & down', async () => {
+    render(<ComponentUnderTest />)
 
-  //   await user.click(firstButton)
+    const firstButton = screen.getByRole('button', { name: 'React Trigger' })
+    const secondButton = screen.getByRole('button', { name: 'Solid Trigger' })
 
-  //   await user.type(firstButton, '{arrowdown}')
-  //   expect(secondButton).toHaveFocus()
+    await user.click(firstButton)
 
-  //   await user.type(secondButton, '{arrowup}')
-  //   expect(firstButton).toHaveFocus()
-  // })
+    await user.type(firstButton, '{arrowdown}')
+    expect(secondButton).toHaveFocus()
 
-  // it('should focus the first/last item on home & end', async () => {
-  //   render(<ComponentUnderTest />)
+    await user.type(secondButton, '{arrowup}')
+    expect(firstButton).toHaveFocus()
+  })
 
-  //   const firstButton = screen.getByRole('button', { name: 'React Trigger' })
-  //   const lastButton = screen.getByRole('button', { name: 'Vue Trigger' })
+  it('should focus the first/last item on home & end', async () => {
+    render(<ComponentUnderTest />)
 
-  //   await user.click(lastButton)
+    const firstButton = screen.getByRole('button', { name: 'React Trigger' })
+    const lastButton = screen.getByRole('button', { name: 'Vue Trigger' })
 
-  //   await user.type(lastButton, '{home}')
-  //   expect(firstButton).toHaveFocus()
+    await user.click(lastButton)
 
-  //   await user.type(firstButton, '{end}')
-  //   expect(lastButton).toHaveFocus()
-  // })
+    await user.type(lastButton, '{home}')
+    expect(firstButton).toHaveFocus()
 
-  // it('should not collapse the current visible item', async () => {
-  //   render(<ComponentUnderTest collapsible={false} />)
+    await user.type(firstButton, '{end}')
+    expect(lastButton).toHaveFocus()
+  })
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+  it('should not collapse the current visible item', async () => {
+    render(<ComponentUnderTest collapsible={false} />)
 
-  //   await user.click(button)
-  //   expect(button).toHaveAttribute('aria-expanded', 'true')
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  //   await user.click(button)
-  //   expect(button).toHaveAttribute('aria-expanded', 'true')
-  // })
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-expanded', 'true')
 
-  // it('should move the focus to the next element when pressing tab', async () => {
-  //   render(<ComponentUnderTest />)
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-expanded', 'true')
+  })
 
-  //   const firstButton = screen.getByRole('button', { name: 'React Trigger' })
-  //   const secondButton = screen.getByRole('button', { name: 'Solid Trigger' })
+  it('should move the focus to the next element when pressing tab', async () => {
+    render(<ComponentUnderTest />)
 
-  //   await user.click(firstButton)
+    const firstButton = screen.getByRole('button', { name: 'React Trigger' })
+    const secondButton = screen.getByRole('button', { name: 'Solid Trigger' })
 
-  //   await user.type(firstButton, '{tab}')
-  //   expect(secondButton).toHaveFocus()
-  // })
+    await user.click(firstButton)
+
+    await user.type(firstButton, '{tab}')
+    expect(secondButton).toHaveFocus()
+  })
 
   it('should lazy mount an accordion item', async () => {
     render(<ComponentUnderTest lazyMount collapsible />)
@@ -170,33 +177,31 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(button)
 
-    screen.debug()
-
-    // await waitFor(() => expect(screen.queryByText('React Content')).not.toBeVisible())
+    expect(screen.queryByText('React Content')).not.toBeVisible()
   })
 
-  // it('should not have aria-controls if lazy mounted', async () => {
-  //   render(<ComponentUnderTest lazyMount />)
+  it('should not have aria-controls if lazy mounted', async () => {
+    render(<ComponentUnderTest lazyMount />)
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  //   expect(button).not.toHaveAttribute('aria-controls')
+    expect(button).not.toHaveAttribute('aria-controls')
 
-  //   await user.click(button)
-  //   expect(button).toHaveAttribute('aria-controls')
-  // })
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-controls')
+  })
 
-  // it('should lazy mount and unmount on exit an accordion item', async () => {
-  //   render(<ComponentUnderTest lazyMount unmountOnExit collapsible />)
+  it('should lazy mount and unmount on exit an accordion item', async () => {
+    render(<ComponentUnderTest lazyMount unmountOnExit collapsible />)
 
-  //   const button = screen.getByRole('button', { name: 'React Trigger' })
+    const button = screen.getByRole('button', { name: 'React Trigger' })
 
-  //   expect(screen.queryByText('React Content')).not.toBeInTheDocument()
-  //   await user.click(button)
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await user.click(button)
 
-  //   expect(screen.queryByText('React Content')).toBeVisible()
-  //   await user.click(button)
+    expect(screen.queryByText('React Content')).toBeVisible()
+    await user.click(button)
 
-  //   expect(screen.queryByText('React Content')).not.toBeInTheDocument()
-  // })
+    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+  })
 })
