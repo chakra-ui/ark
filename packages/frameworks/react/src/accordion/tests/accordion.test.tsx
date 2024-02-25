@@ -177,7 +177,7 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(button)
 
-    expect(screen.queryByText('React Content')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeVisible())
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
