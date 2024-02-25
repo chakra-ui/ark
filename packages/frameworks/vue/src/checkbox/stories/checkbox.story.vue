@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { Checkbox, type CheckedState } from '../'
+import { Checkbox, type CheckboxState } from '../'
 import './checkbox.css'
 
-const checked = ref<CheckedState>(false)
+const checked = ref<CheckboxState>(false)
+
 const childCheckedItems = ref([false, false])
+
 const parentChecked = computed({
   get() {
     return childCheckedItems.value.every(Boolean)
@@ -13,7 +15,7 @@ const parentChecked = computed({
         ? 'indeterminate'
         : false
   },
-  set(val: CheckedState) {
+  set(val: CheckboxState) {
     if (val === 'indeterminate') return
     childCheckedItems.value = childCheckedItems.value.map(() => val)
   },
@@ -24,15 +26,15 @@ const parentChecked = computed({
   <Story title="Checkbox">
     <Variant title="Basic">
       <Checkbox.Root default-checked>
-        <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control />
+        <Checkbox.Label>Checkbox</Checkbox.Label>
       </Checkbox.Root>
     </Variant>
 
     <Variant title="Controlled">
       <Checkbox.Root v-model:checked="checked">
-        <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control />
+        <Checkbox.Label>Checkbox</Checkbox.Label>
       </Checkbox.Root>
     </Variant>
 
@@ -64,11 +66,11 @@ const parentChecked = computed({
 
     <Variant title="RenderProp">
       <Checkbox.Root v-slot="{ isChecked, isIndeterminate }">
-        <Checkbox.Label>Checkbox</Checkbox.Label>
         <Checkbox.Control>
           <span v-if="isChecked">✓</span>
           <span v-if="isIndeterminate">-</span>
         </Checkbox.Control>
+        <Checkbox.Label>Checkbox</Checkbox.Label>
       </Checkbox.Root>
     </Variant>
   </Story>
