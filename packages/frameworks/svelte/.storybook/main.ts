@@ -1,15 +1,21 @@
 import type { StorybookConfig } from '@storybook/svelte-vite'
+import path from 'path'
+
+const getAbsolutePath = (value: string): any => {
+  return path.dirname(require.resolve(path.join(value, 'package.json')))
+}
+
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-    '@storybook/addon-svelte-csf',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    // getAbsolutePath('@storybook/addon-svelte-csf'),
   ],
   framework: {
-    name: '@storybook/svelte-vite',
+    name: getAbsolutePath('@storybook/svelte-vite'),
     options: {},
   },
   docs: {
