@@ -878,8 +878,8 @@ importers:
         specifier: 5.0.16
         version: 5.0.16
       '@nanostores/persistent':
-        specifier: 0.9.1
-        version: 0.9.1(nanostores@0.9.5)
+        specifier: 0.10.1
+        version: 0.10.1(nanostores@0.9.5)
       '@nanostores/react':
         specifier: 0.7.2
         version: 0.7.2(nanostores@0.9.5)(react@18.2.0)
@@ -4029,11 +4029,11 @@ packages:
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
     dev: true
 
-  /@nanostores/persistent@0.9.1(nanostores@0.9.5):
-    resolution: {integrity: sha512-ow57Hxm5VMaI5GHET/cVk8hX/iKMmbhcGrB9owfN8p8OHiiJgUlYxe1giacwlAALJXAh2t8bxXh42hHb64BCEA==}
-    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+  /@nanostores/persistent@0.10.1(nanostores@0.9.5):
+    resolution: {integrity: sha512-BMYj47ONmkrPkHfomimtBAwtDNNjO57lw0uk7jB35GHVwixmqWtlK6DVAAbioqwJn9WEaWSB/9Ss5ukBG0NHlQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
-      nanostores: ^0.9.0
+      nanostores: ^0.9.0 || ^0.10.0
     dependencies:
       nanostores: 0.9.5
     dev: false
