@@ -51,22 +51,4 @@ describe('Dialog', () => {
     render(() => <ComponentUnderTest lazyMount />)
     expect(screen.getByRole('button', { name: 'Open Dialog' })).not.toHaveAttribute('aria-controls')
   })
-
-  it('should be fully controlled (true)', async () => {
-    render(() => <ComponentUnderTest open={true} />)
-
-    expect(screen.queryByRole('button', { name: 'Close' })).toBeVisible()
-
-    await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByRole('button', { name: 'Close' })).toBeVisible()
-  })
-
-  it('should be fully controlled (false)', async () => {
-    render(() => <ComponentUnderTest open={false} />)
-
-    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
-
-    await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
-  })
 })

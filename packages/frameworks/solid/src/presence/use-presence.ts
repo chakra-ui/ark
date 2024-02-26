@@ -1,7 +1,7 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/solid'
-import { createEffect, createMemo, createSignal, splitProps } from 'solid-js'
-import type { RenderStrategyProps } from '../render-strategy'
+import { createEffect, createMemo, createSignal } from 'solid-js'
+import { splitRenderStrategyProps, type RenderStrategyProps } from '../render-strategy'
 import type { Optional } from '../types'
 
 export interface UsePresenceProps
@@ -10,10 +10,10 @@ export interface UsePresenceProps
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: UsePresenceProps) => {
-  const [localProps, machineProps] = splitProps(props, ['lazyMount', 'unmountOnExit'])
+  const [renderStrategyProps, context] = splitRenderStrategyProps(props)
   const [wasEverPresent, setWasEverPresent] = createSignal(false)
-  const [state, send] = useMachine(presence.machine(machineProps), {
-    context: machineProps,
+  const [state, send] = useMachine(presence.machine(context), {
+    context,
   })
   const api = createMemo(() => presence.connect(state, send, normalizeProps))
 
@@ -24,13 +24,13 @@ export const usePresence = (props: UsePresenceProps) => {
 
   return createMemo(() => ({
     isUnmounted:
-      (!api().isPresent && !wasEverPresent() && localProps.lazyMount) ||
-      (localProps.unmountOnExit && !api().isPresent && wasEverPresent()),
+      (!api().isPresent && !wasEverPresent() && renderStrategyProps.lazyMount) ||
+      (renderStrategyProps.unmountOnExit && !api().isPresent && wasEverPresent()),
     isPresent: api().isPresent,
     presenceProps: {
       ref: api().setNode,
       hidden: !api().isPresent,
-      'data-state': machineProps.present ? 'open' : 'closed',
+      'data-state': context.present ? 'open' : 'closed',
     },
   }))
 }
