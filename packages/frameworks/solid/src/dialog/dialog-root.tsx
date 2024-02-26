@@ -2,12 +2,12 @@ import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
-  PresencePropsProvider,
   PresenceProvider,
   splitPresenceProps,
   usePresence,
   type UsePresenceProps,
 } from '../presence'
+import { RenderStrategyProvider, splitRenderStrategyProps } from '../render-strategy'
 import { runIfFn } from '../run-if-fn'
 import { DialogProvider } from './dialog-context'
 import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
@@ -18,6 +18,7 @@ export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
 
 export const DialogRoot = (props: DialogRootProps) => {
   const [presenceProps, dialogProps] = splitPresenceProps(props)
+  const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
   const [useDialogProps, localProps] = createSplitProps<UseDialogProps>()(dialogProps, [
     'aria-label',
     'closeOnEscapeKeyDown',
@@ -47,9 +48,9 @@ export const DialogRoot = (props: DialogRootProps) => {
 
   return (
     <DialogProvider value={api}>
-      <PresencePropsProvider value={presenceProps}>
+      <RenderStrategyProvider value={renderStrategyProps}>
         <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
-      </PresencePropsProvider>
+      </RenderStrategyProvider>
     </DialogProvider>
   )
 }

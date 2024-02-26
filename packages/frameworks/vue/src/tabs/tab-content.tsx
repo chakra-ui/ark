@@ -1,8 +1,9 @@
 import { type ContentProps } from '@zag-js/tabs'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence, usePresencePropsContext } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { emits } from '../presence/presence.props'
+import { useRenderStrategyContext } from '../render-strategy'
 import type { Assign } from '../types'
 import { useTabsContext } from './tabs-context'
 
@@ -11,10 +12,10 @@ export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProp
 export const TabContent = defineComponent<TabContentProps>(
   (props, { slots, attrs, emit }) => {
     const api = useTabsContext()
-    const presenceProps = usePresencePropsContext()
+    const renderStrategyProps = useRenderStrategyContext()
 
     const usePresenceProps = computed(() => ({
-      ...presenceProps.value,
+      ...renderStrategyProps.value,
       present: api.value.value === props.value,
     }))
     const presenceApi = usePresence(usePresenceProps, emit)

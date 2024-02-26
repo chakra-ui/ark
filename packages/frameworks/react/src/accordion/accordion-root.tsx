@@ -2,17 +2,21 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
+import {
+  RenderStrategyProvider,
+  splitRenderStrategyProps,
+  type RenderStrategyProps,
+} from '../render-strategy'
 import type { Assign } from '../types'
 import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
 
 export interface AccordionRootProps
   extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
-    UsePresenceProps {}
+    RenderStrategyProps {}
 
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
-  const [presenceProps, accordionProps] = splitPresenceProps(props)
+  const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
   const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
     'collapsible',
     'defaultValue',
@@ -32,9 +36,9 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
 
   return (
     <AccordionProvider value={api}>
-      <PresencePropsProvider value={presenceProps}>
+      <RenderStrategyProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
-      </PresencePropsProvider>
+      </RenderStrategyProvider>
     </AccordionProvider>
   )
 })

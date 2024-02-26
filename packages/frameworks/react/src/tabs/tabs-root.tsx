@@ -2,17 +2,21 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresencePropsProvider, splitPresenceProps, type UsePresenceProps } from '../presence'
+import {
+  RenderStrategyProvider,
+  splitRenderStrategyProps,
+  type RenderStrategyProps,
+} from '../render-strategy'
 import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
 
 export interface TabsRootProps
   extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
-    UsePresenceProps {}
+    RenderStrategyProps {}
 
 export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
-  const [presenceProps, tabsProps] = splitPresenceProps(props)
+  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, localprops] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
     'defaultValue',
@@ -32,9 +36,9 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
 
   return (
     <TabsProvider value={api}>
-      <PresencePropsProvider value={presenceProps}>
+      <RenderStrategyProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
-      </PresencePropsProvider>
+      </RenderStrategyProvider>
     </TabsProvider>
   )
 })

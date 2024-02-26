@@ -3,7 +3,8 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence, usePresencePropsContext } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
+import { useRenderStrategyContext } from '../render-strategy'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useAccordionContext } from './accordion-context'
@@ -21,10 +22,10 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   const api = useAccordionContext()
   const itemState = api.getItemState(itemProps)
   const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
-  const view = runIfFn(children, itemState)
+  const renderStrategyProps = useRenderStrategyContext()
+  const presenceApi = usePresence({ ...renderStrategyProps, present: itemState.isOpen })
 
-  const presenceProps = usePresencePropsContext()
-  const presenceApi = usePresence({ ...presenceProps, present: itemState.isOpen })
+  const view = runIfFn(children, itemState)
 
   return (
     <AccordionItemProvider value={itemProps}>

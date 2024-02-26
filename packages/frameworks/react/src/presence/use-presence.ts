@@ -2,22 +2,13 @@ import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import { useRef, type ForwardedRef } from 'react'
 import { composeRefs } from '../compose-refs'
+import type { RenderStrategyProps } from '../render-strategy'
 import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
-  /**
-   * Whether to enable lazy mounting
-   * @default false
-   */
-  lazyMount?: boolean
-  /**
-   * Whether to unmount on exit.
-   * @default false
-   */
-  unmountOnExit?: boolean
-}
-
+export interface UsePresenceProps
+  extends Optional<presence.Context, 'present'>,
+    RenderStrategyProps {}
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps) => {

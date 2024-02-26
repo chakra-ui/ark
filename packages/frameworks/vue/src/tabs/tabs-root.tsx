@@ -1,7 +1,8 @@
 import { computed, defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { PresencePropsProvider, type UsePresenceProps } from '../presence'
+import { type UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
+import { RenderStrategyProvider } from '../render-strategy'
 import { type Assign } from '../types'
 import { TabsProvider } from './tabs-context'
 import { emits, props } from './tabs.props'
@@ -15,13 +16,12 @@ export const TabsRoot = defineComponent<TabsRootProps>(
   (props, { slots, attrs, emit }) => {
     const api = useTabs(props, emit)
 
-    const presenceProps = computed(() => ({
-      present: props.present,
+    const renderStrategyProps = computed(() => ({
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
     TabsProvider(api)
-    PresencePropsProvider(presenceProps)
+    RenderStrategyProvider(renderStrategyProps)
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
