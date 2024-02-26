@@ -6,6 +6,7 @@ import React, {
   createElement,
   forwardRef,
   isValidElement,
+  memo,
   type ComponentPropsWithoutRef,
   type JSX,
 } from 'react'
@@ -20,24 +21,26 @@ type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<
 }
 
 const withAsChild = (Component: React.ElementType) => {
-  const Comp = forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
-    const { asChild, children, ...restProps } = props
+  const Comp = memo(
+    forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
+      const { asChild, children, ...restProps } = props
 
-    if (!asChild) {
-      return createElement(Component, { ...restProps, ref }, children)
-    }
+      if (!asChild) {
+        return createElement(Component, { ...restProps, ref }, children)
+      }
 
-    const onlyChild = Children.only(children)
-    return isValidElement(onlyChild)
-      ? cloneElement(onlyChild, {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...mergeProps(restProps, onlyChild.props as any),
+      const onlyChild = Children.only(children)
+      return isValidElement(onlyChild)
+        ? cloneElement(onlyChild, {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ...mergeProps(restProps, onlyChild.props as any),
 
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
-        })
-      : null
-  })
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
+          })
+        : null
+    }),
+  )
 
   // @ts-expect-error - it exists
   Comp.displayName = Component.displayName || Component.name

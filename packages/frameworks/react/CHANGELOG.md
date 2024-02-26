@@ -11,6 +11,10 @@ description: All notable changes to this project will be documented in this file
 - Added `Collapsible` component
 - Added support for `defaultExpandedIds` to `TreeView` component.
 
+### Changed
+
+- Improved performance of the Ark `factory` by using `memo` to prevent unnecessary re-renders.
+
 ### Fixed
 
 - Updated the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
