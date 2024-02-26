@@ -1,37 +1,26 @@
 import * as collapsible from '@zag-js/collapsible'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId, useRef } from 'react'
 import { useEnvironmentContext } from '../environment'
+import type { RenderStrategyProps } from '../render-strategy'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'> {
+  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,
+    RenderStrategyProps {
   /**
-   * The initial open state of the popover.
+   * The initial open state of the collpasible.
    */
   defaultOpen?: collapsible.Context['open']
-  /**
-   * Whether to enable lazy mounting
-   * @default false
-   */
-  lazyMount?: boolean
-  /**
-   * Whether to unmount on exit.
-   * @default false
-   */
-  unmountOnExit?: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type UseCollapsibleReturn = any
-
-// export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
-//   /**
-//    * Whether the content is unmounted
-//    */
-//   isUnmounted: boolean
-// }
+export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
+  /**
+   * Whether the content is unmounted
+   */
+  isUnmounted?: boolean
+}
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const { lazyMount, unmountOnExit } = props

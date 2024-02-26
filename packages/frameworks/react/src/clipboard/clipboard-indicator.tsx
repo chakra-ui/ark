@@ -21,4 +21,4 @@ export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorP
   },
 )
 
-ClipboardIndicator.displayName = 'Clipb oardIndicator'
+ClipboardIndicator.displayName = 'ClipboardIndicator'

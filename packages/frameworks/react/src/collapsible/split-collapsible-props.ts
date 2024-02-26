@@ -1,8 +1,8 @@
 import { createSplitProps } from '../create-split-props'
 import type { UseCollapsibleProps } from './use-collapsible'
 
-export function splitCollapsibleProps<T>(props: T & UseCollapsibleProps) {
-  return createSplitProps<UseCollapsibleProps>()(props, [
+export const splitCollapsibleProps = <T extends UseCollapsibleProps>(props: T) =>
+  createSplitProps<UseCollapsibleProps>()(props, [
     'defaultOpen',
     'dir',
     'disabled',
@@ -10,8 +10,8 @@ export function splitCollapsibleProps<T>(props: T & UseCollapsibleProps) {
     'id',
     'ids',
     'lazyMount',
+    'onExitComplete',
     'onOpenChange',
     'open',
     'unmountOnExit',
   ])
-}
