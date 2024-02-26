@@ -887,8 +887,8 @@ importers:
         specifier: 0.32.1
         version: 0.32.1(typescript@5.3.3)
       '@park-ui/panda-preset':
-        specifier: 0.35.1
-        version: 0.35.1(@internationalized/date@3.5.2)(@pandacss/dev@0.32.1)(@pandacss/types@0.32.1)
+        specifier: 0.35.2
+        version: 0.35.2(@internationalized/date@3.5.2)(@pandacss/dev@0.32.1)(@pandacss/types@0.32.1)
       '@types/react':
         specifier: 18.2.58
         version: 18.2.58
@@ -4639,8 +4639,8 @@ packages:
       '@parcel/watcher-win32-x64': 2.4.0
     dev: false
 
-  /@park-ui/panda-preset@0.35.1(@internationalized/date@3.5.2)(@pandacss/dev@0.32.1)(@pandacss/types@0.32.1):
-    resolution: {integrity: sha512-TExIYRKZ8a7xixrT7sD8eamoDyeHTW9EraGQEnLx4C5RRj4GZ1YqeSyOz+jh+OxenUW382IaqCYawSZ8rv5zBw==}
+  /@park-ui/panda-preset@0.35.2(@internationalized/date@3.5.2)(@pandacss/dev@0.32.1)(@pandacss/types@0.32.1):
+    resolution: {integrity: sha512-Yf79zCvrZRPEt8Mlnv/Ri+3kA44fsedToOQqsXNDPIbGO3SRRKFcDmhMpjdA0ZwdDcgxERJKfnjNEKhab9QfBA==}
     peerDependencies:
       '@pandacss/dev': '>0.22.0'
       '@pandacss/types': '>0.22.0'
