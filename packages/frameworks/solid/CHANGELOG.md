@@ -6,6 +6,14 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added `Collapsible` component
+
+### Fixed
+
+- Fixed anissue where disabled `Tooltip` flashes when hovering and clicking the trigger
+
 ## [2.1.1] - 2024-02-16
 
 ### Fixed

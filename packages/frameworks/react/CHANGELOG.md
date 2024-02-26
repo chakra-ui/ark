@@ -8,6 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added `Collapsible` component
 - Added support for `defaultExpandedIds` to `TreeView` component.
 
 ### Fixed
@@ -15,6 +16,7 @@ description: All notable changes to this project will be documented in this file
 - Updated the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
 - Updated `TreeView` to use `defaultSelectedIds` instead of `defaultFocusedId`
 - Fixed an issue with using `factory` in a Next.js project.
+- Fixed anissue where disabled `Tooltip` flashes when hovering and clicking the trigger
 
 ## [2.1.1] - 2024-02-14
 

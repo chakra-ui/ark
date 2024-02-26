@@ -19,3 +19,15 @@ export const Basic = () => (
     </Collapsible.Content>
   </Collapsible.Root>
 )
+
+export const InitialOpen = () => (
+  <Collapsible.Root open>
+    <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+    <Collapsible.Content>
+      Macaroon biscuit danish topping danish croissant cheesecake. Bear claw cake biscuit cupcake
+      tart dessert. Icing lemon drops chocolate cake carrot cake jelly-o. Halvah sweet jujubes
+      caramels lemon drops oat cake dessert gummi bears cake. Tootsie roll marshmallow chocolate
+      chupa chups chocolate cake carrot cake oat cake sweet jujubes.
+    </Collapsible.Content>
+  </Collapsible.Root>
+)
