@@ -1,13 +1,11 @@
 ---
 import { Stack } from 'styled-system/jsx/stack'
 import { getSitemap } from '~/lib/page-control'
-import ExternalLinks from './external-links.astro'
 import { SidebarNavigation } from './sidebar-navigation'
 
 const items = await getSitemap()
 ---
 
 <Stack gap="6">
-  <ExternalLinks />
-  <SidebarNavigation items={items} transition:persist client:load />
+  <SidebarNavigation pathname={Astro.url.pathname} items={items} client:load transition:persist />
  </Stack>

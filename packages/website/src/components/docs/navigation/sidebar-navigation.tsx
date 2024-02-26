@@ -1,4 +1,5 @@
 import { Collapsible } from '@ark-ui/react/src/collapsible'
+import type { TransitionBeforeSwapEvent } from 'astro:transitions/client'
 import { ChevronRightIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Icon } from '~/components/ui'
@@ -13,18 +14,19 @@ interface Item {
 
 export interface SidebarNavigationProps {
   items: Item[]
+  pathname: string
 }
 
 const styles = recipe()
 
 export const SidebarNavigation = (props: SidebarNavigationProps) => {
-  const { items } = props
-  const [currentPath, setCurrentPath] = useState<string>()
+  const { items, pathname } = props
+  const [currentPath, setCurrentPath] = useState<string>(pathname)
+  const [expandedIds, setExpandedIds] = useState<string[]>([])
 
   useEffect(() => {
-    setCurrentPath(window.location.pathname)
-    document.addEventListener('astro:after-swap', () => {
-      setCurrentPath(window.location.pathname)
+    document.addEventListener('astro:before-swap', (e: TransitionBeforeSwapEvent) => {
+      setCurrentPath(e.to.pathname)
     })
   }, [])
 
@@ -32,8 +34,9 @@ export const SidebarNavigation = (props: SidebarNavigationProps) => {
     if (item.items) {
       return (
         <li key={item.name}>
-          <Collapsible.Root>
+          <Collapsible.Root open={expandedIds.some((id) => id === item.id)}>
             <Collapsible.Trigger
+              onClick={() => setExpandedIds((ids) => [...ids, item.id])}
               className={styles.header}
               data-depth={depth}
               // @ts-expect-error
