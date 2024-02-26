@@ -19,10 +19,7 @@ export type UseCollapsibleReturn = any
 
 export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
-    props,
-  )
+  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
   const [state, send] = useMachine(collapsible.machine(context), { context })
 
   return createMemo(() => collapsible.connect(state, send, normalizeProps))

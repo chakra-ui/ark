@@ -10,10 +10,7 @@ export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {
 
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
-    props,
-  )
+  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
   const [state, send] = useMachine(hoverCard.machine(context), { context })
   return createMemo(() => hoverCard.connect(state, send, normalizeProps))

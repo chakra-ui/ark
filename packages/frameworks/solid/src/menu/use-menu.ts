@@ -13,10 +13,7 @@ export type UseMenuReturn = () => {
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
-    props,
-  )
+  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
   const [state, send, machine] = useMachine(menu.machine(context), { context })
 
   return createMemo(() => ({

@@ -12,7 +12,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
-- Fixed anissue where disabled `Tooltip` flashes when hovering and clicking the trigger
+- Fixed an issue where disabled `Tooltip` flashes when hovering and clicking the trigger.
+- Fixed an issue where a disclosure component could not be initially set to an open state without being controlled.
 
 ## [2.1.1] - 2024-02-16
 
