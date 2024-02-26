@@ -27,6 +27,11 @@
       "isRequired": false,
       "description": "The ids of the elements in the collapsible. Useful for composition."
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
