@@ -879,10 +879,10 @@ importers:
         version: 5.0.16
       '@nanostores/persistent':
         specifier: 0.10.1
-        version: 0.10.1(nanostores@0.9.5)
+        version: 0.10.1(nanostores@0.10.0)
       '@nanostores/react':
         specifier: 0.7.2
-        version: 0.7.2(nanostores@0.9.5)(react@18.2.0)
+        version: 0.7.2(nanostores@0.10.0)(react@18.2.0)
       '@pandacss/dev':
         specifier: 0.32.1
         version: 0.32.1(typescript@5.3.3)
@@ -911,8 +911,8 @@ importers:
         specifier: 0.340.0
         version: 0.340.0(react@18.2.0)
       nanostores:
-        specifier: 0.9.5
-        version: 0.9.5
+        specifier: 0.10.0
+        version: 0.10.0
       pandacss-preset-typography:
         specifier: 0.1.5
         version: 0.1.5(@pandacss/dev@0.32.1)
@@ -4029,23 +4029,23 @@ packages:
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
     dev: true
 
-  /@nanostores/persistent@0.10.1(nanostores@0.9.5):
+  /@nanostores/persistent@0.10.1(nanostores@0.10.0):
     resolution: {integrity: sha512-BMYj47ONmkrPkHfomimtBAwtDNNjO57lw0uk7jB35GHVwixmqWtlK6DVAAbioqwJn9WEaWSB/9Ss5ukBG0NHlQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       nanostores: ^0.9.0 || ^0.10.0
     dependencies:
-      nanostores: 0.9.5
+      nanostores: 0.10.0
     dev: false
 
-  /@nanostores/react@0.7.2(nanostores@0.9.5)(react@18.2.0):
+  /@nanostores/react@0.7.2(nanostores@0.10.0)(react@18.2.0):
     resolution: {integrity: sha512-e3OhHJFv3NMSFYDgREdlAQqkyBTHJM91s31kOZ4OvZwJKdFk5BLk0MLbh51EOGUz9QGX2aCHfy1RvweSi7fgwA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       nanostores: ^0.9.0 || ^0.10.0
       react: '>=18.0.0'
     dependencies:
-      nanostores: 0.9.5
+      nanostores: 0.10.0
       react: 18.2.0
     dev: false
 
@@ -16964,9 +16964,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanostores@0.9.5:
-    resolution: {integrity: sha512-Z+p+g8E7yzaWwOe5gEUB2Ox0rCEeXWYIZWmYvw/ajNYX8DlXdMvMDj8DWfM/subqPAcsf8l8Td4iAwO1DeIIRQ==}
-    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+  /nanostores@0.10.0:
+    resolution: {integrity: sha512-Poy5+9wFXOD0jAstn4kv9n686U2BFw48z/W8lms8cS8lcbRz7BU20JxZ3e/kkKQVfRrkm4yLWCUA6GQINdvJCQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     dev: false
 
   /napi-build-utils@1.0.2:
