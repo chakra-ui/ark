@@ -1,9 +1,10 @@
-import type { ItemProps, ItemState } from '@zag-js/accordion'
+import { splitItemProps, type ItemProps, type ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
-import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { Collapsible } from '../collapsible'
+import { splitCollapsibleProps } from '../collapsible/split-collapsible-props'
+import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
+import { type HTMLArkProps } from '../factory'
 import { useRenderStrategyContext } from '../render-strategy'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
@@ -11,29 +12,39 @@ import { useAccordionContext } from './accordion-context'
 import { AccordionItemProvider } from './accordion-item-context'
 
 export interface AccordionItemProps
-  extends Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
+  extends Assign<
+      Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
+      UseCollapsibleProps
+    >,
     ItemProps {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [
-    'value',
-    'disabled',
-  ])
-  const api = useAccordionContext()
-  const itemState = api.getItemState(itemProps)
-  const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
-  const renderStrategyProps = useRenderStrategyContext()
-  const presenceApi = usePresence({ ...renderStrategyProps, present: itemState.isOpen })
+  const [collapsibleProps, accordionItemProps] = splitCollapsibleProps(props)
+  const [itemProps, { children, ...localProps }] = splitItemProps(accordionItemProps)
 
+  const api = useAccordionContext()
+  const renderStrategyProps = useRenderStrategyContext()
+
+  const mergedItemProps = mergeProps(api.getItemProps(itemProps), localProps)
+  const mergedCollapsibleProps = mergeProps(renderStrategyProps, collapsibleProps)
+
+  const itemState = api.getItemState(itemProps)
   const view = runIfFn(children, itemState)
+
+  const itemContentProps = api.getItemContentProps(itemProps)
 
   return (
     <AccordionItemProvider value={itemProps}>
-      <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps} ref={ref}>
-          {view}
-        </ark.div>
-      </PresenceProvider>
+      {/* @ts-expect-error TODO fix dir typing */}
+      <Collapsible.Root
+        ref={ref}
+        open={itemState.isOpen}
+        ids={{ content: itemContentProps.id }}
+        {...mergedItemProps}
+        {...mergedCollapsibleProps}
+      >
+        {view}
+      </Collapsible.Root>
     </AccordionItemProvider>
   )
 })

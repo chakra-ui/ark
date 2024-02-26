@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
+import { useCollapsibleContext } from '../collapsible'
 import { ark, type HTMLArkProps } from '../factory'
-import { usePresenceContext } from '../presence'
 import { useAccordionContext } from './accordion-context'
 import { useAccordionItemContext } from './accordion-item-context'
 
@@ -10,13 +10,13 @@ export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>(
   (props, ref) => {
     const api = useAccordionContext()
+    const collapsible = useCollapsibleContext()
     const accordionItem = useAccordionItemContext()
-    const presenceApi = usePresenceContext()
     const triggerProps = api.getItemTriggerProps(accordionItem)
     const mergedProps = mergeProps(
       {
         ...triggerProps,
-        'aria-controls': presenceApi.isUnmounted ? undefined : triggerProps['aria-controls'],
+        'aria-controls': collapsible.isUnmounted ? undefined : triggerProps['aria-controls'],
       },
       props,
     )
