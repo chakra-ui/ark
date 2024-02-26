@@ -24,7 +24,7 @@
     "@nanostores/react": "0.7.1",
     "@pandacss/dev": "0.32.1",
     "@park-ui/panda-preset": "0.35.1",
-    "@types/react": "18.2.56",
+    "@types/react": "18.2.58",
     "@types/react-dom": "18.2.19",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.37.3",
