@@ -1,6 +1,6 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
 // eslint-disable-next-line testing-library/no-manual-cleanup
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Collapsible, type CollapsibleRootProps } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -31,7 +31,9 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).not.toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.getByText('Content')).toBeVisible()
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).toBeVisible()
+    })
   })
 
   it('should lazy mount', async () => {
@@ -39,7 +41,10 @@ describe('Collapsible', () => {
     expect(screen.queryByText('Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.getByText('Content')).toBeVisible()
+
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).toBeVisible()
+    })
   })
 
   it('should unmount on exit ', async () => {
@@ -50,7 +55,9 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    })
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -62,6 +69,9 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    })
   })
 })
