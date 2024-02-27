@@ -8,19 +8,48 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added `Collapsible` component
-- Added support for `defaultExpandedIds` to `TreeView` component.
+- Added `Collapsible` component.
+- Added support for `defaultExpandedIds` in the `TreeView` component.
 
 ### Changed
 
-- Improved performance of the Ark `factory` by using `memo` to prevent unnecessary re-renders.
+- Enhanced the performance of the Ark `factory` by utilizing `memo` to avoid unnecessary re-renders.
+- Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize `Collapsible` for animating the opening and closing of content.d
+
+```css
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation: slideDown 250ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation: slideUp 200ms;
+}
+```
 
 ### Fixed
 
-- Updated the return type of `createToaster` to support all props intellisense when styling the created `Toaster` component.
-- Updated `TreeView` to use `defaultSelectedIds` instead of `defaultFocusedId`
-- Fixed an issue with using `factory` in a Next.js project.
-- Fixed anissue where disabled `Tooltip` flashes when hovering and clicking the trigger
+- Updated the return type of `createToaster` for comprehensive IntelliSense support when styling the `Toaster` component.
+- Revised `TreeView` to utilize `defaultSelectedIds` instead of `defaultFocusedId`.
+- Resolved an issue with using `factory` in Next.js projects.
+- Fixed a bug where the disabled `Tooltip` would flash upon hovering and clicking the trigger.
 
 ## [2.1.1] - 2024-02-14
 

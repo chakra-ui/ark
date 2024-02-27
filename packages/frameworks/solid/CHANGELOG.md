@@ -8,12 +8,45 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added `Collapsible` component
+- Added `Collapsible` component.
+
+### Changed
+
+- Enhanced the performance of the Ark `factory` by utilizing `memo` to avoid unnecessary re-renders.
+- Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize `Collapsible` for animating the opening and closing of content.d
+
+```css
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation: slideDown 250ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation: slideUp 200ms;
+}
+```
 
 ### Fixed
 
-- Fixed an issue where disabled `Tooltip` flashes when hovering and clicking the trigger.
-- Fixed an issue where a disclosure component could not be initially set to an open state without being controlled.
+- Fixed a bug where the disabled `Tooltip` would flash upon hovering and clicking the trigger.
+- Fixed an issue where a disclosure components could not be initially set to an open state without being controlled.
 
 ## [2.1.1] - 2024-02-16
 

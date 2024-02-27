@@ -7,6 +7,51 @@ description:
 
 ## [Unreleased]
 
+### Added
+
+- Added `Collapsible` component.
+- Added support for `defaultExpandedIds` in the `TreeView` component.
+
+### Changed
+
+- Enhanced the performance of the Ark `factory` by utilizing `memo` to avoid unnecessary re-renders.
+- Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize `Collapsible` for animating the opening and closing of content.d
+
+```css
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation: slideDown 250ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation: slideUp 200ms;
+}
+```
+
+### Fixed
+
+- Updated the return type of `createToaster` for comprehensive IntelliSense support when styling the `Toaster` component.
+- Revised `TreeView` to utilize `defaultSelectedIds` instead of `defaultFocusedId`.
+- Resolved an issue with using `factory` in Next.js projects.
+- Fixed a bug where the disabled `Tooltip` would flash upon hovering and clicking the trigger.
+
 ## [2.1.1] - 2024-02-14
 
 ### Fixed
