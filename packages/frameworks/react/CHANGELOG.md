@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [2.2.0] - 2024-02-27
+
 ### Added
 
 - Added `Collapsible` component.
