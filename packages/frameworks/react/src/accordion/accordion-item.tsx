@@ -2,7 +2,6 @@ import { splitItemProps, type ItemProps, type ItemState } from '@zag-js/accordio
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, type ReactNode } from 'react'
 import { Collapsible } from '../collapsible'
-import { splitCollapsibleProps } from '../collapsible/split-collapsible-props'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { type HTMLArkProps } from '../factory'
 import { useRenderStrategyContext } from '../render-strategy'
@@ -19,14 +18,11 @@ export interface AccordionItemProps
     ItemProps {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [collapsibleProps, accordionItemProps] = splitCollapsibleProps(props)
-  const [itemProps, { children, ...localProps }] = splitItemProps(accordionItemProps)
+  const [itemProps, { children, ...localProps }] = splitItemProps(props)
 
   const api = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-
   const mergedItemProps = mergeProps(api.getItemProps(itemProps), localProps)
-  const mergedCollapsibleProps = mergeProps(renderStrategyProps, collapsibleProps)
 
   const itemState = api.getItemState(itemProps)
   const view = runIfFn(children, itemState)
@@ -40,8 +36,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
         ref={ref}
         open={itemState.isOpen}
         ids={{ content: itemContentProps.id }}
+        {...renderStrategyProps}
         {...mergedItemProps}
-        {...mergedCollapsibleProps}
       >
         {view}
       </Collapsible.Root>

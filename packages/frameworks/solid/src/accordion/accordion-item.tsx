@@ -18,6 +18,7 @@ export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ElementP
 
 export const AccordionItem: ArkComponent<'div', ElementProps> = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
+
   const api = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(

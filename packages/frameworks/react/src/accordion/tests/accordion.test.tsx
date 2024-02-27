@@ -61,12 +61,19 @@ describe('Accordion', () => {
     expect(button).toHaveAttribute('aria-expanded', 'false')
   })
 
+  it('should disable a single item', async () => {
+    render(<ComponentUnderTest />)
+
+    expect(screen.getByRole('button', { name: 'Svelte Trigger' })).toBeDisabled()
+  })
+
   it('should disable all items when disabled is true', async () => {
     render(<ComponentUnderTest disabled />)
 
-    const button = screen.getByRole('button', { name: 'React Trigger' })
-
-    expect(button).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Solid Trigger' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Svelte Trigger' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Vue Trigger' })).toBeDisabled()
   })
 
   it('should allow multiple items to be expanded when multiple is true', async () => {
