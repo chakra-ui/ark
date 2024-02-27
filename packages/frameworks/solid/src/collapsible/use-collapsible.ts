@@ -24,11 +24,11 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
   const context = mergeProps({ id: createUniqueId(), getRootNode }, collapsibleProps)
   const [state, send] = useMachine(collapsible.machine(context), { context })
-  const [wasEverPresent, setWasEverPresent] = createSignal(false)
+  const [wasVisible, setWasVisible] = createSignal(false)
 
   createEffect(() => {
     const isPresent = api().isVisible
-    if (isPresent) setWasEverPresent(true)
+    if (isPresent) setWasVisible(true)
   })
 
   const api = createMemo(() => collapsible.connect(state, send, normalizeProps))
@@ -36,7 +36,7 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
   return createMemo(() => ({
     ...api(),
     isUnmounted:
-      (!api().isVisible && !wasEverPresent() && renderStrategyProps.lazyMount) ||
-      (renderStrategyProps.unmountOnExit && !api().isVisible && wasEverPresent()),
+      (!api().isVisible && !wasVisible() && renderStrategyProps.lazyMount) ||
+      (renderStrategyProps.unmountOnExit && !api().isVisible && wasVisible()),
   }))
 }

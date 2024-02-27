@@ -1,6 +1,6 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
 // eslint-disable-next-line testing-library/no-manual-cleanup
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Collapsible, type CollapsibleRootProps } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -73,7 +73,9 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    })
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -85,6 +87,8 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    })
   })
 })

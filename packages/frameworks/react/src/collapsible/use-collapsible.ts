@@ -24,7 +24,7 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const { lazyMount, unmountOnExit } = props
-  const wasEverPresent = useRef(false)
+  const wasVisible = useRef(false)
 
   const initialContext: collapsible.Context = {
     id: useId(),
@@ -43,13 +43,13 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   const [state, send] = useMachine(collapsible.machine(initialContext), { context })
   const api = collapsible.connect(state, send, normalizeProps)
 
-  if (api.isOpen) {
-    wasEverPresent.current = true
+  if (api.isVisible) {
+    wasVisible.current = true
   }
 
   const isUnmounted =
-    (!api.isOpen && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.isOpen && wasEverPresent.current)
+    (!api.isVisible && !wasVisible.current && lazyMount) ||
+    (unmountOnExit && !api.isVisible && wasVisible.current)
 
   return { ...api, isUnmounted }
 }
