@@ -5,7 +5,7 @@ import path, { dirname } from 'path'
 import { match } from 'ts-pattern'
 
 const generateExports = (dirName: string) => {
-  const paths = globbySync('src/**/index.ts{x}')
+  const paths = globbySync('src/**/index.ts')
   const exports: Record<string, unknown> = {}
 
   for (const p of paths) {
@@ -16,10 +16,12 @@ const generateExports = (dirName: string) => {
       require: `${keyPath}/index.cjs`,
     }
   }
-  exports['./factory'] = {
-    types: './factory.d.ts',
-    import: './factory.mjs',
-    require: './factory.cjs',
+  if (dirName !== 'anatomy') {
+    exports['./factory'] = {
+      types: './factory.d.ts',
+      import: './factory.mjs',
+      require: './factory.cjs',
+    }
   }
 
   if (dirName === 'react') {

@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+-  Resolved an issue where the `package.json` is missing export specifiers.
+
 ## [2.3.0] - 2024-02-27
 
 ### Changed
