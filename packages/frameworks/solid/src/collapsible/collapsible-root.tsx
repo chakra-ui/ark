@@ -16,8 +16,11 @@ export const CollapsibleRoot: ArkComponent<'div', UseCollapsibleProps> = (
     'getRootNode',
     'id',
     'ids',
+    'lazyMount',
+    'onExitComplete',
     'onOpenChange',
     'open',
+    'unmountOnExit',
   ])
 
   const api = useCollapsible(params)

@@ -1,26 +1,42 @@
 import * as collapsible from '@zag-js/collapsible'
-import { mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
-import { createMemo, createUniqueId } from 'solid-js'
+import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
+import { createEffect, createMemo, createSignal, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
+import { splitRenderStrategyProps, type RenderStrategyProps } from '../render-strategy'
 import { type Optional } from '../types'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'> {}
+  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,
+    RenderStrategyProps {}
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type UseCollapsibleReturn = any
-
-// export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
-//   /**
-//    * Whether the content is unmounted
-//    */
-//   isUnmounted: boolean
-// }
+export interface UseCollapsibleReturn
+  extends Accessor<
+    collapsible.Api<PropTypes> & {
+      /**
+       * Whether the content is unmounted
+       */
+      isUnmounted?: boolean
+    }
+  > {}
 
 export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
+  const context = mergeProps({ id: createUniqueId(), getRootNode }, collapsibleProps)
   const [state, send] = useMachine(collapsible.machine(context), { context })
+  const [wasEverPresent, setWasEverPresent] = createSignal(false)
 
-  return createMemo(() => collapsible.connect(state, send, normalizeProps))
+  createEffect(() => {
+    const isPresent = api().isVisible
+    if (isPresent) setWasEverPresent(true)
+  })
+
+  const api = createMemo(() => collapsible.connect(state, send, normalizeProps))
+
+  return createMemo(() => ({
+    ...api(),
+    isUnmounted:
+      (!api().isVisible && !wasEverPresent() && renderStrategyProps.lazyMount) ||
+      (renderStrategyProps.unmountOnExit && !api().isVisible && wasEverPresent()),
+  }))
 }
