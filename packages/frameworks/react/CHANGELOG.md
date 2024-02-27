@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Updated to latest `@ark-ui/anatomy` version.
+
 ## [2.2.0] - 2024-02-27
 
 ### Added
