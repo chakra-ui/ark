@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [2.2.2] - 2024-02-27
+
 ### Fixed
 
 - Resolved an issue that a disabled `Accordion.Item` could still be opened.̊
