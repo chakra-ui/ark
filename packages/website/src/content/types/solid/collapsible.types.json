@@ -27,6 +27,12 @@
       "isRequired": false,
       "description": "The ids of the elements in the collapsible. Useful for composition."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "onExitComplete": {
       "type": "() => void",
       "isRequired": false,
@@ -41,6 +47,12 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the collapsible is open"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
