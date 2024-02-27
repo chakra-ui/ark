@@ -29,7 +29,7 @@
     "release-it": "release-it --config ../../../release-it.json"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "2.2.0",
+    "@ark-ui/anatomy": "2.3.0",
     "@zag-js/accordion": "0.38.0",
     "@zag-js/avatar": "0.38.0",
     "@zag-js/carousel": "0.38.0",
