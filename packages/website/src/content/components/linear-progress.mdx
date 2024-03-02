@@ -69,6 +69,37 @@ to vertical, set the orientation property in the machine's context to vertical.
 
 <Story id="Vertical" />
 
+## Data Attributes
+
+### Root
+
+| Name             | Type                       | Description                                  | Default Value |
+|------------------|----------------------------|----------------------------------------------|---------------|
+| data-scope       | 'progress'                 | Indicates the scope of this part             | -             |
+| data-part        | 'root'                     | Indicates which part is this element         | -             |
+| data-max         | number                     | The maximum value for the progress indicator | 100           |
+| data-value       | number                     | The current value of the progress            | -             |
+| data-state       | 'loading' \| 'completed'   | Indicates the current state of progress      | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the progress bar | 'horizontal'  |
+
+### Track
+
+| Name             | Type                       | Description                                    | Default Value |
+|------------------|----------------------------|------------------------------------------------|---------------|
+| data-scope       | 'progress'                 | Indicates the scope of this part               | -             |
+| data-part        | 'track'                    | Indicates which part is this element           | -             |
+| data-max         | number                     | The maximum value for the progress indicator   | 100           |
+| data-state       | 'loading' \| 'completed'   | Indicates the current state of progress        | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the progress track | 'horizontal'  |
+
+### Value Text
+
+| Name       | Type         | Description                          | Default Value |
+|------------|--------------|--------------------------------------|---------------|
+| data-scope | 'progress'   | Indicates the scope of this part     | -             |
+| data-part  | 'value-text' | Indicates which part is this element | -             |
+
+
 ## API Reference
 
 <ComponentTypes id="progress" />
