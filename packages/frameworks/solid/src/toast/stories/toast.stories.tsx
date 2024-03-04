@@ -1,3 +1,4 @@
+import { createEffect } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Toast, createToaster } from '../'
 import './toast.css'
@@ -22,11 +23,18 @@ export const Basic = () => {
     },
   })
 
+  createEffect(() =>
+    toast().subscribe((toasts) => toasts.forEach((toast) => console.log('Toast:', toast))),
+  )
+
+  const handleToast = () => {
+    const id = toast().create({ title: 'Title', description: 'Description' })
+    console.log('Toast ID:', id)
+  }
+
   return (
     <>
-      <button onClick={() => toast().create({ title: 'Title', description: 'Description' })}>
-        Toast
-      </button>
+      <button onClick={handleToast}>Toast</button>
       <Toaster />
     </>
   )

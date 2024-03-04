@@ -9,6 +9,7 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue with using `Locale` in Next.js projects.
+- Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
 
 ## [2.2.2] - 2024-02-27
 

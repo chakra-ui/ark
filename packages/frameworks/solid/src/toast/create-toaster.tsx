@@ -24,6 +24,11 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
   const [state, send] = useActor(service)
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
 
+  const subscribe = (fn: CallableFunction) => {
+    // @ts-expect-error FIX LATER IT EXISTS
+    return service.subscribe((state) => fn(state.context.toasts))
+  }
+
   const Toaster = (toasterProps: HTMLArkProps<'ol'>) => {
     const getRootNode = useEnvironmentContext()
 
@@ -46,7 +51,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     )
   }
 
-  return [Toaster, api]
+  return [Toaster, createMemo(() => Object.assign(api(), { subscribe }))]
 }
 
 interface ToastProviderFactoryProps {

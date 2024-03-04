@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
+
 ## [2.2.0] - 2024-02-27
 
 ### Added
