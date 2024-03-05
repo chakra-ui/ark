@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [2.2.3] - 2024-03-05
+
 ### Fixed
 
 - Resolved an issue with using `Locale` in Next.js projects.
