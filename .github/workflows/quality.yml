@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Build packages
-        run: pnpm build
+        run: bun run build
 
   docs:
     name: Docs
@@ -39,7 +39,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Generate docs
-        run: pnpm document
+        run: bun run document
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -56,7 +56,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run tests
-        run: pnpm test
+        run: bun run test
 
       - name: Upload /react coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -87,7 +87,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run ESLint
-        run: pnpm lint
+        run: bun run lint
 
   typecheck:
     name: Typecheck
@@ -100,7 +100,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run typecheck
-        run: pnpm typecheck
+        run: bun run typecheck
 
   exports:
     name: Check package exports
@@ -113,4 +113,4 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run exports:check
-        run: pnpm exports:check
+        run: bun run exports:check
