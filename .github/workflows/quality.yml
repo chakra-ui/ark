@@ -38,8 +38,11 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Generate docs
-        run: bun run document
+      - name: Generate TypeDocs
+        run: bun run document:types
+
+      - name: Generate Storydocs
+        run: bun run document:stories
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
