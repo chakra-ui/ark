@@ -1,9 +1,13 @@
 {
-  "name": "@ark-ui/root",
-  "version": "0.0.0",
-  "license": "MIT",
-  "private": true,
+  "name": "root",
   "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/scripts",
+    "packages/anatomy",
+    "packages/website",
+    "packages/frameworks/*"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "turbo run build --filter='!./templates/**'",
@@ -17,12 +21,12 @@
     "document": "concurrently 'pnpm:document:*'",
     "document:types": "turbo run typedocs",
     "document:stories": "turbo run storydocs",
-    "react": "pnpm --filter=@ark-ui/react",
-    "solid": "pnpm --filter=@ark-ui/solid",
-    "vue": "pnpm --filter=@ark-ui/vue",
-    "anatomy": "pnpm --filter=@ark-ui/anatomy",
-    "scripts": "pnpm --filter=@ark-ui/scripts",
-    "website": "pnpm --filter=@ark-ui/website"
+    "react": "bun run --cwd packages/frameworks/react",
+    "solid": "bun run --cwd packages/frameworks/solid",
+    "vue": "bun run --cwd packages/frameworks/vue",
+    "anatomy": "bun run --cwd packages/anatomy",
+    "scripts": "bun run --cwd packages/scripts",
+    "website": "bun run --cwd packages/website"
   },
   "devDependencies": {
     "@commitlint/cli": "18.6.1",
@@ -47,5 +51,5 @@
       "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "bun@1.0.29"
 }
