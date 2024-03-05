@@ -44,7 +44,7 @@ const generateKeywords = () =>
 const main = async () => {
   const packageName = process.argv.slice(2)[0]
   const dirName = packageName.split('/')[1]
-  const root = dirname(findUpSync('pnpm-lock.yaml')!)
+  const root = dirname(findUpSync('bun.lockb')!)
 
   process.chdir(
     match(dirName)

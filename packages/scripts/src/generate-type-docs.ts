@@ -155,7 +155,7 @@ function extractTypeExports(fileContent?: string) {
 const main = async () => {
   const framework = process.argv.slice(2)[0]
 
-  const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
+  const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
 
   const outDir = path.join(rootDir, 'packages', 'website', 'src', 'content', 'types')

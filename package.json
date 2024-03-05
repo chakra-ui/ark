@@ -11,7 +11,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "turbo run build --filter='!./templates/**'",
-    "exports:check": "pnpm scripts exports:check",
+    "exports:check": "bun scripts exports:check",
     "exports:sync": "pnpm scripts exports:sync",
     "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
     "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",

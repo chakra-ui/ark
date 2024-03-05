@@ -23,8 +23,8 @@
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
-    "storydocs": "pnpm --filter=@ark-ui/scripts document:stories react",
-    "typedocs": "pnpm --filter=@ark-ui/scripts document:types react",
+    "storydocs": "bun run scripts document:stories react",
+    "typedocs": "bun run scripts document:types react",
     "storybook": "storybook dev -p 6006",
     "release-it": "release-it --config ../../../release-it.json"
   },
