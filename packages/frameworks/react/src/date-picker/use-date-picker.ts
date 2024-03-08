@@ -35,6 +35,8 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
 
   const context: datePicker.Context = {
     ...initialContext,
+    max: props.max ? datePicker.parse(props.max.toString()) : undefined,
+    min: props.min ? datePicker.parse(props.min.toString()) : undefined,
     value: props.value ? datePicker.parse(props.value) : undefined,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
     onFocusChange: useEvent(props.onFocusChange),
