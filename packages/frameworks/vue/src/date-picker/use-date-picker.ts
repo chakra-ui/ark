@@ -6,12 +6,26 @@ import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue' | 'open.controlled'>, 'id'> {
+  extends Optional<
+    Omit<datePicker.Context, 'value' | 'min' | 'max' | 'focusedValue' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The focused date.
    */
-  focusedValue?: datePicker.Context['focusedValue']
-  modelValue?: datePicker.Context['value']
+  focusedValue?: string
+  /**
+   * The v-model value of the date picker
+   */
+  modelValue?: string[]
+  /**
+   * The minimum date for the date picker in the format yyyy-mm-dd
+   */
+  min?: string
+  /**
+   * The maximum date for the date picker in the format yyyy-mm-dd
+   */
+  max?: string
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
@@ -22,11 +36,13 @@ export const useDatePicker = (
 ): UseDatePickerReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, focusedValue, ...rest } = props
+    const { modelValue, focusedValue, min, max, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
-      focusedValue,
+      focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
+      value: modelValue ? datePicker.parse(modelValue) : undefined,
+      max: max ? datePicker.parse(max) : undefined,
+      min: min ? datePicker.parse(min) : undefined,
       'open.controlled': props.open !== undefined,
     }
   })

@@ -5,7 +5,10 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 
 export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Context, 'value' | 'focusedValue' | 'open.controlled'>, 'id'> {
+  extends Optional<
+    Omit<datePicker.Context, 'value' | 'min' | 'max' | 'focusedValue' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The focused date.
    */
@@ -14,11 +17,19 @@ export interface UseDatePickerProps
    * The value of the date picker
    */
   value?: string[]
+  /**
+   * The minimum date for the date picker in the format yyyy-mm-dd
+   */
+  min?: string
+  /**
+   * The maximum date for the date picker in the format yyyy-mm-dd
+   */
+  max?: string
 }
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
-  const [local, rest] = splitProps(props, ['value', 'focusedValue'])
+  const [local, rest] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
     () => ({
@@ -26,6 +37,8 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
       getRootNode,
       focusedValue: local.focusedValue ? datePicker.parse(local.focusedValue) : undefined,
       value: local.value ? datePicker.parse(local.value) : undefined,
+      max: local.max ? datePicker.parse(local.max) : undefined,
+      min: local.min ? datePicker.parse(local.min) : undefined,
     }),
     rest,
   )
