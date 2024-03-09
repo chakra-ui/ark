@@ -23,11 +23,7 @@
       "isRequired": false,
       "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
     },
-    "focusedValue": {
-      "type": "DateValue",
-      "isRequired": false,
-      "description": "The focused date."
-    },
+    "focusedValue": { "type": "string", "isRequired": false, "description": "The focused date." },
     "format": {
       "type": "(date: DateValue) => string",
       "isRequired": false,
@@ -65,21 +61,25 @@
       "description": "The locale (BCP 47 language tag) to use when formatting the date."
     },
     "max": {
-      "type": "DateValue",
+      "type": "string",
       "isRequired": false,
-      "description": "The maximum date that can be selected."
+      "description": "The maximum date for the date picker in the format yyyy-mm-dd"
     },
     "min": {
-      "type": "DateValue",
+      "type": "string",
       "isRequired": false,
-      "description": "The minimum date that can be selected."
+      "description": "The minimum date for the date picker in the format yyyy-mm-dd"
     },
     "modal": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
     },
-    "modelValue": { "type": "DateValue[]", "isRequired": false },
+    "modelValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The v-model value of the date picker"
+    },
     "name": {
       "type": "string",
       "isRequired": false,
