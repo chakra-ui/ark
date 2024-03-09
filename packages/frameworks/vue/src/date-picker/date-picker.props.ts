@@ -20,6 +20,9 @@ export const props = {
   focusedValue: {
     type: Object as PropType<Context['focusedValue']>,
   },
+  format: {
+    type: Function as PropType<Context['format']>,
+  },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
   },
@@ -29,20 +32,23 @@ export const props = {
   ids: {
     type: Object as PropType<Context['ids']>,
   },
+  isDateUnavailable: {
+    type: Function as PropType<Context['isDateUnavailable']>,
+  },
   locale: {
     type: String as PropType<Context['locale']>,
   },
   max: {
-    type: Object as PropType<Context['max']>,
+    type: String as PropType<string>,
   },
   min: {
-    type: Object as PropType<Context['min']>,
+    type: String as PropType<string>,
   },
   modal: {
     type: Boolean as PropType<Context['modal']>,
   },
   modelValue: {
-    type: Array as PropType<Context['value']>,
+    type: Array as PropType<string[]>,
   },
   name: {
     type: String as PropType<Context['name']>,
@@ -69,15 +75,17 @@ export const props = {
   timeZone: {
     type: String as PropType<Context['timeZone']>,
   },
+  translations: {
+    type: Object as PropType<Context['translations']>,
+  },
   view: {
     type: String as PropType<Context['view']>,
-    default: 'day',
   },
-} as const
+}
 export const emits = declareEmits([
   'focus-change',
+  'open-change',
   'value-change',
   'view-change',
-  'open-change',
   'update:modelValue',
 ])
