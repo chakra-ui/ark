@@ -26,6 +26,7 @@ description: All notable changes to this project will be documented in this file
 - Fix issue in the `Editable` where cannot delete text when `maxLength` reached
 - Fix issue in the `Select` where item group's label `id` pointed to the wrong element
 - Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
 
 ## [0.11.0] - 2024-02-08
 
