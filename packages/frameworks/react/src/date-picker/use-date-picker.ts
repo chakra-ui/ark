@@ -22,7 +22,6 @@ export interface UseDatePickerProps
    * The value of the date picker
    */
   value?: string[]
-
   /**
    * The minimum date for the date picker in the format yyyy-mm-dd
    */

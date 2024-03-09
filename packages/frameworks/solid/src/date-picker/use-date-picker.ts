@@ -29,19 +29,21 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
-  const [local, rest] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
   const getRootNode = useEnvironmentContext()
+  const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
+
   const context = mergeProps(
     () => ({
       id: createUniqueId(),
       getRootNode,
-      focusedValue: local.focusedValue ? datePicker.parse(local.focusedValue) : undefined,
-      value: local.value ? datePicker.parse(local.value) : undefined,
-      max: local.max ? datePicker.parse(local.max) : undefined,
-      min: local.min ? datePicker.parse(local.min) : undefined,
+      focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
+      value: localProps.value ? datePicker.parse(localProps.value) : undefined,
+      max: localProps.max ? datePicker.parse(localProps.max) : undefined,
+      min: localProps.min ? datePicker.parse(localProps.min) : undefined,
     }),
-    rest,
+    restProps,
   )
+
   const [state, send] = useMachine(datePicker.machine(context), { context })
 
   return createMemo(() => datePicker.connect(state, send, normalizeProps))
