@@ -18,7 +18,7 @@ export const props = {
     type: Boolean as PropType<Context['fixedWeeks']>,
   },
   focusedValue: {
-    type: Object as PropType<Context['focusedValue']>,
+    type: String as PropType<string>,
   },
   format: {
     type: Function as PropType<Context['format']>,
