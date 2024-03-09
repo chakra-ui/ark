@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
+
 ## [2.2.3] - 2024-03-05
 
 ### Fixed
