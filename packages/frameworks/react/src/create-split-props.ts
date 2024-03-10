@@ -1,11 +1,7 @@
-type EnsureKeys<
-  ExpectedKeys extends (keyof Target)[],
-  Target,
-> = ExpectedKeys extends (keyof Target)[]
-  ? [keyof Target] extends [ExpectedKeys[number]]
+type EnsureKeys<ExpectedKeys extends (keyof Target)[], Target> =
+  Exclude<ExpectedKeys[number], keyof Target> extends never
     ? unknown
-    : `Missing required keys: ${Exclude<keyof Target, ExpectedKeys[number]>}`
-  : never
+    : `Missing required keys: ${Exclude<ExpectedKeys[number], keyof Target>}`
 
 export const createSplitProps =
   <Target>() =>
