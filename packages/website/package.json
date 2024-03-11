@@ -23,7 +23,7 @@
     "@nanostores/persistent": "0.10.1",
     "@nanostores/react": "0.7.2",
     "@pandacss/dev": "0.33.0",
-    "@park-ui/panda-preset": "0.36.0",
+    "@park-ui/panda-preset": "0.36.1",
     "@types/react": "18.2.61",
     "@types/react-dom": "18.2.19",
     "@uidotdev/usehooks": "2.4.1",
