@@ -28,6 +28,10 @@ description: All notable changes to this project will be documented in this file
 - Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
 - Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
 
+### Removed
+
+- Removed the unused `parse` prop from the `DatePicker` component.
+
 ## [0.11.0] - 2024-02-08
 
 ### Added

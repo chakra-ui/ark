@@ -120,11 +120,6 @@
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
-    "parse": {
-      "type": "(value: string) => DateValue",
-      "isRequired": false,
-      "description": "The format of the date to display in the input."
-    },
     "positioning": {
       "type": "PositioningOptions",
       "isRequired": false,

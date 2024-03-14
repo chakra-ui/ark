@@ -6,7 +6,10 @@ import { type Optional } from '../types'
 
 export interface UseDatePickerProps
   extends Optional<
-    Omit<datePicker.Context, 'value' | 'min' | 'max' | 'focusedValue' | 'open.controlled'>,
+    Omit<
+      datePicker.Context,
+      'value' | 'min' | 'max' | 'parse' | 'focusedValue' | 'open.controlled'
+    >,
     'id'
   > {
   /**

@@ -7,7 +7,10 @@ import { useEvent } from '../use-event'
 
 export interface UseDatePickerProps
   extends Optional<
-    Omit<datePicker.Context, 'value' | 'min' | 'max' | 'focusedValue' | 'open.controlled'>,
+    Omit<
+      datePicker.Context,
+      'value' | 'min' | 'max' | 'parse' | 'focusedValue' | 'open.controlled'
+    >,
     'id'
   > {
   /**
@@ -26,7 +29,6 @@ export interface UseDatePickerProps
    * The minimum date for the date picker in the format yyyy-mm-dd
    */
   min?: string
-
   /**
    * The maximum date for the date picker in the format yyyy-mm-dd
    */
