@@ -84,7 +84,7 @@
     "eslint": "8.57.0",
     "eslint-plugin-jest-dom": "5.1.0",
     "eslint-plugin-testing-library": "6.2.0",
-    "eslint-plugin-vue": "9.22.0",
+    "eslint-plugin-vue": "9.23.0",
     "globby": "14.0.1",
     "histoire": "0.17.9",
     "jsdom": "24.0.0",
