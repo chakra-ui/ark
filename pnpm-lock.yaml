@@ -724,8 +724,8 @@ importers:
         version: 0.38.1(vue@3.4.21)
     devDependencies:
       '@histoire/plugin-vue':
-        specifier: 0.17.12
-        version: 0.17.12(histoire@0.17.9)(vite@5.1.5)(vue@3.4.21)
+        specifier: 0.17.14
+        version: 0.17.14(histoire@0.17.9)(vite@5.1.5)(vue@3.4.21)
       '@release-it/keep-a-changelog':
         specifier: 5.0.0
         version: 5.0.0(release-it@17.1.1)
@@ -3661,10 +3661,10 @@ packages:
       - vite
     dev: true
 
-  /@histoire/plugin-vue@0.17.12(histoire@0.17.9)(vite@5.1.5)(vue@3.4.21):
-    resolution: {integrity: sha512-mpx2uwHq/qemnX+ARQtDR3M9kIt1y4kBCmzBkOquhJTp61mtHMu4hZKSzzQpQWA2QxEyuuwpaNiU7Mlms13EaQ==}
+  /@histoire/plugin-vue@0.17.14(histoire@0.17.9)(vite@5.1.5)(vue@3.4.21):
+    resolution: {integrity: sha512-TRw5Ba9loqiPr82hxzk86ojZmxu5GlXiCE7ezbTZSOYJGYNp9lnBjZtjZQgDRCdINiqoXocfQ3gyiUD3fk2b/A==}
     peerDependencies:
-      histoire: ^0.17.9
+      histoire: ^0.17.14
       vue: ^3.2.47
     dependencies:
       '@histoire/controls': 0.17.14(vite@5.1.5)
