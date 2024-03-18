@@ -67,7 +67,7 @@
     "@zag-js/vue": "0.38.1"
   },
   "devDependencies": {
-    "@histoire/plugin-vue": "0.17.12",
+    "@histoire/plugin-vue": "0.17.14",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.4.2",
