@@ -127,7 +127,8 @@
   "Range": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Thumb": {
     "index": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "as": { "type": "ValidComponent", "isRequired": false },
+    "name": { "type": "string", "isRequired": false }
   },
   "Track": { "as": { "type": "ValidComponent", "isRequired": false } },
   "Marker": {
