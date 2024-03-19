@@ -1,0 +1,3 @@
+{
+  "Basic": "import { NumberFormat } from '../number-format'\n\nconst Basic = () => {\n  return (\n    <div>\n      <span>\n        <NumberFormat value={1204} unit=\"centimeter\" />\n      </span>\n    </div>\n  )\n}\n"
+}

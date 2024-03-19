@@ -45,6 +45,7 @@
     "@zag-js/dialog": "0.38.1",
     "@zag-js/editable": "0.38.1",
     "@zag-js/file-upload": "0.38.1",
+    "@zag-js/file-utils": "0.38.1",
     "@zag-js/hover-card": "0.38.1",
     "@zag-js/i18n-utils": "0.38.1",
     "@zag-js/menu": "0.38.1",

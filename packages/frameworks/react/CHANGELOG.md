@@ -10,6 +10,10 @@ description: All notable changes to this project will be documented in this file
 
 - Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
 
+### Added
+
+- Added new `ByteFormat` and `NumberFormat` components.
+
 ### Removed
 
 - Removed the unused `parse` prop from the `DatePicker` component.

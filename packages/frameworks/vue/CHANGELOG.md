@@ -11,6 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Add the `DatePicker.PresetTrigger` component
 - Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
+- Added new `ByteFormat` and `NumberFormat` components.
 
 ### Changed
 
