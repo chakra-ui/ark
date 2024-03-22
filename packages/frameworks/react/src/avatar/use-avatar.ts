@@ -6,7 +6,6 @@ import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
-
 export interface UseAvatarReturn extends avatar.Api<PropTypes> {}
 
 export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {
