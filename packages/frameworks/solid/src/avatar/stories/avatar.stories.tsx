@@ -15,9 +15,24 @@ export const Basic = () => (
   </Avatar.Root>
 )
 
-export const Events = () => (
-  <Avatar.Root onLoadingStatusChange={(details) => console.log(details.status)}>
-    <Avatar.Fallback>PA</Avatar.Fallback>
-    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+export const Events = () => {
+  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
+    console.log(details.status)
+  }
+
+  return (
+    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+      <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+    </Avatar.Root>
+  )
+}
+
+export const Context = () => (
+  <Avatar.Root>
+    <Avatar.Context>
+      {(api) => <Avatar.Fallback>{api().isLoaded ? 'Loading' : 'PA'}</Avatar.Fallback>}
+    </Avatar.Context>
+    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
   </Avatar.Root>
 )
