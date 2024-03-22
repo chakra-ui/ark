@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseAvatarReturn } from './use-avatar'
 
-export interface AvatarContext extends UseAvatarReturn {}
+export interface UseAvatarContext extends UseAvatarReturn {}
 
-export const [AvatarProvider, useAvatarContext] = createContext<AvatarContext>({
+export const [AvatarProvider, useAvatarContext] = createContext<UseAvatarContext>({
   hookName: 'useAvatarContext',
   providerName: '<AvatarProvider />',
 })
