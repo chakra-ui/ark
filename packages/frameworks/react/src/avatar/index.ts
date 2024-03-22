@@ -6,7 +6,6 @@ import { AvatarRoot, type AvatarRootProps } from './avatar-root'
 import { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 
 export * as Avatar from './avatar'
-
 export { AvatarContext, AvatarFallback, AvatarImage, AvatarRoot, useAvatarContext }
 
 export type {
