@@ -15,7 +15,7 @@ export const ColorPickerContent = defineComponent<ColorPickerContentProps>(
     return () => (
       <>
         {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.contentProps} {...attrs}>
+          <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
             {slots.default?.()}
           </ark.div>
         )}
