@@ -1,36 +1,28 @@
-import { splitItemProps, type ItemProps, type ItemState } from '@zag-js/accordion'
+import { splitItemProps, type ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { type HTMLArkProps } from '../factory'
 import { useRenderStrategyContext } from '../render-strategy'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { AccordionItemProvider } from './use-accordion-item-context'
 
 export interface AccordionItemProps
-  extends Assign<
-      Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((state: ItemState) => ReactNode) }>,
-      UseCollapsibleProps
-    >,
+  extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
     ItemProps {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [itemProps, { children, ...localProps }] = splitItemProps(props)
-
-  const api = useAccordionContext()
+  const [itemProps, localProps] = splitItemProps(props)
+  const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const mergedItemProps = mergeProps(api.getItemProps(itemProps), localProps)
-
-  const itemState = api.getItemState(itemProps)
-  const view = runIfFn(children, itemState)
-
-  const itemContentProps = api.getItemContentProps(itemProps)
+  const mergedItemProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const itemState = context.getItemState(itemProps)
+  const itemContentProps = context.getItemContentProps(itemProps)
 
   return (
-    <AccordionItemProvider value={itemProps}>
+    <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
       {/* @ts-expect-error TODO fix dir typing */}
       <Collapsible.Root
         ref={ref}
@@ -38,9 +30,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
         ids={{ content: itemContentProps.id }}
         {...renderStrategyProps}
         {...mergedItemProps}
-      >
-        {view}
-      </Collapsible.Root>
+      />
     </AccordionItemProvider>
   )
 })
