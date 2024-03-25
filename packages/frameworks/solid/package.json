@@ -104,7 +104,7 @@
     "@typescript-eslint/parser": "7.3.0",
     "@vitest/coverage-v8": "1.4.0",
     "eslint": "8.57.0",
-    "eslint-plugin-jest-dom": "5.1.0",
+    "eslint-plugin-jest-dom": "5.2.0",
     "eslint-plugin-testing-library": "6.2.0",
     "globby": "14.0.1",
     "jsdom": "24.0.0",
