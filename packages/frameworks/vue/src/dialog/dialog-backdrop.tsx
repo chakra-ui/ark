@@ -14,7 +14,7 @@ export const DialogBackdrop = defineComponent<DialogBackdropProps>(
     return () => (
       <>
         {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.backdropProps} {...attrs}>
+          <ark.div {...api.value.backdropProps} {...presenceApi.value.presenceProps} {...attrs}>
             {slots.default?.()}
           </ark.div>
         )}
