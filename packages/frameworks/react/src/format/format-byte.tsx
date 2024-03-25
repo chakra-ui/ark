@@ -2,7 +2,7 @@ import { formatBytes } from '@zag-js/file-utils'
 import { useMemo } from 'react'
 import { useLocaleContext } from '../locale'
 
-export interface ByteFormatProps {
+export interface FormatByteProps {
   /**
    * The unit granularity to display
    */
@@ -17,11 +17,11 @@ export interface ByteFormatProps {
   value: number
 }
 
-export const ByteFormat = (props: ByteFormatProps) => {
+export const FormatByte = (props: FormatByteProps) => {
   const { value, ...intlOptions } = props
   const { locale } = useLocaleContext()
   const text = useMemo(() => formatBytes(value, locale, intlOptions), [value, locale, intlOptions])
   return <>{text}</>
 }
 
-ByteFormat.displayName = 'ByteFormat'
+FormatByte.displayName = 'FormatByte'

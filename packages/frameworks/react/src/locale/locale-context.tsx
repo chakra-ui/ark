@@ -4,9 +4,9 @@ import { createContext } from '../create-context'
 export interface LocaleContext extends Locale {}
 
 export const [LocaleContextProvider, useLocaleContext] = createContext<LocaleContext>({
-  name: 'EnvironmentContext',
-  hookName: 'useEnvironmentContext',
-  providerName: '<EnvironmentProvider />',
+  name: 'LocaleContext',
+  hookName: 'useLocaleContext',
+  providerName: '<LocaleProvider />',
   strict: false,
   defaultValue: { dir: 'ltr', locale: 'en-US' },
 })
