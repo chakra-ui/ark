@@ -1,5 +1,5 @@
 import type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
-import { useCarouselContext, type CarouselContext } from './carousel-context'
+import { CarouselContext, type CarouselContextProps } from './carousel-context'
 import { CarouselControl, type CarouselControlProps } from './carousel-control'
 import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
 import {
@@ -12,10 +12,11 @@ import { CarouselNextTrigger, type CarouselNextTriggerProps } from './carousel-n
 import { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-prev-trigger'
 import { CarouselRoot, type CarouselRootProps } from './carousel-root'
 import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
+import { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
 
 export * as Carousel from './carousel'
-
 export {
+  CarouselContext,
   CarouselControl,
   CarouselIndicator,
   CarouselIndicatorGroup,
@@ -28,7 +29,7 @@ export {
   useCarouselContext,
 }
 export type {
-  CarouselContext,
+  CarouselContextProps,
   CarouselControlProps,
   CarouselIndicatorGroupProps,
   CarouselIndicatorProps,
@@ -39,4 +40,5 @@ export type {
   CarouselRootProps,
   CarouselSlideChangeDetails,
   CarouselViewportProps,
+  UseCarouselContext,
 }
