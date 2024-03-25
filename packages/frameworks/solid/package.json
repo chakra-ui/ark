@@ -114,7 +114,7 @@
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.13.0",
     "rollup-preset-solid": "2.0.1",
-    "solid-js": "1.8.15",
+    "solid-js": "1.8.16",
     "storybook": "7.6.17",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
