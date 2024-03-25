@@ -7,7 +7,7 @@
       "description": "The unit granularity to display"
     },
     "unitDisplay": {
-      "type": "'short' | 'long' | 'narrow'",
+      "type": "'long' | 'short' | 'narrow'",
       "isRequired": false,
       "description": "The unit display"
     }
