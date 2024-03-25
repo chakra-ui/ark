@@ -1,4 +1,4 @@
-import { type CopyStatusDetails as ClipboardCopyStatusDetails } from '@zag-js/clipboard'
+import type { CopyStatusDetails as ClipboardCopyStatusDetails } from '@zag-js/clipboard'
 import { useClipboardContext, type ClipboardContext } from './clipboard-context'
 import { ClipboardControl, type ClipboardControlProps } from './clipboard-control'
 import { ClipboardIndicator, type ClipboardIndicatorProps } from './clipboard-indicator'

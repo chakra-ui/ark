@@ -1,3 +1,4 @@
+import type { SlideChangeDetails } from '@zag-js/carousel'
 import {
   CarouselContext as Context,
   type CarouselContextProps as ContextProps,
@@ -45,7 +46,6 @@ export {
   Root,
   Viewport,
 }
-
 export type {
   ContextProps,
   ControlProps,
@@ -56,5 +56,6 @@ export type {
   NextTriggerProps,
   PrevTriggerProps,
   RootProps,
+  SlideChangeDetails,
   ViewportProps,
 }

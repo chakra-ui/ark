@@ -1,17 +1,42 @@
-import { SelectClearTrigger as ClearTrigger } from './select-clear-trigger'
-import { SelectContent as Content } from './select-content'
-import { SelectControl as Control } from './select-control'
-import { SelectIndicator as Indicator } from './select-indicator'
-import { SelectItem as Item } from './select-item'
-import { SelectItemGroup as ItemGroup } from './select-item-group'
-import { SelectItemGroupLabel as ItemGroupLabel } from './select-item-group-label'
-import { SelectItemIndicator as ItemIndicator } from './select-item-indicator'
-import { SelectItemText as ItemText } from './select-item-text'
-import { SelectLabel as Label } from './select-label'
-import { SelectPositioner as Positioner } from './select-positioner'
-import { SelectRoot as Root } from './select-root'
-import { SelectTrigger as Trigger } from './select-trigger'
-import { SelectValueText as ValueText } from './select-value-text'
+import type { HighlightChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/select'
+import {
+  SelectClearTrigger as ClearTrigger,
+  type SelectClearTriggerProps as ClearTriggerProps,
+} from './select-clear-trigger'
+import { SelectContent as Content, type SelectContentProps as ContentProps } from './select-content'
+import { SelectControl as Control, type SelectControlProps as ControlProps } from './select-control'
+import {
+  SelectIndicator as Indicator,
+  type SelectIndicatorProps as IndicatorProps,
+} from './select-indicator'
+import { SelectItem as Item, type SelectItemProps as ItemProps } from './select-item'
+import {
+  SelectItemGroup as ItemGroup,
+  type SelectItemGroupProps as ItemGroupProps,
+} from './select-item-group'
+import {
+  SelectItemGroupLabel as ItemGroupLabel,
+  type SelectItemGroupLabelProps as ItemGroupLabelProps,
+} from './select-item-group-label'
+import {
+  SelectItemIndicator as ItemIndicator,
+  type SelectItemIndicatorProps as ItemIndicatorProps,
+} from './select-item-indicator'
+import {
+  SelectItemText as ItemText,
+  type SelectItemTextProps as ItemTextProps,
+} from './select-item-text'
+import { SelectLabel as Label, type SelectLabelProps as LabelProps } from './select-label'
+import {
+  SelectPositioner as Positioner,
+  type SelectPositionerProps as PositionerProps,
+} from './select-positioner'
+import { SelectRoot as Root, type SelectRootProps as RootProps } from './select-root'
+import { SelectTrigger as Trigger, type SelectTriggerProps as TriggerProps } from './select-trigger'
+import {
+  SelectValueText as ValueText,
+  type SelectValueTextProps as ValueTextProps,
+} from './select-value-text'
 
 export {
   ClearTrigger,
@@ -28,4 +53,23 @@ export {
   Root,
   Trigger,
   ValueText,
+}
+export type {
+  ClearTriggerProps,
+  ContentProps,
+  ControlProps,
+  HighlightChangeDetails,
+  IndicatorProps,
+  ItemGroupLabelProps,
+  ItemGroupProps,
+  ItemIndicatorProps,
+  ItemProps,
+  ItemTextProps,
+  LabelProps,
+  OpenChangeDetails,
+  PositionerProps,
+  RootProps,
+  TriggerProps,
+  ValueChangeDetails,
+  ValueTextProps,
 }
