@@ -5,7 +5,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useComboboxContext } from './use-combobox-context'
-import { ComboboxItemProvider } from './use-combobox-item-context'
+import { ComboboxItemPropsProvider, ComboboxItemProvider } from './use-combobox-item-context'
 
 export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
@@ -16,9 +16,11 @@ export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props
   const itemState = context.getItemState(itemProps)
 
   return (
-    <ComboboxItemProvider value={{ ...itemProps, ...itemState }}>
-      <ark.div {...mergedProps} ref={ref} />
-    </ComboboxItemProvider>
+    <ComboboxItemPropsProvider value={itemProps}>
+      <ComboboxItemProvider value={itemState}>
+        <ark.div {...mergedProps} ref={ref} />
+      </ComboboxItemProvider>
+    </ComboboxItemPropsProvider>
   )
 })
 

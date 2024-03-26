@@ -22,8 +22,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   const itemContentProps = context.getItemContentProps(itemProps)
 
   return (
-    <AccordionItemProvider value={itemState}>
-      <AccordionItemPropsProvider value={itemProps}>
+    <AccordionItemPropsProvider value={itemProps}>
+      <AccordionItemProvider value={itemState}>
         {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           ref={ref}
@@ -32,8 +32,8 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
           {...renderStrategyProps}
           {...mergedItemProps}
         />
-      </AccordionItemPropsProvider>
-    </AccordionItemProvider>
+      </AccordionItemProvider>
+    </AccordionItemPropsProvider>
   )
 })
 
