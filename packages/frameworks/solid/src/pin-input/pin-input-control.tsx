@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePinInputContext } from './pin-input-context'
 
 export interface PinInputControlProps extends HTMLArkProps<'div'> {}
 
-export const PinInputControl: ArkComponent<'div'> = (props: PinInputControlProps) => {
+export const PinInputControl = (props: PinInputControlProps) => {
   const api = usePinInputContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 

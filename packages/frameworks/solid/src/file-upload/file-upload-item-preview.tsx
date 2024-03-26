@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useFileUploadContext } from './file-upload-context'
 import { useFileUploadItemContext } from './file-upload-item-context'
 
@@ -13,9 +13,7 @@ interface ElementProps {
 
 export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'>, ElementProps {}
 
-export const FileUploadItemPreview: ArkComponent<'div', ElementProps> = (
-  props: FileUploadItemPreviewProps,
-) => {
+export const FileUploadItemPreview = (props: FileUploadItemPreviewProps) => {
   const api = useFileUploadContext()
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemPreviewProps(item), props)

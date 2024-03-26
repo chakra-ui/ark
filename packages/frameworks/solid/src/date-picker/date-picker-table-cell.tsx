@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import {
   DatePickerTableCellProvider,
@@ -10,9 +10,7 @@ import { useDatePickerViewContext } from './date-picker-view-context'
 
 export interface DatePickerTableCellProps extends HTMLArkProps<'td'>, DatePickerTableCellContext {}
 
-export const DatePickerTableCell: ArkComponent<'td', DatePickerTableCellContext> = (
-  props: DatePickerTableCellProps,
-) => {
+export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   const [cellProps, localProps] = createSplitProps<DatePickerTableCellContext>()(props, [
     'disabled',
     'value',

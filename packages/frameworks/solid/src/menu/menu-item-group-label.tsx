@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
 
@@ -9,9 +9,7 @@ interface ItemGroupLabelProps {
 }
 export interface MenuItemGroupLabelProps extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
 
-export const MenuItemGroupLabel: ArkComponent<'div', ItemGroupLabelProps> = (
-  props: MenuItemGroupLabelProps,
-) => {
+export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
   const menu = useMenuContext()
   const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['for'])
 

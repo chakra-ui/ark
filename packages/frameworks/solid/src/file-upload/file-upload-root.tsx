@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { FileUploadProvider } from './file-upload-context'
@@ -13,9 +13,7 @@ interface ElementProps extends UseFileUploadProps {
 
 export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const FileUploadRoot: ArkComponent<'div', FileUploadRootProps> = (
-  props: FileUploadRootProps,
-) => {
+export const FileUploadRoot = (props: FileUploadRootProps) => {
   const [fileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
     'allowDrop',

@@ -46,18 +46,18 @@ describe('Ark Factory', () => {
     expect(screen.getByText('Ark UI')).toBeVisible()
   })
 
-  //   it('should merge events', async () => {
-  //     const onClickParent = vi.fn()
-  //     const onClickChild = vi.fn()
-  //     render(() => (
-  //       <ark.div data-testid="parent" onClick={onClickParent} asChild>
-  //         <ark.span data-testid="child" onClick={onClickChild} />
-  //       </ark.div>,
-  //     )
-  //     await user.click(screen.getByTestId('child'))
-  //     expect(onClickParent).toHaveBeenCalled()
-  //     expect(onClickChild).toHaveBeenCalled()
-  //   })
+  // it('should merge events', async () => {
+  //   const onClickParent = vi.fn()
+  //   const onClickChild = vi.fn()
+  //   render(() => (
+  //     <ark.div data-testid="parent" onClick={onClickParent} asChild>
+  //       {(props) => <ark.span data-testid="child" {...props({ onClick: onClickChild })} />}
+  //     </ark.div>
+  //   ))
+  //   await user.click(screen.getByTestId('child'))
+  //   expect(onClickParent).toHaveBeenCalled()
+  //   expect(onClickChild).toHaveBeenCalled()
+  // })
 
   //   it('should propagate asChild', async () => {
   //     render(

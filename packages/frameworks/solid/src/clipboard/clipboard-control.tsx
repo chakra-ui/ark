@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useClipboardContext } from './clipboard-context'
 
 export interface ClipboardControlProps extends HTMLArkProps<'div'> {}
 
-export const ClipboardControl: ArkComponent<'div'> = (props: ClipboardControlProps) => {
+export const ClipboardControl = (props: ClipboardControlProps) => {
   const api = useClipboardContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 

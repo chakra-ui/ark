@@ -2,7 +2,7 @@ import type { ItemProps, ItemState } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useRatingGroupContext } from './rating-group-context'
@@ -14,9 +14,7 @@ interface ElementProps extends ItemProps {
 
 export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ElementProps> {}
 
-export const RatingGroupItem: ArkComponent<'span', ElementProps> = (
-  props: RatingGroupItemProps,
-) => {
+export const RatingGroupItem = (props: RatingGroupItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
 
   const api = useRatingGroupContext()

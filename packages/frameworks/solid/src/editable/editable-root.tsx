@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { EditableProvider } from './editable-context'
@@ -13,7 +13,7 @@ interface ElementProps extends UseEditableProps {
 
 export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const EditableRoot: ArkComponent<'div', EditableRootProps> = (props: EditableRootProps) => {
+export const EditableRoot = (props: EditableRootProps) => {
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',

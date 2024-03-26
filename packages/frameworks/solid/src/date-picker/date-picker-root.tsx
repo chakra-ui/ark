@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import {
   PresenceProvider,
   splitPresenceProps,
@@ -19,7 +19,7 @@ interface ElementProps extends UseDatePickerProps, UsePresenceProps {
 
 export interface DatePickerRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const DatePickerRoot: ArkComponent<'div', ElementProps> = (props: DatePickerRootProps) => {
+export const DatePickerRoot = (props: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
   const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',

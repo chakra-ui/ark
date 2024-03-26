@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useHoverCardContext } from './hover-card-context'
 
 export interface HoverCardContentProps extends HTMLArkProps<'div'> {}
 
-export const HoverCardContent: ArkComponent<'div'> = (props: HoverCardContentProps) => {
+export const HoverCardContent = (props: HoverCardContentProps) => {
   const api = useHoverCardContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

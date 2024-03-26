@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import {
   PresenceProvider,
   splitPresenceProps,
@@ -23,7 +23,7 @@ interface ElementProps extends UseColorPickerProps, UsePresenceProps {
 
 export interface ColorPickerRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const ColorPickerRoot: ArkComponent<'div', ElementProps> = (props: ColorPickerRootProps) => {
+export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
   const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(
     colorPickerProps,
