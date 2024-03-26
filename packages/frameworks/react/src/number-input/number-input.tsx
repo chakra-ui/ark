@@ -4,6 +4,10 @@ import type {
   ValueInvalidDetails,
 } from '@zag-js/number-input'
 import {
+  NumberInputContext as Context,
+  type NumberInputContextProps as ContextProps,
+} from './number-input-context'
+import {
   NumberInputControl as Control,
   type NumberInputControlProps as ControlProps,
 } from './number-input-control'
@@ -32,8 +36,9 @@ import {
   type NumberInputScrubberProps as ScrubberProps,
 } from './number-input-scrubber'
 
-export { Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }
+export { Context, Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }
 export type {
+  ContextProps,
   ControlProps,
   DecrementTriggerProps,
   FocusChangeDetails,

@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseNumberInputReturn } from './use-number-input'
 
-export interface NumberInputContext extends UseNumberInputReturn {}
+export interface UseNumberInputContext extends UseNumberInputReturn {}
 
-export const [NumberInputProvider, useNumberInputContext] = createContext<NumberInputContext>({
+export const [NumberInputProvider, useNumberInputContext] = createContext<UseNumberInputContext>({
   name: 'NumberInputContext',
   hookName: 'useNumberInputContext',
   providerName: '<NumberInputProvider />',
