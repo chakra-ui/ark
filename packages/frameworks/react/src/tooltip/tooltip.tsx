@@ -9,6 +9,10 @@ import {
   type TooltipContentProps as ContentProps,
 } from './tooltip-content'
 import {
+  TooltipContext as Context,
+  type TooltipContextProps as ContextProps,
+} from './tooltip-context'
+import {
   TooltipPositioner as Positioner,
   type TooltipPositionerProps as PositionerProps,
 } from './tooltip-positioner'
@@ -18,11 +22,12 @@ import {
   type TooltipTriggerProps as TriggerProps,
 } from './tooltip-trigger'
 
-export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }
+export { Arrow, ArrowTip, Content, Context, Positioner, Root, Trigger }
 export type {
   ArrowProps,
   ArrowTipProps,
   ContentProps,
+  ContextProps,
   OpenChangeDetails,
   PositionerProps,
   RootProps,

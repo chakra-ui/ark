@@ -2,14 +2,14 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useTooltipContext } from './tooltip-context'
+import { useTooltipContext } from './use-tooltip-context'
 
 export interface TooltipContentProps extends HTMLArkProps<'div'> {}
 
 export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
-  const api = useTooltipContext()
+  const context = useTooltipContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(api.contentProps, presenceApi.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
 
   if (presenceApi.isUnmounted) {
     return null
