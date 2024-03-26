@@ -1,17 +1,20 @@
 import { Portal } from '@ark-ui/react'
+import { useStore } from '@nanostores/react'
 import type { CollectionEntry } from 'astro:content'
 import { AsteriskIcon, HelpCircle, MinusIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Button, Code, Heading, Icon, Popover, Table } from '~/components/ui'
+import { selectedFramework } from '~/stores/framework-select.store'
 
 type Props = {
-  types: CollectionEntry<'types'>
+  types: CollectionEntry<'types'>[]
 }
 
 export const ComponentPropsTable = (props: Props) => {
-  const { types } = props
+  const $selectedFramework = useStore(selectedFramework)
+  const types = props.types.filter((entry) => entry.id.startsWith($selectedFramework))[0]
 
-  return (
+  return types ? (
     <Stack gap="6" className="not-prose">
       {Object.entries(types.data).map(([key, properties]) => (
         <Stack key={key} gap="4" className="not-prose">
@@ -74,5 +77,5 @@ export const ComponentPropsTable = (props: Props) => {
         </Stack>
       ))}
     </Stack>
-  )
+  ) : null
 }

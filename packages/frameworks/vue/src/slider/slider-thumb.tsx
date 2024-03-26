@@ -26,6 +26,9 @@ export const SliderThumb = defineComponent<SliderThumbProps>(
         type: Number as PropType<ThumbProps['index']>,
         required: true,
       },
+      name: {
+        type: String as PropType<ThumbProps['name']>,
+      },
     },
   },
 )

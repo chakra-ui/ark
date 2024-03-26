@@ -1,25 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { SliderProvider } from './slider-context'
-import { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
+import { useSlider, type UseSliderProps } from './use-slider'
+import { SliderProvider } from './use-slider-context'
 
-export interface SliderRootProps
-  extends Assign<
-    Assign<
-      HTMLArkProps<'div'>,
-      {
-        children?: ReactNode | ((api: UseSliderReturn) => ReactNode)
-      }
-    >,
-    UseSliderProps
-  > {}
+export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
-  const [useSliderProps, { children, ...divProps }] = createSplitProps<UseSliderProps>()(props, [
+  const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
     'defaultValue',
@@ -47,15 +37,12 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'thumbSize',
     'value',
   ])
-  const api = useSlider(useSliderProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
+  const context = useSlider(useSliderProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
-  const view = runIfFn(children, api)
   return (
-    <SliderProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+    <SliderProvider value={context}>
+      <ark.div {...mergedProps} ref={ref} />
     </SliderProvider>
   )
 })

@@ -4,16 +4,15 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { usePaginationContext } from './pagination-context'
+import { usePaginationContext } from './use-pagination-context'
 
 export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
 
 export const PaginationEllipsis = forwardRef<HTMLDivElement, PaginationEllipsisProps>(
   (props, ref) => {
     const [ellipsisProps, localProps] = createSplitProps<EllipsisProps>()(props, ['index'])
-
-    const api = usePaginationContext()
-    const mergedProps = mergeProps(api.getEllipsisProps(ellipsisProps), localProps)
+    const context = usePaginationContext()
+    const mergedProps = mergeProps(context.getEllipsisProps(ellipsisProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

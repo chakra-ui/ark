@@ -4,8 +4,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
-import { useColorPickerContext } from './color-picker-context'
+import { ColorPickerChannelSliderProvider } from './use-color-picker-channel-slider-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerChannelSliderProps extends Assign<HTMLArkProps<'div'>, ChannelProps> {}
 
@@ -15,8 +15,8 @@ export const ColorPickerChannelSlider = forwardRef<HTMLDivElement, ColorPickerCh
       'channel',
       'orientation',
     ])
-    const api = useColorPickerContext()
-    const mergedProps = mergeProps(api.getChannelSliderProps(channelProps), localProps)
+    const context = useColorPickerContext()
+    const mergedProps = mergeProps(context.getChannelSliderProps(channelProps), localProps)
 
     return (
       <ColorPickerChannelSliderProvider value={channelProps}>

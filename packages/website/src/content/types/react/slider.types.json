@@ -152,7 +152,8 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    }
+    },
+    "name": { "type": "string", "isRequired": false }
   },
   "Track": {
     "asChild": {

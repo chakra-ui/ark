@@ -1,19 +1,19 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useCollapsibleContext } from './collapsible-context'
+import { useCollapsibleContext } from './use-collapsible-context'
 
 export interface CollapsibleContentProps extends HTMLArkProps<'div'> {}
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>(
   (props, ref) => {
-    const api = useCollapsibleContext()
+    const context = useCollapsibleContext()
 
-    if (api.isUnmounted) {
+    if (context.isUnmounted) {
       return null
     }
 
-    const mergedProps = mergeProps(api.contentProps, props)
+    const mergedProps = mergeProps(context.contentProps, props)
     return <ark.div {...mergedProps} ref={ref} />
   },
 )

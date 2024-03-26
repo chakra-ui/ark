@@ -3,8 +3,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
+import { RadioGroupProvider } from './use-radio-group-context'
 
 export interface RadioGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 
@@ -22,12 +22,11 @@ export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((p
     'orientation',
     'value',
   ])
-
-  const api = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const context = useRadioGroup(useRadioGroupProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <RadioGroupProvider value={api}>
+    <RadioGroupProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
     </RadioGroupProvider>
   )

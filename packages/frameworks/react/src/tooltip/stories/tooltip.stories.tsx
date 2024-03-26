@@ -35,14 +35,14 @@ export const Controlled = () => {
 
 export const RenderFn = () => (
   <Tooltip.Root>
-    {({ isOpen }) => (
-      <>
-        <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
-        <Tooltip.Positioner>
-          <Tooltip.Content>This tooltip is open: {isOpen.toString()}</Tooltip.Content>
-        </Tooltip.Positioner>
-      </>
-    )}
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Context>
+        {(context) => (
+          <Tooltip.Content>This tooltip is open: {context.isOpen.toString()}</Tooltip.Content>
+        )}
+      </Tooltip.Context>
+    </Tooltip.Positioner>
   </Tooltip.Root>
 )
 

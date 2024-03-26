@@ -61,14 +61,14 @@
       "description": "The locale (BCP 47 language tag) to use when formatting the date."
     },
     "max": {
-      "type": "DateValue",
+      "type": "string",
       "isRequired": false,
-      "description": "The maximum date that can be selected."
+      "description": "The maximum date for the date picker in the format yyyy-mm-dd"
     },
     "min": {
-      "type": "DateValue",
+      "type": "string",
       "isRequired": false,
-      "description": "The minimum date that can be selected."
+      "description": "The minimum date for the date picker in the format yyyy-mm-dd"
     },
     "modal": {
       "type": "boolean",
@@ -114,11 +114,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the datepicker is open"
-    },
-    "parse": {
-      "type": "(value: string) => DateValue",
-      "isRequired": false,
-      "description": "The format of the date to display in the input."
     },
     "positioning": {
       "type": "PositioningOptions",

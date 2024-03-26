@@ -1,15 +1,15 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSelectContext } from './select-context'
-import { useSelectItemContext } from './select-item-context'
+import { useSelectContext } from './use-select-context'
+import { useSelectItemPropsContext } from './use-select-item-context'
 
 export interface SelectItemTextProps extends HTMLArkProps<'span'> {}
 
 export const SelectItemText = forwardRef<HTMLDivElement, SelectItemTextProps>((props, ref) => {
-  const api = useSelectContext()
-  const itemProps = useSelectItemContext()
-  const mergedProps = mergeProps(api.getItemTextProps(itemProps), props)
+  const context = useSelectContext()
+  const itemProps = useSelectItemPropsContext()
+  const mergedProps = mergeProps(context.getItemTextProps(itemProps), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

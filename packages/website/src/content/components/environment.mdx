@@ -41,7 +41,7 @@ import { useCallback, type ReactNode } from 'react'
 export const App = (props: { children: ReactNode }) => {
   const getRootNode = useCallback(() => document, [])
   return (
-    <Environment.Root value={getRootNode}>{props.children}</Environment.Root>
+    <Environment value={getRootNode}>{props.children}</Environment>
   )
 }
 ```

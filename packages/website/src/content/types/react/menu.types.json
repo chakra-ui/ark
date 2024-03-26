@@ -79,6 +79,11 @@
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
     },
+    "onEscapeKeyDown": {
+      "type": "(event: KeyboardEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the escape key is pressed"
+    },
     "onExitComplete": {
       "type": "() => void",
       "isRequired": false,

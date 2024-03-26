@@ -1,6 +1,6 @@
 import { useMemo, useRef, type ReactNode } from 'react'
 import { runIfFn } from '../run-if-fn'
-import { EnvironmentProvider } from './environment-context'
+import { EnvironmentProvider } from './use-environment-context'
 
 export type RootNode = ShadowRoot | Document | Node
 

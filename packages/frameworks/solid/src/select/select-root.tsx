@@ -51,6 +51,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'open',
     'positioning',
     'readOnly',
+    'scrollToIndexFn',
     'selectOnBlur',
     'value',
   ])

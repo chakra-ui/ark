@@ -3,8 +3,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { ToggleGroupProvider } from './toggle-group-context'
 import { useToggleGroup, type UseToggleGroupProps } from './use-toggle-group'
+import { ToggleGroupProvider } from './use-toggle-group-context'
 
 export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 
@@ -23,11 +23,11 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
     'rovingFocus',
     'value',
   ])
-  const api = useToggleGroup(toggleGroup)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const context = useToggleGroup(toggleGroup)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <ToggleGroupProvider value={api}>
+    <ToggleGroupProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
     </ToggleGroupProvider>
   )

@@ -3,7 +3,7 @@ import type {
   FileChangeDetails as FileUploadFileChangeDetails,
   FileRejectDetails as FileUploadFileRejectDetails,
 } from '@zag-js/file-upload'
-import { useFileUploadContext, type FileUploadContext } from './file-upload-context'
+import { FileUploadContext, type FileUploadContextProps } from './file-upload-context'
 import { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
 import { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
 import {
@@ -24,10 +24,12 @@ import {
 import { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
 import { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
 import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
+import { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'
 
 export * as FileUpload from './file-upload'
 
 export {
+  FileUploadContext,
   FileUploadDropzone,
   FileUploadItem,
   FileUploadItemDeleteTrigger,
@@ -43,7 +45,7 @@ export {
 }
 
 export type {
-  FileUploadContext,
+  FileUploadContextProps,
   FileUploadDropzoneProps,
   FileUploadFileAcceptDetails,
   FileUploadFileChangeDetails,
@@ -58,4 +60,5 @@ export type {
   FileUploadLabelProps,
   FileUploadRootProps,
   FileUploadTriggerProps,
+  UseFileUploadContext,
 }

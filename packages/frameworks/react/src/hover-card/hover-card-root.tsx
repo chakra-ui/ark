@@ -3,23 +3,21 @@ import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
-import { runIfFn } from '../run-if-fn'
-import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { HoverCardProvider } from './use-hover-card-context'
 
 export interface HoverCardRootProps extends UseHoverCardProps, UsePresenceProps {
-  children?: ReactNode | ((api: UseHoverCardReturn) => ReactNode)
+  children?: ReactNode
 }
 
 export const HoverCardRoot = (props: HoverCardRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
-  const api = useHoverCard(localProps)
-  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
-  const view = runIfFn(children, api)
+  const context = useHoverCard(localProps)
+  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
 
   return (
-    <HoverCardProvider value={api}>
-      <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+    <HoverCardProvider value={context}>
+      <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
     </HoverCardProvider>
   )
 }

@@ -160,6 +160,11 @@
       "isRequired": false,
       "description": "Whether the select is read-only"
     },
+    "scrollToIndexFn": {
+      "type": "(details: ScrollToIndexDetails) => void",
+      "isRequired": false,
+      "description": "Function to scroll to a specific index"
+    },
     "selectOnBlur": {
       "type": "boolean",
       "isRequired": false,

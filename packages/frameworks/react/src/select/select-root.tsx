@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type JSX, type ReactNode } from 'react'
+import { forwardRef, type JSX } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -8,19 +8,12 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import { type Assign, type CollectionItem } from '../types'
-import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
+import { useSelect, type UseSelectProps } from './use-select'
+import { SelectProvider } from './use-select-context'
 
 export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<
-      Assign<
-        HTMLArkProps<'div'>,
-        { children?: ReactNode | ((api: UseSelectReturn<T>) => ReactNode) }
-      >,
-      UseSelectProps<T>
-    >,
+  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
     UsePresenceProps {}
 
 const SelectImpl = <T extends CollectionItem>(
@@ -28,50 +21,46 @@ const SelectImpl = <T extends CollectionItem>(
   ref: React.Ref<HTMLDivElement>,
 ) => {
   const [presenceProps, selectProps] = splitPresenceProps(props)
-  const [useSelectProps, { children, ...localProps }] = createSplitProps<UseSelectProps<T>>()(
-    selectProps,
-    [
-      'closeOnSelect',
-      'defaultValue',
-      'dir',
-      'disabled',
-      'form',
-      'getRootNode',
-      'highlightedValue',
-      'id',
-      'ids',
-      'invalid',
-      'isItemDisabled',
-      'items',
-      'itemToString',
-      'itemToValue',
-      'loop',
-      'multiple',
-      'name',
-      'onFocusOutside',
-      'onHighlightChange',
-      'onInteractOutside',
-      'onOpenChange',
-      'onPointerDownOutside',
-      'onValueChange',
-      'open',
-      'positioning',
-      'readOnly',
-      'selectOnBlur',
-      'value',
-    ],
-  )
-  const api = useSelect(useSelectProps)
-  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
-  const view = runIfFn(children, api)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
+    'closeOnSelect',
+    'defaultValue',
+    'dir',
+    'disabled',
+    'form',
+    'getRootNode',
+    'highlightedValue',
+    'id',
+    'ids',
+    'invalid',
+    'isItemDisabled',
+    'items',
+    'itemToString',
+    'itemToValue',
+    'loop',
+    'multiple',
+    'name',
+    'onFocusOutside',
+    'onHighlightChange',
+    'onInteractOutside',
+    'onOpenChange',
+    'onPointerDownOutside',
+    'onValueChange',
+    'open',
+    'positioning',
+    'readOnly',
+    'scrollToIndexFn',
+    'selectOnBlur',
+    'value',
+  ])
+  const context = useSelect(useSelectProps)
+  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
+
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <SelectProvider value={api}>
+    <SelectProvider value={context}>
       <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps} ref={ref}>
-          {view}
-        </ark.div>
+        <ark.div {...mergedProps} ref={ref} />
       </PresenceProvider>
     </SelectProvider>
   )

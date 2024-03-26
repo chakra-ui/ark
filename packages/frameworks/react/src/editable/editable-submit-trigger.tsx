@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useEditableContext } from './editable-context'
+import { useEditableContext } from './use-editable-context'
 
 export interface EditableSubmitTriggerProps extends HTMLArkProps<'button'> {}
 
 export const EditableSubmitTrigger = forwardRef<HTMLButtonElement, EditableSubmitTriggerProps>(
   (props, ref) => {
-    const api = useEditableContext()
-    const mergedProps = mergeProps(api.submitTriggerProps, props)
+    const context = useEditableContext()
+    const mergedProps = mergeProps(context.submitTriggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

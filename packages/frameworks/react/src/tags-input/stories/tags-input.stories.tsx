@@ -11,24 +11,26 @@ export default meta
 export const Basic = () => {
   return (
     <TagsInput.Root>
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemPreview>
-                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-                </TagsInput.ItemPreview>
-                <TagsInput.ItemInput />
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemPreview>
+                    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                  </TagsInput.ItemPreview>
+                  <TagsInput.ItemInput />
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -36,22 +38,24 @@ export const Basic = () => {
 export const InitialValue = () => {
   return (
     <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']}>
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add tag" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add tag" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -59,22 +63,24 @@ export const InitialValue = () => {
 export const MaxWithOverflow = () => {
   return (
     <TagsInput.Root max={3} allowOverflow>
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -86,22 +92,24 @@ export const Validated = () => {
         return !details.value.includes(details.inputValue)
       }}
     >
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -109,22 +117,24 @@ export const Validated = () => {
 export const BlurBehavior = () => {
   return (
     <TagsInput.Root blurBehavior="add">
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -132,22 +142,24 @@ export const BlurBehavior = () => {
 export const PasteBehavior = () => {
   return (
     <TagsInput.Root addOnPaste delimiter=",">
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -155,22 +167,24 @@ export const PasteBehavior = () => {
 export const DisabledEditing = () => {
   return (
     <TagsInput.Root allowEditTag={false}>
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }
@@ -193,22 +207,24 @@ export const OnEvent = () => {
         return !details.value.includes(details.inputValue)
       }}
     >
-      {(api) => (
-        <>
-          <TagsInput.Label>Frameworks</TagsInput.Label>
-          <TagsInput.Control>
-            {api.value.map((value, index) => (
-              <TagsInput.Item key={index} index={index} value={value}>
-                <TagsInput.ItemInput />
-                <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
-              </TagsInput.Item>
-            ))}
-          </TagsInput.Control>
-          <TagsInput.Input placeholder="Add Framework" />
-          <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
-        </>
-      )}
+      <TagsInput.Context>
+        {(context) => (
+          <>
+            <TagsInput.Label>Frameworks</TagsInput.Label>
+            <TagsInput.Control>
+              {context.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemInput />
+                  <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                  <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Add Framework" />
+            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
     </TagsInput.Root>
   )
 }

@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectItemGroupLabelProps
   extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
@@ -14,8 +14,8 @@ export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLa
     const [itemGroupLabelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, [
       'htmlFor',
     ])
-    const api = useSelectContext()
-    const mergedProps = mergeProps(api.getItemGroupLabelProps(itemGroupLabelProps), localProps)
+    const context = useSelectContext()
+    const mergedProps = mergeProps(context.getItemGroupLabelProps(itemGroupLabelProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

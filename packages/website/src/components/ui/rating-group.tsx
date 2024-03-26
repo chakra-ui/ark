@@ -28,13 +28,17 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
     >
       {children && <ArkRatingGroup.Label className={styles.label}>{children}</ArkRatingGroup.Label>}
       <ArkRatingGroup.Control className={styles.control}>
-        {({ items }) =>
-          items.map((index) => (
-            <ArkRatingGroup.Item className={styles.item} key={index} index={index}>
-              {({ isHalf }) => <StarIcon isHalf={isHalf} />}
-            </ArkRatingGroup.Item>
-          ))
-        }
+        <ArkRatingGroup.Context>
+          {({ items }) =>
+            items.map((index) => (
+              <ArkRatingGroup.Item className={styles.item} key={index} index={index}>
+                <ArkRatingGroup.ItemContext>
+                  {({ isHalf }) => <StarIcon isHalf={isHalf} />}
+                </ArkRatingGroup.ItemContext>
+              </ArkRatingGroup.Item>
+            ))
+          }
+        </ArkRatingGroup.Context>
       </ArkRatingGroup.Control>
     </ArkRatingGroup.Root>
   )

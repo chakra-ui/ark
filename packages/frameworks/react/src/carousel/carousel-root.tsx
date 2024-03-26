@@ -1,51 +1,34 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { CarouselProvider } from './carousel-context'
-import { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
+import { useCarousel, type UseCarouselProps } from './use-carousel'
+import { CarouselProvider } from './use-carousel-context'
 
-export interface CarouselRootProps
-  extends Assign<
-    Assign<
-      HTMLArkProps<'div'>,
-      {
-        children?: ReactNode | ((api: UseCarouselReturn) => ReactNode)
-      }
-    >,
-    UseCarouselProps
-  > {}
+export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
 
 export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props, ref) => {
-  const [useCarouselProps, { children, ...divProps }] = createSplitProps<UseCarouselProps>()(
-    props,
-    [
-      'align',
-      'defaultIndex',
-      'dir',
-      'getRootNode',
-      'id',
-      'ids',
-      'index',
-      'loop',
-      'onIndexChange',
-      'orientation',
-      'slidesPerView',
-      'spacing',
-    ],
-  )
-  const api = useCarousel(useCarouselProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
-
-  const view = runIfFn(children, api)
+  const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
+    'align',
+    'defaultIndex',
+    'dir',
+    'getRootNode',
+    'id',
+    'ids',
+    'index',
+    'loop',
+    'onIndexChange',
+    'orientation',
+    'slidesPerView',
+    'spacing',
+  ])
+  const context = useCarousel(useCarouselProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <CarouselProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+    <CarouselProvider value={context}>
+      <ark.div {...mergedProps} ref={ref} />
     </CarouselProvider>
   )
 })

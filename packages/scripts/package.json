@@ -18,14 +18,14 @@
     "globby": "14.0.1",
     "pkg-dir": "8.0.0",
     "prettier": "3.2.5",
-    "ts-morph": "21.0.1",
+    "ts-morph": "22.0.0",
     "ts-pattern": "5.0.8",
     "voca": "1.4.1"
   },
   "devDependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "18.18.8",
+    "@types/node": "20.11.30",
     "ts-node": "10.9.2",
-    "typescript": "5.3.3"
+    "typescript": "5.4.3"
   }
 }

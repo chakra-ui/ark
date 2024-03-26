@@ -9,12 +9,18 @@ description: All notable changes to this project will be documented in this file
 ### Fixed
 
 - Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
+
+### Removed
+
+- Removed the unused `parse` prop from the `DatePicker` component.
 
 ## [2.2.0] - 2024-02-27
 
 ### Added
 
 - Added `Collapsible` component.
+- Added new `ByteFormat` and `NumberFormat` components.
 
 ### Changed
 

@@ -6,18 +6,21 @@ import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useRenderStrategyContext } from '../render-strategy'
 import type { Assign } from '../types'
-import { useTabsContext } from './tabs-context'
+import { useTabsContext } from './use-tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
-  const api = useTabsContext()
+  const context = useTabsContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const presenceApi = usePresence({ ...renderStrategyProps, present: api.value === props.value })
+  const presenceApi = usePresence({
+    ...renderStrategyProps,
+    present: context.value === props.value,
+  })
 
   const mergedProps = mergeProps(
-    api.getContentProps(contentProps),
+    context.getContentProps(contentProps),
     presenceApi.getPresenceProps(ref),
     localProps,
   )

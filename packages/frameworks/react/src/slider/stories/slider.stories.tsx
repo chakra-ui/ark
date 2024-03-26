@@ -17,7 +17,7 @@ export const Basic = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -32,7 +32,7 @@ export const WithMarks = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
       <Slider.MarkerGroup>
         <Slider.Marker value={0}>0</Slider.Marker>
@@ -52,7 +52,7 @@ export const InitialValue = () => (
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb key={0} index={0} />
+      <Slider.Thumb index={0} />
     </Slider.Control>
     <Slider.MarkerGroup>
       <Slider.Marker value={0}>*</Slider.Marker>
@@ -71,7 +71,7 @@ export const MinMax = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -86,7 +86,7 @@ export const Step = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -104,7 +104,7 @@ export const OnEvent = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -119,7 +119,7 @@ export const Vertical = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )
@@ -134,7 +134,7 @@ export const CenterOrigin = () => {
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
     </Slider.Root>
   )

@@ -3,8 +3,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { AvatarProvider } from './avatar-context'
 import { useAvatar, type UseAvatarProps } from './use-avatar'
+import { AvatarProvider } from './use-avatar-context'
 
 export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
@@ -15,11 +15,11 @@ export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, re
     'id',
     'onLoadingStatusChange',
   ])
-  const api = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const context = useAvatar(useAvatarProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <AvatarProvider value={api}>
+    <AvatarProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
     </AvatarProvider>
   )

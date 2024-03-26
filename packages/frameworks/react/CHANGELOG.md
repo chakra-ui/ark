@@ -8,6 +8,20 @@ description: All notable changes to this project will be documented in this file
 
 ### Fixed
 
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
+
+### Added
+
+- Added new `ByteFormat` and `NumberFormat` components.
+
+### Removed
+
+- Removed the unused `parse` prop from the `DatePicker` component.
+
+## [2.2.3] - 2024-03-05
+
+### Fixed
+
 - Resolved an issue with using `Locale` in Next.js projects.
 - Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
 

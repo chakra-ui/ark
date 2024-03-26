@@ -1,4 +1,5 @@
 {
   "Basic": "import { Avatar } from '@ark-ui/solid'\n\nconst Basic = () => (\n  <Avatar.Root>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n",
-  "Events": "import { Avatar } from '@ark-ui/solid'\n\nconst Events = () => (\n  <Avatar.Root onLoadingStatusChange={(details) => console.log(details.status)}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n"
+  "Events": "import { Avatar } from '@ark-ui/solid'\n\nconst Events = () => {\n  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {\n    console.log(details.status)\n  }\n\n  return (\n    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>\n      <Avatar.Fallback>PA</Avatar.Fallback>\n      <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n    </Avatar.Root>\n  )\n}\n",
+  "Context": "import { Avatar } from '@ark-ui/solid'\n\nconst Context = () => (\n  <Avatar.Root>\n    <Avatar.Context>\n      {(api) => <Avatar.Fallback>{api().isLoaded ? 'Loading' : 'PA'}</Avatar.Fallback>}\n    </Avatar.Context>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n"
 }

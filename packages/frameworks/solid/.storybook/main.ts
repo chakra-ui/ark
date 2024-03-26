@@ -1,17 +1,21 @@
 import type { StorybookConfig } from 'storybook-solidjs-vite'
+
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.tsx'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-essentials',
+      options: { backgrounds: false, actions: false },
+    },
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: 'storybook-solidjs-vite',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
+  core: {
+    disableTelemetry: true,
   },
 }
+
 export default config

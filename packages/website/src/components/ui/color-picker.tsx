@@ -41,6 +41,7 @@ export const TransparencyGrid = withContext(
 export const Trigger = withContext(styled(ColorPicker.Trigger), 'trigger')
 export const ValueText = withContext(styled(ColorPicker.ValueText), 'valueText')
 export const View = withContext(styled(ColorPicker.View), 'view')
+export const Context = ColorPicker.Context
 
 export interface RootProps extends ComponentProps<typeof Root> {}
 export interface AreaProps extends ComponentProps<typeof Area> {}

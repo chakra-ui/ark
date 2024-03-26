@@ -2,7 +2,7 @@ import type {
   FocusChangeDetails as SliderFocusChangeDetails,
   ValueChangeDetails as SliderValueChangeDetails,
 } from '@zag-js/slider'
-import { useSliderContext, type SliderContext } from './slider-context'
+import { SliderContext, type SliderContextProps } from './slider-context'
 import { SliderControl, type SliderControlProps } from './slider-control'
 import { SliderLabel, type SliderLabelProps } from './slider-label'
 import { SliderMarker, type SliderMarkerProps } from './slider-marker'
@@ -12,10 +12,12 @@ import { SliderRoot, type SliderRootProps } from './slider-root'
 import { SliderThumb, type SliderThumbProps } from './slider-thumb'
 import { SliderTrack, type SliderTrackProps } from './slider-track'
 import { SliderValueText, type SliderValueTextProps } from './slider-value-text'
+import { useSliderContext, type UseSliderContext } from './use-slider-context'
 
 export * as Slider from './slider'
 
 export {
+  SliderContext,
   SliderControl,
   SliderLabel,
   SliderMarker,
@@ -29,7 +31,7 @@ export {
 }
 
 export type {
-  SliderContext,
+  SliderContextProps,
   SliderControlProps,
   SliderFocusChangeDetails,
   SliderLabelProps,
@@ -41,4 +43,5 @@ export type {
   SliderTrackProps,
   SliderValueChangeDetails,
   SliderValueTextProps,
+  UseSliderContext,
 }

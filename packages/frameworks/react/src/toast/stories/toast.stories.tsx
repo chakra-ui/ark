@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react'
-import { useEffect } from 'react'
 import { Toast, createToaster } from '../'
 import './toast.css'
 
@@ -21,11 +20,6 @@ export const Basic = () => {
       )
     },
   })
-
-  useEffect(
-    () => toast.subscribe((toasts) => toasts.forEach((toast) => console.log('Toast:', toast))),
-    [toast],
-  )
 
   const handleToast = () => {
     const id = toast.create({ title: 'Title', description: 'Description' })

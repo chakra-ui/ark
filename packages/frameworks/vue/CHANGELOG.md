@@ -11,6 +11,7 @@ description: All notable changes to this project will be documented in this file
 - Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Add the `DatePicker.PresetTrigger` component
 - Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
+- Added new `ByteFormat` and `NumberFormat` components.
 
 ### Changed
 
@@ -26,6 +27,12 @@ description: All notable changes to this project will be documented in this file
 - Fix issue in the `Editable` where cannot delete text when `maxLength` reached
 - Fix issue in the `Select` where item group's label `id` pointed to the wrong element
 - Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values
+- Fix issue where close animation doesn't work for components that use the `presence` component.
+
+### Removed
+
+- Removed the unused `parse` prop from the `DatePicker` component.
 
 ## [0.11.0] - 2024-02-08
 

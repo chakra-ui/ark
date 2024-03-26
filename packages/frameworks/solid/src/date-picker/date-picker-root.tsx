@@ -44,7 +44,6 @@ export const DatePickerRoot: ArkComponent<'div', ElementProps> = (props: DatePic
     'onValueChange',
     'onViewChange',
     'open',
-    'parse',
     'positioning',
     'readOnly',
     'selectionMode',

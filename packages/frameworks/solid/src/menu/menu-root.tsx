@@ -34,6 +34,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'id',
     'ids',
     'loop',
+    'onEscapeKeyDown',
     'onFocusOutside',
     'onInteractOutside',
     'onOpenChange',

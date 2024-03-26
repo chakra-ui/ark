@@ -1,38 +1,25 @@
 import { mergeProps } from '@zag-js/react'
-import type { BranchState } from '@zag-js/tree-view'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { TreeViewBranchProvider, type ItemProps } from './tree-view-branch-context'
-import { useTreeViewContext } from './tree-view-context'
-import { TreeViewDepthProvider, useTreeViewDepthContext } from './tree-view-depth-context'
+import { TreeViewBranchProvider, type ItemProps } from './use-tree-view-branch-context'
+import { useTreeViewContext } from './use-tree-view-context'
+import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-depth-context'
 
-export interface TreeViewBranchProps
-  extends Assign<
-    Assign<HTMLArkProps<'li'>, { children?: ReactNode | ((state: BranchState) => ReactNode) }>,
-    ItemProps
-  > {}
+export interface TreeViewBranchProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
 
 export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
-  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, [
-    'disabled',
-    'id',
-  ])
-  const api = useTreeViewContext()
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'id'])
+  const context = useTreeViewContext()
   const depth = useTreeViewDepthContext()
-  const branchProps = { ...itemProps, depth }
-  const mergedProps = mergeProps(api.getBranchProps(branchProps), localProps)
-  const branchState = api.getBranchState(branchProps)
-  const view = runIfFn(children, branchState)
+  const branchContext = { ...itemProps, depth }
+  const mergedProps = mergeProps(context.getBranchProps(branchContext), localProps)
 
   return (
     <TreeViewDepthProvider value={depth + 1}>
-      <TreeViewBranchProvider value={branchProps}>
-        <ark.li {...mergedProps} ref={ref}>
-          {view}
-        </ark.li>
+      <TreeViewBranchProvider value={branchContext}>
+        <ark.li {...mergedProps} ref={ref} />
       </TreeViewBranchProvider>
     </TreeViewDepthProvider>
   )

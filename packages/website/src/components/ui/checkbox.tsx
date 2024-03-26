@@ -23,15 +23,17 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
       className={cx(styles.root, css(cssProps), className)}
       {...rootProps}
     >
-      {(state) => (
-        <>
-          <ArkCheckbox.Control className={styles.control}>
-            {state.isChecked && <CheckIcon />}
-            {state.isIndeterminate && <MinusIcon />}
-          </ArkCheckbox.Control>
-          {children && <ArkCheckbox.Label className={styles.label}>{children}</ArkCheckbox.Label>}
-        </>
-      )}
+      <ArkCheckbox.Context>
+        {(state) => (
+          <>
+            <ArkCheckbox.Control className={styles.control}>
+              {state.isChecked && <CheckIcon />}
+              {state.isIndeterminate && <MinusIcon />}
+            </ArkCheckbox.Control>
+            {children && <ArkCheckbox.Label className={styles.label}>{children}</ArkCheckbox.Label>}
+          </>
+        )}
+      </ArkCheckbox.Context>
     </ArkCheckbox.Root>
   )
 })

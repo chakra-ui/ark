@@ -8,8 +8,8 @@ import {
   type RenderStrategyProps,
 } from '../render-strategy'
 import { type Assign } from '../types'
-import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
+import { TabsProvider } from './use-tabs-context'
 
 export interface TabsRootProps
   extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
@@ -31,11 +31,11 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'translations',
     'value',
   ])
-  const api = useTabs(useTabsProps)
-  const mergedProps = mergeProps(api.rootProps, localprops)
+  const context = useTabs(useTabsProps)
+  const mergedProps = mergeProps(context.rootProps, localprops)
 
   return (
-    <TabsProvider value={api}>
+    <TabsProvider value={context}>
       <RenderStrategyProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
       </RenderStrategyProvider>

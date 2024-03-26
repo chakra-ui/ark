@@ -8,8 +8,8 @@ import {
   type RenderStrategyProps,
 } from '../render-strategy'
 import type { Assign } from '../types'
-import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { AccordionProvider } from './use-accordion-context'
 
 export interface AccordionRootProps
   extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
@@ -31,11 +31,11 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
     'orientation',
     'value',
   ])
-  const api = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const context = useAccordion(useAccordionProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <AccordionProvider value={api}>
+    <AccordionProvider value={context}>
       <RenderStrategyProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
       </RenderStrategyProvider>

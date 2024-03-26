@@ -12,4 +12,4 @@ const componentId = id ?? Astro.params.slug?.split('/').pop()
 const types = await getCollection('types', (item) => item.id.includes(componentId ?? ''))
 ---
 
-<ComponentPropsTable types={types[0]} client:load />
+<ComponentPropsTable types={types} client:load />

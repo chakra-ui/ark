@@ -4,14 +4,14 @@ import { forwardRef, useEffect, type JSX } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
-import { ToastProvider } from './toast-context'
 import { ToastGroup } from './toast-group'
+import { ToastProvider } from './use-toast-context'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
-  render: (api: toast.Api<PropTypes>) => JSX.Element
+  render: (context: toast.Api<PropTypes>) => JSX.Element
 }
 
 export type CreateToasterReturn = [React.FC<HTMLArkProps<'ol'>>, toast.GroupApi<PropTypes>]
@@ -19,7 +19,7 @@ export type CreateToasterReturn = [React.FC<HTMLArkProps<'ol'>>, toast.GroupApi<
 export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
   const { placement, ...rest } = props
   const service = toast.group.machine({ id: '1', placement, ...rest }).start()
-  let api = toast.group.connect(service.getState(), service.send, normalizeProps)
+  let context = toast.group.connect(service.getState(), service.send, normalizeProps)
 
   const subscribe = (fn: CallableFunction) => {
     // @ts-expect-error FIX LATER IT EXISTS
@@ -29,7 +29,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
   const Toaster = forwardRef<HTMLOListElement, HTMLArkProps<'ol'>>((props, ref) => {
     const getRootNode = useEnvironmentContext()
     const [state, send] = useActor(service)
-    api = toast.group.connect(state, send, normalizeProps)
+    context = toast.group.connect(state, send, normalizeProps)
 
     useEffect(() => {
       service.setContext({ getRootNode })
@@ -37,8 +37,8 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const mergedProps = mergeProps(api.getGroupProps({ placement }), props)
-    const toasts = api.toastsByPlacement[placement] ?? []
+    const mergedProps = mergeProps(context.getGroupProps({ placement }), props)
+    const toasts = context.toastsByPlacement[placement] ?? []
 
     return (
       <ToastGroup {...mergedProps} ref={ref}>
@@ -51,7 +51,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
 
   Toaster.displayName = 'ToastGroup'
 
-  return [Toaster, Object.assign(api, { subscribe })]
+  return [Toaster, Object.assign(context, { subscribe })]
 }
 
 interface ToastProviderFactoryProps {
@@ -60,7 +60,7 @@ interface ToastProviderFactoryProps {
 
 const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
   const [state, send] = useActor(props.service)
-  const api = toast.connect(state, send, normalizeProps)
+  const context = toast.connect(state, send, normalizeProps)
 
-  return <ToastProvider value={api}>{state.context.render?.(api)}</ToastProvider>
+  return <ToastProvider value={context}>{state.context.render?.(context)}</ToastProvider>
 }

@@ -1,19 +1,15 @@
 import { createContext } from '../create-context'
 import { type UseMenuReturn } from './use-menu'
 
-type MenuContext = unknown // type `UseMenuReturn['api']` can't be named
-
-export const [MenuProvider, useMenuContext] = createContext<MenuContext | undefined>({
+export const [MenuProvider, useMenuContext] = createContext<UseMenuReturn['api'] | undefined>({
   name: 'MenuContext',
   hookName: 'useMenuContext',
   providerName: '<MenuProvider />',
   strict: false,
 })
 
-type MenuMachineContext = unknown // type `UseMenuReturn['machine']` can't be named
-
 export const [MenuMachineProvider, useMenuMachineContext] = createContext<
-  MenuMachineContext | undefined
+  UseMenuReturn['machine'] | undefined
 >({
   name: 'MenuMachineContext',
   hookName: 'useMenuMachineContext',

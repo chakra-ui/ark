@@ -3,8 +3,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { RatingGroupProvider } from './rating-group-context'
 import { useRatingGroup, type UseRatingGroupProps } from './use-rating-group'
+import { RatingGroupProvider } from './use-rating-group-context'
 
 export interface RatingGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
 
@@ -28,11 +28,11 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
     'value',
   ])
 
-  const api = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+  const context = useRatingGroup(useRatingProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <RatingGroupProvider value={api}>
+    <RatingGroupProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
     </RatingGroupProvider>
   )

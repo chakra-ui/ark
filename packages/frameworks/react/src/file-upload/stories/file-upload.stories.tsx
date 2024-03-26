@@ -15,21 +15,23 @@ export const Basic = () => (
     <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
     <FileUpload.ItemGroup>
-      {(files) =>
-        files.map((file, id) => (
-          <FileUpload.Item key={id} file={file}>
-            <FileUpload.ItemPreview type="image/*">
-              <FileUpload.ItemPreviewImage />
-            </FileUpload.ItemPreview>
-            <FileUpload.ItemPreview type=".*">
-              <FileIcon />
-            </FileUpload.ItemPreview>
-            <FileUpload.ItemName />
-            <FileUpload.ItemSizeText />
-            <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
-          </FileUpload.Item>
-        ))
-      }
+      <FileUpload.Context>
+        {({ files }) =>
+          files.map((file, id) => (
+            <FileUpload.Item key={id} file={file}>
+              <FileUpload.ItemPreview type="image/*">
+                <FileUpload.ItemPreviewImage />
+              </FileUpload.ItemPreview>
+              <FileUpload.ItemPreview type=".*">
+                <FileIcon />
+              </FileUpload.ItemPreview>
+              <FileUpload.ItemName />
+              <FileUpload.ItemSizeText />
+              <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+            </FileUpload.Item>
+          ))
+        }
+      </FileUpload.Context>
     </FileUpload.ItemGroup>
   </FileUpload.Root>
 )
