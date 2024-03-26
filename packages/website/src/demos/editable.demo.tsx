@@ -8,33 +8,35 @@ export const Demo = (props: Editable.RootProps) => {
       activationMode="dblclick"
       {...props}
     >
-      {(state) => (
-        <>
-          <Editable.Label asChild>
-            <FormLabel>Framework</FormLabel>
-          </Editable.Label>
-          <Editable.Area>
-            <Editable.Input />
-            <Editable.Preview />
-          </Editable.Area>
-          <Editable.Control>
-            {state.isEditing ? (
-              <>
-                <Editable.SubmitTrigger asChild>
-                  <Button variant="link">Save</Button>
-                </Editable.SubmitTrigger>
-                <Editable.CancelTrigger asChild>
-                  <Button variant="link">Cancel</Button>
-                </Editable.CancelTrigger>
-              </>
-            ) : (
-              <Editable.EditTrigger asChild>
-                <Button variant="link">Edit</Button>
-              </Editable.EditTrigger>
-            )}
-          </Editable.Control>
-        </>
-      )}
+      <Editable.Context>
+        {(api) => (
+          <>
+            <Editable.Label asChild>
+              <FormLabel>Framework</FormLabel>
+            </Editable.Label>
+            <Editable.Area>
+              <Editable.Input />
+              <Editable.Preview />
+            </Editable.Area>
+            <Editable.Control>
+              {api.isEditing ? (
+                <>
+                  <Editable.SubmitTrigger asChild>
+                    <Button variant="link">Save</Button>
+                  </Editable.SubmitTrigger>
+                  <Editable.CancelTrigger asChild>
+                    <Button variant="link">Cancel</Button>
+                  </Editable.CancelTrigger>
+                </>
+              ) : (
+                <Editable.EditTrigger asChild>
+                  <Button variant="link">Edit</Button>
+                </Editable.EditTrigger>
+              )}
+            </Editable.Control>
+          </>
+        )}
+      </Editable.Context>
     </Editable.Root>
   )
 }
