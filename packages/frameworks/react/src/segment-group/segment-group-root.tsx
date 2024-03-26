@@ -4,8 +4,8 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { SegmentGroupProvider } from './segment-group-context'
 import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
+import { SegmentGroupProvider } from './use-segment-group-context'
 
 export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
@@ -23,15 +23,15 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'orientation',
     'value',
   ])
-  const api = useSegmentGroup(useSegmentGroupProps)
+  const context = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    api.rootProps,
+    context.rootProps,
     segmentGroupAnatomy.build().root.attrs as Record<string, string>,
     localProps,
   )
 
   return (
-    <SegmentGroupProvider value={api}>
+    <SegmentGroupProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
     </SegmentGroupProvider>
   )
