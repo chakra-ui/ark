@@ -7,10 +7,11 @@ import type {
 import type { CollectionItem } from '../types'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
-import { useComboboxContext, type ComboboxContext } from './combobox-context'
+import { ComboboxContext, type ComboboxContextProps } from './combobox-context'
 import { ComboboxControl, type ComboboxControlProps } from './combobox-control'
 import { ComboboxInput, type ComboboxInputProps } from './combobox-input'
 import { ComboboxItem, type ComboboxItemProps } from './combobox-item'
+import { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context'
 import { ComboboxItemGroup, type ComboboxItemGroupProps } from './combobox-item-group'
 import {
   ComboboxItemGroupLabel,
@@ -22,15 +23,18 @@ import { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
 import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 import { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
+import { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
 
 export * as Combobox from './combobox'
 
 export {
   ComboboxClearTrigger,
   ComboboxContent,
+  ComboboxContext,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
+  ComboboxItemContext,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
   ComboboxItemIndicator,
@@ -45,11 +49,12 @@ export type {
   CollectionItem,
   ComboboxClearTriggerProps,
   ComboboxContentProps,
-  ComboboxContext,
+  ComboboxContextProps,
   ComboboxControlProps,
   ComboboxHighlightChangeDetails,
   ComboboxInputProps,
   ComboboxInputValueChangeDetails,
+  ComboboxItemContextProps,
   ComboboxItemGroupLabelProps,
   ComboboxItemGroupProps,
   ComboboxItemIndicatorProps,
@@ -61,4 +66,5 @@ export type {
   ComboboxRootProps,
   ComboboxTriggerProps,
   ComboboxValueChangeDetails,
+  UseComboboxContext,
 }

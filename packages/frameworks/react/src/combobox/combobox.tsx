@@ -13,11 +13,19 @@ import {
   type ComboboxContentProps as ContentProps,
 } from './combobox-content'
 import {
+  ComboboxContext as Context,
+  type ComboboxContextProps as ContextProps,
+} from './combobox-context'
+import {
   ComboboxControl as Control,
   type ComboboxControlProps as ControlProps,
 } from './combobox-control'
 import { ComboboxInput as Input, type ComboboxInputProps as InputProps } from './combobox-input'
 import { ComboboxItem as Item, type ComboboxItemProps as ItemProps } from './combobox-item'
+import {
+  ComboboxItemContext as ItemContext,
+  type ComboboxItemContextProps as ItemContextProps,
+} from './combobox-item-context'
 import {
   ComboboxItemGroup as ItemGroup,
   type ComboboxItemGroupProps as ItemGroupProps,
@@ -48,9 +56,11 @@ import {
 export {
   ClearTrigger,
   Content,
+  Context,
   Control,
   Input,
   Item,
+  ItemContext,
   ItemGroup,
   ItemGroupLabel,
   ItemIndicator,
@@ -63,10 +73,12 @@ export {
 export type {
   ClearTriggerProps,
   ContentProps,
+  ContextProps,
   ControlProps,
   HighlightChangeDetails,
   InputProps,
   InputValueChangeDetails,
+  ItemContextProps,
   ItemGroupLabelProps,
   ItemGroupProps,
   ItemIndicatorProps,
