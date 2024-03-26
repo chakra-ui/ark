@@ -1,18 +1,24 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.tsx'],
   addons: [
     {
       name: '@storybook/addon-essentials',
-      options: { backgrounds: false, outline: false, actions: false },
+      options: { backgrounds: false, controls: false, actions: false },
     },
-    {
-      name: '@storybook/addon-a11y',
-    },
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
+  core: {
+    disableTelemetry: true,
+  },
+  typescript: {
+    reactDocgen: false,
+  },
 }
+
 export default config
