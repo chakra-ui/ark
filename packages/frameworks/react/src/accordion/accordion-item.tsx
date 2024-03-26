@@ -7,7 +7,7 @@ import { type HTMLArkProps } from '../factory'
 import { useRenderStrategyContext } from '../render-strategy'
 import type { Assign } from '../types'
 import { useAccordionContext } from './use-accordion-context'
-import { AccordionItemProvider } from './use-accordion-item-context'
+import { AccordionItemPropsProvider, AccordionItemProvider } from './use-accordion-item-context'
 
 export interface AccordionItemProps
   extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
@@ -22,15 +22,17 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   const itemContentProps = context.getItemContentProps(itemProps)
 
   return (
-    <AccordionItemProvider value={{ ...itemProps, ...itemState }}>
-      {/* @ts-expect-error TODO fix dir typing */}
-      <Collapsible.Root
-        ref={ref}
-        open={itemState.isOpen}
-        ids={{ content: itemContentProps.id }}
-        {...renderStrategyProps}
-        {...mergedItemProps}
-      />
+    <AccordionItemProvider value={itemState}>
+      <AccordionItemPropsProvider value={itemProps}>
+        {/* @ts-expect-error TODO fix dir typing */}
+        <Collapsible.Root
+          ref={ref}
+          open={itemState.isOpen}
+          ids={{ content: itemContentProps.id }}
+          {...renderStrategyProps}
+          {...mergedItemProps}
+        />
+      </AccordionItemPropsProvider>
     </AccordionItemProvider>
   )
 })

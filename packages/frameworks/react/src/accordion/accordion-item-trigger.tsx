@@ -3,16 +3,16 @@ import { forwardRef } from 'react'
 import { useCollapsibleContext } from '../collapsible'
 import { ark, type HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemContext } from './use-accordion-item-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-context'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
 export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>(
   (props, ref) => {
     const context = useAccordionContext()
-    const itemContext = useAccordionItemContext()
+    const itemProps = useAccordionItemPropsContext()
     const collapsible = useCollapsibleContext()
-    const triggerProps = context.getItemTriggerProps(itemContext)
+    const triggerProps = context.getItemTriggerProps(itemProps)
     const mergedProps = mergeProps(
       {
         ...triggerProps,

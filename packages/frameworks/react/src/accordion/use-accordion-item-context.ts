@@ -1,8 +1,7 @@
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { createContext } from '../create-context'
 
-// TODO unify with ItemProps and ItemState
-export interface UseAccordionItemContext extends ItemProps, ItemState {}
+export interface UseAccordionItemContext extends ItemState {}
 
 export const [AccordionItemProvider, useAccordionItemContext] =
   createContext<UseAccordionItemContext>({
@@ -10,3 +9,9 @@ export const [AccordionItemProvider, useAccordionItemContext] =
     hookName: 'useAccordionItemContext',
     providerName: '<AccordionItemProvider />',
   })
+
+export const [AccordionItemPropsProvider, useAccordionItemPropsContext] = createContext<ItemProps>({
+  name: 'AccordionItemPropsContext',
+  hookName: 'useAccordionItemPropsContext',
+  providerName: '<AccordionItemPropsProvider />',
+})

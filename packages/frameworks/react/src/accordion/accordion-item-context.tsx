@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react'
 import { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
 
 export interface AccordionItemContextProps {
-  children: (context: Omit<UseAccordionItemContext, 'disabled'>) => React.ReactNode
+  children: (context: UseAccordionItemContext) => ReactNode
 }
 
 export const AccordionItemContext = (props: AccordionItemContextProps) =>
