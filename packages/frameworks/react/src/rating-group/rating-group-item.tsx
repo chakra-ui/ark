@@ -16,7 +16,7 @@ export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>
   const itemState = context.getItemState(itemProps)
 
   return (
-    <RatingGroupItemProvider value={{ ...itemProps, ...itemState }}>
+    <RatingGroupItemProvider value={itemState}>
       <ark.span {...mergedProps} ref={ref} />
     </RatingGroupItemProvider>
   )
