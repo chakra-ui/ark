@@ -37,6 +37,10 @@ import {
   type ColorPickerContentProps as ContentProps,
 } from './color-picker-content'
 import {
+  ColorPickerContext as Context,
+  type ColorPickerContextProps as ContextProps,
+} from './color-picker-context'
+import {
   ColorPickerControl as Control,
   type ColorPickerControlProps as ControlProps,
 } from './color-picker-control'
@@ -106,6 +110,7 @@ export {
   ChannelSliderThumb,
   ChannelSliderTrack,
   Content,
+  Context,
   Control,
   EyeDropperTrigger,
   FormatSelect,
@@ -132,6 +137,7 @@ export type {
   ChannelSliderTrackProps,
   ColorFormat,
   ContentProps,
+  ContextProps,
   ControlProps,
   EyeDropperTriggerProps,
   FormatChangeDetails,

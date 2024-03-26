@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerSwatchTriggerProps
   extends Assign<HTMLArkProps<'button'>, SwatchTriggerProps> {}
@@ -17,8 +17,8 @@ export const ColorPickerSwatchTrigger = forwardRef<
     'value',
     'disabled',
   ])
-  const api = useColorPickerContext()
-  const mergedProps = mergeProps(api.getSwatchTriggerProps(triggerProps), localProps)
+  const context = useColorPickerContext()
+  const mergedProps = mergeProps(context.getSwatchTriggerProps(triggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

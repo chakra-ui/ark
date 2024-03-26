@@ -1,10 +1,10 @@
 import type { ChannelProps } from '@zag-js/color-picker'
 import { createContext } from '../create-context'
 
-export interface ColorPickerChannelSliderContext extends ChannelProps {}
+export interface UseColorPickerChannelSliderContext extends ChannelProps {}
 
 export const [ColorPickerChannelSliderProvider, useColorPickerChannelSliderContext] =
-  createContext<ColorPickerChannelSliderContext>({
+  createContext<UseColorPickerChannelSliderContext>({
     name: 'ColorPickerChannelSliderContext',
     hookName: 'useColorPickerChannelSliderContext',
     providerName: '<ColorPickerChannelSliderProvider />',

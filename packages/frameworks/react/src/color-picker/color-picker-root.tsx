@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -8,29 +8,19 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { ColorPickerProvider } from './color-picker-context'
-import {
-  useColorPicker,
-  type UseColorPickerProps,
-  type UseColorPickerReturn,
-} from './use-color-picker'
+import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
+import { ColorPickerProvider } from './use-color-picker-context'
 
 export interface ColorPickerRootProps
-  extends Assign<
-      Assign<
-        HTMLArkProps<'div'>,
-        { children?: ReactNode | ((api: UseColorPickerReturn) => ReactNode) }
-      >,
-      UseColorPickerProps
-    >,
+  extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
     UsePresenceProps {}
 
 export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
-  const [useColorPickerProps, { children, ...localProps }] =
-    createSplitProps<UseColorPickerProps>()(colorPickerProps, [
+  const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(
+    colorPickerProps,
+    [
       'closeOnSelect',
       'defaultValue',
       'dir',
@@ -53,19 +43,17 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
       'positioning',
       'readOnly',
       'value',
-    ])
-  const api = useColorPicker(useColorPickerProps)
-  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
-  const view = runIfFn(children, api)
-  const mergedProps = mergeProps(api.rootProps, localProps)
+    ],
+  )
+  const context = useColorPicker(useColorPickerProps)
+  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <ColorPickerProvider value={api}>
+    <ColorPickerProvider value={context}>
       <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps} ref={ref}>
-          {view}
-        </ark.div>
-        <input {...api.hiddenInputProps} />
+        <ark.div {...mergedProps} ref={ref} />
+        <input {...context.hiddenInputProps} />
       </PresenceProvider>
     </ColorPickerProvider>
   )
