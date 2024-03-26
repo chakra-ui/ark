@@ -7,10 +7,10 @@ type Union<T, U> = {
 
 type CellProps = Union<DayTableCellProps, TableCellProps>
 
-export interface DatePickerTableCellContext extends CellProps {}
+export interface UseDatePickerTableCellContext extends CellProps {}
 
 export const [DatePickerTableCellProvider, useDatePickerTableCellContext] =
-  createContext<DatePickerTableCellContext>({
+  createContext<UseDatePickerTableCellContext>({
     name: 'DatePickerTableCellContext',
     hookName: 'useDatePickerTableCellContext',
     providerName: '<DatePickerTableCellProvider />',

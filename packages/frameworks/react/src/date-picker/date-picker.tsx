@@ -13,6 +13,10 @@ import {
   type DatePickerContentProps as ContentProps,
 } from './date-picker-content'
 import {
+  DatePickerContext as Context,
+  type DatePickerContextProps as ContextProps,
+} from './date-picker-context'
+import {
   DatePickerControl as Control,
   type DatePickerControlProps as ControlProps,
 } from './date-picker-control'
@@ -98,6 +102,7 @@ import {
 export {
   ClearTrigger,
   Content,
+  Context,
   Control,
   Input,
   Label,
@@ -124,6 +129,7 @@ export {
 export type {
   ClearTriggerProps,
   ContentProps,
+  ContextProps,
   ControlProps,
   FocusChangeDetails,
   InputProps,
