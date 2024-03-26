@@ -6,7 +6,7 @@ export interface TabListProps extends HTMLArkProps<'div'> {}
 
 export const TabList: ArkComponent<'div'> = (props: TabListProps) => {
   const api = useTabsContext()
-  const mergedProps = mergeProps(() => api().tablistProps, props)
+  const mergedProps = mergeProps(() => api().listProps, props)
 
   return <ark.div {...mergedProps} />
 }

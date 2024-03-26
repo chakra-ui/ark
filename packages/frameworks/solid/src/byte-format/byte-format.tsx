@@ -1,4 +1,4 @@
-import { formatBytes } from '@zag-js/file-utils'
+import { formatBytes } from '@zag-js/i18n-utils'
 import { createMemo, splitProps } from 'solid-js'
 import { useLocaleContext } from '../locale'
 

@@ -1,4 +1,4 @@
-import { formatBytes } from '@zag-js/file-utils'
+import { formatBytes } from '@zag-js/i18n-utils'
 import { computed, defineComponent } from 'vue'
 import { useLocaleContext } from '../locale'
 import { LOCALE_DEFAULT } from '../locale/locale-context'

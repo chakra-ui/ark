@@ -9,7 +9,7 @@ export const TabList = defineComponent<TabListProps>(
     const api = useTabsContext()
 
     return () => (
-      <ark.div {...api.value.tablistProps} {...attrs}>
+      <ark.div {...api.value.listProps} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

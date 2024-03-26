@@ -9,7 +9,7 @@ import { useSliderContext } from './use-slider-context'
 export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
 
 export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, ref) => {
-  const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index'])
+  const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index', 'name'])
   const context = useSliderContext()
   const mergedProps = mergeProps(context.getThumbProps(thumbProps), localProps)
 
