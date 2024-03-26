@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseFileUploadReturn } from './use-file-upload'
 
-export interface FileUploadContext extends UseFileUploadReturn {}
+export interface UseFileUploadContext extends UseFileUploadReturn {}
 
-export const [FileUploadProvider, useFileUploadContext] = createContext<FileUploadContext>({
+export const [FileUploadProvider, useFileUploadContext] = createContext<UseFileUploadContext>({
   name: 'FileUploadContext',
   hookName: 'useFileUploadContext',
   providerName: '<FileUploadProvider />',

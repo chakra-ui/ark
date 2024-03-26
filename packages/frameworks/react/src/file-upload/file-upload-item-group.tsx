@@ -1,30 +1,16 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
-import type { Assign } from '../types'
-import { useFileUploadContext } from './file-upload-context'
+import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadItemGroupProps
-  extends Assign<
-    HTMLArkProps<'ul'>,
-    {
-      children?: ReactNode | ((state: File[]) => ReactNode)
-    }
-  > {}
+export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
 
 export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGroupProps>(
   (props, ref) => {
-    const { children, ...rest } = props
-    const api = useFileUploadContext()
-    const mergedProps = mergeProps(api.itemGroupProps, rest)
-    const view = runIfFn(children, api.files)
+    const context = useFileUploadContext()
+    const mergedProps = mergeProps(context.itemGroupProps, props)
 
-    return (
-      <ark.ul {...mergedProps} ref={ref}>
-        {view}
-      </ark.ul>
-    )
+    return <ark.ul {...mergedProps} ref={ref} />
   },
 )
 

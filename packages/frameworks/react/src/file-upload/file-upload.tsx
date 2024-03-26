@@ -1,9 +1,17 @@
 import type { FileAcceptDetails, FileChangeDetails, FileRejectDetails } from '@zag-js/file-upload'
 import {
+  FileUploadContext as Context,
+  type FileUploadContextProps as ContextProps,
+} from './file-upload-context'
+import {
   FileUploadDropzone as Dropzone,
   type FileUploadDropzoneProps as DropzoneProps,
 } from './file-upload-dropzone'
 import { FileUploadItem as Item, type FileUploadItemProps as ItemProps } from './file-upload-item'
+import {
+  FileUploadItemContext as ItemContext,
+  type FileUploadItemContextProps as ItemContextProps,
+} from './file-upload-item-context'
 import {
   FileUploadItemDeleteTrigger as ItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
@@ -39,8 +47,10 @@ import {
 } from './file-upload-trigger'
 
 export {
+  Context,
   Dropzone,
   Item,
+  ItemContext,
   ItemDeleteTrigger,
   ItemGroup,
   ItemName,
@@ -52,10 +62,12 @@ export {
   Trigger,
 }
 export type {
+  ContextProps,
   DropzoneProps,
   FileAcceptDetails,
   FileChangeDetails,
   FileRejectDetails,
+  ItemContextProps,
   ItemDeleteTriggerProps,
   ItemGroupProps,
   ItemNameProps,

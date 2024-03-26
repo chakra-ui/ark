@@ -1,53 +1,40 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { FileUploadProvider } from './file-upload-context'
-import { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
+import { useFileUpload, type UseFileUploadProps } from './use-file-upload'
+import { FileUploadProvider } from './use-file-upload-context'
 
-export interface FileUploadRootProps
-  extends Assign<
-    HTMLArkProps<'div'>,
-    UseFileUploadProps & {
-      children?: ((api: UseFileUploadReturn) => ReactNode) | ReactNode
-    }
-  > {}
+export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
 
 export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((props, ref) => {
-  const [useFileUploadProps, { children, ...divProps }] = createSplitProps<UseFileUploadProps>()(
-    props,
-    [
-      'accept',
-      'allowDrop',
-      'dir',
-      'disabled',
-      'files',
-      'getRootNode',
-      'id',
-      'ids',
-      'locale',
-      'maxFiles',
-      'maxFileSize',
-      'minFileSize',
-      'name',
-      'onFileAccept',
-      'onFileReject',
-      'onFilesChange',
-      'translations',
-      'validate',
-    ],
-  )
-  const api = useFileUpload(useFileUploadProps)
-  const mergedProps = mergeProps(api.rootProps, divProps)
-  const view = runIfFn(children, api)
+  const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
+    'accept',
+    'allowDrop',
+    'dir',
+    'disabled',
+    'files',
+    'getRootNode',
+    'id',
+    'ids',
+    'locale',
+    'maxFiles',
+    'maxFileSize',
+    'minFileSize',
+    'name',
+    'onFileAccept',
+    'onFileReject',
+    'onFilesChange',
+    'translations',
+    'validate',
+  ])
+  const context = useFileUpload(useFileUploadProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <FileUploadProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+    <FileUploadProvider value={context}>
+      <ark.div {...mergedProps} ref={ref} />
     </FileUploadProvider>
   )
 })

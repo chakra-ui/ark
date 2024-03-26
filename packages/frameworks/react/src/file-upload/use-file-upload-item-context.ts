@@ -1,10 +1,10 @@
 import type { ItemProps } from '@zag-js/file-upload'
 import { createContext } from '../create-context'
 
-export interface FileUploadItemContext extends ItemProps {}
+export interface UseFileUploadItemContext extends ItemProps {}
 
 export const [FileUploadItemProvider, useFileUploadItemContext] =
-  createContext<FileUploadItemContext>({
+  createContext<UseFileUploadItemContext>({
     name: 'FileUploadItemContext',
     hookName: 'useFileUploadItemContext',
     providerName: '<FileUploadItemProvider />',
