@@ -9,6 +9,10 @@ import {
   type HoverCardContentProps as ContentProps,
 } from './hover-card-content'
 import {
+  HoverCardContext as Context,
+  type HoverCardContextProps as ContextProps,
+} from './hover-card-context'
+import {
   HoverCardPositioner as Positioner,
   type HoverCardPositionerProps as PositionerProps,
 } from './hover-card-positioner'
@@ -18,11 +22,12 @@ import {
   type HoverCardTriggerProps as TriggerProps,
 } from './hover-card-trigger'
 
-export { Arrow, ArrowTip, Content, Positioner, Root, Trigger }
+export { Arrow, ArrowTip, Content, Context, Positioner, Root, Trigger }
 export type {
   ArrowProps,
   ArrowTipProps,
   ContentProps,
+  ContextProps,
   OpenChangeDetails,
   PositionerProps,
   RootProps,

@@ -2,14 +2,14 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useHoverCardContext } from './hover-card-context'
+import { useHoverCardContext } from './use-hover-card-context'
 
 export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardPositioner = forwardRef<HTMLDivElement, HoverCardPositionerProps>(
   (props, ref) => {
-    const api = useHoverCardContext()
-    const mergedProps = mergeProps(api.positionerProps, props)
+    const context = useHoverCardContext()
+    const mergedProps = mergeProps(context.positionerProps, props)
     const presenceApi = usePresenceContext()
 
     if (presenceApi.isUnmounted) {
