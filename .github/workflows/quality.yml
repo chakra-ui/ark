@@ -61,24 +61,6 @@ jobs:
       - name: Run tests
         run: bun run test
 
-      - name: Upload /react coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: react
-
-      - name: Upload /solid coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: solid
-
-      - name: Upload /vue coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: vue
-
   eslint:
     name: ESLint
     runs-on: ubuntu-latest
