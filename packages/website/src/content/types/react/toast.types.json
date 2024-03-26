@@ -26,7 +26,7 @@
       "isRequired": true,
       "description": "The placement of the toast"
     },
-    "render": { "type": "(api: MachineApi<PropTypes>) => Element", "isRequired": true },
+    "render": { "type": "(context: MachineApi<PropTypes>) => Element", "isRequired": true },
     "count": { "type": "number", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
