@@ -5,7 +5,7 @@
   },
   "Root": {
     "align": {
-      "type": "'center' | 'end' | 'start'",
+      "type": "'end' | 'start' | 'center'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
