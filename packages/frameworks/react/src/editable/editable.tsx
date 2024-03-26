@@ -4,6 +4,7 @@ import {
   EditableCancelTrigger as CancelTrigger,
   type EditableCancelTriggerProps as CancelTriggerProps,
 } from './editable-cancel-trigger'
+import { EditableContext as Context, type EditableContextProps } from './editable-context'
 import {
   EditableControl as Control,
   type EditableControlProps as ControlProps,
@@ -24,12 +25,24 @@ import {
   type EditableSubmitTriggerProps as SubmitTriggerProps,
 } from './editable-submit-trigger'
 
-export { Area, CancelTrigger, Control, EditTrigger, Input, Label, Preview, Root, SubmitTrigger }
+export {
+  Area,
+  CancelTrigger,
+  Context,
+  Control,
+  EditTrigger,
+  Input,
+  Label,
+  Preview,
+  Root,
+  SubmitTrigger,
+}
 export type {
   AreaProps,
   CancelTriggerProps,
   ControlProps,
   EditTriggerProps,
+  EditableContextProps,
   InputProps,
   LabelProps,
   PreviewProps,
