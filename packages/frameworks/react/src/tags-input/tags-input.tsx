@@ -8,11 +8,19 @@ import {
   type TagsInputClearTriggerProps as ClearTriggerProps,
 } from './tags-input-clear-trigger'
 import {
+  TagsInputContext as Context,
+  type TagsInputContextProps as ContextProps,
+} from './tags-input-context'
+import {
   TagsInputControl as Control,
   type TagsInputControlProps as ControlProps,
 } from './tags-input-control'
 import { TagsInputInput as Input, type TagsInputInputProps as InputProps } from './tags-input-input'
 import { TagsInputItem as Item, type TagsInputItemProps as ItemProps } from './tags-input-item'
+import {
+  TagsInputItemContext as ItemContext,
+  type TagsInputItemContextProps as ItemContextProps,
+} from './tags-input-item-context'
 import {
   TagsInputItemDeleteTrigger as ItemDeleteTrigger,
   type TagsInputItemDeleteTriggerProps as ItemDeleteTriggerProps,
@@ -34,9 +42,11 @@ import { TagsInputRoot as Root, type TagsInputRootProps as RootProps } from './t
 
 export {
   ClearTrigger,
+  Context,
   Control,
   Input,
   Item,
+  ItemContext,
   ItemDeleteTrigger,
   ItemInput,
   ItemPreview,
@@ -46,9 +56,11 @@ export {
 }
 export type {
   ClearTriggerProps,
+  ContextProps,
   ControlProps,
   HighlightChangeDetails,
   InputProps,
+  ItemContextProps,
   ItemDeleteTriggerProps,
   ItemInputProps,
   ItemPreviewProps,

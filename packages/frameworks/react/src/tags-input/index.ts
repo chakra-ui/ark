@@ -4,11 +4,11 @@ import type {
   ValueChangeDetails as TagsInputValueChangeDetails,
 } from '@zag-js/tags-input'
 import { TagsInputClearTrigger, type TagsInputClearTriggerProps } from './tags-input-clear-trigger'
-import { useTagsInputContext, type TagsInputContext } from './tags-input-context'
+import { TagsInputContext, type TagsInputContextProps } from './tags-input-context'
 import { TagsInputControl, type TagsInputControlProps } from './tags-input-control'
 import { TagsInputInput, type TagsInputInputProps } from './tags-input-input'
 import { TagsInputItem, type TagsInputItemProps } from './tags-input-item'
-import { useTagsInputItemContext, type TagsInputItemContext } from './tags-input-item-context'
+import { TagsInputItemContext, type TagsInputItemContextProps } from './tags-input-item-context'
 import {
   TagsInputItemDeleteTrigger,
   type TagsInputItemDeleteTriggerProps,
@@ -18,14 +18,21 @@ import { TagsInputItemPreview, type TagsInputItemPreviewProps } from './tags-inp
 import { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text'
 import { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'
 import { TagsInputRoot, type TagsInputRootProps } from './tags-input-root'
+import { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context'
+import {
+  useTagsInputItemContext,
+  type UseTagsInputItemContext,
+} from './use-tags-input-item-context'
 
 export * as TagsInput from './tags-input'
 
 export {
   TagsInputClearTrigger,
+  TagsInputContext,
   TagsInputControl,
   TagsInputInput,
   TagsInputItem,
+  TagsInputItemContext,
   TagsInputItemDeleteTrigger,
   TagsInputItemInput,
   TagsInputItemPreview,
@@ -38,11 +45,11 @@ export {
 
 export type {
   TagsInputClearTriggerProps,
-  TagsInputContext,
+  TagsInputContextProps,
   TagsInputControlProps,
   TagsInputHighlightChangeDetails,
   TagsInputInputProps,
-  TagsInputItemContext,
+  TagsInputItemContextProps,
   TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
@@ -52,4 +59,6 @@ export type {
   TagsInputRootProps,
   TagsInputValidityChangeDetails,
   TagsInputValueChangeDetails,
+  UseTagsInputContext,
+  UseTagsInputItemContext,
 }

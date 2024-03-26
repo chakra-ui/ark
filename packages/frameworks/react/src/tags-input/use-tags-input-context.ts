@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseTagsInputReturn } from './use-tags-input'
 
-export interface TagsInputContext extends UseTagsInputReturn {}
+export interface UseTagsInputContext extends UseTagsInputReturn {}
 
-export const [TagsInputProvider, useTagsInputContext] = createContext<TagsInputContext>({
+export const [TagsInputProvider, useTagsInputContext] = createContext<UseTagsInputContext>({
   name: 'TagsInputContext',
   hookName: 'useTagsInputContext',
   providerName: '<TagsInputProvider />',
