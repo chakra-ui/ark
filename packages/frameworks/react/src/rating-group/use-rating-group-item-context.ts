@@ -1,10 +1,11 @@
-import { type ItemProps } from '@zag-js/rating-group'
+import type { ItemProps, ItemState } from '@zag-js/rating-group'
 import { createContext } from '../create-context'
 
-export interface RatingGroupItemContext extends ItemProps {}
+// TODO
+export interface UseRatingGroupItemContext extends ItemProps, ItemState {}
 
 export const [RatingGroupItemProvider, useRatingGroupItemContext] =
-  createContext<RatingGroupItemContext>({
+  createContext<UseRatingGroupItemContext>({
     name: 'RatingGroupItemContext',
     hookName: 'useRatingGroupItemContext',
     providerName: '<RatingGroupItemProvider />',

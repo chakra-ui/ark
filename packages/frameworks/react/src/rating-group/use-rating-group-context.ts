@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseRatingGroupReturn } from './use-rating-group'
 
-export interface RatingGroupContext extends UseRatingGroupReturn {}
+export interface UseRatingGroupContext extends UseRatingGroupReturn {}
 
-export const [RatingGroupProvider, useRatingGroupContext] = createContext<RatingGroupContext>({
+export const [RatingGroupProvider, useRatingGroupContext] = createContext<UseRatingGroupContext>({
   name: 'RatingGroupContext',
   hookName: 'useRatingGroupContext',
   providerName: '<RatingGroupProvider />',

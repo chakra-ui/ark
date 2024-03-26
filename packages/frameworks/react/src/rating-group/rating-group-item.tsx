@@ -1,35 +1,23 @@
-import type { ItemProps, ItemState } from '@zag-js/rating-group'
+import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useRatingGroupContext } from './rating-group-context'
-import { RatingGroupItemProvider } from './rating-group-item-context'
+import { useRatingGroupContext } from './use-rating-group-context'
+import { RatingGroupItemProvider } from './use-rating-group-item-context'
 
-export interface RatingGroupItemProps
-  extends Assign<
-      HTMLArkProps<'span'>,
-      {
-        children?: ReactNode | ((state: ItemState) => ReactNode)
-      }
-    >,
-    ItemProps {}
+export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemProps> {}
 
 export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
-  const [itemProps, { children, ...localProps }] = createSplitProps<ItemProps>()(props, ['index'])
-
-  const api = useRatingGroupContext()
-  const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
-  const itemState = api.getItemState(itemProps)
-  const view = runIfFn(children, itemState)
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const context = useRatingGroupContext()
+  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const itemState = context.getItemState(itemProps)
 
   return (
-    <RatingGroupItemProvider value={itemProps}>
-      <ark.span {...mergedProps} ref={ref}>
-        {view}
-      </ark.span>
+    <RatingGroupItemProvider value={{ ...itemProps, ...itemState }}>
+      <ark.span {...mergedProps} ref={ref} />
     </RatingGroupItemProvider>
   )
 })

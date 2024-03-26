@@ -12,16 +12,17 @@ export const Basic = () => (
   <RatingGroup.Root count={5} defaultValue={3}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHighlighted }) => {
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -30,17 +31,21 @@ export const HalfRatings = () => (
   <RatingGroup.Root count={5} defaultValue={3} allowHalf>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHalf, isHighlighted }) => {
-              if (isHalf) return <IconHalf />
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHalf, isHighlighted }) => {
+                  if (isHalf) return <IconHalf />
+                  if (isHighlighted) return <IconFull />
+                  return <IconEmpty />
+                }}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -49,16 +54,17 @@ export const InitialValue = () => (
   <RatingGroup.Root count={5} defaultValue={2} readOnly>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHighlighted }) => {
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -75,17 +81,17 @@ export const Controlled = () => {
     >
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>
-        {({ items }) =>
-          items.map((item) => (
-            <RatingGroup.Item key={item} index={item}>
-              {({ isHalf, isHighlighted }) => {
-                if (isHalf) return <IconHalf />
-                if (isHighlighted) return <IconFull />
-                return <IconEmpty />
-              }}
-            </RatingGroup.Item>
-          ))
-        }
+        <RatingGroup.Context>
+          {({ items }) =>
+            items.map((item) => (
+              <RatingGroup.Item key={item} index={item}>
+                <RatingGroup.ItemContext>
+                  {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            ))
+          }
+        </RatingGroup.Context>
       </RatingGroup.Control>
     </RatingGroup.Root>
   )
@@ -95,16 +101,17 @@ export const Disabled = () => (
   <RatingGroup.Root count={5} defaultValue={3} disabled>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHighlighted }) => {
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -113,16 +120,17 @@ export const ReadOnly = () => (
   <RatingGroup.Root count={5} defaultValue={3} readOnly>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHighlighted }) => {
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -131,16 +139,17 @@ export const FormUsage = () => (
   <RatingGroup.Root name="my-rating" count={5} defaultValue={3}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {({ items }) =>
-        items.map((item) => (
-          <RatingGroup.Item key={item} index={item}>
-            {({ isHighlighted }) => {
-              if (isHighlighted) return <IconFull />
-              return <IconEmpty />
-            }}
-          </RatingGroup.Item>
-        ))
-      }
+      <RatingGroup.Context>
+        {({ items }) =>
+          items.map((item) => (
+            <RatingGroup.Item key={item} index={item}>
+              <RatingGroup.ItemContext>
+                {({ isHighlighted }) => (isHighlighted ? <IconFull /> : <IconEmpty />)}
+              </RatingGroup.ItemContext>
+            </RatingGroup.Item>
+          ))
+        }
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
