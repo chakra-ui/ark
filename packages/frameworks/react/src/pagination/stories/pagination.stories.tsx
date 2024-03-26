@@ -11,10 +11,10 @@ export default meta
 
 export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
-    {({ pages }) => (
-      <>
-        <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
-        {pages.map((page, index) =>
+    <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+    <Pagination.Context>
+      {(context) =>
+        context.pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>
               {page.value}
@@ -24,10 +24,10 @@ export const Basic = () => (
               &#8230;
             </Pagination.Ellipsis>
           ),
-        )}
-        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-      </>
-    )}
+        )
+      }
+    </Pagination.Context>
+    <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
   </Pagination.Root>
 )
 
@@ -42,10 +42,10 @@ export const Controlled = () => {
       page={currentPage}
       onPageChange={(details) => setCurrentPage(details.page)}
     >
-      {({ pages }) => (
-        <>
-          <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
-          {pages.map((page, index) =>
+      <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
+      <Pagination.Context>
+        {(context) =>
+          context.pages.map((page, index) =>
             page.type === 'page' ? (
               <Pagination.Item key={index} {...page}>
                 {page.value}
@@ -55,10 +55,10 @@ export const Controlled = () => {
                 &#8230;
               </Pagination.Ellipsis>
             ),
-          )}
-          <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-        </>
-      )}
+          )
+        }
+      </Pagination.Context>
+      <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
     </Pagination.Root>
   )
 }
@@ -75,10 +75,10 @@ export const Customized = () => (
       itemLabel: (details) => `Page ${details.page}`,
     }}
   >
-    {({ pages }) => (
-      <>
-        <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
-        {pages.map((page, index) =>
+    <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
+    <Pagination.Context>
+      {(context) =>
+        context.pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>
               {page.value}
@@ -88,9 +88,9 @@ export const Customized = () => (
               &#8230;
             </Pagination.Ellipsis>
           ),
-        )}
-        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-      </>
-    )}
+        )
+      }
+    </Pagination.Context>
+    <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
   </Pagination.Root>
 )

@@ -4,15 +4,14 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { usePaginationContext } from './pagination-context'
+import { usePaginationContext } from './use-pagination-context'
 
 export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
 
 export const PaginationItem = forwardRef<HTMLButtonElement, PaginationItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
-
-  const api = usePaginationContext()
-  const mergedProps = mergeProps(api.getItemProps(itemProps), localProps)
+  const context = usePaginationContext()
+  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })
