@@ -14,6 +14,10 @@ import {
   type PopoverContentProps as ContentProps,
 } from './popover-content'
 import {
+  PopoverContext as Context,
+  type PopoverContextProps as ContextProps,
+} from './popover-context'
+import {
   PopoverDescription as Description,
   type PopoverDescriptionProps as DescriptionProps,
 } from './popover-description'
@@ -38,6 +42,7 @@ export {
   ArrowTip,
   CloseTrigger,
   Content,
+  Context,
   Description,
   Indicator,
   Positioner,
@@ -51,6 +56,7 @@ export type {
   ArrowTipProps,
   CloseTriggerProps,
   ContentProps,
+  ContextProps,
   DescriptionProps,
   IndicatorProps,
   OpenChangeDetails,
