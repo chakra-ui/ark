@@ -1,21 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { SwitchProvider } from './switch-context'
-import { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
+import { useSwitch, type UseSwitchProps } from './use-switch'
+import { SwitchProvider } from './use-switch-context'
 
-export interface SwitchRootProps
-  extends Assign<
-    Assign<HTMLArkProps<'label'>, { children?: ReactNode | ((api: UseSwitchReturn) => ReactNode) }>,
-    UseSwitchProps
-  > {}
+export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, UseSwitchProps> {}
 
 export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
-  const [switchProps, { children, ...localProps }] = createSplitProps<UseSwitchProps>()(props, [
+  const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'defaultChecked',
     'dir',
@@ -32,16 +26,12 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
     'value',
   ])
 
-  const api = useSwitch(switchProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
-
-  const view = runIfFn(children, api)
+  const context = useSwitch(switchProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <SwitchProvider value={api}>
-      <ark.label {...mergedProps} ref={ref}>
-        {view}
-      </ark.label>
+    <SwitchProvider value={context}>
+      <ark.label {...mergedProps} ref={ref} />
     </SwitchProvider>
   )
 })
