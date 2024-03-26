@@ -1,4 +1,5 @@
 import type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/slider'
+import { SliderContext as Context, type SliderContextProps as ContextProps } from './slider-context'
 import { SliderControl as Control, type SliderControlProps as ControlProps } from './slider-control'
 import { SliderLabel as Label, type SliderLabelProps as LabelProps } from './slider-label'
 import { SliderMarker as Marker, type SliderMarkerProps as MarkerProps } from './slider-marker'
@@ -15,8 +16,9 @@ import {
   type SliderValueTextProps as ValueTextProps,
 } from './slider-value-text'
 
-export { Control, Label, Marker, MarkerGroup, Range, Root, Thumb, Track, ValueText }
+export { Context, Control, Label, Marker, MarkerGroup, Range, Root, Thumb, Track, ValueText }
 export type {
+  ContextProps,
   ControlProps,
   FocusChangeDetails,
   LabelProps,
