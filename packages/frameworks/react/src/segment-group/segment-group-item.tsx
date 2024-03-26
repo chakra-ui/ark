@@ -6,7 +6,10 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSegmentGroupContext } from './use-segment-group-context'
-import { SegmentGroupItemProvider } from './use-segment-group-item-context'
+import {
+  SegmentGroupItemPropsProvider,
+  SegmentGroupItemProvider,
+} from './use-segment-group-item-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
@@ -26,9 +29,11 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const itemState = context.getItemState(itemProps)
 
     return (
-      <SegmentGroupItemProvider value={{ ...itemProps, ...itemState }}>
-        <ark.label {...mergedProps} ref={ref} />
-      </SegmentGroupItemProvider>
+      <SegmentGroupItemPropsProvider value={itemProps}>
+        <SegmentGroupItemProvider value={itemState}>
+          <ark.label {...mergedProps} ref={ref} />
+        </SegmentGroupItemProvider>
+      </SegmentGroupItemPropsProvider>
     )
   },
 )
