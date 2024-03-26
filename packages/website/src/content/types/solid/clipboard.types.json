@@ -1,6 +1,6 @@
 {
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -32,12 +32,12 @@
       "description": "The value to be copied to the clipboard"
     }
   },
-  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "copied": {
       "type": "number | boolean | Node | ArrayElement | (string & {})",
       "isRequired": false

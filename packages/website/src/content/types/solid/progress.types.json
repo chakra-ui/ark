@@ -1,6 +1,6 @@
 {
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -46,13 +46,13 @@
   },
   "View": {
     "state": { "type": "ProgressState", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Range": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Track": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Circle": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ValueText": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "CircleRange": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "CircleTrack": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Range": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Track": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Circle": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CircleRange": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CircleTrack": { "asChild": { "type": "boolean", "isRequired": false } }
 }
