@@ -2,15 +2,15 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
-import { useRadioGroupItemContext } from './use-radio-group-item-context'
+import { useRadioGroupItemPropsContext } from './use-radio-group-item-context'
 
 export interface RadioGroupItemTextProps extends HTMLArkProps<'span'> {}
 
 export const RadioGroupItemText = forwardRef<HTMLSpanElement, RadioGroupItemTextProps>(
   (props, ref) => {
     const context = useRadioGroupContext()
-    const itemContext = useRadioGroupItemContext()
-    const mergedProps = mergeProps(context.getItemTextProps(itemContext), props)
+    const itemProps = useRadioGroupItemPropsContext()
+    const mergedProps = mergeProps(context.getItemTextProps(itemProps), props)
 
     return <ark.span {...mergedProps} ref={ref} />
   },

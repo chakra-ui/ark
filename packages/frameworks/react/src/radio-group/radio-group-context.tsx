@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react'
 import { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context'
 
 export interface RadioGroupContextProps {
-  children: (context: UseRadioGroupContext) => React.ReactNode
+  children: (context: UseRadioGroupContext) => ReactNode
 }
 
 export const RadioGroupContext = (props: RadioGroupContextProps) =>
