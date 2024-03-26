@@ -1,20 +1,15 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { ProgressProvider } from './progress-context'
-import { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
+import { useProgress, type UseProgressProps } from './use-progress'
+import { ProgressProvider } from './use-progress-context'
 
-export interface ProgressRootProps
-  extends Assign<
-    Assign<HTMLArkProps<'div'>, { children?: ReactNode | ((api: UseProgressReturn) => ReactNode) }>,
-    UseProgressProps
-  > {}
+export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgressProps> {}
 
 export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props, ref) => {
-  const [progressProps, { children, ...localProps }] = createSplitProps<UseProgressProps>()(props, [
+  const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
     'defaultValue',
     'dir',
     'getRootNode',
@@ -25,17 +20,12 @@ export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props
     'translations',
     'value',
   ])
-
-  const api = useProgress(progressProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
-
-  const view = runIfFn(children, api)
+  const context = useProgress(progressProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <ProgressProvider value={api}>
-      <ark.div {...mergedProps} ref={ref}>
-        {view}
-      </ark.div>
+    <ProgressProvider value={context}>
+      <ark.div {...mergedProps} ref={ref} />
     </ProgressProvider>
   )
 })

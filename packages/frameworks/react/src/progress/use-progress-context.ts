@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UseProgressReturn } from './use-progress'
 
-export interface ProgressContext extends UseProgressReturn {}
+export interface UseProgressContext extends UseProgressReturn {}
 
-export const [ProgressProvider, useProgressContext] = createContext<ProgressContext>({
+export const [ProgressProvider, useProgressContext] = createContext<UseProgressContext>({
   name: 'ProgressContext',
   hookName: 'useProgressContext',
   providerName: '<ProgressProvider />',
