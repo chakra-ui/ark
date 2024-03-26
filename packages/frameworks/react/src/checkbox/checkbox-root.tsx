@@ -1,51 +1,35 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { CheckboxProvider } from './checkbox-context'
-import { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
+import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
+import { CheckboxProvider } from './use-checkbox-context'
 
-export interface CheckboxRootProps
-  extends Assign<
-    Assign<
-      HTMLArkProps<'label'>,
-      {
-        children?: ReactNode | ((api: UseCheckboxReturn) => ReactNode)
-      }
-    >,
-    UseCheckboxProps
-  > {}
+export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, UseCheckboxProps> {}
 
 export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((props, ref) => {
-  const [useCheckboxProps, { children, ...localProps }] = createSplitProps<UseCheckboxProps>()(
-    props,
-    [
-      'checked',
-      'defaultChecked',
-      'dir',
-      'disabled',
-      'form',
-      'getRootNode',
-      'id',
-      'ids',
-      'invalid',
-      'name',
-      'onCheckedChange',
-      'required',
-      'value',
-    ],
-  )
-  const api = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(api.rootProps, localProps)
-  const view = runIfFn(children, api)
+  const [useCheckboxProps, localProps] = createSplitProps<UseCheckboxProps>()(props, [
+    'checked',
+    'defaultChecked',
+    'dir',
+    'disabled',
+    'form',
+    'getRootNode',
+    'id',
+    'ids',
+    'invalid',
+    'name',
+    'onCheckedChange',
+    'required',
+    'value',
+  ])
+  const context = useCheckbox(useCheckboxProps)
+  const mergedProps = mergeProps(context.rootProps, localProps)
 
   return (
-    <CheckboxProvider value={api}>
-      <ark.label {...mergedProps} ref={ref}>
-        {view}
-      </ark.label>
+    <CheckboxProvider value={context}>
+      <ark.label {...mergedProps} ref={ref} />
     </CheckboxProvider>
   )
 })
