@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react'
 import { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
 
 export interface SelectItemContextProps {
-  children: (context: UseSelectItemContext) => React.ReactNode
+  children: (context: UseSelectItemContext) => ReactNode
 }
 
 export const SelectItemContext = (props: SelectItemContextProps) =>

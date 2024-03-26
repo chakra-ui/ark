@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react'
 import { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context'
 
 export interface HoverCardContextProps {
-  children: (context: UseHoverCardContext) => React.ReactNode
+  children: (context: UseHoverCardContext) => ReactNode
 }
 
 export const HoverCardContext = (props: HoverCardContextProps) =>
