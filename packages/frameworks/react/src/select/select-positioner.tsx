@@ -2,13 +2,13 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>((props, ref) => {
-  const api = useSelectContext()
-  const mergedProps = mergeProps(api.positionerProps, props)
+  const context = useSelectContext()
+  const mergedProps = mergeProps(context.positionerProps, props)
   const presenceApi = usePresenceContext()
 
   if (presenceApi.isUnmounted) {

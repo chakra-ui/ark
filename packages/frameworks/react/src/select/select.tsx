@@ -4,12 +4,17 @@ import {
   type SelectClearTriggerProps as ClearTriggerProps,
 } from './select-clear-trigger'
 import { SelectContent as Content, type SelectContentProps as ContentProps } from './select-content'
+import { SelectContext as Context, type SelectContextProps as ContextProps } from './select-context'
 import { SelectControl as Control, type SelectControlProps as ControlProps } from './select-control'
 import {
   SelectIndicator as Indicator,
   type SelectIndicatorProps as IndicatorProps,
 } from './select-indicator'
 import { SelectItem as Item, type SelectItemProps as ItemProps } from './select-item'
+import {
+  SelectItemContext as ItemContext,
+  type SelectItemContextProps as ItemContextProps,
+} from './select-item-context'
 import {
   SelectItemGroup as ItemGroup,
   type SelectItemGroupProps as ItemGroupProps,
@@ -41,9 +46,11 @@ import {
 export {
   ClearTrigger,
   Content,
+  Context,
   Control,
   Indicator,
   Item,
+  ItemContext,
   ItemGroup,
   ItemGroupLabel,
   ItemIndicator,
@@ -57,9 +64,11 @@ export {
 export type {
   ClearTriggerProps,
   ContentProps,
+  ContextProps,
   ControlProps,
   HighlightChangeDetails,
   IndicatorProps,
+  ItemContextProps,
   ItemGroupLabelProps,
   ItemGroupProps,
   ItemIndicatorProps,

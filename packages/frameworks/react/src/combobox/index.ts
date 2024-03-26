@@ -24,6 +24,7 @@ import { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-pos
 import { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
 import { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
 import { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
+import { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
 
 export * as Combobox from './combobox'
 
@@ -44,6 +45,7 @@ export {
   ComboboxRoot,
   ComboboxTrigger,
   useComboboxContext,
+  useComboboxItemContext,
 }
 export type {
   CollectionItem,
@@ -67,4 +69,5 @@ export type {
   ComboboxTriggerProps,
   ComboboxValueChangeDetails,
   UseComboboxContext,
+  UseComboboxItemContext,
 }
