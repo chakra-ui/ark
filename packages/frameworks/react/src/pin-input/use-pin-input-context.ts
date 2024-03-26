@@ -1,9 +1,9 @@
 import { createContext } from '../create-context'
 import { type UsePinInputReturn } from './use-pin-input'
 
-export interface PinInputContext extends UsePinInputReturn {}
+export interface UsePinInputContext extends UsePinInputReturn {}
 
-export const [PinInputProvider, usePinInputContext] = createContext<PinInputContext>({
+export const [PinInputProvider, usePinInputContext] = createContext<UsePinInputContext>({
   name: 'PinInputContext',
   hookName: 'usePinInputContext',
   providerName: '<PinInputProvider />',
