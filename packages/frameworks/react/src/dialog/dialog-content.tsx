@@ -2,14 +2,14 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext } from './use-dialog-context'
 
 export interface DialogContentProps extends HTMLArkProps<'div'> {}
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
-  const api = useDialogContext()
+  const context = useDialogContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(api.contentProps, presenceApi.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
 
   if (presenceApi.isUnmounted) {
     return null

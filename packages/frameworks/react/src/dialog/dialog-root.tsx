@@ -4,25 +4,23 @@ import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../render-strategy'
-import { runIfFn } from '../run-if-fn'
-import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
+import { useDialog, type UseDialogProps } from './use-dialog'
+import { DialogProvider } from './use-dialog-context'
 
 export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
-  children?: ReactNode | ((api: UseDialogReturn) => ReactNode)
+  children?: ReactNode
 }
 
 export const DialogRoot = (props: DialogRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
-  const api = useDialog(localProps)
-  const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
-  const view = runIfFn(children, api)
+  const context = useDialog(localProps)
+  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
 
   return (
-    <DialogProvider value={api}>
+    <DialogProvider value={context}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+        <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
       </RenderStrategyProvider>
     </DialogProvider>
   )

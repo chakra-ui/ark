@@ -8,6 +8,7 @@ import {
   type DialogCloseTriggerProps as CloseTriggerProps,
 } from './dialog-close-trigger'
 import { DialogContent as Content, type DialogContentProps as ContentProps } from './dialog-content'
+import { DialogContext as Context, type DialogContextProps as ContextProps } from './dialog-context'
 import {
   DialogDescription as Description,
   type DialogDescriptionProps as DescriptionProps,
@@ -20,11 +21,12 @@ import { DialogRoot as Root, type DialogRootProps as RootProps } from './dialog-
 import { DialogTitle as Title, type DialogTitleProps as TitleProps } from './dialog-title'
 import { DialogTrigger as Trigger, type DialogTriggerProps as TriggerProps } from './dialog-trigger'
 
-export { Backdrop, CloseTrigger, Content, Description, Positioner, Root, Title, Trigger }
+export { Backdrop, CloseTrigger, Content, Context, Description, Positioner, Root, Title, Trigger }
 export type {
   BackdropProps,
   CloseTriggerProps,
   ContentProps,
+  ContextProps,
   DescriptionProps,
   OpenChangeDetails,
   PositionerProps,

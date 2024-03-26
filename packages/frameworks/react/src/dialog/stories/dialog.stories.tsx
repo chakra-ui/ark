@@ -65,21 +65,19 @@ export const LazyMount = () => (
 
 export const RenderFn = () => (
   <Dialog.Root>
-    {({ isOpen }) => (
-      <>
-        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-        <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Title>Dialog Title</Dialog.Title>
-              <Dialog.Description>Dialog Description</Dialog.Description>
-              <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
-            </Dialog.Content>
-          </Dialog.Positioner>
-        </Portal>
-        <p>Dialog is {isOpen ? 'open' : 'closed'}</p>
-      </>
-    )}
+    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <Portal>
+      <Dialog.Backdrop />
+      <Dialog.Positioner>
+        <Dialog.Content>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description>Dialog Description</Dialog.Description>
+          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Portal>
+    <Dialog.Context>
+      {(context) => <p>Dialog is {context.isOpen ? 'open' : 'closed'}</p>}
+    </Dialog.Context>
   </Dialog.Root>
 )
