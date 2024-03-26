@@ -9,10 +9,6 @@ import {
 } from './file-upload-dropzone'
 import { FileUploadItem as Item, type FileUploadItemProps as ItemProps } from './file-upload-item'
 import {
-  FileUploadItemContext as ItemContext,
-  type FileUploadItemContextProps as ItemContextProps,
-} from './file-upload-item-context'
-import {
   FileUploadItemDeleteTrigger as ItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
 } from './file-upload-item-delete-trigger'
@@ -50,7 +46,6 @@ export {
   Context,
   Dropzone,
   Item,
-  ItemContext,
   ItemDeleteTrigger,
   ItemGroup,
   ItemName,
@@ -67,7 +62,6 @@ export type {
   FileAcceptDetails,
   FileChangeDetails,
   FileRejectDetails,
-  ItemContextProps,
   ItemDeleteTriggerProps,
   ItemGroupProps,
   ItemNameProps,
