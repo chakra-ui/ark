@@ -14,11 +14,11 @@ export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((pr
   const context = useTreeViewContext()
   const depth = useTreeViewDepthContext()
   const branchContext = { ...itemProps, depth }
-  const mergedProps = mergeProps(context.getBranchProps(branchProps), localProps)
+  const mergedProps = mergeProps(context.getBranchProps(branchContext), localProps)
 
   return (
     <TreeViewDepthProvider value={depth + 1}>
-      <TreeViewBranchProvider value={branchProps}>
+      <TreeViewBranchProvider value={branchContext}>
         <ark.li {...mergedProps} ref={ref} />
       </TreeViewBranchProvider>
     </TreeViewDepthProvider>
