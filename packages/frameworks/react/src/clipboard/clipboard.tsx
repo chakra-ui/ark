@@ -1,5 +1,9 @@
 import { type CopyStatusDetails } from '@zag-js/clipboard'
 import {
+  ClipboardContext as Context,
+  type ClipboardContextProps as ContextProps,
+} from './clipboard-context'
+import {
   ClipboardControl as Control,
   type ClipboardControlProps as ControlProps,
 } from './clipboard-control'
@@ -15,8 +19,9 @@ import {
   type ClipboardTriggerProps as TriggerProps,
 } from './clipboard-trigger'
 
-export { Control, Indicator, Input, Label, Root, Trigger }
+export { Context, Control, Indicator, Input, Label, Root, Trigger }
 export type {
+  ContextProps,
   ControlProps,
   CopyStatusDetails,
   IndicatorProps,

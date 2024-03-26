@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useClipboardContext } from './clipboard-context'
+import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ClipboardTrigger = forwardRef<HTMLButtonElement, ClipboardTriggerProps>(
   (props, ref) => {
-    const api = useClipboardContext()
-    const mergedProps = mergeProps(api.triggerProps, props)
+    const context = useClipboardContext()
+    const mergedProps = mergeProps(context.triggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

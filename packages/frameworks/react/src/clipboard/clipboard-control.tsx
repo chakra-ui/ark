@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useClipboardContext } from './clipboard-context'
+import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardControlProps extends HTMLArkProps<'div'> {}
 
 export const ClipboardControl = forwardRef<HTMLDivElement, ClipboardControlProps>((props, ref) => {
-  const api = useClipboardContext()
-  const mergedProps = mergeProps(api.controlProps, props)
+  const context = useClipboardContext()
+  const mergedProps = mergeProps(context.controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
