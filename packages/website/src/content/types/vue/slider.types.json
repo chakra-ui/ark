@@ -128,7 +128,8 @@
   "Range": { "asChild": { "type": "boolean", "isRequired": false } },
   "Thumb": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false },
+    "name": { "type": "string", "isRequired": false }
   },
   "Track": { "asChild": { "type": "boolean", "isRequired": false } },
   "Marker": {

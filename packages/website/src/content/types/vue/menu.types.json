@@ -76,6 +76,11 @@
       "description": "Whether to loop the keyboard navigation."
     },
     "modelValue": { "type": "Record<string, string | string[]>", "isRequired": false },
+    "onEscapeKeyDown": {
+      "type": "(event: KeyboardEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the escape key is pressed"
+    },
     "onExitComplete": {
       "type": "() => void",
       "isRequired": false,
