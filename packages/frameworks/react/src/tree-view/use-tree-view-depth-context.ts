@@ -1,11 +1,10 @@
 import { createContext } from '../create-context'
 
-export type TreeViewDepthContext = number
+export type UseTreeViewDepthContext = number
 
-export const [TreeViewDepthProvider, useTreeViewDepthContext] = createContext<TreeViewDepthContext>(
-  {
+export const [TreeViewDepthProvider, useTreeViewDepthContext] =
+  createContext<UseTreeViewDepthContext>({
     name: 'TreeViewDepthContext',
     hookName: 'useTreeViewDepthContext',
     providerName: '<TreeViewDepthProvider />',
-  },
-)
+  })
