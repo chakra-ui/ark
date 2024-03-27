@@ -170,6 +170,13 @@
       "description": "Render as a different element type."
     }
   },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ItemGroup": {
     "id": {
       "type": "string",
@@ -216,6 +223,11 @@
       "isRequired": false,
       "description": "Whether the menu item is disabled"
     },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the menu item option."
+    },
     "onCheckedChange": {
       "type": "(checked: boolean) => void",
       "isRequired": false,
@@ -250,6 +262,20 @@
   },
   "ItemGroupLabel": {
     "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "OptionItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "OptionItemIndicator": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
