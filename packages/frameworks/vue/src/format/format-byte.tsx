@@ -3,7 +3,7 @@ import { computed, defineComponent } from 'vue'
 import { useLocaleContext } from '../locale'
 import { LOCALE_DEFAULT } from '../locale/locale-context'
 
-export interface ByteFormatProps {
+export interface FormatByteProps {
   /**
    * The unit granularity to display
    */
@@ -18,7 +18,7 @@ export interface ByteFormatProps {
   value: number
 }
 
-export const ByteFormat = defineComponent<ByteFormatProps>(
+export const FormatByte = defineComponent<FormatByteProps>(
   (props) => {
     const ctx = useLocaleContext(LOCALE_DEFAULT)
     const text = computed(() => {
@@ -28,7 +28,7 @@ export const ByteFormat = defineComponent<ByteFormatProps>(
     return () => text.value
   },
   {
-    name: 'ByteFormat',
+    name: 'FormatByte',
     props: ['unit', 'unitDisplay', 'value'],
   },
 )

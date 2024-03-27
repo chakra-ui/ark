@@ -11,14 +11,14 @@ const props =
     'localMatcher, style, currency, currencySign, useGrouping, minimumIntegerDigits, minimumFractionDigits, maximumFractionDigits, minimumSignificantDigits, maximumSignificantDigits, notation, compactDisplay, signDisplay, unit, unitDisplay, currencyDisplay, currencySign, value',
   ) as (keyof Intl.NumberFormatOptions)[]
 
-export interface NumberFormatProps extends Intl.NumberFormatOptions {
+export interface FormatNumberProps extends Intl.NumberFormatOptions {
   /**
    * The number to format
    */
   value: number
 }
 
-export const NumberFormat = defineComponent<NumberFormatProps>(
+export const FormatNumber = defineComponent<FormatNumberProps>(
   (props) => {
     const ctx = useLocaleContext(LOCALE_DEFAULT)
     const text = computed(() => {
@@ -28,7 +28,7 @@ export const NumberFormat = defineComponent<NumberFormatProps>(
     return () => text.value
   },
   {
-    name: 'NumberFormat',
+    name: 'FormatNumber',
     props: props,
     inheritAttrs: false,
   },
