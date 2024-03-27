@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useTooltipContext } from './tooltip-context'
+import { useTooltipContext } from './use-tooltip-context'
 
 export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
 

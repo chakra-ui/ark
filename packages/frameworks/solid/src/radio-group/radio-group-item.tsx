@@ -1,18 +1,13 @@
-import type { ItemProps, ItemState } from '@zag-js/radio-group'
+import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js/jsx-runtime'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useRadioGroupContext } from './radio-group-context'
-import { RadioGroupItemProvider } from './radio-group-item-context'
+import { useRadioGroupContext } from './use-radio-group-context'
+import { RadioGroupItemPropsProvider, RadioGroupItemProvider } from './use-radio-group-item-context'
 
-interface ElementProps extends ItemProps {
-  children?: ((state: ItemState) => JSX.Element) | JSX.Element
-}
-
-export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ElementProps> {}
+export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
 export const RadioGroupItem = (props: RadioGroupItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
@@ -22,13 +17,13 @@ export const RadioGroupItem = (props: RadioGroupItemProps) => {
   ])
   const api = useRadioGroupContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
-
-  const itemState = api().getItemState(itemProps)
-  const getChildren = () => runIfFn(localProps.children, itemState)
+  const itemState = createMemo(() => api().getItemState(itemProps))
 
   return (
-    <RadioGroupItemProvider value={itemProps}>
-      <ark.label {...mergedProps}>{getChildren()}</ark.label>
+    <RadioGroupItemProvider value={itemState}>
+      <RadioGroupItemPropsProvider value={itemProps}>
+        <ark.label {...mergedProps} />
+      </RadioGroupItemPropsProvider>
     </RadioGroupItemProvider>
   )
 }

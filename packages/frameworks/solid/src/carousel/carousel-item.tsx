@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useCarouselContext } from './carousel-context'
+import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 

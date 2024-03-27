@@ -3,7 +3,7 @@ import type { ColorFormat } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
 import { Show, type JSX } from 'solid-js'
 import { ark } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerViewProps {
   format: ColorFormat

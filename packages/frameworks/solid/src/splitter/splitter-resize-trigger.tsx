@@ -3,7 +3,7 @@ import { connect } from '@zag-js/splitter'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useSplitterContext } from './splitter-context'
+import { useSplitterContext } from './use-splitter-context'
 
 type TriggerParams = Parameters<ReturnType<typeof connect>['getResizeTriggerProps']>[0]
 

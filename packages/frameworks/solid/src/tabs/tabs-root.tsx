@@ -7,11 +7,12 @@ import {
   type RenderStrategyProps,
 } from '../render-strategy'
 import type { Assign } from '../types'
-import { TabsProvider } from './tabs-context'
 import { useTabs, type UseTabsProps } from './use-tabs'
+import { TabsProvider } from './use-tabs-context'
 
-interface ElementProps extends UseTabsProps, RenderStrategyProps {}
-export interface TabsRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface TabsRootProps
+  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
+    RenderStrategyProps {}
 
 export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)

@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectContentProps extends HTMLArkProps<'div'> {}
 

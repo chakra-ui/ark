@@ -1,25 +1,20 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
-import type { ItemState } from '@zag-js/radio-group'
+import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js/jsx-runtime'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useSegmentGroupContext } from './segment-group-context'
+import { useSegmentGroupContext } from './use-segment-group-context'
 import {
+  SegmentGroupItemPropsProvider,
   SegmentGroupItemProvider,
-  type SegmentGroupItemContext,
-} from './segment-group-item-context'
+} from './use-segment-group-item-context'
 
-interface ElementProps extends SegmentGroupItemContext {
-  children?: JSX.Element | ((state: ItemState) => JSX.Element)
-}
-
-export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ElementProps> {}
+export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
 export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
-  const [itemProps, localProps] = createSplitProps<SegmentGroupItemContext>()(props, [
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
     'value',
     'disabled',
     'invalid',
@@ -32,12 +27,13 @@ export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
     localProps,
   )
 
-  const itemState = api().getItemState(itemProps)
-  const getChildren = () => runIfFn(localProps.children, itemState)
+  const itemState = createMemo(() => api().getItemState(itemProps))
 
   return (
-    <SegmentGroupItemProvider value={itemProps}>
-      <ark.label {...mergedProps}>{getChildren()}</ark.label>
-    </SegmentGroupItemProvider>
+    <SegmentGroupItemPropsProvider value={itemProps}>
+      <SegmentGroupItemProvider value={itemState}>
+        <ark.label {...mergedProps} />
+      </SegmentGroupItemProvider>
+    </SegmentGroupItemPropsProvider>
   )
 }

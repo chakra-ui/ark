@@ -3,7 +3,7 @@ import { type TriggerProps } from '@zag-js/tabs'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useTabsContext } from './tabs-context'
+import { useTabsContext } from './use-tabs-context'
 
 export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
 

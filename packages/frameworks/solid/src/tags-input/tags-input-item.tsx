@@ -1,18 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import type { ItemProps, ItemState } from '@zag-js/tags-input'
-import { type Accessor, type JSX } from 'solid-js'
+import type { ItemProps } from '@zag-js/tags-input'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useTagsInputContext } from './tags-input-context'
-import { TagsInputItemProvider } from './tags-input-item-context'
+import { useTagsInputContext } from './use-tags-input-context'
+import { TagsInputItemPropsProvider, TagsInputItemProvider } from './use-tags-input-item-context'
 
-interface ElementProps extends ItemProps {
-  children?: JSX.Element | ((state: Accessor<ItemState>) => JSX.Element)
-}
-
-export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const TagsInputItem = (props: TagsInputItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
@@ -22,11 +17,13 @@ export const TagsInputItem = (props: TagsInputItemProps) => {
   ])
   const api = useTagsInputContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
-  const getChildren = () => runIfFn(localProps.children, () => api().getItemState(itemProps))
+  const itemState = createMemo(() => api().getItemState(itemProps))
 
   return (
-    <TagsInputItemProvider value={itemProps}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
-    </TagsInputItemProvider>
+    <TagsInputItemPropsProvider value={itemProps}>
+      <TagsInputItemProvider value={itemState}>
+        <ark.div {...mergedProps} />
+      </TagsInputItemProvider>
+    </TagsInputItemPropsProvider>
   )
 }

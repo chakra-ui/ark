@@ -6,7 +6,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useRenderStrategyContext } from '../render-strategy'
 import type { Assign } from '../types'
-import { useTabsContext } from './tabs-context'
+import { useTabsContext } from './use-tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuArrowProps extends HTMLArkProps<'div'> {}
 

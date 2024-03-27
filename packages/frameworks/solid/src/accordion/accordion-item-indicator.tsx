@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useAccordionContext } from './accordion-context'
-import { useAccordionItemContext } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-context'
 
 export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const AccordionItemIndicator = (props: AccordionItemIndicatorProps) => {
-  const api = useAccordionContext()
-  const itemParams = useAccordionItemContext()
-  const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemParams), props)
+  const context = useAccordionContext()
+  const itemProps = useAccordionItemPropsContext()
+  const mergedProps = mergeProps(() => context().getItemIndicatorProps(itemProps), props)
 
   return <ark.div {...mergedProps} />
 }

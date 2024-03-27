@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext } from './use-dialog-context'
 
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 

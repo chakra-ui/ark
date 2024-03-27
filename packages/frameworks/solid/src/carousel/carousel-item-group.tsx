@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useCarouselContext } from './carousel-context'
+import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 

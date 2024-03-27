@@ -6,11 +6,9 @@ import type {
 import type { CollectionItem } from '../types'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
 import { SelectContent, type SelectContentProps } from './select-content'
-import { useSelectContext, type SelectContext } from './select-context'
 import { SelectControl, type SelectControlProps } from './select-control'
 import { SelectIndicator, type SelectIndicatorProps } from './select-indicator'
 import { SelectItem, type SelectItemProps } from './select-item'
-import { useSelectItemContext, type SelectItemContext } from './select-item-context'
 import { SelectItemGroup, type SelectItemGroupProps } from './select-item-group'
 import { SelectItemGroupLabel, type SelectItemGroupLabelProps } from './select-item-group-label'
 import { SelectItemIndicator, type SelectItemIndicatorProps } from './select-item-indicator'
@@ -20,6 +18,8 @@ import { SelectPositioner, type SelectPositionerProps } from './select-positione
 import { SelectRoot, type SelectRootProps } from './select-root'
 import { SelectTrigger, type SelectTriggerProps } from './select-trigger'
 import { SelectValueText, type SelectValueTextProps } from './select-value-text'
+import { useSelectContext, type UseSelectContext } from './use-select-context'
+import { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
 
 export * as Select from './select'
 
@@ -46,11 +46,9 @@ export type {
   CollectionItem,
   SelectClearTriggerProps,
   SelectContentProps,
-  SelectContext,
   SelectControlProps,
   SelectHighlightChangeDetails,
   SelectIndicatorProps,
-  SelectItemContext,
   SelectItemGroupLabelProps,
   SelectItemGroupProps,
   SelectItemIndicatorProps,
@@ -63,4 +61,6 @@ export type {
   SelectTriggerProps,
   SelectValueChangeDetails,
   SelectValueTextProps,
+  UseSelectContext,
+  UseSelectItemContext,
 }

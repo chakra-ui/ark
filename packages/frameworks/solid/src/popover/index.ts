@@ -4,13 +4,14 @@ import { PopoverArrow, type PopoverArrowProps } from './popover-arrow'
 import { PopoverArrowTip, type PopoverArrowTipProps } from './popover-arrow-tip'
 import { PopoverCloseTrigger, type PopoverCloseTriggerProps } from './popover-close-trigger'
 import { PopoverContent, type PopoverContentProps } from './popover-content'
-import { usePopoverContext, type PopoverContext } from './popover-context'
+import { PopoverContext, type PopoverContextProps } from './popover-context'
 import { PopoverDescription, type PopoverDescriptionProps } from './popover-description'
 import { PopoverIndicator, type PopoverIndicatorProps } from './popover-indicator'
 import { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 import { PopoverRoot, type PopoverRootProps } from './popover-root'
 import { PopoverTitle, type PopoverTitleProps } from './popover-title'
 import { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
+import { usePopoverContext, type UsePopoverContext } from './use-popover-context'
 
 export * as Popover from './popover'
 
@@ -20,6 +21,7 @@ export {
   PopoverArrowTip,
   PopoverCloseTrigger,
   PopoverContent,
+  PopoverContext,
   PopoverDescription,
   PopoverIndicator,
   PopoverPositioner,
@@ -35,7 +37,7 @@ export type {
   PopoverArrowTipProps,
   PopoverCloseTriggerProps,
   PopoverContentProps,
-  PopoverContext,
+  PopoverContextProps,
   PopoverDescriptionProps,
   PopoverIndicatorProps,
   PopoverOpenChangeDetails,
@@ -43,4 +45,5 @@ export type {
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
+  UsePopoverContext,
 }

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useTreeViewContext } from './tree-view-context'
-import { useTreeViewItemContext } from './tree-view-item-context'
+import { useTreeViewContext } from './use-tree-view-context'
+import { useTreeViewItemContext } from './use-tree-view-item-context'
 
 export interface TreeViewItemIndicatorProps extends HTMLArkProps<'div'> {}
 

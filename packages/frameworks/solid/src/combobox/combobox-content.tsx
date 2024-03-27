@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useComboboxContext } from './combobox-context'
+import { useComboboxContext } from './use-combobox-context'
 
 export interface ComboboxContentProps extends HTMLArkProps<'div'> {}
 

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
-import { useDatePickerViewContext } from './date-picker-view-context'
+import { useDatePickerContext } from './use-date-picker-context'
+import { useDatePickerViewContext } from './use-date-picker-view-context'
 
 export interface DatePickerViewTriggerProps extends HTMLArkProps<'button'> {}
 

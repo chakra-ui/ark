@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { Index } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerFormatSelectProps extends HTMLArkProps<'select'> {}
 

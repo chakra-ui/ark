@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { usePopoverContext } from './popover-context'
+import { usePopoverContext } from './use-popover-context'
 
 export interface PopoverContentProps extends HTMLArkProps<'div'> {}
 

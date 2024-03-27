@@ -4,8 +4,8 @@ import { Index, createEffect, createMemo, onCleanup, type Accessor, type JSX } f
 import { useEnvironmentContext } from '../environment'
 import { type HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
-import { ToastProvider, type Options } from './toast-context'
 import { ToastGroup } from './toast-group'
+import { ToastProvider, type Options } from './use-toast-context'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 

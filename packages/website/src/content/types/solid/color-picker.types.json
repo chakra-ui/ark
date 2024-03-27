@@ -140,10 +140,7 @@
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ValueText": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "placeholder": { "type": "string", "isRequired": false }
-  },
+  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelInput": {

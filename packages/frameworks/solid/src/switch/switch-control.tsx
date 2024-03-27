@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSwitchContext } from './switch-context'
+import { useSwitchContext } from './use-switch-context'
 
 export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 

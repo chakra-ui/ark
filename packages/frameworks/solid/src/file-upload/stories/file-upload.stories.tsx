@@ -15,21 +15,23 @@ export const Basic = () => (
     <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
     <FileUpload.ItemGroup>
-      {(files) => (
-        <For each={files()}>
-          {(file) => (
-            <FileUpload.Item file={file}>
-              <FileUpload.ItemPreview type="image/*">
-                <FileUpload.ItemPreviewImage />
-              </FileUpload.ItemPreview>
-              <FileUpload.ItemPreview type=".*">Any Icon</FileUpload.ItemPreview>
-              <FileUpload.ItemName />
-              <FileUpload.ItemSizeText />
-              <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
-            </FileUpload.Item>
-          )}
-        </For>
-      )}
+      <FileUpload.Context>
+        {(context) => (
+          <For each={context().files}>
+            {(file) => (
+              <FileUpload.Item file={file}>
+                <FileUpload.ItemPreview type="image/*">
+                  <FileUpload.ItemPreviewImage />
+                </FileUpload.ItemPreview>
+                <FileUpload.ItemPreview type=".*">Any Icon</FileUpload.ItemPreview>
+                <FileUpload.ItemName />
+                <FileUpload.ItemSizeText />
+                <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+              </FileUpload.Item>
+            )}
+          </For>
+        )}
+      </FileUpload.Context>
     </FileUpload.ItemGroup>
   </FileUpload.Root>
 )

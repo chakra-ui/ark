@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useTreeViewContext } from './tree-view-context'
+import { useTreeViewContext } from './use-tree-view-context'
 
 export interface TreeViewLabelProps extends HTMLArkProps<'label'> {}
 

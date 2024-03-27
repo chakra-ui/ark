@@ -1,17 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { PaginationProvider } from './pagination-context'
-import { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
+import { usePagination, type UsePaginationProps } from './use-pagination'
+import { PaginationProvider } from './use-pagination-context'
 
-interface ElementProps extends UsePaginationProps {
-  children?: JSX.Element | ((api: UsePaginationReturn) => JSX.Element)
-}
-
-export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, ElementProps> {}
+export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
 
 export const PaginationRoot = (props: PaginationRootProps) => {
   const [paginationParams, localProps] = createSplitProps<UsePaginationProps>()(props, [
@@ -30,11 +24,10 @@ export const PaginationRoot = (props: PaginationRootProps) => {
 
   const api = usePagination(paginationParams)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <PaginationProvider value={api}>
-      <ark.nav {...mergedProps}>{getChildren()}</ark.nav>
+      <ark.nav {...mergedProps} />
     </PaginationProvider>
   )
 }

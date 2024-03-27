@@ -1,23 +1,66 @@
-import { ComboboxClearTrigger as ClearTrigger } from './combobox-clear-trigger'
-import { ComboboxContent as Content } from './combobox-content'
-import { ComboboxControl as Control } from './combobox-control'
-import { ComboboxInput as Input } from './combobox-input'
-import { ComboboxItem as Item } from './combobox-item'
-import { ComboboxItemGroup as ItemGroup } from './combobox-item-group'
-import { ComboboxItemGroupLabel as ItemGroupLabel } from './combobox-item-group-label'
-import { ComboboxItemIndicator as ItemIndicator } from './combobox-item-indicator'
-import { ComboboxItemText as ItemText } from './combobox-item-text'
-import { ComboboxLabel as Label } from './combobox-label'
-import { ComboboxPositioner as Positioner } from './combobox-positioner'
-import { ComboboxRoot as Root } from './combobox-root'
-import { ComboboxTrigger as Trigger } from './combobox-trigger'
+import type {
+  HighlightChangeDetails,
+  InputValueChangeDetails,
+  OpenChangeDetails,
+  ValueChangeDetails,
+} from '@zag-js/combobox'
+import {
+  ComboboxClearTrigger as ClearTrigger,
+  type ComboboxClearTriggerProps as ClearTriggerProps,
+} from './combobox-clear-trigger'
+import {
+  ComboboxContent as Content,
+  type ComboboxContentProps as ContentProps,
+} from './combobox-content'
+import {
+  ComboboxContext as Context,
+  type ComboboxContextProps as ContextProps,
+} from './combobox-context'
+import {
+  ComboboxControl as Control,
+  type ComboboxControlProps as ControlProps,
+} from './combobox-control'
+import { ComboboxInput as Input, type ComboboxInputProps as InputProps } from './combobox-input'
+import { ComboboxItem as Item, type ComboboxItemProps as ItemProps } from './combobox-item'
+import {
+  ComboboxItemContext as ItemContext,
+  type ComboboxItemContextProps as ItemContextProps,
+} from './combobox-item-context'
+import {
+  ComboboxItemGroup as ItemGroup,
+  type ComboboxItemGroupProps as ItemGroupProps,
+} from './combobox-item-group'
+import {
+  ComboboxItemGroupLabel as ItemGroupLabel,
+  type ComboboxItemGroupLabelProps as ItemGroupLabelProps,
+} from './combobox-item-group-label'
+import {
+  ComboboxItemIndicator as ItemIndicator,
+  type ComboboxItemIndicatorProps as ItemIndicatorProps,
+} from './combobox-item-indicator'
+import {
+  ComboboxItemText as ItemText,
+  type ComboboxItemTextProps as ItemTextProps,
+} from './combobox-item-text'
+import { ComboboxLabel as Label, type ComboboxLabelProps as LabelProps } from './combobox-label'
+import {
+  ComboboxPositioner as Positioner,
+  type ComboboxPositionerProps as PositionerProps,
+} from './combobox-positioner'
+import { ComboboxRoot as Root, type ComboboxRootProps as RootProps } from './combobox-root'
+import {
+  ComboboxTrigger as Trigger,
+  type ComboboxTriggerProps as TriggerProps,
+} from './combobox-trigger'
 
 export {
   ClearTrigger,
   Content,
+  Context,
   Control,
   Input,
   Item,
+  ItemContext,
   ItemGroup,
   ItemGroupLabel,
   ItemIndicator,
@@ -26,4 +69,25 @@ export {
   Positioner,
   Root,
   Trigger,
+}
+export type {
+  ClearTriggerProps,
+  ContentProps,
+  ContextProps,
+  ControlProps,
+  HighlightChangeDetails,
+  InputProps,
+  InputValueChangeDetails,
+  ItemContextProps,
+  ItemGroupLabelProps,
+  ItemGroupProps,
+  ItemIndicatorProps,
+  ItemProps,
+  ItemTextProps,
+  LabelProps,
+  OpenChangeDetails,
+  PositionerProps,
+  RootProps,
+  TriggerProps,
+  ValueChangeDetails,
 }

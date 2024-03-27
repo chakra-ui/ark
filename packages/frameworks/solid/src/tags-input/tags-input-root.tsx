@@ -1,20 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { TagsInputProvider } from './tags-input-context'
-import { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
+import { useTagsInput, type UseTagsInputProps } from './use-tags-input'
+import { TagsInputProvider } from './use-tags-input-context'
 
-interface ElementProps extends UseTagsInputProps {
-  children?: JSX.Element | ((api: UseTagsInputReturn) => JSX.Element)
-}
-
-export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsInputProps> {}
 
 export const TagsInputRoot = (props: TagsInputRootProps) => {
-  const [tagsInputParams, restProps] = createSplitProps<UseTagsInputProps>()(props, [
+  const [tagsInputParams, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowEditTag',
     'allowOverflow',
@@ -45,12 +39,11 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
   ])
 
   const api = useTagsInput(tagsInputParams)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
-  const getChildren = () => runIfFn(restProps.children, api)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <TagsInputProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps} />
       <input {...api().hiddenInputProps} />
     </TagsInputProvider>
   )

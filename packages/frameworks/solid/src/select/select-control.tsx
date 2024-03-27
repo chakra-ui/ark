@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Index, Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectControlProps extends HTMLArkProps<'div'> {}
 

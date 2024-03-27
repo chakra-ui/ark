@@ -1,13 +1,9 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
-interface ElementProps {
-  placeholder?: string
-}
-
-export interface ColorPickerValueTextProps extends HTMLArkProps<'span'>, ElementProps {}
+export interface ColorPickerValueTextProps extends HTMLArkProps<'span'> {}
 
 export const ColorPickerValueText = (props: ColorPickerValueTextProps) => {
   const api = useColorPickerContext()

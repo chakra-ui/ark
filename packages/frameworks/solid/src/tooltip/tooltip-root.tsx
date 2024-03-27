@@ -7,12 +7,11 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
-import { TooltipProvider } from './tooltip-context'
-import { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
+import { useTooltip, type UseTooltipProps } from './use-tooltip'
+import { TooltipProvider } from './use-tooltip-context'
 
 export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
-  children?: JSX.Element | ((api: UseTooltipReturn) => JSX.Element)
+  children?: JSX.Element
 }
 
 export const TooltipRoot = (props: TooltipRootProps) => {
@@ -36,11 +35,10 @@ export const TooltipRoot = (props: TooltipRootProps) => {
 
   const api = useTooltip(useTooltipProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <TooltipProvider value={api}>
-      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      <PresenceProvider value={apiPresence}>{localProps.children}</PresenceProvider>
     </TooltipProvider>
   )
 }

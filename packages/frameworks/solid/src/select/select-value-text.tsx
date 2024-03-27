@@ -1,13 +1,11 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
-interface ElementProps {
+export interface SelectValueTextProps extends HTMLArkProps<'span'> {
   placeholder?: string
 }
-
-export interface SelectValueTextProps extends HTMLArkProps<'span'>, ElementProps {}
 
 export const SelectValueText = (props: SelectValueTextProps) => {
   const api = useSelectContext()

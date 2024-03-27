@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSliderContext } from './slider-context'
+import { useSliderContext } from './use-slider-context'
 
 export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
