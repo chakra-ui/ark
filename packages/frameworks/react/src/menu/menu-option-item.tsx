@@ -1,25 +1,18 @@
-import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
+import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { useMenuContext } from './menu-context'
 import { type UseMenuReturn } from './use-menu'
+import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 
-export interface MenuOptionItemProps
-  extends Assign<
-      HTMLArkProps<'div'>,
-      {
-        children?: ReactNode | ((state: OptionItemState) => ReactNode)
-      }
-    >,
-    OptionItemProps {}
+export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
 export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
-  const [optionProps, { children, ...divProps }] = createSplitProps<OptionItemProps>()(props, [
+  const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
     'id',
     'disabled',
     'valueText',
@@ -29,14 +22,12 @@ export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((p
     'value',
     'onCheckedChange',
   ])
-
-  const view = runIfFn(children, api?.getOptionItemState(optionProps))
-  const mergedProps = mergeProps(api?.getOptionItemProps(optionProps) ?? {}, divProps)
+  const mergedProps = mergeProps(api?.getOptionItemProps(optionItemProps) ?? {}, localProps)
 
   return (
-    <ark.div {...mergedProps} ref={ref}>
-      {view}
-    </ark.div>
+    <MenuOptionItemPropsProvider value={optionItemProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </MenuOptionItemPropsProvider>
   )
 })
 

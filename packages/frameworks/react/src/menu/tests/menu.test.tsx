@@ -3,7 +3,8 @@ import { menuAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getParts } from '../../setup-test'
+import { Menu } from '..'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ContextMenuComponentUnderTest } from './context-menu'
 import { MenuItemGroupComponentUnderTest } from './menu-item-group'
@@ -11,22 +12,16 @@ import { NestedMenuComponentUnderTest } from './nested-menu'
 import { OptionGroupsComponentUnderTest } from './option-groups'
 import { RenderPropComponentUnderTest } from './render-prop'
 
-describe.skip('Menu / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  // uncomment when all parts are ready (otherwise breaks first test)
-  // render(<ComponentUnderTest />)
-
-  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+describe('Menu / Parts & Exports', () => {
+  it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+    render(<ComponentUnderTest />)
     // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
-  //   expect(Menu[part]).toBeDefined()
-  // })
+  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
+    expect(Menu[part]).toBeDefined()
+  })
 })
 
 describe('Menu', () => {

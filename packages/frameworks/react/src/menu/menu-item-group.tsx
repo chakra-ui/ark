@@ -10,10 +10,9 @@ import { type UseMenuReturn } from './use-menu'
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
-  const [itemGroupProps, divProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
-
+  const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
   const api = useMenuContext() as UseMenuReturn['api']
-  const mergedProps = mergeProps(api?.getItemGroupProps(itemGroupProps) ?? {}, divProps)
+  const mergedProps = mergeProps(api?.getItemGroupProps(itemGroupProps) ?? {}, localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
