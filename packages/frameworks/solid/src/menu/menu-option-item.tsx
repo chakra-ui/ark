@@ -7,11 +7,14 @@ import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 
-interface ElementProps extends OptionItemProps {
-  children?: JSX.Element | ((state: Accessor<OptionItemState>) => JSX.Element)
-}
-
-export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface MenuOptionItemProps
+  extends Assign<
+      HTMLArkProps<'div'>,
+      {
+        children?: JSX.Element | ((state: Accessor<OptionItemState>) => JSX.Element)
+      }
+    >,
+    OptionItemProps {}
 
 export const MenuOptionItem = (props: MenuOptionItemProps) => {
   const menu = useMenuContext()
