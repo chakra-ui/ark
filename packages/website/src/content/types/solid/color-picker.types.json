@@ -1,11 +1,11 @@
 {
   "Area": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -126,54 +126,54 @@
     }
   },
   "View": { "format": { "type": "ColorFormat", "isRequired": true } },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "respectAlpha": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to include the alpha channel in the color"
     }
   },
-  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "AreaThumb": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
   "ValueText": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "placeholder": { "type": "string", "isRequired": false }
   },
-  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "SwatchGroup": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelInput": {
     "channel": { "type": "ExtendedColorChannel", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "FormatSelect": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "FormatSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelSlider": {
     "channel": { "type": "ColorChannel", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "FormatTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "FormatTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "SwatchTrigger": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the swatch trigger is disabled"
     }
   },
-  "AreaBackground": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "SwatchIndicator": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "AreaBackground": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "TransparencyGrid": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "size": { "type": "string", "isRequired": false }
   },
-  "EyeDropperTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ChannelSliderThumb": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ChannelSliderTrack": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelSliderTrack": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePresence } from '../presence'
 import { useRenderStrategyContext } from '../render-strategy'
 import { useDialogContext } from './dialog-context'
 
 export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 
-export const DialogBackdrop: ArkComponent<'div'> = (props: DialogBackdropProps) => {
+export const DialogBackdrop = (props: DialogBackdropProps) => {
   const api = useDialogContext()
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(

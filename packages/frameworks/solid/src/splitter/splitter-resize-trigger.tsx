@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { connect } from '@zag-js/splitter'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useSplitterContext } from './splitter-context'
 
@@ -9,9 +9,7 @@ type TriggerParams = Parameters<ReturnType<typeof connect>['getResizeTriggerProp
 
 export interface SplitterResizeTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerParams> {}
 
-export const SplitterResizeTrigger: ArkComponent<'button', TriggerParams> = (
-  props: SplitterResizeTriggerProps,
-) => {
+export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
   const api = useSplitterContext()
   const [triggerParams, restProps] = createSplitProps<TriggerParams>()(props, [
     'disabled',

@@ -1,7 +1,7 @@
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 
 export interface ToastGroupProps extends HTMLArkProps<'ol'> {}
 
-export const ToastGroup: ArkComponent<'ol'> = (props: ToastGroupProps) => {
+export const ToastGroup = (props: ToastGroupProps) => {
   return <ark.ol {...props} />
 }

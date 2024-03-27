@@ -1,6 +1,6 @@
 {
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -69,7 +69,7 @@
       "description": "The value of switch input. Useful for form submission."
     }
   },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Thumb": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Index, Show } from 'solid-js'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './select-context'
 
 export interface SelectControlProps extends HTMLArkProps<'div'> {}
 
-export const SelectControl: ArkComponent<'div'> = (props: SelectControlProps) => {
+export const SelectControl = (props: SelectControlProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
   const isValueEmpty = createMemo(() => api().value.length === 0)

@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
-export interface CarouselViewportProps extends HTMLArkProps<'span'> {}
+export interface CarouselViewportProps extends HTMLArkProps<'div'> {}
 
-export const CarouselViewport: ArkComponent<'span'> = (props: CarouselViewportProps) => {
+export const CarouselViewport = (props: CarouselViewportProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().viewportProps, props)
 

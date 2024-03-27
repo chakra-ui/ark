@@ -2,7 +2,7 @@ import type { OptionItemProps, OptionItemState } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useMenuContext } from './menu-context'
@@ -13,9 +13,7 @@ interface ElementProps extends OptionItemProps {
 
 export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const MenuOptionItem: ArkComponent<'div', MenuOptionItemProps> = (
-  props: MenuOptionItemProps,
-) => {
+export const MenuOptionItem = (props: MenuOptionItemProps) => {
   const menu = useMenuContext()
 
   const [optionProps, localProps] = createSplitProps<OptionItemProps>()(props, [

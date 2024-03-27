@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useSliderContext } from './slider-context'
 
 export interface SliderLabelProps extends HTMLArkProps<'label'> {}
 
-export const SliderLabel: ArkComponent<'label'> = (props: SliderLabelProps) => {
+export const SliderLabel = (props: SliderLabelProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 

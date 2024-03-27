@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { PaginationProvider } from './pagination-context'
@@ -13,9 +13,7 @@ interface ElementProps extends UsePaginationProps {
 
 export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, ElementProps> {}
 
-export const PaginationRoot: ArkComponent<'nav', PaginationRootProps> = (
-  props: PaginationRootProps,
-) => {
+export const PaginationRoot = (props: PaginationRootProps) => {
   const [paginationParams, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'dir',

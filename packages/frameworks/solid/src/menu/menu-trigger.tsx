@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useMenuContext } from './menu-context'
 
 export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 
-export const MenuTrigger: ArkComponent<'button'> = (props: MenuTriggerProps) => {
+export const MenuTrigger = (props: MenuTriggerProps) => {
   const api = useMenuContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
@@ -13,6 +13,6 @@ export const MenuTrigger: ArkComponent<'button'> = (props: MenuTriggerProps) => 
     () => ({ 'aria-controls': presenceApi().isUnmounted && null }),
     props,
   )
-
+  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

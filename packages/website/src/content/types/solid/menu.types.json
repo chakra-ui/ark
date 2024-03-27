@@ -5,7 +5,7 @@
       "isRequired": true,
       "description": "The `id` of the menu item option."
     },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -138,19 +138,19 @@
       "description": "The values of radios and checkboxes in the menu."
     }
   },
-  "Arrow": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Content": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Trigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ArrowTip": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": {
     "id": {
       "type": "string",
       "isRequired": true,
       "description": "The `id` of the element that provides accessibility label to the option group"
     },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "Separator": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
   "OptionItem": {
     "name": {
       "type": "string",
@@ -163,7 +163,7 @@
       "description": "Whether the option is a radio or a checkbox"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
@@ -190,11 +190,11 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "Positioner": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "TriggerItem": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ContextTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TriggerItem": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ContextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroupLabel": {
     "for": { "type": "string", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   }
 }

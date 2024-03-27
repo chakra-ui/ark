@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import type { ItemState } from '@zag-js/tree-view'
 import { type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { TreeViewBranchProvider, type ItemProps } from './tree-view-branch-context'
@@ -15,7 +15,7 @@ interface ElementProps extends ItemProps {
 
 export interface TreeViewBranchProps extends Assign<HTMLArkProps<'li'>, ElementProps> {}
 
-export const TreeViewBranch: ArkComponent<'li', ElementProps> = (props: TreeViewBranchProps) => {
+export const TreeViewBranch = (props: TreeViewBranchProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'id'])
   const api = useTreeViewContext()
   const depth = useTreeViewDepthContext()

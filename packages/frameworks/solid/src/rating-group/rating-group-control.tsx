@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useRatingGroupContext } from './rating-group-context'
@@ -12,9 +12,7 @@ interface ElementProps {
 
 export interface RatingGroupControlProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const RatingGroupControl: ArkComponent<'div', ElementProps> = (
-  props: RatingGroupControlProps,
-) => {
+export const RatingGroupControl = (props: RatingGroupControlProps) => {
   const api = useRatingGroupContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
