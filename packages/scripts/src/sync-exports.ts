@@ -7,7 +7,7 @@ import path, { dirname } from 'path'
  * Copy all index.ts files from react to solid
  */
 const main = async () => {
-  const rootDir = dirname(findUpSync('pnpm-lock.yaml')!)
+  const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'packages', 'frameworks'))
 
   const indices = await globby(['./react/src/**/index.ts'])

@@ -23,8 +23,8 @@
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
-    "storydocs": "pnpm --filter=@ark-ui/scripts document:stories vue",
-    "typedocs": "pnpm --filter=@ark-ui/scripts document:types vue",
+    "storydocs": "bun run --cwd ../../scripts document:stories vue",
+    "typedocs": "bun run --cwd ../../scripts document:types vue",
     "storybook": "histoire dev",
     "release-it": "release-it --config ../../../release-it.json"
   },

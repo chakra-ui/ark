@@ -1,9 +1,7 @@
 import { createContext } from '../create-context'
 import { type UseMenuReturn } from './use-menu'
 
-export const [MenuProvider, useMenuContext] = createContext<
-  UseMenuReturn['api'] | undefined
->({
+export const [MenuProvider, useMenuContext] = createContext<UseMenuReturn['api'] | undefined>({
   name: 'MenuContext',
   hookName: 'useMenuContext',
   providerName: '<MenuProvider />',

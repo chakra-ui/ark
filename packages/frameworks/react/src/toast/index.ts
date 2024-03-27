@@ -10,13 +10,13 @@ import { useToastContext, type UseToastContext } from './use-toast-context'
 export * as Toast from './toast'
 
 export {
-  createToaster,
   ToastCloseTrigger,
   ToastContext,
   ToastDescription,
   ToastGroup,
   ToastRoot,
   ToastTitle,
+  createToaster,
   useToastContext,
 }
 
