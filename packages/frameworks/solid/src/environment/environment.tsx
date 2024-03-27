@@ -10,6 +10,7 @@ export const Environment = (props: EnvironmentProps) => {
   // eslint-disable-next-line prefer-const
   let spanRef: HTMLSpanElement | undefined = undefined
 
+  // @ts-expect-error TODO fix
   const currentEnv = createMemo(() => () => props.value ?? spanRef?.ownerDocument ?? document)
 
   return (

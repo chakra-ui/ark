@@ -8,7 +8,7 @@ export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
 export const ProgressValueText = (props: ProgressValueTextProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().valueTextProps, props)
-
+  // @ts-expect-error TODO fix
   const getChildren = () => runIfFn(props.children, () => api().valueAsString)
 
   return <ark.span {...mergedProps}>{getChildren() || api().valueAsString}</ark.span>

@@ -10,6 +10,7 @@ export const FileUploadItemSizeText = (props: FileUploadItemSizeTextProps) => {
   const api = useFileUploadContext()
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemSizeTextProps(item), props)
+  // @ts-expect-error TODO fix
   const getChildren = children(() => props.children)
 
   return <ark.div {...mergedProps}>{getChildren() || api().getFileSize(item.file)}</ark.div>

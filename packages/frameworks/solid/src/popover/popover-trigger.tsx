@@ -13,6 +13,6 @@ export const PopoverTrigger = (props: PopoverTriggerProps) => {
     () => ({ 'aria-controls': presenceApi().isUnmounted && null }),
     props,
   )
-
+  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

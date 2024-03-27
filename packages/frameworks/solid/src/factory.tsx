@@ -11,21 +11,20 @@ type JsxElements = {
 
 type PropsFn<T extends ElementType> = (
   userProps?: JSX.IntrinsicElements[T],
-) => Omit<JSX.HTMLAttributes<HTMLElement>, 'ref'>
+) => JSX.HTMLAttributes<HTMLElement>
 
-type PolyProps<T extends ElementType> = {
+type PolymorphicProps<T extends ElementType> = {
   asChild?: boolean
   children?: JSX.Element | ((props: PropsFn<T>) => JSX.Element)
 }
 
-export type HTMLArkProps<E extends ElementType> = Assign<JSX.IntrinsicElements[E], PolyProps<E>>
-export type ArkComponentProps<E extends ElementType> = Assign<ComponentProps<E>, PolyProps<E>>
+type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
 
-export type ArkComponent<E extends ElementType> = {
-  (props: ArkComponentProps<E>): JSX.Element
+type ArkComponent<E extends ElementType> = {
+  (props: HTMLArkProps<E>): JSX.Element
 }
 
-export const withAsProp = <T extends ElementType>(Component: T) => {
+const withAsProp = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
     const [localProps, otherProps] = splitProps(props, ['asChild'])
 
@@ -33,11 +32,14 @@ export const withAsProp = <T extends ElementType>(Component: T) => {
       if (typeof otherProps.children !== 'function') {
         throw new Error('Children must be a function')
       }
-
-      return otherProps.children((userProps) => ({
-        ref: otherProps.ref,
-        ...mergeProps(otherProps, userProps ?? {}),
-      }))
+      return (
+        <>
+          {otherProps.children((userProps) => ({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ...mergeProps(otherProps, userProps ?? ({} as any)),
+          }))}
+        </>
+      )
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -50,7 +52,7 @@ function jsxFactory() {
   const cache = new Map()
 
   return new Proxy(withAsProp, {
-    apply(_target, _thisArg, argArray) {
+    apply(target, thisArg, argArray) {
       return withAsProp(argArray[0])
     },
     get(_, element) {
@@ -64,3 +66,4 @@ function jsxFactory() {
 }
 
 export const ark = jsxFactory()
+export type { HTMLArkProps }

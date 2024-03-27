@@ -1,4 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
+import user from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { ark } from './factory'
 
 const ComponentUnderTest = () => (
@@ -46,38 +48,39 @@ describe('Ark Factory', () => {
     expect(screen.getByText('Ark UI')).toBeVisible()
   })
 
-  // it('should merge events', async () => {
-  //   const onClickParent = vi.fn()
-  //   const onClickChild = vi.fn()
-  //   render(() => (
-  //     <ark.div data-testid="parent" onClick={onClickParent} asChild>
-  //       {(props) => <ark.span data-testid="child" {...props({ onClick: onClickChild })} />}
-  //     </ark.div>
-  //   ))
-  //   await user.click(screen.getByTestId('child'))
-  //   expect(onClickParent).toHaveBeenCalled()
-  //   expect(onClickChild).toHaveBeenCalled()
-  // })
+  // TODO: Fix this test
+  it.skip('should merge events', async () => {
+    const onClickParent = vi.fn()
+    const onClickChild = vi.fn()
+    render(() => (
+      <ark.div data-testid="parent" onClick={onClickParent} asChild>
+        {(props) => <ark.span data-testid="child" {...props({ onClick: onClickChild })} />}
+      </ark.div>
+    ))
+    await user.click(screen.getByTestId('child'))
+    expect(onClickParent).toHaveBeenCalled()
+    expect(onClickChild).toHaveBeenCalled()
+  })
 
-  //   it('should propagate asChild', async () => {
-  //     render(
-  //       <ark.div data-testid="parent" asChild>
-  //         <ark.span asChild>
-  //           <ark.span>Ark UI</ark.span>
-  //         </ark.span>
-  //       </ark.div>,
-  //     )
-  //     expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
-  //   })
+  it.skip('should propagate asChild', async () => {
+    render(() => (
+      <ark.div data-testid="parent" asChild>
+        <ark.span asChild>
+          <ark.span>Ark UI</ark.span>
+        </ark.span>
+      </ark.div>
+    ))
+    expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
+  })
 
-  //   it('should stop propagate asChild', async () => {
-  //     render(
-  //       <ark.div data-testid="parent" asChild>
-  //         <ark.span asChild={false}>
-  //           <ark.span>Ark UI</ark.span>
-  //         </ark.span>
-  //       </ark.div>,
-  //     )
-  //     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
-  //   })
+  it('should stop propagate asChild', async () => {
+    render(() => (
+      <ark.div data-testid="parent" asChild>
+        <ark.span asChild={false}>
+          <ark.span>Ark UI</ark.span>
+        </ark.span>
+      </ark.div>
+    ))
+    expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
+  })
 })
