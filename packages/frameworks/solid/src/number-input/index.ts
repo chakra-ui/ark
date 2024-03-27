@@ -3,7 +3,7 @@ import type {
   ValueChangeDetails as NumberInputValueChangeDetails,
   ValueInvalidDetails as NumberInputValueInvalidDetails,
 } from '@zag-js/number-input'
-import { useNumberInputContext, type NumberInputContext } from './number-input-context'
+import { NumberInputContext, type NumberInputContextProps } from './number-input-context'
 import { NumberInputControl, type NumberInputControlProps } from './number-input-control'
 import {
   NumberInputDecrementTrigger,
@@ -17,10 +17,12 @@ import { NumberInputInput, type NumberInputInputProps } from './number-input-inp
 import { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
 import { NumberInputRoot, type NumberInputRootProps } from './number-input-root'
 import { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
+import { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context'
 
 export * as NumberInput from './number-input'
 
 export {
+  NumberInputContext,
   NumberInputControl,
   NumberInputDecrementTrigger,
   NumberInputIncrementTrigger,
@@ -32,7 +34,7 @@ export {
 }
 
 export type {
-  NumberInputContext,
+  NumberInputContextProps,
   NumberInputControlProps,
   NumberInputDecrementTriggerProps,
   NumberInputFocusChangeDetails,
@@ -43,4 +45,5 @@ export type {
   NumberInputScrubberProps,
   NumberInputValueChangeDetails,
   NumberInputValueInvalidDetails,
+  UseNumberInputContext,
 }

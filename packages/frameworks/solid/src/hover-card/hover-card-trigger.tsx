@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useHoverCardContext } from './hover-card-context'
+import { useHoverCardContext } from './use-hover-card-context'
 
 export interface HoverCardTriggerProps extends HTMLArkProps<'button'> {}
 

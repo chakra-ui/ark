@@ -3,8 +3,8 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { ColorPickerAreaProvider } from './color-picker-area-context'
-import { useColorPickerContext } from './color-picker-context'
+import { ColorPickerAreaProvider } from './use-color-picker-area-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
 

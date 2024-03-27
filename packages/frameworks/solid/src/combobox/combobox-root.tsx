@@ -1,5 +1,4 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -8,19 +7,12 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import type { Assign, CollectionItem } from '../types'
-import { ComboboxProvider } from './combobox-context'
-import { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
+import { useCombobox, type UseComboboxProps } from './use-combobox'
+import { ComboboxProvider } from './use-combobox-context'
 
 export interface ComboboxRootProps<T extends CollectionItem>
-  extends Assign<
-      Assign<
-        HTMLArkProps<'div'>,
-        { children?: JSX.Element | ((api: UseComboboxReturn<T>) => JSX.Element) }
-      >,
-      UseComboboxProps<T>
-    >,
+  extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
     UsePresenceProps {}
 
 export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<T>) => {
@@ -67,12 +59,11 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
   const api = useCombobox(useComboboxProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <ComboboxProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps}>{getChildren()}</ark.div>
+        <ark.div {...mergedProps} />
       </PresenceProvider>
     </ComboboxProvider>
   )

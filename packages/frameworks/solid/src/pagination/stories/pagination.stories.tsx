@@ -11,9 +11,9 @@ export default meta
 
 export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
-    {(api) => (
-      <>
-        <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+    <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+    <Pagination.Context>
+      {(api) => (
         <For each={api().pages}>
           {(page, index) =>
             page.type === 'page' ? (
@@ -23,9 +23,9 @@ export const Basic = () => (
             )
           }
         </For>
-        <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-      </>
-    )}
+      )}
+    </Pagination.Context>
+    <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
   </Pagination.Root>
 )
 
@@ -40,9 +40,9 @@ export const Controlled = () => {
       page={currentPage()}
       onPageChange={(details) => setCurrentPage(details.page)}
     >
-      {(api) => (
-        <>
-          <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+      <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+      <Pagination.Context>
+        {(api) => (
           <For each={api().pages}>
             {(page, index) =>
               page.type === 'page' ? (
@@ -52,9 +52,9 @@ export const Controlled = () => {
               )
             }
           </For>
-          <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-        </>
-      )}
+        )}
+      </Pagination.Context>
+      <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
     </Pagination.Root>
   )
 }
@@ -72,9 +72,9 @@ export const Customized = () => {
         itemLabel: (details) => `Page ${details.page}`,
       }}
     >
-      {(api) => (
-        <>
-          <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+      <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
+      <Pagination.Context>
+        {(api) => (
           <For each={api().pages}>
             {(page, index) =>
               page.type === 'page' ? (
@@ -84,9 +84,9 @@ export const Customized = () => {
               )
             }
           </For>
-          <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
-        </>
-      )}
+        )}
+      </Pagination.Context>
+      <Pagination.NextTrigger>Next Page</Pagination.NextTrigger>
     </Pagination.Root>
   )
 }

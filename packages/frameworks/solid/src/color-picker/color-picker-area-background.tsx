@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useColorPickerAreaContext } from './color-picker-area-context'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerAreaContext } from './use-color-picker-area-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerAreaBackgroundProps extends HTMLArkProps<'div'> {}
 

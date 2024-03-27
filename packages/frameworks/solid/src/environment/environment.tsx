@@ -1,5 +1,5 @@
 import { createMemo, type JSX } from 'solid-js'
-import { EnvironmentProvider } from './environment-context'
+import { EnvironmentProvider } from './use-environment-context'
 
 export interface EnvironmentProps {
   children?: JSX.Element

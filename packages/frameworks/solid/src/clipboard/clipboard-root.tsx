@@ -1,17 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { ClipboardProvider } from './clipboard-context'
-import { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
+import { useClipboard, type UseClipboardProps } from './use-clipboard'
+import { ClipboardProvider } from './use-clipboard-context'
 
-interface ElementProps extends UseClipboardProps {
-  children?: JSX.Element | ((api: UseClipboardReturn) => JSX.Element)
-}
-
-export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, UseClipboardProps> {}
 
 export const ClipboardRoot = (props: ClipboardRootProps) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
@@ -24,11 +18,10 @@ export const ClipboardRoot = (props: ClipboardRootProps) => {
   ])
   const api = useClipboard(useClipboardProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <ClipboardProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps} />
     </ClipboardProvider>
   )
 }

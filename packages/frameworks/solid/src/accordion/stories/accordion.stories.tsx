@@ -39,12 +39,14 @@ export const RenderProp = () => {
       <Index each={items}>
         {(item) => (
           <Accordion.Item value={item()}>
-            {(api) => (
-              <>
-                <Accordion.ItemTrigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
-                <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
-              </>
-            )}
+            <Accordion.ItemContext>
+              {(api) => (
+                <>
+                  <Accordion.ItemTrigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
+                  <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
+                </>
+              )}
+            </Accordion.ItemContext>
           </Accordion.Item>
         )}
       </Index>

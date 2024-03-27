@@ -29,19 +29,19 @@ export const Basic = () => {
 export const RenderFn = () => {
   return (
     <Clipboard.Root value="https://ark-ui.com">
-      {(api) => (
-        <>
-          <Clipboard.Label>Copy this link</Clipboard.Label>
-          <Clipboard.Control>
-            <Clipboard.Input />
-            <Clipboard.Trigger>
-              <Show when={api().isCopied} fallback={<ClipboardCopyIcon />}>
+      <Clipboard.Label>Copy this link</Clipboard.Label>
+      <Clipboard.Control>
+        <Clipboard.Input />
+        <Clipboard.Trigger>
+          <Clipboard.Context>
+            {(context) => (
+              <Show when={context().isCopied} fallback={<ClipboardCopyIcon />}>
                 <CheckIcon />
               </Show>
-            </Clipboard.Trigger>
-          </Clipboard.Control>
-        </>
-      )}
+            )}
+          </Clipboard.Context>
+        </Clipboard.Trigger>
+      </Clipboard.Control>
     </Clipboard.Root>
   )
 }

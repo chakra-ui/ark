@@ -7,12 +7,11 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
-import { HoverCardProvider } from './hover-card-context'
-import { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
+import { useHoverCard, type UseHoverCardProps } from './use-hover-card'
+import { HoverCardProvider } from './use-hover-card-context'
 
 export interface HoverCardRootProps extends UseHoverCardProps, UsePresenceProps {
-  children?: JSX.Element | ((api: UseHoverCardReturn) => JSX.Element)
+  children?: JSX.Element
 }
 export const HoverCardRoot = (props: HoverCardRootProps) => {
   const [presenceProps, hoverCardProps] = splitPresenceProps(props)
@@ -29,11 +28,10 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
   ])
   const api = useHoverCard(useHoverCardProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <HoverCardProvider value={api}>
-      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      <PresenceProvider value={apiPresence}>{localProps.children}</PresenceProvider>
     </HoverCardProvider>
   )
 }

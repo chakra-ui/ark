@@ -1,5 +1,4 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -8,20 +7,13 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
-import { ColorPickerProvider } from './color-picker-context'
-import {
-  useColorPicker,
-  type UseColorPickerProps,
-  type UseColorPickerReturn,
-} from './use-color-picker'
+import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
+import { ColorPickerProvider } from './use-color-picker-context'
 
-interface ElementProps extends UseColorPickerProps, UsePresenceProps {
-  children?: JSX.Element | ((api: UseColorPickerReturn) => JSX.Element)
-}
-
-export interface ColorPickerRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface ColorPickerRootProps
+  extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
+    UsePresenceProps {}
 
 export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
@@ -54,12 +46,11 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   const api = useColorPicker(useColorPickerProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <ColorPickerProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps}>{getChildren()}</ark.div>
+        <ark.div {...mergedProps} />
       </PresenceProvider>
       <input {...api().hiddenInputProps} />
     </ColorPickerProvider>

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
-import { useProgressContext } from './progress-context'
+import { useProgressContext } from './use-progress-context'
 
 export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
 

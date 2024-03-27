@@ -8,7 +8,7 @@ import {
   type ParentProps,
 } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { LocaleContextProvider } from './locale-context'
+import { LocaleContextProvider } from './use-locale-context'
 
 export interface LocaleProviderProps extends LocaleOptions, ParentProps {
   /**

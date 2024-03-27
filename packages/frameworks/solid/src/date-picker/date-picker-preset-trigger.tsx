@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerPresetTriggerProps
   extends Assign<HTMLArkProps<'button'>, PresetTriggerProps> {}

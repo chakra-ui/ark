@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useNumberInputContext } from './number-input-context'
+import { useNumberInputContext } from './use-number-input-context'
 
 export interface NumberInputControlProps extends HTMLArkProps<'div'> {}
 

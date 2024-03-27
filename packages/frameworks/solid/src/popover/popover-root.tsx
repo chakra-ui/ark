@@ -7,12 +7,11 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
-import { PopoverProvider } from './popover-context'
-import { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
+import { usePopover, type UsePopoverProps } from './use-popover'
+import { PopoverProvider } from './use-popover-context'
 
 export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {
-  children?: JSX.Element | ((api: UsePopoverReturn) => JSX.Element)
+  children?: JSX.Element
 }
 
 export const PopoverRoot = (props: PopoverRootProps) => {
@@ -38,11 +37,10 @@ export const PopoverRoot = (props: PopoverRootProps) => {
   ])
   const api = usePopover(usePopoverProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <PopoverProvider value={api}>
-      <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      <PresenceProvider value={apiPresence}>{localProps.children}</PresenceProvider>
     </PopoverProvider>
   )
 }

@@ -8,12 +8,11 @@ import {
   type UsePresenceProps,
 } from '../presence'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../render-strategy'
-import { runIfFn } from '../run-if-fn'
-import { DialogProvider } from './dialog-context'
-import { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
+import { useDialog, type UseDialogProps } from './use-dialog'
+import { DialogProvider } from './use-dialog-context'
 
 export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
-  children?: JSX.Element | ((api: UseDialogReturn) => JSX.Element)
+  children?: JSX.Element
 }
 
 export const DialogRoot = (props: DialogRootProps) => {
@@ -44,12 +43,11 @@ export const DialogRoot = (props: DialogRootProps) => {
 
   const api = useDialog(useDialogProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <DialogProvider value={api}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+        <PresenceProvider value={apiPresence}>{localProps.children}</PresenceProvider>
       </RenderStrategyProvider>
     </DialogProvider>
   )

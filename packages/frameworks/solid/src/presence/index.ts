@@ -1,8 +1,12 @@
 import { Presence, type PresenceProps } from './presence'
-import { PresenceProvider, usePresenceContext, type PresenceContext } from './presence-context'
 import { splitPresenceProps } from './split-presence-props'
 import { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence'
+import {
+  PresenceProvider,
+  usePresenceContext,
+  type UsePresenceContext,
+} from './use-presence-context'
 
 export { Presence, PresenceProvider, splitPresenceProps, usePresence, usePresenceContext }
 
-export type { PresenceContext, PresenceProps, UsePresenceProps, UsePresenceReturn }
+export type { PresenceProps, UsePresenceContext, UsePresenceProps, UsePresenceReturn }

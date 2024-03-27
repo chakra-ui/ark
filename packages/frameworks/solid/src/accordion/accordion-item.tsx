@@ -1,37 +1,37 @@
-import type { ItemProps, ItemState } from '@zag-js/accordion'
+import { type ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
-import { type Accessor, type JSX } from 'solid-js'
+import { Collapsible } from '../collapsible'
+import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { createSplitProps } from '../create-split-props'
-import { ark, type HTMLArkProps } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { type HTMLArkProps } from '../factory'
 import { useRenderStrategyContext } from '../render-strategy'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { AccordionItemPropsProvider, AccordionItemProvider } from './use-accordion-item-context'
 
-interface ElementProps extends ItemProps {
-  children?: JSX.Element | ((state: Accessor<ItemState>) => JSX.Element)
-}
-
-export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface AccordionItemProps
+  extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
+    ItemProps {}
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
-
-  const api = useAccordionContext()
+  const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const presenceApi = usePresence(
-    mergeProps(renderStrategyProps, () => ({ present: api().getItemState(itemProps).isOpen })),
-  )
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
-  const getChildren = () => runIfFn(localProps.children, () => api().getItemState(itemProps))
+  const mergedProps = mergeProps(context().getItemProps(itemProps), localProps)
+  const itemState = () => context().getItemState(itemProps)
+  const itemContentProps = context().getItemContentProps(itemProps)
 
   return (
-    <AccordionItemProvider value={itemProps}>
-      <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps}>{getChildren()}</ark.div>
-      </PresenceProvider>
-    </AccordionItemProvider>
+    <AccordionItemPropsProvider value={itemProps}>
+      <AccordionItemProvider value={itemState}>
+        {/* @ts-expect-error TODO fix dir typing */}
+        <Collapsible.Root
+          open={itemState().isOpen}
+          ids={{ content: itemContentProps.id }}
+          {...renderStrategyProps}
+          {...mergedProps}
+        />
+      </AccordionItemProvider>
+    </AccordionItemPropsProvider>
   )
 }

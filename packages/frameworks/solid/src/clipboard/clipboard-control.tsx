@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useClipboardContext } from './clipboard-context'
+import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardControlProps extends HTMLArkProps<'div'> {}
 

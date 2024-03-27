@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useTooltipContext } from './tooltip-context'
+import { useTooltipContext } from './use-tooltip-context'
 
 export interface TooltipArrowTipProps extends HTMLArkProps<'div'> {}
 

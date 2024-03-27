@@ -9,14 +9,14 @@ import {
   type UsePresenceProps,
 } from '../presence'
 import { runIfFn } from '../run-if-fn'
+import { useMenu, type UseMenuProps } from './use-menu'
 import {
   MenuMachineProvider,
   MenuProvider,
   MenuTriggerItemProvider,
   useMenuContext,
   useMenuMachineContext,
-} from './menu-context'
-import { useMenu, type UseMenuProps } from './use-menu'
+} from './use-menu-context'
 
 export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
   children?: JSX.Element | ((api: Accessor<menu.Api<PropTypes>>) => JSX.Element)

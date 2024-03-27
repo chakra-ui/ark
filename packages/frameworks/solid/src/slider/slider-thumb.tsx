@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useSliderContext } from './slider-context'
+import { useSliderContext } from './use-slider-context'
 
 export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
 

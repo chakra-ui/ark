@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { children } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSliderContext } from './slider-context'
+import { useSliderContext } from './use-slider-context'
 
 export interface SliderValueTextProps extends HTMLArkProps<'div'> {}
 

@@ -77,18 +77,18 @@ export const Controlled = () => {
 
 export const RenderFn = () => (
   <Popover.Root>
-    {(api) => (
-      <>
-        <Popover.Trigger>Click Me</Popover.Trigger>
-        <Popover.Positioner>
+    <Popover.Trigger>Click Me</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context>
+        {(context) => (
           <Popover.Content>
             <Popover.Title>Title</Popover.Title>
-            <Popover.Description>Description: {api().isOpen.toString()}</Popover.Description>
+            <Popover.Description>Description: {context().isOpen.toString()}</Popover.Description>
             <Popover.CloseTrigger>Close</Popover.CloseTrigger>
           </Popover.Content>
-        </Popover.Positioner>
-      </>
-    )}
+        )}
+      </Popover.Context>
+    </Popover.Positioner>
   </Popover.Root>
 )
 

@@ -3,7 +3,7 @@ import { Show } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresence } from '../presence'
 import { useRenderStrategyContext } from '../render-strategy'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext } from './use-dialog-context'
 
 export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 

@@ -3,8 +3,8 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useColorPickerContext } from './color-picker-context'
-import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
+import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerSwatchProvider } from './use-color-picker-swatch-context'
 
 export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {}
 

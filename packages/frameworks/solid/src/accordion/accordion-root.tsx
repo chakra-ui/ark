@@ -4,8 +4,8 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type UsePresenceProps } from '../presence'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../render-strategy'
 import type { Assign } from '../types'
-import { AccordionProvider } from './accordion-context'
 import { useAccordion, type UseAccordionProps } from './use-accordion'
+import { AccordionProvider } from './use-accordion-context'
 
 interface ElementProps extends UseAccordionProps, UsePresenceProps {}
 export interface AccordionRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}

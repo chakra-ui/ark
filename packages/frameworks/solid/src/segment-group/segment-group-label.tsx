@@ -1,7 +1,7 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSegmentGroupContext } from './segment-group-context'
+import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
 

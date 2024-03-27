@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 

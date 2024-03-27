@@ -5,7 +5,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 interface ElementProps extends OptionItemProps {
   children?: JSX.Element | ((state: Accessor<OptionItemState>) => JSX.Element)

@@ -1,21 +1,23 @@
 import { mergeProps } from '@zag-js/solid'
+import { useCollapsibleContext } from '../collapsible'
 import { ark, type HTMLArkProps } from '../factory'
-import { usePresenceContext } from '../presence'
-import { useAccordionContext } from './accordion-context'
-import { useAccordionItemContext } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-context'
 
 export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
 
 export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
-  const api = useAccordionContext()
-  const item = useAccordionItemContext()
-  const presenceApi = usePresenceContext()
+  const context = useAccordionContext()
+  const itemProps = useAccordionItemPropsContext()
+  const collapsible = useCollapsibleContext()
+  const triggerProps = context().getItemTriggerProps(itemProps)
 
   const mergedProps = mergeProps(
-    () => api().getItemTriggerProps(item),
-    () => ({ 'aria-controls': presenceApi().isUnmounted && null }),
+    () => context().getItemTriggerProps(itemProps),
+    () => ({
+      'aria-controls': collapsible().isUnmounted ? undefined : triggerProps['aria-controls'],
+    }),
     props,
   )
-  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

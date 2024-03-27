@@ -1,4 +1,4 @@
-import { Index, createSignal } from 'solid-js'
+import { Index, Show, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { RatingGroup } from '../'
 
@@ -12,15 +12,23 @@ export const Basic = () => (
   <RatingGroup.Root count={5} value={3}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -29,17 +37,23 @@ export const HalfRatings = () => (
   <RatingGroup.Root count={5} value={3} allowHalf>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) =>
-                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
-              }
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -48,17 +62,23 @@ export const InitialValue = () => (
   <RatingGroup.Root count={5} value={2} readOnly>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) =>
-                api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
-              }
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -75,17 +95,27 @@ export const Controlled = () => {
     >
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>
-        {(api) => (
-          <Index each={api().items}>
-            {(index) => (
-              <RatingGroup.Item index={index()}>
-                {(api) =>
-                  api().isHalf ? <IconHalf /> : api().isHighlighted ? <IconFull /> : <IconEmpty />
-                }
-              </RatingGroup.Item>
-            )}
-          </Index>
-        )}
+        <RatingGroup.Context>
+          {(context) => (
+            <Index each={context().items}>
+              {(index) => (
+                <RatingGroup.Item index={index()}>
+                  <RatingGroup.ItemContext>
+                    {(context) =>
+                      context().isHalf ? (
+                        <IconHalf />
+                      ) : context().isHighlighted ? (
+                        <IconFull />
+                      ) : (
+                        <IconEmpty />
+                      )
+                    }
+                  </RatingGroup.ItemContext>
+                </RatingGroup.Item>
+              )}
+            </Index>
+          )}
+        </RatingGroup.Context>
       </RatingGroup.Control>
     </RatingGroup.Root>
   )
@@ -95,15 +125,23 @@ export const Disabled = () => (
   <RatingGroup.Root count={5} value={3} disabled>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -112,15 +150,23 @@ export const ReadOnly = () => (
   <RatingGroup.Root count={5} value={3} readOnly>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )
@@ -129,15 +175,23 @@ export const FormUsage = () => (
   <RatingGroup.Root name="my-rating" count={5} value={3}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
-      {(api) => (
-        <Index each={api().items}>
-          {(index) => (
-            <RatingGroup.Item index={index()}>
-              {(api) => (api().isHighlighted ? <IconFull /> : <IconEmpty />)}
-            </RatingGroup.Item>
-          )}
-        </Index>
-      )}
+      <RatingGroup.Context>
+        {(context) => (
+          <Index each={context().items}>
+            {(index) => (
+              <RatingGroup.Item index={index()}>
+                <RatingGroup.ItemContext>
+                  {(context) => (
+                    <Show when={context().isHighlighted} fallback={<IconEmpty />}>
+                      <IconFull />
+                    </Show>
+                  )}
+                </RatingGroup.ItemContext>
+              </RatingGroup.Item>
+            )}
+          </Index>
+        )}
+      </RatingGroup.Context>
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

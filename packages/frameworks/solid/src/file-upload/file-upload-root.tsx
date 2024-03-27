@@ -1,17 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
-import { FileUploadProvider } from './file-upload-context'
-import { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
+import { useFileUpload, type UseFileUploadProps } from './use-file-upload'
+import { FileUploadProvider } from './use-file-upload-context'
 
-interface ElementProps extends UseFileUploadProps {
-  children?: JSX.Element | ((api: UseFileUploadReturn) => JSX.Element)
-}
-
-export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
+export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
 
 export const FileUploadRoot = (props: FileUploadRootProps) => {
   const [fileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
@@ -37,11 +31,10 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
 
   const api = useFileUpload(fileUploadProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <FileUploadProvider value={api}>
-      <ark.div {...mergedProps}>{getChildren()}</ark.div>
+      <ark.div {...mergedProps} />
     </FileUploadProvider>
   )
 }

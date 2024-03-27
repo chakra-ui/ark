@@ -3,7 +3,7 @@ import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 

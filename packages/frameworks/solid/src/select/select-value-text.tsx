@@ -1,7 +1,7 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 interface ElementProps {
   placeholder?: string

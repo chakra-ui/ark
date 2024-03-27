@@ -28,17 +28,19 @@ export const RenderProp = () => (
       { id: 'b', size: 50 },
     ]}
   >
-    {(api) => (
-      <>
-        <Splitter.Panel id="a">
-          <button onClick={() => api().setSize('a', 10)}>Set to 10%</button>
-        </Splitter.Panel>
-        <Splitter.ResizeTrigger id="a:b" />
-        <Splitter.Panel id="b">
-          <button onClick={() => api().setSize('b', 10)}>Set to 10%</button>
-        </Splitter.Panel>
-      </>
-    )}
+    <Splitter.Context>
+      {(api) => (
+        <>
+          <Splitter.Panel id="a">
+            <button onClick={() => api().setSize('a', 10)}>Set to 10%</button>
+          </Splitter.Panel>
+          <Splitter.ResizeTrigger id="a:b" />
+          <Splitter.Panel id="b">
+            <button onClick={() => api().setSize('b', 10)}>Set to 10%</button>
+          </Splitter.Panel>
+        </>
+      )}
+    </Splitter.Context>
   </Splitter.Root>
 )
 

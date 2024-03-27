@@ -3,7 +3,7 @@ import { Show, children, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
-import { useClipboardContext } from './clipboard-context'
+import { useClipboardContext } from './use-clipboard-context'
 
 interface ElementProps {
   copied?: JSX.Element

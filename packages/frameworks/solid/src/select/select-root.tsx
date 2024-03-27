@@ -1,5 +1,4 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
@@ -8,19 +7,12 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import type { Assign, CollectionItem } from '../types'
-import { SelectProvider } from './select-context'
-import { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
+import { useSelect, type UseSelectProps } from './use-select'
+import { SelectProvider } from './use-select-context'
 
 export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<
-      Assign<
-        HTMLArkProps<'div'>,
-        { children?: JSX.Element | ((api: UseSelectReturn<T>) => JSX.Element) }
-      >,
-      UseSelectProps<T>
-    >,
+  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
     UsePresenceProps {}
 
 export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) => {
@@ -59,12 +51,11 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
   const api = useSelect(useSelectProps)
   const presenceApi = usePresence(mergeProps(() => ({ present: api().isOpen }), presenceProps))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
-  const getChildren = () => runIfFn(localProps.children, api)
 
   return (
     <SelectProvider value={api}>
       <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps}>{getChildren()}</ark.div>
+        <ark.div {...mergedProps} />
       </PresenceProvider>
     </SelectProvider>
   )

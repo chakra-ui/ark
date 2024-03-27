@@ -9,7 +9,6 @@ import {
   ColorPickerAreaBackground,
   type ColorPickerAreaBackgroundProps,
 } from './color-picker-area-background'
-import { useColorPickerAreaContext, type ColorPickerAreaContext } from './color-picker-area-context'
 import { ColorPickerAreaThumb, type ColorPickerAreaThumbProps } from './color-picker-area-thumb'
 import {
   ColorPickerChannelInput,
@@ -20,10 +19,6 @@ import {
   type ColorPickerChannelSliderProps,
 } from './color-picker-channel-slider'
 import {
-  useColorPickerChannelSliderContext,
-  type ColorPickerChannelSliderContext,
-} from './color-picker-channel-slider-context'
-import {
   ColorPickerChannelSliderThumb,
   type ColorPickerChannelSliderThumbProps,
 } from './color-picker-channel-slider-thumb'
@@ -32,7 +27,7 @@ import {
   type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track'
 import { ColorPickerContent, type ColorPickerContentProps } from './color-picker-content'
-import { useColorPickerContext, type ColorPickerContext } from './color-picker-context'
+import { ColorPickerContext, type ColorPickerContextProps } from './color-picker-context'
 import { ColorPickerControl, type ColorPickerControlProps } from './color-picker-control'
 import {
   ColorPickerEyeDropperTrigger,
@@ -69,6 +64,7 @@ import {
 import { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker-trigger'
 import { ColorPickerValueText, type ColorPickerValueTextProps } from './color-picker-value-text'
 import { ColorPickerView, type ColorPickerViewProps } from './color-picker-view'
+import { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
 
 export * as ColorPicker from './color-picker'
 
@@ -81,6 +77,7 @@ export {
   ColorPickerChannelSliderThumb,
   ColorPickerChannelSliderTrack,
   ColorPickerContent,
+  ColorPickerContext,
   ColorPickerControl,
   ColorPickerEyeDropperTrigger,
   ColorPickerFormatSelect,
@@ -96,23 +93,19 @@ export {
   ColorPickerTrigger,
   ColorPickerValueText,
   ColorPickerView,
-  useColorPickerAreaContext,
-  useColorPickerChannelSliderContext,
   useColorPickerContext,
 }
 export type {
   ColorFormat,
   ColorPickerAreaBackgroundProps,
-  ColorPickerAreaContext,
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
-  ColorPickerChannelSliderContext,
   ColorPickerChannelSliderProps,
   ColorPickerChannelSliderThumbProps,
   ColorPickerChannelSliderTrackProps,
   ColorPickerContentProps,
-  ColorPickerContext,
+  ColorPickerContextProps,
   ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,
   ColorPickerFormatChangeDetails,
@@ -131,4 +124,5 @@ export type {
   ColorPickerValueChangeDetails,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
+  UseColorPickerContext,
 }

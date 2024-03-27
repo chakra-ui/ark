@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 

@@ -17,7 +17,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   const [itemProps, localProps] = splitItemProps(props)
   const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const mergedItemProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
   const itemState = context.getItemState(itemProps)
   const itemContentProps = context.getItemContentProps(itemProps)
 
@@ -30,7 +30,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
           open={itemState.isOpen}
           ids={{ content: itemContentProps.id }}
           {...renderStrategyProps}
-          {...mergedItemProps}
+          {...mergedProps}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>

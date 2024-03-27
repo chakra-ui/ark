@@ -40,16 +40,16 @@ export const Controlled = () => {
 
 export const RenderFn = () => (
   <Tooltip.Root>
-    {(api) => (
-      <>
-        <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
-        <Portal>
-          <Tooltip.Positioner>
-            <Tooltip.Content>This tooltip is open: {api().isOpen.toString()}</Tooltip.Content>
-          </Tooltip.Positioner>
-        </Portal>
-      </>
-    )}
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
+    <Portal>
+      <Tooltip.Positioner>
+        <Tooltip.Context>
+          {(context) => (
+            <Tooltip.Content>This tooltip is open: {context().isOpen.toString()}</Tooltip.Content>
+          )}
+        </Tooltip.Context>
+      </Tooltip.Positioner>
+    </Portal>
   </Tooltip.Root>
 )
 
