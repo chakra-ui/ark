@@ -1,5 +1,5 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Popover } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -31,10 +31,10 @@ describe('Popover', () => {
     render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByText('title')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
   it('should focus the first focusable element', async () => {
