@@ -40,14 +40,17 @@ const value = ref({
           <Menu.Content>
             <Menu.ItemGroup id="radio-group">
               <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
-              <Menu.OptionItem name="framework" type="radio" value="react" v-slot="{ isChecked }">
-                {{ isChecked ? '✅' : '' }} React
+              <Menu.OptionItem name="framework" type="radio" value="react">
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>React</Menu.OptionItemText>
               </Menu.OptionItem>
-              <Menu.OptionItem name="framework" type="radio" value="solid" v-slot="{ isChecked }">
-                {{ isChecked ? '✅' : '' }} Solid
+              <Menu.OptionItem name="framework" type="radio" value="solid">
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Solid</Menu.OptionItemText>
               </Menu.OptionItem>
-              <Menu.OptionItem name="framework" type="radio" value="vue" v-slot="{ isChecked }">
-                {{ isChecked ? '✅' : '' }} Solid
+              <Menu.OptionItem name="framework" type="radio" value="vue">
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Vue</Menu.OptionItemText>
               </Menu.OptionItem>
             </Menu.ItemGroup>
             <Menu.Root>
