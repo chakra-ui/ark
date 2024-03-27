@@ -1,15 +1,14 @@
 import * as menu from '@zag-js/menu'
-import { normalizeProps, useMachine } from '@zag-js/react'
+import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
-
 export interface UseMenuReturn {
   machine: ReturnType<typeof menu.machine>
-  api: menu.Api
+  api: menu.Api<PropTypes>
 }
 
 export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {

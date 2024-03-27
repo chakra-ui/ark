@@ -10,6 +10,7 @@ import pkg from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  logLevel: 'warn',
   plugins: [
     dts({
       entryRoot: 'src',
@@ -29,10 +30,10 @@ export default defineConfig({
     minify: false,
     lib: {
       entry: globbySync('src/**/index.ts'),
-      formats: ['es', 'cjs'],
       fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
     rollupOptions: {
+      logLevel: 'silent',
       external: [
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
