@@ -2,7 +2,8 @@ import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getParts } from '../../setup-test'
+import { Menu } from '..'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ContextMenuComponentUnderTest } from './context-menu'
 import { MenuItemGroupComponentUnderTest } from './menu-item-group'
@@ -17,9 +18,9 @@ describe('Menu', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  // it.skip.each(getExports(menuAnatomy))('should export %s', async (part) => {
-  //   expect(Menu[part]).toBeDefined()
-  // })
+  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
+    expect(Menu[part]).toBeDefined()
+  })
 
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(() => <ComponentUnderTest />)

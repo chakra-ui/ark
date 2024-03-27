@@ -55,18 +55,21 @@ export const Advanced = () => {
           <Menu.ItemGroup id="radio-group">
             <Menu.ItemGroupLabel for="radio-group">Radio Group</Menu.ItemGroupLabel>
             <Menu.OptionItem name="framework" type="radio" value="react">
-              {(itemState) => <>{itemState().isChecked ? '✅' : ''} React</>}
+              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+              <Menu.OptionItemText>React</Menu.OptionItemText>
             </Menu.OptionItem>
             <Menu.OptionItem name="framework" type="radio" value="solid">
-              {(itemState) => <>{itemState().isChecked ? '✅' : ''} Solid</>}
+              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+              <Menu.OptionItemText>Solid</Menu.OptionItemText>
             </Menu.OptionItem>
             <Menu.OptionItem name="framework" type="radio" value="vue">
-              {(itemState) => <>{itemState().isChecked ? '✅' : ''} Vue</>}
+              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+              <Menu.OptionItemText>Vue</Menu.OptionItemText>
             </Menu.OptionItem>
           </Menu.ItemGroup>
           <Menu.Root>
+            <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
             <Portal>
-              <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
               <Menu.Positioner>
                 <Menu.Content>
                   <Menu.Item id="twitter">Twitter</Menu.Item>

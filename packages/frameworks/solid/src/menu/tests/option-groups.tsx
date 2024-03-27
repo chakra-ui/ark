@@ -24,28 +24,35 @@ export const OptionGroupsComponentUnderTest = () => {
             <Menu.ItemGroup id="radio-group">
               <Menu.ItemGroupLabel for="radio-group">Radio Group</Menu.ItemGroupLabel>
               <Menu.OptionItem name="framework" type="radio" value="react">
-                {(api) => <>{api().isChecked ? '✅' : ''} React</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>React</Menu.OptionItemText>
               </Menu.OptionItem>
               <Menu.OptionItem name="framework" type="radio" value="solid">
-                {(api) => <>{api().isChecked ? '✅' : ''} Solid</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Solid</Menu.OptionItemText>
               </Menu.OptionItem>
               <Menu.OptionItem name="framework" type="radio" value="vue">
-                {(api) => <>{api().isChecked ? '✅' : ''} Vue</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Vue</Menu.OptionItemText>
               </Menu.OptionItem>
             </Menu.ItemGroup>
             <Menu.ItemGroup id="checkbox-group">
               <Menu.ItemGroupLabel for="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
               <Menu.OptionItem name="libraries" type="checkbox" value="zag-js">
-                {(api) => <>{api().isChecked ? '✅' : ''} zag-js</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Zag.js</Menu.OptionItemText>
               </Menu.OptionItem>
               <Menu.OptionItem name="libraries" type="checkbox" value="ark">
-                {(api) => <>{api().isChecked ? '✅' : ''} ark</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Ark UI</Menu.OptionItemText>
               </Menu.OptionItem>
               <Menu.OptionItem name="libraries" type="checkbox" value="panda">
-                {(api) => <>{api().isChecked ? '✅' : ''} panda</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Panda CSS</Menu.OptionItemText>
               </Menu.OptionItem>
               <Menu.OptionItem name="libraries" type="checkbox" value="chakra">
-                {(api) => <>{api().isChecked ? '✅' : ''} chakra</>}
+                <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
+                <Menu.OptionItemText>Chakra UI</Menu.OptionItemText>
               </Menu.OptionItem>
             </Menu.ItemGroup>
           </Menu.Content>

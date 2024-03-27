@@ -6,6 +6,10 @@ import {
   MenuContextTrigger as ContextTrigger,
   type MenuContextTriggerProps as ContextTriggerProps,
 } from './menu-context-trigger'
+import {
+  MenuIndicator as Indicator,
+  type MenuIndicatorProps as IndicatorProps,
+} from './menu-indicator'
 import { MenuItem as Item, type MenuItemProps as ItemProps } from './menu-item'
 import {
   MenuItemGroup as ItemGroup,
@@ -19,6 +23,14 @@ import {
   MenuOptionItem as OptionItem,
   type MenuOptionItemProps as OptionItemProps,
 } from './menu-option-item'
+import {
+  MenuOptionItemIndicator as OptionItemIndicator,
+  type MenuOptionItemIndicatorProps as OptionItemIndicatorProps,
+} from './menu-option-item-indicator'
+import {
+  MenuOptionItemText as OptionItemText,
+  type MenuOptionItemTextProps as OptionItemTextProps,
+} from './menu-option-item-text'
 import {
   MenuPositioner as Positioner,
   type MenuPositionerProps as PositionerProps,
@@ -39,10 +51,13 @@ export {
   ArrowTip,
   Content,
   ContextTrigger,
+  Indicator,
   Item,
   ItemGroup,
   ItemGroupLabel,
   OptionItem,
+  OptionItemIndicator,
+  OptionItemText,
   Positioner,
   Root,
   Separator,
@@ -54,11 +69,14 @@ export type {
   ArrowTipProps,
   ContentProps,
   ContextTriggerProps,
+  IndicatorProps,
   ItemGroupLabelProps,
   ItemGroupProps,
   ItemProps,
   OpenChangeDetails,
+  OptionItemIndicatorProps,
   OptionItemProps,
+  OptionItemTextProps,
   PositionerProps,
   RootProps,
   SelectionDetails,
