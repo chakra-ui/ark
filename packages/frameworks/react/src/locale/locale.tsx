@@ -1,7 +1,7 @@
 import { isRTL, trackLocale, type Locale, type LocaleOptions } from '@zag-js/i18n-utils'
 import { useEffect, useState, type ReactNode } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { LocaleContextProvider } from './locale-context'
+import { LocaleContextProvider } from './use-locale-context'
 
 export interface LocaleProviderProps extends LocaleOptions {
   /**
