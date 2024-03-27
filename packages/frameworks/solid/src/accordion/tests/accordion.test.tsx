@@ -1,5 +1,5 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Accordion } from '../'
@@ -162,13 +162,15 @@ describe('Accordion', () => {
 
   it('should lazy mount an accordion item', async () => {
     render(() => <ComponentUnderTest lazyMount collapsible />)
+    const button = screen.getByRole('button', { name: 'React Trigger' })
+
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+    await user.click(button)
 
     expect(screen.queryByText('React Content')).toBeVisible()
-    await user.click(screen.getByRole('button', { name: 'React Trigger' }))
+    await user.click(button)
 
-    expect(screen.queryByText('React Content')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeVisible())
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
@@ -188,6 +190,6 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
 
-    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })

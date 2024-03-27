@@ -1,5 +1,6 @@
 import { type ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { createSplitProps } from '../create-split-props'
@@ -18,7 +19,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
   const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
   const mergedProps = mergeProps(context().getItemProps(itemProps), localProps)
-  const itemState = () => context().getItemState(itemProps)
+  const itemState = createMemo(() => context().getItemState(itemProps))
   const itemContentProps = context().getItemContentProps(itemProps)
 
   return (
