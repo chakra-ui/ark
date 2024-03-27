@@ -2,7 +2,7 @@ import type { ItemProps, ItemState } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
 import { type Accessor, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useRenderStrategyContext } from '../render-strategy'
 import { runIfFn } from '../run-if-fn'
@@ -16,7 +16,7 @@ interface ElementProps extends ItemProps {
 
 export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const AccordionItem: ArkComponent<'div', ElementProps> = (props: AccordionItemProps) => {
+export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
 
   const api = useAccordionContext()

@@ -3,7 +3,7 @@ import type { ViewProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './date-picker-context'
@@ -16,7 +16,7 @@ interface ElementProps extends Required<ViewProps> {
 
 export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const DatePickerView: ArkComponent<'div', ElementProps> = (props: DatePickerViewProps) => {
+export const DatePickerView = (props: DatePickerViewProps) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])
   const api = useDatePickerContext()
   const getChildren = () => runIfFn(localProps.children, api)

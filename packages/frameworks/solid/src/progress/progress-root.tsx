@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import { type Assign } from '../types'
 import { ProgressProvider } from './progress-context'
@@ -13,7 +13,7 @@ interface ElementProps extends UseProgressProps {
 
 export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const ProgressRoot: ArkComponent<'div', ProgressRootProps> = (props: ProgressRootProps) => {
+export const ProgressRoot = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
     'dir',
     'getRootNode',

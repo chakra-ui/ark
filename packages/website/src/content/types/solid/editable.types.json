@@ -1,5 +1,5 @@
 {
-  "Area": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Area": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
@@ -7,7 +7,7 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
@@ -136,11 +136,11 @@
       "description": "The value of the editable in both edit and preview mode"
     }
   },
-  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Preview": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "EditTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "CancelTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "SubmitTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Preview": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CancelTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SubmitTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

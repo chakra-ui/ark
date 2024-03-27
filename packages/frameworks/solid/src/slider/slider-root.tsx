@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SliderProvider } from './slider-context'
@@ -13,7 +13,7 @@ interface ElementProps extends UseSliderProps {
 
 export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const SliderRoot: ArkComponent<'div', SliderRootProps> = (props: SliderRootProps) => {
+export const SliderRoot = (props: SliderRootProps) => {
   const [sliderParams, restProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',

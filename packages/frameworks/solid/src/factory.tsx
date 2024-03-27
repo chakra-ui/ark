@@ -1,32 +1,49 @@
-import { splitProps, type ComponentProps, type JSX, type ValidComponent } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { splitProps, type ComponentProps, type JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import type { Assign } from './types'
 
-type AsProps<T extends ValidComponent = ValidComponent> = {
-  as?: T
-}
-
-type JsxElements = {
-  [E in keyof JSX.IntrinsicElements]: ArkComponent<E>
-}
 type ElementType = keyof JSX.IntrinsicElements
 
-export type HTMLArkProps<E extends ElementType> = JSX.IntrinsicElements[E] & AsProps
-
-export type ArkComponentProps<
-  E extends ElementType,
-  K extends ValidComponent,
-  P extends object,
-> = Assign<Assign<ComponentProps<E>, ComponentProps<K>>, Assign<AsProps<K>, P>>
-
-export type ArkComponent<E extends ElementType, P extends object = object> = {
-  <C extends ValidComponent = E>(props: ArkComponentProps<E, C, P>): JSX.Element
+type JsxElements = {
+  [E in ElementType]: ArkComponent<E>
 }
 
-export const withAsProp = <T extends ElementType>(Component: T) => {
+type PropsFn<T extends ElementType> = (
+  userProps?: JSX.IntrinsicElements[T],
+) => JSX.HTMLAttributes<HTMLElement>
+
+type PolymorphicProps<T extends ElementType> = {
+  asChild?: boolean
+  children?: JSX.Element | ((props: PropsFn<T>) => JSX.Element)
+}
+
+type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
+
+type ArkComponent<E extends ElementType> = {
+  (props: HTMLArkProps<E>): JSX.Element
+}
+
+const withAsProp = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
-    const [localProps, otherProps] = splitProps(props as AsProps, ['as'])
-    return <Dynamic component={localProps.as || Component} {...otherProps} />
+    const [localProps, otherProps] = splitProps(props, ['asChild'])
+
+    if (localProps.asChild) {
+      if (typeof otherProps.children !== 'function') {
+        throw new Error('Children must be a function')
+      }
+      return (
+        <>
+          {otherProps.children((userProps) => ({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ...mergeProps(otherProps, userProps ?? ({} as any)),
+          }))}
+        </>
+      )
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return <Dynamic component={Component} {...(otherProps as any)} />
   }
   return ArkComponent
 }
@@ -49,3 +66,4 @@ function jsxFactory() {
 }
 
 export const ark = jsxFactory()
+export type { HTMLArkProps }

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { ClipboardProvider } from './clipboard-context'
@@ -13,7 +13,7 @@ interface ElementProps extends UseClipboardProps {
 
 export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const ClipboardRoot: ArkComponent<'div', ElementProps> = (props: ClipboardRootProps) => {
+export const ClipboardRoot = (props: ClipboardRootProps) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
     'getRootNode',
     'id',

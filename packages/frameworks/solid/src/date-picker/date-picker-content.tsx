@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerContentProps extends HTMLArkProps<'div'> {}
 
-export const DatePickerContent: ArkComponent<'div'> = (props: DatePickerContentProps) => {
+export const DatePickerContent = (props: DatePickerContentProps) => {
   const api = useDatePickerContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(

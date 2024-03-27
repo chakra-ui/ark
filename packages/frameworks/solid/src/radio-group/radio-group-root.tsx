@@ -1,15 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { RadioGroupProvider } from './radio-group-context'
 import { useRadioGroup, type UseRadioGroupProps } from './use-radio-group'
 
 export interface RadioGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 
-export const RadioGroupRoot: ArkComponent<'div', UseRadioGroupProps> = (
-  props: RadioGroupRootProps,
-) => {
+export const RadioGroupRoot = (props: RadioGroupRootProps) => {
   const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
     'dir',
     'disabled',

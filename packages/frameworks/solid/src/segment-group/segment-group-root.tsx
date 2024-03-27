@@ -1,16 +1,14 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { SegmentGroupProvider } from './segment-group-context'
 import { useSegmentGroup, type UseSegmentGroupProps } from './use-segment-group'
 
 export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
-export const SegmentGroupRoot: ArkComponent<'div', UseSegmentGroupProps> = (
-  props: SegmentGroupRootProps,
-) => {
+export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
   const [groupParams, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'dir',
     'disabled',

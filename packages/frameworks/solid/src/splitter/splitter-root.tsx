@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { runIfFn } from '../run-if-fn'
 import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
@@ -13,7 +13,7 @@ interface ElementProps extends UseSplitterProps {
 
 export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const SplitterRoot: ArkComponent<'div', SplitterRootProps> = (props: SplitterRootProps) => {
+export const SplitterRoot = (props: SplitterRootProps) => {
   const [splitterParams, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'dir',
     'getRootNode',

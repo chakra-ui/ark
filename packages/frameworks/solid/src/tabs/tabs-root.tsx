@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import {
   RenderStrategyProvider,
   splitRenderStrategyProps,
@@ -13,7 +13,7 @@ import { useTabs, type UseTabsProps } from './use-tabs'
 interface ElementProps extends UseTabsProps, RenderStrategyProps {}
 export interface TabsRootProps extends Assign<HTMLArkProps<'div'>, ElementProps> {}
 
-export const TabsRoot: ArkComponent<'div', TabsRootProps> = (props: TabsRootProps) => {
+export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',

@@ -1,7 +1,7 @@
 {
   "Item": {
     "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -9,7 +9,7 @@
     }
   },
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -69,22 +69,22 @@
       "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
     }
   },
-  "Tree": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
+  "Tree": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Branch": {
     "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the item or branch is disabled"
     }
   },
-  "ItemText": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "BranchText": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "BranchContent": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "BranchControl": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "BranchTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ItemIndicator": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "BranchIndicator": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchContent": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchControl": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

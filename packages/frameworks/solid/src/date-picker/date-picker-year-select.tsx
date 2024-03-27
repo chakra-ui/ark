@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 
 export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
 
-export const DatePickerYearSelect: ArkComponent<'select'> = (props: DatePickerYearSelectProps) => {
+export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().yearSelectProps, props)
 

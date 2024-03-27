@@ -2,11 +2,11 @@
   "Item": {
     "type": { "type": "'page'", "isRequired": true },
     "value": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
   "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -58,8 +58,8 @@
   },
   "Ellipsis": {
     "index": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "NextTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "PrevTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "NextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

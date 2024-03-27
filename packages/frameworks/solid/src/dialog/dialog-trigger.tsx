@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import { ark, type ArkComponent, type HTMLArkProps } from '../factory'
+import { ark, type HTMLArkProps } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDialogContext } from './dialog-context'
 
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
-export const DialogTrigger: ArkComponent<'button'> = (props: DialogTriggerProps) => {
+export const DialogTrigger = (props: DialogTriggerProps) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
@@ -14,5 +14,6 @@ export const DialogTrigger: ArkComponent<'button'> = (props: DialogTriggerProps)
     props,
   )
 
+  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

@@ -1,6 +1,6 @@
 {
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -45,7 +45,7 @@
   },
   "Panel": {
     "id": { "type": "PanelId", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "snapSize": { "type": "number", "isRequired": false }
   },
   "ResizeTrigger": {
@@ -53,7 +53,7 @@
       "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
       "isRequired": true
     },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "step": { "type": "number", "isRequired": false }
   }

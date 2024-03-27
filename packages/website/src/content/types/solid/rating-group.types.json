@@ -1,7 +1,7 @@
 {
   "Item": {
     "index": { "type": "number", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
   "Root": {
     "allowHalf": {
@@ -9,7 +9,7 @@
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -78,6 +78,6 @@
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
   },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
 }

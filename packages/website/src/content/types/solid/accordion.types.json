@@ -1,11 +1,11 @@
 {
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "Root": {
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
@@ -87,7 +87,7 @@
       "description": "The `id` of the accordion item that is currently being opened."
     }
   },
-  "ItemContent": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ItemTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "ItemIndicator": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
 }

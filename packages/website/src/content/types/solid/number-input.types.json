@@ -11,7 +11,7 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "as": { "type": "ValidComponent", "isRequired": false },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",
@@ -135,10 +135,10 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
   },
-  "Input": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Label": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Control": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "Scrubber": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "DecrementTrigger": { "as": { "type": "ValidComponent", "isRequired": false } },
-  "IncrementTrigger": { "as": { "type": "ValidComponent", "isRequired": false } }
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }
