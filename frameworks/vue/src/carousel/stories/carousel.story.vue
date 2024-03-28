@@ -41,7 +41,7 @@ const index = ref(0)
     </Variant>
 
     <Variant title="Controlled">
-      <Carousel.Root v-model="index">
+      <Carousel.Root v-model:index="index">
         <Carousel.Control>
           <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
           <Carousel.NextTrigger>Next</Carousel.NextTrigger>
