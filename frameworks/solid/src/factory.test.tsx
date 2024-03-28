@@ -49,12 +49,12 @@ describe('Ark Factory', () => {
   })
 
   // TODO: Fix this test
-  it.skip('should merge events', async () => {
+  it('should merge events', async () => {
     const onClickParent = vi.fn()
     const onClickChild = vi.fn()
     render(() => (
       <ark.div data-testid="parent" onClick={onClickParent} asChild>
-        {(props) => <ark.span data-testid="child" {...props({ onClick: onClickChild })} />}
+        {(props) => <ark.span {...props({ onClick: onClickChild })} data-testid="child" />}
       </ark.div>
     ))
     await user.click(screen.getByTestId('child'))
@@ -65,9 +65,11 @@ describe('Ark Factory', () => {
   it.skip('should propagate asChild', async () => {
     render(() => (
       <ark.div data-testid="parent" asChild>
-        <ark.span asChild>
-          <ark.span>Ark UI</ark.span>
-        </ark.span>
+        {(props) => (
+          <ark.span {...props()}>
+            <ark.span>Ark UI</ark.span>
+          </ark.span>
+        )}
       </ark.div>
     ))
     expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
@@ -75,11 +77,15 @@ describe('Ark Factory', () => {
 
   it('should stop propagate asChild', async () => {
     render(() => (
-      <ark.div data-testid="parent" asChild>
-        <ark.span asChild={false}>
-          <ark.span>Ark UI</ark.span>
-        </ark.span>
-      </ark.div>
+      <p>
+        <ark.div data-testid="parent" asChild>
+          {(props) => (
+            <ark.span {...props()}>
+              <ark.span>Ark UI</ark.span>
+            </ark.span>
+          )}
+        </ark.div>
+      </p>
     ))
     expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
   })

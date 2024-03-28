@@ -32,14 +32,17 @@ const withAsProp = <T extends ElementType>(Component: T) => {
       if (typeof otherProps.children !== 'function') {
         throw new Error('Children must be a function')
       }
-      return (
-        <>
-          {otherProps.children((userProps) => ({
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            ...mergeProps(otherProps, userProps ?? ({} as any)),
-          }))}
-        </>
-      )
+
+      // @ts-expect-error TODO improve
+      const fn = (userProps) => {
+        // console.log(userProps)
+        const [, restProps] = splitProps(otherProps, ['children', 'ref'])
+
+        return { ref: otherProps.ref, ...mergeProps(restProps, userProps) }
+      }
+
+      // @ts-expect-error TODO improve
+      return <>{otherProps.children(fn)}</>
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
