@@ -8,8 +8,8 @@ import { useProgress, type UseProgressProps } from './use-progress'
 export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgressProps> {}
 
 export const ProgressRoot = defineComponent<ProgressRootProps>(
-  (props, { slots, attrs, emit }) => {
-    const api = useProgress(props, emit)
+  (props, { slots, attrs }) => {
+    const api = useProgress(props)
     ProgressProvider(api)
 
     return () => (

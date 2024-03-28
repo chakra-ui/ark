@@ -73,7 +73,7 @@ export function jsxFactory() {
   const cache = new Map()
 
   const factory = new Proxy(withAsChild, {
-    apply(target, thisArg, argArray) {
+    apply(_target, _thisArg, argArray) {
       return withAsChild(argArray[0])
     },
     get(_, element) {

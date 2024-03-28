@@ -7,7 +7,7 @@ import { vi } from 'vitest'
 const { window } = new JSDOM()
 
 vi.stubGlobal('ResizeObserver', ResizeObserver)
-window.ResizeObserver = ResizeObserver
+window['ResizeObserver'] = ResizeObserver
 window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)

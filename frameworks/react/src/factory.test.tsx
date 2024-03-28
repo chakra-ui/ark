@@ -36,7 +36,7 @@ describe('Ark Factory', () => {
     render(<ComponentUnderTest />)
     const child = screen.getByTestId('child')
     expect(child.id).toBe('child')
-    expect(child.dataset.part).toBe('child')
+    expect(child.dataset['part']).toBe('child')
   })
 
   it('should merge styles and classes', () => {

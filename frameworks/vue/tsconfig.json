@@ -1,9 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "noImplicitThis": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
+    "noPropertyAccessFromIndexSignature": false,
     "types": ["vitest/globals"]
   },
   "include": ["src"]

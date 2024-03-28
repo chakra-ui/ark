@@ -52,7 +52,7 @@ function jsxFactory() {
   const cache = new Map()
 
   return new Proxy(withAsProp, {
-    apply(target, thisArg, argArray) {
+    apply(_target, _thisArg, argArray) {
       return withAsProp(argArray[0])
     },
     get(_, element) {

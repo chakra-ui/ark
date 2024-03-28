@@ -10,8 +10,7 @@ export interface UseProgressProps extends Optional<progress.Context, 'id'> {
 }
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const useProgress = (props: UseProgressProps, emit: CallableFunction): UseProgressReturn => {
+export const useProgress = (props: UseProgressProps): UseProgressReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
