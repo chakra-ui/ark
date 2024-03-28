@@ -7,7 +7,7 @@ import prettier from 'prettier'
 const prettierConfig = await prettier.resolveConfig('.')
 
 const main = async () => {
-  const root = dirname(findUpSync('pnpm-lock.yaml')!)
+  const root = dirname(findUpSync('bun.lockb')!)
   process.chdir(root)
 
   const components = await globby(['frameworks/react/src'], {

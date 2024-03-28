@@ -12,6 +12,8 @@
     "vue:props": "bun run src/generate-vue-props.ts"
   },
   "dependencies": {
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "20.11.30",
     "@types/voca": "1.4.5",
     "find-up": "7.0.0",
     "fs-extra": "11.2.0",
@@ -20,12 +22,7 @@
     "prettier": "3.2.5",
     "ts-morph": "22.0.0",
     "ts-pattern": "5.0.8",
+    "typescript": "5.4.3",
     "voca": "1.4.1"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "11.0.4",
-    "@types/node": "20.11.30",
-    "ts-node": "10.9.2",
-    "typescript": "5.4.3"
   }
 }

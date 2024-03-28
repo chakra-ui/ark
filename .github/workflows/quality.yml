@@ -98,4 +98,4 @@ jobs:
   #       uses: ./.github/composite-actions/install
 
   #     - name: Run exports:check
-  #       run: pnpm exports:check
+  #       run: bun run exports:check
