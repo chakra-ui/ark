@@ -3,29 +3,29 @@
   "type": "module",
   "private": true,
   "workspaces": [
-    "packages/scripts",
-    "packages/anatomy",
-    "packages/website",
-    "packages/frameworks/*"
+    "anatomy",
+    "frameworks/*",
+    "scripts",
+    "website"
   ],
   "scripts": {
     "prepare": "husky install",
     "build": "turbo run build --filter='!./templates/**'",
     "exports:check": "bun scripts exports:check",
     "exports:sync": "bun scripts exports:sync",
-    "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
-    "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
+    "format:check": "prettier --plugin prettier-plugin-organize-imports --check frameworks/**/src",
+    "format:write": "prettier --plugin prettier-plugin-organize-imports --write frameworks/**/src",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
     "document:types": "turbo run typedocs",
     "document:stories": "turbo run storydocs",
-    "react": "bun run --cwd packages/frameworks/react",
-    "solid": "bun run --cwd packages/frameworks/solid",
-    "vue": "bun run --cwd packages/frameworks/vue",
-    "anatomy": "bun run --cwd packages/anatomy",
-    "scripts": "bun run --cwd packages/scripts",
-    "website": "bun run --cwd packages/website"
+    "react": "bun run --cwd frameworks/react",
+    "solid": "bun run --cwd frameworks/solid",
+    "vue": "bun run --cwd frameworks/vue",
+    "anatomy": "bun run --cwd anatomy",
+    "scripts": "bun run --cwd scripts",
+    "website": "bun run --cwd website"
   },
   "devDependencies": {
     "@commitlint/cli": "19.2.1",
@@ -50,5 +50,5 @@
       "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
-  "packageManager": "bun@1.0.29"
+  "packageManager": "bun@1.0.35"
 }

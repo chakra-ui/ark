@@ -48,8 +48,8 @@ const main = async () => {
 
   process.chdir(
     match(dirName)
-      .with('anatomy', () => path.join(root, 'packages', dirName))
-      .otherwise(() => path.join(root, 'packages', 'frameworks', dirName)),
+      .with('anatomy', () => path.join(root, dirName))
+      .otherwise(() => path.join(root, 'frameworks', dirName)),
   )
 
   const packageJson = await fs.readJson('package.json')

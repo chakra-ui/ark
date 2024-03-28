@@ -156,9 +156,9 @@ const main = async () => {
   const framework = process.argv.slice(2)[0]
 
   const rootDir = dirname(findUpSync('bun.lockb')!)
-  process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
+  process.chdir(path.join(rootDir, 'frameworks', framework))
 
-  const outDir = path.join(rootDir, 'packages', 'website', 'src', 'content', 'types')
+  const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')
 
   const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
 

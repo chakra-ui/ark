@@ -15,7 +15,7 @@ const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
   const root = dirname(findUpSync('bun.lockb')!)
-  process.chdir(path.join(root, 'packages', 'frameworks', 'vue'))
+  process.chdir(path.join(root, 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
   const indices = ['clipboard']

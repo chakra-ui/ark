@@ -30,7 +30,7 @@ const main = async () => {
   const root = dirname(findUpSync('bun.lockb')!)
   process.chdir(root)
 
-  const frameworks = await globby(['packages/frameworks'], { onlyDirectories: true, deep: 1 })
+  const frameworks = await globby(['frameworks'], { onlyDirectories: true, deep: 1 })
   const components = [
     ...new Set(
       (

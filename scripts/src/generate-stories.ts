@@ -61,9 +61,9 @@ const main = async () => {
   console.log('Generating story docs for', framework)
 
   const rootDir = dirname(findUpSync('bun.lockb')!)
-  process.chdir(path.join(rootDir, 'packages', 'frameworks', framework))
+  process.chdir(path.join(rootDir, 'frameworks', framework))
 
-  const outDir = join(rootDir, 'packages', 'website', 'src', 'content', 'stories')
+  const outDir = join(rootDir, 'website', 'src', 'content', 'stories')
 
   const project = new Project({})
   project.addSourceFilesAtPaths('src/**/*.stories.tsx')

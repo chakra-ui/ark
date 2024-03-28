@@ -8,7 +8,7 @@ import path, { basename, dirname, join } from 'path'
  */
 const main = async () => {
   const rootDir = dirname(findUpSync('bun.lockb')!)
-  process.chdir(path.join(rootDir, 'packages', 'frameworks'))
+  process.chdir(path.join(rootDir, 'frameworks'))
 
   const components = await globby(['./react/src/*'], { onlyDirectories: true, deep: 1 })
   console.log(components)

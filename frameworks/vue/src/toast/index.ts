@@ -7,7 +7,7 @@ import { ToastTitle, type ToastTitleProps } from './toast-title'
 
 export * as Toast from './toast'
 
-export { createToaster, ToastCloseTrigger, ToastDescription, ToastGroup, ToastRoot, ToastTitle }
+export { ToastCloseTrigger, ToastDescription, ToastGroup, ToastRoot, ToastTitle, createToaster }
 
 export type {
   CreateToasterProps,

@@ -10,7 +10,7 @@ const main = async () => {
   const root = dirname(findUpSync('pnpm-lock.yaml')!)
   process.chdir(root)
 
-  const components = await globby(['packages/frameworks/react/src'], {
+  const components = await globby(['frameworks/react/src'], {
     onlyDirectories: true,
     deep: 1,
   })
