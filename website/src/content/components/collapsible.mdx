@@ -1,0 +1,75 @@
+---
+id: collapsible
+title: Collapsible
+description: An interactive component that can be expanded or collapsed.
+resources:
+  zag: collapsible
+label: preview
+---
+
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
+
+<ComponentPreview />
+
+## Animation
+
+You can use CSS animations to create smooth transitions for opening and closing the Collapsible content. 
+Utilize the `data-state` attribute in combination with the `--height` CSS variable to animate the open and closed states.
+
+```css
+@keyframes slideDown {
+  from { height: 0; }
+  to { height: var(--height); }
+}
+
+@keyframes slideUp {
+  from { height: var(--height); }
+  to { height: 0; }
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation: slideDown 250ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation: slideUp 200ms;
+}
+```
+
+## Examples
+
+Learn how to use the `Collapsible` component in your project. Let's examine
+the most basic example:
+
+<Story id="Basic" />
+
+### Events
+
+You can listen for the `onExitComplete` event to know when the `Collapsible.Content` is no longer visible:
+
+<Story id="OnExitComplete" />
+
+### Lazy Mount
+
+To delay the mounting of the `Collapsible.Content`, use the `lazyMount` prop:
+
+<Story id="LazyMount" />
+
+### Unmount on Exit
+
+To remove the `Collapsible.Content` from the DOM when it is not visible, use the
+`unmountOnExit` prop:
+
+<Story id="UnmountOnExit" />
+
+### Combining Lazy Mount and Unmount on Exit
+
+Both `lazyMount` and `unmountOnExit` can be combined to ensure that the component is
+mounted only when the `Collapsible` is expanded and unmounted when it is collapsed:
+
+<Story id="LazyMountAndUnmountOnExit" />
+
+## API Reference
+
+<ComponentTypes />

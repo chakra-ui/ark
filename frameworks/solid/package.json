@@ -1,0 +1,124 @@
+{
+  "name": "@ark-ui/solid",
+  "version": "2.2.0",
+  "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
+  "keywords": [],
+  "homepage": "https://ark-ui.com",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
+    "directory": "packages/frameworks/solid"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "solid": "./source/index.jsx",
+      "import": "./esm/index.js",
+      "browser": {
+        "import": "./esm/index.js",
+        "require": "./cjs/index.js"
+      },
+      "require": "./cjs/index.js",
+      "node": "./cjs/index.js"
+    }
+  },
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "./"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint --ext .ts,.tsx src",
+    "test": "vitest",
+    "test:ci": "vitest --run --coverage",
+    "typecheck": "tsc",
+    "storydocs": "bun run --cwd ../../scripts document:stories solid",
+    "typedocs": "bun run --cwd ../../scripts document:types solid",
+    "storybook": "storybook dev -p 6006",
+    "release-it": "release-it --config ../../../release-it.json"
+  },
+  "dependencies": {
+    "@ark-ui/anatomy": "2.3.1",
+    "@zag-js/accordion": "0.40.0",
+    "@zag-js/avatar": "0.40.0",
+    "@zag-js/carousel": "0.40.0",
+    "@zag-js/checkbox": "0.40.0",
+    "@zag-js/clipboard": "0.40.0",
+    "@zag-js/collapsible": "0.40.0",
+    "@zag-js/color-picker": "0.40.0",
+    "@zag-js/combobox": "0.40.0",
+    "@zag-js/date-picker": "0.40.0",
+    "@zag-js/dialog": "0.40.0",
+    "@zag-js/editable": "0.40.0",
+    "@zag-js/file-upload": "0.40.0",
+    "@zag-js/hover-card": "0.40.0",
+    "@zag-js/file-utils": "0.40.0",
+    "@zag-js/i18n-utils": "0.40.0",
+    "@zag-js/menu": "0.40.0",
+    "@zag-js/number-input": "0.40.0",
+    "@zag-js/pagination": "0.40.0",
+    "@zag-js/pin-input": "0.40.0",
+    "@zag-js/popover": "0.40.0",
+    "@zag-js/presence": "0.40.0",
+    "@zag-js/progress": "0.40.0",
+    "@zag-js/radio-group": "0.40.0",
+    "@zag-js/rating-group": "0.40.0",
+    "@zag-js/select": "0.40.0",
+    "@zag-js/slider": "0.40.0",
+    "@zag-js/solid": "0.40.0",
+    "@zag-js/splitter": "0.40.0",
+    "@zag-js/switch": "0.40.0",
+    "@zag-js/tabs": "0.40.0",
+    "@zag-js/tags-input": "0.40.0",
+    "@zag-js/toast": "0.40.0",
+    "@zag-js/toggle-group": "0.40.0",
+    "@zag-js/tooltip": "0.40.0",
+    "@zag-js/tree-view": "0.40.0",
+    "@zag-js/types": "0.40.0"
+  },
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "5.0.0",
+    "@solidjs/testing-library": "0.8.6",
+    "@storybook/addon-a11y": "8.0.4",
+    "@storybook/addon-essentials": "8.0.4",
+    "@testing-library/dom": "9.3.4",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/user-event": "14.5.2",
+    "@types/jsdom": "21.1.6",
+    "@types/testing-library__jest-dom": "5.14.9",
+    "@typescript-eslint/eslint-plugin": "7.4.0",
+    "@typescript-eslint/parser": "7.4.0",
+    "@vitest/coverage-v8": "1.4.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-jest-dom": "5.2.0",
+    "eslint-plugin-testing-library": "6.2.0",
+    "globby": "14.0.1",
+    "jsdom": "24.0.0",
+    "release-it": "17.1.1",
+    "resize-observer-polyfill": "1.5.1",
+    "rollup": "4.13.0",
+    "rollup-preset-solid": "2.0.1",
+    "solid-js": "1.8.16",
+    "storybook": "8.0.4",
+    "storybook-solidjs": "1.0.0-beta.2",
+    "storybook-solidjs-vite": "1.0.0-beta.2",
+    "typescript": "5.4.3",
+    "vite": "5.2.6",
+    "vite-plugin-solid": "2.10.2",
+    "vitest": "1.4.0"
+  },
+  "peerDependencies": {
+    "solid-js": ">=1.6.0"
+  }
+}

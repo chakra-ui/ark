@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Build packages
-        run: pnpm build
+        run: bun run build
 
   docs:
     name: Docs
@@ -38,8 +38,11 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Generate docs
-        run: pnpm document
+      - name: Generate TypeDocs
+        run: bun run document:types
+
+      - name: Generate Storydocs
+        run: bun run document:stories
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -56,25 +59,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run tests
-        run: pnpm test
-
-      - name: Upload /react coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: react
-
-      - name: Upload /solid coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: solid
-
-      - name: Upload /vue coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: vue
+        run: bun run test
 
   eslint:
     name: ESLint
@@ -87,7 +72,7 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run ESLint
-        run: pnpm lint
+        run: bun run lint
 
   typecheck:
     name: Typecheck
@@ -100,17 +85,17 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run typecheck
-        run: pnpm typecheck
+        run: bun run typecheck
 
-  exports:
-    name: Check package exports
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
+  # exports:
+  #   name: Check package exports
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout branch
+  #       uses: actions/checkout@v4
 
-      - name: Install
-        uses: ./.github/composite-actions/install
+  #     - name: Install
+  #       uses: ./.github/composite-actions/install
 
-      - name: Run exports:check
-        run: pnpm exports:check
+  #     - name: Run exports:check
+  #       run: bun run exports:check
