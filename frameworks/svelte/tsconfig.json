@@ -1,5 +1,24 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {},
-  "include": ["src"]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    /**
+     * Typecheck JS in `.svelte` and `.js` files by default.
+     * Disable checkJs if you'd like to use dynamic types in JS.
+     * Note that setting allowJs false does not prevent the use
+     * of JS in `.svelte` files.
+     */
+    "allowJs": false,
+    "checkJs": false,
+    /**
+    To have warnings/errors of the Svelte compiler at the correct position,
+    enable source maps by default.
+    */
+    "sourceMap": true,
+    /**
+    idk both were in a template
+    */
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src", "src/**/*.svelte"]
 }
