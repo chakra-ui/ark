@@ -2,14 +2,9 @@
   "name": "@ark-ui/react",
   "version": "2.2.3",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
-  "type": "module",
   "keywords": [],
-  "homepage": "https://ark-ui.com",
   "license": "MIT",
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "homepage": "https://ark-ui.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
@@ -17,6 +12,27 @@
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "contributors": [
+    "Christian Schröter <dev@grizzly.codes>",
+    "Michał Korczak <michal.k2001@gmail.com>",
+    "Segun Adebayo <sage@adebayosegun.com>",
+    "Tyler Pfledderer <tyler.pfledderer@gmail.com>"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "source": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "build": "vite build",
@@ -29,6 +45,10 @@
     "storybook": "storybook dev -p 6006",
     "release-it": "release-it --config ../../../release-it.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "dependencies": {
     "@ark-ui/anatomy": "2.3.1",
     "@zag-js/accordion": "0.40.0",
@@ -111,214 +131,5 @@
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
-  },
-  "types": "index.d.ts",
-  "main": "index.cjs",
-  "module": "index.mjs",
-  "files": [
-    "./"
-  ],
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "source": "./src/index.ts",
-      "import": "./index.mjs",
-      "require": "./index.cjs"
-    },
-    "./tabs": {
-      "types": "./tabs/index.d.ts",
-      "import": "./tabs/index.mjs",
-      "require": "./tabs/index.cjs"
-    },
-    "./pagination": {
-      "types": "./pagination/index.d.ts",
-      "import": "./pagination/index.mjs",
-      "require": "./pagination/index.cjs"
-    },
-    "./tooltip": {
-      "types": "./tooltip/index.d.ts",
-      "import": "./tooltip/index.mjs",
-      "require": "./tooltip/index.cjs"
-    },
-    "./locale": {
-      "types": "./locale/index.d.ts",
-      "import": "./locale/index.mjs",
-      "require": "./locale/index.cjs"
-    },
-    "./progress": {
-      "types": "./progress/index.d.ts",
-      "import": "./progress/index.mjs",
-      "require": "./progress/index.cjs"
-    },
-    "./accordion": {
-      "types": "./accordion/index.d.ts",
-      "source": "./src/accordion/index.ts",
-      "import": {
-        "types": "./dist/accordion/index.d.mts",
-        "default": "./accordion/index.mjs"
-      },
-      "require": "./accordion/index.cjs"
-    },
-    "./toast": {
-      "types": "./toast/index.d.ts",
-      "import": "./toast/index.mjs",
-      "require": "./toast/index.cjs"
-    },
-    "./hover-card": {
-      "types": "./hover-card/index.d.ts",
-      "import": "./hover-card/index.mjs",
-      "require": "./hover-card/index.cjs"
-    },
-    "./checkbox": {
-      "types": "./checkbox/index.d.ts",
-      "import": "./checkbox/index.mjs",
-      "require": "./checkbox/index.cjs"
-    },
-    "./splitter": {
-      "types": "./splitter/index.d.ts",
-      "import": "./splitter/index.mjs",
-      "require": "./splitter/index.cjs"
-    },
-    "./slider": {
-      "types": "./slider/index.d.ts",
-      "import": "./slider/index.mjs",
-      "require": "./slider/index.cjs"
-    },
-    "./rating-group": {
-      "types": "./rating-group/index.d.ts",
-      "import": "./rating-group/index.mjs",
-      "require": "./rating-group/index.cjs"
-    },
-    "./segment-group": {
-      "types": "./segment-group/index.d.ts",
-      "import": "./segment-group/index.mjs",
-      "require": "./segment-group/index.cjs"
-    },
-    "./number-input": {
-      "types": "./number-input/index.d.ts",
-      "import": "./number-input/index.mjs",
-      "require": "./number-input/index.cjs"
-    },
-    "./carousel": {
-      "types": "./carousel/index.d.ts",
-      "import": "./carousel/index.mjs",
-      "require": "./carousel/index.cjs"
-    },
-    "./combobox": {
-      "types": "./combobox/index.d.ts",
-      "import": "./combobox/index.mjs",
-      "require": "./combobox/index.cjs"
-    },
-    "./toggle-group": {
-      "types": "./toggle-group/index.d.ts",
-      "import": "./toggle-group/index.mjs",
-      "require": "./toggle-group/index.cjs"
-    },
-    "./tags-input": {
-      "types": "./tags-input/index.d.ts",
-      "import": "./tags-input/index.mjs",
-      "require": "./tags-input/index.cjs"
-    },
-    "./dialog": {
-      "types": "./dialog/index.d.ts",
-      "import": "./dialog/index.mjs",
-      "require": "./dialog/index.cjs"
-    },
-    "./popover": {
-      "types": "./popover/index.d.ts",
-      "import": "./popover/index.mjs",
-      "require": "./popover/index.cjs"
-    },
-    "./presence": {
-      "types": "./presence/index.d.ts",
-      "import": "./presence/index.mjs",
-      "require": "./presence/index.cjs"
-    },
-    "./date-picker": {
-      "types": "./date-picker/index.d.ts",
-      "import": "./date-picker/index.mjs",
-      "require": "./date-picker/index.cjs"
-    },
-    "./editable": {
-      "types": "./editable/index.d.ts",
-      "import": "./editable/index.mjs",
-      "require": "./editable/index.cjs"
-    },
-    "./collapsible": {
-      "types": "./collapsible/index.d.ts",
-      "import": "./collapsible/index.mjs",
-      "require": "./collapsible/index.cjs"
-    },
-    "./file-upload": {
-      "types": "./file-upload/index.d.ts",
-      "import": "./file-upload/index.mjs",
-      "require": "./file-upload/index.cjs"
-    },
-    "./menu": {
-      "types": "./menu/index.d.ts",
-      "import": "./menu/index.mjs",
-      "require": "./menu/index.cjs"
-    },
-    "./avatar": {
-      "types": "./avatar/index.d.ts",
-      "import": "./avatar/index.mjs",
-      "require": "./avatar/index.cjs"
-    },
-    "./switch": {
-      "types": "./switch/index.d.ts",
-      "import": "./switch/index.mjs",
-      "require": "./switch/index.cjs"
-    },
-    "./format": {
-      "types": "./format/index.d.ts",
-      "import": "./format/index.mjs",
-      "require": "./format/index.cjs"
-    },
-    "./environment": {
-      "types": "./environment/index.d.ts",
-      "import": "./environment/index.mjs",
-      "require": "./environment/index.cjs"
-    },
-    "./tree-view": {
-      "types": "./tree-view/index.d.ts",
-      "import": "./tree-view/index.mjs",
-      "require": "./tree-view/index.cjs"
-    },
-    "./radio-group": {
-      "types": "./radio-group/index.d.ts",
-      "import": "./radio-group/index.mjs",
-      "require": "./radio-group/index.cjs"
-    },
-    "./select": {
-      "types": "./select/index.d.ts",
-      "import": "./select/index.mjs",
-      "require": "./select/index.cjs"
-    },
-    "./color-picker": {
-      "types": "./color-picker/index.d.ts",
-      "import": "./color-picker/index.mjs",
-      "require": "./color-picker/index.cjs"
-    },
-    "./pin-input": {
-      "types": "./pin-input/index.d.ts",
-      "import": "./pin-input/index.mjs",
-      "require": "./pin-input/index.cjs"
-    },
-    "./clipboard": {
-      "types": "./clipboard/index.d.ts",
-      "import": "./clipboard/index.mjs",
-      "require": "./clipboard/index.cjs"
-    },
-    "./factory": {
-      "types": "./factory.d.ts",
-      "import": "./factory.mjs",
-      "require": "./factory.cjs"
-    },
-    "./portal": {
-      "types": "./portal.d.ts",
-      "import": "./portal.mjs",
-      "require": "./portal.cjs"
-    },
-    "./package.json": "./package.json"
   }
 }
