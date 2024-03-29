@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "prepare": "panda codegen",
+    "prepare": "bun run --cwd ../anatomy build && panda codegen",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
