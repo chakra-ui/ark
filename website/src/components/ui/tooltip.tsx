@@ -1,4 +1,4 @@
-import { Tooltip } from '@ark-ui/react/src/tooltip'
+import { Tooltip } from '@ark-ui/react/tooltip'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { tooltip } from 'styled-system/recipes'

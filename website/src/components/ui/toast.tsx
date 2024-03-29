@@ -1,4 +1,4 @@
-import { Toast } from '@ark-ui/react/src/toast'
+import { Toast } from '@ark-ui/react/toast'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { toast } from 'styled-system/recipes'

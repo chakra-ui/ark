@@ -1,4 +1,4 @@
-import { Splitter } from '@ark-ui/react/src/splitter'
+import { Splitter } from '@ark-ui/react/splitter'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { splitter } from 'styled-system/recipes'

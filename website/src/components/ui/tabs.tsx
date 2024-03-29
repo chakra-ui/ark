@@ -1,4 +1,4 @@
-import { Tabs } from '@ark-ui/react/src/tabs'
+import { Tabs } from '@ark-ui/react/tabs'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { tabs } from 'styled-system/recipes'

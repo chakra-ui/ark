@@ -1,4 +1,4 @@
-import { HoverCard } from '@ark-ui/react/src/hover-card'
+import { HoverCard } from '@ark-ui/react/hover-card'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { hoverCard } from 'styled-system/recipes'

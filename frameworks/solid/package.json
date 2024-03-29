@@ -2,41 +2,70 @@
   "name": "@ark-ui/solid",
   "version": "2.2.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
-  "keywords": [],
-  "homepage": "https://ark-ui.com",
+  "keywords": [
+    "accordion",
+    "avatar",
+    "carousel",
+    "checkbox",
+    "clipboard",
+    "collapsible",
+    "color picker",
+    "combobox",
+    "date picker",
+    "dialog",
+    "editable",
+    "file upload",
+    "hover card",
+    "menu",
+    "number input",
+    "pagination",
+    "pin input",
+    "popover",
+    "progress",
+    "radio group",
+    "rating group",
+    "segment group",
+    "select",
+    "slider",
+    "splitter",
+    "switch",
+    "tabs",
+    "tags input",
+    "toast",
+    "toggle group",
+    "tooltip",
+    "tree view"
+  ],
   "license": "MIT",
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "homepage": "https://ark-ui.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "packages/frameworks/solid"
+    "directory": "frameworks/solid"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
   "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "solid": "./source/index.jsx",
-      "import": "./esm/index.js",
+      "types": "./dist/types/index.d.ts",
+      "solid": "./dist/source/index.jsx",
+      "import": "./dist/esm/index.js",
       "browser": {
-        "import": "./esm/index.js",
-        "require": "./cjs/index.js"
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js"
       },
-      "require": "./cjs/index.js",
-      "node": "./cjs/index.js"
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/cjs/index.js"
     }
   },
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
-  "files": [
-    "./"
-  ],
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint --ext .ts,.tsx src",
@@ -48,6 +77,10 @@
     "storybook": "storybook dev -p 6006",
     "release-it": "release-it --config ../../../release-it.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "dependencies": {
     "@ark-ui/anatomy": "2.3.1",
     "@zag-js/accordion": "0.40.0",

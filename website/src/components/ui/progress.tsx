@@ -1,4 +1,4 @@
-import { Progress as ArkProgress, type ProgressRootProps } from '@ark-ui/react/src/progress'
+import { Progress as ArkProgress, type ProgressRootProps } from '@ark-ui/react/progress'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

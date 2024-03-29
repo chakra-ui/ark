@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react/src/factory'
+import { ark } from '@ark-ui/react/factory'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { code } from 'styled-system/recipes'

@@ -16,8 +16,5 @@
   "npm": {
     "versionArgs": ["--workspaces-update=false"],
     "publishPath": "./dist/"
-  },
-  "hooks": {
-    "before:release": ["bun scripts release:prepare ${name}"]
   }
 }

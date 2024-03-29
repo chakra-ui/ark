@@ -8,7 +8,7 @@
     "exports:sync": "bun run src/sync-exports.ts",
     "document:types": "bun run src/generate-type-docs.ts",
     "document:stories": "bun run src/generate-stories.ts",
-    "release:prepare": "bun run src/prepare-release.ts",
+    "release:prepare": "bun run src/release-prepare.ts",
     "vue:props": "bun run src/generate-vue-props.ts"
   },
   "dependencies": {

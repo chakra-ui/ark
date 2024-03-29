@@ -1,4 +1,4 @@
-import { ColorPicker } from '@ark-ui/react/src/color-picker'
+import { ColorPicker } from '@ark-ui/react/color-picker'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { colorPicker } from 'styled-system/recipes'

@@ -1,7 +1,7 @@
 import {
   RatingGroup as ArkRatingGroup,
   type RatingGroupRootProps,
-} from '@ark-ui/react/src/rating-group'
+} from '@ark-ui/react/rating-group'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

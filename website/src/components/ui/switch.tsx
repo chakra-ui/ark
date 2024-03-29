@@ -1,4 +1,4 @@
-import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/src/switch'
+import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/switch'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

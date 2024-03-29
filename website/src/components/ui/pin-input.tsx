@@ -1,4 +1,4 @@
-import { PinInput as ArkPinInput, type PinInputRootProps } from '@ark-ui/react/src/pin-input'
+import { PinInput as ArkPinInput, type PinInputRootProps } from '@ark-ui/react/pin-input'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

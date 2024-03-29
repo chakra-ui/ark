@@ -1,4 +1,4 @@
-import { Select } from '@ark-ui/react/src/select'
+import { Select } from '@ark-ui/react/select'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { select } from 'styled-system/recipes'

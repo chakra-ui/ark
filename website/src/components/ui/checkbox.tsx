@@ -1,4 +1,4 @@
-import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react/src/checkbox'
+import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react/checkbox'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

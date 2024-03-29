@@ -1,4 +1,4 @@
-import { Accordion } from '@ark-ui/react/src/accordion'
+import { Accordion } from '@ark-ui/react/accordion'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { accordion } from 'styled-system/recipes'

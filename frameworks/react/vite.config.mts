@@ -3,6 +3,7 @@
 
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
+import { copyFileSync } from 'node:fs'
 import path from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -22,6 +23,11 @@ export default defineConfig({
         '**/stories/*',
         '**/setup-test.ts',
       ],
+      afterBuild: () => {
+        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
+          copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
+        })
+      },
     }),
     react(),
   ],
@@ -30,7 +36,7 @@ export default defineConfig({
     minify: false,
     lib: {
       entry: globbySync('src/**/index.ts'),
-      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
+      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
       logLevel: 'silent',
@@ -53,7 +59,7 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: 'src',
           exports: 'named',
-          entryFileNames: '[name].mjs',
+          entryFileNames: '[name].js',
           banner: (x) => renderBanner(x.fileName),
         },
       ],

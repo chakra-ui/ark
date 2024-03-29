@@ -1,4 +1,4 @@
-import { Editable } from '@ark-ui/react/src/editable'
+import { Editable } from '@ark-ui/react/editable'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { editable } from 'styled-system/recipes'

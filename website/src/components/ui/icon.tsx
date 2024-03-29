@@ -1,4 +1,4 @@
-import { ark } from '@ark-ui/react/src/factory'
+import { ark } from '@ark-ui/react/factory'
 import { forwardRef, type ReactElement } from 'react'
 import { styled, type HTMLStyledProps } from 'styled-system/jsx'
 import { icon, type IconVariantProps } from 'styled-system/recipes'

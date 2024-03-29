@@ -1,4 +1,4 @@
-import { TagsInput } from '@ark-ui/react/src/tags-input'
+import { TagsInput } from '@ark-ui/react/tags-input'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { tagsInput } from 'styled-system/recipes'
