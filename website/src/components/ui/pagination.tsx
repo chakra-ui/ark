@@ -1,4 +1,4 @@
-import { Pagination as ArkPagination, type PaginationRootProps } from '@ark-ui/react/src/pagination'
+import { Pagination as ArkPagination, type PaginationRootProps } from '@ark-ui/react/pagination'
 import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

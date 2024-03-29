@@ -1,73 +1,68 @@
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
-import { globbySync } from 'globby'
-import path, { dirname } from 'path'
+import { globby } from 'globby'
+import { basename, dirname, join, parse } from 'path'
 import { match } from 'ts-pattern'
 
-const generateExports = (dirName: string) => {
-  const paths = globbySync('src/**/index.ts')
-  const exports: Record<string, unknown> = {}
+const generateExports = async (pkgJsonPath: string) => {
+  const paths = await globby(
+    ['src/*/index.ts', 'src/index.ts', 'src/portal.tsx', 'src/factory.{tsx,ts}'],
+    {
+      cwd: dirname(pkgJsonPath),
+    },
+  )
+  return paths
+    .sort()
+    .map((path) => {
+      const { name, dir } = parse(path)
+      const exportName = name === 'index' ? basename(dir) : name
 
-  for (const p of paths) {
-    const keyPath = p.replace('src', '.').replace('/index.ts', '')
-    exports[keyPath] = {
-      types: `${keyPath}/index.d.ts`,
-      import: `${keyPath}/index.mjs`,
-      require: `${keyPath}/index.cjs`,
-    }
-  }
-  if (dirName !== 'anatomy') {
-    exports['./factory'] = {
-      types: './factory.d.ts',
-      import: './factory.mjs',
-      require: './factory.cjs',
-    }
-  }
+      const key = match(exportName)
+        .with('src', () => '.')
+        .otherwise(() => `./${exportName}`)
 
-  if (dirName === 'react') {
-    exports['./portal'] = {
-      types: './portal.d.ts',
-      import: './portal.mjs',
-      require: './portal.cjs',
-    }
-  }
+      const slug = join(basename(dir), name).replace('src/', '')
 
-  exports['./package.json'] = './package.json'
-  return exports
+      return {
+        [key]: {
+          types: `./dist/${slug}.d.ts`,
+          source: `./src/${slug}.ts`,
+          import: `./dist/${slug}.mjs`,
+          require: `./dist/${slug}.cjs`,
+        },
+      }
+    })
+    .sort((a) => (Object.keys(a)[0] === '.' ? -1 : 1))
+    .reduce((acc, val) => ({ ...acc, ...val }), {})
 }
 
-const generateKeywords = () =>
-  globbySync(['src'], { onlyDirectories: true, deep: 1 })
-    .map((component) => component.replace('src/', ''))
-    .map((component) => component.replace('-', ' '))
+const generateKeywords = async (pkgJsonPath: string) => {
+  const components = await globby([join(dirname(pkgJsonPath), 'src')], {
+    onlyDirectories: true,
+    deep: 1,
+  })
+
+  return components
+    .map((component) => basename(component).replace('-', ' '))
+    .filter((component) => !['presence', 'format', 'locale', 'environment'].includes(component))
+    .sort()
+}
 
 const main = async () => {
-  const packageName = process.argv.slice(2)[0]
-  const dirName = packageName.split('/')[1]
   const root = dirname(findUpSync('bun.lockb')!)
+  const packages = await globby([join(root, 'frameworks/*/package.json')])
 
-  process.chdir(
-    match(dirName)
-      .with('anatomy', () => path.join(root, dirName))
-      .otherwise(() => path.join(root, 'frameworks', dirName)),
-  )
+  for (const pkg of packages) {
+    const packageJson = await fs.readJson(pkg)
 
-  const packageJson = await fs.readJson('package.json')
-  //  Note: At the time Solid does not support path imports like vue or react
-  if (dirName !== 'solid') {
-    packageJson.main = 'index.cjs'
-    packageJson.module = 'index.mjs'
-    packageJson.types = 'index.d.ts'
-    packageJson.files = ['./']
-    packageJson.exports = generateExports(dirName)
+    const keywords = await generateKeywords(pkg)
+    const exports = await generateExports(pkg)
+
+    packageJson.keywords = keywords
+    packageJson.exports = exports
+
+    await fs.writeJson(pkg, packageJson, { spaces: 2 })
   }
-  packageJson.keywords = generateKeywords()
-
-  await fs.writeJson('dist/package.json', packageJson, { spaces: 2 })
-
-  await fs.copy('README.md', 'dist/README.md')
-  await fs.copy(path.join(root, 'LICENSE'), 'dist/LICENSE')
-  await fs.copy('CHANGELOG.md', 'dist/CHANGELOG.md')
 }
 
 main()

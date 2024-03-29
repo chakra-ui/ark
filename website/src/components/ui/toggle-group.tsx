@@ -1,4 +1,4 @@
-import { ToggleGroup } from '@ark-ui/react/src/toggle-group'
+import { ToggleGroup } from '@ark-ui/react/toggle-group'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { toggleGroup } from 'styled-system/recipes'

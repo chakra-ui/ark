@@ -1,4 +1,4 @@
-import { Dialog } from '@ark-ui/react/src/dialog'
+import { Dialog } from '@ark-ui/react/dialog'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { dialog } from 'styled-system/recipes'

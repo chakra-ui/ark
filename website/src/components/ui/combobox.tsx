@@ -1,4 +1,4 @@
-import { Combobox } from '@ark-ui/react/src/combobox'
+import { Combobox } from '@ark-ui/react/combobox'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { combobox } from 'styled-system/recipes'

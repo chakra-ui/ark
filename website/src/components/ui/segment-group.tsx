@@ -1,4 +1,4 @@
-import { SegmentGroup } from '@ark-ui/react/src/segment-group'
+import { SegmentGroup } from '@ark-ui/react/segment-group'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { segmentGroup } from 'styled-system/recipes'

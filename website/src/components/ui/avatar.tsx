@@ -1,4 +1,4 @@
-import { Avatar as ArkAvatar, type AvatarRootProps } from '@ark-ui/react/src/avatar'
+import { Avatar as ArkAvatar, type AvatarRootProps } from '@ark-ui/react/avatar'
 import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

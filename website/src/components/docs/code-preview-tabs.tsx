@@ -1,4 +1,4 @@
-import { Tabs } from '@ark-ui/react/src/tabs'
+import { Tabs } from '@ark-ui/react/tabs'
 import { useState, type PropsWithChildren } from 'react'
 import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui'

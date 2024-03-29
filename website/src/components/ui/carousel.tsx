@@ -1,4 +1,4 @@
-import { Carousel } from '@ark-ui/react/src/carousel'
+import { Carousel } from '@ark-ui/react/carousel'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { carousel } from 'styled-system/recipes'

@@ -1,7 +1,7 @@
 import {
   NumberInput as ArkNumberInput,
   type NumberInputRootProps,
-} from '@ark-ui/react/src/number-input'
+} from '@ark-ui/react/number-input'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

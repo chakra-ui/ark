@@ -1,4 +1,4 @@
-import { Slider as ArkSlider, type SliderRootProps } from '@ark-ui/react/src/slider'
+import { Slider as ArkSlider, type SliderRootProps } from '@ark-ui/react/slider'
 import { forwardRef, type ReactNode } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'

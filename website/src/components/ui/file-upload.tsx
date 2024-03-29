@@ -1,4 +1,4 @@
-import { FileUpload } from '@ark-ui/react/src/file-upload'
+import { FileUpload } from '@ark-ui/react/file-upload'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { fileUpload } from 'styled-system/recipes'
