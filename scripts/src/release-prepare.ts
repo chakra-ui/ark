@@ -27,13 +27,17 @@ const generateExports = async (pkgJsonPath: string) => {
         .otherwise(() => `./${exportName}`)
 
       const slug = join(basename(dir), name).replace('src/', '')
-
       return {
         [key]: {
-          types: `./dist/${slug}.d.ts`,
           source: `./src/${slug}.ts`,
-          import: `./dist/${slug}.mjs`,
-          require: `./dist/${slug}.cjs`,
+          import: {
+            types: `./dist/${slug}.d.ts`,
+            default: `./dist/${slug}.js`,
+          },
+          require: {
+            types: `./dist/${slug}.d.cts`,
+            default: `./dist/${slug}.cjs`,
+          },
         },
       }
     })
