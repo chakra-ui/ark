@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 
 import { globbySync } from 'globby'
+import { copyFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
@@ -11,6 +12,11 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       staticImport: true,
+      afterBuild: () => {
+        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
+          copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
+        })
+      },
     }),
   ],
   build: {
@@ -19,7 +25,7 @@ export default defineConfig({
     lib: {
       entry: globbySync('src/**/index.ts'),
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
+      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies ?? {})],
@@ -36,7 +42,7 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: 'src',
           exports: 'named',
-          entryFileNames: '[name].mjs',
+          entryFileNames: '[name].js',
         },
       ],
     },

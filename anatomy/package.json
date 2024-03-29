@@ -2,26 +2,50 @@
   "name": "@ark-ui/anatomy",
   "version": "2.3.1",
   "description": "Contains all the anatomy information for the Ark UI components",
-  "keywords": [],
-  "homepage": "https://ark-ui.com",
+  "keywords": [
+    "Ark UI",
+    "Anatomy",
+    "Components"
+  ],
   "license": "MIT",
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "homepage": "https://ark-ui.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "packages/anatomy"
+    "directory": "anatomy"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
   },
   "scripts": {
     "before:pack": "bun run scripts release:prepare @ark-ui/anatomy",
     "build": "vite build",
     "release-it": "release-it --config ../../release-it.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
   "dependencies": {
     "@zag-js/accordion": "0.40.0",
     "@zag-js/anatomy": "0.40.0",
@@ -66,6 +90,5 @@
     "typescript": "5.4.3",
     "vite": "5.2.6",
     "vite-plugin-dts": "3.7.3"
-  },
-  "main": "src/index.ts"
+  }
 }
