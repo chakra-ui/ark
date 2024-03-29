@@ -38,7 +38,6 @@
     }
   },
   "scripts": {
-    "before:pack": "bun run scripts release:prepare @ark-ui/anatomy",
     "build": "vite build",
     "release-it": "release-it --config ../../release-it.json"
   },
