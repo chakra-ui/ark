@@ -9,4 +9,9 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
   },
+  vite: {
+    resolve: {
+      conditions: ['source'],
+    },
+  },
 })
