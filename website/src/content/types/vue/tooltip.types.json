@@ -20,6 +20,11 @@
       "isRequired": false,
       "description": "Whether to close the tooltip on pointerdown."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the tooltip."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
