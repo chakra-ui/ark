@@ -5,7 +5,13 @@ import { useEnvironmentContext } from '../environment'
 import { type Optional } from '../types'
 import { useEvent } from '../use-event'
 
-export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {}
+export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {
+  /**
+   * The initial open state of the tooltip.
+   */
+  defaultOpen?: boolean
+}
+
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
@@ -13,6 +19,7 @@ export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
+    open: props.defaultOpen ?? props.open,
     'open.controlled': props.open !== undefined,
   }
 

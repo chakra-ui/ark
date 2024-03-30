@@ -20,7 +20,7 @@ description: All notable changes to this project will be documented in this file
 ### Added
 
 - Added `Collapsible` component.
-- Added new `ByteFormat` and `NumberFormat` components.
+- Added new `FormatByte` and `FormatNumber` components.
 
 ### Changed
 

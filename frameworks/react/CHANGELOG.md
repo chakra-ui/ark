@@ -12,7 +12,8 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
-- Added new `ByteFormat` and `NumberFormat` components.
+- Added new `FormatByte` and `FormatNumber` components.
+- Added `defaultOpen` to `Tooltip`
 
 ### Removed
 
