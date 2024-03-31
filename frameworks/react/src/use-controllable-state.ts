@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export interface UseControllableStateProps<T> {
   value?: T
@@ -12,20 +12,6 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue)
 
   const isControlled = value !== undefined
-  const wasControlled = useRef(isControlled)
-
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'production' && wasControlled.current !== isControlled) {
-      console.warn(
-        `A component is changing from ${
-          wasControlled ? 'controlled' : 'uncontrolled'
-        } to ${isControlled ? 'controlled' : 'uncontrolled'}.`,
-      )
-    }
-
-    wasControlled.current = isControlled
-  }, [isControlled])
-
   const currentValue = isControlled ? value : uncontrolledValue
 
   const setValue = useCallback(
