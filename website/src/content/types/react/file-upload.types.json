@@ -23,11 +23,21 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
+    "capture": {
+      "type": "'user' | 'environment'",
+      "isRequired": false,
+      "description": "The default camera to use when capturing media"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
+    },
+    "directory": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to accept directories, only works in webkit browsers"
     },
     "disabled": {
       "type": "boolean",

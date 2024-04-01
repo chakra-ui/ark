@@ -1,9 +1,9 @@
 {
   "Item": {
-    "id": {
+    "value": {
       "type": "string",
       "isRequired": true,
-      "description": "The `id` of the menu item option."
+      "description": "The unique value of the menu item option."
     },
     "asChild": {
       "type": "boolean",
@@ -53,10 +53,10 @@
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
-    "highlightedId": {
+    "highlightedValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The `id` of the active menu item."
+      "description": "The value of the highlighted menu item."
     },
     "id": {
       "type": "string",
@@ -94,6 +94,11 @@
       "isRequired": false,
       "description": "Function called when the focus is moved outside the component"
     },
+    "onHighlightChange": {
+      "type": "(details: HighlightChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the highlighted menu item changes."
+    },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
@@ -114,11 +119,6 @@
       "isRequired": false,
       "description": "Function called when a menu item is selected."
     },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the menu values change (for radios and checkboxes)."
-    },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
@@ -135,11 +135,6 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
-    },
-    "value": {
-      "type": "Record<string, string | string[]>",
-      "isRequired": false,
-      "description": "The values of radios and checkboxes in the menu."
     }
   },
   "Arrow": {
@@ -197,10 +192,10 @@
     }
   },
   "OptionItem": {
-    "name": {
-      "type": "string",
+    "checked": {
+      "type": "boolean",
       "isRequired": true,
-      "description": "The option's name as specified in menu's `context.values` object"
+      "description": "Whether the option is checked"
     },
     "type": {
       "type": "'checkbox' | 'radio'",
@@ -222,11 +217,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the menu item is disabled"
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the menu item option."
     },
     "onCheckedChange": {
       "type": "(checked: boolean) => void",

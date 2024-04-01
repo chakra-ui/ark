@@ -15,11 +15,21 @@
       "description": "Whether to allow drag and drop in the dropzone element"
     },
     "asChild": { "type": "boolean", "isRequired": false },
+    "capture": {
+      "type": "'user' | 'environment'",
+      "isRequired": false,
+      "description": "The default camera to use when capturing media"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
+    },
+    "directory": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to accept directories, only works in webkit browsers"
     },
     "disabled": {
       "type": "boolean",
