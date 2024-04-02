@@ -2,9 +2,7 @@ import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 
 export const GET: APIRoute = async ({ props }) => {
-  return new Response(JSON.stringify(props.entry), {
-    headers: { 'Content-Type': 'application/json' },
-  })
+  return new Response(JSON.stringify(props.entry))
 }
 
 export async function getStaticPaths() {
