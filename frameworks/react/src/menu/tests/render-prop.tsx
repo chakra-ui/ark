@@ -6,8 +6,8 @@ export const RenderPropComponentUnderTest = () => (
       <>
         <Menu.Trigger>{isOpen ? 'Close' : 'Open'} menu</Menu.Trigger>
         <Menu.Content>
-          <Menu.Item id="download">Download</Menu.Item>
-          <Menu.Item id="copy" onClick={() => alert('Kagebunshin')}>
+          <Menu.Item value="download">Download</Menu.Item>
+          <Menu.Item value="copy" onClick={() => alert('Kagebunshin')}>
             Create a Copy
           </Menu.Item>
         </Menu.Content>

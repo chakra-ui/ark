@@ -13,14 +13,14 @@ export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionI
 export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
   const api = useMenuContext() as UseMenuReturn['api']
   const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
-    'id',
-    'disabled',
-    'valueText',
+    'checked',
     'closeOnSelect',
-    'name',
+    'disabled',
+    'onCheckedChange',
     'type',
     'value',
-    'onCheckedChange',
+    'value',
+    'valueText',
   ])
   const mergedProps = mergeProps(api?.getOptionItemProps(optionItemProps) ?? {}, localProps)
 

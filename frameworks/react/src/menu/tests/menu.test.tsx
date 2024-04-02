@@ -2,7 +2,6 @@ import { menuAnatomy } from '@ark-ui/anatomy'
 // eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { Menu } from '..'
 import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -35,14 +34,14 @@ describe('Menu', () => {
     expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it('should not fire onValueChange on disabled MenuItems', async () => {
-    const onValueChange = vi.fn()
+  // it('should not fire onValueChange on disabled MenuItems', async () => {
+  //   const onValueChange = vi.fn()
 
-    render(<ComponentUnderTest onValueChange={onValueChange} />)
+  //   render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    await user.click(screen.getByText('Delivery'))
-    expect(onValueChange).not.toHaveBeenCalled()
-  })
+  //   await user.click(screen.getByText('Delivery'))
+  //   expect(onValueChange).not.toHaveBeenCalled()
+  // })
 
   it('should apply correct role to MenuItemGroup', async () => {
     render(<MenuItemGroupComponentUnderTest />)

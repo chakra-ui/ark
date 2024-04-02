@@ -15,8 +15,8 @@ export const NestedMenuComponentUnderTest = () => (
               <Menu.Positioner>
                 <Menu.Content>
                   <span>nested menu content</span>
-                  <Menu.Item id="twitter">Twitter</Menu.Item>
-                  <Menu.Item id="message">Message</Menu.Item>
+                  <Menu.Item value="twitter">Twitter</Menu.Item>
+                  <Menu.Item value="message">Message</Menu.Item>
                 </Menu.Content>
               </Menu.Positioner>
             </Portal>

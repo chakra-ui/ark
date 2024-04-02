@@ -18,7 +18,6 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
     ...props,
     onOpenChange: useEvent(props.onOpenChange),
     onSelect: useEvent(props.onSelect),
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
     'open.controlled': props.open !== undefined,
   }
 

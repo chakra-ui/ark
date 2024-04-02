@@ -12,24 +12,24 @@ export const ComponentUnderTest = (props: MenuRootProps) => (
           <Menu.ArrowTip />
         </Menu.Arrow>
         <span>main menu content</span>
-        <Menu.Item id="search">Search</Menu.Item>
-        <Menu.Item id="undo">Undo</Menu.Item>
-        <Menu.Item id="delivery" disabled>
+        <Menu.Item value="search">Search</Menu.Item>
+        <Menu.Item value="undo">Undo</Menu.Item>
+        <Menu.Item value="delivery" disabled>
           Delivery
         </Menu.Item>
-        <Menu.Item id="unlink">Unlink</Menu.Item>
+        <Menu.Item value="unlink">Unlink</Menu.Item>
         <Menu.Separator />
         <Menu.ItemGroup id="radio-group">
           <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
-          <Menu.OptionItem name="framework" type="radio" value="react">
+          <Menu.OptionItem type="radio" value="react" checked>
             <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
             <Menu.OptionItemText>React</Menu.OptionItemText>
           </Menu.OptionItem>
-          <Menu.OptionItem name="framework" type="radio" value="solid">
+          <Menu.OptionItem type="radio" value="solid" checked>
             <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
             <Menu.OptionItemText>Solid</Menu.OptionItemText>
           </Menu.OptionItem>
-          <Menu.OptionItem name="framework" type="radio" value="vue">
+          <Menu.OptionItem type="radio" value="vue" checked>
             <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
             <Menu.OptionItemText>Vue</Menu.OptionItemText>
           </Menu.OptionItem>
@@ -38,8 +38,8 @@ export const ComponentUnderTest = (props: MenuRootProps) => (
           <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
           <Menu.Positioner>
             <Menu.Content>
-              <Menu.Item id="twitter">Twitter</Menu.Item>
-              <Menu.Item id="message">Message</Menu.Item>
+              <Menu.Item value="twitter">Twitter</Menu.Item>
+              <Menu.Item value="message">Message</Menu.Item>
             </Menu.Content>
           </Menu.Positioner>
         </Menu.Root>

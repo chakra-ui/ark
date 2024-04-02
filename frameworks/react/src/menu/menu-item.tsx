@@ -11,10 +11,10 @@ export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
   const [menuItemProps, buttonProps] = createSplitProps<ItemProps>()(props, [
-    'id',
-    'disabled',
-    'valueText',
     'closeOnSelect',
+    'disabled',
+    'value',
+    'valueText',
   ])
 
   const api = useMenuContext() as UseMenuReturn['api']

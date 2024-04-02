@@ -30,20 +30,19 @@ export const MenuRoot = (props: MenuRootProps) => {
     'closeOnSelect',
     'dir',
     'getRootNode',
-    'highlightedId',
+    'highlightedValue',
     'id',
     'ids',
     'loop',
     'onEscapeKeyDown',
     'onFocusOutside',
+    'onHighlightChange',
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
     'onSelect',
-    'onValueChange',
     'open',
     'positioning',
-    'value',
   ])
 
   const parentApi = useMenuContext() as UseMenuReturn['api']
