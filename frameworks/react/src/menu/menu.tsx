@@ -2,6 +2,7 @@ import type { OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
 import { MenuArrow as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow'
 import { MenuArrowTip as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip'
 import { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
+import { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context'
 import {
   MenuContextTrigger as ContextTrigger,
   type MenuContextTriggerProps as ContextTriggerProps,
@@ -50,6 +51,7 @@ export {
   Arrow,
   ArrowTip,
   Content,
+  Context,
   ContextTrigger,
   Indicator,
   Item,
@@ -68,6 +70,7 @@ export type {
   ArrowProps,
   ArrowTipProps,
   ContentProps,
+  ContextProps,
   ContextTriggerProps,
   IndicatorProps,
   ItemGroupLabelProps,

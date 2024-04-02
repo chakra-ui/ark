@@ -5,6 +5,7 @@ import type {
 import { MenuArrow, type MenuArrowProps } from './menu-arrow'
 import { MenuArrowTip, type MenuArrowTipProps } from './menu-arrow-tip'
 import { MenuContent, type MenuContentProps } from './menu-content'
+import { MenuContext, type MenuContextProps } from './menu-context'
 import { MenuContextTrigger, type MenuContextTriggerProps } from './menu-context-trigger'
 import { MenuIndicator, type MenuIndicatorProps } from './menu-indicator'
 import { MenuItem, type MenuItemProps } from './menu-item'
@@ -21,7 +22,7 @@ import { MenuRoot, type MenuRootProps } from './menu-root'
 import { MenuSeparator, type MenuSeparatorProps } from './menu-separator'
 import { MenuTrigger, type MenuTriggerProps } from './menu-trigger'
 import { MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item'
-import { useMenuContext } from './use-menu-context'
+import { useMenuContext, type UseMenuContext } from './use-menu-context'
 
 export * as Menu from './menu'
 
@@ -29,6 +30,7 @@ export {
   MenuArrow,
   MenuArrowTip,
   MenuContent,
+  MenuContext,
   MenuContextTrigger,
   MenuIndicator,
   MenuItem,
@@ -49,6 +51,7 @@ export type {
   MenuArrowProps,
   MenuArrowTipProps,
   MenuContentProps,
+  MenuContextProps,
   MenuContextTriggerProps,
   MenuIndicatorProps,
   MenuItemGroupLabelProps,
@@ -64,4 +67,5 @@ export type {
   MenuSeparatorProps,
   MenuTriggerItemProps,
   MenuTriggerProps,
+  UseMenuContext,
 }
