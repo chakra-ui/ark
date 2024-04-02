@@ -7,19 +7,14 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import { useEffectOnce } from '../use-effect-once'
-import {
-  MenuMachineProvider,
-  MenuProvider,
-  MenuTriggerItemProvider,
-  useMenuContext,
-  useMenuMachineContext,
-} from './menu-context'
-import { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
+import { useMenu, type UseMenuProps } from './use-menu'
+import { MenuProvider, useMenuContext } from './use-menu-context'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
-  children?: ReactNode | ((api: UseMenuReturn['api']) => ReactNode)
+  children?: ReactNode
 }
 
 export const MenuRoot = (props: MenuRootProps) => {
@@ -45,20 +40,21 @@ export const MenuRoot = (props: MenuRootProps) => {
     'positioning',
   ])
 
-  const parentApi = useMenuContext() as UseMenuReturn['api']
-  const parentMachine = useMenuMachineContext() as UseMenuReturn['machine']
+  const parentApi = useMenuContext()
+  const parentMachine = useMenuMachineContext()
   const { api, machine } = useMenu(useMenuProps)
   const presenceApi = usePresence(mergeProps({ present: api.isOpen }, presenceProps))
-  const view = runIfFn(localProps.children, api)
 
   useEffectOnce(() => {
     if (!parentMachine) return
+    if (!parentApi) return
+
     parentApi.setChild(machine)
     api.setParent(parentMachine)
   })
 
   const getTriggerItemProps = useCallback(
-    () => parentApi.getTriggerItemProps(api),
+    () => parentApi?.getTriggerItemProps(api),
     [api, parentApi],
   )
 
@@ -66,7 +62,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     <MenuTriggerItemProvider value={getTriggerItemProps}>
       <MenuMachineProvider value={machine}>
         <MenuProvider value={api}>
-          <PresenceProvider value={presenceApi}>{view}</PresenceProvider>
+          <PresenceProvider value={presenceApi} {...localProps} />
         </MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>

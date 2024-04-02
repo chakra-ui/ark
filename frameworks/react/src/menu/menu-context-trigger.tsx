@@ -1,15 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const MenuContextTrigger = forwardRef<HTMLButtonElement, MenuContextTriggerProps>(
   (props, ref) => {
-    const api = useMenuContext() as UseMenuReturn['api']
-    const mergedProps = mergeProps(api?.contextTriggerProps ?? {}, props)
+    const context = useMenuContext()
+    const mergedProps = mergeProps(context.contextTriggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

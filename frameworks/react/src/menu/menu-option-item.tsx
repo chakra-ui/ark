@@ -4,14 +4,13 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
+import { useMenuContext } from './use-menu-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 
 export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
 export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
-  const api = useMenuContext() as UseMenuReturn['api']
+  const context = useMenuContext()
   const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
     'checked',
     'closeOnSelect',
@@ -22,7 +21,7 @@ export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((p
     'value',
     'valueText',
   ])
-  const mergedProps = mergeProps(api?.getOptionItemProps(optionItemProps) ?? {}, localProps)
+  const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>

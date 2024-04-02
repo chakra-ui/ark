@@ -4,15 +4,14 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
-import { useMenuContext } from './menu-context'
-import { type UseMenuReturn } from './use-menu'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
   const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
-  const api = useMenuContext() as UseMenuReturn['api']
-  const mergedProps = mergeProps(api?.getItemGroupProps(itemGroupProps) ?? {}, localProps)
+  const context = useMenuContext()
+  const mergedProps = mergeProps(context.getItemGroupProps(itemGroupProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
