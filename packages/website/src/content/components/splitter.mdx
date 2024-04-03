@@ -49,6 +49,34 @@ splitter, use the `orientation` prop:
 
 <Story id="Vertical" />
 
+## Data Attributes
+
+### Splitter Root
+
+| Name             | Type                       | Description                              | Default Value |
+|------------------|----------------------------|------------------------------------------|---------------|
+| data-scope       | 'splitter'                 | Indicates the scope of this part         | -             |
+| data-part        | 'root'                     | Indicates which part is this element     | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the splitter | -             |
+
+### Splitter Panel
+
+| Name             | Type                       | Description                           | Default Value |
+|------------------|----------------------------|---------------------------------------|---------------|
+| data-scope       | 'splitter'                 | Indicates the scope of this part      | -             |
+| data-part        | 'panel'                    | Indicates which part is this element  | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the panel | -             |
+| data-ownedby     | string                     | Indicates the id of the owner element | -             |
+
+### Splitter Resize Trigger
+
+| Name             | Type                       | Description                                    | Default Value |
+|------------------|----------------------------|------------------------------------------------|---------------|
+| data-scope       | 'splitter'                 | Indicates the scope of this part               | -             |
+| data-part        | 'resize-trigger'           | Indicates which part is this element           | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the resize trigger | -             |
+| data-ownedby     | string                     | Indicates the id of the ownerelement           | -             |
+
 ## API Reference
 
 <ComponentTypes />
