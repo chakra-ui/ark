@@ -16,7 +16,6 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'dir',
     'directory',
     'disabled',
-    'files',
     'getRootNode',
     'id',
     'ids',
@@ -26,8 +25,8 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'minFileSize',
     'name',
     'onFileAccept',
+    'onFileChange',
     'onFileReject',
-    'onFilesChange',
     'translations',
     'validate',
   ])

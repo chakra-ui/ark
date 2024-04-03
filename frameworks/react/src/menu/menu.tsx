@@ -1,6 +1,14 @@
-import type { OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
+import type { HighlightChangeDetails, OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
 import { MenuArrow as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow'
 import { MenuArrowTip as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip'
+import {
+  MenuCheckboxItem as CheckboxItem,
+  type MenuCheckboxItemProps as CheckboxItemProps,
+} from './menu-checkbox-item'
+import {
+  MenuCheckboxItemGroup as CheckboxItemGroup,
+  type MenuCheckboxItemGroupProps as CheckboxItemGroupProps,
+} from './menu-checkbox-item-group'
 import { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
 import { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context'
 import {
@@ -21,21 +29,22 @@ import {
   type MenuItemGroupLabelProps as ItemGroupLabelProps,
 } from './menu-item-group-label'
 import {
-  MenuOptionItem as OptionItem,
-  type MenuOptionItemProps as OptionItemProps,
-} from './menu-option-item'
-import {
-  MenuOptionItemIndicator as OptionItemIndicator,
-  type MenuOptionItemIndicatorProps as OptionItemIndicatorProps,
-} from './menu-option-item-indicator'
-import {
-  MenuOptionItemText as OptionItemText,
-  type MenuOptionItemTextProps as OptionItemTextProps,
-} from './menu-option-item-text'
+  MenuItemIndicator as ItemIndicator,
+  type MenuItemIndicatorProps as ItemIndicatorProps,
+} from './menu-item-indicator'
+import { MenuItemText as ItemText, type MenuItemTextProps as ItemTextProps } from './menu-item-text'
 import {
   MenuPositioner as Positioner,
   type MenuPositionerProps as PositionerProps,
 } from './menu-positioner'
+import {
+  MenuRadioItem as RadioItem,
+  type MenuRadioItemProps as RadioItemProps,
+} from './menu-radio-item'
+import {
+  MenuRadioItemGroup as RadioItemGroup,
+  type MenuRadioItemGroupProps as RadioItemGroupProps,
+} from './menu-radio-item-group'
 import { MenuRoot as Root, type MenuRootProps as RootProps } from './menu-root'
 import {
   MenuSeparator as Separator,
@@ -50,6 +59,8 @@ import {
 export {
   Arrow,
   ArrowTip,
+  CheckboxItem,
+  CheckboxItemGroup,
   Content,
   Context,
   ContextTrigger,
@@ -57,10 +68,11 @@ export {
   Item,
   ItemGroup,
   ItemGroupLabel,
-  OptionItem,
-  OptionItemIndicator,
-  OptionItemText,
+  ItemIndicator,
+  ItemText,
   Positioner,
+  RadioItem,
+  RadioItemGroup,
   Root,
   Separator,
   Trigger,
@@ -69,18 +81,22 @@ export {
 export type {
   ArrowProps,
   ArrowTipProps,
+  CheckboxItemGroupProps,
+  CheckboxItemProps,
   ContentProps,
   ContextProps,
   ContextTriggerProps,
+  HighlightChangeDetails,
   IndicatorProps,
   ItemGroupLabelProps,
   ItemGroupProps,
+  ItemIndicatorProps,
   ItemProps,
+  ItemTextProps,
   OpenChangeDetails,
-  OptionItemIndicatorProps,
-  OptionItemProps,
-  OptionItemTextProps,
   PositionerProps,
+  RadioItemGroupProps,
+  RadioItemProps,
   RootProps,
   SelectionDetails,
   SeparatorProps,

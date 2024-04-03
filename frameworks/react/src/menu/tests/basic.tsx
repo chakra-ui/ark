@@ -19,19 +19,19 @@ export const ComponentUnderTest = (props: MenuRootProps) => (
         </Menu.Item>
         <Menu.Item value="unlink">Unlink</Menu.Item>
         <Menu.Separator />
-        <Menu.ItemGroup id="radio-group">
-          <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
+        <Menu.ItemGroup>
+          <Menu.ItemGroupLabel>Radio Group</Menu.ItemGroupLabel>
           <Menu.OptionItem type="radio" value="react" checked>
-            <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-            <Menu.OptionItemText>React</Menu.OptionItemText>
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>React</Menu.ItemText>
           </Menu.OptionItem>
           <Menu.OptionItem type="radio" value="solid" checked>
-            <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-            <Menu.OptionItemText>Solid</Menu.OptionItemText>
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>Solid</Menu.ItemText>
           </Menu.OptionItem>
           <Menu.OptionItem type="radio" value="vue" checked>
-            <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-            <Menu.OptionItemText>Vue</Menu.OptionItemText>
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>Vue</Menu.ItemText>
           </Menu.OptionItem>
         </Menu.ItemGroup>
         <Menu.Root>

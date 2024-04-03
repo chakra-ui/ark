@@ -7,9 +7,9 @@ import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 
-export interface MenuOptionItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
+export interface MenuCheckboxItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
 
-export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((props, ref) => {
+export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps>((props, ref) => {
   const context = useMenuContext()
   const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
     'checked',
@@ -17,7 +17,6 @@ export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((p
     'disabled',
     'onCheckedChange',
     'type',
-    'value',
     'value',
     'valueText',
   ])
@@ -30,4 +29,4 @@ export const MenuOptionItem = forwardRef<HTMLDivElement, MenuOptionItemProps>((p
   )
 })
 
-MenuOptionItem.displayName = 'MenuOptionItem'
+MenuCheckboxItem.displayName = 'MenuCheckboxItem'

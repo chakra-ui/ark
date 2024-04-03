@@ -4,16 +4,16 @@ import { ark, type HTMLArkProps } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-context'
 
-export interface MenuOptionItemTextProps extends HTMLArkProps<'div'> {}
+export interface MenuItemIndicatorProps extends HTMLArkProps<'div'> {}
 
-export const MenuOptionItemText = forwardRef<HTMLDivElement, MenuOptionItemTextProps>(
+export const MenuItemIndicator = forwardRef<HTMLDivElement, MenuItemIndicatorProps>(
   (props, ref) => {
     const context = useMenuContext()
     const optionItemProps = useMenuOptionItemPropsContext()
-    const mergedProps = mergeProps(context.getOptionItemTextProps(optionItemProps), props)
+    const mergedProps = mergeProps(context.getItemIndicatorProps(optionItemProps), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },
 )
 
-MenuOptionItemText.displayName = 'MenuOptionItemText'
+MenuItemIndicator.displayName = 'MenuItemIndicator'

@@ -57,13 +57,13 @@ export const Group = () => (
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.ItemGroup id="group-1">
-          <Menu.ItemGroupLabel htmlFor="group-1">Group 1</Menu.ItemGroupLabel>
+        <Menu.ItemGroup>
+          <Menu.ItemGroupLabel>Group 1</Menu.ItemGroupLabel>
           <Menu.Item value="share">Share...</Menu.Item>
           <Menu.Item value="move">Move...</Menu.Item>
         </Menu.ItemGroup>
-        <Menu.ItemGroup id="group-2">
-          <Menu.ItemGroupLabel htmlFor="group-2">Group 2</Menu.ItemGroupLabel>
+        <Menu.ItemGroup>
+          <Menu.ItemGroupLabel>Group 2</Menu.ItemGroupLabel>
           <Menu.Item value="rename">Rename...</Menu.Item>
           <Menu.Item value="delete">Delete...</Menu.Item>
         </Menu.ItemGroup>
@@ -95,40 +95,44 @@ export const Options = () => {
       <Menu.Trigger>Open menu</Menu.Trigger>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.ItemGroup id="radio-group">
-            <Menu.ItemGroupLabel htmlFor="radio-group">Radio Group</Menu.ItemGroupLabel>
-            <Menu.OptionItem type="radio" value="react" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>React</Menu.OptionItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="radio" value="solid" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Solid</Menu.OptionItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="radio" value="vue" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Vue</Menu.OptionItemText>
-            </Menu.OptionItem>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup id="checkbox-group">
-            <Menu.ItemGroupLabel htmlFor="checkbox-group">Checkbox Group</Menu.ItemGroupLabel>
-            <Menu.OptionItem type="checkbox" value="zag-js" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Zag.js</Menu.OptionItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="checkbox" value="ark" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Ark UI</Menu.OptionItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="checkbox" value="panda" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Panda CSS</Menu.OptionItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="checkbox" value="chakra" checked={false}>
-              <Menu.OptionItemIndicator>✅</Menu.OptionItemIndicator>
-              <Menu.OptionItemText>Chakra UI</Menu.OptionItemText>
-            </Menu.OptionItem>
-          </Menu.ItemGroup>
+          <Menu.CheckboxItem>
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>Zag.js</Menu.ItemText>
+          </Menu.CheckboxItem>
+          {/* <Menu.RadioItemGroup>
+            <Menu.ItemGroupLabel>Radio Group</Menu.ItemGroupLabel>
+            <Menu.RadioItem value="react">
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>React</Menu.ItemText>
+            </Menu.RadioItem>
+            <Menu.RadioItem type="radio" value="solid" checked={false}>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Solid</Menu.ItemText>
+            </Menu.RadioItem>
+            <Menu.RadioItem type="radio" value="vue" checked={false}>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Vue</Menu.ItemText>
+            </Menu.RadioItem>
+          </Menu.RadioItemGroup>
+          <Menu.ItemGroup>
+            <Menu.ItemGroupLabel>Checkbox Group</Menu.ItemGroupLabel>
+            <Menu.CheckboxItem>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Zag.js</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.CheckboxItem>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Ark UI</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.CheckboxItem value="panda" checked={false}>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Panda CSS</Menu.ItemText>
+            </Menu.CheckboxItem>
+            <Menu.CheckboxItem value="chakra" checked={false}>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Chakra UI</Menu.ItemText>
+            </Menu.CheckboxItem>
+          </Menu.ItemGroup> */}
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>
