@@ -128,6 +128,45 @@ In contrast, manual tab activation means the tab is selected with the
 
 <Story id="Manual" />
 
+## Data Attributes
+
+### Root
+
+| Name             | Type                       | Description                          | Default Value |
+|------------------|----------------------------|--------------------------------------|---------------|
+| data-scope       | 'tabs'                     | Indicates the scope of this part     | -             |
+| data-part        | 'root'                     | Indicates which part is this element | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the tabs | -             |
+
+### List
+
+| Name             | Type                       | Description                          | Default Value |
+|------------------|----------------------------|--------------------------------------|---------------|
+| data-scope       | 'tabs'                     | Indicates the scope of this part     | -             |
+| data-part        | 'list'                     | Indicates which part is this element | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the tab  | -             |
+
+### Trigger
+
+| Name             | Type                       | Description                                | Default Value |
+|------------------|----------------------------|--------------------------------------------|---------------|
+| data-scope       | 'tabs'                     | Indicates the scope of this part           | -             |
+| data-part        | 'trigger'                  | Indicates which part is this element       | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the tab        | -             |
+| data-value       | string                     | The value associated with the tab trigger  | -             |
+| data-ownedby     | string                     | Indicates the id of the owner element      | -             |
+| data-selected    | boolean                    | Indicates if the tab is currently selected | -             |
+
+### Content
+
+| Name             | Type                       | Description                                    | Default Value |
+|------------------|----------------------------|------------------------------------------------|---------------|
+| data-scope       | 'tabs'                     | Indicates the scope of this part               | -             |
+| data-part        | 'content'                  | Indicates which part is this element           | -             |
+| data-orientation | 'horizontal' \| 'vertical' | Reflects the orientation of the tab            | -             |
+| data-state       | 'open' \| 'closed'         | Indicates the current state of the tab content | -             |
+| data-ownedby     | string                     | Indicates the id of the owner element          | -             |
+
 ## API Reference
 
 <ComponentTypes />
