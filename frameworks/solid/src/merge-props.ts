@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { mergeProps as zagMergeProps } from '@zag-js/core'
-import { type Accessor } from 'solid-js'
 
 export type MaybeAccessor<T> = T | (() => T)
 
-export function mergeProps<T>(source: MaybeAccessor<T>): Accessor<T>
+export function mergeProps<T>(source: MaybeAccessor<T>): T
 export function mergeProps<T, U>(source: MaybeAccessor<T>, source1: MaybeAccessor<U>): T & U
 export function mergeProps<T, U, V>(
   source: MaybeAccessor<T>,
@@ -43,6 +42,7 @@ export function mergeProps(...sources: any[]) {
               let v,
                 s = sources[i]
               if (typeof s === 'function') s = s()
+              // eslint-disable-next-line
               v = (s || {})[key]
               if (v !== undefined) return v
             }
