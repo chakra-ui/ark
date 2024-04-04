@@ -1,29 +1,30 @@
-import type { ItemGroupProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { forwardRef, useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import { type Assign, type Optional } from '../types'
 import { useMenuContext } from './use-menu-context'
+import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
 
-// interface FooDetails {
-//   value: string
-// }
+type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 
-// interface Foo {
-//   value?: string
-//   onValueChange: (e: FooDetails) => void
-// }
-
-export interface MenuRadioItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
+export interface MenuRadioItemGroupProps
+  extends Assign<HTMLArkProps<'div'>, OptionalUseMenuItemGroupContext> {}
 
 export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>(
   (props, ref) => {
-    const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
+    const [optionalItemGroupProps, localProps] =
+      createSplitProps<OptionalUseMenuItemGroupContext>()(props, ['id', 'onValueChange', 'value'])
     const context = useMenuContext()
-    const mergedProps = mergeProps(context.getItemGroupProps(itemGroupProps), localProps)
+    const id = useId()
+    const itemGroupProps = { id, ...optionalItemGroupProps }
+    const mergedProps = mergeProps(context.getItemGroupProps({ id: itemGroupProps.id }), localProps)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return (
+      <MenuItemGroupProvider value={itemGroupProps}>
+        <ark.div {...mergedProps} ref={ref} />
+      </MenuItemGroupProvider>
+    )
   },
 )
 

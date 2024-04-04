@@ -5,10 +5,6 @@ import {
   MenuCheckboxItem as CheckboxItem,
   type MenuCheckboxItemProps as CheckboxItemProps,
 } from './menu-checkbox-item'
-import {
-  MenuCheckboxItemGroup as CheckboxItemGroup,
-  type MenuCheckboxItemGroupProps as CheckboxItemGroupProps,
-} from './menu-checkbox-item-group'
 import { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
 import { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context'
 import {
@@ -60,7 +56,6 @@ export {
   Arrow,
   ArrowTip,
   CheckboxItem,
-  CheckboxItemGroup,
   Content,
   Context,
   ContextTrigger,
@@ -81,7 +76,6 @@ export {
 export type {
   ArrowProps,
   ArrowTipProps,
-  CheckboxItemGroupProps,
   CheckboxItemProps,
   ContentProps,
   ContextProps,

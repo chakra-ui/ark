@@ -7,20 +7,25 @@ import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 
-export interface MenuCheckboxItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
+type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
+
+export interface MenuCheckboxItemProps
+  extends Assign<HTMLArkProps<'div'>, PartialOptionItemProps> {}
 
 export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps>((props, ref) => {
-  const context = useMenuContext()
-  const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
+  const [partialOptionItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [
     'checked',
     'closeOnSelect',
     'disabled',
     'onCheckedChange',
-    'type', // 404
     'value',
     'valueText',
   ])
-
+  const optionItemProps: OptionItemProps = {
+    ...partialOptionItemProps,
+    type: 'checkbox',
+  }
+  const context = useMenuContext()
   const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
 
   return (

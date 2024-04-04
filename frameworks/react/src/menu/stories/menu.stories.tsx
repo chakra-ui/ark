@@ -16,12 +16,9 @@ export const Basic = () => (
     </Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.Item value="search">Search</Menu.Item>
-        <Menu.Item value="undo">Undo</Menu.Item>
-        <Menu.Item value="delivery" disabled>
-          Delivery
-        </Menu.Item>
-        <Menu.Item value="unlink">Unlink</Menu.Item>
+        <Menu.Item value="react">React</Menu.Item>
+        <Menu.Item value="solid">Solid</Menu.Item>
+        <Menu.Item value="vue">Vue</Menu.Item>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
@@ -35,16 +32,15 @@ export const Controlled = () => {
       <button onClick={() => setIsOpen(!isOpen)}>Trigger from the outside</button>
       <Menu.Root open={isOpen} onSelect={(id) => console.log(id)}>
         <Menu.Trigger>
-          Open menu <Menu.Indicator>▾</Menu.Indicator>
+          Open menu <Menu.Indicator>➡️</Menu.Indicator>
         </Menu.Trigger>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.Item value="search">Search</Menu.Item>
-            <Menu.Item value="undo">Undo</Menu.Item>
-            <Menu.Item value="delivery" disabled>
-              Delivery
-            </Menu.Item>
-            <Menu.Item value="unlink">Unlink</Menu.Item>
+            <Menu.Content>
+              <Menu.Item value="react">React</Menu.Item>
+              <Menu.Item value="solid">Solid</Menu.Item>
+              <Menu.Item value="vue">Vue</Menu.Item>
+            </Menu.Content>
           </Menu.Content>
         </Menu.Positioner>
       </Menu.Root>
@@ -58,14 +54,15 @@ export const Group = () => (
     <Menu.Positioner>
       <Menu.Content>
         <Menu.ItemGroup>
-          <Menu.ItemGroupLabel>Group 1</Menu.ItemGroupLabel>
-          <Menu.Item value="share">Share...</Menu.Item>
-          <Menu.Item value="move">Move...</Menu.Item>
+          <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
+          <Menu.Item value="react">React</Menu.Item>
+          <Menu.Item value="solid">Solid</Menu.Item>
+          <Menu.Item value="vue">Vue</Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup>
-          <Menu.ItemGroupLabel>Group 2</Menu.ItemGroupLabel>
-          <Menu.Item value="rename">Rename...</Menu.Item>
-          <Menu.Item value="delete">Delete...</Menu.Item>
+          <Menu.ItemGroupLabel>CSS Frameworks</Menu.ItemGroupLabel>
+          <Menu.Item value="panda">Panda</Menu.Item>
+          <Menu.Item value="tailwind">Tailwind</Menu.Item>
         </Menu.ItemGroup>
       </Menu.Content>
     </Menu.Positioner>
@@ -77,64 +74,52 @@ export const Separator = () => (
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.Item value="search">Search</Menu.Item>
-        <Menu.Item value="undo">Undo</Menu.Item>
-        <Menu.Separator />
-        <Menu.Item value="delivery" disabled>
-          Delivery
-        </Menu.Item>
-        <Menu.Item value="unlink">Unlink</Menu.Item>
+        <Menu.Content>
+          <Menu.Item value="react">React</Menu.Item>
+          <Menu.Item value="solid">Solid</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item value="vue">Vue</Menu.Item>
+        </Menu.Content>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
 )
 
-export const Options = () => {
+export const Checkbox = () => {
+  const [checked, setChecked] = useState(false)
+
   return (
     <Menu.Root>
       <Menu.Trigger>Open menu</Menu.Trigger>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.ItemGroup>
-            <Menu.CheckboxItem checked>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Zag.js</Menu.ItemText>
-            </Menu.CheckboxItem>
-          </Menu.ItemGroup>
-          {/* <Menu.RadioItemGroup>
-            <Menu.ItemGroupLabel>Radio Group</Menu.ItemGroupLabel>
-            <Menu.RadioItem value="react">
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>React</Menu.ItemText>
-            </Menu.RadioItem>
-            <Menu.RadioItem type="radio" value="solid" checked={false}>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Solid</Menu.ItemText>
-            </Menu.RadioItem>
-            <Menu.RadioItem type="radio" value="vue" checked={false}>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Vue</Menu.ItemText>
-            </Menu.RadioItem>
+          <Menu.CheckboxItem checked={checked} onCheckedChange={setChecked} value="checked">
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>Check me</Menu.ItemText>
+          </Menu.CheckboxItem>
+        </Menu.Content>
+      </Menu.Positioner>
+    </Menu.Root>
+  )
+}
+
+export const RadioGroup = () => {
+  const [value, setValue] = useState('React')
+
+  return (
+    <Menu.Root>
+      <Menu.Trigger>Open menu</Menu.Trigger>
+      <Menu.Positioner>
+        <Menu.Content>
+          <Menu.RadioItemGroup value={value} onValueChange={(e) => setValue(e.value)}>
+            <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
+            {['React', 'Solid', 'Vue'].map((framework) => (
+              <Menu.RadioItem key={framework} value={framework}>
+                <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+                <Menu.ItemText>{framework}</Menu.ItemText>
+              </Menu.RadioItem>
+            ))}
           </Menu.RadioItemGroup>
-          <Menu.ItemGroup>
-            <Menu.ItemGroupLabel>Checkbox Group</Menu.ItemGroupLabel>
-            <Menu.CheckboxItem>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Zag.js</Menu.ItemText>
-            </Menu.CheckboxItem>
-            <Menu.CheckboxItem>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Ark UI</Menu.ItemText>
-            </Menu.CheckboxItem>
-            <Menu.CheckboxItem value="panda" checked={false}>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Panda CSS</Menu.ItemText>
-            </Menu.CheckboxItem>
-            <Menu.CheckboxItem value="chakra" checked={false}>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Chakra UI</Menu.ItemText>
-            </Menu.CheckboxItem>
-          </Menu.ItemGroup> */}
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

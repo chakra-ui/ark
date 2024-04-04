@@ -4,7 +4,7 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     <FileUpload.Context>
       {(context) => {
-        if (context.files.length < 1)
+        if (context.acceptedFiles.length < 1)
           context.setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
 
         return (
@@ -14,7 +14,7 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
             </FileUpload.Dropzone>
             <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
             <FileUpload.ItemGroup>
-              {context.files.map((file) => (
+              {context.acceptedFiles.map((file) => (
                 <FileUpload.Item key={file.name} file={file}>
                   <FileUpload.ItemPreview type="image/*">
                     <FileUpload.ItemPreviewImage />

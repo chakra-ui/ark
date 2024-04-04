@@ -14,16 +14,25 @@ export const Basic = () => (
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>
-        <Menu.Item value="new-tab">New Tab...</Menu.Item>
-        <Menu.Item value="new-win">New Window...</Menu.Item>
-        <Menu.Separator />
         <Menu.Root>
-          <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
+          <Menu.TriggerItem>JS Frameworks</Menu.TriggerItem>
           <Portal>
             <Menu.Positioner>
               <Menu.Content>
-                <Menu.Item value="twitter">Twitter</Menu.Item>
-                <Menu.Item value="message">Message</Menu.Item>
+                <Menu.Item value="react">React</Menu.Item>
+                <Menu.Item value="solid">Solid</Menu.Item>
+                <Menu.Item value="vue">Vue</Menu.Item>
+              </Menu.Content>
+            </Menu.Positioner>
+          </Portal>
+        </Menu.Root>
+        <Menu.Root>
+          <Menu.TriggerItem>CSS Frameworks</Menu.TriggerItem>
+          <Portal>
+            <Menu.Positioner>
+              <Menu.Content>
+                <Menu.Item value="panda">Panda</Menu.Item>
+                <Menu.Item value="tailwind">Tailwind</Menu.Item>
               </Menu.Content>
             </Menu.Positioner>
           </Portal>
@@ -32,41 +41,3 @@ export const Basic = () => (
     </Menu.Positioner>
   </Menu.Root>
 )
-
-export const Advanced = () => {
-  return (
-    <Menu.Root>
-      <Menu.Trigger>Open menu</Menu.Trigger>
-      <Menu.Positioner>
-        <Menu.Content>
-          <Menu.ItemGroup>
-            <Menu.ItemGroupLabel>Radio Group</Menu.ItemGroupLabel>
-            <Menu.OptionItem type="radio" value="react" checked>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>React</Menu.ItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="radio" value="solid" checked>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Solid</Menu.ItemText>
-            </Menu.OptionItem>
-            <Menu.OptionItem type="radio" value="vue" checked>
-              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-              <Menu.ItemText>Vue</Menu.ItemText>
-            </Menu.OptionItem>
-          </Menu.ItemGroup>
-          <Menu.Root>
-            <Menu.TriggerItem>Share &gt;</Menu.TriggerItem>
-            <Portal>
-              <Menu.Positioner>
-                <Menu.Content>
-                  <Menu.Item value="twitter">Twitter</Menu.Item>
-                  <Menu.Item value="message">Message</Menu.Item>
-                </Menu.Content>
-              </Menu.Positioner>
-            </Portal>
-          </Menu.Root>
-        </Menu.Content>
-      </Menu.Positioner>
-    </Menu.Root>
-  )
-}

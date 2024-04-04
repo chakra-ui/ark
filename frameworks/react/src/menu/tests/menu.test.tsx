@@ -2,14 +2,64 @@ import { menuAnatomy } from '@ark-ui/anatomy'
 // eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { Menu } from '..'
 import { getExports, getParts } from '../../setup-test'
-import { ComponentUnderTest } from './basic'
-import { ContextMenuComponentUnderTest } from './context-menu'
-import { MenuItemGroupComponentUnderTest } from './menu-item-group'
-import { NestedMenuComponentUnderTest } from './nested-menu'
-import { OptionGroupsComponentUnderTest } from './option-groups'
-import { RenderPropComponentUnderTest } from './render-prop'
+
+interface ComponentUnderTestProps extends Menu.RootProps {
+  onValueChange?: (e: { value: string }) => void
+}
+
+const ComponentUnderTest = (props: ComponentUnderTestProps) => {
+  const { onValueChange, ...rest } = props
+  return (
+    <Menu.Root {...rest}>
+      <Menu.Trigger>
+        Open menu <Menu.Indicator />
+      </Menu.Trigger>
+      <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+      <Menu.ContextTrigger>Context trigger</Menu.ContextTrigger>
+      <Menu.Positioner data-testid="positioner">
+        <Menu.Content>
+          <Menu.Arrow>
+            <Menu.ArrowTip />
+          </Menu.Arrow>
+          <Menu.ItemGroup>
+            <Menu.ItemGroupLabel>Ark UI</Menu.ItemGroupLabel>
+            <Menu.Item value="dialog" disabled>
+              Dialog
+            </Menu.Item>
+          </Menu.ItemGroup>
+          <Menu.Separator />
+          <Menu.CheckboxItem checked value="checked">
+            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+            <Menu.ItemText>Check me</Menu.ItemText>
+          </Menu.CheckboxItem>
+          <Menu.Separator />
+          <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
+            <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
+            {['react', 'solid', 'vue', 'svelte'].map((framework) => (
+              <Menu.RadioItem key={framework} value={framework} disabled={framework === 'svelte'}>
+                <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+                <Menu.ItemText>{framework}</Menu.ItemText>
+              </Menu.RadioItem>
+            ))}
+          </Menu.RadioItemGroup>
+          <Menu.Separator />
+          <Menu.Root>
+            <Menu.TriggerItem>CSS Frameworks</Menu.TriggerItem>
+            <Menu.Positioner>
+              <Menu.Content>
+                <Menu.Item value="panda">Panda</Menu.Item>
+                <Menu.Item value="tailwind">Tailwind</Menu.Item>
+              </Menu.Content>
+            </Menu.Positioner>
+          </Menu.Root>
+        </Menu.Content>
+      </Menu.Positioner>
+    </Menu.Root>
+  )
+}
 
 describe('Menu / Parts & Exports', () => {
   it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
@@ -31,40 +81,25 @@ describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(<ComponentUnderTest />)
 
-    expect(screen.getByText('Delivery')).toHaveAttribute('aria-disabled', 'true')
+    expect(screen.getByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  // it('should not fire onValueChange on disabled MenuItems', async () => {
-  //   const onValueChange = vi.fn()
+  it('should not fire onValueChange on disabled MenuItems', async () => {
+    const onValueChange = vi.fn()
 
-  //   render(<ComponentUnderTest onValueChange={onValueChange} />)
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-  //   await user.click(screen.getByText('Delivery'))
-  //   expect(onValueChange).not.toHaveBeenCalled()
-  // })
+    await user.click(screen.getByText(/svelte/i))
+    expect(onValueChange).not.toHaveBeenCalled()
+  })
 
   it('should apply correct role to MenuItemGroup', async () => {
-    render(<MenuItemGroupComponentUnderTest />)
+    render(<ComponentUnderTest />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-
     await user.click(button)
 
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(screen.getByText('Group 1').nextElementSibling).toBe(screen.getByText('Share...'))
-  })
-
-  it('should expose internal state as render prop', async () => {
-    render(<RenderPropComponentUnderTest />)
-
-    const button = screen.getByRole('button', { name: /open menu/i })
-
-    await user.click(button)
-    await screen.findByText(/close menu/i)
-
-    await user.click(button)
-    await screen.findByText(/open menu/i)
   })
 
   it('should accept a custom placement', async () => {
@@ -80,7 +115,7 @@ describe('Menu', () => {
   it('should control the open state', async () => {
     render(<ComponentUnderTest open />)
 
-    const text = await screen.findByText('main menu content')
+    const text = await screen.findByText('JS Frameworks')
     expect(text).toBeVisible()
   })
 
@@ -118,61 +153,35 @@ describe('Menu', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 
-  describe('ContextMenu', () => {
-    it('should open on context menu', async () => {
-      render(<ContextMenuComponentUnderTest />)
+  it('should open on context menu', async () => {
+    render(<ComponentUnderTest />)
 
-      const button = screen.getByRole('button', { name: /open menu/i })
+    const button = screen.getByRole('button', { name: /Open Context Menu/i })
 
-      fireEvent.contextMenu(button)
-      await waitFor(() => expect(screen.getByText(/menu content/i)).toBeVisible())
-    })
+    fireEvent.contextMenu(button)
+    await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
   })
 
-  describe('NestedMenu', () => {
-    it('should open on nested menu', async () => {
-      render(<NestedMenuComponentUnderTest />)
+  it('should open on nested menu', async () => {
+    render(<ComponentUnderTest />)
 
-      const button = screen.getByRole('button', { name: /open menu/i })
+    const button = screen.getByRole('button', { name: /open menu/i })
 
-      await user.click(button)
-      await waitFor(() => expect(screen.getByText(/main menu content/i)).toBeVisible())
+    await user.click(button)
+    await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
 
-      const nestedButton = screen.getByText(/Share/i)
-
-      await user.click(nestedButton)
-      await waitFor(() => expect(screen.getByText(/nested menu content/i)).toBeVisible())
-    })
+    await user.click(screen.getByText(/CSS Frameworks/i))
+    await waitFor(() => expect(screen.getByText(/Panda/i)).toBeVisible())
   })
 
-  describe('OptionGroups', () => {
-    it('should select a radio option', async () => {
-      render(<OptionGroupsComponentUnderTest />)
+  it('should select a radio option', async () => {
+    render(<ComponentUnderTest />)
 
-      const menuButton = screen.getByRole('button', { name: /open menu/i })
-      await user.click(menuButton)
+    const menuButton = screen.getByRole('button', { name: /open menu/i })
+    await user.click(menuButton)
 
-      const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
-      await user.click(radioButton)
-      await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
-    })
-
-    it('should select a checkbox option', async () => {
-      render(<OptionGroupsComponentUnderTest />)
-
-      const menuButton = screen.getByRole('button', { name: /open menu/i })
-      await user.click(menuButton)
-
-      const checkboxButton1 = screen.getByRole('menuitemcheckbox', { name: /ark/i })
-      await user.click(checkboxButton1)
-
-      await user.click(menuButton)
-
-      const checkboxButton2 = screen.getByRole('menuitemcheckbox', { name: /panda/i })
-      await user.click(checkboxButton2)
-
-      await waitFor(() => expect(checkboxButton1).toHaveAttribute('aria-checked', 'true'))
-      await waitFor(() => expect(checkboxButton2).toHaveAttribute('aria-checked', 'true'))
-    })
+    const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
+    await user.click(radioButton)
+    await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
   })
 })
