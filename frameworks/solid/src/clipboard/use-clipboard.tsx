@@ -10,7 +10,7 @@ export interface UseClipboardReturn extends Accessor<clipboard.Api<PropTypes>> {
 export const useClipboard = (props: UseClipboardProps): UseClipboardReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(clipboard.machine(context), { context })
+  const [state, send] = useMachine(clipboard.machine(context()), { context })
 
   return createMemo(() => clipboard.connect(state, send, normalizeProps))
 }

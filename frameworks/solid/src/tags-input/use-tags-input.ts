@@ -10,7 +10,7 @@ export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(tagsInput.machine(context), { context })
+  const [state, send] = useMachine(tagsInput.machine(context()), { context })
 
   return createMemo(() => tagsInput.connect(state, send, normalizeProps))
 }

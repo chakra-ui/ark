@@ -47,7 +47,7 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
     restProps,
   )
 
-  const [state, send] = useMachine(datePicker.machine(context), { context })
+  const [state, send] = useMachine(datePicker.machine(context()), { context })
 
   return createMemo(() => datePicker.connect(state, send, normalizeProps))
 }

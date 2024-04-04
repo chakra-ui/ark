@@ -11,6 +11,6 @@ export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(popover.machine(context), { context })
+  const [state, send] = useMachine(popover.machine(context()), { context })
   return createMemo(() => popover.connect(state, send, normalizeProps))
 }

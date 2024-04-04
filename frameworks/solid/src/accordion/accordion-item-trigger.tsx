@@ -13,7 +13,7 @@ export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const collapsible = useCollapsibleContext()
 
   const mergedProps = mergeProps(() => context().getItemTriggerProps(itemProps), props)
-  const [ariaControls, buttonProps] = splitProps(mergedProps, ['aria-controls'])
+  const [ariaControls, buttonProps] = splitProps(mergedProps(), ['aria-controls'])
 
   return <ark.button {...buttonProps} {...(!collapsible().isUnmounted && ariaControls)} />
 }

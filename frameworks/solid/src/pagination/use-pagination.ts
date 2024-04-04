@@ -11,6 +11,6 @@ export const usePagination = (props: UsePaginationProps): UsePaginationReturn =>
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(pagination.machine(context), { context })
+  const [state, send] = useMachine(pagination.machine(context()), { context })
   return createMemo(() => pagination.connect(state, send, normalizeProps))
 }

@@ -25,7 +25,6 @@ export const AccordionItem = (props: AccordionItemProps) => {
   return (
     <AccordionItemPropsProvider value={itemProps}>
       <AccordionItemProvider value={itemState}>
-        {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           open={itemState().isOpen}
           ids={{ content: itemContentProps.id }}

@@ -10,7 +10,7 @@ export interface UseAvatarReturn extends Accessor<avatar.Api<PropTypes>> {}
 export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(avatar.machine(context), { context })
+  const [state, send] = useMachine(avatar.machine(context()), { context })
 
   return createMemo(() => avatar.connect(state, send, normalizeProps))
 }

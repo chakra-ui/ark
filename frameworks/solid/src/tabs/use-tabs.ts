@@ -10,7 +10,7 @@ export interface UseTabsReturn extends Accessor<tabs.Api<PropTypes>> {}
 export const useTabs = (props: UseTabsProps): UseTabsReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(tabs.machine(context), { context })
+  const [state, send] = useMachine(tabs.machine(context()), { context })
 
   return createMemo(() => tabs.connect(state, send, normalizeProps))
 }

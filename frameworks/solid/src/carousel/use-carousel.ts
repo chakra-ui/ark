@@ -11,6 +11,6 @@ export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(carousel.machine(context), { context })
+  const [state, send] = useMachine(carousel.machine(context()), { context })
   return createMemo(() => carousel.connect(state, send, normalizeProps))
 }

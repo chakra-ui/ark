@@ -23,7 +23,7 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
   const getRootNode = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
   const context = mergeProps({ id: createUniqueId(), getRootNode }, collapsibleProps)
-  const [state, send] = useMachine(collapsible.machine(context), { context })
+  const [state, send] = useMachine(collapsible.machine(context()), { context })
   const [wasVisible, setWasVisible] = createSignal(false)
 
   createEffect(() => {

@@ -11,7 +11,7 @@ export const useProgress = (props: UseProgressProps): UseProgressReturn => {
   const getRootNode = useEnvironmentContext()
 
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(progress.machine(context), { context })
+  const [state, send] = useMachine(progress.machine(context()), { context })
 
   return createMemo(() => progress.connect(state, send, normalizeProps))
 }

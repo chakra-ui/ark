@@ -12,7 +12,7 @@ export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 export const usePresence = (props: UsePresenceProps) => {
   const [renderStrategyProps, context] = splitRenderStrategyProps(props)
   const [wasEverPresent, setWasEverPresent] = createSignal(false)
-  const [state, send] = useMachine(presence.machine(context), {
+  const [state, send] = useMachine(presence.machine(context()), {
     context,
   })
   const api = createMemo(() => presence.connect(state, send, normalizeProps))

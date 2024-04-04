@@ -11,7 +11,7 @@ export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn =>
   const getRootNode = useEnvironmentContext()
 
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(radio.machine(context), {
+  const [state, send] = useMachine(radio.machine(context()), {
     context,
   })
 
