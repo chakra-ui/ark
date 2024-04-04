@@ -35,7 +35,7 @@ export const AccordionRoot = (props: AccordionRootProps) => {
   return (
     <AccordionProvider value={api}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </RenderStrategyProvider>
     </AccordionProvider>
   )

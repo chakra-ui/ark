@@ -8,5 +8,5 @@ export const ColorPickerControl = (props: ColorPickerControlProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

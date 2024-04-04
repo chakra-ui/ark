@@ -41,7 +41,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
 
   return (
     <NumberInputProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </NumberInputProvider>
   )
 }

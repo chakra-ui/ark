@@ -10,5 +10,5 @@ export const ColorPickerChannelSliderThumb = (props: ColorPickerChannelSliderThu
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getChannelSliderThumbProps(sliderContext), props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

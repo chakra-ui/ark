@@ -8,5 +8,5 @@ export const CarouselPrevTrigger = (props: CarouselPrevTriggerProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().prevTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

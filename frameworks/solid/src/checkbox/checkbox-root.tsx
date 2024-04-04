@@ -27,7 +27,7 @@ export const CheckboxRoot = (props: CheckboxRootProps) => {
 
   return (
     <CheckboxProvider value={api}>
-      <ark.label {...mergedProps} />
+      <ark.label {...mergedProps()} />
     </CheckboxProvider>
   )
 }

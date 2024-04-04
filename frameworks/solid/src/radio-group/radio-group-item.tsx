@@ -22,7 +22,7 @@ export const RadioGroupItem = (props: RadioGroupItemProps) => {
   return (
     <RadioGroupItemProvider value={itemState}>
       <RadioGroupItemPropsProvider value={itemProps}>
-        <ark.label {...mergedProps} />
+        <ark.label {...mergedProps()} />
       </RadioGroupItemPropsProvider>
     </RadioGroupItemProvider>
   )

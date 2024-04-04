@@ -27,7 +27,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
 
   return (
     <PaginationProvider value={api}>
-      <ark.nav {...mergedProps} />
+      <ark.nav {...mergedProps()} />
     </PaginationProvider>
   )
 }

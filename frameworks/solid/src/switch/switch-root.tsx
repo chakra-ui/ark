@@ -28,7 +28,7 @@ export const SwitchRoot = (props: SwitchRootProps) => {
 
   return (
     <SwitchProvider value={api}>
-      <ark.label {...mergedProps} />
+      <ark.label {...mergedProps()} />
     </SwitchProvider>
   )
 }

@@ -63,7 +63,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
   return (
     <ComboboxProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </PresenceProvider>
     </ComboboxProvider>
   )

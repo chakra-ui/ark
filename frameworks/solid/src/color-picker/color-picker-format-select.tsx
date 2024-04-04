@@ -10,7 +10,7 @@ export const ColorPickerFormatSelect = (props: ColorPickerFormatSelectProps) => 
   const mergedProps = mergeProps(() => api().formatSelectProps, props)
 
   return (
-    <ark.select {...mergedProps}>
+    <ark.select {...mergedProps()}>
       <Index each={['rgba', 'hsla', 'hsba']}>
         {(format) => <ark.option value={format()}>{format()}</ark.option>}
       </Index>

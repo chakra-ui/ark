@@ -22,7 +22,7 @@ export const TagsInputItem = (props: TagsInputItemProps) => {
   return (
     <TagsInputItemPropsProvider value={itemProps}>
       <TagsInputItemProvider value={itemState}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </TagsInputItemProvider>
     </TagsInputItemPropsProvider>
   )

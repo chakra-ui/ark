@@ -8,5 +8,5 @@ export const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
   const api = useCollapsibleContext()
   const mergedProps = () => mergeProps(api().triggerProps, props)
 
-  return <ark.button {...mergedProps}>{props.children}</ark.button>
+  return <ark.button {...mergedProps()}>{props.children}</ark.button>
 }

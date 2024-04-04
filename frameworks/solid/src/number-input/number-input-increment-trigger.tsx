@@ -8,5 +8,5 @@ export const NumberInputIncrementTrigger = (props: NumberInputIncrementTriggerPr
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().incrementTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

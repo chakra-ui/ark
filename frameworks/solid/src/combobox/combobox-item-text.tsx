@@ -10,5 +10,5 @@ export const ComboboxItemText = (props: ComboboxItemTextProps) => {
   const itemProps = useComboboxItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps()} />
 }

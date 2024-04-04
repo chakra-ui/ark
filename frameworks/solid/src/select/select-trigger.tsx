@@ -8,5 +8,5 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

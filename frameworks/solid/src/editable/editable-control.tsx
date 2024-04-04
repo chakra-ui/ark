@@ -8,5 +8,5 @@ export const EditableControl = (props: EditableControlProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

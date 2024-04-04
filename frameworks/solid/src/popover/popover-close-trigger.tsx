@@ -8,5 +8,5 @@ export const PopoverCloseTrigger = (props: PopoverCloseTriggerProps) => {
   const api = usePopoverContext()
   const mergedProps = mergeProps(() => api().closeTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

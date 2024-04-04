@@ -8,5 +8,5 @@ export const ProgressCircleRange = (props: ProgressCircleRangeProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().circleRangeProps, props)
 
-  return <ark.circle {...mergedProps} />
+  return <ark.circle {...mergedProps()} />
 }

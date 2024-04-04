@@ -8,5 +8,5 @@ export const SliderTrack = (props: SliderTrackProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().trackProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

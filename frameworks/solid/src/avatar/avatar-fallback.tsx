@@ -8,5 +8,5 @@ export const AvatarFallback = (props: AvatarFallbackProps) => {
   const context = useAvatarContext()
   const mergedProps = mergeProps(() => context().fallbackProps, props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps()} />
 }

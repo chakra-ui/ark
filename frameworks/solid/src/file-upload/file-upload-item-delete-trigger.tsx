@@ -10,5 +10,5 @@ export const FileUploadItemDeleteTrigger = (props: FileUploadItemDeleteTriggerPr
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemDeleteTriggerProps(item), props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

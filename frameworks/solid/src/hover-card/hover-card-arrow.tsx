@@ -8,5 +8,5 @@ export const HoverCardArrow = (props: HoverCardArrowProps) => {
   const hoverCard = useHoverCardContext()
   const mergedProps = mergeProps(() => hoverCard().arrowProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

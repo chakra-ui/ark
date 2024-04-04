@@ -23,7 +23,7 @@ export const SplitterRoot = (props: SplitterRootProps) => {
 
   return (
     <SplitterProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </SplitterProvider>
   )
 }

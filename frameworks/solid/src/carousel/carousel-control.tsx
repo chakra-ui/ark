@@ -7,5 +7,5 @@ export interface CarouselControlProps extends HTMLArkProps<'div'> {}
 export const CarouselControl = (props: CarouselControlProps) => {
   const mergedProps = mergeProps(() => carouselAnatomy.build().control.attrs, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

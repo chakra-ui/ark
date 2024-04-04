@@ -26,7 +26,7 @@ export const CarouselRoot = (props: CarouselRootProps) => {
 
   return (
     <CarouselProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </CarouselProvider>
   )
 }

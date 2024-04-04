@@ -8,5 +8,5 @@ export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
   const api = useTagsInputContext()
   const mergedProps = mergeProps(() => api().clearTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

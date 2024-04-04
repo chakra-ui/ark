@@ -18,7 +18,7 @@ export const ColorPickerChannelSlider = (props: ColorPickerChannelSliderProps) =
 
   return (
     <ColorPickerChannelSliderProvider value={channelProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ColorPickerChannelSliderProvider>
   )
 }

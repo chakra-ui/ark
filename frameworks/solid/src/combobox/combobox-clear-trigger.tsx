@@ -8,5 +8,5 @@ export const ComboboxClearTrigger = (props: ComboboxClearTriggerProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().clearTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

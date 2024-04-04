@@ -8,5 +8,5 @@ export const TabIndicator = (props: TabIndicatorProps) => {
   const api = useTabsContext()
   const mergedProps = mergeProps(() => api().indicatorProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

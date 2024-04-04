@@ -8,5 +8,5 @@ export const ProgressTrack = (props: ProgressTrackProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().trackProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

@@ -8,5 +8,5 @@ export const HoverCardTrigger = (props: HoverCardTriggerProps) => {
   const hoverCard = useHoverCardContext()
   const mergedProps = mergeProps(() => hoverCard().triggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

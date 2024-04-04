@@ -20,7 +20,7 @@ export const AvatarRoot = (props: AvatarRootProps) => {
 
   return (
     <AvatarProvider value={context}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </AvatarProvider>
   )
 }

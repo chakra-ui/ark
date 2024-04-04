@@ -9,7 +9,7 @@ export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
   const mergedProps = mergeProps(() => api().yearSelectProps, props)
 
   return (
-    <ark.select {...mergedProps}>
+    <ark.select {...mergedProps()}>
       {getYearsRange({ from: 1_000, to: 4_000 }).map((year) => (
         <option value={year}>{year}</option>
       ))}

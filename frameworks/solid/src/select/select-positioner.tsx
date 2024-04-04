@@ -13,7 +13,7 @@ export const SelectPositioner = (props: SelectPositionerProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </Show>
   )
 }

@@ -12,5 +12,5 @@ export const PinInputInput = (props: PinInputInputProps) => {
   const api = usePinInputContext()
   const mergedProps = mergeProps(() => api().getInputProps(inputParams), localProps)
 
-  return <ark.input {...mergedProps} />
+  return <ark.input {...mergedProps()} />
 }

@@ -55,7 +55,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
   return (
     <SelectProvider value={api}>
       <PresenceProvider value={presenceApi}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </PresenceProvider>
     </SelectProvider>
   )

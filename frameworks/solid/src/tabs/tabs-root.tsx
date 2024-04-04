@@ -36,7 +36,7 @@ export const TabsRoot = (props: TabsRootProps) => {
   return (
     <TabsProvider value={api}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </RenderStrategyProvider>
     </TabsProvider>
   )

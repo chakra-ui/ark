@@ -20,5 +20,5 @@ export const DatePickerTableCellTrigger = (props: DatePickerTableCellTriggerProp
 
   const mergedProps = mergeProps(() => triggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

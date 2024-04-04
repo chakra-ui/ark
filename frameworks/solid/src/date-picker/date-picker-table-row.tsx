@@ -10,5 +10,5 @@ export const DatePickerTableRow = (props: DatePickerTableRowProps) => {
   const tableProps = useDatePickerTableContext()
   const mergedProps = mergeProps(() => api().getTableRowProps(tableProps), props)
 
-  return <ark.tr {...mergedProps} />
+  return <ark.tr {...mergedProps()} />
 }

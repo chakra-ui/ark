@@ -17,5 +17,5 @@ export const MenuItem = (props: MenuItemProps) => {
   ])
   const mergedProps = mergeProps(() => menu?.().getItemProps(itemParams), restProps)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

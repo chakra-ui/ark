@@ -14,5 +14,5 @@ export const MenuTrigger = (props: MenuTriggerProps) => {
     props,
   )
   // @ts-expect-error TODO fix
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

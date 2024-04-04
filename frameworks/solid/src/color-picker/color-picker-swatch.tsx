@@ -18,7 +18,7 @@ export const ColorPickerSwatch = (props: ColorPickerSwatchProps) => {
 
   return (
     <ColorPickerSwatchProvider value={swatchProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ColorPickerSwatchProvider>
   )
 }

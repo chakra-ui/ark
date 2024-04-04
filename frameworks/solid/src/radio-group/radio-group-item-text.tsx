@@ -10,5 +10,5 @@ export const RadioGroupItemText = (props: RadioGroupItemTextProps) => {
   const itemProps = useRadioGroupItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps()} />
 }

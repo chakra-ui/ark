@@ -17,7 +17,7 @@ export const ComboboxContent = (props: ComboboxContentProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </Show>
   )
 }

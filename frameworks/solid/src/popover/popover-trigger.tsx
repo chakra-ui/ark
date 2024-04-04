@@ -14,5 +14,5 @@ export const PopoverTrigger = (props: PopoverTriggerProps) => {
     props,
   )
   // @ts-expect-error TODO fix
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

@@ -8,5 +8,5 @@ export const SliderRange = (props: SliderRangeProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().rangeProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

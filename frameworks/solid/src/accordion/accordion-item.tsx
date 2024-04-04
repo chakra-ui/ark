@@ -30,7 +30,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
           open={itemState().isOpen}
           ids={{ content: itemContentProps.id }}
           {...renderStrategyProps}
-          {...mergedProps}
+          {...mergedProps()}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>

@@ -8,5 +8,5 @@ export const EditableArea = (props: EditableAreaProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().areaProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

@@ -32,7 +32,7 @@ export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
   return (
     <SegmentGroupItemPropsProvider value={itemProps}>
       <SegmentGroupItemProvider value={itemState}>
-        <ark.label {...mergedProps} />
+        <ark.label {...mergedProps()} />
       </SegmentGroupItemProvider>
     </SegmentGroupItemPropsProvider>
   )

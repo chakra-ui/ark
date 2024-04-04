@@ -12,5 +12,5 @@ export const CarouselItem = (props: CarouselItemProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getItemProps(slideParams), localProps)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

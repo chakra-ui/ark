@@ -12,5 +12,5 @@ export const SliderThumb = (props: SliderThumbProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().getThumbProps(thumbProps), localProps)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

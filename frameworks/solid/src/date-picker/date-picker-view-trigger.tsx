@@ -10,5 +10,5 @@ export const DatePickerViewTrigger = (props: DatePickerViewTriggerProps) => {
   const viewProps = useDatePickerViewContext()
   const mergedProps = mergeProps(() => api().getViewTriggerProps(viewProps), props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

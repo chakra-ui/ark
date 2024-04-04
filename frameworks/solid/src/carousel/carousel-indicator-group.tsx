@@ -8,5 +8,5 @@ export const CarouselIndicatorGroup = (props: CarouselIndicatorGroupProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().indicatorGroupProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

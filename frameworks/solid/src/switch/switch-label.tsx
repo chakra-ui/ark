@@ -8,5 +8,5 @@ export const SwitchLabel = (props: SwitchLabelProps) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps()} />
 }

@@ -8,5 +8,5 @@ export const ToastTitle = (props: ToastTitleProps) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().titleProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

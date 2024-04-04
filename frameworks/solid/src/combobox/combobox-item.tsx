@@ -18,7 +18,7 @@ export const ComboboxItem = (props: ComboboxItemProps) => {
   return (
     <ComboboxItemPropsProvider value={itemProps}>
       <ComboboxItemProvider value={itemState}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps()} />
       </ComboboxItemProvider>
     </ComboboxItemPropsProvider>
   )

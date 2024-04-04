@@ -8,5 +8,5 @@ export const SliderValueText = (props: SliderValueTextProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().valueTextProps, props)
 
-  return <ark.div {...mergedProps}>{props.children || api().value.join(',')}</ark.div>
+  return <ark.div {...mergedProps()}>{props.children || api().value.join(',')}</ark.div>
 }

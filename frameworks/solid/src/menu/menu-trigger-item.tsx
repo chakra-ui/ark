@@ -8,5 +8,5 @@ export const MenuTriggerItem = (props: MenuTriggerItemProps) => {
   const getTriggerItemProps = useMenuTriggerItemContext()
   const mergedProps = mergeProps(() => getTriggerItemProps?.(), props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

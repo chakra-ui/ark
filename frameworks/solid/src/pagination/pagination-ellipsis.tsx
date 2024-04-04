@@ -13,5 +13,5 @@ export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().getEllipsisProps(ellipsisProps), localProps)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

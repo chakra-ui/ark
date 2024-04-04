@@ -13,5 +13,5 @@ export const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
     props,
   )
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

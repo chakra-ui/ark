@@ -13,5 +13,5 @@ export const AccordionItemContent = (props: AccordionItemContentProps) => {
   const [, itemContentProps] = splitProps(context().getItemContentProps(itemProps), ['hidden'])
   const mergedProps = mergeProps(itemContentProps, props)
 
-  return <Collapsible.Content {...mergedProps} />
+  return <Collapsible.Content {...mergedProps()} />
 }

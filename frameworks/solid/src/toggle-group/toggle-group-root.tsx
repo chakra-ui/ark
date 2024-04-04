@@ -27,7 +27,7 @@ export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
 
   return (
     <ToggleGroupProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ToggleGroupProvider>
   )
 }

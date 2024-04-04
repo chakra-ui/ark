@@ -10,5 +10,5 @@ export const DatePickerTableHead = (props: DatePickerTableHeadProps) => {
   const tableProps = useDatePickerTableContext()
   const mergedProps = mergeProps(() => api().getTableHeadProps(tableProps), props)
 
-  return <ark.thead {...mergedProps} />
+  return <ark.thead {...mergedProps()} />
 }

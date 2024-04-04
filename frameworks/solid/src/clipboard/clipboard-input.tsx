@@ -8,5 +8,5 @@ export const ClipboardInput = (props: ClipboardInputProps) => {
   const api = useClipboardContext()
   const mergedProps = mergeProps(() => api().inputProps, props)
 
-  return <ark.input {...mergedProps} />
+  return <ark.input {...mergedProps()} />
 }

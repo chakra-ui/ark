@@ -43,7 +43,7 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     )
 
     return (
-      <ToastGroup {...mergedProps}>
+      <ToastGroup {...mergedProps()}>
         <Index each={api().toastsByPlacement[props.placement]}>
           {(toast) => <ToastProviderFactory service={toast()} />}
         </Index>

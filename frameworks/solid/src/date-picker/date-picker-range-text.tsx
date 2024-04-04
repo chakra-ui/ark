@@ -8,5 +8,5 @@ export const DatePickerRangeText = (props: DatePickerRangeTextProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().rangeTextProps, props)
 
-  return <ark.div {...mergedProps}>{api().visibleRangeText.start}</ark.div>
+  return <ark.div {...mergedProps()}>{api().visibleRangeText.start}</ark.div>
 }

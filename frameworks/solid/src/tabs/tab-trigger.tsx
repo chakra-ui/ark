@@ -12,5 +12,5 @@ export const TabTrigger = (props: TabTriggerProps) => {
   const api = useTabsContext()
   const mergedProps = mergeProps(() => api().getTriggerProps(tabParams), restProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

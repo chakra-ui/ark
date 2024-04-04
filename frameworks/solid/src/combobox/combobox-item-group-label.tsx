@@ -19,5 +19,5 @@ export const ComboboxItemGroupLabel = (props: ComboboxItemGroupLabelProps) => {
     localProps,
   )
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

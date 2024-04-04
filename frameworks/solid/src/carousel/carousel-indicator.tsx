@@ -15,5 +15,5 @@ export const CarouselIndicator = (props: CarouselIndicatorProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getIndicatorProps(indicatorProps), localProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

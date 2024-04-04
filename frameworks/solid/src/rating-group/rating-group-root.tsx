@@ -31,7 +31,7 @@ export const RatingGroupRoot = (props: RatingGroupRootProps) => {
 
   return (
     <RatingGroupProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </RatingGroupProvider>
   )
 }

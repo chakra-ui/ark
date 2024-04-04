@@ -36,7 +36,7 @@ export const PinInputRoot = (props: PinInputRootProps) => {
 
   return (
     <PinInputProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
       <input {...api().hiddenInputProps} />
     </PinInputProvider>
   )

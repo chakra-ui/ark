@@ -8,5 +8,5 @@ export const ProgressRange = (props: ProgressRangeProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().rangeProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

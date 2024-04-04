@@ -17,7 +17,7 @@ export const ColorPickerView = (props: ColorPickerViewProps) => {
   // TODO @segunadebayo
   return (
     <Show when={api().format === props.format}>
-      <ark.div data-format={props.format} {...mergedProps} />
+      <ark.div data-format={props.format} {...mergedProps()} />
     </Show>
   )
 }

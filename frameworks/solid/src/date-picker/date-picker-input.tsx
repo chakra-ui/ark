@@ -12,5 +12,5 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().getInputProps(inputProps), localProps)
 
-  return <ark.input {...mergedProps} />
+  return <ark.input {...mergedProps()} />
 }

@@ -17,7 +17,7 @@ export const RatingGroupItem = (props: RatingGroupItemProps) => {
 
   return (
     <RatingGroupItemProvider value={itemState}>
-      <ark.span {...mergedProps} />
+      <ark.span {...mergedProps()} />
     </RatingGroupItemProvider>
   )
 }

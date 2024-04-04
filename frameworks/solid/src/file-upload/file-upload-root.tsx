@@ -34,7 +34,7 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
 
   return (
     <FileUploadProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </FileUploadProvider>
   )
 }

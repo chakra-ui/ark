@@ -31,7 +31,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
 
   return (
     <SegmentGroupProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </SegmentGroupProvider>
   )
 }

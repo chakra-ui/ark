@@ -13,7 +13,7 @@ export const MenuPositioner = (props: MenuPositionerProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </Show>
   )
 }

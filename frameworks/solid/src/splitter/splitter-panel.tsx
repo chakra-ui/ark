@@ -15,5 +15,5 @@ export const SplitterPanel = (props: SplitterPanelProps) => {
   const api = useSplitterContext()
   const mergedProps = mergeProps(() => api().getPanelProps(panelParams), restProps)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

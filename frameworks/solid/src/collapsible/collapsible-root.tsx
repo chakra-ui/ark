@@ -26,7 +26,7 @@ export const CollapsibleRoot = (props: CollapsibleRootProps) => {
 
   return (
     <CollapsibleProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </CollapsibleProvider>
   )
 }

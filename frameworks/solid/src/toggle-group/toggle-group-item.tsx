@@ -12,5 +12,5 @@ export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
   const api = useToggleGroupContext()
   const mergedProps = mergeProps(() => api().getItemProps(toggleProps), restProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

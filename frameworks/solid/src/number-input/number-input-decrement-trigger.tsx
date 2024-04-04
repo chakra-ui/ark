@@ -8,5 +8,5 @@ export const NumberInputDecrementTrigger = (props: NumberInputDecrementTriggerPr
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().decrementTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

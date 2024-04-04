@@ -8,5 +8,5 @@ export const CarouselViewport = (props: CarouselViewportProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().viewportProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

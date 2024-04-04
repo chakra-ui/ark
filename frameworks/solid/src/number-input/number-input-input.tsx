@@ -8,5 +8,5 @@ export const NumberInputInput = (props: NumberInputInputProps) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().inputProps, props)
 
-  return <ark.input {...mergedProps} />
+  return <ark.input {...mergedProps()} />
 }

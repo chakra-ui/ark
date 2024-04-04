@@ -13,7 +13,7 @@ export const ComboboxPositioner = (props: ComboboxPositionerProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </Show>
   )
 }

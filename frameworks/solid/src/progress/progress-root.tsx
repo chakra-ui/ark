@@ -24,7 +24,7 @@ export const ProgressRoot = (props: ProgressRootProps) => {
 
   return (
     <ProgressProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ProgressProvider>
   )
 }

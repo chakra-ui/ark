@@ -15,7 +15,7 @@ export const ColorPickerArea = (props: ColorPickerAreaProps) => {
 
   return (
     <ColorPickerAreaProvider value={channelProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ColorPickerAreaProvider>
   )
 }

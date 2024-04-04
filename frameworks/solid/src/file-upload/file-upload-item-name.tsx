@@ -10,5 +10,5 @@ export const FileUploadItemName = (props: FileUploadItemNameProps) => {
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemNameProps(item), props)
 
-  return <ark.div {...mergedProps}>{props.children || item.file.name}</ark.div>
+  return <ark.div {...mergedProps()}>{props.children || item.file.name}</ark.div>
 }

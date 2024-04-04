@@ -9,5 +9,5 @@ export const ColorPickerValueText = (props: ColorPickerValueTextProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => colorPickerAnatomy.build().valueText.attrs, props)
 
-  return <ark.span {...mergedProps}>{api().valueAsString || props.children}</ark.span>
+  return <ark.span {...mergedProps()}>{api().valueAsString || props.children}</ark.span>
 }

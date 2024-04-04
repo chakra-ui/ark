@@ -24,7 +24,7 @@ export const MenuOptionItem = (props: MenuOptionItemProps) => {
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </MenuOptionItemPropsProvider>
   )
 }

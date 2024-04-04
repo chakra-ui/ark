@@ -8,5 +8,5 @@ export const NumberInputScrubber = (props: NumberInputScrubberProps) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().scrubberProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

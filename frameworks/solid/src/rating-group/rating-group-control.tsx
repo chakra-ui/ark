@@ -10,7 +10,7 @@ export const RatingGroupControl = (props: RatingGroupControlProps) => {
 
   return (
     <>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
       <input {...api().hiddenInputProps} />
     </>
   )

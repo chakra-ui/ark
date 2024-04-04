@@ -8,5 +8,5 @@ export const PaginationPrevTrigger = (props: PaginationPrevTriggerProps) => {
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().prevTriggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

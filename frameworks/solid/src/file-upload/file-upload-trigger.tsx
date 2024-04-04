@@ -8,5 +8,5 @@ export const FileUploadTrigger = (props: FileUploadTriggerProps) => {
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

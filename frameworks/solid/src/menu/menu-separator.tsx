@@ -8,5 +8,5 @@ export const MenuSeparator = (props: MenuSeparatorProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().separatorProps, props)
 
-  return <ark.hr {...mergedProps} />
+  return <ark.hr {...mergedProps()} />
 }

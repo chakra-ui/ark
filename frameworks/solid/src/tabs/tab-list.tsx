@@ -8,5 +8,5 @@ export const TabList = (props: TabListProps) => {
   const api = useTabsContext()
   const mergedProps = mergeProps(() => api().listProps, props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

@@ -21,7 +21,7 @@ export const ClipboardRoot = (props: ClipboardRootProps) => {
 
   return (
     <ClipboardProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </ClipboardProvider>
   )
 }

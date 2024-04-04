@@ -10,5 +10,5 @@ export const TagsInputItemText = (props: TagsInputItemTextProps) => {
   const itemProps = useTagsInputItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.span {...mergedProps()} />
 }

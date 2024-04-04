@@ -10,5 +10,5 @@ export const AccordionItemIndicator = (props: AccordionItemIndicatorProps) => {
   const itemProps = useAccordionItemPropsContext()
   const mergedProps = mergeProps(() => context().getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps()} />
 }

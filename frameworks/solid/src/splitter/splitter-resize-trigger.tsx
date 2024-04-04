@@ -18,5 +18,5 @@ export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
   ])
   const mergedProps = mergeProps(() => api().getResizeTriggerProps(triggerParams), restProps)
 
-  return <ark.button {...mergedProps} />
+  return <ark.button {...mergedProps()} />
 }

@@ -8,5 +8,5 @@ export const EditableLabel = (props: EditableLabelProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.label {...mergedProps} />
+  return <ark.label {...mergedProps()} />
 }

@@ -40,7 +40,7 @@ export const SliderRoot = (props: SliderRootProps) => {
 
   return (
     <SliderProvider value={api}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps()} />
     </SliderProvider>
   )
 }
