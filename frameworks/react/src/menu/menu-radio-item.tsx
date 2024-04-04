@@ -12,12 +12,11 @@ export interface MenuRadioItemProps extends Assign<HTMLArkProps<'div'>, OptionIt
 export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((props, ref) => {
   const context = useMenuContext()
   const [optionItemProps, localProps] = createSplitProps<OptionItemProps>()(props, [
-    'checked',
+    'checked', // 404
     'closeOnSelect',
     'disabled',
-    'onCheckedChange',
-    'type',
-    'value',
+    'onCheckedChange', // 404
+    'type', // 404
     'value',
     'valueText',
   ])

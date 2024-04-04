@@ -16,10 +16,11 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
     'closeOnSelect',
     'disabled',
     'onCheckedChange',
-    'type',
+    'type', // 404
     'value',
     'valueText',
   ])
+
   const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
 
   return (

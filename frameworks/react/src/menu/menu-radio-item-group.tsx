@@ -6,6 +6,15 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 
+// interface FooDetails {
+//   value: string
+// }
+
+// interface Foo {
+//   value?: string
+//   onValueChange: (e: FooDetails) => void
+// }
+
 export interface MenuRadioItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
 
 export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>(

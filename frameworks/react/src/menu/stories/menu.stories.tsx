@@ -95,10 +95,12 @@ export const Options = () => {
       <Menu.Trigger>Open menu</Menu.Trigger>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.CheckboxItem>
-            <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-            <Menu.ItemText>Zag.js</Menu.ItemText>
-          </Menu.CheckboxItem>
+          <Menu.ItemGroup>
+            <Menu.CheckboxItem checked>
+              <Menu.ItemIndicator>✅</Menu.ItemIndicator>
+              <Menu.ItemText>Zag.js</Menu.ItemText>
+            </Menu.CheckboxItem>
+          </Menu.ItemGroup>
           {/* <Menu.RadioItemGroup>
             <Menu.ItemGroupLabel>Radio Group</Menu.ItemGroupLabel>
             <Menu.RadioItem value="react">
