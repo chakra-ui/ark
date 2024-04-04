@@ -1,6 +1,6 @@
-import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { mergeProps } from '../merge-props'
 import {
   RenderStrategyProvider,
   splitRenderStrategyProps,
@@ -35,7 +35,7 @@ export const AccordionRoot = (props: AccordionRootProps) => {
   return (
     <AccordionProvider value={api}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <ark.div {...mergedProps()} />
+        <ark.div {...mergedProps} />
       </RenderStrategyProvider>
     </AccordionProvider>
   )

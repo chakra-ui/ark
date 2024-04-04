@@ -1,6 +1,6 @@
-import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { mergeProps } from '../merge-props'
 import type { Assign } from '../types'
 import { useCollapsible, type UseCollapsibleProps } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
@@ -26,7 +26,7 @@ export const CollapsibleRoot = (props: CollapsibleRootProps) => {
 
   return (
     <CollapsibleProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </CollapsibleProvider>
   )
 }

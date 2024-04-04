@@ -1,10 +1,10 @@
 import { type ItemProps } from '@zag-js/accordion'
-import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { createSplitProps } from '../create-split-props'
 import { type HTMLArkProps } from '../factory'
+import { mergeProps } from '../merge-props'
 import { useRenderStrategyContext } from '../render-strategy'
 import type { Assign } from '../types'
 import { useAccordionContext } from './use-accordion-context'
@@ -18,7 +18,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const mergedProps = mergeProps(context().getItemProps(itemProps), localProps)
+  const mergedProps = mergeProps(() => context().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => context().getItemState(itemProps))
   const itemContentProps = context().getItemContentProps(itemProps)
 
@@ -29,7 +29,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
           open={itemState().isOpen}
           ids={{ content: itemContentProps.id }}
           {...renderStrategyProps}
-          {...mergedProps()}
+          {...mergedProps}
         />
       </AccordionItemProvider>
     </AccordionItemPropsProvider>
