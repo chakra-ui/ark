@@ -1,6 +1,6 @@
-import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { mergeProps } from '../merge-props'
 import type { Assign } from '../types'
 import { useCarousel, type UseCarouselProps } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
@@ -26,7 +26,7 @@ export const CarouselRoot = (props: CarouselRootProps) => {
 
   return (
     <CarouselProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </CarouselProvider>
   )
 }

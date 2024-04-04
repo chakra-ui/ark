@@ -1,7 +1,7 @@
 import type { IndicatorProps } from '@zag-js/carousel'
-import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
+import { mergeProps } from '../merge-props'
 import type { Assign } from '../types'
 import { useCarouselContext } from './use-carousel-context'
 
@@ -15,5 +15,5 @@ export const CarouselIndicator = (props: CarouselIndicatorProps) => {
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getIndicatorProps(indicatorProps), localProps)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }
