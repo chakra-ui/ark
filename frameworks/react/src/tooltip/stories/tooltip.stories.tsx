@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta
 
 export const Basic = () => (
-  <Tooltip.Root lazyMount unmountOnExit>
+  <Tooltip.Root>
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Tooltip.Positioner>
       <Tooltip.Content>I am a tooltip!</Tooltip.Content>
