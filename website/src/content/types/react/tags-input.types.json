@@ -47,8 +47,8 @@
       "description": "The initial value of the tags input."
     },
     "delimiter": {
-      "type": "string",
-      "defaultValue": "\",\" (aka COMMA)",
+      "type": "string | RegExp",
+      "defaultValue": "\",\"",
       "isRequired": false,
       "description": "The character that serves has:\n- event key to trigger the addition of a new tag\n- character used to split tags when pasting into the input"
     },
