@@ -5,6 +5,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
+import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 
@@ -30,10 +31,13 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
       itemGroupContext.onValueChange?.({ value: checked ? partialItemProps.value : '' }),
   }
   const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
+  const itemState = context.getItemState(optionItemProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <ark.div {...mergedProps} ref={ref} />
+      <MenuItemProvider value={itemState}>
+        <ark.div {...mergedProps} ref={ref} />
+      </MenuItemProvider>
     </MenuOptionItemPropsProvider>
   )
 })

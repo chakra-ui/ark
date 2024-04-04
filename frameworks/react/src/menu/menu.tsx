@@ -17,6 +17,10 @@ import {
 } from './menu-indicator'
 import { MenuItem as Item, type MenuItemProps as ItemProps } from './menu-item'
 import {
+  MenuItemContext as ItemContext,
+  type MenuItemContextProps as ItemContextProps,
+} from './menu-item-context'
+import {
   MenuItemGroup as ItemGroup,
   type MenuItemGroupProps as ItemGroupProps,
 } from './menu-item-group'
@@ -51,6 +55,7 @@ import {
   MenuTriggerItem as TriggerItem,
   type MenuTriggerItemProps as TriggerItemProps,
 } from './menu-trigger-item'
+import type { ValueChangeDetails } from './use-menu-item-group-context'
 
 export {
   Arrow,
@@ -61,6 +66,7 @@ export {
   ContextTrigger,
   Indicator,
   Item,
+  ItemContext,
   ItemGroup,
   ItemGroupLabel,
   ItemIndicator,
@@ -82,6 +88,7 @@ export type {
   ContextTriggerProps,
   HighlightChangeDetails,
   IndicatorProps,
+  ItemContextProps,
   ItemGroupLabelProps,
   ItemGroupProps,
   ItemIndicatorProps,
@@ -96,4 +103,5 @@ export type {
   SeparatorProps,
   TriggerItemProps,
   TriggerProps,
+  ValueChangeDetails,
 }

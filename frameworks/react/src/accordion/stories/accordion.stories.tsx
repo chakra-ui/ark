@@ -49,6 +49,7 @@ export const RenderProp = () => {
     </Accordion.Root>
   )
 }
+
 export const Collapsible = () => {
   return (
     <Accordion.Root defaultValue={['React']} collapsible>
