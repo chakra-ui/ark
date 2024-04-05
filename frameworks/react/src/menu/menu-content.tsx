@@ -7,11 +7,11 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuContentProps extends HTMLArkProps<'div'> {}
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
-  const context = useMenuContext()
-  const presenceContext = usePresenceContext()
-  const mergedProps = mergeProps(context.contentProps, presenceContext.getPresenceProps(ref), props)
+  const menu = useMenuContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(menu.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presenceContext.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

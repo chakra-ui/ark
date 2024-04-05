@@ -60,13 +60,13 @@ const ComboboxImpl = <T extends CollectionItem>(
     'translations',
     'value',
   ])
-  const context = useCombobox(useComboboxProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const combobox = useCombobox(useComboboxProps)
+  const presence = usePresence(mergeProps({ present: combobox.isOpen }, presenceProps))
+  const mergedProps = mergeProps(combobox.rootProps, localProps)
 
   return (
-    <ComboboxProvider value={context}>
-      <PresenceProvider value={presenceApi}>
+    <ComboboxProvider value={combobox}>
+      <PresenceProvider value={presence}>
         <ark.div {...mergedProps} ref={ref} />
       </PresenceProvider>
     </ComboboxProvider>

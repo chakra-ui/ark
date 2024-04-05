@@ -8,16 +8,16 @@ export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresencePr
 
 export const Presence = forwardRef<HTMLDivElement, PresenceProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)
-  const context = usePresence(presenceProps)
+  const presence = usePresence(presenceProps)
 
-  if (context.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 
   return (
     <ark.div
       {...localProps}
-      {...context.getPresenceProps(ref)}
+      {...presence.getPresenceProps(ref)}
       data-scope="presence"
       data-part="root"
     />

@@ -11,10 +11,10 @@ export interface TreeViewBranchProps extends Assign<HTMLArkProps<'li'>, ItemProp
 
 export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'id'])
-  const context = useTreeViewContext()
+  const treeView = useTreeViewContext()
   const depth = useTreeViewDepthContext()
   const branchContext = { ...itemProps, depth }
-  const mergedProps = mergeProps(context.getBranchProps(branchContext), localProps)
+  const mergedProps = mergeProps(treeView.getBranchProps(branchContext), localProps)
 
   return (
     <TreeViewDepthProvider value={depth + 1}>

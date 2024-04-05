@@ -26,11 +26,11 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
     'value',
   ])
 
-  const context = useSwitch(switchProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const switchContext = useSwitch(switchProps)
+  const mergedProps = mergeProps(switchContext.rootProps, localProps)
 
   return (
-    <SwitchProvider value={context}>
+    <SwitchProvider value={switchContext}>
       <ark.label {...mergedProps} ref={ref} />
     </SwitchProvider>
   )

@@ -7,7 +7,7 @@ import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
+import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
@@ -20,16 +20,16 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
     'value',
     'valueText',
   ])
-  const context = useMenuContext()
-  const itemGroupContext = useMenuItemGroupContext()
+  const menu = useMenuContext()
+  const itemGroup = useMenuItemGroupContext()
   const optionItemProps: OptionItemProps = {
     ...partialItemProps,
-    checked: itemGroupContext.value === partialItemProps.value,
+    checked: itemGroup.value === partialItemProps.value,
     type: 'radio',
-    onCheckedChange: () => itemGroupContext.onValueChange?.({ value: partialItemProps.value }),
+    onCheckedChange: () => itemGroup.onValueChange?.({ value: partialItemProps.value }),
   }
-  const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
-  const itemState = context.getItemState(optionItemProps)
+  const mergedProps = mergeProps(menu.getOptionItemProps(optionItemProps), localProps)
+  const itemState = menu.getItemState(optionItemProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>

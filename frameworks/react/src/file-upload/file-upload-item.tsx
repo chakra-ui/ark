@@ -5,19 +5,19 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useFileUploadContext } from './use-file-upload-context'
-import { FileUploadItemProvider } from './use-file-upload-item-context'
+import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemProps extends Assign<HTMLArkProps<'ul'>, ItemProps> {}
 
 export const FileUploadItem = forwardRef<HTMLLIElement, FileUploadItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['file'])
-  const context = useFileUploadContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const fileUpload = useFileUploadContext()
+  const mergedProps = mergeProps(fileUpload.getItemProps(itemProps), localProps)
 
   return (
-    <FileUploadItemProvider value={itemProps}>
+    <FileUploadItemPropsProvider value={itemProps}>
       <ark.li {...mergedProps} ref={ref} />
-    </FileUploadItemProvider>
+    </FileUploadItemPropsProvider>
   )
 })
 

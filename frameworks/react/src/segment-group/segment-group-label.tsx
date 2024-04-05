@@ -8,9 +8,9 @@ export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
 
 export const SegmentGroupLabel = forwardRef<HTMLLabelElement, SegmentGroupLabelProps>(
   (props, ref) => {
-    const context = useSegmentGroupContext()
+    const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
-      context.labelProps,
+      segmentGroup.labelProps,
       segmentGroupAnatomy.build().label.attrs as Record<string, string>,
       props,
     )

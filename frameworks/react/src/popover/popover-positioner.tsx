@@ -8,11 +8,11 @@ export interface PopoverPositionerProps extends HTMLArkProps<'div'> {}
 
 export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>(
   (props, ref) => {
-    const context = usePopoverContext()
-    const presenceApi = usePresenceContext()
-    const mergedProps = mergeProps(context.positionerProps, props)
+    const popover = usePopoverContext()
+    const presence = usePresenceContext()
+    const mergedProps = mergeProps(popover.positionerProps, props)
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

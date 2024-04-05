@@ -2,15 +2,15 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
-import { useComboboxItemPropsContext } from './use-combobox-item-context'
+import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
 export interface ComboboxItemIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxItemIndicator = forwardRef<HTMLDivElement, ComboboxItemIndicatorProps>(
   (props, ref) => {
-    const context = useComboboxContext()
+    const combobox = useComboboxContext()
     const itemProps = useComboboxItemPropsContext()
-    const mergedProps = mergeProps(context.getItemIndicatorProps(itemProps), props)
+    const mergedProps = mergeProps(combobox.getItemIndicatorProps(itemProps), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

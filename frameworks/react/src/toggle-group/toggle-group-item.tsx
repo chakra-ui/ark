@@ -10,8 +10,8 @@ export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, Ite
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
-  const context = useToggleGroupContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const toggleGroup = useToggleGroupContext()
+  const mergedProps = mergeProps(toggleGroup.getItemProps(itemProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

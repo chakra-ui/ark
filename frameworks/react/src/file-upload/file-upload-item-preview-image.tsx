@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, useEffect, useState } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import { useFileUploadItemContext } from './use-file-upload-item-context'
+import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemPreviewImageProps extends HTMLArkProps<'img'> {}
 
@@ -11,13 +11,13 @@ export const FileUploadItemPreviewImage = forwardRef<
   FileUploadItemPreviewImageProps
 >((props, ref) => {
   const [url, setUrl] = useState<string>('')
-  const context = useFileUploadContext()
-  const itemContext = useFileUploadItemContext()
-  const mergedProps = mergeProps(context.getItemPreviewImageProps({ ...itemContext, url }), props)
+  const fileUpload = useFileUploadContext()
+  const itemProps = useFileUploadItemPropsContext()
+  const mergedProps = mergeProps(fileUpload.getItemPreviewImageProps({ ...itemProps, url }), props)
 
   useEffect(() => {
-    context.createFileUrl(itemContext.file, (url) => setUrl(url))
-  }, [itemContext, context])
+    fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
+  }, [itemProps, fileUpload])
 
   return <ark.img {...mergedProps} ref={ref} />
 })

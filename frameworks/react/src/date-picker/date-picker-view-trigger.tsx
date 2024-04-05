@@ -2,15 +2,15 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerViewTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DatePickerViewTrigger = forwardRef<HTMLButtonElement, DatePickerViewTriggerProps>(
   (props, ref) => {
-    const context = useDatePickerContext()
-    const viewContext = useDatePickerViewContext()
-    const mergedProps = mergeProps(context.getViewTriggerProps(viewContext), props)
+    const datePicker = useDatePickerContext()
+    const viewProps = useDatePickerViewPropsContext()
+    const mergedProps = mergeProps(datePicker.getViewTriggerProps(viewProps), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

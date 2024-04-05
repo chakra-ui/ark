@@ -7,13 +7,13 @@ import { useDialogContext } from './use-dialog-context'
 export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((props, ref) => {
-  const context = useDialogContext()
+  const dialog = useDialogContext()
   const presence = usePresenceContext()
 
   const mergedProps = mergeProps(
     {
-      ...context.triggerProps,
-      'aria-controls': presence.isUnmounted ? undefined : context.triggerProps['aria-controls'],
+      ...dialog.triggerProps,
+      'aria-controls': presence.isUnmounted ? undefined : dialog.triggerProps['aria-controls'],
     },
     props,
   )

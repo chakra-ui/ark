@@ -115,7 +115,7 @@ export const RenderFn = () => (
   <NumberInput.Root>
     <NumberInput.Scrubber />
     <NumberInput.Context>
-      {(context) => <NumberInput.Label>Label {context.valueAsNumber}</NumberInput.Label>}
+      {(numberInput) => <NumberInput.Label>Label {numberInput.valueAsNumber}</NumberInput.Label>}
     </NumberInput.Context>
     <NumberInput.Input />
     <NumberInput.Control>

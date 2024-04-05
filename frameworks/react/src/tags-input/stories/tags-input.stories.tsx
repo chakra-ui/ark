@@ -12,11 +12,11 @@ export const Basic = () => {
   return (
     <TagsInput.Root>
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemPreview>
                     <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -39,11 +39,11 @@ export const InitialValue = () => {
   return (
     <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']}>
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -64,11 +64,11 @@ export const MaxWithOverflow = () => {
   return (
     <TagsInput.Root max={3} allowOverflow>
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -93,11 +93,11 @@ export const Validated = () => {
       }}
     >
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -118,11 +118,11 @@ export const BlurBehavior = () => {
   return (
     <TagsInput.Root blurBehavior="add">
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -143,11 +143,11 @@ export const PasteBehavior = () => {
   return (
     <TagsInput.Root addOnPaste delimiter=",">
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -168,11 +168,11 @@ export const DisabledEditing = () => {
   return (
     <TagsInput.Root allowEditTag={false}>
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>
@@ -208,11 +208,11 @@ export const OnEvent = () => {
       }}
     >
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemInput />
                   <TagsInput.ItemText>{value}</TagsInput.ItemText>

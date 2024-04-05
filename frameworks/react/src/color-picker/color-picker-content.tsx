@@ -9,14 +9,10 @@ export interface ColorPickerContentProps extends HTMLArkProps<'div'> {}
 export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const presenceApi = usePresenceContext()
-    const mergedProps = mergeProps(
-      colorPicker.contentProps,
-      presenceApi.getPresenceProps(ref),
-      props,
-    )
+    const presence = usePresenceContext()
+    const mergedProps = mergeProps(colorPicker.contentProps, presence.getPresenceProps(ref), props)
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

@@ -24,11 +24,11 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
     'type',
   ])
 
-  const context = usePagination(paginationProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const pagination = usePagination(paginationProps)
+  const mergedProps = mergeProps(pagination.rootProps, localProps)
 
   return (
-    <PaginationProvider value={context}>
+    <PaginationProvider value={pagination}>
       <ark.nav {...mergedProps} ref={ref} />
     </PaginationProvider>
   )

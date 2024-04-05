@@ -7,11 +7,11 @@ import { useSelectContext } from './use-select-context'
 export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>((props, ref) => {
-  const context = useSelectContext()
-  const mergedProps = mergeProps(context.positionerProps, props)
-  const presenceApi = usePresenceContext()
+  const select = useSelectContext()
+  const mergedProps = mergeProps(select.positionerProps, props)
+  const presence = usePresenceContext()
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

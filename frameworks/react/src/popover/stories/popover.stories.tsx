@@ -80,10 +80,10 @@ export const RenderFn = () => (
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Popover.Positioner>
       <Popover.Context>
-        {(context) => (
+        {(popover) => (
           <Popover.Content>
             <Popover.Title>Title</Popover.Title>
-            <Popover.Description>Description: {context.isOpen.toString()}</Popover.Description>
+            <Popover.Description>Description: {popover.isOpen.toString()}</Popover.Description>
             <Popover.CloseTrigger>Close</Popover.CloseTrigger>
           </Popover.Content>
         )}

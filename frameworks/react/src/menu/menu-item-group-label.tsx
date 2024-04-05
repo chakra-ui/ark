@@ -8,12 +8,9 @@ export interface MenuItemGroupLabelProps extends HTMLArkProps<'div'> {}
 
 export const MenuItemGroupLabel = forwardRef<HTMLDivElement, MenuItemGroupLabelProps>(
   (props, ref) => {
-    const context = useMenuContext()
-    const itemGroupContext = useMenuItemGroupContext()
-    const mergedProps = mergeProps(
-      context.getItemGroupLabelProps({ htmlFor: itemGroupContext.id }),
-      props,
-    )
+    const menu = useMenuContext()
+    const itemGroup = useMenuItemGroupContext()
+    const mergedProps = mergeProps(menu.getItemGroupLabelProps({ htmlFor: itemGroup.id }), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

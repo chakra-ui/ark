@@ -22,11 +22,11 @@ export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((p
     'orientation',
     'value',
   ])
-  const context = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const radioGroup = useRadioGroup(useRadioGroupProps)
+  const mergedProps = mergeProps(radioGroup.rootProps, localProps)
 
   return (
-    <RadioGroupProvider value={context}>
+    <RadioGroupProvider value={radioGroup}>
       <ark.div {...mergedProps} ref={ref} />
     </RadioGroupProvider>
   )

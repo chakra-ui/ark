@@ -12,12 +12,12 @@ export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
 
 export const TooltipRoot = (props: TooltipRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
-  const context = useTooltip(localProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
+  const tooltip = useTooltip(localProps)
+  const presence = usePresence(mergeProps({ present: tooltip.isOpen }, presenceProps))
 
   return (
-    <TooltipProvider value={context}>
-      <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
+    <TooltipProvider value={tooltip}>
+      <PresenceProvider value={presence}>{children}</PresenceProvider>
     </TooltipProvider>
   )
 }

@@ -8,9 +8,9 @@ export interface TreeViewBranchTriggerProps extends HTMLArkProps<'div'> {}
 
 export const TreeViewBranchTrigger = forwardRef<HTMLDivElement, TreeViewBranchTriggerProps>(
   (props, ref) => {
-    const context = useTreeViewContext()
+    const treeView = useTreeViewContext()
     const branchContext = useTreeViewBranchContext()
-    const mergedProps = mergeProps(context.getBranchTriggerProps(branchContext), props)
+    const mergedProps = mergeProps(treeView.getBranchTriggerProps(branchContext), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -6,8 +6,8 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuSeparatorProps extends HTMLArkProps<'hr'> {}
 
 export const MenuSeparator = forwardRef<HTMLHRElement, MenuSeparatorProps>((props, ref) => {
-  const context = useMenuContext()
-  const mergedProps = mergeProps(context.separatorProps, props)
+  const menu = useMenuContext()
+  const mergedProps = mergeProps(menu.separatorProps, props)
 
   return <ark.hr {...mergedProps} ref={ref} />
 })

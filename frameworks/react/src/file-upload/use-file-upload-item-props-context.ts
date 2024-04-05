@@ -3,9 +3,9 @@ import { createContext } from '../create-context'
 
 export interface UseFileUploadItemContext extends ItemProps {}
 
-export const [FileUploadItemProvider, useFileUploadItemContext] =
+export const [FileUploadItemPropsProvider, useFileUploadItemPropsContext] =
   createContext<UseFileUploadItemContext>({
-    name: 'FileUploadItemContext',
-    hookName: 'useFileUploadItemContext',
-    providerName: '<FileUploadItemProvider />',
+    name: 'FileUploadItemPropsContext',
+    hookName: 'useFileUploadItemPropsContext',
+    providerName: '<FileUploadItemPropsProvider />',
   })

@@ -12,11 +12,11 @@ export interface SelectValueTextProps extends HTMLArkProps<'span'> {
 
 export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>((props, ref) => {
   const { children, placeholder, ...rest } = props
-  const context = useSelectContext()
+  const select = useSelectContext()
 
   return (
     <ark.span {...selectAnatomy.build().valueText.attrs} {...rest} ref={ref}>
-      {children || context.valueAsString || placeholder}
+      {children || select.valueAsString || placeholder}
     </ark.span>
   )
 })

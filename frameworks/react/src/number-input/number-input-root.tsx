@@ -38,11 +38,11 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'translations',
     'value',
   ])
-  const context = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const numberInput = useNumberInput(useNumberInputProps)
+  const mergedProps = mergeProps(numberInput.rootProps, localProps)
 
   return (
-    <NumberInputProvider value={context}>
+    <NumberInputProvider value={numberInput}>
       <ark.div {...mergedProps} ref={ref} />
     </NumberInputProvider>
   )

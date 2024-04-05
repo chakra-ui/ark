@@ -9,7 +9,7 @@ import { ToggleGroupProvider } from './use-toggle-group-context'
 export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 
 export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
-  const [toggleGroup, localProps] = createSplitProps<UseToggleGroupProps>()(props, [
+  const [useToggleGroupProps, localProps] = createSplitProps<UseToggleGroupProps>()(props, [
     'defaultValue',
     'dir',
     'disabled',
@@ -23,11 +23,11 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
     'rovingFocus',
     'value',
   ])
-  const context = useToggleGroup(toggleGroup)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const togglegroup = useToggleGroup(useToggleGroupProps)
+  const mergedProps = mergeProps(togglegroup.rootProps, localProps)
 
   return (
-    <ToggleGroupProvider value={context}>
+    <ToggleGroupProvider value={togglegroup}>
       <ark.div {...mergedProps} ref={ref} />
     </ToggleGroupProvider>
   )

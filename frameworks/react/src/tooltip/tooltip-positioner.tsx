@@ -8,11 +8,11 @@ export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
 
 export const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(
   (props, ref) => {
-    const context = useTooltipContext()
-    const mergedProps = mergeProps(context.positionerProps, props)
-    const presenceApi = usePresenceContext()
+    const tooltip = useTooltipContext()
+    const mergedProps = mergeProps(tooltip.positionerProps, props)
+    const presence = usePresenceContext()
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

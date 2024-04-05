@@ -1,4 +1,4 @@
-import type { ItemProps, ItemState } from '@zag-js/tags-input'
+import type { ItemState } from '@zag-js/tags-input'
 import { createContext } from '../create-context'
 
 export interface UseTagsInputItemContext extends ItemState {}
@@ -9,9 +9,3 @@ export const [TagsInputItemProvider, useTagsInputItemContext] =
     hookName: 'useTagsInputItemContext',
     providerName: '<TagsInputItemProvider />',
   })
-
-export const [TagsInputItemPropsProvider, useTagsInputItemPropsContext] = createContext<ItemProps>({
-  name: 'TagsInputItemPropsContext',
-  hookName: 'useTagsInputItemPropsContext',
-  providerName: '<TagsInputItemPropsProvider />',
-})

@@ -5,7 +5,8 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useTagsInputContext } from './use-tags-input-context'
-import { TagsInputItemPropsProvider, TagsInputItemProvider } from './use-tags-input-item-context'
+import { TagsInputItemProvider } from './use-tags-input-item-context'
+import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
@@ -15,13 +16,13 @@ export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((pro
     'disabled',
     'value',
   ])
-  const context = useTagsInputContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
-  const itemState = context.getItemState(itemProps)
+  const tagsInput = useTagsInputContext()
+  const mergedProps = mergeProps(tagsInput.getItemProps(itemProps), localProps)
+  const tagsInputItem = tagsInput.getItemState(itemProps)
 
   return (
     <TagsInputItemPropsProvider value={itemProps}>
-      <TagsInputItemProvider value={itemState}>
+      <TagsInputItemProvider value={tagsInputItem}>
         <ark.div {...mergedProps} ref={ref} />
       </TagsInputItemProvider>
     </TagsInputItemPropsProvider>

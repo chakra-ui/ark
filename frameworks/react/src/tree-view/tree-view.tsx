@@ -33,6 +33,10 @@ import {
 } from './tree-view-context'
 import { TreeViewItem as Item, type TreeViewItemProps as ItemProps } from './tree-view-item'
 import {
+  TreeViewItemContext as ItemContext,
+  type TreeViewItemContextProps as ItemContextProps,
+} from './tree-view-item-context'
+import {
   TreeViewItemIndicator as ItemIndicator,
   type TreeViewItemIndicatorProps as ItemIndicatorProps,
 } from './tree-view-item-indicator'
@@ -53,6 +57,7 @@ export {
   BranchTrigger,
   Context,
   Item,
+  ItemContext,
   ItemIndicator,
   ItemText,
   Label,
@@ -69,6 +74,7 @@ export type {
   ContextProps,
   ExpandedChangeDetails,
   FocusChangeDetails,
+  ItemContextProps,
   ItemIndicatorProps,
   ItemProps,
   ItemTextProps,

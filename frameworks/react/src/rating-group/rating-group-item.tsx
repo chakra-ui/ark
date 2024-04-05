@@ -11,9 +11,9 @@ export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemP
 
 export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
-  const context = useRatingGroupContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
-  const itemState = context.getItemState(itemProps)
+  const ratingGroup = useRatingGroupContext()
+  const mergedProps = mergeProps(ratingGroup.getItemProps(itemProps), localProps)
+  const itemState = ratingGroup.getItemState(itemProps)
 
   return (
     <RatingGroupItemProvider value={itemState}>

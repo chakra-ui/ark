@@ -10,8 +10,8 @@ export interface DatePickerInputProps extends Assign<HTMLArkProps<'input'>, Inpu
 
 export const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>((props, ref) => {
   const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])
-  const context = useDatePickerContext()
-  const mergedProps = mergeProps(context.getInputProps(inputProps), localProps)
+  const datePicker = useDatePickerContext()
+  const mergedProps = mergeProps(datePicker.getInputProps(inputProps), localProps)
 
   return <ark.input {...mergedProps} ref={ref} />
 })

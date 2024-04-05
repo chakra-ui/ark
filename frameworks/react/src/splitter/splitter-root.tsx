@@ -20,11 +20,11 @@ export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props
     'orientation',
     'size',
   ])
-  const context = useSplitter(useSplitterProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const splitter = useSplitter(useSplitterProps)
+  const mergedProps = mergeProps(splitter.rootProps, localProps)
 
   return (
-    <SplitterProvider value={context}>
+    <SplitterProvider value={splitter}>
       <ark.div {...mergedProps} ref={ref} />
     </SplitterProvider>
   )

@@ -7,13 +7,13 @@ export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
 
 export const FileUploadDropzone = forwardRef<HTMLDivElement, FileUploadDropzoneProps>(
   (props, ref) => {
-    const context = useFileUploadContext()
-    const mergedProps = mergeProps(context.dropzoneProps, props)
+    const fileUpload = useFileUploadContext()
+    const mergedProps = mergeProps(fileUpload.dropzoneProps, props)
 
     return (
       <>
         <ark.div {...mergedProps} ref={ref} />
-        <input {...context.hiddenInputProps} />
+        <input {...fileUpload.hiddenInputProps} />
       </>
     )
   },

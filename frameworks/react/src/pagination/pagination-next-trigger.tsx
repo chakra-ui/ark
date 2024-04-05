@@ -7,8 +7,8 @@ export interface PaginationNextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PaginationNextTrigger = forwardRef<HTMLButtonElement, PaginationNextTriggerProps>(
   (props, ref) => {
-    const context = usePaginationContext()
-    const mergedProps = mergeProps(context.nextTriggerProps, props)
+    const pagination = usePaginationContext()
+    const mergedProps = mergeProps(pagination.nextTriggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

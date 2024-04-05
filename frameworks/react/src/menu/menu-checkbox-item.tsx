@@ -6,7 +6,7 @@ import { ark, type HTMLArkProps } from '../factory'
 import { type Assign } from '../types'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
+import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
@@ -26,9 +26,9 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
     ...partialOptionItemProps,
     type: 'checkbox',
   }
-  const context = useMenuContext()
-  const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
-  const itemState = context.getItemState(optionItemProps)
+  const menu = useMenuContext()
+  const mergedProps = mergeProps(menu.getOptionItemProps(optionItemProps), localProps)
+  const itemState = menu.getItemState(optionItemProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>

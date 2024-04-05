@@ -9,8 +9,8 @@ export const NumberInputIncrementTrigger = forwardRef<
   HTMLButtonElement,
   NumberInputIncrementTriggerProps
 >((props, ref) => {
-  const context = useNumberInputContext()
-  const mergedProps = mergeProps(context.incrementTriggerProps, props)
+  const numberInput = useNumberInputContext()
+  const mergedProps = mergeProps(numberInput.incrementTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

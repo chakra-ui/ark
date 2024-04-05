@@ -8,11 +8,11 @@ export interface ComboboxPositionerProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(
   (props, ref) => {
-    const context = useComboboxContext()
-    const mergedProps = mergeProps(context.positionerProps, props)
-    const presenceApi = usePresenceContext()
+    const combobox = useComboboxContext()
+    const presence = usePresenceContext()
+    const mergedProps = mergeProps(combobox.positionerProps, props)
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

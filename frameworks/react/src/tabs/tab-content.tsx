@@ -12,22 +12,22 @@ export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProp
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
-  const context = useTabsContext()
+  const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
-  const presenceApi = usePresence({
+  const presence = usePresence({
     ...renderStrategyProps,
-    present: context.value === props.value,
+    present: tabs.value === props.value,
   })
 
   const mergedProps = mergeProps(
-    context.getContentProps(contentProps),
-    presenceApi.getPresenceProps(ref),
+    tabs.getContentProps(contentProps),
+    presence.getPresenceProps(ref),
     localProps,
   )
 
   return (
-    <PresenceProvider value={presenceApi}>
-      {presenceApi.isUnmounted ? null : <ark.div {...mergedProps} />}
+    <PresenceProvider value={presence}>
+      {presence.isUnmounted ? null : <ark.div {...mergedProps} />}
     </PresenceProvider>
   )
 })

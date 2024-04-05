@@ -6,8 +6,8 @@ import { useComboboxContext } from './use-combobox-context'
 export interface ComboboxTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, ComboboxTriggerProps>((props, ref) => {
-  const context = useComboboxContext()
-  const mergedProps = mergeProps(context.triggerProps, props)
+  const combobox = useComboboxContext()
+  const mergedProps = mergeProps(combobox.triggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

@@ -7,11 +7,11 @@ import { usePopoverContext } from './use-popover-context'
 export interface PopoverContentProps extends HTMLArkProps<'div'> {}
 
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
-  const context = usePopoverContext()
-  const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
+  const popover = usePopoverContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(popover.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

@@ -6,8 +6,8 @@ import { useComboboxContext } from './use-combobox-context'
 export interface ComboboxControlProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxControl = forwardRef<HTMLDivElement, ComboboxControlProps>((props, ref) => {
-  const context = useComboboxContext()
-  const mergedProps = mergeProps(context.controlProps, props)
+  const combobox = useComboboxContext()
+  const mergedProps = mergeProps(combobox.controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

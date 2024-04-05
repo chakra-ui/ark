@@ -10,13 +10,13 @@ export interface CarouselIndicatorProps extends Assign<HTMLArkProps<'button'>, I
 
 export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicatorProps>(
   (props, ref) => {
-    const [indicatorProps, buttonProps] = createSplitProps<IndicatorProps>()(props, [
+    const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, [
       'readOnly',
       'index',
     ])
 
     const carousel = useCarouselContext()
-    const mergedProps = mergeProps(carousel.getIndicatorProps(indicatorProps), buttonProps)
+    const mergedProps = mergeProps(carousel.getIndicatorProps(indicatorProps), localProps)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

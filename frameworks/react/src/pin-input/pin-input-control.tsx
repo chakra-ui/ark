@@ -6,8 +6,8 @@ import { usePinInputContext } from './use-pin-input-context'
 export interface PinInputControlProps extends HTMLArkProps<'div'> {}
 
 export const PinInputControl = forwardRef<HTMLDivElement, PinInputControlProps>((props, ref) => {
-  const context = usePinInputContext()
-  const mergedProps = mergeProps(context.controlProps, props)
+  const pinInput = usePinInputContext()
+  const mergedProps = mergeProps(pinInput.controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

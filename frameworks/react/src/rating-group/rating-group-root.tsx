@@ -28,11 +28,11 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
     'value',
   ])
 
-  const context = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const ratingGroup = useRatingGroup(useRatingProps)
+  const mergedProps = mergeProps(ratingGroup.rootProps, localProps)
 
   return (
-    <RatingGroupProvider value={context}>
+    <RatingGroupProvider value={ratingGroup}>
       <ark.div {...mergedProps} ref={ref} />
     </RatingGroupProvider>
   )

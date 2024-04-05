@@ -30,11 +30,11 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'translations',
     'validate',
   ])
-  const context = useFileUpload(useFileUploadProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const fileUpload = useFileUpload(useFileUploadProps)
+  const mergedProps = mergeProps(fileUpload.rootProps, localProps)
 
   return (
-    <FileUploadProvider value={context}>
+    <FileUploadProvider value={fileUpload}>
       <ark.div {...mergedProps} ref={ref} />
     </FileUploadProvider>
   )

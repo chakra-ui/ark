@@ -37,11 +37,11 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'thumbSize',
     'value',
   ])
-  const context = useSlider(useSliderProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const slider = useSlider(useSliderProps)
+  const mergedProps = mergeProps(slider.rootProps, localProps)
 
   return (
-    <SliderProvider value={context}>
+    <SliderProvider value={slider}>
       <ark.div {...mergedProps} ref={ref} />
     </SliderProvider>
   )

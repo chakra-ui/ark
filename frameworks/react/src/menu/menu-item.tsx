@@ -17,9 +17,9 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
     'valueText',
   ])
 
-  const context = useMenuContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
-  const itemState = context.getItemState(itemProps)
+  const menu = useMenuContext()
+  const mergedProps = mergeProps(menu.getItemProps(itemProps), localProps)
+  const itemState = menu.getItemState(itemProps)
 
   return (
     <MenuItemProvider value={itemState}>

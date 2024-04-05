@@ -8,12 +8,12 @@ export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
 export const ProgressValueText = forwardRef<HTMLSpanElement, ProgressValueTextProps>(
   (props, ref) => {
     const { children, ...rest } = props
-    const context = useProgressContext()
-    const mergedProps = mergeProps(context.valueTextProps, rest)
+    const progress = useProgressContext()
+    const mergedProps = mergeProps(progress.valueTextProps, rest)
 
     return (
       <ark.span {...mergedProps} ref={ref}>
-        {children || context.valueAsString}
+        {children || progress.valueAsString}
       </ark.span>
     )
   },

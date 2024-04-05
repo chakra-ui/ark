@@ -8,9 +8,9 @@ export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SegmentGroupIndicator = forwardRef<HTMLDivElement, SegmentGroupIndicatorProps>(
   (props, ref) => {
-    const context = useSegmentGroupContext()
+    const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
-      context.indicatorProps,
+      segmentGroup.indicatorProps,
       segmentGroupAnatomy.build().indicator.attrs as Record<string, string>,
       props,
     )

@@ -38,8 +38,8 @@ export const RenderFn = () => (
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Tooltip.Positioner>
       <Tooltip.Context>
-        {(context) => (
-          <Tooltip.Content>This tooltip is open: {context.isOpen.toString()}</Tooltip.Content>
+        {(tooltip) => (
+          <Tooltip.Content>This tooltip is open: {tooltip.isOpen.toString()}</Tooltip.Content>
         )}
       </Tooltip.Context>
     </Tooltip.Positioner>

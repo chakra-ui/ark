@@ -9,8 +9,8 @@ export const NumberInputDecrementTrigger = forwardRef<
   HTMLButtonElement,
   NumberInputDecrementTriggerProps
 >((props, ref) => {
-  const context = useNumberInputContext()
-  const mergedProps = mergeProps(context.decrementTriggerProps, props)
+  const numberInput = useNumberInputContext()
+  const mergedProps = mergeProps(numberInput.decrementTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

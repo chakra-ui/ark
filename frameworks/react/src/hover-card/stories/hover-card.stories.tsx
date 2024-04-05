@@ -67,7 +67,9 @@ export const Positioning = () => (
 export const RenderProp = () => (
   <HoverCard.Root>
     <HoverCard.Context>
-      {(context) => <HoverCard.Trigger>Hover me {context.isOpen ? '▲' : '▼'} </HoverCard.Trigger>}
+      {(hoverCard) => (
+        <HoverCard.Trigger>Hover me {hoverCard.isOpen ? '▲' : '▼'} </HoverCard.Trigger>
+      )}
     </HoverCard.Context>
     <Portal>
       <HoverCard.Positioner>

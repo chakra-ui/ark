@@ -7,8 +7,8 @@ export interface SelectClearTriggerProps extends HTMLArkProps<'button'> {}
 
 export const SelectClearTrigger = forwardRef<HTMLButtonElement, SelectClearTriggerProps>(
   (props, ref) => {
-    const context = useSelectContext()
-    const mergedProps = mergeProps(context.clearTriggerProps, props)
+    const select = useSelectContext()
+    const mergedProps = mergeProps(select.clearTriggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

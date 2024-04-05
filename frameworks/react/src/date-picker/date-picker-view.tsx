@@ -5,23 +5,23 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerViewProvider } from './use-date-picker-view-context'
+import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context'
 
 export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, Required<ViewProps>> {}
 
 export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((props, ref) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])
-  const context = useDatePickerContext()
+  const datePicker = useDatePickerContext()
 
   return (
-    <DatePickerViewProvider value={viewProps}>
+    <DatePickerViewPropsProvider value={viewProps}>
       <ark.div
-        hidden={context.view !== viewProps.view}
+        hidden={datePicker.view !== viewProps.view}
         {...datePickerAnatomy.build().view.attrs}
         {...localProps}
         ref={ref}
       />
-    </DatePickerViewProvider>
+    </DatePickerViewPropsProvider>
   )
 })
 

@@ -12,12 +12,12 @@ export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {
 
 export const PopoverRoot = (props: PopoverRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
-  const context = usePopover(localProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
+  const popover = usePopover(localProps)
+  const presence = usePresence(mergeProps({ present: popover.isOpen }, presenceProps))
 
   return (
-    <PopoverProvider value={context}>
-      <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
+    <PopoverProvider value={popover}>
+      <PresenceProvider value={presence}>{children}</PresenceProvider>
     </PopoverProvider>
   )
 }

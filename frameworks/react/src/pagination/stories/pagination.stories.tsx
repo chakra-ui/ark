@@ -13,8 +13,8 @@ export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>
     <Pagination.PrevTrigger>Previous Page</Pagination.PrevTrigger>
     <Pagination.Context>
-      {(context) =>
-        context.pages.map((page, index) =>
+      {(pagination) =>
+        pagination.pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>
               {page.value}
@@ -44,8 +44,8 @@ export const Controlled = () => {
     >
       <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
       <Pagination.Context>
-        {(context) =>
-          context.pages.map((page, index) =>
+        {(pagination) =>
+          pagination.pages.map((page, index) =>
             page.type === 'page' ? (
               <Pagination.Item key={index} {...page}>
                 {page.value}
@@ -77,8 +77,8 @@ export const Customized = () => (
   >
     <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
     <Pagination.Context>
-      {(context) =>
-        context.pages.map((page, index) =>
+      {(pagination) =>
+        pagination.pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>
               {page.value}

@@ -7,8 +7,8 @@ export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
 
 export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGroupProps>(
   (props, ref) => {
-    const context = useFileUploadContext()
-    const mergedProps = mergeProps(context.itemGroupProps, props)
+    const fileUpload = useFileUploadContext()
+    const mergedProps = mergeProps(fileUpload.itemGroupProps, props)
 
     return <ark.ul {...mergedProps} ref={ref} />
   },

@@ -7,8 +7,8 @@ export interface FileUploadTriggerProps extends HTMLArkProps<'button'> {}
 
 export const FileUploadTrigger = forwardRef<HTMLButtonElement, FileUploadTriggerProps>(
   (props, ref) => {
-    const context = useFileUploadContext()
-    const mergedProps = mergeProps(context.triggerProps, props)
+    const fileUpload = useFileUploadContext()
+    const mergedProps = mergeProps(fileUpload.triggerProps, props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

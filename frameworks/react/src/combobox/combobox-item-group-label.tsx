@@ -12,8 +12,8 @@ export interface ComboboxItemGroupLabelProps
 export const ComboboxItemGroupLabel = forwardRef<HTMLDivElement, ComboboxItemGroupLabelProps>(
   (props, ref) => {
     const [optionProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['htmlFor'])
-    const context = useComboboxContext()
-    const mergedProps = mergeProps(context.getItemGroupLabelProps(optionProps), localProps)
+    const combobox = useComboboxContext()
+    const mergedProps = mergeProps(combobox.getItemGroupLabelProps(optionProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

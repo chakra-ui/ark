@@ -7,8 +7,8 @@ export interface RadioGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const RadioGroupIndicator = forwardRef<HTMLDivElement, RadioGroupIndicatorProps>(
   (props, ref) => {
-    const context = useRadioGroupContext()
-    const mergedProps = mergeProps(context.indicatorProps, props)
+    const radioGroup = useRadioGroupContext()
+    const mergedProps = mergeProps(radioGroup.indicatorProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -15,10 +15,10 @@ export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((pro
   const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, [
     'id',
   ])
-  const context = useMenuContext()
+  const menu = useMenuContext()
   const id = useId()
   const itemGroupProps = { id, ...optionalItemGroupProps }
-  const mergedProps = mergeProps(context.getItemGroupProps(itemGroupProps), localProps)
+  const mergedProps = mergeProps(menu.getItemGroupProps(itemGroupProps), localProps)
 
   return (
     <MenuItemGroupProvider value={itemGroupProps}>

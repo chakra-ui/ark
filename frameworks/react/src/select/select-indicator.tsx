@@ -6,8 +6,8 @@ import { useSelectContext } from './use-select-context'
 export interface SelectIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SelectIndicator = forwardRef<HTMLDivElement, SelectIndicatorProps>((props, ref) => {
-  const context = useSelectContext()
-  const mergedProps = mergeProps(context.indicatorProps, props)
+  const select = useSelectContext()
+  const mergedProps = mergeProps(select.indicatorProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

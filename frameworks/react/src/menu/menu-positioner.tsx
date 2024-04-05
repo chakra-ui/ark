@@ -7,11 +7,11 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
 export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((props, ref) => {
-  const context = useMenuContext()
-  const mergedProps = mergeProps(context.positionerProps, props)
-  const presenceApi = usePresenceContext()
+  const menu = useMenuContext()
+  const mergedProps = mergeProps(menu.positionerProps, props)
+  const presence = usePresenceContext()
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

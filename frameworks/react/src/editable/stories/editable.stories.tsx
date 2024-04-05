@@ -25,9 +25,9 @@ export const CustomControls = () => (
       <Editable.Preview />
     </Editable.Area>
     <Editable.Context>
-      {(context) => (
+      {(editable) => (
         <Editable.Control>
-          {context.isEditing ? (
+          {editable.isEditing ? (
             <>
               <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
               <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>

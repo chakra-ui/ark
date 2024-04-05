@@ -7,11 +7,11 @@ import { useHoverCardContext } from './use-hover-card-context'
 export interface HoverCardContentProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
-  const context = useHoverCardContext()
-  const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
+  const hoverCard = useHoverCardContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(hoverCard.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

@@ -7,12 +7,12 @@ import { usePopoverContext } from './use-popover-context'
 export interface PopoverTriggerProps extends HTMLArkProps<'button'> {}
 
 export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>((props, ref) => {
-  const context = usePopoverContext()
-  const presenceApi = usePresenceContext()
+  const popover = usePopoverContext()
+  const presence = usePresenceContext()
   const mergedProps = mergeProps(
     {
-      ...context.triggerProps,
-      'aria-controls': presenceApi.isUnmounted ? undefined : context.triggerProps['aria-controls'],
+      ...popover.triggerProps,
+      'aria-controls': presence.isUnmounted ? undefined : popover.triggerProps['aria-controls'],
     },
     props,
   )

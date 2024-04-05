@@ -8,11 +8,11 @@ export interface DatePickerContentProps extends HTMLArkProps<'div'> {}
 
 export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>(
   (props, ref) => {
-    const context = useDatePickerContext()
-    const presenceApi = usePresenceContext()
-    const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
+    const datePicker = useDatePickerContext()
+    const presence = usePresenceContext()
+    const mergedProps = mergeProps(datePicker.contentProps, presence.getPresenceProps(ref), props)
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

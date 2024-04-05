@@ -14,12 +14,14 @@ import { TreeViewBranchText, type TreeViewBranchTextProps } from './tree-view-br
 import { TreeViewBranchTrigger, type TreeViewBranchTriggerProps } from './tree-view-branch-trigger'
 import { TreeViewContext, type TreeViewContextProps } from './tree-view-context'
 import { TreeViewItem, type TreeViewItemProps } from './tree-view-item'
+import { TreeViewItemContext, type TreeViewItemContextProps } from './tree-view-item-context'
 import { TreeViewItemIndicator, type TreeViewItemIndicatorProps } from './tree-view-item-indicator'
 import { TreeViewItemText, type TreeViewItemTextProps } from './tree-view-item-text'
 import { TreeViewLabel, type TreeViewLabelProps } from './tree-view-label'
 import { TreeViewRoot, type TreeViewRootProps } from './tree-view-root'
 import { TreeViewTree, type TreeViewTreeProps } from './tree-view-tree'
 import { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
+import { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
 
 export * as TreeView from './tree-view'
 
@@ -32,12 +34,14 @@ export {
   TreeViewBranchTrigger,
   TreeViewContext,
   TreeViewItem,
+  TreeViewItemContext,
   TreeViewItemIndicator,
   TreeViewItemText,
   TreeViewLabel,
   TreeViewRoot,
   TreeViewTree,
   useTreeViewContext,
+  useTreeViewItemContext,
 }
 export type {
   TreeViewBranchContentProps,
@@ -49,6 +53,7 @@ export type {
   TreeViewContextProps,
   TreeViewExpandedChangeDetails,
   TreeViewFocusChangeDetails,
+  TreeViewItemContextProps,
   TreeViewItemIndicatorProps,
   TreeViewItemProps,
   TreeViewItemTextProps,
@@ -57,4 +62,5 @@ export type {
   TreeViewSelectionChangeDetails,
   TreeViewTreeProps,
   UseTreeViewContext,
+  UseTreeViewItemContext,
 }

@@ -33,13 +33,13 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
     'type',
     'value',
   ])
-  const context = usePinInput(usePinInputProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const pinInput = usePinInput(usePinInputProps)
+  const mergedProps = mergeProps(pinInput.rootProps, localProps)
 
   return (
-    <PinInputProvider value={context}>
+    <PinInputProvider value={pinInput}>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...context.hiddenInputProps} />
+      <input {...pinInput.hiddenInputProps} />
     </PinInputProvider>
   )
 })

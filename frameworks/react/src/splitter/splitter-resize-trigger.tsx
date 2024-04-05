@@ -11,13 +11,13 @@ export interface SplitterResizeTriggerProps
 
 export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>(
   (props, ref) => {
-    const [triggerProps, restProps] = createSplitProps<ResizeTriggerProps>()(props, [
+    const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, [
       'disabled',
       'id',
       'step',
     ])
-    const context = useSplitterContext()
-    const mergedProps = mergeProps(context.getResizeTriggerProps(triggerProps), restProps)
+    const splitter = useSplitterContext()
+    const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
 
     return <ark.button ref={ref} {...mergedProps} />
   },

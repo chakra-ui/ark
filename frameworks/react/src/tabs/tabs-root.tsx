@@ -31,11 +31,11 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'translations',
     'value',
   ])
-  const context = useTabs(useTabsProps)
-  const mergedProps = mergeProps(context.rootProps, localprops)
+  const tabs = useTabs(useTabsProps)
+  const mergedProps = mergeProps(tabs.rootProps, localprops)
 
   return (
-    <TabsProvider value={context}>
+    <TabsProvider value={tabs}>
       <RenderStrategyPropsProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
       </RenderStrategyPropsProvider>

@@ -4,11 +4,11 @@ export const ComponentUnderTest = (props: TagsInputRootProps) => {
   return (
     <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       <TagsInput.Context>
-        {(context) => (
+        {(tagsInput) => (
           <>
             <TagsInput.Label>Frameworks</TagsInput.Label>
             <TagsInput.Control>
-              {context.value.map((value, index) => (
+              {tagsInput.value.map((value, index) => (
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemPreview>
                     <TagsInput.ItemText>{value}</TagsInput.ItemText>

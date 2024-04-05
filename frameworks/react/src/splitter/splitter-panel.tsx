@@ -9,9 +9,9 @@ import { useSplitterContext } from './use-splitter-context'
 export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, PanelProps> {}
 
 export const SplitterPanel = forwardRef<HTMLDivElement, SplitterPanelProps>((props, ref) => {
-  const [splitterPanelProps, divProps] = createSplitProps<PanelProps>()(props, ['id', 'snapSize'])
-  const context = useSplitterContext()
-  const mergedProps = mergeProps(context.getPanelProps(splitterPanelProps), divProps)
+  const [splitterPanelProps, localProps] = createSplitProps<PanelProps>()(props, ['id', 'snapSize'])
+  const splitter = useSplitterContext()
+  const mergedProps = mergeProps(splitter.getPanelProps(splitterPanelProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

@@ -52,14 +52,13 @@ const SelectImpl = <T extends CollectionItem>(
     'selectOnBlur',
     'value',
   ])
-  const context = useSelect(useSelectProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
-
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const select = useSelect(useSelectProps)
+  const presence = usePresence(mergeProps({ present: select.isOpen }, presenceProps))
+  const mergedProps = mergeProps(select.rootProps, localProps)
 
   return (
-    <SelectProvider value={context}>
-      <PresenceProvider value={presenceApi}>
+    <SelectProvider value={select}>
+      <PresenceProvider value={presence}>
         <ark.div {...mergedProps} ref={ref} />
       </PresenceProvider>
     </SelectProvider>

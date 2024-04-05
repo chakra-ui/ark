@@ -37,9 +37,11 @@ export const RenderProp = () => {
       {items.map((item, id) => (
         <Accordion.Item key={id} value={item}>
           <Accordion.ItemContext>
-            {(context) => (
+            {(accordionItem) => (
               <>
-                <Accordion.ItemTrigger>{context.isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
+                <Accordion.ItemTrigger>
+                  {accordionItem.isOpen ? 'Close' : 'Open'}
+                </Accordion.ItemTrigger>
                 <Accordion.ItemContent>{item} content</Accordion.ItemContent>
               </>
             )}

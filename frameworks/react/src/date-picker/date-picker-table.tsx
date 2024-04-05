@@ -5,8 +5,8 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTableProvider } from './use-date-picker-table-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableProps
   extends Assign<HTMLArkProps<'table'>, Pick<TableProps, 'columns'>> {}
@@ -15,15 +15,15 @@ export const DatePickerTable = forwardRef<HTMLTableElement, DatePickerTableProps
   const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, [
     'columns',
   ])
-  const context = useDatePickerContext()
-  const viewProps = useDatePickerViewContext()
+  const datePicker = useDatePickerContext()
+  const viewProps = useDatePickerViewPropsContext()
   const tableProps = { columns, id: useId(), ...viewProps }
-  const mergedProps = mergeProps(context.getTableProps(tableProps), localProps)
+  const mergedProps = mergeProps(datePicker.getTableProps(tableProps), localProps)
 
   return (
-    <DatePickerTableProvider value={tableProps}>
+    <DatePickerTablePropsProvider value={tableProps}>
       <ark.table {...mergedProps} ref={ref} />
-    </DatePickerTableProvider>
+    </DatePickerTablePropsProvider>
   )
 })
 

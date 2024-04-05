@@ -51,13 +51,13 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'value',
     'view',
   ])
-  const context = useDatePicker(useDatePickerProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const datePicker = useDatePicker(useDatePickerProps)
+  const presence = usePresence(mergeProps({ present: datePicker.isOpen }, presenceProps))
+  const mergedProps = mergeProps(datePicker.rootProps, localProps)
 
   return (
-    <DatePickerProvider value={context}>
-      <PresenceProvider value={presenceApi}>
+    <DatePickerProvider value={datePicker}>
+      <PresenceProvider value={presence}>
         <ark.div {...mergedProps} ref={ref} />
       </PresenceProvider>
     </DatePickerProvider>

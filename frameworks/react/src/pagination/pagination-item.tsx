@@ -10,8 +10,8 @@ export interface PaginationItemProps extends Assign<HTMLArkProps<'button'>, Item
 
 export const PaginationItem = forwardRef<HTMLButtonElement, PaginationItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
-  const context = usePaginationContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
+  const pagination = usePaginationContext()
+  const mergedProps = mergeProps(pagination.getItemProps(itemProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

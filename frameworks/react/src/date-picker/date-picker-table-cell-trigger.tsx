@@ -2,8 +2,8 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useDatePickerTableCellContext } from './use-date-picker-table-cell-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'button'> {}
 
@@ -11,16 +11,16 @@ export const DatePickerTableCellTrigger = forwardRef<
   HTMLButtonElement,
   DatePickerTableCellTriggerProps
 >((props, ref) => {
-  const context = useDatePickerContext()
-  const cellContext = useDatePickerTableCellContext()
-  const viewContext = useDatePickerViewContext()
+  const datePicker = useDatePickerContext()
+  const tableCellProps = useDatePickerTableCellPropsContext()
+  const viewProps = useDatePickerViewPropsContext()
 
   const triggerProps = {
-    day: context.getDayTableCellTriggerProps,
-    month: context.getMonthTableCellTriggerProps,
-    year: context.getYearTableCellTriggerProps,
+    day: datePicker.getDayTableCellTriggerProps,
+    month: datePicker.getMonthTableCellTriggerProps,
+    year: datePicker.getYearTableCellTriggerProps,
     // @ts-expect-error value is number filter
-  }[viewContext.view](cellContext)
+  }[viewProps.view](tableCellProps)
 
   const mergedProps = mergeProps(triggerProps, props)
 

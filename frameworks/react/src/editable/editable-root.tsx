@@ -38,11 +38,11 @@ export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props
     'translations',
     'value',
   ])
-  const context = useEditable(useEditableProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const editable = useEditable(useEditableProps)
+  const mergedProps = mergeProps(editable.rootProps, localProps)
 
   return (
-    <EditableProvider value={context}>
+    <EditableProvider value={editable}>
       <ark.div {...mergedProps} ref={ref} />
     </EditableProvider>
   )

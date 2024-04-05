@@ -25,7 +25,7 @@ export const Basic = () => {
             <DatePicker.MonthSelect />
             <DatePicker.View view="day">
               <DatePicker.Context>
-                {(context) => (
+                {(datePicker) => (
                   <>
                     <DatePicker.ViewControl>
                       <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -37,7 +37,7 @@ export const Basic = () => {
                     <DatePicker.Table>
                       <DatePicker.TableHead>
                         <DatePicker.TableRow>
-                          {context.weekDays.map((weekDay, id) => (
+                          {datePicker.weekDays.map((weekDay, id) => (
                             <DatePicker.TableHeader key={id}>
                               {weekDay.short}
                             </DatePicker.TableHeader>
@@ -45,7 +45,7 @@ export const Basic = () => {
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
                       <DatePicker.TableBody>
-                        {context.weeks.map((week, id) => (
+                        {datePicker.weeks.map((week, id) => (
                           <DatePicker.TableRow key={id}>
                             {week.map((day, id) => (
                               <DatePicker.TableCell key={id} value={day}>
@@ -62,7 +62,7 @@ export const Basic = () => {
             </DatePicker.View>
             <DatePicker.View view="month">
               <DatePicker.Context>
-                {(context) => (
+                {(datePicker) => (
                   <>
                     <DatePicker.ViewControl>
                       <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -73,7 +73,7 @@ export const Basic = () => {
                     </DatePicker.ViewControl>
                     <DatePicker.Table>
                       <DatePicker.TableBody>
-                        {context
+                        {datePicker
                           .getMonthsGrid({ columns: 4, format: 'short' })
                           .map((months, id) => (
                             <DatePicker.TableRow key={id}>
@@ -94,7 +94,7 @@ export const Basic = () => {
             </DatePicker.View>
             <DatePicker.View view="year">
               <DatePicker.Context>
-                {(context) => (
+                {(datePicker) => (
                   <>
                     <DatePicker.ViewControl>
                       <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -105,7 +105,7 @@ export const Basic = () => {
                     </DatePicker.ViewControl>
                     <DatePicker.Table>
                       <DatePicker.TableBody>
-                        {context.getYearsGrid({ columns: 4 }).map((years, id) => (
+                        {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
                           <DatePicker.TableRow key={id}>
                             {years.map((year, id) => (
                               <DatePicker.TableCell key={id} value={year.value}>
@@ -135,7 +135,7 @@ export const Standalone = () => {
       <DatePicker.Input />
       <DatePicker.View view="day">
         <DatePicker.Context>
-          {(context) => (
+          {(datePicker) => (
             <>
               <DatePicker.ViewControl>
                 <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -147,13 +147,13 @@ export const Standalone = () => {
               <DatePicker.Table>
                 <DatePicker.TableHead>
                   <DatePicker.TableRow>
-                    {context.weekDays.map((weekDay, id) => (
+                    {datePicker.weekDays.map((weekDay, id) => (
                       <DatePicker.TableHeader key={id}>{weekDay.short}</DatePicker.TableHeader>
                     ))}
                   </DatePicker.TableRow>
                 </DatePicker.TableHead>
                 <DatePicker.TableBody>
-                  {context.weeks.map((week, id) => (
+                  {datePicker.weeks.map((week, id) => (
                     <DatePicker.TableRow key={id}>
                       {week.map((day, id) => (
                         <DatePicker.TableCell key={id} value={day}>
@@ -170,7 +170,7 @@ export const Standalone = () => {
       </DatePicker.View>
       <DatePicker.View view="month">
         <DatePicker.Context>
-          {(context) => (
+          {(datePicker) => (
             <>
               <DatePicker.ViewControl>
                 <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -181,7 +181,7 @@ export const Standalone = () => {
               </DatePicker.ViewControl>
               <DatePicker.Table>
                 <DatePicker.TableBody>
-                  {context.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
+                  {datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
                     <DatePicker.TableRow key={id}>
                       {months.map((month, id) => (
                         <DatePicker.TableCell key={id} value={month.value}>
@@ -198,7 +198,7 @@ export const Standalone = () => {
       </DatePicker.View>
       <DatePicker.View view="year">
         <DatePicker.Context>
-          {(context) => (
+          {(datePicker) => (
             <>
               <DatePicker.ViewControl>
                 <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
@@ -209,7 +209,7 @@ export const Standalone = () => {
               </DatePicker.ViewControl>
               <DatePicker.Table>
                 <DatePicker.TableBody>
-                  {context.getYearsGrid({ columns: 4 }).map((years, id) => (
+                  {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
                     <DatePicker.TableRow key={id}>
                       {years.map((year, id) => (
                         <DatePicker.TableCell key={id} value={year.value}>

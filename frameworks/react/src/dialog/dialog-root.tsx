@@ -14,13 +14,13 @@ export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
 export const DialogRoot = (props: DialogRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
-  const context = useDialog(localProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
+  const dialog = useDialog(localProps)
+  const presence = usePresence(mergeProps({ present: dialog.isOpen }, presenceProps))
 
   return (
-    <DialogProvider value={context}>
+    <DialogProvider value={dialog}>
       <RenderStrategyPropsProvider value={renderStrategyProps}>
-        <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
+        <PresenceProvider value={presence}>{children}</PresenceProvider>
       </RenderStrategyPropsProvider>
     </DialogProvider>
   )

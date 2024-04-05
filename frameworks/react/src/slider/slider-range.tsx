@@ -6,8 +6,8 @@ import { useSliderContext } from './use-slider-context'
 export interface SliderRangeProps extends HTMLArkProps<'div'> {}
 
 export const SliderRange = forwardRef<HTMLDivElement, SliderRangeProps>((props, ref) => {
-  const context = useSliderContext()
-  const mergedProps = mergeProps(context.rangeProps, props)
+  const slider = useSliderContext()
+  const mergedProps = mergeProps(slider.rangeProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

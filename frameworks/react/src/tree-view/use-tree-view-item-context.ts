@@ -1,11 +1,12 @@
-import type { ItemProps as ZagItemProps } from '@zag-js/tree-view'
+import type { ItemState } from '@zag-js/tree-view'
 import { createContext } from '../create-context'
 
-export interface ItemProps extends Omit<ZagItemProps, 'depth'> {}
-export interface TreeViewItemContext extends ZagItemProps {}
+export interface UseTreeViewItemContext extends ItemState {}
 
-export const [TreeViewItemProvider, useTreeViewItemContext] = createContext<TreeViewItemContext>({
-  name: 'TreeViewItemContext',
-  hookName: 'useTreeViewItemContext',
-  providerName: '<TreeViewItemProvider />',
-})
+export const [TreeViewItemProvider, useTreeViewItemContext] = createContext<UseTreeViewItemContext>(
+  {
+    name: 'TreeViewItemContext',
+    hookName: 'useTreeViewItemContext',
+    providerName: '<TreeViewItemProvider />',
+  },
+)

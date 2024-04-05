@@ -7,11 +7,11 @@ import { useDialogContext } from './use-dialog-context'
 export interface DialogContentProps extends HTMLArkProps<'div'> {}
 
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
-  const context = useDialogContext()
-  const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
+  const dialog = useDialogContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(dialog.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

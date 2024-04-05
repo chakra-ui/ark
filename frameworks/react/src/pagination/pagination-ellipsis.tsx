@@ -11,8 +11,8 @@ export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, Ell
 export const PaginationEllipsis = forwardRef<HTMLDivElement, PaginationEllipsisProps>(
   (props, ref) => {
     const [ellipsisProps, localProps] = createSplitProps<EllipsisProps>()(props, ['index'])
-    const context = usePaginationContext()
-    const mergedProps = mergeProps(context.getEllipsisProps(ellipsisProps), localProps)
+    const pagination = usePaginationContext()
+    const mergedProps = mergeProps(pagination.getEllipsisProps(ellipsisProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

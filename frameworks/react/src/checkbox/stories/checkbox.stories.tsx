@@ -36,10 +36,10 @@ export const Indeterminate = () => (
 export const RenderProp = () => (
   <Checkbox.Root>
     <Checkbox.Context>
-      {(context) => (
+      {(checkbox) => (
         <Checkbox.Control>
-          {context.isChecked && <span>✓</span>}
-          {context.isIndeterminate && <span>-</span>}
+          {checkbox.isChecked && <span>✓</span>}
+          {checkbox.isIndeterminate && <span>-</span>}
         </Checkbox.Control>
       )}
     </Checkbox.Context>

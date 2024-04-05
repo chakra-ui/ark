@@ -24,11 +24,11 @@ export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props
     'selectedIds',
     'selectionMode',
   ])
-  const context = useTreeView(useTreeViewProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const treeView = useTreeView(useTreeViewProps)
+  const mergedProps = mergeProps(treeView.rootProps, localProps)
 
   return (
-    <TreeViewProvider value={context}>
+    <TreeViewProvider value={treeView}>
       <ark.div {...mergedProps} ref={ref} />
     </TreeViewProvider>
   )

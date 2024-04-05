@@ -125,13 +125,15 @@ export const RadioGroup = () => {
 export const RenderProp = () => (
   <Menu.Root>
     <Menu.Context>
-      {(context) => <Menu.Trigger>Menu is {context.isOpen ? 'open' : 'closed'}</Menu.Trigger>}
+      {(menu) => <Menu.Trigger>Menu is {menu.isOpen ? 'open' : 'closed'}</Menu.Trigger>}
     </Menu.Context>
     <Menu.Positioner>
       <Menu.Content>
         <Menu.Item value="react">
           <Menu.ItemContext>
-            {(context) => <>React is {context.isHighlighted ? 'highlighted' : 'not highlighted'}</>}
+            {(menuItem) => (
+              <>React is {menuItem.isHighlighted ? 'highlighted' : 'not highlighted'}</>
+            )}
           </Menu.ItemContext>
         </Menu.Item>
         <Menu.Item value="solid">Solid</Menu.Item>

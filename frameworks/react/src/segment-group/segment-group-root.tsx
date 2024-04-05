@@ -23,15 +23,15 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'orientation',
     'value',
   ])
-  const context = useSegmentGroup(useSegmentGroupProps)
+  const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    context.rootProps,
+    segmentGroup.rootProps,
     segmentGroupAnatomy.build().root.attrs as Record<string, string>,
     localProps,
   )
 
   return (
-    <SegmentGroupProvider value={context}>
+    <SegmentGroupProvider value={segmentGroup}>
       <ark.div {...mergedProps} ref={ref} />
     </SegmentGroupProvider>
   )

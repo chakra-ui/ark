@@ -8,11 +8,11 @@ export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardPositioner = forwardRef<HTMLDivElement, HoverCardPositionerProps>(
   (props, ref) => {
-    const context = useHoverCardContext()
-    const mergedProps = mergeProps(context.positionerProps, props)
-    const presenceApi = usePresenceContext()
+    const hoverCard = useHoverCardContext()
+    const mergedProps = mergeProps(hoverCard.positionerProps, props)
+    const presence = usePresenceContext()
 
-    if (presenceApi.isUnmounted) {
+    if (presence.isUnmounted) {
       return null
     }
 

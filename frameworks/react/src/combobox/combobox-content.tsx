@@ -7,11 +7,11 @@ import { useComboboxContext } from './use-combobox-context'
 export interface ComboboxContentProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>((props, ref) => {
-  const context = useComboboxContext()
-  const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(context.contentProps, presenceApi.getPresenceProps(ref), props)
+  const combobox = useComboboxContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(combobox.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

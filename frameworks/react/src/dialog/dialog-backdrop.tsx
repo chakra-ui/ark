@@ -8,12 +8,12 @@ import { useDialogContext } from './use-dialog-context'
 export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
-  const context = useDialogContext()
+  const dialog = useDialogContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
-  const presenceApi = usePresence({ ...renderStrategyProps, present: context.isOpen })
-  const mergedProps = mergeProps(context.backdropProps, presenceApi.getPresenceProps(ref), props)
+  const presence = usePresence({ ...renderStrategyProps, present: dialog.isOpen })
+  const mergedProps = mergeProps(dialog.backdropProps, presence.getPresenceProps(ref), props)
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

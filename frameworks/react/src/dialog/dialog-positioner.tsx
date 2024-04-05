@@ -7,11 +7,11 @@ import { useDialogContext } from './use-dialog-context'
 export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 
 export const DialogPositioner = forwardRef<HTMLDivElement, DialogPositionerProps>((props, ref) => {
-  const context = useDialogContext()
-  const mergedProps = mergeProps(context.positionerProps, props)
-  const presenceApi = usePresenceContext()
+  const dialog = useDialogContext()
+  const mergedProps = mergeProps(dialog.positionerProps, props)
+  const presence = usePresenceContext()
 
-  if (presenceApi.isUnmounted) {
+  if (presence.isUnmounted) {
     return null
   }
 

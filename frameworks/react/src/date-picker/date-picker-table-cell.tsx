@@ -4,38 +4,38 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import {
-  DatePickerTableCellProvider,
-  type UseDatePickerTableCellContext,
-} from './use-date-picker-table-cell-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+  DatePickerTableCellPropsProvider,
+  type UseDatePickerTableCellPropsContext,
+} from './use-date-picker-table-cell-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellProps
   extends HTMLArkProps<'td'>,
-    UseDatePickerTableCellContext {}
+    UseDatePickerTableCellPropsContext {}
 
 export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTableCellProps>(
   (props, ref) => {
-    const [cellProps, localProps] = createSplitProps<UseDatePickerTableCellContext>()(props, [
+    const [cellProps, localProps] = createSplitProps<UseDatePickerTableCellPropsContext>()(props, [
       'disabled',
       'value',
       'visibleRange',
       'columns',
     ])
-    const context = useDatePickerContext()
-    const viewContext = useDatePickerViewContext()
+    const datePicker = useDatePickerContext()
+    const viewProps = useDatePickerViewPropsContext()
     const tableCellProps = {
-      day: context.getDayTableCellProps,
-      month: context.getMonthTableCellProps,
-      year: context.getYearTableCellProps,
-      // @ts-expect-error use filter guard
-    }[viewContext.view](cellProps)
+      day: datePicker.getDayTableCellProps,
+      month: datePicker.getMonthTableCellProps,
+      year: datePicker.getYearTableCellProps,
+      // @ts-expect-error value is number filter
+    }[viewProps.view](cellProps)
 
     const mergedProps = mergeProps(tableCellProps, localProps)
 
     return (
-      <DatePickerTableCellProvider value={cellProps}>
+      <DatePickerTableCellPropsProvider value={cellProps}>
         <ark.td ref={ref} {...mergedProps} />
-      </DatePickerTableCellProvider>
+      </DatePickerTableCellPropsProvider>
     )
   },
 )

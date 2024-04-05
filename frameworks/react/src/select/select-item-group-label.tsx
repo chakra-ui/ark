@@ -14,8 +14,8 @@ export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLa
     const [itemGroupLabelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, [
       'htmlFor',
     ])
-    const context = useSelectContext()
-    const mergedProps = mergeProps(context.getItemGroupLabelProps(itemGroupLabelProps), localProps)
+    const select = useSelectContext()
+    const mergedProps = mergeProps(select.getItemGroupLabelProps(itemGroupLabelProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

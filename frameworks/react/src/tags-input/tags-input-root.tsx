@@ -39,13 +39,13 @@ export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((p
     'validate',
     'value',
   ])
-  const context = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const tagsInput = useTagsInput(useTagsInputProps)
+  const mergedProps = mergeProps(tagsInput.rootProps, localProps)
 
   return (
-    <TagsInputProvider value={context}>
+    <TagsInputProvider value={tagsInput}>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...context.hiddenInputProps} />
+      <input {...tagsInput.hiddenInputProps} />
     </TagsInputProvider>
   )
 })

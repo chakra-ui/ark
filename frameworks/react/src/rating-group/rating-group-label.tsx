@@ -7,8 +7,8 @@ export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 
 export const RatingGroupLabel = forwardRef<HTMLLabelElement, RatingGroupLabelProps>(
   (props, ref) => {
-    const context = useRatingGroupContext()
-    const mergedProps = mergeProps(context.labelProps, props)
+    const ratingGroup = useRatingGroupContext()
+    const mergedProps = mergeProps(ratingGroup.labelProps, props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },

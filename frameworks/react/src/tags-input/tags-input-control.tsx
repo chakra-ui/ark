@@ -6,8 +6,8 @@ import { useTagsInputContext } from './use-tags-input-context'
 export interface TagsInputControlProps extends HTMLArkProps<'div'> {}
 
 export const TagsInputControl = forwardRef<HTMLDivElement, TagsInputControlProps>((props, ref) => {
-  const context = useTagsInputContext()
-  const mergedProps = mergeProps(context.controlProps, props)
+  const tagsInput = useTagsInputContext()
+  const mergedProps = mergeProps(tagsInput.controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

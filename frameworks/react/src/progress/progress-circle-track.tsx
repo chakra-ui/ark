@@ -5,8 +5,8 @@ import { useProgressContext } from './use-progress-context'
 export interface ProgressCircleTrackProps extends HTMLArkProps<'circle'> {}
 
 export const ProgressCircleTrack = (props: ProgressCircleTrackProps) => {
-  const context = useProgressContext()
-  const mergedProps = mergeProps(context.circleTrackProps, props)
+  const progress = useProgressContext()
+  const mergedProps = mergeProps(progress.circleTrackProps, props)
 
   return <ark.circle {...mergedProps} />
 }

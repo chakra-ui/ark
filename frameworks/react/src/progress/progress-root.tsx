@@ -20,11 +20,11 @@ export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props
     'translations',
     'value',
   ])
-  const context = useProgress(progressProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const progress = useProgress(progressProps)
+  const mergedProps = mergeProps(progress.rootProps, localProps)
 
   return (
-    <ProgressProvider value={context}>
+    <ProgressProvider value={progress}>
       <ark.div {...mergedProps} ref={ref} />
     </ProgressProvider>
   )

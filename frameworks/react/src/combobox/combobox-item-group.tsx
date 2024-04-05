@@ -11,8 +11,8 @@ export interface ComboboxItemGroupProps extends Assign<HTMLArkProps<'div'>, Item
 export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>(
   (props, ref) => {
     const [itemProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
-    const context = useComboboxContext()
-    const mergedProps = mergeProps(context.getItemGroupProps(itemProps), localProps)
+    const combobox = useComboboxContext()
+    const mergedProps = mergeProps(combobox.getItemGroupProps(itemProps), localProps)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -10,13 +10,13 @@ export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps
 
 export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, ref) => {
   const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index', 'name'])
-  const context = useSliderContext()
-  const mergedProps = mergeProps(context.getThumbProps(thumbProps), localProps)
+  const slider = useSliderContext()
+  const mergedProps = mergeProps(slider.getThumbProps(thumbProps), localProps)
 
   return (
     <>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...context.getHiddenInputProps(thumbProps)} />
+      <input {...slider.getHiddenInputProps(thumbProps)} />
     </>
   )
 })

@@ -7,12 +7,12 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 
 export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((props, ref) => {
-  const context = useMenuContext()
-  const presenceApi = usePresenceContext()
+  const menu = useMenuContext()
+  const presence = usePresenceContext()
   const mergedProps = mergeProps(
     {
-      ...context.triggerProps,
-      'aria-controls': presenceApi.isUnmounted ? undefined : context.triggerProps['aria-controls'],
+      ...menu.triggerProps,
+      'aria-controls': presence.isUnmounted ? undefined : menu.triggerProps['aria-controls'],
     },
     props,
   )

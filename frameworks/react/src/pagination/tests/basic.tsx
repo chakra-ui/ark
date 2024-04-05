@@ -6,8 +6,8 @@ export const ComponentUnderTest = (props: PaginationRootProps) => (
       Previous <span className="visually-hidden">Page</span>
     </Pagination.PrevTrigger>
     <Pagination.Context>
-      {(context) =>
-        context.pages.map((page, index) =>
+      {(pagination) =>
+        pagination.pages.map((page, index) =>
           page.type === 'page' ? (
             <Pagination.Item key={index} {...page}>
               {page.value}

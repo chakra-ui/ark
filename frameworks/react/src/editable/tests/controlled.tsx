@@ -3,7 +3,7 @@ import { Editable, type EditableRootProps } from '../'
 export const ControlledComponentUnderTest = (props: EditableRootProps) => (
   <Editable.Root placeholder="Placeholder" {...props}>
     <Editable.Context>
-      {(context) => (
+      {(editable) => (
         <>
           <Editable.Label>Label</Editable.Label>
           <Editable.Area>
@@ -11,7 +11,7 @@ export const ControlledComponentUnderTest = (props: EditableRootProps) => (
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
-            {context.isEditing ? (
+            {editable.isEditing ? (
               <>
                 <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
                 <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
