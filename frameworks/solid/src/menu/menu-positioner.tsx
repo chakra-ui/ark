@@ -7,12 +7,12 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 
 export const MenuPositioner = (props: MenuPositionerProps) => {
-  const api = useMenuContext()
-  const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().positionerProps, props)
+  const context = useMenuContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(() => context().positionerProps, props)
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presence().isUnmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

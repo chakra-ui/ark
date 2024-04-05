@@ -1,3 +1,4 @@
+import type { Machine } from '@zag-js/core'
 import * as menu from '@zag-js/menu'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
@@ -7,7 +8,7 @@ import { useEvent } from '../use-event'
 
 export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 export interface UseMenuReturn {
-  machine: ReturnType<typeof menu.machine>
+  machine: Machine<menu.MachineContext, menu.MachineState>
   api: menu.Api<PropTypes>
 }
 

@@ -13,6 +13,5 @@ export const MenuTrigger = (props: MenuTriggerProps) => {
     () => ({ 'aria-controls': presenceApi().isUnmounted && null }),
     props,
   )
-  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

@@ -53,13 +53,13 @@ export const MenuRoot = (props: MenuRootProps) => {
     api.setParent(parentMachine)
   })
 
-  const getTriggerItemProps = useCallback(
+  const triggerItemContext = useCallback(
     () => parentApi?.getTriggerItemProps(api),
     [api, parentApi],
   )
 
   return (
-    <MenuTriggerItemProvider value={getTriggerItemProps}>
+    <MenuTriggerItemProvider value={triggerItemContext}>
       <MenuMachineProvider value={machine}>
         <MenuProvider value={api}>
           <PresenceProvider value={presenceApi} {...localProps} />
