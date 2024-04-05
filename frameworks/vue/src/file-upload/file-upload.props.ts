@@ -17,9 +17,6 @@ export const props = {
     type: Boolean as PropType<Context['disabled']>,
     default: undefined,
   },
-  files: {
-    type: Array as PropType<Context['files']>,
-  },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
   },

@@ -5,9 +5,7 @@ import { useEnvironmentContext } from '../environment'
 import type { Optional } from '../types'
 import { useId } from '../utils'
 
-export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {
-  modelValue?: menu.Context['value']
-}
+export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -16,10 +14,8 @@ export interface UseMenuReturn {
 
 export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuReturn => {
   const context = computed(() => {
-    const { modelValue, ...rest } = props
     return {
-      ...rest,
-      value: modelValue,
+      ...props,
       'open.controlled': props.open !== undefined,
     }
   })
@@ -35,10 +31,6 @@ export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuRet
       },
       onSelect: (details) => {
         emit('select', details)
-      },
-      onValueChange: (details) => {
-        emit('value-change', details)
-        emit('update:modelValue', details.value)
       },
     }),
   )

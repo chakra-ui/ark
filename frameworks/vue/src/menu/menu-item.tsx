@@ -19,13 +19,13 @@ export const MenuItem = defineComponent<MenuItemProps>(
   {
     name: 'MenuItem',
     props: {
-      id: {
-        type: String as PropType<MenuItemProps['id']>,
-        required: true,
-      },
       disabled: {
         type: Boolean as PropType<MenuItemProps['disabled']>,
         default: undefined,
+      },
+      value: {
+        type: String as PropType<MenuItemProps['value']>,
+        required: true,
       },
       valueText: {
         type: String as PropType<MenuItemProps['valueText']>,

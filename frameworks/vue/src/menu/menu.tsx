@@ -1,4 +1,4 @@
-import type { OpenChangeDetails, SelectionDetails, ValueChangeDetails } from '@zag-js/menu'
+import type { OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
 import { MenuArrow as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow'
 import { MenuArrowTip as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip'
 import { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
@@ -83,5 +83,4 @@ export type {
   SeparatorProps,
   TriggerItemProps,
   TriggerProps,
-  ValueChangeDetails,
 }

@@ -11,7 +11,7 @@ export const MenuOptionItemText = defineComponent<MenuOptionItemTextProps>(
     const optionItemProps = useMenuOptionItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getOptionItemTextProps(optionItemProps)} {...attrs}>
+      <ark.div {...api.value.getItemTextProps(optionItemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
