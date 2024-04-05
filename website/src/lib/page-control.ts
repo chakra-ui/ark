@@ -10,11 +10,18 @@ const getOverviewPages = async () => {
 
 export const getAllCollections = async () => {
   const overviewPages = await getOverviewPages()
+  const installationPages = await getCollection('installation')
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
 
-  return [...overviewPages, ...stylingPages, ...componentPages, ...changelogPages]
+  return [
+    ...overviewPages,
+    ...installationPages,
+    ...stylingPages,
+    ...componentPages,
+    ...changelogPages,
+  ]
 }
 
 const getCurrentPageIndex = async (pathname?: string) => {
@@ -54,6 +61,7 @@ type Sitemap = {
 
 export const getSitemap = async (): Promise<Sitemap> => {
   const overviewPages = await getOverviewPages()
+  const installationPages = await getCollection('installation')
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
   const changelogPages = await getCollection('changelog')
@@ -63,6 +71,13 @@ export const getSitemap = async (): Promise<Sitemap> => {
       title: 'Overview',
       items: overviewPages.map((item) => ({
         title: item.data.title,
+        href: path.posix.join('/docs', item.collection, item.data.id),
+      })),
+    },
+    {
+      title: 'Installation',
+      items: installationPages.map((item) => ({
+        title: item.data.id,
         href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },

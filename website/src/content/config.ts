@@ -67,9 +67,19 @@ const changelog = defineCollection({
   }),
 })
 
+const installation = defineCollection({
+  type: 'content',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+  }),
+})
+
 export const collections = {
   changelog,
   components,
+  installation,
   overview,
   stories,
   styling,

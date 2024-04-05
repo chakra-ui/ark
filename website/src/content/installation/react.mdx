@@ -1,0 +1,111 @@
+---
+id: react
+title: Installation of Ark UI with React
+description:
+  This quick tutorial will guide you through the process of installing and using
+  Ark Components effectively with React.
+---
+
+## Install Ark UI
+
+To start using Ark UI, you need to install it in your project. You can do so
+using yarn, npm, or pnpm by running one of the following commands in your
+terminal:
+
+```bash
+yarn add @ark-ui/react
+## or
+npm install @ark-ui/react
+## or
+pnpm add @ark-ui/react
+```
+
+## Creating a Slider Component
+
+Once Ark UI is installed, you can start creating UI components. Below, we'll
+demonstrate how to create a `Slider` component using Ark UI.
+
+### Step 1: Import the Components
+
+The preferred and most efficient way to import components is directly from the
+top level, which leverages modern bundlers' tree-shaking capabilities.
+
+Here's how you can import components directly from the top level:
+
+```jsx
+import { Slider } from '@ark-ui/react'
+```
+
+This method is recommended for most applications as tree-shaking will
+automatically optimize your bundle size, including only the components you're
+actually using in your final bundle.
+
+However, in certain cases, such as when you want to improve development startup
+times or if you're using an older bundler that doesn't support tree-shaking, you
+can opt for path-based imports:
+
+```jsx
+import { Slider } from '@ark-ui/react/slider'
+```
+
+Regardless of the import method, once the components are imported, you can
+utilize them in your application via dot notation:
+
+```jsx
+export const MySlider = () => (
+  <Slider.Root>
+    <Slider.Label>Label</Slider.Label>
+    <Slider.Control>
+      <Slider.Track>
+        <Slider.Range />
+      </Slider.Track>
+      <Slider.Thumb key={0} index={0} />
+    </Slider.Control>
+  </Slider.Root>
+)
+```
+
+### Step 2: Style Your Slider Component
+
+While Ark UI is a headless UI library, it provides you with several flexible
+ways to style your components to suit your application's aesthetics.
+
+Ark UI assigns a `data-scope` and `data-part` attribute to every component part,
+allowing you to use CSS selectors to target specific parts of a component.
+Here's an example showing how to add styles to the `Slider` component:
+
+```css
+[data-scope='slider'][data-part='thumb'] {
+  background: blue;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+[data-scope='slider'][data-part='track'] {
+  background: silver;
+  height: 8px;
+  flex: 1;
+}
+
+[data-scope='slider'][data-part='range'] {
+  background: orange;
+  height: inherit;
+}
+
+[data-scope='slider'][data-part='control'] {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+```
+
+It's worth noting that Ark UI doesn't limit you to using CSS selectors. You can
+also use class names, inline styles, or even the `asChild` prop for greater
+customization and control over your components. These styling approaches make
+Ark UI compatible with any styling solution, and they enable you to integrate
+Ark UI with existing UI libraries seamlessly.
+
+To learn more about how to style components in Ark UI, refer to the
+comprehensive [Styling Components guide](/docs/styling/overview) in our
+documentation.
