@@ -12,7 +12,7 @@
     "typecheck": "astro check --minimumSeverity error"
   },
   "dependencies": {
-    "@ark-ui/anatomy": "workspace:*",
+    "@ark-ui/anatomy": "3.0.0",
     "@ark-ui/react": "workspace:*",
     "@astrojs/check": "0.5.10",
     "@astrojs/mdx": "2.2.2",
