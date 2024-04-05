@@ -137,57 +137,20 @@
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": {
+    "asChild": { "type": "boolean", "isRequired": false },
     "id": {
       "type": "string",
-      "isRequired": true,
+      "isRequired": false,
       "description": "The `id` of the element that provides accessibility label to the option group"
-    },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "OptionItem": {
-    "checked": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the option is checked"
-    },
-    "type": {
-      "type": "'checkbox' | 'radio'",
-      "isRequired": true,
-      "description": "Whether the option is a radio or a checkbox"
-    },
-    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-    "asChild": { "type": "boolean", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "onCheckedChange": {
-      "type": "(checked: boolean) => void",
-      "isRequired": false,
-      "description": "Function called when the option state is changed"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
+  "Separator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "TriggerItem": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ContextTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroupLabel": {
-    "for": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "OptionItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "OptionItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  "ItemGroupLabel": { "asChild": { "type": "boolean", "isRequired": false } }
 }
