@@ -7,11 +7,11 @@ export interface ColorPickerValueTextProps extends HTMLArkProps<'span'> {}
 
 export const ColorPickerValueText = forwardRef<HTMLDivElement, ColorPickerValueTextProps>(
   (props, ref) => {
-    const context = useColorPickerContext()
+    const colorPicker = useColorPickerContext()
 
     return (
       <ark.span {...colorPickerAnatomy.build().valueText.attrs} {...props} ref={ref}>
-        {props.children || context.valueAsString}
+        {props.children || colorPicker.valueAsString}
       </ark.span>
     )
   },

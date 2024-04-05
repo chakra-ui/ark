@@ -7,8 +7,8 @@ export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const CheckboxIndicator = forwardRef<HTMLDivElement, CheckboxIndicatorProps>(
   (props, ref) => {
-    const context = useCheckboxContext()
-    const mergedProps = mergeProps(context.indicatorProps, props)
+    const checkbox = useCheckboxContext()
+    const mergedProps = mergeProps(checkbox.indicatorProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

@@ -3,7 +3,7 @@ import { type ReactNode } from 'react'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
-import { RenderStrategyProvider, splitRenderStrategyProps } from '../render-strategy'
+import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../render-strategy'
 import { useDialog, type UseDialogProps } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
@@ -19,9 +19,9 @@ export const DialogRoot = (props: DialogRootProps) => {
 
   return (
     <DialogProvider value={context}>
-      <RenderStrategyProvider value={renderStrategyProps}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
         <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
-      </RenderStrategyProvider>
+      </RenderStrategyPropsProvider>
     </DialogProvider>
   )
 }

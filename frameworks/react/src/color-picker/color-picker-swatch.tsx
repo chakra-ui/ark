@@ -5,7 +5,7 @@ import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'
 import { useColorPickerContext } from './use-color-picker-context'
-import { ColorPickerSwatchProvider } from './use-color-picker-swatch-context'
+import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
 
 export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {}
 
@@ -15,13 +15,13 @@ export const ColorPickerSwatch = forwardRef<HTMLDivElement, ColorPickerSwatchPro
       'respectAlpha',
       'value',
     ])
-    const context = useColorPickerContext()
-    const mergedProps = mergeProps(context.getSwatchProps(swatwchProps), localProps)
+    const colorPicker = useColorPickerContext()
+    const mergedProps = mergeProps(colorPicker.getSwatchProps(swatwchProps), localProps)
 
     return (
-      <ColorPickerSwatchProvider value={swatwchProps}>
+      <ColorPickerSwatchPropsProvider value={swatwchProps}>
         <ark.div {...mergedProps} ref={ref} />
-      </ColorPickerSwatchProvider>
+      </ColorPickerSwatchPropsProvider>
     )
   },
 )

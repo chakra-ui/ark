@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
-  RenderStrategyProvider,
+  RenderStrategyPropsProvider,
   splitRenderStrategyProps,
   type RenderStrategyProps,
 } from '../render-strategy'
@@ -31,14 +31,14 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
     'orientation',
     'value',
   ])
-  const context = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const accordion = useAccordion(useAccordionProps)
+  const mergedProps = mergeProps(accordion.rootProps, localProps)
 
   return (
-    <AccordionProvider value={context}>
-      <RenderStrategyProvider value={renderStrategyProps}>
+    <AccordionProvider value={accordion}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
-      </RenderStrategyProvider>
+      </RenderStrategyPropsProvider>
     </AccordionProvider>
   )
 })

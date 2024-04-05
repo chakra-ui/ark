@@ -24,11 +24,11 @@ export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((pro
     'required',
     'value',
   ])
-  const context = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const checkbox = useCheckbox(useCheckboxProps)
+  const mergedProps = mergeProps(checkbox.rootProps, localProps)
 
   return (
-    <CheckboxProvider value={context}>
+    <CheckboxProvider value={checkbox}>
       <ark.label {...mergedProps} ref={ref} />
     </CheckboxProvider>
   )

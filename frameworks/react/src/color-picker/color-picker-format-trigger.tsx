@@ -9,8 +9,8 @@ export const ColorPickerFormatTrigger = forwardRef<
   HTMLButtonElement,
   ColorPickerFormatTriggerProps
 >((props, ref) => {
-  const context = useColorPickerContext()
-  const mergedProps = mergeProps(context.formatTriggerProps, props)
+  const colorPicker = useColorPickerContext()
+  const mergedProps = mergeProps(colorPicker.formatTriggerProps, props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

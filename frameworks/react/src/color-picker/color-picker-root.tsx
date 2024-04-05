@@ -45,15 +45,15 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
       'value',
     ],
   )
-  const context = useColorPicker(useColorPickerProps)
-  const presenceApi = usePresence(mergeProps({ present: context.isOpen }, presenceProps))
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const colorPicker = useColorPicker(useColorPickerProps)
+  const presenceApi = usePresence(mergeProps({ present: colorPicker.isOpen }, presenceProps))
+  const mergedProps = mergeProps(colorPicker.rootProps, localProps)
 
   return (
-    <ColorPickerProvider value={context}>
+    <ColorPickerProvider value={colorPicker}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps} ref={ref} />
-        <input {...context.hiddenInputProps} />
+        <input {...colorPicker.hiddenInputProps} />
       </PresenceProvider>
     </ColorPickerProvider>
   )

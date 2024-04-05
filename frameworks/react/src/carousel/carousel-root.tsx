@@ -23,11 +23,11 @@ export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props
     'slidesPerView',
     'spacing',
   ])
-  const context = useCarousel(useCarouselProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const carousel = useCarousel(useCarouselProps)
+  const mergedProps = mergeProps(carousel.rootProps, localProps)
 
   return (
-    <CarouselProvider value={context}>
+    <CarouselProvider value={carousel}>
       <ark.div {...mergedProps} ref={ref} />
     </CarouselProvider>
   )

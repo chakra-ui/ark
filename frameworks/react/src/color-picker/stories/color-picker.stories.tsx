@@ -20,7 +20,7 @@ export const Basic = () => {
         <ColorPicker.Trigger>
           <ColorPicker.TransparencyGrid />
           <ColorPicker.Context>
-            {(context) => <ColorPicker.Swatch value={context.value} />}
+            {(colorPicker) => <ColorPicker.Swatch value={colorPicker.value} />}
           </ColorPicker.Context>
         </ColorPicker.Trigger>
       </ColorPicker.Control>
@@ -85,7 +85,7 @@ export const Controlled = () => {
       onValueChangeEnd={(details) => console.log(details.valueAsString)}
     >
       <ColorPicker.Context>
-        {(context) => (
+        {(colorPicker) => (
           <>
             <ColorPicker.Label>Color</ColorPicker.Label>
             <ColorPicker.Control>
@@ -94,7 +94,7 @@ export const Controlled = () => {
               <ColorPicker.ValueText />
               <ColorPicker.Trigger>
                 <ColorPicker.TransparencyGrid />
-                <ColorPicker.Swatch value={context.value} />
+                <ColorPicker.Swatch value={colorPicker.value} />
               </ColorPicker.Trigger>
             </ColorPicker.Control>
             <ColorPicker.Positioner>

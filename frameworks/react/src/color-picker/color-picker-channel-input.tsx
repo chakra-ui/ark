@@ -15,8 +15,8 @@ export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerC
       'channel',
       'orientation',
     ])
-    const context = useColorPickerContext()
-    const mergedProps = mergeProps(context.getChannelInputProps(channelProps), inputProps)
+    const colorPicker = useColorPickerContext()
+    const mergedProps = mergeProps(colorPicker.getChannelInputProps(channelProps), inputProps)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

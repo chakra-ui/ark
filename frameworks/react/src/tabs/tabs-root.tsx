@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import {
-  RenderStrategyProvider,
+  RenderStrategyPropsProvider,
   splitRenderStrategyProps,
   type RenderStrategyProps,
 } from '../render-strategy'
@@ -36,9 +36,9 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
 
   return (
     <TabsProvider value={context}>
-      <RenderStrategyProvider value={renderStrategyProps}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
         <ark.div {...mergedProps} ref={ref} />
-      </RenderStrategyProvider>
+      </RenderStrategyPropsProvider>
     </TabsProvider>
   )
 })

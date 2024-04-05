@@ -14,8 +14,8 @@ export const ColorPickerTransparencyGrid = forwardRef<
   ColorPickerTransparencyGridProps
 >((props, ref) => {
   const [gridProps, localProps] = createSplitProps<TransparencyGridProps>()(props, ['size'])
-  const context = useColorPickerContext()
-  const mergedProps = mergeProps(context.getTransparencyGridProps(gridProps), localProps)
+  const colorPicker = useColorPickerContext()
+  const mergedProps = mergeProps(colorPicker.getTransparencyGridProps(gridProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

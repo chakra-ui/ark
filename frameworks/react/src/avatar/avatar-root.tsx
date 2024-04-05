@@ -15,11 +15,11 @@ export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, re
     'id',
     'onLoadingStatusChange',
   ])
-  const context = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const avatar = useAvatar(useAvatarProps)
+  const mergedProps = mergeProps(avatar.rootProps, localProps)
 
   return (
-    <AvatarProvider value={context}>
+    <AvatarProvider value={avatar}>
       <ark.div {...mergedProps} ref={ref} />
     </AvatarProvider>
   )

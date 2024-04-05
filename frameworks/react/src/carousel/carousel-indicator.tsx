@@ -15,8 +15,8 @@ export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicator
       'index',
     ])
 
-    const context = useCarouselContext()
-    const mergedProps = mergeProps(context.getIndicatorProps(indicatorProps), buttonProps)
+    const carousel = useCarouselContext()
+    const mergedProps = mergeProps(carousel.getIndicatorProps(indicatorProps), buttonProps)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

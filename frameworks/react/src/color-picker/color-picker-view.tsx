@@ -9,9 +9,9 @@ export interface ColorPickerViewProps extends HTMLArkProps<'div'> {
 }
 
 export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
-  const context = useColorPickerContext()
+  const colorPicker = useColorPickerContext()
 
-  if (context.format !== props.format) {
+  if (colorPicker.format !== props.format) {
     return null
   }
 

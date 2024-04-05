@@ -4,10 +4,11 @@ import { forwardRef } from 'react'
 import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import { type HTMLArkProps } from '../factory'
-import { useRenderStrategyContext } from '../render-strategy'
+import { useRenderStrategyPropsContext } from '../render-strategy'
 import type { Assign } from '../types'
 import { useAccordionContext } from './use-accordion-context'
-import { AccordionItemPropsProvider, AccordionItemProvider } from './use-accordion-item-context'
+import { AccordionItemProvider } from './use-accordion-item-context'
+import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
 export interface AccordionItemProps
   extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
@@ -15,21 +16,21 @@ export interface AccordionItemProps
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
   const [itemProps, localProps] = splitItemProps(props)
-  const context = useAccordionContext()
-  const renderStrategyProps = useRenderStrategyContext()
-  const mergedProps = mergeProps(context.getItemProps(itemProps), localProps)
-  const itemState = context.getItemState(itemProps)
-  const itemContentProps = context.getItemContentProps(itemProps)
+  const accordion = useAccordionContext()
+  const renderStrategy = useRenderStrategyPropsContext()
+  const mergedProps = mergeProps(accordion.getItemProps(itemProps), localProps)
+  const item = accordion.getItemState(itemProps)
+  const itemContentProps = accordion.getItemContentProps(itemProps)
 
   return (
     <AccordionItemPropsProvider value={itemProps}>
-      <AccordionItemProvider value={itemState}>
+      <AccordionItemProvider value={item}>
         {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           ref={ref}
-          open={itemState.isOpen}
+          open={item.isOpen}
           ids={{ content: itemContentProps.id }}
-          {...renderStrategyProps}
+          {...renderStrategy}
           {...mergedProps}
         />
       </AccordionItemProvider>

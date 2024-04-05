@@ -7,13 +7,13 @@ export interface CollapsibleContentProps extends HTMLArkProps<'div'> {}
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>(
   (props, ref) => {
-    const context = useCollapsibleContext()
+    const collapsible = useCollapsibleContext()
 
-    if (context.isUnmounted) {
+    if (collapsible.isUnmounted) {
       return null
     }
 
-    const mergedProps = mergeProps(context.contentProps, props)
+    const mergedProps = mergeProps(collapsible.contentProps, props)
     return <ark.div {...mergedProps} ref={ref} />
   },
 )

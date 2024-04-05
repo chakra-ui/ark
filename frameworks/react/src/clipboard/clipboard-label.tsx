@@ -6,8 +6,8 @@ import { useClipboardContext } from './use-clipboard-context'
 export interface ClipboardLabelProps extends HTMLArkProps<'label'> {}
 
 export const ClipboardLabel = forwardRef<HTMLLabelElement, ClipboardLabelProps>((props, ref) => {
-  const context = useClipboardContext()
-  const mergedProps = mergeProps(context.labelProps, props)
+  const clipboard = useClipboardContext()
+  const mergedProps = mergeProps(clipboard.labelProps, props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

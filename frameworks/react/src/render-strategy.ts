@@ -14,11 +14,11 @@ export interface RenderStrategyProps {
   unmountOnExit?: boolean
 }
 
-export const [RenderStrategyProvider, useRenderStrategyContext] =
+export const [RenderStrategyPropsProvider, useRenderStrategyPropsContext] =
   createContext<RenderStrategyProps>({
     name: 'RenderStrategyContext',
     hookName: 'useRenderStrategyContext',
-    providerName: '<RenderStrategyProvider />',
+    providerName: '<RenderStrategyPropsProvider />',
   })
 
 export const splitRenderStrategyProps = <T extends RenderStrategyProps>(props: T) =>

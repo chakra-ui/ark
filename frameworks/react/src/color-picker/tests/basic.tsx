@@ -3,7 +3,7 @@ import { ColorPicker, type ColorPickerRootProps } from '../'
 export const ComponentUnderTest = (props: ColorPickerRootProps) => (
   <ColorPicker.Root defaultValue="#eb5e41" {...props}>
     <ColorPicker.Context>
-      {(context) => (
+      {(colorPicker) => (
         <>
           <ColorPicker.Label>Color</ColorPicker.Label>
           <ColorPicker.Control>
@@ -12,7 +12,7 @@ export const ComponentUnderTest = (props: ColorPickerRootProps) => (
             <ColorPicker.ValueText />
             <ColorPicker.Trigger data-testid="trigger">
               <ColorPicker.TransparencyGrid />
-              <ColorPicker.Swatch value={context.value} />
+              <ColorPicker.Swatch value={colorPicker.value} />
             </ColorPicker.Trigger>
           </ColorPicker.Control>
           <ColorPicker.Positioner data-testid="positioner">

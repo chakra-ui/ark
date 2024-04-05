@@ -7,8 +7,8 @@ export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerSwatchGroup = forwardRef<HTMLDivElement, ColorPickerSwatchGroupProps>(
   (props, ref) => {
-    const context = useColorPickerContext()
-    const mergedProps = mergeProps(context.swatchGroupProps, props)
+    const colorPicker = useColorPickerContext()
+    const mergedProps = mergeProps(colorPicker.swatchGroupProps, props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

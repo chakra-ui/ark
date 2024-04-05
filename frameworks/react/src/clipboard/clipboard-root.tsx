@@ -17,11 +17,11 @@ export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((pro
     'timeout',
     'onCopyStatusChange',
   ])
-  const context = useClipboard(useClipboardProps)
-  const mergedProps = mergeProps(context.rootProps, localProps)
+  const clipboard = useClipboard(useClipboardProps)
+  const mergedProps = mergeProps(clipboard.rootProps, localProps)
 
   return (
-    <ClipboardProvider value={context}>
+    <ClipboardProvider value={clipboard}>
       <ark.div ref={ref} {...mergedProps} />
     </ClipboardProvider>
   )

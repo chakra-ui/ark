@@ -9,8 +9,8 @@ export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps
 
 export const CarouselItem = forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
   const { index, ...divProps } = props
-  const context = useCarouselContext()
-  const mergedProps = mergeProps(context.getItemProps({ index }), divProps)
+  const carousel = useCarouselContext()
+  const mergedProps = mergeProps(carousel.getItemProps({ index }), divProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

@@ -6,8 +6,8 @@ import { useClipboardContext } from './use-clipboard-context'
 export interface ClipboardControlProps extends HTMLArkProps<'div'> {}
 
 export const ClipboardControl = forwardRef<HTMLDivElement, ClipboardControlProps>((props, ref) => {
-  const context = useClipboardContext()
-  const mergedProps = mergeProps(context.controlProps, props)
+  const clipboard = useClipboardContext()
+  const mergedProps = mergeProps(clipboard.controlProps, props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

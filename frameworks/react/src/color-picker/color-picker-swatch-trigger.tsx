@@ -17,8 +17,8 @@ export const ColorPickerSwatchTrigger = forwardRef<
     'value',
     'disabled',
   ])
-  const context = useColorPickerContext()
-  const mergedProps = mergeProps(context.getSwatchTriggerProps(triggerProps), localProps)
+  const colorPicker = useColorPickerContext()
+  const mergedProps = mergeProps(colorPicker.getSwatchTriggerProps(triggerProps), localProps)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

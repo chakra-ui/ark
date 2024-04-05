@@ -10,15 +10,15 @@ export interface ClipboardIndicatorProps extends HTMLArkProps<'div'> {
 export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorProps>(
   (props, ref) => {
     const { children, copied, ...localProps } = props
-    const context = useClipboardContext()
+    const clipboard = useClipboardContext()
     const mergedProps = mergeProps(
-      context.getIndicatorProps({ copied: context.isCopied }),
+      clipboard.getIndicatorProps({ copied: clipboard.isCopied }),
       localProps,
     )
 
     return (
       <ark.div {...mergedProps} ref={ref}>
-        {context.isCopied ? copied : children}
+        {clipboard.isCopied ? copied : children}
       </ark.div>
     )
   },
