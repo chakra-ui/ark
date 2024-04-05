@@ -75,7 +75,6 @@
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
     },
-    "modelValue": { "type": "any", "isRequired": false },
     "onEscapeKeyDown": {
       "type": "(event: KeyboardEvent) => void",
       "isRequired": false,
