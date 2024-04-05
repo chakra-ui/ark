@@ -8,5 +8,5 @@ export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
   const dialog = useDialogContext()
   const mergedProps = mergeProps(() => dialog().closeTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

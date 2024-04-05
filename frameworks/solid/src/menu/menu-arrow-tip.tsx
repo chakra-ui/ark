@@ -8,5 +8,5 @@ export const MenuArrowTip = (props: MenuArrowTipProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().arrowTipProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

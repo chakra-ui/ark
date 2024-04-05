@@ -8,5 +8,5 @@ export const EditablePreview = (props: EditablePreviewProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().previewProps, props)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const SwitchThumb = (props: SwitchThumbProps) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().thumbProps, props)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

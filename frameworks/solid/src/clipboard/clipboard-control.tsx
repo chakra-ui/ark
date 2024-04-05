@@ -8,5 +8,5 @@ export const ClipboardControl = (props: ClipboardControlProps) => {
   const api = useClipboardContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

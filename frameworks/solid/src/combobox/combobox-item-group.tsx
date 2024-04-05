@@ -12,5 +12,5 @@ export const ComboboxItemGroup = (props: ComboboxItemGroupProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().getItemGroupProps(groupProps), localProps)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

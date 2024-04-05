@@ -14,5 +14,5 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
 
   const mergedProps = mergeProps(api().getItemPreviewImageProps({ ...item, url: url() }), props)
 
-  return <ark.img {...mergedProps()} />
+  return <ark.img {...mergedProps} />
 }

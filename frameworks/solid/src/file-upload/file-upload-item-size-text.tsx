@@ -10,5 +10,5 @@ export const FileUploadItemSizeText = (props: FileUploadItemSizeTextProps) => {
   const item = useFileUploadItemContext()
   const mergedProps = mergeProps(() => api().getItemSizeTextProps(item), props)
 
-  return <ark.div {...mergedProps()}>{props.children || api().getFileSize(item.file)}</ark.div>
+  return <ark.div {...mergedProps}>{props.children || api().getFileSize(item.file)}</ark.div>
 }

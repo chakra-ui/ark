@@ -10,5 +10,5 @@ export const ColorPickerChannelSliderTrack = (props: ColorPickerChannelSliderTra
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getChannelSliderTrackProps(sliderContext), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

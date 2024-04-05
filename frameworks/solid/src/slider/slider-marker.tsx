@@ -12,5 +12,5 @@ export const SliderMarker = (props: SliderMarkerProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().getMarkerProps(markerProps), localProps)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

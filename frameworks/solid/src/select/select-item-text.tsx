@@ -10,5 +10,5 @@ export const SelectItemText = (props: SelectItemTextProps) => {
   const itemProps = useSelectItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemTextProps(itemProps), props)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

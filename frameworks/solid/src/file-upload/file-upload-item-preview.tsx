@@ -18,5 +18,5 @@ export const FileUploadItemPreview = (props: FileUploadItemPreviewProps) => {
 
   if (!item.file.type.match(props.type ?? '.*')) return null
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

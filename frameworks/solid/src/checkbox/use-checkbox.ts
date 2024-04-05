@@ -10,7 +10,7 @@ export interface UseCheckboxReturn extends Accessor<checkbox.Api<PropTypes>> {}
 export const useCheckbox = (props: UseCheckboxProps): UseCheckboxReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(checkbox.machine(context()), { context })
+  const [state, send] = useMachine(checkbox.machine(context), { context })
 
   return createMemo(() => checkbox.connect(state, send, normalizeProps))
 }

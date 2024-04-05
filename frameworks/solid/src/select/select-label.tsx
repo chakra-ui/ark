@@ -8,5 +8,5 @@ export const SelectLabel = (props: SelectLabelProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

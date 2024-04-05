@@ -8,5 +8,5 @@ export const FileUploadItemGroup = (props: FileUploadItemGroupProps) => {
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().itemGroupProps, props)
 
-  return <ark.ul {...mergedProps()} />
+  return <ark.ul {...mergedProps} />
 }

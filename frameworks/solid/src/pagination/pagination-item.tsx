@@ -13,5 +13,5 @@ export const PaginationItem = (props: PaginationItemProps) => {
   const api = usePaginationContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

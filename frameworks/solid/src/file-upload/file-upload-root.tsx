@@ -11,9 +11,10 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
   const [fileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
     'allowDrop',
+    'capture',
     'dir',
+    'directory',
     'disabled',
-    'files',
     'getRootNode',
     'id',
     'ids',
@@ -23,8 +24,8 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
     'minFileSize',
     'name',
     'onFileAccept',
+    'onFileChange',
     'onFileReject',
-    'onFilesChange',
     'translations',
     'validate',
   ])
@@ -34,7 +35,7 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
 
   return (
     <FileUploadProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </FileUploadProvider>
   )
 }

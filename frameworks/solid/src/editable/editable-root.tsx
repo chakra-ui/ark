@@ -42,7 +42,7 @@ export const EditableRoot = (props: EditableRootProps) => {
 
   return (
     <EditableProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </EditableProvider>
   )
 }

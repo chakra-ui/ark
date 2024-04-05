@@ -10,5 +10,5 @@ export const TreeViewItemIndicator = (props: TreeViewItemIndicatorProps) => {
   const itemProps = useTreeViewItemContext()
   const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

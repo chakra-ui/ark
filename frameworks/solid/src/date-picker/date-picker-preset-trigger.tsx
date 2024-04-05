@@ -13,5 +13,5 @@ export const DatePickerPresetTrigger = (props: DatePickerPresetTriggerProps) => 
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().getPresetTriggerProps(presetTriggerProps), localProps)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

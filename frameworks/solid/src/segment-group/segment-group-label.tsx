@@ -13,5 +13,5 @@ export const SegmentGroupLabel = (props: SegmentGroupLabelProps) => {
     props,
   )
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

@@ -15,5 +15,5 @@ export const SegmentGroupItemText = (props: SegmentGroupItemTextProps) => {
     props,
   )
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

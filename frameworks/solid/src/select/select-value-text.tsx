@@ -11,5 +11,5 @@ export const SelectValueText = (props: SelectValueTextProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => selectAnatomy.build().valueText.attrs, props)
 
-  return <ark.span {...mergedProps()}>{api().valueAsString || props.placeholder}</ark.span>
+  return <ark.span {...mergedProps}>{api().valueAsString || props.placeholder}</ark.span>
 }

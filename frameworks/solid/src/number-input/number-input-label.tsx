@@ -8,5 +8,5 @@ export const NumberInputLabel = (props: NumberInputLabelProps) => {
   const api = useNumberInputContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

@@ -1,8 +1,7 @@
 import * as avatar from '@zag-js/avatar'
-import { normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
+import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { mergeProps } from '../merge-props'
 import { type Optional } from '../types'
 
 export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}

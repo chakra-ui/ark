@@ -8,5 +8,5 @@ export const ComboboxControl = (props: ComboboxControlProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().controlProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -32,7 +32,7 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
 
   return (
     <DatePickerTableCellProvider value={cellProps}>
-      <ark.td {...mergedProps()} />
+      <ark.td {...mergedProps} />
     </DatePickerTableCellProvider>
   )
 }

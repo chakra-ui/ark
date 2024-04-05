@@ -1,5 +1,5 @@
+import { mergeProps } from '@zag-js/solid'
 import { ark, type HTMLArkProps } from '../factory'
-import { mergeProps } from '../merge-props'
 import { useAvatarContext } from './use-avatar-context'
 
 export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}

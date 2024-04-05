@@ -8,5 +8,5 @@ export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const api = useTooltipContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

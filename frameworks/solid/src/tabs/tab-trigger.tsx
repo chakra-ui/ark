@@ -8,9 +8,9 @@ import { useTabsContext } from './use-tabs-context'
 export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
 
 export const TabTrigger = (props: TabTriggerProps) => {
-  const [tabParams, restProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])
+  const [triggerProps, localProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])
   const api = useTabsContext()
-  const mergedProps = mergeProps(() => api().getTriggerProps(tabParams), restProps)
+  const mergedProps = mergeProps(() => api().getTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

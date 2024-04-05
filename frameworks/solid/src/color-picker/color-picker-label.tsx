@@ -8,5 +8,5 @@ export const ColorPickerLabel = (props: ColorPickerLabelProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

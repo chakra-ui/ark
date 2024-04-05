@@ -10,5 +10,5 @@ export const TagsInputItemPreview = (props: TagsInputItemPreviewProps) => {
   const itemProps = useTagsInputItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemPreviewProps(itemProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const ToastRoot = (props: ToastRootProps) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().rootProps, props)
 
-  return <ark.li {...mergedProps()} />
+  return <ark.li {...mergedProps} />
 }

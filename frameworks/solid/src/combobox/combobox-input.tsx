@@ -8,5 +8,5 @@ export const ComboboxInput = (props: ComboboxInputProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().inputProps, props)
 
-  return <ark.input {...mergedProps()} />
+  return <ark.input {...mergedProps} />
 }

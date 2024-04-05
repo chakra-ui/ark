@@ -10,5 +10,5 @@ export const TreeViewBranchTrigger = (props: TreeViewBranchTriggerProps) => {
   const branchProps = useTreeViewBranchContext()
   const mergedProps = mergeProps(() => api().getBranchTriggerProps(branchProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

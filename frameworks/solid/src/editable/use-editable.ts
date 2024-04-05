@@ -10,7 +10,7 @@ export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 export const useEditable = (props: UseEditableProps) => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(editable.machine(context()), { context })
+  const [state, send] = useMachine(editable.machine(context), { context })
 
   return createMemo(() => editable.connect(state, send, normalizeProps))
 }

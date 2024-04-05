@@ -8,5 +8,5 @@ export const CheckboxLabel = (props: CheckboxLabelProps) => {
   const checkbox = useCheckboxContext()
   const mergedProps = mergeProps(() => checkbox().labelProps, props)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

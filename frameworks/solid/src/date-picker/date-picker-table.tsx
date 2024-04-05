@@ -22,7 +22,7 @@ export const DatePickerTable = (props: DatePickerTableProps) => {
 
   return (
     <DatePickerTableProvider value={tableProps}>
-      <ark.table {...mergedProps()} />
+      <ark.table {...mergedProps} />
     </DatePickerTableProvider>
   )
 }

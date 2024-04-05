@@ -18,5 +18,5 @@ export const MenuItemGroupLabel = (props: MenuItemGroupLabelProps) => {
     localProps,
   )
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const PopoverAnchor = (props: PopoverAnchorProps) => {
   const api = usePopoverContext()
   const mergedProps = mergeProps(() => api().anchorProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

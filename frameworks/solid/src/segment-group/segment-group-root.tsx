@@ -9,7 +9,7 @@ import { SegmentGroupProvider } from './use-segment-group-context'
 export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 
 export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
-  const [groupParams, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
+  const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'dir',
     'disabled',
     'form',
@@ -21,8 +21,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
     'orientation',
     'value',
   ])
-
-  const api = useSegmentGroup(groupParams)
+  const api = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
     () => api().rootProps,
     segmentGroupAnatomy.build().root.attrs,
@@ -31,7 +30,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
 
   return (
     <SegmentGroupProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </SegmentGroupProvider>
   )
 }

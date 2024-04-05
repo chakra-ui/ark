@@ -8,5 +8,5 @@ export const DatePickerControl = (props: DatePickerControlProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

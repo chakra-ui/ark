@@ -10,5 +10,5 @@ export const ColorPickerAreaThumb = (props: ColorPickerAreaThumbProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getAreaThumbProps(colorAreaProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

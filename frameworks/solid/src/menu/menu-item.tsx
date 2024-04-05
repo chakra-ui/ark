@@ -9,13 +9,13 @@ export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const MenuItem = (props: MenuItemProps) => {
   const menu = useMenuContext()
-  const [itemParams, restProps] = createSplitProps<ItemProps>()(props, [
-    'id',
-    'disabled',
-    'valueText',
+  const [itemProps, restProps] = createSplitProps<ItemProps>()(props, [
     'closeOnSelect',
+    'disabled',
+    'value',
+    'valueText',
   ])
-  const mergedProps = mergeProps(() => menu?.().getItemProps(itemParams), restProps)
+  const mergedProps = mergeProps(() => menu?.().getItemProps(itemProps), restProps)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

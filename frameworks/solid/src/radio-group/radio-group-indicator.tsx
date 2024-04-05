@@ -8,5 +8,5 @@ export const RadioGroupIndicator = (props: RadioGroupIndicatorProps) => {
   const api = useRadioGroupContext()
   const mergedProps = mergeProps(() => api().indicatorProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

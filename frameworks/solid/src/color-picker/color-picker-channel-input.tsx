@@ -16,5 +16,5 @@ export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => 
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getChannelInputProps(channelProps), inputProps)
 
-  return <ark.input {...mergedProps()} />
+  return <ark.input {...mergedProps} />
 }

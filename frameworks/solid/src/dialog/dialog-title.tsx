@@ -8,5 +8,5 @@ export const DialogTitle = (props: DialogTitleProps) => {
   const dialog = useDialogContext()
   const mergedProps = mergeProps(() => dialog().titleProps, props)
 
-  return <ark.h2 {...mergedProps()} />
+  return <ark.h2 {...mergedProps} />
 }

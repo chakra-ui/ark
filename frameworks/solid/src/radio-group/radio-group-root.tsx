@@ -26,7 +26,7 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
 
   return (
     <RadioGroupProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </RadioGroupProvider>
   )
 }

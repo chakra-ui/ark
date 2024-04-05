@@ -10,5 +10,5 @@ export const ColorPickerSwatchIndicator = (props: ColorPickerSwatchIndicatorProp
   const swatchProps = useColorPickerSwatchContext()
   const mergedProps = mergeProps(() => api().getSwatchIndicatorProps(swatchProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

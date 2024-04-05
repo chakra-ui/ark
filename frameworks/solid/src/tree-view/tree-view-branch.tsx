@@ -18,7 +18,7 @@ export const TreeViewBranch = (props: TreeViewBranchProps) => {
   return (
     <TreeViewDepthProvider value={depth + 1}>
       <TreeViewBranchProvider value={branchProps}>
-        <ark.li {...mergedProps()} />
+        <ark.li {...mergedProps} />
       </TreeViewBranchProvider>
     </TreeViewDepthProvider>
   )

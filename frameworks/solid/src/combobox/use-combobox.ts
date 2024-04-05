@@ -24,10 +24,9 @@ export const useCombobox = <T extends CollectionItem>(
   ])
   const collection = () => combobox.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
-  const context = () =>
-    mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
+  const context = mergeProps({ id: createUniqueId(), getRootNode, collection: collection() }, rest)
 
-  const [state, send] = useMachine(combobox.machine(context()), {
+  const [state, send] = useMachine(combobox.machine(context), {
     context,
   })
 

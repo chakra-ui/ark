@@ -8,5 +8,5 @@ export const TooltipArrowTip = (props: TooltipArrowTipProps) => {
   const api = useTooltipContext()
   const mergedProps = mergeProps(() => api().arrowTipProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const DatePickerTrigger = (props: DatePickerTriggerProps) => {
   const api = useDatePickerContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

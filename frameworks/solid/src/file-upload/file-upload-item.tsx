@@ -15,7 +15,7 @@ export const FileUploadItem = (props: FileUploadItemProps) => {
 
   return (
     <FileUploadItemProvider value={itemProps}>
-      <ark.li {...mergedProps()} />
+      <ark.li {...mergedProps} />
     </FileUploadItemProvider>
   )
 }

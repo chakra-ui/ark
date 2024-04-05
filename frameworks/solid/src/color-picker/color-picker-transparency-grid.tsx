@@ -13,5 +13,5 @@ export const ColorPickerTransparencyGrid = (props: ColorPickerTransparencyGridPr
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getTransparencyGridProps(gridProps), localProps)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

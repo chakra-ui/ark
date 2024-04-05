@@ -12,5 +12,5 @@ export const SelectItemGroup = (props: SelectItemGroupProps) => {
   const api = useSelectContext()
   const mergedProps = mergeProps(() => api().getItemGroupProps(itemGroupProps), localProps)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

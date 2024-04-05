@@ -19,7 +19,7 @@ export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const getChildren = children(() => localProps.children)
 
   return (
-    <ark.div {...mergedProps()}>
+    <ark.div {...mergedProps}>
       <Show when={api().isCopied} fallback={getChildren()}>
         {indicatorProps.copied}
       </Show>

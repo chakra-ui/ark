@@ -8,5 +8,5 @@ export const MenuIndicator = (props: MenuIndicatorProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().indicatorProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

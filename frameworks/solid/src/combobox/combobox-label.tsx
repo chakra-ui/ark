@@ -8,5 +8,5 @@ export const ComboboxLabel = (props: ComboboxLabelProps) => {
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(() => combobox().labelProps, props)
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

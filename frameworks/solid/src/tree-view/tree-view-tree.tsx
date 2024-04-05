@@ -11,7 +11,7 @@ export const TreeViewTree = (props: TreeViewTreeProps) => {
 
   return (
     <TreeViewDepthProvider value={1}>
-      <ark.ul {...mergedProps()} />
+      <ark.ul {...mergedProps} />
     </TreeViewDepthProvider>
   )
 }

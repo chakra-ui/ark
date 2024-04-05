@@ -16,7 +16,7 @@ export const DatePickerView = (props: DatePickerViewProps) => {
 
   return (
     <DatePickerViewProvider value={viewProps}>
-      <ark.div {...mergedProps()} hidden={api().view !== viewProps.view} />
+      <ark.div {...mergedProps} hidden={api().view !== viewProps.view} />
     </DatePickerViewProvider>
   )
 }

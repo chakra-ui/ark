@@ -8,5 +8,5 @@ export const ProgressValueText = (props: ProgressValueTextProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().valueTextProps, props)
 
-  return <ark.span {...mergedProps()}>{props.children || api().valueAsString}</ark.span>
+  return <ark.span {...mergedProps}>{props.children || api().valueAsString}</ark.span>
 }

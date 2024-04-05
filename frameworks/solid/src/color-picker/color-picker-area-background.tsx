@@ -10,5 +10,5 @@ export const ColorPickerAreaBackground = (props: ColorPickerAreaBackgroundProps)
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getAreaBackgroundProps(colorAreaProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

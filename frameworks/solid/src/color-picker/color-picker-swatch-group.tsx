@@ -8,5 +8,5 @@ export const ColorPickerSwatchGroup = (props: ColorPickerSwatchGroupProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().swatchGroupProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

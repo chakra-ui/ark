@@ -11,6 +11,6 @@ export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(treeView.machine(context()), { context })
+  const [state, send] = useMachine(treeView.machine(context), { context })
   return createMemo(() => treeView.connect(state, send, normalizeProps))
 }

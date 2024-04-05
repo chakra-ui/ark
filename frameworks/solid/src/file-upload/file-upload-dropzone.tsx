@@ -10,7 +10,7 @@ export const FileUploadDropzone = (props: FileUploadDropzoneProps) => {
 
   return (
     <>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
       <input {...api().hiddenInputProps} />
     </>
   )

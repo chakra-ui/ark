@@ -8,5 +8,5 @@ export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
   const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu?.().contextTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

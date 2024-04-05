@@ -13,7 +13,7 @@ export const PopoverPositioner = (props: PopoverPositionerProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </Show>
   )
 }

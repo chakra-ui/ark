@@ -9,7 +9,7 @@ export const CheckboxControl = (props: CheckboxControlProps) => {
   const mergedProps = mergeProps(() => api().controlProps, props)
   return (
     <>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
       <input {...api().hiddenInputProps} />
     </>
   )

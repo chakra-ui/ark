@@ -26,7 +26,7 @@ export const TreeViewRoot = (props: TreeViewRootProps) => {
 
   return (
     <TreeViewProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </TreeViewProvider>
   )
 }

@@ -9,7 +9,7 @@ export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
   const mergedProps = mergeProps(() => api().monthSelectProps, props)
 
   return (
-    <ark.select {...mergedProps()}>
+    <ark.select {...mergedProps}>
       {api()
         .getMonths()
         .map((month) => (

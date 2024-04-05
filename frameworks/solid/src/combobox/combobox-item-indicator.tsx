@@ -10,5 +10,5 @@ export const ComboboxItemIndicator = (props: ComboboxItemIndicatorProps) => {
   const itemProps = useComboboxItemPropsContext()
   const mergedProps = mergeProps(() => combobox().getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -17,7 +17,7 @@ export const TreeViewItem = (props: TreeViewItemProps) => {
 
   return (
     <TreeViewItemProvider value={itemProps}>
-      <ark.li {...mergedProps()} />
+      <ark.li {...mergedProps} />
     </TreeViewItemProvider>
   )
 }

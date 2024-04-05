@@ -8,5 +8,5 @@ export const PopoverArrowTip = (props: PopoverArrowTipProps) => {
   const popover = usePopoverContext()
   const mergedProps = mergeProps(() => popover().arrowTipProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

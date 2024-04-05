@@ -10,5 +10,5 @@ export const SelectItemIndicator = (props: SelectItemIndicatorProps) => {
   const itemProps = useSelectItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

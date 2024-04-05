@@ -12,7 +12,7 @@ export const SelectControl = (props: SelectControlProps) => {
 
   return (
     <>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
       <select {...api().hiddenSelectProps}>
         <Show when={isValueEmpty()}>
           <option value="" />

@@ -56,7 +56,7 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
   return (
     <DatePickerProvider value={api}>
       <PresenceProvider value={apiPresence}>
-        <ark.div {...mergedProps()} />
+        <ark.div {...mergedProps} />
       </PresenceProvider>
     </DatePickerProvider>
   )

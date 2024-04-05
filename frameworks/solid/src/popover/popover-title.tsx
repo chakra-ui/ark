@@ -8,5 +8,5 @@ export const PopoverTitle = (props: PopoverTitleProps) => {
   const api = usePopoverContext()
   const mergedProps = mergeProps(() => api().titleProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const FileUploadLabel = (props: FileUploadLabelProps) => {
   const api = useFileUploadContext()
   const mergedProps = mergeProps(() => api().labelProps, props)
 
-  return <ark.label {...mergedProps()} />
+  return <ark.label {...mergedProps} />
 }

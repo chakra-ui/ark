@@ -16,5 +16,5 @@ export const ColorPickerSwatchTrigger = (props: ColorPickerSwatchTriggerProps) =
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getSwatchTriggerProps(triggerProps), localProps)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

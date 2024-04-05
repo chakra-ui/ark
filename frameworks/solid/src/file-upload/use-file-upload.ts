@@ -11,7 +11,7 @@ export const useFileUpload = (props: UseFileUploadProps): UseFileUploadReturn =>
   const getRootNode = useEnvironmentContext()
 
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(fileUpload.machine(context()), { context })
+  const [state, send] = useMachine(fileUpload.machine(context), { context })
 
   return createMemo(() => fileUpload.connect(state, send, normalizeProps))
 }

@@ -8,5 +8,5 @@ export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
   const api = useToastContext()
   const mergedProps = mergeProps(() => api().closeTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

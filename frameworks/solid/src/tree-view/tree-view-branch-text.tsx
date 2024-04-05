@@ -10,5 +10,5 @@ export const TreeViewBranchText = (props: TreeViewBranchTextProps) => {
   const branchProps = useTreeViewBranchContext()
   const mergedProps = mergeProps(() => api().getBranchTextProps(branchProps), props)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

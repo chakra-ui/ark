@@ -11,7 +11,7 @@ export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn
   const getRootNode = useEnvironmentContext()
 
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(toggleGroup.machine(context()), {
+  const [state, send] = useMachine(toggleGroup.machine(context), {
     context,
   })
 

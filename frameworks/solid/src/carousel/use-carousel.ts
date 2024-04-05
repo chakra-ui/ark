@@ -1,8 +1,7 @@
 import * as carousel from '@zag-js/carousel'
-import { normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
+import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { mergeProps } from '../merge-props'
 import { type Optional } from '../types'
 
 export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}

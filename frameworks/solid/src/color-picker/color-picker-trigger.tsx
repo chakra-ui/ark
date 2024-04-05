@@ -8,5 +8,5 @@ export const ColorPickerTrigger = (props: ColorPickerTriggerProps) => {
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

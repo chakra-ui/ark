@@ -11,7 +11,7 @@ export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(zagSwitch.machine(context()), { context })
+  const [state, send] = useMachine(zagSwitch.machine(context), { context })
 
   return createMemo(() => zagSwitch.connect(state, send, normalizeProps))
 }

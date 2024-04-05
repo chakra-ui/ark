@@ -8,7 +8,7 @@ import { TagsInputProvider } from './use-tags-input-context'
 export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsInputProps> {}
 
 export const TagsInputRoot = (props: TagsInputRootProps) => {
-  const [tagsInputParams, localProps] = createSplitProps<UseTagsInputProps>()(props, [
+  const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowEditTag',
     'allowOverflow',
@@ -38,12 +38,12 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
     'value',
   ])
 
-  const api = useTagsInput(tagsInputParams)
+  const api = useTagsInput(useTagsInputProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <TagsInputProvider value={api}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
       <input {...api().hiddenInputProps} />
     </TagsInputProvider>
   )

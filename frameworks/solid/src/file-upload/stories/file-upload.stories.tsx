@@ -17,7 +17,7 @@ export const Basic = () => (
     <FileUpload.ItemGroup>
       <FileUpload.Context>
         {(context) => (
-          <For each={context().files}>
+          <For each={context().acceptedFiles}>
             {(file) => (
               <FileUpload.Item file={file}>
                 <FileUpload.ItemPreview type="image/*">

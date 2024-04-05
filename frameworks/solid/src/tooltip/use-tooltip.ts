@@ -11,6 +11,6 @@ export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
   const getRootNode = useEnvironmentContext()
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
 
-  const [state, send] = useMachine(tooltip.machine(context()), { context })
+  const [state, send] = useMachine(tooltip.machine(context), { context })
   return createMemo(() => tooltip.connect(state, send, normalizeProps))
 }

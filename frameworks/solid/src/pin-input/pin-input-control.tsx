@@ -8,5 +8,5 @@ export const PinInputControl = (props: PinInputControlProps) => {
   const api = usePinInputContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

@@ -8,5 +8,5 @@ export const SliderMarkerGroup = (props: SliderMarkerGroupProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().markerGroupProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

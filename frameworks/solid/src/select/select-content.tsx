@@ -17,7 +17,7 @@ export const SelectContent = (props: SelectContentProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </Show>
   )
 }

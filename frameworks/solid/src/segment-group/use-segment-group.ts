@@ -11,7 +11,7 @@ export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupRet
   const getRootNode = useEnvironmentContext()
 
   const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
-  const [state, send] = useMachine(segment.machine(context()), { context })
+  const [state, send] = useMachine(segment.machine(context), { context })
 
   return createMemo(() => segment.connect(state, send, normalizeProps))
 }

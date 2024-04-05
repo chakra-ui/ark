@@ -8,5 +8,5 @@ export const EditableInput = (props: EditableInputProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().inputProps, props)
 
-  return <ark.input {...mergedProps()} />
+  return <ark.input {...mergedProps} />
 }

@@ -24,7 +24,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     }),
     rest,
   )
-  const [state, send] = useMachine(colorPicker.machine(context()), { context })
+  const [state, send] = useMachine(colorPicker.machine(context), { context })
 
   return createMemo(() => colorPicker.connect(state, send, normalizeProps))
 }

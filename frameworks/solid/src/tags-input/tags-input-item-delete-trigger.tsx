@@ -10,5 +10,5 @@ export const TagsInputItemDeleteTrigger = (props: TagsInputItemDeleteTriggerProp
   const itemProps = useTagsInputItemPropsContext()
   const mergedProps = mergeProps(() => api().getItemDeleteTriggerProps(itemProps), props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

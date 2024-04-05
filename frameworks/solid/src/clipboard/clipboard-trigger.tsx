@@ -8,5 +8,5 @@ export const ClipboardTrigger = (props: ClipboardTriggerProps) => {
   const api = useClipboardContext()
   const mergedProps = mergeProps(() => api().triggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

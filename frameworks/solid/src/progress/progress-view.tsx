@@ -12,5 +12,5 @@ export const ProgressView = (props: ProgressViewProps) => {
   const api = useProgressContext()
   const mergedProps = mergeProps(() => api().getViewProps(state), localProps)
 
-  return <ark.span {...mergedProps()} />
+  return <ark.span {...mergedProps} />
 }

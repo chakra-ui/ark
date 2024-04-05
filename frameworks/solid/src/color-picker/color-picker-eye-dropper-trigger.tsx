@@ -8,5 +8,5 @@ export const ColorPickerEyeDropperTrigger = (props: ColorPickerEyeDropperTrigger
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().eyeDropperTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

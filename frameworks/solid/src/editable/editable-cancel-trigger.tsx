@@ -8,5 +8,5 @@ export const EditableCancelTrigger = (props: EditableCancelTriggerProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().cancelTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

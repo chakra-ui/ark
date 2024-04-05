@@ -21,7 +21,7 @@ export const DialogBackdrop = (props: DialogBackdropProps) => {
 
   return (
     <Show when={!presenceApi().isUnmounted}>
-      <ark.div {...mergedProps()} />
+      <ark.div {...mergedProps} />
     </Show>
   )
 }

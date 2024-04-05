@@ -12,5 +12,5 @@ export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
   const mergedProps = mergeProps(() => menu?.().getItemGroupProps(itemGroupProps), localProps)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

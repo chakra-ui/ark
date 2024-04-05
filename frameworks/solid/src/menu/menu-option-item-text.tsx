@@ -10,5 +10,5 @@ export const MenuOptionItemText = (props: MenuOptionItemTextProps) => {
   const optionItemProps = useMenuOptionItemPropsContext()
   const mergedProps = mergeProps(() => menu?.().getOptionItemTextProps(optionItemProps), props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }

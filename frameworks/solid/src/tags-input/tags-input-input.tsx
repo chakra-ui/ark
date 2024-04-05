@@ -8,5 +8,5 @@ export const TagsInputInput = (props: TagsInputInputProps) => {
   const api = useTagsInputContext()
   const mergedProps = mergeProps(() => api().inputProps, props)
 
-  return <ark.input {...mergedProps()} />
+  return <ark.input {...mergedProps} />
 }

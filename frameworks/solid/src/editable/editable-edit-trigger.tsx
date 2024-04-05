@@ -8,5 +8,5 @@ export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
   const api = useEditableContext()
   const mergedProps = mergeProps(() => api().editTriggerProps, props)
 
-  return <ark.button {...mergedProps()} />
+  return <ark.button {...mergedProps} />
 }

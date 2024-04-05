@@ -8,5 +8,5 @@ export const SliderControl = (props: SliderControlProps) => {
   const api = useSliderContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.div {...mergedProps()} />
+  return <ark.div {...mergedProps} />
 }
