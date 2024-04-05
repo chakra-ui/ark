@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- Added `Tour` anatomy
+
 ## [2.3.1] - 2024-02-27
 
 ### Fixed
