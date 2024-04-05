@@ -12,11 +12,11 @@ type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, OptionalItemGroupProps> {}
 
 export const MenuItemGroup = (props: MenuItemGroupProps) => {
-  const menu = useMenuContext()
   const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, [
     'id',
   ])
   const itemGroupProps = mergeProps({ id: createUniqueId() }, optionalItemGroupProps)
+  const menu = useMenuContext()
   const mergedProps = mergeProps(() => menu().getItemGroupProps(itemGroupProps), localProps)
 
   return (

@@ -1,10 +1,10 @@
 import type { HighlightChangeDetails, OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
 import { MenuArrow as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow'
 import { MenuArrowTip as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip'
-// import {
-//   MenuCheckboxItem as CheckboxItem,
-//   type MenuCheckboxItemProps as CheckboxItemProps,
-// } from './menu-checkbox-item'
+import {
+  MenuCheckboxItem as CheckboxItem,
+  type MenuCheckboxItemProps as CheckboxItemProps,
+} from './menu-checkbox-item'
 import { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
 import { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context'
 import {
@@ -37,14 +37,14 @@ import {
   MenuPositioner as Positioner,
   type MenuPositionerProps as PositionerProps,
 } from './menu-positioner'
-// import {
-//   MenuRadioItem as RadioItem,
-//   type MenuRadioItemProps as RadioItemProps,
-// } from './menu-radio-item'
-// import {
-//   MenuRadioItemGroup as RadioItemGroup,
-//   type MenuRadioItemGroupProps as RadioItemGroupProps,
-// } from './menu-radio-item-group'
+import {
+  MenuRadioItem as RadioItem,
+  type MenuRadioItemProps as RadioItemProps,
+} from './menu-radio-item'
+import {
+  MenuRadioItemGroup as RadioItemGroup,
+  type MenuRadioItemGroupProps as RadioItemGroupProps,
+} from './menu-radio-item-group'
 import { MenuRoot as Root, type MenuRootProps as RootProps } from './menu-root'
 import {
   MenuSeparator as Separator,
@@ -60,7 +60,7 @@ import type { ValueChangeDetails } from './use-menu-item-group-context'
 export {
   Arrow,
   ArrowTip,
-  // CheckboxItem,
+  CheckboxItem,
   Content,
   Context,
   ContextTrigger,
@@ -72,8 +72,8 @@ export {
   ItemIndicator,
   ItemText,
   Positioner,
-  // RadioItem,
-  // RadioItemGroup,
+  RadioItem,
+  RadioItemGroup,
   Root,
   Separator,
   Trigger,
@@ -82,7 +82,7 @@ export {
 export type {
   ArrowProps,
   ArrowTipProps,
-  // CheckboxItemProps,
+  CheckboxItemProps,
   ContentProps,
   ContextProps,
   ContextTriggerProps,
@@ -96,8 +96,8 @@ export type {
   ItemTextProps,
   OpenChangeDetails,
   PositionerProps,
-  // RadioItemGroupProps,
-  // RadioItemProps,
+  RadioItemGroupProps,
+  RadioItemProps,
   RootProps,
   SelectionDetails,
   SeparatorProps,

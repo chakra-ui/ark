@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { createEffect, createMemo, type JSX } from 'solid-js'
+import { createEffect, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
   PresenceProvider,
@@ -41,22 +41,21 @@ export const MenuRoot = (props: MenuRootProps) => {
 
   const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
-  const { api, machine } = useMenu(useMenuProps)
-
-  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const menu = useMenu(useMenuProps)
+  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().isOpen })))
 
   createEffect(() => {
     if (!parentMachine) return
-    parentApi?.().setChild(machine)
-    api().setParent(parentMachine)
+    parentApi?.().setChild(menu.machine)
+    menu.api().setParent(parentMachine)
   })
 
-  const triggerItemContext = createMemo(() => parentApi?.().getTriggerItemProps(api()))
+  const triggerItemContext = () => parentApi?.().getTriggerItemProps(menu.api())
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={machine}>
-        <MenuProvider value={api}>
+      <MenuMachineProvider value={menu.machine}>
+        <MenuProvider value={menu.api}>
           <PresenceProvider value={presenceApi}>{localProps.children}</PresenceProvider>
         </MenuProvider>
       </MenuMachineProvider>

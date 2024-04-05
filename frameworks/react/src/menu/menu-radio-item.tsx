@@ -22,13 +22,11 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
   ])
   const context = useMenuContext()
   const itemGroupContext = useMenuItemGroupContext()
-
   const optionItemProps: OptionItemProps = {
     ...partialItemProps,
     checked: itemGroupContext.value === partialItemProps.value,
     type: 'radio',
-    onCheckedChange: (checked) =>
-      itemGroupContext.onValueChange?.({ value: checked ? partialItemProps.value : '' }),
+    onCheckedChange: () => itemGroupContext.onValueChange?.({ value: partialItemProps.value }),
   }
   const mergedProps = mergeProps(context.getOptionItemProps(optionItemProps), localProps)
   const itemState = context.getItemState(optionItemProps)

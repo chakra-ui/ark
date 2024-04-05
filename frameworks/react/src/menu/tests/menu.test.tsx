@@ -18,7 +18,6 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
         Open menu <Menu.Indicator />
       </Menu.Trigger>
       <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
-      <Menu.ContextTrigger>Context trigger</Menu.ContextTrigger>
       <Menu.Positioner data-testid="positioner">
         <Menu.Content>
           <Menu.Arrow>
