@@ -39,7 +39,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../release-it.json"
   },
   "publishConfig": {
     "access": "public"
