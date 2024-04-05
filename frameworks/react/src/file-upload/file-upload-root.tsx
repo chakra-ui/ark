@@ -12,9 +12,10 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
   const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
     'allowDrop',
+    'capture',
     'dir',
+    'directory',
     'disabled',
-    'files',
     'getRootNode',
     'id',
     'ids',
@@ -24,8 +25,8 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'minFileSize',
     'name',
     'onFileAccept',
+    'onFileChange',
     'onFileReject',
-    'onFilesChange',
     'translations',
     'validate',
   ])

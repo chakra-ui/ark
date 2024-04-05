@@ -19,7 +19,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     ...initialContext,
     onFileAccept: useEvent(props.onFileAccept),
     onFileReject: useEvent(props.onFileReject),
-    onFilesChange: useEvent(props.onFilesChange, { sync: true }),
+    onFileChange: useEvent(props.onFileChange, { sync: true }),
   }
 
   const [state, send] = useMachine(fileUpload.machine(initialContext), { context })

@@ -8,9 +8,9 @@ import { useCarouselContext } from './use-carousel-context'
 export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const CarouselItem = (props: CarouselItemProps) => {
-  const [slideParams, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
   const api = useCarouselContext()
-  const mergedProps = mergeProps(() => api().getItemProps(slideParams), localProps)
+  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 
   return <ark.div {...mergedProps} />
 }

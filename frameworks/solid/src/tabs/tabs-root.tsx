@@ -16,7 +16,7 @@ export interface TabsRootProps
 
 export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
-  const [tabsParams, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
+  const [useTabsProps, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
     'dir',
     'getRootNode',
@@ -30,7 +30,7 @@ export const TabsRoot = (props: TabsRootProps) => {
     'value',
   ])
 
-  const api = useTabs(tabsParams)
+  const api = useTabs(useTabsProps)
   const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (

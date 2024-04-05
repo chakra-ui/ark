@@ -24,16 +24,15 @@ export const useSelect = <T extends CollectionItem>(
   ])
   const collection = () => select.collection(collectionOptions)
   const getRootNode = useEnvironmentContext()
-  const context = () =>
-    mergeProps(
-      {
-        id: createUniqueId(),
-        getRootNode,
-        collection: collection(),
-      },
-      rest,
-    )
-  const [state, send] = useMachine(select.machine(context()), {
+  const context = mergeProps(
+    {
+      id: createUniqueId(),
+      getRootNode,
+      collection: collection(),
+    },
+    rest,
+  )
+  const [state, send] = useMachine(select.machine(context), {
     context,
   })
 

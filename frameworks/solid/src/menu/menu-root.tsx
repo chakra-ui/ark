@@ -1,6 +1,5 @@
-import * as menu from '@zag-js/menu'
-import { mergeProps, type PropTypes } from '@zag-js/solid'
-import { createEffect, createMemo, type Accessor, type JSX } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import { createEffect, type JSX } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import {
   PresenceProvider,
@@ -8,18 +7,13 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { runIfFn } from '../run-if-fn'
 import { useMenu, type UseMenuProps } from './use-menu'
-import {
-  MenuMachineProvider,
-  MenuProvider,
-  MenuTriggerItemProvider,
-  useMenuContext,
-  useMenuMachineContext,
-} from './use-menu-context'
+import { MenuProvider, useMenuContext } from './use-menu-context'
+import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
+import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
-  children?: JSX.Element | ((api: Accessor<menu.Api<PropTypes>>) => JSX.Element)
+  children?: JSX.Element
 }
 
 export const MenuRoot = (props: MenuRootProps) => {
@@ -30,44 +24,39 @@ export const MenuRoot = (props: MenuRootProps) => {
     'closeOnSelect',
     'dir',
     'getRootNode',
-    'highlightedId',
+    'highlightedValue',
     'id',
     'ids',
     'loop',
     'onEscapeKeyDown',
     'onFocusOutside',
+    'onHighlightChange',
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
     'onSelect',
-    'onValueChange',
     'open',
     'positioning',
-    'value',
   ])
 
-  const parentMenu = useMenuContext()
+  const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
   const menu = useMenu(useMenuProps)
-  const apiPresence = usePresence(
-    mergeProps(presenceProps, () => ({ present: menu().api().isOpen })),
-  )
+  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().isOpen })))
 
   createEffect(() => {
     if (!parentMachine) return
-    parentMenu?.().setChild(menu().machine)
-    menu().api().setParent(parentMachine())
+    parentApi?.().setChild(menu.machine)
+    menu.api().setParent(parentMachine)
   })
 
-  const triggerItemContext = createMemo(() => parentMenu?.().getTriggerItemProps(menu().api()))
-  const machineContext = () => menu().machine
-  const getChildren = () => runIfFn(localProps.children, menu().api)
+  const triggerItemContext = () => parentApi?.().getTriggerItemProps(menu.api())
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={machineContext}>
-        <MenuProvider value={menu().api}>
-          <PresenceProvider value={apiPresence}>{getChildren()}</PresenceProvider>
+      <MenuMachineProvider value={menu.machine}>
+        <MenuProvider value={menu.api}>
+          <PresenceProvider value={presenceApi}>{localProps.children}</PresenceProvider>
         </MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>

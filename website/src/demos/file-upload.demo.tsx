@@ -11,8 +11,8 @@ export const Demo = (props: FileUpload.RootProps) => (
     </FileUpload.Dropzone>
     <FileUpload.ItemGroup>
       <FileUpload.Context>
-        {({ files }) =>
-          files.map((file, id) => (
+        {({ acceptedFiles }) =>
+          acceptedFiles.map((file, id) => (
             <FileUpload.Item key={id} file={file}>
               <FileUpload.ItemPreview type="image/*">
                 <FileUpload.ItemPreviewImage />

@@ -35,13 +35,11 @@ const withAsProp = <T extends ElementType>(Component: T) => {
 
       // @ts-expect-error TODO improve
       const fn = (userProps) => {
-        // console.log(userProps)
         const [, restProps] = splitProps(otherProps, ['children', 'ref'])
 
         return { ref: otherProps.ref, ...mergeProps(restProps, userProps) }
       }
 
-      // @ts-expect-error TODO improve
       return <>{otherProps.children(fn)}</>
     }
 

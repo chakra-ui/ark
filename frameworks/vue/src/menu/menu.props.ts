@@ -19,8 +19,8 @@ export const props = {
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
   },
-  highlightedId: {
-    type: String as PropType<Context['highlightedId']>,
+  highlightedValue: {
+    type: String as PropType<Context['highlightedValue']>,
   },
   id: {
     type: String as PropType<Context['id']>,
@@ -39,8 +39,5 @@ export const props = {
   positioning: {
     type: Object as PropType<Context['positioning']>,
   },
-  modelValue: {
-    type: Object as PropType<Context['value']>,
-  },
 }
-export const emits = declareEmits(['open-change', 'select', 'value-change', 'update:modelValue'])
+export const emits = declareEmits(['open-change', 'select'])

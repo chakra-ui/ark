@@ -8,7 +8,7 @@ import { PaginationProvider } from './use-pagination-context'
 export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
 
 export const PaginationRoot = (props: PaginationRootProps) => {
-  const [paginationParams, localProps] = createSplitProps<UsePaginationProps>()(props, [
+  const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'dir',
     'getRootNode',
@@ -21,8 +21,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'translations',
     'type',
   ])
-
-  const api = usePagination(paginationParams)
+  const api = usePagination(usePaginationProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (

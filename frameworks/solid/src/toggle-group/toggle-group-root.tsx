@@ -8,7 +8,7 @@ import { ToggleGroupProvider } from './use-toggle-group-context'
 export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 
 export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
-  const [groupParams, restProps] = createSplitProps<UseToggleGroupProps>()(props, [
+  const [useToggleGroupProps, restProps] = createSplitProps<UseToggleGroupProps>()(props, [
     'dir',
     'disabled',
     'getRootNode',
@@ -22,7 +22,7 @@ export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
     'value',
   ])
 
-  const api = useToggleGroup(groupParams)
+  const api = useToggleGroup(useToggleGroupProps)
   const mergedProps = mergeProps(() => api().rootProps, restProps)
 
   return (

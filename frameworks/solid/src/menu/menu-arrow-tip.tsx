@@ -5,8 +5,8 @@ import { useMenuContext } from './use-menu-context'
 export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const MenuArrowTip = (props: MenuArrowTipProps) => {
-  const menu = useMenuContext()
-  const mergedProps = mergeProps(() => menu?.().arrowTipProps, props)
+  const context = useMenuContext()
+  const mergedProps = mergeProps(() => context().arrowTipProps, props)
 
   return <ark.div {...mergedProps} />
 }

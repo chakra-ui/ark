@@ -15,21 +15,26 @@
       "description": "Whether to allow drag and drop in the dropzone element"
     },
     "asChild": { "type": "boolean", "isRequired": false },
+    "capture": {
+      "type": "'user' | 'environment'",
+      "isRequired": false,
+      "description": "The default camera to use when capturing media"
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
+    "directory": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to accept directories, only works in webkit browsers"
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the file input is disabled"
-    },
-    "files": {
-      "type": "File[]",
-      "isRequired": false,
-      "description": "The current value of the file input"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -77,15 +82,15 @@
       "isRequired": false,
       "description": "Function called when the file is accepted"
     },
+    "onFileChange": {
+      "type": "(details: FileChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes, whether accepted or rejected"
+    },
     "onFileReject": {
       "type": "(details: FileRejectDetails) => void",
       "isRequired": false,
       "description": "Function called when the file is rejected"
-    },
-    "onFilesChange": {
-      "type": "(details: FileChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the value changes, whether accepted or rejected"
     },
     "translations": {
       "type": "IntlTranslations",

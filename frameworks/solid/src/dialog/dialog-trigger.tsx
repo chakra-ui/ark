@@ -14,6 +14,5 @@ export const DialogTrigger = (props: DialogTriggerProps) => {
     props,
   )
 
-  // @ts-expect-error TODO fix
   return <ark.button {...mergedProps} />
 }

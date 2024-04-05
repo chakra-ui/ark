@@ -10,12 +10,12 @@ export const Demo = (props: Menu.RootProps) => {
       </Menu.ContextTrigger>
       <Menu.Positioner>
         <Menu.Content>
-          <Menu.Item id="search">Search</Menu.Item>
-          <Menu.Item id="undo">Undo</Menu.Item>
-          <Menu.Item id="delivery" disabled>
+          <Menu.Item value="search">Search</Menu.Item>
+          <Menu.Item value="undo">Undo</Menu.Item>
+          <Menu.Item value="delivery" disabled>
             Delivery
           </Menu.Item>
-          <Menu.Item id="unlink">Unlink</Menu.Item>
+          <Menu.Item value="unlink">Unlink</Menu.Item>
         </Menu.Content>
       </Menu.Positioner>
     </Menu.Root>

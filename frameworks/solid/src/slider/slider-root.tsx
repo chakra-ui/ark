@@ -8,7 +8,7 @@ import { SliderProvider } from './use-slider-context'
 export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
 
 export const SliderRoot = (props: SliderRootProps) => {
-  const [sliderParams, restProps] = createSplitProps<UseSliderProps>()(props, [
+  const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
     'dir',
@@ -35,8 +35,8 @@ export const SliderRoot = (props: SliderRootProps) => {
     'thumbSize',
     'value',
   ])
-  const api = useSlider(sliderParams)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
+  const api = useSlider(useSliderProps)
+  const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
     <SliderProvider value={api}>

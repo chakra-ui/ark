@@ -28,8 +28,9 @@ export const MenuOptionItem = defineComponent<MenuOptionItemProps>(
   {
     name: 'MenuOptionItem',
     props: {
-      id: {
-        type: String as PropType<MenuOptionItemProps['id']>,
+      checked: {
+        type: Boolean as PropType<MenuOptionItemProps['checked']>,
+        default: undefined,
       },
       disabled: {
         type: Boolean as PropType<MenuOptionItemProps['disabled']>,
@@ -42,10 +43,6 @@ export const MenuOptionItem = defineComponent<MenuOptionItemProps>(
       closeOnSelect: {
         type: Boolean as PropType<MenuOptionItemProps['closeOnSelect']>,
         default: undefined,
-      },
-      name: {
-        type: String as PropType<MenuOptionItemProps['name']>,
-        required: true,
       },
       type: {
         type: String as PropType<MenuOptionItemProps['type']>,

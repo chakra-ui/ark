@@ -18,14 +18,13 @@ export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
   const context = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const mergedProps = mergeProps(context().getItemProps(itemProps), localProps)
+  const mergedProps = mergeProps(() => context().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => context().getItemState(itemProps))
   const itemContentProps = context().getItemContentProps(itemProps)
 
   return (
     <AccordionItemPropsProvider value={itemProps}>
       <AccordionItemProvider value={itemState}>
-        {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           open={itemState().isOpen}
           ids={{ content: itemContentProps.id }}

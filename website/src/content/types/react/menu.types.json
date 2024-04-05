@@ -1,9 +1,9 @@
 {
   "Item": {
-    "id": {
+    "value": {
       "type": "string",
       "isRequired": true,
-      "description": "The `id` of the menu item option."
+      "description": "The unique value of the menu item option."
     },
     "asChild": {
       "type": "boolean",
@@ -53,10 +53,10 @@
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
-    "highlightedId": {
+    "highlightedValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The `id` of the active menu item."
+      "description": "The value of the highlighted menu item."
     },
     "id": {
       "type": "string",
@@ -94,6 +94,11 @@
       "isRequired": false,
       "description": "Function called when the focus is moved outside the component"
     },
+    "onHighlightChange": {
+      "type": "(details: HighlightChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the highlighted menu item changes."
+    },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",
       "isRequired": false,
@@ -114,11 +119,6 @@
       "isRequired": false,
       "description": "Function called when a menu item is selected."
     },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the menu values change (for radios and checkboxes)."
-    },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
     "positioning": {
       "type": "PositioningOptions",
@@ -135,11 +135,6 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
-    },
-    "value": {
-      "type": "Record<string, string | string[]>",
-      "isRequired": false,
-      "description": "The values of radios and checkboxes in the menu."
     }
   },
   "Arrow": {
@@ -170,6 +165,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Indicator": {
     "asChild": {
       "type": "boolean",
@@ -178,15 +180,38 @@
     }
   },
   "ItemGroup": {
-    "id": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The `id` of the element that provides accessibility label to the option group"
-    },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the element that provides accessibility label to the option group"
+    }
+  },
+  "RadioItem": {
+    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu should be closed when the option is selected."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the menu item is disabled"
+    },
+    "valueText": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
   "Separator": {
@@ -196,16 +221,25 @@
       "description": "Render as a different element type."
     }
   },
-  "OptionItem": {
-    "name": {
-      "type": "string",
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TriggerItem": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "CheckboxItem": {
+    "checked": {
+      "type": "boolean",
       "isRequired": true,
-      "description": "The option's name as specified in menu's `context.values` object"
-    },
-    "type": {
-      "type": "'checkbox' | 'radio'",
-      "isRequired": true,
-      "description": "Whether the option is a radio or a checkbox"
+      "description": "Whether the option is checked"
     },
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
     "asChild": {
@@ -223,11 +257,6 @@
       "isRequired": false,
       "description": "Whether the menu item is disabled"
     },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the menu item option."
-    },
     "onCheckedChange": {
       "type": "(checked: boolean) => void",
       "isRequired": false,
@@ -239,14 +268,7 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "TriggerItem": {
+  "ItemIndicator": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -261,25 +283,20 @@
     }
   },
   "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "OptionItemText": {
+  "RadioItemGroup": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    }
-  },
-  "OptionItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    },
+    "id": { "type": "string", "isRequired": false },
+    "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+    "value": { "type": "string", "isRequired": false }
   }
 }

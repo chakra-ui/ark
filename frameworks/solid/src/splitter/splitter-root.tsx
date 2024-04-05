@@ -8,7 +8,7 @@ import { SplitterProvider } from './use-splitter-context'
 export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
 
 export const SplitterRoot = (props: SplitterRootProps) => {
-  const [splitterParams, localProps] = createSplitProps<UseSplitterProps>()(props, [
+  const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'dir',
     'getRootNode',
     'id',
@@ -18,7 +18,7 @@ export const SplitterRoot = (props: SplitterRootProps) => {
     'orientation',
     'size',
   ])
-  const api = useSplitter(splitterParams)
+  const api = useSplitter(useSplitterProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
