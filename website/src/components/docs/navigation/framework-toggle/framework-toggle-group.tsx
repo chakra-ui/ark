@@ -1,9 +1,9 @@
 import { useStore } from '@nanostores/react'
 import { Stack } from 'styled-system/jsx'
+import { ReactIcon, SolidIcon, VueIcon } from '~/components/docs/icons'
 import { ToggleGroup } from '~/components/ui'
 import { Text } from '~/components/ui/text'
 import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
-import { ReactIcon, SolidIcon, VueIcon } from './icons'
 
 export const FrameworkToggleGroup = (props: ToggleGroup.RootProps) => {
   const $selectedFramework = useStore(selectedFramework)
