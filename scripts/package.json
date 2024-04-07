@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "20.11.30",
+    "@types/node": "20.12.5",
     "@types/voca": "1.4.5",
     "find-up": "7.0.0",
     "fs-extra": "11.2.0",
@@ -21,8 +21,8 @@
     "pkg-dir": "8.0.0",
     "prettier": "3.2.5",
     "ts-morph": "22.0.0",
-    "ts-pattern": "5.0.8",
-    "typescript": "5.4.3",
+    "ts-pattern": "5.1.1",
+    "typescript": "5.4.4",
     "voca": "1.4.1"
   }
 }

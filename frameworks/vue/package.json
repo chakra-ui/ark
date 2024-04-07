@@ -477,7 +477,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@ark-ui/anatomy": "3.0.0",
+    "@ark-ui/anatomy": "workspace:*",
     "@zag-js/accordion": "0.45.0",
     "@zag-js/avatar": "0.45.0",
     "@zag-js/carousel": "0.45.0",
@@ -516,7 +516,7 @@
     "@zag-js/vue": "0.45.0"
   },
   "devDependencies": {
-    "@histoire/plugin-vue": "0.17.14",
+    "@histoire/plugin-vue": "0.17.15",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.4.2",
@@ -535,12 +535,12 @@
     "eslint-plugin-testing-library": "6.2.0",
     "eslint-plugin-vue": "9.24.0",
     "globby": "14.0.1",
-    "histoire": "0.17.14",
+    "histoire": "0.17.15",
     "jsdom": "24.0.0",
     "release-it": "17.1.1",
     "resize-observer-polyfill": "1.5.1",
-    "typescript": "5.4.3",
-    "vite": "5.2.7",
+    "typescript": "5.4.4",
+    "vite": "5.2.8",
     "vite-plugin-dts": "3.8.1",
     "vitest": "1.4.0",
     "vue": "3.4.21"
