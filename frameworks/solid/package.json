@@ -75,7 +75,7 @@
     "storydocs": "bun run --cwd ../../scripts document:stories solid",
     "typedocs": "bun run --cwd ../../scripts document:types solid",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../../release-it.json"
+    "release-it": "release-it --config ../../release-it.json"
   },
   "publishConfig": {
     "access": "public"

@@ -470,7 +470,7 @@
     "storydocs": "bun run --cwd ../../scripts document:stories vue",
     "typedocs": "bun run --cwd ../../scripts document:types vue",
     "storybook": "histoire dev",
-    "release-it": "release-it --config ../../../release-it.json"
+    "release-it": "release-it --config ../../release-it.json"
   },
   "publishConfig": {
     "access": "public"
