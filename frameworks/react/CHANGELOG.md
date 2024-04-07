@@ -6,17 +6,62 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Exposed component-related types to keep imports clean and orderly.
+
+```tsx
+import { Avatar } from '@ark-ui/react';
+
+export const Example = () => {
+  // New: Use `Avatar` import to declare types.
+  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
+    console.log(details.status);
+  };
+
+  return (
+    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    </Avatar.Root>
+  );
+};
+```
+
+- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+
+```tsx
+export const Basic = () => (
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context>
+        {(api) => (
+          <Popover.Content>
+            <Popover.Title onClick={() => api.close()}>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+        )}
+      </Popover.Context>
+    </Popover.Positioner>
+  </Popover.Root>
+);
+```
+
+- Added new `Format` component to format bytes and numbers.
+- Added `defaultOpen` to `Tooltip`
+
+### Changed
+
+- Changed the `Menu` component. Please refer to the [documentation](https://ark-ui.com/docs/components/menu) for more information.
+
 ### Fixed
 
 - Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
 
-### Added
-
-- Added new `FormatByte` and `FormatNumber` components.
-- Added `defaultOpen` to `Tooltip`
-
 ### Removed
 
+- BREAKING: Removed the option to access the internal API from various Root components. Use the new `Context` component instead. This change will help in streamlining the `asChild` composition pattern.
 - Removed the unused `parse` prop from the `DatePicker` component.
 
 ## [2.2.3] - 2024-03-05
