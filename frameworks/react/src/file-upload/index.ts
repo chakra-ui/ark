@@ -1,64 +1,28 @@
-import type {
+export type {
   FileAcceptDetails as FileUploadFileAcceptDetails,
   FileChangeDetails as FileUploadFileChangeDetails,
   FileRejectDetails as FileUploadFileRejectDetails,
 } from '@zag-js/file-upload'
-import { FileUploadContext, type FileUploadContextProps } from './file-upload-context'
-import { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
-import { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
-import {
+export * as FileUpload from './file-upload'
+export { FileUploadContext, type FileUploadContextProps } from './file-upload-context'
+export { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
+export { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
+export {
   FileUploadItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps,
 } from './file-upload-item-delete-trigger'
-import { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-upload-item-group'
-import { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
-import { FileUploadItemPreview, type FileUploadItemPreviewProps } from './file-upload-item-preview'
-import {
+export { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-upload-item-group'
+export { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
+export { FileUploadItemPreview, type FileUploadItemPreviewProps } from './file-upload-item-preview'
+export {
   FileUploadItemPreviewImage,
   type FileUploadItemPreviewImageProps,
 } from './file-upload-item-preview-image'
-import {
+export {
   FileUploadItemSizeText,
   type FileUploadItemSizeTextProps,
 } from './file-upload-item-size-text'
-import { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
-import { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
-import { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
-import { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'
-
-export * as FileUpload from './file-upload'
-
-export {
-  FileUploadContext,
-  FileUploadDropzone,
-  FileUploadItem,
-  FileUploadItemDeleteTrigger,
-  FileUploadItemGroup,
-  FileUploadItemName,
-  FileUploadItemPreview,
-  FileUploadItemPreviewImage,
-  FileUploadItemSizeText,
-  FileUploadLabel,
-  FileUploadRoot,
-  FileUploadTrigger,
-  useFileUploadContext,
-}
-
-export type {
-  FileUploadContextProps,
-  FileUploadDropzoneProps,
-  FileUploadFileAcceptDetails,
-  FileUploadFileChangeDetails,
-  FileUploadFileRejectDetails,
-  FileUploadItemDeleteTriggerProps,
-  FileUploadItemGroupProps,
-  FileUploadItemNameProps,
-  FileUploadItemPreviewImageProps,
-  FileUploadItemPreviewProps,
-  FileUploadItemProps,
-  FileUploadItemSizeTextProps,
-  FileUploadLabelProps,
-  FileUploadRootProps,
-  FileUploadTriggerProps,
-  UseFileUploadContext,
-}
+export { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
+export { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
+export { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
+export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'

@@ -1,33 +1,9 @@
-import { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster'
-import { ToastCloseTrigger, type ToastCloseTriggerProps } from './toast-close-trigger'
-import { ToastContext, type ToastContextProps } from './toast-context'
-import { ToastDescription, type ToastDescriptionProps } from './toast-description'
-import { ToastGroup, type ToastGroupProps } from './toast-group'
-import { ToastRoot, type ToastRootProps } from './toast-root'
-import { ToastTitle, type ToastTitleProps } from './toast-title'
-import { useToastContext, type UseToastContext } from './use-toast-context'
-
+export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster'
 export * as Toast from './toast'
-
-export {
-  ToastCloseTrigger,
-  ToastContext,
-  ToastDescription,
-  ToastGroup,
-  ToastRoot,
-  ToastTitle,
-  createToaster,
-  useToastContext,
-}
-
-export type {
-  CreateToasterProps,
-  CreateToasterReturn,
-  ToastCloseTriggerProps,
-  ToastContextProps,
-  ToastDescriptionProps,
-  ToastGroupProps,
-  ToastRootProps,
-  ToastTitleProps,
-  UseToastContext,
-}
+export { ToastCloseTrigger, type ToastCloseTriggerProps } from './toast-close-trigger'
+export { ToastContext, type ToastContextProps } from './toast-context'
+export { ToastDescription, type ToastDescriptionProps } from './toast-description'
+export { ToastGroup, type ToastGroupProps } from './toast-group'
+export { ToastRoot, type ToastRootProps } from './toast-root'
+export { ToastTitle, type ToastTitleProps } from './toast-title'
+export { useToastContext, type UseToastContext } from './use-toast-context'
