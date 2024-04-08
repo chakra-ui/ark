@@ -42,9 +42,10 @@ export const createToaster = (props: CreateToasterProps) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const mergedProps = mergeProps(context.getGroupProps({ placement: placement }), props)
+    const toasts = context.toastsByPlacement[placement] ?? []
 
     return (
-      <ToasterProvider value={{ api: context, placement, service }}>
+      <ToasterProvider value={toasts}>
         <div {...mergedProps} ref={ref}>
           {/* @ts-expect-error it exsits */}
           {props.children(state.context.toasts.map((item) => item.state.context))}
