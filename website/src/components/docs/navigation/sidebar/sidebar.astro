@@ -1,0 +1,16 @@
+---
+import { Stack } from 'styled-system/jsx'
+import { getSitemap } from '~/lib/page-control'
+import ExternalLinks from '../sidebar/external-links.astro'
+import { SidebarNavigation } from '../sidebar/sidebar-navigation'
+import { FrameworkToggleGroup } from './framework-toggle-group'
+
+const sitemap = await getSitemap()
+const pathName = Astro.url.pathname.replace(/\/$/, '')   
+---
+
+<Stack gap="5">
+  <ExternalLinks />
+  <FrameworkToggleGroup client:only="react" />
+  <SidebarNavigation pathname={pathName} items={sitemap} client:load transition:persist />
+</Stack>

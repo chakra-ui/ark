@@ -50,5 +50,8 @@
       "prettier --plugin prettier-plugin-organize-imports --write"
     ]
   },
-  "packageManager": "bun@1.1.0"
+  "packageManager": "bun@1.1.0",
+  "dependencies": {
+    "@icons-pack/react-simple-icons": "9.4.0"
+  }
 }

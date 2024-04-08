@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from 'lucide-react'
 import { Accordion, Link } from '~/components/ui'
 
 export const Faq = () => {
@@ -47,7 +48,9 @@ export const Faq = () => {
         <Accordion.Item key={id} value={item.question}>
           <Accordion.ItemTrigger>
             {item.question}
-            <Accordion.ItemIndicator />
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>{item.answer}</Accordion.ItemContent>
         </Accordion.Item>

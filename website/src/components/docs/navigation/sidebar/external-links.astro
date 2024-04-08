@@ -2,7 +2,6 @@
 import { BookOpen, Github, Map, MessageCircle } from 'lucide-react'
 import { Flex, Stack } from 'styled-system/jsx'
 import { Link } from '~/components/ui/link'
-import { FrameworkToggleGroup } from './framework-toggle/framework-toggle-group'
 
 const links = [
   {
@@ -29,7 +28,7 @@ const links = [
 ]
 ---
 
-<Stack gap="4">
+<Stack gap="3">
   {
     links.map((link) => (
       <Link
@@ -40,14 +39,12 @@ const links = [
         width="fit-content"
         color="fg.muted"
         _currentPage={{
-          color: 'accent.default',
-          _hover: {
-            color: 'accent.default',
-          },
+          color: 'accent.text',
+          fontWeight: 'semibold',
         }}
         aria-current={link.isActive ? 'page' : false}
         textDecoration="none"
-        _hover={{ color: 'fg.muted' }}
+        _hover={{ color: 'fg.default' }}
       >
         <Flex
           align="center"
@@ -64,5 +61,4 @@ const links = [
       </Link>
     ))
   }
-  <FrameworkToggleGroup client:only="react" />
 </Stack>

@@ -43,16 +43,15 @@ export const getNextPage = async (pathname?: string) => {
     : null
 }
 
-type Sitemap = {
-  title: string
-  items: {
-    title: string
-    href: string
-    label?: string
-  }[]
-}[]
+interface Item {
+  id: string
+  name: string
+  label?: string
+  href?: string
+  items?: Item[]
+}
 
-export const getSitemap = async (): Promise<Sitemap> => {
+export const getSitemap = async (): Promise<Item[]> => {
   const overviewPages = await getOverviewPages()
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
@@ -60,31 +59,39 @@ export const getSitemap = async (): Promise<Sitemap> => {
 
   return [
     {
-      title: 'Overview',
+      id: 'overview',
+      name: 'Overview',
       items: overviewPages.map((item) => ({
-        title: item.data.title,
+        id: item.data.id,
+        name: item.data.title,
         href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
     {
-      title: 'Styling',
+      id: 'styling',
+      name: 'Styling',
       items: stylingPages.map((item) => ({
-        title: item.data.title,
+        id: item.data.id,
+        name: item.data.title,
         href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
     {
-      title: 'Components',
+      id: 'components',
+      name: 'Components',
       items: componentPages.map((item) => ({
-        title: item.data.title,
+        id: item.data.id,
+        name: item.data.title,
         href: path.posix.join('/docs', item.collection, item.data.id),
         label: item.data.label,
       })),
     },
     {
-      title: 'Changelog',
+      id: 'changelog',
+      name: 'Changelog',
       items: changelogPages.map((item) => ({
-        title: item.data.id,
+        id: item.data.id,
+        name: item.data.id,
         href: path.posix.join('/docs', item.collection, item.data.id),
       })),
     },
