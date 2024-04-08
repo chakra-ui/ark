@@ -2,8 +2,8 @@ import { mergeProps, normalizeProps, useActor } from '@zag-js/react'
 import * as zagToast from '@zag-js/toast'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
+import { ToastProvider } from './use-toast-context'
 import { useToasterContext } from './use-toaster-context'
-import { ToasterItemProvider } from './use-toaster-item-context'
 
 export interface ToastRootProps extends HTMLArkProps<'div'> {
   toast: zagToast.MachineContext<zagToast.DefaultGenericOptions>
@@ -25,9 +25,9 @@ export const ToastRoot = forwardRef<HTMLDivElement, ToastRootProps>((props, ref)
   const mergedProps = mergeProps(context.rootProps, localprops)
 
   return (
-    <ToasterItemProvider value={context}>
+    <ToastProvider value={context}>
       <ark.div {...mergedProps} ref={ref} />
-    </ToasterItemProvider>
+    </ToastProvider>
   )
 })
 
