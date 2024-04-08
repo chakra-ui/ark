@@ -54,6 +54,8 @@ export const Basic = () => (
 ### Changed
 
 - Changed the `Menu` component. Please refer to the [documentation](https://ark-ui.com/docs/components/menu) for more information.
+- Changed the `Toast` component. Please refer to the [documentation](https://ark-ui.com/docs/components/toast) for more information.
+
 
 ### Fixed
 

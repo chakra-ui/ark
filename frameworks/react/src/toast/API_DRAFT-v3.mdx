@@ -1,0 +1,30 @@
+```jsx
+export const Basic = () => {
+    const [ToastGroup, toast] = createToaster({
+        placement: 'top-end',
+        duration: 5000,
+        max: 5
+    })
+
+  const handleToast = () => {
+    toast.create({ title: 'Title', description: 'Description' })
+  }
+
+  return (
+    <>
+      <button onClick={handleToast}>Toast</button>
+      <Toaster>
+          {(toasts) => {
+            toasts.map((toast) => (
+              <Toast.Root key={toast.id} toast={toast} data-scope="toast" data-part="root">
+                <Toast.Title>{toast.title}</Toast.Title>
+                <Toast.Description>{toast.description}</Toast.Description>
+                <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+              </Toast.Root>
+            ))
+          }}
+      </Toaster>
+    </>
+  )
+}
+```
