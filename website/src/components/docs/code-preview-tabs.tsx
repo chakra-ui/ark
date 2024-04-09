@@ -1,11 +1,10 @@
 import { Tabs } from '@ark-ui/react/tabs'
+import { useStore } from '@nanostores/react'
 import { useState, type PropsWithChildren } from 'react'
 import { HStack } from 'styled-system/jsx'
 import { Button } from '~/components/ui'
+import { selectedFramework } from '~/stores/framework-select.store'
 import { CodePreview } from './code-preview'
-
-import { useStore } from '@nanostores/react'
-import { selectedFramework, type SelectedFramework } from '~/stores/framework-select.store'
 
 interface Props {
   code?: string
@@ -23,10 +22,7 @@ export const CodePreviewTabs = (props: PropsWithChildren<Props>) => {
   const $selectedFramework = useStore(selectedFramework)
 
   return (
-    <Tabs.Root
-      value={$selectedFramework}
-      onValueChange={(e) => selectedFramework.set(e.value as SelectedFramework)}
-    >
+    <Tabs.Root defaultValue={$selectedFramework}>
       <HStack justifyContent="space-between" p="1">
         <Tabs.List>
           {Object.entries(props.tabs).map(([key, value]) => (

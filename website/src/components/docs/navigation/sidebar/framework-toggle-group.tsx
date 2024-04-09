@@ -14,7 +14,10 @@ export const FrameworkToggleGroup = (props: ToggleGroup.RootProps) => {
       <ToggleGroup.Root
         size="sm"
         value={[$selectedFramework]}
-        onValueChange={(e) => selectedFramework.set(e.value[0] as SelectedFramework)}
+        onValueChange={(e) => {
+          selectedFramework.set(e.value[0] as SelectedFramework)
+          window.location.reload()
+        }}
         {...props}
       >
         <ToggleGroup.Item value="react" aria-label="Toggle React">

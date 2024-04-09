@@ -5,11 +5,12 @@ import { CodeExamples } from './code-examples'
 
 interface Props {
   id: string
+  component?: string
 }
 const { id } = Astro.props
 const { slug } = Astro.params
 
-const component = slug?.split('/').pop()
+const component = Astro.props.component ?? slug?.split('/').pop()
 const stories = await getCollection('stories', (story) => story.id.includes(`/${component}.stories` ?? ''))
 const [react, solid, vue] = stories
 ---
