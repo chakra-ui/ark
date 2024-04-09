@@ -1,7 +1,8 @@
 ---
 import { Code } from 'astro/components'
 import { getCollection } from 'astro:content'
-import { CodeExamples } from './code-examples'
+import { CodePreviewTabs } from './code-preview-tabs'
+import { Box } from 'styled-system/jsx'
 
 interface Props {
   id: string
@@ -11,25 +12,27 @@ const { id } = Astro.props
 const { slug } = Astro.params
 
 const component = Astro.props.component ?? slug?.split('/').pop()
-const stories = await getCollection('stories', (story) => story.id.includes(`/${component}.stories` ?? ''))
+const stories = await getCollection('stories', (story) =>
+  story.id.includes(`/${component}.stories` ?? ''),
+)
 const [react, solid, vue] = stories
+
+const reactCodeSnippet = react?.data[id] ?? 'Story not available'
+const solidCodeSnippet = solid?.data[id] ?? 'Story not available'
+const vueCodeSnippet = vue?.data[id] ?? 'Story not available'
 ---
 
-<CodeExamples client:only="react">
-  <!-- @ts-expect-error -->
-  <Code
-    slot="react"
-    code={react?.data[id] ?? 'Story not available'}
-    lang="tsx"
-    theme="css-variables"
-  />
-  <!-- @ts-expect-error -->
-  <Code
-    slot="solid"
-    code={solid?.data[id] ?? 'Story not available'}
-    lang="tsx"
-    theme="css-variables"
-  />
-  <!-- @ts-expect-error -->
-  <Code slot="vue" code={vue?.data[id] ?? 'Story not available'} lang="vue" theme="css-variables" />
-</CodeExamples>
+<Box borderRadius="l3" overflow="hidden" borderWidth="1px" className="not-prose">
+  <CodePreviewTabs
+    tabs={{
+      react: { label: 'React', code: reactCodeSnippet },
+      solid: { label: 'Solid', code: solidCodeSnippet },
+      vue: { label: 'Vue', code: vueCodeSnippet },
+    }}
+    client:only="react"
+  >
+    <Code code={reactCodeSnippet} lang="tsx" theme="css-variables" slot="react" />
+    <Code code={solidCodeSnippet} lang="tsx" theme="css-variables" slot="solid" />
+    <Code code={vueCodeSnippet} lang="tsx" theme="css-variables" slot="vue" />
+  </CodePreviewTabs>
+</Box>
