@@ -28,39 +28,26 @@ npm install @ark-ui/react
 </Step>
 <Step number="3" title="Add a component">
 
-To import a component, use the following syntax:
+In this guide, we will be adding a Slider component. Copy the following code to your project.
 
 <Story id="Basic" component="slider" />
 
 </Step>
-<Step number="4" title="Add your styles">
+<Step number="4" title="Style a component">
 
-There are many ways to add styles to your project. 
+Ark UI is a headless component library that doesn't include default styles.
+Nowadays, projects often use CSS-in-JS libraries like [Panda CSS](https://panda-css.com/) or frameworks like [Tailwind](https://tailwindcss.com/) to style their components.
+
+However, if you prefer to write your own CSS, you can leverage the `data-scope` and `data-part` attributes to style your components.
 
 ```css
-[data-scope='slider'][data-part='thumb'] {
-  background: blue;
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
-}
-
-[data-scope='slider'][data-part='track'] {
-  background: silver;
-  height: 8px;
-  flex: 1;
-}
-
-[data-scope='slider'][data-part='range'] {
-  background: orange;
-  height: inherit;
-}
-
-[data-scope='slider'][data-part='control'] {
-  position: relative;
-  align-items: center;
+/* Targets the slider root part */
+[data-scope='slider'][data-part='root'] {
   display: flex;
+  flex-direction: column;
 }
 ```
+
+To learn more about how to style components in Ark UI, checkout our [Styling Components guide](/docs/styling/overview).
 </Step>
 </Steps>

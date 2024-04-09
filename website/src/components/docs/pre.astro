@@ -79,7 +79,7 @@ const [react, solid, vue] = stories
             solid: { label: 'Solid', code: code },
             vue: { label: 'Vue', code: code },
           }}
-          client:load
+          client:only="react"
         >
          <!-- @ts-expect-error -->
           <Code code={code} lang="tsx" theme="css-variables" slot="react" />
