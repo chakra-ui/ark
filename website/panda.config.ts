@@ -35,14 +35,11 @@ export default defineConfig({
         flexDirection: 'column',
         height: 'unset',
       },
-      '&:root': {
-        '--font-body': 'Inter Variable',
-        '--font-code': 'Fira Code Variable',
-      },
       body: {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1',
+        fontFamily: 'Outfit Variable',
       },
       article: {
         '--colors-prose-body': 'colors.fg.muted',
