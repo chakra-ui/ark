@@ -7,6 +7,8 @@ import { CodePreview } from './code-preview'
 import { CodePreviewTabs } from './code-preview-tabs'
 import { LivePreview } from './live-preview'
 import { getCollection } from 'astro:content'
+import { reactToVue } from '~/lib/react-to-vue'
+import { reactToSolid } from '~/lib/react-to-solid'
 
 const html = await Astro.slots.render('default')
 const code = cheerio.load(html).root().text().trim()
@@ -81,12 +83,9 @@ const [react, solid, vue] = stories
           }}
           client:only="react"
         >
-         <!-- @ts-expect-error -->
           <Code code={code} lang="tsx" theme="css-variables" slot="react" />
-         <!-- @ts-expect-error -->
-          <Code code={code} lang="tsx" theme="css-variables" slot="solid" />
-         <!-- @ts-expect-error -->
-          <Code code={code} lang="tsx" theme="css-variables" slot="vue" />
+          <Code code={reactToSolid(code)} lang="tsx" theme="css-variables" slot="solid" />
+          <Code code={reactToVue(code)} lang="tsx" theme="css-variables" slot="vue" />
         </CodePreviewTabs>
       ))
       .otherwise(() => (
