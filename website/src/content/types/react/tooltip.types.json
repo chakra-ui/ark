@@ -1,1 +1,133 @@
-{}
+{
+  "Root": {
+    "aria-label": {
+      "type": "string",
+      "isRequired": false,
+      "description": "Custom label for the tooltip."
+    },
+    "closeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The close delay of the tooltip."
+    },
+    "closeOnEsc": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip when the Escape key is pressed."
+    },
+    "closeOnPointerDown": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to close the tooltip on pointerdown."
+    },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the tooltip."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is disabled"
+    },
+    "getRootNode": {
+      "type": "() => ShadowRoot | Node | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": { "type": "string", "isRequired": false, "description": "The `id` of the tooltip." },
+    "ids": {
+      "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the tooltip. Useful for composition."
+    },
+    "interactive": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip's content is interactive.\nIn this mode, the tooltip will remain open when user hovers over the content."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the tooltip is opened."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tooltip is open"
+    },
+    "openDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The open delay of the tooltip."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    }
+  },
+  "Arrow": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Trigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ArrowTip": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
+}
