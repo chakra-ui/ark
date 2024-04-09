@@ -1,16 +1,47 @@
-export type {
+import type {
   FocusChangeDetails as SliderFocusChangeDetails,
   ValueChangeDetails as SliderValueChangeDetails,
 } from '@zag-js/slider'
+import { SliderContext, type SliderContextProps } from './slider-context'
+import { SliderControl, type SliderControlProps } from './slider-control'
+import { SliderLabel, type SliderLabelProps } from './slider-label'
+import { SliderMarker, type SliderMarkerProps } from './slider-marker'
+import { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
+import { SliderRange, type SliderRangeProps } from './slider-range'
+import { SliderRoot, type SliderRootProps } from './slider-root'
+import { SliderThumb, type SliderThumbProps } from './slider-thumb'
+import { SliderTrack, type SliderTrackProps } from './slider-track'
+import { SliderValueText, type SliderValueTextProps } from './slider-value-text'
+import { useSliderContext, type UseSliderContext } from './use-slider-context'
+
 export * as Slider from './slider'
-export { SliderContext, type SliderContextProps } from './slider-context'
-export { SliderControl, type SliderControlProps } from './slider-control'
-export { SliderLabel, type SliderLabelProps } from './slider-label'
-export { SliderMarker, type SliderMarkerProps } from './slider-marker'
-export { SliderMarkerGroup, type SliderMarkerGroupProps } from './slider-marker-group'
-export { SliderRange, type SliderRangeProps } from './slider-range'
-export { SliderRoot, type SliderRootProps } from './slider-root'
-export { SliderThumb, type SliderThumbProps } from './slider-thumb'
-export { SliderTrack, type SliderTrackProps } from './slider-track'
-export { SliderValueText, type SliderValueTextProps } from './slider-value-text'
-export { useSliderContext, type UseSliderContext } from './use-slider-context'
+
+export {
+  SliderContext,
+  SliderControl,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderRange,
+  SliderRoot,
+  SliderThumb,
+  SliderTrack,
+  SliderValueText,
+  useSliderContext,
+}
+
+export type {
+  SliderContextProps,
+  SliderControlProps,
+  SliderFocusChangeDetails,
+  SliderLabelProps,
+  SliderMarkerGroupProps,
+  SliderMarkerProps,
+  SliderRangeProps,
+  SliderRootProps,
+  SliderThumbProps,
+  SliderTrackProps,
+  SliderValueChangeDetails,
+  SliderValueTextProps,
+  UseSliderContext,
+}

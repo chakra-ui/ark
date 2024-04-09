@@ -1,16 +1,44 @@
-export type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
-export * as Carousel from './carousel'
-export { CarouselContext, type CarouselContextProps } from './carousel-context'
-export { CarouselControl, type CarouselControlProps } from './carousel-control'
-export { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
-export {
+import type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
+import { CarouselContext, type CarouselContextProps } from './carousel-context'
+import { CarouselControl, type CarouselControlProps } from './carousel-control'
+import { CarouselIndicator, type CarouselIndicatorProps } from './carousel-indicator'
+import {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
-export { CarouselItem, type CarouselItemProps } from './carousel-item'
-export { CarouselItemGroup, type CarouselItemGroupProps } from './carousel-item-group'
-export { CarouselNextTrigger, type CarouselNextTriggerProps } from './carousel-next-trigger'
-export { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-prev-trigger'
-export { CarouselRoot, type CarouselRootProps } from './carousel-root'
-export { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
-export { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
+import { CarouselItem, type CarouselItemProps } from './carousel-item'
+import { CarouselItemGroup, type CarouselItemGroupProps } from './carousel-item-group'
+import { CarouselNextTrigger, type CarouselNextTriggerProps } from './carousel-next-trigger'
+import { CarouselPrevTrigger, type CarouselPrevTriggerProps } from './carousel-prev-trigger'
+import { CarouselRoot, type CarouselRootProps } from './carousel-root'
+import { CarouselViewport, type CarouselViewportProps } from './carousel-viewport'
+import { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
+
+export * as Carousel from './carousel'
+export {
+  CarouselContext,
+  CarouselControl,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
+  CarouselItem,
+  CarouselItemGroup,
+  CarouselNextTrigger,
+  CarouselPrevTrigger,
+  CarouselRoot,
+  CarouselViewport,
+  useCarouselContext,
+}
+export type {
+  CarouselContextProps,
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselItemGroupProps,
+  CarouselItemProps,
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+  CarouselRootProps,
+  CarouselSlideChangeDetails,
+  CarouselViewportProps,
+  UseCarouselContext,
+}
