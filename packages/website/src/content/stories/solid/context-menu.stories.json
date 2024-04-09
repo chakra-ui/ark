@@ -1,3 +1,0 @@
-{
-  "Basic": "import { Menu } from '@ark-ui/solid'\n\nconst Basic = () => (\n  <Menu.Root>\n    <Menu.ContextTrigger>\n      <div style={{ width: '100%', height: '20rem', border: '1px solid lightgray' }}>\n        Some content\n      </div>\n    </Menu.ContextTrigger>\n    <Menu.Positioner>\n      <Menu.Content>\n        <Menu.Item id=\"search\">Search</Menu.Item>\n        <Menu.Item id=\"undo\">Undo</Menu.Item>\n        <Menu.Item id=\"delivery\" disabled>\n          Delivery\n        </Menu.Item>\n        <Menu.Item id=\"unlink\">Unlink</Menu.Item>\n      </Menu.Content>\n    </Menu.Positioner>\n  </Menu.Root>\n)\n"
-}

@@ -1,0 +1,551 @@
+{
+  "name": "@ark-ui/vue",
+  "version": "0.11.0",
+  "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
+  "keywords": [
+    "accordion",
+    "avatar",
+    "carousel",
+    "checkbox",
+    "clipboard",
+    "color picker",
+    "combobox",
+    "date picker",
+    "dialog",
+    "editable",
+    "file upload",
+    "hover card",
+    "menu",
+    "number input",
+    "pagination",
+    "pin input",
+    "popover",
+    "progress",
+    "radio group",
+    "rating group",
+    "segment group",
+    "select",
+    "slider",
+    "splitter",
+    "switch",
+    "tabs",
+    "tags input",
+    "toast",
+    "toggle group",
+    "tooltip",
+    "tree view"
+  ],
+  "license": "MIT",
+  "homepage": "https://ark-ui.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
+    "directory": "frameworks/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./accordion": {
+      "source": "./src/accordion/index.ts",
+      "import": {
+        "types": "./dist/accordion/index.d.ts",
+        "default": "./dist/accordion/index.js"
+      },
+      "require": {
+        "types": "./dist/accordion/index.d.cts",
+        "default": "./dist/accordion/index.cjs"
+      }
+    },
+    "./avatar": {
+      "source": "./src/avatar/index.ts",
+      "import": {
+        "types": "./dist/avatar/index.d.ts",
+        "default": "./dist/avatar/index.js"
+      },
+      "require": {
+        "types": "./dist/avatar/index.d.cts",
+        "default": "./dist/avatar/index.cjs"
+      }
+    },
+    "./carousel": {
+      "source": "./src/carousel/index.ts",
+      "import": {
+        "types": "./dist/carousel/index.d.ts",
+        "default": "./dist/carousel/index.js"
+      },
+      "require": {
+        "types": "./dist/carousel/index.d.cts",
+        "default": "./dist/carousel/index.cjs"
+      }
+    },
+    "./checkbox": {
+      "source": "./src/checkbox/index.ts",
+      "import": {
+        "types": "./dist/checkbox/index.d.ts",
+        "default": "./dist/checkbox/index.js"
+      },
+      "require": {
+        "types": "./dist/checkbox/index.d.cts",
+        "default": "./dist/checkbox/index.cjs"
+      }
+    },
+    "./clipboard": {
+      "source": "./src/clipboard/index.ts",
+      "import": {
+        "types": "./dist/clipboard/index.d.ts",
+        "default": "./dist/clipboard/index.js"
+      },
+      "require": {
+        "types": "./dist/clipboard/index.d.cts",
+        "default": "./dist/clipboard/index.cjs"
+      }
+    },
+    "./color-picker": {
+      "source": "./src/color-picker/index.ts",
+      "import": {
+        "types": "./dist/color-picker/index.d.ts",
+        "default": "./dist/color-picker/index.js"
+      },
+      "require": {
+        "types": "./dist/color-picker/index.d.cts",
+        "default": "./dist/color-picker/index.cjs"
+      }
+    },
+    "./combobox": {
+      "source": "./src/combobox/index.ts",
+      "import": {
+        "types": "./dist/combobox/index.d.ts",
+        "default": "./dist/combobox/index.js"
+      },
+      "require": {
+        "types": "./dist/combobox/index.d.cts",
+        "default": "./dist/combobox/index.cjs"
+      }
+    },
+    "./date-picker": {
+      "source": "./src/date-picker/index.ts",
+      "import": {
+        "types": "./dist/date-picker/index.d.ts",
+        "default": "./dist/date-picker/index.js"
+      },
+      "require": {
+        "types": "./dist/date-picker/index.d.cts",
+        "default": "./dist/date-picker/index.cjs"
+      }
+    },
+    "./dialog": {
+      "source": "./src/dialog/index.ts",
+      "import": {
+        "types": "./dist/dialog/index.d.ts",
+        "default": "./dist/dialog/index.js"
+      },
+      "require": {
+        "types": "./dist/dialog/index.d.cts",
+        "default": "./dist/dialog/index.cjs"
+      }
+    },
+    "./editable": {
+      "source": "./src/editable/index.ts",
+      "import": {
+        "types": "./dist/editable/index.d.ts",
+        "default": "./dist/editable/index.js"
+      },
+      "require": {
+        "types": "./dist/editable/index.d.cts",
+        "default": "./dist/editable/index.cjs"
+      }
+    },
+    "./environment": {
+      "source": "./src/environment/index.ts",
+      "import": {
+        "types": "./dist/environment/index.d.ts",
+        "default": "./dist/environment/index.js"
+      },
+      "require": {
+        "types": "./dist/environment/index.d.cts",
+        "default": "./dist/environment/index.cjs"
+      }
+    },
+    "./factory": {
+      "source": "./src/factory.ts",
+      "import": {
+        "types": "./dist/factory.d.ts",
+        "default": "./dist/factory.js"
+      },
+      "require": {
+        "types": "./dist/factory.d.cts",
+        "default": "./dist/factory.cjs"
+      }
+    },
+    "./file-upload": {
+      "source": "./src/file-upload/index.ts",
+      "import": {
+        "types": "./dist/file-upload/index.d.ts",
+        "default": "./dist/file-upload/index.js"
+      },
+      "require": {
+        "types": "./dist/file-upload/index.d.cts",
+        "default": "./dist/file-upload/index.cjs"
+      }
+    },
+    "./format": {
+      "source": "./src/format/index.ts",
+      "import": {
+        "types": "./dist/format/index.d.ts",
+        "default": "./dist/format/index.js"
+      },
+      "require": {
+        "types": "./dist/format/index.d.cts",
+        "default": "./dist/format/index.cjs"
+      }
+    },
+    "./hover-card": {
+      "source": "./src/hover-card/index.ts",
+      "import": {
+        "types": "./dist/hover-card/index.d.ts",
+        "default": "./dist/hover-card/index.js"
+      },
+      "require": {
+        "types": "./dist/hover-card/index.d.cts",
+        "default": "./dist/hover-card/index.cjs"
+      }
+    },
+    "./locale": {
+      "source": "./src/locale/index.ts",
+      "import": {
+        "types": "./dist/locale/index.d.ts",
+        "default": "./dist/locale/index.js"
+      },
+      "require": {
+        "types": "./dist/locale/index.d.cts",
+        "default": "./dist/locale/index.cjs"
+      }
+    },
+    "./menu": {
+      "source": "./src/menu/index.ts",
+      "import": {
+        "types": "./dist/menu/index.d.ts",
+        "default": "./dist/menu/index.js"
+      },
+      "require": {
+        "types": "./dist/menu/index.d.cts",
+        "default": "./dist/menu/index.cjs"
+      }
+    },
+    "./number-input": {
+      "source": "./src/number-input/index.ts",
+      "import": {
+        "types": "./dist/number-input/index.d.ts",
+        "default": "./dist/number-input/index.js"
+      },
+      "require": {
+        "types": "./dist/number-input/index.d.cts",
+        "default": "./dist/number-input/index.cjs"
+      }
+    },
+    "./pagination": {
+      "source": "./src/pagination/index.ts",
+      "import": {
+        "types": "./dist/pagination/index.d.ts",
+        "default": "./dist/pagination/index.js"
+      },
+      "require": {
+        "types": "./dist/pagination/index.d.cts",
+        "default": "./dist/pagination/index.cjs"
+      }
+    },
+    "./pin-input": {
+      "source": "./src/pin-input/index.ts",
+      "import": {
+        "types": "./dist/pin-input/index.d.ts",
+        "default": "./dist/pin-input/index.js"
+      },
+      "require": {
+        "types": "./dist/pin-input/index.d.cts",
+        "default": "./dist/pin-input/index.cjs"
+      }
+    },
+    "./popover": {
+      "source": "./src/popover/index.ts",
+      "import": {
+        "types": "./dist/popover/index.d.ts",
+        "default": "./dist/popover/index.js"
+      },
+      "require": {
+        "types": "./dist/popover/index.d.cts",
+        "default": "./dist/popover/index.cjs"
+      }
+    },
+    "./presence": {
+      "source": "./src/presence/index.ts",
+      "import": {
+        "types": "./dist/presence/index.d.ts",
+        "default": "./dist/presence/index.js"
+      },
+      "require": {
+        "types": "./dist/presence/index.d.cts",
+        "default": "./dist/presence/index.cjs"
+      }
+    },
+    "./progress": {
+      "source": "./src/progress/index.ts",
+      "import": {
+        "types": "./dist/progress/index.d.ts",
+        "default": "./dist/progress/index.js"
+      },
+      "require": {
+        "types": "./dist/progress/index.d.cts",
+        "default": "./dist/progress/index.cjs"
+      }
+    },
+    "./radio-group": {
+      "source": "./src/radio-group/index.ts",
+      "import": {
+        "types": "./dist/radio-group/index.d.ts",
+        "default": "./dist/radio-group/index.js"
+      },
+      "require": {
+        "types": "./dist/radio-group/index.d.cts",
+        "default": "./dist/radio-group/index.cjs"
+      }
+    },
+    "./rating-group": {
+      "source": "./src/rating-group/index.ts",
+      "import": {
+        "types": "./dist/rating-group/index.d.ts",
+        "default": "./dist/rating-group/index.js"
+      },
+      "require": {
+        "types": "./dist/rating-group/index.d.cts",
+        "default": "./dist/rating-group/index.cjs"
+      }
+    },
+    "./segment-group": {
+      "source": "./src/segment-group/index.ts",
+      "import": {
+        "types": "./dist/segment-group/index.d.ts",
+        "default": "./dist/segment-group/index.js"
+      },
+      "require": {
+        "types": "./dist/segment-group/index.d.cts",
+        "default": "./dist/segment-group/index.cjs"
+      }
+    },
+    "./select": {
+      "source": "./src/select/index.ts",
+      "import": {
+        "types": "./dist/select/index.d.ts",
+        "default": "./dist/select/index.js"
+      },
+      "require": {
+        "types": "./dist/select/index.d.cts",
+        "default": "./dist/select/index.cjs"
+      }
+    },
+    "./slider": {
+      "source": "./src/slider/index.ts",
+      "import": {
+        "types": "./dist/slider/index.d.ts",
+        "default": "./dist/slider/index.js"
+      },
+      "require": {
+        "types": "./dist/slider/index.d.cts",
+        "default": "./dist/slider/index.cjs"
+      }
+    },
+    "./splitter": {
+      "source": "./src/splitter/index.ts",
+      "import": {
+        "types": "./dist/splitter/index.d.ts",
+        "default": "./dist/splitter/index.js"
+      },
+      "require": {
+        "types": "./dist/splitter/index.d.cts",
+        "default": "./dist/splitter/index.cjs"
+      }
+    },
+    "./switch": {
+      "source": "./src/switch/index.ts",
+      "import": {
+        "types": "./dist/switch/index.d.ts",
+        "default": "./dist/switch/index.js"
+      },
+      "require": {
+        "types": "./dist/switch/index.d.cts",
+        "default": "./dist/switch/index.cjs"
+      }
+    },
+    "./tabs": {
+      "source": "./src/tabs/index.ts",
+      "import": {
+        "types": "./dist/tabs/index.d.ts",
+        "default": "./dist/tabs/index.js"
+      },
+      "require": {
+        "types": "./dist/tabs/index.d.cts",
+        "default": "./dist/tabs/index.cjs"
+      }
+    },
+    "./tags-input": {
+      "source": "./src/tags-input/index.ts",
+      "import": {
+        "types": "./dist/tags-input/index.d.ts",
+        "default": "./dist/tags-input/index.js"
+      },
+      "require": {
+        "types": "./dist/tags-input/index.d.cts",
+        "default": "./dist/tags-input/index.cjs"
+      }
+    },
+    "./toast": {
+      "source": "./src/toast/index.ts",
+      "import": {
+        "types": "./dist/toast/index.d.ts",
+        "default": "./dist/toast/index.js"
+      },
+      "require": {
+        "types": "./dist/toast/index.d.cts",
+        "default": "./dist/toast/index.cjs"
+      }
+    },
+    "./toggle-group": {
+      "source": "./src/toggle-group/index.ts",
+      "import": {
+        "types": "./dist/toggle-group/index.d.ts",
+        "default": "./dist/toggle-group/index.js"
+      },
+      "require": {
+        "types": "./dist/toggle-group/index.d.cts",
+        "default": "./dist/toggle-group/index.cjs"
+      }
+    },
+    "./tooltip": {
+      "source": "./src/tooltip/index.ts",
+      "import": {
+        "types": "./dist/tooltip/index.d.ts",
+        "default": "./dist/tooltip/index.js"
+      },
+      "require": {
+        "types": "./dist/tooltip/index.d.cts",
+        "default": "./dist/tooltip/index.cjs"
+      }
+    },
+    "./tree-view": {
+      "source": "./src/tree-view/index.ts",
+      "import": {
+        "types": "./dist/tree-view/index.d.ts",
+        "default": "./dist/tree-view/index.js"
+      },
+      "require": {
+        "types": "./dist/tree-view/index.d.cts",
+        "default": "./dist/tree-view/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint --ext .ts,.tsx src",
+    "test": "vitest",
+    "test:ci": "vitest --run --coverage",
+    "typecheck": "tsc",
+    "storydocs": "bun run --cwd ../../scripts document:stories vue",
+    "typedocs": "bun run --cwd ../../scripts document:types vue",
+    "storybook": "histoire dev",
+    "release-it": "release-it --config ../../release-it.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@ark-ui/anatomy": "workspace:*",
+    "@zag-js/accordion": "0.45.0",
+    "@zag-js/avatar": "0.45.0",
+    "@zag-js/carousel": "0.45.0",
+    "@zag-js/checkbox": "0.45.0",
+    "@zag-js/clipboard": "0.45.0",
+    "@zag-js/collapsible": "0.45.0",
+    "@zag-js/color-picker": "0.45.0",
+    "@zag-js/combobox": "0.45.0",
+    "@zag-js/date-picker": "0.45.0",
+    "@zag-js/dialog": "0.45.0",
+    "@zag-js/editable": "0.45.0",
+    "@zag-js/file-upload": "0.45.0",
+    "@zag-js/hover-card": "0.45.0",
+    "@zag-js/i18n-utils": "0.45.0",
+    "@zag-js/file-utils": "0.45.0",
+    "@zag-js/menu": "0.45.0",
+    "@zag-js/number-input": "0.45.0",
+    "@zag-js/pagination": "0.45.0",
+    "@zag-js/pin-input": "0.45.0",
+    "@zag-js/popover": "0.45.0",
+    "@zag-js/presence": "0.45.0",
+    "@zag-js/progress": "0.45.0",
+    "@zag-js/radio-group": "0.45.0",
+    "@zag-js/rating-group": "0.45.0",
+    "@zag-js/select": "0.45.0",
+    "@zag-js/slider": "0.45.0",
+    "@zag-js/splitter": "0.45.0",
+    "@zag-js/switch": "0.45.0",
+    "@zag-js/tabs": "0.45.0",
+    "@zag-js/tags-input": "0.45.0",
+    "@zag-js/toast": "0.45.0",
+    "@zag-js/toggle-group": "0.45.0",
+    "@zag-js/tooltip": "0.45.0",
+    "@zag-js/tree-view": "0.45.0",
+    "@zag-js/types": "0.45.0",
+    "@zag-js/vue": "0.45.0"
+  },
+  "devDependencies": {
+    "@histoire/plugin-vue": "0.17.15",
+    "@release-it/keep-a-changelog": "5.0.0",
+    "@testing-library/dom": "9.3.4",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/user-event": "14.5.2",
+    "@testing-library/vue": "8.0.3",
+    "@types/jsdom": "21.1.6",
+    "@types/testing-library__jest-dom": "5.14.9",
+    "@vitejs/plugin-vue": "5.0.4",
+    "@vitejs/plugin-vue-jsx": "3.1.0",
+    "@vitest/coverage-v8": "1.4.0",
+    "@vue/compiler-sfc": "3.4.21",
+    "@vue/eslint-config-prettier": "9.0.0",
+    "@vue/eslint-config-typescript": "13.0.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-jest-dom": "5.2.0",
+    "eslint-plugin-testing-library": "6.2.0",
+    "eslint-plugin-vue": "9.24.0",
+    "globby": "14.0.1",
+    "histoire": "0.17.15",
+    "jsdom": "24.0.0",
+    "release-it": "17.1.1",
+    "resize-observer-polyfill": "1.5.1",
+    "typescript": "5.4.4",
+    "vite": "5.2.8",
+    "vite-plugin-dts": "3.8.1",
+    "vitest": "1.4.0",
+    "vue": "3.4.21"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  }
+}

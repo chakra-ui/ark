@@ -1,0 +1,68 @@
+---
+id: tooltip
+title: Tooltip
+description: A label that provides information on hover or focus.
+resources:
+  zag: tooltip
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
+---
+
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
+
+<ComponentPreview />
+
+## Anatomy
+
+To set up the tooltip correctly, you'll need to understand its anatomy and how
+we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="tooltip" />
+
+## Examples
+
+Learn how to use the `Tooltip` component in your project. Let's take a look at
+the most basic example:
+
+<Story id="Basic" />
+
+### Controlled Tooltip
+
+To create a controlled Tooltip component, manage the state of whether the
+tooltip is open using the `open` prop:
+
+<Story id="Controlled" />
+
+### Using a Render Function
+
+For more control over the Tooltip's functionality, you can use a function as a
+child, which provides access to the Tooltip API:
+
+<Story id="RenderFn" />
+
+### Adding an Arrow
+
+To display an arrow pointing to the trigger from the tooltip, use the
+`Tooltip.Arrow` and `Tooltip.ArrowTip` components:
+
+<Story id="Arrow" />
+
+### Configuring Delay Timings
+
+To configure the delay timings for the Tooltip, use the `closeDelay` and
+`openDelay` props:
+
+<Story id="Timings" />
+
+### Custom Positioning
+
+To customize the position of the Tooltip relative to the trigger, use the
+`positioning` prop:
+
+<Story id="Positioning" />
+
+## API Reference
+
+<ComponentTypes />

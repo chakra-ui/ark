@@ -1,7 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "ts-node": {
-    "esm": true
-  },
-  "include": ["src"]
-}

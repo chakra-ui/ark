@@ -1,0 +1,40 @@
+{
+  "Root": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; input: string; label: string }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the clipboard. Useful for composition."
+    },
+    "onCopyStatusChange": {
+      "type": "(details: CopyStatusDetails) => void",
+      "isRequired": false,
+      "description": "The function to be called when the value is copied to the clipboard"
+    },
+    "timeout": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The timeout for the copy operation"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value to be copied to the clipboard"
+    }
+  },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } }
+}
