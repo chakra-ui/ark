@@ -75,7 +75,7 @@ export const Basic = () => (
 
 ### Fixed
 
-- Resolved an issue that a disabled `Accordion.Item` could still be opened.̊
+- Resolved an issue that a disabled `Accordion.Item` could still be opened.
 
 ## [2.2.1] - 2024-02-27
 
