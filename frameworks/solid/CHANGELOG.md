@@ -6,13 +6,82 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Exposed component-related types to keep imports clean and orderly.
+
+```tsx
+import { Avatar } from '@ark-ui/react';
+
+export const Example = () => {
+  // New: Use `Avatar` import to declare types.
+  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
+    console.log(details.status);
+  };
+
+  return (
+    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    </Avatar.Root>
+  );
+};
+```
+
+- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+
+```tsx
+export const Basic = () => (
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context>
+        {(popover) => (
+          <Popover.Content>
+            <Popover.Title onClick={() => popover().close()}>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+        )}
+      </Popover.Context>
+    </Popover.Positioner>
+  </Popover.Root>
+);
+```
+
+- Added new `Format` component to format bytes and numbers.
+
 ### Fixed
 
 - Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
 - Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
 
+### Changed
+
+- Refined the current `as` prop implementation. The previous approach had several issues, mostly related to the merging of multiple types (e.g., ButtonProps + DialogTriggerProps + HTMLButtonElement), which resulted in a sluggish and, in some cases, malfunctioning implementation.
+
+```tsx
+// before
+<Button as={Dialog.Trigger} variant="solid" size="sm">
+  Open Dialog
+</Button>
+
+// after
+<Dialog.Trigger asChild>
+  {(props) => (
+    <Button
+      {...props({ onClick: () => console.log('merge events') })}
+      variant="solid"
+      size="md"
+    >
+      Open Dialog
+    </Button>
+  )}
+</Dialog.Trigger>
+```
+
 ### Removed
 
+- **BREAKING**: Removed the option to access the internal API from various Root components. Use the new `Context` component instead. This change will help in streamlining the `asChild` composition pattern.
 - Removed the unused `parse` prop from the `DatePicker` component.
 
 ## [2.2.0] - 2024-02-27
