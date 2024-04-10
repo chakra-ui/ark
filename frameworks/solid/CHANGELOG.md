@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [3.0.0-0] - 2024-04-10
+
 ### Added
 
 - Exposed component-related types to keep imports clean and orderly.
