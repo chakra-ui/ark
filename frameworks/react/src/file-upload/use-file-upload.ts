@@ -2,7 +2,7 @@ import * as fileUpload from '@zag-js/file-upload'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}

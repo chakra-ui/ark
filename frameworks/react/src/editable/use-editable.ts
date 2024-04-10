@@ -3,7 +3,7 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import type { PropTypes } from '@zag-js/types'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseEditableProps extends Optional<editable.Context, 'id'> {

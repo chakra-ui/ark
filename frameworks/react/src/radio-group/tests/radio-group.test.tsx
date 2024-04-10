@@ -1,5 +1,4 @@
 import { radioGroupAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
@@ -15,7 +14,6 @@ describe('Radio Group / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

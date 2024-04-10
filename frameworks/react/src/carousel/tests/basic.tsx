@@ -23,7 +23,7 @@ export const ComponentUnderTest = (props: CarouselRootProps) => {
         <Carousel.ItemGroup>
           {images.map((image, index) => (
             <Carousel.Item key={index} index={index} data-testid="item">
-              <img src={image} />
+              <img src={image} alt="Slide #" />
             </Carousel.Item>
           ))}
         </Carousel.ItemGroup>

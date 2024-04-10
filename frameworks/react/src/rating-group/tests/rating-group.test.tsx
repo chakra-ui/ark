@@ -1,5 +1,4 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import { vi } from 'vitest'
 import { RatingGroup } from '../'
@@ -14,7 +13,6 @@ describe('Rating Group / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

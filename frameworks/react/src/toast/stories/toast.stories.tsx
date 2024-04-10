@@ -28,7 +28,9 @@ export const Basic = () => {
 
   return (
     <>
-      <button onClick={handleToast}>Toast</button>
+      <button type="button" onClick={handleToast}>
+        Toast
+      </button>
       <Toaster />
     </>
   )
@@ -51,6 +53,7 @@ export const Customized = () => {
   return (
     <>
       <button
+        type="button"
         onClick={() =>
           toast.create({
             title: 'Success',
@@ -86,6 +89,7 @@ export const CustomRender = () => {
   return (
     <>
       <button
+        type="button"
         onClick={() =>
           toast.create({
             title: 'Please checkout',

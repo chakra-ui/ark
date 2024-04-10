@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseDatePickerReturn } from './use-date-picker'
+import type { UseDatePickerReturn } from './use-date-picker'
 
 export interface UseDatePickerContext extends UseDatePickerReturn {}
 

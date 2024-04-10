@@ -1,10 +1,10 @@
 import { createContext } from '../create-context'
 import type { CollectionItem } from '../types'
-import { type UseSelectReturn } from './use-select'
+import type { UseSelectReturn } from './use-select'
 
 export interface UseSelectContext<T extends CollectionItem> extends UseSelectReturn<T> {}
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const [SelectProvider, useSelectContext] = createContext<UseSelectContext<any>>({
   name: 'SelectContext',
   hookName: 'useSelectContext',

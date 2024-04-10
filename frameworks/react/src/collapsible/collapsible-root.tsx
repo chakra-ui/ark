@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { splitCollapsibleProps } from './split-collapsible-props'
 import { useCollapsible, type UseCollapsibleProps } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'

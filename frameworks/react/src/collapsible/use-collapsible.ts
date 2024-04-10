@@ -3,7 +3,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId, useRef } from 'react'
 import { useEnvironmentContext } from '../environment'
 import type { RenderStrategyProps } from '../render-strategy'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseCollapsibleProps

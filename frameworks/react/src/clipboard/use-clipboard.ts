@@ -2,7 +2,7 @@ import * as clipboard from '@zag-js/clipboard'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseClipboardProps extends Optional<clipboard.Context, 'id'> {}
 export interface UseClipboardReturn extends clipboard.Api<PropTypes> {}

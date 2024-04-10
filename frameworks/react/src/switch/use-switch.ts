@@ -2,7 +2,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import * as zagSwitch from '@zag-js/switch'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {

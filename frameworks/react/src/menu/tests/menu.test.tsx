@@ -1,5 +1,4 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
@@ -63,7 +62,7 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 describe('Menu / Parts & Exports', () => {
   it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

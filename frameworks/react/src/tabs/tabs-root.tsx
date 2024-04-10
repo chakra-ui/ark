@@ -7,7 +7,7 @@ import {
   splitRenderStrategyProps,
   type RenderStrategyProps,
 } from '../render-strategy'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { useTabs, type UseTabsProps } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 

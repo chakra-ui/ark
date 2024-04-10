@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseFileUploadReturn } from './use-file-upload'
+import type { UseFileUploadReturn } from './use-file-upload'
 
 export interface UseFileUploadContext extends UseFileUploadReturn {}
 

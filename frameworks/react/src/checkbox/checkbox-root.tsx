@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { useCheckbox, type UseCheckboxProps } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 

@@ -6,7 +6,9 @@ export const ControlledComponentUnderTest = (props: CheckboxRootProps) => {
   const [checked, setChecked] = useState(false)
   return (
     <>
-      <button onClick={() => setChecked(true)}>set checked</button>
+      <button type="button" onClick={() => setChecked(true)}>
+        set checked
+      </button>
       <ComponentUnderTest {...props} checked={checked} />
     </>
   )

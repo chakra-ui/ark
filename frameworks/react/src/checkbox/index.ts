@@ -7,7 +7,6 @@ import { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
 import { CheckboxIndicator, type CheckboxIndicatorProps } from './checkbox-indicator'
 import { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'
 import { CheckboxRoot, type CheckboxRootProps } from './checkbox-root'
-
 import { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context'
 
 export * as Checkbox from './checkbox'

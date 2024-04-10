@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef, useId } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign, type Optional } from '../types'
+import type { Assign, Optional } from '../types'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
 

@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react'
+import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Accordion } from '../'
 import './accordion.css'
-import { ChevronDownIcon } from './icons'
 
 const meta: Meta = {
   title: 'Components / Accordion',
@@ -13,8 +13,8 @@ export default meta
 export const Basic = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      {['React', 'Solid', 'Vue'].map((item, id) => (
-        <Accordion.Item key={id} value={item}>
+      {['React', 'Solid', 'Vue'].map((item) => (
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             What is {item}?
             <Accordion.ItemIndicator>
@@ -34,8 +34,8 @@ export const RenderProp = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion.Root>
-      {items.map((item, id) => (
-        <Accordion.Item key={id} value={item}>
+      {items.map((item) => (
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemContext>
             {(accordionItem) => (
               <>
@@ -55,8 +55,8 @@ export const RenderProp = () => {
 export const Collapsible = () => {
   return (
     <Accordion.Root defaultValue={['React']} collapsible>
-      {['React', 'Solid', 'Vue'].map((item, id) => (
-        <Accordion.Item key={id} value={item}>
+      {['React', 'Solid', 'Vue'].map((item) => (
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             {item}
             <Accordion.ItemIndicator>
@@ -75,8 +75,8 @@ export const Collapsible = () => {
 export const Multiple = () => {
   return (
     <Accordion.Root defaultValue={['React']} multiple>
-      {['React', 'Solid', 'Vue'].map((item, id) => (
-        <Accordion.Item key={id} value={item}>
+      {['React', 'Solid', 'Vue'].map((item) => (
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             {item}
             <Accordion.ItemIndicator>
@@ -97,8 +97,8 @@ export const Controlled = () => {
   const [value, setValue] = useState<string[]>([])
   return (
     <Accordion.Root value={value} onValueChange={(details) => setValue(details.value)}>
-      {items.map((item, id) => (
-        <Accordion.Item key={id} value={item}>
+      {items.map((item) => (
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
@@ -111,8 +111,8 @@ export const Vertical = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion.Root orientation="vertical">
-      {items.map((item, id) => (
-        <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
+      {items.map((item) => (
+        <Accordion.Item key={item} value={item} disabled={item === 'panel-2'}>
           <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
@@ -125,8 +125,8 @@ export const Disabled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']
   return (
     <Accordion.Root>
-      {items.map((item, id) => (
-        <Accordion.Item key={id} value={item} disabled={item === 'panel-2'}>
+      {items.map((item) => (
+        <Accordion.Item key={item} value={item} disabled={item === 'panel-2'}>
           <Accordion.ItemTrigger>{item} trigger</Accordion.ItemTrigger>
           <Accordion.ItemContent>{item} content</Accordion.ItemContent>
         </Accordion.Item>
@@ -138,9 +138,9 @@ export const Disabled = () => {
 export const LazyMount = () => {
   return (
     <Accordion.Root lazyMount collapsible>
-      {['React', 'Solid', 'Vue'].map((item, id) => (
+      {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item
-          key={id}
+          key={item}
           value={item}
           lazyMount={false}
           onExitComplete={() => alert('exit')}

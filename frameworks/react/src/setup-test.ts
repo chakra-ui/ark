@@ -7,6 +7,7 @@ import { vi } from 'vitest'
 const { window } = new JSDOM()
 
 vi.stubGlobal('ResizeObserver', ResizeObserver)
+// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 window['ResizeObserver'] = ResizeObserver
 window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}

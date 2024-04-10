@@ -32,7 +32,7 @@ export const Basic = () => {
         <Carousel.ItemGroup>
           {images.map((image, index) => (
             <Carousel.Item key={index} index={index}>
-              <img src={image} />
+              <img src={image} alt={`Slide ${index}`} />
             </Carousel.Item>
           ))}
         </Carousel.ItemGroup>
@@ -67,7 +67,7 @@ export const Controlled = () => {
         <Carousel.ItemGroup>
           {images.map((image, index) => (
             <Carousel.Item key={index} index={index}>
-              <img src={image} />
+              <img src={image} alt={`Slide ${index}`} />
             </Carousel.Item>
           ))}
         </Carousel.ItemGroup>
@@ -105,7 +105,7 @@ export const Customized = () => {
         <Carousel.ItemGroup>
           {images.map((image, index) => (
             <Carousel.Item key={index} index={index}>
-              <img src={image} />
+              <img src={image} alt={`Slide ${index}`} />
             </Carousel.Item>
           ))}
         </Carousel.ItemGroup>

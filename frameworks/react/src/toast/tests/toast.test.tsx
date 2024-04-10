@@ -1,5 +1,4 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Toast } from '../'
@@ -16,7 +15,6 @@ describe('Toast / Parts & Exports', () => {
   it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     await user.click(screen.getByText('Create Toast'))
 
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
     await user.click(screen.getByText('Close'))
   })

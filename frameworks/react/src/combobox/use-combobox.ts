@@ -4,7 +4,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type CollectionItem, type Optional } from '../types'
+import type { CollectionItem, Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseComboboxProps<T extends CollectionItem>
@@ -28,9 +28,9 @@ export const useCombobox = <T extends CollectionItem>(
     'items',
   ])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const collection = useMemo(
     () => combobox.collection(collectionOptions),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     Object.values(collectionOptions),
   )
 

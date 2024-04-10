@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { type ContentProps } from '@zag-js/tabs'
+import type { ContentProps } from '@zag-js/tabs'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
