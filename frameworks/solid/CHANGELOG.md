@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where the `dist` folder was not being published to npm.
+
 ## [3.0.0-0] - 2024-04-10
 
 ### Added

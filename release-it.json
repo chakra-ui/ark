@@ -16,5 +16,8 @@
   "npm": {
     "versionArgs": ["--workspaces-update=false"],
     "publishPath": "./dist/"
+  },
+  "hooks": {
+    "before:init": ["bun run build"]
   }
 }
