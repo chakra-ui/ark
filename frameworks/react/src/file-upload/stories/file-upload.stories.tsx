@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
+import { FileIcon } from 'lucide-react'
 import { FileUpload } from '../'
 import './file-upload.css'
-import { FileIcon } from './icons'
 
 const meta: Meta = {
   title: 'Components / File Upload',
@@ -18,8 +18,8 @@ export const Basic = () => {
       <FileUpload.ItemGroup>
         <FileUpload.Context>
           {(api) =>
-            api.acceptedFiles.map((file, id) => (
-              <FileUpload.Item key={id} file={file}>
+            api.acceptedFiles.map((file) => (
+              <FileUpload.Item key={file.name} file={file}>
                 <FileUpload.ItemPreview type="image/*">
                   <FileUpload.ItemPreviewImage />
                 </FileUpload.ItemPreview>

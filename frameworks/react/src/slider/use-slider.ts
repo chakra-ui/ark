@@ -2,7 +2,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import * as Slider from '@zag-js/slider'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseSliderProps extends Optional<Slider.Context, 'id'> {

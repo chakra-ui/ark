@@ -7,7 +7,9 @@ const ComponentUnderTest = (props: PresenceProps) => {
   const [present, setPresent] = useState(false)
   return (
     <>
-      <button onClick={() => setPresent(!present)}>Toggle</button>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
       <Presence present={present} {...props} data-testid="box">
         I am a red box
       </Presence>

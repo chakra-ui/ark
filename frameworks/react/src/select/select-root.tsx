@@ -8,7 +8,7 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { type Assign, type CollectionItem } from '../types'
+import type { Assign, CollectionItem } from '../types'
 import { useSelect, type UseSelectProps } from './use-select'
 import { SelectProvider } from './use-select-context'
 
@@ -65,10 +65,8 @@ const SelectImpl = <T extends CollectionItem>(
   )
 }
 
-export interface SelectComponent {
-  <T extends CollectionItem>(
-    props: SelectRootProps<T> & React.RefAttributes<HTMLDivElement>,
-  ): JSX.Element
-}
+export type SelectComponent = <T extends CollectionItem>(
+  props: SelectRootProps<T> & React.RefAttributes<HTMLDivElement>,
+) => JSX.Element
 
 export const SelectRoot = forwardRef(SelectImpl) as SelectComponent

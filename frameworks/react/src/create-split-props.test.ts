@@ -12,13 +12,11 @@ describe('createSplitProps', () => {
   }
 
   it('should throw TS error on incomplete keys', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error this must be an error because name is not specified
     createSplitProps<Target>()(source, [])
   })
 
   it('should throw TS error on extra keys', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error this must be an error because age is not known to Target
     createSplitProps<Target>()(source, ['name', 'age'])
   })

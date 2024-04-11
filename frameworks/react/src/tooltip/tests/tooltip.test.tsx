@@ -1,5 +1,4 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Tooltip } from '../'
@@ -14,7 +13,6 @@ describe('Tooltip / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

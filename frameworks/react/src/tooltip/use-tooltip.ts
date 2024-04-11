@@ -2,7 +2,7 @@ import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import * as tooltip from '@zag-js/tooltip'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {

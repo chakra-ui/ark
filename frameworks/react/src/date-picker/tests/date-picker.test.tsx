@@ -1,5 +1,4 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { DatePicker } from '../'
@@ -14,7 +13,6 @@ describe('Date Picker / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

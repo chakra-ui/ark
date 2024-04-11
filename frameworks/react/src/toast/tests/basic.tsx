@@ -15,7 +15,10 @@ const [Toaster, toast] = createToaster({
 
 export const ComponentUnderTest = () => (
   <div>
-    <button onClick={() => toast.create({ title: 'Title', description: 'Description' })}>
+    <button
+      type="button"
+      onClick={() => toast.create({ title: 'Title', description: 'Description' })}
+    >
       Create Toast
     </button>
     <Toaster />

@@ -1,4 +1,4 @@
-import { type CommonProperties } from '@zag-js/types'
+import type { CommonProperties } from '@zag-js/types'
 import { createContext } from '../create-context'
 
 export type EnvironmentContext = CommonProperties['getRootNode']

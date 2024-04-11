@@ -1,9 +1,10 @@
 import { mergeProps, normalizeProps, useActor, type PropTypes } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
-import { forwardRef, useEffect, type JSX } from 'react'
+import { forwardRef, type JSX } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type HTMLArkProps } from '../factory'
+import type { HTMLArkProps } from '../factory'
 import type { Optional } from '../types'
+import { useEffectOnce } from '../use-effect-once'
 import { ToastGroup } from './toast-group'
 import { ToastProvider } from './use-toast-context'
 
@@ -31,11 +32,10 @@ export const createToaster = (props: CreateToasterProps): CreateToasterReturn =>
     const [state, send] = useActor(service)
     context = toast.group.connect(state, send, normalizeProps)
 
-    useEffect(() => {
+    useEffectOnce(() => {
       service.setContext({ getRootNode })
       return () => void service.stop()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 
     const mergedProps = mergeProps(context.getGroupProps({ placement }), props)
     const toasts = context.toastsByPlacement[placement] ?? []

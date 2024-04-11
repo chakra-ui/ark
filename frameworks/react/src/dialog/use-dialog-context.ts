@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseDialogReturn } from './use-dialog'
+import type { UseDialogReturn } from './use-dialog'
 
 export interface UseDialogContext extends UseDialogReturn {}
 

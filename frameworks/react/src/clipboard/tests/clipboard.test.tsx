@@ -1,10 +1,9 @@
 import { clipboardAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { CheckIcon, ClipboardCopyIcon } from 'lucide-react'
 import { Clipboard } from '../'
 import { getExports, getParts } from '../../setup-test'
-import { CheckIcon, ClipboardCopyIcon } from '../stories/icons'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">
@@ -28,7 +27,6 @@ describe('Checkbox / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(clipboardAnatomy))('should render part %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

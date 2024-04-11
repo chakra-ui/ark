@@ -30,7 +30,9 @@ export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
   return (
     <>
-      <button onClick={() => setOpen(!isOpen)}>click me</button>
+      <button type="button" onClick={() => setOpen(!isOpen)}>
+        click me
+      </button>
       <HoverCard.Root open={isOpen} onOpenChange={() => setOpen(false)}>
         <HoverCard.Trigger>Hover me</HoverCard.Trigger>
         <Portal>

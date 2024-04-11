@@ -8,7 +8,7 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { useColorPicker, type UseColorPickerProps } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
 

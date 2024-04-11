@@ -9,7 +9,7 @@ const PortalWithContainerTest = (props: { disabled?: boolean }) => {
       <Portal container={container} disabled={props.disabled}>
         <p>Anything must be visible</p>
       </Portal>
-      <div data-testid="container" ref={container}></div>
+      <div data-testid="container" ref={container} />
     </div>
   )
 }

@@ -8,7 +8,7 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { type Assign, type CollectionItem } from '../types'
+import type { Assign, CollectionItem } from '../types'
 import { useCombobox, type UseComboboxProps } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -73,10 +73,8 @@ const ComboboxImpl = <T extends CollectionItem>(
   )
 }
 
-export interface ComboboxComponent {
-  <T extends CollectionItem>(
-    props: ComboboxRootProps<T> & RefAttributes<HTMLDivElement>,
-  ): JSX.Element
-}
+export type ComboboxComponent = <T extends CollectionItem>(
+  props: ComboboxRootProps<T> & RefAttributes<HTMLDivElement>,
+) => JSX.Element
 
 export const ComboboxRoot = forwardRef(ComboboxImpl) as ComboboxComponent

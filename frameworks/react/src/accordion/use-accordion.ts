@@ -2,7 +2,7 @@ import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {

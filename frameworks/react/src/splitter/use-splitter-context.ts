@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseSplitterReturn } from './use-splitter'
+import type { UseSplitterReturn } from './use-splitter'
 
 export interface UseSplitterContext extends UseSplitterReturn {}
 

@@ -8,7 +8,7 @@ import {
   usePresence,
   type UsePresenceProps,
 } from '../presence'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { useDatePicker, type UseDatePickerProps } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 

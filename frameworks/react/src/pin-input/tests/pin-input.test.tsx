@@ -1,5 +1,4 @@
 import { pinInputAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
@@ -15,7 +14,6 @@ describe('PinInput / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

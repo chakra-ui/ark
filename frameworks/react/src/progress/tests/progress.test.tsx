@@ -1,5 +1,4 @@
 import { progressAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import { Progress } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -13,7 +12,6 @@ describe('Progress / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(progressAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

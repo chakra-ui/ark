@@ -1,5 +1,4 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
 import { cleanup, render } from '@testing-library/react/pure'
 import { Splitter } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -13,7 +12,6 @@ describe('Splitter / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   it.each(getParts(splitterAnatomy))('should render part! %s', async (part) => {
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

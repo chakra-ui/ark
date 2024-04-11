@@ -1,6 +1,7 @@
 // Do not replace with '@zag-js/react'
 import { mergeProps } from '@zag-js/core'
-import React, {
+import type React from 'react'
+import {
   Children,
   cloneElement,
   createElement,
@@ -32,10 +33,9 @@ const withAsChild = (Component: React.ElementType) => {
       const onlyChild = Children.only(children)
       return isValidElement(onlyChild)
         ? cloneElement(onlyChild, {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             ...mergeProps(restProps, onlyChild.props as any),
-
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
           })
         : null

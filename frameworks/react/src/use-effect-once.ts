@@ -1,11 +1,11 @@
 import { useEffect, useRef, type EffectCallback } from 'react'
 
-export function useEffectOnce(callback: EffectCallback) {
-  const savedCallback = useRef(callback)
+export const useEffectOnce = (cb: EffectCallback) => {
+  const savedCallback = useRef(cb)
   const effectGuard = useRef(false)
 
   useEffect(() => {
-    savedCallback.current = callback
+    savedCallback.current = cb
   })
 
   useEffect(() => {

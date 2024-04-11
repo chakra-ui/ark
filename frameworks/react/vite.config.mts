@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
+import { copyFileSync } from 'node:fs'
+import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
-import { copyFileSync } from 'node:fs'
-import path from 'path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'

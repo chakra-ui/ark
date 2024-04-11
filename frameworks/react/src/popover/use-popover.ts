@@ -2,7 +2,7 @@ import * as popover from '@zag-js/popover'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {

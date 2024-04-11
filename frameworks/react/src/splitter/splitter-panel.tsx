@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { type PanelProps } from '@zag-js/splitter'
+import type { PanelProps } from '@zag-js/splitter'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'

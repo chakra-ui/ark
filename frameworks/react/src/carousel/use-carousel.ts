@@ -2,7 +2,7 @@ import * as carousel from '@zag-js/carousel'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {

@@ -1,4 +1,4 @@
-import { type Locale } from '@zag-js/i18n-utils'
+import type { Locale } from '@zag-js/i18n-utils'
 import { createContext } from '../create-context'
 
 export interface UseLocaleContext extends Locale {}

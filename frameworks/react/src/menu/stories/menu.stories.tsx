@@ -29,7 +29,9 @@ export const Controlled = () => {
 
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)}>Trigger from the outside</button>
+      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+        Trigger from the outside
+      </button>
       <Menu.Root open={isOpen} onSelect={(id) => console.log(id)}>
         <Menu.Trigger>
           Open menu <Menu.Indicator>➡️</Menu.Indicator>

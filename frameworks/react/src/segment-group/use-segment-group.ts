@@ -2,7 +2,7 @@ import * as segmentGroup from '@zag-js/radio-group'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {

@@ -18,10 +18,9 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
     (value: T) => {
       if (isControlled) {
         return onChange?.(value)
-      } else {
-        setUncontrolledValue(value)
-        return onChange?.(value)
       }
+      setUncontrolledValue(value)
+      return onChange?.(value)
     },
     [isControlled, onChange],
   )

@@ -4,7 +4,7 @@ import * as select from '@zag-js/select'
 import { useId, useMemo } from 'react'
 import { createSplitProps } from '../create-split-props'
 import { useEnvironmentContext } from '../environment'
-import { type CollectionItem, type Optional } from '../types'
+import type { CollectionItem, Optional } from '../types'
 import { useEvent } from '../use-event'
 
 export interface UseSelectProps<T extends CollectionItem>
@@ -28,9 +28,9 @@ export const useSelect = <T extends CollectionItem>(
     'items',
   ])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const collection = useMemo(
     () => select.collection(collectionOptions),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     Object.values(collectionOptions),
   )
 

@@ -32,11 +32,15 @@ export const RenderProp = () => (
       {(splitter) => (
         <>
           <Splitter.Panel id="a">
-            <button onClick={() => splitter.setSize('a', 10)}>Set to 10%</button>
+            <button type="button" onClick={() => splitter.setSize('a', 10)}>
+              Set to 10%
+            </button>
           </Splitter.Panel>
           <Splitter.ResizeTrigger id="a:b" />
           <Splitter.Panel id="b">
-            <button onClick={() => splitter.setSize('b', 10)}>Set to 10%</button>
+            <button type="button" onClick={() => splitter.setSize('b', 10)}>
+              Set to 10%
+            </button>
           </Splitter.Panel>
         </>
       )}
