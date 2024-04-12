@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
+import { copyFileSync } from 'node:fs'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import { globbySync } from 'globby'
-import { copyFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
@@ -32,13 +32,6 @@ export default defineConfig({
   ],
   test: {
     setupFiles: 'src/setup-test.ts',
-    coverage: {
-      provider: 'v8',
-      all: true,
-      reporter: ['lcov', 'text'],
-      include: ['src/**'],
-      exclude: ['**/*.stories.tsx'],
-    },
     globals: true,
     environment: 'jsdom',
     testTransformMode: {
