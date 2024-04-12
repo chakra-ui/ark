@@ -19,7 +19,8 @@ const main = async () => {
       name: entry.name,
       indexExports: getExportsFromSourceFile(entry.indexFile)
         .map((x) => (entry.name === 'Tabs' ? x.replace('Tabs', 'Tab') : x))
-        .filter((x) => x.startsWith(entry.name === 'Tabs' ? 'Tab' : entry.name))
+        .filter((x) => !/^use/i.test(x)) // filter hooks
+        .filter((x) => !/^create/i.test(x)) // filter helper fn with create prefix
         .map((item) => item.replace(entry.name === 'Tabs' ? 'Tab' : entry.name, '')),
       componentExports: getExportsFromSourceFile(entry.componentFile),
     }))
@@ -49,7 +50,11 @@ const getExportsFromSourceFile = (path: string): string[] => {
   return sourceFile
     .forEachDescendantAsArray()
     .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
-    .flatMap((node) => node.getNamedExports().map((namedExport) => namedExport.getName()))
+    .flatMap((node) =>
+      node
+        .getNamedExports()
+        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
+    )
 }
 
 const diffArray = (a: string[], b: string[]) => ({

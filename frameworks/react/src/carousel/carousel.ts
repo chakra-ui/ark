@@ -1,61 +1,35 @@
-import type { SlideChangeDetails } from '@zag-js/carousel'
-import {
+export type { SlideChangeDetails } from '@zag-js/carousel'
+export {
   CarouselContext as Context,
   type CarouselContextProps as ContextProps,
 } from './carousel-context'
-import {
+export {
   CarouselControl as Control,
   type CarouselControlProps as ControlProps,
 } from './carousel-control'
-import {
+export {
   CarouselIndicator as Indicator,
   type CarouselIndicatorProps as IndicatorProps,
 } from './carousel-indicator'
-import {
+export {
   CarouselIndicatorGroup as IndicatorGroup,
   type CarouselIndicatorGroupProps as IndicatorGroupProps,
 } from './carousel-indicator-group'
-import { CarouselItem as Item, type CarouselItemProps as ItemProps } from './carousel-item'
-import {
+export { CarouselItem as Item, type CarouselItemProps as ItemProps } from './carousel-item'
+export {
   CarouselItemGroup as ItemGroup,
   type CarouselItemGroupProps as ItemGroupProps,
 } from './carousel-item-group'
-import {
+export {
   CarouselNextTrigger as NextTrigger,
   type CarouselNextTriggerProps as NextTriggerProps,
 } from './carousel-next-trigger'
-import {
+export {
   CarouselPrevTrigger as PrevTrigger,
   type CarouselPrevTriggerProps as PrevTriggerProps,
 } from './carousel-prev-trigger'
-import { CarouselRoot as Root, type CarouselRootProps as RootProps } from './carousel-root'
-import {
+export { CarouselRoot as Root, type CarouselRootProps as RootProps } from './carousel-root'
+export {
   CarouselViewport as Viewport,
   type CarouselViewportProps as ViewportProps,
 } from './carousel-viewport'
-
-export {
-  Context,
-  Control,
-  Indicator,
-  IndicatorGroup,
-  Item,
-  ItemGroup,
-  NextTrigger,
-  PrevTrigger,
-  Root,
-  Viewport,
-}
-export type {
-  ContextProps,
-  ControlProps,
-  IndicatorGroupProps,
-  IndicatorProps,
-  ItemGroupProps,
-  ItemProps,
-  NextTriggerProps,
-  PrevTriggerProps,
-  RootProps,
-  SlideChangeDetails,
-  ViewportProps,
-}

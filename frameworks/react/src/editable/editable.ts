@@ -1,52 +1,29 @@
-import type { ValueChangeDetails } from '@zag-js/editable'
-import { EditableArea as Area, type EditableAreaProps as AreaProps } from './editable-area'
-import {
+export type { ValueChangeDetails } from '@zag-js/editable'
+export { EditableArea as Area, type EditableAreaProps as AreaProps } from './editable-area'
+export {
   EditableCancelTrigger as CancelTrigger,
   type EditableCancelTriggerProps as CancelTriggerProps,
 } from './editable-cancel-trigger'
-import { EditableContext as Context, type EditableContextProps } from './editable-context'
-import {
+export {
+  EditableContext as Context,
+  type EditableContextProps as ContextProps,
+} from './editable-context'
+export {
   EditableControl as Control,
   type EditableControlProps as ControlProps,
 } from './editable-control'
-import {
+export {
   EditableEditTrigger as EditTrigger,
   type EditableEditTriggerProps as EditTriggerProps,
 } from './editable-edit-trigger'
-import { EditableInput as Input, type EditableInputProps as InputProps } from './editable-input'
-import { EditableLabel as Label, type EditableLabelProps as LabelProps } from './editable-label'
-import {
+export { EditableInput as Input, type EditableInputProps as InputProps } from './editable-input'
+export { EditableLabel as Label, type EditableLabelProps as LabelProps } from './editable-label'
+export {
   EditablePreview as Preview,
   type EditablePreviewProps as PreviewProps,
 } from './editable-preview'
-import { EditableRoot as Root, type EditableRootProps as RootProps } from './editable-root'
-import {
+export { EditableRoot as Root, type EditableRootProps as RootProps } from './editable-root'
+export {
   EditableSubmitTrigger as SubmitTrigger,
   type EditableSubmitTriggerProps as SubmitTriggerProps,
 } from './editable-submit-trigger'
-
-export {
-  Area,
-  CancelTrigger,
-  Context,
-  Control,
-  EditTrigger,
-  Input,
-  Label,
-  Preview,
-  Root,
-  SubmitTrigger,
-}
-export type {
-  AreaProps,
-  CancelTriggerProps,
-  ControlProps,
-  EditTriggerProps,
-  EditableContextProps,
-  InputProps,
-  LabelProps,
-  PreviewProps,
-  RootProps,
-  SubmitTriggerProps,
-  ValueChangeDetails,
-}

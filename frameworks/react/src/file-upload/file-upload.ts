@@ -1,75 +1,43 @@
-import type { FileAcceptDetails, FileChangeDetails, FileRejectDetails } from '@zag-js/file-upload'
-import {
+export type { FileAcceptDetails, FileChangeDetails, FileRejectDetails } from '@zag-js/file-upload'
+export {
   FileUploadContext as Context,
   type FileUploadContextProps as ContextProps,
 } from './file-upload-context'
-import {
+export {
   FileUploadDropzone as Dropzone,
   type FileUploadDropzoneProps as DropzoneProps,
 } from './file-upload-dropzone'
-import { FileUploadItem as Item, type FileUploadItemProps as ItemProps } from './file-upload-item'
-import {
+export { FileUploadItem as Item, type FileUploadItemProps as ItemProps } from './file-upload-item'
+export {
   FileUploadItemDeleteTrigger as ItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
 } from './file-upload-item-delete-trigger'
-import {
+export {
   FileUploadItemGroup as ItemGroup,
   type FileUploadItemGroupProps as ItemGroupProps,
 } from './file-upload-item-group'
-import {
+export {
   FileUploadItemName as ItemName,
   type FileUploadItemNameProps as ItemNameProps,
 } from './file-upload-item-name'
-import {
+export {
   FileUploadItemPreview as ItemPreview,
   type FileUploadItemPreviewProps as ItemPreviewProps,
 } from './file-upload-item-preview'
-import {
+export {
   FileUploadItemPreviewImage as ItemPreviewImage,
   type FileUploadItemPreviewImageProps as ItemPreviewImageProps,
 } from './file-upload-item-preview-image'
-import {
+export {
   FileUploadItemSizeText as ItemSizeText,
   type FileUploadItemSizeTextProps as ItemSizeTextProps,
 } from './file-upload-item-size-text'
-import {
+export {
   FileUploadLabel as Label,
   type FileUploadLabelProps as LabelProps,
 } from './file-upload-label'
-import { FileUploadRoot as Root, type FileUploadRootProps as RootProps } from './file-upload-root'
-import {
+export { FileUploadRoot as Root, type FileUploadRootProps as RootProps } from './file-upload-root'
+export {
   FileUploadTrigger as Trigger,
   type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger'
-
-export {
-  Context,
-  Dropzone,
-  Item,
-  ItemDeleteTrigger,
-  ItemGroup,
-  ItemName,
-  ItemPreview,
-  ItemPreviewImage,
-  ItemSizeText,
-  Label,
-  Root,
-  Trigger,
-}
-export type {
-  ContextProps,
-  DropzoneProps,
-  FileAcceptDetails,
-  FileChangeDetails,
-  FileRejectDetails,
-  ItemDeleteTriggerProps,
-  ItemGroupProps,
-  ItemNameProps,
-  ItemPreviewImageProps,
-  ItemPreviewProps,
-  ItemProps,
-  ItemSizeTextProps,
-  LabelProps,
-  RootProps,
-  TriggerProps,
-}

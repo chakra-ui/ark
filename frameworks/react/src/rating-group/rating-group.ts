@@ -1,37 +1,25 @@
-import type { HoverChangeDetails, ValueChangeDetails } from '@zag-js/rating-group'
-import {
+export type { HoverChangeDetails, ValueChangeDetails } from '@zag-js/rating-group'
+export {
   RatingGroupContext as Context,
   type RatingGroupContextProps as ContextProps,
 } from './rating-group-context'
-import {
+export {
   RatingGroupControl as Control,
   type RatingGroupControlProps as ControlProps,
 } from './rating-group-control'
-import {
+export {
   RatingGroupItem as Item,
   type RatingGroupItemProps as ItemProps,
 } from './rating-group-item'
-import {
+export {
   RatingGroupItemContext as ItemContext,
   type RatingGroupItemContextProps as ItemContextProps,
 } from './rating-group-item-context'
-import {
+export {
   RatingGroupLabel as Label,
   type RatingGroupLabelProps as LabelProps,
 } from './rating-group-label'
-import {
+export {
   RatingGroupRoot as Root,
   type RatingGroupRootProps as RootProps,
 } from './rating-group-root'
-
-export { Context, Control, Item, ItemContext, Label, Root }
-export type {
-  ContextProps,
-  ControlProps,
-  HoverChangeDetails,
-  ItemContextProps,
-  ItemProps,
-  LabelProps,
-  RootProps,
-  ValueChangeDetails,
-}

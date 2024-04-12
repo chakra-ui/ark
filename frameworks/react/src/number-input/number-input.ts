@@ -1,52 +1,37 @@
-import type {
+export type {
   FocusChangeDetails,
   ValueChangeDetails,
   ValueInvalidDetails,
 } from '@zag-js/number-input'
-import {
+export {
   NumberInputContext as Context,
   type NumberInputContextProps as ContextProps,
 } from './number-input-context'
-import {
+export {
   NumberInputControl as Control,
   type NumberInputControlProps as ControlProps,
 } from './number-input-control'
-import {
+export {
   NumberInputDecrementTrigger as DecrementTrigger,
   type NumberInputDecrementTriggerProps as DecrementTriggerProps,
 } from './number-input-decrement-trigger'
-import {
+export {
   NumberInputIncrementTrigger as IncrementTrigger,
   type NumberInputIncrementTriggerProps as IncrementTriggerProps,
 } from './number-input-increment-trigger'
-import {
+export {
   NumberInputInput as Input,
   type NumberInputInputProps as InputProps,
 } from './number-input-input'
-import {
+export {
   NumberInputLabel as Label,
   type NumberInputLabelProps as LabelProps,
 } from './number-input-label'
-import {
+export {
   NumberInputRoot as Root,
   type NumberInputRootProps as RootProps,
 } from './number-input-root'
-import {
+export {
   NumberInputScrubber as Scrubber,
   type NumberInputScrubberProps as ScrubberProps,
 } from './number-input-scrubber'
-
-export { Context, Control, DecrementTrigger, IncrementTrigger, Input, Label, Root, Scrubber }
-export type {
-  ContextProps,
-  ControlProps,
-  DecrementTriggerProps,
-  FocusChangeDetails,
-  IncrementTriggerProps,
-  InputProps,
-  LabelProps,
-  RootProps,
-  ScrubberProps,
-  ValueChangeDetails,
-  ValueInvalidDetails,
-}

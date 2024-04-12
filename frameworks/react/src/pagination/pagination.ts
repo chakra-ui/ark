@@ -1,31 +1,19 @@
-import type { ItemLabelDetails, PageChangeDetails } from '@zag-js/pagination'
-import {
+export type { ItemLabelDetails, PageChangeDetails } from '@zag-js/pagination'
+export {
   PaginationContext as Context,
   type PaginationContextProps as ContextProps,
 } from './pagination-context'
-import {
+export {
   PaginationEllipsis as Ellipsis,
   type PaginationEllipsisProps as EllipsisProps,
 } from './pagination-ellipsis'
-import { PaginationItem as Item, type PaginationItemProps as ItemProps } from './pagination-item'
-import {
+export { PaginationItem as Item, type PaginationItemProps as ItemProps } from './pagination-item'
+export {
   PaginationNextTrigger as NextTrigger,
   type PaginationNextTriggerProps as NextTriggerProps,
 } from './pagination-next-trigger'
-import {
+export {
   PaginationPrevTrigger as PrevTrigger,
   type PaginationPrevTriggerProps as PrevTriggerProps,
 } from './pagination-prev-trigger'
-import { PaginationRoot as Root, type PaginationRootProps as RootProps } from './pagination-root'
-
-export { Context, Ellipsis, Item, NextTrigger, PrevTrigger, Root }
-export type {
-  ContextProps,
-  EllipsisProps,
-  ItemLabelDetails,
-  ItemProps,
-  NextTriggerProps,
-  PageChangeDetails,
-  PrevTriggerProps,
-  RootProps,
-}
+export { PaginationRoot as Root, type PaginationRootProps as RootProps } from './pagination-root'
