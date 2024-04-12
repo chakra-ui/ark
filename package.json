@@ -9,7 +9,7 @@
     "website"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "build": "turbo run build --filter='!./templates/**'",
     "exports:check": "bun scripts exports:check",
     "exports:sync": "bun scripts exports:sync",
