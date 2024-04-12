@@ -463,7 +463,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "eslint --ext .ts,.tsx src",
+    "lint": "echo 'No linting configured for this package.'",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
     "typecheck": "tsc",
@@ -516,6 +516,7 @@
     "@zag-js/vue": "0.45.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.4",
     "@histoire/plugin-vue": "0.17.15",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "9.3.4",
@@ -528,15 +529,10 @@
     "@vitejs/plugin-vue-jsx": "3.1.0",
     "@vitest/coverage-v8": "1.4.0",
     "@vue/compiler-sfc": "3.4.21",
-    "@vue/eslint-config-prettier": "9.0.0",
-    "@vue/eslint-config-typescript": "13.0.0",
-    "eslint": "8.57.0",
-    "eslint-plugin-jest-dom": "5.2.0",
-    "eslint-plugin-testing-library": "6.2.0",
-    "eslint-plugin-vue": "9.24.0",
     "globby": "14.0.1",
     "histoire": "0.17.15",
     "jsdom": "24.0.0",
+    "lucide-vue-next": "0.367.0",
     "release-it": "17.1.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.4.4",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RatingGroup } from '../'
-import { IconEmpty, IconFull, IconHalf } from './rating-icons'
+import { StarHalfIcon, StarIcon, StarOutlineIcon } from './rating-icons'
 
 const value = ref(0)
 </script>
@@ -18,8 +18,8 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHighlighted }"
           >
-            <IconFull v-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -35,9 +35,9 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHalf, isHighlighted }"
           >
-            <IconHalf v-if="isHalf" />
-            <IconFull v-else-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarHalfIcon v-if="isHalf" />
+            <StarIcon v-else-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -53,8 +53,8 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHighlighted }"
           >
-            <IconFull v-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -70,9 +70,9 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHalf, isHighlighted }"
           >
-            <IconHalf v-if="isHalf" />
-            <IconFull v-else-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarHalfIcon v-if="isHalf" />
+            <StarIcon v-else-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -88,8 +88,8 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHighlighted }"
           >
-            <IconFull v-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -105,8 +105,8 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHighlighted }"
           >
-            <IconFull v-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>
@@ -122,8 +122,8 @@ const value = ref(0)
             :index="item"
             v-slot="{ isHighlighted }"
           >
-            <IconFull v-if="isHighlighted" />
-            <IconEmpty v-else />
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
           </RatingGroup.Item>
         </RatingGroup.Control>
       </RatingGroup.Root>

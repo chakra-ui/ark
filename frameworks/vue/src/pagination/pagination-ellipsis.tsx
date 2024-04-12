@@ -1,7 +1,7 @@
 import type { EllipsisProps } from '@zag-js/pagination'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { usePaginationContext } from './pagination-context'
 
 export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}

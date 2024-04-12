@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseCarouselReturn } from './use-carousel'
+import type { UseCarouselReturn } from './use-carousel'
 
 export interface CarouselContext extends UseCarouselReturn {}
 

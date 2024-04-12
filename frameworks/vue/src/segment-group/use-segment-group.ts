@@ -2,7 +2,7 @@ import * as segmentGroup from '@zag-js/radio-group'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/vue'
 import { computed, type ComputedRef } from 'vue'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 import { useId } from '../utils'
 
 export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {

@@ -8,7 +8,7 @@ import ComponentUnderTest from './hover-card.test.vue'
 describe('Hover Card', () => {
   it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

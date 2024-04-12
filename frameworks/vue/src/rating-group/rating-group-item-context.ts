@@ -1,4 +1,4 @@
-import { type ItemProps } from '@zag-js/rating-group'
+import type { ItemProps } from '@zag-js/rating-group'
 import type { ComputedRef } from 'vue'
 import { createContext } from '../context'
 

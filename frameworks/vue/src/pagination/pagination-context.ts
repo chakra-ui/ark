@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UsePaginationReturn } from './use-pagination'
+import type { UsePaginationReturn } from './use-pagination'
 
 export interface PaginationContext extends UsePaginationReturn {}
 

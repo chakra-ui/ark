@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useEnvironmentContext, type EnvironmentContext } from '../'
+import { type EnvironmentContext, useEnvironmentContext } from '../'
 
 const getRootNode = useEnvironmentContext()
 

@@ -8,7 +8,7 @@ import ComponentUnderTest from './accordion.test.vue'
 describe('Accordion', () => {
   it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

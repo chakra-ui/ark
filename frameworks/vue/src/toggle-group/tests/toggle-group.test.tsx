@@ -9,7 +9,7 @@ import ComponentUnderTest from './toggle-group.test.vue'
 describe('ToggleGroup', () => {
   it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

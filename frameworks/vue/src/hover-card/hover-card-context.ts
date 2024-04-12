@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseHoverCardReturn } from './use-hover-card'
+import type { UseHoverCardReturn } from './use-hover-card'
 
 export interface HoverCardContext extends UseHoverCardReturn {}
 

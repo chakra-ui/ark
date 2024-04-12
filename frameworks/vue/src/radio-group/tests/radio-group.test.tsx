@@ -8,7 +8,7 @@ import ComponentUnderTest from './radio-group.test.vue'
 describe('Radio Group', () => {
   it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

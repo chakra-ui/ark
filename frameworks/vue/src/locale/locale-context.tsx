@@ -1,4 +1,4 @@
-import { type Locale } from '@zag-js/i18n-utils'
+import type { Locale } from '@zag-js/i18n-utils'
 import { computed, type ComputedRef } from 'vue'
 import { createContext } from '../context'
 

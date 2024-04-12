@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseTabsReturn } from './use-tabs'
+import type { UseTabsReturn } from './use-tabs'
 
 export interface TabsContext extends UseTabsReturn {}
 

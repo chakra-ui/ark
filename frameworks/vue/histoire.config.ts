@@ -7,7 +7,6 @@ export default defineConfig({
     groups: [
       {
         title: 'Components',
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         include: (file) => true,
       },
     ],

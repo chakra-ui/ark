@@ -1,4 +1,4 @@
-import { type ResizeTriggerProps } from '@zag-js/splitter'
+import type { ResizeTriggerProps } from '@zag-js/splitter'
 import { defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'

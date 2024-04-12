@@ -9,7 +9,7 @@ import ComponentUnderTest from './popover.test.vue'
 describe('Popover', () => {
   it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

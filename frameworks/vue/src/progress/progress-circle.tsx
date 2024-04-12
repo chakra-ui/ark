@@ -9,6 +9,7 @@ export const ProgressCircle = defineComponent<ProgressCircleProps>(
     const api = useProgressContext()
 
     return () => (
+      // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
       <ark.svg {...api.value.circleProps} {...attrs}>
         {slots.default?.()}
       </ark.svg>

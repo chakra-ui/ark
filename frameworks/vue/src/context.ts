@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import { inject, provide } from 'vue'
 
 type CreateContextReturn<T> = [(opts: T) => void, (fallback?: T) => T, symbol]

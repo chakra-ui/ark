@@ -1,4 +1,4 @@
-import { type ItemProps } from '@zag-js/file-upload'
+import type { ItemProps } from '@zag-js/file-upload'
 import { createContext } from '../context'
 
 export interface FileUploadItemContext extends ItemProps {}

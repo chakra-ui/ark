@@ -11,7 +11,7 @@ import OptionGroupsComponentUnderTest from './option-groups.test.vue'
 describe('Menu', () => {
   it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
@@ -46,7 +46,7 @@ describe('Menu', () => {
     await user.click(button)
 
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(screen.getByText('Group 1').nextElementSibling).toBe(screen.getByText('Share...'))
   })
 

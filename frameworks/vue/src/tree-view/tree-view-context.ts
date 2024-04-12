@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseTreeViewReturn } from './use-tree-view'
+import type { UseTreeViewReturn } from './use-tree-view'
 
 export interface TreeViewContext extends UseTreeViewReturn {}
 

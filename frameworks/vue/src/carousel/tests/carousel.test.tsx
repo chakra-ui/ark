@@ -19,7 +19,7 @@ async function renderOnNextTick(TestComponent: RenderFuncParams[0], options?: Re
 describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(ComponentUnderTest)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

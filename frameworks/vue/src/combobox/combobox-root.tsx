@@ -41,16 +41,20 @@ export const ComboboxRoot = defineComponent<ComboboxRootProps<CollectionItem>>(
       ...props,
       ...presenceProps,
       items: {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Array as PropType<UseComboboxProps<any>['items']>,
         required: true,
       },
       itemToString: {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseComboboxProps<any>['itemToString']>,
       },
       itemToValue: {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseComboboxProps<any>['itemToValue']>,
       },
       isItemDisabled: {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseComboboxProps<any>['isItemDisabled']>,
       },
     },

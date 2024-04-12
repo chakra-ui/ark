@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseNumberInputReturn } from './use-number-input'
+import type { UseNumberInputReturn } from './use-number-input'
 
 export interface NumberInputContext extends UseNumberInputReturn {}
 

@@ -61,8 +61,8 @@ jobs:
       - name: Run tests
         run: bun run test
 
-  eslint:
-    name: ESLint
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -71,7 +71,7 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Run ESLint
+      - name: Run lint
         run: bun run lint
 
   typecheck:

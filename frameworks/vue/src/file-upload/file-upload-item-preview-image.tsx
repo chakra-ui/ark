@@ -11,6 +11,7 @@ export const FileUploadItemPreviewImage = defineComponent<FileUploadItemPreviewI
     const item = useFileUploadItemContext()
     const url = ref<string>('')
 
+    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
     api.value.createFileUrl(item.file, (src) => (url.value = src))
 
     const previewProps = api.value.getItemPreviewImageProps({ ...item, url: url.value })

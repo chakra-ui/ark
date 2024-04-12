@@ -10,7 +10,6 @@ describe('Toast', () => {
     render(ComponentUnderTest)
     await user.click(screen.getByText('Create Toast'))
 
-    // eslint-disable-next-line testing-library/no-node-access
     expect(document.querySelector(part)).toBeInTheDocument()
     await user.click(screen.getByText('Close'))
   })

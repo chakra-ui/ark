@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { Select } from '../'
-import { ChevronDownIcon } from './icons'
 import './select.css'
 
 const basicItems = ref(['React', 'Solid', 'Vue'])

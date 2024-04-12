@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UsePopoverReturn } from './use-popover'
+import type { UsePopoverReturn } from './use-popover'
 
 export interface PopoverContext extends UsePopoverReturn {}
 

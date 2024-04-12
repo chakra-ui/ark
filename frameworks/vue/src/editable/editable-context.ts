@@ -1,5 +1,5 @@
 import { createContext } from '../context'
-import { type UseEditableReturn } from './use-editable'
+import type { UseEditableReturn } from './use-editable'
 
 export interface EditableContext extends UseEditableReturn {}
 

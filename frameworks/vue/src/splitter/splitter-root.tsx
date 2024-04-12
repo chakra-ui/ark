@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
-import { type Assign } from '../types'
+import type { Assign } from '../types'
 import { SplitterProvider } from './splitter-context'
 import { emits, props } from './splitter.props'
 import { useSplitter, type UseSplitterProps } from './use-splitter'

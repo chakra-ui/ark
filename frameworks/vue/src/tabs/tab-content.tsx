@@ -1,4 +1,4 @@
-import { type ContentProps } from '@zag-js/tabs'
+import type { ContentProps } from '@zag-js/tabs'
 import { computed, defineComponent, type PropType } from 'vue'
 import { ark, type HTMLArkProps } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
