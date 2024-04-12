@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseColorPickerReturn } from './use-color-picker'
+import type { UseColorPickerReturn } from './use-color-picker'
 
 export interface UseColorPickerContext extends UseColorPickerReturn {}
 

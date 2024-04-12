@@ -2,7 +2,7 @@ import * as colorPicker from '@zag-js/color-picker'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, splitProps, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseColorPickerProps
   extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {

@@ -33,7 +33,9 @@ export const Controlled = () => {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Open Dialog</button>
+      <button type="button" onClick={() => setIsOpen(true)}>
+        Open Dialog
+      </button>
       <Dialog.Root open={isOpen()} onOpenChange={() => setIsOpen(false)}>
         <Portal>
           <Dialog.Backdrop />

@@ -1,5 +1,5 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
+
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Collapsible, type CollapsibleRootProps } from '../'
@@ -15,7 +15,7 @@ const ComponentUnderTest = (props: CollapsibleRootProps) => (
 describe('Collapsible / Parts & Exports', () => {
   it.each(getParts(collapsibleAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

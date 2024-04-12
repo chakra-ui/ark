@@ -1,4 +1,4 @@
-import { type Locale } from '@zag-js/i18n-utils'
+import type { Locale } from '@zag-js/i18n-utils'
 import type { Accessor } from 'solid-js'
 import { createContext } from '../create-context'
 

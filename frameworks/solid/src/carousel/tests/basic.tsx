@@ -27,7 +27,7 @@ export const ComponentUnderTest = (props: CarouselRootProps) => {
           <Index each={images}>
             {(image, index) => (
               <Carousel.Item index={index} data-testid="item">
-                <img src={image()} />
+                <img src={image()} alt={`Slide ${index}`} />
               </Carousel.Item>
             )}
           </Index>

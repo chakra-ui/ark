@@ -25,7 +25,9 @@ export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen())}>Toggle</button>
+      <button type="button" onClick={() => setIsOpen(!isOpen())}>
+        Toggle
+      </button>
       <Tooltip.Root open={isOpen()}>
         <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
         <Portal>

@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UsePinInputReturn } from './use-pin-input'
+import type { UsePinInputReturn } from './use-pin-input'
 
 export interface UsePinInputContext extends UsePinInputReturn {}
 

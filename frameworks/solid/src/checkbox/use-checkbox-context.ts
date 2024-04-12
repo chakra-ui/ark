@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseCheckboxReturn } from './use-checkbox'
+import type { UseCheckboxReturn } from './use-checkbox'
 
 export interface UseCheckboxContext extends UseCheckboxReturn {}
 

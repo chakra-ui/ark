@@ -7,7 +7,7 @@ import { ComponentUnderTest } from './basic'
 describe('Progress', () => {
   it.each(getParts(progressAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

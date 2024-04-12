@@ -9,7 +9,7 @@ import { ComponentUnderTest } from './basic'
 describe('Combobox', () => {
   it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

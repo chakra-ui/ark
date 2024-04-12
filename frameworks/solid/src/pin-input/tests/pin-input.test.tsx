@@ -9,7 +9,7 @@ import { ComponentUnderTest } from './basic'
 describe('PinInput', () => {
   it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

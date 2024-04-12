@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type ContentProps } from '@zag-js/tabs'
+import type { ContentProps } from '@zag-js/tabs'
 import { Show } from 'solid-js'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'

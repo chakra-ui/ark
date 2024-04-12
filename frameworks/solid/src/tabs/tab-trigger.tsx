@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type TriggerProps } from '@zag-js/tabs'
+import type { TriggerProps } from '@zag-js/tabs'
 import { createSplitProps } from '../create-split-props'
 import { ark, type HTMLArkProps } from '../factory'
 import type { Assign } from '../types'

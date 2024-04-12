@@ -1,4 +1,4 @@
-import { type Api } from '@zag-js/menu'
+import type { Api } from '@zag-js/menu'
 import type { Accessor } from 'solid-js'
 import { createContext } from '../create-context'
 

@@ -7,7 +7,7 @@ import { ComponentUnderTest } from './basic'
 describe('Splitter', () => {
   it.each(getParts(splitterAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

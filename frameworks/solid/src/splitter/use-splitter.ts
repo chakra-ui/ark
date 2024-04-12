@@ -2,7 +2,7 @@ import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/
 import * as splitter from '@zag-js/splitter'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {}
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}

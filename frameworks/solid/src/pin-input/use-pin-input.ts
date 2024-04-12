@@ -2,7 +2,7 @@ import * as pinInput from '@zag-js/pin-input'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {}
 export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}

@@ -8,7 +8,7 @@ import { ComponentUnderTest } from './basic'
 describe('Carousel', () => {
   it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

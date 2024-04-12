@@ -36,6 +36,7 @@ describe('Ark Factory', () => {
     render(() => <ComponentUnderTest />)
     const child = screen.getByTestId('child')
     expect(child.id).toBe('child')
+    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
     expect(child.dataset['part']).toBe('child')
   })
 

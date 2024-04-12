@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseAvatarReturn } from './use-avatar'
+import type { UseAvatarReturn } from './use-avatar'
 
 export interface UseAvatarContext extends UseAvatarReturn {}
 

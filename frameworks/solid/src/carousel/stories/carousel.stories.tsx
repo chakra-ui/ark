@@ -33,7 +33,7 @@ export const Basic = () => {
           <Index each={images}>
             {(image, index) => (
               <Carousel.Item index={index}>
-                <img src={image()} />
+                <img src={image()} alt={`Slide ${index}`} />
               </Carousel.Item>
             )}
           </Index>
@@ -69,7 +69,7 @@ export const Controlled = () => {
             <Index each={images}>
               {(image, index) => (
                 <Carousel.Item index={index}>
-                  <img src={image()} />
+                  <img src={image()} alt={`Slide ${index}`} />
                 </Carousel.Item>
               )}
             </Index>
@@ -108,7 +108,7 @@ export const Customized = () => {
           <Index each={images}>
             {(image, index) => (
               <Carousel.Item index={index}>
-                <img src={image()} />
+                <img src={image()} alt={`Slide ${index}`} />
               </Carousel.Item>
             )}
           </Index>

@@ -2,7 +2,7 @@ import * as accordion from '@zag-js/accordion'
 import { normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, mergeProps, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {}
 export interface UseAccordionReturn extends Accessor<accordion.Api<PropTypes>> {}

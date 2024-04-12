@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { Collapsible } from '../collapsible'
-import { type HTMLArkProps } from '../factory'
+import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-context'
 
@@ -12,7 +12,7 @@ export const AccordionItemContent = (props: AccordionItemContentProps) => {
   const itemProps = useAccordionItemPropsContext()
   const itemContentProps = createMemo(() => {
     const ownProps = context().getItemContentProps(itemProps)
-    delete ownProps.hidden
+    ownProps.hidden = undefined
     return ownProps
   })
   const mergedProps = mergeProps(itemContentProps, props)

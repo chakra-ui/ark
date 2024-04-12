@@ -3,7 +3,7 @@ import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/
 import { createEffect, createMemo, createSignal, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
 import { splitRenderStrategyProps, type RenderStrategyProps } from '../render-strategy'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,

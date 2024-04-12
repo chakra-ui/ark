@@ -1,10 +1,10 @@
 import { clipboardAnatomy } from '@ark-ui/anatomy'
-// eslint-disable-next-line testing-library/no-manual-cleanup
+
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
 import { Clipboard } from '../'
 import { getExports, getParts } from '../../setup-test'
-import { CheckIcon, ClipboardCopyIcon } from '../stories/icons'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">
@@ -23,7 +23,7 @@ const ComponentUnderTest = () => (
 describe('Clipboard', () => {
   it.each(getParts(clipboardAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
-    // eslint-disable-next-line testing-library/no-node-access
+
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 

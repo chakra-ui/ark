@@ -1,4 +1,4 @@
-import { createSignal, Index } from 'solid-js'
+import { Index, createSignal } from 'solid-js'
 import { Slider, type SliderRootProps } from '../'
 
 export const ComponentUnderTest = (props: SliderRootProps) => {

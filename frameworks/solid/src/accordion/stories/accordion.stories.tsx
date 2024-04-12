@@ -1,8 +1,8 @@
+import { ChevronDownIcon } from 'lucide-solid'
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Accordion } from '../'
 import './accordion.css'
-import { ChevronDownIcon } from './icons'
 
 const meta: Meta = {
   title: 'Components / Accordion',

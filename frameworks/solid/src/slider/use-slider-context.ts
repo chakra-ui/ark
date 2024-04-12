@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseSliderReturn } from './use-slider'
+import type { UseSliderReturn } from './use-slider'
 
 export interface UseSliderContext extends UseSliderReturn {}
 

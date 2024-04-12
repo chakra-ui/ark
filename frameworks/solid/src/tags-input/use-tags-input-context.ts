@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseTagsInputReturn } from './use-tags-input'
+import type { UseTagsInputReturn } from './use-tags-input'
 
 export interface UseTagsInputContext extends UseTagsInputReturn {}
 

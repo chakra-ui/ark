@@ -2,7 +2,7 @@ import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/
 import * as tagsInput from '@zag-js/tags-input'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}

@@ -2,7 +2,7 @@ import * as hoverCard from '@zag-js/hover-card'
 import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/solid'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseHoverCardProps
   extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {}

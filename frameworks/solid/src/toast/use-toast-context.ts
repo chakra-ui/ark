@@ -1,5 +1,5 @@
 import type { PropTypes } from '@zag-js/solid'
-import * as toast from '@zag-js/toast'
+import type * as toast from '@zag-js/toast'
 import type { Accessor, JSX } from 'solid-js'
 import { createContext } from '../create-context'
 

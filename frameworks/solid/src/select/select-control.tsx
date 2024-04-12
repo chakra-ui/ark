@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo, Index, Show } from 'solid-js'
+import { Index, Show, createMemo } from 'solid-js'
 import { ark, type HTMLArkProps } from '../factory'
 import { useSelectContext } from './use-select-context'
 

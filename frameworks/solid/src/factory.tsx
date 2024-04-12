@@ -20,9 +20,7 @@ type PolymorphicProps<T extends ElementType> = {
 
 type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
 
-type ArkComponent<E extends ElementType> = {
-  (props: HTMLArkProps<E>): JSX.Element
-}
+type ArkComponent<E extends ElementType> = (props: HTMLArkProps<E>) => JSX.Element
 
 const withAsProp = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
@@ -43,7 +41,7 @@ const withAsProp = <T extends ElementType>(Component: T) => {
       return <>{otherProps.children(fn)}</>
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     return <Dynamic component={Component} {...(otherProps as any)} />
   }
   return ArkComponent

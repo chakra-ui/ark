@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseCollapsibleReturn } from './use-collapsible'
+import type { UseCollapsibleReturn } from './use-collapsible'
 
 export interface UseCollapsibleContext extends UseCollapsibleReturn {}
 

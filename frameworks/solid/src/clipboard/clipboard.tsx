@@ -1,4 +1,4 @@
-import { type CopyStatusDetails } from '@zag-js/clipboard'
+import type { CopyStatusDetails } from '@zag-js/clipboard'
 import {
   ClipboardContext as Context,
   type ClipboardContextProps as ContextProps,

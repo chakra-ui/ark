@@ -1,5 +1,5 @@
 import { createContext } from '../create-context'
-import { type UseSegmentGroupReturn } from './use-segment-group'
+import type { UseSegmentGroupReturn } from './use-segment-group'
 
 export interface UseSegmentGroupContext extends UseSegmentGroupReturn {}
 

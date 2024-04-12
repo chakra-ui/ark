@@ -2,7 +2,7 @@ import { mergeProps, normalizeProps, useMachine, type PropTypes } from '@zag-js/
 import * as zagSwitch from '@zag-js/switch'
 import { createMemo, createUniqueId, type Accessor } from 'solid-js'
 import { useEnvironmentContext } from '../environment'
-import { type Optional } from '../types'
+import type { Optional } from '../types'
 
 export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
