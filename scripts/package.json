@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "exports:check": "bun run src/check-exports.ts",
-    "exports:sync": "bun run src/sync-exports.ts",
+    "exports:check": "bun run src/exports-check.ts",
+    "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",
     "document:stories": "bun run src/generate-stories.ts",
     "release:prepare": "bun run src/release-prepare.ts",
