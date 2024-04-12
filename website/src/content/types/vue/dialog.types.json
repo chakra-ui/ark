@@ -1,185 +1,192 @@
 {
   "Root": {
     "aria-label": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "Human readable label for the dialog, in event the dialog title is not rendered"
     },
     "closeOnEscapeKeyDown": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to close the dialog when the escape key is pressed"
     },
     "closeOnInteractOutside": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
     "defaultOpen": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "The initial open state of the dialog."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "\"ltr\" | \"rtl\";",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "finalFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement)",
+      "type": "HTMLElement | (() => MaybeElement);",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is closed"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => Node | ShadowRoot | Document;",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  trigger: string\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
+      "type": "Partial<{\n  trigger: string;\n  positioner: string;\n  backdrop: string;\n  content: string;\n  closeTrigger: string;\n  title: string;\n  description: string;\n}>;",
       "isRequired": false,
       "description": "The ids of the elements in the dialog. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement)",
+      "type": "HTMLElement | (() => MaybeElement);",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
     "lazyMount": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
     "modal": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
     "onEscapeKeyDown": {
-      "type": "(event: KeyboardEvent) => void",
+      "type": "(event: KeyboardEvent) => void;",
       "isRequired": false,
       "description": "Callback to be invoked when the escape key is pressed"
     },
     "onExitComplete": {
-      "type": "() => void",
+      "type": "() => void;",
       "isRequired": false,
       "description": "Function called when the animation ends in the closed state."
     },
     "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
+      "type": "(event: FocusOutsideEvent) => void;",
       "isRequired": false,
       "description": "Function called when the focus is moved outside the component"
     },
     "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
+      "type": "(event: InteractOutsideEvent) => void;",
       "isRequired": false,
       "description": "Function called when an interaction happens outside the component"
     },
     "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
+      "type": "(details: OpenChangeDetails) => void;",
       "isRequired": false,
       "description": "Callback to be invoked when the dialog is opened or closed"
     },
     "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
+      "type": "(event: PointerDownOutsideEvent) => void;",
       "isRequired": false,
       "description": "Function called when the pointer is pressed down outside the component"
     },
-    "onUpdate:open": { "type": "(open: boolean) => void", "isRequired": false },
-    "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
+    "onUpdate:open": {
+      "type": "(open: boolean) => void;",
+      "isRequired": false
+    },
+    "open": {
+      "type": "boolean;",
+      "isRequired": false,
+      "description": "Whether the dialog is open"
+    },
     "present": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether the node is present (controlled by the user)"
     },
     "preventScroll": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to prevent scrolling behind the dialog when it's opened"
     },
     "restoreFocus": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to restore focus to the element that had focus before the dialog was opened"
     },
     "role": {
-      "type": "'dialog' | 'alertdialog'",
+      "type": "\"dialog\" | \"alertdialog\";",
       "defaultValue": "\"dialog\"",
       "isRequired": false,
       "description": "The dialog's role"
     },
     "trapFocus": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether to trap focus inside the dialog when it's opened"
     },
     "unmountOnExit": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Title": { "asChild": { "type": "boolean;", "isRequired": false } },
   "Content": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": { "type": "boolean;", "isRequired": false },
     "lazyMount": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
     "onExitComplete": {
-      "type": "() => void",
+      "type": "() => void;",
       "isRequired": false,
       "description": "Function called when the animation ends in the closed state."
     },
     "present": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether the node is present (controlled by the user)"
     },
     "unmountOnExit": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean;", "isRequired": false } },
   "Backdrop": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": { "type": "boolean;", "isRequired": false },
     "lazyMount": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
     "onExitComplete": {
-      "type": "() => void",
+      "type": "() => void;",
       "isRequired": false,
       "description": "Function called when the animation ends in the closed state."
     },
     "present": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether the node is present (controlled by the user)"
     },
     "unmountOnExit": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
     }
   },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Positioner": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "Description": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "CloseTrigger": { "asChild": { "type": "boolean;", "isRequired": false } }
 }

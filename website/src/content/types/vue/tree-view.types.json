@@ -1,95 +1,103 @@
 {
   "Item": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "id": {
+      "type": "string;",
+      "isRequired": true,
+      "description": "The id of the item or branch"
+    },
+    "asChild": { "type": "boolean;", "isRequired": false },
     "disabled": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether the item or branch is disabled"
     }
   },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": { "type": "boolean;", "isRequired": false },
     "defaultFocusedId": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The initial focused index of the tree view."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "\"ltr\" | \"rtl\";",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
     "expandedIds": {
-      "type": "string[]",
+      "type": "string[];",
       "isRequired": false,
       "description": "The id of the expanded nodes"
     },
     "focusedId": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The id of the focused node"
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => Node | ShadowRoot | Document;",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
-      "type": "string",
+      "type": "string;",
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
     "onExpandedChange": {
-      "type": "(details: ExpandedChangeDetails) => void",
+      "type": "(details: ExpandedChangeDetails) => void;",
       "isRequired": false,
       "description": "Called when the tree is opened or closed"
     },
     "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
+      "type": "(details: FocusChangeDetails) => void;",
       "isRequired": false,
       "description": "Called when the focused node changes"
     },
     "onSelectionChange": {
-      "type": "(details: SelectionChangeDetails) => void",
+      "type": "(details: SelectionChangeDetails) => void;",
       "isRequired": false,
       "description": "Called when the selection changes"
     },
     "openOnClick": {
-      "type": "boolean",
+      "type": "boolean;",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether clicking on a branch should open it or not"
     },
     "selectedIds": {
-      "type": "string[]",
+      "type": "string[];",
       "isRequired": false,
       "description": "The id of the selected nodes"
     },
     "selectionMode": {
-      "type": "'multiple' | 'single'",
+      "type": "\"multiple\" | \"single\";",
       "defaultValue": "\"single\"",
       "isRequired": false,
       "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
     }
   },
-  "Tree": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Tree": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean;", "isRequired": false } },
   "Branch": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "id": {
+      "type": "string;",
+      "isRequired": true,
+      "description": "The id of the item or branch"
+    },
+    "asChild": { "type": "boolean;", "isRequired": false },
     "disabled": {
-      "type": "boolean",
+      "type": "boolean;",
       "isRequired": false,
       "description": "Whether the item or branch is disabled"
     }
   },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchContent": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchControl": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchIndicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  "ItemText": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "BranchText": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "BranchContent": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "BranchControl": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "BranchTrigger": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean;", "isRequired": false } },
+  "BranchIndicator": { "asChild": { "type": "boolean;", "isRequired": false } }
 }
