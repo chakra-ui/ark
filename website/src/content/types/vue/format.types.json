@@ -1,18 +1,1 @@
-{
-  "Byte": {
-    "value": { "type": "number", "isRequired": true, "description": "The byte size to format" },
-    "unit": {
-      "type": "'bit' | 'byte'",
-      "isRequired": false,
-      "description": "The unit granularity to display"
-    },
-    "unitDisplay": {
-      "type": "'long' | 'short' | 'narrow'",
-      "isRequired": false,
-      "description": "The unit display"
-    }
-  },
-  "Number": {
-    "value": { "type": "number", "isRequired": true, "description": "The number to format" }
-  }
-}
+{}

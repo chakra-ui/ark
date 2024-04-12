@@ -1,4 +1,9 @@
 {
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "allowMouseWheel": {
       "type": "boolean",
@@ -135,10 +140,5 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } },
-  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } }
 }

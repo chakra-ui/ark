@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "exports:check": "bun run src/check-exports.ts",
-    "exports:sync": "bun run src/sync-exports.ts",
+    "exports:check": "bun run src/exports-check.ts",
+    "exports:sync": "bun run src/exports-sync.ts",
     "document:types": "bun run src/generate-type-docs.ts",
     "document:stories": "bun run src/generate-stories.ts",
     "release:prepare": "bun run src/release-prepare.ts",
@@ -20,6 +20,7 @@
     "globby": "14.0.1",
     "pkg-dir": "8.0.0",
     "prettier": "3.2.5",
+    "prettier-plugin-organize-imports": "3.2.4",
     "ts-morph": "22.0.0",
     "ts-pattern": "5.1.1",
     "typescript": "5.4.4",

@@ -1,4 +1,18 @@
 {
+  "Fallback": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Image": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -6,7 +20,7 @@
       "description": "Render as a different element type."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -25,20 +39,6 @@
       "type": "(details: StatusChangeDetails) => void",
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
-    }
-  },
-  "Image": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Fallback": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   }
 }

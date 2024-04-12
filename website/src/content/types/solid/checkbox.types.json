@@ -1,4 +1,7 @@
 {
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
@@ -63,8 +66,5 @@
       "isRequired": false,
       "description": "The value of checkbox input. Useful for form submission."
     }
-  },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

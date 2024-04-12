@@ -1,4 +1,5 @@
 {
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
@@ -55,6 +56,5 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

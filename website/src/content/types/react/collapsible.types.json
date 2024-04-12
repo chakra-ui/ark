@@ -1,4 +1,11 @@
 {
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -11,7 +18,7 @@
       "description": "The initial open state of the collpasible."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -62,13 +69,6 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
-    }
-  },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   },
   "Trigger": {

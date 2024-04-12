@@ -50,9 +50,7 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "exports": {
     ".": {
       "source": "./src/index.ts",
@@ -488,7 +486,7 @@
     "build": "vite build",
     "lint": "biome lint ./src",
     "test": "vitest",
-    "test:ci": "vitest --run --coverage",
+    "test:ci": "vitest --run",
     "typecheck": "tsc",
     "storydocs": "bun run --cwd ../../scripts document:stories react",
     "typedocs": "bun run --cwd ../../scripts document:types react",
@@ -557,7 +555,6 @@
     "@types/react-dom": "18.2.24",
     "@types/testing-library__jest-dom": "5.14.9",
     "@vitejs/plugin-react": "4.2.1",
-    "@vitest/coverage-v8": "1.4.0",
     "globby": "14.0.1",
     "jsdom": "24.0.0",
     "lucide-react": "0.367.0",

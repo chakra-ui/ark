@@ -1,6 +1,50 @@
 {
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "IndicatorGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Indicator": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "readOnly": { "type": "boolean", "isRequired": false }
+  },
+  "ItemGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "NextTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "PrevTrigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -24,7 +68,7 @@
       "description": "The initial selected index of the carousel."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -72,51 +116,7 @@
       "description": "The amount of space between slides."
     }
   },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Viewport": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "readOnly": { "type": "boolean", "isRequired": false }
-  },
-  "ItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "NextTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "PrevTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "IndicatorGroup": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

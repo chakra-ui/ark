@@ -1,4 +1,6 @@
 {
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
@@ -69,7 +71,5 @@
       "description": "The value of switch input. Useful for form submission."
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } }
 }

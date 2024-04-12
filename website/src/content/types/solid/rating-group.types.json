@@ -1,8 +1,10 @@
 {
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
   "Item": {
     "index": { "type": "number", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "allowHalf": {
       "type": "boolean",
@@ -77,7 +79,5 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
-  },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

@@ -1,25 +1,4 @@
 {
-  "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Group": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Title": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Createer": {
     "placement": {
       "type": "Placement",
@@ -29,7 +8,7 @@
     "render": { "type": "(context: MachineApi<PropTypes>) => Element", "isRequired": true },
     "count": { "type": "number", "isRequired": false },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -85,6 +64,13 @@
       "description": "The z-index applied to each toast group"
     }
   },
+  "CloseTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Description": {
     "asChild": {
       "type": "boolean",
@@ -92,7 +78,21 @@
       "description": "Render as a different element type."
     }
   },
-  "CloseTrigger": {
+  "Group": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Title": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

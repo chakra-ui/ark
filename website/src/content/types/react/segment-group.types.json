@@ -1,4 +1,18 @@
 {
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemControl": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": { "type": "string", "isRequired": true },
     "asChild": {
@@ -8,6 +22,20 @@
     },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
+  },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
   "Root": {
     "asChild": {
@@ -21,7 +49,7 @@
       "description": "The initial value of the segment group."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -70,34 +98,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The value of the checked radio"
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemControl": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   }
 }

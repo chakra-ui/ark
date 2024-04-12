@@ -1,5 +1,11 @@
 {
   "Area": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CancelTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EditTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Preview": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
@@ -136,11 +142,5 @@
       "description": "The value of the editable in both edit and preview mode"
     }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Preview": { "asChild": { "type": "boolean", "isRequired": false } },
-  "EditTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CancelTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "SubmitTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

@@ -1,8 +1,24 @@
 {
+  "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreviewImage": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemPreview": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "type": {
+      "type": "string",
+      "defaultValue": "'.*'",
+      "isRequired": false,
+      "description": "The file type to match against. Matches all file types by default."
+    }
+  },
   "Item": {
     "file": { "type": "File", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }
   },
+  "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "accept": {
       "type": "string | Record<string, string[]>",
@@ -103,21 +119,5 @@
       "description": "Function to validate a file"
     }
   },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Dropzone": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemName": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemPreview": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "type": {
-      "type": "string",
-      "defaultValue": "'.*'",
-      "isRequired": false,
-      "description": "The file type to match against. Matches all file types by default."
-    }
-  },
-  "ItemSizeText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemPreviewImage": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

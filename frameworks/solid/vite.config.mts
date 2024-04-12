@@ -7,13 +7,6 @@ export default defineConfig({
   test: {
     globals: true,
     setupFiles: ['src/setup-test.ts'],
-    coverage: {
-      provider: 'v8',
-      all: true,
-      reporter: ['lcov', 'text'],
-      include: ['src/**'],
-      exclude: ['**/*.stories.tsx'],
-    },
     retry: 2,
     css: false,
   },

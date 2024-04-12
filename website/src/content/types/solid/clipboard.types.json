@@ -1,4 +1,14 @@
 {
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "copied": {
+      "type": "number | boolean | Node | ArrayElement | (string & {})",
+      "isRequired": false
+    }
+  },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "getRootNode": {
@@ -32,15 +42,5 @@
       "description": "The value to be copied to the clipboard"
     }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Indicator": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "copied": {
-      "type": "number | boolean | Node | ArrayElement | (string & {})",
-      "isRequired": false
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

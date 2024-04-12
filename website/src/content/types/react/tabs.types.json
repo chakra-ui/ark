@@ -1,10 +1,34 @@
 {
+  "TabContent": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "TabIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "TabList": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "TabTrigger": {
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "Root": {
     "activationMode": {
@@ -24,7 +48,7 @@
       "description": "The initial value of the tabs."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -84,29 +108,5 @@
       "description": "Whether to unmount on exit."
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
-  },
-  "TabContent": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "TabTrigger": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "TabIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
   }
 }

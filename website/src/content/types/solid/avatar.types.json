@@ -1,4 +1,6 @@
 {
+  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
     "dir": {
@@ -22,7 +24,5 @@
       "isRequired": false,
       "description": "Functional called when the image loading status changes."
     }
-  },
-  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } }
+  }
 }

@@ -1,8 +1,24 @@
 {
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroupLabel": {
+    "for": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "ItemGroup": {
+    "id": { "type": "string", "isRequired": true },
+    "asChild": { "type": "boolean", "isRequired": false }
+  },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Item": {
     "asChild": { "type": "boolean", "isRequired": false },
     "item": { "type": "any", "isRequired": false }
   },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -178,7 +194,7 @@
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
     "selectionBehavior": {
-      "type": "'replace' | 'clear' | 'preserve'",
+      "type": "'clear' | 'replace' | 'preserve'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
@@ -204,21 +220,5 @@
       "description": "The keys of the selected items"
     }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroup": {
-    "id": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemGroupLabel": {
-    "for": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

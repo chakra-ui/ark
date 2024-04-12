@@ -1,4 +1,18 @@
 {
+  "ItemContent": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": { "type": "string", "isRequired": true },
     "asChild": {
@@ -12,7 +26,7 @@
       "description": "The initial open state of the collpasible."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -65,6 +79,13 @@
       "description": "Whether to unmount on exit."
     }
   },
+  "ItemTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -83,7 +104,7 @@
       "description": "The initial value of the accordion."
     },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -145,27 +166,6 @@
       "type": "string[]",
       "isRequired": false,
       "description": "The `id` of the accordion item that is currently being opened."
-    }
-  },
-  "ItemContent": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   }
 }

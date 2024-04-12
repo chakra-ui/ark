@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
-import { ark, type HTMLArkProps } from '../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import type { Assign } from '../types'
 import { splitPresenceProps } from './split-presence-props'
-import { usePresence, type UsePresenceProps } from './use-presence'
+import { type UsePresenceProps, usePresence } from './use-presence'
 
 export interface PresenceProps extends Assign<HTMLArkProps<'div'>, UsePresenceProps> {}
 
