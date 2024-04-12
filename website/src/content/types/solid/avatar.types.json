@@ -19,7 +19,7 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
-    "onLoadingStatusChange": {
+    "onStatusChange": {
       "type": "(details: StatusChangeDetails) => void",
       "isRequired": false,
       "description": "Functional called when the image loading status changes."

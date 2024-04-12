@@ -10,6 +10,11 @@
       "isRequired": true
     },
     "count": { "type": "number", "isRequired": false },
+    "description": {
+      "type": "any",
+      "isRequired": false,
+      "description": "The description of the toast."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -21,15 +26,20 @@
       "isRequired": false,
       "description": "The duration the toast will be visible"
     },
+    "gap": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The gap or spacing between toasts"
+    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
-    "gutter": {
-      "type": "string",
+    "hotkey": {
+      "type": "string[]",
       "isRequired": false,
-      "description": "The gutter or spacing between toasts"
+      "description": "The hotkey that will move focus to the toast group"
     },
     "id": {
       "type": "string",
@@ -46,10 +56,10 @@
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
-    "pauseOnInteraction": {
+    "overlap": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to pause the toast when interacted with"
+      "description": "Whether the toasts should overlap each other"
     },
     "pauseOnPageIdle": {
       "type": "boolean",
@@ -61,11 +71,7 @@
       "isRequired": false,
       "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
     },
-    "zIndex": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The z-index applied to each toast group"
-    }
+    "title": { "type": "any", "isRequired": false, "description": "The title of the toast." }
   },
   "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Description": { "asChild": { "type": "boolean", "isRequired": false } },
