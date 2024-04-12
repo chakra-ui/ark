@@ -1,4 +1,4 @@
-export type { CheckedChangeDetails, CheckedState as State } from '@zag-js/checkbox'
+export type { CheckedChangeDetails, CheckedState } from '@zag-js/checkbox'
 export {
   CheckboxContext as Context,
   type CheckboxContextProps as ContextProps,

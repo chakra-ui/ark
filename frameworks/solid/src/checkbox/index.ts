@@ -1,6 +1,6 @@
 export type {
   CheckedChangeDetails as CheckboxCheckedChangeDetails,
-  CheckedState as CheckboxState,
+  CheckedState as CheckboxCheckedState,
 } from '@zag-js/checkbox'
 export { CheckboxContext, type CheckboxContextProps } from './checkbox-context'
 export { CheckboxControl, type CheckboxControlProps } from './checkbox-control'
