@@ -1,1 +1,77 @@
-{}
+{
+  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Root": {
+    "closeDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
+    },
+    "dir": {
+      "type": "'ltr' | 'rtl'",
+      "defaultValue": "\"ltr\"",
+      "isRequired": false,
+      "description": "The document's text/writing direction."
+    },
+    "getRootNode": {
+      "type": "() => Node | ShadowRoot | Document",
+      "isRequired": false,
+      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the popover. Useful for composition."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the hover card opens or closes."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the hover card is open"
+    },
+    "openDelay": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The duration from when the mouse enters the trigger until the hover card opens."
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    }
+  },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
+}

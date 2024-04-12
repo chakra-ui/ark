@@ -1,9 +1,10 @@
+import { readFile } from 'node:fs/promises'
+import path, { dirname } from 'node:path'
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
-import { readFile } from 'fs/promises'
 import { globby } from 'globby'
-import path, { dirname } from 'path'
 import prettier from 'prettier'
+import { type ExportDeclaration, Node, Project } from 'ts-morph'
 import ts from 'typescript'
 import voca from 'voca'
 
@@ -79,6 +80,7 @@ async function extractPropertiesOfTypeName(
       }
     }
     if (Object.keys(properties).length) {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       results[(typeStatement as any).name.getText()] = Object.fromEntries(
         Object.entries(properties)
           .sort(([aName], [bName]) => aName.localeCompare(bName))
@@ -135,26 +137,32 @@ function shouldIgnoreProperty(property: ts.Symbol) {
 }
 
 function extractTypeExports(fileContent?: string) {
-  const regex = /export type {([^}]+)}/gm
-  const matches = fileContent?.match(regex)
-
-  if (!matches) return []
-
-  const results = matches.flatMap((match) => {
-    const types = match.replace(/export type {/, '').replace(/}/, '')
-
-    return types
-      .split(',')
-      .map((x) => x.trim())
-      .filter(Boolean)
-      .sort((a, b) => a.length - b.length)
+  const project = new Project({
+    useInMemoryFileSystem: true,
   })
-  return results
+  const sourceFile = project.createSourceFile('index.ts', fileContent)
+
+  return sourceFile
+    .forEachDescendantAsArray()
+    .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
+    .flatMap((node) =>
+      node
+        .getNamedExports()
+        .filter((namedExport) => namedExport.isTypeOnly())
+        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
+    )
 }
 
 const main = async () => {
+  // const fileContent = await readFile('../frameworks/react/src/avatar/index.ts', {
+  //   encoding: 'utf8',
+  // }).catch(() => undefined)
+
+  // console.log(extractTypeExports(fileContent))
+
   const framework = process.argv.slice(2)[0]
 
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'frameworks', framework))
 
@@ -200,13 +208,14 @@ const main = async () => {
             ),
           )
           .filter((value) => Object.keys(value).length !== 0)
+          // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
           .reduce((acc, value) => ({ ...acc, ...value }), {}),
       }
     }),
   )
   result.map(async ({ component, typeExports }) => {
     fs.outputFileSync(
-      path.join(outDir, framework, path.basename(component) + '.types.json'),
+      path.join(outDir, framework, `${path.basename(component)}.types.json`),
       await prettier.format(JSON.stringify(typeExports), {
         ...prettierConfig,
         parser: 'json',
