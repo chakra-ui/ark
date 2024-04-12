@@ -67,6 +67,32 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemGroupLabel": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `id` of the element that provides accessibility label to the option group"
+    }
+  },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": {
       "type": "string",
@@ -94,32 +120,6 @@
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
   },
-  "ItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the element that provides accessibility label to the option group"
-    }
-  },
-  "ItemGroupLabel": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "ItemText": {
     "asChild": {
       "type": "boolean",
@@ -133,6 +133,16 @@
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "RadioItemGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "id": { "type": "string", "isRequired": false },
+    "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+    "value": { "type": "string", "isRequired": false }
   },
   "RadioItem": {
     "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
@@ -156,16 +166,6 @@
       "isRequired": false,
       "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
     }
-  },
-  "RadioItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "id": { "type": "string", "isRequired": false },
-    "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
-    "value": { "type": "string", "isRequired": false }
   },
   "Root": {
     "anchorPoint": {
@@ -285,14 +285,14 @@
       "description": "Render as a different element type."
     }
   },
-  "Trigger": {
+  "TriggerItem": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "TriggerItem": {
+  "Trigger": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,

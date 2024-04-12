@@ -1,10 +1,10 @@
 {
+  "AreaBackground": { "asChild": { "type": "boolean", "isRequired": false } },
   "Area": {
     "asChild": { "type": "boolean", "isRequired": false },
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
-  "AreaBackground": { "asChild": { "type": "boolean", "isRequired": false } },
   "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelInput": {
     "channel": { "type": "ExtendedColorChannel", "isRequired": true },
@@ -146,6 +146,8 @@
       "description": "The current value of the color picker."
     }
   },
+  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
     "asChild": { "type": "boolean", "isRequired": false },
@@ -155,8 +157,6 @@
       "description": "Whether to include the alpha channel in the color"
     }
   },
-  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
-  "SwatchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "SwatchTrigger": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
     "asChild": { "type": "boolean", "isRequired": false },

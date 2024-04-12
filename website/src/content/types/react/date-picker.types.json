@@ -252,14 +252,6 @@
       "description": "The view of the calendar"
     }
   },
-  "Table": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "columns": { "type": "number", "isRequired": false }
-  },
   "TableBody": {
     "asChild": {
       "type": "boolean",
@@ -299,6 +291,14 @@
       "description": "Render as a different element type."
     }
   },
+  "Table": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "columns": { "type": "number", "isRequired": false }
+  },
   "TableRow": {
     "asChild": {
       "type": "boolean",
@@ -313,15 +313,15 @@
       "description": "Render as a different element type."
     }
   },
-  "View": {
-    "view": { "type": "DateView", "isRequired": true },
+  "ViewControl": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "ViewControl": {
+  "View": {
+    "view": { "type": "DateView", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

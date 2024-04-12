@@ -6,6 +6,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemControl": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": { "type": "string", "isRequired": true },
     "asChild": {
@@ -15,13 +22,6 @@
     },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
-  },
-  "ItemControl": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
   },
   "ItemText": {
     "asChild": {

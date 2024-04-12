@@ -20,16 +20,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Item": {
-    "index": { "type": "string | number", "isRequired": true },
-    "value": { "type": "string", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
   "ItemDeleteTrigger": {
     "asChild": {
       "type": "boolean",
@@ -50,6 +40,16 @@
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "Item": {
+    "index": { "type": "string | number", "isRequired": true },
+    "value": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": { "type": "boolean", "isRequired": false }
   },
   "ItemText": {
     "asChild": {

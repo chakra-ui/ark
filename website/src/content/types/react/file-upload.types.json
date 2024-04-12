@@ -6,14 +6,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Item": {
-    "file": { "type": "File", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "ItemDeleteTrigger": {
     "asChild": {
       "type": "boolean",
@@ -35,6 +27,13 @@
       "description": "Render as a different element type."
     }
   },
+  "ItemPreviewImage": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ItemPreview": {
     "asChild": {
       "type": "boolean",
@@ -48,7 +47,8 @@
       "description": "The file type to match against. Matches all file types by default."
     }
   },
-  "ItemPreviewImage": {
+  "Item": {
+    "file": { "type": "File", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

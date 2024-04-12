@@ -1,4 +1,7 @@
 {
+  "BranchContent": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchControl": { "asChild": { "type": "boolean", "isRequired": false } },
+  "BranchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Branch": {
     "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
     "asChild": { "type": "boolean", "isRequired": false },
@@ -8,11 +11,9 @@
       "description": "Whether the item or branch is disabled"
     }
   },
-  "BranchContent": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchControl": { "asChild": { "type": "boolean", "isRequired": false } },
-  "BranchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "BranchText": { "asChild": { "type": "boolean", "isRequired": false } },
   "BranchTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Item": {
     "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
     "asChild": { "type": "boolean", "isRequired": false },
@@ -22,7 +23,6 @@
       "description": "Whether the item or branch is disabled"
     }
   },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {

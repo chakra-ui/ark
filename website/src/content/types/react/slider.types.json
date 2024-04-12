@@ -13,15 +13,15 @@
       "description": "Render as a different element type."
     }
   },
-  "Marker": {
-    "value": { "type": "number", "isRequired": true },
+  "MarkerGroup": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "MarkerGroup": {
+  "Marker": {
+    "value": { "type": "number", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

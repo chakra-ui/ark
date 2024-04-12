@@ -1,17 +1,4 @@
 {
-  "Branch": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the item or branch is disabled"
-    }
-  },
   "BranchContent": {
     "asChild": {
       "type": "boolean",
@@ -33,6 +20,19 @@
       "description": "Render as a different element type."
     }
   },
+  "Branch": {
+    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the item or branch is disabled"
+    }
+  },
   "BranchText": {
     "asChild": {
       "type": "boolean",
@@ -41,6 +41,13 @@
     }
   },
   "BranchTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemIndicator": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -58,13 +65,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the item or branch is disabled"
-    }
-  },
-  "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
   },
   "ItemText": {

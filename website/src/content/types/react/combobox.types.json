@@ -27,24 +27,16 @@
       "description": "Render as a different element type."
     }
   },
-  "Item": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "item": { "type": "any", "isRequired": false }
-  },
-  "ItemGroup": {
-    "id": { "type": "string", "isRequired": true },
+  "ItemGroupLabel": {
+    "htmlFor": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
   },
-  "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
+  "ItemGroup": {
+    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -57,6 +49,14 @@
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "Item": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "item": { "type": "any", "isRequired": false }
   },
   "ItemText": {
     "asChild": {

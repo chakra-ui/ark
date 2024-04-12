@@ -151,15 +151,10 @@ function extractTypeExports(fileContent?: string) {
         .filter((namedExport) => namedExport.isTypeOnly())
         .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
     )
+    .sort()
 }
 
 const main = async () => {
-  // const fileContent = await readFile('../frameworks/react/src/avatar/index.ts', {
-  //   encoding: 'utf8',
-  // }).catch(() => undefined)
-
-  // console.log(extractTypeExports(fileContent))
-
   const framework = process.argv.slice(2)[0]
 
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
@@ -167,7 +162,6 @@ const main = async () => {
   process.chdir(path.join(rootDir, 'frameworks', framework))
 
   const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')
-
   const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
 
   const componentExportMap: Record<string, string[]> = Object.fromEntries(
