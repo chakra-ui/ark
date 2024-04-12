@@ -1,5 +1,5 @@
 import { basename, dirname } from 'node:path'
-import { readFileSync, writeFileSync } from 'fs-extra'
+import { copyFileSync } from 'fs-extra'
 import { globby } from 'globby'
 
 const main = async () => {
@@ -7,11 +7,14 @@ const main = async () => {
 
   files
     .filter((file) => !['presence', 'environment', 'locale'].includes(basename(dirname(file))))
-    .map((file) => file.replace('index', basename(dirname(file))))
-    .map((x) => {
-      const fileContent = readFileSync(x, 'utf8')
-      const updated = fileContent.replaceAll('import', 'export')
-      writeFileSync(x, updated, 'utf8')
+    .map((file) => {
+      // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`
+      copyFileSync(file, file.replace('react', 'solid'))
+      // eg. copy `react/src/avatar/avatar.ts` to `solid/src/avatar/avatar.ts`
+      copyFileSync(
+        file.replace('index', basename(dirname(file))),
+        file.replace('react', 'solid').replace('index', basename(dirname(file))),
+      )
     })
 }
 
