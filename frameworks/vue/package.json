@@ -534,8 +534,8 @@
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.4.4",
     "vite": "5.2.8",
-    "vite-plugin-dts": "3.8.1",
-    "vitest": "1.4.0",
+    "vite-plugin-dts": "3.8.2",
+    "vitest": "1.5.0",
     "vue": "3.4.21"
   },
   "peerDependencies": {
