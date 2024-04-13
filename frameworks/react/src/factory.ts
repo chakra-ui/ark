@@ -3,15 +3,15 @@ import { mergeProps } from '@zag-js/core'
 import type React from 'react'
 import {
   Children,
+  type ComponentPropsWithoutRef,
+  type JSX,
   cloneElement,
   createElement,
   forwardRef,
   isValidElement,
   memo,
-  type ComponentPropsWithoutRef,
-  type JSX,
 } from 'react'
-import { composeRefs } from './compose-refs'
+import { composeRefs } from './utils/compose-refs'
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
 type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<
