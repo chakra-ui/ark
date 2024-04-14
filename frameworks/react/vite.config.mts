@@ -80,8 +80,7 @@ const renderBanner = (fileName: string) => {
 
 // e.g Avatar.tsx, Accordion.tsx
 const isBarrelComponent = (file: path.ParsedPath) =>
-  file.name === file.dir &&
-  !['presence', 'environment', 'locale', 'number-format', 'byte-format'].includes(file.dir)
+  file.dir.endsWith(file.name) && !['presence', 'environment', 'locale'].includes(file.dir)
 
 const isSpecialFile = (file: path.ParsedPath) =>
   ['index', 'factory', 'compose-refs'].includes(file.name)
