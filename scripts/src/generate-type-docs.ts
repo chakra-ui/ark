@@ -162,7 +162,10 @@ const main = async () => {
   process.chdir(path.join(rootDir, 'frameworks', framework))
 
   const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')
-  const components = await globby(['src'], { onlyDirectories: true, deep: 1 })
+  const components = await globby(['src/components', 'src/providers'], {
+    onlyDirectories: true,
+    deep: 1,
+  })
 
   const componentExportMap: Record<string, string[]> = Object.fromEntries(
     await Promise.all(
