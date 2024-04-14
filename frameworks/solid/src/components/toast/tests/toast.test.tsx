@@ -2,7 +2,7 @@ import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Toast } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast', () => {

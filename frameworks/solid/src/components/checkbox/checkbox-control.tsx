@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
 export interface CheckboxControlProps extends HTMLArkProps<'div'> {}

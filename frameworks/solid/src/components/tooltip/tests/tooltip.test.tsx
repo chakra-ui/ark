@@ -1,8 +1,8 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '~/setup-test'
 import { Tooltip } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Tooltip', () => {

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import { createSplitProps } from '~/utils/create-split-props'
+import { createSplitProps } from '../../utils/create-split-props'
 import {
   PresenceProvider,
   type UsePresenceProps,

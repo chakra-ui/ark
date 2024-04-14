@@ -1,6 +1,6 @@
 import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { getParts } from '../../setup-test'
+import { getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('FileUpload', () => {

@@ -1,8 +1,8 @@
 import * as rating from '@zag-js/rating-group'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseRatingGroupProps extends Optional<rating.Context, 'id'> {}
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}

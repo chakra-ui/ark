@@ -1,9 +1,8 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
-
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '~/setup-test'
 import { Collapsible, type CollapsibleRootProps } from '../'
+import { getExports, getParts } from '../../../setup-test'
 
 const ComponentUnderTest = (props: CollapsibleRootProps) => (
   <Collapsible.Root {...props}>

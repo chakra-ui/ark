@@ -1,8 +1,8 @@
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}

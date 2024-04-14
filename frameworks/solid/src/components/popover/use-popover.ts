@@ -1,8 +1,8 @@
 import * as popover from '@zag-js/popover'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {}
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}

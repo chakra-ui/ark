@@ -4,7 +4,7 @@ export type {
   OpenChangeDetails as ComboboxOpenChangeDetails,
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
-export type { CollectionItem as ComboboxCollectionItem } from '~/types'
+export type { CollectionItem as ComboboxCollectionItem } from '../../types'
 export { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 export { ComboboxContent, type ComboboxContentProps } from './combobox-content'
 export { ComboboxContext, type ComboboxContextProps } from './combobox-context'

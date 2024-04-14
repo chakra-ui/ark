@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseColorPickerReturn } from './use-color-picker'
 
 export interface UseColorPickerContext extends UseColorPickerReturn {}

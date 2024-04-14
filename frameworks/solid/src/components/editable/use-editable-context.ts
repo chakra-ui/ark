@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseEditableReturn } from './use-editable'
 
 export interface UseEditableContext extends UseEditableReturn {}

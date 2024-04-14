@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import { createSplitProps } from '../../utils/create-split-props'
 import { useDatePickerContext } from './use-date-picker-context'
 import {
   DatePickerTableCellProvider,

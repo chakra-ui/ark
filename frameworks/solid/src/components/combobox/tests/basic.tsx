@@ -1,7 +1,7 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import type { Optional } from '~/types'
 import { Combobox, type ComboboxRootProps } from '../'
+import type { Optional } from '../../../types'
 
 interface Item {
   label: string

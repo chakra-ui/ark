@@ -7,7 +7,7 @@ import {
   onCleanup,
   splitProps,
 } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
+import { useEnvironmentContext } from '../environment'
 import { LocaleContextProvider } from './use-locale-context'
 
 export interface LocaleProviderProps extends LocaleOptions, ParentProps {

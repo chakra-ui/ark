@@ -3,7 +3,7 @@ import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { RadioGroup } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Radio Group', () => {

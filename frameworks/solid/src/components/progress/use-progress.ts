@@ -1,8 +1,8 @@
 import * as progress from '@zag-js/progress'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseProgressProps extends Optional<progress.Context, 'id'> {}
 export interface UseProgressReturn extends Accessor<progress.Api<PropTypes>> {}
