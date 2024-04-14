@@ -1,9 +1,9 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as splitter from '@zag-js/splitter'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {
   /**

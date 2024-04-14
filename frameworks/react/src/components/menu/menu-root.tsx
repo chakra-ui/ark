@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode, useCallback } from 'react'
-import { createSplitProps } from '~/utils/create-split-props'
-import { useEffectOnce } from '~/utils/use-effect-once'
+import { createSplitProps } from '../../utils/create-split-props'
+import { useEffectOnce } from '../../utils/use-effect-once'
 import {
   PresenceProvider,
   type UsePresenceProps,

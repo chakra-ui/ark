@@ -2,8 +2,8 @@ import type { Meta } from '@storybook/react'
 import { ChevronDownIcon, ChevronsDownUpIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
-import { Portal } from '~/components'
 import { Select } from '../'
+import { Portal } from '../../portal'
 import './select.css'
 
 const meta: Meta = {

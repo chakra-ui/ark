@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Portal } from '~/components/'
 import { HoverCard } from '../'
+import { Portal } from '../../portal'
 import './hover-card.css'
 
 const meta: Meta = {

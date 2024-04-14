@@ -1,5 +1,5 @@
 import { HoverCard, type HoverCardRootProps } from '../'
-import { Portal } from '../../components/'
+import { Portal } from '../../portal'
 
 export const ComponentUnderTest = (props: HoverCardRootProps) => (
   <HoverCard.Root openDelay={0} closeDelay={0} {...props}>

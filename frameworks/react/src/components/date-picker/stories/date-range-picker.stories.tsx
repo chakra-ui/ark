@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
-import { Portal } from '~/components/'
 import { DatePicker } from '../'
+import { Portal } from '../../portal'
 import './date-picker.css'
 
 const meta: Meta = {

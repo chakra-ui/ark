@@ -1,5 +1,5 @@
 import type { ItemState } from '@zag-js/tree-view'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseTreeViewItemContext extends ItemState {}
 

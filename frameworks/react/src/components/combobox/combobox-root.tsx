@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
-import type { Assign, CollectionItem } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
 import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign, CollectionItem } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import {
   PresenceProvider,
   type UsePresenceProps,

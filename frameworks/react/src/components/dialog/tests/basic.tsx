@@ -1,5 +1,5 @@
 import { Dialog, type DialogRootProps } from '../'
-import { Portal } from '../../components/'
+import { Portal } from '../../portal'
 
 export const ComponentUnderTest = (props: DialogRootProps) => (
   <Dialog.Root {...props}>

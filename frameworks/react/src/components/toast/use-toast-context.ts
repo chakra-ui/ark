@@ -1,6 +1,6 @@
 import type { PropTypes } from '@zag-js/react'
 import type * as toast from '@zag-js/toast'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseToastContext extends toast.Api<PropTypes> {}
 
