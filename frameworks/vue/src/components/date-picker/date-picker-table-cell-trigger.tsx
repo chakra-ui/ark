@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { useDatePickerTableCellContext } from './date-picker-table-cell-context'
 import { useDatePickerViewContext } from './date-picker-view-context'

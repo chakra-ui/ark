@@ -1,7 +1,7 @@
 import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { FileUpload } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './file-upload.test.vue'
 
 describe('FileUpload', () => {

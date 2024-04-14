@@ -3,8 +3,8 @@ import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
 import { nextTick } from 'vue'
-import { getExports, getParts } from '~/setup-test'
 import { PinInput } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './pin-input.test.vue'
 
 type RenderFuncParams = Parameters<typeof render>

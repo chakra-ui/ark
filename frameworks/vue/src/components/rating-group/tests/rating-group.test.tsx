@@ -1,7 +1,7 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { RatingGroup } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './rating-group.test.vue'
 
 describe('Rating Group', () => {

@@ -1,7 +1,7 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { getParts } from '../../setup-test'
+import { getParts } from '../../../setup-test'
 import ContextMenuComponentUnderTest from './context-menu.test.vue'
 import MenuItemGroupComponentUnderTest from './menu-item-group.test.vue'
 import ComponentUnderTest from './menu.test.vue'

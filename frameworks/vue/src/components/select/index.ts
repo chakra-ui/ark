@@ -3,7 +3,7 @@ import type {
   OpenChangeDetails as SelectOpenChangeDetails,
   ValueChangeDetails as SelectValueChangeDetails,
 } from '@zag-js/select'
-import type { CollectionItem } from '~/types'
+import type { CollectionItem } from '../../types'
 import { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear-trigger'
 import { SelectContent, type SelectContentProps } from './select-content'
 import { type SelectContext, useSelectContext } from './select-context'

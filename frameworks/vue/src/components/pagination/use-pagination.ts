@@ -1,9 +1,9 @@
 import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}

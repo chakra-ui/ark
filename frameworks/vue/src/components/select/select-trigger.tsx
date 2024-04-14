@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useSelectContext } from './select-context'
 
 export interface SelectTriggerProps extends HTMLArkProps<'button'> {}

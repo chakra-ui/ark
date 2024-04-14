@@ -7,7 +7,7 @@ import {
   defineComponent,
   h,
 } from 'vue'
-import { Dynamic } from '~/utils/dynamic'
+import { Dynamic } from './utils/dynamic'
 
 type DOMElements = keyof IntrinsicElementAttributes
 type ElementType = Parameters<typeof h>[0]

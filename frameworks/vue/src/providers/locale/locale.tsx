@@ -1,6 +1,6 @@
 import { type Locale, type LocaleOptions, isRTL, trackLocale } from '@zag-js/i18n-utils'
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
-import { useEnvironmentContext } from '~/providers'
+import { useEnvironmentContext } from '../environment'
 import { LocaleContextProvider } from './locale-context'
 
 export interface LocaleProviderProps extends LocaleOptions {

@@ -1,6 +1,6 @@
 import type { Context } from '@zag-js/radio-group'
 import type { PropType } from 'vue'
-import { declareEmits } from '~/utils/utils'
+import { declareEmits } from '../../utils/utils'
 
 export const props = {
   dir: {

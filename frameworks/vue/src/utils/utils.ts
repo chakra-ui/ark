@@ -11,7 +11,7 @@ import {
   reactive,
   ref,
 } from 'vue'
-import type { VueProps } from '~/types'
+import type { VueProps } from '../types'
 
 /**
  * Gets only the valid children of a component,

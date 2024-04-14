@@ -1,6 +1,6 @@
 import type { Context } from '@zag-js/number-input'
 import type { PropType } from 'vue'
-import { declareEmits } from '~/utils/utils'
+import { declareEmits } from '../../utils/utils'
 
 export const props = {
   allowMouseWheel: {

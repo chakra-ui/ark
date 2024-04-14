@@ -2,8 +2,8 @@ import { carouselAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import { nextTick } from 'vue'
-import { getExports, getParts } from '~/setup-test'
 import { Carousel } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './carousel.test.vue'
 
 type RenderFuncParams = Parameters<typeof render>

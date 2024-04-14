@@ -2,7 +2,7 @@ import { datePickerAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import { DatePicker } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './date-picker.test.vue'
 
 describe('Date Picker', () => {

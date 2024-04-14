@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/context'
+import { createContext } from '../../utils/context'
 import type { UseAvatarReturn } from './use-avatar'
 
 export interface AvatarContext extends UseAvatarReturn {}

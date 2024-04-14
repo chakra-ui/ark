@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/context'
+import { createContext } from '../../utils/context'
 import type { UseSegmentGroupReturn } from './use-segment-group'
 
 export interface SegmentGroupContext extends UseSegmentGroupReturn {}

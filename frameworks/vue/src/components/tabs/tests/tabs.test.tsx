@@ -3,7 +3,7 @@ import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
 import { Tabs } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tabs.test.vue'
 
 describe('Tabs', () => {

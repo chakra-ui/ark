@@ -1,8 +1,8 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { ColorPicker } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './color-picker.test.vue'
 
 describe('ColorPicker', () => {

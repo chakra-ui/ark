@@ -4,7 +4,7 @@ import type {
   OpenChangeDetails as ComboboxOpenChangeDetails,
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
-import type { CollectionItem } from '~/types'
+import type { CollectionItem } from '../../types'
 import { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
 import { ComboboxContent, type ComboboxContentProps } from './combobox-content'
 import { type ComboboxContext, useComboboxContext } from './combobox-context'

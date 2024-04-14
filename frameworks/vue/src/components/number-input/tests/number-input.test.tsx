@@ -1,8 +1,8 @@
 import { numberInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { NumberInput } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './number-input.test.vue'
 
 describe('NumberInput', () => {

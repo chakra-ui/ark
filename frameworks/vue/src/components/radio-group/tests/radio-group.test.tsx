@@ -1,8 +1,8 @@
 import { radioGroupAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { RadioGroup } from '../'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './radio-group.test.vue'
 
 describe('Radio Group', () => {

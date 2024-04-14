@@ -1,8 +1,8 @@
 import { switchAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Switch } from '..'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './switch.test.vue'
 
 describe('Switch', () => {

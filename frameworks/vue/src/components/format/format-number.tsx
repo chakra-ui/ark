@@ -1,7 +1,7 @@
 import { formatNumber } from '@zag-js/i18n-utils'
 import { computed, defineComponent } from 'vue'
-import { useLocaleContext } from '~/providers'
-import { LOCALE_DEFAULT } from '~/providers/locale/locale-context'
+import { useLocaleContext } from '../../providers'
+import { LOCALE_DEFAULT } from '../../providers/locale/locale-context'
 
 const makeArr = (str: string) => str.split(',').map((s) => s.trim())
 

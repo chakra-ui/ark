@@ -2,7 +2,7 @@ import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import { SegmentGroup } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './segment-group.test.vue'
 
 describe('Segment Group', () => {

@@ -1,7 +1,7 @@
 import { clipboardAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
 import { Clipboard } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './clipboard.test.vue'
 
 describe('Clipboard', () => {
