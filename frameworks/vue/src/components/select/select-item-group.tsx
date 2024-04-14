@@ -1,7 +1,7 @@
 import type { ItemGroupProps } from '@zag-js/select'
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useSelectContext } from './select-context'
 
 export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}

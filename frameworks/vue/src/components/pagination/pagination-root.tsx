@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { PaginationProvider } from './pagination-context'
 import { emits, props } from './pagination.props'
 import { type UsePaginationProps, usePagination } from './use-pagination'

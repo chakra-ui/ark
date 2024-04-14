@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useColorPickerAreaContext } from './use-color-picker-area-context'
 import { useColorPickerContext } from './use-color-picker-context'
 

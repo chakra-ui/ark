@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useTreeViewContext } from './tree-view-context'
 
 export interface TreeViewLabelProps extends HTMLArkProps<'label'> {}

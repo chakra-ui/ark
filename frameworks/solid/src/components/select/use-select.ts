@@ -2,9 +2,9 @@ import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { CollectionItem, Optional } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { useEnvironmentContext } from '../../providers'
+import type { CollectionItem, Optional } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,

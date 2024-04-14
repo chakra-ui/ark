@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseProgressReturn } from './use-progress'
 
 export interface UseProgressContext extends UseProgressReturn {}

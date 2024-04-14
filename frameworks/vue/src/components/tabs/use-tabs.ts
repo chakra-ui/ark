@@ -1,9 +1,9 @@
 import * as tabs from '@zag-js/tabs'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
   modelValue?: tabs.Context['value']

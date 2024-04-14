@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseTreeViewReturn } from './use-tree-view'
 
 export interface UseTreeViewContext extends UseTreeViewReturn {}

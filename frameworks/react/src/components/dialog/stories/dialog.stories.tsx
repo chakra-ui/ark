@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Portal } from '~/components/'
 import { Dialog } from '../'
+import { Portal } from '../../components/'
 import './dialog.css'
 
 const meta: Meta = {

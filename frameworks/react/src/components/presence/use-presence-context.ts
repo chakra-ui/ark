@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UsePresenceReturn } from './use-presence'
 
 export interface UsePresenceContext extends UsePresenceReturn {}

@@ -1,7 +1,7 @@
 import type { AreaProps } from '@zag-js/color-picker'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { ColorPickerAreaProvider } from './color-picker-area-context'
 import { useColorPickerContext } from './color-picker-context'
 

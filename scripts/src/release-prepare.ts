@@ -1,7 +1,7 @@
+import { basename, dirname, join, parse } from 'node:path'
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { globby } from 'globby'
-import { basename, dirname, join, parse } from 'path'
 import { match } from 'ts-pattern'
 
 /**
@@ -10,43 +10,43 @@ import { match } from 'ts-pattern'
  * - Exports: The exports of the framework
  */
 const generateExports = async (pkgJsonPath: string) => {
-  const paths = await globby(
-    ['src/*/index.ts', 'src/index.ts', 'src/portal.tsx', 'src/factory.{tsx,ts}'],
-    {
-      cwd: dirname(pkgJsonPath),
-    },
+  const paths = await globby(['src/*/*/index.ts', 'src/index.ts', 'src/factory.{tsx,ts}'], {
+    cwd: dirname(pkgJsonPath),
+  })
+  return (
+    paths
+      .sort()
+      .map((path) => {
+        const { name, dir } = parse(path)
+        const exportName = name === 'index' ? basename(dir) : name
+
+        const key = match(exportName)
+          .with('src', () => '.')
+          .otherwise(() => `./${exportName}`)
+
+        const slug = path.replace('src/', '').replace(/\.[^.]*$/, '')
+        return {
+          [key]: {
+            source: `./src/${slug}.ts`,
+            import: {
+              types: `./dist/${slug}.d.ts`,
+              default: `./dist/${slug}.js`,
+            },
+            require: {
+              types: `./dist/${slug}.d.cts`,
+              default: `./dist/${slug}.cjs`,
+            },
+          },
+        }
+      })
+      .sort((a) => (Object.keys(a)[0] === '.' ? -1 : 1))
+      // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
+      .reduce((acc, val) => ({ ...acc, ...val }), {})
   )
-  return paths
-    .sort()
-    .map((path) => {
-      const { name, dir } = parse(path)
-      const exportName = name === 'index' ? basename(dir) : name
-
-      const key = match(exportName)
-        .with('src', () => '.')
-        .otherwise(() => `./${exportName}`)
-
-      const slug = join(basename(dir), name).replace('src/', '')
-      return {
-        [key]: {
-          source: `./src/${slug}.ts`,
-          import: {
-            types: `./dist/${slug}.d.ts`,
-            default: `./dist/${slug}.js`,
-          },
-          require: {
-            types: `./dist/${slug}.d.cts`,
-            default: `./dist/${slug}.cjs`,
-          },
-        },
-      }
-    })
-    .sort((a) => (Object.keys(a)[0] === '.' ? -1 : 1))
-    .reduce((acc, val) => ({ ...acc, ...val }), {})
 }
 
 const generateKeywords = async (pkgJsonPath: string) => {
-  const components = await globby([join(dirname(pkgJsonPath), 'src')], {
+  const components = await globby([join(dirname(pkgJsonPath), 'src/components')], {
     onlyDirectories: true,
     deep: 1,
   })
@@ -58,6 +58,7 @@ const generateKeywords = async (pkgJsonPath: string) => {
 }
 
 const main = async () => {
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const root = dirname(findUpSync('bun.lockb')!)
   const packages = await globby([join(root, 'frameworks/*/package.json')])
 

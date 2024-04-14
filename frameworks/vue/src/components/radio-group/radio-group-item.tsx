@@ -1,7 +1,7 @@
 import type { ItemProps } from '@zag-js/radio-group'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useRadioGroupContext } from './radio-group-context'
 import { RadioGroupItemProvider } from './radio-group-item-context'
 

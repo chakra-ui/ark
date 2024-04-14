@@ -1,7 +1,7 @@
 import type { PropTypes } from '@zag-js/solid'
 import type * as toast from '@zag-js/toast'
 import type { Accessor, JSX } from 'solid-js'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface Options {
   render: (api: Accessor<toast.Api<PropTypes, Options>>) => JSX.Element

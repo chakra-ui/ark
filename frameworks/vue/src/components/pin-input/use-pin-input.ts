@@ -1,9 +1,9 @@
 import * as pinInput from '@zag-js/pin-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
   modelValue?: pinInput.Context['value']

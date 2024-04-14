@@ -3,8 +3,8 @@ import { clipboardAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { getExports, getParts } from '~/setup-test'
 import { Clipboard } from '../'
+import { getExports, getParts } from '../../setup-test'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">

@@ -2,9 +2,9 @@ import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { CollectionItem, Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { CollectionItem, Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,

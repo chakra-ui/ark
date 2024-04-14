@@ -1,8 +1,8 @@
 import * as progress from '@zag-js/progress'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
 
 export interface UseProgressProps extends Optional<progress.Context, 'id'> {
   /**

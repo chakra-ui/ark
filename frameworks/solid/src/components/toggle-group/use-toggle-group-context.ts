@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseToggleGroupReturn } from './use-toggle-group'
 
 export interface UseToggleGroupContext extends UseToggleGroupReturn {}

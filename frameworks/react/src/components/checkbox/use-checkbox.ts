@@ -1,9 +1,9 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
   /**

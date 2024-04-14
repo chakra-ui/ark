@@ -1,7 +1,7 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type MaybeRef, type VNodeRef, computed, ref, watch } from 'vue'
-import type { Optional } from '~/types'
+import type { Optional } from '../../types'
 
 export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
   /**

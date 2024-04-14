@@ -1,10 +1,10 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useRef } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
-import type { RenderStrategyProps } from '~/utils/render-strategy'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
+import type { RenderStrategyProps } from '../../utils/render-strategy'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,

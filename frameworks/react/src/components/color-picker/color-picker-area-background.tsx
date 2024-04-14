@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 

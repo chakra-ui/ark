@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { ProgressProvider } from './progress-context'
 import { emits, props } from './progress.props'
 import { type UseProgressProps, useProgress } from './use-progress'

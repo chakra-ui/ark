@@ -1,6 +1,6 @@
 import type { ItemProps, ItemState } from '@zag-js/accordion'
 import type { Accessor } from 'solid-js'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseAccordionItemContext extends Accessor<ItemState> {}
 

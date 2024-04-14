@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/react'
 import type { TriggerProps } from '@zag-js/tabs'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { useTabsContext } from './use-tabs-context'
 
 export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}

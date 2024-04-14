@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { RatingGroupProvider } from './rating-group-context'
 import { emits, props } from './rating-group.props'
 import { type UseRatingGroupProps, useRatingGroup } from './use-rating-group'

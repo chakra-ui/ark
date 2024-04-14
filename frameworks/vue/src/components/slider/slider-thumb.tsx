@@ -1,7 +1,7 @@
 import type { ThumbProps } from '@zag-js/slider'
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useSliderContext } from './slider-context'
 
 export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}

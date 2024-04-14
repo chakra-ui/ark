@@ -1,7 +1,7 @@
 import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Avatar } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './avatar.test.vue'
 
 describe('Avatar', () => {

@@ -1,9 +1,9 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseColorPickerProps
   extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {

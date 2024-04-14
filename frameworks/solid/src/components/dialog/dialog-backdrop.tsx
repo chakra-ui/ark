@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { type HTMLArkProps, ark } from '~/factory'
-import { useRenderStrategyContext } from '~/utils/render-strategy'
+import { type HTMLArkProps, ark } from '../../factory'
+import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 

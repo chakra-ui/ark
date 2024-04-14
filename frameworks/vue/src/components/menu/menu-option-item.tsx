@@ -1,7 +1,7 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useMenuContext } from './menu-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-context'
 

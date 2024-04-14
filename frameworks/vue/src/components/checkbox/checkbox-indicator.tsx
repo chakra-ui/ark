@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useCheckboxContext } from './checkbox-context'
 
 export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {}

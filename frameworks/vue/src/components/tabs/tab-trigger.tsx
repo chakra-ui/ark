@@ -1,7 +1,7 @@
 import type { TriggerProps } from '@zag-js/tabs'
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useTabsContext } from './tabs-context'
 
 export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}

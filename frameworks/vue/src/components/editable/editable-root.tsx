@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { EditableProvider } from './editable-context'
 import { emits, props } from './editable.props'
 import { type UseEditableProps, useEditable } from './use-editable'

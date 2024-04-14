@@ -1,6 +1,6 @@
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign, CollectionItem } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign, CollectionItem } from '../../types'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import { ComboboxProvider } from './combobox-context'

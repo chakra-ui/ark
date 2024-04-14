@@ -1,8 +1,8 @@
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import * as tooltip from '@zag-js/tooltip'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {}
 export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}

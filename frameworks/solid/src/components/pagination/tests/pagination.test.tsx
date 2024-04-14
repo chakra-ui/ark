@@ -1,8 +1,8 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { getExports, getParts } from '~/setup-test'
 import { Pagination } from '../'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Pagination', () => {

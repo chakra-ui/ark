@@ -1,8 +1,8 @@
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {}
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}

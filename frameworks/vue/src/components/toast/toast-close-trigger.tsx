@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useToastContext } from './toast-context'
 
 export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
-import { Portal } from '~/components/'
 import { Combobox } from '../'
+import { Portal } from '../../components/'
 import './combobox.css'
 
 const meta: Meta = {

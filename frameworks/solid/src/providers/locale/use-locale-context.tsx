@@ -1,6 +1,6 @@
 import type { Locale } from '@zag-js/i18n-utils'
 import type { Accessor } from 'solid-js'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseLocaleContext extends Accessor<Locale> {}
 

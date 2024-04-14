@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useRadioGroupContext } from './radio-group-context'
 import { useRadioGroupItemContext } from './radio-group-item-context'
 

@@ -1,9 +1,9 @@
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseRadioGroupProps extends Optional<radio.Context, 'id'> {
   /**

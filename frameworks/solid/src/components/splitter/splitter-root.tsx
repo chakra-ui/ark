@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 

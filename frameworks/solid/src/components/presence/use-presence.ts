@@ -1,8 +1,8 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createEffect, createMemo, createSignal } from 'solid-js'
-import type { Optional } from '~/types'
-import { type RenderStrategyProps, splitRenderStrategyProps } from '~/utils/render-strategy'
+import type { Optional } from '../../types'
+import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
 
 export interface UsePresenceProps
   extends Optional<presence.Context, 'present'>,

@@ -2,8 +2,8 @@ import { toggleGroupAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { getExports, getParts } from '~/setup-test'
 import { ToggleGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './toggle-group.test.vue'
 
 describe('ToggleGroup', () => {

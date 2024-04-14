@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import { createUniqueId } from 'solid-js'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign, Optional } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign, Optional } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
 

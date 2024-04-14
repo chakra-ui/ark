@@ -1,9 +1,9 @@
 import * as editable from '@zag-js/editable'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseEditableProps extends Optional<editable.Context, 'id'> {
   modelValue?: editable.Context['value']

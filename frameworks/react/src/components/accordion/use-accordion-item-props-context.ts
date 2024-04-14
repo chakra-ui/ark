@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/accordion'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseAccordionItemPropsContext extends ItemProps {}
 

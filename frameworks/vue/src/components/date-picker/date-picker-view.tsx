@@ -1,7 +1,7 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
 import { type PropType, defineComponent, reactive } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useDatePickerContext } from './date-picker-context'
 import { DatePickerViewProvider } from './date-picker-view-context'
 

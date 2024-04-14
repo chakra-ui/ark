@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { TagsInputProvider } from './tags-input-context'
 import { emits, props } from './tags-input.props'
 import { type UseTagsInputProps, useTagsInput } from './use-tags-input'

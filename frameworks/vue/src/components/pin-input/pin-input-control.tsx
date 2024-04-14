@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { usePinInputContext } from './pin-input-context'
 
 export interface PinInputControlProps extends HTMLArkProps<'div'> {}

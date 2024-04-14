@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
 import { useColorPickerContext } from './color-picker-context'
 

@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 
 export interface ToastGroupProps extends HTMLArkProps<'ol'> {}
 

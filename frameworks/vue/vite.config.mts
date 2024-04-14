@@ -1,19 +1,14 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import { copyFileSync } from 'node:fs'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import { globbySync } from 'globby'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-import tsconfigPaths from 'vite-tsconfig-paths'
 import pkg from './package.json'
 
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
-    tsconfigPaths({ root: './' }),
     dts({
       entryRoot: 'src',
       staticImport: true,

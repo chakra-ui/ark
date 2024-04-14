@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import type { HTMLArkProps } from '~/factory'
+import type { HTMLArkProps } from '../../factory'
 import { Collapsible } from '../collapsible'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-context'

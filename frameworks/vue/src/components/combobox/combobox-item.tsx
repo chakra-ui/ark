@@ -1,7 +1,7 @@
 import type { ItemProps } from '@zag-js/combobox'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useComboboxContext } from './combobox-context'
 import { ComboboxItemProvider } from './combobox-item-context'
 

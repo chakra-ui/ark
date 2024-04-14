@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { type UseTagsInputProps, useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 

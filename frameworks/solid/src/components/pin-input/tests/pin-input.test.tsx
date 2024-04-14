@@ -2,8 +2,8 @@ import { pinInputAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
-import { getExports, getParts } from '~/setup-test'
 import { PinInput } from '../'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('PinInput', () => {

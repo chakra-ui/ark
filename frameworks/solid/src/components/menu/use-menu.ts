@@ -2,8 +2,8 @@ import type { Machine } from '@zag-js/core'
 import * as menu from '@zag-js/menu'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 

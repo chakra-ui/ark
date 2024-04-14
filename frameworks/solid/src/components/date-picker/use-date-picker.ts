@@ -1,8 +1,8 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseDatePickerProps
   extends Optional<

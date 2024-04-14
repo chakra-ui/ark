@@ -1,6 +1,6 @@
-import { Portal } from '~/components/'
 import { Combobox, type ComboboxRootProps } from '../'
-import type { Optional } from '../../../types'
+import { Portal } from '../../components/'
+import type { Optional } from '../../types'
 
 interface Item {
   label: string

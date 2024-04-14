@@ -1,7 +1,7 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { getExports, getParts } from '~/setup-test'
 import { Splitter } from '../'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Splitter', () => {

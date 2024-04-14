@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewItemContext } from './use-tree-view-item-context'
 

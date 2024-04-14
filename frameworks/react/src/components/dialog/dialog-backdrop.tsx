@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
-import { useRenderStrategyPropsContext } from '~/utils/render-strategy'
+import { type HTMLArkProps, ark } from '../../factory'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 

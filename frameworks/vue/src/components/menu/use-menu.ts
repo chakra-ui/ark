@@ -1,9 +1,9 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, watch } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
 

@@ -1,9 +1,9 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tagsInput from '@zag-js/tags-input'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { Optional } from '~/types'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { Optional } from '../../types'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
   /**

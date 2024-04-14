@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { usePopoverContext } from './popover-context'
 
 export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}

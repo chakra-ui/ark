@@ -1,4 +1,4 @@
-import { createSplitProps } from '~/utils/create-split-props'
+import { createSplitProps } from '../../utils/create-split-props'
 import type { UsePresenceProps } from './use-presence'
 
 export const splitPresenceProps = <T extends UsePresenceProps>(props: T) =>

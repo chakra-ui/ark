@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
 

@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableContext } from './use-date-picker-table-context'
 

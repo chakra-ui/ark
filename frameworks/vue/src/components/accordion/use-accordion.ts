@@ -1,9 +1,9 @@
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
   modelValue?: accordion.Context['value']

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { SwitchProvider } from './switch-context'
 import { emits, props } from './switch.props'
 import { type UseSwitchProps, useSwitch } from './use-switch'

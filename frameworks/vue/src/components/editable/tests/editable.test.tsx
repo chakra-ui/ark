@@ -1,8 +1,8 @@
 import { editableAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Editable } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ControlledComponentUnderTest from './controlled-editable.test.vue'
 import ComponentUnderTest from './editable.test.vue'
 

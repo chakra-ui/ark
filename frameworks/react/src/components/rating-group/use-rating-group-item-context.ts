@@ -1,5 +1,5 @@
 import type { ItemState } from '@zag-js/rating-group'
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 
 export interface UseRatingGroupItemContext extends ItemState {}
 

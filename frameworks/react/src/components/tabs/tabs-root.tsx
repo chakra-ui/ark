@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
-} from '~/utils/render-strategy'
+} from '../../utils/render-strategy'
 import { type UseTabsProps, useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 

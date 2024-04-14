@@ -1,9 +1,9 @@
 import * as slider from '@zag-js/slider'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseSliderProps extends Optional<slider.Context, 'id'> {
   modelValue?: slider.Context['value']

@@ -1,8 +1,8 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}
 export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>> {}

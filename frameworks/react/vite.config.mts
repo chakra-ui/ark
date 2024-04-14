@@ -3,14 +3,12 @@ import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
 import dts from 'vite-plugin-dts'
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 import pkg from './package.json'
 
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
-    tsconfigPaths({ root: './' }),
     dts({
       entryRoot: 'src',
       staticImport: true,

@@ -1,6 +1,6 @@
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { useTreeViewContext } from './tree-view-context'
 import { useTreeViewDepthContext } from './tree-view-depth-provider'
 import { type ItemProps, TreeViewItemProvider } from './tree-view-item-context'

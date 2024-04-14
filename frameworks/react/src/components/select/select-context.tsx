@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { CollectionItem } from '~/types'
+import type { CollectionItem } from '../../types'
 import { type UseSelectContext, useSelectContext } from './use-select-context'
 
 export interface SelectContextProps<T extends CollectionItem> {

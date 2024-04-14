@@ -1,9 +1,9 @@
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { RadioGroupItemPropsProvider, RadioGroupItemProvider } from './use-radio-group-item-context'
 

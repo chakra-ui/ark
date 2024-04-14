@@ -1,8 +1,8 @@
 import { paginationAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Pagination } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './pagination.test.vue'
 
 describe('Pagination', () => {

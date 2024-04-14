@@ -2,9 +2,9 @@ import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { CollectionItem, Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { CollectionItem, Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,

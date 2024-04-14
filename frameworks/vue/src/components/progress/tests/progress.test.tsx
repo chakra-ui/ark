@@ -1,7 +1,7 @@
 import { progressAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Progress } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './progress.test.vue'
 
 describe('Progress', () => {

@@ -1,9 +1,9 @@
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
-import { useId } from '~/utils/utils'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
+import { useId } from '../../utils/utils'
 
 export interface UseClipboardProps extends Optional<clipboard.Context, 'id'> {}
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}

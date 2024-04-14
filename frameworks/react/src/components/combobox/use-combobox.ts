@@ -2,10 +2,10 @@ import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useMemo } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
-import type { CollectionItem, Optional } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
-import { useEvent } from '~/utils/use-event'
+import { useEnvironmentContext } from '../../providers/environment'
+import type { CollectionItem, Optional } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
+import { useEvent } from '../../utils/use-event'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,

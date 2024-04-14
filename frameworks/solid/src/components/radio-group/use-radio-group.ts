@@ -1,8 +1,8 @@
 import * as radio from '@zag-js/radio-group'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '~/providers'
-import type { Optional } from '~/types'
+import { useEnvironmentContext } from '../../providers'
+import type { Optional } from '../../types'
 
 export interface UseRadioGroupProps extends Optional<radio.Context, 'id'> {}
 export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}

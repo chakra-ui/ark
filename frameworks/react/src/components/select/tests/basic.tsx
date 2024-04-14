@@ -1,6 +1,6 @@
-import { Portal } from '~/components/'
 import { Select, type SelectRootProps } from '../'
-import type { Optional } from '../../../types'
+import { Portal } from '../../components/'
+import type { Optional } from '../../types'
 
 interface Item {
   label: string

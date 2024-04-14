@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
 import { useSelectContext } from './select-context'

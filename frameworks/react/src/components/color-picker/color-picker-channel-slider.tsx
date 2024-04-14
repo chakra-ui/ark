@@ -1,9 +1,9 @@
 import type { ChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
-import type { Assign } from '~/types'
-import { createSplitProps } from '~/utils/create-split-props'
+import { type HTMLArkProps, ark } from '../../factory'
+import type { Assign } from '../../types'
+import { createSplitProps } from '../../utils/create-split-props'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 

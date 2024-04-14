@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseAccordionReturn } from './use-accordion'
 
 export interface UseAccordionContext extends UseAccordionReturn {}

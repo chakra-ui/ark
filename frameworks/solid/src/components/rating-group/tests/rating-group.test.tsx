@@ -1,8 +1,8 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { vi } from 'vitest'
-import { getExports, getParts } from '~/setup-test'
 import { RatingGroup } from '../'
+import { getExports, getParts } from '../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Rating Group', () => {

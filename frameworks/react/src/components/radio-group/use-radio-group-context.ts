@@ -1,4 +1,4 @@
-import { createContext } from '~/utils/create-context'
+import { createContext } from '../../utils/create-context'
 import type { UseRadioGroupReturn } from './use-radio-group'
 
 export interface UseRadioGroupContext extends UseRadioGroupReturn {}

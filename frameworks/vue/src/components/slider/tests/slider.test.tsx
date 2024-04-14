@@ -1,8 +1,8 @@
 import { sliderAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { getExports, getParts } from '~/setup-test'
 import { Slider } from '../'
+import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './slider.test.vue'
 
 describe('Slider', () => {

@@ -1,6 +1,6 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '~/factory'
+import { type HTMLArkProps, ark } from '../../factory'
 
 export interface CarouselControlProps extends HTMLArkProps<'div'> {}
 
