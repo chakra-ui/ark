@@ -185,6 +185,17 @@
         "default": "./dist/components/editable/index.cjs"
       }
     },
+    "./factory": {
+      "source": "./src/components/factory.ts",
+      "import": {
+        "types": "./dist/components/factory.d.ts",
+        "default": "./dist/components/factory.js"
+      },
+      "require": {
+        "types": "./dist/components/factory.d.cts",
+        "default": "./dist/components/factory.cjs"
+      }
+    },
     "./file-upload": {
       "source": "./src/components/file-upload/index.ts",
       "import": {
@@ -447,17 +458,6 @@
       "require": {
         "types": "./dist/components/tree-view/index.d.cts",
         "default": "./dist/components/tree-view/index.cjs"
-      }
-    },
-    "./factory": {
-      "source": "./src/factory.ts",
-      "import": {
-        "types": "./dist/factory.d.ts",
-        "default": "./dist/factory.js"
-      },
-      "require": {
-        "types": "./dist/factory.d.cts",
-        "default": "./dist/factory.cjs"
       }
     },
     "./environment": {

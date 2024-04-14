@@ -10,9 +10,12 @@ import { match } from 'ts-pattern'
  * - Exports: The exports of the framework
  */
 const generateExports = async (pkgJsonPath: string) => {
-  const paths = await globby(['src/*/*/index.ts', 'src/index.ts', 'src/factory.{tsx,ts}'], {
-    cwd: dirname(pkgJsonPath),
-  })
+  const paths = await globby(
+    ['src/*/*/index.ts', 'src/index.ts', 'src/components/factory.{tsx,ts}'],
+    {
+      cwd: dirname(pkgJsonPath),
+    },
+  )
   return (
     paths
       .sort()
