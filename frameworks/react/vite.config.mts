@@ -1,15 +1,11 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import { copyFileSync } from 'node:fs'
 import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
-import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import { defineConfig } from 'vitest/config'
 import pkg from './package.json'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
@@ -84,8 +80,7 @@ const renderBanner = (fileName: string) => {
 
 // e.g Avatar.tsx, Accordion.tsx
 const isBarrelComponent = (file: path.ParsedPath) =>
-  file.name === file.dir &&
-  !['presence', 'environment', 'locale', 'number-format', 'byte-format'].includes(file.dir)
+  file.dir.endsWith(file.name) && !['presence', 'environment', 'locale'].includes(file.dir)
 
 const isSpecialFile = (file: path.ParsedPath) =>
   ['index', 'factory', 'compose-refs'].includes(file.name)

@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { ByteFormat } from '@ark-ui/vue'\n</script>\n\n<template>\n  <div class=\"file\">\n    <span class=\"file__name\">src/index.ts</span>\n    <span class=\"file__size\">\n      <ByteFormat :value=\"120904\" unit=\"byte\" />\n    </span>\n  </div>\n</template>\n"
-}

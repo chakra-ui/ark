@@ -1,6 +1,3 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import { copyFileSync } from 'node:fs'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
@@ -10,6 +7,7 @@ import dts from 'vite-plugin-dts'
 import pkg from './package.json'
 
 export default defineConfig({
+  logLevel: 'warn',
   plugins: [
     dts({
       entryRoot: 'src',

@@ -1,8 +1,8 @@
 import solid from 'vite-plugin-solid'
 import { defineConfig } from 'vitest/config'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  logLevel: 'warn',
   plugins: [solid()],
   test: {
     globals: true,
