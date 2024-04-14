@@ -1,11 +1,53 @@
 {
-  "Area": { "asChild": { "type": "boolean", "isRequired": false } },
-  "CancelTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "EditTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Preview": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Area": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "CancelTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "EditTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Input": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Preview": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "activationMode": {
       "type": "ActivationMode",
@@ -13,14 +55,23 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
     },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the editable."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -142,5 +193,11 @@
       "description": "The value of the editable in both edit and preview mode"
     }
   },
-  "SubmitTrigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "SubmitTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

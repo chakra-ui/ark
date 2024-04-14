@@ -1,11 +1,32 @@
 {
-  "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemContent": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the collpasible."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -58,17 +79,32 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
     },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the accordion."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

@@ -1,18 +1,55 @@
 {
-  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ItemControl": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ItemControl": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
     "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "disabled": { "type": "boolean", "isRequired": false },
     "invalid": { "type": "boolean", "isRequired": false }
   },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the segment group."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

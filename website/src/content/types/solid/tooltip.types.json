@@ -1,8 +1,32 @@
 {
-  "Arrow": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ArrowTip": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Arrow": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ArrowTip": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "aria-label": {
       "type": "string",
@@ -24,8 +48,13 @@
       "isRequired": false,
       "description": "Whether to close the tooltip on pointerdown."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the tooltip."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -94,5 +123,11 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Trigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

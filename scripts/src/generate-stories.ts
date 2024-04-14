@@ -1,8 +1,8 @@
+import { readFile } from 'node:fs/promises'
+import path, { basename, dirname, join } from 'node:path'
 import { findUpSync } from 'find-up'
 import { outputFile } from 'fs-extra'
-import { readFile } from 'fs/promises'
 import { globby } from 'globby'
-import path, { basename, dirname, join } from 'path'
 import prettier from 'prettier'
 import { Node, Project } from 'ts-morph'
 import { match } from 'ts-pattern'
@@ -38,8 +38,10 @@ const extractScriptSetup = (fileContent: string): string | null => {
 const parseVueTemplate = async (fileContent: string): Promise<Stories> => {
   const scriptSetup = extractScriptSetup(fileContent)
   const pattern = /<Variant title="([^"]+)">([\s\S]+?)<\/Variant>/g
+  // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
   let match
   const output: Stories = {}
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
   while ((match = pattern.exec(fileContent)) !== null) {
     const title = match[1]
     const content = match[2].trim()
@@ -56,10 +58,8 @@ const parseVueTemplate = async (fileContent: string): Promise<Stories> => {
   return output
 }
 
-const main = async () => {
-  const framework = process.argv.slice(2)[0]
-  console.log('Generating story docs for', framework)
-
+const extractStoriesForFramework = async (framework: string) => {
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'frameworks', framework))
 
@@ -75,6 +75,7 @@ const main = async () => {
       const component = sourceFile.getBaseNameWithoutExtension().split('.')[0]
 
       let imports = ''
+      // biome-ignore lint/complexity/noForEach: <explanation>
       sourceFile.getImportDeclarations().forEach((importDecl) => {
         const importText = importDecl
           .getText()
@@ -89,7 +90,7 @@ const main = async () => {
           .replace(/@zag-js\/react/g, '@ark-ui/react')
 
         if (!importText.includes('.css') && !importText.includes('storybook')) {
-          imports += importText + '\n'
+          imports += `${importText}\n`
         }
       })
 
@@ -124,11 +125,18 @@ const main = async () => {
       const fileContent = await readFile(story, {
         encoding: 'utf8',
       }).catch(() => undefined)
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       const stories = await parseVueTemplate(fileContent!)
       const outPath = join(outDir, 'vue', `${basename(story, '.story.vue')}.stories.json`)
       return outputFile(outPath, await format(stories))
     }),
   )
+}
+
+const main = async () => {
+  extractStoriesForFramework('react')
+    .then(() => extractStoriesForFramework('solid'))
+    .then(() => extractStoriesForFramework('vue'))
 }
 
 main().catch((err) => {

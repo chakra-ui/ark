@@ -99,8 +99,10 @@ async function extractPropertiesOfTypeName(
 async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
   const { shouldIgnoreProperty } = typeSearchOptions
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
+
   const basePath = path.dirname(tsConfigPath)
   const { fileNames, options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, basePath)
+
   const program = ts.createProgram(fileNames, options)
   const sourceFiles = program.getSourceFiles()
 
@@ -154,9 +156,7 @@ function extractTypeExports(fileContent?: string) {
     .sort()
 }
 
-const main = async () => {
-  const framework = process.argv.slice(2)[0]
-
+const extractTypesForFramework = async (framework: string) => {
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const rootDir = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(rootDir, 'frameworks', framework))
@@ -178,7 +178,9 @@ const main = async () => {
     ),
   )
 
-  const searchType = await createTypeSearch('tsconfig.json', { shouldIgnoreProperty })
+  const searchType = await createTypeSearch('tsconfig.json', {
+    shouldIgnoreProperty,
+  })
 
   const result = await Promise.all(
     Object.entries(componentExportMap).flatMap(async ([component, typeExports]) => {
@@ -210,15 +212,24 @@ const main = async () => {
       }
     }),
   )
-  result.map(async ({ component, typeExports }) => {
-    fs.outputFileSync(
-      path.join(outDir, framework, `${path.basename(component)}.types.json`),
-      await prettier.format(JSON.stringify(typeExports), {
-        ...prettierConfig,
-        parser: 'json',
-      }),
-    )
-  })
+
+  Promise.all(
+    result.map(async ({ component, typeExports }) => {
+      fs.outputFileSync(
+        path.join(outDir, framework, `${path.basename(component)}.types.json`),
+        await prettier.format(JSON.stringify(typeExports), {
+          ...prettierConfig,
+          parser: 'json',
+        }),
+      )
+    }),
+  )
+}
+
+const main = async () => {
+  extractTypesForFramework('react')
+    .then(() => extractTypesForFramework('solid'))
+    .then(() => extractTypesForFramework('vue'))
 }
 
 main().catch((err) => {

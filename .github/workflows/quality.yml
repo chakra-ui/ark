@@ -39,10 +39,10 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Generate TypeDocs
-        run: bun run document:types
+        run: bun scripts document:types
 
       - name: Generate Storydocs
-        run: bun run document:stories
+        run: bun scripts document:stories
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:

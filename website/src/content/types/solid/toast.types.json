@@ -5,13 +5,10 @@
       "isRequired": true,
       "description": "The placement of the toast"
     },
-    "render": {
-      "type": "(api: Accessor<MachineApi<PropTypes, Options>>) => Element",
-      "isRequired": true
-    },
+    "render": { "type": "(context: MachineApi<PropTypes>) => Element", "isRequired": true },
     "count": { "type": "number", "isRequired": false },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -42,7 +39,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
@@ -67,9 +64,39 @@
       "description": "The z-index applied to each toast group"
     }
   },
-  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Group": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Root": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Title": { "asChild": { "type": "boolean", "isRequired": false } }
+  "CloseTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Description": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Group": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Title": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

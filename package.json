@@ -11,8 +11,6 @@
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "document:types": "turbo run typedocs",
-    "document:stories": "turbo run storydocs",
     "react": "bun run --cwd frameworks/react",
     "solid": "bun run --cwd frameworks/solid",
     "vue": "bun run --cwd frameworks/vue",

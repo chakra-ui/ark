@@ -1,24 +1,84 @@
 {
-  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ClearTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Content": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Input": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "ItemGroupLabel": {
-    "for": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "htmlFor": { "type": "string", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
   "ItemGroup": {
     "id": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
-  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Item": {
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "item": { "type": "any", "isRequired": false }
   },
-  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Positioner": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
@@ -30,7 +90,11 @@
       "isRequired": false,
       "description": "Whether to allow custom values or free values in the input"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -41,8 +105,13 @@
       "isRequired": false,
       "description": "Whether to close the combobox when an item is selected."
     },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "the initial value of the combobox"
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -78,7 +147,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autocomplete' | 'autohighlight'",
+      "type": "'none' | 'autohighlight' | 'autocomplete'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
     },
@@ -194,7 +263,7 @@
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
     "selectionBehavior": {
-      "type": "'clear' | 'replace' | 'preserve'",
+      "type": "'replace' | 'clear' | 'preserve'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
@@ -220,5 +289,11 @@
       "description": "The keys of the selected items"
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Trigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }

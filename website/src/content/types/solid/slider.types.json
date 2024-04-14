@@ -1,12 +1,40 @@
 {
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
-  "MarkerGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "MarkerGroup": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Marker": {
     "value": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false }
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
   },
-  "Range": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Range": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Root": {
     "aria-label": {
       "type": "string[]",
@@ -18,9 +46,18 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "defaultValue": {
+      "type": "number[]",
+      "isRequired": false,
+      "description": "The initial value of the slider slider."
+    },
     "dir": {
-      "type": "'ltr' | 'rtl'",
+      "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -101,7 +138,7 @@
       "description": "The orientation of the slider"
     },
     "origin": {
-      "type": "'start' | 'center'",
+      "type": "'center' | 'start'",
       "isRequired": false,
       "description": "- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
     },
@@ -133,9 +170,25 @@
   },
   "Thumb": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "isRequired": false },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "name": { "type": "string", "isRequired": false }
   },
-  "Track": { "asChild": { "type": "boolean", "isRequired": false } },
-  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Track": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "ValueText": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  }
 }
