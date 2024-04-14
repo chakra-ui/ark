@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useAvatarContext } from './avatar-context'
 
 export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}

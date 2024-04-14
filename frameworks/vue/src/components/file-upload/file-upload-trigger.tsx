@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './file-upload-context'
 
 export interface FileUploadTriggerProps extends HTMLArkProps<'button'> {}

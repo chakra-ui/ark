@@ -1,9 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ItemProps } from '@zag-js/tags-input'
 import { createMemo } from 'solid-js'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { TagsInputItemPropsProvider, TagsInputItemProvider } from './use-tags-input-item-context'
 

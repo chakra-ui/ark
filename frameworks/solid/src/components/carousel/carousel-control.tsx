@@ -1,6 +1,6 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 
 export interface CarouselControlProps extends HTMLArkProps<'div'> {}
 

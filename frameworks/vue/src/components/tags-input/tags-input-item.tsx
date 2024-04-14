@@ -1,7 +1,7 @@
 import type { ItemProps } from '@zag-js/tags-input'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './tags-input-context'
 import { TagsInputItemProvider } from './tags-input-item-context'
 

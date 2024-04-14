@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
 export interface PopoverIndicatorProps extends HTMLArkProps<'div'> {}

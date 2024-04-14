@@ -1,5 +1,4 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
@@ -7,6 +6,7 @@ import {
   RenderStrategyProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
+import { type HTMLArkProps, ark } from '../factory'
 import { type UseTabsProps, useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 

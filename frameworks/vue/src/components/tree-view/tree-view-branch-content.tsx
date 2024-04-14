@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewBranchContext } from './tree-view-branch-context'
 import { useTreeViewContext } from './tree-view-context'
 

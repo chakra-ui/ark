@@ -1,6 +1,6 @@
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './file-upload-context'
 import { type FileUploadItemContext, FileUploadItemProvider } from './file-upload-item-context'
 

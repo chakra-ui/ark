@@ -1,8 +1,8 @@
 import type { InputProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}

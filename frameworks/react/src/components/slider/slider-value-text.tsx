@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
 export interface SliderValueTextProps extends HTMLArkProps<'span'> {}

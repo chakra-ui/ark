@@ -1,9 +1,9 @@
 import { type PropTypes, mergeProps, normalizeProps, useActor } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
 import { type Accessor, Index, type JSX, createEffect, createMemo, onCleanup } from 'solid-js'
-import type { HTMLArkProps } from '../../factory'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
+import type { HTMLArkProps } from '../factory'
 import { ToastGroup } from './toast-group'
 import { type Options, ToastProvider } from './use-toast-context'
 

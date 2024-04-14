@@ -1,7 +1,7 @@
 import type { IndicatorProps } from '@zag-js/carousel'
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useCarouselContext } from './carousel-context'
 
 export interface CarouselIndicatorProps extends Assign<HTMLArkProps<'button'>, IndicatorProps> {}

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useProgressContext } from './progress-context'
 
 export interface ProgressLabelProps extends HTMLArkProps<'label'> {}

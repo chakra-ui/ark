@@ -11,9 +11,9 @@ import {
   onUnmounted,
   toRef,
 } from 'vue'
-import type { HTMLArkProps } from '../../factory'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
+import type { HTMLArkProps } from '../factory'
 import { ToastProvider } from './toast-context'
 import { ToastGroup } from './toast-group'
 

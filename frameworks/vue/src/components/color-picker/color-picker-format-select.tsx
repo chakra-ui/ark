@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerFormatSelectProps extends HTMLArkProps<'button'> {}

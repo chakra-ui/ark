@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewDepthContext } from './use-tree-view-depth-context'
 import { type ItemProps, TreeViewItemProvider } from './use-tree-view-item-context'

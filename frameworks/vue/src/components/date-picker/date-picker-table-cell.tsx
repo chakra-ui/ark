@@ -1,5 +1,5 @@
 import { type PropType, computed, defineComponent, reactive } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './date-picker-context'
 import {
   type DatePickerTableCellContext,

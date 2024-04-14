@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { AvatarProvider } from './avatar-context'
 import { emits, props } from './avatar.props'
 import { type UseAvatarProps, useAvatar } from './use-avatar'

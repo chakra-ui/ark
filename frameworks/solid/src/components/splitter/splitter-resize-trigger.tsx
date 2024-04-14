@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ResizeTriggerProps } from '@zag-js/splitter'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useSplitterContext } from './use-splitter-context'
 
 export interface SplitterResizeTriggerProps

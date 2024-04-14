@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 
 export interface RatingGroupControlProps extends HTMLArkProps<'div'> {}

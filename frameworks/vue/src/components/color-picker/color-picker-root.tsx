@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
 import { ColorPickerProvider } from './color-picker-context'

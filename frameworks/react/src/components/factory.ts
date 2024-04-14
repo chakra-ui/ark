@@ -11,7 +11,7 @@ import {
   isValidElement,
   memo,
 } from 'react'
-import { composeRefs } from './utils/compose-refs'
+import { composeRefs } from '../utils/compose-refs'
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
 type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<

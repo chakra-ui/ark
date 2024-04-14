@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { SliderProvider } from './slider-context'
 import { emits, props } from './slider.props'
 import { type UseSliderProps, useSlider } from './use-slider'

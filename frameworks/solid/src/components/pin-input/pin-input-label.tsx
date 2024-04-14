@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
 export interface PinInputLabelProps extends HTMLArkProps<'label'> {}

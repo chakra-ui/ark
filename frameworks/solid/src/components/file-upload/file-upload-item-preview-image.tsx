@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSignal } from 'solid-js'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemContext } from './use-file-upload-item-context'
 

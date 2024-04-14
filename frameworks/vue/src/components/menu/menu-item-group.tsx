@@ -1,7 +1,7 @@
 import type { ItemGroupProps } from '@zag-js/menu'
 import { type PropType, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './menu-context'
 
 export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}

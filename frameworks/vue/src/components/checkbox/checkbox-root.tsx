@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { CheckboxProvider } from './checkbox-context'
 import { emits, props } from './checkbox.props'
 import { type UseCheckboxProps, useCheckbox } from './use-checkbox'

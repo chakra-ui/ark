@@ -1,7 +1,7 @@
 import type { ItemProps } from '@zag-js/rating-group'
 import { type PropType, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './rating-group-context'
 import { RatingGroupItemProvider } from './rating-group-item-context'
 

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useTabsContext } from './tabs-context'
 
 export interface TabListProps extends HTMLArkProps<'div'> {}

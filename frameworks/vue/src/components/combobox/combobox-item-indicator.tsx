@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './combobox-context'
 import { useComboboxItemContext } from './combobox-item-context'
 

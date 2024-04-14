@@ -1,12 +1,12 @@
 import type { ItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import type { HTMLArkProps } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
+import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemPropsProvider, AccordionItemProvider } from './use-accordion-item-context'
 

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { splitProps, type ComponentProps, type JSX } from 'solid-js'
+import { type ComponentProps, type JSX, splitProps } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-import type { Assign } from './types'
+import type { Assign } from '../types'
 
 type ElementType = keyof JSX.IntrinsicElements
 

@@ -1,9 +1,9 @@
 import type { ItemProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemPropsProvider, ComboboxItemProvider } from './use-combobox-item-context'
 

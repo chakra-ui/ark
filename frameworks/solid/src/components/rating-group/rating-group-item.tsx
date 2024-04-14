@@ -1,9 +1,9 @@
 import type { ItemProps } from '@zag-js/rating-group'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { RatingGroupItemProvider } from './use-rating-group-item-context'
 

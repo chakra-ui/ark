@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { PinInputProvider } from './pin-input-context'
 import { emits, props } from './pin-input.props'
 import { type UsePinInputProps, usePinInput } from './use-pin-input'

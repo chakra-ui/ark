@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { CarouselProvider } from './carousel-context'
 import { emits, props } from './carousel.props'
 import { type UseCarouselProps, useCarousel } from './use-carousel'

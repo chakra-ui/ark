@@ -1,7 +1,7 @@
 import type { SwatchProps } from '@zag-js/color-picker'
 import { type PropType, defineComponent, reactive } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
 

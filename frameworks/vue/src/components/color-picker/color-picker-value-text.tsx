@@ -1,6 +1,6 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './color-picker-context'
 
 export interface ColorPickerValueTextProps extends HTMLArkProps<'span'> {}

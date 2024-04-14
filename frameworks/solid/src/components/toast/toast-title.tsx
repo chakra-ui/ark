@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
+import { type HTMLArkProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
 export interface ToastTitleProps extends HTMLArkProps<'div'> {}

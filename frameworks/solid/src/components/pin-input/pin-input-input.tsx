@@ -1,8 +1,8 @@
 import type { InputProps } from '@zag-js/pin-input'
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLArkProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
 export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}

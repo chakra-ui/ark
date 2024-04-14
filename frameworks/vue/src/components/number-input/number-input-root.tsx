@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../../factory'
 import type { Assign } from '../../types'
+import { type HTMLArkProps, ark } from '../factory'
 import { NumberInputProvider } from './number-input-context'
 import { emits, props } from './number-input.props'
 import { type UseNumberInputProps, useNumberInput } from './use-number-input'
