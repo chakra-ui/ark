@@ -4,7 +4,11 @@
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "noPropertyAccessFromIndexSignature": false,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }

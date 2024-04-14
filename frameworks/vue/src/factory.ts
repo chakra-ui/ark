@@ -1,13 +1,13 @@
 import {
-  defineComponent,
-  h,
   type AllowedComponentProps,
   type ComponentCustomProps,
   type ExtractPropTypes,
   type IntrinsicElementAttributes,
   type VNodeProps,
+  defineComponent,
+  h,
 } from 'vue'
-import { Dynamic } from './dynamic'
+import { Dynamic } from '~/utils/dynamic'
 
 type DOMElements = keyof IntrinsicElementAttributes
 type ElementType = Parameters<typeof h>[0]

@@ -1,7 +1,7 @@
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '~/providers/environment'
+import { useEnvironmentContext } from '~/providers'
 import type { Optional } from '~/types'
 import { useEvent } from '~/utils/use-event'
 
