@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { Toggle } from '.'\n</script>\n\n<template><Toggle @change=\"(x) => console.log(x)\">B</Toggle></template>\n"
-}

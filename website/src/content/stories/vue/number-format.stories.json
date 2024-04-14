@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { NumberFormat } from '../number-format'\n</script>\n\n<template>\n  <span>\n    <NumberFormat :value=\"1204\" :style=\"'currency'\" currency=\"EUR\" />\n  </span>\n</template>\n"
-}
