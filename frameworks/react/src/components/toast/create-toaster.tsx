@@ -1,66 +1,71 @@
 import { type PropTypes, mergeProps, normalizeProps, useActor } from '@zag-js/react'
+import type { DefaultGenericOptions, MachineContext } from '@zag-js/toast'
 import * as toast from '@zag-js/toast'
-import { type JSX, forwardRef } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
-import type { Optional } from '../../types'
-import { useEffectOnce } from '../../utils/use-effect-once'
-import type { HTMLArkProps } from '../factory'
-import { ToastGroup } from './toast-group'
-import { ToastProvider } from './use-toast-context'
+import { type ComponentProps, type ReactNode, forwardRef, useEffect } from 'react'
+import { useEnvironmentContext } from '../../providers'
+import type { Assign, Optional } from '../../types'
+import { ToasterProvider } from './use-toaster-context'
 
 type GroupContext = Partial<toast.GroupMachineContext>
 
 export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, 'render'> {
   placement: toast.Placement
-  render: (context: toast.Api<PropTypes>) => JSX.Element
 }
 
-export type CreateToasterReturn = [React.FC<HTMLArkProps<'ol'>>, toast.GroupApi<PropTypes>]
+export type ToasterProps = Assign<
+  ComponentProps<'div'>,
+  {
+    children: (context: MachineContext<DefaultGenericOptions>[]) => ReactNode
+  }
+>
 
-export const createToaster = (props: CreateToasterProps): CreateToasterReturn => {
+export type CreateToasterReturn = [React.FC<ToasterProps>, toast.GroupApi<PropTypes>]
+
+export const createToaster = (props: CreateToasterProps) => {
   const { placement, ...rest } = props
   const service = toast.group.machine({ id: '1', placement, ...rest }).start()
-  let context = toast.group.connect(service.getState(), service.send, normalizeProps)
+  const context = toast.group.connect(service.getState(), service.send, normalizeProps)
 
   const subscribe = (fn: CallableFunction) => {
-    // @ts-expect-error FIX LATER IT EXISTS
+    // @ts-expect-error - The context is not typed
     return service.subscribe((state) => fn(state.context.toasts))
   }
 
-  const Toaster = forwardRef<HTMLOListElement, HTMLArkProps<'ol'>>((props, ref) => {
+  const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
     const getRootNode = useEnvironmentContext()
     const [state, send] = useActor(service)
-    context = toast.group.connect(state, send, normalizeProps)
+    const context = toast.group.connect(state, send, normalizeProps)
 
-    useEffectOnce(() => {
+    useEffect(() => {
       service.setContext({ getRootNode })
       return () => void service.stop()
-    })
-
-    const mergedProps = mergeProps(context.getGroupProps({ placement }), props)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    const mergedProps = mergeProps(context.getGroupProps({ placement: placement }), props)
     const toasts = context.toastsByPlacement[placement] ?? []
 
     return (
-      <ToastGroup {...mergedProps} ref={ref}>
-        {toasts.map((toast) => (
-          <ToastProviderFactory key={toast.id} service={toast} />
-        ))}
-      </ToastGroup>
+      <ToasterProvider value={toasts}>
+        <div {...mergedProps} ref={ref}>
+          {/* @ts-expect-error it exsits */}
+          {props.children(state.context.toasts.map((item) => item.state.context))}
+        </div>
+      </ToasterProvider>
     )
   })
 
-  Toaster.displayName = 'ToastGroup'
+  Toaster.displayName = 'Toaster'
 
-  return [Toaster, Object.assign(context, { subscribe })]
-}
+  const api = {} as toast.GroupApi<PropTypes>
+  for (const key in context) {
+    Object.defineProperty(api, key, {
+      get() {
+        if (key === 'subscribe') return subscribe
+        const ctx = toast.group.connect(service.getState(), service.send, normalizeProps)
+        return ctx[key as keyof typeof context]
+      },
+    })
+  }
 
-interface ToastProviderFactoryProps {
-  service: toast.Service
-}
-
-const ToastProviderFactory = (props: ToastProviderFactoryProps) => {
-  const [state, send] = useActor(props.service)
-  const context = toast.connect(state, send, normalizeProps)
-
-  return <ToastProvider value={context}>{state.context.render?.(context)}</ToastProvider>
+  return [Toaster, api] as const
 }

@@ -20,4 +20,4 @@ export const props = {
   },
 }
 
-export const emits = declareEmits(['copy-status-change'])
+export const emits = declareEmits(['status-change'])

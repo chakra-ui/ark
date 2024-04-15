@@ -1,15 +1,34 @@
-import { mergeProps } from '@zag-js/react'
+import { mergeProps, normalizeProps, useActor } from '@zag-js/react'
+import { type DefaultGenericOptions, type MachineContext, connect } from '@zag-js/toast'
 import { forwardRef } from 'react'
+import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
-import { useToastContext } from './use-toast-context'
+import { ToastProvider } from './use-toast-context'
+import { useToasterContext } from './use-toaster-context'
 
-export interface ToastRootProps extends HTMLArkProps<'li'> {}
+interface ToastProps {
+  toast: MachineContext<DefaultGenericOptions>
+}
 
-export const ToastRoot = forwardRef<HTMLLIElement, ToastRootProps>((props, ref) => {
-  const toast = useToastContext()
-  const mergedProps = mergeProps(toast.rootProps, props)
+export interface ToastRootProps extends HTMLArkProps<'div'>, ToastProps {}
 
-  return <ark.li {...mergedProps} ref={ref} />
+export const ToastRoot = forwardRef<HTMLDivElement, ToastRootProps>((props, ref) => {
+  const [toastProps, localprops] = createSplitProps<ToastProps>()(props, ['toast'])
+  const toasts = useToasterContext()
+  const service = toasts.find((item) => item.state.context.id === toastProps.toast.id)
+
+  if (!service) return null
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [state, send] = useActor(service)
+  const toast = connect(state, send, normalizeProps)
+  const mergedProps = mergeProps(toast.rootProps, localprops)
+
+  return (
+    <ToastProvider value={toast}>
+      <ark.div {...mergedProps} ref={ref} />
+    </ToastProvider>
+  )
 })
 
 ToastRoot.displayName = 'ToastRoot'

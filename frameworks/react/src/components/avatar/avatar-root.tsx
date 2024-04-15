@@ -13,7 +13,7 @@ export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, re
     'dir',
     'getRootNode',
     'id',
-    'onLoadingStatusChange',
+    'onStatusChange',
   ])
   const avatar = useAvatar(useAvatarProps)
   const mergedProps = mergeProps(avatar.rootProps, localProps)

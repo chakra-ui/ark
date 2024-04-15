@@ -20,8 +20,8 @@ export const useClipboard = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
-      onCopyStatusChange: (details) => {
-        emit('copy-status-change', details)
+      onStatusChange: (details) => {
+        emit('status-change', details)
       },
     }),
     { context },
