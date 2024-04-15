@@ -4,8 +4,7 @@ import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 
 const main = async () => {
-  const files = await globby(['../frameworks/react/src/*/index.ts'], {})
-
+  const files = await globby(['../frameworks/react/src/components/*/index.ts'], {})
   files
     .sort()
     .map((file) => ({
@@ -14,7 +13,7 @@ const main = async () => {
       indexFile: file,
       componentFile: file.replace('index', basename(dirname(file))),
     }))
-    .filter((entry) => !['presence', 'environment', 'locale'].includes(entry.id))
+    .filter((entry) => !['presence', 'portal'].includes(entry.id))
     .map((entry) => ({
       name: entry.name,
       indexExports: getExportsFromSourceFile(entry.indexFile)

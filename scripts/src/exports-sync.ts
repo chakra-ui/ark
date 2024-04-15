@@ -3,10 +3,10 @@ import { copyFileSync } from 'fs-extra'
 import { globby } from 'globby'
 
 const main = async () => {
-  const files = await globby(['../frameworks/react/src/*/index.ts'], {})
+  const files = await globby(['../frameworks/react/src/components/*/index.ts'], {})
 
   files
-    .filter((file) => !['presence', 'environment', 'locale'].includes(basename(dirname(file))))
+    .filter((file) => !['presence', 'portal'].includes(basename(dirname(file))))
     .map((file) => {
       // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`
       copyFileSync(file, file.replace('react', 'solid'))
