@@ -1,7 +1,6 @@
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Carousel } from '../'
-import './carousel.css'
 
 const meta: Meta = {
   title: 'Components / Carousel',

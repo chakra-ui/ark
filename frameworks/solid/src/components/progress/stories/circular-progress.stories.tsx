@@ -1,6 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
 import { Progress } from '../'
-import './progress.css'
 
 const meta: Meta = {
   title: 'Components / Progress / Circular',

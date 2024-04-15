@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Carousel } from '../'
-import './carousel.css'
 
 const meta: Meta = {
   title: 'Components / Carousel',

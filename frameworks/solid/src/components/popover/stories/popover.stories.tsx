@@ -2,7 +2,6 @@ import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Popover } from '../'
-import './popover.css'
 
 const meta: Meta = {
   title: 'Components / Popover',

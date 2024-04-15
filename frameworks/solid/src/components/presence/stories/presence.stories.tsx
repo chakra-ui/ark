@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Presence } from '../'
-import './presence.css'
 
 const meta: Meta = {
   title: 'Components / Presence',

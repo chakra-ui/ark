@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { SegmentGroup } from '../'
-import './segment-group.css'
 
 const meta: Meta = {
   title: 'Components / Segment Group',

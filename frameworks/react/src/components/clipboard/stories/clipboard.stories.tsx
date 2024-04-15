@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react'
 import { Clipboard } from '../'
-import './clipbard.css'
 
 const meta: Meta = {
   title: 'Components / Clipboard',

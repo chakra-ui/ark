@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Presence } from '../'
-import './presence.css'
 
 const meta: Meta = {
   title: 'Components / Presence',

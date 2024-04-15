@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
 import { Slider } from '../'
-import './slider.css'
 
 const meta: Meta = {
   title: 'Components / Slider / Slider',

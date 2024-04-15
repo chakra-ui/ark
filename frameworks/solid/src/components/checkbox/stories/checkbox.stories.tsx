@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Checkbox } from '../'
-import './checkbox.css'
 
 const meta: Meta = {
   title: 'Components / Checkbox',

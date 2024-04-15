@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Switch } from '../'
-import './switch.css'
 
 const meta: Meta = {
   title: 'Components / Switch',

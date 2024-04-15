@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
 import { Avatar } from '../'
-import './avatar.css'
 
 const meta: Meta = {
   title: 'Components / Avatar',

@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Tooltip } from '../'
-import './tooltip.css'
 
 const meta: Meta = {
   title: 'Components / Tooltip',

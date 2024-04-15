@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Pagination } from '../'
-import './pagination.css'
 
 const meta: Meta = {
   title: 'Components / Pagination',

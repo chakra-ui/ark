@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
 import { ToggleGroup } from '../'
-import './toggle-group.css'
 
 const meta: Meta = {
   title: 'Components / Toggle Group',

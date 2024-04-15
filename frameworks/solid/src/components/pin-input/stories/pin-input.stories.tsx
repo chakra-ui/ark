@@ -1,7 +1,6 @@
 import { Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { PinInput } from '../'
-import './pin-input.css'
 
 const meta: Meta = {
   title: 'Components / Pin Input',

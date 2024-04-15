@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { Menu } from '../'
 import { Portal } from '../../portal'
-import './menu.css'
 
 const meta: Meta = {
   title: 'Components / Menu / Nested',

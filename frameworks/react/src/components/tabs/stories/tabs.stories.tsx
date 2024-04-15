@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Tabs } from '../'
-import './tabs.css'
 
 const meta: Meta = {
   title: 'Components / Tabs',

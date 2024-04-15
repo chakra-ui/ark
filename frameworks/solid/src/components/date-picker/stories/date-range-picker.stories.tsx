@@ -1,7 +1,6 @@
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { DatePicker } from '../'
-import './date-picker.css'
 
 const meta: Meta = {
   title: 'Components / Date Picker / Range',

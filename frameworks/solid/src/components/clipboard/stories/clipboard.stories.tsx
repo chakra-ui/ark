@@ -2,7 +2,6 @@ import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
 import { Show } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Clipboard } from '../'
-import './clipbard.css'
 
 const meta: Meta = {
   title: 'Components / Clipboard',

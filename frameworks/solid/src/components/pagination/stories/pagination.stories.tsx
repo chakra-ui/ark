@@ -1,7 +1,6 @@
 import { For, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Pagination } from '../'
-import './pagination.css'
 
 const meta: Meta = {
   title: 'Components / Pagination',

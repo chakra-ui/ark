@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Popover } from '../'
 import { Portal } from '../../portal'
-import './popover.css'
 
 const meta: Meta = {
   title: 'Components / Popover',

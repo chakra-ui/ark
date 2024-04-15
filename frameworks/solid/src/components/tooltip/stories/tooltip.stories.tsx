@@ -2,7 +2,6 @@ import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Tooltip } from '../'
-import './tooltip.css'
 
 const meta: Meta = {
   title: 'Components / Tooltip',

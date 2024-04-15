@@ -2,7 +2,6 @@ import { createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Select } from '../'
-import './select.css'
 
 const meta: Meta = {
   title: 'Components / Select',

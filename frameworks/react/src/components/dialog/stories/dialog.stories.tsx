@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Dialog } from '../'
 import { Portal } from '../../portal'
-import './dialog.css'
 
 const meta: Meta = {
   title: 'Components / Dialog',

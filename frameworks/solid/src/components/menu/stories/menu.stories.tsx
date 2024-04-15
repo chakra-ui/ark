@@ -1,7 +1,6 @@
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { Menu } from '../'
-import './menu.css'
 
 const meta: Meta = {
   title: 'Components / Menu / Menu',

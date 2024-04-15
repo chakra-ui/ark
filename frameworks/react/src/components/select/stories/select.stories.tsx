@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
 import { Select } from '../'
 import { Portal } from '../../portal'
-import './select.css'
 
 const meta: Meta = {
   title: 'Components / Select',

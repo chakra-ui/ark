@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { Menu } from '../'
-import './menu.css'
 
 const meta: Meta = {
   title: 'Components / Menu / Menu',

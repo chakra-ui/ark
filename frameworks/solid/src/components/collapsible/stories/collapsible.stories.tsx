@@ -1,6 +1,5 @@
 import type { Meta } from 'storybook-solidjs'
 import { Collapsible } from '..'
-import './collapsible.css'
 
 const meta: Meta = {
   title: 'Components / Collapsible',

@@ -1,7 +1,6 @@
 import { Index, createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { SegmentGroup } from '../'
-import './segment-group.css'
 
 const meta: Meta = {
   title: 'Components / Segment Group',

@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react'
 import { XIcon } from 'lucide-react'
 import { Toast, createToaster } from '../'
 import { Toaster } from '../toaster'
-import './toast.css'
 
 const meta: Meta = {
   title: 'Components / Toast',

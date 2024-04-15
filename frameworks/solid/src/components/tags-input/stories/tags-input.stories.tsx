@@ -1,7 +1,6 @@
 import { Index } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { TagsInput } from '../'
-import './tags-input.css'
 
 const meta: Meta = {
   title: 'Components / Tags Input',

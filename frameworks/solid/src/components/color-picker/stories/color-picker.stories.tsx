@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { ColorPicker } from '../'
-import './color-picker.css'
 
 const meta: Meta = {
   title: 'Components / Color Picker',

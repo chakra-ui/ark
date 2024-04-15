@@ -1,7 +1,6 @@
 import { For } from 'solid-js'
 import type { Meta } from 'storybook-solidjs'
 import { FileUpload } from '../'
-import './file-upload.css'
 
 const meta: Meta = {
   title: 'Components / File Upload',

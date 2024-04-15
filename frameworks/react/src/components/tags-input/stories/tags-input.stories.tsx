@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
 import { TagsInput } from '../'
-import './tags-input.css'
 
 const meta: Meta = {
   title: 'Components / Tags Input',

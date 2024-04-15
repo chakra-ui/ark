@@ -1,7 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { ColorPicker } from '../'
-import './color-picker.css'
 
 const meta: Meta = {
   title: 'Components / Color Picker',

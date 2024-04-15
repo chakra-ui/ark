@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
 import { Progress } from '../'
-import './progress.css'
 
 const meta: Meta = {
   title: 'Components / Progress / Circular',
