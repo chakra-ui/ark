@@ -1,13 +1,13 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { Accordion } from '../../..'
+import { Accordion } from '../..'
 
-export const Collapsible = () => {
+export const Example = () => {
   return (
-    <Accordion.Root defaultValue={['React']} collapsible>
+    <Accordion.Root defaultValue={['React']}>
       {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
-            {item}
+            What is {item}?
             <Accordion.ItemIndicator>
               <ChevronDownIcon />
             </Accordion.ItemIndicator>
