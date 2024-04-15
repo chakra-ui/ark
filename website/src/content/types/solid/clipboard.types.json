@@ -52,7 +52,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the clipboard. Useful for composition."
     },
-    "onCopyStatusChange": {
+    "onStatusChange": {
       "type": "(details: CopyStatusDetails) => void",
       "isRequired": false,
       "description": "The function to be called when the value is copied to the clipboard"

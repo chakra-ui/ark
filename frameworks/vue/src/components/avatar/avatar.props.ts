@@ -13,4 +13,4 @@ export const props = {
     type: String as PropType<Context['id']>,
   },
 } as const
-export const emits = declareEmits(['loading-status-change'])
+export const emits = declareEmits(['status-change'])

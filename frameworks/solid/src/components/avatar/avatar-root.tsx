@@ -12,7 +12,7 @@ export const AvatarRoot = (props: AvatarRootProps) => {
     'dir',
     'getRootNode',
     'id',
-    'onLoadingStatusChange',
+    'onStatusChange',
   ])
 
   const context = useAvatar(useAvatarProps)

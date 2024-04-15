@@ -12,9 +12,9 @@ export const ClipboardRoot = (props: ClipboardRootProps) => {
     'getRootNode',
     'id',
     'ids',
-    'value',
+    'onStatusChange',
     'timeout',
-    'onCopyStatusChange',
+    'value',
   ])
   const api = useClipboard(useClipboardProps)
   const mergedProps = mergeProps(() => api().rootProps, localProps)

@@ -5,8 +5,12 @@
       "isRequired": true,
       "description": "The placement of the toast"
     },
-    "render": { "type": "(context: MachineApi<PropTypes>) => Element", "isRequired": true },
     "count": { "type": "number", "isRequired": false },
+    "description": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
+      "isRequired": false,
+      "description": "The description of the toast."
+    },
     "dir": {
       "type": "'rtl' | 'ltr'",
       "defaultValue": "\"ltr\"",
@@ -18,15 +22,20 @@
       "isRequired": false,
       "description": "The duration the toast will be visible"
     },
+    "gap": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The gap or spacing between toasts"
+    },
     "getRootNode": {
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
-    "gutter": {
-      "type": "string",
+    "hotkey": {
+      "type": "string[]",
       "isRequired": false,
-      "description": "The gutter or spacing between toasts"
+      "description": "The hotkey that will move focus to the toast group"
     },
     "id": {
       "type": "string",
@@ -43,10 +52,10 @@
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
-    "pauseOnInteraction": {
+    "overlap": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to pause the toast when interacted with"
+      "description": "Whether the toasts should overlap each other"
     },
     "pauseOnPageIdle": {
       "type": "boolean",
@@ -58,10 +67,17 @@
       "isRequired": false,
       "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
     },
-    "zIndex": {
-      "type": "number",
+    "title": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
       "isRequired": false,
-      "description": "The z-index applied to each toast group"
+      "description": "The title of the toast."
+    }
+  },
+  "ActionTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
     }
   },
   "CloseTrigger": {
@@ -78,13 +94,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Group": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -93,6 +102,14 @@
     }
   },
   "Title": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "er": {
+    "toaster": { "type": "CreateToasterReturn", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

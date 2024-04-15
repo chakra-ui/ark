@@ -2,11 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import { type HTMLArkProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
+export interface ToastActionTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
+export const ToastActionTrigger = (props: ToastActionTriggerProps) => {
   const toast = useToastContext()
-  const mergedProps = mergeProps(() => toast().closeTriggerProps, props)
+  const mergedProps = mergeProps(() => toast().actionTriggerProps, props)
 
   return <ark.button {...mergedProps} />
 }

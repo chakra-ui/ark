@@ -19,7 +19,8 @@ const main = async () => {
       indexExports: getExportsFromSourceFile(entry.indexFile)
         .map((x) => (entry.name === 'Tabs' ? x.replace('Tabs', 'Tab') : x))
         .filter((x) => !/^use/i.test(x)) // filter hooks
-        .filter((x) => !/^create/i.test(x)) // filter helper fn with create prefix
+        .filter((x) => !/^createToaster/i.test(x))
+        .filter((x) => !/^toaster/i.test(x))
         .map((item) => item.replace(entry.name === 'Tabs' ? 'Tab' : entry.name, '')),
       componentExports: getExportsFromSourceFile(entry.componentFile),
     }))

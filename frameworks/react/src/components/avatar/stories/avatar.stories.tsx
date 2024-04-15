@@ -16,11 +16,11 @@ export const Basic = (props: Avatar.RootProps) => (
 )
 
 export const Events = () => {
-  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
+  const handleStatusChange = (details: Avatar.StatusChangeDetails) => {
     console.log(details.status)
   }
   return (
-    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
+    <Avatar.Root onStatusChange={handleStatusChange}>
       <Avatar.Fallback>PA</Avatar.Fallback>
       <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
     </Avatar.Root>

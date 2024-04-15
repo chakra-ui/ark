@@ -9,7 +9,7 @@ const main = async () => {
     .filter((file) => !['presence', 'portal'].includes(basename(dirname(file))))
     .map((file) => {
       // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`
-      copyFileSync(file, file.replace('react', 'solid'))
+      copyFileSync(file, file.replace('react', 'vue'))
       // eg. copy `react/src/avatar/avatar.ts` to `solid/src/avatar/avatar.ts`
       copyFileSync(
         file.replace('index', basename(dirname(file))),

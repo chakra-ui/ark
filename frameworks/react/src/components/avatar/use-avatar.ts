@@ -17,7 +17,7 @@ export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {
 
   const context: avatar.Context = {
     ...initialContext,
-    onLoadingStatusChange: useEvent(props.onLoadingStatusChange),
+    onStatusChange: useEvent(props.onStatusChange),
   }
 
   const [state, send] = useMachine(avatar.machine(initialContext), { context })

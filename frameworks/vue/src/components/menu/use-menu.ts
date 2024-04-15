@@ -9,7 +9,7 @@ export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.c
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
-  machine: ReturnType<typeof menu.machine>
+  machine: menu.Service
 }
 
 export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuReturn => {

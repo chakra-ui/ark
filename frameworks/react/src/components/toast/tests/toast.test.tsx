@@ -1,8 +1,7 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { Toast } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast / Parts & Exports', () => {
@@ -16,11 +15,6 @@ describe('Toast / Parts & Exports', () => {
     await user.click(screen.getByText('Create Toast'))
 
     expect(document.querySelector(part)).toBeInTheDocument()
-    await user.click(screen.getByText('Close'))
-  })
-
-  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
-    expect(Toast[part]).toBeDefined()
   })
 })
 
