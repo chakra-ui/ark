@@ -1,4 +1,5 @@
 import { XIcon } from 'lucide-solid'
+import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Toast, Toaster, createToaster } from '../'
 import './toast.css'
@@ -33,8 +34,8 @@ export const Basic = () => {
       <Toaster toaster={toaster}>
         {(toast) => (
           <Toast.Root>
-            <Toast.Title>{toast.title}</Toast.Title>
-            <Toast.Description>{toast.description}</Toast.Description>
+            <Toast.Title>{toast().title}</Toast.Title>
+            <Toast.Description>{toast().description}</Toast.Description>
             <Toast.CloseTrigger>
               <XIcon />
             </Toast.CloseTrigger>

@@ -1,6 +1,6 @@
 import { mergeProps, normalizeProps, useActor, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
-import { type JSX, createMemo, splitProps } from 'solid-js'
+import { type Accessor, For, type JSX, createEffect, createMemo, splitProps } from 'solid-js'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
@@ -11,7 +11,7 @@ export interface ToasterProps
     HTMLArkProps<'div'>,
     {
       toaster: CreateToasterReturn
-      children: (toast: toast.Options<JSX.Element>) => JSX.Element
+      children: (toast: Accessor<toast.Options<JSX.Element>>) => JSX.Element
     }
   > {}
 
@@ -21,27 +21,32 @@ export const Toaster = (props: ToasterProps) => {
   const placement = state.context.placement
 
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
+  const toastsByPlacement = createMemo(() => api().getToastsByPlacement())
+  const toasts = createMemo(() => toastsByPlacement()[state.context.placement] ?? [])
 
-  const toastsByPlacement = api().getToastsByPlacement()
-  const toasts = toastsByPlacement[state.context.placement] ?? []
   const mergedProps = mergeProps(api().getGroupProps({ placement }), localProps)
+
+  createEffect(() => {
+    console.log('toasts', toasts())
+  })
 
   return (
     <ark.div {...mergedProps}>
-      {toasts.map((toast) => (
-        <ToastActor value={toast}>{(ctx) => toasterProps.children(ctx)}</ToastActor>
-      ))}
+      <For each={toasts()}>
+        {(toast) => <ToastActor value={toast}>{(ctx) => toasterProps.children(ctx)}</ToastActor>}
+      </For>
     </ark.div>
   )
 }
 
 interface ToastActorProps {
   value: toast.Service
-  children: (ctx: toast.Options<JSX.Element>) => JSX.Element
+  children: (ctx: Accessor<toast.Options<JSX.Element>>) => JSX.Element
 }
 
 const ToastActor = (props: ToastActorProps) => {
   const [state, send] = useActor(props.value)
   const api = createMemo(() => toast.connect(state, send, normalizeProps))
-  return <ToastProvider value={api}>{props.children(state.context)}</ToastProvider>
+  const ctx = createMemo(() => state.context)
+  return <ToastProvider value={api}>{props.children(ctx)}</ToastProvider>
 }
