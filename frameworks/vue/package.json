@@ -513,7 +513,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.4",
-    "@histoire/plugin-vue": "0.17.15",
+    "@histoire/plugin-vue": "0.17.17",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.4.2",
