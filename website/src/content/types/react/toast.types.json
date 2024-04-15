@@ -7,7 +7,7 @@
     },
     "count": { "type": "number", "isRequired": false },
     "description": {
-      "type": "any",
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
       "isRequired": false,
       "description": "The description of the toast."
     },
@@ -67,7 +67,11 @@
       "isRequired": false,
       "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
     },
-    "title": { "type": "any", "isRequired": false, "description": "The title of the toast." }
+    "title": {
+      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
+      "isRequired": false,
+      "description": "The title of the toast."
+    }
   },
   "CloseTrigger": {
     "asChild": {
@@ -83,13 +87,6 @@
       "description": "Render as a different element type."
     }
   },
-  "Group": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Root": {
     "asChild": {
       "type": "boolean",
@@ -98,6 +95,14 @@
     }
   },
   "Title": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "er": {
+    "toaster": { "type": "CreateToasterReturn", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
