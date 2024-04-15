@@ -130,7 +130,7 @@
     "globby": "14.0.1",
     "jsdom": "24.0.0",
     "lucide-solid": "0.367.0",
-    "release-it": "17.1.1",
+    "release-it": "17.2.0",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.14.1",
     "rollup-preset-solid": "2.0.1",
