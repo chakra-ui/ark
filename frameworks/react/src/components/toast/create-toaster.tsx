@@ -1,8 +1,6 @@
-import { type PropTypes, mergeProps, normalizeProps, useActor } from '@zag-js/react'
-import type { DefaultGenericOptions, MachineContext } from '@zag-js/toast'
+import { type PropTypes, mergeProps, normalizeProps, useActor, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
-import { type ComponentProps, type ReactNode, forwardRef, useEffect } from 'react'
-import { useEnvironmentContext } from '../../providers'
+import { type ComponentProps, type ReactNode, forwardRef, useId } from 'react'
 import type { Assign, Optional } from '../../types'
 import { ToasterProvider } from './use-toaster-context'
 
@@ -15,7 +13,7 @@ export interface CreateToasterProps extends Omit<Optional<GroupContext, 'id'>, '
 export type ToasterProps = Assign<
   ComponentProps<'div'>,
   {
-    children: (context: MachineContext<DefaultGenericOptions>[]) => ReactNode
+    children: (context: toast.Api<PropTypes, any>[]) => ReactNode
   }
 >
 
@@ -23,32 +21,30 @@ export type CreateToasterReturn = [React.FC<ToasterProps>, toast.GroupApi<PropTy
 
 export const createToaster = (props: CreateToasterProps) => {
   const { placement, ...rest } = props
-  const service = toast.group.machine({ id: '1', placement, ...rest }).start()
-  const context = toast.group.connect(service.getState(), service.send, normalizeProps)
-
-  const subscribe = (fn: CallableFunction) => {
-    // @ts-expect-error - The context is not typed
-    return service.subscribe((state) => fn(state.context.toasts))
-  }
 
   const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
-    const getRootNode = useEnvironmentContext()
-    const [state, send] = useActor(service)
-    const context = toast.group.connect(state, send, normalizeProps)
+    const [state, send] = useMachine(
+      toast.group.machine({
+        id: useId(),
+        placement,
+        removeDelay: 200,
+      }),
+    )
 
-    useEffect(() => {
-      service.setContext({ getRootNode })
-      return () => void service.stop()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    const mergedProps = mergeProps(context.getGroupProps({ placement: placement }), props)
-    const toasts = context.toastsByPlacement[placement] ?? []
+    const api = toast.group.connect(state, send, normalizeProps)
+    const toastsByPlacement = api.getToastsByPlacement()
+
+    const toasts = toastsByPlacement[placement] ?? []
+
+    const foo = toasts.map((actor) => {
+      const [state, send] = useActor(actor)
+      return toast.connect(state, send, normalizeProps)
+    })
 
     return (
-      <ToasterProvider value={toasts}>
-        <div {...mergedProps} ref={ref}>
-          {/* @ts-expect-error it exsits */}
-          {props.children(state.context.toasts.map((item) => item.state.context))}
+      <ToasterProvider value={foo}>
+        <div {...api.getGroupProps({ placement })} ref={ref}>
+          {props.children(foo)}
         </div>
       </ToasterProvider>
     )
@@ -56,16 +52,5 @@ export const createToaster = (props: CreateToasterProps) => {
 
   Toaster.displayName = 'Toaster'
 
-  const api = {} as toast.GroupApi<PropTypes>
-  for (const key in context) {
-    Object.defineProperty(api, key, {
-      get() {
-        if (key === 'subscribe') return subscribe
-        const ctx = toast.group.connect(service.getState(), service.send, normalizeProps)
-        return ctx[key as keyof typeof context]
-      },
-    })
-  }
-
-  return [Toaster, api] as const
+  return Toaster
 }
