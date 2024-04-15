@@ -12,7 +12,6 @@ export default meta
 export const Basic = () => {
   const toaster = createToaster({
     placement: 'bottom-end',
-    overlap: true,
     gap: 24,
   })
 

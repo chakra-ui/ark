@@ -1,20 +1,30 @@
-import { defineComponent } from 'vue'
+import * as toast from '@zag-js/toast'
+import { normalizeProps, useMachine } from '@zag-js/vue'
+import { type PropType, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useToastContext } from './toast-context'
+import type { CreateToasterReturn } from './create-toaster'
 
-export interface ToasterProps extends HTMLArkProps<'div'> {}
+export interface ToasterProps extends HTMLArkProps<'div'> {
+  toaster: CreateToasterReturn
+}
 
 export const Toaster = defineComponent<ToasterProps>(
-  (_, { attrs, slots }) => {
-    const api = useToastContext()
+  (props, { attrs, slots }) => {
+    const [state, send] = useMachine(props.toaster.machine)
+    const placement = state.value.context.placement
+    const api = toast.group.connect(state.value, send, normalizeProps)
+    const toastsByPlacement = api.getToastsByPlacement()
+    const toasts = toastsByPlacement[placement] ?? []
 
-    return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.()}
-      </ark.div>
-    )
+    return () => <ark.div {...attrs}>{slots.default?.()}</ark.div>
   },
   {
     name: 'Toaster',
+    props: {
+      toaster: {
+        type: Object as PropType<CreateToasterReturn>,
+        required: true,
+      },
+    },
   },
 )

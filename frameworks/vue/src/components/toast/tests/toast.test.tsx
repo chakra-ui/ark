@@ -1,8 +1,7 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Toast } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { getParts } from '../../../setup-test'
 import ComponentUnderTest from './toast.test.vue'
 
 describe('Toast', () => {
@@ -12,10 +11,6 @@ describe('Toast', () => {
 
     expect(document.querySelector(part)).toBeInTheDocument()
     await user.click(screen.getByText('Close'))
-  })
-
-  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
-    expect(Toast[part]).toBeDefined()
   })
 
   it('should show and hide a toast message', async () => {

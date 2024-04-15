@@ -26,10 +26,6 @@ export const Toaster = (props: ToasterProps) => {
 
   const mergedProps = mergeProps(api().getGroupProps({ placement }), localProps)
 
-  createEffect(() => {
-    console.log('toasts', toasts())
-  })
-
   return (
     <ark.div {...mergedProps}>
       <For each={toasts()}>

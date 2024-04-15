@@ -22,8 +22,8 @@ export const Basic = () => {
         type="button"
         onClick={() =>
           toaster.create({
-            title: 'Loading!',
-            description: 'We are loading something for you. Please wait.',
+            title: 'Toast Title',
+            description: 'Toast Description',
             type: 'info',
           })
         }
